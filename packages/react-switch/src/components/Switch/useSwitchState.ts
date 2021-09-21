@@ -37,6 +37,7 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
 
 export const useSwitchState = (state: SwitchState) => {
   const { defaultChecked = false, checked, disabled = false, onChange } = state;
+  const { onPointerDown: onPointerDownCallback, onKeyDown: onKeyDownCallback } = state.root;
 
   const { dir } = useFluent();
   const inputRef = useMergedRefs(state.input.ref);
@@ -55,24 +56,16 @@ export const useSwitchState = (state: SwitchState) => {
   const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(true);
   const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(currentValue === true ? 100 : 0);
 
-  const setChecked = React.useCallback(
-    (ev: React.PointerEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>, incomingValue: boolean) => {
+  const setChecked = useEventCallback(
+    (ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, incomingValue: boolean) => {
       ev.stopPropagation();
-      onChange?.(ev, { checked: incomingValue });
+      ev.preventDefault();
       internalState.current.internalValue = incomingValue;
+      onChange?.(ev, { checked: incomingValue });
       setCurrentValue(incomingValue);
       setRenderedPosition(undefined);
     },
-    [onChange, setCurrentValue],
   );
-
-  const userOnChange = state.input.onChange;
-
-  const onInputChange = useEventCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
-    ev.stopPropagation();
-    userOnChange?.(ev);
-    setChecked(ev, ev.currentTarget.checked);
-  });
 
   const calculatePosition = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
@@ -130,6 +123,7 @@ export const useSwitchState = (state: SwitchState) => {
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
 
+      onPointerDownCallback?.(ev);
       showThumbAnimation();
       target.setPointerCapture?.(pointerId);
       internalState.current.thumbIsDragging = false;
@@ -142,7 +136,17 @@ export const useSwitchState = (state: SwitchState) => {
         },
       );
     },
-    [onPointerMove, onPointerUp, showThumbAnimation],
+    [onPointerDownCallback, onPointerMove, onPointerUp, showThumbAnimation],
+  );
+
+  const onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      onKeyDownCallback?.(ev);
+      if (ev.key === ' ') {
+        setChecked(ev, !internalState.current.internalValue);
+      }
+    },
+    [onKeyDownCallback, setChecked],
   );
 
   const currentPosition = renderedPosition !== undefined ? renderedPosition : currentValue ? 100 : 0;
@@ -163,13 +167,14 @@ export const useSwitchState = (state: SwitchState) => {
   state.root.style = rootStyles;
   if (!disabled) {
     state.root.onPointerDown = onPointerDown;
+    state.root.onKeyDown = onKeyDown;
   }
 
   // Input Props
-  state.input.onChange = onInputChange;
   state.input.checked = currentValue;
   state.input.disabled = disabled;
   state.input.ref = inputRef;
+  state.input.readOnly = true;
 
   // Thumb Container Props
   state.thumbWrapper.style = thumbWrapperStyles;

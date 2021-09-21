@@ -20,7 +20,7 @@ export interface SwitchCommons {
     checked?: boolean;
     defaultChecked?: boolean;
     disabled?: boolean;
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.ChangeEvent<HTMLInputElement>, data: {
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
         checked: boolean;
     }) => void;
 }

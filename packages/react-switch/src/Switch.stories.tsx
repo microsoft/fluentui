@@ -157,7 +157,7 @@ export const BasicSwitchExample = (props: SwitchProps) => {
   const [switchValue, setSwitchValue] = React.useState(false);
 
   const switchOnChange = (
-    ev: React.PointerEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>,
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
     data: { checked: boolean },
   ) => setSwitchValue(data.checked);
 

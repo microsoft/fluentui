@@ -20,6 +20,7 @@ exports[`Switch Snapshot Tests renders a basic Switch checked 1`] = `
     <input
       checked=""
       class=""
+      readonly=""
       type="checkbox"
     />
     <div
@@ -48,6 +49,7 @@ exports[`Switch Snapshot Tests renders a basic Switch unchecked 1`] = `
     </div>
     <input
       class=""
+      readonly=""
       type="checkbox"
     />
     <div
@@ -77,6 +79,7 @@ exports[`Switch Snapshot Tests renders a disabled Switch checked 1`] = `
     <input
       checked=""
       class=""
+      readonly=""
       type="checkbox"
     />
     <div
@@ -105,6 +108,7 @@ exports[`Switch Snapshot Tests renders a disabled Switch unchecked 1`] = `
     </div>
     <input
       class=""
+      readonly=""
       type="checkbox"
     />
     <div
