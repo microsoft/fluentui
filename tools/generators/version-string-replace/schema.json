@@ -12,18 +12,22 @@
         "index": 0
       }
     },
+    "bumpType": {
+      "type": "string",
+      "description": "The type of bump to the version number"
+    },
+    "prereleaseTag": {
+      "type": "string",
+      "description": "If bumping prerelease version, the identifier to use"
+    },
     "all": {
       "type": "boolean",
       "description": "Run generator on all vNext packages`"
-    },
-    "match": {
-      "type": "string",
-      "description": "Regex match the part of the version to replace"
     },
     "replace": {
       "type": "string",
       "description": "Replacement string for the matched version part"
     }
   },
-  "required": ["match", "replace"]
+  "required": ["match", "replace", "bumpType"]
 }

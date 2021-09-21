@@ -9,12 +9,7 @@ export interface VersionStringReplaceGeneratorSchema {
    */
   all?: boolean;
 
-  /**
-   * Regex match the part of the version to replace
-   */
-  match: string;
-  /**
-   * Replacement string for the matched version part
-   */
-  replace: string;
+  prereleaseTag: string;
+
+  bumpType: string;
 }

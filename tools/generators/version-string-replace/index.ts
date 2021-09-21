@@ -1,8 +1,8 @@
 import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nrwl/devkit';
+import * as semver from 'semver';
 import { VersionStringReplaceGeneratorSchema } from './schema';
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';
-import { Schema } from '@nrwl/tao/src/shared/params';
 
 export default async function (host: Tree, schema: VersionStringReplaceGeneratorSchema) {
   const userLog: UserLog = [];
@@ -24,75 +24,96 @@ export default async function (host: Tree, schema: VersionStringReplaceGenerator
 function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
   const options = normalizeOptions(host, schema);
   const packageJsonPath = options.paths.packageJson;
-
-  if (schema.replace !== '' && (readJson(host, packageJsonPath) as PackageJson).version.includes(schema.replace)) {
-    throw new Error(`package ${schema.name} already contains ${schema.replace} in its version`);
-  }
+  let nextVersion = '';
 
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
-    packageJson.version = packageJson.version.replace(schema.match, schema.replace);
+    nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag);
+    packageJson.version = nextVersion;
 
     return packageJson;
   });
 
-  updatePackageDependents(host, schema, userLog);
+  if (nextVersion) {
+    updatePackageDependents(host, nextVersion, schema.name, userLog);
+  }
 }
 
-function updatePackageDependents(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
+function updatePackageDependents(host: Tree, nextVersion: string, dependencyName: string, userLog: UserLog) {
   const projects = getProjects(host);
 
   projects.forEach((project, projectName) => {
     const projectConfig = getProjectConfig(host, { packageName: projectName });
-    updatePackageDependent(host, schema, projectConfig.paths.packageJson, userLog);
+    updatePackageDependent(host, nextVersion, dependencyName, projectConfig.paths.packageJson, userLog);
   });
 }
 
-function updatePackageDependent(host: Tree, schema: ValidatedSchema, packageJsonPath: string, userLog: UserLog) {
+function updatePackageDependent(
+  host: Tree,
+  nextVersion: string,
+  dependencyName: string,
+  packageJsonPath: string,
+  userLog: UserLog,
+) {
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
-    if (packageJson.dependencies?.[schema.name]) {
+    if (packageJson.dependencies?.[dependencyName]) {
       userLog.push({
         type: 'info',
-        message: `bumping dependendcy ${schema.name} in ${packageJsonPath}`,
+        message: `bumping dependendcy ${dependencyName} in ${packageJsonPath}`,
       });
-      packageJson.dependencies[schema.name] = packageJson.dependencies[schema.name].replace(
-        schema.match,
-        schema.replace,
-      );
+
+      bumpDependency(packageJson.dependencies, dependencyName, nextVersion);
     }
 
-    if (packageJson.devDependencies?.[schema.name]) {
+    if (packageJson.devDependencies?.[dependencyName]) {
       userLog.push({
         type: 'info',
-        message: `bumping devDependency ${schema.name} in ${packageJsonPath}`,
+        message: `bumping devDependency ${dependencyName} in ${packageJsonPath}`,
       });
-      packageJson.devDependencies[schema.name] = packageJson.devDependencies[schema.name].replace(
-        /alpha.\d+/,
-        'beta.0',
-      );
+      bumpDependency(packageJson.devDependencies, dependencyName, nextVersion);
     }
 
     return packageJson;
   });
 }
+
+const bumpDependency = (
+  dependencies: NonNullable<PackageJson['dependencies'] | PackageJson['devDependencies']>,
+  dependencyName: string,
+  version: string,
+) => {
+  const hasCaret = dependencies[dependencyName].includes('^');
+  const versionToBump = hasCaret ? `^${version}` : version;
+  dependencies[dependencyName] = versionToBump;
+};
 
 function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
   const projects = getProjects(host);
 
   projects.forEach((project, projectName) => {
-    if (isPackageConverged(projectName, host, schema)) {
+    if (isPackageConverged(projectName, host)) {
       runMigrationOnProject(
         host,
-        { name: projectName, all: false, match: schema.match, replace: schema.replace },
+        { name: projectName, all: false, bumpType: schema.bumpType, prereleaseTag: schema.prereleaseTag },
         userLog,
       );
     }
   });
 }
 
+function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpType'], prereleaseTag?: string) {
+  const semverVersion = semver.parse(packageJson.version);
+  if (!semverVersion) {
+    throw new Error(`Cannot parse version ${packageJson.version} of ${packageJson.name}`);
+  }
+
+  semverVersion.inc(bumpType, prereleaseTag);
+  return semverVersion.version;
+}
+
 /**
  * @returns whether the package is converged
  */
-function isPackageConverged(packageName: string, host: Tree, schema: Pick<ValidatedSchema, 'match'>) {
+function isPackageConverged(packageName: string, host: Tree) {
   let config: ReturnType<typeof getProjectConfig>;
   try {
     config = getProjectConfig(host, { packageName });
@@ -105,7 +126,7 @@ function isPackageConverged(packageName: string, host: Tree, schema: Pick<Valida
   }
 
   const packageJson = readJson(host, config.paths.packageJson);
-  return packageJson.version.startsWith('9.') && packageJson.version.match(schema.match) !== null;
+  return packageJson.version.startsWith('9.');
 }
 
 type NormalizedSchema = ReturnType<typeof normalizeOptions>;
@@ -126,8 +147,10 @@ function normalizeOptions(host: Tree, options: ValidatedSchema) {
   };
 }
 
-interface ValidatedSchema extends Required<Omit<VersionStringReplaceGeneratorSchema, 'match'>> {
-  match: RegExp;
+export const validbumpTypes = ['prerelease', 'major', 'premajor', 'minor', 'preminor', 'patch', 'prepatch'] as const;
+
+interface ValidatedSchema extends Required<VersionStringReplaceGeneratorSchema> {
+  bumpType: typeof validbumpTypes[number];
 }
 
 function validateSchema(tree: Tree, schema: VersionStringReplaceGeneratorSchema) {
@@ -135,10 +158,15 @@ function validateSchema(tree: Tree, schema: VersionStringReplaceGeneratorSchema)
     throw new Error('--name and --all are mutually exclusive');
   }
 
-  const matchRegex = new RegExp(schema.match);
+  const validateBumpType = (type: string): type is ValidatedSchema['bumpType'] => {
+    return validbumpTypes.includes(type as ValidatedSchema['bumpType']);
+  };
+  if (!validateBumpType(schema.bumpType)) {
+    throw new Error(`${schema.bumpType} is not a valid bumpType, please use one of ${validbumpTypes}`);
+  }
 
   if (schema.name) {
-    if (!isPackageConverged(schema.name, tree, { match: matchRegex })) {
+    if (!isPackageConverged(schema.name, tree)) {
       throw new Error(
         `${schema.name} is not converged package consumed by customers.
         Make sure to run the migration on packages with version 9.x.x and has the alpha tag`,
@@ -147,10 +175,10 @@ function validateSchema(tree: Tree, schema: VersionStringReplaceGeneratorSchema)
   }
 
   const validatedSchema: ValidatedSchema = {
+    bumpType: schema.bumpType,
+    prereleaseTag: schema.prereleaseTag ?? '',
     all: schema.all ?? false,
     name: schema.name ?? '',
-    match: matchRegex,
-    replace: schema.replace,
   };
 
   return validatedSchema;

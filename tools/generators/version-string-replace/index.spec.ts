@@ -15,7 +15,7 @@ const noop = () => null;
 
 describe('version-string-replace generator', () => {
   let tree: Tree;
-  const defaultTestOptions = { match: 'alpha.\\d+', replace: 'beta.0' };
+  const defaultTestOptions = { bumpType: 'prerelease', prereleaseTag: 'beta' };
 
   beforeEach(() => {
     jest.restoreAllMocks();
@@ -34,7 +34,7 @@ describe('version-string-replace generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/make-styles', ...defaultTestOptions });
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'prerelease', prereleaseTag: 'beta' });
 
     const packageJson = readJson(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"9.0.0-beta.0"`);
@@ -47,7 +47,7 @@ describe('version-string-replace generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/make-styles', match: '-beta.\\d+', replace: '' });
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'minor', prereleaseTag: '' });
 
     const packageJson = readJson(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"9.0.0"`);
@@ -118,21 +118,6 @@ describe('version-string-replace generator', () => {
           `);
   });
 
-  it('should throw error when if package is already in beta', async () => {
-    tree = setupDummyPackage(tree, {
-      name: '@proj/babel-make-styles',
-      version: '9.0.0-beta.10',
-      projectConfiguration: { tags: ['vNext', 'platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
-    });
-
-    const result = generator(tree, { name: '@proj/babel-make-styles', ...defaultTestOptions });
-
-    await expect(result).rejects.toMatchInlineSnapshot(`
-            [Error: @proj/babel-make-styles is not converged package consumed by customers.
-                    Make sure to run the migration on packages with version 9.x.x and has the alpha tag]
-          `);
-  });
-
   describe('--all', () => {
     beforeEach(() => {
       tree = setupDummyPackage(tree, {
@@ -176,13 +161,6 @@ describe('version-string-replace generator', () => {
       });
     });
 
-    it('should ignore packages not alpha', async () => {
-      await generator(tree, { all: true, ...defaultTestOptions });
-
-      const packageJson = readJson(tree, 'packages/react-menu/package.json');
-      expect(packageJson.version).toMatchInlineSnapshot(`"9.0.0-beta.11"`);
-    });
-
     it('should ignore packages not v9', async () => {
       await generator(tree, { all: true, ...defaultTestOptions });
 
@@ -190,7 +168,7 @@ describe('version-string-replace generator', () => {
       expect(packageJson.version).toMatchInlineSnapshot(`"1.0.0"`);
     });
 
-    it('should migrate all packages to beta', async () => {
+    it('should bump all packages to beta', async () => {
       await generator(tree, { all: true, ...defaultTestOptions });
 
       const reactButtonPakageJson = readJson(tree, 'packages/react-button/package.json');
