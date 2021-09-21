@@ -1,6 +1,11 @@
 /**
  * Gets the current percentage position for the marks with respect to adjacent marks.
- * This is used primarily for positioning with CSS grid.
+ * This is used primarily for positioning with [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
+ *
+ * Example
+ * - `Rail: width = 100px`
+ * - `Marks: [0, 25, 50, 75, 100]`
+ * - `getMarkPercent: 0%, 25%, 25%, 25%, 25%`
  *
  * @param markValues The marks percentage position relative to their individual positions.
  */

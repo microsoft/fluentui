@@ -205,7 +205,6 @@ const templates = {
   },
   npmIgnoreConfig:
     stripIndents`
-    .cache/
     .storybook/
     .vscode/
     bundle-size/
