@@ -22,7 +22,7 @@ export type BadgeSlots = {
   icon?: IntrinsicShorthandProps<'span'>;
 };
 
-export interface BadgeCommons {
+export type BadgeCommons = {
   /**
    * A Badge can be sized.
    * @default medium
@@ -52,7 +52,7 @@ export interface BadgeCommons {
    * @default before
    */
   iconPosition: 'before' | 'after';
-}
+};
 
-export interface BadgeProps extends ComponentProps<Partial<BadgeSlots>>, Partial<BadgeCommons> {}
-export interface BadgeState extends ComponentState<BadgeSlots>, BadgeCommons {}
+export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeCommons>;
+export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;

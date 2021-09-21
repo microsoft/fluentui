@@ -16,6 +16,6 @@ export interface PresenceBadgeCommons {
   outOfOffice: boolean;
 }
 
-export interface PresenceBadgeProps extends BadgeProps, Partial<PresenceBadgeCommons> {}
+export type PresenceBadgeProps = BadgeProps & Partial<PresenceBadgeCommons>;
 
-export interface PresenceBadgeState extends BadgeState, PresenceBadgeCommons {}
+export type PresenceBadgeState = BadgeState & PresenceBadgeCommons;

@@ -1,6 +1,6 @@
 import type { BadgeProps, BadgeState } from '../Badge/index';
 
-export interface CounterBadgeCommons {
+export type CounterBadgeCommons = {
   /**
    * Max number to be displayed
    * @default 99
@@ -36,14 +36,14 @@ export interface CounterBadgeCommons {
    * @default filled
    */
   appearance: 'filled' | 'ghost';
-}
+};
 
 /**
  * {@docCategory CounterBadge}
  */
-export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'>, Partial<CounterBadgeCommons> {}
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & Partial<CounterBadgeCommons>;
 
 /**
  * {@docCategory CounterBadge}
  */
-export interface CounterBadgeState extends Omit<BadgeState, 'appearance' | 'shape'>, CounterBadgeCommons {}
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape'> & CounterBadgeCommons;
