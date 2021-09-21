@@ -1,11 +1,11 @@
 import { BeachballConfig } from 'beachball';
-import { getAllPackageInfo } from '../monorepo/index';
+import { getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 import { renderHeader, renderEntry } from './customRenderers';
 
 const allPackageInfo = getAllPackageInfo();
 const fluentConvergedPackagePaths = Object.values(allPackageInfo)
   .map(packageInfo => {
-    if (packageInfo.packageJson.version.startsWith('9.') && !packageInfo.packageJson.private) {
+    if (isConvergedPackage(packageInfo.packageJson) && !packageInfo.packageJson.private) {
       return packageInfo.packagePath;
     }
 

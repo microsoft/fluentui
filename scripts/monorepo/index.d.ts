@@ -29,3 +29,11 @@ export declare function findGitRoot(cwd?: string): string;
 export declare function findRepoDeps(cwd?: string): PackageInfo[];
 
 export declare function getAllPackageInfo(): AllPackageInfo;
+
+/**
+ * Determines whether a package is converged, based on its version.
+ * @param packagePathOrJson optional different package path to run in OR previously-read package.json
+ * (defaults to reading package.json from `process.cwd()`)
+ * @returns true if it's a converged package (version >= 9)
+ */
+export declare function isConvergedPackage(packagePathOrJson?: string | PackageJson): boolean;
