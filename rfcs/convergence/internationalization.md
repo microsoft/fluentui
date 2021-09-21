@@ -86,7 +86,7 @@ While we don't have plans to provide actual translations for the strings in any 
 
 To do this, I think it makes sense to add locale data to Fluent's `ProviderContext`, since it already includes `dir`.
 
-One straightforward option for how to do this would be to provide a locale object with static key/value pairs for each string. We could then import defaults for all strings where defaults make sense, which would allow us to also share global strings for things like 'close'/'remove'/'select all'/etc. So something like this (specific file names and values are just for show):
+One straightforward option for how to do this would be to provide a locale object with static key/value pairs for each string. We could provide a minimal set of global strings in the top-level provider, similar to how Material and Ant differentiate global vs. component strings. Based on current Fluent v8 and N\* strings, it would look like this:
 
 react-shared-contexts/src/ProviderContext/defaultStrings.ts
 
@@ -95,13 +95,13 @@ export const defaultLocale {
   locale: 'en-US',
   strings: {
     global: {
+      more: 'more items',
       close: 'close',
-      remove: 'remove'
-    },
-    Button: {
-      splitButtonLabel: 'more options'
+      noResults: 'no results found',
+      loading: 'loading',
+      selectAll: 'select all',
+      expandCollapse: 'expand {0}'
     }
-    // etc
   }
 }
 ```
@@ -121,11 +121,21 @@ export const ProviderContext =
   };
 ```
 
-Then, each component would take a `strings` prop where strings could be directly passed in, but would default to the provided locale, if available:
+Then, each component would take a `strings` prop where strings could be directly passed in, and also provide component-specific defaults when needed. The `strings` prop would also be used for the author to pass in strings that don't have a default, e.g. error messaging and instance-specific labels.
+
+react-dropdown/src/localeStrings.ts (specific strings are just for this example)
+
+```js
+export const dropdownDefaultStrings: Partial<DropdownStrings> {
+  loadMore: 'Load more options',
+  invalidEntryError: 'Your search did not match any options'
+}
+```
 
 react-dropdown/src/components/useDropdown.tsx (very simplified)
 
 ```js
+import { dropdownDefaultStrings } from '../localeStrings';
 export const useDropdown = props => {
   const { locale } = useFluent();
   const dropdownStrings = {
@@ -134,11 +144,51 @@ export const useDropdown = props => {
     ...props.strings,
   };
 
-  state.components.arrow['aria-label'] = dropdownStrings.open;
+  state.components.arrow['aria-label'] = dropdownStrings.expandCollapse;
 };
 ```
 
-A second possibility is that we could also provide a way to (optionally) pass a function (e.g. `localizeString`) through `ProviderContext` to better support libraries like `react-i18next` and `react-intl`. Then, if that function is provided, we call it with any given string as an argument. That would mean someone using `react-i18next` could do something like this:
+## Concrete actions for vNext beta
+
+The only action needed for beta release should be to ensure all strings provided through component props (excluding children/child content) are defined in a single `strings` property.
+
+For example, the `PresenceBadge` (and also components like `Avatar` that use it) would need something like this for the strings prop (likely with defaults in a component-specific file for `PresenceBadge`):
+
+```js
+interface PresenceBadgeStrings {
+  statusBusy: string;
+  statusOutOfOffice: string;
+  statusAway: string;
+  statusAvailable: string;
+  statusOffline: string;
+  statusDnD: string;
+}
+
+interface PresenceBadgeProps {
+  // ...etc
+
+  strings?: PresenceBadgeStrings;
+}
+
+interface AvatarStrings extends PresenceBadgeStrings {
+  active: string;
+  inactive: string;
+}
+
+// defined in a default strings file
+const presenceDefaultStrings: PresenceBadgeStrings = {
+  statusBusy: 'busy',
+  statusOutOfOffice: 'out of office',
+  statusAway: 'away',
+  statusAvailable: 'available',
+  statusOffline: 'offline',
+  statusDnD: 'do not disturb',
+};
+```
+
+## Future possibilities
+
+Another possibility is that we could also provide a way to (optionally) pass a function (e.g. `localizeString`) through `ProviderContext` to better support libraries like `react-i18next` and `react-intl`. Then, if that function is provided, we call it with any given string as an argument. That would mean someone using `react-i18next` could do something like this:
 
 App.ts:
 
@@ -165,4 +215,3 @@ const App = () => {
 - How will this affect SSR?
 - Could we create a script to generate a blank locale JSON file as a template for an author-selected set of components?
 - Flexibility/integration with other 3rd party localization tools or patterns
-- Bundle size if all components' strings are included in defaultStrings (at least in the English/default set of strings)
