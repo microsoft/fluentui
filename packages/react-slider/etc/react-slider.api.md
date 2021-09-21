@@ -25,7 +25,11 @@ export type SliderCommons = {
     keyboardStep?: number;
     disabled?: boolean;
     vertical?: boolean;
-    marks?: boolean | number[];
+    marks?: boolean | (number | {
+        value: number;
+        label?: string | JSX.Element;
+        mark?: JSX.Element;
+    })[];
     origin?: number;
     size?: 'small' | 'medium';
     onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
