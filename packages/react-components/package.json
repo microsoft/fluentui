@@ -52,7 +52,7 @@
     "@fluentui/react-theme": "9.0.0-alpha.23",
     "@fluentui/react-tooltip": "9.0.0-alpha.85",
     "@fluentui/react-utilities": "9.0.0-alpha.49",
-    "@fluentui/react-text": "9.0.0-alpha.18",
+    "@fluentui/react-text": "^9.0.0-alpha.18",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
