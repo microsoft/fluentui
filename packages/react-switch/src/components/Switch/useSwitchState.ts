@@ -175,6 +175,7 @@ export const useSwitchState = (state: SwitchState) => {
   state.input.disabled = disabled;
   state.input.ref = inputRef;
   state.input.readOnly = true;
+  state.input.role = 'switch';
 
   // Thumb Container Props
   state.thumbWrapper.style = thumbWrapperStyles;
