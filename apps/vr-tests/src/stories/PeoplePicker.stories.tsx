@@ -258,7 +258,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Normal Overflow selected',
@@ -275,7 +275,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('List', () => (
     <Fabric>
@@ -302,7 +302,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Compact', () => (
     <Fabric>
@@ -329,5 +329,5 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

@@ -1,8 +1,58 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.4)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.3..@fluentui/react_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.2.3 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [8.34.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.3)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.2..@fluentui/react_v8.34.3)
+
+### Patches
+
+- Panel: isFooterAtBottom prop now working as expected ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react to v8.34.3 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [8.34.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.2)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.1..@fluentui/react_v8.34.2)
+
+### Patches
+
+- Delay calculating viewport on mount ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by gcox@microsoft.com)
+
+## [8.34.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.1)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.0..@fluentui/react_v8.34.1)
+
+### Patches
+
+- setting the defaultRenderer argument for the onRenderIcon of ContextualMenuItem ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by dmitry@grechka.family)
+
+## [8.34.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.0)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.33.0..@fluentui/react_v8.34.0)
+
+### Minor changes
+
+- feat(Combobox): add select all functionality ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by sarah.higley@microsoft.com)
+
+### Patches
+
+- Backspace does not work in BaseExtendedpicker in projection popout windows ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by srangam@microsoft.com)
 
 ## [8.33.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.33.0)
 

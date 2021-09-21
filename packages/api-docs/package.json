@@ -18,14 +18,14 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.2.2",
     "@fluentui/merge-styles": "^8.1.5",
-    "@fluentui/react": "^8.33.0",
-    "@fluentui/react-focus": "^8.2.2",
+    "@fluentui/react": "^8.34.4",
+    "@fluentui/react-focus": "^8.2.3",
     "@fluentui/style-utilities": "^8.3.2",
     "@fluentui/theme": "^2.3.2",
     "@fluentui/utilities": "^8.3.2",

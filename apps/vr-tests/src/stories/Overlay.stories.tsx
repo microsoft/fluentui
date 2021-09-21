@@ -20,7 +20,7 @@ storiesOf('Overlay', module)
     'Root',
     // prettier-ignore
     () => <Overlay>Overlay content</Overlay>,
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Dark',
