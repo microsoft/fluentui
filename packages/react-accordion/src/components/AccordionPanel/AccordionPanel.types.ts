@@ -4,11 +4,11 @@ export type AccordionPanelSlots = {
   root: IntrinsicShorthandProps<'div'>;
 };
 
-export interface AccordionPanelProps extends ComponentProps<AccordionPanelSlots> {}
+export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
-export interface AccordionPanelState extends ComponentState<AccordionPanelSlots> {
+export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
   /**
    * Internal open state, provided by context
    */
   open: boolean;
-}
+};
