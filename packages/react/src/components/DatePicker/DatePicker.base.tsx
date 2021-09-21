@@ -425,14 +425,16 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
             {...divProps}
           >
             <span className={classNames.readOnlyTextfield}>{formattedDate || placeholder} </span>
-            <Icon
-              {...{
-                iconName: 'Calendar',
-                ...iconProps,
-                className: css(classNames.icon, iconProps && iconProps.className),
-                onClick: onIconClick,
-              }}
-            />
+            <span className={classNames.readOnlyIcon}>
+              <Icon
+                {...{
+                  iconName: 'Calendar',
+                  ...iconProps,
+                  className: css(classNames.icon, iconProps && iconProps.className),
+                  onClick: onIconClick,
+                }}
+              />
+            </span>
           </div>
         </div>
         <span id={descriptionId}>

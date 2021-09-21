@@ -321,6 +321,7 @@ export interface IDatePickerStyles {
   icon: IStyle;
   statusMessage?: IStyle;
   wrapper?: IStyle;
+  readOnlyIcon?: IStyle;
   readOnlyTextfield?: IStyle;
   readOnlyTextfieldDescription?: IStyle;
   readOnlyTextfieldErrorMessage?: IStyle;

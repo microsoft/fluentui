@@ -16,6 +16,7 @@ const GlobalClassNames = {
   withoutLabel: 'ms-DatePicker-event--without-label',
   disabled: 'msDatePickerDisabled ',
 
+  readOnlyIcon: 'ms-DatePicker-readOnlyIcon',
   readOnlyTextfield: 'ms-DatePicker-readOnlyTextfield',
   readOnlyTextfieldDescription: 'ms-DatePicker-readOnlyTextfieldDescription',
   readOnlyTextfieldErrorMessage: 'ms-DatePicker-readOnlyTextfieldErrorMessage',
@@ -100,6 +101,10 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
         color: semanticColors.errorText,
         marginTop: 5,
       },
+    ],
+    readOnlyIcon: [
+      GlobalClassNames.readOnlyIcon,
+      { position: 'absolute', height: TEXTFIELD_HEIGHT, lineHeight: TEXTFIELD_HEIGHT - 2, top: '1px', right: '1px' },
     ],
     readOnlyTextfield: [
       fonts.medium,
