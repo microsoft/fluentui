@@ -7,24 +7,24 @@ import bestPracticesMd from './ButtonBestPractices.md';
 
 export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
 
-export const Emphasis = () => (
+export const ButtonAppearance = () => (
   <>
-    <Button primary>Primary button</Button>
     <Button>Default button</Button>
-    <Button outline>Outline button</Button>
-    <Button subtle>Subtle button</Button>
-    <Button transparent>Transparent button</Button>
+    <Button appearance="primary">Primary button</Button>
+    <Button appearance="outline">Outline button</Button>
+    <Button appearance="subtle">Subtle button</Button>
+    <Button appearance="transparent">Transparent button</Button>
   </>
 );
-Emphasis.parameters = {
+ButtonAppearance.parameters = {
   docs: {
     description: {
       story:
-        '- `primary` button is used for the most important action on the page or in a view\n' +
-        '- `default` button is used for subordinate actions\n' +
-        '- `outline` has no background styling and is emphasized through the styling of its content and borders\n' +
-        '- `transparent` has no background or border styling and is just emphasized through its content styling\n' +
-        '- `subtle` button blends into its background and becomes less emphasized\n',
+        '- `(undefined)`: the button appears with the default style\n' +
+        '- `primary`: emphasizes the button as a primary action.\n' +
+        '- `outline`: removes background styling.\n' +
+        '- `subtle`: minimzes emphasis to blend into the background until hovered or focused\n' +
+        '- `transparent`: removes background and border styling.\n',
     },
   },
 };
@@ -48,18 +48,17 @@ ButtonWithIcon.parameters = {
   },
 };
 
-export const CircularButton = () => (
+export const ButtonShape = () => (
   <>
-    <Button circular>Button</Button>
-    <Button circular outline icon={<CalendarMonth24Regular />} />
-    <Button circular subtle icon={<CalendarMonth24Regular />} />
-    <Button circular transparent icon={<CalendarMonth24Regular />} />
+    <Button>Button</Button>
+    <Button shape="circular">Button</Button>
+    <Button shape="square">Button</Button>
   </>
 );
-CircularButton.parameters = {
+ButtonShape.parameters = {
   docs: {
     description: {
-      story: 'A button can have completely rounded corners.',
+      story: 'A button can be rounded, circular, or square.',
     },
   },
 };
@@ -126,13 +125,13 @@ export const DisabledButton = () => {
         <Button disabledFocusable>Disabled focusable</Button>
       </div>
       <div style={groupStyles}>
-        <Button primary icon={<CalendarMonth24Regular />}>
+        <Button appearance="primary" icon={<CalendarMonth24Regular />}>
           Primary
         </Button>
-        <Button primary disabled icon={<CalendarMonth24Regular />}>
+        <Button appearance="primary" disabled icon={<CalendarMonth24Regular />}>
           Primary disabled
         </Button>
-        <Button primary disabledFocusable>
+        <Button appearance="primary" disabledFocusable>
           Primary disabled focusable
         </Button>
       </div>

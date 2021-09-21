@@ -22,10 +22,10 @@ export type ButtonProps = ComponentPropsCompat &
     block?: boolean;
 
     /**
-     * A button can have completely rounded corners.
-     * @default false
+     * A button can be rounded, circular, or square.
+     * @default 'rounded'
      */
-    circular?: boolean;
+    shape?: 'rounded' | 'circular' | 'square';
 
     /**
      * A button can show that it cannot be interacted with.
@@ -55,40 +55,19 @@ export type ButtonProps = ComponentPropsCompat &
     // loading?: boolean;
 
     /**
-     * A button can be styled such that it has no background styling and is just emphasized through the styling of
-     * its content and borders.
-     * Mutually exclusive with `primary`, `subtle` and `transparent`.
-     * @default false
+     * A button can have its content and borders styled for greater emphasis or to be subtle.
+     * - 'primary': Emphasizes the button as a primary action.
+     * - 'outline': Removes background styling.
+     * - 'subtle': Minimzes emphasis to blend into the background until hovered or focused.
+     * - 'transparent': Removes background and border styling.
      */
-    outline?: boolean;
-
-    /**
-     * A button can be styled to emphasize that it represents the primary action.
-     * Mutually exclusive with `outline`, `subtle` and `transparent`.
-     * @default false
-     */
-    primary?: boolean;
+    appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
 
     /**
      * A button supports different sizes.
      * @default 'medium'
      */
     size?: 'small' | 'medium' | 'large';
-
-    /**
-     * A button can be styled to blend into its background and become less emphasized.
-     * @default false
-     * Mutually exclusive with `outline`, `primary` and `transparent`.
-     */
-    subtle?: boolean;
-
-    /**
-     * A button can be styled such that it has no background or border styling and is just emphasized through its
-     * content styling.
-     * Mutually exclusive with `outline`, `primary` and `subtle`.
-     * @default false
-     */
-    transparent?: boolean;
   };
 
 export type ButtonShorthandPropsCompat = 'icon';
