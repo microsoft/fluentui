@@ -79,4 +79,4 @@ steps:
 
   - template: .devops/templates/cleanup.yml
     parameters:
-      checkForChangedFiles: false
+      checkForModifiedFiles: false
