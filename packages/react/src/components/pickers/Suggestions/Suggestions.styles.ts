@@ -2,10 +2,10 @@ import {
   getGlobalClassNames,
   getHighContrastNoAdjustStyle,
   HighContrastSelector,
-  IStyle,
   hiddenContentStyle,
 } from '../../../Styling';
-import { ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
+import type { IStyle } from '../../../Styling';
+import type { ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 
 const GlobalClassNames = {
   root: 'ms-Suggestions',

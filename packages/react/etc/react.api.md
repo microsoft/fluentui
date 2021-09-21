@@ -10,16 +10,16 @@ import { EventGroup } from '@fluentui/utilities';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { IBaseProps } from '@fluentui/utilities';
 import { ICalendarStrings } from '@fluentui/date-time-utilities';
-import { IComponent } from '@fluentui/foundation-legacy';
+import type { IComponent } from '@fluentui/foundation-legacy';
 import { IComponentAs } from '@fluentui/utilities';
-import { IComponentStyles } from '@fluentui/foundation-legacy';
-import { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
-import { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
+import type { IComponentStyles } from '@fluentui/foundation-legacy';
+import type { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
+import type { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { IDateFormatting } from '@fluentui/date-time-utilities';
-import { IDayGridOptions } from '@fluentui/date-time-utilities';
+import type { IDayGridOptions } from '@fluentui/date-time-utilities';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@fluentui/style-utilities';
-import { IHTMLSlot } from '@fluentui/foundation-legacy';
+import type { IHTMLSlot } from '@fluentui/foundation-legacy';
 import { IObjectWithKey } from '@fluentui/utilities';
 import { IPoint } from '@fluentui/utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
@@ -30,25 +30,25 @@ import { IRenderComponent } from '@fluentui/utilities';
 import { IRenderFunction } from '@fluentui/utilities';
 import { ISelection } from '@fluentui/utilities';
 import { ISelectionOptions } from '@fluentui/utilities';
-import { ISlotProp } from '@fluentui/foundation-legacy';
-import { ISlottableProps } from '@fluentui/foundation-legacy';
+import type { ISlotProp } from '@fluentui/foundation-legacy';
+import type { ISlottableProps } from '@fluentui/foundation-legacy';
 import { IStyle } from '@fluentui/style-utilities';
-import { IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import type { IStyleableComponentProps } from '@fluentui/foundation-legacy';
 import { IStyleFunction } from '@fluentui/utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
 import { KeyCodes } from '@fluentui/utilities';
-import { PartialTheme } from '@fluentui/theme';
+import type { PartialTheme } from '@fluentui/theme';
 import { Point } from '@fluentui/utilities';
 import * as React_2 from 'react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Rectangle } from '@fluentui/utilities';
 import { Selection as Selection_2 } from '@fluentui/utilities';
 import { SELECTION_CHANGE } from '@fluentui/utilities';
 import { SelectionDirection } from '@fluentui/utilities';
 import { SelectionMode as SelectionMode_2 } from '@fluentui/utilities';
-import { Target } from '@fluentui/react-hooks';
-import { Theme } from '@fluentui/theme';
+import type { Target } from '@fluentui/react-hooks';
+import type { Theme } from '@fluentui/theme';
 
 // @public (undocumented)
 export class ActionButton extends React_2.Component<IButtonProps, {}> {
@@ -280,7 +280,7 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
 }
 
 // @public (undocumented)
-export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState> implements IBasePicker<T> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState<T>> implements IBasePicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected addItem: (item: T) => void;
@@ -297,7 +297,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(oldProps: P, oldState: IBasePickerState): void;
+    componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -314,7 +314,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
         items: any[];
     } | null;
-    // (undocumented)
+    // @deprecated (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
@@ -353,11 +353,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     // (undocumented)
     refocusSuggestions: (keyCode: KeyCodes) => void;
     // (undocumented)
-    protected removeItem: (item: IPickerItemProps<T>, focusNextItem?: boolean | undefined) => void;
+    protected removeItem: (item: T) => void;
     // (undocumented)
     protected removeItems: (itemsToRemove: any[]) => void;
     // (undocumented)
     render(): JSX.Element;
+    // (undocumented)
+    protected renderCustomAlert(alertClassName?: string): JSX.Element;
     // (undocumented)
     protected renderItems(): JSX.Element[];
     // (undocumented)
@@ -1581,6 +1583,7 @@ export interface IBasePickerProps<T> extends React_2.Props<any> {
     pickerCalloutProps?: ICalloutProps;
     pickerSuggestionsProps?: IBasePickerSuggestionsProps;
     removeButtonAriaLabel?: string;
+    removeButtonIconProps?: IIconProps;
     resolveDelay?: number;
     searchingText?: ((props: {
         input: string;
@@ -1589,11 +1592,12 @@ export interface IBasePickerProps<T> extends React_2.Props<any> {
     selectionAriaLabel?: string;
     selectionRole?: string;
     styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
+    suggestionRemovedText?: string;
     theme?: ITheme;
 }
 
 // @public (undocumented)
-export interface IBasePickerState {
+export interface IBasePickerState<T> {
     // (undocumented)
     isFocused?: boolean;
     // (undocumented)
@@ -1608,6 +1612,8 @@ export interface IBasePickerState {
     moreSuggestionsAvailable?: boolean;
     // (undocumented)
     selectedIndices?: number[];
+    // (undocumented)
+    selectionRemoved?: T;
     // (undocumented)
     suggestedDisplayValue?: string;
     // (undocumented)
@@ -1632,7 +1638,7 @@ export interface IBasePickerStyles {
 }
 
 // @public
-export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve'> {
+export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreIcon' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve' | 'removeButtonIconProps'> {
 }
 
 // @public (undocumented)
@@ -2019,6 +2025,13 @@ export interface ICalendarDayGridStyles {
     bottomLeftCornerDate?: IStyle;
     // (undocumented)
     bottomRightCornerDate?: IStyle;
+    datesAbove?: IStyle;
+    // (undocumented)
+    datesBelow?: IStyle;
+    // (undocumented)
+    datesLeft?: IStyle;
+    // (undocumented)
+    datesRight?: IStyle;
     dayButton?: IStyle;
     dayCell?: IStyle;
     dayIsToday?: IStyle;
@@ -3145,6 +3158,7 @@ export interface ICommandBarProps extends React_2.HTMLAttributes<HTMLDivElement>
     componentRef?: IRefObject<ICommandBar>;
     dataDidRender?: (renderedData: any) => void;
     farItems?: ICommandBarItemProps[];
+    farItemsGroupAriaLabel?: string;
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
     onDataReduced?: (movedItem: ICommandBarItemProps) => void;
@@ -3153,6 +3167,7 @@ export interface ICommandBarProps extends React_2.HTMLAttributes<HTMLDivElement>
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
+    primaryGroupAriaLabel?: string;
     resizeGroupAs?: IComponentAs<IResizeGroupProps>;
     shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
@@ -3809,6 +3824,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
     flexMargin?: number;
+    focusZoneProps?: IFocusZoneProps;
     getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
     getKey?: (item: any, index?: number) => string;
@@ -3922,6 +3938,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
         callback: (item?: any, index?: number, event?: any) => void;
     }[];
     flatIndexOffset?: number;
+    focusZoneProps?: IFocusZoneProps;
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
     group?: IGroup;
@@ -4919,6 +4936,7 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
     personas: IFacepilePersona[];
     personaSize?: PersonaSize;
     showAddButton?: boolean;
+    showTooltip?: boolean;
     styles?: IStyleFunctionOrObject<IFacepileStyleProps, IFacepileStyles>;
     theme?: ITheme;
 }
@@ -5508,7 +5526,7 @@ export interface IKeytipLayerProps extends React_2.ClassAttributes<IKeytipLayer>
     keytipExitSequences?: IKeytipTransitionKey[];
     keytipReturnSequences?: IKeytipTransitionKey[];
     keytipStartSequences?: IKeytipTransitionKey[];
-    onEnterKeytipMode?: () => void;
+    onEnterKeytipMode?: (transitionKey?: IKeytipTransitionKey) => void;
     onExitKeytipMode?: (ev?: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>) => void;
     styles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
@@ -5996,7 +6014,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     isModeless?: boolean;
     isOpen?: boolean;
     layerProps?: ILayerProps;
-    onDismiss?: (ev?: React_2.MouseEvent<HTMLButtonElement>) => any;
+    onDismiss?: (ev?: React_2.MouseEvent<HTMLButtonElement | HTMLElement>) => any;
     onDismissed?: () => any;
     // @deprecated
     onLayerDidMount?: () => void;
@@ -6211,8 +6229,6 @@ export interface IOverlayProps extends React_2.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverlay>;
     isDarkThemed?: boolean;
-    // (undocumented)
-    onClick?: () => void;
     styles?: IStyleFunctionOrObject<IOverlayStyleProps, IOverlayStyles>;
     theme?: ITheme;
 }
@@ -6605,6 +6621,7 @@ export interface IPickerItemProps<T> extends React_2.AllHTMLAttributes<HTMLEleme
     onItemChange?: (item: T, index: number) => void;
     onRemoveItem?: () => void;
     removeButtonAriaLabel?: string;
+    removeButtonIconProps?: IIconProps;
     selected?: boolean;
 }
 
@@ -7731,6 +7748,7 @@ export interface ISuggestionItemProps<T> {
     onClick: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
     onRemoveItem: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
     removeButtonAriaLabel?: string;
+    removeButtonIconProps?: IIconProps;
     RenderSuggestion: (item: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
     showRemoveButton?: boolean;
     styles?: IStyleFunctionOrObject<ISuggestionsItemStyleProps, ISuggestionsItemStyles>;
@@ -7858,12 +7876,14 @@ export interface ISuggestionsProps<T> extends React_2.Props<any> {
     onSuggestionClick: (ev?: React_2.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
     onSuggestionRemove?: (ev?: React_2.MouseEvent<HTMLElement>, item?: T | IPersonaProps, index?: number) => void;
     refocusSuggestions?: (keyCode: KeyCodes) => void;
+    removeButtonIconProps?: IIconProps;
     removeSuggestionAriaLabel?: string;
     resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsMaximumNumber?: number;
     // @deprecated
     searchErrorText?: string;
+    searchForMoreIcon?: IIconProps;
     searchForMoreText?: string;
     searchingText?: string;
     showForceResolve?: () => boolean;
@@ -8328,6 +8348,7 @@ export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement
     id?: string;
     onTooltipToggle?(isTooltipVisible: boolean): void;
     overflowMode?: TooltipOverflowMode;
+    // @deprecated
     setAriaDescribedBy?: boolean;
     styles?: IStyleFunctionOrObject<ITooltipHostStyleProps, ITooltipHostStyles>;
     theme?: ITheme;
@@ -9297,7 +9318,9 @@ enum SelectableOptionMenuItemType {
     // (undocumented)
     Header = 2,
     // (undocumented)
-    Normal = 0
+    Normal = 0,
+    // (undocumented)
+    SelectAll = 3
 }
 export { SelectableOptionMenuItemType as DropdownMenuItemType }
 export { SelectableOptionMenuItemType }

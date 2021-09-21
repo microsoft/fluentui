@@ -1,22 +1,40 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { CardSectionState } from '../CardSection/CardSection.types';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import type { CardPreviewState } from './CardPreview.types';
 
+/**
+ * Styles for the root slot
+ */
 const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: 'var(--card-preview-margin)',
+  root: theme => ({
+    position: 'relative',
+    // TODO: Explore alternate way of applying padding on parent Card
+    margin: '0 -12px',
 
-    '--card-preview-margin': 'var(--card-section-margin)',
-  },
-  fitted: {
-    '--card-preview-margin': 'var(--card-preview-fitted-margin)',
-    '--card-preview-fitted-margin': 'var(--card-section-fitted-margin)',
+    '> *': {
+      display: 'block',
+      width: '100%',
+    },
+  }),
+
+  logo: {
+    position: 'absolute',
+    bottom: '12px',
+    left: '12px',
+    width: '32px',
+    height: '32px',
   },
 });
 
-export function useCardPreviewStyles(state: CardSectionState): CardSectionState {
+/**
+ * Apply styling to the CardPreview slots based on the state
+ */
+export const useCardPreviewStyles = (state: CardPreviewState): CardPreviewState => {
   const styles = useStyles();
-  state.className = mergeClasses('ms-CardPreview', styles.root, state.fitted && styles.fitted, state.className);
+  state.className = mergeClasses(styles.root, state.className);
+
+  if (state.logo) {
+    state.logo.className = mergeClasses(styles.logo, state.logo.className);
+  }
+
   return state;
-}
+};

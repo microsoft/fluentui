@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { useCardSection, CardSectionProps } from '../../CardSection';
+import { useCardFooter } from './useCardFooter';
+import { renderCardFooter } from './renderCardFooter';
 import { useCardFooterStyles } from './useCardFooterStyles';
+import type { CardFooterProps } from './CardFooter.types';
 
-export const CardFooter: React.FunctionComponent<CardSectionProps> = React.forwardRef<HTMLElement, CardSectionProps>(
-  (props, ref) => {
-    const { render, state } = useCardSection(props, ref);
+/**
+ * Component to render Button actions in a Card component.
+ */
+export const CardFooter = React.forwardRef<HTMLElement, CardFooterProps>((props, ref) => {
+  const state = useCardFooter(props, ref);
 
-    useCardFooterStyles(state);
-
-    return render(state);
-  },
-);
+  useCardFooterStyles(state);
+  return renderCardFooter(state);
+});
 
 CardFooter.displayName = 'CardFooter';

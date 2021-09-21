@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { createContext, useContextSelector, ContextSelector, Context } from '@fluentui/react-context-selector';
-import { MenuListProps } from '../components/index';
-import { MenuState } from '../components/Menu/index';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector, Context } from '@fluentui/react-context-selector';
+import type { MenuListProps } from '../components/index';
+import type { MenuState } from '../components/Menu/index';
 
 export const MenuContext: Context<MenuContextValue> = createContext<MenuContextValue>({
   open: false,
@@ -24,25 +25,24 @@ export const MenuContext: Context<MenuContextValue> = createContext<MenuContextV
  *
  * Extends and drills down MenuList props to simplify API
  */
-export interface MenuContextValue
-  extends MenuListProps,
-    Pick<
-      MenuState,
-      | 'openOnHover'
-      | 'openOnContext'
-      | 'triggerRef'
-      | 'menuPopoverRef'
-      | 'setOpen'
-      | 'isSubmenu'
-      | 'triggerId'
-      | 'hasIcons'
-      | 'hasCheckmarks'
-      | 'persistOnItemClick'
-      | 'inline'
-    > {
-  open: boolean;
-  triggerId: string;
-}
+export type MenuContextValue = MenuListProps &
+  Pick<
+    MenuState,
+    | 'openOnHover'
+    | 'openOnContext'
+    | 'triggerRef'
+    | 'menuPopoverRef'
+    | 'setOpen'
+    | 'isSubmenu'
+    | 'triggerId'
+    | 'hasIcons'
+    | 'hasCheckmarks'
+    | 'persistOnItemClick'
+    | 'inline'
+  > & {
+    open: boolean;
+    triggerId: string;
+  };
 
 export const MenuProvider = MenuContext.Provider;
 

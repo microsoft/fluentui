@@ -1,4 +1,4 @@
-import { BorderRadius } from '../types';
+import type { BorderRadius } from '../types';
 
 export const borderRadius: BorderRadius = {
   none: '0',
@@ -6,5 +6,5 @@ export const borderRadius: BorderRadius = {
   medium: '4px',
   large: '6px',
   xLarge: '8px',
-  circular: '50%',
+  circular: '10000px',
 };

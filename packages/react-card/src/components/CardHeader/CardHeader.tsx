@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { useCardSection, CardSectionProps } from '../../CardSection';
+import { useCardHeader } from './useCardHeader';
+import { renderCardHeader } from './renderCardHeader';
 import { useCardHeaderStyles } from './useCardHeaderStyles';
+import type { CardHeaderProps } from './CardHeader.types';
 
-export const CardHeader: React.FunctionComponent<CardSectionProps> = React.forwardRef<HTMLElement, CardSectionProps>(
-  (props, ref) => {
-    const { render, state } = useCardSection(props, ref);
+/**
+ * Component to render an image, text and an action in a Card component.
+ */
+export const CardHeader = React.forwardRef<HTMLElement, CardHeaderProps>((props, ref) => {
+  const state = useCardHeader(props, ref);
 
-    useCardHeaderStyles(state);
-
-    return render(state);
-  },
-);
+  useCardHeaderStyles(state);
+  return renderCardHeader(state);
+});
 
 CardHeader.displayName = 'CardHeader';

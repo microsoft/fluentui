@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { DetailsRowBase } from './DetailsRow.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.types';
-import { ISelection, SelectionMode } from '../../Selection';
-import { IDragDropHelper, IDragDropEvents } from '../../DragDrop';
-import { IViewport } from '../../utilities/decorators/withViewport';
-import { CollapseAllVisibility, IGroup } from '../GroupedList/GroupedList.types';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
-import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { CheckboxVisibility } from './DetailsList.types';
+import { SelectionMode } from '../../Selection';
+import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IColumn, IDetailsListProps } from './DetailsList.types';
+import type { ISelection } from '../../Selection';
+import type { IDragDropHelper, IDragDropEvents } from '../../DragDrop';
+import type { IViewport } from '../../utilities/decorators/withViewport';
+import type { IGroup } from '../GroupedList/GroupedList.types';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import type { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import type { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory DetailsList}
@@ -218,6 +222,11 @@ export interface IDetailsRowBaseProps
    * the correct aria-posinset and aria-setsize values.
    */
   group?: IGroup;
+
+  /**
+   * Properties to pass to the rows' FocusZone.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**

@@ -4,7 +4,7 @@ import {
   FontWeights,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
-import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
+import type { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const DEFAULT_PILL_WIDTH = 40;
 const DEFAULT_PILL_HEIGHT = 20;

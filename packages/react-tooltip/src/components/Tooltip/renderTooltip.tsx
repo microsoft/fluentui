@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { TooltipState } from './Tooltip.types';
 import { tooltipShorthandProps } from './useTooltip';
+import type { TooltipState } from './Tooltip.types';
 
 /**
  * Render the final JSX of Tooltip
- * {@docCategory Tooltip}
  */
 export const renderTooltip = (state: TooltipState) => {
   const { slots, slotProps } = getSlotsCompat(state, tooltipShorthandProps);

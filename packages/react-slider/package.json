@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "9.0.0-alpha.0",
-  "private": true,
+  "version": "9.0.0-alpha.8",
   "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,34 +13,39 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "start": "yarn storybook",
+    "test": "jest",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-slider/src && yarn docs",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.2",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.8",
-    "@fluentui/react-conformance": "^0.4.3",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.44",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.13",
+    "@fluentui/react-label": "9.0.0-alpha.42",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.3.0",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.51"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.52",
-    "@fluentui/react-utilities": "^9.0.0-alpha.35",
+    "@fluentui/react-make-styles": "9.0.0-alpha.69",
+    "@fluentui/react-shared-contexts": "9.0.0-alpha.25",
+    "@fluentui/react-tabster": "9.0.0-alpha.63",
+    "@fluentui/react-utilities": "9.0.0-alpha.49",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

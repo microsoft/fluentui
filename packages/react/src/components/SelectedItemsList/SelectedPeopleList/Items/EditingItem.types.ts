@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { IBaseFloatingPickerProps } from '../../../../FloatingPicker';
-import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
-import { IExtendedPersonaProps } from '../SelectedPeopleList';
-import { IPersonaProps } from '../../../../Persona';
-import { IStyle } from '../../../../Styling';
+import type { IBaseFloatingPickerProps } from '../../../../FloatingPicker';
+import type { ISelectedPeopleItemProps, IExtendedPersonaProps } from '../SelectedPeopleList';
+import type { IPersonaProps } from '../../../../Persona';
+import type { IStyle } from '../../../../Styling';
 
 export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
   onEditingComplete: (oldItem: any, newItem: any) => void;

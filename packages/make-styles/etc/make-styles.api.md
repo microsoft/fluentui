@@ -18,7 +18,7 @@ export function createCSSVariablesProxy(prefix?: string): unknown;
 export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
 
 // @public (undocumented)
-export type CSSClasses = /* ltrClassName */ string | [ltrClassName: string, rtlClassName: string];
+export type CSSClasses = /* ltrClassName */ string | [/* ltrClassName */ string, /* rtlClassName */ string];
 
 // @public (undocumented)
 export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
@@ -50,7 +50,7 @@ export const LOOKUP_DEFINITIONS_INDEX = 0;
 export const LOOKUP_DIR_INDEX = 1;
 
 // @public (undocumented)
-export type LookupItem = [definitions: CSSClassesMap, dir: 'rtl' | 'ltr'];
+export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ /* dir */ 'rtl' | 'ltr'];
 
 // @public (undocumented)
 export type MakeStaticStyles = ({
@@ -158,7 +158,6 @@ export const styleBucketOrdering: StyleBucketName[];
 
 // @public (undocumented)
 export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
-
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
+import type { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
 
 /**
  * Array of all shorthand properties listed in LabelShorthandProps
@@ -19,8 +19,6 @@ const mergeProps = makeMergeProps<LabelState>({ deepMerge: labelShorthandProps }
  * @param props - props from this instance of Label
  * @param ref - reference to root HTMLElement of Label
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory Label}
  */
 export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>, defaultProps?: LabelProps): LabelState => {
   const state = mergeProps(

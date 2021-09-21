@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { IEditorWrapperProps } from './EditorWrapper.types';
 import { EditorErrorBoundary } from './EditorErrorHandler';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 import { EditorLoading } from './EditorLoading';
 import { isEditorSupported } from '../utilities/index';
-import { ITransformedExample } from '../interfaces/index';
 import { DEFAULT_HEIGHT } from './consts';
 
 // This file MUST NOT directly load the main TsxEditor module which depends on Monaco
 // (aside from for typing purposes), to avoid pulling it into a bundle.
 import * as TsxEditorModule from './TsxEditor';
+import type { IEditorWrapperProps } from './EditorWrapper.types';
+import type { ITransformedExample } from '../interfaces/index';
+
 const TsxEditorLazy = React.lazy(
   () =>
     // Theoretically we could use import() here, but that pulls things into bundles when using

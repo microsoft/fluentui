@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { getCode, ArrowRightKey, ArrowDownKey, ArrowLeftKey } from '@fluentui/keyboard-key';
-import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
+import { ArrowRight, ArrowDown, ArrowLeft, Escape } from '@fluentui/keyboard-keys';
+import {
+  applyTriggerPropsToChildren,
+  onlyChild,
+  shouldPreventDefaultOnKeyDown,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext } from '../../contexts/menuContext';
-import { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import type { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 
 const noop = () => null;
 
@@ -31,17 +37,17 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   const hasMouseMoved = React.useRef(false);
 
   const { dir } = useFluent();
-  const OpenArrowKey = dir === 'ltr' ? ArrowRightKey : ArrowLeftKey;
+  const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
-  // TODO also need to warn on React.Fragment usage
-  const child = React.Children.only(state.children);
+  const child = React.isValidElement(state.children) ? onlyChild(state.children) : undefined;
 
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
       e.preventDefault();
       setOpen(e, { open: true, keyboard: false });
     }
-    child.props?.onContextMenu?.(e);
+
+    child?.props?.onContextMenu?.(e);
   });
 
   const onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -49,7 +55,8 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
       setOpen(e, { open: !open, keyboard: openedWithKeyboardRef.current });
       openedWithKeyboardRef.current = false;
     }
-    child.props?.onClick?.(e);
+
+    child?.props?.onClick?.(e);
   });
 
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
@@ -59,26 +66,26 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
       (e.target as HTMLElement)?.click();
     }
 
-    const keyCode = getCode(e);
+    const key = e.key;
 
-    if (!openOnContext && ((isSubmenu && keyCode === OpenArrowKey) || (!isSubmenu && keyCode === ArrowDownKey))) {
+    if (!openOnContext && ((isSubmenu && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))) {
       setOpen(e, { open: true, keyboard: true });
     }
 
-    if (keyCode === 27 /* Escape */ && !isSubmenu) {
+    if (key === Escape && !isSubmenu) {
       setOpen(e, { open: false, keyboard: true });
     }
 
     // if menu is already open, can't rely on effects to focus
-    if (open && keyCode === OpenArrowKey && isSubmenu) {
+    if (open && key === OpenArrowKey && isSubmenu) {
       focusFirst();
     }
 
-    if (open && keyCode === ArrowDownKey && !isSubmenu) {
+    if (open && key === ArrowDown && !isSubmenu) {
       focusFirst();
     }
 
-    child.props?.onKeyDown?.(e);
+    child?.props?.onKeyDown?.(e);
   });
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -86,7 +93,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
       setOpen(e, { open: true, keyboard: false });
     }
 
-    child.props?.onMouseEnter?.(e);
+    child?.props?.onMouseEnter?.(e);
   });
 
   // Opening a menu when a mouse hasn't moved and just entering the trigger is a bad a11y experience
@@ -104,14 +111,14 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
       setOpen(e, { open: false, keyboard: false });
     }
 
-    child.props?.onMouseLeave?.(e);
+    child?.props?.onMouseLeave?.(e);
   });
 
-  const disabled = child.props?.disabled;
+  const disabled = child?.props?.disabled;
   const triggerProps: MenuTriggerChildProps = {
     'aria-haspopup': true,
     'aria-expanded': open,
-    id: child.props.id || triggerId,
+    id: child?.props?.id || triggerId,
 
     ...(!disabled
       ? {
@@ -133,10 +140,10 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
         }),
   };
 
-  state.children = React.cloneElement(child, {
+  state.children = applyTriggerPropsToChildren(state.children, {
     ...triggerProps,
-    ref: useMergedRefs(child.props.ref, triggerRef),
-  });
+    ref: useMergedRefs((typeof state.children !== 'function' && state.children.ref) || null, triggerRef),
+  }) as React.ReactElement;
 
   return state as MenuTriggerState;
 };

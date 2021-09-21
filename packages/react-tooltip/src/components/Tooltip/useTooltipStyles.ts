@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { TooltipState } from './Tooltip.types';
+import type { TooltipState } from './Tooltip.types';
 
 /**
  * Styles for the tooltip
@@ -62,7 +62,6 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the Tooltip slots based on the state
- * {@docCategory Tooltip}
  */
 export const useTooltipStyles = (state: TooltipState): TooltipState => {
   const styles = useStyles();

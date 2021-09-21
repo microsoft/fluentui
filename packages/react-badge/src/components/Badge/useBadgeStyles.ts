@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { BadgeState } from './Badge.types';
+import type { BadgeState } from './Badge.types';
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -222,7 +222,7 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
   const isInformative = state.color === 'informative';
   const isSubtle = state.color === 'subtle';
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.size === 'smallest' && styles.rootSmallest,
     state.size === 'smaller' && styles.rootSmaller,
@@ -266,7 +266,7 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
     isOutline && isSubtle && styles.rootOutlineSubtle,
     isTint && isSubtle && styles.rootTintSubtle,
     isGhost && isSubtle && styles.rootGhostSubtle,
-    state.className,
+    state.root.className,
   );
 
   if (state.icon) {

@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Button}
- */
 export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
     /**
@@ -94,21 +91,11 @@ export type ButtonProps = ComponentPropsCompat &
     transparent?: boolean;
   };
 
-/**
- * {@docCategory Button}
- */
 export type ButtonShorthandPropsCompat = 'icon';
 
-/**
- * {@docCategory Button}
- */
 export type ButtonDefaultedProps = 'icon' | 'size';
 
-/**
- * {@docCategory Button}
- */
-export interface ButtonState
-  extends ComponentStateCompat<ButtonProps, ButtonShorthandPropsCompat, ButtonDefaultedProps> {
+export type ButtonState = ComponentStateCompat<ButtonProps, ButtonShorthandPropsCompat, ButtonDefaultedProps> & {
   /**
    * A button can contain only an icon.
    * @default false
@@ -119,4 +106,4 @@ export interface ButtonState
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
-}
+};

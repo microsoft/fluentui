@@ -1,15 +1,8 @@
 import * as React from 'react';
-import {
-  makeMergeProps,
-  useMergedRefs,
-  useEventCallback,
-  shouldPreventDefaultOnKeyDown,
-} from '@fluentui/react-utilities';
+import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 import { usePopoverContext } from '../../popoverContext';
-
-const mergeProps = makeMergeProps<PopoverTriggerState>({});
+import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
 /**
  * Create the state required to render PopoverTrigger.
@@ -30,14 +23,6 @@ export const usePopoverTrigger = (
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
   const { triggerAttributes } = useModalAttributes();
-
-  const state = mergeProps(
-    {
-      children: (null as unknown) as React.ReactElement,
-    },
-    defaultProps,
-    props,
-  );
 
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
@@ -82,17 +67,17 @@ export const usePopoverTrigger = (
     child.props?.onMouseLeave?.(e);
   });
 
-  const child = React.Children.only(state.children);
-  state.children = React.cloneElement(child, {
-    'aria-haspopup': 'true',
-    onClick,
-    onMouseEnter,
-    onKeyDown,
-    onMouseLeave,
-    onContextMenu,
-    ref: useMergedRefs(child.props.ref, triggerRef),
-    ...triggerAttributes,
-  });
-
-  return state;
+  const child = React.Children.only(props.children);
+  return {
+    children: React.cloneElement(child, {
+      'aria-haspopup': 'true',
+      onClick,
+      onMouseEnter,
+      onKeyDown,
+      onMouseLeave,
+      onContextMenu,
+      ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
+      ...triggerAttributes,
+    }),
+  };
 };

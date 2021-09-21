@@ -1,16 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
-import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
+import { DropdownMenuItemType } from './Dropdown.types';
 import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@fluentui/test-utilities';
+import type { ReactTestRenderer } from 'react-test-renderer';
+import type { IDropdownOption, IDropdown } from './Dropdown.types';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
@@ -144,6 +145,18 @@ describe('Dropdown', () => {
       const titleElement = wrapper.find('.ms-Dropdown-title');
 
       expect(titleElement.text()).toEqual('1');
+    });
+
+    it('Renders live region attributes only when focused', () => {
+      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
+      let titleElement = wrapper.find('.ms-Dropdown-title');
+
+      expect(titleElement.props()['aria-live']).toBeUndefined();
+
+      wrapper.find('.ms-Dropdown').simulate('focus');
+      titleElement = wrapper.find('.ms-Dropdown-title');
+
+      expect(titleElement.props()['aria-live']).toEqual('polite');
     });
 
     it('does not change the selected item in when defaultSelectedKey changes', () => {

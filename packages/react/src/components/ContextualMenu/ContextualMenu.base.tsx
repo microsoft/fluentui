@@ -1,16 +1,7 @@
 import * as React from 'react';
-import {
-  IContextualMenuProps,
-  IContextualMenuItem,
-  ContextualMenuItemType,
-  IContextualMenuListProps,
-  IContextualMenuStyleProps,
-  IContextualMenuStyles,
-  IContextualMenuItemRenderProps,
-} from './ContextualMenu.types';
+import { ContextualMenuItemType } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
-import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
+import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '../../FocusZone';
 import {
   divProperties,
   getNativeProps,
@@ -25,11 +16,8 @@ import {
   getId,
   getLastFocusable,
   getRTL,
-  IRenderFunction,
-  Point,
   KeyCodes,
   shouldWrapFocus,
-  IStyleFunctionOrObject,
   isIOS,
   isMac,
   initializeComponentRef,
@@ -38,20 +26,33 @@ import {
   getDocument,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
-import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
+import { Callout } from '../../Callout';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import {
   ContextualMenuSplitButton,
   ContextualMenuButton,
   ContextualMenuAnchor,
 } from './ContextualMenuItemWrapper/index';
-import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
-import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
 import { useTarget, usePrevious } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
-import { IPopupRestoreFocusParams } from '../../Popup';
 import { MenuContext } from '../../utilities/MenuContext/index';
+import type {
+  IContextualMenuProps,
+  IContextualMenuItem,
+  IContextualMenuListProps,
+  IContextualMenuStyleProps,
+  IContextualMenuStyles,
+  IContextualMenuItemRenderProps,
+} from './ContextualMenu.types';
+import type { IFocusZoneProps } from '../../FocusZone';
+import type { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
+import type { IRenderFunction, Point, IStyleFunctionOrObject } from '../../Utilities';
+import type { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import type { IPopupRestoreFocusParams } from '../../Popup';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -327,10 +328,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    if (this.props.onMenuDismissed) {
-      this.props.onMenuDismissed(this.props);
-    }
-
     this._events.dispose();
     this._async.dispose();
     this._mounted = false;

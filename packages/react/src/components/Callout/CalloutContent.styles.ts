@@ -1,5 +1,6 @@
-import { HighContrastSelector, IRawStyle, focusClear, getGlobalClassNames, ZIndexes } from '../../Styling';
-import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
+import { HighContrastSelector, focusClear, getGlobalClassNames, ZIndexes } from '../../Styling';
+import type { IRawStyle } from '../../Styling';
+import type { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 
 function getBeakStyle(beakWidth?: number): IRawStyle {
   return {

@@ -1,8 +1,141 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Sep 2021 07:35:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.49)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.48..@fluentui/react-utilities_v9.0.0-alpha.49)
+
+### Changes
+
+- Refactoring out functionality that applies trigger props to children as a utility. ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+- Removes ExtractRef Typings ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.48)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.47..@fluentui/react-utilities_v9.0.0-alpha.48)
+
+### Changes
+
+- Fix IntrinsicShorthandProps used in the root slot with multiple possible `as` values ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.47)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.46..@fluentui/react-utilities_v9.0.0-alpha.47)
+
+### Changes
+
+- Adds ExtractRef typings to react-utilities to extract reference from props ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.46)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.45..@fluentui/react-utilities_v9.0.0-alpha.46)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.45)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.44..@fluentui/react-utilities_v9.0.0-alpha.45)
+
+### Changes
+
+- Add IntrinsicShorthandProps for slots that use intrinsic elements like div or span ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.44)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.43..@fluentui/react-utilities_v9.0.0-alpha.44)
+
+### Changes
+
+- feat(react-utilities): use `event.key` for keyboard events ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.43)
+
+Wed, 01 Sep 2021 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.42..@fluentui/react-utilities_v9.0.0-alpha.43)
+
+### Changes
+
+- Update implementation to handle 'root' as a slot ([PR #19483](https://github.com/microsoft/fluentui/pull/19483) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.42)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.41..@fluentui/react-utilities_v9.0.0-alpha.42)
+
+### Changes
+
+- fix(useOnClickOutside): Treat right click/context menu as outside click ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.41)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.40..@fluentui/react-utilities_v9.0.0-alpha.41)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19471](https://github.com/microsoft/fluentui/pull/19471) by dzearing@hotmail.com)
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.40)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.39..@fluentui/react-utilities_v9.0.0-alpha.40)
+
+### Changes
+
+- Update .npmignore ([PR #19441](https://github.com/microsoft/fluentui/pull/19441) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.39)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.38..@fluentui/react-utilities_v9.0.0-alpha.39)
+
+### Changes
+
+- Slot null rendering refactor ([PR #19273](https://github.com/microsoft/fluentui/pull/19273) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.38)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.37..@fluentui/react-utilities_v9.0.0-alpha.38)
+
+### Changes
+
+- Deletes descendants API ([PR #19189](https://github.com/microsoft/fluentui/pull/19189) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.37)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.36..@fluentui/react-utilities_v9.0.0-alpha.37)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.3.4 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+### Changes
+
+- Copying useMount and useUnmount hooks into the react-utilities package. ([PR #19196](https://github.com/microsoft/fluentui/pull/19196) by czearing@outlook.com)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.36)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.35..@fluentui/react-utilities_v9.0.0-alpha.36)
+
+### Changes
+
+- feat(useOnClickOutside): Handle clicks into an iframe ([PR #19204](https://github.com/microsoft/fluentui/pull/19204) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.35)
 

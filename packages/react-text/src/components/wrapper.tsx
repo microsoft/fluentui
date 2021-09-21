@@ -1,17 +1,22 @@
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-make-styles';
-import { renderText, TextProps, useText, useTextStyles } from '../Text';
+import { renderText, useText, useTextStyles } from '../Text';
+import type { TextProps } from '../Text';
 
-export interface Props extends Omit<TextProps, 'font' | 'size'> {}
+export type TextWrapperProps = Omit<TextProps, 'font' | 'size'>;
 
-export function createWrapper(options: { displayName: string; useStyles: () => Record<'root', string> }) {
+export function createWrapper(options: {
+  displayName: string;
+  useStyles: () => Record<'root', string>;
+}): React.FunctionComponent<TextWrapperProps> {
   const { useStyles, displayName } = options;
-  const Wrapper = React.forwardRef<HTMLElement, Props>((props, ref) => {
+  const Wrapper = React.forwardRef<HTMLElement, TextWrapperProps>((props, ref) => {
     const styles = useStyles();
-    const state = useText(props, ref);
+    const state = useText(props as TextProps, ref);
+
     useTextStyles(state);
 
-    state.className = mergeClasses(state.className, styles.root, props.className);
+    state.root.className = mergeClasses(state.root.className, styles.root, props.className);
 
     return renderText(state);
   });

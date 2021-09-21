@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
-import { InputProps, InputSlots, InputState } from './Input.types';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import type { InputProps, InputSlots, InputState } from './Input.types';
 
 /**
  * Array of all shorthand properties listed as the keys of InputSlots
@@ -12,6 +12,7 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
   'bookendAfter',
   'insideStart',
   'insideEnd',
+  'root',
 ];
 
 /**
@@ -24,18 +25,30 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
  * @param ref - reference to root HTMLInputElement of Input
  */
 export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputState => {
+  const { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart, size, appearance, inline } = props;
+
   return {
-    ...props,
+    size,
+    appearance,
+    inline,
     components: {
+      root: 'span',
       input: 'input',
+      inputWrapper: 'span',
+      bookendBefore: 'span',
+      bookendAfter: 'span',
+      insideStart: 'span',
+      insideEnd: 'span',
     },
-    // temporarily must add fake children to prevent getSlots from substituting nullRender
-    input: resolveShorthand(props.input, { children: '😭' }),
-    inputWrapper: resolveShorthand(props.inputWrapper, { children: '😭' }),
-    bookendAfter: resolveShorthand(props.bookendAfter),
-    bookendBefore: resolveShorthand(props.bookendBefore),
-    insideEnd: resolveShorthand(props.insideEnd),
-    insideStart: resolveShorthand(props.insideStart),
-    ref,
+    input: resolveShorthand(input, { required: true }),
+    inputWrapper: resolveShorthand(inputWrapper, { required: true }),
+    bookendAfter: resolveShorthand(bookendAfter),
+    bookendBefore: resolveShorthand(bookendBefore),
+    insideEnd: resolveShorthand(insideEnd),
+    insideStart: resolveShorthand(insideStart),
+    root: getNativeElementProps('span', {
+      ref,
+      ...props,
+    }),
   };
 };
