@@ -15,6 +15,7 @@ variables:
 
 pool: 'Self Host Ubuntu'
 
+# TODO set schedule once the pipeline is validated after a few manual releases
 # schedules:
 #   # minute 0, hour 7 in UTC (11pm in UTC-8), Every monday
 #   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
