@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding switch role to the hidden input element.",
+  "packageName": "@fluentui/react-switch",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch"
+}
