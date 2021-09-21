@@ -28,6 +28,7 @@ import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
 import { ChatMessageHeader } from './ChatMessageHeader';
 import { ChatMessageReadStatus } from './ChatMessageReadStatus';
+import { ChatBubbleTheme } from './chatBubbleThemeContext';
 
 export interface ChatSlotClassNames {
   item: string;
@@ -42,6 +43,9 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Shorthand array of the items inside the chat. */
   items?: ShorthandCollection<ChatItemProps>;
+
+  /** A message can have a different set of background colors. */
+  bubbleTheme?: ChatBubbleTheme;
 }
 
 export type ChatStylesProps = Pick<ChatProps, 'density'>;

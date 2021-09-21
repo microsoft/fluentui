@@ -26,6 +26,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix compact `ChatMessage` focus highlight @Hirse ([#19720](https://github.com/microsoft/fluentui/pull/19720))
 - Set active item of `MenuItem` with submenu on focus @chassunc ([#19820](https://github.com/microsoft/fluentui/pull/19820))
 - Fix `Popup` to have box-shadow when `autoSize` prop is true @yuanboxue-amber ([#19817](https://github.com/microsoft/fluentui/pull/19817))
+- Fix missing handled props for `Chat` components ([#19876](https://github.com/microsoft/fluentui/pull/19876))
 
 ### Documentation
 - Add Chat Playground @Hirse ([#19702](https://github.com/microsoft/fluentui/pull/19702))
