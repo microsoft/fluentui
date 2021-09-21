@@ -101,7 +101,8 @@ const resolveAvatarShorthandPropsCompat = (props: AvatarProps) => {
   }
 
   if (typeof badge === 'string') {
-    badge = { as: PresenceBadge, status: badge };
+    // TODO separate as an components https://github.com/microsoft/fluentui/pull/19763
+    badge = { as: (PresenceBadge as unknown) as 'div', status: badge };
   }
 
   if (image !== props.image || badge !== props.badge) {
