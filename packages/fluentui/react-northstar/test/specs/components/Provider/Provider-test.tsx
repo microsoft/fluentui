@@ -216,7 +216,7 @@ describe('Provider', () => {
       const theme: ThemeInput = {
         fontFaces: [
           {
-            name: 'Segoe UI',
+            name: 'Segoe UI Web',
             paths: ['public/fonts/segoe-ui-regular.woff2'],
             props: { fontWeight: 400 },
           },
