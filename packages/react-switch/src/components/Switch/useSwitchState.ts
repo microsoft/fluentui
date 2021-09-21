@@ -53,7 +53,7 @@ export const useSwitchState = (state: SwitchState) => {
     initialState: false,
   });
   const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(true);
-  const [renderedPosition, setRenderedPosition] = React.useState<number>(currentValue === true ? 100 : 0);
+  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(currentValue === true ? 100 : 0);
 
   const setChecked = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>, incomingValue: boolean) => {
@@ -61,7 +61,7 @@ export const useSwitchState = (state: SwitchState) => {
       onChange?.(ev, { checked: incomingValue });
       internalState.current.internalValue = incomingValue;
       setCurrentValue(incomingValue);
-      setRenderedPosition(incomingValue ? 100 : 0);
+      setRenderedPosition(undefined);
     },
     [onChange, setCurrentValue],
   );
@@ -113,7 +113,6 @@ export const useSwitchState = (state: SwitchState) => {
         const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
 
         showThumbAnimation();
-        setRenderedPosition(roundedPosition);
         if (roundedPosition === 100) {
           setChecked(ev, true);
         } else if (roundedPosition === 0) {
@@ -146,13 +145,15 @@ export const useSwitchState = (state: SwitchState) => {
     [onPointerMove, onPointerUp, showThumbAnimation],
   );
 
+  const currentPosition = renderedPosition !== undefined ? renderedPosition : currentValue ? 100 : 0;
+
   const rootStyles = {
-    '--switch-checked-opacity': renderedPosition / 100,
-    '--switch-unchecked-opacity': (100 - renderedPosition) / 100,
+    '--switch-checked-opacity': currentPosition / 100,
+    '--switch-unchecked-opacity': (100 - currentPosition) / 100,
   } as React.CSSProperties;
 
   const thumbWrapperStyles = {
-    transform: `translate(${dir === 'rtl' ? -renderedPosition : renderedPosition}%)`,
+    transform: `translate(${dir === 'rtl' ? -currentPosition : currentPosition}%)`,
     transition: thumbAnimation
       ? 'transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), opacity .1s cubic-bezier(0.33, 0.0, 0.67, 1)'
       : 'none',
