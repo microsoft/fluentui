@@ -20,8 +20,8 @@ import type { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from 
 import type { IRenderFunction } from '@fluentui/utilities';
 import type { ICalendar } from '../../Calendar';
 import type { ITextField, ITextFieldProps } from '../../TextField';
-import { Icon } from '../Icon';
-import { Label } from '../Label/Label';
+import { Icon } from '../../Icon';
+import { Label } from '../../Label';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
