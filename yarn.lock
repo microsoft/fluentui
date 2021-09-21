@@ -7219,10 +7219,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@2.12.1:
-  version "2.12.1"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.12.1.tgz#ca65de408f915269fd247f217c3a23558fe13da2"
-  integrity sha512-i5TJq8QJNvV4wn2B2iyI176KnvwicG78Ndw8pbFtf4UmevHuydoW/TjmInQJcJ9Wv3WwO4imk++iF6VRfOd/xQ==
+beachball@2.15.0:
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.15.0.tgz#7549e8077a56d2e7a3ca7c58cc5e153227223113"
+  integrity sha512-vSkN3O5Lq6Uw53kJj7e/GtC8zqeNndIpCKy1G+4M7e1UCk1QSIIHc4msIpCuE+g6V+XCGZETfPY/4ticOkLLxw==
   dependencies:
     cosmiconfig "^6.0.0"
     execa "^4.0.3"
@@ -24236,9 +24236,9 @@ tmp@^0.0.33:
     os-tmpdir "~1.0.2"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-absolute-glob@^2.0.0:
   version "2.0.2"

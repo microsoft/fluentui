@@ -2,9 +2,10 @@
   "extends": "../../tsconfig.base.json",
   "include": ["src"],
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES2019",
+    "isolatedModules": true,
     "module": "CommonJS",
-    "lib": ["es2015", "dom"],
+    "lib": ["ES2019", "dom"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
@@ -12,7 +13,12 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "@testing-library/jest-dom"],
-    "isolatedModules": true
+    "types": [
+      "jest",
+      "custom-global",
+      "inline-style-expand-shorthand",
+      "@testing-library/jest-dom",
+      "storybook__addons"
+    ]
   }
 }

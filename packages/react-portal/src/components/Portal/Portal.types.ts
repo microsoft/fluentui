@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface PortalCommons {
+export type PortalCommons = {
   /**
    * React children
    */
@@ -10,11 +10,11 @@ export interface PortalCommons {
    * @defaultValue a new element on document.body without any styling
    */
   mountNode: HTMLDivElement | undefined;
-}
+};
 
-export interface PortalProps extends Partial<PortalCommons> {}
+export type PortalProps = Partial<PortalCommons>;
 
-export interface PortalState extends PortalCommons {
+export type PortalState = PortalCommons & {
   /** Indicates if a Portal should be rendered. */
   shouldRender: boolean;
 
@@ -22,4 +22,4 @@ export interface PortalState extends PortalCommons {
    * Ref to the root span element as virtual parent
    */
   virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
-}
+};
