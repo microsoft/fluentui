@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding custom marks and mark labels.",
-  "packageName": "@fluentui/react-slider",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}
