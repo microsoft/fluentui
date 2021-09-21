@@ -14,7 +14,9 @@ const { readConfig } = require('../read-config');
  */
 function isConvergedPackage(packagePathOrJson) {
   const packageJson =
-    typeof packagePathOrJson === 'string' ? readConfig('package.json', packagePathOrJson) : packagePathOrJson;
+    !packagePathOrJson || typeof packagePathOrJson === 'string'
+      ? readConfig('package.json', /** @type {string|undefined} */ (packagePathOrJson))
+      : packagePathOrJson;
   return !!packageJson && semver.major(packageJson.version) >= 9;
 }
 
