@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unnecessary docCategory tags",
-  "packageName": "@fluentui/react-tabs",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,6 +1,7 @@
 // @ts-check
 const { spawnSync } = require('child_process');
 const getAllPackageInfo = require('./getAllPackageInfo');
+const isConvergedPackage = require('./isConvergedPackage');
 const lageBin = require.resolve('lage/bin/lage.js');
 
 const argv = process.argv.slice(2);
@@ -34,7 +35,7 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
     }
 
     if (process.env.RELEASE_VNEXT) {
-      return packageJson.private !== true && packageJson.version.startsWith('9.');
+      return packageJson.private !== true && isConvergedPackage(packageJson);
     }
 
     return packageJson.private !== true || websitePackages.includes(packageJson.name);

@@ -1,4 +1,4 @@
-import { AllPackageInfo, getAllPackageInfo } from '../monorepo/index';
+import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 
 /**
  * Reads package info from the monorepo and generates the scopes for beachball bump and release.
@@ -23,7 +23,7 @@ export function getScopes(): string[] {
 function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
   return Object.values(allPackageInfo)
     .map(packageInfo => {
-      if (packageInfo.packageJson.version.startsWith('9.')) {
+      if (isConvergedPackage(packageInfo.packageJson)) {
         return packageInfo.packagePath;
       }
 
