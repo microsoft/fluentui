@@ -1,6 +1,6 @@
 # RFC: Asynchronously import hidden components
 
-Driver: @czearing
+Driver: @czearing, @ecraig12345
 
 (Background provided by @dzearing)
 
@@ -8,13 +8,13 @@ Driver: @czearing
 
 When components such as `Tooltip` and `Menu` are not present in the DOM, expensive logic such as popper should be asynchronously imported to avoid bundle size related issues.
 
-In experimental trials of using `React.lazy` it cut the `Tooltip` bundle size from **46.054 kB** to **9.21 kB**.
+In experimental trials of using `React.lazy` it cut the `Tooltip` bundle size from **15.66 kB** to **3.77 kB** (both with gzip).
 
 Before:
-![](https://i.imgur.com/hBbg3OE.png)
+![46.05kB minified, 15.66kB gzip](https://i.imgur.com/hBbg3OE.png)
 
 After:
-![](https://i.imgur.com/LrXqGcp.png)
+![9.21kB minified, 3.77kB gzip](https://i.imgur.com/LrXqGcp.png)
 
 This will help address the bundle size concerns of using these controls.
 
@@ -24,13 +24,17 @@ During v9, async imports were discussed but decided on being pushed to later due
 
 ## Previously discussed concerns
 
-While being investigated the prominent concerns that were mentioned had to due with:
+While being investigated the prominent concerns that were mentioned had to do with:
 
 1. We need to look at other partners and how they are splitting their code.
 2. Some code splitting tools have issues with server side rendering.
 3. How/can we support sync and async?
 
-[Pull Request Discussion](https://github.com/microsoft/fluentui/pull/19609)
+See the [pull request discussion](https://github.com/microsoft/fluentui/pull/19609) for more details about all of these concerns.
+
+---
+
+The remainder of this document is the original proposal, not incorporating various concerns that came up in the PR discussion.
 
 ## Background
 
