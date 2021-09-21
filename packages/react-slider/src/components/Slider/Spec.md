@@ -1,5 +1,7 @@
 # @fluentui/react-slider Draft Component Spec
 
+# Slider
+
 ## Epic Issue
 
 https://github.com/microsoft/fluentui/issues/18886
@@ -196,20 +198,17 @@ _Explain how the component will behave in use, including:_
     | `Home` | Sets value to the `min` prop. |
     | `End` | Sets value to the `max` prop. |
   - _Cursor_
-    `mousedown` sets the current value immediately.
-    `mousemove` is attached to the window element on `mousedown` and watches for move events. Value is updated accordingly.
-    `mouseup` removes the `mousemove` event.
+    `pointerdown` sets the current value immediately.
+    `pointermove` is attached to the window element on `pointerdown` and watches for move events. Value is updated accordingly.
+    `pointerup` removes the `mousemove` event.
   - _Touch_
     Handles the same events as the _Cursor_
   - _Screen readers_
     - **`root`:**
       - renders `as` div
       - handles native props expected from the element type in `as`
-    - **`thumb`:**
-      - `tabindex = 0`
-      - `role = "slider"`
-      - `aria-valuemin = min` and `aria-valuemax = max`
-      - `aria-valuenow` represents the current value.
+    - **`hidden input element`:**
+      - Handles aria for the Slider.
 
 ## Accessibility
 
