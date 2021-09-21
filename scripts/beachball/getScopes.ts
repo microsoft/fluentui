@@ -5,7 +5,7 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monore
  * Differentiates between vNext and v8 releases.
  *
  * vNext scope includes all packages that have version > 8.x and shared internal packages that need versions bumped.
- * @returns Appropriate scoped packages for beachball
+ * @returns {string[]} Array of package paths for beachball scope
  */
 export function getScopes(): string[] {
   const allPackageInfo = getAllPackageInfo();
