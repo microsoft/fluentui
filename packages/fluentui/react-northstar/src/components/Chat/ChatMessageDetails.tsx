@@ -4,6 +4,7 @@ import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 import { ChatDensity } from './chatDensityContext';
+import { ChatBubbleTheme } from './chatBubbleThemeContext';
 
 export interface ChatMessageDetailsOwnProps {
   /** Controls messages's relation to other chat messages. */
@@ -13,6 +14,8 @@ export interface ChatMessageDetailsOwnProps {
   /** Whether the message displays reactions in the header */
   hasHeaderReactionGroup?: boolean;
   mine?: boolean;
+  /** A message can have a different set of background colors. */
+  bubbleTheme?: ChatBubbleTheme;
 }
 export interface ChatMessageDetailsProps extends ChatMessageDetailsOwnProps, BoxProps {}
 
@@ -33,7 +36,7 @@ export const ChatMessageDetails = compose<
 >(Box, {
   className: chatMessageDetailsClassName,
   displayName: 'ChatMessageDetails',
-  handledProps: ['attached', 'density', 'hasHeaderReactionGroup', 'mine'],
+  handledProps: ['attached', 'density', 'hasHeaderReactionGroup', 'mine', 'bubbleTheme'],
   mapPropsToStylesProps: ({ attached, density, hasHeaderReactionGroup, mine }) => ({
     attached,
     density,
@@ -50,4 +53,5 @@ ChatMessageDetails.propTypes = {
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   hasHeaderReactionGroup: PropTypes.bool,
   mine: PropTypes.bool,
+  bubbleTheme: PropTypes.oneOf<ChatBubbleTheme>(['classic', 'bold']),
 };

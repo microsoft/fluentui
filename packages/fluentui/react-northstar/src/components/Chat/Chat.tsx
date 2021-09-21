@@ -123,6 +123,7 @@ Chat.propTypes = {
   }),
   items: PropTypes.arrayOf(customPropTypes.itemShorthand),
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
+  bubbleTheme: PropTypes.oneOf<ChatBubbleTheme>(['classic', 'bold']),
 };
 Chat.handledProps = Object.keys(Chat.propTypes) as any;
 
