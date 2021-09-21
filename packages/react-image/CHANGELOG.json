@@ -2,6 +2,21 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Tue, 21 Sep 2021 11:58:40 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.81",
+      "version": "9.0.0-alpha.81",
+      "comments": {
+        "none": [
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-image",
+            "comment": "Separating stories into own files",
+            "commit": "56d226034d11d62a995e4910eb80ae43ee0ddf03"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Sep 2021 07:42:34 GMT",
       "tag": "@fluentui/react-image_v9.0.0-alpha.81",
       "version": "9.0.0-alpha.81",
