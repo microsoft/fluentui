@@ -1,7 +1,7 @@
 {
-  "type": "none",
+  "type": "prerelease",
   "comment": "Cleaning up the Slider utils folder.",
   "packageName": "@fluentui/react-slider",
   "email": "czearing@outlook.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
