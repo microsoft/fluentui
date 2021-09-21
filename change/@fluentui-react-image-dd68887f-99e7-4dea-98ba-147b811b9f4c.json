@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Removed conditional adding of aria-hidden",
+  "comment": "Updating to types over interfaces",
   "packageName": "@fluentui/react-image",
-  "email": "tkrasniqi@microsoft.com",
+  "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
 }
