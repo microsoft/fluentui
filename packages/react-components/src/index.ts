@@ -17,3 +17,4 @@ export * from '@fluentui/react-menu';
 export * from '@fluentui/react-popover';
 export * from '@fluentui/react-portal';
 export * from '@fluentui/react-tooltip';
+export * from '@fluentui/react-text';
