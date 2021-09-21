@@ -71,7 +71,7 @@ export type IntrinsicShorthandProps<
 export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
 
 /**
- * Helper type for inferring the type of the as prop from a Props interface.
+ * Helper type for inferring the type of the as prop from a Props type.
  *
  * For example:
  * ```
@@ -115,11 +115,11 @@ export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
 
 /////////////////////////// COMPAT /////////////////////////////////////////////////////////////////////
 
-export interface ComponentPropsCompat {
+export type ComponentPropsCompat = {
   as?: React.ElementType;
   className?: string;
   children?: React.ReactNode;
-}
+};
 
 // Shorthand types
 
@@ -142,9 +142,9 @@ export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}>
     children?: TProps['children'] | ShorthandRenderFunctionCompat<TProps>;
   };
 
-export interface BaseSlotsCompat {
+export type BaseSlotsCompat = {
   root: React.ElementType;
-}
+};
 
 export type SlotPropsCompat<
   TSlots extends BaseSlotsCompat,
