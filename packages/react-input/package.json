@@ -28,9 +28,9 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.43",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.44",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.12",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.13",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -44,7 +44,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-alpha.68",
+    "@fluentui/react-make-styles": "9.0.0-alpha.69",
     "@fluentui/react-utilities": "9.0.0-alpha.49",
     "tslib": "^2.1.0"
   },

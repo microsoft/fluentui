@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 07 Sep 2021 07:34:55 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.5.1)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.5.0..@fluentui/react-conformance_v0.5.1)
+
+### Patches
+
+- Updated getCallbackArguments for complex types ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.5.0)
 

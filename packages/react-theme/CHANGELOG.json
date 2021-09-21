@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.23",
+      "version": "9.0.0-alpha.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "comment": "Theme: Updating value of borderRadius global token.",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Sep 2021 07:36:26 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-alpha.22",
       "version": "9.0.0-alpha.22",

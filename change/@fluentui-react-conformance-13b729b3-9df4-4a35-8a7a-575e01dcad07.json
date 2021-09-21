@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated getCallbackArguments for complex types",
-  "packageName": "@fluentui/react-conformance",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.83)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.82..@fluentui/react-badge_v9.0.0-alpha.83)
+
+### Changes
+
+- Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.69 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.23 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.51 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.13 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
 
 ## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.82)
 

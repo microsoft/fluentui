@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Theme: Updating value of borderRadius global token.",
-  "packageName": "@fluentui/react-theme",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

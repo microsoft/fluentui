@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.111](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.111)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.110..@fluentui/react-components_v9.0.0-alpha.111)
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-avatar`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-badge`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-divider`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-image`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-label`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-link`
+  - fix(Link): use `keyboard-keys` package ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by lingfangao@hotmail.com)
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-menu`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-portal`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-slider`
+  - Adding custom marks and mark labels. ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by czearing@outlook.com)
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-theme`
+  - Theme: Updating value of borderRadius global token. ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
 
 ## [9.0.0-alpha.110](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.110)
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/babel-make-styles",
-  "version": "9.0.0-alpha.50",
+  "version": "9.0.0-alpha.51",
   "description": "A Babel plugin that performs build time transforms for @fluentui/make-styles",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-make-styles": "9.0.0-alpha.68",
-    "@fluentui/react-theme": "9.0.0-alpha.22",
+    "@fluentui/react-make-styles": "9.0.0-alpha.69",
+    "@fluentui/react-theme": "9.0.0-alpha.23",
     "@fluentui/scripts": "^1.0.0",
     "babel-plugin-tester": "^10.0.0"
   },
