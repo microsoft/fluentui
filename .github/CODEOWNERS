@@ -133,7 +133,6 @@ packages/react-menu/ @microsoft/teams-prg
 packages/react-slider/ @microsoft/cxe-red
 packages/react-storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-storybook-addon/ @microsoft/cxe-prg
-packages/storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @czearing
 packages/react-tabs/ @microsoft/cxe-red @behowell @khmakoto
 packages/react-text/ @microsoft/cxe-prg
@@ -141,6 +140,7 @@ packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
 packages/react-popover/ @microsoft/teams-prg
 packages/react-portal/ @microsoft/teams-prg
 packages/react-provider/ @microsoft/teams-prg
+packages/storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 
 ## Components
 packages/react @microsoft/cxe-red
