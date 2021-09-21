@@ -1,11 +1,11 @@
-import { BeachballConfig } from 'beachball';
+import { ChangelogGroupOptions } from 'beachball';
 import { AllPackageInfo, getAllPackageInfo } from '../monorepo/index';
 
 /**
  * Generates grouped changelog for vNext
- * @returns Groupped changelog configuration
+ * @returns Grouped changelog configuration
  */
-export function getVNextChangelogGroups(): BeachballConfig['changelog']['groups'][0] {
+export function getVNextChangelogGroups(): ChangelogGroupOptions {
   const allPackageInfo = getAllPackageInfo();
   const vNextPackagePaths = getVNextPackagePaths(allPackageInfo);
 

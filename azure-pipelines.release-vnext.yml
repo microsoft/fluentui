@@ -55,14 +55,13 @@ steps:
     displayName: yarn lint
 
   - script: |
-      yarn beachball publish -b origin/master -n $(npmToken) --access public -y
+      yarn publish:beachball
       git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: Publish changes and bump versions
 
-  # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
-  # failure doesn't need to block anything else
+  # TODO update release notes script for v9
   # - script: |
   #     node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
   #   displayName: 'Update github release notes'

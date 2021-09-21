@@ -1,8 +1,10 @@
 import { AllPackageInfo, getAllPackageInfo } from '../monorepo/index';
 
 /**
- * Reads package info from the monorepo and generates the scopes for beachball bump and release
- * Differentiates between vNext and v8 releases
+ * Reads package info from the monorepo and generates the scopes for beachball bump and release.
+ * Differentiates between vNext and v8 releases.
+ *
+ * vNext scope includes all packages that have version > 8.x and shared internal packages that need versions bumped.
  * @returns Appropriate scoped packages for beachball
  */
 export function getScopes(): string[] {
