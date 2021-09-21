@@ -14,11 +14,11 @@
     },
     "bumpType": {
       "type": "string",
-      "description": "The type of bump to the version number"
+      "description": "Same kinds of bumps permitted by semver https://github.com/npm/node-semver"
     },
     "prereleaseTag": {
       "type": "string",
-      "description": "If bumping prerelease version, the identifier to use"
+      "description": "Prerelease tag e.g. alpha"
     }
   },
   "required": ["bumpType"]

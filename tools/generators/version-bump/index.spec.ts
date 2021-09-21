@@ -9,7 +9,7 @@ import {
 } from '@nrwl/devkit';
 
 import generator from './index';
-import { VersionStringReplaceGeneratorSchema } from './schema';
+import { VersionBumpGeneratorSchema } from './schema';
 
 const noop = () => null;
 
@@ -195,7 +195,7 @@ describe('version-string-replace generator', () => {
 
 function setupDummyPackage(
   tree: Tree,
-  options: Pick<VersionStringReplaceGeneratorSchema, 'name'> &
+  options: Pick<VersionBumpGeneratorSchema, 'name'> &
     Partial<{
       version: string;
       devDependencies: Record<string, string>;

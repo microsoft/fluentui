@@ -1,10 +1,10 @@
 import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nrwl/devkit';
 import * as semver from 'semver';
-import { VersionStringReplaceGeneratorSchema } from './schema';
+import { VersionBumpGeneratorSchema } from './schema';
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';
 
-export default async function (host: Tree, schema: VersionStringReplaceGeneratorSchema) {
+export default async function (host: Tree, schema: VersionBumpGeneratorSchema) {
   const userLog: UserLog = [];
   const validatedSchema = validateSchema(host, schema);
 
@@ -149,11 +149,11 @@ function normalizeOptions(host: Tree, options: ValidatedSchema) {
 
 export const validbumpTypes = ['prerelease', 'major', 'premajor', 'minor', 'preminor', 'patch', 'prepatch'] as const;
 
-interface ValidatedSchema extends Required<VersionStringReplaceGeneratorSchema> {
+interface ValidatedSchema extends Required<VersionBumpGeneratorSchema> {
   bumpType: typeof validbumpTypes[number];
 }
 
-function validateSchema(tree: Tree, schema: VersionStringReplaceGeneratorSchema) {
+function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
   if ((schema.name && schema.all) || (!schema.name && !schema.all)) {
     throw new Error('--name and --all are mutually exclusive');
   }
