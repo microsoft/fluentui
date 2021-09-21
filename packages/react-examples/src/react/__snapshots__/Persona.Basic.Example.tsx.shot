@@ -69,7 +69,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         }
   >
     <input
-      aria-checked="true"
       checked={true}
       className=
 

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import { MenuListContextValue } from '../../contexts/menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
-export interface MenuListCommons {
+export type MenuListCommons = {
   /**
    * Callback when checked items change for value with a name
    *
@@ -39,35 +39,38 @@ export interface MenuListCommons {
    * States that menu items can contain selectable items and reserve slots for item alignment
    */
   hasCheckmarks?: boolean;
-}
-
-export type MenuListSlots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 };
 
-export interface MenuListProps extends ComponentProps<MenuListSlots>, Partial<MenuListCommons> {}
+export type MenuListSlots = {
+  root: IntrinsicShorthandProps<'div'>;
+};
 
-export interface MenuListState extends ComponentState<MenuListSlots>, MenuListCommons {
-  /**
-   * Callback to set focus on the next menu item by first character
-   */
-  setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
+export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;
 
-  /*
-   * Toggles the state of a checkbox item
-   */
-  toggleCheckbox: SelectableHandler;
+export type MenuListState = ComponentState<MenuListSlots> &
+  MenuListCommons & {
+    /**
+     * Callback to set focus on the next menu item by first character
+     */
+    setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
 
-  /**
-   * Selects a radio item, will de-select the currently selected ratio item
-   */
-  selectRadio: SelectableHandler;
-}
+    /*
+     * Toggles the state of a checkbox item
+     */
+    toggleCheckbox: SelectableHandler;
 
-export interface MenuListContextValues {
+    /**
+     * Selects a radio item, will de-select the currently selected ratio item
+     */
+    selectRadio: SelectableHandler;
+  };
+
+export type MenuListContextValues = {
   menuList: MenuListContextValue;
-}
+};
 
-export interface UninitializedMenuListState
-  extends Omit<MenuListState, 'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'>,
-    Partial<Pick<MenuListState, 'checkedValues'>> {}
+export type UninitializedMenuListState = Omit<
+  MenuListState,
+  'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'
+> &
+  Partial<Pick<MenuListState, 'checkedValues'>>;

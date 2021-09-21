@@ -1,8 +1,98 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.38)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.37..@fluentui/react-checkbox_v9.0.0-alpha.38)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.69 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-label to v9.0.0-alpha.42 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.63 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.13 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.37)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.36..@fluentui/react-checkbox_v9.0.0-alpha.37)
+
+### Changes
+
+- Bump @fluentui/react-checkbox to v9.0.0-alpha.37 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.36)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.35..@fluentui/react-checkbox_v9.0.0-alpha.36)
+
+### Changes
+
+- Bump @fluentui/react-checkbox to v9.0.0-alpha.36 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.35)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.34..@fluentui/react-checkbox_v9.0.0-alpha.35)
+
+### Changes
+
+- Bump @fluentui/react-checkbox to v9.0.0-alpha.35 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.34)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.33..@fluentui/react-checkbox_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/react-checkbox to v9.0.0-alpha.34 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.33)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.32..@fluentui/react-checkbox_v9.0.0-alpha.33)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/react-checkbox to v9.0.0-alpha.33 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.32)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.31..@fluentui/react-checkbox_v9.0.0-alpha.32)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.45 ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.31)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.30..@fluentui/react-checkbox_v9.0.0-alpha.31)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.44 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.30)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.29..@fluentui/react-checkbox_v9.0.0-alpha.30)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.5 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.0.0-alpha.34 ([PR #19065](https://github.com/microsoft/fluentui/pull/19065) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.29)
 

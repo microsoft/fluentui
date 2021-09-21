@@ -2,6 +2,215 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react_v8.34.4",
+      "version": "8.34.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.2.3",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react_v8.34.3",
+      "version": "8.34.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "comment": "Panel: isFooterAtBottom prop now working as expected",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react to v8.34.3"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react_v8.34.2",
+      "version": "8.34.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "Delay calculating viewport on mount",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/react_v8.34.1",
+      "version": "8.34.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmitry@grechka.family",
+            "package": "@fluentui/react",
+            "comment": "setting the defaultRenderer argument for the onRenderIcon of ContextualMenuItem",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Sep 2021 07:37:03 GMT",
+      "tag": "@fluentui/react_v8.34.0",
+      "version": "8.34.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "srangam@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "Backspace does not work in BaseExtendedpicker in projection popout windows",
+            "commit": "39625b321acf26a327021e5d904f6f91dbf9a9e2"
+          }
+        ],
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "feat(Combobox): add select all functionality",
+            "commit": "39625b321acf26a327021e5d904f6f91dbf9a9e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react_v8.33.0",
+      "version": "8.33.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Dropdown to only add ARIA live region when focused",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "86c831d73355084919a5ff0495895a49cfe6eaa7",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Customize search for more icon for Suggestions",
+            "author": "tschao@microsoft.com",
+            "commit": "da0edb6f63c6209ba2d608b45d1c9d8ac219cb50",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react_v8.32.0",
+      "version": "8.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exposed an optional removeButtonIconProps prop in PeoplePicker, Suggestions and TagPicker. This change is backward compatible.",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react_v8.31.0",
+      "version": "8.31.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set active descendant for no results found",
+            "author": "gcox@microsoft.com",
+            "commit": "eb85601d894b5be70c7ba5ea162547022d96b54c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Put layer mount events after DOM updated.",
+            "author": "gcox@microsoft.com",
+            "commit": "ea831f5695e395293b5e8416d1fb961ba5a0079e",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "fix selected semantics and scroll-to-view on Combobox, remove select-on-hover behavior, remove unneeded aria-checked on checkbox",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react_v8.30.4",
+      "version": "8.30.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "disable 'consistent-callback-args' conformance test",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react_v8.30.4",
+      "version": "8.30.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated to flexbox the document card preview items",
+            "author": "gcox@microsoft.com",
+            "commit": "b2d5440a8434649f6a2a11b12b18557c606a70cd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react_v8.30.3",
+      "version": "8.30.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Sep 2021 07:39:56 GMT",
       "tag": "@fluentui/react_v8.30.2",
       "version": "8.30.2",

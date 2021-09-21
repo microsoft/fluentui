@@ -1,8 +1,64 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Sep 2021 07:35:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.2)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.1..@fluentui/web-components_v1.5.2)
+
+### Patches
+
+- fix slider thumb positioning math ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by chhol@microsoft.com)
+- implement caching mechanism for PaletteRGB.closestIndexOf ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by nicholasrice@users.noreply.github.com)
+
+## [1.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.1)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.0..@fluentui/web-components_v1.5.1)
+
+### Patches
+
+- add toolbar as new web component ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.0)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.2..@fluentui/web-components_v1.5.0)
+
+### Minor changes
+
+- implement base class for components which extend beyond foundation ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by chhol@microsoft.com)
+
+## [1.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.2)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.1..@fluentui/web-components_v1.4.2)
+
+### Patches
+
+- fix tab panel display ([PR #19731](https://github.com/microsoft/fluentui/pull/19731) by corylaviska@microsoft.com)
+- Updated the default fill color to neutral layer 1 ([PR #19726](https://github.com/microsoft/fluentui/pull/19726) by 47367562+bheston@users.noreply.github.com)
+
+## [1.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.1)
+
+Fri, 03 Sep 2021 00:13:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.0..@fluentui/web-components_v1.4.1)
+
+### Patches
+
+- patch: apply fast version updates ([PR #19636](https://github.com/microsoft/fluentui/pull/19636) by jes@microsoft.com)
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.0)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.8..@fluentui/web-components_v1.4.0)
+
+### Minor changes
+
+- Increased contrast for small input controls ([PR #19608](https://github.com/microsoft/fluentui/pull/19608) by 47367562+bheston@users.noreply.github.com)
 
 ## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.8)
 

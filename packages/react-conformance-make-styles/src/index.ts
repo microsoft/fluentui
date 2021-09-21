@@ -1,8 +1,10 @@
 import { TestObject } from '@fluentui/react-conformance';
-import { classNameWins } from './classNameWins';
+import { OVERRIDES_WIN_TEST_NAME, overridesWin } from './overridesWin';
 
 const makeStylesTests: TestObject = {
-  'classname-wins': classNameWins,
+  [OVERRIDES_WIN_TEST_NAME]: overridesWin,
 };
 
 export default makeStylesTests;
+
+export type { OverridesWinTestOptions } from './overridesWin';

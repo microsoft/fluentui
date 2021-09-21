@@ -1,24 +1,12 @@
 import * as React from 'react';
 import type { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeShape = 'rounded' | 'square' | 'circular';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeColors =
   | 'brand'
   | 'danger'
@@ -29,50 +17,45 @@ export type BadgeColors =
   | 'informative'
   | 'subtle';
 
-/**
- * {@docCategory Badge}
- */
-export interface BadgeProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
-  /**
-   * A Badge can be sized.
-   * @defaultvalue medium
-   */
-  size?: BadgeSize;
+export type BadgeProps = ComponentPropsCompat &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * A Badge can be sized.
+     * @defaultvalue medium
+     */
+    size?: BadgeSize;
 
-  /**
-   * A Badge can be square, circular or rounded
-   * @defaultvalue circular
-   */
-  shape?: BadgeShape;
+    /**
+     * A Badge can be square, circular or rounded
+     * @defaultvalue circular
+     */
+    shape?: BadgeShape;
 
-  /**
-   * A Badge can be filled, outline, ghost, inverted
-   * @defaultvalue filled
-   */
-  appearance?: BadgeAppearance;
+    /**
+     * A Badge can be filled, outline, ghost, inverted
+     * @defaultvalue filled
+     */
+    appearance?: BadgeAppearance;
 
-  /**
-   * A Badge has a preset of colors
-   * @defaultvalue filled
-   */
-  color?: BadgeColors;
+    /**
+     * A Badge has a preset of colors
+     * @defaultvalue filled
+     */
+    color?: BadgeColors;
 
-  /**
-   * Icon slot
-   */
-  icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Icon slot
+     */
+    icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
-  /**
-   * Position for Icon to be rendered
-   * @defaultvalue before
-   */
-  iconPosition?: 'before' | 'after';
-}
+    /**
+     * Position for Icon to be rendered
+     * @defaultvalue before
+     */
+    iconPosition?: 'before' | 'after';
+  };
 
-/**
- * {@docCategory Badge}
- */
-export interface BadgeState extends BadgeProps {
+export type BadgeState = BadgeProps & {
   /**
    * Ref to the root slot
    */
@@ -81,4 +64,4 @@ export interface BadgeState extends BadgeProps {
    * Icon slot when processed by internal state
    */
   icon?: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
-}
+};

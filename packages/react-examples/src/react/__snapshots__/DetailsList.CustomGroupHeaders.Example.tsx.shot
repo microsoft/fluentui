@@ -139,9 +139,7 @@ Array [
       tabIndex={0}
     >
       <span
-        aria-atomic={true}
         aria-invalid={false}
-        aria-live="polite"
         className=
             ms-Dropdown-title
             {

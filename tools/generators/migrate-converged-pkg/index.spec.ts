@@ -190,6 +190,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(tsConfig).toEqual({
         compilerOptions: {
           declaration: true,
+          isolatedModules: true,
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',

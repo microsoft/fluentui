@@ -1,50 +1,60 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-export interface SliderProps
-  extends ComponentPropsCompat,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
+export type SliderSlots = {
+  /**
+   * The root of the Slider.
+   */
+  root: IntrinsicShorthandProps<'div'>;
+
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  rail: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider component.
    */
-  sliderWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  sliderWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
    */
-  trackWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  trackWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The bar showing the current selected area adjacent to the Slider's thumb.
    */
-  track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  track: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper holding the marks and mark labels for the Slider.
    */
-  marksWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  marksWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
-  thumbWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  thumbWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  thumb: IntrinsicShorthandProps<'div'>;
 
   /**
    * The area in which the Slider's rail allows for the thumb to be dragged.
    */
-  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  activeRail: IntrinsicShorthandProps<'div'>;
 
+  /**
+   * The hidden input for the Slider.
+   */
+  input: IntrinsicShorthandProps<'input'>;
+};
+
+export type SliderCommons = {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -71,7 +81,7 @@ export interface SliderProps
 
   /**
    * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
-   * will snap to the closest available value.
+   * will snap to the closest available value. This must be a positive value.
    * @default 1
    */
   step?: number;
@@ -103,8 +113,9 @@ export interface SliderProps
    *
    * - If `true`, marks are visible at each `step`.
    * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
+   * - If `{}[]`, mark is shown at the value location and displays any provided custom labels and marks.
    */
-  marks?: boolean | number[];
+  marks?: boolean | (number | { value: number; label?: string | JSX.Element; mark?: JSX.Element })[];
 
   /**
    * The starting origin point for the Slider.
@@ -130,40 +141,8 @@ export interface SliderProps
    * The Slider's current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
-}
+};
 
-/**
- * Names of the shorthand properties in SliderProps
- */
-export type SliderShorthandProps =
-  | 'rail'
-  | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'marksWrapper'
-  | 'thumbWrapper'
-  | 'thumb'
-  | 'activeRail';
+export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
 
-/**
- * Names of SliderProps that have a default value in useSlider
- */
-export type SliderDefaultedProps =
-  | 'rail'
-  | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'marksWrapper'
-  | 'thumbWrapper'
-  | 'thumb'
-  | 'activeRail';
-
-/**
- * State used in rendering Slider
- */
-export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;

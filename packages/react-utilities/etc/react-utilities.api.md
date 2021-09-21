@@ -11,6 +11,14 @@ import * as React_2 from 'react';
 export const anchorProperties: Record<string, number>;
 
 // @public
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
+
+// @public
+export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
+    as?: As;
+};
+
+// @public
 export const audioProperties: Record<string, number>;
 
 // @public
@@ -43,7 +51,7 @@ export const colProperties: Record<string, number>;
 // @public (undocumented)
 export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
     [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-}, Primary> & Shorthands[Primary];
+}, Primary> & PropsWithoutRef<Shorthands[Primary]>;
 
 // @public (undocumented)
 export interface ComponentPropsCompat {
@@ -58,15 +66,18 @@ export interface ComponentPropsCompat {
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
     components?: {
-        [Key in keyof Shorthands]?: React_2.ElementType<NonNullable<Shorthands[Key]>> | keyof JSX.IntrinsicElements;
+        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & Shorthands;
 
 // @public
 export type ComponentStateCompat<Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandPropsCompat<Props, ShorthandPropNames> = never> = RequiredPropsCompat<ResolvedShorthandPropsCompat<Props, ShorthandPropNames>, DefaultedPropNames>;
 
-// @public (undocumented)
-export type DefaultObjectShorthandProps = ObjectShorthandProps<{}, unknown, keyof JSX.IntrinsicElements>;
+// @public
+export type DefaultObjectShorthandProps = ObjectShorthandProps<{
+    children?: React_2.ReactNode;
+    as?: keyof JSX.IntrinsicElements;
+}>;
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -115,6 +126,20 @@ export const imgProperties: Record<string, number>;
 export const inputProperties: Record<string, number>;
 
 // @public
+export type IntrinsicShorthandProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
+    as?: DefaultAs;
+} & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
+    [As in AlternateAs]: {
+        as: As;
+    } & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[As]>>;
+}[AlternateAs];
+
+// @public
+export type IsSingleton<T extends string> = {
+    [K in T]: Exclude<T, K> extends never ? true : false;
+}[T];
+
+// @public
 export const labelProperties: Record<string, number>;
 
 // @public
@@ -136,11 +161,10 @@ export type MergePropsOptions<TState> = {
 // @public
 export const nullRender: () => null;
 
-// @public (undocumented)
+// @public
 export type ObjectShorthandProps<Props extends {
     children?: React_2.ReactNode;
-} = {}, Ref = unknown, As extends keyof JSX.IntrinsicElements = never> = Props & React_2.RefAttributes<Ref> & {
-    as?: As;
+} = {}> = Props & {
     children?: Props['children'] | ShorthandRenderFunction<Props>;
 };
 
@@ -163,6 +187,9 @@ export const onlyChild: <P>(child: string | number | boolean | {} | React_2.Reac
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
+
+// @public
+export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 // @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
@@ -221,7 +248,7 @@ export type SlotPropsCompat<TSlots extends BaseSlotsCompat, TProps, TRootProps e
 
 // @public (undocumented)
 export type Slots<S extends ObjectShorthandPropsRecord> = {
-    [K in keyof S]-?: S[K] extends ObjectShorthandProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
+    [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As> ? As : S[K] extends ObjectShorthandProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
 };
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
@@ -254,6 +281,9 @@ export const thProperties: Record<string, number>;
 
 // @public
 export const trProperties: Record<string, number>;
+
+// @public
+export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];

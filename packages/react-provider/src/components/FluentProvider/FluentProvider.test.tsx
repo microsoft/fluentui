@@ -2,7 +2,6 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { FluentProvider } from './FluentProvider';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { ProviderContext } from '@fluentui/react-shared-contexts';
 
@@ -11,18 +10,12 @@ describe('FluentProvider', () => {
     disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
+    skipAsPropTests: true,
     helperComponents: [ProviderContext.Provider],
   });
 
-  let wrapper: ReactWrapper | undefined;
-
   afterEach(() => {
     resetIdsForTests();
-
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**
