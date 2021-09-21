@@ -94,7 +94,7 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
 
 - _**Public**_
   ```jsx
-  <RangedSlider defaultValue={{ lowerValue: 0, upperValue: 100 }} />
+  <RangedSlider defaultValue={[0, 100]} />
   ```
 - _**Internal**_
 
