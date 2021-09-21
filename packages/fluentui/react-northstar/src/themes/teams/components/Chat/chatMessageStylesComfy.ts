@@ -10,6 +10,11 @@ import { ChatMessageVariables } from './chatMessageVariables';
 /** ChatMessage styles specific for the default/comfy density. */
 export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
+    marginLeft: p.mine ? v.offset : 0,
+    marginRight: !p.mine ? v.offset : 0,
+    maxWidth: `calc(100% - ${v.offset})`,
+    minWidth: v.offset,
+
     ...(p.mine && {
       [`& .${chatMessageHeaderClassName}`]: {
         display: 'flex',
@@ -24,11 +29,6 @@ export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStyl
 
     [`& .${chatMessageSlotClassNames.comfyBody}`]: {
       borderRadius: v.borderRadius,
-      marginLeft: p.mine ? v.offset : 0,
-      marginRight: !p.mine ? v.offset : 0,
-      maxWidth: `calc(100% - ${v.offset})`,
-      minWidth: v.offset,
-
       position: 'relative',
       paddingLeft: v.padding,
       paddingRight: v.padding,
