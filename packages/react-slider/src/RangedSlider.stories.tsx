@@ -23,6 +23,16 @@ const useStyles = makeStyles({
   },
 });
 
+const CustomLabel = () => (
+  <div
+    style={{
+      width: '20px',
+      height: '20px',
+      background: 'red',
+    }}
+  />
+);
+
 export const BasicRangedSliderExample = (props: RangedSliderProps) => {
   const [rangedSliderValue, setRangedSliderValue] = React.useState<[number, number]>([10, 20]);
   const styles = useStyles();
@@ -48,6 +58,18 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
       <Label>Disabled Range</Label>
       <RangedSlider defaultValue={[20, 90]} disabled />
       <RangedSlider defaultValue={[1, 5]} max={10} marks disabled />
+      <RangedSlider
+        marks={[
+          { value: 1, label: '1' },
+          5,
+          {
+            value: 7,
+            label: <CustomLabel />,
+          },
+          9,
+        ]}
+        max={10}
+      />
     </div>
   );
 };

@@ -339,7 +339,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   // Mark props
   if (marks) {
-    state.marksWrapper.children = renderMarks(markValues);
+    state.marksWrapper.children = renderMarks(markValues, marks);
     state.marksWrapper.style = marksWrapperStyles;
   }
 

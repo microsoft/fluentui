@@ -309,4 +309,96 @@ storiesOf('RangedSlider Converged', module)
     {
       includeRtl: true,
     },
+  )
+  .addStory(
+    'Marks Custom Label Value',
+    () => (
+      <RangedSlider
+        className="test-class"
+        max={10}
+        defaultValue={[3, 9]}
+        marks={[
+          1,
+          {
+            value: 3,
+            label: <LabelComponent />,
+          },
+          { value: 4, label: 'world' },
+          8,
+        ]}
+      />
+    ),
+    {
+      includeRtl: true,
+    },
+  )
+  .addStory(
+    'Marks Custom Label Vertical',
+    () => (
+      <RangedSlider
+        className="test-class"
+        vertical
+        max={10}
+        defaultValue={[3, 9]}
+        marks={[
+          1,
+          {
+            value: 3,
+            label: <LabelComponent />,
+          },
+          { value: 4, label: 'world' },
+          8,
+        ]}
+      />
+    ),
+    {
+      includeRtl: true,
+    },
+  )
+  .addStory(
+    'Custom Marks',
+    () => (
+      <RangedSlider
+        className="test-class"
+        max={10}
+        defaultValue={[3, 9]}
+        marks={[
+          1,
+          {
+            value: 3,
+            label: <LabelComponent />,
+            mark: <MarkComponent />,
+          },
+          { value: 4, label: 'world' },
+          8,
+        ]}
+      />
+    ),
+    {
+      includeRtl: true,
+    },
+  )
+  .addStory(
+    'Custom Marks Vertical',
+    () => (
+      <RangedSlider
+        className="test-class"
+        vertical
+        max={10}
+        defaultValue={[3, 9]}
+        marks={[
+          1,
+          {
+            value: 3,
+            label: <LabelComponent />,
+            mark: <MarkComponent />,
+          },
+          { value: 4, label: 'world' },
+          8,
+        ]}
+      />
+    ),
+    {
+      includeRtl: true,
+    },
   );
