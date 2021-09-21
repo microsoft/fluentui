@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.7)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.6..@fluentui/react-slider_v9.0.0-alpha.7)
+
+### Changes
+
+- Bump @fluentui/react-slider to v9.0.0-alpha.7 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.6)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.5..@fluentui/react-slider_v9.0.0-alpha.6)
+
+### Changes
+
+- Moving Slider logic into utils folder. ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by czearing@outlook.com)
+- Bump @fluentui/react-slider to v9.0.0-alpha.6 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.5)
 

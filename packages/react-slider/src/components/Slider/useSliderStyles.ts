@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
-import { markClassName } from './useSliderState';
+import { markClassName, markLabelClassName } from '../../utils/renderMarks';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';
@@ -213,6 +213,11 @@ const useMarksWrapperStyles = makeStyles({
       background: theme.alias.color.neutral.neutralBackground1,
     },
 
+    [`& .${markLabelClassName}`]: {
+      padding: '2px',
+      fontSize: '12px',
+    },
+
     '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
       opacity: '0',
     },
@@ -229,6 +234,12 @@ const useMarksWrapperStyles = makeStyles({
       flexDirection: 'column',
       transform: 'translateX(50%)',
       alignItems: 'center',
+    },
+
+    [`& .${markLabelClassName}`]: {
+      fontFamily: theme.global.type.fontFamilies.base,
+      color: theme.alias.color.neutral.neutralForeground1,
+      paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
     [`& .${markClassName}`]: {
@@ -252,9 +263,20 @@ const useMarksWrapperStyles = makeStyles({
       maxHeight: '100%',
     },
 
+    [`& .${markLabelClassName}`]: {
+      paddingLeft: 'calc(var(--slider-thumb-size) /2 )',
+      transform: 'scaleY(-1)',
+    },
+
     [`& .${markClassName}`]: {
       height: '1px',
       width: 'var(--slider-mark-size)',
+    },
+  }),
+
+  disabled: theme => ({
+    [`& .${markLabelClassName}`]: {
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   }),
 });
@@ -423,6 +445,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.marksWrapper.className = mergeClasses(
     marksWrapperStyles.marksWrapper,
     state.vertical ? marksWrapperStyles.vertical : marksWrapperStyles.horizontal,
+    state.disabled && marksWrapperStyles.disabled,
     state.marksWrapper.className,
   );
 
