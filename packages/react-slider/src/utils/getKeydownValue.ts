@@ -15,28 +15,23 @@ export const getKeydownValue = (
 ): number => {
   const normalizedKey = getRTLSafeKey(ev.key, dir);
 
-  if (ev.shiftKey) {
-    if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
+  const arrowStep = ev.shiftKey ? keyboardStep * 10 : keyboardStep;
+
+  switch (normalizedKey) {
+    case 'ArrowDown':
+    case 'ArrowLeft':
+      return currentValue - arrowStep;
+    case 'ArrowUp':
+    case 'ArrowRight':
+      return currentValue + arrowStep;
+    case 'PageDown':
       return currentValue - keyboardStep * 10;
-    } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
+    case 'PageUp':
       return currentValue + keyboardStep * 10;
-    }
-  } else if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
-    return currentValue - keyboardStep;
-  } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
-    return currentValue + keyboardStep;
-  } else {
-    switch (normalizedKey) {
-      case 'PageDown':
-        return currentValue - keyboardStep * 10;
-        break;
-      case 'PageUp':
-        return currentValue + keyboardStep * 10;
-      case 'Home':
-        return min;
-      case 'End':
-        return max;
-    }
+    case 'Home':
+      return min;
+    case 'End':
+      return max;
   }
 
   return currentValue;
