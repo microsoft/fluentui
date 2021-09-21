@@ -14,7 +14,7 @@ variables:
 
   - template: .devops/templates/variables.yml
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: BuildTestLint
