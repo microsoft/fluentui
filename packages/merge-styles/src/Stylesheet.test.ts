@@ -386,5 +386,54 @@ describe('Stylesheet', () => {
         expect(rules).toEqual('h1 { background: blue };a { background: red };h1 { background: blue };');
       });
     });
+
+    describe('serialization', () => {
+      it('can be serialized (empty)', () => {
+        const serializedStylesheet = _stylesheet.serialize();
+
+        expect(serializedStylesheet).toEqual(
+          '{"classNameToArgs":{},"counter":0,"keyToClassName":{},"preservedRules":[],"rules":[]}',
+        );
+      });
+
+      it('can be serialized (with data)', () => {
+        _stylesheet.getClassName();
+        _stylesheet.insertRule('a { background: red };');
+        cacheClassNameSetup(_stylesheet);
+
+        const serializedStylesheet = _stylesheet.serialize();
+
+        expect(serializedStylesheet).toEqual(
+          // eslint-disable-next-line @fluentui/max-len
+          '{"classNameToArgs":{"css-1":{"args":[{"background":"red"}],"rules":["a { background: red };"]}},"counter":2,"keyToClassName":{"kobzol":"css-1"},"preservedRules":[],"rules":["a { background: red };"]}',
+        );
+      });
+
+      it('can be deserialized', () => {
+        const rehydrationData = JSON.parse(
+          // eslint-disable-next-line @fluentui/max-len
+          '{"classNameToArgs":{"css-1":{"args":[{"background":"red"}],"rules":["a { background: red };"]}},"counter":2,"keyToClassName":{"kobzol":"css-1"},"preservedRules":[],"rules":["a { background: red };"]}',
+        );
+
+        expect(rehydrationData).toStrictEqual({
+          classNameToArgs: {
+            'css-1': {
+              args: [
+                {
+                  background: 'red',
+                },
+              ],
+              rules: ['a { background: red };'],
+            },
+          },
+          counter: 2,
+          keyToClassName: {
+            kobzol: 'css-1',
+          },
+          preservedRules: [],
+          rules: ['a { background: red };'],
+        });
+      });
+    });
   });
 });

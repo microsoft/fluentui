@@ -76,6 +76,17 @@ export interface IStyleSheetConfig {
   classNameCache?: { [key: string]: string };
 }
 
+/**
+ * Representation of Stylesheet used for rehydration.
+ */
+export interface ISerializedStylesheet {
+  classNameToArgs: Stylesheet['_classNameToArgs'];
+  counter: Stylesheet['_counter'];
+  keyToClassName: Stylesheet['_keyToClassName'];
+  preservedRules: Stylesheet['_preservedRules'];
+  rules: Stylesheet['_rules'];
+}
+
 const STYLESHEET_SETTING = '__stylesheet__';
 /**
  * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
@@ -83,21 +94,22 @@ const STYLESHEET_SETTING = '__stylesheet__';
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
-let _global: Window & {
+let _global: (Window | {}) & {
   [STYLESHEET_SETTING]?: Stylesheet;
   FabricConfig?: {
     mergeStyles?: IStyleSheetConfig;
+    serializedStylesheet?: ISerializedStylesheet;
   };
-};
+} = {};
 
 // Grab window.
 try {
-  _global = window;
+  _global = window || {};
 } catch {
   /* leave as blank object */
 }
 
-let _stylesheet: Stylesheet;
+let _stylesheet: Stylesheet | undefined;
 
 /**
  * Represents the state of styles registered in the page. Abstracts
@@ -116,7 +128,6 @@ export class Stylesheet {
   private _keyToClassName: { [key: string]: string } = {};
   private _onInsertRuleCallbacks: Function[] = [];
   private _onResetCallbacks: Function[] = [];
-
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
 
   /**
@@ -128,22 +139,43 @@ export class Stylesheet {
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
       const fabricConfig = _global?.FabricConfig || {};
 
-      _stylesheet = _global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
+      const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet);
+      _stylesheet = stylesheet;
+      _global[STYLESHEET_SETTING] = stylesheet;
     }
 
     return _stylesheet;
   }
 
-  constructor(config?: IStyleSheetConfig) {
+  constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet) {
     this._config = {
-      injectionMode: InjectionMode.insertNode,
+      // If there is no document we won't have an element to inject into.
+      injectionMode: typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode,
       defaultPrefix: 'css',
       namespace: undefined,
       cspSettings: undefined,
       ...config,
     };
 
-    this._keyToClassName = this._config.classNameCache || {};
+    this._classNameToArgs = serializedStylesheet?.classNameToArgs ?? this._classNameToArgs;
+    this._counter = serializedStylesheet?.counter ?? this._counter;
+    this._keyToClassName = this._config.classNameCache ?? serializedStylesheet?.keyToClassName ?? this._keyToClassName;
+    this._preservedRules = serializedStylesheet?.preservedRules ?? this._preservedRules;
+    this._rules = serializedStylesheet?.rules ?? this._rules;
+  }
+
+  /**
+   * Serializes the Stylesheet instance into a format which allows rehydration on creation.
+   * @returns string representation of `ISerializedStylesheet` interface.
+   */
+  public serialize(): string {
+    return JSON.stringify({
+      classNameToArgs: this._classNameToArgs,
+      counter: this._counter,
+      keyToClassName: this._keyToClassName,
+      preservedRules: this._preservedRules,
+      rules: this._rules,
+    });
   }
 
   /**
@@ -256,7 +288,7 @@ export class Stylesheet {
     }
 
     if (element) {
-      switch (this._config.injectionMode) {
+      switch (injectionMode) {
         case InjectionMode.insertNode:
           const { sheet } = element!;
 
