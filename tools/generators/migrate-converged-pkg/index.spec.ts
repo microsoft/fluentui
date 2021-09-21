@@ -806,8 +806,7 @@ describe('migrate-converged-pkg generator', () => {
       npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
 
       expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        ".cache/
-        .storybook/
+        ".storybook/
         .vscode/
         bundle-size/
         config/
