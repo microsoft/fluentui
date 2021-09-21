@@ -56,7 +56,7 @@ steps:
     displayName: yarn lint
 
   - script: |
-      yarn publish:beachball
+      yarn publish:beachball -n $(npmToken)
       git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
