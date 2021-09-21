@@ -4,12 +4,6 @@ export type MenuDividerSlots = {
   root: IntrinsicShorthandProps<'div'>;
 };
 
-/**
- * {@docCategory MenuDivider}
- */
-export interface MenuDividerProps extends ComponentProps<MenuDividerSlots> {}
+export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
 
-/**
- * {@docCategory MenuDivider}
- */
-export interface MenuDividerState extends ComponentState<MenuDividerSlots> {}
+export type MenuDividerState = ComponentState<MenuDividerSlots>;
