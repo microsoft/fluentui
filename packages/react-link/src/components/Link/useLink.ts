@@ -27,11 +27,9 @@ export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTM
     root: getNativeElementProps(as, {
       ref,
       ...props,
+      as,
     }),
   };
-
-  // TODO: Remove after https://github.com/microsoft/fluentui/issues/19785 is fixed.
-  state.root.as = as;
 
   useLinkState(state);
 
