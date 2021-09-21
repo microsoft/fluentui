@@ -1,8 +1,73 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.35)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.34..@fluentui/react-aria_v9.0.0-alpha.35)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.69 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.34)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.33..@fluentui/react-aria_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.34 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.33)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.32..@fluentui/react-aria_v9.0.0-alpha.33)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.33 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.32)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.31..@fluentui/react-aria_v9.0.0-alpha.32)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.32 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.31)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.30..@fluentui/react-aria_v9.0.0-alpha.31)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-alpha.31 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.30)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.29..@fluentui/react-aria_v9.0.0-alpha.30)
+
+### Changes
+
+- Generalize mergeARIADisabled ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.29)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.28..@fluentui/react-aria_v9.0.0-alpha.29)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.29 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.28)
 

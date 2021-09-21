@@ -2,6 +2,140 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.51",
+      "version": "9.0.0-alpha.51",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "comment": "Updating to types over interfaces",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.69",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.25",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.63",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.50",
+      "version": "9.0.0-alpha.50",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.50"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.49",
+      "version": "9.0.0-alpha.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.48"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.47",
+      "version": "9.0.0-alpha.47",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.47"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.46",
+      "version": "9.0.0-alpha.46",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "comment": "use simplified prop merging",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "comment": "chore(v9): Move all internal v9 dependencies from caret to fixed version",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.46"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Sep 2021 07:39:51 GMT",
       "tag": "@fluentui/react-portal_v9.0.0-alpha.45",
       "version": "9.0.0-alpha.45",

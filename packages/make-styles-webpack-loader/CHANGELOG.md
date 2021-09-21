@@ -1,8 +1,63 @@
 # Change Log - @fluentui/make-styles-webpack-loader
 
-This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.24)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.23..@fluentui/make-styles-webpack-loader_v9.0.0-alpha.24)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.51 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.23)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.22..@fluentui/make-styles-webpack-loader_v9.0.0-alpha.23)
+
+### Changes
+
+- Bump @fluentui/make-styles-webpack-loader to v9.0.0-alpha.23 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.22)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.21..@fluentui/make-styles-webpack-loader_v9.0.0-alpha.22)
+
+### Changes
+
+- Bump @fluentui/make-styles-webpack-loader to v9.0.0-alpha.22 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.21)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.20..@fluentui/make-styles-webpack-loader_v9.0.0-alpha.21)
+
+### Changes
+
+- Bump @fluentui/make-styles-webpack-loader to v9.0.0-alpha.21 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.20)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.19..@fluentui/make-styles-webpack-loader_v9.0.0-alpha.20)
+
+### Changes
+
+- Bump @fluentui/make-styles-webpack-loader to v9.0.0-alpha.20 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.19)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.18..@fluentui/make-styles-webpack-loader_v9.0.0-alpha.19)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/make-styles-webpack-loader to v9.0.0-alpha.19 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.18)
 

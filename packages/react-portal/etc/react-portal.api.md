@@ -13,20 +13,19 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
 export const Portal: React_2.FC<PortalProps>;
 
 // @public (undocumented)
-export interface PortalCommons {
+export type PortalCommons = {
     children: React_2.ReactNode;
     mountNode: HTMLDivElement | undefined;
-}
+};
 
 // @public (undocumented)
-export interface PortalProps extends Partial<PortalCommons> {
-}
+export type PortalProps = Partial<PortalCommons>;
 
 // @public (undocumented)
-export interface PortalState extends PortalCommons {
+export type PortalState = PortalCommons & {
     shouldRender: boolean;
     virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
-}
+};
 
 // @public
 export const renderPortal: (state: PortalState) => React_2.ReactElement;

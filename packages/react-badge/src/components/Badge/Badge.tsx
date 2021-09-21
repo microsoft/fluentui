@@ -6,7 +6,6 @@ import type { BadgeProps } from './Badge.types';
 
 /**
  * Define a styled Badge, using the `useBadge` hook.
- * {@docCategory Badge}
  */
 export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>((props, ref) => {
   const state = useBadge(props, ref);

@@ -1,23 +1,11 @@
 import type { IntrinsicShorthandProps, ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeShape = 'rounded' | 'square' | 'circular';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeColors =
   | 'brand'
   | 'danger'

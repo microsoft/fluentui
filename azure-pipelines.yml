@@ -30,7 +30,7 @@ jobs:
 
       - script: |
           yarn checkchange
-        displayName: check change
+        displayName: verify change files
 
       - script: |
           yarn nx workspace-lint
