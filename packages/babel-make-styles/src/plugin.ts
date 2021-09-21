@@ -150,7 +150,7 @@ function processDefinitions(
 
   const styleSlots = definitionsPath.get('properties');
 
-  styleSlots.forEach(styleSlotPath => {
+  styleSlots.forEach((styleSlotPath: NodePath<t.SpreadElement | t.ObjectMethod | t.ObjectProperty>) => {
     if (styleSlotPath.isObjectMethod()) {
       throw styleSlotPath.buildCodeFrameError('Object methods are not supported for defining styles');
     }
@@ -269,6 +269,7 @@ function processDefinitions(
        * @example
        *    // ✔ can be resolved in AST
        *    makeStyles({ root: (t) => ({ color: t.red }) })
+       *    makeStyles({ root: () => ({ padding: '12px' }) })
        *    // ❌ lazy evaluation
        *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
        *    // ❌ lazy evaluation, the worst case as function contains body
@@ -279,15 +280,15 @@ function processDefinitions(
           throw stylesPath.buildCodeFrameError('A function in makeStyles() can only a single param');
         }
 
-        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node>;
+        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node> | undefined;
 
-        if (!paramsPath.isIdentifier()) {
+        if (paramsPath && !paramsPath.isIdentifier()) {
           throw stylesPath.buildCodeFrameError(
             'A function in makeStyles() can only a single param and it should be a valid identifier',
           );
         }
 
-        const paramsName = paramsPath.node.name;
+        const paramsName = paramsPath?.node.name;
         const bodyPath = stylesPath.get('body');
 
         /**
@@ -296,6 +297,7 @@ function processDefinitions(
          * @example
          *    // ✔ can be resolved in AST
          *    makeStyles({ root: (t) => ({ color: t.red }) })
+         *    makeStyles({ root: () => ({ padding: '12px' }) })
          *    // ❌ lazy evaluation
          *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
          */
