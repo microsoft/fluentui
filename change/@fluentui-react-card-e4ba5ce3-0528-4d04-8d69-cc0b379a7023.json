@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "test changing everything to es2019",
+  "packageName": "@fluentui/react-card",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
