@@ -22,7 +22,7 @@
     "bundlesize": "cd scripts && yarn bundlesize",
     "bundlesizecollect": "node ./scripts/bundle-size-collect",
     "change": "beachball change --scope \"!packages/fluentui/*\"",
-    "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
+    "check-for-modified-files": "cd scripts && just-scripts check-for-modified-files",
     "checkchange": "beachball check  --scope \"!packages/fluentui/*\" --changehint \"Run 'yarn change' to generate a change file\"",
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",

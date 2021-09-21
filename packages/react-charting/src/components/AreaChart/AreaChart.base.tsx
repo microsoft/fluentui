@@ -232,7 +232,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
 
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
-    const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleDateString() : pointToHighlight;
+    const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleString() : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
@@ -321,10 +321,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     let tempArr = allChartPoints;
     while (tempArr.length) {
-      const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
+      const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
       const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
-        (point: ILineChartDataPoint) =>
-          (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) === valToCheck,
+        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const singleDataset: any = {};
@@ -334,9 +333,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
       dataSet.push(singleDataset);
       // removing compared objects from array
-      const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
+      const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
       tempArr = tempArr.filter(
-        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) !== val,
+        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
       );
     }
 
