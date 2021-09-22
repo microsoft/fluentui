@@ -71,7 +71,7 @@ export type LinkCommons = {
     disabled?: boolean;
     disabledFocusable?: boolean;
     inline?: boolean;
-    secondary?: boolean;
+    appearance?: 'subtle';
 };
 
 // @public (undocumented)
