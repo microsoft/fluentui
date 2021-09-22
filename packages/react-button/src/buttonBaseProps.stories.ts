@@ -5,7 +5,7 @@ type ExampleProps = { iconOnly?: string };
 
 export const buttonBaseProps: PropDefinition<ButtonProps & ExampleProps>[] = [
   { propName: 'block', propType: 'boolean' },
-  { propName: 'circular', propType: 'boolean' },
+  { propName: 'appearance', propType: ['primary', 'outline', 'subtle', 'transparent'] },
   { propName: 'content', propType: 'string', defaultValue: 'This is a button', dependsOnProps: ['~iconOnly'] },
   { propName: 'disabled', propType: 'boolean', dependsOnProps: ['~disabledFocusable'] },
   { propName: 'disabledFocusable', propType: 'boolean', dependsOnProps: ['~disabled'] },
@@ -17,9 +17,6 @@ export const buttonBaseProps: PropDefinition<ButtonProps & ExampleProps>[] = [
     defaultValue: 'before',
     dependsOnProps: ['icon', '~iconOnly'],
   },
-  { propName: 'outline', propType: 'boolean', dependsOnProps: ['~primary', '~subtle', '~transparent'] },
-  { propName: 'primary', propType: 'boolean', dependsOnProps: ['~outline', '~subtle', '~transparent'] },
+  { propName: 'shape', propType: ['rounded', 'circular', 'square'], defaultValue: 'rounded' },
   { propName: 'size', propType: ['small', 'medium', 'large'], defaultValue: 'medium' },
-  { propName: 'subtle', propType: 'boolean', dependsOnProps: ['~outline', '~primary', '~transparent'] },
-  { propName: 'transparent', propType: 'boolean', dependsOnProps: ['~outline', '~primary', '~subtle'] },
 ];

@@ -109,9 +109,9 @@ export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState 
   state.className = mergeClasses(
     styles.root,
     state.block && styles.rootBlock,
-    state.primary && styles.rootPrimary,
-    state.subtle && styles.rootSubtle,
-    state.transparent && styles.rootTransparent,
+    state.appearance === 'primary' && styles.rootPrimary,
+    state.appearance === 'subtle' && styles.rootSubtle,
+    state.appearance === 'transparent' && styles.rootTransparent,
     state.disabled && styles.rootDisabled,
     state.className,
   );

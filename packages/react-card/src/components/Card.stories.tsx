@@ -82,7 +82,7 @@ export const ActionCard = () => (
         <img src="./ai_deck_template.png" alt="Preview of an artificial intelligence slide deck" />
       </CardPreview>
 
-      <CardFooter action={<Button transparent icon={<MoreVertical20Regular />} />}>
+      <CardFooter action={<Button appearance="transparent" icon={<MoreVertical20Regular />} />}>
         <Button icon={<Open16Regular />}>View changes</Button>
       </CardFooter>
     </Card>

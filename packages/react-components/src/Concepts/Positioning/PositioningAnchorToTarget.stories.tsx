@@ -8,7 +8,7 @@ export const AnchorToTarget = () => {
     <div style={{ display: 'flex', gap: 10 }}>
       <Popover positioning={{ position: 'above', align: 'start', target }} noArrow>
         <PopoverTrigger>
-          <Button primary>Click me</Button>
+          <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
 
         <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>

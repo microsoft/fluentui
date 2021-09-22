@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated for consistency to have shape and appearance properties",
+  "packageName": "@fluentui/react-button",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
