@@ -7,7 +7,7 @@ export type ButtonProps = ComponentPropsCompat &
      * A button can have its content and borders styled for greater emphasis or to be subtle.
      * - 'primary': Emphasizes the button as a primary action.
      * - 'outline': Removes background styling.
-     * - 'subtle': Minimzes emphasis to blend into the background until hovered or focused.
+     * - 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
      * - 'transparent': Removes background and border styling.
      */
     appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
