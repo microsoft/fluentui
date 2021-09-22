@@ -2,6 +2,21 @@
   "name": "todo-app",
   "entries": [
     {
+      "date": "Wed, 22 Sep 2021 09:55:02 GMT",
+      "tag": "todo-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "todo-app",
+            "comment": "Bump @fluentui/react to v8.34.5",
+            "commit": "23ad143fe61e38a508eb6aa3578e8e1026dc6a6c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Sep 2021 07:42:34 GMT",
       "tag": "todo-app_v1.0.0",
       "version": "1.0.0",

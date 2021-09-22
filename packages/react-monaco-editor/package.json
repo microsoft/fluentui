@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-monaco-editor",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "Live React example editing using monaco",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.34.4",
+    "@fluentui/react": "^8.34.5",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.2.6",
     "@fluentui/monaco-editor": "^1.1.4",

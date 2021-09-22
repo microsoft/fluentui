@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Slider: fix ally contrast flag for disabled slider",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
