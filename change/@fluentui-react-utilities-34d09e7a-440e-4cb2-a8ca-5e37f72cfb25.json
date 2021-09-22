@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Moved from interfaces to types per RFC",
-  "packageName": "@fluentui/react-utilities",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
