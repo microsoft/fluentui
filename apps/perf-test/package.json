@@ -18,7 +18,7 @@
     "@fluentui/make-styles": "9.0.0-alpha.31",
     "@fluentui/react": "^8.34.5",
     "@fluentui/react-avatar": "9.0.0-alpha.84",
-    "@fluentui/react-button": "^9.0.0-alpha.90",
+    "@fluentui/react-button": "9.0.0-alpha.90",
     "@fluentui/react-provider": "9.0.0-alpha.81",
     "@fluentui/react-tabs": "^1.0.0-beta.159",
     "@fluentui/react-theme": "9.0.0-alpha.23",
