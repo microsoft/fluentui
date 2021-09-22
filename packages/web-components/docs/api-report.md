@@ -650,22 +650,22 @@ export const focusStrokeWidth: CSSDesignToken<number>;
 // @public (undocumented)
 export const foregroundOnAccentActive: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentActiveLarge: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const foregroundOnAccentFocus: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentFocusLarge: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const foregroundOnAccentHover: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentHoverLarge: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentLargeRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
@@ -674,7 +674,7 @@ export const foregroundOnAccentRecipe: DesignToken<ColorRecipe>;
 // @public (undocumented)
 export const foregroundOnAccentRest: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentRestLarge: CSSDesignToken<Swatch>;
 
 // @public
@@ -816,28 +816,28 @@ export const neutralFillInputRest: CSSDesignToken<Swatch>;
 // @public (undocumented)
 export const neutralFillInputRestDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseActiveDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseFocus: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseFocusDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseHover: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseHoverDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseRecipe: DesignToken<InteractiveColorRecipe>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
