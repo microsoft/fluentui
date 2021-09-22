@@ -65,7 +65,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
   // Provide a default badge size based on the avatar size
   if (badge && badge.size === undefined) {
     if (size >= 96) {
-      badge.size = 'larger';
+      badge.size = 'extra-large';
     } else if (size >= 64) {
       badge.size = 'large';
     } else if (size >= 56) {
@@ -73,9 +73,9 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     } else if (size >= 40) {
       badge.size = 'small';
     } else if (size >= 28) {
-      badge.size = 'smaller';
+      badge.size = 'extra-small';
     } else {
-      badge.size = 'smallest';
+      badge.size = 'tiny';
     }
   }
 
