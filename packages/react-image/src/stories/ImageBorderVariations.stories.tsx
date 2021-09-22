@@ -12,14 +12,14 @@ export const ImageBorderVariations = () => (
       />
       <Image
         alt="Amanda's avatar"
-        rounded
+        shape="rounded"
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
         height={200}
         width={200}
       />
       <Image
         alt="Erik's avatar"
-        circular
+        shape="circular"
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg"
         height={200}
         width={200}
@@ -36,7 +36,7 @@ export const ImageBorderVariations = () => (
       <Image
         alt="Amanda's avatar"
         bordered
-        rounded
+        shape="rounded"
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
         height={200}
         width={200}
@@ -44,7 +44,7 @@ export const ImageBorderVariations = () => (
       <Image
         alt="Erik's avatar"
         bordered
-        circular
+        shape="circular"
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg"
         height={200}
         width={200}

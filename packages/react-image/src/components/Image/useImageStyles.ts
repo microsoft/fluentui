@@ -54,13 +54,13 @@ export const useImageStyles = (state: ImageState) => {
   state.root.className = mergeClasses(
     styles.root,
     state.bordered && styles.rootBordered,
-    state.circular && styles.rootCircular,
-    state.rounded && styles.rootRounded,
+    state.shape === 'circular' && styles.rootCircular,
+    state.shape === 'rounded' && styles.rootRounded,
     state.fit === 'none' && styles.rootFitNone,
     state.fit === 'center' && styles.rootFitCenter,
     state.fit === 'cover' && styles.rootFitCover,
     state.fit === 'contain' && styles.rootFitContain,
-    state.fluid && styles.rootFluid,
+    state.block && styles.rootFluid,
     state.root.className,
   );
 };
