@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "refact: remove mergeprops from react-checkbox",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "email not defined",
+  "dependentChangeType": "none"
+}
