@@ -31,7 +31,6 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
     // Ignore northstar and private packages
     if (/[\\/]fluentui[\\/]/.test(packagePath) || packageJson.private === true) {
-      console.log(packagePath);
       return false;
     }
 
