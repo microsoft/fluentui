@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Sep 2021 10:10:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.58)
+
+Wed, 22 Sep 2021 10:10:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.57..@fluentui/react-positioning_v9.0.0-alpha.58)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.50 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
 
 ## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.57)
 
