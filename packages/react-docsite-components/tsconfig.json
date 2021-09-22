@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "noImplicitThis": true,
     "outDir": "lib",
-    "lib": ["es5", "dom", "es2015.promise"],
+    "lib": ["es2017", "dom"],
     "types": ["webpack-env", "jest"]
   },
   "include": ["src"]

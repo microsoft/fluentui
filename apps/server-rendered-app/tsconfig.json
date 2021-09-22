@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "lib",
-    "target": "es5",
+    "target": "es2017",
     "module": "es6",
     "jsx": "react",
     "declaration": true,
@@ -12,7 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": false,
-    "lib": ["es5", "dom"],
+    "lib": ["es2017", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["custom-global"]
   },

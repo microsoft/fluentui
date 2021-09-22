@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -16,7 +16,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "preserveConstEnums": true,
-    "lib": ["es5", "dom", "es2015.promise", "es2015.iterable"],
+    "lib": ["es2017", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "webpack-env", "custom-global", "node"]
   },

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -14,7 +14,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es2017", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["webpack-env", "custom-global"]
   },

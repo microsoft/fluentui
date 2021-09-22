@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "outDir": "lib",
     "module": "commonjs",
-    "lib": ["es5", "dom"],
+    "lib": ["es2017", "dom"],
     "declaration": true,
     "sourceMap": true,
     "importHelpers": true,

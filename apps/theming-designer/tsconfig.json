@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "outDir": "lib",
     "module": "commonjs",
     "jsx": "react",
@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "strict": false,
-    "lib": ["es6", "dom"],
+    "lib": ["es2017", "dom"],
     "types": [],
     "noImplicitAny": true
   },

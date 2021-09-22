@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "outDir": "lib",
     "module": "commonjs",
     "jsx": "react",

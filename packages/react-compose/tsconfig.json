@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -13,7 +13,7 @@
     "strict": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "lib": ["es5", "dom"],
+    "lib": ["es2017", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"]
   },

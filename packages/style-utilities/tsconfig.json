@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
+    "target": "es2017",
     "outDir": "lib",
     "module": "commonjs",
-    "lib": ["es5", "dom"],
+    "lib": ["es2017", "dom"],
     "jsx": "react",
     "declaration": true,
     "isolatedModules": true,
