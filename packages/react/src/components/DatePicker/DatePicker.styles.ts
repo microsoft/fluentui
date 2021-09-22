@@ -120,12 +120,13 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
         position: 'relative',
         width: '100%',
         minWidth: 0,
-        textOverflow: 'ellipsis',
         outline: 0,
         cursor: 'pointer',
         display: 'block',
         height: TEXTFIELD_HEIGHT,
         lineHeight: TEXTFIELD_HEIGHT - 2,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'WindowText',
@@ -232,7 +233,6 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
           },
         },
       },
-
       hasErrorMessage &&
         !underlined && {
           borderColor: semanticColors.errorText,
