@@ -30,17 +30,16 @@ const websitePackages = [
 const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
     // Ignore northstar and private packages
-    if (/[\\/]fluentui[\\/]/.test(packagePath) || packageJson.private === true) {
+    if (/[\\/]fluentui[\\/]/.test(packagePath)) {
       return false;
     }
 
     if (process.env.RELEASE_VNEXT) {
-      return isConvergedPackage(packageJson);
-    } else if (websitePackages.includes(packageJson.name)) {
-      return true;
+      return isConvergedPackage(packageJson) && packageJson.private !== true;
     }
 
-    return true;
+    // v8 release scope
+    return packageJson.private !== true || websitePackages.includes(packageJson.name);
   })
   .map(([packageName]) => `--to=${packageName}`)
   .filter(Boolean);
