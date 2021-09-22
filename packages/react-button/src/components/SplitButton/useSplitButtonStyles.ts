@@ -11,6 +11,7 @@ const useStyles = makeStyles({
     display: 'inline-flex',
     justifyContent: 'stretch',
     position: 'relative',
+    verticalAlign: 'middle',
 
     // Use classnames to increase specificy of styles and avoid collisions.
     [`& .${SplitButtonClassNames.button}`]: {

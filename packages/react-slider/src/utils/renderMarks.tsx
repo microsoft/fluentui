@@ -29,7 +29,8 @@ export const renderMarks = (
           <div
             className={mergeClasses(
               markClassName,
-              (markValues[i] === 0 && firstMarkClassName) || (markValues[i] === 100 && lastMarkClassName) || '',
+              markValues[i] === 0 && firstMarkClassName,
+              markValues[i] === 100 && lastMarkClassName,
             )}
             key={`mark-${i}`}
           />
