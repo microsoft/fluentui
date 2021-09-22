@@ -38,15 +38,7 @@ export function gradientShadowStroke(
         overlaySolid,
       ).roundToPrecision(2);
       const blend = computeAlphaBlend(parseColorHexRGB(reference.toColorString())!, overlayColor);
-      const ret = blend.toStringWebRGBA();
-      console.log(
-        `reference ${reference.toColorString()}; overlay neutral ${color.toColorString()}, lum ${
-          color.relativeLuminance
-        }; background neutral ${refSwatch.toColorString()}, lum ${
-          reference.relativeLuminance
-        }, overlay solid ${overlaySolid.toStringHexRGB()}, opacity ${overlayColor.toStringWebRGBA()} = blend ${ret}`,
-      );
-      return ret;
+      return blend.toStringWebRGBA();
     } else {
       return color.toColorString();
     }
