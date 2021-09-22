@@ -31,14 +31,17 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
     // Ignore northstar and private packages
     if (/[\\/]fluentui[\\/]/.test(packagePath) || packageJson.private === true) {
+      console.log(packagePath);
       return false;
     }
 
     if (process.env.RELEASE_VNEXT) {
       return isConvergedPackage(packageJson);
+    } else if (websitePackages.includes(packageJson.name)) {
+      return true;
     }
 
-    return websitePackages.includes(packageJson.name);
+    return true;
   })
   .map(([packageName]) => `--to=${packageName}`)
   .filter(Boolean);
