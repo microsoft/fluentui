@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   clamp,
-  on,
   useBoolean,
   useControllableState,
   useEventCallback,
@@ -11,6 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 import {
   calculateSteps,
+  on,
   getKeydownValue,
   getMarkPercent,
   getMarkValue,
@@ -117,6 +117,7 @@ export const useSliderState = (state: SliderState) => {
       hideStepAnimation();
       onPointerDownCallback?.(ev);
 
+      // eslint-disable-next-line deprecation/deprecation -- Should be remove an replaced with a useEvent hook.
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
         target.releasePointerCapture?.(pointerId);
       });

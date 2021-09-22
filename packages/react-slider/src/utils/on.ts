@@ -5,6 +5,8 @@
  * @param eventName the event to watch.
  * @param callback the callback to call when the eventName is triggered.
  * @param useCapture whether the events should be dispatched to the callback first before other EventTargets.
+ *
+ * @deprecated This should be replaced with an `useEvent` hook.
  */
 export const on = <T>(
   element: Element | Window | Document,
