@@ -20,11 +20,12 @@ import {
   focusStrokeOuter,
   neutralFillRest,
   neutralFillStrongRest,
+  neutralStrokeControlActive,
+  neutralStrokeControlHover,
   neutralStrokeControlRest,
   neutralStrokeStrongRest,
   strokeWidth,
 } from '../design-tokens';
-import { neutralStrokeControlActive, neutralStrokeControlHover } from '..';
 
 export const sliderStyles: (context: ElementDefinitionContext, definition: SliderOptions) => ElementStyles = (
   context: ElementDefinitionContext,
