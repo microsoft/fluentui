@@ -276,16 +276,15 @@ function processDefinitions(
        *    makeStyles({ root: (t) => { return { color: SOME_VARIABLE } } })
        */
       if (stylesPath.isArrowFunctionExpression()) {
+        const paramError = 'A function in makeStyles() can only have a single param (for tokens/theme)';
         if (stylesPath.get('params').length > 1) {
-          throw stylesPath.buildCodeFrameError('A function in makeStyles() can only a single param');
+          throw stylesPath.buildCodeFrameError(paramError);
         }
 
         const paramsPath = stylesPath.get('params.0') as NodePath<t.Node> | undefined;
 
         if (paramsPath && !paramsPath.isIdentifier()) {
-          throw stylesPath.buildCodeFrameError(
-            'A function in makeStyles() can only a single param and it should be a valid identifier',
-          );
+          throw stylesPath.buildCodeFrameError(`${paramError} and it should be a valid identifier`);
         }
 
         const paramsName = paramsPath?.node.name;
