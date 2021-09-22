@@ -89,8 +89,8 @@ export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurf
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,
-    state.inverted && styles.inverted,
-    state.brand && styles.brand,
+    state.appearance === 'inverted' && styles.inverted,
+    state.appearance === 'brand' && styles.brand,
     state.root.className,
   );
 

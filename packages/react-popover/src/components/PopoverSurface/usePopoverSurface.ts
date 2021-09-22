@@ -25,14 +25,12 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const size = usePopoverContext(context => context.size);
   const noArrow = usePopoverContext(context => context.noArrow);
-  const brand = usePopoverContext(context => context.brand);
-  const inverted = usePopoverContext(context => context.inverted);
+  const appearance = usePopoverContext(context => context.appearance);
   const trapFocus = usePopoverContext(context => context.trapFocus);
   const { modalAttributes } = useModalAttributes({ trapFocus });
 
   const state: PopoverSurfaceState = {
-    brand,
-    inverted,
+    appearance,
     noArrow,
     size,
     arrowRef,

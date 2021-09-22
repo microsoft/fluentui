@@ -38,8 +38,7 @@ export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
     openOnContext?: boolean;
     noArrow?: boolean;
     size?: PopoverSize;
-    brand?: boolean;
-    inverted?: boolean;
+    appearance?: 'brand' | 'inverted';
     trapFocus?: boolean;
     positioning?: PositioningShorthand;
 };
@@ -48,7 +47,7 @@ export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted' | 'trapFocus'>;
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus'>;
 
 // @public
 export type PopoverProps = Partial<PopoverCommons> & {
@@ -102,7 +101,7 @@ export type PopoverSurfaceSlots = {
 export const popoverSurfaceSlots: Array<keyof PopoverSurfaceSlots>;
 
 // @public
-export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted' | 'arrowRef'> & {
+export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'appearance' | 'arrowRef'> & {
     arrowClassName?: string;
 };
 
@@ -130,7 +129,7 @@ export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
 export const usePopover: (props: PopoverProps, defaultProps?: PopoverProps | undefined) => PopoverState;
 
 // @public (undocumented)
-export const usePopoverContext: <T>(selector: ContextSelector<Pick<PopoverState, "mountNode" | "open" | "setOpen" | "triggerRef" | "contentRef" | "openOnHover" | "openOnContext" | "noArrow" | "arrowRef" | "size" | "brand" | "inverted" | "trapFocus">, T>) => T;
+export const usePopoverContext: <T>(selector: ContextSelector<Pick<PopoverState, "mountNode" | "open" | "setOpen" | "triggerRef" | "contentRef" | "openOnHover" | "openOnContext" | "noArrow" | "arrowRef" | "size" | "appearance" | "trapFocus">, T>) => T;
 
 // @public
 export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
