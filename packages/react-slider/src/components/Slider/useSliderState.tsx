@@ -10,11 +10,11 @@ import {
 } from '@fluentui/react-utilities';
 import {
   calculateSteps,
-  on,
   getKeydownValue,
   getMarkPercent,
   getMarkValue,
   getPercent,
+  on,
   renderMarks,
 } from '../../utils/index';
 import type { SliderState } from './Slider.types';
