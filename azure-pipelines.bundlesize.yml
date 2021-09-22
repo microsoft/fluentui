@@ -7,7 +7,7 @@ trigger:
 jobs:
   - job: build
     timeoutInMinutes: 75
-    pool: 'Self Host Ubuntu'
+    pool: '1ES-Host-Ubuntu'
     workspace:
       clean: all
     steps:
