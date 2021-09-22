@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Sep 2021 09:55:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.5)
+
+Wed, 22 Sep 2021 09:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.4..@fluentui/react_v8.34.5)
+
+### Patches
+
+- Slider: fix ally contrast flag for disabled slider ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by tristan.watanabe@gmail.com)
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.4)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.3..@fluentui/react_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.2.3 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [8.34.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.3)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.2..@fluentui/react_v8.34.3)
+
+### Patches
+
+- Panel: isFooterAtBottom prop now working as expected ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react to v8.34.3 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
 
 ## [8.34.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.2)
 

@@ -36,6 +36,6 @@ export type ImageCommons = {
   shadow?: boolean;
 };
 
-export interface ImageProps extends ComponentProps<ImageSlots>, Partial<ImageCommons> {}
+export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 
-export interface ImageState extends ComponentState<ImageSlots>, ImageCommons {}
+export type ImageState = ComponentState<ImageSlots> & ImageCommons;

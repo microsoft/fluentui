@@ -2,11 +2,13 @@
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
-import { webLightTheme } from '@fluentui/react-theme';
+import { webLightTheme, webHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 
 const defaultConfig = {
   includeRtl: false,
+  includeHighContrast: false,
+  includeDarkMode: false,
 };
 
 /**
@@ -40,6 +42,18 @@ setAddon({
             <FluentProvider theme={webLightTheme} dir="rtl">
               {storyFn({ context })}
             </FluentProvider>
+          );
+        });
+      }
+      if (config.includeDarkMode) {
+        this.add(storyName + ' - Dark Mode', context => {
+          return <FluentProvider theme={webDarkTheme}>{storyFn({ context })}</FluentProvider>;
+        });
+      }
+      if (config.includeHighContrast) {
+        this.add(storyName + ' - High Contrast', context => {
+          return (
+            <FluentProvider theme={webHighContrastTheme}>{storyFn({ context })}</FluentProvider>
           );
         });
       }

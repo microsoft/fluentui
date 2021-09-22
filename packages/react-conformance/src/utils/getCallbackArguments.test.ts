@@ -110,7 +110,7 @@ describe('getCallbackArguments', () => {
     it('handles complex type reference as a param', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
         './Accordion.types.ts': `import * as React from 'react';
-      
+
        export interface AccordionProps { onToggle: (e: React.MouseEvent) => void; }`,
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
@@ -121,7 +121,7 @@ describe('getCallbackArguments', () => {
     it('handles alias type as a param', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
         './Accordion.types.ts': `import * as React from 'react';
-      
+
        type AccordionOnToggle = (e: React.MouseEvent) => void;
        export interface AccordionProps { onToggle: AccordionOnToggle; }`,
       });
@@ -135,7 +135,7 @@ describe('getCallbackArguments', () => {
         './AccordionToggle.types.ts': `export type AccordionOnToggle = (e: React.MouseEvent) => void;`,
         './Accordion.types.ts': `import * as React from 'react';
         import { AccordionOnToggle } from './AccordionToggle.types';
-      
+
        export interface AccordionProps { onToggle: AccordionOnToggle; }`,
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
@@ -167,7 +167,7 @@ describe('getCallbackArguments', () => {
     it('handles generics', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
         './Accordion.types.ts': `import * as React from 'react';
-      
+
         export interface AccordionProps { onToggle: (e: React.MouseEvent<HTMLElement>) => void; }`,
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
@@ -178,7 +178,7 @@ describe('getCallbackArguments', () => {
     it('handles unions', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
         './Accordion.types.ts': `import * as React from 'react';
-      
+
         export interface AccordionProps { onToggle: (e: MouseEvent | React.MouseEvent) => void; }`,
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
@@ -189,7 +189,7 @@ describe('getCallbackArguments', () => {
     it('handles multiple params', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
         './Accordion.types.ts': `import * as React from 'react';
-      
+
         export interface AccordionProps { onToggle: (e: null, data: { value: string }) => void; }`,
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
@@ -220,7 +220,7 @@ describe('getCallbackArguments', () => {
       expect(() =>
         getCallbackArguments(program, 'Accordion.types.ts', 'ButtonProps', 'onToggle'),
       ).toThrowErrorMatchingInlineSnapshot(
-        `"A file (Accordion.types.ts) does not contain definition for type \\"ButtonProps\\""`,
+        `"A file (Accordion.types.ts) does not contain definition for type \\"ButtonProps.onToggle\\"."`,
       );
     });
 
@@ -232,7 +232,7 @@ describe('getCallbackArguments', () => {
       expect(() =>
         getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onClick'),
       ).toThrowErrorMatchingInlineSnapshot(
-        `"A file (Accordion.types.ts) does not contain definition for type \\"AccordionProps.onClick\\""`,
+        `"A file (Accordion.types.ts) does not contain definition for type \\"AccordionProps.onClick\\"."`,
       );
     });
   });

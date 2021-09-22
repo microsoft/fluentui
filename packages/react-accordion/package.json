@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-accordion",
-  "version": "9.0.0-alpha.77",
+  "version": "9.0.0-alpha.80",
   "description": "Fluent UI accordion component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,11 +25,11 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-alpha.49",
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.42",
-    "@fluentui/react-conformance": "^0.5.0",
-    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.11",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.52",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.45",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.14",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -44,12 +44,12 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-aria": "9.0.0-alpha.33",
-    "@fluentui/react-context-selector": "9.0.0-alpha.32",
-    "@fluentui/react-make-styles": "9.0.0-alpha.67",
-    "@fluentui/react-tabster": "9.0.0-alpha.61",
-    "@fluentui/react-theme": "9.0.0-alpha.22",
-    "@fluentui/react-utilities": "9.0.0-alpha.49",
+    "@fluentui/react-aria": "9.0.0-alpha.36",
+    "@fluentui/react-context-selector": "9.0.0-alpha.33",
+    "@fluentui/react-make-styles": "9.0.0-alpha.70",
+    "@fluentui/react-tabster": "9.0.0-alpha.64",
+    "@fluentui/react-theme": "9.0.0-alpha.23",
+    "@fluentui/react-utilities": "9.0.0-alpha.50",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

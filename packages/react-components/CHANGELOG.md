@@ -1,8 +1,135 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 17 Sep 2021 07:35:25 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Sep 2021 10:10:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.112](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.112)
+
+Wed, 22 Sep 2021 10:10:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.111..@fluentui/react-components_v9.0.0-alpha.112)
+
+### Changes
+
+- `@fluentui/react-avatar`
+  - update react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by ololubek@microsoft.com)
+- `@fluentui/react-badge`
+  - refactor(Badge): Remove `mergeProps` and migrate to simple slots ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - update react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by ololubek@microsoft.com)
+  - SplitButton: Adding missing verticalAlign=middle style. ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-menu`
+  - update react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by ololubek@microsoft.com)
+- `@fluentui/react-slider`
+  - Cleaning up the Slider utils folder. ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by czearing@outlook.com)
+- `@fluentui/react-switch`
+  - Adding switch role to the hidden input element. ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by czearing@outlook.com)
+- `@fluentui/react-text`
+  - Migrate to simplified prop merging ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by andredias@microsoft.com)
+- `@fluentui/react-utilities`
+  - Moved from interfaces to types per RFC ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by gcox@microsoft.com)
+
+## [9.0.0-alpha.111](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.111)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.110..@fluentui/react-components_v9.0.0-alpha.111)
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-avatar`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-badge`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-divider`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-image`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-label`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-link`
+  - fix(Link): use `keyboard-keys` package ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by lingfangao@hotmail.com)
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-menu`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-portal`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-slider`
+  - Adding custom marks and mark labels. ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by czearing@outlook.com)
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-theme`
+  - Theme: Updating value of borderRadius global token. ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+
+## [9.0.0-alpha.110](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.110)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.109..@fluentui/react-components_v9.0.0-alpha.110)
+
+### Changes
+
+- `@fluentui/babel-make-styles`
+  - Bump @fluentui/babel-make-styles to v9.0.0-alpha.50 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/jest-serializer-make-styles`
+  - Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.43 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/make-styles-webpack-loader`
+  - Bump @fluentui/make-styles-webpack-loader to v9.0.0-alpha.23 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - Bump @fluentui/react-accordion to v9.0.0-alpha.78 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - Bump @fluentui/react-aria to v9.0.0-alpha.34 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-avatar`
+  - Bump @fluentui/react-avatar to v9.0.0-alpha.82 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-badge`
+  - Bump @fluentui/react-badge to v9.0.0-alpha.82 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - SplitButton: Re-introducing SplitButton using the latest version of makeStyles. ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by Humberto.Morimoto@microsoft.com)
+  - Bump @fluentui/react-button to v9.0.0-alpha.88 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-card`
+  - Bump @fluentui/react-card to v9.0.0-alpha.4 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-checkbox`
+  - Bump @fluentui/react-checkbox to v9.0.0-alpha.37 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-components`
+  - Bump @fluentui/react-components to v9.0.0-alpha.110 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-conformance-make-styles`
+  - Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.12 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-divider`
+  - Bump @fluentui/react-divider to v9.0.0-alpha.69 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-image`
+  - Removed conditional adding of aria-hidden ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by tkrasniqi@microsoft.com)
+  - Bump @fluentui/react-image to v9.0.0-alpha.80 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-label`
+  - Bump @fluentui/react-label to v9.0.0-alpha.41 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-link`
+  - Bump @fluentui/react-link to v9.0.0-alpha.83 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-make-styles`
+  - Bump @fluentui/react-make-styles to v9.0.0-alpha.68 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - Bump @fluentui/react-menu to v9.0.0-alpha.79 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - Bump @fluentui/react-popover to v9.0.0-alpha.45 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - Bump @fluentui/react-portal to v9.0.0-alpha.50 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - Bump @fluentui/react-positioning to v9.0.0-alpha.56 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - Bump @fluentui/react-provider to v9.0.0-alpha.79 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - Bump @fluentui/react-slider to v9.0.0-alpha.7 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-switch`
+  - Bump @fluentui/react-switch to v9.0.0-alpha.6 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - Bump @fluentui/react-tabster to v9.0.0-alpha.62 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - Bump @fluentui/react-text to v9.0.0-alpha.17 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+- `@fluentui/react-tooltip`
+  - Bump @fluentui/react-tooltip to v9.0.0-alpha.84 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.109)
 
