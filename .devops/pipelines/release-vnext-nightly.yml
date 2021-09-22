@@ -46,6 +46,7 @@ steps:
 
   - template: ../templates/release/build-test-lint.yml
 
+  # nightly builds are one off, don't push version bumps and tags to the repo
   - script: |
       yarn publish:beachball -n $(npmToken) --no-push
       git reset --hard origin/master
