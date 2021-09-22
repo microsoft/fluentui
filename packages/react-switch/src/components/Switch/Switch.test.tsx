@@ -102,25 +102,46 @@ describe('Switch', () => {
       expect(inputRef?.current?.checked).toEqual(true);
     });
 
+    it('handles keydown events', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      const onChange = jest.fn();
+
+      render(<Switch onChange={onChange} data-testid="test" input={{ ref: inputRef }} />);
+      const rootElement = screen.getByTestId('test');
+
+      expect(onChange).toBeCalledTimes(0);
+
+      fireEvent.keyDown(rootElement, { key: ' ' });
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
+      expect(inputRef?.current?.checked).toEqual(true);
+
+      fireEvent.keyDown(rootElement, { key: ' ' });
+      expect(onChange).toBeCalledTimes(2);
+      expect(onChange.mock.calls[1][1]).toEqual({ checked: false });
+      expect(inputRef?.current?.checked).toEqual(false);
+    });
+
     it('handles onKeyDown callback', () => {
       const eventHandler = jest.fn();
 
       render(<Switch onKeyDown={eventHandler} data-testid="test" />);
-      const switchRoot = screen.getByTestId('test');
+      const rootElement = screen.getByTestId('test');
 
       expect(eventHandler).toBeCalledTimes(0);
-      fireEvent.keyDown(switchRoot, { key: 'ArrowUp' });
+
+      fireEvent.keyDown(rootElement, { key: ' ' });
       expect(eventHandler).toBeCalledTimes(1);
     });
 
-    it('handles onClick callback', () => {
+    it('handles onPointerDown callback', () => {
       const eventHandler = jest.fn();
 
-      render(<Switch onClick={eventHandler} data-testid="test" />);
-      const switchRoot = screen.getByTestId('test');
+      render(<Switch data-testid="root-element" onPointerDown={eventHandler} />);
+      const rootElement = screen.getByTestId('root-element');
 
       expect(eventHandler).toBeCalledTimes(0);
-      fireEvent.click(switchRoot);
+      fireEvent.pointerDown(rootElement);
       expect(eventHandler).toBeCalledTimes(1);
     });
 
