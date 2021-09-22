@@ -29,7 +29,7 @@ const websitePackages = [
 // in the root package.json's publishing-related scripts and will need to be updated if --scope changes.
 const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
-    // Ignore northstar and private packages
+    // Ignore northstar
     if (/[\\/]fluentui[\\/]/.test(packagePath)) {
       return false;
     }
@@ -41,6 +41,7 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
       return packageJson.private !== true || websitePackages.includes(packageJson.name);
     }
 
+    // Ignore v9/converged packages when releasing v8
     return false;
   })
   .map(([packageName]) => `--to=${packageName}`);
