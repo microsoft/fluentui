@@ -16,6 +16,7 @@ export const renderSwitch = (state: SwitchState) => {
         <slots.thumb {...slotProps.thumb} />
       </slots.thumbWrapper>
       <slots.input {...slotProps.input} />
+      <slots.activeRail {...slotProps.activeRail} />
     </slots.root>
   );
 };
