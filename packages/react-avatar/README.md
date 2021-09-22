@@ -27,7 +27,7 @@ import { Avatar } from '@fluentui/react-components';
 ```jsx
 <Avatar name="Miguel Garcia" />
 <Avatar size={72} name="Mona Kane" image="./MonaKane.jpg" />
-<Avatar square icon={<IDBadgeIcon />} />
+<Avatar shape="square" icon={<IDBadgeIcon />} />
 ```
 
 Displaying a badge:
@@ -39,6 +39,6 @@ Displaying a badge:
 With active state indication:
 
 ```jsx
-<Avatar name="Daisy Phillips" active={true} activeDisplay="ring-shadow" />
-<Avatar name="Robin Counts" active={false} activeDisplay="ring-shadow" />
+<Avatar name="Daisy Phillips" active={true} activeAppearance="ring-shadow" />
+<Avatar name="Robin Counts" active={false} activeAppearance="ring-shadow" />
 ```
