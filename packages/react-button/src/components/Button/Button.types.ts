@@ -4,6 +4,15 @@ import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat }
 export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
     /**
+     * A button can have its content and borders styled for greater emphasis or to be subtle.
+     * - 'primary': Emphasizes the button as a primary action.
+     * - 'outline': Removes background styling.
+     * - 'subtle': Minimzes emphasis to blend into the background until hovered or focused.
+     * - 'transparent': Removes background and border styling.
+     */
+    appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
+
+    /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
      */
@@ -20,12 +29,6 @@ export type ButtonProps = ComponentPropsCompat &
      * @default false
      */
     block?: boolean;
-
-    /**
-     * A button can be rounded, circular, or square.
-     * @default 'rounded'
-     */
-    shape?: 'rounded' | 'circular' | 'square';
 
     /**
      * A button can show that it cannot be interacted with.
@@ -55,13 +58,10 @@ export type ButtonProps = ComponentPropsCompat &
     // loading?: boolean;
 
     /**
-     * A button can have its content and borders styled for greater emphasis or to be subtle.
-     * - 'primary': Emphasizes the button as a primary action.
-     * - 'outline': Removes background styling.
-     * - 'subtle': Minimzes emphasis to blend into the background until hovered or focused.
-     * - 'transparent': Removes background and border styling.
+     * A button can be rounded, circular, or square.
+     * @default 'rounded'
      */
-    appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
+    shape?: 'rounded' | 'circular' | 'square';
 
     /**
      * A button supports different sizes.
