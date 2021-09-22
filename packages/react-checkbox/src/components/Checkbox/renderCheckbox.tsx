@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { CheckboxState } from './Checkbox.types';
+import { getSlots } from '@fluentui/react-utilities';
+import { CheckboxState, CheckboxSlots } from './Checkbox.types';
 import { checkboxShorthandProps } from './useCheckbox';
 
 export const renderCheckbox = (state: CheckboxState) => {
-  const { slots, slotProps } = getSlotsCompat(state, checkboxShorthandProps);
+  const { slots, slotProps } = getSlots<CheckboxSlots>(state, checkboxShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>
-      {state.labelPosition === 'before' && state.children}
-      <div className={state.containerClassName}>
+      {state.labelPosition === 'before' && slotProps.root.children}
+      <slot className={state.containerClassName}>
         <slots.indicator {...slotProps.indicator} />
         <slots.input {...slotProps.input} />
-      </div>
-      {state.labelPosition === 'after' && state.children}
+      </slot>
+      {state.labelPosition === 'after' && slotProps.root.children}
     </slots.root>
   );
 };
