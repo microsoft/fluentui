@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix dependencies",
+  "packageName": "@fluentui/react-components",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch"
+}
