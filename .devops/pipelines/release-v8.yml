@@ -43,12 +43,7 @@ steps:
       yarn run:published bundle --production
     displayName: yarn bundle
 
-  - script: |
-      yarn publish:beachball -n $(npmToken)
-      git reset --hard origin/master
-    env:
-      GITHUB_PAT: $(githubPAT)
-    displayName: Publish changes and bump versions
+  - template: ../templates/release/beachball-publish.yml
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api
