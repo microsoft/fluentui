@@ -25,166 +25,136 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
   <div>
     <div
       className=
-          ms-TextField
+          ms-DatePicker-readOnlyTextfieldWrapper
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            margin-bottom: 3px;
             position: relative;
-          }
-          & input[readonly] {
-            cursor: pointer;
-          }
-          & input::-ms-clear {
-            display: none;
           }
     >
       <div
-        className="ms-TextField-wrapper"
+        aria-expanded={false}
+        aria-haspopup="dialog"
+        aria-invalid={false}
+        className=
+            ms-DatePicker-readOnlytextfieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-color: #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              width: 100%;
+            }
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
+              outline: 0px;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            &:focus .ms-DatePicker-readOnlyTextfield {
+              border-color: #0078d4;
+            }
+            &:focus .ms-DatePicker-readOnlyTextfield:after {
+              border-radius: 3px;
+              border: 2px solid #0078d4;
+              bottom: -1px;
+              content: '';
+              left: -1px;
+              pointer-events: none;
+              position: absolute;
+              right: -1px;
+              top: -1px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-DatePicker-readOnlyTextfield:after {
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-DatePicker-readOnlyTextfield {
+              border-color: Highlight;
+            }
+        data-is-focusable={true}
+        data-ktp-target={true}
+        id="DatePicker0-label"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="combobox"
+        tabIndex={0}
       >
-        <div
+        <span
           className=
-              ms-TextField-fieldGroup
+              ms-DatePicker-readOnlyTextfield
               {
-                align-items: stretch;
-                background: #ffffff;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
                 border-radius: 2px;
                 border: 1px solid #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
-                cursor: text;
-                display: flex;
-                flex-direction: row;
+                color: #605e5c;
+                cursor: pointer;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 32px;
+                line-height: 30px;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 28px;
+                padding-top: 0;
                 position: relative;
+                text-overflow: ellipsis;
+                width: 100%;
               }
-              &:hover {
-                border-color: #323130;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                -ms-high-contrast-adjust: none;
-                border-color: Highlight;
-                forced-color-adjust: none;
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: WindowText;
+                color: GrayText;
               }
         >
-          <input
-            aria-describedby="TextFieldDescription3"
-            aria-expanded={false}
-            aria-haspopup="dialog"
-            aria-invalid={false}
-            className=
-                ms-TextField-field
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: none;
-                  border-radius: 0px;
-                  border: none;
-                  box-shadow: none;
-                  box-sizing: border-box;
-                  color: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  min-width: 0px;
-                  outline: 0px;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 24px;
-                  padding-top: 0;
-                  text-overflow: ellipsis;
-                  width: 100%;
-                }
-                &:active {
-                  outline: 0px;
-                }
-                &:focus {
-                  outline: 0px;
-                }
-                &:hover {
-                  outline: 0px;
-                }
-                &::-ms-clear {
-                  display: none;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  background: Window;
-                  color: WindowText;
-                }
-                &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-                  color: GrayText;
-                }
-                &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-                  color: GrayText;
-                }
-                &::-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-                  color: GrayText;
-                }
-            id="DatePicker0-label"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            readOnly={true}
-            required={false}
-            role="combobox"
-            type="text"
-            value=""
-          />
+           
+        </span>
+        <span
+          className=
+              ms-DatePicker-readOnlyIcon
+              {
+                height: 32px;
+                line-height: 30px;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+        >
           <i
             aria-hidden={true}
             className=
@@ -215,28 +185,12 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           >
             
           </i>
-        </div>
+        </span>
       </div>
-      <span
-        id="TextFieldDescription3"
-      >
-        <div
-          aria-live="assertive"
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #a4262c;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                margin-top: 5px;
-              }
-        />
-        
-      </span>
     </div>
+    <span
+      id="DatePicker-Description3"
+    />
   </div>
 </div>
 `;
