@@ -11,7 +11,7 @@ variables:
     parameters:
       skipComponentGovernanceDetection: false
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 schedules:
   # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
@@ -44,28 +44,6 @@ steps:
       yarn generate-version-files
     displayName: Generate version files
 
-  # The contents of this file is configured in the component governence tab of ADO
-  # - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
-  #  displayName: 'Generate NOTICE file for convergence'
-
-  # - task: DownloadBuildArtifacts@0
-  #  displayName: 'Download NOTICE.txt'
-  #  inputs:
-  #    downloadType: specific
-  #    itemPattern: '**/NOTICE.txt'
-
-  # - task: CopyFiles@2
-  #  displayName: 'Copy NOTICE to @fluentui/react-components'
-  #  inputs:
-  #    SourceFolder: '$(System.ArtifactsDirectory)'
-  #    Contents: '**/NOTICE.txt'
-  #    TargetFolder: '$(Build.SourcesDirectory)/packages/react-components'
-  #    flattenFolders: true
-
-  # - script: |
-  #    yarn copy-notices
-  #  displayName: Copy NOTICE to converged packages
-
   - script: |
       yarn run:published build --production --no-cache
     displayName: yarn build
@@ -84,7 +62,7 @@ steps:
     displayName: yarn bundle
 
   - script: |
-      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      yarn publish:beachball -n $(npmToken)
       git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
@@ -202,4 +180,4 @@ steps:
 
   - template: .devops/templates/cleanup.yml
     parameters:
-      checkForChangedFiles: false
+      checkForModifiedFiles: false

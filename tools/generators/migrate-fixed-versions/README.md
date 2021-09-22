@@ -15,10 +15,8 @@ Workspace Generator for migrating converged package dependencies from carets to 
 
 ## NOTES
 
-- Intended to be used on packages that will be consumed by partner web apps in prerelease phase of Fluent
-- Changes all `^9.x.x` versions to `9.x.x`
-- Only works on packages that have run the [migrated-converged-pkg](https://github.com/microsoft/fluentui/blob/master/tools/generators/migrate-converged-pkg/README.md) generator
-- Only works on packages that have the tag `platform:web` in `nx.json`
+- Can be used on any package in the monorepo
+- Changes all dependencies on converged `^9.x.x` versions to `9.x.x`
 
 ## Usage
 
@@ -60,4 +58,4 @@ Package/library name (needs to be full name of the package, scope included - e.g
 
 Type: `boolean`
 
-Run batch migration on all vNext packages with the tag `platform:web` in `nx.json`
+Run batch migration on all vNext packages

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { usePopper, resolvePositioningShorthand, mergeArrowOffset } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
+  applyTriggerPropsToChildren,
   makeMergeProps,
-  onlyChild,
   resolveShorthandProps,
   useControllableState,
   useId,
@@ -16,7 +16,6 @@ import type { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerP
 
 /**
  * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
  */
 export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
 
@@ -35,8 +34,6 @@ const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory Tooltip}
  */
 export const useTooltip = (
   props: TooltipProps,
@@ -201,7 +198,8 @@ export const useTooltip = (
   };
 
   // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-  const childTargetRef = useMergedRefs(child?.ref, targetRef);
+  const childWithRef = child as { ref?: React.Ref<unknown> } | undefined;
+  const childTargetRef = useMergedRefs(childWithRef?.ref, targetRef);
   if (popperOptions.target === undefined) {
     triggerProps.ref = childTargetRef;
   }
@@ -225,11 +223,7 @@ export const useTooltip = (
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  if (typeof state.children === 'function') {
-    (state.children as React.ReactNode) = state.children(triggerProps);
-  } else if (state.children) {
-    (state.children as React.ReactNode) = React.cloneElement(onlyChild(state.children), triggerProps);
-  }
+  state.children = applyTriggerPropsToChildren(state.children, triggerProps) as React.ReactElement;
 
   return state;
 };

@@ -62,7 +62,6 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the Tooltip slots based on the state
- * {@docCategory Tooltip}
  */
 export const useTooltipStyles = (state: TooltipState): TooltipState => {
   const styles = useStyles();
