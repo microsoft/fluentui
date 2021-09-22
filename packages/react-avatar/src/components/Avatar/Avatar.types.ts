@@ -41,6 +41,7 @@ export type AvatarProps = ComponentPropsCompat &
      * Size of the avatar in pixels.
      *
      * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
+     * based on design guidelines for the Avatar control.
      *
      * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
      * to override the rendered size.
@@ -50,16 +51,17 @@ export type AvatarProps = ComponentPropsCompat &
      *
      * @defaultvalue 32
      */
-    size?: AvatarSizeValue;
+    size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
     /**
-     * The avatar can have a square shape.
+     * The avatar can have a circular or square shape.
+     * @defaultvalue circular
      */
-    square?: boolean;
+    shape?: 'circular' | 'square';
 
     /**
      * Optional activity indicator
-     * * active: the avatar will be decorated according to activeDisplay
+     * * active: the avatar will be decorated according to activeAppearance
      * * inactive: the avatar will be reduced in size and partially transparent
      * * unset: normal display
      *
@@ -68,11 +70,11 @@ export type AvatarProps = ComponentPropsCompat &
     active?: 'active' | 'inactive' | 'unset';
 
     /**
-     * The type of visual treatment to use when `active="active"`
+     * The appearance when `active="active"`
      *
      * @defaultvalue ring
      */
-    activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    activeAppearance?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
 
     /**
      * The color when displaying either an icon or initials.
@@ -92,13 +94,6 @@ export type AvatarProps = ComponentPropsCompat &
      */
     idForColor?: string;
   };
-
-/**
- * Sizes for the Avatar
- *
- * This is a restricted list based on design guidelines for the Avatar control.
- */
-export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * A specific named color for the Avatar
@@ -143,7 +138,7 @@ export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
 /**
  * Names of AvatarProps that have a default value in useAvatar
  */
-export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label' | 'icon';
+export type AvatarDefaultedProps = 'shape' | 'size' | 'color' | 'activeAppearance' | 'getInitials' | 'label' | 'icon';
 
 export type AvatarState = ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> & {
   /**

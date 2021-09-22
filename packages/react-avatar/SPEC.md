@@ -40,7 +40,7 @@ Basic examples:
 ```jsx
 <Avatar name="Miguel Garcia" />
 <Avatar size={72} name="Mona Kane" image="./MonaKane.jpg" />
-<Avatar square icon={<IDBadgeIcon />} />
+<Avatar shape="square" icon={<IDBadgeIcon />} />
 ```
 
 Displaying a badge (\*\*subject to change pending final spec for the `Badge` component):
@@ -52,7 +52,7 @@ Displaying a badge (\*\*subject to change pending final spec for the `Badge` com
 With active state indication:
 
 ```jsx
-<Avatar name="Daisy Phillips" active="active" activeDisplay="ring-shadow" />
+<Avatar name="Daisy Phillips" active="active" activeAppearance="ring-shadow" />
 <Avatar name="Robin Counts" active="inactive" />
 ```
 
@@ -136,6 +136,7 @@ export type AvatarProps = ComponentProps &
      * Size of the avatar in pixels.
      *
      * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
+     * based on design guidelines for the Avatar control.
      *
      * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
      * to override the rendered size.
@@ -145,14 +146,17 @@ export type AvatarProps = ComponentProps &
      *
      * @defaultvalue 32
      */
-    size?: AvatarSizeValue;
+    size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
-    /** The avatar can have a square shape. */
-    square?: boolean;
+    /**
+     * The avatar can have a circular or square shape.
+     * @default circular
+     */
+    shape?: 'circular' | 'square';
 
     /**
      * Optional activity indicator
-     * * active: the avatar will be decorated according to activeDisplay
+     * * active: the avatar will be decorated according to activeAppearance
      * * inactive: the avatar will be reduced in size and partially transparent
      * * unset: normal display
      *
@@ -165,7 +169,7 @@ export type AvatarProps = ComponentProps &
      *
      * @defaultvalue ring
      */
-    activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    activeAppearance?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
 
     /**
      * The color when displaying either an icon or initials.
@@ -260,7 +264,7 @@ See [MIGRATION.md](https://github.com/microsoft/fluentui/blob/master/packages/re
 - **Active** - The `active` property affects the display of the avatar if set. There will be an animation when switching between active and inactive.
   - `unset` - Display at normal size/opacity.
   - `inactive` - Reduce to 80% opacity, and 87.5% size.
-  - `active` - Adorn with an extra visual such as a ring and/or shadow, based on the `activeDisplay` property.
+  - `active` - Adorn with an extra visual such as a ring and/or shadow, based on the `activeAppearance` property.
 
 ### Interaction
 
