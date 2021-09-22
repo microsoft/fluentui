@@ -7083,10 +7083,10 @@ bach@^1.0.0, bach@^1.2.0:
     async-settle "^1.0.0"
     now-and-later "^2.0.0"
 
-backfill-cache@^5.2.4:
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/backfill-cache/-/backfill-cache-5.2.4.tgz#4354933df98fc878aa38e137dcdcdbe78b5bdf38"
-  integrity sha512-5Kbm8lU1BbImlgVV53fgaxEhHnaKRjWe9KCy47e2VLP7Fy2ZYCiRLD9H7YBYTws1AfDn5QRA/y/3924j6/Cnzg==
+backfill-cache@^5.2.6:
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/backfill-cache/-/backfill-cache-5.2.6.tgz#5eb47c5e975e32837394c83ed4521467f15351bd"
+  integrity sha512-LTL2GRzU0LixZgKkfeFMQ3acshGNH7P/D0+Opf9I9vWPEHr/BUNWyoxvO3xNvyDBjo1emAqeRqDjrnHFmmvYIg==
   dependencies:
     "@azure/storage-blob" "12.1.2"
     "@rushstack/package-deps-hash" "^2.4.48"
@@ -7138,12 +7138,12 @@ backfill-utils-dotenv@^5.1.1:
     find-up "^5.0.0"
 
 backfill@^6.1.6:
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/backfill/-/backfill-6.1.7.tgz#3305dab5a06112f203170ccd366804a98e20e264"
-  integrity sha512-wCdbHImT+d8n3nAwnH3LSdsAijZUY+Cnmv260g0b4RboJNxn8agzBBfUjpKWY5Ovj9g+O4RboSmA77XtoA3AAQ==
+  version "6.1.9"
+  resolved "https://registry.yarnpkg.com/backfill/-/backfill-6.1.9.tgz#37790d2b5702a18529bd9300ea3d0c108e935d67"
+  integrity sha512-5M70W5s01I1F/PBFm+H4/P/b1JGIPsn+/sS2g9ol1bL/6i5LVbGv0Yh1YfCznJ6AoJmaQoLzUjiIfB3DH4YhqQ==
   dependencies:
     anymatch "^3.0.3"
-    backfill-cache "^5.2.4"
+    backfill-cache "^5.2.6"
     backfill-config "^6.1.3"
     backfill-hasher "^6.2.5"
     backfill-logger "^5.1.3"
