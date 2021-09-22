@@ -86,6 +86,11 @@ export const divProperties: Record<string, number>;
 // @public
 export const formProperties: Record<string, number>;
 
+// Warning: (ae-forgotten-export) The symbol "SomeEventName" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type ForwardRefComponent<Props> = SomeEventName extends keyof Props ? Required<Props>[SomeEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
+
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 

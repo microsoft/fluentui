@@ -2,9 +2,10 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Text } from './Text';
 import { isConformant } from '../../common/isConformant';
+import { TextProps } from './Text.types';
 
 describe('Text', () => {
-  isConformant({
+  isConformant<TextProps>({
     Component: Text,
     displayName: 'Text',
     testOptions: {
