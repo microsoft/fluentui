@@ -36,13 +36,14 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
 
     if (process.env.RELEASE_VNEXT) {
       return isConvergedPackage(packageJson) && packageJson.private !== true;
+    } else if (!isConvergedPackage(packageJson)) {
+      // v8 scope
+      return packageJson.private !== true || websitePackages.includes(packageJson.name);
     }
 
-    // v8 release scope
-    return packageJson.private !== true || websitePackages.includes(packageJson.name);
+    return false;
   })
-  .map(([packageName]) => `--to=${packageName}`)
-  .filter(Boolean);
+  .map(([packageName]) => `--to=${packageName}`);
 
 const lageArgs = [
   'run',
