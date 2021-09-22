@@ -40,7 +40,7 @@ export type AvatarProps = ComponentPropsCompat &
     /**
      * Size of the avatar in pixels.
      *
-     * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
+     * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
      * based on design guidelines for the Avatar control.
      *
      * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
