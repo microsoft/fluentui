@@ -1,0 +1,62 @@
+pr: none
+trigger: none
+
+# Customize build number to include major version
+# Example: v9_20201022.1
+name: 'v9_nightly_$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+  - group: 'Github and NPM secrets'
+  - template: ../templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
+  - name: release.vnext # Used to scope beachball to release only vnext packages
+    value: true
+
+pool: 'Self Host Ubuntu'
+
+schedules:
+  # Triggers the nightly release
+  # minute 0, hour 4 in UTC (5am in UTC+1), any day of month, any month, days 1-5 of week (M-F)
+  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+  - cron: '0 4 * * 1-5'
+    displayName: 'Daily release (M-F at 5am UTC+1)'
+    branches:
+      include:
+        - master
+
+workspace:
+  clean: all
+
+steps:
+  - template: ../templates/tools.yml
+
+  - template: ../templates/yarn-install.yml
+
+  - template: ../templates/release/git-auth.yml
+
+  # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
+  - script: |
+      commitSha=$(git log -n 1 --pretty=format:"%h")
+      yarn nx workspace-generator version-bump --all --bumpType prerelease --prereleaseTag "nightly.${commitSha}"
+      git add .
+      git commit -m "bump nightly versions"
+      yarn change --type prerelease --message "Release nightly v9"
+    displayName: 'Bump and commit nightly versions'
+
+  - template: ../templates/release/build-test-lint.yml
+
+  - script: |
+      yarn publish:beachball -n $(npmToken) --no-push
+      git reset --hard origin/master
+    env:
+      GITHUB_PAT: $(githubPAT)
+    displayName: Publish changes and bump version
+
+  # This would usually be run automatically (via a pipeline decorator from an extension), but the
+  # thorough cleanup step prevents it from working. So run it manually here.
+  - template: ../templates/release/component-governance.yml
+
+  - template: ../templates/cleanup.yml
+    parameters:
+      checkForModifiedFiles: false

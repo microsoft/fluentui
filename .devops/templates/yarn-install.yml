@@ -1,0 +1,5 @@
+steps:
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn

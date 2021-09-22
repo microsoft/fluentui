@@ -1,0 +1,7 @@
+steps:
+  - script: |
+      yarn publish:beachball -n $(npmToken)
+      git reset --hard origin/master
+    env:
+      GITHUB_PAT: $(githubPAT)
+    displayName: Publish changes and bump version

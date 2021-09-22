@@ -1,0 +1,8 @@
+steps:
+  - task: ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    inputs:
+      sourceScanPath: $(Agent.BuildDirectory)
+    condition: succeeded()
+    timeoutInMinutes: 5
+    continueOnError: true
