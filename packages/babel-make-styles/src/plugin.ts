@@ -527,7 +527,10 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               const evaluationResult = (nodePath.get('argument') as NodePath<t.Expression>).evaluate();
 
               if (!evaluationResult.confident) {
-                throw nodePath.buildCodeFrameError(
+                // This is undocumented but shows the specific statement that failed
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const deoptPath = (evaluationResult as any).deopt as NodePath | undefined;
+                throw (deoptPath || nodePath).buildCodeFrameError(
                   'Evaluation of a code fragment failed, this is a bug, please report it',
                 );
               }
@@ -547,7 +550,9 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
             const evaluationResult = argumentPath.evaluate();
 
             if (!evaluationResult.confident) {
-              throw argumentPath.buildCodeFrameError(
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const deoptPath = (evaluationResult as any).deopt as NodePath | undefined;
+              throw (deoptPath || argumentPath).buildCodeFrameError(
                 'Evaluation of a code fragment failed, this is a bug, please report it',
               );
             }
