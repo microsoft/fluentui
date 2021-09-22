@@ -123,9 +123,7 @@ const DividerExamples = (props: DividerProps) => {
         </DividerStory>
 
         <DividerStory label="Appearance">
-          <Divider {...props} appearance="default">
-            default
-          </Divider>
+          <Divider {...props}>default</Divider>
           <Divider {...props} appearance="subtle">
             subtle
           </Divider>
@@ -210,7 +208,7 @@ const DividerExamples = (props: DividerProps) => {
 
         <DividerStory label="Appearance" className="vertical">
           <div className="verticalContent">
-            <Divider {...props} appearance="default" vertical>
+            <Divider {...props} vertical>
               default
             </Divider>
             <Divider {...props} appearance="subtle" vertical>
