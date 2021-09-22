@@ -20,8 +20,8 @@ import {
   disabledOpacity,
   focusStrokeOuter,
   focusStrokeWidth,
-  neutralFillAltRecipe,
-  neutralFillAltRest,
+  neutralFillSecondaryRecipe,
+  neutralFillSecondaryRest,
   neutralFillStealthActive,
   neutralFillStealthHover,
   neutralFillStealthRecipe,
@@ -72,13 +72,13 @@ const expandCollapseHover = DesignToken.create<Swatch>('tree-item-expand-collaps
   },
 );
 
-const selectedExpandCollapseHover = DesignToken.create<Swatch>(
-  'tree-item-expand-collapse-selected-hover',
-).withDefault((target: HTMLElement) => {
-  const baseRecipe = neutralFillAltRecipe.getValueFor(target);
-  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
-  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
-});
+const selectedExpandCollapseHover = DesignToken.create<Swatch>('tree-item-expand-collapse-selected-hover').withDefault(
+  (target: HTMLElement) => {
+    const baseRecipe = neutralFillSecondaryRecipe.getValueFor(target);
+    const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
+    return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
+  },
+);
 
 export const treeItemStyles: (context: ElementDefinitionContext, definition: TreeItemOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -218,7 +218,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host(:not([disabled])[selected]) .positioning-region {
-      background: ${neutralFillAltRest};
+      background: ${neutralFillSecondaryRest};
     }
 
     :host(:not([disabled])[selected]) .expand-collapse-button:hover {

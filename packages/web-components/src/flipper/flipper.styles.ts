@@ -15,9 +15,9 @@ import {
   disabledOpacity,
   focusStrokeOuter,
   focusStrokeWidth,
-  neutralFillStealthActive,
-  neutralFillStealthHover,
-  neutralFillStealthRest,
+  neutralFillSecondaryRest,
+  neutralFillStrongActive,
+  neutralFillStrongHover,
   neutralFillStrongRest,
 } from '../design-tokens';
 
@@ -33,7 +33,7 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       margin: 0;
       fill: currentcolor;
       color: ${neutralFillStrongRest};
-      background: ${neutralFillStealthRest};
+      background: ${neutralFillSecondaryRest};
       box-sizing: border-box;
       border: calc(${focusStrokeWidth} * 1px) solid transparent;
       border-radius: calc(${controlCornerRadius} * 1px);
@@ -56,11 +56,11 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
     }
 
     :host(:not(.disabled):hover) {
-      background: ${neutralFillStealthHover};
+      color: ${neutralFillStrongHover};
     }
 
     :host(:not(.disabled):active) {
-      background: ${neutralFillStealthActive};
+      color: ${neutralFillStrongActive};
     }
 
     :host(:${focusVisible}) {

@@ -17,9 +17,9 @@ import {
   disabledOpacity,
   focusStrokeOuter,
   focusStrokeWidth,
-  neutralFillAltActive,
-  neutralFillAltHover,
-  neutralFillAltRest,
+  neutralFillSecondaryActive,
+  neutralFillSecondaryHover,
+  neutralFillSecondaryRest,
   neutralFillStealthActive,
   neutralFillStealthFocus,
   neutralFillStealthHover,
@@ -91,15 +91,15 @@ export const optionStyles: (
     }
 
     :host([aria-selected='true']) {
-      background: ${neutralFillAltRest};
+      background: ${neutralFillSecondaryRest};
     }
 
     :host(:not([disabled])[aria-selected='true']:hover) {
-      background: ${neutralFillAltHover};
+      background: ${neutralFillSecondaryHover};
     }
 
     :host(:not([disabled])[aria-selected='true']:active) {
-      background: ${neutralFillAltActive};
+      background: ${neutralFillSecondaryActive};
     }
 
     :host(:not([disabled]):not([aria-selected='true']):hover) {

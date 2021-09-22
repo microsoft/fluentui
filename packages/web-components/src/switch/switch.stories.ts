@@ -13,16 +13,20 @@ export default {
   },
 };
 
-const SwitchTemplate = ({ checked, disabled }) => `
+const SwitchTemplate = ({ checked, disabled, label }) => `
 <fluent-switch
   ${checked ? 'checked' : ''}
   ${disabled ? 'disabled' : ''}
-></fluent-switch>
+>${label}
+  <span slot="checked-message">On</span>
+  <span slot="unchecked-message">Off</span>
+</fluent-switch>
 `;
 
 export const Switch = SwitchTemplate.bind({});
 
 Switch.args = {
+  label: 'Label',
   checked: false,
   disabled: false,
 };

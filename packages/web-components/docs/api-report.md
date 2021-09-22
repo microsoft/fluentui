@@ -375,6 +375,8 @@ export class DesignSystemProvider extends FoundationElement {
     baseHeightMultiplier: number;
     baseHorizontalSpacingMultiplier: number;
     baseLayerLuminance: number;
+    // (undocumented)
+    connectedCallback(): void;
     controlCornerRadius: number;
     density: number;
     designUnit: number;
@@ -683,32 +685,17 @@ export const focusStrokeWidth: CSSDesignToken<number>;
 // @public (undocumented)
 export const foregroundOnAccentActive: CSSDesignToken<Swatch>;
 
-// @public @deprecated (undocumented)
-export const foregroundOnAccentActiveLarge: CSSDesignToken<Swatch>;
-
 // @public (undocumented)
 export const foregroundOnAccentFocus: CSSDesignToken<Swatch>;
 
-// @public @deprecated (undocumented)
-export const foregroundOnAccentFocusLarge: CSSDesignToken<Swatch>;
-
 // @public (undocumented)
 export const foregroundOnAccentHover: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const foregroundOnAccentHoverLarge: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const foregroundOnAccentLargeRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
 export const foregroundOnAccentRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
 export const foregroundOnAccentRest: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const foregroundOnAccentRestLarge: CSSDesignToken<Swatch>;
 
 // @public
 export const heightNumber: CSSDirective;
@@ -810,33 +797,6 @@ export const neutralFillActive: CSSDesignToken<Swatch>;
 export const neutralFillActiveDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
-export const neutralFillAltActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillAltActiveDelta: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillAltFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillAltFocusDelta: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillAltHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillAltHoverDelta: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillAltRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillAltRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillAltRestDelta: CSSDesignToken<number>;
-
-// @public (undocumented)
 export const neutralFillFocus: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
@@ -853,6 +813,33 @@ export const neutralFillInputActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInputActiveDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillInputAltActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillInputAltActiveDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillInputAltFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillInputAltFocusDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillInputAltHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillInputAltHoverDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillInputAltRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const neutralFillInputAltRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillInputAltRestDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const neutralFillInputFocus: CSSDesignToken<Swatch>;
@@ -879,13 +866,22 @@ export const neutralFillInputRestDelta: CSSDesignToken<number>;
 export const neutralFillLayerActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
-export const neutralFillLayerAltRecipe: DesignToken<ColorRecipe>;
+export const neutralFillLayerActiveDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillLayerAltRecipe: DesignToken<InteractiveColorRecipe>;
 
 // @public (undocumented)
 export const neutralFillLayerAltRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
+export const neutralFillLayerAltRestDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
 export const neutralFillLayerHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillLayerHoverDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const neutralFillLayerRecipe: DesignToken<InteractiveColorRecipe>;
@@ -904,6 +900,33 @@ export const neutralFillRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillRestDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillSecondaryActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillSecondaryActiveDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillSecondaryFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillSecondaryFocusDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillSecondaryHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillSecondaryHoverDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillSecondaryRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const neutralFillSecondaryRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillSecondaryRestDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const neutralFillStealthActive: CSSDesignToken<Swatch>;
@@ -1177,7 +1200,8 @@ export type PaletteRGB = Palette<SwatchRGB>;
 
 // @public (undocumented)
 export const PaletteRGB: Readonly<{
-    create(source: SwatchRGB): PaletteRGB;
+    create: typeof create;
+    from: typeof from;
 }>;
 
 // @public
@@ -1249,9 +1273,9 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
 // @public
 export enum StandardLuminance {
     // (undocumented)
-    DarkMode = 0.16,
+    DarkMode = 0.15,
     // (undocumented)
-    LightMode = 0.97
+    LightMode = 0.98
 }
 
 // Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
@@ -1426,6 +1450,8 @@ export const typeRampPlus6LineHeight: CSSDesignToken<string>;
 
 // Warnings were encountered during analysis:
 //
+// dist/dts/color/palette.d.ts:70:5 - (ae-forgotten-export) The symbol "create" needs to be exported by the entry point index.d.ts
+// dist/dts/color/palette.d.ts:71:5 - (ae-forgotten-export) The symbol "from" needs to be exported by the entry point index.d.ts
 // dist/dts/custom-elements.d.ts:49:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
 // dist/dts/custom-elements.d.ts:51:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
 // dist/dts/custom-elements.d.ts:54:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal

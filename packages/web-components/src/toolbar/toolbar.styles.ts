@@ -6,91 +6,82 @@ import {
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
-import { SystemColors } from "@microsoft/fast-web-utilities";
-import {
-    designUnit,
-  fillColor,
-  focusStrokeWidth,
-  neutralStrokeFocus,
-  strokeWidth,
-} from '../design-tokens';
+import { SystemColors } from '@microsoft/fast-web-utilities';
+import { designUnit, fillColor, focusStrokeWidth, neutralStrokeFocus, strokeWidth } from '../design-tokens';
 
 export const toolbarStyles: (
   context: ElementDefinitionContext,
-  definition: FoundationElementDefinition
-) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: FoundationElementDefinition
-) =>
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
-      ${display("inline-flex")} :host {
-          --toolbar-item-gap: calc(${designUnit} * 1px);
-          background: ${fillColor};
-          fill: currentcolor;
-          padding: var(--toolbar-item-gap);
-          box-sizing: border-box;
-          align-items: center;
-      }
-
-      :host(${focusVisible}) {
-          outline: calc(${strokeWidth} * 1px) solid ${neutralStrokeFocus};
-      }
-
-      .positioning-region {
-          align-items: center;
-          display: inline-flex;
-          flex-flow: row wrap;
-          justify-content: flex-start;
-          flex-grow: 1;
-      }
-
-      :host([orientation="vertical"]) .positioning-region {
-          flex-direction: column;
-          align-items: start;
-      }
-
-      ::slotted(:not([slot])) {
-          flex: 0 0 auto;
-          margin: 0 var(--toolbar-item-gap);
-      }
-
-      :host([orientation="vertical"]) ::slotted(:not([slot])) {
-          margin: var(--toolbar-item-gap) 0;
-      }
-
-      :host([orientation="vertical"]) {
-        display: inline-flex;
-        flex-direction: column;
+    ${display('inline-flex')} :host {
+      --toolbar-item-gap: calc(${designUnit} * 1px);
+      background: ${fillColor};
+      fill: currentcolor;
+      padding: var(--toolbar-item-gap);
+      box-sizing: border-box;
+      align-items: center;
     }
 
-      .start,
-      .end {
-          display: flex;
-          align-items: center;
-      }
+    :host(${focusVisible}) {
+      outline: calc(${strokeWidth} * 1px) solid ${neutralStrokeFocus};
+    }
 
-      .end {
-        margin-inline-start: auto;
-      }
+    .positioning-region {
+      align-items: center;
+      display: inline-flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      flex-grow: 1;
+    }
 
-      .start__hidden,
-      .end__hidden {
-          display: none;
-      }
+    :host([orientation='vertical']) .positioning-region {
+      flex-direction: column;
+      align-items: start;
+    }
 
-      ::slotted(svg) {
-          ${/* Glyph size is temporary - replace when adaptive typography is figured out */ ""}
-          width: 16px;
-          height: 16px;
-      }
+    ::slotted(:not([slot])) {
+      flex: 0 0 auto;
+      margin: 0 var(--toolbar-item-gap);
+    }
+
+    :host([orientation='vertical']) ::slotted(:not([slot])) {
+      margin: var(--toolbar-item-gap) 0;
+    }
+
+    :host([orientation='vertical']) {
+      display: inline-flex;
+      flex-direction: column;
+    }
+
+    .start,
+    .end {
+      display: flex;
+      align-items: center;
+    }
+
+    .end {
+      margin-inline-start: auto;
+    }
+
+    .start__hidden,
+    .end__hidden {
+      display: none;
+    }
+
+    ::slotted(svg) {
+      ${/* Glyph size is temporary - replace when adaptive typography is figured out */ ''}
+      width: 16px;
+      height: 16px;
+    }
   `.withBehaviors(
-      forcedColorsStylesheetBehavior(
-          css`
-          :host(:${focusVisible}) {
-              box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${SystemColors.Highlight};
-              color: ${SystemColors.ButtonText};
-              forced-color-adjust: none;
-          }
-      `
-      )
+    forcedColorsStylesheetBehavior(
+      css`
+        :host(:${focusVisible}) {
+          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${SystemColors.Highlight};
+          color: ${SystemColors.ButtonText};
+          forced-color-adjust: none;
+        }
+      `,
+    ),
   );

@@ -17,9 +17,11 @@ import {
 } from '../design-tokens';
 import { heightNumber } from '../styles';
 
-export const tabsStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
-  (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-    css`
+export const tabsStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+  css`
       ${display('grid')} :host {
         box-sizing: border-box;
         font-family: ${bodyFont};
@@ -107,13 +109,13 @@ export const tabsStyles: (context: ElementDefinitionContext, definition: Foundat
         transition: transform 0.2s linear;
       }
     `.withBehaviors(
-      forcedColorsStylesheetBehavior(
-        css`
-          .activeIndicator,
-          :host(.vertical) .activeIndicator {
-            forced-color-adjust: none;
-            background: ${SystemColors.Highlight};
-          }
-        `,
-      ),
-    );
+    forcedColorsStylesheetBehavior(
+      css`
+        .activeIndicator,
+        :host(.vertical) .activeIndicator {
+          forced-color-adjust: none;
+          background: ${SystemColors.Highlight};
+        }
+      `,
+    ),
+  );

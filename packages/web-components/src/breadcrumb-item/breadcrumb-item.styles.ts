@@ -28,8 +28,9 @@ export const breadcrumbItemStyles: (
   css`
     ${display('inline-flex')} :host {
       background: transparent;
-      box-sizing: border-box;
+      color: ${neutralForegroundRest};
       fill: currentcolor;
+      box-sizing: border-box;
       font-family: ${bodyFont};
       font-size: ${typeRampBaseFontSize};
       line-height: ${typeRampBaseLineHeight};
@@ -48,10 +49,10 @@ export const breadcrumbItemStyles: (
       position: relative;
       align-items: center;
       box-sizing: border-box;
-      color: ${neutralForegroundRest};
+      color: inherit;
+      fill: inherit;
       cursor: pointer;
       display: flex;
-      fill: inherit;
       outline: none;
       text-decoration: none;
       white-space: nowrap;

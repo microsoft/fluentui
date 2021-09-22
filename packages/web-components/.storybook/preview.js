@@ -1,4 +1,7 @@
+import { addons } from '@storybook/addons';
+import { DOCS_RENDERED } from '@storybook/core-events';
 import * as Fluent from '../src/index-rollup';
+import { fillColor, neutralLayer1, neutralLayer2 } from '../src/design-tokens';
 import webcomponentsTheme from './theme';
 import { toggleBgMode, toggleLtr } from '../public/switches';
 
@@ -35,3 +38,11 @@ export const parameters = {
     theme: webcomponentsTheme, // override the default Storybook theme with a custom fluent theme
   },
 };
+
+addons.getChannel().addListener(DOCS_RENDERED, name => {
+  if (name.toLowerCase() === 'components/accordion' || name.toLowerCase() === 'components/card') {
+    fillColor.setValueFor(document.body, neutralLayer2);
+  } else {
+    fillColor.setValueFor(document.body, neutralLayer1);
+  }
+});

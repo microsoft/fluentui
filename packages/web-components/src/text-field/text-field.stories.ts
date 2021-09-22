@@ -90,7 +90,7 @@ const TextFieldTemplate = ({
 export const TextField = TextFieldTemplate.bind({});
 
 TextField.args = {
-  placeholder: '',
+  placeholder: 'placeholder',
   autoFocus: false,
   disabled: false,
   readonly: false,

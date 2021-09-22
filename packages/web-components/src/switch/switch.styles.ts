@@ -21,10 +21,10 @@ import {
   foregroundOnAccentActive,
   foregroundOnAccentHover,
   foregroundOnAccentRest,
-  neutralFillAltActive,
-  neutralFillAltFocus,
-  neutralFillAltHover,
-  neutralFillAltRest,
+  neutralFillInputAltActive,
+  neutralFillInputAltFocus,
+  neutralFillInputAltHover,
+  neutralFillInputAltRest,
   neutralForegroundRest,
   neutralStrokeStrongActive,
   neutralStrokeStrongHover,
@@ -75,24 +75,24 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       box-sizing: border-box;
       width: calc(((${heightNumber} / 2) + ${designUnit}) * 2px);
       height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
-      background: ${neutralFillAltRest};
+      background: ${neutralFillInputAltRest};
       border-radius: calc(${heightNumber} * 1px);
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
     }
 
     :host(:enabled:hover) .switch {
-      background: ${neutralFillAltHover};
+      background: ${neutralFillInputAltHover};
       border-color: ${neutralStrokeStrongHover};
     }
 
     :host(:enabled:active) .switch {
-      background: ${neutralFillAltActive};
+      background: ${neutralFillInputAltActive};
       border-color: ${neutralStrokeStrongActive};
     }
 
     :host(:${focusVisible}) .switch {
       box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
-      background: ${neutralFillAltFocus};
+      background: ${neutralFillInputAltFocus};
       border-color: ${focusStrokeOuter};
     }
 

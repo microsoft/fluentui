@@ -12,7 +12,8 @@ export default {
 };
 
 const AnchorTemplate = ({ appearance, label }) => `
-  <fluent-anchor 
+  <fluent-anchor
+    href="javascript:void"
     ${appearance ? `appearance="${appearance}"` : ''}
   >
     ${label}

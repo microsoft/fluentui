@@ -28,6 +28,7 @@ const ComboboxTemplate = ({ appearance, autocomplete, position, required }) => `
     ${appearance ? `autocomplete="${autocomplete}"` : ''}
     ${required ? 'required' : ''}
     ${position ? `position="${position}"` : ''}
+    style="margin-bottom: 500px;"
   >
     <fluent-option>Please Please Me</fluent-option>
     <fluent-option>With The Beatles</fluent-option>

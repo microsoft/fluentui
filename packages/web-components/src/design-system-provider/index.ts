@@ -143,15 +143,21 @@ export class DesignSystemProvider extends FoundationElement {
   constructor() {
     super();
 
-    // If fillColor changes or is removed, we need to
+    // If fillColor or baseLayerLuminance change, we need to
     // re-evaluate whether we should have paint styles applied
-    Observable.getNotifier(this).subscribe(
-      {
-        handleChange: this.noPaintChanged.bind(this),
-      },
-      'fillColor',
-    );
+    const subscriber = {
+      handleChange: this.noPaintChanged.bind(this),
+    };
+    Observable.getNotifier(this).subscribe(subscriber, 'fillColor');
+    Observable.getNotifier(this).subscribe(subscriber, 'baseLayerLuminance');
   }
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    this.noPaintChanged();
+  }
+
   /**
    * Used to instruct the FluentDesignSystemProvider
    * that it should not set the CSS
@@ -163,7 +169,7 @@ export class DesignSystemProvider extends FoundationElement {
   @attr({ attribute: 'no-paint', mode: 'boolean' })
   public noPaint = false;
   private noPaintChanged() {
-    if (!this.noPaint && this.fillColor !== void 0) {
+    if (!this.noPaint && (this.fillColor !== void 0 || this.baseLayerLuminance)) {
       this.$fastController.addStyles(backgroundStyles);
     } else {
       this.$fastController.removeStyles(backgroundStyles);
@@ -180,6 +186,7 @@ export class DesignSystemProvider extends FoundationElement {
   @attr({
     attribute: 'fill-color',
     converter: swatchConverter,
+    mode: 'fromView',
   })
   @designToken(fillColor)
   public fillColor: Swatch;

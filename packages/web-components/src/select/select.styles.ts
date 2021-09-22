@@ -21,11 +21,11 @@ import {
   focusStrokeWidth,
   layerCornerRadius,
   neutralFillActive,
-  neutralFillAltActive,
-  neutralFillAltHover,
-  neutralFillAltRest,
   neutralFillHover,
   neutralFillRest,
+  neutralFillSecondaryActive,
+  neutralFillSecondaryHover,
+  neutralFillSecondaryRest,
   neutralFillStealthActive,
   neutralFillStealthHover,
   neutralFillStealthRest,
@@ -43,17 +43,17 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
   definition: SelectOptions,
 ) => css`
   :host {
-    background: ${neutralFillAltRest};
+    background: ${neutralFillSecondaryRest};
     border-color: transparent;
   }
 
   :host(:not([disabled]):not([open]):hover) {
-    background: ${neutralFillAltHover};
+    background: ${neutralFillSecondaryHover};
     border-color: transparent;
   }
 
   :host(:not([disabled]):not([open]):active) {
-    background: ${neutralFillAltActive};
+    background: ${neutralFillSecondaryActive};
     border-color: transparent;
   }
 `;
@@ -81,7 +81,8 @@ export const selectStealthStyles: (context: ElementDefinitionContext, definition
 export const selectStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${neutralStrokeControlRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
+        border-box ${neutralStrokeControlRest};
       border: calc(${strokeWidth} * 1px) solid transparent;
       border-radius: calc(${controlCornerRadius} * 1px);
       box-sizing: border-box;

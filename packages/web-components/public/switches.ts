@@ -1,17 +1,11 @@
-import { fillColor, StandardLuminance, SwatchRGB } from '../src/index';
+import { baseLayerLuminance, StandardLuminance } from '../src/index';
 
 export function toggleBgMode() {
   const bgChecked = document.getElementById('luminance-switch')!.classList.contains('checked');
   if (bgChecked) {
-    fillColor.setValueFor(
-      document.body,
-      SwatchRGB.create(StandardLuminance.LightMode, StandardLuminance.LightMode, StandardLuminance.LightMode),
-    );
+    baseLayerLuminance.setValueFor(document.body, StandardLuminance.LightMode);
   } else {
-    fillColor.setValueFor(
-      document.body,
-      SwatchRGB.create(StandardLuminance.DarkMode, StandardLuminance.DarkMode, StandardLuminance.DarkMode),
-    );
+    baseLayerLuminance.setValueFor(document.body, StandardLuminance.DarkMode);
   }
 }
 

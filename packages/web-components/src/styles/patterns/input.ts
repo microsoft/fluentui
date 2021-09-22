@@ -14,17 +14,18 @@ import {
   controlCornerRadius,
   disabledOpacity,
   focusStrokeWidth,
-  neutralFillAltHover,
-  neutralFillAltRecipe,
-  neutralFillAltRest,
   neutralFillInputFocus,
   neutralFillInputHover,
   neutralFillInputRecipe,
   neutralFillInputRest,
+  neutralFillSecondaryHover,
+  neutralFillSecondaryRecipe,
+  neutralFillSecondaryRest,
   neutralForegroundHintRecipe,
   neutralForegroundRest,
   neutralStrokeInputHover,
   neutralStrokeInputRest,
+  neutralStrokeRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -45,7 +46,7 @@ const placeholderHover = DesignToken.create<Swatch>('input-placeholder-hover').w
 
 const filledPlaceholderRest = DesignToken.create<Swatch>('input-filled-placeholder-rest').withDefault(
   (target: HTMLElement) => {
-    const baseRecipe = neutralFillAltRecipe.getValueFor(target);
+    const baseRecipe = neutralFillSecondaryRecipe.getValueFor(target);
     const hintRecipe = neutralForegroundHintRecipe.getValueFor(target);
     return hintRecipe.evaluate(target, baseRecipe.evaluate(target).rest);
   },
@@ -53,7 +54,7 @@ const filledPlaceholderRest = DesignToken.create<Swatch>('input-filled-placehold
 
 const filledPlaceholderHover = DesignToken.create<Swatch>('input-filled-placeholder-hover').withDefault(
   (target: HTMLElement) => {
-    const baseRecipe = neutralFillAltRecipe.getValueFor(target);
+    const baseRecipe = neutralFillSecondaryRecipe.getValueFor(target);
     const hintRecipe = neutralForegroundHintRecipe.getValueFor(target);
     return hintRecipe.evaluate(target, baseRecipe.evaluate(target).hover);
   },
@@ -149,6 +150,11 @@ export const inputStyles: (
   :host([disabled]) {
     opacity: ${disabledOpacity};
   }
+
+  :host([disabled]) ${rootSelector} {
+    background: padding-box linear-gradient(${neutralFillInputRest}, ${neutralFillInputRest}),
+      border-box ${neutralStrokeRest};
+  }
 `;
 
 /**
@@ -204,12 +210,12 @@ export const inputFilledStyles: (
   rootSelector: string,
 ) => css`
   :host ${rootSelector} {
-    background: ${neutralFillAltRest};
+    background: ${neutralFillSecondaryRest};
     border-color: transparent;
   }
 
   :host(:hover:not([disabled]):not(:focus-within)) ${rootSelector} {
-    background: ${neutralFillAltHover};
+    background: ${neutralFillSecondaryHover};
     border-color: transparent;
   }
 

@@ -71,7 +71,8 @@ export const baseButtonStyles = (
     }
 
     :host .control {
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${neutralStrokeControlRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
+        border-box ${neutralStrokeControlRest};
       border: calc(${strokeWidth} * 1px) solid transparent;
       flex-grow: 1;
       box-sizing: border-box;
@@ -335,38 +336,17 @@ export const LightweightButtonStyles = (
     }
 
     :host .control {
-      padding: 0;
-      height: initial;
-      background: transparent !important;
+      background: ${neutralFillStealthRest};
     }
 
     :host .control${interactivitySelector}:hover {
+      background: ${neutralFillStealthHover};
       color: ${accentForegroundHover};
     }
 
     :host .control${interactivitySelector}:active {
+      background: ${neutralFillStealthActive};
       color: ${accentForegroundActive};
-    }
-
-    :host .content {
-      position: relative;
-    }
-
-    :host .content::before {
-      content: '';
-      display: block;
-      height: calc(${strokeWidth} * 1px);
-      position: absolute;
-      top: calc(1em + 3px);
-      width: 100%;
-      background: transparent;
-    }
-
-    :host .control${interactivitySelector}:hover .content::before {
-      background: ${accentForegroundHover};
-    }
-    :host .control${interactivitySelector}:active .content::before {
-      background: ${accentForegroundActive};
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
@@ -381,22 +361,12 @@ export const LightweightButtonStyles = (
           background: ${SystemColors.ButtonFace};
           color: ${SystemColors.Highlight};
         }
-        :host .control${interactivitySelector}:hover .content::before,
-        :host .control${interactivitySelector}:active .content::before,
-        :host .control:${focusVisible} .content::before {
-          background: ${SystemColors.Highlight};
-        }
 
         :host([href]) .control:hover,
         :host([href]) .control:${focusVisible} {
           background: ${SystemColors.ButtonFace};
           box-shadow: none;
           color: ${SystemColors.LinkText};
-        }
-
-        :host([href]) .control:hover .content::before,
-        :host([href]) .control:${focusVisible} .content::before {
-          background: ${SystemColors.LinkText};
         }
       `,
     ),

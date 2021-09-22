@@ -14,7 +14,6 @@ import {
   accentFillHover,
   accentFillRest,
   controlCornerRadius,
-  density,
   designUnit,
   disabledOpacity,
   fillColor,
@@ -34,7 +33,7 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
   css`
     ${display('inline-grid')} :host {
       --thumb-size: calc((${heightNumber} / 2) + ${designUnit} + (${strokeWidth} * 2));
-      --thumb-translate: calc(var(--thumb-size) * 0.5);
+      --thumb-translate: calc(var(--thumb-size) * -0.5 + var(--track-width) / 2);
       --track-overhang: calc((${designUnit} / 2) * -1);
       --track-width: ${designUnit};
       align-items: center;
@@ -124,13 +123,11 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
       right: calc(var(--track-overhang) * 1px);
       left: calc(var(--track-overhang) * 1px);
       align-self: start;
-      margin-top: calc((${designUnit} + calc(${density} + 5)) * 1px);
       height: calc(var(--track-width) * 1px);
     }
     :host(.vertical) .track {
       top: calc(var(--track-overhang) * 1px);
       bottom: calc(var(--track-overhang) * 1px);
-      margin-inline-start: calc((${designUnit} + calc(${density} + 5)) * 1px);
       width: calc(var(--track-width) * 1px);
       height: 100%;
     }
