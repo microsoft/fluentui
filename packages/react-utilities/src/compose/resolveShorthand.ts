@@ -2,10 +2,10 @@ import { isValidElement } from 'react';
 import type { DefaultObjectShorthandProps, ShorthandProps } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {
+export type ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> = {
   required?: Required;
   defaultProps?: Props;
-}
+};
 
 /**
  * Resolves ShorthandProps into ObjectShorthandProps, to ensure normalization of the signature

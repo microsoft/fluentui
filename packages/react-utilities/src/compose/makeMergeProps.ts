@@ -12,18 +12,18 @@ type GenericDictionary = Record<string, any>;
  *
  * @internal
  */
-interface Dictionary {
+type Dictionary = {
   [className: string]: boolean;
-}
+};
 
 /**
  * Serializable object.
  *
  * @internal
  */
-interface SerializableObject {
+type SerializableObject = {
   toString?: () => string;
-}
+};
 
 /**
  * css input type.
