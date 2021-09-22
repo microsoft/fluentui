@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Moving clamp, getRTLSafeKey, and on utilities into the react-utilities package.",
+  "comment": "Moving clamp and getRTLSafeKey utilities into the react-utilities package.",
   "packageName": "@fluentui/react-slider",
   "email": "czearing@outlook.com",
   "dependentChangeType": "none"
