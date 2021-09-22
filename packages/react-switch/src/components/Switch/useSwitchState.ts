@@ -20,6 +20,7 @@ type SwitchInternalState = {
   disposables: (() => void)[];
 };
 
+// TODO: This should be replaced with a useEvent hook
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
   element.addEventListener(eventName, callback);
