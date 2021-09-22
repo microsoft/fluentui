@@ -267,7 +267,7 @@ describe('DatePicker', () => {
     spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
     safeCreate(<DatePickerBase />, datePicker => {
-      const input = datePicker.root.findByType('input');
+      const input = datePicker.root.findAllByType('div')[3];
 
       // open the datepicker then dismiss
       renderer.act(() => {
@@ -345,7 +345,7 @@ describe('DatePicker', () => {
   describe('when Calendar properties are not specified', () => {
     const datePicker = shallow(<DatePickerBase />);
     datePicker
-      .find(TextField)
+      .find('div[role="combobox"]')
       ?.props()
       .onClick?.({} as any);
     const calendarProps = datePicker.find(Calendar).props();
@@ -402,7 +402,7 @@ describe('DatePicker', () => {
       />,
     );
     datePicker
-      .find(TextField)
+      .find('div[role="combobox"]')
       ?.props()
       .onClick?.({} as any);
 
