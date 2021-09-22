@@ -3576,6 +3576,8 @@ export interface IDatePickerStyles {
     // (undocumented)
     icon: IStyle;
     // (undocumented)
+    readOnlyIcon?: IStyle;
+    // (undocumented)
     readOnlyTextfield?: IStyle;
     // (undocumented)
     readOnlyTextfieldDescription?: IStyle;
