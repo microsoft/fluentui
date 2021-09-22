@@ -3,12 +3,9 @@
  * declaration with a fallback: var(--value, fallback).
  * If an undefined or non-string cssVariable is passed in, the fallback is returned directly.
  */
-export function mergeFallbackCssVariable(
-  cssVariable: string | undefined,
-  fallback: string | undefined,
-): string | undefined {
+export function mergeFallbackCssVariable(cssVariable: string | undefined, fallback: string): string {
   if (typeof cssVariable !== 'string') {
-    return fallback ? fallback : cssVariable;
+    return fallback;
   }
 
   const variableParts = cssVariable
@@ -21,12 +18,5 @@ export function mergeFallbackCssVariable(
     return `var(${variableParts[0]}, ${fallback})`;
   }
   // if the original cssVariable couldn't be processed, return the fallback
-  else if (fallback) {
-    return fallback;
-  }
-
-  // otherwise return the original value unchanged
-  else {
-    return cssVariable;
-  }
+  return fallback;
 }
