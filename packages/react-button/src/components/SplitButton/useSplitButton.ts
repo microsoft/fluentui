@@ -19,18 +19,15 @@ export const useSplitButton = (
   const resolvedShorthandProps = resolveShorthandProps(props, splitButtonShorthandProps);
   const { className } = props;
   const {
+    appearance,
     button,
     buttonRef,
-    circular,
     disabled,
     disabledFocusable,
     menuButton,
     menuButtonRef,
-    outline,
-    primary,
     size = 'medium',
-    subtle,
-    transparent,
+    shape,
     ...userProps
   } = resolvedShorthandProps;
 
@@ -50,14 +47,11 @@ export const useSplitButton = (
         as: 'button',
         // TODO: To be resolved when moving to simplified prop merging
         // ref: useMergedRefs(buttonRef, buttonInternalRef),
-        circular,
+        appearance,
         disabled,
         disabledFocusable,
-        outline,
-        primary,
+        shape,
         size,
-        subtle,
-        transparent,
         ...userProps,
         ...button,
       },
@@ -66,14 +60,11 @@ export const useSplitButton = (
         as: 'button',
         // TODO: To be resolved when moving to simplified prop merging
         // ref: useMergedRefs(menuButtonRef, menuButtonInternalRef),
-        circular,
+        appearance,
         disabled,
         disabledFocusable,
-        outline,
-        primary,
+        shape,
         size,
-        subtle,
-        transparent,
         ...menuButton,
       },
     },
