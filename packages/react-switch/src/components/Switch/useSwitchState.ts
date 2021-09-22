@@ -3,7 +3,7 @@ import { useBoolean, useControllableState, useEventCallback, useMergedRefs } fro
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SwitchState } from './Switch.types';
 
-interface SwitchInternalState {
+type SwitchInternalState = {
   /**
    * The internal rendered value of the Switch.
    */
@@ -18,7 +18,7 @@ interface SwitchInternalState {
    * Disposable events for the Switch.
    */
   disposables: (() => void)[];
-}
+};
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
