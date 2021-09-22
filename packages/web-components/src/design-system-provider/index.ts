@@ -38,6 +38,7 @@ import {
   disabledOpacity,
   fillColor,
   focusStrokeWidth,
+  layerCornerRadius,
   neutralFillActiveDelta,
   neutralFillFocusDelta,
   neutralFillHoverDelta,
@@ -337,9 +338,9 @@ export class DesignSystemProvider extends FoundationElement {
    * The corner radius applied to controls.
    *
    * @remarks
-   * HTML attribute: corner-radius
+   * HTML attribute: control-corner-radius
    *
-   * CSS custom property: --corner-radius
+   * CSS custom property: --control-corner-radius
    */
   @attr({
     attribute: 'control-corner-radius',
@@ -347,6 +348,21 @@ export class DesignSystemProvider extends FoundationElement {
   })
   @designToken(controlCornerRadius)
   public controlCornerRadius: number;
+
+  /**
+   * The corner radius applied to layers.
+   *
+   * @remarks
+   * HTML attribute: layer-corner-radius
+   *
+   * CSS custom property: --layer-corner-radius
+   */
+  @attr({
+    attribute: 'layer-corner-radius',
+    converter: nullableNumberConverter,
+  })
+  @designToken(layerCornerRadius)
+  public layerCornerRadius: number;
 
   /**
    * The width of the standard stroke applied to stroke components in pixels.

@@ -1,8 +1,8 @@
-import { isDark } from '../..';
 import { Palette } from '../palette';
 import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 import { directionByIsDark } from '../utilities/direction-by-is-dark';
+import { isDark } from '../utilities/is-dark';
 
 /**
  * @internal
