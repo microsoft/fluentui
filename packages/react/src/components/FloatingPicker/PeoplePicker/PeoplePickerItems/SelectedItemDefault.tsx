@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
-import { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
 import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
+import type { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
 
 const styles: any = stylesImport;
 

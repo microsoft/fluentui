@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 
-export interface UseOnClickOrScrollOutsideOptions {
+export type UseOnClickOrScrollOutsideOptions = {
   /**
    * The element to listen for the click event
    */
@@ -27,7 +27,7 @@ export interface UseOnClickOrScrollOutsideOptions {
    * Called if the click is outside the element refs
    */
   callback: (ev: MouseEvent | TouchEvent) => void;
-}
+};
 
 /**
  * Utility to perform checks where a click/touch event was made outside a component
@@ -67,6 +67,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
       // use capture phase because React can update DOM before the event bubbles to the document
       element?.addEventListener('click', conditionalHandler, true);
       element?.addEventListener('touchstart', conditionalHandler, true);
+      element?.addEventListener('contextmenu', conditionalHandler, true);
     }
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
@@ -77,6 +78,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     return () => {
       element?.removeEventListener('click', conditionalHandler, true);
       element?.removeEventListener('touchstart', conditionalHandler, true);
+      element?.removeEventListener('contextmenu', conditionalHandler, true);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;

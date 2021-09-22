@@ -2,8 +2,7 @@ import * as React from 'react';
 import { styled } from '../../Utilities';
 import { getStyles } from './GroupFooter.styles';
 import { GroupFooterBase } from './GroupFooter.base';
-import { IGroupFooterProps, IGroupFooterStyles, IGroupFooterStyleProps } from './GroupFooter.types';
-export { IGroupFooterProps };
+import type { IGroupFooterProps, IGroupFooterStyles, IGroupFooterStyleProps } from './GroupFooter.types';
 
 export const GroupFooter: React.FunctionComponent<IGroupFooterProps> = styled<
   IGroupFooterProps,
@@ -12,3 +11,5 @@ export const GroupFooter: React.FunctionComponent<IGroupFooterProps> = styled<
 >(GroupFooterBase, getStyles, undefined, {
   scope: 'GroupFooter',
 });
+
+export type { IGroupFooterProps };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccordionHeaderContextValue, AccordionHeaderState } from './AccordionHeader.types';
+import type { AccordionHeaderContextValue } from './AccordionHeader.types';
 
 export const AccordionHeaderContext = React.createContext<AccordionHeaderContextValue>({
   open: false,
@@ -9,14 +9,3 @@ export const AccordionHeaderContext = React.createContext<AccordionHeaderContext
 });
 
 export const useAccordionHeaderContext = () => React.useContext(AccordionHeaderContext);
-
-export const useAccordionHeaderContextValue = ({ disabled, expandIconPosition, open, size }: AccordionHeaderState) =>
-  React.useMemo<AccordionHeaderContextValue>(
-    () => ({
-      disabled,
-      expandIconPosition,
-      open,
-      size,
-    }),
-    [disabled, expandIconPosition, open, size],
-  );

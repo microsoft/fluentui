@@ -404,8 +404,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     legend: ILegend,
     color: string,
   ): React.ReactNode | string {
-    const { theme } = this.props;
-    const { palette } = theme!;
     const svgParentProps: React.SVGAttributes<SVGElement> = {
       className: classNames.shape,
     };
@@ -413,7 +411,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       fill: color,
       strokeWidth: 2,
       stroke: legend.color,
-      opacity: color === palette.white ? 0.6 : legend.opacity ? legend.opacity : '',
     };
     return (
       <Shape

@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { LinkState } from './Link.types';
-import { linkShorthandProps } from './useLink';
+import { getSlots } from '@fluentui/react-utilities';
+import type { LinkSlots, LinkState } from './Link.types';
 
 /**
- * Defines the render function. Given the state of a Link, renders it.
+ * Renders a Link component by passing the state defined props to the appropriate slots.
  */
 export const renderLink = (state: LinkState) => {
-  const { slots, slotProps } = getSlotsCompat(state, linkShorthandProps);
+  const { slots, slotProps } = getSlots<LinkSlots>(state, ['root']);
 
   return <slots.root {...slotProps.root} />;
 };

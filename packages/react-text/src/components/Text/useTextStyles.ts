@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { TextState } from './Text.types';
+import type { TextState } from './Text.types';
 
 /**
  * Styles for the root slot
@@ -102,7 +102,8 @@ const useStyles = makeStyles({
  */
 export const useTextStyles = (state: TextState): TextState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+
+  state.root.className = mergeClasses(
     styles.root,
     state.wrap === false && styles.nowrap,
     state.truncate && styles.truncate,
@@ -127,7 +128,7 @@ export const useTextStyles = (state: TextState): TextState => {
     state.align === 'center' && styles.alignCenter,
     state.align === 'end' && styles.alignEnd,
     state.align === 'justify' && styles.alignJustify,
-    state.className,
+    state.root.className,
   );
 
   return state;

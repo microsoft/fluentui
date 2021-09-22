@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
-import { ButtonState } from './Button.types';
+import { Enter, Space } from '@fluentui/keyboard-keys';
+import type { ButtonState } from './Button.types';
 
 /**
- * The useButton hook processes the Button draft state.
- * @param state - Button draft state to mutate.
+ * The useButton hook processes the Button state.
+ * @param state - Button state to mutate.
  */
 export const useButtonState = (state: ButtonState): ButtonState => {
   const { as, children, disabled, disabledFocusable, icon, onClick, onKeyDown: onKeyDownCallback } = state;
@@ -16,8 +16,8 @@ export const useButtonState = (state: ButtonState): ButtonState => {
   const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     onKeyDownCallback?.(ev);
 
-    const keyCode = getCode(ev);
-    if (!ev.defaultPrevented && onClick && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+    const key = ev.key;
+    if (!ev.defaultPrevented && onClick && (key === Enter || key === Space)) {
       // Translate the keydown enter/space to a click.
       ev.preventDefault();
       ev.stopPropagation();
@@ -58,8 +58,8 @@ export const useButtonState = (state: ButtonState): ButtonState => {
   // Disallow keydown event when component is disabled and eat events when disabledFocusable is set to true.
   const { onKeyDown } = state;
   state.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    const keyCode = getCode(ev);
-    if ((disabled || disabledFocusable) && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+    const key = ev.key;
+    if ((disabled || disabledFocusable) && (key === Enter || key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
     } else {

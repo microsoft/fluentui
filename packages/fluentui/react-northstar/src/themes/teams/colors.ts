@@ -464,7 +464,6 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground: colors.red[400],
     foreground1: colors.white,
     foreground2: colors.white,
-    foreground3: colors.red[300],
     background: colors.red[400],
     background1: colors.red[50],
     background2: colors.ruby[500],

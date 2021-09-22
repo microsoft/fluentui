@@ -1,20 +1,17 @@
 import {
   FontWeights,
-  IRawStyle,
-  ITheme,
   concatStyleSets,
   getFocusStyle,
   HighContrastSelector,
-  IStyle,
   getPlaceholderStyles,
   hiddenContentStyle,
   getInputFocusStyle,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
-import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
-
-import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
+import type { IRawStyle, ITheme, IStyle } from '../../Styling';
+import type { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
+import type { IButtonStyles } from '../../Button';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;

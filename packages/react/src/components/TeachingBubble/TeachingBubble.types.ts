@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IImageProps } from '../../Image';
-import { IButtonProps } from '../../Button';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IFocusTrapZoneProps } from '../FocusTrapZone/index';
-import { Target } from '@fluentui/react-hooks';
+import type { IImageProps } from '../../Image';
+import type { IButtonProps } from '../../Button';
+import type { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
+import type { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IFocusTrapZoneProps } from '../FocusTrapZone/index';
+import type { Target } from '@fluentui/react-hooks';
 
 /**
  * {@docCategory TeachingBubble}

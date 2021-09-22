@@ -1,6 +1,8 @@
-import { IPersonaPresenceStyleProps, IPersonaPresenceStyles, PersonaPresence, PersonaSize } from '../Persona.types';
-import { HighContrastSelector, getGlobalClassNames, IRawStyle, getHighContrastNoAdjustStyle } from '../../../Styling';
+import { PersonaPresence, PersonaSize } from '../Persona.types';
+import { HighContrastSelector, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { personaPresenceSize, presenceBoolean, sizeBoolean } from '../PersonaConsts';
+import type { IPersonaPresenceStyleProps, IPersonaPresenceStyles } from '../Persona.types';
+import type { IRawStyle } from '../../../Styling';
 
 const GlobalClassNames = {
   presence: 'ms-Persona-presence',

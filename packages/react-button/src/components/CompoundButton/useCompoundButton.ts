@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useButtonState } from '../Button/useButtonState';
-import { CompoundButtonProps, CompoundButtonShorthandPropsCompat, CompoundButtonState } from './CompoundButton.types';
+import type {
+  CompoundButtonProps,
+  CompoundButtonShorthandPropsCompat,
+  CompoundButtonState,
+} from './CompoundButton.types';
 
 /**
  * Consts listing which props are shorthand props.
@@ -17,7 +21,9 @@ const mergeProps = makeMergeProps<CompoundButtonState>({
 });
 
 /**
- * Given user props, returns state and render function for a Button.
+ * Given user props, defines default props for the CompoundButton, calls useButtonState, and returns processed state.
+ * @param props - User provided props to the CompoundButton component.
+ * @param ref - User provided ref to be passed to the CompoundButton component.
  */
 export const useCompoundButton = (
   props: CompoundButtonProps,
@@ -35,6 +41,7 @@ export const useCompoundButton = (
       secondaryContent: { as: 'span' },
       // Non-slot props
       size: 'medium',
+      type: 'button', // This is added because the default for type is 'submit'
     },
     defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandPropsCompat),
     resolveShorthandProps(props, compoundButtonShorthandPropsCompat),

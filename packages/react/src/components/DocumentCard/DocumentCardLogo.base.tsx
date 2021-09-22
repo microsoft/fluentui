@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
-import { IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import { IDocumentCardLogoProps, IDocumentCardLogoStyleProps, IDocumentCardLogoStyles } from './DocumentCardLogo.types';
+import type { IProcessedStyleSet } from '../../Styling';
+import type {
+  IDocumentCardLogoProps,
+  IDocumentCardLogoStyleProps,
+  IDocumentCardLogoStyles,
+} from './DocumentCardLogo.types';
 
 const getClassNames = classNamesFunction<IDocumentCardLogoStyleProps, IDocumentCardLogoStyles>();
 

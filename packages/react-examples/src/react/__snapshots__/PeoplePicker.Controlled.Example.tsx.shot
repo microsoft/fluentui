@@ -71,6 +71,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               }
         >
           <input
+            aria-activedescendant="sug-noResultsFound"
             aria-autocomplete="both"
             aria-controls=""
             aria-expanded={false}
@@ -101,6 +102,42 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                 }
                 &::-ms-clear {
                   display: none;
+                }
+                &::placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                  color: GrayText;
+                }
+                &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                  color: GrayText;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                  color: GrayText;
                 }
             data-lpignore={true}
             disabled={false}
@@ -418,6 +455,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Annie Lindqvist
                 </div>
@@ -446,6 +484,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Designer
                 </div>
@@ -475,6 +514,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   In a meeting
                 </div>
@@ -504,6 +544,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Available at 4:00pm
                 </div>
@@ -796,6 +837,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Aaron Reid
                 </div>
@@ -824,6 +866,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Designer
                 </div>
@@ -853,6 +896,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   In a meeting
                 </div>
@@ -882,6 +926,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Available at 4:00pm
                 </div>
@@ -1180,6 +1225,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Alex Lundberg
                 </div>
@@ -1208,6 +1254,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Software Developer
                 </div>
@@ -1237,6 +1284,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   In a meeting
                 </div>
@@ -1266,6 +1314,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Available at 4:00pm
                 </div>
@@ -1577,6 +1626,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Roko Kolar
                 </div>
@@ -1605,6 +1655,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Financial Analyst
                 </div>
@@ -1634,6 +1685,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   In a meeting
                 </div>
@@ -1663,6 +1715,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Available at 4:00pm
                 </div>
@@ -1961,6 +2014,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Christian Bergqvist
                 </div>
@@ -1989,6 +2043,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Sr. Designer
                 </div>
@@ -2018,6 +2073,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   In a meeting
                 </div>
@@ -2047,6 +2103,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   Available at 4:00pm
                 </div>
@@ -2096,7 +2153,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 
@@ -2253,7 +2309,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 

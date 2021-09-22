@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-text",
-  "private": true,
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0-alpha.19",
   "description": "Text is a typography and styling abstraction component that can be used to ensure the consistency of all text across your application.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,6 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -21,14 +21,15 @@
     "start": "yarn storybook",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-text/src && yarn docs",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-text/src && yarn docs",
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.33",
-    "@fluentui/eslint-plugin": "^1.3.3",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.30",
-    "@fluentui/react-conformance": "^0.4.4",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.52",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.45",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.14",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -42,8 +43,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.54",
-    "@fluentui/react-utilities": "^9.0.0-alpha.37",
+    "@fluentui/react-make-styles": "9.0.0-alpha.70",
+    "@fluentui/react-utilities": "9.0.0-alpha.50",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -5,9 +5,9 @@ import {
   tryParseExample,
   IMPORT_REGEX,
   _tryParseExample,
-  IImport,
 } from './exampleParser';
 import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
+import type { IImport } from './exampleParser';
 
 /** Random little code snippet to add before or after imports for more realistic tests */
 const basicText = `

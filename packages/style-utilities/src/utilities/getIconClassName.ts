@@ -1,5 +1,6 @@
-import { mergeStyles, IStyle } from '@fluentui/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { getIcon } from './icons';
+import type { IStyle } from '@fluentui/merge-styles';
 
 const defaultIconStyles: IStyle = {
   display: 'inline-block',

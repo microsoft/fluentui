@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { initializeComponentRef, shallowCompare } from '../../../Utilities';
-import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
+import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 
 export class ContextualMenuItemWrapper extends React.Component<IContextualMenuItemWrapperProps> {
   constructor(props: IContextualMenuItemWrapperProps) {

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { render, fireEvent } from '@testing-library/react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { ArrowRight, ArrowDown } from '@fluentui/keyboard-keys';
 import { useTriggerElement } from './useTriggerElement';
-import { MenuContextValue, useMenuContext } from '../../contexts/menuContext';
+import { useMenuContext } from '../../contexts/menuContext';
 import { MenuItem } from '../MenuItem/index';
+import type { MenuContextValue } from '../../contexts/menuContext';
 
 jest.mock('../../contexts/menuContext');
 
@@ -29,7 +30,7 @@ describe('useTriggerElement', () => {
     const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
     // Act
-    const { getByRole } = render(result.current.children);
+    const { getByRole } = render(result.current.children as React.ReactElement);
     triggerEvent(getByRole('button'));
 
     // Assert
@@ -51,7 +52,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.click(getByRole('button'));
 
       // Assert
@@ -67,7 +68,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.click(getByRole('button'));
 
       // Assert
@@ -92,7 +93,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       triggerEvent(getByRole('button'), eventOptions);
 
       // Assert
@@ -108,7 +109,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.mouseMove(getByRole('button'));
       fireEvent.mouseMove(getByRole('button'));
 
@@ -125,7 +126,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.mouseMove(getByRole('button'));
       fireEvent.mouseEnter(getByRole('button'));
 
@@ -143,7 +144,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.mouseEnter(getByRole('button'));
 
       // Assert
@@ -161,7 +162,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       triggerEvent(getByRole('button'));
 
       // Assert
@@ -185,7 +186,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       triggerEvent(getByRole('button'));
 
       // Assert
@@ -200,7 +201,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.contextMenu(getByRole('button'));
 
       // Assert
@@ -216,7 +217,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.contextMenu(getByRole('button'));
 
       // Assert
@@ -233,7 +234,7 @@ describe('useTriggerElement', () => {
     const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
     // Act
-    const { getByRole } = render(result.current.children);
+    const { getByRole } = render(result.current.children as React.ReactElement);
 
     // Assert
     expect(getByRole('button').getAttribute('id')).toEqual(id);
@@ -247,8 +248,8 @@ describe('useTriggerElement', () => {
     const { result } = renderHook(() => useTriggerElement({ children: menuitem }));
 
     // Act
-    const { getByRole } = render(result.current.children);
-    fireEvent.keyDown(getByRole('menuitem'), { keyCode: keyboardKey.ArrowRight });
+    const { getByRole } = render(result.current.children as React.ReactElement);
+    fireEvent.keyDown(getByRole('menuitem'), { key: ArrowRight });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
@@ -263,8 +264,8 @@ describe('useTriggerElement', () => {
     const { result } = renderHook(() => useTriggerElement({ children: trigger }));
 
     // Act
-    const { getByRole } = render(result.current.children);
-    fireEvent.keyDown(getByRole('button'), { keyCode: keyboardKey.ArrowDown });
+    const { getByRole } = render(result.current.children as React.ReactElement);
+    fireEvent.keyDown(getByRole('button'), { key: ArrowDown });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { usePopper } from '@fluentui/react-positioning';
+import { usePopper, resolvePositioningShorthand, mergeArrowOffset } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
+  applyTriggerPropsToChildren,
   makeMergeProps,
-  onlyChild,
   resolveShorthandProps,
   useControllableState,
   useId,
@@ -12,11 +12,10 @@ import {
   useMergedRefs,
   useTimeout,
 } from '@fluentui/react-utilities';
-import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
+import type { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 
 /**
  * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
  */
 export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
 
@@ -35,8 +34,6 @@ const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory Tooltip}
  */
 export const useTooltip = (
   props: TooltipProps,
@@ -57,9 +54,6 @@ export const useTooltip = (
       },
       id: useId('tooltip-'),
       role: 'tooltip',
-      position: 'above',
-      align: 'center',
-      offset: 4,
       showDelay: 250,
       hideDelay: 250,
       triggerAriaAttribute: 'label',
@@ -86,6 +80,19 @@ export const useTooltip = (
   state.visible = visible;
   state.shouldRenderTooltip = visible;
 
+  const popperOptions = {
+    enabled: state.visible,
+    arrowPadding: 2 * tooltipBorderRadius,
+    position: 'above' as const,
+    align: 'center' as const,
+    offset: [0, 4] as [number, number],
+    ...resolvePositioningShorthand(state.positioning),
+  };
+
+  if (state.pointing) {
+    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
+  }
+
   const {
     targetRef,
     containerRef,
@@ -94,14 +101,7 @@ export const useTooltip = (
     targetRef: React.MutableRefObject<unknown>;
     containerRef: React.MutableRefObject<HTMLElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePopper({
-    enabled: state.visible,
-    position: state.position,
-    align: state.align,
-    target: state.target,
-    offset: [0, state.offset + (state.pointing ? arrowHeight : 0)],
-    arrowPadding: 2 * tooltipBorderRadius,
-  });
+  } = usePopper(popperOptions);
 
   state.ref = useMergedRefs(state.ref, containerRef);
   state.arrowRef = arrowRef;
@@ -198,8 +198,9 @@ export const useTooltip = (
   };
 
   // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-  const childTargetRef = useMergedRefs(child?.ref, targetRef);
-  if (state.target === undefined) {
+  const childWithRef = child as { ref?: React.Ref<unknown> } | undefined;
+  const childTargetRef = useMergedRefs(childWithRef?.ref, targetRef);
+  if (popperOptions.target === undefined) {
     triggerProps.ref = childTargetRef;
   }
 
@@ -222,11 +223,7 @@ export const useTooltip = (
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  if (typeof state.children === 'function') {
-    (state.children as React.ReactNode) = state.children(triggerProps);
-  } else if (state.children) {
-    (state.children as React.ReactNode) = React.cloneElement(onlyChild(state.children), triggerProps);
-  }
+  state.children = applyTriggerPropsToChildren(state.children, triggerProps) as React.ReactElement;
 
   return state;
 };

@@ -1,27 +1,28 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { CardProps, CardState } from './Card.types';
-import { renderCard } from './renderCard';
-import { useCardState } from './useCardState';
+import { makeMergeProps } from '@fluentui/react-utilities';
+import type { CardProps, CardState } from './Card.types';
 
-const cardShorthandProps = [] as const;
-
-const mergeProps = makeMergeProps<CardState>({ deepMerge: cardShorthandProps });
+const mergeProps = makeMergeProps<CardState>();
 
 /**
- * Given user props, returns state and render function for a Card.
+ * Create the state required to render Card.
+ *
+ * The returned state can be modified with hooks such as useCardStyles,
+ * before being passed to renderCard.
+ *
+ * @param props - props from this instance of Card
+ * @param ref - reference to root HTMLElement of Card
+ * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, defaultProps?: CardProps) => {
+export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, defaultProps?: CardProps): CardState => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
-      as: 'div',
+      ref,
+      role: 'group',
     },
-    defaultProps && resolveShorthandProps(defaultProps, cardShorthandProps),
-    resolveShorthandProps(props, cardShorthandProps),
+    defaultProps,
+    props,
   );
 
-  useCardState(state);
-
-  return { state, render: renderCard };
+  return state;
 };

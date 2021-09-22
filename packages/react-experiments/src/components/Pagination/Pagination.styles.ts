@@ -1,5 +1,6 @@
-import { IPaginationStyles, IPaginationStyleProps } from './Pagination.types';
-import { getGlobalClassNames, IStyle } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
+import type { IPaginationStyles, IPaginationStyleProps } from './Pagination.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Pagination-container',

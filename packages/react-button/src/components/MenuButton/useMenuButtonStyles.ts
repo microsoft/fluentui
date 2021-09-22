@@ -1,6 +1,6 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { useButtonStyles } from '../Button/useButtonStyles';
-import { MenuButtonState } from './MenuButton.types';
+import type { MenuButtonState } from './MenuButton.types';
 
 const useMenuIconStyles = makeStyles({
   small: {

@@ -1,31 +1,23 @@
-import { NodePath, TransformOptions, types as t } from '@babel/core';
+import { NodePath, types as t } from '@babel/core';
 import { Scope } from '@babel/traverse';
 import * as template from '@babel/template';
 import generator from '@babel/generator';
 import { resolveProxyValues } from '@fluentui/make-styles';
 import { Module, StrictOptions } from '@linaria/babel-preset';
-import shakerEvaluator from '@linaria/shaker';
 
+import type { BabelPluginOptions } from '../types';
 import { astify } from './astify';
 
 const EVAL_EXPORT_NAME = '__mkPreval';
 
-function evaluate(code: string, filename: string, babelOptions: TransformOptions) {
+function evaluate(code: string, filename: string, pluginOptions: Required<BabelPluginOptions>) {
   const options: StrictOptions = {
     displayName: false,
     evaluate: true,
 
-    rules: [
-      /* TODO: rules should be configurable */
-
-      { action: shakerEvaluator },
-      {
-        test: /[/\\]node_modules[/\\]/,
-        action: 'ignore',
-      },
-    ],
+    rules: pluginOptions.evaluationRules,
     babelOptions: {
-      ...babelOptions,
+      ...pluginOptions.babelOptions,
 
       // This instance of Babel should ignore all user's configs and apply only our plugin
       configFile: false,
@@ -130,7 +122,7 @@ export function evaluatePathsInVM(
   program: NodePath<t.Program>,
   filename: string,
   nodePaths: NodePath<t.Expression | t.SpreadElement>[],
-  babelOptions: TransformOptions,
+  pluginOptions: Required<BabelPluginOptions>,
 ): void {
   const themeVariableName = program.scope.generateUid('theme');
 
@@ -147,7 +139,7 @@ export function evaluatePathsInVM(
   const modifiedProgram = addPreval(program, themeVariableName, pathsToEvaluate);
 
   const { code } = generator(modifiedProgram);
-  const results = evaluate(code, filename, babelOptions);
+  const results = evaluate(code, filename, pluginOptions);
 
   for (let i = 0; i < nodePaths.length; i++) {
     const nodePath = nodePaths[i];

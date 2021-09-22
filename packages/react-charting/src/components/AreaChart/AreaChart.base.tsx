@@ -113,12 +113,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
+    const { lineChartData, chartTitle } = this.props.data;
     const { colors, stackedInfo, calloutPoints } = this._createSet(this.props.data);
     this._calloutPoints = calloutPoints;
-    const isXAxisDateType = getXAxisType(this.props.data.lineChartData!);
+    const isXAxisDateType = getXAxisType(lineChartData!);
     this._colors = colors;
     this._stackedData = stackedInfo.stackedData;
-    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, this.props.data.lineChartData!);
+    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
 
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -143,7 +144,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return (
       <CartesianChart
         {...this.props}
-        points={this.props.data.lineChartData!}
+        chartTitle={chartTitle}
+        points={lineChartData!}
         chartType={ChartTypes.AreaChart}
         calloutProps={calloutProps}
         legendBars={legends}
@@ -230,7 +232,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
 
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
-    const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleDateString() : pointToHighlight;
+    const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleString() : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
@@ -319,10 +321,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     let tempArr = allChartPoints;
     while (tempArr.length) {
-      const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
+      const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
       const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
-        (point: ILineChartDataPoint) =>
-          (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) === valToCheck,
+        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const singleDataset: any = {};
@@ -332,9 +333,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
       dataSet.push(singleDataset);
       // removing compared objects from array
-      const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
+      const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
       tempArr = tempArr.filter(
-        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) !== val,
+        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
       );
     }
 
