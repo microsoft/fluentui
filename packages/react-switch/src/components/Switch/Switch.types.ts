@@ -26,6 +26,11 @@ export type SwitchSlots = {
    * The hidden input that handles the Switch's internal functionality.
    */
   input: IntrinsicShorthandProps<'input'>;
+
+  /**
+   * The area in which the Switch's rail allows for the thumb to be dragged.
+   */
+  activeRail: IntrinsicShorthandProps<'div'>;
 };
 
 export interface SwitchCommons {
@@ -54,7 +59,7 @@ export interface SwitchCommons {
    * Callback to be called when the `checked` value changes.
    */
   onChange?: (
-    ev: React.ChangeEvent<HTMLInputElement>,
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
     data: {
       checked: boolean;
     },

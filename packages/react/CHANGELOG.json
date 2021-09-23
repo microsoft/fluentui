@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 23 Sep 2021 07:35:13 GMT",
+      "tag": "@fluentui/react_v8.34.6",
+      "version": "8.34.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "Small update to comment in FocusTrapZone.",
+            "commit": "e356b30fbc9830f64d23ca4d73cc0ad11e48faf3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Sep 2021 09:55:02 GMT",
       "tag": "@fluentui/react_v8.34.5",
       "version": "8.34.5",

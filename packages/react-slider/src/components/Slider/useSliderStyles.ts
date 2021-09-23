@@ -127,6 +127,7 @@ const useRailStyles = makeStyles({
 
   disabled: theme => ({
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
   }),
 
   horizontal: theme => ({
@@ -191,7 +192,7 @@ const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
@@ -336,7 +337,7 @@ const useThumbStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
@@ -459,7 +460,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     thumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.thumb.className,
   );
 

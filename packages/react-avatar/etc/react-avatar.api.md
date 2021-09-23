@@ -21,15 +21,15 @@ export const Avatar: React_2.ForwardRefExoticComponent<ComponentPropsCompat & Re
     name?: string | undefined;
     getInitials?: ((name: string, isRtl: boolean) => string) | undefined;
     size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128 | undefined;
-    square?: boolean | undefined;
+    shape?: "circular" | "square" | undefined;
     active?: "unset" | "active" | "inactive" | undefined;
-    activeDisplay?: "ring" | "ring-shadow" | "ring-glow" | "shadow" | "glow" | undefined;
+    activeAppearance?: "ring" | "ring-shadow" | "ring-glow" | "shadow" | "glow" | undefined;
     color?: "darkRed" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "darkGreen" | "lightTeal" | "teal" | "steel" | "blue" | "royalBlue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum" | "anchor" | "neutral" | "brand" | "colorful" | undefined;
     idForColor?: string | undefined;
 } & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label' | 'icon';
+export type AvatarDefaultedProps = 'shape' | 'size' | 'color' | 'activeAppearance' | 'getInitials' | 'label' | 'icon';
 
 // @public
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
@@ -42,10 +42,10 @@ export type AvatarProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLElem
     badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
     name?: string;
     getInitials?: (name: string, isRtl: boolean) => string;
-    size?: AvatarSizeValue;
-    square?: boolean;
+    size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+    shape?: 'circular' | 'square';
     active?: 'active' | 'inactive' | 'unset';
-    activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    activeAppearance?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
     color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     idForColor?: string;
 };
@@ -55,9 +55,6 @@ export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
 
 // @public
 export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[];
-
-// @public
-export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public (undocumented)
 export type AvatarState = ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> & {

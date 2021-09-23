@@ -131,7 +131,7 @@ export const allComponents = {
   fluentTooltip,
   fluentTreeView,
   fluentTreeItem,
-  register(container?: Container) {
+  register(container?: Container, ...rest: any[]) {
     if (!container) {
       // preserve backward compatibility with code that loops through
       // the values of this object and calls them as funcs with no args
@@ -143,7 +143,7 @@ export const allComponents = {
         continue;
       }
 
-      this[key]().register(container);
+      this[key]().register(container, ...rest);
     }
   },
 };

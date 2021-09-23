@@ -24,6 +24,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
       icon: { as: 'span' },
       // Non-slot props
       size: 'medium',
+      shape: 'rounded',
       type: 'button', // This is added because the default for type is 'submit'
     },
     defaultProps && resolveShorthandProps(defaultProps, buttonShorthandPropsCompat),

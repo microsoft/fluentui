@@ -2,6 +2,54 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Thu, 23 Sep 2021 08:21:34 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.85",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.91",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.82",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 07:35:13 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react to v8.34.6",
+            "commit": "e356b30fbc9830f64d23ca4d73cc0ad11e48faf3"
+          },
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.160",
+            "commit": "e356b30fbc9830f64d23ca4d73cc0ad11e48faf3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Sep 2021 10:10:07 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

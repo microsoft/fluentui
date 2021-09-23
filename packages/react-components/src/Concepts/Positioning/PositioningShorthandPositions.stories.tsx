@@ -78,7 +78,7 @@ const PositionedComponent = (props: {
   return (
     <Popover positioning={positioning} noArrow>
       <PopoverTrigger>
-        <Button primary className={mergeClasses(styles.target, targetClassName)}>
+        <Button appearance="primary" className={mergeClasses(styles.target, targetClassName)}>
           <div>{targetContent}</div>
           <div>↑</div>
         </Button>
