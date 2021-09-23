@@ -127,7 +127,7 @@ export const renderPopoverSurface: (state: PopoverSurfaceState) => JSX.Element |
 export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
 
 // @public
-export const usePopover: (props: PopoverProps, defaultProps?: PopoverProps | undefined) => PopoverState;
+export const usePopover: (props: PopoverProps) => PopoverState;
 
 // @public (undocumented)
 export const usePopoverContext: <T>(selector: ContextSelector<Pick<PopoverState, "mountNode" | "open" | "setOpen" | "triggerRef" | "contentRef" | "openOnHover" | "openOnContext" | "noArrow" | "arrowRef" | "size" | "brand" | "inverted" | "trapFocus">, T>) => T;
@@ -139,7 +139,7 @@ export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HT
 export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
 
 // @public
-export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;
+export const usePopoverTrigger: (props: PopoverTriggerProps) => PopoverTriggerState;
 
 // (No @packageDocumentation comment for this package)
 
