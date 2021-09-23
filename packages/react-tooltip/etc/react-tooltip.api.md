@@ -22,18 +22,18 @@ export const renderTooltip: (state: TooltipState) => JSX.Element;
 export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public
-export interface TooltipCommons {
+export type TooltipCommons = {
     appearance?: 'inverted';
     content: React_2.ReactNode;
-    hideDelay: number;
     inverted?: boolean;
-    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | null, data: OnVisibleChangeData) => void;
-    positioning?: PositioningShorthand;
-    showDelay: number;
-    triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
-    visible?: boolean;
     withArrow?: boolean;
-}
+    positioning?: PositioningShorthand;
+    visible?: boolean;
+    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
+    triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
+    showDelay: number;
+    hideDelay: number;
+};
 
 // @public
 export interface TooltipProps extends ComponentProps<TooltipSlots>, Partial<Omit<TooltipCommons, 'content'>>, Pick<TooltipCommons, 'content'> {

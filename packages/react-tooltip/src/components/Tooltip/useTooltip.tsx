@@ -50,7 +50,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
       clearDelayTimeout();
       setVisibleInternal(oldVisible => {
         if (newVisible !== oldVisible) {
-          onVisibleChange?.(ev || null, { visible: newVisible });
+          onVisibleChange?.(ev, { visible: newVisible });
         }
         return newVisible;
       });
