@@ -13,14 +13,14 @@ import * as React_2 from 'react';
 export const renderSwitch: (state: SwitchState) => JSX.Element;
 
 // @public
-export const Switch: React_2.FunctionComponent<SwitchProps>;
+export const Switch: React_2.ForwardRefExoticComponent<SwitchProps & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export interface SwitchCommons {
     checked?: boolean;
     defaultChecked?: boolean;
     disabled?: boolean;
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: {
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
         checked: boolean;
     }) => void;
 }
@@ -39,6 +39,7 @@ export type SwitchSlots = {
     thumbWrapper: IntrinsicShorthandProps<'div'>;
     thumb: IntrinsicShorthandProps<'div'>;
     input: IntrinsicShorthandProps<'input'>;
+    activeRail: IntrinsicShorthandProps<'div'>;
 };
 
 // @public (undocumented)

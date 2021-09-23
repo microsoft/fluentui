@@ -4,42 +4,55 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import { PositioningProps } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
-export interface OnVisibleChangeData {
-    // (undocumented)
+export type OnVisibleChangeData = {
     visible: boolean;
-}
+};
 
 // @public
 export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
+export const Tooltip: React_2.ForwardRefExoticComponent<ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
+    appearance?: "inverted" | undefined;
+    children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> & {
+        ref?: ((instance: unknown) => void) | React_2.RefObject<unknown> | null | undefined;
+    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null | undefined;
+    content: ShorthandPropsCompat<ComponentPropsCompat>;
+    withArrow?: boolean | undefined;
+    visible?: boolean | undefined;
+    onVisibleChange?: ((event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void) | undefined;
+    triggerAriaAttribute?: "label" | "labelledby" | "describedby" | null | undefined;
+    showDelay?: number | undefined;
+    hideDelay?: number | undefined;
+    positioning?: PositioningProps | "above" | "above-start" | "above-end" | "below" | "below-start" | "below-end" | "before" | "before-top" | "before-bottom" | "after" | "after-top" | "after-bottom" | undefined;
+} & React_2.RefAttributes<HTMLElement>>;
 
 // @public
 export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
 
 // @public
-export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+export type TooltipProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
+    appearance?: 'inverted';
     children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
     content: ShorthandPropsCompat<ComponentPropsCompat>;
-    hideDelay?: number;
-    inverted?: boolean;
-    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    pointing?: boolean;
-    positioning?: PositioningShorthand;
-    showDelay?: number;
-    triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
+    withArrow?: boolean;
     visible?: boolean;
-}
+    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
+    triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
+    showDelay?: number;
+    hideDelay?: number;
+    positioning?: PositioningShorthand;
+};
 
 // @public
 export type TooltipShorthandProps = 'content';
@@ -48,12 +61,12 @@ export type TooltipShorthandProps = 'content';
 export const tooltipShorthandProps: TooltipShorthandProps[];
 
 // @public
-export interface TooltipState extends ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
-    arrowClassName?: string;
-    arrowRef?: React_2.Ref<HTMLDivElement>;
+export type TooltipState = ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> & {
     ref: React_2.Ref<HTMLElement>;
     shouldRenderTooltip?: boolean;
-}
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    arrowClassName?: string;
+};
 
 // @public
 export type TooltipTriggerProps = {

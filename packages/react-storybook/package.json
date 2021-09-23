@@ -25,15 +25,15 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.40"
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.45"
   },
   "dependencies": {
-    "@fluentui/react-provider": "9.0.0-alpha.76",
-    "@fluentui/react-theme": "9.0.0-alpha.22",
+    "@fluentui/react-provider": "9.0.0-alpha.81",
+    "@fluentui/react-theme": "9.0.0-alpha.23",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
