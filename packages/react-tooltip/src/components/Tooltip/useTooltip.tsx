@@ -36,7 +36,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
   const {
     content,
     inverted,
-    withArrow: pointing,
+    withArrow,
     positioning,
     onVisibleChange,
     triggerAriaAttribute = 'label',
@@ -61,7 +61,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
   const state: TooltipState = {
     content,
     inverted,
-    withArrow: pointing,
+    withArrow,
     positioning,
     showDelay,
     hideDelay,
