@@ -68,7 +68,7 @@ export const useTooltipStyles = (state: TooltipState): TooltipState => {
 
   state.className = mergeClasses(
     styles.root,
-    state.inverted && styles.inverted,
+    state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,
     state.className,
   );

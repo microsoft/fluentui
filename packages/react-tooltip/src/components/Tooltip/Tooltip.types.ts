@@ -8,6 +8,12 @@ import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat }
 export type TooltipProps = ComponentPropsCompat &
   React.HTMLAttributes<HTMLElement> & {
     /**
+     * A tooltip can appear with the default appearance or inverted.
+     * When not specified, the default appearance is used.
+     */
+    appearance?: 'inverted';
+
+    /**
      * The child is the element that triggers the Tooltip. It will have additional properties added,
      * including events and aria properties.
      * Alternatively, children can be a render function that takes the props and adds
@@ -24,18 +30,11 @@ export type TooltipProps = ComponentPropsCompat &
     content: ShorthandPropsCompat<ComponentPropsCompat>;
 
     /**
-     * Color variant with inverted colors
-     *
-     * @defaultvalue false
-     */
-    inverted?: boolean;
-
-    /**
      * Render an arrow pointing to the target element
      *
      * @defaultvalue false
      */
-    pointing?: boolean;
+    withArrow?: boolean;
 
     /**
      * Control the tooltip's visibility programatically.
