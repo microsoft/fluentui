@@ -21,12 +21,12 @@ export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
 export const Tooltip: React_2.ForwardRefExoticComponent<ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
+    appearance?: "inverted" | undefined;
     children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> & {
         ref?: ((instance: unknown) => void) | React_2.RefObject<unknown> | null | undefined;
     }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null | undefined;
     content: ShorthandPropsCompat<ComponentPropsCompat>;
-    inverted?: boolean | undefined;
-    pointing?: boolean | undefined;
+    withArrow?: boolean | undefined;
     visible?: boolean | undefined;
     onVisibleChange?: ((event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void) | undefined;
     triggerAriaAttribute?: "label" | "labelledby" | "describedby" | null | undefined;
@@ -40,12 +40,12 @@ export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'tri
 
 // @public
 export type TooltipProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
+    appearance?: 'inverted';
     children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
     content: ShorthandPropsCompat<ComponentPropsCompat>;
-    inverted?: boolean;
-    pointing?: boolean;
+    withArrow?: boolean;
     visible?: boolean;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
     triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
