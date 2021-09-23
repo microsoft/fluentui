@@ -40,6 +40,7 @@ export type ImageCommons = {
     fluid?: boolean;
     circular?: boolean;
     rounded?: boolean;
+    shadow?: boolean;
 };
 
 // @public (undocumented)

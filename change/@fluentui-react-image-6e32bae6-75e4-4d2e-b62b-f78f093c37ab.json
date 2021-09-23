@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added shadow prop",
+  "packageName": "@fluentui/react-image",
+  "email": "tkrasniqi@microsoft.com",
+  "dependentChangeType": "patch"
+}

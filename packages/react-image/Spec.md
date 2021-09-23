@@ -86,6 +86,7 @@ Proposed component props:
 | `fluid`    | `boolean` | `false`       |                                              |
 | `circular` | `boolean` | `false`       |                                              |
 | `rounded`  | `boolean` | `false`       | rounded corners                              |
+| `shadow`   | `boolean` | `false`       |                                              |
 
 All native html attributes of the `<img />` will be available to be used as props of the Image component.
 

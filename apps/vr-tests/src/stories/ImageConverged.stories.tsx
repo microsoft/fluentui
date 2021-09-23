@@ -99,4 +99,5 @@ storiesOf('Image Converged', module)
         <Image src="https://via.placeholder.com/100x100" fluid />
       </div>
     </>
-  ));
+  ))
+  .addStory('Image Shadow', () => <Image src="https://via.placeholder.com/900x50" shadow />);

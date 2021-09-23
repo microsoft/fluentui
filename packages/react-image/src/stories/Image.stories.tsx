@@ -9,6 +9,7 @@ export { ImageBorderVariations } from './ImageBorderVariations.stories';
 export { ImageFallback } from './ImageFallback.stories';
 export { ImageFluid } from './ImageFluid.stories';
 export { ImageLayoutFit } from './ImageLayoutFit.stories';
+export { ImageShadow } from './ImageShadow.stories';
 
 export default {
   title: 'Components/Image',

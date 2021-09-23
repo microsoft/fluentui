@@ -29,6 +29,11 @@ export type ImageCommons = {
    * An image can appear rounded.
    */
   rounded?: boolean;
+
+  /**
+   * An image can appear elevated with shadow.
+   */
+  shadow?: boolean;
 };
 
 export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
