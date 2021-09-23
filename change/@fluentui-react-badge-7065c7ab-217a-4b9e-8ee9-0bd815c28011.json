@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update BadgeProps for consistency",
+  "packageName": "@fluentui/react-badge",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

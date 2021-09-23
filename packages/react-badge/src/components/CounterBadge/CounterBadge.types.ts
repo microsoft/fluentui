@@ -20,7 +20,7 @@ export type CounterBadgeCommons = {
   showZero: boolean;
 
   /**
-   * If a dot badge should be displayed
+   * If a dot should be displayed without the count
    * @default false
    */
   dot: boolean;
@@ -29,7 +29,7 @@ export type CounterBadgeCommons = {
    * A Badge can be circular or rounded
    * @default circular
    */
-  shape: 'rounded' | 'circular';
+  shape: 'circular' | 'rounded';
 
   /**
    * A Badge can be filled, ghost
