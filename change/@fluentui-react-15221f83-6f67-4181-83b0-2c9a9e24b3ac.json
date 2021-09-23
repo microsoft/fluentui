@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Small update to comment in FocusTrapZone.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
