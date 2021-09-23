@@ -69,7 +69,7 @@ export interface TooltipCommons {
    * Notification when the visibility of the tooltip is changing
    */
   onVisibleChange?: (
-    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | null,
+    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
     data: OnVisibleChangeData,
   ) => void;
 
