@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 23 Sep 2021 08:21:34 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.51",
+      "version": "9.0.0-alpha.51",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "czearing@outlook.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Adding clamp and getRTLSafeKey utilities.",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Sep 2021 10:10:07 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.50",
       "version": "9.0.0-alpha.50",
