@@ -36,7 +36,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
   const {
     content,
     inverted,
-    pointing,
+    withArrow: pointing,
     positioning,
     onVisibleChange,
     triggerAriaAttribute = 'label',
@@ -61,7 +61,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
   const state: TooltipState = {
     content,
     inverted,
-    pointing,
+    withArrow: pointing,
     positioning,
     showDelay,
     hideDelay,
@@ -90,7 +90,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     ...resolvePositioningShorthand(state.positioning),
   };
 
-  if (state.pointing) {
+  if (state.withArrow) {
     popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
   }
 

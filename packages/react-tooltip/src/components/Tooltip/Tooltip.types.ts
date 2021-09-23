@@ -41,7 +41,7 @@ export interface TooltipCommons {
    *
    * @defaultvalue false
    */
-  pointing?: boolean;
+  withArrow?: boolean;
 
   /**
    * Configure the positioning of the tooltip
