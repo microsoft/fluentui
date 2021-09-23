@@ -70,12 +70,6 @@ Icon
 <Divider><Icon /></Divider>
 ```
 
-Important
-
-```html
-<Divider important>This is important!</Divider>
-```
-
 Inset
 
 ```html

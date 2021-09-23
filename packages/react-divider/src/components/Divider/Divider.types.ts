@@ -10,23 +10,20 @@ export type DividerProps = ComponentPropsCompat &
     alignContent?: 'start' | 'end' | 'center';
 
     /**
-     * Predefined visual styles
-     * @defaultvalue 'default'
+     * A divider can have one of the preset appearances.
+     * When not specified, the divider has its default appearance.
      */
-    appearance?: 'default' | 'subtle' | 'brand' | 'strong';
+    appearance?: 'brand' | 'strong' | 'subtle';
 
     /**
-     * A divider can be classified as important to emphasize its content
-     */
-    important?: boolean;
-
-    /**
-     * Adds a 12px padding to the begining and end of the divider
+     * Adds padding to the begining and end of the divider
      */
     inset?: boolean;
 
     /**
-     * A divider can be horizontal (default) or vertical*/
+     * A divider can be horizontal (default) or vertical
+     * @default false
+     */
     vertical?: boolean;
 
     /**
