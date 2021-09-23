@@ -16,8 +16,10 @@ export interface CheckboxCommons {
    * A checkbox can be rendered with a circular shape.
    */
   circular: boolean;
-
-  rootId?: string;
+  /**
+   * ID of the root element that wraps the checkbox and label.
+   */
+  rootId: string | undefined;
 
   /**
    * A checkbox's state can be controlled.
@@ -36,7 +38,10 @@ export interface CheckboxCommons {
    * @defaultvalue 'after'
    */
   labelPosition: 'before' | 'after';
-
+  /**
+   * Field required to pass className to container instead of input
+   * this will be solved by https://github.com/microsoft/fluentui/pull/18983
+   */
   containerClassName?: string;
 }
 
@@ -64,11 +69,6 @@ export type CheckboxSlots = {
  */
 export type CheckboxProps = Omit<ComponentProps<CheckboxSlots>, 'defaultChecked'> &
   Partial<CheckboxCommons> & {
-    /**
-     * ID of the root element that wraps the checkbox and label.
-     */
-    rootId?: string;
-
     /**
      * ID of the native element that represents the checkbox.
      */

@@ -9,10 +9,10 @@ export const renderCheckbox = (state: CheckboxState) => {
   return (
     <slots.root {...slotProps.root}>
       {state.labelPosition === 'before' && slotProps.root.children}
-      <slot className={state.containerClassName}>
+      <div className={state.containerClassName}>
         <slots.indicator {...slotProps.indicator} />
         <slots.input {...slotProps.input} />
-      </slot>
+      </div>
       {state.labelPosition === 'after' && slotProps.root.children}
     </slots.root>
   );

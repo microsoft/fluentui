@@ -26,52 +26,44 @@ export const checkboxShorthandProps: Array<keyof CheckboxSlots> = ['root', 'indi
  * @param props - props from this instance of Checkbox
  * @param ref - reference to root HTMLElement of Checkbox
  */
-export const useCheckbox = (
-  {
-    disabled = false,
-    circular = false,
-    required = false,
-    id,
-    defaultChecked,
-    checked: propsChecked,
-    ...props
-  }: CheckboxProps,
-  ref: React.Ref<HTMLElement>,
-): CheckboxState => {
-  const [checked, setCheckedInternal] = useControllableState({
-    defaultState: defaultChecked,
-    state: propsChecked,
+export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): CheckboxState => {
+  const { disabled = false, circular = false, required = false, id, rootId, onChange: userOnChange } = props;
+  const [checked, setChecked] = useControllableState({
+    defaultState: props.defaultChecked,
+    state: props.checked,
     initialState: false,
+  });
+
+  const inputInternalRef = React.useRef<HTMLInputElement>(null);
+  const inputShorthand = resolveShorthand(props.input, {
+    required: true,
+    defaultProps: {
+      disabled,
+      type: 'checkbox',
+      required,
+    },
   });
 
   const state: CheckboxState = {
     circular,
-    checked: checked,
+    checked,
     size: 'medium',
     labelPosition: 'after',
-    components: { root: props.children !== undefined ? Label : 'span', indicator: 'div', input: 'input' },
-    input: resolveShorthand(props.input, {
-      required: true,
-      defaultProps: {
-        disabled,
-        type: 'checkbox',
-        required,
-      },
-    }),
+    rootId,
+    components: {
+      root: props.children !== undefined ? Label : 'span',
+      indicator: 'div',
+      input: 'input',
+    },
+    input: {
+      ...inputShorthand,
+      ref: useMergedRefs(inputShorthand.ref, inputInternalRef),
+    },
     indicator: resolveShorthand(props.indicator, {
       required: true,
     }),
     root: getNativeElementProps('div', { ref, ...props }),
   };
-
-  const setChecked = React.useCallback(
-    (ev: React.ChangeEvent<HTMLInputElement>, val: boolean | 'mixed') => {
-      const onChange = props.onChange;
-      onChange?.(ev, { checked: val });
-      setCheckedInternal(val);
-    },
-    [props.onChange, setCheckedInternal],
-  );
 
   state.input.checked = checked === true;
   state.checked = checked ? checked : false;
@@ -84,24 +76,26 @@ export const useCheckbox = (
     }
   }
 
-  const userOnChange = state.input.onChange;
+  const inputOnChange = state.input.onChange;
   state.input.onChange = useEventCallback(ev => {
     ev.stopPropagation();
-    userOnChange?.(ev);
-    setChecked(ev, ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked);
+    inputOnChange?.(ev);
+
+    const val = ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked;
+
+    userOnChange?.(ev, { checked: val });
+    setChecked(val);
   });
 
   state.input.id = useId('checkbox-', id);
   state.root.id = state.rootId;
 
-  const inputRef = useMergedRefs(state.input.ref);
-  state.input.ref = inputRef;
   const isMixed = checked === 'mixed';
   useIsomorphicLayoutEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.indeterminate = isMixed;
+    if (inputInternalRef.current) {
+      inputInternalRef.current.indeterminate = isMixed;
     }
-  }, [inputRef, isMixed]);
+  }, [isMixed]);
 
   return state;
 };
