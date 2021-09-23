@@ -23,7 +23,7 @@ export type TooltipSlots = {
 /**
  * Properties and state for Tooltip
  */
-export interface TooltipCommons {
+export type TooltipCommons = {
   /**
    * A tooltip can appear with the default appearance or inverted.
    * When not specified, the default appearance is used.
