@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Moved from interfaces to types per RFC",
+  "comment": "Adding clamp and getRTLSafeKey utilities.",
   "packageName": "@fluentui/react-utilities",
-  "email": "gcox@microsoft.com",
+  "email": "czearing@outlook.com",
   "dependentChangeType": "patch"
 }

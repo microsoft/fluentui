@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
+  clamp,
   useBoolean,
   useControllableState,
   useEventCallback,
@@ -9,7 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 import {
   on,
-  clamp,
+  findClosestThumb,
   getPercent,
   calculateSteps,
   getMarkPercent,
@@ -17,7 +18,6 @@ import {
   getKeydownValue,
   renderMarks,
   validateRangedThumbValues,
-  findClosestThumb,
 } from '../../utils/index';
 import { animationTime } from '../Slider/useSliderState';
 import { RangedSliderState } from './RangedSlider.types';

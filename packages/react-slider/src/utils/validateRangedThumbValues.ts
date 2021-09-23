@@ -1,4 +1,4 @@
-import { clamp } from './clamp';
+import { clamp } from '@fluentui/react-utilities';
 
 /**
  * Clamps and sorts the values in RangedSlider to a given min and max

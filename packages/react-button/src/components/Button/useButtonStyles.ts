@@ -149,6 +149,9 @@ const useRootStyles = makeStyles({
       color: theme.alias.color.neutral.neutralForeground2BrandPressed,
     },
   }),
+  square: theme => ({
+    borderRadius: theme.global.borderRadius.none,
+  }),
   transparent: theme => ({
     background: theme.alias.color.neutral.transparentBackground,
     borderColor: 'transparent',
@@ -257,6 +260,9 @@ const useRootFocusStyles = makeStyles({
     borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
     boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}`,
   })),
+  square: createFocusIndicatorStyleRule(theme => ({
+    borderRadius: theme.global.borderRadius.none,
+  })),
 });
 
 const useRootIconOnlyStyles = makeStyles({
@@ -314,18 +320,20 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
     rootFocusStyles.base,
     rootStyles[state.size],
     state.block && rootStyles.block,
-    state.circular && rootStyles.circular,
-    state.circular && rootFocusStyles.circular,
-    state.outline && rootStyles.outline,
-    state.primary && rootStyles.primary,
-    state.primary && rootFocusStyles.primary,
-    state.subtle && rootStyles.subtle,
-    state.transparent && rootStyles.transparent,
+    state.shape === 'square' && rootStyles.square,
+    state.shape === 'square' && rootFocusStyles.square,
+    state.shape === 'circular' && rootStyles.circular,
+    state.shape === 'circular' && rootFocusStyles.circular,
+    state.appearance === 'outline' && rootStyles.outline,
+    state.appearance === 'primary' && rootStyles.primary,
+    state.appearance === 'primary' && rootFocusStyles.primary,
+    state.appearance === 'subtle' && rootStyles.subtle,
+    state.appearance === 'transparent' && rootStyles.transparent,
     (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    (state.disabled || state.disabledFocusable) && state.outline && rootStyles.disabledOutline,
-    (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
-    (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
-    (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
+    (state.disabled || state.disabledFocusable) && state.appearance === 'outline' && rootStyles.disabledOutline,
+    (state.disabled || state.disabledFocusable) && state.appearance === 'primary' && rootStyles.disabledPrimary,
+    (state.disabled || state.disabledFocusable) && state.appearance === 'subtle' && rootStyles.disabledSubtle,
+    (state.disabled || state.disabledFocusable) && state.appearance === 'transparent' && rootStyles.disabledTransparent,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );

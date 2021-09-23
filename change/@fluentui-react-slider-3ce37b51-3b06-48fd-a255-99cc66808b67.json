@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Adding RangedSlider spec.",
+  "comment": "Moving clamp and getRTLSafeKey utilities into the react-utilities package.",
   "packageName": "@fluentui/react-slider",
   "email": "czearing@outlook.com",
   "dependentChangeType": "none"

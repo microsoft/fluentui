@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Adding switch role to the hidden input element.",
+  "comment": "Adding dragging to the Switch component.",
   "packageName": "@fluentui/react-switch",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch"
