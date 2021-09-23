@@ -93,6 +93,8 @@ export type CheckboxProps = ComponentProps<CheckboxSlots> &
      * Disabled
      */
     disabled?: boolean;
+
+    children?: React.ReactNode;
   };
 
 /**
