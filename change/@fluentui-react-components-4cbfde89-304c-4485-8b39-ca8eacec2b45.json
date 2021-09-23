@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Updated ButtonProps for consistency",
+  "comment": "Added Text to react-components",
   "packageName": "@fluentui/react-components",
-  "email": "gcox@microsoft.com",
+  "email": "tkrasniqi@microsoft.com",
   "dependentChangeType": "patch"
 }
