@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 22 Sep 2021 09:55:02 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Sep 2021 07:35:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.6)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.5..@fluentui/react_v8.34.6)
+
+### Patches
+
+- Small update to comment in FocusTrapZone. ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by Humberto.Morimoto@microsoft.com)
 
 ## [8.34.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.5)
 
