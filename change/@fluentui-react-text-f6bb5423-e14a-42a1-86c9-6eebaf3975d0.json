@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove workaround for as prop with getNativeElementProps",
+  "packageName": "@fluentui/react-text",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch"
+}

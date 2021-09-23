@@ -28,7 +28,7 @@ export const getSlotsCompat = (state: GenericDictionary, slotNames?: readonly st
   };
 
   const slotProps: GenericDictionary = {
-    root: typeof slots.root === 'string' ? getNativeElementProps(slots.root, state) : omit(state, ['as']),
+    root: typeof slots.root === 'string' ? getNativeElementProps(slots.root, state, ['as']) : omit(state, ['as']),
   };
 
   if (slotNames) {
@@ -47,7 +47,7 @@ export const getSlotsCompat = (state: GenericDictionary, slotNames?: readonly st
         slots[name] = React.Fragment;
       } else if (slots[name] !== nullRender) {
         slotProps[name] = isSlotPrimitive
-          ? getNativeElementProps(slotAs, slotDefinition)
+          ? getNativeElementProps(slotAs, slotDefinition, ['as'])
           : omit(slotDefinition, ['as']);
       }
     }

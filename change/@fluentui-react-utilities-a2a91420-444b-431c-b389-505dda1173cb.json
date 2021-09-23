@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add as prop to properties allowed with getNativeElementProps",
+  "packageName": "@fluentui/react-utilities",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch"
+}
