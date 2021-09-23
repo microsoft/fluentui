@@ -239,6 +239,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     border2: colors.grey[200],
     border3: colors.grey[150], // divider
     borderTransparent: 'transparent',
+    borderTransparentActive: 'transparent',
 
     shadow: colors.black, // opacity 10%
     shadowHover: colors.black, // opacity 10%
