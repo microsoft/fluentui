@@ -14,7 +14,8 @@ type UseEvent = {
   /**
    * The callback to call when the eventName is triggered.
    */
-  callback: (ev: T) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  callback: (ev: any) => void;
 
   /**
    * Whether the events should be dispatched to the callback first before other EventTargets.
@@ -22,7 +23,7 @@ type UseEvent = {
   useCapture: boolean;
 
   /**
-   * whether event should be disabled and removed
+   * Whether event should be disabled and removed
    */
   disabled: boolean;
 };
@@ -36,7 +37,7 @@ type UseEvent = {
  * @param useCapture whether the events should be dispatched to the callback first before other EventTargets.
  * @param disabled whether event should be disabled and removed
  */
-const useEvent = ({ element, type, callback, useCapture, disabled }: UseEvent) => {
+export const useEvent = ({ element, type, callback, useCapture, disabled }: UseEvent) => {
   React.useEffect(() => {
     if (element) {
       !disabled && element.addEventListener(type, callback, useCapture);

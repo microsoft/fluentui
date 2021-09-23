@@ -3,9 +3,10 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   clamp,
   useBoolean,
+  useCapture,
   useControllableState,
+  useEvent,
   useEventCallback,
-  useUnmount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import {
@@ -14,10 +15,15 @@ import {
   getMarkPercent,
   getMarkValue,
   getPercent,
-  on,
   renderMarks,
 } from '../../utils/index';
 import type { SliderState } from './Slider.types';
+
+type EventData = {
+  element?: Element | Window | Document;
+  disabled: boolean;
+  pointerId: number;
+};
 
 export const useSliderState = (state: SliderState) => {
   const {
@@ -45,10 +51,14 @@ export const useSliderState = (state: SliderState) => {
     defaultState: clamp(defaultValue, min, max),
     initialState: 0,
   });
+  const [eventData, setEventData] = React.useState<EventData>({
+    element: undefined,
+    disabled: true,
+    pointerId: undefined,
+  });
 
   const railRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const disposables = React.useRef<(() => void)[]>([]);
 
   /**
    * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
@@ -97,11 +107,13 @@ export const useSliderState = (state: SliderState) => {
 
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      disposables.current.forEach(dispose => dispose());
-      disposables.current = [];
       showStepAnimation();
       // When undefined, the position fallbacks to the currentValue state.
       setRenderedPosition(undefined);
+      setEventData(prevState => ({
+        ...prevState,
+        disabled: true,
+      }));
       inputRef.current!.focus();
     },
     [showStepAnimation],
@@ -117,14 +129,15 @@ export const useSliderState = (state: SliderState) => {
       hideStepAnimation();
       onPointerDownCallback?.(ev);
 
-      // eslint-disable-next-line deprecation/deprecation -- Should be remove an replaced with a useEvent hook.
-      disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture?.(pointerId);
+      setEventData({
+        element: target,
+        disabled: false,
+        pointerId: pointerId,
       });
 
       onPointerMove(ev);
     },
-    [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp],
+    [hideStepAnimation, onPointerDownCallback, onPointerMove],
   );
 
   const onKeyDown = React.useCallback(
@@ -153,9 +166,26 @@ export const useSliderState = (state: SliderState) => {
     return '99px';
   };
 
-  useUnmount(() => {
-    disposables.current.forEach(dispose => dispose());
-    disposables.current = [];
+  useEvent({
+    element: eventData.element!,
+    type: 'pointermove',
+    useCapture: true,
+    callback: onPointerMove,
+    disabled: eventData.disabled,
+  });
+
+  useEvent({
+    element: eventData.element!,
+    type: 'pointerup',
+    useCapture: true,
+    callback: onPointerUp,
+    disabled: eventData.disabled,
+  });
+
+  useCapture({
+    element: eventData.element!,
+    disabled: eventData.disabled,
+    pointerId: eventData.pointerId,
   });
 
   // TODO: Awaiting animation time from design spec.
