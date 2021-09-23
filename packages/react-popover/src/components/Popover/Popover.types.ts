@@ -38,16 +38,12 @@ export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
    * @default medium
    */
   size?: PopoverSize;
+
   /**
-   * Uses brand colour as background
-   * Mutually exclusive with `inverted`
+   * A popover can appear styled with brand or inverted.
+   * When not specified, the default style is used.
    */
-  brand?: boolean;
-  /**
-   * Inverts the foreground/background colour of the popover
-   * Mutually exclusive with `brand`
-   */
-  inverted?: boolean;
+  appearance?: 'brand' | 'inverted';
 
   /**
    * Should trap focus
