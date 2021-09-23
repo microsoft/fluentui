@@ -25,6 +25,11 @@ export type ImageCommons = {
    * @defaultvalue square
    */
   shape?: 'square' | 'circular' | 'rounded';
+
+  /**
+   * An image can appear elevated with shadow.
+   */
+  shadow?: boolean;
 };
 
 export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;

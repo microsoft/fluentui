@@ -5,7 +5,6 @@ const useStyles = makeStyles({
   root: theme => ({
     borderColor: theme.alias.color.neutral.neutralStroke1,
     borderRadius: theme.global.borderRadius.none,
-    boxShadow: theme.alias.shadow.shadow4,
 
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -19,6 +18,9 @@ const useStyles = makeStyles({
   }),
   rootRounded: theme => ({
     borderRadius: theme.global.borderRadius.medium,
+  }),
+  rootShadow: theme => ({
+    boxShadow: theme.alias.shadow.shadow4,
   }),
   rootFitNone: {
     objectFit: 'none',
@@ -56,6 +58,7 @@ export const useImageStyles = (state: ImageState) => {
     state.bordered && styles.rootBordered,
     state.shape === 'circular' && styles.rootCircular,
     state.shape === 'rounded' && styles.rootRounded,
+    state.shadow && styles.rootShadow,
     state.fit === 'none' && styles.rootFitNone,
     state.fit === 'center' && styles.rootFitCenter,
     state.fit === 'cover' && styles.rootFitCover,

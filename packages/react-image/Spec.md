@@ -85,6 +85,7 @@ Proposed component props:
 | `fit`      | `string`  | "`none`"      | One of: `none`, `center`, `contain`, `cover` |
 | `block`    | `boolean` | `false`       |                                              |
 | `shape `   | `string ` | `false`       | One of: `square`, `circular` , `rounded`     |
+| `shadow`   | `boolean` | `false`       |                                              |
 
 All native html attributes of the `<img />` will be available to be used as props of the Image component.
 

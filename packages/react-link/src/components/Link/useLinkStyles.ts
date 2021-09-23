@@ -42,8 +42,8 @@ const useStyles = makeStyles({
   href: {
     fontSize: 'inherit',
   },
-  // Overrides when the Link is emphasized to represent a secondary action.
-  secondary: tokens => ({
+  // Overrides when the Link appears subtle.
+  subtle: tokens => ({
     color: tokens.alias.color.neutral.neutralForeground2,
 
     ':hover': {
@@ -60,8 +60,8 @@ const useStyles = makeStyles({
   inline: tokens => ({
     borderBottomColor: tokens.alias.color.neutral.brandForegroundLink,
   }),
-  // Overrides when the Link is rendered inline within text and is emphasized to represent a secondary action.
-  inlineSecondary: tokens => ({
+  // Overrides when the Link is rendered inline within text and appears subtle.
+  inlineSubtle: tokens => ({
     borderBottomColor: tokens.alias.color.neutral.neutralForeground2,
   }),
   // Overrides when the Link is disabled.
@@ -88,9 +88,9 @@ export const useLinkStyles = (state: LinkState): LinkState => {
     styles.root,
     styles.focusIndicator,
     state.root.as === 'a' && state.root.href && styles.href,
-    state.secondary && styles.secondary,
+    state.appearance === 'subtle' && styles.subtle,
     state.inline && styles.inline,
-    state.secondary && state.inline && styles.inlineSecondary,
+    state.appearance === 'subtle' && state.inline && styles.inlineSubtle,
     state.root['aria-disabled'] && styles.disabled,
     state.root.className,
   );

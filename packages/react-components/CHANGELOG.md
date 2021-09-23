@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 22 Sep 2021 10:10:05 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Sep 2021 08:21:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.113](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.113)
+
+Thu, 23 Sep 2021 08:21:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.112..@fluentui/react-components_v9.0.0-alpha.113)
+
+### Changes
+
+- `@fluentui/react-avatar`
+  - Updated props for consistency across beta ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - Updated for consistency to have shape and appearance properties ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-card`
+  - Fix dependencies ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by andredias@microsoft.com)
+  - Updated ButtonProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-components`
+  - Fix dependencies ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by andredias@microsoft.com)
+  - Updated ButtonProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-divider`
+  - Updated DividerProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-link`
+  - Updated LinkProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-switch`
+  - Adding dragging to the Switch component. ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by czearing@outlook.com)
+- `@fluentui/react-tooltip`
+  - Updated ToolTipProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-utilities`
+  - Adding clamp and getRTLSafeKey utilities. ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by czearing@outlook.com)
 
 ## [9.0.0-alpha.112](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.112)
 

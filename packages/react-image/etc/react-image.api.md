@@ -39,6 +39,7 @@ export type ImageCommons = {
     fit?: 'none' | 'center' | 'contain' | 'cover';
     block?: boolean;
     shape?: 'square' | 'circular' | 'rounded';
+    shadow?: boolean;
 };
 
 // @public (undocumented)
