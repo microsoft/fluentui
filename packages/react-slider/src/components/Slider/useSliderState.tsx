@@ -20,7 +20,7 @@ import {
 import type { SliderState } from './Slider.types';
 
 type EventData = {
-  element?: Element | Window | Document;
+  element?: HTMLElement;
   disabled: boolean;
   pointerId: number;
 };
@@ -54,7 +54,7 @@ export const useSliderState = (state: SliderState) => {
   const [eventData, setEventData] = React.useState<EventData>({
     element: undefined,
     disabled: true,
-    pointerId: undefined,
+    pointerId: 0,
   });
 
   const railRef = React.useRef<HTMLDivElement>(null);

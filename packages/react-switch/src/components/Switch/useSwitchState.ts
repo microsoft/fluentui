@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { clamp, useBoolean, useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  clamp,
+  useBoolean,
+  useCapture,
+  useControllableState,
+  useEvent,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SwitchState } from './Switch.types';
 
@@ -13,18 +21,12 @@ type SwitchInternalState = {
    * Whether the thumb is currently being dragged.
    */
   thumbIsDragging: boolean;
-
-  /**
-   * Disposable events for the Switch.
-   */
-  disposables: (() => void)[];
 };
 
-// TODO: This should be replaced with a useEvent hook
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
-  element.addEventListener(eventName, callback);
-  return () => element.removeEventListener(eventName, callback);
+type EventData = {
+  element?: HTMLElement;
+  disabled: boolean;
+  pointerId: number;
 };
 
 export const useSwitchState = (state: SwitchState) => {
@@ -37,13 +39,17 @@ export const useSwitchState = (state: SwitchState) => {
   const internalState = React.useRef<SwitchInternalState>({
     internalValue: checked ? checked : defaultChecked,
     thumbIsDragging: false,
-    disposables: [],
   });
 
   const [currentValue, setCurrentValue] = useControllableState({
     defaultState: defaultChecked,
     state: checked,
     initialState: false,
+  });
+  const [eventData, setEventData] = React.useState<EventData>({
+    element: undefined,
+    disabled: true,
+    pointerId: 0,
   });
   const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(true);
   const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(currentValue === true ? 100 : 0);
@@ -90,8 +96,11 @@ export const useSwitchState = (state: SwitchState) => {
 
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      internalState.current.disposables.forEach(dispose => dispose());
-      internalState.current.disposables = [];
+      setEventData(prevState => ({
+        ...prevState,
+        disabled: true,
+      }));
+
       inputRef.current!.focus();
 
       if (internalState.current.thumbIsDragging) {
@@ -120,15 +129,13 @@ export const useSwitchState = (state: SwitchState) => {
       target.setPointerCapture?.(pointerId);
       internalState.current.thumbIsDragging = false;
 
-      internalState.current.disposables.push(
-        on(target, 'pointermove', onPointerMove),
-        on(target, 'pointerup', onPointerUp),
-        () => {
-          target.releasePointerCapture?.(pointerId);
-        },
-      );
+      setEventData({
+        element: target,
+        disabled: false,
+        pointerId: pointerId,
+      });
     },
-    [onPointerDownCallback, onPointerMove, onPointerUp, showThumbAnimation],
+    [onPointerDownCallback, showThumbAnimation],
   );
 
   const onKeyDown = React.useCallback(
@@ -140,6 +147,28 @@ export const useSwitchState = (state: SwitchState) => {
     },
     [onKeyDownCallback, setChecked],
   );
+
+  useEvent({
+    element: eventData.element!,
+    type: 'pointermove',
+    useCapture: true,
+    callback: onPointerMove,
+    disabled: eventData.disabled,
+  });
+
+  useEvent({
+    element: eventData.element!,
+    type: 'pointerup',
+    useCapture: true,
+    callback: onPointerUp,
+    disabled: eventData.disabled,
+  });
+
+  useCapture({
+    element: eventData.element!,
+    disabled: eventData.disabled,
+    pointerId: eventData.pointerId,
+  });
 
   const currentPosition = renderedPosition !== undefined ? renderedPosition : currentValue ? 100 : 0;
 
