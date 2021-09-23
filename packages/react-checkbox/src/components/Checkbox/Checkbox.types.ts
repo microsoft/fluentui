@@ -62,7 +62,7 @@ export type CheckboxSlots = {
 /**
  * Checkbox Props
  */
-export type CheckboxProps = ComponentProps<CheckboxSlots> &
+export type CheckboxProps = Omit<ComponentProps<CheckboxSlots>, 'defaultChecked'> &
   Partial<CheckboxCommons> & {
     /**
      * ID of the root element that wraps the checkbox and label.
