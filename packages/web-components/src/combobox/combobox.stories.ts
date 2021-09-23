@@ -42,7 +42,7 @@ const ComboboxTemplate = ({ appearance, autocomplete, position, required }) => `
     <fluent-option>Yellow Submarine</fluent-option>
     <fluent-option>Abbey Road</fluent-option>
     <fluent-option>Let It Be</fluent-option>
-  <fluent-combobox/>
+  </fluent-combobox>
 `;
 
 export const Combobox = ComboboxTemplate.bind({});

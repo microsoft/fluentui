@@ -20,25 +20,35 @@ const useIosStyles = makeStyles({
     height: '30px',
 
     ':hover .ms-Switch-thumb': {
-      background: 'white',
+      ':before': {
+        background: 'white',
+      },
     },
 
     ':active .ms-Switch-thumb': {
-      background: 'white',
+      ':before': {
+        background: 'white',
+      },
     },
 
     ':hover .ms-Switch-track': {
-      borderColor: 'none',
-    },
-
-    '&.checked': {
-      ':hover .ms-Switch-track': {
-        background: '#4cd964',
+      // Unchecked
+      ':before': {
+        borderColor: 'none',
       },
 
-      '& .ms-Switch-track': {
+      // Checked
+      ':after': {
         background: '#4cd964',
-        border: 'none',
+      },
+    },
+
+    ':active .ms-Switch-track': {
+      ':before': {
+        borderColor: 'none',
+      },
+      ':after': {
+        background: '#4cd964',
       },
     },
   },
@@ -51,16 +61,29 @@ const useIosStyles = makeStyles({
   thumb: {
     width: '27px',
     height: '27px',
-    background: 'white',
     boxShadow: `
       0px 3px 8px 0px rgba(0, 0, 0, 0.15),
       0px 3px 1px 0px rgba(0, 0, 0, 0.06)
     `,
+    ':before': {
+      opacity: 1,
+      background: 'white',
+    },
+    ':after': {
+      opacity: 1,
+      background: 'white',
+    },
   },
 
   track: {
-    background: 'white',
-    border: '1px solid #e0e0e0',
+    ':after': {
+      background: '#4cd964',
+      border: 'none',
+    },
+    ':before': {
+      background: 'white',
+      border: '1px solid #e0e0e0',
+    },
   },
 });
 
@@ -70,28 +93,29 @@ const useMaterialStyles = makeStyles({
     height: '14px',
 
     ':hover .ms-Switch-thumb': {
-      background: 'white',
+      ':before': {
+        background: 'white',
+      },
+      ':after': {
+        background: '#f50057',
+      },
     },
 
     ':hover .ms-Switch-track': {
-      background: '#9f9f9f',
-    },
-
-    '&.checked': {
-      '& .ms-Switch-thumb': {
-        background: '#f50057',
+      ':before': {
+        background: '#9f9f9f',
       },
-
-      ':hover .ms-Switch-thumb': {
-        background: '#f50057',
-      },
-
-      '& .ms-Switch-track': {
+      ':after': {
         background: '#fa80ab',
         border: 'none',
       },
+    },
 
-      ':hover .ms-Switch-track': {
+    ':active .ms-Switch-track': {
+      ':before': {
+        background: '#9f9f9f',
+      },
+      ':after': {
         background: '#fa80ab',
         border: 'none',
       },
@@ -107,13 +131,24 @@ const useMaterialStyles = makeStyles({
   thumb: {
     width: '20px',
     height: '20px',
-    background: 'white',
     boxShadow: '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
+    ':before': {
+      background: 'white',
+    },
+    ':after': {
+      background: '#f50057',
+    },
   },
 
   track: {
-    background: '#9f9f9f',
-    border: 'none',
+    ':before': {
+      background: '#9f9f9f',
+      border: 'none',
+    },
+    ':after': {
+      background: '#fa80ab',
+      border: 'none',
+    },
   },
 });
 
@@ -121,9 +156,10 @@ export const BasicSwitchExample = (props: SwitchProps) => {
   const styles = useStyles();
   const [switchValue, setSwitchValue] = React.useState(false);
 
-  const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => {
-    setSwitchValue(data.checked);
-  };
+  const switchOnChange = (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { checked: boolean },
+  ) => setSwitchValue(data.checked);
 
   return (
     <div className={styles.root}>

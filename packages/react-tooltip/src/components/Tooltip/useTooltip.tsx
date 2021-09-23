@@ -89,7 +89,7 @@ export const useTooltip = (
     ...resolvePositioningShorthand(state.positioning),
   };
 
-  if (state.pointing) {
+  if (state.withArrow) {
     popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
   }
 

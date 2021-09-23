@@ -71,12 +71,6 @@ describe('Divider', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders a divider with important', () => {
-    const component = renderer.create(<Divider important>Important</Divider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('renders a divider with different color', () => {
     const component = renderer.create(<Divider color="#FF00FF" />);
     const tree = component.toJSON();

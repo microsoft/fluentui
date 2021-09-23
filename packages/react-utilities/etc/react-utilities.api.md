@@ -41,6 +41,9 @@ export function canUseDOM(): boolean;
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
+// @public
+export const clamp: (value: number, min: number, max: number) => number;
+
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
 
@@ -91,6 +94,9 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
+
+// @public
+export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
 export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {
