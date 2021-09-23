@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useBoolean, useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { clamp, useBoolean, useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SwitchState } from './Switch.types';
 
@@ -20,15 +20,7 @@ type SwitchInternalState = {
   disposables: (() => void)[];
 };
 
-/**
- * Validates that the `value` is a number and falls between the min and max.
- *
- * @param value - the value to be clamped
- * @param min - the lowest valid value
- * @param max - the highest valid value
- */
-const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value || 0));
-
+// TODO: This should be replaced with a useEvent hook
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
   element.addEventListener(eventName, callback);
