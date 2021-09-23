@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding clamp and getRTLSafeKey utilities.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch"
+}
