@@ -9,7 +9,7 @@ variables:
   - group: fabric-variables
   - template: .devops/templates/variables.yml
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 workspace:
   clean: all
