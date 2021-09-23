@@ -97,7 +97,7 @@ export type TooltipCommons = {
    * @defaultvalue 250
    */
   hideDelay: number;
-}
+};
 
 /**
  * The properties that are added to the trigger of the Tooltip
