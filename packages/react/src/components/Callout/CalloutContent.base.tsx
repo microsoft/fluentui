@@ -35,7 +35,11 @@ const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // filter needs to be added as an additional way to set opacity.
 // Also set pointer-events: none so that the callout will not occlude the element it is
 // going to be positioned against
-const OFF_SCREEN_STYLE: React.CSSProperties = { opacity: 0, filter: 'opacity(0)', pointerEvents: 'none' };
+const OFF_SCREEN_STYLE: React.CSSProperties = {
+  opacity: 0,
+  filter: 'opacity(0)',
+  pointerEvents: 'none',
+};
 // role and role description go hand-in-hand. Both would be included by spreading getNativeProps for a basic element
 // This constant array can be used to filter these out of native props spread on callout root and apply them together on
 // calloutMain (the Popup component within the callout)
@@ -97,12 +101,11 @@ function useBounds(
 function usePositions(
   props: ICalloutProps,
   hostElement: React.RefObject<HTMLDivElement>,
-  calloutElement: React.RefObject<HTMLDivElement>,
+  calloutElement: HTMLDivElement | null,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getBounds: () => IRectangle | undefined,
 ) {
   const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
-  const [targetAttempts, setTargetAttempts] = React.useState<number>(0);
   const positionAttempts = React.useRef(0);
   const previousTarget = React.useRef<Target>();
   const async = useAsync();
@@ -111,17 +114,7 @@ function usePositions(
   React.useEffect(() => {
     if (!hidden) {
       const timerId = async.requestAnimationFrame(() => {
-        // If we expect a target element to position against, we need to wait until `targetRef.current`
-        // is resolved. Otherwise we can try to position.
-        if (!!target && !targetRef.current) {
-          if (targetAttempts < 5) {
-            setTargetAttempts(targetAttempts + 1);
-          }
-
-          return;
-        }
-
-        if (hostElement.current && calloutElement.current) {
+        if (hostElement.current && calloutElement) {
           const currentProps: IPositionProps = {
             ...props,
             target: targetRef.current!,
@@ -133,8 +126,8 @@ function usePositions(
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
           const newPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentProps, hostElement.current, calloutElement.current, previousPositions)
-            : positionCallout(currentProps, hostElement.current, calloutElement.current, previousPositions);
+            ? positionCard(currentProps, hostElement.current, calloutElement, previousPositions)
+            : positionCallout(currentProps, hostElement.current, calloutElement, previousPositions);
           // Set the new position only when the positions are not exists or one of the new callout positions
           // are different. The position should not change if the position is within 2 decimal places.
           if (
@@ -151,7 +144,7 @@ function usePositions(
             onPositioned?.(positions);
           }
         }
-      }, calloutElement.current);
+      }, calloutElement);
 
       return () => async.cancelAnimationFrame(timerId);
     }
@@ -162,7 +155,6 @@ function usePositions(
     calloutElement,
     hostElement,
     targetRef,
-    targetAttempts,
     finalHeight,
     getBounds,
     onPositioned,
@@ -182,16 +174,13 @@ function usePositions(
 function useAutoFocus(
   { hidden, setInitialFocus }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
-  calloutElement: React.RefObject<HTMLDivElement>,
+  calloutElement: HTMLDivElement | null,
 ) {
   const async = useAsync();
   const hasPositions = !!positions;
   React.useEffect(() => {
-    if (!hidden && setInitialFocus && hasPositions && calloutElement.current) {
-      const timerId = async.requestAnimationFrame(
-        () => focusFirstChild(calloutElement.current!),
-        calloutElement.current,
-      );
+    if (!hidden && setInitialFocus && hasPositions && calloutElement) {
+      const timerId = async.requestAnimationFrame(() => focusFirstChild(calloutElement), calloutElement);
 
       return () => async.cancelAnimationFrame(timerId);
     }
@@ -370,10 +359,15 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);
-    const calloutElement = React.useRef<HTMLDivElement>(null);
+    const [calloutElement, setCalloutElement] = React.useState<HTMLDivElement | null>(null);
+    const calloutCallback = React.useCallback(calloutEl => {
+      setCalloutElement(calloutEl);
+    }, []);
     const rootRef = useMergedRefs(hostElement, forwardedRef);
 
-    const [targetRef, targetWindow] = useTarget(props.target, calloutElement);
+    const [targetRef, targetWindow] = useTarget(props.target, {
+      current: calloutElement,
+    });
     const getBounds = useBounds(props, targetRef, targetWindow);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
@@ -431,7 +425,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}
-          ref={calloutElement}
+          ref={calloutCallback}
         >
           {beakVisible && <div className={classNames.beak} style={getBeakPosition(positions)} />}
           {beakVisible && <div className={classNames.beakCurtain} />}
