@@ -60,7 +60,7 @@ describe('Switch', () => {
       const eventHandler = jest.fn();
 
       render(<Switch checked={false} onChange={eventHandler} input={{ ref: inputRef }} />);
-      const inputElement = screen.getByRole('checkbox');
+      const inputElement = screen.getByRole('switch');
 
       fireEvent.click(inputElement);
 
@@ -74,7 +74,7 @@ describe('Switch', () => {
 
       render(<Switch onChange={eventHandler} />);
 
-      const input = screen.getByRole('checkbox');
+      const input = screen.getByRole('switch');
       expect(eventHandler).toBeCalledTimes(0);
 
       fireEvent.click(input);

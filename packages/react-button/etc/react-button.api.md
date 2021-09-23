@@ -18,17 +18,14 @@ export type ButtonDefaultedProps = 'icon' | 'size';
 
 // @public (undocumented)
 export type ButtonProps = ComponentPropsCompat & React_2.ButtonHTMLAttributes<HTMLElement> & {
+    appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
     icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     block?: boolean;
-    circular?: boolean;
     disabled?: boolean;
     disabledFocusable?: boolean;
     iconPosition?: 'before' | 'after';
-    outline?: boolean;
-    primary?: boolean;
+    shape?: 'rounded' | 'circular' | 'square';
     size?: 'small' | 'medium' | 'large';
-    subtle?: boolean;
-    transparent?: boolean;
 };
 
 // @public (undocumented)
@@ -55,17 +52,14 @@ export type CheckedState = {
 
 // @public
 export const CompoundButton: React_2.ForwardRefExoticComponent<ComponentPropsCompat & React_2.ButtonHTMLAttributes<HTMLElement> & {
+    appearance?: "primary" | "outline" | "subtle" | "transparent" | undefined;
     icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     block?: boolean | undefined;
-    circular?: boolean | undefined;
     disabled?: boolean | undefined;
     disabledFocusable?: boolean | undefined;
     iconPosition?: "before" | "after" | undefined;
-    outline?: boolean | undefined;
-    primary?: boolean | undefined;
+    shape?: "rounded" | "circular" | "square" | undefined;
     size?: "small" | "medium" | "large" | undefined;
-    subtle?: boolean | undefined;
-    transparent?: boolean | undefined;
 } & {
     secondaryContent?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     contentContainer?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
@@ -150,17 +144,14 @@ export interface SplitButtonState extends ComponentStateCompat<SplitButtonProps,
 
 // @public
 export const ToggleButton: React_2.ForwardRefExoticComponent<ComponentPropsCompat & React_2.ButtonHTMLAttributes<HTMLElement> & {
+    appearance?: "primary" | "outline" | "subtle" | "transparent" | undefined;
     icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     block?: boolean | undefined;
-    circular?: boolean | undefined;
     disabled?: boolean | undefined;
     disabledFocusable?: boolean | undefined;
     iconPosition?: "before" | "after" | undefined;
-    outline?: boolean | undefined;
-    primary?: boolean | undefined;
+    shape?: "rounded" | "circular" | "square" | undefined;
     size?: "small" | "medium" | "large" | undefined;
-    subtle?: boolean | undefined;
-    transparent?: boolean | undefined;
 } & {
     checked?: boolean | undefined;
     defaultChecked?: boolean | undefined;

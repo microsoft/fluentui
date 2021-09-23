@@ -29,19 +29,22 @@ const websitePackages = [
 // in the root package.json's publishing-related scripts and will need to be updated if --scope changes.
 const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
-    // Ignore northstar and private packages
-    if (/[\\/]fluentui[\\/]/.test(packagePath) || packageJson.private === true) {
+    // Ignore northstar
+    if (/[\\/]fluentui[\\/]/.test(packagePath)) {
       return false;
     }
 
     if (process.env.RELEASE_VNEXT) {
-      return isConvergedPackage(packageJson);
+      return isConvergedPackage(packageJson) && packageJson.private !== true;
+    } else if (!isConvergedPackage(packageJson)) {
+      // v8 scope
+      return packageJson.private !== true || websitePackages.includes(packageJson.name);
     }
 
-    return websitePackages.includes(packageJson.name);
+    // Ignore v9/converged packages when releasing v8
+    return false;
   })
-  .map(([packageName]) => `--to=${packageName}`)
-  .filter(Boolean);
+  .map(([packageName]) => `--to=${packageName}`);
 
 const lageArgs = [
   'run',
