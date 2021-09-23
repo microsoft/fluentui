@@ -47,7 +47,8 @@ export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, '
   /**
    * Size of the avatar in pixels.
    *
-   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
+   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
+   * based on design guidelines for the Avatar control.
    *
    * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
    * to override the rendered size.
@@ -57,18 +58,17 @@ export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, '
    *
    * @defaultvalue 32
    */
-  size: AvatarSizeValue;
+  size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
   /**
-   * The avatar can have a square shape.
-   *
-   * @defaultvalue false
+   * The avatar can have a circular or square shape.
+   * @defaultvalue circular
    */
-  square: boolean;
+  shape: 'circular' | 'square';
 
   /**
    * Optional activity indicator
-   * * active: the avatar will be decorated according to activeDisplay
+   * * active: the avatar will be decorated according to activeAppearance
    * * inactive: the avatar will be reduced in size and partially transparent
    * * unset: normal display
    *
@@ -77,11 +77,11 @@ export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, '
   active: 'active' | 'inactive' | 'unset';
 
   /**
-   * The type of visual treatment to use when `active="active"`
+   * The appearance when `active="active"`
    *
    * @defaultvalue ring
    */
-  activeDisplay: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+  activeAppearance: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
 
   /**
    * The color when displaying either an icon or initials.
@@ -100,13 +100,6 @@ export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, '
    */
   idForColor: string | undefined;
 }
-
-/**
- * Sizes for the Avatar
- *
- * This is a restricted list based on design guidelines for the Avatar control.
- */
-export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * A specific named color for the Avatar

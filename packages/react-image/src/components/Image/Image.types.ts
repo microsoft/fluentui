@@ -29,8 +29,13 @@ export type ImageCommons = {
    * An image can appear rounded.
    */
   rounded?: boolean;
+
+  /**
+   * An image can appear elevated with shadow.
+   */
+  shadow?: boolean;
 };
 
-export interface ImageProps extends ComponentProps<ImageSlots>, Partial<ImageCommons> {}
+export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 
-export interface ImageState extends ComponentState<ImageSlots>, ImageCommons {}
+export type ImageState = ComponentState<ImageSlots> & ImageCommons;

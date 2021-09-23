@@ -1,0 +1,82 @@
+pr: none
+trigger: none
+
+# Customize build number to include major version
+# Example: v9_20201022.1
+name: 'v9_$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+  - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
+  - name: release.vnext # Used to scope beachball to release only vnext packages
+    value: true
+
+pool: 'Self Host Ubuntu'
+
+# TODO set schedule once the pipeline is validated after a few manual releases
+# schedules:
+#   # minute 0, hour 7 in UTC (11pm in UTC-8), Every monday
+#   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+#   - cron: '0 7 * * 1'
+#     # will be 12am during daylight savings time unless trigger is updated
+#     displayName: 'Scheduled release (Every monday)'
+#     branches:
+#       include:
+#         - master
+
+workspace:
+  clean: all
+
+steps:
+  - template: .devops/templates/tools.yml
+
+  - script: |
+      git config user.name "Fluent UI Build"
+      git config user.email "fluentui-internal@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+    displayName: Authenticate git for pushes
+
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn
+
+  - script: |
+      yarn run:published build --production --no-cache
+    displayName: yarn build
+
+  - script: |
+      yarn run:published test
+    displayName: yarn test
+
+  - script: |
+      yarn run:published lint
+    displayName: yarn lint
+
+  - script: |
+      yarn publish:beachball -n $(npmToken)
+      git reset --hard origin/master
+    env:
+      GITHUB_PAT: $(githubPAT)
+    displayName: Publish changes and bump versions
+
+  # TODO update release notes script for v9
+  # - script: |
+  #     node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+  #   displayName: 'Update github release notes'
+
+  # This would usually be run automatically (via a pipeline decorator from an extension), but the
+  # thorough cleanup step prevents it from working. So run it manually here.
+  - task: ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    inputs:
+      sourceScanPath: $(Agent.BuildDirectory)
+    condition: succeeded()
+    timeoutInMinutes: 5
+    continueOnError: true
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForModifiedFiles: false

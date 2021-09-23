@@ -3,7 +3,7 @@ import { getSlots } from '@fluentui/react-utilities';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
 
 export const renderAvatar = (state: AvatarState) => {
-  const { slots, slotProps } = getSlots<AvatarSlots>(state, ['label', 'image', 'badge', 'icon']);
+  const { slots, slotProps } = getSlots<AvatarSlots>(state, ['root', 'label', 'image', 'badge', 'icon']);
 
   return (
     <slots.root {...slotProps.root}>

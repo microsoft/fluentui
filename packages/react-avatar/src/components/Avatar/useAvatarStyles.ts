@@ -336,7 +336,7 @@ const useColorStyles = makeStyles({
 });
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
-  const { size, square, active, activeDisplay, color } = state;
+  const { size, shape, active, activeAppearance, color } = state;
 
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
@@ -358,7 +358,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     rootClasses.push(styles.textTitle);
   }
 
-  if (square) {
+  if (shape === 'square') {
     if (size <= 24) {
       rootClasses.push(styles.squareSmall);
     } else if (size <= 48) {
@@ -373,7 +373,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   if (active === 'active' || active === 'inactive') {
     rootClasses.push(styles.activeOrInactive);
 
-    if (activeDisplay.includes('ring')) {
+    if (activeAppearance.includes('ring')) {
       rootClasses.push(styles.ring);
 
       if (size <= 48) {
@@ -385,7 +385,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
       }
     }
 
-    if (activeDisplay.includes('shadow')) {
+    if (activeAppearance.includes('shadow')) {
       if (size <= 28) {
         rootClasses.push(styles.shadow4);
       } else if (size <= 48) {
@@ -397,7 +397,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
       }
     }
 
-    if (activeDisplay.includes('glow')) {
+    if (activeAppearance.includes('glow')) {
       if (size <= 28) {
         rootClasses.push(styles.glow4);
       } else if (size <= 48) {
@@ -409,13 +409,13 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
       }
     }
 
-    // Note: The inactive style overrides some of the activeDisplay styles and must be applied after them
+    // Note: The inactive style overrides some of the activeAppearance styles and must be applied after them
     if (active === 'inactive') {
       rootClasses.push(styles.inactive);
     }
   }
 
-  state.className = mergeClasses(...rootClasses, state.className);
+  state.root.className = mergeClasses(...rootClasses, state.className);
 
   if (state.badge) {
     state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);

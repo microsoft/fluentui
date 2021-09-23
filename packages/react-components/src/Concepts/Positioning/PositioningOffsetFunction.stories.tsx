@@ -11,7 +11,7 @@ export const OffsetFunction = () => {
   return (
     <Popover positioning={{ position: 'after', offset }} noArrow>
       <PopoverTrigger>
-        <Button primary>Click me</Button>
+        <Button appearance="primary">Click me</Button>
       </PopoverTrigger>
 
       <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>

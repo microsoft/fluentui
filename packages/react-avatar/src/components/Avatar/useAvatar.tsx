@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { getInitials as getInitialsDefault } from '../../utils/index';
-import type { AvatarNamedColor, AvatarProps, AvatarSizeValue, AvatarState } from './Avatar.types';
+import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import {
   Person16Regular,
   Person20Regular,
@@ -18,9 +18,9 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
   const {
     name = '',
     size = 32,
-    square = false,
+    shape = 'circular',
     active = 'unset',
-    activeDisplay = 'ring',
+    activeAppearance = 'ring',
     idForColor,
     getInitials = getInitialsDefault,
   } = props;
@@ -34,9 +34,9 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
   const state: AvatarState = {
     size,
     name,
-    square,
+    shape,
     active,
-    activeDisplay,
+    activeAppearance,
     color,
     idForColor,
     getInitials,
@@ -76,7 +76,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
   return state;
 };
 
-const getDefaultIcon = (size: AvatarSizeValue) => {
+const getDefaultIcon = (size: NonNullable<AvatarProps['size']>) => {
   if (size <= 24) {
     return <Person16Regular />;
   } else if (size <= 40) {
@@ -92,7 +92,7 @@ const getDefaultIcon = (size: AvatarSizeValue) => {
   }
 };
 
-const getBadgeSize = (size: AvatarSizeValue) => {
+const getBadgeSize = (size: NonNullable<AvatarProps['size']>) => {
   if (size <= 24) {
     return 'smallest';
   } else if (size <= 36) {

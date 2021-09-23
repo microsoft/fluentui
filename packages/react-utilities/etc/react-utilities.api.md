@@ -11,6 +11,9 @@ import * as React_2 from 'react';
 export const anchorProperties: Record<string, number>;
 
 // @public
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
+
+// @public
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
     as?: As;
 };
@@ -25,10 +28,9 @@ export const baseElementEvents: Record<string, number>;
 export const baseElementProperties: Record<string, number>;
 
 // @public (undocumented)
-export interface BaseSlotsCompat {
-    // (undocumented)
+export type BaseSlotsCompat = {
     root: React_2.ElementType;
-}
+};
 
 // @public
 export const buttonProperties: Record<string, number>;
@@ -38,6 +40,9 @@ export function canUseDOM(): boolean;
 
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
+
+// @public
+export const clamp: (value: number, min: number, max: number) => number;
 
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
@@ -51,14 +56,11 @@ export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primar
 }, Primary> & PropsWithoutRef<Shorthands[Primary]>;
 
 // @public (undocumented)
-export interface ComponentPropsCompat {
-    // (undocumented)
+export type ComponentPropsCompat = {
     as?: React_2.ElementType;
-    // (undocumented)
-    children?: React_2.ReactNode;
-    // (undocumented)
     className?: string;
-}
+    children?: React_2.ReactNode;
+};
 
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
@@ -84,11 +86,6 @@ export const defaultSSRContextValue: SSRContextValue;
 // @public
 export const divProperties: Record<string, number>;
 
-// @public (undocumented)
-export type ExtractRef<Props extends {
-    ref?: any;
-}> = Props['ref'] extends ((instance: infer I | null) => void) | React_2.RefObject<infer I> | null | undefined ? I : any;
-
 // @public
 export const formProperties: Record<string, number>;
 
@@ -97,6 +94,9 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
+
+// @public
+export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
 export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {
@@ -213,12 +213,10 @@ export type ResolvedShorthandPropsCompat<T, K extends keyof T> = Omit<T, K> & {
 export function resolveShorthand<Props extends DefaultObjectShorthandProps, Required extends boolean = false>(value: ShorthandProps<Props>, options?: ResolveShorthandOptions<Props, Required>): Required extends false ? Props | undefined : Props;
 
 // @public (undocumented)
-export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {
-    // (undocumented)
-    defaultProps?: Props;
-    // (undocumented)
+export type ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> = {
     required?: Required;
-}
+    defaultProps?: Props;
+};
 
 // @public
 export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof TProps>(props: TProps, shorthandPropNames: readonly TShorthandPropNames[]) => ResolvedShorthandPropsCompat<TProps, TShorthandPropNames>;
@@ -261,10 +259,9 @@ export const SSRContext: React_2.Context<SSRContextValue>;
 // Warning: (ae-internal-missing-underscore) The name "SSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export interface SSRContextValue {
-    // (undocumented)
+export type SSRContextValue = {
     current: number;
-}
+};
 
 // @public
 export const SSRProvider: React_2.FC;
@@ -291,11 +288,11 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];
 
 // @public
-export interface UseBooleanCallbacks {
-    setFalse: () => void;
+export type UseBooleanCallbacks = {
     setTrue: () => void;
+    setFalse: () => void;
     toggle: () => void;
-}
+};
 
 // @public
 export function useConst<T>(initialValue: T | (() => T)): T;
@@ -343,13 +340,13 @@ export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefOb
 export const useMount: (callback: () => void) => void;
 
 // @public (undocumented)
-export interface UseOnClickOrScrollOutsideOptions {
-    callback: (ev: MouseEvent | TouchEvent) => void;
-    contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
-    disabled?: boolean;
+export type UseOnClickOrScrollOutsideOptions = {
     element: Document | undefined;
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
-}
+    contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
+    disabled?: boolean;
+    callback: (ev: MouseEvent | TouchEvent) => void;
+};
 
 // @public
 export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => void;

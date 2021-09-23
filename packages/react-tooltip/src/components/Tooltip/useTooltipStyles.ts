@@ -62,14 +62,13 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the Tooltip slots based on the state
- * {@docCategory Tooltip}
  */
 export const useTooltipStyles = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
   state.className = mergeClasses(
     styles.root,
-    state.inverted && styles.inverted,
+    state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,
     state.className,
   );

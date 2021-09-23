@@ -17,13 +17,13 @@ export const Avatar: React_2.ForwardRefExoticComponent<AvatarProps & React_2.Ref
 // @public (undocumented)
 export interface AvatarCommons extends Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> {
     active: 'active' | 'inactive' | 'unset';
-    activeDisplay: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    activeAppearance: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
     color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     getInitials: (name: string, isRtl: boolean) => string;
     idForColor: string | undefined;
     name: string;
-    size: AvatarSizeValue;
-    square: boolean;
+    shape: 'circular' | 'square';
+    size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 }
 
 // @public
@@ -32,9 +32,6 @@ export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'pe
 // @public
 export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {
 }
-
-// @public
-export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public (undocumented)
 export type AvatarSlots = {

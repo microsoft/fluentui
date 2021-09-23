@@ -6,7 +6,6 @@ import type { MenuProps } from './Menu.types';
 
 /**
  * Wrapper component that manages state for a popup MenuList and a MenuTrigger
- * {@docCategory Menu }
  */
 export const Menu: React.FC<MenuProps> = props => {
   const state = useMenu(props);
