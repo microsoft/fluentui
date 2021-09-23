@@ -12,7 +12,7 @@ For `badge` Unlike other slots, the content of the badge is the `status` prop of
 
 E.g. with `<Avatar badge="away" />`, the badge slot renders `<PresenceBadge status="away" size="smaller" />`
 
-## Proposal
+## Possible solutions
 
 Here's a summary of the 4 options that are detailed below:
 
@@ -108,3 +108,7 @@ This would add a default child to the `badge` slot, with its status and size pro
 
 - `react-avatar` includes `PresenceBadge` in the bundle even if it's not used
 - Two ways of accomplishing the same thing (could either write option 2)
+
+## Proposed solution
+
+After some discussion in [#19527](https://github.com/microsoft/fluentui/pull/19527) Option 2 above, where the proposal is for the badge slot to be a `PresenceBadge` with normal shorthand syntax, has emerged as the preferred solution that we are going to be implementing going forward.
