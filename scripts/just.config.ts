@@ -21,6 +21,7 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
+import { isConvergedPackage } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
   babel: boolean;
@@ -93,7 +94,8 @@ export function preset() {
     return args.commonjs
       ? series('ts:commonjs-only')
       : parallel(
-          condition('ts:commonjs', () => !args.min),
+          // Converged packages must always build commonjs because of babel-make-styles transforms
+          condition('ts:commonjs', () => !args.min || isConvergedPackage()),
           'ts:esm',
           condition('ts:amd', () => !!args.production),
         );

@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
-import { markClassName } from './useSliderState';
+import { markClassName, markLabelClassName } from '../../utils/renderMarks';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';
@@ -127,6 +127,7 @@ const useRailStyles = makeStyles({
 
   disabled: theme => ({
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
   }),
 
   horizontal: theme => ({
@@ -191,7 +192,7 @@ const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
@@ -210,8 +211,12 @@ const useMarksWrapperStyles = makeStyles({
     zIndex: '1',
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      // TODO: change to theme neutralStrokeOnBrand once it is added
-      background: 'white',
+      background: theme.alias.color.neutral.neutralBackground1,
+    },
+
+    [`& .${markLabelClassName}`]: {
+      padding: '2px',
+      fontSize: '12px',
     },
 
     '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
@@ -230,6 +235,12 @@ const useMarksWrapperStyles = makeStyles({
       flexDirection: 'column',
       transform: 'translateX(50%)',
       alignItems: 'center',
+    },
+
+    [`& .${markLabelClassName}`]: {
+      fontFamily: theme.global.type.fontFamilies.base,
+      color: theme.alias.color.neutral.neutralForeground1,
+      paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
     [`& .${markClassName}`]: {
@@ -253,9 +264,20 @@ const useMarksWrapperStyles = makeStyles({
       maxHeight: '100%',
     },
 
+    [`& .${markLabelClassName}`]: {
+      paddingLeft: 'calc(var(--slider-thumb-size) /2 )',
+      transform: 'scaleY(-1)',
+    },
+
     [`& .${markClassName}`]: {
       height: '1px',
       width: 'var(--slider-mark-size)',
+    },
+  }),
+
+  disabled: theme => ({
+    [`& .${markLabelClassName}`]: {
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   }),
 });
@@ -315,7 +337,7 @@ const useThumbStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
@@ -378,15 +400,14 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const activeRailStyles = useActiveRailStyles();
   const inputStyles = useInputStyles();
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     rootStyles.root,
     rootStyles.focusIndicator,
-    // TODO: Remove once compat is reverted
-    rootStyles[state.size || 'medium'],
+    rootStyles[state.size!],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     state.disabled ? rootStyles.disabled : rootStyles.enabled,
     rootStyles.focusIndicator,
-    state.className,
+    state.root.className,
   );
 
   state.sliderWrapper.className = mergeClasses(
@@ -425,6 +446,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.marksWrapper.className = mergeClasses(
     marksWrapperStyles.marksWrapper,
     state.vertical ? marksWrapperStyles.vertical : marksWrapperStyles.horizontal,
+    state.disabled && marksWrapperStyles.disabled,
     state.marksWrapper.className,
   );
 
@@ -438,7 +460,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     thumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.thumb.className,
   );
 

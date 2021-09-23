@@ -32,11 +32,11 @@ export const Basic = () => {
         <Tooltip content="Default tooltip">
           <button>Default</button>
         </Tooltip>
-        <Tooltip content="Inverted tooltip" inverted>
+        <Tooltip content="Inverted tooltip" appearance="inverted">
           <button>Inverted</button>
         </Tooltip>
-        <Tooltip content="Tooltip pointing to its target" pointing>
-          <button>Pointing</button>
+        <Tooltip content="Tooltip pointing to its target" withArrow>
+          <button>With an arrow</button>
         </Tooltip>
         <Tooltip
           content={
@@ -47,7 +47,7 @@ export const Basic = () => {
         >
           <button>Formatted content</button>
         </Tooltip>
-        <Tooltip content="Tooltip pointing to a custom target" positioning={{ target: exampleTarget }} pointing>
+        <Tooltip content="Tooltip pointing to a custom target" positioning={{ target: exampleTarget }} withArrow>
           <button>
             Custom target:{' '}
             <div

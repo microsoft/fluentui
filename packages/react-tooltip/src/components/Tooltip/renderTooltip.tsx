@@ -6,7 +6,6 @@ import type { TooltipState } from './Tooltip.types';
 
 /**
  * Render the final JSX of Tooltip
- * {@docCategory Tooltip}
  */
 export const renderTooltip = (state: TooltipState) => {
   const { slots, slotProps } = getSlotsCompat(state, tooltipShorthandProps);
@@ -17,7 +16,7 @@ export const renderTooltip = (state: TooltipState) => {
       {state.shouldRenderTooltip && (
         <Portal>
           <slots.root {...slotProps.root}>
-            {state.pointing && <div ref={state.arrowRef} className={state.arrowClassName} />}
+            {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
             <slots.content {...slotProps.content} />
           </slots.root>
         </Portal>

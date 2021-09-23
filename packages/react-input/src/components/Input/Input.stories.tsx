@@ -1,3 +1,4 @@
+/// <reference types="@fluentui/react-icons" />
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { Input } from './Input';
