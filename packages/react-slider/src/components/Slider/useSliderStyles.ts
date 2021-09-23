@@ -343,7 +343,7 @@ const useThumbStyles = makeStyles({
   disabled: theme => ({
     background: theme.alias.color.neutral.neutralForegroundDisabled,
     ':before': {
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
     },
   }),
 
