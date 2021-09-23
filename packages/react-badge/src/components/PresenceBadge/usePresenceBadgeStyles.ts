@@ -62,7 +62,7 @@ export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadge
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
     state.outOfOffice && (state.status === 'busy' || state.status === 'doNotDisturb') && styles.outOfOfficeBusy,
     state.outOfOffice && state.status === 'away' && styles.outOfOfficeAway,
-    (state.size === 'smallest' || state.size === 'smaller') && styles.thinBorder,
+    (state.size === 'tiny' || state.size === 'extra-small') && styles.thinBorder,
     state.root.className,
   );
 
