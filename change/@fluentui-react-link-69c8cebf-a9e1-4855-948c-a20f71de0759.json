@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated LinkProps for consistency",
-  "packageName": "@fluentui/react-link",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

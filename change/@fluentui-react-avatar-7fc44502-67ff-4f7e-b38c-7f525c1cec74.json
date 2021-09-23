@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated props for consistency across beta",
-  "packageName": "@fluentui/react-avatar",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated ToolTipProps for consistency",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
