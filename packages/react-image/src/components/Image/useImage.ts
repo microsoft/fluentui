@@ -8,9 +8,9 @@ export const imageShorthandProps: Array<keyof ImageSlots> = ['root'];
  * Given user props, returns state and render function for an Image.
  */
 export const useImage = (props: ImageProps, ref: React.Ref<HTMLImageElement>): ImageState => {
-  const { bordered: bordered, fit, block, shape = 'square' } = props;
+  const { bordered, fit, block, shape = 'square' } = props;
   const state: ImageState = {
-    bordered: bordered,
+    bordered,
     fit,
     block,
     shape,
