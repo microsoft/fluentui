@@ -9,15 +9,15 @@ import type { LinkProps, LinkState } from './Link.types';
  * @param ref - User provided ref to be passed to the Link component.
  */
 export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>): LinkState => {
-  const { disabled, disabledFocusable, inline, secondary } = props;
+  const { appearance, disabled, disabledFocusable, inline } = props;
   const as = props.as || (props.href ? 'a' : 'button');
 
   const state: LinkState = {
     // Props passed at the top-level
+    appearance,
     disabled,
     disabledFocusable,
     inline,
-    secondary,
 
     // Slots definition
     components: {
