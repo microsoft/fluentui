@@ -31,11 +31,11 @@ type UseEvent = {
 /**
  * Hook used to add and remove a event from an element.
  *
- * @param element the element to listen to.
- * @param type the event to watch.
- * @param callback the callback to call when the eventName is triggered.
- * @param useCapture whether the events should be dispatched to the callback first before other EventTargets.
- * @param disabled whether event should be disabled and removed
+ * @param element - The element to listen to
+ * @param type - The event to watch
+ * @param callback - The callback to call when the eventName is triggered
+ * @param useCapture - Whether the events should be dispatched to the callback first before other EventTargets
+ * @param disabled - Whether event should be disabled and removed
  */
 export const useEvent = ({ element, type, callback, useCapture, disabled }: UseEvent) => {
   React.useEffect(() => {
