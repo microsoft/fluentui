@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Image } from '../index';
 
-export const ImageShadow = () => (
-  <Image shadow src="https://via.placeholder.com/300x300" />
-);
+export const ImageShadow = () => <Image shadow src="https://via.placeholder.com/300x300" />;
 ImageShadow.parameters = {
   docs: {
     description: {
