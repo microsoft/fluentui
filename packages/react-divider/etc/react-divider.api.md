@@ -11,8 +11,7 @@ import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 // @public
 export const Divider: React_2.ForwardRefExoticComponent<ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
     alignContent?: "start" | "end" | "center" | undefined;
-    appearance?: "strong" | "default" | "subtle" | "brand" | undefined;
-    important?: boolean | undefined;
+    appearance?: "strong" | "brand" | "subtle" | undefined;
     inset?: boolean | undefined;
     vertical?: boolean | undefined;
     wrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement>>;
@@ -21,8 +20,7 @@ export const Divider: React_2.ForwardRefExoticComponent<ComponentPropsCompat & R
 // @public (undocumented)
 export type DividerProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
     alignContent?: 'start' | 'end' | 'center';
-    appearance?: 'default' | 'subtle' | 'brand' | 'strong';
-    important?: boolean;
+    appearance?: 'brand' | 'strong' | 'subtle';
     inset?: boolean;
     vertical?: boolean;
     wrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement>>;
