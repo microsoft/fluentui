@@ -5,7 +5,6 @@ import type { TooltipSlots, TooltipState } from './Tooltip.types';
 
 /**
  * Render the final JSX of Tooltip
- * {@docCategory Tooltip}
  */
 export const renderTooltip = (state: TooltipState) => {
   const { slots, slotProps } = getSlots<TooltipSlots>(state, ['root']);

@@ -3,9 +3,6 @@ import type { IKeytipProps } from '@fluentui/react';
 import type { IButtonProps } from '@fluentui/react/lib/Button';
 import type { IRefObject, IRenderFunction } from '@fluentui/utilities';
 
-/**
- * {@docCategory Tabs}
- */
 export interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.

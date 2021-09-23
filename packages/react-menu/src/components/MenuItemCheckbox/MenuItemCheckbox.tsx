@@ -6,7 +6,6 @@ import type { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 
 /**
  * Define a styled MenuItemCheckbox, using the `useMenuItemCheckbox` hook.
- * {@docCategory MenuItemCheckbox}
  */
 export const MenuItemCheckbox = React.forwardRef<HTMLElement, MenuItemCheckboxProps>((props, ref) => {
   const state = useMenuItemCheckbox(props, ref);

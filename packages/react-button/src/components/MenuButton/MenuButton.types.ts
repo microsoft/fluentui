@@ -9,7 +9,7 @@ import type {
 } from '../Button/Button.types';
 
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> &
-  Partial<MenuTriggerChildProps> & {
+  Partial<Omit<MenuTriggerChildProps, 'ref'>> & {
     /**
      * Menu icon that indicates that this button has a menu that can be expanded.
      */
@@ -20,6 +20,5 @@ export type MenuButtonShorthandPropsCompat = ButtonShorthandPropsCompat | 'menuI
 
 export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
 
-export interface MenuButtonState
-  extends Omit<ButtonState, 'iconPosition'>,
-    ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps> {}
+export type MenuButtonState = Omit<ButtonState, 'iconPosition'> &
+  ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps>;

@@ -26,8 +26,6 @@ const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory Tooltip}
  */
 export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
@@ -201,7 +199,8 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
   };
 
   // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-  const childTargetRef = useMergedRefs(child?.ref, targetRef);
+  const childWithRef = child as { ref?: React.Ref<unknown> } | undefined;
+  const childTargetRef = useMergedRefs(childWithRef?.ref, targetRef);
   if (popperOptions.target === undefined) {
     triggerProps.ref = childTargetRef;
   }

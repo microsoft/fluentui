@@ -1,27 +1,37 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useLinkState } from './useLinkState';
 import type { LinkProps, LinkState } from './Link.types';
 
 /**
- * Consts listing which props are shorthand props.
+ * Given user props, defines default props for the Link, calls useLinkState, and returns processed state.
+ * @param props - User provided props to the Link component.
+ * @param ref - User provided ref to be passed to the Link component.
  */
-export const linkShorthandProps = [];
+export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>): LinkState => {
+  const { appearance, disabled, disabledFocusable, inline } = props;
+  const as = props.as || (props.href ? 'a' : 'button');
 
-const mergeProps = makeMergeProps<LinkState>({ deepMerge: linkShorthandProps });
+  const state: LinkState = {
+    // Props passed at the top-level
+    appearance,
+    disabled,
+    disabledFocusable,
+    inline,
 
-/**
- * Given user props, returns state and render function for a Link.
- */
-export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>, defaultProps?: LinkProps): LinkState => {
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
-      as: props.href ? 'a' : 'button',
+    // Slots definition
+    components: {
+      root: 'a',
     },
-    defaultProps,
-    resolveShorthandProps(props, linkShorthandProps),
-  );
+
+    root: getNativeElementProps(as, {
+      ref,
+      ...props,
+    }),
+  };
+
+  // TODO: Remove after https://github.com/microsoft/fluentui/issues/19785 is fixed.
+  state.root.as = as;
 
   useLinkState(state);
 

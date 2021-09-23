@@ -1,11 +1,11 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useControllableState } from './useControllableState';
 
-interface RenderProps<T> {
+type RenderProps<T> = {
   state: boolean | undefined;
   defaultState?: boolean;
   initialState: boolean;
-}
+};
 
 describe('useControllableState', () => {
   afterEach(jest.resetAllMocks);

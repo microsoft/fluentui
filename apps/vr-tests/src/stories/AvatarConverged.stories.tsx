@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Avatar, AvatarProps, AvatarSizeValue } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { Stack } from '@fluentui/react';
 import { People20Regular, PersonCall20Regular } from '@fluentui/react-icons';
 import { AvatarExamples as examples } from '@fluentui/example-data';
@@ -29,7 +29,7 @@ const AvatarList: React.FC<
   );
 };
 
-const customSizes: { baseSize: AvatarSizeValue; customSize: string }[] = [
+const customSizes: { baseSize: AvatarProps['size']; customSize: string }[] = [
   { baseSize: 20, customSize: '13px' },
   { baseSize: 20, customSize: '21px' },
   { baseSize: 32, customSize: '34px' },
@@ -89,16 +89,16 @@ storiesOf('Avatar Converged', module)
         <Avatar name="Three Word Name" />
         <Avatar name="One" />
         <Avatar name="(111)-555-1234" icon={<PersonCall20Regular />} />
-        <Avatar icon={<People20Regular />} square />
-        <Avatar name="Group" icon={<People20Regular />} square />
+        <Avatar icon={<People20Regular />} shape="square" />
+        <Avatar name="Group" icon={<People20Regular />} shape="square" />
         <Avatar image={examples.image[14]} badge="away" />
         <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
       </>
     ),
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('size+name', () => <AvatarList names={examples.name} />)
-  .addStory('size+icon+badge+square', () => <AvatarList badge="outOfOffice" square />)
+  .addStory('size+icon+badge+square', () => <AvatarList badge="outOfOffice" shape="square" />)
   .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="doNotDisturb" />)
   .addStory('size+inactive+badge', () => (
     <AvatarList images={examples.image} active="inactive" badge="offline" />
@@ -107,37 +107,41 @@ storiesOf('Avatar Converged', module)
     <AvatarList images={examples.image} active="active" badge="available" />
   ))
   .addStory('size+active+shadow', () => (
-    <AvatarList images={examples.image} active="active" activeDisplay="shadow" />
+    <AvatarList images={examples.image} active="active" activeAppearance="shadow" />
   ))
   .addStory('size+active+glow', () => (
-    <AvatarList images={examples.image} active="active" activeDisplay="glow" />
+    <AvatarList images={examples.image} active="active" activeAppearance="glow" />
   ))
   .addStory('size+active+ring-shadow', () => (
-    <AvatarList images={examples.image} active="active" activeDisplay="ring-shadow" />
+    <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
   ))
   .addStory('size+active+ring-glow', () => (
-    <AvatarList images={examples.image} active="active" activeDisplay="ring-glow" />
+    <AvatarList images={examples.image} active="active" activeAppearance="ring-glow" />
   ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
     <AvatarCustomSizeList names={examples.name} badge="available" />
   ))
   .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" />)
-  .addStory('color', () => (
-    <Stack tokens={{ childrenGap: 24 }}>
-      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-        <Avatar color="neutral" />
-        <Avatar color="brand" />
+  .addStory(
+    'color',
+    () => (
+      <Stack tokens={{ childrenGap: 24 }}>
+        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+          <Avatar color="neutral" />
+          <Avatar color="brand" />
+        </Stack>
+        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+          {examples.name.map(name => (
+            <Avatar color="colorful" name={name} key={name} />
+          ))}
+        </Stack>
+        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+          {examples.namedColors.map(color => (
+            <Avatar color={color} key={color} />
+          ))}
+        </Stack>
       </Stack>
-      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-        {examples.name.map(name => (
-          <Avatar color="colorful" name={name} key={name} />
-        ))}
-      </Stack>
-      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-        {examples.namedColors.map(color => (
-          <Avatar color={color} key={color} />
-        ))}
-      </Stack>
-    </Stack>
-  ));
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  );

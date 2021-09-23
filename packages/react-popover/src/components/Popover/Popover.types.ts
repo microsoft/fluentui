@@ -7,7 +7,7 @@ import type { PortalProps } from '@fluentui/react-portal';
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
-export interface PopoverCommons extends Pick<PortalProps, 'mountNode'> {
+export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   /**
    * Controls the opening of the Popover
    */
@@ -58,55 +58,56 @@ export interface PopoverCommons extends Pick<PortalProps, 'mountNode'> {
    * Configures the position of the Popover
    */
   positioning?: PositioningShorthand;
-}
+};
 
 /**
  * Popover Props
  */
-export interface PopoverProps extends Partial<PopoverCommons> {
+export type PopoverProps = Partial<PopoverCommons> & {
   /**
    * Can contain two children including {@link PopoverTrigger} and {@link PopoverPopover}.
    * Alternatively can only contain {@link PopoverPopover} if using a custom `target`.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
-}
+};
 
 /**
  * Popover State
  */
-export interface PopoverState extends PopoverCommons, Pick<PopoverProps, 'children'> {
-  /**
-   * Callback to open/close the Popover
-   */
-  setOpen: (e: OpenPopoverEvents, open: boolean) => void;
-  /**
-   * Ref of the PopoverTrigger
-   */
-  triggerRef: React.MutableRefObject<HTMLElement | null>;
-  /**
-   * Ref of the PopoverSurface
-   */
-  contentRef: React.MutableRefObject<HTMLElement | null>;
-  /**
-   * Ref of the pointing arrow
-   */
-  arrowRef: React.MutableRefObject<HTMLDivElement | null>;
-  /**
-   * Anchors the popper to the mouse click for context events
-   */
-  contextTarget: PopperVirtualElement | undefined;
-  /**
-   * A callback to set the target of the popper to the mouse click for context events
-   */
-  setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+export type PopoverState = PopoverCommons &
+  Pick<PopoverProps, 'children'> & {
+    /**
+     * Callback to open/close the Popover
+     */
+    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    /**
+     * Ref of the PopoverTrigger
+     */
+    triggerRef: React.MutableRefObject<HTMLElement | null>;
+    /**
+     * Ref of the PopoverSurface
+     */
+    contentRef: React.MutableRefObject<HTMLElement | null>;
+    /**
+     * Ref of the pointing arrow
+     */
+    arrowRef: React.MutableRefObject<HTMLDivElement | null>;
+    /**
+     * Anchors the popper to the mouse click for context events
+     */
+    contextTarget: PopperVirtualElement | undefined;
+    /**
+     * A callback to set the target of the popper to the mouse click for context events
+     */
+    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
 
-  size: NonNullable<PopoverProps['size']>;
-}
+    size: NonNullable<PopoverProps['size']>;
+  };
 
 /**
  * Data attached to open/close events
  */
-export interface OnOpenChangeData extends Pick<PopoverState, 'open'> {}
+export type OnOpenChangeData = Pick<PopoverState, 'open'>;
 
 /**
  * The supported events that will trigger open/close of the menu

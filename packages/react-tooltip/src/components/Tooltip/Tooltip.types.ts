@@ -96,7 +96,6 @@ export interface TooltipCommons {
 
 /**
  * The properties that are added to the trigger of the Tooltip
- * {@docCategory Tooltip}
  */
 export type TooltipTriggerProps = {
   ref?: React.Ref<never>;
@@ -108,9 +107,9 @@ export type TooltipTriggerProps = {
 /**
  * Data for the Tooltip's onVisibleChange event.
  */
-export interface OnVisibleChangeData {
+export type OnVisibleChangeData = {
   visible: boolean;
-}
+};
 
 /**
  * Properties for Tooltip

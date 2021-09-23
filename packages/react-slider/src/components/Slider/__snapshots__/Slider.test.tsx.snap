@@ -1,5 +1,183 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 1`] = `
+<div>
+  <div
+    class=""
+    id="slider-1"
+  >
+    <div
+      class=""
+      style="grid-template-columns: 10% 20% 10% 40%;"
+    >
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          <div
+            style="width: 10px; height: 10px; background: green;"
+          />
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          world
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      class=""
+    >
+      <div
+        class=""
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Slider-track"
+          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
+        />
+      </div>
+      <div
+        class=""
+        style="transform: translateX(5%); transition: none;"
+      >
+        <div
+          class="ms-Slider-thumb"
+        />
+      </div>
+      <div
+        class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = `
+<div>
+  <div
+    class=""
+    id="slider-1"
+  >
+    <div
+      class=""
+      style="grid-template-columns: 10% 20% 10% 40%;"
+    >
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          style="width: 2px; height: 8px; background: red; margin-top: -2px;"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          <div
+            style="width: 10px; height: 10px; background: green;"
+          />
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          world
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      class=""
+    >
+      <div
+        class=""
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Slider-track"
+          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
+        />
+      </div>
+      <div
+        class=""
+        style="transform: translateX(5%); transition: none;"
+      >
+        <div
+          class="ms-Slider-thumb"
+        />
+      </div>
+      <div
+        class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
 <div>
   <div
@@ -21,238 +199,238 @@ exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
     </div>
@@ -339,6 +517,94 @@ exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
 </div>
 `;
 
+exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctly 1`] = `
+<div>
+  <div
+    class=""
+    id="slider-1"
+  >
+    <div
+      class=""
+      style="grid-template-columns: 10% 20% 10% 40%;"
+    >
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          hello
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          world
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      class=""
+    >
+      <div
+        class=""
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Slider-track"
+          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
+        />
+      </div>
+      <div
+        class=""
+        style="transform: translateX(5%); transition: none;"
+      >
+        <div
+          class="ms-Slider-thumb"
+        />
+      </div>
+      <div
+        class=""
+      />
+      <input
+        class=""
+        disabled=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
 <div>
   <div
@@ -383,7 +649,94 @@ exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
 </div>
 `;
 
-exports[`Slider Snapshot Tests renders horizontal Slider with (custom marks) correctly 1`] = `
+exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correctly 1`] = `
+<div>
+  <div
+    class=""
+    id="slider-1"
+  >
+    <div
+      class=""
+      style="grid-template-columns: 10% 20% 10% 40%;"
+    >
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          hello
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          world
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      class=""
+    >
+      <div
+        class=""
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Slider-track"
+          style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
+        />
+      </div>
+      <div
+        class=""
+        style="transform: translateX(5%); transition: none;"
+      >
+        <div
+          class="ms-Slider-thumb"
+        />
+      </div>
+      <div
+        class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Slider Snapshot Tests renders horizontal Slider with unique mark values correctly 1`] = `
 <div>
   <div
     class=""
@@ -397,28 +750,28 @@ exports[`Slider Snapshot Tests renders horizontal Slider with (custom marks) cor
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
     </div>
@@ -548,7 +901,94 @@ exports[`Slider Snapshot Tests renders vertical Slider correctly 1`] = `
 </div>
 `;
 
-exports[`Slider Snapshot Tests renders vertical Slider with (custom marks) correctly 1`] = `
+exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctly 1`] = `
+<div>
+  <div
+    class=""
+    id="slider-1"
+  >
+    <div
+      class=""
+      style="grid-template-rows: 10% 20% 10% 40%;"
+    >
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          hello
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+        <div
+          class="ms-Slider-label"
+        >
+          world
+        </div>
+      </div>
+      <div
+        class="ms-Slider-markItemContainer"
+      >
+        <div
+          class="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      class=""
+    >
+      <div
+        class=""
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Slider-track"
+          style="top: 0px; height: 5%; border-radius: 99px; transition: none;"
+        />
+      </div>
+      <div
+        class=""
+        style="transform: translateY(5%); transition: none;"
+      >
+        <div
+          class="ms-Slider-thumb"
+        />
+      </div>
+      <div
+        class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Slider Snapshot Tests renders vertical Slider with unique mark values correctly 1`] = `
 <div>
   <div
     class=""
@@ -562,28 +1002,28 @@ exports[`Slider Snapshot Tests renders vertical Slider with (custom marks) corre
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
       <div
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark "
+          class="ms-Slider-mark"
         />
       </div>
     </div>

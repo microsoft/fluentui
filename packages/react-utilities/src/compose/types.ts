@@ -71,7 +71,7 @@ export type IntrinsicShorthandProps<
 export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
 
 /**
- * Helper type for inferring the type of the as prop from a Props interface.
+ * Helper type for inferring the type of the as prop from a Props type.
  *
  * For example:
  * ```
@@ -94,16 +94,6 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ExtractRef<Props extends { ref?: any }> = Props['ref'] extends
-  | ((instance: infer I | null) => void)
-  | React.RefObject<infer I>
-  | null
-  | undefined
-  ? I
-  : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    any;
-
 export type ComponentProps<
   Shorthands extends ObjectShorthandPropsRecord,
   Primary extends keyof Shorthands = 'root'
@@ -125,11 +115,11 @@ export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
 
 /////////////////////////// COMPAT /////////////////////////////////////////////////////////////////////
 
-export interface ComponentPropsCompat {
+export type ComponentPropsCompat = {
   as?: React.ElementType;
   className?: string;
   children?: React.ReactNode;
-}
+};
 
 // Shorthand types
 
@@ -152,9 +142,9 @@ export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}>
     children?: TProps['children'] | ShorthandRenderFunctionCompat<TProps>;
   };
 
-export interface BaseSlotsCompat {
+export type BaseSlotsCompat = {
   root: React.ElementType;
-}
+};
 
 export type SlotPropsCompat<
   TSlots extends BaseSlotsCompat,
