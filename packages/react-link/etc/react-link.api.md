@@ -68,10 +68,10 @@ export const Link: React_2.ForwardRefExoticComponent<(Pick<{
 
 // @public (undocumented)
 export type LinkCommons = {
+    appearance?: 'subtle';
     disabled?: boolean;
     disabledFocusable?: boolean;
     inline?: boolean;
-    secondary?: boolean;
 };
 
 // @public (undocumented)

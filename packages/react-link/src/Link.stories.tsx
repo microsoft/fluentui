@@ -24,8 +24,8 @@ const LinkExamples = (props: LinkProps) => (
       <Link {...props}>Stand-alone link</Link>
     </div>
     <div>
-      <Link {...props} secondary>
-        Standalone secondary link
+      <Link {...props} appearance="subtle">
+        Standalone subtle link
       </Link>
     </div>
     <div>
@@ -47,8 +47,8 @@ const LinkExamples = (props: LinkProps) => (
     </div>
     <div>
       This is{' '}
-      <Link {...props} inline secondary>
-        a secondary link
+      <Link {...props} inline appearance="subtle">
+        a subtle link
       </Link>{' '}
       used alongside other text content.
     </div>
