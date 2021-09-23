@@ -68,6 +68,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     triggerAriaAttribute,
     visible,
     shouldRenderTooltip: visible,
+    appearance: props.appearance,
 
     // Slots
     components: {

@@ -25,6 +25,11 @@ export type TooltipSlots = {
  */
 export interface TooltipCommons {
   /**
+   * A tooltip can appear with the default appearance or inverted.
+   * When not specified, the default appearance is used.
+   */
+  appearance?: 'inverted';
+  /**
    * The content displayed inside the tooltip.
    */
   content: React.ReactNode;
