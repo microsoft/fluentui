@@ -45,12 +45,12 @@ const useStyles = makeStyles({
  */
 export const useLabelStyles = (state: LabelState): LabelState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.disabled && styles.disabled,
     styles[state.size],
     state.strong && styles.strong,
-    state.className,
+    state.root.className,
   );
 
   if (state.required) {
