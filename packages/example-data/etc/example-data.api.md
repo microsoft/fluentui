@@ -13,7 +13,19 @@ export const AvatarExamples: {
     }[];
     readonly name: string[];
     readonly image: string[];
-    readonly badge: readonly ["available", "away", "busy", "doNotDisturb", "offline", "outOfOffice", {
+    readonly badge: readonly [{
+        readonly status: "available";
+    }, {
+        readonly status: "away";
+    }, {
+        readonly status: "busy";
+    }, {
+        readonly status: "doNotDisturb";
+    }, {
+        readonly status: "offline";
+    }, {
+        readonly status: "outOfOffice";
+    }, {
         readonly status: "available";
         readonly outOfOffice: true;
     }, {
@@ -171,6 +183,5 @@ export const TestImages: {
     personaFemale: string;
     personaMale: string;
 };
-
 
 ```
