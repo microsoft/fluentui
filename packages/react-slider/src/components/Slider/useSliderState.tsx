@@ -108,14 +108,14 @@ export const useSliderState = (state: SliderState) => {
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       showStepAnimation();
-      // When undefined, the position fallbacks to the currentValue state.
-      setRenderedPosition(undefined);
       setEventData(prevState => ({
         ...prevState,
         disabled: true,
         element: ev.target as HTMLElement,
         pointerId: ev.pointerId,
       }));
+      // When undefined, the position fallbacks to the currentValue state.
+      setRenderedPosition(undefined);
       inputRef.current!.focus();
     },
     [showStepAnimation],
