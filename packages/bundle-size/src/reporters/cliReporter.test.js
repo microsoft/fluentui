@@ -29,8 +29,8 @@ describe('cliReporter', () => {
       ┌────────────────────┬────────┬───────────────────────┐
       │ Fixture            │ Before │ After (minified/GZIP) │
       ├────────────────────┼────────┼───────────────────────┤
-      │ baz-package        │   2 kB │            100%↑ 1 kB │
-      │ An entry with diff │  200 B │           100%↑ 100 B │
+      │ baz-package        │    0 B │            100%↑ 1 kB │
+      │ An entry with diff │    0 B │           100%↑ 100 B │
       ├────────────────────┼────────┼───────────────────────┤
       │ foo-package        │    N/A │            100%↑ 1 kB │
       │ New entry (new)    │    N/A │           100%↑ 100 B │
