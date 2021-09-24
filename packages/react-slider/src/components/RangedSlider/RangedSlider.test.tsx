@@ -2,8 +2,8 @@ import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 // TODO: Find a way to use pointer events with testing-library and remove enzyme.
-// github.com/microsoft/fluentui/issues/19977
-https: import { mount, ReactWrapper } from 'enzyme';
+// https: github.com/microsoft/fluentui/issues/19977
+import { mount, ReactWrapper } from 'enzyme';
 import { RangedSlider } from './RangedSlider';
 import { isConformant } from '../../common/isConformant';
 
@@ -190,29 +190,6 @@ describe('RangedSlider', () => {
     render(<RangedSlider role="test" data-testid="test" />);
     const sliderRoot = screen.getByTestId('test');
     expect(sliderRoot.getAttribute('role')).toEqual('test');
-  });
-
-  it('applies ariaValueText', () => {
-    const lowerInputRef = React.createRef<HTMLInputElement>();
-    const upperInputRef = React.createRef<HTMLInputElement>();
-
-    const values = ['small', 'medium', 'large'];
-    const defaultValue: [number, number] = [1, 2];
-    const getTextValue = (value: number) => values[value];
-
-    render(
-      <RangedSlider
-        defaultValue={defaultValue}
-        ariaValueText={getTextValue}
-        lowerInput={{ ref: lowerInputRef }}
-        upperInput={{ ref: upperInputRef }}
-        min={1}
-        max={3}
-      />,
-    );
-
-    expect(lowerInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue[0]]);
-    expect(upperInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue[1]]);
   });
 
   it('slides to min/max and executes onChange', () => {
@@ -559,5 +536,54 @@ describe('RangedSlider', () => {
     expect(onPointerDown).toBeCalledTimes(1);
 
     wrapper.unmount();
+  });
+});
+
+describe('Accessibility Tests', () => {
+  it('renders the lower input slot as input', () => {
+    const { container } = render(<RangedSlider lowerInput={{ className: 'test' }} />);
+    const inputElement = container.querySelector('.test');
+    expect(inputElement?.tagName).toEqual('INPUT');
+  });
+
+  it('provides the lower input slot with a type of range', () => {
+    const { container } = render(<RangedSlider lowerInput={{ className: 'test' }} />);
+    const inputElement = container.querySelector('.test');
+    expect(inputElement?.getAttribute('type')).toEqual('range');
+  });
+
+  it('renders the upper input slot as input', () => {
+    const { container } = render(<RangedSlider upperInput={{ className: 'test' }} />);
+    const inputElement = container.querySelector('.test');
+    expect(inputElement?.tagName).toEqual('INPUT');
+  });
+
+  it('provides the upper input slot with a type of range', () => {
+    const { container } = render(<RangedSlider upperInput={{ className: 'test' }} />);
+    const inputElement = container.querySelector('.test');
+    expect(inputElement?.getAttribute('type')).toEqual('range');
+  });
+
+  it('applies ariaValueText', () => {
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+
+    const values = ['small', 'medium', 'large'];
+    const defaultValue: [number, number] = [1, 2];
+    const getTextValue = (value: number) => values[value];
+
+    render(
+      <RangedSlider
+        defaultValue={defaultValue}
+        ariaValueText={getTextValue}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
+        min={1}
+        max={3}
+      />,
+    );
+
+    expect(lowerInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue[0]]);
+    expect(upperInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue[1]]);
   });
 });

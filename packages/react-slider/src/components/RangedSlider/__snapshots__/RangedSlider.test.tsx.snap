@@ -283,7 +283,7 @@ exports[`RangedSlider Snapshot Tests renders RangedSlider with marks correctly 1
           value="0"
         />
         <div
-          class="ms-Slider-thumb lower"
+          class="ms-Slider-thumb ms-Slider-thumb-lower"
         />
       </div>
       <div
@@ -299,7 +299,7 @@ exports[`RangedSlider Snapshot Tests renders RangedSlider with marks correctly 1
           value="100"
         />
         <div
-          class="ms-Slider-thumb upper"
+          class="ms-Slider-thumb ms-Slider-thumb-upper"
         />
       </div>
       <div
@@ -344,7 +344,7 @@ exports[`RangedSlider Snapshot Tests renders disabled RangedSlider correctly 1`]
           value="0"
         />
         <div
-          class="ms-Slider-thumb lower"
+          class="ms-Slider-thumb ms-Slider-thumb-lower"
         />
       </div>
       <div
@@ -361,7 +361,7 @@ exports[`RangedSlider Snapshot Tests renders disabled RangedSlider correctly 1`]
           value="10"
         />
         <div
-          class="ms-Slider-thumb upper"
+          class="ms-Slider-thumb ms-Slider-thumb-upper"
         />
       </div>
       <div
@@ -405,7 +405,7 @@ exports[`RangedSlider Snapshot Tests renders horizontal RangedSlider correctly 1
           value="5"
         />
         <div
-          class="ms-Slider-thumb lower"
+          class="ms-Slider-thumb ms-Slider-thumb-lower"
         />
       </div>
       <div
@@ -421,7 +421,7 @@ exports[`RangedSlider Snapshot Tests renders horizontal RangedSlider correctly 1
           value="7"
         />
         <div
-          class="ms-Slider-thumb upper"
+          class="ms-Slider-thumb ms-Slider-thumb-upper"
         />
       </div>
       <div
@@ -498,7 +498,7 @@ exports[`RangedSlider Snapshot Tests renders horizontal Slider with (custom mark
           value="0"
         />
         <div
-          class="ms-Slider-thumb lower"
+          class="ms-Slider-thumb ms-Slider-thumb-lower"
         />
       </div>
       <div
@@ -514,7 +514,7 @@ exports[`RangedSlider Snapshot Tests renders horizontal Slider with (custom mark
           value="100"
         />
         <div
-          class="ms-Slider-thumb upper"
+          class="ms-Slider-thumb ms-Slider-thumb-upper"
         />
       </div>
       <div
@@ -558,7 +558,7 @@ exports[`RangedSlider Snapshot Tests renders vertical RangedSlider correctly 1`]
           value="2"
         />
         <div
-          class="ms-Slider-thumb lower"
+          class="ms-Slider-thumb ms-Slider-thumb-lower"
         />
       </div>
       <div
@@ -574,7 +574,7 @@ exports[`RangedSlider Snapshot Tests renders vertical RangedSlider correctly 1`]
           value="8"
         />
         <div
-          class="ms-Slider-thumb upper"
+          class="ms-Slider-thumb ms-Slider-thumb-upper"
         />
       </div>
       <div
@@ -651,7 +651,7 @@ exports[`RangedSlider Snapshot Tests renders vertical Slider with (custom marks)
           value="0"
         />
         <div
-          class="ms-Slider-thumb lower"
+          class="ms-Slider-thumb ms-Slider-thumb-lower"
         />
       </div>
       <div
@@ -667,7 +667,7 @@ exports[`RangedSlider Snapshot Tests renders vertical Slider with (custom marks)
           value="100"
         />
         <div
-          class="ms-Slider-thumb upper"
+          class="ms-Slider-thumb ms-Slider-thumb-upper"
         />
       </div>
       <div
