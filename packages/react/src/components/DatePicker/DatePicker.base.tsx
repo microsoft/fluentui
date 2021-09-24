@@ -455,48 +455,46 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
       <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
-        {
-          <TextField
-            role="combobox"
-            label={label}
-            aria-expanded={isCalendarShown}
-            ariaLabel={ariaLabel}
-            aria-haspopup="dialog"
-            aria-controls={isCalendarShown ? calloutId : undefined}
-            required={isRequired}
-            disabled={disabled}
-            errorMessage={errorMessage}
-            placeholder={placeholder}
-            borderless={borderless}
-            value={formattedDate}
-            componentRef={textFieldRef}
-            underlined={underlined}
-            tabIndex={tabIndex}
-            readOnly={!allowTextInput}
-            {...textFieldProps}
-            id={textFieldId}
-            className={css(classNames.textField, textFieldProps && textFieldProps.className)}
-            iconProps={{
-              iconName: 'Calendar',
-              ...iconProps,
-              className: css(classNames.icon, iconProps && iconProps.className),
-              onClick: onIconClick,
-            }}
-            // eslint-disable-next-line react/jsx-no-bind
-            onRenderDescription={renderTextfieldDescription}
-            // eslint-disable-next-line react/jsx-no-bind
-            onKeyDown={onTextFieldKeyDown}
-            // eslint-disable-next-line react/jsx-no-bind
-            onFocus={onTextFieldFocus}
-            // eslint-disable-next-line react/jsx-no-bind
-            onBlur={onTextFieldBlur}
-            // eslint-disable-next-line react/jsx-no-bind
-            onClick={onTextFieldClick}
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={onTextFieldChanged}
-            onRenderInput={readOnly ? onRenderReadOnlyInput : undefined}
-          />
-        }
+        <TextField
+          role="combobox"
+          label={label}
+          aria-expanded={isCalendarShown}
+          ariaLabel={ariaLabel}
+          aria-haspopup="dialog"
+          aria-controls={isCalendarShown ? calloutId : undefined}
+          required={isRequired}
+          disabled={disabled}
+          errorMessage={errorMessage}
+          placeholder={placeholder}
+          borderless={borderless}
+          value={formattedDate}
+          componentRef={textFieldRef}
+          underlined={underlined}
+          tabIndex={tabIndex}
+          readOnly={!allowTextInput}
+          {...textFieldProps}
+          id={textFieldId}
+          className={css(classNames.textField, textFieldProps && textFieldProps.className)}
+          iconProps={{
+            iconName: 'Calendar',
+            ...iconProps,
+            className: css(classNames.icon, iconProps && iconProps.className),
+            onClick: onIconClick,
+          }}
+          // eslint-disable-next-line react/jsx-no-bind
+          onRenderDescription={renderTextfieldDescription}
+          // eslint-disable-next-line react/jsx-no-bind
+          onKeyDown={onTextFieldKeyDown}
+          // eslint-disable-next-line react/jsx-no-bind
+          onFocus={onTextFieldFocus}
+          // eslint-disable-next-line react/jsx-no-bind
+          onBlur={onTextFieldBlur}
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={onTextFieldClick}
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={onTextFieldChanged}
+          onRenderInput={readOnly ? onRenderReadOnlyInput : undefined}
+        />
       </div>
       {isCalendarShown && (
         <Callout

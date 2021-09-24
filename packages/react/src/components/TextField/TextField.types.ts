@@ -110,7 +110,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * Custom renderer for input element
+   * Custom renderer for input element.
    */
   onRenderInput?: (
     props?: ITextFieldProps,
