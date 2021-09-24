@@ -8513,6 +8513,7 @@ export interface IWithResponsiveModeState {
 
 // @public
 export interface IWithViewportProps {
+    delayFirstMeasure?: boolean;
     disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
 }
