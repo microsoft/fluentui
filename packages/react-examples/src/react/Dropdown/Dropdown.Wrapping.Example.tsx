@@ -39,7 +39,7 @@ export const DropdownWrappingExample: React.FunctionComponent = () => {
     <Stack tokens={stackTokens}>
       <Dropdown
         placeholder="Select an option"
-        label="Basic uncontrolled example"
+        label="Wrapping option text example"
         options={options}
         styles={dropdownStyles}
       />

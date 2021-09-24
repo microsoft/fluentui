@@ -22,6 +22,7 @@ calloutProps={{ doNotLayer: true }}
 
 #### Truncation
 
-By default, the Dropdown truncates option text instead of wrapping to a new line. To avoid losing meaningful information, adjusting styles to wrap the name while keeping additional secondary text short is recommended.
+By default, the Dropdown truncates option text instead of wrapping to a new line.
+Because this can lose meaningful information, it is recommended to adjust styles to wrap the option text.
 
 The `Dropdown with wrapping option text` example demonstrates how to override truncation styles to support wrapping. The default style will continue to truncate to support existing implementations.
