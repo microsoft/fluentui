@@ -28,12 +28,12 @@ export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'in
   /**
    * The hidden input for the Slider's lower thumb.
    */
-  inputLower: IntrinsicShorthandProps<'input'>;
+  lowerInput: IntrinsicShorthandProps<'input'>;
 
   /**
    * The hidden input for the Slider's upper thumb.
    */
-  inputUpper: IntrinsicShorthandProps<'input'>;
+  upperInput: IntrinsicShorthandProps<'input'>;
 };
 
 export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {

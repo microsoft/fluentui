@@ -6,19 +6,19 @@ import type { RangedSliderState, RangedSliderSlots } from './RangedSlider.types'
  * Array of all shorthand properties listed in RangedSliderSlots.
  */
 const rangedSliderShorthandProps: (keyof RangedSliderSlots)[] = [
-  'root',
   'activeRail',
-  'inputLower',
-  'inputUpper',
-  'rail',
-  'sliderWrapper',
+  'lowerInput',
   'lowerThumb',
   'lowerThumbWrapper',
-  'upperThumb',
-  'upperThumbWrapper',
+  'marksWrapper',
+  'rail',
+  'root',
+  'sliderWrapper',
   'track',
   'trackWrapper',
-  'marksWrapper',
+  'upperInput',
+  'upperThumb',
+  'upperThumbWrapper',
 ];
 
 /**
@@ -36,11 +36,11 @@ export const renderRangedSlider = (state: RangedSliderState) => {
           <slots.track {...slotProps.track} />
         </slots.trackWrapper>
         <slots.lowerThumbWrapper {...slotProps.lowerThumbWrapper}>
-          <slots.inputLower {...slotProps.inputLower} />
+          <slots.lowerInput {...slotProps.lowerInput} />
           <slots.lowerThumb {...slotProps.lowerThumb} />
         </slots.lowerThumbWrapper>
         <slots.upperThumbWrapper {...slotProps.upperThumbWrapper}>
-          <slots.inputUpper {...slotProps.inputUpper} />
+          <slots.upperInput {...slotProps.upperInput} />
           <slots.upperThumb {...slotProps.upperThumb} />
         </slots.upperThumbWrapper>
         <slots.activeRail {...slotProps.activeRail} />

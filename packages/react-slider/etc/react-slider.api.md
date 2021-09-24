@@ -28,17 +28,14 @@ export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defa
 export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
 }
 
-// @public
-export const rangedSliderShorthandProps: (keyof RangedSliderSlots)[];
-
 // @public (undocumented)
 export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
     lowerThumb: IntrinsicShorthandProps<'div'>;
     lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
     upperThumb: IntrinsicShorthandProps<'div'>;
     upperThumbWrapper: IntrinsicShorthandProps<'div'>;
-    inputLower: IntrinsicShorthandProps<'input'>;
-    inputUpper: IntrinsicShorthandProps<'input'>;
+    lowerInput: IntrinsicShorthandProps<'input'>;
+    upperInput: IntrinsicShorthandProps<'input'>;
 };
 
 // @public (undocumented)

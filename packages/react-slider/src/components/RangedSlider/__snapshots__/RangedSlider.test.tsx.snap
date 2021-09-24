@@ -4,7 +4,7 @@ exports[`RangedSlider Snapshot Tests renders RangedSlider with marks correctly 1
 <div>
   <div
     class=""
-    id="slider-1"
+    id="ranged-slider-1"
   >
     <div
       class=""
@@ -314,7 +314,7 @@ exports[`RangedSlider Snapshot Tests renders disabled RangedSlider correctly 1`]
 <div>
   <div
     class=""
-    id="slider-1"
+    id="ranged-slider-1"
   >
     <div
       class=""
@@ -376,7 +376,7 @@ exports[`RangedSlider Snapshot Tests renders horizontal RangedSlider correctly 1
 <div>
   <div
     class=""
-    id="slider-1"
+    id="ranged-slider-1"
   >
     <div
       class=""
@@ -436,7 +436,7 @@ exports[`RangedSlider Snapshot Tests renders horizontal Slider with (custom mark
 <div>
   <div
     class=""
-    id="slider-1"
+    id="ranged-slider-1"
   >
     <div
       class=""
@@ -529,7 +529,7 @@ exports[`RangedSlider Snapshot Tests renders vertical RangedSlider correctly 1`]
 <div>
   <div
     class=""
-    id="slider-1"
+    id="ranged-slider-1"
   >
     <div
       class=""
@@ -589,7 +589,7 @@ exports[`RangedSlider Snapshot Tests renders vertical Slider with (custom marks)
 <div>
   <div
     class=""
-    id="slider-1"
+    id="ranged-slider-1"
   >
     <div
       class=""

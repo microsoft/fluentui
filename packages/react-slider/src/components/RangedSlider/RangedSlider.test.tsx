@@ -66,7 +66,7 @@ describe('RangedSlider', () => {
           step={10}
           activeRail={{ className: 'active-rail' }}
           onChange={onChange}
-          inputLower={{ ref: inputRef }}
+          lowerInput={{ ref: inputRef }}
         />,
       );
 
@@ -112,8 +112,8 @@ describe('RangedSlider', () => {
       render(
         <RangedSlider
           defaultValue={[50, 100]}
-          inputLower={{ ref: lowerInputRef }}
-          inputUpper={{ ref: upperInputRef }}
+          lowerInput={{ ref: lowerInputRef }}
+          upperInput={{ ref: upperInputRef }}
         />,
       );
       expect(lowerInputRef.current?.value).toEqual('50');
@@ -123,7 +123,7 @@ describe('RangedSlider', () => {
     it('applies the value prop', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
-      render(<RangedSlider value={[20, 80]} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      render(<RangedSlider value={[20, 80]} lowerInput={{ ref: lowerInputRef }} upperInput={{ ref: upperInputRef }} />);
       expect(lowerInputRef.current?.value).toEqual('20');
       expect(upperInputRef.current?.value).toEqual('80');
     });
@@ -131,7 +131,7 @@ describe('RangedSlider', () => {
     it('applies the disabled prop', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
-      render(<RangedSlider disabled inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      render(<RangedSlider disabled lowerInput={{ ref: lowerInputRef }} upperInput={{ ref: upperInputRef }} />);
       expect(lowerInputRef.current?.disabled).toEqual(true);
       expect(upperInputRef.current?.disabled).toEqual(true);
     });
@@ -139,7 +139,7 @@ describe('RangedSlider', () => {
     it('applies the min prop', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
-      render(<RangedSlider min={11} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      render(<RangedSlider min={11} lowerInput={{ ref: lowerInputRef }} upperInput={{ ref: upperInputRef }} />);
       expect(lowerInputRef.current?.min).toEqual('11');
       expect(upperInputRef.current?.min).toEqual('11');
     });
@@ -147,7 +147,7 @@ describe('RangedSlider', () => {
     it('applies the max prop', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
-      render(<RangedSlider max={11} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      render(<RangedSlider max={11} lowerInput={{ ref: lowerInputRef }} upperInput={{ ref: upperInputRef }} />);
       expect(lowerInputRef.current?.max).toEqual('11');
       expect(upperInputRef.current?.max).toEqual('11');
     });
@@ -155,7 +155,7 @@ describe('RangedSlider', () => {
     it('applies the step prop', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
-      render(<RangedSlider step={11} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      render(<RangedSlider step={11} lowerInput={{ ref: lowerInputRef }} upperInput={{ ref: upperInputRef }} />);
       expect(lowerInputRef.current?.step).toEqual('11');
       expect(upperInputRef.current?.step).toEqual('11');
     });
@@ -166,8 +166,8 @@ describe('RangedSlider', () => {
       render(
         <RangedSlider
           defaultValue={[-10, 110]}
-          inputLower={{ ref: lowerInputRef }}
-          inputUpper={{ ref: upperInputRef }}
+          lowerInput={{ ref: lowerInputRef }}
+          upperInput={{ ref: upperInputRef }}
         />,
       );
       expect(lowerInputRef.current?.value).toEqual('0');
@@ -179,7 +179,7 @@ describe('RangedSlider', () => {
     const lowerInputRef = React.createRef<HTMLInputElement>();
     const upperInputRef = React.createRef<HTMLInputElement>();
     render(
-      <RangedSlider defaultValue={[100, 50]} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />,
+      <RangedSlider defaultValue={[100, 50]} lowerInput={{ ref: lowerInputRef }} upperInput={{ ref: upperInputRef }} />,
     );
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('100');
@@ -203,8 +203,8 @@ describe('RangedSlider', () => {
       <RangedSlider
         defaultValue={defaultValue}
         ariaValueText={getTextValue}
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
         min={1}
         max={3}
       />,
@@ -224,8 +224,8 @@ describe('RangedSlider', () => {
         defaultValue={[50, 50]}
         onChange={onChange}
         activeRail={{ className: 'active-rail' }}
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
       />,
     );
 
@@ -264,8 +264,8 @@ describe('RangedSlider', () => {
       <RangedSlider
         step={10}
         activeRail={{ className: 'active-rail' }}
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
         onChange={onChange}
       />,
     );
@@ -303,8 +303,8 @@ describe('RangedSlider', () => {
         step={3}
         keyboardStep={5}
         onChange={onChange}
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
       />,
     );
 
@@ -330,8 +330,8 @@ describe('RangedSlider', () => {
         defaultValue={[20, 20]}
         step={-3}
         onChange={onChange}
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
       />,
     );
 
@@ -357,8 +357,8 @@ describe('RangedSlider', () => {
         defaultValue={[20, 20]}
         step={0.0001}
         onChange={onChange}
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
       />,
     );
 
@@ -374,16 +374,16 @@ describe('RangedSlider', () => {
     expect(upperInputRef.current?.value).toBe('20');
   });
 
-  it('applies focus to inputLower', () => {
+  it('applies focus to lowerInput', () => {
     const inputRef = React.createRef<HTMLInputElement>();
-    render(<RangedSlider inputLower={{ ref: inputRef }} />);
+    render(<RangedSlider lowerInput={{ ref: inputRef }} />);
     inputRef?.current?.focus();
     expect(document.activeElement).toEqual(inputRef.current);
   });
 
-  it('applies focus to inputUpper', () => {
+  it('applies focus to upperInput', () => {
     const inputRef = React.createRef<HTMLInputElement>();
-    render(<RangedSlider inputUpper={{ ref: inputRef }} />);
+    render(<RangedSlider upperInput={{ ref: inputRef }} />);
     inputRef?.current?.focus();
     expect(document.activeElement).toEqual(inputRef.current);
   });
@@ -407,8 +407,8 @@ describe('RangedSlider', () => {
       <RangedSlider
         defaultValue={[48, 50]}
         onChange={onChange}
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
       />,
     );
 
@@ -444,8 +444,8 @@ describe('RangedSlider', () => {
         min={0}
         max={100}
         onChange={onChange}
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
       />,
     );
 
@@ -513,8 +513,8 @@ describe('RangedSlider', () => {
       <RangedSlider
         onChange={onChange}
         data-testid="test"
-        inputLower={{ ref: lowerInputRef }}
-        inputUpper={{ ref: upperInputRef }}
+        lowerInput={{ ref: lowerInputRef }}
+        upperInput={{ ref: upperInputRef }}
         disabled
       />,
     );
@@ -534,7 +534,7 @@ describe('RangedSlider', () => {
     const upperInputRef = React.createRef<HTMLInputElement>();
 
     render(
-      <RangedSlider onKeyDown={onKeyDown} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />,
+      <RangedSlider onKeyDown={onKeyDown} lowerInput={{ ref: lowerInputRef }} upperInput={{ ref: upperInputRef }} />,
     );
 
     expect(onKeyDown).toBeCalledTimes(0);

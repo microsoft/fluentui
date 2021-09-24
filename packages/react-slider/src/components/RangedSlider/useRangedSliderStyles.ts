@@ -152,16 +152,16 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
     state.activeRail.className,
   );
 
-  state.inputLower.className = mergeClasses(
+  state.lowerInput.className = mergeClasses(
     inputStyles.input,
     inputStyles.lowerInputFocusIndicator,
-    state.inputLower.className,
+    state.lowerInput.className,
   );
 
-  state.inputUpper.className = mergeClasses(
+  state.upperInput.className = mergeClasses(
     inputStyles.input,
     inputStyles.upperInputFocusIndicator,
-    state.inputUpper.className,
+    state.upperInput.className,
   );
 
   return state;

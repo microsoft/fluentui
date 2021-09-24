@@ -24,8 +24,7 @@ export const useRangedSlider = (props: RangedSliderProps, ref: React.Ref<HTMLEle
 
     // Slots
     activeRail,
-    inputLower,
-    inputUpper,
+    lowerInput,
     lowerThumb,
     lowerThumbWrapper,
     marksWrapper,
@@ -33,6 +32,7 @@ export const useRangedSlider = (props: RangedSliderProps, ref: React.Ref<HTMLEle
     sliderWrapper,
     track,
     trackWrapper,
+    upperInput,
     upperThumb,
     upperThumbWrapper,
   } = props;
@@ -57,8 +57,7 @@ export const useRangedSlider = (props: RangedSliderProps, ref: React.Ref<HTMLEle
     }),
     components: {
       activeRail: 'div',
-      inputLower: 'input',
-      inputUpper: 'input',
+      lowerInput: 'input',
       lowerThumb: 'div',
       lowerThumbWrapper: 'div',
       marksWrapper: 'div',
@@ -67,17 +66,18 @@ export const useRangedSlider = (props: RangedSliderProps, ref: React.Ref<HTMLEle
       track: 'div',
       trackWrapper: 'div',
       sliderWrapper: 'div',
+      upperInput: 'input',
       upperThumb: 'div',
       upperThumbWrapper: 'div',
     },
     activeRail: resolveShorthand(activeRail, { required: true }),
-    inputLower: resolveShorthand(inputLower, {
+    lowerInput: resolveShorthand(lowerInput, {
       required: true,
       defaultProps: {
         type: 'range',
       },
     }),
-    inputUpper: resolveShorthand(inputUpper, {
+    upperInput: resolveShorthand(upperInput, {
       required: true,
       defaultProps: {
         type: 'range',

@@ -353,29 +353,29 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   state.activeRail.ref = railRef;
 
   // Lower Input Props
-  state.inputLower.ref = useMergedRefs(state.inputLower.ref, lowerInputRef);
-  state.inputLower.value = currentValue[0];
-  state.inputLower.min = min;
-  state.inputLower.max = max;
-  ariaValueText && (state.inputLower['aria-valuetext'] = ariaValueText(currentValue[0]));
-  state.inputLower.disabled = disabled;
-  state.inputLower.step = step;
+  state.lowerInput.ref = useMergedRefs(state.lowerInput.ref, lowerInputRef);
+  state.lowerInput.value = currentValue[0];
+  state.lowerInput.min = min;
+  state.lowerInput.max = max;
+  ariaValueText && (state.lowerInput['aria-valuetext'] = ariaValueText(currentValue[0]));
+  state.lowerInput.disabled = disabled;
+  state.lowerInput.step = step;
   if (!disabled) {
-    state.inputLower.onKeyDown = onKeyDownLower;
-    state.inputLower.onChange = onInputChange;
+    state.lowerInput.onKeyDown = onKeyDownLower;
+    state.lowerInput.onChange = onInputChange;
   }
 
   // Upper Input Props
-  state.inputUpper.ref = useMergedRefs(state.inputUpper.ref, upperInputRef);
-  state.inputUpper.value = currentValue[1];
-  state.inputUpper.min = min;
-  state.inputUpper.max = max;
-  ariaValueText && (state.inputUpper['aria-valuetext'] = ariaValueText(currentValue[1]));
-  state.inputUpper.disabled = disabled;
-  state.inputUpper.step = step;
+  state.upperInput.ref = useMergedRefs(state.upperInput.ref, upperInputRef);
+  state.upperInput.value = currentValue[1];
+  state.upperInput.min = min;
+  state.upperInput.max = max;
+  ariaValueText && (state.upperInput['aria-valuetext'] = ariaValueText(currentValue[1]));
+  state.upperInput.disabled = disabled;
+  state.upperInput.step = step;
   if (!disabled) {
-    state.inputUpper.onKeyDown = onKeyDownUpper;
-    state.inputUpper.onChange = onInputChange;
+    state.upperInput.onKeyDown = onKeyDownUpper;
+    state.upperInput.onChange = onInputChange;
   }
 
   return state;
