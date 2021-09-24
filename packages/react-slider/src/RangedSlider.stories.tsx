@@ -37,7 +37,7 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
   const [rangedSliderValue, setRangedSliderValue] = React.useState<[number, number]>([10, 20]);
   const styles = useStyles();
 
-  const sliderOnChange = (
+  const onSliderChange = (
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
     data: { value: [number, number] },
   ) => setRangedSliderValue(data.value);
@@ -49,7 +49,7 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
       <Label>
         Controlled Example [ Lower Value: {rangedSliderValue[0]}, Upper Value: {rangedSliderValue[1]} ]
       </Label>
-      <RangedSlider value={rangedSliderValue} min={0} max={50} step={10} onChange={sliderOnChange} marks />
+      <RangedSlider value={rangedSliderValue} min={0} max={50} step={10} onChange={onSliderChange} marks />
       <Label>Vertical Range</Label>
       <div className={styles.verticalWrapper}>
         <RangedSlider vertical marks max={10} />

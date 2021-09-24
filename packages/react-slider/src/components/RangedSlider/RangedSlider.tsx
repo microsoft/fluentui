@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useRangedSlider } from './useRangedSlider';
 import { renderRangedSlider } from './renderRangedSlider';
+import { useRangedSlider } from './useRangedSlider';
 import { useRangedSliderStyles } from './useRangedSliderStyles';
 import type { RangedSliderProps } from './RangedSlider.types';
 

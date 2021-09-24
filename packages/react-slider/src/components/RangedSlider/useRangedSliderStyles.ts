@@ -128,7 +128,7 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
     lowerThumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.lowerThumb.className,
   );
 
@@ -142,7 +142,7 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
     upperThumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.upperThumb.className,
   );
 
