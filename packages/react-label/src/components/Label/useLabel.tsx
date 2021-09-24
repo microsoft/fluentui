@@ -17,7 +17,6 @@ export const labelShorthandProps: Array<keyof LabelSlots> = ['root', 'required']
  *
  * @param props - props from this instance of Label
  * @param ref - reference to root HTMLElement of Label
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
 export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>): LabelState => {
   const { disabled = false, required = false, strong = false } = props;
