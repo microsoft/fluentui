@@ -20,23 +20,15 @@ export const labelShorthandProps: Array<keyof LabelSlots> = ['root', 'required']
  */
 export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>): LabelState => {
   const { disabled = false, required = false, strong = false } = props;
-  let requiredShorthand;
-  if (required === true) {
-    requiredShorthand = { children: '*' };
-  } else if (required === false) {
-    requiredShorthand = undefined;
-  } else {
-    requiredShorthand = required;
-  }
-
-  const state: LabelState = {
+  return {
     disabled,
-    required: resolveShorthand(requiredShorthand),
+    required: resolveShorthand(required === false ? null : required, {
+      required: !!required,
+      defaultProps: { children: '*' },
+    }),
     strong,
     size: 'medium',
     components: { root: 'label', required: 'span' },
     root: getNativeElementProps('label', { ref, ...props }),
   };
-
-  return state;
 };
