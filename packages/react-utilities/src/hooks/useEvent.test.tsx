@@ -5,7 +5,6 @@ import { useEvent } from './useEvent';
 type EventData = {
   element?: HTMLElement;
   disabled: boolean;
-  pointerId: number;
 };
 
 describe('useEvent', () => {
@@ -14,22 +13,14 @@ describe('useEvent', () => {
     const onPointerMoveChange = jest.fn();
 
     const TestComponent = () => {
-      const [eventData, setEventData] = React.useState<EventData>({
-        element: undefined,
-        disabled: true,
-        pointerId: 0,
-      });
+      const [eventData, setEventData] = React.useState<EventData>({ element: undefined, disabled: true });
 
       const onPointerMove = (ev: React.PointerEvent<HTMLElement>) => {
         onPointerMoveChange();
       };
 
       const onPointerDown = (ev: React.PointerEvent<HTMLElement>) => {
-        setEventData({
-          element: ev.currentTarget,
-          disabled: false,
-          pointerId: ev.pointerId,
-        });
+        setEventData({ element: ev.currentTarget, disabled: false });
       };
 
       useEvent({
@@ -57,11 +48,7 @@ describe('useEvent', () => {
     const onPointerMoveChange = jest.fn();
 
     const TestComponent = () => {
-      const [eventData, setEventData] = React.useState<EventData>({
-        element: undefined,
-        disabled: true,
-        pointerId: 0,
-      });
+      const [eventData, setEventData] = React.useState<EventData>({ element: undefined, disabled: true });
 
       const onPointerMove = (ev: React.PointerEvent<HTMLElement>) => {
         onPointerMoveChange();
@@ -76,11 +63,7 @@ describe('useEvent', () => {
       };
 
       const onPointerDown = (ev: React.PointerEvent<HTMLElement>) => {
-        setEventData({
-          element: ev.currentTarget,
-          disabled: false,
-          pointerId: ev.pointerId,
-        });
+        setEventData({ element: ev.currentTarget, disabled: false });
       };
 
       useEvent({
@@ -126,7 +109,6 @@ describe('useEvent', () => {
       const [eventData, setEventData] = React.useState<EventData>({
         element: undefined,
         disabled: true,
-        pointerId: 0,
       });
 
       const onPointerMove = (ev: React.PointerEvent<HTMLElement>) => {
@@ -137,7 +119,6 @@ describe('useEvent', () => {
         setEventData({
           element: ev.currentTarget,
           disabled: false,
-          pointerId: ev.pointerId,
         });
       };
 
