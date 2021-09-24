@@ -108,7 +108,9 @@ export type ComponentProps<
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
     [Key in keyof Shorthands]-?:
-      | React.ComponentType<NonNullable<Shorthands[Key]>>
+      | React.ComponentType<
+          NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>
+        >
       | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & Shorthands;
