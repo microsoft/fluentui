@@ -13,7 +13,7 @@ describe('Popup - Dismiss on iframe click', () => {
     cy.clickOn(popupTrigger);
     cy.visible(popupContent);
 
-    cy.clickOn(iframe);
+    cy.get(iframe).click();
     cy.isFocused(iframe);
 
     cy.wait(1500);
