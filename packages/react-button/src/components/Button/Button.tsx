@@ -7,7 +7,9 @@ import type { ButtonProps } from './Button.types';
 /**
  * Buttons give people a way to trigger an action.
  */
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const Button: React.ForwardRefExoticComponent<
+  ButtonProps & React.RefAttributes<HTMLButtonElement>
+> = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const state = useButton(props, ref);
 
   useButtonStyles(state);
