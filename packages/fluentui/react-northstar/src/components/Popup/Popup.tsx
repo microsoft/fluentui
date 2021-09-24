@@ -184,6 +184,12 @@ export const Popup: React.FC<PopupProps> &
   const rightClickReferenceObject = React.useRef<PopperJs.VirtualElement | null>();
 
   useOnIFrameFocus(open, context.target, (e: Event) => {
+    if (
+      elementContains(triggerRef.current, e.target as HTMLElement) ||
+      elementContains(popupContentRef.current, e.target as HTMLElement)
+    ) {
+      return;
+    }
     setOpen(__ => {
       _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
       return false;
