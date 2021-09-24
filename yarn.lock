@@ -4368,6 +4368,11 @@
   resolved "https://registry.yarnpkg.com/@types/d3-time/-/d3-time-1.0.10.tgz#d338c7feac93a98a32aac875d1100f92c7b61f4f"
   integrity sha512-aKf62rRQafDQmSiv1NylKhIMmznsjRN+MnXRXTqHoqm0U/UZzVpdrtRnSIfdiLS616OuC1soYeX1dBg2n1u8Xw==
 
+"@types/dedent@latest":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@types/dedent/-/dedent-0.7.0.tgz#155f339ca404e6dd90b9ce46a3f78fd69ca9b050"
+  integrity sha512-EGlKlgMhnLt/cM4DbUSafFdrkeJoC9Mvnj0PUCU7tFmTjMjNRT957kXCx0wYm3JuEq4o4ZsS5vG+NlkM2DMd2A==
+
 "@types/deep-assign@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@types/deep-assign/-/deep-assign-0.1.1.tgz#c10aa2d6202774015f5820ed303b82ab3b0bde9b"
@@ -23293,10 +23298,10 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-export-to-codesandbox@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.3.1.tgz#b3b3f1bcf9558a7bd6442c900ebb3fb84f87289e"
-  integrity sha512-tikl8QKWscQJgVC+eAz4XzrhXpb96ZrpllIrG/ZvbJRIXggwJQYbD8pn1ZQxSMYWKoyGSe5XGBYFo29gF6Sg9A==
+storybook-addon-export-to-codesandbox@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.4.0.tgz#03184b249a2ef503add3820f39f4a903b75f8291"
+  integrity sha512-d4hmCNFUiIzbw+Hp9fG5KWDidQMlVez1FL/QkXVk04GtCDQuCUTezZpqyKIiJm31K8Gw59SEOgeFCsmw7dyR8Q==
   dependencies:
     codesandbox-import-utils "^2.2.3"
 
