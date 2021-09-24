@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 23 Sep 2021 08:21:34 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Sep 2021 09:17:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.52)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.51..@fluentui/react-utilities_v9.0.0-alpha.52)
+
+### Changes
+
+- Add as prop to properties allowed with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
 
 ## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.51)
 
