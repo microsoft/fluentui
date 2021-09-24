@@ -8569,6 +8569,7 @@ export interface IWindowWithSegments extends Window {
 
 // @public
 export interface IWithViewportProps {
+    delayFirstMeasure?: boolean;
     disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
 }
