@@ -21,7 +21,7 @@ const AvatarList: React.FC<
           key={size}
           size={size}
           name={names && names[i % names.length]}
-          image={{ src: images && images[i % images.length] }}
+          image={{ src: images ? images[i % images.length] : undefined }}
           {...restOfProps}
         />
       ))}
@@ -55,7 +55,7 @@ const AvatarCustomSizeList: React.FC<
           size={baseSize}
           style={{ width: customSize, height: customSize }}
           name={names && names[names.length - (i % names.length) - 1]}
-          image={{ src: images && images[images.length - (i % images.length) - 1] }}
+          image={{ src: images ? images[images.length - (i % images.length) - 1] : undefined }}
           {...restOfProps}
         />
       ))}
