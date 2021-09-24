@@ -463,12 +463,6 @@ describe('Slider', () => {
       expect(inputRef.current?.value).toBe('0.001');
     });
 
-    it('handles role prop', () => {
-      render(<Slider role="test" data-testid="test" />);
-      const sliderRoot = screen.getByTestId('test');
-      expect(sliderRoot.getAttribute('role')).toEqual('test');
-    });
-
     it('applies focus to the hidden input', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       render(<Slider defaultValue={3} input={{ ref: inputRef }} />);
@@ -533,6 +527,12 @@ describe('Slider', () => {
   });
 
   describe('Accessibility Tests', () => {
+    it('handles role prop', () => {
+      render(<Slider role="test" data-testid="test" />);
+      const sliderRoot = screen.getByTestId('test');
+      expect(sliderRoot.getAttribute('role')).toEqual('test');
+    });
+
     it('renders the input slot as input', () => {
       const { container } = render(<Slider input={{ className: 'test' }} />);
       const inputElement = container.querySelector('.test');

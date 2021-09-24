@@ -186,12 +186,6 @@ describe('RangedSlider', () => {
     expect(upperInputRef.current?.value).toEqual('100');
   });
 
-  it('handles role prop', () => {
-    render(<RangedSlider role="test" data-testid="test" />);
-    const sliderRoot = screen.getByTestId('test');
-    expect(sliderRoot.getAttribute('role')).toEqual('test');
-  });
-
   it('slides to min/max and executes onChange', () => {
     const lowerInputRef = React.createRef<HTMLInputElement>();
     const upperInputRef = React.createRef<HTMLInputElement>();
@@ -540,6 +534,12 @@ describe('RangedSlider', () => {
 });
 
 describe('Accessibility Tests', () => {
+  it('handles role prop', () => {
+    render(<RangedSlider role="test" data-testid="test" />);
+    const sliderRoot = screen.getByTestId('test');
+    expect(sliderRoot.getAttribute('role')).toEqual('test');
+  });
+
   it('renders the lower input slot as input', () => {
     const { container } = render(<RangedSlider lowerInput={{ className: 'test' }} />);
     const inputElement = container.querySelector('.test');
