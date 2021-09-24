@@ -4122,7 +4122,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header41-checkTooltip"
+            aria-labelledby="header41-check"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -4361,7 +4361,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
-            aria-labelledby="header41-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4441,7 +4440,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header33-key-name"
+                aria-labelledby="header41-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4472,6 +4471,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                data-is-focusable={true}
                 id="header41-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -4551,7 +4551,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           />
           <div
             aria-colindex={3}
-            aria-labelledby="header41-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4631,7 +4630,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header33-name-name"
+                aria-labelledby="header41-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4662,6 +4661,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                data-is-focusable={true}
                 id="header41-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -4741,7 +4741,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           />
           <div
             aria-colindex={4}
-            aria-labelledby="header41-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4821,7 +4820,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header33-value-name"
+                aria-labelledby="header41-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4852,6 +4851,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                data-is-focusable={true}
                 id="header41-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -7393,7 +7393,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           </div>
           <div
             aria-colindex={1}
-            aria-labelledby="header45-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -7473,7 +7472,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header37-key-name"
+                aria-labelledby="header45-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -7504,6 +7503,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                data-is-focusable={true}
                 id="header45-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -7583,7 +7583,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           />
           <div
             aria-colindex={2}
-            aria-labelledby="header45-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -7663,7 +7662,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header37-name-name"
+                aria-labelledby="header45-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -7694,6 +7693,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                data-is-focusable={true}
                 id="header45-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -7773,7 +7773,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           />
           <div
             aria-colindex={3}
-            aria-labelledby="header45-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -7853,7 +7852,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header37-value-name"
+                aria-labelledby="header45-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -7884,6 +7883,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                data-is-focusable={true}
                 id="header45-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
