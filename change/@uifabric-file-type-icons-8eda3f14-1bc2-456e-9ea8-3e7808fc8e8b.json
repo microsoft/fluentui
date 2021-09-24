@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add forms icon to file-type-icons",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "chhoorn@microsoft.com",
+  "dependentChangeType": "patch"
+}
