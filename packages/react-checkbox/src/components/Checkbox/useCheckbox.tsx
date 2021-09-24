@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
+  getNativeElementProps,
+  resolveShorthand,
   useControllableState,
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
   useEventCallback,
-  resolveShorthand,
-  getNativeElementProps,
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxSlots, CheckboxState } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
