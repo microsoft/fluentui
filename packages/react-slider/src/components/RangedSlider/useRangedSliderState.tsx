@@ -9,20 +9,30 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import {
-  on,
-  findClosestThumb,
-  getPercent,
   calculateSteps,
+  findClosestThumb,
+  getKeydownValue,
   getMarkPercent,
   getMarkValue,
-  getKeydownValue,
+  getPercent,
+  on,
   renderMarks,
   validateRangedThumbValues,
 } from '../../utils/index';
 import { animationTime } from '../Slider/useSliderState';
-import { RangedSliderState } from './RangedSlider.types';
+import type { RangedSliderState } from './RangedSlider.types';
 
-interface RangedSliderInternalState {
+type RangedSliderInternalState = {
+  /**
+   * The current selected thumb index of the RangedSlider.
+   */
+  activeThumb: 'lowerValue' | 'upperValue';
+
+  /**
+   * Disposable events for the RangedSlider.
+   */
+  disposables: (() => void)[];
+
   /**
    * The internal rendered value of the RangedSlider.
    */
@@ -33,17 +43,7 @@ interface RangedSliderInternalState {
    * If the mouse moves quickly it would re evaluate both positions allowing for unintended movement. This locks it.
    */
   lockedValue: number;
-
-  /**
-   * The current selected thumb index of the RangedSlider.
-   */
-  activeThumb: 'lowerValue' | 'upperValue';
-
-  /**
-   * Disposable events for the RangedSlider.
-   */
-  disposables: (() => void)[];
-}
+};
 
 export const useRangedSliderState = (state: RangedSliderState) => {
   const {

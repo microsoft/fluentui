@@ -65,11 +65,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     step,
     vertical,
     value,
-    root: getNativeElementProps('span', {
-      ref,
-      ...props,
-      id: useId('slider-', props.id),
-    }),
     components: {
       activeRail: 'div',
       input: 'input',
@@ -82,6 +77,11 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
       track: 'div',
       trackWrapper: 'div',
     },
+    root: getNativeElementProps('span', {
+      ref,
+      ...props,
+      id: useId('slider-', props.id),
+    }),
     activeRail: resolveShorthand(activeRail, { required: true }),
     input: resolveShorthand(input, {
       required: true,

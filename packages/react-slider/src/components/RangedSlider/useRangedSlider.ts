@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { useRangedSliderState } from './useRangedSliderState';
-import { RangedSliderProps, RangedSliderState } from './RangedSlider.types';
+import type { RangedSliderProps, RangedSliderState } from './RangedSlider.types';
 
 /**
  * Given user props, returns state and render function for a RangedSlider.
@@ -50,11 +50,6 @@ export const useRangedSlider = (props: RangedSliderProps, ref: React.Ref<HTMLEle
     step,
     value,
     vertical,
-    root: getNativeElementProps('span', {
-      ref,
-      ...props,
-      id: useId('ranged-slider-', props.id),
-    }),
     components: {
       activeRail: 'div',
       lowerInput: 'input',
@@ -70,6 +65,11 @@ export const useRangedSlider = (props: RangedSliderProps, ref: React.Ref<HTMLEle
       upperThumb: 'div',
       upperThumbWrapper: 'div',
     },
+    root: getNativeElementProps('span', {
+      ref,
+      ...props,
+      id: useId('ranged-slider-', props.id),
+    }),
     activeRail: resolveShorthand(activeRail, { required: true }),
     lowerInput: resolveShorthand(lowerInput, {
       required: true,
