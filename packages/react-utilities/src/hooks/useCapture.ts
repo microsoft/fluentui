@@ -26,7 +26,7 @@ type UseCapture = {
  */
 export const useCapture = ({ element, disabled, pointerId }: UseCapture) => {
   React.useEffect(() => {
-    if (element && !disabled) {
+    if (element && !disabled && element.setPointerCapture && element.releasePointerCapture) {
       element.setPointerCapture(pointerId);
       return () => element.releasePointerCapture(pointerId);
     }
