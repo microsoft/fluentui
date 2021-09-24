@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
+  ComponentProps,
+  ComponentState,
   IntrinsicShorthandProps,
   ObjectShorthandProps,
-  ComponentState,
-  ComponentProps,
 } from '@fluentui/react-utilities';
 
 /**
