@@ -311,6 +311,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
     className=
 
         {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
           margin-top: 5px;
         }
   >
@@ -678,6 +681,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
     className=
 
         {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
           margin-top: 5px;
         }
   >
@@ -1354,6 +1360,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
     className=
 
         {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
           margin-top: 5px;
         }
   >
@@ -1906,6 +1915,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
     className=
 
         {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
           margin-top: 5px;
         }
   >
