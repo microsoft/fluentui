@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 23 Sep 2021 08:21:34 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Sep 2021 09:17:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.86)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.85..@fluentui/react-avatar_v9.0.0-alpha.86)
+
+### Changes
+
+- Use updated sizes from BadgeProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by gcox@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.86 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.72 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.52 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.54 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
 
 ## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.85)
 

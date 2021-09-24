@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(Popover): Remove leftover defaultProps and fix trigger props merge",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

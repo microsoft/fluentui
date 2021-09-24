@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated PopoverProps for consistency",
-  "packageName": "@fluentui/react-popover",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

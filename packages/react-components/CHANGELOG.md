@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 23 Sep 2021 08:21:31 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Sep 2021 09:17:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.114](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.114)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.113..@fluentui/react-components_v9.0.0-alpha.114)
+
+### Changes
+
+- `@fluentui/react-avatar`
+  - Use updated sizes from BadgeProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by gcox@microsoft.com)
+- `@fluentui/react-badge`
+  - Update BadgeProps for consistency ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by gcox@microsoft.com)
+- `@fluentui/react-components`
+  - Added Text to react-components ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by tkrasniqi@microsoft.com)
+- `@fluentui/react-image`
+  - Added shadow prop ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by tkrasniqi@microsoft.com)
+- `@fluentui/react-link`
+  - Remove workaround for as prop with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(Menu): export useMenuPopoverStyles ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - fix(Popover): Remove leftover defaultProps and fix trigger props merge ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by lingfangao@hotmail.com)
+  - Updated PopoverProps for consistency ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by gcox@microsoft.com)
+- `@fluentui/react-text`
+  - Remove workaround for as prop with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
+- `@fluentui/react-utilities`
+  - Add as prop to properties allowed with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
 
 ## [9.0.0-alpha.113](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.113)
 
