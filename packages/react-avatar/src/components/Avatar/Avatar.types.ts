@@ -33,7 +33,7 @@ export type AvatarSlots = {
   badge?: ObjectShorthandProps<PresenceBadgeProps>;
 };
 
-export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
+export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
   /**
    * The name used for displaying the initials of the avatar if the image is not provided
    */
@@ -99,7 +99,7 @@ export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, '
    * Use this when a name is not available, but there is another unique identifier that can be used instead.
    */
   idForColor: string | undefined;
-}
+};
 
 /**
  * A specific named color for the Avatar
@@ -139,14 +139,15 @@ export type AvatarNamedColor =
 /**
  * Properties for Avatar
  */
-export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {}
+export type AvatarProps = ComponentProps<AvatarSlots> & Partial<AvatarCommons>;
 
 /**
  * State used in rendering Avatar
  */
-export interface AvatarState extends ComponentState<AvatarSlots>, AvatarCommons {
-  /**
-   * The Avatar's color, with `'colorful'` resolved to a named color
-   */
-  color: Exclude<AvatarCommons['color'], 'colorful'>;
-}
+export type AvatarState = ComponentState<AvatarSlots> &
+  AvatarCommons & {
+    /**
+     * The Avatar's color, with `'colorful'` resolved to a named color
+     */
+    color: Exclude<AvatarCommons['color'], 'colorful'>;
+  };
