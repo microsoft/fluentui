@@ -12,6 +12,7 @@ describe('RangedSlider', () => {
     Component: RangedSlider,
     displayName: 'RangedSlider',
     // consistent-callback-args throws error when given a tuple type.
+    // https://github.com/microsoft/fluentui/issues/19978
     disabledTests: ['kebab-aria-attributes', 'consistent-callback-args'],
   });
 

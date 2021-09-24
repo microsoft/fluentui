@@ -3,6 +3,18 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { RangedSlider } from '@fluentui/react-slider';
 
+const LabelComponent = () => <div style={{ width: '30px', height: '30px', background: 'green' }} />;
+
+const MarkComponent = () => (
+  <div
+    style={{
+      width: '10px',
+      height: '10px',
+      background: 'red',
+    }}
+  />
+);
+
 storiesOf('RangedSlider Converged', module)
   .addDecorator(story => (
     <Screener
