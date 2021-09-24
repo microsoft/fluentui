@@ -130,7 +130,7 @@ describe('Link', () => {
     expect(document.activeElement).toEqual(rootRef.current);
   });
 
-  it('cannot be focused when rendered as a button and disabledFocusable has been passed to the component', () => {
+  it('can be focused when rendered as a button and disabledFocusable has been passed to the component', () => {
     const rootRef = React.createRef<HTMLAnchorElement>();
 
     wrapper = mount(
