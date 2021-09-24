@@ -4,7 +4,7 @@ type UseEvent = {
   /**
    * The element to listen to.
    */
-  element: Element | Window | Document;
+  element?: Element | Window | Document;
 
   /**
    * The event type to watch.
