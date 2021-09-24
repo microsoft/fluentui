@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add forms icon to react-file-type-icons",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "chhoorn@microsoft.com",
+  "dependentChangeType": "patch"
+}
