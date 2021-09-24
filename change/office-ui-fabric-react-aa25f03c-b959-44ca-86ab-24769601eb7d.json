@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Opt in viewport delay (#19968) * Provided opt-in for delaying first measure * Change files * Updates from code review",
+  "packageName": "office-ui-fabric-react",
+  "email": "geoff.cox@live.com",
+  "dependentChangeType": "patch"
+}
