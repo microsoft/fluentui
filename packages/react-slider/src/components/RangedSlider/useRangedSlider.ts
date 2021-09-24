@@ -1,56 +1,40 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { useRangedSliderState } from './useRangedSliderState';
-import { RangedSliderProps, RangedSliderSlots, RangedSliderState } from './RangedSlider.types';
-
-/**
- * Array of all shorthand properties listed in RangedSliderSlots.
- */
-export const rangedSliderShorthandProps: (keyof RangedSliderSlots)[] = [
-  'root',
-  'activeRail',
-  'inputLower',
-  'inputUpper',
-  'rail',
-  'sliderWrapper',
-  'lowerThumb',
-  'lowerThumbWrapper',
-  'upperThumb',
-  'upperThumbWrapper',
-  'track',
-  'trackWrapper',
-  'marksWrapper',
-];
+import { RangedSliderProps, RangedSliderState } from './RangedSlider.types';
 
 /**
  * Given user props, returns state and render function for a RangedSlider.
  */
 export const useRangedSlider = (props: RangedSliderProps, ref: React.Ref<HTMLElement>): RangedSliderState => {
   const {
-    value,
-    defaultValue,
-    min,
-    max,
-    step = 1,
-    keyboardStep,
-    disabled,
+    // Props
     ariaValueText,
+    defaultValue,
+    disabled,
+    keyboardStep,
+    max,
+    min,
     onChange,
-    marks,
-    vertical,
     size = 'medium',
+    step = 1,
+    value,
+    vertical,
+
+    // Slots
+    activeRail,
     inputLower,
     inputUpper,
-    activeRail,
-    marksWrapper,
-    lowerThumbWrapper,
-    upperThumbWrapper,
     lowerThumb,
-    upperThumb,
-    track,
-    trackWrapper,
+    lowerThumbWrapper,
+    marks,
+    marksWrapper,
     rail,
     sliderWrapper,
+    track,
+    trackWrapper,
+    upperThumb,
+    upperThumbWrapper,
   } = props;
 
   const state: RangedSliderState = {

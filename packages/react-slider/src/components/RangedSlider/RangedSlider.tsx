@@ -5,7 +5,7 @@ import { useRangedSliderStyles } from './useRangedSliderStyles';
 import type { RangedSliderProps } from './RangedSlider.types';
 
 /**
- * Define a styled RangedSlider, using the `useRangedSlider` hook
+ * The RangedSlider component allows users to quickly select a range by dragging a lower or upper thumb across a rail.
  */
 export const RangedSlider = React.forwardRef<HTMLDivElement, RangedSliderProps>((props, ref) => {
   const state = useRangedSlider(props, ref);

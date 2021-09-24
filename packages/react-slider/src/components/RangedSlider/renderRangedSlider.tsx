@@ -1,7 +1,25 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { rangedSliderShorthandProps } from './useRangedSlider';
 import type { RangedSliderState, RangedSliderSlots } from './RangedSlider.types';
+
+/**
+ * Array of all shorthand properties listed in RangedSliderSlots.
+ */
+const rangedSliderShorthandProps: (keyof RangedSliderSlots)[] = [
+  'root',
+  'activeRail',
+  'inputLower',
+  'inputUpper',
+  'rail',
+  'sliderWrapper',
+  'lowerThumb',
+  'lowerThumbWrapper',
+  'upperThumb',
+  'upperThumbWrapper',
+  'track',
+  'trackWrapper',
+  'marksWrapper',
+];
 
 /**
  * Render the final JSX of RangedSlider
