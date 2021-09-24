@@ -29,16 +29,6 @@ export type LabelCommons = {
   strong: boolean;
 };
 
-/**
- * Names of the shorthand properties in LabelProps
- */
-export type LabelShorthandProps = 'required';
-
-/**
- * Names of LabelProps that have a default value in useLabel
- */
-export type LabelDefaultedProps = 'size';
-
 export type LabelSlots = {
   root: IntrinsicShorthandProps<'label'>;
   required?: IntrinsicShorthandProps<'span'>;
