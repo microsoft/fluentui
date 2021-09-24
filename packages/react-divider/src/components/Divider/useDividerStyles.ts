@@ -170,9 +170,6 @@ const useStylesOverride = makeStyles({
       marginLeft: 'var(--divider-borderMargin)',
     },
   },
-  important: {
-    '--divider-fontWeight': `700`,
-  },
   verticalColored: {
     ':before': {
       borderRightColor: 'var(--divider-color)',
@@ -205,30 +202,38 @@ const useStylesOverride = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useDividerStyles = (s: DividerState) => {
+export const useDividerStyles = (state: DividerState) => {
   const styles = useStylesOverride();
-  s.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
-    !s.children && styles.childless,
-    s.appearance === 'subtle' && styles.subtle,
-    s.appearance === 'brand' && styles.brand,
-    s.appearance === 'strong' && styles.strong,
-    s.vertical ? styles.vertical : styles.horizontal,
-    s.vertical && s.children !== undefined && styles.verticalWithChildren,
-    s.alignContent === 'start' && styles.start,
-    s.alignContent === 'end' && styles.end,
-    (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && s.vertical && styles.center,
-    (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && !s.vertical && styles.center,
-    (s.alignContent === 'center' || !s.alignContent) && s.children === undefined && styles.centerWithoutContent,
-    s.alignContent === 'start' && (s.vertical ? styles.verticalStart : styles.horizontalStart),
-    s.alignContent === 'end' && (s.vertical ? styles.verticalEnd : styles.horizontalEnd),
-    (s.alignContent === 'center' || !s.alignContent) && (s.vertical ? styles.verticalCenter : styles.horizontalCenter),
-    s.important && styles.important,
-    s.color && (s.vertical ? styles.verticalColored : styles.horizontalColored),
-    s.children === undefined && s.vertical && styles.verticalChildless,
-    s.inset && (s.vertical ? styles.verticalInset : styles.inset),
-    s.className,
+    !state.root.children && styles.childless,
+    state.appearance === 'subtle' && styles.subtle,
+    state.appearance === 'brand' && styles.brand,
+    state.appearance === 'strong' && styles.strong,
+    state.vertical ? styles.vertical : styles.horizontal,
+    state.vertical && state.root.children !== undefined && styles.verticalWithChildren,
+    state.alignContent === 'start' && styles.start,
+    state.alignContent === 'end' && styles.end,
+    (state.alignContent === 'center' || !state.alignContent) &&
+      state.root.children !== undefined &&
+      state.vertical &&
+      styles.center,
+    (state.alignContent === 'center' || !state.alignContent) &&
+      state.root.children !== undefined &&
+      !state.vertical &&
+      styles.center,
+    (state.alignContent === 'center' || !state.alignContent) &&
+      state.root.children === undefined &&
+      styles.centerWithoutContent,
+    state.alignContent === 'start' && (state.vertical ? styles.verticalStart : styles.horizontalStart),
+    state.alignContent === 'end' && (state.vertical ? styles.verticalEnd : styles.horizontalEnd),
+    (state.alignContent === 'center' || !state.alignContent) &&
+      (state.vertical ? styles.verticalCenter : styles.horizontalCenter),
+    state.root.color && (state.vertical ? styles.verticalColored : styles.horizontalColored),
+    state.root.children === undefined && state.vertical && styles.verticalChildless,
+    state.inset && (state.vertical ? styles.verticalInset : styles.inset),
+    state.root.className,
   );
 
-  return s;
+  return state;
 };

@@ -14,7 +14,6 @@ export const popoverSurfaceSlots: Array<keyof PopoverSurfaceSlots> = ['root'];
  *
  * @param props - props from this instance of PopoverSurface
  * @param ref - reference to root HTMLDivElement of PopoverSurface
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
 export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTMLDivElement>): PopoverSurfaceState => {
   const contentRef = usePopoverContext(context => context.contentRef);
@@ -25,20 +24,17 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const size = usePopoverContext(context => context.size);
   const noArrow = usePopoverContext(context => context.noArrow);
-  const brand = usePopoverContext(context => context.brand);
-  const inverted = usePopoverContext(context => context.inverted);
+  const appearance = usePopoverContext(context => context.appearance);
   const trapFocus = usePopoverContext(context => context.trapFocus);
   const { modalAttributes } = useModalAttributes({ trapFocus });
 
   const state: PopoverSurfaceState = {
-    brand,
-    inverted,
+    appearance,
     noArrow,
     size,
     arrowRef,
     open,
     mountNode,
-    ...props,
     components: {
       root: 'div',
     },

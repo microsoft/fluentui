@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     boxShadow: theme.alias.shadow.shadow16,
     borderRadius: '4px',
+    border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
   }),
 
   inverted: theme => ({
@@ -89,8 +90,8 @@ export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurf
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,
-    state.inverted && styles.inverted,
-    state.brand && styles.brand,
+    state.appearance === 'inverted' && styles.inverted,
+    state.appearance === 'brand' && styles.brand,
     state.root.className,
   );
 

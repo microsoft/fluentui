@@ -1,8 +1,63 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 22 Sep 2021 10:10:05 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Sep 2021 09:17:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.114](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.114)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.113..@fluentui/react-components_v9.0.0-alpha.114)
+
+### Changes
+
+- `@fluentui/react-avatar`
+  - Use updated sizes from BadgeProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by gcox@microsoft.com)
+- `@fluentui/react-badge`
+  - Update BadgeProps for consistency ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by gcox@microsoft.com)
+- `@fluentui/react-components`
+  - Added Text to react-components ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by tkrasniqi@microsoft.com)
+- `@fluentui/react-image`
+  - Added shadow prop ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by tkrasniqi@microsoft.com)
+- `@fluentui/react-link`
+  - Remove workaround for as prop with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(Menu): export useMenuPopoverStyles ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - fix(Popover): Remove leftover defaultProps and fix trigger props merge ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by lingfangao@hotmail.com)
+  - Updated PopoverProps for consistency ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by gcox@microsoft.com)
+- `@fluentui/react-text`
+  - Remove workaround for as prop with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
+- `@fluentui/react-utilities`
+  - Add as prop to properties allowed with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
+
+## [9.0.0-alpha.113](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.113)
+
+Thu, 23 Sep 2021 08:21:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.112..@fluentui/react-components_v9.0.0-alpha.113)
+
+### Changes
+
+- `@fluentui/react-avatar`
+  - Updated props for consistency across beta ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - Updated for consistency to have shape and appearance properties ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-card`
+  - Fix dependencies ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by andredias@microsoft.com)
+  - Updated ButtonProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-components`
+  - Fix dependencies ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by andredias@microsoft.com)
+  - Updated ButtonProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-divider`
+  - Updated DividerProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-link`
+  - Updated LinkProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-switch`
+  - Adding dragging to the Switch component. ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by czearing@outlook.com)
+- `@fluentui/react-tooltip`
+  - Updated ToolTipProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-utilities`
+  - Adding clamp and getRTLSafeKey utilities. ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by czearing@outlook.com)
 
 ## [9.0.0-alpha.112](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.112)
 

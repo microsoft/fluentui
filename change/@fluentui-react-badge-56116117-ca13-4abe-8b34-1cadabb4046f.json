@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Revert to ObjectShorthandProps for slots to allow correct typing in Avatar",
+  "packageName": "@fluentui/react-badge",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
