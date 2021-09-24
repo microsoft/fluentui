@@ -2,7 +2,8 @@ import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 // TODO: Find a way to use pointer events with testing-library and remove enzyme.
-import { mount, ReactWrapper } from 'enzyme';
+// github.com/microsoft/fluentui/issues/19977
+https: import { mount, ReactWrapper } from 'enzyme';
 import { RangedSlider } from './RangedSlider';
 import { isConformant } from '../../common/isConformant';
 

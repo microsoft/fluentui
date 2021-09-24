@@ -15,8 +15,8 @@ import {
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';
 
-export const lowerThumbClassName = mergeClasses(thumbClassName, 'lower');
-export const upperThumbClassName = mergeClasses(thumbClassName, 'upper');
+export const lowerThumbClassName = mergeClasses(thumbClassName, `${thumbClassName + '-lower'}`);
+export const upperThumbClassName = mergeClasses(thumbClassName, `${thumbClassName + '-upper'}`);
 
 /**
  * Styles for the Input slot
