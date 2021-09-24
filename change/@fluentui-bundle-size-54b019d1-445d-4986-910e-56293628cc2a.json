@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "bundle-size: Fix issue where the baseline and PR values were flipped.",
+  "comment": "bundle-size: Fixing issue where the baseline and PR values were flipped.",
   "packageName": "@fluentui/bundle-size",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"
