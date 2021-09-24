@@ -67,7 +67,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle0-label Toggle0-stateText"
+          aria-labelledby="Toggle0-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -242,7 +242,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle1-label Toggle1-stateText"
+          aria-labelledby="Toggle1-label"
           checked={false}
           className=
               ms-Toggle-background
