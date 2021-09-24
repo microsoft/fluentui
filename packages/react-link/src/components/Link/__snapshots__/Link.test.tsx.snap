@@ -5,7 +5,6 @@ exports[`Link renders as a button if no href is provided 1`] = `
   className=""
   onClick={[Function]}
   onKeyDown={[Function]}
-  role="link"
   type="button"
 >
   This is a link
