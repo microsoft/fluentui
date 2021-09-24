@@ -8,5 +8,8 @@ import type { LinkSlots, LinkState } from './Link.types';
 export const renderLink = (state: LinkState) => {
   const { slots, slotProps } = getSlots<LinkSlots>(state, ['root']);
 
+  // Added to test correct bundle size reporting.
+  slotProps.root = { ...slotProps.root };
+
   return <slots.root {...slotProps.root} />;
 };
