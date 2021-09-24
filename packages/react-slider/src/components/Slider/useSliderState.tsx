@@ -128,13 +128,7 @@ export const useSliderState = (state: SliderState) => {
 
       hideStepAnimation();
       onPointerDownCallback?.(ev);
-
-      setEventData({
-        element: target,
-        disabled: false,
-        pointerId: pointerId,
-      });
-
+      setEventData({ element: target, disabled: false, pointerId: pointerId });
       onPointerMove(ev);
     },
     [hideStepAnimation, onPointerDownCallback, onPointerMove],

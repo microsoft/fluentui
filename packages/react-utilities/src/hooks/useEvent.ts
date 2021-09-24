@@ -39,8 +39,8 @@ type UseEvent = {
  */
 export const useEvent = ({ element, type, callback, useCapture, disabled }: UseEvent) => {
   React.useEffect(() => {
-    if (element) {
-      !disabled && element.addEventListener(type, callback, useCapture);
+    if (element && !disabled) {
+      element.addEventListener(type, callback, useCapture);
       return () => element.removeEventListener(type, callback, useCapture);
     }
   }, [element, type, callback, disabled, useCapture]);

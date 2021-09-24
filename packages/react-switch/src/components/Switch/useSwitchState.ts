@@ -96,8 +96,9 @@ export const useSwitchState = (state: SwitchState) => {
 
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      setEventData(prevState => ({ ...prevState, disabled: true }));
       inputRef.current!.focus();
+
+      setEventData(prevState => ({ ...prevState, disabled: true }));
 
       if (internalState.current.thumbIsDragging) {
         const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
@@ -120,9 +121,7 @@ export const useSwitchState = (state: SwitchState) => {
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
 
-      onPointerDownCallback?.(ev);
       showThumbAnimation();
-      target.setPointerCapture?.(pointerId);
       internalState.current.thumbIsDragging = false;
 
       setEventData({
@@ -130,6 +129,8 @@ export const useSwitchState = (state: SwitchState) => {
         disabled: false,
         pointerId: pointerId,
       });
+
+      onPointerDownCallback?.(ev);
     },
     [onPointerDownCallback, showThumbAnimation],
   );
@@ -145,7 +146,7 @@ export const useSwitchState = (state: SwitchState) => {
   );
 
   useEvent({
-    element: eventData.element!,
+    element: eventData.element,
     type: 'pointermove',
     useCapture: true,
     callback: onPointerMove,
@@ -153,7 +154,7 @@ export const useSwitchState = (state: SwitchState) => {
   });
 
   useEvent({
-    element: eventData.element!,
+    element: eventData.element,
     type: 'pointerup',
     useCapture: true,
     callback: onPointerUp,
@@ -161,7 +162,7 @@ export const useSwitchState = (state: SwitchState) => {
   });
 
   useCapture({
-    element: eventData.element!,
+    element: eventData.element,
     disabled: eventData.disabled,
     pointerId: eventData.pointerId,
   });
