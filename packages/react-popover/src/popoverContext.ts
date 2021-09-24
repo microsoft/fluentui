@@ -29,8 +29,7 @@ export type PopoverContextValue = Pick<
   | 'noArrow'
   | 'arrowRef'
   | 'size'
-  | 'brand'
-  | 'inverted'
+  | 'appearance'
   | 'trapFocus'
 >;
 

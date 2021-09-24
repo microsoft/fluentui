@@ -93,18 +93,18 @@ const getDefaultIcon = (size: NonNullable<AvatarProps['size']>) => {
 };
 
 const getBadgeSize = (size: NonNullable<AvatarProps['size']>) => {
-  if (size <= 24) {
-    return 'smallest';
-  } else if (size <= 36) {
-    return 'smaller';
-  } else if (size <= 48) {
-    return 'small';
-  } else if (size <= 56) {
-    return 'medium';
-  } else if (size <= 72) {
+  if (size >= 96) {
+    return 'extra-large';
+  } else if (size >= 64) {
     return 'large';
+  } else if (size >= 56) {
+    return 'medium';
+  } else if (size >= 40) {
+    return 'small';
+  } else if (size >= 28) {
+    return 'extra-small';
   } else {
-    return 'larger';
+    return 'tiny';
   }
 };
 
