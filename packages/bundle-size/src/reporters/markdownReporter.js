@@ -81,16 +81,16 @@ module.exports = async function markdownReporter(result, commitSHA, quiet) {
 
     changedEntries.forEach(entry => {
       const title = `<samp>${entry.packageName}</samp> <br /> <abbr title='${entry.path}'>${entry.name}</abbr>`;
-      const before = [`\`${formatBytes(entry.minifiedSize)}\``, '<br />', `\`${formatBytes(entry.gzippedSize)}\``].join(
-        '',
-      );
-      const after = entry.diff.empty
+      const before = entry.diff.empty
         ? [`\`${formatBytes(0)}\``, '<br />', `\`${formatBytes(0)}\``].join('')
         : [
-            `\`${formatBytes(entry.minifiedSize + entry.diff.minified.delta)}\``,
+            `\`${formatBytes(entry.minifiedSize - entry.diff.minified.delta)}\``,
             '<br />',
-            `\`${formatBytes(entry.gzippedSize + entry.diff.gzip.delta)}\``,
+            `\`${formatBytes(entry.gzippedSize - entry.diff.gzip.delta)}\``,
           ].join('');
+      const after = [`\`${formatBytes(entry.minifiedSize)}\``, '<br />', `\`${formatBytes(entry.gzippedSize)}\``].join(
+        '',
+      );
       const difference = entry.diff.empty
         ? '🆕 New entry'
         : [`${formatDelta(entry.diff.minified)}`, '<br />', `${formatDelta(entry.diff.gzip)}`].join('');
