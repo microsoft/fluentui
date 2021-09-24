@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates divider to use new simplified slots",
+  "packageName": "@fluentui/react-divider",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
