@@ -45,6 +45,11 @@ export interface IWithViewportProps {
    */
   skipViewportMeasures?: boolean;
   /**
+   * Whether or not `withViewport` will wait a delay before updating the viewport size to account for the throttle
+   * while resizing the window.
+   */
+  waitForViewport?: boolean;
+  /**
    * Whether or not to explicitly disable usage of the `ResizeObserver` in favor of a `'resize'` event on `window`,
    * even if the browser supports `ResizeObserver`. This may be necessary if use of `ResizeObserver` results in too
    * many re-renders of the wrapped component due to the frequency at which events are fired.
@@ -88,7 +93,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     public componentDidMount(): void {
-      const { skipViewportMeasures, disableResizeObserver } = this.props as IWithViewportProps;
+      const { skipViewportMeasures, disableResizeObserver, waitForViewport } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
@@ -102,15 +107,19 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
           this._events.on(win, 'resize', this._onAsyncResize);
         }
 
-        this._async.setTimeout(() => {
+        if (waitForViewport) {
+          this._async.setTimeout(() => {
+            this._updateViewport();
+          }, RESIZE_DELAY);
+        } else {
           this._updateViewport();
-        }, RESIZE_DELAY);
+        }
       }
     }
 
     public componentDidUpdate(previousProps: TProps) {
       const { skipViewportMeasures: previousSkipViewportMeasures } = previousProps as IWithViewportProps;
-      const { skipViewportMeasures, disableResizeObserver } = this.props as IWithViewportProps;
+      const { skipViewportMeasures, disableResizeObserver, waitForViewport } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
       if (skipViewportMeasures !== previousSkipViewportMeasures) {
@@ -123,7 +132,13 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
             this._events.on(win, 'resize', this._onAsyncResize);
           }
 
-          this._updateViewport();
+          if (waitForViewport) {
+            this._async.setTimeout(() => {
+              this._updateViewport();
+            }, RESIZE_DELAY);
+          } else {
+            this._updateViewport();
+          }
         } else {
           this._unregisterResizeObserver();
           this._events.off(win, 'resize', this._onAsyncResize);
