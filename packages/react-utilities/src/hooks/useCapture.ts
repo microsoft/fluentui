@@ -4,7 +4,7 @@ type UseCapture = {
   /**
    * The element to listen to.
    */
-  element: HTMLElement;
+  element?: HTMLElement;
 
   /**
    * Whether event should be disabled and removed
@@ -28,7 +28,7 @@ export const useCapture = ({ element, disabled, pointerId }: UseCapture) => {
   React.useEffect(() => {
     if (element) {
       !disabled && element.setPointerCapture(pointerId);
-      () => element.releasePointerCapture(pointerId);
+      return () => element.releasePointerCapture(pointerId);
     }
   }, [element, disabled, pointerId]);
 };

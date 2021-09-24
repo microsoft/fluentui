@@ -113,6 +113,8 @@ export const useSliderState = (state: SliderState) => {
       setEventData(prevState => ({
         ...prevState,
         disabled: true,
+        element: ev.target as HTMLElement,
+        pointerId: ev.pointerId,
       }));
       inputRef.current!.focus();
     },
@@ -123,8 +125,6 @@ export const useSliderState = (state: SliderState) => {
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
-
-      target.setPointerCapture?.(pointerId);
 
       hideStepAnimation();
       onPointerDownCallback?.(ev);
@@ -167,7 +167,7 @@ export const useSliderState = (state: SliderState) => {
   };
 
   useEvent({
-    element: eventData.element!,
+    element: eventData.element,
     type: 'pointermove',
     useCapture: true,
     callback: onPointerMove,
@@ -175,7 +175,7 @@ export const useSliderState = (state: SliderState) => {
   });
 
   useEvent({
-    element: eventData.element!,
+    element: eventData.element,
     type: 'pointerup',
     useCapture: true,
     callback: onPointerUp,
@@ -183,7 +183,7 @@ export const useSliderState = (state: SliderState) => {
   });
 
   useCapture({
-    element: eventData.element!,
+    element: eventData.element,
     disabled: eventData.disabled,
     pointerId: eventData.pointerId,
   });

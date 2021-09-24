@@ -35,7 +35,6 @@ describe('useEvent', () => {
       useEvent({
         element: eventData.element,
         type: 'pointermove',
-        useCapture: true,
         callback: onPointerMove,
         disabled: eventData.disabled,
       });
@@ -87,7 +86,6 @@ describe('useEvent', () => {
       useEvent({
         element: eventData.element,
         type: 'pointermove',
-        useCapture: true,
         callback: onPointerMove,
         disabled: eventData.disabled,
       });
@@ -95,7 +93,6 @@ describe('useEvent', () => {
       useEvent({
         element: eventData.element,
         type: 'pointerup',
-        useCapture: true,
         callback: onPointerUp,
         disabled: eventData.disabled,
       });
@@ -147,7 +144,6 @@ describe('useEvent', () => {
       useEvent({
         element: eventData.element,
         type: 'pointermove',
-        useCapture: true,
         callback: onPointerMove,
         disabled: eventData.disabled,
       });

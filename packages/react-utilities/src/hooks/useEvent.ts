@@ -20,7 +20,7 @@ type UseEvent = {
   /**
    * Whether the events should be dispatched to the callback first before other EventTargets.
    */
-  useCapture: boolean;
+  useCapture?: boolean;
 
   /**
    * Whether event should be disabled and removed

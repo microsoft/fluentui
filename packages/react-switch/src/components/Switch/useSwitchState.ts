@@ -96,11 +96,7 @@ export const useSwitchState = (state: SwitchState) => {
 
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      setEventData(prevState => ({
-        ...prevState,
-        disabled: true,
-      }));
-
+      setEventData(prevState => ({ ...prevState, disabled: true }));
       inputRef.current!.focus();
 
       if (internalState.current.thumbIsDragging) {
