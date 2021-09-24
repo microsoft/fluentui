@@ -57,7 +57,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       },
     },
     legendContainer: {
-      marginTop: '5px',
+      margin: '5px 0px 0px 4px',
     },
     noData: {
       cursor: href ? 'pointer' : 'default',

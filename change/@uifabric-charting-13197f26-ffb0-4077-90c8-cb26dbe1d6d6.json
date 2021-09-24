@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Legend container shifted left by 4 px for keyboard focus border",
+  "packageName": "@uifabric/charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}
