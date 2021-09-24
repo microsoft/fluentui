@@ -4,6 +4,7 @@ import type {
   ComponentState,
   IntrinsicShorthandProps,
   ObjectShorthandProps,
+  ShorthandRenderFunction,
 } from '@fluentui/react-utilities';
 import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
@@ -11,9 +12,10 @@ export type AvatarSlots = {
   root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
 
   /**
-   * The Avatar's image.
+   * This overidden in the component's props, it's only here to make `getSlots` work
+   * `img`  is an exception since it should never accept children, but can accept a children render function
    */
-  image?: IntrinsicShorthandProps<'img'> & { children?: never };
+  image?: IntrinsicShorthandProps<'img'>;
 
   /**
    * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
@@ -139,7 +141,16 @@ export type AvatarNamedColor =
 /**
  * Properties for Avatar
  */
-export type AvatarProps = ComponentProps<AvatarSlots> & Partial<AvatarCommons>;
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> &
+  Partial<AvatarCommons> & {
+    /**
+     * The Avatar's image. Cannot be typed as a normal slot since it should not accept any children
+     * but can accept a children render function.
+     */
+    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
+      children?: ShorthandRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
+    };
+  };
 
 /**
  * State used in rendering Avatar
