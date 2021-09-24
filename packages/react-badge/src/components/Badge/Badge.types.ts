@@ -1,9 +1,9 @@
-import type { IntrinsicShorthandProps, ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import * as React from 'react';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export type BadgeSlots = {
-  // React internally has a non-standard `color` attribute for HTML elements
-  root: Omit<IntrinsicShorthandProps<'div'>, 'color'>;
-  icon?: IntrinsicShorthandProps<'span'>;
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 };
 
 export type BadgeCommons = {
