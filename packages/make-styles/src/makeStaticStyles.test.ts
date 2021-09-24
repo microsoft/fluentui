@@ -122,7 +122,7 @@ describe('makeStaticStyles', () => {
     });
 
     useStaticStyles({ renderer });
-    expect(useStyles({ dir: 'ltr', renderer }).root).toBe('__23yvam0 fy9yzz7 f4ybsrx');
+    expect(useStyles({ dir: 'ltr', renderer }).root).toBe('___23yvam0 fy9yzz7 f4ybsrx');
 
     expect(renderer).toMatchInlineSnapshot(`
       @font-face {
