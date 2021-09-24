@@ -14,7 +14,7 @@
 
 ### Accessibility
 
-Dropdown popups render in their own layer by default to ensure they are not clipped by containers with overflow: hidden or overflow: scroll. This causes extra difficulty for people who use touch-based screen readers, so we recommend rendering the Dropdown options list inline unless they are in overflow containers. To do so, set the following property on the Dropdown:
+Dropdown popups render in their own layer by default to ensure they are not clipped by containers with `overflow: hidden` or `overflow: scroll`. This causes extra difficulty for people who use touch-based screen readers, so we recommend rendering the Dropdown options list inline unless they are in overflow containers. To do so, set the following property on the Dropdown:
 
 ```jsx
 calloutProps={{ doNotLayer: true }}
