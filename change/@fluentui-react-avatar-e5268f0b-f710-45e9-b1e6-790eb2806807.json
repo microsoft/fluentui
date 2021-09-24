@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use updated sizes from BadgeProps",
-  "packageName": "@fluentui/react-avatar",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Thu, 23 Sep 2021 08:21:34 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Sep 2021 09:17:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.11)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-alpha.10..@fluentui/react-slider_v9.0.0-alpha.11)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.72 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.66 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.52 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-label to v9.0.0-alpha.45 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.54 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-alpha.10)
 

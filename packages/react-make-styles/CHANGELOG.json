@@ -2,6 +2,21 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Fri, 24 Sep 2021 09:17:17 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.72",
+      "version": "9.0.0-alpha.72",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-make-styles",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.52",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Sep 2021 08:21:34 GMT",
       "tag": "@fluentui/react-make-styles_v9.0.0-alpha.71",
       "version": "9.0.0-alpha.71",
