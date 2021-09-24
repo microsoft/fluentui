@@ -40,7 +40,7 @@ export const Basic = () => {
         <Avatar />
         <Avatar name={examples.name[0]} />
         <Avatar size={40} icon={<Guest20Regular />} />
-        <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
+        <Avatar size={72} name={examples.name[0]} image={{ src: examples.image[0] }} />
       </StoryExample>
       <StoryExample title="Shape">
         <Avatar name="Group" />
@@ -51,12 +51,12 @@ export const Basic = () => {
       <StoryExample title="Badges">
         <Avatar name={examples.name[1]} badge="available" />
         <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
-        <Avatar name={examples.name[3]} image={examples.image[3]} badge="offline" />
+        <Avatar name={examples.name[3]} image={{ src: examples.image[3] }} badge="offline" />
       </StoryExample>
       <StoryExample title="Size">
-        <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="offline" />
-        <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="available" />
-        <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="away" />
+        <Avatar size={20} name={examples.name[4]} image={{ src: examples.image[4] }} badge="offline" />
+        <Avatar size={48} name={examples.name[5]} image={{ src: examples.image[5] }} badge="available" />
+        <Avatar size={96} name={examples.name[6]} image={{ src: examples.image[6] }} badge="away" />
       </StoryExample>
       <StoryExample title="Brand color">
         <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
@@ -77,11 +77,11 @@ export const Basic = () => {
       <StoryExample title="Active/inactive">
         <div className={styles.flex}>
           <Avatar name={examples.name[7]} active="active" />
-          <Avatar image={examples.image[8]} active="active" activeAppearance="shadow" />
-          <Avatar image={examples.image[9]} active="active" activeAppearance="glow" />
-          <Avatar image={examples.image[10]} active="active" activeAppearance="ring-shadow" />
-          <Avatar image={examples.image[11]} active="active" activeAppearance="ring-glow" />
-          <Avatar image={examples.image[12]} active="inactive" />
+          <Avatar image={{ src: examples.image[8] }} active="active" activeAppearance="shadow" />
+          <Avatar image={{ src: examples.image[9] }} active="active" activeAppearance="glow" />
+          <Avatar image={{ src: examples.image[10] }} active="active" activeAppearance="ring-shadow" />
+          <Avatar image={{ src: examples.image[11] }} active="active" activeAppearance="ring-glow" />
+          <Avatar image={{ src: examples.image[12] }} active="inactive" />
         </div>
       </StoryExample>
     </>
@@ -179,7 +179,7 @@ export const ActiveAnimation = () => {
           active={active ? 'active' : 'inactive'}
           activeAppearance={activeAppearance}
           name={display === 'label' ? examples.name[10] : undefined}
-          image={display === 'image' ? examples.image[10] : undefined}
+          image={display === 'image' ? { src: examples.image[10] } : undefined}
         />
       </div>
       <div className={flexStyles.stack}>
@@ -222,11 +222,21 @@ export const ActiveAnimation = () => {
 export const CustomSizes = () => (
   <StoryExample title="Custom size">
     <Avatar name={examples.name[11]} badge="available" size={20} style={{ width: '13px', height: '13px' }} />
-    <Avatar image={examples.image[12]} badge="away" size={20} style={{ width: '21px', height: '21px' }} />
+    <Avatar image={{ src: examples.image[12] }} badge="away" size={20} style={{ width: '21px', height: '21px' }} />
     <Avatar name={examples.name[13]} badge="busy" size={32} style={{ width: '34px', height: '34px' }} />
-    <Avatar image={examples.image[14]} badge="doNotDisturb" size={48} style={{ width: '55px', height: '55px' }} />
+    <Avatar
+      image={{ src: examples.image[14] }}
+      badge="doNotDisturb"
+      size={48}
+      style={{ width: '55px', height: '55px' }}
+    />
     <Avatar name={examples.name[15]} badge="offline" size={72} style={{ width: '89px', height: '89px' }} />
-    <Avatar image={examples.image[16]} badge="outOfOffice" size={128} style={{ width: '144px', height: '144px' }} />
+    <Avatar
+      image={{ src: examples.image[16] }}
+      badge="outOfOffice"
+      size={128}
+      style={{ width: '144px', height: '144px' }}
+    />
   </StoryExample>
 );
 
@@ -255,7 +265,7 @@ const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLEle
 
   const icon = size <= 40 ? <Bot20Regular /> : <Bot24Regular />;
 
-  const state = useAvatar(props, ref, { icon });
+  const state = useAvatar({ icon, ...props }, ref);
   const styles = useRobotAvatarStyles();
 
   state.className = mergeClasses(styles.root, styles[state.size], state.className);
@@ -288,7 +298,7 @@ export const AvatarPlayground = () => {
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector(
       'image',
-      [nameAndImage.image, nextNameAndImage, prevNameAndImage],
+      [{ src: nameAndImage.image }, nextNameAndImage, prevNameAndImage],
       true,
       getFilenameFromUrl as () => string,
     ),
@@ -343,7 +353,7 @@ const AvatarExampleList: React.FC<
           key={size}
           size={size}
           name={names && names[(i + offset) % names.length]}
-          image={images && images[(i + offset) % images.length]}
+          image={images && { src: images[(i + offset) % images.length] }}
           badge={examples.badge[(i + offset) % examples.badge.length]}
           {...restOfProps}
         />
