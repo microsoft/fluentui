@@ -2,15 +2,15 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import {
   thumbClassName,
   trackClassName,
+  useActiveRailStyles,
+  useMarksWrapperStyles,
+  useRailStyles,
   useRootStyles,
   useSliderWrapper,
-  useRailStyles,
-  useTrackWrapperStyles,
-  useTrackStyles,
-  useMarksWrapperStyles,
-  useThumbWrapperStyles,
   useThumbStyles,
-  useActiveRailStyles,
+  useThumbWrapperStyles,
+  useTrackStyles,
+  useTrackWrapperStyles,
 } from '../Slider/useSliderStyles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';

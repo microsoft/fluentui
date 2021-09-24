@@ -46,20 +46,19 @@ type RangedSliderInternalState = {
 };
 
 export const useRangedSliderState = (state: RangedSliderState) => {
+  const { max = 100, min = 0, step = 1 } = state;
   const {
-    min = 0,
-    max = 100,
-    value,
-    defaultValue = [min, max],
-    step = 1,
-    keyboardStep = state.step || 1,
-    disabled = false,
     ariaValueText,
-    onChange,
+    defaultValue = [min, max],
+    disabled = false,
+    keyboardStep = step,
     marks,
+    onChange,
+    value,
     vertical = false,
   } = state;
-  const { onPointerDown: onPointerDownCallback, onKeyDown: onKeyDownCallback } = state.root;
+
+  const { onKeyDown: onKeyDownCallback, onPointerDown: onPointerDownCallback } = state.root;
 
   const { dir } = useFluent();
 
@@ -188,7 +187,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       internalState.current.disposables.forEach(dispose => dispose());
       internalState.current.disposables = [];
       showStepAnimation();
-      // When undefined, the position fallbacks to the currentValue state.
+      // When undefined, the position falls back to the currentValue state.
       setRenderedPosition(undefined);
       if (internalState.current.activeThumb === 'lowerValue') {
         lowerInputRef.current!.focus();
@@ -237,7 +236,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     [updatePosition],
   );
 
-  const keyDown = React.useCallback(
+  const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>) => {
       const activeThumbIndex = internalState.current.activeThumb === 'lowerValue' ? 0 : 1;
       hideStepAnimation();
@@ -259,17 +258,17 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const onKeyDownLower = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
       internalState.current.activeThumb = 'lowerValue';
-      keyDown(ev);
+      onKeyDown(ev);
     },
-    [keyDown],
+    [onKeyDown],
   );
 
   const onKeyDownUpper = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
       internalState.current.activeThumb = 'upperValue';
-      keyDown(ev);
+      onKeyDown(ev);
     },
-    [keyDown],
+    [onKeyDown],
   );
 
   useUnmount(() => {
