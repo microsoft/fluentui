@@ -471,19 +471,14 @@ describe('Slider', () => {
     });
 
     it('does not allow focus on disabled Slider', () => {
-      let sliderRef: any;
+      const sliderRef = React.createRef<HTMLDivElement>();
+      const inputRef = React.createRef<HTMLInputElement>();
 
-      const SliderTestComponent = () => {
-        sliderRef = React.useRef(null);
-
-        return <Slider defaultValue={3} ref={sliderRef} data-testid="test" disabled />;
-      };
-
-      render(<SliderTestComponent />);
+      render(<Slider ref={sliderRef} disabled input={{ ref: inputRef }} />);
 
       expect(document.activeElement).toEqual(document.body);
-
-      sliderRef.current.focus();
+      sliderRef?.current?.focus();
+      inputRef?.current?.focus();
       expect(document.activeElement).toEqual(document.body);
     });
 

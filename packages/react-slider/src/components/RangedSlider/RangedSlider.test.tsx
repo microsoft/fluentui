@@ -317,6 +317,12 @@ describe('RangedSlider', () => {
     expect(onChange.mock.calls[2][1]).toEqual({ value: [14, 17] });
     expect(lowerInputRef.current?.value).toBe('14');
     expect(upperInputRef.current?.value).toBe('17');
+
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
+    expect(onChange.mock.calls[4][1]).toEqual({ value: [14, 23] });
+    expect(lowerInputRef.current?.value).toBe('14');
+    expect(upperInputRef.current?.value).toBe('23');
   });
 
   it('handles a decimal step prop', () => {
@@ -361,12 +367,18 @@ describe('RangedSlider', () => {
   });
 
   it('does not allow focus on disabled RangedSlider', () => {
-    const sliderRef = React.createRef<HTMLInputElement>();
+    const sliderRef = React.createRef<HTMLDivElement>();
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
 
-    render(<RangedSlider ref={sliderRef} disabled />);
+    render(
+      <RangedSlider ref={sliderRef} disabled lowerInput={{ ref: lowerInputRef }} upperInput={{ ref: upperInputRef }} />,
+    );
 
     expect(document.activeElement).toEqual(document.body);
     sliderRef?.current?.focus();
+    lowerInputRef?.current?.focus();
+    upperInputRef?.current?.focus();
     expect(document.activeElement).toEqual(document.body);
   });
 
