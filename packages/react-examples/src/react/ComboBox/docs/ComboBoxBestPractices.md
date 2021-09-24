@@ -14,3 +14,9 @@ Combobox dropdowns render in their own layer by default to ensure they are not c
 ```js
 calloutProps={{ doNotLayer: true }}
 ```
+
+#### Truncation
+
+By default, the Combobox truncates option text instead of wrapping to a new line. To avoid losing meaningful information, adjusting styles to wrap the name while keeping additional secondary text short is recommended.
+
+The `ComboBox with custom styling` example demonstrates how to override truncation styles to support wrapping. The default style will continue to truncate to support existing implementations.
