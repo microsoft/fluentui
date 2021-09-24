@@ -415,7 +415,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     }
   }
 
-  state.root.className = mergeClasses(...rootClasses, state.className);
+  state.root.className = mergeClasses(...rootClasses, state.root.className);
 
   if (state.badge) {
     state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);

@@ -99,7 +99,7 @@ describe('Avatar', () => {
   });
 
   it('displays a badge', () => {
-    const component = renderer.create(<Avatar name="First Last" badge="available" />);
+    const component = renderer.create(<Avatar name="First Last" badge={{ status: 'available' }} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
