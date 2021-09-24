@@ -11,7 +11,10 @@ import type { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import type { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type ARIAButtonShorthandProps = IntrinsicShorthandProps<'button', 'a'>;
+export type ARIAButtonShorthandProps = IntrinsicShorthandProps<'button', 'a'> & {
+    disabled?: boolean;
+    disabledFocusable?: boolean;
+};
 
 // @public
 export function mergeARIADisabled(shorthand: ObjectShorthandProps<{
@@ -21,10 +24,7 @@ export function mergeARIADisabled(shorthand: ObjectShorthandProps<{
 }>): boolean;
 
 // @public
-export function useARIAButton<Required extends boolean = false>(shorthandProps: ShorthandProps<ARIAButtonShorthandProps> & {
-    disabled?: boolean;
-    disabledFocusable?: boolean;
-}, options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps;
+export function useARIAButton<Required extends boolean = false>(shorthandProps: ShorthandProps<ARIAButtonShorthandProps>, options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps;
 
 // (No @packageDocumentation comment for this package)
 

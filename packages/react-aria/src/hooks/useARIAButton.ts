@@ -2,9 +2,7 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
 
-export type ARIAButtonShorthandProps = IntrinsicShorthandProps<'button', 'a'>;
-
-type ARIAButtonProps = ARIAButtonShorthandProps & {
+export type ARIAButtonShorthandProps = IntrinsicShorthandProps<'button', 'a'> & {
   disabled?: boolean;
   disabledFocusable?: boolean;
 };
@@ -15,15 +13,13 @@ type ARIAButtonProps = ARIAButtonShorthandProps & {
  * where no attribute addition is required.
  */
 export function useARIAButton<Required extends boolean = false>(
-  shorthandProps: ShorthandProps<ARIAButtonShorthandProps> & {
-    disabled?: boolean;
-    disabledFocusable?: boolean;
-  },
+  shorthandProps: ShorthandProps<ARIAButtonShorthandProps>,
   options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>,
 ): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps {
   const shorthand = resolveShorthand(shorthandProps, options);
 
-  const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = (shorthand || {}) as ARIAButtonProps;
+  const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = (shorthand ||
+    {}) as ARIAButtonShorthandProps;
 
   const onClickHandler: ARIAButtonShorthandProps['onClick'] = useEventCallback(ev => {
     if (disabled || disabledFocusable) {
@@ -92,7 +88,7 @@ export function useARIAButton<Required extends boolean = false>(
     // If an <a> tag is to be rendered we have to remove disabled and set aria-disabled, role and tabIndex as well as
     // some event handlers.
     else {
-      delete (shorthand as ARIAButtonProps).disabled;
+      delete shorthand.disabled;
       shorthand['aria-disabled'] = disabled || disabledFocusable;
       shorthand.onClick = onClickHandler;
       shorthand.onKeyDown = onKeyDownHandler;
@@ -100,10 +96,10 @@ export function useARIAButton<Required extends boolean = false>(
       shorthand.role = shorthand.role ?? 'button';
       shorthand.tabIndex = disabled && !disabledFocusable ? undefined : tabIndex ?? 0;
     }
-  }
 
-  // Remove non-DOM props
-  delete (shorthand as ARIAButtonProps).disabledFocusable;
+    // Remove non-DOM props
+    delete shorthand.disabledFocusable;
+  }
 
   return shorthand;
 }

@@ -1,8 +1,6 @@
 //
 // !!!   A temporary workaround to avoid dependencies on any non converged packages.
 //
-
-/* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 
 type ITextFieldProps = React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> & {
