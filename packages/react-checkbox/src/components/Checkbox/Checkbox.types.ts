@@ -54,7 +54,7 @@ export interface CheckboxOnChangeData {
 }
 
 export type CheckboxSlots = {
-  root: ObjectShorthandProps<LabelProps | React.HTMLAttributes<HTMLSpanElement>>;
+  root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
   /**
    * Hidden input that handles the checkbox's functionality.
    */
