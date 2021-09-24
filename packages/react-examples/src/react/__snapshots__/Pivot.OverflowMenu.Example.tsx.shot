@@ -63,7 +63,7 @@ Array [
       >
         <button
           aria-checked={true}
-          aria-labelledby="Toggle0-label Toggle0-stateText"
+          aria-labelledby="Toggle0-label"
           checked={true}
           className=
               ms-Toggle-background
@@ -241,7 +241,7 @@ Array [
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle1-label Toggle1-stateText"
+          aria-labelledby="Toggle1-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -412,7 +412,7 @@ Array [
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle2-label Toggle2-stateText"
+          aria-labelledby="Toggle2-label"
           checked={false}
           className=
               ms-Toggle-background

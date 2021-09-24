@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update Toggle to not append on/off text to label\"",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

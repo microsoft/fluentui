@@ -55,7 +55,7 @@ Array [
     >
       <button
         aria-checked={false}
-        aria-labelledby="Toggle0-label Toggle0-stateText"
+        aria-labelledby="Toggle0-label"
         className=
             ms-Toggle-background
             {
