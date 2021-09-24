@@ -29,6 +29,7 @@ export type TooltipCommons = {
    * When not specified, the default appearance is used.
    */
   appearance?: 'inverted';
+
   /**
    * The content displayed inside the tooltip.
    */
@@ -119,32 +120,32 @@ export type OnVisibleChangeData = {
 /**
  * Properties for Tooltip
  */
-export interface TooltipProps
-  extends ComponentProps<TooltipSlots>,
-    Partial<Omit<TooltipCommons, 'content'>>,
-    Pick<TooltipCommons, 'content'> {}
+export type TooltipProps = ComponentProps<TooltipSlots> &
+  Partial<Omit<TooltipCommons, 'content'>> &
+  Pick<TooltipCommons, 'content'>;
 
 /**
  * State used in rendering Tooltip
  */
-export interface TooltipState extends ComponentState<TooltipSlots>, TooltipCommons {
-  /**
-   * Whether the tooltip should be rendered to the DOM.
-   *
-   * Normally the tooltip will only be rendered when visible. However, if
-   * triggerAriaAttribute is labelledby or describedby, the tooltip will
-   * always be rendered even when hidden so that those aria attributes
-   * to always refer to a valid DOM element.
-   */
-  shouldRenderTooltip?: boolean;
+export type TooltipState = ComponentState<TooltipSlots> &
+  TooltipCommons & {
+    /**
+     * Whether the tooltip should be rendered to the DOM.
+     *
+     * Normally the tooltip will only be rendered when visible. However, if
+     * triggerAriaAttribute is labelledby or describedby, the tooltip will
+     * always be rendered even when hidden so that those aria attributes
+     * to always refer to a valid DOM element.
+     */
+    shouldRenderTooltip?: boolean;
 
-  /**
-   * Ref to the arrow element
-   */
-  arrowRef?: React.Ref<HTMLDivElement>;
+    /**
+     * Ref to the arrow element
+     */
+    arrowRef?: React.Ref<HTMLDivElement>;
 
-  /**
-   * CSS class for the arrow element
-   */
-  arrowClassName?: string;
-}
+    /**
+     * CSS class for the arrow element
+     */
+    arrowClassName?: string;
+  };
