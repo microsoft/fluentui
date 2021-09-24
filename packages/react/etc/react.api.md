@@ -3549,24 +3549,16 @@ export interface IDatePickerStrings extends ICalendarStrings {
 
 // @public (undocumented)
 export interface IDatePickerStyleProps {
-    // (undocumented)
-    borderless?: boolean;
     className?: string;
     // (undocumented)
     disabled?: boolean;
-    // (undocumented)
-    hasErrorMessage?: boolean;
     // (undocumented)
     isDatePickerShown?: boolean;
     // (undocumented)
     label?: boolean;
     // (undocumented)
-    onlyPlaceHolder?: boolean;
-    // (undocumented)
-    required?: boolean;
+    readOnlyPlaceHolder?: boolean;
     theme: ITheme;
-    // (undocumented)
-    underlined?: boolean;
 }
 
 // @public (undocumented)
@@ -3576,17 +3568,7 @@ export interface IDatePickerStyles {
     // (undocumented)
     icon: IStyle;
     // (undocumented)
-    readOnlyIcon?: IStyle;
-    // (undocumented)
     readOnlyTextfield?: IStyle;
-    // (undocumented)
-    readOnlyTextfieldDescription?: IStyle;
-    // (undocumented)
-    readOnlyTextfieldErrorMessage?: IStyle;
-    // (undocumented)
-    readOnlyTextfieldGroup?: IStyle;
-    // (undocumented)
-    readOnlyTextfieldWrapper?: IStyle;
     root: IStyle;
     // (undocumented)
     statusMessage?: IStyle;
@@ -8129,6 +8111,14 @@ export interface ITextField {
 }
 
 // @public
+export interface ITextFieldInputIds {
+    // (undocumented)
+    descriptionId: string;
+    // (undocumented)
+    textFieldId: string;
+}
+
+// @public
 export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
     ariaLabel?: string;
     autoAdjustHeight?: boolean;
@@ -8152,6 +8142,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
+    onRenderInput?: (props?: ITextFieldProps, inputIds?: ITextFieldInputIds, defaultRender?: (props?: ITextFieldProps, inputIds?: ITextFieldInputIds) => JSX.Element | null) => JSX.Element | null;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
     onRenderPrefix?: IRenderFunction<ITextFieldProps>;
     onRenderSuffix?: IRenderFunction<ITextFieldProps>;
