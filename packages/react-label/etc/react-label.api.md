@@ -22,16 +22,10 @@ export type LabelCommons = {
     strong: boolean;
 };
 
-// @public
-export type LabelDefaultedProps = 'size';
-
 // @public (undocumented)
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
     required?: boolean | ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>> | React_2.ReactNode;
 };
-
-// @public
-export type LabelShorthandProps = 'required';
 
 // @public
 export const labelShorthandProps: Array<keyof LabelSlots>;
