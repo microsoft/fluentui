@@ -260,13 +260,13 @@ export class TextFieldBase
               <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
             {onRenderInput(
-              inputIds,
               {
                 ...this.props,
                 className: classNames.field,
                 onBlur: this._onBlur,
                 onFocus: this._onFocus,
               },
+              inputIds,
               this._onRenderInput,
             )}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
@@ -448,7 +448,7 @@ export class TextFieldBase
     return null;
   };
 
-  private _onRenderInput = (textFieldProps: ITextFieldProps) => {
+  private _onRenderInput = (textFieldProps: ITextFieldProps): JSX.Element | null => {
     const { multiline } = textFieldProps;
     return multiline ? this._renderTextArea() : this._renderInput();
   };

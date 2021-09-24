@@ -113,9 +113,9 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Custom renderer for input element
    */
   onRenderInput?: (
-    inputIds?: ITextFieldInputIds,
     props?: ITextFieldProps,
-    defaultRender?: (props?: ITextFieldProps) => JSX.Element | null,
+    inputIds?: ITextFieldInputIds,
+    defaultRender?: (props?: ITextFieldProps, inputIds?: ITextFieldInputIds) => JSX.Element | null,
   ) => JSX.Element | null;
 
   /**
