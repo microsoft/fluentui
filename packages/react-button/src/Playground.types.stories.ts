@@ -4,7 +4,7 @@ import * as React from 'react';
 type StringKeyOf<T> = { [K in keyof T]: K extends string ? K : never }[keyof T];
 
 /** Definition for a prop that is to be controlled by the Playground.  */
-export interface PropDefinition<TType> {
+export type PropDefinition<TType> = {
   /** Name of the prop. */
   propName: keyof TType | 'content';
 
@@ -22,10 +22,10 @@ export interface PropDefinition<TType> {
    * this prop.
    */
   dependsOnProps?: (keyof TType | `~${StringKeyOf<TType>}` | 'content' | '~content')[];
-}
+};
 
 /** Props received by the Playground component. */
-export interface PlaygroundProps<TType> {
+export type PlaygroundProps<TType> = {
   /** Single children to clone with the playground props. */
   children: React.ReactElement;
 
@@ -34,4 +34,4 @@ export interface PlaygroundProps<TType> {
     sectionName: string;
     propList: PropDefinition<TType>[];
   }>;
-}
+};

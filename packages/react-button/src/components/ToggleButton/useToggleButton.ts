@@ -25,8 +25,13 @@ export const useToggleButton = (
   const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
 
   return {
+    // Button state
     ...buttonState,
+
+    // State calculated from a set of props
     checked: checkedValue,
+
+    // Slots definition
     root: {
       ...buttonState.root,
       [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: !!checkedValue,

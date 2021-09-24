@@ -1,101 +1,131 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SplitButtonState } from './SplitButton.types';
 
 const SplitButtonClassNames = {
-  button: 'SplitButton-button',
+  primaryActionButton: 'SplitButton-primaryActionButton',
   menuButton: 'SplitButton-menuButton',
 };
 
-const useStyles = makeStyles({
-  root: theme => ({
+const useFocusStyles = makeStyles({
+  primaryActionButton: createFocusIndicatorStyleRule({
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+  }),
+
+  menuButton: createFocusIndicatorStyleRule({
+    borderLeftWidth: 0,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+  }),
+});
+
+const useRootStyles = makeStyles({
+  // Base rootStyles
+  base: theme => ({
     display: 'inline-flex',
     justifyContent: 'stretch',
     position: 'relative',
+    verticalAlign: 'middle',
 
-    // Use classnames to increase specificy of styles and avoid collisions.
-    [`& .${SplitButtonClassNames.button}`]: {
+    // Use classnames to increase specificy of rootStyles and avoid collisions.
+    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
     },
 
-    // Use classnames to increase specificy of styles and avoid collisions.
+    // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${SplitButtonClassNames.menuButton}`]: {
       borderLeftWidth: 0,
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
     },
   }),
-  rootBlock: {
+
+  // Block rootStyles
+  block: {
     width: '100%',
   },
-  rootPrimary: theme => ({
-    // Use classnames to increase specificy of styles and avoid collisions.
-    [`& .${SplitButtonClassNames.button}`]: {
+
+  // Appearance variations
+  outline: {
+    /* No rootStyles */
+  },
+  primary: theme => ({
+    // Use classnames to increase specificy of rootStyles and avoid collisions.
+    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
     },
 
     ':hover': {
-      [`& .${SplitButtonClassNames.button}`]: {
+      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
       },
     },
 
     ':active': {
-      [`& .${SplitButtonClassNames.button}`]: {
+      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
       },
     },
   }),
-  rootSubtle: theme => ({
-    // Use classnames to increase specificy of styles and avoid collisions.
-    [`& .${SplitButtonClassNames.button}`]: {
+  subtle: theme => ({
+    // Use classnames to increase specificy of rootStyles and avoid collisions.
+    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
     },
 
     ':hover': {
-      [`& .${SplitButtonClassNames.button}`]: {
+      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
       },
     },
 
     ':active': {
-      [`& .${SplitButtonClassNames.button}`]: {
+      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
       },
     },
   }),
-  rootTransparent: theme => ({
-    // Use classnames to increase specificy of styles and avoid collisions.
-    [`& .${SplitButtonClassNames.button}`]: {
+  transparent: theme => ({
+    // Use classnames to increase specificy of rootStyles and avoid collisions.
+    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
     },
 
     ':hover': {
-      [`& .${SplitButtonClassNames.button}`]: {
+      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
       },
     },
 
     ':active': {
-      [`& .${SplitButtonClassNames.button}`]: {
+      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
       },
     },
   }),
-  rootDisabled: theme => ({
-    // Use classnames to increase specificy of styles and avoid collisions.
-    [`& .${SplitButtonClassNames.button}`]: {
+
+  // Shape variations
+  circular: {},
+  rounded: {},
+  square: {},
+
+  // Disabled rootStyles
+  disabled: theme => ({
+    // Use classnames to increase specificy of rootStyles and avoid collisions.
+    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
     },
 
     ':hover': {
-      [`& .${SplitButtonClassNames.button}`]: {
+      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
       },
     },
 
     ':active': {
-      [`& .${SplitButtonClassNames.button}`]: {
+      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
       },
     },
@@ -103,24 +133,33 @@ const useStyles = makeStyles({
 });
 
 export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState => {
-  const styles = useStyles();
+  const rootStyles = useRootStyles();
+  const focusStyles = useFocusStyles();
 
-  state.className = mergeClasses(
-    styles.root,
-    state.block && styles.rootBlock,
-    state.primary && styles.rootPrimary,
-    state.subtle && styles.rootSubtle,
-    state.transparent && styles.rootTransparent,
-    state.disabled && styles.rootDisabled,
-    state.className,
+  const { appearance, block, disabled, disabledFocusable } = state;
+
+  state.root.className = mergeClasses(
+    rootStyles.base,
+    block && rootStyles.block,
+    appearance && rootStyles[appearance],
+    (disabled || disabledFocusable) && rootStyles.disabled,
+    state.root.className,
   );
 
-  if (state.button) {
-    state.button.className = mergeClasses(SplitButtonClassNames.button, state.button.className);
+  if (state.menuButton) {
+    state.menuButton.className = mergeClasses(
+      SplitButtonClassNames.menuButton,
+      focusStyles.menuButton,
+      state.menuButton.className,
+    );
   }
 
-  if (state.menuButton) {
-    state.menuButton.className = mergeClasses(SplitButtonClassNames.menuButton, state.menuButton.className);
+  if (state.primaryActionButton) {
+    state.primaryActionButton.className = mergeClasses(
+      SplitButtonClassNames.primaryActionButton,
+      focusStyles.primaryActionButton,
+      state.primaryActionButton.className,
+    );
   }
 
   return state;

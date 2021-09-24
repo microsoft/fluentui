@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useButton } from './useButton';
 import { renderButton } from './renderButton';
+import { useButton } from './useButton';
 import { useButtonStyles } from './useButtonStyles';
 import type { ButtonProps } from './Button.types';
 
@@ -14,4 +14,5 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
 
   return renderButton(state);
 });
+
 Button.displayName = 'Button';

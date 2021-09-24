@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { clamp } from './clamp';
+import { clamp } from '@fluentui/react-utilities';
 
 /**
  * Calculates the `step` position based off of a `Mouse` or `Touch` event relative to the size of the rail.
@@ -14,7 +14,7 @@ export const calculateSteps = (
   dir: 'ltr' | 'rtl',
 ): number => {
   const currentBounds = railRef?.current?.getBoundingClientRect();
-  const sliderSize = vertical ? currentBounds!.height : currentBounds!.width;
+  const sliderSize = (vertical ? currentBounds!.height : currentBounds!.width) || 0;
   let position;
 
   if (vertical) {

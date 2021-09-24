@@ -1,8 +1,99 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Sep 2021 08:21:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.113](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.113)
+
+Thu, 23 Sep 2021 08:21:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.112..@fluentui/react-components_v9.0.0-alpha.113)
+
+### Changes
+
+- `@fluentui/react-avatar`
+  - Updated props for consistency across beta ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - Updated for consistency to have shape and appearance properties ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-card`
+  - Fix dependencies ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by andredias@microsoft.com)
+  - Updated ButtonProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-components`
+  - Fix dependencies ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by andredias@microsoft.com)
+  - Updated ButtonProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-divider`
+  - Updated DividerProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-link`
+  - Updated LinkProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-switch`
+  - Adding dragging to the Switch component. ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by czearing@outlook.com)
+- `@fluentui/react-tooltip`
+  - Updated ToolTipProps for consistency ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by gcox@microsoft.com)
+- `@fluentui/react-utilities`
+  - Adding clamp and getRTLSafeKey utilities. ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by czearing@outlook.com)
+
+## [9.0.0-alpha.112](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.112)
+
+Wed, 22 Sep 2021 10:10:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.111..@fluentui/react-components_v9.0.0-alpha.112)
+
+### Changes
+
+- `@fluentui/react-avatar`
+  - update react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by ololubek@microsoft.com)
+- `@fluentui/react-badge`
+  - refactor(Badge): Remove `mergeProps` and migrate to simple slots ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - update react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by ololubek@microsoft.com)
+  - SplitButton: Adding missing verticalAlign=middle style. ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-menu`
+  - update react-icons dependency ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by ololubek@microsoft.com)
+- `@fluentui/react-slider`
+  - Cleaning up the Slider utils folder. ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by czearing@outlook.com)
+- `@fluentui/react-switch`
+  - Adding switch role to the hidden input element. ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by czearing@outlook.com)
+- `@fluentui/react-text`
+  - Migrate to simplified prop merging ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by andredias@microsoft.com)
+- `@fluentui/react-utilities`
+  - Moved from interfaces to types per RFC ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by gcox@microsoft.com)
+
+## [9.0.0-alpha.111](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.111)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.110..@fluentui/react-components_v9.0.0-alpha.111)
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-avatar`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-badge`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-divider`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-image`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-label`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-link`
+  - fix(Link): use `keyboard-keys` package ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by lingfangao@hotmail.com)
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-menu`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-portal`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-slider`
+  - Adding custom marks and mark labels. ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by czearing@outlook.com)
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+- `@fluentui/react-theme`
+  - Theme: Updating value of borderRadius global token. ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Updating to types over interfaces ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
 
 ## [9.0.0-alpha.110](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.110)
 

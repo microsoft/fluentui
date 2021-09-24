@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "9.0.0-alpha.7",
+  "version": "9.0.0-alpha.10",
   "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,10 +26,10 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.43",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.46",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.12",
-    "@fluentui/react-label": "9.0.0-alpha.41",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.15",
+    "@fluentui/react-label": "9.0.0-alpha.44",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -39,13 +39,13 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0",
-    "@fluentui/babel-make-styles": "9.0.0-alpha.50"
+    "@fluentui/babel-make-styles": "9.0.0-alpha.53"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-alpha.68",
-    "@fluentui/react-shared-contexts": "9.0.0-alpha.24",
-    "@fluentui/react-tabster": "9.0.0-alpha.62",
-    "@fluentui/react-utilities": "9.0.0-alpha.49",
+    "@fluentui/react-make-styles": "9.0.0-alpha.71",
+    "@fluentui/react-shared-contexts": "9.0.0-alpha.25",
+    "@fluentui/react-tabster": "9.0.0-alpha.65",
+    "@fluentui/react-utilities": "9.0.0-alpha.51",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

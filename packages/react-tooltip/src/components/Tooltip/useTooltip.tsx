@@ -16,7 +16,6 @@ import type { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerP
 
 /**
  * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
  */
 export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
 
@@ -35,8 +34,6 @@ const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory Tooltip}
  */
 export const useTooltip = (
   props: TooltipProps,
@@ -92,7 +89,7 @@ export const useTooltip = (
     ...resolvePositioningShorthand(state.positioning),
   };
 
-  if (state.pointing) {
+  if (state.withArrow) {
     popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
   }
 
@@ -201,7 +198,8 @@ export const useTooltip = (
   };
 
   // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-  const childTargetRef = useMergedRefs(child?.ref, targetRef);
+  const childWithRef = child as { ref?: React.Ref<unknown> } | undefined;
+  const childTargetRef = useMergedRefs(childWithRef?.ref, targetRef);
   if (popperOptions.target === undefined) {
     triggerProps.ref = childTargetRef;
   }

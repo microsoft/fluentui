@@ -25,9 +25,10 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
       as: 'span',
       label: { as: 'span' },
       icon: { as: 'span' },
+      shape: 'circular',
       size: 32,
       color: 'neutral',
-      activeDisplay: 'ring',
+      activeAppearance: 'ring',
       getInitials,
       ref,
     },
@@ -101,7 +102,8 @@ const resolveAvatarShorthandPropsCompat = (props: AvatarProps) => {
   }
 
   if (typeof badge === 'string') {
-    badge = { as: PresenceBadge, status: badge };
+    // TODO separate as an components https://github.com/microsoft/fluentui/pull/19763
+    badge = { as: (PresenceBadge as unknown) as 'div', status: badge };
   }
 
   if (image !== props.image || badge !== props.badge) {

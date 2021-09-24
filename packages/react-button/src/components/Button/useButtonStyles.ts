@@ -1,4 +1,3 @@
-import { mergeARIADisabled } from '@fluentui/react-aria';
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
@@ -15,6 +14,7 @@ export const buttonSpacing = {
 };
 
 const useRootStyles = makeStyles({
+  // Base styles
   base: theme => ({
     alignItems: 'center',
     display: 'inline-flex',
@@ -56,55 +56,14 @@ const useRootStyles = makeStyles({
       outline: 'none',
     },
   }),
-  small: theme => ({
-    // TODO: remove unsafe property: https://caniuse.com/?search=gap
-    gap: buttonSpacing.smaller,
-    padding: `0 ${buttonSpacing.medium}`,
 
-    height: '24px',
-    minWidth: '64px',
-
-    borderRadius: theme.global.borderRadius.small,
-
-    fontSize: theme.global.type.fontSizes.base[200],
-    fontWeight: theme.global.type.fontWeights.regular,
-    lineHeight: theme.global.type.lineHeights.base[200],
-  }),
-  medium: theme => ({
-    // TODO: remove unsafe property: https://caniuse.com/?search=gap
-    gap: buttonSpacing.small,
-    padding: `0 ${buttonSpacing.large}`,
-
-    height: '32px',
-    minWidth: '96px',
-
-    borderRadius: theme.global.borderRadius.medium,
-
-    fontSize: theme.global.type.fontSizes.base[300],
-    fontWeight: theme.global.type.fontWeights.semibold,
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  large: theme => ({
-    // TODO: remove unsafe property: https://caniuse.com/?search=gap
-    gap: buttonSpacing.small,
-    padding: `0 ${buttonSpacing.larger}`,
-
-    height: '40px',
-    minWidth: '96px',
-
-    borderRadius: theme.global.borderRadius.medium,
-
-    fontSize: theme.global.type.fontSizes.base[400],
-    fontWeight: theme.global.type.fontWeights.semibold,
-    lineHeight: theme.global.type.lineHeights.base[400],
-  }),
+  // Block styles
   block: {
     maxWidth: '100%',
     width: '100%',
   },
-  circular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
-  }),
+
+  // Appearance variations
   outline: theme => ({
     background: theme.alias.color.neutral.transparentBackground,
 
@@ -167,7 +126,63 @@ const useRootStyles = makeStyles({
       color: theme.alias.color.neutral.neutralForeground2BrandPressed,
     },
   }),
-  disabled: theme => ({
+
+  // Shape variations
+  circular: theme => ({
+    borderRadius: theme.global.borderRadius.circular,
+  }),
+  rounded: {
+    /* The borderRadius rounded styles are handled in the size variations */
+  },
+  square: theme => ({
+    borderRadius: theme.global.borderRadius.none,
+  }),
+
+  // Size variations
+  small: theme => ({
+    gap: buttonSpacing.smaller,
+    padding: `0 ${buttonSpacing.medium}`,
+
+    height: '24px',
+    minWidth: '64px',
+
+    borderRadius: theme.global.borderRadius.small,
+
+    fontSize: theme.global.type.fontSizes.base[200],
+    fontWeight: theme.global.type.fontWeights.regular,
+    lineHeight: theme.global.type.lineHeights.base[200],
+  }),
+  medium: theme => ({
+    gap: buttonSpacing.small,
+    padding: `0 ${buttonSpacing.large}`,
+
+    height: '32px',
+    minWidth: '96px',
+
+    borderRadius: theme.global.borderRadius.medium,
+
+    fontSize: theme.global.type.fontSizes.base[300],
+    fontWeight: theme.global.type.fontWeights.semibold,
+    lineHeight: theme.global.type.lineHeights.base[300],
+  }),
+  large: theme => ({
+    gap: buttonSpacing.small,
+    padding: `0 ${buttonSpacing.larger}`,
+
+    height: '40px',
+    minWidth: '96px',
+
+    borderRadius: theme.global.borderRadius.medium,
+
+    fontSize: theme.global.type.fontSizes.base[400],
+    fontWeight: theme.global.type.fontWeights.semibold,
+    lineHeight: theme.global.type.lineHeights.base[400],
+  }),
+});
+
+const useRootDisabledStyles = makeStyles({
+  // Base styles
+  base: theme => ({
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
     borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
@@ -190,7 +205,9 @@ const useRootStyles = makeStyles({
       cursor: 'not-allowed',
     },
   }),
-  disabledOutline: theme => ({
+
+  // Appearance variations
+  outline: theme => ({
     background: theme.alias.color.neutral.transparentBackground,
 
     ':hover': {
@@ -201,7 +218,7 @@ const useRootStyles = makeStyles({
       background: theme.alias.color.neutral.transparentBackgroundPressed,
     },
   }),
-  disabledPrimary: {
+  primary: {
     borderColor: 'transparent',
 
     ':hover': {
@@ -212,7 +229,7 @@ const useRootStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  disabledSubtle: {
+  subtle: {
     background: 'none',
     borderColor: 'transparent',
 
@@ -226,7 +243,7 @@ const useRootStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  disabledTransparent: {
+  transparent: {
     background: 'none',
     borderColor: 'transparent',
 
@@ -243,6 +260,7 @@ const useRootStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
+  // Base styles
   base: createFocusIndicatorStyleRule(theme => ({
     borderColor: 'transparent',
     boxShadow: `
@@ -251,16 +269,38 @@ const useRootFocusStyles = makeStyles({
     `,
     zIndex: 1,
   })),
-  circular: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.global.borderRadius.circular,
-  })),
+
+  // Primary styles
   primary: createFocusIndicatorStyleRule(theme => ({
     borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
     boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}`,
   })),
+
+  // Shape variations
+  circular: createFocusIndicatorStyleRule(theme => ({
+    borderRadius: theme.global.borderRadius.circular,
+  })),
+  rounded: {
+    /* The borderRadius rounded styles are handled in the size variations */
+  },
+  square: createFocusIndicatorStyleRule(theme => ({
+    borderRadius: theme.global.borderRadius.none,
+  })),
+
+  // Size variations
+  small: createFocusIndicatorStyleRule(theme => ({
+    borderRadius: theme.global.borderRadius.small,
+  })),
+  medium: createFocusIndicatorStyleRule(theme => ({
+    borderRadius: theme.global.borderRadius.medium,
+  })),
+  large: createFocusIndicatorStyleRule(theme => ({
+    borderRadius: theme.global.borderRadius.large,
+  })),
 });
 
 const useRootIconOnlyStyles = makeStyles({
+  // Size variations
   small: {
     padding: buttonSpacing.smaller,
 
@@ -282,11 +322,14 @@ const useRootIconOnlyStyles = makeStyles({
 });
 
 const useIconStyles = makeStyles({
+  // Base styles
   base: {
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
   },
+
+  // Size variations
   small: {
     fontSize: '20px',
     height: '20px',
@@ -306,35 +349,40 @@ const useIconStyles = makeStyles({
 
 export const useButtonStyles = (state: ButtonState): ButtonState => {
   const rootStyles = useRootStyles();
+  const rootDisabledStyles = useRootDisabledStyles();
   const rootFocusStyles = useRootFocusStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const disabled = mergeARIADisabled(state.root);
+  const { appearance, block, disabled, disabledFocusable, iconOnly, shape, size } = state;
 
   state.root.className = mergeClasses(
+    // Root styles
     rootStyles.base,
+    block && rootStyles.block,
+    appearance && rootStyles[appearance],
+    rootStyles[size],
+    rootStyles[shape],
+
+    // Disabled styles
+    (disabled || disabledFocusable) && rootDisabledStyles.base,
+    appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
+
+    // Focus styles
     rootFocusStyles.base,
-    rootStyles[state.size],
-    state.block && rootStyles.block,
-    state.circular && rootStyles.circular,
-    state.circular && rootFocusStyles.circular,
-    state.outline && rootStyles.outline,
-    state.primary && rootStyles.primary,
-    state.primary && rootFocusStyles.primary,
-    state.subtle && rootStyles.subtle,
-    state.transparent && rootStyles.transparent,
-    (disabled || state.disabledFocusable) && rootStyles.disabled,
-    (disabled || state.disabledFocusable) && state.outline && rootStyles.disabledOutline,
-    (disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
-    (disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
-    (disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
-    state.iconOnly && rootIconOnlyStyles[state.size],
+    appearance === 'primary' && rootFocusStyles.primary,
+    rootFocusStyles[size],
+    rootFocusStyles[shape],
+
+    // Icon-only styles
+    iconOnly && rootIconOnlyStyles[size],
+
+    // User provided class name
     state.root.className,
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+    state.icon.className = mergeClasses(iconStyles.base, iconStyles[size], state.icon.className);
   }
 
   return state;

@@ -1,6 +1,6 @@
 import type { ButtonProps, ButtonState } from '../Button/Button.types';
 
-export interface ToggleButtonCommons {
+export type ToggleButtonCommons = {
   /**
    * Defines the controlled checked state of the `ToggleButton`.
    * Mutually exclusive to `defaultChecked`.
@@ -9,7 +9,7 @@ export interface ToggleButtonCommons {
    * @default false
    */
   checked: boolean;
-}
+};
 
 export type ToggleButtonProps = ButtonProps &
   Partial<ToggleButtonCommons> & {
@@ -21,4 +21,4 @@ export type ToggleButtonProps = ButtonProps &
     defaultChecked?: boolean;
   };
 
-export interface ToggleButtonState extends ButtonState, ToggleButtonCommons {}
+export type ToggleButtonState = ButtonState & ToggleButtonCommons;

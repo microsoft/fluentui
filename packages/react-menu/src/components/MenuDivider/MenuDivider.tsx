@@ -6,7 +6,6 @@ import type { MenuDividerProps } from './MenuDivider.types';
 
 /**
  * Define a styled MenuDivider, using the `useMenuDivider` hook.
- * {@docCategory MenuDivider }
  */
 export const MenuDivider = React.forwardRef<HTMLDivElement, MenuDividerProps>((props, ref) => {
   const state = useMenuDivider(props, ref);

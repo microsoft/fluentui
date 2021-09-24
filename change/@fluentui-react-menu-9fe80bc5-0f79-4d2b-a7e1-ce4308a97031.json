@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "fix(Link): use `keyboard-keys` package",
-  "packageName": "@fluentui/react-link",
+  "comment": "fix(Menu): export useMenuPopoverStyles",
+  "packageName": "@fluentui/react-menu",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
 }

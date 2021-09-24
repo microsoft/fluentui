@@ -4,6 +4,7 @@ import { useButtonStyles } from '../Button/useButtonStyles';
 import type { MenuButtonState } from './MenuButton.types';
 
 const useMenuIconStyles = makeStyles({
+  // Size appearance
   small: {
     fontSize: '20px',
     height: '20px',

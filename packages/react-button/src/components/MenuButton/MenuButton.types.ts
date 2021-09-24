@@ -1,6 +1,6 @@
 import type { MenuTriggerChildProps } from '@fluentui/react-menu';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
+import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type MenuButtonSlots = ButtonSlots & {
   /**
@@ -9,10 +9,9 @@ export type MenuButtonSlots = ButtonSlots & {
   menuIcon?: IntrinsicShorthandProps<'span'>;
 };
 
-export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> &
-  Partial<MenuTriggerChildProps> &
-  ComponentProps<MenuButtonSlots>;
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> &
+  Partial<Omit<ButtonCommons, 'iconPosition'>> &
+  Partial<MenuTriggerChildProps>;
 
-export interface MenuButtonState
-  extends Omit<ButtonState, 'iconPosition' | 'components'>,
-    ComponentState<MenuButtonSlots> {}
+export type MenuButtonState = ComponentState<MenuButtonSlots> &
+  Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;

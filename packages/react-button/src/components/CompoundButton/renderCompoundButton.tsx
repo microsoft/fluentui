@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { compoundButtonSlots } from './useCompoundButton';
 import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
 
 /**
  * Renders a CompoundButton component by passing the state defined props to the appropriate slots.
  */
 export const renderCompoundButton = (state: CompoundButtonState) => {
-  const { slots, slotProps } = getSlots<CompoundButtonSlots>(state, compoundButtonSlots);
+  const { slots, slotProps } = getSlots<CompoundButtonSlots>(state, [
+    'root',
+    'contentContainer',
+    'icon',
+    'secondaryContent',
+  ]);
   const { iconOnly, iconPosition } = state;
 
   return (

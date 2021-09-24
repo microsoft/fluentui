@@ -7,7 +7,10 @@ import type { ToggleButtonProps } from './ToggleButton.types';
 /**
  * ToggleButtons are buttons that toggle between two defined states when triggered.
  */
-export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>((props, ref) => {
+export const ToggleButton: React.FunctionComponent<ToggleButtonProps> = React.forwardRef<
+  HTMLButtonElement,
+  ToggleButtonProps
+>((props, ref) => {
   const state = useToggleButton(props, ref);
 
   useToggleButtonStyles(state);

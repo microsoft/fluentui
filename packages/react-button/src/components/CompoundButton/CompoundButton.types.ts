@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
+import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type CompoundButtonSlots = ButtonSlots & {
   /**
@@ -8,11 +8,12 @@ export type CompoundButtonSlots = ButtonSlots & {
   secondaryContent?: IntrinsicShorthandProps<'span'>;
 
   /**
-   * Container that wraps the children and secondaryContent slots.
+   * Container that wraps the children and the secondaryContent slot.
    */
   contentContainer: IntrinsicShorthandProps<'span'>;
 };
 
-export type CompoundButtonProps = ButtonProps & ComponentProps<CompoundButtonSlots>;
+export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
 
-export interface CompoundButtonState extends ComponentState<CompoundButtonSlots>, Omit<ButtonState, 'components'> {}
+export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
+  Omit<ButtonState, keyof ButtonSlots | 'components'>;

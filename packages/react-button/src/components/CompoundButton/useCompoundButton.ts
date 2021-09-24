@@ -1,17 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
+import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 import { useButton } from '../Button/index';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const compoundButtonSlots: (keyof CompoundButtonSlots)[] = [
-  'contentContainer',
-  'icon',
-  'secondaryContent',
-  'root',
-];
 
 /**
  * Given user props, defines default props for the CompoundButton, calls useButtonState, and returns processed state.
@@ -23,7 +13,10 @@ export const useCompoundButton = (
   ref: React.Ref<HTMLButtonElement>,
 ): CompoundButtonState => {
   return {
+    // Button state
     ...useButton(props, ref),
+
+    // Slots definition
     components: {
       root: 'button',
       icon: 'span',
