@@ -20,7 +20,13 @@ import {
 import type { IProcessedStyleSet } from '../../Styling';
 import type { ILabelStyleProps, ILabelStyles } from '../../Label';
 import type { IStyleFunctionOrObject } from '../../Utilities';
-import type { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+import type {
+  ITextField,
+  ITextFieldInputIds,
+  ITextFieldProps,
+  ITextFieldStyleProps,
+  ITextFieldStyles,
+} from './TextField.types';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
@@ -214,6 +220,7 @@ export class TextFieldBase
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
       onRenderDescription = this._onRenderDescription,
+      onRenderInput = this._onRenderInput,
     } = this.props;
     const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
@@ -238,6 +245,11 @@ export class TextFieldBase
       hasRevealButton,
     }));
 
+    const inputIds: ITextFieldInputIds = {
+      textFieldId: this._id || this._fallbackId,
+      descriptionId: this._descriptionId,
+    };
+
     return (
       // eslint-disable-next-line deprecation/deprecation
       <div ref={this.props.elementRef} className={classNames.root}>
@@ -247,7 +259,16 @@ export class TextFieldBase
             {(prefix !== undefined || this.props.onRenderPrefix) && (
               <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
-            {multiline ? this._renderTextArea() : this._renderInput()}
+            {onRenderInput(
+              inputIds,
+              {
+                ...this.props,
+                className: classNames.field,
+                onBlur: this._onBlur,
+                onFocus: this._onFocus,
+              },
+              this._onRenderInput,
+            )}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
             {hasRevealButton && (
               // Explicitly set type="button" since the default button type within a form is "submit"
@@ -425,6 +446,11 @@ export class TextFieldBase
       );
     }
     return null;
+  };
+
+  private _onRenderInput = (textFieldProps: ITextFieldProps) => {
+    const { multiline } = textFieldProps;
+    return multiline ? this._renderTextArea() : this._renderInput();
   };
 
   private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {

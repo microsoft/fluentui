@@ -110,6 +110,15 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
+   * Custom renderer for input element
+   */
+  onRenderInput?: (
+    inputIds?: ITextFieldInputIds,
+    props?: ITextFieldProps,
+    defaultRender?: (props?: ITextFieldProps) => JSX.Element | null,
+  ) => JSX.Element | null;
+
+  /**
    * Prefix displayed before the text field contents. This is not included in the value.
    * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
@@ -270,6 +279,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * password button for password inputs (Edge, IE).
    */
   revealPasswordAriaLabel?: string;
+}
+
+/**
+ * Relevant TextField ids for custom onRenderInput renderer to consume.
+ */
+export interface ITextFieldInputIds {
+  textFieldId: string;
+  descriptionId: string;
 }
 
 /**

@@ -7,12 +7,11 @@ import {
   css,
   format,
   getPropsWithDefaults,
-  DelayedRender,
 } from '@fluentui/utilities';
 import { Calendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { TextField } from '../../TextField';
+import { ITextFieldInputIds, TextField } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
 import { defaultDatePickerStrings } from './defaults';
@@ -20,8 +19,6 @@ import type { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from 
 import type { IRenderFunction } from '@fluentui/utilities';
 import type { ICalendar } from '../../Calendar';
 import type { ITextField, ITextFieldProps } from '../../TextField';
-import { Icon } from '../../Icon';
-import { Label } from '../../Label';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -238,8 +235,6 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const id = useId('DatePicker', props.id);
   const calloutId = useId('DatePicker-Callout');
-  const labelId = useId('DatePicker-Label');
-  const descriptionId = useId('DatePicker-Description');
 
   const calendar = React.useRef<ICalendar>(null);
   const datePickerDiv = React.useRef<HTMLDivElement>(null);
@@ -394,65 +389,6 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     }
   };
 
-  const onRenderReadOnlyTextField = (): React.ReactElement<React.ReactHTMLElement<HTMLDivElement>> => {
-    const divProps =
-      props.textField && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props.textField, divProperties);
-    const isDescriptionAvailable = props.textField?.description;
-
-    return (
-      <>
-        <div className={classNames.readOnlyTextfieldWrapper}>
-          {label && (
-            <Label required={isRequired} htmlFor={textFieldId} disabled={disabled} id={labelId}>
-              {label}
-            </Label>
-          )}
-          <div
-            data-is-focusable={!disabled}
-            data-ktp-target={true}
-            role="combobox"
-            id={textFieldId}
-            tabIndex={tabIndex ?? 0}
-            className={classNames.readOnlyTextfieldGroup}
-            aria-expanded={isCalendarShown}
-            aria-label={ariaLabel}
-            aria-haspopup="dialog"
-            aria-controls={isCalendarShown ? calloutId : undefined}
-            aria-describedby={isDescriptionAvailable ? descriptionId : props['aria-describedby']}
-            aria-invalid={!!errorMessage}
-            onKeyDown={onTextFieldKeyDown}
-            onClick={onTextFieldClick}
-            {...divProps}
-          >
-            <span className={classNames.readOnlyTextfield}>{formattedDate || placeholder} </span>
-            <span className={classNames.readOnlyIcon}>
-              <Icon
-                {...{
-                  iconName: 'Calendar',
-                  ...iconProps,
-                  className: css(classNames.icon, iconProps && iconProps.className),
-                  onClick: onIconClick,
-                }}
-              />
-            </span>
-          </div>
-        </div>
-        <span id={descriptionId}>
-          {props.textField && renderTextfieldDescription(props.textField, onRenderDescription)}
-          {errorMessage && (
-            <div role="alert">
-              <DelayedRender>
-                <p className={classNames.readOnlyTextfieldErrorMessage}>
-                  <span data-automation-id="error-message">{errorMessage}</span>
-                </p>
-              </DelayedRender>
-            </div>
-          )}
-        </span>
-      </>
-    );
-  };
-
   const renderTextfieldDescription = (inputProps: ITextFieldProps, defaultRender: IRenderFunction<ITextFieldProps>) => {
     return (
       <>
@@ -464,11 +400,23 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     );
   };
 
-  const onRenderDescription = (inputProps: ITextFieldProps): JSX.Element | null => {
-    if (inputProps.description) {
-      return <span className={classNames.readOnlyTextfieldDescription}>{inputProps.description}</span>;
-    }
-    return null;
+  const onRenderReadOnlyInput = (inputIds: ITextFieldInputIds, inputProps: ITextFieldProps): JSX.Element | null => {
+    const { textFieldId, descriptionId } = inputIds;
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(inputProps, divProperties);
+    const isDescriptionAvailable = inputProps.description;
+
+    return (
+      <div
+        {...divProps}
+        id={textFieldId}
+        tabIndex={tabIndex ?? 0}
+        aria-label={ariaLabel}
+        aria-describedby={isDescriptionAvailable ? descriptionId : inputProps['aria-describedby']}
+        aria-invalid={!!errorMessage}
+      >
+        <span className={classNames.readOnlyTextfield}> {formattedDate || placeholder}</span>
+      </div>
+    );
   };
 
   /**
@@ -495,11 +443,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     disabled,
     label: !!label,
     isDatePickerShown: isCalendarShown,
-    hasErrorMessage: !!errorMessage,
-    underlined: underlined,
-    required: isRequired,
-    borderless: borderless,
-    onlyPlaceHolder: !formattedDate,
+    readOnlyPlaceHolder: !formattedDate,
   });
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
@@ -511,9 +455,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
       <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
-        {readOnly ? (
-          onRenderReadOnlyTextField()
-        ) : (
+        {
           <TextField
             role="combobox"
             label={label}
@@ -552,8 +494,9 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
             onClick={onTextFieldClick}
             // eslint-disable-next-line react/jsx-no-bind
             onChange={onTextFieldChanged}
+            onRenderInput={readOnly ? onRenderReadOnlyInput : undefined}
           />
-        )}
+        }
       </div>
       {isCalendarShown && (
         <Callout
