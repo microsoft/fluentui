@@ -8515,6 +8515,7 @@ export interface IWithResponsiveModeState {
 export interface IWithViewportProps {
     disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
+    waitForViewport?: boolean;
 }
 
 // @public (undocumented)
