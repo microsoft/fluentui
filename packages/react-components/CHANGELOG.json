@@ -2,6 +2,95 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 24 Sep 2021 09:17:17 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.114",
+      "version": "9.0.0-alpha.114",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "comment": "Use updated sizes from BadgeProps",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Update BadgeProps for consistency",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-components",
+            "comment": "Added Text to react-components",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-image",
+            "comment": "Added shadow prop",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "comment": "Remove workaround for as prop with getNativeElementProps",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "comment": "fix(Menu): export useMenuPopoverStyles",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "fix(Popover): Remove leftover defaultProps and fix trigger props merge",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "comment": "Updated PopoverProps for consistency",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "comment": "Remove workaround for as prop with getNativeElementProps",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Add as prop to properties allowed with getNativeElementProps",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          }
+        ],
+        "none": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-checkbox",
+            "comment": "refactor: remove mergeProps usage",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "czearing@outlook.com",
+            "package": "@fluentui/react-slider",
+            "comment": "Adding accessibility tests to the Slider.",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "czearing@outlook.com",
+            "package": "@fluentui/react-slider",
+            "comment": "Updating the thumb's disabled border styling.",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Sep 2021 08:21:31 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.113",
       "version": "9.0.0-alpha.113",

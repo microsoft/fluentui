@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Refactor Avatar to remove mergeProps",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

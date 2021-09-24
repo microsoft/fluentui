@@ -336,9 +336,7 @@ const useColorStyles = makeStyles({
 });
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
-  const { size, shape, active, activeAppearance } = state;
-  // 'colorful' should have been replaced with a color name by useAvatar, but if not default to darkRed
-  const color = state.color === 'colorful' ? 'darkRed' : state.color;
+  const { size, shape, active, activeAppearance, color } = state;
 
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
@@ -417,7 +415,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     }
   }
 
-  state.className = mergeClasses(...rootClasses, state.className);
+  state.root.className = mergeClasses(...rootClasses, state.root.className);
 
   if (state.badge) {
     state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);

@@ -40,21 +40,3 @@ export const Default = (props: PopoverProps) => (
     </PopoverSurface>
   </Popover>
 );
-
-Default.argTypes = {
-  positioning: {
-    control: {
-      disable: true,
-    },
-  },
-  defaultOpen: {
-    control: {
-      disable: true,
-    },
-  },
-  mountNode: {
-    control: {
-      disable: true,
-    },
-  },
-};
