@@ -5,6 +5,7 @@ import {
   IntrinsicShorthandProps,
   ObjectShorthandProps,
 } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
 
 /**
  * TODO:
@@ -53,7 +54,7 @@ export interface CheckboxOnChangeData {
 }
 
 export type CheckboxSlots = {
-  root: IntrinsicShorthandProps<'span'> | ObjectShorthandProps<React.HTMLAttributes<HTMLLabelElement>>;
+  root: ObjectShorthandProps<LabelProps | React.HTMLAttributes<HTMLSpanElement>>;
   /**
    * Hidden input that handles the checkbox's functionality.
    */
