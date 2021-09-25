@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Adding useCapture and useEvent.",
+  "comment": "Adding usePointerCapture and useEvent.",
   "packageName": "@fluentui/react-utilities",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch"

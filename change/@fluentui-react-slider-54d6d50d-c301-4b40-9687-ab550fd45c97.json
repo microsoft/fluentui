@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Implementing useCapture and useEvent.",
+  "comment": "Adopting usePointerCapture and useEvent.",
   "packageName": "@fluentui/react-slider",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch"

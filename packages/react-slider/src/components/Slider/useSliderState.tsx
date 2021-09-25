@@ -3,7 +3,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   clamp,
   useBoolean,
-  useCapture,
+  usePointerCapture,
   useControllableState,
   useEvent,
   useEventCallback,
@@ -21,7 +21,6 @@ import type { SliderState } from './Slider.types';
 
 type EventData = {
   element?: HTMLElement;
-  disabled: boolean;
   pointerId: number;
 };
 
@@ -53,7 +52,6 @@ export const useSliderState = (state: SliderState) => {
   });
   const [eventData, setEventData] = React.useState<EventData>({
     element: undefined,
-    disabled: true,
     pointerId: 0,
   });
 
@@ -108,12 +106,7 @@ export const useSliderState = (state: SliderState) => {
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       showStepAnimation();
-      setEventData(prevState => ({
-        ...prevState,
-        disabled: true,
-        element: ev.target as HTMLElement,
-        pointerId: ev.pointerId,
-      }));
+      setEventData({ element: undefined, pointerId: ev.pointerId });
       // When undefined, the position fallbacks to the currentValue state.
       setRenderedPosition(undefined);
       inputRef.current!.focus();
@@ -123,12 +116,9 @@ export const useSliderState = (state: SliderState) => {
 
   const onPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      const { pointerId } = ev;
-      const target = ev.target as HTMLElement;
-
       hideStepAnimation();
       onPointerDownCallback?.(ev);
-      setEventData({ element: target, disabled: false, pointerId: pointerId });
+      setEventData({ element: ev.currentTarget, pointerId: ev.pointerId });
       onPointerMove(ev);
     },
     [hideStepAnimation, onPointerDownCallback, onPointerMove],
@@ -160,27 +150,9 @@ export const useSliderState = (state: SliderState) => {
     return '99px';
   };
 
-  useEvent({
-    element: eventData.element,
-    type: 'pointermove',
-    useCapture: true,
-    callback: onPointerMove,
-    disabled: eventData.disabled,
-  });
-
-  useEvent({
-    element: eventData.element,
-    type: 'pointerup',
-    useCapture: true,
-    callback: onPointerUp,
-    disabled: eventData.disabled,
-  });
-
-  useCapture({
-    element: eventData.element,
-    disabled: eventData.disabled,
-    pointerId: eventData.pointerId,
-  });
+  useEvent(eventData.element, 'pointermove', onPointerMove);
+  useEvent(eventData.element, 'pointerup', onPointerUp);
+  usePointerCapture(eventData.element, eventData.pointerId);
 
   // TODO: Awaiting animation time from design spec.
   const animationTime = '0.1s';

@@ -294,11 +294,6 @@ export type UseBooleanCallbacks = {
     toggle: () => void;
 };
 
-// Warning: (ae-forgotten-export) The symbol "UseCapture" needs to be exported by the entry point index.d.ts
-//
-// @public
-export const useCapture: ({ element, disabled, pointerId }: UseCapture) => void;
-
 // @public
 export function useConst<T>(initialValue: T | (() => T)): T;
 
@@ -320,10 +315,8 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 // @public (undocumented)
 export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
 
-// Warning: (ae-forgotten-export) The symbol "UseEvent" needs to be exported by the entry point index.d.ts
-//
 // @public
-export const useEvent: ({ element, type, callback, useCapture, disabled }: UseEvent) => void;
+export const useEvent: <T>(element: Element | Window | Document | undefined, type: string, callback: (ev: T) => void, useCapture?: boolean | undefined) => void;
 
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
@@ -363,6 +356,9 @@ export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => v
 
 // @public
 export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
+
+// @public
+export const usePointerCapture: (element: HTMLElement | undefined, pointerId: number) => void;
 
 // @public (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;

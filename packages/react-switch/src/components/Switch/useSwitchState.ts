@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   clamp,
   useBoolean,
-  useCapture,
+  usePointerCapture,
   useControllableState,
   useEvent,
   useEventCallback,
@@ -25,7 +25,6 @@ type SwitchInternalState = {
 
 type EventData = {
   element?: HTMLElement;
-  disabled: boolean;
   pointerId: number;
 };
 
@@ -48,7 +47,6 @@ export const useSwitchState = (state: SwitchState) => {
   });
   const [eventData, setEventData] = React.useState<EventData>({
     element: undefined,
-    disabled: true,
     pointerId: 0,
   });
   const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(true);
@@ -98,7 +96,7 @@ export const useSwitchState = (state: SwitchState) => {
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       inputRef.current!.focus();
 
-      setEventData(prevState => ({ ...prevState, disabled: true }));
+      setEventData({ element: undefined, pointerId: ev.pointerId });
 
       if (internalState.current.thumbIsDragging) {
         const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
@@ -124,12 +122,7 @@ export const useSwitchState = (state: SwitchState) => {
       showThumbAnimation();
       internalState.current.thumbIsDragging = false;
 
-      setEventData({
-        element: target,
-        disabled: false,
-        pointerId: pointerId,
-      });
-
+      setEventData({ element: target, pointerId: pointerId });
       onPointerDownCallback?.(ev);
     },
     [onPointerDownCallback, showThumbAnimation],
@@ -145,27 +138,9 @@ export const useSwitchState = (state: SwitchState) => {
     [onKeyDownCallback, setChecked],
   );
 
-  useEvent({
-    element: eventData.element,
-    type: 'pointermove',
-    useCapture: true,
-    callback: onPointerMove,
-    disabled: eventData.disabled,
-  });
-
-  useEvent({
-    element: eventData.element,
-    type: 'pointerup',
-    useCapture: true,
-    callback: onPointerUp,
-    disabled: eventData.disabled,
-  });
-
-  useCapture({
-    element: eventData.element,
-    disabled: eventData.disabled,
-    pointerId: eventData.pointerId,
-  });
+  useEvent(eventData.element, 'pointermove', onPointerMove);
+  useEvent(eventData.element, 'pointerup', onPointerUp);
+  usePointerCapture(eventData.element, eventData.pointerId);
 
   const currentPosition = renderedPosition !== undefined ? renderedPosition : currentValue ? 100 : 0;
 

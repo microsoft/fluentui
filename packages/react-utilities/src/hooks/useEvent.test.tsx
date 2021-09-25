@@ -2,33 +2,23 @@ import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { useEvent } from './useEvent';
 
-type EventData = {
-  element?: HTMLElement;
-  disabled: boolean;
-};
-
 describe('useEvent', () => {
   it('adds an event listener to the specified element', () => {
     const elementRef = React.createRef<HTMLDivElement>();
     const onPointerMoveChange = jest.fn();
 
     const TestComponent = () => {
-      const [eventData, setEventData] = React.useState<EventData>({ element: undefined, disabled: true });
+      const [activeElement, setActiveElement] = React.useState<HTMLElement | undefined>(undefined);
 
       const onPointerMove = (ev: React.PointerEvent<HTMLElement>) => {
         onPointerMoveChange();
       };
 
       const onPointerDown = (ev: React.PointerEvent<HTMLElement>) => {
-        setEventData({ element: ev.currentTarget, disabled: false });
+        setActiveElement(ev.currentTarget);
       };
 
-      useEvent({
-        element: eventData.element,
-        type: 'pointermove',
-        callback: onPointerMove,
-        disabled: eventData.disabled,
-      });
+      useEvent(activeElement, 'pointermove', onPointerMove);
 
       return <div ref={elementRef} onPointerDown={onPointerDown} />;
     };
@@ -48,37 +38,23 @@ describe('useEvent', () => {
     const onPointerMoveChange = jest.fn();
 
     const TestComponent = () => {
-      const [eventData, setEventData] = React.useState<EventData>({ element: undefined, disabled: true });
+      const [activeElement, setActiveElement] = React.useState<HTMLElement | undefined>(undefined);
 
       const onPointerMove = (ev: React.PointerEvent<HTMLElement>) => {
         onPointerMoveChange();
       };
 
       const onPointerUp = (ev: React.PointerEvent<HTMLElement>) => {
-        setEventData(prevState => ({
-          ...prevState,
-          disabled: true,
-        }));
+        setActiveElement(undefined);
         onPointerUpChange();
       };
 
       const onPointerDown = (ev: React.PointerEvent<HTMLElement>) => {
-        setEventData({ element: ev.currentTarget, disabled: false });
+        setActiveElement(ev.currentTarget);
       };
 
-      useEvent({
-        element: eventData.element,
-        type: 'pointermove',
-        callback: onPointerMove,
-        disabled: eventData.disabled,
-      });
-
-      useEvent({
-        element: eventData.element,
-        type: 'pointerup',
-        callback: onPointerUp,
-        disabled: eventData.disabled,
-      });
+      useEvent(activeElement, 'pointermove', onPointerMove);
+      useEvent(activeElement, 'pointerup', onPointerUp);
 
       return <div ref={elementRef} onPointerDown={onPointerDown} />;
     };
@@ -106,28 +82,17 @@ describe('useEvent', () => {
     const onPointerMoveChange = jest.fn();
 
     const TestComponent = () => {
-      const [eventData, setEventData] = React.useState<EventData>({
-        element: undefined,
-        disabled: true,
-      });
+      const [activeElement, setActiveElement] = React.useState<HTMLElement | undefined>(undefined);
 
       const onPointerMove = (ev: React.PointerEvent<HTMLElement>) => {
         onPointerMoveChange();
       };
 
       const onPointerDown = (ev: React.PointerEvent<HTMLElement>) => {
-        setEventData({
-          element: ev.currentTarget,
-          disabled: false,
-        });
+        setActiveElement(ev.currentTarget);
       };
 
-      useEvent({
-        element: eventData.element,
-        type: 'pointermove',
-        callback: onPointerMove,
-        disabled: eventData.disabled,
-      });
+      useEvent(activeElement, 'pointermove', onPointerMove);
 
       return <div data-testid="root" onPointerDown={onPointerDown} />;
     };
