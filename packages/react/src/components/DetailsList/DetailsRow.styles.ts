@@ -291,7 +291,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     },
 
     compact && cellCompactStyles,
-    disabled && { opacity: 0.4 },
+    disabled && { opacity: 0.5 },
   ];
 
   return {
