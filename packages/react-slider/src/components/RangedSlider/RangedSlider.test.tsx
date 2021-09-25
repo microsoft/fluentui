@@ -378,7 +378,9 @@ describe('RangedSlider', () => {
 
     expect(document.activeElement).toEqual(document.body);
     sliderRef?.current?.focus();
+    expect(document.activeElement).toEqual(document.body);
     lowerInputRef?.current?.focus();
+    expect(document.activeElement).toEqual(document.body);
     upperInputRef?.current?.focus();
     expect(document.activeElement).toEqual(document.body);
   });

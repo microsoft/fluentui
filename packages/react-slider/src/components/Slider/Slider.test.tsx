@@ -478,6 +478,7 @@ describe('Slider', () => {
 
       expect(document.activeElement).toEqual(document.body);
       sliderRef?.current?.focus();
+      expect(document.activeElement).toEqual(document.body);
       inputRef?.current?.focus();
       expect(document.activeElement).toEqual(document.body);
     });
