@@ -34,7 +34,7 @@ const useInputStyles = makeStyles({
 
   lowerInputFocusIndicator: createFocusIndicatorStyleRule(
     theme => ({
-      '& + .ms-ranged-slider-lower': {
+      '& + .ms-Slider-thumb-lower': {
         ':before': {
           outline: 'none',
           boxSizing: 'border-box',
@@ -47,7 +47,7 @@ const useInputStyles = makeStyles({
 
   upperInputFocusIndicator: createFocusIndicatorStyleRule(
     theme => ({
-      '& + .ms-ranged-slider-upper': {
+      '& + .ms-Slider-thumb-upper': {
         ':before': {
           outline: 'none',
           boxSizing: 'border-box',
