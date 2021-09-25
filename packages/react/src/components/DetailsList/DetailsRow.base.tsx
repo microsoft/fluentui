@@ -206,6 +206,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       cellStyleProps,
       group,
       focusZoneProps,
+      disabled,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -234,6 +235,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         compact,
         enableUpdateAnimations,
         cellStyleProps,
+        disabled,
       }),
     };
 
@@ -290,6 +292,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         componentRef={this._focusZone}
         role={role}
         aria-label={ariaLabel}
+        aria-disabled={disabled}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
