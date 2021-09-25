@@ -84,7 +84,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
   public render(): JSX.Element {
     return (
       <div
-        className="testRoot"
+        className="rootElement"
         style={{
           height: '80vh',
           position: 'relative',
@@ -132,12 +132,12 @@ storiesOf('(Dev-Only) Suggestions', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testRoot' })
+        .snapshot('default', { cropTo: '.rootElement' })
         .hover('#province-fake-long-province')
-        .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
+        .snapshot('Hovering over a wide suggestion element', { cropTo: '.rootElement' })
         .hover('#sug-0+.ms-Suggestions-closeButton')
         .snapshot('Hovering over the X button on a wide suggestion element', {
-          cropTo: '.testRoot',
+          cropTo: '.rootElement',
         })
         .end()}
     >
