@@ -13,7 +13,6 @@ export * from './useMount';
 export * from './useOnClickOutside';
 export * from './useOnScrollOutside';
 export * from './usePointerCapture';
-export * from './usePointerCapture';
 export * from './usePrevious';
 export * from './useTimeout';
 export * from './useUnmount';

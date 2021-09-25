@@ -2,11 +2,11 @@ import * as React from 'react';
 import {
   clamp,
   useBoolean,
-  usePointerCapture,
   useControllableState,
   useEvent,
   useEventCallback,
   useMergedRefs,
+  usePointerCapture,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SwitchState } from './Switch.types';
