@@ -34,7 +34,7 @@ const useInputStyles = makeStyles({
 
   lowerInputFocusIndicator: createFocusIndicatorStyleRule(
     theme => ({
-      '& + .lower': {
+      [`& + .${thumbClassName + '-lower'}`]: {
         ':before': {
           outline: 'none',
           boxSizing: 'border-box',
@@ -47,7 +47,7 @@ const useInputStyles = makeStyles({
 
   upperInputFocusIndicator: createFocusIndicatorStyleRule(
     theme => ({
-      '& + .upper': {
+      [`& + .${thumbClassName + '-upper'}`]: {
         ':before': {
           outline: 'none',
           boxSizing: 'border-box',
