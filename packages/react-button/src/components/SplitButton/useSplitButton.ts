@@ -12,12 +12,12 @@ import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 export const useSplitButton = (props: SplitButtonProps, ref: React.Ref<HTMLElement>): SplitButtonState => {
   const {
     appearance,
-    block,
+    block = false,
     children,
-    disabled,
-    disabledFocusable,
+    disabled = false,
+    disabledFocusable = false,
     icon,
-    iconPosition,
+    iconPosition = 'before',
     menuButton,
     primaryActionButton,
     shape = 'rounded',
@@ -52,6 +52,7 @@ export const useSplitButton = (props: SplitButtonProps, ref: React.Ref<HTMLEleme
     block,
     disabled,
     disabledFocusable,
+    iconPosition,
     shape,
     size,
 

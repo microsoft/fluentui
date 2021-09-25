@@ -11,11 +11,11 @@ import type { ButtonProps, ButtonState } from './Button.types';
 export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>): ButtonState => {
   const {
     appearance,
-    block,
-    disabled,
-    disabledFocusable,
+    block = false,
+    disabled = false,
+    disabledFocusable = false,
     icon,
-    iconPosition,
+    iconPosition = 'before',
     shape = 'rounded',
     size = 'medium',
   } = props;

@@ -18,10 +18,10 @@ export const Button: React_2.ForwardRefExoticComponent<ButtonProps & React_2.Ref
 // @public (undocumented)
 export type ButtonCommons = {
     appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
-    block?: boolean;
-    disabledFocusable?: boolean;
-    disabled?: boolean;
-    iconPosition?: 'before' | 'after';
+    block: boolean;
+    disabledFocusable: boolean;
+    disabled: boolean;
+    iconPosition: 'before' | 'after';
     shape: 'rounded' | 'circular' | 'square';
     size: 'small' | 'medium' | 'large';
 };

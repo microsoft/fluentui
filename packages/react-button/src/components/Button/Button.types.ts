@@ -27,7 +27,7 @@ export type ButtonCommons = {
    * A button can fill the width of its container.
    * @default false
    */
-  block?: boolean;
+  block: boolean;
 
   /**
    * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
@@ -35,19 +35,19 @@ export type ButtonCommons = {
    * pattern is when the disabled button is in a menu or a commandbar and is seldom used for standalone buttons.
    * @default false
    */
-  disabledFocusable?: boolean;
+  disabledFocusable: boolean;
 
   /**
    * A button can show that it cannot be interacted with.
    * @default false
    */
-  disabled?: boolean;
+  disabled: boolean;
 
   /**
    * A button can format its icon to appear before or after its content.
    * @default 'before'
    */
-  iconPosition?: 'before' | 'after';
+  iconPosition: 'before' | 'after';
 
   /**
    * A button can be rounded, circular, or square.
