@@ -3,11 +3,11 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   clamp,
   useBoolean,
-  usePointerCapture,
   useControllableState,
   useEvent,
   useEventCallback,
   useMergedRefs,
+  usePointerCapture,
 } from '@fluentui/react-utilities';
 import {
   calculateSteps,
