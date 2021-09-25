@@ -1,0 +1,323 @@
+<style>
+  .sbdocs.sbdocs-content {
+    width: 672px;
+  }
+
+  h1.sbdocs-title {
+    font-family: Segoe UI;
+    font-size: 56px;
+    line-height: 80px;
+    /* identical to box height, or 143% */
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-top: 49px;
+    margin-bottom: 32px;
+  }
+
+  .sbdocs.sbdocs-p {
+    font-family: Segoe UI;
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: #000000;
+  }
+
+  .sbdocs.sbdocs-wrapper {
+    padding: 0;
+    background: white;
+  }
+
+  .sbdocs.sbdocs-img.featured-image {
+    max-width: 100%;
+    margin: 48px 0;
+    display: block;
+  }
+
+  .sbdocs.sbdocs-wrapper {
+  }
+
+  .sbdocs.sbdocs-img {
+    border-radius: 24px;
+  }
+
+  .sbdocs .sbdocs-hr {
+    margin: 48px 0;
+    height: 0;
+    border-top: 1px solid #ebebeb;
+  }
+
+  .sbdocs .sbdocs-h2 {
+    font-family: Segoe UI;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.04em;
+    color: black;
+    border-top: 1px solid #ebebeb;
+    border-bottom: none;
+    margin: 48px 0 15px 0;
+    padding: 48px 0 0 0;
+  }
+
+  .sbdocs .sbdocs-h3 {
+    font-family: Segoe UI;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+    margin: 15px 0 13px 0;
+    letter-spacing: -0.01em;
+    color: #000000;
+  }
+
+  .sbdocs .sbdocs-li {
+    font-family: Segoe UI;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+
+    /* Neutrals / Web / Gray 200 #1B1A19 */
+    color: #1b1a19;
+    margin-top: 8px;
+  }
+
+  .sbdocs .sbdocs-li::marker {
+    color: #bdbdbd;
+    font-size: 10px;
+    line-height: 50%;
+  }
+
+  .sbdocs .sbdocs-ul {
+    margin: 13px 0;
+  }
+
+  .sbdocs .sbdocs-preview {
+    border-radius: 24px;
+    background: #fafafa;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .sbdocs-preview > .os-host {
+    display: none;
+  }
+
+  .sbdocs .sbdocs-preview {
+  }
+
+  div[class^='fluent-provider'] {
+    background: #faf9f8;
+  }
+
+  .sb-docs .docblock-code-toggle {
+    font-family: Segoe UI;
+    font-size: 14px;
+    line-height: 150%;
+    /* identical to box height, or 21px */
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: black;
+  }
+
+  .sbdocs .docblock-code-toggle {
+    font-family: Segoe UI;
+    font-size: 14px;
+    line-height: 150%;
+    /* identical to box height, or 21px */
+    text-align: center;
+    letter-spacing: -0.01em;
+    background: #f8f8f8;
+    border: none;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .sbdocs .docblock-argstable tbody {
+    box-shadow: none;
+  }
+
+  .sbdocs .docblock-argstable-head th {
+    letter-spacing: -0.01em;
+    color: black;
+    font-family: Segoe UI;
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 600;
+  }
+
+  thead.docblock-argstable-head {
+    border-bottom: 1px solid #edebe9;
+  }
+
+  .sbdocs .docblock-argstable tbody tr {
+    border: none;
+  }
+
+  th {
+  }
+
+  .sbdocs table.docblock-argstable tbody.docblock-argstable-body td,
+  .sbdocs .docblock-argstable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+  }
+
+  .sbdocs .docblock-argstable tbody tr td:nth-child(1) span {
+    font-weight: normal;
+    font-family: Segoe UI;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: #616161;
+  }
+
+  .sbdocs .docblock-argstable tbody tr:nth-child(even) td {
+    background: #fafafa;
+  }
+
+  .sbdocs .docblock-argstable tbody tr td {
+    vertical-align: middle;
+  }
+
+  span + .sbdocs .docblock-argstable tbody tr td button {
+    color: #0078d4;
+    color: red;
+  }
+
+  .docs-story + div {
+    background: #11100f;
+  }
+
+  .sbdocs .sbdocs-content > div:last-child {
+    margin-bottom: 96px;
+  }
+
+  .sbdocs .docs-story > div {
+    padding: 0;
+  }
+
+  .sbdocs .docs-story > div > div[scale] {
+    padding: 48px 24px;
+  }
+
+  .sbdocs .sbdocs-p .sbdocs-code {
+    border: none;
+    background: #f0f0f0;
+    border-radius: 4px;
+    letter-spacing: -0.2px;
+    color: black;
+    font-family: Menlo, monospace;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    padding: 4px 8px;
+    margin: 0;
+  }
+
+  .sbdocs .docs-story > div:last-child {
+    right: 31px;
+    border-radius: 24px;
+  }
+
+  .sbdocs .sbdocs-preview {
+  }
+
+  .docs-story + div > div:last-child {
+    background: #000000;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px 5px 0px 0px;
+    right: 31px;
+  }
+
+  .docs-story + div > div:last-child > button {
+    color: white;
+    font-family: Segoe UI;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+
+  .sbdocs a.sbdocs-a {
+    color: #0078d4;
+  }
+
+  .docblock-argstable-body > tr > td > div > div > button {
+    color: #0078d4;
+  }
+
+  .sbdocs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span {
+    background: #f0f0f0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-family: Menlo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    color: black;
+  }
+
+  .sbdocs .docblock-argstable tbody tr td:nth-child(3) > div > span {
+    background: #f0f0f0;
+    border-radius: 4px;
+    font-family: Menlo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.2px;
+    color: black;
+  }
+
+  p {
+  }
+
+  .docblock-argstable-body td > div > p {
+    font-family: Segoe UI;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+  }
+
+  .sbdocs .docblock-argstable-body tr td code {
+    background: #f0f0f0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-family: Menlo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    color: black;
+  }
+
+  .sbdocs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span {
+    background: #f0f0f0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-family: Menlo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    color: black;
+  }
+
+  .sbdocs .docblock-argstable-body > tr > td:nth-child(2) p {
+    font-family: Segoe UI;
+    font-size: 16px;
+    line-height: 150%;
+    color: black;
+    letter-spacing: -0.01em;
+  }
+
+  .sbdocs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > span {
+    font-family: Segoe UI;
+    font-size: 16px;
+    line-height: 150%;
+    color: black;
+    letter-spacing: -0.01em;
+  }
+</style>
