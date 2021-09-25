@@ -15,8 +15,8 @@ import {
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';
 
-export const lowerThumbClassName = mergeClasses(thumbClassName, `${'ms-Slider-thumb-lower'}`);
-export const upperThumbClassName = mergeClasses(thumbClassName, `${'ms-Slider-thumb-upper'}`);
+export const lowerThumbClassName = mergeClasses(thumbClassName, `${thumbClassName + '-lower'}`);
+export const upperThumbClassName = mergeClasses(thumbClassName, `${thumbClassName + '-upper'}`);
 
 /**
  * Styles for the Input slot
@@ -34,6 +34,7 @@ const useInputStyles = makeStyles({
 
   lowerInputFocusIndicator: createFocusIndicatorStyleRule(
     theme => ({
+      // TODO: Update this to [`& + .${lowerThumbClassName}`]
       '& + .ms-Slider-thumb-lower': {
         ':before': {
           outline: 'none',
@@ -47,6 +48,7 @@ const useInputStyles = makeStyles({
 
   upperInputFocusIndicator: createFocusIndicatorStyleRule(
     theme => ({
+      // TODO: Update this to [`& + .${upperThumbClassName}`]
       '& + .ms-Slider-thumb-upper': {
         ':before': {
           outline: 'none',
