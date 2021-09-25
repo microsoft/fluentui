@@ -142,7 +142,7 @@ storiesOf('RangedSlider Converged', module)
       <RangedSlider
         className="test-class"
         max={10}
-        defaultValue={[3, 9]}
+        defaultValue={[0, 10]}
         marks={[
           1,
           {
@@ -166,7 +166,7 @@ storiesOf('RangedSlider Converged', module)
         className="test-class"
         vertical
         max={10}
-        defaultValue={[3, 9]}
+        defaultValue={[0, 10]}
         marks={[
           1,
           {
