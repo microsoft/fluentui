@@ -229,27 +229,38 @@
   #docs-root code,
   #docs-root .docblock-argstable tbody tr td:nth-child(3) > div > span,
   #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
-  #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span {
-    background: #f0f0f0;
-    border-radius: 4px;
-    padding: 4px 8px;
-    margin: 0 3px 3px 0;
+  #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
+  #docs-root .css-16d4d7t {
     font-family: Menlo, monospace;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 150%;
-    color: black;
     letter-spacing: -0.2px;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
 
-  #docs-root code {
-    margin: 0 0 3px 0;
+  #docs-root code.sbdocs-code,
+  #docs-root .sbdocs-p code,
+  #docs-root .sbdocs-li code,
+  #docs-root .docblock-argstable code,
+  #docs-root .docblock-argstable tbody tr td:nth-child(3) > div > span,
+  #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
+  #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
+  #docs-root .css-16d4d7t {
+    background: #f0f0f0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 0 3px 3px 0;
+    color: black;
   }
 
-  #docs-root .prismjs code {
+  #docs-root code {
+    margin: 1px 0 1px 0;
+  }
+
+  #docs-root .sbdocs-preview .prismjs code {
     color: white;
     background: #11100f;
     margin: 0;
