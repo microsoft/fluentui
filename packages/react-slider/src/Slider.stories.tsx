@@ -46,7 +46,7 @@ const CustomLabel = () => (
 
 export const BasicSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(160);
-  const sliderOnChange = (
+  const onSliderChange = (
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
     data: { value: number },
   ) => setSliderValue(data.value);
@@ -64,7 +64,7 @@ export const BasicSliderExample = (props: SliderProps) => {
         max={200}
         step={10}
         keyboardStep={2}
-        onChange={sliderOnChange}
+        onChange={onSliderChange}
         input={{ id: 'controlled-slider' }}
       />
       <Label htmlFor={'snapping-slider'}>Snapping Example</Label>
@@ -146,7 +146,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
 
 export const VerticalSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(160);
-  const sliderOnChange = (
+  const onSliderChange = (
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
     data: { value: number },
   ) => setSliderValue(data.value);
@@ -163,7 +163,7 @@ export const VerticalSliderExample = (props: SliderProps) => {
         min={10}
         max={200}
         step={10}
-        onChange={sliderOnChange}
+        onChange={onSliderChange}
         vertical
         input={{ id: 'vertical-controlled-slider' }}
       />
