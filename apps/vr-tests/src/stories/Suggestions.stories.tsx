@@ -84,6 +84,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
   public render(): JSX.Element {
     return (
       <div
+        className="testRoot"
         style={{
           height: '80vh',
           position: 'relative',
@@ -128,6 +129,21 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
 
 storiesOf('(Dev-Only) Suggestions', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testRoot' })
+        .hover('#province-fake-long-province')
+        .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
+        .hover('#sug-0+.ms-Suggestions-closeButton')
+        .snapshot('Hovering over the X button on a wide suggestion element', {
+          cropTo: '.testRoot',
+        })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
   .addStory('Test of closeButton with overflowing wide custom element', () => (
     <SimpleSuggestionsExample />
   ));
