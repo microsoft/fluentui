@@ -24,6 +24,9 @@ type EventData = {
   pointerId: number;
 };
 
+// TODO: Awaiting animation time from design spec.
+export const animationTime = '0.1s';
+
 export const useSliderState = (state: SliderState) => {
   const {
     value,
@@ -153,9 +156,6 @@ export const useSliderState = (state: SliderState) => {
   useEvent(eventData.element, 'pointermove', onPointerMove);
   useEvent(eventData.element, 'pointerup', onPointerUp);
   usePointerCapture(eventData.element, eventData.pointerId);
-
-  // TODO: Awaiting animation time from design spec.
-  const animationTime = '0.1s';
 
   const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 
