@@ -1,10 +1,11 @@
 <style>
-  .sbdocs.sbdocs-content {
+  #docs-root .sbdocs-content {
     width: 672px;
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
   }
 
-  h1.sbdocs-title {
-    font-family: Segoe UI;
+  #docs-root h1.sbdocs-title {
     font-size: 56px;
     line-height: 80px;
     /* identical to box height, or 143% */
@@ -14,40 +15,39 @@
     margin-bottom: 32px;
   }
 
-  .sbdocs.sbdocs-p {
-    font-family: Segoe UI;
+  #docs-root .sbdocs-p {
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 18px;
     line-height: 150%;
     letter-spacing: -0.01em;
     color: #000000;
   }
 
-  .sbdocs.sbdocs-wrapper {
+  #docs-root .sbdocs-wrapper {
     padding: 0;
     background: white;
   }
 
-  .sbdocs.sbdocs-img.featured-image {
+  #docs-root .sbdocs-img.featured-image {
     max-width: 100%;
     margin: 48px 0;
     display: block;
   }
 
-  .sbdocs.sbdocs-wrapper {
-  }
-
-  .sbdocs.sbdocs-img {
+  #docs-root .sbdocs-img {
     border-radius: 24px;
   }
 
-  .sbdocs .sbdocs-hr {
+  #docs-root .sbdocs-hr {
     margin: 48px 0;
     height: 0;
     border-top: 1px solid #ebebeb;
   }
 
-  .sbdocs .sbdocs-h2 {
-    font-family: Segoe UI;
+  #docs-root .sbdocs-h2 {
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 24px;
     line-height: 28px;
     letter-spacing: -0.04em;
@@ -58,8 +58,9 @@
     padding: 48px 0 0 0;
   }
 
-  .sbdocs .sbdocs-h3 {
-    font-family: Segoe UI;
+  #docs-root .sbdocs-h3 {
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 16px;
     line-height: 150%;
     /* identical to box height, or 24px */
@@ -68,8 +69,9 @@
     color: #000000;
   }
 
-  .sbdocs .sbdocs-li {
-    font-family: Segoe UI;
+  #docs-root .sbdocs-li {
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 16px;
     line-height: 150%;
     letter-spacing: -0.01em;
@@ -77,19 +79,25 @@
     /* Neutrals / Web / Gray 200 #1B1A19 */
     color: #1b1a19;
     margin-top: 8px;
+    list-style: none;
+    position: relative;
   }
 
-  .sbdocs .sbdocs-li::marker {
+  #docs-root .sbdocs-li::before {
+    position: absolute;
+    content: '•';
     color: #bdbdbd;
-    font-size: 10px;
-    line-height: 50%;
+    font-size: 16px;
+    line-height: 6px;
+    top: calc(50% - 3px);
+    left: -25px;
   }
 
-  .sbdocs .sbdocs-ul {
+  #docs-root .sbdocs-ul {
     margin: 13px 0;
   }
 
-  .sbdocs .sbdocs-preview {
+  #docs-root .sbdocs-preview {
     border-radius: 24px;
     background: #fafafa;
     padding: 0;
@@ -97,32 +105,20 @@
     border: none;
   }
 
-  .sbdocs-preview > .os-host {
+  #docs-root .sbdocs-preview > .os-host {
     display: none;
   }
 
-  .sbdocs .sbdocs-preview {
-  }
-
-  div[class^='fluent-provider'] {
+  #docs-root div[class^='fluent-provider'] {
     background: #faf9f8;
   }
 
-  .sb-docs .docblock-code-toggle {
-    font-family: Segoe UI;
+  #docs-root .docblock-code-toggle {
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 14px;
     line-height: 150%;
-    /* identical to box height, or 21px */
-    text-align: center;
-    letter-spacing: -0.01em;
     color: black;
-  }
-
-  .sbdocs .docblock-code-toggle {
-    font-family: Segoe UI;
-    font-size: 14px;
-    line-height: 150%;
-    /* identical to box height, or 21px */
     text-align: center;
     letter-spacing: -0.01em;
     background: #f8f8f8;
@@ -131,96 +127,77 @@
     border-radius: 5px 5px 0px 0px;
   }
 
-  .sbdocs .docblock-argstable tbody {
+  #docs-root .docblock-argstable tbody {
     box-shadow: none;
   }
 
-  .sbdocs .docblock-argstable-head th {
+  #docs-root .docblock-argstable-head th {
     letter-spacing: -0.01em;
     color: black;
-    font-family: Segoe UI;
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 16px;
     line-height: 150%;
     font-weight: 600;
   }
 
-  thead.docblock-argstable-head {
+  #docs-root thead.docblock-argstable-head {
     border-bottom: 1px solid #edebe9;
   }
 
-  .sbdocs .docblock-argstable tbody tr {
+  #docs-root .docblock-argstable tbody tr {
     border: none;
   }
 
-  th {
-  }
-
-  .sbdocs table.docblock-argstable tbody.docblock-argstable-body td,
-  .sbdocs .docblock-argstable th {
+  #docs-root table.docblock-argstable tbody.docblock-argstable-body td,
+  #docs-root .docblock-argstable th {
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 16px;
   }
 
-  .sbdocs .docblock-argstable tbody tr td:nth-child(1) span {
+  #docs-root .docblock-argstable tbody tr td:nth-child(1) span {
     font-weight: normal;
-    font-family: Segoe UI;
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 16px;
     line-height: 150%;
     letter-spacing: -0.01em;
     color: #616161;
   }
 
-  .sbdocs .docblock-argstable tbody tr:nth-child(even) td {
+  #docs-root .docblock-argstable tbody tr:nth-child(even) td {
     background: #fafafa;
   }
 
-  .sbdocs .docblock-argstable tbody tr td {
+  #docs-root .docblock-argstable tbody tr td {
     vertical-align: middle;
   }
 
-  span + .sbdocs .docblock-argstable tbody tr td button {
+  #docs-root span + .sbdocs .docblock-argstable tbody tr td button {
     color: #0078d4;
     color: red;
   }
 
-  .docs-story + div {
+  #docs-root .docs-story + div {
     background: #11100f;
   }
 
-  .sbdocs .sbdocs-content > div:last-child {
+  #docs-root .sbdocs-content > div:last-child {
     margin-bottom: 96px;
   }
 
-  .sbdocs .docs-story > div {
+  #docs-root .docs-story > div {
     padding: 0;
   }
 
-  .sbdocs .docs-story > div > div[scale] {
+  #docs-root .docs-story > div > div[scale] {
     padding: 48px 24px;
   }
 
-  .sbdocs .sbdocs-p .sbdocs-code {
-    border: none;
-    background: #f0f0f0;
-    border-radius: 4px;
-    letter-spacing: -0.2px;
-    color: black;
-    font-family: Menlo, monospace;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 150%;
-    padding: 4px 8px;
-    margin: 0;
-  }
-
-  .sbdocs .docs-story > div:last-child {
+  #docs-root .docs-story > div:last-child {
     right: 31px;
     border-radius: 24px;
-  }
-
-  .sbdocs .sbdocs-preview {
   }
 
   .docs-story + div > div:last-child {
@@ -232,89 +209,57 @@
 
   .docs-story + div > div:last-child > button {
     color: white;
-    font-family: Segoe UI;
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 14px;
     line-height: 150%;
     text-align: center;
     letter-spacing: -0.01em;
   }
 
-  .sbdocs a.sbdocs-a {
+  #docs-root a.sbdocs-a {
     color: #0078d4;
   }
 
-  .docblock-argstable-body > tr > td > div > div > button {
+  #docs-root .docblock-argstable-body > tr > td > div > div > button {
     color: #0078d4;
+    line-height: 21px;
   }
 
-  .sbdocs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span {
+  #docs-root code,
+  #docs-root .docblock-argstable tbody tr td:nth-child(3) > div > span,
+  #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
+  #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span {
     background: #f0f0f0;
     border-radius: 4px;
     padding: 4px 8px;
-    font-family: Menlo;
+    margin: 0 3px 3px 0;
+    font-family: Menlo, monospace;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 150%;
     color: black;
-  }
-
-  .sbdocs .docblock-argstable tbody tr td:nth-child(3) > div > span {
-    background: #f0f0f0;
-    border-radius: 4px;
-    font-family: Menlo;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 150%;
     letter-spacing: -0.2px;
-    color: black;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 
-  p {
+  #docs-root code {
+    margin: 0 0 3px 0;
   }
 
-  .docblock-argstable-body td > div > p {
-    font-family: Segoe UI;
-    font-size: 16px;
-    line-height: 150%;
-    letter-spacing: -0.01em;
+  #docs-root .prismjs code {
+    color: white;
+    background: #11100f;
+    margin: 0;
   }
 
-  .sbdocs .docblock-argstable-body tr td code {
-    background: #f0f0f0;
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-family: Menlo;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 150%;
-    color: black;
-  }
-
-  .sbdocs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span {
-    background: #f0f0f0;
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-family: Menlo;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 150%;
-    color: black;
-  }
-
-  .sbdocs .docblock-argstable-body > tr > td:nth-child(2) p {
-    font-family: Segoe UI;
-    font-size: 16px;
-    line-height: 150%;
-    color: black;
-    letter-spacing: -0.01em;
-  }
-
-  .sbdocs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > span {
-    font-family: Segoe UI;
+  #docs-root .docblock-argstable-body td > div > p,
+  #docs-root .docblock-argstable-body > tr > td:nth-child(2) p,
+  #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > span {
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+      sans-serif;
     font-size: 16px;
     line-height: 150%;
     color: black;
