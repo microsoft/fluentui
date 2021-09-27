@@ -5,7 +5,7 @@ import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 const defaultStyleRule = (theme: Theme) => ({
   borderColor: 'transparent',
   boxShadow: `
-      inset 0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.strokeFocus2}
+      0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.strokeFocus2}
     `,
   zIndex: 1,
 });
