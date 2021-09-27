@@ -3530,6 +3530,8 @@ export interface IDatePickerStyleProps {
     isDatePickerShown?: boolean;
     // (undocumented)
     label?: boolean;
+    // (undocumented)
+    readOnlyPlaceHolder?: boolean;
     theme: ITheme;
 }
 
@@ -3539,6 +3541,8 @@ export interface IDatePickerStyles {
     callout: IStyle;
     // (undocumented)
     icon: IStyle;
+    // (undocumented)
+    readOnlyTextfield?: IStyle;
     root: IStyle;
     // (undocumented)
     textField: IStyle;
@@ -8239,6 +8243,14 @@ export interface ITextField {
 }
 
 // @public
+export interface ITextFieldInputIds {
+    // (undocumented)
+    descriptionId: string;
+    // (undocumented)
+    textFieldId: string;
+}
+
+// @public
 export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
     ariaLabel?: string;
     autoAdjustHeight?: boolean;
@@ -8268,6 +8280,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
+    onRenderInput?: (props?: ITextFieldProps, inputIds?: ITextFieldInputIds, defaultRender?: (props?: ITextFieldProps, inputIds?: ITextFieldInputIds) => JSX.Element | null) => JSX.Element | null;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
     onRenderPrefix?: IRenderFunction<ITextFieldProps>;
     onRenderSuffix?: IRenderFunction<ITextFieldProps>;
