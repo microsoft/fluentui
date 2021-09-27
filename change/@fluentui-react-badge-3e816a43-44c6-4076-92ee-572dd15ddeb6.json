@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add Storybook Controls to Badge documentation",
+  "packageName": "@fluentui/react-badge",
+  "email": "peter@draxler.ml",
+  "dependentChangeType": "patch"
+}
