@@ -25,6 +25,7 @@ import { neutralLayer2 as neutralLayer2Algorithm } from './color/recipes/neutral
 import { neutralLayer3 as neutralLayer3Algorithm } from './color/recipes/neutral-layer-3';
 import { neutralLayer4 as neutralLayer4Algorithm } from './color/recipes/neutral-layer-4';
 import { neutralStroke as neutralStrokeAlgorithm } from './color/recipes/neutral-stroke';
+import { neutralStrokeStrong as neutralStrokeStrongAlgorithm } from './color/recipes/neutral-stroke-strong';
 import { accentBase, middleGrey } from './color/utilities/color-constants';
 import { StandardLuminance } from './color/utilities/base-layer-luminance';
 import { InteractiveSwatchSet } from './color/recipe';
@@ -170,6 +171,13 @@ export const neutralStrokeHoverDelta = create<number>('neutral-stroke-hover-delt
 export const neutralStrokeRestDelta = create<number>('neutral-stroke-rest-delta').withDefault(25);
 
 /** @public */
+export const neutralStrokeStrongHoverDelta = create<number>('neutral-stroke-strong-hover-delta').withDefault(40);
+/** @public */
+export const neutralStrokeStrongActiveDelta = create<number>('neutral-stroke-strong-active-delta').withDefault(16);
+/** @public */
+export const neutralStrokeStrongFocusDelta = create<number>('neutral-stroke-strong-focus-delta').withDefault(25);
+
+/** @public */
 export const strokeWidth = create<number>('stroke-width').withDefault(1);
 /** @public @deprecated Use strokeWidth */
 export const outlineWidth = strokeWidth;
@@ -220,11 +228,135 @@ export const accentPalette = create<Palette>({ name: 'accent-palette', cssCustom
   PaletteRGB.create(accentBase),
 );
 
+// Neutral Layer Card Container
 /** @public */
-export const fillColor = create<Swatch>('fill-color').withDefault(element => {
-  const palette = neutralPalette.getValueFor(element);
-  return palette.get(0);
+export const neutralLayerCardContainerRecipe = create<ColorRecipe>({
+  name: 'neutral-layer-card-container-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement): Swatch =>
+    neutralLayerCardContainerAlgorithm(
+      neutralPalette.getValueFor(element),
+      baseLayerLuminance.getValueFor(element),
+      neutralFillLayerRestDelta.getValueFor(element),
+    ),
 });
+
+/** @public */
+export const neutralLayerCardContainer = create<Swatch>(
+  'neutral-layer-card-container',
+).withDefault((element: HTMLElement) => neutralLayerCardContainerRecipe.getValueFor(element).evaluate(element));
+
+// Neutral Layer Floating
+/** @public */
+export const neutralLayerFloatingRecipe = create<ColorRecipe>({
+  name: 'neutral-layer-floating-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement): Swatch =>
+    neutralLayerFloatingAlgorithm(
+      neutralPalette.getValueFor(element),
+      baseLayerLuminance.getValueFor(element),
+      neutralFillLayerRestDelta.getValueFor(element),
+    ),
+});
+
+/** @public */
+export const neutralLayerFloating = create<Swatch>('neutral-layer-floating').withDefault((element: HTMLElement) =>
+  neutralLayerFloatingRecipe.getValueFor(element).evaluate(element),
+);
+
+// Neutral Layer 1
+/** @public */
+export const neutralLayer1Recipe = create<ColorRecipe>({
+  name: 'neutral-layer-1-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement): Swatch =>
+    neutralLayer1Algorithm(neutralPalette.getValueFor(element), baseLayerLuminance.getValueFor(element)),
+});
+
+/** @public */
+export const neutralLayer1 = create<Swatch>('neutral-layer-1').withDefault((element: HTMLElement) =>
+  neutralLayer1Recipe.getValueFor(element).evaluate(element),
+);
+/** @public @deprecated Use neutralLayer1 */
+export const neutralLayerL1 = neutralLayer1;
+
+// Neutral Layer 2
+/** @public */
+export const neutralLayer2Recipe = create<ColorRecipe>({
+  name: 'neutral-layer-2-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement): Swatch =>
+    neutralLayer2Algorithm(
+      neutralPalette.getValueFor(element),
+      baseLayerLuminance.getValueFor(element),
+      neutralFillLayerRestDelta.getValueFor(element),
+      neutralFillRestDelta.getValueFor(element),
+      neutralFillHoverDelta.getValueFor(element),
+      neutralFillActiveDelta.getValueFor(element),
+    ),
+});
+
+/** @public */
+export const neutralLayer2 = create<Swatch>('neutral-layer-2').withDefault((element: HTMLElement) =>
+  neutralLayer2Recipe.getValueFor(element).evaluate(element),
+);
+/** @public @deprecated Use neutralLayer2 */
+export const neutralLayerL2 = neutralLayer2;
+
+// Neutral Layer 3
+/** @public */
+export const neutralLayer3Recipe = create<ColorRecipe>({
+  name: 'neutral-layer-3-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement): Swatch =>
+    neutralLayer3Algorithm(
+      neutralPalette.getValueFor(element),
+      baseLayerLuminance.getValueFor(element),
+      neutralFillLayerRestDelta.getValueFor(element),
+      neutralFillRestDelta.getValueFor(element),
+      neutralFillHoverDelta.getValueFor(element),
+      neutralFillActiveDelta.getValueFor(element),
+    ),
+});
+
+/** @public */
+export const neutralLayer3 = create<Swatch>('neutral-layer-3').withDefault((element: HTMLElement) =>
+  neutralLayer3Recipe.getValueFor(element).evaluate(element),
+);
+/** @public @deprecated Use neutralLayer3 */
+export const neutralLayerL3 = neutralLayer3;
+
+// Neutral Layer 4
+/** @public */
+export const neutralLayer4Recipe = create<ColorRecipe>({
+  name: 'neutral-layer-4-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement): Swatch =>
+    neutralLayer4Algorithm(
+      neutralPalette.getValueFor(element),
+      baseLayerLuminance.getValueFor(element),
+      neutralFillLayerRestDelta.getValueFor(element),
+      neutralFillRestDelta.getValueFor(element),
+      neutralFillHoverDelta.getValueFor(element),
+      neutralFillActiveDelta.getValueFor(element),
+    ),
+});
+
+/** @public */
+export const neutralLayer4 = create<Swatch>('neutral-layer-4').withDefault((element: HTMLElement) =>
+  neutralLayer4Recipe.getValueFor(element).evaluate(element),
+);
+/** @public @deprecated Use neutralLayer4 */
+export const neutralLayerL4 = neutralLayer4;
+
+/** @public */
+export const fillColor = create<Swatch>('fill-color').withDefault(element => neutralLayer1.getValueFor(element));
 
 enum ContrastTarget {
   normal = 4.5,
@@ -718,129 +850,37 @@ export const neutralOutlineActive = neutralStrokeActive;
 /** @public @deprecated Use neutralStrokeFocus */
 export const neutralOutlineFocus = neutralStrokeFocus;
 
-// Neutral Layer Card Container
+// Neutral Stroke Strong
 /** @public */
-export const neutralLayerCardContainerRecipe = create<ColorRecipe>({
-  name: 'neutral-layer-card-container-recipe',
+export const neutralStrokeStrongRecipe = create<InteractiveColorRecipe>({
+  name: 'neutral-stroke-strong-recipe',
   cssCustomPropertyName: null,
 }).withDefault({
-  evaluate: (element: HTMLElement): Swatch =>
-    neutralLayerCardContainerAlgorithm(
+  evaluate: (element: HTMLElement): InteractiveSwatchSet => {
+    return neutralStrokeStrongAlgorithm(
       neutralPalette.getValueFor(element),
-      baseLayerLuminance.getValueFor(element),
-      neutralFillLayerRestDelta.getValueFor(element),
-    ),
+      fillColor.getValueFor(element),
+      3,
+      neutralStrokeStrongHoverDelta.getValueFor(element),
+      neutralStrokeStrongActiveDelta.getValueFor(element),
+      neutralStrokeStrongFocusDelta.getValueFor(element),
+    );
+  },
 });
 
 /** @public */
-export const neutralLayerCardContainer = create<Swatch>(
-  'neutral-layer-card-container',
-).withDefault((element: HTMLElement) => neutralLayerCardContainerRecipe.getValueFor(element).evaluate(element));
-
-// Neutral Layer Floating
-/** @public */
-export const neutralLayerFloatingRecipe = create<ColorRecipe>({
-  name: 'neutral-layer-floating-recipe',
-  cssCustomPropertyName: null,
-}).withDefault({
-  evaluate: (element: HTMLElement): Swatch =>
-    neutralLayerFloatingAlgorithm(
-      neutralPalette.getValueFor(element),
-      baseLayerLuminance.getValueFor(element),
-      neutralFillLayerRestDelta.getValueFor(element),
-    ),
-});
-
-/** @public */
-export const neutralLayerFloating = create<Swatch>('neutral-layer-floating').withDefault((element: HTMLElement) =>
-  neutralLayerFloatingRecipe.getValueFor(element).evaluate(element),
+export const neutralStrokeStrongRest = create<Swatch>('neutral-stroke-strong-rest').withDefault(
+  (element: HTMLElement) => neutralStrokeStrongRecipe.getValueFor(element).evaluate(element).rest,
 );
-
-// Neutral Layer 1
 /** @public */
-export const neutralLayer1Recipe = create<ColorRecipe>({
-  name: 'neutral-layer-1-recipe',
-  cssCustomPropertyName: null,
-}).withDefault({
-  evaluate: (element: HTMLElement): Swatch =>
-    neutralLayer1Algorithm(neutralPalette.getValueFor(element), baseLayerLuminance.getValueFor(element)),
-});
-
-/** @public */
-export const neutralLayer1 = create<Swatch>('neutral-layer-1').withDefault((element: HTMLElement) =>
-  neutralLayer1Recipe.getValueFor(element).evaluate(element),
+export const neutralStrokeStrongHover = create<Swatch>('neutral-stroke-strong-hover').withDefault(
+  (element: HTMLElement) => neutralStrokeStrongRecipe.getValueFor(element).evaluate(element).hover,
 );
-/** @public @deprecated Use neutralLayer1 */
-export const neutralLayerL1 = neutralLayer1;
-
-// Neutral Layer 2
 /** @public */
-export const neutralLayer2Recipe = create<ColorRecipe>({
-  name: 'neutral-layer-2-recipe',
-  cssCustomPropertyName: null,
-}).withDefault({
-  evaluate: (element: HTMLElement): Swatch =>
-    neutralLayer2Algorithm(
-      neutralPalette.getValueFor(element),
-      baseLayerLuminance.getValueFor(element),
-      neutralFillLayerRestDelta.getValueFor(element),
-      neutralFillRestDelta.getValueFor(element),
-      neutralFillHoverDelta.getValueFor(element),
-      neutralFillActiveDelta.getValueFor(element),
-    ),
-});
-
-/** @public */
-export const neutralLayer2 = create<Swatch>('neutral-layer-2').withDefault((element: HTMLElement) =>
-  neutralLayer2Recipe.getValueFor(element).evaluate(element),
+export const neutralStrokeStrongActive = create<Swatch>('neutral-stroke-strong-active').withDefault(
+  (element: HTMLElement) => neutralStrokeStrongRecipe.getValueFor(element).evaluate(element).active,
 );
-/** @public @deprecated Use neutralLayer2 */
-export const neutralLayerL2 = neutralLayer2;
-
-// Neutral Layer 3
 /** @public */
-export const neutralLayer3Recipe = create<ColorRecipe>({
-  name: 'neutral-layer-3-recipe',
-  cssCustomPropertyName: null,
-}).withDefault({
-  evaluate: (element: HTMLElement): Swatch =>
-    neutralLayer3Algorithm(
-      neutralPalette.getValueFor(element),
-      baseLayerLuminance.getValueFor(element),
-      neutralFillLayerRestDelta.getValueFor(element),
-      neutralFillRestDelta.getValueFor(element),
-      neutralFillHoverDelta.getValueFor(element),
-      neutralFillActiveDelta.getValueFor(element),
-    ),
-});
-
-/** @public */
-export const neutralLayer3 = create<Swatch>('neutral-layer-3').withDefault((element: HTMLElement) =>
-  neutralLayer3Recipe.getValueFor(element).evaluate(element),
+export const neutralStrokeStrongFocus = create<Swatch>('neutral-stroke-strong-focus').withDefault(
+  (element: HTMLElement) => neutralStrokeStrongRecipe.getValueFor(element).evaluate(element).focus,
 );
-/** @public @deprecated Use neutralLayer3 */
-export const neutralLayerL3 = neutralLayer3;
-
-// Neutral Layer 4
-/** @public */
-export const neutralLayer4Recipe = create<ColorRecipe>({
-  name: 'neutral-layer-4-recipe',
-  cssCustomPropertyName: null,
-}).withDefault({
-  evaluate: (element: HTMLElement): Swatch =>
-    neutralLayer4Algorithm(
-      neutralPalette.getValueFor(element),
-      baseLayerLuminance.getValueFor(element),
-      neutralFillLayerRestDelta.getValueFor(element),
-      neutralFillRestDelta.getValueFor(element),
-      neutralFillHoverDelta.getValueFor(element),
-      neutralFillActiveDelta.getValueFor(element),
-    ),
-});
-
-/** @public */
-export const neutralLayer4 = create<Swatch>('neutral-layer-4').withDefault((element: HTMLElement) =>
-  neutralLayer4Recipe.getValueFor(element).evaluate(element),
-);
-/** @public @deprecated Use neutralLayer4 */
-export const neutralLayerL4 = neutralLayer4;

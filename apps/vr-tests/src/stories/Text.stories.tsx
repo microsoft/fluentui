@@ -11,7 +11,7 @@ storiesOf('Text', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <Text>I'm default text</Text>, { rtl: true })
+  .addStory('Root', () => <Text>I'm default text</Text>, { includeRtl: true })
   .addStory('Wrap', () => (
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

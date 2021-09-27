@@ -1,18 +1,19 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
+import { markClassName, markLabelClassName } from '../../utils/renderMarks';
 
-const thumbClassName = 'ms-Slider-thumb';
-const trackClassName = 'ms-Slider-track';
+export const thumbClassName = 'ms-Slider-thumb';
+export const trackClassName = 'ms-Slider-track';
 
 /**
  * Styles for the root slot
  */
-const useRootStyles = makeStyles({
+export const useRootStyles = makeStyles({
   root: theme => ({
     position: 'relative',
-    userSelect: 'none',
     display: 'inline-flex',
+    userSelect: 'none',
     touchAction: 'none',
     verticalAlign: 'bottom',
   }),
@@ -20,25 +21,30 @@ const useRootStyles = makeStyles({
   small: {
     '--slider-thumb-size': '10px',
     '--slider-rail-size': '2px',
+    '--slider-mark-size': '2px',
   },
 
   medium: {
     '--slider-thumb-size': '20px',
     '--slider-rail-size': '4px',
+    '--slider-mark-size': '4px',
   },
 
   horizontal: theme => ({
     minWidth: '120px',
-    height: 'var(--slider-thumb-size)',
+    minHeight: 'var(--slider-thumb-size)',
+    flexDirection: 'column',
   }),
 
   vertical: theme => ({
     transform: 'scaleY(-1)',
-    width: 'var(--slider-thumb-size)',
+    minWidth: 'var(--slider-thumb-size)',
     minHeight: '120px',
+    flexDirection: 'row',
   }),
 
   enabled: theme => ({
+    cursor: 'grab',
     ':hover': {
       '& .ms-Slider-thumb': {
         background: theme.alias.color.neutral.brandBackgroundHover,
@@ -48,6 +54,7 @@ const useRootStyles = makeStyles({
       },
     },
     ':active': {
+      cursor: 'grabbing',
       '& .ms-Slider-thumb': {
         background: theme.alias.color.neutral.brandBackgroundPressed,
       },
@@ -55,6 +62,10 @@ const useRootStyles = makeStyles({
         background: theme.alias.color.neutral.brandBackgroundPressed,
       },
     },
+  }),
+
+  disabled: theme => ({
+    cursor: 'not-allowed',
   }),
 
   focusIndicator: createFocusIndicatorStyleRule(
@@ -78,7 +89,7 @@ const useRootStyles = makeStyles({
 /**
  * Styles for the slider wrapper slot
  */
-const useSliderWrapper = makeStyles({
+export const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
     overflow: 'hidden',
@@ -102,7 +113,7 @@ const useSliderWrapper = makeStyles({
 /**
  * Styles for the rail slot
  */
-const useRailStyles = makeStyles({
+export const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
     borderRadius: theme.global.borderRadius.xLarge,
@@ -116,6 +127,7 @@ const useRailStyles = makeStyles({
 
   disabled: theme => ({
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
   }),
 
   horizontal: theme => ({
@@ -138,7 +150,7 @@ const useRailStyles = makeStyles({
 /**
  * Styles for the trackWrapper slot
  */
-const useTrackWrapperStyles = makeStyles({
+export const useTrackWrapperStyles = makeStyles({
   trackWrapper: theme => ({
     position: 'absolute',
   }),
@@ -159,7 +171,7 @@ const useTrackWrapperStyles = makeStyles({
 /**
  * Styles for the track slot
  */
-const useTrackStyles = makeStyles({
+export const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
     borderRadius: theme.global.borderRadius.xLarge,
@@ -180,7 +192,7 @@ const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
@@ -189,12 +201,95 @@ const useTrackStyles = makeStyles({
 });
 
 /**
+ * Styles for the mark slot
+ */
+export const useMarksWrapperStyles = makeStyles({
+  marksWrapper: theme => ({
+    position: 'relative',
+    display: 'grid',
+    outline: 'none',
+    zIndex: '1',
+    whiteSpace: 'nowrap',
+    [`& .${markClassName}`]: {
+      background: theme.alias.color.neutral.neutralBackground1,
+    },
+
+    [`& .${markLabelClassName}`]: {
+      padding: '2px',
+      fontSize: '12px',
+    },
+
+    '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
+      opacity: '0',
+    },
+  }),
+
+  horizontal: theme => ({
+    marginTop: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
+    marginLeft: 'calc(var(--slider-thumb-size) / 2)',
+    marginRight: 'calc(var(--slider-thumb-size) / 2)',
+    justifyItems: 'end',
+
+    '& .ms-Slider-markItemContainer': {
+      display: 'flex',
+      flexDirection: 'column',
+      transform: 'translateX(50%)',
+      alignItems: 'center',
+    },
+
+    [`& .${markLabelClassName}`]: {
+      fontFamily: theme.global.type.fontFamilies.base,
+      color: theme.alias.color.neutral.neutralForeground1,
+      paddingTop: 'calc(var(--slider-thumb-size) /2 )',
+    },
+
+    [`& .${markClassName}`]: {
+      height: '4px',
+      width: '1px',
+    },
+  }),
+
+  vertical: theme => ({
+    marginTop: 'calc(var(--slider-thumb-size) / 2)',
+    marginBottom: 'calc(var(--slider-thumb-size) / 2)',
+    marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
+    justifyItems: 'start',
+
+    '& .ms-Slider-markItemContainer': {
+      display: 'flex',
+      flexDirection: 'row',
+      transform: 'translateY(50%)',
+      alignItems: 'center',
+      maxWidth: '100%',
+      maxHeight: '100%',
+    },
+
+    [`& .${markLabelClassName}`]: {
+      paddingLeft: 'calc(var(--slider-thumb-size) /2 )',
+      transform: 'scaleY(-1)',
+    },
+
+    [`& .${markClassName}`]: {
+      height: '1px',
+      width: 'var(--slider-mark-size)',
+    },
+  }),
+
+  disabled: theme => ({
+    [`& .${markLabelClassName}`]: {
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
+    },
+  }),
+});
+
+/**
  * Styles for the thumb slot
  */
-const useThumbWrapperStyles = makeStyles({
+export const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
     outline: 'none',
+    zIndex: '2',
   }),
 
   horizontal: theme => ({
@@ -213,7 +308,7 @@ const useThumbWrapperStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-const useThumbStyles = makeStyles({
+export const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
     width: 'var(--slider-thumb-size)',
@@ -222,11 +317,11 @@ const useThumbStyles = makeStyles({
     left: '0px',
     bottom: '0px',
     right: '0px',
-    transform: 'translate(-50%, -50%)',
     outline: 'none',
     borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
+    transform: 'translate(-50%, -50%)',
 
     ':before': {
       position: 'absolute',
@@ -242,12 +337,14 @@ const useThumbStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
     background: theme.alias.color.neutral.neutralForegroundDisabled,
-    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
+    ':before': {
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
+    },
   }),
 
   horizontal: theme => ({
@@ -258,7 +355,7 @@ const useThumbStyles = makeStyles({
 /**
  * Styles for the activeRail slot
  */
-const useActiveRailStyles = makeStyles({
+export const useActiveRailStyles = makeStyles({
   activeRail: theme => ({
     position: 'absolute',
   }),
@@ -275,6 +372,22 @@ const useActiveRailStyles = makeStyles({
 });
 
 /**
+ * Styles for the Input slot
+ */
+const useInputStyles = makeStyles({
+  input: {
+    opacity: 0,
+    position: 'absolute',
+    padding: 0,
+    margin: 0,
+    width: '100%',
+    height: '100%',
+    touchAction: 'none',
+    pointerEvents: 'none',
+  },
+});
+
+/**
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
@@ -283,17 +396,20 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const trackWrapperStyles = useTrackWrapperStyles();
   const trackStyles = useTrackStyles();
+  const marksWrapperStyles = useMarksWrapperStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
+  const inputStyles = useInputStyles();
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     rootStyles.root,
-    rootStyles[state.size],
-    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
-    !state.disabled && rootStyles.enabled,
     rootStyles.focusIndicator,
-    state.className,
+    rootStyles[state.size!],
+    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
+    state.disabled ? rootStyles.disabled : rootStyles.enabled,
+    rootStyles.focusIndicator,
+    state.root.className,
   );
 
   state.sliderWrapper.className = mergeClasses(
@@ -307,6 +423,12 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.vertical ? railStyles.vertical : railStyles.horizontal,
     state.disabled ? railStyles.disabled : railStyles.enabled,
     state.rail.className,
+  );
+
+  state.sliderWrapper.className = mergeClasses(
+    sliderWrapperStyles.sliderWrapper,
+    state.vertical ? sliderWrapperStyles.vertical : sliderWrapperStyles.horizontal,
+    state.sliderWrapper.className,
   );
 
   state.trackWrapper.className = mergeClasses(
@@ -323,6 +445,13 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.track.className,
   );
 
+  state.marksWrapper.className = mergeClasses(
+    marksWrapperStyles.marksWrapper,
+    state.vertical ? marksWrapperStyles.vertical : marksWrapperStyles.horizontal,
+    state.disabled && marksWrapperStyles.disabled,
+    state.marksWrapper.className,
+  );
+
   state.thumbWrapper.className = mergeClasses(
     thumbWrapperStyles.thumbWrapper,
     state.vertical ? thumbWrapperStyles.vertical : thumbWrapperStyles.horizontal,
@@ -333,7 +462,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     thumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.thumb.className,
   );
 
@@ -342,6 +471,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.vertical ? activeRailStyles.vertical : activeRailStyles.horizontal,
     state.activeRail.className,
   );
+
+  state.input.className = mergeClasses(inputStyles.input, state.input.className);
 
   return state;
 };

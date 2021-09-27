@@ -25,7 +25,7 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.0",
+    "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6"

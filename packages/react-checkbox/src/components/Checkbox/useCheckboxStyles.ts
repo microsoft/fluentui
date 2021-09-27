@@ -171,7 +171,7 @@ const useInputStyles = makeStyles({
   },
 
   disabled: {
-    cursor: 'default',
+    cursor: 'not-allowed',
   },
 });
 
@@ -206,25 +206,25 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const containerStyles = useContainerStyles();
   const styles = useStyles();
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     styles.focusIndictor,
     styles[checkedState],
-    state.disabled && styles.disabled,
-    state.className,
+    state.input.disabled && styles.disabled,
+    state.root.className,
   );
 
   state.input.className = mergeClasses(
     containerStyles[state.size],
     inputStyles.input,
-    state.disabled && inputStyles.disabled,
+    state.input.disabled && inputStyles.disabled,
     state.input.className,
   );
 
   state.containerClassName = mergeClasses(
     containerStyles.container,
     containerStyles[state.size],
-    !!state.children && containerStyles[state.labelPosition],
+    !!state.root.children && containerStyles[state.labelPosition],
   );
   state.indicator.className = mergeClasses(
     indicatorStyles.box,

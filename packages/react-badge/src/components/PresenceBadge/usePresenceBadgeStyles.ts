@@ -1,6 +1,6 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { PresenceBadgeState } from './PresenceBadge.types';
 import { useBadgeStyles } from '../../Badge';
+import type { PresenceBadgeState } from './PresenceBadge.types';
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
  */
 export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     (state.status === 'busy' || state.status === 'doNotDisturb') && styles.statusBusy,
     state.status === 'away' && styles.statusAway,
@@ -62,8 +62,8 @@ export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadge
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
     state.outOfOffice && (state.status === 'busy' || state.status === 'doNotDisturb') && styles.outOfOfficeBusy,
     state.outOfOffice && state.status === 'away' && styles.outOfOfficeAway,
-    (state.size === 'smallest' || state.size === 'smaller') && styles.thinBorder,
-    state.className,
+    (state.size === 'tiny' || state.size === 'extra-small') && styles.thinBorder,
+    state.root.className,
   );
 
   return useBadgeStyles(state) as PresenceBadgeState;

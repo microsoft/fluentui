@@ -1,15 +1,36 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { CardState } from './Card.types';
+import type { CardState } from './Card.types';
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: theme => ({
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
+
+    boxShadow: theme.alias.shadow.shadow4,
+    color: theme.alias.color.neutral.neutralForeground1,
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+
+    // Size: medium
+    // TODO: Validate if we should use a token instead + the unit of said token
+    // TODO: Explore alternate way of applying padding
+    padding: '12px',
+    gap: '12px',
+    borderRadius: theme.global.borderRadius.medium,
   }),
 
-  // TODO add additional classes for different states and/or slots
+  interactive: theme => ({
+    cursor: 'pointer',
+    ':hover': {
+      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
+    },
+    ':active': {
+      backgroundColor: theme.alias.color.neutral.neutralBackground1Pressed,
+    },
+  }),
 });
 
 /**
@@ -17,10 +38,18 @@ const useStyles = makeStyles({
  */
 export const useCardStyles = (state: CardState): CardState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.className = mergeClasses(
+    styles.root,
+    (state.onClick ||
+      state.onMouseUp ||
+      state.onMouseDown ||
+      state.onPointerUp ||
+      state.onPointerDown ||
+      state.onTouchStart ||
+      state.onTouchEnd) &&
+      styles.interactive,
+    state.className,
+  );
 
   return state;
 };

@@ -60,7 +60,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 
@@ -225,7 +224,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         }
   >
     <input
-      aria-checked="true"
       checked={true}
       className=
 
@@ -356,7 +354,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         }
   >
     <input
-      aria-checked="false"
       aria-disabled={true}
       checked={false}
       className=
@@ -488,7 +485,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         }
   >
     <input
-      aria-checked="true"
       aria-disabled={true}
       checked={true}
       className=

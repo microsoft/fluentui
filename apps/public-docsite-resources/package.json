@@ -27,21 +27,21 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.0",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.29.1",
+    "@fluentui/react": "^8.34.7",
     "@fluentui/react-examples": "^8.34.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/api-docs": "^8.1.35",
-    "@fluentui/azure-themes": "^8.1.58",
-    "@fluentui/react-docsite-components": "^8.3.18",
-    "@fluentui/font-icons-mdl2": "^8.1.9",
+    "@fluentui/azure-themes": "^8.1.74",
+    "@fluentui/react-docsite-components": "^8.3.33",
+    "@fluentui/font-icons-mdl2": "^8.1.11",
     "@fluentui/set-version": "^8.1.4",
-    "@fluentui/theme-samples": "^8.1.57",
-    "@fluentui/react-monaco-editor": "^1.1.57",
+    "@fluentui/theme-samples": "^8.2.15",
+    "@fluentui/react-monaco-editor": "^1.2.15",
     "@types/react": "16.9.42",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",

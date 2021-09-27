@@ -4,59 +4,116 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+
+// @public (undocumented)
+export const lowerThumbClassName: string;
+
+// @public
+export const RangedSlider: React_2.ForwardRefExoticComponent<RangedSliderProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
+    defaultValue?: [number, number];
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
+        value: [number, number];
+    }) => void;
+    value?: [number, number];
+}
+
+// @public (undocumented)
+export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
+}
+
+// @public (undocumented)
+export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
+    lowerThumb: IntrinsicShorthandProps<'div'>;
+    lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
+    upperThumb: IntrinsicShorthandProps<'div'>;
+    upperThumbWrapper: IntrinsicShorthandProps<'div'>;
+    lowerInput: IntrinsicShorthandProps<'input'>;
+    upperInput: IntrinsicShorthandProps<'input'>;
+};
+
+// @public (undocumented)
+export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
+}
+
+// @public
+export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
 
 // @public
 export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
-export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
+export const Slider: React_2.ForwardRefExoticComponent<Pick<ComponentProps<SliderSlots, "root">, "input" | "slot" | "style" | "title" | "track" | "children" | "key" | "defaultChecked" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "css" | "rail" | "sliderWrapper" | "trackWrapper" | "marksWrapper" | "thumbWrapper" | "thumb" | "activeRail" | "as"> & SliderCommons & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-    ariaValueText?: (value: number) => string;
+export type SliderCommons = {
     defaultValue?: number;
-    disabled?: boolean;
-    keyboardStep?: number;
-    max?: number;
+    value?: number;
     min?: number;
+    max?: number;
+    step?: number;
+    keyboardStep?: number;
+    disabled?: boolean;
+    vertical?: boolean;
+    marks?: boolean | (number | {
+        value: number;
+        label?: string | JSX.Element;
+        mark?: JSX.Element;
+    })[];
+    origin?: number;
+    size?: 'small' | 'medium';
     onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
         value: number;
     }) => void;
-    origin?: number;
-    size: 'small' | 'medium';
-    step?: number;
-    value?: number;
-    vertical?: boolean;
-}
-
-// @public
-export interface SliderProps extends ComponentProps<Partial<SliderSlots>>, Partial<SliderCommon> {
-}
-
-// @public
-export const sliderShorthandProps: Array<keyof SliderSlots>;
-
-// @public
-export type SliderSlots = {
-    rail: React_2.HTMLAttributes<HTMLElement>;
-    sliderWrapper: React_2.HTMLAttributes<HTMLElement>;
-    trackWrapper: React_2.HTMLAttributes<HTMLElement>;
-    track: React_2.HTMLAttributes<HTMLElement>;
-    thumbWrapper: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
-    thumb: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>;
-    activeRail: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
+    ariaValueText?: (value: number) => string;
 };
 
+// @public (undocumented)
+export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
+
 // @public
-export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
-    ref: React_2.Ref<HTMLElement>;
-}
+export const sliderShorthandProps: (keyof SliderSlots)[];
+
+// @public (undocumented)
+export type SliderSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+    rail: IntrinsicShorthandProps<'div'>;
+    sliderWrapper: IntrinsicShorthandProps<'div'>;
+    trackWrapper: IntrinsicShorthandProps<'div'>;
+    track: IntrinsicShorthandProps<'div'>;
+    marksWrapper: IntrinsicShorthandProps<'div'>;
+    thumbWrapper: IntrinsicShorthandProps<'div'>;
+    thumb: IntrinsicShorthandProps<'div'>;
+    activeRail: IntrinsicShorthandProps<'div'>;
+    input: IntrinsicShorthandProps<'input'>;
+};
+
+// @public (undocumented)
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+
+// @public (undocumented)
+export const upperThumbClassName: string;
+
+// @public
+export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
 
 // @public
 export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
+
+// @public (undocumented)
+export const useSliderState: (state: SliderState) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;

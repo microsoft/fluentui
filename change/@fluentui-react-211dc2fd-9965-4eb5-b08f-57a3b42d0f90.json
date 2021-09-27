@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(DetailsList): apply hovered link color via parent container",
+  "packageName": "@fluentui/react",
+  "email": "peter.varholak@gmail.com",
+  "dependentChangeType": "patch"
+}

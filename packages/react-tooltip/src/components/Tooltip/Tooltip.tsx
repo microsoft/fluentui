@@ -6,10 +6,8 @@ import type { TooltipProps } from './Tooltip.types';
 
 /**
  * A tooltip provides light weight contextual information on top of its target element.
- *
- * {@docCategory Tooltip}
  */
-export const Tooltip = React.forwardRef<HTMLElement, TooltipProps>((props, ref) => {
+export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
   const state = useTooltip(props, ref);
 
   useTooltipStyles(state);

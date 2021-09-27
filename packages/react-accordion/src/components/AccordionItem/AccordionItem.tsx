@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useAccordionItem } from './useAccordionItem';
 import { useAccordionItemContextValues } from './useAccordionItemContextValues';
-import { AccordionItemProps } from './AccordionItem.types';
 import { renderAccordionItem } from './renderAccordionItem';
+import type { AccordionItemProps } from './AccordionItem.types';
 
 /**
  * Define a styled AccordionItem, using the `useAccordionItem` and `useAccordionItemStyles` hooks.

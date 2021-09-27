@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.25)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.24..@fluentui/react-shared-contexts_v9.0.0-alpha.25)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.23 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.24)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.23..@fluentui/react-shared-contexts_v9.0.0-alpha.24)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.23)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.22..@fluentui/react-shared-contexts_v9.0.0-alpha.23)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export syntax. ([PR #19473](https://github.com/microsoft/fluentui/pull/19473) by dzearing@hotmail.com)
 
 ## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.22)
 

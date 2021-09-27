@@ -51,7 +51,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           }
       id="ComboBox0-label"
     >
-      Custom styled ComboBox
+      Custom styled ComboBox with wrapping option text
     </label>
     <div
       className=

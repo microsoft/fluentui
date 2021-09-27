@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating TypeScript type-only imports/exports to use import/export type syntax.",
-  "packageName": "@fluentui/scheme-utilities",
-  "email": "dzearing@hotmail.com",
-  "dependentChangeType": "patch"
-}

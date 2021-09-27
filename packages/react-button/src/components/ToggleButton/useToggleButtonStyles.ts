@@ -1,6 +1,6 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { useButtonStyles } from '../Button/useButtonStyles';
-import { ToggleButtonState } from './ToggleButton.types';
+import type { ToggleButtonState } from './ToggleButton.types';
 
 const useRootStyles = makeStyles({
   checked: theme => ({
@@ -147,14 +147,14 @@ export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonSta
 
   state.className = mergeClasses(
     state.checked && rootStyles.checked,
-    state.checked && state.outline && rootStyles.checkedOutline,
-    state.checked && state.primary && rootStyles.checkedPrimary,
-    state.checked && state.subtle && rootStyles.checkedSubtle,
-    state.checked && state.transparent && rootStyles.checkedTransparent,
+    state.checked && state.appearance === 'outline' && rootStyles.checkedOutline,
+    state.checked && state.appearance === 'primary' && rootStyles.checkedPrimary,
+    state.checked && state.appearance === 'subtle' && rootStyles.checkedSubtle,
+    state.checked && state.appearance === 'transparent' && rootStyles.checkedTransparent,
     (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
-    (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
-    (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
+    (state.disabled || state.disabledFocusable) && state.appearance === 'primary' && rootStyles.disabledPrimary,
+    (state.disabled || state.disabledFocusable) && state.appearance === 'subtle' && rootStyles.disabledSubtle,
+    (state.disabled || state.disabledFocusable) && state.appearance === 'transparent' && rootStyles.disabledTransparent,
     state.className,
   );
 

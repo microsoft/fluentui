@@ -2,6 +2,72 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-compose_v1.0.0-beta.32",
+      "version": "1.0.0-beta.32",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-compose",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-compose",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-compose to v1.0.0-beta.32"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-compose_v1.0.0-beta.32",
+      "version": "1.0.0-beta.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.2",
+            "author": "xiaowxie@microsoft.com",
+            "commit": "53bd7afcd68378ee0c1047636e4bacb5f31aef3a",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/react-compose_v1.0.0-beta.31",
+      "version": "1.0.0-beta.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.1",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-compose_v1.0.0-beta.30",
+      "version": "1.0.0-beta.30",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/react-compose_v1.0.0-beta.30",
       "version": "1.0.0-beta.30",
