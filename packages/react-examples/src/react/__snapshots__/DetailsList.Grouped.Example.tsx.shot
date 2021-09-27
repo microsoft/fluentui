@@ -1663,6 +1663,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 role="presentation"
                               >
                                 <div
+                                  aria-disabled={false}
                                   aria-level={2}
                                   aria-rowindex={3}
                                   aria-selected={false}
@@ -2160,6 +2161,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 role="presentation"
                               >
                                 <div
+                                  aria-disabled={false}
                                   aria-level={2}
                                   aria-rowindex={4}
                                   aria-selected={false}
@@ -3525,6 +3527,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 role="presentation"
                               >
                                 <div
+                                  aria-disabled={false}
                                   aria-level={2}
                                   aria-rowindex={7}
                                   aria-selected={false}
@@ -4022,6 +4025,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 role="presentation"
                               >
                                 <div
+                                  aria-disabled={false}
                                   aria-level={2}
                                   aria-rowindex={8}
                                   aria-selected={false}
@@ -4519,6 +4523,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 role="presentation"
                               >
                                 <div
+                                  aria-disabled={false}
                                   aria-level={2}
                                   aria-rowindex={9}
                                   aria-selected={false}

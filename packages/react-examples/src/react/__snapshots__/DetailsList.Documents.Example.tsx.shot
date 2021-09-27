@@ -1737,6 +1737,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={2}
                         className=
                             ms-FocusZone
@@ -2201,6 +2202,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={3}
                         className=
                             ms-FocusZone
@@ -2665,6 +2667,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={4}
                         className=
                             ms-FocusZone
@@ -3129,6 +3132,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={5}
                         className=
                             ms-FocusZone
@@ -3593,6 +3597,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={6}
                         className=
                             ms-FocusZone
@@ -4057,6 +4062,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={7}
                         className=
                             ms-FocusZone
@@ -4521,6 +4527,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={8}
                         className=
                             ms-FocusZone
@@ -4985,6 +4992,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={9}
                         className=
                             ms-FocusZone
@@ -5449,6 +5457,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={10}
                         className=
                             ms-FocusZone
@@ -5913,6 +5922,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
+                        aria-disabled={false}
                         aria-rowindex={11}
                         className=
                             ms-FocusZone

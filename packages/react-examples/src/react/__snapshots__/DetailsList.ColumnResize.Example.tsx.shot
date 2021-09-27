@@ -1787,6 +1787,7 @@ Array [
                         role="presentation"
                       >
                         <div
+                          aria-disabled={false}
                           aria-rowindex={2}
                           className=
                               ms-FocusZone
@@ -3098,6 +3099,7 @@ Array [
                         role="presentation"
                       >
                         <div
+                          aria-disabled={false}
                           aria-rowindex={2}
                           className=
                               ms-FocusZone
