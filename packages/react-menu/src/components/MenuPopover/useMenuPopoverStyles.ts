@@ -8,8 +8,7 @@ const useStyles = makeStyles({
     maxWidth: '300px',
     width: 'max-content',
     boxShadow: `${theme.alias.shadow.shadow16}`,
-    paddingTop: '4px',
-    paddingBottom: '4px',
+    padding: '4px',
     border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
   }),
 });

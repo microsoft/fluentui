@@ -3,8 +3,15 @@ import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { MenuItemState } from './MenuItem.types';
 
 const useStyles = makeStyles({
-  focusIndicator: createFocusIndicatorStyleRule(),
+  focusIndicator: createFocusIndicatorStyleRule(theme => ({
+    borderColor: 'transparent',
+    boxShadow: `
+      inset 0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.strokeFocus2}
+    `,
+    zIndex: 1,
+  })),
   root: theme => ({
+    borderRadius: '4px',
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     paddingRight: '10px',
@@ -17,11 +24,6 @@ const useStyles = makeStyles({
     gap: '4px',
 
     ':hover': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
-      color: theme.alias.color.neutral.neutralForeground2Hover,
-    },
-
-    ':focus': {
       backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
       color: theme.alias.color.neutral.neutralForeground2Hover,
     },
@@ -41,11 +43,6 @@ const useStyles = makeStyles({
     ':hover': {
       color: theme.alias.color.neutral.neutralForeground3Hover,
     },
-
-    ':focus': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
-      color: theme.alias.color.neutral.neutralForeground3Hover,
-    },
   }),
   icon: {
     width: '20px',
@@ -56,15 +53,13 @@ const useStyles = makeStyles({
     height: '20px',
   },
   disabled: theme => ({
-    backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
     ':hover': {
-      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
+      background: theme.alias.color.neutral.neutralBackground1,
       color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
 
     ':focus': {
-      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
       color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   }),
