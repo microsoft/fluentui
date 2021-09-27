@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Support override className in LayoutGroup",
+  "packageName": "@uifabric/experiments",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
