@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Sep 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.0)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.3.2..@fluentui/react-file-type-icons_v8.4.0)
+
+### Minor changes
+
+- Add forms icon to react-file-type-icons ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by chhoorn@microsoft.com)
+- Add sway icon ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by chhoorn@microsoft.com)
 
 ## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.3.2)
 

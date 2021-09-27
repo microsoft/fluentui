@@ -2,6 +2,21 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Mon, 27 Sep 2021 07:34:24 GMT",
+      "tag": "@fluentui/theme-samples_v8.2.15",
+      "version": "8.2.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.34.7",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Sep 2021 07:35:13 GMT",
       "tag": "@fluentui/theme-samples_v8.2.14",
       "version": "8.2.14",

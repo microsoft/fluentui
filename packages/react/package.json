@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.34.6",
+  "version": "8.34.7",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@fluentui/common-styles": "^1.0.17",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/example-data": "^8.2.6",
+    "@fluentui/example-data": "^8.2.7",
     "@fluentui/jest-serializer-merge-styles": "^8.0.10",
     "@fluentui/react-conformance": "*",
     "@fluentui/scripts": "^1.0.0",

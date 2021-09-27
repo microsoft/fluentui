@@ -2,6 +2,75 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 27 Sep 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-examples_v8.34.4",
+      "version": "8.34.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/azure-themes to v8.1.74",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/example-data to v8.2.7",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react to v8.34.7",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-cards to v0.200.34",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-charting to v5.3.46",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-docsite-components to v8.3.33",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-experiments to v8.3.15",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-file-type-icons to v8.4.0",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.161",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/theme-samples to v8.2.15",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Sep 2021 07:35:13 GMT",
       "tag": "@fluentui/react-examples_v8.34.4",
       "version": "8.34.4",

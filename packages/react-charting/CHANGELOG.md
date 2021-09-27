@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 23 Sep 2021 07:35:13 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Sep 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.46)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.45..@fluentui/react-charting_v5.3.46)
+
+### Patches
+
+- Legend container shifted left by 4 px for keyboard focus border ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by v-scharde@microsoft.com)
+- Removed title tag so that title tooltip should not show ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by v-scharde@microsoft.com)
+- Bump @fluentui/react to v8.34.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
 
 ## [5.3.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.45)
 

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 23 Sep 2021 07:35:13 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Sep 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.7)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.6..@fluentui/react_v8.34.7)
+
+### Patches
+
+- Update Toggle to not append on/off text to label" ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by sarah.higley@microsoft.com)
+- Provided opt-in for delaying first measure ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by gcox@microsoft.com)
+- Updating README to remove sections that no longer exist. ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/example-data to v8.2.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
 
 ## [8.34.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.6)
 
