@@ -1,5 +1,5 @@
 import { IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { IStyle, normalize, getGlobalClassNames } from '../../Styling';
+import { IStyle, normalize, getGlobalClassNames, HighContrastSelector } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DatePicker',
@@ -7,10 +7,13 @@ const GlobalClassNames = {
   withLabel: 'ms-DatePicker-event--with-label',
   withoutLabel: 'ms-DatePicker-event--without-label',
   disabled: 'msDatePickerDisabled ',
+  readOnlyTextfield: 'ms-DatePicker-readOnlyTextfield',
 };
 
+const TEXTFIELD_HEIGHT = 32;
+
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
-  const { className, theme, disabled, label, isDatePickerShown } = props;
+  const { className, theme, disabled, label, isDatePickerShown, readOnlyPlaceHolder } = props;
   const { palette, semanticColors, effects, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -65,6 +68,40 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       disabled && {
         color: semanticColors.disabledText,
         cursor: 'default',
+      },
+    ],
+    readOnlyTextfield: [
+      fonts.medium,
+      classNames.readOnlyTextfield,
+      normalize,
+      {
+        borderRadius: effects.roundedCorner2,
+        background: 'none',
+        backgroundColor: 'transparent',
+        color: semanticColors.inputText,
+        position: 'relative',
+        width: '100%',
+        minWidth: 0,
+        outline: 0,
+        cursor: 'pointer',
+        display: 'block',
+        height: TEXTFIELD_HEIGHT,
+        lineHeight: TEXTFIELD_HEIGHT - 1.5,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'WindowText',
+          },
+        },
+      },
+      readOnlyPlaceHolder && {
+        color: semanticColors.inputPlaceholderText,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+          },
+        },
       },
     ],
   };

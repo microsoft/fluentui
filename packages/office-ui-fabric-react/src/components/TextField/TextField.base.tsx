@@ -19,7 +19,13 @@ import {
   warnControlledUsage,
   warnMutuallyExclusive,
 } from '../../Utilities';
-import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+import {
+  ITextField,
+  ITextFieldInputIds,
+  ITextFieldProps,
+  ITextFieldStyleProps,
+  ITextFieldStyles,
+} from './TextField.types';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 /** @internal */
@@ -206,6 +212,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
       onRenderDescription = this._onRenderDescription,
+      onRenderInput = this._onRenderInput,
     } = this.props;
     const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
@@ -230,6 +237,11 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       hasRevealButton,
     }));
 
+    const inputIds: ITextFieldInputIds = {
+      textFieldId: this._id || this._fallbackId,
+      descriptionId: this._descriptionId,
+    };
+
     return (
       <div className={classNames.root}>
         <div className={classNames.wrapper}>
@@ -238,7 +250,16 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {(prefix !== undefined || this.props.onRenderPrefix) && (
               <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
-            {multiline ? this._renderTextArea() : this._renderInput()}
+            {onRenderInput(
+              {
+                ...this.props,
+                className: classNames.field,
+                onBlur: this._onBlur,
+                onFocus: this._onFocus,
+              },
+              inputIds,
+              this._onRenderInput,
+            )}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
             {hasRevealButton && (
               // Explicitly set type="button" since the default button type within a form is "submit"
@@ -414,6 +435,11 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       );
     }
     return null;
+  };
+
+  private _onRenderInput = (textFieldProps: ITextFieldProps): JSX.Element | null => {
+    const { multiline } = textFieldProps;
+    return multiline ? this._renderTextArea() : this._renderInput();
   };
 
   private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {

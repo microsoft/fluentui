@@ -19,7 +19,7 @@ import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { TextField, ITextField } from '../../TextField';
+import { TextField, ITextField, ITextFieldInputIds, ITextFieldProps } from '../../TextField';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import { FocusTrapZone } from '../../FocusTrapZone';
 
@@ -197,6 +197,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     const iconProps = textFieldProps && textFieldProps.iconProps;
     const textFieldId =
       textFieldProps && textFieldProps.id && textFieldProps.id !== this._id ? textFieldProps.id : this._id + '-label';
+    const readOnly = !allowTextInput && !disabled;
 
     return (
       <div {...nativeProps} className={classNames.root}>
@@ -236,6 +237,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
             onChange={this._onTextFieldChanged}
+            onRenderInput={readOnly ? this._onRenderReadOnlyInput : undefined}
           />
         </div>
         {isDatePickerShown && (
@@ -589,4 +591,28 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     }
     return this.state.errorMessage;
   }
+
+  private _onRenderReadOnlyInput = (inputProps: ITextFieldProps, inputIds: ITextFieldInputIds): JSX.Element | null => {
+    const { textFieldId, descriptionId } = inputIds;
+    const { ariaLabel, errorMessage, placeholder, tabIndex } = inputProps;
+    const { formattedDate } = this.state;
+    const { styles, theme } = this.props;
+
+    const classNames = getClassNames(styles, { theme: theme!, readOnlyPlaceHolder: !formattedDate });
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(inputProps, divProperties);
+    const isDescriptionAvailable = inputProps.description;
+
+    return (
+      <div
+        {...divProps}
+        id={textFieldId}
+        tabIndex={tabIndex ?? 0}
+        aria-label={ariaLabel}
+        aria-describedby={isDescriptionAvailable ? descriptionId : inputProps['aria-describedby']}
+        aria-invalid={!!errorMessage}
+      >
+        <span className={classNames.readOnlyTextfield}> {formattedDate || placeholder}</span>
+      </div>
+    );
+  };
 }

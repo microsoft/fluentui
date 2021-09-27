@@ -104,6 +104,15 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
+   * Custom renderer for input element.
+   */
+  onRenderInput?: (
+    props?: ITextFieldProps,
+    inputIds?: ITextFieldInputIds,
+    defaultRender?: (props?: ITextFieldProps, inputIds?: ITextFieldInputIds) => JSX.Element | null,
+  ) => JSX.Element | null;
+
+  /**
    * Prefix displayed before the text field contents. This is not included in the value.
    * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
@@ -271,6 +280,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
    */
   maskFormat?: { [key: string]: RegExp };
+}
+
+/**
+ * Relevant TextField ids for custom onRenderInput renderer to consume.
+ */
+export interface ITextFieldInputIds {
+  textFieldId: string;
+  descriptionId: string;
 }
 
 /**
