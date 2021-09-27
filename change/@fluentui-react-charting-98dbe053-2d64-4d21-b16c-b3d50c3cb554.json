@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removed title tag so that title tooltip should not show",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

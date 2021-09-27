@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix badge examples to use shorthand props",
-  "packageName": "@fluentui/example-data",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
