@@ -18,17 +18,13 @@ export type ImageCommons = {
   /**
    * An image can take up the width of its container.
    */
-  fluid?: boolean;
+  block?: boolean;
 
   /**
-   * An image can appear circular.
+   * An image can appear square, circular, or rounded.
+   * @defaultvalue square
    */
-  circular?: boolean;
-
-  /**
-   * An image can appear rounded.
-   */
-  rounded?: boolean;
+  shape?: 'square' | 'circular' | 'rounded';
 
   /**
    * An image can appear elevated with shadow.
