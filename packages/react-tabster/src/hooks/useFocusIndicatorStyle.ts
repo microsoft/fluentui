@@ -3,7 +3,11 @@ import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 
 const defaultStyleRule = (theme: Theme) => ({
-  outline: `solid 1px ${theme.alias.color.neutral.neutralForeground1}`,
+  borderColor: 'transparent',
+  boxShadow: `
+      inset 0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.strokeFocus2}
+    `,
+  zIndex: 1,
 });
 
 export interface CreateFocusIndicatorStyleRuleOptions {
