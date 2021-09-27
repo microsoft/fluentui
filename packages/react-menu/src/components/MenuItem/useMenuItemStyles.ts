@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     zIndex: 1,
   })),
   root: theme => ({
-    borderRadius: '4px',
+    borderRadius: theme.global.borderRadius.medium,
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     paddingRight: '10px',
