@@ -11,14 +11,14 @@ import {
 import { Calendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { ITextFieldInputIds, TextField } from '../../TextField';
+import { TextField } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
 import { defaultDatePickerStrings } from './defaults';
 import type { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import type { IRenderFunction } from '@fluentui/utilities';
 import type { ICalendar } from '../../Calendar';
-import type { ITextField, ITextFieldProps } from '../../TextField';
+import type { ITextField, ITextFieldInputIds, ITextFieldProps } from '../../TextField';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
