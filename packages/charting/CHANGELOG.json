@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 27 Sep 2021 12:32:48 GMT",
+      "tag": "@uifabric/charting_v4.17.6",
+      "version": "4.17.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Legend container shifted left by 4 px for keyboard focus border",
+            "author": "v-scharde@microsoft.com",
+            "commit": "75c5c4468fa9fb7cdc35ed6b8db479f77ba2d441",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Removed title tag so that title tooltip should not show",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2dba6d1082ccfc9f1546ce84941f29a1926e5082",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Sep 2021 12:25:48 GMT",
       "tag": "@uifabric/charting_v4.17.5",
       "version": "4.17.5",

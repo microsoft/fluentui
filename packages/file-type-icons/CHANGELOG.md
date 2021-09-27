@@ -1,8 +1,18 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 27 Aug 2021 12:24:10 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Sep 2021 12:32:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.0)
+
+Mon, 27 Sep 2021 12:32:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.7.0..@uifabric/file-type-icons_v7.8.0)
+
+### Minor changes
+
+- Add forms icon to file-type-icons ([PR #19945](https://github.com/microsoft/fluentui/pull/19945) by chhoorn@microsoft.com)
+- add sway icon ([PR #19972](https://github.com/microsoft/fluentui/pull/19972) by chhoorn@microsoft.com)
 
 ## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.7.0)
 

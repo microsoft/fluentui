@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Porting Opt in viewport delay (#19968) to 7.0",
-  "packageName": "office-ui-fabric-react",
-  "email": "geoff.cox@live.com",
-  "dependentChangeType": "patch"
-}

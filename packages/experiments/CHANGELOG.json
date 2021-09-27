@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 27 Sep 2021 12:32:48 GMT",
+      "tag": "@uifabric/experiments_v7.40.6",
+      "version": "7.40.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.8.0",
+            "author": "chhoorn@microsoft.com",
+            "commit": "c4b23ab487ad0bf81b9f9617d93bc4dee26541fb",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Sep 2021 12:25:48 GMT",
       "tag": "@uifabric/experiments_v7.40.5",
       "version": "7.40.5",

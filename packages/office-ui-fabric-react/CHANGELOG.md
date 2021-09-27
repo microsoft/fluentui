@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Sep 2021 12:25:48 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Sep 2021 12:32:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.176.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.176.2)
+
+Mon, 27 Sep 2021 12:32:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.176.1..office-ui-fabric-react_v7.176.2)
+
+### Patches
+
+- Porting Opt in viewport delay (#19968) to 7.0 ([PR #19975](https://github.com/microsoft/fluentui/pull/19975) by geoff.cox@live.com)
 
 ## [7.176.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.176.1)
 

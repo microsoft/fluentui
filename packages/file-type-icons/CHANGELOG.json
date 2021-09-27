@@ -2,6 +2,27 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Mon, 27 Sep 2021 12:32:48 GMT",
+      "tag": "@uifabric/file-type-icons_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add forms icon to file-type-icons",
+            "author": "chhoorn@microsoft.com",
+            "commit": "c4b23ab487ad0bf81b9f9617d93bc4dee26541fb",
+            "package": "@uifabric/file-type-icons"
+          },
+          {
+            "comment": "add sway icon",
+            "author": "chhoorn@microsoft.com",
+            "commit": "16b7218dea3786c355e36e6e58f8b6aa4be388c8",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Aug 2021 12:24:10 GMT",
       "tag": "@uifabric/file-type-icons_v7.7.0",
       "version": "7.7.0",

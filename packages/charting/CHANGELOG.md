@@ -1,8 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 16 Sep 2021 12:25:48 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Sep 2021 12:32:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.17.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.17.6)
+
+Mon, 27 Sep 2021 12:32:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.17.5..@uifabric/charting_v4.17.6)
+
+### Patches
+
+- Legend container shifted left by 4 px for keyboard focus border ([PR #19964](https://github.com/microsoft/fluentui/pull/19964) by v-scharde@microsoft.com)
+- Removed title tag so that title tooltip should not show ([PR #19966](https://github.com/microsoft/fluentui/pull/19966) by v-scharde@microsoft.com)
 
 ## [4.17.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.17.5)
 

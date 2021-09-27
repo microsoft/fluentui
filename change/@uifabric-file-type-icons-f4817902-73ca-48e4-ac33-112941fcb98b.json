@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add sway icon",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "chhoorn@microsoft.com",
-  "dependentChangeType": "patch"
-}
