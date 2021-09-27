@@ -373,16 +373,30 @@ describe('DetailsList', () => {
     );
   });
 
-  it('executes onItemInvoked when double click or enter is pressed', () => {
+  it('executes onItemInvoked when double click is pressed', () => {
     const items = mockData(5);
     const onItemInvoked = jest.fn();
 
     safeMount(
       <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
       (wrapper: ReactWrapper) => {
-        wrapper.find('.ms-DetailsRow').first().simulate('dblclick').simulate('keydown', { which: KeyCodes.enter });
+        wrapper.find('.ms-DetailsRow').first().simulate('dblclick');
 
-        expect(onItemInvoked).toHaveBeenCalledTimes(2);
+        expect(onItemInvoked).toHaveBeenCalledTimes(1);
+      },
+    );
+  });
+
+  it('executes onItemInvoked when enter is pressed', () => {
+    const items = mockData(5);
+    const onItemInvoked = jest.fn();
+
+    safeMount(
+      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
+      (wrapper: ReactWrapper) => {
+        wrapper.find('.ms-DetailsRow').first().simulate('keydown', { which: KeyCodes.enter });
+
+        expect(onItemInvoked).toHaveBeenCalledTimes(1);
       },
     );
   });
