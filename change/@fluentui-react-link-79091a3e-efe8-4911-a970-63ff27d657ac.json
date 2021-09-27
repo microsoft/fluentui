@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Link: Fixing issues found in a11y review.",
-  "packageName": "@fluentui/react-link",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates ComponentState on custom props",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Refactor Tooltip to remove mergeProps",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
