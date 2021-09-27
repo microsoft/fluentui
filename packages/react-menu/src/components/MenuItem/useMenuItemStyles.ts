@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   focusIndicator: createFocusIndicatorStyleRule(theme => ({
     borderColor: 'transparent',
     boxShadow: `
-      inset 0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.strokeFocus2}
+      0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.strokeFocus2}
     `,
     zIndex: 1,
   })),
