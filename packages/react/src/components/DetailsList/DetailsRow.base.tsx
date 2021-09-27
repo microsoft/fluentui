@@ -206,7 +206,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       cellStyleProps,
       group,
       focusZoneProps,
-      disabled,
+      disabled = false,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
