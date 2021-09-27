@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Switch from dialog role to listbox role for pickers with no suggestions",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
