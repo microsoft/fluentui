@@ -138,7 +138,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             >
               <div
                 aria-checked={false}
-                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check

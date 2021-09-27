@@ -324,8 +324,7 @@ describe('DetailsHeader', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  // if ariaLabelForSelectAllCheckbox is not provided, the select all checkbox label should not
-  // be rendered and therefore aria-describedby should not exist on the select all checkbox
+  // if ariaLabelForSelectAllCheckbox is not provided, the select all checkbox label should not be rendered
   it('does not accessible label for select all checkbox or aria-describedby', () => {
     const component = mount(
       <DetailsHeader
@@ -341,21 +340,12 @@ describe('DetailsHeader', () => {
       .getDOMNode()
       .getAttribute('aria-labelledby');
 
-    expect(
-      component
-        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
-        .first()
-        .getDOMNode()
-        .hasAttribute('aria-describedby'),
-    ).toBe(false);
-
     expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(0);
   });
 
   // if ariaLabelForSelectAllCheckbox is passed in and onRenderColumnHeaderTooltip is not,
-  // the select all checkbox label should be rendered and aria-describedby on select all
-  // checkbox should exist with a valid id
-  it('renders accessible label for select all checkbox and valid aria-describedby', () => {
+  // the select all checkbox label should be rendered and with a valid id
+  it('renders accessible label for select all checkbox', () => {
     const component = mount(
       <DetailsHeader
         selection={_selection}
@@ -370,14 +360,6 @@ describe('DetailsHeader', () => {
       .find('[aria-colindex=1]')
       .getDOMNode()
       .getAttribute('aria-labelledby');
-
-    expect(
-      component
-        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
-        .first()
-        .getDOMNode()
-        .getAttribute('aria-describedby')!,
-    ).toEqual(`${selectAllCheckBoxAriaLabelledBy}Tooltip`);
 
     expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(1);
   });

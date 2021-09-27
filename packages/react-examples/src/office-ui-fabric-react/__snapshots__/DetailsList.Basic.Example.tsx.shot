@@ -385,7 +385,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                 >
                   <div
                     aria-checked={false}
-                    aria-describedby="header4-checkTooltip"
                     aria-label="Toggle selection for all items"
                     className=
                         ms-DetailsRow-check

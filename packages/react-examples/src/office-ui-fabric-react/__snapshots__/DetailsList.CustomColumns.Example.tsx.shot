@@ -137,7 +137,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
             >
               <div
                 aria-checked={false}
-                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -482,7 +481,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       }
                   id="header1-thumbnail-name"
                 >
-                  
+
                 </span>
               </span>
             </span>
