@@ -237,7 +237,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
             onChange={this._onTextFieldChanged}
-            onRenderInput={readOnly ? this._onRenderReadOnlyInput : undefined}
+            onRenderInput={readOnly ? this._renderReadOnlyInput : undefined}
           />
         </div>
         {isDatePickerShown && (
@@ -592,7 +592,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     return this.state.errorMessage;
   }
 
-  private _onRenderReadOnlyInput = (inputProps: ITextFieldProps, inputIds: ITextFieldInputIds): JSX.Element | null => {
+  private _renderReadOnlyInput = (inputProps: ITextFieldProps, inputIds: ITextFieldInputIds): JSX.Element | null => {
     const { textFieldId, descriptionId } = inputIds;
     const { ariaLabel, errorMessage, placeholder, tabIndex } = inputProps;
     const { formattedDate } = this.state;
