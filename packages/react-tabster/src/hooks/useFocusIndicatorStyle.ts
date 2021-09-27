@@ -3,6 +3,7 @@ import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 
 const defaultStyleRule = (theme: Theme) => ({
+  outline: `${theme.global.strokeWidth.thick} transparent`,
   boxShadow: `
       0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.strokeFocus2}
     `,
