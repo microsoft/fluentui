@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Wed, 22 Sep 2021 09:55:02 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 07:37:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.34)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.33..@fluentui/react-docsite-components_v8.3.34)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.16 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+## [8.3.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.33)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.32..@fluentui/react-docsite-components_v8.3.33)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/example-data to v8.2.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.15 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+
+## [8.3.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.32)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.31..@fluentui/react-docsite-components_v8.3.32)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.6 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.14 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
 
 ## [8.3.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.31)
 

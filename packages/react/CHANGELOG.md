@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 22 Sep 2021 09:55:02 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 07:37:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.35.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.35.0)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.7..@fluentui/react_v8.35.0)
+
+### Minor changes
+
+- fix(TeachingBubble): Provide default aria attributes for dialog ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by peter.varholak@gmail.com)
+- update positioning logic to handle callout positions at small screens ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-focus to v8.3.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+### Patches
+
+- fix(DetailsList): apply hovered link color via parent container ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by peter.varholak@gmail.com)
+- Switch from dialog role to listbox role for pickers with no suggestions ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by sarah.higley@microsoft.com)
+- fix(DetailsList): keyboard selection within group header ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by peter.varholak@gmail.com)
+
+## [8.34.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.7)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.6..@fluentui/react_v8.34.7)
+
+### Patches
+
+- Update Toggle to not append on/off text to label" ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by sarah.higley@microsoft.com)
+- Provided opt-in for delaying first measure ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by gcox@microsoft.com)
+- Updating README to remove sections that no longer exist. ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/example-data to v8.2.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+
+## [8.34.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.6)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.5..@fluentui/react_v8.34.6)
+
+### Patches
+
+- Small update to comment in FocusTrapZone. ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by Humberto.Morimoto@microsoft.com)
 
 ## [8.34.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.5)
 
