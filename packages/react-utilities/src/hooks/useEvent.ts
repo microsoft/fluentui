@@ -19,8 +19,9 @@ export const useEvent = <T>(
 
   React.useEffect(() => {
     if (element) {
-      element.addEventListener(type, (callback as unknown) as (ev: Event) => void, useCapture);
-      return () => element.removeEventListener(type, (callback as unknown) as (ev: Event) => void, useCapture);
+      const currentCallback = (((ev: T) => callbackRef.current(ev)) as unknown) as EventListenerOrEventListenerObject;
+      element.addEventListener(type, currentCallback, useCapture);
+      return () => element.removeEventListener(type, currentCallback, useCapture);
     }
-  }, [element, type, callback, useCapture]);
+  }, [element, type, useCapture]);
 };
