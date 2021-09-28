@@ -245,15 +245,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                             ? ariaLabelForSelectAllCheckbox
                             : ariaLabelForSelectionColumn
                         }
-                        aria-describedby={
-                          !isCheckboxHidden
-                            ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
-                              ? `${this._id}-checkTooltip`
-                              : undefined
-                            : ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip
-                            ? `${this._id}-checkTooltip`
-                            : undefined
-                        }
                         data-is-focusable={!isCheckboxHidden || undefined}
                         isHeader={true}
                         selected={isAllSelected}

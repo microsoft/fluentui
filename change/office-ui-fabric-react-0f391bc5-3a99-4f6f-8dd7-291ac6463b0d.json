@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove aria attributes from DetailsRowCheck",
+  "packageName": "office-ui-fabric-react",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
