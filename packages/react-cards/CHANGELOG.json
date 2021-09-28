@@ -2,6 +2,33 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/react-cards_v0.200.36",
+      "version": "0.200.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.35.1",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.12",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.11",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Sep 2021 07:37:27 GMT",
       "tag": "@fluentui/react-cards_v0.200.35",
       "version": "0.200.35",

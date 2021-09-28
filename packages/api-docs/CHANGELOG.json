@@ -2,6 +2,51 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/merge-styles to v8.2.0",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react to v8.35.1",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/react-focus to v8.3.1",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/style-utilities to v8.3.3",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/theme to v2.4.0",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/api-docs",
+            "comment": "Bump @fluentui/utilities to v8.3.3",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Sep 2021 07:37:27 GMT",
       "tag": "@fluentui/api-docs_v8.1.35",
       "version": "8.1.35",

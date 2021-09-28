@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removed \"suggestions available\" from Calendar navigation buttons narratation",
-  "packageName": "@fluentui/react",
-  "email": "conniechen@microsoft.com",
-  "dependentChangeType": "patch"
-}
