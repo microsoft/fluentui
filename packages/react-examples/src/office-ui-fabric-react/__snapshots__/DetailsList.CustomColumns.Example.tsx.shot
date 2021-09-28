@@ -481,6 +481,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       }
                   id="header1-thumbnail-name"
                 >
+
                 </span>
               </span>
             </span>
