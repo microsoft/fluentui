@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(DetailsList): keyboard selection within group header",
-  "packageName": "@fluentui/react",
-  "email": "peter.varholak@gmail.com",
-  "dependentChangeType": "patch"
-}

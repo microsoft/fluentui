@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "implement granular control over shouldRaiseClicks",
-  "packageName": "@fluentui/react-focus",
-  "email": "peter.varholak@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix(TeachingBubble): Provide default aria attributes for dialog",
-  "packageName": "@fluentui/react",
-  "email": "peter.varholak@gmail.com",
-  "dependentChangeType": "patch"
-}
