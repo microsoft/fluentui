@@ -764,7 +764,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   overflow-y: auto;
                   position: relative;
                 }
-            style="outline: none; max-height: 752px;"
+            style="outline: none; max-height: 100%;"
           >
             <div
               class="ms-ComboBox-optionsContainerWrapper "
@@ -1532,7 +1532,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                   overflow-y: auto;
                   position: relative;
                 }
-            style="outline: none; max-height: 752px;"
+            style="outline: none; max-height: 100%;"
           >
             <div
               class="ms-ComboBox-optionsContainerWrapper "

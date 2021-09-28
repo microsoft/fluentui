@@ -2314,6 +2314,8 @@ export interface ICalendarYearStyles extends ICalendarPickerStyles {
 export interface ICalloutBeakPositionedInfo extends IPositionedData {
     // (undocumented)
     closestEdge: RectangleEdge;
+    // (undocumented)
+    hideBeak?: boolean;
 }
 
 // @public (undocumented)
@@ -4793,6 +4795,8 @@ export interface IElementPosition {
     alignmentEdge: RectangleEdge | undefined;
     // (undocumented)
     elementRectangle: Rectangle;
+    // (undocumented)
+    forcedInBounds?: boolean;
     // (undocumented)
     targetEdge: RectangleEdge;
 }
