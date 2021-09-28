@@ -162,6 +162,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       isFluentStyling,
       ariaLabelSelected,
       nameplateOnlyOnHover,
+      disabled = false,
       ...divProps
     } = this.props;
 
@@ -218,12 +219,15 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       </LinkAs>
     );
 
+    const isDisabled = (!isSelectable && !isInvokable) || disabled;
+
     return (
       <div
         aria-selected={isSelected}
         {...getNativeProps(divProps, divProperties)}
         aria-labelledby={ariaLabel ? this._labelId : this._nameId}
         aria-describedby={ariaLabelWithSelectState ? this._descriptionId : this._activityId}
+        aria-disabled={isDisabled}
         className={css('ms-Tile', className, TileStyles.tile, {
           [`ms-Tile--isSmall ${TileStyles.isSmall}`]: tileSize === 'small',
           [`ms-Tile--isLarge ${TileStyles.isLarge}`]: tileSize === 'large',
@@ -236,7 +240,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           [`ms-Tile--showBackground ${TileStyles.showBackground}`]: !hideBackground,
           [`ms-Tile--invokable ${TileStyles.invokable}`]: isInvokable,
           [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
-          [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
+          [`ms-Tile--isDisabled ${TileStyles.disabled}`]: isDisabled,
           [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
           [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling,
         })}
