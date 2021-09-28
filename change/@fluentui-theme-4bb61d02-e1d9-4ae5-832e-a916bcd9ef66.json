@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: improve SSR experience for merge-styles",
-  "packageName": "@fluentui/theme",
-  "email": "peter.varholak@gmail.com",
-  "dependentChangeType": "patch"
-}
