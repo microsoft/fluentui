@@ -592,8 +592,10 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     return this.state.errorMessage;
   }
 
-  private _renderReadOnlyInput = (inputProps: ITextFieldProps, inputIds: ITextFieldInputIds): JSX.Element | null => {
-    const { textFieldId, descriptionId } = inputIds;
+  private _renderReadOnlyInput = (
+    inputProps: ITextFieldProps & { inputIds: ITextFieldInputIds },
+  ): JSX.Element | null => {
+    const { textFieldId, descriptionId } = inputProps.inputIds;
     const { ariaLabel, errorMessage, placeholder, tabIndex } = inputProps;
     const { formattedDate } = this.state;
     const { styles, theme } = this.props;

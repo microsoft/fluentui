@@ -256,8 +256,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
                 className: classNames.field,
                 onBlur: this._onBlur,
                 onFocus: this._onFocus,
+                inputIds: inputIds,
               },
-              inputIds,
               this._onRenderInput,
             )}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
@@ -437,7 +437,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     return null;
   };
 
-  private _onRenderInput = (textFieldProps: ITextFieldProps): JSX.Element | null => {
+  private _onRenderInput = (textFieldProps: ITextFieldProps & { inputIds: ITextFieldInputIds }): JSX.Element | null => {
     const { multiline } = textFieldProps;
     return multiline ? this._renderTextArea() : this._renderInput();
   };
