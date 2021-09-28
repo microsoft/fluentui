@@ -400,8 +400,8 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     );
   };
 
-  const renderReadOnlyInput = (inputProps: ITextFieldProps, inputIds: ITextFieldInputIds): JSX.Element | null => {
-    const { textFieldId, descriptionId } = inputIds;
+  const renderReadOnlyInput = (inputProps: ITextFieldProps & { inputIds: ITextFieldInputIds }): JSX.Element | null => {
+    const { textFieldId, descriptionId } = inputProps.inputIds;
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(inputProps, divProperties);
     const isDescriptionAvailable = inputProps.description;
 
