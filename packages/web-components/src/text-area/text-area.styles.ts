@@ -86,7 +86,7 @@ export const textAreaStyles = (context, definition) =>
       font: inherit;
       font-size: ${typeRampBaseFontSize};
       line-height: ${typeRampBaseLineHeight};
-      padding: calc(${designUnit}} * 1.5px) calc(${designUnit}} * 2px + 1px);
+      padding: calc(${designUnit} * 1.5px) calc(${designUnit} * 2px + 1px);
       width: 100%;
       resize: none;
     }
