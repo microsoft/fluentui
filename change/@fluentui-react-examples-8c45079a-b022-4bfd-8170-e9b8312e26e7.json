@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Port Picker placeholder style (#19568) to 7.0 * Added placeholder styles to base picker",
+  "packageName": "@fluentui/react-examples",
+  "email": "geoff.cox@live.com",
+  "dependentChangeType": "patch"
+}
