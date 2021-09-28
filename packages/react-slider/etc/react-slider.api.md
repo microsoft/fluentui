@@ -9,6 +9,42 @@ import { ComponentState } from '@fluentui/react-utilities';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
+// @public (undocumented)
+export const lowerThumbClassName: string;
+
+// @public
+export const RangedSlider: React_2.ForwardRefExoticComponent<RangedSliderProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
+    defaultValue?: [number, number];
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
+        value: [number, number];
+    }) => void;
+    value?: [number, number];
+}
+
+// @public (undocumented)
+export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
+}
+
+// @public (undocumented)
+export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
+    lowerThumb: IntrinsicShorthandProps<'div'>;
+    lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
+    upperThumb: IntrinsicShorthandProps<'div'>;
+    upperThumbWrapper: IntrinsicShorthandProps<'div'>;
+    lowerInput: IntrinsicShorthandProps<'input'>;
+    upperInput: IntrinsicShorthandProps<'input'>;
+};
+
+// @public (undocumented)
+export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
+}
+
+// @public
+export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
+
 // @public
 export const renderSlider: (state: SliderState) => JSX.Element;
 
@@ -60,6 +96,18 @@ export type SliderSlots = {
 
 // @public (undocumented)
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+
+// @public (undocumented)
+export const upperThumbClassName: string;
+
+// @public
+export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
 
 // @public
 export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;

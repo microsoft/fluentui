@@ -4,7 +4,7 @@ import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { Image } from '../../Image';
-import { useOnEvent, useMergedRefs } from '@fluentui/react-hooks';
+import { useOnEvent, useMergedRefs, useId } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type {
   ITeachingBubbleProps,
@@ -36,6 +36,12 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
   const documentRef = useDocument();
   const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
 
+  const ariaDescribedById = useId('teaching-bubble-content-');
+  const ariaLabelledById = useId('teaching-bubble-title-');
+
+  const ariaDescribedBy = props.ariaDescribedBy ?? ariaDescribedById;
+  const ariaLabelledBy = props.ariaLabelledBy ?? ariaLabelledById;
+
   const {
     illustrationImage,
     primaryButtonProps,
@@ -50,8 +56,6 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
     isWide,
     styles,
     theme,
-    ariaDescribedBy,
-    ariaLabelledBy,
     footerContent: customFooterContent,
     focusTrapZoneProps,
   } = props;

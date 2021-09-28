@@ -27,7 +27,9 @@ const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItem
   SuggestionsItem,
   suggestionsItemStyles,
   undefined,
-  { scope: 'SuggestionItem' },
+  {
+    scope: 'SuggestionItem',
+  },
 );
 
 /**
@@ -139,7 +141,9 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     // TODO: cleanup after refactor of pickers to composition pattern and remove SASS support.
     const spinnerClassNameOrStyles = styles
       ? { styles: spinnerStyles }
-      : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
+      : {
+          className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner),
+        };
 
     const noResults = () => (
       // This ID can be used by the parent to set aria-activedescendant to this
@@ -165,7 +169,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
 
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
     const divProps: React.HtmlHTMLAttributes<HTMLDivElement> =
-      hasNoSuggestions || isLoading ? { role: 'dialog', id: suggestionsListId } : {};
+      hasNoSuggestions || isLoading ? { role: 'listbox', id: suggestionsListId } : {};
 
     const forceResolveId =
       this.state.selectedActionType === SuggestionActionType.forceResolve ? 'sug-selectedAction' : undefined;

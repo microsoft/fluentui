@@ -2,6 +2,27 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Mon, 27 Sep 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "chhoorn@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Add forms icon to react-file-type-icons",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "chhoorn@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Add sway icon",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Sep 2021 07:36:26 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.3.2",
       "version": "8.3.2",

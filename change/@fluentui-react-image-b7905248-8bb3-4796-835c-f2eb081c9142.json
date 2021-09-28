@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Updated ButtonProps for consistency",
-  "packageName": "@fluentui/react-card",
+  "comment": "Updated ImageProps for consistency",
+  "packageName": "@fluentui/react-image",
   "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
 }

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 07:37:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.3.0)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.2.2..@fluentui/react-focus_v8.3.0)
+
+### Minor changes
+
+- implement granular control over shouldRaiseClicks ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by peter.varholak@gmail.com)
 
 ## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.2.2)
 

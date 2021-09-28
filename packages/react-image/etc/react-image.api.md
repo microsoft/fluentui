@@ -37,9 +37,9 @@ export { Image_2 as Image }
 export type ImageCommons = {
     bordered?: boolean;
     fit?: 'none' | 'center' | 'contain' | 'cover';
-    fluid?: boolean;
-    circular?: boolean;
-    rounded?: boolean;
+    block?: boolean;
+    shape?: 'square' | 'circular' | 'rounded';
+    shadow?: boolean;
 };
 
 // @public (undocumented)
