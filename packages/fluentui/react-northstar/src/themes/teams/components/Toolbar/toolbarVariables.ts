@@ -27,6 +27,7 @@ export interface ToolbarVariables {
   foreground: string;
   background: string;
   dividerBorder: string;
+  focusBorderRadius: string;
 
   foregroundHover: string;
   backgroundHover: string;
@@ -86,6 +87,7 @@ export const toolbarVariables = (siteVars: any): ToolbarVariables => ({
   foreground: undefined,
   background: 'transparent',
   dividerBorder: undefined,
+  focusBorderRadius: siteVars.borderRadiusMedium,
 
   foregroundHover: undefined,
   backgroundHover: undefined,

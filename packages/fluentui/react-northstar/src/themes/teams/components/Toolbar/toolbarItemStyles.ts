@@ -11,6 +11,7 @@ export const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesPro
     const { borderWidth } = siteVariables;
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
+      borderRadius: v.focusBorderRadius,
     });
 
     return {
