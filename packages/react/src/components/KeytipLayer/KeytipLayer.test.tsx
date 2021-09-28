@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
@@ -390,7 +391,9 @@ describe('KeytipLayer', () => {
         content: 'X',
         keySequences: ['b', 'x'],
       });
-      jest.runAllTimers();
+      ReactTestUtils.act(() => {
+        jest.runAllTimers();
+      });
 
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(1);
@@ -406,7 +409,9 @@ describe('KeytipLayer', () => {
         content: 'X',
         keySequences: ['b', 'x'],
       });
-      jest.runAllTimers();
+      ReactTestUtils.act(() => {
+        jest.runAllTimers();
+      });
 
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(0);
@@ -423,7 +428,9 @@ describe('KeytipLayer', () => {
         content: 'X',
         keySequences: ['b', 'x'],
       });
-      jest.runAllTimers();
+      ReactTestUtils.act(() => {
+        jest.runAllTimers();
+      });
 
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(1);

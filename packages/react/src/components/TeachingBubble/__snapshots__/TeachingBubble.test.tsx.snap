@@ -67,7 +67,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "maxHeight": undefined,
+          "maxHeight": "100%",
           "outline": "none",
           "overflowY": "hidden",
         }
