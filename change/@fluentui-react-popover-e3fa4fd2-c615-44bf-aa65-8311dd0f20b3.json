@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(Popover): Add accessible border for HC",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
