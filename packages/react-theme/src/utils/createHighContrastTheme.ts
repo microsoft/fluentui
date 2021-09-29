@@ -1,20 +1,24 @@
+import { generateColorAliasTokens, sharedColorTokens } from '../alias/highContrast';
+import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths } from '../global';
 import { createShadowLevelTokens } from './shadows';
-import { generateSharedColorTokens, generateNeutralColorTokens } from '../alias/highContrast';
-import { createGlobalTheme } from '../global/utils';
-import { sharedColors as globalSharedColors } from '../global/colors';
-import type { BrandVariants, Theme } from '../types';
+import type { Theme } from '../types';
 
-export const createHighContrastTheme: (brand: BrandVariants) => Theme = brand => {
-  const global = createGlobalTheme(brand, globalSharedColors);
-  const neutral = generateNeutralColorTokens(global);
+export const createHighContrastTheme = (): Theme => {
+  const colorAliasTokens = generateColorAliasTokens();
+
   return {
-    global,
-    alias: {
-      color: {
-        ...generateSharedColorTokens(globalSharedColors, global.color),
-        neutral,
-      } as Theme['alias']['color'],
-      shadow: createShadowLevelTokens(neutral.neutralShadowAmbient, neutral.neutralShadowKey),
-    },
+    ...borderRadius,
+    ...fontSizes,
+    ...lineHeights,
+    ...fontFamilies,
+    ...strokeWidths,
+
+    ...colorAliasTokens,
+    ...sharedColorTokens,
+
+    ...createShadowLevelTokens(
+      colorAliasTokens.colorAliasNeutralShadowAmbient,
+      colorAliasTokens.colorAliasNeutralShadowKey,
+    ),
   };
 };

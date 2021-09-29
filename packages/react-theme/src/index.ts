@@ -1,6 +1,16 @@
 export * from './themes/index';
-export * from './global/index';
-
 export * from './utils/index';
 
-export * from './types';
+export type {
+  BrandVariants,
+  FontSizeTokens,
+  LineHeightTokens,
+  BorderRadiusTokens,
+  StrokeWidthTokens,
+  ShadowLevelTokens,
+  FontFamilyTokens,
+  SharedColorTokens,
+  ColorAliasTokens,
+  PartialTheme,
+  Theme,
+} from './types';

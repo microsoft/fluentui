@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { teamsLightTheme } from '../index';
-import type { FontFamilies, FontSizes, LineHeights, FontWeights, TextAlignments } from '../index';
+import type { FontFamilyTokens, FontSizeTokens, LineHeightTokens, FontWeightTokens, TextAlignments } from '../index';
 
 export default {
   title: 'Theme/Global/Type',
@@ -17,7 +17,7 @@ const global = teamsLightTheme.global;
 
 export const GlobalFontFamily = () => (
   <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
-    {Object.keys(global.type.fontFamilies).map((fontFamily: keyof FontFamilies) => [
+    {Object.keys(global.type.fontFamilies).map((fontFamily: keyof FontFamilyTokens) => [
       <div key={fontFamily}>{fontFamily}</div>,
       <div key={`${fontFamily}-value`} style={{ fontFamily: `${global.type.fontFamilies[fontFamily]}` }}>
         {global.type.fontFamilies[fontFamily]}Font family {fontFamily}
@@ -28,18 +28,20 @@ export const GlobalFontFamily = () => (
 
 export const GlobalFontSize = () => (
   <div style={{ fontFamily: global.type.fontFamilies.base }}>
-    {Object.keys(global.type.fontSizes).map((fontSizeGroup: keyof FontSizes) => [
+    {Object.keys(global.type.fontSizes).map((fontSizeGroup: keyof FontSizeTokens) => [
       <h3 key={fontSizeGroup}>{fontSizeGroup}</h3>,
       <div
         key={`${fontSizeGroup}-value`}
         style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}
       >
-        {Object.keys(global.type.fontSizes[fontSizeGroup]).map((fontSize: keyof FontSizes[keyof FontSizes]) => [
-          <div key={fontSize}>{fontSize}</div>,
-          <div key={`${fontSize}-value`} style={{ fontSize: global.type.fontSizes[fontSizeGroup][fontSize] }}>
-            Font size {fontSizeGroup}.{fontSize}
-          </div>,
-        ])}
+        {Object.keys(global.type.fontSizes[fontSizeGroup]).map(
+          (fontSize: keyof FontSizeTokens[keyof FontSizeTokens]) => [
+            <div key={fontSize}>{fontSize}</div>,
+            <div key={`${fontSize}-value`} style={{ fontSize: global.type.fontSizes[fontSizeGroup][fontSize] }}>
+              Font size {fontSizeGroup}.{fontSize}
+            </div>,
+          ],
+        )}
       </div>,
     ])}
   </div>
@@ -47,14 +49,14 @@ export const GlobalFontSize = () => (
 
 export const GlobalLineHeight = () => (
   <div style={{ fontFamily: global.type.fontFamilies.base }}>
-    {Object.keys(global.type.lineHeights).map((lineHeightGroup: keyof LineHeights) => [
+    {Object.keys(global.type.lineHeights).map((lineHeightGroup: keyof LineHeightTokens) => [
       <h3 key={lineHeightGroup}>{lineHeightGroup}</h3>,
       <div
         key={`${lineHeightGroup}-value`}
         style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}
       >
         {Object.keys(global.type.lineHeights[lineHeightGroup]).map(
-          (lineHeight: keyof LineHeights[keyof LineHeights]) => [
+          (lineHeight: keyof LineHeightTokens[keyof LineHeightTokens]) => [
             <div key={lineHeight}>{lineHeight}</div>,
             <div
               key={`${lineHeight}-value`}
@@ -72,7 +74,7 @@ export const GlobalLineHeight = () => (
 export const GlobalFontWeight = () => (
   <div style={{ fontFamily: global.type.fontFamilies.base }}>
     <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
-      {Object.keys(global.type.fontWeights).map((fontWeight: keyof FontWeights) => [
+      {Object.keys(global.type.fontWeights).map((fontWeight: keyof FontWeightTokens) => [
         <div key={fontWeight}>{fontWeight}</div>,
         <div key={`${fontWeight}-value`} style={{ fontWeight: global.type.fontWeights[fontWeight] }}>
           Font weight {fontWeight}

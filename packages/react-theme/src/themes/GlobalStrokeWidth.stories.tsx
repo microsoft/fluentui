@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { teamsLightTheme } from '../index';
-import type { StrokeWidths } from '../index';
+import type { StrokeWidthTokens } from '../index';
 
 export default {
   title: 'Theme/Global/Stroke Width',
@@ -17,7 +17,7 @@ const global = teamsLightTheme.global;
 
 export const GlobalStrokeWidth = () => (
   <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
-    {Object.keys(global.strokeWidth).map((strokeWidth: keyof StrokeWidths) => [
+    {Object.keys(global.strokeWidth).map((strokeWidth: keyof StrokeWidthTokens) => [
       <div key={strokeWidth}>{strokeWidth}</div>,
       <div key={`${strokeWidth}-value`} style={{ borderBottom: `${global.strokeWidth[strokeWidth]} solid black` }} />,
     ])}
