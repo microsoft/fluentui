@@ -29,7 +29,9 @@ describe('Provider', () => {
   beforeEach(() => {
     jest
       .spyOn(Keyborg, 'createKeyborg')
-      .mockImplementation(() => ({ subscribe: jest.fn(), unsubscribe: jest.fn(), get: jest.fn() } as any));
+      .mockImplementation(
+        () => ({ subscribe: jest.fn(), unsubscribe: jest.fn(), isNavigatingWithKeyboard: jest.fn() } as any),
+      );
     jest.spyOn(Keyborg, 'disposeKeyborg');
   });
 
