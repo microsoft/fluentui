@@ -1,5 +1,5 @@
 import { IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { IStyle, normalize, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { IStyle, normalize, getGlobalClassNames, HighContrastSelector, getInputFocusStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DatePicker',
@@ -75,6 +75,9 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       lineHeight: TEXTFIELD_HEIGHT - 2,
       overflow: 'hidden',
       textOverflow: 'ellipsis',
+      selectors: {
+        ['&:focus']: getInputFocusStyle(semanticColors.inputFocusBorderAlt, effects.roundedCorner2),
+      },
     },
     readOnlyPlaceholder: {
       color: semanticColors.inputPlaceholderText,
