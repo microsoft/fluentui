@@ -18,7 +18,7 @@ import { defaultDatePickerStrings } from './defaults';
 import type { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import type { IRenderFunction } from '@fluentui/utilities';
 import type { ICalendar } from '../../Calendar';
-import type { ITextField, ITextFieldInputIds, ITextFieldProps } from '../../TextField';
+import type { ITextField, ITextFieldProps } from '../../TextField';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -400,21 +400,17 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     );
   };
 
-  const renderReadOnlyInput = (inputProps: ITextFieldProps & { inputIds: ITextFieldInputIds }): JSX.Element | null => {
-    const { textFieldId, descriptionId } = inputProps.inputIds;
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(inputProps, divProperties);
-    const isDescriptionAvailable = inputProps.description;
+  const renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
+    const divProps = getNativeProps(inputProps!, divProperties);
 
+    // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
+    // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
     return (
-      <div
-        {...divProps}
-        id={textFieldId}
-        tabIndex={tabIndex ?? 0}
-        aria-label={ariaLabel}
-        aria-describedby={isDescriptionAvailable ? descriptionId : inputProps['aria-describedby']}
-        aria-invalid={!!errorMessage}
-      >
-        <span className={classNames.readOnlyTextfield}> {formattedDate || placeholder}</span>
+      <div {...divProps} className={css(divProps.className, classNames.readOnlyTextField)} tabIndex={tabIndex || 0}>
+        {formattedDate || (
+          // Putting the placeholder in a separate span fixes specificity issues for the text color
+          <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
+        )}
       </div>
     );
   };
@@ -443,7 +439,6 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     disabled,
     label: !!label,
     isDatePickerShown: isCalendarShown,
-    readOnlyPlaceHolder: !formattedDate,
   });
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
@@ -493,7 +488,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           onClick={onTextFieldClick}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={onTextFieldChanged}
-          onRenderField={readOnly ? renderReadOnlyInput : undefined}
+          onRenderInput={readOnly ? renderReadOnlyInput : undefined}
         />
       </div>
       {isCalendarShown && (
