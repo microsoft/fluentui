@@ -168,7 +168,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
     const { isSelected = false, isModal = false } = this.state;
 
-    const { isSelectable = !!selection && selectionIndex > -1 } = this.props;
+    const { isSelectable = !disabled && !!selection && selectionIndex > -1 } = this.props;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
     const ariaLabelWithSelectState = isSelected && ariaLabelSelected ? `${ariaLabel}, ${ariaLabelSelected}` : ariaLabel;
     const content = (
@@ -242,6 +242,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
           [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling,
         })}
+        data-selection-disabled={disabled}
         data-is-focusable={true}
         data-is-sub-focuszone={true}
         data-disable-click-on-enter={true}
