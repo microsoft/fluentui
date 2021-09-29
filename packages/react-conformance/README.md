@@ -8,7 +8,7 @@ A tool used to run standardized tests which follow [Fluent UI React's](https://d
 
 Add isConformant within your package and configure any globally applied test options.
 
-```ts
+```
 my-proj/
 ├─ common/
 │  ├─ isConformant.ts 👈
@@ -37,7 +37,7 @@ export function isConformant<TProps = {}>(
 
 Within your component's test file:
 
-```ts
+```
 my-proj/
 ├─ common/
 ├─ src/
