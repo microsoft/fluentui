@@ -33,6 +33,13 @@ if (window.__siteConfig?.baseCDNUrl) {
 
 initializeIcons();
 
+const corePackageVersion: string = require<any>('office-ui-fabric-core/package.json').version;
+addCSSToHeader(
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
+    corePackageVersion +
+    '/css/fabric.min.css',
+);
+
 let rootElement: HTMLElement;
 
 export function createSite<TPlatforms extends string>(
@@ -117,5 +124,22 @@ export function createSite<TPlatforms extends string>(
     if (rootElement) {
       ReactDOM.unmountComponentAtNode(rootElement);
     }
+  }
+}
+
+function addCSSToHeader(fileName: string): void {
+  const headEl = document.head;
+  const linkEl = document.createElement('link');
+  const styleTags = headEl.getElementsByTagName('style');
+
+  linkEl.type = 'text/css';
+  linkEl.rel = 'stylesheet';
+  linkEl.href = fileName;
+
+  // insert fabric css before other styles so it doesn't override component styles
+  if (styleTags.length) {
+    headEl.insertBefore(linkEl, styleTags[0]);
+  } else {
+    headEl.appendChild(linkEl);
   }
 }
