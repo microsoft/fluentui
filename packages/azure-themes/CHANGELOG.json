@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Wed, 29 Sep 2021 12:33:09 GMT",
+      "tag": "@uifabric/azure-themes_v7.8.7",
+      "version": "7.8.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.176.3",
+            "author": "email not defined",
+            "commit": "3f3772fcc4dbdc3d94ac48d5f85cab5932d463d7",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Sep 2021 12:32:48 GMT",
       "tag": "@uifabric/azure-themes_v7.8.6",
       "version": "7.8.6",

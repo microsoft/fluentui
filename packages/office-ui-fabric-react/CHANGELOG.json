@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 29 Sep 2021 12:33:09 GMT",
+      "tag": "office-ui-fabric-react_v7.176.3",
+      "version": "7.176.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove aria attributes from DetailsRowCheck",
+            "author": "email not defined",
+            "commit": "3f3772fcc4dbdc3d94ac48d5f85cab5932d463d7",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DetailsList: row border now visible when focused in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "b6dbfa78addc718cbd94d18273cfa6cc24e99250",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Sep 2021 12:32:48 GMT",
       "tag": "office-ui-fabric-react_v7.176.2",
       "version": "7.176.2",

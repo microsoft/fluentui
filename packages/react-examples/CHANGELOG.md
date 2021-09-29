@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 27 Sep 2021 12:32:48 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Sep 2021 12:33:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.15.8)
+
+Wed, 29 Sep 2021 12:33:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.15.7..@fluentui/react-examples_v0.15.8)
+
+### Patches
+
+- remove aria-describedby ([PR #19936](https://github.com/microsoft/fluentui/pull/19936) by email not defined)
 
 ## [0.15.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.15.7)
 

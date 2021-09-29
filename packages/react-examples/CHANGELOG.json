@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 29 Sep 2021 12:33:09 GMT",
+      "tag": "@fluentui/react-examples_v0.15.8",
+      "version": "0.15.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove aria-describedby",
+            "author": "email not defined",
+            "commit": "3f3772fcc4dbdc3d94ac48d5f85cab5932d463d7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Sep 2021 12:32:48 GMT",
       "tag": "@fluentui/react-examples_v0.15.7",
       "version": "0.15.7",
