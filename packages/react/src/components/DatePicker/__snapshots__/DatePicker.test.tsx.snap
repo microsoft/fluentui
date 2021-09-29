@@ -249,7 +249,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 margin-top: 5px;
               }
         />
-
+        
       </span>
     </div>
   </div>
