@@ -223,6 +223,23 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                     overflow: hidden;
                     text-overflow: ellipsis;
                   }
+                  &:focus {
+                    border-color: #0078d4;
+                  }
+                  &:focus:after {
+                    border-radius: 2px;
+                    border: 2px solid #0078d4;
+                    bottom: -1px;
+                    content: '';
+                    left: -1px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                  }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+                    border-color: Highlight;
+                  }
               id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
@@ -472,6 +489,23 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                     line-height: 30px;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                  }
+                  &:focus {
+                    border-color: #0078d4;
+                  }
+                  &:focus:after {
+                    border-radius: 2px;
+                    border: 2px solid #0078d4;
+                    bottom: -1px;
+                    content: '';
+                    left: -1px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                  }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+                    border-color: Highlight;
                   }
               id="DatePicker5-label"
               onBlur={[Function]}

@@ -182,6 +182,23 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     overflow: hidden;
                     text-overflow: ellipsis;
                   }
+                  &:focus {
+                    border-color: #0078d4;
+                  }
+                  &:focus:after {
+                    border-radius: 2px;
+                    border: 2px solid #0078d4;
+                    bottom: -1px;
+                    content: '';
+                    left: -1px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                  }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+                    border-color: Highlight;
+                  }
               id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
