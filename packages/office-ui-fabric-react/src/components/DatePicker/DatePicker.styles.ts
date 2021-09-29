@@ -69,7 +69,7 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
         cursor: 'default',
       },
     ],
-    readOnlyTextfield: {
+    readOnlyTextField: {
       cursor: 'pointer',
       height: TEXTFIELD_HEIGHT,
       lineHeight: TEXTFIELD_HEIGHT - 2,

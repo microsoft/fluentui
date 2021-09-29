@@ -295,6 +295,6 @@ export interface IDatePickerStyles {
   callout: IStyle;
   icon: IStyle;
   wrapper?: IStyle;
-  readOnlyTextfield?: IStyle;
+  readOnlyTextField?: IStyle;
   readOnlyPlaceholder?: IStyle;
 }

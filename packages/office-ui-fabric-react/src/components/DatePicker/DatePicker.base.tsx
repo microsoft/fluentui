@@ -602,7 +602,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
     // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
     return (
-      <div {...divProps} className={css(divProps.className, classNames.readOnlyTextfield)} tabIndex={tabIndex || 0}>
+      <div {...divProps} className={css(divProps.className, classNames.readOnlyTextField)} tabIndex={tabIndex || 0}>
         {formattedDate || (
           // Putting the placeholder in a separate span fixes specificity issues for the text color
           <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
