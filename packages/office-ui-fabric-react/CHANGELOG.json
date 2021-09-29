@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 29 Sep 2021 20:54:18 GMT",
+      "tag": "office-ui-fabric-react_v7.177.0",
+      "version": "7.177.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DatePicker: ReadOnly DatePicker now uses a div with role=combobox so swipe gesture registers using Talkback.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "67e037aa230a4f16a3734ea57e3a526965a2675d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Sep 2021 12:33:09 GMT",
       "tag": "office-ui-fabric-react_v7.176.3",
       "version": "7.176.3",

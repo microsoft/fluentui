@@ -2,6 +2,21 @@
   "name": "@uifabric/mdl2-theme",
   "entries": [
     {
+      "date": "Wed, 29 Sep 2021 20:54:18 GMT",
+      "tag": "@uifabric/mdl2-theme_v0.5.7",
+      "version": "0.5.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.177.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "67e037aa230a4f16a3734ea57e3a526965a2675d",
+            "package": "@uifabric/mdl2-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Sep 2021 12:33:09 GMT",
       "tag": "@uifabric/mdl2-theme_v0.5.6",
       "version": "0.5.6",

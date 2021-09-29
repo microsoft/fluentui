@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 29 Sep 2021 20:54:18 GMT",
+      "tag": "@fluentui/react-examples_v0.15.9",
+      "version": "0.15.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: ReadOnly DatePicker now uses a div with role=combobox so swipe gesture registers using Talkback.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "67e037aa230a4f16a3734ea57e3a526965a2675d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Sep 2021 12:33:09 GMT",
       "tag": "@fluentui/react-examples_v0.15.8",
       "version": "0.15.8",
