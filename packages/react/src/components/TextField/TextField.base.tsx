@@ -513,32 +513,29 @@ export class TextFieldBase
     );
   }
 
-  private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'defaultValue',
-      'type',
-    ]);
-    const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
-    const type = this.state.isRevealingPassword ? 'text' : this.props.type ?? 'text';
-    return (
-      <input
-        type={type}
-        id={this._id}
-        aria-labelledby={ariaLabelledBy}
-        {...inputProps}
-        ref={this._textElement as React.RefObject<HTMLInputElement>}
-        value={this.value || ''}
-        onInput={this._onInputChange}
-        onChange={this._onInputChange}
-        className={this._classNames.field}
-        aria-label={this.props.ariaLabel}
-        aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this._errorMessage}
-        readOnly={this.props.readOnly}
-        onFocus={this._onFocus}
-        onBlur={this._onBlur}
-      />
-    );
+  private _renderInput(): JSX.Element | null {
+    const inputProps: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement> = {
+      type: this.state.isRevealingPassword ? 'text' : this.props.type || 'text',
+      id: this._id,
+      ...getNativeProps(this.props, inputProperties, ['defaultValue', 'type']),
+      'aria-labelledby': this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined),
+      ref: this._textElement as React.RefObject<HTMLInputElement>,
+      value: this.value || '',
+      onInput: this._onInputChange,
+      onChange: this._onInputChange,
+      className: this._classNames.field,
+      'aria-label': this.props.ariaLabel,
+      'aria-describedby': this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'],
+      'aria-invalid': !!this._errorMessage,
+      onFocus: this._onFocus,
+      onBlur: this._onBlur,
+    };
+
+    const defaultRender = (updatedInputProps: React.InputHTMLAttributes<HTMLInputElement>) => {
+      return <input {...updatedInputProps} />;
+    };
+    const onRenderInput = this.props.onRenderInput || defaultRender;
+    return onRenderInput(inputProps, defaultRender);
   }
 
   private _onRevealButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
