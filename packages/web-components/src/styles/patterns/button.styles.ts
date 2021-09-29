@@ -53,6 +53,7 @@ export const baseButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string = '',
+  nonInteractivitySelector: string = '',
 ) =>
   css`
     ${display('inline-flex')} :host {
@@ -114,6 +115,10 @@ export const baseButtonStyles = (
     :host .control:${focusVisible} {
       border-color: ${focusStrokeOuter} !important;
       box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter} inset !important;
+    }
+
+    :host .control${nonInteractivitySelector} {
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${neutralStrokeRest};
     }
 
     .control::-moz-focus-inner {
@@ -196,6 +201,7 @@ export const AccentButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string = '',
+  nonInteractivitySelector: string = '',
 ) =>
   css`
     :host .control {
@@ -221,7 +227,7 @@ export const AccentButtonStyles = (
         0 0 0 calc(((${focusStrokeWidth} + ${strokeWidth}) - ${strokeWidth}) * 1px) ${focusStrokeInner} inset !important;
     }
 
-    :host([disabled]) .control {
+    :host .control${nonInteractivitySelector} {
       background: ${accentFillRest};
     }
   `.withBehaviors(
@@ -273,6 +279,7 @@ export const HypertextStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string = '',
+  nonInteractivitySelector: string = '',
 ) =>
   css`
     :host {
@@ -329,6 +336,7 @@ export const LightweightButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string = '',
+  nonInteractivitySelector: string = '',
 ) =>
   css`
     :host {
@@ -379,6 +387,7 @@ export const OutlineButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string = '',
+  nonInteractivitySelector: string = '',
 ) =>
   css`
     :host .control {
@@ -413,6 +422,7 @@ export const StealthButtonStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
   interactivitySelector: string = '',
+  nonInteractivitySelector: string = '',
 ) =>
   css`
     :host .control {

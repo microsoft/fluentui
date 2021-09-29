@@ -840,7 +840,7 @@ export const neutralStrokeControlRecipe = create<InteractiveRecipe>({
       neutralStrokeControlHoverDelta.getValueFor(element),
       neutralStrokeControlActiveDelta.getValueFor(element),
       neutralStrokeControlFocusDelta.getValueFor(element),
-      4,
+      5,
     );
   },
 });

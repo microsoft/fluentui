@@ -11,6 +11,7 @@ import {
 import { appearanceBehavior } from '../utilities/behaviors';
 
 const interactivitySelector: string = '[href]';
+const nonInteractivitySelector: string = ':not([href])';
 
 export const anchorStyles: (
   context: ElementDefinitionContext,
@@ -21,11 +22,11 @@ export const anchorStyles: (
       cursor: default;
     }
 
-    ${baseButtonStyles(context, definition, interactivitySelector)}
+    ${baseButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)}
   `.withBehaviors(
-    appearanceBehavior('accent', AccentButtonStyles(context, definition, interactivitySelector)),
-    appearanceBehavior('hypertext', HypertextStyles(context, definition, interactivitySelector)),
-    appearanceBehavior('lightweight', LightweightButtonStyles(context, definition, interactivitySelector)),
-    appearanceBehavior('outline', OutlineButtonStyles(context, definition, interactivitySelector)),
-    appearanceBehavior('stealth', StealthButtonStyles(context, definition, interactivitySelector)),
+    appearanceBehavior('accent', AccentButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('hypertext', HypertextStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('lightweight', LightweightButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('outline', OutlineButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('stealth', StealthButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
   );

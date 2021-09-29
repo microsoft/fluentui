@@ -49,7 +49,8 @@ export function gradientShadowStroke(
   const activeIndex = restIndex + direction * (activeDelta - restDelta);
   const focusIndex = restIndex + direction * (focusDelta - restDelta);
 
-  const startPosition = direction === -1 ? shadowPercentage : 100 - shadowPercentage;
+  const startPosition = direction === -1 ? 0 : 100 - shadowPercentage;
+  const endPosition = direction === -1 ? shadowPercentage : 100;
 
   function gradientHelper(index: number, applyShadow: boolean): string {
     const color = palette.get(index);
@@ -58,7 +59,9 @@ export function gradientShadowStroke(
       const shadowColor = palette.get(index + direction! * shadowDelta);
       const startColor = direction === -1 ? shadowColor : color;
       const endColor = direction === -1 ? color : shadowColor;
-      return `linear-gradient(${overlayHelper(startColor)} ${startPosition}%, ${overlayHelper(endColor)})`;
+      return `linear-gradient(${overlayHelper(startColor)} ${startPosition}%, ${overlayHelper(
+        endColor,
+      )} ${endPosition}%)`;
     } else {
       return overlayHelper(color);
     }
