@@ -8280,7 +8280,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
-    onRenderInput?: IRenderFunction<ITextFieldProps & {
+    onRenderField?: IRenderFunction<ITextFieldProps & {
         inputIds: ITextFieldInputIds;
     }>;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
