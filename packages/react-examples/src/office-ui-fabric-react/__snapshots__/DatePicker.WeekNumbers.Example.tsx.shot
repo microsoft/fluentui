@@ -175,55 +175,33 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                     color: GrayText;
                   }
+                  {
+                    cursor: pointer;
+                    height: 32px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  }
               id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
+              onInput={[Function]}
               onKeyDown={[Function]}
               role="combobox"
               tabIndex={0}
             >
               <span
                 className=
-                    ms-DatePicker-readOnlyTextfield
+
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: transparent;
-                      background: none;
-                      border-radius: 2px;
-                      box-shadow: none;
-                      box-sizing: border-box;
                       color: #605e5c;
-                      cursor: pointer;
-                      display: block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      line-height: 30.5px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
-                      min-width: 0px;
-                      outline: 0px;
-                      overflow: hidden;
-                      padding-bottom: 0px;
-                      padding-left: 0px;
-                      padding-right: 0px;
-                      padding-top: 0px;
-                      position: relative;
-                      text-overflow: ellipsis;
-                      width: 100%;
                     }
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                      border-color: WindowText;
                       color: GrayText;
                     }
               >
-                 
                 Select a date...
               </span>
             </div>
