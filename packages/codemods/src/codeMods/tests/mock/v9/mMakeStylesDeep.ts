@@ -20,8 +20,8 @@ export const useStylesA = makeStyles({
   }),
   type: theme => ({
     fontFamily: theme.global.type.fontFamilies.base,
-    // fontSize: theme.global.type.fontSizes.base[300],
-    //   lineHeight: theme.global.type.lineHeights.base[300],
+    fontSize: theme.global.type.fontSizes.base[300],
+    lineHeight: theme.global.type.lineHeights.base[300],
     fontWeight: theme.global.type.fontWeights.regular,
   }),
 });

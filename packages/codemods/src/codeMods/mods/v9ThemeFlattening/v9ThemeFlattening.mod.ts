@@ -7,14 +7,6 @@ function capitalizeToken(value: string): string {
   return value.substr(0, 1).toUpperCase() + value.substr(1);
 }
 
-// function getTextForExpression(node: ts.ElementAccessExpression | ts.PropertyAccessExpression): string {
-//   if (ts.isElementAccessExpression(node)) {
-//     return 'foo'
-//   }
-//
-//   return getTextForExpression(node.expression) ? node.name.escapedText
-// }
-
 const replacements: [RegExp, (token: string) => string][] = [
   [
     /theme\.alias\.color\.neutral\..+/,
@@ -87,9 +79,6 @@ const replacements: [RegExp, (token: string) => string][] = [
       }
 
       if (key === 'fontSizes') {
-        console.log(name);
-        console.log(capitalizeToken(name));
-        console.log(capitalizeToken(name).replace(/[\[\]]/g, ''));
         return 'fontSize' + capitalizeToken(name).replace(/[\[\]]/g, '');
       }
 
@@ -109,7 +98,7 @@ function renameToken(token: string): string {
     return replacement[1](token);
   }
 
-  throw new Error();
+  throw new Error(`renameToken: not found a valid replacement for token "${token}"`);
 }
 
 const v9ThemeFlattening: CodeMod = {
@@ -118,13 +107,15 @@ const v9ThemeFlattening: CodeMod = {
       file.transform(traversal => {
         const node = traversal.visitChildren();
         const isMatchingNode =
-          (ts.isPropertyAccessExpression(node) && !ts.isPropertyAccessExpression(node.parent)) ||
-          ts.isElementAccessExpression(node);
+          (ts.isPropertyAccessExpression(node) &&
+            !ts.isPropertyAccessExpression(node.parent) &&
+            !ts.isElementAccessExpression(node.parent)) ||
+          (ts.isElementAccessExpression(node) && ts.isPropertyAccessExpression(node.expression));
 
         if (isMatchingNode) {
           const nodeText = node.getText();
 
-          if (nodeText.startsWith('theme.')) {
+          if (nodeText.startsWith('theme.') && nodeText.indexOf('.', 6) !== -1) {
             const newToken = renameToken(nodeText);
 
             return ts.factory.createPropertyAccessExpression(
