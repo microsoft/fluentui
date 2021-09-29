@@ -2,6 +2,110 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 29 Sep 2021 08:06:11 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.116",
+      "version": "9.0.0-alpha.116",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-badge",
+            "comment": "Add Storybook Controls to Badge documentation",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-image",
+            "comment": "Updated ImageProps for consistency",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "comment": "Use direct values in alias tokens",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 08:06:00 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.115",
+      "version": "9.0.0-alpha.115",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/make-styles",
+            "comment": "handle classes from CSS modules in mergeClasses()",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "comment": "Refactor Avatar to remove mergeProps",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Revert to ObjectShorthandProps for slots to allow correct typing in Avatar",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Updates Checkbox to use LabelProps on root",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "comment": "Updates divider to use new simplified slots",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "comment": "Link: Fixing issues found in a11y review.",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "fix(Popover): Add accessible border for HC",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "czearing@outlook.com",
+            "package": "@fluentui/react-slider",
+            "comment": "Adding the RangedSlider component.",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Refactor Tooltip to remove mergeProps",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Updates ComponentState on custom props",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          }
+        ],
+        "none": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-label",
+            "comment": "refactor: simplify mergeprops for label",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Sep 2021 09:17:17 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.114",
       "version": "9.0.0-alpha.114",

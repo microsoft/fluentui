@@ -2,6 +2,7 @@ import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 // TODO: Find a way to use pointer events with testing-library and remove enzyme.
+// github.com/microsoft/fluentui/issues/19977
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
@@ -417,6 +418,27 @@ describe('Slider', () => {
       expect(sliderTrack?.getAttribute('style')).toContain('99px');
     });
 
+    it('handles a keyboardStep prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      const onChange = jest.fn();
+
+      render(
+        <Slider
+          defaultValue={20}
+          step={3}
+          keyboardStep={5}
+          onChange={onChange}
+          data-testid="test"
+          input={{ ref: inputRef }}
+        />,
+      );
+      const sliderRoot = screen.getByTestId('test');
+
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 25 });
+      expect(inputRef.current?.value).toBe('25');
+    });
+
     it('handles a negative step prop', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();
@@ -441,12 +463,6 @@ describe('Slider', () => {
       expect(inputRef.current?.value).toBe('0.001');
     });
 
-    it('handles role prop', () => {
-      render(<Slider role="test" data-testid="test" />);
-      const sliderRoot = screen.getByTestId('test');
-      expect(sliderRoot.getAttribute('role')).toEqual('test');
-    });
-
     it('applies focus to the hidden input', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       render(<Slider defaultValue={3} input={{ ref: inputRef }} />);
@@ -455,19 +471,15 @@ describe('Slider', () => {
     });
 
     it('does not allow focus on disabled Slider', () => {
-      let sliderRef: any;
+      const sliderRef = React.createRef<HTMLDivElement>();
+      const inputRef = React.createRef<HTMLInputElement>();
 
-      const SliderTestComponent = () => {
-        sliderRef = React.useRef(null);
-
-        return <Slider defaultValue={3} ref={sliderRef} data-testid="test" disabled />;
-      };
-
-      render(<SliderTestComponent />);
+      render(<Slider ref={sliderRef} disabled input={{ ref: inputRef }} />);
 
       expect(document.activeElement).toEqual(document.body);
-
-      sliderRef.current.focus();
+      sliderRef?.current?.focus();
+      expect(document.activeElement).toEqual(document.body);
+      inputRef?.current?.focus();
       expect(document.activeElement).toEqual(document.body);
     });
 
@@ -511,6 +523,12 @@ describe('Slider', () => {
   });
 
   describe('Accessibility Tests', () => {
+    it('handles role prop', () => {
+      render(<Slider role="test" data-testid="test" />);
+      const sliderRoot = screen.getByTestId('test');
+      expect(sliderRoot.getAttribute('role')).toEqual('test');
+    });
+
     it('renders the input slot as input', () => {
       const { container } = render(<Slider input={{ className: 'test' }} />);
       const inputElement = container.querySelector('.test');

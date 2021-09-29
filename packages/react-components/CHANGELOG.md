@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 24 Sep 2021 09:17:17 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.116)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.115..@fluentui/react-components_v9.0.0-alpha.116)
+
+### Changes
+
+- `@fluentui/react-badge`
+  - Add Storybook Controls to Badge documentation ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by peter@draxler.ml)
+- `@fluentui/react-image`
+  - Updated ImageProps for consistency ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by gcox@microsoft.com)
+- `@fluentui/react-theme`
+  - Use direct values in alias tokens ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.115](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.115)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.114..@fluentui/react-components_v9.0.0-alpha.115)
+
+### Changes
+
+- `@fluentui/make-styles`
+  - handle classes from CSS modules in mergeClasses() ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - Refactor Avatar to remove mergeProps ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by behowell@microsoft.com)
+- `@fluentui/react-badge`
+  - Revert to ObjectShorthandProps for slots to allow correct typing in Avatar ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by lingfangao@hotmail.com)
+- `@fluentui/react-checkbox`
+  - Updates Checkbox to use LabelProps on root ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by bsunderhus@microsoft.com)
+- `@fluentui/react-divider`
+  - Updates divider to use new simplified slots ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by bsunderhus@microsoft.com)
+- `@fluentui/react-link`
+  - Link: Fixing issues found in a11y review. ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-popover`
+  - fix(Popover): Add accessible border for HC ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - Adding the RangedSlider component. ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by czearing@outlook.com)
+- `@fluentui/react-tooltip`
+  - Refactor Tooltip to remove mergeProps ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by behowell@microsoft.com)
+- `@fluentui/react-utilities`
+  - Updates ComponentState on custom props ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.114](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.114)
 
