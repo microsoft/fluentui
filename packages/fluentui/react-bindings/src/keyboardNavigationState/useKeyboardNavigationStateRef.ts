@@ -66,11 +66,11 @@ class KeyboardNavigationStateImpl implements KeyboardNavigationState {
     }
   }
 
-  setVal(isNavigatingWithKeyboard: boolean): void {
+  set(isNavigatingWithKeyboard: boolean): void {
     this._keyborg?.setVal(isNavigatingWithKeyboard);
   }
 
-  isNavigatingWithKeyboard(): boolean {
+  get(): boolean {
     return !!this._keyborg?.isNavigatingWithKeyboard();
   }
 }

@@ -351,7 +351,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   };
 
   const handleFocus = (e: React.FocusEvent) => {
-    setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
+    setIsFromKeyboard(context.keyboardNavigationState?.get());
     _.invoke(props, 'onFocus', e, props);
     if (menu) {
       _.invoke(parentProps, 'onItemSelect', e, index);
@@ -410,7 +410,6 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
       onClick: handleClick,
       ...(on === 'hover' && {
         onMouseEnter: e => {
-          context.keyboardNavigationState?.setVal(false);
           trySetMenuOpen(true, e);
           _.invoke(props, 'onMouseEnter', e, props);
           _.invoke(parentProps, 'onItemSelect', e, index);
@@ -503,7 +502,6 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     },
     ...(on === 'hover' && {
       onMouseEnter: e => {
-        context.keyboardNavigationState?.setVal(false);
         trySetMenuOpen(true, e);
         _.invoke(predefinedProps, 'onMouseEnter', e, props);
         _.invoke(parentProps, 'onItemSelect', e, index);

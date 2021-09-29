@@ -238,7 +238,7 @@ export const Tooltip: React.FC<TooltipProps> &
 
   const triggerProps: React.HTMLAttributes<HTMLElement> = {
     onFocus: (e, ...args) => {
-      if (context.keyboardNavigationState?.isNavigatingWithKeyboard()) {
+      if (context.keyboardNavigationState?.get()) {
         trySetOpen(true, e);
       }
       _.invoke(triggerElement, 'props.onFocus', e, ...args);
@@ -251,7 +251,6 @@ export const Tooltip: React.FC<TooltipProps> &
     },
     onMouseEnter: (e, ...args) => {
       setTooltipOpen(true, e);
-      context.keyboardNavigationState?.setVal(false);
       _.invoke(triggerElement, 'props.onMouseEnter', e, ...args);
     },
     onMouseLeave: (e, ...args) => {

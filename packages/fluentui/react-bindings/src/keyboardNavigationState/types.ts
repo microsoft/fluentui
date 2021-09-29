@@ -3,6 +3,6 @@ export type KeyboardNavigationStateChangeCallback = (isNavigatingWithKeyboard: b
 export interface KeyboardNavigationState {
   subscribe(callback: KeyboardNavigationStateChangeCallback): void;
   unsubscribe(callback: KeyboardNavigationStateChangeCallback): void;
-  setVal(isNavigatingWithKeyboard: boolean): void;
-  isNavigatingWithKeyboard(): boolean;
+  set(isNavigatingWithKeyboard: boolean): void;
+  get(): boolean;
 }

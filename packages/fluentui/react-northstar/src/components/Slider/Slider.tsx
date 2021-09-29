@@ -199,7 +199,6 @@ export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStat
       actions.change(value);
     },
     onMouseDown: (e: React.MouseEvent<HTMLInputElement>) => {
-      context.keyboardNavigationState?.setVal(false);
       _.invoke(props, 'onMouseDown', e, props);
     },
   });

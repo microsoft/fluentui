@@ -304,7 +304,7 @@ export const Popup: React.FC<PopupProps> &
      */
     if (_.includes(normalizedOn, 'focus')) {
       triggerProps.onFocus = (e, ...args) => {
-        if (context.keyboardNavigationState?.isNavigatingWithKeyboard()) {
+        if (context.keyboardNavigationState?.get()) {
           trySetOpen(true, e);
         }
         _.invoke(triggerElement, 'props.onFocus', e, ...args);
@@ -351,7 +351,6 @@ export const Popup: React.FC<PopupProps> &
     if (_.includes(normalizedOn, 'hover')) {
       triggerProps.onMouseEnter = (e, ...args) => {
         setPopupOpen(true, e);
-        context.keyboardNavigationState?.setVal(false);
         _.invoke(triggerElement, 'props.onMouseEnter', e, ...args);
       };
       triggerProps.onMouseLeave = (e, ...args) => {

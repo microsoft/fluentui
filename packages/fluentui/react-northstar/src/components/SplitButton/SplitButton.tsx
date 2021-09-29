@@ -200,7 +200,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     },
     onFocus: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onFocus', e, buttonProps);
-      setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
+      setIsFromKeyboard(context.keyboardNavigationState?.get());
     },
   });
 

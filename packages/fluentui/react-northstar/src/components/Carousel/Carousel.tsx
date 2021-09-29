@@ -277,7 +277,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const overrideItemProps = predefinedProps => ({
     onFocus: (e, itemProps) => {
       actions.setShouldFocusContainer(e.currentTarget === e.target);
-      actions.setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
+      actions.setIsFromKeyboard(context.keyboardNavigationState?.get());
       _.invoke(predefinedProps, 'onFocus', e, itemProps);
     },
     onBlur: (e, itemProps) => {

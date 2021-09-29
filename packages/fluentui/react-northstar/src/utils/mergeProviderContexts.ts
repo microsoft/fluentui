@@ -107,6 +107,8 @@ export const mergeProviderContexts = (
 
       acc.telemetry = next.telemetry || acc.telemetry;
 
+      acc.keyboardNavigationState = next.keyboardNavigationState || acc.keyboardNavigationState;
+
       return acc;
     },
     emptyContext,

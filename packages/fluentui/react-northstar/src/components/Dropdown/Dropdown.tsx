@@ -1038,7 +1038,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     const handleInputBlur = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
       if (!disabled) {
         setFocused(false);
-        setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
+        setIsFromKeyboard(context.keyboardNavigationState?.get());
 
         e.nativeEvent['preventDownshiftDefault'] = true;
       }
@@ -1133,7 +1133,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       onFocus: (e: React.FocusEvent, searchInputProps: DropdownSearchInputProps) => {
         if (!disabled) {
           setFocused(true);
-          setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
+          setIsFromKeyboard(context.keyboardNavigationState?.get());
         }
 
         _.invoke(predefinedProps, 'onFocus', e, searchInputProps);
@@ -1309,20 +1309,20 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
   const handleTriggerButtonOrListFocus = () => {
     setFocused(true);
-    setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
+    setIsFromKeyboard(context.keyboardNavigationState?.get());
   };
 
   const handleTriggerButtonBlur = e => {
     if (listRef.current !== e.relatedTarget) {
       setFocused(false);
-      setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
+      setIsFromKeyboard(context.keyboardNavigationState?.get());
     }
   };
 
   const handleListBlur = e => {
     if (buttonRef.current !== e.relatedTarget) {
       setFocused(false);
-      setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
+      setIsFromKeyboard(context.keyboardNavigationState?.get());
     }
   };
 

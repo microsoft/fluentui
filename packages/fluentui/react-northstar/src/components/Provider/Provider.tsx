@@ -177,7 +177,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     theme: outgoingContext.theme,
     saveDebug: _.noop,
     telemetry: undefined,
-    keyboardNavigationState: undefined,
+    keyboardNavigationState: outgoingContext.keyboardNavigationState,
   });
 
   const element = usePortalBox({
