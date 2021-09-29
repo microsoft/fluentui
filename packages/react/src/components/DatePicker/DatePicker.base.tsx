@@ -493,7 +493,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           onClick={onTextFieldClick}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={onTextFieldChanged}
-          onRenderInput={readOnly ? renderReadOnlyInput : undefined}
+          onRenderField={readOnly ? renderReadOnlyInput : undefined}
         />
       </div>
       {isCalendarShown && (

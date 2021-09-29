@@ -112,7 +112,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Custom renderer for input element.
    */
-  onRenderInput?: IRenderFunction<ITextFieldProps & { inputIds: ITextFieldInputIds }>;
+  onRenderField?: IRenderFunction<ITextFieldProps & { inputIds: ITextFieldInputIds }>;
 
   /**
    * Prefix displayed before the text field contents. This is not included in the value.

@@ -220,7 +220,7 @@ export class TextFieldBase
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
       onRenderDescription = this._onRenderDescription,
-      onRenderInput = this._onRenderInput,
+      onRenderField = this._onRenderField,
     } = this.props;
     const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
@@ -259,7 +259,7 @@ export class TextFieldBase
             {(prefix !== undefined || this.props.onRenderPrefix) && (
               <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
-            {onRenderInput(
+            {onRenderField(
               {
                 ...this.props,
                 className: classNames.field,
@@ -267,7 +267,7 @@ export class TextFieldBase
                 onFocus: this._onFocus,
                 inputIds: inputIds,
               },
-              this._onRenderInput,
+              this._onRenderField,
             )}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
             {hasRevealButton && (
@@ -448,7 +448,7 @@ export class TextFieldBase
     return null;
   };
 
-  private _onRenderInput = (textFieldProps: ITextFieldProps & { inputIds: ITextFieldInputIds }): JSX.Element | null => {
+  private _onRenderField = (textFieldProps: ITextFieldProps & { inputIds: ITextFieldInputIds }): JSX.Element | null => {
     const { multiline } = textFieldProps;
     return multiline ? this._renderTextArea() : this._renderInput();
   };
