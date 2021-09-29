@@ -357,7 +357,7 @@ export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button
 
 ### 8. location and naming convention
 
-All `.stories.tsx` which are related to a single docs page files must be in the same folder, which can either be the folder with component code, or a folder called `stories`.
+All `.stories.tsx` files from one Storybook Docs page must be in a dedicated folder. If there is just one Docs page created, this should be `src/stories`. If there are multiple pages created, the folder should be `src/stories/page-name`.
 
 ### 9. UX of stories
 
