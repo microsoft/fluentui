@@ -327,8 +327,6 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
       </button>
     </div>
     <div
-      aria-atomic="true"
-      aria-live="polite"
       className=
 
           {
@@ -341,7 +339,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             margin-top: 5px;
           }
       id="ComboBox0-error"
-      role="region"
+      role="alert"
     >
       Oh no! This ComboBox has an error!
     </div>
@@ -733,15 +731,6 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
           </i>
         </span>
       </button>
-    </div>
-    <div
-      aria-atomic="true"
-      aria-live="polite"
-      className=""
-      id="ComboBox4-error"
-      role="region"
-    >
-      
     </div>
   </div>
 </div>

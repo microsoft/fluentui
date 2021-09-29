@@ -421,15 +421,11 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
             },
             this._onRenderContainer,
           )}
-        <div
-          role="region"
-          aria-live="polite"
-          aria-atomic="true"
-          id={errorMessageId}
-          className={hasErrorMessage ? this._classNames.errorMessage : ''}
-        >
-          {errorMessage !== undefined ? errorMessage : ''}
-        </div>
+        {hasErrorMessage && (
+          <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
+            {errorMessage}
+          </div>
+        )}
       </div>
     );
   }

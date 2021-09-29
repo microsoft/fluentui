@@ -420,15 +420,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         </span>
       </button>
     </div>
-    <div
-      aria-atomic="true"
-      aria-live="polite"
-      className=""
-      id="ComboBox0-error"
-      role="region"
-    >
-      
-    </div>
   </div>
   <div
     className="ms-ComboBox-container "
@@ -817,15 +808,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           </i>
         </span>
       </button>
-    </div>
-    <div
-      aria-atomic="true"
-      aria-live="polite"
-      className=""
-      id="ComboBox4-error"
-      role="region"
-    >
-      
     </div>
   </div>
 </div>
