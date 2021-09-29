@@ -3,10 +3,9 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { safeMount } from '@fluentui/test-utilities';
-import { KeyCodes } from '@fluentui/utilities';
+import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
 import { SelectionMode, Selection, SelectionZone } from '../../Selection';
 import { getTheme } from '../../Styling';
-import { EventGroup } from '../../Utilities';
 import { DetailsHeader } from './DetailsHeader';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
@@ -68,6 +67,10 @@ function customColumnDivider(
 }
 
 describe('DetailsList', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders List correctly with onRenderDivider props', () => {
     const component = renderer.create(
       <DetailsList
