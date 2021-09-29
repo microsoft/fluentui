@@ -20,6 +20,14 @@ const useStyles = makeStyles({
     padding: '12px',
     gap: '12px',
     borderRadius: theme.global.borderRadius.medium,
+
+    '> .fluentui-react-card-preview': {
+      marginLeft: '-12px',
+      marginRight: '-12px',
+      '&:first-child': {
+        marginTop: '-12px',
+      },
+    },
   }),
 
   interactive: theme => ({
