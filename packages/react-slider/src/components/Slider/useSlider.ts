@@ -1,43 +1,102 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { useSliderState } from './useSliderState';
-import { SliderProps, SliderShorthandProps, SliderState } from './Slider.types';
+import { SliderProps, SliderSlots, SliderState } from './Slider.types';
 
 /**
- * Array of all shorthand properties listed in SliderShorthandProps
+ * Array of all shorthand properties listed in sliderShorthandProps
  */
-export const sliderShorthandProps: SliderShorthandProps[] = [
+export const sliderShorthandProps: (keyof SliderSlots)[] = [
+  'root',
+  'activeRail',
+  'input',
   'rail',
   'sliderWrapper',
-  'trackWrapper',
-  'track',
-  'thumbWrapper',
   'thumb',
-  'activeRail',
+  'thumbWrapper',
+  'track',
+  'trackWrapper',
+  'marksWrapper',
 ];
 
 /**
  * Given user props, returns state and render function for a Slider.
  */
-export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): SliderState => {
-  const mergeProps = makeMergeProps<SliderState>({
-    deepMerge: sliderShorthandProps,
-  });
+export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): SliderState => {
+  const {
+    // Props
+    value,
+    defaultValue,
+    min,
+    max,
+    step = 1,
+    keyboardStep,
+    disabled,
+    ariaValueText,
+    onChange,
+    marks,
+    vertical,
+    size = 'medium',
+    origin,
 
-  const state = mergeProps(
-    {
-      ref,
-      sliderWrapper: { as: 'div', children: null },
-      rail: { as: 'div', children: null },
-      trackWrapper: { as: 'div', children: null },
-      track: { as: 'div', children: null },
-      thumbWrapper: { as: 'div', children: null },
-      thumb: { as: 'div', children: null },
-      activeRail: { as: 'div', children: null },
+    // Slots
+    activeRail,
+    input,
+    marksWrapper,
+    rail,
+    sliderWrapper,
+    thumb,
+    thumbWrapper,
+    track,
+    trackWrapper,
+  } = props;
+
+  const state: SliderState = {
+    ariaValueText,
+    defaultValue,
+    disabled,
+    keyboardStep,
+    marks,
+    max,
+    min,
+    onChange,
+    origin,
+    size,
+    step,
+    vertical,
+    value,
+    components: {
+      activeRail: 'div',
+      input: 'input',
+      marksWrapper: 'div',
+      rail: 'div',
+      root: 'div',
+      sliderWrapper: 'div',
+      thumb: 'div',
+      thumbWrapper: 'div',
+      track: 'div',
+      trackWrapper: 'div',
     },
-    defaultProps && resolveShorthandProps(defaultProps, sliderShorthandProps),
-    resolveShorthandProps(props, sliderShorthandProps),
-  );
+    root: getNativeElementProps('span', {
+      ref,
+      ...props,
+      id: useId('slider-', props.id),
+    }),
+    activeRail: resolveShorthand(activeRail, { required: true }),
+    input: resolveShorthand(input, {
+      required: true,
+      defaultProps: {
+        type: 'range',
+      },
+    }),
+    marksWrapper: resolveShorthand(marksWrapper, { required: true }),
+    rail: resolveShorthand(rail, { required: true }),
+    sliderWrapper: resolveShorthand(sliderWrapper, { required: true }),
+    thumb: resolveShorthand(thumb, { required: true }),
+    thumbWrapper: resolveShorthand(thumbWrapper, { required: true }),
+    track: resolveShorthand(track, { required: true }),
+    trackWrapper: resolveShorthand(trackWrapper, { required: true }),
+  };
 
   useSliderState(state);
 

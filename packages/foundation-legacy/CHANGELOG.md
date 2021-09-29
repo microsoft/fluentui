@@ -1,8 +1,29 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 22:17:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.1.12)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.1.11..@fluentui/foundation-legacy_v8.1.12)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.2.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/style-utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.11 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [8.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.1.11)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.1.10..@fluentui/foundation-legacy_v8.1.11)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.2 ([PR #19542](https://github.com/microsoft/fluentui/pull/19542) by xiaowxie@microsoft.com)
 
 ## [8.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.1.10)
 

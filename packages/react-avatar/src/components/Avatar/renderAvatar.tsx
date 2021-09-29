@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { AvatarState } from './Avatar.types';
-import { avatarShorthandPropsCompat } from './useAvatar';
+import { getSlots } from '@fluentui/react-utilities';
+import type { AvatarSlots, AvatarState } from './Avatar.types';
 
 export const renderAvatar = (state: AvatarState) => {
-  const { slots, slotProps } = getSlotsCompat(state, avatarShorthandPropsCompat);
+  const { slots, slotProps } = getSlots<AvatarSlots>(state, ['root', 'label', 'image', 'badge', 'icon']);
+
   return (
     <slots.root {...slotProps.root}>
       <slots.label {...slotProps.label} />
-      {state.showIcon && <slots.icon {...slotProps.icon} />}
+      <slots.icon {...slotProps.icon} />
       <slots.image {...slotProps.image} />
       <slots.badge {...slotProps.badge} />
     </slots.root>

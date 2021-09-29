@@ -1,8 +1,151 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.68)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.67..@fluentui/react-tabster_v9.0.0-alpha.68)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.74 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.26 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+
+## [9.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.67)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.66..@fluentui/react-tabster_v9.0.0-alpha.67)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.32 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.73 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.53 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+
+## [9.0.0-alpha.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.66)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.65..@fluentui/react-tabster_v9.0.0-alpha.66)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.72 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.52 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+
+## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.65)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.64..@fluentui/react-tabster_v9.0.0-alpha.65)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.71 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.51 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.64)
+
+Wed, 22 Sep 2021 10:10:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.63..@fluentui/react-tabster_v9.0.0-alpha.64)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.70 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.50 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+
+## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.63)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.62..@fluentui/react-tabster_v9.0.0-alpha.63)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.69 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.25 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.62)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.61..@fluentui/react-tabster_v9.0.0-alpha.62)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.62 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.61)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.60..@fluentui/react-tabster_v9.0.0-alpha.61)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.61 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.60)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.59..@fluentui/react-tabster_v9.0.0-alpha.60)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.60 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.59)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.58..@fluentui/react-tabster_v9.0.0-alpha.59)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.59 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.58)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.57..@fluentui/react-tabster_v9.0.0-alpha.58)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.58 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.57)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.56..@fluentui/react-tabster_v9.0.0-alpha.57)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.63 ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.56)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.55..@fluentui/react-tabster_v9.0.0-alpha.56)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.62 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.55)
+
+Wed, 01 Sep 2021 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.54..@fluentui/react-tabster_v9.0.0-alpha.55)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.61 ([PR #19483](https://github.com/microsoft/fluentui/pull/19483) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.54)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.53..@fluentui/react-tabster_v9.0.0-alpha.54)
+
+### Changes
+
+- Upgrading tabster. ([PR #19534](https://github.com/microsoft/fluentui/pull/19534) by marata@microsoft.com)
 
 ## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.53)
 

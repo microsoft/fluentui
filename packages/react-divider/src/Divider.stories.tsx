@@ -104,12 +104,6 @@ const DividerExamples = (props: DividerProps) => {
           </Divider>
         </DividerStory>
 
-        <DividerStory label="Important">
-          <Divider {...props} important={true}>
-            This is important!
-          </Divider>
-        </DividerStory>
-
         <DividerStory label="Alignments">
           <Divider {...props} alignContent="start">
             start
@@ -123,9 +117,7 @@ const DividerExamples = (props: DividerProps) => {
         </DividerStory>
 
         <DividerStory label="Appearance">
-          <Divider {...props} appearance="default">
-            default
-          </Divider>
+          <Divider {...props}>default</Divider>
           <Divider {...props} appearance="subtle">
             subtle
           </Divider>
@@ -186,14 +178,6 @@ const DividerExamples = (props: DividerProps) => {
           </div>
         </DividerStory>
 
-        <DividerStory label="Important">
-          <div className="verticalContent">
-            <Divider {...props} important vertical>
-              Important!
-            </Divider>
-          </div>
-        </DividerStory>
-
         <DividerStory label="Alignments" className="vertical">
           <div className="verticalContent">
             <Divider {...props} alignContent="start" vertical>
@@ -210,7 +194,7 @@ const DividerExamples = (props: DividerProps) => {
 
         <DividerStory label="Appearance" className="vertical">
           <div className="verticalContent">
-            <Divider {...props} appearance="default" vertical>
+            <Divider {...props} vertical>
               default
             </Divider>
             <Divider {...props} appearance="subtle" vertical>

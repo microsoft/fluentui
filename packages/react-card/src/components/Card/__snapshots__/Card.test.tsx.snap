@@ -4,6 +4,7 @@ exports[`Card renders a default state 1`] = `
 <div>
   <div
     class=""
+    role="group"
   >
     Default Card
   </div>

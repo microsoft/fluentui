@@ -1,8 +1,27 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 22:17:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.3.3)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.3.2..@fluentui/utilities_v8.3.3)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.2.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.11 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.3.2)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.3.1..@fluentui/utilities_v8.3.2)
+
+### Patches
+
+- update osDetector.ts to resolve the issuse that win.navigator may be null in some ssr framework ([PR #19542](https://github.com/microsoft/fluentui/pull/19542) by xiaowxie@microsoft.com)
 
 ## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.3.1)
 

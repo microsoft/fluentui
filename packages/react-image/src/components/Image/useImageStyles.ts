@@ -5,7 +5,6 @@ const useStyles = makeStyles({
   root: theme => ({
     borderColor: theme.alias.color.neutral.neutralStroke1,
     borderRadius: theme.global.borderRadius.none,
-    boxShadow: theme.alias.shadow.shadow4,
 
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -19,6 +18,9 @@ const useStyles = makeStyles({
   }),
   rootRounded: theme => ({
     borderRadius: theme.global.borderRadius.medium,
+  }),
+  rootShadow: theme => ({
+    boxShadow: theme.alias.shadow.shadow4,
   }),
   rootFitNone: {
     objectFit: 'none',
@@ -44,23 +46,24 @@ const useStyles = makeStyles({
     height: '100%',
     width: '100%',
   },
-  rootFluid: {
+  rootBlock: {
     width: '100%',
   },
 });
 
 export const useImageStyles = (state: ImageState) => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.bordered && styles.rootBordered,
-    state.circular && styles.rootCircular,
-    state.rounded && styles.rootRounded,
+    state.shape === 'circular' && styles.rootCircular,
+    state.shape === 'rounded' && styles.rootRounded,
+    state.shadow && styles.rootShadow,
     state.fit === 'none' && styles.rootFitNone,
     state.fit === 'center' && styles.rootFitCenter,
     state.fit === 'cover' && styles.rootFitCover,
     state.fit === 'contain' && styles.rootFitContain,
-    state.fluid && styles.rootFluid,
-    state.className,
+    state.block && styles.rootBlock,
+    state.root.className,
   );
 };

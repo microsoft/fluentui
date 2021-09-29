@@ -2,11 +2,14 @@ import config from '@fluentui/scripts/config';
 import sh from '@fluentui/scripts/gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
-import portfinder from 'portfinder';
 
-import { addResolutionPathsForProjectPackages, packProjectPackages } from './packPackages';
-import { performBrowserTest } from './performBrowserTest';
-import { createTempDir, log } from './utils';
+import {
+  addResolutionPathsForProjectPackages,
+  packProjectPackages,
+  createTempDir,
+  log,
+  performBrowserTest,
+} from '@fluentui/scripts/projects-test';
 
 export async function nextjs() {
   const logger = log('test:projects:nextjs');
@@ -20,7 +23,7 @@ export async function nextjs() {
   await sh(`yarn add ${dependencies}`, tmpDirectory);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger);
+  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(tmpDirectory);
 
   await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tmpDirectory);
@@ -34,6 +37,6 @@ export async function nextjs() {
   await sh(`yarn next export`, tmpDirectory);
   logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
 
-  await performBrowserTest(path.resolve(tmpDirectory, 'out'), await portfinder.getPortPromise());
+  await performBrowserTest(path.resolve(tmpDirectory, 'out'));
   logger(`✔️ Browser test was passed`);
 }

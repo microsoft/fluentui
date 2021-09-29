@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.24)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-alpha.23..@fluentui/react-theme_v9.0.0-alpha.24)
+
+### Changes
+
+- Use direct values in alias tokens ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.23)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-alpha.22..@fluentui/react-theme_v9.0.0-alpha.23)
+
+### Changes
+
+- Theme: Updating value of borderRadius global token. ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.22)
 

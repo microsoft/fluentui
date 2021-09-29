@@ -48,9 +48,12 @@ export interface SplitButtonToggleProps extends UIComponentProps, ContentCompone
 
   /** A split button toggle can be sized */
   size?: SizeValue;
+
+  /** A split button toggle can be elevated or flat. */
+  flat?: boolean;
 }
 
-export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled' | 'size'>;
+export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled' | 'size' | 'flat'>;
 export const splitButtonToggleClassName = 'ui-splitbutton__toggle';
 
 /**
@@ -66,7 +69,20 @@ export const SplitButtonToggle: ComponentWithAs<'button', SplitButtonToggleProps
   const { setStart, setEnd } = useTelemetry(SplitButtonToggle.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, as, children, content, disabled, primary, className, size, styles, variables, design } = props;
+  const {
+    accessibility,
+    as,
+    children,
+    content,
+    disabled,
+    primary,
+    className,
+    size,
+    flat,
+    styles,
+    variables,
+    design,
+  } = props;
 
   const hasChildren = childrenExist(children);
 
@@ -90,6 +106,7 @@ export const SplitButtonToggle: ComponentWithAs<'button', SplitButtonToggleProps
       primary,
       disabled,
       size,
+      flat,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -145,6 +162,7 @@ SplitButtonToggle.propTypes = {
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   size: customPropTypes.size,
+  flat: PropTypes.bool,
 };
 
 SplitButtonToggle.handledProps = Object.keys(SplitButtonToggle.propTypes) as any;

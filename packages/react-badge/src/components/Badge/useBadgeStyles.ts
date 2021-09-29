@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { BadgeState } from './Badge.types';
+import type { BadgeState } from './Badge.types';
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -16,12 +16,12 @@ const useStyles = makeStyles({
     fontFamily: theme.global.type.fontFamilies.base,
     position: 'relative',
   }),
-  rootSmallest: {
+  rootTiny: {
     width: '6px',
     height: '6px',
     fontSize: '4px',
   },
-  rootSmaller: {
+  rootExtraSmall: {
     width: '10px',
     height: '10px',
     fontSize: '6px',
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
     fontSize: '12px',
     gap: '6px',
   },
-  rootLargerLargest: theme => ({
+  rootExtraLarge: theme => ({
     minWidth: '32px',
     height: '32px',
     paddingRight: '12px',
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
     borderWidth: theme.global.strokeWidth.thick,
   }),
   rootRounded: theme => ({ borderRadius: theme.global.borderRadius.medium }),
-  rootRoundedSmallSmallerSmallest: theme => ({ borderRadius: theme.global.borderRadius.small }),
+  rootRoundedSmallToTiny: theme => ({ borderRadius: theme.global.borderRadius.small }),
   rootCircular: { borderRadius: '99px' },
   rootGhost: theme => ({
     background: 'transparent',
@@ -222,19 +222,19 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
   const isInformative = state.color === 'informative';
   const isSubtle = state.color === 'subtle';
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
-    state.size === 'smallest' && styles.rootSmallest,
-    state.size === 'smaller' && styles.rootSmaller,
+    state.size === 'tiny' && styles.rootTiny,
+    state.size === 'extra-small' && styles.rootExtraSmall,
     state.size === 'small' && styles.rootSmall,
     state.size === 'medium' && styles.rootMedium,
     state.size === 'large' && styles.rootLarge,
-    (state.size === 'larger' || state.size === 'largest') && styles.rootLargerLargest,
+    state.size === 'extra-large' && styles.rootExtraLarge,
     state.shape === 'circular' && styles.rootCircular,
     state.shape === 'rounded' && styles.rootRounded,
     state.shape === 'rounded' &&
-      (state.size === 'small' || state.size === 'smaller' || state.size === 'smallest') &&
-      styles.rootRoundedSmallSmallerSmallest,
+      (state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny') &&
+      styles.rootRoundedSmallToTiny,
     isGhost && styles.rootGhost,
     isOutline && styles.rootOutline,
     isTint && styles.rootTint,
@@ -266,7 +266,7 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
     isOutline && isSubtle && styles.rootOutlineSubtle,
     isTint && isSubtle && styles.rootTintSubtle,
     isGhost && isSubtle && styles.rootGhostSubtle,
-    state.className,
+    state.root.className,
   );
 
   if (state.icon) {

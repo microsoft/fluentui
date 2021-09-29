@@ -1,8 +1,28 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 22:17:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.4.0)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.3.2..@fluentui/theme_v2.4.0)
+
+### Minor changes
+
+- feat: improve SSR experience for merge-styles ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by peter.varholak@gmail.com)
+- Bump @fluentui/merge-styles to v8.2.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [2.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.3.2)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.3.1..@fluentui/theme_v2.3.2)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.2 ([PR #19542](https://github.com/microsoft/fluentui/pull/19542) by xiaowxie@microsoft.com)
 
 ## [2.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.3.1)
 

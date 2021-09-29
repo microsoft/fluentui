@@ -1,6 +1,6 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
-import { CompoundButtonState } from './CompoundButton.types';
+import type { CompoundButtonState } from './CompoundButton.types';
 
 const CompoundButtonClassNames = {
   secondaryContent: 'CompoundButton-secondaryContent',
@@ -181,9 +181,9 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
   state.className = mergeClasses(
     rootStyles.base,
     rootStyles[state.size],
-    state.primary && rootStyles.primary,
-    state.subtle && rootStyles.subtle,
-    state.transparent && rootStyles.transparent,
+    state.appearance === 'primary' && rootStyles.primary,
+    state.appearance === 'subtle' && rootStyles.subtle,
+    state.appearance === 'transparent' && rootStyles.transparent,
     (state.disabled || state.disabledFocusable) && rootStyles.disabled,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,

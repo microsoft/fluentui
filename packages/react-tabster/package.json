@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabster",
-  "version": "9.0.0-alpha.53",
+  "version": "9.0.0-alpha.68",
   "description": "Utilities for focus management and facade for tabster",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,7 +24,7 @@
     "start": "yarn storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -34,12 +34,12 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/make-styles": "^9.0.0-alpha.31",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.59",
-    "keyborg": "^0.7.1",
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
-    "@fluentui/react-utilities": "^9.0.0-alpha.41",
-    "tabster": "^0.7.4",
+    "@fluentui/make-styles": "9.0.0-alpha.32",
+    "@fluentui/react-make-styles": "9.0.0-alpha.74",
+    "@fluentui/react-shared-contexts": "9.0.0-alpha.26",
+    "@fluentui/react-utilities": "9.0.0-alpha.53",
+    "keyborg": "^1.0.0",
+    "tabster": "^1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
