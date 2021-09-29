@@ -188,6 +188,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
       theme: theme!,
       className,
       disabled,
+      underlined,
       label: !!label,
       isDatePickerShown,
     });
@@ -594,9 +595,9 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
 
   private _renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
     const { formattedDate } = this.state;
-    const { styles, theme, placeholder, tabIndex } = this.props;
+    const { styles, theme, placeholder, tabIndex, underlined } = this.props;
 
-    const classNames = getClassNames(styles, { theme: theme! });
+    const classNames = getClassNames(styles, { theme: theme!, underlined });
     const divProps = getNativeProps(inputProps!, divProperties);
 
     // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
