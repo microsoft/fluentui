@@ -104,9 +104,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * Custom renderer for input element.
+   * Custom renderer for the actual single-line input field (not used if `multiline` is true).
+   * This receives the processed props which would usually be passed to the `<input>` element
+   * and allows manually modifying them or rendering as a different element. (Use with care,
+   * since changes here could easily break the component.)
    */
-  onRenderField?: IRenderFunction<ITextFieldProps & { inputIds: ITextFieldInputIds }>;
+  onRenderInput?: IRenderFunction<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
 
   /**
    * Prefix displayed before the text field contents. This is not included in the value.
@@ -276,14 +279,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * @deprecated Only used by `MaskedTextField`, which now has a separate `IMaskedTextFieldProps` interface.
    */
   maskFormat?: { [key: string]: RegExp };
-}
-
-/**
- * Relevant TextField ids for custom onRenderInput renderer to consume.
- */
-export interface ITextFieldInputIds {
-  textFieldId: string;
-  descriptionId: string;
 }
 
 /**

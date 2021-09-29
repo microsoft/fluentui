@@ -19,7 +19,7 @@ import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { TextField, ITextField, ITextFieldInputIds, ITextFieldProps } from '../../TextField';
+import { TextField, ITextField, ITextFieldProps } from '../../TextField';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import { FocusTrapZone } from '../../FocusTrapZone';
 
@@ -237,7 +237,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
             onChange={this._onTextFieldChanged}
-            onRenderField={readOnly ? this._renderReadOnlyInput : undefined}
+            onRenderInput={readOnly ? this._renderReadOnlyInput : undefined}
           />
         </div>
         {isDatePickerShown && (
@@ -592,28 +592,21 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     return this.state.errorMessage;
   }
 
-  private _renderReadOnlyInput = (
-    inputProps: ITextFieldProps & { inputIds: ITextFieldInputIds },
-  ): JSX.Element | null => {
-    const { textFieldId, descriptionId } = inputProps.inputIds;
-    const { ariaLabel, errorMessage, placeholder, tabIndex } = inputProps;
+  private _renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
     const { formattedDate } = this.state;
-    const { styles, theme } = this.props;
+    const { styles, theme, placeholder, tabIndex } = this.props;
 
-    const classNames = getClassNames(styles, { theme: theme!, readOnlyPlaceHolder: !formattedDate });
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(inputProps, divProperties);
-    const isDescriptionAvailable = inputProps.description;
+    const classNames = getClassNames(styles, { theme: theme! });
+    const divProps = getNativeProps(inputProps!, divProperties);
 
+    // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
+    // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
     return (
-      <div
-        {...divProps}
-        id={textFieldId}
-        tabIndex={tabIndex ?? 0}
-        aria-label={ariaLabel}
-        aria-describedby={isDescriptionAvailable ? descriptionId : inputProps['aria-describedby']}
-        aria-invalid={!!errorMessage}
-      >
-        <span className={classNames.readOnlyTextfield}> {formattedDate || placeholder}</span>
+      <div {...divProps} className={css(divProps.className, classNames.readOnlyTextfield)} tabIndex={tabIndex || 0}>
+        {formattedDate || (
+          // Putting the placeholder in a separate span fixes specificity issues for the text color
+          <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
+        )}
       </div>
     );
   };
