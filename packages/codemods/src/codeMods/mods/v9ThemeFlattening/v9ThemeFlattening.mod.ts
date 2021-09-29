@@ -1,0 +1,151 @@
+import { SourceFile, ts } from 'ts-morph';
+
+import { CodeMod, ModError, NoOp } from '../../types';
+import { Err, Ok, Result } from '../../../helpers/result';
+
+function capitalizeToken(value: string): string {
+  return value.substr(0, 1).toUpperCase() + value.substr(1);
+}
+
+// function getTextForExpression(node: ts.ElementAccessExpression | ts.PropertyAccessExpression): string {
+//   if (ts.isElementAccessExpression(node)) {
+//     return 'foo'
+//   }
+//
+//   return getTextForExpression(node.expression) ? node.name.escapedText
+// }
+
+const replacements: [RegExp, (token: string) => string][] = [
+  [
+    /theme\.alias\.color\.neutral\..+/,
+    token => {
+      const parts = token.split('.');
+      return 'colorAlias' + capitalizeToken(parts[parts.length - 1]);
+    },
+  ],
+  [
+    /theme\.alias\.color\..+/,
+    token => {
+      const parts = token.split('.');
+
+      const color = parts[parts.length - 2];
+      const name = parts[parts.length - 1];
+
+      return 'color' + capitalizeToken(color) + capitalizeToken(name);
+    },
+  ],
+  [
+    /theme\.alias\.shadow\..+/,
+    token => {
+      const parts = token.split('.');
+      const name = parts[parts.length - 1];
+
+      return 'shadowLevel' + capitalizeToken(name);
+    },
+  ],
+  [
+    /theme\.global\.borderRadius\..+/,
+    token => {
+      const parts = token.split('.');
+      const name = parts[parts.length - 1];
+
+      return 'borderRadius' + capitalizeToken(name);
+    },
+  ],
+  [
+    /theme\.global\.strokeWidth\..+/,
+    token => {
+      const parts = token.split('.');
+      const name = parts[parts.length - 1];
+
+      return 'strokeWidth' + capitalizeToken(name);
+    },
+  ],
+  [
+    /theme\.global\.strokeWidth\..+/,
+    token => {
+      const parts = token.split('.');
+      const name = parts[parts.length - 1];
+
+      return 'strokeWidth' + capitalizeToken(name);
+    },
+  ],
+  [
+    /theme\.global\.type\..+/,
+    token => {
+      const parts = token.split('.');
+
+      const key = parts[parts.length - 2];
+      const name = parts[parts.length - 1];
+
+      if (key === 'fontFamilies') {
+        return 'fontFamily' + capitalizeToken(name);
+      }
+
+      if (key === 'fontWeights') {
+        return 'fontWeight' + capitalizeToken(name);
+      }
+
+      if (key === 'fontSizes') {
+        console.log(name);
+        console.log(capitalizeToken(name));
+        console.log(capitalizeToken(name).replace(/[\[\]]/g, ''));
+        return 'fontSize' + capitalizeToken(name).replace(/[\[\]]/g, '');
+      }
+
+      if (key === 'lineHeights') {
+        return 'lineHeight' + capitalizeToken(name).replace(/[\[\]]/g, '');
+      }
+
+      throw new Error();
+    },
+  ],
+];
+
+function renameToken(token: string): string {
+  const replacement = replacements.find(([regex]) => regex.test(token));
+
+  if (replacement) {
+    return replacement[1](token);
+  }
+
+  throw new Error();
+}
+
+const v9ThemeFlattening: CodeMod = {
+  run: (file: SourceFile): Result<string, NoOp | ModError> => {
+    try {
+      file.transform(traversal => {
+        const node = traversal.visitChildren();
+        const isMatchingNode =
+          (ts.isPropertyAccessExpression(node) && !ts.isPropertyAccessExpression(node.parent)) ||
+          ts.isElementAccessExpression(node);
+
+        if (isMatchingNode) {
+          const nodeText = node.getText();
+
+          if (nodeText.startsWith('theme.')) {
+            const newToken = renameToken(nodeText);
+
+            return ts.factory.createPropertyAccessExpression(
+              ts.factory.createIdentifier('theme'),
+              ts.factory.createIdentifier(newToken),
+            );
+          }
+        }
+
+        return node;
+      });
+
+      return Ok('Successfully renamed the given props.');
+    } catch (e) {
+      console.log(e);
+      return Err<string, ModError>({ error: e });
+    }
+  },
+  version: '100000',
+  name: 'v9ThemeFlattening',
+  enabled: false, // No longer needed; remains for demo purposes
+};
+
+export default v9ThemeFlattening;

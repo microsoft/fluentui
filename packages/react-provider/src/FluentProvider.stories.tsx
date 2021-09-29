@@ -6,9 +6,9 @@ import { FluentProvider } from './index';
 
 const useStyles = makeStyles({
   box: theme => ({
-    border: `5px solid ${theme.alias.color.neutral.brandStroke1}`,
-    backgroundColor: theme.alias.color.neutral.brandBackground2,
-    color: theme.alias.color.neutral.brandForeground2,
+    border: `5px solid ${theme.colorAliasBrandStroke1}`,
+    backgroundColor: theme.colorAliasBrandBackground2,
+    color: theme.colorAliasBrandForeground2,
 
     padding: '5px',
   }),
