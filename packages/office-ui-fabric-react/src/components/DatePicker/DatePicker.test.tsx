@@ -57,6 +57,19 @@ describe('DatePicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders DatePicker with value correctly', () => {
+    // Format the date as a fake value to avoid snapshot churn
+    const component = renderer.create(<DatePicker formatDate={() => 'fake date'} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders DatePicker allowing text input correctly', () => {
+    const component = renderer.create(<DatePicker allowTextInput />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('can add an id to the container', () => {
     const wrapper = mount(<DatePickerBase id="foo" />);
 
@@ -115,6 +128,34 @@ describe('DatePicker', () => {
     const wrapper = mount(<DatePickerBase disabled label="label" />);
     wrapper.find('i').simulate('click');
     expect(wrapper.state('isDatePickerShown')).toBe(false);
+  });
+
+  it('with allowTextInput false, renders read-only input as a div with placeholder', () => {
+    // This works around a bug with Talkback on Android (see comments in onRenderInput in DatePickerBase)
+    const wrapper = mount(<DatePickerBase placeholder="Select a date" />);
+    expect(wrapper.find('input')).toHaveLength(0);
+    const fieldElement = wrapper.find('.ms-TextField-field');
+    expect(fieldElement).toHaveLength(1);
+    expect(fieldElement.getDOMNode().tagName).toBe('DIV');
+    expect(fieldElement.prop('role')).toBe('combobox');
+    expect(fieldElement.text()).toBe('Select a date');
+  });
+
+  it('with allowTextInput false, renders read-only input as a div with value', () => {
+    const wrapper = mount(
+      <DatePickerBase placeholder="Select a date" value={new Date()} formatDate={() => 'fake date'} />,
+    );
+    expect(wrapper.find('input')).toHaveLength(0);
+    const fieldElement = wrapper.find('.ms-TextField-field');
+    expect(fieldElement).toHaveLength(1);
+    expect(fieldElement.getDOMNode().tagName).toBe('DIV');
+    expect(fieldElement.prop('role')).toBe('combobox');
+    expect(fieldElement.text()).toBe('fake date');
+  });
+
+  it('with allowTextInput true, renders normal input', () => {
+    const wrapper = mount(<DatePickerBase allowTextInput />);
+    expect(wrapper.find('input')).toHaveLength(1);
   });
 
   it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
