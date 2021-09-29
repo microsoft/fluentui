@@ -10,8 +10,8 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
   'inputWrapper',
   'bookendBefore',
   'bookendAfter',
-  'insideStart',
-  'insideEnd',
+  'insideBefore',
+  'insideAfter',
   'root',
 ];
 
@@ -25,10 +25,20 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
  * @param ref - reference to root HTMLInputElement of Input
  */
 export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputState => {
-  const { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart, size, appearance, inline } = props;
+  const {
+    input,
+    inputWrapper,
+    bookendAfter,
+    bookendBefore,
+    insideAfter,
+    insideBefore,
+    fieldSize,
+    appearance,
+    inline,
+  } = props;
 
   return {
-    size,
+    fieldSize,
     appearance,
     inline,
     components: {
@@ -37,15 +47,15 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputS
       inputWrapper: 'span',
       bookendBefore: 'span',
       bookendAfter: 'span',
-      insideStart: 'span',
-      insideEnd: 'span',
+      insideBefore: 'span',
+      insideAfter: 'span',
     },
     input: resolveShorthand(input, { required: true }),
     inputWrapper: resolveShorthand(inputWrapper, { required: true }),
     bookendAfter: resolveShorthand(bookendAfter),
     bookendBefore: resolveShorthand(bookendBefore),
-    insideEnd: resolveShorthand(insideEnd),
-    insideStart: resolveShorthand(insideStart),
+    insideAfter: resolveShorthand(insideAfter),
+    insideBefore: resolveShorthand(insideBefore),
     root: getNativeElementProps('span', {
       ref,
       ...props,

@@ -187,7 +187,7 @@ const useInsideStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles = (state: InputState): InputState => {
-  const { size = 'medium', appearance = 'outline' } = state;
+  const { fieldSize = 'medium', appearance = 'outline' } = state;
   const disabled = state.input.disabled;
   const rootStyles = useRootStyles();
   const inputStyles = useInputElementStyles();
@@ -198,7 +198,7 @@ export const useInputStyles = (state: InputState): InputState => {
 
   state.root.className = mergeClasses(
     rootStyles.base,
-    rootStyles[size],
+    rootStyles[fieldSize],
     state.inline && rootStyles.inline,
     filled && rootStyles.filled,
     disabled && rootStyles.disabled,
@@ -207,7 +207,7 @@ export const useInputStyles = (state: InputState): InputState => {
 
   state.input.className = mergeClasses(
     inputStyles.base,
-    inputStyles[size],
+    inputStyles[fieldSize],
     inputStyles[appearance],
     disabled && inputStyles.disabled,
     state.input.className,
@@ -215,18 +215,18 @@ export const useInputStyles = (state: InputState): InputState => {
 
   state.inputWrapper.className = mergeClasses(
     inputWrapperStyles.base,
-    inputWrapperStyles[size],
+    inputWrapperStyles[fieldSize],
     inputWrapperStyles[appearance],
     disabled && inputWrapperStyles.disabled,
     state.inputWrapper.className,
   );
 
   const insideClasses = [insideStyles.base, disabled && insideStyles.disabled];
-  if (state.insideStart) {
-    state.insideStart.className = mergeClasses(...insideClasses, state.insideStart.className);
+  if (state.insideBefore) {
+    state.insideBefore.className = mergeClasses(...insideClasses, state.insideBefore.className);
   }
-  if (state.insideEnd) {
-    state.insideEnd.className = mergeClasses(...insideClasses, state.insideEnd.className);
+  if (state.insideAfter) {
+    state.insideAfter.className = mergeClasses(...insideClasses, state.insideAfter.className);
   }
 
   return state;

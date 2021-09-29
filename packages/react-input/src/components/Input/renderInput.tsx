@@ -11,11 +11,10 @@ export const renderInput = (state: InputState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.bookendBefore {...slotProps.bookendBefore} />
-      {/* TODO is wrapper needed? (for borders, focus styling, etc) */}
       <slots.inputWrapper {...slotProps.inputWrapper}>
-        <slots.insideStart {...slotProps.insideStart} />
+        <slots.insideBefore {...slotProps.insideBefore} />
         <slots.input {...slotProps.input} />
-        <slots.insideEnd {...slotProps.insideEnd} />
+        <slots.insideAfter {...slotProps.insideAfter} />
       </slots.inputWrapper>
       <slots.bookendAfter {...slotProps.bookendAfter} />
     </slots.root>
