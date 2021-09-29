@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add export to CodeSandbox for stories",
+  "packageName": "@fluentui/react-components",
+  "email": "peter@draxler.ml",
+  "dependentChangeType": "none"
+}
