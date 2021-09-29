@@ -83,12 +83,8 @@ export const AliasColors = () => {
             color: theme.dark.alias.color.neutral.neutralForeground1,
           }}
         />
-        {Object.keys(theme.light.global.palette)
-          // TODO: We iterate global.palette to show color swatches.
-          //       The selected swatch then is used to populate the alias grid.
-          //       But, global.palette has 'grey' and there is no alias.color.grey so it throws.
-          //       Filtering grey out here, but this means our structure is wrong.
-          .filter(key => key !== 'grey' && key !== 'brand')
+        {Object.keys(theme.light.alias.color)
+          .filter(key => key !== 'neutral')
           .map((colorName: Exclude<keyof Theme['global']['palette'], 'grey' | 'brand'>) => (
             <ColorButton
               key={colorName}
