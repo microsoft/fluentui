@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated error to be role alert",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
