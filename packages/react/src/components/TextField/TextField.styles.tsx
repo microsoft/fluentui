@@ -35,6 +35,8 @@ const globalClassNames = {
   active: 'is-active',
 };
 
+const fieldHeight = 32;
+
 function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> {
   const { underlined, disabled, focused, theme } = props;
   const { palette, fonts } = theme;
@@ -82,6 +84,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     inputClassName,
     autoAdjustHeight,
     hasRevealButton,
+    isInteractiveReadOnly,
+    placeholder,
   } = props;
 
   const { semanticColors, effects, fonts } = theme;
@@ -196,7 +200,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         borderRadius: effects.roundedCorner2,
         background: semanticColors.inputBackground,
         cursor: 'text',
-        height: 32,
+        height: fieldHeight,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'stretch',
@@ -376,6 +380,15 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             },
           },
         },
+      isInteractiveReadOnly && {
+        cursor: 'pointer',
+        position: 'relative', // required to make cursor: pointer work
+        height: fieldHeight,
+        lineHeight: fieldHeight - 2,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+      },
+      isInteractiveReadOnly && placeholder && placeholderStyles,
       inputClassName,
     ],
     icon: [

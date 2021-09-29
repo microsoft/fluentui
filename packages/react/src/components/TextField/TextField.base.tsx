@@ -5,6 +5,7 @@ import {
   Async,
   classNamesFunction,
   DelayedRender,
+  divProperties,
   getId,
   getNativeProps,
   getWindow,
@@ -20,13 +21,7 @@ import {
 import type { IProcessedStyleSet } from '../../Styling';
 import type { ILabelStyleProps, ILabelStyles } from '../../Label';
 import type { IStyleFunctionOrObject } from '../../Utilities';
-import type {
-  ITextField,
-  ITextFieldInputIds,
-  ITextFieldProps,
-  ITextFieldStyleProps,
-  ITextFieldStyles,
-} from './TextField.types';
+import type { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
@@ -215,17 +210,20 @@ export class TextFieldBase
       autoAdjustHeight,
       canRevealPassword,
       revealPasswordAriaLabel,
+      readOnly,
+      role,
+      placeholder,
       type,
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
       onRenderDescription = this._onRenderDescription,
-      onRenderField = this._onRenderField,
     } = this.props;
     const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
 
     const hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
+    const isInteractiveReadOnly = !!readOnly && !disabled && role === 'combobox';
 
     const classNames = (this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -243,12 +241,9 @@ export class TextFieldBase
       inputClassName,
       autoAdjustHeight,
       hasRevealButton,
+      isInteractiveReadOnly,
+      placeholder,
     }));
-
-    const inputIds: ITextFieldInputIds = {
-      textFieldId: this._id || this._fallbackId,
-      descriptionId: this._descriptionId,
-    };
 
     return (
       // eslint-disable-next-line deprecation/deprecation
@@ -259,16 +254,7 @@ export class TextFieldBase
             {(prefix !== undefined || this.props.onRenderPrefix) && (
               <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
             )}
-            {onRenderField(
-              {
-                ...this.props,
-                className: classNames.field,
-                onBlur: this._onBlur,
-                onFocus: this._onFocus,
-                inputIds: inputIds,
-              },
-              this._onRenderField,
-            )}
+            {multiline ? this._renderTextArea() : this._renderInput(isInteractiveReadOnly)}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
             {hasRevealButton && (
               // Explicitly set type="button" since the default button type within a form is "submit"
@@ -448,11 +434,6 @@ export class TextFieldBase
     return null;
   };
 
-  private _onRenderField = (textFieldProps: ITextFieldProps & { inputIds: ITextFieldInputIds }): JSX.Element | null => {
-    const { multiline } = textFieldProps;
-    return multiline ? this._renderTextArea() : this._renderInput();
-  };
-
   private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
     if (props.description) {
       return <span className={this._classNames.description}>{props.description}</span>;
@@ -539,32 +520,35 @@ export class TextFieldBase
     );
   }
 
-  private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'defaultValue',
-      'type',
-    ]);
-    const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
-    const type = this.state.isRevealingPassword ? 'text' : this.props.type ?? 'text';
-    return (
-      <input
-        type={type}
-        id={this._id}
-        aria-labelledby={ariaLabelledBy}
-        {...inputProps}
-        ref={this._textElement as React.RefObject<HTMLInputElement>}
-        value={this.value || ''}
-        onInput={this._onInputChange}
-        onChange={this._onInputChange}
-        className={this._classNames.field}
-        aria-label={this.props.ariaLabel}
-        aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this._errorMessage}
-        readOnly={this.props.readOnly}
-        onFocus={this._onFocus}
-        onBlur={this._onBlur}
-      />
-    );
+  private _renderInput(isInteractiveReadOnly: boolean): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
+    const inputProps: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement> = {
+      type: this.state.isRevealingPassword ? 'text' : this.props.type || 'text',
+      id: this._id,
+      'aria-labelledby': this.props.label ? this._labelId : undefined,
+      ...getNativeProps(this.props, inputProperties, ['defaultValue', 'type']),
+      ref: this._textElement as React.RefObject<HTMLInputElement>,
+      value: this.value || '',
+      onInput: this._onInputChange,
+      onChange: this._onInputChange,
+      className: this._classNames.field,
+      'aria-label': this.props.ariaLabel,
+      'aria-describedby': this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'],
+      'aria-invalid': !!this._errorMessage,
+      onFocus: this._onFocus,
+      onBlur: this._onBlur,
+    };
+
+    if (isInteractiveReadOnly) {
+      const divProps = getNativeProps(inputProps, divProperties);
+      return (
+        // Add tabIndex so it's focusable (set it this way in case undefined is passed in)
+        <div {...divProps} tabIndex={divProps.tabIndex || 0}>
+          {inputProps.value || inputProps.placeholder}
+        </div>
+      );
+    }
+
+    return <input {...inputProps} />;
   }
 
   private _onRevealButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {

@@ -18,7 +18,7 @@ import { defaultDatePickerStrings } from './defaults';
 import type { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import type { IRenderFunction } from '@fluentui/utilities';
 import type { ICalendar } from '../../Calendar';
-import type { ITextField, ITextFieldInputIds, ITextFieldProps } from '../../TextField';
+import type { ITextField, ITextFieldProps } from '../../TextField';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -400,25 +400,6 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     );
   };
 
-  const renderReadOnlyInput = (inputProps: ITextFieldProps & { inputIds: ITextFieldInputIds }): JSX.Element | null => {
-    const { textFieldId, descriptionId } = inputProps.inputIds;
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(inputProps, divProperties);
-    const isDescriptionAvailable = inputProps.description;
-
-    return (
-      <div
-        {...divProps}
-        id={textFieldId}
-        tabIndex={tabIndex ?? 0}
-        aria-label={ariaLabel}
-        aria-describedby={isDescriptionAvailable ? descriptionId : inputProps['aria-describedby']}
-        aria-invalid={!!errorMessage}
-      >
-        <span className={classNames.readOnlyTextfield}> {formattedDate || placeholder}</span>
-      </div>
-    );
-  };
-
   /**
    * Callback for closing the calendar callout
    */
@@ -443,14 +424,12 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     disabled,
     label: !!label,
     isDatePickerShown: isCalendarShown,
-    readOnlyPlaceHolder: !formattedDate,
   });
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
   const iconProps = textFieldProps && textFieldProps.iconProps;
   const textFieldId =
     textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
-  const readOnly = !allowTextInput && !disabled;
 
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
@@ -493,7 +472,6 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           onClick={onTextFieldClick}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={onTextFieldChanged}
-          onRenderField={readOnly ? renderReadOnlyInput : undefined}
         />
       </div>
       {isCalendarShown && (

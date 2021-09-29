@@ -3557,8 +3557,6 @@ export interface IDatePickerStyleProps {
     isDatePickerShown?: boolean;
     // (undocumented)
     label?: boolean;
-    // (undocumented)
-    readOnlyPlaceHolder?: boolean;
     theme: ITheme;
 }
 
@@ -3568,8 +3566,6 @@ export interface IDatePickerStyles {
     callout: IStyle;
     // (undocumented)
     icon: IStyle;
-    // (undocumented)
-    readOnlyTextfield?: IStyle;
     root: IStyle;
     // (undocumented)
     statusMessage?: IStyle;
@@ -8118,14 +8114,6 @@ export interface ITextField {
 }
 
 // @public
-export interface ITextFieldInputIds {
-    // (undocumented)
-    descriptionId: string;
-    // (undocumented)
-    textFieldId: string;
-}
-
-// @public
 export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
     ariaLabel?: string;
     autoAdjustHeight?: boolean;
@@ -8149,9 +8137,6 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
-    onRenderField?: IRenderFunction<ITextFieldProps & {
-        inputIds: ITextFieldInputIds;
-    }>;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
     onRenderPrefix?: IRenderFunction<ITextFieldProps>;
     onRenderSuffix?: IRenderFunction<ITextFieldProps>;
@@ -8187,12 +8172,13 @@ export interface ITextFieldState {
 }
 
 // @public (undocumented)
-export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight'> & {
+export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight' | 'placeholder'> & {
     hasErrorMessage?: boolean;
     hasIcon?: boolean;
     hasLabel?: boolean;
     focused?: boolean;
     hasRevealButton?: boolean;
+    isInteractiveReadOnly?: boolean;
 };
 
 // @public (undocumented)

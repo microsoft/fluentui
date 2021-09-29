@@ -110,11 +110,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * Custom renderer for input element.
-   */
-  onRenderField?: IRenderFunction<ITextFieldProps & { inputIds: ITextFieldInputIds }>;
-
-  /**
    * Prefix displayed before the text field contents. This is not included in the value.
    * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
@@ -278,14 +273,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 }
 
 /**
- * Relevant TextField ids for custom onRenderInput renderer to consume.
- */
-export interface ITextFieldInputIds {
-  textFieldId: string;
-  descriptionId: string;
-}
-
-/**
  * {@docCategory TextField}
  */
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
@@ -300,6 +287,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     | 'resizable'
     | 'underlined'
     | 'autoAdjustHeight'
+    | 'placeholder'
   > & {
     /** Element has an error message. */
     hasErrorMessage?: boolean;
@@ -311,6 +299,11 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     focused?: boolean;
     /** Element has a peek button for passwords */
     hasRevealButton?: boolean;
+    /**
+     * Whether this is a read-only field with an interactive role
+     * (only supported for single-line; requires rendering a fake field)
+     */
+    isInteractiveReadOnly?: boolean;
   };
 
 /**

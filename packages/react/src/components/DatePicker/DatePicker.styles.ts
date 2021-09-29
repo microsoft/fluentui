@@ -1,4 +1,4 @@
-import { normalize, getGlobalClassNames, FontSizes, HighContrastSelector } from '@fluentui/style-utilities';
+import { normalize, getGlobalClassNames, FontSizes } from '@fluentui/style-utilities';
 import type { IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import type { IStyle } from '@fluentui/style-utilities';
 
@@ -8,15 +8,11 @@ const GlobalClassNames = {
   withLabel: 'ms-DatePicker-event--with-label',
   withoutLabel: 'ms-DatePicker-event--without-label',
   disabled: 'msDatePickerDisabled ',
-
-  readOnlyTextfield: 'ms-DatePicker-readOnlyTextfield',
 };
 
-const TEXTFIELD_HEIGHT = 32;
-
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
-  const { className, theme, disabled, label, isDatePickerShown, readOnlyPlaceHolder } = props;
-  const { palette, semanticColors, effects, fonts } = theme;
+  const { className, theme, disabled, label, isDatePickerShown } = props;
+  const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const DatePickerIcon: IStyle = {
@@ -77,40 +73,6 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       {
         color: semanticColors.errorText,
         marginTop: 5,
-      },
-    ],
-    readOnlyTextfield: [
-      fonts.medium,
-      classNames.readOnlyTextfield,
-      normalize,
-      {
-        borderRadius: effects.roundedCorner2,
-        background: 'none',
-        backgroundColor: 'transparent',
-        color: semanticColors.inputText,
-        position: 'relative',
-        width: '100%',
-        minWidth: 0,
-        outline: 0,
-        cursor: 'pointer',
-        display: 'block',
-        height: TEXTFIELD_HEIGHT,
-        lineHeight: TEXTFIELD_HEIGHT - 1.5,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'WindowText',
-          },
-        },
-      },
-      readOnlyPlaceHolder && {
-        color: semanticColors.inputPlaceholderText,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'GrayText',
-          },
-        },
       },
     ],
   };
