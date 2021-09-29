@@ -237,7 +237,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
             onChange={this._onTextFieldChanged}
-            onRenderInput={readOnly ? this._renderReadOnlyInput : undefined}
+            onRenderField={readOnly ? this._renderReadOnlyInput : undefined}
           />
         </div>
         {isDatePickerShown && (
