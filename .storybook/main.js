@@ -59,7 +59,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
         use: {
           loader: 'babel-loader',
           options: {
-            plugins: [require('./babel.plugin')],
+            plugins: [require('storybook-addon-export-to-codesandbox').babelPlugin],
           },
         },
       });
