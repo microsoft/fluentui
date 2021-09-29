@@ -292,7 +292,7 @@ describe('Provider', () => {
       );
 
       expect(Keyborg.createKeyborg).toHaveBeenCalled();
-      expect(setAttribute).toHaveBeenCalledWith('data-keyborg', expect.any(String));
+      expect(setAttribute).toHaveBeenCalledWith('data-keyboard-navigation', expect.any(String));
     });
 
     test('performs keyborg cleanup on last Provider unmount', () => {

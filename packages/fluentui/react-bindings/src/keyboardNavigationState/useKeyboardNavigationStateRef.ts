@@ -38,12 +38,9 @@ class KeyboardNavigationStateImpl implements KeyboardNavigationState {
   private _setAttribute(remove?: boolean) {
     if (this._documentElement) {
       if (remove) {
-        this._documentElement.removeAttribute('data-keyborg');
+        this._documentElement.removeAttribute('data-keyboard-navigation');
       } else if (this._keyborg) {
-        this._documentElement.setAttribute(
-          'data-keyborg',
-          this._keyborg.isNavigatingWithKeyboard() ? 'keyboard' : 'mouse',
-        );
+        this._documentElement.setAttribute('data-keyboard-navigation', `${this._keyborg.isNavigatingWithKeyboard()}`);
       }
     }
   }
