@@ -73,8 +73,8 @@ const useStyles = makeStyles({
     color: theme.alias.color.neutral.brandBackground,
   }),
   rootTint: theme => ({
-    backgroundColor: theme.global.palette.brand.tint60,
-    color: theme.global.palette.brand.shade40,
+    backgroundColor: theme.alias.color.neutral.brandBackground2,
+    color: theme.alias.color.neutral.brandForeground2,
     borderColor: 'none',
   }),
   rootFilledDanger: theme => ({

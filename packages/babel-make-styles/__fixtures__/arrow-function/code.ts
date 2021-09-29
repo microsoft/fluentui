@@ -2,7 +2,7 @@ import { makeStyles } from '@fluentui/react-make-styles';
 
 export const useStyles = makeStyles({
   root: theme => ({
-    backgroundColor: theme.global.color.black,
+    backgroundColor: theme.alias.color.neutral.neutralForeground1,
     color: theme.alias.color.blue.border2,
     display: 'flex',
   }),

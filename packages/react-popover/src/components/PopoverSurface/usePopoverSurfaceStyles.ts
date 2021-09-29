@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
   inverted: theme => ({
     // TODO: neutral background inverted missing from superset and theme
-    backgroundColor: theme.global.palette.grey[16],
+    backgroundColor: theme.alias.color.neutral.neutralForeground1,
     color: theme.alias.color.neutral.neutralForegroundInverted,
   }),
 
