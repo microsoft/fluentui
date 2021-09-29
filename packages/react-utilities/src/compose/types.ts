@@ -125,13 +125,13 @@ export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
  * - Inferring based on a single prop name instead of a larger type like `DOMAttributes<T>` should be
  *   less expensive for typescript to evaluate and is less likely to result in type expansion in .d.ts.
  */
-type SomeEventName = 'onLostPointerCaptureCapture';
+type ObscureEventName = 'onLostPointerCaptureCapture';
 
 /**
  * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
  */
-export type ForwardRefComponent<Props> = SomeEventName extends keyof Props
-  ? Required<Props>[SomeEventName] extends React.PointerEventHandler<infer Element>
+export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
+  ? Required<Props>[ObscureEventName] extends React.PointerEventHandler<infer Element>
     ? React.ForwardRefExoticComponent<Props & React.RefAttributes<Element>>
     : never
   : never;
