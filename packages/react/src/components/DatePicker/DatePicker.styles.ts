@@ -13,7 +13,7 @@ const GlobalClassNames = {
 const TEXTFIELD_HEIGHT = 32;
 
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
-  const { className, theme, disabled, label, isDatePickerShown } = props;
+  const { className, theme, disabled, underlined, label, isDatePickerShown } = props;
   const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -77,13 +77,18 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
         marginTop: 5,
       },
     ],
-    readOnlyTextField: {
-      cursor: 'pointer',
-      height: TEXTFIELD_HEIGHT,
-      lineHeight: TEXTFIELD_HEIGHT - 2,
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    },
+    readOnlyTextField: [
+      {
+        cursor: 'pointer',
+        height: TEXTFIELD_HEIGHT,
+        lineHeight: TEXTFIELD_HEIGHT - 2,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+      },
+      underlined && {
+        lineHeight: TEXTFIELD_HEIGHT + 2,
+      },
+    ],
     readOnlyPlaceholder: {
       color: semanticColors.inputPlaceholderText,
       [HighContrastSelector]: {

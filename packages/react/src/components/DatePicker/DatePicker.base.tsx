@@ -437,6 +437,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     theme: theme!,
     className,
     disabled,
+    underlined,
     label: !!label,
     isDatePickerShown: isCalendarShown,
   });

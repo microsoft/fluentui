@@ -3560,6 +3560,8 @@ export interface IDatePickerStyleProps {
     // (undocumented)
     label?: boolean;
     theme: ITheme;
+    // (undocumented)
+    underlined?: boolean;
 }
 
 // @public (undocumented)
