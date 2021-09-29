@@ -279,6 +279,7 @@ export interface IDatePickerStyleProps {
 
   // Insert DatePicker style props below
   disabled?: boolean;
+  underlined?: boolean;
   label?: boolean;
   isDatePickerShown?: boolean;
 }
@@ -295,4 +296,6 @@ export interface IDatePickerStyles {
   callout: IStyle;
   icon: IStyle;
   wrapper?: IStyle;
+  readOnlyTextField?: IStyle;
+  readOnlyPlaceholder?: IStyle;
 }

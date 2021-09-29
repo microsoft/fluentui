@@ -3531,6 +3531,8 @@ export interface IDatePickerStyleProps {
     // (undocumented)
     label?: boolean;
     theme: ITheme;
+    // (undocumented)
+    underlined?: boolean;
 }
 
 // @public (undocumented)
@@ -3539,6 +3541,10 @@ export interface IDatePickerStyles {
     callout: IStyle;
     // (undocumented)
     icon: IStyle;
+    // (undocumented)
+    readOnlyPlaceholder?: IStyle;
+    // (undocumented)
+    readOnlyTextField?: IStyle;
     root: IStyle;
     // (undocumented)
     textField: IStyle;
@@ -8268,6 +8274,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
+    onRenderInput?: IRenderFunction<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
     onRenderPrefix?: IRenderFunction<ITextFieldProps>;
     onRenderSuffix?: IRenderFunction<ITextFieldProps>;

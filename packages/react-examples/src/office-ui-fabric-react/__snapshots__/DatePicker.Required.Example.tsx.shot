@@ -131,7 +131,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   forced-color-adjust: none;
                 }
           >
-            <input
+            <div
               aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
@@ -216,6 +216,30 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                     color: GrayText;
                   }
+                  {
+                    cursor: pointer;
+                    height: 32px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  }
+                  &:focus {
+                    border-color: #0078d4;
+                  }
+                  &:focus:after {
+                    border-radius: 2px;
+                    border: 2px solid #0078d4;
+                    bottom: -1px;
+                    content: '';
+                    left: -1px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                  }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+                    border-color: Highlight;
+                  }
               id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
@@ -223,13 +247,22 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
               onFocus={[Function]}
               onInput={[Function]}
               onKeyDown={[Function]}
-              placeholder="Select a date..."
-              readOnly={true}
-              required={true}
               role="combobox"
-              type="text"
-              value=""
-            />
+              tabIndex={0}
+            >
+              <span
+                className=
+
+                    {
+                      color: #605e5c;
+                    }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      color: GrayText;
+                    }
+              >
+                Select a date...
+              </span>
+            </div>
             <i
               aria-hidden={true}
               className=
@@ -366,7 +399,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   right: -14px;
                 }
           >
-            <input
+            <div
               aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
@@ -450,6 +483,30 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                     color: GrayText;
                   }
+                  {
+                    cursor: pointer;
+                    height: 32px;
+                    line-height: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  }
+                  &:focus {
+                    border-color: #0078d4;
+                  }
+                  &:focus:after {
+                    border-radius: 2px;
+                    border: 2px solid #0078d4;
+                    bottom: -1px;
+                    content: '';
+                    left: -1px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                  }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+                    border-color: Highlight;
+                  }
               id="DatePicker5-label"
               onBlur={[Function]}
               onChange={[Function]}
@@ -457,13 +514,22 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
               onFocus={[Function]}
               onInput={[Function]}
               onKeyDown={[Function]}
-              placeholder="Date required with no label..."
-              readOnly={true}
-              required={true}
               role="combobox"
-              type="text"
-              value=""
-            />
+              tabIndex={0}
+            >
+              <span
+                className=
+
+                    {
+                      color: #605e5c;
+                    }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      color: GrayText;
+                    }
+              >
+                Date required with no label...
+              </span>
+            </div>
             <i
               aria-hidden={true}
               className=
