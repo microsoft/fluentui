@@ -83,7 +83,7 @@ AccordionExample.argTypes = {
 **Proposal:**
 
 - this is not necessary as storybook generates all those controls automatically from TS metadata (Props interface)
-- `argTypes` can be used for use cases when:
+- `argTypes` should be defined in any of the following use cases:
 
   - Storybook is unable to generated appropriate controls
   - we wanna override default value based on API
