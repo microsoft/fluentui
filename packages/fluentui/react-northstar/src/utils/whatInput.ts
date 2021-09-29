@@ -106,8 +106,10 @@ const addListeners = (eventTarget: Window) => {
   eventTarget.addEventListener('keyup', eventBuffer, true);
 };
 
+type UIEventOnElement<T> = UIEvent & { currentTarget: T }
+
 // checks conditions before updating new input
-const setInput = event => {
+const setInput = (event: UIEventOnElement<Window>) => {
   // only execute if the event buffer timer isn't running
   if (!isBuffering) {
     const eventKey = event.which;
@@ -122,7 +124,7 @@ const setInput = event => {
 
     if (currentInput !== value && shouldUpdate) {
       currentInput = value;
-      doUpdate(event.view.document);
+      doUpdate(event.currentTarget.document);
     }
   }
 };
@@ -133,7 +135,7 @@ const doUpdate = (target: Document) => {
 };
 
 // buffers events that frequently also fire mouse events
-const eventBuffer = event => {
+const eventBuffer = (event: UIEventOnElement<Window>) => {
   // set the current input
   setInput(event);
 
