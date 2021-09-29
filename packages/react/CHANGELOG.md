@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 27 Sep 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Sep 2021 07:36:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.35.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.35.2)
+
+Wed, 29 Sep 2021 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.35.1..@fluentui/react_v8.35.2)
+
+### Patches
+
+- Updated error to be role alert ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by gcox@microsoft.com)
+
+## [8.35.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.35.1)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.35.0..@fluentui/react_v8.35.1)
+
+### Patches
+
+- Removed "suggestions available" from Calendar navigation buttons narratation ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by conniechen@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.12 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.12 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/merge-styles to v8.2.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react-focus to v8.3.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react-hooks to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/style-utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/theme to v2.4.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/common-styles to v1.0.18 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.11 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [8.35.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.35.0)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.7..@fluentui/react_v8.35.0)
+
+### Minor changes
+
+- fix(TeachingBubble): Provide default aria attributes for dialog ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by peter.varholak@gmail.com)
+- update positioning logic to handle callout positions at small screens ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-focus to v8.3.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+### Patches
+
+- fix(DetailsList): apply hovered link color via parent container ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by peter.varholak@gmail.com)
+- Switch from dialog role to listbox role for pickers with no suggestions ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by sarah.higley@microsoft.com)
+- fix(DetailsList): keyboard selection within group header ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by peter.varholak@gmail.com)
 
 ## [8.34.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.7)
 

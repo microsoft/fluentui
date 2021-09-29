@@ -111,7 +111,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "maxHeight": undefined,
+              "maxHeight": "100%",
               "outline": "none",
               "overflowY": "hidden",
             }
@@ -278,7 +278,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "maxHeight": undefined,
+              "maxHeight": "100%",
               "outline": "none",
               "overflowY": undefined,
             }

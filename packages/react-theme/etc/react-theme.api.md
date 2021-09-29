@@ -68,7 +68,7 @@ export type ColorVariants = {
 export const createDarkTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
-export const createGlobalTheme: (brand: BrandVariants) => Theme['global'];
+export const createGlobalTheme: (brand: BrandVariants, globalSharedColors: GlobalSharedColors) => Theme['global'];
 
 // @public (undocumented)
 export const createHighContrastTheme: (brand: BrandVariants) => Theme;

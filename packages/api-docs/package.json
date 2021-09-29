@@ -23,12 +23,12 @@
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.2.2",
-    "@fluentui/merge-styles": "^8.1.5",
-    "@fluentui/react": "^8.34.7",
-    "@fluentui/react-focus": "^8.2.3",
-    "@fluentui/style-utilities": "^8.3.2",
-    "@fluentui/theme": "^2.3.2",
-    "@fluentui/utilities": "^8.3.2",
+    "@fluentui/merge-styles": "^8.2.0",
+    "@fluentui/react": "^8.35.2",
+    "@fluentui/react-focus": "^8.3.1",
+    "@fluentui/style-utilities": "^8.3.3",
+    "@fluentui/theme": "^2.4.0",
+    "@fluentui/utilities": "^8.3.3",
     "@microsoft/api-extractor-model": "7.13.3",
     "@microsoft/tsdoc": "0.13.2",
     "fs-extra": "^8.1.0"
