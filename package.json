@@ -115,6 +115,7 @@
     "@testing-library/react-hooks": "5.0.3",
     "@types/babel__helper-plugin-utils": "7.10.0",
     "@types/copy-webpack-plugin": "6.4.0",
+    "@types/dedent": "latest",
     "@types/enhanced-resolve": "3.0.7",
     "@types/eslint": "7.2.13",
     "@types/express": "4.17.2",
@@ -231,7 +232,8 @@
     "webpack-merge": "5.7.3",
     "workspace-tools": "0.16.2",
     "yargs": "13.3.2",
-    "yargs-parser": "13.1.2"
+    "yargs-parser": "13.1.2",
+    "storybook-addon-export-to-codesandbox": "0.5.1"
   },
   "license": "MIT",
   "workspaces": {
