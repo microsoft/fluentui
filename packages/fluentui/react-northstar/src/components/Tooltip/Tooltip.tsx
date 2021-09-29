@@ -19,8 +19,6 @@ import {
   ContentComponentProps,
   StyledComponentProps,
   commonPropTypes,
-  isFromKeyboard,
-  setWhatInputSource,
   getOrGenerateIdFromShorthand,
   createShorthandFactory,
 } from '../../utils';
@@ -240,7 +238,7 @@ export const Tooltip: React.FC<TooltipProps> &
 
   const triggerProps: React.HTMLAttributes<HTMLElement> = {
     onFocus: (e, ...args) => {
-      if (isFromKeyboard()) {
+      if (context.keyboardNavigationState?.isNavigatingWithKeyboard()) {
         trySetOpen(true, e);
       }
       _.invoke(triggerElement, 'props.onFocus', e, ...args);
@@ -253,7 +251,7 @@ export const Tooltip: React.FC<TooltipProps> &
     },
     onMouseEnter: (e, ...args) => {
       setTooltipOpen(true, e);
-      setWhatInputSource(context.target, 'mouse');
+      context.keyboardNavigationState?.setVal(false);
       _.invoke(triggerElement, 'props.onMouseEnter', e, ...args);
     },
     onMouseLeave: (e, ...args) => {

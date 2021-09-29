@@ -97,6 +97,7 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
     theme: context.theme,
     performance: context.performance,
     telemetry: context.telemetry,
+    keyboardNavigationState: context.keyboardNavigationState,
   });
 
   return { classes, styles: resolvedStyles };

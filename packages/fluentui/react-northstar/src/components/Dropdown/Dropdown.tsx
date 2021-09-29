@@ -28,12 +28,7 @@ import Downshift, {
   GetItemPropsOptions,
   ControllerStateAndHelpers,
 } from 'downshift';
-import {
-  commonPropTypes,
-  UIComponentProps,
-  isFromKeyboard as detectIsFromKeyboard,
-  createShorthand,
-} from '../../utils';
+import { commonPropTypes, UIComponentProps, createShorthand } from '../../utils';
 import { List, ListProps } from '../List/List';
 import { DropdownItem, DropdownItemProps } from './DropdownItem';
 import { DropdownSelectedItem, DropdownSelectedItemProps } from './DropdownSelectedItem';
@@ -1043,7 +1038,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     const handleInputBlur = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
       if (!disabled) {
         setFocused(false);
-        setIsFromKeyboard(detectIsFromKeyboard());
+        setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
 
         e.nativeEvent['preventDownshiftDefault'] = true;
       }
@@ -1138,7 +1133,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       onFocus: (e: React.FocusEvent, searchInputProps: DropdownSearchInputProps) => {
         if (!disabled) {
           setFocused(true);
-          setIsFromKeyboard(detectIsFromKeyboard());
+          setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
         }
 
         _.invoke(predefinedProps, 'onFocus', e, searchInputProps);
@@ -1314,20 +1309,20 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
   const handleTriggerButtonOrListFocus = () => {
     setFocused(true);
-    setIsFromKeyboard(detectIsFromKeyboard());
+    setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
   };
 
   const handleTriggerButtonBlur = e => {
     if (listRef.current !== e.relatedTarget) {
       setFocused(false);
-      setIsFromKeyboard(detectIsFromKeyboard());
+      setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
     }
   };
 
   const handleListBlur = e => {
     if (buttonRef.current !== e.relatedTarget) {
       setFocused(false);
-      setIsFromKeyboard(detectIsFromKeyboard());
+      setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
     }
   };
 

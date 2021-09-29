@@ -13,7 +13,6 @@ import {
   commonPropTypes,
   childrenExist,
   ChildrenComponentProps,
-  isFromKeyboard as isEventFromKeyboard,
   createShorthand,
 } from '../../utils';
 import { ShorthandCollection, ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
@@ -278,7 +277,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const overrideItemProps = predefinedProps => ({
     onFocus: (e, itemProps) => {
       actions.setShouldFocusContainer(e.currentTarget === e.target);
-      actions.setIsFromKeyboard(isEventFromKeyboard());
+      actions.setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
       _.invoke(predefinedProps, 'onFocus', e, itemProps);
     },
     onBlur: (e, itemProps) => {

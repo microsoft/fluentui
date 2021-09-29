@@ -28,8 +28,6 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
-  isFromKeyboard as isEventFromKeyboard,
-  setWhatInputSource,
 } from '../../utils';
 import { Menu, MenuProps, MenuShorthandKinds } from './Menu';
 import { MenuItemIcon, MenuItemIconProps } from './MenuItemIcon';
@@ -353,7 +351,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   };
 
   const handleFocus = (e: React.FocusEvent) => {
-    setIsFromKeyboard(isEventFromKeyboard());
+    setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
     _.invoke(props, 'onFocus', e, props);
     if (menu) {
       _.invoke(parentProps, 'onItemSelect', e, index);
@@ -412,7 +410,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
       onClick: handleClick,
       ...(on === 'hover' && {
         onMouseEnter: e => {
-          setWhatInputSource(context.target, 'mouse');
+          context.keyboardNavigationState?.setVal(false);
           trySetMenuOpen(true, e);
           _.invoke(props, 'onMouseEnter', e, props);
           _.invoke(parentProps, 'onItemSelect', e, index);
@@ -505,7 +503,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     },
     ...(on === 'hover' && {
       onMouseEnter: e => {
-        setWhatInputSource(context.target, 'mouse');
+        context.keyboardNavigationState?.setVal(false);
         trySetMenuOpen(true, e);
         _.invoke(predefinedProps, 'onMouseEnter', e, props);
         _.invoke(parentProps, 'onItemSelect', e, index);

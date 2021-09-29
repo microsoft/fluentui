@@ -4,7 +4,7 @@ import { FelaRenderer, FelaRendererChange } from './types';
 /**
  * A Fela enhancer that allows to use `:focus-visible`. Uses `what-input` library and its global
  * selector. Modifies generated selectors:
- * `.a:focus-visible {}` => `html[data-whatinput="keyboard"] a:focus`.
+ * `.a:focus-visible {}` => `html[data-keyborg="keyboard"] a:focus`.
  */
 export const felaFocusVisibleEnhancer = (renderer: FelaRenderer) => {
   const existingEmitChange = renderer._emitChange.bind(renderer);
@@ -13,7 +13,7 @@ export const felaFocusVisibleEnhancer = (renderer: FelaRenderer) => {
     if (change.type === RULE_TYPE && change.selector.indexOf(':focus-visible') !== -1) {
       // Fela uses objects by references, it's safe to override properties
       change.pseudo = change.pseudo ? change.pseudo.replace(':focus-visible', ':focus') : '';
-      change.selector = `html[data-whatinput="keyboard"] ${change.selector.replace(':focus-visible', ':focus')}`;
+      change.selector = `html[data-keyborg="keyboard"] ${change.selector.replace(':focus-visible', ':focus')}`;
     }
 
     existingEmitChange(change);

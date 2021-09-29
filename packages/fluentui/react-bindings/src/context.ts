@@ -3,6 +3,7 @@ import { emptyTheme, ThemeInput, ThemePrepared } from '@fluentui/styles';
 import * as React from 'react';
 
 import { Telemetry } from './telemetry/types';
+import { KeyboardNavigationState } from './keyboardNavigationState/types';
 
 export interface StylesContextPerformance {
   enableSanitizeCssPlugin: boolean;
@@ -21,6 +22,7 @@ export type ProviderContextInput = {
   theme?: ThemeInput;
   target?: Document;
   telemetry?: Telemetry;
+  keyboardNavigationState?: KeyboardNavigationState;
 };
 
 export type ProviderContextPrepared = {
@@ -32,6 +34,7 @@ export type ProviderContextPrepared = {
   telemetry: Telemetry | undefined;
   // `target` can be undefined for SSR
   target: Document | undefined;
+  keyboardNavigationState: KeyboardNavigationState | undefined;
 };
 
 export const defaultPerformanceFlags: StylesContextPerformance = {
@@ -50,6 +53,7 @@ export const defaultContextValue: ProviderContextPrepared = {
   theme: emptyTheme,
   telemetry: undefined,
   target: undefined,
+  keyboardNavigationState: undefined,
 };
 
 const FluentContext = React.createContext<ProviderContextPrepared>(defaultContextValue);

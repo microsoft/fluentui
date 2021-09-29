@@ -80,6 +80,7 @@ export const useAnimationStyles = (displayName: string, props: AnimationProps): 
     saveDebug: _.noop,
     theme,
     telemetry: undefined,
+    keyboardNavigationState: undefined,
   });
 
   const result: UseAnimationStylesResult = {

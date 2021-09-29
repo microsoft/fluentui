@@ -13,6 +13,8 @@ import {
   unstable_getStyles,
   useIsomorphicLayoutEffect,
   Unstable_FluentContextProvider,
+  useKeyboardNavigationStateRef,
+  disposeKeyboardNavigationState,
 } from '@fluentui/react-bindings';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import {
@@ -27,7 +29,7 @@ import {
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
+import { ChildrenComponentProps, UIComponentProps } from '../../utils';
 
 import { mergeProviderContexts } from '../../utils/mergeProviderContexts';
 import { ProviderConsumer } from './ProviderConsumer';
@@ -119,6 +121,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     ? defaultContextValue
     : consumedContext;
   const createRenderer = React.useContext(RendererContext);
+  const keyboardNavigationStateRef = useKeyboardNavigationStateRef(props.target?.defaultView);
 
   // Memoization of `inputContext` & `outgoingContext` is required to avoid useless notifications of components that
   // consume `useFluentContext()` on each render
@@ -131,8 +134,17 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
       target: props.target,
       telemetry,
       theme: props.theme,
+      keyboardNavigationState: keyboardNavigationStateRef.current,
     }),
-    [props.disableAnimations, props.performance, props.rtl, props.target, telemetry, props.theme],
+    [
+      props.disableAnimations,
+      props.performance,
+      props.rtl,
+      props.target,
+      telemetry,
+      props.theme,
+      keyboardNavigationStateRef,
+    ],
   );
   const outgoingContext = React.useMemo(() => mergeProviderContexts(createRenderer, incomingContext, inputContext), [
     createRenderer,
@@ -165,6 +177,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     theme: outgoingContext.theme,
     saveDebug: _.noop,
     telemetry: undefined,
+    keyboardNavigationState: undefined,
   });
 
   const element = usePortalBox({
@@ -177,15 +190,11 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     renderFontFaces(outgoingContext.renderer, props.theme);
     renderStaticStyles(outgoingContext.renderer, props.theme, outgoingContext.theme.siteVariables);
 
-    if (props.target) {
-      setUpWhatInput(props.target);
-    }
-
     outgoingContext.renderer.registerUsage();
 
     return () => {
-      if (props.target) {
-        tryCleanupWhatInput(props.target);
+      if (keyboardNavigationStateRef) {
+        disposeKeyboardNavigationState(keyboardNavigationStateRef);
       }
 
       outgoingContext.renderer.unregisterUsage();

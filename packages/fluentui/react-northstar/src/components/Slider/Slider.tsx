@@ -22,7 +22,6 @@ import {
   commonPropTypes,
   partitionHTMLProps,
   UIComponentProps,
-  setWhatInputSource,
   createShorthandFactory,
 } from '../../utils';
 import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
@@ -200,7 +199,7 @@ export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStat
       actions.change(value);
     },
     onMouseDown: (e: React.MouseEvent<HTMLInputElement>) => {
-      setWhatInputSource(context.target, 'mouse');
+      context.keyboardNavigationState?.setVal(false);
       _.invoke(props, 'onMouseDown', e, props);
     },
   });

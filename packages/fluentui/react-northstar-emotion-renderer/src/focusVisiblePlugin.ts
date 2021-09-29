@@ -19,12 +19,12 @@ export function focusVisiblePlugin(element: MiddlewareParams[0]): string | void 
           const cleanSelector = selector.replace(notFocusVisibleRgxp, ':focus');
 
           (element.props as string[])[index] = toSingleSpace(
-            `[data-whatinput]:not([data-whatinput="keyboard"]) ${cleanSelector}`,
+            `[data-keyborg]:not([data-keyborg="keyboard"]) ${cleanSelector}`,
           );
         } else if (selector.match(focusVisibleRgxp)) {
           const cleanSelector = selector.replace(focusVisibleRgxp, ':focus');
 
-          (element.props as string[])[index] = toSingleSpace(`[data-whatinput="keyboard"] ${cleanSelector}`);
+          (element.props as string[])[index] = toSingleSpace(`[data-keyborg="keyboard"] ${cleanSelector}`);
         }
       });
     }

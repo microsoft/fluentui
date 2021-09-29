@@ -70,6 +70,7 @@ const resolveStylesOptions = (options?: {
     performance: { ...defaultPerformanceOptions, ...performance },
     saveDebug: () => {},
     telemetry: undefined,
+    keyboardNavigationState: undefined,
   };
 };
 

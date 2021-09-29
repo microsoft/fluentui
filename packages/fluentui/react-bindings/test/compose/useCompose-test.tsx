@@ -38,6 +38,7 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
       // Noop to pass all props as styles to `renderRule()`
       componentStyles: new Proxy({}, { get: (): ComponentSlotStylesPrepared => ({ root: ({ props }) => props }) }),
     },
+    keyboardNavigationState: undefined,
   };
 
   return <Unstable_FluentContextProvider value={value}>{props.children}</Unstable_FluentContextProvider>;

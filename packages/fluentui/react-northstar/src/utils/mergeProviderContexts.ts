@@ -78,6 +78,7 @@ export const mergeProviderContexts = (
     },
     telemetry: undefined,
     renderer: undefined,
+    keyboardNavigationState: undefined,
   };
 
   return contexts.reduce<ProviderContextPrepared>(

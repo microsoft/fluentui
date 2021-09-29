@@ -29,7 +29,7 @@ describe('felaFocusVisibleEnhancer', () => {
     expect(subscription).toBeCalledWith(
       expect.objectContaining({
         pseudo: ':focus',
-        selector: 'html[data-whatinput="keyboard"] .a:focus',
+        selector: 'html[data-keyborg="keyboard"] .a:focus',
         type: RULE_TYPE,
       }),
     );

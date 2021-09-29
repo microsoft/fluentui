@@ -94,6 +94,7 @@ export const renderComponent = <P extends {}>(
       enableBooleanVariablesCaching: false,
     },
     telemetry: context.telemetry,
+    keyboardNavigationState: context.keyboardNavigationState,
   });
 
   const resolvedConfig: RenderResultConfig<P> = {

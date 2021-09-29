@@ -1,4 +1,9 @@
-import { Telemetry, Unstable_FluentContextProvider, ProviderContextPrepared } from '@fluentui/react-bindings';
+import {
+  Telemetry,
+  Unstable_FluentContextProvider,
+  ProviderContextPrepared,
+  KeyboardNavigationState,
+} from '@fluentui/react-bindings';
 import { Renderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { emptyTheme, ThemePrepared } from '@fluentui/styles';
 import { mount, MountRendererProps, ComponentType } from 'enzyme';
@@ -10,7 +15,16 @@ export const EmptyThemeProvider: React.FunctionComponent<{
   renderer?: Renderer;
   theme?: ThemePrepared;
   rtl?: boolean;
-}> = ({ children, disableAnimations, renderer = noopRenderer, telemetry, theme = emptyTheme, rtl = false }) => {
+  keyboardNavigationState?: KeyboardNavigationState;
+}> = ({
+  children,
+  disableAnimations,
+  renderer = noopRenderer,
+  telemetry,
+  theme = emptyTheme,
+  rtl = false,
+  keyboardNavigationState,
+}) => {
   const value: ProviderContextPrepared = {
     renderer,
     target: document,
@@ -19,6 +33,7 @@ export const EmptyThemeProvider: React.FunctionComponent<{
     theme,
     telemetry,
     performance: {} as any,
+    keyboardNavigationState,
   };
 
   return <Unstable_FluentContextProvider value={value}>{children}</Unstable_FluentContextProvider>;

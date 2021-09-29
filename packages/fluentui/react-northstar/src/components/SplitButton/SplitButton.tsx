@@ -9,7 +9,6 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
-  isFromKeyboard as checkIsFromKeyboard,
   commonPropTypes,
   SizeValue,
   createShorthand,
@@ -201,7 +200,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     },
     onFocus: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onFocus', e, buttonProps);
-      setIsFromKeyboard(checkIsFromKeyboard());
+      setIsFromKeyboard(context.keyboardNavigationState?.isNavigatingWithKeyboard());
     },
   });
 

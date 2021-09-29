@@ -286,7 +286,7 @@ describe('Provider', () => {
 
       // mousedown + touchstart + touchend + keyup + keydown
       expect(addEventListener).toHaveBeenCalledTimes(5);
-      expect(setAttribute).toHaveBeenCalledWith('data-whatinput', expect.any(String));
+      expect(setAttribute).toHaveBeenCalledWith('data-keyborg', expect.any(String));
     });
 
     test('performs whatinput cleanup on last Provider unmount', () => {

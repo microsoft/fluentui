@@ -15,6 +15,7 @@
     "@fluentui/styles": "^0.59.0",
     "@uifabric/utilities": "^7.32.3",
     "classnames": "^2.2.6",
+    "keyborg": "1.0.0",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react-is": "^16.6.3",

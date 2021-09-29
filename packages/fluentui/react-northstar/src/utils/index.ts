@@ -19,7 +19,6 @@ export { pxToRem } from './fontSizeUtility';
 export { createComponent } from './createComponent';
 export { getKindProp } from './getKindProp';
 export { shouldPreventDefaultOnKeyDown } from './shouldPreventDefaultOnKeyDown';
-export * from './whatInput';
 
 export { screenReaderContainerStyles } from './accessibility/Styles/accessibilityStyles';
 export * from './commonPropTypes';

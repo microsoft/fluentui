@@ -8,31 +8,31 @@ function evaluateCSS(input: string): string {
 describe('focusVisiblePlugin', () => {
   it('replaces :focus-visible with the proper selector', () => {
     expect(evaluateCSS('#test:focus-visible { color: red; }')).toMatchInlineSnapshot(
-      `"[data-whatinput=\\"keyboard\\"] #test:focus{color:red;}"`,
+      `"[data-keyborg=\\"keyboard\\"] #test:focus{color:red;}"`,
     );
   });
 
   it('replaces the proper selector', () => {
     expect(evaluateCSS('#foo, #test:focus-visible { color: red; }')).toMatchInlineSnapshot(
-      `"#foo,[data-whatinput=\\"keyboard\\"] #test:focus{color:red;}"`,
+      `"#foo,[data-keyborg=\\"keyboard\\"] #test:focus{color:red;}"`,
     );
   });
 
   it('works with the :not pseudo-class', () => {
     expect(evaluateCSS('#test:not(:focus-visible) { color: red; }')).toMatchInlineSnapshot(
-      `"[data-whatinput]:not([data-whatinput=\\"keyboard\\"]) #test:focus{color:red;}"`,
+      `"[data-keyborg]:not([data-keyborg=\\"keyboard\\"]) #test:focus{color:red;}"`,
     );
   });
 
   it('works with a combination of :focus and :not pseudo-class', () => {
     expect(evaluateCSS('#test:focus:not(:focus-visible) { color: red; }')).toMatchInlineSnapshot(
-      `"[data-whatinput]:not([data-whatinput=\\"keyboard\\"]) #test:focus:focus{color:red;}"`,
+      `"[data-keyborg]:not([data-keyborg=\\"keyboard\\"]) #test:focus:focus{color:red;}"`,
     );
   });
 
   it('works with a combination of :not(:focus-visible) and :focus-visible pseudo-classes', () => {
     expect(evaluateCSS('#test:focus-visible .foobar:not(:focus-visible) { color: red; }')).toMatchInlineSnapshot(
-      `"[data-whatinput]:not([data-whatinput=\\"keyboard\\"]) #test:focus-visible .foobar:focus{color:red;}"`,
+      `"[data-keyborg]:not([data-keyborg=\\"keyboard\\"]) #test:focus-visible .foobar:focus{color:red;}"`,
     );
   });
 
