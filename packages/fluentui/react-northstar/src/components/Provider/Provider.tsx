@@ -121,7 +121,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     ? defaultContextValue
     : consumedContext;
   const createRenderer = React.useContext(RendererContext);
-  const keyboardNavigationStateRef = useKeyboardNavigationStateRef(props.target?.defaultView);
+  const keyboardNavigationStateRef = useKeyboardNavigationStateRef(incomingContext.target?.defaultView);
 
   // Memoization of `inputContext` & `outgoingContext` is required to avoid useless notifications of components that
   // consume `useFluentContext()` on each render

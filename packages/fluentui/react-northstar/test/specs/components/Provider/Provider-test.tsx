@@ -3,18 +3,18 @@ import { CreateRenderer, noopRenderer } from '@fluentui/react-northstar-styles-r
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as React from 'react';
+import * as Keyborg from 'keyborg';
 
 import { Provider } from 'src/components/Provider/Provider';
 import { ProviderConsumer } from 'src/components/Provider/ProviderConsumer';
 import { PortalInner } from 'src/components/Portal/PortalInner';
 
+jest.mock('keyborg');
+
 const createDocumentMock = (): Document => {
   const externalDocument = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
   const externalWindow: Partial<Window> = {
-    ontouchstart: () => {}, // whatInput asserts for this method
-
-    addEventListener: () => {},
-    removeEventListener: () => {},
+    document: externalDocument,
   };
 
   externalDocument.documentElement.appendChild(externalDocument.createElement('body'));
@@ -26,6 +26,15 @@ const createDocumentMock = (): Document => {
 };
 
 describe('Provider', () => {
+  beforeEach(() => {
+    jest
+      .spyOn(Keyborg, 'createKeyborg')
+      .mockImplementation(
+        () => ({ subscribe: jest.fn(), unsubscribe: jest.fn(), isNavigatingWithKeyboard: jest.fn() } as any),
+      );
+    jest.spyOn(Keyborg, 'disposeKeyborg');
+  });
+
   test('is exported', () => {
     expect(require('src/index.ts').Provider).toEqual(Provider);
   });
@@ -270,10 +279,8 @@ describe('Provider', () => {
   });
 
   describe('target', () => {
-    test('performs whatinput init on first Provider mount', () => {
+    test('performs keyborg init on first Provider mount', () => {
       const externalDocument = createDocumentMock();
-
-      const addEventListener = jest.spyOn(externalDocument.defaultView, 'addEventListener');
       const setAttribute = jest.spyOn(externalDocument.documentElement, 'setAttribute');
 
       mount(
@@ -284,15 +291,12 @@ describe('Provider', () => {
         </Provider>,
       );
 
-      // mousedown + touchstart + touchend + keyup + keydown
-      expect(addEventListener).toHaveBeenCalledTimes(5);
+      expect(Keyborg.createKeyborg).toHaveBeenCalled();
       expect(setAttribute).toHaveBeenCalledWith('data-keyborg', expect.any(String));
     });
 
-    test('performs whatinput cleanup on last Provider unmount', () => {
+    test('performs keyborg cleanup on last Provider unmount', () => {
       const externalDocument = createDocumentMock();
-      const removeEventListener = jest.spyOn(externalDocument.defaultView, 'removeEventListener');
-
       const wrapper = mount(
         <Provider id="first-provider" target={externalDocument}>
           <Provider id="second-provider" target={externalDocument}>
@@ -302,8 +306,7 @@ describe('Provider', () => {
       );
       wrapper.unmount();
 
-      // mousedown + touchstart + touchend + keyup + keydown
-      expect(removeEventListener).toHaveBeenCalledTimes(5);
+      expect(Keyborg.disposeKeyborg).toHaveBeenCalled();
     });
   });
 

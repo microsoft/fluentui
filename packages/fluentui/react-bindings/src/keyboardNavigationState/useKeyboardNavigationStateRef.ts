@@ -8,10 +8,8 @@ class KeyboardNavigationStateImpl implements KeyboardNavigationState {
   private _documentElement?: HTMLElement;
 
   constructor(target: Window) {
-    if (target) {
-      this._keyborg = createKeyborg(target);
-      this._keyborg.subscribe(this._onChange);
-    }
+    this._keyborg = createKeyborg(target);
+    this._keyborg.subscribe(this._onChange);
     this._documentElement = target.document.documentElement;
     this._setAttribute();
   }
@@ -51,6 +49,7 @@ class KeyboardNavigationStateImpl implements KeyboardNavigationState {
   }
 
   private _onChange = (isNavigatingWithKeyboard: boolean) => {
+    this._setAttribute();
     this._callbacks.forEach(callback => callback(isNavigatingWithKeyboard));
   };
 
