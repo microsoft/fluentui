@@ -131,10 +131,10 @@ describe('Toggle', () => {
       expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBe('ToggleId-stateText');
     });
 
-    it('is labelled by the state text element if no aria labels are provided and no label is provided', () => {
-      const component = mount(<Toggle onText="On" offText="Off" id="ToggleId" />);
+    it('is labelled by the label element alone if no aria labels are provided, and state text is provided', () => {
+      const component = mount(<Toggle label="Label" onText="On" offText="Off" id="ToggleId" />);
 
-      expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBe('ToggleId-stateText');
+      expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBe('ToggleId-label');
     });
   });
 });
