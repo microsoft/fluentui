@@ -1710,15 +1710,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         </span>
       </button>
     </div>
-    <div
-      aria-atomic="true"
-      aria-live="polite"
-      className=""
-      id="ComboBox6-error"
-      role="region"
-    >
-      
-    </div>
   </div>
   <button
     aria-label="next page"

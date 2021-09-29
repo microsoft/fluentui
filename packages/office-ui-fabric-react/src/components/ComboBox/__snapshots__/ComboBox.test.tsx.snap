@@ -360,15 +360,6 @@ exports[`ComboBox Renders correctly 1`] = `
       </span>
     </button>
   </div>
-  <div
-    aria-atomic="true"
-    aria-live="polite"
-    className=""
-    id="ComboBox0-error"
-    role="region"
-  >
-    
-  </div>
 </div>
 `;
 
@@ -734,15 +725,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         </i>
       </span>
     </button>
-  </div>
-  <div
-    aria-atomic="true"
-    aria-live="polite"
-    className=""
-    id="ComboBox0-error"
-    role="region"
-  >
-    
   </div>
 </div>
 `;

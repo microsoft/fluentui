@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update experiment snapshot",
+  "packageName": "@uifabric/experiments",
+  "email": "geoff.cox@live.com",
+  "dependentChangeType": "patch"
+}
