@@ -28,6 +28,7 @@ export class Menu extends FoundationMenu {
  */
 export const fluentMenu = Menu.compose({
   baseName: 'menu',
+  baseClass: FoundationMenu,
   template,
   styles,
 });
