@@ -87,7 +87,7 @@ export interface FontFaceProps {
 
 export interface FontFace {
   name: string;
-  paths: string[];
+  paths?: string[];
   props: FontFaceProps;
 }
 
