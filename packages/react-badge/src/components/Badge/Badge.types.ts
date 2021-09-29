@@ -1,67 +1,42 @@
 import * as React from 'react';
-import type { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
-export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
-
-export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
-
-export type BadgeShape = 'rounded' | 'square' | 'circular';
-
-export type BadgeColors =
-  | 'brand'
-  | 'danger'
-  | 'severe'
-  | 'warning'
-  | 'success'
-  | 'important'
-  | 'informative'
-  | 'subtle';
-
-export type BadgeProps = ComponentPropsCompat &
-  React.HTMLAttributes<HTMLElement> & {
-    /**
-     * A Badge can be sized.
-     * @defaultvalue medium
-     */
-    size?: BadgeSize;
-
-    /**
-     * A Badge can be square, circular or rounded
-     * @defaultvalue circular
-     */
-    shape?: BadgeShape;
-
-    /**
-     * A Badge can be filled, outline, ghost, inverted
-     * @defaultvalue filled
-     */
-    appearance?: BadgeAppearance;
-
-    /**
-     * A Badge has a preset of colors
-     * @defaultvalue filled
-     */
-    color?: BadgeColors;
-
-    /**
-     * Icon slot
-     */
-    icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-    /**
-     * Position for Icon to be rendered
-     * @defaultvalue before
-     */
-    iconPosition?: 'before' | 'after';
-  };
-
-export type BadgeState = BadgeProps & {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.RefObject<HTMLElement>;
-  /**
-   * Icon slot when processed by internal state
-   */
-  icon?: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
+export type BadgeSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 };
+
+export type BadgeCommons = {
+  /**
+   * A Badge can be filled, outline, ghost, inverted
+   * @defaultvalue filled
+   */
+  appearance: 'filled' | 'ghost' | 'outline' | 'tint';
+
+  /**
+   * A Badge can be one of preset colors
+   * @defaultvalue brand
+   */
+  color: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
+
+  /**
+   * A Badge can position the icon before or after the content.
+   * @defaultvalue before
+   */
+  iconPosition: 'before' | 'after';
+
+  /**
+   * A Badge can be square, circular or rounded.
+   * @defaultvalue circular
+   */
+  shape: 'circular' | 'rounded' | 'square';
+
+  /**
+   * A Badge can be on of several preset sizes.
+   * @defaultvalue medium
+   */
+  size: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+};
+
+export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeCommons>;
+export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;

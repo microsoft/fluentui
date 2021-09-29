@@ -3,13 +3,13 @@ import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
 import { markClassName, markLabelClassName } from '../../utils/renderMarks';
 
-const thumbClassName = 'ms-Slider-thumb';
-const trackClassName = 'ms-Slider-track';
+export const thumbClassName = 'ms-Slider-thumb';
+export const trackClassName = 'ms-Slider-track';
 
 /**
  * Styles for the root slot
  */
-const useRootStyles = makeStyles({
+export const useRootStyles = makeStyles({
   root: theme => ({
     position: 'relative',
     display: 'inline-flex',
@@ -89,7 +89,7 @@ const useRootStyles = makeStyles({
 /**
  * Styles for the slider wrapper slot
  */
-const useSliderWrapper = makeStyles({
+export const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
     overflow: 'hidden',
@@ -113,7 +113,7 @@ const useSliderWrapper = makeStyles({
 /**
  * Styles for the rail slot
  */
-const useRailStyles = makeStyles({
+export const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
     borderRadius: theme.global.borderRadius.xLarge,
@@ -127,6 +127,7 @@ const useRailStyles = makeStyles({
 
   disabled: theme => ({
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
   }),
 
   horizontal: theme => ({
@@ -149,7 +150,7 @@ const useRailStyles = makeStyles({
 /**
  * Styles for the trackWrapper slot
  */
-const useTrackWrapperStyles = makeStyles({
+export const useTrackWrapperStyles = makeStyles({
   trackWrapper: theme => ({
     position: 'absolute',
   }),
@@ -170,7 +171,7 @@ const useTrackWrapperStyles = makeStyles({
 /**
  * Styles for the track slot
  */
-const useTrackStyles = makeStyles({
+export const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
     borderRadius: theme.global.borderRadius.xLarge,
@@ -191,7 +192,7 @@ const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
@@ -202,7 +203,7 @@ const useTrackStyles = makeStyles({
 /**
  * Styles for the mark slot
  */
-const useMarksWrapperStyles = makeStyles({
+export const useMarksWrapperStyles = makeStyles({
   marksWrapper: theme => ({
     position: 'relative',
     display: 'grid',
@@ -284,7 +285,7 @@ const useMarksWrapperStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-const useThumbWrapperStyles = makeStyles({
+export const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
     outline: 'none',
@@ -307,7 +308,7 @@ const useThumbWrapperStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-const useThumbStyles = makeStyles({
+export const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
     width: 'var(--slider-thumb-size)',
@@ -336,12 +337,14 @@ const useThumbStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
     background: theme.alias.color.neutral.neutralForegroundDisabled,
-    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
+    ':before': {
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
+    },
   }),
 
   horizontal: theme => ({
@@ -352,7 +355,7 @@ const useThumbStyles = makeStyles({
 /**
  * Styles for the activeRail slot
  */
-const useActiveRailStyles = makeStyles({
+export const useActiveRailStyles = makeStyles({
   activeRail: theme => ({
     position: 'absolute',
   }),
@@ -459,7 +462,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     thumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.thumb.className,
   );
 

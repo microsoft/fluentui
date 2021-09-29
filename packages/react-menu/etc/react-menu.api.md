@@ -449,6 +449,9 @@ export function useMenuListContextValues(state: MenuListState): MenuListContextV
 export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
 
 // @public
+export const useMenuPopoverStyles: (state: MenuPopoverState) => MenuPopoverState;
+
+// @public
 export const useMenuTrigger: (props: MenuTriggerProps) => MenuTriggerState;
 
 // @public (undocumented)

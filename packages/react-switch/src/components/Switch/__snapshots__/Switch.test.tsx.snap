@@ -11,7 +11,7 @@ exports[`Switch Snapshot Tests renders a basic Switch checked 1`] = `
     />
     <div
       class=""
-      style="transform: translate(100%);"
+      style="transform: translate(100%); transition: transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), opacity .1s cubic-bezier(0.33, 0.0, 0.67, 1);"
     >
       <div
         class="ms-Switch-thumb"
@@ -20,7 +20,12 @@ exports[`Switch Snapshot Tests renders a basic Switch checked 1`] = `
     <input
       checked=""
       class=""
+      readonly=""
+      role="switch"
       type="checkbox"
+    />
+    <div
+      class=""
     />
   </div>
 </div>
@@ -37,7 +42,7 @@ exports[`Switch Snapshot Tests renders a basic Switch unchecked 1`] = `
     />
     <div
       class=""
-      style="transform: translate(0%);"
+      style="transform: translate(0%); transition: transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), opacity .1s cubic-bezier(0.33, 0.0, 0.67, 1);"
     >
       <div
         class="ms-Switch-thumb"
@@ -45,7 +50,12 @@ exports[`Switch Snapshot Tests renders a basic Switch unchecked 1`] = `
     </div>
     <input
       class=""
+      readonly=""
+      role="switch"
       type="checkbox"
+    />
+    <div
+      class=""
     />
   </div>
 </div>
@@ -62,7 +72,7 @@ exports[`Switch Snapshot Tests renders a disabled Switch checked 1`] = `
     />
     <div
       class=""
-      style="transform: translate(100%);"
+      style="transform: translate(100%); transition: transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), opacity .1s cubic-bezier(0.33, 0.0, 0.67, 1);"
     >
       <div
         class="ms-Switch-thumb"
@@ -71,7 +81,12 @@ exports[`Switch Snapshot Tests renders a disabled Switch checked 1`] = `
     <input
       checked=""
       class=""
+      readonly=""
+      role="switch"
       type="checkbox"
+    />
+    <div
+      class=""
     />
   </div>
 </div>
@@ -88,7 +103,7 @@ exports[`Switch Snapshot Tests renders a disabled Switch unchecked 1`] = `
     />
     <div
       class=""
-      style="transform: translate(0%);"
+      style="transform: translate(0%); transition: transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), opacity .1s cubic-bezier(0.33, 0.0, 0.67, 1);"
     >
       <div
         class="ms-Switch-thumb"
@@ -96,7 +111,12 @@ exports[`Switch Snapshot Tests renders a disabled Switch unchecked 1`] = `
     </div>
     <input
       class=""
+      readonly=""
+      role="switch"
       type="checkbox"
+    />
+    <div
+      class=""
     />
   </div>
 </div>

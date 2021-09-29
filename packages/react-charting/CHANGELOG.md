@@ -1,8 +1,67 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Sep 2021 07:36:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.49)
+
+Wed, 29 Sep 2021 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.48..@fluentui/react-charting_v5.3.49)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.2 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+
+## [5.3.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.48)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.47..@fluentui/react-charting_v5.3.48)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.3.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react to v8.35.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.11 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [5.3.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.47)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.46..@fluentui/react-charting_v5.3.47)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.3.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/react to v8.35.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+## [5.3.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.46)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.45..@fluentui/react-charting_v5.3.46)
+
+### Patches
+
+- Legend container shifted left by 4 px for keyboard focus border ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by v-scharde@microsoft.com)
+- Removed title tag so that title tooltip should not show ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by v-scharde@microsoft.com)
+- Bump @fluentui/react to v8.34.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+
+## [5.3.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.45)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.44..@fluentui/react-charting_v5.3.45)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.6 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+
+## [5.3.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.44)
+
+Wed, 22 Sep 2021 09:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.43..@fluentui/react-charting_v5.3.44)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.5 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
 
 ## [5.3.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.43)
 
