@@ -97,7 +97,7 @@ export function useARIAButton<Required extends boolean = false>(
       shorthand.tabIndex = disabled && !disabledFocusable ? undefined : tabIndex ?? 0;
     }
 
-    // Remove non-DOM props
+    // Remove non-DOM disabledFocusable prop
     delete shorthand.disabledFocusable;
   }
 

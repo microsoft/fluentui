@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useARIAButton } from '@fluentui/react-aria';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { ButtonProps, ButtonState } from './Button.types';
 
 /**
@@ -11,6 +11,7 @@ import type { ButtonProps, ButtonState } from './Button.types';
 export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>): ButtonState => {
   const {
     appearance,
+    as,
     block = false,
     disabled = false,
     disabledFocusable = false,
@@ -40,13 +41,16 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>)
       icon: 'span',
     },
 
-    root: useARIAButton(props, {
-      required: true,
-      defaultProps: {
-        ref,
-        type: 'button', // This is added because the default for type is 'submit'
-      },
-    }),
+    root: getNativeElementProps(
+      as || 'button',
+      useARIAButton(props, {
+        required: true,
+        defaultProps: {
+          ref,
+          type: 'button', // This is added because the default for type is 'submit'
+        },
+      }),
+    ),
     icon: iconShorthand,
   };
 };
