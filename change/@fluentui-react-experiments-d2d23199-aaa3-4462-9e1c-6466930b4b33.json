@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated experiment snapshot that uses ComboBox",
-  "packageName": "@fluentui/react-experiments",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 29 Sep 2021 07:36:23 GMT",
+      "tag": "@fluentui/web-components_v1.5.4",
+      "version": "1.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "fix syntax issue causing padding to not be applied to text area",
+            "commit": "e726d8b364e68d28821710ea168b3ee0f7a23345"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Sep 2021 07:35:13 GMT",
       "tag": "@fluentui/web-components_v1.5.3",
       "version": "1.5.3",
