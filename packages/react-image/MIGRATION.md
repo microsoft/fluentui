@@ -59,15 +59,63 @@ _This property suffered no changes and can be used as is._
 
 ### onLoadingStateChanged
 
-For v9, this feature is no longer supported.
+For v9, this feature is no longer supported. The alternative would be to use the global events such as: `onLoad`, `onError` to detect the state of image loading.
 
 ### shouldFadeIn
 
-For v9, this feature is no longer supported.
+For v9, this feature is no longer supported. The alternative is to apply the animation through `make-styles` and using the global event `onLoad`. Below is an example of a migration:
+
+> ⚠️❌🚧 Note - This snipped needs changes!! ❌🚧
+
+```
+const useStyles = makeStyles(theme => ({
+  fadeIn400: {
+    animationName: {
+      '0px' : {
+        opacity: 0
+      },
+      '100%': {
+        opacity: 1
+      }
+    },
+    //need to change
+    animationIterationCount: 'normal',
+    animationDuration: '3s',
+  },
+})
+
+const MyComponent = () => {
+    const [isLoaded, setLoaded] = useState(false);
+    const styles = useStyles()
+
+    return <Image src="example.jpg" onLoad={()=> setLoaded(true)} className={!isLoaded? styles.fadeIn400 ? ''} />
+}
+```
 
 ### shouldStartVisible
 
-For v9, this feature is no longer supported.
+For v9, this feature is no longer supported. Alternatively, you can use the global events `onLoad` and `onError` to achieve the same behaviour. Below is an example showcasing this:
+
+> ⚠️❌🚧 Note - This snipped needs to be verified!! ❌🚧
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'none'
+  }
+})
+
+const MyComponent = () => {
+    const [isLoaded, setLoaded] = useState(null);
+    const styles = useStyles()
+
+    return <Image
+              src="example.jpg"
+              onLoad={()=> setLoaded(true)}
+              onError={() => setLoaded(false)}
+              className={isLoaded === false? styles.root ? ''} />
+}
+```
 
 ### styles
 
