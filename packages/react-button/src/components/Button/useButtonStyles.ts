@@ -15,7 +15,6 @@ export const buttonSpacing = {
 
 const useRootStyles = makeStyles({
   base: theme => ({
-    position: 'relative',
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
