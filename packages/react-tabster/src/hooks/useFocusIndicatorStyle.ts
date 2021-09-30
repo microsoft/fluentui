@@ -21,7 +21,7 @@ type FocusOutlineStyleOptions = {
  * @param options - Configures the style of the focus outline
  * @returns focus outline styles object
  */
-export const getFocusOutlineStyles = (options: FocusOutlineStyleOptions) => {
+const getFocusOutlineStyles = (options: FocusOutlineStyleOptions) => {
   const { outlineRadius, outlineColor, outlineOffset, outlineWidth } = options;
 
   const outlineOffsetTop = (outlineOffset as FocusOutlineOffset)?.top || outlineOffset;

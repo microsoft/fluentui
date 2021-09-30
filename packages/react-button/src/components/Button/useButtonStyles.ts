@@ -25,7 +25,6 @@ const useRootStyles = makeStyles({
 
     maxWidth: '280px',
 
-    // overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
 
