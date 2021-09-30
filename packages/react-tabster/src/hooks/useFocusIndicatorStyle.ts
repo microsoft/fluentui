@@ -63,9 +63,9 @@ const defaultOptions: CreateFocusIndicatorStyleRuleOptions = {
  * NOTE: The element with the focus outline needs to have `position: relative` so that the
  * pseudo element can be properly positioned.
  *
- * @param theme - Theme used in {@see makeStyles}
+ * @param theme - Theme used in @see makeStyles
  * @param options - Configure the style of the focus outline
- * @returns focus outline styles object for {@see makeStyles}
+ * @returns focus outline styles object for @see makeStyles
  */
 export const createFocusOutlineStyle = (
   theme: Theme,
@@ -86,10 +86,10 @@ export const createFocusOutlineStyle = (
 });
 
 /**
- * Creates a style rule for {@see makeStyles} that includes the necessary selectors for focus.
- * Should be used only when {@see createFocusOutlineStyle} does not fit requirements
+ * Creates a style rule for @see makeStyles that includes the necessary selectors for focus.
+ * Should be used only when @see createFocusOutlineStyle does not fit requirements
  *
- * @param rule - styling applied on focus, defaults to {@see getDefaultFocusOutlineStyes}
+ * @param rule - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
  */
 export const createCustomFocusIndicatorStyle = (
   rule: MakeStylesStyleRule<Theme>,
