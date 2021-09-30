@@ -25,8 +25,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@types/puppeteer": "1.12.3",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
+    "@types/react": "17.0.25",
+    "@types/react-dom": "17.0.9",
     "@types/sarif": "^2.1.1",
     "@fluentui/font-icons-mdl2": "^8.1.12",
     "@fluentui/scripts": "^1.0.0"

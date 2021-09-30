@@ -26,7 +26,7 @@
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
+    "@types/react": "17.0.25",
     "@types/react-test-renderer": "^16.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",

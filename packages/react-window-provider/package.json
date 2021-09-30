@@ -26,7 +26,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/test-utilities": "^8.0.8",
-    "@types/react": "16.9.42",
+    "@types/react": "17.0.25",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6"
   },
