@@ -2,11 +2,11 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import type { MenuListState } from './MenuList.types';
 
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     display: 'flex',
     flexDirection: 'column',
-    gap: theme.global.strokeWidth.thick, // same gap as focus indicator thickness
-  }),
+    gap: '2px',
+  },
 });
 
 /**
