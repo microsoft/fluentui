@@ -464,7 +464,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={1}
                             aria-selected={false}
@@ -1008,7 +1007,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={2}
                             aria-selected={false}
@@ -1552,7 +1550,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={3}
                             aria-selected={false}
@@ -2500,7 +2497,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={1}
                             aria-selected={false}
@@ -3044,7 +3040,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={2}
                             aria-selected={false}
@@ -3588,7 +3583,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={3}
                             aria-selected={false}
@@ -4536,7 +4530,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={1}
                             aria-selected={false}
@@ -5080,7 +5073,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={2}
                             aria-selected={false}
@@ -5624,7 +5616,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                           role="presentation"
                         >
                           <div
-                            aria-disabled={false}
                             aria-level={2}
                             aria-posinset={3}
                             aria-selected={false}

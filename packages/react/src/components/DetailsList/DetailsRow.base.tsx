@@ -292,12 +292,12 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         componentRef={this._focusZone}
         role={role}
         aria-label={ariaLabel}
-        aria-disabled={disabled}
+        aria-disabled={disabled || undefined}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
-        data-selection-disabled={disabled}
+        data-selection-disabled={disabled || undefined}
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}

@@ -8292,7 +8292,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-disabled={false}
                                 aria-level={2}
                                 aria-rowindex={3}
                                 aria-selected={false}
@@ -8602,7 +8601,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-disabled={false}
                                 aria-level={2}
                                 aria-rowindex={4}
                                 aria-selected={false}
@@ -9165,7 +9163,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-disabled={false}
                                 aria-level={2}
                                 aria-rowindex={6}
                                 aria-selected={false}
@@ -9475,7 +9472,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-disabled={false}
                                 aria-level={2}
                                 aria-rowindex={7}
                                 aria-selected={false}
@@ -9785,7 +9781,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-disabled={false}
                                 aria-level={2}
                                 aria-rowindex={8}
                                 aria-selected={false}

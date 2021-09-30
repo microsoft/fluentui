@@ -2088,7 +2088,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={2}
                       aria-selected={false}
                       className=
@@ -2967,7 +2966,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={3}
                       aria-selected={false}
                       className=
@@ -3845,7 +3843,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={4}
                       aria-selected={false}
                       className=
@@ -4724,7 +4721,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={5}
                       aria-selected={false}
                       className=
@@ -5602,7 +5598,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={6}
                       aria-selected={false}
                       className=
@@ -6481,7 +6476,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={7}
                       aria-selected={false}
                       className=
@@ -7359,7 +7353,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={8}
                       aria-selected={false}
                       className=
@@ -8238,7 +8231,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={9}
                       aria-selected={false}
                       className=
@@ -9116,7 +9108,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={10}
                       aria-selected={false}
                       className=
@@ -9995,7 +9986,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={11}
                       aria-selected={false}
                       className=

@@ -521,7 +521,6 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={2}
                       className=
                           ms-FocusZone
@@ -780,7 +779,6 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={3}
                       className=
                           ms-FocusZone
@@ -1039,7 +1037,6 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-disabled={false}
                       aria-rowindex={4}
                       className=
                           ms-FocusZone
