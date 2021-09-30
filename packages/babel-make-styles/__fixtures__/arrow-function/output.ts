@@ -2,20 +2,20 @@ import { __styles } from '@fluentui/react-make-styles';
 export const useStyles = __styles(
   {
     root: {
-      De3pzq: 'f1jjijw7',
-      sj55zd: 'fk38h1u',
+      De3pzq: 'f1c73kur',
+      sj55zd: 'ff34w31',
       mc9l5x: 'f22iagw',
     },
     rootPrimary: {
-      sj55zd: 'f1aydz7j',
+      sj55zd: 'f1817uup',
     },
   },
   {
     d: [
-      '.f1jjijw7{background-color:var(--alias-color-neutral-neutralForeground1);}',
-      '.fk38h1u{color:var(--alias-color-blue-border2);}',
+      '.f1c73kur{background-color:var(--colorNeutralForeground1);}',
+      '.ff34w31{color:var(--colorPaletteBlueBorder2);}',
       '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
-      '.f1aydz7j{color:var(--alias-color-neutral-brandBackground);}',
+      '.f1817uup{color:var(--colorBrandBackground);}',
     ],
   },
 );

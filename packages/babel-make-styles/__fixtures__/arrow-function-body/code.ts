@@ -3,9 +3,9 @@ import { Theme } from '@fluentui/react-theme';
 
 function buttonTokens(theme: Theme) {
   return {
-    backgroundColor: theme.alias.color.neutral.neutralForeground1,
+    backgroundColor: theme.colorNeutralForeground1,
     backgroundColorHover: 'red',
-    color: theme.alias.color.blue.border2,
+    color: theme.colorPaletteBlueBorder2,
   };
 }
 

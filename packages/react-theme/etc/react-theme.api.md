@@ -214,11 +214,13 @@ export const teamsHighContrastTheme: Theme;
 // @public (undocumented)
 export const teamsLightTheme: Theme;
 
+// Warning: (ae-forgotten-export) The symbol "FontWeightTokens" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowLevelTokens & FontFamilyTokens & ColorPaletteTokens & ColorTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowLevelTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 
 // @public (undocumented)
-export function themeToCSSVariables(theme: Theme): Record<string, string>;
+export function themeToCSSVariables(theme: Theme): Record<string, string | number>;
 
 // @public (undocumented)
 export const webDarkTheme: Theme;

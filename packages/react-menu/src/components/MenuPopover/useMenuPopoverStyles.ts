@@ -3,14 +3,14 @@ import type { MenuPopoverState } from './MenuPopover.types';
 
 const useStyles = makeStyles({
   root: theme => ({
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    backgroundColor: theme.colorNeutralBackground1,
     minWidth: '128px',
     maxWidth: '300px',
     width: 'max-content',
-    boxShadow: `${theme.alias.shadow.shadow16}`,
+    boxShadow: `${theme.shadowLevelShadow16}`,
     paddingTop: '4px',
     paddingBottom: '4px',
-    border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
+    border: `1px solid ${theme.colorTransparentStroke}`,
   }),
 });
 

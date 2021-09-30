@@ -3,24 +3,24 @@ import type { ImageState } from './Image.types';
 
 const useStyles = makeStyles({
   root: theme => ({
-    borderColor: theme.alias.color.neutral.neutralStroke1,
-    borderRadius: theme.global.borderRadius.none,
+    borderColor: theme.colorNeutralStroke1,
+    borderRadius: theme.borderRadiusNone,
 
     boxSizing: 'border-box',
     display: 'inline-block',
   }),
   rootBordered: theme => ({
     borderStyle: 'solid',
-    borderWidth: theme.global.strokeWidth.thin,
+    borderWidth: theme.strokeWidthThin,
   }),
   rootCircular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: theme.borderRadiusCircular,
   }),
   rootRounded: theme => ({
-    borderRadius: theme.global.borderRadius.medium,
+    borderRadius: theme.borderRadiusMedium,
   }),
   rootShadow: theme => ({
-    boxShadow: theme.alias.shadow.shadow4,
+    boxShadow: theme.shadowLevelShadow4,
   }),
   rootFitNone: {
     objectFit: 'none',

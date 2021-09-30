@@ -1,4 +1,4 @@
-import { black, grey, white, sharedColors } from '../global';
+import { black, grey, white, sharedColors } from '../global/colors';
 import type {
   BrandVariants,
   GlobalSharedColors,

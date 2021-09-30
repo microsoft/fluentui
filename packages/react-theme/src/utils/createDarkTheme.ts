@@ -1,5 +1,5 @@
 import { colorPaletteTokens, generateColorTokens } from '../alias/dark';
-import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths } from '../global';
+import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
 import { createShadowLevelTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
 
@@ -11,6 +11,7 @@ export const createDarkTheme: (brand: BrandVariants) => Theme = brand => {
     ...fontSizes,
     ...lineHeights,
     ...fontFamilies,
+    ...fontWeights,
     ...strokeWidths,
 
     ...colorTokens,
