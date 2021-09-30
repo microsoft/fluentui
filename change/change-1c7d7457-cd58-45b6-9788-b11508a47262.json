@@ -1,0 +1,354 @@
+{
+  "changes": [
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/codemods",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/foundation-legacy",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/jest-serializer-make-styles",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/jest-serializer-merge-styles",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-accordion",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-aria",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-avatar",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-badge",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-button",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-card",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-charting",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-checkbox",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-components",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-compose",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-conformance",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-context-selector",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-date-time",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-divider",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-docsite-components",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-experiments",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-file-type-icons",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-focus",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-hooks",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-icon-provider",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-icons-mdl2-branded",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-icons-mdl2",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-image",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-label",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-link",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-make-styles",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-menu",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-monaco-editor",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-popover",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-portal",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-positioning",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-provider",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-shared-contexts",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-slider",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-switch",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-tabs",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-tabster",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-text",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-theme",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-tooltip",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-utilities",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react-window-provider",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/react",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/test-utilities",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/theme",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "minor",
+      "comment": "Updates react & react-dom typings version",
+      "packageName": "@fluentui/utilities",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ import * as React_2 from 'react';
 export const anchorProperties: Record<string, number>;
 
 // @public
-export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, any> | null) | (new (props: any) => React_2.Component<any, any, any>)> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
 
 // @public
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
@@ -185,7 +185,7 @@ export const olProperties: Record<string, number>;
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
 
 // @public
-export const onlyChild: <P>(child: string | number | boolean | {} | React_2.ReactNodeArray | React_2.ReactPortal | React_2.ReactElement<P, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | null | undefined) => React_2.ReactElement<P, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)>;
+export const onlyChild: <P>(child: string | number | boolean | {} | React_2.ReactNodeArray | React_2.ReactPortal | React_2.ReactElement<P, string | ((props: any) => React_2.ReactElement<any, any> | null) | (new (props: any) => React_2.Component<any, any, any>)> | null | undefined) => React_2.ReactElement<P, string | ((props: any) => React_2.ReactElement<any, any> | null) | (new (props: any) => React_2.Component<any, any, any>)>;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;

@@ -16,7 +16,7 @@ export const Badge: React_2.ForwardRefExoticComponent<Pick<{
     root?: ShorthandProps<ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>>;
     icon?: ShorthandProps<ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>>;
 }, "icon"> & React_2.HTMLAttributes<HTMLElement> & {
-    children?: string | number | boolean | {} | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | ShorthandRenderFunction<React_2.HTMLAttributes<HTMLElement>> | null | undefined;
+    children?: string | number | boolean | {} | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, any> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | ShorthandRenderFunction<React_2.HTMLAttributes<HTMLElement>> | null | undefined;
 } & Partial<BadgeCommons> & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -64,7 +64,7 @@ export const PresenceBadge: React_2.ForwardRefExoticComponent<Pick<{
     root?: ShorthandProps<ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>>;
     icon?: ShorthandProps<ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>>;
 }, "icon"> & React_2.HTMLAttributes<HTMLElement> & {
-    children?: string | number | boolean | {} | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | ShorthandRenderFunction<React_2.HTMLAttributes<HTMLElement>> | null | undefined;
+    children?: string | number | boolean | {} | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, any> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | ShorthandRenderFunction<React_2.HTMLAttributes<HTMLElement>> | null | undefined;
 } & Partial<BadgeCommons> & Partial<PresenceBadgeCommons> & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
