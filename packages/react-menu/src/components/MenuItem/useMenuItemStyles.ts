@@ -61,6 +61,7 @@ const useStyles = makeStyles({
     height: '20px',
   },
   disabled: theme => ({
+    backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
     ':hover': {
       backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
@@ -68,6 +69,7 @@ const useStyles = makeStyles({
     },
 
     ':focus': {
+      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
       color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   }),
