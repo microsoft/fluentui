@@ -11,7 +11,7 @@ import {
   sharedColors,
   white,
   black,
-} from '../global';
+} from '../global/colors';
 import type { GlobalSharedColors, ColorTokens, ColorPaletteTokens, ColorPaletteT, GlobalSharedColorsT } from '../types';
 
 export const generateColorTokens = (): ColorTokens => ({
