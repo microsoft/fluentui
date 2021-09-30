@@ -63,7 +63,7 @@ const useStyles = makeStyles({
   disabled: theme => ({
     color: theme.alias.color.neutral.neutralForegroundDisabled,
     ':hover': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1,
+      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
       color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
 
