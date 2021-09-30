@@ -2,6 +2,41 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 30 Sep 2021 09:18:15 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.117",
+      "version": "9.0.0-alpha.117",
+      "comments": {
+        "none": [
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-button",
+            "comment": "update stories structure to make them exportable to CodeSandbox",
+            "commit": "d5578f1a321c72a95ee2760fd128437bc793c60d"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-components",
+            "comment": "Add export to CodeSandbox for stories",
+            "commit": "d5578f1a321c72a95ee2760fd128437bc793c60d"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-image",
+            "comment": "First iteration of ReadMe doc",
+            "commit": "d5578f1a321c72a95ee2760fd128437bc793c60d"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-menu",
+            "comment": "export to codesandbox",
+            "commit": "d5578f1a321c72a95ee2760fd128437bc793c60d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Sep 2021 08:06:11 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.116",
       "version": "9.0.0-alpha.116",

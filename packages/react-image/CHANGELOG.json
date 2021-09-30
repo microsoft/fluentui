@@ -2,6 +2,21 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Thu, 30 Sep 2021 09:18:15 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.86",
+      "version": "9.0.0-alpha.86",
+      "comments": {
+        "none": [
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-image",
+            "comment": "First iteration of ReadMe doc",
+            "commit": "d5578f1a321c72a95ee2760fd128437bc793c60d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Sep 2021 08:06:11 GMT",
       "tag": "@fluentui/react-image_v9.0.0-alpha.86",
       "version": "9.0.0-alpha.86",

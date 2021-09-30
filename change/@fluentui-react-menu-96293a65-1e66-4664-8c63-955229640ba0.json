@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "export to codesandbox",
-  "packageName": "@fluentui/react-menu",
-  "email": "peter@draxler.ml",
-  "dependentChangeType": "patch"
-}
