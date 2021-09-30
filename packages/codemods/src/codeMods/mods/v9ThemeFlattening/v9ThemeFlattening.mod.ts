@@ -86,7 +86,7 @@ const replacements: [RegExp, (token: string) => string][] = [
         return 'lineHeight' + capitalizeToken(name).replace(/[\[\]]/g, '');
       }
 
-      throw new Error();
+      throw new Error(`Failed to transform "${token}", there is no matching transform for it`);
     },
   ],
 ];
