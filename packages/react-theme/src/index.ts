@@ -4,6 +4,7 @@ export * from './utils/index';
 export type {
   BrandVariants,
   FontSizeTokens,
+  FontWeightTokens,
   LineHeightTokens,
   BorderRadiusTokens,
   StrokeWidthTokens,

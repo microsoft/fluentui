@@ -54,15 +54,6 @@ const replacements: [RegExp, (token: string) => string][] = [
     },
   ],
   [
-    /theme\.global\.strokeWidth\..+/,
-    token => {
-      const parts = token.split('.');
-      const name = parts[parts.length - 1];
-
-      return 'strokeWidth' + capitalizeToken(name);
-    },
-  ],
-  [
     /theme\.global\.type\..+/,
     token => {
       const parts = token.split('.');

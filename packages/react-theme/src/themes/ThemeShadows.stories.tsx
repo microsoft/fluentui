@@ -1,16 +1,9 @@
-/*
- FIXME: this is a temporary workaround - moving stories from react-examples
- reenable TS and fix errors in a subsequent PR
- */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 import * as React from 'react';
 import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
 import type { ShadowLevelTokens } from '../index';
 
 export default {
-  title: 'Theme/Alias/Shadows',
+  title: 'Theme/Shadows',
 };
 
 // FIXME: hardcoded theme
@@ -45,7 +38,11 @@ const ShadowBox: React.FunctionComponent<
   </div>
 );
 
-export const AliasShadows = () => {
+export const Shadows = () => {
+  const shadowTokens = Object.keys(theme.light).filter(tokenName =>
+    tokenName.startsWith('shadowLevel'),
+  ) as (keyof ShadowLevelTokens)[];
+
   return (
     <div
       style={{
@@ -60,11 +57,11 @@ export const AliasShadows = () => {
       <h3 key="shadow-title-light">Light</h3>
       <h3 key="shadow-title-dark">Dark</h3>
       <h3 key="shadow-title-hc">High Contrast</h3>
-      {Object.keys(theme.light.alias.shadow).map((shadow: keyof ShadowLevelTokens) => [
+      {shadowTokens.map(shadow => [
         <div key={shadow}>{shadow}</div>,
-        <ShadowBox key={`${shadow}-light`} shadow={theme.light.alias.shadow[shadow]} />,
-        <ShadowBox key={`${shadow}-dark`} shadow={theme.dark.alias.shadow[shadow]} />,
-        <ShadowBox key={`${shadow}-hc`} shadow={theme.highContrast.alias.shadow[shadow]} />,
+        <ShadowBox key={`${shadow}-light`} shadow={theme.light[shadow]} />,
+        <ShadowBox key={`${shadow}-dark`} shadow={theme.dark[shadow]} />,
+        <ShadowBox key={`${shadow}-hc`} shadow={theme.highContrast[shadow]} />,
       ])}
     </div>
   );
