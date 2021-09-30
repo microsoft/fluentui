@@ -41,8 +41,8 @@ export const useCounterBadgeStyles = (state: CounterBadgeState): CounterBadgeSta
   const styles = useStyles();
   state.root.className = mergeClasses(
     styles.root,
-    // state.color === 'warning' && styles.warning,
-    // state.color === 'important' && styles.important,
+    state.color === 'warning' && styles.warning,
+    state.color === 'important' && styles.important,
     state.color === 'severe' && styles.severe,
     state.color === 'informative' && styles.informative,
     state.dot && styles.dot,
