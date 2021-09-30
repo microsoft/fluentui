@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 22:17:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.0)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.1.5..@fluentui/merge-styles_v8.2.0)
+
+### Minor changes
+
+- feat: improve SSR experience for merge-styles ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by peter.varholak@gmail.com)
 
 ## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.1.5)
 

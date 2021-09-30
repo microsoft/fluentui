@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 27 Sep 2021 08:06:00 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 09:18:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.117)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.116..@fluentui/react-components_v9.0.0-alpha.117)
+
+### Changes
+
+- `@fluentui/react-menu`
+  - export to codesandbox ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by peter@draxler.ml)
+
+## [9.0.0-alpha.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.116)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.115..@fluentui/react-components_v9.0.0-alpha.116)
+
+### Changes
+
+- `@fluentui/react-badge`
+  - Add Storybook Controls to Badge documentation ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by peter@draxler.ml)
+- `@fluentui/react-image`
+  - Updated ImageProps for consistency ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by gcox@microsoft.com)
+- `@fluentui/react-theme`
+  - Use direct values in alias tokens ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.115](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.115)
 

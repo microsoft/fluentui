@@ -3,10 +3,9 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { safeMount } from '@fluentui/test-utilities';
-import { KeyCodes } from '@fluentui/utilities';
+import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
 import { SelectionMode, Selection, SelectionZone } from '../../Selection';
 import { getTheme } from '../../Styling';
-import { EventGroup } from '../../Utilities';
 import { DetailsHeader } from './DetailsHeader';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
@@ -68,6 +67,10 @@ function customColumnDivider(
 }
 
 describe('DetailsList', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders List correctly with onRenderDivider props', () => {
     const component = renderer.create(
       <DetailsList
@@ -373,16 +376,30 @@ describe('DetailsList', () => {
     );
   });
 
-  it('executes onItemInvoked when double click or enter is pressed', () => {
+  it('executes onItemInvoked when double click is pressed', () => {
     const items = mockData(5);
     const onItemInvoked = jest.fn();
 
     safeMount(
       <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
       (wrapper: ReactWrapper) => {
-        wrapper.find('.ms-DetailsRow').first().simulate('dblclick').simulate('keydown', { which: KeyCodes.enter });
+        wrapper.find('.ms-DetailsRow').first().simulate('dblclick');
 
-        expect(onItemInvoked).toHaveBeenCalledTimes(2);
+        expect(onItemInvoked).toHaveBeenCalledTimes(1);
+      },
+    );
+  });
+
+  it('executes onItemInvoked when enter is pressed', () => {
+    const items = mockData(5);
+    const onItemInvoked = jest.fn();
+
+    safeMount(
+      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
+      (wrapper: ReactWrapper) => {
+        wrapper.find('.ms-DetailsRow').first().simulate('keydown', { which: KeyCodes.enter });
+
+        expect(onItemInvoked).toHaveBeenCalledTimes(1);
       },
     );
   });
