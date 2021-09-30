@@ -1,9 +1,9 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { MenuItemState } from './MenuItem.types';
 
 const useStyles = makeStyles({
-  focusIndicator: createFocusIndicatorStyleRule(),
+  focusIndicator: theme => createFocusOutlineStyle(theme),
   root: theme => ({
     position: 'relative',
     color: theme.alias.color.neutral.neutralForeground1,

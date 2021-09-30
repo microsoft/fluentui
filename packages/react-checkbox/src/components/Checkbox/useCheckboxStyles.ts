@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule, getDefaultFocusOutlineStyles } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
 /**
@@ -116,14 +116,8 @@ const useStyles = makeStyles({
     },
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      ...getDefaultFocusOutlineStyles(theme, {
-        outlineOffset: '2px',
-      }),
-    }),
-    { selector: 'focus-within' },
-  ),
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' }, selector: 'focus-within' }),
 });
 
 const useContainerStyles = makeStyles({

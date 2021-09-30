@@ -1,9 +1,9 @@
 import type { Theme } from '@fluentui/react-theme';
-import type { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { MakeStyles, MakeStylesStyleRule } from '@fluentui/make-styles';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 
-type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
-type FocusOutlineStyleOptions = {
+export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
+export type FocusOutlineStyleOptions = {
   /**
    * Only property not supported by the native CSS `outline`, if this is no longer needed
    * we can just go native instead
@@ -51,20 +51,6 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions) => {
   };
 };
 
-/**
- *
- * @param theme - Fluent theme
- * @param options - Configures the style of the focus outline
- */
-export const getDefaultFocusOutlineStyles = (theme: Theme, options: Partial<FocusOutlineStyleOptions> = {}) =>
-  getFocusOutlineStyles({
-    outlineColor: theme.alias.color.neutral.strokeFocus2,
-    outlineRadius: theme.global.borderRadius.medium,
-    // FIXME: theme.global.strokeWidth.thick causes some weird bugs
-    outlineWidth: '2px',
-    ...options,
-  });
-
 export interface CreateFocusIndicatorStyleRuleOptions {
   selector?: 'focus' | 'focus-within';
 }
@@ -74,11 +60,39 @@ const defaultOptions: CreateFocusIndicatorStyleRuleOptions = {
 };
 
 /**
- * Creates a style rule for {@see makeStyles} that includes the necessary selectors for focus
+ * NOTE: The element with the focus outline needs to have `position: relative` so that the
+ * pseudo element can be properly positioned.
+ *
+ * @param theme - Theme used in {@see makeStyles}
+ * @param options - Configure the style of the focus outline
+ * @returns focus outline styles object for {@see makeStyles}
+ */
+export const createFocusOutlineStyle = (
+  theme: Theme,
+  options: {
+    style: Partial<FocusOutlineStyleOptions>;
+  } & CreateFocusIndicatorStyleRuleOptions = { style: {}, ...defaultOptions },
+): MakeStyles => ({
+  ':focus-visible': {
+    outline: 'none',
+  },
+  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: getFocusOutlineStyles({
+    outlineColor: theme.alias.color.neutral.strokeFocus2,
+    outlineRadius: theme.global.borderRadius.medium,
+    // FIXME: theme.global.strokeWidth.thick causes some weird bugs
+    outlineWidth: '2px',
+    ...options.style,
+  }),
+});
+
+/**
+ * Creates a style rule for {@see makeStyles} that includes the necessary selectors for focus.
+ * Should be used only when {@see createFocusOutlineStyle} does not fit requirements
+ *
  * @param rule - styling applied on focus, defaults to {@see getDefaultFocusOutlineStyes}
  */
-export const createFocusIndicatorStyleRule = (
-  rule: MakeStylesStyleRule<Theme> = getDefaultFocusOutlineStyles,
+export const createCustomFocusIndicatorStyle = (
+  rule: MakeStylesStyleRule<Theme>,
   options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
 ): MakeStylesStyleRule<Theme> => theme => ({
   ':focus-visible': {

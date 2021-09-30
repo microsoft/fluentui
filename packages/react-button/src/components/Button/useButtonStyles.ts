@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule, getDefaultFocusOutlineStyles } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
@@ -25,6 +25,7 @@ const useRootStyles = makeStyles({
 
     maxWidth: '280px',
 
+    overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
 
@@ -245,22 +246,29 @@ const useRootStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  base: createFocusIndicatorStyleRule(),
-  circular: createFocusIndicatorStyleRule(theme => ({
-    ...getDefaultFocusOutlineStyles(theme, {
-      outlineRadius: theme.global.borderRadius.circular,
-    }),
+  //   base: theme => createFocusOutlineStyle(theme),
+  //   circular: theme =>
+  //    createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.circular } }),
+  //   primary: theme => createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' } }),
+  //   square: theme => createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.none } }),
+  base: createCustomFocusIndicatorStyle(theme => ({
+    borderColor: 'transparent',
+    outline: '2px solid transparent',
+    boxShadow: `
+      ${theme.alias.shadow.shadow4},
+      0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}
+    `,
+    zIndex: 1,
   })),
-  primary: createFocusIndicatorStyleRule(theme => ({
-    ...getDefaultFocusOutlineStyles(theme, {
-      outlineOffset: '1px',
-    }),
+  circular: createCustomFocusIndicatorStyle(theme => ({
+    borderRadius: theme.global.borderRadius.circular,
+  })),
+  primary: createCustomFocusIndicatorStyle(theme => ({
     borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
+    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}`,
   })),
-  square: createFocusIndicatorStyleRule(theme => ({
-    ...getDefaultFocusOutlineStyles(theme, {
-      outlineRadius: theme.global.borderRadius.none,
-    }),
+  square: createCustomFocusIndicatorStyle(theme => ({
+    borderRadius: theme.global.borderRadius.none,
   })),
 });
 

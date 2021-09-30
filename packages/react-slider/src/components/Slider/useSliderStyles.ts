@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule, getDefaultFocusOutlineStyles } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
 import { markClassName, markLabelClassName } from '../../utils/renderMarks';
 
@@ -68,14 +68,8 @@ export const useRootStyles = makeStyles({
     cursor: 'not-allowed',
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      ...getDefaultFocusOutlineStyles(theme, {
-        outlineOffset: '6px',
-      }),
-    }),
-    { selector: 'focus-within' },
-  ),
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '6px' } }),
 });
 
 /**
