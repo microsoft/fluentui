@@ -279,6 +279,12 @@ export type LineHeightTokens = {
   lineHeightHero1000: string;
 };
 
+export type FontWeightTokens = {
+  fontWeightRegular: number;
+  fontWeightMedium: number;
+  fontWeightSemibold: number;
+};
+
 export type FontFamilyTokens = {
   fontFamilyBase: string;
   fontFamilyMonospace: string;
@@ -426,6 +432,7 @@ export type Theme = FontSizeTokens &
   StrokeWidthTokens &
   ShadowLevelTokens &
   FontFamilyTokens &
+  FontWeightTokens &
   ColorPaletteTokens &
   ColorTokens;
 

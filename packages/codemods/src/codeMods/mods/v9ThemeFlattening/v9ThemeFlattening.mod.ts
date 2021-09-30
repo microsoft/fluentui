@@ -115,7 +115,10 @@ const v9ThemeFlattening: CodeMod = {
         if (isMatchingNode) {
           const nodeText = node.getText();
 
-          if (nodeText.startsWith('theme.') && nodeText.indexOf('.', 6) !== -1) {
+          if (
+            (nodeText.startsWith('theme.global') || nodeText.startsWith('theme.alias')) &&
+            nodeText.indexOf('.', 6) !== -1
+          ) {
             const newToken = renameToken(nodeText);
 
             return ts.factory.createPropertyAccessExpression(

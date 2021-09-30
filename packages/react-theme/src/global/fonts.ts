@@ -1,4 +1,4 @@
-import type { FontFamilyTokens, FontSizeTokens, LineHeightTokens } from '../types';
+import type { FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens } from '../types';
 
 export const fontSizes: FontSizeTokens = {
   fontSizeBase100: '10px',
@@ -26,6 +26,12 @@ export const lineHeights: LineHeightTokens = {
   lineHeightHero800: '40px',
   lineHeightHero900: '52px',
   lineHeightHero1000: '92px',
+};
+
+export const fontWeights: FontWeightTokens = {
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
+  fontWeightSemibold: 600,
 };
 
 export const fontFamilies: FontFamilyTokens = {
