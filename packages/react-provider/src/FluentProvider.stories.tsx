@@ -74,14 +74,8 @@ export const ThemesMerge = () => (
     <FluentProvider theme={teamsLightTheme}>
       <FluentProvider
         theme={{
-          alias: {
-            color: {
-              neutral: {
-                brandStroke1: 'salmon',
-                brandBackground2: 'white',
-              },
-            },
-          },
+          colorBrandStroke1: 'salmon',
+          colorBrandBackground2: 'white',
         }}
       >
         <Box>Hello World!</Box>
