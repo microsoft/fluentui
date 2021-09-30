@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { makeStyles } from '@fluentui/react-make-styles';
 
 export const useStylesA = makeStyles({

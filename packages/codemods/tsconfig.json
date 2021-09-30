@@ -21,6 +21,5 @@
     "types": ["jest", "node"],
     "resolveJsonModule": true
   },
-  "include": ["src"],
-  "exclude": ["src/codeMods/tests/mock/v9/mMakeStylesDeep.ts"]
+  "include": ["src"]
 }
