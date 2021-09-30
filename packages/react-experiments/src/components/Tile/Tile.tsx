@@ -225,7 +225,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         {...getNativeProps(divProps, divProperties)}
         aria-labelledby={ariaLabel ? this._labelId : this._nameId}
         aria-describedby={ariaLabelWithSelectState ? this._descriptionId : this._activityId}
-        aria-disabled={disabled}
+        aria-disabled={disabled || undefined}
         className={css('ms-Tile', className, TileStyles.tile, {
           [`ms-Tile--isSmall ${TileStyles.isSmall}`]: tileSize === 'small',
           [`ms-Tile--isLarge ${TileStyles.isLarge}`]: tileSize === 'large',
@@ -242,7 +242,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
           [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling,
         })}
-        data-selection-disabled={disabled}
+        data-selection-disabled={disabled || undefined}
         data-is-focusable={true}
         data-is-sub-focuszone={true}
         data-disable-click-on-enter={true}
