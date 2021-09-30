@@ -28,29 +28,29 @@ const useRootStyles = makeStyles({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
 
-    background: theme.alias.color.neutral.neutralBackground1,
-    color: theme.alias.color.neutral.neutralForeground1,
+    background: theme.colorNeutralBackground1,
+    color: theme.colorNeutralForeground1,
 
-    borderColor: theme.alias.color.neutral.neutralStroke1,
+    borderColor: theme.colorNeutralStroke1,
     borderStyle: 'solid',
-    borderWidth: theme.global.strokeWidth.thin,
+    borderWidth: theme.strokeWidthThin,
 
-    fontFamily: theme.global.type.fontFamilies.base,
+    fontFamily: theme.fontFamilyBase,
 
     outline: 'none',
 
     ':hover': {
-      background: theme.alias.color.neutral.neutralBackground1Hover,
-      borderColor: theme.alias.color.neutral.neutralStroke1Hover,
-      color: theme.alias.color.neutral.neutralForeground1,
+      background: theme.colorNeutralBackground1Hover,
+      borderColor: theme.colorNeutralStroke1Hover,
+      color: theme.colorNeutralForeground1,
 
       cursor: 'pointer',
     },
 
     ':active': {
-      background: theme.alias.color.neutral.neutralBackground1Pressed,
-      borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
-      color: theme.alias.color.neutral.neutralForeground1,
+      background: theme.colorNeutralBackground1Pressed,
+      borderColor: theme.colorNeutralStroke1Pressed,
+      color: theme.colorNeutralForeground1,
 
       outline: 'none',
     },
@@ -63,11 +63,11 @@ const useRootStyles = makeStyles({
     height: '24px',
     minWidth: '64px',
 
-    borderRadius: theme.global.borderRadius.small,
+    borderRadius: theme.borderRadiusSmall,
 
-    fontSize: theme.global.type.fontSizes.base[200],
-    fontWeight: theme.global.type.fontWeights.regular,
-    lineHeight: theme.global.type.lineHeights.base[200],
+    fontSize: theme.fontSizeBase200,
+    fontWeight: theme.fontWeightRegular,
+    lineHeight: theme.lineHeightBase200,
   }),
   medium: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
@@ -77,11 +77,11 @@ const useRootStyles = makeStyles({
     height: '32px',
     minWidth: '96px',
 
-    borderRadius: theme.global.borderRadius.medium,
+    borderRadius: theme.borderRadiusMedium,
 
-    fontSize: theme.global.type.fontSizes.base[300],
-    fontWeight: theme.global.type.fontWeights.semibold,
-    lineHeight: theme.global.type.lineHeights.base[300],
+    fontSize: theme.fontSizeBase300,
+    fontWeight: theme.fontWeightSemibold,
+    lineHeight: theme.lineHeightBase300,
   }),
   large: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
@@ -91,116 +91,116 @@ const useRootStyles = makeStyles({
     height: '40px',
     minWidth: '96px',
 
-    borderRadius: theme.global.borderRadius.medium,
+    borderRadius: theme.borderRadiusMedium,
 
-    fontSize: theme.global.type.fontSizes.base[400],
-    fontWeight: theme.global.type.fontWeights.semibold,
-    lineHeight: theme.global.type.lineHeights.base[400],
+    fontSize: theme.fontSizeBase400,
+    fontWeight: theme.fontWeightSemibold,
+    lineHeight: theme.lineHeightBase400,
   }),
   block: {
     maxWidth: '100%',
     width: '100%',
   },
   circular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: theme.borderRadiusCircular,
   }),
   outline: theme => ({
-    background: theme.alias.color.neutral.transparentBackground,
+    background: theme.colorTransparentBackground,
 
     ':hover': {
-      background: theme.alias.color.neutral.transparentBackgroundHover,
+      background: theme.colorTransparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.transparentBackgroundPressed,
+      background: theme.colorTransparentBackgroundPressed,
     },
   }),
   primary: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.colorBrandBackground,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundOnBrand,
 
     ':hover': {
-      background: theme.alias.color.neutral.brandBackgroundHover,
+      background: theme.colorBrandBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: theme.colorNeutralForegroundOnBrand,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.brandBackgroundPressed,
+      background: theme.colorBrandBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: theme.colorNeutralForegroundOnBrand,
     },
   }),
   subtle: theme => ({
-    background: theme.alias.color.neutral.subtleBackground,
+    background: theme.colorSubtleBackground,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForeground2,
+    color: theme.colorNeutralForeground2,
 
     ':hover': {
-      background: theme.alias.color.neutral.subtleBackgroundHover,
+      background: theme.colorSubtleBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandHover,
+      color: theme.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.subtleBackgroundPressed,
+      background: theme.colorSubtleBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+      color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
   square: theme => ({
-    borderRadius: theme.global.borderRadius.none,
+    borderRadius: theme.borderRadiusNone,
   }),
   transparent: theme => ({
-    background: theme.alias.color.neutral.transparentBackground,
+    background: theme.colorTransparentBackground,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForeground2,
+    color: theme.colorNeutralForeground2,
 
     ':hover': {
-      background: theme.alias.color.neutral.transparentBackgroundHover,
+      background: theme.colorTransparentBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandHover,
+      color: theme.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.transparentBackgroundPressed,
+      background: theme.colorTransparentBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+      color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
-    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    background: theme.colorNeutralBackgroundDisabled,
+    borderColor: theme.colorNeutralStrokeDisabled,
+    color: theme.colorNeutralForegroundDisabled,
 
     cursor: 'not-allowed',
 
     ':hover': {
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      background: theme.colorNeutralBackgroundDisabled,
+      borderColor: theme.colorNeutralStrokeDisabled,
+      color: theme.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
     },
 
     ':active': {
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      background: theme.colorNeutralBackgroundDisabled,
+      borderColor: theme.colorNeutralStrokeDisabled,
+      color: theme.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
     },
   }),
   disabledOutline: theme => ({
-    background: theme.alias.color.neutral.transparentBackground,
+    background: theme.colorTransparentBackground,
 
     ':hover': {
-      background: theme.alias.color.neutral.transparentBackgroundHover,
+      background: theme.colorTransparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.transparentBackgroundPressed,
+      background: theme.colorTransparentBackgroundPressed,
     },
   }),
   disabledPrimary: {
@@ -248,20 +248,20 @@ const useRootFocusStyles = makeStyles({
   base: createFocusIndicatorStyleRule(theme => ({
     borderColor: 'transparent',
     boxShadow: `
-      ${theme.alias.shadow.shadow4},
-      0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}
+      ${theme.shadowLevelShadow4},
+      0 0 0 2px ${theme.colorStrokeFocus2}
     `,
     zIndex: 1,
   })),
   circular: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: theme.borderRadiusCircular,
   })),
   primary: createFocusIndicatorStyleRule(theme => ({
-    borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
-    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}`,
+    borderColor: theme.colorNeutralForegroundOnBrand,
+    boxShadow: `${theme.shadowLevelShadow2}, 0 0 0 2px ${theme.colorStrokeFocus2}`,
   })),
   square: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.global.borderRadius.none,
+    borderRadius: theme.borderRadiusNone,
   })),
 });
 

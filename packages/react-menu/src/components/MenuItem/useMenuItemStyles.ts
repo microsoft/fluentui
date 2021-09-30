@@ -5,25 +5,25 @@ import type { MenuItemState } from './MenuItem.types';
 const useStyles = makeStyles({
   focusIndicator: createFocusIndicatorStyleRule(),
   root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    color: theme.colorNeutralForeground1,
+    backgroundColor: theme.colorNeutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '32px',
     display: 'flex',
     alignItems: 'center',
-    fontSize: theme.global.type.fontSizes.base[300],
+    fontSize: theme.fontSizeBase300,
     cursor: 'pointer',
     gap: '4px',
 
     ':hover': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
-      color: theme.alias.color.neutral.neutralForeground2Hover,
+      backgroundColor: theme.colorNeutralBackground1Hover,
+      color: theme.colorNeutralForeground2Hover,
     },
 
     ':focus': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
-      color: theme.alias.color.neutral.neutralForeground2Hover,
+      backgroundColor: theme.colorNeutralBackground1Hover,
+      color: theme.colorNeutralForeground2Hover,
     },
 
     userSelect: 'none',
@@ -37,14 +37,14 @@ const useStyles = makeStyles({
   secondaryContent: theme => ({
     paddingLeft: '2px',
     paddingRight: '2px',
-    color: theme.alias.color.neutral.neutralForeground3,
+    color: theme.colorNeutralForeground3,
     ':hover': {
-      color: theme.alias.color.neutral.neutralForeground3Hover,
+      color: theme.colorNeutralForeground3Hover,
     },
 
     ':focus': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
-      color: theme.alias.color.neutral.neutralForeground3Hover,
+      backgroundColor: theme.colorNeutralBackground1Hover,
+      color: theme.colorNeutralForeground3Hover,
     },
   }),
   icon: {
@@ -56,16 +56,16 @@ const useStyles = makeStyles({
     height: '20px',
   },
   disabled: theme => ({
-    backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    backgroundColor: theme.colorNeutralBackgroundDisabled,
+    color: theme.colorNeutralForegroundDisabled,
     ':hover': {
-      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      backgroundColor: theme.colorNeutralBackgroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
 
     ':focus': {
-      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      backgroundColor: theme.colorNeutralBackgroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
   }),
 });

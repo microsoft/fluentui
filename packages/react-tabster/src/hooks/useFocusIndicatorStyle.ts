@@ -3,7 +3,7 @@ import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 
 const defaultStyleRule = (theme: Theme) => ({
-  outline: `solid 1px ${theme.alias.color.neutral.neutralForeground1}`,
+  outline: `solid 1px ${theme.colorNeutralForeground1}`,
 });
 
 export interface CreateFocusIndicatorStyleRuleOptions {

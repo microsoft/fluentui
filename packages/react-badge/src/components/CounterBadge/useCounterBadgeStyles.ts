@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   informative: theme => ({
     backgroundColor: '#ebebeb', // FIXME theme.global.palette.grey[92],
     borderColor: '#ebebeb', // FIXME theme.global.palette.grey[92],
-    color: theme.alias.color.neutral.neutralForeground3,
+    color: theme.colorNeutralForeground3,
   }),
   dot: {
     width: '6px',
