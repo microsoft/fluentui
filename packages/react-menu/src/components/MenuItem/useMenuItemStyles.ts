@@ -4,6 +4,7 @@ import type { MenuItemState } from './MenuItem.types';
 
 const useStyles = makeStyles({
   focusIndicator: createFocusIndicatorStyleRule(theme => ({
+    outline: '2px solid transparent',
     borderColor: 'transparent',
     boxShadow: `
       0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.strokeFocus2}
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
   })),
   root: theme => ({
     borderRadius: theme.global.borderRadius.medium,
-    color: theme.alias.color.neutral.neutralForeground1,
+    color: theme.alias.color.neutral.neutralForeground2,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
@@ -25,6 +26,10 @@ const useStyles = makeStyles({
 
     ':hover': {
       backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
+      color: theme.alias.color.neutral.neutralForeground2Hover,
+    },
+
+    ':focus': {
       color: theme.alias.color.neutral.neutralForeground2Hover,
     },
 
@@ -41,6 +46,9 @@ const useStyles = makeStyles({
     paddingRight: '2px',
     color: theme.alias.color.neutral.neutralForeground3,
     ':hover': {
+      color: theme.alias.color.neutral.neutralForeground3Hover,
+    },
+    ':focus': {
       color: theme.alias.color.neutral.neutralForeground3Hover,
     },
   }),
