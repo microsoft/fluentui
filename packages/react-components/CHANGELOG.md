@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 09:18:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.117)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.116..@fluentui/react-components_v9.0.0-alpha.117)
+
+### Changes
+
+- `@fluentui/react-menu`
+  - export to codesandbox ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by peter@draxler.ml)
 
 ## [9.0.0-alpha.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.116)
 

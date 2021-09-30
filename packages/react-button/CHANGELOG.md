@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 09:18:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.95)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.94..@fluentui/react-button_v9.0.0-alpha.95)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.86 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
 
 ## [9.0.0-alpha.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.94)
 

@@ -1,8 +1,19 @@
 # Change Log - vr-tests
 
-This log was last generated on Thu, 30 Sep 2021 07:31:40 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 09:18:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.0.0-alpha.95 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
+- Bump @fluentui/react-card to v9.0.0-alpha.11 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.86 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
