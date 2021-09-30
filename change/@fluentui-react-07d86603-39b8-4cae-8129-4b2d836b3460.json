@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "DatePicker: ReadOnly DatePicker now uses a div with role=combobox so swipe gesture registers using Talkback.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
