@@ -6,12 +6,12 @@ describe('mergeThemes', () => {
   it('performs a merge of themes', () => {
     // TODO: we should not use real themes in tests
     const a: Theme = teamsLightTheme;
-    const b: PartialTheme = { colorAliasBrandBackground: 'red' };
+    const b: PartialTheme = { colorBrandBackground: 'red' };
 
     const result = mergeThemes(a, b);
 
-    expect(a.colorAliasBrandBackground).not.toBe('red');
-    expect(result.colorAliasBrandBackground).toBe('red');
+    expect(a.colorBrandBackground).not.toBe('red');
+    expect(result.colorBrandBackground).toBe('red');
   });
 
   it('avoids unnecessary merges', () => {

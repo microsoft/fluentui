@@ -21,111 +21,117 @@ export type BrandVariants = ColorVariants & {
     shade60: string;
 };
 
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteT" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "GlobalSharedColorsT" needs to be exported by the entry point index.d.ts
+//
 // @public
-export type ColorAliasTokens = {
-    colorAliasNeutralForeground1: string;
-    colorAliasNeutralForeground2: string;
-    colorAliasNeutralForeground2Hover: string;
-    colorAliasNeutralForeground2Pressed: string;
-    colorAliasNeutralForeground2Selected: string;
-    colorAliasNeutralForeground2BrandHover: string;
-    colorAliasNeutralForeground2BrandPressed: string;
-    colorAliasNeutralForeground2BrandSelected: string;
-    colorAliasNeutralForeground3: string;
-    colorAliasNeutralForeground3Hover: string;
-    colorAliasNeutralForeground3Pressed: string;
-    colorAliasNeutralForeground3Selected: string;
-    colorAliasNeutralForeground3BrandHover: string;
-    colorAliasNeutralForeground3BrandPressed: string;
-    colorAliasNeutralForeground3BrandSelected: string;
-    colorAliasNeutralForeground4: string;
-    colorAliasNeutralForegroundDisabled: string;
-    colorAliasBrandForegroundLink: string;
-    colorAliasBrandForegroundLinkHover: string;
-    colorAliasBrandForegroundLinkPressed: string;
-    colorAliasBrandForegroundLinkSelected: string;
-    colorAliasCompoundBrandForeground1: string;
-    colorAliasCompoundBrandForeground1Hover: string;
-    colorAliasCompoundBrandForeground1Pressed: string;
-    colorAliasBrandForeground1: string;
-    colorAliasBrandForeground2: string;
-    colorAliasNeutralForegroundInverted: string;
-    colorAliasNeutralForegroundOnBrand: string;
-    colorAliasNeutralForegroundInvertedLink: string;
-    colorAliasNeutralForegroundInvertedLinkHover: string;
-    colorAliasNeutralForegroundInvertedLinkPressed: string;
-    colorAliasNeutralForegroundInvertedLinkSelected: string;
-    colorAliasNeutralBackground1: string;
-    colorAliasNeutralBackground1Hover: string;
-    colorAliasNeutralBackground1Pressed: string;
-    colorAliasNeutralBackground1Selected: string;
-    colorAliasNeutralBackground2: string;
-    colorAliasNeutralBackground2Hover: string;
-    colorAliasNeutralBackground2Pressed: string;
-    colorAliasNeutralBackground2Selected: string;
-    colorAliasNeutralBackground3: string;
-    colorAliasNeutralBackground3Hover: string;
-    colorAliasNeutralBackground3Pressed: string;
-    colorAliasNeutralBackground3Selected: string;
-    colorAliasNeutralBackground4: string;
-    colorAliasNeutralBackground4Hover: string;
-    colorAliasNeutralBackground4Pressed: string;
-    colorAliasNeutralBackground4Selected: string;
-    colorAliasNeutralBackground5: string;
-    colorAliasNeutralBackground5Hover: string;
-    colorAliasNeutralBackground5Pressed: string;
-    colorAliasNeutralBackground5Selected: string;
-    colorAliasNeutralBackground6: string;
-    colorAliasNeutralBackgroundInverted: string;
-    colorAliasSubtleBackground: string;
-    colorAliasSubtleBackgroundHover: string;
-    colorAliasSubtleBackgroundPressed: string;
-    colorAliasSubtleBackgroundSelected: string;
-    colorAliasTransparentBackground: string;
-    colorAliasTransparentBackgroundHover: string;
-    colorAliasTransparentBackgroundPressed: string;
-    colorAliasTransparentBackgroundSelected: string;
-    colorAliasNeutralBackgroundDisabled: string;
-    colorAliasNeutralStencil1: string;
-    colorAliasNeutralStencil2: string;
-    colorAliasBrandBackground: string;
-    colorAliasBrandBackgroundHover: string;
-    colorAliasBrandBackgroundPressed: string;
-    colorAliasBrandBackgroundSelected: string;
-    colorAliasCompoundBrandBackground: string;
-    colorAliasCompoundBrandBackgroundHover: string;
-    colorAliasCompoundBrandBackgroundPressed: string;
-    colorAliasBrandBackgroundStatic: string;
-    colorAliasBrandBackground2: string;
-    colorAliasNeutralStrokeAccessible: string;
-    colorAliasNeutralStrokeAccessibleHover: string;
-    colorAliasNeutralStrokeAccessiblePressed: string;
-    colorAliasNeutralStrokeAccessibleSelected: string;
-    colorAliasNeutralStroke1: string;
-    colorAliasNeutralStroke1Hover: string;
-    colorAliasNeutralStroke1Pressed: string;
-    colorAliasNeutralStroke1Selected: string;
-    colorAliasNeutralStroke2: string;
-    colorAliasNeutralStroke3: string;
-    colorAliasBrandStroke1: string;
-    colorAliasBrandStroke2: string;
-    colorAliasCompoundBrandStroke: string;
-    colorAliasCompoundBrandStrokeHover: string;
-    colorAliasCompoundBrandStrokePressed: string;
-    colorAliasNeutralStrokeDisabled: string;
-    colorAliasTransparentStroke: string;
-    colorAliasTransparentStrokeInteractive: string;
-    colorAliasTransparentStrokeDisabled: string;
-    colorAliasStrokeFocus1: string;
-    colorAliasStrokeFocus2: string;
-    colorAliasNeutralShadowAmbient: string;
-    colorAliasNeutralShadowKey: string;
-    colorAliasNeutralShadowAmbientLighter: string;
-    colorAliasNeutralShadowKeyLighter: string;
-    colorAliasNeutralShadowAmbientDarker: string;
-    colorAliasNeutralShadowKeyDarker: string;
-    colorAliasBrandShadowAmbient: string;
-    colorAliasBrandShadowKey: string;
+export type ColorPaletteTokens = Record<ColorPaletteT<GlobalSharedColorsT>, string>;
+
+// @public
+export type ColorTokens = {
+    colorNeutralForeground1: string;
+    colorNeutralForeground2: string;
+    colorNeutralForeground2Hover: string;
+    colorNeutralForeground2Pressed: string;
+    colorNeutralForeground2Selected: string;
+    colorNeutralForeground2BrandHover: string;
+    colorNeutralForeground2BrandPressed: string;
+    colorNeutralForeground2BrandSelected: string;
+    colorNeutralForeground3: string;
+    colorNeutralForeground3Hover: string;
+    colorNeutralForeground3Pressed: string;
+    colorNeutralForeground3Selected: string;
+    colorNeutralForeground3BrandHover: string;
+    colorNeutralForeground3BrandPressed: string;
+    colorNeutralForeground3BrandSelected: string;
+    colorNeutralForeground4: string;
+    colorNeutralForegroundDisabled: string;
+    colorBrandForegroundLink: string;
+    colorBrandForegroundLinkHover: string;
+    colorBrandForegroundLinkPressed: string;
+    colorBrandForegroundLinkSelected: string;
+    colorCompoundBrandForeground1: string;
+    colorCompoundBrandForeground1Hover: string;
+    colorCompoundBrandForeground1Pressed: string;
+    colorBrandForeground1: string;
+    colorBrandForeground2: string;
+    colorNeutralForegroundInverted: string;
+    colorNeutralForegroundOnBrand: string;
+    colorNeutralForegroundInvertedLink: string;
+    colorNeutralForegroundInvertedLinkHover: string;
+    colorNeutralForegroundInvertedLinkPressed: string;
+    colorNeutralForegroundInvertedLinkSelected: string;
+    colorNeutralBackground1: string;
+    colorNeutralBackground1Hover: string;
+    colorNeutralBackground1Pressed: string;
+    colorNeutralBackground1Selected: string;
+    colorNeutralBackground2: string;
+    colorNeutralBackground2Hover: string;
+    colorNeutralBackground2Pressed: string;
+    colorNeutralBackground2Selected: string;
+    colorNeutralBackground3: string;
+    colorNeutralBackground3Hover: string;
+    colorNeutralBackground3Pressed: string;
+    colorNeutralBackground3Selected: string;
+    colorNeutralBackground4: string;
+    colorNeutralBackground4Hover: string;
+    colorNeutralBackground4Pressed: string;
+    colorNeutralBackground4Selected: string;
+    colorNeutralBackground5: string;
+    colorNeutralBackground5Hover: string;
+    colorNeutralBackground5Pressed: string;
+    colorNeutralBackground5Selected: string;
+    colorNeutralBackground6: string;
+    colorNeutralBackgroundInverted: string;
+    colorSubtleBackground: string;
+    colorSubtleBackgroundHover: string;
+    colorSubtleBackgroundPressed: string;
+    colorSubtleBackgroundSelected: string;
+    colorTransparentBackground: string;
+    colorTransparentBackgroundHover: string;
+    colorTransparentBackgroundPressed: string;
+    colorTransparentBackgroundSelected: string;
+    colorNeutralBackgroundDisabled: string;
+    colorNeutralStencil1: string;
+    colorNeutralStencil2: string;
+    colorBrandBackground: string;
+    colorBrandBackgroundHover: string;
+    colorBrandBackgroundPressed: string;
+    colorBrandBackgroundSelected: string;
+    colorCompoundBrandBackground: string;
+    colorCompoundBrandBackgroundHover: string;
+    colorCompoundBrandBackgroundPressed: string;
+    colorBrandBackgroundStatic: string;
+    colorBrandBackground2: string;
+    colorNeutralStrokeAccessible: string;
+    colorNeutralStrokeAccessibleHover: string;
+    colorNeutralStrokeAccessiblePressed: string;
+    colorNeutralStrokeAccessibleSelected: string;
+    colorNeutralStroke1: string;
+    colorNeutralStroke1Hover: string;
+    colorNeutralStroke1Pressed: string;
+    colorNeutralStroke1Selected: string;
+    colorNeutralStroke2: string;
+    colorNeutralStroke3: string;
+    colorBrandStroke1: string;
+    colorBrandStroke2: string;
+    colorCompoundBrandStroke: string;
+    colorCompoundBrandStrokeHover: string;
+    colorCompoundBrandStrokePressed: string;
+    colorNeutralStrokeDisabled: string;
+    colorTransparentStroke: string;
+    colorTransparentStrokeInteractive: string;
+    colorTransparentStrokeDisabled: string;
+    colorStrokeFocus1: string;
+    colorStrokeFocus2: string;
+    colorNeutralShadowAmbient: string;
+    colorNeutralShadowKey: string;
+    colorNeutralShadowAmbientLighter: string;
+    colorNeutralShadowKeyLighter: string;
+    colorNeutralShadowAmbientDarker: string;
+    colorNeutralShadowKeyDarker: string;
+    colorBrandShadowAmbient: string;
+    colorBrandShadowKey: string;
 };
 
 // @public (undocumented)
@@ -191,12 +197,6 @@ export type ShadowLevelTokens = {
     shadowLevelShadow64: string;
 };
 
-// Warning: (ae-forgotten-export) The symbol "SharedColorT" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "GlobalSharedColorsT" needs to be exported by the entry point index.d.ts
-//
-// @public
-export type SharedColorTokens = Record<SharedColorT<GlobalSharedColorsT>, string>;
-
 // @public (undocumented)
 export type StrokeWidthTokens = {
     strokeWidthThin: string;
@@ -215,7 +215,7 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowLevelTokens & FontFamilyTokens & SharedColorTokens & ColorAliasTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowLevelTokens & FontFamilyTokens & ColorPaletteTokens & ColorTokens;
 
 // @public (undocumented)
 export function themeToCSSVariables(theme: Theme): Record<string, string>;

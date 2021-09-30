@@ -1,10 +1,10 @@
-import { generateColorAliasTokens, sharedColorTokens } from '../alias/teamsDark';
+import { colorPaletteTokens, generateColorTokens } from '../alias/teamsDark';
 import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths } from '../global';
 import { createShadowLevelTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
 
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
-  const colorAliasTokens = generateColorAliasTokens(brand);
+  const colorTokens = generateColorTokens(brand);
 
   return {
     ...borderRadius,
@@ -13,12 +13,9 @@ export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
     ...fontFamilies,
     ...strokeWidths,
 
-    ...colorAliasTokens,
-    ...sharedColorTokens,
+    ...colorTokens,
+    ...colorPaletteTokens,
 
-    ...createShadowLevelTokens(
-      colorAliasTokens.colorAliasNeutralShadowAmbient,
-      colorAliasTokens.colorAliasNeutralShadowKey,
-    ),
+    ...createShadowLevelTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
   };
 };

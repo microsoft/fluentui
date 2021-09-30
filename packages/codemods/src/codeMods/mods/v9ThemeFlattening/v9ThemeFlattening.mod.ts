@@ -12,7 +12,7 @@ const replacements: [RegExp, (token: string) => string][] = [
     /theme\.alias\.color\.neutral\..+/,
     token => {
       const parts = token.split('.');
-      return 'colorAlias' + capitalizeToken(parts[parts.length - 1]);
+      return 'color' + capitalizeToken(parts[parts.length - 1]);
     },
   ],
   [
@@ -23,7 +23,7 @@ const replacements: [RegExp, (token: string) => string][] = [
       const color = parts[parts.length - 2];
       const name = parts[parts.length - 1];
 
-      return 'color' + capitalizeToken(color) + capitalizeToken(name);
+      return 'colorPalette' + capitalizeToken(color) + capitalizeToken(name);
     },
   ],
   [

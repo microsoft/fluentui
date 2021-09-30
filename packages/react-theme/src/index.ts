@@ -9,8 +9,8 @@ export type {
   StrokeWidthTokens,
   ShadowLevelTokens,
   FontFamilyTokens,
-  SharedColorTokens,
-  ColorAliasTokens,
+  ColorPaletteTokens,
+  ColorTokens,
   PartialTheme,
   Theme,
 } from './types';

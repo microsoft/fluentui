@@ -9,7 +9,7 @@ import * as React from 'react';
 import { TinyColor } from '@ctrl/tinycolor';
 import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme } from '../index';
 import { ColorRampItem } from './ColorRamp.stories';
-import type { BackgroundColorTokens, BrandColorTokens, ColorAliasTokens, SharedColorTokens, Theme } from '../index';
+import type { BackgroundColorTokens, BrandColorTokens, ColorTokens, ColorPaletteTokens, Theme } from '../index';
 
 // FIXME: hardcoded theme
 const theme = {
@@ -127,7 +127,7 @@ export const AliasColors = () => {
           High Contrast
         </h3>
         {Object.keys(theme.light.alias.color?.[activeColor] ?? []).map(
-          (name: keyof (SharedColorTokens | ColorAliasTokens | BackgroundColorTokens | BrandColorTokens)) => [
+          (name: keyof (ColorPaletteTokens | ColorTokens | BackgroundColorTokens | BrandColorTokens)) => [
             <div
               key={`${name}Token`}
               style={{ padding: '0 1em', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
