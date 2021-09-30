@@ -11,12 +11,12 @@ import { makeStyles } from '@fluentui/react-make-styles';
 
 export const useMenuListContainerStyles = makeStyles({
   container: theme => ({
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    backgroundColor: theme.colorNeutralBackground1,
     minWidth: '128px',
     minHeight: '48px',
     maxWidth: '300px',
     width: 'max-content',
-    boxShadow: `${theme.alias.shadow.shadow16}`,
+    boxShadow: `${theme.shadowLevelShadow16}`,
     paddingTop: '4px',
     paddingBottom: '4px',
   }),

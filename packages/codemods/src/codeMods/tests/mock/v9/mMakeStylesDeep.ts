@@ -1,38 +1,45 @@
+// @ts-ignore
 import { makeStyles } from '@fluentui/react-make-styles';
 
 export const useStylesA = makeStyles({
+  // @ts-ignore
   neutral: theme => ({
-    // @ts-expect-error
+    // @ts-ignore
     border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
-    // @ts-expect-error
+    // @ts-ignore
     color: theme.alias.color.neutral.neutralForeground1,
   }),
+  // @ts-ignore
   colors: theme => ({
-    // @ts-expect-error
+    // @ts-ignore
     border: `5px solid ${theme.alias.color.blue.border2}`,
-    // @ts-expect-error
+    // @ts-ignore
     color: theme.alias.color.marigold.foreground2,
   }),
+  // @ts-ignore
   shadow: theme => ({
-    // @ts-expect-error
+    // @ts-ignore
     boxShadow: theme.alias.shadow.shadow8,
   }),
+  // @ts-ignore
   border: theme => ({
-    // @ts-expect-error
+    // @ts-ignore
     borderRadius: theme.global.borderRadius.circular,
   }),
+  // @ts-ignore
   stroke: theme => ({
-    // @ts-expect-error
+    // @ts-ignore
     borderBottomWidth: theme.global.strokeWidth.thin,
   }),
+  // @ts-ignore
   type: theme => ({
-    // @ts-expect-error
+    // @ts-ignore
     fontFamily: theme.global.type.fontFamilies.base,
-    // @ts-expect-error
+    // @ts-ignore
     fontSize: theme.global.type.fontSizes.base[300],
-    // @ts-expect-error
+    // @ts-ignore
     lineHeight: theme.global.type.lineHeights.base[300],
-    // @ts-expect-error
+    // @ts-ignore
     fontWeight: theme.global.type.fontWeights.regular,
   }),
 });
