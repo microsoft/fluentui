@@ -168,6 +168,13 @@ export type FontSizeTokens = {
 };
 
 // @public (undocumented)
+export type FontWeightTokens = {
+    fontWeightRegular: number;
+    fontWeightMedium: number;
+    fontWeightSemibold: number;
+};
+
+// @public (undocumented)
 export type LineHeightTokens = {
     lineHeightBase100: string;
     lineHeightBase200: string;
@@ -214,8 +221,6 @@ export const teamsHighContrastTheme: Theme;
 // @public (undocumented)
 export const teamsLightTheme: Theme;
 
-// Warning: (ae-forgotten-export) The symbol "FontWeightTokens" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowLevelTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 

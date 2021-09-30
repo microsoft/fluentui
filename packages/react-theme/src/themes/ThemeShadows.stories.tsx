@@ -1,10 +1,3 @@
-/*
- FIXME: this is a temporary workaround - moving stories from react-examples
- reenable TS and fix errors in a subsequent PR
- */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 import * as React from 'react';
 import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
 import type { ShadowLevelTokens } from '../index';
@@ -46,7 +39,10 @@ const ShadowBox: React.FunctionComponent<
 );
 
 export const Shadows = () => {
-  const shadowTokens = Object.keys(theme.light).filter(tokenName => tokenName.startsWith('shadowLevel'));
+  const shadowTokens = Object.keys(theme.light).filter(tokenName =>
+    tokenName.startsWith('shadowLevel'),
+  ) as (keyof ShadowLevelTokens)[];
+
   return (
     <div
       style={{
@@ -61,7 +57,7 @@ export const Shadows = () => {
       <h3 key="shadow-title-light">Light</h3>
       <h3 key="shadow-title-dark">Dark</h3>
       <h3 key="shadow-title-hc">High Contrast</h3>
-      {shadowTokens.map((shadow: keyof ShadowLevelTokens) => [
+      {shadowTokens.map(shadow => [
         <div key={shadow}>{shadow}</div>,
         <ShadowBox key={`${shadow}-light`} shadow={theme.light[shadow]} />,
         <ShadowBox key={`${shadow}-dark`} shadow={theme.dark[shadow]} />,
