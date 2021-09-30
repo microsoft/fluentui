@@ -1,6 +1,6 @@
 import { SourceFile, ts } from 'ts-morph';
 
-import { CodeMod, ModError, NoOp } from '../../types';
+import { CodeMod, ModError, ModResult, NoOp } from '../../types';
 import { Err, Ok, Result } from '../../../helpers/result';
 
 function capitalizeToken(value: string): string {
@@ -102,7 +102,7 @@ function renameToken(token: string): string {
 }
 
 const v9ThemeFlattening: CodeMod = {
-  run: (file: SourceFile): Result<string, NoOp | ModError> => {
+  run: (file: SourceFile): Result<ModResult, NoOp | ModError> => {
     try {
       file.transform(traversal => {
         const node = traversal.visitChildren();
@@ -128,15 +128,14 @@ const v9ThemeFlattening: CodeMod = {
         return node;
       });
 
-      return Ok('Successfully renamed the given props.');
+      return Ok({ logs: ['Successfully renamed theme tokens.'] });
     } catch (e) {
-      console.log(e);
-      return Err<string, ModError>({ error: e });
+      return Err<ModResult, ModError>({ error: e });
     }
   },
   version: '100000',
   name: 'v9ThemeFlattening',
-  enabled: false, // No longer needed; remains for demo purposes
+  enabled: true,
 };
 
 export default v9ThemeFlattening;
