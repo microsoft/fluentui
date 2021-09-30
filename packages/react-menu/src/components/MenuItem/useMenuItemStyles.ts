@@ -5,6 +5,7 @@ import type { MenuItemState } from './MenuItem.types';
 const useStyles = makeStyles({
   focusIndicator: createFocusIndicatorStyleRule(),
   root: theme => ({
+    position: 'relative',
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     paddingRight: '10px',

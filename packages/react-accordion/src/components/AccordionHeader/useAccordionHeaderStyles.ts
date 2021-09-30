@@ -16,10 +16,7 @@ const useStyles = makeStyles({
     userSelect: 'none',
     textAlign: 'unset',
   },
-  focusIndicator: createFocusIndicatorStyleRule(theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
-    borderRadius: '2px',
-  })),
+  focusIndicator: createFocusIndicatorStyleRule(),
   root: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
@@ -33,6 +30,7 @@ const useStyles = makeStyles({
     display: 'inline-block',
   },
   button: {
+    position: 'relative',
     width: 'calc(100% - 22px)',
     border: '1px solid transparent',
     paddingRight: '10px',

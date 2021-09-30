@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusIndicatorStyleRule, getDefaultFocusOutlineStyles } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
@@ -15,6 +15,7 @@ export const buttonSpacing = {
 
 const useRootStyles = makeStyles({
   base: theme => ({
+    position: 'relative',
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
@@ -24,7 +25,7 @@ const useRootStyles = makeStyles({
 
     maxWidth: '280px',
 
-    overflow: 'hidden',
+    // overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
 
@@ -245,23 +246,22 @@ const useRootStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  base: createFocusIndicatorStyleRule(theme => ({
-    borderColor: 'transparent',
-    boxShadow: `
-      ${theme.alias.shadow.shadow4},
-      0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}
-    `,
-    zIndex: 1,
-  })),
+  base: createFocusIndicatorStyleRule(),
   circular: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.global.borderRadius.circular,
+    ...getDefaultFocusOutlineStyles(theme, {
+      outlineRadius: theme.global.borderRadius.circular,
+    }),
   })),
   primary: createFocusIndicatorStyleRule(theme => ({
+    ...getDefaultFocusOutlineStyles(theme, {
+      outlineOffset: '1px',
+    }),
     borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
-    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}`,
   })),
   square: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.global.borderRadius.none,
+    ...getDefaultFocusOutlineStyles(theme, {
+      outlineRadius: theme.global.borderRadius.none,
+    }),
   })),
 });
 
