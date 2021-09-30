@@ -101,12 +101,12 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
       fill: ${foregroundOnAccentRest};
     }
 
-    :host(:enabled:hover) .control {
+    :host(:not(.disabled):hover) .control {
       background: ${neutralFillInputAltHover};
       border-color: ${neutralStrokeStrongHover};
     }
 
-    :host(:enabled:active) .control {
+    :host(:not(.disabled):active) .control {
       background: ${neutralFillInputAltActive};
       border-color: ${neutralStrokeStrongActive};
     }
@@ -122,12 +122,12 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
       border-color: transparent;
     }
 
-    :host(.checked:enabled:hover) .control {
+    :host(.checked:not(.disabled):hover) .control {
       background: ${accentFillHover};
       border-color: transparent;
     }
 
-    :host(.checked:enabled:active) .control {
+    :host(.checked:not(.disabled):active) .control {
       background: ${accentFillActive};
       border-color: transparent;
     }
@@ -155,7 +155,7 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
           border-color: ${SystemColors.FieldText};
           background: ${SystemColors.Field};
         }
-        :host(:enabled) .control:hover,
+        :host(:not(.disabled)) .control:hover,
         .control:active {
           border-color: ${SystemColors.Highlight};
           background: ${SystemColors.Field};
@@ -170,7 +170,7 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
           border-color: ${SystemColors.Highlight};
           box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
         }
-        :host(.checked:${focusVisible}:enabled) .control {
+        :host(.checked:${focusVisible}:not(.disabled)) .control {
           box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
         }
         :host(.checked) .control {

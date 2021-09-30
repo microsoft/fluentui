@@ -2,7 +2,7 @@ import { DesignToken } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { Palette, PaletteRGB } from './color/palette';
 import { Swatch } from './color/swatch';
-import { foregroundOnAccent as foregroundOnAccentAlgorithm } from './color/recipes/foreground-on-accent';
+import { foregroundOnAccentSet as foregroundOnAccentSetAlgorithm } from './color/recipes/foreground-on-accent';
 import { gradientShadowStroke as gradientShadowStrokeAlgorithm } from './color/recipes/gradient-shadow-stroke';
 import { underlineStroke as underlineStrokeAlgorithm } from './color/recipes/underline-stroke';
 import { contrastSwatch } from './color/recipes/contrast-swatch';
@@ -402,37 +402,35 @@ export const accentFillFocus = create<Swatch>('accent-fill-focus').withDefault((
 });
 
 // Foreground On Accent
-const foregroundOnAccentByContrast = (contrast: number) => (element: HTMLElement, reference?: Swatch) =>
-  foregroundOnAccentAlgorithm(reference || accentFillRest.getValueFor(element), contrast);
 /** @public */
-export const foregroundOnAccentRecipe = create<ColorRecipe>({
+export const foregroundOnAccentRecipe = create<InteractiveColorRecipe>({
   name: 'foreground-on-accent-recipe',
   cssCustomPropertyName: null,
 }).withDefault({
-  evaluate: (element: HTMLElement, reference?: Swatch): Swatch =>
-    foregroundOnAccentByContrast(ContrastTarget.normal)(element, reference),
+  evaluate: (element: HTMLElement): InteractiveSwatchSet =>
+    foregroundOnAccentSetAlgorithm(
+      accentFillRest.getValueFor(element),
+      accentFillHover.getValueFor(element),
+      accentFillActive.getValueFor(element),
+      accentFillFocus.getValueFor(element),
+      ContrastTarget.normal,
+    ),
 });
 /** @public */
-export const foregroundOnAccentRest = create<Swatch>('foreground-on-accent-rest').withDefault((element: HTMLElement) =>
-  foregroundOnAccentRecipe.getValueFor(element).evaluate(element, accentFillRest.getValueFor(element)),
+export const foregroundOnAccentRest = create<Swatch>('foreground-on-accent-rest').withDefault(
+  (element: HTMLElement) => foregroundOnAccentRecipe.getValueFor(element).evaluate(element).rest,
 );
 /** @public */
-export const foregroundOnAccentHover = create<Swatch>(
-  'foreground-on-accent-hover',
-).withDefault((element: HTMLElement) =>
-  foregroundOnAccentRecipe.getValueFor(element).evaluate(element, accentFillHover.getValueFor(element)),
+export const foregroundOnAccentHover = create<Swatch>('foreground-on-accent-hover').withDefault(
+  (element: HTMLElement) => foregroundOnAccentRecipe.getValueFor(element).evaluate(element).hover,
 );
 /** @public */
-export const foregroundOnAccentActive = create<Swatch>(
-  'foreground-on-accent-active',
-).withDefault((element: HTMLElement) =>
-  foregroundOnAccentRecipe.getValueFor(element).evaluate(element, accentFillActive.getValueFor(element)),
+export const foregroundOnAccentActive = create<Swatch>('foreground-on-accent-active').withDefault(
+  (element: HTMLElement) => foregroundOnAccentRecipe.getValueFor(element).evaluate(element).active,
 );
 /** @public */
-export const foregroundOnAccentFocus = create<Swatch>(
-  'foreground-on-accent-focus',
-).withDefault((element: HTMLElement) =>
-  foregroundOnAccentRecipe.getValueFor(element).evaluate(element, accentFillFocus.getValueFor(element)),
+export const foregroundOnAccentFocus = create<Swatch>('foreground-on-accent-focus').withDefault(
+  (element: HTMLElement) => foregroundOnAccentRecipe.getValueFor(element).evaluate(element).focus,
 );
 
 // Accent Foreground

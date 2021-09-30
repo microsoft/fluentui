@@ -254,7 +254,7 @@ export const inputForcedColorStyles: (
     background: ${SystemColors.ButtonFace};
     border-color: ${SystemColors.Highlight};
   }
-  :host(:focus-within:enabled) ${rootSelector} {
+  :host(:focus-within:not([disabled])) ${rootSelector} {
     border-color: ${SystemColors.Highlight};
     box-shadow: 0 0 0 1px ${SystemColors.Highlight} inset;
   }

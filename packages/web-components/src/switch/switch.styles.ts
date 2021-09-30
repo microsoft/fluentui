@@ -78,14 +78,15 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       background: ${neutralFillInputAltRest};
       border-radius: calc(${heightNumber} * 1px);
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
+      cursor: pointer;
     }
 
-    :host(:enabled:hover) .switch {
+    :host(:not(.disabled):hover) .switch {
       background: ${neutralFillInputAltHover};
       border-color: ${neutralStrokeStrongHover};
     }
 
-    :host(:enabled:active) .switch {
+    :host(:not(.disabled):active) .switch {
       background: ${neutralFillInputAltActive};
       border-color: ${neutralStrokeStrongActive};
     }
@@ -101,12 +102,12 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       border-color: transparent;
     }
 
-    :host(.checked:enabled:hover) .switch {
+    :host(.checked:not(.disabled):hover) .switch {
       background: ${accentFillHover};
       border-color: transparent;
     }
 
-    :host(.checked:enabled:active) .switch {
+    :host(.checked:not(.disabled):active) .switch {
       background: ${accentFillActive};
       border-color: transparent;
     }
@@ -143,32 +144,32 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       margin-inline-start: calc(${designUnit} * 2px + 2px);
     }
 
-    :host([aria-checked='true']) .switch {
+    :host(.checked) .switch {
       background: ${accentFillRest};
     }
 
-    :host([aria-checked='true']) .switch slot[name='switch'] {
+    :host(.checked) .switch slot[name='switch'] {
       fill: ${foregroundOnAccentRest};
       filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.15));
     }
 
-    :host([aria-checked='true']:enabled) .switch:hover {
+    :host(.checked:not(.disabled)) .switch:hover {
       background: ${accentFillHover};
     }
 
-    :host([aria-checked='true']:enabled) .switch:hover slot[name='switch'] {
+    :host(.checked:not(.disabled)) .switch:hover slot[name='switch'] {
       fill: ${foregroundOnAccentHover};
     }
 
-    :host([aria-checked='true']:enabled) .switch:active {
+    :host(.checked:not(.disabled)) .switch:active {
       background: ${accentFillActive};
     }
 
-    :host([aria-checked='true']:enabled) .switch:active slot[name='switch'] {
+    :host(.checked:not(.disabled)) .switch:active slot[name='switch'] {
       fill: ${foregroundOnAccentActive};
     }
 
-    :host([aria-checked="true"]:${focusVisible}:enabled) .switch {
+    :host(.checked:${focusVisible}:not(.disabled)) .switch {
       box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
       border-color: transparent;
     }
@@ -181,11 +182,11 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       display: none;
     }
 
-    :host([aria-checked='true']) .unchecked-message {
+    :host(.checked) .unchecked-message {
       display: none;
     }
 
-    :host([aria-checked='true']) .checked-message {
+    :host(.checked) .checked-message {
       display: block;
     }
   `.withBehaviors(
@@ -195,7 +196,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
           left: 0;
         }
 
-        :host([aria-checked='true']) slot[name='switch'] {
+        :host(.checked) slot[name='switch'] {
           left: 100%;
           transform: translateX(-100%);
         }
@@ -205,7 +206,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
           right: 0;
         }
 
-        :host([aria-checked='true']) slot[name='switch'] {
+        :host(.checked) slot[name='switch'] {
           right: 100%;
           transform: translateX(100%);
         }
@@ -214,7 +215,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
     forcedColorsStylesheetBehavior(
       css`
         slot[name='switch'],
-        :host(:enabled) .switch:active slot[name='switch'] {
+        :host(:not(.disabled)) .switch:active slot[name='switch'] {
           forced-color-adjust: none;
           background: ${SystemColors.FieldText};
         }
@@ -223,7 +224,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
           background: ${SystemColors.Field};
           border-color: ${SystemColors.FieldText};
         }
-        :host(:enabled) .switch:hover {
+        :host(:not(.disabled)) .switch:hover {
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.Highlight};
         }
@@ -231,22 +232,22 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.Highlight};
         }
-        :host(.checked:enabled) .switch:hover,
-        :host(:enabled) .switch:active {
+        :host(.checked:not(.disabled)) .switch:hover,
+        :host(:not(.disabled)) .switch:active {
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.Highlight};
         }
         :host(.checked) slot[name='switch'] {
           background: ${SystemColors.HighlightText};
         }
-        :host(.checked:enabled) .switch:hover slot[name='switch'] {
+        :host(.checked:not(.disabled)) .switch:hover slot[name='switch'] {
           background: ${SystemColors.Highlight};
         }
         :host(:${focusVisible}) .switch {
           border-color: ${SystemColors.Highlight};
           box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
         }
-        :host(.checked:${focusVisible}:enabled) .switch {
+        :host(.checked:${focusVisible}:not(.disabled)) .switch {
           box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
         }
         :host(.disabled) {
