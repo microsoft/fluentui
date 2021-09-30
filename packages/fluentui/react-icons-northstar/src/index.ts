@@ -55,6 +55,7 @@ export { CameraIcon } from './components/CameraIcon';
 export { CanvasAddPageIcon } from './components/CanvasAddPageIcon';
 export { CallMissedLineIcon } from './components/CallMissedLineIcon';
 export { CallParkingIcon } from './components/CallParkingIcon';
+export { CartIcon } from './components/CartIcon';
 export { CastingIcon } from './components/CastingIcon';
 export { ChannelShareIcon } from './components/ChannelShareIcon';
 export { ChatIcon } from './components/ChatIcon';
