@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Port 'Updated ComboBox error to have role=\"alert\" (#20013)' to 7.0",
-  "packageName": "office-ui-fabric-react",
-  "email": "geoff.cox@live.com",
-  "dependentChangeType": "patch"
-}

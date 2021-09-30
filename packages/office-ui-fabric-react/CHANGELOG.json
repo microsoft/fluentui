@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 30 Sep 2021 12:31:05 GMT",
+      "tag": "office-ui-fabric-react_v7.177.1",
+      "version": "7.177.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Port Picker placeholder style (#19568) to 7.0 * Added placeholder styles to base picker",
+            "author": "geoff.cox@live.com",
+            "commit": "60d4c07329277af401736404980ef9da084f1b17",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Port 'Updated ComboBox error to have role=\"alert\" (#20013)' to 7.0",
+            "author": "geoff.cox@live.com",
+            "commit": "863c86228a929d379df3a0b0defd1f6d9044a680",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Sep 2021 20:54:18 GMT",
       "tag": "office-ui-fabric-react_v7.177.0",
       "version": "7.177.0",

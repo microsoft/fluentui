@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Sep 2021 20:54:18 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 12:31:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.177.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.177.1)
+
+Thu, 30 Sep 2021 12:31:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.177.0..office-ui-fabric-react_v7.177.1)
+
+### Patches
+
+- Port Picker placeholder style (#19568) to 7.0 * Added placeholder styles to base picker ([PR #20014](https://github.com/microsoft/fluentui/pull/20014) by geoff.cox@live.com)
+- Port 'Updated ComboBox error to have role="alert" (#20013)' to 7.0 ([PR #20032](https://github.com/microsoft/fluentui/pull/20032) by geoff.cox@live.com)
 
 ## [7.177.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.177.0)
 

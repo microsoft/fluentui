@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 29 Sep 2021 20:54:18 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 12:31:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.8](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.15.8)
+
+Thu, 30 Sep 2021 12:31:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.15.7..@uifabric/tsx-editor_v0.15.8)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.177.1 ([PR #20014](https://github.com/microsoft/fluentui/pull/20014) by geoff.cox@live.com)
 
 ## [0.15.7](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.15.7)
 

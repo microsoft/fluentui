@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 29 Sep 2021 20:54:18 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 12:31:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.15.10)
+
+Thu, 30 Sep 2021 12:31:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.15.9..@fluentui/react-examples_v0.15.10)
+
+### Patches
+
+- Port 'Updated ComboBox error to have role="alert" (#20013)' to 7.0 ([PR #20032](https://github.com/microsoft/fluentui/pull/20032) by geoff.cox@live.com)
+- Port Picker placeholder style (#19568) to 7.0 * Added placeholder styles to base picker ([PR #20014](https://github.com/microsoft/fluentui/pull/20014) by geoff.cox@live.com)
 
 ## [0.15.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.15.9)
 
