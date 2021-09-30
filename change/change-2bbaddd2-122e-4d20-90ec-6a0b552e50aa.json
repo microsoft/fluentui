@@ -1,0 +1,60 @@
+{
+  "changes": [
+    {
+      "type": "prerelease",
+      "comment": "Theme refactoring",
+      "packageName": "@fluentui/jest-serializer-make-styles",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Theme refactoring",
+      "packageName": "@fluentui/react-checkbox",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Theme refactoring",
+      "packageName": "@fluentui/react-divider",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Theme refactoring",
+      "packageName": "@fluentui/react-link",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Theme refactoring",
+      "packageName": "@fluentui/react-make-styles",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Theme refactoring",
+      "packageName": "@fluentui/react-portal",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Theme refactoring",
+      "packageName": "@fluentui/react-slider",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Theme refactoring",
+      "packageName": "@fluentui/react-switch",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    }
+  ]
+}
