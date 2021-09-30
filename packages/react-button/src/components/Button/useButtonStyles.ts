@@ -246,11 +246,16 @@ const useRootStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  //   base: theme => createFocusOutlineStyle(theme),
-  //   circular: theme =>
-  //    createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.circular } }),
-  //   primary: theme => createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' } }),
-  //   square: theme => createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.none } }),
+  // TODO: `overflow: 'hidden'` on the root does not pay well with `position: absolute`
+  // used by the outline pseudo-element. Need to introduce a text container for children and set
+  // overflow there so that default focus outline can work
+  //
+  // base: theme => createFocusOutlineStyle(theme),
+  // circular: theme =>
+  //  createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.circular } }),
+  // primary: theme => createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' } }),
+  // square: theme => createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.none } }),
+
   base: createCustomFocusIndicatorStyle(theme => ({
     borderColor: 'transparent',
     outline: '2px solid transparent',
