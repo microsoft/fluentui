@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 09:18:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.11)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-alpha.10..@fluentui/react-card_v9.0.0-alpha.11)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.95 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.10)
 

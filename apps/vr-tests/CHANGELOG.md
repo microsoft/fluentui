@@ -1,8 +1,30 @@
 # Change Log - vr-tests
 
-This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Sep 2021 09:18:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.0.0-alpha.95 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
+- Bump @fluentui/react-card to v9.0.0-alpha.11 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-alpha.86 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Thu, 30 Sep 2021 07:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.0 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/react-experiments to v8.3.19 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.165 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
