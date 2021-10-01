@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use the renamed createCustomFocusIndicatorStyle helper for focus outline style",
-  "packageName": "@fluentui/react-button",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

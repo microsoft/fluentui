@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-accordion",
-  "version": "9.0.0-alpha.84",
+  "version": "9.0.0-alpha.85",
   "description": "Fluent UI accordion component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,7 +47,7 @@
     "@fluentui/react-aria": "9.0.0-alpha.40",
     "@fluentui/react-context-selector": "9.0.0-alpha.36",
     "@fluentui/react-make-styles": "9.0.0-alpha.74",
-    "@fluentui/react-tabster": "9.0.0-alpha.68",
+    "@fluentui/react-tabster": "9.0.0-alpha.69",
     "@fluentui/react-theme": "9.0.0-alpha.24",
     "@fluentui/react-utilities": "9.0.0-alpha.53",
     "tslib": "^2.1.0"

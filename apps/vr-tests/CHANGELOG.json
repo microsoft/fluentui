@@ -2,6 +2,63 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Fri, 01 Oct 2021 09:44:56 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.85",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.96",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-card to v9.0.0-alpha.12",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.90",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.87",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.86",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-slider to v9.0.0-alpha.14",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-switch to v9.0.0-alpha.13",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Sep 2021 09:18:15 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

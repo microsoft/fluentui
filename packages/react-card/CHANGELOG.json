@@ -2,6 +2,21 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Fri, 01 Oct 2021 09:44:56 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.96",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Sep 2021 09:18:15 GMT",
       "tag": "@fluentui/react-card_v9.0.0-alpha.11",
       "version": "9.0.0-alpha.11",

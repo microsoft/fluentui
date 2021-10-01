@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 30 Sep 2021 09:18:15 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 09:44:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.118](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.118)
+
+Fri, 01 Oct 2021 09:44:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.117..@fluentui/react-components_v9.0.0-alpha.118)
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - Use new default pseudo element focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - Use the renamed createCustomFocusIndicatorStyle helper for focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- `@fluentui/react-checkbox`
+  - Use new default pseudo element focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- `@fluentui/react-link`
+  - Use the renamed createCustomFocusIndicatorStyle helper for focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - Use new default pseudo element focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+  - feat(Menu): Update styles from design spec ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - Use new default pseudo element focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- `@fluentui/react-switch`
+  - Use new default pseudo element focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - chore(react-tabster): Update default focus ring styles ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.117)
 

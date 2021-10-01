@@ -2,6 +2,33 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 01 Oct 2021 09:44:56 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.96",
+      "version": "9.0.0-alpha.96",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "comment": "Use the renamed createCustomFocusIndicatorStyle helper for focus outline style",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.69",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.87",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Sep 2021 09:18:15 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.95",
       "version": "9.0.0-alpha.95",

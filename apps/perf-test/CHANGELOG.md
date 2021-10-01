@@ -1,8 +1,18 @@
 # Change Log - perf-test
 
-This log was last generated on Thu, 30 Sep 2021 09:18:15 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 09:44:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Fri, 01 Oct 2021 09:44:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.0.0-alpha.96 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.86 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
 
