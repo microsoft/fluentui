@@ -37,7 +37,7 @@ import { FluentProvider, makeStyles, webLightTheme } from '@fluentui/react-compo
 
 const useStyles = makeStyles({
   root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
+    color: theme.colorNeutralForeground1,
     display: 'flex',
   }),
 });

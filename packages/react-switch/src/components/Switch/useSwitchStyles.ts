@@ -29,13 +29,13 @@ const useRootStyles = makeStyles({
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
       ':before': {
-        background: theme.alias.color.neutral.neutralStrokeAccessibleHover,
+        background: theme.colorNeutralStrokeAccessibleHover,
       },
     },
 
     ':hover .ms-Switch-track': {
       ':before': {
-        borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
+        borderColor: theme.colorNeutralStrokeAccessibleHover,
       },
     },
   }),
@@ -43,13 +43,13 @@ const useRootStyles = makeStyles({
   checked: theme => ({
     ':hover .ms-Switch-track': {
       ':after': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
+        background: theme.colorBrandBackgroundHover,
       },
     },
 
     ':active .ms-Switch-track': {
       ':after': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
+        background: theme.colorBrandBackgroundPressed,
       },
     },
   }),
@@ -107,28 +107,28 @@ const useTrackStyles = makeStyles({
 
   unchecked: theme => ({
     ':before': {
-      border: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
+      border: `1px solid ${theme.colorNeutralStrokeAccessible}`,
       background: 'none',
     },
   }),
 
   checked: theme => ({
     ':after': {
-      background: theme.alias.color.neutral.brandBackground,
+      background: theme.colorBrandBackground,
       border: 'none',
     },
   }),
 
   disabledUnchecked: theme => ({
     ':before': {
-      border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
+      border: `1px solid ${theme.colorNeutralStrokeDisabled}`,
     },
   }),
 
   disabledChecked: theme => ({
     ':after': {
-      border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
+      border: `1px solid ${theme.colorTransparentStrokeDisabled}`,
+      background: theme.colorNeutralBackgroundDisabled,
     },
   }),
 });
@@ -157,7 +157,7 @@ const useThumbStyles = makeStyles({
     width: 'var(--switch-thumb-size)',
     height: 'var(--switch-thumb-size)',
     boxSizing: 'border-box',
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: theme.borderRadiusCircular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
     transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
@@ -170,7 +170,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.global.borderRadius.circular,
+      borderRadius: theme.borderRadiusCircular,
       content: "''",
       opacity: 'var(--switch-unchecked-opacity)',
     },
@@ -181,7 +181,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.global.borderRadius.circular,
+      borderRadius: theme.borderRadiusCircular,
       content: "''",
       opacity: 'var(--switch-checked-opacity)',
     },
@@ -189,26 +189,26 @@ const useThumbStyles = makeStyles({
 
   unchecked: theme => ({
     ':before': {
-      background: theme.alias.color.neutral.neutralStrokeAccessible,
+      background: theme.colorNeutralStrokeAccessible,
     },
   }),
 
   checked: theme => ({
     ':after': {
-      background: theme.alias.color.neutral.neutralForegroundOnBrand,
+      background: theme.colorNeutralForegroundOnBrand,
     },
   }),
 
   disabledUnchecked: theme => ({
     ':before': {
-      border: `1px solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
-      background: theme.alias.color.neutral.neutralBackground1,
+      border: `1px solid ${theme.colorNeutralForegroundDisabled}`,
+      background: theme.colorNeutralBackground1,
     },
   }),
 
   disabledChecked: theme => ({
     ':after': {
-      background: theme.alias.color.neutral.neutralForegroundDisabled,
+      background: theme.colorNeutralForegroundDisabled,
     },
   }),
 });

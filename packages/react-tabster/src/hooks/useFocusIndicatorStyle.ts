@@ -77,8 +77,8 @@ export const createFocusOutlineStyle = (
     outline: 'none',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: getFocusOutlineStyles({
-    outlineColor: theme.alias.color.neutral.strokeFocus2,
-    outlineRadius: theme.global.borderRadius.medium,
+    outlineColor: theme.colorStrokeFocus2,
+    outlineRadius: theme.borderRadiusMedium,
     // FIXME: theme.global.strokeWidth.thick causes some weird bugs
     outlineWidth: '2px',
     ...options.style,

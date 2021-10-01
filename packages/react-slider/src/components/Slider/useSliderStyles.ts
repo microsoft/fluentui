@@ -47,19 +47,19 @@ export const useRootStyles = makeStyles({
     cursor: 'grab',
     ':hover': {
       '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
+        background: theme.colorBrandBackgroundHover,
       },
       '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
+        background: theme.colorBrandBackgroundHover,
       },
     },
     ':active': {
       cursor: 'grabbing',
       '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
+        background: theme.colorBrandBackgroundPressed,
       },
       '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
+        background: theme.colorBrandBackgroundPressed,
       },
     },
   }),
@@ -102,18 +102,18 @@ export const useSliderWrapper = makeStyles({
 export const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    borderRadius: theme.global.borderRadius.xLarge,
+    borderRadius: theme.borderRadiusXLarge,
     boxSizing: 'border-box',
     pointerEvents: 'none',
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.neutralStrokeAccessible,
+    background: theme.colorNeutralStrokeAccessible,
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
-    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
+    background: theme.colorNeutralBackgroundDisabled,
+    border: `1px solid ${theme.colorTransparentStrokeDisabled}`,
   }),
 
   horizontal: theme => ({
@@ -160,7 +160,7 @@ export const useTrackWrapperStyles = makeStyles({
 export const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    borderRadius: theme.global.borderRadius.xLarge,
+    borderRadius: theme.borderRadiusXLarge,
   }),
 
   horizontal: theme => ({
@@ -178,11 +178,11 @@ export const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.compoundBrandBackground,
+    background: theme.colorCompoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
+    background: theme.colorNeutralForegroundDisabled,
   }),
 });
 
@@ -197,7 +197,7 @@ export const useMarksWrapperStyles = makeStyles({
     zIndex: '1',
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      background: theme.alias.color.neutral.neutralBackground1,
+      background: theme.colorNeutralBackground1,
     },
 
     [`& .${markLabelClassName}`]: {
@@ -224,8 +224,8 @@ export const useMarksWrapperStyles = makeStyles({
     },
 
     [`& .${markLabelClassName}`]: {
-      fontFamily: theme.global.type.fontFamilies.base,
-      color: theme.alias.color.neutral.neutralForeground1,
+      fontFamily: theme.fontFamilyBase,
+      color: theme.colorNeutralForeground1,
       paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
@@ -263,7 +263,7 @@ export const useMarksWrapperStyles = makeStyles({
 
   disabled: theme => ({
     [`& .${markLabelClassName}`]: {
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
   }),
 });
@@ -304,9 +304,9 @@ export const useThumbStyles = makeStyles({
     bottom: '0px',
     right: '0px',
     outline: 'none',
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: theme.borderRadiusCircular,
     boxSizing: 'border-box',
-    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
     transform: 'translate(-50%, -50%)',
 
     ':before': {
@@ -315,21 +315,21 @@ export const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.global.borderRadius.circular,
+      borderRadius: theme.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralStroke1}`,
     },
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.compoundBrandBackground,
+    background: theme.colorCompoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
+    background: theme.colorNeutralForegroundDisabled,
     ':before': {
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralForegroundDisabled}`,
     },
   }),
 

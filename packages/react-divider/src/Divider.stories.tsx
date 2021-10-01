@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   root: theme => ({
     margin: `10px 10px 60px 10px`,
     padding: 0,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    backgroundColor: theme.colorNeutralBackground1,
     '&>.story': {
       margin: 0,
       padding: 0,

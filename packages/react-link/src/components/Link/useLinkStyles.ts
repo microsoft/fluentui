@@ -8,34 +8,34 @@ const useStyles = makeStyles({
     textDecorationStyle: 'double',
   }),
   // Common styles.
-  root: tokens => ({
+  root: theme => ({
     backgroundColor: 'transparent',
     border: 'none',
     borderBottom: 'solid transparent',
-    borderBottomWidth: tokens.global.strokeWidth.thin,
+    borderBottomWidth: theme.strokeWidthThin,
     boxSizing: 'border-box',
-    color: tokens.alias.color.neutral.brandForegroundLink,
+    color: theme.colorBrandForegroundLink,
     cursor: 'pointer',
     display: 'inline',
-    fontFamily: tokens.global.type.fontFamilies.base,
-    fontSize: tokens.global.type.fontSizes.base[300],
-    fontWeight: tokens.global.type.fontWeights.regular,
+    fontFamily: theme.fontFamilyBase,
+    fontSize: theme.fontSizeBase300,
+    fontWeight: theme.fontWeightRegular,
     margin: 0,
     overflow: 'inherit',
     padding: 0,
-    textAlign: tokens.global.type.alignment.start,
+    textAlign: 'left',
     textDecoration: 'none',
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
-      borderBottomColor: tokens.alias.color.neutral.brandForegroundLinkHover,
-      color: tokens.alias.color.neutral.brandForegroundLinkHover,
+      borderBottomColor: theme.colorBrandForegroundLinkHover,
+      color: theme.colorBrandForegroundLinkHover,
     },
 
     ':active': {
-      borderBottomColor: tokens.alias.color.neutral.brandForegroundLinkPressed,
-      color: tokens.alias.color.neutral.brandForegroundLinkPressed,
+      borderBottomColor: theme.colorBrandForegroundLinkPressed,
+      color: theme.colorBrandForegroundLinkPressed,
     },
   }),
   // Overrides when an href is present so the Link renders as an anchor.
@@ -43,41 +43,41 @@ const useStyles = makeStyles({
     fontSize: 'inherit',
   },
   // Overrides when the Link appears subtle.
-  subtle: tokens => ({
-    color: tokens.alias.color.neutral.neutralForeground2,
+  subtle: theme => ({
+    color: theme.colorNeutralForeground2,
 
     ':hover': {
-      borderBottomColor: tokens.alias.color.neutral.neutralForeground2Hover,
-      color: tokens.alias.color.neutral.neutralForeground2Hover,
+      borderBottomColor: theme.colorNeutralForeground2Hover,
+      color: theme.colorNeutralForeground2Hover,
     },
 
     ':active': {
-      borderBottomColor: tokens.alias.color.neutral.neutralForeground2Pressed,
-      color: tokens.alias.color.neutral.neutralForeground2Pressed,
+      borderBottomColor: theme.colorNeutralForeground2Pressed,
+      color: theme.colorNeutralForeground2Pressed,
     },
   }),
   // Overrides when the Link is rendered inline within text.
-  inline: tokens => ({
-    borderBottomColor: tokens.alias.color.neutral.brandForegroundLink,
+  inline: theme => ({
+    borderBottomColor: theme.colorBrandForegroundLink,
   }),
   // Overrides when the Link is rendered inline within text and appears subtle.
-  inlineSubtle: tokens => ({
-    borderBottomColor: tokens.alias.color.neutral.neutralForeground2,
+  inlineSubtle: theme => ({
+    borderBottomColor: theme.colorNeutralForeground2,
   }),
   // Overrides when the Link is disabled.
-  disabled: tokens => ({
+  disabled: theme => ({
     borderBottomColor: 'transparent',
-    color: tokens.alias.color.neutral.neutralForegroundDisabled,
+    color: theme.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
 
     ':hover': {
       borderBottomColor: 'transparent',
-      color: tokens.alias.color.neutral.neutralForegroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
 
     ':active': {
       borderBottomColor: 'transparent',
-      color: tokens.alias.color.neutral.neutralForegroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
   }),
 });

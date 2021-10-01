@@ -6,37 +6,37 @@ import type { LabelState } from './Label.types';
  */
 const useStyles = makeStyles({
   root: theme => ({
-    fontFamily: theme.global.type.fontFamilies.base,
-    color: theme.alias.color.neutral.neutralForeground1,
+    fontFamily: theme.fontFamilyBase,
+    color: theme.colorNeutralForeground1,
   }),
 
   disabled: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    color: theme.colorNeutralForegroundDisabled,
   }),
 
   required: theme => ({
-    color: theme.alias.color.red.foreground3,
+    color: theme.colorPaletteRedForeground3,
     paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
   }),
 
   small: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-    lineHeight: theme.global.type.lineHeights.base[200],
+    fontSize: theme.fontSizeBase200,
+    lineHeight: theme.lineHeightBase200,
   }),
 
   medium: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
   }),
 
   large: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
-    fontWeight: theme.global.type.fontWeights.semibold,
+    fontSize: theme.fontSizeBase400,
+    lineHeight: theme.lineHeightBase400,
+    fontWeight: theme.fontWeightSemibold,
   }),
 
   strong: theme => ({
-    fontWeight: theme.global.type.fontWeights.semibold,
+    fontWeight: theme.fontWeightSemibold,
   }),
 });
 

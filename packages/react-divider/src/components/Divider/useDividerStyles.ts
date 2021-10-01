@@ -2,18 +2,18 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { DividerState } from './Divider.types';
 
 const useStylesOverride = makeStyles({
-  root: tokens => ({
+  root: theme => ({
     /* CSS Vars */
     '--divider-borderMargin': '12px',
     '--divider-flexDirection': 'row',
-    '--divider-fontColor': tokens.alias.color.neutral.neutralForeground2,
+    '--divider-fontColor': theme.colorNeutralForeground2,
     '--divider-fontFamily': 'Segoe UI',
     '--divider-fontSize': '12px',
     '--divider-fontWeight': '400',
     '--divider-lineHeight': '17px',
     '--divider-borderSize': '1px',
     '--divider-borderStyle': 'solid',
-    '--divider-color': tokens.alias.color.neutral.neutralStroke2,
+    '--divider-color': theme.colorNeutralStroke2,
 
     alignItems: 'center',
     color: 'var(--divider-fontColor)',
@@ -41,15 +41,15 @@ const useStylesOverride = makeStyles({
   childless: {
     '--divider-borderMargin': 0,
   },
-  subtle: tokens => ({
-    '--divider-color': tokens.alias.color.neutral.neutralStroke3,
+  subtle: theme => ({
+    '--divider-color': theme.colorNeutralStroke3,
   }),
-  brand: tokens => ({
-    '--divider-fontColor': tokens.alias.color.neutral.brandBackgroundStatic,
-    '--divider-color': tokens.alias.color.neutral.brandBackgroundStatic,
+  brand: theme => ({
+    '--divider-fontColor': theme.colorBrandBackgroundStatic,
+    '--divider-color': theme.colorBrandBackgroundStatic,
   }),
-  strong: tokens => ({
-    '--divider-color': tokens.alias.color.neutral.neutralStroke1,
+  strong: theme => ({
+    '--divider-color': theme.colorNeutralStroke1,
   }),
   horizontal: {
     width: '100%',

@@ -6,10 +6,10 @@ import type { TextState } from './Text.types';
  */
 const useStyles = makeStyles({
   root: theme => ({
-    fontFamily: theme.global.type.fontFamilies.base,
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-    fontWeight: theme.global.type.fontWeights.regular,
+    fontFamily: theme.fontFamilyBase,
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
+    fontWeight: theme.fontWeightRegular,
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
@@ -39,52 +39,52 @@ const useStyles = makeStyles({
     textDecoration: 'line-through underline',
   },
   base100: theme => ({
-    fontSize: theme.global.type.fontSizes.base[100],
-    lineHeight: theme.global.type.lineHeights.base[100],
+    fontSize: theme.fontSizeBase100,
+    lineHeight: theme.lineHeightBase100,
   }),
   base200: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-    lineHeight: theme.global.type.lineHeights.base[200],
+    fontSize: theme.fontSizeBase200,
+    lineHeight: theme.lineHeightBase200,
   }),
   base400: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
+    fontSize: theme.fontSizeBase400,
+    lineHeight: theme.lineHeightBase400,
   }),
   base500: theme => ({
-    fontSize: theme.global.type.fontSizes.base[500],
-    lineHeight: theme.global.type.lineHeights.base[500],
+    fontSize: theme.fontSizeBase500,
+    lineHeight: theme.lineHeightBase500,
   }),
   base600: theme => ({
-    fontSize: theme.global.type.fontSizes.base[600],
-    lineHeight: theme.global.type.lineHeights.base[600],
+    fontSize: theme.fontSizeBase600,
+    lineHeight: theme.lineHeightBase600,
   }),
   hero700: theme => ({
-    fontSize: theme.global.type.fontSizes.hero[700],
-    lineHeight: theme.global.type.lineHeights.hero[700],
+    fontSize: theme.fontSizeHero700,
+    lineHeight: theme.lineHeightHero700,
   }),
   hero800: theme => ({
-    fontSize: theme.global.type.fontSizes.hero[800],
-    lineHeight: theme.global.type.lineHeights.hero[800],
+    fontSize: theme.fontSizeHero800,
+    lineHeight: theme.lineHeightHero800,
   }),
   hero900: theme => ({
-    fontSize: theme.global.type.fontSizes.hero[900],
-    lineHeight: theme.global.type.lineHeights.hero[900],
+    fontSize: theme.fontSizeHero900,
+    lineHeight: theme.lineHeightHero900,
   }),
   hero1000: theme => ({
-    fontSize: theme.global.type.fontSizes.hero[1000],
-    lineHeight: theme.global.type.lineHeights.hero[1000],
+    fontSize: theme.fontSizeHero1000,
+    lineHeight: theme.lineHeightHero1000,
   }),
   monospace: theme => ({
-    fontFamily: theme.global.type.fontFamilies.monospace,
+    fontFamily: theme.fontFamilyMonospace,
   }),
   numeric: theme => ({
-    fontFamily: theme.global.type.fontFamilies.numeric,
+    fontFamily: theme.fontFamilyNumeric,
   }),
   weightMedium: theme => ({
-    fontWeight: theme.global.type.fontWeights.medium,
+    fontWeight: theme.fontWeightMedium,
   }),
   weightSemibold: theme => ({
-    fontWeight: theme.global.type.fontWeights.semibold,
+    fontWeight: theme.fontWeightSemibold,
   }),
   alignCenter: {
     textAlign: 'center',

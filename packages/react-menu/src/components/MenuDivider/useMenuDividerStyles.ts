@@ -6,7 +6,7 @@ const useStyles = makeStyles({
     height: '1px',
     margin: '4px -5px 4px -5px',
     width: 'auto',
-    backgroundColor: theme.alias.color.neutral.neutralStroke2,
+    backgroundColor: theme.colorNeutralStroke2,
   }),
 });
 
