@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SwitchState } from './Switch.types';
 
 const rootClassName = 'ms-Switch-root';
@@ -29,13 +29,13 @@ const useRootStyles = makeStyles({
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
       ':before': {
-        background: theme.colorNeutralStrokeAccessibleHover,
+        background: theme.alias.color.neutral.neutralStrokeAccessibleHover,
       },
     },
 
     ':hover .ms-Switch-track': {
       ':before': {
-        borderColor: theme.colorNeutralStrokeAccessibleHover,
+        borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
       },
     },
   }),
@@ -43,13 +43,13 @@ const useRootStyles = makeStyles({
   checked: theme => ({
     ':hover .ms-Switch-track': {
       ':after': {
-        background: theme.colorBrandBackgroundHover,
+        background: theme.alias.color.neutral.brandBackgroundHover,
       },
     },
 
     ':active .ms-Switch-track': {
       ':after': {
-        background: theme.colorBrandBackgroundPressed,
+        background: theme.alias.color.neutral.brandBackgroundPressed,
       },
     },
   }),
@@ -64,22 +64,8 @@ const useRootStyles = makeStyles({
     pointerEvents: 'none',
   },
 
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        top: '-8px',
-        right: '-8px',
-        bottom: '-8px',
-        left: '-8px',
-        boxSizing: 'border-box',
-        border: `1px solid ${theme.colorNeutralForeground1}`,
-        borderRadius: theme.borderRadiusMedium,
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '8px' } }),
 });
 
 /**
@@ -121,28 +107,28 @@ const useTrackStyles = makeStyles({
 
   unchecked: theme => ({
     ':before': {
-      border: `1px solid ${theme.colorNeutralStrokeAccessible}`,
+      border: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
       background: 'none',
     },
   }),
 
   checked: theme => ({
     ':after': {
-      background: theme.colorBrandBackground,
+      background: theme.alias.color.neutral.brandBackground,
       border: 'none',
     },
   }),
 
   disabledUnchecked: theme => ({
     ':before': {
-      border: `1px solid ${theme.colorNeutralStrokeDisabled}`,
+      border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
     },
   }),
 
   disabledChecked: theme => ({
     ':after': {
-      border: `1px solid ${theme.colorTransparentStrokeDisabled}`,
-      background: theme.colorNeutralBackgroundDisabled,
+      border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
+      background: theme.alias.color.neutral.neutralBackgroundDisabled,
     },
   }),
 });
@@ -171,7 +157,7 @@ const useThumbStyles = makeStyles({
     width: 'var(--switch-thumb-size)',
     height: 'var(--switch-thumb-size)',
     boxSizing: 'border-box',
-    borderRadius: theme.borderRadiusCircular,
+    borderRadius: theme.global.borderRadius.circular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
     transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
@@ -184,7 +170,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.borderRadiusCircular,
+      borderRadius: theme.global.borderRadius.circular,
       content: "''",
       opacity: 'var(--switch-unchecked-opacity)',
     },
@@ -195,7 +181,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.borderRadiusCircular,
+      borderRadius: theme.global.borderRadius.circular,
       content: "''",
       opacity: 'var(--switch-checked-opacity)',
     },
@@ -203,26 +189,26 @@ const useThumbStyles = makeStyles({
 
   unchecked: theme => ({
     ':before': {
-      background: theme.colorNeutralStrokeAccessible,
+      background: theme.alias.color.neutral.neutralStrokeAccessible,
     },
   }),
 
   checked: theme => ({
     ':after': {
-      background: theme.colorNeutralForegroundOnBrand,
+      background: theme.alias.color.neutral.neutralForegroundOnBrand,
     },
   }),
 
   disabledUnchecked: theme => ({
     ':before': {
-      border: `1px solid ${theme.colorNeutralForegroundDisabled}`,
-      background: theme.colorNeutralBackground1,
+      border: `1px solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
+      background: theme.alias.color.neutral.neutralBackground1,
     },
   }),
 
   disabledChecked: theme => ({
     ':after': {
-      background: theme.colorNeutralForegroundDisabled,
+      background: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   }),
 });

@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
 import { markClassName, markLabelClassName } from '../../utils/renderMarks';
 
@@ -47,19 +47,19 @@ export const useRootStyles = makeStyles({
     cursor: 'grab',
     ':hover': {
       '& .ms-Slider-thumb': {
-        background: theme.colorBrandBackgroundHover,
+        background: theme.alias.color.neutral.brandBackgroundHover,
       },
       '& .ms-Slider-track': {
-        background: theme.colorBrandBackgroundHover,
+        background: theme.alias.color.neutral.brandBackgroundHover,
       },
     },
     ':active': {
       cursor: 'grabbing',
       '& .ms-Slider-thumb': {
-        background: theme.colorBrandBackgroundPressed,
+        background: theme.alias.color.neutral.brandBackgroundPressed,
       },
       '& .ms-Slider-track': {
-        background: theme.colorBrandBackgroundPressed,
+        background: theme.alias.color.neutral.brandBackgroundPressed,
       },
     },
   }),
@@ -68,22 +68,8 @@ export const useRootStyles = makeStyles({
     cursor: 'not-allowed',
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        top: '-6px',
-        right: '-6px',
-        bottom: '-6px',
-        left: '-6px',
-        boxSizing: 'border-box',
-        border: `1px solid ${theme.colorNeutralForeground1}`,
-        borderRadius: theme.borderRadiusMedium,
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '6px' } }),
 });
 
 /**
@@ -116,18 +102,18 @@ export const useSliderWrapper = makeStyles({
 export const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    borderRadius: theme.borderRadiusXLarge,
+    borderRadius: theme.global.borderRadius.xLarge,
     boxSizing: 'border-box',
     pointerEvents: 'none',
   }),
 
   enabled: theme => ({
-    background: theme.colorNeutralStrokeAccessible,
+    background: theme.alias.color.neutral.neutralStrokeAccessible,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralBackgroundDisabled,
-    border: `1px solid ${theme.colorTransparentStrokeDisabled}`,
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
   }),
 
   horizontal: theme => ({
@@ -174,7 +160,7 @@ export const useTrackWrapperStyles = makeStyles({
 export const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    borderRadius: theme.borderRadiusXLarge,
+    borderRadius: theme.global.borderRadius.xLarge,
   }),
 
   horizontal: theme => ({
@@ -192,11 +178,11 @@ export const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.colorCompoundBrandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralForegroundDisabled,
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 });
 
@@ -211,7 +197,7 @@ export const useMarksWrapperStyles = makeStyles({
     zIndex: '1',
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      background: theme.colorNeutralBackground1,
+      background: theme.alias.color.neutral.neutralBackground1,
     },
 
     [`& .${markLabelClassName}`]: {
@@ -238,8 +224,8 @@ export const useMarksWrapperStyles = makeStyles({
     },
 
     [`& .${markLabelClassName}`]: {
-      fontFamily: theme.fontFamilyBase,
-      color: theme.colorNeutralForeground1,
+      fontFamily: theme.global.type.fontFamilies.base,
+      color: theme.alias.color.neutral.neutralForeground1,
       paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
@@ -277,7 +263,7 @@ export const useMarksWrapperStyles = makeStyles({
 
   disabled: theme => ({
     [`& .${markLabelClassName}`]: {
-      color: theme.colorNeutralForegroundDisabled,
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   }),
 });
@@ -318,9 +304,9 @@ export const useThumbStyles = makeStyles({
     bottom: '0px',
     right: '0px',
     outline: 'none',
-    borderRadius: theme.borderRadiusCircular,
+    borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
-    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
     transform: 'translate(-50%, -50%)',
 
     ':before': {
@@ -329,21 +315,21 @@ export const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.borderRadiusCircular,
+      borderRadius: theme.global.borderRadius.circular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralStroke1}`,
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
     },
   }),
 
   enabled: theme => ({
-    background: theme.colorCompoundBrandBackground,
+    background: theme.alias.color.neutral.compoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralForegroundDisabled,
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
     ':before': {
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralForegroundDisabled}`,
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
     },
   }),
 

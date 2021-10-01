@@ -38,7 +38,7 @@ VisualDividerOnly.parameters = {
   docs: {
     description: {
       story: [
-        'If the a divider is needed only for visual aesthetics, the `MenuDivider` component can be used separately.',
+        'If a divider is needed only for visual aesthetics, the `MenuDivider` component can be used separately.',
         'When items should be logically groupped, use the `MenuGroup` and `MenuGroupHeader` components',
         'for correct accessible markup.',
       ].join('\n'),

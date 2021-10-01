@@ -73,7 +73,7 @@ ControllingOpenAndClose.parameters = {
         'event.',
         '',
         '_When controlling the open state of the `Popover`, extra effort is required to ensure that interactions are_',
-        '_still approriate and that keyboard accessibility does not degrade._',
+        '_still appropriate and that keyboard accessibility does not degrade._',
       ].join('\n'),
     },
   },

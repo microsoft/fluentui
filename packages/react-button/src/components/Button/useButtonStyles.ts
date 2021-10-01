@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
@@ -28,29 +28,29 @@ const useRootStyles = makeStyles({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
 
-    background: theme.colorNeutralBackground1,
-    color: theme.colorNeutralForeground1,
+    background: theme.alias.color.neutral.neutralBackground1,
+    color: theme.alias.color.neutral.neutralForeground1,
 
-    borderColor: theme.colorNeutralStroke1,
+    borderColor: theme.alias.color.neutral.neutralStroke1,
     borderStyle: 'solid',
-    borderWidth: theme.strokeWidthThin,
+    borderWidth: theme.global.strokeWidth.thin,
 
-    fontFamily: theme.fontFamilyBase,
+    fontFamily: theme.global.type.fontFamilies.base,
 
     outline: 'none',
 
     ':hover': {
-      background: theme.colorNeutralBackground1Hover,
-      borderColor: theme.colorNeutralStroke1Hover,
-      color: theme.colorNeutralForeground1,
+      background: theme.alias.color.neutral.neutralBackground1Hover,
+      borderColor: theme.alias.color.neutral.neutralStroke1Hover,
+      color: theme.alias.color.neutral.neutralForeground1,
 
       cursor: 'pointer',
     },
 
     ':active': {
-      background: theme.colorNeutralBackground1Pressed,
-      borderColor: theme.colorNeutralStroke1Pressed,
-      color: theme.colorNeutralForeground1,
+      background: theme.alias.color.neutral.neutralBackground1Pressed,
+      borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
+      color: theme.alias.color.neutral.neutralForeground1,
 
       outline: 'none',
     },
@@ -63,11 +63,11 @@ const useRootStyles = makeStyles({
     height: '24px',
     minWidth: '64px',
 
-    borderRadius: theme.borderRadiusSmall,
+    borderRadius: theme.global.borderRadius.small,
 
-    fontSize: theme.fontSizeBase200,
-    fontWeight: theme.fontWeightRegular,
-    lineHeight: theme.lineHeightBase200,
+    fontSize: theme.global.type.fontSizes.base[200],
+    fontWeight: theme.global.type.fontWeights.regular,
+    lineHeight: theme.global.type.lineHeights.base[200],
   }),
   medium: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
@@ -77,11 +77,11 @@ const useRootStyles = makeStyles({
     height: '32px',
     minWidth: '96px',
 
-    borderRadius: theme.borderRadiusMedium,
+    borderRadius: theme.global.borderRadius.medium,
 
-    fontSize: theme.fontSizeBase300,
-    fontWeight: theme.fontWeightSemibold,
-    lineHeight: theme.lineHeightBase300,
+    fontSize: theme.global.type.fontSizes.base[300],
+    fontWeight: theme.global.type.fontWeights.semibold,
+    lineHeight: theme.global.type.lineHeights.base[300],
   }),
   large: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
@@ -91,116 +91,116 @@ const useRootStyles = makeStyles({
     height: '40px',
     minWidth: '96px',
 
-    borderRadius: theme.borderRadiusMedium,
+    borderRadius: theme.global.borderRadius.medium,
 
-    fontSize: theme.fontSizeBase400,
-    fontWeight: theme.fontWeightSemibold,
-    lineHeight: theme.lineHeightBase400,
+    fontSize: theme.global.type.fontSizes.base[400],
+    fontWeight: theme.global.type.fontWeights.semibold,
+    lineHeight: theme.global.type.lineHeights.base[400],
   }),
   block: {
     maxWidth: '100%',
     width: '100%',
   },
   circular: theme => ({
-    borderRadius: theme.borderRadiusCircular,
+    borderRadius: theme.global.borderRadius.circular,
   }),
   outline: theme => ({
-    background: theme.colorTransparentBackground,
+    background: theme.alias.color.neutral.transparentBackground,
 
     ':hover': {
-      background: theme.colorTransparentBackgroundHover,
+      background: theme.alias.color.neutral.transparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.colorTransparentBackgroundPressed,
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
     },
   }),
   primary: theme => ({
-    background: theme.colorBrandBackground,
+    background: theme.alias.color.neutral.brandBackground,
     borderColor: 'transparent',
-    color: theme.colorNeutralForegroundOnBrand,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
 
     ':hover': {
-      background: theme.colorBrandBackgroundHover,
+      background: theme.alias.color.neutral.brandBackgroundHover,
       borderColor: 'transparent',
-      color: theme.colorNeutralForegroundOnBrand,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
     },
 
     ':active': {
-      background: theme.colorBrandBackgroundPressed,
+      background: theme.alias.color.neutral.brandBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.colorNeutralForegroundOnBrand,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
     },
   }),
   subtle: theme => ({
-    background: theme.colorSubtleBackground,
+    background: theme.alias.color.neutral.subtleBackground,
     borderColor: 'transparent',
-    color: theme.colorNeutralForeground2,
+    color: theme.alias.color.neutral.neutralForeground2,
 
     ':hover': {
-      background: theme.colorSubtleBackgroundHover,
+      background: theme.alias.color.neutral.subtleBackgroundHover,
       borderColor: 'transparent',
-      color: theme.colorNeutralForeground2BrandHover,
+      color: theme.alias.color.neutral.neutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.colorSubtleBackgroundPressed,
+      background: theme.alias.color.neutral.subtleBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.colorNeutralForeground2BrandPressed,
+      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
     },
   }),
   square: theme => ({
-    borderRadius: theme.borderRadiusNone,
+    borderRadius: theme.global.borderRadius.none,
   }),
   transparent: theme => ({
-    background: theme.colorTransparentBackground,
+    background: theme.alias.color.neutral.transparentBackground,
     borderColor: 'transparent',
-    color: theme.colorNeutralForeground2,
+    color: theme.alias.color.neutral.neutralForeground2,
 
     ':hover': {
-      background: theme.colorTransparentBackgroundHover,
+      background: theme.alias.color.neutral.transparentBackgroundHover,
       borderColor: 'transparent',
-      color: theme.colorNeutralForeground2BrandHover,
+      color: theme.alias.color.neutral.neutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.colorTransparentBackgroundPressed,
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.colorNeutralForeground2BrandPressed,
+      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
     },
   }),
   disabled: theme => ({
-    background: theme.colorNeutralBackgroundDisabled,
-    borderColor: theme.colorNeutralStrokeDisabled,
-    color: theme.colorNeutralForegroundDisabled,
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
 
     cursor: 'not-allowed',
 
     ':hover': {
-      background: theme.colorNeutralBackgroundDisabled,
-      borderColor: theme.colorNeutralStrokeDisabled,
-      color: theme.colorNeutralForegroundDisabled,
+      background: theme.alias.color.neutral.neutralBackgroundDisabled,
+      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
 
       cursor: 'not-allowed',
     },
 
     ':active': {
-      background: theme.colorNeutralBackgroundDisabled,
-      borderColor: theme.colorNeutralStrokeDisabled,
-      color: theme.colorNeutralForegroundDisabled,
+      background: theme.alias.color.neutral.neutralBackgroundDisabled,
+      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
 
       cursor: 'not-allowed',
     },
   }),
   disabledOutline: theme => ({
-    background: theme.colorTransparentBackground,
+    background: theme.alias.color.neutral.transparentBackground,
 
     ':hover': {
-      background: theme.colorTransparentBackgroundHover,
+      background: theme.alias.color.neutral.transparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.colorTransparentBackgroundPressed,
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
     },
   }),
   disabledPrimary: {
@@ -245,23 +245,34 @@ const useRootStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  base: createFocusIndicatorStyleRule(theme => ({
+  // TODO: `overflow: 'hidden'` on the root does not pay well with `position: absolute`
+  // used by the outline pseudo-element. Need to introduce a text container for children and set
+  // overflow there so that default focus outline can work
+  //
+  // base: theme => createFocusOutlineStyle(theme),
+  // circular: theme =>
+  //  createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.circular } }),
+  // primary: theme => createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' } }),
+  // square: theme => createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.none } }),
+
+  base: createCustomFocusIndicatorStyle(theme => ({
     borderColor: 'transparent',
+    outline: '2px solid transparent',
     boxShadow: `
-      ${theme.shadow4},
-      0 0 0 2px ${theme.colorStrokeFocus2}
+      ${theme.alias.shadow.shadow4},
+      0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}
     `,
     zIndex: 1,
   })),
-  circular: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.borderRadiusCircular,
+  circular: createCustomFocusIndicatorStyle(theme => ({
+    borderRadius: theme.global.borderRadius.circular,
   })),
-  primary: createFocusIndicatorStyleRule(theme => ({
-    borderColor: theme.colorNeutralForegroundOnBrand,
-    boxShadow: `${theme.shadow2}, 0 0 0 2px ${theme.colorStrokeFocus2}`,
+  primary: createCustomFocusIndicatorStyle(theme => ({
+    borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
+    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}`,
   })),
-  square: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.borderRadiusNone,
+  square: createCustomFocusIndicatorStyle(theme => ({
+    borderRadius: theme.global.borderRadius.none,
   })),
 });
 

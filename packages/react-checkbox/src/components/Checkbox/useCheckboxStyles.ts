@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
 /**
@@ -17,119 +17,107 @@ const useStyles = makeStyles({
   }),
 
   disabled: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
     cursor: 'default',
 
     '& .ms-checkbox-indicator': {
-      borderColor: theme.colorNeutralStrokeDisabled,
-      color: theme.colorNeutralForegroundDisabled,
-      backgroundColor: theme.colorNeutralBackground1,
+      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      backgroundColor: theme.alias.color.neutral.neutralBackground1,
     },
 
     ':hover': {
       '& .ms-checkbox-indicator': {
-        borderColor: theme.colorNeutralStrokeDisabled,
-        color: theme.colorNeutralForegroundDisabled,
-        backgroundColor: theme.colorNeutralBackground1,
+        borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+        color: theme.alias.color.neutral.neutralForegroundDisabled,
+        backgroundColor: theme.alias.color.neutral.neutralBackground1,
       },
     },
 
     ':active': {
       '& .ms-checkbox-indicator': {
-        borderColor: theme.colorNeutralStrokeDisabled,
-        color: theme.colorNeutralForegroundDisabled,
-        backgroundColor: theme.colorNeutralBackground1,
+        borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+        color: theme.alias.color.neutral.neutralForegroundDisabled,
+        backgroundColor: theme.alias.color.neutral.neutralBackground1,
       },
     },
   }),
 
   unchecked: theme => ({
-    color: theme.colorNeutralForeground3,
+    color: theme.alias.color.neutral.neutralForeground3,
 
     '& .ms-checkbox-indicator': {
-      borderColor: theme.colorNeutralStrokeAccessible,
+      borderColor: theme.alias.color.neutral.neutralStrokeAccessible,
       '& > *': {
         opacity: 0,
       },
     },
 
     ':hover': {
-      color: theme.colorNeutralForeground2,
+      color: theme.alias.color.neutral.neutralForeground2,
 
       '& .ms-checkbox-indicator': {
-        borderColor: theme.colorNeutralStrokeAccessibleHover,
+        borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
       },
     },
 
     ':active': {
-      color: theme.colorNeutralForeground1,
+      color: theme.alias.color.neutral.neutralForeground1,
 
       '& .ms-checkbox-indicator': {
-        borderColor: theme.colorNeutralStrokeAccessiblePressed,
+        borderColor: theme.alias.color.neutral.neutralStrokeAccessiblePressed,
       },
     },
   }),
 
   checked: theme => ({
-    color: theme.colorNeutralForeground1,
+    color: theme.alias.color.neutral.neutralForeground1,
 
     // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
     '& .ms-checkbox-indicator': {
-      backgroundColor: theme.colorCompoundBrandBackground,
-      color: theme.colorNeutralForegroundInverted,
-      borderColor: theme.colorBrandBackground,
+      backgroundColor: theme.alias.color.neutral.compoundBrandBackground,
+      color: theme.alias.color.neutral.neutralForegroundInverted,
+      borderColor: theme.alias.color.neutral.brandBackground,
     },
 
     ':active': {
       '& .ms-checkbox-indicator': {
-        backgroundColor: theme.colorCompoundBrandBackgroundPressed,
+        backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundPressed,
       },
     },
 
     ':hover': {
       '& .ms-checkbox-indicator': {
-        backgroundColor: theme.colorCompoundBrandBackgroundHover,
+        backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundHover,
       },
     },
   }),
 
   mixed: theme => ({
-    color: theme.colorNeutralForeground1,
+    color: theme.alias.color.neutral.neutralForeground1,
 
     '& .ms-checkbox-indicator': {
-      borderColor: theme.colorCompoundBrandStroke,
-      color: theme.colorCompoundBrandForeground1,
+      borderColor: theme.alias.color.neutral.compoundBrandStroke,
+      color: theme.alias.color.neutral.compoundBrandForeground1,
     },
 
     ':active': {
       '& .ms-checkbox-indicator': {
-        borderColor: theme.colorCompoundBrandStrokePressed,
-        color: theme.colorCompoundBrandForeground1Pressed,
+        borderColor: theme.alias.color.neutral.compoundBrandStrokePressed,
+        color: theme.alias.color.neutral.compoundBrandForeground1Pressed,
       },
     },
 
     ':hover': {
       '& .ms-checkbox-indicator': {
-        borderColor: theme.colorCompoundBrandStrokeHover,
-        color: theme.colorCompoundBrandForeground1Hover,
+        borderColor: theme.alias.color.neutral.compoundBrandStrokeHover,
+        color: theme.alias.color.neutral.compoundBrandForeground1Hover,
       },
     },
   }),
 
-  focusIndictor: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        border: `2px solid ${theme.colorNeutralForeground1}`,
-        borderRadius: '4px',
-        margin: '-6px',
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' }, selector: 'focus-within' }),
 });
 
 const useContainerStyles = makeStyles({
@@ -187,12 +175,12 @@ const useIndicatorStyles = makeStyles({
     position: 'absolute',
     boxSizing: 'border-box',
     borderStyle: 'solid',
-    borderRadius: theme.borderRadiusSmall,
-    borderWidth: theme.strokeWidthThin,
+    borderRadius: theme.global.borderRadius.small,
+    borderWidth: theme.global.strokeWidth.thin,
   }),
 
   circular: theme => ({
-    borderRadius: theme.borderRadiusCircular,
+    borderRadius: theme.global.borderRadius.circular,
   }),
 });
 
@@ -208,7 +196,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
 
   state.root.className = mergeClasses(
     styles.root,
-    styles.focusIndictor,
+    styles.focusIndicator,
     styles[checkedState],
     state.input.disabled && styles.disabled,
     state.root.className,

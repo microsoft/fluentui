@@ -1,29 +1,30 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { MenuItemState } from './MenuItem.types';
 
 const useStyles = makeStyles({
-  focusIndicator: createFocusIndicatorStyleRule(),
+  focusIndicator: theme => createFocusOutlineStyle(theme),
   root: theme => ({
-    color: theme.colorNeutralForeground1,
-    backgroundColor: theme.colorNeutralBackground1,
+    borderRadius: theme.global.borderRadius.medium,
+    position: 'relative',
+    color: theme.alias.color.neutral.neutralForeground1,
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '32px',
     display: 'flex',
     alignItems: 'center',
-    fontSize: theme.fontSizeBase300,
+    fontSize: theme.global.type.fontSizes.base[300],
     cursor: 'pointer',
     gap: '4px',
 
     ':hover': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
-      color: theme.colorNeutralForeground2Hover,
+      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
+      color: theme.alias.color.neutral.neutralForeground2Hover,
     },
 
     ':focus': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
-      color: theme.colorNeutralForeground2Hover,
+      color: theme.alias.color.neutral.neutralForeground2Hover,
     },
 
     userSelect: 'none',
@@ -37,14 +38,12 @@ const useStyles = makeStyles({
   secondaryContent: theme => ({
     paddingLeft: '2px',
     paddingRight: '2px',
-    color: theme.colorNeutralForeground3,
+    color: theme.alias.color.neutral.neutralForeground3,
     ':hover': {
-      color: theme.colorNeutralForeground3Hover,
+      color: theme.alias.color.neutral.neutralForeground3Hover,
     },
-
     ':focus': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
-      color: theme.colorNeutralForeground3Hover,
+      color: theme.alias.color.neutral.neutralForeground3Hover,
     },
   }),
   icon: {
@@ -56,16 +55,13 @@ const useStyles = makeStyles({
     height: '20px',
   },
   disabled: theme => ({
-    backgroundColor: theme.colorNeutralBackgroundDisabled,
-    color: theme.colorNeutralForegroundDisabled,
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
     ':hover': {
-      backgroundColor: theme.colorNeutralBackgroundDisabled,
-      color: theme.colorNeutralForegroundDisabled,
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
 
     ':focus': {
-      backgroundColor: theme.colorNeutralBackgroundDisabled,
-      color: theme.colorNeutralForegroundDisabled,
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   }),
 });
