@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "type": "patch",
+      "comment": "High contrast style fixes for ColorPicker",
+      "packageName": "@fluentui/react",
+      "email": "sarah.higley@microsoft.com",
+      "dependentChangeType": "patch"
+    }
+  ]
+}
