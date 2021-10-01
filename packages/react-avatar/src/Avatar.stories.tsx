@@ -300,7 +300,7 @@ export const AvatarPlayground = () => {
       'image',
       [{ src: nameAndImage.image }, nextNameAndImage, prevNameAndImage],
       true,
-      getFilenameFromUrl as () => string,
+      getFilenameFromUrl,
     ),
     useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
@@ -364,7 +364,9 @@ const AvatarExampleList: React.FC<
 
 const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
   typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
-const getFilenameFromUrl = (url: string) => url.substring(url.lastIndexOf('/') + 1);
+
+const getFilenameFromUrl = (url: AvatarProps['image'] | undefined) =>
+  url?.src?.substring(url?.src.lastIndexOf('/') + 1) ?? '';
 
 type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () => void];
 
