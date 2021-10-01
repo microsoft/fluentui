@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Fri, 01 Oct 2021 12:30:46 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 14:13:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.43)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.41..@fluentui/react-aria_v9.0.0-alpha.43)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-alpha.5 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.76 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.55 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
 
 ## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.41)
 
