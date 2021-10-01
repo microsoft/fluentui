@@ -23,10 +23,6 @@ const useStyles = makeStyles({
       color: theme.colorNeutralForeground2Hover,
     },
 
-    ':focus': {
-      color: theme.colorNeutralForeground2Hover,
-    },
-
     userSelect: 'none',
   }),
   content: {

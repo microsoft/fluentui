@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "type": "prerelease",
+      "comment": "Remove focus `color` styling since it should use normal root `color`",
+      "packageName": "@fluentui/react-menu",
+      "email": "lingfangao@hotmail.com",
+      "dependentChangeType": "patch"
+    }
+  ]
+}
