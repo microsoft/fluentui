@@ -6,9 +6,9 @@ import { FluentProvider } from './index';
 
 const useStyles = makeStyles({
   box: theme => ({
-    border: `5px solid ${theme.alias.color.neutral.brandStroke1}`,
-    backgroundColor: theme.alias.color.neutral.brandBackground2,
-    color: theme.alias.color.neutral.brandForeground2,
+    border: `5px solid ${theme.colorBrandStroke1}`,
+    backgroundColor: theme.colorBrandBackground2,
+    color: theme.colorBrandForeground2,
 
     padding: '5px',
   }),
@@ -74,14 +74,8 @@ export const ThemesMerge = () => (
     <FluentProvider theme={teamsLightTheme}>
       <FluentProvider
         theme={{
-          alias: {
-            color: {
-              neutral: {
-                brandStroke1: 'salmon',
-                brandBackground2: 'white',
-              },
-            },
-          },
+          colorBrandStroke1: 'salmon',
+          colorBrandBackground2: 'white',
         }}
       >
         <Box>Hello World!</Box>

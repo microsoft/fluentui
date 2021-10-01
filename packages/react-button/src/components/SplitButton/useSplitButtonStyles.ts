@@ -32,72 +32,72 @@ const useStyles = makeStyles({
   rootPrimary: theme => ({
     // Use classnames to increase specificy of styles and avoid collisions.
     [`& .${SplitButtonClassNames.button}`]: {
-      borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
+      borderRightColor: theme.colorNeutralForegroundInverted,
     },
 
     ':hover': {
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
+        borderRightColor: theme.colorNeutralForegroundInverted,
       },
     },
 
     ':active': {
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
+        borderRightColor: theme.colorNeutralForegroundInverted,
       },
     },
   }),
   rootSubtle: theme => ({
     // Use classnames to increase specificy of styles and avoid collisions.
     [`& .${SplitButtonClassNames.button}`]: {
-      borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+      borderRightColor: theme.colorNeutralStroke1Hover,
     },
 
     ':hover': {
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+        borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
 
     ':active': {
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+        borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
   }),
   rootTransparent: theme => ({
     // Use classnames to increase specificy of styles and avoid collisions.
     [`& .${SplitButtonClassNames.button}`]: {
-      borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+      borderRightColor: theme.colorNeutralStroke1Hover,
     },
 
     ':hover': {
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+        borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
 
     ':active': {
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+        borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
   }),
   rootDisabled: theme => ({
     // Use classnames to increase specificy of styles and avoid collisions.
     [`& .${SplitButtonClassNames.button}`]: {
-      borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
+      borderRightColor: theme.colorNeutralStrokeDisabled,
     },
 
     ':hover': {
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
+        borderRightColor: theme.colorNeutralStrokeDisabled,
       },
     },
 
     ':active': {
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
+        borderRightColor: theme.colorNeutralStrokeDisabled,
       },
     },
   }),
