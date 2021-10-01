@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update BASE_URL to remove depreacted CDN",
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "bekaise@microsoft.com",
+  "dependentChangeType": "patch"
+}
