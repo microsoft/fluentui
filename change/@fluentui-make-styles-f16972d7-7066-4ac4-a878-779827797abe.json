@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Bump v9 prerelease versions to rerelease",
+  "packageName": "@fluentui/make-styles",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
