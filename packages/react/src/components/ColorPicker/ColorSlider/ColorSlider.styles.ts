@@ -1,4 +1,5 @@
 import { IsFocusVisibleClassName } from '../../../Utilities';
+import { HighContrastSelector } from '../../../Styling';
 import type { IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const hueStyle = {
@@ -39,10 +40,14 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
         borderRadius: effects.roundedCorner2,
         boxSizing: 'border-box',
         outline: 'none',
+        forcedColorAdjust: 'none',
 
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `1px solid ${palette.neutralSecondary}`,
+            [`${HighContrastSelector}`]: {
+              outline: '2px solid CanvasText',
+            },
           },
         },
       },
@@ -73,6 +78,7 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
         boxShadow: effects.elevation8,
         transform: 'translate(-50%, -50%)',
         top: '50%',
+        forcedColorAdjust: 'auto',
       },
     ],
   };
