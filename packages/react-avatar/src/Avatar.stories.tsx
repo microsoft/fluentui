@@ -365,8 +365,8 @@ const AvatarExampleList: React.FC<
 const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
   typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
 
-const getFilenameFromUrl = (url: AvatarProps['image'] | undefined) =>
-  url?.src?.substring(url?.src.lastIndexOf('/') + 1) ?? '';
+const getFilenameFromUrl = (image: AvatarProps['image']) =>
+  image?.src?.substring(image?.src.lastIndexOf('/') + 1) ?? '';
 
 type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () => void];
 
