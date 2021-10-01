@@ -1,0 +1,172 @@
+{
+  "changes": [
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/jest-serializer-make-styles",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-checkbox",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-divider",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-link",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-make-styles",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-portal",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-slider",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-switch",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme in fixtures",
+      "packageName": "@fluentui/babel-make-styles",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/make-styles-webpack-loader",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-accordion",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-avatar",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-badge",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-button",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-card",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-image",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-label",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-menu",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-popover",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-provider",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-tabster",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-text",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Flatten theme, simplify theme merging, remove global color tokens",
+      "packageName": "@fluentui/react-theme",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    },
+    {
+      "type": "prerelease",
+      "comment": "Apply tokens from refactored theme",
+      "packageName": "@fluentui/react-tooltip",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "patch"
+    }
+  ]
+}

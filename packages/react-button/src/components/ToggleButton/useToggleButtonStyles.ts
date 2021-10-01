@@ -5,86 +5,86 @@ import type { ToggleButtonState } from './ToggleButton.types';
 const useCheckedStyles = makeStyles({
   // Base styles
   base: theme => ({
-    background: theme.alias.color.neutral.neutralBackground1Selected,
-    borderColor: theme.alias.color.neutral.neutralStroke1,
-    color: theme.alias.color.neutral.neutralForeground1,
+    background: theme.colorNeutralBackground1Selected,
+    borderColor: theme.colorNeutralStroke1,
+    color: theme.colorNeutralForeground1,
 
-    borderWidth: theme.global.strokeWidth.thin,
+    borderWidth: theme.strokeWidthThin,
 
     ':hover': {
-      background: theme.alias.color.neutral.neutralBackground1Hover,
-      borderColor: theme.alias.color.neutral.neutralStroke1Hover,
-      color: theme.alias.color.neutral.neutralForeground1,
+      background: theme.colorNeutralBackground1Hover,
+      borderColor: theme.colorNeutralStroke1Hover,
+      color: theme.colorNeutralForeground1,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.neutralBackground1Pressed,
-      borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
-      color: theme.alias.color.neutral.neutralForeground1,
+      background: theme.colorNeutralBackground1Pressed,
+      borderColor: theme.colorNeutralStroke1Pressed,
+      color: theme.colorNeutralForeground1,
     },
   }),
 
   // Appearance variations
   outline: theme => ({
-    background: theme.alias.color.neutral.transparentBackgroundSelected,
+    background: theme.colorTransparentBackgroundSelected,
 
     ':hover': {
-      background: theme.alias.color.neutral.transparentBackgroundHover,
+      background: theme.colorTransparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.transparentBackgroundPressed,
+      background: theme.colorTransparentBackgroundPressed,
     },
   }),
   primary: theme => ({
-    background: theme.alias.color.neutral.brandBackgroundSelected,
+    background: theme.colorBrandBackgroundSelected,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundOnBrand,
 
     ':hover': {
-      background: theme.alias.color.neutral.brandBackgroundHover,
+      background: theme.colorBrandBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: theme.colorNeutralForegroundOnBrand,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.brandBackgroundPressed,
+      background: theme.colorBrandBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: theme.colorNeutralForegroundOnBrand,
     },
   }),
   subtle: theme => ({
-    background: theme.alias.color.neutral.subtleBackgroundSelected,
+    background: theme.colorSubtleBackgroundSelected,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForeground2BrandSelected,
+    color: theme.colorNeutralForeground2BrandSelected,
 
     ':hover': {
-      background: theme.alias.color.neutral.subtleBackgroundHover,
+      background: theme.colorSubtleBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandHover,
+      color: theme.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.subtleBackgroundPressed,
+      background: theme.colorSubtleBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+      color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
   transparent: theme => ({
-    background: theme.alias.color.neutral.transparentBackgroundSelected,
+    background: theme.colorTransparentBackgroundSelected,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForeground2BrandSelected,
+    color: theme.colorNeutralForeground2BrandSelected,
 
     ':hover': {
-      background: theme.alias.color.neutral.transparentBackgroundHover,
+      background: theme.colorTransparentBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandHover,
+      color: theme.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.transparentBackgroundPressed,
+      background: theme.colorTransparentBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+      color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
 });
@@ -92,20 +92,20 @@ const useCheckedStyles = makeStyles({
 const useDisabledStyles = makeStyles({
   // Base styles
   base: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
-    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    background: theme.colorNeutralBackgroundDisabled,
+    borderColor: theme.colorNeutralStrokeDisabled,
+    color: theme.colorNeutralForegroundDisabled,
 
     ':hover': {
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      background: theme.colorNeutralBackgroundDisabled,
+      borderColor: theme.colorNeutralStrokeDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      background: theme.colorNeutralBackgroundDisabled,
+      borderColor: theme.colorNeutralStrokeDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
   }),
 

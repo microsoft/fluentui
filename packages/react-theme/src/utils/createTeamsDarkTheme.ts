@@ -1,20 +1,22 @@
-import { createShadowLevelTokens } from './shadows';
-import { generateSharedColorTokens, generateNeutralColorTokens } from '../alias/teamsDark';
-import { createGlobalTheme } from '../global/utils';
-import { sharedColors as globalSharedColors } from '../global/colors';
+import { colorPaletteTokens, generateColorTokens } from '../alias/teamsDark';
+import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
+import { createShadowTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
 
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
-  const global = createGlobalTheme(brand, globalSharedColors);
-  const neutral = generateNeutralColorTokens(global);
+  const colorTokens = generateColorTokens(brand);
+
   return {
-    global,
-    alias: {
-      color: {
-        ...generateSharedColorTokens(globalSharedColors),
-        neutral,
-      } as Theme['alias']['color'],
-      shadow: createShadowLevelTokens(neutral.neutralShadowAmbient, neutral.neutralShadowKey),
-    },
+    ...borderRadius,
+    ...fontSizes,
+    ...lineHeights,
+    ...fontFamilies,
+    ...fontWeights,
+    ...strokeWidths,
+
+    ...colorTokens,
+    ...colorPaletteTokens,
+
+    ...createShadowTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
   };
 };

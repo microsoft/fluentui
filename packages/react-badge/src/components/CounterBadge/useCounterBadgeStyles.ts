@@ -7,22 +7,22 @@ const useStyles = makeStyles({
     minWidth: 'auto',
   },
   warning: theme => ({
-    backgroundColor: theme.global.palette.cranberry.primary,
-    borderColor: theme.global.palette.cranberry.primary,
+    backgroundColor: '#c50f1f', // FIXME theme.global.palette.cranberry.primary,
+    borderColor: '#c50f1f', // FIXME theme.global.palette.cranberry.primary,
   }),
   important: theme => ({
-    backgroundColor: theme.global.palette.grey[14],
-    borderColor: theme.global.palette.grey[14],
+    backgroundColor: '#242424', // FIXME theme.global.palette.grey[14],
+    borderColor: '#242424', // FIXME theme.global.palette.grey[14],
   }),
   severe: theme => ({
     // TODO: update these colors once the color used in the design spec has existing color token
-    backgroundColor: theme.global.palette.red.primary,
-    borderColor: theme.global.palette.red.primary,
+    backgroundColor: '#d13438', // FIXME theme.global.palette.red.primary,
+    borderColor: '#d13438', // FIXME theme.global.palette.red.primary,
   }),
   informative: theme => ({
-    backgroundColor: theme.global.palette.grey[92],
-    borderColor: theme.global.palette.grey[92],
-    color: theme.alias.color.neutral.neutralForeground3,
+    backgroundColor: '#ebebeb', // FIXME theme.global.palette.grey[92],
+    borderColor: '#ebebeb', // FIXME theme.global.palette.grey[92],
+    color: theme.colorNeutralForeground3,
   }),
   dot: {
     width: '6px',

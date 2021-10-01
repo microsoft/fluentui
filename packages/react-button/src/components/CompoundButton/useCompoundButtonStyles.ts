@@ -14,18 +14,18 @@ const useRootStyles = makeStyles({
     height: 'auto',
 
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2Hover,
+        color: theme.colorNeutralForeground2Hover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2Pressed,
+        color: theme.colorNeutralForeground2Pressed,
       },
     },
   }),
@@ -36,52 +36,52 @@ const useRootStyles = makeStyles({
   },
   primary: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: theme.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundOnBrand,
+        color: theme.colorNeutralForegroundOnBrand,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundOnBrand,
+        color: theme.colorNeutralForegroundOnBrand,
       },
     },
   }),
   subtle: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandHover,
+        color: theme.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+        color: theme.colorNeutralForeground2BrandPressed,
       },
     },
   }),
   transparent: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandHover,
+        color: theme.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+        color: theme.colorNeutralForeground2BrandPressed,
       },
     },
   }),
@@ -90,37 +90,37 @@ const useRootStyles = makeStyles({
   small: theme => ({
     padding: buttonSpacing.medium,
 
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
   }),
   medium: theme => ({
     padding: buttonSpacing.large,
 
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
   }),
   large: theme => ({
     padding: buttonSpacing.larger,
 
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
+    fontSize: theme.fontSizeBase400,
+    lineHeight: theme.lineHeightBase400,
   }),
 
   // Disabled styles
   disabled: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
+        color: theme.colorNeutralForegroundDisabled,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
+        color: theme.colorNeutralForegroundDisabled,
       },
     },
   }),
@@ -171,18 +171,18 @@ const useSecondaryContentStyles = makeStyles({
   base: theme => ({
     lineHeight: '100%',
     marginTop: '4px',
-    fontWeight: theme.global.type.fontWeights.regular,
+    fontWeight: theme.fontWeightRegular,
   }),
 
   // Size variations
   small: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
+    fontSize: theme.fontSizeBase200,
   }),
   medium: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
+    fontSize: theme.fontSizeBase200,
   }),
   large: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
+    fontSize: theme.fontSizeBase300,
   }),
 });
 

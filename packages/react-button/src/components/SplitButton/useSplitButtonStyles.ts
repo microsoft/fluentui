@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { SplitButtonState } from './SplitButton.types';
 
 const SplitButtonClassNames = {
@@ -8,12 +8,12 @@ const SplitButtonClassNames = {
 };
 
 const useFocusStyles = makeStyles({
-  primaryActionButton: createFocusIndicatorStyleRule({
+  primaryActionButton: createCustomFocusIndicatorStyle({
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
   }),
 
-  menuButton: createFocusIndicatorStyleRule({
+  menuButton: createCustomFocusIndicatorStyle({
     borderLeftWidth: 0,
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
@@ -54,54 +54,54 @@ const useRootStyles = makeStyles({
   primary: theme => ({
     // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
+      borderRightColor: theme.colorNeutralForegroundInverted,
     },
 
     ':hover': {
       [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
+        borderRightColor: theme.colorNeutralForegroundInverted,
       },
     },
 
     ':active': {
       [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
+        borderRightColor: theme.colorNeutralForegroundInverted,
       },
     },
   }),
   subtle: theme => ({
     // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+      borderRightColor: theme.colorNeutralStroke1Hover,
     },
 
     ':hover': {
       [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+        borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
 
     ':active': {
       [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+        borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
   }),
   transparent: theme => ({
     // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+      borderRightColor: theme.colorNeutralStroke1Hover,
     },
 
     ':hover': {
       [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+        borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
 
     ':active': {
       [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+        borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
   }),
@@ -115,18 +115,18 @@ const useRootStyles = makeStyles({
   disabled: theme => ({
     // Use classnames to increase specificy of rootStyles and avoid collisions.
     [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
+      borderRightColor: theme.colorNeutralStrokeDisabled,
     },
 
     ':hover': {
       [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
+        borderRightColor: theme.colorNeutralStrokeDisabled,
       },
     },
 
     ':active': {
       [`& .${SplitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
+        borderRightColor: theme.colorNeutralStrokeDisabled,
       },
     },
   }),
