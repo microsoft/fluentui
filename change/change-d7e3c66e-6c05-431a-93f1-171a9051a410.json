@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "type": "none",
+      "comment": "docs(react-theme): fix shadows story",
+      "packageName": "@fluentui/react-theme",
+      "email": "miroslav.stastny@microsoft.com",
+      "dependentChangeType": "none"
+    }
+  ]
+}
