@@ -13,12 +13,12 @@ export type ARIAButtonShorthandProps = IntrinsicShorthandProps<'button', 'a'> & 
  * where no attribute addition is required.
  */
 export function useARIAButton<Required extends boolean = false>(
-  shorthandProps: ShorthandProps<ARIAButtonShorthandProps>,
+  shorthand: ShorthandProps<ARIAButtonShorthandProps>,
   options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>,
 ): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps {
-  const shorthand = resolveShorthand(shorthandProps, options);
+  const shorthandProps = resolveShorthand(shorthand, options);
 
-  const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = (shorthand ||
+  const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = (shorthandProps ||
     {}) as ARIAButtonShorthandProps;
 
   const onClickHandler: ARIAButtonShorthandProps['onClick'] = useEventCallback(ev => {
@@ -78,28 +78,28 @@ export function useARIAButton<Required extends boolean = false>(
     }
   });
 
-  if (shorthand) {
+  if (shorthandProps) {
     // If a <button> tag is to be rendered we just need to set disabled and aria-disabled correctly
-    if (shorthand.as === 'button' || shorthand.as === undefined) {
-      shorthand.disabled = disabled && !disabledFocusable;
-      shorthand['aria-disabled'] = disabledFocusable;
+    if (shorthandProps.as === 'button' || shorthandProps.as === undefined) {
+      shorthandProps.disabled = disabled && !disabledFocusable;
+      shorthandProps['aria-disabled'] = disabledFocusable;
     }
 
     // If an <a> tag is to be rendered we have to remove disabled and set aria-disabled, role and tabIndex as well as
     // some event handlers.
     else {
-      delete shorthand.disabled;
-      shorthand['aria-disabled'] = disabled || disabledFocusable;
-      shorthand.onClick = onClickHandler;
-      shorthand.onKeyDown = onKeyDownHandler;
-      shorthand.onKeyUp = onKeyupHandler;
-      shorthand.role = shorthand.role ?? 'button';
-      shorthand.tabIndex = disabled && !disabledFocusable ? undefined : tabIndex ?? 0;
+      delete shorthandProps.disabled;
+      shorthandProps['aria-disabled'] = disabled || disabledFocusable;
+      shorthandProps.onClick = onClickHandler;
+      shorthandProps.onKeyDown = onKeyDownHandler;
+      shorthandProps.onKeyUp = onKeyupHandler;
+      shorthandProps.role = shorthandProps.role ?? 'button';
+      shorthandProps.tabIndex = disabled && !disabledFocusable ? undefined : tabIndex ?? 0;
     }
 
     // Remove non-DOM disabledFocusable prop
-    delete shorthand.disabledFocusable;
+    delete shorthandProps.disabledFocusable;
   }
 
-  return shorthand;
+  return shorthandProps;
 }
