@@ -3,6 +3,7 @@
 exports[`MenuList renders a default state 1`] = `
 <div
   aria-labelledby=""
+  className=""
   data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1}}"
   role="menu"
 >

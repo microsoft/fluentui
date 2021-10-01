@@ -10,7 +10,7 @@ import { Button } from '@fluentui/react-button';
 import { ClipboardPaste20Regular as PasteIcon } from '@fluentui/react-icons';
 
 export const AligningWithIcons = () => (
-  <Menu hasIcons hasCheckmarks>
+  <Menu hasIcons>
     <MenuTrigger>
       <Button>Toggle menu</Button>
     </MenuTrigger>
