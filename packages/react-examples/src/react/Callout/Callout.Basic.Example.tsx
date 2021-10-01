@@ -22,7 +22,6 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
           className={styles.callout}
           ariaLabelledBy={labelId}
           ariaDescribedBy={descriptionId}
-          role="alertdialog"
           gapSpace={0}
           target={`#${buttonId}`}
           onDismiss={toggleIsCalloutVisible}
