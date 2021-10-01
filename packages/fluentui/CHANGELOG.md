@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixes
 - `Popup` should not dismiss when its iframe content is focused @ling1726 ([#19955](https://github.com/microsoft/fluentui/pull/19955))
 - `whatInput` Add typings to what input event listeners @ling1726 ([#20024](https://github.com/microsoft/fluentui/pull/20024))
+- Update fontFace type have optional path defined @notandrew ([#20055](https://github.com/microsoft/fluentui/pull/20055))
 
 
 <!--------------------------------[ v0.59.0 ]------------------------------- -->
