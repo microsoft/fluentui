@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(Popover): documentation typos",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}

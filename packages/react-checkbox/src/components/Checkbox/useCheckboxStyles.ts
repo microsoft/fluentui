@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
 /**
@@ -116,20 +116,8 @@ const useStyles = makeStyles({
     },
   }),
 
-  focusIndictor: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: '4px',
-        margin: '-6px',
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' }, selector: 'focus-within' }),
 });
 
 const useContainerStyles = makeStyles({
@@ -208,7 +196,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
 
   state.root.className = mergeClasses(
     styles.root,
-    styles.focusIndictor,
+    styles.focusIndicator,
     styles[checkedState],
     state.input.disabled && styles.disabled,
     state.root.className,

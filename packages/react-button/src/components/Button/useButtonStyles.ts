@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
@@ -260,9 +260,19 @@ const useRootDisabledStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  // Base styles
-  base: createFocusIndicatorStyleRule(theme => ({
+  // TODO: `overflow: 'hidden'` on the root does not pay well with `position: absolute`
+  // used by the outline pseudo-element. Need to introduce a text container for children and set
+  // overflow there so that default focus outline can work
+  //
+  // base: theme => createFocusOutlineStyle(theme),
+  // circular: theme =>
+  //  createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.circular } }),
+  // primary: theme => createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' } }),
+  // square: theme => createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.none } }),
+
+  base: createCustomFocusIndicatorStyle(theme => ({
     borderColor: 'transparent',
+    outline: '2px solid transparent',
     boxShadow: `
       ${theme.alias.shadow.shadow4},
       0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}
@@ -271,30 +281,22 @@ const useRootFocusStyles = makeStyles({
   })),
 
   // Primary styles
-  primary: createFocusIndicatorStyleRule(theme => ({
+  primary: createCustomFocusIndicatorStyle(theme => ({
     borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
     boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}`,
   })),
-
-  // Shape variations
-  circular: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.global.borderRadius.circular,
-  })),
-  rounded: {
-    /* The borderRadius rounded styles are handled in the size variations */
-  },
-  square: createFocusIndicatorStyleRule(theme => ({
+  square: createCustomFocusIndicatorStyle(theme => ({
     borderRadius: theme.global.borderRadius.none,
   })),
 
   // Size variations
-  small: createFocusIndicatorStyleRule(theme => ({
+  small: createCustomFocusIndicatorStyle(theme => ({
     borderRadius: theme.global.borderRadius.small,
   })),
-  medium: createFocusIndicatorStyleRule(theme => ({
+  medium: createCustomFocusIndicatorStyle(theme => ({
     borderRadius: theme.global.borderRadius.medium,
   })),
-  large: createFocusIndicatorStyleRule(theme => ({
+  large: createCustomFocusIndicatorStyle(theme => ({
     borderRadius: theme.global.borderRadius.large,
   })),
 });

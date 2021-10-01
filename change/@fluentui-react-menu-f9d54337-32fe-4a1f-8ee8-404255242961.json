@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "export to codesandbox",
+  "comment": "feat(Menu): Update styles from design spec",
   "packageName": "@fluentui/react-menu",
-  "email": "peter@draxler.ml",
+  "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
 }
