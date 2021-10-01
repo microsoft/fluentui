@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(react-tabster): Update default focus ring styles",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

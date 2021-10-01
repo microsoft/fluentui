@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SwitchState } from './Switch.types';
 
 const rootClassName = 'ms-Switch-root';
@@ -64,22 +64,8 @@ const useRootStyles = makeStyles({
     pointerEvents: 'none',
   },
 
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        top: '-8px',
-        right: '-8px',
-        bottom: '-8px',
-        left: '-8px',
-        boxSizing: 'border-box',
-        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: theme.global.borderRadius.medium,
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '8px' } }),
 });
 
 /**
