@@ -446,6 +446,9 @@ export const useMenuListContext: <T>(selector: ContextSelector<MenuListContextVa
 export function useMenuListContextValues(state: MenuListState): MenuListContextValues;
 
 // @public
+export const useMenuListStyles: (state: MenuListState) => MenuListState;
+
+// @public
 export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
 
 // @public
