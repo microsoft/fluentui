@@ -30,7 +30,7 @@ export type AccordionContextValue = AccordionCommons & {
   openItems: AccordionItemValue[];
   /**
    * Callback used by AccordionItem to request a change on it's own opened state
-   * Should be used to toggle AccordionItem and used initially to ensure one item is opened
+   * Should be used to toggle AccordionItem
    */
   requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 };
