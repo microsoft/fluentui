@@ -70,7 +70,7 @@ const useRootStyles = makeStyles({
   },
   filled: theme => ({
     // optional shadow for filled appearances
-    boxShadow: theme.shadowLevelShadow2,
+    boxShadow: theme.shadow2,
     borderRadius: borderRadius(theme), // needed for shadow
   }),
   disabled: {

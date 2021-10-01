@@ -248,7 +248,7 @@ const useRootFocusStyles = makeStyles({
   base: createFocusIndicatorStyleRule(theme => ({
     borderColor: 'transparent',
     boxShadow: `
-      ${theme.shadowLevelShadow4},
+      ${theme.shadow4},
       0 0 0 2px ${theme.colorStrokeFocus2}
     `,
     zIndex: 1,
@@ -258,7 +258,7 @@ const useRootFocusStyles = makeStyles({
   })),
   primary: createFocusIndicatorStyleRule(theme => ({
     borderColor: theme.colorNeutralForegroundOnBrand,
-    boxShadow: `${theme.shadowLevelShadow2}, 0 0 0 2px ${theme.colorStrokeFocus2}`,
+    boxShadow: `${theme.shadow2}, 0 0 0 2px ${theme.colorStrokeFocus2}`,
   })),
   square: createFocusIndicatorStyleRule(theme => ({
     borderRadius: theme.borderRadiusNone,

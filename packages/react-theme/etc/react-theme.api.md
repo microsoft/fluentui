@@ -195,13 +195,13 @@ export function mergeThemes(a: Theme | undefined, b: PartialTheme | Theme | unde
 export type PartialTheme = Partial<Theme>;
 
 // @public
-export type ShadowLevelTokens = {
-    shadowLevelShadow2: string;
-    shadowLevelShadow4: string;
-    shadowLevelShadow8: string;
-    shadowLevelShadow16: string;
-    shadowLevelShadow28: string;
-    shadowLevelShadow64: string;
+export type ShadowTokens = {
+    shadow2: string;
+    shadow4: string;
+    shadow8: string;
+    shadow16: string;
+    shadow28: string;
+    shadow64: string;
 };
 
 // @public (undocumented)
@@ -222,7 +222,7 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowLevelTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 
 // @public (undocumented)
 export function themeToCSSVariables(theme: Theme): Record<string, string | number>;

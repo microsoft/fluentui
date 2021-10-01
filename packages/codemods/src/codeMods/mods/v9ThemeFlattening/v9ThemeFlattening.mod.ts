@@ -30,9 +30,9 @@ const replacements: [RegExp, (token: string) => string][] = [
     /theme\.alias\.shadow\..+/,
     token => {
       const parts = token.split('.');
-      const name = parts[parts.length - 1];
+      const name = parts[parts.length - 1].replace(/^shadow/, '');
 
-      return 'shadowLevel' + capitalizeToken(name);
+      return 'shadow' + capitalizeToken(name);
     },
   ],
   [

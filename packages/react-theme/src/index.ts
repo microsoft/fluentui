@@ -8,7 +8,7 @@ export type {
   LineHeightTokens,
   BorderRadiusTokens,
   StrokeWidthTokens,
-  ShadowLevelTokens,
+  ShadowTokens,
   FontFamilyTokens,
   ColorPaletteTokens,
   ColorTokens,

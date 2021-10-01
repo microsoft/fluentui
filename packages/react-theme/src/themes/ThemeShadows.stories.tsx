@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
-import type { ShadowLevelTokens } from '../index';
+import type { ShadowTokens } from '../index';
 
 export default {
   title: 'Theme/Shadows',
@@ -41,7 +41,7 @@ const ShadowBox: React.FunctionComponent<
 export const Shadows = () => {
   const shadowTokens = Object.keys(theme.light).filter(tokenName =>
     tokenName.startsWith('shadowLevel'),
-  ) as (keyof ShadowLevelTokens)[];
+  ) as (keyof ShadowTokens)[];
 
   return (
     <div

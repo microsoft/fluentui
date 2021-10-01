@@ -16,7 +16,7 @@ export const useMenuListContainerStyles = makeStyles({
     minHeight: '48px',
     maxWidth: '300px',
     width: 'max-content',
-    boxShadow: `${theme.shadowLevelShadow16}`,
+    boxShadow: `${theme.shadow16}`,
     paddingTop: '4px',
     paddingBottom: '4px',
   }),

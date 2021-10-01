@@ -330,13 +330,13 @@ export type StrokeWidthTokens = {
 /**
  * Design tokens for shadow levels
  */
-export type ShadowLevelTokens = {
-  shadowLevelShadow2: string;
-  shadowLevelShadow4: string;
-  shadowLevelShadow8: string;
-  shadowLevelShadow16: string;
-  shadowLevelShadow28: string;
-  shadowLevelShadow64: string;
+export type ShadowTokens = {
+  shadow2: string;
+  shadow4: string;
+  shadow8: string;
+  shadow16: string;
+  shadow28: string;
+  shadow64: string;
 };
 
 export type GhostColorTokens = {
@@ -430,7 +430,7 @@ export type Theme = FontSizeTokens &
   LineHeightTokens &
   BorderRadiusTokens &
   StrokeWidthTokens &
-  ShadowLevelTokens &
+  ShadowTokens &
   FontFamilyTokens &
   FontWeightTokens &
   ColorPaletteTokens &

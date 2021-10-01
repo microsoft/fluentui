@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     borderRadius: theme.borderRadiusMedium,
   }),
   rootShadow: theme => ({
-    boxShadow: theme.shadowLevelShadow4,
+    boxShadow: theme.shadow4,
   }),
   rootFitNone: {
     objectFit: 'none',

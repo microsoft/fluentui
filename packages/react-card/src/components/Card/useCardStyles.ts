@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     overflow: 'hidden',
 
-    boxShadow: theme.shadowLevelShadow4,
+    boxShadow: theme.shadow4,
     color: theme.colorNeutralForeground1,
     backgroundColor: theme.colorNeutralBackground1,
 

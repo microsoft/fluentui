@@ -122,16 +122,16 @@ const useStyles = makeStyles({
     },
   }),
 
-  shadow4: theme => ({ ':before': { boxShadow: theme.shadowLevelShadow4 } }),
-  shadow8: theme => ({ ':before': { boxShadow: theme.shadowLevelShadow8 } }),
-  shadow16: theme => ({ ':before': { boxShadow: theme.shadowLevelShadow16 } }),
-  shadow28: theme => ({ ':before': { boxShadow: theme.shadowLevelShadow28 } }),
+  shadow4: theme => ({ ':before': { boxShadow: theme.shadow4 } }),
+  shadow8: theme => ({ ':before': { boxShadow: theme.shadow8 } }),
+  shadow16: theme => ({ ':before': { boxShadow: theme.shadow16 } }),
+  shadow28: theme => ({ ':before': { boxShadow: theme.shadow28 } }),
 
   // TODO: use proper tokens instead of "rgba(0,120,212,0.3)"
-  glow4: theme => ({ ':before': { boxShadow: `${theme.shadowLevelShadow4}, 0 0 4px 2px rgba(0,120,212,0.3)` } }),
-  glow8: theme => ({ ':before': { boxShadow: `${theme.shadowLevelShadow8}, 0 0 8px 2px rgba(0,120,212,0.3)` } }),
-  glow16: theme => ({ ':before': { boxShadow: `${theme.shadowLevelShadow16}, 0 0 8px 2px rgba(0,120,212,0.3)` } }),
-  glow28: theme => ({ ':before': { boxShadow: `${theme.shadowLevelShadow28}, 0 0 28px 4px rgba(0,120,212,0.3)` } }),
+  glow4: theme => ({ ':before': { boxShadow: `${theme.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)` } }),
+  glow8: theme => ({ ':before': { boxShadow: `${theme.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)` } }),
+  glow16: theme => ({ ':before': { boxShadow: `${theme.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)` } }),
+  glow28: theme => ({ ':before': { boxShadow: `${theme.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)` } }),
 
   inactive: {
     opacity: '0.8',

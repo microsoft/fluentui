@@ -14,7 +14,7 @@ export const arrowHeights: Record<PopoverSize, number> = {
 const useStyles = makeStyles({
   root: theme => ({
     backgroundColor: theme.colorNeutralBackground1,
-    boxShadow: theme.shadowLevelShadow16,
+    boxShadow: theme.shadow16,
     borderRadius: '4px',
     border: `1px solid ${theme.colorTransparentStroke}`,
   }),

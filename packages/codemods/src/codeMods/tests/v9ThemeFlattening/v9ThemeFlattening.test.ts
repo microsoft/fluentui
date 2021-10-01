@@ -26,7 +26,7 @@ describe('v9: Theme flattening', () => {
           color: theme.colorPaletteMarigoldForeground2,
         }),
         shadow: theme => ({
-          boxShadow: theme.shadowLevelShadow8,
+          boxShadow: theme.shadow8,
         }),
         border: theme => ({
           borderRadius: theme.borderRadiusCircular,

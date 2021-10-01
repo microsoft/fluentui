@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     minWidth: '128px',
     maxWidth: '300px',
     width: 'max-content',
-    boxShadow: `${theme.shadowLevelShadow16}`,
+    boxShadow: `${theme.shadow16}`,
     paddingTop: '4px',
     paddingBottom: '4px',
     border: `1px solid ${theme.colorTransparentStroke}`,
