@@ -11,6 +11,11 @@ import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export const accordionShorthandProps: Array<keyof AccordionSlots> = ['root'];
 
+/**
+ * Returns the props and state required to render the component
+ * @param props - Accordion properties
+ * @param ref - reference to root HTMLElement of Accordion
+ */
 export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
   const {
     openItems: controlledOpenItems,
@@ -26,14 +31,14 @@ export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>)
     initialState: [],
   });
 
-  const requestToggle = useEventCallback((ev: AccordionToggleEvent, data: AccordionToggleData) => {
-    onToggle?.(ev, data);
-    setOpenItems(previousOpenItems =>
-      updateOpenItems(data.value, previousOpenItems, {
+  const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {
+    onToggle?.(event, data);
+    setOpenItems(previousOpenItems => {
+      return updateOpenItems(data.value, previousOpenItems, {
         collapsible,
         multiple,
-      }),
-    );
+      });
+    });
   });
 
   return {
@@ -63,7 +68,7 @@ function initializeUncontrolledOpenItems({
     }
     return [defaultOpenItems];
   }
-  return collapsible ? [] : [0];
+  return collapsible ? [] : [];
 }
 
 /**
