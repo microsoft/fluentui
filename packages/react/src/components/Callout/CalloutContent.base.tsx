@@ -9,12 +9,13 @@ import {
   on,
   shallowCompare,
   getPropsWithDefaults,
+  Async,
 } from '../../Utilities';
 import { positionCallout, RectangleEdge, positionCard, getBoundsFromTargetWindow } from '../../Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
+import { useMergedRefs, useAsync, useConst, useTarget, useOnEvent } from '@fluentui/react-hooks';
 import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
@@ -68,10 +69,11 @@ function useBounds(
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   targetWindow: Window | undefined,
 ) {
+  const [targetWindowResized, setTargetWindowResized] = React.useState(false);
   const cachedBounds = React.useRef<IRectangle | undefined>();
 
   const getBounds = React.useCallback((): IRectangle | undefined => {
-    if (!cachedBounds.current) {
+    if (!cachedBounds.current || targetWindowResized) {
       let currentBounds =
         typeof bounds === 'function' ? (targetWindow ? bounds(target, targetWindow) : undefined) : bounds;
 
@@ -87,10 +89,24 @@ function useBounds(
         };
       }
       cachedBounds.current = currentBounds;
+      targetWindowResized && setTargetWindowResized(false);
     }
 
     return cachedBounds.current;
-  }, [bounds, minPagePadding, target, targetRef, targetWindow]);
+  }, [bounds, minPagePadding, target, targetRef, targetWindow, targetWindowResized]);
+
+  const async: Async = useAsync();
+  useOnEvent(
+    targetWindow,
+    'resize',
+    async.debounce(
+      () => {
+        setTargetWindowResized(true);
+      },
+      500,
+      { leading: true },
+    ),
+  );
 
   return getBounds;
 }
@@ -152,6 +168,10 @@ function usePositions(
         async.cancelAnimationFrame(timerId);
         previousTarget.current = undefined;
       };
+    } else {
+      // When the callout is hidden, clear position state so that it is not accidentally used next render.
+      setPositions(undefined);
+      positionAttempts.current = 0;
     }
   }, [
     hidden,

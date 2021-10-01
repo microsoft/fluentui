@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated callout bounds to watch for window resize",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
