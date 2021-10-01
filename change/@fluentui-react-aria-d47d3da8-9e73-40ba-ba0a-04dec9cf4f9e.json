@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removes disabled attribute when not required",
-  "packageName": "@fluentui/react-aria",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

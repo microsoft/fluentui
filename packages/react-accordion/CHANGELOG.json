@@ -2,6 +2,27 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Fri, 01 Oct 2021 12:30:46 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.86",
+      "version": "9.0.0-alpha.86",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "comment": "Updating API to reflect aria button changes.",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.0.0-alpha.41",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Oct 2021 09:44:56 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.85",
       "version": "9.0.0-alpha.85",

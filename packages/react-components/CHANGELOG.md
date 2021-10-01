@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 01 Oct 2021 09:44:56 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 12:30:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.119](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.119)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.118..@fluentui/react-components_v9.0.0-alpha.119)
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - Updating API to reflect aria button changes. ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-aria`
+  - Removes disabled attribute when not required ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by bsunderhus@microsoft.com)
+- `@fluentui/react-button`
+  - Updates button to simplify prop merging ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by bsunderhus@microsoft.com)
+- `@fluentui/react-link`
+  - Adding comment for root slot. ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Apply tokens from refactored theme ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-menu`
+  - Remove focus `color` styling since it should use normal root `color` ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.118](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.118)
 

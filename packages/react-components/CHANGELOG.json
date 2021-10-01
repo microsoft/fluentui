@@ -2,6 +2,59 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 01 Oct 2021 12:30:46 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.119",
+      "version": "9.0.0-alpha.119",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "comment": "Updating API to reflect aria button changes.",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "comment": "Removes disabled attribute when not required",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-button",
+            "comment": "Updates button to simplify prop merging",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "comment": "Adding comment for root slot.",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Apply tokens from refactored theme",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "comment": "Remove focus `color` styling since it should use normal root `color`",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "comment": "update tokens usages in docs",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Oct 2021 09:44:56 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.118",
       "version": "9.0.0-alpha.118",

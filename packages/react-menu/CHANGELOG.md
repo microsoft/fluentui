@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 01 Oct 2021 09:44:56 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 12:30:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.88)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.87..@fluentui/react-menu_v9.0.0-alpha.88)
+
+### Changes
+
+- Remove focus `color` styling since it should use normal root `color` ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.87)
 

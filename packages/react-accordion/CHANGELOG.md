@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Fri, 01 Oct 2021 09:44:56 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 12:30:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.86)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.85..@fluentui/react-accordion_v9.0.0-alpha.86)
+
+### Changes
+
+- Updating API to reflect aria button changes. ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.41 ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by beachball)
 
 ## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.85)
 
