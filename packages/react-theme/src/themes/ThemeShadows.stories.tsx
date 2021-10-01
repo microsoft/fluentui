@@ -40,7 +40,7 @@ const ShadowBox: React.FunctionComponent<
 
 export const Shadows = () => {
   const shadowTokens = Object.keys(theme.light).filter(tokenName =>
-    tokenName.startsWith('shadowLevel'),
+    tokenName.startsWith('shadow'),
   ) as (keyof ShadowTokens)[];
 
   return (
