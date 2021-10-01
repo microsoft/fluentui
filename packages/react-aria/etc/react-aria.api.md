@@ -24,7 +24,7 @@ export function mergeARIADisabled(shorthand: ObjectShorthandProps<{
 }>): boolean;
 
 // @public
-export function useARIAButton<Required extends boolean = false>(shorthandProps: ShorthandProps<ARIAButtonShorthandProps>, options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps;
+export function useARIAButton<Required extends boolean = false>(shorthand: ShorthandProps<ARIAButtonShorthandProps>, options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps;
 
 // (No @packageDocumentation comment for this package)
 
