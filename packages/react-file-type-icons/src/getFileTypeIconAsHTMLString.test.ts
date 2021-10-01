@@ -91,10 +91,10 @@ describe('Returns correct element for custom CDN url', () => {
         size: 96,
         extension: 'docx',
       },
-      'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/',
+      'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/item-types-fluent/',
     );
     expect(elm).toEqual(
-      '<img src="https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/96/docx.svg" alt="" />',
+      '<img src="https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/item-types-fluent/96/docx.svg" alt="" />',
     );
   });
 });
