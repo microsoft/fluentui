@@ -17,101 +17,101 @@ const useStyles = makeStyles({
   }),
 
   disabled: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    color: theme.colorNeutralForegroundDisabled,
     cursor: 'default',
 
     '& .ms-checkbox-indicator': {
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
-      backgroundColor: theme.alias.color.neutral.neutralBackground1,
+      borderColor: theme.colorNeutralStrokeDisabled,
+      color: theme.colorNeutralForegroundDisabled,
+      backgroundColor: theme.colorNeutralBackground1,
     },
 
     ':hover': {
       '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
-        backgroundColor: theme.alias.color.neutral.neutralBackground1,
+        borderColor: theme.colorNeutralStrokeDisabled,
+        color: theme.colorNeutralForegroundDisabled,
+        backgroundColor: theme.colorNeutralBackground1,
       },
     },
 
     ':active': {
       '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
-        backgroundColor: theme.alias.color.neutral.neutralBackground1,
+        borderColor: theme.colorNeutralStrokeDisabled,
+        color: theme.colorNeutralForegroundDisabled,
+        backgroundColor: theme.colorNeutralBackground1,
       },
     },
   }),
 
   unchecked: theme => ({
-    color: theme.alias.color.neutral.neutralForeground3,
+    color: theme.colorNeutralForeground3,
 
     '& .ms-checkbox-indicator': {
-      borderColor: theme.alias.color.neutral.neutralStrokeAccessible,
+      borderColor: theme.colorNeutralStrokeAccessible,
       '& > *': {
         opacity: 0,
       },
     },
 
     ':hover': {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: theme.colorNeutralForeground2,
 
       '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
+        borderColor: theme.colorNeutralStrokeAccessibleHover,
       },
     },
 
     ':active': {
-      color: theme.alias.color.neutral.neutralForeground1,
+      color: theme.colorNeutralForeground1,
 
       '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.neutralStrokeAccessiblePressed,
+        borderColor: theme.colorNeutralStrokeAccessiblePressed,
       },
     },
   }),
 
   checked: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
+    color: theme.colorNeutralForeground1,
 
     // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
     '& .ms-checkbox-indicator': {
-      backgroundColor: theme.alias.color.neutral.compoundBrandBackground,
-      color: theme.alias.color.neutral.neutralForegroundInverted,
-      borderColor: theme.alias.color.neutral.brandBackground,
+      backgroundColor: theme.colorCompoundBrandBackground,
+      color: theme.colorNeutralForegroundInverted,
+      borderColor: theme.colorBrandBackground,
     },
 
     ':active': {
       '& .ms-checkbox-indicator': {
-        backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundPressed,
+        backgroundColor: theme.colorCompoundBrandBackgroundPressed,
       },
     },
 
     ':hover': {
       '& .ms-checkbox-indicator': {
-        backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundHover,
+        backgroundColor: theme.colorCompoundBrandBackgroundHover,
       },
     },
   }),
 
   mixed: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
+    color: theme.colorNeutralForeground1,
 
     '& .ms-checkbox-indicator': {
-      borderColor: theme.alias.color.neutral.compoundBrandStroke,
-      color: theme.alias.color.neutral.compoundBrandForeground1,
+      borderColor: theme.colorCompoundBrandStroke,
+      color: theme.colorCompoundBrandForeground1,
     },
 
     ':active': {
       '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.compoundBrandStrokePressed,
-        color: theme.alias.color.neutral.compoundBrandForeground1Pressed,
+        borderColor: theme.colorCompoundBrandStrokePressed,
+        color: theme.colorCompoundBrandForeground1Pressed,
       },
     },
 
     ':hover': {
       '& .ms-checkbox-indicator': {
-        borderColor: theme.alias.color.neutral.compoundBrandStrokeHover,
-        color: theme.alias.color.neutral.compoundBrandForeground1Hover,
+        borderColor: theme.colorCompoundBrandStrokeHover,
+        color: theme.colorCompoundBrandForeground1Hover,
       },
     },
   }),
@@ -175,12 +175,12 @@ const useIndicatorStyles = makeStyles({
     position: 'absolute',
     boxSizing: 'border-box',
     borderStyle: 'solid',
-    borderRadius: theme.global.borderRadius.small,
-    borderWidth: theme.global.strokeWidth.thin,
+    borderRadius: theme.borderRadiusSmall,
+    borderWidth: theme.strokeWidthThin,
   }),
 
   circular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: theme.borderRadiusCircular,
   }),
 });
 
