@@ -1,9 +1,9 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { LinkState } from './Link.types';
 
 const useStyles = makeStyles({
-  focusIndicator: createFocusIndicatorStyleRule({
+  focusIndicator: createCustomFocusIndicatorStyle({
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
   }),

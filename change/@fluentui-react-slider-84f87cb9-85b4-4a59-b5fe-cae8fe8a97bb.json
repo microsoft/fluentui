@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Use new default pseudo element focus outline style",
+  "packageName": "@fluentui/react-slider",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
