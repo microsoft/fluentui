@@ -1,4 +1,4 @@
-A `Menu` displays a list of actionalble items on a popover surface whose position is configurable. For scenarios
+A `Menu` displays a list of actionable items on a popover surface whose position is configurable. For scenarios
 that don't require a popover, or when the built-in popover is not necessary, `MenuList` component can be used
 by itself in any custom surface.
 
