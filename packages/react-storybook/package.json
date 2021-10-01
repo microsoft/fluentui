@@ -32,7 +32,7 @@
     "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.49"
   },
   "dependencies": {
-    "@fluentui/react-provider": "9.0.0-alpha.85",
+    "@fluentui/react-provider": "9.0.0-alpha.86",
     "@fluentui/react-theme": "9.0.0-alpha.24",
     "tslib": "^2.1.0"
   },
