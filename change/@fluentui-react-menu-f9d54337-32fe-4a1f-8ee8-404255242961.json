@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(Menu): Update styles from design spec",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
