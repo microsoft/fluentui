@@ -197,8 +197,9 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
 
   const elementProps = {
     ...componentProps,
+    appearance: componentProps && componentProps.appearance ? componentProps.appearance : undefined,
     children: componentProps && !componentProps.iconOnly && !componentProps.children && componentProps.content,
-    icon: componentProps && componentProps.icon ? Add20Regular : undefined,
+    icon: componentProps && componentProps.icon ? <Add20Regular /> : undefined,
   };
 
   return (

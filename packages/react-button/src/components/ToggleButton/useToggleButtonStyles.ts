@@ -1,9 +1,10 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
 
-const useRootStyles = makeStyles({
-  checked: theme => ({
+const useCheckedStyles = makeStyles({
+  // Base styles
+  base: theme => ({
     background: theme.colorNeutralBackground1Selected,
     borderColor: theme.colorNeutralStroke1,
     color: theme.colorNeutralForeground1,
@@ -22,7 +23,9 @@ const useRootStyles = makeStyles({
       color: theme.colorNeutralForeground1,
     },
   }),
-  checkedOutline: theme => ({
+
+  // Appearance variations
+  outline: theme => ({
     background: theme.colorTransparentBackgroundSelected,
 
     ':hover': {
@@ -33,7 +36,7 @@ const useRootStyles = makeStyles({
       background: theme.colorTransparentBackgroundPressed,
     },
   }),
-  checkedPrimary: theme => ({
+  primary: theme => ({
     background: theme.colorBrandBackgroundSelected,
     borderColor: 'transparent',
     color: theme.colorNeutralForegroundOnBrand,
@@ -50,7 +53,7 @@ const useRootStyles = makeStyles({
       color: theme.colorNeutralForegroundOnBrand,
     },
   }),
-  checkedSubtle: theme => ({
+  subtle: theme => ({
     background: theme.colorSubtleBackgroundSelected,
     borderColor: 'transparent',
     color: theme.colorNeutralForeground2BrandSelected,
@@ -67,7 +70,7 @@ const useRootStyles = makeStyles({
       color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
-  checkedTransparent: theme => ({
+  transparent: theme => ({
     background: theme.colorTransparentBackgroundSelected,
     borderColor: 'transparent',
     color: theme.colorNeutralForeground2BrandSelected,
@@ -84,7 +87,11 @@ const useRootStyles = makeStyles({
       color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
-  disabled: theme => ({
+});
+
+const useDisabledStyles = makeStyles({
+  // Base styles
+  base: theme => ({
     background: theme.colorNeutralBackgroundDisabled,
     borderColor: theme.colorNeutralStrokeDisabled,
     color: theme.colorNeutralForegroundDisabled,
@@ -101,7 +108,12 @@ const useRootStyles = makeStyles({
       color: theme.colorNeutralForegroundDisabled,
     },
   }),
-  disabledPrimary: {
+
+  // Appearance variations
+  outline: {
+    /* No styles */
+  },
+  primary: {
     borderColor: 'transparent',
 
     ':hover': {
@@ -112,7 +124,7 @@ const useRootStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  disabledSubtle: {
+  subtle: {
     background: 'none',
     borderColor: 'transparent',
 
@@ -126,7 +138,7 @@ const useRootStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  disabledTransparent: {
+  transparent: {
     background: 'none',
     borderColor: 'transparent',
 
@@ -143,19 +155,22 @@ const useRootStyles = makeStyles({
 });
 
 export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
-  const rootStyles = useRootStyles();
+  const checkedStyles = useCheckedStyles();
+  const disabledStyles = useDisabledStyles();
 
-  state.className = mergeClasses(
-    state.checked && rootStyles.checked,
-    state.checked && state.appearance === 'outline' && rootStyles.checkedOutline,
-    state.checked && state.appearance === 'primary' && rootStyles.checkedPrimary,
-    state.checked && state.appearance === 'subtle' && rootStyles.checkedSubtle,
-    state.checked && state.appearance === 'transparent' && rootStyles.checkedTransparent,
-    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    (state.disabled || state.disabledFocusable) && state.appearance === 'primary' && rootStyles.disabledPrimary,
-    (state.disabled || state.disabledFocusable) && state.appearance === 'subtle' && rootStyles.disabledSubtle,
-    (state.disabled || state.disabledFocusable) && state.appearance === 'transparent' && rootStyles.disabledTransparent,
-    state.className,
+  const { appearance, checked, disabled, disabledFocusable } = state;
+
+  state.root.className = mergeClasses(
+    // Checked styles
+    checked && checkedStyles.base,
+    appearance && checked && checkedStyles[appearance],
+
+    // Disabled styles
+    (disabled || disabledFocusable) && disabledStyles.base,
+    appearance && (disabled || disabledFocusable) && disabledStyles[appearance],
+
+    // User provided class name
+    state.root.className,
   );
 
   useButtonStyles(state);

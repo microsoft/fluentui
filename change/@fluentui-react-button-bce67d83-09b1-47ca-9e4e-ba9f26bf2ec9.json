@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates button to simplify prop merging",
+  "packageName": "@fluentui/react-button",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

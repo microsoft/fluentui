@@ -8,9 +8,13 @@ import { buttonBaseProps } from './buttonBaseProps.stories';
 import { Playground } from './Playground.stories';
 import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
 
-interface ExampleProps {
+type ExampleProps = {
   primaryActionDisabled?: boolean;
-}
+};
+
+const exampleProps: PropDefinition<SplitButtonProps & ExampleProps>[] = [
+  { propName: 'primaryActionDisabled', propType: 'boolean', dependsOnProps: ['~disabled', '~disabledFocusable'] },
+];
 
 const ExampleSplitButton = (props: SplitButtonProps & ExampleProps): JSX.Element => {
   const { primaryActionDisabled, ...rest } = props;
@@ -20,8 +24,8 @@ const ExampleSplitButton = (props: SplitButtonProps & ExampleProps): JSX.Element
       <MenuTrigger>
         {triggerProps => (
           <SplitButton
-            button={{ disabled: primaryActionDisabled || rest.disabled }}
             menuButton={triggerProps}
+            primaryActionButton={{ disabled: primaryActionDisabled || rest.disabled }}
             {...rest}
           />
         )}
@@ -38,12 +42,7 @@ const ExampleSplitButton = (props: SplitButtonProps & ExampleProps): JSX.Element
 };
 
 export const SplitButtonPlayground = () => {
-  const exampleProps: PropDefinition<SplitButtonProps & ExampleProps>[] = React.useMemo(
-    () => [{ propName: 'primaryActionDisabled', propType: 'boolean', dependsOnProps: ['~disabled'] }],
-    [],
-  );
-
-  const splitButtonProps: PlaygroundProps<SplitButtonProps>['sections'] = [
+  const splitButtonProps: PlaygroundProps<SplitButtonProps & ExampleProps>['sections'] = [
     { sectionName: 'Button props', propList: buttonBaseProps },
     { sectionName: 'Example props', propList: exampleProps },
   ];
