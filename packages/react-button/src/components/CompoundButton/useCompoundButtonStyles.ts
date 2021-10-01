@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
@@ -7,8 +7,8 @@ const CompoundButtonClassNames = {
 };
 
 const useRootStyles = makeStyles({
+  // Base styles
   base: theme => ({
-    // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.large,
 
     height: 'auto',
@@ -29,24 +29,11 @@ const useRootStyles = makeStyles({
       },
     },
   }),
-  small: theme => ({
-    padding: buttonSpacing.medium,
 
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-  }),
-  medium: theme => ({
-    padding: buttonSpacing.large,
-
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-  }),
-  large: theme => ({
-    padding: buttonSpacing.larger,
-
-    fontSize: theme.fontSizeBase400,
-    lineHeight: theme.lineHeightBase400,
-  }),
+  // Appearance variations
+  outline: {
+    /* No styles */
+  },
   primary: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
       color: theme.colorNeutralForegroundOnBrand,
@@ -98,6 +85,28 @@ const useRootStyles = makeStyles({
       },
     },
   }),
+
+  // Size variations
+  small: theme => ({
+    padding: buttonSpacing.medium,
+
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
+  }),
+  medium: theme => ({
+    padding: buttonSpacing.large,
+
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
+  }),
+  large: theme => ({
+    padding: buttonSpacing.larger,
+
+    fontSize: theme.fontSizeBase400,
+    lineHeight: theme.lineHeightBase400,
+  }),
+
+  // Disabled styles
   disabled: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
       color: theme.colorNeutralForegroundDisabled,
@@ -118,6 +127,7 @@ const useRootStyles = makeStyles({
 });
 
 const useRootIconOnlyStyles = makeStyles({
+  // Size variations
   small: {
     padding: buttonSpacing.smaller,
 
@@ -139,6 +149,7 @@ const useRootIconOnlyStyles = makeStyles({
 });
 
 const useIconStyles = makeStyles({
+  // Base styles
   base: {
     fontSize: '40px',
     height: '40px',
@@ -147,6 +158,7 @@ const useIconStyles = makeStyles({
 });
 
 const useContentContainerStyles = makeStyles({
+  // Base styles
   base: {
     display: 'flex',
     flexDirection: 'column',
@@ -155,11 +167,14 @@ const useContentContainerStyles = makeStyles({
 });
 
 const useSecondaryContentStyles = makeStyles({
+  // Base styles
   base: theme => ({
     lineHeight: '100%',
     marginTop: '4px',
     fontWeight: theme.fontWeightRegular,
   }),
+
+  // Size variations
   small: theme => ({
     fontSize: theme.fontSizeBase200,
   }),
@@ -178,27 +193,38 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
 
-  state.className = mergeClasses(
+  const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
+
+  state.root.className = mergeClasses(
+    // Root styles
     rootStyles.base,
-    rootStyles[state.size],
-    state.appearance === 'primary' && rootStyles.primary,
-    state.appearance === 'subtle' && rootStyles.subtle,
-    state.appearance === 'transparent' && rootStyles.transparent,
-    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    state.iconOnly && rootIconOnlyStyles[state.size],
-    state.className,
+    appearance && rootStyles[appearance],
+    rootStyles[size],
+
+    // Disabled styles
+    (disabled || disabledFocusable) && rootStyles.disabled,
+
+    // Icon-only styles
+    iconOnly && rootIconOnlyStyles[size],
+
+    // User provided class name
+    state.root.className,
   );
 
-  state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
+  }
 
   state.contentContainer.className = mergeClasses(contentContainerStyles.base, state.contentContainer.className);
 
-  state.secondaryContent.className = mergeClasses(
-    CompoundButtonClassNames.secondaryContent,
-    secondaryContentStyles.base,
-    secondaryContentStyles[state.size],
-    state.secondaryContent.className,
-  );
+  if (state.secondaryContent) {
+    state.secondaryContent.className = mergeClasses(
+      CompoundButtonClassNames.secondaryContent,
+      secondaryContentStyles.base,
+      secondaryContentStyles[size],
+      state.secondaryContent.className,
+    );
+  }
 
   useButtonStyles(state);
 
