@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-badge",
-  "version": "9.0.0-alpha.88",
+  "version": "9.0.0-alpha.89",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,11 +25,11 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-alpha.56",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.57",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.49",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.50",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.18",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.19",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -43,9 +43,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-alpha.74",
-    "@fluentui/react-theme": "9.0.0-alpha.24",
-    "@fluentui/react-utilities": "9.0.0-alpha.53",
+    "@fluentui/react-make-styles": "9.0.0-alpha.75",
+    "@fluentui/react-theme": "9.0.0-alpha.25",
+    "@fluentui/react-utilities": "9.0.0-alpha.54",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
