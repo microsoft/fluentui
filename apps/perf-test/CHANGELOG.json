@@ -2,6 +2,21 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Fri, 01 Oct 2021 12:30:46 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.97",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Oct 2021 09:44:56 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

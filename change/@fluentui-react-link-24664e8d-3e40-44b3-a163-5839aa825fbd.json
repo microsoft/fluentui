@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding comment for root slot.",
-  "packageName": "@fluentui/react-link",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

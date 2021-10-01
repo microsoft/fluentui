@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Fri, 01 Oct 2021 09:44:56 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 12:30:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.91)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.90..@fluentui/react-link_v9.0.0-alpha.91)
+
+### Changes
+
+- Adding comment for root slot. ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.90)
 

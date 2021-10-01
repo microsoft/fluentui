@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 12:30:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.41)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.40..@fluentui/react-aria_v9.0.0-alpha.41)
+
+### Changes
+
+- Removes disabled attribute when not required ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.40)
 

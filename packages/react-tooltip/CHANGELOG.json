@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Fri, 01 Oct 2021 12:30:46 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.92",
+      "version": "9.0.0-alpha.92",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Apply tokens from refactored theme",
+            "commit": "c5f91bfccb65073eb01e4b4aa0b720bb6bf06b5d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Oct 2021 09:44:56 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.91",
       "version": "9.0.0-alpha.91",
