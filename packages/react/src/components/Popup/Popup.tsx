@@ -120,19 +120,32 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
-function useHideSiblingNodes(props: IPopupProps) {
+function findParentNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
+  let currNode = node;
+
+  while (currNode && currNode.parentElement !== targetDocument.body) {
+    currNode = currNode.parentElement;
+  }
+
+  return currNode;
+}
+
+function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const isModalOrPanel = props['aria-modal'];
 
   React.useEffect(() => {
     const targetDocument = getDocument();
-    if (isModalOrPanel && targetDocument) {
+    if (isModalOrPanel && root && root.current && targetDocument) {
       const bodyChildren = targetDocument.body.children;
-      const popupNode = bodyChildren[bodyChildren.length - 1];
-      const popupNodeParentChildren = popupNode.parentElement ? popupNode.parentElement.children : [];
+      const popupParentNode = findParentNode(root.current, targetDocument);
+
       let nodesToHide: Element[] = [];
 
-      for (let i = 0; i < popupNodeParentChildren.length - 1; i++) {
-        nodesToHide.push(popupNodeParentChildren[i]);
+      for (let i = 0; i < bodyChildren.length; i++) {
+        const node = bodyChildren[i];
+        if (node !== popupParentNode) {
+          nodesToHide.push(node);
+        }
       }
 
       nodesToHide = nodesToHide.filter(
@@ -147,7 +160,7 @@ function useHideSiblingNodes(props: IPopupProps) {
 
       return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
     }
-  }, [isModalOrPanel]);
+  }, [isModalOrPanel, root]);
 }
 
 /**
