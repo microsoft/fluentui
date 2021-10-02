@@ -175,7 +175,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    useHideSiblingNodes(props);
+    useHideSiblingNodes(props, root);
     useRestoreFocus(props, root);
 
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
