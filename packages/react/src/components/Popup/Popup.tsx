@@ -120,16 +120,6 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
-function findParentNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
-  let currNode = node;
-
-  while (currNode && currNode.parentElement !== targetDocument.body) {
-    currNode = currNode.parentElement;
-  }
-
-  return currNode;
-}
-
 function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const isModalOrPanel = props['aria-modal'];
 
@@ -161,6 +151,16 @@ function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivEl
       return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
     }
   }, [isModalOrPanel, root]);
+}
+
+function findParentNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
+  let currNode = node;
+
+  while (currNode && currNode.parentElement !== targetDocument.body) {
+    currNode = currNode.parentElement;
+  }
+
+  return currNode;
 }
 
 /**
