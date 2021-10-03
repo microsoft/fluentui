@@ -58,9 +58,11 @@ const stateReducer = (state: MentionsEditorState, action: MentionsEditorAction) 
   }
 };
 
-const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
-  children: (props: MentionsContainerProps) => React.ReactNode;
-}> = props => {
+const MentionsEditor: React.FunctionComponent<
+  MentionsContainerProps & {
+    children: (props: MentionsContainerProps) => React.ReactNode;
+  }
+> = props => {
   const { children, ...rest } = props;
   const contendEditableRef = React.useRef(null);
   const [state, dispatch] = React.useReducer(stateReducer, {

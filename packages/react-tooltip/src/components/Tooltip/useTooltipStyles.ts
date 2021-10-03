@@ -1,16 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { TooltipState } from './Tooltip.types';
-import { Theme } from '@fluentui/react-theme';
+import type { TooltipState } from './Tooltip.types';
 
 /**
- * The height of the triangle used for the arrow that points at the tooltip's target
- */
-export const arrowHeight = 6;
-
-export const tooltipBorderRadius = (theme: Theme) => theme.global.borderRadius.medium;
-
-/**
- * Styles for the root slot
+ * Styles for the tooltip
  */
 const useStyles = makeStyles({
   root: theme => ({
@@ -18,33 +10,33 @@ const useStyles = makeStyles({
     padding: '5px 12px 7px 12px',
     maxWidth: '240px',
     cursor: 'default',
-    fontFamily: theme.global.type.fontFamilies.base,
-    fontSize: theme.global.type.fontSizes.base[200],
-    lineHeight: theme.global.type.lineHeights.base[200],
-    borderRadius: tooltipBorderRadius(theme),
+    fontFamily: theme.fontFamilyBase,
+    fontSize: theme.fontSizeBase200,
+    lineHeight: theme.lineHeightBase200,
+    borderRadius: theme.borderRadiusMedium, // Update tooltipBorderRadius in useTooltip.tsx if this changes
 
-    background: theme.alias.color.neutral.neutralForeground2, // TODO should be neutralBackgroundInverted
-    color: theme.alias.color.neutral.neutralForegroundInverted,
+    background: theme.colorNeutralBackground1,
+    color: theme.colorNeutralForeground1,
 
     // TODO need to add versions of theme.alias.shadow.shadow8, etc. that work with filter
     filter:
-      `drop-shadow(0 0 2px ${theme.alias.color.neutral.neutralShadowAmbient}) ` +
-      `drop-shadow(0 4px 8px ${theme.alias.color.neutral.neutralShadowKey})`,
+      `drop-shadow(0 0 2px ${theme.colorNeutralShadowAmbient}) ` +
+      `drop-shadow(0 4px 8px ${theme.colorNeutralShadowKey})`,
   }),
 
   visible: {
     display: 'block',
   },
 
-  subtle: theme => ({
-    background: theme.alias.color.neutral.neutralBackground1,
-    color: theme.alias.color.neutral.neutralForeground1,
+  inverted: theme => ({
+    background: theme.colorNeutralForeground2, // TODO should be neutralBackgroundInverted
+    color: theme.colorNeutralForegroundInverted,
   }),
 
   arrow: theme => ({
     position: 'absolute',
-    width: `${Math.SQRT2 * arrowHeight}px`,
-    height: `${Math.SQRT2 * arrowHeight}px`,
+    width: '8.485px', //  width and height = arrowHeight * sqrt(2)
+    height: '8.485px', // Update arrowHeight in useTooltip.tsx if this changes
     background: 'inherit',
     visibility: 'hidden',
     zIndex: -1,
@@ -56,7 +48,7 @@ const useStyles = makeStyles({
       height: 'inherit',
       background: 'inherit',
       visibility: 'visible',
-      borderBottomRightRadius: theme.global.borderRadius.small,
+      borderBottomRightRadius: theme.borderRadiusSmall,
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },
 
@@ -70,21 +62,18 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the Tooltip slots based on the state
- * {@docCategory Tooltip}
  */
 export const useTooltipStyles = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
-    state.subtle && styles.subtle,
+    state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,
-    state.className,
+    state.root.className,
   );
 
-  if (state.arrow) {
-    state.arrow.className = mergeClasses(styles.arrow, state.arrow.className);
-  }
+  state.arrowClassName = styles.arrow;
 
   return state;
 };

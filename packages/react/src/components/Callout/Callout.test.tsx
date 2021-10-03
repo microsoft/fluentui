@@ -1,21 +1,21 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { Callout } from './Callout';
-import { CalloutContent } from './CalloutContent';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import * as Utilities from '../../Utilities';
-import * as positioning from '../../Positioning';
 import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
-import { IPopupRestoreFocusParams } from '../../Popup';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { resetIds } from '../../Utilities';
+import { Callout } from './Callout';
+import { CalloutContent } from './CalloutContent';
+import type { IPopupRestoreFocusParams } from '../../Popup';
 
 describe('Callout', () => {
-  let realDom: HTMLDivElement;
   beforeEach(() => {
     realDom = document.createElement('div');
     document.body.appendChild(realDom);
+    resetIds();
   });
+
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(realDom);
     document.body.removeChild(realDom);
@@ -23,36 +23,25 @@ describe('Callout', () => {
     jest.resetAllMocks();
   });
 
-  it('renders Callout correctly', () => {
-    spyOn(Utilities, 'getWindow').and.returnValue({
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      document: {
-        documentElement: {
-          addEventListener: jest.fn(),
-          removeEventListener: jest.fn(),
-        },
-      },
-    });
-    spyOn(positioning, 'getBoundsFromTargetWindow').and.returnValue({
-      top: 0,
-      left: 0,
-      right: 100,
-      bottom: 768,
-      width: 100,
-      height: 768,
-    });
-    safeCreate(<CalloutContent>Content</CalloutContent>, component => {
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+  afterAll(() => {
+    resetIds();
   });
+
+  let realDom: HTMLDivElement;
 
   isConformant({
     Component: Callout,
     displayName: 'Callout',
     targetComponent: CalloutContent,
-    disabledTests: ['component-handles-ref', 'component-handles-classname'],
+    requiredProps: { doNotLayer: true },
+    disabledTests: ['component-handles-classname'],
+  });
+
+  it('renders Callout correctly', () => {
+    safeCreate(<CalloutContent>Content</CalloutContent>, component => {
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   it('target id strings does not throw exception', () => {
@@ -177,7 +166,42 @@ describe('Callout', () => {
     });
   });
 
-  it('It will correctly return focus to element that spawned it', () => {
+  it('prevents dismiss when preventDismissOnEvent is passed', () => {
+    jest.useFakeTimers();
+    let threwException = false;
+    const onDismiss = jest.fn();
+    const preventAllDismiss = () => true;
+
+    try {
+      ReactTestUtils.act(() => {
+        ReactDOM.render<HTMLDivElement>(
+          <div>
+            <button id="focustarget"> button </button>
+            <Callout target="#target" preventDismissOnEvent={preventAllDismiss} onDismiss={onDismiss}>
+              <div>Content</div>
+            </Callout>
+          </div>,
+          realDom,
+        );
+      });
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).toEqual(false);
+
+    ReactTestUtils.act(() => {
+      const focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
+
+      // Move focus
+      jest.runAllTimers();
+
+      focusTarget.focus();
+
+      expect(onDismiss.mock.calls.length).toEqual(0);
+    });
+  });
+
+  it('will correctly return focus to element that spawned it', () => {
     jest.useFakeTimers();
 
     const focusedElement = document.createElement('button');

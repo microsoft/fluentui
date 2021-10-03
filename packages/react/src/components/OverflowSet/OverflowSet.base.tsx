@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useMergedRefs } from '@fluentui/react-hooks';
-import { IProcessedStyleSet } from '../../Styling';
-import { IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps, IOverflowSet } from './OverflowSet.types';
 import { classNamesFunction, divProperties, elementContains, getNativeProps, focusFirstChild } from '../../Utilities';
 import { OverflowButton } from './OverflowButton';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps, IOverflowSet } from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 const COMPONENT_NAME = 'OverflowSet';
@@ -60,7 +60,7 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = React
       {overflowSide === 'start' && showOverflow && <OverflowButton {...props} className={classNames.overflowButton} />}
       {items &&
         items.map((item, i) => (
-          <div className={classNames.item} key={item.key}>
+          <div className={classNames.item} key={item.key} role="none">
             {onRenderItem(item)}
           </div>
         ))}

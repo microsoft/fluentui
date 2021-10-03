@@ -70,9 +70,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
     };
 
     // reformat the JSON string to take out the quotes so it'll work with the Codepen API
-    const JSONstring = JSON.stringify(valueData)
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&apos;');
+    const JSONstring = JSON.stringify(valueData).replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 
     // set the value and allow the form submit action to continue
     inputRef.current!.value = JSONstring;

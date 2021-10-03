@@ -8,15 +8,15 @@ import {
   getRTL,
   initializeComponentRef,
 } from '../../Utilities';
-import {
+import { ScrollablePaneContext } from './ScrollablePane.types';
+import { Sticky } from '../../Sticky';
+import type {
   IScrollablePane,
   IScrollablePaneContext,
   IScrollablePaneProps,
   IScrollablePaneStyleProps,
   IScrollablePaneStyles,
-  ScrollablePaneContext,
 } from './ScrollablePane.types';
-import { Sticky } from '../../Sticky';
 
 export interface IScrollablePaneState {
   stickyTopHeight: number;
@@ -27,7 +27,8 @@ export interface IScrollablePaneState {
 
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
-export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IScrollablePaneState>
+export class ScrollablePaneBase
+  extends React.Component<IScrollablePaneProps, IScrollablePaneState>
   implements IScrollablePane {
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();

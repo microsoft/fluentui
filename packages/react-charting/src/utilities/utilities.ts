@@ -5,6 +5,7 @@ import { select as d3Select, event as d3Event } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 import {
+  IAccessibilityProps,
   IEventsAnnotationProps,
   ILineChartPoints,
   ILineChartDataPoint,
@@ -133,10 +134,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
     .ticks(xAxisCount)
     .tickSizeOuter(0);
   if (xAxisElement) {
-    d3Select(xAxisElement)
-      .call(xAxis)
-      .selectAll('text')
-      .attr('aria-hidden', 'true');
+    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -152,17 +150,11 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
-  const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(xAxistickSize)
-    .tickPadding(tickPadding)
-    .ticks(xAxisCount);
+  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
   if (xAxisElement) {
-    d3Select(xAxisElement)
-      .call(xAxis)
-      .selectAll('text')
-      .attr('aria-hidden', 'true');
+    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -189,10 +181,7 @@ export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickPa
     .tickFormat((x: string, index: number) => dataset[index] as string);
 
   if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement)
-      .call(xAxis)
-      .selectAll('text')
-      .attr('aria-hidden', 'true');
+    d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -251,12 +240,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(yAxis)
-        .selectAll('text')
-        .attr('aria-hidden', 'true')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
 
@@ -273,18 +257,11 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
     .range([containerHeight - margins.bottom!, margins.top!])
     .padding(yAxisPadding);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis
-    .tickPadding(tickPadding)
-    .tickValues(dataPoints)
-    .tickSize(0);
+  const yAxis = axis.tickPadding(tickPadding).tickValues(dataPoints).tickSize(0);
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(yAxis)
-        .selectAll('text')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
   return yAxisScale;
 };
 
@@ -301,6 +278,7 @@ type DataPoint = {
   color: string;
   yAxisCalloutData: string;
   index?: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 };
 
 export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
@@ -310,12 +288,15 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
     x: number | Date | string;
     color: string;
     yAxisCalloutData?: string | { [id: string]: number };
+    callOutAccessibilityData?: IAccessibilityProps;
   }[] = [];
 
   values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
-    const elements = element.data.map((ele: ILineChartDataPoint) => {
-      return { legend: element.legend, ...ele, color: element.color, index: element.index };
-    });
+    const elements = element.data
+      .filter((ele: ILineChartDataPoint) => !ele.hideCallout)
+      .map((ele: ILineChartDataPoint) => {
+        return { legend: element.legend, ...ele, color: element.color, index: element.index };
+      });
     combinedResult = combinedResult.concat(elements);
   });
 
@@ -323,7 +304,14 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   combinedResult.forEach((e1: DataPoint, index: number) => {
     e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
     const filteredValues = [
-      { legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData, index: e1.index },
+      {
+        legend: e1.legend,
+        y: e1.y,
+        color: e1.color,
+        yAxisCalloutData: e1.yAxisCalloutData,
+        callOutAccessibilityData: e1.callOutAccessibilityData,
+        index: e1.index,
+      },
     ];
     combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
       e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
@@ -333,6 +321,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
           y: e2.y,
           color: e2.color,
           yAxisCalloutData: e2.yAxisCalloutData,
+          callOutAccessibilityData: e2.callOutAccessibilityData,
           index: e2.index,
         });
       }
@@ -396,15 +385,12 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   let removeVal = 0;
   const width = 10;
   const arr: number[] = [];
-  axisNode.selectAll('.tick text').each(function() {
+  axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);
     const totalWord = text.text();
     const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
-    const words = text
-      .text()
-      .split(/\s+/)
-      .reverse();
+    const words = text.text().split(/\s+/).reverse();
     arr.push(words.length);
     let word: string = '';
     let line: string[] = [];
@@ -492,11 +478,7 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   if (xAxis === null) {
     return null;
   }
-  const div = d3Select('body')
-    .append('div')
-    .attr('id', id)
-    .attr('class', tooltipCls)
-    .style('opacity', 0);
+  const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
   const aa = xAxis!.selectAll('#BaseSpan')._groups[0];
   const baseSpanLength = aa && Object.keys(aa)!.length;
   const originalDataArray: string[] = [];
@@ -878,6 +860,10 @@ export enum Points {
   octagon,
 }
 
+export enum CustomPoints {
+  dottedLine,
+}
+
 export type PointTypes = {
   [key in number]: {
     /**
@@ -922,4 +908,25 @@ export const pointTypes: PointTypes = {
   [Points.octagon]: {
     widthRatio: 2.414,
   },
+};
+
+/**
+ * @param accessibleData accessible data
+ * @param role string to define role of tag
+ * @param isDataFocusable boolean
+ * function returns the accessibility data object
+ */
+export const getAccessibleDataObject = (
+  accessibleData?: IAccessibilityProps,
+  role: string = 'text',
+  isDataFocusable: boolean = true,
+) => {
+  accessibleData = accessibleData ?? {};
+  return {
+    role,
+    'data-is-focusable': isDataFocusable,
+    'aria-label': accessibleData!.ariaLabel,
+    'aria-labelledby': accessibleData!.ariaLabelledBy,
+    'aria-describedby': accessibleData!.ariaDescribedBy,
+  };
 };

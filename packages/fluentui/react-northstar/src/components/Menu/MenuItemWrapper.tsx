@@ -1,10 +1,26 @@
-import { compose } from '@fluentui/react-bindings';
+import * as React from 'react';
+import {
+  ForwardRefWithAs,
+  useFluentContext,
+  useTelemetry,
+  useStyles,
+  useAccessibility,
+  getElementType,
+  useUnhandledProps,
+  childrenExist,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
-import { commonPropTypes } from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
+import { ChildrenComponentProps, commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
+import { FluentComponentStaticProps } from '../../types';
+import { Accessibility } from '@fluentui/accessibility';
 
-interface MenuItemWrapperOwnProps {
+export interface MenuItemWrapperProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<never>;
+
   /** A menu item wrapper can be active. */
   active?: boolean;
 
@@ -42,7 +58,6 @@ interface MenuItemWrapperOwnProps {
   on?: 'hover';
 }
 
-export interface MenuItemWrapperProps extends BoxProps, MenuItemWrapperOwnProps {}
 export type MenuItemWrapperStylesProps = Required<
   Pick<
     MenuItemWrapperProps,
@@ -65,45 +80,80 @@ export const menuItemWrapperClassName = 'ui-menu__itemwrapper';
 /**
  * A MenuItemWrapper allows a user to have a dedicated component that can be targeted from the theme.
  */
-export const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStylesProps, BoxProps, {}>(Box, {
-  className: menuItemWrapperClassName,
-  displayName: 'MenuItemWrapper',
-  mapPropsToStylesProps: props => ({
-    active: props.active,
-    disabled: props.disabled,
-    iconOnly: props.iconOnly,
-    isFromKeyboard: props.isFromKeyboard,
-    pills: props.pills,
-    pointing: props.pointing,
-    secondary: props.secondary,
-    underlined: props.underlined,
-    vertical: props.vertical,
-    primary: props.primary,
-    on: props.on,
-  }),
-  handledProps: [
-    'active',
-    'disabled',
-    'iconOnly',
-    'isFromKeyboard',
-    'pills',
-    'pointing',
-    'secondary',
-    'underlined',
-    'vertical',
-    'primary',
-    'on',
-  ],
+export const MenuItemWrapper = (React.forwardRef<HTMLLIElement, MenuItemWrapperProps>((props, ref) => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(MenuItemWrapper.displayName, context.telemetry);
+  setStart();
 
-  overrideStyles: true,
-  shorthandConfig: {
-    mappedProp: 'content',
-  },
-});
+  const {
+    className,
+    children,
+    design,
+    styles,
+    variables,
+    content,
+    active,
+    disabled,
+    iconOnly,
+    isFromKeyboard,
+    pills,
+    pointing,
+    secondary,
+    underlined,
+    vertical,
+    primary,
+    on,
+  } = props;
+
+  const { classes } = useStyles<MenuItemWrapperStylesProps>(MenuItemWrapper.displayName, {
+    className: menuItemWrapperClassName,
+    mapPropsToStyles: () => ({
+      active,
+      disabled,
+      iconOnly,
+      isFromKeyboard,
+      pills,
+      pointing,
+      secondary,
+      underlined,
+      vertical,
+      primary,
+      on,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const getA11Props = useAccessibility(props.accessibility, {
+    debugName: MenuItemWrapper.displayName,
+    rtl: context.rtl,
+  });
+
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(MenuItemWrapper.handledProps, props);
+
+  const element = (
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+
+  return element;
+}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, MenuItemWrapperProps> &
+  FluentComponentStaticProps<MenuItemWrapperProps>;
+
+MenuItemWrapper.displayName = 'MenuItemWrapper';
 
 MenuItemWrapper.defaultProps = {
   as: 'li',
 };
+
 MenuItemWrapper.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,
@@ -116,4 +166,10 @@ MenuItemWrapper.propTypes = {
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   underlined: PropTypes.bool,
   vertical: PropTypes.bool,
+};
+
+MenuItemWrapper.handledProps = Object.keys(MenuItemWrapper.propTypes) as any;
+
+MenuItemWrapper.shorthandConfig = {
+  mappedProp: 'content',
 };

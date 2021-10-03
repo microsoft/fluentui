@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
-import { IRefObject } from '@fluentui/react/lib/Utilities';
-import { IDragDropEvents, IDragDropHelper } from '@fluentui/react/lib/DragDrop';
+import type { IPickerItemProps } from '@fluentui/react/lib/Pickers';
+import type { IRefObject } from '@fluentui/react/lib/Utilities';
+import type { IDragDropEvents, IDragDropHelper } from '@fluentui/react/lib/DragDrop';
+
 export interface ISelectedItemsList<T> {
   /**
    * Current value of the input
@@ -105,7 +106,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * A callback when an item or items are removed
    */
-  onItemsRemoved?: (removedItems: T[]) => void;
+  onItemsRemoved?: (removedItems: T[], removedIndices: number[]) => void;
 
   /**
    * A callback on whether this item can be removed

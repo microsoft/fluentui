@@ -1,4 +1,3 @@
-import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import {
   keyframes,
   getGlobalClassNames,
@@ -7,6 +6,7 @@ import {
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { getRTL, memoizeFunction } from '../../Utilities';
+import type { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 
 const GlobalClassNames = {
   root: 'ms-Shimmer-container',

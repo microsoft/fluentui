@@ -26,6 +26,8 @@ const dependencies = [
   '@fluentui/react-charting',
   '@fluentui/react-components',
   '@fluentui/react-experiments',
+  '@fluentui/react-input',
+  '@fluentui/web-components',
   'perf-test',
   'theming-designer',
 ];

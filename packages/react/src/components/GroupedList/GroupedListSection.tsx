@@ -1,22 +1,23 @@
 import * as React from 'react';
-import { IGroup, IGroupDividerProps, IGroupRenderProps, IGroupedListStyles } from './GroupedList.types';
-import { IGroupHeaderProps } from './GroupHeader.types';
-import { IGroupFooterProps } from './GroupFooter.types';
-import { IGroupShowAllProps } from './GroupShowAll.types';
+import { initializeComponentRef, css, getId, EventGroup } from '../../Utilities';
 
-import { IDragDropContext, IDragDropEvents, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
-
-import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef, IRenderFunction, IDisposable, css, getId, EventGroup } from '../../Utilities';
-
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../Selection';
+import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
 
 import { GroupHeader } from './GroupHeader';
 import { GroupShowAll } from './GroupShowAll';
 import { GroupFooter } from './GroupFooter';
 
-import { List, IListProps } from '../../List';
-import { IViewport } from '../../utilities/decorators/withViewport';
+import { List } from '../../List';
+import type { IGroup, IGroupDividerProps, IGroupRenderProps, IGroupedListStyles } from './GroupedList.types';
+import type { IGroupHeaderProps } from './GroupHeader.types';
+import type { IGroupFooterProps } from './GroupFooter.types';
+import type { IGroupShowAllProps } from './GroupShowAll.types';
+import type { IDragDropContext, IDragDropEvents, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IRenderFunction, IDisposable } from '../../Utilities';
+import type { ISelection } from '../../Selection';
+import type { IListProps } from '../../List';
+import type { IViewport } from '../../utilities/decorators/withViewport';
 
 export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */
@@ -117,7 +118,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _id: string;
   private _events: EventGroup;
 
-  private _dragDropSubscription: IDisposable;
+  private _dragDropSubscription?: IDisposable;
   private _droppingClassName: string = '';
 
   constructor(props: IGroupedListSectionProps) {
@@ -327,9 +328,10 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _onRenderGroupCell(
     onRenderCell: any,
     groupNestingDepth: number | undefined,
+    group: IGroup | undefined,
   ): (item: any, itemIndex: number | undefined) => React.ReactNode {
     return (item: any, itemIndex: number | undefined): React.ReactNode => {
-      return onRenderCell(groupNestingDepth, item, itemIndex);
+      return onRenderCell(groupNestingDepth, item, itemIndex, group);
     };
   }
 
@@ -343,7 +345,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         role={groupProps && groupProps.role ? groupProps.role : 'rowgroup'}
         aria-label={group?.name}
         items={items}
-        onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
+        onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth, group)}
         ref={this._list}
         renderCount={Math.min(count, renderCount)}
         startIndex={startIndex}

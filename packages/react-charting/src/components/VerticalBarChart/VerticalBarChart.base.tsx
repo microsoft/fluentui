@@ -7,6 +7,7 @@ import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import {
+  IAccessibilityProps,
   CartesianChart,
   ChartHoverCard,
   IBasestate,
@@ -24,6 +25,7 @@ import {
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
+  getAccessibleDataObject,
   XAxisTypes,
   NumericAxis,
   StringAxis,
@@ -45,6 +47,7 @@ export interface IVerticalBarChartState extends IBasestate {
   activeXdataPoint: number | string | null;
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -85,7 +88,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     this._calloutId = getId('callout');
     this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
-    this._xAxisType = getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes;
+    this._xAxisType =
+      this.props.data! && this.props.data!.length > 0
+        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
   }
 
   public render(): JSX.Element {
@@ -116,7 +122,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -207,6 +215,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             fill={this.props.theme!.palette.white}
             strokeWidth={3}
             visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
+            onClick={item.point.lineData?.onClick}
           />
         );
       },
@@ -306,9 +315,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     for (let i = 0; i < this._colors.length; i++) {
       domainValues.push(increment * i * this._yMax);
     }
-    const colorScale = d3ScaleLinear<string>()
-      .domain(domainValues)
-      .range(this._colors);
+    const colorScale = d3ScaleLinear<string>().domain(domainValues).range(this._colors);
     return colorScale;
   }
 
@@ -373,6 +380,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         activeXdataPoint: point.x,
         YValueHover,
         hoverXValue,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -406,6 +414,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             activeXdataPoint: point.x,
             YValueHover,
             hoverXValue,
+            callOutAccessibilityData: point.callOutAccessibilityData,
           });
         }
       });
@@ -460,6 +469,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         legendColor: this.state.color,
         shouldHighlight: shouldHighlight,
       });
+      const barHeight: number = Math.max(yBarScale(point.y), 0);
+      if (barHeight < 1) {
+        return <React.Fragment key={point.x}> </React.Fragment>;
+      }
       return (
         <rect
           key={point.x}
@@ -472,7 +485,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
+          onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
+          aria-label="Vertical bar chart"
+          role="text"
           aria-labelledby={`toolTip${this._calloutId}`}
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
@@ -509,17 +525,24 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
+      const barHeight: number = Math.max(yBarScale(point.y), 0);
+      if (barHeight < 1) {
+        return <React.Fragment key={point.x}> </React.Fragment>;
+      }
       return (
         <rect
           key={point.x}
           x={xBarScale(index)}
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
-          height={Math.max(yBarScale(point.y), 0)}
+          height={barHeight}
+          aria-label="Vertical bar chart"
+          role="text"
           aria-labelledby={`toolTip${this._calloutId}`}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
+          onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}

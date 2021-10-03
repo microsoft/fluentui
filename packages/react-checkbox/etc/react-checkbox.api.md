@@ -4,120 +4,68 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
-import { ClassFunction } from '@fluentui/react-compose';
-import { ComponentWithAs } from '@fluentui/react-compose';
-import { IRefObject } from '@fluentui/utilities';
-import { IRenderFunction } from '@fluentui/utilities';
-import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ISvgIconProps } from '@fluentui/react-icons-mdl2';
-import { ITheme } from '@fluentui/style-utilities';
-import * as React from 'react';
-import { SlotProp } from '@fluentui/react-compose';
-import { SlotProps } from '@fluentui/react-compose';
-
-// @public (undocumented)
-export const Checkbox: React.FunctionComponent<ICheckboxProps>;
-
-// @public (undocumented)
-export const CheckboxBase: ComponentWithAs<'div', ICheckboxProps>;
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
 
 // @public
-export interface ICheckbox {
-    checked: boolean;
-    focus: () => void;
-    indeterminate: boolean;
+export const Checkbox: React_2.ForwardRefExoticComponent<Pick<ComponentProps<CheckboxSlots, "root">, "input" | "slot" | "style" | "title" | "key" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "children" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "css" | "as" | "indicator"> & Partial<CheckboxCommons> & {
+    id?: string | undefined;
+    onChange?: ((ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void) | undefined;
+    defaultChecked?: boolean | "mixed" | undefined;
+    required?: boolean | undefined;
+    disabled?: boolean | undefined;
+} & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export interface CheckboxCommons {
+    checked: 'mixed' | boolean;
+    circular: boolean;
+    containerClassName?: string;
+    labelPosition: 'before' | 'after';
+    rootId: string | undefined;
+    size: 'medium' | 'large';
 }
 
-// @public (undocumented)
-export type ICheckboxClasses = {
-    [key in keyof ICheckboxSlots]: string;
+// @public
+export interface CheckboxOnChangeData {
+    // (undocumented)
+    checked: 'mixed' | boolean;
+}
+
+// @public
+export type CheckboxProps = Omit<ComponentProps<CheckboxSlots>, 'defaultChecked'> & Partial<CheckboxCommons> & {
+    id?: string;
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    defaultChecked?: 'mixed' | boolean;
+    required?: boolean;
+    disabled?: boolean;
 };
 
 // @public
-export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    as?: React.ElementType;
-    boxSide?: 'start' | 'end';
-    checked?: boolean;
-    checkmark?: SlotProp<ISvgIconProps>;
-    className?: string;
-    componentRef?: IRefObject<ICheckbox>;
-    defaultChecked?: boolean;
-    defaultIndeterminate?: boolean;
-    disabled?: boolean;
-    indeterminate?: boolean;
-    inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
-    label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
-    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
-    // @deprecated
-    onRenderLabel?: IRenderFunction<ICheckboxProps>;
-    required?: boolean;
-    // @deprecated
-    styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
-    theme?: ITheme;
-}
+export const checkboxShorthandProps: Array<keyof CheckboxSlots>;
 
 // @public (undocumented)
-export type ICheckboxSlotProps = SlotProps<ICheckboxSlots, ICheckboxProps, React.HTMLAttributes<HTMLDivElement>>;
+export type CheckboxSlots = {
+    root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
+    input: IntrinsicShorthandProps<'input'>;
+    indicator: IntrinsicShorthandProps<'div'>;
+};
+
+// @public
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
 
 // @public (undocumented)
-export interface ICheckboxSlots extends BaseSlots {
-    // (undocumented)
-    checkbox: React.ElementType;
-    // (undocumented)
-    checkmark: React.ElementType;
-    // (undocumented)
-    container: React.ElementType;
-    // (undocumented)
-    input: React.ElementType;
-    // (undocumented)
-    label: React.ElementType;
-}
+export const renderCheckbox: (state: CheckboxState) => JSX.Element;
 
-// @public (undocumented)
-export interface ICheckboxState extends Omit<ICheckboxProps, keyof ICheckboxSlotProps>, Partial<ICheckboxSlotProps> {
-    // (undocumented)
-    ref: React.Ref<HTMLElement>;
-}
+// @public
+export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>) => CheckboxState;
 
-// @public (undocumented)
-export interface ICheckboxStyleProps {
-    // (undocumented)
-    checked?: boolean;
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    indeterminate?: boolean;
-    // (undocumented)
-    isUsingCustomLabelRender: boolean;
-    // (undocumented)
-    reversed?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface ICheckboxStyles {
-    checkbox?: IStyle;
-    checkmark?: IStyle;
-    input?: IStyle;
-    label?: IStyle;
-    root?: IStyle;
-    text?: IStyle;
-}
-
-// @public (undocumented)
-export const useCheckbox: (props: ICheckboxProps, forwardedRef: React.Ref<HTMLElement>) => ICheckboxState;
-
-// @public (undocumented)
-export const useCheckboxClasses: ClassFunction[];
-
+// @public
+export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -217,7 +217,7 @@ export async function getPerfRegressions() {
  * Create test summary based on test results.
  */
 function createReport(scenarioSettings, testResults: CookResults) {
-  const report = '## [Perf Analysis](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
+  const report = '## [Perf Analysis (`@fluentui/react`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
 
     // Show only significant changes by default.
     .concat(createScenarioTable(scenarioSettings, testResults, false))

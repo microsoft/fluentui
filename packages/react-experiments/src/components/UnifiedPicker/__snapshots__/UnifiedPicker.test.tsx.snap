@@ -62,68 +62,82 @@ exports[`UnifiedPicker renders correctly with no items 1`] = `
           role="status"
         />
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
+          aria-multiselectable="true"
+          aria-orientation="horizontal"
           className=
-              ms-BasePicker-div
-              ms-UnifiedPicker-div
+              ms-UnifiedPicker-listDiv
+              ms-UnifiedPicker-listDiv
               {
-                display: flex;
+                display: inline-flex;
+                flex-wrap: wrap;
                 flex: 1 1 auto;
               }
-          onDragOver={[Function]}
-          onDrop={[Function]}
-          role="combobox"
+          role=""
         >
-          <input
-            aria-autocomplete="list"
-            autoCapitalize="off"
-            autoComplete="off"
+          <div
+            aria-expanded={false}
+            aria-haspopup="listbox"
             className=
-                ms-BasePicker-input
-                ms-UnifiedPicker-input
+                ms-BasePicker-div
+                ms-UnifiedPicker-div
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  border: none;
                   display: flex;
-                  flex-grow: 1;
                   flex: 1 1 auto;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  height: 34px;
-                  margin-bottom: 1px;
-                  margin-left: 1px;
-                  margin-right: 1px;
-                  margin-top: 1px;
-                  outline: none;
-                  padding-bottom: 0px;
-                  padding-left: 6px;
-                  padding-right: 6px;
-                  padding-top: 0;
                 }
-                &::-ms-clear {
-                  display: none;
+            onDragOver={[Function]}
+            onDrop={[Function]}
+            role="combobox"
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="off"
+              autoComplete="off"
+              className=
+                  ms-BasePicker-input
+                  ms-UnifiedPicker-input
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    border: none;
+                    display: flex;
+                    flex-grow: 1;
+                    flex: 1 1 auto;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 34px;
+                    margin-bottom: 1px;
+                    margin-left: 1px;
+                    margin-right: 1px;
+                    margin-top: 1px;
+                    outline: none;
+                    padding-bottom: 0px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 0;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+              data-lpignore={true}
+              disabled={false}
+              onChange={[Function]}
+              onClick={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              onPaste={[Function]}
+              style={
+                Object {
+                  "fontFamily": "inherit",
                 }
-            data-lpignore={true}
-            disabled={false}
-            onChange={[Function]}
-            onClick={[Function]}
-            onCompositionEnd={[Function]}
-            onCompositionStart={[Function]}
-            onCompositionUpdate={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            onPaste={[Function]}
-            style={
-              Object {
-                "fontFamily": "inherit",
               }
-            }
-            value=""
-          />
+              value=""
+            />
+          </div>
         </div>
       </div>
     </div>

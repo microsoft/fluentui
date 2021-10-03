@@ -1,31 +1,54 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { ChatItemVariables } from './chatItemVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+
+import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensityContext';
 import { ChatItemStylesProps } from '../../../../components/Chat/ChatItem';
-import { pxToRem } from '../../../../utils';
+import { chatItemStylesComfy } from './chatItemStylesComfy';
+import { chatItemStylesCompact } from './chatItemStylesCompact';
+import { ChatItemVariables } from './chatItemVariables';
+
+const chatItemDensityStyles: Record<
+  ChatDensity,
+  ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables>
+> = {
+  comfy: chatItemStylesComfy,
+  compact: chatItemStylesCompact,
+};
+
+const getChatItemDensityStyles = (density: ChatDensity = defaultChatDensity) => chatItemDensityStyles[density];
 
 export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    position: 'relative',
-    ...((!p.attached || p.attached === 'top') && { paddingTop: pxToRem(16) }),
-    ...((p.attached === 'bottom' || p.attached === true) && {
-      paddingTop: pxToRem(2),
-    }),
-    paddingBottom: 0,
-  }),
+  root: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
 
-  gutter: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    position: 'absolute',
-    marginTop: v.gutterMargin,
-    [p.contentPosition === 'end' ? 'right' : 'left']: 0,
-    ...((p.attached === 'bottom' || p.attached === true) && {
-      display: 'none',
-    }),
-  }),
+    return {
+      paddingBottom: 0,
+      position: 'relative',
 
-  message: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    position: 'relative',
-    float: p.contentPosition === 'end' ? 'right' : 'left',
-    marginLeft: v.messageMargin,
-    marginRight: v.messageMargin,
-  }),
+      ...getChatItemDensityStyles(p.density).root(componentStyleFunctionParam),
+    };
+  },
+
+  gutter: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+
+    return {
+      position: 'absolute',
+      ...((p.attached === 'bottom' || p.attached === true) && {
+        display: 'none',
+      }),
+
+      ...getChatItemDensityStyles(p.density).gutter(componentStyleFunctionParam),
+    };
+  },
+
+  message: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+
+    return {
+      float: p.contentPosition === 'end' ? 'right' : 'left',
+      position: 'relative',
+
+      ...getChatItemDensityStyles(p.density).message(componentStyleFunctionParam),
+    };
+  },
 };

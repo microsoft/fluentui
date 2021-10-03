@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect, isSSR } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useThemeClassName, useFluent } from '@fluentui/react-shared-contexts';
+import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 
 export type UsePortalMountNodeOptions = {
   /**
@@ -17,7 +18,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions) => {
   const { targetDocument, dir } = useFluent();
 
   const element = React.useMemo(() => {
-    if (isSSR() || targetDocument === undefined || options.disabled) {
+    if (targetDocument === undefined || options.disabled) {
       return undefined;
     }
 
@@ -28,6 +29,8 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions) => {
 
     return newElement;
   }, [targetDocument, themeClassName, dir, options.disabled]);
+
+  (useKeyboardNavAttribute() as React.MutableRefObject<HTMLElement>).current = element!;
 
   useIsomorphicLayoutEffect(() => {
     return () => {

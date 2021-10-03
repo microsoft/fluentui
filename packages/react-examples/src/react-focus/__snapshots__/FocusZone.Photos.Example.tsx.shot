@@ -85,7 +85,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -152,7 +152,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -219,7 +219,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -286,7 +286,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -353,7 +353,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -420,7 +420,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -487,7 +487,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -554,7 +554,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -621,7 +621,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -688,7 +688,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -755,7 +755,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -822,7 +822,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -889,7 +889,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -956,7 +956,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -1023,7 +1023,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -1090,7 +1090,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -1157,7 +1157,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -1224,7 +1224,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -1291,7 +1291,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>
@@ -1358,7 +1358,7 @@ exports[`Component Examples renders FocusZone.Photos.Example.tsx correctly 1`] =
             }
         onError={[Function]}
         onLoad={[Function]}
-        src="http://placehold.it/50x100"
+        src="http://via.placeholder.com/50x100"
       />
     </div>
   </li>

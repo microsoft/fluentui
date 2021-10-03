@@ -19,6 +19,15 @@ describe('mergeClasses', () => {
     expect(mergeClasses('ui-button', 'ui-button-content')).toBe('ui-button ui-button-content');
   });
 
+  it('handles classes from CSS modules', () => {
+    expect(mergeClasses('_src_Button_module__primary')).toBe('_src_Button_module__primary');
+    expect(mergeClasses('Button_primary__XXP8s')).toBe('Button_primary__XXP8s');
+
+    expect(mergeClasses('Button_primary__XXP8b Button_primary__XXP8s')).toBe(
+      'Button_primary__XXP8b Button_primary__XXP8s',
+    );
+  });
+
   it('handles empty params', () => {
     expect(mergeClasses('ui-button', undefined)).toBe('ui-button');
     expect(mergeClasses(undefined, false)).toBe('');
@@ -68,8 +77,8 @@ describe('mergeClasses', () => {
     const sequence3 = mergeClasses(sequence1, sequence2, className5);
 
     expect(sequence1).toBe(`ui-button ${className2}`);
-    expect(sequence2).toBe('ui-flex __1en6qsd f13qh94s f1sbtcvk fwiuce90 fdghr900 f15vdbe4');
-    expect(sequence3).toBe('ui-button ui-flex __1pgz2r0 f13qh94s f1sbtcvk fwiuce90 fdghr900 f15vdbe4 f1rqyxcv');
+    expect(sequence2).toBe('ui-flex ___wz3cad0 f13qh94s f1sbtcvk fwiuce9 fdghr9 f15vdbe4');
+    expect(sequence3).toBe('ui-button ui-flex ___gpv7qo0 f13qh94s f1sbtcvk fwiuce9 fdghr9 f15vdbe4 f1rqyxcv');
   });
 
   it('warns if an unregistered sequence was passed', () => {
@@ -78,7 +87,7 @@ describe('mergeClasses', () => {
     const className = makeStyles({ root: { display: 'block' } })(options).root;
 
     expect(mergeClasses(className, `${SEQUENCE_PREFIX}abcdefg oprsqrt`)).toBe(className);
-    expect(error).toHaveBeenCalledWith(expect.stringMatching(/passed string contains an identifier \(__abcdefg\)/));
+    expect(error).toHaveBeenCalledWith(expect.stringMatching(/passed string contains an identifier \(___abcdefg\)/));
   });
 
   it('warns if strings are not properly merged', () => {
@@ -120,7 +129,7 @@ describe('mergeClasses', () => {
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toBe(rtlClasses2.start);
 
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start, rtlClasses1.end, rtlClasses2.end)).toBe(
-        '__1xsx5rm rfo2qazs0 rf93e62u0',
+        '___1soy3ld f93e62u fo2qazs',
       );
     });
 
@@ -137,8 +146,6 @@ describe('mergeClasses', () => {
     });
 
     it('classes for different text directions should not collide', () => {
-      // TODO: add a link to the issue
-
       const computeClasses1 = makeStyles({ root: { color: 'red' } });
       const computeClasses2 = makeStyles({ root: { paddingLeft: '10px' } });
 
@@ -148,8 +155,8 @@ describe('mergeClasses', () => {
       const rtlClassName1 = computeClasses1({ ...options, dir: 'rtl' }).root;
       const rtlClassName2 = computeClasses2({ ...options, dir: 'rtl' }).root;
 
-      expect(mergeClasses(ltrClassName1, ltrClassName2)).toBe('__17yj912 fe3e8s90 frdkuqy0');
-      expect(mergeClasses(rtlClassName1, rtlClassName2)).toBe('__1ss2kwo fe3e8s90 rfrdkuqy0');
+      expect(mergeClasses(ltrClassName1, ltrClassName2)).toBe('___1t65jhk fe3e8s9 frdkuqy');
+      expect(mergeClasses(rtlClassName1, rtlClassName2)).toBe('___w1tqsn0 fe3e8s9 f81rol6');
     });
   });
 

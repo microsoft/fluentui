@@ -1,19 +1,17 @@
 {
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
   "compilerOptions": {
-    "target": "es5",
-    "outDir": "lib",
-    "module": "commonjs",
-    "lib": ["es2017", "DOM"],
+    "target": "ES5",
+    "module": "CommonJS",
+    "lib": ["ES2017", "DOM"],
+    "outDir": "dist",
     "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest"]
-  },
-  "include": ["src"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "@testing-library/jest-dom"]
+  }
 }

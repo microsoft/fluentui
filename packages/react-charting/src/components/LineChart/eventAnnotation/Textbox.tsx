@@ -34,11 +34,7 @@ export const Textbox: React.FunctionComponent<ITextboxProps> = props => {
         line.pop();
         tspan.text(line.join(' '));
         line = [word];
-        tspan = text
-          .append<SVGTSpanElement>('tspan')
-          .text(word)
-          .attr('dy', props.lineHeight)
-          .attr('x', props.x);
+        tspan = text.append<SVGTSpanElement>('tspan').text(word).attr('dy', props.lineHeight).attr('x', props.x);
       }
     });
     // bottom aligns text

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "9.0.0-alpha.12",
+  "version": "9.0.0-alpha.90",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,22 +13,24 @@
   "license": "MIT",
   "scripts": {
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node config/normalize-import --output dist/react-menu/src && yarn docs",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-menu/src && yarn docs",
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "e2e": "node e2e.js",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
-    "test": "jest",
-    "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
+    "start": "yarn storybook",
+    "storybook": "start-storybook",
+    "test": "jest"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.3",
-    "@fluentui/react-conformance": "^0.2.6",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.58",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.51",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.20",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -42,15 +44,16 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.17",
-    "@fluentui/react-tabster": "^9.0.0-alpha.19",
-    "@fluentui/react-context-selector": "^9.0.0-alpha.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.26",
-    "@fluentui/react-portal": "^9.0.0-alpha.3",
-    "@fluentui/react-positioning": "^9.0.0-alpha.14",
-    "@fluentui/react-provider": "^9.0.0-alpha.26",
-    "@fluentui/react-utilities": "^9.0.0-alpha.19",
-    "tslib": "^1.10.0"
+    "@fluentui/keyboard-keys": "9.0.0-alpha.5",
+    "@fluentui/react-context-selector": "9.0.0-alpha.38",
+    "@fluentui/react-icons": "^1.1.140",
+    "@fluentui/react-make-styles": "9.0.0-alpha.76",
+    "@fluentui/react-portal": "9.0.0-alpha.59",
+    "@fluentui/react-positioning": "9.0.0-alpha.64",
+    "@fluentui/react-provider": "9.0.0-alpha.88",
+    "@fluentui/react-tabster": "9.0.0-alpha.71",
+    "@fluentui/react-utilities": "9.0.0-alpha.55",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

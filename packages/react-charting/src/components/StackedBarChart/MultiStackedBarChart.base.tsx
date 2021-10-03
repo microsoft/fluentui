@@ -3,6 +3,7 @@ import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { ILegend, Legends } from '../Legends/index';
 import {
+  IAccessibilityProps,
   IChartDataPoint,
   IChartProps,
   IMultiStackedBarChartProps,
@@ -33,6 +34,7 @@ export interface IMultiStackedBarChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -69,6 +71,16 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
+    const { isCalloutVisible } = this.state;
+
+    this._classNames = getClassNames(this.props.styles!, {
+      legendColor: this.state.color,
+      theme: theme!,
+    });
+
+    const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle;
+    const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
+
     const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
         singleChartData!,
@@ -80,11 +92,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       );
       return <div key={index}>{singleChartBars}</div>;
     });
-    this._classNames = getClassNames(this.props.styles!, {
-      legendColor: this.state.color,
-      theme: theme!,
-    });
-    const { isCalloutVisible } = this.state;
+
     return (
       <div className={this._classNames.root}>
         {bars}
@@ -98,17 +106,17 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           directionalHint={DirectionalHint.topRightEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
+          preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
+          {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
-          {this.props.onRenderCalloutPerDataPoint ? (
-            this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-          ) : (
-            <ChartHoverCard
-              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          )}
+          <>
+            {this.props.onRenderCalloutPerDataPoint ? (
+              this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+            ) : (
+              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} />
+            )}
+          </>
         </Callout>
       </div>
     );
@@ -129,8 +137,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
+
     let prevPosition = 0;
     let value = 0;
+
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color
         ? point.color
@@ -142,17 +152,25 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         prevPosition += value;
       }
       value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
+
       startingPoint.push(prevPosition);
+
       const styles = this.props.styles;
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
         shouldHighlight = this.state.selectedLegendTitle === point.legend;
       }
+
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
         shouldHighlight: shouldHighlight,
         href: href,
       });
+
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
+
       return (
         <g
           key={index}
@@ -164,10 +182,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
+          role="img"
+          aria-label="Multi stacked bar chart"
           onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
-          onClick={point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)}
+          onClick={href ? (point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)) : point.onClick}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
@@ -190,29 +210,34 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const hideNumber = hideRatio === undefined ? false : hideRatio;
     const showRatio = !hideNumber && data!.chartData!.length === 2;
     const showNumber = !hideNumber && data!.chartData!.length === 1;
+
     return (
       <div className={this._classNames.singleChartRoot}>
-        <div className={this._classNames.chartTitle}>
-          {data!.chartTitle && (
-            <div>
-              <strong>{data!.chartTitle}</strong>
-            </div>
-          )}
-          {showRatio && (
-            <div>
-              <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
-              {!hideDenominator && <span>/{total}</span>}
-            </div>
-          )}
-          {showNumber && (
-            <div>
-              <strong>{data!.chartData![0].data}</strong>
-            </div>
-          )}
-        </div>
+        <FocusZone direction={FocusZoneDirection.horizontal}>
+          <div className={this._classNames.chartTitle}>
+            {data!.chartTitle && (
+              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
+                <strong>{data!.chartTitle}</strong>
+              </div>
+            )}
+            {showRatio && (
+              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+                <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
+                {!hideDenominator && <span>/{total}</span>}
+              </div>
+            )}
+            {showNumber && (
+              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+                <strong>{data!.chartData![0].data}</strong>
+              </div>
+            )}
+          </div>
+        </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <svg className={this._classNames.chart}>{bars}</svg>
+            <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
+              {bars}
+            </svg>
           </div>
         </FocusZone>
       </div>
@@ -235,6 +260,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             xCalloutValue: point.xAxisCalloutData!,
             yCalloutValue: point.yAxisCalloutData!,
             dataPointCalloutProps: point,
+            callOutAccessibilityData: point.callOutAccessibilityData!,
           });
         }
       });
@@ -385,6 +411,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
+        callOutAccessibilityData: point.callOutAccessibilityData!,
       });
     }
   }
@@ -403,5 +430,20 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAccessibleDataObject = (
+    accessibleData?: IAccessibilityProps,
+    role: string = 'text',
+    isDataFocusable: boolean = true,
+  ) => {
+    accessibleData = accessibleData ?? {};
+    return {
+      role,
+      'data-is-focusable': isDataFocusable,
+      'aria-label': accessibleData!.ariaLabel,
+      'aria-labelledby': accessibleData!.ariaLabelledBy,
+      'aria-describedby': accessibleData!.ariaDescribedBy,
+    };
   };
 }

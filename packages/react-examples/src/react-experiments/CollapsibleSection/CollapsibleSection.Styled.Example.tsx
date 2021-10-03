@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Customizer } from '@fluentui/react/lib/Utilities';
+import { Customizer as DeprecatedCustomizer } from '@fluentui/react/lib/Utilities';
 import { ITheme, createTheme, DefaultPalette } from '@fluentui/react/lib/Styling';
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import {
@@ -10,6 +10,10 @@ import {
   ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleStylesReturnType,
 } from '@fluentui/react-experiments/lib/CollapsibleSection';
+
+// Workaround to prevent errors on usage of Customizer in this file, without disabling all deprecation checks
+// eslint-disable-next-line deprecation/deprecation
+const Customizer = DeprecatedCustomizer;
 
 const getPropStyles: ICollapsibleSectionComponent['styles'] = (props, theme): ICollapsibleSectionStylesReturnType => ({
   root: [

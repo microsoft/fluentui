@@ -39,9 +39,7 @@ export const ListPageProps: IDocPageProps = {
 
   allowNativeProps: true,
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/docs/ListOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/docs/ListBestPractices.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/docs/ListBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

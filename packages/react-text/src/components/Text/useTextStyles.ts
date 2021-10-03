@@ -1,62 +1,135 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { TextState } from './Text.types';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import type { TextState } from './Text.types';
 
+/**
+ * Styles for the root slot
+ */
 const useStyles = makeStyles({
   root: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-    fontWeight: theme.global.type.fontWeights.regular,
+    fontFamily: theme.fontFamilyBase,
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
+    fontWeight: theme.fontWeightRegular,
+    textAlign: 'start',
+    display: 'inline',
+    whiteSpace: 'normal',
+    overflow: 'visible',
+    textOverflow: 'clip',
   }),
-  caption: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-    lineHeight: theme.global.type.lineHeights.base[200],
-    fontWeight: theme.global.type.fontWeights.regular,
+  nowrap: {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+  },
+  truncate: {
+    textOverflow: 'ellipsis',
+  },
+  block: {
+    display: 'block',
+  },
+  italic: {
+    fontStyle: 'italic',
+  },
+  underline: {
+    textDecoration: 'underline',
+  },
+  strikethrough: {
+    textDecoration: 'line-through',
+  },
+  strikethroughUnderline: {
+    textDecoration: 'line-through underline',
+  },
+  base100: theme => ({
+    fontSize: theme.fontSizeBase100,
+    lineHeight: theme.lineHeightBase100,
   }),
-  body: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-    fontWeight: theme.global.type.fontWeights.regular,
+  base200: theme => ({
+    fontSize: theme.fontSizeBase200,
+    lineHeight: theme.lineHeightBase200,
   }),
-  subHeadline: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
-    fontWeight: theme.global.type.fontWeights.semibold,
+  base400: theme => ({
+    fontSize: theme.fontSizeBase400,
+    lineHeight: theme.lineHeightBase400,
   }),
-  headline: theme => ({
-    fontSize: theme.global.type.fontSizes.base[500],
-    lineHeight: theme.global.type.lineHeights.base[500],
-    fontWeight: theme.global.type.fontWeights.semibold,
+  base500: theme => ({
+    fontSize: theme.fontSizeBase500,
+    lineHeight: theme.lineHeightBase500,
   }),
-  title3: theme => ({
-    fontSize: theme.global.type.fontSizes.base[600],
-    lineHeight: theme.global.type.lineHeights.base[600],
-    fontWeight: theme.global.type.fontWeights.semibold,
+  base600: theme => ({
+    fontSize: theme.fontSizeBase600,
+    lineHeight: theme.lineHeightBase600,
   }),
-  title2: theme => ({
-    fontSize: theme.global.type.fontSizes.hero[700],
-    lineHeight: theme.global.type.lineHeights.hero[700],
-    fontWeight: theme.global.type.fontWeights.semibold,
+  hero700: theme => ({
+    fontSize: theme.fontSizeHero700,
+    lineHeight: theme.lineHeightHero700,
   }),
-  title1: theme => ({
-    fontSize: theme.global.type.fontSizes.hero[800],
-    lineHeight: theme.global.type.lineHeights.hero[800],
-    fontWeight: theme.global.type.fontWeights.semibold,
+  hero800: theme => ({
+    fontSize: theme.fontSizeHero800,
+    lineHeight: theme.lineHeightHero800,
   }),
-  largeTitle: theme => ({
-    fontSize: theme.global.type.fontSizes.hero[900],
-    lineHeight: theme.global.type.lineHeights.hero[900],
-    fontWeight: theme.global.type.fontWeights.semibold,
+  hero900: theme => ({
+    fontSize: theme.fontSizeHero900,
+    lineHeight: theme.lineHeightHero900,
   }),
-  display: theme => ({
-    fontSize: theme.global.type.fontSizes.hero[1000],
-    lineHeight: theme.global.type.lineHeights.hero[1000],
-    fontWeight: theme.global.type.fontWeights.semibold,
+  hero1000: theme => ({
+    fontSize: theme.fontSizeHero1000,
+    lineHeight: theme.lineHeightHero1000,
   }),
+  monospace: theme => ({
+    fontFamily: theme.fontFamilyMonospace,
+  }),
+  numeric: theme => ({
+    fontFamily: theme.fontFamilyNumeric,
+  }),
+  weightMedium: theme => ({
+    fontWeight: theme.fontWeightMedium,
+  }),
+  weightSemibold: theme => ({
+    fontWeight: theme.fontWeightSemibold,
+  }),
+  alignCenter: {
+    textAlign: 'center',
+  },
+  alignEnd: {
+    textAlign: 'end',
+  },
+  alignJustify: {
+    textAlign: 'justify',
+  },
 });
 
-export function useTextStyles(state: TextState): TextState {
+/**
+ * Apply styling to the Text slots based on the state
+ */
+export const useTextStyles = (state: TextState): TextState => {
   const styles = useStyles();
-  state.className = mergeClasses('ms-Text', styles.root, state.variant && styles[state.variant], state.className);
+
+  state.root.className = mergeClasses(
+    styles.root,
+    state.wrap === false && styles.nowrap,
+    state.truncate && styles.truncate,
+    state.block && styles.block,
+    state.italic && styles.italic,
+    state.underline && styles.underline,
+    state.strikethrough && styles.strikethrough,
+    state.underline && state.strikethrough && styles.strikethroughUnderline,
+    state.size === 100 && styles.base100,
+    state.size === 200 && styles.base200,
+    state.size === 400 && styles.base400,
+    state.size === 500 && styles.base500,
+    state.size === 600 && styles.base600,
+    state.size === 700 && styles.hero700,
+    state.size === 800 && styles.hero800,
+    state.size === 900 && styles.hero900,
+    state.size === 1000 && styles.hero1000,
+    state.font === 'monospace' && styles.monospace,
+    state.font === 'numeric' && styles.numeric,
+    state.weight === 'medium' && styles.weightMedium,
+    state.weight === 'semibold' && styles.weightSemibold,
+    state.align === 'center' && styles.alignCenter,
+    state.align === 'end' && styles.alignEnd,
+    state.align === 'justify' && styles.alignJustify,
+    state.root.className,
+  );
 
   return state;
-}
+};

@@ -2,14 +2,14 @@ import * as React from 'react';
 import * as styles from './FloatingSuggestions.scss';
 import { Async, initializeComponentRef, css, KeyCodes } from '@fluentui/react/lib/Utilities';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import {
+import { SuggestionsControl } from './Suggestions/SuggestionsControl';
+import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import type {
   IFloatingSuggestions,
   IFloatingSuggestionsProps,
   IFloatingSuggestionsInnerSuggestionProps,
 } from './FloatingSuggestions.types';
-import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
-import { SuggestionsControl } from './Suggestions/SuggestionsControl';
-import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 
 export interface IFloatingSuggestionsState {
   queryString: string;

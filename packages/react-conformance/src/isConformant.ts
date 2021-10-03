@@ -3,18 +3,21 @@ import * as fs from 'fs';
 import { IsConformantOptions } from './types';
 import { defaultTests } from './defaultTests';
 import { merge } from './utils/merge';
+import { createTsProgram } from './utils/createTsProgram';
 import { getComponentDoc } from './utils/getComponentDoc';
 
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);
-  const { componentPath, displayName, disabledTests = [], extraTests, exportSubdir = '' } = mergedOptions;
+  const { componentPath, displayName, disabledTests = [], extraTests } = mergedOptions;
 
   describe('isConformant', () => {
     if (!fs.existsSync(componentPath)) {
       throw new Error(`Path ${componentPath} does not exist`);
     }
 
-    const components = getComponentDoc(componentPath, exportSubdir);
+    const tsProgram = createTsProgram(componentPath);
+
+    const components = getComponentDoc(componentPath, tsProgram);
     const mainComponents = components.filter(comp => comp.displayName === displayName);
 
     if (mainComponents.length === 1) {
@@ -22,14 +25,16 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
 
       for (const test of Object.keys(defaultTests)) {
         if (!disabledTests.includes(test)) {
-          defaultTests[test](componentInfo, mergedOptions);
+          defaultTests[test](componentInfo, mergedOptions, tsProgram);
         }
       }
 
       if (extraTests) {
         describe('extraTests', () => {
           for (const test of Object.keys(extraTests)) {
-            extraTests[test](componentInfo, mergedOptions);
+            if (!disabledTests.includes(test)) {
+              extraTests[test](componentInfo, mergedOptions, tsProgram);
+            }
           }
         });
       }

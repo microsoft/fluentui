@@ -33,7 +33,7 @@ const webpackConfig: webpack.Configuration = {
     'anchor-js': 'AnchorJS',
     'prettier/standalone': 'prettier',
     // These Prettier plugins are available under window.prettierPlugins
-    'prettier/parser-babylon': ['prettierPlugins', 'babylon'],
+    'prettier/parser-babel': ['prettierPlugins', 'babel'],
     'prettier/parser-html': ['prettierPlugins', 'html'],
     'prettier/parser-typescript': ['prettierPlugins', 'typescript'],
     'prop-types': 'PropTypes',

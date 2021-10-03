@@ -218,9 +218,7 @@ describe('Tree', () => {
       const wrapper = mountWithProvider(<Tree items={items} />);
 
       // open title '2'
-      getTitles(wrapper)
-        .at(1)
-        .simulate('click');
+      getTitles(wrapper).at(1).simulate('click');
 
       // click on icon of title '21'
       const icon = wrapper.find(`.${svgIconClassName}`).filterWhere(n => typeof n.type() === 'string');

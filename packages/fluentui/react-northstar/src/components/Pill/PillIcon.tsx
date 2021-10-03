@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, pillIconBehavior } from '@fluentui/accessibility';
+import * as PropTypes from 'prop-types';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import {
   ComponentWithAs,
   getElementType,
@@ -51,7 +53,7 @@ export const pillIconClassName = 'ui-pill__icon';
 /**
  * A PillIcon allows user set an icon.
  */
-export const PillIcon: ComponentWithAs<'div', PillIconProps> & FluentComponentStaticProps<PillIconProps> = props => {
+export const PillIcon: ComponentWithAs<'span', PillIconProps> & FluentComponentStaticProps<PillIconProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillIcon.displayName, context.telemetry);
   setStart();
@@ -90,10 +92,18 @@ export const PillIcon: ComponentWithAs<'div', PillIconProps> & FluentComponentSt
   return element;
 };
 
+PillIcon.defaultProps = {
+  accessibility: pillIconBehavior,
+  as: 'span',
+};
+
 PillIcon.displayName = 'PillIcon';
 
 PillIcon.propTypes = {
   ...commonPropTypes.createCommon(),
+  selectable: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'smaller', 'medium']),
+  image: customPropTypes.shorthandAllowingChildren,
 };
 
 PillIcon.handledProps = Object.keys(PillIcon.propTypes) as any;

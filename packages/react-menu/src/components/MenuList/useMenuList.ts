@@ -1,56 +1,56 @@
 import * as React from 'react';
 import {
-  makeMergePropsCompat,
-  resolveShorthandProps,
   useMergedRefs,
   useEventCallback,
-  useControllableValue,
+  useControllableState,
+  getNativeElementProps,
 } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
-import { MenuListProps, MenuListState } from './MenuList.types';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext } from '../../contexts/menuContext';
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuListState>();
+import { MenuContext } from '../../contexts/menuContext';
+import type { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuList = (
-  props: MenuListProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuListProps,
-): MenuListState => {
+export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const focusAttributes = useArrowNavigationGroup({ circular: true });
   const { findAllFocusable } = useFocusFinders();
   const menuContext = useMenuContextSelectors();
+  const hasMenuContext = useHasParentContext(MenuContext);
 
-  if (usingPropsAndMenuContext(props, menuContext)) {
+  if (usingPropsAndMenuContext(props, menuContext, hasMenuContext)) {
     // TODO throw warnings in development safely
     // eslint-disable-next-line no-console
     console.warn('You are using both MenuList and Menu props, we recommend you to use Menu props when available');
   }
 
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
+  const innerRef = React.useRef<HTMLElement>(null);
+  const initialState: UninitializedMenuListState = {
+    root: getNativeElementProps('div', {
+      ref: useMergedRefs(ref, innerRef),
       role: 'menu',
       'aria-labelledby': menuContext.triggerId,
-      hasIcons: menuContext.hasIcons,
-      hasCheckmarks: menuContext.hasCheckmarks,
       ...focusAttributes,
-      ...(menuContext.hasMenuContext && { ...menuContext }),
-    },
-    defaultProps,
-    resolveShorthandProps(props, []),
-  );
+      ...props,
+    }),
+    hasIcons: menuContext.hasIcons,
+    hasCheckmarks: menuContext.hasCheckmarks,
+    ...(hasMenuContext && menuContext),
+    ...props,
+  };
 
-  state.setFocusByFirstCharacter = React.useCallback(
+  const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
       // TODO use some kind of children registration to reduce dependency on DOM roles
       const acceptedRoles = ['menuitem', 'menuitemcheckbox', 'menuitemradio'];
+      if (!innerRef.current) {
+        return;
+      }
+
       const menuItems = findAllFocusable(
-        state.ref.current,
+        innerRef.current,
         (el: HTMLElement) => el.hasAttribute('role') && acceptedRoles.indexOf(el.getAttribute('role')!) !== -1,
       );
 
@@ -84,13 +84,17 @@ export const useMenuList = (
         menuItems[index].focus();
       }
     },
-    [findAllFocusable, state.ref],
+    [findAllFocusable],
   );
 
-  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
-  state.checkedValues = checkedValues;
-  const { onCheckedValueChange } = state;
-  state.toggleCheckbox = useEventCallback(
+  const [checkedValues, setCheckedValues] = useControllableState({
+    state: initialState.checkedValues,
+    defaultState: initialState.defaultCheckedValues,
+    initialState: {},
+  });
+
+  const { onCheckedValueChange } = initialState;
+  const toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
       const checkedItems = checkedValues?.[name] || [];
       const newCheckedItems = [...checkedItems];
@@ -100,16 +104,24 @@ export const useMenuList = (
         newCheckedItems.push(value);
       }
 
-      onCheckedValueChange?.(e, name, newCheckedItems);
+      onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
       setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
     },
   );
 
-  state.selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
+  const selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
     const newCheckedItems = [value];
     setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
-    onCheckedValueChange?.(e, name, newCheckedItems);
+    onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
   });
+
+  const state = {
+    ...initialState,
+    setFocusByFirstCharacter,
+    selectRadio,
+    toggleCheckbox,
+    checkedValues: checkedValues ?? {},
+  };
 
   return state;
 };
@@ -118,7 +130,6 @@ export const useMenuList = (
  * Adds some sugar to fetching multiple context selector values
  */
 const useMenuContextSelectors = () => {
-  const hasMenuContext = useMenuContext(context => context.hasMenuContext);
   const checkedValues = useMenuContext(context => context.checkedValues);
   const onCheckedValueChange = useMenuContext(context => context.onCheckedValueChange);
   const defaultCheckedValues = useMenuContext(context => context.defaultCheckedValues);
@@ -127,7 +138,6 @@ const useMenuContextSelectors = () => {
   const hasCheckmarks = useMenuContext(context => context.hasCheckmarks);
 
   return {
-    hasMenuContext,
     checkedValues,
     onCheckedValueChange,
     defaultCheckedValues,
@@ -140,7 +150,11 @@ const useMenuContextSelectors = () => {
 /**
  * Helper function to detect if props and MenuContext values are both used
  */
-const usingPropsAndMenuContext = (props: MenuListProps, contextValue: ReturnType<typeof useMenuContextSelectors>) => {
+const usingPropsAndMenuContext = (
+  props: MenuListProps,
+  contextValue: ReturnType<typeof useMenuContextSelectors>,
+  hasMenuContext: boolean,
+) => {
   let isUsingPropsAndContext = false;
   for (const val in contextValue) {
     if (props[val as keyof Omit<typeof contextValue, 'hasMenuContext' | 'onCheckedValueChange' | 'triggerId'>]) {
@@ -148,5 +162,5 @@ const usingPropsAndMenuContext = (props: MenuListProps, contextValue: ReturnType
     }
   }
 
-  return contextValue.hasMenuContext && isUsingPropsAndContext;
+  return hasMenuContext && isUsingPropsAndContext;
 };

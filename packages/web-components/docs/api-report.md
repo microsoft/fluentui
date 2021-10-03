@@ -6,411 +6,439 @@
 
 import { Accordion } from '@microsoft/fast-foundation';
 import { AccordionItem } from '@microsoft/fast-foundation';
-import { Anchor } from '@microsoft/fast-foundation';
+import { AccordionItemOptions } from '@microsoft/fast-foundation';
+import { Anchor as Anchor_2 } from '@microsoft/fast-foundation';
 import { AnchoredRegion } from '@microsoft/fast-foundation';
-import { Badge } from '@microsoft/fast-foundation';
+import { Badge as Badge_2 } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
+import { Behavior } from '@microsoft/fast-element';
 import { Breadcrumb } from '@microsoft/fast-foundation';
 import { BreadcrumbItem } from '@microsoft/fast-foundation';
-import { Button } from '@microsoft/fast-foundation';
-import { Checkbox } from '@microsoft/fast-foundation';
-import { ColorRGBA64 } from '@microsoft/fast-colors';
-import { Combobox } from '@microsoft/fast-foundation';
-import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
+import { BreadcrumbItemOptions } from '@microsoft/fast-foundation';
+import { Button as Button_2 } from '@microsoft/fast-foundation';
+import { Card as Card_2 } from '@microsoft/fast-foundation';
+import { CheckboxOptions } from '@microsoft/fast-foundation';
+import { Combobox as Combobox_2 } from '@microsoft/fast-foundation';
+import { ComboboxOptions } from '@microsoft/fast-foundation';
+import { Constructable } from '@microsoft/fast-element';
+import type { Container } from '@microsoft/fast-foundation';
+import { CSSDesignToken } from '@microsoft/fast-foundation';
+import { CSSDirective } from '@microsoft/fast-element';
 import { DataGrid } from '@microsoft/fast-foundation';
 import { DataGridCell } from '@microsoft/fast-foundation';
 import { DataGridRow } from '@microsoft/fast-foundation';
-import { DesignSystemProvider } from '@microsoft/fast-foundation';
+import { DesignSystem } from '@microsoft/fast-foundation';
+import { DesignToken } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { Divider } from '@microsoft/fast-foundation';
+import { ElementDefinitionContext } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
+import { FASTElement } from '@microsoft/fast-element';
 import { Flipper } from '@microsoft/fast-foundation';
-import { HorizontalScroll } from '@microsoft/fast-foundation';
+import { FlipperOptions } from '@microsoft/fast-foundation';
+import { FoundationElement } from '@microsoft/fast-foundation';
+import { FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { FoundationElementRegistry } from '@microsoft/fast-foundation';
+import { HorizontalScroll as HorizontalScroll_2 } from '@microsoft/fast-foundation';
+import { HorizontalScrollOptions } from '@microsoft/fast-foundation';
 import { Listbox } from '@microsoft/fast-foundation';
 import { ListboxOption } from '@microsoft/fast-foundation';
 import { Menu } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
-import { NumberField } from '@microsoft/fast-foundation';
+import { MenuItemOptions } from '@microsoft/fast-foundation';
+import { NumberField as NumberField_2 } from '@microsoft/fast-foundation';
+import { NumberFieldOptions } from '@microsoft/fast-foundation';
+import { OverrideFoundationElementDefinition } from '@microsoft/fast-foundation';
+import { ProgressOptions } from '@microsoft/fast-foundation';
+import { ProgressRingOptions } from '@microsoft/fast-foundation';
 import { Radio } from '@microsoft/fast-foundation';
 import { RadioGroup } from '@microsoft/fast-foundation';
-import { Select } from '@microsoft/fast-foundation';
+import { RadioOptions } from '@microsoft/fast-foundation';
+import { Select as Select_2 } from '@microsoft/fast-foundation';
+import { SelectOptions } from '@microsoft/fast-foundation';
 import { Skeleton } from '@microsoft/fast-foundation';
 import { Slider } from '@microsoft/fast-foundation';
 import { SliderLabel } from '@microsoft/fast-foundation';
+import { SliderOptions } from '@microsoft/fast-foundation';
 import { Switch } from '@microsoft/fast-foundation';
+import { SwitchOptions } from '@microsoft/fast-foundation';
 import { Tab } from '@microsoft/fast-foundation';
 import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
-import { TextArea } from '@microsoft/fast-foundation';
-import { TextField } from '@microsoft/fast-foundation';
-import { Tooltip } from '@microsoft/fast-foundation';
+import { TextArea as TextArea_2 } from '@microsoft/fast-foundation';
+import { TextField as TextField_2 } from '@microsoft/fast-foundation';
+import { Toolbar as Toolbar_2 } from '@microsoft/fast-foundation';
+import { Tooltip as Tooltip_2 } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
+import { TreeItemOptions } from '@microsoft/fast-foundation';
 import { TreeView } from '@microsoft/fast-foundation';
+import { ViewTemplate } from '@microsoft/fast-element';
 
 // Warning: (ae-internal-missing-underscore) The name "AccentButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const AccentButtonStyles: ElementStyles;
 
-// Warning: (ae-forgotten-export) The symbol "SwatchFamilyResolver" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "FillSwatchFamily" needs to be exported by the entry point index.d.ts
-// Warning: (ae-internal-missing-underscore) The name "accentFill" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFill: SwatchFamilyResolver<FillSwatchFamily>;
+// @public (undocumented)
+export const accentFillActive: CSSDesignToken<Swatch>;
 
-// Warning: (ae-forgotten-export) The symbol "SwatchRecipe" needs to be exported by the entry point index.d.ts
-// Warning: (ae-internal-missing-underscore) The name "accentFillActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillActive: SwatchRecipe;
+// @public (undocumented)
+export const accentFillActiveDelta: CSSDesignToken<number>;
 
-// @public
-export const accentFillActiveBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const accentFillFocus: CSSDesignToken<Swatch>;
 
-// @public
-export const accentFillFocusBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const accentFillFocusDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "accentFillHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillHover: SwatchRecipe;
+// @public (undocumented)
+export const accentFillHover: CSSDesignToken<Swatch>;
 
-// @public
-export const accentFillHoverBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const accentFillHoverDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "accentFillLarge" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillLarge: SwatchFamilyResolver<FillSwatchFamily>;
+// @public (undocumented)
+export const accentFillRecipe: DesignToken<InteractiveColorRecipe>;
 
-// Warning: (ae-internal-missing-underscore) The name "accentFillLargeActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillLargeActive: SwatchRecipe;
+// @public (undocumented)
+export const accentFillRest: CSSDesignToken<Swatch>;
 
-// @public
-export const accentFillLargeActiveBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const accentFillRestDelta: CSSDesignToken<number>;
 
-// @public
-export const accentFillLargeFocusBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const accentForegroundActive: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "accentFillLargeHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillLargeHover: SwatchRecipe;
+// @public (undocumented)
+export const accentForegroundActiveDelta: CSSDesignToken<number>;
 
-// @public
-export const accentFillLargeHoverBehavior: CSSCustomPropertyBehavior;
+// @public @deprecated (undocumented)
+export const accentForegroundCut: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "accentFillLargeRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillLargeRest: SwatchRecipe;
+// @public @deprecated (undocumented)
+export const accentForegroundCutLarge: CSSDesignToken<Swatch>;
 
-// @public
-export const accentFillLargeRestBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const accentForegroundFocus: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "accentFillLargeSelected" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillLargeSelected: SwatchRecipe;
+// @public (undocumented)
+export const accentForegroundFocusDelta: CSSDesignToken<number>;
 
-// @public
-export const accentFillLargeSelectedBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const accentForegroundHover: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "accentFillRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillRest: SwatchRecipe;
+// @public (undocumented)
+export const accentForegroundHoverDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const accentForegroundRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const accentForegroundRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const accentForegroundRestDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const accentPalette: DesignToken<Palette<Swatch>>;
+
+export { Accordion }
+
+export { AccordionItem }
 
 // @public
-export const accentFillRestBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "accentFillSelected" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentFillSelected: SwatchRecipe;
+export const accordionItemStyles: (context: ElementDefinitionContext, definition: AccordionItemOptions) => ElementStyles;
 
 // @public
-export const accentFillSelectedBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForeground" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentForeground: SwatchFamilyResolver;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentForegroundActive: SwatchRecipe;
+export const accordionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
 // @public
-export const accentForegroundActiveBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundCut" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const accentForegroundCut: SwatchRecipe;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundCutLarge" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const accentForegroundCutLarge: SwatchRecipe;
-
-// @public
-export const accentForegroundCutRestBehavior: CSSCustomPropertyBehavior;
-
-// @public
-export const accentForegroundFocusBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentForegroundHover: SwatchRecipe;
-
-// @public
-export const accentForegroundHoverBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundLarge" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentForegroundLarge: SwatchFamilyResolver;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundLargeActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentForegroundLargeActive: SwatchRecipe;
-
-// @public
-export const accentForegroundLargeActiveBehavior: CSSCustomPropertyBehavior;
-
-// @public
-export const accentForegroundLargeFocusBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundLargeHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentForegroundLargeHover: SwatchRecipe;
-
-// @public
-export const accentForegroundLargeHoverBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundLargeRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentForegroundLargeRest: SwatchRecipe;
-
-// @public
-export const accentForegroundLargeRestBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "accentForegroundRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const accentForegroundRest: SwatchRecipe;
-
-// @public
-export const accentForegroundRestBehavior: CSSCustomPropertyBehavior;
-
-// @public
-export const AccordionItemStyles: import("@microsoft/fast-element").ElementStyles;
-
-// @public
-export const AccordionStyles: import("@microsoft/fast-element").ElementStyles;
+export const allComponents: {
+    fluentAccordion: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Accordion>;
+    fluentAccordionItem: (overrideDefinition?: OverrideFoundationElementDefinition<AccordionItemOptions> | undefined) => FoundationElementRegistry<AccordionItemOptions, Constructable<FoundationElement>>;
+    fluentAnchor: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Anchor>;
+    fluentAnchoredRegion: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, AnchoredRegion>;
+    fluentBadge: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Badge>;
+    fluentBreadcrumb: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Breadcrumb>;
+    fluentBreadcrumbItem: (overrideDefinition?: OverrideFoundationElementDefinition<BreadcrumbItemOptions> | undefined) => FoundationElementRegistry<BreadcrumbItemOptions, Constructable<FoundationElement>>;
+    fluentButton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Button>;
+    fluentCard: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Card>;
+    fluentCheckbox: (overrideDefinition?: OverrideFoundationElementDefinition<CheckboxOptions> | undefined) => FoundationElementRegistry<CheckboxOptions, Constructable<FoundationElement>>;
+    fluentCombobox: (overrideDefinition?: OverrideFoundationElementDefinition<ComboboxOptions> | undefined) => FoundationElementRegistry<ComboboxOptions, Constructable<FoundationElement>>;
+    fluentDataGrid: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, DataGrid>;
+    fluentDataGridCell: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, DataGridCell>;
+    fluentDataGridRow: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, DataGridRow>;
+    fluentDesignSystemProvider: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+    baseName: string;
+    template: ViewTemplate<any, any>;
+    styles: ElementStyles;
+    }> | undefined) => FoundationElementRegistry<    {
+    baseName: string;
+    template: ViewTemplate<any, any>;
+    styles: ElementStyles;
+    }, DesignSystemProvider>;
+    fluentDialog: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Dialog>;
+    fluentDivider: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Divider>;
+    fluentFlipper: (overrideDefinition?: OverrideFoundationElementDefinition<FlipperOptions> | undefined) => FoundationElementRegistry<FlipperOptions, Constructable<FoundationElement>>;
+    fluentHorizontalScroll: (overrideDefinition?: OverrideFoundationElementDefinition<HorizontalScrollOptions> | undefined) => FoundationElementRegistry<HorizontalScrollOptions, Constructable<FoundationElement>>;
+    fluentListbox: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Listbox>;
+    fluentOption: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, ListboxOption>;
+    fluentMenu: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Menu>;
+    fluentMenuItem: (overrideDefinition?: OverrideFoundationElementDefinition<MenuItemOptions> | undefined) => FoundationElementRegistry<MenuItemOptions, Constructable<FoundationElement>>;
+    fluentNumberField: (overrideDefinition?: OverrideFoundationElementDefinition<NumberFieldOptions> | undefined) => FoundationElementRegistry<NumberFieldOptions, Constructable<FoundationElement>>;
+    fluentProgress: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressOptions> | undefined) => FoundationElementRegistry<ProgressOptions, Constructable<FoundationElement>>;
+    fluentProgressRing: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressRingOptions> | undefined) => FoundationElementRegistry<ProgressRingOptions, Constructable<FoundationElement>>;
+    fluentRadio: (overrideDefinition?: OverrideFoundationElementDefinition<RadioOptions> | undefined) => FoundationElementRegistry<RadioOptions, Constructable<FoundationElement>>;
+    fluentRadioGroup: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, RadioGroup>;
+    fluentSelect: (overrideDefinition?: OverrideFoundationElementDefinition<SelectOptions> | undefined) => FoundationElementRegistry<SelectOptions, Constructable<FoundationElement>>;
+    fluentSkeleton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Skeleton>;
+    fluentSlider: (overrideDefinition?: OverrideFoundationElementDefinition<SliderOptions> | undefined) => FoundationElementRegistry<SliderOptions, Constructable<FoundationElement>>;
+    fluentSliderLabel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, SliderLabel>;
+    fluentSwitch: (overrideDefinition?: OverrideFoundationElementDefinition<SwitchOptions> | undefined) => FoundationElementRegistry<SwitchOptions, Constructable<FoundationElement>>;
+    fluentTabs: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tabs>;
+    fluentTab: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tab>;
+    fluentTabPanel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TabPanel>;
+    fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextArea>;
+    fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextField>;
+    fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Toolbar>;
+    fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tooltip>;
+    fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TreeView>;
+    fluentTreeItem: (overrideDefinition?: OverrideFoundationElementDefinition<TreeItemOptions> | undefined) => FoundationElementRegistry<TreeItemOptions, Constructable<FoundationElement>>;
+    register(container?: Container | undefined, ...rest: any[]): void;
+};
 
 // Warning: (ae-internal-missing-underscore) The name "ambientShadow" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
 export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(0, 0, 0, calc(.11 * (2 - var(--background-luminance, 1))))";
 
+// Warning: (ae-internal-missing-underscore) The name "Anchor" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Anchor extends Anchor_2 {
+    // @public
+    appearance: AnchorAppearance;
+    // (undocumented)
+    appearanceChanged(oldValue: AnchorAppearance, newValue: AnchorAppearance): void;
+    // (undocumented)
+    connectedCallback(): void;
+    defaultSlottedContentChanged(): void;
+}
+
 // @public
 export type AnchorAppearance = ButtonAppearance | 'hypertext';
 
-// @public
-export const AnchoredRegionStyles: import("@microsoft/fast-element").ElementStyles;
+export { AnchoredRegion }
 
 // @public
-export const AnchorStyles: import("@microsoft/fast-element").ElementStyles;
+export const anchoredRegionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public
+export const anchorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "Badge" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Badge extends Badge_2 {
+    // (undocumented)
+    appearance: BadgeAppearance;
+}
 
 // @public
 export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
 
 // @public
-export const BadgeStyles: import("@microsoft/fast-element").ElementStyles;
+export const badgeStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "BaseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-internal-missing-underscore) The name "baseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const BaseButtonStyles: ElementStyles;
+export const baseButtonStyles: (context: any, definition: any) => ElementStyles;
+
+// @public (undocumented)
+export const baseHeightMultiplier: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const baseHorizontalSpacingMultiplier: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const baseLayerLuminance: CSSDesignToken<number>;
+
+export { BaseProgress as Progress }
+export { BaseProgress as ProgressRing }
+
+// @public (undocumented)
+export const bodyFont: CSSDesignToken<string>;
+
+export { Breadcrumb }
+
+export { BreadcrumbItem }
 
 // @public
-export const BreadcrumbItemStyles: import("@microsoft/fast-element").ElementStyles;
+export const breadcrumbItemStyles: (context: ElementDefinitionContext, definition: BreadcrumbItemOptions) => ElementStyles;
 
 // @public
-export const BreadcrumbStyles: import("@microsoft/fast-element").ElementStyles;
+export const breadcrumbStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "Button" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Button extends Button_2 {
+    // @public
+    appearance: ButtonAppearance;
+    // (undocumented)
+    appearanceChanged(oldValue: ButtonAppearance, newValue: ButtonAppearance): void;
+    // (undocumented)
+    connectedCallback(): void;
+    defaultSlottedContentChanged(): void;
+}
 
 // @public
 export type ButtonAppearance = 'accent' | 'lightweight' | 'neutral' | 'outline' | 'stealth';
 
 // @public
-export const ButtonStyles: import("@microsoft/fast-element").ElementStyles;
+export const buttonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public (undocumented)
+export class Card extends Card_2 {
+    cardFillColor: string;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    handleChange(source: any, propertyName: string): void;
+    neutralPaletteSource: string;
+}
 
 // @public
-export const CardStyles: import("@microsoft/fast-element").ElementStyles;
+export const cardStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
 // @public
-export const CheckboxStyles: import("@microsoft/fast-element").ElementStyles;
+export const checkboxStyles: (context: ElementDefinitionContext, definition: CheckboxOptions) => ElementStyles;
+
+// @public (undocumented)
+export type ColorRecipe = Recipe<Swatch>;
+
+// Warning: (ae-internal-missing-underscore) The name "Combobox" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Combobox extends Combobox_2 {
+    // @public
+    appearance: ComboboxAppearance;
+    // (undocumented)
+    appearanceChanged(oldValue: ComboboxAppearance, newValue: ComboboxAppearance): void;
+    // (undocumented)
+    connectedCallback(): void;
+}
 
 // @public
 export type ComboboxAppearance = SelectAppearance;
 
 // @public
-export const ComboboxStyles: import("@microsoft/fast-element").ElementStyles;
+export const comboboxStyles: (context: ElementDefinitionContext, definition: ComboboxOptions) => ElementStyles;
+
+// @public (undocumented)
+export const controlCornerRadius: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const cornerRadius: CSSDesignToken<number>;
+
+export { DataGrid }
+
+export { DataGridCell }
 
 // @public
-export function createColorPalette(baseColor: any): string[];
+export const dataGridCellStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+export { DataGridRow }
 
 // @public
-export const DataGridCellStyles: import("@microsoft/fast-element").ElementStyles;
+export const dataGridRowStyles: (context: ElementDefinitionContext, defintion: FoundationElementDefinition) => ElementStyles;
 
 // @public
-export const DataGridRowStyles: import("@microsoft/fast-element").ElementStyles;
+export const dataGridStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public (undocumented)
+export const density: CSSDesignToken<number>;
 
 // @public
-export const DataGridStyles: import("@microsoft/fast-element").ElementStyles;
-
-// @public
-export interface DesignSystem {
-    accentBaseColor: string;
-    // (undocumented)
+export class DesignSystemProvider extends FoundationElement {
+    constructor();
+    accentBaseColor: Swatch;
     accentFillActiveDelta: number;
-    // (undocumented)
     accentFillFocusDelta: number;
-    // (undocumented)
     accentFillHoverDelta: number;
     accentFillRestDelta: number;
-    // (undocumented)
-    accentFillSelectedDelta: number;
-    // (undocumented)
     accentForegroundActiveDelta: number;
-    // (undocumented)
     accentForegroundFocusDelta: number;
-    // (undocumented)
     accentForegroundHoverDelta: number;
     accentForegroundRestDelta: number;
-    accentPalette: string[];
-    backgroundColor: string;
+    accentPalette: Palette;
     baseHeightMultiplier: number;
     baseHorizontalSpacingMultiplier: number;
     baseLayerLuminance: number;
-    cornerRadius: number;
+    controlCornerRadius: number;
     density: number;
     designUnit: number;
     direction: Direction;
     disabledOpacity: number;
-    elevatedCornerRadius?: number;
-    focusOutlineWidth: number;
-    neutralBaseColor: string;
-    // (undocumented)
-    neutralContrastFillActiveDelta: number;
-    // (undocumented)
-    neutralContrastFillFocusDelta: number;
-    // (undocumented)
-    neutralContrastFillHoverDelta: number;
-    // (undocumented)
-    neutralContrastFillRestDelta: number;
-    neutralDividerRestDelta: number;
-    // (undocumented)
+    fillColor: Swatch;
+    focusStrokeWidth: number;
+    neutralBaseColor: Swatch;
     neutralFillActiveDelta: number;
-    neutralFillCardDelta: number;
-    // (undocumented)
     neutralFillFocusDelta: number;
-    // (undocumented)
     neutralFillHoverDelta: number;
-    // (undocumented)
     neutralFillInputActiveDelta: number;
-    // (undocumented)
     neutralFillInputFocusDelta: number;
-    // (undocumented)
     neutralFillInputHoverDelta: number;
     neutralFillInputRestDelta: number;
-    // (undocumented)
-    neutralFillInputSelectedDelta: number;
-    // (undocumented)
+    neutralFillLayerRestDelta: number;
     neutralFillRestDelta: number;
-    // (undocumented)
-    neutralFillSelectedDelta: number;
-    // (undocumented)
     neutralFillStealthActiveDelta: number;
-    // (undocumented)
     neutralFillStealthFocusDelta: number;
-    // (undocumented)
     neutralFillStealthHoverDelta: number;
     neutralFillStealthRestDelta: number;
-    // (undocumented)
-    neutralFillStealthSelectedDelta: number;
-    // (undocumented)
-    neutralFillToggleActiveDelta: number;
-    // (undocumented)
-    neutralFillToggleFocusDelta: number;
-    neutralFillToggleHoverDelta: number;
-    // (undocumented)
-    neutralForegroundActiveDelta: number;
-    // (undocumented)
-    neutralForegroundFocusDelta: number;
-    neutralForegroundHoverDelta: number;
-    // (undocumented)
-    neutralOutlineActiveDelta: number;
-    // (undocumented)
-    neutralOutlineFocusDelta: number;
-    // (undocumented)
-    neutralOutlineHoverDelta: number;
-    neutralOutlineRestDelta: number;
-    neutralPalette: string[];
-    outlineWidth: number;
-    // (undocumented)
+    neutralFillStrongActiveDelta: number;
+    neutralFillStrongFocusDelta: number;
+    neutralFillStrongHoverDelta: number;
+    neutralPalette: Palette;
+    neutralStrokeActiveDelta: number;
+    neutralStrokeDividerRestDelta: number;
+    neutralStrokeFocusDelta: number;
+    neutralStrokeHoverDelta: number;
+    neutralStrokeRestDelta: number;
+    noPaint: boolean;
+    strokeWidth: number;
     typeRampBaseFontSize: string;
-    // (undocumented)
     typeRampBaseLineHeight: string;
-    // (undocumented)
     typeRampMinus1FontSize: string;
-    // (undocumented)
     typeRampMinus1LineHeight: string;
     typeRampMinus2FontSize: string;
-    // (undocumented)
     typeRampMinus2LineHeight: string;
-    // (undocumented)
     typeRampPlus1FontSize: string;
-    // (undocumented)
     typeRampPlus1LineHeight: string;
-    // (undocumented)
     typeRampPlus2FontSize: string;
-    // (undocumented)
     typeRampPlus2LineHeight: string;
-    // (undocumented)
     typeRampPlus3FontSize: string;
-    // (undocumented)
     typeRampPlus3LineHeight: string;
-    // (undocumented)
     typeRampPlus4FontSize: string;
-    // (undocumented)
     typeRampPlus4LineHeight: string;
-    // (undocumented)
     typeRampPlus5FontSize: string;
-    // (undocumented)
     typeRampPlus5LineHeight: string;
-    // (undocumented)
     typeRampPlus6FontSize: string;
-    // (undocumented)
     typeRampPlus6LineHeight: string;
 }
 
-// @public
-export const DesignSystemDefaults: DesignSystem;
+// @public (undocumented)
+export const designUnit: CSSDesignToken<number>;
+
+export { Dialog }
 
 // @public
-export const DialogStyles: import("@microsoft/fast-element").ElementStyles;
+export const dialogStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public (undocumented)
+export const direction: CSSDesignToken<Direction>;
 
 // Warning: (ae-internal-missing-underscore) The name "directionalShadow" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -418,882 +446,744 @@ export const DialogStyles: import("@microsoft/fast-element").ElementStyles;
 export const directionalShadow = "0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px)) rgba(0, 0, 0, calc(.13 * (2 - var(--background-luminance, 1))))";
 
 // @public
-export const DividerStyles: import("@microsoft/fast-element").ElementStyles;
+export class DirectionalStyleSheetBehavior implements Behavior {
+    constructor(ltr: ElementStyles | null, rtl: ElementStyles | null);
+    // @internal (undocumented)
+    bind(source: FASTElement & HTMLElement): void;
+    // @internal (undocumented)
+    unbind(source: FASTElement & HTMLElement): void;
+}
+
+// @public (undocumented)
+export const disabledOpacity: CSSDesignToken<number>;
+
+export { Divider }
+
+// @public
+export const dividerStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public @deprecated (undocumented)
+export const elevatedCornerRadius: CSSDesignToken<number>;
 
 // @public
 export const elevation: string;
 
-// Warning: (ae-internal-missing-underscore) The name "FillStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
+// @public (undocumented)
+export const fillColor: CSSDesignToken<Swatch>;
+
+// Warning: (ae-internal-missing-underscore) The name "fillStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const FillStateStyles: ElementStyles;
+export const fillStateStyles: (context: any, definition: any) => ElementStyles;
+
+export { Flipper }
 
 // @public
-export const FlipperStyles: import("@microsoft/fast-element").ElementStyles;
+export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles;
 
 // @public
-export class FluentAccordion extends Accordion {
-}
+export const fluentAccordion: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Accordion>;
 
 // @public
-export class FluentAccordionItem extends AccordionItem {
-}
+export const fluentAccordionItem: (overrideDefinition?: OverrideFoundationElementDefinition<AccordionItemOptions> | undefined) => FoundationElementRegistry<AccordionItemOptions, Constructable<FoundationElement>>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
+//
 // @public
-export class FluentAnchor extends Anchor {
-    appearance: AnchorAppearance;
-    // (undocumented)
-    appearanceChanged(oldValue: AnchorAppearance, newValue: AnchorAppearance): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    // @internal
-    defaultSlottedContentChanged(): void;
-}
+export const fluentAnchor: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Anchor>;
 
 // @beta
-export class FluentAnchoredRegion extends AnchoredRegion {
-}
+export const fluentAnchoredRegion: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof AnchoredRegion>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
+//
+// @public
+export const fluentBadge: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Badge>;
 
 // @public
-export class FluentBadge extends Badge {
-    // (undocumented)
-    appearance: BadgeAppearance;
-    }
+export const fluentBreadcrumb: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Breadcrumb>;
 
 // @public
-export class FluentBreadcrumb extends Breadcrumb {
-}
+export const fluentBreadcrumbItem: (overrideDefinition?: OverrideFoundationElementDefinition<BreadcrumbItemOptions> | undefined) => FoundationElementRegistry<BreadcrumbItemOptions, Constructable<FoundationElement>>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
+//
+// @public
+export const fluentButton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Button>;
 
 // @public
-export class FluentBreadcrumbItem extends BreadcrumbItem {
-}
+export const fluentCard: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Card>;
 
 // @public
-export class FluentButton extends Button {
-    appearance: ButtonAppearance;
-    // (undocumented)
-    appearanceChanged(oldValue: ButtonAppearance, newValue: ButtonAppearance): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    // @internal
-    defaultSlottedContentChanged(): void;
-}
+export const fluentCheckbox: (overrideDefinition?: OverrideFoundationElementDefinition<CheckboxOptions> | undefined) => FoundationElementRegistry<CheckboxOptions, Constructable<FoundationElement>>;
 
 // @public
-export class FluentCard extends FluentDesignSystemProvider {
-    cardBackgroundColor: string;
-    // (undocumented)
-    connectedCallback(): void;
-    // @internal (undocumented)
-    handleChange(source: DesignSystem, name: string): void;
-}
+export const fluentCombobox: (overrideDefinition?: OverrideFoundationElementDefinition<ComboboxOptions> | undefined) => FoundationElementRegistry<ComboboxOptions, Constructable<FoundationElement>>;
 
 // @public
-export class FluentCheckbox extends Checkbox {
-}
+export const fluentDataGrid: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof DataGrid>;
 
 // @public
-export class FluentCombobox extends Combobox {
-    appearance: ComboboxAppearance;
-    // @internal (undocumented)
-    appearanceChanged(oldValue: ComboboxAppearance, newValue: ComboboxAppearance): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-}
+export const fluentDataGridCell: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof DataGridCell>;
 
 // @public
-export class FluentDataGrid extends DataGrid {
-}
+export const fluentDataGridRow: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof DataGridRow>;
 
 // @public
-export class FluentDataGridCell extends DataGridCell {
-}
+export const fluentDesignSystemProvider: (overrideDefinition?: OverrideFoundationElementDefinition<    {
+baseName: string;
+template: ViewTemplate<any, any>;
+styles: ElementStyles;
+}> | undefined) => FoundationElementRegistry<    {
+baseName: string;
+template: ViewTemplate<any, any>;
+styles: ElementStyles;
+}, typeof DesignSystemProvider>;
 
 // @public
-export class FluentDataGridRow extends DataGridRow {
-}
+export const fluentDialog: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Dialog>;
 
 // @public
-export type FluentDesignSystem = Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'>;
+export const fluentDivider: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Divider>;
 
 // @public
-export class FluentDesignSystemProvider extends DesignSystemProvider implements Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'> {
-    // (undocumented)
-    accentBaseColor: string;
-    // (undocumented)
-    protected accentBaseColorChanged(oldValue: string, newValue: string): void;
-    // (undocumented)
-    accentFillActiveDelta: number;
-    // (undocumented)
-    accentFillFocusDelta: number;
-    // (undocumented)
-    accentFillHoverDelta: number;
-    // (undocumented)
-    accentFillRestDelta: number;
-    // (undocumented)
-    accentFillSelectedDelta: number;
-    // (undocumented)
-    accentForegroundActiveDelta: number;
-    // (undocumented)
-    accentForegroundFocusDelta: number;
-    // (undocumented)
-    accentForegroundHoverDelta: number;
-    // (undocumented)
-    accentForegroundRestDelta: number;
-    // (undocumented)
-    accentPalette: string[];
-    backgroundColor: string;
-    // (undocumented)
-    protected backgroundColorChanged(): void;
-    // (undocumented)
-    baseHeightMultiplier: number;
-    // (undocumented)
-    baseHorizontalSpacingMultiplier: number;
-    // (undocumented)
-    baseLayerLuminance: number;
-    // (undocumented)
-    cornerRadius: number;
-    // Warning: (ae-forgotten-export) The symbol "DensityOffset" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    density: DensityOffset;
-    // (undocumented)
-    designUnit: number;
-    // (undocumented)
-    direction: Direction;
-    // (undocumented)
-    disabledOpacity: number;
-    // (undocumented)
-    elevatedCornerRadius: number;
-    // (undocumented)
-    focusOutlineWidth: number;
-    // (undocumented)
-    neutralBaseColor: string;
-    // (undocumented)
-    protected neutralBaseColorChanged(oldValue: string, newValue: string): void;
-    neutralContrastFillActiveDelta: number;
-    neutralContrastFillFocusDelta: number;
-    neutralContrastFillHoverDelta: number;
-    neutralContrastFillRestDelta: number;
-    // (undocumented)
-    neutralDividerRestDelta: number;
-    // (undocumented)
-    neutralFillActiveDelta: number;
-    // (undocumented)
-    neutralFillCardDelta: number;
-    // (undocumented)
-    neutralFillFocusDelta: number;
-    // (undocumented)
-    neutralFillHoverDelta: number;
-    // (undocumented)
-    neutralFillInputActiveDelta: number;
-    // (undocumented)
-    neutralFillInputFocusDelta: number;
-    // (undocumented)
-    neutralFillInputHoverDelta: number;
-    // (undocumented)
-    neutralFillInputRestDelta: number;
-    // (undocumented)
-    neutralFillInputSelectedDelta: number;
-    // (undocumented)
-    neutralFillRestDelta: number;
-    // (undocumented)
-    neutralFillSelectedDelta: number;
-    // (undocumented)
-    neutralFillStealthActiveDelta: number;
-    // (undocumented)
-    neutralFillStealthFocusDelta: number;
-    // (undocumented)
-    neutralFillStealthHoverDelta: number;
-    // (undocumented)
-    neutralFillStealthRestDelta: number;
-    // (undocumented)
-    neutralFillStealthSelectedDelta: number;
-    // (undocumented)
-    neutralFillToggleActiveDelta: number;
-    // (undocumented)
-    neutralFillToggleFocusDelta: number;
-    // (undocumented)
-    neutralFillToggleHoverDelta: number;
-    // (undocumented)
-    neutralForegroundActiveDelta: number;
-    // (undocumented)
-    neutralForegroundFocusDelta: number;
-    // (undocumented)
-    neutralForegroundHoverDelta: number;
-    // (undocumented)
-    neutralOutlineActiveDelta: number;
-    // (undocumented)
-    neutralOutlineFocusDelta: number;
-    // (undocumented)
-    neutralOutlineHoverDelta: number;
-    // (undocumented)
-    neutralOutlineRestDelta: number;
-    // (undocumented)
-    neutralPalette: string[];
-    noPaint: boolean;
-    // (undocumented)
-    outlineWidth: number;
-    // (undocumented)
-    typeRampBaseFontSize: string;
-    // (undocumented)
-    typeRampBaseLineHeight: string;
-    // (undocumented)
-    typeRampMinus1FontSize: string;
-    // (undocumented)
-    typeRampMinus1LineHeight: string;
-    // (undocumented)
-    typeRampMinus2FontSize: string;
-    // (undocumented)
-    typeRampMinus2LineHeight: string;
-    // (undocumented)
-    typeRampPlus1FontSize: string;
-    // (undocumented)
-    typeRampPlus1LineHeight: string;
-    // (undocumented)
-    typeRampPlus2FontSize: string;
-    // (undocumented)
-    typeRampPlus2LineHeight: string;
-    // (undocumented)
-    typeRampPlus3FontSize: string;
-    // (undocumented)
-    typeRampPlus3LineHeight: string;
-    // (undocumented)
-    typeRampPlus4FontSize: string;
-    // (undocumented)
-    typeRampPlus4LineHeight: string;
-    // (undocumented)
-    typeRampPlus5FontSize: string;
-    // (undocumented)
-    typeRampPlus5LineHeight: string;
-    // (undocumented)
-    typeRampPlus6FontSize: string;
-    // (undocumented)
-    typeRampPlus6LineHeight: string;
-}
+export const fluentFlipper: (overrideDefinition?: OverrideFoundationElementDefinition<FlipperOptions> | undefined) => FoundationElementRegistry<FlipperOptions, Constructable<FoundationElement>>;
 
 // @public
-export class FluentDialog extends Dialog {
-}
+export const fluentHorizontalScroll: (overrideDefinition?: OverrideFoundationElementDefinition<HorizontalScrollOptions> | undefined) => FoundationElementRegistry<HorizontalScrollOptions, Constructable<FoundationElement>>;
 
 // @public
-export class FluentDivider extends Divider {
-}
+export const fluentListbox: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Listbox>;
 
 // @public
-export class FluentFlipper extends Flipper {
-}
+export const fluentMenu: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Menu>;
 
 // @public
-export class FluentHorizontalScroll extends HorizontalScroll {
-    // (undocumented)
+export const fluentMenuItem: (overrideDefinition?: OverrideFoundationElementDefinition<MenuItemOptions> | undefined) => FoundationElementRegistry<MenuItemOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentNumberField: (overrideDefinition?: OverrideFoundationElementDefinition<NumberFieldOptions> | undefined) => FoundationElementRegistry<NumberFieldOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentOption: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof ListboxOption>;
+
+// @public
+export const fluentProgress: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressOptions> | undefined) => FoundationElementRegistry<ProgressOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentProgressRing: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressRingOptions> | undefined) => FoundationElementRegistry<ProgressRingOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentRadio: (overrideDefinition?: OverrideFoundationElementDefinition<RadioOptions> | undefined) => FoundationElementRegistry<RadioOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentRadioGroup: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof RadioGroup>;
+
+// @public
+export const fluentSelect: (overrideDefinition?: OverrideFoundationElementDefinition<SelectOptions> | undefined) => FoundationElementRegistry<SelectOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentSkeleton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Skeleton>;
+
+// @public
+export const fluentSlider: (overrideDefinition?: OverrideFoundationElementDefinition<SliderOptions> | undefined) => FoundationElementRegistry<SliderOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentSliderLabel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof SliderLabel>;
+
+// @public
+export const fluentSwitch: (overrideDefinition?: OverrideFoundationElementDefinition<SwitchOptions> | undefined) => FoundationElementRegistry<SwitchOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentTab: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Tab>;
+
+// @public
+export const fluentTabPanel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TabPanel>;
+
+// @public
+export const fluentTabs: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Tabs>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
+//
+// @public
+export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextArea>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
+//
+// @public
+export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextField>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
+//
+// @public
+export const fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Toolbar>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+//
+// @public
+export const fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Tooltip>;
+
+// @public
+export const fluentTreeItem: (overrideDefinition?: OverrideFoundationElementDefinition<TreeItemOptions> | undefined) => FoundationElementRegistry<TreeItemOptions, Constructable<FoundationElement>>;
+
+// @public
+export const fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TreeView>;
+
+// @public @deprecated (undocumented)
+export const focusOutlineWidth: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const focusStrokeInner: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const focusStrokeInnerRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const focusStrokeOuter: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const focusStrokeOuterRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const focusStrokeWidth: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const foregroundOnAccentActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentActiveLarge: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentFocusLarge: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentHoverLarge: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentLargeRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const foregroundOnAccentRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const foregroundOnAccentRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentRestLarge: CSSDesignToken<Swatch>;
+
+// @public
+export const heightNumber: CSSDirective;
+
+// Warning: (ae-internal-missing-underscore) The name "HorizontalScroll" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export class HorizontalScroll extends HorizontalScroll_2 {
+    // @public (undocumented)
     connectedCallback(): void;
 }
 
 // @public
-export class FluentListbox extends Listbox {
-}
-
-// @public
-export class FluentMenu extends Menu {
-}
-
-// @public
-export class FluentMenuItem extends MenuItem {
-}
-
-// @public
-export class FluentNumberField extends NumberField {
-    appearance: NumberFieldAppearance;
-    // @internal (undocumented)
-    connectedCallback(): void;
-}
-
-// @public
-export class FluentOption extends ListboxOption {
-}
-
-// @public
-export class FluentProgress extends BaseProgress {
-}
-
-// @public
-export class FluentProgressRing extends BaseProgress {
-}
-
-// @public
-export class FluentRadio extends Radio {
-}
-
-// @public
-export class FluentRadioGroup extends RadioGroup {
-}
-
-// @public
-export class FluentSelect extends Select {
-    appearance: SelectAppearance;
-    // @internal (undocumented)
-    appearanceChanged(oldValue: SelectAppearance, newValue: SelectAppearance): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-}
-
-// @public
-export class FluentSkeleton extends Skeleton {
-}
-
-// @public
-export class FluentSlider extends Slider {
-}
-
-// @public
-export class FluentSliderLabel extends SliderLabel {
-}
-
-// @public
-export class FluentSwitch extends Switch {
-}
-
-// @public
-export class FluentTab extends Tab {
-}
-
-// @public
-export class FluentTabPanel extends TabPanel {
-}
-
-// @public
-export class FluentTabs extends Tabs {
-}
-
-// @public
-export class FluentTextArea extends TextArea {
-    appearance: TextAreaAppearance;
-    // @internal (undocumented)
-    appearanceChanged(oldValue: TextAreaAppearance, newValue: TextAreaAppearance): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-}
-
-// @public
-export class FluentTextField extends TextField {
-    appearance: TextFieldAppearance;
-    // @internal (undocumented)
-    appearanceChanged(oldValue: TextFieldAppearance, newValue: TextFieldAppearance): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-}
-
-// @public
-export class FluentTooltip extends Tooltip {
-}
-
-// @public
-export class FluentTreeItem extends TreeItem {
-}
-
-// @public
-export class FluentTreeView extends TreeView {
-}
-
-// @public
-export const heightNumber = "(var(--base-height-multiplier) + var(--density)) * var(--design-unit)";
-
-// @public
-export const HorizontalScrollStyles: import("@microsoft/fast-element").ElementStyles;
+export const horizontalScrollStyles: (context: ElementDefinitionContext, definition: HorizontalScrollOptions) => ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const HypertextStyles: ElementStyles;
 
-// @public
-export const inlineEndBehavior: CSSCustomPropertyBehavior;
-
-// @public
-export const inlineStartBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export type InteractiveColorRecipe = Recipe<InteractiveSwatchSet>;
 
 // @public (undocumented)
-export function isDarkMode(designSystem: DesignSystem): boolean;
+export interface InteractiveSwatchSet {
+    active: Swatch;
+    focus: Swatch;
+    hover: Swatch;
+    rest: Swatch;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "isDark" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export function isDark(color: Swatch): boolean;
+
+// @public (undocumented)
+export const layerCornerRadius: CSSDesignToken<number>;
 
 // Warning: (ae-internal-missing-underscore) The name "LightweightButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const LightweightButtonStyles: ElementStyles;
 
-// @public
-export const ListboxStyles: import("@microsoft/fast-element").ElementStyles;
+export { Listbox }
 
 // @public
-export const MenuItemStyles: import("@microsoft/fast-element").ElementStyles;
+export const listboxStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+export { Menu }
+
+export { MenuItem }
 
 // @public
-export const MenuStyles: import("@microsoft/fast-element").ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralContrastFill" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralContrastFill: SwatchFamilyResolver;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralContrastFillActive: SwatchRecipe;
+export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles;
 
 // @public
-export const neutralContrastFillActiveBehavior: CSSCustomPropertyBehavior;
+export const menuStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
-// @public
-export const neutralContrastFillFocusBehavior: CSSCustomPropertyBehavior;
+// @public @deprecated (undocumented)
+export const neutralContrastFillActive: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralContrastFillHover: SwatchRecipe;
+// @public @deprecated (undocumented)
+export const neutralContrastFillActiveDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralContrastFillHoverBehavior: CSSCustomPropertyBehavior;
+// @public @deprecated (undocumented)
+export const neutralContrastFillFocus: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralContrastFillRest: SwatchRecipe;
+// @public @deprecated (undocumented)
+export const neutralContrastFillFocusDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralContrastFillRestBehavior: CSSCustomPropertyBehavior;
+// @public @deprecated (undocumented)
+export const neutralContrastFillHover: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralContrastForegroundRestBehavior: CSSCustomPropertyBehavior;
+// @public @deprecated (undocumented)
+export const neutralContrastFillHoverDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralDividerRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralDividerRest: SwatchRecipe;
+// @public @deprecated (undocumented)
+export const neutralContrastFillRest: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralDividerRestBehavior: CSSCustomPropertyBehavior;
+// @public @deprecated (undocumented)
+export const neutralContrastFillRestDelta: CSSDesignToken<number>;
 
-// Warning: (ae-forgotten-export) The symbol "ColorRecipe" needs to be exported by the entry point index.d.ts
-// Warning: (ae-internal-missing-underscore) The name "neutralFill" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFill: ColorRecipe<FillSwatchFamily>;
+// @public @deprecated (undocumented)
+export const neutralDivider: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillActive: SwatchRecipe;
+// @public @deprecated (undocumented)
+export const neutralDividerRestDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillActiveBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillActive: CSSDesignToken<Swatch>;
 
-// Warning: (ae-forgotten-export) The symbol "Swatch" needs to be exported by the entry point index.d.ts
-// Warning: (ae-internal-missing-underscore) The name "neutralFillCard" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export function neutralFillCard(designSystem: DesignSystem): Swatch;
+// @public (undocumented)
+export const neutralFillActiveDelta: CSSDesignToken<number>;
 
-// Warning: (ae-forgotten-export) The symbol "SwatchResolver" needs to be exported by the entry point index.d.ts
-//
-// @internal (undocumented)
-export function neutralFillCard(backgroundResolver: SwatchResolver): SwatchResolver;
+// @public @deprecated (undocumented)
+export const neutralFillCard: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralFillCardRestBehavior: CSSCustomPropertyBehavior;
+// @public @deprecated (undocumented)
+export const neutralFillCardDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillFocusBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillFocus: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillHover: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillFocusDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillHoverBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillHover: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillInput" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillInput: ColorRecipe<FillSwatchFamily>;
+// @public (undocumented)
+export const neutralFillHoverDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillInputActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillInputActive: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillInputActive: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralFillInputActiveBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInputActiveDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillInputFocusBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInputFocus: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillInputHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillInputHover: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillInputFocusDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillInputHoverBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInputHover: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillInputRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillInputRest: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillInputHoverDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillInputRestBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInputRecipe: DesignToken<InteractiveColorRecipe>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillInputSelected" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillInputSelected: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillInputRest: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillRest: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillInputRestDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillRestBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInverseActive: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillSelected" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillSelected: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillInverseActiveDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillSelectedBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInverseFocus: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillStealth" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillStealth: ColorRecipe<FillSwatchFamily>;
+// @public (undocumented)
+export const neutralFillInverseFocusDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillStealthActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillStealthActive: ColorRecipe<Swatch>;
+// @public (undocumented)
+export const neutralFillInverseHover: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralFillStealthActiveBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInverseHoverDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillStealthFocusBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInverseRecipe: DesignToken<InteractiveColorRecipe>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillStealthHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillStealthHover: ColorRecipe<Swatch>;
+// @public (undocumented)
+export const neutralFillInverseRest: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralFillStealthHoverBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillInverseRestDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillStealthRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillStealthRest: ColorRecipe<Swatch>;
+// @public (undocumented)
+export const neutralFillLayerRecipe: DesignToken<ColorRecipe>;
 
-// @public
-export const neutralFillStealthRestBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillLayerRest: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillStealthSelected" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillStealthSelected: ColorRecipe<Swatch>;
+// @public (undocumented)
+export const neutralFillLayerRestDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillStealthSelectedBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillRecipe: DesignToken<InteractiveColorRecipe>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillToggle" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillToggle: SwatchFamilyResolver;
+// @public (undocumented)
+export const neutralFillRest: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillToggleActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillToggleActive: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillRestDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFillToggleActiveBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillStealthActive: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralFillToggleFocusBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillStealthActiveDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillToggleHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillToggleHover: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillStealthFocus: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralFillToggleHoverBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillStealthFocusDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFillToggleRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFillToggleRest: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillStealthHover: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralFillToggleRestBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillStealthHoverDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralFocus" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralFocus: ColorRecipe<Swatch>;
+// @public (undocumented)
+export const neutralFillStealthRecipe: DesignToken<InteractiveColorRecipe>;
 
-// @public
-export const neutralFocusBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillStealthRest: CSSDesignToken<Swatch>;
 
-// Warning: (ae-forgotten-export) The symbol "DesignSystemResolver" needs to be exported by the entry point index.d.ts
-// Warning: (ae-internal-missing-underscore) The name "neutralFocusInnerAccent" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export function neutralFocusInnerAccent(accentFillColor: DesignSystemResolver<string>): DesignSystemResolver<string>;
+// @public (undocumented)
+export const neutralFillStealthRestDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralFocusInnerAccentBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillStrongActive: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralForeground" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralForeground: SwatchFamilyResolver;
+// @public (undocumented)
+export const neutralFillStrongActiveDelta: CSSDesignToken<number>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralForegroundActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralForegroundActive: SwatchRecipe;
+// @public (undocumented)
+export const neutralFillStrongFocus: CSSDesignToken<Swatch>;
 
-// @public
-export const neutralForegroundActiveBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillStrongFocusDelta: CSSDesignToken<number>;
 
-// @public
-export const neutralForegroundFocusBehavior: CSSCustomPropertyBehavior;
+// @public (undocumented)
+export const neutralFillStrongHover: CSSDesignToken<Swatch>;
 
-// Warning: (ae-internal-missing-underscore) The name "neutralForegroundHint" should be prefixed with an underscore because the declaration is marked as @internal
+// @public (undocumented)
+export const neutralFillStrongHoverDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralFillStrongRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const neutralFillStrongRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralFillStrongRestDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleActive: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleActiveDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleFocusDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleHover: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleHoverDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleRest: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleRestDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFocusInnerAccent: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralForegroundHint: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralForegroundHintRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralForegroundRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralForegroundRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralLayer1: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralLayer1Recipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralLayer2: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralLayer2Recipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralLayer3: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralLayer3Recipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralLayer4: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralLayer4Recipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralLayerCardContainer: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralLayerCardContainerRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralLayerFloating: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralLayerFloatingRecipe: DesignToken<ColorRecipe>;
+
+// @public @deprecated (undocumented)
+export const neutralLayerL1: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralLayerL2: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralLayerL3: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralLayerL4: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralOutlineActive: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralOutlineFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralOutlineHover: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralOutlineRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralPalette: DesignToken<Palette<Swatch>>;
+
+// @public (undocumented)
+export const neutralStrokeActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeActiveDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeDividerRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralStrokeDividerRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeDividerRestDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeFocusDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeHoverDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const neutralStrokeRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeRestDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongActiveDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongFocusDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongHoverDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const neutralStrokeStrongRest: CSSDesignToken<Swatch>;
+
+// Warning: (ae-internal-missing-underscore) The name "NumberField" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export const neutralForegroundHint: SwatchRecipe;
-
-// @public
-export const neutralForegroundHintBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralForegroundHintLarge" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralForegroundHintLarge: SwatchRecipe;
-
-// @public
-export const neutralForegroundHintLargeBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralForegroundHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralForegroundHover: SwatchRecipe;
-
-// @public
-export const neutralForegroundHoverBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralForegroundRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralForegroundRest: SwatchRecipe;
-
-// @public
-export const neutralForegroundRestBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralForegroundToggle" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralForegroundToggle: SwatchRecipe;
-
-// @public
-export const neutralForegroundToggleBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralForegroundToggleLarge" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralForegroundToggleLarge: SwatchRecipe;
-
-// @public
-export const neutralForegroundToggleLargeBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralLayerCard" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralLayerCard: ColorRecipe<Swatch>;
-
-// @public
-export const neutralLayerCardBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralLayerCardContainer" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralLayerCardContainer: ColorRecipe<Swatch>;
-
-// @public
-export const neutralLayerCardContainerBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralLayerFloating" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralLayerFloating: ColorRecipe<Swatch>;
-
-// @public
-export const neutralLayerFloatingBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralLayerL1" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralLayerL1: ColorRecipe<Swatch>;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralLayerL1Alt" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralLayerL1Alt: ColorRecipe<Swatch>;
-
-// @public
-export const neutralLayerL1AltBehavior: CSSCustomPropertyBehavior;
-
-// @public
-export const neutralLayerL1Behavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralLayerL2" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralLayerL2: ColorRecipe<Swatch>;
-
-// @public
-export const neutralLayerL2Behavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralLayerL3" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralLayerL3: ColorRecipe<Swatch>;
-
-// @public
-export const neutralLayerL3Behavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralLayerL4" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const neutralLayerL4: ColorRecipe<Swatch>;
-
-// @public
-export const neutralLayerL4Behavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-forgotten-export) The symbol "SwatchFamily" needs to be exported by the entry point index.d.ts
-// Warning: (ae-internal-missing-underscore) The name "neutralOutline" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralOutline: ColorRecipe<SwatchFamily>;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralOutlineActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralOutlineActive: SwatchRecipe;
-
-// @public
-export const neutralOutlineActiveBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralOutlineContrast" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralOutlineContrast: ColorRecipe<SwatchFamily>;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralOutlineContrastActive" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralOutlineContrastActive: SwatchRecipe;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralOutlineContrastHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralOutlineContrastHover: SwatchRecipe;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralOutlineContrastRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralOutlineContrastRest: SwatchRecipe;
-
-// @public
-export const neutralOutlineFocusBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralOutlineHover" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralOutlineHover: SwatchRecipe;
-
-// @public
-export const neutralOutlineHoverBehavior: CSSCustomPropertyBehavior;
-
-// Warning: (ae-internal-missing-underscore) The name "neutralOutlineRest" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const neutralOutlineRest: SwatchRecipe;
-
-// @public
-export const neutralOutlineRestBehavior: CSSCustomPropertyBehavior;
+export class NumberField extends NumberField_2 {
+    // @public
+    appearance: NumberFieldAppearance;
+    // (undocumented)
+    connectedCallback(): void;
+}
 
 // @public
 export type NumberFieldAppearance = 'filled' | 'outline';
 
 // @public
-export const NumberFieldStyles: import("@microsoft/fast-element").ElementStyles;
+export const numberFieldStyles: (context: any, definition: any) => ElementStyles;
 
 // @public
-export const OptionStyles: import("@microsoft/fast-element").ElementStyles;
+export const OptionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "OutlineButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const OutlineButtonStyles: ElementStyles;
 
+// @public @deprecated (undocumented)
+export const outlineWidth: CSSDesignToken<number>;
+
 // @public
-export type Palette = Swatch[];
-
-// Warning: (ae-internal-missing-underscore) The name "palette" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal @deprecated
-export function palette(paletteType: PaletteType): DesignSystemResolver<Palette>;
-
-// @public @deprecated
-export enum PaletteType {
+export interface Palette<T extends Swatch = Swatch> {
+    // Warning: (ae-forgotten-export) The symbol "RelativeLuminance" needs to be exported by the entry point index.d.ts
+    closestIndexOf(reference: RelativeLuminance): number;
+    colorContrast(reference: Swatch, contrast: number, initialIndex?: number, direction?: 1 | -1): T;
+    get(index: number): T;
     // (undocumented)
-    accent = "accent",
+    readonly source: T;
     // (undocumented)
-    neutral = "neutral"
+    readonly swatches: ReadonlyArray<T>;
 }
 
-// @public
-export function parseColorString(color: string): ColorRGBA64;
+// @public (undocumented)
+export type PaletteRGB = Palette<SwatchRGB>;
+
+// @public (undocumented)
+export const PaletteRGB: Readonly<{
+    create(source: SwatchRGB): PaletteRGB;
+}>;
 
 // @public
-export const ProgressRingStyles: import("@microsoft/fast-element").ElementStyles;
+export const progressRingStyles: (context: ElementDefinitionContext, definition: ProgressRingOptions) => ElementStyles;
 
 // @public
-export const ProgressStyles: import("@microsoft/fast-element").ElementStyles;
+export const progressStyles: (context: ElementDefinitionContext, definition: ProgressOptions) => ElementStyles;
 
 // @public
-export const RadioGroupStyles: import("@microsoft/fast-element").ElementStyles;
+export function provideFluentDesignSystem(element?: HTMLElement): DesignSystem;
+
+export { Radio }
+
+export { RadioGroup }
 
 // @public
-export const RadioStyles: import("@microsoft/fast-element").ElementStyles;
+export const radioGroupStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public
+export const RadioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles;
+
+// @public (undocumented)
+export interface Recipe<T> {
+    // (undocumented)
+    evaluate(element: HTMLElement, reference?: Swatch): T;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "Select" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Select extends Select_2 {
+    // @public
+    appearance: SelectAppearance;
+    // (undocumented)
+    appearanceChanged(oldValue: SelectAppearance, newValue: SelectAppearance): void;
+    // (undocumented)
+    connectedCallback(): void;
+}
 
 // @public
 export type SelectAppearance = 'filled' | 'outline';
 
 // @public
-export const SelectStyles: import("@microsoft/fast-element").ElementStyles;
+export const selectStyles: (context: any, definition: any) => ElementStyles;
+
+export { Skeleton }
 
 // @public
-export const SkeletonStyles: import("@microsoft/fast-element").ElementStyles;
+export const skeletonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+export { Slider }
+
+export { SliderLabel }
 
 // @public
-export const SliderLabelStyles: import("@microsoft/fast-element").ElementStyles;
+export const sliderLabelStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
 // @public
-export const SliderStyles: import("@microsoft/fast-element").ElementStyles;
+export const sliderStyles: (context: ElementDefinitionContext, definition: SliderOptions) => ElementStyles;
 
 // @public
 export enum StandardLuminance {
@@ -1308,39 +1198,180 @@ export enum StandardLuminance {
 // @internal (undocumented)
 export const StealthButtonStyles: ElementStyles;
 
-// @public
-export const SwitchStyles: import("@microsoft/fast-element").ElementStyles;
+// @public (undocumented)
+export const strokeWidth: CSSDesignToken<number>;
 
 // @public
-export const TabPanelStyles: import("@microsoft/fast-element").ElementStyles;
+export interface Swatch extends RelativeLuminance {
+    // (undocumented)
+    contrast(target: RelativeLuminance): number;
+    // (undocumented)
+    toColorString(): string;
+}
+
+// @public (undocumented)
+export interface SwatchRGB extends Swatch {
+    // (undocumented)
+    b: number;
+    // (undocumented)
+    g: number;
+    // (undocumented)
+    r: number;
+}
+
+// @public (undocumented)
+export const SwatchRGB: Readonly<{
+    create(r: number, g: number, b: number): SwatchRGB;
+    from(obj: {
+        r: number;
+        g: number;
+        b: number;
+    }): SwatchRGB;
+}>;
+
+export { Switch }
 
 // @public
-export const TabsStyles: import("@microsoft/fast-element").ElementStyles;
+export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles;
+
+export { Tab }
+
+export { TabPanel }
 
 // @public
-export const TabStyles: import("@microsoft/fast-element").ElementStyles;
+export const tabPanelStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+export { Tabs }
+
+// @public
+export const tabsStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public
+export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextArea" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class TextArea extends TextArea_2 {
+    // @public
+    appearance: TextAreaAppearance;
+    // (undocumented)
+    appearanceChanged(oldValue: TextAreaAppearance, newValue: TextAreaAppearance): void;
+    // (undocumented)
+    connectedCallback(): void;
+}
 
 // @public
 export type TextAreaAppearance = 'filled' | 'outline';
 
 // @public
-export const TextAreaStyles: import("@microsoft/fast-element").ElementStyles;
+export const textAreaStyles: (context: any, definition: any) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextField" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class TextField extends TextField_2 {
+    // @public
+    appearance: TextFieldAppearance;
+    // (undocumented)
+    appearanceChanged(oldValue: TextFieldAppearance, newValue: TextFieldAppearance): void;
+    // (undocumented)
+    connectedCallback(): void;
+}
 
 // @public
 export type TextFieldAppearance = 'filled' | 'outline';
 
 // @public
-export const TextFieldStyles: import("@microsoft/fast-element").ElementStyles;
+export const textFieldStyles: (context: any, definition: any) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "Toolbar" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Toolbar extends Toolbar_2 {
+}
+
+// Warning: (ae-internal-missing-underscore) The name "Tooltip" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Tooltip extends Tooltip_2 {
+    // (undocumented)
+    connectedCallback(): void;
+}
+
+export { TreeItem }
 
 // @public
-export const TooltipStyles: import("@microsoft/fast-element").ElementStyles;
+export const treeItemStyles: (context: ElementDefinitionContext, definition: TreeItemOptions) => ElementStyles;
+
+export { TreeView }
 
 // @public
-export const TreeItemStyles: import("@microsoft/fast-element").ElementStyles;
+export const treeViewStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
-// @public
-export const TreeViewStyles: import("@microsoft/fast-element").ElementStyles;
+// @public (undocumented)
+export const typeRampBaseFontSize: CSSDesignToken<string>;
 
+// @public (undocumented)
+export const typeRampBaseLineHeight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampMinus1FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampMinus1LineHeight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampMinus2FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampMinus2LineHeight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus1FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus1LineHeight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus2FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus2LineHeight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus3FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus3LineHeight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus4FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus4LineHeight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus5FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus5LineHeight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus6FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus6LineHeight: CSSDesignToken<string>;
+
+// Warnings were encountered during analysis:
+//
+// dist/dts/custom-elements.d.ts:49:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
+// dist/dts/custom-elements.d.ts:51:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
+// dist/dts/custom-elements.d.ts:54:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
+// dist/dts/custom-elements.d.ts:91:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
+// dist/dts/custom-elements.d.ts:92:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
+// dist/dts/custom-elements.d.ts:93:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
+// dist/dts/custom-elements.d.ts:94:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

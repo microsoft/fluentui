@@ -1,23 +1,24 @@
 import * as React from 'react';
-import { FluentProviderState } from './FluentProvider.types';
-import { ProviderContext } from '@fluentui/react-shared-contexts';
-import { TooltipProvider } from '@fluentui/react-tooltip';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { ProviderContext, TooltipContext, ThemeContext, ThemeClassNameContext } from '@fluentui/react-shared-contexts';
+import { getSlots } from '@fluentui/react-utilities';
+import type { FluentProviderSlots, FluentProviderContextValues, FluentProviderState } from './FluentProvider.types';
+import { fluentProviderShorthandProps } from './useFluentProvider';
 
 /**
  * Render the final JSX of FluentProvider
  */
-export const renderFluentProvider = (state: FluentProviderState) => {
-  const { dir, targetDocument, theme } = state;
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const value = React.useMemo(() => ({ dir, targetDocument }), [dir, targetDocument]);
+export const renderFluentProvider = (state: FluentProviderState, contextValues: FluentProviderContextValues) => {
+  const { slots, slotProps } = getSlots<FluentProviderSlots>(state, fluentProviderShorthandProps);
 
   return (
-    <ThemeProvider {...state} theme={theme} targetDocument={state.targetDocument}>
-      <ProviderContext.Provider value={value}>
-        <TooltipProvider>{state.children}</TooltipProvider>
-      </ProviderContext.Provider>
-    </ThemeProvider>
+    <ProviderContext.Provider value={contextValues.provider}>
+      <ThemeContext.Provider value={contextValues.theme}>
+        <ThemeClassNameContext.Provider value={contextValues.themeClassName}>
+          <TooltipContext.Provider value={contextValues.tooltip}>
+            <slots.root {...slotProps.root}>{state.root.children}</slots.root>
+          </TooltipContext.Provider>
+        </ThemeClassNameContext.Provider>
+      </ThemeContext.Provider>
+    </ProviderContext.Provider>
   );
 };

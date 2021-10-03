@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import * as consoleUtil from '../consoleUtil';
 
-const TestComponent: React.FC<{ trigger?: React.ReactElement | null }> = props => {
+const TestComponent: React.FC<{ trigger?: React.ReactElement }> = props => {
   return useTriggerElement(props);
 };
 
@@ -24,7 +24,7 @@ describe('useTriggerElement', () => {
   });
 
   it('"trigger" can be null', () => {
-    const wrapper = mount(<TestComponent trigger={null} />);
+    const wrapper = mount(<TestComponent trigger={(null as unknown) as React.ReactElement} />);
 
     expect(wrapper.children()).toHaveLength(0);
   });

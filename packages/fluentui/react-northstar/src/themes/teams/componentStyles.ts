@@ -102,6 +102,7 @@ export { pillContentStyles as PillContent } from './components/Pill/pillContentS
 export { pillActionStyles as PillAction } from './components/Pill/pillActionStyles';
 export { pillImageStyles as PillImage } from './components/Pill/pillImageStyles';
 export { pillIconStyles as PillIcon } from './components/Pill/pillIconStyles';
+export { pillGroupStyles as PillGroup } from './components/Pill/pillGroupStyles';
 
 export { popupContentStyles as PopupContent } from './components/Popup/popupContentStyles';
 
@@ -129,6 +130,7 @@ export { statusStyles as Status } from './components/Status/statusStyles';
 
 export { splitButtonStyles as SplitButton } from './components/SplitButton/splitButtonStyles';
 export { splitButtonToggleStyles as SplitButtonToggle } from './components/SplitButton/splitButtonToggleStyles';
+export { splitButtonDividerStyles as SplitButtonDivider } from './components/SplitButton/splitButtonDividerStyles';
 
 export { textStyles as Text } from './components/Text/textStyles';
 

@@ -1,7 +1,7 @@
 import { EventGroup } from './EventGroup';
 import { findScrollableParent } from './scroll';
 import { getRect } from './dom/getRect';
-import { IRectangle } from './IRectangle';
+import type { IRectangle } from './IRectangle';
 
 declare function setTimeout(cb: Function, delay: number): number;
 
@@ -24,7 +24,7 @@ export class AutoScroll {
   private _scrollRect: IRectangle | undefined;
   private _scrollVelocity!: number;
   private _isVerticalScroll!: boolean;
-  private _timeoutId!: number;
+  private _timeoutId?: number;
 
   constructor(element: HTMLElement) {
     this._events = new EventGroup(this);

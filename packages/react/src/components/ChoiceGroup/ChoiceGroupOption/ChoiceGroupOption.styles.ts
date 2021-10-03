@@ -1,6 +1,7 @@
-import { HighContrastSelector, IStyle, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
+import { HighContrastSelector, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
-import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
+import type { IStyle } from '../../../Styling';
+import type { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
 const GlobalClassNames = {
   root: 'ms-ChoiceField',
@@ -139,6 +140,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
           },
         checked && {
           borderColor: dotCheckedHoveredColor,
+          background: dotCheckedHoveredColor,
         },
       ],
     },
@@ -220,6 +222,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       borderWidth: 5,
       borderStyle: 'solid',
       borderColor: disabled ? dotDisabledColor : dotCheckedColor,
+      background: dotCheckedColor,
       left: 5,
       top: 5,
       width: 10,

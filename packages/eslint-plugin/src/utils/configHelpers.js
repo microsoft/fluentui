@@ -38,9 +38,6 @@ const camelOrPascalOrUpperCase = `(${camelOrPascalCase}|${upperCase})`;
 const builtins = '^(any|Number|number|String|string|Boolean|boolean|Undefined|undefined)$';
 
 module.exports = {
-  /** File extensions to lint (with leading .) */
-  extensions: ['.ts', '.tsx', '.js', '.jsx'],
-
   /** Test-related files */
   testFiles,
 
@@ -129,18 +126,57 @@ module.exports = {
     const tsGlob = '**/*.{ts,tsx}';
     let tsFiles = [`src/${tsGlob}`];
     tsconfigPath = tsconfigPath || path.join(process.cwd(), 'tsconfig.json');
-    if (fs.existsSync(tsconfigPath)) {
-      // Note that this way of reading tsconfig does not account for extends, but that's okay since
-      // typically include will not be specified that way
-      const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
-      if (tsconfig.include) {
-        tsFiles = /** @type {string[]} */ (tsconfig.include).map(
-          includePath => `${includePath.replace(/\*.*/, '')}/${tsGlob}`,
-        );
-      } else if (tsconfig.compilerOptions && tsconfig.compilerOptions.rootDir) {
-        tsFiles = [`${tsconfig.compilerOptions.rootDir}/${tsGlob}`];
-      }
+
+    if (!fs.existsSync(tsconfigPath)) {
+      return [];
     }
+
+    /**
+       * Note that this way of reading tsconfig does not account for extends, but that's okay since
+       * typically include will not be specified that way
+       *
+       * @type {{
+          extends: string[];
+          include: string[];
+          excludes: string[];
+          compilerOptions: Record<string,unknown>;
+          references?: Array<{path:string}>
+          }}
+       */
+    const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
+
+    // if project is using solution TS style config (process references)
+    if (tsconfig.references) {
+      return [
+        {
+          files: [tsGlob],
+          parserOptions: {
+            project: tsconfig.references.map(refConfig => path.join(process.cwd(), refConfig.path)),
+          },
+          rules,
+        },
+      ];
+    }
+
+    if (tsconfig.include) {
+      tsFiles = /** @type {string[]} */ (tsconfig.include).map(
+        includePath => `${includePath.replace(/\*.*/, '')}/${tsGlob}`,
+      );
+    } else if (tsconfig.compilerOptions && tsconfig.compilerOptions.rootDir) {
+      tsFiles = [`${tsconfig.compilerOptions.rootDir}/${tsGlob}`];
+    }
+
+    // properly resolve invalid slashes in path and preserve initial relative `./` used in tsconfigs
+    tsFiles = tsFiles.map(fileGlob => {
+      const isRelativePath = !path.isAbsolute(fileGlob);
+      const normalized = path.normalize(fileGlob);
+
+      if (isRelativePath) {
+        return './' + normalized;
+      }
+
+      return normalized;
+    });
 
     return [
       {

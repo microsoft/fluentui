@@ -1,5 +1,5 @@
-import { IIconStyleProps, IIconStyles } from './Icon.types';
 import { mergeStyleSets } from '../../Styling';
+import type { IIconStyleProps, IIconStyles } from './Icon.types';
 
 /** Class names used in themeable and non-themeable Icon components */
 export const classNames = mergeStyleSets({

@@ -1,4 +1,1 @@
-export const getUUID = () =>
-  Math.random()
-    .toString(36)
-    .slice(2);
+export const getUUID = () => Math.random().toString(36).slice(2);

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { keyboardKey } from '@fluentui/keyboard-key';
 import { render, fireEvent } from '@testing-library/react';
+import { ArrowRight, ArrowDown } from '@fluentui/keyboard-keys';
 import { useTriggerElement } from './useTriggerElement';
-import { MenuContextValue, useMenuContext } from '../../contexts/menuContext';
+import { useMenuContext } from '../../contexts/menuContext';
 import { MenuItem } from '../MenuItem/index';
+import type { MenuContextValue } from '../../contexts/menuContext';
 
 jest.mock('../../contexts/menuContext');
 
@@ -12,7 +13,7 @@ describe('useTriggerElement', () => {
   const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
     const contextValue: Partial<MenuContextValue> = {
       triggerRef: React.createRef() as React.MutableRefObject<HTMLElement>,
-      menuPopupRef: React.createRef() as React.MutableRefObject<HTMLElement>,
+      menuPopoverRef: React.createRef() as React.MutableRefObject<HTMLElement>,
       setOpen: jest.fn(),
       ...options,
     };
@@ -29,7 +30,7 @@ describe('useTriggerElement', () => {
     const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
     // Act
-    const { getByRole } = render(result.current.children);
+    const { getByRole } = render(result.current.children as React.ReactElement);
     triggerEvent(getByRole('button'));
 
     // Assert
@@ -51,12 +52,12 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.click(getByRole('button'));
 
       // Assert
       expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(expect.anything(), true);
+      expect(spy).toHaveBeenCalledWith(expect.anything(), { open: true, keyboard: false });
     });
 
     it('should not open menu if child is disabled', () => {
@@ -67,7 +68,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.click(getByRole('button'));
 
       // Assert
@@ -82,10 +83,9 @@ describe('useTriggerElement', () => {
     it('should use original on blur handler', () => testOriginalEventHandlerExists('onBlur', fireEvent.blur));
 
     it.each([
-      ['click', true, fireEvent.click],
-      ['mouseenter', true, fireEvent.mouseEnter],
-      ['blur', false, fireEvent.blur],
-    ])('should on %s event call setOpen with %s ', (_, expectedValue, triggerEvent) => {
+      ['click', true, fireEvent.click, {}],
+      ['mouseleave', false, fireEvent.mouseLeave, {}],
+    ])('should on %s event call setOpen with %s ', (_, expectedValue, triggerEvent, eventOptions?) => {
       // Arrange
       const spy = jest.fn();
       mockUseMenuContext({ setOpen: spy, openOnHover: true });
@@ -93,18 +93,67 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
-      triggerEvent(getByRole('button'));
+      const { getByRole } = render(result.current.children as React.ReactElement);
+      triggerEvent(getByRole('button'), eventOptions);
 
       // Assert
       expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(expect.anything(), expectedValue);
+      expect(spy).toHaveBeenCalledWith(expect.anything(), { open: expectedValue, keyboard: false });
+    });
+
+    it('should only open the menu on first mousemove event', () => {
+      // Arrange
+      const spy = jest.fn();
+      mockUseMenuContext({ setOpen: spy, openOnHover: true });
+      const triggerButton = <button>Trigger button</button>;
+      const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
+
+      // Act
+      const { getByRole } = render(result.current.children as React.ReactElement);
+      fireEvent.mouseMove(getByRole('button'));
+      fireEvent.mouseMove(getByRole('button'));
+
+      // Assert
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(expect.anything(), { open: true, keyboard: false });
+    });
+
+    it('should open the menu on with mouseenter after mouseover', () => {
+      // Arrange
+      const spy = jest.fn();
+      mockUseMenuContext({ setOpen: spy, openOnHover: true });
+      const triggerButton = <button>Trigger button</button>;
+      const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
+
+      // Act
+      const { getByRole } = render(result.current.children as React.ReactElement);
+      fireEvent.mouseMove(getByRole('button'));
+      fireEvent.mouseEnter(getByRole('button'));
+
+      // Assert
+      expect(spy).toHaveBeenCalledTimes(2);
+      expect(spy).toHaveBeenNthCalledWith(1, expect.anything(), { open: true, keyboard: false });
+      expect(spy).toHaveBeenNthCalledWith(2, expect.anything(), { open: true, keyboard: false });
+    });
+
+    it('should not open the menu on with mouseenter before mouseover', () => {
+      // Arrange
+      const spy = jest.fn();
+      mockUseMenuContext({ setOpen: spy, openOnHover: true });
+      const triggerButton = <button>Trigger button</button>;
+      const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
+
+      // Act
+      const { getByRole } = render(result.current.children as React.ReactElement);
+      fireEvent.mouseEnter(getByRole('button'));
+
+      // Assert
+      expect(spy).toHaveBeenCalledTimes(0);
     });
 
     it.each([
       ['click', fireEvent.click],
       ['mouseenter', fireEvent.mouseEnter],
-      ['blur', fireEvent.blur],
     ])('should not call setOpen on %s when element is disabled', (_, triggerEvent) => {
       // Arrange
       const spy = jest.fn();
@@ -113,7 +162,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       triggerEvent(getByRole('button'));
 
       // Assert
@@ -137,7 +186,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       triggerEvent(getByRole('button'));
 
       // Assert
@@ -152,12 +201,12 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.contextMenu(getByRole('button'));
 
       // Assert
       expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(expect.anything(), true);
+      expect(spy).toHaveBeenCalledWith(expect.anything(), { open: true, keyboard: false });
     });
 
     it('should not open menu if child is disabled', () => {
@@ -168,7 +217,7 @@ describe('useTriggerElement', () => {
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
       // Act
-      const { getByRole } = render(result.current.children);
+      const { getByRole } = render(result.current.children as React.ReactElement);
       fireEvent.contextMenu(getByRole('button'));
 
       // Assert
@@ -185,7 +234,7 @@ describe('useTriggerElement', () => {
     const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
     // Act
-    const { getByRole } = render(result.current.children);
+    const { getByRole } = render(result.current.children as React.ReactElement);
 
     // Assert
     expect(getByRole('button').getAttribute('id')).toEqual(id);
@@ -199,12 +248,12 @@ describe('useTriggerElement', () => {
     const { result } = renderHook(() => useTriggerElement({ children: menuitem }));
 
     // Act
-    const { getByRole } = render(result.current.children);
-    fireEvent.keyDown(getByRole('menuitem'), { keyCode: keyboardKey.ArrowRight });
+    const { getByRole } = render(result.current.children as React.ReactElement);
+    fireEvent.keyDown(getByRole('menuitem'), { key: ArrowRight });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(expect.anything(), true);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), { open: true, keyboard: true });
   });
 
   it('should open menu on down arrow for root trigger', () => {
@@ -215,11 +264,11 @@ describe('useTriggerElement', () => {
     const { result } = renderHook(() => useTriggerElement({ children: trigger }));
 
     // Act
-    const { getByRole } = render(result.current.children);
-    fireEvent.keyDown(getByRole('button'), { keyCode: keyboardKey.ArrowDown });
+    const { getByRole } = render(result.current.children as React.ReactElement);
+    fireEvent.keyDown(getByRole('button'), { key: ArrowDown });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(expect.anything(), true);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), { open: true, keyboard: true });
   });
 });

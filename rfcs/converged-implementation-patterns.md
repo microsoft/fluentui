@@ -184,7 +184,7 @@ Renders the correct JSX output of the component and its slots given the correct 
 This should be a pure function whose sole responsibility is to render JSX from the provided state. No state mutation or processing
 should happen in this function, but rather done in the `useSample` hook
 
-```typescript
+```tsx
 import { getSlots } from '@fluentui/react-utilities';
 import { sampleShorthandProps } from './useSample';
 

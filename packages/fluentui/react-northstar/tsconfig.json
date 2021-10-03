@@ -3,6 +3,8 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "dist/dts",
+    "skipLibCheck": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "paths": {
       "docs/*": ["packages/fluentui/docs/*"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],

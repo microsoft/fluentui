@@ -139,6 +139,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -156,6 +157,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -212,7 +214,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -245,6 +246,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -301,7 +303,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -458,6 +459,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           }
     >
       <div
+        aria-label="Legends"
         className=
             ms-OverflowSet
             {
@@ -475,6 +477,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Metadata1"
@@ -531,7 +534,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -564,6 +566,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Metadata2"
@@ -620,7 +623,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -894,6 +896,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -911,6 +914,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -967,7 +971,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1000,6 +1003,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1056,7 +1060,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1230,6 +1233,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1247,6 +1251,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1303,7 +1308,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1336,6 +1340,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1392,7 +1397,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1566,6 +1570,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1583,6 +1588,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1639,7 +1645,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1672,6 +1677,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1728,7 +1734,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1902,6 +1907,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1919,6 +1925,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1975,7 +1982,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2008,6 +2014,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -2064,7 +2071,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2238,6 +2244,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -2255,6 +2262,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -2311,7 +2319,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2344,6 +2351,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -2400,7 +2408,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

@@ -34,7 +34,7 @@ function isFiberRef(node: Element | Fiber | Text | null): boolean {
 }
 
 export class RefFindNode extends React.Component<RefProps> {
-  prevNode: Node | null = null;
+  prevNode?: Node | null;
 
   componentDidMount() {
     let currentNode = ReactDOM.findDOMNode(this);

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { ILayerProps } from '../../Layer';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
-import { IContextualMenuProps } from '../../ContextualMenu';
-import { IOverlayProps } from '../../Overlay';
 import { ResponsiveMode } from '../../ResponsiveMode';
+import type { IStyle, ITheme } from '../../Styling';
+import type { ILayerProps } from '../../Layer';
+import type { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IIconProps } from '../../Icon';
+import type { IContextualMenuProps } from '../../ContextualMenu';
+import type { IOverlayProps } from '../../Overlay';
 
 export interface IDragOptions {
   /**
@@ -88,7 +88,7 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
   /**
    * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
    */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | HTMLElement>) => any;
 
   /**
    * A callback function which is called after the Modal is dismissed and the animation is complete.
@@ -123,6 +123,14 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
    * isClickableOutsideFocusTrap is true, and forceFocusInsideTrap is false
    */
   isModeless?: boolean;
+
+  /**
+   * Determines the ARIA role of the dialog (alertdialog/dialog)
+   * If this is set, it will override the ARIA role determined by isBlocking and isModeless
+   *
+   * For more information regarding dialogs please see https://w3c.github.io/aria-practices/#alertdialog
+   */
+  isAlert?: boolean;
 
   /**
    * Optional class name to be added to the root class

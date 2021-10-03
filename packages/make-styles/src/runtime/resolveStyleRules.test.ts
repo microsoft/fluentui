@@ -1,12 +1,13 @@
-import { RULE_CLASSNAME_INDEX } from '../constants';
-import { MakeStylesResolvedRule } from '../types';
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 import { resolveStyleRules } from './resolveStyleRules';
+import { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
-function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-  return resolvedStyles[Object.keys(resolvedStyles)[0]][RULE_CLASSNAME_INDEX] as string;
+function getFirstClassName([resolvedClassesForSlot]: [CSSClassesMap, CSSRulesByBucket]): string {
+  const className: CSSClasses = resolvedClassesForSlot[Object.keys(resolvedClassesForSlot)[0]];
+
+  return Array.isArray(className) ? className[0] : className;
 }
 
 describe('resolveStyleRules', () => {
@@ -66,7 +67,7 @@ describe('resolveStyleRules', () => {
   describe('css', () => {
     it('resolves a single rule', () => {
       expect(resolveStyleRules({ color: 'red' })).toMatchInlineSnapshot(`
-        .fe3e8s90 {
+        .fe3e8s9 {
           color: red;
         }
       `);
@@ -74,10 +75,10 @@ describe('resolveStyleRules', () => {
 
     it('resolves multiple rules', () => {
       expect(resolveStyleRules({ backgroundColor: 'green', color: 'red' })).toMatchInlineSnapshot(`
-        .fcnqdeg0 {
+        .fcnqdeg {
           background-color: green;
         }
-        .fe3e8s90 {
+        .fe3e8s9 {
           color: red;
         }
       `);
@@ -85,7 +86,7 @@ describe('resolveStyleRules', () => {
 
     it('trims values to generate the same classes', () => {
       expect(resolveStyleRules({ color: 'red ' /* ends with a space */ })).toMatchInlineSnapshot(`
-        .fe3e8s90 {
+        .fe3e8s9 {
           color: red;
         }
       `);
@@ -101,16 +102,16 @@ describe('resolveStyleRules', () => {
           MozAnimation: 'initial',
         }),
       ).toMatchInlineSnapshot(`
-        .f1qux400 {
+        .f1qux40 {
           --foo: var(--bar);
         }
-        .f14u9570 {
+        .f14u957 {
           --fooBar: var(--barBaz);
         }
-        .f3xbvq90 {
+        .f3xbvq9 {
           background-color: red;
         }
-        .fr90kjk0 {
+        .fr90kjk {
           -moz-animation: initial;
         }
       `);
@@ -118,7 +119,7 @@ describe('resolveStyleRules', () => {
 
     it('performs expansion of shorthands', () => {
       expect(resolveStyleRules({ outline: '1px' })).toMatchInlineSnapshot(`
-        .fpvhumw0 {
+        .fpvhumw {
           outline-width: 1px;
         }
       `);
@@ -126,27 +127,92 @@ describe('resolveStyleRules', () => {
         .f1sbtcvk {
           padding-top: 5px;
         }
-        .fwiuce90 {
+        .fwiuce9 {
           padding-right: 5px;
         }
-        .rfwiuce90 {
+        .f15vdbe4 {
           padding-left: 5px;
         }
-        .fdghr900 {
+        .fdghr9 {
           padding-bottom: 5px;
         }
         .f15vdbe4 {
           padding-left: 5px;
         }
-        .rf15vdbe4 {
+        .fwiuce9 {
           padding-right: 5px;
+        }
+      `);
+    });
+
+    it('performs expansion of shorthands on nested objects', () => {
+      expect(resolveStyleRules({ outline: '1px', ':hover': { outline: '5px' } })).toMatchInlineSnapshot(`
+        .fpvhumw {
+          outline-width: 1px;
+        }
+        .fmcm1e3:hover {
+          outline-width: 5px;
+        }
+      `);
+    });
+
+    it('shorthands and longhands work like in CSS', () => {
+      expect(
+        resolveStyleRules({
+          margin: '5px',
+          marginLeft: '10px',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1rqyxcv {
+          margin-top: 5px;
+        }
+        .fq02s40 {
+          margin-right: 5px;
+        }
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .f475ppk {
+          margin-bottom: 5px;
+        }
+        .f1oou7ox {
+          margin-left: 10px;
+        }
+        .f1pxv85q {
+          margin-right: 10px;
+        }
+      `);
+
+      expect(
+        resolveStyleRules({
+          marginLeft: '10px',
+          margin: '5px',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .fq02s40 {
+          margin-right: 5px;
+        }
+        .f1rqyxcv {
+          margin-top: 5px;
+        }
+        .fq02s40 {
+          margin-right: 5px;
+        }
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .f475ppk {
+          margin-bottom: 5px;
         }
       `);
     });
 
     it('performs vendor prefixing', () => {
       expect(resolveStyleRules({ display: 'flex' })).toMatchInlineSnapshot(`
-        .f22iagw0 {
+        .f22iagw {
           display: -webkit-box;
           display: -webkit-flex;
           display: -ms-flexbox;
@@ -163,7 +229,7 @@ describe('resolveStyleRules', () => {
           top: undefined,
         }),
       ).toMatchInlineSnapshot(`
-        .f19g0ac0 {
+        .f19g0ac {
           z-index: 1;
         }
       `);
@@ -171,10 +237,10 @@ describe('resolveStyleRules', () => {
 
     it('handles RTL', () => {
       expect(resolveStyleRules({ left: '5px' })).toMatchInlineSnapshot(`
-        .f5b3q4t0 {
+        .f5b3q4t {
           left: 5px;
         }
-        .rf5b3q4t0 {
+        .flgfsvn {
           right: 5px;
         }
       `);
@@ -182,7 +248,7 @@ describe('resolveStyleRules', () => {
 
     it('handles RTL @noflip', () => {
       expect(resolveStyleRules({ left: '5px /* @noflip */' })).toMatchInlineSnapshot(`
-        .fm76jd00 {
+        .fm76jd0 {
           left: 5px;
         }
       `);
@@ -201,7 +267,7 @@ describe('resolveStyleRules', () => {
 
     it('handles nested selectors', () => {
       expect(resolveStyleRules({ ':hover': { color: 'red' } })).toMatchInlineSnapshot(`
-        .faf35ka0:hover {
+        .faf35ka:hover {
           color: red;
         }
       `);
@@ -212,7 +278,7 @@ describe('resolveStyleRules', () => {
       `);
 
       expect(resolveStyleRules({ '[data-fluent="true"]': { color: 'green' } })).toMatchInlineSnapshot(`
-        .fcopvey0[data-fluent="true"] {
+        .fcopvey[data-fluent="true"] {
           color: green;
         }
       `);
@@ -234,18 +300,18 @@ describe('resolveStyleRules', () => {
         }
       `);
       expect(resolveStyleRules({ '&.foo': { color: 'green' } })).toMatchInlineSnapshot(`
-        .fe1zdmy0.foo {
+        .fe1zdmy.foo {
           color: green;
         }
       `);
 
       expect(resolveStyleRules({ '& #foo': { color: 'green' } })).toMatchInlineSnapshot(`
-        .fie1itf0 #foo {
+        .fie1itf #foo {
           color: green;
         }
       `);
       expect(resolveStyleRules({ '&#foo': { color: 'green' } })).toMatchInlineSnapshot(`
-        .fwxog6r0#foo {
+        .fwxog6r#foo {
           color: green;
         }
       `);
@@ -253,7 +319,7 @@ describe('resolveStyleRules', () => {
 
     it('handles complex nested selectors', () => {
       expect(resolveStyleRules({ '& > :first-child': { '& svg': { color: 'red' } } })).toMatchInlineSnapshot(`
-        .fxfx2ih0 > :first-child svg {
+        .fxfx2ih > :first-child svg {
           color: red;
         }
       `);
@@ -266,7 +332,7 @@ describe('resolveStyleRules', () => {
           '@media screen and (max-width: 992px)': { color: 'red' },
         }),
       ).toMatchInlineSnapshot(`
-        .fka9v860 {
+        .fka9v86 {
           color: green;
         }
         @media screen and (max-width: 992px) {
@@ -288,11 +354,11 @@ describe('resolveStyleRules', () => {
           },
         }),
       ).toMatchInlineSnapshot(`
-        .fka9v860 {
+        .fka9v86 {
           color: green;
         }
         @media screen and (max-width: 992px) {
-          .f7wpa5l0:hover {
+          .f7wpa5l:hover {
             color: red;
           }
         }
@@ -309,7 +375,7 @@ describe('resolveStyleRules', () => {
           },
         }),
       ).toMatchInlineSnapshot(`
-        .fe3e8s90 {
+        .fe3e8s9 {
           color: red;
         }
         @media screen and (max-width: 992px) {
@@ -345,11 +411,64 @@ describe('resolveStyleRules', () => {
           ':global(body) &': { color: 'green' },
         }),
       ).toMatchInlineSnapshot(`
-        body .fm1e7ra0 {
+        body .fm1e7ra {
           color: green;
         }
       `);
     });
+
+    it('handles :global selector', () => {
+      expect(
+        resolveStyleRules({
+          ':global(body)': {
+            ':focus': {
+              color: 'green',
+              ':hover': { color: 'blue' },
+              '& .foo': { color: 'yellow' },
+            },
+          },
+        }),
+      ).toMatchInlineSnapshot(`
+        body .f192vvyd:focus {
+          color: green;
+        }
+        body .f1tz2pjr:focus:hover {
+          color: blue;
+        }
+        body .f1dl7obt:focus .foo {
+          color: yellow;
+        }
+      `);
+      expect(
+        resolveStyleRules({
+          ':global(body) :focus': { color: 'green' },
+          ':global(body) :focus:hover': { color: 'blue' },
+          ':global(body) :focus .foo': { color: 'yellow' },
+        }),
+      ).toMatchInlineSnapshot(`
+        body .frou13r:focus {
+          color: green;
+        }
+        body .f1emv7y1:focus:hover {
+          color: blue;
+        }
+        body .f1g015sp:focus .foo {
+          color: yellow;
+        }
+      `);
+    });
+
+    // it.todo('supports :global as a nested selector', () => {
+    //   expect(
+    //     resolveStyleRules({
+    //       ':focus': { ':global(body)': { color: 'green' } },
+    //     }),
+    //   ).toMatchInlineSnapshot(`
+    //     body .fm1e7ra0:focus {
+    //       color: green;
+    //     }
+    //   `);
+    // });
   });
 
   describe('keyframes', () => {
@@ -361,7 +480,7 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        .fc59ano0 {
+        .fc59ano {
           -webkit-animation-name: fade-in slide-out;
           animation-name: fade-in slide-out;
         }
@@ -419,7 +538,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes rf1q8eu9e {
+        @-webkit-keyframes f55c0se {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -433,7 +552,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rf1q8eu9e {
+        @keyframes f55c0se {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -451,9 +570,9 @@ describe('resolveStyleRules', () => {
           -webkit-animation-name: f1q8eu9e;
           animation-name: f1q8eu9e;
         }
-        .rf1g6ul6r {
-          -webkit-animation-name: rf1q8eu9e;
-          animation-name: rf1q8eu9e;
+        .f1fp4ujf {
+          -webkit-animation-name: f55c0se;
+          animation-name: f55c0se;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -519,7 +638,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes f5j8bii0 {
+        @-webkit-keyframes f5j8bii {
           from {
             opacity: 0;
           }
@@ -527,7 +646,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @keyframes f5j8bii0 {
+        @keyframes f5j8bii {
           from {
             opacity: 0;
           }
@@ -535,7 +654,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @-webkit-keyframes rf1q8eu9e {
+        @-webkit-keyframes f55c0se {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -549,7 +668,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rf1q8eu9e {
+        @keyframes f55c0se {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -563,13 +682,13 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        .f13ijwsp {
-          -webkit-animation-name: f1q8eu9e f5j8bii0;
-          animation-name: f1q8eu9e f5j8bii0;
+        .f1al5ov7 {
+          -webkit-animation-name: f1q8eu9e f5j8bii;
+          animation-name: f1q8eu9e f5j8bii;
         }
-        .rf13ijwsp {
-          -webkit-animation-name: rf1q8eu9e f5j8bii0;
-          animation-name: rf1q8eu9e f5j8bii0;
+        .f1yfduy3 {
+          -webkit-animation-name: f55c0se f5j8bii;
+          animation-name: f55c0se f5j8bii;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -585,9 +704,9 @@ describe('resolveStyleRules', () => {
 
   describe('output', () => {
     it('contains less members for properties that do not depend on text direction', () => {
-      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })).toEqual({
-        color: ['', 'fe3e8s90', '.fe3e8s90{color:red;}'],
-        paddingLeft: ['', 'frdkuqy0', '.frdkuqy0{padding-left:10px;}', '.rfrdkuqy0{padding-right:10px;}'],
+      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })[0]).toEqual({
+        sj55zd: 'fe3e8s9',
+        uwmqm3: ['frdkuqy', 'f81rol6'],
       });
     });
   });
@@ -595,12 +714,12 @@ describe('resolveStyleRules', () => {
   describe('experimental', () => {
     it('allows to increase specificity', () => {
       expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
-        .fe3e8s901.fe3e8s901 {
+        .fe3e8s91.fe3e8s91 {
           color: red;
         }
       `);
       expect(resolveStyleRules({ color: 'red' }, 2)).toMatchInlineSnapshot(`
-        .fe3e8s902.fe3e8s902.fe3e8s902 {
+        .fe3e8s92.fe3e8s92.fe3e8s92 {
           color: red;
         }
       `);
@@ -627,10 +746,10 @@ describe('resolveStyleRules', () => {
 
     it('allows to increase for RTL', () => {
       expect(resolveStyleRules({ left: '5px' }, 1)).toMatchInlineSnapshot(`
-        .f5b3q4t01.f5b3q4t01 {
+        .f5b3q4t1.f5b3q4t1 {
           left: 5px;
         }
-        .rf5b3q4t01.rf5b3q4t01 {
+        .flgfsvn1.flgfsvn1 {
           right: 5px;
         }
       `);

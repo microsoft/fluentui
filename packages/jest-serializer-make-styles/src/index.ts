@@ -1,4 +1,4 @@
-import { DEFINITION_LOOKUP_TABLE, RULE_CLASSNAME_INDEX, RTL_PREFIX } from '@fluentui/make-styles';
+import { DEFINITION_LOOKUP_TABLE, CSSClasses } from '@fluentui/make-styles';
 
 export function print(val: string) {
   const regexParts: string[] = [];
@@ -15,7 +15,11 @@ export function print(val: string) {
      * @example
      * rules = ["f16th3vw", "frdkuqy0", "fat0sn40", "fjseox00"]
      */
-    const rules = Object.keys(definitions).map(key => `${definitions[key][RULE_CLASSNAME_INDEX]}`);
+    const rules = Object.keys(definitions).map(key => {
+      const classes: CSSClasses = definitions[key];
+
+      return Array.isArray(classes) ? classes.join('|') : classes;
+    });
     regexParts.push(name, ...rules);
   }
   /**
@@ -23,7 +27,7 @@ export function print(val: string) {
    * @example
    * regex = /r?(f16th3vw|frdkuqy0|fat0sn40|fjseox00)/
    */
-  const valStrippedClassNames = val.replace(new RegExp(`${RTL_PREFIX}?(${regexParts.join('|')})`, 'g'), '').trim();
+  const valStrippedClassNames = val.replace(new RegExp(regexParts.join('|'), 'g'), '').trim();
   /**
    * Trim whitespace from className
    */

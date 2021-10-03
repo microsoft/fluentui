@@ -1,9 +1,14 @@
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Divider } from './Divider';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
 
 describe('Divider', () => {
+  afterEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant({
     Component: Divider,
     displayName: 'Divider',
@@ -62,12 +67,6 @@ describe('Divider', () => {
 
   it('renders a content aligned end', () => {
     const component = renderer.create(<Divider alignContent="end">End</Divider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders a divider with important', () => {
-    const component = renderer.create(<Divider important>Important</Divider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

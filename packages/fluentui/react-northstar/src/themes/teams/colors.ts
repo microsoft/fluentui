@@ -36,8 +36,10 @@ export const naturalColors: TeamsNaturalColors = {
     200: '#E1DFDD', // light08
     250: '#C8C6C4', // light06, dark02
     300: '#B3B0AD', // dark03
+    340: '#999',
     350: '#979593', // light04
     400: '#8A8886', // dark04
+    430: '#707070',
     440: '#666666',
     450: '#605E5C', // light03, dark06, $app-gray-20-theme-agnostic, old $message-highlight-color-darktheme
     500: '#484644', // light02, dark08
@@ -78,7 +80,7 @@ export const naturalColors: TeamsNaturalColors = {
   red: {
     50: '#FCF4F6', // app red 10
     100: '#F3D6D8', // postOrange[900] app red 08
-    200: '#F9526B', // new, error banner string
+    200: '#F75E75', // new, error banner string
     300: '#E73550', // merge old @app-red-dark-theme
     400: '#C4314B', // red[900], app red 06, siteVariables.red
     500: '#A72037', // app red 04
@@ -125,7 +127,7 @@ export const primitiveColors: PrimitiveColors = {
 
 export const transparentColors: TeamsTransparentColors = {
   silver: {
-    100: undefined,
+    100: 'rgba(255,255,255,0.85)',
     200: 'rgba(255,255,255,0.75)',
     300: 'rgba(255,255,255,0.65)',
     400: 'rgba(255,255,255,0.5)',
@@ -152,7 +154,7 @@ export const transparentColors: TeamsTransparentColors = {
     300: 'rgba(37,36,35,0.2)',
     400: 'rgba(37,36,35,0.65)',
     500: 'rgba(41,40,40,0.9)',
-    600: undefined,
+    600: 'rgba(0,0,0,0.05)',
     700: 'rgba(0,0,0,0.5)',
     800: 'rgba(27,26,26,0.9)',
     900: 'rgba(0,0,0,0.8)',
@@ -222,6 +224,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground6: colors.grey[200],
     foreground7: colors.grey[750],
     foreground8: colors.grey[750],
+    foreground9: colors.grey[430],
 
     background: colors.white,
     background1: colors.grey[50],
@@ -229,11 +232,13 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background3: colors.grey[150],
     background4: colors.grey[100],
     background5: colors.grey[350],
+    background6: colors.grey[550],
 
     border: colors.grey[200], // buttons
     border1: colors.grey[150],
     border2: colors.grey[200],
     border3: colors.grey[150], // divider
+    borderTransparent: 'transparent',
 
     shadow: colors.black, // opacity 10%
     shadowHover: colors.black, // opacity 10%
@@ -439,6 +444,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background1: colors.green[600],
     background2: colors.green[50],
     border: colors.green[100],
+    border1: colors.green[600],
   }),
   orange: createColorScheme({
     foreground: colors.orange[400],
@@ -463,6 +469,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background2: colors.ruby[500],
     background3: colors.red[400],
     border: colors.red[100],
+    border1: colors.red[300],
 
     foregroundHover: colors.white,
     backgroundHover: colors.ruby[600],
@@ -482,6 +489,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background2: colors.yellow[500],
     background3: colors.yellow[100],
     border: colors.yellow[200],
+    border1: colors.yellow[700],
   }),
   silver: createColorScheme({
     foreground: colors.white,

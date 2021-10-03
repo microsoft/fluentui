@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { Slider } from '@fluentui/react-experiments';
+import { Slider as DeprecatedSlider } from '@fluentui/react-experiments';
 import { IStackTokens, Stack } from '@fluentui/react';
+
+// Workaround to prevent errors on usage of Slider, without disabling all deprecation checks
+// eslint-disable-next-line deprecation/deprecation
+const Slider = DeprecatedSlider;
 
 export interface ISliderBasicExampleState {
   value: number;

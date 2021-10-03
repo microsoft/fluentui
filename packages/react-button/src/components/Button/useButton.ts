@@ -1,36 +1,56 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
-import { ButtonProps, ButtonState } from './Button.types';
-import { useButtonState } from './useButtonState';
+import { useARIAButton } from '@fluentui/react-aria';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import type { ButtonProps, ButtonState } from './Button.types';
 
 /**
- * Consts listing which props are shorthand props.
+ * Given user props, defines default props for the Button, calls useButtonState, and returns processed state.
+ * @param props - User provided props to the Button component.
+ * @param ref - User provided ref to be passed to the Button component.
  */
-export const buttonShorthandProps = ['icon', 'children'] as const;
+export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>): ButtonState => {
+  const {
+    appearance,
+    as,
+    block = false,
+    disabled = false,
+    disabledFocusable = false,
+    icon,
+    iconPosition = 'before',
+    shape = 'rounded',
+    size = 'medium',
+  } = props;
+  const iconShorthand = resolveShorthand(icon);
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<ButtonState>({ deepMerge: buttonShorthandProps });
+  return {
+    // Props passed at the top-level
+    appearance,
+    block,
+    disabled,
+    disabledFocusable,
+    iconPosition,
+    shape,
+    size,
 
-/**
- * Given user props, returns state and render function for a Button.
- */
-export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps): ButtonState => {
-  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
-  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const resolvedRef = ref || React.useRef<HTMLElement>(null);
-  const state = mergeProps(
-    {
-      ref: resolvedRef,
-      as: 'button',
-      icon: { as: 'span' },
-      loader: { as: 'span' },
+    // State calculated from a set of props
+    iconOnly: Boolean(iconShorthand?.children && !props.children),
+
+    // Slots definition
+    components: {
+      root: 'button',
+      icon: 'span',
     },
-    defaultProps,
-    resolveShorthandProps(props, buttonShorthandProps),
-  );
 
-  useButtonState(state);
-
-  return state;
+    root: getNativeElementProps(
+      as || 'button',
+      useARIAButton(props, {
+        required: true,
+        defaultProps: {
+          ref,
+          type: 'button', // This is added because the default for type is 'submit'
+        },
+      }),
+    ),
+    icon: iconShorthand,
+  };
 };

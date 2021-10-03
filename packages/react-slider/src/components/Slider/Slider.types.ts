@@ -1,207 +1,148 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
+import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Slider}
- */
-export interface ISlider {
-  value: number | undefined;
-
-  focus: () => void;
-}
-
-/**
- * {@docCategory Slider}
- */
-export interface ISliderProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
-    React.RefAttributes<HTMLDivElement> {
+export type SliderSlots = {
   /**
-   * Optional callback to access the ISlider interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * The root of the Slider.
    */
-  componentRef?: IRefObject<ISlider>;
+  root: IntrinsicShorthandProps<'div'>;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
+   * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
+  rail: IntrinsicShorthandProps<'div'>;
 
   /**
-   * Theme provided by High-Order Component.
+   * The wrapper around the Slider component.
    */
-  theme?: ITheme;
+  sliderWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
-   * Description label of the Slider
+   * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
    */
-  label?: string;
+  trackWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
-   * The initial value of the Slider. Use this if you intend for the Slider to be an uncontrolled component.
-   * This value is mutually exclusive to value. Use one or the other.
+   * The bar showing the current selected area adjacent to the Slider's thumb.
+   */
+  track: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The wrapper holding the marks and mark labels for the Slider.
+   */
+  marksWrapper: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
+   */
+  thumbWrapper: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The draggable icon used to select a given value from the Slider.
+   * This is the element containing `role = 'slider'`.
+   */
+  thumb: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The area in which the Slider's rail allows for the thumb to be dragged.
+   */
+  activeRail: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The hidden input for the Slider.
+   */
+  input: IntrinsicShorthandProps<'input'>;
+};
+
+export type SliderCommons = {
+  /**
+   * The starting value for an uncontrolled Slider.
+   * Mutually exclusive with `value` prop.
    */
   defaultValue?: number;
 
   /**
-   * The initial value of the Slider. Use this if you intend to pass in a new value as a result of onChange events.
-   * This value is mutually exclusive to defaultValue. Use one or the other.
+   * The current value of the controlled Slider.
+   * Mutually exclusive with `defaultValue` prop.
    */
   value?: number;
 
   /**
-   * The min value of the Slider
-   * @defaultvalue 0
+   * The min value of the Slider.
+   * @default 0
    */
   min?: number;
 
   /**
-   * The max value of the Slider
-   * @defaultvalue 10
+   * The max value of the Slider.
+   * @default 100
    */
   max?: number;
 
   /**
-   * The difference between the two adjacent values of the Slider
-   * @defaultvalue 1
+   * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
+   * will snap to the closest available value. This must be a positive value.
+   * @default 1
    */
   step?: number;
 
   /**
-   * Whether to show the value on the right of the Slider.
-   * @defaultvalue true
+   * The number of steps that the Slider's value will change by during a key press. When provided, the `keyboardSteps`
+   * will be separated from the pointer `steps` allowing for the value to go outside of pointer related
+   * snapping values.
+   *
+   * @default `step` or 1
    */
-  showValue?: boolean;
+  keyboardStep?: number;
 
   /**
-   * Callback when the value has been changed
-   */
-  onChange?: (value: number) => void;
-
-  /**
-   * Callback on mouse up or touch end
-   */
-  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-
-  /**
-   * A description of the Slider for the benefit of screen readers.
-   */
-  ariaLabel?: string;
-
-  /**
-   * A text description of the Slider number value for the benefit of screen readers.
-   * This should be used when the Slider number value is not accurately represented by a number.
-   */
-  ariaValueText?: (value: number) => string;
-  /**
-   * Whether to render the slider vertically.
-   * @default `false` (render horizontally)
-   */
-  vertical?: boolean;
-
-  /**
-   * Whether to render the Slider as disabled.
-   * @defaultvalue false
+   *  Whether to render the Slider as disabled.
+   *
+   * @default `false` (renders enabled)
    */
   disabled?: boolean;
 
   /**
-   * Whether to decide that thumb will snap to closest value while moving the slider
-   * @defaultvalue false
+   * Whether to render the Slider vertically.
+   * @default `false` (renders horizontally)
    */
-  snapToStep?: boolean;
+  vertical?: boolean;
 
   /**
-   * Class name to attach to the slider root element.
+   * When enabled, small marks are displayed across the Slider, showing potential steps.
+   *
+   * - If `true`, marks are visible at each `step`.
+   * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
+   * - If `{}[]`, mark is shown at the value location and displays any provided custom labels and marks.
    */
-  className?: string;
+  marks?: boolean | (number | { value: number; label?: string | JSX.Element; mark?: JSX.Element })[];
 
   /**
-   * Additional props on the thumb button within the slider.
+   * The starting origin point for the Slider.
+   * @default min
    */
-  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+  origin?: number;
 
   /**
-   * Custom formatter for the slider value.
+   * The size of the Slider.
+   * @default 'medium'
    */
-  valueFormat?: (value: number) => string;
+  size?: 'small' | 'medium';
 
   /**
-   * Whether to attach the origin of slider to zero. Helpful when the range include negatives.
-   * @defaultvalue false
+   * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  originFromZero?: boolean;
-}
-
-/**
- * {@docCategory Slider}
- */
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
-  Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
-    showTransitions?: boolean;
-    showValue?: boolean;
-    titleLabelClassName?: string;
-  };
-
-/**
- * {@docCategory Slider}
- */
-export interface ISliderStyles {
-  /**
-   * Style set for the root element.
-   */
-  root: IStyle;
+  onChange?: (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { value: number },
+  ) => void;
 
   /**
-   * Style set for the title label above the slider.
+   * The Slider's current value label to be read by the screen reader.
    */
-  titleLabel: IStyle;
+  ariaValueText?: (value: number) => string;
+};
 
-  /**
-   * Style set for the container of the slider.
-   */
-  container: IStyle;
+export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
 
-  /**
-   * Style set for the actual box containting interactive elements of the slider.
-   */
-  slideBox: IStyle;
-
-  /**
-   * Style set for element that contains all the lines.
-   */
-  line: IStyle;
-
-  /**
-   * Style set for thumb of the slider.
-   */
-  thumb: IStyle;
-
-  /**
-   * Style set for both active and inactive sections of the line.
-   */
-  lineContainer: IStyle;
-
-  /**
-   * Style set for active portion of the line.
-   */
-  activeSection: IStyle;
-
-  /**
-   * Style set for inactive portion of the line.
-   */
-  inactiveSection: IStyle;
-
-  /**
-   * Style set for value label on right/below of the slider.
-   */
-  valueLabel: IStyle;
-
-  /**
-   * Style set for tick on 0 on number line. This element only shows up when originFromZero prop is true.
-   */
-  zeroTick: IStyle;
-}
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;

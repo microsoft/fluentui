@@ -36,12 +36,8 @@ export const LayerPageProps: IDocPageProps = {
       view: <LayerNestedLayersExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/docs/LayerOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/docs/LayerBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/docs/LayerOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/docs/LayerBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/docs/LayerDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/docs/LayerDonts.md'),
   isHeaderVisible: true,

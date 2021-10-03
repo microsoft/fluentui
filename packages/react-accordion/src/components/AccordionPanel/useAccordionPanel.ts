@@ -1,26 +1,12 @@
 import * as React from 'react';
-import {
-  makeMergePropsCompat,
-  resolveShorthandProps,
-  useMergedRefs,
-  useId,
-  useDescendants,
-} from '@fluentui/react-utilities';
-import { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
-import {
-  useAccordionItemContext,
-  AccordionItemDescendant,
-  useAccordionItemDescendant,
-  accordionItemDescendantContext,
-} from '../AccordionItem/index';
+import { getNativeElementProps } from '@fluentui/react-utilities';
+import { useAccordionItemContext } from '../AccordionItem/index';
+import type { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 
 /**
- * Consts listing which props are shorthand props.
+ * Const listing which props are shorthand props.
  */
-export const accordionPanelShorthandProps = [];
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<AccordionPanelState>({ deepMerge: accordionPanelShorthandProps });
+export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots> = ['root'];
 
 /**
  * Returns the props and state required to render the component
@@ -28,31 +14,14 @@ const mergeProps = makeMergePropsCompat<AccordionPanelState>({ deepMerge: accord
  * @param ref - reference to root HTMLElement of AccordionPanel
  * @param defaultProps - default values for the properties of AccordionPanel
  */
-export const useAccordionPanel = (
-  props: AccordionPanelProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: AccordionPanelProps,
-): AccordionPanelState => {
+export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLElement>): AccordionPanelState => {
   const { open } = useAccordionItemContext();
-  const id = useId('accordion-panel-', props.id);
-  const header = useDescendants(accordionItemDescendantContext)[0] as AccordionItemDescendant | undefined;
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      id,
-      open,
+  return {
+    open,
+    root: getNativeElementProps('div', {
+      ref,
       role: 'region',
-      'aria-labelledby': header?.id,
-    },
-    defaultProps,
-    resolveShorthandProps(props, accordionPanelShorthandProps),
-  );
-  useAccordionItemDescendant(
-    {
-      element: state.ref.current,
-      id,
-    },
-    1,
-  );
-  return state;
+      ...props,
+    }),
+  };
 };

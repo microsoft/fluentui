@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-text",
-  "version": "0.2.9",
-  "description": "Fluent UI React Text component.",
+  "version": "9.0.0-alpha.25",
+  "description": "Text is a typography and styling abstraction component that can be used to ensure the consistency of all text across your application.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -13,19 +13,23 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "start": "yarn storybook",
+    "test": "jest",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-text/src && yarn docs",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.3",
-    "@fluentui/react-conformance": "^0.2.6",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.58",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.51",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.20",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -39,14 +43,22 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.26",
-    "@fluentui/react-utilities": "^9.0.0-alpha.19",
-    "tslib": "^1.10.0"
+    "@fluentui/react-make-styles": "9.0.0-alpha.76",
+    "@fluentui/react-utilities": "9.0.0-alpha.55",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }

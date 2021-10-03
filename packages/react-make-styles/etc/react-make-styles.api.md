@@ -5,14 +5,17 @@
 ```ts
 
 import { createDOMRenderer } from '@fluentui/make-styles';
-import { MakeStaticStyles } from '@fluentui/make-styles';
-import { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { CSSClassesMapBySlot } from '@fluentui/make-styles';
+import type { CSSRulesByBucket } from '@fluentui/make-styles';
+import type { MakeStaticStyles } from '@fluentui/make-styles';
+import type { MakeStylesRenderer } from '@fluentui/make-styles';
+import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { mergeClasses } from '@fluentui/make-styles';
-import { ResolvedStylesBySlots } from '@fluentui/make-styles';
-import { Theme } from '@fluentui/react-theme';
+import * as React_2 from 'react';
+import type { Theme } from '@fluentui/react-theme';
 
 // @internal
-export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): () => Record<Slots, string>;
+export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket): () => Record<Slots, string>;
 
 export { createDOMRenderer }
 
@@ -20,10 +23,27 @@ export { createDOMRenderer }
 export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStaticStyles[]): () => void;
 
 // @public (undocumented)
-export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): () => Record<Slots, string>;
+export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): () => Record<Slots, string>;
 
 export { mergeClasses }
 
+// @public (undocumented)
+export const RendererContext: React_2.Context<MakeStylesRenderer>;
+
+// @public (undocumented)
+export const RendererProvider: React_2.FC<RendererProviderProps>;
+
+// @public (undocumented)
+export interface RendererProviderProps {
+    renderer: MakeStylesRenderer;
+    targetDocument?: Document;
+}
+
+// @public
+export function renderToStyleElements(renderer: MakeStylesRenderer): React_2.ReactElement[];
+
+// @public
+export function useRenderer(): MakeStylesRenderer;
 
 // (No @packageDocumentation comment for this package)
 

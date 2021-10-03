@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LegendShape } from './Legends.types';
-import { Points } from '../../utilities/utilities';
+import { CustomPoints, Points } from '../../utilities/utilities';
 
 export interface IShapeProps {
   svgProps: React.SVGAttributes<SVGElement>;
@@ -24,10 +24,11 @@ const pointPath: PointPathType = {
   [`${
     Points[Points.octagon]
   }`]: 'M7.08333 0H2.91667L0 2.91667V7.08333L2.91667 10H7.08333L10 7.08333V2.91667L7.08333 0Z',
+  [`${CustomPoints[CustomPoints.dottedLine]}`]: 'M0 6 H3 M5 6 H8 M10 6 H13',
 };
 
 export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, classNameForNonSvg }) => {
-  if (Object.keys(Points).indexOf(shape) === -1) {
+  if (Object.keys(pointPath).indexOf(shape) === -1) {
     return <div className={classNameForNonSvg} />;
   }
   return (

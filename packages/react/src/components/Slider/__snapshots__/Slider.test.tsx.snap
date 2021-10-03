@@ -499,9 +499,6 @@ exports[`Slider renders range slider correctly 1`] = `
           data-is-focusable={true}
           id="min-Slider0"
           onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchStart={[Function]}
           role="slider"
           style={
             Object {
@@ -552,9 +549,6 @@ exports[`Slider renders range slider correctly 1`] = `
           data-is-focusable={true}
           id="max-Slider0"
           onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchStart={[Function]}
           role="slider"
           style={
             Object {

@@ -14,20 +14,19 @@
     "start": "node ./server/index.js"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "compression": "^1.7.2",
-    "express": "^4.15.4"
+    "compression": "^1.7.2"
   },
   "dependencies": {
-    "@fluentui/font-icons-mdl2": "^8.0.5",
-    "@fluentui/merge-styles": "^8.0.4",
-    "@fluentui/react": "^8.12.0",
+    "@fluentui/font-icons-mdl2": "^8.1.12",
+    "@fluentui/merge-styles": "^8.2.0",
+    "@fluentui/react": "^8.36.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   }
 }

@@ -76,6 +76,11 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   shouldResetActiveElementWhenTabFromZone?: boolean;
 
   /**
+   * If true elements containing data-is-focusable="false" will not be counted skipping onFocus event
+   */
+  shouldIgnoreNotFocusable?: boolean;
+
+  /**
    * Determines whether the FocusZone will walk up the DOM trying to invoke click callbacks on focusable elements on
    * Enter and Space keydowns to ensure accessibility for tags that don't guarantee this behavior.
    */

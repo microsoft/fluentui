@@ -1,28 +1,28 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { CounterBadgeState } from './CounterBadge.types';
 import { useBadgeStyles } from '../Badge/useBadgeStyles';
+import type { CounterBadgeState } from './CounterBadge.types';
 
 const useStyles = makeStyles({
   root: {
     minWidth: 'auto',
   },
   warning: theme => ({
-    backgroundColor: theme.global.palette.cranberry.primary,
-    borderColor: theme.global.palette.cranberry.primary,
+    backgroundColor: '#c50f1f', // FIXME theme.global.palette.cranberry.primary,
+    borderColor: '#c50f1f', // FIXME theme.global.palette.cranberry.primary,
   }),
   important: theme => ({
-    backgroundColor: theme.global.palette.grey[14],
-    borderColor: theme.global.palette.grey[14],
+    backgroundColor: '#242424', // FIXME theme.global.palette.grey[14],
+    borderColor: '#242424', // FIXME theme.global.palette.grey[14],
   }),
   severe: theme => ({
     // TODO: update these colors once the color used in the design spec has existing color token
-    backgroundColor: theme.global.palette.red.primary,
-    borderColor: theme.global.palette.red.primary,
+    backgroundColor: '#d13438', // FIXME theme.global.palette.red.primary,
+    borderColor: '#d13438', // FIXME theme.global.palette.red.primary,
   }),
   informative: theme => ({
-    backgroundColor: theme.global.palette.grey[92],
-    borderColor: theme.global.palette.grey[92],
-    color: theme.alias.color.neutral.neutralForeground3,
+    backgroundColor: '#ebebeb', // FIXME theme.global.palette.grey[92],
+    borderColor: '#ebebeb', // FIXME theme.global.palette.grey[92],
+    color: theme.colorNeutralForeground3,
   }),
   dot: {
     width: '6px',
@@ -37,17 +37,17 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const useCounterBadgeStyles = (state: CounterBadgeState) => {
+export const useCounterBadgeStyles = (state: CounterBadgeState): CounterBadgeState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
-    state.color === 'waning' && styles.warning,
+    state.color === 'warning' && styles.warning,
     state.color === 'important' && styles.important,
     state.color === 'severe' && styles.severe,
     state.color === 'informative' && styles.informative,
     state.dot && styles.dot,
     !state.showZero && state.count === 0 && !state.dot && styles.hide,
-    state.className,
+    state.root.className,
   );
-  return useBadgeStyles(state);
+  return useBadgeStyles(state) as CounterBadgeState;
 };

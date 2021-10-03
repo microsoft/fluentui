@@ -34,7 +34,7 @@ const providerMergeThemesPerf = () => {
 
 const ProviderMergeThemesPerf = () => {
   const resolvedStyles = providerMergeThemesPerf();
-  delete resolvedStyles.Button.root._debug;
+  delete (resolvedStyles.Button.root as any)._debug;
   return <pre>{JSON.stringify(resolvedStyles.Button.root, null, 2)}</pre>;
 };
 

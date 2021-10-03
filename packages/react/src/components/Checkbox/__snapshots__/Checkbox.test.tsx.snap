@@ -48,8 +48,6 @@ exports[`Checkbox renders checked correctly 1`] = `
       }
 >
   <input
-    aria-checked="true"
-    aria-label="Standard checkbox"
     checked={true}
     className=
 
@@ -152,7 +150,6 @@ exports[`Checkbox renders checked correctly 1`] = `
       </i>
     </div>
     <span
-      aria-hidden="true"
       className=
           ms-Checkbox-text
           {
@@ -219,7 +216,6 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
 >
   <input
     aria-checked="mixed"
-    aria-label="Standard checkbox"
     checked={false}
     className=
 
@@ -339,7 +335,6 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
       </i>
     </div>
     <span
-      aria-hidden="true"
       className=
           ms-Checkbox-text
           {
@@ -399,8 +394,6 @@ exports[`Checkbox renders unchecked correctly 1`] = `
       }
 >
   <input
-    aria-checked="false"
-    aria-label="Standard checkbox"
     checked={false}
     className=
 
@@ -500,7 +493,6 @@ exports[`Checkbox renders unchecked correctly 1`] = `
       </i>
     </div>
     <span
-      aria-hidden="true"
       className=
           ms-Checkbox-text
           {

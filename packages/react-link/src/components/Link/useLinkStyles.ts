@@ -1,92 +1,98 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { LinkState } from './Link.types';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import type { LinkState } from './Link.types';
 
 const useStyles = makeStyles({
+  focusIndicator: createCustomFocusIndicatorStyle({
+    textDecorationLine: 'underline',
+    textDecorationStyle: 'double',
+  }),
   // Common styles.
-  root: tokens => ({
+  root: theme => ({
     backgroundColor: 'transparent',
     border: 'none',
     borderBottom: 'solid transparent',
-    borderBottomWidth: tokens.global.strokeWidth.thin,
+    borderBottomWidth: theme.strokeWidthThin,
     boxSizing: 'border-box',
-    color: tokens.alias.color.neutral.brandForeground,
+    color: theme.colorBrandForegroundLink,
     cursor: 'pointer',
     display: 'inline',
-    fontFamily: tokens.global.type.fontFamilies.base,
-    fontSize: tokens.global.type.fontSizes.base[300],
-    fontWeight: tokens.global.type.fontWeights.regular,
+    fontFamily: theme.fontFamilyBase,
+    fontSize: theme.fontSizeBase300,
+    fontWeight: theme.fontWeightRegular,
     margin: 0,
     overflow: 'inherit',
     padding: 0,
-    textAlign: tokens.global.type.alignment.start,
+    textAlign: 'left',
     textDecoration: 'none',
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
-      borderBottomColor: tokens.alias.color.neutral.brandForegroundHover,
-      color: tokens.alias.color.neutral.brandForegroundHover,
+      borderBottomColor: theme.colorBrandForegroundLinkHover,
+      color: theme.colorBrandForegroundLinkHover,
     },
 
     ':active': {
-      borderBottomColor: tokens.alias.color.neutral.brandForegroundPressed,
-      color: tokens.alias.color.neutral.brandForegroundPressed,
+      borderBottomColor: theme.colorBrandForegroundLinkPressed,
+      color: theme.colorBrandForegroundLinkPressed,
     },
   }),
   // Overrides when an href is present so the Link renders as an anchor.
   href: {
     fontSize: 'inherit',
   },
-  // Overrides when the Link is emphasized to represent a secondary action.
-  secondary: tokens => ({
-    color: tokens.alias.color.neutral.neutralForeground2,
+  // Overrides when the Link appears subtle.
+  subtle: theme => ({
+    color: theme.colorNeutralForeground2,
 
     ':hover': {
-      borderBottomColor: tokens.alias.color.neutral.neutralForeground2Hover,
-      color: tokens.alias.color.neutral.neutralForeground2Hover,
+      borderBottomColor: theme.colorNeutralForeground2Hover,
+      color: theme.colorNeutralForeground2Hover,
     },
 
     ':active': {
-      borderBottomColor: tokens.alias.color.neutral.neutralForeground2Pressed,
-      color: tokens.alias.color.neutral.neutralForeground2Pressed,
+      borderBottomColor: theme.colorNeutralForeground2Pressed,
+      color: theme.colorNeutralForeground2Pressed,
     },
   }),
   // Overrides when the Link is rendered inline within text.
-  inline: tokens => ({
-    borderBottomColor: tokens.alias.color.neutral.brandForeground,
+  inline: theme => ({
+    borderBottomColor: theme.colorBrandForegroundLink,
   }),
-  // Overrides when the Link is rendered inline within text and is emphasized to represent a secondary action.
-  inlineSecondary: tokens => ({
-    borderBottomColor: tokens.alias.color.neutral.neutralForeground2,
+  // Overrides when the Link is rendered inline within text and appears subtle.
+  inlineSubtle: theme => ({
+    borderBottomColor: theme.colorNeutralForeground2,
   }),
   // Overrides when the Link is disabled.
-  disabled: tokens => ({
+  disabled: theme => ({
     borderBottomColor: 'transparent',
-    color: tokens.alias.color.neutral.neutralForegroundDisabled,
+    color: theme.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
 
     ':hover': {
       borderBottomColor: 'transparent',
-      color: tokens.alias.color.neutral.neutralForegroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
 
     ':active': {
       borderBottomColor: 'transparent',
-      color: tokens.alias.color.neutral.neutralForegroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
   }),
 });
 
 export const useLinkStyles = (state: LinkState): LinkState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
-    state.href && styles.href,
-    state.secondary && styles.secondary,
+    styles.focusIndicator,
+    state.root.as === 'a' && state.root.href && styles.href,
+    state.appearance === 'subtle' && styles.subtle,
     state.inline && styles.inline,
-    state.secondary && state.inline && styles.inlineSecondary,
-    state['aria-disabled'] && styles.disabled,
-    state.className,
+    state.appearance === 'subtle' && state.inline && styles.inlineSubtle,
+    state.root['aria-disabled'] && styles.disabled,
+    state.root.className,
   );
 
   return state;

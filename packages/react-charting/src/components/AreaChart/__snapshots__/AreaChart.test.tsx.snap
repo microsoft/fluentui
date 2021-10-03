@@ -31,6 +31,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="AreaChart"
       height={0}
       style={
         Object {
@@ -215,6 +216,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -232,6 +234,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -288,7 +291,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -354,6 +356,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="AreaChart"
       height={0}
       style={
         Object {
@@ -521,6 +524,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           }
     >
       <div
+        aria-label="Legends"
         className=
             ms-OverflowSet
             {
@@ -538,6 +542,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="metaData1"
@@ -594,7 +599,6 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -657,6 +661,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="AreaChart"
       height={0}
       style={
         Object {
@@ -836,6 +841,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="AreaChart"
       height={0}
       style={
         Object {
@@ -1020,6 +1026,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1037,6 +1044,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1093,7 +1101,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1159,6 +1166,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="AreaChart"
       height={0}
       style={
         Object {
@@ -1343,6 +1351,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1360,6 +1369,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1416,7 +1426,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1482,6 +1491,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="AreaChart"
       height={0}
       style={
         Object {
@@ -1666,6 +1676,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1683,6 +1694,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1739,7 +1751,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1805,6 +1816,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="AreaChart"
       height={0}
       style={
         Object {
@@ -1989,6 +2001,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -2006,6 +2019,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -2062,7 +2076,6 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

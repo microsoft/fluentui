@@ -23,7 +23,7 @@ export default function loader(source) {
 
   source = source.replace(/PACKAGE_NAME/g, packageName);
 
-  if (packageName === 'react' || packageName === 'react-components') {
+  if (packageName === 'react') {
     // Compare the list of direct deps of suite packages with the list of packages with examples
     // to see which extra packages' examples should be used  (note: all names here are unscoped).
     const packagesWithExamples = fs.readdirSync(path.resolve(__dirname, '../src')).filter(p => !/\.tsx?$/.test(p));
@@ -31,7 +31,8 @@ export default function loader(source) {
     // get unscoped dep names
     const reactDeps = Object.keys(reactPackageJson.dependencies).map(d => d.split('/')[1] || d);
     const reactDepsWithExamples = packagesWithExamples.filter(p => reactDeps.includes(p));
-    source = source.replace(/REACT_DEPS/g, reactDepsWithExamples.join('|'));
+
+    source = source.replace(/REACT_DEPS/g, [...new Set(reactDepsWithExamples)].join('|'));
   }
 
   return source;

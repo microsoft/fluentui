@@ -24,6 +24,7 @@ export const EmptyThemeProvider: React.FunctionComponent<{
   return <Unstable_FluentContextProvider value={value}>{children}</Unstable_FluentContextProvider>;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const mountWithProvider = <C extends React.Component, P = C['props'], S = C['state']>(
   node: React.ReactElement<P>,
   options?: MountRendererProps,
@@ -34,6 +35,7 @@ export const mountWithProvider = <C extends React.Component, P = C['props'], S =
   });
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const mountWithProviderAndGetComponent = <C extends React.Component, P = C['props'], S = C['state']>(
   Component: ComponentType<P>,
   elementToMount: React.ReactElement<P>,

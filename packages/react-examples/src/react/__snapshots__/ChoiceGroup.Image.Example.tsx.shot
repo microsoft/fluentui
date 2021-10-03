@@ -148,6 +148,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   opacity: 1;
                 }
                 &:hover:after {
+                  background: #005a9e;
                   border-color: #005a9e;
                 }
                 &:focus {
@@ -161,6 +162,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   opacity: 1;
                 }
                 &:focus:after {
+                  background: #005a9e;
                   border-color: #005a9e;
                 }
                 &:before {
@@ -190,6 +192,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   forced-color-adjust: none;
                 }
                 &:after {
+                  background: #0078d4;
                   border-color: #0078d4;
                   border-radius: 50%;
                   border-style: solid;
@@ -265,7 +268,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   }
                 >
                   <img
-                    alt="Bar chart icon"
+                    alt="Bar chart"
                     className=
                         ms-Image-image
                         ms-Image-image--portrait
@@ -316,7 +319,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   }
                 >
                   <img
-                    alt="Bar chart icon"
+                    alt="Bar chart"
                     className=
                         ms-Image-image
                         ms-Image-image--portrait
@@ -361,7 +364,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                 className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-bar"
               >
-                Clustered bar chart
+                Bar
               </span>
             </div>
           </label>
@@ -549,7 +552,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   }
                 >
                   <img
-                    alt=""
+                    alt="Pie chart"
                     className=
                         ms-Image-image
                         ms-Image-image--portrait
@@ -563,7 +566,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-unselected.png"
+                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-pie-unselected.png"
                   />
                 </div>
               </div>
@@ -608,7 +611,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   }
                 >
                   <img
-                    alt=""
+                    alt="Pie chart"
                     className=
                         ms-Image-image
                         ms-Image-image--portrait
@@ -622,7 +625,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png"
+                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-pie-selected.png"
                   />
                 </div>
               </div>
@@ -653,7 +656,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                 className="ms-ChoiceFieldLabel"
                 id="ChoiceGroupLabel1-pie"
               >
-                Pie chart
+                Pie
               </span>
             </div>
           </label>

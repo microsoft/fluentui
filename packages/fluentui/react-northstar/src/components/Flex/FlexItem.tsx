@@ -101,7 +101,7 @@ export const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = pro
   // pass calculated bits using Render Props pattern
   if (typeof children === 'function') {
     element = children({
-      styles: resolvedStyles.root,
+      styles: resolvedStyles.root as ComponentSlotStylesPrepared,
       classes: classes.root,
     });
   } else if (_.isNil(children)) {

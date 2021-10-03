@@ -44,9 +44,7 @@ export const FocusZonePageProps: IDocPageProps = {
       view: <FocusZoneHorizontalMenuExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-focus/FocusZone/docs/FocusZoneOverview.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-focus/FocusZone/docs/FocusZoneOverview.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

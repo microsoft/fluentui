@@ -83,6 +83,7 @@ const KnobSelect: React.FunctionComponent<KnobComponentProps> = props => (
       props.setValue(e.target.value);
     }}
     value={props.value}
+    style={{ width: '100%' }}
   >
     {props.values &&
       props.values.map(option => (
@@ -115,6 +116,7 @@ const KnobString: React.FunctionComponent<KnobComponentProps> = props => (
       props.setValue(e.target.value);
     }}
     value={props.value}
+    style={{ width: '100%' }}
   />
 );
 

@@ -1,4 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, pillImageBehavior } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
   getElementType,
@@ -74,6 +74,7 @@ export const PillImage: ComponentWithAs<'img', PillImageProps> & FluentComponent
 PillImage.displayName = 'PillImage';
 
 PillImage.defaultProps = {
+  accessibility: pillImageBehavior,
   as: 'img',
 };
 

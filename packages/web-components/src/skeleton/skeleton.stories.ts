@@ -1,12 +1,42 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import SkeletonTemplate from './fixtures/base.html';
-import { FluentSkeleton } from './';
-
-FluentSkeleton;
-FluentDesignSystemProvider;
+import { fluentSkeleton } from './index';
 
 export default {
-  title: 'Skeleton',
+  title: 'Components/Skeleton',
+  component: fluentSkeleton,
+  argTypes: {
+    shape: {
+      options: ['circle', 'rect'],
+      control: { type: 'radio' },
+    },
+    shimmer: {
+      control: { type: 'boolean' },
+    },
+  },
 };
 
-export const Skeleton = (): string => SkeletonTemplate;
+const SkeletonTemplate = ({ shape, shimmer }) => `
+  <fluent-skeleton 
+    ${shape ? `shape="${shape}"` : ''}
+    ${shimmer ? 'shimmer' : ''} 
+    style="border-radius: 4px; margin-top: 10px; height: 10px" width: 100px"
+  ></fluent-skeleton>
+`;
+
+export const Skeleton = SkeletonTemplate.bind({});
+
+Skeleton.args = {
+  shape: 'rect',
+  shimmer: false,
+};
+
+const example = `
+<fluent-skeleton style="border-radius: 4px; margin-top: 10px; height: 10px" shape="rect"></fluent-skeleton>
+`;
+
+Skeleton.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

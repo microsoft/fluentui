@@ -1,7 +1,8 @@
-import { __styles as vanillaStyles, ResolvedStylesBySlots } from '@fluentui/make-styles';
+import { __styles as vanillaStyles } from '@fluentui/make-styles';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
-import { useRenderer } from './useRenderer';
+import { useRenderer } from './RendererContext';
+import type { CSSClassesMapBySlot, CSSRulesByBucket } from '@fluentui/make-styles';
 
 /**
  * A version of makeStyles() that accepts build output as an input and skips all runtime transforms.
@@ -9,12 +10,15 @@ import { useRenderer } from './useRenderer';
  * @internal
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>) {
-  const getStyles = vanillaStyles(resolvedStyles);
+export function __styles<Slots extends string>(
+  classesMapBySlot: CSSClassesMapBySlot<Slots>,
+  cssRules: CSSRulesByBucket,
+) {
+  const getStyles = vanillaStyles(classesMapBySlot, cssRules);
 
   return function useClasses(): Record<Slots, string> {
-    const { dir, targetDocument } = useFluent();
-    const renderer = useRenderer(targetDocument);
+    const { dir } = useFluent();
+    const renderer = useRenderer();
 
     return getStyles({ dir, renderer });
   };

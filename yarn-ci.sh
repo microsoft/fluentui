@@ -8,6 +8,12 @@ MAX_RETRIES=3
 LOG_ERROR="##vso[task.logissue type=error]"
 LOG_WARNING="##vso[task.logissue type=warning]"
 
+# In .devops/templates/tools.yml we enable errexit and errtrace to ensure that the whole task fails
+# if any line of a multi-line script fails. However, that's not desirable here since the `timeout`
+# command below is intended to exit non-zero if a timeout occurs. (+o means turn option off)
+set +o errexit
+set +o errtrace
+
 while [ $attempt -le $MAX_RETRIES ]; do
   printf "\n\nRunning yarn (attempt $attempt)...\n\n"
 

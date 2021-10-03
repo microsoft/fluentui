@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+import 'cypress-storybook/react';
 import { withPerformance } from 'storybook-addon-performance';
-import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
+import { withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
-addDecorator(withInfo);
+/**
+ * "PACKAGE_NAME" placeholder is being replaced by webpack loader - @link {./preview.loader}
+ * @type {string}
+ */
+const packageNamePlaceholder = 'PACKAGE_NAME';
+
 addDecorator(withPerformance);
-addDecorator(withKeytipLayer);
 addCustomDecorators();
 
 addParameters({
@@ -18,13 +22,7 @@ addParameters({
 
 configure(loadStories, module);
 
-export const parameters = {
-  options: {
-    storySort: {
-      order: ['Concepts/Introduction', 'Concepts', 'Components'],
-    },
-  },
-};
+export const parameters = {};
 
 // ================================
 //          Helpers
@@ -36,7 +34,7 @@ export const parameters = {
  * NOTE:
  *  - this is a temporary workaround until we migrate to new storybook 6 APIs -> old `addDecorator` duplicates rendered decorators
  *  - source of this function is interpolated during runtime with webpack
- *  - "PACKAGE_NAME" placeholder is being replaced
+ *
  */
 function addCustomDecorators() {
   /**
@@ -44,54 +42,20 @@ function addCustomDecorators() {
    */
   const customDecorators = new Set();
 
-  if (
-    ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
-      'PACKAGE_NAME',
-    )
-  ) {
+  if (['react-cards', 'react-tabs'].includes(packageNamePlaceholder)) {
     initializeIcons();
     customDecorators.add(withStrictMode);
   }
 
-  if (
-    [
-      'react-avatar',
-      'react-badge',
-      'react-button',
-      'react-divider',
-      'react-image',
-      'react-link',
-      'react-accordion',
-      'react-menu',
-      'react-text',
-      'react-components',
-      'react-portal',
-    ].includes('PACKAGE_NAME')
-  ) {
-    customDecorators.add(withFluentProvider).add(withStrictMode);
-  }
+  customDecorators.add(withKeytipLayer);
 
   customDecorators.forEach(decorator => addDecorator(decorator));
 }
 
 /**
- *
- * @param {string} storyName
- */
-function getStoryOrder(storyName) {
-  const order = ['Concepts/Introduction', 'Concepts', 'Components'];
-  for (let i = 0; i < order.length; i++) {
-    if (storyName.startsWith(order[i])) {
-      return i;
-    }
-  }
-  return order.length;
-}
-
-/**
  * @typedef {{
- *   default: { title: string, id: string };
- *   [subStoryName: string]: React.FunctionComponent | { title: string, id: string };
+ *   default: { title: string };
+ *   [subStoryName: string]: React.FunctionComponent | { title: string };
  * }} Story
  */
 
@@ -109,8 +73,7 @@ function loadStories() {
     require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/),
   ];
 
-  // @ts-ignore -- PACKAGE_NAME is replaced by a loader
-  if ('PACKAGE_NAME' === 'react' || 'PACKAGE_NAME' === 'react-components') {
+  if (packageNamePlaceholder === 'react') {
     // For suite package storybooks, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
     contexts.push(
@@ -125,18 +88,8 @@ function loadStories() {
   }
 
   // convert stories Set to array
-  const sorted = [...stories.values()].sort((s1, s2) => {
-    const order1 = getStoryOrder(s1.default.title);
-    const order2 = getStoryOrder(s2.default.title);
-    if (order1 < order2) {
-      // the lowest order goes first
-      return -1;
-    }
-    if (order1 > order2) {
-      return 1;
-    }
-    return s1.default.title > s2.default.title ? 1 : -1;
-  });
+  const sorted = [...stories.values()].sort((s1, s2) => (s1.default.title > s2.default.title ? 1 : -1));
+
   return sorted;
 }
 
@@ -150,53 +103,39 @@ function generateStoriesFromExamples(key, stories, req) {
   // Depending on the starting point of the context, and the package layout, the key will be like one of these:
   //   ./ComponentName/ComponentName.Something.Example.tsx
   //   ./package-name/ComponentName/ComponentName.Something.Example.tsx
+  //   ./package-name/src/.../ComponentName.stories.tsx - @TODO remove this line after new storybook setup has been applied for all converged packages
   const segments = key.split('/');
+
   if (segments.length < 3) {
+    console.warn(`Invalid storybook context location found: key: ${key} | segments: ${segments}`);
     return;
   }
 
-  if (key.endsWith('.mdx')) {
-    // out out of the custom naming for mdx, use meta information
-    stories.set(key, req(key));
+  const isCollocatedStory = segments.includes('src');
+
+  if (key.endsWith('.mdx') || isCollocatedStory) {
+    // opt out of the custom naming for mdx and collocated, use meta information
+
+    const content = req(key);
+    if (content.default) {
+      stories.set(key, req(key));
+    } else {
+      console.warn(`No default export in ${key} - stories ignored`);
+    }
     return;
   }
 
-  /** @type {string} */
-  let componentName;
-
-  // Story URLs are generated based off the story name
-  // In the case of `react-components` a (package name) suffix is added to each story
-  // This results in a difference name and URL between individual storybooks and the react-components suite storyboo
-  // https://storybook.js.org/docs/react/configure/sidebar-and-urls#permalinking-to-stories
-  // Use the id property in stories to ensure the same URL between individual and suite storyboo
-  /** @type {string} */
-  let componentId;
-
-  if (segments.length === 3) {
-    // ./ComponentName/ComponentName.Something.Example.tsx
-    componentName = segments[1];
-    componentId = segments[1];
-  } else {
-    // ./package-name/ComponentName/ComponentName.Something.Example.tsx
-    // For @fluentui/react, don't include the package name in the sidebar
-    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
-    componentName = 'PACKAGE_NAME' === 'react' ? segments[2] : `${segments[2]} (${segments[1]})`;
-    componentId = segments[2];
-  }
+  const componentName = generateComponentName(segments);
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
         title: 'Components/' + componentName,
-        id: 'Components/' + componentId,
       },
     });
   }
 
-  const storyName = segments
-    .slice(-1)[0]
-    .replace('.tsx', '')
-    .replace(/\./g, '_');
+  const storyName = segments.slice(-1)[0].replace('.tsx', '').replace(/\./g, '_');
 
   const story = stories.get(componentName);
   const exampleModule = /** @type {(key: string) => ComponentModule} */ (req)(key);
@@ -219,5 +158,29 @@ function generateStoriesFromExamples(key, stories, req) {
         story[subStoryName] = /** @type {React.FunctionComponent} */ (ExampleComponent);
       }
     }
+  }
+
+  /**
+   *
+   * @param {string[]} segments
+   * @returns {string} component name
+   */
+  function generateComponentName(segments) {
+    /**
+     * ./ComponentName/ComponentName.Something.Example.tsx
+     */
+    const isReactExamplesStory = segments.length === 3;
+
+    if (isReactExamplesStory) {
+      // ./ComponentName/ComponentName.Something.Example.tsx
+      //  ↓↓↓
+      // [., ComponentName, ComponentName.Something.Example.tsx]
+      return segments[1];
+    }
+
+    // .package-name/ComponentName/ComponentName.Something.Example.tsx
+    //  ↓↓↓
+    // [., package-name, ComponentName, ComponentName.Something.Example.tsx]
+    return segments[2];
   }
 }

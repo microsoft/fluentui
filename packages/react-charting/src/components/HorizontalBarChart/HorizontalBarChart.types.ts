@@ -68,7 +68,7 @@ export interface IHorizontalBarChartProps {
    * Custom text to the chart (right side of the chart)
    * IChartProps will be available as props to the method prop.
    * If this method not given, default values (IHorizontalDataPoint {x,y})
-   * will be used to disaply the data/text based on given chartModeData prop.
+   * will be used to display the data/text based on given chartModeData prop.
    */
   barChartCustomData?: IRenderFunction<IChartProps>;
 }

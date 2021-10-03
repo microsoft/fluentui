@@ -4,6 +4,7 @@ import { Arguments } from 'yargs-parser';
 import path from 'path';
 import fs from 'fs';
 
+import { babel } from './tasks/babel';
 import { clean } from './tasks/clean';
 import { copy } from './tasks/copy';
 import { jest as jestTask, jestWatch } from './tasks/jest';
@@ -20,8 +21,10 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
+import { isConvergedPackage } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
+  babel: boolean;
   production: boolean;
   webpackConfig: string;
   commonjs: boolean;
@@ -83,20 +86,28 @@ export function preset() {
   task('generate-version-files', generateVersionFiles);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
+  task('babel:postprocess', babel);
 
   task('ts:compile', () => {
     const args = getJustArgv();
 
     return args.commonjs
-      ? 'ts:commonjs-only'
+      ? series('ts:commonjs-only')
       : parallel(
-          condition('ts:commonjs', () => !args.min),
+          // Converged packages must always build commonjs because of babel-make-styles transforms
+          condition('ts:commonjs', () => !args.min || isConvergedPackage()),
           'ts:esm',
           condition('ts:amd', () => !!args.production),
         );
   });
 
-  task('ts', series('ts:compile', 'ts:postprocess'));
+  task('ts', () => {
+    return series(
+      'ts:compile',
+      'ts:postprocess',
+      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+    );
+  });
 
   task(
     'test',

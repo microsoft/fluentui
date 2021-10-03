@@ -96,10 +96,7 @@ async function run() {
     process.exit(1);
   }
 
-  const gitStatus = child_process
-    .execSync('git status --porcelain')
-    .toString()
-    .trim();
+  const gitStatus = child_process.execSync('git status --porcelain').toString().trim();
 
   if (!process.argv.includes('-y')) {
     console.log(
@@ -122,7 +119,11 @@ async function run() {
 
   // do these before deleting node_nodules
   console.log('\nClearing Jest cache...');
-  spawn(os.platform() === 'win32' ? 'npx.cmd' : 'npx', ['jest', '--clearCache']);
+  try {
+    spawn(os.platform() === 'win32' ? 'npx.cmd' : 'npx', ['jest', '--clearCache']);
+  } catch (err) {
+    console.error('Clearing jest cache failed, likely due to it or a dep not being installed.');
+  }
   try {
     console.log('\nAttempting to clear gulp-cache...');
     const cache = require('gulp-cache');

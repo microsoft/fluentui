@@ -14,14 +14,16 @@ export type Offset = OffsetFunction | [number | null | undefined, number | null 
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
+export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
 export type PopperRefHandle = { updatePosition: () => void };
 
+export type PopperVirtualElement = PopperJs.VirtualElement;
+
 export interface PositioningProps {
-  /**
-   * Alignment for the component.
-   */
+  /** Alignment for the component. Only has an effect if used with the @see position option */
   align?: Alignment;
 
   /** The element which will define the boundaries of the popper position for the flip behavior. */
@@ -31,7 +33,7 @@ export interface PositioningProps {
   overflowBoundary?: Boundary;
 
   /** An imperative handle to Popper methods. */
-  containerRef?: React.Ref<PopperRefHandle>;
+  popperRef?: React.Ref<PopperRefHandle>;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
@@ -40,12 +42,6 @@ export interface PositioningProps {
    * then provided value for 'align' will be ignored and 'center' will be used instead.
    */
   position?: Position;
-
-  /**
-   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
-   * @default false
-   */
-  positionFixed?: boolean;
 
   /**
    * Lets you displace a popper element from its reference element.
@@ -61,38 +57,43 @@ export interface PositioningProps {
   arrowPadding?: number;
 
   /**
-   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
-   * "all" enables this behavior for all axis.
+   * Applies max-height and max-width on popper to fit it within the available space in viewport.
+   * true enables this for both width and height when overflow happens.
+   * 'always' applies `max-height`/`max-width` regardless of overflow.
+   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
+   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_disableTether?: boolean | 'all';
+  autoSize?: AutoSize;
+
+  /**
+   * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
+   */
+  target?: HTMLElement | PopperVirtualElement | null;
+
+  /**
+   * Modifies position and alignment to cover the target
+   */
+  coverTarget?: boolean;
 
   /**
    * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and
    * `position` props, regardless of the size of the component, the reference element or the viewport.
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_pinned?: boolean;
-
-  /**
-   * Applies max-height and max-width on popper to fit it within the available space in viewport.
-   * true enables this for both width and height.
-   * 'height' applies only `max-height` and 'width' for `max-width`
-   */
-  autoSize?: 'height' | 'width' | boolean;
+  pinned?: boolean;
 }
 
-export interface PopperOptions extends PositioningProps {
-  /**
-   * If false, delays Popper's creation.
-   * @default true
-   */
-  enabled?: boolean;
+export type PositioningShorthandValue =
+  | 'above'
+  | 'above-start'
+  | 'above-end'
+  | 'below'
+  | 'below-start'
+  | 'below-end'
+  | 'before'
+  | 'before-top'
+  | 'before-bottom'
+  | 'after'
+  | 'after-top'
+  | 'after-bottom';
 
-  /**
-   * Array of conditions to be met in order to trigger a subsequent render to reposition the elements.
-   */
-  positioningDependencies?: React.DependencyList;
-
-  onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-}
+export type PositioningShorthand = PositioningProps | PositioningShorthandValue;

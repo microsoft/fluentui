@@ -1,75 +1,17 @@
 import * as React from 'react';
-import { styled, css, memoizeFunction } from '@fluentui/utilities';
-import { getGlobalClassNames, ITheme } from '@fluentui/style-utilities';
-import { SliderBase } from './Slider.base';
-import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import * as classes from './Slider.scss';
+import { useSlider } from './useSlider';
+import { renderSlider } from './renderSlider';
+import { useSliderStyles } from './useSliderStyles';
+import type { SliderProps } from './Slider.types';
 
-const GlobalClassNames = {
-  root: 'ms-Slider',
-  enabled: 'ms-Slider-enabled',
-  disabled: 'ms-Slider-disabled',
-  row: 'ms-Slider-row',
-  column: 'ms-Slider-column',
-  container: 'ms-Slider-container',
-  slideBox: 'ms-Slider-slideBox',
-  line: 'ms-Slider-line',
-  thumb: 'ms-Slider-thumb',
-  activeSection: 'ms-Slider-active',
-  inactiveSection: 'ms-Slider-inactive',
-  valueLabel: 'ms-Slider-value',
-  showValue: 'ms-Slider-showValue',
-  showTransitions: 'ms-Slider-showTransitions',
-  zeroTick: 'ms-Slider-zeroTick',
-};
+/**
+ * The Slider component allows users to quickly select a value by dragging a thumb across a rail.
+ */
+export const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
+  const state = useSlider(props, ref);
 
-const getStaticStylesMemoized = memoizeFunction(
-  (
-    theme: ITheme,
-    className: string | undefined,
-    disabled: boolean | undefined,
-    vertical: boolean | undefined,
-    titleLabelClassName: string | undefined,
-    showTransition: boolean | undefined,
-    showValue: boolean | undefined,
-  ) => {
-    const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
+  useSliderStyles(state);
 
-    const propClasses = [
-      disabled && classes.disabled,
-      vertical && classes.vertical,
-      disabled ? globalClassNames.disabled : globalClassNames.enabled,
-      vertical ? globalClassNames.column : globalClassNames.row,
-      showValue && globalClassNames.showValue,
-    ];
-
-    return {
-      root: css(className, classes.root, globalClassNames.root, ...propClasses),
-      container: css(classes.container, globalClassNames.container, ...propClasses),
-      slideBox: css(classes.slideBox, globalClassNames.slideBox, ...propClasses),
-      line: css(classes.line, globalClassNames.line, ...propClasses),
-      thumb: css(classes.thumb, globalClassNames.thumb, ...propClasses),
-      activeSection: css(classes.activeSection, globalClassNames.activeSection, ...propClasses),
-      inactiveSection: css(classes.inactiveSection, globalClassNames.inactiveSection, ...propClasses),
-      lineContainer: css(classes.lineContainer, ...propClasses),
-      valueLabel: css(classes.valueLabel, globalClassNames.valueLabel, ...propClasses),
-      titleLabel: css(classes.titleLabel, titleLabelClassName, ...propClasses),
-      showTransitions: css(globalClassNames.showTransitions, ...propClasses),
-      zeroTick: css(classes.zeroTick, globalClassNames.zeroTick, ...propClasses),
-    };
-  },
-);
-
-const getStaticStyles = (props: ISliderStyleProps): Required<ISliderStyles> => {
-  const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
-  return getStaticStylesMemoized(theme, className, disabled, vertical, titleLabelClassName, showTransitions, showValue);
-};
-
-export const Slider: React.FunctionComponent<ISliderProps> = styled<ISliderProps, ISliderStyleProps, ISliderStyles>(
-  SliderBase,
-  getStaticStyles,
-  undefined,
-  {
-    scope: 'Slider',
-  },
-);
+  return renderSlider(state);
+});
+Slider.displayName = 'Slider';

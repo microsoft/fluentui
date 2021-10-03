@@ -27,15 +27,7 @@ function createTypeScriptModule(fileName, css) {
 function generateScopedName(name, fileName, css) {
   const crypto = require('crypto');
 
-  return (
-    name +
-    '_' +
-    crypto
-      .createHmac('sha1', fileName)
-      .update(css)
-      .digest('hex')
-      .substring(0, 8)
-  );
+  return name + '_' + crypto.createHmac('sha1', fileName).update(css).digest('hex').substring(0, 8);
 }
 
 function getJSON(cssFileName, json) {

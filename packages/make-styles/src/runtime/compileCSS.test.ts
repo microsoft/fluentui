@@ -1,8 +1,11 @@
 import { compileCSS, CompileCSSOptions } from './compileCSS';
 
-const defaultOptions: Pick<CompileCSSOptions, 'className' | 'media' | 'pseudo' | 'support' | 'unstable_cssPriority'> = {
+const defaultOptions: Pick<
+  CompileCSSOptions,
+  'rtlClassName' | 'className' | 'media' | 'pseudo' | 'support' | 'unstable_cssPriority'
+> = {
   className: 'foo',
-
+  rtlClassName: 'rtl-foo',
   media: '',
   pseudo: '',
   support: '',
@@ -79,7 +82,7 @@ describe('compileCSS', () => {
     ).toMatchInlineSnapshot(`
       Array [
         ".foo{padding-left:10px;}",
-        ".rfoo{padding-right:10px;}",
+        ".rtl-foo{padding-right:10px;}",
       ]
     `);
   });
@@ -99,7 +102,7 @@ describe('compileCSS', () => {
     ).toMatchInlineSnapshot(`
       Array [
         ".foo:before{padding-left:10px;}",
-        ".rfoo:before{padding-right:10px;}",
+        ".rtl-foo:before{padding-right:10px;}",
       ]
     `);
   });
@@ -146,7 +149,7 @@ describe('compileCSS', () => {
       ).toMatchInlineSnapshot(`
       Array [
         "body .foo{padding-left:10px;}",
-        "body .rfoo{padding-right:10px;}",
+        "body .rtl-foo{padding-right:10px;}",
       ]
     `);
     });

@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { BadgeState } from './Badge.types';
-import { badgeShorthandProps } from './useBadge';
+import type { BadgeState, BadgeSlots } from './Badge.types';
 
 export const renderBadge = (state: BadgeState) => {
-  const { slots, slotProps } = getSlots(state, badgeShorthandProps);
+  const { slots, slotProps } = getSlots<BadgeSlots>(state, ['icon', 'root']);
 
   return (
     <slots.root {...slotProps.root}>
       {state.iconPosition === 'before' && <slots.icon {...slotProps.icon} />}
-      {state.children}
+      {state.root.children}
       {state.iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
     </slots.root>
   );

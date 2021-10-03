@@ -64,12 +64,8 @@ export const DatePickerPageProps: IDocPageProps = {
       view: <DatePickerExternalControlsExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/docs/DatePickerOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/docs/DatePickerBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/docs/DatePickerOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/docs/DatePickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

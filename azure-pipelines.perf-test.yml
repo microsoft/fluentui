@@ -8,7 +8,7 @@ variables:
   - group: fabric-variables
   - template: .devops/templates/variables.yml
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 workspace:
   clean: all
@@ -30,14 +30,14 @@ steps:
   # @fluentui/perf-test Baseline
   - script: |
       yarn perf:test:base
-    condition: not(variables.isPR)
+    condition: eq(variables.isPR, false)
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test Base (Fluent)
 
   # @fluentui/perf-test PR
   - script: |
       yarn perf:test
-    condition: variables.isPR
+    condition: eq(variables.isPR, true)
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
 
@@ -48,7 +48,7 @@ steps:
     displayName: Perf Test
 
   - task: AzureUpload@2
-    displayName: Upload Perf Test Result to PR deploy site (Fluent)
+    displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
     inputs:
       SourcePath: 'packages/fluentui/perf-test/dist'
       azureSubscription: $(azureSubscription)
@@ -57,7 +57,7 @@ steps:
       BlobPrefix: '$(deployBasePath)/perf-test-northstar'
 
   - task: AzureUpload@2
-    displayName: Upload Perf Test Result to PR deploy site
+    displayName: Upload Perf Test Result to PR deploy site (Fluent)
     inputs:
       SourcePath: 'apps/perf-test/dist'
       azureSubscription: $(azureSubscription)
@@ -76,18 +76,18 @@ steps:
 
   - script: |
       yarn stats:build
-    condition: not(variables.isPR)
+    condition: eq(variables.isPR, false)
     displayName: Bundle Statistics (master only)
 
   - script: |
       yarn perf
-    condition: not(variables.isPR)
+    condition: eq(variables.isPR, false)
     displayName: Performance Tests (master only)
 
   # HEADS UP: also see tag-version-prefix in fluentui-publish.js
   - script: |
       yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-    condition: not(variables.isPR)
+    condition: eq(variables.isPR, false)
     displayName: Save Statistics to DB (master only)
     env:
       STATS_URI: $(STATS_URI)

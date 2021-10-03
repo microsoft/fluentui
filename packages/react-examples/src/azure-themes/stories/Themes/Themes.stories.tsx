@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Customizer, TextField, Stack, Fabric, Checkbox, SearchBox, Link, Label, Text } from '@fluentui/react';
-import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { TextField, Stack, Checkbox, SearchBox, Link, Label, Text, ThemeProvider } from '@fluentui/react';
 import {
-  AzureCustomizationsLight,
-  AzureCustomizationsDark,
-  AzureCustomizationsHighContrastLight,
-  AzureCustomizationsHighContrastDark,
+  AzureThemeLight,
+  AzureThemeDark,
+  AzureThemeHighContrastLight,
+  AzureThemeHighContrastDark,
 } from '@fluentui/azure-themes';
+import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import { ButtonCommandBarExample } from '../components/commandBarButton.stories';
 import { ButtonSplitExample } from '../components/splitButton.stories';
 import { ButtonIconExample } from '../components/iconButton.stories';
@@ -30,6 +30,10 @@ import { PivotBasicExample } from '../components/Pivots.stories';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
+import { SliderBasicExample } from '../components/slider.stories';
+
+// Workaround to prevent errors on usage of Customizer, without disabling all deprecation checks
+// eslint-disable-next-line deprecation/deprecation
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -75,6 +79,11 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>DetailsList / Grid</Label>
       <DetailsListCompactExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Slider</Label>
+      <SliderBasicExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
@@ -136,33 +145,25 @@ const Example = () => (
 );
 
 export const Light = () => (
-  <Customizer {...AzureCustomizationsLight}>
-    <Fabric applyThemeToBody>
-      <Example />
-    </Fabric>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeLight} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const Dark = () => (
-  <Customizer {...AzureCustomizationsDark}>
-    <Fabric applyThemeToBody>
-      <Example />
-    </Fabric>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeDark} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const HighContrastLight = () => (
-  <Customizer {...AzureCustomizationsHighContrastLight}>
-    <Fabric applyThemeToBody>
-      <Example />
-    </Fabric>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeHighContrastLight} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const HighContrastDark = () => (
-  <Customizer {...AzureCustomizationsHighContrastDark}>
-    <Fabric applyThemeToBody>
-      <Example />
-    </Fabric>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeHighContrastDark} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );

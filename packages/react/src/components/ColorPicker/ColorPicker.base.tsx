@@ -1,12 +1,5 @@
 import * as React from 'react';
 import { classNamesFunction, initializeComponentRef, warnDeprecations, warn } from '../../Utilities';
-import {
-  IColorPickerProps,
-  IColorPickerStyleProps,
-  IColorPickerStyles,
-  IColorPicker,
-  IColorPickerStrings,
-} from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
@@ -21,7 +14,6 @@ import {
   RGBA_REGEX,
 } from '../../utilities/color/consts';
 // These imports are separated to help with bundling
-import { IColor, IRGB } from '../../utilities/color/interfaces';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { getColorFromRGBA } from '../../utilities/color/getColorFromRGBA';
 import { clamp } from '../../utilities/color/clamp';
@@ -31,6 +23,14 @@ import { updateH } from '../../utilities/color/updateH';
 import { correctRGB } from '../../utilities/color/correctRGB';
 import { correctHex } from '../../utilities/color/correctHex';
 import { ColorRectangleBase } from './ColorRectangle/ColorRectangle.base';
+import type {
+  IColorPickerProps,
+  IColorPickerStyleProps,
+  IColorPickerStyles,
+  IColorPicker,
+  IColorPickerStrings,
+} from './ColorPicker.types';
+import type { IColor, IRGB } from '../../utilities/color/interfaces';
 
 type ColorComponent = keyof Pick<IColor, 'r' | 'g' | 'b' | 'a' | 't' | 'hex'>;
 
@@ -251,7 +251,6 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                         value={this._getDisplayValue(comp)}
                         spellCheck={false}
                         ariaLabel={textLabels[comp]}
-                        aria-live={comp !== 'hex' ? 'assertive' : undefined}
                         autoComplete="off"
                       />
                     </td>

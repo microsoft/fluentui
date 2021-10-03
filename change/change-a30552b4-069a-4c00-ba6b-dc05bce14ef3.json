@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "type": "prerelease",
+      "comment": "Fix getFilenameFromUrl implementation",
+      "packageName": "@fluentui/react-avatar",
+      "email": "bsunderhus@microsoft.com",
+      "dependentChangeType": "patch"
+    }
+  ]
+}

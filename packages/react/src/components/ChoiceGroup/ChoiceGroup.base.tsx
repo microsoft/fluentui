@@ -1,23 +1,17 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import {
-  classNamesFunction,
-  find,
-  getNativeProps,
-  divProperties,
-  IRefObject,
-  setFocusVisibility,
-} from '../../Utilities';
-import {
+import { classNamesFunction, find, getNativeProps, divProperties, setFocusVisibility } from '../../Utilities';
+import { ChoiceGroupOption } from './ChoiceGroupOption/index';
+import { useId, useControllableValue, useWarnings } from '@fluentui/react-hooks';
+import type { IRefObject } from '../../Utilities';
+import type {
   IChoiceGroupOption,
   IChoiceGroupProps,
   IChoiceGroupStyleProps,
   IChoiceGroupStyles,
   IChoiceGroup,
 } from './ChoiceGroup.types';
-import { IChoiceGroupOptionProps } from './ChoiceGroupOption/ChoiceGroupOption.types';
-import { ChoiceGroupOption } from './ChoiceGroupOption/index';
-import { useId, useControllableValue, useWarnings } from '@fluentui/react-hooks';
+import type { IChoiceGroupOptionProps } from './ChoiceGroupOption/ChoiceGroupOption.types';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -134,9 +128,9 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
           {options.map((option: IChoiceGroupOption) => {
             return (
               <ChoiceGroupOption
-                key={option.key}
                 itemKey={option.key}
                 {...option}
+                key={option.key}
                 onBlur={onBlur}
                 onFocus={onFocus}
                 onChange={onOptionChange}

@@ -10,7 +10,6 @@ type ExtendedCookResult = CookResult & {
     story: string;
     iterations: number;
     tpi?: number;
-    fabricTpi?: number;
     filename?: number;
   };
 };
@@ -133,7 +132,6 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
     const story = getStoryKey(resultKey);
     const iterations = getIterations(stories, kind, story);
     const tpi = getTpiResult(testResults, stories, kind, story); // || 'n/a'
-    const fabricTpi = getTpiResult(testResults, stories, kind, 'Fabric'); // || ''
 
     return {
       ...testResult,
@@ -142,7 +140,6 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
         story,
         iterations,
         tpi,
-        fabricTpi,
         filename: stories[kind][story].filename,
       },
     };
@@ -231,7 +228,6 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   <tr>
     <th>Kind</th>
     <th>Story</th>
-    <th>Fabric TPI</th>
     <th>TPI</th>
     <th>Iterations</th>
     <th>
@@ -248,18 +244,10 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
               false,
             )
           : 'n/a';
-        const fabricTpi = testResult.extended.fabricTpi
-          ? linkifyResult(
-              testResult,
-              testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
-              false,
-            )
-          : '';
 
         return `<tr>
             <td>${testResult.extended.kind}</td>
             <td>${testResult.extended.story}</td>
-            <td>${fabricTpi}</td>
             <td>${tpi}</td>
             <td>${testResult.extended.iterations}</td>
             <td>${getTicksResult(testResult, false)}</td>

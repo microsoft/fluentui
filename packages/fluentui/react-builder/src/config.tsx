@@ -123,12 +123,12 @@ export const DRAGGING_ELEMENTS = {
         {
           key: 'one',
           id: 'one',
-          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+          content: <img alt="" src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
         },
         {
           key: 'two',
           id: 'two',
-          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+          content: <img alt="" src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
         },
       ],
     } as FUI.CarouselProps,
@@ -753,18 +753,18 @@ export const jsonTreeDeleteElement = (tree: JSONTreeElement, uuid: string | numb
   return omitChildWithUuid(tree, uuid);
 };
 
-export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any): JSONTreeElement => {
+export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any, preserveUuid: boolean): JSONTreeElement => {
   const result = _.transform(element, (acc, value, key) => {
     if (_.isPlainObject(value)) {
-      acc[key] = jsonTreeCloneElement(tree, value);
+      acc[key] = jsonTreeCloneElement(tree, value, preserveUuid);
     } else if (Array.isArray(value)) {
-      acc[key] = jsonTreeCloneElement(tree, value);
+      acc[key] = jsonTreeCloneElement(tree, value, preserveUuid);
     } else {
       acc[key] = value;
     }
   }) as any;
 
-  if (_.isPlainObject(result) && result.$$typeof === 'Symbol(react.element)' && result.uuid) {
+  if (!preserveUuid && _.isPlainObject(result) && result.$$typeof === 'Symbol(react.element)' && result.uuid) {
     result.uuid = getUUID();
   }
   return result;

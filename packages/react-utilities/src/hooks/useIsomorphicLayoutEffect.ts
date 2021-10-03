@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isSSR } from '../utils/index';
+import { canUseDOM } from '../ssr/index';
 
 /**
  * React currently throws a warning when using useLayoutEffect on the server. To get around it, we can conditionally
@@ -11,4 +11,4 @@ import { isSSR } from '../utils/index';
  * https://github.com/reduxjs/react-redux/blob/master/src/utils/useIsomorphicLayoutEffect.js
  */
 // eslint-disable-next-line no-restricted-properties
-export const useIsomorphicLayoutEffect: typeof React.useEffect = isSSR() ? React.useEffect : React.useLayoutEffect;
+export const useIsomorphicLayoutEffect: typeof React.useEffect = canUseDOM() ? React.useLayoutEffect : React.useEffect;

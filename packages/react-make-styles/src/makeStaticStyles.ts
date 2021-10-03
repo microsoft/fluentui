@@ -1,11 +1,7 @@
-import {
-  MakeStaticStyles,
-  makeStaticStyles as vanillaMakeStaticStyles,
-  MakeStaticStylesOptions,
-} from '@fluentui/make-styles';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { makeStaticStyles as vanillaMakeStaticStyles } from '@fluentui/make-styles';
 
-import { useRenderer } from './useRenderer';
+import { useRenderer } from './RendererContext';
+import type { MakeStaticStyles, MakeStaticStylesOptions } from '@fluentui/make-styles';
 
 export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStaticStyles[]) {
   const getStyles = vanillaMakeStaticStyles(styles);
@@ -16,9 +12,7 @@ export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStati
   }
 
   return function useStaticStyles(): void {
-    const { targetDocument } = useFluent();
-
-    const renderer = useRenderer(targetDocument);
+    const renderer = useRenderer();
     const options: MakeStaticStylesOptions = { renderer };
 
     return getStyles(options);

@@ -24,7 +24,7 @@ export class Arc extends React.Component<IArcProps, {}> {
     const { color, arc } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(getStyles, { color });
-    return <path d={arc(this.props.data)} className={classNames.root} />;
+    return <path d={arc(this.props.data)} className={classNames.root} onClick={this.props.data?.data.onClick} />;
   }
 }
 

@@ -233,9 +233,6 @@ Array [
               data-is-focusable={true}
               id="min-Slider0"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -286,9 +283,6 @@ Array [
               data-is-focusable={true}
               id="max-Slider0"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -732,6 +726,7 @@ Array [
                 color: GrayText;
                 forced-color-adjust: none;
               }
+          htmlFor="Slider1"
         >
           300
         </label>
@@ -946,9 +941,6 @@ Array [
               data-is-focusable={true}
               id="min-Slider2"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -999,9 +991,6 @@ Array [
               data-is-focusable={true}
               id="max-Slider2"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -1321,9 +1310,6 @@ Array [
               data-is-focusable={true}
               id="min-Slider3"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -1374,9 +1360,6 @@ Array [
               data-is-focusable={true}
               id="max-Slider3"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -1696,9 +1679,6 @@ Array [
               data-is-focusable={true}
               id="min-Slider4"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -1749,9 +1729,6 @@ Array [
               data-is-focusable={true}
               id="max-Slider4"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -2130,9 +2107,6 @@ Array [
               data-is-focusable={true}
               id="min-Slider5"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {
@@ -2187,9 +2161,6 @@ Array [
               data-is-focusable={true}
               id="max-Slider5"
               onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
               role="slider"
               style={
                 Object {

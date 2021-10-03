@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { format } from '@fluentui/utilities';
 import { getWeekNumbersInMonth } from '@fluentui/date-time-utilities';
-import { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { CalendarGridDayCell } from './CalendarGridDayCell';
-import { IDayInfo, IWeekCorners } from './CalendarDayGrid.base';
+import type { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
+import type { IProcessedStyleSet } from '@fluentui/style-utilities';
+import type { IDayInfo, IWeekCorners } from './CalendarDayGrid.base';
 
 export interface ICalendarGridRowProps extends ICalendarDayGridProps {
   classNames: IProcessedStyleSet<ICalendarDayGridStyles>;

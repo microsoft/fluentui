@@ -3,7 +3,6 @@ import { IconButton } from '../../Button';
 import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
-import { IProcessedStyleSet } from '../../Styling';
 import {
   allowScrollOnElement,
   allowOverscrollOnElement,
@@ -20,7 +19,9 @@ import {
   initializeComponentRef,
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
+import { PanelType } from './Panel.types';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 const COMPONENT_NAME = 'Panel';
@@ -222,7 +223,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       <Layer {...layerProps}>
         <Popup
           role="dialog"
-          aria-modal="true"
+          aria-modal={isBlocking ? 'true' : undefined}
           ariaLabelledBy={this._headerTextId ? this._headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
@@ -240,16 +241,16 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
             >
-              <div className={_classNames.commands} data-is-visible={true}>
-                {onRenderNavigation(this.props, this._onRenderNavigation)}
-              </div>
               <div className={_classNames.contentInner}>
-                {(this._hasCustomNavigation || !hasCloseButton) &&
-                  onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
                 <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
+                  <div className={_classNames.commands} data-is-visible={true}>
+                    {onRenderNavigation(this.props, this._onRenderNavigation)}
+                  </div>
+                  {(this._hasCustomNavigation || !hasCloseButton) &&
+                    onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
                   {onRenderBody(this.props, this._onRenderBody)}
+                  {onRenderFooter(this.props, this._onRenderFooter)}
                 </div>
-                {onRenderFooter(this.props, this._onRenderFooter)}
               </div>
             </FocusTrapZone>
           </div>
@@ -283,7 +284,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   }
 
   public dismiss = (ev?: React.SyntheticEvent<HTMLElement> | KeyboardEvent): void => {
-    if (this.props.onDismiss) {
+    if (this.props.onDismiss && this.isActive) {
       this.props.onDismiss(ev);
     }
 
