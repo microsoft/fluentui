@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { KeyCodes, getId, getNativeProps, inputProperties, css } from '@fluentui/react/lib/Utilities';
-import {
-  IBaseFloatingSuggestionsProps,
-  IBaseFloatingPickerHeaderFooterProps,
-} from '../../../FloatingSuggestionsComposite/FloatingSuggestions.types';
-import { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { EditingItemComponentProps } from '../EditableItem';
 import { useFloatingSuggestionItems } from '../../../UnifiedPicker/hooks/useFloatingSuggestionItems';
 import { getStyles } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsList/FloatingSuggestionsList.styles';
 import { getStyles as getFloatingSuggestionStyles } from '../../../FloatingSuggestionsComposite/FloatingSuggestions.styles';
 import * as styles from './DefaultEditingItem.scss';
+import type {
+  IBaseFloatingSuggestionsProps,
+  IBaseFloatingPickerHeaderFooterProps,
+} from '../../../FloatingSuggestionsComposite/FloatingSuggestions.types';
+import type { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
+import type { EditingItemComponentProps } from '../EditableItem';
 
 export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
   /**

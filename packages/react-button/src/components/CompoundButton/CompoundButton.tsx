@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { CompoundButtonProps } from './CompoundButton.types';
 import { renderCompoundButton } from './renderCompoundButton';
 import { useCompoundButton } from './useCompoundButton';
 import { useCompoundButtonStyles } from './useCompoundButtonStyles';
+import type { CompoundButtonProps } from './CompoundButton.types';
 
 /**
- * Define a styled CompoundButton, using the `useCompoundButton` hook.
- * {@docCategory Button}
+ * CompoundButtons are buttons that can have secondary content that adds extra information to the user.
  */
-export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>((props, ref) => {
+export const CompoundButton: React.FunctionComponent<CompoundButtonProps> = React.forwardRef<
+  HTMLButtonElement,
+  CompoundButtonProps
+>((props, ref) => {
   const state = useCompoundButton(props, ref);
 
   useCompoundButtonStyles(state);

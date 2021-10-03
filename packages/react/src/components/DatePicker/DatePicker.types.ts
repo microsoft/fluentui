@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { ICalendarProps } from '../../Calendar';
-import { DayOfWeek, FirstWeekOfYear, ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
-import { ICalloutProps } from '../../Callout';
-import { ITextFieldProps } from '../../TextField';
+import { DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
+import type { ICalendarProps } from '../../Calendar';
+import type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
+import type { ICalloutProps } from '../../Callout';
+import type { ITextFieldProps } from '../../TextField';
 
 /**
  * {@docCategory DatePicker}
@@ -298,6 +299,7 @@ export interface IDatePickerStyleProps {
 
   // Insert DatePicker style props below
   disabled?: boolean;
+  underlined?: boolean;
   label?: boolean;
   isDatePickerShown?: boolean;
 }
@@ -315,4 +317,6 @@ export interface IDatePickerStyles {
   icon: IStyle;
   statusMessage?: IStyle;
   wrapper?: IStyle;
+  readOnlyTextField?: IStyle;
+  readOnlyPlaceholder?: IStyle;
 }

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 22:17:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.33)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.32..@fluentui/react-compose_v1.0.0-beta.33)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [1.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.32)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.31..@fluentui/react-compose_v1.0.0-beta.32)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.2 ([PR #19542](https://github.com/microsoft/fluentui/pull/19542) by xiaowxie@microsoft.com)
+
+## [1.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.31)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.30..@fluentui/react-compose_v1.0.0-beta.31)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.1 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [1.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.30)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.29..@fluentui/react-compose_v1.0.0-beta.30)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.0 ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
 
 ## [1.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.29)
 

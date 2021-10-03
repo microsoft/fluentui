@@ -7,7 +7,7 @@ import {
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { elevation } from '../styles';
-import { fillColor, layerCornerRadius } from '../design-tokens';
+import { fillColor, layerCornerRadius, neutralForegroundRest } from '../design-tokens';
 
 export const cardStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
@@ -20,6 +20,7 @@ export const cardStyles: (context: ElementDefinitionContext, definition: Foundat
         width: var(--card-width, 100%);
         box-sizing: border-box;
         background: ${fillColor};
+        color: ${neutralForegroundRest};
         border-radius: calc(${layerCornerRadius} * 1px);
         ${elevation}
       }

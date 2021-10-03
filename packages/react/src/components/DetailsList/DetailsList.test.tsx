@@ -3,25 +3,22 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { safeMount } from '@fluentui/test-utilities';
-import { KeyCodes } from '@fluentui/utilities';
-import { IDragDropEvents } from '../../DragDrop';
-import { IGroup } from '../../GroupedList';
+import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
 import { SelectionMode, Selection, SelectionZone } from '../../Selection';
 import { getTheme } from '../../Styling';
-import { EventGroup, IRenderFunction } from '../../Utilities';
-import { IDetailsColumnProps } from './DetailsColumn';
-import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
+import { DetailsHeader } from './DetailsHeader';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
-import {
-  CheckboxVisibility,
-  DetailsListLayoutMode,
-  IColumn,
-  IDetailsGroupDividerProps,
-  IDetailsList,
-} from './DetailsList.types';
-import { DetailsRow, IDetailsRowProps } from './DetailsRow';
+import { CheckboxVisibility, DetailsListLayoutMode } from './DetailsList.types';
+import { DetailsRow } from './DetailsRow';
 import { DetailsRowCheck } from './DetailsRowCheck';
+import type { IDragDropEvents } from '../../DragDrop';
+import type { IGroup } from '../../GroupedList';
+import type { IRenderFunction } from '../../Utilities';
+import type { IDetailsColumnProps } from './DetailsColumn';
+import type { IDetailsHeaderProps } from './DetailsHeader';
+import type { IColumn, IDetailsGroupDividerProps, IDetailsList } from './DetailsList.types';
+import type { IDetailsRowProps } from './DetailsRow';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -70,6 +67,10 @@ function customColumnDivider(
 }
 
 describe('DetailsList', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders List correctly with onRenderDivider props', () => {
     const component = renderer.create(
       <DetailsList
@@ -232,6 +233,59 @@ describe('DetailsList', () => {
     );
   });
 
+  it('renders proportional columns with proper width ratios when delayFirstMeasure', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    safeMount(
+      <DetailsList
+        className="list"
+        items={[{ key: 'item1' }, { key: 'item2' }, { key: 'item3' }]}
+        columns={[
+          { fieldName: 'a', key: 'col1', minWidth: 100, name: 'column 1', flexGrow: 0.8 },
+          { fieldName: 'b', key: 'col2', minWidth: 100, name: 'column 2', flexGrow: 0.5 },
+        ]}
+        componentRef={ref => (component = ref)}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        flexMargin={-640}
+        skipViewportMeasures={false}
+        onShouldVirtualize={() => false}
+        delayFirstMeasure
+      />,
+      () => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(2);
+        setTimeout(() => {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
+          elements.forEach((element: Element) => {
+            const itemKey = element.getAttribute('aria-colindex')!;
+            expect(itemKey).toBeDefined();
+
+            if (itemKey === '1') {
+              return;
+            }
+
+            const style = element.getAttribute('style')!;
+            expect(style).toBeDefined();
+
+            const width = style.match(/(?<=width: )\d+/g)!;
+            expect(width).toBeDefined();
+            expect(width[0]).toBeDefined();
+
+            if (itemKey === '2') {
+              expect(width[0]).toBe('336');
+            } else if (itemKey === '3') {
+              expect(width[0]).toBe('255');
+            } else {
+              fail('Unexpected itemKey.');
+            }
+          });
+        }, 0);
+        jest.runOnlyPendingTimers();
+      },
+    );
+  });
+
   it('renders List in compact mode correctly', () => {
     const component = renderer.create(
       <DetailsList
@@ -322,16 +376,30 @@ describe('DetailsList', () => {
     );
   });
 
-  it('executes onItemInvoked when double click or enter is pressed', () => {
+  it('executes onItemInvoked when double click is pressed', () => {
     const items = mockData(5);
     const onItemInvoked = jest.fn();
 
     safeMount(
       <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
       (wrapper: ReactWrapper) => {
-        wrapper.find('.ms-DetailsRow').first().simulate('dblclick').simulate('keydown', { which: KeyCodes.enter });
+        wrapper.find('.ms-DetailsRow').first().simulate('dblclick');
 
-        expect(onItemInvoked).toHaveBeenCalledTimes(2);
+        expect(onItemInvoked).toHaveBeenCalledTimes(1);
+      },
+    );
+  });
+
+  it('executes onItemInvoked when enter is pressed', () => {
+    const items = mockData(5);
+    const onItemInvoked = jest.fn();
+
+    safeMount(
+      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
+      (wrapper: ReactWrapper) => {
+        wrapper.find('.ms-DetailsRow').first().simulate('keydown', { which: KeyCodes.enter });
+
+        expect(onItemInvoked).toHaveBeenCalledTimes(1);
       },
     );
   });
@@ -514,6 +582,7 @@ describe('DetailsList', () => {
     columns[1].onColumnResize = jest.fn();
 
     safeMount(<DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} />, () => {
+      jest.runOnlyPendingTimers();
       expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
       expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
     });

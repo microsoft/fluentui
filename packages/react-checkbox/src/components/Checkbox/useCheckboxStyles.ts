@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
 /**
@@ -12,47 +12,121 @@ const useStyles = makeStyles({
     alignSelf: 'flex-start',
     alignItems: 'center',
     padding: '4px',
+    userSelect: 'none',
+    cursor: 'pointer',
   }),
 
-  focusIndictor: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: '4px',
-        margin: '-6px',
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
-});
-
-const useInputStyle = makeStyles({
-  input: {
-    opacity: 0,
-    margin: 0,
-    padding: 0,
-    cursor: 'pointer',
-  },
-
-  disabled: {
+  disabled: theme => ({
+    color: theme.colorNeutralForegroundDisabled,
     cursor: 'default',
-  },
+
+    '& .ms-checkbox-indicator': {
+      borderColor: theme.colorNeutralStrokeDisabled,
+      color: theme.colorNeutralForegroundDisabled,
+      backgroundColor: theme.colorNeutralBackground1,
+    },
+
+    ':hover': {
+      '& .ms-checkbox-indicator': {
+        borderColor: theme.colorNeutralStrokeDisabled,
+        color: theme.colorNeutralForegroundDisabled,
+        backgroundColor: theme.colorNeutralBackground1,
+      },
+    },
+
+    ':active': {
+      '& .ms-checkbox-indicator': {
+        borderColor: theme.colorNeutralStrokeDisabled,
+        color: theme.colorNeutralForegroundDisabled,
+        backgroundColor: theme.colorNeutralBackground1,
+      },
+    },
+  }),
+
+  unchecked: theme => ({
+    color: theme.colorNeutralForeground3,
+
+    '& .ms-checkbox-indicator': {
+      borderColor: theme.colorNeutralStrokeAccessible,
+      '& > *': {
+        opacity: 0,
+      },
+    },
+
+    ':hover': {
+      color: theme.colorNeutralForeground2,
+
+      '& .ms-checkbox-indicator': {
+        borderColor: theme.colorNeutralStrokeAccessibleHover,
+      },
+    },
+
+    ':active': {
+      color: theme.colorNeutralForeground1,
+
+      '& .ms-checkbox-indicator': {
+        borderColor: theme.colorNeutralStrokeAccessiblePressed,
+      },
+    },
+  }),
+
+  checked: theme => ({
+    color: theme.colorNeutralForeground1,
+
+    // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
+    '& .ms-checkbox-indicator': {
+      backgroundColor: theme.colorCompoundBrandBackground,
+      color: theme.colorNeutralForegroundInverted,
+      borderColor: theme.colorBrandBackground,
+    },
+
+    ':active': {
+      '& .ms-checkbox-indicator': {
+        backgroundColor: theme.colorCompoundBrandBackgroundPressed,
+      },
+    },
+
+    ':hover': {
+      '& .ms-checkbox-indicator': {
+        backgroundColor: theme.colorCompoundBrandBackgroundHover,
+      },
+    },
+  }),
+
+  mixed: theme => ({
+    color: theme.colorNeutralForeground1,
+
+    '& .ms-checkbox-indicator': {
+      borderColor: theme.colorCompoundBrandStroke,
+      color: theme.colorCompoundBrandForeground1,
+    },
+
+    ':active': {
+      '& .ms-checkbox-indicator': {
+        borderColor: theme.colorCompoundBrandStrokePressed,
+        color: theme.colorCompoundBrandForeground1Pressed,
+      },
+    },
+
+    ':hover': {
+      '& .ms-checkbox-indicator': {
+        borderColor: theme.colorCompoundBrandStrokeHover,
+        color: theme.colorCompoundBrandForeground1Hover,
+      },
+    },
+  }),
+
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' }, selector: 'focus-within' }),
 });
 
-const useBoxStyles = makeStyles({
-  box: theme => ({
+const useContainerStyles = makeStyles({
+  container: {
+    position: 'relative',
     display: 'flex',
-    flexShrink: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    boxSizing: 'border-box',
-    borderStyle: 'solid',
-    borderRadius: theme.global.borderRadius.small,
-  }),
+  },
 
   medium: {
     width: '16px',
@@ -73,127 +147,40 @@ const useBoxStyles = makeStyles({
   after: theme => ({
     marginRight: '12px',
   }),
-
-  circular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
-  }),
-
-  disabled: theme => ({
-    borderWidth: theme.global.strokeWidth.thin,
-    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-  }),
-
-  unchecked: theme => ({
-    borderColor: theme.alias.color.neutral.neutralStrokeAccessible,
-    borderWidth: theme.global.strokeWidth.thin,
-    ':hover': {
-      borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
-    },
-    ':active': {
-      borderColor: theme.alias.color.neutral.neutralStrokeAccessiblePressed,
-    },
-  }),
-
-  checked: theme => ({
-    backgroundColor: theme.alias.color.neutral.compoundBrandBackground,
-    borderWidth: 0,
-    ':hover': {
-      backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundHover,
-    },
-    ':active': {
-      backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundPressed,
-    },
-  }),
-
-  mixed: theme => ({
-    borderColor: theme.alias.color.neutral.compoundBrandStroke,
-    borderWidth: theme.global.strokeWidth.thin,
-    ':hover': {
-      borderColor: theme.alias.color.neutral.compoundBrandStrokeHover,
-    },
-    ':active': {
-      borderColor: theme.alias.color.neutral.compoundBrandStrokePressed,
-    },
-  }),
 });
 
-const useIndicatorStyles = makeStyles({
-  indicator: {
-    position: 'absolute',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fill: 'currentColor',
-  },
-
-  // TODO: Remove fontSize once checkbox uses react-icons
-  medium: {
-    fontSize: '8px',
-    width: '8px',
-    height: '8px',
-  },
-
-  // TODO: Remove fontSize once checkbox uses react-icons
-  large: {
-    fontSize: '10px',
-    width: '10px',
-    height: '10px',
-  },
-
-  disabled: theme => ({
-    opacity: 1,
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
-  }),
-
-  unchecked: {
+const useInputStyles = makeStyles({
+  input: {
     opacity: 0,
-  },
-
-  // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
-  checked: theme => ({
-    opacity: 1,
-    color: theme.alias.color.neutral.neutralForegroundInverted,
-  }),
-
-  mixed: theme => ({
-    opacity: 1,
-    color: theme.alias.color.neutral.compoundBrandForeground1,
-    ':hover': {
-      color: theme.alias.color.neutral.compoundBrandForeground1Hover,
-    },
-    ':active': {
-      color: theme.alias.color.neutral.compoundBrandForeground1Pressed,
-    },
-  }),
-});
-
-const useLabelStyles = makeStyles({
-  label: {
-    userSelect: 'none',
+    position: 'absolute',
+    margin: 0,
+    padding: 0,
     cursor: 'pointer',
   },
 
-  disabled: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
-    cursor: 'default',
+  disabled: {
+    cursor: 'not-allowed',
+  },
+});
+
+const useIndicatorStyles = makeStyles({
+  box: theme => ({
+    width: '100%',
+    height: '100%',
+    fill: 'currentColor',
+    overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    boxSizing: 'border-box',
+    borderStyle: 'solid',
+    borderRadius: theme.borderRadiusSmall,
+    borderWidth: theme.strokeWidthThin,
   }),
 
-  unchecked: theme => ({
-    color: theme.alias.color.neutral.neutralForeground3,
-    ':hover': {
-      color: theme.alias.color.neutral.neutralForeground2,
-    },
-    ':active': {
-      color: theme.alias.color.neutral.neutralForeground1,
-    },
-  }),
-
-  checked: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-  }),
-
-  mixed: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
+  circular: theme => ({
+    borderRadius: theme.borderRadiusCircular,
   }),
 });
 
@@ -203,41 +190,36 @@ const useLabelStyles = makeStyles({
 export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const checkedState = state.checked === 'mixed' ? 'mixed' : state.checked ? 'checked' : 'unchecked';
   const indicatorStyles = useIndicatorStyles();
-  const labelStyles = useLabelStyles();
-  const inputStyles = useInputStyle();
-  const boxStyles = useBoxStyles();
+  const inputStyles = useInputStyles();
+  const containerStyles = useContainerStyles();
   const styles = useStyles();
 
-  state.className = mergeClasses(styles.root, styles.focusIndictor, state.className);
+  state.root.className = mergeClasses(
+    styles.root,
+    styles.focusIndicator,
+    styles[checkedState],
+    state.input.disabled && styles.disabled,
+    state.root.className,
+  );
 
   state.input.className = mergeClasses(
-    boxStyles[state.size],
+    containerStyles[state.size],
     inputStyles.input,
-    state.disabled && inputStyles.disabled,
+    state.input.disabled && inputStyles.disabled,
     state.input.className,
   );
 
-  state.checkboxClassName = mergeClasses(
-    boxStyles.box,
-    boxStyles[state.size],
-    !!state.label.children && boxStyles[state.labelPosition],
-    !state.disabled && boxStyles[checkedState],
-    state.disabled && boxStyles.disabled,
-    state.circular && boxStyles.circular,
+  state.containerClassName = mergeClasses(
+    containerStyles.container,
+    containerStyles[state.size],
+    !!state.root.children && containerStyles[state.labelPosition],
   );
-
   state.indicator.className = mergeClasses(
-    indicatorStyles[state.size],
-    indicatorStyles.indicator,
-    state.disabled && indicatorStyles.disabled,
-    !state.disabled && indicatorStyles[checkedState],
+    indicatorStyles.box,
+    containerStyles[state.size],
+    state.circular && indicatorStyles.circular,
+    'ms-checkbox-indicator',
     state.indicator.className,
-  );
-
-  state.label.className = mergeClasses(
-    labelStyles.label,
-    !state.disabled && labelStyles[checkedState],
-    state.disabled && labelStyles.disabled,
   );
 
   return state;

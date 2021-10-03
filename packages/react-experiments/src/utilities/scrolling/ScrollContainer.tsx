@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { IScrollContainerProps } from './ScrollContainer.types';
 import { css, Async, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 
 import * as ScrollContainerStyles from './ScrollContainer.scss';
+import type { IScrollContainerProps } from './ScrollContainer.types';
 
 export interface IVisibleCallback {
   (scrollTop: number): void;

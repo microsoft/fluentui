@@ -1,19 +1,18 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { LabelState } from './Label.types';
+import { getSlots } from '@fluentui/react-utilities';
 import { labelShorthandProps } from './useLabel';
+import type { LabelState, LabelSlots } from './Label.types';
 
 /**
  * Render the final JSX of Label
- * {@docCategory Label}
  */
 export const renderLabel = (state: LabelState) => {
-  const { slots, slotProps } = getSlotsCompat(state, labelShorthandProps);
+  const { slots, slotProps } = getSlots<LabelSlots>(state, labelShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>
-      {state.children}
-      {state.required && <slots.required {...slotProps.required} />}
+      {state.root.children}
+      <slots.required {...slotProps.required} />
     </slots.root>
   );
 };

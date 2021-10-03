@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
-import { ISelection } from '@fluentui/react/lib/Selection';
+import type { IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
+import type { ISelection } from '@fluentui/react/lib/Selection';
 
 export type TileSize = keyof {
   small: 'small';
@@ -106,4 +106,7 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    * Hide nameplate and activity until the tile is hovered or selected (applies only to media tiles)
    */
   nameplateOnlyOnHover?: boolean;
+
+  /* whether the component should be rendered as disabled */
+  disabled?: boolean;
 }

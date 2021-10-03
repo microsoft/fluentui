@@ -3,8 +3,8 @@ import * as renderer from 'react-test-renderer';
 import { TestImages } from '@fluentui/example-data';
 import { ActivityItem } from './ActivityItem';
 import { Icon } from '../../Icon';
-import { IPersonaSharedProps } from '../../Persona';
 import { isConformant } from '../../common/isConformant';
+import type { IPersonaSharedProps } from '../../Persona';
 
 const defaultProps = {
   key: 1,

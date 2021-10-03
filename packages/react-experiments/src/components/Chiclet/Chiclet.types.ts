@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
 
 export interface IChiclet {}
 

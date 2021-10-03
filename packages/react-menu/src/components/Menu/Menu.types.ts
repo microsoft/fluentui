@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { PositioningProps, usePopperMouseTarget } from '@fluentui/react-positioning';
-import { MenuListProps } from '../MenuList/index';
+import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
+import { MenuListCommons } from '../MenuList/index';
+import { MenuContextValue } from '../../contexts/menuContext';
 
-interface MenuCommons extends MenuListProps {
+type MenuCommons = MenuListCommons & {
   /**
    * Whether the popup is open
    */
@@ -45,77 +46,79 @@ interface MenuCommons extends MenuListProps {
    * Sets the delay for mouse open/close for the popover one mouse enter/leave
    */
   hoverDelay?: number;
-}
+};
+
+export type MenuSlots = {};
 
 /**
  * Extends and drills down Menulist props to simplify API
- * {@docCategory Menu }
  */
-export interface MenuProps
-  extends Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'>,
-    Partial<MenuCommons>,
-    ComponentProps {
-  /**
-   * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
-   * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
-   */
-  children: [JSX.Element, JSX.Element] | JSX.Element;
-}
+export type MenuProps = Partial<MenuCommons> &
+  ComponentProps<MenuSlots> & {
+    /**
+     * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
+     * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
+     */
+    children: [JSX.Element, JSX.Element] | JSX.Element;
 
-/**
- * {@docCategory Menu }
- */
-export interface MenuState extends MenuCommons, ComponentState {
-  /**
-   * Callback to open/close the popup
-   */
-  setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    /**
+     * Configures the positioned menu
+     */
+    positioning?: PositioningShorthand;
+  };
 
-  /**
-   * Internal react node that just simplifies handling children
-   */
-  menuPopover: React.ReactNode;
+export type MenuState = MenuCommons &
+  ComponentState<MenuSlots> & {
+    /**
+     * Callback to open/close the popup
+     */
+    setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
 
-  /**
-   * Internal react node that just simplifies handling children
-   */
-  menuTrigger: React.ReactNode;
+    /**
+     * Internal react node that just simplifies handling children
+     */
+    menuPopover: React.ReactNode;
 
-  /**
-   * The ref for the popup
-   */
-  menuPopoverRef: React.MutableRefObject<HTMLElement>;
+    /**
+     * Internal react node that just simplifies handling children
+     */
+    menuTrigger: React.ReactNode;
 
-  /**
-   * The ref for the MenuTrigger, used for popup positioning
-   */
-  triggerRef: React.MutableRefObject<HTMLElement>;
+    /**
+     * The ref for the popup
+     */
+    menuPopoverRef: React.MutableRefObject<HTMLElement>;
 
-  /**
-   * Id for the MenuTrigger element for aria relationship
-   */
-  triggerId: string;
+    /**
+     * The ref for the MenuTrigger, used for popup positioning
+     */
+    triggerRef: React.MutableRefObject<HTMLElement>;
 
-  /**
-   * Whether this menu is a submenu
-   */
-  isSubmenu: boolean;
+    /**
+     * Id for the MenuTrigger element for aria relationship
+     */
+    triggerId: string;
 
-  /**
-   * Anchors the popper to the mouse click for context events
-   */
-  contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
+    /**
+     * Whether this menu is a submenu
+     */
+    isSubmenu: boolean;
 
-  /**
-   * A callback to set the target of the popper to the mouse click for context events
-   */
-  setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
-}
+    /**
+     * Anchors the popper to the mouse click for context events
+     */
+    contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
+
+    /**
+     * A callback to set the target of the popper to the mouse click for context events
+     */
+    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+  };
 
 /**
  * Data attached to open/close events
  */
-export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
+export type MenuOpenChangeData = Pick<MenuState, 'open'> & {
   /**
    * Indicates whether the change of state was a keyboard interaction
    */
@@ -124,7 +127,11 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
    * indicates whether the request for the open state was bubbled from a nested menu
    */
   bubble?: boolean;
-}
+};
+
+export type MenuContextValues = {
+  menu: MenuContextValue;
+};
 
 /**
  * The supported events that will trigger open/close of the menu

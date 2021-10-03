@@ -3,12 +3,12 @@ import * as ReactDOM from 'react-dom';
 import * as monaco from '@fluentui/monaco-editor';
 import { LanguageServiceDefaultsImpl as TypescriptDefaults } from '@fluentui/monaco-editor/monaco-typescript.d';
 import { getWindow } from '@fluentui/react/lib/Utilities';
-import { ITsxEditorProps } from './TsxEditor.types';
 import { transpileAndEval } from '../transpiler/transpile';
-import { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../interfaces/index';
 import { Editor } from './Editor';
 import { SUPPORTED_PACKAGES } from '../utilities/index';
-import { IEditorProps } from './Editor.types';
+import type { ITsxEditorProps } from './TsxEditor.types';
+import type { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../interfaces/index';
+import type { IEditorProps } from './Editor.types';
 
 const typescript = monaco.languages.typescript;
 const typescriptDefaults = typescript.typescriptDefaults as TypescriptDefaults;

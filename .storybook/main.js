@@ -9,24 +9,37 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
  */
 
 /**
- *  @typedef {{check:boolean; checkOptions: Record<string,unknown>; reactDocgen: string | boolean; reactDocgenTypescriptOptions: Record<string,unknown>}} StorybookTsConfig
+ *  @typedef {{
+ *    check:boolean;
+ *    checkOptions: Record<string,unknown>;
+ *    reactDocgen: string | boolean;
+ *    reactDocgenTypescriptOptions: Record<string,unknown>
+ *  }} StorybookTsConfig
  */
 
 /**
- * @typedef {{stories: string[] ; addons: string[]; typescript: StorybookTsConfig; babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>; webpackFinal: StorybookWebpackConfig}} StorybookConfig
+ *  @typedef {{
+ *    stories: string[];
+ *    addons: string[];
+ *    typescript: StorybookTsConfig;
+ *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
+ *    webpackFinal: StorybookWebpackConfig;
+ *    core: {builder:'webpack5'};
+ * }} StorybookConfig
  */
 
 /**
  * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
  */
 
-module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFinal'>} */ ({
+module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   stories: [],
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
+    'storybook-addon-export-to-codesandbox',
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({
@@ -39,6 +52,17 @@ module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFi
 
     if (config.module && config.module.rules) {
       overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
+
+      config.module.rules.unshift({
+        test: /\.stories\.tsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [require('storybook-addon-export-to-codesandbox').babelPlugin],
+          },
+        },
+      });
     }
 
     return config;

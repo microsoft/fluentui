@@ -46,7 +46,7 @@ storiesOf('Shimmer', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Custom elements', () => (
     <Shimmer

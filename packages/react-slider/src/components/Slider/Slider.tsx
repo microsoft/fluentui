@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { useSlider } from './useSlider';
-import { SliderProps } from './Slider.types';
 import { renderSlider } from './renderSlider';
 import { useSliderStyles } from './useSliderStyles';
+import type { SliderProps } from './Slider.types';
 
 /**
- * Define a styled Slider, using the `useSlider` hook.
- * {@docCategory Slider}
+ * The Slider component allows users to quickly select a value by dragging a thumb across a rail.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Slider = React.forwardRef<HTMLElement, SliderProps>((props, ref: any) => {
+export const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   const state = useSlider(props, ref);
 
   useSliderStyles(state);

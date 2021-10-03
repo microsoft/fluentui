@@ -4,12 +4,12 @@ import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   container: theme => ({
-    border: `3px solid ${theme.alias.color.red.background3}`,
+    border: `3px solid ${theme.colorPaletteRedBackground3}`,
     padding: '10px',
   }),
 
   portalContent: theme => ({
-    backgroundColor: theme.alias.color.yellow.background3,
+    backgroundColor: theme.colorPaletteYellowBackground3,
     border: '3px dashed',
     marginTop: '10px',
   }),

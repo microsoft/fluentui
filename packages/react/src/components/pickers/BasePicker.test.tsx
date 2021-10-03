@@ -3,11 +3,12 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { IBasePickerProps, IBasePicker, ValidationState } from './BasePicker.types';
+import { ValidationState } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
-import { IPickerItemProps } from './PickerItem.types';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
+import type { IBasePickerProps, IBasePicker } from './BasePicker.types';
+import type { IPickerItemProps } from './PickerItem.types';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [

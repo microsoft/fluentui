@@ -47,7 +47,7 @@ storiesOf('Dropdown', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Disabled option selected', () => (
     <Dropdown
@@ -84,7 +84,7 @@ storiesOf('Dropdown', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Custom Dropdown',
@@ -154,7 +154,7 @@ storiesOf('Dropdown', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Required', () => (
     <Dropdown

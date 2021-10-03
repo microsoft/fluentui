@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { Selection } from '../../Selection';
-
-import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 import { initializeComponentRef } from '../../Utilities';
-import { IObjectWithKey } from '../../Utilities';
+import type {
+  IBaseSelectedItemsList,
+  IBaseSelectedItemsListProps,
+  ISelectedItemProps,
+} from './BaseSelectedItemsList.types';
+import type { IObjectWithKey } from '../../Utilities';
 
 export interface IBaseSelectedItemsListState<T> {
   items: T[];

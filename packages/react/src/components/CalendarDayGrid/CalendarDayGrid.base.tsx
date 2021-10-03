@@ -6,17 +6,21 @@ import {
   getDayGrid,
   getBoundedDateRange,
   isRestrictedDate,
-  IDay,
   DAYS_IN_WEEK,
   compareDates,
   DateRangeType,
   DayOfWeek,
 } from '@fluentui/date-time-utilities';
-import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { usePrevious, useId } from '@fluentui/react-hooks';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
+import type { IDay } from '@fluentui/date-time-utilities';
+import type {
+  ICalendarDayGridProps,
+  ICalendarDayGridStyleProps,
+  ICalendarDayGridStyles,
+} from './CalendarDayGrid.types';
+import type { IProcessedStyleSet } from '@fluentui/style-utilities';
 
 const getClassNames = classNamesFunction<ICalendarDayGridStyleProps, ICalendarDayGridStyles>();
 

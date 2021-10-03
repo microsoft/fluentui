@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import { IPageNumberProps } from './PageNumber.types';
+import type { IPageNumberProps } from './PageNumber.types';
 
 export class PageNumber extends React.Component<IPageNumberProps, {}> {
   constructor(props: IPageNumberProps) {

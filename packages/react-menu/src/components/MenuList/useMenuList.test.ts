@@ -72,7 +72,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
       result.current.setFocusByFirstCharacter(createEvent(current.textContent), current);
 
       // Assert
@@ -88,7 +88,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
       result.current.setFocusByFirstCharacter(createEvent('d'), current);
 
       // Assert
@@ -131,7 +131,10 @@ describe('useMenuList', () => {
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-      expect(state.onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), name, expectedResult);
+      expect(state.onCheckedValueChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ name, checkedItems: expectedResult }),
+      );
     });
   });
 
@@ -169,7 +172,10 @@ describe('useMenuList', () => {
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-      expect(state.onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), name, expectedResult);
+      expect(state.onCheckedValueChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ name, checkedItems: expectedResult }),
+      );
     });
   });
 });
