@@ -25,15 +25,16 @@ export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = 
  */
 export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
   const { icon, button, children, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
-  const { onHeaderClick: onAccordionHeaderClick, disabled, open, value } = useAccordionItemContext();
+  const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
 
   /**
    * force disabled state on button if accordion isn't collapsible
    * and this is the only item opened
+   * TODO: this behavior should be tested
    */
   const forceDisabled = useContextSelector(
     AccordionContext,
-    ctx => !ctx.collapsible && ctx.openItems.length === 1 && ctx.openItems[0] === value,
+    ctx => !ctx.collapsible && ctx.openItems.length === 1 && open,
   );
 
   const buttonShorthand = useARIAButton(button, {
