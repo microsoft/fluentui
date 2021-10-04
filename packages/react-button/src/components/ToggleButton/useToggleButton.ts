@@ -11,7 +11,7 @@ import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types'
  */
 export const useToggleButton = (
   { checked, defaultChecked, ...props }: ToggleButtonProps,
-  ref: React.Ref<HTMLButtonElement>,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
   const buttonState = useButton(props, ref);
   const { role, onClick } = buttonState.root;

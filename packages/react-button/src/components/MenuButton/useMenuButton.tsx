@@ -9,7 +9,7 @@ import type { MenuButtonProps, MenuButtonState } from './MenuButton.types';
  */
 export const useMenuButton = (
   { menuIcon, ...props }: MenuButtonProps,
-  ref: React.Ref<HTMLButtonElement>,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): MenuButtonState => {
   const buttonState = useButton(props, ref);
   return {
