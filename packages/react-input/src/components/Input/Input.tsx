@@ -3,11 +3,12 @@ import { useInput } from './useInput';
 import { renderInput } from './renderInput';
 import { useInputStyles } from './useInputStyles';
 import type { InputProps } from './Input.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * Input component
  */
-export const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
+export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, ref) => {
   const state = useInput(props, ref);
 
   useInputStyles(state);

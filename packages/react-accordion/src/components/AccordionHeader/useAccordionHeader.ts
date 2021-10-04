@@ -30,7 +30,6 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   /**
    * force disabled state on button if accordion isn't collapsible
    * and this is the only item opened
-   * TODO: this behavior should be tested
    */
   const forceDisabled = useContextSelector(
     AccordionContext,
