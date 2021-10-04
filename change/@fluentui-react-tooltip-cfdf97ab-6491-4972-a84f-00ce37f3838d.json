@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds ForwardRefComponent to react-tooltip components declaration",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
