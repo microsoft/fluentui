@@ -1,7 +1,8 @@
-import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type DividerSlots = {
   root: IntrinsicShorthandProps<'div'>;
+
   /**
    * Accessibility wrapper for content when presented.
    * A shorthand prop can be a literal, object, or

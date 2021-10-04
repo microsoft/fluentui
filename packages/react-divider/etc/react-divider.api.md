@@ -4,9 +4,9 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 import { ShorthandRenderFunction } from '@fluentui/react-utilities';
@@ -51,9 +51,6 @@ export type DividerCommons = {
 
 // @public (undocumented)
 export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommons>;
-
-// @public
-export const dividerShorthandProps: Array<keyof DividerSlots>;
 
 // @public (undocumented)
 export type DividerSlots = {
