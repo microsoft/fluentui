@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds ForwardRefComponent to react-checkbox components declaration",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
