@@ -2,6 +2,39 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.58",
+      "version": "9.0.0-alpha.58",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/babel-make-styles",
+            "comment": "Bump v9 prerelease versions to rerelease",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-make-styles",
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.34",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-make-styles",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.76",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-make-styles",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.26",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Sep 2021 08:06:11 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.56",
       "version": "9.0.0-alpha.56",

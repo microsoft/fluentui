@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxSlots, CheckboxState } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
-import { Label } from '@fluentui/react-label';
+import { Label, LabelProps } from '@fluentui/react-label';
 
 /**
  * Array of all shorthand properties listed as the keys of CheckboxSlots
@@ -51,7 +51,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): 
     labelPosition: 'after',
     rootId,
     components: {
-      root: props.children !== undefined ? Label : 'span',
+      root: props.children !== undefined ? (Label as React.ComponentType<LabelProps>) : 'span',
       indicator: 'div',
       input: 'input',
     },

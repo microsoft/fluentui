@@ -1,38 +1,33 @@
-import * as React from 'react';
-import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import type { ButtonProps, ButtonShorthandPropsCompat } from '../Button/Button.types';
-import type { MenuButtonProps } from '../MenuButton/MenuButton.types';
+import type {
+  ComponentProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+  ObjectShorthandProps,
+} from '@fluentui/react-utilities';
+import type { ButtonProps, ButtonState } from '../Button/Button.types';
+import type { MenuButtonProps, MenuButtonState } from '../MenuButton/MenuButton.types';
 
-export interface SplitButtonProps extends Omit<ButtonProps, ButtonShorthandPropsCompat>, MenuButtonProps {
+export type SplitButtonSlots = {
   /**
-   * Button to perform primary action in SplitButton.
+   * Root of the component that wraps the primary action button and menu button.
    */
-  button?: ShorthandPropsCompat<ButtonProps>;
+  root: IntrinsicShorthandProps<'div'>;
 
   /**
    * Button that opens menu with secondary actions in SplitButton.
    */
-  menuButton?: ShorthandPropsCompat<MenuButtonProps>;
+  menuButton?: ObjectShorthandProps<MenuButtonProps>;
 
   /**
-   * Ref to the Button element.
+   * Button to perform primary action in SplitButton.
    */
-  buttonRef?: React.Ref<HTMLElement>;
+  primaryActionButton?: ObjectShorthandProps<ButtonProps>;
+};
 
-  /**
-   * Ref to the MenuButton element.
-   */
-  menuButtonRef?: React.Ref<HTMLElement>;
-}
+export type SplitButtonProps = ComponentProps<SplitButtonSlots> &
+  Omit<ButtonProps, 'root'> &
+  Omit<MenuButtonProps, 'root'>;
 
-export type SplitButtonShorthandPropsCompat = 'button' | 'menuButton';
-
-export type SplitButtonDefaultedProps = 'size';
-
-export interface SplitButtonState
-  extends ComponentStateCompat<SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type SplitButtonState = ComponentState<SplitButtonSlots> &
+  Omit<ButtonState, 'components' | 'iconOnly' | 'root'> &
+  Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;

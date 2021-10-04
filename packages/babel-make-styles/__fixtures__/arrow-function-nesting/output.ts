@@ -6,13 +6,13 @@ export const useStyles = __styles(
       mc9l5x: 'f22iagw',
       Bi91k9c: 'faf35ka',
       Bb9khzn: 'f17t1d3d',
-      Btk3f3y: 'f1gwxnus',
+      Btk3f3y: 'fcqk8a9',
     },
   },
   {
     d: [
       '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
-      '.f1gwxnus .foo:hover{color:var(--alias-color-green-foreground1);}',
+      '.fcqk8a9 .foo:hover{color:var(--colorPaletteGreenForeground1);}',
     ],
     h: ['.faf35ka:hover{color:red;}'],
     f: ['.f17t1d3d:focus:hover{color:blue;}'],

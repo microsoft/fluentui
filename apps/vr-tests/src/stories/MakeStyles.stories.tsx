@@ -7,11 +7,11 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 
 const useStyles = makeStyles({
   box: theme => ({
-    border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
-    borderLeft: `20px solid ${theme.alias.color.blue.border2}`,
+    border: `5px solid ${theme.colorNeutralStroke1}`,
+    borderLeft: `20px solid ${theme.colorPaletteBlueBorder2}`,
 
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    color: theme.alias.color.neutral.neutralForeground1,
+    backgroundColor: theme.colorNeutralBackground1,
+    color: theme.colorNeutralForeground1,
 
     margin: '5px',
     padding: '5px',
@@ -19,14 +19,14 @@ const useStyles = makeStyles({
   }),
 
   container: theme => ({
-    border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
-    borderLeft: `20px solid ${theme.alias.color.blue.border2}`,
+    border: `5px solid ${theme.colorNeutralStroke1}`,
+    borderLeft: `20px solid ${theme.colorPaletteBlueBorder2}`,
 
     margin: '5px',
     padding: '5px',
   }),
   containerPrimary: theme => ({
-    borderLeftColor: theme.alias.color.darkOrange.border2,
+    borderLeftColor: theme.colorPaletteDarkOrangeBorder2,
   }),
 
   provider: {

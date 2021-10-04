@@ -19,7 +19,7 @@ export type ColorRampItemProps = {
   name?: string;
 
   /** A CSS color value */
-  value?: string;
+  value?: string | number;
 };
 
 const alphaStyle = {

@@ -3938,6 +3938,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     collapseAllVisibility?: CollapseAllVisibility;
     compact?: boolean;
     componentRef?: IRefObject<IDetailsRow>;
+    disabled?: boolean;
     dragDropEvents?: IDragDropEvents;
     dragDropHelper?: IDragDropHelper;
     enableUpdateAnimations?: boolean;
@@ -4043,7 +4044,7 @@ export interface IDetailsRowState {
 }
 
 // @public (undocumented)
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme' | 'disabled'>> & {
     isSelected?: boolean;
     anySelected?: boolean;
     canSelect?: boolean;

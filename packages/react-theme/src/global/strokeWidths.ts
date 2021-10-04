@@ -1,8 +1,8 @@
-import type { StrokeWidths } from '../types';
+import type { StrokeWidthTokens } from '../types';
 
-export const strokeWidths: StrokeWidths = {
-  thin: '1px',
-  thick: '2px',
-  thicker: '3px',
-  thickest: '4px',
+export const strokeWidths: StrokeWidthTokens = {
+  strokeWidthThin: '1px',
+  strokeWidthThick: '2px',
+  strokeWidthThicker: '3px',
+  strokeWidthThickest: '4px',
 };

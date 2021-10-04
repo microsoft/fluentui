@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds ForwardRefComponent to react-slider components declaration",
+  "packageName": "@fluentui/react-slider",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
