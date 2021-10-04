@@ -2,6 +2,41 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 08:03:04 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.122",
+      "version": "9.0.0-alpha.122",
+      "comments": {
+        "none": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "comment": "Move stories to separate story folder",
+            "commit": "97f5974a08246bd0475e8cb6650e7339f457c456"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "comment": "Add bundle-size fixtures",
+            "commit": "97f5974a08246bd0475e8cb6650e7339f457c456"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "comment": "CardPreview removes own top margin when the first element in a Card",
+            "commit": "97f5974a08246bd0475e8cb6650e7339f457c456"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "comment": "Fix getFilenameFromUrl implementation",
+            "commit": "97f5974a08246bd0475e8cb6650e7339f457c456"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Oct 2021 14:13:08 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.121",
       "version": "9.0.0-alpha.121",
