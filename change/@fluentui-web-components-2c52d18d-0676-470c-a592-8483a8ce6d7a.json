@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update installation doc story",
+  "packageName": "@fluentui/web-components",
+  "email": "brookdozer@gmail.com",
+  "dependentChangeType": "patch"
+}
