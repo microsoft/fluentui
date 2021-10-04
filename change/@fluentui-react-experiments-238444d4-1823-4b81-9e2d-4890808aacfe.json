@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added disabled prop for tile view",
-  "packageName": "@fluentui/react-experiments",
-  "email": "surya.ravva@microsoft.com",
-  "dependentChangeType": "patch"
-}

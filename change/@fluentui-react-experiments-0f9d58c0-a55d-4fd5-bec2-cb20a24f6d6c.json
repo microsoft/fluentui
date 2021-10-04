@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update fabric-cdn urls",
-  "packageName": "@fluentui/react-experiments",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}
