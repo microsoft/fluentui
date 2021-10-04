@@ -2,6 +2,21 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 12:36:04 GMT",
+      "tag": "@uifabric/tsx-editor_v0.15.9",
+      "version": "0.15.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.177.2",
+            "author": "bekaise@microsoft.com",
+            "commit": "0df253cb0f8ae8d6c9ace6c655362b12b15fa3bb",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Sep 2021 12:31:05 GMT",
       "tag": "@uifabric/tsx-editor_v0.15.8",
       "version": "0.15.8",

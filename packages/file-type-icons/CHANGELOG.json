@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 12:36:04 GMT",
+      "tag": "@uifabric/file-type-icons_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update BASE_URL to remove depreacted CDN",
+            "author": "caperez@microsoft.com",
+            "commit": "0df253cb0f8ae8d6c9ace6c655362b12b15fa3bb",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Sep 2021 12:32:48 GMT",
       "tag": "@uifabric/file-type-icons_v7.8.0",
       "version": "7.8.0",

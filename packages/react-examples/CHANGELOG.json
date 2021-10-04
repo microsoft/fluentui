@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 12:36:04 GMT",
+      "tag": "@fluentui/react-examples_v0.15.11",
+      "version": "0.15.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update BASE_URL to remove depreacted CDN",
+            "author": "caperez@microsoft.com",
+            "commit": "0df253cb0f8ae8d6c9ace6c655362b12b15fa3bb",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Sep 2021 12:31:05 GMT",
       "tag": "@fluentui/react-examples_v0.15.10",
       "version": "0.15.10",

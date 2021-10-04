@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Sep 2021 12:31:05 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Oct 2021 12:36:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.177.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.177.2)
+
+Mon, 04 Oct 2021 12:36:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.177.1..office-ui-fabric-react_v7.177.2)
+
+### Patches
+
+- Bump @uifabric/icons to v7.6.1 ([PR #18637](https://github.com/microsoft/fluentui/pull/18637) by bekaise@microsoft.com)
 
 ## [7.177.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.177.1)
 

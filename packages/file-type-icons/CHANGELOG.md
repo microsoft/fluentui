@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 27 Sep 2021 12:32:48 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Oct 2021 12:36:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.1)
+
+Mon, 04 Oct 2021 12:36:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.8.0..@uifabric/file-type-icons_v7.8.1)
+
+### Patches
+
+- Update BASE_URL to remove depreacted CDN ([PR #18637](https://github.com/microsoft/fluentui/pull/18637) by caperez@microsoft.com)
 
 ## [7.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.0)
 

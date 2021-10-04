@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 30 Sep 2021 12:31:05 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Oct 2021 12:36:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.40.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.40.10)
+
+Mon, 04 Oct 2021 12:36:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.40.9..@uifabric/experiments_v7.40.10)
+
+### Patches
+
+- Update BASE_URL to remove depreacted CDN ([PR #18637](https://github.com/microsoft/fluentui/pull/18637) by caperez@microsoft.com)
 
 ## [7.40.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.40.9)
 

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Fri, 27 Aug 2021 12:24:10 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Oct 2021 12:36:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.1](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.6.1)
+
+Mon, 04 Oct 2021 12:36:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/icons_v7.6.0..@uifabric/icons_v7.6.1)
+
+### Patches
+
+- Update BASE_URL to remove depreacted CDN ([PR #18637](https://github.com/microsoft/fluentui/pull/18637) by bekaise@microsoft.com)
 
 ## [7.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/icons_v7.6.0)
 

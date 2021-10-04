@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update BASE_URL to remove depreacted CDN",
-  "packageName": "@uifabric/icons",
-  "email": "bekaise@microsoft.com",
-  "dependentChangeType": "patch"
-}
