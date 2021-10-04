@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds ForwardRefComponent to react-image components declaration",
+  "packageName": "@fluentui/react-image",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
