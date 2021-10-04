@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import { DividerProps, DividerState } from './Divider.types';
+import type { DividerProps, DividerState } from './Divider.types';
 
 /**
  * Returns the props and state required to render the component
