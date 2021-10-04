@@ -1,8 +1,43 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 29 Sep 2021 08:06:11 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Oct 2021 14:13:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.93)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.91..@fluentui/react-link_v9.0.0-alpha.93)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-alpha.5 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.76 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.71 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.55 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.58 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.20 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.91)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.90..@fluentui/react-link_v9.0.0-alpha.91)
+
+### Changes
+
+- Adding comment for root slot. ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.90)
+
+Fri, 01 Oct 2021 09:44:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.89..@fluentui/react-link_v9.0.0-alpha.90)
+
+### Changes
+
+- Use the renamed createCustomFocusIndicatorStyle helper for focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.69 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
 
 ## [9.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.89)
 

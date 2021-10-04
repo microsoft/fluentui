@@ -54,7 +54,7 @@ MemoizedMenuItems.parameters = {
   docs: {
     description: {
       story: [
-        '⚠️ _Reredering menu items is a cheap operation and React philosophy encourages rerenders._',
+        '⚠️ _Rerendering menu items is a cheap operation and React philosophy encourages rerenders._',
         '_Memoization is not free, so use it only when there are concrete benefits to doing so._',
         '',
         'Memoized menu items can be created using [React.memo](https://reactjs.org/docs/react-api.html#reactmemo)',

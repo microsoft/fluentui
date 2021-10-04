@@ -49,18 +49,18 @@ export const Basic = () => {
         <Avatar shape="square" icon={<People20Regular />} />
       </StoryExample>
       <StoryExample title="Badges">
-        <Avatar name={examples.name[1]} badge="available" />
+        <Avatar name={examples.name[1]} badge={{ status: 'available' }} />
         <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
-        <Avatar name={examples.name[3]} image={{ src: examples.image[3] }} badge="offline" />
+        <Avatar name={examples.name[3]} image={{ src: examples.image[3] }} badge={{ status: 'offline' }} />
       </StoryExample>
       <StoryExample title="Size">
-        <Avatar size={20} name={examples.name[4]} image={{ src: examples.image[4] }} badge="offline" />
-        <Avatar size={48} name={examples.name[5]} image={{ src: examples.image[5] }} badge="available" />
-        <Avatar size={96} name={examples.name[6]} image={{ src: examples.image[6] }} badge="away" />
+        <Avatar size={20} name={examples.name[4]} image={{ src: examples.image[4] }} badge={{ status: 'offline' }} />
+        <Avatar size={48} name={examples.name[5]} image={{ src: examples.image[5] }} badge={{ status: 'available' }} />
+        <Avatar size={96} name={examples.name[6]} image={{ src: examples.image[6] }} badge={{ status: 'away' }} />
       </StoryExample>
       <StoryExample title="Brand color">
-        <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
-        <Avatar color="brand" badge="available" />
+        <Avatar color="brand" name={examples.name[4]} badge={{ status: 'doNotDisturb' }} />
+        <Avatar color="brand" badge={{ status: 'available' }} />
       </StoryExample>
       <StoryExample title="Colorful">
         <Avatar color="colorful" name={examples.name[13]} />
@@ -221,19 +221,34 @@ export const ActiveAnimation = () => {
 
 export const CustomSizes = () => (
   <StoryExample title="Custom size">
-    <Avatar name={examples.name[11]} badge="available" size={20} style={{ width: '13px', height: '13px' }} />
-    <Avatar image={{ src: examples.image[12] }} badge="away" size={20} style={{ width: '21px', height: '21px' }} />
-    <Avatar name={examples.name[13]} badge="busy" size={32} style={{ width: '34px', height: '34px' }} />
+    <Avatar
+      name={examples.name[11]}
+      badge={{ status: 'available' }}
+      size={20}
+      style={{ width: '13px', height: '13px' }}
+    />
+    <Avatar
+      image={{ src: examples.image[12] }}
+      badge={{ status: 'away' }}
+      size={20}
+      style={{ width: '21px', height: '21px' }}
+    />
+    <Avatar name={examples.name[13]} badge={{ status: 'busy' }} size={32} style={{ width: '34px', height: '34px' }} />
     <Avatar
       image={{ src: examples.image[14] }}
-      badge="doNotDisturb"
+      badge={{ status: 'doNotDisturb' }}
       size={48}
       style={{ width: '55px', height: '55px' }}
     />
-    <Avatar name={examples.name[15]} badge="offline" size={72} style={{ width: '89px', height: '89px' }} />
+    <Avatar
+      name={examples.name[15]}
+      badge={{ status: 'offline' }}
+      size={72}
+      style={{ width: '89px', height: '89px' }}
+    />
     <Avatar
       image={{ src: examples.image[16] }}
-      badge="outOfOffice"
+      badge={{ status: 'outOfOffice' }}
       size={128}
       style={{ width: '144px', height: '144px' }}
     />
@@ -300,7 +315,7 @@ export const AvatarPlayground = () => {
       'image',
       [{ src: nameAndImage.image }, nextNameAndImage, prevNameAndImage],
       true,
-      getFilenameFromUrl as () => string,
+      getFilenameFromUrl,
     ),
     useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
@@ -364,7 +379,9 @@ const AvatarExampleList: React.FC<
 
 const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
   typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
-const getFilenameFromUrl = (url: string) => url.substring(url.lastIndexOf('/') + 1);
+
+const getFilenameFromUrl = (image: AvatarProps['image']) =>
+  image?.src?.substring(image?.src.lastIndexOf('/') + 1) ?? '';
 
 type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () => void];
 

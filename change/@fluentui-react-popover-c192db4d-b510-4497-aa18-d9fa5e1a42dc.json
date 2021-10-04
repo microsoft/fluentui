@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds ForwardRefComponent to react-popover components declaration",
+  "packageName": "@fluentui/react-popover",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
