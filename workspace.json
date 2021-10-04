@@ -553,6 +553,10 @@
     "vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application"
+    },
+    "@fluentui/react-radio": {
+      "root": "packages/react-radio",
+      "projectType": "library"
     }
   }
 }

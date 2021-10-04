@@ -427,6 +427,9 @@
     },
     "vr-tests": {
       "implicitDependencies": []
+    },
+    "@fluentui/react-radio": {
+      "implicitDependencies": []
     }
   },
   "targetDependencies": {
