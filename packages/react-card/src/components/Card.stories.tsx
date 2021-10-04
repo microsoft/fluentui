@@ -96,7 +96,7 @@ export const GridviewCard = () => (
       maxWidth: '368px',
     }}
   >
-    <CardPreview style={{ marginTop: '-12px' }}>
+    <CardPreview>
       <img src="./sales_template.png" alt="Preview of a sales slide deck" />
     </CardPreview>
     <CardHeader
