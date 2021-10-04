@@ -6,17 +6,18 @@
 
 import type { ComponentPropsCompat } from '@fluentui/react-utilities';
 import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
-export const Card: React_2.ForwardRefExoticComponent<CardProps & React_2.RefAttributes<HTMLElement>>;
+export const Card: ForwardRefComponent<CardProps>;
 
 // @public
 export type CardDefaultedProps = never;
 
 // @public
-export const CardFooter: React_2.ForwardRefExoticComponent<CardFooterProps & React_2.RefAttributes<HTMLElement>>;
+export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
 // @public
 export type CardFooterDefaultedProps = never;
@@ -38,7 +39,7 @@ export interface CardFooterState extends ComponentStateCompat<CardFooterProps, C
 }
 
 // @public
-export const CardHeader: React_2.ForwardRefExoticComponent<CardHeaderProps & React_2.RefAttributes<HTMLElement>>;
+export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 
 // @public
 export type CardHeaderDefaultedProps = never;
@@ -64,7 +65,7 @@ export interface CardHeaderState extends ComponentStateCompat<CardHeaderProps, C
 }
 
 // @public
-export const CardPreview: React_2.ForwardRefExoticComponent<CardPreviewProps & React_2.RefAttributes<HTMLElement>>;
+export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
 // @public
 export type CardPreviewDefaultedProps = never;
