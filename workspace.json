@@ -550,6 +550,10 @@
       "root": "apps/todo-app",
       "projectType": "application"
     },
+    "ts-minbar-test-react": {
+      "root": "apps/ts-minbar-test-react",
+      "projectType": "application"
+    },
     "vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application"
