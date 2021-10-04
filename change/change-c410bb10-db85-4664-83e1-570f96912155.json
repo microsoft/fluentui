@@ -1,11 +1,7 @@
 {
-  "changes": [
-    {
-      "type": "prerelease",
-      "comment": "react-divider prop merging follow up",
-      "packageName": "@fluentui/react-divider",
-      "email": "bsunderhus@microsoft.com",
-      "dependentChangeType": "patch"
-    }
-  ]
+  "type": "prerelease",
+  "comment": "react-divider prop merging follow up",
+  "packageName": "@fluentui/react-divider",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
 }
