@@ -2,6 +2,21 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 07:27:12 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.13",
+      "version": "8.1.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "bekaise@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Update BASE_URL to remove depreacted CDN",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Sep 2021 22:17:07 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.1.12",
       "version": "8.1.12",

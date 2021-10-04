@@ -2,6 +2,27 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 07:27:12 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "a11y-tests",
+            "comment": "Bump @fluentui/react to v8.36.1",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          },
+          {
+            "author": "beachball",
+            "package": "a11y-tests",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.13",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Sep 2021 07:31:40 GMT",
       "tag": "a11y-tests_v1.0.0",
       "version": "1.0.0",

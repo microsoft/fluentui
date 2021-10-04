@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 07:27:12 GMT",
+      "tag": "@fluentui/react_v8.36.1",
+      "version": "8.36.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "Updated callout bounds to watch for window resize",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          },
+          {
+            "author": "surya.ravva@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "added disabled state for detailsRow",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.13",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Sep 2021 07:31:40 GMT",
       "tag": "@fluentui/react_v8.36.0",
       "version": "8.36.0",

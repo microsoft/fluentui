@@ -24,7 +24,7 @@
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.2.2",
     "@fluentui/merge-styles": "^8.2.0",
-    "@fluentui/react": "^8.36.0",
+    "@fluentui/react": "^8.36.1",
     "@fluentui/react-focus": "^8.3.1",
     "@fluentui/style-utilities": "^8.3.3",
     "@fluentui/theme": "^2.4.0",

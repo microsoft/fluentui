@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 07:27:12 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.4.2",
+      "version": "8.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "update fabric-cdn urls",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Sep 2021 22:17:07 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.4.1",
       "version": "8.4.1",

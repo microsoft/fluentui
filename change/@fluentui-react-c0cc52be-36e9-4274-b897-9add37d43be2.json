@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added disabled state for detailsRow",
-  "packageName": "@fluentui/react",
-  "email": "surya.ravva@microsoft.com",
-  "dependentChangeType": "patch"
-}
