@@ -39,7 +39,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   const buttonShorthand = useARIAButton(button, {
     required: true,
     defaultProps: {
-      disabled: disabled || forceDisabled,
+      disabled: disabled,
       'aria-expanded': open,
     },
   });
@@ -71,6 +71,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     }),
     button: {
       ...buttonShorthand,
+      'aria-disabled': forceDisabled ?? undefined,
       onClick: useEventCallback(
         (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
           buttonShorthand.onClick?.(ev);

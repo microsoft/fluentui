@@ -35,6 +35,6 @@ describe('useAccordionHeader', () => {
       </AccordionContext.Provider>
     );
     const { result } = renderHook(() => useAccordionHeader({}, ref), { wrapper });
-    expect(result.current.button.disabled).toBeTruthy();
+    expect(result.current.button['aria-disabled']).toBeTruthy();
   });
 });
