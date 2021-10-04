@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "CardPreview removes own top margin when the first element in a Card",
-  "packageName": "@fluentui/react-card",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch"
-}

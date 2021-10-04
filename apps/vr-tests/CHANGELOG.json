@@ -2,6 +2,27 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Mon, 04 Oct 2021 08:03:04 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.91",
+            "commit": "97f5974a08246bd0475e8cb6650e7339f457c456"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-card to v9.0.0-alpha.16",
+            "commit": "97f5974a08246bd0475e8cb6650e7339f457c456"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Oct 2021 07:27:12 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

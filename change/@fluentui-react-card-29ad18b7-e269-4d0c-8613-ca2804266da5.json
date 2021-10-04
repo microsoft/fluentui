@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Move stories to separate story folder",
-  "packageName": "@fluentui/react-card",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "none"
-}
