@@ -6,12 +6,12 @@ import { ObjectShorthandProps } from '@fluentui/react-utilities';
  */
 export function mergeARIADisabled(
   shorthand: ObjectShorthandProps<{
-    disabled?: boolean;
     'aria-disabled'?: string | boolean;
     children?: React.ReactNode;
+    disabled?: boolean;
   }>,
 ) {
-  const disabled = shorthand.disabled ?? shorthand['aria-disabled'] ?? undefined;
+  const disabled = shorthand.disabled ?? shorthand['aria-disabled'];
   if (typeof disabled === 'string') {
     return disabled === 'false' ? false : true;
   }

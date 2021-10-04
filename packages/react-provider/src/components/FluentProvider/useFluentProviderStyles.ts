@@ -3,11 +3,11 @@ import type { FluentProviderState } from './FluentProvider.types';
 
 const useStyles = makeStyles({
   root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    fontFamily: theme.global.type.fontFamilies.base,
-    fontSize: theme.global.type.fontSizes.base[300],
-    fontWeight: theme.global.type.fontWeights.regular,
+    color: theme.colorNeutralForeground1,
+    backgroundColor: theme.colorNeutralBackground1,
+    fontFamily: theme.fontFamilyBase,
+    fontSize: theme.fontSizeBase300,
+    fontWeight: theme.fontWeightRegular,
   }),
 });
 

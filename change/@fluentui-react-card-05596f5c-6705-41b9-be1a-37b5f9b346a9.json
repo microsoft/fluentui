@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds ForwardRefComponent to react-card components declaration",
+  "packageName": "@fluentui/react-card",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
