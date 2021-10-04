@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(utilities): add missing minLength-property to text fields",
+  "packageName": "@fluentui/utilities",
+  "email": "mail@emanuel-kluge.de",
+  "dependentChangeType": "patch"
+}
