@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { FunctionComponent } from 'react';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -35,7 +36,7 @@ export const renderText: (state: TextState) => JSX.Element;
 export const Subheadline: FunctionComponent<TextWrapperProps>;
 
 // @public
-const Text_2: React_2.FunctionComponent<TextProps>;
+const Text_2: ForwardRefComponent<TextProps>;
 export { Text_2 as Text }
 
 // @public (undocumented)
