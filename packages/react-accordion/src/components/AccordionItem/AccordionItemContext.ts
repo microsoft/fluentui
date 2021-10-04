@@ -8,7 +8,6 @@ export const AccordionItemContext = React.createContext<AccordionItemContextValu
   },
   open: false,
   disabled: false,
-  value: undefined,
 });
 
 export const useAccordionItemContext = () => React.useContext(AccordionItemContext);

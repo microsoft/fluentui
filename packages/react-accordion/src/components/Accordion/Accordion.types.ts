@@ -23,7 +23,7 @@ export type AccordionCommons = {
   collapsible: boolean;
 };
 
-export type AccordionContextValue = AccordionCommons & {
+export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
   /**
    * The list of opened panels by index
    */

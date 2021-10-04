@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-export type AccordionItemContextValue = AccordionItemCommons & {
+export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
   open: boolean;
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
 };

@@ -27,7 +27,7 @@ export type AccordionCommons = {
 export const AccordionContext: Context<AccordionContextValue>;
 
 // @public (undocumented)
-export type AccordionContextValue = AccordionCommons & {
+export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
     openItems: AccordionItemValue[];
     requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 };
@@ -106,7 +106,7 @@ export type AccordionItemCommons = {
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
 // @public (undocumented)
-export type AccordionItemContextValue = AccordionItemCommons & {
+export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
     open: boolean;
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
 };

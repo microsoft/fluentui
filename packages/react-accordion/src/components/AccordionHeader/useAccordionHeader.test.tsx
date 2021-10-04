@@ -12,7 +12,6 @@ describe('useAccordionHeader', () => {
       <AccordionContext.Provider
         value={{
           collapsible: false,
-          multiple: false,
           navigable: false,
           openItems: [1],
           requestToggle: () => {
@@ -27,7 +26,6 @@ describe('useAccordionHeader', () => {
             onHeaderClick: () => {
               /* ... */
             },
-            value: 1,
           }}
         >
           {children}
