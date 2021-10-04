@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds ForwardRefComponent to react-button components declaration",
+  "packageName": "@fluentui/react-button",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
