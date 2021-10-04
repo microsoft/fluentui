@@ -3,11 +3,12 @@ import { useMenuGroup } from './useMenuGroup';
 import { renderMenuGroup } from './renderMenuGroup';
 import { useMenuGroupContextValues } from './useMenuGroupContextValues';
 import type { MenuGroupProps } from './MenuGroup.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * Define a styled MenuGroup, using the `useMenuGroup` hook.
  */
-export const MenuGroup = React.forwardRef<HTMLDivElement, MenuGroupProps>((props, ref) => {
+export const MenuGroup: ForwardRefComponent<MenuGroupProps> = React.forwardRef((props, ref) => {
   const state = useMenuGroup(props, ref);
   const contextValues = useMenuGroupContextValues(state);
 
