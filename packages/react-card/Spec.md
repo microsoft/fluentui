@@ -288,9 +288,9 @@ Mouse interaction
 
   Hover state & pressed state applies to checkbox component
 
-- onClick
+- onClick (Checkbox)
 
-  (Checkbox) Card and Checkbox are both in selected state, clicking again toggles components to unselected state
+  Card and Checkbox are both in selected state, clicking again toggles components to unselected state
 
 #### Disabled
 
