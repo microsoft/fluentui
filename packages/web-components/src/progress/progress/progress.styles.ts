@@ -7,6 +7,7 @@ import {
   ProgressOptions,
 } from '@microsoft/fast-foundation';
 import {
+  accentFillRest,
   accentForegroundRest,
   designUnit,
   neutralFillRest,
@@ -37,7 +38,7 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
     }
 
     .determinate {
-      background-color: ${accentForegroundRest};
+      background-color: ${accentFillRest};
       border-radius: calc(${designUnit} * 1px);
       height: 100%;
       transition: all 0.2s ease-in-out;
