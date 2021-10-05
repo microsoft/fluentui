@@ -16,7 +16,7 @@ export function toggleBgMode() {
 }
 
 export function toggleLtr() {
-  const ltrChecked = document.getElementById('ltr-switch')!.classList.contains('checked');
+  const ltrChecked = document.getElementById('direction-switch')!.classList.contains('checked');
   if (ltrChecked) {
     document.querySelector<HTMLElement>('.docs-story')!.setAttribute('style', 'direction:ltr;');
   } else {
