@@ -12,9 +12,9 @@ export type CardHeaderSlots = {
 /**
  * CardHeader props
  */
-export interface CardHeaderProps extends ComponentProps<CardHeaderSlots> {}
+export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
 
 /**
  * State used in rendering CardHeader
  */
-export interface CardHeaderState extends ComponentState<CardHeaderSlots> {}
+export type CardHeaderState = ComponentState<CardHeaderSlots>;

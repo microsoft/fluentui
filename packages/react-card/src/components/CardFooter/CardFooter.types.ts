@@ -8,9 +8,9 @@ export type CardFooterSlots = {
 /**
  * CardFooter props
  */
-export interface CardFooterProps extends ComponentProps<CardFooterSlots> {}
+export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
 /**
  * State used in rendering CardFooter
  */
-export interface CardFooterState extends ComponentState<CardFooterSlots> {}
+export type CardFooterState = ComponentState<CardFooterSlots>;

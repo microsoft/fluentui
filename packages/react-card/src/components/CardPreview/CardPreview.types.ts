@@ -8,9 +8,9 @@ export type CardPreviewSlots = {
 /**
  * CardPreview props
  */
-export interface CardPreviewProps extends ComponentProps<CardPreviewSlots> {}
+export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 /**
  * State used in rendering CardPreview
  */
-export interface CardPreviewState extends ComponentState<CardPreviewSlots> {}
+export type CardPreviewState = ComponentState<CardPreviewSlots>;
