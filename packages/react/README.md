@@ -30,9 +30,6 @@ See the [main Fluent UI website](https://developer.microsoft.com/en-us/fluentui)
   - [Server-side rendering](#server-side-rendering)
   - [Advanced usage](#advanced-usage)
 - [Contribute to Fluent UI React](#contribute-to-fluent-ui-react)
-- [Building the repo](#building-the-repo)
-  - [Testing](#testing)
-  - [Advanced building tips](#advanced-building-tips)
 - [Licenses](#licenses)
 - [Changelog](#changelog)
 - [More information](#more-information)
@@ -87,7 +84,7 @@ For info about advanced usage including module- vs. path-based imports, using an
 
 ## Contribute to Fluent UI React
 
-Please take a look at our [contribution guidelines](https://github.com/microsoft/fluentui/wiki/Contributing) for more info.
+Please take a look at our [contribution guidelines](https://github.com/microsoft/fluentui/wiki/Contributing) to learn how to make changes, build the repo and submit your contributions to Fluent UI.
 
 ## Licenses
 

@@ -3,7 +3,7 @@
 exports[`CardPreview renders a default state 1`] = `
 <div>
   <div
-    class=""
+    class="fluentui-react-card-preview"
   >
     Default CardPreview
     <div

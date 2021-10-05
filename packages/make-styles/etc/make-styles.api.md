@@ -145,7 +145,7 @@ export const SEQUENCE_HASH_LENGTH = 7;
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const SEQUENCE_PREFIX = "__";
+export const SEQUENCE_PREFIX = "___";
 
 // @public (undocumented)
 export type SequenceHash = string;

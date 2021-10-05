@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Checkbox, Dropdown, TextField } from './tmp-components.stories';
+import { Add20Regular } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-make-styles';
-import type { IDropdownOption } from './tmp-components.stories';
+import { Checkbox, Dropdown, IDropdownOption, TextField } from './tmp-components.stories';
 import type { PlaygroundProps } from './Playground.types.stories';
 
 const tableStyle: React.CSSProperties = {
@@ -132,7 +132,7 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
             <td style={cellStyle}>
               <TextField
                 value={
-                  componentProps && componentProps[propName]
+                  componentProps && componentProps[propName] !== undefined
                     ? (componentProps[propName] as string)
                     : (prop.defaultValue as string)
                 }
@@ -197,8 +197,9 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
 
   const elementProps = {
     ...componentProps,
+    appearance: componentProps && componentProps.appearance ? componentProps.appearance : undefined,
     children: componentProps && !componentProps.iconOnly && !componentProps.children && componentProps.content,
-    icon: componentProps && componentProps.icon ? 'x' : undefined,
+    icon: componentProps && componentProps.icon ? <Add20Regular /> : undefined,
   };
 
   return (

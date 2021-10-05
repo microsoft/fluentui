@@ -10,25 +10,33 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     overflow: 'hidden',
 
-    boxShadow: theme.alias.shadow.shadow4,
-    color: theme.alias.color.neutral.neutralForeground1,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    boxShadow: theme.shadow4,
+    color: theme.colorNeutralForeground1,
+    backgroundColor: theme.colorNeutralBackground1,
 
     // Size: medium
     // TODO: Validate if we should use a token instead + the unit of said token
     // TODO: Explore alternate way of applying padding
     padding: '12px',
     gap: '12px',
-    borderRadius: theme.global.borderRadius.medium,
+    borderRadius: theme.borderRadiusMedium,
+
+    '> .fluentui-react-card-preview': {
+      marginLeft: '-12px',
+      marginRight: '-12px',
+      '&:first-child': {
+        marginTop: '-12px',
+      },
+    },
   }),
 
   interactive: theme => ({
     cursor: 'pointer',
     ':hover': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
+      backgroundColor: theme.colorNeutralBackground1Hover,
     },
     ':active': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Pressed,
+      backgroundColor: theme.colorNeutralBackground1Pressed,
     },
   }),
 });

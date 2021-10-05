@@ -1,8 +1,260 @@
 # Change Log - perf-test
 
-This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 12:47:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.35 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.93 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.101 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.90 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.92 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.100 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.89 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.2 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.167 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Mon, 04 Oct 2021 08:03:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.91 ([commit](https://github.com/microsoft/fluentui/commit/97f5974a08246bd0475e8cb6650e7339f457c456) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.1 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.166 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.34 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.90 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.99 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.88 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.26 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.0.0-alpha.97 ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Fri, 01 Oct 2021 09:44:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.0.0-alpha.96 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.86 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.0.0-alpha.95 ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Thu, 30 Sep 2021 07:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.0 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.165 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.88 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.94 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.85 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.24 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Wed, 29 Sep 2021 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.2 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.164 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.163 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.162 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.32 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.87 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.93 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.84 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.161 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.86 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.92 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.83 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.85 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.91 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.82 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.6 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.160 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Wed, 22 Sep 2021 10:10:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.84 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.90 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.81 ([commit](https://github.com/microsoft/fluentui/commit/bc3f1ec72fc7784a558b0dd6598ee0662f4649c1) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Wed, 22 Sep 2021 09:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.5 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.159 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.4 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.83 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.89 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.80 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.158 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-alpha.23 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump perf-test to v1.0.0 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump perf-test to v1.0.0 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
 

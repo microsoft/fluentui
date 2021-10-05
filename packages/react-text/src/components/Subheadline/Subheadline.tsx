@@ -1,6 +1,7 @@
+import type { FunctionComponent } from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { typographyStyles } from '../../typographyStyles/index';
-import { createWrapper } from '../wrapper';
+import { createWrapper, TextWrapperProps } from '../wrapper';
 
 /**
  * Styles for the root slot
@@ -12,4 +13,7 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Subheadline typography variant
  */
-export const Subheadline = createWrapper({ useStyles, displayName: 'Subheadline' });
+export const Subheadline: FunctionComponent<TextWrapperProps> = createWrapper({
+  useStyles,
+  displayName: 'Subheadline',
+});

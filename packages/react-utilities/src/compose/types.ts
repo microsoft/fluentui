@@ -71,7 +71,7 @@ export type IntrinsicShorthandProps<
 export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
 
 /**
- * Helper type for inferring the type of the as prop from a Props interface.
+ * Helper type for inferring the type of the as prop from a Props type.
  *
  * For example:
  * ```
@@ -94,16 +94,6 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ExtractRef<Props extends { ref?: any }> = Props['ref'] extends
-  | ((instance: infer I | null) => void)
-  | React.RefObject<infer I>
-  | null
-  | undefined
-  ? I
-  : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    any;
-
 export type ComponentProps<
   Shorthands extends ObjectShorthandPropsRecord,
   Primary extends keyof Shorthands = 'root'
@@ -118,18 +108,48 @@ export type ComponentProps<
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
     [Key in keyof Shorthands]-?:
-      | React.ComponentType<NonNullable<Shorthands[Key]>>
+      | React.ComponentType<
+          NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>
+        >
       | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & Shorthands;
 
+/**
+ * This is part of a hack to infer the element type from a native element *props* type.
+ * The only place the original element is found in a native props type (at least that's workable
+ * for inference) is in the event handlers, so some of the helper types use this event handler
+ * name to infer the original element type.
+ *
+ * Notes:
+ * - Using an extremely obscure event handler reduces the likelihood that its signature will be
+ *   modified in any component's props.
+ * - Inferring based on a single prop name instead of a larger type like `DOMAttributes<T>` should be
+ *   less expensive for typescript to evaluate and is less likely to result in type expansion in .d.ts.
+ */
+type ObscureEventName = 'onLostPointerCaptureCapture';
+
+/**
+ * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ */
+export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
+  ? Required<Props>[ObscureEventName] extends React.PointerEventHandler<infer Element>
+    ? React.ForwardRefExoticComponent<Props & React.RefAttributes<Element>>
+    : never
+  : never;
+// A definition like this would also work, but typescript is more likely to unnecessarily expand
+// the props type with this version (and it's likely much more expensive to evaluate)
+// export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
+//   ? React.ForwardRefExoticComponent<Props> & React.RefAttributes<Element>
+//   : never;
+
 /////////////////////////// COMPAT /////////////////////////////////////////////////////////////////////
 
-export interface ComponentPropsCompat {
+export type ComponentPropsCompat = {
   as?: React.ElementType;
   className?: string;
   children?: React.ReactNode;
-}
+};
 
 // Shorthand types
 
@@ -152,9 +172,9 @@ export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}>
     children?: TProps['children'] | ShorthandRenderFunctionCompat<TProps>;
   };
 
-export interface BaseSlotsCompat {
+export type BaseSlotsCompat = {
   root: React.ElementType;
-}
+};
 
 export type SlotPropsCompat<
   TSlots extends BaseSlotsCompat,

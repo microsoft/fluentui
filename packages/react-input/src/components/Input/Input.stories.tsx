@@ -1,3 +1,4 @@
+/// <reference types="@fluentui/react-icons" />
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { Input } from './Input';
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
     gap: '20px',
     padding: '20px',
   },
-  storyFilledBackground: theme => ({ background: theme.alias.color.neutral.neutralBackground3 }),
+  storyFilledBackground: theme => ({ background: theme.colorNeutralBackground3 }),
 });
 
 const icons = {

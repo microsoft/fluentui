@@ -1,8 +1,116 @@
 # Change Log - theming-designer
 
-This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.2 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.39 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/foundation-legacy to v8.1.13 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/scheme-utilities to v8.2.4 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.14 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.1 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.38 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.13 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Thu, 30 Sep 2021 07:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.0 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.37 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Wed, 29 Sep 2021 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.2 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.36 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/merge-styles to v8.2.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.35 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/foundation-legacy to v8.1.12 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/scheme-utilities to v8.2.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.12 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.34 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.33 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.6 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.32 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Wed, 22 Sep 2021 09:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.5 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.31 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.4 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.30 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
 

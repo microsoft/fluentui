@@ -6,37 +6,77 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+
+// @public (undocumented)
+export const lowerThumbClassName: string;
+
+// @public
+export const RangedSlider: ForwardRefComponent<RangedSliderProps>;
+
+// @public (undocumented)
+export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
+    defaultValue?: [number, number];
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
+        value: [number, number];
+    }) => void;
+    value?: [number, number];
+}
+
+// @public (undocumented)
+export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
+}
+
+// @public (undocumented)
+export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
+    lowerThumb: IntrinsicShorthandProps<'div'>;
+    lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
+    upperThumb: IntrinsicShorthandProps<'div'>;
+    upperThumbWrapper: IntrinsicShorthandProps<'div'>;
+    lowerInput: IntrinsicShorthandProps<'input'>;
+    upperInput: IntrinsicShorthandProps<'input'>;
+};
+
+// @public (undocumented)
+export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
+}
+
+// @public
+export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
 
 // @public
 export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
-export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
+export const Slider: ForwardRefComponent<SliderProps>;
 
 // @public (undocumented)
-export interface SliderCommons {
-    ariaValueText?: (value: number) => string;
+export type SliderCommons = {
     defaultValue?: number;
-    disabled?: boolean;
-    keyboardStep?: number;
-    marks?: boolean | number[];
-    max?: number;
+    value?: number;
     min?: number;
+    max?: number;
+    step?: number;
+    keyboardStep?: number;
+    disabled?: boolean;
+    vertical?: boolean;
+    marks?: boolean | (number | {
+        value: number;
+        label?: string | JSX.Element;
+        mark?: JSX.Element;
+    })[];
+    origin?: number;
+    size?: 'small' | 'medium';
     onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
         value: number;
     }) => void;
-    origin?: number;
-    size?: 'small' | 'medium';
-    step?: number;
-    value?: number;
-    vertical?: boolean;
-}
+    ariaValueText?: (value: number) => string;
+};
 
 // @public (undocumented)
-export interface SliderProps extends Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'>, SliderCommons {
-}
+export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
 
 // @public
 export const sliderShorthandProps: (keyof SliderSlots)[];
@@ -56,8 +96,19 @@ export type SliderSlots = {
 };
 
 // @public (undocumented)
-export interface SliderState extends ComponentState<SliderSlots>, SliderCommons {
-}
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+
+// @public (undocumented)
+export const upperThumbClassName: string;
+
+// @public
+export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
 
 // @public
 export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;

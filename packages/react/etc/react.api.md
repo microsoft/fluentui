@@ -2314,6 +2314,8 @@ export interface ICalendarYearStyles extends ICalendarPickerStyles {
 export interface ICalloutBeakPositionedInfo extends IPositionedData {
     // (undocumented)
     closestEdge: RectangleEdge;
+    // (undocumented)
+    hideBeak?: boolean;
 }
 
 // @public (undocumented)
@@ -3558,6 +3560,8 @@ export interface IDatePickerStyleProps {
     // (undocumented)
     label?: boolean;
     theme: ITheme;
+    // (undocumented)
+    underlined?: boolean;
 }
 
 // @public (undocumented)
@@ -3566,6 +3570,10 @@ export interface IDatePickerStyles {
     callout: IStyle;
     // (undocumented)
     icon: IStyle;
+    // (undocumented)
+    readOnlyPlaceholder?: IStyle;
+    // (undocumented)
+    readOnlyTextField?: IStyle;
     root: IStyle;
     // (undocumented)
     statusMessage?: IStyle;
@@ -3930,6 +3938,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     collapseAllVisibility?: CollapseAllVisibility;
     compact?: boolean;
     componentRef?: IRefObject<IDetailsRow>;
+    disabled?: boolean;
     dragDropEvents?: IDragDropEvents;
     dragDropHelper?: IDragDropHelper;
     enableUpdateAnimations?: boolean;
@@ -4035,7 +4044,7 @@ export interface IDetailsRowState {
 }
 
 // @public (undocumented)
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme' | 'disabled'>> & {
     isSelected?: boolean;
     anySelected?: boolean;
     canSelect?: boolean;
@@ -4793,6 +4802,8 @@ export interface IElementPosition {
     alignmentEdge: RectangleEdge | undefined;
     // (undocumented)
     elementRectangle: Rectangle;
+    // (undocumented)
+    forcedInBounds?: boolean;
     // (undocumented)
     targetEdge: RectangleEdge;
 }
@@ -8137,6 +8148,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
+    onRenderInput?: IRenderFunction<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
     onRenderPrefix?: IRenderFunction<ITextFieldProps>;
     onRenderSuffix?: IRenderFunction<ITextFieldProps>;
@@ -8513,6 +8525,7 @@ export interface IWithResponsiveModeState {
 
 // @public
 export interface IWithViewportProps {
+    delayFirstMeasure?: boolean;
     disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
 }
