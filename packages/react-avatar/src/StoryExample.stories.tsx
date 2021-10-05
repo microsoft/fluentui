@@ -4,9 +4,9 @@ import { makeStyles } from '@fluentui/react-make-styles';
 const useStyles = makeStyles({
   root: theme => ({
     padding: '10px',
-    fontFamily: theme.global.type.fontFamilies.base,
-    color: theme.alias.color.neutral.neutralForeground1,
-    background: theme.alias.color.neutral.neutralBackground1,
+    fontFamily: theme.fontFamilyBase,
+    color: theme.colorNeutralForeground1,
+    background: theme.colorNeutralBackground1,
   }),
   content: {
     display: 'flex',

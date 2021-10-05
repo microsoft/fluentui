@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { splitButtonShorthandProps } from './useSplitButton';
-import type { SplitButtonState } from './SplitButton.types';
+import { getSlots } from '@fluentui/react-utilities';
+import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
 
 /**
  * Renders a SplitButton component by passing the state defined props to the appropriate slots.
  */
 export const renderSplitButton = (state: SplitButtonState) => {
-  const { slots, slotProps } = getSlotsCompat(state, splitButtonShorthandProps);
+  const { slots, slotProps } = getSlots<SplitButtonSlots>(state, ['root', 'menuButton', 'primaryActionButton']);
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.button {...slotProps.button} />
+      <slots.primaryActionButton {...slotProps.primaryActionButton} />
       <slots.menuButton {...slotProps.menuButton} />
     </slots.root>
   );

@@ -131,10 +131,10 @@ export interface MenuItemProps
     | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
     | ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
 
-  /** Indicates if the menu inside the item is open. */
+  /** Indicates if the menu inside the item is open if the activeIndex is also the item's index. */
   menuOpen?: boolean;
 
-  /** Default menu open */
+  /** Default menu open if the activeIndex is also the item's index */
   defaultMenuOpen?: boolean;
 
   /** Callback for setting the current menu item as active element in the menu. */
