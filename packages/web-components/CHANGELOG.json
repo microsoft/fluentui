@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/web-components_v1.5.5",
+      "version": "1.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "brookdozer@gmail.com",
+            "package": "@fluentui/web-components",
+            "comment": "Update installation doc story",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "fix issue where tree item selection was being impacted due to event issues",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Sep 2021 07:36:23 GMT",
       "tag": "@fluentui/web-components_v1.5.4",
       "version": "1.5.4",

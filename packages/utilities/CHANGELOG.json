@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/utilities_v8.3.4",
+      "version": "8.3.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mail@emanuel-kluge.de",
+            "package": "@fluentui/utilities",
+            "comment": "fix(utilities): add missing minLength-property to text fields",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Sep 2021 22:17:07 GMT",
       "tag": "@fluentui/utilities_v8.3.3",
       "version": "8.3.3",
