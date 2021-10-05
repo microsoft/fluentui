@@ -8,7 +8,6 @@ import {
 } from '@microsoft/fast-foundation';
 import {
   accentFillRest,
-  accentForegroundRest,
   designUnit,
   neutralFillRest,
   neutralForegroundHint,
@@ -58,7 +57,7 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
       position: absolute;
       opacity: 0;
       height: 100%;
-      background-color: ${accentForegroundRest};
+      background-color: ${accentFillRest};
       border-radius: calc(${designUnit} * 1px);
       animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
       width: 40%;
@@ -69,7 +68,7 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
       position: absolute;
       opacity: 0;
       height: 100%;
-      background-color: ${accentForegroundRest};
+      background-color: ${accentFillRest};
       border-radius: calc(${designUnit} * 1px);
       animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
       width: 60%;
