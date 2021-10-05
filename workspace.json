@@ -380,6 +380,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-provider/src"
     },
+    "@fluentui/react-radio": {
+      "root": "packages/react-radio",
+      "projectType": "library",
+      "sourceRoot": "packages/react-radio/src"
+    },
     "@fluentui/react-shared-contexts": {
       "root": "packages/react-shared-contexts",
       "projectType": "library",

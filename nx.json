@@ -313,6 +313,10 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-radio": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-shared-contexts": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
