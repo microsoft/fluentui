@@ -2,6 +2,135 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 05 Oct 2021 09:28:07 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.123",
+      "version": "9.0.0-alpha.123",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "comment": "Adds ForwardRefComponent to components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "comment": "Adds ForwardRefComponent to components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "comment": "Fix Avatar stories after  #19449",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "comment": "Adds ForwardRefComponent to react-badge components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-button",
+            "comment": "Adds ForwardRefComponent to react-button components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-card",
+            "comment": "Adds ForwardRefComponent to react-card components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Adds ForwardRefComponent to react-label components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Adds ForwardRefComponent to react-checkbox components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "comment": "Adds ForwardRefComponent to react-divider components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "comment": "react-divider prop merging follow up",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-image",
+            "comment": "Adds ForwardRefComponent to react-image components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-label",
+            "comment": "Adds ForwardRefComponent to react-label components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-link",
+            "comment": "Add and use ForwardRefComponent helper type",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "comment": "Adds ForwardRefComponent to react-menu components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "comment": "Adds ForwardRefComponent to react-popover components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "comment": "Adds ForwardRefComponent to react-slider components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "comment": "Adds ForwardRefComponent to react-switch components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-text",
+            "comment": "Add and use ForwardRefComponent helper type",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Adds ForwardRefComponent to react-tooltip components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Add and use ForwardRefComponent helper type",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Oct 2021 08:03:04 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.122",
       "version": "9.0.0-alpha.122",

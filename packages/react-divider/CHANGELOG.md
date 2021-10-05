@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Fri, 01 Oct 2021 14:13:08 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 09:28:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.78)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.77..@fluentui/react-divider_v9.0.0-alpha.78)
+
+### Changes
+
+- Adds ForwardRefComponent to react-divider components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+- react-divider prop merging follow up ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.77 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.59 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
 
 ## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.77)
 

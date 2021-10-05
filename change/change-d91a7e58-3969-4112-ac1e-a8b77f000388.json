@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix Avatar stories after  #19449",
-  "packageName": "@fluentui/react-avatar",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

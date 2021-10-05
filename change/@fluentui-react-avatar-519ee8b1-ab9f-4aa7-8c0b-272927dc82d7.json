@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds ForwardRefComponent to components declaration",
-  "packageName": "@fluentui/react-avatar",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

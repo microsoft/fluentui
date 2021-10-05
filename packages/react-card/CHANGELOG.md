@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Mon, 04 Oct 2021 08:03:04 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 09:28:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.17)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-alpha.16..@fluentui/react-card_v9.0.0-alpha.17)
+
+### Changes
+
+- Adds ForwardRefComponent to react-card components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.77 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.59 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-text to v9.0.0-alpha.26 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-button to v9.0.0-alpha.100 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.16)
 
