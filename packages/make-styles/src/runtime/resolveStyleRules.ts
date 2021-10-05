@@ -145,14 +145,14 @@ function resolveStyleRulesInner(
       }
 
       resolveStyleRulesInner(
-        { animationName: animationNames.join(' ') },
+        { animationName: animationNames.join(', ') },
         unstable_cssPriority,
         pseudo,
         media,
         support,
         cssClassesMap,
         cssRulesByBucket,
-        rtlAnimationNames.join(' '),
+        rtlAnimationNames.join(', '),
       );
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {

@@ -682,13 +682,13 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        .f1al5ov7 {
-          -webkit-animation-name: f1q8eu9e f5j8bii;
-          animation-name: f1q8eu9e f5j8bii;
+        .fng7zue {
+          -webkit-animation-name: f1q8eu9e, f5j8bii;
+          animation-name: f1q8eu9e, f5j8bii;
         }
-        .f1yfduy3 {
-          -webkit-animation-name: f55c0se f5j8bii;
-          animation-name: f55c0se f5j8bii;
+        .f12eevt1 {
+          -webkit-animation-name: f55c0se, f5j8bii;
+          animation-name: f55c0se, f5j8bii;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
