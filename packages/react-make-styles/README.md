@@ -129,6 +129,39 @@ const useStyles = makeStyles({
 });
 ```
 
+### 🎞 `keyframes` (animations)
+
+`keyframes` are supported via `animationName` property that can be defined as an object or an array of objects:
+
+```tsx
+import { makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  root: {
+    animationIterationCount: 'infinite',
+    animationDuration: '3s',
+    animationName: {
+      from: { transform: 'rotate(0deg)' },
+      to: { transform: 'rotate(360deg)' },
+    },
+  },
+  array: {
+    animationIterationCount: 'infinite',
+    animationDuration: '3s',
+    animationName: [
+      {
+        from: { transform: 'rotate(0deg)' },
+        to: { transform: 'rotate(360deg)' },
+      },
+      {
+        from: { height: '100px' },
+        to: { height: '200px' },
+      },
+    ],
+  },
+});
+```
+
 ## `makeStaticStyles()`
 
 Creates styles attached to a global selector. Styles can be defined via objects:
