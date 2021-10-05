@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update web components progress determinate color to accentFillRest",
+  "packageName": "@fluentui/web-components",
+  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+  "dependentChangeType": "patch"
+}
