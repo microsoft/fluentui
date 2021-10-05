@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "7.40.10",
+  "version": "7.40.11",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

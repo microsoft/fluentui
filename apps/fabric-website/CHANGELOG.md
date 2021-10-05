@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 04 Oct 2021 12:36:04 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 12:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.12](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.12)
+
+Tue, 05 Oct 2021 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.17.11..@uifabric/fabric-website_v7.17.12)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.40.11 ([PR #19999](https://github.com/microsoft/fluentui/pull/19999) by tmichon@microsoft.com)
 
 ## [7.17.11](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.11)
 
