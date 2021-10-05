@@ -4,6 +4,9 @@
   "private": true,
   "description": "Testing Fluent UI React compatibility with Typescript 3.9",
   "license": "MIT",
+  "dependencies": {
+    "@fluentui/react": "^8.0.0"
+  },
   "scripts": {
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
