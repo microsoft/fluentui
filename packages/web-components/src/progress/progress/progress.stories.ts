@@ -15,6 +15,9 @@ const ProgressTemplate = ({ paused, value }) => `
     ${paused ? `paused="${paused}"` : ''}
     ${value ? `value=${value}` : ''}
   ></fluent-progress>
+  <fluent-progress style="margin-top:10px;"
+    ${paused ? `paused="${paused}"` : ''}
+  ></fluent-progress>
 `;
 
 export const Progress = ProgressTemplate.bind({});
@@ -25,7 +28,8 @@ Progress.args = {
 };
 
 const example = `
-<fluent-progress min="0" max="100" value="75"></fluent-progress>
+<fluent-progress min="0" max="100" value="${Progress.args.value}"></fluent-progress>
+<fluent-progress></fluent-progress>
 `;
 
 Progress.parameters = {
