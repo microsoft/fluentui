@@ -13,8 +13,6 @@ export default {
 const ProgressRingTemplate = ({ paused, value }) => `
   <fluent-progress-ring
     ${value ? `value="${value}"` : ''}
-  ></fluent-progress-ring>
-  <fluent-progress-ring
     ${paused ? `paused="${paused}"` : ''}
   ></fluent-progress-ring>
 `;
@@ -30,14 +28,46 @@ const defaultExample = `
 <fluent-progress-ring min="0" max="100" value="${ProgressRing.args.value}"></fluent-progress-ring>
 `;
 
+ProgressRing.parameters = {
+  docs: {
+    source: {
+      code: defaultExample,
+    },
+  },
+};
+
+export const ProgressRingAnimated = ProgressRingTemplate.bind({});
+
+ProgressRingAnimated.args = {
+  paused: false,
+};
+
+export const ProgressRingPaused = ProgressRingTemplate.bind({});
+
+ProgressRingPaused.args = {
+  paused: true,
+};
+
 const animatedExample = `
 <fluent-progress-ring></fluent-progress-ring>
 `;
 
-ProgressRing.parameters = {
+const pausedExample = `
+<fluent-progress-ring paused></fluent-progress-ring>
+`;
+
+ProgressRingAnimated.parameters = {
   docs: {
     source: {
-      code: defaultExample + animatedExample,
+      code: animatedExample,
+    },
+  },
+};
+
+ProgressRingPaused.parameters = {
+  docs: {
+    source: {
+      code: pausedExample,
     },
   },
 };
