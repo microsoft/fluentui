@@ -582,7 +582,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       focusZoneProps && focusZoneProps.onActiveElementChanged
         ? focusZoneProps.onActiveElementChanged
         : onActiveRowChanged,
-    shouldRaiseClicks: false,
+    shouldRaiseClicksOnEnter: false,
     onBlur: focusZoneProps && focusZoneProps.onBlur ? focusZoneProps.onBlur : onBlur,
   };
 

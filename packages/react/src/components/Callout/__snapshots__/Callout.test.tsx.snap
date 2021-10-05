@@ -55,7 +55,7 @@ exports[`Callout renders Callout correctly 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "maxHeight": 752,
+          "maxHeight": "100%",
           "outline": "none",
           "overflowY": undefined,
         }

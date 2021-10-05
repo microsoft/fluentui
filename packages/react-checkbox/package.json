@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "9.0.0-alpha.41",
+  "version": "9.0.0-alpha.48",
   "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.47",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.53",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.16",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.22",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -41,10 +41,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-alpha.72",
-    "@fluentui/react-utilities": "9.0.0-alpha.52",
-    "@fluentui/react-label": "9.0.0-alpha.45",
-    "@fluentui/react-tabster": "9.0.0-alpha.66",
+    "@fluentui/react-make-styles": "9.0.0-alpha.78",
+    "@fluentui/react-utilities": "9.0.0-alpha.56",
+    "@fluentui/react-label": "9.0.0-alpha.51",
+    "@fluentui/react-tabster": "9.0.0-alpha.73",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

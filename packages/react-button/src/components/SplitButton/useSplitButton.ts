@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import type { SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonState } from './SplitButton.types';
-
-export const splitButtonShorthandProps: SplitButtonShorthandPropsCompat[] = ['button', 'menuButton'];
-
-const mergeProps = makeMergeProps<SplitButtonState>({ deepMerge: splitButtonShorthandProps });
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { Button } from '../Button/Button';
+import { MenuButton } from '../MenuButton/MenuButton';
+import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 
 /**
  * Given user props, defines default props for the SplitButton and returns processed state.
@@ -13,66 +11,63 @@ const mergeProps = makeMergeProps<SplitButtonState>({ deepMerge: splitButtonShor
  */
 export const useSplitButton = (
   props: SplitButtonProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: SplitButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): SplitButtonState => {
-  const resolvedShorthandProps = resolveShorthandProps(props, splitButtonShorthandProps);
-  const { className } = props;
   const {
     appearance,
-    button,
-    buttonRef,
+    block = false,
+    children,
+    disabled = false,
+    disabledFocusable = false,
+    icon,
+    iconPosition = 'before',
+    menuButton,
+    primaryActionButton,
+    shape = 'rounded',
+    size = 'medium',
+  } = props;
+  const menuButtonShorthand = resolveShorthand(menuButton, {
+    defaultProps: {
+      appearance,
+      disabled,
+      disabledFocusable,
+      shape,
+      size,
+    },
+  });
+  const primaryActionButtonShorthand = resolveShorthand(primaryActionButton, {
+    defaultProps: {
+      appearance,
+      block,
+      children,
+      disabled,
+      disabledFocusable,
+      icon,
+      iconPosition,
+      shape,
+      size,
+    },
+  });
+
+  return {
+    // Props passed at the top-level
+    appearance,
+    block,
     disabled,
     disabledFocusable,
-    menuButton,
-    menuButtonRef,
-    size = 'medium',
+    iconPosition,
     shape,
-    ...userProps
-  } = resolvedShorthandProps;
+    size,
 
-  // TODO: To be resolved when moving to simplified prop merging
-  // const buttonInternalRef = React.useRef<HTMLElement | null>(null);
-  // const menuButtonInternalRef = React.useRef<HTMLElement | null>(null);
-
-  const state = mergeProps(
-    {
-      'aria-disabled': disabled,
-      as: 'div',
-      className,
-      ref,
-      size,
-
-      button: {
-        as: 'button',
-        // TODO: To be resolved when moving to simplified prop merging
-        // ref: useMergedRefs(buttonRef, buttonInternalRef),
-        appearance,
-        disabled,
-        disabledFocusable,
-        shape,
-        size,
-        ...userProps,
-        ...button,
-      },
-
-      menuButton: {
-        as: 'button',
-        // TODO: To be resolved when moving to simplified prop merging
-        // ref: useMergedRefs(menuButtonRef, menuButtonInternalRef),
-        appearance,
-        disabled,
-        disabledFocusable,
-        shape,
-        size,
-        ...menuButton,
-      },
+    // Slots definition
+    components: {
+      root: 'div',
+      menuButton: MenuButton,
+      primaryActionButton: Button,
     },
-    // TODO: To be resolved when moving to simplified prop merging
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    defaultProps as any,
-    resolvedShorthandProps,
-  );
 
-  return state;
+    root: getNativeElementProps('div', { ref, ...props }),
+    menuButton: menuButtonShorthand,
+    primaryActionButton: primaryActionButtonShorthand,
+  };
 };

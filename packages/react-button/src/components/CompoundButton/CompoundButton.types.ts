@@ -1,27 +1,19 @@
-import * as React from 'react';
-import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import type {
-  ButtonDefaultedProps,
-  ButtonProps,
-  ButtonShorthandPropsCompat,
-  ButtonState,
-} from '../Button/Button.types';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
 
-export type CompoundButtonProps = ButtonProps & {
+export type CompoundButtonSlots = ButtonSlots & {
   /**
    * Second line of text that describes the action this button takes.
    */
-  secondaryContent?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  secondaryContent?: IntrinsicShorthandProps<'span'>;
 
   /**
-   * Container that wraps the children and secondaryContent slots.
+   * Container that wraps the children and the secondaryContent slot.
    */
-  contentContainer?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  contentContainer: IntrinsicShorthandProps<'span'>;
 };
 
-export type CompoundButtonShorthandPropsCompat = ButtonShorthandPropsCompat | 'contentContainer' | 'secondaryContent';
+export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
 
-export type CompoundButtonDefaultedProps = ButtonDefaultedProps | 'contentContainer' | 'secondaryContent';
-
-export type CompoundButtonState = ButtonState &
-  ComponentStateCompat<CompoundButtonProps, CompoundButtonShorthandPropsCompat, CompoundButtonDefaultedProps>;
+export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
+  Omit<ButtonState, keyof ButtonSlots | 'components'>;

@@ -227,6 +227,9 @@ export interface IDetailsRowBaseProps
    * Properties to pass to the rows' FocusZone.
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /** whether or not row should be rendered in disabled state */
+  disabled?: boolean;
 }
 
 /**
@@ -252,7 +255,7 @@ export interface IDetailsRowProps extends IDetailsRowBaseProps {
 /**
  * {@docCategory DetailsList}
  */
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme' | 'disabled'>> & {
   /** Whether the row is selected  */
   isSelected?: boolean;
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/make-styles-webpack-loader",
-  "version": "9.0.0-alpha.27",
+  "version": "9.0.0-alpha.33",
   "description": "A Webpack for makeStyles",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -26,8 +26,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "@fluentui/babel-make-styles": "9.0.0-alpha.54",
-    "@linaria/babel-preset": "^3.0.0-beta.12",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.60",
+    "@linaria/babel-preset": "^3.0.0-beta.13",
     "enhanced-resolve": "^5.8.2",
     "loader-utils": "^2.0.0",
     "schema-utils": "^3.1.1",

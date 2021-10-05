@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.3)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.4.2..@fluentui/react-file-type-icons_v8.4.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.3.4 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+
+## [8.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.2)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.4.1..@fluentui/react-file-type-icons_v8.4.2)
+
+### Patches
+
+- update fabric-cdn urls ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by caperez@microsoft.com)
+
+## [8.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.1)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.4.0..@fluentui/react-file-type-icons_v8.4.1)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.0)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.3.2..@fluentui/react-file-type-icons_v8.4.0)
+
+### Minor changes
+
+- Add forms icon to react-file-type-icons ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by chhoorn@microsoft.com)
+- Add sway icon ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by chhoorn@microsoft.com)
 
 ## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.3.2)
 

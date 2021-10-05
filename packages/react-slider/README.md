@@ -2,8 +2,7 @@
 
 **React Slider components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-The Slider component allows users to quickly select a value (or range) by dragging an icon across a bar. It is often used when setting
-values with a relaxed precision such as audio volume and screen brightness.
+The Slider component allows users to quickly select a value (or range) by dragging a thumb across a rail. It is often used when setting values with a relaxed precision such as audio volume and screen brightness.
 
 ## STATUS: WIP 🚧
 

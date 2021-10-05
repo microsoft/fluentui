@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 24 Sep 2021 09:17:17 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 09:28:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.65)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.64..@fluentui/react-positioning_v9.0.0-alpha.65)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.64)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.62..@fluentui/react-positioning_v9.0.0-alpha.64)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.28 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.55 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.62)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.61..@fluentui/react-positioning_v9.0.0-alpha.62)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.26 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+
+## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.61)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.60..@fluentui/react-positioning_v9.0.0-alpha.61)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.53 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
 
 ## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.60)
 

@@ -2,6 +2,57 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 05 Oct 2021 09:28:07 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.56",
+      "version": "9.0.0-alpha.56",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Add and use ForwardRefComponent helper type",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.55",
+      "version": "9.0.0-alpha.55",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump v9 prerelease versions to rerelease",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.0-alpha.5",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 08:06:00 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.53",
+      "version": "9.0.0-alpha.53",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Updates ComponentState on custom props",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Sep 2021 09:17:17 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.52",
       "version": "9.0.0-alpha.52",
