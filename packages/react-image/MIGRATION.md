@@ -67,7 +67,7 @@ For v9, this feature is no longer supported. The alternative is to apply the ani
 
 > ⚠️❌🚧 Note - This snipped needs changes!! ❌🚧
 
-```
+```jsx
 const useStyles = makeStyles(theme => ({
   fadeIn400: {
     animationName: {
@@ -96,24 +96,31 @@ const MyComponent = () => {
 
 For v9, this feature is no longer supported. Alternatively, you can use the global events `onLoad` and `onError` to achieve the same behaviour. Below is an example showcasing this:
 
-> ⚠️❌🚧 Note - This snipped needs to be verified!! ❌🚧
+```jsx
+import { useState } from 'react';
+import { makeStyles } from '@fluentui/react-make-styles';
+import { Image } from '@fluentui/react-image';
 
-```
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
-    display: 'none'
-  }
-})
+    display: 'none',
+  },
+});
 
-const MyComponent = () => {
-    const [isLoaded, setLoaded] = useState(null);
-    const styles = useStyles()
+export default function App() {
+  const [isLoaded, setLoaded] = useState(null);
 
-    return <Image
-              src="example.jpg"
-              onLoad={()=> setLoaded(true)}
-              onError={() => setLoaded(false)}
-              className={isLoaded === false? styles.root ? ''} />
+  const styles = useStyles();
+
+  return (
+    <Image
+      src="https://via.placeholder.com/300x300"
+      alt="Example image"
+      onLoad={() => setLoaded(true)}
+      onError={() => setLoaded(false)}
+      className={isLoaded === false ? styles.root : ''}
+    />
+  );
 }
 ```
 
