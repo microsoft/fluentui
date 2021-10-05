@@ -141,13 +141,23 @@ const useStyles = makeStyles({
     animationIterationCount: 'infinite',
     animationDuration: '3s',
     animationName: {
-      from: {
-        transform: 'rotate(0deg)',
-      },
-      to: {
-        transform: 'rotate(360deg)',
-      },
+      from: { transform: 'rotate(0deg)' },
+      to: { transform: 'rotate(360deg)' },
     },
+  },
+  array: {
+    animationIterationCount: 'infinite',
+    animationDuration: '3s',
+    animationName: [
+      {
+        from: { transform: 'rotate(0deg)' },
+        to: { transform: 'rotate(360deg)' },
+      },
+      {
+        from: { height: '100px' },
+        to: { height: '200px' },
+      },
+    ],
   },
 });
 ```
