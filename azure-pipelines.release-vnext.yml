@@ -13,7 +13,7 @@ variables:
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 # TODO set schedule once the pipeline is validated after a few manual releases
 # schedules:
