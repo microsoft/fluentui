@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds ForwardRefComponent to react-switch components declaration",
-  "packageName": "@fluentui/react-switch",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

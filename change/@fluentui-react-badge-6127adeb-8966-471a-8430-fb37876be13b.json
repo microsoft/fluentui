@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds ForwardRefComponent to react-badge components declaration",
-  "packageName": "@fluentui/react-badge",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add and use ForwardRefComponent helper type",
-  "packageName": "@fluentui/react-link",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

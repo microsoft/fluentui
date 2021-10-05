@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds ForwardRefComponent to react-label components declaration",
-  "packageName": "@fluentui/react-label",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
