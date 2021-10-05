@@ -2660,10 +2660,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.5.1.tgz#a4e98da1ac0873568360d69dfcf0e4fcc46a374c"
   integrity sha512-2wv3svn2fJqT84PrchSNjRjCJ2z74tuzoo7odACouuQaLXuJckv1XexXWUj5INKY6/LB/rN/bJMYauX33JgOZA==
 
-"@microsoft/fast-foundation@^2.16.0":
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.16.0.tgz#fa927f92727fbccdd246ea15e381d6ce50c679f7"
-  integrity sha512-UlvUYT+ZGGJH6mjTy/6kVQBq+n43G1+rurj655u2uuWte/36+YWf635lgAuZPrChBU0fEHDaGcNeX5wNKKI9EA==
+"@microsoft/fast-foundation@^2.17.0":
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.17.0.tgz#f8e8f930c12917c86b50ad0882809b696a837839"
+  integrity sha512-UasLgnJW5EsQYQcgwx52uFSwvCyPYQY/a+qs3lm0tJNklpy11Xi7tduj8zz/BeySmudYmQ3GtdIsGzCEokKMmg==
   dependencies:
     "@microsoft/fast-element" "^1.5.1"
     "@microsoft/fast-web-utilities" "^5.0.0"
