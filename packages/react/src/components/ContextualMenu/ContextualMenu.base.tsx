@@ -452,7 +452,7 @@ function useSubmenuEnterTimer({ subMenuHoverDelay = NavigationIdleDelay }: ICont
   return [cancelSubMenuTimer, startSubmenuTimer, enterTimerRef as React.RefObject<number | undefined>] as const;
 }
 
-function useMosueHandlers(
+function useMouseHandlers(
   props: IContextualMenuProps,
   isScrollIdle: React.MutableRefObject<boolean>,
   subMenuEntryTimer: React.RefObject<number | undefined>,
