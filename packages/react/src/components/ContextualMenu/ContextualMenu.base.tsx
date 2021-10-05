@@ -681,7 +681,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       onAnchorClick,
       executeItemClick,
       onItemClickBase,
-    ] = useMosueHandlers(
+    ] = useMouseHandlers(
       props,
       isScrollIdle,
       subMenuEntryTimer,
