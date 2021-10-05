@@ -8,16 +8,16 @@ import * as ReactDOM from 'react-dom';
 
 const useStyles = makeStyles({
   root: theme => ({
-    border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    color: theme.alias.color.neutral.neutralForeground1,
+    border: `5px solid ${theme.colorNeutralStroke1}`,
+    backgroundColor: theme.colorNeutralBackground1,
+    color: theme.colorNeutralForeground1,
 
     margin: '5px',
     padding: '5px',
   }),
   primary: theme => ({
-    borderColor: theme.alias.color.neutral.brandForegroundLink,
-    color: theme.alias.color.neutral.brandForegroundLink,
+    borderColor: theme.colorBrandForegroundLink,
+    color: theme.colorBrandForegroundLink,
   }),
   overrides: {
     color: 'red',
