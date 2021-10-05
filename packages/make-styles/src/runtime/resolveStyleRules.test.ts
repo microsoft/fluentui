@@ -524,20 +524,6 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f1q8eu9e {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-          }
-        }
         @-webkit-keyframes f55c0se {
           from {
             -webkit-transform: rotate(0deg);
@@ -550,6 +536,20 @@ describe('resolveStyleRules', () => {
             -moz-transform: rotate(-360deg);
             -ms-transform: rotate(-360deg);
             transform: rotate(-360deg);
+          }
+        }
+        @keyframes f1q8eu9e {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
           }
         }
         @keyframes f55c0se {
@@ -624,6 +624,20 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
+        @-webkit-keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
         @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
@@ -636,6 +650,20 @@ describe('resolveStyleRules', () => {
             -moz-transform: rotate(360deg);
             -ms-transform: rotate(360deg);
             transform: rotate(360deg);
+          }
+        }
+        @keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
           }
         }
         @-webkit-keyframes f5j8bii {
@@ -654,41 +682,13 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @-webkit-keyframes f55c0se {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(-360deg);
-            -moz-transform: rotate(-360deg);
-            -ms-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-          }
+        .fng7zue {
+          -webkit-animation-name: f1q8eu9e, f5j8bii;
+          animation-name: f1q8eu9e, f5j8bii;
         }
-        @keyframes f55c0se {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(-360deg);
-            -moz-transform: rotate(-360deg);
-            -ms-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-          }
-        }
-        .f1al5ov7 {
-          -webkit-animation-name: f1q8eu9e f5j8bii;
-          animation-name: f1q8eu9e f5j8bii;
-        }
-        .f1yfduy3 {
-          -webkit-animation-name: f55c0se f5j8bii;
-          animation-name: f55c0se f5j8bii;
+        .f12eevt1 {
+          -webkit-animation-name: f55c0se, f5j8bii;
+          animation-name: f55c0se, f5j8bii;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;

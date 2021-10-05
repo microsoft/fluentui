@@ -24,6 +24,7 @@ import * as styles from './Nav.module.scss';
 import { isLocal } from '../../utilities/index';
 
 export interface INavState {
+  /** Search query as typed by the user. May contain special characters (don't use as a regex). */
   searchQuery: string;
   defaultSortState: keyof typeof NavSortType;
   sortState: keyof typeof NavSortType;
@@ -152,17 +153,16 @@ export class Nav extends React.Component<INavProps, INavState> {
   };
 
   private _renderLink = (page: INavPage, linkIndex: number): JSX.Element => {
-    const { searchQuery } = this.state;
+    const searchQuery = this.state.searchQuery.toLowerCase();
     const childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
-    const searchRegEx = new RegExp(searchQuery, 'i');
     const text = page.title;
     let linkText = <>{text}</>;
 
     // Highlight search query within link.
     if (searchQuery) {
-      const matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
+      const matchIndex = text.toLowerCase().indexOf(searchQuery);
       if (matchIndex >= 0) {
         const before = text.slice(0, matchIndex);
         const match = text.slice(matchIndex, matchIndex + searchQuery.length);
@@ -188,7 +188,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         )}
         key={linkIndex + page.url}
       >
-        {(!page.isUhfLink || isLocal) && searchRegEx.test(page.title) && (
+        {(!page.isUhfLink || isLocal) && page.title.toLowerCase().indexOf(searchQuery) !== -1 && (
           <Link
             href={page.url}
             onClick={this._onLinkClick}
@@ -320,9 +320,9 @@ export class Nav extends React.Component<INavProps, INavState> {
   };
 
   private _hasMatchChild = (page: INavPage): boolean => {
-    const { searchQuery } = this.state;
-    const searchRegEx = new RegExp(searchQuery, 'i');
-    const checkPage = (pg: INavPage) => searchRegEx.test(pg.title) || (!!pg.pages && pg.pages.some(checkPage));
+    const searchQuery = this.state.searchQuery.toLowerCase();
+    const checkPage = (pg: INavPage) =>
+      pg.title.toLowerCase().indexOf(searchQuery) !== -1 || (!!pg.pages && pg.pages.some(checkPage));
     return checkPage(page);
   };
 
