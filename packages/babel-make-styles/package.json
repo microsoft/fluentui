@@ -34,8 +34,8 @@
     "@babel/template": "^7.12.13",
     "@babel/traverse": "^7.12.13",
     "@fluentui/make-styles": "9.0.0-alpha.34",
-    "@linaria/babel-preset": "^3.0.0-beta.12",
-    "@linaria/shaker": "^3.0.0-beta.12",
+    "@linaria/babel-preset": "^3.0.0-beta.13",
+    "@linaria/shaker": "^3.0.0-beta.13",
     "ajv": "^8.4.0",
     "tslib": "^2.1.0"
   },

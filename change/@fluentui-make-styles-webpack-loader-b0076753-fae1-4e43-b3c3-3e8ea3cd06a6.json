@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(babel-make-styles): Bump Linaria versions",
+  "packageName": "@fluentui/make-styles-webpack-loader",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
