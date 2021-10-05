@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 05 Oct 2021 09:28:07 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 12:47:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.124](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.124)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.123..@fluentui/react-components_v9.0.0-alpha.124)
+
+### Changes
+
+- `@fluentui/babel-make-styles`
+  - fix(babel-make-styles): Bump Linaria versions ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by lingfangao@hotmail.com)
+- `@fluentui/make-styles`
+  - fix insertion of keyframes ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by olfedias@microsoft.com)
+- `@fluentui/make-styles-webpack-loader`
+  - fix(babel-make-styles): Bump Linaria versions ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.123](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.123)
 

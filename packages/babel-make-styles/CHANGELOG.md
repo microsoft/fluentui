@@ -1,8 +1,19 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Tue, 05 Oct 2021 09:28:07 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 12:47:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.60)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.59..@fluentui/babel-make-styles_v9.0.0-alpha.60)
+
+### Changes
+
+- fix(babel-make-styles): Bump Linaria versions ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by lingfangao@hotmail.com)
+- Bump @fluentui/make-styles to v9.0.0-alpha.35 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.78 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
 
 ## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.59)
 
