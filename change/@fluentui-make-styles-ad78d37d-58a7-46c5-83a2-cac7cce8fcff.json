@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix insertion of keyframes",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

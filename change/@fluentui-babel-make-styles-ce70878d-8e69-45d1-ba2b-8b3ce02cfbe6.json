@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(babel-make-styles): Bump Linaria versions",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
