@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 05 Oct 2021 09:28:07 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.56",
+      "version": "9.0.0-alpha.56",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Add and use ForwardRefComponent helper type",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Oct 2021 14:13:08 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.55",
       "version": "9.0.0-alpha.55",

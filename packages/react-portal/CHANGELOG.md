@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Fri, 01 Oct 2021 14:13:08 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Oct 2021 12:47:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.61)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-alpha.60..@fluentui/react-portal_v9.0.0-alpha.61)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.78 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.73 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.60)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-alpha.59..@fluentui/react-portal_v9.0.0-alpha.60)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.77 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.72 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
 
 ## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.59)
 
