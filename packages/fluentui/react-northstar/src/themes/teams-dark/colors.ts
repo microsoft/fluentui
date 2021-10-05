@@ -119,11 +119,13 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover: colors.brand[500],
     backgroundHover1: colors.brand[900],
     backgroundHover2: colors.brand[900],
+    backgroundHover3: colors.brand[900],
 
     foregroundPressed: colors.brand[200],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[700],
     backgroundPressed1: colors.brand[800],
+    backgroundPressed2: colors.brand[800],
     borderPressed: colors.brand[800],
 
     foregroundActive: colors.brand[400],
