@@ -27,15 +27,18 @@ Progress.args = {
   paused: false,
 };
 
-const example = `
+const defaultExample = `
 <fluent-progress min="0" max="100" value="${Progress.args.value}"></fluent-progress>
+`;
+
+const animatedExample = `
 <fluent-progress></fluent-progress>
 `;
 
 Progress.parameters = {
   docs: {
     source: {
-      code: example,
+      code: defaultExample + animatedExample,
     },
   },
 };

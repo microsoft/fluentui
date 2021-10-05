@@ -26,14 +26,18 @@ ProgressRing.args = {
   value: 65,
 };
 
-const example = `
+const defaultExample = `
 <fluent-progress-ring min="0" max="100" value="${ProgressRing.args.value}"></fluent-progress-ring>
+`;
+
+const animatedExample = `
 <fluent-progress-ring></fluent-progress-ring>
 `;
+
 ProgressRing.parameters = {
   docs: {
     source: {
-      code: example,
+      code: defaultExample + animatedExample,
     },
   },
 };
