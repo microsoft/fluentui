@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { CardProps, CardState } from './Card.types';
+import { useGroupper, GroupperTabbability } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Card.
@@ -12,12 +13,17 @@ import type { CardProps, CardState } from './Card.types';
  * @param ref - reference to root HTMLElement of Card
  */
 export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
+  const groupperAttrs = useGroupper({
+    tabbability: GroupperTabbability.LimitedTrapFocus,
+  });
+
   return {
     components: { root: 'div' },
 
     root: getNativeElementProps(props.as || 'div', {
       ref,
       role: 'group',
+      ...groupperAttrs,
       ...props,
     }),
   };
