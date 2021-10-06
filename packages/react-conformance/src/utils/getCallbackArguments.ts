@@ -113,7 +113,7 @@ function typeHasSubtypes(type: ts.Type): type is ts.Type & { types: ts.Type[] } 
 
 function typeToString(typeChecker: ts.TypeChecker, type: ts.Type): ArgumentValue | ArgumentValue[] {
   if (isIntrinsicType(type)) {
-    return (type as any).intrinsicName;
+    return type.intrinsicName;
   }
 
   if (type.symbol) {

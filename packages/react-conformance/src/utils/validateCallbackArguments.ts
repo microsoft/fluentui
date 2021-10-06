@@ -12,7 +12,10 @@ function validateEventArgument(value: ArgumentValue | ArgumentValue[]): void {
     if (typeof valueInUnion === 'string') {
       if (valueInUnion === 'Event' || valueInUnion === 'React.SyntheticEvent') {
         throw new Error(
-          `A first (event) argument cannot use generic React.SyntheticEvent or Event types. Please use less generic types like React.MouseEvent/MouseEvent`,
+          [
+            'A first (event) argument cannot use generic React.SyntheticEvent or Event types.',
+            'Please use less generic types like React.MouseEvent/MouseEvent',
+          ].join(' '),
         );
       }
 
