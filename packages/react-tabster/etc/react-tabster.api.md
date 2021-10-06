@@ -35,6 +35,13 @@ export type FocusOutlineStyleOptions = {
     outlineOffset?: string | FocusOutlineOffset;
 };
 
+// @public (undocumented)
+export enum GroupperTabbability {
+    Limited,
+    LimitedTrapFocus,
+    Unlimited
+}
+
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
 
@@ -53,6 +60,14 @@ export const useFocusFinders: () => {
     findNextFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
     findPrevFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
 };
+
+// @public
+export const useGroupper: (options?: UseGroupperOptions | undefined) => Types.TabsterDOMAttribute;
+
+// @public (undocumented)
+export interface UseGroupperOptions {
+    tabbability?: GroupperTabbability;
+}
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
