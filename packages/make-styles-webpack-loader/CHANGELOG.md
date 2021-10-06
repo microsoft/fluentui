@@ -1,8 +1,18 @@
 # Change Log - @fluentui/make-styles-webpack-loader
 
-This log was last generated on Tue, 05 Oct 2021 12:47:58 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.33..@fluentui/make-styles-webpack-loader_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.33)
 
