@@ -68,7 +68,12 @@ function initializeUncontrolledOpenItems({
     }
     return [defaultOpenItems];
   }
-  return collapsible ? [] : [];
+  /**
+   * TODO: since the dropping of descendants API due to performance issues,
+   * the default behavior of Accordion has been compromised and [0] makes no sense
+   * indexes are not used anymore to ensure the position of the element which should be opened by default
+   */
+  return collapsible ? [] : [0];
 }
 
 /**
