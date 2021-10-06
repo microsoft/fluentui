@@ -20,7 +20,7 @@ const useStyles = makeStyles({
  */
 export const useCardFooterStyles = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
 
   if (state.action) {
     state.action.className = mergeClasses(styles.action, state.action.className);

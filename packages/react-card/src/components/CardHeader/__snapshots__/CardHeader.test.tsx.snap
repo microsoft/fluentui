@@ -13,12 +13,8 @@ exports[`CardHeader renders a default state 1`] = `
     <div
       class=""
     >
-      <span>
-        Title slot
-      </span>
-      <span>
-        Description slot
-      </span>
+      Title slot
+      Description slot
     </div>
     <div>
       Action slot
