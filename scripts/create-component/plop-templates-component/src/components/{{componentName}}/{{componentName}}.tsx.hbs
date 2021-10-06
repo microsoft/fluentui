@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { use{{componentName}} } from './use{{componentName}}';
-import { {{componentName}}Props } from './{{componentName}}.types';
 import { render{{componentName}} } from './render{{componentName}}';
 import { use{{componentName}}Styles } from './use{{componentName}}Styles';
+import type { {{componentName}}Props } from './{{componentName}}.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * {{componentName}} component
  */
-export const {{componentName}} = React.forwardRef<HTMLElement, {{componentName}}Props>((props, ref) => {
+export const {{componentName}}: ForwardRefComponent<{{componentName}}Props> = React.forwardRef((props, ref) => {
   const state = use{{componentName}}(props, ref);
 
   use{{componentName}}Styles(state);
