@@ -33,7 +33,7 @@ export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLE
   return {
     open,
     value,
-    disabled: disabled,
+    disabled,
     onHeaderClick: onAccordionHeaderClick,
     root: getNativeElementProps('div', {
       ref: ref,
