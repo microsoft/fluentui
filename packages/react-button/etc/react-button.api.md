@@ -7,13 +7,14 @@
 import { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { MenuTriggerChildProps } from '@fluentui/react-menu';
 import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Button: React_2.ForwardRefExoticComponent<ButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+export const Button: ForwardRefComponent<ButtonProps>;
 
 // @public (undocumented)
 export type ButtonCommons = {
@@ -41,7 +42,7 @@ export type ButtonState = ComponentState<ButtonSlots> & ButtonCommons & {
 };
 
 // @public
-export const CompoundButton: React_2.FunctionComponent<CompoundButtonProps>;
+export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
 // @public (undocumented)
 export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
@@ -56,7 +57,7 @@ export type CompoundButtonSlots = ButtonSlots & {
 export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'>;
 
 // @public
-export const MenuButton: React_2.FunctionComponent<MenuButtonProps>;
+export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
 // @public (undocumented)
 export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>> & Partial<MenuTriggerChildProps>;
@@ -84,7 +85,7 @@ export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
 export const renderSplitButton: (state: SplitButtonState) => JSX.Element;
 
 // @public
-export const SplitButton: React_2.FunctionComponent<SplitButtonProps>;
+export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
 // @public (undocumented)
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;
@@ -100,7 +101,7 @@ export type SplitButtonSlots = {
 export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonState, 'components' | 'iconOnly' | 'root'> & Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;
 
 // @public
-export const ToggleButton: React_2.FunctionComponent<ToggleButtonProps>;
+export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
 // @public (undocumented)
 export type ToggleButtonCommons = {
@@ -116,31 +117,31 @@ export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
 export type ToggleButtonState = ButtonState & ToggleButtonCommons;
 
 // @public
-export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement>) => ButtonState;
+export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
 // @public (undocumented)
 export const useButtonStyles: (state: ButtonState) => ButtonState;
 
 // @public
-export const useCompoundButton: ({ contentContainer, secondaryContent, ...props }: CompoundButtonProps, ref: React_2.Ref<HTMLButtonElement>) => CompoundButtonState;
+export const useCompoundButton: ({ contentContainer, secondaryContent, ...props }: CompoundButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonState;
 
 // @public (undocumented)
 export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundButtonState;
 
 // @public
-export const useMenuButton: ({ menuIcon, ...props }: MenuButtonProps, ref: React_2.Ref<HTMLButtonElement>) => MenuButtonState;
+export const useMenuButton: ({ menuIcon, ...props }: MenuButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => MenuButtonState;
 
 // @public (undocumented)
 export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
 
 // @public
-export const useSplitButton: (props: SplitButtonProps, ref: React_2.Ref<HTMLElement>) => SplitButtonState;
+export const useSplitButton: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
 
 // @public (undocumented)
 export const useSplitButtonStyles: (state: SplitButtonState) => SplitButtonState;
 
 // @public
-export const useToggleButton: ({ checked, defaultChecked, ...props }: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement>) => ToggleButtonState;
+export const useToggleButton: ({ checked, defaultChecked, ...props }: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
 
 // @public (undocumented)
 export const useToggleButtonStyles: (state: ToggleButtonState) => ToggleButtonState;

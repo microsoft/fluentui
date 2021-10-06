@@ -41,6 +41,7 @@
       "@fluentui/react-portal": ["packages/react-portal/src/index.ts"],
       "@fluentui/react-positioning": ["packages/react-positioning/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],
+      "@fluentui/react-radio": ["packages/react-radio/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
       "@fluentui/react-slider": ["packages/react-slider/src/index.ts"],
       "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"],

@@ -8,7 +8,7 @@ import type { ButtonProps, ButtonState } from './Button.types';
  * @param props - User provided props to the Button component.
  * @param ref - User provided ref to be passed to the Button component.
  */
-export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>): ButtonState => {
+export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>): ButtonState => {
   const {
     appearance,
     as,
@@ -46,7 +46,8 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>)
       useARIAButton(props, {
         required: true,
         defaultProps: {
-          ref,
+          // useARIAButton isn't working with React.Ref<HTMLButtonElement | HTMLAnchorElement>
+          ref: ref as React.Ref<HTMLButtonElement>,
           type: 'button', // This is added because the default for type is 'submit'
         },
       }),

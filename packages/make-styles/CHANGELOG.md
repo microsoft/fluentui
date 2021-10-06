@@ -1,8 +1,26 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Fri, 01 Oct 2021 14:13:08 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.35..@fluentui/make-styles_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.35)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.34..@fluentui/make-styles_v9.0.0-alpha.35)
+
+### Changes
+
+- fix insertion of keyframes ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.34)
 

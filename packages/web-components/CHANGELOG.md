@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 29 Sep 2021 07:36:23 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Oct 2021 11:11:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.6)
+
+Wed, 06 Oct 2021 11:11:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.5..@fluentui/web-components_v1.5.6)
+
+### Patches
+
+- update web components progress determinate color to accentFillRest ([commit](https://github.com/microsoft/fluentui/commit/19e3ce0c93afbd30b32dca7f07f2a630eb7a01a2) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [1.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.5)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.4..@fluentui/web-components_v1.5.5)
+
+### Patches
+
+- Update installation doc story ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by brookdozer@gmail.com)
+- fix issue where tree item selection was being impacted due to event issues ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by chhol@microsoft.com)
 
 ## [1.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.4)
 
