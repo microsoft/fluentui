@@ -265,9 +265,6 @@ export const baseHorizontalSpacingMultiplier: CSSDesignToken<number>;
 // @public (undocumented)
 export const baseLayerLuminance: CSSDesignToken<number>;
 
-export { BaseProgress as Progress }
-export { BaseProgress as ProgressRing }
-
 // @public (undocumented)
 export const bodyFont: CSSDesignToken<string>;
 
@@ -1126,6 +1123,14 @@ export type PaletteRGB = Palette<SwatchRGB>;
 export const PaletteRGB: Readonly<{
     create(source: SwatchRGB): PaletteRGB;
 }>;
+
+// @public
+export class Progress extends BaseProgress {
+}
+
+// @public
+export class ProgressRing extends BaseProgress {
+}
 
 // @public
 export const progressRingStyles: (context: ElementDefinitionContext, definition: ProgressRingOptions) => ElementStyles;
