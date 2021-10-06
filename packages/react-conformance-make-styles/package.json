@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-conformance-make-styles",
-  "version": "9.0.0-alpha.22",
+  "version": "9.0.0-beta.1",
   "description": "A set of conformance tests for makeStyles",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -27,11 +27,11 @@
     "@fluentui/react-conformance": "*"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-alpha.78",
+    "@fluentui/react-make-styles": "9.0.0-beta.1",
     "tslib": "^2.1.0"
   },
   "beachball": {
-    "tag": "alpha",
+    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

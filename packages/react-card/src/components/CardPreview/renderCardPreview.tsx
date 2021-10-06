@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { cardPreviewShorthandPropsCompat } from './useCardPreview';
-import type { CardPreviewState } from './CardPreview.types';
+import { getSlots } from '@fluentui/react-utilities';
+import { cardPreviewShorthandProps } from './useCardPreview';
+import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
 
 /**
  * Render the final JSX of CardPreview
  */
 export const renderCardPreview = (state: CardPreviewState) => {
-  const { slots, slotProps } = getSlotsCompat(state, cardPreviewShorthandPropsCompat);
+  const { slots, slotProps } = getSlots<CardPreviewSlots>(state, cardPreviewShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>
-      {state.children}
+      {slotProps.root.children}
       <slots.logo {...slotProps.logo} />
     </slots.root>
   );

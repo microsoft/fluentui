@@ -1,33 +1,16 @@
-import * as React from 'react';
-import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+
+export type CardPreviewSlots = {
+  root: IntrinsicShorthandProps<'div'>;
+  logo?: IntrinsicShorthandProps<'div'>;
+};
 
 /**
- * CardPreview Props
+ * CardPreview props
  */
-export interface CardPreviewProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Image slot
-   */
-  logo?: ShorthandPropsCompat<React.ImgHTMLAttributes<HTMLImageElement>>;
-}
-
-/**
- * Names of the shorthand properties in CardPreviewProps
- */
-export type CardPreviewShorthandProps = 'logo';
-
-/**
- * Names of CardPreviewProps that have a default value in useCardPreview
- */
-export type CardPreviewDefaultedProps = never;
+export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 /**
  * State used in rendering CardPreview
  */
-export interface CardPreviewState
-  extends ComponentStateCompat<CardPreviewProps, CardPreviewShorthandProps, CardPreviewDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type CardPreviewState = ComponentState<CardPreviewSlots>;
