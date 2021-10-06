@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Moves onScroll method on ScrollablePane from root to container",
+  "packageName": "@fluentui/react",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
