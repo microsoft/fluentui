@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add Groupper hook",
+  "packageName": "@fluentui/react-tabster",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch"
+}
