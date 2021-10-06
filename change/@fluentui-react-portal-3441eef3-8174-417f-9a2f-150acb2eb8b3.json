@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump all v9 components to beta prerelease tag",
-  "packageName": "@fluentui/react-portal",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
