@@ -31,7 +31,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
    * force disabled state on button if accordion isn't collapsible
    * and this is the only item opened
    */
-  const forceDisabled = useContextSelector(
+  const disabledFocusable = useContextSelector(
     AccordionContext,
     ctx => !ctx.collapsible && ctx.openItems.length === 1 && open,
   );
@@ -40,6 +40,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     required: true,
     defaultProps: {
       disabled,
+      disabledFocusable,
       'aria-expanded': open,
     },
   });
@@ -71,7 +72,6 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     }),
     button: {
       ...buttonShorthand,
-      'aria-disabled': forceDisabled ?? undefined,
       onClick: useEventCallback(
         (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
           buttonShorthand.onClick?.(ev);
