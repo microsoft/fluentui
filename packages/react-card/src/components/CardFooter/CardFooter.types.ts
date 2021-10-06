@@ -1,33 +1,16 @@
-import * as React from 'react';
-import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+
+export type CardFooterSlots = {
+  root: IntrinsicShorthandProps<'div'>;
+  action?: IntrinsicShorthandProps<'div'>;
+};
 
 /**
- * CardFooter Props
+ * CardFooter props
  */
-export interface CardFooterProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Actions slot
-   */
-  action?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-}
-
-/**
- * Names of the shorthand properties in CardFooterProps
- */
-export type CardFooterShorthandProps = 'action'; // TODO add shorthand property names
-
-/**
- * Names of CardFooterProps that have a default value in useCardFooter
- */
-export type CardFooterDefaultedProps = never;
+export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
 /**
  * State used in rendering CardFooter
  */
-export interface CardFooterState
-  extends ComponentStateCompat<CardFooterProps, CardFooterShorthandProps, CardFooterDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type CardFooterState = ComponentState<CardFooterSlots>;
