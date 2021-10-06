@@ -39,7 +39,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   const buttonShorthand = useARIAButton(button, {
     required: true,
     defaultProps: {
-      disabled: disabled,
+      disabled,
       'aria-expanded': open,
     },
   });
