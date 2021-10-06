@@ -13,12 +13,13 @@ import { WorkspaceJsonConfiguration } from '@nrwl/tao/src/shared/workspace';
 const root = findGitRoot();
 
 interface Answers {
+  /** Package name without scope */
   packageName: string;
   target: 'react' | 'node';
   description: string;
   publish: boolean;
   hasTests?: boolean;
-  hasExamples?: boolean;
+  isConverged?: boolean;
 }
 
 module.exports = (plop: NodePlopAPI) => {
@@ -56,40 +57,33 @@ module.exports = (plop: NodePlopAPI) => {
       },
       {
         type: 'confirm',
-        name: 'hasExamples',
-        message: 'Create example scaffolding?',
+        name: 'isConverged',
+        message: 'Is this a converged package?',
         default: true,
-        when: answers => answers.target === 'react',
       },
       {
         type: 'confirm',
         name: 'publish',
-        message: answers =>
-          answers.hasExamples
-            ? 'Should the package be published right away (must be Yes for packages with example scaffolding)?'
-            : 'Should the package be published right away?',
-        default: (answers: Answers) => !!answers.hasExamples,
+        message: 'Should the package be published right away?',
+        default: false,
       },
     ],
     actions: (answers: Answers): Actions => {
       if (answers.target === 'react') answers = { hasTests: true, ...answers };
-      const { packageName, target, hasExamples, hasTests } = answers;
+      const { packageName, target, hasTests } = answers;
 
       const destination = `packages/${packageName}`;
-      const exampleRoot = `packages/react-examples`;
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
 
       // Get derived template parameters
       const data = {
         packageNpmName: '@fluentui/' + packageName,
-        packageVersion: '9.0.0-alpha.0',
+        packageVersion: answers.isConverged ? '9.0.0-alpha.0' : '0.1.0',
         friendlyPackageName: packageName.replace(
           /^.|-./g, // first char or char after -
           (substr, index) => (index > 0 ? ' ' : '') + substr.replace('-', '').toUpperCase(),
         ),
       };
-
-      let hasError = false;
 
       return [
         // Universal files
@@ -114,21 +108,7 @@ module.exports = (plop: NodePlopAPI) => {
         {
           type: 'modify',
           path: `${destination}/package.json`,
-          transform: packageJsonContents => {
-            const { newPackageJson, hasError: hasUpdateError } = updatePackageJson(packageJsonContents, answers);
-            hasError = hasError || hasUpdateError;
-            return newPackageJson;
-          },
-        },
-        // update react-examples package.json
-        {
-          type: 'modify',
-          path: `${exampleRoot}/package.json`,
-          skip: () => {
-            if (!hasExamples) return 'Skipping react-examples package.json update';
-          },
-          transform: packageJsonContents =>
-            updateExamplePackageJson(packageJsonContents, data.packageNpmName, data.packageVersion),
+          transform: packageJsonContents => updatePackageJson(packageJsonContents, answers),
         },
         // update tsconfig.json
         {
@@ -136,35 +116,41 @@ module.exports = (plop: NodePlopAPI) => {
           path: `${destination}/tsconfig.json`,
           transform: tsconfigContents => updateTsconfig(tsconfigContents, hasTests),
         },
-
-        answers => {
-          if (hasError) {
-            console.error(
-              chalk.red.bold(
-                '\nThere were one or more errors creating the package.\n' +
-                  'Please look at the logs above, fix the issues, and then run `yarn` to link.',
-              ),
-            );
-            return;
+        // update nx workspace
+        () => {
+          updateNxWorkspace(answers, { root, projectName: data.packageNpmName, projectRoot: destination });
+          return chalk.blue(`nx workspace updated`);
+        },
+        // run migrations if it's a converged package
+        () => {
+          if (!answers.isConverged) {
+            return 'Skipping migrate-converged-pkg since this is not a converged package';
           }
 
-          console.log(
-            updateNxWorkspace(answers as Answers, { root, projectName: data.packageNpmName, projectRoot: destination }),
+          console.log(`\nRunning migrate-converged-pkg...`);
+          const migrateResult = spawnSync(
+            'yarn',
+            ['nx', 'workspace-generator', 'migrate-converged-pkg', `--name='${data.packageNpmName}'`],
+            { cwd: root, stdio: 'inherit', shell: true },
           );
-
+          if (migrateResult.status !== 0) {
+            throw new Error('Something went wrong running the migration. Please check previous logs for details.');
+          }
+          return 'Successfully migrated package';
+        },
+        () => {
           console.log('\nPackage files created! Running yarn to link...\n');
           const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
           if (yarnResult.status !== 0) {
-            console.error(
-              chalk.red.bold('Something went wrong with running yarn. Please check previous logs for details'),
-            );
-            process.exit(1);
+            throw new Error('Something went wrong with running yarn. Please check previous logs for details');
           }
 
           return 'Packages linked!';
         },
-        '\nCreated and linked new package! Please check over it and ensure wording, included files, ' +
-          'settings, and dependencies make sense for your scenario.',
+        chalk.green.bold(
+          'Created and linked new package! Please check over it and ensure wording, included files, ' +
+            'settings, and dependencies make sense for your scenario.',
+        ),
       ];
     },
   });
@@ -172,13 +158,13 @@ module.exports = (plop: NodePlopAPI) => {
 
 /**
  * Replace empty version specs in `newPackageJson` with versions from `referencePackages`.
- * Returns true if all versions were replaced, false if not.
+ * Throws an error if versions of any deps weren't found.
  */
 function replaceVersionsFromReference(
   referencePackages: string[],
   newPackageJson: PackageJson,
   answers: Answers,
-): boolean {
+): void {
   const { hasTests } = answers;
   const depTypes = ['dependencies', 'devDependencies', 'peerDependencies'] as const;
 
@@ -190,9 +176,8 @@ function replaceVersionsFromReference(
       _.pick(fs.readJSONSync(path.join(root, 'packages', pkg, 'package.json')), ...depTypes),
     ),
   );
-  console.dir(referenceDeps);
 
-  let hasError = false;
+  const errorPackages: string[] = [];
 
   for (const depType of depTypes) {
     if (!newPackageJson[depType]) {
@@ -204,20 +189,24 @@ function replaceVersionsFromReference(
       } else if (referenceDeps[depType]?.[depPkg]) {
         newPackageJson[depType][depPkg] = referenceDeps[depType][depPkg];
       } else {
-        hasError = true;
-        console.warn(
-          chalk.yellow(
-            `Couldn't determine appropriate ${depType} version of ${depPkg} from ${referencePackages.join(
-              ' or ',
-            )} package.json`,
-          ),
-        );
+        // Record the error and wait to throw until later for better logs
+        errorPackages.push(`${depPkg} (${depType})`);
       }
     }
   }
-  return hasError;
+  if (errorPackages.length) {
+    throw new Error(
+      `Couldn't determine appropriate version of ${errorPackages.length} packages from ${referencePackages.join(
+        ' or ',
+      )} package.json:\n${errorPackages.map(line => `- ${line}`).join('\n')}`,
+    );
+  }
 }
 
+/**
+ * Replace version placeholders in package.json with actual current versions referenced in the repo.
+ * Returns the updated stringified JSON.
+ */
 function updatePackageJson(packageJsonContents: string, answers: Answers) {
   const { target, hasTests, publish } = answers;
 
@@ -226,7 +215,7 @@ function updatePackageJson(packageJsonContents: string, answers: Answers) {
   // The reference package(s) may need to be updated over time as dependency lists change.
   const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
   const referencePackages = target === 'node' ? ['codemods'] : ['react-menu'];
-  const hasError = replaceVersionsFromReference(referencePackages, newPackageJson, answers);
+  replaceVersionsFromReference(referencePackages, newPackageJson, answers);
 
   if (!hasTests) {
     delete newPackageJson.scripts['start-test'];
@@ -238,17 +227,6 @@ function updatePackageJson(packageJsonContents: string, answers: Answers) {
     delete newPackageJson.private;
   }
 
-  return { newPackageJson: JSON.stringify(newPackageJson, null, 2), hasError };
-}
-
-function updateExamplePackageJson(packageJsonContents: string, packageNpmName: string, packageVersion: string): string {
-  const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
-  // add the new package to the dependency list
-  newPackageJson['dependencies'][packageNpmName] = packageVersion;
-  // sort the entries
-  newPackageJson['dependencies'] = Object.entries(newPackageJson['dependencies'])
-    .sort()
-    .reduce((o, [k, v]) => ((o[k] = v), o), {});
   return JSON.stringify(newPackageJson, null, 2);
 }
 
@@ -294,6 +272,4 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
 
   fs.writeFileSync(paths.workspace, updatedNxWorkspace, 'utf-8');
   fs.writeFileSync(paths.config, updatedNxConfig, 'utf-8');
-
-  return chalk.blue(`nx workspace updated`);
 }
