@@ -9,8 +9,6 @@ import {
   Share16Regular,
 } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { Menu, MenuItem, MenuList, MenuPopover } from '@fluentui/react-menu';
-import { createVirtualElementFromClick } from '@fluentui/react-positioning';
 import { Card, CardFooter, CardHeader, CardPreview } from '../index';
 
 const useStyles = makeStyles({
@@ -44,17 +42,6 @@ const LogoBackground = (props: React.HTMLAttributes<HTMLElement>) => {
 
 export const ActionCard = () => {
   const styles = useStyles();
-  const [target, setTarget] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
-
-  const onOpenChange = (e: any, { open }: any) => {
-    setOpen(open);
-  };
-  const onContextMenu = (e: any) => {
-    e.preventDefault();
-    setOpen(true);
-    setTarget(createVirtualElementFromClick(e) as any);
-  };
 
   return (
     <>
@@ -87,12 +74,7 @@ export const ActionCard = () => {
 
       <br />
 
-      <Card
-        tabIndex={0}
-        className={styles.actionCard}
-        onContextMenu={onContextMenu}
-        onClick={() => console.log('Test action')}
-      >
+      <Card tabIndex={0} className={styles.actionCard} onClick={() => console.log('Test action')}>
         <CardHeader
           image={<img src="./avatar_mauricio.svg" alt="Face of a person" />}
           header={
@@ -101,7 +83,7 @@ export const ActionCard = () => {
             </Body>
           }
           description={<Caption>Artificial Intelligence Deck</Caption>}
-          action={<Button appearance="transparent" onClick={onContextMenu} icon={<MoreVertical20Regular />} />}
+          action={<Button appearance="transparent" icon={<MoreVertical20Regular />} />}
         />
 
         <CardPreview
@@ -118,56 +100,29 @@ export const ActionCard = () => {
           <Button icon={<Open16Regular />}>View changes</Button>
         </CardFooter>
       </Card>
-      <Menu open={open} onOpenChange={onOpenChange} positioning={{ target }}>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Share</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
     </>
   );
 };
 
 export const GridviewCard = () => {
   const styles = useStyles();
-  const [target, setTarget] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
-
-  const onOpenChange = (e: any, { open }: any) => {
-    setOpen(open);
-  };
-  const onContextMenu = (e: any) => {
-    e.preventDefault();
-    setOpen(true);
-    setTarget(createVirtualElementFromClick(e) as any);
-  };
 
   return (
-    <>
-      <Card onContextMenu={onContextMenu} className={styles.gridViewCard}>
-        <CardPreview>
-          <img src="./sales_template.png" alt="Preview of a sales slide deck" />
-        </CardPreview>
-        <CardHeader
-          image={<img src="./powerpoint_logo.svg" alt="Microsoft PowerPoint logo" />}
-          header={
-            <Body>
-              <b>Sales Analysis</b>
-            </Body>
-          }
-          description={<Caption className={styles.gray}>Elvia replied to a comment</Caption>}
-          action={<Button appearance="transparent" onClick={onContextMenu} icon={<MoreHorizontal16Regular />} />}
-        />
-      </Card>
-      <Menu open={open} onOpenChange={onOpenChange} positioning={{ target }}>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Share</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    </>
+    <Card className={styles.gridViewCard}>
+      <CardPreview>
+        <img src="./sales_template.png" alt="Preview of a sales slide deck" />
+      </CardPreview>
+      <CardHeader
+        image={<img src="./powerpoint_logo.svg" alt="Microsoft PowerPoint logo" />}
+        header={
+          <Body>
+            <b>Sales Analysis</b>
+          </Body>
+        }
+        description={<Caption className={styles.gray}>Elvia replied to a comment</Caption>}
+        action={<Button appearance="transparent" icon={<MoreHorizontal16Regular />} />}
+      />
+    </Card>
   );
 };
 
