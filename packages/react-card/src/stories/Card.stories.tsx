@@ -4,15 +4,27 @@ import { Button } from '@fluentui/react-button';
 import {
   Open16Regular,
   ArrowReply16Regular,
-  DismissSquare20Regular,
   MoreHorizontal16Regular,
   MoreVertical20Regular,
+  Share16Regular,
 } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-make-styles';
+import { Menu, MenuItem, MenuList, MenuPopover } from '@fluentui/react-menu';
+import { createVirtualElementFromClick } from '@fluentui/react-positioning';
 import { Card, CardFooter, CardHeader, CardPreview } from '../index';
 
 const useStyles = makeStyles({
-  root: {
+  actionCard: {
+    minWidth: '368px',
+  },
+  gridViewCard: {
+    minWidth: '254px',
+    maxWidth: '368px',
+  },
+  gray: {
+    color: 'gray',
+  },
+  logo: {
     background: 'white',
     padding: '6px',
     width: '20px',
@@ -27,90 +39,137 @@ const useStyles = makeStyles({
 const LogoBackground = (props: React.HTMLAttributes<HTMLElement>) => {
   const styles = useStyles();
 
-  return <div className={styles.root}>{props.children}</div>;
+  return <div className={styles.logo}>{props.children}</div>;
 };
 
-export const ActionCard = () => (
-  <>
-    <Card style={{ minWidth: '368px' }} onClick={() => console.log('Test action')}>
-      <CardHeader
-        image={<img src="./avatar_elvia.svg" alt="Face of a person" />}
-        header={
-          <Body>
-            <b>Elvia Atkins</b> mentioned you
-          </Body>
-        }
-        description={<Caption>5h ago · About us - Overview</Caption>}
-      />
+export const ActionCard = () => {
+  const styles = useStyles();
+  const [target, setTarget] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
 
-      <CardPreview
-        logo={
-          <LogoBackground>
-            <img src="./word_logo.svg" alt="Microsoft Word logo" />
-          </LogoBackground>
-        }
+  const onOpenChange = (e: any, { open }: any) => {
+    setOpen(open);
+  };
+  const onContextMenu = (e: any) => {
+    e.preventDefault();
+    setOpen(true);
+    setTarget(createVirtualElementFromClick(e) as any);
+  };
+
+  return (
+    <>
+      <Card tabIndex={0} className={styles.actionCard}>
+        <CardHeader
+          image={<img src="./avatar_elvia.svg" alt="Face of a person" />}
+          header={
+            <Body>
+              <b>Elvia Atkins</b> mentioned you
+            </Body>
+          }
+          description={<Caption>5h ago · About us - Overview</Caption>}
+        />
+
+        <CardPreview
+          logo={
+            <LogoBackground>
+              <img src="./word_logo.svg" alt="Microsoft Word logo" />
+            </LogoBackground>
+          }
+        >
+          <img src="./doc_template.png" alt="Preview of a Word document " />
+        </CardPreview>
+
+        <CardFooter>
+          <Button icon={<ArrowReply16Regular />}>Reply</Button>
+          <Button icon={<Share16Regular />}>Share</Button>
+        </CardFooter>
+      </Card>
+
+      <br />
+
+      <Card
+        tabIndex={0}
+        className={styles.actionCard}
+        onContextMenu={onContextMenu}
+        onClick={() => console.log('Test action')}
       >
-        <img src="./doc_template.png" alt="Preview of a Word document " />
-      </CardPreview>
+        <CardHeader
+          image={<img src="./avatar_mauricio.svg" alt="Face of a person" />}
+          header={
+            <Body>
+              <b>Mauricio August</b> <span className={styles.gray}>+ 7 others edited</span>
+            </Body>
+          }
+          description={<Caption>Artificial Intelligence Deck</Caption>}
+          action={<Button appearance="transparent" onClick={onContextMenu} icon={<MoreVertical20Regular />} />}
+        />
 
-      <CardFooter>
-        <Button icon={<ArrowReply16Regular />}>Reply</Button>
-      </CardFooter>
-    </Card>
+        <CardPreview
+          logo={
+            <LogoBackground>
+              <img src="./powerpoint_logo.svg" alt="Microsoft PowerPoint logo" />
+            </LogoBackground>
+          }
+        >
+          <img src="./ai_deck_template.png" alt="Preview of an artificial intelligence slide deck" />
+        </CardPreview>
 
-    <br />
+        <CardFooter>
+          <Button icon={<Open16Regular />}>View changes</Button>
+        </CardFooter>
+      </Card>
+      <Menu open={open} onOpenChange={onOpenChange} positioning={{ target }}>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Share</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
+  );
+};
 
-    <Card style={{ minWidth: '368px' }}>
-      <CardHeader
-        image={<img src="./avatar_mauricio.svg" alt="Face of a person" />}
-        header={
-          <Body>
-            <b>Mauricio August</b> <span style={{ color: 'gray' }}>+ 7 others edited</span>
-          </Body>
-        }
-        description={<Caption>Artificial Intelligence Deck</Caption>}
-        action={<DismissSquare20Regular />}
-      />
+export const GridviewCard = () => {
+  const styles = useStyles();
+  const [target, setTarget] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
 
-      <CardPreview
-        logo={
-          <LogoBackground>
-            <img src="./powerpoint_logo.svg" alt="Microsoft PowerPoint logo" />
-          </LogoBackground>
-        }
-      >
-        <img src="./ai_deck_template.png" alt="Preview of an artificial intelligence slide deck" />
-      </CardPreview>
+  const onOpenChange = (e: any, { open }: any) => {
+    setOpen(open);
+  };
+  const onContextMenu = (e: any) => {
+    e.preventDefault();
+    setOpen(true);
+    setTarget(createVirtualElementFromClick(e) as any);
+  };
 
-      <CardFooter action={<Button appearance="transparent" icon={<MoreVertical20Regular />} />}>
-        <Button icon={<Open16Regular />}>View changes</Button>
-      </CardFooter>
-    </Card>
-  </>
-);
-
-export const GridviewCard = () => (
-  <Card
-    style={{
-      minWidth: '254px',
-      maxWidth: '368px',
-    }}
-  >
-    <CardPreview>
-      <img src="./sales_template.png" alt="Preview of a sales slide deck" />
-    </CardPreview>
-    <CardHeader
-      image={<img src="./powerpoint_logo.svg" alt="Microsoft PowerPoint logo" />}
-      header={
-        <Body>
-          <b>Sales Analysis</b>
-        </Body>
-      }
-      description={<Caption style={{ color: 'gray' }}>Elvia replied to a comment</Caption>}
-      action={<MoreHorizontal16Regular />}
-    />
-  </Card>
-);
+  return (
+    <>
+      <Card onContextMenu={onContextMenu} className={styles.gridViewCard}>
+        <CardPreview>
+          <img src="./sales_template.png" alt="Preview of a sales slide deck" />
+        </CardPreview>
+        <CardHeader
+          image={<img src="./powerpoint_logo.svg" alt="Microsoft PowerPoint logo" />}
+          header={
+            <Body>
+              <b>Sales Analysis</b>
+            </Body>
+          }
+          description={<Caption className={styles.gray}>Elvia replied to a comment</Caption>}
+          action={<Button appearance="transparent" onClick={onContextMenu} icon={<MoreHorizontal16Regular />} />}
+        />
+      </Card>
+      <Menu open={open} onOpenChange={onOpenChange} positioning={{ target }}>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Share</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
+  );
+};
 
 export default {
   title: 'Components/OfficeCard',
