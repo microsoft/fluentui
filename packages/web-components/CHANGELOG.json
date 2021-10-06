@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 06 Oct 2021 11:11:56 GMT",
+      "tag": "@fluentui/web-components_v1.5.6",
+      "version": "1.5.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "update web components progress determinate color to accentFillRest",
+            "commit": "19e3ce0c93afbd30b32dca7f07f2a630eb7a01a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Oct 2021 07:37:17 GMT",
       "tag": "@fluentui/web-components_v1.5.5",
       "version": "1.5.5",
