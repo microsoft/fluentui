@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Bump all v9 components to beta prerelease tag",
+  "packageName": "@fluentui/jest-serializer-make-styles",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
