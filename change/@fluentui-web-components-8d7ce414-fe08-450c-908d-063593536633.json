@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "added Avatar component to fluent ui repo",
+  "packageName": "@fluentui/web-components",
+  "email": "khamu@microsoft.com",
+  "dependentChangeType": "patch"
+}
