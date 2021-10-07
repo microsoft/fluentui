@@ -1,5 +1,11 @@
-import { BaseProgress as Progress, ProgressOptions, progressTemplate as template } from '@microsoft/fast-foundation';
+import { BaseProgress, ProgressOptions, progressTemplate as template } from '@microsoft/fast-foundation';
 import { progressStyles as styles } from './progress.styles';
+
+/**
+ * Progress base class
+ * @public
+ */
+export class Progress extends BaseProgress {}
 
 /**
  * The Fluent Progress Element. Implements {@link @microsoft/fast-foundation#BaseProgress},
@@ -27,9 +33,3 @@ export const fluentProgress = Progress.compose<ProgressOptions>({
  * @public
  */
 export const progressStyles = styles;
-
-/**
- * Progress base class
- * @public
- */
-export { Progress };

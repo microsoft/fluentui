@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "create explicit classes for progress ring and progress to prevent conflicts during tagFor retrieval",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch"
+}
