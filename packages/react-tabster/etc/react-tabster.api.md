@@ -53,6 +53,14 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
+export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+
+// @public (undocumented)
+export interface UseFocusableGroupOptions {
+    tabbability?: GroupperTabbability;
+}
+
+// @public
 export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
@@ -60,14 +68,6 @@ export const useFocusFinders: () => {
     findNextFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
     findPrevFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
 };
-
-// @public
-export const useGroupper: (options?: UseGroupperOptions | undefined) => Types.TabsterDOMAttribute;
-
-// @public (undocumented)
-export interface UseGroupperOptions {
-    tabbability?: GroupperTabbability;
-}
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
