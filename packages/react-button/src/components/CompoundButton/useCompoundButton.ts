@@ -10,7 +10,7 @@ import { useButton } from '../Button/index';
  */
 export const useCompoundButton = (
   { contentContainer, secondaryContent, ...props }: CompoundButtonProps,
-  ref: React.Ref<HTMLButtonElement>,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): CompoundButtonState => {
   return {
     // Button state

@@ -9,7 +9,10 @@ import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
  * @param props - User provided props to the SplitButton component.
  * @param ref - User provided ref to be passed to the SplitButton component.
  */
-export const useSplitButton = (props: SplitButtonProps, ref: React.Ref<HTMLElement>): SplitButtonState => {
+export const useSplitButton = (
+  props: SplitButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): SplitButtonState => {
   const {
     appearance,
     block = false,
