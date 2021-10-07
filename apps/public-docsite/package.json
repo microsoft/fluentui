@@ -30,8 +30,8 @@
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
-    "@fluentui/api-docs": "^8.1.35",
     "@fluentui/font-icons-mdl2": "^8.1.14",
+    "@fluentui/public-docsite-resources": "^8.1.41",
     "@fluentui/public-docsite-setup": "^0.3.7",
     "@fluentui/react": "^8.36.2",
     "@fluentui/react-docsite-components": "^8.3.39",

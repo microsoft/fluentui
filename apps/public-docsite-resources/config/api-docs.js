@@ -1,23 +1,22 @@
 // @ts-check
-
 // Config file for API doc JSON (*.page.json) generation
 
+const fs = require('fs');
 const path = require('path');
+const { findRepoDeps, findGitRoot } = require('@fluentui/scripts/monorepo');
 
-/** @type {import('../src/index').IPageJsonOptions} */
+const gitRoot = findGitRoot();
+
+/** @type {import('@fluentui/api-docs').IPageJsonOptions} */
 module.exports = {
   apiJsonPaths: [
-    // NOTE: when adding new package to this list, also add package dep in package.json.
-    path.resolve(__dirname, '../../date-time-utilities/dist/date-time-utilities.api.json'),
-    path.resolve(__dirname, '../../merge-styles/dist/merge-styles.api.json'),
-    path.resolve(__dirname, '../../react/dist/react.api.json'),
-    path.resolve(__dirname, '../../react-focus/dist/react-focus.api.json'),
-    path.resolve(__dirname, '../../style-utilities/dist/style-utilities.api.json'),
-    path.resolve(__dirname, '../../theme/dist/theme.api.json'),
-    path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),
-    // NOTE: when adding new package to this list, also add package dep in package.json.
-  ],
-  outputRoot: path.resolve(__dirname, '../lib/pages'),
+    'packages/react',
+    ...findRepoDeps({ cwd: path.join(gitRoot, 'packages/react'), dev: false }).map(dep => dep.packagePath),
+  ]
+    .map(packagePath => path.join(gitRoot, packagePath, 'dist', path.basename(packagePath) + '.api.json'))
+    .filter(apiJsonPath => fs.existsSync(apiJsonPath)),
+  min: process.argv.includes('--production'),
+  outputRoot: path.resolve(__dirname, '../dist/api'),
   fallbackGroup: 'references',
   pageGroups: {
     react: [
