@@ -6,6 +6,7 @@ export * from './fluent-design-system';
 export * from './accordion/';
 export * from './anchor/';
 export * from './anchored-region';
+export * from './avatar';
 export * from './badge/';
 export * from './breadcrumb';
 export * from './breadcrumb-item';

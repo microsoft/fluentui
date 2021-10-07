@@ -5,6 +5,7 @@ import type { Container } from '@microsoft/fast-foundation';
 import { fluentAccordion, fluentAccordionItem } from './accordion/index';
 import { fluentAnchor } from './anchor/index';
 import { fluentAnchoredRegion } from './anchored-region/index';
+import { fluentAvatar } from './avatar/index';
 import { fluentBadge } from './badge/index';
 import { fluentBreadcrumb } from './breadcrumb/index';
 import { fluentBreadcrumbItem } from './breadcrumb-item/index';
@@ -44,6 +45,7 @@ export {
   fluentAccordionItem,
   fluentAnchor,
   fluentAnchoredRegion,
+  fluentAvatar,
   fluentBadge,
   fluentBreadcrumb,
   fluentBreadcrumbItem,
@@ -93,6 +95,7 @@ export const allComponents = {
   fluentAccordionItem,
   fluentAnchor,
   fluentAnchoredRegion,
+  fluentAvatar,
   fluentBadge,
   fluentBreadcrumb,
   fluentBreadcrumbItem,

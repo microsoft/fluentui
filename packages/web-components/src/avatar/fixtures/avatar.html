@@ -1,0 +1,73 @@
+<style>
+  fluent-avatar {
+    --avatar-fill-accent-primary: #cf4073;
+    --avatar-fill-accent-secondary: #0078d4;
+    --avatar-color-foo: hsl(0, 0%, 100%);
+    --avatar-color-bar: grey;
+    --avatar-text-ratio: 3;
+    --badge-fill-primary: var(--accent-fill-rest);
+  }
+
+  fluent-badge {
+    right: 0px;
+    bottom: 0px;
+  }
+
+  fluent-badge::part(control) {
+    min-width: 8px;
+    height: 8px;
+  }
+
+  .container {
+    padding: 1em;
+  }
+</style>
+<h3>Circle avatar with image</h3>
+<fluent-avatar alt="Annie's profile image" link="#" shape="circle" fill="accent-primary" color="bar">
+  <img class="image" slot="media" src="https://via.placeholder.com/32" />
+</fluent-avatar>
+<h3>Circle avatar with text content</h3>
+<fluent-avatar alt="Carlos's profile image" link="#" shape="circle" fill="accent-primary" color="foo">
+  CR
+</fluent-avatar>
+<h3>Circle avatar with image and badge</h3>
+<fluent-avatar
+  src="https://via.placeholder.com/32"
+  alt="Harper's profile image"
+  link="#"
+  shape="circle"
+  fill="accent-primary"
+>
+  <fluent-badge slot="badge" fill="primary" circular></fluent-badge>
+</fluent-avatar>
+<h3>Circle avatar with text content and badge</h3>
+<fluent-avatar alt="Bob's profile image" link="#" shape="circle" fill="accent-secondary">
+  BV
+  <fluent-badge slot="badge" fill="primary" circular></fluent-badge>
+</fluent-avatar>
+
+<h3>Square avatar with image</h3>
+<fluent-avatar
+  src="https://via.placeholder.com/32"
+  alt="Fang's profile image"
+  link="#"
+  shape="square"
+  fill="accent-secondary"
+></fluent-avatar>
+<h3>Square avatar with text content and badge</h3>
+<fluent-avatar alt="Scott's profile image" link="#" shape="square" fill="accent-primary"> SW </fluent-avatar>
+<h3>Square avatar with image and badge</h3>
+<fluent-avatar
+  src="https://via.placeholder.com/32"
+  alt="Albert's profile image"
+  link="#"
+  shape="square"
+  fill="accent-secondary"
+>
+  <fluent-badge slot="badge" fill="primary" circular></fluent-badge>
+</fluent-avatar>
+<h3>Square avatar with text content and badge</h3>
+<fluent-avatar alt="Austin's profile image" link="#" shape="square" fill="accent-secondary">
+  JS
+  <fluent-badge slot="badge" fill="primary" circular></fluent-badge>
+</fluent-avatar>
