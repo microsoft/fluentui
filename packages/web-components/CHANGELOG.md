@@ -1,8 +1,22 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 06 Oct 2021 11:11:56 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Oct 2021 07:30:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.0)
+
+Thu, 07 Oct 2021 07:30:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.6..@fluentui/web-components_v1.6.0)
+
+### Minor changes
+
+- create explicit classes for progress ring and progress to prevent conflicts during tagFor retrieval ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by chhol@microsoft.com)
+- Update token file order and deprecations to prepare for vNext ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by 47367562+bheston@users.noreply.github.com)
+
+### Patches
+
+- add end start selector ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by khamu@microsoft.com)
 
 ## [1.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.6)
 
