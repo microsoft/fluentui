@@ -12,6 +12,15 @@ import { WorkspaceJsonConfiguration } from '@nrwl/tao/src/shared/workspace';
 
 const root = findGitRoot();
 
+const v8ReferencePackages = {
+  react: ['react'],
+  node: ['codemods'],
+};
+const convergedReferencePackages = {
+  react: ['react-menu'],
+  node: ['babel-make-styles'],
+};
+
 interface Answers {
   /** Package name without scope */
   packageName: string;
@@ -152,6 +161,7 @@ module.exports = (plop: NodePlopAPI) => {
 
 /**
  * Replace empty version specs in `newPackageJson` with versions from `referencePackages`.
+ * (Also for converged packages, replaces the package version and adds beachball config.)
  * Throws an error if versions of any deps weren't found.
  */
 function replaceVersionsFromReference(
@@ -159,16 +169,14 @@ function replaceVersionsFromReference(
   newPackageJson: PackageJson,
   answers: Answers,
 ): void {
-  const { hasTests } = answers;
   const depTypes = ['dependencies', 'devDependencies', 'peerDependencies'] as const;
 
   // Read the package.json files of the given reference packages and combine into one object.
   // This way if a dep is defined in any of them, it can easily be copied to newPackageJson.
+  const packageJsons = referencePackages.map(pkg => fs.readJSONSync(path.join(root, 'packages', pkg, 'package.json')));
   const referenceDeps: Pick<PackageJson, 'dependencies' | 'devDependencies' | 'peerDependencies'> = _.merge(
     {},
-    ...referencePackages.map(pkg =>
-      _.pick(fs.readJSONSync(path.join(root, 'packages', pkg, 'package.json')), ...depTypes),
-    ),
+    ...packageJsons.map(pkg => _.pick(pkg, ...depTypes)),
   );
 
   const errorPackages: string[] = [];
@@ -178,7 +186,7 @@ function replaceVersionsFromReference(
       continue;
     }
     for (const depPkg of Object.keys(newPackageJson[depType])) {
-      if (!hasTests && /\b(jest|enzyme|test(ing)?|react-conformance)\b/.test(depPkg)) {
+      if (!answers.hasTests && /\b(jest|enzyme|test(ing)?|react-conformance)\b/.test(depPkg)) {
         delete newPackageJson[depType][depPkg];
       } else if (referenceDeps[depType]?.[depPkg]) {
         newPackageJson[depType][depPkg] = referenceDeps[depType][depPkg];
@@ -195,20 +203,33 @@ function replaceVersionsFromReference(
       )}:\n${errorPackages.map(line => `- ${line}`).join('\n')}`,
     );
   }
+
+  if (answers.isConverged) {
+    // Update the version and beachball config in package.json to match the current v9 ones
+    if (packageJsons[0].version?.[0] === '9') {
+      newPackageJson.version = packageJsons[0].version;
+    } else {
+      throw new Error(`Converged reference package ${packageJsons[0].name} does not appear to have version 9.x`);
+    }
+    if (packageJsons[0].beachball) {
+      newPackageJson.beachball = packageJsons[0].beachball;
+    }
+  }
 }
 
 /**
  * Replace version placeholders in package.json with actual current versions referenced in the repo.
+ * Also updates the version and other properties as appropriate for converged packages.
  * Returns the updated stringified JSON.
  */
 function updatePackageJson(packageJsonContents: string, answers: Answers) {
-  const { target, hasTests } = answers;
+  const { target, hasTests, isConverged } = answers;
 
   // Copy dep versions in package.json from actual current version specs.
   // This is preferable over hardcoding dependency versions to keep things in sync.
   // The reference package(s) may need to be updated over time as dependency lists change.
   const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
-  const referencePackages = target === 'node' ? ['codemods'] : ['react-menu'];
+  const referencePackages = (isConverged ? convergedReferencePackages : v8ReferencePackages)[target];
   replaceVersionsFromReference(referencePackages, newPackageJson, answers);
 
   if (!hasTests) {
