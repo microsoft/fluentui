@@ -57,7 +57,7 @@ export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined)
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
-    tabbability?: FocusableGroupTabBehavior;
+    tabBehavior?: FocusableGroupTabBehavior;
 }
 
 // @public

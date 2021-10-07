@@ -21,7 +21,7 @@ export interface UseFocusableGroupOptions {
   /**
    * Type of TAB key interaction.
    */
-  tabbability?: FocusableGroupTabBehavior;
+  tabBehavior?: FocusableGroupTabBehavior;
 }
 
 /**
@@ -37,7 +37,7 @@ export const useFocusableGroup = (options?: UseFocusableGroupOptions) => {
 
   return useTabsterAttributes({
     groupper: {
-      tabbability: options?.tabbability as Types.GroupperTabbability,
+      tabbability: options?.tabBehavior as Types.GroupperTabbability,
     },
   });
 };
