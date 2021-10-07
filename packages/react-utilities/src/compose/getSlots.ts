@@ -1,26 +1,34 @@
 import * as React from 'react';
+
+import {
+  AsIntrinsicElement,
+  ComponentState,
+  ShorthandRenderFunction,
+  ObjectShorthandPropsRecord,
+  ObjectShorthandProps,
+  UnionToIntersection,
+} from './types';
 import { nullRender } from './nullRender';
-import { getNativeElementProps } from '../utils/getNativeElementProps';
 import { omit } from '../utils/omit';
-import type { ComponentState, ShorthandRenderFunction, SlotPropsRecord } from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getRootSlot<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>) {
-  const slot =
-    state.components?.root === undefined || typeof state.components.root === 'string'
-      ? state.as || state.components?.root || 'div'
-      : state.components.root;
+export type Slots<S extends ObjectShorthandPropsRecord> = {
+  [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
+    ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
+      As
+    : S[K] extends ObjectShorthandProps<infer P>
+    ? React.ElementType<NonNullable<P>>
+    : React.ElementType<NonNullable<S[K]>>;
+};
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const props: any = typeof slot === 'string' ? getNativeElementProps(slot, state) : omit(state, ['components']);
-  return [slot, props] as const;
-}
-
-/**
- * Hack that converts an Union to an Intersection
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : U;
+type SlotProps<S extends ObjectShorthandPropsRecord> = {
+  [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
+    ? // For intrinsic element types, return the intersection of all possible
+      // element's props, to be compatible with the As type returned by Slots<>
+      UnionToIntersection<JSX.IntrinsicElements[As]>
+    : NonNullable<S[K]> extends ObjectShorthandProps<infer P>
+    ? P
+    : never;
+};
 
 /**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
@@ -38,54 +46,49 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
  * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>, slotNames?: string[]) {
-  /**
-   * force typings on state, this should not be added directly in parameters to avoid type inference
-   */
-  const typedState = state as ComponentState<SlotProps>;
-  /**
-   * force typings on slotNames, this should not be added directly in parameters to avoid type inference
-   */
-  const typedSlotNames = slotNames as Array<keyof SlotProps> | undefined;
+export function getSlots<R extends ObjectShorthandPropsRecord>(
+  state: ComponentState<R>,
+  slotNames: (keyof R)[] = ['root'],
+): {
+  slots: Slots<R>;
+  slotProps: SlotProps<R>;
+} {
+  const slots = {} as Slots<R>;
+  const slotProps = {} as R;
 
-  type Slots = { [K in keyof SlotProps]-?: React.ElementType<SlotProps[K]> };
+  for (const slotName of slotNames) {
+    const [slot, props] = getSlot(state, slotName);
+    slots[slotName] = slot as Slots<R>[typeof slotName];
+    slotProps[slotName] = props;
+  }
+  return { slots, slotProps: (slotProps as unknown) as SlotProps<R> };
+}
 
-  const slots = {} as Slots;
+function getSlot<R extends ObjectShorthandPropsRecord, K extends keyof R>(
+  state: ComponentState<R>,
+  slotName: K,
+): readonly [React.ElementType<R[K]>, R[K]] {
+  if (state[slotName] === undefined) {
+    return [nullRender, undefined!];
+  }
+  const { children, as: asProp, ...rest } = state[slotName]!;
 
-  const slotProps = {} as SlotProps;
+  const slot = (state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
+    ? asProp || state.components?.[slotName] || 'div'
+    : state.components[slotName]) as React.ElementType<R[K]>;
 
-  if (typedSlotNames) {
-    for (const name of typedSlotNames) {
-      if (typedState[name] === undefined) {
-        slots[name] = nullRender;
-        continue;
-      }
-      const { children, ...rest } = typedState[name];
-
-      slots[name] = (typedState.components?.[name] || 'div') as Slots[typeof name];
-
-      if (typeof children === 'function') {
-        const render = children as ShorthandRenderFunction<SlotProps[keyof SlotProps]>;
-        // TODO: converting to unknown might be harmful
-        slotProps[name] = ({
-          children: render(slots[name], rest as ComponentState<SlotProps>[keyof SlotProps]),
-        } as unknown) as SlotProps[keyof SlotProps];
-        slots[name] = React.Fragment;
-      } else {
-        slotProps[name] = typedState[name];
-      }
-    }
+  if (typeof children === 'function') {
+    const render = children as ShorthandRenderFunction<R[K]>;
+    return [
+      React.Fragment,
+      ({
+        children: render(slot, rest),
+      } as unknown) as R[K],
+    ];
   }
 
-  const [root, rootProps] = getRootSlot(state);
+  const shouldOmitAsProp = typeof slot === 'string' && state[slotName]?.as;
+  const slotProps = (shouldOmitAsProp ? omit(state[slotName]!, ['as']) : state[slotName]) as R[K];
 
-  const typedSlotProps = slotProps as {
-    [Key in keyof SlotProps]-?: UnionToIntersection<NonNullable<SlotProps[Key]>>;
-  };
-
-  return {
-    slots: { ...slots, root },
-    slotProps: { ...typedSlotProps, root: rootProps },
-  } as const;
+  return [slot, slotProps];
 }

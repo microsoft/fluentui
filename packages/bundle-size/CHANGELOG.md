@@ -1,8 +1,17 @@
 # Change Log - @fluentui/bundle-size
 
-This log was last generated on Tue, 20 Jul 2021 22:23:17 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Sep 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.1)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.0..@fluentui/bundle-size_v1.1.1)
+
+### Patches
+
+- bundle-size: Fixing issue where the baseline and PR values were flipped. ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by Humberto.Morimoto@microsoft.com)
 
 ## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.0)
 

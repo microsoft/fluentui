@@ -1,5 +1,12 @@
-import { getGlobalClassNames, getInputFocusStyle, hiddenContentStyle, HighContrastSelector } from '../../Styling';
+import {
+  getGlobalClassNames,
+  getInputFocusStyle,
+  getPlaceholderStyles,
+  hiddenContentStyle,
+  HighContrastSelector,
+} from '../../Styling';
 import type { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-BasePicker',
@@ -18,6 +25,29 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   const { inputBorder, inputBorderHovered, inputFocusBorderAlt } = semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  // placeholder style constants
+  const placeholderStyles: IStyle = [
+    fonts.medium,
+    {
+      color: semanticColors.inputPlaceholderText,
+      opacity: 1,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+        },
+      },
+    },
+  ];
+
+  const disabledPlaceholderStyles: IStyle = {
+    color: semanticColors.disabledText,
+    selectors: {
+      [HighContrastSelector]: {
+        color: 'GrayText',
+      },
+    },
+  };
 
   // The following lines are to create a semi-transparent color overlay for the disabled state with designer's approval.
   // @todo: investigate the performance cost of the calculation below and apply if negligible.
@@ -100,6 +130,8 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
           },
         },
       },
+      getPlaceholderStyles(placeholderStyles),
+      disabled && getPlaceholderStyles(disabledPlaceholderStyles),
       inputClassName,
     ],
     screenReaderText: hiddenContentStyle,

@@ -13,21 +13,22 @@ export const arrowHeights: Record<PopoverSize, number> = {
  */
 const useStyles = makeStyles({
   root: theme => ({
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    boxShadow: theme.alias.shadow.shadow16,
+    backgroundColor: theme.colorNeutralBackground1,
+    boxShadow: theme.shadow16,
     borderRadius: '4px',
+    border: `1px solid ${theme.colorTransparentStroke}`,
   }),
 
   inverted: theme => ({
     // TODO: neutral background inverted missing from superset and theme
-    backgroundColor: theme.global.palette.grey[16],
-    color: theme.alias.color.neutral.neutralForegroundInverted,
+    backgroundColor: theme.colorNeutralForeground1,
+    color: theme.colorNeutralForegroundInverted,
   }),
 
   brand: theme => ({
-    backgroundColor: theme.alias.color.neutral.brandBackground,
+    backgroundColor: theme.colorBrandBackground,
     // TODO: clarify with designers what foreground color should be with brand background,
-    color: theme.alias.color.neutral.neutralForegroundInverted,
+    color: theme.colorNeutralForegroundInverted,
   }),
 
   smallPadding: () => ({
@@ -67,7 +68,7 @@ const useStyles = makeStyles({
       height: 'inherit',
       background: 'inherit',
       visibility: 'visible',
-      borderBottomRightRadius: theme.global.borderRadius.small,
+      borderBottomRightRadius: theme.borderRadiusSmall,
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },
 
@@ -84,14 +85,14 @@ const useStyles = makeStyles({
  */
 export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurfaceState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,
-    state.inverted && styles.inverted,
-    state.brand && styles.brand,
-    state.className,
+    state.appearance === 'inverted' && styles.inverted,
+    state.appearance === 'brand' && styles.brand,
+    state.root.className,
   );
 
   state.arrowClassName = mergeClasses(

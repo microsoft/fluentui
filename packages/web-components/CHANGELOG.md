@@ -1,8 +1,134 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 26 Aug 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Oct 2021 07:30:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.0)
+
+Thu, 07 Oct 2021 07:30:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.6..@fluentui/web-components_v1.6.0)
+
+### Minor changes
+
+- create explicit classes for progress ring and progress to prevent conflicts during tagFor retrieval ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by chhol@microsoft.com)
+- Update token file order and deprecations to prepare for vNext ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by 47367562+bheston@users.noreply.github.com)
+
+### Patches
+
+- add end start selector ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by khamu@microsoft.com)
+
+## [1.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.6)
+
+Wed, 06 Oct 2021 11:11:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.5..@fluentui/web-components_v1.5.6)
+
+### Patches
+
+- update web components progress determinate color to accentFillRest ([commit](https://github.com/microsoft/fluentui/commit/19e3ce0c93afbd30b32dca7f07f2a630eb7a01a2) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [1.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.5)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.4..@fluentui/web-components_v1.5.5)
+
+### Patches
+
+- Update installation doc story ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by brookdozer@gmail.com)
+- fix issue where tree item selection was being impacted due to event issues ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by chhol@microsoft.com)
+
+## [1.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.4)
+
+Wed, 29 Sep 2021 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.3..@fluentui/web-components_v1.5.4)
+
+### Patches
+
+- fix syntax issue causing padding to not be applied to text area ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by chhol@microsoft.com)
+
+## [1.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.3)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.2..@fluentui/web-components_v1.5.3)
+
+### Patches
+
+- add additional param to allComponents registry ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by chhol@microsoft.com)
+
+## [1.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.2)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.1..@fluentui/web-components_v1.5.2)
+
+### Patches
+
+- fix slider thumb positioning math ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by chhol@microsoft.com)
+- implement caching mechanism for PaletteRGB.closestIndexOf ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by nicholasrice@users.noreply.github.com)
+
+## [1.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.1)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.0..@fluentui/web-components_v1.5.1)
+
+### Patches
+
+- add toolbar as new web component ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.0)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.2..@fluentui/web-components_v1.5.0)
+
+### Minor changes
+
+- implement base class for components which extend beyond foundation ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by chhol@microsoft.com)
+
+## [1.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.2)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.1..@fluentui/web-components_v1.4.2)
+
+### Patches
+
+- fix tab panel display ([PR #19731](https://github.com/microsoft/fluentui/pull/19731) by corylaviska@microsoft.com)
+- Updated the default fill color to neutral layer 1 ([PR #19726](https://github.com/microsoft/fluentui/pull/19726) by 47367562+bheston@users.noreply.github.com)
+
+## [1.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.1)
+
+Fri, 03 Sep 2021 00:13:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.0..@fluentui/web-components_v1.4.1)
+
+### Patches
+
+- patch: apply fast version updates ([PR #19636](https://github.com/microsoft/fluentui/pull/19636) by jes@microsoft.com)
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.0)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.8..@fluentui/web-components_v1.4.0)
+
+### Minor changes
+
+- Increased contrast for small input controls ([PR #19608](https://github.com/microsoft/fluentui/pull/19608) by 47367562+bheston@users.noreply.github.com)
+
+## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.8)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.7..@fluentui/web-components_v1.3.8)
+
+### Patches
+
+- fix: syntax error in card styles ([PR #19573](https://github.com/microsoft/fluentui/pull/19573) by jes@microsoft.com)
+- version bump fast foundation ([PR #19569](https://github.com/microsoft/fluentui/pull/19569) by jes@microsoft.com)
+
+## [1.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.7)
+
+Mon, 30 Aug 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.6..@fluentui/web-components_v1.3.7)
+
+### Patches
+
+- update dependencies ([PR #19548](https://github.com/microsoft/fluentui/pull/19548) by jes@microsoft.com)
 
 ## [1.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.6)
 

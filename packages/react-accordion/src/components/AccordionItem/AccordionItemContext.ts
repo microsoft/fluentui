@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccordionItemContextValue } from './AccordionItem.types';
+import type { AccordionItemContextValue } from './AccordionItem.types';
 
 // No default value.
 export const AccordionItemContext = React.createContext<AccordionItemContextValue>({

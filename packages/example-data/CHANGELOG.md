@@ -1,8 +1,17 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Thu, 05 Aug 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Sep 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.2.7)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.2.6..@fluentui/example-data_v8.2.7)
+
+### Patches
+
+- Fix badge examples to use shorthand props ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by lingfangao@hotmail.com)
 
 ## [8.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.2.6)
 

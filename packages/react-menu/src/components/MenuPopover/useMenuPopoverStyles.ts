@@ -3,23 +3,22 @@ import type { MenuPopoverState } from './MenuPopover.types';
 
 const useStyles = makeStyles({
   root: theme => ({
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    borderRadius: theme.borderRadiusMedium,
+    backgroundColor: theme.colorNeutralBackground1,
     minWidth: '128px',
     maxWidth: '300px',
     width: 'max-content',
-    boxShadow: `${theme.alias.shadow.shadow16}`,
-    paddingTop: '4px',
-    paddingBottom: '4px',
-    border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
+    boxShadow: `${theme.shadow16}`,
+    padding: '4px',
+    border: `1px solid ${theme.colorTransparentStroke}`,
   }),
 });
 
 /**
  * Apply styling to the Menu slots based on the state
- * {@docCategory Menu }
  */
 export const useMenuPopoverStyles = (state: MenuPopoverState): MenuPopoverState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
   return state;
 };

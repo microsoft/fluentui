@@ -1,19 +1,37 @@
 import { MakeStyles } from '../types';
-import { compile, middleware, serialize, stringify, prefixer } from 'stylis';
+import { compile, middleware, serialize, rulesheet, stringify, prefixer } from 'stylis';
 import { cssifyObject } from './utils/cssifyObject';
 
-export function compileKeyframeRule(frames: MakeStyles): string {
+export function compileKeyframeRule(keyframeObject: MakeStyles): string {
   let css: string = '';
 
   // eslint-disable-next-line guard-for-in
-  for (const percentage in frames) {
-    css += `${percentage}{${cssifyObject(frames[percentage])}}`;
+  for (const percentage in keyframeObject) {
+    css += `${percentage}{${cssifyObject(keyframeObject[percentage])}}`;
   }
 
   return css;
 }
 
-export function compileKeyframesCSS(animationName: string, framesCSS: string): string {
-  const cssRule = `@keyframes ${animationName} {${framesCSS}}`;
-  return serialize(compile(cssRule), middleware([prefixer, stringify]));
+/**
+ * Creates CSS rules for insertion from passed CSS.
+ */
+export function compileKeyframesCSS(keyframeName: string, keyframeCSS: string): string[] {
+  const cssRule = `@keyframes ${keyframeName} {${keyframeCSS}}`;
+  const rules: string[] = [];
+
+  serialize(
+    compile(cssRule),
+    middleware([
+      prefixer,
+      stringify,
+
+      // 💡 we are using `.insertRule()` API for DOM operations, which does not support
+      // insertion of multiple CSS rules in a single call. `rulesheet` plugin extracts
+      // individual rules to be used with this API
+      rulesheet(rule => rules.push(rule)),
+    ]),
+  );
+
+  return rules;
 }

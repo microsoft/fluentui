@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Popover renders a default state 1`] = `"Default Popover"`;

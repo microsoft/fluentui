@@ -7,7 +7,7 @@ import {
   ProgressRingOptions,
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
-import { accentForegroundRest, neutralFillRest, neutralForegroundHint } from '../../design-tokens';
+import { accentFillRest, neutralFillRest, neutralForegroundHint } from '../../design-tokens';
 
 export const progressRingStyles: (context: ElementDefinitionContext, definition: ProgressRingOptions) => ElementStyles =
   (context: ElementDefinitionContext, definition: ProgressRingOptions) =>
@@ -32,7 +32,7 @@ export const progressRingStyles: (context: ElementDefinitionContext, definition:
       }
 
       .determinate {
-        stroke: ${accentForegroundRest};
+        stroke: ${accentFillRest};
         fill: none;
         stroke-width: 2px;
         stroke-linecap: round;
@@ -42,7 +42,7 @@ export const progressRingStyles: (context: ElementDefinitionContext, definition:
       }
 
       .indeterminate-indicator-1 {
-        stroke: ${accentForegroundRest};
+        stroke: ${accentFillRest};
         fill: none;
         stroke-width: 2px;
         stroke-linecap: round;
