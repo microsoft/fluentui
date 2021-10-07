@@ -2,7 +2,7 @@ import { Types, getGroupper } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 
-export enum GroupperTabbability {
+export enum FocusableGroupTabBehavior {
   /**
    * Tab will cycle into and out of the groupper content.
    */
@@ -21,7 +21,7 @@ export interface UseFocusableGroupOptions {
   /**
    * Type of TAB key interaction.
    */
-  tabbability?: GroupperTabbability;
+  tabbability?: FocusableGroupTabBehavior;
 }
 
 /**
