@@ -21,7 +21,7 @@ export const useCardFooter = (props: CardFooterProps, ref: React.Ref<HTMLElement
   const arrowNavigationAttrs = useArrowNavigationGroup({
     axis: 'horizontal',
   });
-
+  
   const { action } = props;
 
   return {
