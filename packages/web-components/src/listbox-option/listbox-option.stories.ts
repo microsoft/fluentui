@@ -1,12 +1,44 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import ListboxOptionTemplate from './fixtures/base.html';
-import { FluentOption } from './';
-
-FluentOption;
-FluentDesignSystemProvider;
+import { fluentOption } from './index';
 
 export default {
-  title: 'ListboxOption',
+  title: 'Components/Listbox Option',
+  component: fluentOption,
+  argTypes: {
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    selected: {
+      control: { type: 'boolean' },
+    },
+    value: {
+      control: { type: 'text' },
+    },
+  },
 };
 
-export const ListboxOption = (): string => ListboxOptionTemplate;
+const listBoxTemplate = ({ disabled, label, selected, value }) => `
+  <fluent-option 
+    ${disabled ? 'disabled' : ''}
+    ${selected ? 'selected' : ''}
+    ${value ? `value="${value}"` : ''}
+  >${label}</fluent-option>
+`;
+
+export const ListboxOption = listBoxTemplate.bind({});
+
+ListboxOption.args = {
+  label: 'This is an Option',
+  selected: false,
+};
+
+const example = `
+<fluent-option> Text content is the value when the value attribute is absent. </fluent-option>
+`;
+
+ListboxOption.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

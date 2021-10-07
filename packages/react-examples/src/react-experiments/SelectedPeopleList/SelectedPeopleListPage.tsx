@@ -80,9 +80,7 @@ export class SelectedPeopleListPage extends React.Component<IComponentDemoPagePr
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Tile/Tile.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Tile/Tile.types.ts'),
             ]}
           />
         }

@@ -49,18 +49,12 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
         },
       },
     ],
-    itemName: [
-      theme.fonts.mediumPlus,
-      {
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-      },
-    ],
+    itemName: theme.fonts.mediumPlus,
     itemLabel: [
       {
         fontSize: theme.fonts.small.fontSize,
         fontWeight: FontWeights.bold,
+        cursor: 'pointer',
       },
       globalClassNames.listElement,
     ],

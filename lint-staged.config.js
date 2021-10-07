@@ -1,27 +1,24 @@
 // @ts-check
 
-const { configHelpers } = require('./packages/eslint-plugin/src/index');
+const { prettierSupportedFileExtensionsByContext } = require('@fluentui/scripts/prettier');
 
-const eslintGlob = `*.{${configHelpers.extensions.join(',')}}`;
+const commands = {
+  format: 'prettier --write',
+  /**
+   * Run eslint in fix mode for applicable files followed by prettier.
+   * The eslint wrapper handles filtering which files should be linted, since we need to both:
+   * - respect ignore files (which eslint doesn't do by default when passed a specific file path)
+   * - match the set of files that are linted by the package's normal `lint` command
+   */
+  lint: 'node ./scripts/lint-staged/eslint',
+};
 
 // https://www.npmjs.com/package/lint-staged
 module.exports = {
-  // Run eslint in fix mode followed by prettier (must be done in sequence, separate from other
-  // prettier formatting, since both commands can modify files)
-  [eslintGlob]: ['node ./scripts/lint-staged/eslint', 'prettier --write'],
-
-  // Run prettier on non-eslintable files (ignores handled by .prettierignore)
-  [`!(${eslintGlob})`]: 'prettier --write',
-
-  'common/changes/*.json': 'node ./scripts/lint-staged/auto-convert-change-files',
-
-  '**/tslint.json': 'node ./scripts/lint-staged/no-tslint-json',
-
-  '**/package.json': 'node ./scripts/lint-staged/no-tslint-deps',
-
-  'packages/!(react-examples)/!(fluentui)/**/(docs|examples)/*.{ts,tsx,scss,md}':
-    'node ./scripts/lint-staged/no-old-example-paths',
-  'packages/!(react-examples)/!(fluentui)/**/*.doc.ts*': 'node ./scripts/lint-staged/no-old-example-paths',
-  'packages/{react,react-cards,react-focus}/src/components/__snapshots__/*':
-    'node ./scripts/lint-staged/no-old-snapshot-paths',
+  [`**/*.{${[].concat(
+    prettierSupportedFileExtensionsByContext.stylesheets,
+    prettierSupportedFileExtensionsByContext.markdown,
+    prettierSupportedFileExtensionsByContext.others,
+  )}}`]: [commands.format],
+  [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [commands.format, commands.lint],
 };

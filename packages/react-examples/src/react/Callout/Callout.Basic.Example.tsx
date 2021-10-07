@@ -22,7 +22,6 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
           className={styles.callout}
           ariaLabelledBy={labelId}
           ariaDescribedBy={descriptionId}
-          role="alertdialog"
           gapSpace={0}
           target={`#${buttonId}`}
           onDismiss={toggleIsCalloutVisible}
@@ -50,6 +49,7 @@ const styles = mergeStyleSets({
   },
   callout: {
     width: 320,
+    maxWidth: '90%',
     padding: '20px 24px',
   },
   title: {

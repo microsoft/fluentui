@@ -104,7 +104,7 @@ export default () => (
           onError to the component you want to put the prop on.
           <CodeSnippet
             value={`
-            <Image src="//placehold.it/300" onLoad={() => alert('Loaded')} onError={() => alert('Error')} />
+            <Image src="//via.placeholder.com/300" onLoad={() => alert('Loaded')} onError={() => alert('Error')} />
             `}
           />
         </p>

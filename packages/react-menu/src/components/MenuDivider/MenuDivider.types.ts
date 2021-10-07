@@ -1,14 +1,9 @@
-import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory MenuDivider}
- */
-export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export type MenuDividerSlots = {
+  root: IntrinsicShorthandProps<'div'>;
+};
 
-/**
- * {@docCategory MenuDivider}
- */
-export interface MenuDividerState extends MenuDividerProps {
-  ref: React.MutableRefObject<HTMLElement>;
-}
+export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
+
+export type MenuDividerState = ComponentState<MenuDividerSlots>;

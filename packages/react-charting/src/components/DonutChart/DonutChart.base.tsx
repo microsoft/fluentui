@@ -4,10 +4,10 @@ import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, ILegend, Legends } from '../../index';
+import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-
+import { getAccessibleDataObject } from '../../utilities/index';
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
 export interface IDonutChartState {
@@ -24,6 +24,7 @@ export interface IDonutChartState {
   focusedArcId?: string;
   selectedLegend: string;
   dataPointCalloutProps?: IChartDataPoint;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -98,7 +99,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const outerRadius = Math.min(this.state._width!, this.state._height!) / 2;
     const chartData = data && data.chartData;
     return (
-      <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
+      <div
+        className={this._classNames.root}
+        aria-label={data?.chartTitle}
+        ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
+      >
         <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
           <div>
             <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
@@ -134,6 +139,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
+          {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
           {this.props.onRenderCalloutPerDataPoint ? (
             this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps!)
@@ -234,6 +240,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       yCalloutValue: data.yAxisCalloutData!,
       focusedArcId: id,
       dataPointCalloutProps: data,
+      callOutAccessibilityData: data.callOutAccessibilityData!,
     });
   };
 
@@ -249,6 +256,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       yCalloutValue: data.yAxisCalloutData!,
       activeLegend: data.legend,
       dataPointCalloutProps: data,
+      callOutAccessibilityData: data.callOutAccessibilityData!,
     });
   };
   private _onBlur = (): void => {

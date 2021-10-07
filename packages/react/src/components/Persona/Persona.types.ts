@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ImageLoadState } from '../../Image';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
 
 /**
  * {@docCategory Persona}
@@ -124,6 +123,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement
    * Secondary text to display, usually the role of the user.
    */
   secondaryText?: string;
+
+  /**
+   * Controls whether clipped overflow text should render in a tooltip
+   * @defaultvalue true
+   */
+  showOverflowTooltip?: boolean;
 
   /**
    * Tertiary text to display, usually the status of the user.

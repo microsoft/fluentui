@@ -135,18 +135,12 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
 - _**DOM**_
 
 ```html
-<span>
-  ...
-</span>
+<span> ... </span>
 
-<span role="button">
-  ...
-</span>
+<span role="button"> ... </span>
 
 <div role="listbox">
-  <span role="option">
-    ...
-  </span>
+  <span role="option"> ... </span>
 </div>
 ```
 

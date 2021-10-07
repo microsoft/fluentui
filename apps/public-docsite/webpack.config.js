@@ -13,7 +13,7 @@ const { getLoadSiteConfig } = require('@fluentui/public-docsite-setup/scripts/ge
  * @param {Record<string, any>} argv map of command line arguments
  * @returns {import('webpack').Configuration[]}
  */
-module.exports = function(env, argv) {
+module.exports = function (env, argv) {
   const version = require('./package.json').version;
   // production mode is either coming from env variable, CLI argument as mode or production
   const isProductionArg =

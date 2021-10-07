@@ -1,13 +1,32 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import BadgeTemplate from './fixtures/badge.html';
-import { FluentBadge } from './';
-
-// Prevent tree-shaking
-FluentBadge;
-FluentDesignSystemProvider;
+import { fluentBadge } from './index';
 
 export default {
-  title: 'Badge',
+  title: 'Components/Badge',
+  component: fluentBadge,
+  argTypes: {
+    appearance: {
+      options: ['neutral', 'accent', 'lightweight'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
-export const Badge = (): string => BadgeTemplate;
+const BadgeTemplate = ({ appearance, label }) => `
+  <fluent-badge 
+    ${appearance ? `appearance="${appearance}"` : ''}
+  >${label}</fluent-badge>`;
+
+export const Badge = BadgeTemplate.bind({});
+
+Badge.args = {
+  label: 'Badge',
+  appearance: 'accent',
+};
+
+Badge.parameters = {
+  docs: {
+    source: {
+      code: `<fluent-badge appearance="neutral">Text</fluent-badge>`,
+    },
+  },
+};

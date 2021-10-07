@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { TooltipBase } from './Tooltip.base';
-import { ICalloutProps } from '../../Callout';
-import { IRenderFunction } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { ICalloutProps } from '../../Callout';
+import type { IRenderFunction, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
 
 /**
  * {@docCategory Tooltip}
@@ -82,7 +81,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
  */
 export enum TooltipDelay {
   zero = 0,
-  /** 300 ms delay before showng the tooltip */
+  /** 300 ms delay before showing the tooltip */
   medium = 1,
   /** 500 ms delay before showing the tooltip */
   long = 2,

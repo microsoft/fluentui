@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme, IProcessedStyleSet } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme, IProcessedStyleSet } from '../../Styling';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Rating}
@@ -16,6 +16,7 @@ export interface IRatingStarProps {
   classNames: IProcessedStyleSet<IRatingStyles>;
   icon: string;
   starNum?: number;
+  unselectedIcon?: string;
 }
 
 /**

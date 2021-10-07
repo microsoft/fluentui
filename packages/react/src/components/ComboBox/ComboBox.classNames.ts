@@ -1,6 +1,6 @@
-import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.types';
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
+import type { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.types';
 
 export interface IComboBoxClassNames {
   container: string;

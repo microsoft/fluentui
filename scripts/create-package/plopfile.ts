@@ -7,7 +7,7 @@ import _ from 'lodash';
 import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { findGitRoot, PackageJson } from '../monorepo/index';
-import { NxJson } from '@nrwl/workspace';
+import { NxJsonConfiguration } from '@nrwl/devkit';
 import { WorkspaceJsonConfiguration } from '@nrwl/tao/src/shared/workspace';
 
 const root = findGitRoot();
@@ -64,8 +64,11 @@ module.exports = (plop: NodePlopAPI) => {
       {
         type: 'confirm',
         name: 'publish',
-        message: 'Should the package be published right away?',
-        default: false,
+        message: answers =>
+          answers.hasExamples
+            ? 'Should the package be published right away (must be Yes for packages with example scaffolding)?'
+            : 'Should the package be published right away?',
+        default: (answers: Answers) => !!answers.hasExamples,
       },
     ],
     actions: (answers: Answers): Actions => {
@@ -74,12 +77,12 @@ module.exports = (plop: NodePlopAPI) => {
 
       const destination = `packages/${packageName}`;
       const exampleRoot = `packages/react-examples`;
-      const exampleDestination = `${exampleRoot}/src/${packageName}`;
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
 
       // Get derived template parameters
       const data = {
         packageNpmName: '@fluentui/' + packageName,
+        packageVersion: '9.0.0-alpha.0',
         friendlyPackageName: packageName.replace(
           /^.|-./g, // first char or char after -
           (substr, index) => (index > 0 ? ' ' : '') + substr.replace('-', '').toUpperCase(),
@@ -107,19 +110,6 @@ module.exports = (plop: NodePlopAPI) => {
             ? [`plop-templates-${target}/**/*`]
             : [`plop-templates-${target}/**/*`, `!(plop-templates-${target}/jest.config.js)`],
         },
-        // Example files
-        {
-          type: 'addMany',
-          destination: exampleDestination,
-          globOptions,
-          data,
-          skip: () => {
-            if (!hasExamples) return 'Skipping example scaffolding';
-          },
-          skipIfExists: true,
-          base: `plop-templates-storybook`,
-          templateFiles: [`plop-templates-storybook/**/*`],
-        },
         // update package.json
         {
           type: 'modify',
@@ -137,7 +127,8 @@ module.exports = (plop: NodePlopAPI) => {
           skip: () => {
             if (!hasExamples) return 'Skipping react-examples package.json update';
           },
-          transform: packageJsonContents => updateExamplePackageJson(packageJsonContents, data.packageNpmName),
+          transform: packageJsonContents =>
+            updateExamplePackageJson(packageJsonContents, data.packageNpmName, data.packageVersion),
         },
         // update tsconfig.json
         {
@@ -208,7 +199,7 @@ function replaceVersionsFromReference(
       continue;
     }
     for (const depPkg of Object.keys(newPackageJson[depType])) {
-      if (!hasTests && /\b(jest|enzyme|test|react-conformance)\b/.test(depPkg)) {
+      if (!hasTests && /\b(jest|enzyme|test|react-conformance|react-conformance-make-styles|)\b/.test(depPkg)) {
         delete newPackageJson[depType][depPkg];
       } else if (referenceDeps[depType]?.[depPkg]) {
         newPackageJson[depType][depPkg] = referenceDeps[depType][depPkg];
@@ -250,10 +241,10 @@ function updatePackageJson(packageJsonContents: string, answers: Answers) {
   return { newPackageJson: JSON.stringify(newPackageJson, null, 2), hasError };
 }
 
-function updateExamplePackageJson(packageJsonContents: string, packageNpmName: string): string {
+function updateExamplePackageJson(packageJsonContents: string, packageNpmName: string, packageVersion: string): string {
   const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
   // add the new package to the dependency list
-  newPackageJson['dependencies'][packageNpmName] = '*';
+  newPackageJson['dependencies'][packageNpmName] = packageVersion;
   // sort the entries
   newPackageJson['dependencies'] = Object.entries(newPackageJson['dependencies'])
     .sort()
@@ -295,7 +286,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   Object.assign(nxWorkspace.projects, templates.workspace);
 
   const nxConfigContent = fs.readFileSync(paths.config, 'utf-8');
-  const nxConfig: NxJson = jju.parse(nxConfigContent);
+  const nxConfig: NxJsonConfiguration = jju.parse(nxConfigContent);
   Object.assign(nxConfig.projects, templates.config);
 
   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });

@@ -6,6 +6,7 @@ import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line 
 import { IPalette } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
+  IAccessibilityProps,
   CartesianChart,
   IChartProps,
   ICustomizedCalloutData,
@@ -61,6 +62,7 @@ export interface IAreaChartState extends IBasestate {
   dataPointCalloutProps?: ICustomizedCalloutData;
   stackCalloutProps?: ICustomizedCalloutData;
   nearestCircleToHighlight: number | string | Date | null;
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -111,12 +113,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
+    const { lineChartData, chartTitle } = this.props.data;
     const { colors, stackedInfo, calloutPoints } = this._createSet(this.props.data);
     this._calloutPoints = calloutPoints;
-    const isXAxisDateType = getXAxisType(this.props.data.lineChartData!);
+    const isXAxisDateType = getXAxisType(lineChartData!);
     this._colors = colors;
     this._stackedData = stackedInfo.stackedData;
-    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, this.props.data.lineChartData!);
+    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
 
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -134,12 +137,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isBeakVisible: false,
       setInitialFocus: true,
       onDismiss: this._closeCallout,
+      'data-is-focusable': true,
+      xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
       ...this.props.calloutProps,
     };
     return (
       <CartesianChart
         {...this.props}
-        points={this.props.data.lineChartData!}
+        chartTitle={chartTitle}
+        points={lineChartData!}
         chartType={ChartTypes.AreaChart}
         calloutProps={calloutProps}
         legendBars={legends}
@@ -224,26 +230,39 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           break;
       }
     }
-    const xAxisCalloutData = lineChartData![0].data[index as number].xAxisCalloutData;
-    const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleDateString() : pointToHighlight;
+
+    const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
+    const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleString() : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
       return element.x === modifiedXVal;
     });
-    this.setState({
-      refSelected: mouseEvent,
-      isCalloutVisible: true,
-      nearestCircleToHighlight:
-        axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight,
-      lineXValue: this._xAxisRectScale(pointToHighlight),
-      displayOfLine: InterceptVisibility.show,
-      isCircleClicked: false,
-      stackCalloutProps: found!,
-      YValueHover: found.values,
-      dataPointCalloutProps: found!,
-      hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
-    });
+    const nearestCircleToHighlight =
+      axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
+    // if no points need to be called out then don't show vertical line and callout card
+    if (found) {
+      this.setState({
+        refSelected: mouseEvent,
+        isCalloutVisible: true,
+        nearestCircleToHighlight: nearestCircleToHighlight,
+        lineXValue: this._xAxisRectScale(pointToHighlight),
+        displayOfLine: InterceptVisibility.show,
+        isCircleClicked: false,
+        stackCalloutProps: found!,
+        YValueHover: found.values,
+        dataPointCalloutProps: found!,
+        hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+        xAxisCalloutAccessibilityData,
+      });
+    } else {
+      this.setState({
+        isCalloutVisible: false,
+        nearestCircleToHighlight: nearestCircleToHighlight,
+        displayOfLine: InterceptVisibility.hide,
+        isCircleClicked: false,
+      });
+    }
   };
   /**
    * just cleaning up the state which we have set in the mouse move event
@@ -302,10 +321,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     let tempArr = allChartPoints;
     while (tempArr.length) {
-      const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
+      const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
       const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
-        (point: ILineChartDataPoint) =>
-          (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) === valToCheck,
+        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const singleDataset: any = {};
@@ -315,9 +333,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
       dataSet.push(singleDataset);
       // removing compared objects from array
-      const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleDateString() : tempArr[0].x;
+      const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
       tempArr = tempArr.filter(
-        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleDateString() : point.x) !== val,
+        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
       );
     }
 
@@ -552,7 +570,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 r={this._getCircleRadius(xDataPoint)}
                 stroke={lineColor}
                 strokeWidth={3}
-                visibility={this.state.isCalloutVisible ? 'visibility' : 'hidden'}
+                visibility={this.state.nearestCircleToHighlight ? 'visibility' : 'hidden'}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}

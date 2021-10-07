@@ -1,5 +1,6 @@
-import { IBasicPackageGroup } from '../interfaces/index';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
+import type { IBasicPackageGroup } from '../interfaces/index';
+
 // Don't reference anything importing Monaco in this file to avoid pulling Monaco into the
 // main bundle or breaking tests!
 
@@ -180,10 +181,7 @@ export function _getImportIdentifiers(contents: string | undefined): IImportIden
   // Foo          for `import Foo from 'foo'`
   // { Foo, Bar } for `import { Foo, Bar } from 'foo'`
   const hadBracket = (contents || '').indexOf('{') !== -1;
-  contents = (contents || '')
-    .replace('{', '')
-    .replace('}', '')
-    .trim();
+  contents = (contents || '').replace('{', '').replace('}', '').trim();
 
   const items: IImportIdentifiers[] = [];
   IMPORT_ITEM_REGEX.lastIndex = 0;

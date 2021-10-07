@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ITeachingBubble } from '../../TeachingBubble';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { ITeachingBubble } from '../../TeachingBubble';
+import type { Target } from '@fluentui/react-hooks';
 
 /**
  * {@docCategory Coachmark}
@@ -38,7 +39,7 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * The target that the Coachmark should try to position itself based on.
    */
-  target: HTMLElement | string | null;
+  target: Target;
 
   /**
    * Props to pass to the PositioningContainer component. Specify the `directionalHint` to indicate
@@ -164,7 +165,7 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
 
   /**
    * Defines the text content for the `ariaDescribedBy` element
-   * Not used unless `ariaDescribeddBy` is also provided.
+   * Not used unless `ariaDescribedBy` is also provided.
    */
   ariaDescribedByText?: string;
 

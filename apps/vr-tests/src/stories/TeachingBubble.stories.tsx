@@ -19,7 +19,7 @@ storiesOf('TeachingBubble', module)
     () => {
       return (
         <TeachingBubble
-          illustrationImage={{ src: 'http://placehold.it/364x220' }}
+          illustrationImage={{ src: 'http://via.placeholder.com/364x220' }}
           calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
           isWide={true}
           hasSmallHeadline={true}
@@ -32,7 +32,7 @@ storiesOf('TeachingBubble', module)
         </TeachingBubble>
       );
     },
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('SmallHeadline', () => {
     return (

@@ -16,12 +16,8 @@ export const SwatchColorPickerPageProps: IDocPageProps = {
       view: <SwatchColorPickerBasicExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SwatchColorPicker/docs/SwatchColorPickerOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SwatchColorPicker/docs/SwatchColorPickerBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SwatchColorPicker/docs/SwatchColorPickerOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SwatchColorPicker/docs/SwatchColorPickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

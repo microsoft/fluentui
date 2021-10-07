@@ -1,5 +1,5 @@
-import { ICollapsibleSectionComponent, ICollapsibleSectionStylesReturnType } from './CollapsibleSection.types';
 import { getGlobalClassNames } from '../../Styling';
+import type { ICollapsibleSectionComponent, ICollapsibleSectionStylesReturnType } from './CollapsibleSection.types';
 
 const GlobalClassNames = {
   root: 'ms-CollapsibleSection',

@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { BadgeState } from './Badge.types';
+import type { BadgeState } from './Badge.types';
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -7,20 +7,21 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.alias.color.brand.brandBackground,
-    borderColor: theme.alias.color.brand.brandBackground,
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-    fontWeight: theme.global.type.fontWeights.semibold,
-    borderWidth: theme.global.strokeWidth.thin,
+    backgroundColor: theme.colorBrandBackground,
+    borderColor: theme.colorBrandBackground,
+    color: theme.colorNeutralForegroundOnBrand,
+    fontWeight: theme.fontWeightSemibold,
+    borderWidth: theme.strokeWidthThin,
     borderStyle: 'solid',
-    fontFamily: theme.global.type.fontFamilies.base,
+    fontFamily: theme.fontFamilyBase,
+    position: 'relative',
   }),
-  rootSmallest: {
+  rootTiny: {
     width: '6px',
     height: '6px',
     fontSize: '4px',
   },
-  rootSmaller: {
+  rootExtraSmall: {
     width: '10px',
     height: '10px',
     fontSize: '6px',
@@ -49,35 +50,158 @@ const useStyles = makeStyles({
     fontSize: '12px',
     gap: '6px',
   },
-  rootLargerLargest: theme => ({
+  rootExtraLarge: theme => ({
     minWidth: '32px',
     height: '32px',
     paddingRight: '12px',
     paddingLeft: '12px',
     gap: '6px',
     fontSize: '12px',
-    borderWidth: theme.global.strokeWidth.thick,
+    borderWidth: theme.strokeWidthThick,
   }),
-  rootRounded: theme => ({ borderRadius: theme.global.borderRadius.medium }),
-  rootRoundedSmallSmallerSmallest: theme => ({ borderRadius: theme.global.borderRadius.small }),
+  rootRounded: theme => ({ borderRadius: theme.borderRadiusMedium }),
+  rootRoundedSmallToTiny: theme => ({ borderRadius: theme.borderRadiusSmall }),
   rootCircular: { borderRadius: '99px' },
   rootGhost: theme => ({
     background: 'transparent',
     border: 'none',
-    color: theme.alias.color.brand.brandBackground,
+    color: theme.colorBrandBackground,
   }),
   rootOutline: theme => ({
     background: 'transparent',
-    borderColor: theme.alias.color.brand.brandBackground,
-    color: theme.alias.color.brand.brandBackground,
+    borderColor: theme.colorBrandBackground,
+    color: theme.colorBrandBackground,
   }),
   rootTint: theme => ({
-    background: theme.global.palette.brand.tint60,
-    color: theme.global.palette.brand.shade40,
-    border: 'none',
+    backgroundColor: theme.colorBrandBackground2,
+    color: theme.colorBrandForeground2,
+    borderColor: 'none',
+  }),
+  rootFilledDanger: theme => ({
+    backgroundColor: theme.colorPaletteRedBackground3,
+    color: theme.colorNeutralForegroundOnBrand,
+    borderColor: theme.colorPaletteRedBackground3,
+  }),
+  rootOutlineDanger: theme => ({
+    color: theme.colorPaletteRedForeground3,
+    borderColor: theme.colorPaletteRedForeground3,
+  }),
+  rootTintDanger: theme => ({
+    backgroundColor: theme.colorPaletteRedBackground1,
+    color: theme.colorPaletteRedForeground1,
+    borderColor: theme.colorPaletteRedForeground2,
+  }),
+  rootGhostDanger: theme => ({
+    color: theme.colorPaletteRedForeground3,
+  }),
+  rootFilledSevere: theme => ({
+    backgroundColor: theme.colorPaletteDarkOrangeBackground3,
+    color: theme.colorNeutralForegroundOnBrand,
+    borderColor: 'none',
+  }),
+  rootOutlineSevere: theme => ({
+    color: theme.colorPaletteDarkOrangeForeground3,
+    borderColor: theme.colorPaletteDarkOrangeForeground3,
+  }),
+  rootTintSevere: theme => ({
+    backgroundColor: theme.colorPaletteDarkOrangeBackground1,
+    color: theme.colorPaletteDarkOrangeForeground1,
+    borderColor: theme.colorPaletteDarkOrangeForeground2,
+  }),
+  rootGhostSevere: theme => ({
+    color: theme.colorPaletteDarkOrangeForeground3,
+  }),
+  rootFilledWarning: theme => ({
+    backgroundColor: theme.colorPaletteYellowBackground3,
+    color: theme.colorNeutralForeground1,
+    borderColor: theme.colorPaletteYellowBackground3,
+  }),
+  rootOutlineWarning: theme => ({
+    color: theme.colorPaletteYellowForeground2,
+    borderColor: theme.colorPaletteYellowForeground2,
+  }),
+  rootTintWarning: theme => ({
+    backgroundColor: theme.colorPaletteYellowBackground1,
+    color: theme.colorPaletteYellowForeground2,
+    borderColor: theme.colorPaletteYellowBackground2,
+  }),
+  rootGhostWarning: theme => ({
+    color: theme.colorPaletteYellowForeground2,
+  }),
+  rootFilledSuccess: theme => ({
+    backgroundColor: theme.colorPaletteGreenBackground3,
+    color: theme.colorNeutralForegroundOnBrand,
+    borderColor: 'none',
+  }),
+  rootOutlineSuccess: theme => ({
+    color: theme.colorPaletteGreenForeground2,
+    borderColor: theme.colorPaletteGreenForeground2,
+  }),
+  rootTintSuccess: theme => ({
+    backgroundColor: theme.colorPaletteGreenBackground1,
+    color: theme.colorPaletteGreenForeground1,
+    borderColor: theme.colorPaletteGreenBackground2,
+  }),
+  rootGhostSuccess: theme => ({
+    color: theme.colorPaletteGreenForeground3,
+  }),
+  rootFilledImportant: theme => ({
+    backgroundColor: theme.colorNeutralForeground1,
+    color: theme.colorNeutralBackground1,
+    borderColor: theme.colorTransparentStroke,
+  }),
+  rootOutlineImportant: theme => ({
+    color: theme.colorNeutralForeground1,
+    borderColor: theme.colorNeutralForeground1,
+  }),
+  rootTintImportant: theme => ({
+    backgroundColor: theme.colorNeutralForeground3,
+    color: theme.colorNeutralBackground1,
+    borderColor: theme.colorTransparentStroke,
+  }),
+  rootGhostImportant: theme => ({
+    color: theme.colorNeutralForeground1,
+  }),
+  rootFilledInformative: theme => ({
+    backgroundColor: theme.colorNeutralBackground5,
+    color: theme.colorNeutralForeground3,
+    borderColor: theme.colorTransparentStroke,
+  }),
+  rootOutlineInformative: theme => ({
+    backgroundColor: theme.colorPaletteDarkOrangeBackground3,
+    color: theme.colorNeutralBackground5,
+    borderColor: theme.colorNeutralBackground5,
+  }),
+  rootTintInformative: theme => ({
+    backgroundColor: theme.colorNeutralBackground4,
+    color: theme.colorNeutralForeground3,
+    borderColor: theme.colorNeutralStroke2,
+  }),
+  rootGhostInformative: theme => ({
+    color: theme.colorNeutralBackground5,
+  }),
+  rootFilledSubtle: theme => ({
+    backgroundColor: theme.colorNeutralBackground1,
+    color: theme.colorNeutralForeground1,
+    borderColor: theme.colorTransparentStroke,
+  }),
+  rootOutlineSubtle: theme => ({
+    color: theme.colorNeutralForegroundOnBrand,
+    borderColor: theme.colorNeutralForegroundOnBrand,
+  }),
+  rootTintSubtle: theme => ({
+    backgroundColor: theme.colorNeutralBackground1,
+    color: theme.colorNeutralForeground3,
+    borderColor: theme.colorNeutralStroke2,
+  }),
+  rootGhostSubtle: theme => ({
+    color: theme.colorNeutralForegroundOnBrand,
   }),
   icon: {
-    position: 'absolute',
+    display: 'flex',
+    alignContent: 'center',
+    alignItems: 'center',
+    height: '100%',
   },
 });
 
@@ -86,23 +210,63 @@ const useStyles = makeStyles({
  */
 export const useBadgeStyles = (state: BadgeState): BadgeState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  const isGhost = state.appearance === 'ghost';
+  const isOutline = state.appearance === 'outline';
+  const isTint = state.appearance === 'tint';
+  const isFilled = state.appearance === 'filled';
+  const isDanger = state.color === 'danger';
+  const isSevere = state.color === 'severe';
+  const isWarning = state.color === 'warning';
+  const isSuccess = state.color === 'success';
+  const isImportant = state.color === 'important';
+  const isInformative = state.color === 'informative';
+  const isSubtle = state.color === 'subtle';
+
+  state.root.className = mergeClasses(
     styles.root,
-    state.size === 'smallest' && styles.rootSmallest,
-    state.size === 'smaller' && styles.rootSmaller,
+    state.size === 'tiny' && styles.rootTiny,
+    state.size === 'extra-small' && styles.rootExtraSmall,
     state.size === 'small' && styles.rootSmall,
     state.size === 'medium' && styles.rootMedium,
     state.size === 'large' && styles.rootLarge,
-    (state.size === 'larger' || state.size === 'largest') && styles.rootLargerLargest,
+    state.size === 'extra-large' && styles.rootExtraLarge,
     state.shape === 'circular' && styles.rootCircular,
     state.shape === 'rounded' && styles.rootRounded,
     state.shape === 'rounded' &&
-      (state.size === 'small' || state.size === 'smaller' || state.size === 'smallest') &&
-      styles.rootRoundedSmallSmallerSmallest,
-    state.appearance === 'ghost' && styles.rootGhost,
-    state.appearance === 'outline' && styles.rootOutline,
-    state.appearance === 'tint' && styles.rootTint,
-    state.className,
+      (state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny') &&
+      styles.rootRoundedSmallToTiny,
+    isGhost && styles.rootGhost,
+    isOutline && styles.rootOutline,
+    isTint && styles.rootTint,
+    isFilled && isDanger && styles.rootFilledDanger,
+    isOutline && isDanger && styles.rootOutlineDanger,
+    isTint && isDanger && styles.rootTintDanger,
+    isGhost && isDanger && styles.rootGhostDanger,
+    isFilled && isSevere && styles.rootFilledSevere,
+    isOutline && isSevere && styles.rootOutlineSevere,
+    isTint && isSevere && styles.rootTintSevere,
+    isGhost && isSevere && styles.rootGhostSevere,
+    isFilled && isWarning && styles.rootFilledWarning,
+    isOutline && isWarning && styles.rootOutlineWarning,
+    isTint && isWarning && styles.rootTintWarning,
+    isGhost && isWarning && styles.rootGhostWarning,
+    isFilled && isSuccess && styles.rootFilledSuccess,
+    isOutline && isSuccess && styles.rootOutlineSuccess,
+    isTint && isSuccess && styles.rootTintSuccess,
+    isGhost && isSuccess && styles.rootGhostSuccess,
+    isFilled && isImportant && styles.rootFilledImportant,
+    isOutline && isImportant && styles.rootOutlineImportant,
+    isTint && isImportant && styles.rootTintImportant,
+    isGhost && isImportant && styles.rootGhostImportant,
+    isFilled && isInformative && styles.rootFilledInformative,
+    isOutline && isInformative && styles.rootOutlineInformative,
+    isTint && isInformative && styles.rootTintInformative,
+    isGhost && isInformative && styles.rootGhostInformative,
+    isFilled && isSubtle && styles.rootFilledSubtle,
+    isOutline && isSubtle && styles.rootOutlineSubtle,
+    isTint && isSubtle && styles.rootTintSubtle,
+    isGhost && isSubtle && styles.rootGhostSubtle,
+    state.root.className,
   );
 
   if (state.icon) {

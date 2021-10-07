@@ -1,17 +1,17 @@
-import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import {
   FontSizes,
   FontWeights,
   getFocusStyle,
   getGlobalClassNames,
   AnimationStyles,
-  IRawStyle,
   keyframes,
   HighContrastSelector,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { DateRangeType } from '@fluentui/date-time-utilities';
 import { AnimationDirection } from '../Calendar/Calendar.types';
+import type { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
+import type { IRawStyle } from '@fluentui/style-utilities';
 
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',
@@ -150,6 +150,14 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       dateRangeType !== DateRangeType.Month && {
         backgroundColor: palette.neutralLight + '!important',
         selectors: {
+          '&:after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+          },
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
             backgroundColor: palette.neutralLight + '!important',
             [HighContrastSelector]: {
@@ -187,7 +195,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       fontWeight: FontWeights.regular,
     },
     dayButton: [
-      getFocusStyle(theme, { inset: -2 }),
+      getFocusStyle(theme, { inset: -3 }),
       {
         width: 24,
         height: 24,
@@ -285,6 +293,26 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     },
     bottomLeftCornerDate: {
       borderBottomLeftRadius: '2px',
+    },
+    datesAbove: {
+      '&:after': {
+        borderTop: `1px solid ${palette.neutralSecondary}`,
+      },
+    },
+    datesBelow: {
+      '&:after': {
+        borderBottom: `1px solid ${palette.neutralSecondary}`,
+      },
+    },
+    datesLeft: {
+      '&:after': {
+        borderLeft: `1px solid ${palette.neutralSecondary}`,
+      },
+    },
+    datesRight: {
+      '&:after': {
+        borderRight: `1px solid ${palette.neutralSecondary}`,
+      },
     },
   };
 };

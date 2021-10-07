@@ -1,12 +1,7 @@
-import { ICheckStyleProps, ICheckStyles } from './Check.types';
-import {
-  HighContrastSelector,
-  IStyle,
-  getGlobalClassNames,
-  IconFontSizes,
-  getHighContrastNoAdjustStyle,
-} from '../../Styling';
+import { HighContrastSelector, getGlobalClassNames, IconFontSizes, getHighContrastNoAdjustStyle } from '../../Styling';
 import { getRTL } from '../../Utilities';
+import type { ICheckStyleProps, ICheckStyles } from './Check.types';
+import type { IStyle } from '../../Styling';
 
 export const CheckGlobalClassNames = {
   root: 'ms-Check',
@@ -33,6 +28,10 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     width: height,
     height: height,
     textAlign: 'center',
+    // inline-flex prevents the check from shifting with custom line height styles
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     verticalAlign: 'middle',
   };
 
@@ -115,6 +114,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
         color: palette.neutralSecondary,
         fontSize: IconFontSizes.medium,
         left: isRTL ? '-0.5px' : '.5px', // for centering the check icon inside the circle.
+        top: '-1px', // the check is slightly lower than center compared to the circle.
 
         selectors: {
           ':hover': {

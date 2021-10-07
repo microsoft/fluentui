@@ -22,32 +22,32 @@ export const ImageCenterContainExample = () => {
       <p>This image is smaller than the frame, so it's centered and rendered at its natural size.</p>
       <Image
         {...imageProps}
-        src="http://placehold.it/100x150"
+        src="http://via.placeholder.com/100x150"
         alt='Example of the image fit value "centerContain" on an image smaller than the frame.'
       />
       <p>This image is wider than the frame, so it's contained.</p>
       <Image
         {...imageProps}
-        src="http://placehold.it/300x100"
+        src="http://via.placeholder.com/300x100"
         alt='Example of the image fit value "centerContain" on an image wider than the frame.'
       />
       <p>This image is taller than the frame, so it's contained.</p>
       <Image
         {...imageProps}
-        src="http://placehold.it/100x300"
+        src="http://via.placeholder.com/100x300"
         alt='Example of the image fit value "centerContain" on an image taller than the frame.'
       />
       <p>These images are taller and wider than the frame, so they are contained.</p>
       <Image
         {...imageProps}
-        src="http://placehold.it/400x500"
+        src="http://via.placeholder.com/400x500"
         alt='Example of the image fit value "centerContain" on an image taller and wider than the frame.'
       />
       <br />
       <br />
       <Image
         {...imageProps}
-        src="http://placehold.it/500x400"
+        src="http://via.placeholder.com/500x400"
         alt='Example of the image fit value "centerContain" on an image taller and wider than the frame.'
       />
     </div>

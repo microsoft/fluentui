@@ -15,6 +15,7 @@ describe('Stack', () => {
     Component: Stack,
     displayName: 'Stack',
     useDefaultExport: true,
+    skipAsPropTests: false,
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
     disabledTests: ['component-handles-ref', 'component-has-root-ref'],
@@ -200,6 +201,7 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with a gap in rtl context correctly', () => {
     const component = renderer.create(
+      // eslint-disable-next-line deprecation/deprecation
       <Fabric dir="rtl">
         <Stack horizontal tokens={{ childrenGap: 10 }}>
           <Stack.Item>Item 1</Stack.Item>

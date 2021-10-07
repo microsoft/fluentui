@@ -51,12 +51,8 @@ export const ChoiceGroupPageProps: IDocPageProps = {
       view: <ChoiceGroupCustomExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/docs/ChoiceGroupOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/docs/ChoiceGroupBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/docs/ChoiceGroupOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/docs/ChoiceGroupBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

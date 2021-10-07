@@ -27,6 +27,7 @@ This is a list of changes made to this Stardust copy of FocusZone in comparison 
 - Use always `getDocument` to correctly define current document object @sophieH29 ([#1820](https://github.com/stardust-ui/react/pull/1820))
 - Fix element reference memory leaks - Fabric PR 11618 @jurokapsiar ([#2270](https://github.com/microsoft/fluent-ui-react/pull/2270))
 - Adding aria-hidden to bumper elements so that they are not read by screen readers @khmakoto ([#14376](https://github.com/microsoft/fluentui/pull/14376))
+- Added `shouldIgnoreNotFocusable` to props to skip `onFocus` event for elements with `data-is-focusable="false"` @assuncaocharles ([#18297](https://github.com/microsoft/fluentui/pull/18297))
 
 ### Features
 - Add embed mode for FocusZone and new Chat behavior ([#233](https://github.com/stardust-ui/react/pull/233))

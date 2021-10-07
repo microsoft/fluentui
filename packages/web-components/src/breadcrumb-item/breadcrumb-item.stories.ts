@@ -1,13 +1,20 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import BreadcrumbItemTemplate from './fixtures/breadcrumb-item.html';
-import { FluentBreadcrumbItem } from '.';
-
-// Prevent tree-shaking
-FluentBreadcrumbItem;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
-  title: 'Breadcrumb Item',
+  title: 'Components/Breadcrumb Item',
 };
 
 export const BreadcrumbItem = (): string => BreadcrumbItemTemplate;
+
+const example = `
+<fluent-breadcrumb-item href="#"> Breadcrumb item </fluent-breadcrumb-item>
+`;
+
+BreadcrumbItem.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

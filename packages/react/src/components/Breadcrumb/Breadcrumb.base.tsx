@@ -6,7 +6,6 @@ import {
   getNativeProps,
   htmlElementProperties,
 } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
@@ -14,8 +13,9 @@ import { IconButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
-import {
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
+import type {
   IBreadcrumbProps,
   IBreadcrumbItem,
   IDividerAsProps,
@@ -218,9 +218,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
             menuProps={{
               items: contextualItems,
               directionalHint: DirectionalHint.bottomLeftEdge,
-              calloutProps: {
-                preventDismissOnEvent: () => true,
-              },
             }}
           />
           {overflowIndex !== lastItemIndex + 1 && (

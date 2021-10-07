@@ -122,12 +122,8 @@ export const ContextualMenuPageProps: IDocPageProps = {
       view: <ContextualMenuScreenReaderExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/docs/ContextualMenuOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/docs/ContextualMenuBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/docs/ContextualMenuOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/docs/ContextualMenuBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

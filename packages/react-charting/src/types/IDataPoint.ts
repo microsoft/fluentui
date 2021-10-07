@@ -1,3 +1,5 @@
+import { LegendShape } from '../components/Legends/Legends.types';
+
 export interface IBasestate {
   _width?: number;
   _height?: number;
@@ -57,6 +59,12 @@ export interface IDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
+
+  // NOTE: VerticalStackedBarChart, PieChart
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
 }
 
 export interface IHorizontalDataPoint {
@@ -115,6 +123,11 @@ export interface IChartDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IVerticalBarChartDataPoint {
@@ -156,11 +169,26 @@ export interface IVerticalBarChartDataPoint {
    * data to render the line along with bars
    */
   lineData?: ILineDataInVerticalBarChart;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineDataInVerticalBarChart {
   y: IVerticalBarChartDataPoint['y'];
   yAxisCalloutData?: string | undefined;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
 }
 
 export interface ILineChartDataPoint {
@@ -190,6 +218,71 @@ export interface ILineChartDataPoint {
    * Callout data for y axis
    */
   yAxisCalloutData?: string | { [id: string]: number };
+
+  /**
+   * Whether to hide callout data for the point.
+   */
+  hideCallout?: boolean;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * X axis Accessibility data for callout
+   */
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
+}
+
+export interface ILineChartGap {
+  /**
+   * Starting index of the gap.
+   */
+  startIndex: number;
+
+  /**
+   * Ending index of the gap.
+   */
+  endIndex: number;
+}
+
+export interface ILineChartLineOptions {
+  /**
+   * Width of the line/stroke.
+   * Overrides the strokeWidth set on ICartesianChartProps level.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width
+   */
+  strokeWidth?: number | string;
+
+  /**
+   * Pattern of dashes and gaps.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray
+   */
+  strokeDasharray?: string | number;
+
+  /**
+   * Offset on rendering of stroke dash array.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dashoffset
+   */
+  strokeDashoffset?: string | number;
+
+  /**
+   * Shape at the end of a subpath.
+   * Default round.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap
+   */
+  strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit';
+
+  /**
+   * Width of border around the line. Default no border.
+   */
+  lineBorderWidth?: string | number;
+
+  /**
+   * Color of border around the line. Default white.
+   */
+  lineBorderColor?: string;
 }
 
 export interface ILineChartPoints {
@@ -199,14 +292,35 @@ export interface ILineChartPoints {
   legend: string;
 
   /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
    * dataPoints for the line chart
    */
   data: ILineChartDataPoint[];
 
   /**
+   * gaps in the line chart where a line is not drawn
+   */
+  gaps?: ILineChartGap[];
+
+  /**
    * color for the legend in the chart
    */
   color: string;
+
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
 
   /**
    * Defines the function that is executed on clicking this legend
@@ -226,14 +340,40 @@ export interface IChartProps {
   chartTitle?: string;
 
   /**
+   * Accessibility data for chart title
+   */
+  chartTitleAccessibilityData?: IAccessibilityProps;
+  /**
    * data for the points in the chart
    */
   chartData?: IChartDataPoint[];
 
   /**
+   * Accessibility data for chart data
+   */
+  chartDataAccessibilityData?: IAccessibilityProps;
+
+  /**
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+}
+
+export interface IAccessibilityProps {
+  /**
+   * Accessibility aria-label
+   */
+  ariaLabel?: string;
+
+  /**
+   * Accessibility aria-labelledBy
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Accessibility aria-describedBy
+   */
+  ariaDescribedBy?: string;
 }
 
 export interface IVSChartDataPoint {
@@ -263,6 +403,11 @@ export interface IVSChartDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IVerticalStackedChartProps {
@@ -285,6 +430,10 @@ export interface IVerticalStackedChartProps {
    * line data to render lines on stacked bar chart
    */
   lineData?: ILineDataInVerticalStackedBarChart[];
+  /**
+   * Accessibility data for Whole stack callout
+   */
+  stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineDataInVerticalStackedBarChart {
@@ -330,6 +479,16 @@ export interface IGVBarChartSeriesPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IGroupedVerticalBarChartData {
@@ -384,6 +543,15 @@ export interface IHeatMapChartDataPoint {
    * description message to the callout
    */
   descriptionMessage?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IHeatMapChartData {

@@ -2,14 +2,14 @@ import * as React from 'react';
 import { useConst } from './useConst';
 
 /** Updater callbacks returned by `useBoolean`. */
-export interface UseBooleanCallbacks {
+export type UseBooleanCallbacks = {
   /** Set the value to true. Always has the same identity. */
   setTrue: () => void;
   /** Set the value to false. Always has the same identity. */
   setFalse: () => void;
   /** Toggle the value. Always has the same identity. */
   toggle: () => void;
-}
+};
 
 /**
  * Hook to store a value and generate callbacks for setting the value to true or false.

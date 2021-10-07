@@ -7,7 +7,6 @@ import {
   KeyCodes,
   elementContains,
   getRTLSafeKeyCode,
-  IRenderFunction,
   classNamesFunction,
   memoizeFunction,
 } from '../../Utilities';
@@ -16,30 +15,18 @@ import {
   ColumnActionsMode,
   ConstrainMode,
   DetailsListLayoutMode,
-  IColumn,
-  IDetailsList,
-  IDetailsListProps,
-  IDetailsListStyles,
-  IDetailsListStyleProps,
   ColumnDragEndLocation,
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
-import {
-  IDetailsHeader,
-  SelectAllVisibility,
-  IDetailsHeaderProps,
-  IColumnReorderHeaderProps,
-} from '../DetailsList/DetailsHeader.types';
-import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
+import { SelectAllVisibility } from '../DetailsList/DetailsHeader.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
-import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
-import { IFocusZone, FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
-import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../Selection';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 
 import { DragDropHelper } from '../../DragDrop';
-import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { List, IListProps, ScrollToMode } from '../../List';
+import { GroupedList } from '../../GroupedList';
+import { List, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -48,7 +35,25 @@ import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 import { composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
-import { IGroup } from '../GroupedList/index';
+import type { IRenderFunction } from '../../Utilities';
+import type {
+  IColumn,
+  IDetailsList,
+  IDetailsListProps,
+  IDetailsListStyles,
+  IDetailsListStyleProps,
+} from '../DetailsList/DetailsList.types';
+import type {
+  IDetailsHeader,
+  IDetailsHeaderProps,
+  IColumnReorderHeaderProps,
+} from '../DetailsList/DetailsHeader.types';
+import type { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
+import type { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
+import type { IFocusZone, IFocusZoneProps } from '../../FocusZone';
+import type { IObjectWithKey, ISelection } from '../../Selection';
+import type { IGroupedList, IGroupDividerProps, IGroupRenderProps, IGroup } from '../../GroupedList';
+import type { IListProps } from '../../List';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -179,6 +184,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     enterModalSelectionOnTouch,
     onRenderDefaultRow,
     selectionZoneRef,
+    focusZoneProps,
   } = props;
 
   const defaultRole = 'grid';
@@ -377,7 +383,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               groupNestingDepth,
               indentWidth,
               selection,
-              selectionMode,
+              selectionMode: checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none,
               viewport,
               checkboxVisibility,
               cellStyleProps,
@@ -433,6 +439,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
         },
+        ...groupProps?.headerProps,
       },
     };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
@@ -564,19 +571,24 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     [theme],
   );
 
-  const focusZoneProps: IFocusZoneProps = {
+  const focusZoneInnerProps: IFocusZoneProps = {
+    ...focusZoneProps,
     componentRef: focusZoneRef,
     className: classNames.focusZone,
-    direction: FocusZoneDirection.vertical,
-    shouldEnterInnerZone: isRightArrow,
-    onActiveElementChanged: onActiveRowChanged,
-    shouldRaiseClicks: false,
-    onBlur: onBlur,
+    direction: focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.vertical,
+    shouldEnterInnerZone:
+      focusZoneProps && focusZoneProps.shouldEnterInnerZone ? focusZoneProps.shouldEnterInnerZone : isRightArrow,
+    onActiveElementChanged:
+      focusZoneProps && focusZoneProps.onActiveElementChanged
+        ? focusZoneProps.onActiveElementChanged
+        : onActiveRowChanged,
+    shouldRaiseClicksOnEnter: false,
+    onBlur: focusZoneProps && focusZoneProps.onBlur ? focusZoneProps.onBlur : onBlur,
   };
 
   const list = groups ? (
     <GroupedList
-      focusZoneProps={focusZoneProps}
+      focusZoneProps={focusZoneInnerProps}
       componentRef={groupedListRef}
       groups={groups}
       groupProps={finalGroupProps}
@@ -596,7 +608,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       compact={compact}
     />
   ) : (
-    <FocusZone {...focusZoneProps}>
+    <FocusZone {...focusZoneInnerProps}>
       <List
         ref={listRef}
         role="presentation"
@@ -1153,16 +1165,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         this._rememberCalculatedWidth(column, column.calculatedWidth!);
       });
     } else {
-      if (resizingColumnIndex !== undefined) {
-        adjustedColumns = this._getJustifiedColumnsAfterResize(
-          newColumns,
-          viewportWidth,
-          newProps,
-          resizingColumnIndex,
-        );
-      } else {
-        adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
-      }
+      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
 
       adjustedColumns.forEach(column => {
         this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
@@ -1237,55 +1240,44 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     });
   }
 
-  private _getJustifiedColumnsAfterResize(
-    newColumns: IColumn[],
-    viewportWidth: number,
-    props: IDetailsListProps,
-    resizingColumnIndex: number,
-  ): IColumn[] {
-    const fixedColumns = newColumns.slice(0, resizingColumnIndex);
-    fixedColumns.forEach(column => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
-
-    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, props), 0);
-
-    const remainingColumns = newColumns.slice(resizingColumnIndex);
-    const remainingWidth = viewportWidth - fixedWidth;
-
-    return [
-      ...fixedColumns,
-      ...this._getJustifiedColumns(remainingColumns, remainingWidth, props, resizingColumnIndex),
-    ];
-  }
-
   /** Builds a set of columns to fix within the viewport width. */
-  private _getJustifiedColumns(
-    newColumns: IColumn[],
-    viewportWidth: number,
-    props: IDetailsListProps,
-    firstIndex: number,
-  ): IColumn[] {
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
     const { selectionMode = this._selection.mode, checkboxVisibility } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
     let totalWidth = 0; // offset because we have one less inner padding.
+    let minimumWidth = 0;
     const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
-      const newColumn = {
+      const baseColumn = {
         ...column,
         calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH,
+      };
+
+      const newColumn = {
+        ...baseColumn,
         ...this._columnOverrides[column.key],
       };
+
+      // eslint-disable-next-line deprecation/deprecation
+      if (!(baseColumn.isCollapsible || baseColumn.isCollapsable)) {
+        minimumWidth += getPaddedWidth(baseColumn, props);
+      }
 
       totalWidth += getPaddedWidth(newColumn, props);
 
       return newColumn;
     });
 
+    if (minimumWidth > availableWidth) {
+      return adjustedColumns;
+    }
+
     let lastIndex = adjustedColumns.length - 1;
 
     // Shrink or remove collapsable columns.
-    while (lastIndex > 0 && totalWidth > availableWidth) {
+    while (lastIndex >= 0 && totalWidth > availableWidth) {
       const column = adjustedColumns[lastIndex];
 
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;

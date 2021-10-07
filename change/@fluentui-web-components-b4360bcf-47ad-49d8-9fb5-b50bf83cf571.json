@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "only show flippers on horizontal scroll when control is hovered",
-  "packageName": "@fluentui/web-components",
-  "email": "robarb@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -42,6 +42,11 @@ export interface ILineChartProps extends ICartesianChartProps {
    */
   onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
 
+  /**
+   * Callback for getting callout description message
+   */
+  getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+
   /*
    * Color fill bars for the chart,
    */

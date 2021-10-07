@@ -1,35 +1,50 @@
-import { STORY_RENDERED } from '@storybook/core-events';
-import addons from '@storybook/addons';
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import Examples from './fixtures/checkbox.html';
-import { FluentCheckbox } from './';
-
-// Prevent tree-shaking
-FluentCheckbox;
-FluentDesignSystemProvider;
-
-addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
-  if (name.toLowerCase().startsWith('checkbox')) {
-    setIndeterminate();
-  }
-});
-
-function setIndeterminate(): void {
-  document.querySelectorAll('.flag-indeterminate').forEach(el => {
-    if (el instanceof FluentCheckbox) {
-      el.indeterminate = true;
-    }
-  });
-}
-
-document.addEventListener('readystatechange', () => {
-  if (document.readyState === 'complete') {
-    setIndeterminate();
-  }
-});
+import { fluentCheckbox } from './index';
 
 export default {
-  title: 'Checkbox',
+  title: 'Components/Checkbox',
+  component: fluentCheckbox,
+  argTypes: {
+    checked: {
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    required: {
+      control: { type: 'boolean' },
+    },
+  },
+  parameters: {
+    actions: {
+      handles: ['mouseover', 'click'],
+    },
+  },
 };
 
-export const Checkbox = (): string => Examples;
+const CheckboxTemplate = ({ checked, disabled, label, required }) =>
+  `<fluent-checkbox
+    ${checked ? 'checked' : ''}
+    ${disabled ? 'disabled' : ''}
+    ${required ? 'required' : ''}
+    >${label}</fluent-checkbox>`;
+
+export const Checkbox = CheckboxTemplate.bind({});
+
+Checkbox.args = {
+  label: 'Label',
+  checked: false,
+  disabled: false,
+  required: false,
+};
+
+const example = `
+<fluent-checkbox>Checkbox</fluent-checkbox>
+`;
+
+Checkbox.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

@@ -7,19 +7,19 @@ These are not production-ready components and **should never be used in product*
 To import React Popover components:
 
 ```js
-import { Popover, PopoverTrigger, PopoverContent } from '@fluentui/react-popover';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 
 <Popover>
   <PopoverTrigger>
     <button>Controls popover</button>
   </PopoverTrigger>
 
-  <PopoverContent>
+  <PopoverSurface>
     <div className={example}>
       <h3>Popover content</h3>
 
       <div>This is some popover content</div>
     </div>
-  </PopoverContent>
+  </PopoverSurface>
 </Popover>;
 ```

@@ -105,18 +105,20 @@ export class Page extends React.Component<IPageProps, IPageState> {
           sectionWrapperClassName,
         )}
       >
-        {// Map over array of section objects in order to add increasing transitionDelay to stagger load animation.
-        sections.map((section: IPageSectionProps, sectionIndex: number) => {
-          const { renderAs: SectionType = OtherPageSection, className, style, ...rest } = section;
-          return (
-            <SectionType
-              key={section.id || sectionIndex}
-              {...rest}
-              className={css(className, styles.section)}
-              style={{ transitionDelay: `${sectionIndex * SECTION_STAGGER_INTERVAL}s` }}
-            />
-          );
-        })}
+        {
+          // Map over array of section objects in order to add increasing transitionDelay to stagger load animation.
+          sections.map((section: IPageSectionProps, sectionIndex: number) => {
+            const { renderAs: SectionType = OtherPageSection, className, style, ...rest } = section;
+            return (
+              <SectionType
+                key={section.id || sectionIndex}
+                {...rest}
+                className={css(className, styles.section)}
+                style={{ transitionDelay: `${sectionIndex * SECTION_STAGGER_INTERVAL}s` }}
+              />
+            );
+          })
+        }
       </div>
     );
   };

@@ -86,7 +86,7 @@ const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailP
             {renderFolderCoverWithLayout(folderCover, {
               children: imageSize ? (
                 <img
-                  src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+                  src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
                   className={css(TileExampleStyles.tileImage)}
                 />
               ) : null,

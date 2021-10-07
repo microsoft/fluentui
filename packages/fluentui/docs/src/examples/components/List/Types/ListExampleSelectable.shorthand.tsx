@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Image } from '@fluentui/react-northstar';
+import { Box, List, Image } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -25,6 +25,14 @@ const items = [
   },
 ];
 
-const ListExampleSelectable = () => <List selectable defaultSelectedIndex={0} items={items} />;
+const ListExampleSelectable = () => (
+  <Box
+    styles={({ theme: { siteVariables } }) => ({
+      backgroundColor: siteVariables.colorScheme.default.background4,
+    })}
+  >
+    <List selectable defaultSelectedIndex={0} items={items} />
+  </Box>
+);
 
 export default ListExampleSelectable;

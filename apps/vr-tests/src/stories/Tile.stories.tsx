@@ -74,7 +74,7 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
 
     return (
       <img
-        src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
         style={{ display: 'block' }}
       />
     );
@@ -108,7 +108,7 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
   function renderBackground(backgroundProps: ITileBackgroundProps) {
     return (
       <img
-        src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
         style={{ display: 'block' }}
       />
     );

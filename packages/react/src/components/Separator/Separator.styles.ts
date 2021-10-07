@@ -1,5 +1,5 @@
 import { HighContrastSelector } from '../../Styling';
-import { ISeparatorStyleProps, ISeparatorStyles } from './Separator.types';
+import type { ISeparatorStyleProps, ISeparatorStyles } from './Separator.types';
 
 export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
   const { theme, alignContent, vertical, className } = props;

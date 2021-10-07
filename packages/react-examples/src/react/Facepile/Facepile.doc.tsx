@@ -29,12 +29,8 @@ export const FacepilePageProps: IDocPageProps = {
       view: <FacepileAddFaceExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/docs/FacepileOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/docs/FacepileBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/docs/FacepileOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/docs/FacepileBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

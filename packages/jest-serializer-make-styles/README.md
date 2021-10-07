@@ -8,17 +8,13 @@ When using Jest snapshot testing with components that use `@fluentui/make-styles
 rendered as such:
 
 ```html
-<div className="static-class __1qdh4ig f16th3vw frdkuqy0 fat0sn40 fjseox00">
-  Hello world
-</div>
+<div className="static-class __1qdh4ig f16th3vw frdkuqy0 fat0sn40 fjseox00">Hello world</div>
 ```
 
 Using this serializer, the generated class names will be stripped
 
 ```html
-<div className="static-class">
-  Hello world
-</div>
+<div className="static-class">Hello world</div>
 ```
 
 This means that your tests can pass reliably (no generated class names) and your rules get included in the snapshot. (Snapshots doesn't need update when css is altered.)

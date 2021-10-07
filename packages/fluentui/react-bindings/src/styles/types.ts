@@ -3,19 +3,17 @@ import { ProviderContextPrepared } from '../context';
 
 // Notice:
 // This temporary lives here, will be remove once `animation` prop will be dropped
-export type ComponentAnimationProp =
-  | {
-      name: string;
-      delay?: string;
-      direction?: string;
-      duration?: string;
-      fillMode?: string;
-      iterationCount?: string;
-      playState?: string;
-      timingFunction?: string;
-      keyframeParams?: object;
-    }
-  | string;
+export type ComponentAnimationProp = {
+  name: string;
+  delay?: string;
+  direction?: string;
+  duration?: string;
+  fillMode?: string;
+  iterationCount?: string;
+  playState?: string;
+  timingFunction?: string;
+  keyframeParams?: object;
+};
 
 export type ComponentSlotClasses = Record<string, string>;
 

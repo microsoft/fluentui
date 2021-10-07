@@ -3,8 +3,9 @@ import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { createTheme, Theme, PartialTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
+import type { Theme, PartialTheme } from '@fluentui/theme';
 
 const lightTheme: PartialTheme = {
   semanticColors: {
@@ -54,14 +55,8 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const themeProvider1 = wrapper
-      .find('.tp-1')
-      .first()
-      .getDOMNode();
-    const themeProvider2 = wrapper
-      .find('.tp-2')
-      .first()
-      .getDOMNode();
+    const themeProvider1 = wrapper.find('.tp-1').first().getDOMNode();
+    const themeProvider2 = wrapper.find('.tp-2').first().getDOMNode();
 
     expect(themeProvider1.getAttribute('dir')).toBe('rtl');
     expect(themeProvider2.getAttribute('dir')).toBe('ltr');

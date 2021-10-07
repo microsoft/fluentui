@@ -6,7 +6,7 @@ describe('DropdownSearchInput', () => {
     testPath: __filename,
     constructorName: 'DropdownSearchInput',
     hasAccessibilityProp: false,
-    disabledTests: ['as-renders-fc', 'as-passes-as-value', 'as-renders-html', 'as-renders-react-class'],
+    skipAsPropTests: true,
     eventTargets: {
       onKeyUp: `.${dropdownSearchInputSlotClassNames.input}`,
       onFocus: `.${dropdownSearchInputSlotClassNames.input}`,

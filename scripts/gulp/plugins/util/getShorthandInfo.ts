@@ -107,9 +107,9 @@ const getShorthandInfo = (componentFile: t.File, componentName: string): Shortha
           ) as NodePath<t.ObjectProperty> | undefined;
 
           if (shorthandConfigPath) {
-            const shorthandConfigPropertiesPaths = shorthandConfigPath.get('value.properties') as NodePath<
-              t.ObjectProperty
-            >[];
+            const shorthandConfigPropertiesPaths = shorthandConfigPath.get(
+              'value.properties',
+            ) as NodePath<t.ObjectProperty>[];
             const shorthandMappedPropertyPath = shorthandConfigPropertiesPaths.find(property =>
               (property.get('key') as NodePath<t.Identifier>).isIdentifier({ name: 'mappedProp' }),
             );

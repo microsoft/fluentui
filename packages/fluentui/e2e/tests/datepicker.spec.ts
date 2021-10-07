@@ -10,6 +10,7 @@ describe('Datepicker', () => {
   const datepicker = `.${selectors.DatepickerClassName}`;
   const datepickerButton = `.${selectors.DatepickerClassName}>button`;
   const datepickerCalendar = `.${selectors.CalendarClassName}`;
+  const datepickerInput = `.${selectors.DatepickerClassName} input`;
 
   const datepickerCalendarCell = index => {
     const row = Math.floor((index - 1) / 7);
@@ -89,5 +90,18 @@ describe('Datepicker', () => {
     cy.waitForSelectorAndPressKey(datepickerCalendar, '{end}', 'Control');
     cy.isFocused(datepickerCalendarCell(42)); // 42 is a magic number
     cy.expectTextOf(datepickerCalendarCell(42), '2'); // which represents August 2, 2020, last cell in the grid
+  });
+
+  it('Type in input works', () => {
+    cy.get(datepickerInput)
+      .focus()
+      .clear()
+      .should('have.value', '')
+      .type('August 2')
+      .should('have.value', 'August 2, 2001');
+
+    cy.clickOn(datepickerButton);
+    cy.visible(datepickerCalendar);
+    cy.isFocused(datepickerCalendarCell(11));
   });
 });

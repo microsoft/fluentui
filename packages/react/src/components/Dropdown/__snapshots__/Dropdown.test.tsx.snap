@@ -106,9 +106,7 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-invalid={false}
-      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -179,6 +177,7 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
 
 exports[`Dropdown multi-select Renders correctly when open 1`] = `
 <div
+  aria-owns="Dropdown0-list"
   class="ms-Dropdown-container"
 >
   <div
@@ -280,9 +279,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
     tabindex="0"
   >
     <span
-      aria-atomic="true"
       aria-invalid="false"
-      aria-live="polite"
       class=
           ms-Dropdown-title
           {
@@ -422,7 +419,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                   overflow-y: auto;
                   position: relative;
                 }
-            style="outline: none;"
+            style="outline: none; max-height: 100%;"
           >
             <div
               class=
@@ -622,11 +619,8 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
-                    title="1"
                   >
                     <input
-                      aria-checked="true"
-                      aria-label="1"
                       aria-posinset="1"
                       aria-selected="true"
                       aria-setsize="2"
@@ -651,7 +645,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                       id="Dropdown0-list1"
                       role="option"
                       tabindex="0"
-                      title="1"
                       type="checkbox"
                     />
                     <label
@@ -879,8 +872,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                   title="test"
                 >
                   <input
-                    aria-checked="false"
-                    aria-label="2"
                     aria-posinset="2"
                     aria-selected="false"
                     aria-setsize="2"
@@ -1128,9 +1119,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-invalid={false}
-      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -1201,6 +1190,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
 
 exports[`Dropdown single-select Renders correctly when open 1`] = `
 <div
+  aria-owns="Dropdown0-list"
   class="ms-Dropdown-container"
 >
   <div
@@ -1302,9 +1292,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
     tabindex="0"
   >
     <span
-      aria-atomic="true"
       aria-invalid="false"
-      aria-live="polite"
       class=
           ms-Dropdown-title
           {
@@ -1444,7 +1432,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                   overflow-y: auto;
                   position: relative;
                 }
-            style="outline: none;"
+            style="outline: none; max-height: 100%;"
           >
             <div
               class=
@@ -1655,7 +1643,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                     id="Dropdown0-list1"
                     role="option"
                     tabindex="0"
-                    title="1"
                     type="button"
                   >
                     <span

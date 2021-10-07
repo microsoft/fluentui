@@ -41,34 +41,13 @@ export interface MakeStaticStylesOptions {
   renderer: MakeStylesRenderer;
 }
 
-// Build time / runtime types
-
-export type MakeStylesResolvedRule = [
-  /* bucketName */ StyleBucketName,
-  /* className */ string | undefined,
-  /* css */ string,
-  /* rtlClassName */ string?,
-  /* rtlCSS */ string?,
-];
-
-// Renderer types
-
-export type MakeStylesReducedDefinitions = Record<string, MakeStylesResolvedRule>;
-
-/**
- * A type for transformed styles, matches an output from build time transforms.
- *
- * @internal
- */
-export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
-
 export interface MakeStylesRenderer {
   id: string;
 
   /**
    * @private
    */
-  insertionCache: Record<string, true>;
+  insertionCache: Record<string, StyleBucketName>;
 
   /**
    * @private
@@ -78,7 +57,7 @@ export interface MakeStylesRenderer {
   /**
    * @private
    */
-  insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesReducedDefinitions): string;
+  insertCSSRules(cssRules: CSSRulesByBucket): void;
 }
 
 /**
@@ -86,7 +65,7 @@ export interface MakeStylesRenderer {
  */
 export type StyleBucketName =
   // default
-  | ''
+  | 'd'
   // link
   | 'l'
   // visited
@@ -106,4 +85,16 @@ export type StyleBucketName =
   // at-rules (@media, @support)
   | 't';
 
-export type LookupItem = [/* definitions: */ MakeStylesReducedDefinitions, /* dir:  */ 'rtl' | 'ltr'];
+export type SequenceHash = string;
+export type PropertyHash = string;
+
+export type CSSClasses = /* ltrClassName */ string | [/* ltrClassName */ string, /* rtlClassName */ string];
+
+export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
+export type CSSClassesMapBySlot<Slots extends string | number> = Record<Slots, CSSClassesMap>;
+
+export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
+
+export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
+
+export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ 'rtl' | 'ltr'];

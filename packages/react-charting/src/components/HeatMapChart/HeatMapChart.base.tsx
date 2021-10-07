@@ -1,4 +1,5 @@
 import {
+  IAccessibilityProps,
   CartesianChart,
   IChildProps,
   IModifiedCartesianChartProps,
@@ -13,7 +14,7 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import { ChartTypes, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
+import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
@@ -80,6 +81,10 @@ export interface IHeatMapChartState {
    * id to give to callout for accesiblity purpose
    */
   calloutId: string;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
@@ -175,6 +180,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       styles: this._classNames.subComponentStyles.calloutStyles,
       directionalHint: DirectionalHint.bottomLeftEdge,
       onDismiss: this._closeCallout,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
+      preventDismissOnLostFocus: true,
     };
     const chartHoverProps: IModifiedCartesianChartProps['chartHoverProps'] = {
       ...(this.state.ratio && {
@@ -248,6 +255,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: data.ratio || null,
       descriptionMessage: data.descriptionMessage || '',
       calloutId: id,
+      callOutAccessibilityData: data.callOutAccessibilityData,
     });
   };
 
@@ -262,6 +270,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: data.ratio || null,
       descriptionMessage: data.descriptionMessage || '',
       calloutId: id,
+      callOutAccessibilityData: data.callOutAccessibilityData,
     });
   };
 
@@ -311,6 +320,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               fill={this._colorScale(dataPointObject.value)}
               width={this._xAxisScale.bandwidth()}
               height={this._yAxisScale.bandwidth()}
+              onClick={dataPointObject.onClick}
             />
             <text
               dominantBaseline={'middle'}

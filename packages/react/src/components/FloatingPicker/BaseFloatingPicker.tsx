@@ -3,11 +3,11 @@ import * as stylesImport from './BaseFloatingPicker.scss';
 import { Async, initializeComponentRef, css, KeyCodes } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
-import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
-import { ISuggestionModel } from '../../Pickers';
-import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import type { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
+import type { ISuggestionModel } from '../../Pickers';
+import type { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 
 const styles: any = stylesImport;
 
@@ -25,9 +25,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   protected root = React.createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
   protected suggestionsControl: React.RefObject<SuggestionsControl<T>> = React.createRef();
-  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<
-    T
-  > = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
+  protected SuggestionsControlOfProperType: new (
+    props: ISuggestionsControlProps<T>,
+  ) => SuggestionsControl<T> = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
   protected currentPromise: PromiseLike<T[]>;
   protected isComponentMounted: boolean = false;
 

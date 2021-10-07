@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Calenda :announce the date in the order [day], [month], [year]",
-  "packageName": "@fluentui/react",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,6 @@
-import { ShadowLevelTokens } from '../types';
+import type { ShadowTokens } from '../types';
 
-export function createShadowLevelTokens(ambientColor: string, keyColor: string): ShadowLevelTokens {
+export function createShadowTokens(ambientColor: string, keyColor: string): ShadowTokens {
   return {
     shadow2: `0 0 2px ${ambientColor}, 0 1px 2px ${keyColor}`,
     shadow4: `0 0 2px ${ambientColor}, 0 2px 4px ${keyColor}`,

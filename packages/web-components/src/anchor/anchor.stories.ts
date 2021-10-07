@@ -1,13 +1,39 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import AnchorTemplate from './fixtures/anchor.html';
-import { FluentAnchor } from './';
-
-// Prevent tree-shaking
-FluentAnchor;
-FluentDesignSystemProvider;
+import { fluentAnchor } from './index';
 
 export default {
-  title: 'Anchor',
+  title: 'Components/Anchor',
+  component: fluentAnchor,
+  argTypes: {
+    appearance: {
+      options: ['neutral', 'accent', 'hypertext', 'lightweight', 'outline', 'stealth'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
-export const Anchor = (): string => AnchorTemplate;
+const AnchorTemplate = ({ appearance, label }) => `
+  <fluent-anchor 
+    ${appearance ? `appearance="${appearance}"` : ''}
+  >
+    ${label}
+  </fluent-anchor>
+`;
+
+export const Anchor = AnchorTemplate.bind({});
+
+const example = `
+<fluent-anchor href="#">Anchor</fluent-anchor>
+`;
+
+Anchor.args = {
+  label: 'Anchor',
+  appearance: 'neutral',
+};
+
+Anchor.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

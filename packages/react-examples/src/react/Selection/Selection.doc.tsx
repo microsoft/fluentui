@@ -15,8 +15,6 @@ export const SelectionPageProps: IDocPageProps = {
       view: <SelectionBasicExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Selection/docs/SelectionOverview.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Selection/docs/SelectionOverview.md'),
   isHeaderVisible: true,
 };

@@ -1,8 +1,66 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.1)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.4.0..@fluentui/eslint-plugin_v1.4.1)
+
+### Patches
+
+- Updating eslint max-len rule exclusion for imports/exports. ([PR #19475](https://github.com/microsoft/fluentui/pull/19475) by dzearing@hotmail.com)
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.0)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.3..@fluentui/eslint-plugin_v1.4.0)
+
+### Minor changes
+
+- Add eslint-plugin-jsdoc to check for jsdoc errors ([PR #19271](https://github.com/microsoft/fluentui/pull/19271) by behowell@microsoft.com)
+
+## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.3)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.2..@fluentui/eslint-plugin_v1.3.3)
+
+### Patches
+
+- Enable exhaustive-deps rule for useIsomorphicLayoutEffect ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.2)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.1..@fluentui/eslint-plugin_v1.3.2)
+
+### Patches
+
+- chore: migrate packages(mostly eslint related)  to single version policy ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [1.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.1)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.0..@fluentui/eslint-plugin_v1.3.1)
+
+### Patches
+
+- fix(eslint-plugin): properly resolve configs for projects that use solution kind of TS config ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.0)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.2.0..@fluentui/eslint-plugin_v1.3.0)
+
+### Minor changes
+
+- Update dependencies, remove eslint@6 from peer deps, and remove usage of process.cwd() ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+### Patches
+
+- Update eslint-plugin-prettier and disable arrow-body-style rule ([PR #18041](https://github.com/microsoft/fluentui/pull/18041) by elcraig@microsoft.com)
 
 ## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.2.0)
 

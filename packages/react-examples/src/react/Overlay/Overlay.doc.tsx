@@ -23,12 +23,8 @@ export const OverlayPageProps: IDocPageProps = {
       view: <OverlayDarkExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/docs/OverlayOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/docs/OverlayBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/docs/OverlayOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/docs/OverlayBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/docs/OverlayDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/docs/OverlayDonts.md'),
   isHeaderVisible: true,

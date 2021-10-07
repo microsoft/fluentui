@@ -9,7 +9,7 @@ import { DetailsRow, IColumn, Selection, SelectionMode, IDetailsRowStyles } from
 const ITEMS = createArray(10, index => ({
   key: index.toString(),
   name: 'Item-' + index,
-  url: 'http://placehold.it/100x' + (100 + index!),
+  url: 'http://via.placeholder.com/100x' + (100 + index!),
 }));
 
 const COLUMNS: IColumn[] = [

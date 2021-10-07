@@ -1,5 +1,6 @@
 import { useAutoControlled } from '@fluentui/react-bindings';
 import { shallow } from 'enzyme';
+import { renderHook, act } from '@testing-library/react-hooks';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
@@ -129,5 +130,21 @@ describe('useAutoControlled', () => {
       wrapper.setProps({ value: undefined });
     });
     expect(wrapper.find('input').prop('value')).toBe('foo');
+  });
+
+  it('should update function passing updated value', () => {
+    const { result, rerender } = renderHook(
+      ({ value }) => useAutoControlled<string>({ defaultValue: '', value }),
+      {
+        initialProps: { value: 'a' },
+      },
+    );
+    rerender({ value: 'b' });
+
+    const dispatchSpy = jest.fn();
+    act(() => {
+      result.current[1](dispatchSpy);
+    });
+    expect(dispatchSpy).toBeCalledWith('b');
   });
 });
