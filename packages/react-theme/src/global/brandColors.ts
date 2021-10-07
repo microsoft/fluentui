@@ -17,19 +17,18 @@ export const brandWeb: BrandVariants = {
   tint60: '#EFF6FC',
 };
 
-// TODO: these colors are not approved yet
 export const brandTeams: BrandVariants = {
-  shade60: '#323348',
-  shade50: '#393b5d', // TBD
-  shade40: '#3D3E66',
-  shade30: '#464775',
-  shade20: '#494B83',
-  shade10: '#52558f', // TBD
-  primary: '#6264A7',
-  tint10: '#8f95f8', // TBD
-  tint20: '#9EA2FF',
-  tint30: '#B2B5FF',
-  tint40: '#C7C9FF',
-  tint50: '#DBDCF0',
-  tint60: '#E9EAF6',
+  shade60: '#2f2f4a',
+  shade50: '#333357',
+  shade40: '#383966',
+  shade30: '#3d3e78',
+  shade20: '#444791',
+  shade10: '#4f52b2',
+  primary: '#5b5fc7',
+  tint10: '#7a80eb',
+  tint20: '#9399f5',
+  tint30: '#acb3fa',
+  tint40: '#c5cbfa',
+  tint50: '#dcdffa',
+  tint60: '#e8ebfa',
 };
