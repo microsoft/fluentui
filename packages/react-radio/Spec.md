@@ -2,13 +2,43 @@
 
 ## Background
 
-_Description and use cases of this component_
+The Radio component let people select a single option from two or more choices. Use radio component to present all available choices up to 7 options.
 
-## Prior Art
+Fabric expects the options to be provided through the `options` prop. The selected value is the key of the option using the `selectedKey`.
+Fabric allows options to have image instead of a label.
+
+```jsx
+<ChoiceGroup
+  defaultSelectedKey="B"
+  options={[
+    { key: 'A', text: 'Option A' },
+    { key: 'B', text: 'Option B' },
+    { key: 'C', text: 'Option C', disabled: true },
+    { key: 'D', text: 'Option D' },
+  ]}
+  label="Pick one"
+  required={true}
+/>
+```
+
+Northstar's implementation consists of `RadioGroup` that includes two or more `RadioItems`, which are given thorugh the `items` prop.
+
+```jsx
+<RadioGroup
+  onCheckedValueChange={handleChange}
+  items={[
+    { key: '1', label: 'Make your choice', value: '1' },
+    { key: '2', label: 'Another option', value: '2' },
+  ]}
+/>
+```
+
+### Prior Art
 
 - [OpenUI research](https://open-ui.org/components/radio-button.research)
+- [Epic](https://github.com/microsoft/fluentui/issues/19953)
 
-## Comparison of [Fabric ChoiceGroup](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup) and [Stardust RadioGroup](https://fluentsite.z22.web.core.windows.net/0.54.0/components/radio-group/definition)
+### Comparison of [Fabric ChoiceGroup](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup) and [Stardust RadioGroup](https://fluentsite.z22.web.core.windows.net/0.54.0/components/radio-group/definition)
 
 - All mentions of v7 or v8 refer to Fabric - `@fluentui/react` ([docsite](https://developer.microsoft.com/en-us/fluentui#/))
 - All mentions of v0 refer to Northstar - `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
@@ -70,9 +100,30 @@ _⚠️Props not included in this section are marked as depricated and will not 
 
 _Include background research done for this component_
 
-- _Link to Open UI research_
+- _Link to Open UI research_ ✔️
 - _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+- _Link to GitHub epic issue for the converged component_ ✔️
+
+Questions❓
+
+- what requirements should Radio fulfil in order to be compatible/used with Field?
+- Is it thought of that Radio, input etc. to be coupled with Field or they can stand on their own?
+
+```jsx
+<Field className="rootClass" label="hello" description={<div>fancy hello</div>} errorMessage="aka.ms/nohello" required>
+  <RadioGroup items={[{}, {}]} />
+</Field>
+```
+
+## Proposal
+
+`RadioItem` as a small customizable component:
+
+```jsx
+options.map(option => <RadioItem checked={option.text === 'Option A'} {...option}>)
+```
+
+Maybe use Field or another component likse RadioGroup to be used with RadioItem ?.
 
 ## Sample Code
 
