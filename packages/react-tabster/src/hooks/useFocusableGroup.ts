@@ -2,26 +2,11 @@ import { Types, getGroupper } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 
-export enum FocusableGroupTabBehavior {
-  /**
-   * Tab will cycle into and out of the groupper content.
-   */
-  Unlimited = Types.GroupperTabbabilities.Unlimited,
-  /**
-   * Tab will cycle out of the container, but not into it.
-   */
-  Limited = Types.GroupperTabbabilities.Limited,
-  /**
-   * Tab only cycles the inner elements.
-   */
-  LimitedTrapFocus = Types.GroupperTabbabilities.LimitedTrapFocus,
-}
-
 export interface UseFocusableGroupOptions {
   /**
-   * Type of TAB key interaction.
+   * Behavior for the Tab key.
    */
-  tabBehavior?: FocusableGroupTabBehavior;
+  tabBehavior?: 'unlimited' | 'limited' | 'limitedTrapFocus';
 }
 
 /**
@@ -37,7 +22,22 @@ export const useFocusableGroup = (options?: UseFocusableGroupOptions) => {
 
   return useTabsterAttributes({
     groupper: {
-      tabbability: options?.tabBehavior as Types.GroupperTabbability,
+      tabbability: getTabbability(options?.tabBehavior),
     },
   });
+};
+
+const getTabbability = (
+  tabBehavior?: UseFocusableGroupOptions['tabBehavior'],
+): Types.GroupperTabbability | undefined => {
+  switch (tabBehavior) {
+    case 'unlimited':
+      return Types.GroupperTabbabilities.Unlimited;
+    case 'limited':
+      return Types.GroupperTabbabilities.Limited;
+    case 'limitedTrapFocus':
+      return Types.GroupperTabbabilities.LimitedTrapFocus;
+    default:
+      return undefined;
+  }
 };

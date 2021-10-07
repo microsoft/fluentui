@@ -25,13 +25,6 @@ export const createFocusOutlineStyle: (theme: Theme, options?: {
 } & CreateFocusIndicatorStyleRuleOptions) => MakeStyles;
 
 // @public (undocumented)
-export enum FocusableGroupTabBehavior {
-    Limited,
-    LimitedTrapFocus,
-    Unlimited
-}
-
-// @public (undocumented)
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
 
 // @public (undocumented)
@@ -57,7 +50,7 @@ export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined)
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
-    tabBehavior?: FocusableGroupTabBehavior;
+    tabBehavior?: 'unlimited' | 'limited' | 'limitedTrapFocus';
 }
 
 // @public
