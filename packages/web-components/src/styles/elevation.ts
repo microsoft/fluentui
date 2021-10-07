@@ -6,12 +6,14 @@
  * https://github.com/microsoft/fast/issues/2778
  *
  * @internal
+ * @deprecated Will be replaced
  */
 export const ambientShadow =
   '0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(0, 0, 0, calc(.11 * (2 - var(--background-luminance, 1))))';
 
 /**
  * @internal
+ * @deprecated Will be replaced
  */
 export const directionalShadow =
   '0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px)) rgba(0, 0, 0, calc(.13 * (2 - var(--background-luminance, 1))))';
@@ -22,5 +24,6 @@ export const directionalShadow =
  * by setting --elevation to a number.
  *
  * @public
+ * @deprecated Will be replaced
  */
 export const elevation = `box-shadow: ${ambientShadow}, ${directionalShadow};`;
