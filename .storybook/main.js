@@ -65,6 +65,11 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
       });
     }
 
+    if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
+      // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
+      config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
+    }
+
     return config;
   },
 
