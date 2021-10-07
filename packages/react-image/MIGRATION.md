@@ -33,23 +33,23 @@ _This property suffered no changes and can be left as is._
 
 The bahviour of this prop can be achived using the `fit` prop with the value of `cover`.
 
-```
-<Image src="example.jpg" fit="cover"/>
+```jsx
+<Image src="example.jpg" fit="cover" />
 ```
 
 ### imageFit
 
 This can be achieved with the `fit` prop by asigning the value of `contain`.
 
-```
-<Image src="example.jpg" fit="contain"/>
+```jsx
+<Image src="example.jpg" fit="contain" />
 ```
 
 ### maximizeFrame
 
 This prop has been renamed to `block` which will result into the same behaviour as before.
 
-```
+```jsx
 <Image src="example.jpg" block>
 ```
 
@@ -65,22 +65,23 @@ For v9, this feature is no longer supported. The alternative would be to use the
 
 For v9, this feature is no longer supported. The alternative is to apply the animation through `make-styles` and using the global event `onLoad`. Below is an example of a migration:
 
-> ⚠️❌🚧 Note - This snipped needs changes!! ❌🚧
-
 ```jsx
+import { useState } from 'react';
+import { Image } from '@fluentui/react-image';
+import { makeStyles } from '@fluentui/react-make-styles';
+
 const useStyles = makeStyles(theme => ({
   fadeIn400: {
     animationName: {
-      '0px' : {
-        opacity: 0
+      from : {
+        opacity: 0,
       },
-      '100%': {
-        opacity: 1
+      to: {
+        opacity: 1,
       }
     },
-    //need to change
-    animationIterationCount: 'normal',
-    animationDuration: '3s',
+    animationIterationCount: 'infinite',
+    animationDuration: '0.367s',
   },
 })
 
@@ -88,7 +89,7 @@ const MyComponent = () => {
     const [isLoaded, setLoaded] = useState(false);
     const styles = useStyles()
 
-    return <Image src="example.jpg" onLoad={()=> setLoaded(true)} className={!isLoaded? styles.fadeIn400 ? ''} />
+    return <Image src="example.jpg" onLoad={()=> setLoaded(true)} className={!isLoaded? styles.fadeIn400 : ''} />
 }
 ```
 
@@ -174,16 +175,16 @@ This property is no longer in the v9. The Image prop will always be an `<img/>` 
 
 This can be achieved using the `shape` prop with the value of `circular`.
 
-```
-<Image src="example.jpg" shape="circular"/>
+```jsx
+<Image src="example.jpg" shape="circular" />
 ```
 
 ### circular
 
 This can be achieved using the `shape` prop with the value of `circular`.
 
-```
-<Image src="example.jpg" shape="circular"/>
+```jsx
+<Image src="example.jpg" shape="circular" />
 ```
 
 ### className
@@ -194,8 +195,8 @@ _This property suffered no changes and can be left as is._
 
 The behaviour of the `fluid` prop can be achieved with the use of the `block` prop.
 
-```
-<Image src="example.jpg" block/>
+```jsx
+<Image src="example.jpg" block />
 ```
 
 ### styles
@@ -208,15 +209,18 @@ For v9, this feature is no longer supported. The alternative is to apply styles 
 
 #### v0 (Northstar) implementation
 
-```
+```jsx
 const MyComponent = () => {
-  return <Image src="example.jpg" variables={{ width: '100px' }} />
-}
+  return <Image src="example.jpg" variables={{ width: '100px' }} />;
+};
 ```
 
 #### v9 (Fluent UI vNext) implementation
 
-```
+```jsx
+import { Image } from '@fluentui/react-image';
+import { makeStyles } from '@fluentui/react-make-styles';
+
 const useStyles = makeStyles(theme => ({
   width100: {
      width: '100px'
