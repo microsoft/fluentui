@@ -83,7 +83,81 @@ The global theming concept can be implemented very similar to how it's done in v
 2. Provide a `loadGlobalTheme` API that changes this variable. When `loadGlobalTheme` is called it notifies observers that the theme has changed
 3. `<FluentProvider>` is one such observer, and updates internally when this happens. It picks up the value of `globalTheme` and merges it with any `theme` prop or parent theme as it already does today in v8
 
-A very rough prototype can be seen here: [add link]
+A very rough prototype can be seen here:
+
+Branch: https://github.com/kelseyyoung/office-ui-fabric-react/tree/keyou/global-theme-prototype
+
+PR against Fluent master: https://github.com/microsoft/fluentui/compare/master...kelseyyoung:keyou/global-theme-prototype?expand=1
+
+Excerpt from `useFluentProvider.ts` which has most of the relevant code
+
+```
+let globalTheme: Theme | undefined = undefined;
+const globalThemeChangedCallbacks: Array<() => void> = [];
+
+export function loadGlobalTheme(newTheme: Theme): void {
+  globalTheme = newTheme;
+  globalThemeChangedCallbacks.forEach(callback => callback());
+}
+
+export function registerOnGlobalThemeChanged(callback: () => void) {
+  if (globalThemeChangedCallbacks.indexOf(callback) === -1) {
+    globalThemeChangedCallbacks.push(callback);
+  }
+}
+
+export function unregisterOnGlobalThemeChanged(callback: () => void) {
+  const i = globalThemeChangedCallbacks.indexOf(callback);
+  if (i === -1) {
+    return;
+  }
+
+  globalThemeChangedCallbacks.splice(i, 1);
+}
+
+function useForceUpdate() {
+  const [, setValue] = React.useState(0);
+  return () => setValue(value => ++value);
+}
+
+export function useGlobalTheme(useGlobalTheme: boolean): Theme | undefined {
+  if (useGlobalTheme) {
+    const forceUpdate = useForceUpdate();
+    React.useEffect(() => {
+      registerOnGlobalThemeChanged(forceUpdate);
+      return () => {
+        unregisterOnGlobalThemeChanged(forceUpdate);
+      };
+    });
+    return globalTheme;
+  }
+  return undefined;
+}
+
+/**
+ * Create the state required to render FluentProvider.
+ *
+ * The returned state can be modified with hooks such as useFluentProviderStyles,
+ * before being passed to renderFluentProvider.
+ *
+ * @param props - props from this instance of FluentProvider
+ * @param ref - reference to root HTMLElement of FluentProvider
+ */
+export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTMLElement>): FluentProviderState => {
+  const parentContext = useFluent();
+  const parentTheme = useTheme();
+  const globalTheme = useGlobalTheme(!!props.useGlobalTheme);
+
+  /**
+   * TODO: add merge functions to "dir" merge,
+   * nesting providers with the same "dir" should not add additional attributes to DOM
+   * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
+   */
+  const { dir = parentContext.dir, targetDocument = parentContext.targetDocument, theme = {} } = props;
+  // NOTE: global theme has to come after parentTheme just for now because in the examples there is a parent
+  // that will override the global. Need to figure out the right pattern here
+  const mergedTheme = mergeThemes(mergeThemes(parentTheme, globalTheme), theme);
+```
 
 Alongside the basic principles above, there are other things included in this changeset
 
@@ -94,8 +168,6 @@ Alongside the basic principles above, there are other things included in this ch
 3. Because `loadGlobalTheme` is a plain javascript function, alongside `globalTheme` being a plain javascript variable, `useForceUpdate` is required for `<FluentProvider>` to update. This again was taken directly from the v8 implementation
 
 Example usage can be seen in `FluentProvider.stories.tsx`
-
-[Example code here]
 
 At any "root" of Fluent code, a developer simply needs to put
 
@@ -160,7 +232,9 @@ As mentioned in the Summary, there are still other possibilities to improve the 
 2. This code in `useFluentProvider.ts`
 
 ```
-const mergedTheme = mergeThemes(mergeThemes(parentTheme, globalTheme || {}), theme);
+// NOTE: global theme has to come after parentTheme just for now because in the examples there is a parent
+// that will override the global. Need to figure out the right pattern here
+const mergedTheme = mergeThemes(mergeThemes(parentTheme, globalTheme), theme);
 ```
 
-mergeThemes only allows for two arguments, creating this ugly merging. As mentioned above the order is up for debate too
+mergeThemes only allows for two arguments, creating this ugly merging. As mentioned above the order is up for debate too, I had to hack it to make it work in the FluentProvider demo
