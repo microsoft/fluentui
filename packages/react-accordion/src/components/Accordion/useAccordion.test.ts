@@ -16,6 +16,7 @@ describe('useAccordion', () => {
     expect(result.current.openItems.includes(1)).toBeTruthy();
   });
 
+  // TODO: fix this state, right now we can't ensure collapsible on first render
   it('should respect "multiple" behavior', () => {
     const { result } = renderHook(() => useAccordion({ multiple: true }, React.createRef()));
 
