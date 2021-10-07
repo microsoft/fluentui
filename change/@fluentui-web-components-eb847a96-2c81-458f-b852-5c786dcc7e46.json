@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update token file order and deprecations to prepare for vNext",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
