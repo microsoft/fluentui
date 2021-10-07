@@ -6,6 +6,8 @@ exports[`AccordionHeader renders a default state 1`] = `
   role="heading"
 >
   <button
+    aria-disabled={false}
+    aria-expanded={false}
     className=""
     disabled={false}
     onClick={[Function]}
