@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { CardProps, CardState } from './Card.types';
-import { useGroupper, GroupperTabbability } from '@fluentui/react-tabster';
+import { useFocusableGroup, FocusableGroupTabBehavior } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Card.
@@ -13,8 +13,8 @@ import { useGroupper, GroupperTabbability } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Card
  */
 export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
-  const groupperAttrs = useGroupper({
-    tabbability: GroupperTabbability.LimitedTrapFocus,
+  const groupperAttrs = useFocusableGroup({
+    tabBehavior: FocusableGroupTabBehavior.LimitedTrapFocus,
   });
 
   return {
