@@ -173,7 +173,7 @@ function useSubMenuState({ hidden, items, theme, className, id }: IContextualMen
         shouldFocusOnMount: true,
         shouldFocusOnContainer: expandedByMouseClick,
         directionalHint: getRTL(theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-        className: className,
+        className,
         gapSpace: 0,
         isBeakVisible: false,
       };
@@ -237,6 +237,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
       previousActiveElement.current = undefined;
     }
   }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement]);
+
   return [tryFocusPreviousActiveElement] as const;
 }
 
@@ -309,7 +310,7 @@ function useKeyHandlers(
   const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // Take note if we are processing an alt (option) or meta (command) keydown.
     // See comment in shouldHandleKeyUp for reasoning.
-    lastKeyDownWasAltOrMeta.current = _isAltOrMeta(ev);
+    lastKeyDownWasAltOrMeta.current = isAltOrMeta(ev);
 
     // On Mac, pressing escape dismisses all levels of native context menus
     // eslint-disable-next-line deprecation/deprecation
@@ -317,6 +318,7 @@ function useKeyHandlers(
 
     return keyHandler(ev, shouldHandleKeyDown, dismissAllMenus);
   };
+
   /**
    * We close the menu on key up only if ALL of the following are true:
    * - Most recent key down was alt or meta (command)
@@ -328,7 +330,7 @@ function useKeyHandlers(
    * closing any open context menus. There is not a similar behavior on Macs.
    */
   const shouldHandleKeyUp = (ev: React.KeyboardEvent<HTMLElement>) => {
-    const keyPressIsAltOrMetaAlone = lastKeyDownWasAltOrMeta.current && _isAltOrMeta(ev);
+    const keyPressIsAltOrMetaAlone = lastKeyDownWasAltOrMeta.current && isAltOrMeta(ev);
     lastKeyDownWasAltOrMeta.current = false;
     return !!keyPressIsAltOrMetaAlone && !(isIOS() || isMac());
   };
@@ -580,7 +582,7 @@ function useMouseHandlers(
   ): void => {
     const items = getSubmenuItems(item);
 
-    // Cancel a async menu item hover timeout action from being taken and instead
+    // Cancel an async menu item hover timeout action from being taken and instead
     // just trigger the click event instead.
     cancelSubMenuTimer();
 
@@ -875,7 +877,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       let groupProps;
       if (sectionProps.title) {
         let headerContextualMenuItem: IContextualMenuItem | undefined = undefined;
-        let ariaLabellledby = '';
+        let ariaLabelledby = '';
         if (typeof sectionProps.title === 'string') {
           // Since title is a user-facing string, it needs to be stripped
           // of whitespace in order to build a valid element ID
@@ -886,17 +888,17 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
             text: sectionProps.title,
             id: id,
           };
-          ariaLabellledby = id;
+          ariaLabelledby = id;
         } else {
           const id = sectionProps.title.id || menuId + sectionProps.title.key.replace(/\s/g, '');
           headerContextualMenuItem = { ...sectionProps.title, id };
-          ariaLabellledby = id;
+          ariaLabelledby = id;
         }
 
         if (headerContextualMenuItem) {
           groupProps = {
             role: 'group',
-            'aria-labelledby': ariaLabellledby,
+            'aria-labelledby': ariaLabelledby,
           };
           headerItem = renderHeaderMenuItem(
             headerContextualMenuItem,
@@ -1252,7 +1254,7 @@ ContextualMenuBase.displayName = 'ContextualMenuBase';
 /**
  * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
  */
-function _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
+function isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
   // eslint-disable-next-line deprecation/deprecation
   return ev.which === KeyCodes.alt || ev.key === 'Meta';
 }
