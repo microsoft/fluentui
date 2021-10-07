@@ -17,7 +17,6 @@ interface Answers {
   packageName: string;
   target: 'react' | 'node';
   description: string;
-  publish: boolean;
   hasTests?: boolean;
   isConverged?: boolean;
 }
@@ -60,12 +59,6 @@ module.exports = (plop: NodePlopAPI) => {
         name: 'isConverged',
         message: 'Is this a converged package?',
         default: true,
-      },
-      {
-        type: 'confirm',
-        name: 'publish',
-        message: 'Should the package be published right away?',
-        default: false,
       },
     ],
     actions: (answers: Answers): Actions => {
@@ -148,8 +141,9 @@ module.exports = (plop: NodePlopAPI) => {
           return 'Packages linked!';
         },
         chalk.green.bold(
-          'Created and linked new package! Please check over it and ensure wording, included files, ' +
-            'settings, and dependencies make sense for your scenario.',
+          'Created and linked new package! Notes:\n' +
+            '- Please ensure wording, included files, settings, and dependencies make sense for your scenario.\n' +
+            '- If the package should be published immediately, remove `"private": true` from package.json',
         ),
       ];
     },
@@ -184,7 +178,7 @@ function replaceVersionsFromReference(
       continue;
     }
     for (const depPkg of Object.keys(newPackageJson[depType])) {
-      if (!hasTests && /\b(jest|enzyme|test|react-conformance|react-conformance-make-styles|)\b/.test(depPkg)) {
+      if (!hasTests && /\b(jest|enzyme|test(ing)?|react-conformance)\b/.test(depPkg)) {
         delete newPackageJson[depType][depPkg];
       } else if (referenceDeps[depType]?.[depPkg]) {
         newPackageJson[depType][depPkg] = referenceDeps[depType][depPkg];
@@ -196,9 +190,9 @@ function replaceVersionsFromReference(
   }
   if (errorPackages.length) {
     throw new Error(
-      `Couldn't determine appropriate version of ${errorPackages.length} packages from ${referencePackages.join(
+      `Couldn't determine appropriate version of dep(s) from package.json in referencePackages ${referencePackages.join(
         ' or ',
-      )} package.json:\n${errorPackages.map(line => `- ${line}`).join('\n')}`,
+      )}:\n${errorPackages.map(line => `- ${line}`).join('\n')}`,
     );
   }
 }
@@ -208,7 +202,7 @@ function replaceVersionsFromReference(
  * Returns the updated stringified JSON.
  */
 function updatePackageJson(packageJsonContents: string, answers: Answers) {
-  const { target, hasTests, publish } = answers;
+  const { target, hasTests } = answers;
 
   // Copy dep versions in package.json from actual current version specs.
   // This is preferable over hardcoding dependency versions to keep things in sync.
@@ -221,10 +215,6 @@ function updatePackageJson(packageJsonContents: string, answers: Answers) {
     delete newPackageJson.scripts['start-test'];
     delete newPackageJson.scripts.test;
     delete newPackageJson.scripts['update-snapshots'];
-  }
-
-  if (publish) {
-    delete newPackageJson.private;
   }
 
   return JSON.stringify(newPackageJson, null, 2);
