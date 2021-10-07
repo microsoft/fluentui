@@ -17,7 +17,7 @@ export enum GroupperTabbability {
   LimitedTrapFocus = Types.GroupperTabbabilities.LimitedTrapFocus,
 }
 
-export interface UseGroupperOptions {
+export interface UseFocusableGroupOptions {
   /**
    * Type of TAB key interaction.
    */
@@ -28,7 +28,7 @@ export interface UseGroupperOptions {
  * A hook that returns the necessary tabster attributes to support groupping.
  * @param options - Options to configure keyboard navigation
  */
-export const useGroupper = (options?: UseGroupperOptions) => {
+export const useFocusableGroup = (options?: UseFocusableGroupOptions) => {
   const tabster = useTabster();
 
   if (tabster) {
