@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Panel: footer now stays at bottom when scrolling down.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
