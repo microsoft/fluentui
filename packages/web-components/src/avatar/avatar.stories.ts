@@ -1,65 +1,68 @@
-import { fluentAvatar } from './index';
+import { DOCS_RENDERED } from '@storybook/core-events';
+import addons from '@storybook/addons';
+import { baseHeightMultiplier } from '../design-tokens';
+import AvatarTemplate from './fixtures/avatar.html';
+import './index';
 
 export default {
   title: 'Components/Avatar',
-  component: fluentAvatar,
-  argTypes: {
-    shape: {
-      options: ['circle', 'square'],
-      control: { type: 'radio' },
-    },
-    badge: {
-      options: ['on', 'off'],
-      control: { type: 'boolean' },
-    },
-  },
 };
 
-const AvatarTemplate = ({ badge, shape, label }) => `
-  <style>
-    fluent-avatar {
-      --avatar-fill-accent-primary: #cf4073;
-      --avatar-color-light: hsl(0, 0%, 100%);
-      --badge-fill-primary: var(--accent-fill-rest);
+addons.getChannel().addListener(DOCS_RENDERED, (name: string) => {
+  if (name.toLowerCase().startsWith('components/avatar')) {
+    const myAvatar40 = document.getElementById('my-avatar-40') as HTMLElement;
+    if (myAvatar40) {
+      baseHeightMultiplier.setValueFor(myAvatar40, 10);
     }
-    fluent-badge {
-      right: -4px;
-      bottom: -4px;
+    const myAvatar72 = document.getElementById('my-avatar-72') as HTMLElement;
+    if (myAvatar72) {
+      baseHeightMultiplier.setValueFor(myAvatar72, 18);
     }
-    fluent-badge::part(control) {
-      width: 4px;
-      height: 8px;
+    const avatar20 = document.getElementById('avatar-20') as HTMLElement;
+    if (avatar20) {
+      baseHeightMultiplier.setValueFor(avatar20, 5);
     }
-  </style>
-  <fluent-avatar
-    ${shape ? `shape="${shape}"` : ''}
-    fill='accent-primary'
-    color='light'
-  >
-    ${label}
-    ${badge ? '<fluent-badge slot="badge" fill="primary" circular></fluent-badge>' : ''}
-  </fluent-avatar>`;
-
-export const Avatar = AvatarTemplate.bind({});
-
-Avatar.args = {
-  label: 'CR',
-  shape: 'circle',
-  badge: false,
-};
-
-Avatar.parameters = {
-  docs: {
-    source: {
-      code: `
-<style>
-  fluent-avatar {
-    --avatar-fill-accent-primary: #cf4073;
-    --avatar-color-light: hsl(0, 0%, 100%);
+    const avatar24 = document.getElementById('avatar-24') as HTMLElement;
+    if (avatar24) {
+      baseHeightMultiplier.setValueFor(avatar24, 6);
+    }
+    const avatar28 = document.getElementById('avatar-28') as HTMLElement;
+    if (avatar28) {
+      baseHeightMultiplier.setValueFor(avatar28, 7);
+    }
+    const avatar32 = document.getElementById('avatar-32') as HTMLElement;
+    if (avatar32) {
+      baseHeightMultiplier.setValueFor(avatar32, 8);
+    }
+    const avatar36 = document.getElementById('avatar-36') as HTMLElement;
+    if (avatar36) {
+      baseHeightMultiplier.setValueFor(avatar36, 9);
+    }
+    const avatar40 = document.getElementById('avatar-40') as HTMLElement;
+    if (avatar40) {
+      baseHeightMultiplier.setValueFor(avatar40, 10);
+    }
+    const avatar48 = document.getElementById('avatar-48') as HTMLElement;
+    if (avatar48) {
+      baseHeightMultiplier.setValueFor(avatar48, 12);
+    }
+    const avatar56 = document.getElementById('avatar-56') as HTMLElement;
+    if (avatar56) {
+      baseHeightMultiplier.setValueFor(avatar56, 14);
+    }
+    const avatar64 = document.getElementById('avatar-64') as HTMLElement;
+    if (avatar64) {
+      baseHeightMultiplier.setValueFor(avatar64, 16);
+    }
+    const avatar72 = document.getElementById('avatar-72') as HTMLElement;
+    if (avatar72) {
+      baseHeightMultiplier.setValueFor(avatar72, 18);
+    }
+    const avatar96 = document.getElementById('avatar-96') as HTMLElement;
+    if (avatar96) {
+      baseHeightMultiplier.setValueFor(avatar96, 24);
+    }
   }
-</style>
-<fluent-avatar shape='circle' fill='accent-primary' color='light'>CR</fluent-avatar>
-      `,
-    },
-  },
-};
+});
+
+export const avatar = () => AvatarTemplate;

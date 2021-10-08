@@ -4,16 +4,26 @@ import {
     Badge,
     display,
     ElementDefinitionContext,
+    focusVisible,
 } from "@microsoft/fast-foundation";
 import {
+  accentFillRest,
     baseHeightMultiplier,
+    bodyFont,
     controlCornerRadius,
     density,
     designUnit,
+    focusStrokeOuter,
+    focusStrokeWidth,
+    foregroundOnAccentRest,
+    neutralFillRest,
     neutralForegroundRest,
+    strokeWidth,
     typeRampBaseFontSize,
+    typeRampBaseLineHeight,
 } from "../design-tokens";
 import { DirectionalStyleSheetBehavior } from "../styles";
+import { avatarSize } from "./index";
 
 const rtl = (context, definition) => css`
     ::slotted(${context.tagFor(Badge)}) {
@@ -34,26 +44,20 @@ export const avatarStyles: (
     css`
         ${display("flex")} :host {
             position: relative;
-            height: var(--avatar-size, var(--avatar-size-default));
-            max-width: var(--avatar-size, var(--avatar-size-default));
-            --avatar-size-default: calc(
-                (
-                        (${baseHeightMultiplier} + ${density}) * ${designUnit} +
-                            ((${designUnit} * 8) - 40)
-                    ) * 1px
-            );
-            --avatar-text-size: ${typeRampBaseFontSize};
+            height: ${avatarSize};
+            width: ${avatarSize};
             --avatar-text-ratio: ${designUnit};
         }
 
         .link {
             text-decoration: none;
-            color: ${neutralForegroundRest};
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
             min-width: 100%;
+            color: ${neutralForegroundRest};
+            fill: currentcolor;
         }
 
         .square {
@@ -68,9 +72,19 @@ export const avatarStyles: (
             overflow: hidden;
         }
 
+        :host(:focus) {
+          outline: none;
+        }
+
+        :host(:${focusVisible}) .circle,
+        :host(:${focusVisible}) .square {
+            box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
+        }
+
         .backplate {
             position: relative;
             display: flex;
+            background-color: ${neutralFillRest};
         }
 
         .media,
@@ -81,18 +95,24 @@ export const avatarStyles: (
         }
 
         .content {
-            font-size: calc(
-                (var(--avatar-text-size) + var(--avatar-size, var(--avatar-size-default))) /
-                    var(--avatar-text-ratio)
-            );
-            line-height: var(--avatar-size, var(--avatar-size-default));
-            display: block;
-            min-height: var(--avatar-size, var(--avatar-size-default));
+            font-family: ${bodyFont};
+            font-size: ${typeRampBaseFontSize};
+            font-weight: 600;
+            line-height: ${typeRampBaseLineHeight};
         }
 
         ::slotted(${context.tagFor(Badge)}) {
             position: absolute;
             display: block;
+        }
+
+        :host([appearance='accent']) .backplate {
+            background-color: ${accentFillRest};
+        }
+
+        :host([appearance='accent']) .link {
+            color: ${foregroundOnAccentRest};
+            fill: currentcolor;
         }
     `.withBehaviors(
         new DirectionalStyleSheetBehavior(

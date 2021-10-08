@@ -1,5 +1,89 @@
-import { Avatar, AvatarOptions, avatarTemplate as template } from '@microsoft/fast-foundation';
+import { parseColorHexRGB } from '@microsoft/fast-colors';
+import { attr } from '@microsoft/fast-element';
+import {
+  AvatarOptions,
+  DesignToken,
+  Avatar as FoundationAvatar,
+  avatarTemplate as template,
+} from '@microsoft/fast-foundation';
+import { accentPalette, baseHeightMultiplier, density, designUnit, Recipe } from '../design-tokens';
+import { SwatchRGB } from '../color/swatch';
+import { PaletteRGB } from '../color/palette';
 import { avatarStyles as styles } from './avatar.styles';
+
+/** @public */
+export const avatarSizeRecipe = DesignToken.create<Recipe<string>>({
+  name: 'avatar-size-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement): string =>
+    (baseHeightMultiplier.getValueFor(element) + density.getValueFor(element)) * designUnit.getValueFor(element) + 'px',
+});
+
+/** @public */
+export const avatarSize = DesignToken.create<string>('avatar-size').withDefault((element: HTMLElement) =>
+  avatarSizeRecipe.getValueFor(element).evaluate(element),
+);
+
+/**
+ * Avatar appearances
+ * @public
+ */
+export type AvatarAppearance = 'neutral' | 'accent';
+
+/**
+ * The FAST Avatar Class
+ * @public
+ *
+ */
+export class Avatar extends FoundationAvatar {
+  /**
+   * Source color for the avatar component. Sets context for the design system.
+   *
+   * Updates the accent palette and sets the avatar to the source color.
+   * @public
+   * @remarks
+   * HTML Attribute: accent-source-color
+   */
+  @attr({
+    attribute: 'accent-source-color',
+    mode: 'fromView',
+  })
+  public accentSourceColor: string;
+  private accentSourceColorChanged(prev: string | void, next: string | void): void {
+    if (next) {
+      const parsedColor = parseColorHexRGB(next);
+
+      if (parsedColor !== null) {
+        const swatch = SwatchRGB.from(parsedColor);
+        accentPalette.setValueFor(this, PaletteRGB.create(swatch));
+      }
+    } else {
+      accentPalette.deleteValueFor(this);
+    }
+  }
+
+  /**
+   * The appearance of the element.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: appearance
+   */
+  @attr
+  public appearance: AvatarAppearance;
+
+  /**
+   * @internal
+   */
+  public connectedCallback() {
+    super.connectedCallback();
+
+    if (!this.appearance) {
+      this.appearance = 'neutral';
+    }
+  }
+}
 
 /**
  * The Fluent Avatar Element. Implements {@link @microsoft/fast-foundation#Avatar},
@@ -12,6 +96,7 @@ import { avatarStyles as styles } from './avatar.styles';
  */
 export const fluentAvatar = Avatar.compose<AvatarOptions>({
   baseName: 'avatar',
+  baseClass: FoundationAvatar,
   template,
   styles,
   shadowOptions: {
@@ -24,9 +109,3 @@ export const fluentAvatar = Avatar.compose<AvatarOptions>({
  * @public
  */
 export const avatarStyles = styles;
-
-/**
- * Base class for Avatar
- * @public
- */
-export { Avatar };
