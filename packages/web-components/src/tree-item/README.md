@@ -4,6 +4,8 @@ title: tree-item
 sidebar_label: tree-item
 ---
 
+# fluent-tree-item
+
 An implementation of a [tree-item](https://w3c.github.io/aria/#treeitem) as a web-component to be placed inside a `fluent-tree-view`.
 
 ## Usage

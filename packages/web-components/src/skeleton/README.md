@@ -4,6 +4,8 @@ title: fluent-skeleton
 sidebar_label: skeleton
 ---
 
+# fluent-skeleton
+
 The `skeleton` component is used as a visual placeholder for an element while it is in a loading state and usually presents itself as a simplified wireframe-like version of the UI it is representing.
 
 ## Setup

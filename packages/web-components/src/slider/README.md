@@ -4,6 +4,8 @@ title: fluent-slider
 sidebar_label: slider
 ---
 
+# fluent-slider
+
 An implementation of a [range slider](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/range) as a form-connected web-component. Note that if the slider is in vertical orientation by default the component will get a height using the css var `--fluent-slider-height`, by default that equates to `(10px * var(--thumb-size))` or 160px. Inline styles will override that height.
 
 ## Setup

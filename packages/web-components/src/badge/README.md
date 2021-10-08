@@ -4,6 +4,8 @@ title: fluent-badge
 sidebar_label: badge
 ---
 
+# fluent-badge
+
 The `fluent-badge` component is used to highlight an item and attract attention or flag status.
 
 ## Setup

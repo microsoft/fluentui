@@ -4,6 +4,8 @@ title: fluent-divider
 sidebar_label: divider
 ---
 
+# fluent-divider
+
 A web component implementation of a [horizontal rule](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr).
 
 ## Setup

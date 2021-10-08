@@ -4,6 +4,8 @@ title: fluent-text-area
 sidebar_label: text-area
 ---
 
+# fluent-text-area
+
 An implementation of an [HTML textarea element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) as a form-connected web-component. The `fluent-text-area` supports two visual appearances, outline and filled, with the control defaulting to the outline appearance.
 
 ## Setup

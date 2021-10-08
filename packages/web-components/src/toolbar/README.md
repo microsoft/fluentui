@@ -4,6 +4,8 @@ title: fluent-toolbar
 sidebar_label: toolbar
 ---
 
+#fluent-toolbar
+
 As defined by the [W3C](https://w3c.github.io/aria-practices/#toolbar):
 
 > A toolbar is a container for grouping a set of controls, such as buttons, menubuttons, or checkboxes.

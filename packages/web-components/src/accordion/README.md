@@ -4,6 +4,8 @@ title: fluent-accordion
 sidebar_label: accordion
 ---
 
+# fluent-accordion
+
 As defined by the [W3C](https://w3c.github.io/aria-practices/#accordion):
 
 > An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content. The headings function as controls that enable users to reveal or hide their associated sections of content. Accordions are commonly used to reduce the need to scroll when presenting multiple sections of content on a single page.

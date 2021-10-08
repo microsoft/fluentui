@@ -4,11 +4,13 @@ title: fluent-anchor
 sidebar_label: anchor
 ---
 
+# fluent-anchor
+
 As defined by the W3C:
 
 > An anchor is a piece of text which marks the beginning and/or the end of a hypertext link.
 
-`fluent-anchor` is a web component implementation of an [HTML anchor element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a). The `fluent-components` anchor supports the same visual appearances as the button component (accent, lightweight, neutral, outline, stealth) as well as a hypertext appearance for use inline with text.
+`fluent-anchor` is a web component implementation of an [HTML anchor element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a). The `@fluent/web-components` anchor supports the same visual appearances as the button component (accent, lightweight, neutral, outline, stealth) as well as a hypertext appearance for use inline with text.
 
 ## Setup
 
@@ -21,7 +23,7 @@ providefluentDesignSystem().register(fluentAnchor());
 ## Usage
 
 ```html live
-<fluent-anchor href="https://fast.design" appearance="hypertext">FAST</fluent-anchor>
+<fluent-anchor href="https://fast.design" appearance="hypertext">FAST Web Component system</fluent-anchor>
 ```
 
 ## Create your own design

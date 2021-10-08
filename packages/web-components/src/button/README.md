@@ -4,6 +4,8 @@ title: fluent-button
 sidebar_label: button
 ---
 
+# fluent-button
+
 As defined by the [W3C](https://w3c.github.io/aria-practices/#button):
 
 > A button is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.

@@ -4,6 +4,8 @@ title: fluent-number-field
 sidebar_label: number-field
 ---
 
+# fluent-number-field
+
 An implementation of a [text field](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/text) as a form-connected web-component. The `fluent-number-field` supports two visual appearances, outline and filled, with the control defaulting to the outline appearance.
 
 ## Setup

@@ -4,6 +4,8 @@ title: fluent-option
 sidebar_label: option
 ---
 
+# fluent-option
+
 An implementation of an [option](https://w3c.github.io/aria/#option). To avoid namespace collisions with the [Option() constructor](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option), the component class is `ListboxOption`, and our implementation is named `fluent-option`.
 
 The `<fluent-option>` component will only provide internals related to form association when used within a form-associated component such as [`fluent-select`](/docs/components/select) or [`fluent-combobox`](/docs/components/combobox). It will not provide these capabilities when used only with a [`fluent-listbox`](/docs/components/listbox).
@@ -18,7 +20,7 @@ providefluentDesignSystem().register(fluentOption());
 
 ## Usage
 
-See [`fluent-select`](/docs/components/select), [`fluent-combobox`](/docs/components/combobox), or [`fluent-listbox`](/docs/components/listbox).
+See [`fluent-listbox`](../listbox/readme.md).
 
 ## Create your own design
 

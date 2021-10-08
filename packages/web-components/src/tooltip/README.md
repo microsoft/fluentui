@@ -4,6 +4,8 @@ title: fluent-tooltip
 sidebar_label: tooltip
 ---
 
+fluent-tooltip
+
 The `fluent-tooltip` component is used provide extra information about another element when it is hovered.
 
 ## Setup

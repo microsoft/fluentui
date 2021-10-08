@@ -1,22 +1,23 @@
 ---
 id: progress
-title: fast-progress
+title: fluent-progress
 sidebar_label: progress
-custom_edit_url: https://github.com/microsoft/fast/edit/master/packages/web-components/fast-foundation/src/progress/README.md
 ---
+
+# fluent-progress
 
 _Progress_ and _progress ring_ are used to display the length of time a process will take or to visualize percentage value (referred to as a **determinate** state) and to represent an unspecified wait time (referred to as an **indeterminate** state). _Progress_ components are typically visually represented by a circular or linear animation. When the `value` attribute is passed the state is **determinate**, otherwise it is **indeterminate**.
 
-For progress components which have a linear visual appearance, use `fast-progress`. For progress implementations which are circular, use `fast-progress-ring`.
+For progress components which have a linear visual appearance, use `fluent-progress`. For progress implementations which are circular, use `fluent-progress-ring`.
 
 ## Setup
 
 ### Basic Setup
 
 ```ts
-import { provideFASTDesignSystem, fastProgress, fastProgressRing } from '@microsoft/fast-components';
+import { provideFluentDesignSystem, fluentProgress, fluentProgressRing } from '@fluent/web-components';
 
-provideFASTDesignSystem().register(fastProgress(), fastProgressRing());
+provideFluentDesignSystem().register(fluentProgress(), fluentProgressRing());
 ```
 
 ### Customizing Indicators
@@ -37,16 +38,16 @@ provideFASTDesignSystem().register(
 
 ## Usage
 
-### fast-progress
+### fluent-progress
 
 ```html live
-<fast-progress min="0" max="100" value="75"></fast-progress>
+<fluent-progress min="0" max="100" value="75"></fluent-progress>
 ```
 
-### fast-progress-ring
+### fluent-progress-ring
 
 ```html live
-<fast-progress-ring min="0" max="100" value="75"></fast-progress-ring>
+<fluent-progress-ring min="0" max="100" value="75"></fluent-progress-ring>
 ```
 
 ## Create your own design

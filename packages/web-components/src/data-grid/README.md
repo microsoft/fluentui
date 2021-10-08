@@ -4,6 +4,8 @@ title: fluent-data-grid
 sidebar_label: data-grid
 ---
 
+# fluent-data-grid
+
 The `fluent-data-grid` component is used to display tabular data. The `fluent-data-grid-row` and `fluent-data-grid-cell` components are typically created programmatically by the parent grid but some authors may find it useful to create them manually.
 
 ## Setup

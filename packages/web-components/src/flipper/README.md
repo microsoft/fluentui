@@ -4,6 +4,8 @@ title: fluent-flipper
 sidebar_label: flipper
 ---
 
+# fluent-flipper
+
 The flipper component is most often used to page through blocks of content or collections of ui elements. As flippers are often a supplemental form of navigation, the flippers are hidden by default to avoid duplicate keyboard interaction. Passing an attribute of `aria-hidden="false"` will expose the flippers to assistive technology.
 
 ## Setup

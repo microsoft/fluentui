@@ -4,6 +4,8 @@ title: fluent-text-field
 sidebar_label: text-field
 ---
 
+# fluent-text-field
+
 An implementation of a [text field](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/text) as a form-connected web-component. The `fluent-text-field` supports two visual appearances, outline and filled, with the control defaulting to the outline appearance.
 
 :::note
