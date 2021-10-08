@@ -391,6 +391,7 @@ export const enum IconNames {
   CheckList = 'CheckList',
   Diagnostic = 'Diagnostic',
   Generate = 'Generate',
+  Total = 'Total',
   LineChart = 'LineChart',
   Equalizer = 'Equalizer',
   BarChartHorizontal = 'BarChartHorizontal',

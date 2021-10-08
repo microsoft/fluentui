@@ -75,6 +75,7 @@ export function initializeIcons(
       'CheckList': '\uE9D5',
       'Diagnostic': '\uE9D9',
       'Generate': '\uE9DA',
+      'Total': '\uE9DF',
       'LineChart': '\uE9E6',
       'Equalizer': '\uE9E9',
       'BarChartHorizontal': '\uE9EB',

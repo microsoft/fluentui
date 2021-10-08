@@ -389,6 +389,7 @@
   { "name": "CheckList", "unicode": "E9D5" },
   { "name": "Diagnostic", "unicode": "E9D9" },
   { "name": "Generate", "unicode": "E9DA" },
+  { "name": "Total", "unicode": "E9DF" },
   { "name": "LineChart", "unicode": "E9E6" },
   { "name": "Equalizer", "unicode": "E9E9" },
   { "name": "BarChartHorizontal", "unicode": "E9EB" },
