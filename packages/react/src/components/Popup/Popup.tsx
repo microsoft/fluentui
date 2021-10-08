@@ -127,7 +127,7 @@ function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivEl
     const targetDocument = getDocument();
     if (isModalOrPanel && targetDocument && root && root.current) {
       const popupPortalNode = root.current.parentElement?.parentElement;
-      let nodesToHide: Element[] = findSiblingNodes(popupPortalNode, popupPortalNode?.parentElement);
+      let nodesToHide: HTMLElement[] = findSiblingNodes(popupPortalNode, popupPortalNode?.parentElement);
 
       //if popupPortalNode is not a direct child of body, its ancestor's siblings need to be hidden as well.
       if (popupPortalNode?.parentElement !== targetDocument.body) {
