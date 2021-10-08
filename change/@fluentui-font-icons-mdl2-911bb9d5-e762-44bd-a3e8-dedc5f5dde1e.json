@@ -1,8 +1,8 @@
 {
   "type": "minor",
   "comment": {
-    "title": "",
-    "value": ""
+    "title": "adding font icon",
+    "value": "E9DF"
   },
   "packageName": "@fluentui/font-icons-mdl2",
   "email": "rpatkar@microsoft.com",
