@@ -1,0 +1,10 @@
+{
+  "type": "minor",
+  "comment": {
+    "title": "",
+    "value": ""
+  },
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "rpatkar@microsoft.com",
+  "dependentChangeType": "patch"
+}
