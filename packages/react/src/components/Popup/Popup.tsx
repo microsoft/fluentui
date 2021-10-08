@@ -125,17 +125,14 @@ function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivEl
 
   React.useEffect(() => {
     const targetDocument = getDocument();
-    if (isModalOrPanel && root && root.current && targetDocument) {
-      const bodyChildren = targetDocument.body.children;
-      const popupParentNode = findParentNode(root.current, targetDocument);
+    if (isModalOrPanel && targetDocument && root && root.current) {
+      const popupPortalNode = root.current.parentElement?.parentElement;
+      let nodesToHide: Element[] = findSiblingNodes(popupPortalNode, popupPortalNode?.parentElement);
 
-      let nodesToHide: Element[] = [];
-
-      for (let i = 0; i < bodyChildren.length; i++) {
-        const node = bodyChildren[i];
-        if (node !== popupParentNode) {
-          nodesToHide.push(node);
-        }
+      //if popupPortalNode is not a direct child of body, its ancestor's siblings need to be hidden as well.
+      if (popupPortalNode?.parentElement !== targetDocument.body) {
+        const popupAncestorNode = findAncestorNode(root.current, targetDocument);
+        nodesToHide.concat(findSiblingNodes(popupAncestorNode, targetDocument.body));
       }
 
       nodesToHide = nodesToHide.filter(
@@ -153,7 +150,7 @@ function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivEl
   }, [isModalOrPanel, root]);
 }
 
-function findParentNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
+function findAncestorNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
   let currNode = node;
 
   while (currNode && currNode.parentElement !== targetDocument.body) {
@@ -162,6 +159,12 @@ function findParentNode(node: HTMLElement | null, targetDocument: Document): HTM
 
   return currNode;
 }
+
+const findSiblingNodes = (
+  node: HTMLElement | null | undefined,
+  parentNode: HTMLElement | null | undefined,
+): HTMLElement[] =>
+  node && parentNode ? [].slice.call(parentNode.children).filter((child: HTMLElement) => child !== node) : [];
 
 /**
  * This adds accessibility to Dialog and Panel controls
