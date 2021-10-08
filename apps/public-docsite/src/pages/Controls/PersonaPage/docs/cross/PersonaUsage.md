@@ -4,35 +4,35 @@
 
 #### Example usage (from [PersonaCoinTest.tsx](https://github.com/microsoft/fluentui-react-native/tree/master/apps/fluent-tester/src/FluentTester/TestComponents/PersonaCoin))
 
-```
+```tsx
 import * as React from 'react';
 import { PersonaCoin, Persona } from '@fluentui/react-native';
 import { View } from 'react-native';
 
-const satyaPhotoUrl = 'https://www.microsoft.com/en-us/CMSImages/satya.jpg?version=0881eb71-4942-b627-d602-84c832b8a0b6&amp;CollectionId=1b46ce2d-c90d-421e-94f1-cfb6bc6ef6ec';
+const satyaPhotoUrl =
+  'https://www.microsoft.com/en-us/CMSImages/satya.jpg?version=0881eb71-4942-b627-d602-84c832b8a0b6&amp;CollectionId=1b46ce2d-c90d-421e-94f1-cfb6bc6ef6ec';
 
 const App = () => {
   return (
     <View>
       <PersonaCoin
-        size='size24'
+        size="size24"
         initials="SN"
         imageDescription="Photo of Satya Nadella"
-        presence='online'
+        presence="online"
         imageUrl={satyaPhotoUrl}
-        coinColor='blue'
+        coinColor="blue"
       />
       <Persona
-          text="John Vanderbloom"
-          size="size48"
-          secondaryText="Software Engineer"
-          imageUrl={satyaPhotoUrl}
-          presence="busy"
+        text="John Vanderbloom"
+        size="size48"
+        secondaryText="Software Engineer"
+        imageUrl={satyaPhotoUrl}
+        presence="busy"
       />
     </View>
   );
 };
 
 export default App;
-
 ```

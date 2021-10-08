@@ -7,14 +7,14 @@ The Link control is implemented as a stylized NSButton, and thus inherits all of
 
 ### Default configuration
 
-```Swift
+```swift
 // Given a title and URL, `Link` will by default open the URL in a web browser.
 let link = Link(title: "Link", url: NSURL(string: "https://github.com/microsoft/fluentui-apple")!)
 ```
 
 ### Underline with mouse hover
 
-```Swift
+```swift
 // Link can also display an underline when a mouse hovers over it with the optional property "showsUnderlineWhileMouseInside".
 let link = Link(title: "Link  with hover effects", url: NSURL(string: "https://github.com/microsoft/fluentui-apple")!)
 link.showsUnderlineWhileMouseInside = true
@@ -22,7 +22,7 @@ link.showsUnderlineWhileMouseInside = true
 
 ### Setting Target and Action
 
-```Swift
+```swift
 // Because Link is a subclass of NSControl, we can override the target/action to perform a custom task
 let link = Link(title: "Link with overridden Target/Action")
 link.showsUnderlineWhileMouseInside = true

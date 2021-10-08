@@ -4,8 +4,7 @@
 
 #### Example usage (from [SeparatorTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/FluentTester/TestComponents/Separator/SeparatorTest.tsx))
 
-```
-
+```tsx
 import * as React from 'react';
 import { Button, Separator, Text } from '@fluentui/react-native';
 import { View, StyleSheet } from 'react-native';
@@ -37,13 +36,13 @@ const styles = StyleSheet.create({
     borderColor: '#bdbdbd',
     paddingVertical: 8,
     paddingHorizontal: 12,
-    margin: 8
+    margin: 8,
   },
   separatorStackStyle: {
     height: 200,
     flexDirection: 'row',
-    justifyContent: 'space-evenly'
-  }
+    justifyContent: 'space-evenly',
+  },
 });
 
 export default App;

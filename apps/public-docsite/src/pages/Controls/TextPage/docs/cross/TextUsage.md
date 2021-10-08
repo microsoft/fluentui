@@ -17,12 +17,14 @@ You can specify the `variant` prop to apply font styles to Text. Examples of `va
 
 #### Example usage (from [TextTest.tsx](https://github.com/microsoft/fluentui-react-native/tree/master/apps/fluent-tester/src/FluentTester/TestComponents/Text))
 
-```
-import React from "react";
-import { View } from "react-native";
-import { Text } from "@fluentui/react-native";
+```tsx
+import React from 'react';
+import { View } from 'react-native';
+import { Text } from '@fluentui/react-native';
 
-const RedCaptionSemiBold = Text.customize({ tokens: { variant: 'captionStandard', fontWeight: 'semiBold', color: '#ff0000' } });
+const RedCaptionSemiBold = Text.customize({
+  tokens: { variant: 'captionStandard', fontWeight: 'semiBold', color: '#ff0000' },
+});
 const ArialBlack = Text.customize({ tokens: { variant: 'heroLargeStandard', fontFamily: 'Arial Black' } });
 
 const App = () => {
@@ -38,5 +40,4 @@ const App = () => {
 };
 
 export default App;
-
 ```

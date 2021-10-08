@@ -20,14 +20,14 @@ Fluent UI React Native Buttons have default styling based on the Fluent UI Desig
 
 #### Example usage (from [ButtonFocusTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/FluentTester/TestComponents/Button/ButtonFocusTest.tsx))
 
-```
+```tsx
 import * as React from 'react';
 import { Button, IFocusable } from '@fluentui/react-native';
 import { View } from 'react-native';
 
 const App = () => {
   const [state, setState] = React.useState({
-    focused: false
+    focused: false,
   });
   const buttonRef = React.useRef<IFocusable>(null);
 
@@ -40,15 +40,11 @@ const App = () => {
 
   return (
     <View>
-      <Button
-        content={state.focused ? "Focused" : "Not Focused"}
-        componentRef={buttonRef}
-      />
+      <Button content={state.focused ? 'Focused' : 'Not Focused'} componentRef={buttonRef} />
       <Button content="Click to focus" onClick={onFocus} />
     </View>
   );
 };
 
 export default App;
-
 ```

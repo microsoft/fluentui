@@ -4,7 +4,7 @@ To determine initials for an avatar, the code initially tries to extract two-let
 
 ### Initials
 
-```Swift
+```swift
 // Without an image
 AvatarView(avatarSize: size, contactName: "Amanda Brady", contactEmail: "Amanda.Brady@example.com", contactImage: nil)
 ```
@@ -14,7 +14,7 @@ AvatarView(avatarSize: size, contactName: "Amanda Brady", contactEmail: "Amanda.
 
 ### Profile
 
-```Swift
+```swift
 // With an image
 AvatarView(avatarSize: size, contactName: "Amanda Brady", contactEmail: "Amanda.Brady@example.com", contactImage: NSImage(named: "Amanda"))
 ```

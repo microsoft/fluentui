@@ -4,7 +4,7 @@ The DatePicker uses the provided [`Calendar`](https://developer.apple.com/docume
 
 ### Default configuration
 
-```Swift
+```swift
 // Default configuration with date-only text field
 DatePickerController(date: nil, calendar: nil, style: .date)
 ```
@@ -14,7 +14,7 @@ DatePickerController(date: nil, calendar: nil, style: .date)
 
 ### DatePicker with time text field
 
-```Swift
+```swift
 // Default configuration with date and time text field
 DatePickerController(date: nil, calendar: nil, style: .dateTime)
 ```
@@ -24,7 +24,7 @@ DatePickerController(date: nil, calendar: nil, style: .dateTime)
 
 ### Custom initial date
 
-```Swift
+```swift
 // Custom initial date
 let date = Calendar.current.date(from: DateComponents(year: 2019, month: 1, day: 1))
 DatePickerController(date: date, calendar: nil, style: .date)
@@ -35,7 +35,7 @@ DatePickerController(date: date, calendar: nil, style: .date)
 
 ### Custom calendar
 
-```Swift
+```swift
 // Custom calendar
 var calendar = Calendar(identifier: .islamic)
 calendar.locale = Locale(identifier: "ar")
@@ -47,7 +47,7 @@ DatePickerController(date: nil, calendar: calendar, style: .date)
 
 ### Secondary calendar
 
-```Swift
+```swift
 // Secondary Calendar
 var calendar = Calendar.init(identifier: .chinese)
 calendar.locale = Locale(identifier: "zh")
@@ -60,7 +60,7 @@ controller.secondaryCalendar = calendar
 
 ### No text field
 
-```Swift
+```swift
 // No text field
 let controller = DatePickerController(date: nil, calendar: nil, style: .date)
 controller.hasTextField = false

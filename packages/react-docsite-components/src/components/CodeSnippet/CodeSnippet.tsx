@@ -12,25 +12,25 @@ import { NeutralColors, SharedColors } from '@fluentui/theme';
 import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/light').default;
+const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/prism-light').default;
 
 // Import languages from SyntaxHighlighter
-const ts = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/typescript').default;
-const scss = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/scss').default;
-const md = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/markdown').default;
-const bash = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/bash').default;
-const xml = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/xml').default;
+const ts = require<any>('react-syntax-highlighter/dist/esm/languages/prism/tsx').default;
+const scss = require<any>('react-syntax-highlighter/dist/esm/languages/prism/scss').default;
+const md = require<any>('react-syntax-highlighter/dist/esm/languages/prism/markdown').default;
+const bash = require<any>('react-syntax-highlighter/dist/esm/languages/prism/bash').default;
+const swift = require<any>('react-syntax-highlighter/dist/esm/languages/prism/swift').default;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Import SyntaxHighlighter styles
-const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/hljs/github').default;
+const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/prism/prism').default;
 
 // Register languages
 SyntaxHighlighter.registerLanguage('typescript', ts);
 SyntaxHighlighter.registerLanguage('scss', scss);
 SyntaxHighlighter.registerLanguage('markdown', md);
 SyntaxHighlighter.registerLanguage('bash', bash);
-SyntaxHighlighter.registerLanguage('html', xml);
+SyntaxHighlighter.registerLanguage('swift', swift);
 
 // Customize imported SyntaxHighlighter styles. Available properties:
 // https://github.com/conorhastings/react-syntax-highlighter/blob/master/src/styles/hljs/github.js
