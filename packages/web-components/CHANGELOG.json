@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 08 Oct 2021 07:31:50 GMT",
+      "tag": "@fluentui/web-components_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "add progress animated examples",
+            "commit": "3c3fae80fd74eb02fa0daa59b49afde39de83370"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Oct 2021 07:30:53 GMT",
       "tag": "@fluentui/web-components_v1.6.0",
       "version": "1.6.0",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 07 Oct 2021 07:30:53 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Oct 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.1)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.0..@fluentui/web-components_v1.6.1)
+
+### Patches
+
+- add progress animated examples ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
 
 ## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.0)
 
