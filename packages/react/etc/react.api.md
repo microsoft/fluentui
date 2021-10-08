@@ -3437,22 +3437,6 @@ export interface IContextualMenuSection extends React_2.ClassAttributes<any> {
 }
 
 // @public (undocumented)
-export interface IContextualMenuState {
-    // (undocumented)
-    contextualMenuItems?: IContextualMenuItem[];
-    // (undocumented)
-    contextualMenuTarget?: Element;
-    // (undocumented)
-    positions?: any;
-    // (undocumented)
-    slideDirectionalClassName?: string;
-    // (undocumented)
-    submenuDirection?: DirectionalHint;
-    // (undocumented)
-    subMenuId?: string;
-}
-
-// @public (undocumented)
 export interface IContextualMenuStyleProps {
     // (undocumented)
     className?: string;
@@ -6741,7 +6725,7 @@ export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
 export interface IPopupRestoreFocusParams {
     containsFocus: boolean;
     documentContainsFocus: boolean;
-    originalElement?: HTMLElement | Window;
+    originalElement?: HTMLElement | Window | null;
 }
 
 // @public
