@@ -20,7 +20,7 @@ export const parameters = {
     requiredDependencies: {
       'react-dom': 'latest', // for React
       'react-scripts': 'latest', // necessary when using typescript in CodeSandbox
-      '@fluentui/react-components': '^9.0.0-alpha', // necessary for FluentProvider
+      '@fluentui/react-components': '^9.0.0-beta', // necessary for FluentProvider
     },
     indexTsx: dedent`
           import * as ReactDOM from 'react-dom';
