@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Move .api.json files out of api-docs package and remove extraneous dependencies",
-  "packageName": "@fluentui/api-docs",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Oct 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.36.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.3)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.2..@fluentui/react_v8.36.3)
+
+### Patches
+
+- Panel: footer now stays at bottom when scrolling down. ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by tristan.watanabe@gmail.com)
 
 ## [8.36.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.2)
 
