@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: code usage syntax highlighting fixed",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "akulsr0@gmail.com",
+  "dependentChangeType": "patch"
+}
