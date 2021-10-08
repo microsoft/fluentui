@@ -15,7 +15,8 @@ import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/prism-light').default;
 
 // Import languages from SyntaxHighlighter
-const ts = require<any>('react-syntax-highlighter/dist/esm/languages/prism/tsx').default;
+const ts = require<any>('react-syntax-highlighter/dist/esm/languages/prism/typescript').default;
+const tsx = require<any>('react-syntax-highlighter/dist/esm/languages/prism/tsx').default;
 const scss = require<any>('react-syntax-highlighter/dist/esm/languages/prism/scss').default;
 const md = require<any>('react-syntax-highlighter/dist/esm/languages/prism/markdown').default;
 const bash = require<any>('react-syntax-highlighter/dist/esm/languages/prism/bash').default;
@@ -27,6 +28,7 @@ const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/di
 
 // Register languages
 SyntaxHighlighter.registerLanguage('typescript', ts);
+SyntaxHighlighter.registerLanguage('tsx', tsx);
 SyntaxHighlighter.registerLanguage('scss', scss);
 SyntaxHighlighter.registerLanguage('markdown', md);
 SyntaxHighlighter.registerLanguage('bash', bash);
@@ -70,7 +72,7 @@ const getClassNames = classNamesFunction<ICodeSnippetStyleProps, ICodeSnippetSty
 
 const languageMapping: { [key: string]: string } = {
   ts: 'typescript',
-  tsx: 'typescript',
+  tsx: 'tsx',
   js: 'typescript',
   javascript: 'typescript',
   jsx: 'typescript',
