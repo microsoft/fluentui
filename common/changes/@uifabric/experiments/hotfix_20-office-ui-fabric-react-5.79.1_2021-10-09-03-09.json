@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Port #16595 & #14709 to make High Contrast styling adhere to system settings in Link",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "xianwang@microsoft.com"
+}
