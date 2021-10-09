@@ -34,7 +34,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
           border: 2px solid#ffffff;
           margin-top: -2px;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
           border: none;
           margin-top: 0;
         }
@@ -187,7 +187,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
           border: 2px solid#ffffff;
           margin-top: -2px;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
           border: none;
           margin-top: 0;
         }
@@ -266,7 +266,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           border: 2px solid#ffffff;
           margin-top: -2px;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
           border: none;
           margin-top: 0;
         }

@@ -28,8 +28,14 @@ exports[`Link renders Link correctly 1`] = `
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active, &:hover, &:active:hover {
+        color: LinkText;
+      }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+        color: LinkText;
       }
   href="#"
   onClick={[Function]}
@@ -68,8 +74,14 @@ exports[`Link renders Link with a custom class name 1`] = `
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active, &:hover, &:active:hover {
+        color: LinkText;
+      }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+        color: LinkText;
       }
   href="#"
   onClick={[Function]}
@@ -86,6 +98,7 @@ exports[`Link renders Link with no href as a button 1`] = `
       ms-Link
       {
         background: none;
+        border-bottom: 1px solid transparent;
         border: none;
         color: #0078d4;
         cursor: pointer;
@@ -120,11 +133,23 @@ exports[`Link renders Link with no href as a button 1`] = `
         top: 1px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        color: LinkText;
+      }
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
+      }
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active, &:hover, &:active:hover {
+        color: LinkText;
+      }
       &:focus {
         color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+        color: LinkText;
       }
   onClick={[Function]}
 >
@@ -178,6 +203,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       is-disabled
       {
         background: none;
+        border-bottom: 1px solid transparent;
         border: none;
         color: #a6a6a6;
         cursor: default;
@@ -211,6 +237,12 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         right: 1px;
         top: 1px;
         z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        color: LinkText;
+      }
+      @media screen and (forced-colors: active){& {
+        forced-color-adjust: none;
       }
       &:link, &:visited {
         pointer-events: none;

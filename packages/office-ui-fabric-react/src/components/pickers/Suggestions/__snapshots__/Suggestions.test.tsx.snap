@@ -67,7 +67,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -169,7 +169,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -271,7 +271,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -373,7 +373,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -475,7 +475,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -577,7 +577,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -679,7 +679,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -781,7 +781,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -883,7 +883,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -985,7 +985,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1087,7 +1087,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1189,7 +1189,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1291,7 +1291,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1393,7 +1393,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1495,7 +1495,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1614,7 +1614,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1716,7 +1716,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1818,7 +1818,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -1920,7 +1920,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2022,7 +2022,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2124,7 +2124,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2226,7 +2226,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2328,7 +2328,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2430,7 +2430,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2532,7 +2532,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2634,7 +2634,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2736,7 +2736,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2838,7 +2838,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -2940,7 +2940,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;
@@ -3042,7 +3042,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                 border: none;
                 bottom: -2px;
                 left: -2px;

@@ -100,7 +100,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -108,7 +108,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -293,7 +293,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -301,7 +301,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -486,7 +486,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -494,7 +494,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -679,7 +679,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -687,7 +687,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -876,7 +876,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -884,7 +884,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -1069,7 +1069,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1077,7 +1077,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -1262,7 +1262,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1270,7 +1270,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -1455,7 +1455,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1463,7 +1463,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -1652,7 +1652,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1660,7 +1660,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -1845,7 +1845,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1853,7 +1853,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -2038,7 +2038,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -2046,7 +2046,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
@@ -2231,7 +2231,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -2239,7 +2239,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {

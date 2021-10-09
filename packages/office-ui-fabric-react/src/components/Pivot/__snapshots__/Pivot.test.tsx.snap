@@ -67,7 +67,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -169,7 +169,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric.is-focusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
