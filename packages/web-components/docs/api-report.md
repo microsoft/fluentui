@@ -9,7 +9,7 @@ import { AccordionItem } from '@microsoft/fast-foundation';
 import { AccordionItemOptions } from '@microsoft/fast-foundation';
 import { Anchor as Anchor_2 } from '@microsoft/fast-foundation';
 import { AnchoredRegion } from '@microsoft/fast-foundation';
-import { Avatar } from '@microsoft/fast-foundation';
+import { Avatar as Avatar_2 } from '@microsoft/fast-foundation';
 import { AvatarOptions } from '@microsoft/fast-foundation';
 import { Badge as Badge_2 } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
@@ -258,7 +258,22 @@ export const anchoredRegionStyles: (context: ElementDefinitionContext, definitio
 // @public
 export const anchorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
-export { Avatar }
+// @public
+export class Avatar extends Avatar_2 {
+    accentSourceColor: string;
+    appearance: AvatarAppearance;
+    // @internal (undocumented)
+    connectedCallback(): void;
+}
+
+// @public
+export type AvatarAppearance = 'neutral' | 'accent';
+
+// @public (undocumented)
+export const avatarSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const avatarSizeRecipe: DesignToken<Recipe<string>>;
 
 // @public
 export const avatarStyles: (context: ElementDefinitionContext, definition: AvatarOptions) => ElementStyles;
