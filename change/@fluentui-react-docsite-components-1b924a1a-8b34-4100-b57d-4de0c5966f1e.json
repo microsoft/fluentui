@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Docsite: button controls focus border now visible in High Contrast Mode",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
