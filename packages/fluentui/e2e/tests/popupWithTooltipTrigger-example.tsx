@@ -9,6 +9,7 @@ export const selectors = {
 const PopupWithTooltipTriggerExample = () => {
   return (
     <Popup
+      on="context"
       trigger={
         <Tooltip
           content={<div id={selectors.content}>tooltip content</div>}
