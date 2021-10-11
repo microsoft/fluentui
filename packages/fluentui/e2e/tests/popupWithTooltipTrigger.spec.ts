@@ -1,6 +1,6 @@
 import { selectors } from './popupWithTooltipTrigger-example';
 
-describe('Popup without `trigger`', () => {
+describe('Popup with Tooltip as a "trigger"', () => {
   const trigger = `#${selectors.trigger}`;
   const content = `#${selectors.content}`;
 
