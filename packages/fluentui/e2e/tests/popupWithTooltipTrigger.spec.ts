@@ -11,7 +11,7 @@ describe('Popup without `trigger`', () => {
   it('Tooltip on trigger can be dismissed on ESC', () => {
     cy.clickOn(trigger);
     cy.visible(content);
-    cy.type('{esc}');
+    cy.waitForSelectorAndPressKey(content, '{esc}');
     cy.notExist(content);
   });
 });
