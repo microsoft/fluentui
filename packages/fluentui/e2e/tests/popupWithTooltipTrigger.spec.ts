@@ -9,7 +9,7 @@ describe('Popup without `trigger`', () => {
   });
 
   it('Tooltip on trigger can be dismissed on ESC', () => {
-    cy.hover(trigger);
+    cy.focusOn(trigger);
     cy.visible(content);
     cy.type('{esc}');
     cy.notExist(content);
