@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 08 Oct 2021 07:31:50 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Oct 2021 07:36:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.36.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.4)
+
+Mon, 11 Oct 2021 07:36:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.3..@fluentui/react_v8.36.4)
+
+### Patches
+
+- Fully migrated ContextualMenu implementation to be a functional component ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by miclo@microsoft.com)
 
 ## [8.36.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.3)
 
