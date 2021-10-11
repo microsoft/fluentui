@@ -12,6 +12,6 @@ describe('Popup without `trigger`', () => {
     cy.clickOn(trigger);
     cy.visible(content);
     cy.waitForSelectorAndPressKey(content, '{esc}');
-    cy.notExist(content);
+    cy.notVisible(content);
   });
 });
