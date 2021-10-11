@@ -14,11 +14,13 @@ export function makeStyles<Slots extends string | number, Tokens>(
   let ltrClassNamesForSlots: Record<Slots, string> | null = null;
   let rtlClassNamesForSlots: Record<Slots, string> | null = null;
 
+  const id = Math.random().toString(16).slice(2);
+
   function computeClasses(options: MakeStylesOptions): Record<Slots, string> {
     const { dir, renderer } = options;
 
     if (classesMapBySlot === null) {
-      [classesMapBySlot, cssRules] = resolveStyleRulesForSlots(stylesBySlots, unstable_cssPriority);
+      [classesMapBySlot, cssRules] = resolveStyleRulesForSlots(id, stylesBySlots, unstable_cssPriority);
     }
 
     const isLTR = dir === 'ltr';

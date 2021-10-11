@@ -41,6 +41,7 @@ function pushToCSSRules(
 }
 
 function resolveStyleRulesInner(
+  classNameModifier: string,
   styles: MakeStyles,
   unstable_cssPriority: number = 0,
   pseudo = '',
@@ -63,6 +64,7 @@ function resolveStyleRulesInner(
       // uniq key based on a hash of property & selector, used for merging later
       const key = hashPropertyKey(pseudo, media, support, property);
       const className = hashClassName({
+        id: classNameModifier,
         media,
         value: value.toString(),
         support,
@@ -76,6 +78,7 @@ function resolveStyleRulesInner(
 
       const rtlClassName = flippedInRtl
         ? hashClassName({
+            id: classNameModifier,
             value: rtlDefinition.value.toString(),
             property: rtlDefinition.key,
             pseudo,
@@ -145,6 +148,7 @@ function resolveStyleRulesInner(
       }
 
       resolveStyleRulesInner(
+        classNameModifier,
         { animationName: animationNames.join(', ') },
         unstable_cssPriority,
         pseudo,
@@ -157,6 +161,7 @@ function resolveStyleRulesInner(
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {
         resolveStyleRulesInner(
+          classNameModifier,
           value,
           unstable_cssPriority,
           pseudo + normalizeNestedProperty(property),
@@ -169,6 +174,7 @@ function resolveStyleRulesInner(
         const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
 
         resolveStyleRulesInner(
+          classNameModifier,
           value,
           unstable_cssPriority,
           pseudo,
@@ -181,6 +187,7 @@ function resolveStyleRulesInner(
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
         resolveStyleRulesInner(
+          classNameModifier,
           value,
           unstable_cssPriority,
           pseudo,
@@ -202,11 +209,12 @@ function resolveStyleRulesInner(
  * @internal
  */
 export function resolveStyleRules(
+  classNameModifier: string,
   styles: MakeStyles,
   unstable_cssPriority: number = 0,
 ): [CSSClassesMap, CSSRulesByBucket] {
   // expandShorthand() and resolveProxyValues() are recursive functions and should be evaluated once for a style object
   const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
 
-  return resolveStyleRulesInner(expandedStyles, unstable_cssPriority);
+  return resolveStyleRulesInner(classNameModifier, expandedStyles, unstable_cssPriority);
 }

@@ -4,7 +4,7 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "CommonJS",
-    "lib": ["ES2015", "dom"],
+    "lib": ["ES2017", "dom"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,

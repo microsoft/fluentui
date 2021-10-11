@@ -18,6 +18,7 @@ import {
  * @return - A tuple with an object classnames mapping where a key is a slot name and an array with CSS rules
  */
 export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>(
+  id: string,
   stylesBySlots: StylesBySlots<Slots, Tokens>,
   unstable_cssPriority: number,
 ): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket] {
@@ -32,7 +33,7 @@ export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>
       typeof stylesBySlots[slotName] === 'function'
         ? (stylesBySlots[slotName] as MakeStylesStyleFunctionRule<Tokens>)(tokensProxy)
         : stylesBySlots[slotName];
-    const [cssClassMap, cssRulesByBucket] = resolveStyleRules(slotStyles, unstable_cssPriority);
+    const [cssClassMap, cssRulesByBucket] = resolveStyleRules(id, slotStyles, unstable_cssPriority);
 
     classesMapBySlot[slotName] = cssClassMap;
 

@@ -552,6 +552,11 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
 
             const stylesBySlots: Record<string /* slot */, MakeStyles> = evaluationResult.value;
             const [classnamesMapping, cssRules] = resolveStyleRulesForSlots(stylesBySlots, 0);
+            const [classnamesMappingDev, cssRulesDev] = resolveStyleRulesForSlots(
+              stylesBySlots,
+              0,
+              state.file.opts.filename!,
+            );
 
             // TODO: find a better way to replace arguments
             callExpressionPath.node.arguments = [astify(classnamesMapping), astify(dedupeCSSRules(cssRules))];
