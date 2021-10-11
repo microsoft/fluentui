@@ -144,19 +144,19 @@ export const accentForegroundRestDelta: CSSDesignToken<number>;
 export const accentPalette: DesignToken<Palette<Swatch>>;
 
 // @public (undocumented)
-export const accentStrokeControlActive: CSSDesignToken<string>;
+export const accentStrokeControlActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
-export const accentStrokeControlFocus: CSSDesignToken<string>;
+export const accentStrokeControlFocus: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
-export const accentStrokeControlHover: CSSDesignToken<string>;
+export const accentStrokeControlHover: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
-export const accentStrokeControlRecipe: DesignToken<InteractiveRecipe>;
+export const accentStrokeControlRecipe: DesignToken<InteractiveColorRecipe>;
 
 // @public (undocumented)
-export const accentStrokeControlRest: CSSDesignToken<string>;
+export const accentStrokeControlRest: CSSDesignToken<Swatch>;
 
 export { Accordion }
 
@@ -776,12 +776,6 @@ export const inputStyles: (context: ElementDefinitionContext, definition: Founda
 export type InteractiveColorRecipe = Recipe<InteractiveSwatchSet>;
 
 // @public (undocumented)
-export type InteractiveRecipe = Recipe<InteractiveSet>;
-
-// @public (undocumented)
-export type InteractiveSet = Record<'rest' | 'hover' | 'active' | 'focus', string>;
-
-// @public (undocumented)
 export interface InteractiveSwatchSet {
     active: Swatch;
     focus: Swatch;
@@ -1185,28 +1179,28 @@ export const neutralStrokeActive: CSSDesignToken<Swatch>;
 export const neutralStrokeActiveDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
-export const neutralStrokeControlActive: CSSDesignToken<string>;
+export const neutralStrokeControlActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralStrokeControlActiveDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
-export const neutralStrokeControlFocus: CSSDesignToken<string>;
+export const neutralStrokeControlFocus: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralStrokeControlFocusDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
-export const neutralStrokeControlHover: CSSDesignToken<string>;
+export const neutralStrokeControlHover: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralStrokeControlHoverDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
-export const neutralStrokeControlRecipe: DesignToken<InteractiveRecipe>;
+export const neutralStrokeControlRecipe: DesignToken<InteractiveColorRecipe>;
 
 // @public (undocumented)
-export const neutralStrokeControlRest: CSSDesignToken<string>;
+export const neutralStrokeControlRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralStrokeControlRestDelta: CSSDesignToken<number>;
@@ -1233,19 +1227,19 @@ export const neutralStrokeHover: CSSDesignToken<Swatch>;
 export const neutralStrokeHoverDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
-export const neutralStrokeInputActive: CSSDesignToken<string>;
+export const neutralStrokeInputActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
-export const neutralStrokeInputFocus: CSSDesignToken<string>;
+export const neutralStrokeInputFocus: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
-export const neutralStrokeInputHover: CSSDesignToken<string>;
+export const neutralStrokeInputHover: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
-export const neutralStrokeInputRecipe: DesignToken<InteractiveRecipe>;
+export const neutralStrokeInputRecipe: DesignToken<InteractiveColorRecipe>;
 
 // @public (undocumented)
-export const neutralStrokeInputRest: CSSDesignToken<string>;
+export const neutralStrokeInputRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralStrokeLayerActive: CSSDesignToken<Swatch>;

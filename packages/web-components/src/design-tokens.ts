@@ -37,12 +37,6 @@ export type ColorRecipe = Recipe<Swatch>;
 /** @public */
 export type InteractiveColorRecipe = Recipe<InteractiveSwatchSet>;
 
-/** @public */
-export type InteractiveSet = Record<'rest' | 'hover' | 'active' | 'focus', string>;
-
-/** @public */
-export type InteractiveRecipe = Recipe<InteractiveSet>;
-
 const { create } = DesignToken;
 
 // General tokens
@@ -478,11 +472,11 @@ export const accentForegroundFocus = create<Swatch>('accent-foreground-focus').w
 
 // Accent Stroke Control
 /** @public */
-export const accentStrokeControlRecipe = create<InteractiveRecipe>({
+export const accentStrokeControlRecipe = create<InteractiveColorRecipe>({
   name: 'accent-stroke-control-recipe',
   cssCustomPropertyName: null,
 }).withDefault({
-  evaluate: (element: HTMLElement, reference?: Swatch): InteractiveSet => {
+  evaluate: (element: HTMLElement, reference?: Swatch): InteractiveSwatchSet => {
     return gradientShadowStrokeAlgorithm(
       neutralPalette.getValueFor(element),
       reference || fillColor.getValueFor(element),
@@ -499,22 +493,22 @@ export const accentStrokeControlRecipe = create<InteractiveRecipe>({
 });
 
 /** @public */
-export const accentStrokeControlRest = create<string>('accent-stroke-control-rest').withDefault(
+export const accentStrokeControlRest = create<Swatch>('accent-stroke-control-rest').withDefault(
   (element: HTMLElement) =>
     accentStrokeControlRecipe.getValueFor(element).evaluate(element, accentFillRest.getValueFor(element)).rest,
 );
 /** @public */
-export const accentStrokeControlHover = create<string>('accent-stroke-control-hover').withDefault(
+export const accentStrokeControlHover = create<Swatch>('accent-stroke-control-hover').withDefault(
   (element: HTMLElement) =>
     accentStrokeControlRecipe.getValueFor(element).evaluate(element, accentFillHover.getValueFor(element)).hover,
 );
 /** @public */
-export const accentStrokeControlActive = create<string>('accent-stroke-control-active').withDefault(
+export const accentStrokeControlActive = create<Swatch>('accent-stroke-control-active').withDefault(
   (element: HTMLElement) =>
     accentStrokeControlRecipe.getValueFor(element).evaluate(element, accentFillActive.getValueFor(element)).active,
 );
 /** @public */
-export const accentStrokeControlFocus = create<string>('accent-stroke-control-focus').withDefault(
+export const accentStrokeControlFocus = create<Swatch>('accent-stroke-control-focus').withDefault(
   (element: HTMLElement) =>
     accentStrokeControlRecipe.getValueFor(element).evaluate(element, accentFillFocus.getValueFor(element)).focus,
 );
@@ -878,11 +872,11 @@ export const neutralStrokeFocus = create<Swatch>('neutral-stroke-focus').withDef
 
 // Neutral Stroke Control
 /** @public */
-export const neutralStrokeControlRecipe = create<InteractiveRecipe>({
+export const neutralStrokeControlRecipe = create<InteractiveColorRecipe>({
   name: 'neutral-stroke-control-recipe',
   cssCustomPropertyName: null,
 }).withDefault({
-  evaluate: (element: HTMLElement, reference?: Swatch): InteractiveSet => {
+  evaluate: (element: HTMLElement, reference?: Swatch): InteractiveSwatchSet => {
     return gradientShadowStrokeAlgorithm(
       neutralPalette.getValueFor(element),
       reference || fillColor.getValueFor(element),
@@ -896,19 +890,19 @@ export const neutralStrokeControlRecipe = create<InteractiveRecipe>({
 });
 
 /** @public */
-export const neutralStrokeControlRest = create<string>('neutral-stroke-control-rest').withDefault(
+export const neutralStrokeControlRest = create<Swatch>('neutral-stroke-control-rest').withDefault(
   (element: HTMLElement) => neutralStrokeControlRecipe.getValueFor(element).evaluate(element).rest,
 );
 /** @public */
-export const neutralStrokeControlHover = create<string>('neutral-stroke-control-hover').withDefault(
+export const neutralStrokeControlHover = create<Swatch>('neutral-stroke-control-hover').withDefault(
   (element: HTMLElement) => neutralStrokeControlRecipe.getValueFor(element).evaluate(element).hover,
 );
 /** @public */
-export const neutralStrokeControlActive = create<string>('neutral-stroke-control-active').withDefault(
+export const neutralStrokeControlActive = create<Swatch>('neutral-stroke-control-active').withDefault(
   (element: HTMLElement) => neutralStrokeControlRecipe.getValueFor(element).evaluate(element).active,
 );
 /** @public */
-export const neutralStrokeControlFocus = create<string>('neutral-stroke-control-focus').withDefault(
+export const neutralStrokeControlFocus = create<Swatch>('neutral-stroke-control-focus').withDefault(
   (element: HTMLElement) => neutralStrokeControlRecipe.getValueFor(element).evaluate(element).focus,
 );
 
@@ -933,11 +927,11 @@ export const neutralStrokeDividerRest = create<Swatch>('neutral-stroke-divider-r
 
 // Neutral Stroke Input
 /** @public */
-export const neutralStrokeInputRecipe = create<InteractiveRecipe>({
+export const neutralStrokeInputRecipe = create<InteractiveColorRecipe>({
   name: 'neutral-stroke-input-recipe',
   cssCustomPropertyName: null,
 }).withDefault({
-  evaluate: (element: HTMLElement, reference?: Swatch): InteractiveSet => {
+  evaluate: (element: HTMLElement, reference?: Swatch): InteractiveSwatchSet => {
     return underlineStrokeAlgorithm(
       neutralPalette.getValueFor(element),
       reference || fillColor.getValueFor(element),
@@ -952,19 +946,19 @@ export const neutralStrokeInputRecipe = create<InteractiveRecipe>({
 });
 
 /** @public */
-export const neutralStrokeInputRest = create<string>('neutral-stroke-input-rest').withDefault(
+export const neutralStrokeInputRest = create<Swatch>('neutral-stroke-input-rest').withDefault(
   (element: HTMLElement) => neutralStrokeInputRecipe.getValueFor(element).evaluate(element).rest,
 );
 /** @public */
-export const neutralStrokeInputHover = create<string>('neutral-stroke-input-hover').withDefault(
+export const neutralStrokeInputHover = create<Swatch>('neutral-stroke-input-hover').withDefault(
   (element: HTMLElement) => neutralStrokeInputRecipe.getValueFor(element).evaluate(element).hover,
 );
 /** @public */
-export const neutralStrokeInputActive = create<string>('neutral-stroke-input-active').withDefault(
+export const neutralStrokeInputActive = create<Swatch>('neutral-stroke-input-active').withDefault(
   (element: HTMLElement) => neutralStrokeInputRecipe.getValueFor(element).evaluate(element).active,
 );
 /** @public */
-export const neutralStrokeInputFocus = create<string>('neutral-stroke-input-focus').withDefault(
+export const neutralStrokeInputFocus = create<Swatch>('neutral-stroke-input-focus').withDefault(
   (element: HTMLElement) => neutralStrokeInputRecipe.getValueFor(element).evaluate(element).focus,
 );
 
