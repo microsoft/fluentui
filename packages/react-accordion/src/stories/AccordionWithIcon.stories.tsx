@@ -41,7 +41,7 @@ WithIcon.args = {
 WithIcon.parameters = {
   docs: {
     description: {
-      story: 'A Accordion can have a custom extra icon',
+      story: 'A Accordion can have a custom extra icon.',
     },
   },
 };

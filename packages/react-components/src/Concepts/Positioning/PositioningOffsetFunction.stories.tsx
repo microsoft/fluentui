@@ -24,7 +24,7 @@ OffsetFunction.parameters = {
   docs: {
     description: {
       story: [
-        'The positionined element can be offset from the target element by using a callback function.',
+        'The positioned element can be offset from the target element by using a callback function.',
         'The callback function provides the arguments and are a values used directly by Popper.',
         '',
         '- Dimensions and position of the positioned element',

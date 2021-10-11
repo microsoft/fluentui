@@ -54,7 +54,7 @@ GrouppingItems.parameters = {
     description: {
       story: [
         'A menu can be divided in to separate groups, using the `MenuGroup` and `MenuGroupHeader`',
-        'components ensures correct accessible markdown screen reader users',
+        'components ensures correct accessible markdown screen reader users.',
       ].join('\n'),
     },
   },

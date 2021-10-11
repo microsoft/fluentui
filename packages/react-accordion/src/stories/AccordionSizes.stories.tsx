@@ -44,7 +44,7 @@ export const Sizes = () => (
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A Accordion can support `small`, `medium`, `large` and `extra-larger` sizes',
+      story: 'A Accordion can support `small`, `medium`, `large` and `extra-larger` sizes.',
     },
   },
 };
