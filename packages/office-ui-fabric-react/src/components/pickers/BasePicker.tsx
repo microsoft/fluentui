@@ -725,6 +725,8 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       disabled
     } = this.props;
 
+    const activeDescendant = this.suggestionStore.currentIndex > -1 ? 'sug-' + this.suggestionStore.currentIndex : undefined;
+
     return (
       <div>
         <div
@@ -745,7 +747,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
-                aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
+                aria-activedescendant={ activeDescendant }
                 aria-owns='suggestion-list'
                 aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
