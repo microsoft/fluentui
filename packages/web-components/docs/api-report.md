@@ -78,7 +78,7 @@ import { ViewTemplate } from '@microsoft/fast-element';
 // Warning: (ae-internal-missing-underscore) The name "AccentButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const AccentButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
+export const AccentButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const accentFillActive: CSSDesignToken<Swatch>;
@@ -112,6 +112,12 @@ export const accentForegroundActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const accentForegroundActiveDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const accentForegroundCut: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const accentForegroundCutLarge: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const accentForegroundFocus: CSSDesignToken<Swatch>;
@@ -258,7 +264,7 @@ export const badgeStyles: (context: ElementDefinitionContext, definition: Founda
 // Warning: (ae-internal-missing-underscore) The name "baseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const baseButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
+export const baseButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const baseHeightMultiplier: CSSDesignToken<number>;
@@ -340,6 +346,9 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
 
 // @public (undocumented)
 export const controlCornerRadius: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const cornerRadius: CSSDesignToken<number>;
 
 export { DataGrid }
 
@@ -457,6 +466,9 @@ export { Divider }
 
 // @public
 export const dividerStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public @deprecated (undocumented)
+export const elevatedCornerRadius: CSSDesignToken<number>;
 
 // @public @deprecated
 export const elevation: string;
@@ -668,6 +680,9 @@ export const fluentTreeItem: (overrideDefinition?: OverrideFoundationElementDefi
 // @public
 export const fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TreeView>;
 
+// @public @deprecated (undocumented)
+export const focusOutlineWidth: CSSDesignToken<number>;
+
 // @public (undocumented)
 export const focusStrokeInner: CSSDesignToken<Swatch>;
 
@@ -686,17 +701,32 @@ export const focusStrokeWidth: CSSDesignToken<number>;
 // @public (undocumented)
 export const foregroundOnAccentActive: CSSDesignToken<Swatch>;
 
+// @public @deprecated (undocumented)
+export const foregroundOnAccentActiveLarge: CSSDesignToken<Swatch>;
+
 // @public (undocumented)
 export const foregroundOnAccentFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const foregroundOnAccentFocusLarge: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const foregroundOnAccentHover: CSSDesignToken<Swatch>;
 
+// @public @deprecated (undocumented)
+export const foregroundOnAccentHoverLarge: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const foregroundOnAccentLargeRecipe: DesignToken<InteractiveColorRecipe>;
+
 // @public (undocumented)
-export const foregroundOnAccentRecipe: DesignToken<ColorRecipe>;
+export const foregroundOnAccentRecipe: DesignToken<InteractiveColorRecipe>;
 
 // @public (undocumented)
 export const foregroundOnAccentRest: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const foregroundOnAccentRestLarge: CSSDesignToken<Swatch>;
 
 // @public
 export const heightNumber: CSSDirective;
@@ -715,7 +745,7 @@ export const horizontalScrollStyles: (context: ElementDefinitionContext, definit
 // Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const HypertextStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
+export const HypertextStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "inputFilledForcedColorStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -770,7 +800,7 @@ export const layerCornerRadius: CSSDesignToken<number>;
 // Warning: (ae-internal-missing-underscore) The name "LightweightButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const LightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
+export const LightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
 
 export { Listbox }
 
@@ -791,11 +821,35 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
 // @public
 export const menuStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
+// @public @deprecated (undocumented)
+export const neutralContrastFillActive: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralContrastFillFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralContrastFillHover: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralContrastFillRest: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralDivider: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralDividerRestDelta: CSSDesignToken<number>;
+
 // @public (undocumented)
 export const neutralFillActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillActiveDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillCard: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillCardDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const neutralFillFocus: CSSDesignToken<Swatch>;
@@ -862,6 +916,33 @@ export const neutralFillInputRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInputRestDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseActive: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseActiveDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseFocusDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseHover: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseHoverDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseRest: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillInverseRestDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const neutralFillLayerActive: CSSDesignToken<Swatch>;
@@ -983,6 +1064,36 @@ export const neutralFillStrongRest: CSSDesignToken<Swatch>;
 // @public (undocumented)
 export const neutralFillStrongRestDelta: CSSDesignToken<number>;
 
+// @public @deprecated (undocumented)
+export const neutralFillToggleActive: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleActiveDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleFocusDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleHover: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleHoverDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleRest: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillToggleRestDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
+export const neutralFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFocusInnerAccent: CSSDesignToken<Swatch>;
+
 // @public (undocumented)
 export const neutralForegroundActive: CSSDesignToken<Swatch>;
 
@@ -1039,6 +1150,30 @@ export const neutralLayerFloating: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralLayerFloatingRecipe: DesignToken<ColorRecipe>;
+
+// @public @deprecated (undocumented)
+export const neutralLayerL1: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralLayerL2: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralLayerL3: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralLayerL4: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralOutlineActive: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralOutlineFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralOutlineHover: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralOutlineRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralPalette: DesignToken<Palette<Swatch>>;
@@ -1116,16 +1251,22 @@ export const neutralStrokeInputRest: CSSDesignToken<string>;
 export const neutralStrokeLayerActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
-export const neutralStrokeLayerFocus: CSSDesignToken<Swatch>;
+export const neutralStrokeLayerActiveDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const neutralStrokeLayerHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeLayerHoverDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const neutralStrokeLayerRecipe: DesignToken<InteractiveColorRecipe>;
 
 // @public (undocumented)
 export const neutralStrokeLayerRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeLayerRestDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const neutralStrokeRecipe: DesignToken<InteractiveColorRecipe>;
@@ -1182,7 +1323,10 @@ export const OptionStyles: (context: ElementDefinitionContext, definition: Found
 // Warning: (ae-internal-missing-underscore) The name "OutlineButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const OutlineButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
+export const OutlineButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
+
+// @public @deprecated (undocumented)
+export const outlineWidth: CSSDesignToken<number>;
 
 // @public
 export interface Palette<T extends Swatch = Swatch> {
@@ -1282,7 +1426,7 @@ export enum StandardLuminance {
 // Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const StealthButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
+export const StealthButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string, nonInteractivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const strokeWidth: CSSDesignToken<number>;
