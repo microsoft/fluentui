@@ -10,15 +10,15 @@ import { Swatch } from '../color/swatch';
  * opacity was `calc(.11 * (2 - var(--background-luminance, 1)))`
  *
  * @internal
- * @deprecated Will be replaced
+ * @deprecated Use elevationShadow design token
  */
-const ambientShadow = '0 0 2px rgba(0, 0, 0, 0.14)';
+export const ambientShadow = '0 0 2px rgba(0, 0, 0, 0.14)';
 
 /**
  * @internal
- * @deprecated Will be replaced
+ * @deprecated Use elevationShadow design token
  */
-const directionalShadow = '0 calc(var(--elevation) * 0.5px) calc((var(--elevation) * 1px)) rgba(0, 0, 0, 0.2)';
+export const directionalShadow = '0 calc(var(--elevation) * 0.5px) calc((var(--elevation) * 1px)) rgba(0, 0, 0, 0.2)';
 
 /**
  * Applies the box-shadow CSS rule set to the elevation formula.

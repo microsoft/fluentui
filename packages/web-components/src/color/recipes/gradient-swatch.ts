@@ -25,6 +25,7 @@ export class GradientSwatchRGB implements SwatchRGB {
    */
   constructor(red: number, green: number, blue: number, cssGradient: string) {
     this.color = new ColorRGBA64(red, green, blue);
+    this.cssGradient = cssGradient;
     this.relativeLuminance = rgbToRelativeLuminance(this.color);
     this.r = red;
     this.g = green;

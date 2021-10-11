@@ -60,9 +60,9 @@ export function gradientShadowStroke(
       const shadowColor = palette.get(index + direction! * shadowDelta);
       const startColor = direction === -1 ? shadowColor : color;
       const endColor = direction === -1 ? color : shadowColor;
-      const g = `linear-gradient(${overlayHelper(startColor)} ${startPosition}%, ${overlayHelper(
+      const g = `linear-gradient(${overlayHelper(startColor).toColorString()} ${startPosition}%, ${overlayHelper(
         endColor,
-      )} ${endPosition}%)`;
+      ).toColorString()} ${endPosition}%)`;
       return GradientSwatchRGB.fromObject(startColor as SwatchRGB, g);
     } else {
       return overlayHelper(color);

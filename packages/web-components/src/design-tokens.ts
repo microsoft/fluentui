@@ -1183,6 +1183,15 @@ export const outlineWidth = strokeWidth;
 /** @public @deprecated Use focusStrokeWidth */
 export const focusOutlineWidth = focusStrokeWidth;
 
+/** @public @deprecated Use neutralFillInverseRestDelta */
+export const neutralContrastFillRestDelta = neutralFillInverseRestDelta;
+/** @public @deprecated Use neutralFillInverseHoverDelta */
+export const neutralContrastFillHoverDelta = neutralFillInverseHoverDelta;
+/** @public @deprecated Use neutralFillInverseActiveDelta */
+export const neutralContrastFillActiveDelta = neutralFillInverseActiveDelta;
+/** @public @deprecated Use neutralFillInverseFocusDelta */
+export const neutralContrastFillFocusDelta = neutralFillInverseFocusDelta;
+
 /** @public @deprecated Use neutralFillLayerRestDelta */
 export const neutralFillCardDelta = neutralFillLayerRestDelta;
 

@@ -223,6 +223,11 @@ export const allComponents: {
     register(container?: Container | undefined, ...rest: any[]): void;
 };
 
+// Warning: (ae-internal-missing-underscore) The name "ambientShadow" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated
+export const ambientShadow = "0 0 2px rgba(0, 0, 0, 0.14)";
+
 // Warning: (ae-internal-missing-underscore) The name "Anchor" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -449,6 +454,11 @@ export const dialogStyles: (context: ElementDefinitionContext, definition: Found
 
 // @public (undocumented)
 export const direction: CSSDesignToken<Direction>;
+
+// Warning: (ae-internal-missing-underscore) The name "directionalShadow" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated (undocumented)
+export const directionalShadow = "0 calc(var(--elevation) * 0.5px) calc((var(--elevation) * 1px)) rgba(0, 0, 0, 0.2)";
 
 // @public
 export class DirectionalStyleSheetBehavior implements Behavior {
@@ -819,13 +829,25 @@ export const menuStyles: (context: ElementDefinitionContext, definition: Foundat
 export const neutralContrastFillActive: CSSDesignToken<Swatch>;
 
 // @public @deprecated (undocumented)
+export const neutralContrastFillActiveDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
 export const neutralContrastFillFocus: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralContrastFillFocusDelta: CSSDesignToken<number>;
 
 // @public @deprecated (undocumented)
 export const neutralContrastFillHover: CSSDesignToken<Swatch>;
 
 // @public @deprecated (undocumented)
+export const neutralContrastFillHoverDelta: CSSDesignToken<number>;
+
+// @public @deprecated (undocumented)
 export const neutralContrastFillRest: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralContrastFillRestDelta: CSSDesignToken<number>;
 
 // @public @deprecated (undocumented)
 export const neutralDivider: CSSDesignToken<Swatch>;
