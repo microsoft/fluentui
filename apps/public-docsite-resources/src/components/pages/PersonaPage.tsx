@@ -4,8 +4,5 @@ import { DemoPage } from '../DemoPage';
 import { PersonaPageProps } from '@fluentui/react-examples/lib/react/Persona/Persona.doc';
 
 export const PersonaPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Persona.page.json')}
-    {...{ ...PersonaPageProps, ...props }}
-  />
+  <DemoPage jsonDocs={require('../../../dist/api/react/Persona.page.json')} {...{ ...PersonaPageProps, ...props }} />
 );

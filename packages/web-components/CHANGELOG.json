@@ -2,6 +2,50 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 08 Oct 2021 07:31:50 GMT",
+      "tag": "@fluentui/web-components_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "add progress animated examples",
+            "commit": "3c3fae80fd74eb02fa0daa59b49afde39de83370"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Oct 2021 07:30:53 GMT",
+      "tag": "@fluentui/web-components_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "create explicit classes for progress ring and progress to prevent conflicts during tagFor retrieval",
+            "commit": "41f9ce245c6d38ab880ca4696c3ff4f83537df4d"
+          },
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "comment": "Update token file order and deprecations to prepare for vNext",
+            "commit": "41f9ce245c6d38ab880ca4696c3ff4f83537df4d"
+          }
+        ],
+        "patch": [
+          {
+            "author": "khamu@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "add end start selector",
+            "commit": "41f9ce245c6d38ab880ca4696c3ff4f83537df4d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Oct 2021 11:11:56 GMT",
       "tag": "@fluentui/web-components_v1.5.6",
       "version": "1.5.6",

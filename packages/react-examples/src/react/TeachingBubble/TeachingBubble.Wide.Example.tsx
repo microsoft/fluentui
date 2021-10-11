@@ -2,15 +2,16 @@ import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { useBoolean } from '@fluentui/react-hooks';
+import { useBoolean, useId } from '@fluentui/react-hooks';
 
 export const TeachingBubbleWideExample: React.FunctionComponent = () => {
+  const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 
   return (
     <div>
       <DefaultButton
-        id="targetButton"
+        id={buttonId}
         onClick={toggleTeachingBubbleVisible}
         text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
       />
@@ -18,7 +19,7 @@ export const TeachingBubbleWideExample: React.FunctionComponent = () => {
       {teachingBubbleVisible && (
         <TeachingBubble
           calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
-          target="#targetButton"
+          target={`#${buttonId}`}
           isWide={true}
           hasCloseButton={true}
           closeButtonAriaLabel="Close"

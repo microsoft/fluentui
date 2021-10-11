@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "@fluentui/make-styles": "9.0.0-beta.1",
-    "@fluentui/react": "^8.36.2",
+    "@fluentui/react": "^8.36.4",
     "@fluentui/react-avatar": "9.0.0-beta.1",
     "@fluentui/react-button": "9.0.0-beta.1",
     "@fluentui/react-provider": "9.0.0-beta.1",
-    "@fluentui/react-tabs": "^1.0.0-beta.167",
+    "@fluentui/react-tabs": "^1.0.0-beta.169",
     "@fluentui/react-theme": "9.0.0-beta.1",
     "@fluentui/scripts": "^1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",

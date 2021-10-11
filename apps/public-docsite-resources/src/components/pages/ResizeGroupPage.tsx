@@ -6,7 +6,7 @@ import { ResizeGroupPageProps } from '@fluentui/react-examples/lib/react/ResizeG
 export const ResizeGroupPage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>
     <DemoPage
-      jsonDocs={require('@fluentui/api-docs/lib/pages/react/ResizeGroup.page.json')}
+      jsonDocs={require('../../../dist/api/react/ResizeGroup.page.json')}
       {...{ ...ResizeGroupPageProps, ...props }}
     />
   </LayerHost>

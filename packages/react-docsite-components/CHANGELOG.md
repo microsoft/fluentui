@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Oct 2021 07:36:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.41)
+
+Mon, 11 Oct 2021 07:36:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.40..@fluentui/react-docsite-components_v8.3.41)
+
+### Patches
+
+- Docsite: button controls focus border now visible in High Contrast Mode ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react to v8.36.4 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.23 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+
+## [8.3.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.40)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.39..@fluentui/react-docsite-components_v8.3.40)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.3 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.22 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
 
 ## [8.3.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.39)
 
