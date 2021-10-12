@@ -1,8 +1,8 @@
 import { DOCS_RENDERED } from '@storybook/core-events';
 import addons from '@storybook/addons';
-import { baseHeightMultiplier } from '../design-tokens';
 import AvatarTemplate from './fixtures/avatar.html';
 import './index';
+import { avatarSize } from './index';
 
 export default {
   title: 'Components/Avatar',
@@ -12,55 +12,55 @@ addons.getChannel().addListener(DOCS_RENDERED, (name: string) => {
   if (name.toLowerCase().startsWith('components/avatar')) {
     const myAvatar40 = document.getElementById('my-avatar-40') as HTMLElement;
     if (myAvatar40) {
-      baseHeightMultiplier.setValueFor(myAvatar40, 10);
+      avatarSize.setValueFor(myAvatar40, '40px');
     }
     const myAvatar72 = document.getElementById('my-avatar-72') as HTMLElement;
     if (myAvatar72) {
-      baseHeightMultiplier.setValueFor(myAvatar72, 18);
+      avatarSize.setValueFor(myAvatar72, '72px');
     }
     const avatar20 = document.getElementById('avatar-20') as HTMLElement;
     if (avatar20) {
-      baseHeightMultiplier.setValueFor(avatar20, 5);
+      avatarSize.setValueFor(avatar20, '20px');
     }
     const avatar24 = document.getElementById('avatar-24') as HTMLElement;
     if (avatar24) {
-      baseHeightMultiplier.setValueFor(avatar24, 6);
+      avatarSize.setValueFor(avatar24, '24px');
     }
     const avatar28 = document.getElementById('avatar-28') as HTMLElement;
     if (avatar28) {
-      baseHeightMultiplier.setValueFor(avatar28, 7);
+      avatarSize.setValueFor(avatar28, '28px');
     }
     const avatar32 = document.getElementById('avatar-32') as HTMLElement;
     if (avatar32) {
-      baseHeightMultiplier.setValueFor(avatar32, 8);
+      avatarSize.setValueFor(avatar32, '32px');
     }
     const avatar36 = document.getElementById('avatar-36') as HTMLElement;
     if (avatar36) {
-      baseHeightMultiplier.setValueFor(avatar36, 9);
+      avatarSize.setValueFor(avatar36, '36px');
     }
     const avatar40 = document.getElementById('avatar-40') as HTMLElement;
     if (avatar40) {
-      baseHeightMultiplier.setValueFor(avatar40, 10);
+      avatarSize.setValueFor(avatar40, '40px');
     }
     const avatar48 = document.getElementById('avatar-48') as HTMLElement;
     if (avatar48) {
-      baseHeightMultiplier.setValueFor(avatar48, 12);
+      avatarSize.setValueFor(avatar48, '48px');
     }
     const avatar56 = document.getElementById('avatar-56') as HTMLElement;
     if (avatar56) {
-      baseHeightMultiplier.setValueFor(avatar56, 14);
+      avatarSize.setValueFor(avatar56, '56px');
     }
     const avatar64 = document.getElementById('avatar-64') as HTMLElement;
     if (avatar64) {
-      baseHeightMultiplier.setValueFor(avatar64, 16);
+      avatarSize.setValueFor(avatar64, '64px');
     }
     const avatar72 = document.getElementById('avatar-72') as HTMLElement;
     if (avatar72) {
-      baseHeightMultiplier.setValueFor(avatar72, 18);
+      avatarSize.setValueFor(avatar72, '72px');
     }
     const avatar96 = document.getElementById('avatar-96') as HTMLElement;
     if (avatar96) {
-      baseHeightMultiplier.setValueFor(avatar96, 24);
+      avatarSize.setValueFor(avatar96, '96px');
     }
   }
 });
