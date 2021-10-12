@@ -4,7 +4,6 @@ exports[`CardFooter renders a default state 1`] = `
 <div>
   <div
     class=""
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2}}"
   >
     Default CardFooter
     <div
