@@ -236,10 +236,15 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
         elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
 
         // Update the menu items
-        overflowMenuProps.items = linkCollection.links.slice(overflowIndex).map((link, index) => ({
-          key: link.itemKey || `${overflowIndex + index}`,
-          onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
-        }));
+        overflowMenuProps.items = linkCollection.links
+          .slice(overflowIndex)
+          .filter(link => link.itemKey !== renderedSelectedKey)
+          .map((link, index) => {
+            return {
+              key: link.itemKey || `${overflowIndex + index}`,
+              onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
+            };
+          });
       },
       rtl: getRTL(theme),
       pinnedIndex: renderedSelectedIndex,
