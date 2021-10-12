@@ -1,8 +1,24 @@
 # Change Log - vr-tests
 
-This log was last generated on Mon, 11 Oct 2021 07:36:36 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Oct 2021 19:45:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Tue, 12 Oct 2021 19:45:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react-accordion to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-button to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-card to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-link to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-slider to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-switch to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 

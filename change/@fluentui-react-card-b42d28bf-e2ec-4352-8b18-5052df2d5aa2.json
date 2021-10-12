@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add keyboard focus interactions",
-  "packageName": "@fluentui/react-card",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch"
-}

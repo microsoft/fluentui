@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-card",
-  "version": "9.0.0-beta.1",
+  "version": "9.0.0-beta.2",
   "private": false,
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
@@ -33,7 +33,7 @@
     "@fluentui/react-conformance-make-styles": "9.0.0-beta.1",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/react-text": "9.0.0-beta.1",
-    "@fluentui/react-button": "9.0.0-beta.1",
+    "@fluentui/react-button": "9.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
@@ -48,7 +48,7 @@
   "dependencies": {
     "@fluentui/react-make-styles": "9.0.0-beta.1",
     "@fluentui/react-utilities": "9.0.0-beta.1",
-    "@fluentui/react-tabster": "9.0.0-beta.1",
+    "@fluentui/react-tabster": "9.0.0-beta.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
