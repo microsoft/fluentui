@@ -39,5 +39,6 @@ module.exports = {
     '<rootDir>/packages/react-switch',
     '<rootDir>/packages/react-conformance-make-styles',
     '<rootDir>/packages/react-radio',
+    '<rootDir>/packages/react-vanilla-extract',
   ],
 };

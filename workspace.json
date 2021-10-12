@@ -443,6 +443,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-utilities/src"
     },
+    "@fluentui/react-vanilla-extract": {
+      "root": "packages/react-vanilla-extract",
+      "projectType": "library",
+      "sourceRoot": "packages/react-vanilla-extract/src"
+    },
     "@fluentui/react-window-provider": {
       "root": "packages/react-window-provider",
       "projectType": "library"

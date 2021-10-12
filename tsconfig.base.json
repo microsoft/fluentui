@@ -51,7 +51,8 @@
       "@fluentui/react-text": ["packages/react-text/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-tooltip/src/index.ts"],
-      "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"]
+      "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"],
+      "@fluentui/react-vanilla-extract": ["packages/react-vanilla-extract/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

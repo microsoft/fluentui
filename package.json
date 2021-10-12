@@ -140,6 +140,7 @@
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
+    "@vanilla-extract/webpack-plugin": "2.1.0",
     "ajv": "8.4.0",
     "autoprefixer": "10.2.1",
     "babel-jest": "24.9.0",
@@ -210,6 +211,7 @@
     "satisfied": "^1.1.1",
     "schema-utils": "3.1.1",
     "semver": "^6.2.0",
+    "storybook-addon-export-to-codesandbox": "0.6.2",
     "storybook-addon-performance": "0.14.0",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
@@ -232,8 +234,7 @@
     "webpack-merge": "5.7.3",
     "workspace-tools": "0.16.2",
     "yargs": "13.3.2",
-    "yargs-parser": "13.1.2",
-    "storybook-addon-export-to-codesandbox": "0.6.2"
+    "yargs-parser": "13.1.2"
   },
   "license": "MIT",
   "workspaces": {
@@ -388,5 +389,7 @@
       }
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "@vanilla-extract/babel-plugin": "1.1.1"
+  }
 }
