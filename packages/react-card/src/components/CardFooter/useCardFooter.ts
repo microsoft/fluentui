@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { CardFooterProps, CardFooterSlots, CardFooterState } from './CardFooter.types';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Array of all shorthand properties listed in CardFooterShorthandProps
@@ -18,10 +17,6 @@ export const cardFooterShorthandProps: Array<keyof CardFooterSlots> = ['root', '
  * @param ref - reference to root HTMLElement of CardFooter
  */
 export const useCardFooter = (props: CardFooterProps, ref: React.Ref<HTMLElement>): CardFooterState => {
-  const arrowNavigationAttrs = useArrowNavigationGroup({
-    axis: 'horizontal',
-  });
-
   const { action } = props;
 
   return {
@@ -32,7 +27,6 @@ export const useCardFooter = (props: CardFooterProps, ref: React.Ref<HTMLElement
 
     root: getNativeElementProps('div', {
       ref,
-      ...arrowNavigationAttrs,
       ...props,
     }),
     action: resolveShorthand(action),
