@@ -8,7 +8,7 @@ import {
   MenuItemOptions,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { heightNumber } from '../styles/index';
+import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
   bodyFont,
   controlCornerRadius,
@@ -61,6 +61,11 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       grid-column: 1;
       grid-row: 1;
       margin-inline-start: 10px;
+    }
+
+    :host(.indent-0) .expand-collapse-glyph-container {
+      grid-column: 5;
+      grid-row: 1;
     }
 
     :host(.indent-2) {
@@ -119,6 +124,13 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       justify-content: center;
     }
 
+    :host(.indent-0[aria-haspopup='menu']) {
+      display: grid;
+      grid-template-columns: minmax(32px, auto) auto 1fr minmax(32px, auto) minmax(32px, auto);
+      align-items: center;
+      min-height: 32px;
+    }
+
     :host(.indent-1[aria-haspopup='menu']),
     :host(.indent-1[role='menuitemcheckbox']),
     :host(.indent-1[role='menuitemradio']) {
@@ -147,6 +159,10 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     :host([role='menuitemcheckbox']) .content,
     :host([role='menuitemradio']) .content {
       grid-column-start: 3;
+    }
+
+    :host([aria-haspopup='menu'].indent-0) .content {
+      grid-column-start: 1;
     }
 
     :host([aria-haspopup='menu']) .end,
@@ -270,6 +286,18 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
 
         :host([aria-checked='true']) .radio-indicator {
           background: ${SystemColors.Highlight};
+        }
+      `,
+    ),
+    new DirectionalStyleSheetBehavior(
+      css`
+        .expand-collapse-glyph-container {
+          transform: rotate(0deg);
+        }
+      `,
+      css`
+        .expand-collapse-glyph-container {
+          transform: rotate(180deg);
         }
       `,
     ),
