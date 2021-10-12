@@ -2,6 +2,39 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 12 Oct 2021 19:45:58 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "comment": "Migrate Card to new prop merging",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "comment": "Add keyboard focus interactions",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.2",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.0.0-beta.2",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Oct 2021 10:37:22 GMT",
       "tag": "@fluentui/react-card_v9.0.0-beta.1",
       "version": "9.0.0-beta.1",

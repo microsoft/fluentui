@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 06 Oct 2021 10:37:21 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Oct 2021 19:45:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.2)
+
+Tue, 12 Oct 2021 19:45:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-beta.1..@fluentui/react-components_v9.0.0-beta.2)
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - Fix a11y errors on aria-expanded and disabled state ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by bsunderhus@microsoft.com)
+- `@fluentui/react-card`
+  - Migrate Card to new prop merging ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by andredias@microsoft.com)
+  - Add keyboard focus interactions ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by andredias@microsoft.com)
+- `@fluentui/react-tabster`
+  - Add useFocusableGroup hook ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by andredias@microsoft.com)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.1)
 
