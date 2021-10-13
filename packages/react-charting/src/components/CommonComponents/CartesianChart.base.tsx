@@ -278,7 +278,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           </div>
         )}
         {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
-          <Callout {...calloutProps}>
+          <Callout>
             {/** Given custom callout, then it will render */}
             {this.props.customizedCallout && this.props.customizedCallout}
             {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
