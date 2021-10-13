@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add prop aria-labelledby to Slider component",
+  "packageName": "@fluentui/react",
+  "email": "trang.thule@zoho.com",
+  "dependentChangeType": "patch"
+}
