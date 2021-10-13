@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pivot: overflow menu no longer shows item that's currently selected.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
