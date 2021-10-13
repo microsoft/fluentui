@@ -102,6 +102,9 @@ const iterationsDefault = 5000;
 //        await page.goto(testUrl);
 //        await page.tracing.stop();
 
+// Hardcoded PR deploy URL for local testing
+const DEPLOY_URL = 'fluentuipr.z22.web.core.windows.net';
+
 const urlForDeployPath = process.env.DEPLOYURL
   ? `${process.env.DEPLOYURL}/perf-test`
   : 'file://' + path.resolve(__dirname, '../dist/');
@@ -113,7 +116,7 @@ const urlForDeployPath = process.env.DEPLOYURL
 const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
 const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-const urlForMaster = `https://${process.env.DEPLOYHOST}/${targetPath}/perf-test/index.html`;
+const urlForMaster = `https://${process.env.DEPLOYHOST || DEPLOY_URL}/${targetPath}/perf-test/index.html`;
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
