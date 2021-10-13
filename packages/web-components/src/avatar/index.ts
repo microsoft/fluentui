@@ -71,18 +71,7 @@ export class Avatar extends FoundationAvatar {
    * HTML Attribute: appearance
    */
   @attr
-  public appearance: AvatarAppearance;
-
-  /**
-   * @internal
-   */
-  public connectedCallback() {
-    super.connectedCallback();
-
-    if (!this.appearance) {
-      this.appearance = 'neutral';
-    }
-  }
+  public appearance: AvatarAppearance = 'neutral';
 }
 
 /**
