@@ -45,6 +45,12 @@ describe('Slider', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders aria-labelledby', () => {
+    const component = create(<Slider label="I'm labelled by another element" aria-labelledby="abc" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('can provide the current value', () => {
     const slider = React.createRef<ISlider>();
 
