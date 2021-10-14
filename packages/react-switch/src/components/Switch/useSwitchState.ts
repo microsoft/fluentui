@@ -29,7 +29,7 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
 
 export const useSwitchState = (state: SwitchState) => {
   const { defaultChecked = false, checked, disabled = false, onChange } = state;
-  const { onPointerDown: onPointerDownCallback, onKeyDown: onKeyDownCallback } = state.root;
+  const { onPointerDown: onPointerDownCallback, onKeyUp: onKeyUpCallback } = state.root;
 
   const { dir } = useFluent();
   const inputRef = useMergedRefs(state.input.ref);
@@ -131,14 +131,14 @@ export const useSwitchState = (state: SwitchState) => {
     [onPointerDownCallback, onPointerMove, onPointerUp, showThumbAnimation],
   );
 
-  const onKeyDown = React.useCallback(
+  const onKeyUp = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
-      onKeyDownCallback?.(ev);
+      onKeyUpCallback?.(ev);
       if (ev.key === ' ') {
         setChecked(ev, !internalState.current.internalValue);
       }
     },
-    [onKeyDownCallback, setChecked],
+    [onKeyUpCallback, setChecked],
   );
 
   const currentPosition = renderedPosition !== undefined ? renderedPosition : currentValue ? 100 : 0;
@@ -159,7 +159,7 @@ export const useSwitchState = (state: SwitchState) => {
   state.root.style = rootStyles;
   if (!disabled) {
     state.root.onPointerDown = onPointerDown;
-    state.root.onKeyDown = onKeyDown;
+    state.root.onKeyUp = onKeyUp;
   }
 
   // Input Props

@@ -122,15 +122,15 @@ describe('Switch', () => {
       expect(inputRef?.current?.checked).toEqual(false);
     });
 
-    it('handles onKeyDown callback', () => {
+    it('handles onKeyUp callback', () => {
       const eventHandler = jest.fn();
 
-      render(<Switch onKeyDown={eventHandler} data-testid="test" />);
+      render(<Switch onKeyUp={eventHandler} data-testid="test" />);
       const rootElement = screen.getByTestId('test');
 
       expect(eventHandler).toBeCalledTimes(0);
 
-      fireEvent.keyDown(rootElement, { key: ' ' });
+      fireEvent.keyUp(rootElement, { key: ' ' });
       expect(eventHandler).toBeCalledTimes(1);
     });
 
