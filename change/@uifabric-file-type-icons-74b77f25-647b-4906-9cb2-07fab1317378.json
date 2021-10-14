@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Map JXR file type to \"Photo\" icon (#20207)",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
