@@ -111,12 +111,12 @@ describe('Switch', () => {
 
       expect(onChange).toBeCalledTimes(0);
 
-      fireEvent.keyDown(rootElement, { key: ' ' });
+      fireEvent.keyUp(rootElement, { key: ' ' });
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
       expect(inputRef?.current?.checked).toEqual(true);
 
-      fireEvent.keyDown(rootElement, { key: ' ' });
+      fireEvent.keyUp(rootElement, { key: ' ' });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ checked: false });
       expect(inputRef?.current?.checked).toEqual(false);
