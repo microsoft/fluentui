@@ -7,7 +7,7 @@
 import { Properties } from 'csstype';
 
 // @internal
-export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket): (options: Pick<MakeStylesOptions, 'dir' | 'renderer'>) => Record<Slots, string>;
+export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket, sourceMappings: [string, string, Record<Slots, string>]): (options: Pick<MakeStylesOptions, 'dir' | 'renderer'>) => Record<Slots, string>;
 
 // Warning: (ae-internal-missing-underscore) The name "createCSSVariablesProxy" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -132,10 +132,10 @@ export function resolveProxyValues<T>(value: T): T;
 // Warning: (ae-internal-missing-underscore) The name "resolveStyleRules" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export function resolveStyleRules(styles: MakeStyles, unstable_cssPriority?: number): [CSSClassesMap, CSSRulesByBucket];
+export function resolveStyleRules(classNameModifier: string, styles: MakeStyles, unstable_cssPriority?: number): [CSSClassesMap, CSSRulesByBucket];
 
 // @public
-export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority: number): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
+export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>(id: string, stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority: number): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
 
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
 //

@@ -33,7 +33,8 @@ export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>
       typeof stylesBySlots[slotName] === 'function'
         ? (stylesBySlots[slotName] as MakeStylesStyleFunctionRule<Tokens>)(tokensProxy)
         : stylesBySlots[slotName];
-    const [cssClassMap, cssRulesByBucket] = resolveStyleRules(id, slotStyles, unstable_cssPriority);
+    const slotId = id ? id + slotName : '';
+    const [cssClassMap, cssRulesByBucket] = resolveStyleRules(slotId, slotStyles, unstable_cssPriority);
 
     classesMapBySlot[slotName] = cssClassMap;
 

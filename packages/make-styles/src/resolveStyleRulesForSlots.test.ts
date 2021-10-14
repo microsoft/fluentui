@@ -8,7 +8,7 @@ describe('resolveStyleRulesForSlots', () => {
       icon: { color: 'blue', background: 'lightblue' },
     };
 
-    expect(resolveStyleRulesForSlots(stylesBySlots, 0)).toMatchInlineSnapshot(`
+    expect(resolveStyleRulesForSlots('', stylesBySlots, 0)).toMatchInlineSnapshot(`
       Array [
         Object {
           "icon": Object {

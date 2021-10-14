@@ -1,8 +1,8 @@
 import { MakeStylesRenderer, StyleBucketName } from '../types';
 import { getStyleSheetForBucket } from './getStyleSheetForBucket';
+import { MK_DEBUG } from '../devtools/store';
 
 let lastIndex = 0;
-window.debugMKC = [];
 
 /**
  * Creates a new instances of a renderer.
@@ -33,7 +33,7 @@ export function createDOMRenderer(
           }
 
           renderer.insertionCache[ruleCSS] = styleBucketName as StyleBucketName;
-          window.debugMKC.push(ruleCSS);
+          MK_DEBUG.addCSSRule(ruleCSS);
 
           if (sheet) {
             try {

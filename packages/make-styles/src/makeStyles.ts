@@ -29,11 +29,11 @@ export function makeStyles<Slots extends string | number, Tokens>(
 
     if (isLTR) {
       if (ltrClassNamesForSlots === null) {
-        ltrClassNamesForSlots = reduceToClassNameForSlots(classesMapBySlot, dir);
+        [ltrClassNamesForSlots] = reduceToClassNameForSlots(classesMapBySlot, dir);
       }
     } else {
       if (rtlClassNamesForSlots === null) {
-        rtlClassNamesForSlots = reduceToClassNameForSlots(classesMapBySlot, dir);
+        [rtlClassNamesForSlots] = reduceToClassNameForSlots(classesMapBySlot, dir);
       }
     }
 

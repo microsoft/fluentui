@@ -15,7 +15,7 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal
-export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket): () => Record<Slots, string>;
+export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket, sourceMappings: [string, string, Record<Slots, string>]): () => Record<Slots, string>;
 
 export { createDOMRenderer }
 

@@ -37,8 +37,9 @@ export function reduceToClassName(classMap: CSSClassesMap, dir: 'ltr' | 'rtl'): 
 export function reduceToClassNameForSlots<Slots extends string | number>(
   classesMapBySlot: CSSClassesMapBySlot<Slots>,
   dir: 'ltr' | 'rtl',
-): Record<Slots, string> {
+): [Record<Slots, string>, Record<Slots, string>] {
   const classNamesForSlots = {} as Record<Slots, string>;
+  const sequencesForSlots = {} as Record<Slots, string>;
 
   // eslint-disable-next-line guard-for-in
   for (const slotName in classesMapBySlot) {
@@ -48,8 +49,10 @@ export function reduceToClassNameForSlots<Slots extends string | number>(
     const resultSlotClasses = sequenceHash + ' ' + classnamesForSlot;
 
     DEFINITION_LOOKUP_TABLE[sequenceHash] = [classesMapBySlot[slotName], dir];
+
     classNamesForSlots[slotName] = resultSlotClasses;
+    sequencesForSlots[slotName] = sequenceHash;
   }
 
-  return classNamesForSlots;
+  return [classNamesForSlots, sequencesForSlots];
 }

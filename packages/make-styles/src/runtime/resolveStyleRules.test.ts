@@ -15,15 +15,15 @@ describe('resolveStyleRules', () => {
     it('generates unique classnames for pseudo selectors', () => {
       const classnamesSet = new Set<string>();
 
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ ':hover': { color: 'red' } })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules('', { color: 'red' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules('', { ':hover': { color: 'red' } })));
 
       classnamesSet.add(
-        getFirstClassName(resolveStyleRules({ '@media screen and (max-width: 992px)': { color: 'red' } })),
+        getFirstClassName(resolveStyleRules('', { '@media screen and (max-width: 992px)': { color: 'red' } })),
       );
       classnamesSet.add(
         getFirstClassName(
-          resolveStyleRules({
+          resolveStyleRules('', {
             '@media screen and (max-width: 992px)': {
               ':hover': { color: 'red' },
             },
@@ -33,14 +33,14 @@ describe('resolveStyleRules', () => {
 
       classnamesSet.add(
         getFirstClassName(
-          resolveStyleRules({
+          resolveStyleRules('', {
             '@supports (display: grid)': { color: 'red' },
           }),
         ),
       );
       classnamesSet.add(
         getFirstClassName(
-          resolveStyleRules({
+          resolveStyleRules('', {
             '@supports (display: grid)': {
               ':hover': { color: 'red' },
             },
@@ -50,7 +50,7 @@ describe('resolveStyleRules', () => {
 
       classnamesSet.add(
         getFirstClassName(
-          resolveStyleRules({
+          resolveStyleRules('', {
             '@supports (display: grid)': {
               '@media screen and (max-width: 992px)': {
                 ':hover': { color: 'red' },
@@ -66,7 +66,7 @@ describe('resolveStyleRules', () => {
 
   describe('css', () => {
     it('resolves a single rule', () => {
-      expect(resolveStyleRules({ color: 'red' })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { color: 'red' })).toMatchInlineSnapshot(`
         .fe3e8s9 {
           color: red;
         }
@@ -74,7 +74,7 @@ describe('resolveStyleRules', () => {
     });
 
     it('resolves multiple rules', () => {
-      expect(resolveStyleRules({ backgroundColor: 'green', color: 'red' })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { backgroundColor: 'green', color: 'red' })).toMatchInlineSnapshot(`
         .fcnqdeg {
           background-color: green;
         }
@@ -85,7 +85,7 @@ describe('resolveStyleRules', () => {
     });
 
     it('trims values to generate the same classes', () => {
-      expect(resolveStyleRules({ color: 'red ' /* ends with a space */ })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { color: 'red ' /* ends with a space */ })).toMatchInlineSnapshot(`
         .fe3e8s9 {
           color: red;
         }
@@ -94,7 +94,7 @@ describe('resolveStyleRules', () => {
 
     it('hyphenates camelcased CSS properties', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           '--foo': 'var(--bar)',
           '--fooBar': 'var(--barBaz)',
 
@@ -118,12 +118,12 @@ describe('resolveStyleRules', () => {
     });
 
     it('performs expansion of shorthands', () => {
-      expect(resolveStyleRules({ outline: '1px' })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { outline: '1px' })).toMatchInlineSnapshot(`
         .fpvhumw {
           outline-width: 1px;
         }
       `);
-      expect(resolveStyleRules({ padding: '5px' })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { padding: '5px' })).toMatchInlineSnapshot(`
         .f1sbtcvk {
           padding-top: 5px;
         }
@@ -146,7 +146,7 @@ describe('resolveStyleRules', () => {
     });
 
     it('performs expansion of shorthands on nested objects', () => {
-      expect(resolveStyleRules({ outline: '1px', ':hover': { outline: '5px' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { outline: '1px', ':hover': { outline: '5px' } })).toMatchInlineSnapshot(`
         .fpvhumw {
           outline-width: 1px;
         }
@@ -158,7 +158,7 @@ describe('resolveStyleRules', () => {
 
     it('shorthands and longhands work like in CSS', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           margin: '5px',
           marginLeft: '10px',
         }),
@@ -184,7 +184,7 @@ describe('resolveStyleRules', () => {
       `);
 
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           marginLeft: '10px',
           margin: '5px',
         }),
@@ -211,7 +211,7 @@ describe('resolveStyleRules', () => {
     });
 
     it('performs vendor prefixing', () => {
-      expect(resolveStyleRules({ display: 'flex' })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { display: 'flex' })).toMatchInlineSnapshot(`
         .f22iagw {
           display: -webkit-box;
           display: -webkit-flex;
@@ -223,7 +223,7 @@ describe('resolveStyleRules', () => {
 
     it('handles falsy values', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           zIndex: 1,
           position: (null as unknown) as undefined,
           top: undefined,
@@ -236,7 +236,7 @@ describe('resolveStyleRules', () => {
     });
 
     it('handles RTL', () => {
-      expect(resolveStyleRules({ left: '5px' })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { left: '5px' })).toMatchInlineSnapshot(`
         .f5b3q4t {
           left: 5px;
         }
@@ -247,7 +247,7 @@ describe('resolveStyleRules', () => {
     });
 
     it('handles RTL @noflip', () => {
-      expect(resolveStyleRules({ left: '5px /* @noflip */' })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { left: '5px /* @noflip */' })).toMatchInlineSnapshot(`
         .fm76jd0 {
           left: 5px;
         }
@@ -259,58 +259,58 @@ describe('resolveStyleRules', () => {
 
       // Definitions with @noflip cannot be reused to usual ones as expected RTL styles will be different
 
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ left: '5px' })));
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ left: '5px /* @noflip */' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules('', { left: '5px' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules('', { left: '5px /* @noflip */' })));
 
       expect(classnamesSet.size).toBe(2);
     });
 
     it('handles nested selectors', () => {
-      expect(resolveStyleRules({ ':hover': { color: 'red' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { ':hover': { color: 'red' } })).toMatchInlineSnapshot(`
         .faf35ka:hover {
           color: red;
         }
       `);
-      expect(resolveStyleRules({ '::after': { content: '""' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '::after': { content: '""' } })).toMatchInlineSnapshot(`
         .f13zj6fq::after {
           content: "";
         }
       `);
 
-      expect(resolveStyleRules({ '[data-fluent="true"]': { color: 'green' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '[data-fluent="true"]': { color: 'green' } })).toMatchInlineSnapshot(`
         .fcopvey[data-fluent="true"] {
           color: green;
         }
       `);
-      expect(resolveStyleRules({ '& [data-fluent="true"]': { color: 'green' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '& [data-fluent="true"]': { color: 'green' } })).toMatchInlineSnapshot(`
         .f1k5aqsk [data-fluent="true"] {
           color: green;
         }
       `);
 
-      expect(resolveStyleRules({ '> div': { color: 'green' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '> div': { color: 'green' } })).toMatchInlineSnapshot(`
         .f18wx08q > div {
           color: green;
         }
       `);
 
-      expect(resolveStyleRules({ '& .foo': { color: 'green' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '& .foo': { color: 'green' } })).toMatchInlineSnapshot(`
         .f15f830o .foo {
           color: green;
         }
       `);
-      expect(resolveStyleRules({ '&.foo': { color: 'green' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '&.foo': { color: 'green' } })).toMatchInlineSnapshot(`
         .fe1zdmy.foo {
           color: green;
         }
       `);
 
-      expect(resolveStyleRules({ '& #foo': { color: 'green' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '& #foo': { color: 'green' } })).toMatchInlineSnapshot(`
         .fie1itf #foo {
           color: green;
         }
       `);
-      expect(resolveStyleRules({ '&#foo': { color: 'green' } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '&#foo': { color: 'green' } })).toMatchInlineSnapshot(`
         .fwxog6r#foo {
           color: green;
         }
@@ -318,7 +318,7 @@ describe('resolveStyleRules', () => {
     });
 
     it('handles complex nested selectors', () => {
-      expect(resolveStyleRules({ '& > :first-child': { '& svg': { color: 'red' } } })).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { '& > :first-child': { '& svg': { color: 'red' } } })).toMatchInlineSnapshot(`
         .fxfx2ih > :first-child svg {
           color: red;
         }
@@ -327,7 +327,7 @@ describe('resolveStyleRules', () => {
 
     it('handles media queries', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           color: 'green',
           '@media screen and (max-width: 992px)': { color: 'red' },
         }),
@@ -345,7 +345,7 @@ describe('resolveStyleRules', () => {
 
     it('handles media queries with preudo selectors', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           color: 'green',
           '@media screen and (max-width: 992px)': {
             ':hover': {
@@ -367,7 +367,7 @@ describe('resolveStyleRules', () => {
 
     it('handles nested media queries', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           color: 'red',
           '@media screen and (max-width: 992px)': {
             color: 'red',
@@ -393,7 +393,7 @@ describe('resolveStyleRules', () => {
 
     it('handles supports queries', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           '@supports (display:block)': { color: 'green' },
         }),
       ).toMatchInlineSnapshot(`
@@ -407,7 +407,7 @@ describe('resolveStyleRules', () => {
 
     it('handles :global selector', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           ':global(body) &': { color: 'green' },
         }),
       ).toMatchInlineSnapshot(`
@@ -419,7 +419,7 @@ describe('resolveStyleRules', () => {
 
     it('handles :global selector', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           ':global(body)': {
             ':focus': {
               color: 'green',
@@ -440,7 +440,7 @@ describe('resolveStyleRules', () => {
         }
       `);
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           ':global(body) :focus': { color: 'green' },
           ':global(body) :focus:hover': { color: 'blue' },
           ':global(body) :focus .foo': { color: 'yellow' },
@@ -460,7 +460,7 @@ describe('resolveStyleRules', () => {
 
     // it.todo('supports :global as a nested selector', () => {
     //   expect(
-    //     resolveStyleRules({
+    //     resolveStyleRules('',{
     //       ':focus': { ':global(body)': { color: 'green' } },
     //     }),
     //   ).toMatchInlineSnapshot(`
@@ -474,7 +474,7 @@ describe('resolveStyleRules', () => {
   describe('keyframes', () => {
     it('allows to define string as animationName', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           animationName: 'fade-in slide-out',
           animationIterationCount: 'infinite',
           animationDuration: '5s',
@@ -497,7 +497,7 @@ describe('resolveStyleRules', () => {
 
     it('allows to define object as animationName', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           animationName: {
             from: {
               transform: 'rotate(0deg)',
@@ -587,7 +587,7 @@ describe('resolveStyleRules', () => {
 
     it('allows to define array as animationName', () => {
       expect(
-        resolveStyleRules({
+        resolveStyleRules('', {
           animationName: [
             {
               from: {
@@ -704,7 +704,7 @@ describe('resolveStyleRules', () => {
 
   describe('output', () => {
     it('contains less members for properties that do not depend on text direction', () => {
-      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })[0]).toEqual({
+      expect(resolveStyleRules('', { color: 'red', paddingLeft: '10px' })[0]).toEqual({
         sj55zd: 'fe3e8s9',
         uwmqm3: ['frdkuqy', 'f81rol6'],
       });
@@ -713,12 +713,12 @@ describe('resolveStyleRules', () => {
 
   describe('experimental', () => {
     it('allows to increase specificity', () => {
-      expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { color: 'red' }, 1)).toMatchInlineSnapshot(`
         .fe3e8s91.fe3e8s91 {
           color: red;
         }
       `);
-      expect(resolveStyleRules({ color: 'red' }, 2)).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { color: 'red' }, 2)).toMatchInlineSnapshot(`
         .fe3e8s92.fe3e8s92.fe3e8s92 {
           color: red;
         }
@@ -728,6 +728,7 @@ describe('resolveStyleRules', () => {
     it('allows to increase for media queries', () => {
       expect(
         resolveStyleRules(
+          '',
           {
             '@media screen and (max-width: 992px)': {
               color: 'red',
@@ -745,7 +746,7 @@ describe('resolveStyleRules', () => {
     });
 
     it('allows to increase for RTL', () => {
-      expect(resolveStyleRules({ left: '5px' }, 1)).toMatchInlineSnapshot(`
+      expect(resolveStyleRules('', { left: '5px' }, 1)).toMatchInlineSnapshot(`
         .f5b3q4t1.f5b3q4t1 {
           left: 5px;
         }
@@ -758,9 +759,9 @@ describe('resolveStyleRules', () => {
     it('generates unique classnames with different specificity', () => {
       const classnamesSet = new Set<string>();
 
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' }, 1)));
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' }, 2)));
+      classnamesSet.add(getFirstClassName(resolveStyleRules('', { color: 'red' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules('', { color: 'red' }, 1)));
+      classnamesSet.add(getFirstClassName(resolveStyleRules('', { color: 'red' }, 2)));
 
       expect(classnamesSet.size).toBe(3);
     });

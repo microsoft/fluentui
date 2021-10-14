@@ -1,5 +1,6 @@
 import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
+import hash from '@emotion/hash';
 import { Module } from '@linaria/babel-preset';
 import shakerEvaluator from '@linaria/shaker';
 import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
@@ -9,6 +10,7 @@ import { evaluatePaths } from './utils/evaluatePaths';
 import { UNHANDLED_CASE_ERROR } from './constants';
 import { BabelPluginOptions } from './types';
 import { validateOptions } from './validateOptions';
+import { createSourceMapParameter } from './utils/createSourceMapParameter';
 
 type AstStyleNode =
   | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
@@ -32,6 +34,8 @@ type BabelPluginState = PluginPass & {
 
   /** Contains AST nodes with that should be resolved. */
   styleNodes?: AstStyleNode[];
+
+  styleProperties?: NodePath<t.ObjectProperty['key']>[];
 };
 
 /**
@@ -184,7 +188,10 @@ function processDefinitions(
     }
 
     if (styleSlotPath.isObjectProperty()) {
+      const propertyPath = styleSlotPath.get('key');
       const stylesPath = styleSlotPath.get('value');
+
+      state.styleProperties?.push(propertyPath);
 
       /**
        * Needs lazy evaluation anyway.
@@ -469,6 +476,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
     pre() {
       this.calleePaths = [];
       this.styleNodes = [];
+      this.styleProperties = [];
     },
 
     visitor: {
@@ -550,16 +558,34 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               );
             }
 
-            const stylesBySlots: Record<string /* slot */, MakeStyles> = evaluationResult.value;
-            const [classnamesMapping, cssRules] = resolveStyleRulesForSlots(stylesBySlots, 0);
-            const [classnamesMappingDev, cssRulesDev] = resolveStyleRulesForSlots(
-              stylesBySlots,
-              0,
-              state.file.opts.filename!,
+            const uniqueDevId = hash(
+              calleePath.node.loc!.start.line + calleePath.node.loc!.start.column + state.file.opts.filename!,
             );
+            const stylesBySlots: Record<string /* slot */, MakeStyles> = evaluationResult.value;
+            const [classnamesMapping, cssRules] = resolveStyleRulesForSlots('', stylesBySlots, 0);
+            const [classnamesMappingDev, cssRulesDev] = resolveStyleRulesForSlots(uniqueDevId, stylesBySlots, 0);
+
+            function createCondition(consequent: t.Expression, alternate: t.Expression) {
+              return t.conditionalExpression(
+                t.binaryExpression(
+                  '===',
+                  t.memberExpression(
+                    t.memberExpression(t.identifier('process'), t.identifier('env')),
+                    t.identifier('NODE_ENV'),
+                  ),
+                  t.stringLiteral('production'),
+                ),
+                consequent,
+                alternate,
+              );
+            }
 
             // TODO: find a better way to replace arguments
-            callExpressionPath.node.arguments = [astify(classnamesMapping), astify(dedupeCSSRules(cssRules))];
+            callExpressionPath.node.arguments = [
+              createCondition(astify(classnamesMapping), astify(classnamesMappingDev)),
+              createCondition(astify(dedupeCSSRules(cssRules)), astify(cssRulesDev)),
+              createSourceMapParameter(uniqueDevId, state.file, state.styleProperties!),
+            ];
           });
 
           if (state.importDeclarationPath) {

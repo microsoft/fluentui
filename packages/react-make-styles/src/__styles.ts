@@ -13,8 +13,9 @@ import type { CSSClassesMapBySlot, CSSRulesByBucket } from '@fluentui/make-style
 export function __styles<Slots extends string>(
   classesMapBySlot: CSSClassesMapBySlot<Slots>,
   cssRules: CSSRulesByBucket,
+  sourceMappings: [string, string, Record<Slots, string>],
 ) {
-  const getStyles = vanillaStyles(classesMapBySlot, cssRules);
+  const getStyles = vanillaStyles(classesMapBySlot, cssRules, sourceMappings);
 
   return function useClasses(): Record<Slots, string> {
     const { dir } = useFluent();

@@ -1,7 +1,0 @@
-{
-  "evaluationRules": [
-    {
-      "action": "@fluentui/babel-make-styles/__fixtures__/config-evaluation-rules/sampleEvaluator"
-    }
-  ]
-}
