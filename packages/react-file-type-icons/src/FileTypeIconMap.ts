@@ -368,6 +368,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'jpe',
       'jpeg',
       'jpg',
+      'jxr',
       'kdc',
       'mrw',
       'nef',
