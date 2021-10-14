@@ -182,7 +182,7 @@ export interface INavLink {
   /**
    * URL to navigate to for this link
    */
-  url: string;
+  url?: string;
 
   /**
    * Unique, stable key for the link, used when rendering the list of links and for tracking
