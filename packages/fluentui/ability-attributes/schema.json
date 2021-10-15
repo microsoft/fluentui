@@ -134,6 +134,19 @@
         }
       ]
     },
+    "$controls": {
+      "name": "controls",
+      "attributes": [
+        {
+          "name": "aria-controls",
+          "constraints": [
+            {
+              "ref": "$existingIDs"
+            }
+          ]
+        }
+      ]
+    },
     "$describedBy": {
       "name": "describedBy",
       "attributes": [
@@ -1022,6 +1035,10 @@
       "parameters": [
         {
           "rel": "@checked"
+        },
+        {
+          "ref": "$controls",
+          "optional": true
         }
       ],
       "tags": {
