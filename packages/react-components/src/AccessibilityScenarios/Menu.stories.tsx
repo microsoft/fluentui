@@ -58,7 +58,7 @@ type OnCheckedValueChangeCallback = (
   data: OnCheckedValueChangeDataType,
 ) => void;
 
-export const ProfileMenu: React.FunctionComponent = () => {
+export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
   const [statusCheckedValues, setStatusCheckedValues] = React.useState({ status: ['online'] });
   const onStatusChange = (
     event: React.MouseEvent | React.KeyboardEvent,
@@ -103,5 +103,5 @@ export const ProfileMenu: React.FunctionComponent = () => {
 
 export default {
   title: 'Accessibility Scenarios/ProfileMenu',
-  id: 'menu-scenario',
+  id: 'menu-accessibility-scenario',
 };
