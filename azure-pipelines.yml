@@ -9,7 +9,7 @@ variables:
   - template: .devops/templates/variables.yml
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'ubuntu-18.04'
 
 steps:
   - task: NodeTool@0
