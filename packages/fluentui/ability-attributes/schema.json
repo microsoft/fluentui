@@ -1101,12 +1101,6 @@
     },
     "RadioGroupItem": {
       "inherits": "Checkbox",
-      "parameters": [
-        {
-          "rel": "@checked",
-          "optional": true
-        }
-      ],
       "tags": {
         "<button>": {
           "attributes": [
