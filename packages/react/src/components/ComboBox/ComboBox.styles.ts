@@ -109,10 +109,12 @@ export const getOptionStyles = memoizeFunction(
               border: 'none',
               borderColor: 'Background',
             },
-            '&.ms-Checkbox': {
-              display: 'flex',
-              alignItems: 'center',
-            },
+            ...(!isHidden && {
+              '&.ms-Checkbox': {
+                display: 'flex',
+                alignItems: 'center',
+              },
+            }),
             '&.ms-Button--command:hover:active': {
               backgroundColor: option.backgroundPressedColor,
             },
