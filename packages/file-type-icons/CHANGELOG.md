@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 04 Oct 2021 12:36:04 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Oct 2021 12:26:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.2](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.2)
+
+Fri, 15 Oct 2021 12:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.8.1..@uifabric/file-type-icons_v7.8.2)
+
+### Patches
+
+- Map JXR file type to "Photo" icon (#20207) ([PR #20214](https://github.com/microsoft/fluentui/pull/20214) by tmichon@microsoft.com)
 
 ## [7.8.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.1)
 
