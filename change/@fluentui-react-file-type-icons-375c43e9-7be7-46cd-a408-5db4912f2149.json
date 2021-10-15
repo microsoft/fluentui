@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Map JXR files to Photo icon",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

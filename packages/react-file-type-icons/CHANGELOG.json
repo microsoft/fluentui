@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Fri, 15 Oct 2021 07:37:01 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Map JXR files to Photo icon",
+            "commit": "1ca1036621a15f44e32e86685c1df901ae30baba"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Oct 2021 07:37:17 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.4.3",
       "version": "8.4.3",
