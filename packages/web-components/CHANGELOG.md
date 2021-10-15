@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 08 Oct 2021 07:31:50 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Oct 2021 00:11:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.2)
+
+Thu, 14 Oct 2021 00:11:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.1..@fluentui/web-components_v1.6.2)
+
+### Patches
+
+- remove dependency on lodash-es with fast-web-utilities ([PR #20205](https://github.com/microsoft/fluentui/pull/20205) by chhol@microsoft.com)
 
 ## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.1)
 
