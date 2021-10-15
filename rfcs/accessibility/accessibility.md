@@ -63,6 +63,22 @@ Focus handling (except of the points mentioned above) on an application level ne
 9. Schedule trusted user test
 10. Resolve issues found in the trusted user test
 
+### Testing
+
+Fluent UI components will be tested both automatically and manually:
+
+_Automated tests_ will contain:
+
+- Testing using [accessibility behaviors](https://github.com/microsoft/fluentui/blob/master/packages/a11y-testing/src/definitions/Button/buttonBehaviorDefinition.ts)
+- E2E tests using [cypress](https://www.cypress.io/) and [axe-core](https://github.com/dequelabs/axe-core)
+
+_Manual tests_ will be executed on small isolated pages which show different accessibility scenarios. For each component, suitable scenarios will be defined and implemented. They will be then tested by expeienced trusted accessibility testers and real users.
+Axe-core test will be also executed on each of the scenarios.
+
+As a first step, accessibility scenarios will be introduced as [hidden Storybook stories](https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/authoring-stories.md#10-internal-stories-for-testing).
+
+Later, after descriptions, best practices and other relevant information will be added, they can be made public, so that consumers of the library can use them as validated patterns when creating their own user experiences.
+
 ### Pros and Cons
 
 The main negative point is that the described process is quite heavy and it might take longer to fully implement a component.
