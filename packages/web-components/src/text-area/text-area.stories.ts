@@ -5,7 +5,8 @@ export default {
   component: fluentTextArea,
   argTypes: {
     appearance: {
-      options: ['filled'],
+      defaultValue: 'outlined',
+      options: ['filled', 'outlined'],
       control: { type: 'radio' },
     },
     autoFocus: {

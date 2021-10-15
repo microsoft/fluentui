@@ -15,10 +15,11 @@ import {
   disabledOpacity,
   focusStrokeOuter,
   focusStrokeWidth,
-  neutralFillSecondaryRest,
+  neutralFillRest,
   neutralFillStrongActive,
   neutralFillStrongHover,
   neutralFillStrongRest,
+  neutralStrokeControlRest,
 } from '../design-tokens';
 
 export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (
@@ -33,7 +34,8 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       margin: 0;
       fill: currentcolor;
       color: ${neutralFillStrongRest};
-      background: ${neutralFillSecondaryRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
+        border-box ${neutralStrokeControlRest};
       box-sizing: border-box;
       border: calc(${focusStrokeWidth} * 1px) solid transparent;
       border-radius: calc(${controlCornerRadius} * 1px);

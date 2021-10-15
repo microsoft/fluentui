@@ -4,18 +4,14 @@ export default {
   title: 'Components/Tree View',
   component: fluentTreeView,
   argTypes: {
-    disabled: {
-      control: { type: 'boolean' },
-    },
     renderCollapsedNodes: {
       control: { type: 'boolean' },
     },
   },
 };
 
-const TreeViewTemplate = ({ disabled, renderCollapsedNodes }) => `
+const TreeViewTemplate = ({ renderCollapsedNodes }) => `
 <fluent-tree-view
-  ${disabled ? 'disabled' : ''}
   ${renderCollapsedNodes ? `render-collapsed-nodes="${renderCollapsedNodes}` : ''}
 ">
   <fluent-tree-item>
@@ -47,7 +43,6 @@ const TreeViewTemplate = ({ disabled, renderCollapsedNodes }) => `
 export const TreeView = TreeViewTemplate.bind({});
 
 TreeView.args = {
-  disabled: false,
   renderCollapsedNodes: false,
 };
 
