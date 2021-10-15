@@ -8344,6 +8344,7 @@ export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement
     id?: string;
     onTooltipToggle?(isTooltipVisible: boolean): void;
     overflowMode?: TooltipOverflowMode;
+    overflowTargetElement?: HTMLElement;
     // @deprecated
     setAriaDescribedBy?: boolean;
     styles?: IStyleFunctionOrObject<ITooltipHostStyleProps, ITooltipHostStyles>;
@@ -9955,6 +9956,7 @@ export class TooltipHostBase extends React_2.Component<ITooltipHostProps, IToolt
 
 // @public (undocumented)
 export enum TooltipOverflowMode {
+    Custom = 2,
     Parent = 0,
     Self = 1
 }

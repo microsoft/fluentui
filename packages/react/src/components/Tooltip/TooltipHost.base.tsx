@@ -155,6 +155,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
+        case TooltipOverflowMode.Custom:
           return this._tooltipHost.current.parentElement!;
 
         case TooltipOverflowMode.Self:
@@ -196,7 +197,9 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     TooltipHostBase._currentVisibleTooltip = this;
 
     if (overflowMode !== undefined) {
-      const overflowElement = this._getTargetElement();
+      const overflowElement =
+        overflowMode === TooltipOverflowMode.Custom ? this.props.overflowTargetElement : this._getTargetElement();
+
       if (overflowElement && !hasOverflow(overflowElement)) {
         return;
       }

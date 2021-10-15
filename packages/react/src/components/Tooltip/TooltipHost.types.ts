@@ -34,6 +34,12 @@ export enum TooltipOverflowMode {
    * Note that this does not check the children for overflow, only the TooltipHost root.
    */
   Self,
+
+  /**
+   * Only show tooltip anchored to the parent if the target element is overflowing.
+   * Note that this works only if the element to check for overflow is passed via props.
+   */
+  Custom,
 }
 
 /**
@@ -97,12 +103,18 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   /**
    * If this is unset (the default), the tooltip is always shown even if there's no overflow.
    *
-   * If set, only show the tooltip if the specified element (`Self` or `Parent`) has overflow.
+   * If set, only show the tooltip if the specified element (`Self`, `Parent` or `custom`) has overflow.
    * When set to `Parent`, the parent element is also used as the tooltip's target element.
    *
    * Note that even with `Self` mode, the TooltipHost *does not* check whether any children have overflow.
    */
   overflowMode?: TooltipOverflowMode;
+
+  /**
+   * The element to watch and trigger tooltip incase of content overflow.
+   * Note that this works with overflowMode: `custom`.
+   */
+  overflowTargetElement?: HTMLElement;
 
   /**
    * Whether or not to mark the TooltipHost root element as described by the tooltip.
