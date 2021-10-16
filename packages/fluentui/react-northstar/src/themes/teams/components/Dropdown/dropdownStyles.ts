@@ -139,9 +139,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
   selectedItems: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'flex',
     flexWrap: 'wrap',
-    overflowY: 'auto',
-    overflowX: 'hidden',
-    maxHeight: v.selectedItemsMaxHeight,
+    overflow: 'hidden',
     width: '100%',
     ...(p.hasToggleIndicator && { paddingRight: v.toggleIndicatorSize }),
     ...(p.multiple &&
