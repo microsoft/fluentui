@@ -1,33 +1,23 @@
-import * as React from 'react';
-import type { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * Card Props
- */
-export interface CardProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type CardSlots = {
+  root: IntrinsicShorthandProps<'div'>;
+};
+
+export type CardCommons = {
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the cardShorthandProps array below
    * Any property that has a default value should be listed in CardDefaultedProps as e.g. 'size' | 'icon'
    */
-}
+};
 
 /**
- * Names of the shorthand properties in CardProps
+ * Card Props
  */
-export type CardShorthandProps = never; // TODO add shorthand property names
-
-/**
- * Names of CardProps that have a default value in useCard
- */
-export type CardDefaultedProps = never; // TODO add names of properties with default values
+export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
 
 /**
  * State used in rendering Card
  */
-export interface CardState extends CardProps, ComponentStateCompat<CardProps, CardShorthandProps, CardDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type CardState = ComponentState<CardSlots> & CardCommons;

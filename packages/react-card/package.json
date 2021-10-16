@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-card",
-  "version": "9.0.0-alpha.9",
+  "version": "9.0.0-beta.2",
   "private": false,
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
@@ -14,6 +14,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -25,14 +26,14 @@
     "storybook": "start-storybook -s assets"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-alpha.55",
+    "@fluentui/babel-make-styles": "9.0.0-beta.1",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.48",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.1",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.17",
+    "@fluentui/react-conformance-make-styles": "9.0.0-beta.1",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/react-text": "9.0.0-alpha.22",
-    "@fluentui/react-button": "9.0.0-alpha.93",
+    "@fluentui/react-text": "9.0.0-beta.1",
+    "@fluentui/react-button": "9.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
@@ -45,8 +46,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-alpha.73",
-    "@fluentui/react-utilities": "9.0.0-alpha.53",
+    "@fluentui/react-make-styles": "9.0.0-beta.1",
+    "@fluentui/react-utilities": "9.0.0-beta.1",
+    "@fluentui/react-tabster": "9.0.0-beta.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -56,7 +58,7 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "alpha",
+    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

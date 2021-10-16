@@ -210,7 +210,7 @@ export const allComponents: {
 
 // Warning: (ae-internal-missing-underscore) The name "ambientShadow" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal @deprecated
 export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(0, 0, 0, calc(.11 * (2 - var(--background-luminance, 1))))";
 
 // Warning: (ae-internal-missing-underscore) The name "Anchor" should be prefixed with an underscore because the declaration is marked as @internal
@@ -264,9 +264,6 @@ export const baseHorizontalSpacingMultiplier: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const baseLayerLuminance: CSSDesignToken<number>;
-
-export { BaseProgress as Progress }
-export { BaseProgress as ProgressRing }
 
 // @public (undocumented)
 export const bodyFont: CSSDesignToken<string>;
@@ -442,7 +439,7 @@ export const direction: CSSDesignToken<Direction>;
 
 // Warning: (ae-internal-missing-underscore) The name "directionalShadow" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal (undocumented)
+// @internal @deprecated (undocumented)
 export const directionalShadow = "0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px)) rgba(0, 0, 0, calc(.13 * (2 - var(--background-luminance, 1))))";
 
 // @public
@@ -465,7 +462,7 @@ export const dividerStyles: (context: ElementDefinitionContext, definition: Foun
 // @public @deprecated (undocumented)
 export const elevatedCornerRadius: CSSDesignToken<number>;
 
-// @public
+// @public @deprecated
 export const elevation: string;
 
 // @public (undocumented)
@@ -650,22 +647,22 @@ export const focusStrokeWidth: CSSDesignToken<number>;
 // @public (undocumented)
 export const foregroundOnAccentActive: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentActiveLarge: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const foregroundOnAccentFocus: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentFocusLarge: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const foregroundOnAccentHover: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentHoverLarge: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentLargeRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
@@ -674,7 +671,7 @@ export const foregroundOnAccentRecipe: DesignToken<ColorRecipe>;
 // @public (undocumented)
 export const foregroundOnAccentRest: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentRestLarge: CSSDesignToken<Swatch>;
 
 // @public
@@ -816,28 +813,28 @@ export const neutralFillInputRest: CSSDesignToken<Swatch>;
 // @public (undocumented)
 export const neutralFillInputRestDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseActiveDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseFocus: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseFocusDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseHover: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseHoverDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseRecipe: DesignToken<InteractiveColorRecipe>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
@@ -1126,6 +1123,14 @@ export type PaletteRGB = Palette<SwatchRGB>;
 export const PaletteRGB: Readonly<{
     create(source: SwatchRGB): PaletteRGB;
 }>;
+
+// @public
+export class Progress extends BaseProgress {
+}
+
+// @public
+export class ProgressRing extends BaseProgress {
+}
 
 // @public
 export const progressRingStyles: (context: ElementDefinitionContext, definition: ProgressRingOptions) => ElementStyles;

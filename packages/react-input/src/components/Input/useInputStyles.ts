@@ -14,17 +14,17 @@ const horizontalSpacing = {
 const contentSizes = {
   // TODO(sharing) shouldn't these be in the theme?
   body1: (theme: Theme) => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
   }),
   caption1: (theme: Theme) => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-    lineHeight: theme.global.type.lineHeights.base[200],
+    fontSize: theme.fontSizeBase200,
+    lineHeight: theme.lineHeightBase200,
   }),
   // eslint-disable-next-line @typescript-eslint/naming-convention
   400: (theme: Theme) => ({
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
+    fontSize: theme.fontSizeBase400,
+    lineHeight: theme.lineHeightBase400,
   }),
 };
 // TODO(sharing) should these be shared somewhere?
@@ -33,13 +33,13 @@ const fieldHeights = {
   medium: '32px',
   large: '40px',
 };
-const borderRadius = (theme: Theme) => theme.global.borderRadius.medium;
+const borderRadius = (theme: Theme) => theme.borderRadiusMedium;
 const backgroundColors = {
   /** for outline/filledLighter */
-  filledLighter: (theme: Theme) => theme.alias.color.neutral.neutralBackground1,
-  filledDarker: (theme: Theme) => theme.alias.color.neutral.neutralBackground3,
+  filledLighter: (theme: Theme) => theme.colorNeutralBackground1,
+  filledDarker: (theme: Theme) => theme.colorNeutralBackground3,
   /** for underline */
-  transparent: (theme: Theme) => theme.alias.color.neutral.transparentBackground,
+  transparent: (theme: Theme) => theme.colorTransparentBackground,
 };
 
 const useRootStyles = makeStyles({
@@ -47,7 +47,7 @@ const useRootStyles = makeStyles({
     display: 'flex',
     alignItems: 'stretch',
     flexWrap: 'no-wrap',
-    fontFamily: theme.global.type.fontFamilies.base,
+    fontFamily: theme.fontFamilyBase,
     boxSizing: 'border-box',
     '*, *:before, *:after': {
       boxSizing: 'border-box',
@@ -70,7 +70,7 @@ const useRootStyles = makeStyles({
   },
   filled: theme => ({
     // optional shadow for filled appearances
-    boxShadow: theme.alias.shadow.shadow2,
+    boxShadow: theme.shadow2,
     borderRadius: borderRadius(theme), // needed for shadow
   }),
   disabled: {
@@ -83,10 +83,10 @@ const useInputElementStyles = makeStyles({
     flexGrow: 1,
     border: 'none', // input itself never has a border (this is handled by inputWrapper)
     padding: `0 ${horizontalSpacing.xxs}`,
-    color: theme.alias.color.neutral.neutralForeground1,
+    color: theme.colorNeutralForeground1,
 
     '::placeholder': {
-      color: theme.alias.color.neutral.neutralForeground4,
+      color: theme.colorNeutralForeground4,
       opacity: 1, // browser style override
     },
     ':focus-visible': {
@@ -118,11 +118,11 @@ const useInputElementStyles = makeStyles({
     background: backgroundColors.filledDarker(theme),
   }),
   disabled: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
-    background: theme.alias.color.neutral.transparentBackground,
+    color: theme.colorNeutralForegroundDisabled,
+    background: theme.colorTransparentBackground,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
   }),
 });
@@ -150,36 +150,36 @@ const useInputWrapperStyles = makeStyles({
   outline: theme => ({
     // Set this on inputWrapper rather than root since bookends will have separate background colors and borders
     background: backgroundColors.filledLighter(theme),
-    border: `1px solid ${theme.alias.color.neutral.neutralStroke1}`,
-    borderBottom: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
+    border: `1px solid ${theme.colorNeutralStroke1}`,
+    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
   }),
   underline: theme => ({
     backgroundColor: backgroundColors.transparent(theme),
     borderRadius: 0, // corners look strange if rounded
-    borderBottom: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
+    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
   }),
   filledDarker: theme => ({
     background: backgroundColors.filledDarker(theme),
-    border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
+    border: `1px solid ${theme.colorTransparentStroke}`,
   }),
   filledLighter: theme => ({
     background: backgroundColors.filledLighter(theme),
-    border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
+    border: `1px solid ${theme.colorTransparentStroke}`,
   }),
   disabled: theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
+    border: `1px solid ${theme.colorNeutralStrokeDisabled}`,
     borderRadius: borderRadius(theme), // because underline doesn't usually have a radius
   }),
 });
 
 const useInsideStyles = makeStyles({
   base: theme => ({
-    color: theme.alias.color.neutral.neutralForeground3, // "icon color" in design spec
+    color: theme.colorNeutralForeground3, // "icon color" in design spec
     // special case styling for icons (most common case) to ensure they're centered vertically
     '> span > svg': { display: 'block' },
   }),
   disabled: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    color: theme.colorNeutralForegroundDisabled,
   }),
 });
 
