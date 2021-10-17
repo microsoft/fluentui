@@ -23,16 +23,7 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
 
-    const borderFocusStyles = getBorderFocusStyles({
-      variables: {
-        borderRadius: v.focusBorderRadius,
-        borderWidth: v.focusBorderWidth,
-        focusInnerBorderColor: v.focusInnerBorderColor,
-        focusOuterBorderColor: v.focusOuterBorderColor,
-        zIndexes: { foreground: v.focusBorderZIndex },
-      },
-      borderPadding: borderWidth,
-    });
+    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables, borderPadding: borderWidth });
 
     const toggleButtonColorHover = () => (p.primary ? v.toggleButtonPrimaryHoverColor : v.toggleButtonColorHover);
 

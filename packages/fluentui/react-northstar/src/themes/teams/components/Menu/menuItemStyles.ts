@@ -175,12 +175,17 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
               ...(underlined && { fontWeight: 700 }),
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
-        ...((underlined || vertical) && {
+
+        ...(underlined && {
           ...getBorderFocusStyles({ variables: siteVariables }),
           ':focus-visible': {
             ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
             borderColor: v.borderColorActive,
           },
+        }),
+
+        ...(vertical && {
+          ...getBorderFocusStyles({ variables: siteVariables, borderRadius: 0 }),
         }),
       }),
 

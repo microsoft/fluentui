@@ -9,9 +9,7 @@ export const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesPro
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme);
     const { borderWidth } = siteVariables;
-    const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables,
-    });
+    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
 
     return {
       position: 'relative',
