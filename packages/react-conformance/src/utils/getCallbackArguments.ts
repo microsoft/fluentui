@@ -155,17 +155,17 @@ function typeToString(typeChecker: ts.TypeChecker, type: ts.Type): ArgumentValue
  */
 function parseArgumentType(
   typeChecker: ts.TypeChecker,
-  type: ts.ParameterDeclaration['type'] | ts.Declaration,
+  typeNode: ts.ParameterDeclaration['type'] | ts.Declaration,
 ): ArgumentValue | ArgumentValue[] {
-  if (!type) {
-    throw new Error(`We received ${typeof type} instead of a node from TS AST, please report this if it happens`);
+  if (!typeNode) {
+    throw new Error(`We received ${typeof typeNode} instead of a node from TS AST, please report this if it happens`);
   }
 
   // Handles a case when a node is an object
   // { onChange: (data: { value: string }) => void }
   //                    ^
-  if (ts.isTypeLiteralNode(type)) {
-    return type.members.reduce((acc, member) => {
+  if (ts.isTypeLiteralNode(typeNode)) {
+    return typeNode.members.reduce((acc, member) => {
       if (!ts.isPropertySignature(member)) {
         throw new Error('We met an unhandled case, please report it');
       }
@@ -182,29 +182,29 @@ function parseArgumentType(
   //                    ^
   // { onChange: (data: React.MouseEvent) => void }
   //                    ^
-  if (ts.isTypeReferenceNode(type)) {
-    return typeToString(typeChecker, typeChecker.getTypeAtLocation(type));
+  if (ts.isTypeReferenceNode(typeNode)) {
+    return typeToString(typeChecker, typeChecker.getTypeAtLocation(typeNode));
   }
 
   // Handles a case when a node is an array
   // { onChange: (data: string[] }
   //                    ^
-  if (ts.isArrayTypeNode(type)) {
+  if (ts.isArrayTypeNode(typeNode)) {
     return 'Array';
   }
 
   // Handles a case when a node is a union of types
   // { onChange: (data: MouseEvent | KeyboardEvent) => void }
   //                    ^
-  if (ts.isUnionTypeNode(type)) {
-    return type.types.map(typeFromUnion => parseArgumentType(typeChecker, typeFromUnion)) as ArgumentValue[];
+  if (ts.isUnionTypeNode(typeNode)) {
+    return typeNode.types.map(typeFromUnion => parseArgumentType(typeChecker, typeFromUnion)) as ArgumentValue[];
   }
 
   // Handles a case when a node is a literal
   // { onChange: (data: false) => void }
   //                    ^
-  if (ts.isLiteralTypeNode(type)) {
-    return literalNodeToPrimitive(type.literal);
+  if (ts.isLiteralTypeNode(typeNode)) {
+    return literalNodeToPrimitive(typeNode.literal);
   }
 
   // Handles a case when a node is a class declaration
@@ -212,8 +212,8 @@ function parseArgumentType(
   // ...
   // { onChange: (data: Item) => void }
   //
-  if (ts.isClassDeclaration(type)) {
-    return type.name?.escapedText as string;
+  if (ts.isClassDeclaration(typeNode)) {
+    return typeNode.name?.escapedText as string;
   }
 
   // Handles a case when a node is an interface declaration
@@ -221,8 +221,8 @@ function parseArgumentType(
   // ...
   // { onChange: (data: Item) => void }
   //
-  if (ts.isInterfaceDeclaration(type)) {
-    return type.members.reduce((acc, member) => {
+  if (ts.isInterfaceDeclaration(typeNode)) {
+    return typeNode.members.reduce((acc, member) => {
       const propertyName = parseArgumentName(member.name!);
       const propertyType = (member as ts.PropertySignature).type;
 
@@ -239,11 +239,11 @@ function parseArgumentType(
   // { onChange: (data: string) => void }
   //                    ^
   // eslint-disable-next-line no-bitwise
-  if (type.kind & ts.SyntaxKind.IsKeyword) {
-    return keywordNodeToPrimitive(type);
+  if (typeNode.kind & ts.SyntaxKind.IsKeyword) {
+    return keywordNodeToPrimitive(typeNode);
   }
 
-  throw new Error(`Failed to parse an unknown argument type (${type.getText()}), please report if it happens`);
+  throw new Error(`Failed to parse an unknown argument type (${typeNode}), please report if it happens`);
 }
 
 /**
@@ -251,13 +251,13 @@ function parseArgumentType(
  */
 function parseFunctionArguments(
   typeChecker: ts.TypeChecker,
-  node: ts.Node,
+  typeNode: ts.Node,
 ): Record<ArgumentName, ArgumentValue | ArgumentValue[]> {
-  if (!ts.isFunctionTypeNode(node)) {
-    throw new Error(`We received an AST node with wrong kind (${node.kind}), please report this as a bug`);
+  if (!ts.isFunctionTypeNode(typeNode)) {
+    throw new Error(`We received an AST node with wrong kind (${typeNode.kind}), please report this as a bug`);
   }
 
-  return node.parameters.reduce((acc, parameter) => {
+  return typeNode.parameters.reduce((acc, parameter) => {
     return {
       ...acc,
       [parseArgumentName(parameter.name)]: parseArgumentType(typeChecker, parameter.type),
