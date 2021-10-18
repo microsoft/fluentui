@@ -287,7 +287,6 @@ function processDefinitions(
           throw stylesPath.buildCodeFrameError(`${paramError} and it should be a valid identifier`);
         }
 
-        const paramsName = paramsPath?.node.name;
         const bodyPath = stylesPath.get('body');
 
         /**
@@ -319,13 +318,16 @@ function processDefinitions(
               // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
+                const paramsName = paramsPath?.node.name;
 
-                if (identifierPath.isIdentifier({ name: paramsName })) {
+                if (paramsName && identifierPath.isIdentifier({ name: paramsName })) {
                   const cssVariable = namesToCssVariable(getTokenParts(valuePath));
 
                   valuePath.replaceWith(t.stringLiteral(cssVariable));
+                  return;
                 }
 
+                lazyPaths.push(valuePath);
                 return;
               }
 
