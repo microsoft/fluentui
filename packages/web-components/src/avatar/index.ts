@@ -6,24 +6,13 @@ import {
   Avatar as FoundationAvatar,
   avatarTemplate as template,
 } from '@microsoft/fast-foundation';
-import { accentPalette, baseHeightMultiplier, density, designUnit, Recipe } from '../design-tokens';
+import { accentPalette } from '../design-tokens';
 import { SwatchRGB } from '../color/swatch';
 import { PaletteRGB } from '../color/palette';
 import { avatarStyles as styles } from './avatar.styles';
 
 /** @public */
-export const avatarSizeRecipe = DesignToken.create<Recipe<string>>({
-  name: 'avatar-size-recipe',
-  cssCustomPropertyName: null,
-}).withDefault({
-  evaluate: (element: HTMLElement): string =>
-    (baseHeightMultiplier.getValueFor(element) + density.getValueFor(element)) * designUnit.getValueFor(element) + 'px',
-});
-
-/** @public */
-export const avatarSize = DesignToken.create<string>('avatar-size').withDefault((element: HTMLElement) =>
-  avatarSizeRecipe.getValueFor(element).evaluate(element),
-);
+export const avatarSize = DesignToken.create<number>('avatar-size').withDefault(32);
 
 /**
  * Avatar appearances

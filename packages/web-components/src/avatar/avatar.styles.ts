@@ -8,10 +8,8 @@ import {
 } from "@microsoft/fast-foundation";
 import {
   accentFillRest,
-    baseHeightMultiplier,
     bodyFont,
     controlCornerRadius,
-    density,
     designUnit,
     focusStrokeOuter,
     focusStrokeWidth,
@@ -44,8 +42,8 @@ export const avatarStyles: (
     css`
         ${display("flex")} :host {
             position: relative;
-            height: ${avatarSize};
-            width: ${avatarSize};
+            height: calc(${avatarSize} * 1px);
+            width: calc(${avatarSize} * 1px);
             --avatar-text-ratio: ${designUnit};
         }
 
