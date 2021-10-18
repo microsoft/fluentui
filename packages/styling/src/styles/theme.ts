@@ -12,14 +12,14 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 export const ThemeSettingName = 'theme';
 
 export function initializeThemeInCustomizations(): void {
-  if (!Customizations.getSettings([ThemeSettingName]).theme) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const win: any = getWindow();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const win: any = getWindow();
 
-    if (win?.FabricConfig?.legacyTheme) {
-      // does everything the `else` clause does and more
-      loadTheme(win.FabricConfig.legacyTheme);
-    } else if (win?.FabricConfig?.theme) {
+  if (win?.FabricConfig?.legacyTheme) {
+    // does everything the `else` clause does and more, such as invoke legacy theming
+    loadTheme(win.FabricConfig.legacyTheme);
+  } else if (!Customizations.getSettings([ThemeSettingName]).theme) {
+    if (win?.FabricConfig?.theme) {
       _theme = createTheme(win.FabricConfig.theme);
     }
 
