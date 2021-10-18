@@ -688,7 +688,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
     });
 
     const { onDismiss, hidden } = props;
-    const [items, areItemsLoaded] = useAsyncValue(hidden ? props.items : []);
+    const [items, areItemsLoaded] = useAsyncValue(hidden ? [] : props.items);
     const dismiss = React.useCallback((ev?: any, dismissAll?: boolean) => onDismiss?.(ev, dismissAll), [onDismiss]);
     const [targetRef, targetWindow] = useTarget(props.target, hostElement);
     const [tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
