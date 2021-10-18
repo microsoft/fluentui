@@ -1,17 +1,27 @@
 import * as React from 'react';
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
-import { CollapseAllVisibility } from '../../GroupedList';
-import { IProcessedStyleSet } from '../../Styling';
-import { classNamesFunction, css, divProperties, EventGroup, getNativeProps, IDisposable, initializeComponentRef, shallowCompare } from '../../Utilities';
-import { SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import { GroupSpacer } from '../GroupedList/GroupSpacer';
-import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { CheckboxVisibility, IColumn } from './DetailsList.types';
-import { IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import {
+  initializeComponentRef,
+  EventGroup,
+  IDisposable,
+  css,
+  shallowCompare,
+  getNativeProps,
+  divProperties,
+} from '../../Utilities';
+import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
-import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
+import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
+import { SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
+import { CollapseAllVisibility } from '../../GroupedList';
+import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
+import { IDetailsRowBaseProps } from './DetailsRow.types';
+import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
+import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import { classNamesFunction } from '../../Utilities';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
