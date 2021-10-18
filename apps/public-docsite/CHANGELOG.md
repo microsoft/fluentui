@@ -1,8 +1,56 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Oct 2021 07:37:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Fri, 15 Oct 2021 07:37:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react-file-type-icons to v8.4.4 ([commit](https://github.com/microsoft/fluentui/commit/1ca1036621a15f44e32e86685c1df901ae30baba) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Wed, 13 Oct 2021 07:31:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.5 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.42 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/react-experiments to v8.3.24 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/theme-samples to v8.2.24 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.24 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Mon, 11 Oct 2021 07:36:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.4 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.41 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/react-experiments to v8.3.23 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/theme-samples to v8.2.23 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.23 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.3 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.40 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/react-experiments to v8.3.22 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/theme-samples to v8.2.22 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.22 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
 
 ## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
 

@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 05 Oct 2021 12:47:58 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Oct 2021 19:45:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.2)
+
+Tue, 12 Oct 2021 19:45:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.1..@fluentui/react-button_v9.0.0-beta.2)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.101..@fluentui/react-button_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
 
 ## [9.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.101)
 

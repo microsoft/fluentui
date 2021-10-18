@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
-import { useBoolean } from '@fluentui/react-hooks';
+import { useBoolean, useId } from '@fluentui/react-hooks';
 
 const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',
 };
 
 export const TeachingBubbleCondensedExample: React.FunctionComponent = () => {
+  const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 
   const exampleSecondaryButtonProps: IButtonProps = React.useMemo(
@@ -21,14 +22,14 @@ export const TeachingBubbleCondensedExample: React.FunctionComponent = () => {
   return (
     <div>
       <DefaultButton
-        id="targetButton"
+        id={buttonId}
         onClick={toggleTeachingBubbleVisible}
         text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
       />
 
       {teachingBubbleVisible && (
         <TeachingBubble
-          target="#targetButton"
+          target={`#${buttonId}`}
           hasCondensedHeadline={true}
           primaryButtonProps={examplePrimaryButtonProps}
           secondaryButtonProps={exampleSecondaryButtonProps}

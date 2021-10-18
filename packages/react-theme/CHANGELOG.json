@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump all v9 components to beta prerelease tag",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Oct 2021 14:13:08 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-alpha.26",
       "version": "9.0.0-alpha.26",

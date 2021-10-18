@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Handle styles defined in an arrow function without any params",
+  "packageName": "@fluentui/babel-make-styles",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

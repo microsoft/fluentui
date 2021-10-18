@@ -2,6 +2,59 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 13 Oct 2021 07:31:28 GMT",
+      "tag": "@fluentui/react_v8.36.5",
+      "version": "8.36.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "comment": "Pivot: overflow menu no longer shows item that's currently selected.",
+            "commit": "ea816dbc383501f27379294e8f3b2de61478cb7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Oct 2021 07:36:36 GMT",
+      "tag": "@fluentui/react_v8.36.4",
+      "version": "8.36.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "Fully migrated ContextualMenu implementation to be a functional component",
+            "commit": "3c73c74d6e50e7cca640c663b5407e90e35c378b"
+          }
+        ],
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "Better docs wording for checked/toggle buttons",
+            "commit": "3c73c74d6e50e7cca640c663b5407e90e35c378b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Oct 2021 07:31:50 GMT",
+      "tag": "@fluentui/react_v8.36.3",
+      "version": "8.36.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "comment": "Panel: footer now stays at bottom when scrolling down.",
+            "commit": "3c3fae80fd74eb02fa0daa59b49afde39de83370"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Oct 2021 07:37:17 GMT",
       "tag": "@fluentui/react_v8.36.2",
       "version": "8.36.2",
