@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "[ContextualMenu] Allow items and submenuProps to be specified asynchronously",
+  "packageName": "@fluentui/react",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch"
+}

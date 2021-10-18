@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add hook to load a possibly asynchronous value",
+  "packageName": "@fluentui/react-hooks",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch"
+}
