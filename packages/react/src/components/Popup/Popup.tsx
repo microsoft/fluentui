@@ -52,7 +52,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
 function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
   const { originalElement, containsFocus } = options;
 
-  if (originalElement && containsFocus && originalElement !== getWindow()) {
+  if (originalElement && containsFocus && originalElement !== getWindow(originalElement as Element)) {
     // Make sure that the focus method actually exists
     // In some cases the object might exist but not be a real element.
     // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
@@ -70,9 +70,10 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   const containsFocus = React.useRef(false);
 
   React.useEffect(() => {
-    originalFocusedElement.current = getDocument()!.activeElement as HTMLElement;
+    const rootElem = root.current;
+    originalFocusedElement.current = getDocument(rootElem)!.activeElement as HTMLElement;
 
-    if (doesElementContainFocus(root.current!)) {
+    if (doesElementContainFocus(rootElem!)) {
       containsFocus.current = true;
     }
 
@@ -80,7 +81,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
       onRestoreFocus?.({
         originalElement: originalFocusedElement.current,
         containsFocus: containsFocus.current,
-        documentContainsFocus: getDocument()?.hasFocus() || false,
+        documentContainsFocus: getDocument(rootElem)?.hasFocus() || false,
       });
 
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
@@ -120,11 +121,11 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
-function useHideSiblingNodes(props: IPopupProps) {
+function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const isModalOrPanel = props['aria-modal'];
 
   React.useEffect(() => {
-    const targetDocument = getDocument();
+    const targetDocument = getDocument(root.current);
     if (isModalOrPanel && targetDocument) {
       const children = targetDocument.body.children;
       let nodesToHide: Element[] = [];
@@ -145,7 +146,7 @@ function useHideSiblingNodes(props: IPopupProps) {
 
       return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
     }
-  }, [isModalOrPanel]);
+  }, [isModalOrPanel, root]);
 }
 
 /**
@@ -160,7 +161,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    useHideSiblingNodes(props);
+    useHideSiblingNodes(props, root);
     useRestoreFocus(props, root);
 
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
