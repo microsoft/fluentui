@@ -45,10 +45,10 @@ describe('Slider', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders aria-labelledby', () => {
-    const component = create(<Slider label="I'm labelled by another element" aria-labelledby="abc" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+  it('can set aria-labelledby attribute', () => {
+    wrapper = mount(<Slider aria-labelledby="custom-label" />);
+    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+    expect(sliderSlideBox.getDOMNode().getAttribute('aria-labelledby')).toEqual('custom-label');
   });
 
   it('can provide the current value', () => {
