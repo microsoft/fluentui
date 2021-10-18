@@ -116,10 +116,13 @@
   #docs-root .docblock-code-toggle {
     font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
       sans-serif;
+    width: 91px;
     font-size: 14px;
+    margin-right: 32px;
     line-height: 150%;
     color: black;
     text-align: center;
+    justify-content: center;
     letter-spacing: -0.01em;
     background: #f8f8f8;
     border: none;
@@ -191,6 +194,7 @@
 
   #docs-root .docs-story > div {
     padding: 0;
+    background: none;
   }
 
   #docs-root .docs-story > div > div[scale] {
@@ -217,6 +221,24 @@
     line-height: 150%;
     text-align: center;
     letter-spacing: -0.01em;
+  }
+
+  /* Make storybook-addon-export-to-codesandbox button match Figma design */
+  .docs-story a:last-child {
+    right: 134px !important;
+
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+
+    text-align: center;
+    letter-spacing: -0.01em;
+
+    border: none !important;
+    border-radius: 5px 5px 0px 0px !important;
+
+    /* Light/Gray25 #F8F8F8 */
+    background: #f8f8f8 !important;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   }
 
   #docs-root a.sbdocs-a {
