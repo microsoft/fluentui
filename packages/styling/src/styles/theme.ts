@@ -16,7 +16,10 @@ export function initializeThemeInCustomizations(): void {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const win: any = getWindow();
 
-    if (win?.FabricConfig?.theme) {
+    if (win?.FabricConfig?.legacyTheme) {
+      // does everything the `else` clause does and more
+      loadTheme(win.FabricConfig.legacyTheme);
+    } else if (win?.FabricConfig?.theme) {
       _theme = createTheme(win.FabricConfig.theme);
     }
 
