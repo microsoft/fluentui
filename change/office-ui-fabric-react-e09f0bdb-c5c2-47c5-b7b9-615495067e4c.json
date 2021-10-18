@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Port 'fix(react): DetailsList aria-rowindex off-by-one fix' to v7",
+  "packageName": "office-ui-fabric-react",
+  "email": "imoreira@microsoft.com",
+  "dependentChangeType": "patch"
+}
