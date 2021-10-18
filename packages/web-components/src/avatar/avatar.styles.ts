@@ -7,7 +7,7 @@ import {
     focusVisible,
 } from "@microsoft/fast-foundation";
 import {
-  accentFillRest,
+    accentFillRest,
     bodyFont,
     controlCornerRadius,
     designUnit,
