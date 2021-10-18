@@ -116,7 +116,7 @@ export interface ISliderProps
   /**
    * Specify the ID of another element in the DOM as an element's label
    */
-  ariaLabelledBy?: string;
+  // ariaLabelledBy?: string;
   /**
    * If `ranged` is true, display two thumbs that allow the lower and upper bounds of a range to be selected.
    * The lower bound is defined by `lowerValue`, and the upper bound is defined by `value`.
