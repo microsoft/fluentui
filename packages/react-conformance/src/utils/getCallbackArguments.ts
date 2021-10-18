@@ -252,17 +252,16 @@ function parseArgumentType(
 function parseFunctionArguments(
   typeChecker: ts.TypeChecker,
   typeNode: ts.Node,
-): Record<ArgumentName, ArgumentValue | ArgumentValue[]> {
+): [ArgumentName, ArgumentValue | ArgumentValue[]][] {
   if (!ts.isFunctionTypeNode(typeNode)) {
     throw new Error(`We received an AST node with wrong kind (${typeNode.kind}), please report this as a bug`);
   }
 
-  return typeNode.parameters.reduce((acc, parameter) => {
-    return {
-      ...acc,
-      [parseArgumentName(parameter.name)]: parseArgumentType(typeChecker, parameter.type),
-    };
-  }, {});
+  return typeNode.parameters.reduce<[ArgumentName, ArgumentValue | ArgumentValue[]][]>((acc, parameter) => {
+    acc.push([parseArgumentName(parameter.name), parseArgumentType(typeChecker, parameter.type)]);
+
+    return acc;
+  }, []);
 }
 
 /**
@@ -351,14 +350,14 @@ const findPropertySignature = (
  *   onChange: (event: Event) => void
  * }
  *
- * Will be parsed to: { event: 'Event' }
+ * Will be parsed to: ['event', 'Event']
  */
 export function getCallbackArguments(
   program: ts.Program,
   filename: string,
   typeName: string,
   propertyName: string,
-): Record<ArgumentName, ArgumentValue | ArgumentValue[]> {
+): [ArgumentName, ArgumentValue | ArgumentValue[]][] {
   const typeChecker = program.getTypeChecker();
   const sourceFile = program.getSourceFiles().find(file => file.fileName.includes(filename));
 

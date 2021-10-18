@@ -66,7 +66,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({});
+      expect(type).toEqual([]);
     });
 
     it('handles "null" as a param', async () => {
@@ -75,7 +75,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: null });
+      expect(type).toEqual([['e', null]]);
     });
 
     it('handles primitives as a param', async () => {
@@ -86,7 +86,12 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ a: 'string', b: 'number', c: 'boolean', d: undefined });
+      expect(type).toEqual([
+        ['a', 'string'],
+        ['b', 'number'],
+        ['c', 'boolean'],
+        ['d', undefined],
+      ]);
     });
 
     it('handles arrays', async () => {
@@ -95,7 +100,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ data: 'Array' });
+      expect(type).toEqual([['data', 'Array']]);
     });
 
     it('handles simple type reference as a param', async () => {
@@ -104,7 +109,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: 'Event' });
+      expect(type).toEqual([['e', 'Event']]);
     });
 
     it('handles complex type reference as a param', async () => {
@@ -115,7 +120,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: 'React.MouseEvent' });
+      expect(type).toEqual([['e', 'React.MouseEvent']]);
     });
 
     it('handles alias type as a param', async () => {
@@ -127,7 +132,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: 'React.MouseEvent' });
+      expect(type).toEqual([['e', 'React.MouseEvent']]);
     });
 
     it('handles imported alias type as a param', async () => {
@@ -140,7 +145,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: 'React.MouseEvent' });
+      expect(type).toEqual([['e', 'React.MouseEvent']]);
     });
 
     it('revolves references', async () => {
@@ -159,11 +164,11 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({
-        a: 'React.MouseEvent',
-        b: ['string', 'number', 'MouseEvent', 'React.MouseEvent'],
-        c: 'React.MouseEvent',
-      });
+      expect(type).toEqual([
+        ['a', 'React.MouseEvent'],
+        ['b', ['string', 'number', 'MouseEvent', 'React.MouseEvent']],
+        ['c', 'React.MouseEvent'],
+      ]);
     });
 
     it('revolves references to classes', async () => {
@@ -177,9 +182,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({
-        item: 'TabItem',
-      });
+      expect(type).toEqual([['item', 'TabItem']]);
     });
 
     it('revolves references to interfaces', async () => {
@@ -201,7 +204,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ data: { key: 'string', value: 'string' } });
+      expect(type).toEqual([['data', { key: 'string', value: 'string' }]]);
     });
 
     it('handles generics', async () => {
@@ -212,7 +215,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: 'React.MouseEvent' });
+      expect(type).toEqual([['e', 'React.MouseEvent']]);
     });
 
     it('handles unions', async () => {
@@ -223,7 +226,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: ['MouseEvent', 'React.MouseEvent'] });
+      expect(type).toEqual([['e', ['MouseEvent', 'React.MouseEvent']]]);
     });
 
     it('handles multiple params', async () => {
@@ -234,7 +237,10 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: null, data: { value: 'string' } });
+      expect(type).toEqual([
+        ['e', null],
+        ['data', { value: 'string' }],
+      ]);
     });
   });
 

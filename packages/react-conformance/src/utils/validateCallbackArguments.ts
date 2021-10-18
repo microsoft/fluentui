@@ -45,6 +45,6 @@ export function validateCallbackArguments(callbackArguments: ReturnType<typeof g
     throw new Error(`A callback should have two arguments, it has ${argumentNames.length}`);
   }
 
-  validateEventArgument(callbackArguments[argumentNames[0]]);
-  validateDataArgument(callbackArguments[argumentNames[1]]);
+  validateEventArgument(callbackArguments[0][1]);
+  validateDataArgument(callbackArguments[1][1]);
 }
