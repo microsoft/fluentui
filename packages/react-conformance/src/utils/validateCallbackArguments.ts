@@ -14,7 +14,7 @@ function validateEventArgument(value: ArgumentValue | ArgumentValue[]): void {
         throw new Error(
           [
             'A first (event) argument cannot use generic React.SyntheticEvent or Event types.',
-            'Please use less generic types like React.MouseEvent/MouseEvent',
+            'Please use more specific types like React.MouseEvent/MouseEvent',
           ].join(' '),
         );
       }
@@ -24,7 +24,7 @@ function validateEventArgument(value: ArgumentValue | ArgumentValue[]): void {
       }
     }
 
-    throw new Error(`A first (event) argument could be have only "undefined", React.*Event or *Event types`);
+    throw new Error(`A first (event) argument may only have type "undefined", React.*Event or *Event`);
   });
 }
 
