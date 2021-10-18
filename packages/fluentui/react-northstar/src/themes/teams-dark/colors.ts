@@ -29,6 +29,7 @@ export const colorScheme: ColorSchemeMapping = {
     border2: colors.grey[900],
     border3: colors.grey[650],
     borderTransparent: 'transparent',
+    borderTransparentActive: 'transparent',
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black, // opacity 25%
@@ -118,11 +119,13 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover: colors.brand[500],
     backgroundHover1: colors.brand[900],
     backgroundHover2: colors.brand[900],
+    backgroundHover3: colors.brand[900],
 
     foregroundPressed: colors.brand[200],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[700],
     backgroundPressed1: colors.brand[800],
+    backgroundPressed2: colors.brand[800],
     borderPressed: colors.brand[800],
 
     foregroundActive: colors.brand[400],
@@ -256,7 +259,6 @@ export const colorScheme: ColorSchemeMapping = {
     foreground: colors.red[200],
     foreground1: colors.white,
     foreground2: colors.grey[800],
-    foreground3: colors.red[200],
 
     background: colors.red[300],
     background1: colors.red[800],

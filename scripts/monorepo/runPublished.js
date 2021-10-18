@@ -1,6 +1,7 @@
 // @ts-check
 const { spawnSync } = require('child_process');
 const getAllPackageInfo = require('./getAllPackageInfo');
+const isConvergedPackage = require('./isConvergedPackage');
 const lageBin = require.resolve('lage/bin/lage.js');
 
 const argv = process.argv.slice(2);
@@ -27,11 +28,22 @@ const websitePackages = [
 // (which must be built and uploaded with each release). This is similar to "--scope \"!packages/fluentui/*\""
 // in the root package.json's publishing-related scripts and will need to be updated if --scope changes.
 const beachballPackageScopes = Object.entries(getAllPackageInfo())
-  .filter(
-    ([, { packageJson, packagePath }]) =>
-      !/[\\/]fluentui[\\/]/.test(packagePath) &&
-      (packageJson.private !== true || websitePackages.includes(packageJson.name)),
-  )
+  .filter(([, { packageJson, packagePath }]) => {
+    // Ignore northstar
+    if (/[\\/]fluentui[\\/]/.test(packagePath)) {
+      return false;
+    }
+
+    if (process.env.RELEASE_VNEXT) {
+      return isConvergedPackage(packageJson) && packageJson.private !== true;
+    } else if (!isConvergedPackage(packageJson)) {
+      // v8 scope
+      return packageJson.private !== true || websitePackages.includes(packageJson.name);
+    }
+
+    // Ignore v9/converged packages when releasing v8
+    return false;
+  })
   .map(([packageName]) => `--to=${packageName}`);
 
 const lageArgs = [

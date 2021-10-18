@@ -1,15 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { CardProps, CardShorthandProps, CardState } from './Card.types';
-
-/**
- * Array of all shorthand properties listed in CardShorthandProps
- */
-export const cardShorthandProps: CardShorthandProps[] = [
-  /* TODO add shorthand property names */
-];
-
-const mergeProps = makeMergeProps<CardState>({ deepMerge: cardShorthandProps });
+import { getNativeElementProps } from '@fluentui/react-utilities';
+import type { CardProps, CardState } from './Card.types';
+import { useFocusableGroup, FocusableGroupTabBehavior } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Card.
@@ -19,16 +11,20 @@ const mergeProps = makeMergeProps<CardState>({ deepMerge: cardShorthandProps });
  *
  * @param props - props from this instance of Card
  * @param ref - reference to root HTMLElement of Card
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, defaultProps?: CardProps): CardState => {
-  const state = mergeProps(
-    {
-      ref,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, cardShorthandProps),
-    resolveShorthandProps(props, cardShorthandProps),
-  );
+export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
+  const groupperAttrs = useFocusableGroup({
+    tabBehavior: FocusableGroupTabBehavior.LimitedTrapFocus,
+  });
 
-  return state;
+  return {
+    components: { root: 'div' },
+
+    root: getNativeElementProps(props.as || 'div', {
+      ref,
+      role: 'group',
+      ...groupperAttrs,
+      ...props,
+    }),
+  };
 };

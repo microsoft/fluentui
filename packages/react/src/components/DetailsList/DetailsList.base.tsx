@@ -184,6 +184,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     enterModalSelectionOnTouch,
     onRenderDefaultRow,
     selectionZoneRef,
+    focusZoneProps,
   } = props;
 
   const defaultRole = 'grid';
@@ -570,19 +571,24 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     [theme],
   );
 
-  const focusZoneProps: IFocusZoneProps = {
+  const focusZoneInnerProps: IFocusZoneProps = {
+    ...focusZoneProps,
     componentRef: focusZoneRef,
     className: classNames.focusZone,
-    direction: FocusZoneDirection.vertical,
-    shouldEnterInnerZone: isRightArrow,
-    onActiveElementChanged: onActiveRowChanged,
-    shouldRaiseClicks: false,
-    onBlur: onBlur,
+    direction: focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.vertical,
+    shouldEnterInnerZone:
+      focusZoneProps && focusZoneProps.shouldEnterInnerZone ? focusZoneProps.shouldEnterInnerZone : isRightArrow,
+    onActiveElementChanged:
+      focusZoneProps && focusZoneProps.onActiveElementChanged
+        ? focusZoneProps.onActiveElementChanged
+        : onActiveRowChanged,
+    shouldRaiseClicksOnEnter: false,
+    onBlur: focusZoneProps && focusZoneProps.onBlur ? focusZoneProps.onBlur : onBlur,
   };
 
   const list = groups ? (
     <GroupedList
-      focusZoneProps={focusZoneProps}
+      focusZoneProps={focusZoneInnerProps}
       componentRef={groupedListRef}
       groups={groups}
       groupProps={finalGroupProps}
@@ -602,7 +608,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       compact={compact}
     />
   ) : (
-    <FocusZone {...focusZoneProps}>
+    <FocusZone {...focusZoneInnerProps}>
       <List
         ref={listRef}
         role="presentation"

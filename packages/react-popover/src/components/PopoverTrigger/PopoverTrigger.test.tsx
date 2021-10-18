@@ -3,10 +3,26 @@ import { render, fireEvent } from '@testing-library/react';
 import { PopoverTrigger } from './PopoverTrigger';
 import * as renderer from 'react-test-renderer';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
+import { isConformant } from '../../common/isConformant';
 
 jest.mock('../../popoverContext');
 
 describe('PopoverTrigger', () => {
+  isConformant({
+    Component: PopoverTrigger,
+    displayName: 'PopoverTrigger',
+    requiredProps: { children: <span /> },
+    skipAsPropTests: true,
+    disabledTests: [
+      // PopoverTrigger does not render DOM elements
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+      // PopoverTrigger does not have own styles
+      'make-styles-overrides-win',
+    ],
+  });
+
   beforeEach(() => {
     mockPopoverContext();
   });
@@ -56,6 +72,18 @@ describe('PopoverTrigger', () => {
 
     // Assert
     expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('true');
+  });
+
+  it('should allow user to override aria-haspopoup on trigger element', () => {
+    // Arrange
+    const { getByRole } = render(
+      <PopoverTrigger>
+        <button aria-haspopup="false">Trigger</button>
+      </PopoverTrigger>,
+    );
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('false');
   });
 
   it('should retain original child callback ref', () => {

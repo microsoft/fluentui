@@ -262,6 +262,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
       previousActiveElement.current = undefined;
     }
   }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement]);
+
   return [tryFocusPreviousActiveElement] as const;
 }
 

@@ -52,7 +52,7 @@ storiesOf('Breadcrumb', module)
         maxDisplayedItems={3}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Button',
@@ -69,7 +69,7 @@ storiesOf('Breadcrumb', module)
         maxDisplayedItems={3}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 // Stories for hovering over actionable and non-actionable items

@@ -101,7 +101,7 @@ export interface IButtonProps
   theme?: ITheme;
 
   /**
-   * Whether the button is checked
+   * Whether the button is checked. Should be used with the `toggle` attribute when creating a standalone on/off button.
    */
   checked?: boolean;
 

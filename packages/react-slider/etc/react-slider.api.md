@@ -4,58 +4,117 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export const lowerThumbClassName: string;
+
+// @public
+export const RangedSlider: ForwardRefComponent<RangedSliderProps>;
+
+// @public (undocumented)
+export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
+    defaultValue?: [number, number];
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
+        value: [number, number];
+    }) => void;
+    value?: [number, number];
+}
+
+// @public (undocumented)
+export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
+}
+
+// @public (undocumented)
+export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
+    lowerThumb: IntrinsicShorthandProps<'div'>;
+    lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
+    upperThumb: IntrinsicShorthandProps<'div'>;
+    upperThumbWrapper: IntrinsicShorthandProps<'div'>;
+    lowerInput: IntrinsicShorthandProps<'input'>;
+    upperInput: IntrinsicShorthandProps<'input'>;
+};
+
+// @public (undocumented)
+export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
+}
+
+// @public
+export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
 
 // @public
 export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
-export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
-
-// @public
-export type SliderDefaultedProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export const Slider: ForwardRefComponent<SliderProps>;
 
 // @public (undocumented)
-export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
-    activeRail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
-    ariaValueText?: (value: number) => string;
+export type SliderCommons = {
     defaultValue?: number;
-    disabled?: boolean;
-    keyboardStep?: number;
-    max?: number;
+    value?: number;
     min?: number;
+    max?: number;
+    step?: number;
+    keyboardStep?: number;
+    disabled?: boolean;
+    vertical?: boolean;
+    marks?: boolean | (number | {
+        value: number;
+        label?: string | JSX.Element;
+        mark?: JSX.Element;
+    })[];
+    origin?: number;
+    size?: 'small' | 'medium';
     onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
         value: number;
     }) => void;
-    origin?: number;
-    rail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    size?: 'small' | 'medium';
-    sliderWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    step?: number;
-    thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
-    thumbWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
-    track?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    trackWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    value?: number;
-    vertical?: boolean;
-}
+    ariaValueText?: (value: number) => string;
+};
+
+// @public (undocumented)
+export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
 
 // @public
-export type SliderShorthandProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export const sliderShorthandProps: (keyof SliderSlots)[];
+
+// @public (undocumented)
+export type SliderSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+    rail: IntrinsicShorthandProps<'div'>;
+    sliderWrapper: IntrinsicShorthandProps<'div'>;
+    trackWrapper: IntrinsicShorthandProps<'div'>;
+    track: IntrinsicShorthandProps<'div'>;
+    marksWrapper: IntrinsicShorthandProps<'div'>;
+    thumbWrapper: IntrinsicShorthandProps<'div'>;
+    thumb: IntrinsicShorthandProps<'div'>;
+    activeRail: IntrinsicShorthandProps<'div'>;
+    input: IntrinsicShorthandProps<'input'>;
+};
+
+// @public (undocumented)
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+
+// @public (undocumented)
+export const upperThumbClassName: string;
 
 // @public
-export const sliderShorthandProps: SliderShorthandProps[];
+export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
 
 // @public
-export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
-}
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
 
-// @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SliderProps | undefined) => SliderState;
+// @public (undocumented)
+export const useSliderState: (state: SliderState) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;

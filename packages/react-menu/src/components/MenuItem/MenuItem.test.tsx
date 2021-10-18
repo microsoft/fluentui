@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { MenuItem } from './MenuItem';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 import { MenuListProvider } from '../../contexts/menuListContext';
@@ -15,15 +14,6 @@ describe('MenuItem', () => {
   isConformant({
     Component: MenuItem,
     displayName: 'MenuItem',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**
@@ -84,7 +74,7 @@ describe('MenuItem', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-  it.each([EnterKey, SpacebarKey])('should swallow %s keydown events if `disabled` prop is set', keyCode => {
+  it.each([Enter, Space])('should swallow %s keydown events if `disabled` prop is set', key => {
     // Arrange
     const spy = jest.fn();
     const { getByRole } = render(
@@ -94,7 +84,7 @@ describe('MenuItem', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByRole('menuitem'), { keyCode });
+    fireEvent.keyDown(getByRole('menuitem'), { key });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(0);

@@ -176,21 +176,6 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "Debug page json generator",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/packages/api-docs/lib/generatePageJsonFiles.js",
-      "cwd": "${workspaceRoot}/packages/api-docs",
-      "stopOnEntry": false,
-      "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--inspect"],
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "sourceMaps": true,
-      "console": "integratedTerminal"
-    },
-    {
       "name": "Debug gulp task",
       "type": "node",
       "request": "launch",

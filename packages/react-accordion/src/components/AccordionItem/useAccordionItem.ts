@@ -1,30 +1,27 @@
 import * as React from 'react';
-import { AccordionItemProps, AccordionItemState, AccordionItemSlots } from './AccordionItem.types';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
-import { AccordionToggleEvent } from '../Accordion/Accordion.types';
+import type { AccordionItemProps, AccordionItemState, AccordionItemSlots } from './AccordionItem.types';
+import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = [];
+export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = ['root'];
 
 /**
  * Returns the props and state required to render the component
  * @param props - AccordionItem properties
  * @param ref - reference to root HTMLElement of AccordionItem
  */
-export const useAccordionItem = (
-  { value, ...props }: AccordionItemProps,
-  ref: React.Ref<HTMLElement>,
-): AccordionItemState => {
-  // const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
+export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
+  const { value, disabled = false } = props;
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
     groupper: {},
   });
-  const disabled = props.disabled || false;
 
   const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
   const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(value));
@@ -34,11 +31,14 @@ export const useAccordionItem = (
   ]);
 
   return {
-    ...props,
-    ref,
     open,
-    onHeaderClick: onAccordionHeaderClick,
+    value,
     disabled,
-    ...(navigable ? tabsterAttributes : {}),
+    onHeaderClick: onAccordionHeaderClick,
+    root: getNativeElementProps('div', {
+      ref: ref,
+      ...(navigable ? tabsterAttributes : {}),
+      ...props,
+    }),
   };
 };
