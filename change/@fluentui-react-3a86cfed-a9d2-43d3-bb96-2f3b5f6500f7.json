@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "use correct document and window when in projection popout",
+  "packageName": "@fluentui/react",
+  "email": "litong@microsoft.com",
+  "dependentChangeType": "patch"
+}
