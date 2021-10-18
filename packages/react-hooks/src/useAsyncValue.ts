@@ -4,7 +4,7 @@ export type AsyncValue<T> = [value: T | undefined, isLoaded: boolean];
 
 /**
  * Hook to load a possibly asynchronous value.
- * @param value The synchronous value or asynchronous function to return the value. If passing a function,
+ * @param value - The synchronous value or asynchronous function to return the value. If passing a function,
  * it should be memoized to prevent an infinite update loop.
  */
 export function useAsyncValue<T>(value: T | (() => Promise<T>)): AsyncValue<T> {
