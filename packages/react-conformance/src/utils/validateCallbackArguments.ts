@@ -34,7 +34,7 @@ function validateDataArgument(value: ArgumentValue | ArgumentValue[]): void {
   }
 
   if (value === null || typeof value !== 'object') {
-    throw new Error('A second (data) argument should be represented by an interface or a type declaration');
+    throw new Error('A second (data) argument should be represented by a type declaration or interface');
   }
 }
 

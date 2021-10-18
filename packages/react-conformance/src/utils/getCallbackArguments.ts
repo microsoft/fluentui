@@ -43,7 +43,7 @@ function keywordNodeToPrimitive(node: ts.Node): null | string | undefined {
 
   throw new Error(
     [
-      `Unexpected kind (${node.kind}) of node is passed (${node.getText()}).`,
+      `Found unexpected ${node.kind} node: "${node.getText()}".`,
       'This could be a bug or an unhandled scenario, please report it if it happens',
     ].join(' '),
   );
