@@ -3912,6 +3912,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
         eventName: string;
         callback: (item?: any, index?: number, event?: any) => void;
     }[];
+    flatIndexOffset?: number;
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
     id?: string;

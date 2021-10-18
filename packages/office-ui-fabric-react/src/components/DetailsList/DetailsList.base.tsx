@@ -5,7 +5,15 @@ import { FocusZone, FocusZoneDirection, IFocusZone, IFocusZoneProps } from '../.
 import { GroupedList, IGroupDividerProps, IGroupedList, IGroupRenderProps } from '../../GroupedList';
 import { IListProps, List, ScrollToMode } from '../../List';
 import {
-  Async, classNamesFunction, elementContains, FocusRects, getRTLSafeKeyCode, initializeComponentRef, IRenderFunction, KeyCodes, memoizeFunction
+  Async,
+  classNamesFunction,
+  elementContains,
+  FocusRects,
+  getRTLSafeKeyCode,
+  initializeComponentRef,
+  IRenderFunction,
+  KeyCodes,
+  memoizeFunction,
 } from '../../Utilities';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
@@ -14,15 +22,22 @@ import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } f
 import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import {
-  IColumnReorderHeaderProps, IDetailsHeader, IDetailsHeaderProps, SelectAllVisibility
+  IColumnReorderHeaderProps,
+  IDetailsHeader,
+  IDetailsHeaderProps,
+  SelectAllVisibility,
 } from '../DetailsList/DetailsHeader.types';
 import {
   CheckboxVisibility,
-  ColumnActionsMode, ColumnDragEndLocation, ConstrainMode,
+  ColumnActionsMode,
+  ColumnDragEndLocation,
+  ConstrainMode,
   DetailsListLayoutMode,
   IColumn,
   IDetailsList,
-  IDetailsListProps, IDetailsListStyleProps, IDetailsListStyles
+  IDetailsListProps,
+  IDetailsListStyleProps,
+  IDetailsListStyles,
 } from '../DetailsList/DetailsList.types';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
@@ -31,8 +46,6 @@ import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
-
-
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -102,7 +115,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     indentWidth,
     items,
     isPlaceholderData,
-    isHeaderVisible,
     layoutMode,
     onItemInvoked,
     onItemContextMenu,
