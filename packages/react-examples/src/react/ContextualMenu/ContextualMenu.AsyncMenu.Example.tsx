@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import { ContextualMenuItemType } from '@fluentui/react/lib/ContextualMenu';
+import { ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { ITextFieldStyles, TextField } from '@fluentui/react';
 
 const textFieldStyles: Partial<ITextFieldStyles> = {
@@ -32,7 +32,7 @@ export const ContextualMenuAsyncMenuExample: React.FunctionComponent = () => {
     };
   }, [loadingDelay]);
 
-  const getItems = React.useCallback(async () => {
+  const getItems = React.useCallback(async (): Promise<IContextualMenuItem[]> => {
     await new Promise(resolve => setTimeout(resolve, loadingDelay));
     return [
       {
@@ -63,7 +63,7 @@ export const ContextualMenuAsyncMenuExample: React.FunctionComponent = () => {
       { key: 'properties', text: 'Properties' },
       { key: 'print', iconProps: { iconName: 'Print' }, text: 'Print' },
       { key: 'Bing', text: 'Go to Bing', href: 'http://www.bing.com', target: '_blank' },
-    ] as const;
+    ];
   }, [getShareSubmenuProps, loadingDelay]);
 
   return (
