@@ -1,53 +1,38 @@
+import { useConst } from '@uifabric/react-hooks';
+import { composeRenderFunction, getId } from '@uifabric/utilities';
 import * as React from 'react';
-
+import { FocusZone, FocusZoneDirection, IFocusZone, IFocusZoneProps } from '../../FocusZone';
+import { GroupedList, IGroupDividerProps, IGroupedList, IGroupRenderProps } from '../../GroupedList';
+import { IListProps, List, ScrollToMode } from '../../List';
 import {
-  initializeComponentRef,
-  FocusRects,
-  Async,
-  KeyCodes,
-  elementContains,
-  getRTLSafeKeyCode,
-  IRenderFunction,
-  classNamesFunction,
-  memoizeFunction,
+  Async, classNamesFunction, elementContains, FocusRects, getRTLSafeKeyCode, initializeComponentRef, IRenderFunction, KeyCodes, memoizeFunction
 } from '../../Utilities';
+import { withViewport } from '../../utilities/decorators/withViewport';
+import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
+import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
+import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
+import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
+import { DetailsHeader } from '../DetailsList/DetailsHeader';
+import {
+  IColumnReorderHeaderProps, IDetailsHeader, IDetailsHeaderProps, SelectAllVisibility
+} from '../DetailsList/DetailsHeader.types';
 import {
   CheckboxVisibility,
-  ColumnActionsMode,
-  ConstrainMode,
+  ColumnActionsMode, ColumnDragEndLocation, ConstrainMode,
   DetailsListLayoutMode,
   IColumn,
   IDetailsList,
-  IDetailsListProps,
-  IDetailsListStyles,
-  IDetailsListStyleProps,
-  ColumnDragEndLocation,
+  IDetailsListProps, IDetailsListStyleProps, IDetailsListStyles
 } from '../DetailsList/DetailsList.types';
-import { DetailsHeader } from '../DetailsList/DetailsHeader';
-import {
-  IDetailsHeader,
-  SelectAllVisibility,
-  IDetailsHeaderProps,
-  IColumnReorderHeaderProps,
-} from '../DetailsList/DetailsHeader.types';
-import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
-import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
+import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
-import { IFocusZone, FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
-import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
-
-import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { List, IListProps, ScrollToMode } from '../../List';
-import { withViewport } from '../../utilities/decorators/withViewport';
-import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
-import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeRenderFunction, getId } from '@uifabric/utilities';
-import { useConst } from '@uifabric/react-hooks';
+import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
+
+
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -170,6 +155,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     getCellValueKey,
     getRowAriaLabel,
     getRowAriaDescribedBy,
+    isHeaderVisible,
     checkButtonAriaLabel,
     checkboxCellClassName,
     useReducedRowRenderer,
@@ -442,6 +428,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
+        flatIndexOffset: isHeaderVisible ? 2 : 1,
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,

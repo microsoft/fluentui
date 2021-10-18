@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { DetailsList } from './DetailsList';
-import { IDetailsRowProps } from './DetailsRow.types';
-import { IDetailsListProps, IColumn, CheckboxVisibility } from './DetailsList.types';
-import { SelectionMode, Selection } from '../../utilities/selection/index';
-import { DetailsRow } from './DetailsRow';
 import { getTheme } from '../../Styling';
+import { Selection, SelectionMode } from '../../utilities/selection/index';
+import { DetailsList } from './DetailsList';
+import { CheckboxVisibility, IColumn, IDetailsListProps } from './DetailsList.types';
+import { DetailsRow } from './DetailsRow';
+import { IDetailsRowProps } from './DetailsRow.types';
 
 const _columns: IColumn[] = [
   {
@@ -83,6 +83,26 @@ describe('DetailsRow', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders details list row with correct row index by default', () => {
+    const component = renderer.create(<DetailsList {...mockProps} onRenderRow={undefined} />);
+
+    const rows = component.root.findAllByType(DetailsRow);
+
+    expect(rows[0].props.flatIndexOffset).toBe(2);
+    expect(rows[0].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(2);
+    expect(rows[4].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(6);
+  });
+
+  it('renders details list row with correct row index with no headers', () => {
+    const component = renderer.create(<DetailsList {...mockProps} onRenderRow={undefined} isHeaderVisible={false} />);
+
+    const rows = component.root.findAllByType(DetailsRow);
+
+    expect(rows[0].props.flatIndexOffset).toBe(1);
+    expect(rows[0].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(1);
+    expect(rows[4].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(5);
   });
 
   it('renders details list row with checkbox visible always correctly', () => {

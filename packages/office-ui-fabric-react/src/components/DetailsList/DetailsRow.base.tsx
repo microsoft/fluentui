@@ -1,27 +1,17 @@
 import * as React from 'react';
-import {
-  initializeComponentRef,
-  EventGroup,
-  IDisposable,
-  css,
-  shallowCompare,
-  getNativeProps,
-  divProperties,
-} from '../../Utilities';
-import { IColumn, CheckboxVisibility } from './DetailsList.types';
-import { DetailsRowCheck } from './DetailsRowCheck';
-import { GroupSpacer } from '../GroupedList/GroupSpacer';
-import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
-import { SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { CollapseAllVisibility } from '../../GroupedList';
-import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { IDetailsRowBaseProps } from './DetailsRow.types';
-import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
-import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
-import { classNamesFunction } from '../../Utilities';
-import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import { IProcessedStyleSet } from '../../Styling';
+import { classNamesFunction, css, divProperties, EventGroup, getNativeProps, IDisposable, initializeComponentRef, shallowCompare } from '../../Utilities';
+import { SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
+import { GroupSpacer } from '../GroupedList/GroupSpacer';
+import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
+import { CheckboxVisibility, IColumn } from './DetailsList.types';
+import { IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import { DetailsRowCheck } from './DetailsRowCheck';
+import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
+import { DetailsRowFields } from './DetailsRowFields';
+import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -179,6 +169,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       item,
       itemIndex,
       id,
+      flatIndexOffset = 2,
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
@@ -287,7 +278,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
-        aria-rowindex={groupNestingDepth ? undefined : itemIndex + 1}
+        aria-rowindex={groupNestingDepth ? undefined : itemIndex + flatIndexOffset}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}

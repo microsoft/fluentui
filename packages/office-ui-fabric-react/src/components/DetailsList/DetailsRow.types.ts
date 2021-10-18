@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { DetailsRowBase } from './DetailsRow.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.types';
-import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
-import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
+import { IBaseProps, IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import { IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/interfaces';
+import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
-import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import { CheckboxVisibility, IColumn, IDetailsListProps } from './DetailsList.types';
+import { DetailsRowBase } from './DetailsRow.base';
+import { IDetailsCheckboxProps, IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
 /**
@@ -100,6 +100,12 @@ export interface IDetailsRowBaseProps
    * Index of the collection of items of the DetailsList
    */
   itemIndex: number;
+
+  /**
+   * Offset used to calculate the aria-rowindex value based on itemIndex
+   * @defaultvalue 2
+   */
+   flatIndexOffset?: number;
 
   /**
    * Whether to render in compact mode
