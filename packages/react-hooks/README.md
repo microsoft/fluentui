@@ -4,6 +4,7 @@
 
 Helpful hooks not provided by React itself. These hooks were built for use in Fluent UI React ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) but can be used in React apps built with any UI library.
 
+- [useAsyncValue](#useasyncvalue) - Returns the provided static value or loads the value asynchronously from the provided function
 - [useBoolean](#useboolean) - Return a boolean value and callbacks for setting it to true or false, or toggling
 - [useConst](#useconst) - Initialize and return a value that's always constant
 - [useControllableValue](#usecontrollablevalue) - Manage the current value for a component that could be either controlled or uncontrolled
@@ -17,6 +18,16 @@ Helpful hooks not provided by React itself. These hooks were built for use in Fl
 - [useSetTimeout](#usesettimeout) - Version of `setTimeout` that automatically cleans up when component is unmounted
 - [useTarget](#usetarget) - Logic used by several popup components to determine the target element or point to position against
 - [useWarnings](#usewarnings) - Display debug-only warnings for invalid or deprecated props or other issues
+
+## useAsyncValue
+
+```ts
+function useAsyncValue<T>(value: T | (() => Promise<T>)): AsyncValue<T>;
+
+type AsyncValue<T> = [value: T | undefined, isLoaded: boolean];
+```
+
+Hook to synchronously return a value (if `value` is of type `T`) or asynchronously load the value (if `value` is of type `() => Promise<T>`). In the latter case, `isLoaded` will be `false` and the returned `value` will be `undefined` if the asynchronous request is still outstanding; in all other cases, `isLoaded` will be true.
 
 ## useBoolean
 
