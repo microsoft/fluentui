@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "TextField: Remove placeholder style font override.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
