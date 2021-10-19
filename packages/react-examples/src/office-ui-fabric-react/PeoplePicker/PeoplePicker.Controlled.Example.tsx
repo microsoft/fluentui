@@ -89,12 +89,15 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
           pickerSuggestionsProps={suggestionProps}
           className={'ms-PeoplePicker'}
           key={'controlled'}
+          selectionAriaLabel={'Selected contacts'}
+          removeButtonAriaLabel={'Remove'}
           selectedItems={currentSelectedItems}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={onItemsChange}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+            'aria-label': 'Contacts',
           }}
           componentRef={picker}
           resolveDelay={300}

@@ -14,7 +14,6 @@ import { IComponentAs } from '@uifabric/utilities';
 import { IComponentStyles } from '@uifabric/foundation';
 import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
-import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
@@ -304,8 +303,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     focusInput(): void;
     // (undocumented)
-    protected focusZone: React.RefObject<IFocusZone>;
-    // (undocumented)
     protected getActiveDescendant(): string | undefined;
     // (undocumented)
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
@@ -325,6 +322,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected onChange(items?: T[]): void;
     protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
     protected onEmptyInputFocus(): void;
+    // (undocumented)
+    protected onFocus: () => void;
     // (undocumented)
     protected onGetMoreResults: () => void;
     // (undocumented)
@@ -365,7 +364,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected root: React.RefObject<HTMLDivElement>;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
+    // @deprecated (undocumented)
     protected _shouldFocusZoneEnterInnerZone: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
@@ -1770,6 +1769,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
         input: string;
     }) => string) | string;
     selectedItems?: T[];
+    selectionAriaLabel?: string;
+    selectionRole?: string;
     styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
     theme?: ITheme;
 }
