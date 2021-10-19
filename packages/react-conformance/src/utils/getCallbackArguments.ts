@@ -130,7 +130,18 @@ function typeToString(typeChecker: ts.TypeChecker, type: ts.Type): ArgumentValue
     }
 
     if (/\/node_modules\//.test(fileName)) {
-      return type.symbol.escapedName as string;
+      const escapedName = type.symbol.escapedName as string;
+
+      if (escapedName === '__type') {
+        throw new Error(
+          [
+            `We received a type "${typeChecker.typeToString(type)}" that is too complex to resolve.`,
+            'Please simply it, for example remove usage of "Pick".',
+          ].join(' '),
+        );
+      }
+
+      return escapedName;
     }
 
     return parseArgumentType(typeChecker, type.symbol.declarations[0]);

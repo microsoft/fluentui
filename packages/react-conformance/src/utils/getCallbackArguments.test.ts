@@ -281,5 +281,21 @@ describe('getCallbackArguments', () => {
         `"A file (Accordion.types.ts) does not contain definition for type \\"AccordionProps.onClick\\"."`,
       );
     });
+
+    it('throws on complex types', async () => {
+      const program = await setupProgram(['Accordion.types.ts'], {
+        './Accordion.types.ts': `import * as React from 'react';
+
+        type TypeA = { open: boolean }
+        type TypeB = Pick<TypeA, 'open'>
+        export interface AccordionProps { onToggle: (a: TypeB) => void; }`,
+      });
+
+      expect(() =>
+        getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle'),
+      ).toThrowErrorMatchingInlineSnapshot(
+        `"We received a type \\"Pick<TypeA, \\"open\\">\\" that is too complex to resolve. Please simply it, for example remove usage of \\"Pick\\"."`,
+      );
+    });
   });
 });
