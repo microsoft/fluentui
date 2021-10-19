@@ -1,7 +1,7 @@
 {
   "type": "minor",
   "comment": "Add oft files to file type icon map",
-  "packageName": "@uifabric/file-type-icons",
+  "packageName": "@fluentui/file-type-icons",
   "email": "hjorturj@microsoft.com",
   "dependentChangeType": "patch"
 }
