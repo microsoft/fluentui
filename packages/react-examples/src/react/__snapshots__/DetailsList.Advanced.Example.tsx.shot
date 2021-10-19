@@ -82,6 +82,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   className=
@@ -261,6 +262,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   className=
@@ -440,6 +442,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-controls={null}
@@ -1125,7 +1128,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <span
                   aria-describedby="header11-thumbnail-tooltip"
-                  aria-haspopup={false}
                   aria-label="thumbnail"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1160,7 +1162,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header11-thumbnail"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1410,7 +1412,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-haspopup={false}
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -1441,7 +1442,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={false}
                   id="header11-key"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1645,7 +1645,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <span
                   aria-describedby="header11-name-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header11-name-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1677,7 +1676,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header11-name"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1882,7 +1881,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <span
                   aria-describedby="header11-description-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header11-description-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1914,7 +1912,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header11-description"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -2119,7 +2117,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <span
                   aria-describedby="header11-color-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header11-color-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -2151,7 +2148,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header11-color"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -2356,7 +2353,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <span
                   aria-describedby="header11-shape-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header11-shape-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -2388,7 +2384,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header11-shape"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -2593,7 +2589,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <span
                   aria-describedby="header11-location-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header11-location-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -2625,7 +2620,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header11-location"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -2830,7 +2825,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <span
                   aria-describedby="header11-width-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header11-width-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -2862,7 +2856,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header11-width"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -3067,7 +3061,6 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <span
                   aria-describedby="header11-height-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header11-height-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -3099,7 +3092,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header11-height"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -3340,6 +3333,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             }
                             &:hover .is-row-header {
                               color: #201f1e;
+                            }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
                             }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
@@ -4373,6 +4369,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -5404,6 +5403,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             }
                             &:hover .is-row-header {
                               color: #201f1e;
+                            }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
                             }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
@@ -6437,6 +6439,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -7468,6 +7473,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             }
                             &:hover .is-row-header {
                               color: #201f1e;
+                            }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
                             }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
@@ -8501,6 +8509,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -9532,6 +9543,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             }
                             &:hover .is-row-header {
                               color: #201f1e;
+                            }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
                             }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
@@ -10565,6 +10579,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -11597,6 +11614,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -12628,6 +12648,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             }
                             &:hover .is-row-header {
                               color: #201f1e;
+                            }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
                             }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;

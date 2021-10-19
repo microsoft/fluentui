@@ -19,6 +19,7 @@ import {
   disabledOpacity,
   focusStrokeInner,
   focusStrokeOuter,
+  focusStrokeWidth,
   foregroundOnAccentFocus,
   neutralFillHover,
   neutralFillInputActive,
@@ -128,7 +129,7 @@ export const selectStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
-      box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${focusStrokeInner};
+      box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
       border-color: ${focusStrokeOuter};
       background: ${accentFillFocus};
       color: ${foregroundOnAccentFocus};
@@ -153,15 +154,14 @@ export const selectStyles = (context, definition) =>
     :host(:not([disabled])) .control:active {
       background: ${neutralFillInputActive};
       border-color: ${neutralStrokeActive};
+      border-radius: calc(${controlCornerRadius} * 1px);
     }
 
-    :host([open][position='above']) .listbox,
-    :host([open][position='below']) .control {
+    :host([open][position='above']) .listbox {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
 
-    :host([open][position='above']) .control,
     :host([open][position='below']) .listbox {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -262,7 +262,7 @@ export const selectStyles = (context, definition) =>
         :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.ButtonText};
-          box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${SystemColors.HighlightText};
+          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${SystemColors.HighlightText};
           color: ${SystemColors.HighlightText};
           fill: currentcolor;
         }

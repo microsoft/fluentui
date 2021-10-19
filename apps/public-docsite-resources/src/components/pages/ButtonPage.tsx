@@ -64,7 +64,7 @@ export class ButtonPage extends React.Component<IButtonDemoPageProps, IButtonDem
 
     return (
       <DemoPage
-        jsonDocs={require('@fluentui/api-docs/lib/pages/react/Button.page.json')}
+        jsonDocs={require('../../../dist/api/react/Button.page.json')}
         {...{
           ...ButtonPageProps({ areButtonsDisabled, areButtonsChecked }),
           ...this.props,

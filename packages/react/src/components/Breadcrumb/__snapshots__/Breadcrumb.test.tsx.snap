@@ -289,6 +289,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText3
                 </div>
@@ -378,6 +379,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>
@@ -507,6 +509,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText1
                 </div>
@@ -596,6 +599,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText2
                 </div>
@@ -685,6 +689,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText3
                 </div>
@@ -774,6 +779,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>
@@ -903,6 +909,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText1
                 </div>
@@ -965,6 +972,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText2
                 </div>
@@ -1027,6 +1035,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText3
                 </div>
@@ -1089,6 +1098,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>
@@ -1218,6 +1228,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText1
                 </div>
@@ -1963,6 +1974,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText3
                 </div>
@@ -2052,6 +2064,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>
@@ -2181,6 +2194,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText1
                 </div>
@@ -2462,6 +2476,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>

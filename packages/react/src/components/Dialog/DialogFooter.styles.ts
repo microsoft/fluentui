@@ -1,5 +1,5 @@
-import { IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
 import { getGlobalClassNames } from '../../Styling';
+import type { IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
 
 const GlobalClassNames = {
   actions: 'ms-Dialog-actions',

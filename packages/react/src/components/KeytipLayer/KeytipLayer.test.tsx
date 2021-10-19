@@ -1,11 +1,12 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
-import { IKeytipProps } from '../../Keytip';
 import { find, KeyCodes } from '../../Utilities';
 import { KeytipTree } from './KeytipTree';
 import { KTP_FULL_PREFIX, KTP_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
+import type { IKeytipProps } from '../../Keytip';
 
 describe('KeytipLayer', () => {
   const ktpMgr = KeytipManager.getInstance();
@@ -60,6 +61,10 @@ describe('KeytipLayer', () => {
       return keytip.content === content;
     });
   }
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   afterEach(() => {
     if (ktpLayer) {
@@ -183,7 +188,7 @@ describe('KeytipLayer', () => {
 
         it('calls on enter keytip mode when we process alt + left win', () => {
           layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
-          expect(onEnter).toBeCalled();
+          expect(onEnter).toBeCalledWith({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
         });
 
         it('calls on exit keytip mode when we process alt + left win', () => {
@@ -228,8 +233,9 @@ describe('KeytipLayer', () => {
             onEnterKeytipMode={onEnter}
           />,
         );
+        layerValue = layerRef.current!;
         layerValue.processTransitionInput({ key: 'Meta' });
-        expect(onEnter).toBeCalled();
+        expect(onEnter).toBeCalledWith({ key: 'Meta' });
       });
     });
 
@@ -385,7 +391,9 @@ describe('KeytipLayer', () => {
         content: 'X',
         keySequences: ['b', 'x'],
       });
-      jest.runAllTimers();
+      ReactTestUtils.act(() => {
+        jest.runAllTimers();
+      });
 
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(1);
@@ -401,7 +409,9 @@ describe('KeytipLayer', () => {
         content: 'X',
         keySequences: ['b', 'x'],
       });
-      jest.runAllTimers();
+      ReactTestUtils.act(() => {
+        jest.runAllTimers();
+      });
 
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(0);
@@ -418,7 +428,9 @@ describe('KeytipLayer', () => {
         content: 'X',
         keySequences: ['b', 'x'],
       });
-      jest.runAllTimers();
+      ReactTestUtils.act(() => {
+        jest.runAllTimers();
+      });
 
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(1);

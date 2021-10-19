@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
 import { isConformant } from '../../common/isConformant';
-import { IRatingProps, IRating } from './Rating.types';
+import type { IRatingProps, IRating } from './Rating.types';
 
 describe('Rating', () => {
   const ref = React.createRef<IRating>();

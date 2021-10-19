@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { resolveShorthandProps } from './resolveShorthandProps';
-import { ShorthandPropsCompat } from './types';
+import type { ShorthandPropsCompat } from './types';
 
 type TestProps = {
   slotA?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
@@ -41,7 +41,7 @@ describe('resolveShorthandProps', () => {
     expect(resolvedProps).toEqual({ slotA: undefined });
   });
 
-  it('resolves mutliple slots', () => {
+  it('resolves multiple slots', () => {
     const props: TestProps = {
       slotA: 'hello',
       slotB: <>world</>,

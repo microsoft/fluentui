@@ -61,6 +61,7 @@ export class Combobox extends FoundationCombobox {
  */
 export const fluentCombobox = Combobox.compose<ComboboxOptions>({
   baseName: 'combobox',
+  baseClass: FoundationCombobox,
   template,
   styles,
   indicator: `

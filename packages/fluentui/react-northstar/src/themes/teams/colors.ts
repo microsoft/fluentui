@@ -239,6 +239,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     border2: colors.grey[200],
     border3: colors.grey[150], // divider
     borderTransparent: 'transparent',
+    borderTransparentActive: 'transparent',
 
     shadow: colors.black, // opacity 10%
     shadowHover: colors.black, // opacity 10%
@@ -328,11 +329,13 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundHover: colors.brand[700],
     backgroundHover1: colors.brand[50],
     backgroundHover2: colors.brand[100],
+    backgroundHover3: colors.brand[100],
 
     foregroundPressed: colors.brand[800],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[800], // it's 900 on the button - 800 is same as hover
     backgroundPressed1: colors.brand[100],
+    backgroundPressed2: colors.brand[100],
     borderPressed: colors.brand[300],
 
     foregroundActive: colors.brand[600],
@@ -464,7 +467,6 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground: colors.red[400],
     foreground1: colors.white,
     foreground2: colors.white,
-    foreground3: colors.red[300],
     background: colors.red[400],
     background1: colors.red[50],
     background2: colors.ruby[500],

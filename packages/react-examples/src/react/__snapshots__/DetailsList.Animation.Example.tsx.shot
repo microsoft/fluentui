@@ -416,6 +416,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="column1"
             draggable={false}
             role="columnheader"
@@ -438,7 +439,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -469,7 +469,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-column1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -606,6 +605,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="column2"
             draggable={false}
             role="columnheader"
@@ -628,7 +628,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -659,7 +658,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-column2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -854,6 +852,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -1330,6 +1331,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -1804,6 +1808,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -2280,6 +2287,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -2754,6 +2764,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -3230,6 +3243,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -3704,6 +3720,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -4180,6 +4199,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -4655,6 +4677,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -5129,6 +5154,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;

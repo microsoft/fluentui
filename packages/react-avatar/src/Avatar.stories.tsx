@@ -1,18 +1,10 @@
 import * as React from 'react';
 import { StoryExample } from './StoryExample.stories';
-import { AvatarExamples } from './AvatarExamples.stories';
-import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from './index';
+import { AvatarExamples as examples } from './AvatarExamples.stories';
+import { Avatar, renderAvatar, useAvatar, useAvatarStyles } from './index';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import {
-  CalendarIcon,
-  CatIcon,
-  ChatBotIcon,
-  ContactIcon,
-  GroupIcon,
-  IDBadgeIcon,
-  RoomIcon,
-  TelemarketerIcon,
-} from './tmp-icons.stories';
+import { People20Regular, Guest20Regular, Bot20Regular, Bot24Regular } from '@fluentui/react-icons';
+import type { AvatarProps } from './index';
 
 /**
  * Temporary workaround for Buttons
@@ -25,34 +17,6 @@ const Button: React.FC<{ value?: string | number; onClick: React.MouseEventHandl
     </button>
   );
 };
-
-const examples = {
-  ...AvatarExamples,
-  icon: [
-    /* eslint-disable react/jsx-key */
-    <GroupIcon />,
-    <CatIcon />,
-    <CalendarIcon />,
-    <RoomIcon />,
-    <IDBadgeIcon />,
-    <TelemarketerIcon />,
-    /* eslint-enable react/jsx-key */
-  ],
-  badge: [
-    'available',
-    'away',
-    'busy',
-    'doNotDisturb',
-    'offline',
-    'outOfOffice',
-    { status: 'available', outOfOffice: true },
-    { status: 'away', outOfOffice: true },
-    { status: 'busy', outOfOffice: true },
-    { status: 'doNotDisturb', outOfOffice: true },
-    { status: 'offline', outOfOffice: true },
-    { status: 'outOfOffice', outOfOffice: true },
-  ],
-} as const;
 
 const useFlexStyles = makeStyles({
   root: {},
@@ -75,26 +39,28 @@ export const Basic = () => {
       <StoryExample title="Simple examples">
         <Avatar />
         <Avatar name={examples.name[0]} />
-        <Avatar size={40} icon={<IDBadgeIcon />} />
-        <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
+        <Avatar size={40} icon={<Guest20Regular />} />
+        <Avatar size={72} name={examples.name[0]} image={{ src: examples.image[0] }} />
       </StoryExample>
-      <StoryExample title="Square">
-        <Avatar square name="Group" />
-        <Avatar square icon={<GroupIcon />} />
+      <StoryExample title="Shape">
+        <Avatar name="Group" />
+        <Avatar icon={<People20Regular />} />
+        <Avatar shape="square" name="Group" />
+        <Avatar shape="square" icon={<People20Regular />} />
       </StoryExample>
       <StoryExample title="Badges">
-        <Avatar name={examples.name[1]} badge="available" />
+        <Avatar name={examples.name[1]} badge={{ status: 'available' }} />
         <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
-        <Avatar name={examples.name[3]} image={examples.image[3]} badge="offline" />
+        <Avatar name={examples.name[3]} image={{ src: examples.image[3] }} badge={{ status: 'offline' }} />
       </StoryExample>
       <StoryExample title="Size">
-        <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="offline" />
-        <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="available" />
-        <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="away" />
+        <Avatar size={20} name={examples.name[4]} image={{ src: examples.image[4] }} badge={{ status: 'offline' }} />
+        <Avatar size={48} name={examples.name[5]} image={{ src: examples.image[5] }} badge={{ status: 'available' }} />
+        <Avatar size={96} name={examples.name[6]} image={{ src: examples.image[6] }} badge={{ status: 'away' }} />
       </StoryExample>
       <StoryExample title="Brand color">
-        <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
-        <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="available" />
+        <Avatar color="brand" name={examples.name[4]} badge={{ status: 'doNotDisturb' }} />
+        <Avatar color="brand" badge={{ status: 'available' }} />
       </StoryExample>
       <StoryExample title="Colorful">
         <Avatar color="colorful" name={examples.name[13]} />
@@ -111,36 +77,36 @@ export const Basic = () => {
       <StoryExample title="Active/inactive">
         <div className={styles.flex}>
           <Avatar name={examples.name[7]} active="active" />
-          <Avatar image={examples.image[8]} active="active" activeDisplay="shadow" />
-          <Avatar image={examples.image[9]} active="active" activeDisplay="glow" />
-          <Avatar image={examples.image[10]} active="active" activeDisplay="ring-shadow" />
-          <Avatar image={examples.image[11]} active="active" activeDisplay="ring-glow" />
-          <Avatar image={examples.image[12]} active="inactive" />
+          <Avatar image={{ src: examples.image[8] }} active="active" activeAppearance="shadow" />
+          <Avatar image={{ src: examples.image[9] }} active="active" activeAppearance="glow" />
+          <Avatar image={{ src: examples.image[10] }} active="active" activeAppearance="ring-shadow" />
+          <Avatar image={{ src: examples.image[11] }} active="active" activeAppearance="ring-glow" />
+          <Avatar image={{ src: examples.image[12] }} active="inactive" />
         </div>
       </StoryExample>
     </>
   );
 };
 
-export const AllSizes = () => (
+export const ShapesAndSizes = () => (
   <>
-    <StoryExample title="Image">
+    <StoryExample title="Image, default circular">
       <AvatarExampleList images={examples.image} />
     </StoryExample>
     <StoryExample title="Image, square">
-      <AvatarExampleList images={examples.image} square exampleIndex={1} />
+      <AvatarExampleList images={examples.image} shape="square" exampleIndex={1} />
     </StoryExample>
-    <StoryExample title="Initials">
+    <StoryExample title="Initials, default circular">
       <AvatarExampleList names={examples.name} />
     </StoryExample>
     <StoryExample title="Initials, square">
-      <AvatarExampleList names={examples.name} square exampleIndex={1} />
+      <AvatarExampleList names={examples.name} shape="square" exampleIndex={1} />
     </StoryExample>
-    <StoryExample title="Icon">
-      <AvatarExampleList icons={examples.icon} />
+    <StoryExample title="Icon, default circular">
+      <AvatarExampleList />
     </StoryExample>
     <StoryExample title="Icon, square">
-      <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
+      <AvatarExampleList shape="square" exampleIndex={1} />
     </StoryExample>
   </>
 );
@@ -168,22 +134,22 @@ export const Colors = () => (
   </>
 );
 
-export const Active = () => (
+export const ActiveAppearance = () => (
   <>
     <StoryExample title="ring">
-      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring" exampleIndex={2} />
+      <AvatarExampleList images={examples.image} active="active" activeAppearance="ring" exampleIndex={2} />
     </StoryExample>
     <StoryExample title="ring-shadow">
-      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring-shadow" exampleIndex={3} />
+      <AvatarExampleList images={examples.image} active="active" activeAppearance="ring-shadow" exampleIndex={3} />
     </StoryExample>
     <StoryExample title="ring-glow">
-      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring-glow" exampleIndex={4} />
+      <AvatarExampleList images={examples.image} active="active" activeAppearance="ring-glow" exampleIndex={4} />
     </StoryExample>
     <StoryExample title="shadow">
-      <AvatarExampleList images={examples.image} active="active" activeDisplay="shadow" exampleIndex={5} />
+      <AvatarExampleList images={examples.image} active="active" activeAppearance="shadow" exampleIndex={5} />
     </StoryExample>
     <StoryExample title="glow">
-      <AvatarExampleList images={examples.image} active="active" activeDisplay="glow" exampleIndex={6} />
+      <AvatarExampleList images={examples.image} active="active" activeAppearance="glow" exampleIndex={6} />
     </StoryExample>
     <StoryExample title="inactive">
       <AvatarExampleList images={examples.image} active="inactive" exampleIndex={7} />
@@ -194,7 +160,10 @@ export const Active = () => (
 export const ActiveAnimation = () => {
   const [active, setActive] = React.useState(false);
   const [size, nextSize, prevSize] = useValueSelectorState(examples.size, 96);
-  const [activeDisplay, nextActiveDisplay, prevActiveDisplay] = useValueSelectorState(examples.activeDisplay, 'ring');
+  const [activeAppearance, nextActiveDisplay, prevActiveDisplay] = useValueSelectorState(
+    examples.activeAppearance,
+    'ring',
+  );
   const [display, nextDisplay, prevDisplay] = useValueSelectorState(['image', 'icon', 'label'], 'image');
   const flexStyles = useFlexStyles();
   React.useEffect(() => {
@@ -208,21 +177,20 @@ export const ActiveAnimation = () => {
         <Avatar
           size={size}
           active={active ? 'active' : 'inactive'}
-          activeDisplay={activeDisplay}
-          name={examples.name[10]}
-          image={display === 'image' ? examples.image[10] : undefined}
-          icon={display === 'icon' ? <ContactIcon /> : undefined}
+          activeAppearance={activeAppearance}
+          name={display === 'label' ? examples.name[10] : undefined}
+          image={display === 'image' ? { src: examples.image[10] } : undefined}
         />
       </div>
       <div className={flexStyles.stack}>
         <Button onClick={React.useCallback(() => setActive(a => !a), [])}>Toggle Active</Button>
         {/* Temporarly replacement of SpinButtons */}
         <div className={flexStyles.flex}>
-          <span>activeDisplay="{activeDisplay}"</span>
-          <Button value={activeDisplay} onClick={nextActiveDisplay}>
+          <span>activeAppearance="{activeAppearance}"</span>
+          <Button value={activeAppearance} onClick={nextActiveDisplay}>
             next
           </Button>
-          <Button value={activeDisplay} onClick={prevActiveDisplay}>
+          <Button value={activeAppearance} onClick={prevActiveDisplay}>
             prev
           </Button>
         </div>
@@ -253,17 +221,45 @@ export const ActiveAnimation = () => {
 
 export const CustomSizes = () => (
   <StoryExample title="Custom size">
-    <Avatar name={examples.name[11]} badge="available" size={20} style={{ width: '13px', height: '13px' }} />
-    <Avatar image={examples.image[12]} badge="away" size={20} style={{ width: '21px', height: '21px' }} />
-    <Avatar name={examples.name[13]} badge="busy" size={32} style={{ width: '34px', height: '34px' }} />
-    <Avatar image={examples.image[14]} badge="doNotDisturb" size={48} style={{ width: '55px', height: '55px' }} />
-    <Avatar name={examples.name[15]} badge="offline" size={72} style={{ width: '89px', height: '89px' }} />
-    <Avatar image={examples.image[16]} badge="outOfOffice" size={128} style={{ width: '144px', height: '144px' }} />
+    <Avatar
+      name={examples.name[11]}
+      badge={{ status: 'available' }}
+      size={20}
+      style={{ width: '13px', height: '13px' }}
+    />
+    <Avatar
+      image={{ src: examples.image[12] }}
+      badge={{ status: 'away' }}
+      size={20}
+      style={{ width: '21px', height: '21px' }}
+    />
+    <Avatar name={examples.name[13]} badge={{ status: 'busy' }} size={32} style={{ width: '34px', height: '34px' }} />
+    <Avatar
+      image={{ src: examples.image[14] }}
+      badge={{ status: 'doNotDisturb' }}
+      size={48}
+      style={{ width: '55px', height: '55px' }}
+    />
+    <Avatar
+      name={examples.name[15]}
+      badge={{ status: 'offline' }}
+      size={72}
+      style={{ width: '89px', height: '89px' }}
+    />
+    <Avatar
+      image={{ src: examples.image[16] }}
+      badge={{ status: 'outOfOffice' }}
+      size={128}
+      style={{ width: '144px', height: '144px' }}
+    />
   </StoryExample>
 );
 
 const useRobotAvatarStyles = makeStyles({
-  root: { borderRadius: '0' },
+  root: {
+    background: `url('${examples.hexagon}') 0px/contain no-repeat`,
+    borderRadius: '0',
+  },
   20: { width: '24px' },
   24: { width: '28px' },
   28: { width: '32px' },
@@ -277,20 +273,17 @@ const useRobotAvatarStyles = makeStyles({
   96: { width: '108px' },
   120: { width: '128px' },
   128: { width: '136px' },
-  label: {
-    background: `url('${examples.hexagon}') 0px/contain no-repeat`,
-    borderRadius: '0',
-  },
 });
 
 const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
-  const state = useAvatar(props, ref, {
-    icon: <ChatBotIcon />,
-  });
+  const { size = 32 } = props;
+
+  const icon = size <= 40 ? <Bot20Regular /> : <Bot24Regular />;
+
+  const state = useAvatar({ icon, ...props }, ref);
   const styles = useRobotAvatarStyles();
 
   state.className = mergeClasses(styles.root, styles[state.size], state.className);
-  state.label.className = mergeClasses(styles.label, state.label.className);
 
   useAvatarStyles(state);
 
@@ -302,12 +295,9 @@ export const RobotExample = () => {
   return (
     <StoryExample title="Robot Example">
       <div className={flexStyles.flex}>
-        <RobotAvatar size={20} />
         <RobotAvatar size={32} />
         <RobotAvatar size={48} />
         <RobotAvatar size={64} />
-        <RobotAvatar size={96} />
-        <RobotAvatar size={128} />
       </div>
     </StoryExample>
   );
@@ -318,19 +308,18 @@ export const AvatarPlayground = () => {
 
   const propSelectors = [
     useValueSelector('size', useValueSelectorState(examples.size, 96), true),
-    useValueSelector('square', useValueSelectorState([true, false])),
+    useValueSelector('shape', useValueSelectorState(examples.shape)),
     useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString as () => string),
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector(
       'image',
-      [nameAndImage.image, nextNameAndImage, prevNameAndImage],
+      [{ src: nameAndImage.image }, nextNameAndImage, prevNameAndImage],
       true,
-      getFilenameFromUrl as () => string,
+      getFilenameFromUrl,
     ),
-    useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString as () => string),
     useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
-    useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
+    useValueSelector('activeAppearance', useValueSelectorState(examples.activeAppearance)),
   ];
 
   // Build an AvatarProps object with the selected property values
@@ -365,11 +354,10 @@ const AvatarExampleList: React.FC<
   AvatarProps & {
     names?: readonly string[];
     images?: readonly string[];
-    icons?: readonly JSX.Element[];
     exampleIndex?: number;
   }
 > = props => {
-  const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
+  const { names, images, exampleIndex = 0, ...restOfProps } = props;
   const offset = exampleIndex * examples.size.length;
   const flexStyles = useFlexStyles();
 
@@ -380,8 +368,7 @@ const AvatarExampleList: React.FC<
           key={size}
           size={size}
           name={names && names[(i + offset) % names.length]}
-          image={images && images[(i + offset) % images.length]}
-          icon={icons && icons[(i + offset) % icons.length]}
+          image={images && { src: images[(i + offset) % images.length] }}
           badge={examples.badge[(i + offset) % examples.badge.length]}
           {...restOfProps}
         />
@@ -390,10 +377,11 @@ const AvatarExampleList: React.FC<
   );
 };
 
-const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
 const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
   typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
-const getFilenameFromUrl = (url: string) => url.substring(url.lastIndexOf('/') + 1);
+
+const getFilenameFromUrl = (image: AvatarProps['image']) =>
+  image?.src?.substring(image?.src.lastIndexOf('/') + 1) ?? '';
 
 type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () => void];
 

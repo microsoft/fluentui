@@ -2,8 +2,9 @@ import * as React from 'react';
 import { classNamesFunction, css, format, divProperties, getNativeProps } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles, IRating, IRatingStarProps } from './Rating.types';
+import { RatingSize } from './Rating.types';
 import { useId, useWarnings, useControllableValue } from '@fluentui/react-hooks';
+import type { IRatingProps, IRatingStyleProps, IRatingStyles, IRating, IRatingStarProps } from './Rating.types';
 
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 

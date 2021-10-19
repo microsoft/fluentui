@@ -34,54 +34,55 @@ Sample usages will be given in the following section of this document [Sample co
 The root level component serves context and common API between all children.
 
 ```ts
-export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Indicates if keyboard navigation is available
-   */
-  navigable?: boolean;
-  /**
-   * Indicates if Accordion support multiple Panels opened at the same time
-   */
-  multiple?: boolean;
-  /**
-   * Indicates if Accordion support multiple Panels closed at the same time
-   */
-  collapsible?: boolean;
-  /**
-   * Index indicating the panels that are opened
-   * If used, the component will be in controlled mode
-   */
-  index?: number | number[];
-  /**
-   * Index indicating the panels that are opened
-   */
-  defaultIndex?: number | number[];
-  /**
-   * Size of spacing in the heading
-   */
-  size?: 'small' | 'medium' | 'large' | 'extra-large';
-  /**
-   * The component to be used as button in the heading
-   */
-  button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  /**
-   * Expand icon slot rendered before (or after) children content in heading
-   */
-  expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
-  /**
-   * The position of the expand  icon slot in heading
-   */
-  expandIconPosition?: 'start' | 'end';
-  /**
-   * Extra icon slot rendered before children content in heading
-   */
-  icon?: ShorthandProps<AccordionHeaderIconProps>;
-  /**
-   * Indicates if the AccordionHeader should be inline-block
-   */
-  inline?: boolean;
-  onToggle?(index: number): void;
-}
+export type AccordionProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Indicates if keyboard navigation is available
+     */
+    navigable?: boolean;
+    /**
+     * Indicates if Accordion support multiple Panels opened at the same time
+     */
+    multiple?: boolean;
+    /**
+     * Indicates if Accordion support multiple Panels closed at the same time
+     */
+    collapsible?: boolean;
+    /**
+     * value indicating the items that are opened
+     * If used, the component will be in controlled mode
+     */
+    openItems?: AccordionItemValue | AccordionItemValue[];
+    /**
+     * Index indicating the panels that are opened
+     */
+    defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
+    /**
+     * Size of spacing in the heading
+     */
+    size?: 'small' | 'medium' | 'large' | 'extra-large';
+    /**
+     * The component to be used as button in the heading
+     */
+    button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Expand icon slot rendered before (or after) children content in heading
+     */
+    expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
+    /**
+     * The position of the expand  icon slot in heading
+     */
+    expandIconPosition?: 'start' | 'end';
+    /**
+     * Extra icon slot rendered before children content in heading
+     */
+    icon?: ShorthandProps<AccordionHeaderIconProps>;
+    /**
+     * Indicates if the AccordionHeader should be inline-block
+     */
+    inline?: boolean;
+    onToggle?(event: AccordionToggleEvent, data: AccordionToggleData): void;
+  };
 ```
 
 ### AccordionItem
@@ -89,12 +90,17 @@ export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTM
 Each Combination of `AccordionHeader` and `AccordionPanel` should be inside an `AccordionItem`, and The `Accordion` component should contain one or more `AccordionItem`.
 
 ```ts
-export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Disables opening/closing of panel inside the item
-   */
-  disabled?: boolean;
-}
+export type AccordionItemProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Disables opening/closing of panel inside the item
+     */
+    disabled?: boolean;
+    /**
+     * required value that identifies this item inside an Accordion component
+     */
+    value: AccordionItemValue;
+  };
 ```
 
 ### AccordionHeader
@@ -102,32 +108,33 @@ export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes
 Label for or thumbnail representing a section of content that also serves as a control for showing, and in some implementations, hiding the section of content
 
 ```ts
-export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Size of spacing in the heading
-   */
-  size?: 'small' | 'medium' | 'large' | 'extra-large';
-  /**
-   * The component to be used as button in heading
-   */
-  button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  /**
-   * Expand icon slot rendered before (or after) children content in heading
-   */
-  expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
-  /**
-   * The position of the expand  icon slot in heading
-   */
-  expandIconPosition?: 'start' | 'end';
-  /**
-   * Extra icon slot rendered before children content in heading
-   */
-  icon?: ShorthandProps<AccordionHeaderIconProps>;
-  /**
-   * Indicates if the AccordionHeader should be inline-block
-   */
-  inline?: boolean;
-}
+export type AccordionHeaderProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Size of spacing in the heading
+     */
+    size?: 'small' | 'medium' | 'large' | 'extra-large';
+    /**
+     * The component to be used as button in heading
+     */
+    button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    /**
+     * Expand icon slot rendered before (or after) children content in heading
+     */
+    expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
+    /**
+     * The position of the expand  icon slot in heading
+     */
+    expandIconPosition?: 'start' | 'end';
+    /**
+     * Extra icon slot rendered before children content in heading
+     */
+    icon?: ShorthandProps<AccordionHeaderIconProps>;
+    /**
+     * Indicates if the AccordionHeader should be inline-block
+     */
+    inline?: boolean;
+  };
 ```
 
 ### AccordionPanel

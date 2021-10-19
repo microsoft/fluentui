@@ -9,6 +9,11 @@ const States = () => (
       description="A menu item can be disabled."
       examplePath="components/Menu/States/MenuItemExampleDisabled"
     />
+    <ComponentExample
+      title="Menu wit controlled state"
+      description="A menu can have its state controlled."
+      examplePath="components/Menu/States/MenuControlledExample"
+    />
   </ExampleSection>
 );
 

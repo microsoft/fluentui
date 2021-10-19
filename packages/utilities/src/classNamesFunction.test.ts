@@ -1,6 +1,7 @@
-import { IStyle, Stylesheet } from '@fluentui/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { getRTL, setRTL } from './rtl';
+import type { IStyle } from '@fluentui/merge-styles';
 
 describe('classNamesFunction', () => {
   beforeEach(() => {

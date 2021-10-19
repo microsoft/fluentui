@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { Link } from './components/Link/Link';
-import { LinkProps } from './components/Link/Link.types';
+import type { LinkProps } from './components/Link/Link.types';
 
 const useStyles = makeStyles({
   innerFlexStyles: {
@@ -24,8 +24,8 @@ const LinkExamples = (props: LinkProps) => (
       <Link {...props}>Stand-alone link</Link>
     </div>
     <div>
-      <Link {...props} secondary>
-        Standalone secondary link
+      <Link {...props} appearance="subtle">
+        Standalone subtle link
       </Link>
     </div>
     <div>
@@ -47,8 +47,8 @@ const LinkExamples = (props: LinkProps) => (
     </div>
     <div>
       This is{' '}
-      <Link {...props} inline secondary>
-        a secondary link
+      <Link {...props} inline appearance="subtle">
+        a subtle link
       </Link>{' '}
       used alongside other text content.
     </div>

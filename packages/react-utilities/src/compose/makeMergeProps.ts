@@ -12,18 +12,18 @@ type GenericDictionary = Record<string, any>;
  *
  * @internal
  */
-interface Dictionary {
+type Dictionary = {
   [className: string]: boolean;
-}
+};
 
 /**
  * Serializable object.
  *
  * @internal
  */
-interface SerializableObject {
+type SerializableObject = {
   toString?: () => string;
-}
+};
 
 /**
  * css input type.
@@ -33,7 +33,7 @@ interface SerializableObject {
 type CssInput = string | SerializableObject | Dictionary | null | undefined | boolean;
 
 /**
- * Concatination helper, which can merge class names together. Skips over falsey values.
+ * Concatenation helper, which can merge class names together. Skips over falsey values.
  *
  * @public
  */

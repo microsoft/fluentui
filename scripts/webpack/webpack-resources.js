@@ -30,6 +30,13 @@ const cssRule = {
   use: ['style-loader', 'css-loader'],
 };
 
+/**
+ * As of webpack 5, you have to add the `es5` target for IE 11 compatibility.
+ * Otherwise it will output lambdas for smaller bundle size.
+ * https://webpack.js.org/migrate/5/#need-to-support-an-older-browser-like-ie-11
+ */
+const target = ['web', 'es5'];
+
 module.exports = {
   webpack,
 
@@ -82,6 +89,7 @@ module.exports = {
               pathinfo: false,
             },
             module,
+            target,
             devtool,
             plugins: getPlugins(packageName, false),
           },
@@ -101,6 +109,7 @@ module.exports = {
             },
 
             module,
+            target,
             devtool: excludeSourceMaps ? undefined : devtool,
             plugins: getPlugins(packageName, true, profile),
           },
@@ -263,6 +272,8 @@ module.exports = {
           ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [] : [new ForkTsCheckerWebpackPlugin()]),
           ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
         ],
+
+        target,
       },
       customConfig,
     );

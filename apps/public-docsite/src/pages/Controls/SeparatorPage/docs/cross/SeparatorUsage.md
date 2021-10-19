@@ -2,7 +2,7 @@
 
 <img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Separator/Separator_windows.PNG"/>
 
-#### Example usage (from [SeparatorTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Separator/SeparatorTest.tsx))
+#### Example usage (from [SeparatorTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/FluentTester/TestComponents/Separator/SeparatorTest.tsx))
 
 ```
 

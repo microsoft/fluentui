@@ -1,28 +1,20 @@
 import * as React from 'react';
 
-import {
-  initializeComponentRef,
-  KeyCodes,
-  classNamesFunction,
-  IStyleFunctionOrObject,
-  css,
-  styled,
-} from '../../../Utilities';
-import { IProcessedStyleSet } from '../../../Styling';
-import { CommandButton, IButton } from '../../../Button';
-import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import { initializeComponentRef, KeyCodes, classNamesFunction, css, styled } from '../../../Utilities';
+import { CommandButton } from '../../../Button';
+import { Spinner } from '../../../Spinner';
 import { Announced } from '../../../Announced';
-import {
-  ISuggestionsProps,
-  SuggestionActionType,
-  ISuggestionsStyleProps,
-  ISuggestionsStyles,
-} from './Suggestions.types';
+import { SuggestionActionType } from './Suggestions.types';
 import { SuggestionsItem } from './SuggestionsItem';
 import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
-import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
-
 import * as stylesImport from './Suggestions.scss';
+import type { IStyleFunctionOrObject } from '../../../Utilities';
+import type { IProcessedStyleSet } from '../../../Styling';
+import type { IButton } from '../../../Button';
+import type { ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import type { ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
+import type { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
+
 const legacyStyles: any = stylesImport;
 
 const getClassNames = classNamesFunction<ISuggestionsStyleProps, ISuggestionsStyles>();
@@ -35,7 +27,9 @@ const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItem
   SuggestionsItem,
   suggestionsItemStyles,
   undefined,
-  { scope: 'SuggestionItem' },
+  {
+    scope: 'SuggestionItem',
+  },
 );
 
 /**
@@ -78,6 +72,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     const {
       forceResolveText,
       mostRecentlyUsedHeaderText,
+      searchForMoreIcon,
       searchForMoreText,
       className,
       moreSuggestionsAvailable,
@@ -146,11 +141,20 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     // TODO: cleanup after refactor of pickers to composition pattern and remove SASS support.
     const spinnerClassNameOrStyles = styles
       ? { styles: spinnerStyles }
-      : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
+      : {
+          className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner),
+        };
 
-    const noResults = () => {
-      return noResultsFoundText ? <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div> : null;
-    };
+    const noResults = () => (
+      // This ID can be used by the parent to set aria-activedescendant to this
+      <div id="sug-noResultsFound" role="option">
+        {onRenderNoResultFound ? (
+          onRenderNoResultFound(undefined, noResults)
+        ) : (
+          <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div>
+        )}
+      </div>
+    );
 
     // MostRecently Used text should supercede the header text if it's there and available.
     let headerText: string | undefined = suggestionsHeaderText;
@@ -165,7 +169,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
 
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
     const divProps: React.HtmlHTMLAttributes<HTMLDivElement> =
-      hasNoSuggestions || isLoading ? { role: 'dialog', id: suggestionsListId } : {};
+      hasNoSuggestions || isLoading ? { role: 'listbox', id: suggestionsListId } : {};
 
     const forceResolveId =
       this.state.selectedActionType === SuggestionActionType.forceResolve ? 'sug-selectedAction' : undefined;
@@ -189,16 +193,12 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           </CommandButton>
         )}
         {isLoading && <Spinner {...spinnerClassNameOrStyles} label={loadingText} />}
-        {hasNoSuggestions
-          ? onRenderNoResultFound
-            ? onRenderNoResultFound(undefined, noResults)
-            : noResults()
-          : this._renderSuggestions()}
+        {hasNoSuggestions ? noResults() : this._renderSuggestions()}
         {searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
             componentRef={this._searchForMoreButton}
             className={this._classNames.searchForMoreButton}
-            iconProps={{ iconName: 'Search' }}
+            iconProps={searchForMoreIcon || { iconName: 'Search' }}
             id={searchForMoreId}
             onClick={this._getMoreResults}
             data-automationid={'sug-searchForMore'}
@@ -370,6 +370,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       suggestionsContainerAriaLabel,
       suggestionsHeaderText,
       suggestionsListId,
+      removeButtonIconProps,
     } = this.props;
 
     let { suggestions } = this.props;
@@ -425,6 +426,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
               removeButtonAriaLabel={removeSuggestionAriaLabel}
               onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
               id={'sug-' + index}
+              removeButtonIconProps={removeButtonIconProps}
             />
           </div>
         ))}

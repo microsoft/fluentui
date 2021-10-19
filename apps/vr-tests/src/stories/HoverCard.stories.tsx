@@ -44,5 +44,5 @@ storiesOf('HoverCard', module)
         Hover over me
       </HoverCard>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

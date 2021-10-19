@@ -68,5 +68,5 @@ storiesOf('ResizeGroup', module)
         }}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

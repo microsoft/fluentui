@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { initializeComponentRef } from '../../Utilities';
 import { hiddenContentStyle } from '../../Styling';
-import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
-import { IStickyProps, StickyPositionType } from './Sticky.types';
+import { ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
+import { StickyPositionType } from './Sticky.types';
+import type { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
+import type { IStickyProps } from './Sticky.types';
 
 export interface IStickyState {
   isStickyTop: boolean;

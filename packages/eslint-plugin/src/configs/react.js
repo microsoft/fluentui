@@ -13,7 +13,17 @@ const config = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@fluentui', '@typescript-eslint', 'deprecation', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks'],
+  plugins: [
+    '@fluentui',
+    '@typescript-eslint',
+    'deprecation',
+    'import',
+    'jest',
+    'jsdoc',
+    'jsx-a11y',
+    'react',
+    'react-hooks',
+  ],
   settings: {
     // Some config suggestions copied from https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
     'import/parsers': {
@@ -25,6 +35,18 @@ const config = {
         alwaysTryTypes: true,
         // NOTE: For packages without a tsconfig.json, override with "project": "../../tsconfig.json"
         project: ['./tsconfig.json', path.join(gitRoot, 'tsconfig.json')],
+      },
+    },
+    jsdoc: {
+      ignoreInternal: true,
+      tagNamePreference: {
+        // Allow any of @default, @defaultvalue, @defaultValue until we settle on a preferred one
+        default: 'default',
+        defaultvalue: 'defaultvalue',
+        defaultValue: 'defaultValue',
+        // Allow either @return or @returns until we settle on a preferred one
+        return: 'return',
+        returns: 'returns',
       },
     },
   },
@@ -57,8 +79,7 @@ const config = {
         ignorePatterns: [
           'require(<.*?>)?\\(',
           'https?:\\/\\/',
-          '^(import|export) \\{ \\w+( as \\w+)? \\} from',
-          '^import \\* as',
+          '^(import|export) ',
           '^\\s+(<path )?d=',
           '!raw-loader',
           '\\bdata:image/',
@@ -134,7 +155,12 @@ const config = {
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        additionalHooks: 'useIsomorphicLayoutEffect',
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
 
     // airbnb or other config overrides (some temporary)
@@ -259,6 +285,14 @@ const config = {
     'import/named': 'off',
     'import/namespace': 'off',
     'import/no-named-as-default-member': 'off',
+
+    'jsdoc/check-tag-names': [
+      'error',
+      {
+        // Allow TSDoc tags @remarks and @defaultValue
+        definedTags: ['remarks', 'defaultValue'],
+      },
+    ],
   },
 };
 

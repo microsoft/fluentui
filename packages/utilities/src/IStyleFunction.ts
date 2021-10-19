@@ -1,1 +1,1 @@
-export { IStyleFunction } from '@fluentui/merge-styles';
+export type { IStyleFunction } from '@fluentui/merge-styles';

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 13 Jul 2021 22:32:58 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.5.1)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.5.0..@fluentui/react-conformance_v0.5.1)
+
+### Patches
+
+- Updated getCallbackArguments for complex types ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by gcox@microsoft.com)
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.5.0)
+
+Tue, 07 Sep 2021 07:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.4.5..@fluentui/react-conformance_v0.5.0)
+
+### Minor changes
+
+- add 'consistent-callback-args' test for event handler arguments ([PR #19369](https://github.com/microsoft/fluentui/pull/19369) by olfedias@microsoft.com)
+
+## [0.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.5)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.4.4..@fluentui/react-conformance_v0.4.5)
+
+### Patches
+
+- handle "disabledTests" for "extraTests" ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+## [0.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.4)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.4.3..@fluentui/react-conformance_v0.4.4)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
 
 ## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.3)
 

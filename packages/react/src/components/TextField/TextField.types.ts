@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IIconProps } from '../../Icon';
 
 /**
  * {@docCategory TextField}
@@ -108,6 +108,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Custom renderer for the description.
    */
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
+
+  /**
+   * Custom renderer for the actual single-line input field (not used if `multiline` is true).
+   * This receives the processed props which would usually be passed to the `<input>` element
+   * and allows manually modifying them or rendering as a different element. (Use with care,
+   * since changes here could easily break the component.)
+   */
+  onRenderInput?: IRenderFunction<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
 
   /**
    * Prefix displayed before the text field contents. This is not included in the value.

@@ -5,13 +5,12 @@ import {
   elementContains,
   focusFirstChild,
   getDocument,
-  IRectangle,
   KeyCodes,
   getRTL,
   EventGroup,
   getPropsWithDefaults,
 } from '../../Utilities';
-import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../Positioning';
+import { RectangleEdge, getOppositeEdge } from '../../Positioning';
 
 // Component Dependencies
 import { PositioningContainer } from './PositioningContainer/index';
@@ -19,11 +18,13 @@ import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
-import { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useAsync, useOnEvent, useSetTimeout, useWarnings } from '@fluentui/react-hooks';
-import { IBeakProps } from './Beak/Beak.types';
+import type { IRectangle } from '../../Utilities';
+import type { IPositionedData } from '../../Positioning';
+import type { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
+import type { IBeakProps } from './Beak/Beak.types';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 

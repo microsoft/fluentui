@@ -1,23 +1,30 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { CardSectionState } from '../CardSection/CardSection.types';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import type { CardFooterState } from './CardFooter.types';
 
+/**
+ * Styles for the root slot
+ */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    flexDirection: 'column',
-    margin: 'var(--card-footer-margin)',
-
-    '--card-footer-margin': 'var(--card-section-margin)',
+    flexDirection: 'row',
+    gap: '12px',
   },
-  fitted: {
-    '--card-footer-margin': 'var(--card-footer-fitted-margin)',
-    '--card-footer-fitted-margin': 'var(--card-section-fitted-margin)',
+  action: {
+    marginLeft: 'auto',
   },
 });
 
-export function useCardFooterStyles(state: CardSectionState): CardSectionState {
+/**
+ * Apply styling to the CardFooter slots based on the state
+ */
+export const useCardFooterStyles = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();
-  state.className = mergeClasses('ms-CardFooter', styles.root, state.fitted && styles.fitted, state.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
+
+  if (state.action) {
+    state.action.className = mergeClasses(styles.action, state.action.className);
+  }
 
   return state;
-}
+};

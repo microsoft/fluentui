@@ -1,11 +1,14 @@
-import { NodePath, PluginObj, PluginPass, TransformOptions, types as t } from '@babel/core';
+import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel-preset';
+import shakerEvaluator from '@linaria/shaker';
 import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
 
-import { UNHANDLED_CASE_ERROR } from './constants';
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
+import { UNHANDLED_CASE_ERROR } from './constants';
+import { BabelPluginOptions } from './types';
+import { validateOptions } from './validateOptions';
 
 type AstStyleNode =
   | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
@@ -20,16 +23,6 @@ type AstStyleNode =
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
 
-export type BabelPluginOptions = {
-  /** Defines set of modules and imports handled by a plugin. */
-  modules: { moduleSource: string; importName: string }[];
-
-  /**
-   * If you need to specify custom Babel configuration, you can pass them here. These options will be used by the
-   * plugin when parsing and evaluating modules.
-   */
-  babelOptions?: Pick<TransformOptions, 'plugins' | 'presets'>;
-};
 type BabelPluginState = PluginPass & {
   importDeclarationPath?: NodePath<t.ImportDeclaration>;
   requireDeclarationPath?: NodePath<t.VariableDeclarator>;
@@ -90,7 +83,7 @@ function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpressi
  */
 function isMakeStylesCallee(
   path: NodePath<t.Expression | t.V8IntrinsicIdentifier>,
-  modules: BabelPluginOptions['modules'],
+  modules: NonNullable<BabelPluginOptions['modules']>,
 ): path is NodePath<t.Identifier> {
   if (path.isIdentifier()) {
     return Boolean(modules.find(module => path.referencesImport(module.moduleSource, module.importName)));
@@ -102,7 +95,10 @@ function isMakeStylesCallee(
 /**
  * Checks if import statement import makeStyles().
  */
-function hasMakeStylesImport(path: NodePath<t.ImportDeclaration>, modules: BabelPluginOptions['modules']): boolean {
+function hasMakeStylesImport(
+  path: NodePath<t.ImportDeclaration>,
+  modules: NonNullable<BabelPluginOptions['modules']>,
+): boolean {
   return Boolean(modules.find(module => path.node.source.value === module.moduleSource));
 }
 
@@ -154,7 +150,7 @@ function processDefinitions(
 
   const styleSlots = definitionsPath.get('properties');
 
-  styleSlots.forEach(styleSlotPath => {
+  styleSlots.forEach((styleSlotPath: NodePath<t.SpreadElement | t.ObjectMethod | t.ObjectProperty>) => {
     if (styleSlotPath.isObjectMethod()) {
       throw styleSlotPath.buildCodeFrameError('Object methods are not supported for defining styles');
     }
@@ -273,25 +269,24 @@ function processDefinitions(
        * @example
        *    // ✔ can be resolved in AST
        *    makeStyles({ root: (t) => ({ color: t.red }) })
+       *    makeStyles({ root: () => ({ padding: '12px' }) })
        *    // ❌ lazy evaluation
        *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
        *    // ❌ lazy evaluation, the worst case as function contains body
        *    makeStyles({ root: (t) => { return { color: SOME_VARIABLE } } })
        */
       if (stylesPath.isArrowFunctionExpression()) {
+        const paramError = 'A function in makeStyles() can only have a single param (for tokens/theme)';
         if (stylesPath.get('params').length > 1) {
-          throw stylesPath.buildCodeFrameError('A function in makeStyles() can only a single param');
+          throw stylesPath.buildCodeFrameError(paramError);
         }
 
-        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node>;
+        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node> | undefined;
 
-        if (!paramsPath.isIdentifier()) {
-          throw stylesPath.buildCodeFrameError(
-            'A function in makeStyles() can only a single param and it should be a valid identifier',
-          );
+        if (paramsPath && !paramsPath.isIdentifier()) {
+          throw stylesPath.buildCodeFrameError(`${paramError} and it should be a valid identifier`);
         }
 
-        const paramsName = paramsPath.node.name;
         const bodyPath = stylesPath.get('body');
 
         /**
@@ -300,6 +295,7 @@ function processDefinitions(
          * @example
          *    // ✔ can be resolved in AST
          *    makeStyles({ root: (t) => ({ color: t.red }) })
+         *    makeStyles({ root: () => ({ padding: '12px' }) })
          *    // ❌ lazy evaluation
          *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
          */
@@ -322,13 +318,16 @@ function processDefinitions(
               // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
+                const paramsName = paramsPath?.node.name;
 
-                if (identifierPath.isIdentifier({ name: paramsName })) {
+                if (paramsName && identifierPath.isIdentifier({ name: paramsName })) {
                   const cssVariable = namesToCssVariable(getTokenParts(valuePath));
 
                   valuePath.replaceWith(t.stringLiteral(cssVariable));
+                  return;
                 }
 
+                lazyPaths.push(valuePath);
                 return;
               }
 
@@ -446,7 +445,7 @@ function dedupeCSSRules(cssRules: CSSRulesByBucket): CSSRulesByBucket {
 export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPluginState>>((api, options) => {
   api.assertVersion(7);
 
-  const pluginOptions: BabelPluginOptions = {
+  const pluginOptions: Required<BabelPluginOptions> = {
     babelOptions: {
       presets: ['@babel/preset-typescript'],
     },
@@ -454,9 +453,18 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
       { moduleSource: '@fluentui/react-components', importName: 'makeStyles' },
       { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
     ],
+    evaluationRules: [
+      { action: shakerEvaluator },
+      {
+        test: /[/\\]node_modules[/\\]/,
+        action: 'ignore',
+      },
+    ],
 
     ...options,
   };
+
+  validateOptions(pluginOptions);
 
   return {
     name: '@fluentui/babel-make-styles',
@@ -511,7 +519,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
           );
 
           if (pathsToEvaluate.length > 0) {
-            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions.babelOptions!);
+            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions);
           }
 
           state.styleNodes?.forEach(styleNode => {
@@ -520,7 +528,10 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               const evaluationResult = (nodePath.get('argument') as NodePath<t.Expression>).evaluate();
 
               if (!evaluationResult.confident) {
-                throw nodePath.buildCodeFrameError(
+                // This is undocumented but shows the specific statement that failed
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const deoptPath = (evaluationResult as any).deopt as NodePath | undefined;
+                throw (deoptPath || nodePath).buildCodeFrameError(
                   'Evaluation of a code fragment failed, this is a bug, please report it',
                 );
               }
@@ -540,7 +551,9 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
             const evaluationResult = argumentPath.evaluate();
 
             if (!evaluationResult.confident) {
-              throw argumentPath.buildCodeFrameError(
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const deoptPath = (evaluationResult as any).deopt as NodePath | undefined;
+              throw (deoptPath || argumentPath).buildCodeFrameError(
                 'Evaluation of a code fragment failed, this is a bug, please report it',
               );
             }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PopoverContext } from '../../popoverContext';
-import { PopoverState } from './Popover.types';
+import type { PopoverState } from './Popover.types';
 
 /**
  * Render the final JSX of Popover
@@ -11,15 +11,13 @@ export const renderPopover = (state: PopoverState) => {
     setOpen,
     triggerRef,
     contentRef,
-    target,
     openOnContext,
     openOnHover,
     mountNode,
     arrowRef,
     size,
     noArrow,
-    brand,
-    inverted,
+    appearance,
     trapFocus,
   } = state;
 
@@ -30,15 +28,13 @@ export const renderPopover = (state: PopoverState) => {
         setOpen,
         triggerRef,
         contentRef,
-        target,
         openOnHover,
         openOnContext,
         mountNode,
         arrowRef,
         size,
         noArrow,
-        brand,
-        inverted,
+        appearance,
         trapFocus,
       }}
     >

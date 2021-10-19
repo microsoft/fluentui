@@ -68,6 +68,7 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea as TextArea_2 } from '@microsoft/fast-foundation';
 import { TextField as TextField_2 } from '@microsoft/fast-foundation';
+import { Toolbar as Toolbar_2 } from '@microsoft/fast-foundation';
 import { Tooltip as Tooltip_2 } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
 import { TreeItemOptions } from '@microsoft/fast-foundation';
@@ -200,15 +201,16 @@ export const allComponents: {
     fluentTabPanel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TabPanel>;
     fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextArea>;
     fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextField>;
+    fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Toolbar>;
     fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tooltip>;
     fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TreeView>;
     fluentTreeItem: (overrideDefinition?: OverrideFoundationElementDefinition<TreeItemOptions> | undefined) => FoundationElementRegistry<TreeItemOptions, Constructable<FoundationElement>>;
-    register(container?: Container | undefined): void;
+    register(container?: Container | undefined, ...rest: any[]): void;
 };
 
 // Warning: (ae-internal-missing-underscore) The name "ambientShadow" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
+// @internal @deprecated
 export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(0, 0, 0, calc(.11 * (2 - var(--background-luminance, 1))))";
 
 // Warning: (ae-internal-missing-underscore) The name "Anchor" should be prefixed with an underscore because the declaration is marked as @internal
@@ -262,9 +264,6 @@ export const baseHorizontalSpacingMultiplier: CSSDesignToken<number>;
 
 // @public (undocumented)
 export const baseLayerLuminance: CSSDesignToken<number>;
-
-export { BaseProgress as Progress }
-export { BaseProgress as ProgressRing }
 
 // @public (undocumented)
 export const bodyFont: CSSDesignToken<string>;
@@ -440,7 +439,7 @@ export const direction: CSSDesignToken<Direction>;
 
 // Warning: (ae-internal-missing-underscore) The name "directionalShadow" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal (undocumented)
+// @internal @deprecated (undocumented)
 export const directionalShadow = "0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px)) rgba(0, 0, 0, calc(.13 * (2 - var(--background-luminance, 1))))";
 
 // @public
@@ -463,7 +462,7 @@ export const dividerStyles: (context: ElementDefinitionContext, definition: Foun
 // @public @deprecated (undocumented)
 export const elevatedCornerRadius: CSSDesignToken<number>;
 
-// @public
+// @public @deprecated
 export const elevation: string;
 
 // @public (undocumented)
@@ -611,6 +610,11 @@ export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefi
 // @public
 export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextField>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
+//
+// @public
+export const fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Toolbar>;
+
 // Warning: (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
 //
 // @public
@@ -643,22 +647,22 @@ export const focusStrokeWidth: CSSDesignToken<number>;
 // @public (undocumented)
 export const foregroundOnAccentActive: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentActiveLarge: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const foregroundOnAccentFocus: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentFocusLarge: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const foregroundOnAccentHover: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentHoverLarge: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentLargeRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
@@ -667,7 +671,7 @@ export const foregroundOnAccentRecipe: DesignToken<ColorRecipe>;
 // @public (undocumented)
 export const foregroundOnAccentRest: CSSDesignToken<Swatch>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const foregroundOnAccentRestLarge: CSSDesignToken<Swatch>;
 
 // @public
@@ -809,28 +813,28 @@ export const neutralFillInputRest: CSSDesignToken<Swatch>;
 // @public (undocumented)
 export const neutralFillInputRestDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseActive: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseActiveDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseFocus: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseFocusDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseHover: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralFillInverseHoverDelta: CSSDesignToken<number>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseRecipe: DesignToken<InteractiveColorRecipe>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const neutralFillInverseRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
@@ -1049,6 +1053,30 @@ export const neutralStrokeRest: CSSDesignToken<Swatch>;
 // @public (undocumented)
 export const neutralStrokeRestDelta: CSSDesignToken<number>;
 
+// @public (undocumented)
+export const neutralStrokeStrongActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongActiveDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongFocusDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongHoverDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const neutralStrokeStrongRest: CSSDesignToken<Swatch>;
+
 // Warning: (ae-internal-missing-underscore) The name "NumberField" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -1095,6 +1123,14 @@ export type PaletteRGB = Palette<SwatchRGB>;
 export const PaletteRGB: Readonly<{
     create(source: SwatchRGB): PaletteRGB;
 }>;
+
+// @public
+export class Progress extends BaseProgress {
+}
+
+// @public
+export class ProgressRing extends BaseProgress {
+}
 
 // @public
 export const progressRingStyles: (context: ElementDefinitionContext, definition: ProgressRingOptions) => ElementStyles;
@@ -1201,7 +1237,7 @@ export const SwatchRGB: Readonly<{
 export { Switch }
 
 // @public
-export const switchStyles: (context: ElementDefinitionContext, defintiion: SwitchOptions) => ElementStyles;
+export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles;
 
 export { Tab }
 
@@ -1253,6 +1289,12 @@ export type TextFieldAppearance = 'filled' | 'outline';
 
 // @public
 export const textFieldStyles: (context: any, definition: any) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "Toolbar" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Toolbar extends Toolbar_2 {
+}
 
 // Warning: (ae-internal-missing-underscore) The name "Tooltip" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1328,12 +1370,13 @@ export const typeRampPlus6LineHeight: CSSDesignToken<string>;
 
 // Warnings were encountered during analysis:
 //
-// dist/dts/custom-elements.d.ts:48:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
-// dist/dts/custom-elements.d.ts:50:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
-// dist/dts/custom-elements.d.ts:53:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
-// dist/dts/custom-elements.d.ts:90:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
-// dist/dts/custom-elements.d.ts:91:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
-// dist/dts/custom-elements.d.ts:92:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+// dist/dts/custom-elements.d.ts:49:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
+// dist/dts/custom-elements.d.ts:51:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
+// dist/dts/custom-elements.d.ts:54:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
+// dist/dts/custom-elements.d.ts:91:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
+// dist/dts/custom-elements.d.ts:92:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
+// dist/dts/custom-elements.d.ts:93:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
+// dist/dts/custom-elements.d.ts:94:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 
