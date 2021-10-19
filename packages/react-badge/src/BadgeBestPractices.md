@@ -1,8 +1,8 @@
 ## Best Practices
 
-### Badges don't receive focus
+### Badges should not receive focus
 
-- Badge information would be surfaced as part of the control that it is associated with, badges themselves do not receive focus meaning they are not directly accessible by screenreaders.
+- Badge information should be surfaced as part of the control that it is associated with, because, badges themselves do not receive focus meaning they are not directly accessible by screen readers.
   If the combination of icon and badge communicates some meaningful information, that information should be surfaced in another way through screenreader or tooltip on the component the badge is associated with.
 
 ### Screen Readers

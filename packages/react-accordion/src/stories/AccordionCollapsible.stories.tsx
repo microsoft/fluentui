@@ -34,7 +34,7 @@ Collapsible.args = {
 Collapsible.parameters = {
   docs: {
     description: {
-      story: 'A Accordion can support multiple Panels closed at the same time.',
+      story: 'An Accordion can have multiple Panels collapsed at the same time.',
     },
   },
 };
