@@ -1,95 +1,128 @@
 /**
- * Recursive partial type.
+ * Design tokens for alias colors
  */
-type RecursivePartial<T> = {
-  [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
+export type ColorTokens = {
+  // https://www.figma.com/file/KB9oUjMKen2cKnyPG7RgdS/Design-tokens-superset?node-id=1963%3A17486
+  colorNeutralForeground1: string;
+  colorNeutralForeground2: string;
+  colorNeutralForeground2Hover: string;
+  colorNeutralForeground2Pressed: string;
+  colorNeutralForeground2Selected: string;
+  colorNeutralForeground2BrandHover: string;
+  colorNeutralForeground2BrandPressed: string;
+  colorNeutralForeground2BrandSelected: string;
+  colorNeutralForeground3: string;
+  colorNeutralForeground3Hover: string;
+  colorNeutralForeground3Pressed: string;
+  colorNeutralForeground3Selected: string;
+  colorNeutralForeground3BrandHover: string;
+  colorNeutralForeground3BrandPressed: string;
+  colorNeutralForeground3BrandSelected: string;
+  colorNeutralForeground4: string;
+  colorNeutralForegroundDisabled: string;
+  colorBrandForegroundLink: string;
+  colorBrandForegroundLinkHover: string;
+  colorBrandForegroundLinkPressed: string;
+  colorBrandForegroundLinkSelected: string;
+  colorCompoundBrandForeground1: string;
+  colorCompoundBrandForeground1Hover: string;
+  colorCompoundBrandForeground1Pressed: string;
+  colorBrandForeground1: string;
+  colorBrandForeground2: string;
+  colorNeutralForegroundInverted: string;
+  colorNeutralForegroundOnBrand: string;
+  colorNeutralForegroundInvertedLink: string;
+  colorNeutralForegroundInvertedLinkHover: string;
+  colorNeutralForegroundInvertedLinkPressed: string;
+  colorNeutralForegroundInvertedLinkSelected: string;
+  colorNeutralBackground1: string;
+  colorNeutralBackground1Hover: string;
+  colorNeutralBackground1Pressed: string;
+  colorNeutralBackground1Selected: string;
+  colorNeutralBackground2: string;
+  colorNeutralBackground2Hover: string;
+  colorNeutralBackground2Pressed: string;
+  colorNeutralBackground2Selected: string;
+  colorNeutralBackground3: string;
+  colorNeutralBackground3Hover: string;
+  colorNeutralBackground3Pressed: string;
+  colorNeutralBackground3Selected: string;
+  colorNeutralBackground4: string;
+  colorNeutralBackground4Hover: string;
+  colorNeutralBackground4Pressed: string;
+  colorNeutralBackground4Selected: string;
+  colorNeutralBackground5: string;
+  colorNeutralBackground5Hover: string;
+  colorNeutralBackground5Pressed: string;
+  colorNeutralBackground5Selected: string;
+  colorNeutralBackground6: string;
+  colorNeutralBackgroundInverted: string;
+  colorSubtleBackground: string;
+  colorSubtleBackgroundHover: string;
+  colorSubtleBackgroundPressed: string;
+  colorSubtleBackgroundSelected: string;
+  colorTransparentBackground: string;
+  colorTransparentBackgroundHover: string;
+  colorTransparentBackgroundPressed: string;
+  colorTransparentBackgroundSelected: string;
+  colorNeutralBackgroundDisabled: string;
+  colorNeutralStencil1: string;
+  colorNeutralStencil2: string;
+  colorBrandBackground: string;
+  colorBrandBackgroundHover: string;
+  colorBrandBackgroundPressed: string;
+  colorBrandBackgroundSelected: string;
+  colorCompoundBrandBackground: string;
+  colorCompoundBrandBackgroundHover: string;
+  colorCompoundBrandBackgroundPressed: string;
+  colorBrandBackgroundStatic: string;
+  colorBrandBackground2: string;
+  colorNeutralStrokeAccessible: string;
+  colorNeutralStrokeAccessibleHover: string;
+  colorNeutralStrokeAccessiblePressed: string;
+  colorNeutralStrokeAccessibleSelected: string;
+  colorNeutralStroke1: string;
+  colorNeutralStroke1Hover: string;
+  colorNeutralStroke1Pressed: string;
+  colorNeutralStroke1Selected: string;
+  colorNeutralStroke2: string;
+  colorNeutralStroke3: string;
+  colorBrandStroke1: string;
+  colorBrandStroke2: string;
+  colorCompoundBrandStroke: string;
+  colorCompoundBrandStrokeHover: string;
+  colorCompoundBrandStrokePressed: string;
+  colorNeutralStrokeDisabled: string;
+  colorTransparentStroke: string;
+  colorTransparentStrokeInteractive: string;
+  colorTransparentStrokeDisabled: string;
+  colorStrokeFocus1: string;
+  colorStrokeFocus2: string;
+  colorNeutralShadowAmbient: string;
+  colorNeutralShadowKey: string;
+  colorNeutralShadowAmbientLighter: string;
+  colorNeutralShadowKeyLighter: string;
+  colorNeutralShadowAmbientDarker: string;
+  colorNeutralShadowKeyDarker: string;
+  colorBrandShadowAmbient: string;
+  colorBrandShadowKey: string;
 };
 
-/**
- * Design tokens for neutral colors
- */
-export type NeutralColorTokens = {
-  // https://www.figma.com/file/KB9oUjMKen2cKnyPG7RgdS/Design-tokens-superset?node-id=1963%3A17486
-  neutralForeground1: string;
-  neutralForeground2: string;
-  neutralForeground2Hover: string;
-  neutralForeground2Pressed: string;
-  neutralForeground2Selected: string;
-  brandForeground2Hover: string;
-  brandForeground2Pressed: string;
-  brandForeground2Selected: string;
-  neutralForeground3: string;
-  neutralForeground3Hover: string;
-  neutralForeground3Pressed: string;
-  neutralForeground3Selected: string;
-  brandForeground3Hover: string;
-  brandForeground3Pressed: string;
-  brandForeground3Selected: string;
-  neutralForeground4: string;
-  neutralForegroundDisabled: string;
-  brandForeground: string;
-  brandForegroundHover: string;
-  brandForegroundPressed: string;
-  brandForegroundSelected: string;
-  neutralForegroundInverted: string;
-  neutralForegroundInvertedAccessible: string;
-  neutralBackground1: string;
-  neutralBackground1Hover: string;
-  neutralBackground1Pressed: string;
-  neutralBackground1Selected: string;
-  neutralBackground2: string;
-  neutralBackground2Hover: string;
-  neutralBackground2Pressed: string;
-  neutralBackground2Selected: string;
-  neutralBackground3: string;
-  neutralBackground3Hover: string;
-  neutralBackground3Pressed: string;
-  neutralBackground3Selected: string;
-  neutralBackground4: string;
-  neutralBackground4Hover: string;
-  neutralBackground4Pressed: string;
-  neutralBackground4Selected: string;
-  neutralBackground5: string;
-  neutralBackground5Hover: string;
-  neutralBackground5Pressed: string;
-  neutralBackground5Selected: string;
-  neutralBackground6: string;
-  neutralBackgroundDisabled: string;
-  neutralStrokeAccessible: string;
-  neutralStrokeAccessibleHover: string;
-  neutralStrokeAccessiblePressed: string;
-  neutralStrokeAccessibleSelected: string;
-  neutralStroke1: string;
-  neutralStroke1Hover: string;
-  neutralStroke1Pressed: string;
-  neutralStroke1Selected: string;
-  neutralStroke2: string;
-  neutralStroke3: string;
-  neutralStrokeDisabled: string;
-  strokeAccessible: string;
-  strokeAccessibleInteractive: string;
-  strokeAccessibleDisabled: string;
-  neutralShadowAmbient: string;
-  neutralShadowKey: string;
-  neutralShadowAmbientLighter: string;
-  neutralShadowKeyLighter: string;
-  neutralShadowAmbientDarker: string;
-  neutralShadowKeyDarker: string;
-};
+// TODO: better name for this
+export type ColorPaletteT<Color extends string> =
+  | `colorPalette${Color}Background1`
+  | `colorPalette${Color}Background2`
+  | `colorPalette${Color}Background3`
+  | `colorPalette${Color}Foreground1`
+  | `colorPalette${Color}Foreground2`
+  | `colorPalette${Color}Foreground3`
+  | `colorPalette${Color}BorderActive`
+  | `colorPalette${Color}Border2`;
 
 /**
  * Design tokens available for shared colors
  */
-export type SharedColorTokens = {
-  background1: string;
-  background2: string;
-  background3: string;
-  foreground1: string;
-  foreground2: string;
-  foreground3: string;
-  borderActive: string;
-  border2: string;
-};
+export type ColorPaletteTokens = Record<ColorPaletteT<GlobalSharedColorsT>, string>;
 
 /**
  * Possible color variant values
@@ -166,43 +199,96 @@ export type GlobalSharedColors = {
   charcoal: ColorVariants;
 };
 
-/**
- * Brand color variants by product
- */
-export type ProductBrandColors = {
-  teams: BrandVariants;
-  web: BrandVariants;
+// TODO: Better name
+export type GlobalSharedColorsT =
+  | 'DarkRed'
+  | 'Burgundy'
+  | 'Cranberry'
+  | 'Red'
+  | 'DarkOrange'
+  | 'Bronze'
+  | 'Pumpkin'
+  | 'Orange'
+  | 'Peach'
+  | 'Marigold'
+  | 'Yellow'
+  | 'Gold'
+  | 'Brass'
+  | 'Brown'
+  | 'DarkBrown'
+  | 'Lime'
+  | 'Forest'
+  | 'Seafoam'
+  | 'LightGreen'
+  | 'Green'
+  | 'DarkGreen'
+  | 'LightTeal'
+  | 'Teal'
+  | 'DarkTeal'
+  | 'Cyan'
+  | 'Steel'
+  | 'LightBlue'
+  | 'Blue'
+  | 'RoyalBlue'
+  | 'DarkBlue'
+  | 'Cornflower'
+  | 'Navy'
+  | 'Lavender'
+  | 'Purple'
+  | 'DarkPurple'
+  | 'Orchid'
+  | 'Grape'
+  | 'Berry'
+  | 'Lilac'
+  | 'Pink'
+  | 'HotPink'
+  | 'Magenta'
+  | 'Plum'
+  | 'Beige'
+  | 'Mink'
+  | 'Silver'
+  | 'Platinum'
+  | 'Anchor'
+  | 'Charcoal';
+
+export type FontSizeTokens = {
+  fontSizeBase100: string;
+  fontSizeBase200: string;
+  fontSizeBase300: string;
+  fontSizeBase400: string;
+  fontSizeBase500: string;
+  fontSizeBase600: string;
+
+  fontSizeHero700: string;
+  fontSizeHero800: string;
+  fontSizeHero900: string;
+  fontSizeHero1000: string;
 };
 
-export type FontSizes = {
-  base: {
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-  };
-  hero: {
-    700: string;
-    800: string;
-    900: string;
-    1000: string;
-  };
+export type LineHeightTokens = {
+  lineHeightBase100: string;
+  lineHeightBase200: string;
+  lineHeightBase300: string;
+  lineHeightBase400: string;
+  lineHeightBase500: string;
+  lineHeightBase600: string;
+
+  lineHeightHero700: string;
+  lineHeightHero800: string;
+  lineHeightHero900: string;
+  lineHeightHero1000: string;
 };
 
-export type LineHeights = FontSizes;
-
-export type FontWeights = {
-  regular: number;
-  medium: number;
-  semibold: number;
+export type FontWeightTokens = {
+  fontWeightRegular: number;
+  fontWeightMedium: number;
+  fontWeightSemibold: number;
 };
 
-export type FontFamilies = {
-  base: string;
-  monospace: string;
-  numeric: string;
+export type FontFamilyTokens = {
+  fontFamilyBase: string;
+  fontFamilyMonospace: string;
+  fontFamilyNumeric: string;
 };
 
 export type TextAlignment =
@@ -225,26 +311,26 @@ export type TextAlignments = {
   justify: TextAlignment;
 };
 
-export type BorderRadius = {
-  none: string;
-  small: string;
-  medium: string;
-  large: string;
-  xLarge: string;
-  circular: string;
+export type BorderRadiusTokens = {
+  borderRadiusNone: string;
+  borderRadiusSmall: string;
+  borderRadiusMedium: string;
+  borderRadiusLarge: string;
+  borderRadiusXLarge: string;
+  borderRadiusCircular: string;
 };
 
-export type StrokeWidths = {
-  thin: string;
-  thick: string;
-  thicker: string;
-  thickest: string;
+export type StrokeWidthTokens = {
+  strokeWidthThin: string;
+  strokeWidthThick: string;
+  strokeWidthThicker: string;
+  strokeWidthThickest: string;
 };
 
 /**
  * Design tokens for shadow levels
  */
-export type ShadowLevelTokens = {
+export type ShadowTokens = {
   shadow2: string;
   shadow4: string;
   shadow8: string;
@@ -336,44 +422,18 @@ export type Greys =
   | 98
   | 100;
 
+export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+
 // TODO: do we want to split theme for better tree shaking? (MUI)
 // But will this end up in the bundle at all? It should be used only in makeStyles and should be removed during build
-export type Theme = {
-  global: {
-    // TODO: this means "static", will not change with light/dark/contrast switch. better named static?
-    // TODO: Shift: we should move global away from theme, this is not themable
-    //   ThemeProvider should not inject these css variables?
-    color: {
-      black: string;
-      white: string;
-      hyperlink: string;
-      disabled: string;
-      selected: string;
-    };
-    palette: GlobalSharedColors & {
-      brand: BrandVariants; // Only the Theme brand, not all
-      grey: Record<Greys, string>;
-    };
-    type: {
-      fontSizes: FontSizes;
-      fontWeights: FontWeights;
-      fontFamilies: FontFamilies;
-      lineHeights: LineHeights;
-      alignment: TextAlignments;
-    };
-    borderRadius: BorderRadius;
-    strokeWidth: StrokeWidths;
-  };
-  alias: {
-    color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
-      neutral: NeutralColorTokens;
-      subtle: BackgroundColorTokens;
-      transparent: BackgroundColorTokens;
-      brand: BrandColorTokens;
-    };
-    shadow: ShadowLevelTokens;
-  };
-};
+export type Theme = FontSizeTokens &
+  LineHeightTokens &
+  BorderRadiusTokens &
+  StrokeWidthTokens &
+  ShadowTokens &
+  FontFamilyTokens &
+  FontWeightTokens &
+  ColorPaletteTokens &
+  ColorTokens;
 
-// TODO: fix shape
-export type PartialTheme = RecursivePartial<Theme>;
+export type PartialTheme = Partial<Theme>;

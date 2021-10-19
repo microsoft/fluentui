@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRefObject, Point } from '@fluentui/utilities';
+import type { IRefObject, Point } from '@fluentui/utilities';
 
 /**
  * FocusZone component class interface.
@@ -200,6 +200,20 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
    * @defaultvalue true
    */
   shouldRaiseClicks?: boolean;
+
+  /**
+   * Relates to `shouldRaiseClicks`.
+   * Allows the click event raising for the "Enter" key to be set independently from `shouldRaiseClicks`.
+   * Inherits the value of `shouldRaiseClicks` if not set explicitly.
+   */
+  shouldRaiseClicksOnEnter?: boolean;
+
+  /**
+   * Relates to `shouldRaiseClicks`.
+   * Allows the click event raising for the "Space" key to be set independently from `shouldRaiseClicks`.
+   * Inherits the value of `shouldRaiseClicks` if not set explicitly.
+   */
+  shouldRaiseClicksOnSpace?: boolean;
 
   /**
    * A callback method to determine if the input element should lose focus on arrow keys

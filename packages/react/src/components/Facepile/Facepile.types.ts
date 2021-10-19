@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { FacepileBase } from './Facepile.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../../Button';
-import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
-import { IKeytipProps } from '../../Keytip';
+import { PersonaInitialsColor, PersonaSize } from '../../Persona';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IButtonProps } from '../../Button';
+import type { IPersonaSharedProps } from '../../Persona';
+import type { IKeytipProps } from '../../Keytip';
 
 /**
  * {@docCategory Facepile}
@@ -20,6 +21,13 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IFacepile>;
+
+  /**
+   * Whether the default tooltip (the persona name) is shown using the `title` prop.
+   * Set this to false if you'd like to display a custom tooltip, for example using a custom renderer and TooltipHost
+   * @defaultvalue true
+   */
+  showTooltip?: boolean;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

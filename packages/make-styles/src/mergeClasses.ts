@@ -3,12 +3,11 @@ import {
   LOOKUP_DEFINITIONS_INDEX,
   LOOKUP_DIR_INDEX,
   SEQUENCE_HASH_LENGTH,
-  RULE_CLASSNAME_INDEX,
   SEQUENCE_PREFIX,
-  RULE_RTL_CLASSNAME_INDEX,
 } from './constants';
-import { MakeStylesReducedDefinitions } from './types';
 import { hashSequence } from './runtime/utils/hashSequence';
+import { reduceToClassName } from './runtime/reduceToClassNameForSlots';
+import { CSSClassesMap } from './types';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
 const mergeClassesCachedResults: Record<string, string> = {};
@@ -43,7 +42,7 @@ export function mergeClasses(): string {
   // Is used as a cache key to avoid object merging
   let sequenceMatch = '';
 
-  const sequenceMappings: MakeStylesReducedDefinitions[] = [];
+  const sequenceMappings: CSSClassesMap[] = [];
 
   for (let i = 0; i < arguments.length; i++) {
     // eslint-disable-next-line prefer-rest-params
@@ -85,7 +84,7 @@ export function mergeClasses(): string {
           if (process.env.NODE_ENV !== 'production') {
             // eslint-disable-next-line no-console
             console.error(
-              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry` +
+              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry ` +
                 `in cache. Source string: ${className}`,
             );
           }
@@ -120,33 +119,20 @@ export function mergeClasses(): string {
   }
 
   // eslint-disable-next-line prefer-spread
-  const resultDefinitions = Object.assign.apply<Object, MakeStylesReducedDefinitions[], MakeStylesReducedDefinitions>(
+  const resultDefinitions = Object.assign.apply<Object, CSSClassesMap[], CSSClassesMap>(
     Object,
     // .assign() mutates the first object, we can't mutate mappings as it will produce invalid results later
     [{}].concat(sequenceMappings),
   );
 
-  let atomicClassNames = '';
-
-  // eslint-disable-next-line guard-for-in
-  for (const property in resultDefinitions) {
-    const resultDefinition = resultDefinitions[property];
-    if (dir === 'rtl') {
-      const className = resultDefinition[RULE_RTL_CLASSNAME_INDEX] || resultDefinition[RULE_CLASSNAME_INDEX];
-      atomicClassNames += className + ' ';
-    } else {
-      atomicClassNames += resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
-    }
-  }
-
-  atomicClassNames = atomicClassNames.slice(0, -1);
+  let atomicClassNames = reduceToClassName(resultDefinitions, dir!);
 
   // Each merge of classes generates a new sequence of atomic classes that needs to be registered
   const newSequenceHash = hashSequence(atomicClassNames, dir!);
   atomicClassNames = newSequenceHash + ' ' + atomicClassNames;
 
   mergeClassesCachedResults[sequenceMatch] = atomicClassNames;
-  DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, dir ?? 'ltr'];
+  DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, dir!];
 
   return resultClassName + atomicClassNames;
 }

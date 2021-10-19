@@ -1,10 +1,9 @@
-import { IColor } from '../../utilities/color/interfaces';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { isValidShade, getShade, getBackgroundShade } from '../../utilities/color/shades';
 import { format } from '../../Utilities';
-
-import { IThemeSlotRule } from './IThemeSlotRule';
-import { IThemeRules } from './IThemeRules';
+import type { IColor } from '../../utilities/color/interfaces';
+import type { IThemeSlotRule } from './IThemeSlotRule';
+import type { IThemeRules } from './IThemeRules';
 
 export class ThemeGenerator {
   /**

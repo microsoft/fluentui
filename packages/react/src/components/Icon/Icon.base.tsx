@@ -1,10 +1,12 @@
 import * as React from 'react';
 
-import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
+import { IconType } from './Icon.types';
 import { Image } from '../Image/Image';
-import { ImageLoadState, IImageProps } from '../Image/Image.types';
+import { ImageLoadState } from '../Image/Image.types';
 import { getNativeProps, htmlElementProperties, classNamesFunction } from '../../Utilities';
 import { getIconContent } from './FontIcon';
+import type { IIconProps, IIconStyleProps, IIconStyles } from './Icon.types';
+import type { IImageProps } from '../Image/Image.types';
 
 export interface IIconState {
   imageLoadError: boolean;
@@ -32,7 +34,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
       // eslint-disable-next-line deprecation/deprecation
       !!this.props.imageProps || this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
     const iconContent = getIconContent(iconName) || {};
-    const { iconClassName, children: iconContentChildren } = iconContent;
+    const { iconClassName, children: iconContentChildren, mergeImageProps } = iconContent;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -55,7 +57,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 
     // eslint-disable-next-line deprecation/deprecation
     const ariaLabel = this.props['aria-label'] || this.props.ariaLabel;
-    const accessibleName = imageProps.alt || ariaLabel;
+    const accessibleName = imageProps.alt || ariaLabel || this.props.title;
     const hasName = !!(
       accessibleName ||
       this.props['aria-labelledby'] ||
@@ -64,16 +66,35 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     );
     const containerProps = hasName
       ? {
-          role: isImage ? undefined : 'img',
-          'aria-label': isImage ? undefined : accessibleName,
+          role: isImage || mergeImageProps ? undefined : 'img',
+          'aria-label': isImage || mergeImageProps ? undefined : accessibleName,
         }
       : {
           'aria-hidden': true,
         };
 
+    let finalIconContentChildren = iconContentChildren;
+
+    if (mergeImageProps && iconContentChildren && typeof iconContentChildren === 'object' && accessibleName) {
+      finalIconContentChildren = React.cloneElement(iconContentChildren, {
+        alt: accessibleName,
+      });
+    }
+
     return (
-      <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
-        {isImage ? <ImageType {...imageProps} /> : children || iconContentChildren}
+      <RootType
+        data-icon-name={iconName}
+        {...containerProps}
+        {...nativeProps}
+        {...(mergeImageProps
+          ? {
+              title: undefined,
+              'aria-label': undefined,
+            }
+          : {})}
+        className={classNames.root}
+      >
+        {isImage ? <ImageType {...imageProps} /> : children || finalIconContentChildren}
       </RootType>
     );
   }

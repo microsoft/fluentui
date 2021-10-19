@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
-import { IAutofill, IAutofillProps } from './Autofill.types';
+import type { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
   inputValue: string;
@@ -174,8 +174,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
     if (inel && inel.selectionStart !== this.value.length) {
       return {
-        start: inel.selectionStart || inel.value.length,
-        end: inel.selectionEnd || inel.value.length,
+        start: inel.selectionStart ?? inel.value.length,
+        end: inel.selectionEnd ?? inel.value.length,
         dir: (inel.selectionDirection as 'forward') || 'backward' || 'none',
       };
     }

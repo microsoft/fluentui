@@ -19,7 +19,7 @@ export const ScrollablePanePageProps: IDocPageProps = {
       isScrollable: false,
     },
     {
-      title: 'DetailsList Locked Header',
+      title: 'DetailsList Fixed Header without ScrollablePane',
       code: ScrollablePaneDetailsListExampleCode,
       view: <ScrollablePaneDetailsListExample />,
       isScrollable: false,

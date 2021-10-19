@@ -1,13 +1,22 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import DividerTemplate from './fixtures/divider.html';
-import { FluentDivider } from './';
-
-// Prevent tree-shaking
-FluentDivider;
-FluentDesignSystemProvider;
+import { fluentDivider } from './index';
 
 export default {
-  title: 'Divider',
+  title: 'Components/Divider',
+  component: fluentDivider,
 };
 
-export const Divider = (): string => DividerTemplate;
+const DividerTemplate = () => `<fluent-divider role="presentation"></fluent-divider>`;
+
+export const Divider = DividerTemplate.bind({});
+
+const example = `
+<fluent-divider></fluent-divider>
+`;
+
+Divider.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

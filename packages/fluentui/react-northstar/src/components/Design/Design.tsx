@@ -1,7 +1,7 @@
 import { ComponentDesignProp, useFluentContext } from '@fluentui/react-bindings';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import * as customPropTypes from '@fluentui/react-proptypes';
-
+import { ICSSInJSStyle } from '@fluentui/styles';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
@@ -31,7 +31,7 @@ export function Design<DesignProps>({ config, children }) {
     sanitizeCss: context.performance.enableSanitizeCssPlugin,
   };
 
-  const className = context.renderer.renderRule(getConfig, styleParam);
+  const className = context.renderer.renderRule(getConfig as ICSSInJSStyle, styleParam);
 
   return children({ className });
 }

@@ -1,21 +1,29 @@
 import * as React from 'react';
 
-/**
- * {@docCategory MenuTrigger }
- */
-export interface MenuTriggerProps {
+export type MenuTriggerProps = {
   /**
-   * Explicitly require single child
+   * Explicitly require single child or render function
    */
-  children: React.ReactElement;
-}
+  children: (React.ReactElement & { ref?: React.Ref<unknown> }) | ((props: MenuTriggerChildProps) => React.ReactNode);
+};
 
 /**
- * {@docCategory MenuTrigger }
+ * Props that are passed to the child of the MenuTrigger when cloned to ensure correct behaviour for the Menu
  */
-export interface MenuTriggerState extends MenuTriggerProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.MutableRefObject<HTMLElement>;
-}
+export type MenuTriggerChildProps = Required<
+  Pick<
+    React.HTMLAttributes<HTMLElement>,
+    | 'onClick'
+    | 'onMouseEnter'
+    | 'onMouseLeave'
+    | 'onContextMenu'
+    | 'onKeyDown'
+    | 'aria-haspopup'
+    | 'aria-expanded'
+    | 'id'
+  >
+> & {
+  ref?: React.Ref<never>;
+};
+
+export type MenuTriggerState = MenuTriggerProps;

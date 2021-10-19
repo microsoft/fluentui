@@ -1,11 +1,14 @@
 import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
-import { Module } from '@linaria/babel';
-import { MakeStyles, ResolvedStylesBySlots, resolveStyleRules } from '@fluentui/make-styles';
+import { Module } from '@linaria/babel-preset';
+import shakerEvaluator from '@linaria/shaker';
+import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
 
-import { UNHANDLED_CASE_ERROR } from './constants';
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
+import { UNHANDLED_CASE_ERROR } from './constants';
+import { BabelPluginOptions } from './types';
+import { validateOptions } from './validateOptions';
 
 type AstStyleNode =
   | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
@@ -15,6 +18,8 @@ type AstStyleNode =
       lazyPaths: NodePath<t.Expression | t.SpreadElement>[];
     }
   | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
+  | { kind: 'LAZY_EXPRESSION_CALL'; nodePath: NodePath<t.CallExpression> }
+  | { kind: 'LAZY_MEMBER'; nodePath: NodePath<t.MemberExpression> }
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
 
@@ -76,12 +81,25 @@ function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpressi
 /**
  * Checks that passed callee imports makesStyles().
  */
-function isMakeStylesCallee(path: NodePath<t.Expression | t.V8IntrinsicIdentifier>): path is NodePath<t.Identifier> {
+function isMakeStylesCallee(
+  path: NodePath<t.Expression | t.V8IntrinsicIdentifier>,
+  modules: NonNullable<BabelPluginOptions['modules']>,
+): path is NodePath<t.Identifier> {
   if (path.isIdentifier()) {
-    return path.referencesImport('@fluentui/react-make-styles', 'makeStyles');
+    return Boolean(modules.find(module => path.referencesImport(module.moduleSource, module.importName)));
   }
 
   return false;
+}
+
+/**
+ * Checks if import statement import makeStyles().
+ */
+function hasMakeStylesImport(
+  path: NodePath<t.ImportDeclaration>,
+  modules: NonNullable<BabelPluginOptions['modules']>,
+): boolean {
+  return Boolean(modules.find(module => path.node.source.value === module.moduleSource));
 }
 
 /**
@@ -132,7 +150,7 @@ function processDefinitions(
 
   const styleSlots = definitionsPath.get('properties');
 
-  styleSlots.forEach(styleSlotPath => {
+  styleSlots.forEach((styleSlotPath: NodePath<t.SpreadElement | t.ObjectMethod | t.ObjectProperty>) => {
     if (styleSlotPath.isObjectMethod()) {
       throw styleSlotPath.buildCodeFrameError('Object methods are not supported for defining styles');
     }
@@ -251,25 +269,24 @@ function processDefinitions(
        * @example
        *    // ✔ can be resolved in AST
        *    makeStyles({ root: (t) => ({ color: t.red }) })
+       *    makeStyles({ root: () => ({ padding: '12px' }) })
        *    // ❌ lazy evaluation
        *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
        *    // ❌ lazy evaluation, the worst case as function contains body
        *    makeStyles({ root: (t) => { return { color: SOME_VARIABLE } } })
        */
       if (stylesPath.isArrowFunctionExpression()) {
+        const paramError = 'A function in makeStyles() can only have a single param (for tokens/theme)';
         if (stylesPath.get('params').length > 1) {
-          throw stylesPath.buildCodeFrameError('A function in makeStyles() can only a single param');
+          throw stylesPath.buildCodeFrameError(paramError);
         }
 
-        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node>;
+        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node> | undefined;
 
-        if (!paramsPath.isIdentifier()) {
-          throw stylesPath.buildCodeFrameError(
-            'A function in makeStyles() can only a single param and it should be a valid identifier',
-          );
+        if (paramsPath && !paramsPath.isIdentifier()) {
+          throw stylesPath.buildCodeFrameError(`${paramError} and it should be a valid identifier`);
         }
 
-        const paramsName = paramsPath.node.name;
         const bodyPath = stylesPath.get('body');
 
         /**
@@ -278,6 +295,7 @@ function processDefinitions(
          * @example
          *    // ✔ can be resolved in AST
          *    makeStyles({ root: (t) => ({ color: t.red }) })
+         *    makeStyles({ root: () => ({ padding: '12px' }) })
          *    // ❌ lazy evaluation
          *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
          */
@@ -300,13 +318,16 @@ function processDefinitions(
               // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
+                const paramsName = paramsPath?.node.name;
 
-                if (identifierPath.isIdentifier({ name: paramsName })) {
+                if (paramsName && identifierPath.isIdentifier({ name: paramsName })) {
                   const cssVariable = namesToCssVariable(getTokenParts(valuePath));
 
                   valuePath.replaceWith(t.stringLiteral(cssVariable));
+                  return;
                 }
 
+                lazyPaths.push(valuePath);
                 return;
               }
 
@@ -376,14 +397,74 @@ function processDefinitions(
         });
         return;
       }
+
+      /**
+       * A scenario when slots styles are represented by a function call.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: display() })
+       *    makeStyles({ root: typography.display() })
+       */
+      if (stylesPath.isCallExpression()) {
+        state.styleNodes?.push({ kind: 'LAZY_EXPRESSION_CALL', nodePath: stylesPath });
+        return;
+      }
+
+      /**
+       * A scenario when slots styles are represented by an object.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: typography.display })
+       */
+      if (stylesPath.isMemberExpression()) {
+        state.styleNodes?.push({ kind: 'LAZY_MEMBER', nodePath: stylesPath });
+        return;
+      }
     }
 
     throw styleSlotPath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
   });
 }
 
-export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
+/**
+ * Rules that are returned by `resolveStyles()` are not deduplicated.
+ * It's critical to filter out duplicates for build-time transform to avoid duplicated rules in a bundle.
+ */
+function dedupeCSSRules(cssRules: CSSRulesByBucket): CSSRulesByBucket {
+  (Object.keys(cssRules) as StyleBucketName[]).forEach(styleBucketName => {
+    cssRules[styleBucketName] = cssRules[styleBucketName]!.filter(
+      (rule, index, rules) => rules.indexOf(rule) === index,
+    );
+  });
+
+  return cssRules;
+}
+
+export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPluginState>>((api, options) => {
   api.assertVersion(7);
+
+  const pluginOptions: Required<BabelPluginOptions> = {
+    babelOptions: {
+      presets: ['@babel/preset-typescript'],
+    },
+    modules: [
+      { moduleSource: '@fluentui/react-components', importName: 'makeStyles' },
+      { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
+    ],
+    evaluationRules: [
+      { action: shakerEvaluator },
+      {
+        test: /[/\\]node_modules[/\\]/,
+        action: 'ignore',
+      },
+    ],
+
+    ...options,
+  };
+
+  validateOptions(pluginOptions);
 
   return {
     name: '@fluentui/babel-make-styles',
@@ -407,7 +488,12 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
 
           const pathsToEvaluate = state.styleNodes!.reduce<NodePath<t.Expression | t.SpreadElement>[]>(
             (acc, styleNode) => {
-              if (styleNode.kind === 'LAZY_IDENTIFIER' || styleNode.kind === 'LAZY_FUNCTION') {
+              if (
+                styleNode.kind === 'LAZY_IDENTIFIER' ||
+                styleNode.kind === 'LAZY_FUNCTION' ||
+                styleNode.kind === 'LAZY_MEMBER' ||
+                styleNode.kind === 'LAZY_EXPRESSION_CALL'
+              ) {
                 return [...acc, styleNode.nodePath];
               }
 
@@ -433,57 +519,70 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
           );
 
           if (pathsToEvaluate.length > 0) {
-            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate);
+            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions);
           }
 
           state.styleNodes?.forEach(styleNode => {
-            const nodePath = styleNode.nodePath;
-
             if (styleNode.kind === 'SPREAD') {
+              const nodePath = styleNode.nodePath;
               const evaluationResult = (nodePath.get('argument') as NodePath<t.Expression>).evaluate();
 
               if (!evaluationResult.confident) {
-                throw nodePath.buildCodeFrameError(
+                // This is undocumented but shows the specific statement that failed
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const deoptPath = (evaluationResult as any).deopt as NodePath | undefined;
+                throw (deoptPath || nodePath).buildCodeFrameError(
                   'Evaluation of a code fragment failed, this is a bug, please report it',
                 );
               }
 
-              const stylesBySlots: Record<string, MakeStyles> = evaluationResult.value;
-              const resolvedStyles: ResolvedStylesBySlots<string> = {};
+              const stylesBySlots: Record<string /* slot*/, MakeStyles> = evaluationResult.value;
 
-              Object.keys(stylesBySlots).forEach(slotName => {
-                resolvedStyles[slotName] = resolveStyleRules(stylesBySlots[slotName]);
-              });
-
-              nodePath.replaceWithMultiple((astify(resolvedStyles) as t.ObjectExpression).properties);
-
-              return;
+              nodePath.replaceWithMultiple((astify(stylesBySlots) as t.ObjectExpression).properties);
             }
+          });
 
-            const evaluationResult = nodePath.evaluate();
+          state.calleePaths?.forEach(calleePath => {
+            const callExpressionPath = calleePath.findParent(parentPath =>
+              parentPath.isCallExpression(),
+            ) as NodePath<t.CallExpression>;
+            const argumentPath = callExpressionPath.get('arguments.0') as NodePath<t.ObjectExpression>;
+
+            const evaluationResult = argumentPath.evaluate();
 
             if (!evaluationResult.confident) {
-              throw nodePath.buildCodeFrameError(
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const deoptPath = (evaluationResult as any).deopt as NodePath | undefined;
+              throw (deoptPath || argumentPath).buildCodeFrameError(
                 'Evaluation of a code fragment failed, this is a bug, please report it',
               );
             }
 
-            const styles: MakeStyles = evaluationResult.value;
-            const resolvedStyles = resolveStyleRules(styles);
+            const stylesBySlots: Record<string /* slot */, MakeStyles> = evaluationResult.value;
+            const [classnamesMapping, cssRules] = resolveStyleRulesForSlots(stylesBySlots, 0);
 
-            nodePath.replaceWith(astify(resolvedStyles));
+            // TODO: find a better way to replace arguments
+            callExpressionPath.node.arguments = [astify(classnamesMapping), astify(dedupeCSSRules(cssRules))];
           });
 
           if (state.importDeclarationPath) {
             const specifiers = state.importDeclarationPath.get('specifiers');
+            const source = state.importDeclarationPath.get('source');
 
             specifiers.forEach(specifier => {
               if (specifier.isImportSpecifier()) {
                 // TODO: should use generated modifier to avoid collisions
 
-                const imported = specifier.get('imported');
+                const importedPath = specifier.get('imported');
+                const importIdentifierPath = pluginOptions.modules.find(module => {
+                  return (
+                    module.moduleSource === source.node.value &&
+                    // 👆 "moduleSource" should match "importDeclarationPath.source" to skip unrelated ".importName"
+                    importedPath.isIdentifier({ name: module.importName })
+                  );
+                });
 
-                if (imported.isIdentifier({ name: 'makeStyles' })) {
+                if (importIdentifierPath) {
                   specifier.replaceWith(t.identifier('__styles'));
                 }
               }
@@ -500,11 +599,9 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
 
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ImportDeclaration(path, state) {
-        if (path.node.source.value !== '@fluentui/react-make-styles') {
-          return;
+        if (hasMakeStylesImport(path, pluginOptions.modules)) {
+          state.importDeclarationPath = path;
         }
-
-        state.importDeclarationPath = path;
       },
 
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -523,7 +620,7 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
 
         const calleePath = path.get('callee');
 
-        if (!isMakeStylesCallee(calleePath)) {
+        if (!isMakeStylesCallee(calleePath, pluginOptions.modules)) {
           return;
         }
 

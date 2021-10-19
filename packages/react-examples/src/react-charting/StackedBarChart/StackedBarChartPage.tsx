@@ -14,6 +14,8 @@ import { StackedBarChartDynamicExample } from './StackedBarChart.Dynamic.Example
 import { MultiStackedBarChartExample } from './MultiStackedBarChart.Example';
 import { StackedBarChartBaseBarExample } from './StackedBarChart.BaseBar.Example';
 import { MultiStackedBarChartWithPlaceholderExample } from './MultiStackedBarChartWithPlaceHolder.Example';
+import { StackedBarChartCustomAccessibilityExample } from './StackedBarChart.CustomAccessibility.Example';
+import { MultiStackedBarChartCustomAccessibilityExample } from './MultiStackedBarChart.CustomAccessibility.Example';
 
 const StackedBarChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Basic.Example.tsx') as string;
 const StackedBarChartBenchmarkExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Benchmark.Example.tsx') as string;
@@ -22,6 +24,8 @@ const StackedBarChartDynamicExampleCode = require('!raw-loader?esModule=false!@f
 const MultiStackedBarChartExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/MultiStackedBarChart.Example.tsx') as string;
 const StackedBarChartBaseBarExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.BaseBar.Example.tsx') as string;
 const MultiStackedBarChartWithPlaceholderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/MultiStackedBarChartWithPlaceHolder.Example.tsx') as string;
+const StackedBarChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.CustomAccessibility.Example.tsx') as string;
+const MultiStackedBarChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/MultiStackedBarChart.CustomAccessibility.Example.tsx') as string;
 
 export class StackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -46,6 +50,12 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
             <ExampleCard title="StackedBarChart dynamic" code={StackedBarChartDynamicExampleCode}>
               <StackedBarChartDynamicExample />
             </ExampleCard>
+            <ExampleCard
+              title="StackedBarChart Custom Accessibility"
+              code={StackedBarChartCustomAccessibilityExampleCode}
+            >
+              <StackedBarChartCustomAccessibilityExample />
+            </ExampleCard>
             <ExampleCard title="Multiple StackedBarCharts" code={MultiStackedBarChartExampleCode}>
               <MultiStackedBarChartExample />
             </ExampleCard>
@@ -54,6 +64,12 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
               code={MultiStackedBarChartWithPlaceholderExampleCode}
             >
               <MultiStackedBarChartWithPlaceholderExample />
+            </ExampleCard>
+            <ExampleCard
+              title="MultiStackedBarChart Custom Accessibility"
+              code={MultiStackedBarChartCustomAccessibilityExampleCode}
+            >
+              <MultiStackedBarChartCustomAccessibilityExample />
             </ExampleCard>
           </div>
         }

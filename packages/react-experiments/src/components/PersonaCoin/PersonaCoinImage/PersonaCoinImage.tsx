@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Image, ImageFit } from '@fluentui/react';
 import { createComponent } from '@fluentui/foundation-legacy';
-import { IPersonaCoinImageProps } from './PersonaCoinImage.types';
-import { IPersonaCoinComponent } from '../PersonaCoin.types';
 import { DEFAULT_PERSONA_COIN_SIZE } from '../PersonaCoin.styles';
+import type { IPersonaCoinImageProps } from './PersonaCoinImage.types';
+import type { IPersonaCoinComponent } from '../PersonaCoin.types';
 
 const personaCoinImageStyles: IPersonaCoinComponent['styles'] = {
   root: {

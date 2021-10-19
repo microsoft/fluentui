@@ -1,32 +1,21 @@
 import * as React from 'react';
-import { PopperOptions } from '@fluentui/react-positioning';
-import { PortalProps } from '@fluentui/react-portal';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { PopperVirtualElement, PositioningShorthand, usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { PortalProps } from '@fluentui/react-portal';
 
 /**
  * Determines popover padding and arrow size
  */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
-/**
- * Popover Props
- */
-export interface PopoverProps
-  extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>,
-    Pick<PortalProps, 'mountNode'> {
-  children: React.ReactNode;
+export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
   /**
    * Controls the opening of the Popover
    */
-  open?: boolean;
+  open: boolean;
   /**
    * Used to set the initial open state of the Popover in uncontrolled mode
    */
   defaultOpen?: boolean;
-  /**
-   * Uses a custom target HTML element to anchor the Popover
-   */
-  target?: HTMLElement | null;
   /**
    * Call back when the component requests to change value
    * The `open` value is used as a hint when directly controlling the component
@@ -49,60 +38,72 @@ export interface PopoverProps
    * @default medium
    */
   size?: PopoverSize;
+
   /**
-   * Uses brand colour as background
-   * Mutually exclusive with `inverted`
+   * A popover can appear styled with brand or inverted.
+   * When not specified, the default style is used.
    */
-  brand?: boolean;
+  appearance?: 'brand' | 'inverted';
+
   /**
-   * Inverts the foreground/background colour of the popover
-   * Mutually exclusive with `brand`
+   * Should trap focus
    */
-  inverted?: boolean;
-}
+  trapFocus?: boolean;
+
+  /**
+   * Configures the position of the Popover
+   */
+  positioning?: PositioningShorthand;
+};
 
 /**
- * Names of the shorthand properties in PopoverProps
+ * Popover Props
  */
-export type PopoverShorthandProps = never;
-
-/**
- * Names of PopoverProps that have a default value in usePopover
- */
-export type PopoverDefaultedProps = never;
+export type PopoverProps = Partial<PopoverCommons> & {
+  /**
+   * Can contain two children including {@link PopoverTrigger} and {@link PopoverPopover}.
+   * Alternatively can only contain {@link PopoverPopover} if using a custom `target`.
+   */
+  children: [JSX.Element, JSX.Element] | JSX.Element;
+};
 
 /**
  * Popover State
  */
-export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
-  /**
-   * Open state of the Popover
-   */
-  open: boolean;
-  /**
-   * Callback to open/close the Popover
-   */
-  setOpen: (e: OpenPopoverEvents, open: boolean) => void;
-  /**
-   * Ref of the PopoverTrigger
-   */
-  triggerRef: React.MutableRefObject<HTMLElement | null>;
-  /**
-   * Ref of the PopoverContent
-   */
-  contentRef: React.MutableRefObject<HTMLElement | null>;
-  /**
-   * Ref of the pointing arrow
-   */
-  arrowRef: React.MutableRefObject<HTMLDivElement | null>;
+export type PopoverState = PopoverCommons &
+  Pick<PopoverProps, 'children'> & {
+    /**
+     * Callback to open/close the Popover
+     */
+    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    /**
+     * Ref of the PopoverTrigger
+     */
+    triggerRef: React.MutableRefObject<HTMLElement | null>;
+    /**
+     * Ref of the PopoverSurface
+     */
+    contentRef: React.MutableRefObject<HTMLElement | null>;
+    /**
+     * Ref of the pointing arrow
+     */
+    arrowRef: React.MutableRefObject<HTMLDivElement | null>;
+    /**
+     * Anchors the popper to the mouse click for context events
+     */
+    contextTarget: PopperVirtualElement | undefined;
+    /**
+     * A callback to set the target of the popper to the mouse click for context events
+     */
+    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
 
-  size: NonNullable<PopoverProps['size']>;
-}
+    size: NonNullable<PopoverProps['size']>;
+  };
 
 /**
  * Data attached to open/close events
  */
-export interface OnOpenChangeData extends Pick<PopoverState, 'open'> {}
+export type OnOpenChangeData = Pick<PopoverState, 'open'>;
 
 /**
  * The supported events that will trigger open/close of the menu

@@ -65,12 +65,14 @@ export const colorScheme: ColorSchemeMapping = {
     background3: colors.black,
     background4: colors.black,
     background5: accessibleYellow,
+    background6: colors.black,
 
     border: colors.white,
     border1: colors.white,
     border2: colors.white,
     border3: colors.white,
     borderTransparent: colors.white,
+    borderTransparentActive: accessibleCyan,
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black, // opacity 25%
@@ -159,11 +161,13 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover: accessibleCyan,
     backgroundHover1: accessibleCyan,
     backgroundHover2: accessibleYellow,
+    backgroundHover3: colors.black,
 
     foregroundPressed: colors.black,
     foregroundPressed1: colors.black,
     backgroundPressed: accessibleCyan,
     backgroundPressed1: accessibleCyan,
+    backgroundPressed2: colors.black,
     borderPressed: accessibleCyan,
 
     foregroundActive: accessibleCyan,
@@ -212,6 +216,7 @@ export const colorScheme: ColorSchemeMapping = {
     background1: colors.white,
     background2: colors.black,
     border: colors.white,
+    border1: colors.white,
     shadow: undefined,
     foregroundHover: undefined,
     backgroundHover: undefined,
@@ -259,6 +264,7 @@ export const colorScheme: ColorSchemeMapping = {
     background3: accessibleYellow,
 
     border: colors.white,
+    border1: colors.white,
 
     foregroundHover: colors.black,
     backgroundHover: accessibleCyan,
@@ -274,9 +280,11 @@ export const colorScheme: ColorSchemeMapping = {
     foreground3: colors.black,
     foreground4: colors.white,
     background: colors.white,
+    background1: 'transparent',
     background2: colors.white,
     background3: colors.black,
     border: colors.white,
+    border1: colors.white,
   }),
   silver: createEmptyColorScheme({
     foreground: colors.white,

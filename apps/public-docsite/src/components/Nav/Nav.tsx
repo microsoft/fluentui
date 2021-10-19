@@ -1,6 +1,16 @@
 import * as React from 'react';
 import { CollapsibleSection } from '@fluentui/react-experiments';
-import { css, FocusZone, Icon, IIconProps, ISearchBoxStyles, Link, SearchBox, getFocusStyle } from '@fluentui/react';
+import {
+  css,
+  FocusZone,
+  Icon,
+  IIconProps,
+  ISearchBoxStyles,
+  Link,
+  SearchBox,
+  IContextualMenuProps,
+  DefaultPalette,
+} from '@fluentui/react';
 import { IButtonStyles, IconButton } from '@fluentui/react/lib/Button';
 import {
   isPageActive,
@@ -9,23 +19,32 @@ import {
   INavProps,
   NavSortType,
 } from '@fluentui/react-docsite-components/lib/index2';
-import { theme } from '@fluentui/react-docsite-components/lib/styles/theme';
 import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Nav.module.scss';
 import { isLocal } from '../../utilities/index';
 
 export interface INavState {
+  /** Search query as typed by the user. May contain special characters (don't use as a regex). */
   searchQuery: string;
   defaultSortState: keyof typeof NavSortType;
   sortState: keyof typeof NavSortType;
 }
 
-export interface INavLocalItems {
+interface INavLocalItems {
   defaultSortState?: NavSortType;
 }
 
+const searchBoxStyles: ISearchBoxStyles = {
+  iconContainer: {
+    marginRight: 8,
+  },
+};
+
+const menuIconProps: IIconProps = { iconName: '' };
+
 export class Nav extends React.Component<INavProps, INavState> {
   private _localItems: INavLocalItems;
+  private _menuProps: IContextualMenuProps;
 
   public constructor(props: INavProps) {
     super(props);
@@ -45,6 +64,23 @@ export class Nav extends React.Component<INavProps, INavState> {
       sortState: this._localItems.defaultSortState
         ? NavSortType[this._localItems.defaultSortState]
         : NavSortType.categories,
+    };
+
+    this._menuProps = {
+      items: [
+        {
+          key: 'categories',
+          text: 'Categories',
+          iconProps: { iconName: 'GroupedList', styles: { root: { fontSize: 16 } } },
+          onClick: this._setSortTypeCategories,
+        },
+        {
+          key: 'alphabetized',
+          text: 'Alphabetical',
+          iconProps: { iconName: 'Ascending', styles: { root: { fontSize: 16 } } },
+          onClick: this._setSortTypeAlphabetized,
+        },
+      ],
     };
   }
 
@@ -117,17 +153,16 @@ export class Nav extends React.Component<INavProps, INavState> {
   };
 
   private _renderLink = (page: INavPage, linkIndex: number): JSX.Element => {
-    const { searchQuery } = this.state;
+    const searchQuery = this.state.searchQuery.toLowerCase();
     const childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
-    const searchRegEx = new RegExp(searchQuery, 'i');
     const text = page.title;
     let linkText = <>{text}</>;
 
     // Highlight search query within link.
     if (searchQuery) {
-      const matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
+      const matchIndex = text.toLowerCase().indexOf(searchQuery);
       if (matchIndex >= 0) {
         const before = text.slice(0, matchIndex);
         const match = text.slice(matchIndex, matchIndex + searchQuery.length);
@@ -153,7 +188,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         )}
         key={linkIndex + page.url}
       >
-        {(!page.isUhfLink || isLocal) && searchRegEx.test(page.title) && (
+        {(!page.isUhfLink || isLocal) && page.title.toLowerCase().indexOf(searchQuery) !== -1 && (
           <Link
             href={page.url}
             onClick={this._onLinkClick}
@@ -226,28 +261,14 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _renderSearchBox = (pageTitle: string) => {
     const { searchQuery, defaultSortState } = this.state;
 
-    const searchBoxStyles: ISearchBoxStyles = {
-      iconContainer: {
-        marginRight: 8,
-      },
-    };
-
     const sortButtonStyles: IButtonStyles = {
-      root: {
-        ...getFocusStyle(theme, 1),
-      },
       rootExpanded: {
-        background: theme.palette.neutralLighter,
+        // the website always uses the default palette, so this is okay
+        background: DefaultPalette.neutralLighter,
       },
       icon: {
         position: 'absolute',
         margin: 0,
-      },
-    };
-
-    const menuIconProps: IIconProps = {
-      styles: {
-        root: { fontSize: 16 },
       },
     };
 
@@ -258,7 +279,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           placeholder={`Search ${pageTitle}`}
           value={searchQuery}
           onChange={this._onSearchQueryChanged}
-          onClick={this._onSearchBoxClick}
+          onClick={this.props.onSearchBoxClick}
           underlined={true}
           styles={searchBoxStyles}
           ariaLabel={`Search ${pageTitle}`}
@@ -275,32 +296,11 @@ export class Nav extends React.Component<INavProps, INavState> {
                 : undefined,
           }}
           styles={sortButtonStyles}
-          menuIconProps={{ iconName: '' }}
-          menuProps={{
-            items: [
-              {
-                key: 'categories',
-                text: 'Categories',
-                iconProps: { iconName: 'GroupedList', ...menuIconProps },
-                onClick: this._setSortTypeCategories,
-              },
-              {
-                key: 'alphabetized',
-                text: 'Alphabetical',
-                iconProps: { iconName: 'Ascending', ...menuIconProps },
-                onClick: this._setSortTypeAlphabetized,
-              },
-            ],
-          }}
+          menuIconProps={menuIconProps}
+          menuProps={this._menuProps}
         />
       </div>
     );
-  };
-
-  private _onSearchBoxClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (this.props.onSearchBoxClick) {
-      this.props.onSearchBoxClick(ev);
-    }
   };
 
   private _onSearchQueryChanged = (ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
@@ -320,27 +320,10 @@ export class Nav extends React.Component<INavProps, INavState> {
   };
 
   private _hasMatchChild = (page: INavPage): boolean => {
-    const { searchQuery } = this.state;
-    const searchRegEx = new RegExp(searchQuery, 'i');
-    let hasMatchChild: boolean = searchRegEx.test(page.title);
-
-    if (page.pages) {
-      page.pages.forEach((childPage: INavPage) => {
-        if (searchRegEx.test(childPage.title)) {
-          hasMatchChild = true;
-        }
-
-        if (childPage.pages) {
-          childPage.pages.forEach((grandchildPage: INavPage) => {
-            if (searchRegEx.test(grandchildPage.title)) {
-              hasMatchChild = true;
-            }
-          });
-        }
-      });
-    }
-
-    return hasMatchChild;
+    const searchQuery = this.state.searchQuery.toLowerCase();
+    const checkPage = (pg: INavPage) =>
+      pg.title.toLowerCase().indexOf(searchQuery) !== -1 || (!!pg.pages && pg.pages.some(checkPage));
+    return checkPage(page);
   };
 
   private _setSortTypeCategories = (): void => {
@@ -350,7 +333,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         sortState: NavSortType.categories,
       },
       () => {
-        localStorage.setItem('defaultSortState', NavSortType[NavSortType.categories]);
+        setItem('defaultSortState', NavSortType[NavSortType.categories]);
       },
     );
   };
@@ -362,7 +345,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         sortState: NavSortType.alphabetized,
       },
       () => {
-        localStorage.setItem('defaultSortState', NavSortType[NavSortType.alphabetized]);
+        setItem('defaultSortState', NavSortType[NavSortType.alphabetized]);
       },
     );
   };

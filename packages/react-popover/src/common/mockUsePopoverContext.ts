@@ -1,4 +1,5 @@
-import { PopoverContextValue, usePopoverContext } from '../popoverContext';
+import { usePopoverContext } from '../popoverContext';
+import type { PopoverContextValue } from '../popoverContext';
 
 /**
  * A test utility to mock the usePopoverContext hook that relies on context selector
@@ -7,13 +8,11 @@ import { PopoverContextValue, usePopoverContext } from '../popoverContext';
  */
 export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) => {
   const mockContext: PopoverContextValue = {
-    target: null,
+    open: false,
+    setOpen: () => null,
     triggerRef: { current: null },
     contentRef: { current: null },
     arrowRef: { current: null },
-    open: false,
-    setOpen: jest.fn(),
-    mountNode: null,
     openOnContext: false,
     openOnHover: false,
     size: 'medium',

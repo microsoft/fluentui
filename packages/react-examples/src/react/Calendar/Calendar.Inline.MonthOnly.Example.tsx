@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DateRangeType } from '@fluentui/react';
+import { Calendar, DateRangeType, defaultCalendarStrings } from '@fluentui/react';
 
 export const CalendarInlineMonthOnlyExample: React.FunctionComponent = () => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
@@ -28,6 +28,8 @@ export const CalendarInlineMonthOnlyExample: React.FunctionComponent = () => {
         isDayPickerVisible={false}
         onSelectDate={onSelectDate}
         value={selectedDate}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
       />
     </div>
   );

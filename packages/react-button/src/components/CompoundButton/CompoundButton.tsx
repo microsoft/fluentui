@@ -1,31 +1,20 @@
 import * as React from 'react';
-import { CompoundButtonProps, CompoundButtonStyleSelectors } from './CompoundButton.types';
 import { renderCompoundButton } from './renderCompoundButton';
 import { useCompoundButton } from './useCompoundButton';
 import { useCompoundButtonStyles } from './useCompoundButtonStyles';
+import type { CompoundButtonProps } from './CompoundButton.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Define a styled CompoundButton, using the `useCompoundButton` hook.
- * {@docCategory Button}
+ * CompoundButtons are buttons that can have secondary content that adds extra information to the user.
  */
-export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>((props, ref) => {
+export const CompoundButton: ForwardRefComponent<CompoundButtonProps> = React.forwardRef((props, ref) => {
   const state = useCompoundButton(props, ref);
 
-  const receivedChildren = !!state.children?.children;
-  const receivedIcon = !!state.icon?.children;
-
-  const styleSelectors: CompoundButtonStyleSelectors = {
-    disabled: state.disabled,
-    iconOnly: receivedIcon && !receivedChildren,
-    primary: state.primary,
-    size: state.size,
-    subtle: state.subtle,
-    transparent: state.transparent,
-  };
-
-  useCompoundButtonStyles(state, styleSelectors);
+  useCompoundButtonStyles(state);
 
   return renderCompoundButton(state);
-});
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<CompoundButtonProps>;
 
 CompoundButton.displayName = 'CompoundButton';

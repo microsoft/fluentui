@@ -5,7 +5,7 @@ import { DatePickerPageProps } from '@fluentui/react-examples/lib/react/DatePick
 
 export const DatePickerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/DatePicker.page.json')}
+    jsonDocs={require('../../../dist/api/react/DatePicker.page.json')}
     {...{ ...DatePickerPageProps, ...props }}
   />
 );

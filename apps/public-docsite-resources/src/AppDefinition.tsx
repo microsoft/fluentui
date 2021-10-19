@@ -10,7 +10,7 @@ const propertiesTableMargins = mergeStyles({
 });
 
 function loadReferences(): IAppLink[] {
-  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
+  const requireContext = require.context('../dist/api/references', false, /\w+\.page\.json$/);
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];

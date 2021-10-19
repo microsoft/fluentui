@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-storybook",
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0-beta.0",
   "private": true,
-  "description": "Storybook addons and utils for Fluent UI React",
+  "description": "Storybook addons and utils for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -18,21 +18,22 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
+    "start": "yarn storybook",
     "test": "jest",
-    "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-storybook/src && yarn docs",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.0",
+    "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.14"
+    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.1"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.0.0-alpha.40",
-    "@fluentui/react-theme": "^9.0.0-alpha.13",
+    "@fluentui/react-provider": "9.0.0-beta.2",
+    "@fluentui/react-theme": "9.0.0-beta.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -42,7 +43,7 @@
     "@storybook/addons": "^6.0.28"
   },
   "beachball": {
-    "tag": "alpha",
+    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

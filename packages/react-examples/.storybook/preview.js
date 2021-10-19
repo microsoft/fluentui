@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+import 'cypress-storybook/react';
 import { withPerformance } from 'storybook-addon-performance';
-import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
+import { withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
 /**
  * "PACKAGE_NAME" placeholder is being replaced by webpack loader - @link {./preview.loader}
@@ -11,9 +11,7 @@ import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/s
  */
 const packageNamePlaceholder = 'PACKAGE_NAME';
 
-addDecorator(withInfo);
 addDecorator(withPerformance);
-addDecorator(withKeytipLayer);
 addCustomDecorators();
 
 addParameters({
@@ -24,13 +22,7 @@ addParameters({
 
 configure(loadStories, module);
 
-export const parameters = {
-  options: {
-    storySort: {
-      order: ['Concepts/Introduction', 'Concepts/Developer', 'Concepts', 'Theme', 'Components'],
-    },
-  },
-};
+export const parameters = {};
 
 // ================================
 //          Helpers
@@ -50,63 +42,20 @@ function addCustomDecorators() {
    */
   const customDecorators = new Set();
 
-  if (
-    ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
-      packageNamePlaceholder,
-    )
-  ) {
+  if (['react-cards', 'react-tabs'].includes(packageNamePlaceholder)) {
     initializeIcons();
     customDecorators.add(withStrictMode);
   }
 
-  if (
-    [
-      'react-avatar',
-      'react-badge',
-      'react-button',
-      'react-divider',
-      'react-image',
-      'react-label',
-      'react-link',
-      'react-accordion',
-      'react-menu',
-      'react-text',
-      'react-components',
-      'react-portal',
-      'react-tooltip',
-    ].includes(packageNamePlaceholder)
-  ) {
-    customDecorators.add(withFluentProvider).add(withStrictMode);
-  }
+  customDecorators.add(withKeytipLayer);
 
   customDecorators.forEach(decorator => addDecorator(decorator));
 }
 
 /**
- *
- * @param {string} storyName
- */
-function getStoryOrder(storyName) {
-  const order = [
-    'Concepts/Introduction',
-    'Concepts/Developer/Quick Start',
-    'Concepts/Developer/Styling Components',
-    'Concepts',
-    'Theme',
-    'Components',
-  ];
-  for (let i = 0; i < order.length; i++) {
-    if (storyName.startsWith(order[i])) {
-      return i;
-    }
-  }
-  return order.length;
-}
-
-/**
  * @typedef {{
- *   default: { title: string, id: string };
- *   [subStoryName: string]: React.FunctionComponent | { title: string, id: string };
+ *   default: { title: string };
+ *   [subStoryName: string]: React.FunctionComponent | { title: string };
  * }} Story
  */
 
@@ -124,20 +73,12 @@ function loadStories() {
     require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/),
   ];
 
-  if (packageNamePlaceholder === 'react' || packageNamePlaceholder === 'react-components') {
+  if (packageNamePlaceholder === 'react') {
     // For suite package storybooks, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
     contexts.push(
       require.context('../src', true, /(REACT_DEPS|PACKAGE_NAME)\/\w+\/[\w.]+\.(Example|stories)\.(tsx|mdx)$/),
     );
-  }
-
-  // @TODO
-  // - this is a temporary solution until all converged packages use new storybook configuration
-  // - after new config is in place remove this whole IF
-  if (packageNamePlaceholder === 'react-components') {
-    // include package collocated stories within react-components
-    contexts.push(require.context('../../', true, /(REACT_DEPS)\/src\/[\w./]+\.(Example|stories)\.(tsx|mdx)$/));
   }
 
   for (const req of contexts) {
@@ -147,18 +88,8 @@ function loadStories() {
   }
 
   // convert stories Set to array
-  const sorted = [...stories.values()].sort((s1, s2) => {
-    const order1 = getStoryOrder(s1.default.title);
-    const order2 = getStoryOrder(s2.default.title);
-    if (order1 < order2) {
-      // the lowest order goes first
-      return -1;
-    }
-    if (order1 > order2) {
-      return 1;
-    }
-    return s1.default.title > s2.default.title ? 1 : -1;
-  });
+  const sorted = [...stories.values()].sort((s1, s2) => (s1.default.title > s2.default.title ? 1 : -1));
+
   return sorted;
 }
 
@@ -194,13 +125,12 @@ function generateStoriesFromExamples(key, stories, req) {
     return;
   }
 
-  const { componentName, componentId } = generateComponentName(segments);
+  const componentName = generateComponentName(segments);
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
         title: 'Components/' + componentName,
-        id: 'Components/' + componentId,
       },
     });
   }
@@ -233,7 +163,7 @@ function generateStoriesFromExamples(key, stories, req) {
   /**
    *
    * @param {string[]} segments
-   * @returns {{componentName:string; componentId:string}}
+   * @returns {string} component name
    */
   function generateComponentName(segments) {
     /**
@@ -241,41 +171,16 @@ function generateStoriesFromExamples(key, stories, req) {
      */
     const isReactExamplesStory = segments.length === 3;
 
-    /**
-     * For @fluentui/react, don't include the package name in the sidebar
-     * ./package-name/ComponentName/ComponentName.Something.Example.tsx
-     */
-    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
-    const isReactPackageStory = 'PACKAGE_NAME' === 'react';
-
     if (isReactExamplesStory) {
       // ./ComponentName/ComponentName.Something.Example.tsx
       //  ↓↓↓
       // [., ComponentName, ComponentName.Something.Example.tsx]
-      const componentName = segments[1];
-      const componentId = segments[1];
-
-      return { componentName, componentId };
+      return segments[1];
     }
 
-    if (isReactPackageStory) {
-      // ./package-name/ComponentName/ComponentName.Something.Example.tsx
-      //  ↓↓↓
-      // [., <package-name>, ComponentName, ComponentName.Something.Example.tsx]
-      const componentName = segments[1];
-      const componentId = segments[2];
-
-      return { componentName, componentId };
-    }
-
-    return {
-      componentName: `${segments[2]} (${segments[1]})`,
-      // Story URLs are generated based off the story name
-      // In the case of `react-components` a (package name) suffix is added to each story
-      // This results in a difference name and URL between individual storybooks and the react-components suite storybook
-      // https://storybook.js.org/docs/react/configure/sidebar-and-urls#permalinking-to-stories
-      // Use the id property in stories to ensure the same URL between individual and suite storybook
-      componentId: segments[2],
-    };
+    // .package-name/ComponentName/ComponentName.Something.Example.tsx
+    //  ↓↓↓
+    // [., package-name, ComponentName, ComponentName.Something.Example.tsx]
+    return segments[2];
   }
 }

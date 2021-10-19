@@ -4,7 +4,7 @@
 
 ### Source code
 
-[Button](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/Button.swift)
+[Button](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Button/Button.swift)
 
 ### Sample code
 

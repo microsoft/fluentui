@@ -4,62 +4,67 @@
 
 ```ts
 
-import { Alignment } from '@fluentui/react-positioning';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import { Position } from '@fluentui/react-positioning';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { ShorthandProps } from '@fluentui/react-utilities';
+
+// @public
+export type OnVisibleChangeData = {
+    visible: boolean;
+};
 
 // @public
 export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
+export const Tooltip: ForwardRefComponent<TooltipProps>;
 
 // @public
-export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
+export type TooltipCommons = {
+    appearance?: 'inverted';
+    content: React_2.ReactNode;
+    inverted?: boolean;
+    withArrow?: boolean;
+    positioning?: PositioningShorthand;
+    visible?: boolean;
+    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
+    triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
+    showDelay: number;
+    hideDelay: number;
+};
 
 // @public
-export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
-    align?: Alignment;
-    children: React_2.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React_2.ReactNode);
-    content: ShorthandProps<ComponentProps>;
-    hideDelay?: number;
-    noArrow?: boolean;
-    offset?: number;
-    onlyIfTruncated?: boolean;
-    position?: Position;
-    showDelay?: number;
-    subtle?: boolean;
-    targetRef?: React_2.RefObject<HTMLElement>;
-    triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
-}
+export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content'>> & Pick<TooltipCommons, 'content'>;
 
 // @public
-export type TooltipShorthandProps = 'content';
+export type TooltipSlots = {
+    root: Omit<IntrinsicShorthandProps<'div'>, 'children'> & {
+        children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
+            ref?: React_2.Ref<unknown>;
+        }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
+    };
+};
 
 // @public
-export const tooltipShorthandProps: TooltipShorthandProps[];
-
-// @public
-export interface TooltipState extends ComponentState<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
-    arrowClassName?: string;
+export type TooltipState = ComponentState<TooltipSlots> & TooltipCommons & {
+    shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
-    ref: React_2.Ref<HTMLElement>;
-    shouldRenderTooltip: boolean;
-    readonly visible: boolean;
-}
+    arrowClassName?: string;
+};
 
 // @public
-export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
+export type TooltipTriggerProps = {
+    ref?: React_2.Ref<never>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
+export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLDivElement>) => TooltipState;
 
 // @public
 export const useTooltipStyles: (state: TooltipState) => TooltipState;
-
 
 // (No @packageDocumentation comment for this package)
 

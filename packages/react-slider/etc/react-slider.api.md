@@ -4,392 +4,120 @@
 
 ```ts
 
-import { IRefObject } from '@fluentui/utilities';
-import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ITheme } from '@fluentui/style-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
-export interface ISlider {
-    // (undocumented)
-    focus: () => void;
-    // (undocumented)
-    value: number | undefined;
+export const lowerThumbClassName: string;
+
+// @public
+export const RangedSlider: ForwardRefComponent<RangedSliderProps>;
+
+// @public (undocumented)
+export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
+    defaultValue?: [number, number];
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
+        value: [number, number];
+    }) => void;
+    value?: [number, number];
 }
 
 // @public (undocumented)
-export interface ISliderProps extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, React_2.RefAttributes<HTMLDivElement> {
-    ariaLabel?: string;
-    ariaValueText?: (value: number) => string;
-    buttonProps?: React_2.HTMLAttributes<HTMLButtonElement>;
-    className?: string;
-    componentRef?: IRefObject<ISlider>;
+export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
+}
+
+// @public (undocumented)
+export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
+    lowerThumb: IntrinsicShorthandProps<'div'>;
+    lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
+    upperThumb: IntrinsicShorthandProps<'div'>;
+    upperThumbWrapper: IntrinsicShorthandProps<'div'>;
+    lowerInput: IntrinsicShorthandProps<'input'>;
+    upperInput: IntrinsicShorthandProps<'input'>;
+};
+
+// @public (undocumented)
+export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
+}
+
+// @public
+export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
+
+// @public
+export const renderSlider: (state: SliderState) => JSX.Element;
+
+// @public
+export const Slider: ForwardRefComponent<SliderProps>;
+
+// @public (undocumented)
+export type SliderCommons = {
     defaultValue?: number;
-    disabled?: boolean;
-    label?: string;
-    max?: number;
-    min?: number;
-    onChange?: (value: number) => void;
-    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-    originFromZero?: boolean;
-    showValue?: boolean;
-    snapToStep?: boolean;
-    step?: number;
-    styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
-    theme?: ITheme;
     value?: number;
-    valueFormat?: (value: number) => string;
+    min?: number;
+    max?: number;
+    step?: number;
+    keyboardStep?: number;
+    disabled?: boolean;
     vertical?: boolean;
-}
-
-// @public (undocumented)
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
-    showTransitions?: boolean;
-    showValue?: boolean;
-    titleLabelClassName?: string;
+    marks?: boolean | (number | {
+        value: number;
+        label?: string | JSX.Element;
+        mark?: JSX.Element;
+    })[];
+    origin?: number;
+    size?: 'small' | 'medium';
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
+        value: number;
+    }) => void;
+    ariaValueText?: (value: number) => string;
 };
 
 // @public (undocumented)
-export interface ISliderStyles {
-    activeSection: IStyle;
-    container: IStyle;
-    inactiveSection: IStyle;
-    line: IStyle;
-    lineContainer: IStyle;
-    root: IStyle;
-    slideBox: IStyle;
-    thumb: IStyle;
-    titleLabel: IStyle;
-    valueLabel: IStyle;
-    zeroTick: IStyle;
-}
+export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
+
+// @public
+export const sliderShorthandProps: (keyof SliderSlots)[];
 
 // @public (undocumented)
-export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
-
-// @public (undocumented)
-export const Slider: React_2.FunctionComponent<ISliderProps>;
-
-// @public (undocumented)
-export const SliderBase: React_2.FunctionComponent<ISliderProps>;
-
-// @public (undocumented)
-export const useSlider: (props: ISliderProps, ref: React_2.Ref<HTMLDivElement>) => {
-    root: {
-        className: string;
-        ref: React_2.Ref<HTMLDivElement>;
-    };
-    label: {
-        className: string;
-        children: string | undefined;
-        disabled: boolean;
-        htmlFor: string | undefined;
-    };
-    sliderBox: {
-        className: string;
-        role: string;
-        tabIndex: number | undefined;
-        'data-is-focusable': boolean;
-        defaultChecked?: boolean | undefined;
-        defaultValue?: string | number | readonly string[] | undefined;
-        suppressContentEditableWarning?: boolean | undefined;
-        suppressHydrationWarning?: boolean | undefined;
-        accessKey?: string | undefined;
-        contentEditable?: boolean | "inherit" | "false" | "true" | undefined;
-        contextMenu?: string | undefined;
-        dir?: string | undefined;
-        draggable?: boolean | "false" | "true" | undefined;
-        hidden?: boolean | undefined;
-        id: string;
-        lang?: string | undefined;
-        placeholder?: string | undefined;
-        slot?: string | undefined;
-        spellCheck?: boolean | "false" | "true" | undefined;
-        style?: React_2.CSSProperties | undefined;
-        title?: string | undefined;
-        translate?: "yes" | "no" | undefined;
-        radioGroup?: string | undefined;
-        about?: string | undefined;
-        datatype?: string | undefined;
-        inlist?: any;
-        prefix?: string | undefined;
-        property?: string | undefined;
-        resource?: string | undefined;
-        typeof?: string | undefined;
-        vocab?: string | undefined;
-        autoCapitalize?: string | undefined;
-        autoCorrect?: string | undefined;
-        autoSave?: string | undefined;
-        color?: string | undefined;
-        itemProp?: string | undefined;
-        itemScope?: boolean | undefined;
-        itemType?: string | undefined;
-        itemID?: string | undefined;
-        itemRef?: string | undefined;
-        results?: number | undefined;
-        security?: string | undefined;
-        unselectable?: "on" | "off" | undefined;
-        inputMode?: "search" | "none" | "text" | "decimal" | "numeric" | "tel" | "url" | "email" | undefined;
-        is?: string | undefined;
-        'aria-activedescendant'?: string | undefined;
-        'aria-atomic'?: boolean | "false" | "true" | undefined;
-        'aria-autocomplete'?: "both" | "none" | "inline" | "list" | undefined;
-        'aria-busy'?: boolean | "false" | "true" | undefined;
-        'aria-checked'?: boolean | "mixed" | "false" | "true" | undefined;
-        'aria-colcount'?: number | undefined;
-        'aria-colindex'?: number | undefined;
-        'aria-colspan'?: number | undefined;
-        'aria-controls'?: string | undefined;
-        'aria-current'?: boolean | "time" | "page" | "false" | "true" | "step" | "location" | "date" | undefined;
-        'aria-describedby'?: string | undefined;
-        'aria-details'?: string | undefined;
-        'aria-disabled': boolean | "false" | "true";
-        'aria-dropeffect'?: "link" | "none" | "copy" | "move" | "execute" | "popup" | undefined;
-        'aria-errormessage'?: string | undefined;
-        'aria-expanded'?: boolean | "false" | "true" | undefined;
-        'aria-flowto'?: string | undefined;
-        'aria-grabbed'?: boolean | "false" | "true" | undefined;
-        'aria-haspopup'?: boolean | "dialog" | "menu" | "listbox" | "grid" | "false" | "true" | "tree" | undefined;
-        'aria-hidden'?: boolean | "false" | "true" | undefined;
-        'aria-invalid'?: boolean | "false" | "true" | "grammar" | "spelling" | undefined;
-        'aria-keyshortcuts'?: string | undefined;
-        'aria-label': string | undefined;
-        'aria-labelledby'?: string | undefined;
-        'aria-level'?: number | undefined;
-        'aria-live'?: "off" | "assertive" | "polite" | undefined;
-        'aria-modal'?: boolean | "false" | "true" | undefined;
-        'aria-multiline'?: boolean | "false" | "true" | undefined;
-        'aria-multiselectable'?: boolean | "false" | "true" | undefined;
-        'aria-orientation'?: "horizontal" | "vertical" | undefined;
-        'aria-owns'?: string | undefined;
-        'aria-placeholder'?: string | undefined;
-        'aria-posinset'?: number | undefined;
-        'aria-pressed'?: boolean | "mixed" | "false" | "true" | undefined;
-        'aria-readonly'?: boolean | "false" | "true" | undefined;
-        'aria-relevant'?: "all" | "text" | "additions" | "additions text" | "removals" | undefined;
-        'aria-required'?: boolean | "false" | "true" | undefined;
-        'aria-roledescription'?: string | undefined;
-        'aria-rowcount'?: number | undefined;
-        'aria-rowindex'?: number | undefined;
-        'aria-rowspan'?: number | undefined;
-        'aria-selected'?: boolean | "false" | "true" | undefined;
-        'aria-setsize'?: number | undefined;
-        'aria-sort'?: "none" | "other" | "ascending" | "descending" | undefined;
-        'aria-valuemax': number;
-        'aria-valuemin': number;
-        'aria-valuenow': number;
-        'aria-valuetext': string | undefined;
-        children?: React_2.ReactNode;
-        dangerouslySetInnerHTML?: {
-            __html: string;
-        } | undefined;
-        onCopy?: ((event: React_2.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onCopyCapture?: ((event: React_2.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onCut?: ((event: React_2.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onCutCapture?: ((event: React_2.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onPaste?: ((event: React_2.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onPasteCapture?: ((event: React_2.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionEnd?: ((event: React_2.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionEndCapture?: ((event: React_2.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionStart?: ((event: React_2.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionStartCapture?: ((event: React_2.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionUpdate?: ((event: React_2.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionUpdateCapture?: ((event: React_2.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onFocus?: ((event: React_2.FocusEvent<HTMLDivElement>) => void) | undefined;
-        onFocusCapture?: ((event: React_2.FocusEvent<HTMLDivElement>) => void) | undefined;
-        onBlur?: ((event: React_2.FocusEvent<HTMLDivElement>) => void) | undefined;
-        onBlurCapture?: ((event: React_2.FocusEvent<HTMLDivElement>) => void) | undefined;
-        onChange?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onChangeCapture?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onBeforeInput?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onBeforeInputCapture?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onInput?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onInputCapture?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onReset?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onResetCapture?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onSubmit?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onSubmitCapture?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onInvalid?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onInvalidCapture?: ((event: React_2.FormEvent<HTMLDivElement>) => void) | undefined;
-        onLoad?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onError?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onErrorCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onKeyDown?: ((event: React_2.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyDownCapture?: ((event: React_2.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyPress?: ((event: React_2.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyPressCapture?: ((event: React_2.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyUp?: ((event: React_2.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyUpCapture?: ((event: React_2.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onAbort?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onAbortCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onCanPlay?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onCanPlayCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onCanPlayThrough?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onCanPlayThroughCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onDurationChange?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onDurationChangeCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEmptied?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEmptiedCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEncrypted?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEncryptedCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEnded?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEndedCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadedData?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadedDataCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadedMetadata?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadedMetadataCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadStart?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadStartCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPause?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPauseCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPlay?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPlayCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPlaying?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPlayingCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onProgress?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onProgressCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onRateChange?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onRateChangeCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSeeked?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSeekedCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSeeking?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSeekingCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onStalled?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onStalledCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSuspend?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSuspendCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onTimeUpdate?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onTimeUpdateCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onVolumeChange?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onVolumeChangeCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onWaiting?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onWaitingCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onAuxClick?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onAuxClickCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onClick?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onClickCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onContextMenu?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onContextMenuCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onDoubleClick?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onDoubleClickCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onDrag?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragCapture?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragEnd?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragEndCapture?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragEnter?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragEnterCapture?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragExit?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragExitCapture?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragLeave?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragLeaveCapture?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragOver?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragOverCapture?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragStart?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragStartCapture?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDrop?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDropCapture?: ((event: React_2.DragEvent<HTMLDivElement>) => void) | undefined;
-        onMouseDown?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseDownCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseEnter?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseLeave?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseMove?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseMoveCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseOut?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseOutCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseOver?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseOverCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseUp?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseUpCapture?: ((event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onSelect?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSelectCapture?: ((event: React_2.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onTouchCancel?: ((event: React_2.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchCancelCapture?: ((event: React_2.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchEnd?: ((event: React_2.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchEndCapture?: ((event: React_2.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchMove?: ((event: React_2.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchMoveCapture?: ((event: React_2.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchStart?: ((event: React_2.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchStartCapture?: ((event: React_2.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onPointerDown?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerDownCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerMove?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerMoveCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerUp?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerUpCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerCancel?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerCancelCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerEnter?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerEnterCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerLeave?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerLeaveCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerOver?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerOverCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerOut?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerOutCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onGotPointerCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onGotPointerCaptureCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onLostPointerCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onLostPointerCaptureCapture?: ((event: React_2.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onScroll?: ((event: React_2.UIEvent<HTMLDivElement, UIEvent>) => void) | undefined;
-        onScrollCapture?: ((event: React_2.UIEvent<HTMLDivElement, UIEvent>) => void) | undefined;
-        onWheel?: ((event: React_2.WheelEvent<HTMLDivElement>) => void) | undefined;
-        onWheelCapture?: ((event: React_2.WheelEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationStart?: ((event: React_2.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationStartCapture?: ((event: React_2.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationEnd?: ((event: React_2.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationEndCapture?: ((event: React_2.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationIteration?: ((event: React_2.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationIterationCapture?: ((event: React_2.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onTransitionEnd?: ((event: React_2.TransitionEvent<HTMLDivElement>) => void) | undefined;
-        onTransitionEndCapture?: ((event: React_2.TransitionEvent<HTMLDivElement>) => void) | undefined;
-    };
-    container: {
-        className: string;
-    };
-    valueLabel: false | {
-        className: string;
-        children: string | number;
-        disabled: boolean;
-    };
-    thumb: {
-        ref: React_2.RefObject<HTMLSpanElement>;
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    };
-    zeroTick: false | {
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    } | undefined;
-    activeTrack: {
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    };
-    topInactiveTrack: {
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    };
-    bottomInactiveTrack: {
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    };
-    sliderLine: {
-        ref: React_2.RefObject<HTMLDivElement>;
-        className: string;
-    };
+export type SliderSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+    rail: IntrinsicShorthandProps<'div'>;
+    sliderWrapper: IntrinsicShorthandProps<'div'>;
+    trackWrapper: IntrinsicShorthandProps<'div'>;
+    track: IntrinsicShorthandProps<'div'>;
+    marksWrapper: IntrinsicShorthandProps<'div'>;
+    thumbWrapper: IntrinsicShorthandProps<'div'>;
+    thumb: IntrinsicShorthandProps<'div'>;
+    activeRail: IntrinsicShorthandProps<'div'>;
+    input: IntrinsicShorthandProps<'input'>;
 };
 
+// @public (undocumented)
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+
+// @public (undocumented)
+export const upperThumbClassName: string;
+
+// @public
+export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
+
+// @public
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
+
+// @public (undocumented)
+export const useSliderState: (state: SliderState) => SliderState;
+
+// @public
+export const useSliderStyles: (state: SliderState) => SliderState;
 
 // (No @packageDocumentation comment for this package)
 

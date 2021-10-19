@@ -37,6 +37,12 @@ var siteInfo = [
     title: 'Converged (@fluentui/react-components)',
   },
   {
+    package: '@fluentui/web-components',
+    link: './web-components/storybook/index.html',
+    icon: 'Globe',
+    title: 'web-components',
+  },
+  {
     package: '@fluentui/react-experiments',
     link: './react-experiments/demo/index.html',
     icon: 'TestBeaker',
@@ -47,6 +53,12 @@ var siteInfo = [
     link: './react-charting/demo/index.html',
     icon: 'BarChart4',
     title: 'Charting',
+  },
+  {
+    package: '@fluentui/react-input',
+    link: './react-input/storybook/index.html',
+    icon: 'TextField',
+    title: 'Input',
   },
   {
     package: 'theming-designer',

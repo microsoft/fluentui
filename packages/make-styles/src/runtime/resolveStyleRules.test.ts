@@ -1,12 +1,13 @@
-import { RULE_CLASSNAME_INDEX } from '../constants';
-import { MakeStylesResolvedRule } from '../types';
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 import { resolveStyleRules } from './resolveStyleRules';
+import { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
-function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-  return resolvedStyles[Object.keys(resolvedStyles)[0]][RULE_CLASSNAME_INDEX] as string;
+function getFirstClassName([resolvedClassesForSlot]: [CSSClassesMap, CSSRulesByBucket]): string {
+  const className: CSSClasses = resolvedClassesForSlot[Object.keys(resolvedClassesForSlot)[0]];
+
+  return Array.isArray(className) ? className[0] : className;
 }
 
 describe('resolveStyleRules', () => {
@@ -140,6 +141,17 @@ describe('resolveStyleRules', () => {
         }
         .fwiuce9 {
           padding-right: 5px;
+        }
+      `);
+    });
+
+    it('performs expansion of shorthands on nested objects', () => {
+      expect(resolveStyleRules({ outline: '1px', ':hover': { outline: '5px' } })).toMatchInlineSnapshot(`
+        .fpvhumw {
+          outline-width: 1px;
+        }
+        .fmcm1e3:hover {
+          outline-width: 5px;
         }
       `);
     });
@@ -512,20 +524,6 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f1q8eu9e {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-          }
-        }
         @-webkit-keyframes f55c0se {
           from {
             -webkit-transform: rotate(0deg);
@@ -538,6 +536,20 @@ describe('resolveStyleRules', () => {
             -moz-transform: rotate(-360deg);
             -ms-transform: rotate(-360deg);
             transform: rotate(-360deg);
+          }
+        }
+        @keyframes f1q8eu9e {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
           }
         }
         @keyframes f55c0se {
@@ -612,6 +624,20 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
+        @-webkit-keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
         @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
@@ -624,6 +650,20 @@ describe('resolveStyleRules', () => {
             -moz-transform: rotate(360deg);
             -ms-transform: rotate(360deg);
             transform: rotate(360deg);
+          }
+        }
+        @keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
           }
         }
         @-webkit-keyframes f5j8bii {
@@ -642,41 +682,13 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @-webkit-keyframes f55c0se {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(-360deg);
-            -moz-transform: rotate(-360deg);
-            -ms-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-          }
+        .fng7zue {
+          -webkit-animation-name: f1q8eu9e, f5j8bii;
+          animation-name: f1q8eu9e, f5j8bii;
         }
-        @keyframes f55c0se {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(-360deg);
-            -moz-transform: rotate(-360deg);
-            -ms-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-          }
-        }
-        .f1al5ov7 {
-          -webkit-animation-name: f1q8eu9e f5j8bii;
-          animation-name: f1q8eu9e f5j8bii;
-        }
-        .f1yfduy3 {
-          -webkit-animation-name: f55c0se f5j8bii;
-          animation-name: f55c0se f5j8bii;
+        .f12eevt1 {
+          -webkit-animation-name: f55c0se, f5j8bii;
+          animation-name: f55c0se, f5j8bii;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -692,9 +704,9 @@ describe('resolveStyleRules', () => {
 
   describe('output', () => {
     it('contains less members for properties that do not depend on text direction', () => {
-      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })).toEqual({
-        sj55zd: ['', 'fe3e8s9', '.fe3e8s9{color:red;}'],
-        uwmqm3: ['', 'frdkuqy', '.frdkuqy{padding-left:10px;}', 'f81rol6', '.f81rol6{padding-right:10px;}'],
+      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })[0]).toEqual({
+        sj55zd: 'fe3e8s9',
+        uwmqm3: ['frdkuqy', 'f81rol6'],
       });
     });
   });

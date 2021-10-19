@@ -42,7 +42,7 @@ export const felaExpandCssShorthandsPlugin = (styles: ICSSInJSStyle): ICSSInJSSt
     }
 
     if (typeof cssPropertyValue === 'object') {
-      return { ...acc, [cssPropertyName]: felaExpandCssShorthandsPlugin(cssPropertyValue) };
+      return { ...acc, [cssPropertyName]: felaExpandCssShorthandsPlugin(cssPropertyValue as ICSSInJSStyle) };
     }
 
     return { ...acc, [cssPropertyName]: cssPropertyValue };

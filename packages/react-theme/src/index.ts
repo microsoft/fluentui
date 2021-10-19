@@ -1,7 +1,17 @@
 export * from './themes/index';
-export * from './global/index';
+export * from './utils/index';
 
-export { mergeThemes } from './utils/mergeThemes';
-export * from './utils/themeToCSSVariables';
-
-export * from './types';
+export type {
+  BrandVariants,
+  FontSizeTokens,
+  FontWeightTokens,
+  LineHeightTokens,
+  BorderRadiusTokens,
+  StrokeWidthTokens,
+  ShadowTokens,
+  FontFamilyTokens,
+  ColorPaletteTokens,
+  ColorTokens,
+  PartialTheme,
+  Theme,
+} from './types';

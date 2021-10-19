@@ -1,17 +1,57 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import Examples from './fixtures/tabs.html';
-import { FluentTab } from './tab';
-import { FluentTabPanel } from './tab-panel';
-import { FluentTabs } from './';
-
-// Prevent tree-shaking
-FluentTab;
-FluentTabPanel;
-FluentTabs;
-FluentDesignSystemProvider;
+import { fluentTabs } from './index';
 
 export default {
-  title: 'Tabs',
+  title: 'Components/Tabs',
+  components: fluentTabs,
+  argTypes: {
+    activeIndicator: {
+      control: { type: 'boolean' },
+    },
+    orientation: {
+      options: ['horizontal', 'vertical'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
-export const Base = (): string => Examples;
+const TabsTemplate = ({ activeId, activeIndicator, orientation }) => `
+<fluent-tabs
+  ${orientation ? `orientation="${orientation}"` : ''}
+  ${activeIndicator ? `activeIndicator="${activeIndicator}"` : ''}
+  ${activeId ? `activeId="${activeId}"` : ''}
+>
+  <fluent-tab id="TabOne">Tab one</fluent-tab>
+  <fluent-tab id="TabTwo">Tab two</fluent-tab>
+  <fluent-tab id="TabThree">Tab three</fluent-tab>
+  <fluent-tab-panel> Tab one content. This is for testing. </fluent-tab-panel>
+  <fluent-tab-panel> Tab two content. This is for testing. </fluent-tab-panel>
+  <fluent-tab-panel> Tab three content. This is for testing. </fluent-tab-panel>
+</fluent-tabs>`;
+
+export const Tabs = TabsTemplate.bind({});
+
+Tabs.args = {
+  activeId: 'TabTwo',
+  activeIndicator: true,
+  orientation: 'vertical',
+};
+
+const example = `
+<fluent-tabs id="myTab" activeId="TabTwo">
+  <fluent-tab id="TabOne">Tab one</fluent-tab>
+  <fluent-tab id="TabTwo">Tab two</fluent-tab>
+  <fluent-tab id="TabThree">Tab three</fluent-tab>
+  <fluent-tab-panel id="TabPanelOne"> Tab one content. This is for testing. </fluent-tab-panel>
+  <fluent-tab-panel id="TabPanelTwo"> Tab two content. This is for testing. </fluent-tab-panel>
+  <fluent-tab-panel id="TabPanelThree"> Tab three content. This is for testing. </fluent-tab-panel>
+  <div>Testing</div>
+</fluent-tabs>
+`;
+
+Tabs.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

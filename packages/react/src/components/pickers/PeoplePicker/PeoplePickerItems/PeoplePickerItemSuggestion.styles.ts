@@ -1,6 +1,11 @@
-import { getGlobalClassNames, HighContrastSelector, IStyle } from '../../../../Styling';
-import { IPeoplePickerItemSuggestionStyles, IPeoplePickerItemSuggestionStyleProps } from './PeoplePickerItem.types';
+import { getGlobalClassNames, HighContrastSelector } from '../../../../Styling';
 import { SuggestionsItemGlobalClassNames as suggested } from '../../Suggestions/SuggestionsItem.styles';
+import type { IStyle } from '../../../../Styling';
+import type {
+  IPeoplePickerItemSuggestionStyles,
+  IPeoplePickerItemSuggestionStyleProps,
+} from './PeoplePickerItem.types';
+
 const GlobalClassNames = {
   root: 'ms-PeoplePicker-personaContent',
   personaWrapper: 'ms-PeoplePicker-Persona',

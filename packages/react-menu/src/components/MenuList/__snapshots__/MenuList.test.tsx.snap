@@ -3,7 +3,8 @@
 exports[`MenuList renders a default state 1`] = `
 <div
   aria-labelledby=""
-  data-tabster="{\\"focusable\\":{\\"mover\\":{\\"axis\\":1,\\"navigationType\\":1,\\"cyclic\\":true}}}"
+  className=""
+  data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1}}"
   role="menu"
 >
   Default MenuList

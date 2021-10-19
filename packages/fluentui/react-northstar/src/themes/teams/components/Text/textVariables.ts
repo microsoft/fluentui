@@ -78,7 +78,7 @@ export const textVariables = (siteVariables): TextVariables => {
     atMentionMeColor: siteVariables.colors.orange[400],
     atMentionMeFontWeight: siteVariables.fontWeightBold,
     disabledColor: siteVariables.colors.grey[250],
-    errorColor: siteVariables.colors.red[400],
+    errorColor: siteVariables.colorScheme.red.foreground,
     importantWeight: siteVariables.fontWeightBold,
     importantColor: siteVariables.colors.red[400],
     successColor: siteVariables.colors.green[600],

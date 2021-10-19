@@ -1,8 +1,9 @@
-import { transformExample, ITransformExampleParams } from './exampleTransform';
+import { transformExample } from './exampleTransform';
 import * as fs from 'fs';
 import * as path from 'path';
 import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
-import { IBasicPackageGroup } from '../interfaces/packageGroup';
+import type { ITransformExampleParams } from './exampleTransform';
+import type { IBasicPackageGroup } from '../interfaces/packageGroup';
 
 describe('example transform', () => {
   function transformFile(file: string, options: Partial<ITransformExampleParams> & { useJs?: boolean } = {}) {

@@ -5,7 +5,7 @@ export var makeButtonTokens = (theme: Theme) => {
   return {
     primary: {
       hovered: {
-        background: theme.alias.color.brand.brandBackgroundHover,
+        background: theme.colorBrandBackgroundHover,
       },
     },
   };

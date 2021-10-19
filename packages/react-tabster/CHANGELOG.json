@@ -2,6 +2,1106 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 12 Oct 2021 19:45:58 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "comment": "Add useFocusableGroup hook",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump all v9 components to beta prerelease tag",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 12:47:58 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.73",
+      "version": "9.0.0-alpha.73",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.35",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.78",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 09:28:07 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.72",
+      "version": "9.0.0-alpha.72",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.77",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.56",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.71",
+      "version": "9.0.0-alpha.71",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump v9 prerelease versions to rerelease",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.34",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.76",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.28",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.55",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 09:44:56 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.69",
+      "version": "9.0.0-alpha.69",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "comment": "chore(react-tabster): Update default focus ring styles",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 08:06:11 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.68",
+      "version": "9.0.0-alpha.68",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.74",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.26",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 08:06:00 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.67",
+      "version": "9.0.0-alpha.67",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.32",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.73",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.53",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Sep 2021 09:17:17 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.66",
+      "version": "9.0.0-alpha.66",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.72",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.52",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 08:21:34 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.65",
+      "version": "9.0.0-alpha.65",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.71",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.51",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Sep 2021 10:10:07 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.64",
+      "version": "9.0.0-alpha.64",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.70",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.50",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.63",
+      "version": "9.0.0-alpha.63",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.69",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.25",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.62",
+      "version": "9.0.0-alpha.62",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.62"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.61",
+      "version": "9.0.0-alpha.61",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.61"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.60",
+      "version": "9.0.0-alpha.60",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.59",
+      "version": "9.0.0-alpha.59",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.59"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.58",
+      "version": "9.0.0-alpha.58",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "comment": "chore(v9): Move all internal v9 dependencies from caret to fixed version",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.58"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.57",
+      "version": "9.0.0-alpha.57",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.63",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.56",
+      "version": "9.0.0-alpha.56",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.62",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.55",
+      "version": "9.0.0-alpha.55",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.61",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "40254a1b07bd51affd276e51af0b1d517714b45c",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.54",
+      "version": "9.0.0-alpha.54",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Upgrading tabster.",
+            "author": "marata@microsoft.com",
+            "commit": "4a7f81f3d92f128a672717eda660af3ba50ee71b",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.53",
+      "version": "9.0.0-alpha.53",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export type syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.41",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.59",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.31",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.23",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.52",
+      "version": "9.0.0-alpha.52",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update .npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.40",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.58",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.31",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.22",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.51",
+      "version": "9.0.0-alpha.51",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.57",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e467d64e7d3edb2512a81efdaeca5813269039b4",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.50",
+      "version": "9.0.0-alpha.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.56",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.49",
+      "version": "9.0.0-alpha.49",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.55",
+            "author": "jspurlin@microsoft.com",
+            "commit": "8a09087b4215a36a50b6d3478cd2b74155c9c630",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Aug 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.54",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.3",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.54",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.47",
+      "version": "9.0.0-alpha.47",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.53",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.46",
+      "version": "9.0.0-alpha.46",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add Babel plugins to build pipeline",
+            "author": "olfedias@microsoft.com",
+            "commit": "19db6cb57a237073b0bb50d07eb921b1ce2e0c61",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.45",
+      "version": "9.0.0-alpha.45",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.51",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "5d812148593dc574a6f3a343a5657614b4d10456",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.44",
+      "version": "9.0.0-alpha.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.50",
+            "author": "behowell@microsoft.com",
+            "commit": "2e257154d0448b8d4fd64142f93fcc9a225995cc",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.43",
+      "version": "9.0.0-alpha.43",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.49",
+            "author": "olfedias@microsoft.com",
+            "commit": "eb109ce88fe81cc91338ece32be1f4e49b81a678",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.43",
+      "version": "9.0.0-alpha.43",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.49",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b60234948eacb8c6fa9d08ab8e98d963f583d475",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.42",
+      "version": "9.0.0-alpha.42",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Create :focus-within indicator style rule",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "5e245830c8303283fdd89e159adb62fbbfca100f",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.28",
+            "author": "behowell@microsoft.com",
+            "commit": "8e5969e291bcafac21df12c9fb591bdd5654c613",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.40",
+      "version": "9.0.0-alpha.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.47",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 23:15:55 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.39",
+      "version": "9.0.0-alpha.39",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.46",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6c37a1cb5c312d4be8b239bfd9f6c9f28e9f0d24",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 07:37:06 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.38",
+      "version": "9.0.0-alpha.38",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.45",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7222c057ece8a528431a1860223d9d920685f975",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.37",
+      "version": "9.0.0-alpha.37",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixing bug in start script of converged packages.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c7eff2580a6fe159bbb3c4e77e549925187f3150",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jun 2021 07:38:35 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.36",
+      "version": "9.0.0-alpha.36",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.44",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "804ca93da84e19cec0737729473be5034a2e4939",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.35",
+      "version": "9.0.0-alpha.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump tabster version",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "4f907a837f3b85923178b611e4fbb0d9ac222dda",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "none": [
+          {
+            "comment": "chore(react-tabster): Migrate to new DX",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a53006e183a22e060e76f9bfad01399853ce903c",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.42",
+            "author": "olfedias@microsoft.com",
+            "commit": "bf6fd1290ea6c6861a5d80f704e0d6d0cadb71e0",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.42",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(useFocusFinders): add findNextFocusable and findPreviousFocusable",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a224777cc0089bd715cc304282115a2cd9929889",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.41",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.32",
+      "version": "9.0.0-alpha.32",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.40",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1ca8c8f0c4eb633e6b34c0b6182c09103d4c7fcb",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.31",
+      "version": "9.0.0-alpha.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updates focus indicator mechanism",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6023d6aef577ca095b4618c1aea2638e613a7ebd",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.39",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Jun 2021 07:31:58 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update focus indicator mechanism",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "19648637e0c43736a3a69cb40ce90632dada20a8",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Add useModalAttributes hook",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5d3eea167714421fcec63217984fb3e02b00fbe4",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Revert \"chore: enable Jest aliases for converged packages (#18337)\"",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.24",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.38",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add cypress-storybook-plugin",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Creates focus indicator hooks for react-tabster",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "5dab36e86b94508ff072af1fbea2bdc9e1ddfd94",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "none": [
+          {
+            "comment": "enable Jest aliases",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.38",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.25",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "6ffca36c9537a1852d8ec26478b8b7aeb059e17c",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 May 2021 07:34:54 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-alpha.27",
       "version": "9.0.0-alpha.27",

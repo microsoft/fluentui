@@ -1,33 +1,50 @@
+import type {
+  ComponentProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+  ObjectShorthandProps,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
  * Label Props
  */
-export interface LabelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /*
-   * TODO Add props and slots here
-   * Any slot property should be listed in the labelShorthandProps array below
-   * Any property that has a default value should be listed in LabelDefaultedProps as e.g. 'size' | 'icon'
+export type LabelCommons = {
+  /**
+   * Renders the label as disabled
+   * @defaultvalue false
    */
-}
+  disabled: boolean;
 
-/**
- * Names of the shorthand properties in LabelProps
- */
-export type LabelShorthandProps = never; // TODO add shorthand property names
+  /**
+   * A label supports different sizes.
+   * @defaultvalue 'medium'
+   */
+  size: 'small' | 'medium' | 'large';
 
-/**
- * Names of LabelProps that have a default value in useLabel
- */
-export type LabelDefaultedProps = never; // TODO add names of properties with default values
+  /**
+   * A label supports semibold/strong fontweight.
+   * @defaultvalue false
+   */
+  strong: boolean;
+};
+
+export type LabelSlots = {
+  root: IntrinsicShorthandProps<'label'>;
+  required?: IntrinsicShorthandProps<'span'>;
+};
 
 /**
  * State used in rendering Label
  */
-export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type LabelState = ComponentState<LabelSlots> & LabelCommons;
+
+export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
+  Partial<LabelCommons> & {
+    /**
+     * Displays and indicator that the label is for a required field. The required prop can be set to true to display
+     * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
+     * @defaultvalue false
+     */
+    required?: boolean | ObjectShorthandProps<React.HTMLAttributes<HTMLElement>> | React.ReactNode;
+  };

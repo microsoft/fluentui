@@ -1,19 +1,15 @@
 import { STORY_RENDERED } from '@storybook/core-events';
 import addons from '@storybook/addons';
 import { Direction, RtlScrollConverter } from '@microsoft/fast-web-utilities';
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import { FluentAnchoredRegion } from '../anchored-region';
+import { AnchoredRegion } from '@microsoft/fast-foundation';
 import AnchoreRegionTemplate from './fixtures/base.html';
-
-// Prevent tree-shaking
-FluentAnchoredRegion;
-FluentDesignSystemProvider;
+import './index';
 
 let scalingViewportPreviousXValue: number = 250;
 let scalingViewportPreviousYValue: number = 250;
 
 addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
-  if (name.toLowerCase().startsWith('anchored-region')) {
+  if (name.toLowerCase().startsWith('components-anchored-region')) {
     scrollViewports();
     setButtonActions();
 
@@ -45,7 +41,7 @@ function scrollViewports(): void {
 function handleScrollViaUpdate(ev: Event): void {
   if (ev.target instanceof HTMLElement) {
     const scalingRegionUpdate: HTMLElement | null = document.getElementById('region-scaling-update');
-    if (scalingRegionUpdate instanceof FluentAnchoredRegion) {
+    if (scalingRegionUpdate instanceof AnchoredRegion) {
       (scalingRegionUpdate as any).update();
     }
   }
@@ -56,7 +52,7 @@ function handleScrollViaOffset(ev: Event): void {
     const scroller: HTMLElement = ev.target as HTMLElement;
 
     const scalingRegionOffset: HTMLElement | null = document.getElementById('region-scaling-offset');
-    if (scalingRegionOffset instanceof FluentAnchoredRegion) {
+    if (scalingRegionOffset instanceof AnchoredRegion) {
       (scalingRegionOffset as any).updateAnchorOffset(
         scalingViewportPreviousXValue - scroller.scrollLeft,
         scalingViewportPreviousYValue - scroller.scrollTop,
@@ -156,7 +152,7 @@ function setButtonActions(): void {
 }
 
 export default {
-  title: 'Anchored region',
+  title: 'Components/Anchored region',
 };
 
 export const base = () => AnchoreRegionTemplate;

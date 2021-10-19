@@ -1,9 +1,10 @@
-import { fontFace, IFontWeight } from '@fluentui/merge-styles';
+import { fontFace } from '@fluentui/merge-styles';
 import { FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './FluentFonts';
 import { createFontStyles } from './createFontStyles';
 import { getLanguage, getWindow } from '@fluentui/utilities';
-import { IFontStyles } from '../types/IFontStyles';
-import { IFabricConfig } from '../types/IFabricConfig';
+import type { IFontWeight } from '@fluentui/merge-styles';
+import type { IFontStyles } from '../types/IFontStyles';
+import type { IFabricConfig } from '../types/IFabricConfig';
 
 // Default urls.
 const DefaultBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets';

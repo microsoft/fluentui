@@ -318,6 +318,7 @@ export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) 
     activeIndex: +activeIndex,
     onItemClick: handleClick,
     onItemSelect: handleSelect,
+    vertical,
     variables,
 
     slotProps: {

@@ -1,14 +1,8 @@
 import * as React from 'react';
-import {
-  makeMergeProps,
-  useMergedRefs,
-  useEventCallback,
-  shouldPreventDefaultOnKeyDown,
-} from '@fluentui/react-utilities';
-import { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
+import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext } from '../../popoverContext';
-
-const mergeProps = makeMergeProps<PopoverTriggerState>({});
+import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
 /**
  * Create the state required to render PopoverTrigger.
@@ -17,31 +11,21 @@ const mergeProps = makeMergeProps<PopoverTriggerState>({});
  * before being passed to renderPopoverTrigger.
  *
  * @param props - props from this instance of PopoverTrigger
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const usePopoverTrigger = (
-  props: PopoverTriggerProps,
-  defaultProps?: PopoverTriggerProps,
-): PopoverTriggerState => {
+export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerState => {
   const setOpen = usePopoverContext(context => context.setOpen);
   const open = usePopoverContext(context => context.open);
   const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
-
-  const state = mergeProps(
-    {
-      children: (null as unknown) as React.ReactElement,
-    },
-    defaultProps,
-    props,
-  );
+  const { triggerAttributes } = useModalAttributes();
 
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
       e.preventDefault();
       setOpen(e, true);
     }
+
     child.props?.onContextMenu?.(e);
   });
 
@@ -66,36 +50,31 @@ export const usePopoverTrigger = (
   });
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, true);
     }
     child.props?.onMouseEnter?.(e);
   });
 
   const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, false);
     }
     child.props?.onMouseLeave?.(e);
   });
 
-  // TODO: Temporary, leverage tabster deloser for this
-  React.useEffect(() => {
-    if (!open && triggerRef.current) {
-      triggerRef.current.focus();
-    }
-  }, [open, triggerRef]);
-
-  const child = React.Children.only(state.children);
-  state.children = React.cloneElement(child, {
-    'aria-haspopup': 'true',
-    onClick,
-    onMouseEnter,
-    onKeyDown,
-    onMouseLeave,
-    onContextMenu,
-    ref: useMergedRefs(child.props.ref, triggerRef),
-  });
-
-  return state;
+  const child = React.Children.only(props.children);
+  return {
+    children: React.cloneElement(child, {
+      ...triggerAttributes,
+      'aria-haspopup': 'true',
+      ...child.props,
+      onClick,
+      onMouseEnter,
+      onKeyDown,
+      onMouseLeave,
+      onContextMenu,
+      ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
+    }),
+  };
 };

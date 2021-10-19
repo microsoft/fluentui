@@ -25,49 +25,40 @@ export type ObjectOrFunc<TResult, TArg = {}> = ((arg: TArg) => TResult) | TResul
 // CSS in JS
 // ========================================================
 
-export type AnimationKeyFrame = Record<'from' | 'to' | string, ICSSInJSStyle>;
+export type AnimationKeyFrame = Record<'from' | 'to' | string, CSSCustom>;
 
 export interface AnimationName<P = Record<string, any>> {
   keyframe?: AnimationKeyFrame | ((params: P) => AnimationKeyFrame);
   params?: P;
 }
 
-type CSSProperties = Omit<CSS.Properties<string | number>, 'animationName'> & {
-  animationName?: AnimationName | AnimationKeyFrame | string | 'none';
-};
-
-export interface ICSSPseudoElementStyle extends ICSSInJSStyle {
-  content?: string;
-}
-
-export type ICSSInJSStyle = Omit<CSSProperties, 'display'> & {
-  // TODO Questionable: how else would users target their own children?
-  [key: string]: any;
-
-  display?: CSSProperties['display'] | CSSProperties['display'][];
-
+type CSSProperties = Omit<CSS.Properties<number | string>, 'animationName'> & {
   // missing React.CSSProperties
   speak?: CSS.Globals | 'none' | 'normal' | 'spell-out';
 
-  // CSS in JS Properties
-  '::before'?: ICSSPseudoElementStyle;
-  '::after'?: ICSSPseudoElementStyle;
-
-  ':hover'?: ICSSInJSStyle;
-  ':active'?: ICSSInJSStyle;
-  ':focus'?: ICSSInJSStyle;
-  ':visited'?: ICSSInJSStyle;
-
-  // TODO Questionable: avoid order specific styles
-  ':first-child'?: ICSSInJSStyle;
-  ':last-child'?: ICSSInJSStyle;
-  ':nth-child(n+2)'?: ICSSInJSStyle;
-
   // TODO Questionable: unsupported by autoprefixer, one-off vendors
   // we could expand these ourselves so that "font-smoothing" works, but which values?
-  '-webkit-font-smoothing'?: CSS.Globals | 'auto' | 'none' | 'antialiased' | 'subpixel-antialiased';
-  '-moz-osx-font-smoothing'?: CSS.Globals | 'auto' | 'grayscale';
+  WebkitFontSmoothing?: CSS.Globals | 'auto' | 'none' | 'antialiased' | 'subpixel-antialiased';
+  MozOsxFontSmoothing?: CSS.Globals | 'auto' | 'grayscale';
+
+  // To be compatible with Emotion KebabCased rules should be used
+  // I.e. "'-webkit-box-orient'" => "WebkitBoxOrient"
+  '-webkit-appearance'?: never;
+  '-webkit-box-orient'?: never;
+  '-webkit-font-smoothing'?: never;
+  '-webkit-line-clamp'?: never;
+  '-webkit-text-fill-color'?: never;
+  // It would be nice to reuse there template literal types, but they are not supported as indexes yet
+  // https://github.com/microsoft/TypeScript/pull/26797
 };
+
+type CSSObject = CSSProperties &
+  CSSPseudos & { animationName?: AnimationName<any> | AnimationKeyFrame | string | 'none' };
+
+type CSSCustom = { [prop: string]: number | string | ICSSInJSStyle };
+type CSSPseudos = { [K in CSS.Pseudos]?: CSSObject & { content?: string } };
+
+export type ICSSInJSStyle = CSSObject | CSSCustom;
 
 export interface ThemeAnimation<KP = {}> {
   keyframe: ((kp: KP) => object) | object | string;

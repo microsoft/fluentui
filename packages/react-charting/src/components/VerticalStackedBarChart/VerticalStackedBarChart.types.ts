@@ -51,6 +51,11 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   colors?: string[];
 
   /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+
+  /**
    * To display multi stack callout or single callout
    * @default flase
    */

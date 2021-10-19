@@ -5,6 +5,7 @@
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
+    "isolatedModules": true,
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,

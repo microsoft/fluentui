@@ -1,27 +1,17 @@
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuDividerState>({});
+import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
 
 /**
  * Given user props, returns state and render function for a MenuDivider.
  */
-export const useMenuDivider = (
-  props: MenuDividerProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuDividerProps,
-): MenuDividerState => {
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
+export const useMenuDivider = (props: MenuDividerProps, ref: React.Ref<HTMLElement>): MenuDividerState => {
+  return {
+    root: getNativeElementProps('div', {
       role: 'presentation',
       'aria-hidden': true,
-    },
-    defaultProps,
-    resolveShorthandProps(props, []),
-  );
-
-  return state;
+      ...props,
+      ref,
+    }),
+  };
 };

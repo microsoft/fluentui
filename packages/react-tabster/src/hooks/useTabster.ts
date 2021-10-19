@@ -18,6 +18,6 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
     return null;
   }
 
-  // TODO worth memoizing once more tabster options are used
+  // TODO: worth memoizing once more tabster options are used
   return getCurrentTabster(defaultView) ?? createTabster(defaultView, tabsterOptions);
 };

@@ -1,65 +1,42 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Badge}
- */
-export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+export type BadgeSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+};
 
-/**
- * {@docCategory Badge}
- */
-export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
-
-/**
- * {@docCategory Badge}
- */
-export type BadgeShape = 'rounded' | 'square' | 'circular';
-
-/**
- * {@docCategory Badge}
- */
-export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * A Badge can be sized.
-   * @defaultvalue medium
-   */
-  size?: BadgeSize;
-
-  /**
-   * A Badge can be square, circular or rounded
-   * @defaultvalue circular
-   */
-  shape?: BadgeShape;
-
+export type BadgeCommons = {
   /**
    * A Badge can be filled, outline, ghost, inverted
    * @defaultvalue filled
    */
-  appearance?: BadgeAppearance;
+  appearance: 'filled' | 'ghost' | 'outline' | 'tint';
 
   /**
-   * Icon slot
+   * A Badge can be one of preset colors
+   * @defaultvalue brand
    */
-  icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  color: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
 
   /**
-   * Position for Icon to be rendered
+   * A Badge can position the icon before or after the content.
    * @defaultvalue before
    */
-  iconPosition?: 'before' | 'after';
-}
+  iconPosition: 'before' | 'after';
 
-/**
- * {@docCategory Badge}
- */
-export interface BadgeState extends BadgeProps {
   /**
-   * Ref to the root slot
+   * A Badge can be square, circular or rounded.
+   * @defaultvalue circular
    */
-  ref: React.RefObject<HTMLElement>;
+  shape: 'circular' | 'rounded' | 'square';
+
   /**
-   * Icon slot when processed by internal state
+   * A Badge can be on of several preset sizes.
+   * @defaultvalue medium
    */
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-}
+  size: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+};
+
+export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeCommons>;
+export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;

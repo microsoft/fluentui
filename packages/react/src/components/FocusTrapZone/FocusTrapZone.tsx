@@ -7,13 +7,13 @@ import {
   getLastTabbable,
   getNextElement,
   focusAsync,
-  IRefObject,
   modalize,
   on,
 } from '../../Utilities';
-import { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
 import { useId, useConst, useMergedRefs } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
+import type { IRefObject } from '../../Utilities';
+import type { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
 
 interface IFocusTrapZoneInternalState {
   disposeFocusHandler: (() => void) | undefined;
@@ -170,7 +170,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       let relatedTarget = ev.relatedTarget;
       if (ev.relatedTarget === null) {
         // In IE11, due to lack of support, event.relatedTarget is always
-        // null making every onBlur call to be "outside" of the ComboBox
+        // null making every onBlur call to be "outside" of the root
         // even when it's not. Using document.activeElement is another way
         // for us to be able to get what the relatedTarget without relying
         // on the event

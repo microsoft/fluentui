@@ -1,6 +1,6 @@
-import { IPersonaProps } from '@fluentui/react';
-import { IPersonaCoinComponent, IPersonaCoinStylesReturnType } from './PersonaCoin.types';
 import { getPersonaInitialsColor } from '@fluentui/react/lib/Persona';
+import type { IPersonaProps } from '@fluentui/react';
+import type { IPersonaCoinComponent, IPersonaCoinStylesReturnType } from './PersonaCoin.types';
 
 export const DEFAULT_PERSONA_COIN_SIZE = 48;
 

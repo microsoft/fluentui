@@ -1,25 +1,21 @@
 import * as React from 'react';
-import { usePopper } from '@fluentui/react-positioning';
+import { mergeArrowOffset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
-import { useTheme } from '@fluentui/react-theme-provider';
 import {
-  makeMergeProps,
-  resolveShorthandProps,
+  applyTriggerPropsToChildren,
+  getNativeElementProps,
+  useControllableState,
   useId,
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
+  useTimeout,
 } from '@fluentui/react-utilities';
-import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
-import { arrowHeight, tooltipBorderRadius } from './useTooltipStyles';
+import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 
-/**
- * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
- */
-export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
-
-const mergeProps = makeMergeProps<TooltipState>({ deepMerge: tooltipShorthandProps });
+// Style values that are required for popper to properly position the tooltip
+const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes
+const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts if this changes
 
 /**
  * Create the state required to render Tooltip.
@@ -30,66 +26,94 @@ const mergeProps = makeMergeProps<TooltipState>({ deepMerge: tooltipShorthandPro
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory Tooltip}
  */
-export const useTooltip = (
-  props: TooltipProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: TooltipProps,
-): TooltipState => {
-  const [visible, setVisible] = React.useState(false);
+export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
-
-  const state = mergeProps(
-    {
-      ref,
-      children: props.children,
-      content: {
-        as: React.Fragment,
-      },
-      id: useId('tooltip-'),
-      role: 'tooltip',
-      position: 'above',
-      align: 'center',
-      offset: 4,
-      showDelay: 250,
-      hideDelay: 250,
-      triggerAriaAttribute: 'label',
-      visible,
-      shouldRenderTooltip: visible,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, tooltipShorthandProps),
-    resolveShorthandProps(props, tooltipShorthandProps),
-  );
-
-  const theme = useTheme();
-  const popper = usePopper({
-    enabled: visible,
-    position: state.position,
-    align: state.align,
-    offset: [0, state.offset + (state.noArrow ? 0 : arrowHeight)],
-    arrowPadding: theme?.global ? 2 * parseInt(tooltipBorderRadius(theme), 10) : 0,
-  });
-
-  state.ref = useMergedRefs(state.ref, popper.containerRef);
-  state.arrowRef = popper.arrowRef;
-
+  const isServerSideRender = useIsSSR();
+  const { targetDocument } = useFluent();
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
-  const { targetDocument } = useFluent();
+  const {
+    content,
+    inverted,
+    withArrow,
+    positioning,
+    onVisibleChange,
+    triggerAriaAttribute = 'label',
+    showDelay = 250,
+    hideDelay = 250,
+  } = props;
+
+  const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
+  const setVisible = React.useCallback(
+    (newVisible: boolean, ev?: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
+      clearDelayTimeout();
+      setVisibleInternal(oldVisible => {
+        if (newVisible !== oldVisible) {
+          onVisibleChange?.(ev, { visible: newVisible });
+        }
+        return newVisible;
+      });
+    },
+    [clearDelayTimeout, setVisibleInternal, onVisibleChange],
+  );
+
+  const state: TooltipState = {
+    content,
+    inverted,
+    withArrow,
+    positioning,
+    showDelay,
+    hideDelay,
+    triggerAriaAttribute,
+    visible,
+    shouldRenderTooltip: visible,
+    appearance: props.appearance,
+
+    // Slots
+    components: {
+      root: 'div',
+    },
+    root: getNativeElementProps('div', {
+      role: 'tooltip',
+      ...props,
+      ref,
+      id: useId('tooltip-', props.id),
+    }),
+  };
+
+  const popperOptions = {
+    enabled: state.visible,
+    arrowPadding: 2 * tooltipBorderRadius,
+    position: 'above' as const,
+    align: 'center' as const,
+    offset: [0, 4] as [number, number],
+    ...resolvePositioningShorthand(state.positioning),
+  };
+
+  if (state.withArrow) {
+    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
+  }
+
+  const {
+    targetRef,
+    containerRef,
+    arrowRef,
+  }: {
+    targetRef: React.MutableRefObject<unknown>;
+    containerRef: React.MutableRefObject<HTMLDivElement>;
+    arrowRef: React.MutableRefObject<HTMLDivElement>;
+  } = usePopper(popperOptions);
+
+  state.root.ref = useMergedRefs(state.root.ref, containerRef);
+  state.arrowRef = arrowRef;
 
   // When this tooltip is visible, hide any other tooltips, and register it
   // as the visibleTooltip with the TooltipContext.
   // Also add a listener on document to hide the tooltip if Escape is pressed
   useIsomorphicLayoutEffect(() => {
     if (visible) {
-      const thisTooltip = {
-        hide: () => {
-          setVisible(false);
-          clearDelayTimeout();
-        },
-      };
+      const thisTooltip = { hide: () => setVisible(false) };
 
       context.visibleTooltip?.hide();
       context.visibleTooltip = thisTooltip;
@@ -110,128 +134,99 @@ export const useTooltip = (
         targetDocument?.removeEventListener('keydown', onDocumentKeyDown);
       };
     }
-  }, [clearDelayTimeout, context, targetDocument, visible]);
+  }, [context, targetDocument, visible, setVisible]);
 
-  // Whether the trigger element is mouse-hovered or focused
-  const hoveredOrFocused = React.useRef(false);
+  // The focused element gets a blur event when the document loses focus
+  // (e.g. switching tabs in the browser), but we don't want to show the
+  // tooltip again when the document gets focus back. Handle this case by
+  // checking if the blurred element is still the document's activeElement.
+  // See https://github.com/microsoft/fluentui/issues/13541
+  const ignoreNextFocusEventRef = React.useRef(false);
 
   // Listener for onPointerEnter and onFocus on the trigger element
   const onEnterTrigger = React.useCallback(
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
-      hoveredOrFocused.current = true;
-
-      const target = state.targetRef?.current ?? ev.currentTarget;
-      popper.targetRef.current = target;
-
-      // For tooltips that only show when truncated, don't show if the target's scroll size <= client size
-      if (state.onlyIfTruncated) {
-        if (target.scrollWidth <= target.clientWidth && target.scrollHeight <= target.clientHeight) {
-          return;
-        }
+      if (ev.type === 'focus' && ignoreNextFocusEventRef.current) {
+        ignoreNextFocusEventRef.current = false;
+        return;
       }
 
       // Show immediately if another tooltip is already visible
       const delay = context.visibleTooltip ? 0 : state.showDelay;
 
       setDelayTimeout(() => {
-        if (hoveredOrFocused.current) {
-          setVisible(true);
-        }
+        setVisible(true, ev);
       }, delay);
+
+      ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [context, popper.targetRef, setDelayTimeout, state.onlyIfTruncated, state.showDelay, state.targetRef],
+    [setDelayTimeout, setVisible, state.showDelay, context],
   );
 
   // Listener for onPointerLeave and onBlur on the trigger element
-  const onLeaveTrigger = React.useCallback(() => {
-    hoveredOrFocused.current = false;
+  const onLeaveTrigger = React.useCallback(
+    (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
+      let delay = state.hideDelay;
 
-    setDelayTimeout(() => {
-      if (!hoveredOrFocused.current) {
-        setVisible(false);
+      if (ev.type === 'blur') {
+        // Hide immediately when losing focus
+        delay = 0;
+
+        ignoreNextFocusEventRef.current = targetDocument?.activeElement === ev.target;
       }
-    }, state.hideDelay);
-  }, [setDelayTimeout, state.hideDelay]);
 
-  // Listen for the mouse entering/leaving the tooltip, and treat it as if hovered over the trigger.
+      setDelayTimeout(() => {
+        setVisible(false, ev);
+      }, delay);
+
+      ev.persist(); // Persist the event since the setVisible call will happen asynchronously
+    },
+    [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
+  );
+
+  // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
   // This keeps the tooltip visible when the pointer is moved over it.
-  const { onPointerEnter, onPointerLeave } = state;
-  state.onPointerEnter = ev => {
-    hoveredOrFocused.current = true;
-    onPointerEnter?.(ev);
-  };
-  state.onPointerLeave = ev => {
-    onLeaveTrigger();
-    onPointerLeave?.(ev);
-  };
+  state.root.onPointerEnter = useMergedCallbacks(state.root.onPointerEnter, clearDelayTimeout);
+  state.root.onPointerLeave = useMergedCallbacks(state.root.onPointerLeave, onLeaveTrigger);
 
-  const childProps = React.isValidElement(state.children) ? state.children.props : undefined;
+  const child = React.isValidElement(state.root.children) ? state.root.children : undefined;
 
   // The props to add to the trigger element (child)
   const triggerProps: TooltipTriggerProps = {
-    onPointerEnter: useMergedCallbacks(childProps?.onPointerEnter, onEnterTrigger),
-    onPointerLeave: useMergedCallbacks(childProps?.onPointerLeave, onLeaveTrigger),
-    onFocus: useMergedCallbacks(childProps?.onFocus, onEnterTrigger),
-    onBlur: useMergedCallbacks(childProps?.onBlur, onLeaveTrigger),
+    onPointerEnter: useMergedCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
+    onPointerLeave: useMergedCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
+    onFocus: useMergedCallbacks(child?.props?.onFocus, onEnterTrigger),
+    onBlur: useMergedCallbacks(child?.props?.onBlur, onLeaveTrigger),
   };
 
-  const isServerSideRender = useIsSSR();
+  // If the target prop is not provided, attach targetRef to the trigger element's ref prop
+  const childWithRef = child as { ref?: React.Ref<unknown> } | undefined;
+  const childTargetRef = useMergedRefs(childWithRef?.ref, targetRef);
+  if (popperOptions.target === undefined) {
+    triggerProps.ref = childTargetRef;
+  }
 
   if (state.triggerAriaAttribute === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use labelledby.
-    if (typeof state.content.children === 'string') {
-      triggerProps['aria-label'] = state.content.children as string;
+    if (typeof state.content === 'string') {
+      triggerProps['aria-label'] = state.content;
     } else {
       state.triggerAriaAttribute = 'labelledby';
     }
   }
 
   if (state.triggerAriaAttribute === 'labelledby' && !isServerSideRender) {
-    triggerProps['aria-labelledby'] = state.id;
+    triggerProps['aria-labelledby'] = state.root.id;
     // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
     state.shouldRenderTooltip = true;
   } else if (state.triggerAriaAttribute === 'describedby' && !isServerSideRender) {
-    triggerProps['aria-describedby'] = state.id;
+    triggerProps['aria-describedby'] = state.root.id;
     state.shouldRenderTooltip = true;
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  if (typeof state.children === 'function') {
-    state.children = state.children(triggerProps) as TooltipState['children'];
-  } else {
-    state.children = React.cloneElement(onlyChild(state.children), triggerProps);
-  }
-
+  state.root.children = applyTriggerPropsToChildren(state.root.children, triggerProps) as React.ReactElement;
   return state;
-};
-
-/**
- * Helper to manage a browser timeout.
- * Ensures that the timeout isn't set multiple times at once,
- * and is cleaned up when the component is unloaded.
- *
- * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
- */
-// TODO this could be moved to react-utilities as a general-purpose hook
-const useTimeout = () => {
-  const [timeout] = React.useState(() => ({
-    id: undefined as ReturnType<typeof setTimeout> | undefined,
-    set: (fn: () => void, delay: number) => {
-      timeout.clear();
-      timeout.id = setTimeout(fn, delay);
-    },
-    clear: () => {
-      if (timeout.id !== undefined) {
-        clearTimeout(timeout.id);
-        timeout.id = undefined;
-      }
-    },
-  }));
-
-  // Clean up the timeout when the component is unloaded
-  React.useEffect(() => timeout.clear, [timeout]);
-
-  return [timeout.set, timeout.clear] as const;
 };
 
 /**
@@ -248,15 +243,4 @@ const useMergedCallbacks = <Event,>(
     },
     [callback1, callback2],
   );
-};
-
-/**
- * Similar to React.Children.only, but drills into fragments rather than treating them as a single child
- */
-const onlyChild = (child: React.ReactNode): React.ReactElement => {
-  if (!React.isValidElement(child)) {
-    throw new Error(`Tooltip's child must be a single element`);
-  }
-
-  return child.type === React.Fragment ? onlyChild(child.props.children) : child;
 };

@@ -1,20 +1,38 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { AccordionHeaderState } from './AccordionHeader.types';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import type { AccordionHeaderState } from './AccordionHeader.types';
 
 const useStyles = makeStyles({
+  // TODO: this should be extracted to another package
+  resetButton: {
+    boxSizing: 'content-box',
+    background: 'none',
+    color: 'inherit',
+    font: 'inherit',
+    lineHeight: 'normal',
+    overflow: 'visible',
+    padding: '0',
+    WebkitAppearance: 'button',
+    userSelect: 'none',
+    textAlign: 'unset',
+  },
+  focusIndicator: theme => createFocusOutlineStyle(theme),
   root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    color: theme.colorNeutralForeground1,
+    backgroundColor: theme.colorNeutralBackground1,
     borderRadius: '2px',
   }),
   rootDisabled: theme => ({
     backgroundColor: 'none',
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    color: theme.colorNeutralForegroundDisabled,
   }),
   rootInline: {
     display: 'inline-block',
   },
   button: {
+    position: 'relative',
+    width: 'calc(100% - 22px)',
+    border: '1px solid transparent',
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '44px',
@@ -48,35 +66,37 @@ const useStyles = makeStyles({
     marginLeft: '10px',
   },
   children: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    fontFamily: theme.global.type.fontFamilies.base,
+    fontSize: theme.fontSizeBase300,
+    fontFamily: theme.fontFamilyBase,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   }),
   childrenSmall: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
+    fontSize: theme.fontSizeBase200,
   }),
   childrenLarge: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
+    fontSize: theme.fontSizeBase400,
   }),
   childrenExtraLarge: theme => ({
-    fontSize: theme.global.type.fontSizes.base[500],
+    fontSize: theme.fontSizeBase500,
   }),
 });
 
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.inline && styles.rootInline,
-    state.context.disabled && styles.rootDisabled,
-    state.className,
+    state.disabled && styles.rootDisabled,
+    state.root.className,
   );
 
   state.button.className = mergeClasses(
+    styles.resetButton,
     styles.button,
+    styles.focusIndicator,
     state.inline && styles.buttonInline,
     state.size === 'small' && styles.buttonSmall,
     state.button.className,
