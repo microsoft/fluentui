@@ -43,11 +43,11 @@ export async function checkStorybookVersions({ danger, fail }: DangerJS) {
   const storybookReactVersion = rootPackageJson.devDependencies['@storybook/react'];
   const storybookHtmlVersion = webComponentsPackageJson.devDependencies['@storybook/html'];
 
-  if (!storybookHtmlVersion) {
+  if (!storybookHtmlVersion || rootPackageJson.devDependencies['@storybook/html']) {
     // PLEASE READ THE FUNCTION COMMENT BEFORE MODIFYING OR REMOVING THIS CHECK!!!
     fail(
-      `\`@storybook/html\` dependency must be specified in \`${webComponentsPackageJsonFilename}\` to avoid conflicts` +
-        ` (see comment in \`${scriptFilename}\` for details).`,
+      `\`@storybook/html\` dependency must be specified in ONLY in \`${webComponentsPackageJsonFilename}\`, ` +
+        `not in the root \`package.json\` (see comment in \`${scriptFilename}\` for details).`,
     );
   }
   if (!storybookReactVersion) {
