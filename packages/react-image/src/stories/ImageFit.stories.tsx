@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Image } from '../index';
 
-export const ImageLayoutFit = () => (
+export const Fit = () => (
   <>
     <h1>None</h1>
     <div style={{ border: '1px solid green', height: 150, width: 300 }}>
@@ -48,7 +48,7 @@ export const ImageLayoutFit = () => (
     </div>
   </>
 );
-ImageLayoutFit.parameters = {
+Fit.parameters = {
   docs: {
     description: {
       story: [
