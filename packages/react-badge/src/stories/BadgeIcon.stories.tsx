@@ -5,11 +5,11 @@ import * as React from 'react';
 import { Badge } from '@fluentui/react-badge';
 import { ClipboardPaste20Regular as PasteIcon } from '@fluentui/react-icons';
 
-export const BadgeWithIcon = () => {
+export const Icon = () => {
   return <Badge size="medium" icon={<PasteIcon />} />;
 };
 
-BadgeWithIcon.parameters = {
+Icon.parameters = {
   docs: {
     description: {
       story: 'A Badge can contain an icon',
