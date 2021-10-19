@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Divider: Updating the component to the latest patterns.",
+  "packageName": "@fluentui/react-divider",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
