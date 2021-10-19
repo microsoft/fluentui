@@ -3,6 +3,5 @@
   "comment": "Add oft files to file type icon map",
   "packageName": "@uifabric/file-type-icons",
   "email": "hjorturj@microsoft.com",
-  "commit": "cfcbd8948ff3abc4dc32a943fa09f6a8a5bafe75",
-  "date": "2021-05-05T13:05:26.074Z"
+  "dependentChangeType": "patch"
 }
