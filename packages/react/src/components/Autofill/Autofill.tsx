@@ -36,7 +36,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       // Don't update if we have a null value or the value isn't changing
       // the value should still update if an empty string is passed in
       if (updatedInputValue !== null && updatedInputValue !== state.inputValue && !state.isComposing) {
-        return { inputValue: updatedInputValue, isComposing: state.isComposing };
+        return { ...state, inputValue: updatedInputValue };
       }
     }
     return null;
