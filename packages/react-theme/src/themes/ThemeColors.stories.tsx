@@ -67,7 +67,7 @@ const colorPalette = {
   Charcoal: 'colorPaletteCharcoal',
 } as const;
 
-type GlobalSharedColorsT = keyof typeof colorPalette;
+type GlobalSharedColors = keyof typeof colorPalette;
 
 const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
   position: 'relative',
@@ -85,10 +85,10 @@ const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
 
 const ColorButton: React.FunctionComponent<
   {
-    color: 'neutral' | GlobalSharedColorsT;
+    color: 'neutral' | GlobalSharedColors;
     active: boolean;
-    setPreviewColor: (color: 'neutral' | GlobalSharedColorsT | null) => void;
-    setColor: (color: 'neutral' | GlobalSharedColorsT) => void;
+    setPreviewColor: (color: 'neutral' | GlobalSharedColors | null) => void;
+    setColor: (color: 'neutral' | GlobalSharedColors) => void;
   } & React.ButtonHTMLAttributes<HTMLButtonElement>
 > = ({ style = {}, color, active, setPreviewColor, setColor, ...rest }) => (
   <button
@@ -111,8 +111,8 @@ const neutralTokens = (Object.keys(theme.light) as Array<keyof Theme>).filter(to
 );
 
 export const Colors = () => {
-  const [color, setColor] = React.useState<'neutral' | GlobalSharedColorsT>('neutral');
-  const [previewColor, setPreviewColor] = React.useState<'neutral' | GlobalSharedColorsT | null>(null);
+  const [color, setColor] = React.useState<'neutral' | GlobalSharedColors>('neutral');
+  const [previewColor, setPreviewColor] = React.useState<'neutral' | GlobalSharedColors | null>(null);
   const activeColor = previewColor || color;
 
   const tokens: Array<keyof Theme> =
@@ -135,7 +135,7 @@ export const Colors = () => {
             background: theme.light.colorNeutralForeground1,
           }}
         />
-        {(Object.keys(colorPalette) as GlobalSharedColorsT[]).map(colorName => (
+        {(Object.keys(colorPalette) as GlobalSharedColors[]).map(colorName => (
           <ColorButton
             key={colorName}
             color={colorName}
