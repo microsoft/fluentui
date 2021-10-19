@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(reat-theme): Remove template literal types for color palette",
+  "packageName": "@fluentui/react-theme",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
