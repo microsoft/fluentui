@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme } from '../index';
-import { GlobalSharedColorsT, Theme } from '../types';
+import { Theme } from '../types';
 import { ColorRampItem } from './ColorRamp.stories';
 
 // FIXME: hardcoded theme
@@ -15,7 +15,59 @@ export default {
   title: 'Theme/Colors',
 };
 
-type ColorPaletteMap = { [key in GlobalSharedColorsT]: `colorPalette${key}` };
+const colorPalette = {
+  DarkRed: `colorPaletteDarkRed`,
+  Burgundy: 'colorPaletteBurgundy',
+  Cranberry: 'colorPaletteCranberry',
+  Red: 'colorPaletteRed',
+  DarkOrange: 'colorPaletteDarkOrange',
+  Bronze: 'colorPaletteBronze',
+  Pumpkin: 'colorPalettePumpkin',
+  Orange: 'colorPaletteOrange',
+  Peach: 'colorPalettePeach',
+  Marigold: 'colorPaletteMarigold',
+  Yellow: 'colorPaletteYellow',
+  Gold: 'colorPaletteGold',
+  Brass: 'colorPaletteBrass',
+  Brown: 'colorPaletteBrown',
+  DarkBrown: 'colorPaletteDarkBrown',
+  Lime: 'colorPaletteLime',
+  Forest: 'colorPaletteForest',
+  Seafoam: 'colorPaletteSeafoam',
+  LightGreen: 'colorPaletteLightGreen',
+  Green: 'colorPaletteGreen',
+  DarkGreen: 'colorPaletteDarkGreen',
+  LightTeal: 'colorPaletteLightTeal',
+  Teal: 'colorPaletteTeal',
+  DarkTeal: 'colorPaletteDarkTeal',
+  Cyan: 'colorPaletteCyan',
+  Steel: 'colorPaletteSteel',
+  LightBlue: 'colorPaletteLightBlue',
+  Blue: 'colorPaletteBlue',
+  RoyalBlue: 'colorPaletteRoyalBlue',
+  DarkBlue: 'colorPaletteDarkBlue',
+  Cornflower: 'colorPaletteCornflower',
+  Navy: 'colorPaletteNavy',
+  Lavender: 'colorPaletteLavender',
+  Purple: 'colorPalettePurple',
+  DarkPurple: 'colorPaletteDarkPurple',
+  Orchid: 'colorPaletteOrchid',
+  Grape: 'colorPaletteGrape',
+  Berry: 'colorPaletteBerry',
+  Lilac: 'colorPaletteLilac',
+  Pink: 'colorPalettePink',
+  HotPink: 'colorPaletteHotPink',
+  Magenta: 'colorPaletteMagenta',
+  Plum: 'colorPalettePlum',
+  Beige: 'colorPaletteBeige',
+  Mink: 'colorPaletteMink',
+  Silver: 'colorPaletteSilver',
+  Platinum: 'colorPalettePlatinum',
+  Anchor: 'colorPaletteAnchor',
+  Charcoal: 'colorPaletteCharcoal',
+} as const;
+
+type GlobalSharedColorsT = keyof typeof colorPalette;
 
 const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
   position: 'relative',
@@ -62,58 +114,6 @@ export const Colors = () => {
   const [color, setColor] = React.useState<'neutral' | GlobalSharedColorsT>('neutral');
   const [previewColor, setPreviewColor] = React.useState<'neutral' | GlobalSharedColorsT | null>(null);
   const activeColor = previewColor || color;
-
-  const colorPalette: ColorPaletteMap = {
-    DarkRed: `colorPaletteDarkRed`,
-    Burgundy: 'colorPaletteBurgundy',
-    Cranberry: 'colorPaletteCranberry',
-    Red: 'colorPaletteRed',
-    DarkOrange: 'colorPaletteDarkOrange',
-    Bronze: 'colorPaletteBronze',
-    Pumpkin: 'colorPalettePumpkin',
-    Orange: 'colorPaletteOrange',
-    Peach: 'colorPalettePeach',
-    Marigold: 'colorPaletteMarigold',
-    Yellow: 'colorPaletteYellow',
-    Gold: 'colorPaletteGold',
-    Brass: 'colorPaletteBrass',
-    Brown: 'colorPaletteBrown',
-    DarkBrown: 'colorPaletteDarkBrown',
-    Lime: 'colorPaletteLime',
-    Forest: 'colorPaletteForest',
-    Seafoam: 'colorPaletteSeafoam',
-    LightGreen: 'colorPaletteLightGreen',
-    Green: 'colorPaletteGreen',
-    DarkGreen: 'colorPaletteDarkGreen',
-    LightTeal: 'colorPaletteLightTeal',
-    Teal: 'colorPaletteTeal',
-    DarkTeal: 'colorPaletteDarkTeal',
-    Cyan: 'colorPaletteCyan',
-    Steel: 'colorPaletteSteel',
-    LightBlue: 'colorPaletteLightBlue',
-    Blue: 'colorPaletteBlue',
-    RoyalBlue: 'colorPaletteRoyalBlue',
-    DarkBlue: 'colorPaletteDarkBlue',
-    Cornflower: 'colorPaletteCornflower',
-    Navy: 'colorPaletteNavy',
-    Lavender: 'colorPaletteLavender',
-    Purple: 'colorPalettePurple',
-    DarkPurple: 'colorPaletteDarkPurple',
-    Orchid: 'colorPaletteOrchid',
-    Grape: 'colorPaletteGrape',
-    Berry: 'colorPaletteBerry',
-    Lilac: 'colorPaletteLilac',
-    Pink: 'colorPalettePink',
-    HotPink: 'colorPaletteHotPink',
-    Magenta: 'colorPaletteMagenta',
-    Plum: 'colorPalettePlum',
-    Beige: 'colorPaletteBeige',
-    Mink: 'colorPaletteMink',
-    Silver: 'colorPaletteSilver',
-    Platinum: 'colorPalettePlatinum',
-    Anchor: 'colorPaletteAnchor',
-    Charcoal: 'colorPaletteCharcoal',
-  };
 
   const tokens: Array<keyof Theme> =
     activeColor === 'neutral'
