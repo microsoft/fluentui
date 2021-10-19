@@ -11,12 +11,12 @@ import {
     bodyFont,
     controlCornerRadius,
     designUnit,
+    focusStrokeInner,
     focusStrokeOuter,
     focusStrokeWidth,
     foregroundOnAccentRest,
     neutralFillRest,
     neutralForegroundRest,
-    strokeWidth,
     typeRampBaseFontSize,
     typeRampBaseLineHeight,
 } from "../design-tokens";
@@ -74,11 +74,6 @@ export const avatarStyles: (
           outline: none;
         }
 
-        :host(:${focusVisible}) .circle,
-        :host(:${focusVisible}) .square {
-            box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
-        }
-
         .backplate {
             position: relative;
             display: flex;
@@ -111,6 +106,14 @@ export const avatarStyles: (
         :host([appearance='accent']) .link {
             color: ${foregroundOnAccentRest};
             fill: currentcolor;
+        }
+
+        :host(:${focusVisible}) .circle,
+        :host(:${focusVisible}) .square,
+        :host(:${focusVisible}[appearance='accent']) .circle,
+        :host(:${focusVisible}[appearance='accent']) .square {
+          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner},
+          0 0 0 calc(${focusStrokeWidth} * 1px) ${focusStrokeOuter};
         }
     `.withBehaviors(
         new DirectionalStyleSheetBehavior(
