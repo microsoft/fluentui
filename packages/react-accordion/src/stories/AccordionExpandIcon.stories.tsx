@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RocketIcon } from '../icons.stories';
+import { Rocket20Regular as RocketIcon } from '@fluentui/react-icons';
 import {
   AccordionItem,
   AccordionHeader,
