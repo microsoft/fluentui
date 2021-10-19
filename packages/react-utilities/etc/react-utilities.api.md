@@ -41,6 +41,9 @@ export function canUseDOM(): boolean;
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
+// @public
+export const clamp: (value: number, min: number, max: number) => number;
+
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
 
@@ -62,7 +65,7 @@ export type ComponentPropsCompat = {
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
     components?: {
-        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & Shorthands;
 
@@ -86,11 +89,19 @@ export const divProperties: Record<string, number>;
 // @public
 export const formProperties: Record<string, number>;
 
+// Warning: (ae-forgotten-export) The symbol "ObscureEventName" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
+
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
+
+// @public
+export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
 export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {

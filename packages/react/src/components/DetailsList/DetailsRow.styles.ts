@@ -8,6 +8,7 @@ import {
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+import { GlobalClassNames as LinkGlobalClassNames } from '../../components/Link/Link.styles';
 import type { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import type { IStyle } from '../../Styling';
 
@@ -61,6 +62,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     className,
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
     enableUpdateAnimations,
+    disabled,
   } = props;
 
   const { palette, fonts } = theme;
@@ -73,7 +75,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     neutralDark,
     neutralQuaternaryAlt,
   } = palette;
-  const { focusBorder } = theme.semanticColors;
+  const { focusBorder, linkHovered: focusedLinkColor } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(DetailsRowGlobalClassNames, theme);
 
@@ -136,6 +138,10 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
           right: 0,
           content: '',
           borderTop: `1px solid ${white}`,
+        },
+
+        [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
+          color: focusedLinkColor,
         },
 
         // Selected State hover
@@ -285,6 +291,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     },
 
     compact && cellCompactStyles,
+    disabled && { opacity: 0.5 },
   ];
 
   return {
@@ -319,6 +326,10 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
             selectors: {
               [`.${classNames.isRowHeader}`]: {
                 color: colors.defaultHoverHeaderText,
+              },
+
+              [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
+                color: focusedLinkColor,
               },
             },
           },

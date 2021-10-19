@@ -39,6 +39,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     '@storybook/addon-a11y',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
+    'storybook-addon-export-to-codesandbox',
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({
@@ -51,6 +52,22 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 
     if (config.module && config.module.rules) {
       overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
+
+      config.module.rules.unshift({
+        test: /\.stories\.tsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [require('storybook-addon-export-to-codesandbox').babelPlugin],
+          },
+        },
+      });
+    }
+
+    if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
+      // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
+      config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
     }
 
     return config;

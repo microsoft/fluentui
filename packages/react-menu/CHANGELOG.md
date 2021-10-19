@@ -1,8 +1,195 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 22 Sep 2021 10:10:07 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Oct 2021 19:45:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-beta.2)
+
+Tue, 12 Oct 2021 19:45:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-beta.1..@fluentui/react-menu_v9.0.0-beta.2)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.2 ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by beachball)
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.92..@fluentui/react-menu_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+
+## [9.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.92)
+
+Tue, 05 Oct 2021 12:47:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.91..@fluentui/react-menu_v9.0.0-alpha.92)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.78 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-alpha.61 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.90 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.73 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.60 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.22 ([PR #20108](https://github.com/microsoft/fluentui/pull/20108) by beachball)
+
+## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.91)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.90..@fluentui/react-menu_v9.0.0-alpha.91)
+
+### Changes
+
+- Adds ForwardRefComponent to react-menu components declaration ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.39 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.77 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-alpha.60 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.65 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.89 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.72 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.59 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+
+## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.90)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.88..@fluentui/react-menu_v9.0.0-alpha.90)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-alpha.5 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.38 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.76 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-alpha.59 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.64 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.88 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.71 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.55 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.58 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.20 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.88)
+
+Fri, 01 Oct 2021 12:30:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.87..@fluentui/react-menu_v9.0.0-alpha.88)
+
+### Changes
+
+- Remove focus `color` styling since it should use normal root `color` ([PR #18814](https://github.com/microsoft/fluentui/pull/18814) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.87)
+
+Fri, 01 Oct 2021 09:44:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.86..@fluentui/react-menu_v9.0.0-alpha.87)
+
+### Changes
+
+- Use new default pseudo element focus outline style ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- feat(Menu): Update styles from design spec ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by lingfangao@hotmail.com)
+- Bump @fluentui/react-portal to v9.0.0-alpha.57 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.86 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.69 ([PR #19990](https://github.com/microsoft/fluentui/pull/19990) by beachball)
+
+## [9.0.0-alpha.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.86)
+
+Thu, 30 Sep 2021 09:18:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.85..@fluentui/react-menu_v9.0.0-alpha.86)
+
+### Changes
+
+- export to codesandbox ([PR #19802](https://github.com/microsoft/fluentui/pull/19802) by peter@draxler.ml)
+
+## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.85)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.84..@fluentui/react-menu_v9.0.0-alpha.85)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.74 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-alpha.56 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.62 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.85 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.68 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.56 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.49 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.18 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
+
+## [9.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.84)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.83..@fluentui/react-menu_v9.0.0-alpha.84)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.36 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.73 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-alpha.55 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.61 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.84 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.67 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.53 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.55 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.48 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.17 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+
+## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.83)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.82..@fluentui/react-menu_v9.0.0-alpha.83)
+
+### Changes
+
+- fix(Menu): export useMenuPopoverStyles ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by lingfangao@hotmail.com)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.35 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.72 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-alpha.54 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.60 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.83 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.66 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.52 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.54 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+
+## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.82)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.81..@fluentui/react-menu_v9.0.0-alpha.82)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.34 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.71 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-alpha.53 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.59 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-alpha.82 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-alpha.65 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.51 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.53 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.46 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
 
 ## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.81)
 

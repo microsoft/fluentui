@@ -1,26 +1,24 @@
 //
 // !!!   A temporary workaround to avoid dependencies on any non converged packages.
 //
-
-/* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 
-interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+type ITextFieldProps = React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> & {
   value: string;
   onChange: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
   disabled: boolean;
-}
+};
 
 export const TextField = ({ value, onChange, disabled }: ITextFieldProps) => {
   return <input value={value} disabled={disabled} onChange={e => onChange(e, e.target.value)} />;
 };
 
-interface ICheckboxProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+type ICheckboxProps = React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> & {
   checked: boolean;
   onChange: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, checked?: boolean) => void;
   disabled: boolean;
   styles: string;
-}
+};
 
 export const Checkbox = ({ checked, onChange, disabled, styles }: ICheckboxProps) => {
   return (
@@ -34,17 +32,17 @@ export const Checkbox = ({ checked, onChange, disabled, styles }: ICheckboxProps
   );
 };
 
-export interface IDropdownOption {
+export type IDropdownOption = {
   key: string;
   text: string;
-}
+};
 
-interface IDropdownProps {
+type IDropdownProps = {
   options: IDropdownOption[];
   disabled: boolean;
   selectedKey: string;
   onChange: (event: React.FormEvent<HTMLSelectElement>, option?: IDropdownOption) => void;
-}
+};
 
 export const Dropdown = ({ options, disabled, selectedKey, onChange }: IDropdownProps) => {
   return (

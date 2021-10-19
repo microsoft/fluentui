@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 22 Sep 2021 10:10:07 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.56..@fluentui/react-utilities_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+
+## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.56)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.55..@fluentui/react-utilities_v9.0.0-alpha.56)
+
+### Changes
+
+- Add and use ForwardRefComponent helper type ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.55)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.53..@fluentui/react-utilities_v9.0.0-alpha.55)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-alpha.5 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.53)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.52..@fluentui/react-utilities_v9.0.0-alpha.53)
+
+### Changes
+
+- Updates ComponentState on custom props ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.52)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.51..@fluentui/react-utilities_v9.0.0-alpha.52)
+
+### Changes
+
+- Add as prop to properties allowed with getNativeElementProps ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by andredias@microsoft.com)
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.51)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.50..@fluentui/react-utilities_v9.0.0-alpha.51)
+
+### Changes
+
+- Adding clamp and getRTLSafeKey utilities. ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by czearing@outlook.com)
 
 ## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.50)
 

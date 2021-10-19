@@ -1,107 +1,119 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
 
-const useRootStyles = makeStyles({
-  checked: theme => ({
-    background: theme.alias.color.neutral.neutralBackground1Selected,
-    borderColor: theme.alias.color.neutral.neutralStroke1,
-    color: theme.alias.color.neutral.neutralForeground1,
+const useCheckedStyles = makeStyles({
+  // Base styles
+  base: theme => ({
+    background: theme.colorNeutralBackground1Selected,
+    borderColor: theme.colorNeutralStroke1,
+    color: theme.colorNeutralForeground1,
 
-    borderWidth: theme.global.strokeWidth.thin,
+    borderWidth: theme.strokeWidthThin,
 
     ':hover': {
-      background: theme.alias.color.neutral.neutralBackground1Hover,
-      borderColor: theme.alias.color.neutral.neutralStroke1Hover,
-      color: theme.alias.color.neutral.neutralForeground1,
+      background: theme.colorNeutralBackground1Hover,
+      borderColor: theme.colorNeutralStroke1Hover,
+      color: theme.colorNeutralForeground1,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.neutralBackground1Pressed,
-      borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
-      color: theme.alias.color.neutral.neutralForeground1,
+      background: theme.colorNeutralBackground1Pressed,
+      borderColor: theme.colorNeutralStroke1Pressed,
+      color: theme.colorNeutralForeground1,
     },
   }),
-  checkedOutline: theme => ({
-    background: theme.alias.color.neutral.transparentBackgroundSelected,
+
+  // Appearance variations
+  outline: theme => ({
+    background: theme.colorTransparentBackgroundSelected,
 
     ':hover': {
-      background: theme.alias.color.neutral.transparentBackgroundHover,
+      background: theme.colorTransparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.transparentBackgroundPressed,
+      background: theme.colorTransparentBackgroundPressed,
     },
   }),
-  checkedPrimary: theme => ({
-    background: theme.alias.color.neutral.brandBackgroundSelected,
+  primary: theme => ({
+    background: theme.colorBrandBackgroundSelected,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundOnBrand,
 
     ':hover': {
-      background: theme.alias.color.neutral.brandBackgroundHover,
+      background: theme.colorBrandBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: theme.colorNeutralForegroundOnBrand,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.brandBackgroundPressed,
+      background: theme.colorBrandBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: theme.colorNeutralForegroundOnBrand,
     },
   }),
-  checkedSubtle: theme => ({
-    background: theme.alias.color.neutral.subtleBackgroundSelected,
+  subtle: theme => ({
+    background: theme.colorSubtleBackgroundSelected,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForeground2BrandSelected,
+    color: theme.colorNeutralForeground2BrandSelected,
 
     ':hover': {
-      background: theme.alias.color.neutral.subtleBackgroundHover,
+      background: theme.colorSubtleBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandHover,
+      color: theme.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.subtleBackgroundPressed,
+      background: theme.colorSubtleBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+      color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
-  checkedTransparent: theme => ({
-    background: theme.alias.color.neutral.transparentBackgroundSelected,
+  transparent: theme => ({
+    background: theme.colorTransparentBackgroundSelected,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForeground2BrandSelected,
+    color: theme.colorNeutralForeground2BrandSelected,
 
     ':hover': {
-      background: theme.alias.color.neutral.transparentBackgroundHover,
+      background: theme.colorTransparentBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandHover,
+      color: theme.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.transparentBackgroundPressed,
+      background: theme.colorTransparentBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+      color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
-  disabled: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
-    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+});
+
+const useDisabledStyles = makeStyles({
+  // Base styles
+  base: theme => ({
+    background: theme.colorNeutralBackgroundDisabled,
+    borderColor: theme.colorNeutralStrokeDisabled,
+    color: theme.colorNeutralForegroundDisabled,
 
     ':hover': {
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      background: theme.colorNeutralBackgroundDisabled,
+      borderColor: theme.colorNeutralStrokeDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
 
     ':active': {
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      background: theme.colorNeutralBackgroundDisabled,
+      borderColor: theme.colorNeutralStrokeDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
   }),
-  disabledPrimary: {
+
+  // Appearance variations
+  outline: {
+    /* No styles */
+  },
+  primary: {
     borderColor: 'transparent',
 
     ':hover': {
@@ -112,7 +124,7 @@ const useRootStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  disabledSubtle: {
+  subtle: {
     background: 'none',
     borderColor: 'transparent',
 
@@ -126,7 +138,7 @@ const useRootStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  disabledTransparent: {
+  transparent: {
     background: 'none',
     borderColor: 'transparent',
 
@@ -143,19 +155,22 @@ const useRootStyles = makeStyles({
 });
 
 export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
-  const rootStyles = useRootStyles();
+  const checkedStyles = useCheckedStyles();
+  const disabledStyles = useDisabledStyles();
 
-  state.className = mergeClasses(
-    state.checked && rootStyles.checked,
-    state.checked && state.outline && rootStyles.checkedOutline,
-    state.checked && state.primary && rootStyles.checkedPrimary,
-    state.checked && state.subtle && rootStyles.checkedSubtle,
-    state.checked && state.transparent && rootStyles.checkedTransparent,
-    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
-    (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
-    (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
-    state.className,
+  const { appearance, checked, disabled, disabledFocusable } = state;
+
+  state.root.className = mergeClasses(
+    // Checked styles
+    checked && checkedStyles.base,
+    appearance && checked && checkedStyles[appearance],
+
+    // Disabled styles
+    (disabled || disabledFocusable) && disabledStyles.base,
+    appearance && (disabled || disabledFocusable) && disabledStyles[appearance],
+
+    // User provided class name
+    state.root.className,
   );
 
   useButtonStyles(state);

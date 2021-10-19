@@ -4,72 +4,61 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import type { ComponentStateCompat } from '@fluentui/react-utilities';
-import { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
-import { PresenceBadgeProps } from '@fluentui/react-badge';
-import type { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { PresenceBadgeProps } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ShorthandRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export const Avatar: React_2.ForwardRefExoticComponent<ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
-    image?: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
-    label?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    badge?: number | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | "available" | "away" | "busy" | "doNotDisturb" | "offline" | "outOfOffice" | ObjectShorthandPropsCompat<PresenceBadgeProps> | null | undefined;
-    name?: string | undefined;
-    getInitials?: ((name: string, isRtl: boolean) => string) | undefined;
-    size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128 | undefined;
-    square?: boolean | undefined;
-    active?: "unset" | "active" | "inactive" | undefined;
-    activeDisplay?: "ring" | "ring-shadow" | "ring-glow" | "shadow" | "glow" | undefined;
-    color?: "darkRed" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "darkGreen" | "lightTeal" | "teal" | "steel" | "blue" | "royalBlue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum" | "anchor" | "neutral" | "brand" | "colorful" | undefined;
-    idForColor?: string | undefined;
-} & React_2.RefAttributes<HTMLElement>>;
+export const Avatar: ForwardRefComponent<AvatarProps>;
 
-// @public
-export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label' | 'icon';
+// @public (undocumented)
+export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
+    name: string;
+    getInitials: (name: string, isRtl: boolean) => string;
+    size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+    shape: 'circular' | 'square';
+    active: 'active' | 'inactive' | 'unset';
+    activeAppearance: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+    idForColor: string | undefined;
+};
 
 // @public
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
+// @public
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> & Partial<AvatarCommons> & {
+    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
+        children?: ShorthandRenderFunction<React_2.HTMLAttributes<HTMLImageElement>>;
+    };
+};
+
 // @public (undocumented)
-export type AvatarProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
-    image?: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
-    label?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
-    name?: string;
-    getInitials?: (name: string, isRtl: boolean) => string;
-    size?: AvatarSizeValue;
-    square?: boolean;
-    active?: 'active' | 'inactive' | 'unset';
-    activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
-    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
-    idForColor?: string;
+export type AvatarSlots = {
+    root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & {
+        children?: never;
+    };
+    image?: IntrinsicShorthandProps<'img'>;
+    label?: IntrinsicShorthandProps<'span'>;
+    icon?: IntrinsicShorthandProps<'span'>;
+    badge?: ObjectShorthandProps<PresenceBadgeProps>;
 };
 
 // @public
-export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
-
-// @public
-export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[];
-
-// @public
-export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
-
-// @public (undocumented)
-export type AvatarState = ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> & {
-    ref: React_2.Ref<HTMLElement>;
-    showIcon?: boolean;
+export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
+    color: Exclude<AvatarCommons['color'], 'colorful'>;
 };
 
 // @public (undocumented)
 export const renderAvatar: (state: AvatarState) => JSX.Element;
 
 // @public (undocumented)
-export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>, defaultProps?: AvatarProps | undefined) => AvatarState;
+export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
 
 // @public (undocumented)
 export const useAvatarStyles: (state: AvatarState) => AvatarState;

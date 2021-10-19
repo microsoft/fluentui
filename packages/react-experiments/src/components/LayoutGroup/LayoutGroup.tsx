@@ -49,11 +49,15 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     return (
       <div
         {...divProps}
-        className={mergeStyles('ms-LayoutGroup', {
-          display: 'flex',
-          flexDirection: direction === 'horizontal' ? 'row' : 'column',
-          justifyContent: this._getJustify(justify),
-        } as IRawStyle)}
+        className={mergeStyles(
+          'ms-LayoutGroup',
+          {
+            display: 'flex',
+            flexDirection: direction === 'horizontal' ? 'row' : 'column',
+            justifyContent: this._getJustify(justify),
+          } as IRawStyle,
+          divProps.className,
+        )}
       >
         {group}
       </div>

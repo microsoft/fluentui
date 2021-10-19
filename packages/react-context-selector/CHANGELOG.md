@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Wed, 22 Sep 2021 10:10:07 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.39..@fluentui/react-context-selector_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.39)
+
+Tue, 05 Oct 2021 09:28:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.38..@fluentui/react-context-selector_v9.0.0-alpha.39)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.56 ([PR #20081](https://github.com/microsoft/fluentui/pull/20081) by beachball)
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.38)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.36..@fluentui/react-context-selector_v9.0.0-alpha.38)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.55 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.36)
+
+Mon, 27 Sep 2021 08:06:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.35..@fluentui/react-context-selector_v9.0.0-alpha.36)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.53 ([PR #19981](https://github.com/microsoft/fluentui/pull/19981) by beachball)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.35)
+
+Fri, 24 Sep 2021 09:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.34..@fluentui/react-context-selector_v9.0.0-alpha.35)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.52 ([PR #19950](https://github.com/microsoft/fluentui/pull/19950) by beachball)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.34)
+
+Thu, 23 Sep 2021 08:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.33..@fluentui/react-context-selector_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.51 ([commit](https://github.com/microsoft/fluentui/commit/95682da34c48813f7658032ae490d21d2f363b90) by beachball)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.33)
 

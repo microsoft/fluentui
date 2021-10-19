@@ -18,6 +18,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- `Popup` should not dismiss when its iframe content is focused @ling1726 ([#19955](https://github.com/microsoft/fluentui/pull/19955))
+- `whatInput` Add typings to what input event listeners @ling1726 ([#20024](https://github.com/microsoft/fluentui/pull/20024))
+- Remove `active` as condition to open submenu on `MenuItem` and active styles for vertical menu @chassunc ([#20062](https://github.com/microsoft/fluentui/pull/20062))
+- `carousel` Add disableClickableNav to ProtoTypes list @yifeigogo ([#20053](https://github.com/microsoft/fluentui/pull/20053))
+- Adding brand `backgroundHover3`, brand `backgroundPressed2`, and default `borderTransparentActive` @notandrew ([#20056](https://github.com/microsoft/fluentui/pull/20056))
+- Spread event props from trigger in `Popup` @assuncaocharles ([#20162](https://github.com/microsoft/fluentui/pull/20162))
+
+### Features
+- Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
 
 <!--------------------------------[ v0.59.0 ]------------------------------- -->
 ## [v0.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.59.0) (2021-09-20)

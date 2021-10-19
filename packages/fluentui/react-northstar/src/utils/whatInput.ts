@@ -73,6 +73,8 @@ const setUp = () => {
   doUpdate(window.document);
 };
 
+type WhatInputEvents = MouseEvent | TouchEvent | KeyboardEvent;
+
 /*
  * events
  */
@@ -107,7 +109,7 @@ const addListeners = (eventTarget: Window) => {
 };
 
 // checks conditions before updating new input
-const setInput = event => {
+const setInput = (event: WhatInputEvents) => {
   // only execute if the event buffer timer isn't running
   if (!isBuffering) {
     const eventKey = event.which;
@@ -133,7 +135,7 @@ const doUpdate = (target: Document) => {
 };
 
 // buffers events that frequently also fire mouse events
-const eventBuffer = event => {
+const eventBuffer = (event: WhatInputEvents) => {
   // set the current input
   setInput(event);
 
