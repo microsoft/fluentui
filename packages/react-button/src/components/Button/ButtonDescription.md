@@ -8,4 +8,4 @@ See also:
 [ToggleButton](/?path=/docs/components-togglebutton--toggle-button-playground),
 [CompoundButton](/?path=/docs/components-compoundbutton--compound-button-playground)
 
-<img class="featured-image" src="./fluentui-banner2.jpg" alt="Hello3" />
+<img class="featured-image" src="./fluentui-banner2.jpg" alt="An image of many user interface component designs." />
