@@ -79,7 +79,11 @@ export type InputProps = InputCommons & Omit<ComponentProps<InputSlots, 'input'>
 
 ### Main props
 
-Note: most of these are defined in `InputCommons` since they're shared with `InputState`.
+All native HTML `<input>` props are supported. Since the `input` slot is primary (more on that later), top-level native props except `className` and `style` will go to the input.
+
+The top-level `ref` prop also points to the `<input>`. This can be used for things like getting the current value or manipulating focus or selection (instead of explicitly exposing an imperative API).
+
+Most custom props are defined in `InputCommons` since they're shared with `InputState`.
 
 ```ts
 export type InputCommons = FieldSizeProps & {
@@ -142,9 +146,14 @@ Note that the field **does not** include a label, required indicator, descriptio
 
 ```ts
 export type InputSlots = {
+  /** Wrapper element for all parts of the component. */
   root: IntrinsicShorthandProps<'span'>;
 
-  /** The actual `<input>` element. `type="text"` will be automatically applied unless overridden. */
+  /**
+   * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
+   * This is the "primary" slot, so top-level native props (except `className` and `style`) and the
+   * top-level `ref` will go here.
+   */
   input: IntrinsicShorthandProps<'input'>;
 
   /**
@@ -311,12 +320,12 @@ type InputBehaviorProps = { disabled?: boolean; required?: boolean; error?: bool
 Native props following standard behavior in both libraries + converged:
 
 - `disabled?: boolean`
-- `readOnly?: boolean` -- VERIFY v0
-- `autoComplete?: string` -- VERIFY v0
-- and any other native props not specified
+- `readOnly?: boolean`
+- `autoComplete?: string`
+- and most other native props not specified
 
 ### Imperative API
 
 In v8 there's an explicit imperative API, which is accessed via `componentRef` following the [`ITextField` interface](https://github.com/microsoft/fluentui/blob/master/packages/react/src/components/TextField/TextField.types.ts#L9). The methods are used for getting the value and manipulating focus and selection.
 
-In v0, all these things can be done by calling methods on the `<input>` element itself, exposed via the top-level `ref`.
+In v0 (and in converged), all these things can be done by calling methods on the `<input>` element itself, exposed via the top-level `ref`.

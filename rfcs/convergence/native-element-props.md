@@ -76,22 +76,22 @@ Third-party styling libraries can assume that `className` applies to the root DO
 
 _For reference, this proposal was labeled **Option D** in discussion on [PR #18983](https://github.com/microsoft/fluentui/pull/18983#issuecomment-910563694)_.
 
-### Introduce the concept of a `primary` slot
+### Introduce the concept of a _primary_ slot
 
-The `primary` slot is the slot that receives the native props that are specified as props of the component itself.
+The _**primary**_ slot is the slot that receives the native props that are specified as props of the component itself.
 
-1. By default, `root` (the outermost DOM element) is the primary slot:
+**By default, `root` (the outermost DOM element) is the primary slot.**
 
-   - This is the _status quo_: all components worked like this prior to this RFC.
-   - `root` gets all of the native props specified as props on the component.
-   - The component does _not_ have a prop called `root`.
+- This is the _status quo_: all components worked like this prior to this RFC.
+- `root` gets all of the native props specified as props on the component.
+- The component does _not_ have a prop called `root`.
 
-2. A component can be designed with a different `primary` slot:
+**In special cases, a component can designate a different primary slot.**
 
-   - All native props are forwarded to the `primary` slot, _except_ `className` and `style`.
-   - The `className` and `style` props are _always_ forwarded to the `root` slot.
-   - Both `root` and the `primary` slot are exposed as props, to allow for props to be explicitly set on those slots.
-   - The `primary` slot is intrinsic to the component, and is part of how it works. Users cannot designate a different slot as primary.
+- All native props are forwarded to the primary slot, _except_ `className` and `style`.
+- The `className` and `style` props are _always_ forwarded to the `root` slot.
+- Both `root` and the primary slot are exposed as props, to allow for props to be explicitly set on those slots.
+- The primary slot is intrinsic to the component, and is part of how it works. Users cannot designate a different slot as primary.
 
 See [Usage examples](#Usage-examples) below for examples of how this works.
 
@@ -107,8 +107,8 @@ To avoid confusion from a user standpoint, if we're going to allow varying where
 
 Examples include:
 
-- Input components like `Input`, `Checkbox`, `Dropdown`, etc. These wrap the actual `<input>` element with styling/layout divs, but the `<input>` should be the primary slot.
-- Example from v8 (not sure if this applies to converged): Modal's actual React root element is usually a Layer, but from a user standpoint it makes a lot more sense to apply top-level props to the modal _content's_ root element.
+- Input components like `Input`, `Checkbox`, `Dropdown`, etc. These wrap the actual `<input>` or `<select>` element with styling/layout elements, but the `<input>` or `<select>` should be the primary slot.
+- Example from v8 (may look different in converged): Modal's actual React root element is usually a Layer, but from a user standpoint it makes a lot more sense to apply top-level props to the modal _content's_ root element.
 
 ### Propsed Implementation
 
@@ -149,6 +149,9 @@ const state = {
 
 - Need to be able to specify which is the primary slot in conformance tests
 - Check that `className` and `style` always go to the root slot
+- Check that slot props take precedence over top-level props (with custom primary slot):
+  - `<Input className="foo" root={{ className: 'bar' }} />` => root element has `className="bar"`
+  - `<Input id="foo" input={{ id: 'bar' }} />` => input has `id="bar"`
 - Check that `<input>` elements are always the primary slot
 
 ## Usage examples

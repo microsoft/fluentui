@@ -4,12 +4,12 @@ Input has many variants and additional features. We don't plan to implement any 
 
 ## Multi-line (`textarea`)
 
-This will tentatively be a separate component, likely sharing some internals with the basic `Input` using hooks. Scheduling TBD but likely late 2021.
+This will tentatively be a separate component, likely sharing some internals with the basic `Input` using hooks (scheduling TBD).
 
-| Prop/concept       | v8                          | v0  | Proposal                                                 |
-| ------------------ | --------------------------- | --- | -------------------------------------------------------- |
-| resizable          | `resizable?: boolean`       |     | via native props                                         |
-| auto-adjust height | `autoAdjustHeight?: boolean |     | TBD (common request but has nasty implementation issues) |
+| Prop/concept       | v8                           | v0  | Proposal                                                 |
+| ------------------ | ---------------------------- | --- | -------------------------------------------------------- |
+| resizable          | `resizable?: boolean`        |     | via native props                                         |
+| auto-adjust height | `autoAdjustHeight?: boolean` |     | TBD (common request but has nasty implementation issues) |
 
 Similar to both v8 and v0, passing other `textarea` native props as top-level component props will be supported.
 
