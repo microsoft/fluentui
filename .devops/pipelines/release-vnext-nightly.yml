@@ -33,12 +33,11 @@ steps:
 
   - template: ../templates/yarn-install.yml
 
-  - template: ../templates/release/git-auth.yml
-
   # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
   - script: |
       commitSha=$(git log -n 1 --pretty=format:"%h")
-      yarn nx workspace-generator version-bump --all --bumpType prerelease --prereleaseTag "nightly.${commitSha}"
+      date=$(date +"%Y%m%d")
+      yarn nx workspace-generator version-bump --all --bumpType prerelease --prereleaseTag "nightly.${commitSha}+${date}"
       git add .
       git commit -m "bump nightly versions"
       yarn change --type prerelease --message "Release nightly v9"
@@ -48,10 +47,8 @@ steps:
 
   # nightly builds are one off, don't push version bumps and tags to the repo
   - script: |
-      yarn publish:beachball -n $(npmToken) --no-push
+      yarn publish:beachball -n $(npmToken) --no-push --no-tag --tag nightly
       git reset --hard origin/master
-    env:
-      GITHUB_PAT: $(githubPAT)
     displayName: Publish changes and bump version
 
   # This would usually be run automatically (via a pipeline decorator from an extension), but the
