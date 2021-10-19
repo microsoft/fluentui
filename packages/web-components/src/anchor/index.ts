@@ -1,7 +1,7 @@
-import { attr, customElement } from '@microsoft/fast-element';
-import { Anchor, AnchorTemplate as template } from '@microsoft/fast-foundation';
+import { attr } from '@microsoft/fast-element';
+import { Anchor as FoundationAnchor, anchorTemplate as template } from '@microsoft/fast-foundation';
 import { ButtonAppearance } from '../button';
-import { AnchorStyles as styles } from './anchor.styles';
+import { anchorStyles as styles } from './anchor.styles';
 
 /**
  * Types of anchor appearance.
@@ -10,26 +10,10 @@ import { AnchorStyles as styles } from './anchor.styles';
 export type AnchorAppearance = ButtonAppearance | 'hypertext';
 
 /**
- * The Fluent Anchor Element. Implements {@link @microsoft/fast-foundation#Anchor},
- * {@link @microsoft/fast-foundation#AnchorTemplate}
- *
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-anchor\>
- *
- * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ * The Fluent version of Anchor
+ * @internal
  */
-@customElement({
-  name: 'fluent-anchor',
-  template,
-  styles,
-  shadowOptions: {
-    delegatesFocus: true,
-    mode: 'closed',
-  },
-})
-export class FluentAnchor extends Anchor {
+export class Anchor extends FoundationAnchor {
   /**
    * The appearance the anchor should have.
    *
@@ -77,4 +61,25 @@ export class FluentAnchor extends Anchor {
  * Styles for Anchor
  * @public
  */
-export const AnchorStyles = styles;
+export const anchorStyles = styles;
+
+/**
+ * The Fluent Anchor Element. Implements {@link @microsoft/fast-foundation#Anchor},
+ * {@link @microsoft/fast-foundation#anchorTemplate}
+ *
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-anchor\>
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ */
+export const fluentAnchor = Anchor.compose({
+  baseName: 'anchor',
+  baseClass: FoundationAnchor,
+  template,
+  styles,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
+});

@@ -25,6 +25,7 @@ export const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesPro
       padding: v.itemPadding,
       color: v.foreground || colors.foreground1,
       cursor: 'pointer',
+      userSelect: 'none',
 
       ':focus': borderFocusStyles[':focus'],
 

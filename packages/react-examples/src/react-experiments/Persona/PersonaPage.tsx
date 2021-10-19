@@ -31,12 +31,8 @@ export const PersonaPage = (props: IComponentDemoPageProps) => {
       propertiesTables={
         <PropertiesTableSet
           sources={[
-            require<
-              string
-            >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Persona/Persona.types.ts'),
-            require<
-              string
-            >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Persona/Vertical/VerticalPersona.types.ts'),
+            require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Persona/Persona.types.ts'),
+            require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Persona/Vertical/VerticalPersona.types.ts'),
           ]}
         />
       }

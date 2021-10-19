@@ -11,16 +11,17 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style"
   },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*"
+  },
   "dependencies": {
-    "@fluentui/eslint-plugin": "^1.2.0",
-    "@fluentui/make-styles": "^9.0.0-alpha.18",
-    "@fluentui/react": "^8.14.2",
-    "@fluentui/react-avatar": "^9.0.0-alpha.32",
-    "@fluentui/react-button": "^9.0.0-alpha.32",
-    "@fluentui/react-provider": "^9.0.0-alpha.33",
-    "@fluentui/react-tabs": "^1.0.0-beta.89",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.30",
-    "@fluentui/react-theme": "^9.0.0-alpha.10",
+    "@fluentui/make-styles": "9.0.0-beta.1",
+    "@fluentui/react": "^8.36.5",
+    "@fluentui/react-avatar": "9.0.0-beta.1",
+    "@fluentui/react-button": "9.0.0-beta.2",
+    "@fluentui/react-provider": "9.0.0-beta.2",
+    "@fluentui/react-tabs": "^1.0.0-beta.170",
+    "@fluentui/react-theme": "9.0.0-beta.1",
     "@fluentui/scripts": "^1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/react-dom": "16.9.10",

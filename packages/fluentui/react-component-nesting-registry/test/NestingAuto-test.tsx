@@ -9,13 +9,7 @@ describe('NestingAuto', () => {
 
       expect(wrapper.childAt(0).is('NestingRoot')).toBe(true);
       // <NestingAuto /> => <NestingRoot /> => <NestingAuto /> => <NestingChild />
-      expect(
-        wrapper
-          .childAt(0)
-          .childAt(0)
-          .childAt(0)
-          .is('NestingChild'),
-      ).toBe(true);
+      expect(wrapper.childAt(0).childAt(0).childAt(0).is('NestingChild')).toBe(true);
     });
 
     it('is a render function', () => {

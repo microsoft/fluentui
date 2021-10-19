@@ -1,6 +1,13 @@
 import { addons } from '@storybook/addons';
-import theme from './theme';
+import webcomponentsTheme from './theme';
 
 addons.setConfig({
-  theme,
+  previewTabs: {
+    canvas: { hidden: true },
+  },
+  enableShortcuts: false,
+  sidebar: {
+    showRoots: true,
+  },
+  theme: webcomponentsTheme, // override the default Storybook theme with a custom fluent theme
 });

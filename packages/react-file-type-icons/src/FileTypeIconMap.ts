@@ -278,6 +278,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   fluid: {
     extensions: ['b', 'fluid'],
   },
+  form: {},
   genericfile: {},
   html: {
     extensions: ['htm', 'html', 'mht'],
@@ -367,6 +368,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'jpe',
       'jpeg',
       'jpg',
+      'jxr',
       'kdc',
       'mrw',
       'nef',

@@ -3,14 +3,8 @@ import { create } from 'react-test-renderer';
 
 import { people } from '@fluentui/example-data';
 import { mount } from 'enzyme';
-import {
-  SelectedPeopleList,
-  ISelectedPeopleList,
-  SelectedPersona,
-  ItemWithContextMenu,
-  TriggerOnContextMenu,
-  ItemCanDispatchTrigger,
-} from '../index';
+import { SelectedPeopleList, SelectedPersona, ItemWithContextMenu, TriggerOnContextMenu } from '../index';
+import type { ISelectedPeopleList, ItemCanDispatchTrigger } from '../index';
 
 describe('SelectedPeopleList', () => {
   it('renders nothing if nothing is provided', () => {
@@ -58,10 +52,7 @@ describe('SelectedPeopleList', () => {
       />,
     );
 
-    wrapper
-      .find('button.ms-PickerItem-removeButton')
-      .at(1)
-      .simulate('click');
+    wrapper.find('button.ms-PickerItem-removeButton').at(1).simulate('click');
 
     expect(onItemsRemoved).toBeCalledTimes(1);
   });
@@ -101,24 +92,11 @@ describe('SelectedPeopleList', () => {
 
     // Remove and copy should show up in the menu
     expect(wrapper.find('.ms-ContextualMenu-item')).toHaveLength(2);
-    expect(
-      wrapper
-        .find('.ms-ContextualMenu-item')
-        .at(0)
-        .text(),
-    ).toEqual('Remove');
+    expect(wrapper.find('.ms-ContextualMenu-item').at(0).text()).toEqual('Remove');
 
-    expect(
-      wrapper
-        .find('.ms-ContextualMenu-item')
-        .at(1)
-        .text(),
-    ).toEqual('Copy');
+    expect(wrapper.find('.ms-ContextualMenu-item').at(1).text()).toEqual('Copy');
 
-    wrapper
-      .find('.ms-ContextualMenu-item')
-      .at(0)
-      .simulate('click');
+    wrapper.find('.ms-ContextualMenu-item').at(0).simulate('click');
     expect(removeItems).toBeCalledTimes(1);
   });
 });

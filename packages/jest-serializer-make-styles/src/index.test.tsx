@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import * as React from 'react';
 import { print, test } from './index';
 import { render } from '@testing-library/react';
@@ -7,7 +6,7 @@ import { ProviderContext } from '@fluentui/react-shared-contexts';
 
 const useStyles1 = makeStyles({
   root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
+    color: theme.colorNeutralForeground1,
   }),
   paddingLeft: {
     paddingLeft: '10px',

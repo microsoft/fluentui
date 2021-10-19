@@ -16,7 +16,7 @@ storiesOf('Checkbox', module)
       {story()}
     </Screener>,
   )
-  .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
+  .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { includeRtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
   .addStory('Unchecked disabled', () => <Checkbox label="Unchecked disabled checkbox" disabled />)
   .addStory('Checked disabled', () => (
@@ -34,7 +34,7 @@ storiesOf('Checkbox', module)
   .addStory('Uncontrolled Indeterminate disabled', () => (
     <Checkbox label="Uncontrolled Indeterminate disabled checkbox" disabled defaultIndeterminate />
   ))
-  .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />, { rtl: true })
+  .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />, { includeRtl: true })
   .addStory('Multi-line Checkbox', () => (
     <Checkbox
       // eslint-disable-next-line @fluentui/max-len

@@ -3,8 +3,6 @@ import { mount } from 'enzyme';
 import { SelectionMode, Selection } from '../../Selection';
 import { GroupedList } from './GroupedList';
 import { DetailsRow } from '../DetailsList/DetailsRow';
-import { IGroup } from './GroupedList.types';
-import { IColumn } from '../DetailsList/DetailsList.types';
 import { List } from '../../List';
 import { GroupShowAll } from './GroupShowAll';
 import { Link } from '../../Link';
@@ -12,6 +10,8 @@ import { GroupHeader } from './GroupHeader';
 import { getTheme } from '../../Styling';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
+import type { IGroup } from './GroupedList.types';
+import type { IColumn } from '../DetailsList/DetailsList.types';
 
 describe('GroupedList', () => {
   isConformant({
@@ -70,10 +70,7 @@ describe('GroupedList', () => {
     const wrapper = mount(
       <GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />,
     );
-    const listPage = wrapper
-      .find(List)
-      .find('.ms-List-page')
-      .first();
+    const listPage = wrapper.find(List).find('.ms-List-page').first();
 
     expect(listPage.key()).toBe('group0');
 

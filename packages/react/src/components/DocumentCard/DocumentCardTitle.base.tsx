@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 import { Async, EventGroup, classNamesFunction } from '../../Utilities';
-import {
+import { initializeComponentRef } from '@fluentui/utilities';
+import type {
   IDocumentCardTitleProps,
   IDocumentCardTitleStyleProps,
   IDocumentCardTitleStyles,
 } from './DocumentCardTitle.types';
-import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef } from '@fluentui/utilities';
+import type { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 
@@ -160,7 +160,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
         const overFlowRate: number = scrollWidth / (parseInt(style.width, 10) * lines);
 
         if (overFlowRate > 1) {
-          const truncatedLength: number = originalTitle.length / overFlowRate - 3 /** Saved for separator */;
+          const truncatedLength: number = originalTitle.length / overFlowRate - 3; /** Saved for separator */
           return this.setState({
             truncatedTitleFirstPiece: originalTitle.slice(0, truncatedLength / 2),
             truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2),

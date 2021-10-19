@@ -5,6 +5,7 @@ const PillActionableExample = () => (
   <Pill
     actionable
     onDismiss={(e, data) => {
+      // eslint-disable-next-line no-console
       console.log(e, data);
     }}
   >

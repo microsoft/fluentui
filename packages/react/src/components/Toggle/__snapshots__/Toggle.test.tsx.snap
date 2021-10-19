@@ -271,7 +271,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           padding-left: 0;
           padding-right: 0;
           padding-top: 5px;
-          word-break: break-all;
+          word-break: break-word;
           word-wrap: break-word;
         }
     htmlFor="Toggle0"
@@ -407,7 +407,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           padding-left: 0;
           padding-right: 0;
           padding-top: 5px;
-          word-break: break-all;
+          word-break: break-word;
           word-wrap: break-word;
         }
     htmlFor="Toggle0"
@@ -540,7 +540,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           padding-left: 0;
           padding-right: 0;
           padding-top: 5px;
-          word-break: break-all;
+          word-break: break-word;
           word-wrap: break-word;
         }
     htmlFor="Toggle0"
@@ -558,7 +558,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
   >
     <button
       aria-checked={false}
-      aria-labelledby="Toggle0-label Toggle0-stateText"
+      aria-labelledby="Toggle0-label"
       className=
           ms-Toggle-background
           {

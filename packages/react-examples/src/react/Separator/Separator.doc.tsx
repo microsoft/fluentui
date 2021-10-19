@@ -32,16 +32,10 @@ export const SeparatorPageProps: IDocPageProps = {
       view: <SeparatorIconExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorDos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorDonts.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

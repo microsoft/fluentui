@@ -12,18 +12,16 @@ import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
 import { Icon } from '../../../Icon';
 import { Image, ImageFit, ImageLoadState } from '../../../Image';
-import {
+import { PersonaInitialsColor, PersonaPresence as PersonaPresenceEnum, PersonaSize } from '../Persona.types';
+import { getPersonaInitialsColor } from '../PersonaInitialsColor';
+import { sizeToPixels } from '../PersonaConsts';
+import { useWarnings } from '@fluentui/react-hooks';
+import type {
   IPersonaCoinProps,
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
   IPersonaPresenceProps,
-  PersonaInitialsColor,
-  PersonaPresence as PersonaPresenceEnum,
-  PersonaSize,
 } from '../Persona.types';
-import { getPersonaInitialsColor } from '../PersonaInitialsColor';
-import { sizeToPixels } from '../PersonaConsts';
-import { useWarnings } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.
@@ -155,36 +153,38 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
 
   return (
     <div role="presentation" {...divProps} className={classNames.coin} ref={forwardedRef}>
-      {// Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
-      // eslint-disable-next-line deprecation/deprecation
-      size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-        <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
-          {shouldRenderInitials && (
-            <div
-              className={getInitialsStyles(
-                classNames.initials,
-                initialsColor,
-                initialsTextColor,
-                text,
-                primaryText,
-                showUnknownPersonaCoin,
-              )}
-              style={coinSizeStyle}
-              aria-hidden="true"
-            >
-              {onRenderInitials(props, renderPersonaCoinInitials)}
-            </div>
-          )}
-          {!hideImage && onRenderPersonaCoin(props, renderCoin)}
+      {
+        // Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
+        // eslint-disable-next-line deprecation/deprecation
+        size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
+          <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
+            {shouldRenderInitials && (
+              <div
+                className={getInitialsStyles(
+                  classNames.initials,
+                  initialsColor,
+                  initialsTextColor,
+                  text,
+                  primaryText,
+                  showUnknownPersonaCoin,
+                )}
+                style={coinSizeStyle}
+                aria-hidden="true"
+              >
+                {onRenderInitials(props, renderPersonaCoinInitials)}
+              </div>
+            )}
+            {!hideImage && onRenderPersonaCoin(props, renderCoin)}
+            <PersonaPresence {...personaPresenceProps} />
+          </div>
+        ) : // Otherwise, render just PersonaPresence.
+        props.presence ? (
           <PersonaPresence {...personaPresenceProps} />
-        </div>
-      ) : // Otherwise, render just PersonaPresence.
-      props.presence ? (
-        <PersonaPresence {...personaPresenceProps} />
-      ) : (
-        // Just render Contact Icon if there isn't a Presence prop.
-        <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
-      )}
+        ) : (
+          // Just render Contact Icon if there isn't a Presence prop.
+          <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
+        )
+      }
       {props.children}
     </div>
   );

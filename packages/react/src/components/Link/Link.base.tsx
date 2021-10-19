@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ILinkProps } from './Link.types';
 import { useLink } from './useLink';
+import type { ILinkProps } from './Link.types';
 
 export const LinkBase: React.FunctionComponent<ILinkProps> = React.forwardRef<HTMLElement, ILinkProps>((props, ref) => {
   const { slots, slotProps } = useLink(props, ref);

@@ -35,17 +35,6 @@ describe('Top Level Component File Conformance', () => {
     jest.resetModules();
   });
 
-  // Top Level Compoennt File Compliance -
-  // make sure that there is a corresponding top level component file for each component in the directory
-  components.forEach(componentName => {
-    it(`${componentName} has a corresponding top level component file`, () => {
-      expect(
-        fs.existsSync(path.resolve(__dirname, `../${componentName}.ts`)) ||
-          fs.existsSync(path.resolve(__dirname, `../${componentName}.tsx`)),
-      ).toBeTruthy();
-    });
-  });
-
   // make sure that there is a version import in each corresponding top level component file
   topLevelComponentFiles.forEach(file => {
     const componentName = path.basename(file).split('.')[0];

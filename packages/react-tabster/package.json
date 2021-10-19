@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabster",
-  "version": "9.0.0-alpha.22",
+  "version": "9.0.0-beta.2",
   "description": "Utilities for focus management and facade for tabster",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,12 +17,14 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "storybook": "start-storybook",
+    "test": "jest --passWithNoTests",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-tabster/src && yarn docs",
+    "start": "yarn storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.2.0",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -32,9 +34,12 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
-    "@fluentui/react-utilities": "^9.0.0-alpha.21",
-    "tabster": "^0.6.2",
+    "@fluentui/make-styles": "9.0.0-beta.1",
+    "@fluentui/react-make-styles": "9.0.0-beta.1",
+    "@fluentui/react-shared-contexts": "9.0.0-beta.1",
+    "@fluentui/react-utilities": "9.0.0-beta.1",
+    "keyborg": "^1.0.0",
+    "tabster": "^1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -44,7 +49,7 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "alpha",
+    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

@@ -1,17 +1,13 @@
 import * as React from 'react';
 import { useControllableValue, useId } from '@fluentui/react-hooks';
 import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@fluentui/utilities';
-import {
-  DirectionalHint,
-  FocusZone,
-  FocusZoneDirection,
-  Icon,
-  IContextualMenuProps,
-  IFocusZone,
-} from '@fluentui/react';
-import { CommandButton, IButton } from '@fluentui/react/lib/Button';
-import { TabsImperativeHandle, TabItemProps, TabsProps, TabsStyleProps, TabsStyles, TabItem } from './index';
+import { DirectionalHint, FocusZone, FocusZoneDirection, Icon } from '@fluentui/react';
+import { CommandButton } from '@fluentui/react/lib/Button';
+import { TabItem } from './index';
 import { useOverflow } from '../../utilities/useOverflow';
+import type { IContextualMenuProps, IFocusZone } from '@fluentui/react';
+import type { IButton } from '@fluentui/react/lib/Button';
+import type { TabsImperativeHandle, TabItemProps, TabsProps, TabsStyleProps, TabsStyles } from './index';
 
 const getClassNames = classNamesFunction<TabsStyleProps, TabsStyles>();
 
@@ -131,7 +127,7 @@ export const TabsBase: React.FunctionComponent<TabsProps> = React.forwardRef<HTM
           // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
           aria-label={tab.ariaLabel}
-          role="tab"
+          role={tab.role || 'tab'}
           aria-selected={isSelected}
           name={tab.headerText}
           keytipProps={tab.keytipProps}

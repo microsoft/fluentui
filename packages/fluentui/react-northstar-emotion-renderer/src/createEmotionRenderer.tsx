@@ -1,5 +1,5 @@
-import createCache from '@emotion/cache';
-import { ObjectInterpolation, serializeStyles } from '@emotion/serialize';
+import createCache, { StylisPlugin } from '@emotion/cache';
+import { CSSObject, serializeStyles } from '@emotion/serialize';
 import { StyleSheet } from '@emotion/sheet';
 import { EmotionCache, insertStyles } from '@emotion/utils';
 import {
@@ -9,19 +9,25 @@ import {
   RendererRenderFont,
   RendererRenderRule,
 } from '@fluentui/react-northstar-styles-renderer';
-// @ts-ignore No typings :(
-import focusVisiblePlugin from '@quid/stylis-plugin-focus-visible';
-// @ts-ignore No typings :(
+import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 import * as React from 'react';
 
 import { disableAnimations } from './disableAnimations';
+import { focusVisiblePlugin } from './focusVisiblePlugin';
 import { generateFontSource, getFontLocals, toCSSString } from './fontUtils';
 import { invokeKeyframes } from './invokeKeyframes';
 
 export type CreateEmotionRendererOptions = {
   nonce?: string;
 };
+
+const defaultEmotionPlugins: StylisPlugin[] = [
+  // Emotion does not merge this setting, that's why we should include prefixer manually:
+  // https://github.com/emotion-js/emotion/blob/3a8eaac14c1d157d0b5bb96597444e05f4c33eb1/packages/cache/src/index.js#L83
+  prefixer as StylisPlugin,
+  focusVisiblePlugin as StylisPlugin,
+];
 
 export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}): CreateRenderer {
   const { nonce } = options;
@@ -31,7 +37,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
       container: target?.head,
       key: 'fui',
       nonce,
-      stylisPlugins: [focusVisiblePlugin],
+      stylisPlugins: defaultEmotionPlugins,
 
       // TODO: make this configurable via perf flags
       speedy: true,
@@ -40,7 +46,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
       container: target?.head,
       key: 'rfui',
       nonce,
-      stylisPlugins: [focusVisiblePlugin, rtlPlugin],
+      stylisPlugins: [...defaultEmotionPlugins, rtlPlugin as StylisPlugin],
 
       // TODO: make this configurable via perf flags
       speedy: true,
@@ -62,13 +68,14 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
     };
 
     const renderRule: RendererRenderRule = (styles, param) => {
+      const style = param.disableAnimations ? disableAnimations(styles) : styles;
+
       // Emotion has a bug with passing empty objects, should be fixed in upstream
-      if (Object.keys(styles).length === 0) {
+      if (Object.keys(style).length === 0) {
         return '';
       }
 
       const cache = param.direction === 'ltr' ? cacheLtr : cacheRtl;
-      const style = param.disableAnimations ? disableAnimations(styles) : styles;
       const serialized = serializeStyles([invokeKeyframes(cache, style) as any], cache.registered, undefined);
 
       insertStyles(cache, serialized, true);
@@ -95,7 +102,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
         }
 
         const serializedStyles = serializeStyles(
-          [{ [selector]: (styles as unknown) as ObjectInterpolation<{}> }],
+          [{ [selector]: (styles as unknown) as CSSObject }],
           // This looks as a bug in typings as in Emotion code this function can be used with a single param.
           // https://github.com/emotion-js/emotion/blob/a076e7fa5f78fec6515671b78801cfc9d6cf1316/packages/core/src/global.js#L45
           // @ts-ignore

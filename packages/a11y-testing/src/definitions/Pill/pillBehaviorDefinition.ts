@@ -10,4 +10,8 @@ export const pillBehaviorDefinition: Rule[] = [
     .forProps({ actionable: false })
     .hasAttribute('role', 'none')
     .description(`if element is not actionable.`),
+  BehaviorRule.root()
+    .forProps({ selectable: true, selected: true })
+    .hasAttribute('aria-selected', 'true')
+    .description(`if element is selected.`),
 ];

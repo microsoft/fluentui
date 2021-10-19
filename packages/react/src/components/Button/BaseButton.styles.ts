@@ -1,6 +1,7 @@
-import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
-import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, hiddenContentStyle } from '../../Styling';
+import { HighContrastSelector, getFocusStyle, hiddenContentStyle } from '../../Styling';
+import type { IButtonStyles } from './Button.types';
+import type { ITheme, IRawStyle } from '../../Styling';
 
 const noOutline: IRawStyle = {
   outline: 0,

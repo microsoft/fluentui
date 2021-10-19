@@ -908,6 +908,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       padding-right: 0px;
                       padding-top: 0px;
                       position: absolute;
+                      white-space: nowrap;
                       width: 1px;
                     }
                 id="header8-checkTooltip"
@@ -916,6 +917,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
               </label>
               <div
                 aria-colindex={2}
+                aria-labelledby="header8-thumbnail-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -995,7 +997,6 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header8-thumbnail-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1618,7 +1619,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -2032,7 +2033,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -2446,7 +2447,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -2860,7 +2861,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -3274,7 +3275,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -3688,7 +3689,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -4102,7 +4103,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -4516,7 +4517,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -4930,7 +4931,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -5344,7 +5345,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span

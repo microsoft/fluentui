@@ -2,8 +2,6 @@ import * as React from 'react';
 import {
   Async,
   EventGroup,
-  IRectangle,
-  IRenderFunction,
   css,
   divProperties,
   findIndex,
@@ -13,16 +11,17 @@ import {
   getWindow,
   initializeComponentRef,
 } from '../../Utilities';
-import {
+import { ScrollToMode } from './List.types';
+import { composeRenderFunction } from '../../Utilities';
+import type { IRectangle, IRenderFunction } from '../../Utilities';
+import type {
   IList,
   IListProps,
   IPage,
   IPageProps,
-  ScrollToMode,
   IListOnRenderSurfaceProps,
   IListOnRenderRootProps,
 } from './List.types';
-import { composeRenderFunction } from '../../Utilities';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -140,10 +139,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _scrollTop: number;
   private _pageCache: IPageCache<T>;
 
-  public static getDerivedStateFromProps<T = any>(
-    nextProps: IListProps<T>,
-    previousState: IListState<T>,
-  ): IListState<T> {
+  public static getDerivedStateFromProps<U = any>(
+    nextProps: IListProps<U>,
+    previousState: IListState<U>,
+  ): IListState<U> {
     return previousState.getDerivedStateFromProps(nextProps, previousState);
   }
 

@@ -1,5 +1,8 @@
 // @ts-check
+const path = require('path');
 const configHelpers = require('../utils/configHelpers');
+
+const gitRoot = configHelpers.findGitRoot();
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
@@ -8,11 +11,19 @@ const config = {
     'airbnb',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
     'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@fluentui', '@typescript-eslint', 'deprecation', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks'],
+  plugins: [
+    '@fluentui',
+    '@typescript-eslint',
+    'deprecation',
+    'import',
+    'jest',
+    'jsdoc',
+    'jsx-a11y',
+    'react',
+    'react-hooks',
+  ],
   settings: {
     // Some config suggestions copied from https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
     'import/parsers': {
@@ -20,8 +31,22 @@ const config = {
     },
     'import/resolver': {
       typescript: {
-        alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory
-        directory: process.cwd(),
+        // always try to resolve types under `<root>@types` directory
+        alwaysTryTypes: true,
+        // NOTE: For packages without a tsconfig.json, override with "project": "../../tsconfig.json"
+        project: ['./tsconfig.json', path.join(gitRoot, 'tsconfig.json')],
+      },
+    },
+    jsdoc: {
+      ignoreInternal: true,
+      tagNamePreference: {
+        // Allow any of @default, @defaultvalue, @defaultValue until we settle on a preferred one
+        default: 'default',
+        defaultvalue: 'defaultvalue',
+        defaultValue: 'defaultValue',
+        // Allow either @return or @returns until we settle on a preferred one
+        return: 'return',
+        returns: 'returns',
       },
     },
   },
@@ -54,8 +79,7 @@ const config = {
         ignorePatterns: [
           'require(<.*?>)?\\(',
           'https?:\\/\\/',
-          '^(import|export) \\{ \\w+( as \\w+)? \\} from',
-          '^import \\* as',
+          '^(import|export) ',
           '^\\s+(<path )?d=',
           '!raw-loader',
           '\\bdata:image/',
@@ -131,11 +155,17 @@ const config = {
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        additionalHooks: 'useIsomorphicLayoutEffect',
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
 
     // airbnb or other config overrides (some temporary)
     // TODO: determine which rules we want to enable, and make needed changes (separate PR)
+    'arrow-body-style': 'off',
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
     'default-case': 'off',
@@ -216,6 +246,7 @@ const config = {
     'react/sort-comp': 'off',
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
+    'react/require-default-props': 'off',
     'spaced-comment': 'off',
 
     // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
@@ -254,6 +285,14 @@ const config = {
     'import/named': 'off',
     'import/namespace': 'off',
     'import/no-named-as-default-member': 'off',
+
+    'jsdoc/check-tag-names': [
+      'error',
+      {
+        // Allow TSDoc tags @remarks and @defaultValue
+        definedTags: ['remarks', 'defaultValue'],
+      },
+    ],
   },
 };
 
@@ -304,6 +343,7 @@ const getOverrides = () => [
           ],
         },
       ],
+      '@typescript-eslint/no-shadow': 'error',
 
       // permanently disable due to using other rules which do the same thing
       camelcase: 'off', // redundant with @typescript-eslint/naming-convention
@@ -311,6 +351,7 @@ const getOverrides = () => [
       // permanently disable due to improper TS handling or unnecessary for TS
       // (and not covered by plugin:@typescript-eslint/eslint-recommended)
       'no-empty-function': 'off',
+      'no-shadow': 'off',
       'no-unused-vars': 'off',
       'react/jsx-filename-extension': 'off',
     },
@@ -360,12 +401,7 @@ const getOverrides = () => [
   {
     files: [...configHelpers.devDependenciesFiles],
     rules: {
-      'import/no-extraneous-dependencies': [
-        'error',
-        {
-          packageDir: [process.cwd(), configHelpers.findGitRoot()],
-        },
-      ],
+      'import/no-extraneous-dependencies': ['error', { packageDir: ['.', gitRoot] }],
     },
   },
 ];

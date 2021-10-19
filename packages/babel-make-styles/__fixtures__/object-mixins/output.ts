@@ -1,26 +1,38 @@
 import { __styles } from '@fluentui/react-make-styles';
-import { flexStyles, gridStyles } from './mixins';
-export const useStyles = __styles({
-  root: {
-    mc9l5x0: ['', 'f22iagw0', '.f22iagw0{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}'],
-    '1eiy3e4': [
-      '',
-      'f1vx9l62',
+import { flexStyles, gridStyles, typography } from './mixins';
+export const useStyles = __styles(
+  {
+    root: {
+      mc9l5x: 'f22iagw',
+      Beiy3e4: 'f1vx9l62',
+    },
+    label: {
+      Bhrd7zp: 'figsok6',
+    },
+    header: {
+      Bhrd7zp: 'f16wzh4i',
+    },
+    icon: {
+      mc9l5x: 'f22iagw',
+      Beiy3e4: 'f1vx9l62',
+      sj55zd: 'fe3e8s9',
+    },
+    image: {
+      mc9l5x: 'f13qh94s',
+      w08cwm: 'fz44487',
+      sj55zd: 'fka9v86',
+    },
+  },
+  {
+    d: [
+      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
       '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}',
+      '.figsok6{font-weight:var(--fontWeightRegular);}',
+      '.f16wzh4i{font-weight:bold;}',
+      '.fe3e8s9{color:red;}',
+      '.f13qh94s{display:grid;}',
+      '.fz44487{grid-gap:10px;}',
+      '.fka9v86{color:green;}',
     ],
   },
-  icon: {
-    mc9l5x0: ['', 'f22iagw0', '.f22iagw0{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}'],
-    '1eiy3e4': [
-      '',
-      'f1vx9l62',
-      '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}',
-    ],
-    sj55zd0: ['', 'fe3e8s90', '.fe3e8s90{color:red;}'],
-  },
-  image: {
-    mc9l5x0: ['', 'f13qh94s', '.f13qh94s{display:grid;}'],
-    w08cwm0: ['', 'fz444870', '.fz444870{grid-gap:10px;}'],
-    sj55zd0: ['', 'fka9v860', '.fka9v860{color:green;}'],
-  },
-});
+);

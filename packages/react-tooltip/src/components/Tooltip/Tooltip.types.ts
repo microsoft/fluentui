@@ -1,89 +1,151 @@
 import * as React from 'react';
-import { Position, Alignment } from '@fluentui/react-positioning';
-import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 /**
- * {@docCategory Tooltip}
+ * Slot properties for Tooltip
  */
-export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export type TooltipSlots = {
+  root: Omit<IntrinsicShorthandProps<'div'>, 'children'> & {
+    /**
+     * The child is the element that triggers the Tooltip. It will have additional properties added,
+     * including events and aria properties.
+     * Alternatively, children can be a render function that takes the props and adds
+     * them to the appropriate elements.
+     */
+    children?:
+      | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
+      | ((props: TooltipTriggerProps) => React.ReactNode)
+      | null;
+  };
+};
+
+/**
+ * Properties and state for Tooltip
+ */
+export type TooltipCommons = {
   /**
-   * How to position the tooltip relative to the target element. This is a "best effort" placement,
-   * but the tooltip may be flipped to the other side if there is not enough room.
+   * A tooltip can appear with the default appearance or inverted.
+   * When not specified, the default appearance is used.
+   */
+  appearance?: 'inverted';
+
+  /**
+   * The content displayed inside the tooltip.
+   */
+  content: React.ReactNode;
+
+  /**
+   * Color variant with inverted colors
+   *
+   * @defaultvalue false
+   */
+  inverted?: boolean;
+
+  /**
+   * Render an arrow pointing to the target element
+   *
+   * @defaultvalue false
+   */
+  withArrow?: boolean;
+
+  /**
+   * Configure the positioning of the tooltip
    *
    * @defaultvalue above
    */
-  position?: Position;
+  positioning?: PositioningShorthand;
 
   /**
-   * How to align the tooltip along the edge of the target element.
+   * Control the tooltip's visibility programatically.
    *
-   * @defaultvalue center
-   */
-  align?: Alignment;
-
-  /**
-   * Color variant with a subtle look
-   */
-  subtle?: boolean;
-
-  /**
-   * Do not render an arrow pointing to the target element
-   */
-  noArrow?: boolean;
-
-  /**
-   * Distance between the tooltip and the target element, in pixels
+   * This can be used in conjunction with onVisibleChange to modify the tooltip's show and hide behavior.
    *
-   * @defaultvalue 4
+   * If not provided, the visibility will be controlled by the tooltip itself, based on hover and focus events on the
+   * trigger (child) element.
    */
-  offset?: number;
+  visible?: boolean;
 
   /**
-   * The arrow that points to the target element. This will be rendered by default unless `noArrow` is specified.
+   * Notification when the visibility of the tooltip is changing
    */
-  arrow?: ShorthandProps<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  onVisibleChange?: (
+    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
+    data: OnVisibleChangeData,
+  ) => void;
 
   /**
-   * Imperative handle to show and hide the tooltip
+   * Specifies which aria attribute to set on the trigger element.
+   * * `label` - Set aria-label to the tooltip's content. Requires content to be a string; if not, uses `labelledby`.
+   * * `labelledby` - Set aria-labelledby to the tooltip's id. The id is generated if not provided.
+   * * `describedby` - Set aria-describedby to the tooltip's id. The id is generated if not provided.
+   * * null - Do not set any aria attributes on the trigger element.
+   *
+   * @defaultvalue label
    */
-  componentRef?: React.Ref<TooltipImperativeHandle>;
-}
-
-/**
- * {@docCategory Tooltip}
- */
-export interface TooltipImperativeHandle {
-  /**
-   * Show the tooltip, pointing to the target element
-   */
-  show: (target: HTMLElement) => void;
+  triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
 
   /**
-   * Hide the tooltip
+   * Delay before the tooltip is shown, in milliseconds.
+   *
+   * @defaultvalue 250
    */
-  hide: () => void;
-}
+  showDelay: number;
+
+  /**
+   * Delay before the tooltip is hidden, in milliseconds.
+   *
+   * @defaultvalue 250
+   */
+  hideDelay: number;
+};
 
 /**
- * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
+ * The properties that are added to the trigger of the Tooltip
  */
-export type TooltipShorthandProps = 'arrow';
-
-/**
- * Names of TooltipProps that have a default value in useTooltip
- * {@docCategory Tooltip}
- */
-export type TooltipDefaultedProps = 'position' | 'align' | 'offset';
-
-/**
- * {@docCategory Tooltip}
- */
-export type TooltipState = ComponentState<
-  React.Ref<HTMLElement>,
-  TooltipProps & {
-    visible: boolean;
-  },
-  TooltipShorthandProps,
-  TooltipDefaultedProps
+export type TooltipTriggerProps = {
+  ref?: React.Ref<never>;
+} & Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'
 >;
+
+/**
+ * Data for the Tooltip's onVisibleChange event.
+ */
+export type OnVisibleChangeData = {
+  visible: boolean;
+};
+
+/**
+ * Properties for Tooltip
+ */
+export type TooltipProps = ComponentProps<TooltipSlots> &
+  Partial<Omit<TooltipCommons, 'content'>> &
+  Pick<TooltipCommons, 'content'>;
+
+/**
+ * State used in rendering Tooltip
+ */
+export type TooltipState = ComponentState<TooltipSlots> &
+  TooltipCommons & {
+    /**
+     * Whether the tooltip should be rendered to the DOM.
+     *
+     * Normally the tooltip will only be rendered when visible. However, if
+     * triggerAriaAttribute is labelledby or describedby, the tooltip will
+     * always be rendered even when hidden so that those aria attributes
+     * to always refer to a valid DOM element.
+     */
+    shouldRenderTooltip?: boolean;
+
+    /**
+     * Ref to the arrow element
+     */
+    arrowRef?: React.Ref<HTMLDivElement>;
+
+    /**
+     * CSS class for the arrow element
+     */
+    arrowClassName?: string;
+  };

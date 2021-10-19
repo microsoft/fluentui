@@ -23,7 +23,11 @@ import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 
-import { ThemeProvider } from '@fluentui/foundation-legacy';
+import { ThemeProvider as DeprecatedThemeProvider } from '@fluentui/foundation-legacy';
+
+// Workaround to prevent errors on usage of ThemeProvider, without disabling all deprecation checks
+// eslint-disable-next-line deprecation/deprecation
+const ThemeProvider = DeprecatedThemeProvider;
 
 const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({
   root: {
@@ -182,6 +186,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
   };
 
   public render(): JSX.Element {
+    // eslint-disable-next-line deprecation/deprecation
     return <Customizer settings={{ theme: schemeThemeCustom }}>{this._renderSchemedComponents()}</Customizer>;
   }
 

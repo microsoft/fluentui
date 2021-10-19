@@ -140,6 +140,9 @@ export const toolbarClassName = 'ui-toolbar';
  * @accessibilityIssues
  * [Issue 988424: VoiceOver narrates selected for button in toolbar](https://bugs.chromium.org/p/chromium/issues/detail?id=988424)
  * [In toolbars that can toggle items in a menu, VoiceOver narrates "1" for menuitemcheckbox/radio when checked.](https://github.com/microsoft/fluentui/issues/14064)
+ * [NVDA could narrate "checked" stated for radiogroup in toolbar #12678](https://github.com/nvaccess/nvda/issues/12678)
+ * [JAWS narrates wrong instruction message for radiogroup in toolbar #556](https://github.com/FreedomScientific/VFO-standards-support/issues/556)
+ * [JAWS could narrate "checked" stated for radiogroup in toolbar #557](https://github.com/FreedomScientific/VFO-standards-support/issues/557)
  */
 export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
@@ -307,18 +310,22 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
         if (context.rtl) {
           const lastVisibleItemMarginLeft = parseFloat(actualWindow.getComputedStyle($lastVisibleItem).marginLeft) || 0;
 
-          $overflowItem.style.right = `${containerBoundingRect.right -
+          $overflowItem.style.right = `${
+            containerBoundingRect.right -
             lastVisibleItemRect.left +
             lastVisibleItemMarginLeft +
-            absolutePositioningOffset.horizontal}px`;
+            absolutePositioningOffset.horizontal
+          }px`;
         } else {
           const lastVisibleItemRightMargin =
             parseFloat(actualWindow.getComputedStyle($lastVisibleItem).marginRight) || 0;
 
-          $overflowItem.style.left = `${lastVisibleItemRect.right -
+          $overflowItem.style.left = `${
+            lastVisibleItemRect.right -
             containerBoundingRect.left +
             lastVisibleItemRightMargin +
-            absolutePositioningOffset.horizontal}px`;
+            absolutePositioningOffset.horizontal
+          }px`;
         }
       } else {
         // there is no last visible item -> position the overflow as the first item

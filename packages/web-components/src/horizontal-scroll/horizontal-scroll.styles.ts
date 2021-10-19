@@ -1,5 +1,6 @@
-import { css } from '@microsoft/fast-element';
-import { DirectionalStyleSheetBehavior, display } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { display, ElementDefinitionContext, HorizontalScrollOptions } from '@microsoft/fast-foundation';
+import { DirectionalStyleSheetBehavior } from '../styles';
 
 const ltrActionsStyles = css`
   .scroll-prev {
@@ -92,13 +93,25 @@ export const ActionsStyles = css`
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  ::slotted(fluent-flipper) {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .scroll-area:hover ::slotted(fluent-flipper) {
+    opacity: 1;
+  }
 `.withBehaviors(new DirectionalStyleSheetBehavior(ltrActionsStyles, rtlActionsStyles));
 
 /**
  * Styles handling the scroll container and content
  * @public
  */
-export const HorizontalScrollStyles = css`
+export const horizontalScrollStyles: (
+  context: ElementDefinitionContext,
+  definition: HorizontalScrollOptions,
+) => ElementStyles = (context: ElementDefinitionContext, definition: HorizontalScrollOptions) => css`
   ${display('block')} :host {
     --scroll-align: center;
     --scroll-item-spacing: 4px;

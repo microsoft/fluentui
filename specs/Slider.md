@@ -33,7 +33,6 @@ FastDNA Slider [docs](https://github.com/microsoft/fast-dna/tree/master/packages
 | Name | Type | Default value |
 | ---- | ---- | ------------- |
 
-
 ### Recommended props
 
 | Name           | Type                                                        |
@@ -119,7 +118,7 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/slider
 | ariaLabel                   | F   | Discuss: Without having the user read aria specs, can we abstract this into `screenReaderDescription` or `accessibility.description`? At minimum we need an example of what should go here. |
 | ariaValueText               | F   | `ariaLabel` set label for the slider, the ariaValueText set string instead of slider number value                                                                                           |
 | buttonProps                 | F   | Replace: Use slotProps/slots.                                                                                                                                                               |
-| componentRef                | F   | Discuss: Slider imperative API to set focus and read value. Do we need these?                                                                                                               |  |
+| componentRef                | F   | Discuss: Slider imperative API to set focus and read value. Do we need these?                                                                                                               |
 | design                      | S   | Remove: What is the use case for this?                                                                                                                                                      |
 | fluid                       | S   | Replace: Stretch/fill continer should be the default no?                                                                                                                                    |
 | getA11yValueMessageOnChange | S   | Discuss: Unclear what this specifically does; aria-live polite?                                                                                                                             |

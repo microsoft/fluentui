@@ -73,19 +73,11 @@ describe('Maybe', () => {
   });
 
   it('flattens a nested maybe correctly', () => {
-    expect(
-      Maybe(Maybe('foo'))
-        .flatten()
-        .orElse('newValue'),
-    ).toEqual('foo');
+    expect(Maybe(Maybe('foo')).flatten().orElse('newValue')).toEqual('foo');
   });
 
   it('flattens a single maybe directly', () => {
-    expect(
-      Maybe('foo')
-        .flatten()
-        .orElse('newValue'),
-    ).toEqual('foo');
+    expect(Maybe('foo').flatten().orElse('newValue')).toEqual('foo');
   });
 
   it('flattens a single maybe directly', () => {

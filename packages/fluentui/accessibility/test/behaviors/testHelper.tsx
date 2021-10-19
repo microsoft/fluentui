@@ -37,6 +37,8 @@ const skipSpecChecksForFiles = [
   'pillGroupBehavior.ts', // tests are written in pillGroupBehaviorDefinition.ts
   'pillOptionBehavior.ts', // tests are written in pillOptionBehaviorDefinition.ts
   'pillActionBehavior.ts', // tests are written in pillBehaviorDefinition.ts
+  'pillImageBehavior.ts', // tests are written in pillImageBehaviorDefinition.ts
+  'pillIconBehavior.ts', // tests are written in pillIconBehaviorDefinition.ts
 ];
 
 export class TestHelper {

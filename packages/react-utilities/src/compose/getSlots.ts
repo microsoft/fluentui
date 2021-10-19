@@ -1,14 +1,40 @@
 import * as React from 'react';
 
-import { getNativeElementProps, omit } from '../utils/index';
-import { GenericDictionary } from './types';
+import {
+  AsIntrinsicElement,
+  ComponentState,
+  ShorthandRenderFunction,
+  ObjectShorthandPropsRecord,
+  ObjectShorthandProps,
+  UnionToIntersection,
+} from './types';
 import { nullRender } from './nullRender';
+import { omit } from '../utils/omit';
+
+export type Slots<S extends ObjectShorthandPropsRecord> = {
+  [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
+    ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
+      As
+    : S[K] extends ObjectShorthandProps<infer P>
+    ? React.ElementType<NonNullable<P>>
+    : React.ElementType<NonNullable<S[K]>>;
+};
+
+type SlotProps<S extends ObjectShorthandPropsRecord> = {
+  [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
+    ? // For intrinsic element types, return the intersection of all possible
+      // element's props, to be compatible with the As type returned by Slots<>
+      UnionToIntersection<JSX.IntrinsicElements[As]>
+    : NonNullable<S[K]> extends ObjectShorthandProps<infer P>
+    ? P
+    : never;
+};
 
 /**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
  * collections.
  *
- * The root is always derived from the `as` prop.
+ * The root is derived from a mix of `components` props and `as` prop.
  *
  * Slots will render as null if they are rendered as primitives with undefined children.
  *
@@ -20,36 +46,49 @@ import { nullRender } from './nullRender';
  * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-export const getSlots = (state: GenericDictionary, slotNames?: readonly string[]) => {
-  const slots: GenericDictionary = {
-    root: state.as || 'div',
-  };
+export function getSlots<R extends ObjectShorthandPropsRecord>(
+  state: ComponentState<R>,
+  slotNames: (keyof R)[] = ['root'],
+): {
+  slots: Slots<R>;
+  slotProps: SlotProps<R>;
+} {
+  const slots = {} as Slots<R>;
+  const slotProps = {} as R;
 
-  const slotProps: GenericDictionary = {
-    root: typeof slots.root === 'string' ? getNativeElementProps(slots.root, state) : omit(state, ['as']),
-  };
+  for (const slotName of slotNames) {
+    const [slot, props] = getSlot(state, slotName);
+    slots[slotName] = slot as Slots<R>[typeof slotName];
+    slotProps[slotName] = props;
+  }
+  return { slots, slotProps: (slotProps as unknown) as SlotProps<R> };
+}
 
-  if (slotNames) {
-    for (const name of slotNames) {
-      const slotDefinition = state[name] || {};
-      const { as: slotAs = 'span', children } = slotDefinition;
-      const isSlotPrimitive = typeof slotAs === 'string';
-      const isSlotEmpty = isSlotPrimitive && slotDefinition.children === undefined;
+function getSlot<R extends ObjectShorthandPropsRecord, K extends keyof R>(
+  state: ComponentState<R>,
+  slotName: K,
+): readonly [React.ElementType<R[K]>, R[K]] {
+  if (state[slotName] === undefined) {
+    return [nullRender, undefined!];
+  }
+  const { children, as: asProp, ...rest } = state[slotName]!;
 
-      slots[name] = isSlotEmpty ? nullRender : slotAs;
+  const slot = (state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
+    ? asProp || state.components?.[slotName] || 'div'
+    : state.components[slotName]) as React.ElementType<R[K]>;
 
-      if (typeof children === 'function') {
-        slotProps[name] = {
-          children: children(slots[name], omit(slotDefinition, ['as', 'children'])),
-        };
-        slots[name] = React.Fragment;
-      } else if (slots[name] !== nullRender) {
-        slotProps[name] = isSlotPrimitive
-          ? getNativeElementProps(slotAs, slotDefinition)
-          : omit(slotDefinition, ['as']);
-      }
-    }
+  if (typeof children === 'function') {
+    const render = children as ShorthandRenderFunction<R[K]>;
+    return [
+      React.Fragment,
+      ({
+        children: render(slot, rest),
+      } as unknown) as R[K],
+    ];
   }
 
-  return { slots, slotProps };
-};
+  const shouldOmitAsProp = typeof slot === 'string' && state[slotName]?.as;
+  const slotProps = (shouldOmitAsProp ? omit(state[slotName]!, ['as']) : state[slotName]) as R[K];
+
+  return [slot, slotProps];
+}

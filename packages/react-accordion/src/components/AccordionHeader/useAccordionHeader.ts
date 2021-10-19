@@ -1,114 +1,88 @@
 import * as React from 'react';
-import {
-  makeMergePropsCompat,
-  resolveShorthandProps,
-  useMergedRefs,
-  useId,
-  useDescendants,
-  shouldPreventDefaultOnKeyDown,
-  useEventCallback,
-} from '@fluentui/react-utilities';
-import {
-  AccordionHeaderExpandIconPosition,
-  AccordionHeaderProps,
-  AccordionHeaderSize,
-  AccordionHeaderState,
-  AccordionHeaderContextValue,
-} from './AccordionHeader.types';
-import {
-  useAccordionItemContext,
-  useAccordionItemDescendant,
-  accordionItemDescendantContext,
-  AccordionItemDescendant,
-} from '../AccordionItem/index';
-import { DefaultExpandIcon } from './DefaultExpandIcon';
-import { AccordionContext } from '../Accordion/useAccordionContext';
+import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { useAccordionItemContext } from '../AccordionItem/index';
+import { AccordionHeaderExpandIcon } from './AccordionHeaderExpandIcon';
+import { useARIAButton } from '@fluentui/react-aria';
+import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
+import { AccordionContext } from '../Accordion/AccordionContext';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children', 'icon'] as const;
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
+export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = [
+  'root',
+  'icon',
+  'button',
+  'children',
+  'expandIcon',
+];
 
 /**
  * Returns the props and state required to render the component
  * @param props - AccordionHeader properties
  * @param ref - reference to root HTMLElement of AccordionHeader
- * @param defaultProps - default values for the properties of AccordionHeader
  */
-export const useAccordionHeader = (
-  props: AccordionHeaderProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: AccordionHeaderProps,
-): AccordionHeaderState => {
+export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
+  const { icon, button, children, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
-  const button = useContextSelector(AccordionContext, ctx => ctx.button);
-  const expandIcon = useContextSelector(AccordionContext, ctx => ctx.expandIcon);
-  const inline = useContextSelector(AccordionContext, ctx => ctx.inline);
-  const icon = useContextSelector(AccordionContext, ctx => ctx.icon);
-  const expandIconPosition = useContextSelector(AccordionContext, ctx => ctx.expandIconPosition);
-  const size = useContextSelector(AccordionContext, ctx => ctx.size);
-  const id = useId('accordion-header-', props.id);
-  const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      size: 'medium' as AccordionHeaderSize,
-      inline: false,
-      expandIcon: {
-        as: DefaultExpandIcon,
-        'aria-hidden': true,
-      },
-      button: {
-        as: 'div',
-        tabIndex: 0,
-        role: 'button',
-        children: React.Fragment,
-        id,
-        onClick: onAccordionHeaderClick,
-        'aria-disabled': disabled,
-        'aria-controls': panel?.id,
-      },
-      as: 'div',
-      role: 'heading',
-      expandIconPosition: 'start' as AccordionHeaderExpandIconPosition,
-    },
-    { button, icon, expandIconPosition, expandIcon, size, inline },
-    defaultProps,
-    resolveShorthandProps(props, accordionHeaderShorthandProps),
+
+  /**
+   * force disabled state on button if accordion isn't collapsible
+   * and this is the only item opened
+   */
+  const disabledFocusable = useContextSelector(
+    AccordionContext,
+    ctx => !ctx.collapsible && ctx.openItems.length === 1 && open,
   );
-  const originalButtonKeyDown = state.button.onKeyDown;
-  state.button.onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
-    if (shouldPreventDefaultOnKeyDown(ev)) {
-      if (disabled) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        return;
-      }
-      ev.preventDefault();
-      onAccordionHeaderClick(ev);
-    }
-    originalButtonKeyDown?.(ev);
+
+  const buttonShorthand = useARIAButton(button, {
+    required: true,
+    defaultProps: {
+      disabled,
+      disabledFocusable,
+      'aria-expanded': open,
+    },
   });
 
-  useAccordionItemDescendant(
-    {
-      element: state.ref.current,
-      id,
+  return {
+    disabled,
+    open,
+    size,
+    inline,
+    expandIconPosition,
+    components: {
+      root: 'div',
+      button: 'button',
+      expandIcon: AccordionHeaderExpandIcon,
+      icon: 'div',
+      children: 'div',
     },
-    0,
-  );
-  state.context = React.useMemo<AccordionHeaderContextValue>(
-    () => ({
-      disabled,
-      open,
-      size: state.size,
-      expandIconPosition: state.expandIconPosition,
+    root: getNativeElementProps('div', {
+      ref,
+      role: 'heading',
+      ...props,
     }),
-    [open, state.size, state.expandIconPosition, disabled],
-  );
-  return state;
+    icon: resolveShorthand(icon),
+    expandIcon: resolveShorthand(expandIcon, {
+      required: true,
+      defaultProps: {
+        'aria-hidden': true,
+      },
+    }),
+    button: {
+      ...buttonShorthand,
+      onClick: useEventCallback(
+        (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
+          buttonShorthand.onClick?.(ev);
+          if (!ev.defaultPrevented) {
+            onAccordionHeaderClick(ev);
+          }
+        },
+      ),
+    },
+    children: resolveShorthand(children as AccordionHeaderSlots['children'], {
+      required: true,
+    }),
+  };
 };

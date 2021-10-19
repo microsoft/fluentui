@@ -2,6 +2,7 @@ import { TestObject, IsConformantOptions } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
+import { getCallbackArguments } from './utils/getCallbackArguments';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import parseDocblock from './utils/parseDocblock';
@@ -10,6 +11,8 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
 import consoleUtil from './utils/consoleUtil';
+
+const CALLBACK_REGEX = /^on(?!Render[A-Z])[A-Z]/;
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -193,11 +196,7 @@ export const defaultTests: TestObject = {
       }
       const defaultEl = customMount(<Component {...requiredProps} />);
       const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
-      const defaultClassNames =
-        defaultComponent
-          .getDOMNode()
-          .getAttribute('class')
-          ?.split(' ') || [];
+      const defaultClassNames = defaultComponent.getDOMNode().getAttribute('class')?.split(' ') || [];
 
       const el = customMount(<Component {...mergedProps} />);
       const component = getComponent(el, helperComponents, wrapperComponent);
@@ -246,9 +245,8 @@ export const defaultTests: TestObject = {
 
     it(`is exported at top-level (exported-top-level)`, () => {
       try {
-        const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
-        const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const indexFile = require(path.join(rootPath, 'src', exportSubdir, 'index'));
+        const { displayName, componentPath, Component } = testInfo;
+        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
 
         expect(indexFile[displayName]).toBe(Component);
       } catch (e) {
@@ -265,9 +263,8 @@ export const defaultTests: TestObject = {
 
     it(`has corresponding top-level file 'package/src/Component' (has-top-level-file)`, () => {
       try {
-        const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
-        const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const topLevelFile = require(path.join(rootPath, 'src', exportSubdir, displayName));
+        const { displayName, componentPath, Component } = testInfo;
+        const topLevelFile = require(path.join(getPackagePath(componentPath), 'src', displayName));
 
         expect(topLevelFile[displayName]).toBe(Component);
       } catch (e) {
@@ -314,15 +311,13 @@ export const defaultTests: TestObject = {
   // TODO: Test last word of callback name against list of valid verbs
   /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
   'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    // Previously this test was broken. Now it's fixed, but enabling it would currently require
-    // changes in a lot of files.
-    xit(`has consistent custom callback names (consistent-callback-names)`, () => {
+    it(`has consistent custom callback names (consistent-callback-names)`, () => {
       const { testOptions = {} } = testInfo;
       const propNames = Object.keys(componentInfo.props);
       const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
 
       const invalidProps = propNames.filter(propName => {
-        if (!ignoreProps.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
           const words = propName.slice(2).match(/[A-Z][a-z]+/g);
           if (words) {
             // Make sure last word doesn't end with ed
@@ -341,9 +336,63 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Ensures that components have consistent callback arguments (ev, data) */
+  'consistent-callback-args': (componentInfo, testInfo, tsProgram) => {
+    it('has consistent custom callback arguments (consistent-callback-args)', () => {
+      const { testOptions = {} } = testInfo;
+
+      const propNames = Object.keys(componentInfo.props);
+      const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
+
+      const invalidProps = propNames.filter(propName => {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+          const propInfo = componentInfo.props[propName];
+
+          if (!propInfo.declarations) {
+            throw new Error(
+              [
+                `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
+              ].join(' '),
+            );
+          }
+
+          if (propInfo.declarations.length !== 1) {
+            throw new Error(
+              [
+                `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
+                `"react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
+              ].join(' '),
+            );
+          }
+
+          const rootFileName = propInfo.declarations[0].fileName;
+          const typeName = propInfo.declarations[0].name;
+
+          const handlerArguments = getCallbackArguments(tsProgram, rootFileName, typeName, propName);
+
+          if (Object.keys(handlerArguments).length !== 2) {
+            return true;
+          }
+        }
+
+        return false;
+      });
+
+      try {
+        expect(invalidProps).toEqual([]);
+      } catch (e) {
+        throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
+      }
+    });
+  },
+
   /** If it has "as" prop: Renders as functional component or passes as to the next component */
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (!componentInfo.props.as) {
+    if (testInfo.skipAsPropTests) {
       return;
     }
 
@@ -367,10 +416,7 @@ export const defaultTests: TestObject = {
           expect(component.type()).toBe(MyComponent);
         } catch (err) {
           expect(component.type()).not.toBe(Component);
-          const comp = component
-            .find('[as]')
-            .last()
-            .prop('as');
+          const comp = component.find('[as]').last().prop('as');
           expect(comp).toBe(MyComponent);
         }
       } catch (e) {
@@ -381,7 +427,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as ReactClass or passes as to the next component */
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (!componentInfo.props.as || testInfo.asPropHandlesRef) {
+    if (testInfo.skipAsPropTests || testInfo.asPropHandlesRef) {
       return;
     }
 
@@ -413,7 +459,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Passes extra props to the component it renders as */
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (!componentInfo.props.as) {
+    if (testInfo.skipAsPropTests) {
       return;
     }
 
@@ -441,7 +487,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders component as HTML tags */
   'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (!componentInfo.props.as) {
+    if (testInfo.skipAsPropTests) {
       return;
     }
 
@@ -470,3 +516,9 @@ export const defaultTests: TestObject = {
     });
   },
 };
+
+function getPackagePath(componentPath: string) {
+  // Use lastIndexOf in case anyone has all their repos under a folder called "src" (it happens)
+  const srcIndex = componentPath.replace(/\\/g, '/').lastIndexOf('/src/');
+  return componentPath.slice(0, srcIndex);
+}

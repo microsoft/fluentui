@@ -407,7 +407,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   label: customPropTypes.itemShorthand,
-  labelPosition: PropTypes.oneOf<LabelPosition>(['inside', 'inline']),
+  labelPosition: PropTypes.oneOf<LabelPosition>(['inline', 'above', 'inside']),
   icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   input: customPropTypes.itemShorthand,

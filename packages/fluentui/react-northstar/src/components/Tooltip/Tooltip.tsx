@@ -5,6 +5,8 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
+  useUnhandledProps,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -64,6 +66,9 @@ export interface TooltipProps
   /** Defines whether tooltip is displayed. */
   open?: boolean;
 
+  /** Defines wether tooltip is subtle  */
+  subtle?: boolean;
+
   /**
    * Event for request to change 'open' value.
    * @param event - React's original SyntheticEvent.
@@ -81,6 +86,12 @@ export interface TooltipProps
 
   /** Element to be rendered in-place where the tooltip is defined. */
   trigger?: JSX.Element;
+
+  /* Tooltip can close when mouse hover content */
+  dismissOnContentMouseEnter?: boolean;
+
+  /** Delay in ms for the mouse enter event, before the tooltip will be open. */
+  mouseEnterDelay?: number;
 }
 
 export const tooltipClassName = 'ui-tooltip';
@@ -118,21 +129,34 @@ export const Tooltip: React.FC<TooltipProps> &
     unstable_disableTether,
     unstable_pinned,
     autoSize,
+    subtle,
+    dismissOnContentMouseEnter,
+    mouseEnterDelay,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
     defaultValue: props.defaultOpen,
     value: props.open,
-
     initialValue: false,
   });
+
   const triggerElement = useTriggerElement(props);
+
+  const unhandledProps = useUnhandledProps(Tooltip.handledProps, props);
+
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
+  });
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
   const triggerRef = React.useRef<HTMLElement>();
 
   const closeTimeoutId = React.useRef<number>();
+  const openTimeoutId = React.useRef<number>();
   // TODO: Consider `getOrGenerateIdFromShorthand()` as hook and make it SSR safe
   const contentId = React.useRef<string>();
   contentId.current = getOrGenerateIdFromShorthand('tooltip-content-', content, contentId.current);
@@ -159,7 +183,9 @@ export const Tooltip: React.FC<TooltipProps> &
     predefinedProps: TooltipContentProps,
   ): TooltipContentProps & Pick<React.DOMAttributes<HTMLDivElement>, 'onMouseEnter' | 'onMouseLeave'> => ({
     onMouseEnter: (e: React.MouseEvent) => {
-      setTooltipOpen(true, e);
+      if (!dismissOnContentMouseEnter) {
+        setTooltipOpen(true, e);
+      }
       _.invoke(predefinedProps, 'onMouseEnter', e);
     },
     onMouseLeave: (e: React.MouseEvent) => {
@@ -176,6 +202,7 @@ export const Tooltip: React.FC<TooltipProps> &
           placement: popperProps.placement,
           pointing,
           pointerRef: pointerTargetRef,
+          subtle,
         }),
       generateKey: false,
       overrideProps: getContentOverrideProps,
@@ -193,10 +220,17 @@ export const Tooltip: React.FC<TooltipProps> &
   };
 
   const setTooltipOpen = (newOpen: boolean, e: React.MouseEvent | React.KeyboardEvent) => {
-    clearTimeout(closeTimeoutId.current);
+    context.target.defaultView.clearTimeout(closeTimeoutId.current);
+    context.target.defaultView.clearTimeout(openTimeoutId.current);
 
     if (newOpen) {
-      trySetOpen(true, e);
+      if (mouseEnterDelay !== 0) {
+        openTimeoutId.current = context.target.defaultView.setTimeout(() => {
+          trySetOpen(true, e);
+        }, mouseEnterDelay);
+      } else {
+        trySetOpen(true, e);
+      }
     } else {
       closeTimeoutId.current = context.target.defaultView.setTimeout(() => {
         trySetOpen(false, e);
@@ -231,7 +265,12 @@ export const Tooltip: React.FC<TooltipProps> &
   const element = (
     <>
       {triggerElement && (
-        <Ref innerRef={triggerRef}>{React.cloneElement(triggerElement, getA11Props('trigger', triggerProps))}</Ref>
+        <Ref innerRef={triggerRef}>
+          {React.cloneElement(
+            triggerElement,
+            getA11Props('trigger', { ...unhandledProps, ...triggerElement.props, ...triggerProps }),
+          )}
+        </Ref>
       )}
       <PortalInner mountNode={mountNode}>
         <Popper
@@ -265,15 +304,20 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
-  pointing: true,
+  mouseEnterDelay: 0,
+  subtle: true,
   accessibility: tooltipAsLabelBehavior,
+  offset: [4, 4],
 };
 Tooltip.propTypes = {
   ...commonPropTypes.createCommon({
     as: false,
     content: false,
   }),
+  dismissOnContentMouseEnter: PropTypes.bool,
+  mouseEnterDelay: PropTypes.number,
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
+  subtle: PropTypes.bool,
   children: PropTypes.element,
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,

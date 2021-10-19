@@ -1,16 +1,14 @@
 import * as prettier from 'prettier';
 
-import { RULE_CSS_INDEX, RULE_RTL_CSS_INDEX } from '../../constants';
-import { MakeStylesDOMRenderer } from '../../renderer/createDOMRenderer';
-import { isObject } from '../../runtime/utils/isObject';
-import { MakeStylesResolvedRule, StyleBucketName } from '../../types';
+import { resolveStyleRules } from '../../runtime/resolveStyleRules';
+import { MakeStylesRenderer, CSSRulesByBucket, StyleBucketName } from '../../types';
 
 export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  test(value: MakeStylesDOMRenderer | any) {
+  test(value: MakeStylesRenderer | any) {
     return typeof value.styleElements === 'object';
   },
-  print(renderer: MakeStylesDOMRenderer) {
+  print(renderer: MakeStylesRenderer) {
     const rules = Object.keys(renderer.styleElements).reduce<string[]>((acc, styleEl) => {
       const styleElement: HTMLStyleElement | undefined = renderer.styleElements[styleEl as StyleBucketName];
 
@@ -32,13 +30,15 @@ export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
 export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   test(value: any) {
-    return isObject(value);
+    return Array.isArray(value) && value.length === 2;
   },
-  print(value: Record<string, MakeStylesResolvedRule>) {
-    return Object.keys(value).reduce((acc, property) => {
-      const rule: MakeStylesResolvedRule = value[property];
+  print(value: ReturnType<typeof resolveStyleRules>) {
+    const cssRulesByBucket: CSSRulesByBucket = value[1];
 
-      return prettier.format(acc + rule[RULE_CSS_INDEX] + (rule[RULE_RTL_CSS_INDEX] || ''), { parser: 'css' }).trim();
+    return (Object.keys(cssRulesByBucket) as StyleBucketName[]).reduce((acc, styleBucketName) => {
+      const rules: string[] = cssRulesByBucket[styleBucketName]!;
+
+      return prettier.format(acc + rules.join(''), { parser: 'css' }).trim();
     }, '');
   },
 };

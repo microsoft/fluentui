@@ -4,15 +4,16 @@ import { mount } from 'enzyme';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { PlainCardBase } from './PlainCard/PlainCard.base';
-import { IPlainCardProps } from './PlainCard/PlainCard.types';
 import { ExpandingCardBase } from './ExpandingCard.base';
-import { IExpandingCardProps } from './ExpandingCard.types';
 import { HoverCard } from './HoverCard';
 import { HoverCardBase } from './HoverCard.base';
 import { HoverCardType } from './HoverCard.types';
 import { KeyCodes } from '../../Utilities';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
+import type { IPlainCardProps } from './PlainCard/PlainCard.types';
+import type { IExpandingCardProps } from './ExpandingCard.types';
+import type { IHoverCardProps } from './HoverCard.types';
 
 const expandingCardProps: IExpandingCardProps = {
   onRenderCompactCard: (item: any) => {
@@ -75,11 +76,12 @@ describe('HoverCard', () => {
     ReactDOM.createPortal = createPortal;
   });
 
-  isConformant({
+  isConformant<IHoverCardProps>({
     Component: HoverCard,
     displayName: 'HoverCard',
     componentPath: path.join(__dirname, 'HoverCard.ts'),
-    targetComponent: ExpandingCardBase,
+    // cast due to slight mismatch in style props
+    targetComponent: ExpandingCardBase as React.ComponentType<IHoverCardProps>,
     // Problem: Ref doesn't match DOM node and returns outermost wrapper div.
     // Solution: Ensure ref is passed correctly to the root element.
     disabledTests: ['component-has-root-ref', 'component-handles-ref'],

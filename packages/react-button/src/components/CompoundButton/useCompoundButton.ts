@@ -1,46 +1,29 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
-import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
-import { useButtonState } from '../Button/useButtonState';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
+import { useButton } from '../Button/index';
 
 /**
- * Consts listing which props are shorthand props.
- */
-export const compoundButtonShorthandProps = ['icon', 'children', 'contentContainer', 'secondaryContent'] as const;
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<CompoundButtonState>({
-  deepMerge: compoundButtonShorthandProps,
-});
-
-/**
- * Given user props, returns state and render function for a Button.
+ * Given user props, defines default props for the CompoundButton, calls useButtonState, and returns processed state.
+ * @param props - User provided props to the CompoundButton component.
+ * @param ref - User provided ref to be passed to the CompoundButton component.
  */
 export const useCompoundButton = (
-  props: CompoundButtonProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: CompoundButtonProps,
+  { contentContainer, secondaryContent, ...props }: CompoundButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): CompoundButtonState => {
-  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
-  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const resolvedRef = ref || React.useRef();
-  const state = mergeProps(
-    {
-      ref: resolvedRef,
-      as: 'button',
-      // Slots inherited from Button
-      icon: { as: 'span' },
-      loader: { as: 'span' },
-      // Slots exclusive to CompoundButton
-      contentContainer: { as: 'span', children: null },
-      secondaryContent: { as: 'span' },
+  return {
+    // Button state
+    ...useButton(props, ref),
+
+    // Slots definition
+    components: {
+      root: 'button',
+      icon: 'span',
+      contentContainer: 'span',
+      secondaryContent: 'span',
     },
-    defaultProps,
-    resolveShorthandProps(props, compoundButtonShorthandProps),
-  );
-
-  useButtonState(state);
-
-  return state;
+    contentContainer: resolveShorthand(contentContainer, { required: true }),
+    secondaryContent: resolveShorthand(secondaryContent),
+  };
 };

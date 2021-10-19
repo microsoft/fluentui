@@ -1,13 +1,40 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import Examples from './fixtures/switch.html';
-import { FluentSwitch } from './';
-
-// Prevent tree-shaking
-FluentSwitch;
-FluentDesignSystemProvider;
+import { fluentSwitch } from './index';
 
 export default {
-  title: 'Switch',
+  title: 'Components/Switch',
+  component: fluentSwitch,
+  argTypes: {
+    checked: {
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+  },
 };
 
-export const Switch = (): string => Examples;
+const SwitchTemplate = ({ checked, disabled }) => `
+<fluent-switch
+  ${checked ? 'checked' : ''}
+  ${disabled ? 'disabled' : ''}
+></fluent-switch>
+`;
+
+export const Switch = SwitchTemplate.bind({});
+
+Switch.args = {
+  checked: false,
+  disabled: false,
+};
+
+const example = `
+<fluent-switch></fluent-switch>
+`;
+
+Switch.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

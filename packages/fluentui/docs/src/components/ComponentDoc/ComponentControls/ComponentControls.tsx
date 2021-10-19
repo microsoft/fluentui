@@ -124,12 +124,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               <Tooltip content="Popout" key="maximize" trigger={<Component {...props} />} />
             ),
             as: NavLink,
-            to: `/maximize/${_.kebabCase(
-              examplePath
-                .split('/')
-                .slice(-1)
-                .pop(),
-            )}/${showRtl}`,
+            to: `/maximize/${_.kebabCase(examplePath.split('/').slice(-1).pop())}/${showRtl}`,
             target: '_blank',
             rel: 'noopener noreferrer',
           },

@@ -166,6 +166,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   setStart();
   const inputRef = React.useRef<HTMLElement>();
 
+  // FIXME: This object is created every render, causing a cascade of useCallback/useEffect re-runs.
+  // Needs to be reworked by someone who understands the intent for when various updates ought to happen.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const dateFormatting: ICalendarStrings = {
     formatDay: props.formatDay,
     formatYear: props.formatYear,
@@ -213,10 +216,25 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     'aria-labelledby': ariaLabelledby,
     'aria-invalid': ariaInvalid,
   } = props;
-  const valueFormatter = React.useCallback(date => (date ? formatMonthDayYear(date, dateFormatting) : ''), [
-    dateFormatting,
-    formatMonthDayYear,
-  ]);
+
+  const valueFormatter = React.useCallback(
+    date =>
+      date
+        ? formatMonthDayYear(date, {
+            months: dateFormatting.months,
+            shortMonths: dateFormatting.shortMonths,
+            days: dateFormatting.days,
+            shortDays: dateFormatting.shortDays,
+          })
+        : '',
+    [
+      dateFormatting.days,
+      dateFormatting.months,
+      dateFormatting.shortDays,
+      dateFormatting.shortMonths,
+      formatMonthDayYear,
+    ],
+  );
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
     defaultValue: props.defaultCalendarOpenState,

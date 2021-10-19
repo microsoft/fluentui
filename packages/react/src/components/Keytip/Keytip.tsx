@@ -2,9 +2,9 @@ import * as React from 'react';
 import { mergeOverflows, ktpTargetFromSequences } from '../../utilities/keytips/KeytipUtils';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../ContextualMenu';
-import { IKeytipProps } from './Keytip.types';
 import { KeytipContent } from './KeytipContent';
 import { getCalloutStyles, getCalloutOffsetStyles } from './Keytip.styles';
+import type { IKeytipProps } from './Keytip.types';
 
 /**
  * A callout corresponding to another Fabric component to describe a key sequence that will activate that component

@@ -1,23 +1,21 @@
 import * as React from 'react';
 import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { AccordionItemContext } from '../AccordionItem';
+import type { MountRendererProps } from 'enzyme';
 
 describe('AccordionPanel', () => {
   isConformant({
-    requiredProps: { open: true },
     Component: AccordionPanel,
     displayName: 'AccordionPanel',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    customMount: (node: React.ReactElement, options?: MountRendererProps) =>
+      mount(node, {
+        ...options,
+        wrappingComponent: AccordionItemContext.Provider,
+        wrappingComponentProps: { value: { open: true } },
+      }),
   });
 
   /**

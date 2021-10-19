@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IBaseProps, ISize } from '../../Utilities';
+import type { IBaseProps, ISize } from '../../Utilities';
 
 export type FolderCoverSize = 'small' | 'large';
 

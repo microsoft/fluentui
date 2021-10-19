@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { usePortal } from './usePortal';
-import { PortalProps } from './Portal.types';
 import { renderPortal } from './renderPortal';
+import type { PortalProps } from './Portal.types';
 
 /**
  * Component that renders children in a React portal

@@ -1,25 +1,15 @@
-import { customElement } from '@microsoft/fast-element';
-import { HorizontalScroll, HorizontalScrollTemplate as template } from '@microsoft/fast-foundation';
-import { ActionsStyles, HorizontalScrollStyles as styles } from './horizontal-scroll.styles';
+import { html } from '@microsoft/fast-element';
+import {
+  HorizontalScroll as FoundationHorizontalScroll,
+  HorizontalScrollOptions,
+  horizontalScrollTemplate as template,
+} from '@microsoft/fast-foundation';
+import { ActionsStyles, horizontalScrollStyles as styles } from './horizontal-scroll.styles';
 
 /**
- * The Fluent Horizontal Scroll Element. Implements {@link @microsoft/fast-foundation#HorizontalScrol},
- * {@link @microsoft/fast-foundation#HorizontalScrollTemplate}
- *
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-horizontal-scroll\>
+ * @internal
  */
-@customElement({
-  name: 'fluent-horizontal-scroll',
-  template,
-  styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentHorizontalScroll extends HorizontalScroll {
+export class HorizontalScroll extends FoundationHorizontalScroll {
   /**
    * @public
    */
@@ -33,7 +23,33 @@ export class FluentHorizontalScroll extends HorizontalScroll {
 }
 
 /**
- * Styles for Horizontal Scroll
+ * The Fluent HorizontalScroll Element. Implements {@link @microsoft/fast-foundation#HorizontalScroll},
+ * {@link @microsoft/fast-foundation#horizontalScrollTemplate}
+ *
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-horizontal-scroll\>
+ */
+export const fluentHorizontalScroll = HorizontalScroll.compose<HorizontalScrollOptions>({
+  baseName: 'horizontal-scroll',
+  baseClass: FoundationHorizontalScroll,
+  template,
+  styles,
+  nextFlipper: html`
+    <fluent-flipper @click="${x => x.scrollToNext()}" aria-hidden="${x => x.flippersHiddenFromAT}"></fluent-flipper>
+  `,
+  previousFlipper: html`
+    <fluent-flipper
+      @click="${x => x.scrollToPrevious()}"
+      direction="previous"
+      aria-hidden="${x => x.flippersHiddenFromAT}"
+    ></fluent-flipper>
+  `,
+});
+
+/**
+ * Styles for horizontal scroll
  * @public
  */
-export const HorizontalScrollStyles = styles;
+export const horizontalScrollStyles = styles;

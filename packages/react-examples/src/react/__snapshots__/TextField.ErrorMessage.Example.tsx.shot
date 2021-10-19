@@ -62,7 +62,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             padding-left: 0;
             padding-right: 0;
             padding-top: 5px;
-            word-break: break-all;
+            word-break: break-word;
             word-wrap: break-word;
           }
       htmlFor="Toggle0"

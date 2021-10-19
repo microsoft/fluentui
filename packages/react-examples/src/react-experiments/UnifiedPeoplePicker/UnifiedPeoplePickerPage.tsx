@@ -37,9 +37,7 @@ export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageP
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePicker.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePicker.types.ts'),
             ]}
           />
         }

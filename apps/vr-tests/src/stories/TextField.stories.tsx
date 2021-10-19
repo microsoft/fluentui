@@ -26,8 +26,12 @@ storiesOf('TextField', module)
   })
   .addStory('Disabled', () => <TextField label="Disabled" disabled />)
   .addStory('Required', () => <TextField label="Required" required />)
-  .addStory('Error', () => <TextField label="Error" errorMessage="Error message" />, { rtl: true })
-  .addStory('Multiline', () => <TextField label="Multiline" multiline rows={4} />, { rtl: true })
+  .addStory('Error', () => <TextField label="Error" errorMessage="Error message" />, {
+    includeRtl: true,
+  })
+  .addStory('Multiline', () => <TextField label="Multiline" multiline rows={4} />, {
+    includeRtl: true,
+  })
   .addStory('Multiline nonresizable', () => (
     <TextField label="Multiline" multiline rows={4} resizable={false} />
   ))
@@ -45,7 +49,7 @@ storiesOf('TextField', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(

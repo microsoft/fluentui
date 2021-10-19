@@ -16,6 +16,12 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 // @public (undocumented)
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
+// @public
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
+
+// @public
+export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
+
 // @public (undocumented)
 export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
 
@@ -30,17 +36,12 @@ export type OffsetFunctionParam = {
 };
 
 // @public (undocumented)
-export interface PopperOptions extends PositioningProps {
-    enabled?: boolean;
-    // (undocumented)
-    onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-    positioningDependencies?: React_2.DependencyList;
-}
-
-// @public (undocumented)
 export type PopperRefHandle = {
     updatePosition: () => void;
 };
+
+// @public (undocumented)
+export type PopperVirtualElement = PopperJs.VirtualElement;
 
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
@@ -50,17 +51,27 @@ export interface PositioningProps {
     align?: Alignment;
     arrowPadding?: number;
     autoSize?: AutoSize;
-    containerRef?: React_2.Ref<PopperRefHandle>;
+    coverTarget?: boolean;
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
+    pinned?: boolean;
+    popperRef?: React_2.Ref<PopperRefHandle>;
     position?: Position;
-    positionFixed?: boolean;
-    target?: HTMLElement | null;
-    unstable_disableTether?: boolean | 'all';
-    unstable_pinned?: boolean;
+    target?: HTMLElement | PopperVirtualElement | null;
 }
 
+// @public (undocumented)
+export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+
+// @public (undocumented)
+export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
+
+// @public (undocumented)
+export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
+
+// Warning: (ae-forgotten-export) The symbol "PopperOptions" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function usePopper(options?: PopperOptions): {
     targetRef: React_2.MutableRefObject<any>;
@@ -68,6 +79,8 @@ export function usePopper(options?: PopperOptions): {
     arrowRef: React_2.MutableRefObject<any>;
 };
 
+// @public
+export const usePopperMouseTarget: (initialState?: PopperJs.VirtualElement | (() => PopperJs.VirtualElement) | undefined) => readonly [PopperJs.VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
 
 // (No @packageDocumentation comment for this package)
 

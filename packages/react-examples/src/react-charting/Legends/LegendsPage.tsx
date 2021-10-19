@@ -39,9 +39,7 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-charting/src/components/Legends/Legends.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/Legends/Legends.types.ts'),
             ]}
             renderOnly={['ILegendsProps', 'ILegend', 'ILegendsStyles']}
           />

@@ -1,15 +1,15 @@
-import { ICalendarPickerStyleProps, ICalendarPickerStyles } from './CalendarPicker.types';
 import {
   normalize,
   FontSizes,
   FontWeights,
   getFocusStyle,
-  IRawStyle,
   AnimationStyles,
   HighContrastSelector,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { AnimationDirection } from '../Calendar.types';
+import type { ICalendarPickerStyleProps, ICalendarPickerStyles } from './CalendarPicker.types';
+import type { IRawStyle } from '@fluentui/style-utilities';
 
 export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyles => {
   const {

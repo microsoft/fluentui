@@ -89,7 +89,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -138,7 +138,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             >
               <div
                 aria-checked={false}
-                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -258,9 +257,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -297,14 +299,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -345,6 +350,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-checkTooltip"
@@ -353,6 +359,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
           </label>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-column1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -409,6 +416,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="column1"
             draggable={false}
             role="columnheader"
@@ -431,8 +439,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                   }
             >
               <span
-                aria-haspopup={false}
-                aria-labelledby="header1-column1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -463,7 +469,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-column1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -639,6 +644,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header1-column2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -695,6 +701,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="column2"
             draggable={false}
             role="columnheader"
@@ -717,8 +724,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                   }
             >
               <span
-                aria-haspopup={false}
-                aria-labelledby="header1-column2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -749,7 +754,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-column2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -829,6 +833,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
           />
           <div
             aria-colindex={4}
+            aria-labelledby="header1-column3-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -885,6 +890,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="column3"
             draggable={false}
             role="columnheader"
@@ -907,8 +913,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                   }
             >
               <span
-                aria-haspopup={false}
-                aria-labelledby="header1-column3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -939,7 +943,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-column3"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1135,6 +1138,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -1324,9 +1330,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1363,14 +1372,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -1661,6 +1673,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -1850,9 +1865,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1889,14 +1907,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -2187,6 +2208,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -2376,9 +2400,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -2415,14 +2442,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -2713,6 +2743,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -2902,9 +2935,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -2941,14 +2977,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -3239,6 +3278,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -3428,9 +3470,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -3467,14 +3512,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -3765,6 +3813,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -3954,9 +4005,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -3993,14 +4047,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -4291,6 +4348,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -4480,9 +4540,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -4519,14 +4582,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -4817,6 +4883,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -5006,9 +5075,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -5045,14 +5117,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -5343,6 +5418,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -5532,9 +5610,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -5571,14 +5652,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -5869,6 +5953,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -6058,9 +6145,12 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -6097,14 +6187,17 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
