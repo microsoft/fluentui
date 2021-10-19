@@ -291,11 +291,13 @@ describe('getCallbackArguments', () => {
         export interface AccordionProps { onToggle: (a: TypeB) => void; }`,
       });
 
+      /* eslint-disable @fluentui/max-len */
       expect(() =>
         getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle'),
       ).toThrowErrorMatchingInlineSnapshot(
         `"We received a type \\"Pick<TypeA, \\"open\\">\\" that is too complex to resolve. Please simply it, for example remove usage of \\"Pick\\"."`,
       );
+      /* eslint-enable @fluentui/max-len */
     });
   });
 });
