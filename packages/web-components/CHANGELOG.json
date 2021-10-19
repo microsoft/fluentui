@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 19 Oct 2021 07:38:09 GMT",
+      "tag": "@fluentui/web-components_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "Move storybook/html dev dep back to web-components and update scripts",
+            "commit": "ed3a8350b8d760cdef9323bb5646012888c75afd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Oct 2021 00:11:22 GMT",
       "tag": "@fluentui/web-components_v1.6.2",
       "version": "1.6.2",

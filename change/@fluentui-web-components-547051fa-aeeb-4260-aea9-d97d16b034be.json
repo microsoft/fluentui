@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Move storybook/html dev dep back to web-components and update scripts",
-  "packageName": "@fluentui/web-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
