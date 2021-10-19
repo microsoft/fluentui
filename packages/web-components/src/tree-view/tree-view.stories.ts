@@ -53,14 +53,31 @@ TreeView.args = {
 
 const example = `
 <fluent-tree-view>
-  <fluent-tree-item selected>Daisy</fluent-tree-item>
-  <fluent-tree-item>Sunflower</fluent-tree-item>
-  <fluent-tree-item>Rose</fluent-tree-item>
-  <fluent-divider></fluent-divider>
-  <fluent-tree-item>Petunia</fluent-tree-item>
-  <fluent-tree-item>Tulip</fluent-tree-item>
-</fluent-tree-view>
-`;
+  <fluent-tree-item>
+    Root item 1
+    <fluent-tree-item>
+      Flowers
+      <fluent-tree-item disabled>Daisy</fluent-tree-item>
+      <fluent-tree-item>Sunflower</fluent-tree-item>
+      <fluent-tree-item>Rose</fluent-tree-item>
+    </fluent-tree-item>
+    <fluent-tree-item>Nested item 2</fluent-tree-item>
+    <fluent-tree-item>Nested item 3</fluent-tree-item>
+  </fluent-tree-item>
+  <fluent-tree-item>
+    Root item 2
+    <fluent-divider></fluent-divider>
+    <fluent-tree-item>
+      Flowers
+      <fluent-tree-item disabled>Daisy</fluent-tree-item>
+      <fluent-tree-item>Sunflower</fluent-tree-item>
+      <fluent-tree-item>Rose</fluent-tree-item>
+    </fluent-tree-item>
+    <fluent-tree-item>Nested item 2</fluent-tree-item>
+    <fluent-tree-item>Nested item 3</fluent-tree-item>
+  </fluent-tree-item>
+  <fluent-tree-item> Root item 3 - Leaf Erikson </fluent-tree-item>
+</fluent-tree-view>`;
 
 TreeView.parameters = {
   docs: {
