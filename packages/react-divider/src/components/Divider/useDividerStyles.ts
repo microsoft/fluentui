@@ -1,102 +1,60 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { DividerState } from './Divider.types';
 
-const useStylesOverride = makeStyles({
-  root: theme => ({
-    /* CSS Vars */
-    '--divider-borderMargin': '12px',
-    '--divider-flexDirection': 'row',
-    '--divider-fontColor': theme.colorNeutralForeground2,
-    '--divider-fontFamily': 'Segoe UI',
-    '--divider-fontSize': '12px',
-    '--divider-fontWeight': '400',
-    '--divider-lineHeight': '17px',
-    '--divider-borderSize': '1px',
-    '--divider-borderStyle': 'solid',
-    '--divider-color': theme.colorNeutralStroke2,
+const contentSpacing = '12px';
+const insetSpacing = '12px';
+const startEndMaxHeight = '8px';
 
+const useBaseStyles = makeStyles({
+  // Base styles
+  base: theme => ({
     alignItems: 'center',
-    color: 'var(--divider-fontColor)',
-    display: 'flex',
-    flexGrow: 1,
-    flexDirection: 'var(--divider-flexDirection)',
-    fontFamily: 'var(--divider-fontFamily)',
-    fontSize: 'var(--divider-fontSize)',
-    fontWeight: 'var(--divider-fontWeight)',
-    position: 'relative',
     boxSizing: 'border-box',
-    lineHeight: 'var(--divider-lineHeight)',
+    display: 'flex',
+    flexDirection: 'row',
+    flexGrow: 1,
+    position: 'relative',
+
+    fontFamily: theme.fontFamilyBase,
+    fontSize: theme.fontSizeBase200,
+    fontWeight: theme.fontWeightRegular,
+    lineHeight: theme.lineHeightBase200,
+
+    color: theme.colorNeutralForeground2,
+
     ':before': {
+      boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-      boxSizing: 'border-box',
+
+      borderColor: theme.colorNeutralStroke2,
     },
 
     ':after': {
+      boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-      boxSizing: 'border-box',
+
+      borderColor: theme.colorNeutralStroke2,
     },
   }),
+
+  // Childless styles
   childless: {
-    '--divider-borderMargin': 0,
-  },
-  subtle: theme => ({
-    '--divider-color': theme.colorNeutralStroke3,
-  }),
-  brand: theme => ({
-    '--divider-fontColor': theme.colorBrandBackgroundStatic,
-    '--divider-color': theme.colorBrandBackgroundStatic,
-  }),
-  strong: theme => ({
-    '--divider-color': theme.colorNeutralStroke1,
-  }),
-  horizontal: {
-    width: '100%',
     ':before': {
-      borderTopColor: 'var(--divider-color)',
-      borderTopWidth: 'var(--divider-borderSize)',
-      borderTopStyle: 'var(--divider-borderStyle)',
+      marginBottom: 0,
+      marginRight: 0,
     },
+
     ':after': {
-      borderTopColor: 'var(--divider-color)',
-      borderTopWidth: 'var(--divider-borderSize)',
-      borderTopStyle: 'var(--divider-borderStyle)',
-    },
-    '&>:only-child': {
-      display: 'flex',
-      textAlign: 'center',
+      marginLeft: 0,
+      marginTop: 0,
     },
   },
-  vertical: {
-    //alignSelf: 'stretch',
-    minHeight: '20px',
-    flexDirection: 'column',
-    ':before': {
-      borderRightColor: 'var(--divider-color)',
-      borderRightWidth: 'var(--divider-borderSize)',
-      borderRightStyle: 'var(--divider-borderStyle)',
-    },
-    ':after': {
-      borderRightColor: 'var(--divider-color)',
-      borderRightWidth: 'var(--divider-borderSize)',
-      borderRightStyle: 'var(--divider-borderStyle)',
-    },
-    '&>:only-child': {
-      display: 'flex',
-      textAlign: 'center',
-    },
-  },
-  verticalWithChildren: {
-    minHeight: '84px',
-  },
+
+  // Alignment variations
   start: {
     ':after': {
-      content: '""',
-    },
-  },
-  end: {
-    ':before': {
       content: '""',
     },
   },
@@ -108,130 +66,186 @@ const useStylesOverride = makeStyles({
       content: '""',
     },
   },
-  centerWithoutContent: {
+  end: {
     ':before': {
       content: '""',
     },
   },
-  verticalStart: {
+
+  // Appearance variations
+  brand: theme => ({
+    color: theme.colorBrandForeground1,
+
     ':before': {
-      content: '""',
-      maxHeight: '8px',
-      marginBottom: 'var(--divider-borderMargin)',
+      borderColor: theme.colorBrandStroke1,
     },
 
     ':after': {
-      marginTop: 'var(--divider-borderMargin)',
+      borderColor: theme.colorBrandStroke1,
     },
-  },
-  verticalEnd: {
+  }),
+  subtle: theme => ({
     ':before': {
-      marginBottom: 'var(--divider-borderMargin)',
+      borderColor: theme.colorNeutralStroke3,
     },
+
     ':after': {
-      content: '""',
-      maxHeight: '8px',
-      marginTop: 'var(--divider-borderMargin)',
+      borderColor: theme.colorNeutralStroke3,
     },
-  },
-  verticalCenter: {
+  }),
+  strong: theme => ({
     ':before': {
-      marginBottom: 'var(--divider-borderMargin)',
+      borderColor: theme.colorNeutralStroke1,
     },
+
     ':after': {
-      marginTop: 'var(--divider-borderMargin)',
+      borderColor: theme.colorNeutralStroke1,
     },
-  },
-  horizontalStart: {
+  }),
+});
+
+const useHorizontalStyles = makeStyles({
+  // Base styles
+  base: theme => ({
+    width: '100%',
+
     ':before': {
-      marginRight: 'var(--divider-borderMargin)',
-      maxWidth: '8px',
-      content: '""',
+      borderTopStyle: 'solid',
+      borderTopWidth: theme.strokeWidthThin,
     },
+
     ':after': {
-      marginLeft: 'var(--divider-borderMargin)',
+      borderTopStyle: 'solid',
+      borderTopWidth: theme.strokeWidthThin,
     },
-  },
-  horizontalEnd: {
-    ':before': {
-      marginRight: 'var(--divider-borderMargin)',
-    },
-    ':after': {
-      maxWidth: '8px',
-      content: '""',
-      marginLeft: 'var(--divider-borderMargin)',
-    },
-  },
-  horizontalCenter: {
-    ':before': {
-      marginRight: 'var(--divider-borderMargin)',
-    },
-    ':after': {
-      marginLeft: 'var(--divider-borderMargin)',
-    },
-  },
-  verticalColored: {
-    ':before': {
-      borderRightColor: 'var(--divider-color)',
-    },
-    ':after': {
-      borderRightColor: 'var(--divider-color)',
-    },
-  },
-  horizontalColored: {
-    ':before': {
-      borderTopColor: 'var(--divider-color)',
-    },
-    ':after': {
-      borderTopColor: 'var(--divider-color)',
-    },
-  },
-  verticalChildless: {
-    ':before': {
-      marginBottom: 0,
-    },
-  },
+  }),
+
+  // Inset styles
   inset: {
-    paddingLeft: '12px',
-    paddingRight: '12px',
+    paddingLeft: insetSpacing,
+    paddingRight: insetSpacing,
   },
-  verticalInset: {
-    marginTop: '12px',
-    marginBottom: '12px',
+
+  // Alignment variations
+  start: {
+    ':before': {
+      content: '""',
+      marginRight: contentSpacing,
+      maxWidth: startEndMaxHeight,
+    },
+
+    ':after': {
+      marginLeft: contentSpacing,
+    },
+  },
+  center: {
+    ':before': {
+      marginRight: contentSpacing,
+    },
+    ':after': {
+      marginLeft: contentSpacing,
+    },
+  },
+  end: {
+    ':before': {
+      marginRight: contentSpacing,
+    },
+    ':after': {
+      content: '""',
+      marginLeft: contentSpacing,
+      maxWidth: startEndMaxHeight,
+    },
   },
 });
 
-/** Applies style classnames to slots */
-export const useDividerStyles = (state: DividerState) => {
-  const styles = useStylesOverride();
+const useVerticalStyles = makeStyles({
+  // Base styles
+  base: theme => ({
+    flexDirection: 'column',
+    minHeight: '20px',
+
+    ':before': {
+      borderRightStyle: 'solid',
+      borderRightWidth: theme.strokeWidthThin,
+    },
+
+    ':after': {
+      borderRightStyle: 'solid',
+      borderRightWidth: theme.strokeWidthThin,
+    },
+  }),
+
+  // Inset styles
+  inset: {
+    marginTop: insetSpacing,
+    marginBottom: insetSpacing,
+  },
+
+  // With children styles
+  withChildren: {
+    minHeight: '84px',
+  },
+
+  // Alignment variations
+  start: {
+    ':before': {
+      content: '""',
+      marginBottom: contentSpacing,
+      maxHeight: startEndMaxHeight,
+    },
+
+    ':after': {
+      marginTop: contentSpacing,
+    },
+  },
+  center: {
+    ':before': {
+      marginBottom: contentSpacing,
+    },
+    ':after': {
+      marginTop: contentSpacing,
+    },
+  },
+  end: {
+    ':before': {
+      marginBottom: contentSpacing,
+    },
+    ':after': {
+      content: '""',
+      marginTop: contentSpacing,
+      maxHeight: startEndMaxHeight,
+    },
+  },
+});
+
+export const useDividerStyles = (state: DividerState): DividerState => {
+  const baseStyles = useBaseStyles();
+  const horizontalStyles = useHorizontalStyles();
+  const verticalStyles = useVerticalStyles();
+
+  const { alignContent, appearance, inset, vertical } = state;
+
   state.root.className = mergeClasses(
-    styles.root,
-    !state.root.children && styles.childless,
-    state.appearance === 'subtle' && styles.subtle,
-    state.appearance === 'brand' && styles.brand,
-    state.appearance === 'strong' && styles.strong,
-    state.vertical ? styles.vertical : styles.horizontal,
-    state.vertical && state.root.children !== undefined && styles.verticalWithChildren,
-    state.alignContent === 'start' && styles.start,
-    state.alignContent === 'end' && styles.end,
-    (state.alignContent === 'center' || !state.alignContent) &&
-      state.root.children !== undefined &&
-      state.vertical &&
-      styles.center,
-    (state.alignContent === 'center' || !state.alignContent) &&
-      state.root.children !== undefined &&
-      !state.vertical &&
-      styles.center,
-    (state.alignContent === 'center' || !state.alignContent) &&
-      state.root.children === undefined &&
-      styles.centerWithoutContent,
-    state.alignContent === 'start' && (state.vertical ? styles.verticalStart : styles.horizontalStart),
-    state.alignContent === 'end' && (state.vertical ? styles.verticalEnd : styles.horizontalEnd),
-    (state.alignContent === 'center' || !state.alignContent) &&
-      (state.vertical ? styles.verticalCenter : styles.horizontalCenter),
-    state.root.color && (state.vertical ? styles.verticalColored : styles.horizontalColored),
-    state.root.children === undefined && state.vertical && styles.verticalChildless,
-    state.inset && (state.vertical ? styles.verticalInset : styles.inset),
+    // Base styles
+    baseStyles.base,
+    baseStyles[alignContent],
+    appearance && baseStyles[appearance],
+
+    // Horizontal styles
+    !vertical && horizontalStyles.base,
+    !vertical && inset && horizontalStyles.inset,
+    !vertical && horizontalStyles[alignContent],
+
+    // Vertical styles
+    vertical && verticalStyles.base,
+    vertical && inset && verticalStyles.inset,
+    vertical && verticalStyles[alignContent],
+    vertical && state.root.children !== undefined && verticalStyles.withChildren,
+
+    // Childless styles
+    state.root.children === undefined && baseStyles.childless,
+
+    // User provided class name
     state.root.className,
   );
 

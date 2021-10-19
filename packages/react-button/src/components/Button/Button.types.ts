@@ -3,7 +3,7 @@ import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@f
 
 export type ButtonSlots = {
   /**
-   * Root of the component that renders as either a <button> tag.
+   * Root of the component that renders as either a <button> tag or an <a> tag.
    */
   root: ARIAButtonShorthandProps;
 

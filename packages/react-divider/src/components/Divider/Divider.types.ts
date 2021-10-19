@@ -1,6 +1,9 @@
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type DividerSlots = {
+  /**
+   * Root of the component that renders as a <div> tag.
+   */
   root: IntrinsicShorthandProps<'div'>;
 
   /**
@@ -17,7 +20,7 @@ export type DividerCommons = {
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'
    */
-  alignContent: 'start' | 'end' | 'center';
+  alignContent: 'start' | 'center' | 'end';
 
   /**
    * A divider can have one of the preset appearances.

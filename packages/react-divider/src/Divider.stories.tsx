@@ -3,7 +3,6 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { Clock12Regular as ClockIcon } from '@fluentui/react-icons';
 import { Divider, DividerProps } from './index';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 interface DividerStoryProps {
   label?: string;
   children?: React.ReactChild | React.ReactChild[];
@@ -49,25 +48,56 @@ const useStyles = makeStyles({
     },
   }),
   red: {
-    '--divider-color': 'red',
+    ':before': {
+      borderColor: 'red',
+    },
+    ':after': {
+      borderColor: 'red',
+    },
   },
   green: {
-    '--divider-color': 'green',
+    ':before': {
+      borderColor: 'green',
+    },
+    ':after': {
+      borderColor: 'green',
+    },
   },
   blue: {
-    '--divider-color': 'blue',
+    ':before': {
+      borderColor: 'blue',
+    },
+    ':after': {
+      borderColor: 'blue',
+    },
   },
   yellow: {
-    '--divider-color': 'yellow',
+    ':before': {
+      borderColor: 'yellow',
+    },
+    ':after': {
+      borderColor: 'yellow',
+    },
   },
   customColor: {
-    '--divider-color': '#FF00FF',
+    ':before': {
+      borderColor: '#FF00FF',
+    },
+    ':after': {
+      borderColor: '#FF00FF',
+    },
   },
   dashed: {
     margin: '10px 0',
     borderWidth: '2px',
-    '--divider-borderStyle': 'dashed',
-    '--divider-borderSize': '2px',
+    ':before': {
+      borderTopStyle: 'dashed',
+      borderTopWidth: '2px',
+    },
+    ':after': {
+      borderTopStyle: 'dashed',
+      borderTopWidth: '2px',
+    },
   },
 });
 
