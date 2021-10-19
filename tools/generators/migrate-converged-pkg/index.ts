@@ -18,7 +18,15 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import { arePromptsEnabled, getProjectConfig, printUserLogs, prompt, updateJestConfig, UserLog } from '../../utils';
+import {
+  arePromptsEnabled,
+  getProjectConfig,
+  isPackageConverged,
+  printUserLogs,
+  prompt,
+  updateJestConfig,
+  UserLog,
+} from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -351,11 +359,6 @@ function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
   logger.info(stats.notMigrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
 
   return tree;
-}
-
-function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
-  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('9.');
 }
 
 function isProjectMigrated<T extends ProjectConfiguration>(

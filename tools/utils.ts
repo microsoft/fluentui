@@ -1,6 +1,15 @@
 import * as yargsParser from 'yargs-parser';
 import type * as Enquirer from 'enquirer';
-import { joinPathFragments, logger, readProjectConfiguration, readWorkspaceConfiguration, Tree } from '@nrwl/devkit';
+import {
+  joinPathFragments,
+  logger,
+  ProjectConfiguration,
+  readJson,
+  readProjectConfiguration,
+  readWorkspaceConfiguration,
+  Tree,
+} from '@nrwl/devkit';
+import { PackageJson } from './types';
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
@@ -106,4 +115,9 @@ export function printUserLogs(logs: UserLog) {
   logs.forEach(log => logger[log.type](log.message));
 
   logger.log(`${'='.repeat(80)}\n`);
+}
+
+export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  return packageJson.version.startsWith('9.');
 }
