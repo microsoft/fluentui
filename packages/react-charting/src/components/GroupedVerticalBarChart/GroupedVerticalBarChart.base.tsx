@@ -9,7 +9,7 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
-  convertToLocalString,
+  convertToLocaleString,
   getAccessibleDataObject,
   tooltipOfXAxislabels,
   XAxisTypes,
@@ -129,7 +129,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue
         ? this.state.yCalloutValue
-        : convertToLocalString(this.state.dataForHoverCard, this.props.culture),
+        : convertToLocaleString(this.state.dataForHoverCard, this.props.culture),
       onDismiss: this._closeCallout,
       ...this.props.calloutProps,
       preventDismissOnLostFocus: true,

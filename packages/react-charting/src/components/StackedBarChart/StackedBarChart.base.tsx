@@ -6,7 +6,7 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, convertToLocalString } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -98,7 +98,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       targetColor: targetData ? targetData.color : '',
       targetRatio,
     });
-    const getChartData = () => convertToLocalString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+    const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
       <div className={this._classNames.root}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -113,7 +113,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!this.props.hideDenominator && (
                   <span>
-                    /<span className={this._classNames.ratioDenominator}>{convertToLocalString(total, culture)}</span>
+                    /<span className={this._classNames.ratioDenominator}>{convertToLocaleString(total, culture)}</span>
                   </span>
                 )}
               </div>
@@ -157,7 +157,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                       YValue={
                         this.state.yCalloutValue
                           ? this.state.yCalloutValue
-                          : convertToLocalString(this.state.dataForHoverCard, culture)
+                          : convertToLocaleString(this.state.dataForHoverCard, culture)
                       }
                       color={this.state.color}
                     />

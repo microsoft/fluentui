@@ -12,7 +12,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, convertToLocalString } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -81,7 +81,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle;
     const calloutYVal = this.state.yCalloutValue
       ? this.state.yCalloutValue
-      : convertToLocalString(this.state.dataForHoverCard, culture);
+      : convertToLocaleString(this.state.dataForHoverCard, culture);
 
     const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
@@ -213,7 +213,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const hideNumber = hideRatio === undefined ? false : hideRatio;
     const showRatio = !hideNumber && data!.chartData!.length === 2;
     const showNumber = !hideNumber && data!.chartData!.length === 1;
-    const getChartData = () => convertToLocalString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+    const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
       <div className={this._classNames.singleChartRoot}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -226,7 +226,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
                 <strong>{getChartData()}</strong>
-                {!hideDenominator && <span>/{convertToLocalString(total, culture)}</span>}
+                {!hideDenominator && <span>/{convertToLocaleString(total, culture)}</span>}
               </div>
             )}
             {showNumber && (

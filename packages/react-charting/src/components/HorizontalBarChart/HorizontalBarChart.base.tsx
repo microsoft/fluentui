@@ -11,7 +11,7 @@ import {
   IRefArrayData,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ChartHoverCard, convertToLocalString } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
@@ -222,18 +222,18 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       case 'default':
         return (
           <div className={this._classNames.chartDataText} {...accessibilityData}>
-            {convertToLocalString(x, culture)}
+            {convertToLocaleString(x, culture)}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={this._classNames.chartDataText}>{convertToLocalString(x, culture)}</span>
-            <span className={this._classNames.chartDataTextDenominator}>{'/' + convertToLocalString(y, culture)}</span>
+            <span className={this._classNames.chartDataText}>{convertToLocaleString(x, culture)}</span>
+            <span className={this._classNames.chartDataTextDenominator}>{'/' + convertToLocaleString(y, culture)}</span>
           </div>
         );
       case 'percentage':
-        const dataRatioPercentage = `${convertToLocalString(Math.round((x / y) * 100), culture)}%`;
+        const dataRatioPercentage = `${convertToLocaleString(Math.round((x / y) * 100), culture)}%`;
         return (
           <div className={this._classNames.chartDataText} {...accessibilityData}>
             {dataRatioPercentage}
@@ -283,7 +283,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       if (value < 1) {
         return <React.Fragment key={index}> </React.Fragment>;
       }
-      const xValue = convertToLocalString(point.horizontalBarChartdata!.x, this.props.culture);
+      const xValue = convertToLocaleString(point.horizontalBarChartdata!.x, this.props.culture);
       return (
         <rect
           key={index}
