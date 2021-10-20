@@ -41,7 +41,7 @@ ExpandIcon.args = {
 ExpandIcon.parameters = {
   docs: {
     description: {
-      story: 'An Accordion Item can have a custom icon for the expand',
+      story: 'An Accordion Item can have a custom expand icon.',
     },
   },
 };

@@ -34,7 +34,7 @@ OpenItems.args = {
 OpenItems.parameters = {
   docs: {
     description: {
-      story: 'A Accordion can have defined open items',
+      story: 'An Accordion can have defined open items.',
     },
   },
 };

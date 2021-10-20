@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removed duplicate 'Tooltip' from story names",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

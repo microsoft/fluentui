@@ -6,6 +6,7 @@ import { getCallbackArguments } from './utils/getCallbackArguments';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import parseDocblock from './utils/parseDocblock';
+import { validateCallbackArguments } from './utils/validateCallbackArguments';
 
 import * as React from 'react';
 import * as _ from 'lodash';
@@ -344,7 +345,7 @@ export const defaultTests: TestObject = {
       const propNames = Object.keys(componentInfo.props);
       const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
 
-      const invalidProps = propNames.filter(propName => {
+      const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
         if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
           const propInfo = componentInfo.props[propName];
 
@@ -370,20 +371,22 @@ export const defaultTests: TestObject = {
           }
 
           const rootFileName = propInfo.declarations[0].fileName;
-          const typeName = propInfo.declarations[0].name;
+          const propsTypeName = propInfo.declarations[0].name;
 
-          const handlerArguments = getCallbackArguments(tsProgram, rootFileName, typeName, propName);
+          try {
+            validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
+          } catch (err) {
+            console.log('err', err);
 
-          if (Object.keys(handlerArguments).length !== 2) {
-            return true;
+            return { ...errors, [propName]: err };
           }
         }
 
-        return false;
-      });
+        return errors;
+      }, {});
 
       try {
-        expect(invalidProps).toEqual([]);
+        expect(invalidProps).toEqual({});
       } catch (e) {
         throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
       }

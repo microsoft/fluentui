@@ -8,7 +8,7 @@ import type { MenuProps } from '@fluentui/react-menu';
 
 import { MenuButton } from './MenuButton';
 import { buttonBaseProps } from './buttonBaseProps.stories';
-import { Playground } from './Playground.stories';
+import { Playground as PlaygroundWrapper } from './Playground.stories';
 import type { MenuButtonProps } from './MenuButton';
 import type { PlaygroundProps } from './Playground.types.stories';
 
@@ -31,11 +31,11 @@ const menuButtonProps: PlaygroundProps<MenuProps>['sections'] = [
   { sectionName: 'Button props', propList: buttonBaseProps.filter(value => value.propName !== 'iconPosition') },
 ];
 
-export const MenuButtonPlayground = () => {
+export const Playground = () => {
   return (
-    <Playground sections={menuButtonProps}>
+    <PlaygroundWrapper sections={menuButtonProps}>
       <ExampleMenuButton />
-    </Playground>
+    </PlaygroundWrapper>
   );
 };
 
