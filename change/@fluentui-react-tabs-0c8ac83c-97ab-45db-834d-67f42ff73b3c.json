@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Disable consistent-callback-args test",
+  "packageName": "@fluentui/react-tabs",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

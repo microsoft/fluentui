@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Implement additional tests in consistent-callback-args",
+  "packageName": "@fluentui/react-conformance",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
