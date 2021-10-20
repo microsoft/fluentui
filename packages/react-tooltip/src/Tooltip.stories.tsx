@@ -139,7 +139,7 @@ export const Positioning = () => {
   );
 };
 
-export const ControlledTooltip = () => {
+export const Controlled = () => {
   const [tooltipVisible, setTooltipVisible] = React.useState(false);
   return (
     <>
