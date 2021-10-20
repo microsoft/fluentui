@@ -6,6 +6,7 @@ import '../public/intro.css';
 /** @type {NonNullable<typeof rootPreview.parameters['options']>} */
 const options = {
   storySort: {
+    method: 'alphabetical',
     /**
      * @see https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#sorting-stories
      */

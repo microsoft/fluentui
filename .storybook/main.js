@@ -1,5 +1,6 @@
 const path = require('path');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+const previewHead = require('fs').readFileSync(path.resolve(__dirname, 'preview-head.html'), 'utf8');
 
 /**
  *  @callback StorybookWebpackConfig
@@ -25,6 +26,7 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
  *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
  *    webpackFinal: StorybookWebpackConfig;
  *    core: {builder:'webpack5'};
+ *    previewHead: (head: string) => string
  * }} StorybookConfig
  */
 
@@ -72,10 +74,10 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 
     return config;
   },
-
   core: {
     builder: 'webpack5',
   },
+  previewHead: head => head + previewHead,
 });
 
 /**
