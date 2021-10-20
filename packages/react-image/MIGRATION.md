@@ -27,11 +27,11 @@ The table below presents a mapping of props between the v8 (FabricUI) and v9 (Fl
 
 ### className
 
-_This property suffered no changes and can be left as is._
+_This property has not changed and can be left as is._
 
 ### coverStyle
 
-The bahviour of this prop can be achived using the `fit` prop with the value of `cover`.
+The behaviour of this prop can be achieved using the `fit` prop with the value of `cover`.
 
 ```jsx
 <Image src="example.jpg" fit="cover" />
@@ -39,7 +39,7 @@ The bahviour of this prop can be achived using the `fit` prop with the value of 
 
 ### imageFit
 
-This can be achieved with the `fit` prop by asigning the value of `contain`.
+This can be achieved using the `fit` prop by asigning the value of `contain`.
 
 ```jsx
 <Image src="example.jpg" fit="contain" />
@@ -47,19 +47,19 @@ This can be achieved with the `fit` prop by asigning the value of `contain`.
 
 ### maximizeFrame
 
-This prop has been renamed to `block` which will result into the same behaviour as before.
+This prop has been renamed to `block` which will result in the same behaviour as before.
 
 ```jsx
-<Image src="example.jpg" block>
+<Image src="example.jpg" block />
 ```
 
 ### loading
 
-_This property suffered no changes and can be used as is._
+_This property has not changed and can be used as is._
 
 ### onLoadingStateChanged
 
-For v9, this feature is no longer supported. The alternative would be to use the global events such as: `onLoad`, `onError` to detect the state of image loading.
+For v9, this feature is no longer supported. The alternative would be to use the global events such as: `onLoad`, `onError` to detect the image loading state.
 
 ### shouldFadeIn
 
@@ -95,7 +95,7 @@ const MyComponent = () => {
 
 ### shouldStartVisible
 
-For v9, this feature is no longer supported. Alternatively, you can use the global events `onLoad` and `onError` to achieve the same behaviour. Below is an example showcasing this:
+For v9, this feature is no longer supported. The alternative would be to use the global events such as: `onLoad` and `onError` to achieve the same behaviour. Below is an example showcasing this:
 
 ```jsx
 import { useState } from 'react';
@@ -127,11 +127,11 @@ export default function App() {
 
 ### styles
 
-_This property suffered no changes and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
+_This property has not changed and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
 
 ### theme
 
-_This property suffered no changes and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
+_This property has not changed and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
 
 ## Migration from v0 (Northstar)
 
@@ -154,22 +154,22 @@ The table below presents a mapping of props between the v0 and v9 versions in or
 
 ### accessibility
 
-This property is no longer in the v9. It is recommended to follow the best practices of a11y in order for Image to be accessible to assistive tools. Thus:
+For v9, this property is no longer supported. It is recommended to follow the best practices of a11y in order for Image to be accessible to assistive tools. Thus:
 
-- It is important for Image to have the `alt` description
-- In case the Image is decorative only then to have either `role="presentation"` or `aria-hidden`. Plese ensure the correct usage of these two attributes, based on your objectives.
+- It is important for Image to have the `alt` description.
+- In case the Image is decorative only, have either `role="presentation"` or `aria-hidden`. Ensure the correct usage of these two attributes, based on your objectives.
 
 ### alt
 
-_This property suffered no changes and can be left as is._
+_This property has not changed and can be left as is._
 
 ### aria-label
 
-_This property suffered no changes and can be left as is._
+_This property has not changed and can be left as is._
 
 ### as
 
-This property is no longer in the v9. The Image prop will always be an `<img/>` element, it is not possible to show an image as any other element.
+For v9, this property is no longer supported. The Image prop will always be an `<img/>` element, it is not possible to show an image as any other element.
 
 ### avatar
 
@@ -189,7 +189,7 @@ This can be achieved using the `shape` prop with the value of `circular`.
 
 ### className
 
-_This property suffered no changes and can be left as is._
+_This property has not changed and can be left as is._
 
 ### fluid
 
@@ -201,7 +201,7 @@ The behaviour of the `fluid` prop can be achieved with the use of the `block` pr
 
 ### styles
 
-_This property suffered no changes and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
+_This property has not changed and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
 
 ### variables
 
