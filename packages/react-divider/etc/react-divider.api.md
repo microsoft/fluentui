@@ -15,7 +15,7 @@ export const Divider: ForwardRefComponent<DividerProps>;
 
 // @public (undocumented)
 export type DividerCommons = {
-    alignContent: 'start' | 'end' | 'center';
+    alignContent: 'start' | 'center' | 'end';
     appearance?: 'brand' | 'strong' | 'subtle';
     inset: boolean;
     vertical: boolean;
@@ -39,7 +39,7 @@ export const renderDivider: (state: DividerState) => JSX.Element;
 // @public
 export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
 
-// @public
+// @public (undocumented)
 export const useDividerStyles: (state: DividerState) => DividerState;
 
 // (No @packageDocumentation comment for this package)
