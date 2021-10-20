@@ -5,7 +5,7 @@ import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/re
 // @ts-ignore
 import { SplitButton, SplitButtonProps } from './SplitButton';
 import { buttonBaseProps } from './buttonBaseProps.stories';
-import { Playground } from './Playground.stories';
+import { Playground as PlaygroundWrapper } from './Playground.stories';
 import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
 
 type ExampleProps = {
@@ -41,16 +41,16 @@ const ExampleSplitButton = (props: SplitButtonProps & ExampleProps): JSX.Element
   );
 };
 
-export const SplitButtonPlayground = () => {
+export const Playground = () => {
   const splitButtonProps: PlaygroundProps<SplitButtonProps & ExampleProps>['sections'] = [
     { sectionName: 'Button props', propList: buttonBaseProps },
     { sectionName: 'Example props', propList: exampleProps },
   ];
 
   return (
-    <Playground sections={splitButtonProps}>
+    <PlaygroundWrapper sections={splitButtonProps}>
       <ExampleSplitButton />
-    </Playground>
+    </PlaygroundWrapper>
   );
 };
 

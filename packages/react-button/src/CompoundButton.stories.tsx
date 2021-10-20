@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CompoundButton } from './CompoundButton';
 import { buttonBaseProps } from './buttonBaseProps.stories';
-import { Playground } from './Playground.stories';
+import { Playground as PlaygroundWrapper } from './Playground.stories';
 import type { CompoundButtonProps } from './CompoundButton';
 import type { PlaygroundProps, PropDefinition } from './Playground.types.stories';
 
@@ -21,10 +21,10 @@ const compoundButtonProps: PlaygroundProps<CompoundButtonProps>['sections'] = [
   { sectionName: 'CompoundButton props', propList: compoundButtonBaseProps },
 ];
 
-export const CompoundButtonPlayground = () => (
-  <Playground sections={compoundButtonProps}>
+export const Playground = () => (
+  <PlaygroundWrapper sections={compoundButtonProps}>
     <CompoundButton />
-  </Playground>
+  </PlaygroundWrapper>
 );
 
 export default {
