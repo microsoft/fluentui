@@ -118,7 +118,8 @@ export type MenuState = MenuCommons &
 /**
  * Data attached to open/close events
  */
-export type MenuOpenChangeData = Pick<MenuState, 'open'> & {
+export type MenuOpenChangeData = {
+  open: boolean;
   /**
    * Indicates whether the change of state was a keyboard interaction
    */
