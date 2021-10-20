@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove incorrect extension in splist, add .oft to email",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
