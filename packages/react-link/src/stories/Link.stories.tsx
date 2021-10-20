@@ -1,4 +1,4 @@
-import { Link } from '..';
+import { Link } from '../index';
 
 export { Default } from './LinkDefault.stories';
 export { Subtle } from './LinkSubtle.stories';
