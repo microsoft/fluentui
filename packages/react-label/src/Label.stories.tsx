@@ -55,7 +55,7 @@ const useStyles = makeStyles({
 
 const sizeOptions = ['small', 'medium', 'large'];
 
-export const BasicLabelExamples = () => {
+export const Default = () => {
   const styles = useStyles();
   return (
     <div className={styles.exampleContainer}>
@@ -77,7 +77,7 @@ export const BasicLabelExamples = () => {
   );
 };
 
-export const CustomizableLabelExample = () => {
+export const Custom = () => {
   const styles = useStyles();
   const [labelText, setLabelText] = React.useState("I'm a label");
   const [requiredText, setRequiredText] = React.useState<string>('');
