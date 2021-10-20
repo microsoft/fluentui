@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Number localization for bar charts",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}
