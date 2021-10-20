@@ -8,6 +8,7 @@
     "@fluentui/react": "^8.36.2"
   },
   "scripts": {
+    "build": "just-scripts build",
     "test": "node -r @fluentui/scripts/babel/register src/index.ts"
   }
 }
