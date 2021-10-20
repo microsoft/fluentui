@@ -9,7 +9,7 @@ export const Default = (props: ButtonProps) => {
   return <Button {...props}>Button</Button>;
 };
 
-export const ButtonAppearance = () => (
+export const Appearance = () => (
   <>
     <Button>Default button</Button>
     <Button appearance="primary">Primary button</Button>
@@ -18,7 +18,7 @@ export const ButtonAppearance = () => (
     <Button appearance="transparent">Transparent button</Button>
   </>
 );
-ButtonAppearance.parameters = {
+Appearance.parameters = {
   docs: {
     description: {
       story:
@@ -31,7 +31,7 @@ ButtonAppearance.parameters = {
   },
 };
 
-export const ButtonWithIcon = () => (
+export const Icon = () => (
   <>
     <Button icon={<CalendarMonth24Regular />}>Text</Button>
     <Button icon={<CalendarMonth24Regular />} iconPosition="after">
@@ -40,7 +40,7 @@ export const ButtonWithIcon = () => (
     <Button icon={<CalendarMonth24Regular />} />
   </>
 );
-ButtonWithIcon.parameters = {
+Icon.parameters = {
   docs: {
     description: {
       story:
@@ -50,14 +50,14 @@ ButtonWithIcon.parameters = {
   },
 };
 
-export const ButtonShape = () => (
+export const Shape = () => (
   <>
     <Button>Button</Button>
     <Button shape="circular">Button</Button>
     <Button shape="square">Button</Button>
   </>
 );
-ButtonShape.parameters = {
+Shape.parameters = {
   docs: {
     description: {
       story: 'A button can be rounded, circular, or square.',
@@ -65,7 +65,7 @@ ButtonShape.parameters = {
   },
 };
 
-export const ButtonSize = () => {
+export const Size = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
   const headerStyles: React.CSSProperties = { width: '100%', margin: 0 };
   return (
@@ -95,7 +95,7 @@ export const ButtonSize = () => {
     </>
   );
 };
-ButtonSize.parameters = {
+Size.parameters = {
   docs: {
     description: {
       story: 'A button supports `small`, `medium` and `large` size. Default size is `medium`.',
@@ -103,12 +103,12 @@ ButtonSize.parameters = {
   },
 };
 
-export const BlockButton = () => (
+export const Block = () => (
   <>
     <Button block>Block button</Button>
   </>
 );
-BlockButton.parameters = {
+Block.parameters = {
   docs: {
     description: {
       story: 'A button can fill the width of its container.',
@@ -116,7 +116,7 @@ BlockButton.parameters = {
   },
 };
 
-export const DisabledButton = () => {
+export const Disabled = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
 
   return (
@@ -140,7 +140,7 @@ export const DisabledButton = () => {
     </>
   );
 };
-DisabledButton.parameters = {
+Disabled.parameters = {
   docs: {
     description: {
       story: `A button can be \`disabled\` or \`disabledFocusable\`.
@@ -151,13 +151,13 @@ DisabledButton.parameters = {
   },
 };
 
-export const ButtonWithLongText = () => (
+export const WithLongText = () => (
   <>
     <Button>Text</Button>
     <Button>Text truncates after it hits the max width token value</Button>
   </>
 );
-ButtonWithLongText.parameters = {
+WithLongText.parameters = {
   docs: {
     description: {
       story: 'Text truncates after it hits the max width theme token value.',
