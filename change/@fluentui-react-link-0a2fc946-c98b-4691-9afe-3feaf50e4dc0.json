@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(Link): Make documentation exportable to codesandbox",
+  "packageName": "@fluentui/react-link",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
