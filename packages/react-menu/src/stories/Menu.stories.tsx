@@ -1,7 +1,6 @@
 import { Menu } from '../index';
 
 import descriptionMd from './MenuDescription.md';
-import bestPracticesMd from './MenuBestPractices.md';
 
 export { Default } from './MenuDefault.stories';
 export { Interaction } from './MenuInteraction.stories';
@@ -30,7 +29,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd].join('\n'),
       },
     },
   },

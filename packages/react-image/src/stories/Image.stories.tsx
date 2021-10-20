@@ -1,7 +1,6 @@
 import { Image } from '../index';
 import type { Meta } from '@storybook/react';
 import descriptionMd from './ImageDescription.md';
-import bestPracticesMd from './ImageBestPractices.md';
 
 export { Default } from './ImageDefault.stories';
 export { ImageShape } from './ImageShape.stories';
@@ -17,7 +16,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd].join('\n'),
       },
     },
   },

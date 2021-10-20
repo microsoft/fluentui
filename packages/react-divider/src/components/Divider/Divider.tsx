@@ -6,7 +6,7 @@ import type { DividerProps } from './Divider.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Define a styled Divider, using the `useDivider` and `useDividerStyles` hooks.
+ * A divider visually segments content into groups.
  */
 export const Divider: ForwardRefComponent<DividerProps> = React.forwardRef((props, ref) => {
   const state = useDivider(props, ref);

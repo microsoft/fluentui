@@ -5,6 +5,7 @@ import { Avatar, renderAvatar, useAvatar, useAvatarStyles } from './index';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { People20Regular, Guest20Regular, Bot20Regular, Bot24Regular } from '@fluentui/react-icons';
 import type { AvatarProps } from './index';
+import descriptionMd from './AvatarDescription.md';
 
 /**
  * Temporary workaround for Buttons
@@ -432,4 +433,12 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
 export default {
   title: 'Components/Avatar',
   component: Avatar,
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component: [descriptionMd].join('\n'),
+      },
+    },
+  },
 };
