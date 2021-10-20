@@ -5,7 +5,7 @@ export const ImageShadow = () => <Image shadow src="https://via.placeholder.com/
 ImageShadow.parameters = {
   docs: {
     description: {
-      story: 'The shadow prop will apply box shadow styling to the image',
+      story: 'The shadow prop will apply box shadow styling to the image.',
     },
   },
 };

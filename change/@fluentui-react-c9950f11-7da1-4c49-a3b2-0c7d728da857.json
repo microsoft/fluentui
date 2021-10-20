@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "AutoFill: cursor and characters added now behave correctly when trying to compose a composition string in freeform ComboBox.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
