@@ -34,7 +34,7 @@ Navigable.args = {
 Navigable.parameters = {
   docs: {
     description: {
-      story: 'A Accordion can support keyboard navigation',
+      story: 'An Accordion can support keyboard navigation.',
     },
   },
 };

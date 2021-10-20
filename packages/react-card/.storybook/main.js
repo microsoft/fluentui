@@ -11,4 +11,5 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
 
     return localConfig;
   },
+  previewHead: rootMain.previewHead,
 });
