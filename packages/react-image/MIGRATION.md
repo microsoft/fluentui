@@ -193,7 +193,7 @@ _This property has not changed and can be left as is._
 
 ### fluid
 
-The behaviour of the `fluid` prop can be achieved with the use of the `block` prop.
+This prop has been renamed to `block` which will result into the same behaviour as before.
 
 ```jsx
 <Image src="example.jpg" block />
