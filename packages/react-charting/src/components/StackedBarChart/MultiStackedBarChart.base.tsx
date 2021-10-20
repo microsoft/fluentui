@@ -12,7 +12,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '../../utilities/index';
+import { ChartHoverCard, convertToLocalString } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -67,7 +67,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { data, theme } = this.props;
+    const { data, theme, culture } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
@@ -79,7 +79,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
 
     const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle;
-    const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
+    const calloutYVal = this.state.yCalloutValue
+      ? this.state.yCalloutValue
+      : convertToLocalString(this.state.dataForHoverCard, culture);
 
     const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
@@ -130,6 +132,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
   ): JSX.Element {
+    const { culture } = this.props;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -210,25 +213,25 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const hideNumber = hideRatio === undefined ? false : hideRatio;
     const showRatio = !hideNumber && data!.chartData!.length === 2;
     const showNumber = !hideNumber && data!.chartData!.length === 1;
-
+    const getChartData = () => convertToLocalString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
       <div className={this._classNames.singleChartRoot}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
+              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData, culture)}>
                 <strong>{data!.chartTitle}</strong>
               </div>
             )}
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
-                {!hideDenominator && <span>/{total}</span>}
+                <strong>{getChartData()}</strong>
+                {!hideDenominator && <span>/{convertToLocalString(total, culture)}</span>}
               </div>
             )}
             {showNumber && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data}</strong>
+                <strong>{getChartData()}</strong>
               </div>
             )}
           </div>

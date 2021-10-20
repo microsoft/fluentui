@@ -930,3 +930,9 @@ export const getAccessibleDataObject = (
     'aria-describedby': accessibleData!.ariaDescribedBy,
   };
 };
+
+type LocalStringDataProps = number | string | undefined;
+export const convertToLocalString = (data: LocalStringDataProps, culture?: string): LocalStringDataProps => {
+  if (!data) return data;
+  return data.toLocaleString(culture);
+};

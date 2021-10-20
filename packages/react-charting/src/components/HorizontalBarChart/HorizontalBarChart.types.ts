@@ -71,6 +71,11 @@ export interface IHorizontalBarChartProps {
    * will be used to display the data/text based on given chartModeData prop.
    */
   barChartCustomData?: IRenderFunction<IChartProps>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IHorizontalBarChartStyleProps {

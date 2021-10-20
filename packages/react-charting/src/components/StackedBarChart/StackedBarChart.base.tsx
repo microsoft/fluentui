@@ -6,7 +6,7 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '../../utilities/index';
+import { ChartHoverCard, convertToLocalString } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -57,7 +57,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle } = this.props;
+    const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
     const { palette } = this.props.theme!;
     const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
 
@@ -98,7 +98,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       targetColor: targetData ? targetData.color : '',
       targetRatio,
     });
-
+    const getChartData = () => convertToLocalString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
       <div className={this._classNames.root}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -110,19 +110,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             )}
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <span className={this._classNames.ratioNumerator}>
-                  {data!.chartData![0].data ? data!.chartData![0].data : 0}
-                </span>
+                <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!this.props.hideDenominator && (
                   <span>
-                    /<span className={this._classNames.ratioDenominator}>{total}</span>
+                    /<span className={this._classNames.ratioDenominator}>{convertToLocalString(total, culture)}</span>
                   </span>
                 )}
               </div>
             )}
             {showNumber && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data}</strong>
+                <strong>{getChartData()}</strong>
               </div>
             )}
           </div>
@@ -156,7 +154,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   ) : (
                     <ChartHoverCard
                       Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-                      YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                      YValue={
+                        this.state.yCalloutValue
+                          ? this.state.yCalloutValue
+                          : convertToLocalString(this.state.dataForHoverCard, culture)
+                      }
                       color={this.state.color}
                     />
                   )}
