@@ -7,13 +7,12 @@ import { CounterBadge, CounterBadgeProps } from '@fluentui/react-badge';
 export const Sizes = (args: CounterBadgeProps) => {
   return (
     <>
-      <CounterBadge {...args} size="smallest" />
-      <CounterBadge {...args} size="smaller" />
+      <CounterBadge {...args} size="tiny" />
+      <CounterBadge {...args} size="extra-small" />
       <CounterBadge {...args} size="small" />
       <CounterBadge {...args} size="medium" />
       <CounterBadge {...args} size="large" />
-      <CounterBadge {...args} size="larger" />
-      <CounterBadge {...args} size="largest" />
+      <CounterBadge {...args} size="extra-large" />
     </>
   );
 };
@@ -25,7 +24,7 @@ Sizes.args = {
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A CounterBadge supports `smallest`, `smaller`, `small`, `medium`, `large`, `larger`, and `largest` sized',
+      story: 'A CounterBadge supports `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large` sizes.',
     },
   },
 };

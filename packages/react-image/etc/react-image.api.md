@@ -6,25 +6,25 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
-// @public (undocumented)
-const Image_2: React_2.FunctionComponent<ImageProps>;
+// @public
+const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
 // @public (undocumented)
 export type ImageCommons = {
     bordered?: boolean;
     fit?: 'none' | 'center' | 'contain' | 'cover';
-    fluid?: boolean;
-    circular?: boolean;
-    rounded?: boolean;
+    block?: boolean;
+    shape?: 'square' | 'circular' | 'rounded';
+    shadow?: boolean;
 };
 
 // @public (undocumented)
-export interface ImageProps extends ComponentProps<ImageSlots>, Partial<ImageCommons> {
-}
+export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 
 // @public (undocumented)
 export const imageShorthandProps: Array<keyof ImageSlots>;
@@ -35,8 +35,7 @@ export type ImageSlots = {
 };
 
 // @public (undocumented)
-export interface ImageState extends ComponentState<ImageSlots>, ImageCommons {
-}
+export type ImageState = ComponentState<ImageSlots> & ImageCommons;
 
 // @public
 export const renderImage: (state: ImageState) => JSX.Element;

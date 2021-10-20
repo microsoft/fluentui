@@ -4,39 +4,39 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Link: React_2.FunctionComponent<LinkProps & React_2.RefAttributes<HTMLElement>>;
+export const Link: ForwardRefComponent<LinkProps>;
 
 // @public (undocumented)
-export type LinkProps = ComponentPropsCompat & React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
-    href?: string;
-    onClick?: (event: React_2.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
-    rel?: string;
-    target?: string;
-    type?: string;
+export type LinkCommons = {
+    appearance?: 'subtle';
     disabled?: boolean;
     disabledFocusable?: boolean;
     inline?: boolean;
-    secondary?: boolean;
 };
 
-// @public
-export const linkShorthandProps: never[];
+// @public (undocumented)
+export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
 // @public (undocumented)
-export interface LinkState extends LinkProps {
-    // (undocumented)
-    ref: React_2.Ref<HTMLElement>;
-}
+export type LinkSlots = {
+    root: IntrinsicShorthandProps<'a', 'button'>;
+};
+
+// @public (undocumented)
+export type LinkState = ComponentState<LinkSlots> & LinkCommons;
 
 // @public
 export const renderLink: (state: LinkState) => JSX.Element;
 
 // @public
-export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLElement>, defaultProps?: LinkProps | undefined) => LinkState;
+export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;
 
 // @public
 export const useLinkState: (state: LinkState) => LinkState;

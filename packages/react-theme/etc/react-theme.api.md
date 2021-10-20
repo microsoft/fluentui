@@ -5,73 +5,187 @@
 ```ts
 
 // @public (undocumented)
-export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
-
-// @public (undocumented)
-export type BackgroundColorTokens = {
-    background: string;
-    backgroundHover: string;
-    backgroundPressed: string;
-    backgroundSelected: string;
+export type BorderRadiusTokens = {
+    borderRadiusNone: string;
+    borderRadiusSmall: string;
+    borderRadiusMedium: string;
+    borderRadiusLarge: string;
+    borderRadiusXLarge: string;
+    borderRadiusCircular: string;
 };
 
-// @public (undocumented)
-export const black = "#000000";
-
-// @public (undocumented)
-export const blackAlpha: Record<AlphaColors, string>;
-
-// @public (undocumented)
-export type BorderRadius = {
-    none: string;
-    small: string;
-    medium: string;
-    large: string;
-    xLarge: string;
-    circular: string;
-};
-
-// @public (undocumented)
-export const borderRadius: BorderRadius;
-
-// @public (undocumented)
-export type BrandColorTokens = {
-    brandBackground: string;
-    brandBackgroundHover: string;
-    brandBackgroundPressed: string;
-    brandBackgroundSelected: string;
-    brandBackgroundStatic: string;
-};
-
+// Warning: (ae-forgotten-export) The symbol "ColorVariants" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type BrandVariants = ColorVariants & {
     shade60: string;
 };
 
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkRed" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBurgundy" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteCranberry" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteRed" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkOrange" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBronze" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePumpkin" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteOrange" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePeach" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteMarigold" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteYellow" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteGold" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBrass" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBrown" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkBrown" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLime" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteForest" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteSeafoam" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLightGreen" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteGreen" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkGreen" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLightTeal" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteTeal" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkTeal" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteCyan" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteSteel" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLightBlue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBlue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteRoyalBlue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkBlue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteCornflower" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteNavy" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLavender" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePurple" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkPurple" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteOrchid" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteGrape" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBerry" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLilac" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePink" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteHotPink" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteMagenta" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePlum" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBeige" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteMink" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteSilver" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePlatinum" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteAnchor" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteCharcoal" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type ColorPaletteTokens = Record<ColorPaletteDarkRed | ColorPaletteBurgundy | ColorPaletteCranberry | ColorPaletteRed | ColorPaletteDarkOrange | ColorPaletteBronze | ColorPalettePumpkin | ColorPaletteOrange | ColorPalettePeach | ColorPaletteMarigold | ColorPaletteYellow | ColorPaletteGold | ColorPaletteBrass | ColorPaletteBrown | ColorPaletteDarkBrown | ColorPaletteLime | ColorPaletteForest | ColorPaletteSeafoam | ColorPaletteLightGreen | ColorPaletteGreen | ColorPaletteDarkGreen | ColorPaletteLightTeal | ColorPaletteTeal | ColorPaletteDarkTeal | ColorPaletteCyan | ColorPaletteSteel | ColorPaletteLightBlue | ColorPaletteBlue | ColorPaletteRoyalBlue | ColorPaletteDarkBlue | ColorPaletteCornflower | ColorPaletteNavy | ColorPaletteLavender | ColorPalettePurple | ColorPaletteDarkPurple | ColorPaletteOrchid | ColorPaletteGrape | ColorPaletteBerry | ColorPaletteLilac | ColorPalettePink | ColorPaletteHotPink | ColorPaletteMagenta | ColorPalettePlum | ColorPaletteBeige | ColorPaletteMink | ColorPaletteSilver | ColorPalettePlatinum | ColorPaletteAnchor | ColorPaletteCharcoal, string>;
+
 // @public
-export type ColorVariants = {
-    shade50: string;
-    shade40: string;
-    shade30: string;
-    shade20: string;
-    shade10: string;
-    primary: string;
-    tint10: string;
-    tint20: string;
-    tint30: string;
-    tint40: string;
-    tint50: string;
-    tint60: string;
+export type ColorTokens = {
+    colorNeutralForeground1: string;
+    colorNeutralForeground2: string;
+    colorNeutralForeground2Hover: string;
+    colorNeutralForeground2Pressed: string;
+    colorNeutralForeground2Selected: string;
+    colorNeutralForeground2BrandHover: string;
+    colorNeutralForeground2BrandPressed: string;
+    colorNeutralForeground2BrandSelected: string;
+    colorNeutralForeground3: string;
+    colorNeutralForeground3Hover: string;
+    colorNeutralForeground3Pressed: string;
+    colorNeutralForeground3Selected: string;
+    colorNeutralForeground3BrandHover: string;
+    colorNeutralForeground3BrandPressed: string;
+    colorNeutralForeground3BrandSelected: string;
+    colorNeutralForeground4: string;
+    colorNeutralForegroundDisabled: string;
+    colorBrandForegroundLink: string;
+    colorBrandForegroundLinkHover: string;
+    colorBrandForegroundLinkPressed: string;
+    colorBrandForegroundLinkSelected: string;
+    colorCompoundBrandForeground1: string;
+    colorCompoundBrandForeground1Hover: string;
+    colorCompoundBrandForeground1Pressed: string;
+    colorBrandForeground1: string;
+    colorBrandForeground2: string;
+    colorNeutralForegroundInverted: string;
+    colorNeutralForegroundOnBrand: string;
+    colorNeutralForegroundInvertedLink: string;
+    colorNeutralForegroundInvertedLinkHover: string;
+    colorNeutralForegroundInvertedLinkPressed: string;
+    colorNeutralForegroundInvertedLinkSelected: string;
+    colorNeutralBackground1: string;
+    colorNeutralBackground1Hover: string;
+    colorNeutralBackground1Pressed: string;
+    colorNeutralBackground1Selected: string;
+    colorNeutralBackground2: string;
+    colorNeutralBackground2Hover: string;
+    colorNeutralBackground2Pressed: string;
+    colorNeutralBackground2Selected: string;
+    colorNeutralBackground3: string;
+    colorNeutralBackground3Hover: string;
+    colorNeutralBackground3Pressed: string;
+    colorNeutralBackground3Selected: string;
+    colorNeutralBackground4: string;
+    colorNeutralBackground4Hover: string;
+    colorNeutralBackground4Pressed: string;
+    colorNeutralBackground4Selected: string;
+    colorNeutralBackground5: string;
+    colorNeutralBackground5Hover: string;
+    colorNeutralBackground5Pressed: string;
+    colorNeutralBackground5Selected: string;
+    colorNeutralBackground6: string;
+    colorNeutralBackgroundInverted: string;
+    colorSubtleBackground: string;
+    colorSubtleBackgroundHover: string;
+    colorSubtleBackgroundPressed: string;
+    colorSubtleBackgroundSelected: string;
+    colorTransparentBackground: string;
+    colorTransparentBackgroundHover: string;
+    colorTransparentBackgroundPressed: string;
+    colorTransparentBackgroundSelected: string;
+    colorNeutralBackgroundDisabled: string;
+    colorNeutralStencil1: string;
+    colorNeutralStencil2: string;
+    colorBrandBackground: string;
+    colorBrandBackgroundHover: string;
+    colorBrandBackgroundPressed: string;
+    colorBrandBackgroundSelected: string;
+    colorCompoundBrandBackground: string;
+    colorCompoundBrandBackgroundHover: string;
+    colorCompoundBrandBackgroundPressed: string;
+    colorBrandBackgroundStatic: string;
+    colorBrandBackground2: string;
+    colorNeutralStrokeAccessible: string;
+    colorNeutralStrokeAccessibleHover: string;
+    colorNeutralStrokeAccessiblePressed: string;
+    colorNeutralStrokeAccessibleSelected: string;
+    colorNeutralStroke1: string;
+    colorNeutralStroke1Hover: string;
+    colorNeutralStroke1Pressed: string;
+    colorNeutralStroke1Selected: string;
+    colorNeutralStroke2: string;
+    colorNeutralStroke3: string;
+    colorBrandStroke1: string;
+    colorBrandStroke2: string;
+    colorCompoundBrandStroke: string;
+    colorCompoundBrandStrokeHover: string;
+    colorCompoundBrandStrokePressed: string;
+    colorNeutralStrokeDisabled: string;
+    colorTransparentStroke: string;
+    colorTransparentStrokeInteractive: string;
+    colorTransparentStrokeDisabled: string;
+    colorStrokeFocus1: string;
+    colorStrokeFocus2: string;
+    colorNeutralShadowAmbient: string;
+    colorNeutralShadowKey: string;
+    colorNeutralShadowAmbientLighter: string;
+    colorNeutralShadowKeyLighter: string;
+    colorNeutralShadowAmbientDarker: string;
+    colorNeutralShadowKeyDarker: string;
+    colorBrandShadowAmbient: string;
+    colorBrandShadowKey: string;
 };
 
 // @public (undocumented)
 export const createDarkTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
-export const createGlobalTheme: (brand: BrandVariants) => Theme['global'];
-
-// @public (undocumented)
-export const createHighContrastTheme: (brand: BrandVariants) => Theme;
+export const createHighContrastTheme: () => Theme;
 
 // @public (undocumented)
 export const createLightTheme: (brand: BrandVariants) => Theme;
@@ -80,266 +194,55 @@ export const createLightTheme: (brand: BrandVariants) => Theme;
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
-export type FontFamilies = {
-    base: string;
-    monospace: string;
-    numeric: string;
+export type FontFamilyTokens = {
+    fontFamilyBase: string;
+    fontFamilyMonospace: string;
+    fontFamilyNumeric: string;
 };
 
 // @public (undocumented)
-export const fontFamilies: FontFamilies;
-
-// @public (undocumented)
-export type FontSizes = {
-    base: {
-        100: string;
-        200: string;
-        300: string;
-        400: string;
-        500: string;
-        600: string;
-    };
-    hero: {
-        700: string;
-        800: string;
-        900: string;
-        1000: string;
-    };
+export type FontSizeTokens = {
+    fontSizeBase100: string;
+    fontSizeBase200: string;
+    fontSizeBase300: string;
+    fontSizeBase400: string;
+    fontSizeBase500: string;
+    fontSizeBase600: string;
+    fontSizeHero700: string;
+    fontSizeHero800: string;
+    fontSizeHero900: string;
+    fontSizeHero1000: string;
 };
 
 // @public (undocumented)
-export const fontSizes: FontSizes;
-
-// @public (undocumented)
-export type FontWeights = {
-    regular: number;
-    medium: number;
-    semibold: number;
+export type FontWeightTokens = {
+    fontWeightRegular: number;
+    fontWeightMedium: number;
+    fontWeightSemibold: number;
 };
 
 // @public (undocumented)
-export const fontWeights: FontWeights;
-
-// @public (undocumented)
-export type GhostColorTokens = {
-    ghostBackground: string;
-    ghostBackgroundHover: string;
-    ghostBackgroundPressed: string;
-    ghostBackgroundSelected: string;
+export type LineHeightTokens = {
+    lineHeightBase100: string;
+    lineHeightBase200: string;
+    lineHeightBase300: string;
+    lineHeightBase400: string;
+    lineHeightBase500: string;
+    lineHeightBase600: string;
+    lineHeightHero700: string;
+    lineHeightHero800: string;
+    lineHeightHero900: string;
+    lineHeightHero1000: string;
 };
-
-// @public
-export type GlobalSharedColors = {
-    darkRed: ColorVariants;
-    burgundy: ColorVariants;
-    cranberry: ColorVariants;
-    red: ColorVariants;
-    darkOrange: ColorVariants;
-    bronze: ColorVariants;
-    pumpkin: ColorVariants;
-    orange: ColorVariants;
-    peach: ColorVariants;
-    marigold: ColorVariants;
-    yellow: ColorVariants;
-    gold: ColorVariants;
-    brass: ColorVariants;
-    brown: ColorVariants;
-    darkBrown: ColorVariants;
-    lime: ColorVariants;
-    forest: ColorVariants;
-    seafoam: ColorVariants;
-    lightGreen: ColorVariants;
-    green: ColorVariants;
-    darkGreen: ColorVariants;
-    lightTeal: ColorVariants;
-    teal: ColorVariants;
-    darkTeal: ColorVariants;
-    cyan: ColorVariants;
-    steel: ColorVariants;
-    lightBlue: ColorVariants;
-    blue: ColorVariants;
-    royalBlue: ColorVariants;
-    darkBlue: ColorVariants;
-    cornflower: ColorVariants;
-    navy: ColorVariants;
-    lavender: ColorVariants;
-    purple: ColorVariants;
-    darkPurple: ColorVariants;
-    orchid: ColorVariants;
-    grape: ColorVariants;
-    berry: ColorVariants;
-    lilac: ColorVariants;
-    pink: ColorVariants;
-    hotPink: ColorVariants;
-    magenta: ColorVariants;
-    plum: ColorVariants;
-    beige: ColorVariants;
-    mink: ColorVariants;
-    silver: ColorVariants;
-    platinum: ColorVariants;
-    anchor: ColorVariants;
-    charcoal: ColorVariants;
-};
-
-// @public (undocumented)
-export const grey: Record<Greys, string>;
-
-// @public (undocumented)
-export type Greys = 0 | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 26 | 28 | 30 | 32 | 34 | 36 | 38 | 40 | 42 | 44 | 46 | 48 | 50 | 52 | 54 | 56 | 58 | 60 | 62 | 64 | 66 | 68 | 70 | 72 | 74 | 76 | 78 | 80 | 82 | 84 | 86 | 88 | 90 | 92 | 94 | 96 | 98 | 100;
-
-// @public (undocumented)
-export const hcButtonFace = "#ffffff";
-
-// @public (undocumented)
-export const hcButtonText = "#000000";
-
-// @public (undocumented)
-export const hcCanvas = "#000000";
-
-// @public (undocumented)
-export const hcCanvasText = "#ffffff";
-
-// @public (undocumented)
-export const hcDisabled = "#3ff23f";
-
-// @public (undocumented)
-export const hcHighlight = "#1aebff";
-
-// @public (undocumented)
-export const hcHighlightText = "#000000";
-
-// @public (undocumented)
-export const hcHyperlink = "#ffff00";
-
-// @public (undocumented)
-export type LineHeights = FontSizes;
-
-// @public (undocumented)
-export const lineHeights: LineHeights;
 
 // @public (undocumented)
 export function mergeThemes(a: Theme | undefined, b: PartialTheme | Theme | undefined): Theme;
 
-// @public
-export type NeutralColorTokens = {
-    neutralForeground1: string;
-    neutralForeground2: string;
-    neutralForeground2Hover: string;
-    neutralForeground2Pressed: string;
-    neutralForeground2Selected: string;
-    neutralForeground2BrandHover: string;
-    neutralForeground2BrandPressed: string;
-    neutralForeground2BrandSelected: string;
-    neutralForeground3: string;
-    neutralForeground3Hover: string;
-    neutralForeground3Pressed: string;
-    neutralForeground3Selected: string;
-    neutralForeground3BrandHover: string;
-    neutralForeground3BrandPressed: string;
-    neutralForeground3BrandSelected: string;
-    neutralForeground4: string;
-    neutralForegroundDisabled: string;
-    brandForegroundLink: string;
-    brandForegroundLinkHover: string;
-    brandForegroundLinkPressed: string;
-    brandForegroundLinkSelected: string;
-    compoundBrandForeground1: string;
-    compoundBrandForeground1Hover: string;
-    compoundBrandForeground1Pressed: string;
-    brandForeground1: string;
-    brandForeground2: string;
-    neutralForegroundInverted: string;
-    neutralForegroundOnBrand: string;
-    neutralForegroundInvertedLink: string;
-    neutralForegroundInvertedLinkHover: string;
-    neutralForegroundInvertedLinkPressed: string;
-    neutralForegroundInvertedLinkSelected: string;
-    neutralBackground1: string;
-    neutralBackground1Hover: string;
-    neutralBackground1Pressed: string;
-    neutralBackground1Selected: string;
-    neutralBackground2: string;
-    neutralBackground2Hover: string;
-    neutralBackground2Pressed: string;
-    neutralBackground2Selected: string;
-    neutralBackground3: string;
-    neutralBackground3Hover: string;
-    neutralBackground3Pressed: string;
-    neutralBackground3Selected: string;
-    neutralBackground4: string;
-    neutralBackground4Hover: string;
-    neutralBackground4Pressed: string;
-    neutralBackground4Selected: string;
-    neutralBackground5: string;
-    neutralBackground5Hover: string;
-    neutralBackground5Pressed: string;
-    neutralBackground5Selected: string;
-    neutralBackground6: string;
-    neutralBackgroundInverted: string;
-    subtleBackground: string;
-    subtleBackgroundHover: string;
-    subtleBackgroundPressed: string;
-    subtleBackgroundSelected: string;
-    transparentBackground: string;
-    transparentBackgroundHover: string;
-    transparentBackgroundPressed: string;
-    transparentBackgroundSelected: string;
-    neutralBackgroundDisabled: string;
-    neutralStencil1: string;
-    neutralStencil2: string;
-    brandBackground: string;
-    brandBackgroundHover: string;
-    brandBackgroundPressed: string;
-    brandBackgroundSelected: string;
-    compoundBrandBackground: string;
-    compoundBrandBackgroundHover: string;
-    compoundBrandBackgroundPressed: string;
-    brandBackgroundStatic: string;
-    brandBackground2: string;
-    neutralStrokeAccessible: string;
-    neutralStrokeAccessibleHover: string;
-    neutralStrokeAccessiblePressed: string;
-    neutralStrokeAccessibleSelected: string;
-    neutralStroke1: string;
-    neutralStroke1Hover: string;
-    neutralStroke1Pressed: string;
-    neutralStroke1Selected: string;
-    neutralStroke2: string;
-    neutralStroke3: string;
-    brandStroke1: string;
-    brandStroke2: string;
-    compoundBrandStroke: string;
-    compoundBrandStrokeHover: string;
-    compoundBrandStrokePressed: string;
-    neutralStrokeDisabled: string;
-    transparentStroke: string;
-    transparentStrokeInteractive: string;
-    transparentStrokeDisabled: string;
-    strokeFocus1: string;
-    strokeFocus2: string;
-    neutralShadowAmbient: string;
-    neutralShadowKey: string;
-    neutralShadowAmbientLighter: string;
-    neutralShadowKeyLighter: string;
-    neutralShadowAmbientDarker: string;
-    neutralShadowKeyDarker: string;
-    brandShadowAmbient: string;
-    brandShadowKey: string;
-};
-
-// Warning: (ae-forgotten-export) The symbol "RecursivePartial" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type PartialTheme = RecursivePartial<Theme>;
+export type PartialTheme = Partial<Theme>;
 
 // @public
-export type ProductBrandColors = {
-    teams: BrandVariants;
-    web: BrandVariants;
-};
-
-// @public
-export type ShadowLevelTokens = {
+export type ShadowTokens = {
     shadow2: string;
     shadow4: string;
     shadow8: string;
@@ -349,30 +252,12 @@ export type ShadowLevelTokens = {
 };
 
 // @public (undocumented)
-export const sharedColors: GlobalSharedColors;
-
-// @public
-export type SharedColorTokens = {
-    background1: string;
-    background2: string;
-    background3: string;
-    foreground1: string;
-    foreground2: string;
-    foreground3: string;
-    borderActive: string;
-    border2: string;
+export type StrokeWidthTokens = {
+    strokeWidthThin: string;
+    strokeWidthThick: string;
+    strokeWidthThicker: string;
+    strokeWidthThickest: string;
 };
-
-// @public (undocumented)
-export type StrokeWidths = {
-    thin: string;
-    thick: string;
-    thicker: string;
-    thickest: string;
-};
-
-// @public (undocumented)
-export const strokeWidths: StrokeWidths;
 
 // @public (undocumented)
 export const teamsDarkTheme: Theme;
@@ -384,68 +269,10 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type TextAlignment = 'inherit' | 'initial' | 'revert' | 'unset' | 'center' | 'end' | 'start' | 'justify' | 'left' | 'match-parent' | 'right';
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 
 // @public (undocumented)
-export type TextAlignments = {
-    start: TextAlignment;
-    center: TextAlignment;
-    end: TextAlignment;
-    justify: TextAlignment;
-};
-
-// @public (undocumented)
-export const textAlignments: TextAlignments;
-
-// @public (undocumented)
-export type Theme = {
-    global: {
-        color: {
-            black: string;
-            white: string;
-            hcHyperlink: string;
-            hcHighlight: string;
-            hcDisabled: string;
-            hcCanvas: string;
-            hcCanvasText: string;
-            hcHighlightText: string;
-            hcButtonText: string;
-            hcButtonFace: string;
-        };
-        palette: GlobalSharedColors & {
-            brand: BrandVariants;
-            grey: Record<Greys, string>;
-            whiteAlpha: Record<AlphaColors, string>;
-            blackAlpha: Record<AlphaColors, string>;
-        };
-        type: {
-            fontSizes: FontSizes;
-            fontWeights: FontWeights;
-            fontFamilies: FontFamilies;
-            lineHeights: LineHeights;
-            alignment: TextAlignments;
-        };
-        borderRadius: BorderRadius;
-        strokeWidth: StrokeWidths;
-    };
-    alias: {
-        color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
-            neutral: NeutralColorTokens;
-        };
-        shadow: ShadowLevelTokens;
-    };
-};
-
-// @public (undocumented)
-export function themeToCSSVariables(theme: Theme): Record<string, string>;
-
-// @public (undocumented)
-export type TransparentColorTokens = {
-    transparentBackground: string;
-    transparentBackgroundHover: string;
-    transparentBackgroundPressed: string;
-    transparentBackgroundSelected: string;
-};
+export function themeToCSSVariables(theme: Theme): Record<string, string | number>;
 
 // @public (undocumented)
 export const webDarkTheme: Theme;
@@ -455,12 +282,6 @@ export const webHighContrastTheme: Theme;
 
 // @public (undocumented)
 export const webLightTheme: Theme;
-
-// @public (undocumented)
-export const white = "#ffffff";
-
-// @public (undocumented)
-export const whiteAlpha: Record<AlphaColors, string>;
 
 // (No @packageDocumentation comment for this package)
 

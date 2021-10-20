@@ -2,6 +2,108 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Fri, 15 Oct 2021 07:37:01 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Map JXR files to Photo icon",
+            "commit": "1ca1036621a15f44e32e86685c1df901ae30baba"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.3.4",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Oct 2021 07:27:12 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.4.2",
+      "version": "8.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "update fabric-cdn urls",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.3.3",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "chhoorn@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Add forms icon to react-file-type-icons",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          },
+          {
+            "author": "chhoorn@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Add sway icon",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-file-type-icons to v8.3.2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Sep 2021 07:36:46 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.3.2",
       "version": "8.3.2",

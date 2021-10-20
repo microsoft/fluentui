@@ -18,12 +18,29 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- `Popup` should not dismiss when its iframe content is focused @ling1726 ([#19955](https://github.com/microsoft/fluentui/pull/19955))
+- `whatInput` Add typings to what input event listeners @ling1726 ([#20024](https://github.com/microsoft/fluentui/pull/20024))
+- Remove `active` as condition to open submenu on `MenuItem` and active styles for vertical menu @chassunc ([#20062](https://github.com/microsoft/fluentui/pull/20062))
+- `carousel` Add disableClickableNav to ProtoTypes list @yifeigogo ([#20053](https://github.com/microsoft/fluentui/pull/20053))
+- Adding brand `backgroundHover3`, brand `backgroundPressed2`, and default `borderTransparentActive` @notandrew ([#20056](https://github.com/microsoft/fluentui/pull/20056))
+- Spread event props from trigger in `Popup` @assuncaocharles ([#20162](https://github.com/microsoft/fluentui/pull/20162))
+
+### Features
+- Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
+
+<!--------------------------------[ v0.59.0 ]------------------------------- -->
+## [v0.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.59.0) (2021-09-20)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.58.0..@fluentui/react-northstar_v0.59.0)
+
 ### BREAKING CHANGES
 - Remove Red Foreground 3 from color scheme tokens  @codepretty ([#19761](https://github.com/microsoft/fluentui/pull/19761))
 
 ### Fixes
 - Ignore `ChatItem` contentPosition in compact density @Hirse ([#19701](https://github.com/microsoft/fluentui/pull/19701))
 - Fix compact `ChatMessage` focus highlight @Hirse ([#19720](https://github.com/microsoft/fluentui/pull/19720))
+- Set active item of `MenuItem` with submenu on focus @chassunc ([#19820](https://github.com/microsoft/fluentui/pull/19820))
+- Fix `Popup` to have box-shadow when `autoSize` prop is true @yuanboxue-amber ([#19817](https://github.com/microsoft/fluentui/pull/19817))
 
 ### Documentation
 - Add Chat Playground @Hirse ([#19702](https://github.com/microsoft/fluentui/pull/19702))

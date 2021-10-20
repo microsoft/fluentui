@@ -25,7 +25,7 @@ describe('makeStyles', () => {
         color: 'red',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__afhpfp0 fe3e8s9');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('___afhpfp0 fe3e8s9');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s9 {
@@ -41,7 +41,7 @@ describe('makeStyles', () => {
         position: 'absolute',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1jgns8t fe3e8s9 f1euv43f');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('___1jgns8t fe3e8s9 f1euv43f');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s9 {
@@ -64,8 +64,8 @@ describe('makeStyles', () => {
     const ltrClasses = computeClasses({ dir: 'ltr', renderer }).root;
     const rtlClasses = computeClasses({ dir: 'rtl', renderer }).root;
 
-    expect(ltrClasses).toEqual('__a0zqzs0 frdkuqy f1c8chgj');
-    expect(rtlClasses).toEqual('__7x57i00 f81rol6 f19krssl');
+    expect(ltrClasses).toEqual('___a0zqzs0 frdkuqy f1c8chgj');
+    expect(rtlClasses).toEqual('___7x57i00 f81rol6 f19krssl');
 
     expect(renderer).toMatchInlineSnapshot(`
       .frdkuqy {
@@ -98,7 +98,7 @@ describe('makeStyles', () => {
         animationDuration: '5s',
       },
     });
-    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__3kh5ri0 f1fp4ujf f1cpbl36 f1t9cprh');
+    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('___3kh5ri0 f1fp4ujf f1cpbl36 f1t9cprh');
 
     expect(renderer).toMatchInlineSnapshot(`
       @-webkit-keyframes f1q8eu9e {
@@ -116,6 +116,34 @@ describe('makeStyles', () => {
         }
       }
       @-webkit-keyframes f55c0se {
+        from {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(-360deg);
+          -moz-transform: rotate(-360deg);
+          -ms-transform: rotate(-360deg);
+          transform: rotate(-360deg);
+        }
+      }
+      @keyframes f1q8eu9e {
+        from {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes f55c0se {
         from {
           -webkit-transform: rotate(0deg);
           -moz-transform: rotate(0deg);
@@ -209,7 +237,7 @@ describe('makeStyles', () => {
         color: 'red',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer })[42]).toEqual('__afhpfp0 fe3e8s9');
+    expect(computeClasses({ dir: 'ltr', renderer })[42]).toEqual('___afhpfp0 fe3e8s9');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s9 {

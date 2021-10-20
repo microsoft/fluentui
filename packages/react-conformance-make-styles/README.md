@@ -14,6 +14,10 @@ isConformant({
 });
 ```
 
+Please make sure this package is being used with `@fluentui/react-conformance` if you do use this package without the
+conformance test runner, you will have problems with missing types. To resolve, just install `@fluentui/react-conformance`
+as a dev dependency or a depdency.
+
 ## Tests
 
 ### `classname-wins`

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "added styling of documentation",
+  "packageName": "@fluentui/react-link",
+  "email": "peter@draxler.ml",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Changing the Switch's onKeyDown event to onKeyUp.",
+  "packageName": "@fluentui/react-switch",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch"
+}

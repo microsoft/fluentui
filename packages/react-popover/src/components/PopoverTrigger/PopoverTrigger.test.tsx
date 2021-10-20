@@ -74,6 +74,18 @@ describe('PopoverTrigger', () => {
     expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('true');
   });
 
+  it('should allow user to override aria-haspopoup on trigger element', () => {
+    // Arrange
+    const { getByRole } = render(
+      <PopoverTrigger>
+        <button aria-haspopup="false">Trigger</button>
+      </PopoverTrigger>,
+    );
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('false');
+  });
+
   it('should retain original child callback ref', () => {
     // Arrange
     const ref = jest.fn();

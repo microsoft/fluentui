@@ -206,6 +206,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       cellStyleProps,
       group,
       focusZoneProps,
+      disabled = false,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -213,7 +214,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const droppingClassName = isDropping ? this._droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
-    const canSelect = !!selection && selection.canSelectItem(item, itemIndex);
+    const canSelect = !!selection && selection.canSelectItem(item, itemIndex) && !disabled;
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
@@ -234,6 +235,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         compact,
         enableUpdateAnimations,
         cellStyleProps,
+        disabled,
       }),
     };
 
@@ -290,10 +292,12 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         componentRef={this._focusZone}
         role={role}
         aria-label={ariaLabel}
+        aria-disabled={disabled || undefined}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
+        data-selection-disabled={disabled || undefined}
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}

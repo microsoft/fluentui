@@ -25,14 +25,14 @@ export const OffsetValue = () => {
       </label>
       <Popover positioning={{ position: 'after', offset: [offsetY, offsetX] }} noArrow>
         <PopoverTrigger>
-          <Button primary>Click me</Button>
+          <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
 
         <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
       </Popover>
       <Popover positioning={{ position: 'after', offset: () => [offsetY, offsetX] }} noArrow>
         <PopoverTrigger>
-          <Button primary>Click me</Button>
+          <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
 
         <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
@@ -46,7 +46,7 @@ OffsetValue.parameters = {
   docs: {
     description: {
       story: [
-        'The positionined element can be offset from the target element. The offset value can be set either by:',
+        'The positioned element can be offset from the target element. The offset value can be set either by:',
         '',
         '- Simple array with X and Y axis values',
         '- A function that returns the array offset value',
