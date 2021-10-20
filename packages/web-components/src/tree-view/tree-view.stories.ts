@@ -14,6 +14,11 @@ export default {
 };
 
 const TreeViewTemplate = ({ disabled, renderCollapsedNodes }) => `
+<style>
+div.docs-story>div:first-child {
+  height: 22em !important;
+}
+</style>
 <fluent-tree-view
   ${disabled ? 'disabled' : ''}
   ${renderCollapsedNodes ? `render-collapsed-nodes="${renderCollapsedNodes}` : ''}
