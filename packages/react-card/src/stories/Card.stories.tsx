@@ -127,6 +127,6 @@ export const GridviewCard = () => {
 };
 
 export default {
-  title: 'Components/OfficeCard',
+  title: 'Components/Card',
   component: Card,
 };
