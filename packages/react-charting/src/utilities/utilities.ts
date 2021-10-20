@@ -933,6 +933,8 @@ export const getAccessibleDataObject = (
 
 type LocalStringDataProps = number | string | undefined;
 export const convertToLocalString = (data: LocalStringDataProps, culture?: string): LocalStringDataProps => {
-  if (!data) return data;
+  if (!data) {
+    return data;
+  }
   return data.toLocaleString(culture);
 };
