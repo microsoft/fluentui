@@ -1,14 +1,16 @@
 import config from '@fluentui/scripts/config';
 import sh from '@fluentui/scripts/gulp/sh';
-import fs from 'fs-extra';
-import path from 'path';
-
-import { addResolutionPathsForProjectPackages, packProjectPackages } from './packPackages';
-import { createTempDir, log } from './utils';
+import * as fs from 'fs-extra';
+import * as path from 'path';
+import {
+  addResolutionPathsForProjectPackages,
+  packProjectPackages,
+} from '@fluentui/scripts/projects-test/packPackages';
+import { createTempDir, log } from '@fluentui/scripts/projects-test/utils';
 
 export async function typings() {
   const logger = log('test:ts-minbar-react:typings');
-  const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/typings'));
+  const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/'));
   const tmpDirectory = createTempDir('ts-minbar-react-typings-');
 
   logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
@@ -19,7 +21,8 @@ export async function typings() {
   await sh(`yarn add ${dependencies}`, tmpDirectory);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger);
+  const lernaRoot = config.paths.allPackages();
+  const packedPackages = await packProjectPackages(logger, lernaRoot, ['@fluentui/react']);
   await addResolutionPathsForProjectPackages(tmpDirectory);
 
   await sh(`yarn add ${packedPackages['@fluentui/react']}`, tmpDirectory);

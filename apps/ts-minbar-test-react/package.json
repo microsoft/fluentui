@@ -8,8 +8,6 @@
     "@fluentui/react": "^8.36.2"
   },
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
     "test": "node -r @fluentui/scripts/babel/register src/index.ts"
   }
 }

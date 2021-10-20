@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["es5", "dom", "es2015.collection"],
     "target": "es5",
     "strict": true
   },
