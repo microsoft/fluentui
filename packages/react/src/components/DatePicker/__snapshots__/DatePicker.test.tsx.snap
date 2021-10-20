@@ -137,36 +137,21 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
                   color: WindowText;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -378,36 +363,21 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
                   color: WindowText;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -625,36 +595,21 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   color: WindowText;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {

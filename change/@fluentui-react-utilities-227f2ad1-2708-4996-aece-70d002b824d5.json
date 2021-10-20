@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove compat utilities and types",
+  "packageName": "@fluentui/react-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

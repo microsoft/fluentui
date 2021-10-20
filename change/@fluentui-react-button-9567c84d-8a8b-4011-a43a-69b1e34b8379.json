@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removed duplicate 'Button' from story names",
+  "packageName": "@fluentui/react-button",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
