@@ -291,9 +291,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   officescript: {
     extensions: ['osts'],
   },
-  splist: {
-    extensions: ['listitem'],
-  },
+  splist: {},
   model: {
     extensions: [
       '3ds',
