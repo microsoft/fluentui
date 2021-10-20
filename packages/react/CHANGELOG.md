@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 13 Oct 2021 07:31:28 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Oct 2021 07:30:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.37.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.0)
+
+Wed, 20 Oct 2021 07:30:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.36.5..@fluentui/react_v8.37.0)
+
+### Minor changes
+
+- AutoFill: cursor and characters added now behave correctly when trying to compose a composition string in freeform ComboBox. ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- TextField: Remove placeholder style font override. ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by tristan.watanabe@gmail.com)
+- High contrast style fixes for ColorPicker ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by sarah.higley@microsoft.com)
 
 ## [8.36.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.36.5)
 
