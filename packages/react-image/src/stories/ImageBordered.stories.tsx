@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Image } from '../index';
 
-export const ImageBorderVariations = () => (
+export const Bordered = () => (
   <div>
     <div style={{ display: 'flex', gap: 8 }}>
       <Image
@@ -52,7 +52,7 @@ export const ImageBorderVariations = () => (
     </div>
   </div>
 );
-ImageBorderVariations.parameters = {
+Bordered.parameters = {
   docs: {
     description: {
       story: 'The `bordered` prop will apply a border style to images regardless of its shape.',
