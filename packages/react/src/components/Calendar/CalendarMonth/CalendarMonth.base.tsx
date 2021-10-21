@@ -226,7 +226,7 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
             className={css(classNames.navigationButton, {
               [classNames.disabled]: !isPrevYearInBounds,
             })}
-            aria-disabled={!isPrevYearInBounds}
+            disabled={!isPrevYearInBounds}
             tabIndex={isPrevYearInBounds ? undefined : allFocusable ? 0 : -1}
             onClick={isPrevYearInBounds ? onSelectPrevYear : undefined}
             onKeyDown={isPrevYearInBounds ? onButtonKeyDown(onSelectPrevYear) : undefined}
@@ -243,7 +243,7 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
             className={css(classNames.navigationButton, {
               [classNames.disabled]: !isNextYearInBounds,
             })}
-            aria-disabled={!isNextYearInBounds}
+            disabled={!isNextYearInBounds}
             tabIndex={isNextYearInBounds ? undefined : allFocusable ? 0 : -1}
             onClick={isNextYearInBounds ? onSelectNextYear : undefined}
             onKeyDown={isNextYearInBounds ? onButtonKeyDown(onSelectNextYear) : undefined}
