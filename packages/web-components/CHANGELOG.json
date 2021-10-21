@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/web-components_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "Fix web-components storybook",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Oct 2021 07:38:09 GMT",
       "tag": "@fluentui/web-components_v1.6.2",
       "version": "1.6.2",

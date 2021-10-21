@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.5.1",
+      "version": "8.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "remove incorrect extension in splist, add .oft to email",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Oct 2021 07:30:01 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.5.0",
       "version": "8.5.0",

@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.172",
+      "version": "1.0.0-beta.172",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "comment": "Disable consistent-callback-args test",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react to v8.37.1",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Oct 2021 07:30:01 GMT",
       "tag": "@fluentui/react-tabs_v1.0.0-beta.171",
       "version": "1.0.0-beta.171",

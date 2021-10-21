@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Wed, 20 Oct 2021 07:30:01 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Oct 2021 07:28:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.1)
+
+Thu, 21 Oct 2021 07:28:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.0..@fluentui/react-file-type-icons_v8.5.1)
+
+### Patches
+
+- remove incorrect extension in splist, add .oft to email ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by caperez@microsoft.com)
 
 ## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.0)
 
