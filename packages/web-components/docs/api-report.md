@@ -75,6 +75,9 @@ import { TreeItemOptions } from '@microsoft/fast-foundation';
 import { TreeView } from '@microsoft/fast-foundation';
 import { ViewTemplate } from '@microsoft/fast-element';
 
+// @public (undocumented)
+export const accentBaseColor: CSSDesignToken<Swatch>;
+
 // Warning: (ae-internal-missing-underscore) The name "AccentButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
@@ -388,7 +391,6 @@ export class DesignSystemProvider extends FoundationElement {
     accentForegroundFocusDelta: number;
     accentForegroundHoverDelta: number;
     accentForegroundRestDelta: number;
-    accentPalette: Palette;
     baseHeightMultiplier: number;
     baseHorizontalSpacingMultiplier: number;
     baseLayerLuminance: number;
@@ -419,7 +421,6 @@ export class DesignSystemProvider extends FoundationElement {
     neutralFillStrongActiveDelta: number;
     neutralFillStrongFocusDelta: number;
     neutralFillStrongHoverDelta: number;
-    neutralPalette: Palette;
     neutralStrokeActiveDelta: number;
     neutralStrokeDividerRestDelta: number;
     neutralStrokeFocusDelta: number;
@@ -830,6 +831,9 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
 
 // @public
 export const menuStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+
+// @public (undocumented)
+export const neutralBaseColor: CSSDesignToken<Swatch>;
 
 // @public @deprecated (undocumented)
 export const neutralContrastFillActive: CSSDesignToken<Swatch>;

@@ -1,13 +1,5 @@
 import { parseColorHexRGB } from '@microsoft/fast-colors';
-import {
-  attr,
-  css,
-  html,
-  nullableNumberConverter,
-  Observable,
-  observable,
-  ValueConverter,
-} from '@microsoft/fast-element';
+import { attr, css, html, nullableNumberConverter, Observable, ValueConverter } from '@microsoft/fast-element';
 import {
   DesignToken,
   DesignTokenValue,
@@ -16,9 +8,9 @@ import {
   FoundationElement,
 } from '@microsoft/fast-foundation';
 import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
-import { Palette, PaletteRGB } from '../color/palette';
 import { Swatch, SwatchRGB } from '../color/swatch';
 import {
+  accentBaseColor,
   accentFillActiveDelta,
   accentFillFocusDelta,
   accentFillHoverDelta,
@@ -27,7 +19,6 @@ import {
   accentForegroundFocusDelta,
   accentForegroundHoverDelta,
   accentForegroundRestDelta,
-  accentPalette,
   baseHeightMultiplier,
   baseHorizontalSpacingMultiplier,
   baseLayerLuminance,
@@ -39,6 +30,7 @@ import {
   fillColor,
   focusStrokeWidth,
   layerCornerRadius,
+  neutralBaseColor,
   neutralFillActiveDelta,
   neutralFillFocusDelta,
   neutralFillHoverDelta,
@@ -56,7 +48,6 @@ import {
   neutralFillStrongFocusDelta,
   neutralFillStrongHoverDelta,
   neutralForegroundRest,
-  neutralPalette,
   neutralStrokeActiveDelta,
   neutralStrokeDividerRestDelta,
   neutralStrokeFocusDelta,
@@ -202,18 +193,8 @@ export class DesignSystemProvider extends FoundationElement {
     converter: swatchConverter,
     mode: 'fromView',
   })
+  @designToken(accentBaseColor)
   public accentBaseColor: Swatch;
-
-  /**
-   * @internal
-   */
-  private accentBaseColorChanged(prev: Swatch, next: Swatch): void {
-    if (next !== undefined && next !== null) {
-      accentPalette.setValueFor(this, PaletteRGB.create(next as SwatchRGB));
-    } else {
-      accentPalette.deleteValueFor(this);
-    }
-  }
 
   /**
    * A convenience to recreate the neutralPalette
@@ -225,40 +206,8 @@ export class DesignSystemProvider extends FoundationElement {
     converter: swatchConverter,
     mode: 'fromView',
   })
+  @designToken(neutralBaseColor)
   public neutralBaseColor: Swatch;
-
-  /**
-   * @internal
-   */
-  private neutralBaseColorChanged(prev: Swatch, next: Swatch): void {
-    if (next !== undefined && next !== null) {
-      neutralPalette.setValueFor(this, PaletteRGB.create(next as SwatchRGB));
-    } else {
-      neutralPalette.deleteValueFor(this);
-    }
-  }
-
-  /**
-   * Defines the palette that all neutral color recipes are derived from.
-   * This is an array for hexadecimal color strings ordered from light to dark.
-   *
-   * @remarks
-   * HTML attribute: N/A
-   */
-  @observable
-  @designToken(neutralPalette)
-  public neutralPalette: Palette;
-
-  /**
-   * Defines the palette that all accent color recipes are derived from.
-   * This is an array for hexadecimal color strings ordered from light to dark.
-   *
-   * @remarks
-   * HTML attribute: N/A
-   */
-  @observable
-  @designToken(accentPalette)
-  public accentPalette: Palette;
 
   /**
    *

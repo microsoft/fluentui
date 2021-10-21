@@ -1,7 +1,7 @@
 import { DesignToken } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { Palette, PaletteRGB } from './color/palette';
-import { Swatch } from './color/swatch';
+import { Swatch, SwatchRGB } from './color/swatch';
 import { foregroundOnAccentSet as foregroundOnAccentSetAlgorithm } from './color/recipes/foreground-on-accent';
 import { gradientShadowStroke as gradientShadowStrokeAlgorithm } from './color/recipes/gradient-shadow-stroke';
 import { underlineStroke as underlineStrokeAlgorithm } from './color/recipes/underline-stroke';
@@ -249,9 +249,18 @@ export const neutralStrokeStrongFocusDelta = createNonCss<number>('neutral-strok
 // Color recipes
 
 /** @public */
-export const neutralPalette = createNonCss<Palette>('neutral-palette').withDefault(PaletteRGB.from(middleGrey));
+export const neutralBaseColor = create<Swatch>('neutral-base-color').withDefault(middleGrey);
 /** @public */
-export const accentPalette = createNonCss<Palette>('accent-palette').withDefault(PaletteRGB.from(accentBase));
+export const neutralPalette = createNonCss<Palette>('neutral-palette').withDefault((element: HTMLElement) =>
+  PaletteRGB.from(neutralBaseColor.getValueFor(element) as SwatchRGB),
+);
+
+/** @public */
+export const accentBaseColor = create<Swatch>('accent-base-color').withDefault(accentBase);
+/** @public */
+export const accentPalette = createNonCss<Palette>('accent-palette').withDefault((element: HTMLElement) =>
+  PaletteRGB.from(accentBaseColor.getValueFor(element) as SwatchRGB),
+);
 
 // Neutral Layer Card Container
 /** @public */
