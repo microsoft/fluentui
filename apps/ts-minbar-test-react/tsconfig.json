@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "lib": ["es5", "dom"],
+    "target": "es5",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "types": ["node"]
+  },
+  "include": ["src"]
+}
