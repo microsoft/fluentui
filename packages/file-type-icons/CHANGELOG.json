@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Thu, 21 Oct 2021 12:30:35 GMT",
+      "tag": "@uifabric/file-type-icons_v7.8.3",
+      "version": "7.8.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove incorrect extension in splist, add .oft to email",
+            "author": "caperez@microsoft.com",
+            "commit": "87c788cfab3299858e5e90a8d32127967766bc2b",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Oct 2021 12:26:15 GMT",
       "tag": "@uifabric/file-type-icons_v7.8.2",
       "version": "7.8.2",
