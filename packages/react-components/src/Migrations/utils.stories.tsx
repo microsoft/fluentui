@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { DocsContainer, Source } from '@storybook/addon-docs';
+import { DocsContainer, DocsContainerProps, Meta, Source } from '@storybook/addon-docs';
 import { makeStyles } from '@fluentui/react-make-styles';
 import {
   Menu,
@@ -101,9 +101,7 @@ export const VersionPicker = () => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export const FluentDocsContainer = ({ children, context }) => {
+export const FluentDocsContainer = ({ children, context }: DocsContainerProps & { children: React.ReactNode }) => {
   return (
     <>
       <VersionPicker />

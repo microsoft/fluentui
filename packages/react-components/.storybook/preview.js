@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { FluentDocsContainer } from '../src/Migrations/utils.stories';
 import * as rootPreview from '../../../.storybook/preview';
 
@@ -29,7 +28,6 @@ export const decorators = [...rootPreview.decorators];
 export const parameters = {
   ...rootPreview.parameters,
   docs: {
-    // TODO extract this to a separate component
     container: FluentDocsContainer,
   },
   options,
