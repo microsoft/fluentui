@@ -182,7 +182,6 @@ const templates = {
 
           return localConfig;
         },
-        previewHead: rootMain.previewHead,
       });
     `,
     preview: stripIndents`
