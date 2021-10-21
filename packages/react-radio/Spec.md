@@ -1,8 +1,8 @@
 # @fluentui/react-radio Spec
 
-## Background
+The Radio component let people select a single option from two or more choices. Use radio component to present two or more available choices, preferably up to 7 options.
 
-The Radio component let people select a single option from two or more choices. Use radio component to present all available choices up to 7 options.
+## Background
 
 Fabric expects the options to be provided through the `options` prop. The selected value is the key of the option using the `selectedKey`.
 Fabric allows options to have image instead of a label.
@@ -44,6 +44,143 @@ Northstar's implementation consists of `RadioGroup` that includes two or more `R
 - All mentions of v0 refer to Northstar - `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
 
 _⚠️Props not included in this section are marked as depricated and will not be considered._
+
+_Include background research done for this component_
+
+- _Link to Open UI research_ ✔️
+- _Link to comparison of v7 and v0_
+- _Link to GitHub epic issue for the converged component_ ✔️
+
+## Variants
+
+TODO: pics
+_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+
+### Horizonal
+
+### Horizonal stacked
+
+### Vertical
+
+### Vertical with input
+
+### Vertical with dropdown
+
+### Vertical with subtext
+
+## API
+
+_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+
+### Components
+
+| Component | Purpose                                                                           |
+| --------- | --------------------------------------------------------------------------------- |
+| Radio     | Is a wrapper to the items                                                         |
+| RadioItem | Represents a single item which is potentially to be used with the Field component |
+
+### Radio
+
+| Prop                | Type                    | Purpose |
+| ------------------- | ----------------------- | ------- |
+| groupLabel (legend) | -                       | -       |
+| defaultSelected     | -                       | -       |
+| selectedValue       | -                       | -       |
+| orientation         | "horizonal", "vertical" | -       |
+
+### RadioItem
+
+| Prop                              | Type | Purpose |
+| --------------------------------- | ---- | ------- |
+| key (root)                        | -    | -       |
+| id (input - id & label - htmlfor) | -    | -       |
+| text (label)                      | -    | -       |
+| name (input)                      | -    | -       |
+| checked (input)                   | -    | -       |
+| disabled (input)                  | -    | -       |
+
+### Sample Code
+
+`Radio` component:
+
+```jsx
+//Options as a prop
+const items = [
+  {text: 'chocolate', key: 'optio1'},
+  {text: 'strawberry', key:'option2'},
+  {text: 'mango', key:'option3'}
+]
+
+<Radio items={items} name="pref" label="Choose your preference?" />
+```
+
+```tsx
+// Radio Items as children?  ---> maybe not possible
+
+<Radio label="Choose your preference?" name="pref">
+  <RadioItem key="option1"> chocolate </RadioItem>
+  <RadioItem key="option2"> strawberry </RadioItem>
+  <RadioItem key="option3"> mango </RadioItem>
+</Radio>
+```
+
+## Structure
+
+- _**Public**_
+- _**Internal**_
+- _**DOM** - how the component will be rendered as HTML elements_
+
+### DOM structure
+
+```html
+<fieldset>
+  <legend>What is your preference?</legend>
+
+  <input type="radio" id="option1" name="pref" />
+  <label for="option1"> Chocolate </label>
+
+  <input type="radio" id="option2" name="pref" />
+  <label for="option1"> Strawberry </label>
+
+  <input type="radio" id="option3" name="pref" />
+  <label for="option1"> Mango </label>
+</fieldset>
+```
+
+<!--
+## Migration
+
+_Describe what will need to be done to upgrade from the existing implementations:_
+
+- _Migration from v8_
+- _Migration from v0_ -->
+
+## Behaviors
+
+_Explain how the component will behave in use, including:_
+
+- _Component States_
+- _Interaction_
+  - _Keyboard_
+  - _Cursor_
+  - _Touch_
+  - _Screen readers_
+
+## Accessibility
+
+Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+
+- Decide whether to use **native element** or folow **ARIA** and provide reasons
+- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
+- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
+- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
+- Specify texts for **state change announcements** - [ARIA live regions
+  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
+- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
+- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
+- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+
+# Appendix
 
 ### RadioGroup (v0) vs ChoiceGroup (v8) prop mapping
 
@@ -97,80 +234,3 @@ _⚠️Props not included in this section are marked as depricated and will not 
 | -                                                                               | -                  | className        | -        |
 | -                                                                               | -                  | variables        | -        |
 | -                                                                               | -                  | design           | -        |
-
-_Include background research done for this component_
-
-- _Link to Open UI research_ ✔️
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_ ✔️
-
-Questions❓
-
-- what requirements should Radio fulfil in order to be compatible/used with Field?
-- Is it thought of that Radio, input etc. to be coupled with Field or they can stand on their own?
-
-```jsx
-<Field className="rootClass" label="hello" description={<div>fancy hello</div>} errorMessage="aka.ms/nohello" required>
-  <RadioGroup items={[{}, {}]} />
-</Field>
-```
-
-## Proposal
-
-`RadioItem` as a small customizable component:
-
-```jsx
-options.map(option => <RadioItem checked={option.text === 'Option A'} {...option}>)
-```
-
-Maybe use Field or another component likse RadioGroup to be used with RadioItem ?.
-
-## Sample Code
-
-_Provide some representative example code that uses the proposed API for the component_
-
-## Variants
-
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
-
-## API
-
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
-
-## Structure
-
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
-
-## Migration
-
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_
-
-## Behaviors
-
-_Explain how the component will behave in use, including:_
-
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
-
-## Accessibility
-
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
-
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
