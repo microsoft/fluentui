@@ -2,6 +2,16 @@ import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { DocsContainer, Source } from '@storybook/addon-docs';
 import { makeStyles } from '@fluentui/react-make-styles';
+import {
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  MenuButton,
+  FluentProvider,
+  webLightTheme,
+} from '../index';
 
 const useCodeComparisonStyles = makeStyles({
   root: {
@@ -61,23 +71,33 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
 
 export const VersionPicker = () => {
   // TODO fetch this mapping from an azure function
+  // This URL can just be constructed during publish time and fed to the azure function
   const versions: Record<string, string> = {
     '9.0.0-alpha.123': 'https://f6366b4--6002298f95a00c00213f4d55.chromatic.com',
     '9.0.0-beta.1': 'https://3c3fae8--6002298f95a00c00213f4d55.chromatic.com',
   };
 
-  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    window.parent.location.href = e.target.value;
+  const navigateHandler = (href: string) => () => {
+    window.parent.location.href = href;
   };
 
   return (
-    <select onChange={onChange}>
-      {Object.keys(versions).map(version => (
-        <option value={versions[version]} key={version}>
-          {version}
-        </option>
-      ))}
-    </select>
+    <FluentProvider theme={webLightTheme} style={{ position: 'sticky', top: 0 }}>
+      <Menu>
+        <MenuTrigger>
+          <MenuButton>{Object.keys(versions)[0]}</MenuButton>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            {Object.keys(versions).map(version => (
+              <MenuItem onClick={navigateHandler(versions[version])} key={version}>
+                {version}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </FluentProvider>
   );
 };
 
