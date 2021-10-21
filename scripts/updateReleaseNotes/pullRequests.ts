@@ -4,28 +4,39 @@ import { IPullRequest, processPullRequestApiResponse, getPullRequestForCommit } 
 import { repoDetails, github } from './init';
 import { IExtendedPullRequest } from './types';
 
+/** Map from commit to cached PR info */
+const pullRequests = new Map<string, IPullRequest>();
+/** Map from author to cached PRs by that author */
+const recentPrsByAuthor = new Map<string, IExtendedPullRequest[]>();
+
 /**
  * Get the single pull request associated with the given changelog entry.
  */
 export async function getPullRequest(entry: ChangelogEntry): Promise<IPullRequest | undefined> {
   const { commit, author: authorEmail } = entry;
 
-  const pr = await getPullRequestForCommit({
+  if (pullRequests.has(commit)) {
+    return pullRequests.get(commit);
+  }
+
+  let pr = await getPullRequestForCommit({
     commit,
     github,
     repoDetails,
     authorEmail,
     verbose: true,
   });
-  if (pr) {
-    return pr;
+
+  if (!pr) {
+    // Backup approach: check recent PRs for a commit with a matching message and author
+    // (the commit referenced in the change file might not directly exist in a PR if the PR was rebased)
+    console.log(`Could not find a PR matching ${commit}.`);
+    console.log(`Checking for a commit with a matching message recent PRs by ${authorEmail} instead...`);
+    pr = await getMatchingRecentPullRequest(entry);
   }
 
-  // Backup approach: check recent PRs for a commit with a matching message and author
-  // (the commit referenced in the change file might not directly exist in a PR if the PR was rebased)
-  console.log(`Could not find a PR matching ${commit}.`);
-  console.log(`Checking for a commit with a matching message recent PRs by ${authorEmail} instead...`);
-  return getMatchingRecentPullRequest(entry);
+  pullRequests.set(commit, pr);
+  return pr;
 }
 
 /**
@@ -52,10 +63,13 @@ async function getMatchingRecentPullRequest(entry: ChangelogEntry): Promise<IPul
 
   try {
     if (author) {
+      if (!recentPrsByAuthor.has(author)) {
+        recentPrsByAuthor.set(author, await getRecentPrsByAuthor(author, authorEmail));
+      }
       // Get this author's recent PRs and look for one or more with a matching commit message and email
-      possiblePrs = (await getRecentPrsByAuthor(author, authorEmail)).filter(pr =>
-        pr.commits!.some(commit => commit.message === message && commit.authorEmail === authorEmail),
-      );
+      possiblePrs = recentPrsByAuthor
+        .get(author)
+        .filter(pr => pr.commits!.some(commit => commit.message === message && commit.authorEmail === authorEmail));
     }
   } catch (ex) {
     console.warn(`Error getting recent PRs by ${author}: ${ex}`);

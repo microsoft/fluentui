@@ -15,6 +15,9 @@ const github = new Octokit({
 
 const repoUrl = `https://github.com/${fluentRepoDetails.owner}/${fluentRepoDetails.repo}`;
 
+/** Map from commit to cached PR number */
+const prNumbers = new Map<string, number | undefined>();
+
 export async function renderHeader(renderInfo: PackageChangelogRenderInfo): Promise<string> {
   const {
     newVersionChangelog: { tag, version, date },
@@ -33,18 +36,25 @@ export async function renderHeader(renderInfo: PackageChangelogRenderInfo): Prom
 
 export async function renderEntry(entry: ChangelogEntry): Promise<string> {
   // Link to the PR for this changelog entry (or the commit if PR isn't found)
-  const prNumber = await _getPrNumber(entry);
+  const prNumber = await _getPrNumber(entry.commit);
   const commitLink = prNumber
     ? `[PR #${prNumber}](${repoUrl}/pull/${prNumber})`
     : `[commit](${repoUrl}/commit/${entry.commit})`;
   return `- ${entry.comment} (${commitLink} by ${entry.author})`;
 }
 
-async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> {
+async function _getPrNumber(commit: string): Promise<number | undefined> {
+  if (!prNumbers.has(commit)) {
+    prNumbers.set(commit, await _lookUpPrNumber(commit));
+  }
+  return prNumbers.get(commit);
+}
+
+async function _lookUpPrNumber(commit: string): Promise<number | undefined> {
   // Look for (presumably) the PR number at the end of the first line of the commit
   try {
     // Get the actual commit message which should contain the PR number
-    const logResult = spawnSync('git', ['log', '--pretty=format:%s', '-n', '1', entry.commit]);
+    const logResult = spawnSync('git', ['log', '--pretty=format:%s', '-n', '1', commit]);
     if (logResult.status === 0) {
       const message = logResult.stdout.toString().trim();
       const prMatch = message.split(/\r?\n/)[0].match(/\(#(\d+)\)$/m);
@@ -53,12 +63,12 @@ async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> 
       }
     }
   } catch (ex) {
-    console.log(`Could not get commit message for ${entry.commit} to find PR number (trying another method):`, ex);
+    console.log(`Could not get commit message for ${commit} to find PR number (trying another method):`, ex);
   }
 
   // Or fetch from GitHub API
-  console.log(`Attempting to fetch pull request corresponding to ${entry.commit}...`);
-  const pr = await getPullRequestForCommit({ commit: entry.commit, github, repoDetails: fluentRepoDetails });
+  console.log(`Attempting to fetch pull request corresponding to ${commit}...`);
+  const pr = await getPullRequestForCommit({ commit: commit, github, repoDetails: fluentRepoDetails });
   if (pr) {
     console.log('...success!'); // failure message is logged by getPullRequestForCommit
     return pr.number;
