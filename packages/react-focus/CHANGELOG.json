@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/react-focus_v8.3.3",
+      "version": "8.3.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "comment": "Disable consistent-callback-args test",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Oct 2021 07:37:17 GMT",
       "tag": "@fluentui/react-focus_v8.3.2",
       "version": "8.3.2",

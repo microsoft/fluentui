@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix web-components storybook",
-  "packageName": "@fluentui/web-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
