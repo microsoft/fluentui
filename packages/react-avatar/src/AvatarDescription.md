@@ -1,1 +1,1 @@
-An avatar is used to represent users.
+An avatar displays a photo, image, or initials to represent a user.

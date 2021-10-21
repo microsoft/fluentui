@@ -1,4 +1,4 @@
-A button triggers an action or an event.
+A button triggers an action or event when activated.
 
 See also:
 [MenuButton](/?path=/docs/components-menubutton--menu-button-playground),

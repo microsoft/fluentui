@@ -1,1 +1,1 @@
-An accordion allows users to toggle the display of sections of content.
+An accordion allows users to toggle the display of content by expanding or collapsing sections.
