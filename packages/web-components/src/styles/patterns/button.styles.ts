@@ -299,25 +299,34 @@ export const HypertextStyles = (
       line-height: 1;
       text-decoration: underline 1px;
     }
+
     :host .control:not([href]) {
       background-color: transparent;
     }
+
     :host .control${interactivitySelector} {
       background: transparent;
       color: ${accentForegroundRest};
     }
+
     :host .control${interactivitySelector}:hover {
       background: transparent;
       color: ${accentForegroundHover};
       text-decoration: none;
     }
+
     :host .control${interactivitySelector}:active {
       background: transparent;
       color: ${accentForegroundActive};
       text-decoration: none;
     }
+
     :host .control:${focusVisible} {
       box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${focusStrokeOuter} !important;
+    }
+
+    :host .control${nonInteractivitySelector} {
+      background: transparent;
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
@@ -355,6 +364,10 @@ export const LightweightButtonStyles = (
     :host .control${interactivitySelector}:active {
       background: ${neutralFillStealthActive};
       color: ${accentForegroundActive};
+    }
+
+    :host .control${nonInteractivitySelector} {
+      background: ${neutralFillStealthRest};
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
@@ -402,6 +415,11 @@ export const OutlineButtonStyles = (
     :host .control${interactivitySelector}:active {
       border-color: ${neutralStrokeActive};
     }
+
+    :host .control${nonInteractivitySelector} {
+      background: transparent !important;
+      border-color: ${neutralStrokeRest};
+    }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
@@ -435,6 +453,10 @@ export const StealthButtonStyles = (
 
     :host .control${interactivitySelector}:active {
       background: ${neutralFillStealthActive};
+    }
+
+    :host .control${nonInteractivitySelector} {
+      background: ${neutralFillStealthRest};
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(

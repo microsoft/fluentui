@@ -1,5 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { Select as FoundationSelect, SelectOptions, selectTemplate as template } from '@microsoft/fast-foundation';
+import { fillColor, neutralLayerFloating } from '../design-tokens';
 import { selectStyles as styles } from './select.styles';
 
 /**
@@ -41,6 +42,10 @@ export class Select extends FoundationSelect {
 
     if (!this.appearance) {
       this.appearance = 'outline';
+    }
+
+    if (this.listbox) {
+      fillColor.setValueFor(this.listbox, neutralLayerFloating);
     }
   }
 }

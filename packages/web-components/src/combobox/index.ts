@@ -4,6 +4,7 @@ import {
   Combobox as FoundationCombobox,
   comboboxTemplate as template,
 } from '@microsoft/fast-foundation';
+import { fillColor, neutralLayerFloating } from '../design-tokens';
 import { comboboxStyles as styles } from './combobox.styles';
 
 /**
@@ -45,6 +46,10 @@ export class Combobox extends FoundationCombobox {
 
     if (!this.appearance) {
       this.appearance = 'outline';
+    }
+
+    if (this.listbox) {
+      fillColor.setValueFor(this.listbox, neutralLayerFloating);
     }
   }
 }
