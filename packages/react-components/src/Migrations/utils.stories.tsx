@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Source } from '@storybook/addon-docs';
+import { DocsContainer, Source } from '@storybook/addon-docs';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useCodeComparisonStyles = makeStyles({
@@ -56,5 +56,38 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
       <h3>{title ?? codeLanguages[language]}</h3>
       <Source language={language} code={code} />
     </div>
+  );
+};
+
+export const VersionPicker = () => {
+  // TODO fetch this mapping from an azure function
+  const versions: Record<string, string> = {
+    '9.0.0-alpha.123': 'https://f6366b4--6002298f95a00c00213f4d55.chromatic.com',
+    '9.0.0-beta.1': 'https://3c3fae8--6002298f95a00c00213f4d55.chromatic.com',
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    window.parent.location.href = e.target.value;
+  };
+
+  return (
+    <select onChange={onChange}>
+      {Object.keys(versions).map(version => (
+        <option value={versions[version]} key={version}>
+          {version}
+        </option>
+      ))}
+    </select>
+  );
+};
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export const FluentDocsContainer = ({ children, context }) => {
+  return (
+    <>
+      <VersionPicker />
+      <DocsContainer context={context}>{children}</DocsContainer>
+    </>
   );
 };
