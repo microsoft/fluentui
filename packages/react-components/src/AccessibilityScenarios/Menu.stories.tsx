@@ -3,8 +3,11 @@ import * as React from 'react';
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+import { Button } from '@fluentui/react-button';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import {
-  Button,
   Menu,
   MenuTrigger,
   MenuList,
@@ -14,7 +17,7 @@ import {
   MenuItem,
   MenuItemCheckbox,
   MenuItemRadio,
-} from '@fluentui/react-components';
+} from '@fluentui/react-menu';
 import { Scenario } from './utils';
 
 interface StatusSubmenuProps {
