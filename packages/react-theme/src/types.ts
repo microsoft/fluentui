@@ -283,12 +283,12 @@ export type FontWeightTokens = {
   fontWeightRegular: number;
   fontWeightMedium: number;
   fontWeightSemibold: number;
+  fontWeightBold: number;
 };
 
 export type FontFamilyTokens = {
   fontFamilyBase: string;
   fontFamilyMonospace: string;
-  fontFamilyNumeric: string;
 };
 
 export type TextAlignment =

@@ -150,7 +150,6 @@ export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
 export type FontFamilyTokens = {
     fontFamilyBase: string;
     fontFamilyMonospace: string;
-    fontFamilyNumeric: string;
 };
 
 // @public (undocumented)
