@@ -33,16 +33,50 @@ const useFlexStyles = makeStyles({
   },
 });
 
-export const Basic = () => {
+export const Default = () => <Avatar />;
+
+export const Name = () => <Avatar name="Katri Athokas" />;
+Name.parameters = {
+  docs: {
+    description: {
+      story: "An Avatar can display the user's initials.",
+    },
+  },
+};
+
+export const Size = () => (
+  <>
+    <Avatar label={20} size={20} />
+    <Avatar label={24} size={24} />
+    <Avatar label={28} size={28} />
+    <Avatar label={32} size={32} />
+    <Avatar label={36} size={36} />
+    <Avatar label={40} size={40} />
+    <Avatar label={48} size={48} />
+    <Avatar label={56} size={56} />
+    <Avatar label={64} size={64} />
+    <Avatar label={72} size={72} />
+    <Avatar label={96} size={96} />
+    <Avatar label={120} size={120} />
+    <Avatar label={128} size={128} />
+  </>
+);
+
+export const Image = () => (
+  <Avatar
+    image={{
+      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
+      alt: 'A profile picture of Katri Athokas',
+    }}
+  />
+);
+
+export const Icon = () => <Avatar icon={<Guest20Regular />} />;
+
+export const KitchenSink = () => {
   const styles = useFlexStyles();
   return (
     <>
-      <StoryExample title="Simple examples">
-        <Avatar />
-        <Avatar name={examples.name[0]} />
-        <Avatar size={40} icon={<Guest20Regular />} />
-        <Avatar size={72} name={examples.name[0]} image={{ src: examples.image[0] }} />
-      </StoryExample>
       <StoryExample title="Shape">
         <Avatar name="Group" />
         <Avatar icon={<People20Regular />} />
