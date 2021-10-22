@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Oct 2021 07:28:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.6.0)
+
+Thu, 21 Oct 2021 07:28:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.5.1..@fluentui/react-conformance_v0.6.0)
+
+### Minor changes
+
+- Implement additional tests in consistent-callback-args ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by olfedias@microsoft.com)
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.5.1)
 

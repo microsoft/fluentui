@@ -1,38 +1,44 @@
 <style>
-  fluent-design-system-provider {
-    padding: 20px 0;
-  }
-
-  fluent-card {
-    --card-height: 400px;
-    --card-width: 500px;
-    padding: 20px;
-    margin: 12px;
-  }
-
-  fluent-card p:first-child {
-    margin-top: 0;
-  }
-
-  fluent-button {
-    margin: 4px 0;
-  }
-
-  .class-override {
-    height: 163px;
-    width: 300px;
-  }
-
-  .state-override {
-    --card-width: 350px;
-    --card-height: 300px;
-  }
-
-  .contents {
-    display: flex;
-    flex-direction: column;
+  div.docs-story > div:first-child {
+    height: 1550px;
   }
 </style>
+<fluent-design-system-provider fill-color="#F7F7F7" layer-corner-radius="10">
+  <style>
+    fluent-design-system-provider {
+      padding: 20px 0;
+    }
+
+    fluent-card {
+      --card-height: 400px;
+      --card-width: 500px;
+      padding: 20px;
+      margin: 12px;
+    }
+
+    fluent-card p:first-child {
+      margin-top: 0;
+    }
+
+    fluent-button {
+      margin: 4px 0;
+    }
+
+    .class-override {
+      height: 163px;
+      width: 300px;
+    }
+
+    .state-override {
+      --card-width: 350px;
+      --card-height: 300px;
+    }
+
+    .contents {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
 <div>
   <fluent-card class="state-override">Custom size using CSS</fluent-card>
 

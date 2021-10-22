@@ -5,8 +5,8 @@ export default {
   component: fluentTextField,
   argTypes: {
     appearance: {
-      defaultValue: 'outlined',
-      options: ['filled', 'outlined'],
+      options: ['filled', 'outline'],
+      defaultValue: 'outline',
       control: { type: 'radio' },
     },
     autoFocus: {
@@ -98,7 +98,7 @@ TextField.args = {
 };
 
 const example = `
-<fluent-text-field></fluent-text-field>
+<fluent-text-field appearance="outline"></fluent-text-field>
 `;
 
 TextField.parameters = {

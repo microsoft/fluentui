@@ -23,6 +23,11 @@ export default {
 };
 
 const ComboboxTemplate = ({ appearance, autocomplete, position, required }) => `
+  <style>
+    div.docs-story>div:first-child {
+      height: 32em !important;
+    }
+  </style>
   <fluent-combobox
     ${appearance ? `appearance="${appearance}"` : ''}
     ${appearance ? `autocomplete="${autocomplete}"` : ''}
