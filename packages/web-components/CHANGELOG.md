@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 22 Oct 2021 19:30:28 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Oct 2021 23:04:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.0)
+
+Fri, 22 Oct 2021 23:04:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.3..@fluentui/web-components_v2.0.0)
+
+### Major changes
+
+- Update to Sun Valley visual styling ([PR #19263](https://github.com/microsoft/fluentui/pull/19263) by 47367562+bheston@users.noreply.github.com)
 
 ## [1.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.3)
 
