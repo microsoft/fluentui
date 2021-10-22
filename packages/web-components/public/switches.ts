@@ -1,5 +1,4 @@
 import { fillColor, StandardLuminance, SwatchRGB } from '../src/index';
-
 export function toggleBgMode() {
   const bgChecked = document.getElementById('luminance-switch')!.classList.contains('checked');
   if (bgChecked) {

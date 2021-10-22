@@ -1,8 +1,3 @@
-<style>
-  fluent-accordion-item.disabled::part(button) {
-    pointer-events: none;
-  }
-</style>
 <h1>Accordion</h1>
 <h4>Default</h4>
 <fluent-accordion>
@@ -13,7 +8,10 @@
     <div slot="end">
       <button>1</button>
     </div>
-    <span slot="heading">Panel one</span>
+    <span slot="heading">
+      <span>Panel one</span>
+      <span style="display: block; font-size: 10px">Some detail info</span>
+    </span>
     Panel one content
   </fluent-accordion-item>
   <fluent-accordion-item>
@@ -37,44 +35,11 @@
     <span slot="heading">Panel one</span>
     Panel one content
   </fluent-accordion-item>
-  <fluent-accordion-item class="disabled">
+  <fluent-accordion-item>
     <span slot="heading">Panel Two</span>
     Panel two content
   </fluent-accordion-item>
   <fluent-accordion-item>
-    <span slot="heading">Panel three</span>
-    Panel three content
-  </fluent-accordion-item>
-</fluent-accordion>
-<h4>With disabled item</h4>
-<fluent-accordion>
-  <fluent-accordion-item>
-    <div slot="start">
-      <button>1</button>
-    </div>
-    <div slot="end">
-      <button>1</button>
-    </div>
-    <span slot="heading">Panel two</span>
-    Panel one content
-  </fluent-accordion-item>
-  <fluent-accordion-item class="disabled">
-    <div slot="start">
-      <button>1</button>
-    </div>
-    <div slot="end">
-      <button>1</button>
-    </div>
-    <span slot="heading">Disabled</span>
-    Disabled content
-  </fluent-accordion-item>
-  <fluent-accordion-item expanded>
-    <div slot="start">
-      <button>1</button>
-    </div>
-    <div slot="end">
-      <button>1</button>
-    </div>
     <span slot="heading">Panel three</span>
     Panel three content
   </fluent-accordion-item>
