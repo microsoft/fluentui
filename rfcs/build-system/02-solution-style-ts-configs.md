@@ -16,7 +16,7 @@ To continue with our journey to improved DX we need to address leaking global ty
 
 ## Problem statement
 
-> see [Open Issues](#open_issues)
+> see [Open Issues](#open-issues)
 
 - leaking global types
 - invalid type checking (TS is not following proper `target` and `lib`)
