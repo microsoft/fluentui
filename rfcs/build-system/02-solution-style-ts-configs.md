@@ -21,7 +21,7 @@ To continue with our journey to improved DX we need to address leaking global ty
 - leaking global types
 - invalid type checking (TS is not following proper `target` and `lib`)
 - various contexts/scopes addressed via 1 config file
-- shipping files besides implementation to npm, thus exposing "private" APIs
+- shipping files besides implementation to npm, thus exposing "private" APIs (handled via .npmignore for now)
 
 ## Detailed Design or Proposal
 
@@ -44,7 +44,7 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
 
 **Example:**
 
-```json
+```jsonc
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
@@ -74,13 +74,13 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
 
 **Example:**
 
-```json
+```jsonc
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES2015",
-    "outDir": "../dist/out-tsc",
+    "outDir": "./dist",
     // properly scoped globals and environment
     "types": [],
     // enable transpilation and declaration files generation only for implementation files
@@ -98,11 +98,11 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
 
 **Example:**
 
-```json
+```jsonc
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist/out-tsc",
+    "outDir": "./dist",
     "module": "commonjs",
     // properly scoped globals and environment - note that extra 'jest'
     "types": ["jest", "node"]
@@ -117,7 +117,7 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
 
 **Example:**
 
-```json
+```jsonc
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
@@ -139,7 +139,7 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
 
 ### `<package-name>/.eslintrc.json`
 
-```json
+```jsonc
 {
   "extends": ["@fluentui/eslint-plugin/react"],
   "parserOptions": {
@@ -201,4 +201,5 @@ Using [TS solution style config](https://devblogs.microsoft.com/typescript/annou
 ## Open Issues
 
 - https://github.com/microsoft/fluentui/issues/17101
-- https://github.com/microsoft/fluentui/issues/19042
+- ~https://github.com/microsoft/fluentui/issues/19042~
+  - temporarily solved by ignoring files via .npmignore (which is not the appropriate way, as there are still typing/env clashes)
