@@ -1,8 +1,17 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Mon, 04 Oct 2021 12:36:04 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.10](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.7.10)
+
+Fri, 22 Oct 2021 12:29:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.7.9..@uifabric/api-docs_v7.7.10)
+
+### Patches
+
+- Bump @uifabric/styling to v7.20.0 ([PR #20243](https://github.com/microsoft/fluentui/pull/20243) by phkuo@microsoft.com)
 
 ## [7.7.9](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.7.9)
 

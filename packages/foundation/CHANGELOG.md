@@ -1,8 +1,17 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 27 Aug 2021 12:24:10 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.1](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.10.1)
+
+Fri, 22 Oct 2021 12:29:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.10.0..@uifabric/foundation_v7.10.1)
+
+### Patches
+
+- Bump @uifabric/styling to v7.20.0 ([PR #20243](https://github.com/microsoft/fluentui/pull/20243) by phkuo@microsoft.com)
 
 ## [7.10.0](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.10.0)
 

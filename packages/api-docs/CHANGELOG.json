@@ -2,6 +2,21 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Fri, 22 Oct 2021 12:29:03 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.20.0",
+            "author": "phkuo@microsoft.com",
+            "commit": "32e160960e1a61802e47d62aa5c904f5bbd4da83",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Oct 2021 12:36:04 GMT",
       "tag": "@uifabric/api-docs_v7.7.9",
       "version": "7.7.9",

@@ -1,8 +1,17 @@
 # Change Log - vr-tests
 
-This log was last generated on Thu, 21 Oct 2021 12:30:35 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 22 Oct 2021 12:29:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/date-time to v7.20.10 ([PR #20243](https://github.com/microsoft/fluentui/pull/20243) by phkuo@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 27 Aug 2021 12:24:10 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.1)
+
+Fri, 22 Oct 2021 12:29:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.20.0..@fluentui/react-button_v0.20.1)
+
+### Patches
+
+- Bump @uifabric/styling to v7.20.0 ([PR #20243](https://github.com/microsoft/fluentui/pull/20243) by phkuo@microsoft.com)
 
 ## [0.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.0)
 

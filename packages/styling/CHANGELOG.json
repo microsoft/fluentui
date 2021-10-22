@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 22 Oct 2021 12:29:03 GMT",
+      "tag": "@uifabric/styling_v7.20.0",
+      "version": "7.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add window.FabricConfig.legacyTheme, which actually calls loadTheme() which will invoke legacy theming",
+            "author": "phkuo@microsoft.com",
+            "commit": "32e160960e1a61802e47d62aa5c904f5bbd4da83",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Aug 2021 12:24:10 GMT",
       "tag": "@uifabric/styling_v7.19.1",
       "version": "7.19.1",
