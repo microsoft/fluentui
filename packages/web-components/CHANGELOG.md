@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 14 Oct 2021 00:11:22 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Oct 2021 19:30:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.3)
+
+Fri, 22 Oct 2021 19:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.2..@fluentui/web-components_v1.6.3)
+
+### Patches
+
+- update foundation package and react documentation ([PR #20316](https://github.com/microsoft/fluentui/pull/20316) by chhol@microsoft.com)
 
 ## [1.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.2)
 
