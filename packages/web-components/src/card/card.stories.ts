@@ -8,7 +8,7 @@ export default {
 export const Card = (): string => CardTemplate;
 
 const example = `
-<fluent-card>Card Content</fluent-card>
+<fluent-card>Card content in default slot</fluent-card>
 `;
 
 Card.parameters = {
