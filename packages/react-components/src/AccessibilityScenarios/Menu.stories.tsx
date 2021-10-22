@@ -17,12 +17,12 @@ import {
 } from '@fluentui/react-components';
 import { Scenario } from './utils';
 
-interface IStatusSubmenuProps {
+interface StatusSubmenuProps {
   checkedValues: Record<string, string[]>;
   onChange: OnCheckedValueChangeCallback;
 }
 
-const StatusSubmenu: React.FunctionComponent<IStatusSubmenuProps> = (props: IStatusSubmenuProps) => {
+const StatusSubmenu: React.FunctionComponent<StatusSubmenuProps> = props => {
   const { checkedValues, onChange } = props;
 
   return (
@@ -58,8 +58,10 @@ type OnCheckedValueChangeCallback = (
   data: OnCheckedValueChangeDataType,
 ) => void;
 
+type ProfileMenuStatus = { status: Array<'online' | 'away' | 'offline'> };
+
 export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
-  const [statusCheckedValues, setStatusCheckedValues] = React.useState({ status: ['online'] });
+  const [statusCheckedValues, setStatusCheckedValues] = React.useState<ProfileMenuStatus>({ status: ['online'] });
   const onStatusChange = (
     event: React.MouseEvent | React.KeyboardEvent,
     { name, checkedItems }: OnCheckedValueChangeDataType,
