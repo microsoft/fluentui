@@ -72,7 +72,7 @@ _Automated tests_ will contain:
 - Testing using [accessibility behaviors](https://github.com/microsoft/fluentui/blob/master/packages/a11y-testing/src/definitions/Button/buttonBehaviorDefinition.ts)
 - E2E tests using [cypress](https://www.cypress.io/) and [axe-core](https://github.com/dequelabs/axe-core)
 
-_Manual tests_ will be executed on small isolated pages which show different accessibility scenarios. For each component, suitable scenarios will be defined and implemented. They will be then tested by expeienced trusted accessibility testers and real users.
+_Manual tests_ will be executed on small isolated pages which show different accessibility scenarios. For each component, suitable scenarios will be defined and implemented. They will be then tested by experienced trusted accessibility testers and real users.
 Axe-core test will be also executed on each of the scenarios.
 
 As a first step, accessibility scenarios will be introduced as [hidden Storybook stories](https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/authoring-stories.md#10-internal-stories-for-testing).
