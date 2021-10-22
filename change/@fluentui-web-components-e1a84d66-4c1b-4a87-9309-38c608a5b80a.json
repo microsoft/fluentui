@@ -1,7 +1,0 @@
-{
-  "type": "major",
-  "comment": "Update to Sun Valley visual styling",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
