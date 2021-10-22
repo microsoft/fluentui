@@ -5,20 +5,28 @@ export default {
   title: 'Components/Select',
   component: fluentSelect,
   argTypes: {
+    appearance: {
+      options: ['filled', 'outlined', 'stealth'],
+      control: { type: 'radio' },
+      defaultValue: 'outlined',
+    },
     disabled: {
       control: { type: 'boolean' },
     },
     position: {
       options: ['above', 'below'],
       control: { type: 'radio' },
+      defaultValue: 'below',
     },
   },
 };
 
-const SelectTemplate = ({ disabled, position }) => `
-  <fluent-select 
+const SelectTemplate = ({ appearance, disabled, position }) => `
+  <fluent-select
+    ${appearance ? `appearance="${appearance}"` : ''}
     ${disabled ? 'disabled' : ''} 
     ${position ? `position="${position}"` : ''}
+    style="margin-bottom: 200px;"
   >
     <fluent-option>Option One</fluent-option>
     <fluent-option>Option Two</fluent-option>
