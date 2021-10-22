@@ -18,9 +18,6 @@
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
-  "beachball": {
-    "disallowedChangeTypes": []
-  },
   "scripts": {
     "clean": "node ./build/clean.js dist",
     "doc": "api-extractor run --local",
