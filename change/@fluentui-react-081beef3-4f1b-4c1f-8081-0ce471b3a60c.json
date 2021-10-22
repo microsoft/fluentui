@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix high contrast Breadcrumb link color",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
