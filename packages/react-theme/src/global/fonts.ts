@@ -36,6 +36,7 @@ export const fontWeights: FontWeightTokens = {
 };
 
 export const fontFamilies: FontFamilyTokens = {
-  fontFamilyBase: " -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  fontFamilyMonospace: 'ui-monospace, monospace',
+  fontFamilyBase:
+    '-apple-system, BlinkMacSystemFont, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Web", sans-serif',
+  fontFamilyMonospace: '"Cascadia Code", ui-monospace, Consolas, Menlo, Monaco, monospace',
 };
