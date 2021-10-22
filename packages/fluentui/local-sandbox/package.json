@@ -12,6 +12,11 @@
   "dependencies": {
     "@fluentui/react-northstar": "^0.59.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui.git",
+    "directory": "packages/fluentui/local-sandbox"
+  },
   "devDependencies": {
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",

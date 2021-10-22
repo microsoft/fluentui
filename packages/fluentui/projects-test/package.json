@@ -9,6 +9,11 @@
   "devDependencies": {
     "@fluentui/scripts": "^1.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui.git",
+    "directory": "packages/fluentui/projects-test"
+  },
   "publishConfig": {
     "access": "public"
   },

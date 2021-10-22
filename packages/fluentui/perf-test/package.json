@@ -11,6 +11,11 @@
     "perf:test": "just-scripts perf-test",
     "perf:test:base": "just-scripts perf-test --base"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui.git",
+    "directory": "packages/fluentui/perf-test"
+  },
   "devDependencies": {
     "@fluentui/digest": "^0.59.0",
     "@fluentui/react": "^8.0.0",

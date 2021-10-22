@@ -6,6 +6,11 @@
   "dependencies": {
     "@fluentui/react-northstar": "^0.59.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui.git",
+    "directory": "packages/fluentui/circulars-test"
+  },
   "devDependencies": {
     "@fluentui/scripts": "^1.0.0",
     "gulp": "^4.0.2"

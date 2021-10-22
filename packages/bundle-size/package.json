@@ -9,6 +9,11 @@
     "test": "jest",
     "type-check": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui.git",
+    "directory": "packages/bundle-size"
+  },
   "dependencies": {
     "@babel/core": "^7.10.4",
     "ajv": "^8.4.0",
