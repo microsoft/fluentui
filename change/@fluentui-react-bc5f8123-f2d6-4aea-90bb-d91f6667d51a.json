@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Dialog/Modal/Panel: Popup component now correctly finds and adds aria-hidden attribute to sibling nodes.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
