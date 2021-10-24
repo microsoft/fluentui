@@ -217,6 +217,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     const doc = getDocument(this._root.current);
 
     if (
+      !this.props.preventFocusRestoration &&
       doc &&
       this._lastIndexPath &&
       (doc.activeElement === doc.body ||
