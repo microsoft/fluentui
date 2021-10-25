@@ -38,17 +38,17 @@ describe('Checkbox', () => {
 
   it('renders unchecked correctly', () => {
     renderedComponent = render(<Checkbox input={{ ref: checkboxRef }}>Default Checkbox</Checkbox>);
-    expect(renderedComponent).toMatchSnapshot();
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 
   it('renders checked correctly', () => {
     renderedComponent = render(<Checkbox checked>Default Checkbox</Checkbox>);
-    expect(renderedComponent).toMatchSnapshot();
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 
   it('renders mixed correctly', () => {
     renderedComponent = render(<Checkbox checked="mixed">Default Checkbox</Checkbox>);
-    expect(renderedComponent).toMatchSnapshot();
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 
   it('respects id prop', () => {
