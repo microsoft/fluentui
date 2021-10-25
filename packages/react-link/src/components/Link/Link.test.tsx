@@ -29,7 +29,7 @@ describe('Link', () => {
     expect(button.length).toBe(1);
     expect(anchor.length).toBe(0);
 
-    expect(result).toMatchSnapshot();
+    expect(result.container).toMatchSnapshot();
   });
 
   it('renders as an anchor when href is provided', () => {
@@ -39,7 +39,7 @@ describe('Link', () => {
     expect(button.length).toBe(0);
     expect(anchor.length).toBe(1);
 
-    expect(result).toMatchSnapshot();
+    expect(result.container).toMatchSnapshot();
   });
 
   it('can be focused when rendered as an anchor', () => {
