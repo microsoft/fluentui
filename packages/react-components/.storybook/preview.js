@@ -1,4 +1,3 @@
-import { FluentDocsContainer } from '../src/Migrations/utils.stories';
 import * as rootPreview from '../../../.storybook/preview';
 
 // load global styles
@@ -27,8 +26,5 @@ export const decorators = [...rootPreview.decorators];
 /** @type {typeof rootPreview.parameters} */
 export const parameters = {
   ...rootPreview.parameters,
-  docs: {
-    container: FluentDocsContainer,
-  },
   options,
 };
