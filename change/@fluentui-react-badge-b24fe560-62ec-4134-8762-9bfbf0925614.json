@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removed duplicate 'Badge' from story names",
+  "packageName": "@fluentui/react-badge",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

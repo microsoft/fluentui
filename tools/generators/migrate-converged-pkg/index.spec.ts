@@ -519,7 +519,6 @@ describe('migrate-converged-pkg generator', () => {
 
         return localConfig;
         },
-        previewHead: rootMain.previewHead,
         });"
       `);
 
