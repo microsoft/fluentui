@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 21 Oct 2021 07:28:35 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Oct 2021 07:38:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.37.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.2)
+
+Mon, 25 Oct 2021 07:38:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.1..@fluentui/react_v8.37.2)
+
+### Patches
+
+- Dialog/Modal/Panel: Popup component now correctly finds and adds aria-hidden attribute to sibling nodes. ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by tristan.watanabe@gmail.com)
 
 ## [8.37.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.1)
 
