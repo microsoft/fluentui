@@ -3,6 +3,7 @@ import { CalendarMonth24Regular } from '@fluentui/react-icons';
 import { Meta } from '@storybook/react';
 import { Button, ButtonProps } from '../../Button';
 import descriptionMd from './ButtonDescription.md';
+import bestPracticesMd from './ButtonBestPractices.md';
 
 export const Default = (props: ButtonProps) => {
   return <Button {...props}>Button</Button>;
@@ -170,7 +171,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

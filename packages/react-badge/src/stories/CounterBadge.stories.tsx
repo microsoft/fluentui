@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { CounterBadge } from '../CounterBadge';
 import descriptionMd from '../BadgeDescription.md';
+import bestPracticesMd from '../BadgeBestPractices.md';
 export { Default } from './CounterBadgeDefault.stories';
 export { Appearance } from './CounterBadgeAppearance.stories';
 export { Shapes } from './CounterBadgeShapes.stories';
@@ -15,7 +16,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },
