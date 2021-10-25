@@ -27,7 +27,7 @@ describe('Checkbox', () => {
     displayName: 'Checkbox',
   });
 
-  function getCheckbox(): HTMLInputElement {
+  function getInput(): HTMLInputElement {
     return screen.getByRole('checkbox') as HTMLInputElement;
   }
 
@@ -63,7 +63,7 @@ describe('Checkbox', () => {
   it('defaults to unchecked non-mixed', () => {
     render(<Checkbox input={{ ref: checkboxRef }}>Default Checkbox</Checkbox>);
 
-    const input = getCheckbox();
+    const input = getInput();
     expect(input.checked).toBe(false);
     expect(checkboxRef.current?.checked).toBe(false);
   });
@@ -71,7 +71,7 @@ describe('Checkbox', () => {
   it('respects defaultChecked prop', () => {
     renderedComponent = render(<Checkbox defaultChecked input={{ ref: checkboxRef }} />);
 
-    let input = getCheckbox();
+    let input = getInput();
     expect(input.checked).toBe(true);
     expect(checkboxRef.current?.checked).toBe(true);
 
@@ -79,7 +79,7 @@ describe('Checkbox', () => {
     checkboxRef = React.createRef<HTMLInputElement>();
     renderedComponent = render(<Checkbox defaultChecked="mixed" input={{ ref: checkboxRef }} />);
 
-    input = getCheckbox();
+    input = getInput();
     expect(input.checked).toBe(false);
     expect(checkboxRef.current?.checked).toBe(false);
   });
@@ -88,7 +88,7 @@ describe('Checkbox', () => {
     renderedComponent = render(<Checkbox defaultChecked input={{ ref: checkboxRef }} />);
     renderedComponent.rerender(<Checkbox defaultChecked={false} input={{ ref: checkboxRef }} />);
 
-    let input = getCheckbox();
+    let input = getInput();
     expect(input.checked).toBe(true);
     expect(checkboxRef.current?.checked).toBe(true);
 
@@ -97,7 +97,7 @@ describe('Checkbox', () => {
     renderedComponent = render(<Checkbox input={{ ref: checkboxRef }} />);
     renderedComponent.rerender(<Checkbox defaultChecked input={{ ref: checkboxRef }} />);
 
-    input = getCheckbox();
+    input = getInput();
     expect(input.checked).toBe(false);
     expect(checkboxRef.current?.checked).toBe(false);
   });
@@ -105,7 +105,7 @@ describe('Checkbox', () => {
   it('respects checked prop', () => {
     renderedComponent = render(<Checkbox checked input={{ ref: checkboxRef }} />);
 
-    let input = getCheckbox();
+    let input = getInput();
     expect(input.checked).toBe(true);
     expect(checkboxRef.current?.checked).toBe(true);
 
@@ -113,7 +113,7 @@ describe('Checkbox', () => {
     checkboxRef = React.createRef<HTMLInputElement>();
     renderedComponent = render(<Checkbox checked="mixed" input={{ ref: checkboxRef }} />);
 
-    input = getCheckbox();
+    input = getInput();
     expect(input.checked).toBe(false);
     expect(checkboxRef.current?.checked).toBe(false);
   });
@@ -122,12 +122,12 @@ describe('Checkbox', () => {
     renderedComponent = render(<Checkbox checked input={{ ref: checkboxRef }} />);
     renderedComponent.rerender(<Checkbox checked={false} input={{ ref: checkboxRef }} />);
 
-    let input = getCheckbox();
+    let input = getInput();
     expect(input.checked).toBe(false);
     expect(checkboxRef.current?.checked).toBe(false);
 
     renderedComponent.rerender(<Checkbox checked="mixed" input={{ ref: checkboxRef }} />);
-    input = getCheckbox();
+    input = getInput();
     expect(input.checked).toBe(false);
     expect(checkboxRef.current?.checked).toBe(false);
   });
@@ -136,7 +136,7 @@ describe('Checkbox', () => {
     const eventHandler = jest.fn();
 
     render(<Checkbox checked onChange={eventHandler} />);
-    const input = getCheckbox();
+    const input = getInput();
 
     expect(eventHandler).toBeCalledTimes(0);
 
@@ -150,18 +150,18 @@ describe('Checkbox', () => {
 
   it("doesn't remove controlled mixed when no onChange provided", () => {
     render(<Checkbox checked="mixed" input={{ ref: checkboxRef }} />);
-    let input = getCheckbox();
+    let input = getInput();
     expect(checkboxRef.current?.indeterminate).toEqual(true);
 
     fireEvent.change(input);
 
-    input = getCheckbox();
+    input = getInput();
     expect(checkboxRef.current?.indeterminate).toEqual(true);
   });
 
   it('correctly sets indeterminate state through javascript', () => {
     render(<Checkbox defaultChecked="mixed" input={{ ref: checkboxRef }} />);
-    const input = getCheckbox();
+    const input = getInput();
     expect(input.checked).toBe(false);
     expect(checkboxRef.current?.indeterminate).toEqual(true);
   });
