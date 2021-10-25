@@ -2,6 +2,65 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 25 Oct 2021 07:38:02 GMT",
+      "tag": "@fluentui/react_v8.37.2",
+      "version": "8.37.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "comment": "Dialog/Modal/Panel: Popup component now correctly finds and adds aria-hidden attribute to sibling nodes.",
+            "commit": "a88fb53fb38a20912b7ddea33b5f3313a721e148"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/react_v8.37.1",
+      "version": "8.37.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.3",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Oct 2021 07:30:01 GMT",
+      "tag": "@fluentui/react_v8.37.0",
+      "version": "8.37.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "comment": "TextField: Remove placeholder style font override.",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "High contrast style fixes for ColorPicker",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "comment": "AutoFill: cursor and characters added now behave correctly when trying to compose a composition string in freeform ComboBox.",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 Oct 2021 07:31:28 GMT",
       "tag": "@fluentui/react_v8.36.5",
       "version": "8.36.5",

@@ -28,9 +28,9 @@ To add a CDN script for `fluent-components` use the following markup:
 
 The best place to put this is typically in your `index.html` file in the script section at the bottom of the `<body>`.
 
-:::note
-If you are setting up FAST on a Blazor Server project, you will need to escape the `@` character by repeating it in the source link. For more information check out the [Razor Pages syntax documentation](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor#razor-syntax).
-:::
+> **Note**:
+>
+> If you are setting up FAST on a Blazor Server project, you will need to escape the `@` character by repeating it in the source link. For more information check out the [Razor Pages syntax documentation](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor#razor-syntax).
 
 If you wish to leverage NPM instead, run the following command:
 
@@ -86,11 +86,11 @@ dotnet watch run
 
 Congratulations! You're now set up to use FAST with Blazor!
 
-## Using the FluentUI Web Components
+## Using the Fluent UI Web Components
 
-FAST has special Blazor support for Microsoft's FluentUI Web Components. To leverage the FluentUI Design System, you'll need to make a few modifications to your project.
+FAST has special Blazor support for Microsoft's Fluent UI Web Components. To leverage the Fluent UI Design System, you'll need to make a few modifications to your project.
 
-First, update the script tag to point to the FluentUI Web Components.
+First, update the script tag to point to the Fluent UI Web Components.
 
 ```html
 <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
@@ -98,7 +98,7 @@ First, update the script tag to point to the FluentUI Web Components.
 
 Second, change the `fluent-` prefix to `fluent-` in any CSS selectors.
 
-Third, you will want to install [the official Nuget package for FluentUI](https://www.nuget.org/packages/Microsoft.Fast.Components.FluentUI/). You can use the following command:
+Third, you will want to install [the official Nuget package for Fluent UI](https://www.nuget.org/packages/Microsoft.Fast.Components.FluentUI/). You can use the following command:
 
 ```shell
 dotnet add package Microsoft.Fast.Components.FluentUI

@@ -2,6 +2,89 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 25 Oct 2021 07:38:02 GMT",
+      "tag": "@fluentui/web-components_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "remove beachball configuration override to again disallow major versions",
+            "commit": "a88fb53fb38a20912b7ddea33b5f3313a721e148"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Oct 2021 23:04:22 GMT",
+      "tag": "@fluentui/web-components_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "major": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "comment": "Update to Sun Valley visual styling",
+            "commit": "4e422ca35d0eb8dcf173031e1b0915e2439b2e19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Oct 2021 19:30:28 GMT",
+      "tag": "@fluentui/web-components_v1.6.3",
+      "version": "1.6.3",
+      "comments": {
+        "none": [
+          {
+            "author": "brookdozer@gmail.com",
+            "package": "@fluentui/web-components",
+            "comment": "Web-components Storybook content updates",
+            "commit": "ed06ea1fabb97a1ee5ee4f73cf2eaac169dc69be"
+          }
+        ],
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "update foundation package and react documentation",
+            "commit": "ed06ea1fabb97a1ee5ee4f73cf2eaac169dc69be"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/web-components_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "Fix web-components storybook",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Oct 2021 07:38:09 GMT",
+      "tag": "@fluentui/web-components_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "Move storybook/html dev dep back to web-components and update scripts",
+            "commit": "ed3a8350b8d760cdef9323bb5646012888c75afd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Oct 2021 00:11:22 GMT",
       "tag": "@fluentui/web-components_v1.6.2",
       "version": "1.6.2",

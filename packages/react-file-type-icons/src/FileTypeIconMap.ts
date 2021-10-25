@@ -266,7 +266,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['dot', 'dotm', 'dotx'],
   },
   email: {
-    extensions: ['eml', 'msg', 'ost', 'pst'],
+    extensions: ['eml', 'msg', 'oft', 'ost', 'pst'],
   },
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
@@ -291,9 +291,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   officescript: {
     extensions: ['osts'],
   },
-  splist: {
-    extensions: ['listitem'],
-  },
+  splist: {},
   model: {
     extensions: [
       '3ds',

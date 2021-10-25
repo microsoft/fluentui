@@ -12,9 +12,10 @@ export default {
 };
 
 const AnchorTemplate = ({ appearance, label }) => `
-  <fluent-anchor 
+  <fluent-anchor
     ${appearance ? `appearance="${appearance}"` : ''}
-  >
+    href="https://bing.com" target="_blank"
+    >
     ${label}
   </fluent-anchor>
 `;
@@ -22,7 +23,7 @@ const AnchorTemplate = ({ appearance, label }) => `
 export const Anchor = AnchorTemplate.bind({});
 
 const example = `
-<fluent-anchor href="#">Anchor</fluent-anchor>
+<fluent-anchor href="https://bing.com" target="_blank" appearance="neutral">Anchor</fluent-anchor>
 `;
 
 Anchor.args = {

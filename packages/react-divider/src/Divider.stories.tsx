@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { ClockIcon } from './tmp-icons.stories';
+import { Clock12Regular as ClockIcon } from '@fluentui/react-icons';
 import { Divider, DividerProps } from './index';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -80,7 +80,7 @@ const DividerStory = (props?: DividerStoryProps) => {
   );
 };
 
-const DividerExamples = (props: DividerProps) => {
+export const Default = (props: DividerProps) => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
@@ -266,7 +266,6 @@ const DividerExamples = (props: DividerProps) => {
     </div>
   );
 };
-export const DividerExample = () => <DividerExamples />;
 
 export default {
   title: 'Components/Divider',
