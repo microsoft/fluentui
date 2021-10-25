@@ -1,7 +1,7 @@
 import { Link } from '../index';
 
 export { Default } from './LinkDefault.stories';
-export { Subtle } from './LinkSubtle.stories';
+export { Appearance } from './LinkAppearance.stories';
 export { Inline } from './LinkInline.stories';
 export { Disabled } from './LinkDisabled.stories';
 export { DisabledFocusable } from './LinkDisabledFocusable.stories';
