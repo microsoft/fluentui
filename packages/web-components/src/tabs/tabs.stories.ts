@@ -33,11 +33,11 @@ export const Tabs = TabsTemplate.bind({});
 Tabs.args = {
   activeId: 'TabTwo',
   activeIndicator: true,
-  orientation: 'vertical',
+  orientation: 'horizontal',
 };
 
 const example = `
-<fluent-tabs id="myTab" activeId="TabTwo">
+<fluent-tabs id="myTab" activeId="TabTwo" orientation="horizontal">
   <fluent-tab id="TabOne">Tab one</fluent-tab>
   <fluent-tab id="TabTwo">Tab two</fluent-tab>
   <fluent-tab id="TabThree">Tab three</fluent-tab>

@@ -4,12 +4,13 @@ import {
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
-import { elevation } from '../styles/index';
+import { elevationShadowTooltip } from '../styles/index';
 import {
   bodyFont,
   controlCornerRadius,
   fillColor,
   neutralForegroundRest,
+  neutralStrokeLayerRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -21,7 +22,6 @@ export const tooltipStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host {
-      --elevation: 11;
       position: relative;
       contain: layout;
       overflow: visible;
@@ -33,7 +33,7 @@ export const tooltipStyles: (
     .tooltip {
       box-sizing: border-box;
       border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${strokeWidth} * 1px) solid transparent;
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
       background: ${fillColor};
       color: ${neutralForegroundRest};
       padding: 4px 12px;
@@ -43,7 +43,7 @@ export const tooltipStyles: (
       font-size: ${typeRampBaseFontSize};
       line-height: ${typeRampBaseLineHeight};
       white-space: nowrap;
-      ${elevation}
+      box-shadow: ${elevationShadowTooltip};
     }
 
     fluent-anchored-region {
@@ -67,13 +67,14 @@ export const tooltipStyles: (
       width: 12px;
       height: 12px;
       background: ${fillColor};
-      border-radius: calc(${controlCornerRadius} * 1px);
+      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
+      border-left: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
       position: absolute;
     }
 
     fluent-anchored-region.top .tooltip::after {
-      transform: rotate(45deg) translateX(-50%);
-      bottom: 4px;
+      transform: translateX(-50%) rotate(225deg);
+      bottom: 5px;
       left: 50%;
     }
 
@@ -82,8 +83,8 @@ export const tooltipStyles: (
     }
 
     fluent-anchored-region.bottom .tooltip::after {
-      transform: rotate(45deg) translateX(-50%);
-      top: 12px;
+      transform: translateX(-50%) rotate(45deg);
+      top: 5px;
       left: 50%;
     }
 
@@ -92,9 +93,9 @@ export const tooltipStyles: (
     }
 
     fluent-anchored-region.left .tooltip::after {
-      transform: rotate(45deg) translateY(-50%);
+      transform: translateY(-50%) rotate(135deg);
       top: 50%;
-      right: 12px;
+      right: 5px;
     }
 
     fluent-anchored-region.left .tooltip {
@@ -102,9 +103,9 @@ export const tooltipStyles: (
     }
 
     fluent-anchored-region.right .tooltip::after {
-      transform: rotate(45deg) translateY(-50%);
+      transform: translateY(-50%) rotate(-45deg);
       top: 50%;
-      left: 4px;
+      left: 5px;
     }
 
     fluent-anchored-region.right .tooltip {

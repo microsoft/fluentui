@@ -80,7 +80,7 @@ const DividerStory = (props?: DividerStoryProps) => {
   );
 };
 
-const DividerExamples = (props: DividerProps) => {
+export const Default = (props: DividerProps) => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
@@ -266,7 +266,6 @@ const DividerExamples = (props: DividerProps) => {
     </div>
   );
 };
-export const DividerExample = () => <DividerExamples />;
 
 export default {
   title: 'Components/Divider',

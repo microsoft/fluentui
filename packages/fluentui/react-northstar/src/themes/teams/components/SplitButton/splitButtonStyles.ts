@@ -39,15 +39,7 @@ export const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesPro
   }),
 
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const borderFocusStyles = getBorderFocusStyles({
-      variables: {
-        borderRadius: v.focusBorderRadius,
-        borderWidth: v.focusBorderWidth,
-        focusInnerBorderColor: v.focusInnerBorderColor,
-        focusOuterBorderColor: v.focusOuterBorderColor,
-        zIndexes: { foreground: v.focusBorderZIndex },
-      },
-    });
+    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
 
     return {
       borderRadius: v.borderRadius,

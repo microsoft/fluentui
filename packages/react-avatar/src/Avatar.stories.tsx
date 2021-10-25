@@ -304,7 +304,7 @@ export const RobotExample = () => {
   );
 };
 
-export const AvatarPlayground = () => {
+export const Playground = () => {
   const [nameAndImage, nextNameAndImage, prevNameAndImage] = useValueSelectorState(examples.nameAndImage);
 
   const propSelectors = [

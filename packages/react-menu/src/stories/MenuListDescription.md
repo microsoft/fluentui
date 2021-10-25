@@ -1,4 +1,4 @@
-A `MenuList` is the permanently displayed list of actions used inside of `Menu`.
+A menu list displays a list of actions within a menu.
 
 See also:
 [Menu](/?path=/docs/components-menu--default)
