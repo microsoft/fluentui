@@ -2816,19 +2816,25 @@ export interface IColorPickerState {
 export interface IColorPickerStrings {
     alpha?: string;
     alphaAriaLabel?: string;
+    alphaError?: string;
     blue?: string;
+    blueError?: string;
     green?: string;
+    greenError?: string;
     hex?: string;
+    hexError?: string;
     // @deprecated
     hue?: string;
     hueAriaLabel?: string;
     red?: string;
+    redError?: string;
     rootAriaLabelFormat?: string;
     svAriaDescription?: string;
     svAriaLabel?: string;
     svAriaValueFormat?: string;
     transparency?: string;
     transparencyAriaLabel?: string;
+    transparencyError?: string;
 }
 
 // @public (undocumented)
@@ -8128,6 +8134,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     errorMessage?: string | JSX.Element;
     iconProps?: IIconProps;
     inputClassName?: string;
+    invalid?: boolean;
     label?: string;
     multiline?: boolean;
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;

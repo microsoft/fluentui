@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { classNamesFunction, initializeComponentRef, warnDeprecations, warn } from '../../Utilities';
 import { TextField } from '../../TextField';
+import { TooltipHost } from '../../Tooltip';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
 import {
@@ -68,6 +70,12 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       svAriaLabel: ColorRectangleBase.defaultProps.ariaLabel!,
       svAriaValueFormat: ColorRectangleBase.defaultProps.ariaValueFormat!,
       svAriaDescription: ColorRectangleBase.defaultProps.ariaDescription!,
+      hexError: 'Hex values must be between 3 and 6 characters long',
+      alphaError: 'Alpha must be between 0 and 100',
+      transparencyError: 'Transparency must be between 0 and 100',
+      redError: 'Red must be between 0 and 255',
+      greenError: 'Green must be between 0 and 255',
+      blueError: 'Blue must be between 0 and 255',
     },
   };
 
@@ -242,17 +250,21 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                   if ((comp === 'a' || comp === 't') && alphaSliderHidden) {
                     return null;
                   }
+                  const tooltipContent = this._getTooltipValue(comp);
                   return (
                     <td key={comp}>
-                      <TextField
-                        className={classNames.input}
-                        onChange={this._textChangeHandlers[comp]}
-                        onBlur={this._onBlur}
-                        value={this._getDisplayValue(comp)}
-                        spellCheck={false}
-                        ariaLabel={textLabels[comp]}
-                        autoComplete="off"
-                      />
+                      <TooltipHost content={tooltipContent} directionalHint={DirectionalHint.bottomCenter} role="alert">
+                        <TextField
+                          className={classNames.input}
+                          onChange={this._textChangeHandlers[comp]}
+                          onBlur={this._onBlur}
+                          value={this._getDisplayValue(comp)}
+                          spellCheck={false}
+                          ariaLabel={textLabels[comp]}
+                          autoComplete="off"
+                          invalid={!!tooltipContent}
+                        />
+                      </TooltipHost>
                     </td>
                   );
                 })}
@@ -275,6 +287,47 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       return String(color[component]);
     }
     return '';
+  }
+
+  /* Get the error tooltip value for a component if the component is in an invalid state */
+  private _getTooltipValue(component: ColorComponent): string | undefined {
+    const { editingColor } = this.state;
+    // if the component does not have an interim value, it is valid
+    if (!editingColor || editingColor.component !== component) {
+      return undefined;
+    }
+
+    const { value } = editingColor;
+    // for hex, do not show a tooltip if the value is between 3-6 characters
+    if (component === 'hex' && value.length >= MIN_HEX_LENGTH && value.length <= MAX_HEX_LENGTH) {
+      return undefined;
+    }
+
+    let errorKey: keyof Pick<
+      IColorPickerStrings,
+      'hexError' | 'alphaError' | 'transparencyError' | 'redError' | 'greenError' | 'blueError'
+    >;
+    switch (component) {
+      case 'hex':
+        errorKey = 'hexError';
+        break;
+      case 'a':
+        errorKey = 'alphaError';
+        break;
+      case 't':
+        errorKey = 'transparencyError';
+        break;
+      case 'r':
+        errorKey = 'redError';
+        break;
+      case 'g':
+        errorKey = 'greenError';
+        break;
+      default:
+        errorKey = 'blueError';
+    }
+
+    return this._strings[errorKey];
   }
 
   private _onSVChanged = (ev: React.MouseEvent<HTMLElement>, color: IColor): void => {

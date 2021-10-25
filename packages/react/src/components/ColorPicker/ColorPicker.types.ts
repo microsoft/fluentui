@@ -200,6 +200,42 @@ export interface IColorPickerStrings {
    * @defaultvalue 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.'
    */
   svAriaDescription?: string;
+
+  /**
+   * Error message for invalid hex input
+   * @defaultvalue 'Hex values must be between 3 and 6 characters long'
+   */
+  hexError?: string;
+
+  /**
+   * Error message for invalid alpha input
+   * @defaultvalue 'Alpha must be between 0 and 100'
+   */
+  alphaError?: string;
+
+  /**
+   * Error message for invalid transparency input
+   * @defaultvalue 'Transparency must be between 0 and 100'
+   */
+  transparencyError?: string;
+
+  /**
+   * Error message for invalid red input
+   * @defaultvalue 'Red must be between 0 and 255'
+   */
+  redError?: string;
+
+  /**
+   * Error message for invalid green input
+   * @defaultvalue 'Green must be between 0 and 255'
+   */
+  greenError?: string;
+
+  /**
+   * Error message for invalid blue input
+   * @defaultvalue 'Blue must be between 0 and 255'
+   */
+  blueError?: string;
 }
 
 /**

@@ -195,6 +195,7 @@ export class TextFieldBase
       borderless,
       className,
       disabled,
+      invalid,
       iconProps,
       inputClassName,
       label,
@@ -217,6 +218,7 @@ export class TextFieldBase
     } = this.props;
     const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
+    const isInvalid = typeof invalid === 'boolean' ? invalid : !!errorMessage;
 
     const hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
 
@@ -228,7 +230,7 @@ export class TextFieldBase
       required,
       multiline,
       hasLabel: !!label,
-      hasErrorMessage: !!errorMessage,
+      hasErrorMessage: isInvalid,
       borderless,
       resizable,
       hasIcon: !!iconProps,
@@ -487,12 +489,14 @@ export class TextFieldBase
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
+    const { invalid } = this.props;
     const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
       this.props,
       textAreaProperties,
       ['defaultValue'],
     );
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
+    const isInvalid = typeof invalid === 'boolean' ? invalid : !!this._errorMessage;
     return (
       <textarea
         id={this._id}
@@ -504,7 +508,7 @@ export class TextFieldBase
         className={this._classNames.field}
         aria-labelledby={ariaLabelledBy}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this._errorMessage}
+        aria-invalid={isInvalid}
         aria-label={this.props.ariaLabel}
         readOnly={this.props.readOnly}
         onFocus={this._onFocus}
@@ -514,19 +518,21 @@ export class TextFieldBase
   }
 
   private _renderInput(): JSX.Element | null {
+    const { ariaLabel, invalid, type = 'text', label } = this.props;
+    const isInvalid = typeof invalid === 'boolean' ? invalid : !!this._errorMessage;
     const inputProps: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement> = {
-      type: this.state.isRevealingPassword ? 'text' : this.props.type || 'text',
+      type: this.state.isRevealingPassword ? 'text' : type,
       id: this._id,
       ...getNativeProps(this.props, inputProperties, ['defaultValue', 'type']),
-      'aria-labelledby': this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined),
+      'aria-labelledby': this.props['aria-labelledby'] || (label ? this._labelId : undefined),
       ref: this._textElement as React.RefObject<HTMLInputElement>,
       value: this.value || '',
       onInput: this._onInputChange,
       onChange: this._onInputChange,
       className: this._classNames.field,
-      'aria-label': this.props.ariaLabel,
+      'aria-label': ariaLabel,
       'aria-describedby': this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'],
-      'aria-invalid': !!this._errorMessage,
+      'aria-invalid': isInvalid,
       onFocus: this._onFocus,
       onBlur: this._onBlur,
     };
