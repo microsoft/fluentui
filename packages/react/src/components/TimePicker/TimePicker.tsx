@@ -5,10 +5,10 @@ import { ComboBox } from '../../ComboBox';
 import type { IComboBox, IComboBoxOption } from '../../ComboBox';
 import type { ITimePickerProps, ITimeRange, ITimePickerStrings } from './TimePicker.types';
 
-const REGEX_SHOW_SECONDS_HOUR_12 = /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))$/;
-const REGEX_HIDE_SECONDS_HOUR_12 = /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))$/;
-const REGEX_SHOW_SECONDS_HOUR_24 = /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$/;
-const REGEX_HIDE_SECONDS_HOUR_24 = /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)$/;
+const REGEX_SHOW_SECONDS_HOUR_12 = /^((1[0-2]|0?[1-9]):([0-5][0-9]):([0-5][0-9])\s([AaPp][Mm]))$/;
+const REGEX_HIDE_SECONDS_HOUR_12 = /^((1[0-2]|0?[1-9]):[0-5][0-9]\s([AaPp][Mm]))$/;
+const REGEX_SHOW_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
+const REGEX_HIDE_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
 
 const TIME_LOWER_BOUND = 0;
 const TIME_UPPER_BOUND = 23;
@@ -16,9 +16,14 @@ const TIME_UPPER_BOUND = 23;
 const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePickerStrings => {
   let errorMessageToDisplay = '';
   const hourUnits = useHour12 ? '12-hour' : '24-hour';
-  showSeconds
-    ? (errorMessageToDisplay = `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm:ss A.`)
-    : (errorMessageToDisplay = `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm A.`);
+
+  errorMessageToDisplay = useHour12
+    ? showSeconds
+      ? `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm:ss AP`
+      : `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm AP`
+    : showSeconds
+    ? `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm:ss`
+    : `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm`;
 
   return {
     invalidInputErrorMessage: errorMessageToDisplay,
