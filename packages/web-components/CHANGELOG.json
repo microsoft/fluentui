@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 25 Oct 2021 07:38:02 GMT",
+      "tag": "@fluentui/web-components_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "remove beachball configuration override to again disallow major versions",
+            "commit": "a88fb53fb38a20912b7ddea33b5f3313a721e148"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Oct 2021 23:04:22 GMT",
       "tag": "@fluentui/web-components_v2.0.0",
       "version": "2.0.0",

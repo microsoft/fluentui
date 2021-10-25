@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 25 Oct 2021 07:38:02 GMT",
+      "tag": "@fluentui/react_v8.37.2",
+      "version": "8.37.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "comment": "Dialog/Modal/Panel: Popup component now correctly finds and adds aria-hidden attribute to sibling nodes.",
+            "commit": "a88fb53fb38a20912b7ddea33b5f3313a721e148"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Oct 2021 07:28:35 GMT",
       "tag": "@fluentui/react_v8.37.1",
       "version": "8.37.1",

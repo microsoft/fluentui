@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "remove beachball configuration override to again disallow major versions",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "none"
-}
