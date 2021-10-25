@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { DocsContainer, DocsContainerProps, Meta, Source } from '@storybook/addon-docs';
+import { DocsContainer, DocsContainerProps, Source } from '@storybook/addon-docs';
 import { makeStyles } from '@fluentui/react-make-styles';
 import {
   Menu,
@@ -69,15 +69,24 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   );
 };
 
-export const VersionPicker = () => {
-  // TODO fetch this mapping from an azure function
-  // This URL can just be constructed during publish time and fed to the azure function
-  const versions: Record<string, string> = {
-    '9.0.0-alpha.123': 'https://f6366b4--6002298f95a00c00213f4d55.chromatic.com',
-    '9.0.0-beta.1': 'https://3c3fae8--6002298f95a00c00213f4d55.chromatic.com',
-  };
+interface VersionEntry {
+  version: string;
+  commit: string;
+}
 
-  const navigateHandler = (href: string) => () => {
+export const VersionPicker = () => {
+  const [versions, setVersions] = React.useState<VersionEntry[]>([]);
+
+  React.useEffect(() => {
+    fetch('https://fluentstorybookversion.azurewebsites.net/api/GetVersions')
+      .then(res => res.json())
+      .then(json => {
+        setVersions(json);
+      });
+  }, []);
+
+  const navigateHandler = (commit: string) => () => {
+    const href = `https://${commit}--6002298f95a00c00213f4d55.chromatic.com`;
     window.parent.location.href = href;
   };
 
@@ -85,13 +94,13 @@ export const VersionPicker = () => {
     <FluentProvider theme={webLightTheme} style={{ position: 'sticky', top: 0 }}>
       <Menu>
         <MenuTrigger>
-          <MenuButton>{Object.keys(versions)[0]}</MenuButton>
+          <MenuButton>Select version</MenuButton>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
-            {Object.keys(versions).map(version => (
-              <MenuItem onClick={navigateHandler(versions[version])} key={version}>
-                {version}
+            {versions.map(entry => (
+              <MenuItem onClick={navigateHandler(entry.commit)} key={entry.version}>
+                {entry.version}
               </MenuItem>
             ))}
           </MenuList>
@@ -102,6 +111,7 @@ export const VersionPicker = () => {
 };
 
 export const FluentDocsContainer = ({ children, context }: DocsContainerProps & { children: React.ReactNode }) => {
+  console.log(process.env.STORYBOOK_THEME);
   return (
     <>
       <VersionPicker />
