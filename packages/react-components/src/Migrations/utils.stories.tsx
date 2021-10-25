@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DocsContainer, DocsContainerProps, Source } from '@storybook/addon-docs';
+import { Source } from '@storybook/addon-docs';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useCodeComparisonStyles = makeStyles({

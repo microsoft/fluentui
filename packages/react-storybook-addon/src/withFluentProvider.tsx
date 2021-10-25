@@ -11,7 +11,6 @@ const useStyles = makeStyles({
   root: theme => ({
     padding: '10px',
     fontFamily: theme.fontFamilyBase,
-    color: theme.colorNeutralForeground1,
     background: theme.colorNeutralBackground1,
   }),
 });
