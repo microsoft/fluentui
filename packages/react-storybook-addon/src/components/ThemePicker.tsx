@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { IconButton, Icons, TooltipLinkList, WithTooltip } from '@storybook/components';
+import { makeStyles } from '@fluentui/react-make-styles';
 
-import { ThemeIds, themes, defaultTheme } from './theme';
-import { THEME_ID } from './constants';
-import { useGlobals } from './hooks';
+import { ThemeIds, themes, defaultTheme } from '../theme';
+import { THEME_ID } from '../constants';
+import { useGlobals } from '../hooks';
+
+const useStyles = makeStyles({
+  pickerLabel: {
+    marginLeft: '5px',
+  },
+});
 
 export interface ThemeSelectorItem {
   id: string;
@@ -32,6 +39,7 @@ function createThemeItems(
 }
 
 export const ThemePicker = () => {
+  const styles = useStyles();
   const [globals, updateGlobals] = useGlobals();
   const selectedThemeId = globals[THEME_ID] ?? defaultTheme.id;
   const selectedTheme = themes.find(entry => entry.id === selectedThemeId);
@@ -68,7 +76,7 @@ export const ThemePicker = () => {
       <WithTooltip placement="top" trigger="click" closeOnClick tooltip={renderTooltip}>
         <IconButton key={THEME_ID} title="Change Fluent theme" active={isActive}>
           <Icons icon="chevrondown" />
-          Theme: {selectedTheme?.label}
+          <span className={styles.pickerLabel}>Theme: {selectedTheme?.label}</span>
         </IconButton>
       </WithTooltip>
     </>

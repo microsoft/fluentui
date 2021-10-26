@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { StoryFn as StoryFunction } from '@storybook/addons';
 
-import { themes, defaultTheme, FluentProvider } from './theme';
-import { THEME_ID } from './constants';
-import { Globals, StoryContext } from './hooks';
+import { themes, defaultTheme, FluentProvider } from '../theme';
+import { THEME_ID } from '../constants';
+import { FluentGlobals, FluentStoryContext } from '../hooks';
 
 import { makeStyles } from '@fluentui/react-make-styles';
 
@@ -15,14 +15,14 @@ const useStyles = makeStyles({
   }),
 });
 
-const getActiveFluentTheme = (globals: Globals) => {
+const getActiveFluentTheme = (globals: FluentGlobals) => {
   const selectedThemeId = globals[THEME_ID];
   const { theme } = themes.find(value => value.id === selectedThemeId) ?? defaultTheme;
 
   return { theme };
 };
 
-export const withFluentProvider = (StoryFn: StoryFunction<React.ReactElement>, context: StoryContext) => {
+export const withFluentProvider = (StoryFn: StoryFunction<React.ReactElement>, context: FluentStoryContext) => {
   const { theme } = getActiveFluentTheme(context.globals);
   return (
     <FluentProvider theme={theme}>
