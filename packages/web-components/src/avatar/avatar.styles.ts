@@ -15,7 +15,7 @@ import {
     focusStrokeOuter,
     focusStrokeWidth,
     foregroundOnAccentRest,
-    neutralFillRest,
+    neutralFillSecondaryRest,
     neutralForegroundRest,
     typeRampBaseFontSize,
     typeRampBaseLineHeight,
@@ -77,7 +77,7 @@ export const avatarStyles: (
         .backplate {
             position: relative;
             display: flex;
-            background-color: ${neutralFillRest};
+            background-color: ${neutralFillSecondaryRest};
         }
 
         .media,
