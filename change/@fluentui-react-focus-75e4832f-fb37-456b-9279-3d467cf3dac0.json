@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(FocusZone): prevent restoration when flag is set",
-  "packageName": "@fluentui/react-focus",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}
