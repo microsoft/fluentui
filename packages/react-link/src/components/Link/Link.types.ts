@@ -1,10 +1,19 @@
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type LinkSlots = {
+  /**
+   * Root of the component that renders as either an <a> or a <button> tag.
+   */
   root: IntrinsicShorthandProps<'a', 'button'>;
 };
 
 export type LinkCommons = {
+  /**
+   * A link can appear either with its default style or subtle.
+   * If not specified, the link appears with its default styling.
+   */
+  appearance?: 'subtle';
+
   /**
    * Whether the link is disabled.
    * @default false
@@ -23,12 +32,6 @@ export type LinkCommons = {
    * @default false
    */
   inline?: boolean;
-
-  /**
-   * If true, changes the link styling to emphasize that it represents an alternative action.
-   * @default false
-   */
-  secondary?: boolean;
 };
 
 export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;

@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Tue, 21 Sep 2021 07:42:34 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.28..@fluentui/react-shared-contexts_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
+- Bump @fluentui/react-theme to v9.0.0-beta.1 ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by beachball)
+
+## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.28)
+
+Fri, 01 Oct 2021 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.26..@fluentui/react-shared-contexts_v9.0.0-alpha.28)
+
+### Changes
+
+- Bump v9 prerelease versions to rerelease ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by lingfangao@hotmail.com)
+- Bump @fluentui/react-theme to v9.0.0-alpha.26 ([PR #20069](https://github.com/microsoft/fluentui/pull/20069) by beachball)
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.26)
+
+Wed, 29 Sep 2021 08:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.25..@fluentui/react-shared-contexts_v9.0.0-alpha.26)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.24 ([PR #19660](https://github.com/microsoft/fluentui/pull/19660) by beachball)
 
 ## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.25)
 

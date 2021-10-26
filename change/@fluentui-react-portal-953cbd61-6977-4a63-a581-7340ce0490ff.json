@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removed duplicate 'Portal' from story names",
+  "packageName": "@fluentui/react-portal",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

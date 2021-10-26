@@ -1381,6 +1381,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     &:hover .is-row-header {
                                       color: #201f1e;
                                     }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
+                                    }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
@@ -1866,6 +1869,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     }
                                     &:hover .is-row-header {
                                       color: #201f1e;
+                                    }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
                                     }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
@@ -2353,6 +2359,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     &:hover .is-row-header {
                                       color: #201f1e;
                                     }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
+                                    }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
@@ -2838,6 +2847,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     }
                                     &:hover .is-row-header {
                                       color: #201f1e;
+                                    }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
                                     }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
@@ -3325,6 +3337,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     &:hover .is-row-header {
                                       color: #201f1e;
                                     }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
+                                    }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
@@ -3810,6 +3825,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     }
                                     &:hover .is-row-header {
                                       color: #201f1e;
+                                    }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
                                     }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
@@ -4297,6 +4315,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     &:hover .is-row-header {
                                       color: #201f1e;
                                     }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
+                                    }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
@@ -4782,6 +4803,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     }
                                     &:hover .is-row-header {
                                       color: #201f1e;
+                                    }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
                                     }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
@@ -5269,6 +5293,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     &:hover .is-row-header {
                                       color: #201f1e;
                                     }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
+                                    }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
@@ -5754,6 +5781,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     }
                                     &:hover .is-row-header {
                                       color: #201f1e;
+                                    }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
                                     }
                                     &:hover .ms-DetailsRow-check {
                                       opacity: 1;

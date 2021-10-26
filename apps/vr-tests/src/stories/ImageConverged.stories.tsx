@@ -15,16 +15,28 @@ storiesOf('Image Converged', module)
   .addStory('Default', () => (
     <Image src="https://via.placeholder.com/300x300" alt="Placeholder image" />
   ))
-  .addStory('Image Appearance Shape', () => (
+  .addStory('Image Shape', () => (
     <>
       <div>
         <Image src={imageUrl} alt="Amanda's avatar default" height={200} width={200} />
       </div>
       <div>
-        <Image src={imageUrl} alt="Amanda's avatar rounded" height={200} width={200} rounded />
+        <Image
+          src={imageUrl}
+          alt="Amanda's avatar rounded"
+          height={200}
+          width={200}
+          shape="rounded"
+        />
       </div>
       <div>
-        <Image src={imageUrl} alt="Amanda's avatar circular" height={200} width={200} circular />
+        <Image
+          src={imageUrl}
+          alt="Amanda's avatar circular"
+          height={200}
+          width={200}
+          shape="circular"
+        />
       </div>
     </>
   ))
@@ -40,7 +52,7 @@ storiesOf('Image Converged', module)
           height={200}
           width={200}
           bordered
-          rounded
+          shape="rounded"
         />
       </div>
       <div>
@@ -50,7 +62,7 @@ storiesOf('Image Converged', module)
           height={200}
           width={200}
           bordered
-          circular
+          shape="circular"
         />
       </div>
     </>
@@ -93,10 +105,11 @@ storiesOf('Image Converged', module)
   .addStory('Image Fluid', () => (
     <>
       <div>
-        <Image src="https://via.placeholder.com/900x50" fluid />
+        <Image src="https://via.placeholder.com/900x50" block />
       </div>
       <div>
-        <Image src="https://via.placeholder.com/100x100" fluid />
+        <Image src="https://via.placeholder.com/100x100" block />
       </div>
     </>
-  ));
+  ))
+  .addStory('Image Shadow', () => <Image src="https://via.placeholder.com/900x50" shadow />);

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(Button): Make documentation exportable to codesandbox",
+  "packageName": "@fluentui/react-button",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}

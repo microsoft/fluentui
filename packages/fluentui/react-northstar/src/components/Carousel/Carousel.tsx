@@ -508,6 +508,7 @@ Carousel.propTypes = {
   paddlesPosition: PropTypes.oneOf(['inside', 'outside', 'inline']),
   paddlePrevious: customPropTypes.itemShorthand,
   thumbnails: PropTypes.bool,
+  disableClickableNav: PropTypes.bool,
 };
 
 Carousel.defaultProps = {

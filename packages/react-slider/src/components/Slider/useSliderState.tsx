@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
+  clamp,
   useBoolean,
   useControllableState,
   useEventCallback,
@@ -9,7 +10,6 @@ import {
 } from '@fluentui/react-utilities';
 import {
   calculateSteps,
-  clamp,
   getKeydownValue,
   getMarkPercent,
   getMarkValue,
@@ -18,6 +18,9 @@ import {
   renderMarks,
 } from '../../utils/index';
 import type { SliderState } from './Slider.types';
+
+// TODO: Awaiting animation time from design spec.
+export const animationTime = '0.1s';
 
 export const useSliderState = (state: SliderState) => {
   const {
@@ -117,6 +120,7 @@ export const useSliderState = (state: SliderState) => {
       hideStepAnimation();
       onPointerDownCallback?.(ev);
 
+      // eslint-disable-next-line deprecation/deprecation -- Should be remove an replaced with a useEvent hook.
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
         target.releasePointerCapture?.(pointerId);
       });
@@ -156,9 +160,6 @@ export const useSliderState = (state: SliderState) => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
   });
-
-  // TODO: Awaiting animation time from design spec.
-  const animationTime = '0.1s';
 
   const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 

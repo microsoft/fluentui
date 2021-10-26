@@ -108,78 +108,37 @@ export type ComponentProps<
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
     [Key in keyof Shorthands]-?:
-      | React.ComponentType<NonNullable<Shorthands[Key]>>
+      | React.ComponentType<
+          NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>
+        >
       | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & Shorthands;
 
-/////////////////////////// COMPAT /////////////////////////////////////////////////////////////////////
-
-export type ComponentPropsCompat = {
-  as?: React.ElementType;
-  className?: string;
-  children?: React.ReactNode;
-};
-
-// Shorthand types
-
-export type ShorthandRenderFunctionCompat<TProps> = (
-  Component: React.ElementType<TProps>,
-  props: TProps,
-) => React.ReactNode;
-
-export type ShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> =
-  | React.ReactChild
-  | React.ReactNodeArray
-  | React.ReactPortal
-  | number
-  | null
-  | undefined
-  | ObjectShorthandPropsCompat<TProps>;
-
-export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> = TProps &
-  Omit<ComponentPropsCompat, 'children'> & {
-    children?: TProps['children'] | ShorthandRenderFunctionCompat<TProps>;
-  };
-
-export type BaseSlotsCompat = {
-  root: React.ElementType;
-};
-
-export type SlotPropsCompat<
-  TSlots extends BaseSlotsCompat,
-  TProps,
-  TRootProps extends React.HTMLAttributes<HTMLElement>
-> = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
-} & {
-  root: TRootProps;
-};
-
 /**
- * Helper type to convert the given props of type ShorthandProps into ObjectShorthandProps
- */
-export type ResolvedShorthandPropsCompat<T, K extends keyof T> = Omit<T, K> &
-  { [P in K]: T[P] extends ShorthandPropsCompat<infer U> ? ObjectShorthandPropsCompat<U> : T[P] };
-
-/**
- * Helper type to mark the given props as required.
- * Similar to Required<T> except it only requires a subset of the props.
- */
-export type RequiredPropsCompat<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: T[P] };
-
-/**
- * Converts a components Props type to a State type:
- * * Ensures the specified ShorthandProps are of type ObjectShorthandProps<T>
- * * Marks the given defaulted props as required (-?)
+ * This is part of a hack to infer the element type from a native element *props* type.
+ * The only place the original element is found in a native props type (at least that's workable
+ * for inference) is in the event handlers, so some of the helper types use this event handler
+ * name to infer the original element type.
  *
- * @template Props - The component's Props type
- * @template ShorthandPropNames - The keys of Props that correspond to ShorthandProps
- * @template DefaultedPropNames - The keys of Props that will always have a default value provided
+ * Notes:
+ * - Using an extremely obscure event handler reduces the likelihood that its signature will be
+ *   modified in any component's props.
+ * - Inferring based on a single prop name instead of a larger type like `DOMAttributes<T>` should be
+ *   less expensive for typescript to evaluate and is less likely to result in type expansion in .d.ts.
  */
-export type ComponentStateCompat<
-  Props,
-  ShorthandPropNames extends keyof Props = never,
-  DefaultedPropNames extends keyof ResolvedShorthandPropsCompat<Props, ShorthandPropNames> = never
-> = RequiredPropsCompat<ResolvedShorthandPropsCompat<Props, ShorthandPropNames>, DefaultedPropNames>;
+type ObscureEventName = 'onLostPointerCaptureCapture';
+
+/**
+ * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ */
+export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
+  ? Required<Props>[ObscureEventName] extends React.PointerEventHandler<infer Element>
+    ? React.ForwardRefExoticComponent<Props & React.RefAttributes<Element>>
+    : never
+  : never;
+// A definition like this would also work, but typescript is more likely to unnecessarily expand
+// the props type with this version (and it's likely much more expensive to evaluate)
+// export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
+//   ? React.ForwardRefExoticComponent<Props> & React.RefAttributes<Element>
+//   : never;

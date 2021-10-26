@@ -39,8 +39,8 @@ Color.parameters = {
   docs: {
     description: {
       story:
-        'A Badge has predefined set of colors for `warning`, `success`, `subtle`, `severe`, ' +
-        '`informative`, `important`, `danger` and `brand`',
+        'A Badge has predefined set of colors for `brand`, `danger`, `important`, `informative`, ' +
+        '`severe`, `subtle`, `success` and `warning`',
     },
   },
 };

@@ -131,10 +131,10 @@ export interface MenuItemProps
     | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
     | ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
 
-  /** Indicates if the menu inside the item is open. */
+  /** Indicates if the menu inside the item is open if the activeIndex is also the item's index. */
   menuOpen?: boolean;
 
-  /** Default menu open */
+  /** Default menu open if the activeIndex is also the item's index */
   defaultMenuOpen?: boolean;
 
   /** Callback for setting the current menu item as active element in the menu. */
@@ -355,9 +355,6 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   const handleFocus = (e: React.FocusEvent) => {
     setIsFromKeyboard(isEventFromKeyboard());
     _.invoke(props, 'onFocus', e, props);
-    if (menu) {
-      _.invoke(parentProps, 'onItemSelect', e, index);
-    }
   };
 
   const isSubmenuOpen = (): boolean => {
@@ -401,6 +398,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   const openMenu = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (menu && !menuOpen) {
       trySetMenuOpen(true, e);
+      _.invoke(parentProps, 'onItemSelect', e, index);
       _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
       e.stopPropagation();
       e.preventDefault();
@@ -518,7 +516,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   });
 
   const maybeSubmenu =
-    menu && active && menuOpen ? (
+    menu && menuOpen ? (
       <>
         <Ref innerRef={menuRef}>
           <Popper

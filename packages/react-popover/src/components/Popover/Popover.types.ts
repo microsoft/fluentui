@@ -38,16 +38,12 @@ export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
    * @default medium
    */
   size?: PopoverSize;
+
   /**
-   * Uses brand colour as background
-   * Mutually exclusive with `inverted`
+   * A popover can appear styled with brand or inverted.
+   * When not specified, the default style is used.
    */
-  brand?: boolean;
-  /**
-   * Inverts the foreground/background colour of the popover
-   * Mutually exclusive with `brand`
-   */
-  inverted?: boolean;
+  appearance?: 'brand' | 'inverted';
 
   /**
    * Should trap focus
@@ -65,8 +61,8 @@ export type PopoverCommons = Pick<PortalProps, 'mountNode'> & {
  */
 export type PopoverProps = Partial<PopoverCommons> & {
   /**
-   * Can contain two children including {@link PopoverTrigger} and {@link PopoverPopover}.
-   * Alternatively can only contain {@link PopoverPopover} if using a custom `target`.
+   * Can contain two children including {@link PopoverTrigger} and {@link PopoverSurface}.
+   * Alternatively can only contain {@link PopoverSurface} if using a custom `target`.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
 };
@@ -107,7 +103,7 @@ export type PopoverState = PopoverCommons &
 /**
  * Data attached to open/close events
  */
-export type OnOpenChangeData = Pick<PopoverState, 'open'>;
+export type OnOpenChangeData = { open: boolean };
 
 /**
  * The supported events that will trigger open/close of the menu

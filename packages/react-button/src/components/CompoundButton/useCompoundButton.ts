@@ -1,24 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { useButtonState } from '../Button/useButtonState';
-import type {
-  CompoundButtonProps,
-  CompoundButtonShorthandPropsCompat,
-  CompoundButtonState,
-} from './CompoundButton.types';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const compoundButtonShorthandPropsCompat: CompoundButtonShorthandPropsCompat[] = [
-  'contentContainer',
-  'icon',
-  'secondaryContent',
-];
-
-const mergeProps = makeMergeProps<CompoundButtonState>({
-  deepMerge: compoundButtonShorthandPropsCompat,
-});
+import { resolveShorthand } from '@fluentui/react-utilities';
+import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
+import { useButton } from '../Button/index';
 
 /**
  * Given user props, defines default props for the CompoundButton, calls useButtonState, and returns processed state.
@@ -26,28 +9,21 @@ const mergeProps = makeMergeProps<CompoundButtonState>({
  * @param ref - User provided ref to be passed to the CompoundButton component.
  */
 export const useCompoundButton = (
-  props: CompoundButtonProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: CompoundButtonProps,
+  { contentContainer, secondaryContent, ...props }: CompoundButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): CompoundButtonState => {
-  const state = mergeProps(
-    {
-      ref,
-      as: 'button',
-      // Slots inherited from Button
-      icon: { as: 'span' },
-      // Slots exclusive to CompoundButton
-      contentContainer: { as: 'span', children: null },
-      secondaryContent: { as: 'span' },
-      // Non-slot props
-      size: 'medium',
-      type: 'button', // This is added because the default for type is 'submit'
+  return {
+    // Button state
+    ...useButton(props, ref),
+
+    // Slots definition
+    components: {
+      root: 'button',
+      icon: 'span',
+      contentContainer: 'span',
+      secondaryContent: 'span',
     },
-    defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandPropsCompat),
-    resolveShorthandProps(props, compoundButtonShorthandPropsCompat),
-  );
-
-  useButtonState(state);
-
-  return state;
+    contentContainer: resolveShorthand(contentContainer, { required: true }),
+    secondaryContent: resolveShorthand(secondaryContent),
+  };
 };

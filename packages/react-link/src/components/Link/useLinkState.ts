@@ -14,10 +14,14 @@ export const useLinkState = (state: LinkState): LinkState => {
   if (state.root.as === 'a') {
     state.root.href = disabled ? undefined : state.root.href;
     state.root.tabIndex = disabled && !disabledFocusable ? undefined : 0;
+
+    // Add role="link" for disabled and disabledFocusable links.
+    if (disabled || disabledFocusable) {
+      state.root.role = role || 'link';
+    }
   }
-  // Add 'role=link' and 'type=button' for button elements.
+  // Add type="button" for button elements.
   else {
-    state.root.role = role || 'link';
     state.root.type = type || 'button';
   }
 

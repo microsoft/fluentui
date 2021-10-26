@@ -34,7 +34,7 @@ Multiple.args = {
 Multiple.parameters = {
   docs: {
     description: {
-      story: 'A Accordion can support multiple Panels open at the same time',
+      story: 'An Accordion can support multiple Panels expanded simultaneously.',
     },
   },
 };

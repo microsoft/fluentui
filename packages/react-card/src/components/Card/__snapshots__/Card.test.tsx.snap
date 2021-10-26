@@ -4,6 +4,7 @@ exports[`Card renders a default state 1`] = `
 <div>
   <div
     class=""
+    data-tabster="{\\"groupper\\":{\\"tabbability\\":2}}"
     role="group"
   >
     Default Card

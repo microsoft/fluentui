@@ -4,27 +4,12 @@ import * as React from 'react';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 // @ts-ignore
 import { SplitButton, SplitButtonProps } from './SplitButton';
-import { buttonBaseProps } from './buttonBaseProps.stories';
-import { Playground } from './Playground.stories';
-import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
 
-interface ExampleProps {
-  primaryActionDisabled?: boolean;
-}
-
-const ExampleSplitButton = (props: SplitButtonProps & ExampleProps): JSX.Element => {
-  const { primaryActionDisabled, ...rest } = props;
-
+export const Default = (): JSX.Element => {
   return (
     <Menu positioning="below-end">
       <MenuTrigger>
-        {triggerProps => (
-          <SplitButton
-            button={{ disabled: primaryActionDisabled || rest.disabled }}
-            menuButton={triggerProps}
-            {...rest}
-          />
-        )}
+        {triggerProps => <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} />}
       </MenuTrigger>
 
       <MenuPopover>
@@ -34,24 +19,6 @@ const ExampleSplitButton = (props: SplitButtonProps & ExampleProps): JSX.Element
         </MenuList>
       </MenuPopover>
     </Menu>
-  );
-};
-
-export const SplitButtonPlayground = () => {
-  const exampleProps: PropDefinition<SplitButtonProps & ExampleProps>[] = React.useMemo(
-    () => [{ propName: 'primaryActionDisabled', propType: 'boolean', dependsOnProps: ['~disabled'] }],
-    [],
-  );
-
-  const splitButtonProps: PlaygroundProps<SplitButtonProps>['sections'] = [
-    { sectionName: 'Button props', propList: buttonBaseProps },
-    { sectionName: 'Example props', propList: exampleProps },
-  ];
-
-  return (
-    <Playground sections={splitButtonProps}>
-      <ExampleSplitButton />
-    </Playground>
   );
 };
 

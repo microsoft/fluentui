@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove playground from button examples",
+  "packageName": "@fluentui/react-button",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}

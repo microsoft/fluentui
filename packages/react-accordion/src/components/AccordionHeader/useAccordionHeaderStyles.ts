@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { AccordionHeaderState } from './AccordionHeader.types';
 
 const useStyles = makeStyles({
@@ -16,23 +16,21 @@ const useStyles = makeStyles({
     userSelect: 'none',
     textAlign: 'unset',
   },
-  focusIndicator: createFocusIndicatorStyleRule(theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
-    borderRadius: '2px',
-  })),
+  focusIndicator: theme => createFocusOutlineStyle(theme),
   root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    color: theme.colorNeutralForeground1,
+    backgroundColor: theme.colorNeutralBackground1,
     borderRadius: '2px',
   }),
   rootDisabled: theme => ({
     backgroundColor: 'none',
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    color: theme.colorNeutralForegroundDisabled,
   }),
   rootInline: {
     display: 'inline-block',
   },
   button: {
+    position: 'relative',
     width: 'calc(100% - 22px)',
     border: '1px solid transparent',
     paddingRight: '10px',
@@ -68,20 +66,20 @@ const useStyles = makeStyles({
     marginLeft: '10px',
   },
   children: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    fontFamily: theme.global.type.fontFamilies.base,
+    fontSize: theme.fontSizeBase300,
+    fontFamily: theme.fontFamilyBase,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   }),
   childrenSmall: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
+    fontSize: theme.fontSizeBase200,
   }),
   childrenLarge: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
+    fontSize: theme.fontSizeBase400,
   }),
   childrenExtraLarge: theme => ({
-    fontSize: theme.global.type.fontSizes.base[500],
+    fontSize: theme.fontSizeBase500,
   }),
 });
 

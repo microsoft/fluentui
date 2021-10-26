@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/react-storybook",
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0-beta.0",
   "private": true,
-  "description": "Storybook addons and utils for Fluent UI React",
+  "description": "Storybook addons and utils for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -29,11 +29,11 @@
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.45"
+    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.1"
   },
   "dependencies": {
-    "@fluentui/react-provider": "9.0.0-alpha.81",
-    "@fluentui/react-theme": "9.0.0-alpha.23",
+    "@fluentui/react-provider": "9.0.0-beta.2",
+    "@fluentui/react-theme": "9.0.0-beta.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -43,7 +43,7 @@
     "@storybook/addons": "^6.0.28"
   },
   "beachball": {
-    "tag": "alpha",
+    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

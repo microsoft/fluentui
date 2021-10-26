@@ -1,9 +1,11 @@
-import {
-  BaseProgress as ProgressRing,
-  ProgressRingOptions,
-  progressRingTemplate as template,
-} from '@microsoft/fast-foundation';
+import { BaseProgress, ProgressRingOptions, progressRingTemplate as template } from '@microsoft/fast-foundation';
 import { progressRingStyles as styles } from './progress-ring.styles';
+
+/**
+ * Progress Ring base class
+ * @public
+ */
+export class ProgressRing extends BaseProgress {}
 
 /**
  * The Fluent Progress Ring Element. Implements {@link @microsoft/fast-foundation#BaseProgress},
@@ -43,9 +45,3 @@ export const fluentProgressRing = ProgressRing.compose<ProgressRingOptions>({
  * @public
  */
 export const progressRingStyles = styles;
-
-/**
- * Progress Ring base class
- * @public
- */
-export { ProgressRing };

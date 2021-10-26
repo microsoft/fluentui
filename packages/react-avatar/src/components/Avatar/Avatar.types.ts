@@ -1,99 +1,107 @@
 import * as React from 'react';
-import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
+import type {
+  ComponentProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+  ObjectShorthandProps,
+  ShorthandRenderFunction,
+} from '@fluentui/react-utilities';
+import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
-export type AvatarProps = ComponentPropsCompat &
-  React.HTMLAttributes<HTMLElement> & {
-    /**
-     * The Avatar's image.
-     */
-    image?: ShorthandPropsCompat<React.ImgHTMLAttributes<HTMLImageElement>>;
+export type AvatarSlots = {
+  root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
 
-    /**
-     * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
-     */
-    label?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  /**
+   * This overidden in the component's props, it's only here to make `getSlots` work
+   * `img`  is an exception since it should never accept children, but can accept a children render function
+   */
+  image?: IntrinsicShorthandProps<'img'>;
 
-    /**
-     * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
-     *
-     * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
-     */
-    icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  /**
+   * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
+   */
+  label?: IntrinsicShorthandProps<'span'>;
 
-    /**
-     * Badge to show the avatar's presence status.
-     * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
-     */
-    badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
+  /**
+   * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
+   *
+   * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
+   */
+  icon?: IntrinsicShorthandProps<'span'>;
 
-    /**
-     * The name used for displaying the initials of the avatar if the image is not provided
-     */
-    name?: string;
+  /**
+   * Badge to show the avatar's presence status.
+   */
+  badge?: ObjectShorthandProps<PresenceBadgeProps>;
+};
 
-    /**
-     * Custom method for generating the initials from the name property, which is shown if no image is provided.
-     */
-    getInitials?: (name: string, isRtl: boolean) => string;
+export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
+  /**
+   * The name used for displaying the initials of the avatar if the image is not provided
+   */
+  name: string;
 
-    /**
-     * Size of the avatar in pixels.
-     *
-     * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
-     * based on design guidelines for the Avatar control.
-     *
-     * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
-     * to override the rendered size.
-     *
-     * For example, to set the avatar to 45px in size:
-     * `<Avatar size={40} style={{ width: '45px', height: '45px' }} />`
-     *
-     * @defaultvalue 32
-     */
-    size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+  /**
+   * Custom method for generating the initials from the name property, which is shown if no image is provided.
+   */
+  getInitials: (name: string, isRtl: boolean) => string;
 
-    /**
-     * The avatar can have a circular or square shape.
-     * @defaultvalue circular
-     */
-    shape?: 'circular' | 'square';
+  /**
+   * Size of the avatar in pixels.
+   *
+   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
+   * based on design guidelines for the Avatar control.
+   *
+   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
+   * to override the rendered size.
+   *
+   * For example, to set the avatar to 45px in size:
+   * `<Avatar size={40} style={{ width: '45px', height: '45px' }} />`
+   *
+   * @defaultvalue 32
+   */
+  size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
-    /**
-     * Optional activity indicator
-     * * active: the avatar will be decorated according to activeAppearance
-     * * inactive: the avatar will be reduced in size and partially transparent
-     * * unset: normal display
-     *
-     * @defaultvalue unset
-     */
-    active?: 'active' | 'inactive' | 'unset';
+  /**
+   * The avatar can have a circular or square shape.
+   * @defaultvalue circular
+   */
+  shape: 'circular' | 'square';
 
-    /**
-     * The appearance when `active="active"`
-     *
-     * @defaultvalue ring
-     */
-    activeAppearance?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+  /**
+   * Optional activity indicator
+   * * active: the avatar will be decorated according to activeAppearance
+   * * inactive: the avatar will be reduced in size and partially transparent
+   * * unset: normal display
+   *
+   * @defaultvalue unset
+   */
+  active: 'active' | 'inactive' | 'unset';
 
-    /**
-     * The color when displaying either an icon or initials.
-     * * neutral (default): gray
-     * * brand: color from the brand palette
-     * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name
-     * (or idForColor if provided)
-     * * [AvatarNamedColor]: a specific color from the theme
-     *
-     * @defaultvalue neutral
-     */
-    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+  /**
+   * The appearance when `active="active"`
+   *
+   * @defaultvalue ring
+   */
+  activeAppearance: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
 
-    /**
-     * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
-     * Use this when a name is not available, but there is another unique identifier that can be used instead.
-     */
-    idForColor?: string;
-  };
+  /**
+   * The color when displaying either an icon or initials.
+   * * neutral (default): gray
+   * * brand: color from the brand palette
+   * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or idForColor if provided)
+   * * [AvatarNamedColor]: a specific color from the theme
+   *
+   * @defaultvalue neutral
+   */
+  color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+
+  /**
+   * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
+   * Use this when a name is not available, but there is another unique identifier that can be used instead.
+   */
+  idForColor: string | undefined;
+};
 
 /**
  * A specific named color for the Avatar
@@ -131,23 +139,26 @@ export type AvatarNamedColor =
   | 'anchor';
 
 /**
- * Names of the shorthand properties in AvatarProps
+ * Properties for Avatar
  */
-export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> &
+  Partial<AvatarCommons> & {
+    /**
+     * The Avatar's image. Cannot be typed as a normal slot since it should not accept any children
+     * but can accept a children render function.
+     */
+    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
+      children?: ShorthandRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
+    };
+  };
 
 /**
- * Names of AvatarProps that have a default value in useAvatar
+ * State used in rendering Avatar
  */
-export type AvatarDefaultedProps = 'shape' | 'size' | 'color' | 'activeAppearance' | 'getInitials' | 'label' | 'icon';
-
-export type AvatarState = ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> & {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-
-  /**
-   * True if the avatar has no label/initials and should render an icon
-   */
-  showIcon?: boolean;
-};
+export type AvatarState = ComponentState<AvatarSlots> &
+  AvatarCommons & {
+    /**
+     * The Avatar's color, with `'colorful'` resolved to a named color
+     */
+    color: Exclude<AvatarCommons['color'], 'colorful'>;
+  };

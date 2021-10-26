@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useBoolean, useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { clamp, useBoolean, useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SwitchState } from './Switch.types';
 
@@ -20,15 +20,7 @@ type SwitchInternalState = {
   disposables: (() => void)[];
 };
 
-/**
- * Validates that the `value` is a number and falls between the min and max.
- *
- * @param value - the value to be clamped
- * @param min - the lowest valid value
- * @param max - the highest valid value
- */
-const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value || 0));
-
+// TODO: This should be replaced with a useEvent hook
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
   element.addEventListener(eventName, callback);
@@ -37,7 +29,7 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
 
 export const useSwitchState = (state: SwitchState) => {
   const { defaultChecked = false, checked, disabled = false, onChange } = state;
-  const { onPointerDown: onPointerDownCallback, onKeyDown: onKeyDownCallback } = state.root;
+  const { onPointerDown: onPointerDownCallback, onKeyUp: onKeyUpCallback } = state.root;
 
   const { dir } = useFluent();
   const inputRef = useMergedRefs(state.input.ref);
@@ -139,14 +131,14 @@ export const useSwitchState = (state: SwitchState) => {
     [onPointerDownCallback, onPointerMove, onPointerUp, showThumbAnimation],
   );
 
-  const onKeyDown = React.useCallback(
+  const onKeyUp = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
-      onKeyDownCallback?.(ev);
+      onKeyUpCallback?.(ev);
       if (ev.key === ' ') {
         setChecked(ev, !internalState.current.internalValue);
       }
     },
-    [onKeyDownCallback, setChecked],
+    [onKeyUpCallback, setChecked],
   );
 
   const currentPosition = renderedPosition !== undefined ? renderedPosition : currentValue ? 100 : 0;
@@ -167,7 +159,7 @@ export const useSwitchState = (state: SwitchState) => {
   state.root.style = rootStyles;
   if (!disabled) {
     state.root.onPointerDown = onPointerDown;
-    state.root.onKeyDown = onKeyDown;
+    state.root.onKeyUp = onKeyUp;
   }
 
   // Input Props

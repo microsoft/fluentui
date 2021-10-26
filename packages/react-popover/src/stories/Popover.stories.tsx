@@ -14,6 +14,23 @@ export { InternalUpdateContent } from './PopoverInternalUpdateContent.stories';
 export default {
   title: 'Components/Popover',
   component: Popover,
+  argTypes: {
+    positioning: {
+      control: {
+        disable: true,
+      },
+    },
+    defaultOpen: {
+      control: {
+        disable: true,
+      },
+    },
+    mountNode: {
+      control: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     docs: {
       description: {

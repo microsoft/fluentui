@@ -5,7 +5,7 @@ import { FocusTrapZonePageProps } from '@fluentui/react-examples/lib/react/Focus
 
 export const FocusTrapZonePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/FocusTrapZone.page.json')}
+    jsonDocs={require('../../../dist/api/react/FocusTrapZone.page.json')}
     {...{ ...FocusTrapZonePageProps, ...props }}
   />
 );

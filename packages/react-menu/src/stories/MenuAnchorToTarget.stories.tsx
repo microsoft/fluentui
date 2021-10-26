@@ -50,7 +50,7 @@ AnchorToCustomTarget.parameters = {
   docs: {
     description: {
       story: [
-        'A Menu can be used without a trigger and anchored to a any DOM element. This can be useful if',
+        'A Menu can be used without a trigger and anchored to any DOM element. This can be useful if',
         'a Menu instance needs to be reused in different places.',
         '',
         '_Not using a MenuTrigger will require more work to make sure your scenario is accessible_',
