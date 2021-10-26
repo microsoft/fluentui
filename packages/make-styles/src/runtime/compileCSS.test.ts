@@ -117,10 +117,10 @@ describe('compileCSS', () => {
           value: 'red',
         }),
       ).toMatchInlineSnapshot(`
-              Array [
-                "body .foo{color:red;}",
-              ]
-          `);
+      Array [
+        "body .foo{color:red;}",
+      ]
+    `);
       expect(
         compileCSS({
           ...defaultOptions,
@@ -129,10 +129,10 @@ describe('compileCSS', () => {
           value: 'red',
         }),
       ).toMatchInlineSnapshot(`
-              Array [
-                "body .foo{color:red;}",
-              ]
-          `);
+      Array [
+        "body .foo{color:red;}",
+      ]
+    `);
     });
 
     it('compiles global rules with RTL', () => {
@@ -147,11 +147,11 @@ describe('compileCSS', () => {
           rtlValue: '10px',
         }),
       ).toMatchInlineSnapshot(`
-              Array [
-                "body .foo{padding-left:10px;}",
-                "body .rtl-foo{padding-right:10px;}",
-              ]
-          `);
+      Array [
+        "body .foo{padding-left:10px;}",
+        "body .rtl-foo{padding-right:10px;}",
+      ]
+    `);
     });
   });
 });
