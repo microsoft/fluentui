@@ -2,6 +2,7 @@ import * as rootPreview from '../../../.storybook/preview';
 
 // load global styles
 import '../public/intro.css';
+import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 
 /** @type {NonNullable<typeof rootPreview.parameters['options']>} */
 const options = {
@@ -24,4 +25,11 @@ const options = {
 export const decorators = [...rootPreview.decorators];
 
 /** @type {typeof rootPreview.parameters} */
-export const parameters = { ...rootPreview.parameters, options };
+export const parameters = {
+  ...rootPreview.parameters,
+  /** @type {import('@storybook/react').Parameters['docs']} */
+  docs: {
+    container: FluentDocsContainer,
+  },
+  options,
+};
