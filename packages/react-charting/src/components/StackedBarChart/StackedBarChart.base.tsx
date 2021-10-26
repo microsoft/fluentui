@@ -154,12 +154,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   ) : (
                     <ChartHoverCard
                       Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-                      YValue={
-                        this.state.yCalloutValue
-                          ? this.state.yCalloutValue
-                          : convertToLocaleString(this.state.dataForHoverCard, culture)
-                      }
+                      YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
                       color={this.state.color}
+                      culture={this.props.culture}
                     />
                   )}
                 </>

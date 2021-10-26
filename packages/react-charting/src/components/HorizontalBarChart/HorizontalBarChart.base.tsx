@@ -145,6 +145,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
                 YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
                 color={this.state.lineColor}
+                culture={this.props.culture}
               />
             )}
           </>
@@ -283,7 +284,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       if (value < 1) {
         return <React.Fragment key={index}> </React.Fragment>;
       }
-      const xValue = convertToLocaleString(point.horizontalBarChartdata!.x, this.props.culture);
+      const xValue = point.horizontalBarChartdata!.x;
       return (
         <rect
           key={index}
