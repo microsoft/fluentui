@@ -10,7 +10,6 @@ import { makeStyles } from '@fluentui/react-make-styles';
 const useStyles = makeStyles({
   root: theme => ({
     padding: '10px',
-    fontFamily: theme.fontFamilyBase,
     background: theme.colorNeutralBackground1,
   }),
 });
