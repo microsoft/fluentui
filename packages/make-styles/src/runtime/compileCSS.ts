@@ -19,8 +19,21 @@ export interface CompileCSSOptions {
   rtlValue?: number | string;
 }
 
+const PSEUDO_SELECTOR_REGEX = /,( *[^ &])/g;
+
 function repeatSelector(selector: string, times: number) {
   return new Array(times + 2).join(selector);
+}
+
+/**
+ * Normalizes pseudo selectors to always contain &, requires to work properly with comma-separated selectors.
+ *
+ * @example
+ *   ":hover" => "&:hover"
+ *   " :hover" => "& :hover"
+ */
+export function normalizePseudoSelector(pseudoSelector: string): string {
+  return '&' + normalizeNestedProperty(pseudoSelector.replace(PSEUDO_SELECTOR_REGEX, ',&$1'));
 }
 
 export function compileCSSRules(cssRules: string): string[] {
@@ -86,10 +99,12 @@ export function compileCSS(options: CompileCSSOptions): [string /* ltr definitio
 
     cssRule = `${globalSelector} { ${ltrRule}; ${rtlRule} }`;
   } else {
-    cssRule = `${classNameSelector}${pseudo} ${cssDeclaration};`;
+    const normalizedPseudo = normalizePseudoSelector(pseudo);
+
+    cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
 
     if (rtlProperty) {
-      cssRule = `${cssRule}; ${rtlClassNameSelector}${pseudo} ${rtlCSSDeclaration};`;
+      cssRule = `${cssRule}; ${rtlClassNameSelector}${normalizedPseudo} ${rtlCSSDeclaration};`;
     }
   }
 

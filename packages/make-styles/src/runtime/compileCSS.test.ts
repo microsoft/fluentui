@@ -1,4 +1,4 @@
-import { compileCSS, CompileCSSOptions } from './compileCSS';
+import { compileCSS, CompileCSSOptions, normalizePseudoSelector } from './compileCSS';
 
 const defaultOptions: Pick<
   CompileCSSOptions,
@@ -117,10 +117,10 @@ describe('compileCSS', () => {
           value: 'red',
         }),
       ).toMatchInlineSnapshot(`
-      Array [
-        "body .foo{color:red;}",
-      ]
-    `);
+              Array [
+                "body .foo{color:red;}",
+              ]
+          `);
       expect(
         compileCSS({
           ...defaultOptions,
@@ -129,10 +129,10 @@ describe('compileCSS', () => {
           value: 'red',
         }),
       ).toMatchInlineSnapshot(`
-      Array [
-        "body .foo{color:red;}",
-      ]
-    `);
+              Array [
+                "body .foo{color:red;}",
+              ]
+          `);
     });
 
     it('compiles global rules with RTL', () => {
@@ -147,11 +147,34 @@ describe('compileCSS', () => {
           rtlValue: '10px',
         }),
       ).toMatchInlineSnapshot(`
-      Array [
-        "body .foo{padding-left:10px;}",
-        "body .rtl-foo{padding-right:10px;}",
-      ]
-    `);
+              Array [
+                "body .foo{padding-left:10px;}",
+                "body .rtl-foo{padding-right:10px;}",
+              ]
+          `);
     });
+  });
+});
+
+describe('normalizePseudoSelector', () => {
+  it('handles basic ', () => {
+    expect(normalizePseudoSelector(':hover')).toMatchInlineSnapshot(`"&:hover"`);
+  });
+
+  it('handles spacing', () => {
+    expect(normalizePseudoSelector(' :hover')).toMatchInlineSnapshot(`"& :hover"`);
+  });
+
+  it('handles multiple pseudos', () => {
+    expect(normalizePseudoSelector('& :hover, & :focus')).toMatchInlineSnapshot(`"& :hover, & :focus"`);
+  });
+
+  it('handles multiple pseudos', () => {
+    expect(normalizePseudoSelector(':focus:hover')).toMatchInlineSnapshot(`"&:focus:hover"`);
+  });
+
+  it('handles multiple with comma', () => {
+    expect(normalizePseudoSelector(':focus,:hover')).toMatchInlineSnapshot(`"&:focus,&:hover"`);
+    expect(normalizePseudoSelector(':focus, :hover')).toMatchInlineSnapshot(`"&:focus,& :hover"`);
   });
 });
