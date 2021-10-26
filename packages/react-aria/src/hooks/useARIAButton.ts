@@ -95,10 +95,10 @@ export function useARIAButton<Required extends boolean = false>(
     // If an <a> tag is to be rendered we have to remove disabled and set aria-disabled, role and tabIndex.
     else {
       delete shorthandProps.disabled;
+      shorthandProps['aria-disabled'] = disabled || disabledFocusable;
       shorthandProps.onClick = onClickHandler;
       shorthandProps.onKeyDown = onKeyDownHandler;
       shorthandProps.onKeyUp = onKeyupHandler;
-      shorthandProps['aria-disabled'] = disabled || disabledFocusable;
       shorthandProps.role = shorthandProps.role ?? 'button';
       shorthandProps.tabIndex = disabled && !disabledFocusable ? undefined : tabIndex ?? 0;
     }
