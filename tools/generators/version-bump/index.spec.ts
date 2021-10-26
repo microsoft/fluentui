@@ -16,9 +16,9 @@ const noop = () => null;
 describe('version-string-replace generator', () => {
   let tree: Tree;
   const defaultTestOptions = {
-    bumpType: 'prerelease' as VersionBumpGeneratorSchema['bumpType'],
+    bumpType: 'prerelease',
     prereleaseTag: 'beta',
-  };
+  } as const;
 
   beforeEach(() => {
     jest.restoreAllMocks();
