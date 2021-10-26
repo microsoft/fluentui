@@ -58,15 +58,27 @@ _Describe visual or functional variants of this control, if applicable. For exam
 
 ### Horizonal
 
+![Horizontal group](./etc/images/horizontal-group.png)
+
 ### Horizonal stacked
+
+![Horizontal group - stacked](./etc/images/horizontal-group-stacked.png)
 
 ### Vertical
 
+![Vertical group](./etc/images/vertical-group.png)
+
 ### Vertical with input
+
+![Vertical group with input](./etc/images/vertical-group-with-input.png)
 
 ### Vertical with dropdown
 
+![Vertical group with dropdown](./etc/images/vertical-group-with-dropdown.png)
+
 ### Vertical with subtext
+
+![Vertical group with subtext](./etc/images/vertical-group-with-subtext.png)
 
 ## API
 
@@ -112,6 +124,21 @@ const items = [
 ]
 
 <Radio items={items} name="pref" label="Choose your preference?" />
+```
+
+```jsx
+//Options as a prop
+const items = [
+  {text: 'chocolate', key: 'optio1'},
+  {text: 'strawberry', key:'option2'},
+  {text: 'mango', key:'option3'}
+]
+
+<Radio name="pref" label="Choose your preference?">
+  {items.map(
+    ({ key, text }) => <RadioItem key={key}>{text}</RadioItem>
+  )}
+</Radio>
 ```
 
 ```tsx
