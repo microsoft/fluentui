@@ -116,24 +116,32 @@ Block.parameters = {
   },
 };
 
+const onClick = () => {
+  alert('no');
+};
+
 export const Disabled = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
 
   return (
     <>
       <div style={groupStyles}>
-        <Button>Default</Button>
-        <Button disabled>Disabled</Button>
-        <Button disabledFocusable>Disabled focusable</Button>
+        <Button onClick={onClick}>Default</Button>
+        <Button disabled onClick={onClick}>
+          Disabled
+        </Button>
+        <Button disabledFocusable onClick={onClick}>
+          Disabled focusable
+        </Button>
       </div>
       <div style={groupStyles}>
-        <Button appearance="primary" icon={<CalendarMonth24Regular />}>
+        <Button onClick={onClick} appearance="primary" icon={<CalendarMonth24Regular />}>
           Primary
         </Button>
-        <Button appearance="primary" disabled icon={<CalendarMonth24Regular />}>
+        <Button onClick={onClick} appearance="primary" disabled icon={<CalendarMonth24Regular />}>
           Primary disabled
         </Button>
-        <Button appearance="primary" disabledFocusable>
+        <Button onClick={onClick} appearance="primary" disabledFocusable>
           Primary disabled focusable
         </Button>
       </div>

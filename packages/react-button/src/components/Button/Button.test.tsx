@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ReactWrapper, mount } from 'enzyme';
-import * as renderer from 'react-test-renderer';
+import { fireEvent, render } from '@testing-library/react';
 import {
   buttonAccessibilityBehaviorDefinition,
   // buttonBehaviorDefinition,
@@ -12,14 +11,7 @@ import { Button } from './Button';
 import { ButtonProps } from './Button.types';
 
 describe('Button', () => {
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
-  });
+  const testId = 'test-button';
 
   isConformant({
     Component: Button as React.FunctionComponent<ButtonProps>,
@@ -38,26 +30,13 @@ describe('Button', () => {
   });
 
   it('renders a default button', () => {
-    const component = renderer.create(<Button>This is a button</Button>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const component = render(<Button>This is a button</Button>);
+    expect(component.container).toMatchSnapshot();
   });
-
-  // it('renders as an anchor when href is provided', () => {
-  //   wrapper = mount(<Button href="https://www.bing.com">This is a button</Button>);
-  //   const button = wrapper.find('button');
-  //   const anchor = wrapper.find('a');
-  //   expect(button.length).toBe(0);
-  //   expect(anchor.length).toBe(1);
-
-  //   const tree = anchor.debug();
-  //   expect(tree).toMatchSnapshot();
-  // });
 
   it('can be focused', () => {
     const rootRef = React.createRef<HTMLButtonElement>();
-
-    wrapper = mount(<Button ref={rootRef}>This is a button</Button>);
+    render(<Button ref={rootRef}>This is a button</Button>);
 
     expect(typeof rootRef.current).toEqual('object');
     expect(document.activeElement).not.toEqual(rootRef.current);
@@ -67,56 +46,74 @@ describe('Button', () => {
     expect(document.activeElement).toEqual(rootRef.current);
   });
 
-  // it('can be focused when rendered as an anchor', () => {
-  //   const rootRef = React.createRef<HTMLButtonElement>();
-
-  //   wrapper = mount(
-  //     <Button href="https://www.bing.com" ref={rootRef}>
-  //       This is a button
-  //     </Button>,
-  //   );
-
-  //   expect(typeof rootRef.current).toEqual('object');
-  //   expect(document.activeElement).not.toEqual(rootRef.current);
-
-  //   rootRef.current?.focus();
-
-  //   expect(document.activeElement).toEqual(rootRef.current);
-  // });
-
   it('can trigger a function by being clicked', () => {
     const onClick = jest.fn();
-    wrapper = mount(<Button onClick={onClick}>This is a button</Button>);
+    const component = render(
+      <Button data-testid={testId} onClick={onClick}>
+        This is a button
+      </Button>,
+    );
 
-    wrapper.find('button').simulate('click');
+    fireEvent.click(component.getByTestId(testId));
 
     expect(onClick).toHaveBeenCalled();
   });
 
   it('does not trigger a function by being clicked when button is disabled', () => {
     const onClick = jest.fn();
-    wrapper = mount(
-      <Button disabled onClick={onClick}>
+    const component = render(
+      <Button data-testid={testId} disabled onClick={onClick}>
         This is a button
       </Button>,
     );
 
-    wrapper.find('button').simulate('click');
+    fireEvent.click(component.getByTestId(testId));
 
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  // it(`does not trigger a function by being clicked when button is disabled, even when disabledFocusable has been
-  //     provided`, () => {
-  //   const onClick = jest.fn();
-  //   wrapper = mount(
-  //     <Button disabled disabledFocusable onClick={onClick}>
-  //       This is a button
-  //     </Button>,
-  //   );
+  it('does not trigger a function by being clicked when button is disabled and focusable', () => {
+    const onClick = jest.fn();
+    const component = render(
+      <Button data-testid={testId} disabledFocusable onClick={onClick}>
+        This is a button
+      </Button>,
+    );
 
-  //   wrapper.find('button').simulate('click');
+    fireEvent.click(component.getByTestId(testId));
 
-  //   expect(onClick).not.toHaveBeenCalled();
-  // });
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  describe('when rendered as an anchor', () => {
+    it('renders correctly', () => {
+      const component = render(
+        <Button data-testid={testId} as="a" href="https://www.bing.com">
+          This is a button
+        </Button>,
+      );
+
+      const button = component.getByTestId(testId);
+      expect(button.tagName).toBe('A');
+
+      expect(component.container).toMatchSnapshot();
+    });
+
+    it('can be focused', () => {
+      const rootRef = React.createRef<HTMLAnchorElement>();
+
+      render(
+        <Button href="https://www.bing.com" ref={rootRef}>
+          This is a button
+        </Button>,
+      );
+
+      expect(typeof rootRef.current).toEqual('object');
+      expect(document.activeElement).not.toEqual(rootRef.current);
+
+      rootRef.current?.focus();
+
+      expect(document.activeElement).toEqual(rootRef.current);
+    });
+  });
 });
