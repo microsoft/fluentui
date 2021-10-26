@@ -166,14 +166,11 @@ describe('normalizePseudoSelector', () => {
   });
 
   it('handles multiple pseudos', () => {
-    expect(normalizePseudoSelector('& :hover, & :focus')).toMatchInlineSnapshot(`"& :hover, & :focus"`);
-  });
-
-  it('handles multiple pseudos', () => {
     expect(normalizePseudoSelector(':focus:hover')).toMatchInlineSnapshot(`"&:focus:hover"`);
   });
 
-  it('handles multiple with comma', () => {
+  it('handles comma separated pseudos', () => {
+    expect(normalizePseudoSelector('& :hover, & :focus')).toMatchInlineSnapshot(`"& :hover, & :focus"`);
     expect(normalizePseudoSelector(':focus,:hover')).toMatchInlineSnapshot(`"&:focus,&:hover"`);
     expect(normalizePseudoSelector(':focus, :hover')).toMatchInlineSnapshot(`"&:focus,& :hover"`);
   });
