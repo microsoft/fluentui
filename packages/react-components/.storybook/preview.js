@@ -27,7 +27,6 @@ export const decorators = [...rootPreview.decorators];
 /** @type {typeof rootPreview.parameters} */
 export const parameters = {
   ...rootPreview.parameters,
-  /** @type {import('@storybook/react').Parameters['docs']} */
   docs: {
     container: FluentDocsContainer,
   },

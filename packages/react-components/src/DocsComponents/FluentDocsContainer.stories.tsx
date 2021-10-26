@@ -9,6 +9,7 @@ export const FluentDocsContainer = ({ children, context }: DocsContainerProps & 
   return (
     <>
       <FluentDocsHeader />
+      {/** TODO add table of contents */}
       <DocsContainer context={context}>{children}</DocsContainer>
     </>
   );
