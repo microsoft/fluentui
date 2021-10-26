@@ -101,12 +101,21 @@ function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog
 }
 
 function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpType'], prereleaseTag?: string) {
+  if (bumpType === 'nightly') {
+    packageJson.version = '0.0.0-empty'; // initialize the prerelease tag so that prerelease doesn't bump to 0.0.1
+  }
+
   const semverVersion = semver.parse(packageJson.version);
   if (!semverVersion) {
     throw new Error(`Cannot parse version ${packageJson.version} of ${packageJson.name}`);
   }
 
-  semverVersion.inc(bumpType, prereleaseTag);
+  if (bumpType === 'nightly') {
+    semverVersion.inc('prerelease', prereleaseTag);
+  } else {
+    semverVersion.inc(bumpType, prereleaseTag);
+  }
+
   return semverVersion.version;
 }
 
@@ -147,7 +156,16 @@ function normalizeOptions(host: Tree, options: ValidatedSchema) {
   };
 }
 
-export const validbumpTypes = ['prerelease', 'major', 'premajor', 'minor', 'preminor', 'patch', 'prepatch'] as const;
+export const validbumpTypes = [
+  'prerelease',
+  'major',
+  'premajor',
+  'minor',
+  'preminor',
+  'patch',
+  'prepatch',
+  'nightly',
+] as const;
 
 interface ValidatedSchema extends Required<VersionBumpGeneratorSchema> {
   bumpType: typeof validbumpTypes[number];
