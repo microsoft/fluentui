@@ -43,7 +43,6 @@
     "@storybook/addons": "^6.0.28"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

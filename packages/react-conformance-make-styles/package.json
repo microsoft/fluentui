@@ -31,7 +31,6 @@
     "tslib": "^2.1.0"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",
