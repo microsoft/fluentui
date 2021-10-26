@@ -137,4 +137,16 @@ describe('Pivot', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+  it('passes aria-label and aria-labelledby to tablist', () => {
+    const wrapper = mount(
+      <Pivot aria-label="test label" aria-labelledby="testID" data-foo="not passed to tablist">
+        <PivotItem headerText="Test Link 1" />
+        <PivotItem headerText="" />
+      </Pivot>,
+    );
+    const tablistElement = wrapper.find('div[role="tablist"]');
+    expect(tablistElement.prop('aria-label')).toBe('test label');
+    expect(tablistElement.prop('aria-labelledby')).toBe('testID');
+    expect(tablistElement.prop('data-foo')).toBeUndefined();
+  });
 });
