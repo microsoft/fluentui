@@ -31,9 +31,18 @@ function repeatSelector(selector: string, times: number) {
  * @example
  *   ":hover" => "&:hover"
  *   " :hover" => "& :hover"
+ *   ":hover,:focus" => "&:hover,&:focus"
+ *   " :hover, :focus" => "& :hover,& :focus"
  */
 export function normalizePseudoSelector(pseudoSelector: string): string {
-  return '&' + normalizeNestedProperty(pseudoSelector.replace(PSEUDO_SELECTOR_REGEX, ',&$1'));
+  return (
+    '&' +
+    normalizeNestedProperty(
+      // Regex there replaces a comma, spaces and an ampersand if it's present with comma and an ampersand.
+      // This allows to normalize input, see examples in JSDoc.
+      pseudoSelector.replace(PSEUDO_SELECTOR_REGEX, ',&$1'),
+    )
+  );
 }
 
 export function compileCSSRules(cssRules: string): string[] {
