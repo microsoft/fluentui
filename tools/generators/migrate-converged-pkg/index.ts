@@ -683,7 +683,7 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   if (shouldAddMakeStylesPlugin) {
     const babelMakeStylesProject = getProjectConfig(tree, { packageName: babelMakeStylesProjectName });
     const babelMakeStylesPkgJson: PackageJson = readJson(tree, babelMakeStylesProject.paths.packageJson);
-    pkgJson.devDependencies[babelMakeStylesProjectName] = `^${babelMakeStylesPkgJson.version}`;
+    pkgJson.devDependencies[babelMakeStylesProjectName] = `${babelMakeStylesPkgJson.version}`;
   } else {
     delete pkgJson.devDependencies[babelMakeStylesProjectName];
   }

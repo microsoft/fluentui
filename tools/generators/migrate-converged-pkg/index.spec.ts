@@ -890,7 +890,7 @@ describe('migrate-converged-pkg generator', () => {
           '@babel/transform-react-pure-annotations',
         ],
       });
-      expect(devDeps[babelMakeStylesPkg]).toBe('^9.0.0-alpha.0');
+      expect(devDeps[babelMakeStylesPkg]).toBe('9.0.0-alpha.0');
     });
 
     it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
