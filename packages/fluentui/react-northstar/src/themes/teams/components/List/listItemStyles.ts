@@ -36,9 +36,7 @@ const selectedStyle = variables => ({
 
 export const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables,
-    });
+    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables, borderRadius: 0 });
 
     return {
       display: 'flex',

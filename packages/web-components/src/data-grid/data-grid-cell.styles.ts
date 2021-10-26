@@ -11,8 +11,8 @@ import {
   controlCornerRadius,
   designUnit,
   focusStrokeOuter,
+  focusStrokeWidth,
   neutralForegroundRest,
-  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
@@ -30,8 +30,9 @@ export const dataGridCellStyles: (
       font-size: ${typeRampBaseFontSize};
       line-height: ${typeRampBaseLineHeight};
       font-weight: 400;
-      border: transparent calc(${strokeWidth} * 1px) solid;
+      border: transparent calc(${focusStrokeWidth} * 1px) solid;
       overflow: hidden;
+      outline: none;
       white-space: nowrap;
       border-radius: calc(${controlCornerRadius} * 1px);
     }
@@ -41,8 +42,7 @@ export const dataGridCellStyles: (
     }
 
     :host(:${focusVisible}) {
-      border: ${focusStrokeOuter} calc(${strokeWidth} * 1px) solid;
-      color: ${neutralForegroundRest};
+      border-color: ${focusStrokeOuter};
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(

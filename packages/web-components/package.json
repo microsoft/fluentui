@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "1.6.2",
+  "version": "2.0.0",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -18,9 +18,6 @@
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
-  "beachball": {
-    "disallowedChangeTypes": []
-  },
   "scripts": {
     "clean": "node ./build/clean.js dist",
     "doc": "api-extractor run --local",
@@ -92,7 +89,7 @@
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-element": "^1.6.0",
-    "@microsoft/fast-foundation": "^2.20.0",
+    "@microsoft/fast-foundation": "^2.23.0",
     "@microsoft/fast-web-utilities": "^5.0.0",
     "tslib": "^1.13.0"
   }
