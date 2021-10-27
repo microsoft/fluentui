@@ -37,20 +37,18 @@ ${display("block")} :host {
   line-height: ${typeRampBaseLineHeight};
   color: ${neutralForegroundRest};
   width: 300px;
+  text-align: center;
 }
 
 .title {
-  font-size: ${typeRampBaseFontSize};
-  line-height: ${typeRampBaseLineHeight};
   padding: calc(${designUnit} * 1px);
-  text-align: center;
 }
 
 .week-days,
 .week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  border-bottom: none;
+  border: none;
   padding: 0;
 }
 
@@ -59,28 +57,17 @@ ${display("block")} :host {
   padding: calc(${designUnit} * 1px);
 }
 
-.week-day {
-  text-align: center;
-}
-
 .day {
   box-sizing: border-box;
-  vertical-align: top;
-  outline-offset: -1px;
-  line-height: var(--cell-line-height);
-  white-space: normal;
   min-height: calc(${heightNumber} * 1px);
-  margin-bottom: calc(var(--design-unit) * 1px);
+  margin-bottom: calc(${designUnit} * 1px);
 }
 
 .interact .day {
   cursor: pointer;
 }
 
-.day.inactive .date {
-  opacity: ${disabledOpacity};
-}
-
+.day.inactive .date,
 .day.disabled .date {
   opacity: ${disabledOpacity};
 }
@@ -93,15 +80,13 @@ ${display("block")} :host {
 .selected + .selected {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left-width: calc(${controlCornerRadius} - var(--strokeWidth));
+  border-left-width: calc(${controlCornerRadius} * 1px);
   margin-left: calc(${controlCornerRadius} * -1px);
 }
 
 .date {
   padding: calc(${designUnit} * 1px);
-  text-align: center;
   max-width: ${typeRampBaseLineHeight};
-  margin: 0 auto;
 }
 
 .interact .today .date,
