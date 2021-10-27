@@ -3,7 +3,7 @@
 exports[`LargeTitle renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-LargeTitle fui-Text"
   >
     Default LargeTitle
   </span>
