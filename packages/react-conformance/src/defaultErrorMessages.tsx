@@ -586,6 +586,56 @@ export const defaultErrorMessages = {
     });
   },
 
+  'component-has-static-classname-at-root': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    classNames: string,
+  ) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, failedError } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `does not have default className (${testErrorInfo(componentClassName)}).`,
+      details: [`After render it has following classes:`, `    ${failedError(`className='${classNames}'`)}`],
+      suggestions: [
+        `Ensure that your component has default className and it is ${resolveInfo('merged')} with defaults.`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classname-exported': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    exportName: string,
+  ) => {
+    const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
+
+    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
+    const indexFile = path.join(rootPath, 'src', 'index.ts');
+
+    const constantValue = `export const ${exportName} = "${componentClassName}";`;
+
+    return getErrorMessage({
+      displayName,
+      overview: `does not have an export for className constant (${testErrorInfo(
+        exportName,
+      )}) in: ${EOL}${testErrorPath(indexFile)}.`,
+      suggestions: [
+        `Make sure that your component's ${resolveInfo('index.ts')} file`,
+        `or a file with styles hook contains \`${resolveInfo(constantValue)}\``,
+        `Check if your component is internal and consider enabling ${resolveInfo(
+          'isInternal',
+        )} in your isConformant test.`,
+      ],
+      error,
+    });
+  },
+
   'as-renders-html': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName } = testInfo;
     const { resolveInfo } = errorMessageColors;
