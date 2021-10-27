@@ -235,10 +235,6 @@
       "projectType": "library",
       "sourceRoot": "packages/react-components/src"
     },
-    "@fluentui/react-compose": {
-      "root": "packages/react-compose",
-      "projectType": "library"
-    },
     "@fluentui/react-conformance": {
       "root": "packages/react-conformance",
       "projectType": "library"
