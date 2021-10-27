@@ -29,11 +29,9 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
   >
     Last onLinkClick from: 
   </label>
-  <div
-    aria-label="OnChange Pivot Example"
-    role="toolbar"
-  >
+  <div>
     <div
+      aria-label="OnChange Pivot Example"
       className=
           ms-FocusZone
           ms-Pivot
