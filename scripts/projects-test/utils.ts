@@ -1,4 +1,4 @@
-import * as tmp from 'tmp';
+import tmp from 'tmp';
 // note: there's nothing gulp-specific about this utility, it just runs commands
 import sh from '../gulp/sh';
 

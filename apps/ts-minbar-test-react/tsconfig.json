@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "lib": ["es5", "dom"],
-    "target": "es5",
-    "moduleResolution": "node",
     "noEmit": true,
+    "lib": ["es2018"],
+    "target": "es2018",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "strict": true,
-    "types": ["node"]
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"]
 }

@@ -3,8 +3,8 @@ import Project from '@lerna/project';
 //@ts-ignore
 import PackageGraph from '@lerna/package-graph';
 import sh from '../gulp/sh';
-import * as fs from 'fs-extra';
-import * as path from 'path';
+import fs from 'fs-extra';
+import path from 'path';
 
 import { createTempDir } from './utils';
 
