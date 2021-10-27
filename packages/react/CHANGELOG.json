@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 27 Oct 2021 07:29:16 GMT",
+      "tag": "@fluentui/react_v8.37.4",
+      "version": "8.37.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6f07e52e76aae9e2ae7e59ede73f9265a36b9970",
+            "comment": "Remove incorrect toolbar role from Pivot and pass accname attributes to the tablist"
+          },
+          {
+            "author": "34309778+sgbdev@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "fe4563c46b374c9c4d5543d501cd50cc4a629146",
+            "comment": "ComboBox: Fix hidden options in multiSelect mode"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Oct 2021 07:39:42 GMT",
       "tag": "@fluentui/react_v8.37.3",
       "version": "8.37.3",
