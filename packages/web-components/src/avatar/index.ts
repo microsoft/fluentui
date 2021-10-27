@@ -1,18 +1,10 @@
 import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { attr } from '@microsoft/fast-element';
-import {
-  AvatarOptions,
-  DesignToken,
-  Avatar as FoundationAvatar,
-  avatarTemplate as template,
-} from '@microsoft/fast-foundation';
+import { AvatarOptions, Avatar as FoundationAvatar, avatarTemplate as template } from '@microsoft/fast-foundation';
 import { accentPalette } from '../design-tokens';
 import { SwatchRGB } from '../color/swatch';
 import { PaletteRGB } from '../color/palette';
 import { avatarStyles as styles } from './avatar.styles';
-
-/** @public */
-export const avatarSize = DesignToken.create<number>('avatar-size').withDefault(32);
 
 /**
  * Avatar appearances
@@ -87,3 +79,4 @@ export const fluentAvatar = Avatar.compose<AvatarOptions>({
  * @public
  */
 export const avatarStyles = styles;
+export { avatarSize } from './avatar.styles';

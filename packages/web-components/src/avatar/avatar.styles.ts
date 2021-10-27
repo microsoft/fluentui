@@ -2,6 +2,7 @@ import { css, ElementStyles } from "@microsoft/fast-element";
 import {
     AvatarOptions,
     Badge,
+    DesignToken,
     display,
     ElementDefinitionContext,
     focusVisible,
@@ -21,7 +22,6 @@ import {
     typeRampBaseLineHeight,
 } from "../design-tokens";
 import { DirectionalStyleSheetBehavior } from "../styles";
-import { avatarSize } from "./index";
 
 const rtl = (context, definition) => css`
     ::slotted(${context.tagFor(Badge)}) {
@@ -34,6 +34,8 @@ const ltr = (context, definition) => css`
         right: 0;
     }
 `;
+
+export const avatarSize = DesignToken.create<number>('avatar-size').withDefault(32);
 
 export const avatarStyles: (
     context: ElementDefinitionContext,
