@@ -23,6 +23,33 @@ export interface FluentStoryContext extends StoryContext {
     globals: FluentGlobals;
 }
 
+// @public (undocumented)
+export const themes: readonly [{
+    readonly id: "web-light";
+    readonly label: "Web Light";
+    readonly theme: Theme;
+}, {
+    readonly id: "web-dark";
+    readonly label: "Web Dark";
+    readonly theme: Theme;
+}, {
+    readonly id: "web-high-contrast";
+    readonly label: "Web High Contrast";
+    readonly theme: Theme;
+}, {
+    readonly id: "teams-light";
+    readonly label: "Teams Light";
+    readonly theme: Theme;
+}, {
+    readonly id: "teams-dark";
+    readonly label: "Teams Dark";
+    readonly theme: Theme;
+}, {
+    readonly id: "teams-high-contrast";
+    readonly label: "Teams High Contrast";
+    readonly theme: Theme;
+}];
+
 // (No @packageDocumentation comment for this package)
 
 ```
