@@ -17,9 +17,7 @@ import {
   neutralFillRest,
   neutralForegroundRest,
   typeRampBaseFontSize,
-  typeRampBaseLineHeight,
-  typeRampPlus3FontSize,
-  typeRampPlus3LineHeight
+  typeRampBaseLineHeight
 } from '../design-tokens';
 import { heightNumber } from '../styles';
 
@@ -34,13 +32,6 @@ export const calendarStyles: (
   definition: FoundationElementDefinition
 ) => css`
 ${display("block")} :host {
-  --cell-border: none;
-  --cell-height: calc(${heightNumber} * 1px);
-  --selected-day-background: ${neutralFillRest};
-  --selected-day-color: ${neutralForegroundRest};
-  --cell-padding: calc(${designUnit} * 1px);
-  --disabled-day-opacity: ${disabledOpacity};
-  --inactive-day-opacity: ${disabledOpacity};
   font-family: ${bodyFont};
   font-size: ${typeRampBaseFontSize};
   line-height: ${typeRampBaseLineHeight};
@@ -49,9 +40,9 @@ ${display("block")} :host {
 }
 
 .title {
-  font-size: ${typeRampPlus3FontSize};
-  line-height: ${typeRampPlus3LineHeight};
-  padding: var(--cell-padding);
+  font-size: ${typeRampBaseFontSize};
+  line-height: ${typeRampBaseLineHeight};
+  padding: calc(${designUnit} * 1px);
   text-align: center;
 }
 
@@ -59,21 +50,17 @@ ${display("block")} :host {
 .week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  border-left: var(--cell-border, none);
   border-bottom: none;
   padding: 0;
 }
 
 .day,
 .week-day {
-  border-bottom: var(--cell-border);
-  border-right: var(--cell-border);
-  padding: var(--cell-padding);
+  padding: calc(${designUnit} * 1px);
 }
 
 .week-day {
   text-align: center;
-  border-top: var(--cell-border);
 }
 
 .day {
@@ -82,7 +69,7 @@ ${display("block")} :host {
   outline-offset: -1px;
   line-height: var(--cell-line-height);
   white-space: normal;
-  min-height: var(--cell-height);
+  min-height: calc(${heightNumber} * 1px);
   margin-bottom: calc(var(--design-unit) * 1px);
 }
 
@@ -90,31 +77,17 @@ ${display("block")} :host {
   cursor: pointer;
 }
 
-.day.inactive {
-  background: var(--inactive-day-background);
-  color: var(--inactive-day-color);
-  outline: var(--inactive-day-outline);
-}
-
 .day.inactive .date {
-  opacity: var(--inactive-day-opacity);
-}
-
-.day.disabled {
-  background: var(--disabled-day-background);
-  color: var(--disabled-day-color);
-  cursor: ${disabledCursor};
-  outline: var(--disabled-day-outline);
+  opacity: ${disabledOpacity};
 }
 
 .day.disabled .date {
-  opacity: var(--disabled-day-opacity);
+  opacity: ${disabledOpacity};
 }
 
 .selected {
-  color: var(--selected-day-color);
-  background: var(--selected-day-background);
-  outline: var(--selected-day-outline);
+  color: ${neutralForegroundRest};
+  background: ${neutralFillRest};
 }
 
 .selected + .selected {
@@ -124,12 +97,8 @@ ${display("block")} :host {
   margin-left: calc(${controlCornerRadius} * -1px);
 }
 
-.selected + .selected:before {
-
-}
-
 .date {
-  padding: var(--cell-padding);
+  padding: calc(${designUnit} * 1px);
   text-align: center;
   max-width: ${typeRampBaseLineHeight};
   margin: 0 auto;
@@ -150,10 +119,6 @@ ${display("block")} :host {
 `.withBehaviors(
   forcedColorsStylesheetBehavior(
       css`
-          :host {
-              --selected-day-outline: 1px solid ${SystemColors.Highlight};
-          }
-
           .day,
           .week-day {
               background: ${SystemColors.Canvas};

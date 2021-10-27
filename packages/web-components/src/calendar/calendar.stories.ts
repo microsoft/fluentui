@@ -6,7 +6,7 @@ const years = new Array(9).fill(null).map((_, index) => (now.getFullYear() - 4 +
 const groupsToDates = matrix =>
   matrix.map(days => days.map(day => `${now.getMonth() + 1}-${day}-${now.getFullYear()}`));
 const disabledDates = groupsToDates([
-  [1, 2, 3, 4],
+  [1, 2, 3, 4, now.getDate()],
   [6, 7, 10, 18],
   [8, 17, 24, 25],
   [4, 11, 18, 25],

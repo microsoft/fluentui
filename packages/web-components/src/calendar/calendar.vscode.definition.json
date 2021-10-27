@@ -4,7 +4,7 @@
     {
       "name": "fluent-calendar",
       "title": "Calendar",
-      "description": "The Fluent ui calendar element",
+      "description": "Adds Fluent UI calendar element",
       "attributes": [
         {
           "name": "day-format",
