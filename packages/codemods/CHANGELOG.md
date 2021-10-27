@@ -1,8 +1,35 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Oct 2021 07:27:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.3.0)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.2.1..@fluentui/codemods_v8.3.0)
+
+### Minor changes
+
+- add new codemod to apply changes in theme for v9 beta ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by olfedias@microsoft.com)
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.2.1)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.2.0..@fluentui/codemods_v8.2.1)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.2.0)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.1.4..@fluentui/codemods_v8.2.0)
+
+### Minor changes
+
+- Use caret version for yargs ([PR #18705](https://github.com/microsoft/fluentui/pull/18705) by lingfan.gao@microsoft.com)
 
 ## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.1.4)
 

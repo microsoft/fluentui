@@ -1,5 +1,3 @@
-import { INavStyleProps, INavStyles } from './Nav.types';
-import { IButtonStyles } from '../../Button';
 import {
   AnimationClassNames,
   getFocusStyle,
@@ -8,6 +6,8 @@ import {
   HighContrastSelector,
   FontWeights,
 } from '../../Styling';
+import type { INavStyleProps, INavStyles } from './Nav.types';
+import type { IButtonStyles } from '../../Button';
 
 const GlobalClassNames = {
   root: 'ms-Nav',

@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["__fixtures__/**/code.ts", "src"],
+  "include": ["src"],
   "compilerOptions": {
     "target": "ES2015",
     "module": "CommonJS",
@@ -12,6 +12,6 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node", "babel-helper-plugin-utils"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node"]
   }
 }

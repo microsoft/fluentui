@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { initializeComponentRef, classNamesFunction } from '../../../Utilities';
-import { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
-import { TileSize } from '../Tile.types';
 import { TileLayoutSizes } from '../Tile';
 import { ShimmerGap, ShimmerElementsGroup, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
+import type { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
+import type { TileSize } from '../Tile.types';
 
 const ShimmerTileLayoutValues = {
   largeSquareWidth: 96,

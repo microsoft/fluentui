@@ -33,6 +33,7 @@ export class HorizontalScroll extends FoundationHorizontalScroll {
  */
 export const fluentHorizontalScroll = HorizontalScroll.compose<HorizontalScrollOptions>({
   baseName: 'horizontal-scroll',
+  baseClass: FoundationHorizontalScroll,
   template,
   styles,
   nextFlipper: html`

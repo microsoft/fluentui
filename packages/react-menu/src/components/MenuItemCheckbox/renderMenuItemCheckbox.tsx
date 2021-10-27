@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import { MenuItemSlots } from '../MenuItem/MenuItem.types';
 import { menuItemSlots } from '../MenuItem/index';
+import type { MenuItemCheckboxState } from './MenuItemCheckbox.types';
+import type { MenuItemSlots } from '../MenuItem/MenuItem.types';
 
 /** Function that renders the final JSX of the component  */
 export const renderMenuItemCheckbox = (state: MenuItemCheckboxState) => {

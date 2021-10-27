@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IColumn } from './DetailsList.types';
 import { DetailsColumnBase } from './DetailsColumn.base';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { ITooltipHostProps } from '../../Tooltip';
-import { IDragDropHelper } from '../../DragDrop';
-import { ICellStyleProps } from './DetailsRow.types';
-import { ITheme, IStyle } from '../../Styling';
-import { IIconProps } from '../Icon/Icon.types';
+import type { IColumn } from './DetailsList.types';
+import type { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { ITooltipHostProps } from '../../Tooltip';
+import type { IDragDropHelper } from '../../DragDrop';
+import type { ICellStyleProps } from './DetailsRow.types';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IIconProps } from '../Icon/Icon.types';
 
 /**
  * {@docgategory DetailsList}

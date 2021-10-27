@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SliderBase } from './Slider.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 /* eslint-disable deprecation/deprecation */
 

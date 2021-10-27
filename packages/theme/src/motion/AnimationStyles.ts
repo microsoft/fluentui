@@ -1,5 +1,6 @@
-import { IAnimationStyles, IAnimationVariables } from '../types/IAnimationStyles';
-import { IRawStyle, keyframes } from '@fluentui/merge-styles';
+import { keyframes } from '@fluentui/merge-styles';
+import type { IAnimationStyles, IAnimationVariables } from '../types/IAnimationStyles';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 /* Register the keyframes */
 

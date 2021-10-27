@@ -4,40 +4,53 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Input: React_2.ForwardRefExoticComponent<InputProps & React_2.RefAttributes<HTMLElement>>;
+export const Input: ForwardRefComponent<InputProps>;
 
-// @public
-export type InputDefaultedProps = never;
-
-// @public
-export interface InputProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+// @public (undocumented)
+export interface InputCommons {
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    // (undocumented)
+    inline?: boolean;
+    size?: 'small' | 'medium' | 'large';
 }
 
 // @public
-export type InputShorthandProps = never;
+export interface InputProps extends InputCommons, Omit<ComponentProps<Partial<InputSlots>>, 'children'> {
+}
 
 // @public
-export const inputShorthandProps: InputShorthandProps[];
+export const inputShorthandProps: (keyof InputSlots)[];
+
+// @public (undocumented)
+export type InputSlots = {
+    root: IntrinsicShorthandProps<'span'>;
+    input: IntrinsicShorthandProps<'input'>;
+    inputWrapper: IntrinsicShorthandProps<'span'>;
+    bookendBefore?: IntrinsicShorthandProps<'span'>;
+    bookendAfter?: IntrinsicShorthandProps<'span'>;
+    insideStart?: IntrinsicShorthandProps<'span'>;
+    insideEnd?: IntrinsicShorthandProps<'span'>;
+};
 
 // @public
-export interface InputState extends ComponentStateCompat<InputProps, InputShorthandProps, InputDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
+export interface InputState extends InputCommons, ComponentState<InputSlots> {
 }
 
 // @public
 export const renderInput: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>, defaultProps?: InputProps | undefined) => InputState;
+export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
 
 // @public
 export const useInputStyles: (state: InputState) => InputState;
-
 
 // (No @packageDocumentation comment for this package)
 

@@ -21,6 +21,7 @@ import { MenuButton, MenuButtonProps } from '../MenuButton/MenuButton';
 import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
+import { SplitButtonDivider } from './SplitButtonDivider';
 import { Ref } from '@fluentui/react-component-ref';
 import { PositioningProps, AutoSize } from '../../utils/positioner/types';
 
@@ -92,13 +93,19 @@ export interface SplitButtonProps
   /** A split button can be sized */
   size?: SizeValue;
 
+  /** A button can be elevated or flat. */
+  flat?: boolean;
+
   /** Shorthand for the toggle button. */
   toggleButton?: ShorthandValue<SplitButtonToggleProps>;
 }
 
 export const splitButtonClassName = 'ui-splitbutton';
 
-export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & { isFromKeyboard: boolean };
+export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & {
+  flat: boolean;
+  isFromKeyboard: boolean;
+};
 
 /**
  * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
@@ -122,6 +129,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     position,
     align,
     flipBoundary,
+    flat,
     overflowBoundary,
     popperRef,
     positionFixed,
@@ -160,6 +168,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     mapPropsToStyles: () => ({
       isFromKeyboard,
       size,
+      flat,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -237,6 +246,16 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
           },
         )}
 
+        {createShorthand(
+          SplitButtonDivider,
+          {},
+          {
+            defaultProps: () =>
+              getA11yProps('divider', {
+                primary,
+              }),
+          },
+        )}
         {SplitButtonToggle.create(toggleButton, {
           defaultProps: () =>
             getA11yProps('toggleButton', {
@@ -244,6 +263,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
               primary,
               secondary,
               size,
+              flat,
             }),
           overrideProps: (predefinedProps: ButtonProps) => ({
             onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
@@ -284,6 +304,7 @@ SplitButton.propTypes = {
   onOpenChange: PropTypes.func,
   open: PropTypes.bool,
   size: customPropTypes.size,
+  flat: PropTypes.bool,
   popperRef: customPropTypes.ref,
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),

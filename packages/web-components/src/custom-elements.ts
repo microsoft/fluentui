@@ -1,6 +1,7 @@
 /**
  * Export all custom element definitions
  */
+import type { Container } from '@microsoft/fast-foundation';
 import { fluentAccordion, fluentAccordionItem } from './accordion/index';
 import { fluentAnchor } from './anchor/index';
 import { fluentAnchoredRegion } from './anchored-region/index';
@@ -34,6 +35,7 @@ import { fluentSwitch } from './switch/index';
 import { fluentTab, fluentTabPanel, fluentTabs } from './tabs/index';
 import { fluentTextArea } from './text-area/index';
 import { fluentTextField } from './text-field/index';
+import { fluentToolbar } from './toolbar/index';
 import { fluentTooltip } from './tooltip/index';
 import { fluentTreeView } from './tree-view/index';
 import { fluentTreeItem } from './tree-item/index';
@@ -78,6 +80,7 @@ export {
   fluentTabPanel,
   fluentTextArea,
   fluentTextField,
+  fluentToolbar,
   fluentTooltip,
   fluentTreeView,
   fluentTreeItem,
@@ -127,7 +130,23 @@ export const allComponents = {
   fluentTabPanel,
   fluentTextArea,
   fluentTextField,
+  fluentToolbar,
   fluentTooltip,
   fluentTreeView,
   fluentTreeItem,
+  register(container?: Container, ...rest: any[]) {
+    if (!container) {
+      // preserve backward compatibility with code that loops through
+      // the values of this object and calls them as funcs with no args
+      return;
+    }
+
+    for (const key in this) {
+      if (key === 'register') {
+        continue;
+      }
+
+      this[key]().register(container, ...rest);
+    }
+  },
 };

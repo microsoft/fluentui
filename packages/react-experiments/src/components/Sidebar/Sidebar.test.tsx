@@ -6,7 +6,8 @@ import * as Enzyme from 'enzyme';
 import { getTheme } from '@fluentui/react';
 import { CommandBarButton } from '@fluentui/react/lib/Button';
 import * as React from 'react';
-import { ISidebar, ISidebarProps, Sidebar, SidebarButton } from './index';
+import { Sidebar, SidebarButton } from './index';
+import type { ISidebar, ISidebarProps } from './index';
 
 describe('Sidebar', () => {
   let sidebarButtonExampleProps: ISidebarProps;

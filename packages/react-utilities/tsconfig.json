@@ -4,7 +4,7 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "CommonJS",
-    "lib": ["es5", "dom"],
+    "lib": ["ES2015", "DOM"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
@@ -12,6 +12,7 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global", "inline-style-expand-shorthand"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand"],
+    "isolatedModules": true
   }
 }

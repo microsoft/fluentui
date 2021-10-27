@@ -4,4 +4,6 @@ export const tooltipContentVariables = (siteVars): Partial<TooltipContentVariabl
   boxShadow: undefined,
   color: siteVars.colors.black,
   backgroundColor: siteVars.colors.white,
+  subtleBackgroundColor: siteVars.colors.white,
+  subtleForegroundColor: siteVars.colors.black,
 });

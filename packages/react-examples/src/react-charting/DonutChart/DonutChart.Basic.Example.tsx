@@ -12,10 +12,8 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
       { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
     ];
 
-    const chartTitle = 'Stacked Bar chart example';
-
     const data: IChartProps = {
-      chartTitle: chartTitle,
+      chartTitle: 'Donut chart basic example',
       chartData: points,
     };
     return (

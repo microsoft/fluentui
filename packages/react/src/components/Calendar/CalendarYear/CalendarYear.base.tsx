@@ -1,5 +1,10 @@
 import * as React from 'react';
-import {
+import { KeyCodes, getRTL, classNamesFunction, css, format } from '../../../Utilities';
+import { FocusZone } from '../../../FocusZone';
+import { Icon } from '../../../Icon';
+import { usePrevious } from '@fluentui/react-hooks';
+import { defaultCalendarNavigationIcons } from '../defaults';
+import type {
   ICalendarYearStrings,
   ICalendarYearProps,
   ICalendarYearRange,
@@ -7,11 +12,7 @@ import {
   ICalendarYearStyleProps,
   ICalendarYearStyles,
 } from './CalendarYear.types';
-import { KeyCodes, getRTL, classNamesFunction, css, format, IRefObject } from '../../../Utilities';
-import { FocusZone } from '../../../FocusZone';
-import { Icon } from '../../../Icon';
-import { usePrevious } from '@fluentui/react-hooks';
-import { defaultCalendarNavigationIcons } from '../defaults';
+import type { IRefObject } from '../../../Utilities';
 
 const getClassNames = classNamesFunction<ICalendarYearStyleProps, ICalendarYearStyles>();
 

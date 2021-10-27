@@ -1,10 +1,7 @@
-import {
-  MakeStaticStyles,
-  makeStaticStyles as vanillaMakeStaticStyles,
-  MakeStaticStylesOptions,
-} from '@fluentui/make-styles';
+import { makeStaticStyles as vanillaMakeStaticStyles } from '@fluentui/make-styles';
 
 import { useRenderer } from './RendererContext';
+import type { MakeStaticStyles, MakeStaticStylesOptions } from '@fluentui/make-styles';
 
 export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStaticStyles[]) {
   const getStyles = vanillaMakeStaticStyles(styles);

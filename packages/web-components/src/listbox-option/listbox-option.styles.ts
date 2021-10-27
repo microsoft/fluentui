@@ -10,23 +10,20 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
 import {
-  accentFillActive,
-  accentFillFocus,
-  accentFillHover,
   accentFillRest,
   bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
-  focusStrokeInner,
   focusStrokeOuter,
   focusStrokeWidth,
-  foregroundOnAccentActive,
-  foregroundOnAccentFocus,
-  foregroundOnAccentHover,
-  foregroundOnAccentRest,
-  neutralFillActive,
-  neutralFillHover,
+  neutralFillSecondaryActive,
+  neutralFillSecondaryHover,
+  neutralFillSecondaryRest,
+  neutralFillStealthActive,
+  neutralFillStealthFocus,
+  neutralFillStealthHover,
+  neutralFillStealthRest,
   neutralForegroundRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -38,94 +35,107 @@ export const optionStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('inline-flex')} :host {
-        font-family: ${bodyFont};
-        border-radius: calc(${controlCornerRadius} * 1px);
-        border: calc(${focusStrokeWidth} * 1px) solid transparent;
-        box-sizing: border-box;
-        color: ${neutralForegroundRest};
-        cursor: pointer;
-        fill: currentcolor;
-        font-size: ${typeRampBaseFontSize};
-        height: calc(${heightNumber} * 1px);
-        line-height: ${typeRampBaseLineHeight};
-        margin: 0 calc(${designUnit} * 1px);
-        outline: none;
-        overflow: hidden;
-        align-items: center;
-        padding: 0 calc(${designUnit} * 2.25px);
-        user-select: none;
-        white-space: nowrap;
+      position: relative;
+      font-family: ${bodyFont};
+      background: ${neutralFillStealthRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${focusStrokeWidth} * 1px) solid transparent;
+      box-sizing: border-box;
+      color: ${neutralForegroundRest};
+      cursor: pointer;
+      fill: currentcolor;
+      font-size: ${typeRampBaseFontSize};
+      height: calc(${heightNumber} * 1px);
+      line-height: ${typeRampBaseLineHeight};
+      margin: 0 calc(${designUnit} * 1px);
+      outline: none;
+      overflow: hidden;
+      align-items: center;
+      padding: 0 calc(${designUnit} * 2.25px);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    :host::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: calc((${heightNumber} / 4) - ${focusStrokeWidth} * 1px);
+      width: 3px;
+      height: calc((${heightNumber} / 2) * 1px);
+      background: transparent;
+      border-radius: calc(${controlCornerRadius} * 1px);
+    }
+
+    :host(:not([disabled]):hover) {
+      background: ${neutralFillStealthHover};
+    }
+
+    :host(:not([disabled]):active) {
+      background: ${neutralFillStealthActive};
+    }
+
+    :host(:not([disabled]):active)::before {
+      background: ${accentFillRest};
+      height: calc(((${heightNumber} / 2) - 6) * 1px);
+    }
+
+    :host([aria-selected='true'])::before {
+      background: ${accentFillRest};
     }
 
     :host(:${focusVisible}) {
-        box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
-        border-color: ${focusStrokeOuter};
-        background: ${accentFillFocus};
-        color: ${foregroundOnAccentFocus};
+      border-color: ${focusStrokeOuter};
+      background: ${neutralFillStealthFocus};
     }
 
-    :host([aria-selected="true"]) {
-        background: ${accentFillRest};
-        color: ${foregroundOnAccentRest};
+    :host([aria-selected='true']) {
+      background: ${neutralFillSecondaryRest};
     }
 
-    :host(:hover) {
-      background: ${accentFillHover};
-      color: ${foregroundOnAccentHover};
-    }
-  
-    :host(:active) {
-        background: ${accentFillActive};
-        color: ${foregroundOnAccentActive};
+    :host(:not([disabled])[aria-selected='true']:hover) {
+      background: ${neutralFillSecondaryHover};
     }
 
-    :host(:not([aria-selected="true"]):hover) {
-        background: ${neutralFillHover};
-        color: ${neutralForegroundRest}};
+    :host(:not([disabled])[aria-selected='true']:active) {
+      background: ${neutralFillSecondaryActive};
     }
 
-    :host(:not([aria-selected="true"]):active) {
-        background: ${neutralFillActive};
-        color: ${neutralForegroundRest}};
+    :host(:not([disabled]):not([aria-selected='true']):hover) {
+      background: ${neutralFillStealthHover};
+    }
+
+    :host(:not([disabled]):not([aria-selected='true']):active) {
+      background: ${neutralFillStealthActive};
     }
 
     :host([disabled]) {
-        cursor: ${disabledCursor};
-        opacity: ${disabledOpacity};
-    }
-
-    :host([disabled]:hover) {
-        background-color: inherit;
+      cursor: ${disabledCursor};
+      opacity: ${disabledOpacity};
     }
 
     .content {
-        grid-column-start: 2;
-        justify-self: start;
-        overflow: hidden;
-        text-overflow: ellipsis;
+      grid-column-start: 2;
+      justify-self: start;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .start,
     .end,
     ::slotted(svg) {
-        display: flex;
+      display: flex;
     }
 
-    ::slotted(svg) {
-        ${/* Glyph size and margin-left is temporary - replace when adaptive typography is figured out */ ''}
-        height: calc(${designUnit} * 4px);
-        width: calc(${designUnit} * 4px);
+    ::slotted([slot='end']) {
+      margin-inline-start: 1ch;
     }
 
-    ::slotted([slot="end"]) {
-        margin-inline-start: 1ch;
+    ::slotted([slot='start']) {
+      margin-inline-end: 1ch;
     }
-
-    ::slotted([slot="start"]) {
-        margin-inline-end: 1ch;
-    }
-
-`.withBehaviors(
+  `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
         :host {

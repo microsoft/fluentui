@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.types';
-import { ISize, css } from '../../Utilities';
+import { css } from '../../Utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import { Icon } from '@fluentui/react/lib/Icon';
+import type { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.types';
+import type { ISize } from '../../Utilities';
 
 const FolderCoverStyles = FolderCoverStylesModule as any;
 const SignalStyles = SignalStylesModule as any;

@@ -1,20 +1,17 @@
 import {
   FontWeights,
-  IRawStyle,
-  ITheme,
   concatStyleSets,
   getFocusStyle,
   HighContrastSelector,
-  IStyle,
   getPlaceholderStyles,
   hiddenContentStyle,
   getInputFocusStyle,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
-import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
-
-import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
+import type { IRawStyle, ITheme, IStyle } from '../../Styling';
+import type { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
+import type { IButtonStyles } from '../../Button';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;
@@ -112,10 +109,12 @@ export const getOptionStyles = memoizeFunction(
               border: 'none',
               borderColor: 'Background',
             },
-            '&.ms-Checkbox': {
-              display: 'flex',
-              alignItems: 'center',
-            },
+            ...(!isHidden && {
+              '&.ms-Checkbox': {
+                display: 'flex',
+                alignItems: 'center',
+              },
+            }),
             '&.ms-Button--command:hover:active': {
               backgroundColor: option.backgroundPressedColor,
             },

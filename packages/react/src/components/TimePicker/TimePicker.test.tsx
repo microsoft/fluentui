@@ -3,7 +3,7 @@ import { TimePicker } from './TimePicker';
 // import { ITimeRange } from './TimePicker.types';
 // import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
-import { IComboBox } from '../ComboBox/ComboBox.types';
+import type { IComboBox } from '../ComboBox/ComboBox.types';
 
 describe('TimePicker', () => {
   // TODO: times in this snapshot test changed and failed builds

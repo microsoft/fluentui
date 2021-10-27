@@ -1,7 +1,7 @@
-import { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
-import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
-import { IStyle } from '../../Styling';
+import type { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
+import type { IButtonStyles } from '../../Button';
+import type { IStyle } from '../../Styling';
 
 const COMMAND_BAR_HEIGHT = 44;
 

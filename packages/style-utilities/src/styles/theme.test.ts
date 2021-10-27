@@ -1,6 +1,6 @@
 import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme } from './theme';
-import { IRawStyle } from '@fluentui/merge-styles';
 import { DefaultFontStyles } from './DefaultFontStyles';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 describe('registerOnThemeChangeCallback', () => {
   let callback = jest.fn();

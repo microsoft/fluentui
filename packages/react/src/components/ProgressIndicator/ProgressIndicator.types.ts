@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ProgressIndicatorBase } from './ProgressIndicator.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 
 /**
  * {@docCategory ProgressIndicator}

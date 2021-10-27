@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IRefObject } from '../../Utilities';
-import {
+import type { IRefObject } from '../../Utilities';
+import type {
   IComponent,
   IComponentStyles,
   IHTMLElementSlot,
@@ -8,8 +8,8 @@ import {
   ISlottableProps,
   IStyleableComponentProps,
 } from '@fluentui/foundation-legacy';
-import { ITextSlot } from '@fluentui/react';
-import { IIconSlot } from '../../utilities/factoryComponents.types';
+import type { ITextSlot } from '@fluentui/react';
+import type { IIconSlot } from '../../utilities/factoryComponents.types';
 
 export type ICollapsibleSectionTitleComponent = IComponent<
   ICollapsibleSectionTitleProps,

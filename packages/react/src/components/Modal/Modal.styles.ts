@@ -1,5 +1,5 @@
-import { IModalStyleProps, IModalStyles } from './Modal.types';
 import { AnimationVariables, getGlobalClassNames, ZIndexes } from '../../Styling';
+import type { IModalStyleProps, IModalStyles } from './Modal.types';
 
 export const animationDuration = AnimationVariables.durationValue2;
 

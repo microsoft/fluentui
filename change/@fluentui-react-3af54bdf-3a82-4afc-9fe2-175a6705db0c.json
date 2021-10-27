@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix openOnFocus bug with closing the dropdown, remove default tooltip text",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

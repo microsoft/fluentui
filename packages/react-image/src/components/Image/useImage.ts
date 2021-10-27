@@ -1,24 +1,29 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { ImageProps, ImageState } from './Image.types';
+import { getNativeElementProps } from '@fluentui/react-utilities';
+import type { ImageProps, ImageSlots, ImageState } from './Image.types';
 
-const mergeProps = makeMergeProps<ImageState>();
+export const imageShorthandProps: Array<keyof ImageSlots> = ['root'];
 
 /**
  * Given user props, returns state and render function for an Image.
  */
-export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps): ImageState => {
-  const resolvedRef = useMergedRefs(ref, React.useRef(null));
-  const state = mergeProps(
-    {
-      ref: resolvedRef,
-      as: 'img',
-    },
-    defaultProps,
-    resolveShorthandProps(props, []),
-  );
+export const useImage = (props: ImageProps, ref: React.Ref<HTMLImageElement>): ImageState => {
+  const { bordered, fit, block, shape = 'square', shadow } = props;
 
-  state['aria-hidden'] = state.alt || state['aria-label'] ? undefined : 'true';
+  const state: ImageState = {
+    bordered,
+    fit,
+    block,
+    shape,
+    shadow,
+    components: {
+      root: 'img',
+    },
+    root: getNativeElementProps('img', {
+      ref,
+      ...props,
+    }),
+  };
 
   return state;
 };

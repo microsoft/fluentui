@@ -1,5 +1,5 @@
-import { IRGB } from './interfaces';
 import { MAX_COLOR_RGB } from './consts';
+import type { IRGB } from './interfaces';
 
 /** Converts HSV components to an RGB color. Does not set the alpha value. */
 export function hsv2rgb(h: number, s: number, v: number): IRGB {

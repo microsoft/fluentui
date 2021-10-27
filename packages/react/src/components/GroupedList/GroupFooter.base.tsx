@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
 import { GroupSpacer } from './GroupSpacer';
-import { IGroupFooterStyleProps, IGroupFooterStyles, IGroupFooterProps } from './GroupFooter.types';
+import type { IGroupFooterStyleProps, IGroupFooterStyles, IGroupFooterProps } from './GroupFooter.types';
+
 const getClassNames = classNamesFunction<IGroupFooterStyleProps, IGroupFooterStyles>();
 
 export const GroupFooterBase: React.FunctionComponent<IGroupFooterProps> = props => {

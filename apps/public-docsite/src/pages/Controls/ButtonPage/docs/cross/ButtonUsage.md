@@ -18,7 +18,7 @@ Fluent UI React Native Buttons have default styling based on the Fluent UI Desig
 
 <img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Button/Primary_button_macos.png"/>
 
-#### Example usage (from [ButtonFocusTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Button/ButtonFocusTest.tsx))
+#### Example usage (from [ButtonFocusTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/FluentTester/TestComponents/Button/ButtonFocusTest.tsx))
 
 ```
 import * as React from 'react';

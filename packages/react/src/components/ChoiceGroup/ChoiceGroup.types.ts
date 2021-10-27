@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { IIconProps } from '../../Icon';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import {
+import type { IIconProps } from '../../Icon';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles,
   IChoiceGroupOptionProps,

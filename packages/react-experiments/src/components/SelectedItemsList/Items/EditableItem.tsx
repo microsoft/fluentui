@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ISelectedItemProps } from '../SelectedItemsList.types';
-import { ItemCanDispatchTrigger, Item } from './ItemTrigger.types';
+import type { ISelectedItemProps } from '../SelectedItemsList.types';
+import type { ItemCanDispatchTrigger, Item } from './ItemTrigger.types';
 
 export type EditingItemComponentProps<T> = {
   item: T;

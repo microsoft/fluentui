@@ -1,10 +1,9 @@
 import { IsConformantOptions } from './types';
 
 import { EOL } from 'os';
-import * as _ from 'lodash';
 import * as path from 'path';
 
-import { errorMessageColors, formatArray, getErrorMessage } from './utils/errorMessages';
+import { errorMessageColors, formatArray, getErrorMessage, formatErrors } from './utils/errorMessages';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -483,6 +482,25 @@ export const defaultErrorMessages = {
         `Rename ${resolveInfo(displayName + `'s`)} callback props to use present tense (no "ed" ending)`,
         `If the name is correct, add the prop to isConformant ${resolveInfo(
           "testOptions['consistent-callback-names'].ignoreProps",
+        )}.`,
+      ],
+    });
+  },
+
+  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: Record<string, Error>) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, resolveInfo } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: 'uses non-standard callback arguments.',
+      details: ['These callback(s) have issues:', testErrorInfo(formatErrors(invalidProps))],
+      suggestions: [
+        `Ensure that ${resolveInfo(
+          displayName + `'s`,
+        )} callbacks have two params (an event and data object) and types of arguments are correct.`,
+        `If a callback is intended to have a different signature, add the prop to isConformant ${resolveInfo(
+          "testOptions['consistent-callback-args'].ignoreProps",
         )}.`,
       ],
     });

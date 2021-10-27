@@ -1,5 +1,5 @@
-import { IWeeklyDayPickerStrings, IWeeklyDayPickerNavigationIcons } from './WeeklyDayPicker.types';
 import { DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
+import type { IWeeklyDayPickerStrings, IWeeklyDayPickerNavigationIcons } from './WeeklyDayPicker.types';
 
 export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings = {
   ...DEFAULT_CALENDAR_STRINGS,

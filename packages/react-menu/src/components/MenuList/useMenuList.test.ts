@@ -72,7 +72,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
       result.current.setFocusByFirstCharacter(createEvent(current.textContent), current);
 
       // Assert
@@ -88,7 +88,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
       result.current.setFocusByFirstCharacter(createEvent('d'), current);
 
       // Assert
@@ -127,11 +127,14 @@ describe('useMenuList', () => {
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
-      state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked);
+      act(() => state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked));
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-      expect(state.onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), name, expectedResult);
+      expect(state.onCheckedValueChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ name, checkedItems: expectedResult }),
+      );
     });
   });
 
@@ -165,11 +168,14 @@ describe('useMenuList', () => {
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
-      state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true);
+      act(() => state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true));
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-      expect(state.onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), name, expectedResult);
+      expect(state.onCheckedValueChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ name, checkedItems: expectedResult }),
+      );
     });
   });
 });

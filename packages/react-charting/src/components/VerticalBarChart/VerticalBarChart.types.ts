@@ -29,6 +29,11 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   colors?: string[];
 
   /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+
+  /**
    * Legend text for the line datapoint in the chart
    */
   lineLegendText?: string;

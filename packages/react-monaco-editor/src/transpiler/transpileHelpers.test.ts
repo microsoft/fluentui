@@ -1,13 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import {
-  IDiagnostic,
-  _getLineStarts,
-  _getErrorLineInfo,
-  _getErrorMessages,
-  _supportedPackageToGlobalMap,
-} from './transpileHelpers';
+import { _getLineStarts, _getErrorLineInfo, _getErrorMessages, _supportedPackageToGlobalMap } from './transpileHelpers';
 import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
+import type { IDiagnostic } from './transpileHelpers';
 
 // Real diagnostics copied from loading ./examples/class.txt in the editor while type checking wasn't set up
 const exampleLines = fs.readFileSync(path.join(__dirname, 'examples/class.txt')).toString().split(/\r?\n/g);

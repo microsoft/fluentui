@@ -174,6 +174,11 @@ export interface IVerticalBarChartDataPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineDataInVerticalBarChart {
@@ -218,6 +223,16 @@ export interface ILineChartDataPoint {
    * Whether to hide callout data for the point.
    */
   hideCallout?: boolean;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * X axis Accessibility data for callout
+   */
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineChartGap {
@@ -388,6 +403,11 @@ export interface IVSChartDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IVerticalStackedChartProps {
@@ -410,6 +430,10 @@ export interface IVerticalStackedChartProps {
    * line data to render lines on stacked bar chart
    */
   lineData?: ILineDataInVerticalStackedBarChart[];
+  /**
+   * Accessibility data for Whole stack callout
+   */
+  stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineDataInVerticalStackedBarChart {
@@ -524,6 +548,10 @@ export interface IHeatMapChartDataPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IHeatMapChartData {

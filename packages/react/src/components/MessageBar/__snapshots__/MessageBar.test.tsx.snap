@@ -113,7 +113,7 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -240,7 +240,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -366,7 +366,7 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -492,7 +492,7 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -619,7 +619,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -745,7 +745,7 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -872,7 +872,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -999,7 +999,7 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -1126,7 +1126,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -1253,7 +1253,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -1380,7 +1380,7 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >
@@ -1507,7 +1507,7 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
             {
               line-height: 16px;
             }
-            & span a {
+            & span a:last-child {
               padding-left: 4px;
             }
       >

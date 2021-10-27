@@ -14,6 +14,8 @@ packages/fluentui/docs/dist/
 packages/fluentui/ability-attributes/src/schema.ts
 packages/fluentui/e2e/cypress/fixtures/example.json
 stats/
+# northstar README lives in packages/fluentui and is automatically copied to react-northstar during build
+packages/fluentui/react-northstar/README.md
 
 # Windows image file caches
 Thumbs.db

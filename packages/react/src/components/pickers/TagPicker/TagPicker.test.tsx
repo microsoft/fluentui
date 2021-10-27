@@ -4,10 +4,10 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { TagPicker } from './TagPicker';
-import { ITag } from './TagPicker.types';
-import { IBasePicker } from '../BasePicker.types';
 import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../../common/isConformant';
+import type { ITag } from './TagPicker.types';
+import type { IBasePicker } from '../BasePicker.types';
 
 function onResolveSuggestions(text: string): ITag[] {
   return [

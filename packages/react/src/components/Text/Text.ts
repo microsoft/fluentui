@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createComponent } from '@fluentui/foundation-legacy';
-import { ITextProps } from './Text.types';
 import { TextView } from './Text.view';
 import { TextStyles as styles } from './Text.styles';
+import type { ITextProps } from './Text.types';
 
 export const Text: React.FunctionComponent<ITextProps> = createComponent(TextView, {
   displayName: 'Text',

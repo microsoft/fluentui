@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeMergePropsCompat } from '@fluentui/react-utilities';
-import { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
-import { useBadge, BadgeProps } from '../Badge/index';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { useBadge } from '../Badge/index';
 import {
   SkypeMinusIcon,
   SkypeClockIcon,
@@ -9,14 +8,7 @@ import {
   SkypeCheckIcon,
   CancelIcon,
 } from './DefaultPresenceBadgeIcons';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const presenceBadgeShorthandPropsCompat: (keyof PresenceBadgeProps)[] = ['icon'];
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandPropsCompat });
+import type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
 
 const iconMap: (outOfOffice: boolean) => Record<PresenceBadgeStatus, JSX.Element | null> = outOfOffice => ({
   busy: null,
@@ -30,24 +22,21 @@ const iconMap: (outOfOffice: boolean) => Record<PresenceBadgeStatus, JSX.Element
 /**
  * Returns the props and state required to render the component
  */
-export const usePresenceBadge = (
-  props: PresenceBadgeProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: PresenceBadgeProps,
-): PresenceBadgeState => {
-  const state = useBadge(
-    props,
-    ref,
-    mergeProps(
+export const usePresenceBadge = (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>): PresenceBadgeState => {
+  const state: PresenceBadgeState = {
+    ...useBadge(
       {
         size: 'small',
-        status: 'available',
-        outOfOffice: false,
-        icon: { as: 'span' },
+        ...props,
+        icon: resolveShorthand(props.icon, {
+          required: true,
+        }),
       },
-      defaultProps,
-    ) as BadgeProps,
-  ) as PresenceBadgeState;
+      ref,
+    ),
+    status: props.status ?? 'available',
+    outOfOffice: props.outOfOffice ?? false,
+  };
 
   if (!state.icon?.children) {
     state.icon!.children = iconMap(state.outOfOffice)[state.status];

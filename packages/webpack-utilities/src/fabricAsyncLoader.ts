@@ -4,8 +4,8 @@ import * as loaderUtils from 'loader-utils';
 function getMagicComments(options: loaderUtils.OptionObject): string {
   const magicCommentsOptions: { [key: string]: string } = {
     webpackChunkName: `"${options.chunkName || 'fabric.async'}"`,
-    webpackPrefetch: options.prefetch,
-    webpackPreload: options.preload,
+    webpackPrefetch: options.prefetch as string,
+    webpackPreload: options.preload as string,
   };
 
   return Object.keys(magicCommentsOptions)

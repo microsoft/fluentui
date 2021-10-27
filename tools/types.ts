@@ -20,6 +20,7 @@ export interface TsConfig {
 }
 
 export interface PackageJson {
+  bin?: string | Record<string, string>;
   private?: boolean;
   name: string;
   version: string;

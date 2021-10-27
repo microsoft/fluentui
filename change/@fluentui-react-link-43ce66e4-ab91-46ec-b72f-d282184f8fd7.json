@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Migrate react-link tests to rtl",
+  "packageName": "@fluentui/react-link",
+  "email": "ndresx@gmail.com",
+  "dependentChangeType": "none"
+}

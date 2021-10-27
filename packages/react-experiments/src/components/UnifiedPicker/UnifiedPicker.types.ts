@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { IRefObject } from '@fluentui/utilities';
-import { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite/FloatingSuggestions.types';
-import { ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
-import { IFocusZoneProps, IInputProps, Autofill, IDragDropEvents } from '@fluentui/react';
+import { Autofill } from '@fluentui/react';
+import type { IRefObject } from '@fluentui/utilities';
+import type { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite/FloatingSuggestions.types';
+import type { ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
+import type { IFocusZoneProps, IInputProps, IDragDropEvents } from '@fluentui/react';
 
 export interface IUnifiedPickerProps<T> {
   /**

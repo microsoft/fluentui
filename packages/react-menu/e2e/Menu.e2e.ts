@@ -1,5 +1,5 @@
 const defaultStory = 'Default';
-const groupsStory = 'WithGroups';
+const groupsStory = 'GrouppingItems';
 const customTriggerStory = 'CustomTrigger';
 const selectionGroupStory = 'SelectionGroup';
 const nestedMenuStory = 'NestedSubmenus';

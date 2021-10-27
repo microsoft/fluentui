@@ -13,6 +13,37 @@ export const AvatarExamples: {
     }[];
     readonly name: string[];
     readonly image: string[];
+    readonly badge: readonly [{
+        readonly status: "available";
+    }, {
+        readonly status: "away";
+    }, {
+        readonly status: "busy";
+    }, {
+        readonly status: "doNotDisturb";
+    }, {
+        readonly status: "offline";
+    }, {
+        readonly status: "outOfOffice";
+    }, {
+        readonly status: "available";
+        readonly outOfOffice: true;
+    }, {
+        readonly status: "away";
+        readonly outOfOffice: true;
+    }, {
+        readonly status: "busy";
+        readonly outOfOffice: true;
+    }, {
+        readonly status: "doNotDisturb";
+        readonly outOfOffice: true;
+    }, {
+        readonly status: "offline";
+        readonly outOfOffice: true;
+    }, {
+        readonly status: "outOfOffice";
+        readonly outOfOffice: true;
+    }];
     readonly activeDisplay: readonly ["ring", "ring-shadow", "ring-glow", "shadow", "glow"];
     readonly color: readonly ["neutral", "brand", "colorful"];
     readonly namedColors: readonly ["darkRed", "cranberry", "red", "pumpkin", "peach", "marigold", "gold", "brass", "brown", "forest", "seafoam", "darkGreen", "lightTeal", "teal", "steel", "blue", "royalBlue", "cornflower", "navy", "lavender", "purple", "grape", "lilac", "pink", "magenta", "plum", "beige", "mink", "platinum", "anchor"];
@@ -152,6 +183,5 @@ export const TestImages: {
     personaFemale: string;
     personaMale: string;
 };
-
 
 ```

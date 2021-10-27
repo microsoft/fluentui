@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IComponentAsProps } from '../IComponentAs';
 import { composeComponentAs } from './composeComponentAs';
+import type { IComponentAsProps } from '../IComponentAs';
 
 interface IExampleProps {
   value: string;

@@ -1,11 +1,26 @@
+import { configSchema, BabelPluginOptions } from '@fluentui/babel-make-styles';
 import { EvalCache, Module } from '@linaria/babel-preset';
 import * as enhancedResolve from 'enhanced-resolve';
+import { getOptions } from 'loader-utils';
 import * as path from 'path';
+import { validate } from 'schema-utils';
 import * as webpack from 'webpack';
 
 import { transformSync, TransformResult, TransformOptions } from './transformSync';
 
-type WebpackLoaderParams = Parameters<webpack.LoaderDefinitionFunction<never>>;
+export type WebpackLoaderOptions = BabelPluginOptions;
+
+type WebpackLoaderParams = Parameters<webpack.LoaderDefinitionFunction<WebpackLoaderOptions>>;
+
+export function shouldTransformSourceCode(
+  sourceCode: string,
+  modules: WebpackLoaderOptions['modules'] | undefined,
+): boolean {
+  // Fallback to "makeStyles" if options were not provided
+  const imports = modules ? modules.map(module => module.importName).join('|') : 'makeStyles';
+
+  return new RegExp(`\\b(${imports})`).test(sourceCode);
+}
 
 /**
  * Webpack can also pass sourcemaps as a string, Babel accepts only objects.
@@ -28,6 +43,19 @@ export function webpackLoader(
   sourceCode: WebpackLoaderParams[0],
   inputSourceMap: WebpackLoaderParams[1],
 ) {
+  const options = getOptions(this) as WebpackLoaderOptions;
+
+  validate(configSchema, options, {
+    name: '@fluentui/make-styles-webpack-loader',
+    baseDataPath: 'options',
+  });
+
+  // Early return to handle cases when makeStyles() calls are not present, allows to avoid expensive invocation of Babel
+  if (!shouldTransformSourceCode(sourceCode, options.modules)) {
+    this.callback(null, sourceCode, inputSourceMap);
+    return;
+  }
+
   EvalCache.clearForFile(this.resourcePath);
 
   const resolveOptionsDefaults: webpack.ResolveOptions = {
@@ -74,7 +102,7 @@ export function webpackLoader(
       enableSourceMaps: this.sourceMap || false,
       inputSourceMap: parseSourceMap(inputSourceMap),
 
-      // TODO: pass plugin options
+      pluginOptions: options,
     });
   } catch (err) {
     error = err;

@@ -1,5 +1,6 @@
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { IBasicPackageGroup } from '../interfaces/index';
+import type { IBasicPackageGroup } from '../interfaces/index';
+
 // Don't reference anything importing Monaco in this file!
 
 // Helper methods for transpile(). They're in a separate file that doesn't import Monaco so they

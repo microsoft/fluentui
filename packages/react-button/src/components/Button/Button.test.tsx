@@ -9,6 +9,7 @@ import {
 } from '@fluentui/a11y-testing';
 import { isConformant } from '../../common/isConformant';
 import { Button } from './Button';
+import { ButtonProps } from './Button.types';
 
 describe('Button', () => {
   let wrapper: ReactWrapper | undefined;
@@ -21,7 +22,7 @@ describe('Button', () => {
   });
 
   isConformant({
-    Component: Button,
+    Component: Button as React.FunctionComponent<ButtonProps>,
     displayName: 'Button',
   });
 

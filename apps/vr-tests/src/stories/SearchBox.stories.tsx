@@ -32,7 +32,7 @@ storiesOf('SearchBox', module)
         </div>
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Full',
@@ -41,7 +41,7 @@ storiesOf('SearchBox', module)
         <SearchBox placeholder="Search" />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'ShowIcon',
@@ -50,5 +50,5 @@ storiesOf('SearchBox', module)
         <SearchBox placeholder="Search" showIcon={true} defaultValue="Test" />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

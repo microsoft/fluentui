@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { classNamesFunction, css } from '../../../Utilities';
-import {
+import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
+import { getStyles } from './FloatingSuggestionsList.styles';
+import { FloatingSuggestionsHeaderFooterItem } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem';
+import type {
   IFloatingSuggestionsListStyleProps,
   IFloatingSuggestionsListStyle,
   IFloatingSuggestionsListProps,
 } from './FloatingSuggestionsList.types';
-import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
-import { getStyles } from './FloatingSuggestionsList.styles';
-import { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
-import { FloatingSuggestionsHeaderFooterItem } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem';
+import type { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 

@@ -1,4 +1,4 @@
-import { BrandVariants, ProductBrandColors } from '../types';
+import type { BrandVariants } from '../types';
 
 // TODO: values should be set per product theme
 export const brandWeb: BrandVariants = {
@@ -32,9 +32,4 @@ export const brandTeams: BrandVariants = {
   tint40: '#C7C9FF',
   tint50: '#DBDCF0',
   tint60: '#E9EAF6',
-};
-
-export const brandColors: ProductBrandColors = {
-  teams: brandTeams,
-  web: brandWeb,
 };

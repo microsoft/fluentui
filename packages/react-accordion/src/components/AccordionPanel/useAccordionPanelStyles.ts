@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { AccordionPanelState } from './AccordionPanel.types';
+import type { AccordionPanelState } from './AccordionPanel.types';
 
 /**
  * Styles for the root slot
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useAccordionPanelStyles = (state: AccordionPanelState) => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
 
   return state;
 };

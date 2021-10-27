@@ -1,6 +1,7 @@
-import { AnimationClassNames, getGlobalClassNames, IStyle } from '../../Styling';
-import { IImageStyleProps, IImageStyles } from './Image.types';
+import { AnimationClassNames, getGlobalClassNames } from '../../Styling';
 import { getWindow } from '../../Utilities';
+import type { IStyle } from '../../Styling';
+import type { IImageStyleProps, IImageStyles } from './Image.types';
 
 const GlobalClassNames = {
   root: 'ms-Image',

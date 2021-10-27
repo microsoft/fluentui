@@ -35,7 +35,7 @@ storiesOf('Link', module)
         I'm a link
       </Link>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Disabled', () => (
     <Link href="#" disabled styles={{ root: { fontSize: '14px' } }}>

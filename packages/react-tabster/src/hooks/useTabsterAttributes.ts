@@ -9,5 +9,5 @@ export const useTabsterAttributes = (props: TabsterTypes.TabsterAttributeProps):
   // but calling the hook will ensure that a tabster instance exists internally and avoids consumers doing the same
   useTabster();
 
-  return getTabsterAttribute(props, false) as TabsterTypes.TabsterDOMAttribute;
+  return getTabsterAttribute(props);
 };

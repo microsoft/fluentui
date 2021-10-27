@@ -1,6 +1,7 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets, ITheme } from '../../Styling';
-import { IVerticalDividerClassNames } from './VerticalDivider.types';
+import { mergeStyleSets } from '../../Styling';
+import type { ITheme } from '../../Styling';
+import type { IVerticalDividerClassNames } from './VerticalDivider.types';
 
 /**
  * @deprecated use getStyles exported from VerticalDivider.styles.ts

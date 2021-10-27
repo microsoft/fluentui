@@ -1,8 +1,8 @@
-import {
+import { getFocusStyle } from '@fluentui/react';
+import type {
   ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleStylesReturnType,
 } from './CollapsibleSectionTitle.types';
-import { getFocusStyle } from '@fluentui/react';
 
 export const getStyles: ICollapsibleSectionTitleComponent['styles'] = (
   props,

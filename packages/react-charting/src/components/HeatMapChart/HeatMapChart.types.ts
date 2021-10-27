@@ -11,6 +11,10 @@ import { IHeatMapChartData } from '../../types/IDataPoint';
 
 export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<keyof ICartesianChartProps, 'styles'>> {
   /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+  /**
    * data to provide for Heat Map
    */
   data: IHeatMapChartData[];

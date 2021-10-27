@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
-import { ICalloutPositionedInfo } from '../../Positioning';
-import { ILayerProps } from '../../Layer';
-import { Target } from '@fluentui/react-hooks';
-import { IPopupRestoreFocusParams } from '../../Popup';
-
-export { Target };
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import type { ICalloutPositionedInfo } from '../../Positioning';
+import type { ILayerProps } from '../../Layer';
+import type { Target } from '@fluentui/react-hooks';
+import type { IPopupRestoreFocusParams } from '../../Popup';
 
 /**
  * {@docCategory Callout}
@@ -366,3 +364,5 @@ export interface ICalloutContentStyles {
    */
   calloutMain: IStyle;
 }
+
+export type { Target };

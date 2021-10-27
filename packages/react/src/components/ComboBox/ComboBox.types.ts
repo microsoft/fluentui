@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IIconProps } from '../../Icon';
-import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
-import { IStyle, ITheme } from '../../Styling';
-import { IButtonStyles, IButtonProps } from '../../Button';
-import { IRefObject, IRenderFunction } from '../../Utilities';
-import { IComboBoxClassNames } from './ComboBox.classNames';
-import { IAutofillProps } from '../../Autofill';
+import type { IIconProps } from '../../Icon';
+import type { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IButtonStyles, IButtonProps } from '../../Button';
+import type { IRefObject, IRenderFunction } from '../../Utilities';
+import type { IComboBoxClassNames } from './ComboBox.classNames';
+import type { IAutofillProps } from '../../Autofill';
 
 /**
  * {@docCategory ComboBox}

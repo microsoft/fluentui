@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useFocusRects, classNamesFunction } from '@fluentui/utilities';
 import { Icon } from '../Icon/Icon';
-import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
+import type { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
@@ -79,9 +79,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
 
     const ariaChecked: React.InputHTMLAttributes<HTMLInputElement>['aria-checked'] = isIndeterminate
       ? 'mixed'
-      : isChecked
-      ? 'true'
-      : 'false';
+      : undefined;
 
     const mergedInputProps: React.InputHTMLAttributes<HTMLInputElement> = {
       className: classNames.input,

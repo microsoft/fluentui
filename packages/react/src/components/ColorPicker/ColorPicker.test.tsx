@@ -4,15 +4,16 @@ import { mount, ReactWrapper } from 'enzyme';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { ColorPicker } from './ColorPicker';
-import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
-import { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
-import { IColor } from '../../utilities/color/interfaces';
+import { ColorPickerBase } from './ColorPicker.base';
 import { resetIds } from '../../Utilities';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { mockEvent } from '../../common/testUtilities';
 import { ColorRectangleBase } from './ColorRectangle/ColorRectangle.base';
 import { ColorSliderBase } from './ColorSlider/ColorSlider.base';
 import { isConformant } from '../../common/isConformant';
+import type { IColorPickerState } from './ColorPicker.base';
+import type { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
+import type { IColor } from '../../utilities/color/interfaces';
 
 const noOp = () => undefined;
 const abcdef = getColorFromString('#abcdef')!;

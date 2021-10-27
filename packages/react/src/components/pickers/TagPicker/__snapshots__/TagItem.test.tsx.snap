@@ -51,6 +51,10 @@ exports[`TagItem accepts title override 1`] = `
       &:hover .ms-TagItem-close {
         color: #323130;
       }
+      &:focus-within {
+        background: #0078d4;
+        color: #ffffff;
+      }
       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border: 1px solid WindowText;
       }
@@ -141,8 +145,16 @@ exports[`TagItem accepts title override 1`] = `
           border-color: Highlight;
           color: Highlight;
         }
+        &:focus {
+          background: #0078d4;
+          color: #ffffff;
+        }
         &:active {
           background-color: #005a9e;
+          color: #ffffff;
+        }
+        &:focus:hover {
+          background: #005a9e;
           color: #ffffff;
         }
     data-is-focusable={true}
@@ -171,26 +183,36 @@ exports[`TagItem accepts title override 1`] = `
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-icon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons";
-              font-size: 12px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              flex-shrink: 0;
+              font-size: 12px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
             }
         data-icon-name="Cancel"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons\\"",
+          }
+        }
       >
         
       </i>
@@ -249,6 +271,10 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
       }
       &:hover .ms-TagItem-close {
         color: #323130;
+      }
+      &:focus-within {
+        background: #0078d4;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border: 1px solid WindowText;
@@ -364,8 +390,16 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
           border-color: Highlight;
           color: Highlight;
         }
+        &:focus {
+          background: #0078d4;
+          color: #ffffff;
+        }
         &:active {
           background-color: #005a9e;
+          color: #ffffff;
+        }
+        &:focus:hover {
+          background: #005a9e;
           color: #ffffff;
         }
     data-is-focusable={true}
@@ -394,26 +428,36 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-icon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons";
-              font-size: 12px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              flex-shrink: 0;
+              font-size: 12px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
             }
         data-icon-name="Cancel"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons\\"",
+          }
+        }
       >
         
       </i>
@@ -472,6 +516,10 @@ exports[`TagItem renders correctly 1`] = `
       }
       &:hover .ms-TagItem-close {
         color: #323130;
+      }
+      &:focus-within {
+        background: #0078d4;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border: 1px solid WindowText;
@@ -563,8 +611,16 @@ exports[`TagItem renders correctly 1`] = `
           border-color: Highlight;
           color: Highlight;
         }
+        &:focus {
+          background: #0078d4;
+          color: #ffffff;
+        }
         &:active {
           background-color: #005a9e;
+          color: #ffffff;
+        }
+        &:focus:hover {
+          background: #005a9e;
           color: #ffffff;
         }
     data-is-focusable={true}
@@ -593,26 +649,36 @@ exports[`TagItem renders correctly 1`] = `
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-icon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons";
-              font-size: 12px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              flex-shrink: 0;
+              font-size: 12px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
             }
         data-icon-name="Cancel"
+        style={
+          Object {
+            "fontFamily": "\\"FabricMDL2Icons\\"",
+          }
+        }
       >
         
       </i>

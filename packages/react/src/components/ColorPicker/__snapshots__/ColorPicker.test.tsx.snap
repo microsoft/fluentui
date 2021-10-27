@@ -51,6 +51,9 @@ exports[`ColorPicker renders correctly 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 2px solid CanvasText;
+          }
       data-is-focusable={true}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
@@ -170,6 +173,7 @@ exports[`ColorPicker renders correctly 1`] = `
                 border-radius: 2px;
                 border: 1px solid #edebe9;
                 box-sizing: border-box;
+                forced-color-adjust: none;
                 height: 20px;
                 margin-bottom: 8px;
                 outline: none;
@@ -177,6 +181,9 @@ exports[`ColorPicker renders correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 2px solid CanvasText;
               }
           data-is-focusable={true}
           onKeyDown={[Function]}
@@ -193,6 +200,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   border-radius: 50%;
                   border: 1px solid #8a8886;
                   box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  forced-color-adjust: auto;
                   height: 20px;
                   position: absolute;
                   top: 50%;
@@ -221,6 +229,7 @@ exports[`ColorPicker renders correctly 1`] = `
                 border-radius: 2px;
                 border: 1px solid #edebe9;
                 box-sizing: border-box;
+                forced-color-adjust: none;
                 height: 20px;
                 margin-bottom: 8px;
                 outline: none;
@@ -228,6 +237,9 @@ exports[`ColorPicker renders correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 2px solid CanvasText;
               }
           data-is-focusable={true}
           onKeyDown={[Function]}
@@ -261,6 +273,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   border-radius: 50%;
                   border: 1px solid #8a8886;
                   box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  forced-color-adjust: auto;
                   height: 20px;
                   position: absolute;
                   top: 50%;
@@ -455,36 +468,21 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -626,36 +624,21 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -797,36 +780,21 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -968,36 +936,21 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -1139,36 +1092,21 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -1244,6 +1182,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 2px solid CanvasText;
           }
       data-is-focusable={true}
       onKeyDown={[Function]}
@@ -1364,6 +1305,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 border-radius: 2px;
                 border: 1px solid #edebe9;
                 box-sizing: border-box;
+                forced-color-adjust: none;
                 height: 20px;
                 margin-bottom: 8px;
                 outline: none;
@@ -1371,6 +1313,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 2px solid CanvasText;
               }
           data-is-focusable={true}
           onKeyDown={[Function]}
@@ -1387,6 +1332,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   border-radius: 50%;
                   border: 1px solid #8a8886;
                   box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  forced-color-adjust: auto;
                   height: 20px;
                   position: absolute;
                   top: 50%;
@@ -1415,6 +1361,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 border-radius: 2px;
                 border: 1px solid #edebe9;
                 box-sizing: border-box;
+                forced-color-adjust: none;
                 height: 20px;
                 margin-bottom: 8px;
                 outline: none;
@@ -1422,6 +1369,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 2px solid CanvasText;
               }
           data-is-focusable={true}
           onKeyDown={[Function]}
@@ -1455,6 +1405,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   border-radius: 50%;
                   border: 1px solid #8a8886;
                   box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  forced-color-adjust: auto;
                   height: 20px;
                   position: absolute;
                   top: 50%;
@@ -1676,36 +1627,21 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -1847,36 +1783,21 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -2018,36 +1939,21 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -2189,36 +2095,21 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -2360,36 +2251,21 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -2465,6 +2341,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 2px solid CanvasText;
           }
       data-is-focusable={true}
       onKeyDown={[Function]}
@@ -2585,6 +2464,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                 border-radius: 2px;
                 border: 1px solid #edebe9;
                 box-sizing: border-box;
+                forced-color-adjust: none;
                 height: 20px;
                 margin-bottom: 8px;
                 outline: none;
@@ -2592,6 +2472,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 2px solid CanvasText;
               }
           data-is-focusable={true}
           onKeyDown={[Function]}
@@ -2608,6 +2491,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   border-radius: 50%;
                   border: 1px solid #8a8886;
                   box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  forced-color-adjust: auto;
                   height: 20px;
                   position: absolute;
                   top: 50%;
@@ -2636,6 +2520,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                 border-radius: 2px;
                 border: 1px solid #edebe9;
                 box-sizing: border-box;
+                forced-color-adjust: none;
                 height: 20px;
                 margin-bottom: 8px;
                 outline: none;
@@ -2643,6 +2528,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 2px solid CanvasText;
               }
           data-is-focusable={true}
           onKeyDown={[Function]}
@@ -2676,6 +2564,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   border-radius: 50%;
                   border: 1px solid #8a8886;
                   box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  forced-color-adjust: auto;
                   height: 20px;
                   position: absolute;
                   top: 50%;
@@ -2874,36 +2763,21 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -3045,36 +2919,21 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -3216,36 +3075,21 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -3387,36 +3231,21 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -3558,36 +3387,21 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                           color: WindowText;
                         }
                         &::placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                           color: GrayText;
                         }
                         &:-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                           color: GrayText;
                         }
                         &::-ms-input-placeholder {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
                           color: #605e5c;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
                           opacity: 1;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {

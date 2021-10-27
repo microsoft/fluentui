@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  IStyleFunctionOrObject,
   KeyCodes,
   classNamesFunction,
   divProperties,
@@ -21,31 +20,34 @@ import {
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { CommandButton } from '../../Button';
-import {
-  DropdownMenuItemType,
+import { DropdownMenuItemType } from './Dropdown.types';
+import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { RectangleEdge } from '../../Positioning';
+import { Icon } from '../../Icon';
+import { Label } from '../../Label';
+import { Panel } from '../../Panel';
+import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
+// import and use V7 Checkbox to ensure no breaking changes.
+import { Checkbox } from '../../Checkbox';
+import { getPropsWithDefaults } from '@fluentui/utilities';
+import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
+import type { IStyleFunctionOrObject } from '../../Utilities';
+import type {
   IDropdownOption,
   IDropdownProps,
   IDropdownStyleProps,
   IDropdownStyles,
   IDropdown,
 } from './Dropdown.types';
-import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ICalloutPositionedInfo, RectangleEdge } from '../../Positioning';
-import { Icon } from '../../Icon';
-import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
-import { IProcessedStyleSet } from '../../Styling';
-import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import { ResponsiveMode, IWithResponsiveModeState, useResponsiveMode } from '../../ResponsiveMode';
-import {
-  SelectableOptionMenuItemType,
-  getAllSelectedOptions,
-  ISelectableDroppableTextProps,
-} from '../../SelectableOption';
-// import and use V7 Checkbox to ensure no breaking changes.
-import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
-import { getPropsWithDefaults } from '@fluentui/utilities';
-import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
+import type { ICalloutPositionedInfo } from '../../Positioning';
+import type { ILabelStyleProps, ILabelStyles } from '../../Label';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IPanelStyleProps, IPanelStyles } from '../../Panel';
+import type { IWithResponsiveModeState } from '../../ResponsiveMode';
+import type { ISelectableDroppableTextProps } from '../../SelectableOption';
+import type { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 
 const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
@@ -307,7 +309,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       onRenderLabel = this._onRenderLabel,
       hoisted: { selectedIndices },
     } = props;
-    const { isOpen, calloutRenderEdge } = this.state;
+    const { isOpen, calloutRenderEdge, hasFocus } = this.state;
     // eslint-disable-next-line deprecation/deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
@@ -379,8 +381,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           <span
             id={this._optionId}
             className={this._classNames.title}
-            aria-live="polite"
-            aria-atomic={true}
+            aria-live={hasFocus ? 'polite' : undefined}
+            aria-atomic={hasFocus ? true : undefined}
             aria-invalid={hasErrorMessage}
           >
             {

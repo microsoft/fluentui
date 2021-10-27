@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IKeytipProps } from '../../Keytip';
-import { IStyle } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IKeytipProps } from '../../Keytip';
+import type { IStyle } from '../../Styling';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory OverflowSet}

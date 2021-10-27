@@ -1,8 +1,22 @@
-import DividerTemplate from './fixtures/divider.html';
-import './index';
+import { fluentDivider } from './index';
 
 export default {
-  title: 'Divider',
+  title: 'Components/Divider',
+  component: fluentDivider,
 };
 
-export const Divider = () => DividerTemplate;
+const DividerTemplate = () => `<fluent-divider role="presentation"></fluent-divider>`;
+
+export const Divider = DividerTemplate.bind({});
+
+const example = `
+<fluent-divider></fluent-divider>
+`;
+
+Divider.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

@@ -1,6 +1,6 @@
-import { GlobalSharedColors, ColorVariants } from '../types';
+import type { GlobalSharedColors, ColorVariants, Greys, AlphaColors } from '../types';
 
-export const grey = {
+export const grey: Record<Greys, string> = {
   '0': '#000000',
   '2': '#050505',
   '4': '#0a0a0a',
@@ -57,6 +57,32 @@ export const grey = {
 export const white = '#ffffff';
 
 export const black = '#000000';
+
+export const whiteAlpha: Record<AlphaColors, string> = {
+  '5': 'rgba(255, 255, 255, 0.05)',
+  '10': 'rgba(255, 255, 255, 0.1)',
+  '20': 'rgba(255, 255, 255, 0.2)',
+  '30': 'rgba(255, 255, 255, 0.3)',
+  '40': 'rgba(255, 255, 255, 0.4)',
+  '50': 'rgba(255, 255, 255, 0.5)',
+  '60': 'rgba(255, 255, 255, 0.6)',
+  '70': 'rgba(255, 255, 255, 0.7)',
+  '80': 'rgba(255, 255, 255, 0.8)',
+  '90': 'rgba(255, 255, 255, 0.9)',
+};
+
+export const blackAlpha: Record<AlphaColors, string> = {
+  '5': 'rgba(0, 0, 0, 0.05)',
+  '10': 'rgba(0, 0, 0, 0.1)',
+  '20': 'rgba(0, 0, 0, 0.2)',
+  '30': 'rgba(0, 0, 0, 0.3)',
+  '40': 'rgba(0, 0, 0, 0.4)',
+  '50': 'rgba(0, 0, 0, 0.5)',
+  '60': 'rgba(0, 0, 0, 0.6)',
+  '70': 'rgba(0, 0, 0, 0.7)',
+  '80': 'rgba(0, 0, 0, 0.8)',
+  '90': 'rgba(0, 0, 0, 0.9)',
+};
 
 export const hcHyperlink = '#ffff00';
 

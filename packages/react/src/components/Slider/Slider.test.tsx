@@ -5,8 +5,8 @@ import { mount, ReactWrapper } from 'enzyme';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { create } from '@fluentui/utilities/lib/test';
 import { Slider } from './Slider';
-import { ISlider } from './Slider.types';
 import { isConformant } from '../../common/isConformant';
+import type { ISlider } from './Slider.types';
 
 const MIN_PREFIX = 'min';
 const MAX_PREFIX = 'max';

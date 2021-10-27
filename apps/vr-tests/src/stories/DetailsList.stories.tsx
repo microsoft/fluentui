@@ -190,5 +190,5 @@ storiesOf('DetailsList', module)
         isHeaderVisible={true}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

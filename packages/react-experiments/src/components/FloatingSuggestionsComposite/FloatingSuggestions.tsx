@@ -1,10 +1,13 @@
-import { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import * as React from 'react';
 import { getStyles } from './FloatingSuggestions.styles';
 import { classNamesFunction, css } from '../../Utilities';
-import { IBaseFloatingSuggestionsStyles, IBaseFloatingSuggestionsStylesProps } from './FloatingSuggestions.types';
 import { FloatingSuggestionsList } from './FloatingSuggestionsList/FloatingSuggestionsList';
+import type {
+  IBaseFloatingSuggestionsProps,
+  IBaseFloatingSuggestionsStyles,
+  IBaseFloatingSuggestionsStylesProps,
+} from './FloatingSuggestions.types';
 
 export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSuggestionsProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IBaseFloatingSuggestionsStylesProps, IBaseFloatingSuggestionsStyles>();
@@ -36,6 +39,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     selectedHeaderIndex,
     onSuggestionsShown,
     onSuggestionsHidden,
+    gapSpace,
   } = props;
 
   // Picker shown/hidden callback logic
@@ -68,7 +72,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
         <Callout
           className={classNames.callout}
           isBeakVisible={false}
-          gapSpace={5}
+          gapSpace={gapSpace ?? 5}
           target={targetElement}
           onDismiss={hidePicker}
           onKeyDown={onKeyDown}

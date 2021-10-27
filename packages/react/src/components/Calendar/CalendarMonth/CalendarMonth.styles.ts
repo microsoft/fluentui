@@ -1,5 +1,5 @@
-import { ICalendarMonthStyleProps, ICalendarMonthStyles } from './CalendarMonth.types';
 import { getStyles as getPickerStyles } from '../CalendarPicker/CalendarPicker.styles';
+import type { ICalendarMonthStyleProps, ICalendarMonthStyles } from './CalendarMonth.types';
 
 export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles => {
   /*  Return styles from the base class.

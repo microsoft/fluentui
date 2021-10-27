@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bump @linaria/babel-preset & @linaria/shaker",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

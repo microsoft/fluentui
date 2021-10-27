@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Async } from './Async';
 import { EventGroup } from './EventGroup';
-import { IDisposable } from './IDisposable';
-import { ISettingsMap } from './warn/warn';
 import { warnConditionallyRequiredProps } from './warn/warnConditionallyRequiredProps';
 import { warnMutuallyExclusive } from './warn/warnMutuallyExclusive';
 import { warnDeprecations } from './warn/warnDeprecations';
-import { IRefObject } from './createRef';
-import { IBaseProps } from './BaseComponent.types';
+import type { IDisposable } from './IDisposable';
+import type { ISettingsMap } from './warn/warn';
+import type { IRefObject } from './createRef';
+import type { IBaseProps } from './BaseComponent.types';
 
 /**
  * BaseComponent class, which provides basic helpers for all components.

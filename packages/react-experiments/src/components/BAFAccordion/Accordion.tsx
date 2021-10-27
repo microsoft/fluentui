@@ -6,7 +6,7 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 import { initializeComponentRef, css, composeRenderFunction } from '@fluentui/react/lib/Utilities';
 import * as React from 'react';
 import './Accordion.scss';
-import { IAccordion, IAccordionProps } from './Accordion.types';
+import type { IAccordion, IAccordionProps } from './Accordion.types';
 
 export interface IAccordionState {
   // represents whether the accordion is currently expanded or closed.

@@ -107,49 +107,52 @@ function resolveStyleRulesInner(
       pushToClassesMap(cssClassesMap, key, className, rtlClassName);
       pushToCSSRules(cssRulesByBucket, styleBucketName, ltrCSS, rtlCSS);
     } else if (property === 'animationName') {
-      const animationNames = Array.isArray(value) ? value : [value];
-      let keyframeCSS = '';
-      let keyframeRtlCSS = '';
+      const animationNameValue = Array.isArray(value) ? value : [value];
 
-      const names = [];
-      const namesRtl = [];
+      const animationNames: string[] = [];
+      const rtlAnimationNames: string[] = [];
 
-      for (const val of animationNames) {
-        const keyframe = compileKeyframeRule(val);
-        const name = HASH_PREFIX + hashString(keyframe);
+      for (const keyframeObject of animationNameValue) {
+        const keyframeCSS = compileKeyframeRule(keyframeObject);
+        const rtlKeyframeCSS = compileKeyframeRule(convert(keyframeObject));
 
-        keyframeCSS += compileKeyframesCSS(name, keyframe);
-        names.push(name);
+        const animationName = HASH_PREFIX + hashString(keyframeCSS);
+        let rtlAnimationName: string;
 
-        const rtlKeyframe = compileKeyframeRule(convert(val));
+        const keyframeRules = compileKeyframesCSS(animationName, keyframeCSS);
+        let rtlKeyframeRules: string[] = [];
 
-        if (keyframe !== rtlKeyframe) {
-          const nameRtl = HASH_PREFIX + hashString(rtlKeyframe);
-          keyframeRtlCSS += compileKeyframesCSS(nameRtl, rtlKeyframe);
-          namesRtl.push(nameRtl);
+        if (keyframeCSS === rtlKeyframeCSS) {
+          // If CSS for LTR & RTL are same we will re-use animationName from LTR to avoid duplication of rules in output
+          rtlAnimationName = animationName;
         } else {
-          namesRtl.push(name);
+          rtlAnimationName = HASH_PREFIX + hashString(rtlKeyframeCSS);
+          rtlKeyframeRules = compileKeyframesCSS(rtlAnimationName, rtlKeyframeCSS);
         }
+
+        for (let i = 0; i < keyframeRules.length; i++) {
+          pushToCSSRules(
+            cssRulesByBucket,
+            // keyframes styles should be inserted into own bucket
+            'k',
+            keyframeRules[i],
+            rtlKeyframeRules[i],
+          );
+        }
+
+        animationNames.push(animationName);
+        rtlAnimationNames.push(rtlAnimationName);
       }
 
-      const animationName = names.join(' ');
-      const animationNameRtl = namesRtl.join(' ');
-
-      pushToCSSRules(
-        cssRulesByBucket,
-        'k', // keyframes styles should be inserted into own bucket
-        keyframeCSS,
-        keyframeRtlCSS || undefined,
-      );
       resolveStyleRulesInner(
-        { animationName },
+        { animationName: animationNames.join(', ') },
         unstable_cssPriority,
         pseudo,
         media,
         support,
         cssClassesMap,
         cssRulesByBucket,
-        animationNameRtl,
+        rtlAnimationNames.join(', '),
       );
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {

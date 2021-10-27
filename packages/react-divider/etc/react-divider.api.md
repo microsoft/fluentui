@@ -4,41 +4,43 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
-export const Divider: React_2.ForwardRefExoticComponent<DividerProps & React_2.RefAttributes<HTMLElement>>;
+export const Divider: ForwardRefComponent<DividerProps>;
 
 // @public (undocumented)
-export interface DividerProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    alignContent?: 'start' | 'end' | 'center';
-    appearance?: 'default' | 'subtle' | 'brand' | 'strong';
-    important?: boolean;
-    inset?: boolean;
-    vertical?: boolean;
-    wrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement>>;
-}
-
-// @public
-export const dividerShorthandProps: readonly ["wrapper", "children"];
+export type DividerCommons = {
+    alignContent: 'start' | 'end' | 'center';
+    appearance?: 'brand' | 'strong' | 'subtle';
+    inset: boolean;
+    vertical: boolean;
+};
 
 // @public (undocumented)
-export interface DividerState extends DividerProps {
-    labelledById?: string;
-    ref: React_2.RefObject<HTMLElement>;
-}
+export type DividerProps = ComponentProps<DividerSlots> & Partial<DividerCommons>;
+
+// @public (undocumented)
+export type DividerSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+    wrapper: IntrinsicShorthandProps<'div'>;
+};
+
+// @public (undocumented)
+export type DividerState = ComponentState<DividerSlots> & DividerCommons;
 
 // @public
 export const renderDivider: (state: DividerState) => JSX.Element;
 
 // @public
-export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>, defaultProps?: DividerProps | undefined) => DividerState;
+export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
 
 // @public
-export const useDividerStyles: (s: DividerState) => DividerState;
-
+export const useDividerStyles: (state: DividerState) => DividerState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -2,11 +2,11 @@ import * as React from 'react';
 import { KeyCodes, css, classNamesFunction, format } from '@fluentui/utilities';
 import { Icon } from '../../../Icon';
 import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from '@fluentui/date-time-utilities';
-import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
-import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { CalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid';
-import { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
 import { useId } from '@fluentui/react-hooks';
+import type { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
+import type { IProcessedStyleSet } from '@fluentui/style-utilities';
+import type { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
@@ -40,7 +40,6 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
     dateRangeType,
     animationDirection,
   } = props;
-  const dayPickerId = useId();
   const monthAndYearId = useId();
 
   const classNames = getClassNames(styles, {
@@ -58,7 +57,7 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
     : monthAndYear;
 
   return (
-    <div className={classNames.root} id={dayPickerId}>
+    <div className={classNames.root}>
       <div className={classNames.header}>
         <HeaderButtonComponentType
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
@@ -75,7 +74,7 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
         >
           <span id={monthAndYearId}>{monthAndYear}</span>
         </HeaderButtonComponentType>
-        <CalendarDayNavigationButtons {...props} classNames={classNames} dayPickerId={dayPickerId} />
+        <CalendarDayNavigationButtons {...props} classNames={classNames} />
       </div>
       <CalendarDayGrid
         {...props}
@@ -99,7 +98,6 @@ CalendarDayBase.displayName = 'CalendarDayBase';
 
 interface ICalendarDayNavigationButtonsProps extends ICalendarDayProps {
   classNames: IProcessedStyleSet<ICalendarDayStyles>;
-  dayPickerId: string;
 }
 
 const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps): JSX.Element => {
@@ -112,7 +110,6 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
     navigationIcons,
     showCloseButton,
     classNames,
-    dayPickerId,
     onNavigateDate,
     onDismiss,
   } = props;
@@ -144,7 +141,6 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         aria-disabled={!prevMonthInBounds}
         onClick={prevMonthInBounds ? onSelectPrevMonth : undefined}
         onKeyDown={prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined}
-        aria-controls={dayPickerId}
         title={
           strings.prevMonthAriaLabel
             ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
@@ -162,7 +158,6 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         aria-disabled={!nextMonthInBounds}
         onClick={nextMonthInBounds ? onSelectNextMonth : undefined}
         onKeyDown={nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined}
-        aria-controls={dayPickerId}
         title={
           strings.nextMonthAriaLabel
             ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]

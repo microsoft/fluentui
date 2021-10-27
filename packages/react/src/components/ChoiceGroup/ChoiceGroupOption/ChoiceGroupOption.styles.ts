@@ -1,6 +1,7 @@
-import { HighContrastSelector, IStyle, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
+import { HighContrastSelector, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
-import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
+import type { IStyle } from '../../../Styling';
+import type { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
 const GlobalClassNames = {
   root: 'ms-ChoiceField',

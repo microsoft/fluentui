@@ -26,7 +26,7 @@ The following are variants that are functionally different from the base `Button
 - `Menu button`
 - `Pressable`
 - `Split button`
-- `Toogle button`
+- `Toggle button`
   - > TODO - Need to discuss if functionality belongs to base button or separate variant.
 
 #### Tied to other components

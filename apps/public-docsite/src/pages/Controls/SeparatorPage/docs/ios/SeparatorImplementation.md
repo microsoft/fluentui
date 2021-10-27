@@ -4,7 +4,7 @@
 
 ### Source code
 
-[Separator](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/Separator.swift)
+[Separator](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Separator/Separator.swift)
 
 ### Sample code
 

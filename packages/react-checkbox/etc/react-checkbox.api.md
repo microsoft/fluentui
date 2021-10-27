@@ -4,40 +4,63 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
+export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
 // @public
-export type CheckboxDefaultedProps = never;
-
-// @public
-export interface CheckboxProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+export interface CheckboxCommons {
+    checked: 'mixed' | boolean;
+    circular: boolean;
+    containerClassName?: string;
+    labelPosition: 'before' | 'after';
+    rootId: string | undefined;
+    size: 'medium' | 'large';
 }
 
 // @public
-export type CheckboxShorthandProps = never;
-
-// @public
-export const checkboxShorthandProps: CheckboxShorthandProps[];
-
-// @public
-export interface CheckboxState extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
+export interface CheckboxOnChangeData {
+    // (undocumented)
+    checked: 'mixed' | boolean;
 }
 
 // @public
+export type CheckboxProps = Omit<ComponentProps<CheckboxSlots>, 'defaultChecked'> & Partial<CheckboxCommons> & {
+    id?: string;
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    defaultChecked?: 'mixed' | boolean;
+    required?: boolean;
+    disabled?: boolean;
+};
+
+// @public
+export const checkboxShorthandProps: Array<keyof CheckboxSlots>;
+
+// @public (undocumented)
+export type CheckboxSlots = {
+    root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
+    input: IntrinsicShorthandProps<'input'>;
+    indicator: IntrinsicShorthandProps<'div'>;
+};
+
+// @public
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
+
+// @public (undocumented)
 export const renderCheckbox: (state: CheckboxState) => JSX.Element;
 
 // @public
-export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CheckboxProps | undefined) => CheckboxState;
+export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>) => CheckboxState;
 
 // @public
 export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
-
 
 // (No @packageDocumentation comment for this package)
 

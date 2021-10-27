@@ -12,7 +12,9 @@ export const CommandBarBasicExample: React.FunctionComponent = () => {
         overflowItems={_overflowItems}
         overflowButtonProps={overflowProps}
         farItems={_farItems}
-        ariaLabel="Use left and right arrow keys to navigate between commands"
+        ariaLabel="Inbox actions"
+        primaryGroupAriaLabel="Email actions"
+        farItemsGroupAriaLabel="More actions"
       />
     </div>
   );

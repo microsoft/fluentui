@@ -13,7 +13,7 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         height: StyleConstants.inputControlHeight,
       },
       !hasErrorMessage && {
-        borderColor: semanticColors.inputPlaceholderText,
+        borderColor: semanticColors.inputBorder,
         selectors: {
           '::after': {
             borderColor: extendedSemanticColors.controlFocus,

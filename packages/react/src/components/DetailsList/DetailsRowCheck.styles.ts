@@ -1,8 +1,8 @@
 import { getGlobalClassNames, getFocusStyle } from '../../Styling';
-import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
 import { HEADER_HEIGHT } from './DetailsHeader.styles';
 import { CheckGlobalClassNames } from '../../components/Check/Check.styles';
+import type { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow-check',

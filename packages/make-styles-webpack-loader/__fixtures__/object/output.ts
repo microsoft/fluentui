@@ -3,11 +3,11 @@ import { __styles } from '@fluentui/react-make-styles';
 const styles = __styles(
   {
     root: {
-      sj55zd: 'f9enjjp',
+      sj55zd: 'fl9q5hc',
     },
   },
   {
-    d: ['.f9enjjp{color:var(--alias-color-neutral-brandStroke1);}'],
+    d: ['.fl9q5hc{color:var(--colorBrandStroke1);}'],
   },
 );
 

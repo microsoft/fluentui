@@ -47,6 +47,9 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A text area can have error state. */
   error?: boolean;
+
+  /** A text area can be required to be valid. */
+  required?: boolean;
 }
 
 export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled' | 'error'>>;

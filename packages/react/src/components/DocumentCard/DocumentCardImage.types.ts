@@ -1,7 +1,7 @@
-import { IIconProps } from '../../Icon';
 import { ImageFit } from '../../Image';
-import { IStyle, ITheme } from '../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IIconProps } from '../../Icon';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory DocumentCard}

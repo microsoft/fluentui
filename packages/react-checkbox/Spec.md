@@ -179,10 +179,10 @@ export interface CheckboxProps
   size?: 'medium' | 'large';
 
   /**
-   * Determines whether the label should be positioned before (start) or after (end) the checkbox.
-   * @defaultvalue 'end'
+   * Determines whether the label should be positioned before or after the checkbox.
+   * @defaultvalue 'after'
    */
-  labelPosition?: 'start' | 'end';
+  labelPosition?: 'before' | 'after';
 
   /**
    * ID of the root element that wraps the checkbox and label.

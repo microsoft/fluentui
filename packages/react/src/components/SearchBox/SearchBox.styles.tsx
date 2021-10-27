@@ -2,13 +2,13 @@ import {
   HighContrastSelector,
   AnimationVariables,
   normalize,
-  IStyle,
   getPlaceholderStyles,
   getGlobalClassNames,
   getInputFocusStyle,
 } from '../../Styling';
-import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getRTL } from '../../Utilities';
+import type { IStyle } from '../../Styling';
+import type { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',

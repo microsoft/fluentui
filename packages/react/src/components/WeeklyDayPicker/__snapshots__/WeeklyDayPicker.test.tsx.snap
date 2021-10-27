@@ -679,13 +679,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -792,13 +792,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -905,13 +905,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1018,13 +1018,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1131,13 +1131,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1244,13 +1244,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1357,13 +1357,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1390,7 +1390,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
         >
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1448,6 +1448,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -1491,13 +1503,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1519,7 +1531,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1577,6 +1589,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -1620,13 +1644,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1648,7 +1672,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1706,6 +1730,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -1749,13 +1785,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1777,7 +1813,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1836,6 +1872,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   color: #605e5c;
                   font-weight: 400;
@@ -1878,13 +1926,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -1906,7 +1954,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
                 ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
@@ -1966,8 +2013,28 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   background-color: #edebe9!important;
+                }
+                &:after {
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
                 }
                 &:hover {
                   background-color: #edebe9!important;
@@ -2036,13 +2103,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2079,7 +2146,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -2137,6 +2204,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -2176,13 +2255,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2204,7 +2283,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -2263,6 +2342,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
@@ -2301,13 +2392,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2426,13 +2517,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2535,13 +2626,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2644,13 +2735,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2753,13 +2844,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2862,13 +2953,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2971,13 +3062,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -3080,13 +3171,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -3882,13 +3973,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -3995,13 +4086,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -4108,13 +4199,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -4221,13 +4312,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -4334,13 +4425,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -4447,13 +4538,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -4560,13 +4651,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -4593,7 +4684,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
         >
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4651,6 +4742,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -4694,13 +4797,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -4722,7 +4825,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4781,6 +4884,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   color: #605e5c;
                   font-weight: 400;
@@ -4823,13 +4938,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -4851,7 +4966,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
                 ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
@@ -4911,8 +5025,28 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   background-color: #edebe9!important;
+                }
+                &:after {
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
                 }
                 &:hover {
                   background-color: #edebe9!important;
@@ -4981,13 +5115,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5024,7 +5158,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5082,6 +5216,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -5121,13 +5267,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5149,7 +5295,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5207,6 +5353,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -5246,13 +5404,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5274,7 +5432,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5332,6 +5490,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -5371,13 +5541,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5399,7 +5569,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5458,6 +5628,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
@@ -5496,13 +5678,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5621,13 +5803,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5730,13 +5912,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5839,13 +6021,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5948,13 +6130,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -6057,13 +6239,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -6166,13 +6348,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -6275,13 +6457,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {

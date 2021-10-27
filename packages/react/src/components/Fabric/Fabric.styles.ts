@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../Styling';
-import { IFabricStyleProps, IFabricStyles } from './Fabric.types';
+import type { IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
 const inheritFont = { fontFamily: 'inherit' };
 

@@ -7,7 +7,7 @@ import {
   disableBodyScroll,
   initializeComponentRef,
 } from '../../Utilities';
-import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
+import type { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
 
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
 import { ScrollablePaneBase } from './ScrollablePane.base';
 import { Sticky } from '../Sticky/Sticky';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
 
 /**
  * {@docCategory ScrollablePane}

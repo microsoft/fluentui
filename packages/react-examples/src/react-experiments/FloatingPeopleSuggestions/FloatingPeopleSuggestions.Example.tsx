@@ -88,7 +88,7 @@ export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
       <FloatingPeopleSuggestions
         suggestions={[...peopleSuggestions]}
         isSuggestionsVisible={true}
-        targetElement={null}
+        targetElement={{ left: 20, top: 20 }}
         /* eslint-disable react/jsx-no-bind */
         onSuggestionSelected={_onSuggestionSelected}
         onRemoveSuggestion={_onSuggestionRemoved}

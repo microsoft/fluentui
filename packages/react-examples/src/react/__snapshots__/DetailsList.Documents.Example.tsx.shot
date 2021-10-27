@@ -67,7 +67,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle0-label Toggle0-stateText"
+          aria-labelledby="Toggle0-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -242,7 +242,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle1-label Toggle1-stateText"
+          aria-labelledby="Toggle1-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -496,36 +496,21 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   color: WindowText;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
@@ -728,7 +713,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               >
                 <span
                   aria-describedby="header6-column1-tooltip"
-                  aria-haspopup={false}
                   aria-label="File Type"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -763,7 +747,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column1"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -948,7 +932,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               >
                 <span
                   aria-describedby="header6-column2-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header6-column2-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -980,7 +963,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column2"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1193,7 +1176,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-haspopup={false}
                   aria-labelledby="header6-column3-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1225,7 +1207,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column3"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1384,7 +1366,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-haspopup={false}
                   aria-labelledby="header6-column4-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1416,7 +1397,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column4"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1575,7 +1556,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-haspopup={false}
                   aria-labelledby="header6-column5-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1607,7 +1587,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column5"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1800,6 +1780,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -1914,6 +1897,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -2260,6 +2244,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -2374,6 +2361,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -2720,6 +2708,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -2834,6 +2825,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -3180,6 +3172,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -3294,6 +3289,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -3640,6 +3636,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -3754,6 +3753,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -4100,6 +4100,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -4214,6 +4217,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -4560,6 +4564,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -4674,6 +4681,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -5020,6 +5028,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -5134,6 +5145,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -5480,6 +5492,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -5594,6 +5609,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -5940,6 +5956,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
+                            &:hover .ms-DetailsRow-cell > .ms-Link {
+                              color: #004578;
+                            }
                             &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
@@ -6054,6 +6073,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"

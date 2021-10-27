@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
 
 /**
  * {@docCategory Separator}

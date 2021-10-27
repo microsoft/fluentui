@@ -1,20 +1,12 @@
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';
+import { LinkProps } from './Link.types';
 
 describe('Link', () => {
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
-  });
-
-  isConformant({
+  isConformant<LinkProps>({
     Component: Link,
     displayName: 'Link',
   });
@@ -23,34 +15,37 @@ describe('Link', () => {
     const testFacade = new ComponentTestFacade(Link, {});
     const errors = validateBehavior(linkBehaviorDefinition, testFacade);
     expect(errors).toEqual([]);
+
+    afterAll(() => {
+      // Reset body after behavioral checks are done
+      document.body.innerHTML = '';
+    });
   });
 
   it('renders as a button if no href is provided', () => {
-    wrapper = mount(<Link>This is a link</Link>);
-    const button = wrapper.find('button');
-    const anchor = wrapper.find('a');
+    const result = render(<Link>This is a link</Link>);
+    const button = result.queryAllByRole('button');
+    const anchor = result.queryAllByRole('link');
     expect(button.length).toBe(1);
     expect(anchor.length).toBe(0);
 
-    const tree = button.debug();
-    expect(tree).toMatchSnapshot();
+    expect(result.container).toMatchSnapshot();
   });
 
   it('renders as an anchor when href is provided', () => {
-    wrapper = mount(<Link href="https://www.bing.com">This is a link</Link>);
-    const button = wrapper.find('button');
-    const anchor = wrapper.find('a');
+    const result = render(<Link href="https://www.bing.com">This is a link</Link>);
+    const button = result.queryAllByRole('button');
+    const anchor = result.queryAllByRole('link');
     expect(button.length).toBe(0);
     expect(anchor.length).toBe(1);
 
-    const tree = anchor.debug();
-    expect(tree).toMatchSnapshot();
+    expect(result.container).toMatchSnapshot();
   });
 
   it('can be focused when rendered as an anchor', () => {
     const rootRef = React.createRef<HTMLAnchorElement>();
 
-    wrapper = mount(
+    render(
       <Link href="https://www.bing.com" ref={rootRef}>
         This is a link
       </Link>,
@@ -67,7 +62,75 @@ describe('Link', () => {
   it('can be focused when rendered as a button', () => {
     const rootRef = React.createRef<HTMLAnchorElement>();
 
-    wrapper = mount(<Link ref={rootRef}>This is a link</Link>);
+    render(<Link ref={rootRef}>This is a link</Link>);
+
+    expect(typeof rootRef.current).toEqual('object');
+    expect(document.activeElement).not.toEqual(rootRef.current);
+
+    rootRef.current?.focus();
+
+    expect(document.activeElement).toEqual(rootRef.current);
+  });
+
+  it('cannot be focused when rendered as an anchor and disabled has been passed to the component', () => {
+    const rootRef = React.createRef<HTMLAnchorElement>();
+
+    render(
+      <Link href="https://www.bing.com" disabled ref={rootRef}>
+        This is a link
+      </Link>,
+    );
+
+    expect(typeof rootRef.current).toEqual('object');
+    expect(document.activeElement).not.toEqual(rootRef.current);
+
+    rootRef.current?.focus();
+
+    expect(document.activeElement).not.toEqual(rootRef.current);
+  });
+
+  it('cannot be focused when rendered as a button and disabled has been passed to the component', () => {
+    const rootRef = React.createRef<HTMLAnchorElement>();
+
+    render(
+      <Link disabled ref={rootRef}>
+        This is a link
+      </Link>,
+    );
+
+    expect(typeof rootRef.current).toEqual('object');
+    expect(document.activeElement).not.toEqual(rootRef.current);
+
+    rootRef.current?.focus();
+
+    expect(document.activeElement).not.toEqual(rootRef.current);
+  });
+
+  it('can be focused when rendered as an anchor and disabledFocusable has been passed to the component', () => {
+    const rootRef = React.createRef<HTMLAnchorElement>();
+
+    render(
+      <Link href="https://www.bing.com" disabledFocusable ref={rootRef}>
+        This is a link
+      </Link>,
+    );
+
+    expect(typeof rootRef.current).toEqual('object');
+    expect(document.activeElement).not.toEqual(rootRef.current);
+
+    rootRef.current?.focus();
+
+    expect(document.activeElement).toEqual(rootRef.current);
+  });
+
+  it('can be focused when rendered as a button and disabledFocusable has been passed to the component', () => {
+    const rootRef = React.createRef<HTMLAnchorElement>();
+
+    render(
+      <Link disabledFocusable ref={rootRef}>
+        This is a link
+      </Link>,
+    );
 
     expect(typeof rootRef.current).toEqual('object');
     expect(document.activeElement).not.toEqual(rootRef.current);

@@ -14,7 +14,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
   private _classNames: IProcessedStyleSet<IPieChartStyles>;
 
   public render(): JSX.Element {
-    const { data, width, height, colors } = this.props;
+    const { data, width, height, colors, chartTitle } = this.props;
 
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
@@ -29,7 +29,15 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
     return (
       <div className={this._classNames.root}>
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
-        <Pie width={width!} height={height!} outerRadius={outerRadius} innerRadius={0} data={data!} colors={colors!} />
+        <Pie
+          width={width!}
+          height={height!}
+          outerRadius={outerRadius}
+          innerRadius={0}
+          data={data!}
+          colors={colors!}
+          chartTitle={chartTitle!}
+        />
       </div>
     );
   }

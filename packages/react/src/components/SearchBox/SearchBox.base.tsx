@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
 import { KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
-import { IconButton, IButtonProps, IButtonStyles } from '../../Button';
-import { Icon, IIconProps } from '../../Icon';
+import { IconButton } from '../../Button';
+import { Icon } from '../../Icon';
+import type { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
+import type { IButtonProps, IButtonStyles } from '../../Button';
+import type { IIconProps } from '../../Icon';
 
 const COMPONENT_NAME = 'SearchBox';
 const iconButtonStyles: Partial<IButtonStyles> = { root: { height: 'auto' }, icon: { fontSize: '12px' } };

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Sync babel-make-styles with published version",
-  "packageName": "@fluentui/react-button",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -13,6 +13,7 @@ import {
   ChartHoverCard,
   createNumericXAxis,
   createStringXAxis,
+  getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
@@ -240,7 +241,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
-          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }} {...svgProps}>
+          <svg
+            width={svgDimensions.width}
+            height={svgDimensions.height}
+            aria-label={this.props.chartTitle}
+            style={{ display: 'block' }}
+            {...svgProps}
+          >
             <g
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
@@ -292,7 +299,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     );
   }
 
-  // TO DO: Write a common funtional component for Multi value callout and divide sub count method
+  // TO DO: Write a common functional component for Multi value callout and divide sub count method
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _multiValueCallout = (calloutProps: any) => {
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
@@ -302,7 +309,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           className={this._classNames.calloutDateTimeContainer}
           style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
         >
-          <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+          <div
+            className={this._classNames.calloutContentX}
+            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData)}
+          >
+            {calloutProps!.hoverXValue}
+          </div>
         </div>
         <div
           className={this._classNames.calloutInfoContainer}
@@ -314,6 +326,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               const { shouldDrawBorderBottom = false } = yValue;
               return (
                 <div
+                  {...getAccessibleDataObject(yValue.callOutAccessibilityData)}
                   key={`callout-content-${index}`}
                   style={
                     yValueHoverSubCountsExists

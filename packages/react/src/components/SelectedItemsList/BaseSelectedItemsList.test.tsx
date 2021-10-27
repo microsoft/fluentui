@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-
-import { IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 import { BaseSelectedItemsList } from './BaseSelectedItemsList';
 import { isConformant } from '../../common/isConformant';
+import type { IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 
 export interface ISimple {
   key: string;

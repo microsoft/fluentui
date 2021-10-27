@@ -1,23 +1,33 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
-import { ARIAButtonProps } from '@fluentui/react-aria';
+import type {
+  ComponentProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+  ObjectShorthandProps,
+} from '@fluentui/react-utilities';
+import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
+import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
-export interface AccordionHeaderContextValue {
+export type AccordionHeaderContextValue = {
   disabled: boolean;
   open: boolean;
   expandIconPosition: AccordionHeaderExpandIconPosition;
   size: AccordionHeaderSize;
-}
+};
+
+export type AccordionHeaderContextValues = {
+  accordionHeader: AccordionHeaderContextValue;
+};
 
 export type AccordionHeaderSlots = {
+  root: IntrinsicShorthandProps<'div'>;
   /**
    * The component to be used as button in heading
    */
-  button: ARIAButtonProps;
+  button: ARIAButtonShorthandProps;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
@@ -25,11 +35,11 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon: React.HTMLAttributes<HTMLElement>;
-  children: React.HTMLAttributes<HTMLElement>;
+  icon?: IntrinsicShorthandProps<'div'>;
+  children: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 };
 
-export interface AccordionHeaderCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
+export type AccordionHeaderCommons = {
   /**
    * Size of spacing in the heading
    */
@@ -42,18 +52,10 @@ export interface AccordionHeaderCommons extends Omit<React.HTMLAttributes<HTMLEl
    * Indicates if the AccordionHeader should be rendered inline
    */
   inline: boolean;
-}
+};
 
-export interface AccordionHeaderProps
-  extends ComponentProps<Partial<AccordionHeaderSlots>>,
-    Partial<AccordionHeaderCommons> {}
+export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
 
-export interface AccordionHeaderState
-  extends ComponentState<AccordionHeaderSlots>,
-    AccordionHeaderCommons,
-    AccordionHeaderContextValue {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> &
+  AccordionHeaderCommons &
+  AccordionHeaderContextValue;

@@ -1,6 +1,4 @@
 import './version';
-
-export { ISvgIconProps } from './utils/SvgIcon.types';
 export { default as createSvgIcon } from './utils/createSvgIcon';
 
 export { default as AcceptIcon } from './components/AcceptIcon';
@@ -1738,3 +1736,4 @@ export { default as ZoomIcon } from './components/ZoomIcon';
 export { default as ZoomInIcon } from './components/ZoomInIcon';
 export { default as ZoomOutIcon } from './components/ZoomOutIcon';
 export { default as ZoomToFitIcon } from './components/ZoomToFitIcon';
+export type { ISvgIconProps } from './utils/SvgIcon.types';
