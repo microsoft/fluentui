@@ -219,6 +219,7 @@ export { QuoteIcon } from './components/QuoteIcon';
 export { RadioButtonIcon } from './components/RadioButtonIcon';
 export { ReadAloudIcon } from './components/ReadAloudIcon';
 export { RaiseHandColoredIcon } from './components/RaiseHandColoredIcon';
+export { RaiseHandColoredFluentIcon } from './components/RaiseHandColoredFluentIcon';
 export { RaiseHandDisabledIcon } from './components/RaiseHandDisabledIcon';
 export { RaiseHandIcon } from './components/RaiseHandIcon';
 export { ReactionsIcon } from './components/ReactionsIcon';
