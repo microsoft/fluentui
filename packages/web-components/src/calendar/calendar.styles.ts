@@ -23,6 +23,9 @@ import {
 } from '../design-tokens';
 import { heightNumber } from '../styles';
 
+/**
+ * @internal
+ */
 export const calendarStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition
