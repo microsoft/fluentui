@@ -103,7 +103,7 @@ function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog
 function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpType'], prereleaseTag?: string) {
   if (bumpType === 'nightly') {
     // initialize the prerelease tag so that prerelease doesn't bump to 0.0.1
-    packageJson.version = '0.0.0-empty'; 
+    packageJson.version = '0.0.0-empty';
   }
 
   const semverVersion = semver.parse(packageJson.version);
