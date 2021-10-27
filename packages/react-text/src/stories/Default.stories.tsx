@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles'; // codesandbox-dependency: @fluentui/react-make-styles ^9.0.0-beta;
+import { makeStyles } from '@fluentui/react-make-styles';
 import { Text } from '../Text'; // codesandbox-dependency: @fluentui/react-text ^9.0.0-beta
 import type { TextProps } from '../Text'; // codesandbox-dependency: @fluentui/react-text ^9.0.0-beta
 
