@@ -2,6 +2,6 @@
 
 To build Fluent experiences on the web using Web Components, please see our Web Components Documentation
 
-### Fast
+### FAST
 
-Fluent UI Web Components are build with Fast. To learn more go here.
+Fluent UI Web Components are build with FAST. To learn more go here.
