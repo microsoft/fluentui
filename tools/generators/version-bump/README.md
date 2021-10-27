@@ -66,6 +66,12 @@ Bump all vNext packages from beta (9.0.0-beta) to full release. The actual bumpt
 yarn nx workspace-generator version-bump --all --bumpType minor
 ```
 
+Bump all vNext packages for a nightly release (0.0.0-nightly).
+
+```sh
+yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag nightly
+```
+
 ## Options
 
 #### `name`

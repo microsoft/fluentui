@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 26 Oct 2021 07:39:42 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Oct 2021 07:29:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.37.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.4)
+
+Wed, 27 Oct 2021 07:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.3..@fluentui/react_v8.37.4)
+
+### Patches
+
+- Remove incorrect toolbar role from Pivot and pass accname attributes to the tablist ([PR #20317](https://github.com/microsoft/fluentui/pull/20317) by sarah.higley@microsoft.com)
+- ComboBox: Fix hidden options in multiSelect mode ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by 34309778+sgbdev@users.noreply.github.com)
 
 ## [8.37.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.3)
 

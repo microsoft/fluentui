@@ -2,6 +2,27 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 27 Oct 2021 12:14:24 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "5cd2c86d041588c98747f16902ff99a7b41c10ac",
+            "comment": "remove compat utilities and types"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b5b740100714724214e097fae2f7c1f51f294e35",
+            "comment": "fix(getNativeElementPrps): Add support for `onAuxClick`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Oct 2021 10:37:22 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-beta.1",
       "version": "9.0.0-beta.1",

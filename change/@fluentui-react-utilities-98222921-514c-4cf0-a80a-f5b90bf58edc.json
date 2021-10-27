@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(getNativeElementPrps): Add support for `onAuxClick`",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
