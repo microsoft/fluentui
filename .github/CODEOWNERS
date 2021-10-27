@@ -65,8 +65,8 @@ packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 
 #### Apps
 # component-demo/
-public-docsite/ @ecraig12345
-public-docsite-resources/ @ecraig12345 @justSlone
+public-docsite/ @ecraig12345 @micahgodbolt
+public-docsite-resources/ @ecraig12345 @micahgodbolt
 perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
 # todo-app/
@@ -93,7 +93,7 @@ packages/react-charting/ @Raghurk
 packages/react-conformance-make-styles/ @microsoft/teams-prg
 packages/react-context-selector/ @microsoft/teams-prg
 packages/react-date-time @lorejoh12 @evlevy
-packages/react-docsite-components/ @ecraig12345
+packages/react-docsite-components/ @ecraig12345 @micahgodbolt
 packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/react-hooks/ @microsoft/cxe-red @ecraig12345
 packages/react-make-styles/ @microsoft/teams-prg
