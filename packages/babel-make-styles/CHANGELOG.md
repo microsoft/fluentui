@@ -1,8 +1,20 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Oct 2021 12:14:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-beta.1..@fluentui/babel-make-styles_v9.0.0-beta.2)
+
+### Changes
+
+- Handle styles defined in an arrow function without any params ([PR #19894](https://github.com/microsoft/fluentui/pull/19894) by elcraig@microsoft.com)
+- Bump @fluentui/make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-beta.1)
 

@@ -12,9 +12,9 @@ export default {
 };
 
 const SliderTemplate = ({ orientation }) => `
-  <fluent-slider 
+  <fluent-slider
     ${orientation ? `orientation="${orientation}"` : ''}
-    min="0" max="100" step="10"
+    min="0" max="100" step="10" style="width:80%;"
   >
     <fluent-slider-label position="0"> 0&#8451; </fluent-slider-label>
     <fluent-slider-label position="10"> 10&#8451; </fluent-slider-label>
@@ -29,7 +29,12 @@ Slider.args = {
 };
 
 const example = `
-<fluent-slider></fluent-slider>
+<fluent-slider min="0" max="100" step="10" orientation="horizontal" style="width:80%;">
+  <fluent-slider-label position="0"> 0&#8451; </fluent-slider-label>
+  <fluent-slider-label position="10"> 10&#8451; </fluent-slider-label>
+  <fluent-slider-label position="90"> 90&#8451; </fluent-slider-label>
+  <fluent-slider-label position="100"> 100&#8451; </fluent-slider-label>
+</fluent-slider>
 `;
 
 Slider.parameters = {
