@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/babel-make-styles": "9.0.0-beta.1",
+    "@fluentui/babel-make-styles": "9.0.0-beta.2",
     "@fluentui/jest-serializer-make-styles": "9.0.0-beta.2",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-make-styles": "9.0.0-beta.2",
