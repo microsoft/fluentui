@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tooltip } from '../Tooltip'; // codesandbox-dependency: @fluentui/react-tooltip ^9.0.0-beta
-import { makeStyles } from '@fluentui/react-make-styles'; // codesandbox-dependency: @fluentui/react-make-styles ^9.0.0-beta
+import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   exampleList: {
