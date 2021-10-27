@@ -14,16 +14,9 @@ const TIME_LOWER_BOUND = 0;
 const TIME_UPPER_BOUND = 23;
 
 const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePickerStrings => {
-  let errorMessageToDisplay = '';
   const hourUnits = useHour12 ? '12-hour' : '24-hour';
-
-  errorMessageToDisplay = useHour12
-    ? showSeconds
-      ? `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm:ss AP`
-      : `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm AP`
-    : showSeconds
-    ? `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm:ss`
-    : `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm`;
+  const timeFormat = `hh:mm${showSeconds ? ':ss' : ''}${useHour12 ? ' AP' : ''}`;
+  const errorMessageToDisplay = `TimePicker format must be valid and in the ${hourUnits} format ${timeFormat}.`;
 
   return {
     invalidInputErrorMessage: errorMessageToDisplay,
