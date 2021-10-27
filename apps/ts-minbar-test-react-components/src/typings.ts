@@ -22,10 +22,10 @@ export async function typings() {
   logger(`✔️ Dependencies were installed`);
 
   const lernaRoot = config.paths.allPackages();
-  const packedPackages = await packProjectPackages(logger, lernaRoot, ['@fluentui/react']);
+  const packedPackages = await packProjectPackages(logger, lernaRoot, ['@fluentui/react-components']);
   await addResolutionPathsForProjectPackages(tmpDirectory);
 
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, tmpDirectory);
+  await sh(`yarn add ${packedPackages['@fluentui/react-components']}`, tmpDirectory);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   fs.mkdirSync(path.resolve(tmpDirectory, 'src'));
