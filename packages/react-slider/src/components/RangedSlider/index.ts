@@ -3,4 +3,4 @@ export * from './RangedSlider.types';
 export * from './renderRangedSlider';
 export * from './useRangedSlider';
 export * from './useRangedSliderState';
-export * from './useRangedSliderStyles';
+export { rangedSliderClassName, useRangedSliderStyles } from './useRangedSliderStyles';
