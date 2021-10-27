@@ -216,7 +216,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </li>
             </ul>
           </div>
-          <div className={classNames.card} style={{}}>
+          <div className={classNames.card}>
             <TitleStack>
               <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
               <MarkdownHeader as="h3" className={classNames.cardTitle}>
