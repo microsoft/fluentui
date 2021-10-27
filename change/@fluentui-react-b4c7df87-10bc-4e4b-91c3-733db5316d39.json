@@ -1,9 +1,6 @@
 {
   "type": "patch",
-  "comment": {
-    "title": "",
-    "value": ""
-  },
+  "comment": "ComboBox: Fix hidden options in multiSelect mode",
   "packageName": "@fluentui/react",
   "email": "34309778+sgbdev@users.noreply.github.com",
   "dependentChangeType": "patch"
