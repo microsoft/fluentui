@@ -1,6 +1,5 @@
 import { css, ElementStyles } from "@microsoft/fast-element";
 import {
-  disabledCursor,
   display,
   ElementDefinitionContext,
   forcedColorsStylesheetBehavior,
@@ -14,10 +13,10 @@ import {
   designUnit,
   disabledOpacity,
   foregroundOnAccentRest,
-  neutralFillRest,
   neutralForegroundRest,
+  strokeWidth,
   typeRampBaseFontSize,
-  typeRampBaseLineHeight
+  typeRampBaseLineHeight,
 } from '../design-tokens';
 import { heightNumber } from '../styles';
 
@@ -36,7 +35,7 @@ ${display("block")} :host {
   font-size: ${typeRampBaseFontSize};
   line-height: ${typeRampBaseLineHeight};
   color: ${neutralForegroundRest};
-  width: 300px;
+  width: calc(calc(${heightNumber} + calc(${designUnit} * 2) + calc(${strokeWidth} * 2)) * 7px);
   text-align: center;
 }
 
@@ -61,37 +60,56 @@ ${display("block")} :host {
   box-sizing: border-box;
   min-height: calc(${heightNumber} * 1px);
   margin-bottom: calc(${designUnit} * 1px);
+  border: calc(${strokeWidth} * 1px) solid transparent;
 }
 
 .interact .day {
   cursor: pointer;
 }
 
-.day.inactive .date,
-.day.disabled .date {
+.day.inactive .date {
   opacity: ${disabledOpacity};
 }
 
+.day.disabled::before {
+  content: '';
+  display: block;
+  width: calc(${heightNumber} * .8px);
+  height: calc(${strokeWidth} * 1px);
+  background: currentColor;
+  position: absolute;
+  margin-top: calc(${typeRampBaseLineHeight} * .5);
+  margin-left: calc(calc(${typeRampBaseLineHeight} * .5) + calc(${designUnit} * 1px));
+  transform-origin: center;
+  transform: translate(-50%, calc(${designUnit} * 1px)) rotate(45deg);
+}
+
 .selected {
-  color: ${neutralForegroundRest};
-  background: ${neutralFillRest};
+  color: ${accentFillRest};
+  border: 1px solid ${accentFillRest};
+  background: var(--fill-color);
 }
 
 .selected + .selected {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left-width: calc(${controlCornerRadius} * 1px);
+  border-left-width: 0;
+  padding-left: calc(calc(${designUnit}  * 1px) + calc(${controlCornerRadius} * 1px));
   margin-left: calc(${controlCornerRadius} * -1px);
 }
 
 .date {
   padding: calc(${designUnit} * 1px);
   max-width: ${typeRampBaseLineHeight};
+  margin: 0 auto;
+}
+
+.today {
+  color: ${foregroundOnAccentRest};
 }
 
 .interact .today .date,
 .today .date {
-  color: ${foregroundOnAccentRest};
   background: ${accentFillRest};
   border-radius: 50%;
 }
