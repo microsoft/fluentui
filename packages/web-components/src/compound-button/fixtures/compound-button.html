@@ -1,0 +1,55 @@
+<style>
+  .grid-row {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    gap: 20px;
+  }
+</style>
+
+<h1>Button</h1>
+<p>enabled / disabled</p>
+
+<h4>Default</h4>
+<div class="grid-row">
+  <fluent-button>Button <span slot="end">Description in 'end' slot</span></fluent-button>
+  <fluent-button disabled>Button <span slot="end">Description in 'end' slot</span></fluent-button>
+</div>
+
+<h5>autofocus</h5>
+<div class="grid-row">
+  <fluent-button autofocus>Button <span slot="end">Description in 'end' slot</span></fluent-button>
+  <fluent-button autofocus disabled>Button <span slot="end">Description in 'end' slot</span></fluent-button>
+</div>
+
+<h4>Neutral</h4>
+<div class="grid-row">
+  <fluent-button appearance="neutral">Button <span slot="end">Description in 'end' slot</span></fluent-button>
+  <fluent-button appearance="neutral" disabled>Button <span slot="end">Description in 'end' slot</span></fluent-button>
+</div>
+
+<h4>Accent</h4>
+<div class="grid-row">
+  <fluent-button appearance="accent">Button <span slot="end">Description in 'end' slot</span></fluent-button>
+  <fluent-button appearance="accent" disabled>Button <span slot="end">Description in 'end' slot</span></fluent-button>
+</div>
+
+<h4>Lightweight</h4>
+<div class="grid-row">
+  <fluent-button appearance="lightweight">Button <span slot="end">Description in 'end' slot</span></fluent-button>
+  <fluent-button appearance="lightweight" disabled
+    >Button <span slot="end">Description in 'end' slot</span></fluent-button
+  >
+</div>
+
+<h4>Outline</h4>
+<div class="grid-row">
+  <fluent-button appearance="outline">Button <span slot="end">Description in 'end' slot</span></fluent-button>
+  <fluent-button appearance="outline" disabled>Button <span slot="end">Description in 'end' slot</span></fluent-button>
+</div>
+
+<h4>Stealth</h4>
+<div class="grid-row">
+  <fluent-button appearance="stealth">Button <span slot="end">Description in 'end' slot</span></fluent-button>
+  <fluent-button appearance="stealth" disabled>Button <span slot="end">Description in 'end' slot</span></fluent-button>
+</div>

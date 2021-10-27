@@ -13,6 +13,7 @@ export * from './button/';
 export * from './card/';
 export * from './checkbox/';
 export * from './combobox/';
+export * from './compound-button';
 export * from './data-grid';
 export * from './design-system-provider/';
 export * from './dialog/';

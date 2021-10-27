@@ -12,6 +12,7 @@ import { fluentButton } from './button/index';
 import { fluentCard } from './card/index';
 import { fluentCheckbox } from './checkbox/index';
 import { fluentCombobox } from './combobox/index';
+import { fluentCompoundButton } from './compound-button/index';
 import { fluentDataGrid, fluentDataGridCell, fluentDataGridRow } from './data-grid/index';
 import { fluentDesignSystemProvider } from './design-system-provider/index';
 import { fluentDialog } from './dialog/index';
@@ -51,6 +52,7 @@ export {
   fluentCard,
   fluentCheckbox,
   fluentCombobox,
+  fluentCompoundButton,
   fluentDataGrid,
   fluentDataGridCell,
   fluentDataGridRow,
@@ -100,6 +102,7 @@ export const allComponents = {
   fluentCard,
   fluentCheckbox,
   fluentCombobox,
+  fluentCompoundButton,
   fluentDataGrid,
   fluentDataGridCell,
   fluentDataGridRow,
