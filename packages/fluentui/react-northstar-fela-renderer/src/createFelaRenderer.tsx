@@ -46,21 +46,23 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   }
 }
 
-const blacklistedClassNames = [
-  // Blacklist contains a list of classNames that are used by FontAwesome
+const blocklistedClassNames = [
+  // Blocklist contains a list of classNames that are used by FontAwesome
   // https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
   'fa',
   'fas',
   'far',
   'fal',
   'fab',
+  // Used by https://github.com/fullcalendar/fullcalendar
+  'fc',
   // .cke is used by CKEditor
   'ck',
   'cke',
 ];
 
 const filterClassName = (className: string): boolean =>
-  className.indexOf('ad') === -1 && blacklistedClassNames.indexOf(className) === -1;
+  className.indexOf('ad') === -1 && blocklistedClassNames.indexOf(className) === -1;
 
 const rendererConfig = {
   devMode: felaDevMode,

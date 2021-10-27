@@ -125,4 +125,43 @@ describe('felaRenderer', () => {
     );
     expect(snapshot).toMatchSnapshot();
   });
+
+  test('felaRenderer with a lot of styles does not contain fc', () => {
+    const manyStyles = [...Array(146)].reduce((acc, _, idx) => {
+      acc[`placeholder-css-property-${idx}`] = 'initial';
+      return acc;
+    }, {});
+
+    const snapshot = createSnapshot(
+      <FelaComponent
+        style={{
+          cursor: 'zoom-in',
+          display: 'flex',
+          filter: 'blur(5px)',
+          height: 'min-content',
+          position: 'sticky',
+          transition: 'width 2s, height 2s, background-color 2s, transform 2s',
+          ':hover': {
+            backgroundImage: 'image-set("cat.png" 1x, "cat-2x.png" 2x)',
+            display: 'inline-flex',
+            height: 'fit-content',
+          },
+        }}
+      >
+        <FelaComponent
+          style={{
+            ...manyStyles,
+          }}
+        />
+      </FelaComponent>,
+      {},
+      felaRenderer,
+    );
+
+    const containsFc = snapshot.toString().indexOf('fc') !== -1;
+    const containsFd = snapshot.toString().indexOf('fd') !== -1;
+
+    expect(containsFc).toBeFalsy();
+    expect(containsFd).toBeTruthy();
+  });
 });
