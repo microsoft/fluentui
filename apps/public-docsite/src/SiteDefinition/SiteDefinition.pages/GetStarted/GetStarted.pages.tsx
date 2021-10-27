@@ -24,6 +24,18 @@ export const GetStartedPages: INavPage = {
           ),
       },
     ],
+    wc: [
+      {
+        title: 'Get started',
+        url: '#/get-started/wc',
+        isHiddenFromMainNav: true,
+        component: () => <LoadingComponent title="Get started" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+          ),
+      },
+    ],
     ios: [
       {
         title: 'Get started',
