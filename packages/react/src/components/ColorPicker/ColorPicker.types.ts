@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { ITheme, IStyle } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { IColor } from '../../utilities/color/interfaces';
+import type { ITooltipHostProps } from '../../Tooltip';
 
 /**
  * {@docCategory ColorPicker}
@@ -109,6 +110,11 @@ export interface IColorPickerProps {
    * @defaultvalue false
    */
   showPreview?: boolean;
+
+  /**
+   * Optional props to pass through to the error message tooltips
+   */
+  tooltipProps?: ITooltipHostProps;
 }
 
 export interface IColorPickerStrings {

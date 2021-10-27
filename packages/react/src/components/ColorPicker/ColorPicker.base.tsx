@@ -169,6 +169,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       alphaType,
       // eslint-disable-next-line deprecation/deprecation
       alphaSliderHidden = alphaType === 'none',
+      tooltipProps,
     } = props;
     const { color } = this.state;
     const useTransparency = alphaType === 'transparency';
@@ -253,7 +254,12 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                   const tooltipContent = this._getTooltipValue(comp);
                   return (
                     <td key={comp}>
-                      <TooltipHost content={tooltipContent} directionalHint={DirectionalHint.bottomCenter} role="alert">
+                      <TooltipHost
+                        content={tooltipContent}
+                        directionalHint={DirectionalHint.bottomCenter}
+                        role="alert"
+                        {...tooltipProps}
+                      >
                         <TextField
                           className={classNames.input}
                           onChange={this._textChangeHandlers[comp]}
