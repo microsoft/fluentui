@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "lib": ["es5", "dom", "es2015.collection"],
+    "lib": ["es2015", "dom"],
     "target": "es5",
-    "strict": true
+    "strict": true,
+    "declaration": true,
+    "experimentalDecorators": true,
+    "isolatedModules": true,
+    "typeRoots": ["./typings", "./node_modules/@types"],
+    "types": ["custom-global", "inline-style-expand-shorthand"]
   },
   "include": ["src"]
 }
