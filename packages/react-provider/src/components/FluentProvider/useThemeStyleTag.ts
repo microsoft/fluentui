@@ -11,7 +11,7 @@ import type { FluentProviderState } from './FluentProvider.types';
 export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
 
-  const styleTagId = useId('fluent-provider');
+  const styleTagId = useId('fui-FluentProvider');
   const styleTag = React.useMemo(() => {
     if (!targetDocument) {
       return null;

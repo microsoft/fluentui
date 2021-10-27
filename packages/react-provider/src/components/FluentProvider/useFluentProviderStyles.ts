@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { FluentProviderState } from './FluentProvider.types';
 
+export const fluentProviderClassName = 'fui-FluentProvider';
+
 const useStyles = makeStyles({
   root: theme => ({
     color: theme.colorNeutralForeground1,
@@ -15,7 +17,7 @@ const useStyles = makeStyles({
 export const useFluentProviderStyles = (state: FluentProviderState) => {
   const styles = useStyles();
 
-  state.root.className = mergeClasses(state.themeClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(fluentProviderClassName, state.themeClassName, styles.root, state.root.className);
 
   return state;
 };
