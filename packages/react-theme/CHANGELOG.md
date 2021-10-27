@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Oct 2021 12:14:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.1..@fluentui/react-theme_v9.0.0-beta.2)
+
+### Changes
+
+- fix(reat-theme): Remove template literal types for color palette ([PR #20251](https://github.com/microsoft/fluentui/pull/20251) by lingfangao@hotmail.com)
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.1)
 
