@@ -2,6 +2,8 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
 
+export const toggleButtonClassName = 'fui-ToggleButton';
+
 const useCheckedStyles = makeStyles({
   // Base styles
   base: theme => ({
@@ -161,6 +163,8 @@ export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonSta
   const { appearance, checked, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
+    toggleButtonClassName,
+
     // Checked styles
     checked && checkedStyles.base,
     appearance && checked && checkedStyles[appearance],
