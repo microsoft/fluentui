@@ -224,7 +224,6 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/styles/wc', 'Styles')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/wc', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/wc', 'Get started')}</li>
             </ul>
