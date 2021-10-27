@@ -262,18 +262,13 @@ export const anchorStyles: (context: ElementDefinitionContext, definition: Found
 export class Avatar extends Avatar_2 {
     accentSourceColor: string;
     appearance: AvatarAppearance;
-    // @internal (undocumented)
-    connectedCallback(): void;
 }
 
 // @public
 export type AvatarAppearance = 'neutral' | 'accent';
 
 // @public (undocumented)
-export const avatarSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const avatarSizeRecipe: DesignToken<Recipe<string>>;
+export const avatarSize: CSSDesignToken<number>;
 
 // @public
 export const avatarStyles: (context: ElementDefinitionContext, definition: AvatarOptions) => ElementStyles;
@@ -1649,13 +1644,13 @@ export const typeRampPlus6LineHeight: CSSDesignToken<string>;
 //
 // dist/dts/color/palette.d.ts:70:5 - (ae-forgotten-export) The symbol "create" needs to be exported by the entry point index.d.ts
 // dist/dts/color/palette.d.ts:71:5 - (ae-forgotten-export) The symbol "from" needs to be exported by the entry point index.d.ts
-// dist/dts/custom-elements.d.ts:49:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
-// dist/dts/custom-elements.d.ts:51:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
-// dist/dts/custom-elements.d.ts:54:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
-// dist/dts/custom-elements.d.ts:91:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
-// dist/dts/custom-elements.d.ts:92:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
-// dist/dts/custom-elements.d.ts:93:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
-// dist/dts/custom-elements.d.ts:94:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+// dist/dts/custom-elements.d.ts:50:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
+// dist/dts/custom-elements.d.ts:53:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
+// dist/dts/custom-elements.d.ts:56:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
+// dist/dts/custom-elements.d.ts:93:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
+// dist/dts/custom-elements.d.ts:94:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
+// dist/dts/custom-elements.d.ts:95:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
+// dist/dts/custom-elements.d.ts:96:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 
