@@ -91,7 +91,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
       showXAxisPath: 'Dont use this property. Axis line removed default.',
       showYAxisPath: 'Dont use this property. No need to display Y axis path. Handling default',
-      showXAxisGridLines: 'Dont use this proprty. Handling with default value.',
+      showXAxisGridLines: 'Dont use this property. Handling with default value.',
       legendColor: 'Dont use this property. colour will pick from given data.',
     });
     this._refArray = [];
@@ -289,7 +289,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
-      // Not rendaring data with 0.
+      // Not rendering data with 0.
       pointData.data &&
         singleGroup.push(
           <rect

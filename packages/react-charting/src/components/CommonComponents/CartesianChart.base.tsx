@@ -11,6 +11,7 @@ import {
 } from '../../index';
 import {
   ChartHoverCard,
+  convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
   getAccessibleDataObject,
@@ -290,6 +291,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 Legend={calloutProps.legend!}
                 YValue={calloutProps.YValue!}
                 color={calloutProps.color!}
+                culture={this.props.culture}
                 {...chartHoverProps}
               />
             )}
@@ -313,7 +315,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData)}
           >
-            {calloutProps!.hoverXValue}
+            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
           </div>
         </div>
         <div
@@ -389,12 +391,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       toDrawShape,
     });
 
+    const { culture } = this.props;
+    const yValue = convertToLocaleString(xValue.y, culture);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
           {yValueHoverSubCountsExists && (
             <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-              {xValue.legend!} ({xValue.y})
+              {xValue.legend!} ({yValue})
             </div>
           )}
           <div id={`${index}_${xValue.y}`} className={_classNames.calloutBlockContainer}>
@@ -410,7 +414,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data}
+                {convertToLocaleString(
+                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                  culture,
+                )}
               </div>
             </div>
           </div>
@@ -421,13 +428,15 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       return (
         <div style={marginStyle}>
           <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-            {xValue.legend!} ({xValue.y})
+            {xValue.legend!} ({yValue})
           </div>
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {subcountName}</div>
-                <div className={_classNames.calloutContentY}>{subcounts[subcountName]}</div>
+                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutContentY}>
+                  {convertToLocaleString(subcounts[subcountName], culture)}
+                </div>
               </div>
             );
           })}
