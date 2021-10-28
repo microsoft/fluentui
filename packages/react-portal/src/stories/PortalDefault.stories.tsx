@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Portal } from './index';
+import { Portal } from '../Portal'; // codesandbox-dependency: @fluentui/react-portal ^9.0.0-beta
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -44,24 +44,4 @@ export const Default = () => {
       </Container>
     </Container>
   );
-};
-
-export const Nested = () => {
-  return (
-    <Container>
-      <Container>
-        <Portal>
-          <ExamplePortalContent>Outer portal</ExamplePortalContent>
-          <Portal>
-            <ExamplePortalContent>Inner portal</ExamplePortalContent>
-          </Portal>
-        </Portal>
-      </Container>
-    </Container>
-  );
-};
-
-export default {
-  title: 'Components/Portal',
-  component: Portal,
 };

@@ -154,6 +154,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
         />
         <div style={rootStyle}>
           <LineChart
+            culture={window.navigator.language}
             data={data}
             legendsOverflowText={'Overflow Items'}
             yMinValue={200}
