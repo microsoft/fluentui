@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Broke up stories added codesandbox refs",
+  "packageName": "@fluentui/react-portal",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

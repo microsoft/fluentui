@@ -15,4 +15,5 @@ module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookCon
 
     return localConfig;
   },
+  previewHead: rootMain.previewHead,
 });

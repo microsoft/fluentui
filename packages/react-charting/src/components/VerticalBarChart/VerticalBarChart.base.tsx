@@ -256,6 +256,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           {...(index === 0 && { XValue: `${hoverXValue || item.data}` })}
           color={item.color}
           YValue={item.data || item.y}
+          culture={this.props.culture}
         />
       );
     });
@@ -270,6 +271,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           Legend={props.legend}
           YValue={props.yAxisCalloutData || props.y}
           color={!useSingleColor && props.color ? props.color : this._createColors()(props.y)}
+          culture={this.props.culture}
         />
       </>
     );

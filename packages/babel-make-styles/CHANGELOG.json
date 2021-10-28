@@ -2,6 +2,39 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Wed, 27 Oct 2021 12:14:12 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/babel-make-styles",
+            "commit": "94f8668470838fa6d9ed3d2aa0dbeb1b0a8d6360",
+            "comment": "Handle styles defined in an arrow function without any params"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-make-styles",
+            "comment": "Bump @fluentui/make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-make-styles",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-make-styles",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Oct 2021 10:37:22 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-beta.1",
       "version": "9.0.0-beta.1",

@@ -26,6 +26,11 @@ describe('Tabs', () => {
     Component: Tabs,
     displayName: 'Tabs',
     skipAsPropTests: true,
+    testOptions: {
+      'consistent-callback-args': {
+        ignoreProps: ['onTabClick'],
+      },
+    },
   });
 
   it('can be focused', () => {

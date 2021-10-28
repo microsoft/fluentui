@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add oft files to file type icon map",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "hjorturj@microsoft.com",
-  "dependentChangeType": "patch"
-}

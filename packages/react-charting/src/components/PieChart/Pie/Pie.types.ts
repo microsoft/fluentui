@@ -35,6 +35,11 @@ export interface IPieProps {
    */
   /* eslint-disable @typescript-eslint/no-explicit-any */
   pie?: any;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IPieStyles {
