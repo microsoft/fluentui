@@ -2,6 +2,20 @@
 
 Input has many variants and additional features. We don't plan to implement any of these immediately, but adding notes here for future reference.
 
+## Bookends
+
+"Bookends" (the naming comes from the design spec) are bits of text on the left or right outside of the field, surrounded by a border or background color.
+
+Initially, bookends were planned to be included in the main component (as `bookendBefore`/`bookendAfter` slots) but we decided they're not essential and should be split out to simplify the DOM structure and defer some of the related open questions until later.
+
+If/when a partner needs this feature, it will likely go in some kind of wrapper component.
+
+Visual variants for the bookends are as follows (note that specific colors are just examples based on the default theme):
+
+- `filled` (default): bookends have a gray background, black text, and no border
+- `brand`: bookends have a brand color (such as blue or purple) background, white text, and no border
+- `transparent`: bookends have a transparent background, black text, and only a thin inside border to distinguish them from the field
+
 ## Multi-line (`textarea`)
 
 This will tentatively be a separate component, likely sharing some internals with the basic `Input` using hooks (scheduling TBD).

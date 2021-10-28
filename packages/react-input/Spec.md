@@ -6,7 +6,9 @@
 
 `Input` in its most basic form is a text input field abstracting `<input type="text" />`.
 
-In some libraries it also abstracts a `textarea` (multi-line text input). It may also have features such as a label and start/end slots built in.
+It can also be used to render other text-based input types, such as `password` or `email`, but **is not intended for non-text input types** such as `checkbox` (those are handled in separate components).
+
+In some libraries, the equivalent component also abstracts a `textarea` (multi-line text input) and may have features such as a label and start/end slots built in.
 
 ## Prior Art
 
@@ -32,17 +34,15 @@ Please see the [migration guide](#migration-guide) section.
 See [Structure section](#structure) for the output HTML.
 
 ```tsx
-<Label htmlFor="input1">Label</Label> // note that this is not built in
+<Label htmlFor="input1">Label</Label> // note that the label is not built in
 <Input
   className="rootClass"
   input={{ className: 'inputClass' }}
   id="input1"
   value="something"
   onChange={(ev, data) => console.log(data.value)}
-  bookendBefore="bookendBefore"
-  bookendAfter="bookendAfter"
-  insideBefore={<SearchIcon />}
-  insideAfter={<ClearIcon />}
+  contentBefore={<SearchIcon />}
+  contentAfter={<ClearIcon />}
 />
 ```
 
@@ -50,20 +50,14 @@ See [Structure section](#structure) for the output HTML.
 
 ### Visual variants
 
-See the design spec for details on the appearance of each of these. Note that the actual colors used will follow the theme; white/gray/black are just examples from the default theme.
-
-Visual variants for the main field are as follows:
+Visual variants are as follows:
 
 - `outline` (default): the field has a full outline, with a slightly darker underline on the bottom
 - `underline`: the field has an underline on the bottom only
 - `filledDarker`: the field has a gray background and no underline/outline
 - `filledLighter`: the field has a white background and no underline/outline (for use on top of gray/colored backgrounds)
 
-Visual variants for the bookend are as follows:
-
-- `filled` (default): bookends have a gray background, black text, and no border
-- `brand`: bookends have a brand color (such as blue or purple) background, white text, and no border
-- `transparent`: bookends have a transparent background, black text, and only a thin inside border to distinguish them from the field
+See the design spec for details on each of these. (Note that the actual colors used will follow the theme; white/gray are just examples from the default theme.)
 
 ### Behavior variants
 
@@ -98,12 +92,6 @@ export type InputCommons = FieldSizeProps & {
    * @default 'outline'
    */
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-
-  /**
-   * Controls the colors and borders of the bookends.
-   * @default 'filled'
-   */
-  bookendAppearance?: 'filled' | 'brand' | 'transparent';
 };
 ```
 
@@ -117,9 +105,10 @@ export type FieldSize = 'small' | 'medium' | 'large';
 export type FieldSizeProps = {
   /**
    * Size of the input (changes the font size and spacing).
-   * NOTE: can't use `size` as the name due to overlap with a native input prop :(
    * @default 'medium'
    */
+  // NOTE: can't use `size` as the name due to overlap with a native input prop
+  // (see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attributes)
   fieldSize?: FieldSize;
 };
 ```
@@ -146,7 +135,10 @@ Note that the field **does not** include a label, required indicator, descriptio
 
 ```ts
 export type InputSlots = {
-  /** Wrapper element for all parts of the component. */
+  /**
+   * Wrapper element which visually appears to be the input and is used for borders, focus styling, etc.
+   * (A wrapper is needed to properly position `contentBefore` and `contentAfter` relative to `input`.)
+   */
   root: IntrinsicShorthandProps<'span'>;
 
   /**
@@ -156,23 +148,11 @@ export type InputSlots = {
    */
   input: IntrinsicShorthandProps<'input'>;
 
-  /**
-   * Wrapper element containing `insideBefore`, `input`, and `insideAfter`. This is the element that
-   * visually appears to be the input and is used for borders, focus styling, etc.
-   */
-  inputWrapper: IntrinsicShorthandProps<'span'>;
+  /** Element before the input text, within the input border */
+  contentBefore?: IntrinsicShorthandProps<'span'>;
 
-  /** Element before the input field, visually separated from it */
-  bookendBefore?: IntrinsicShorthandProps<'span'>;
-
-  /** Element after the input field, visually separated from it */
-  bookendAfter?: IntrinsicShorthandProps<'span'>;
-
-  /** Element at the start of the input field, visually appearing to be inside of it */
-  insideBefore?: IntrinsicShorthandProps<'span'>;
-
-  /** Element at the end of the input field, visually appearing to be inside of it */
-  insideAfter?: IntrinsicShorthandProps<'span'>;
+  /** Element after the input text, within the input border */
+  contentAfter?: IntrinsicShorthandProps<'span'>;
 };
 ```
 
@@ -185,22 +165,17 @@ In this component, `input` is the primary slot. Per the [native element props/pr
   /* Out of top-level native props, only `className` and `style` go here */
 }
 <slots.root {...slotProps.root}>
-  <slots.bookendBefore {...slotProps.bookendBefore} />
-  {/* This is visually styled to look like the input */}
-  <slots.inputWrapper {...slotProps.inputWrapper}>
-    <slots.insideBefore {...slotProps.insideBefore} />
-    {/* Primary slot. Top-level native props except `className` and `style` go here. */}
-    <slots.input {...slotProps.input} />
-    <slots.insideAfter {...slotProps.insideAfter} />
-  </slots.inputWrapper>
-  <slots.bookendAfter {...slotProps.bookendAfter} />
+  <slots.contentBefore {...slotProps.contentBefore} />
+  {/* Primary slot. Top-level native props except `className` and `style` go here. */}
+  <slots.input {...slotProps.input} />
+  <slots.contentAfter {...slotProps.contentAfter} />
 </slots.root>;
 ```
 
 Notes on the HTML rendering:
 
 - Using `span` rather than `div` prevents nesting errors if the Input is rendered inline within a `<p>`.
-- There's an extra `inputWrapper` span which is visually styled as the input (with borders etc) so that the `insideBefore`, `insideAfter`, and actual `input` elements can easily be properly positioned inside it.
+- The root is visually styled as the input (with borders etc) and the `contentBefore`, `contentAfter`, and actual `input` elements are positioned inside it.
 
 This example usage:
 
@@ -212,10 +187,8 @@ This example usage:
   id="input1"
   value="something"
   onChange={(ev, data) => console.log(data.value)}
-  bookendBefore="bookendBefore"
-  bookendAfter="bookendAfter"
-  insideBefore={<SearchIcon />}
-  insideAfter={<ClearIcon />}
+  contentBefore={<SearchIcon />}
+  contentAfter={<ClearIcon />}
 />
 ```
 
@@ -223,22 +196,17 @@ Gives this HTML:
 
 ```html
 <span className="rootClass" style="background: red">
-  <span>bookendBefore</span>
-  <!-- inputWrapper -->
-  <span>
-    <span><!-- insideBefore content here --></span>
-    <!-- input: type="text" is applied automatically -->
-    <input
-      type="text"
-      className="inputClass"
-      style="background: blue"
-      id="input1"
-      value="something"
-      onChange="(function)"
-    />
-    <span><!-- insert insideAfter content here --></span>
-  </span>
-  <span>bookendAfter</span>
+  <span><!-- contentBefore here --></span>
+  <!-- input: type="text" is applied automatically -->
+  <input
+    type="text"
+    className="inputClass"
+    style="background: blue"
+    id="input1"
+    value="something"
+    onChange="(function)"
+  />
+  <span><!-- contentAfter here --></span>
 </span>
 ```
 
@@ -261,7 +229,7 @@ Keyboard, cursor, touch, and screen reader interaction will be handled automatic
 - The `<input>` is visible and shows the placeholder or value text.
 - The component doesn't provide a built-in label, so it's important for the user to pass in appropriate attributes such as `id` (associated with a label using `htmlFor`), `aria-label`, or `aria-labelledby`.
 - No features in the initial implementation require manipulation of focus, tab order, or key handling.
-- Visual states for focus and hover will be applied to `inputWrapper` rather than the `<input>` itself (which is rendered without a border and only used to show the text), because the `insideBefore` and `insideAfter` slots need to visually appear to be within the input.
+- Visual states for focus and hover will be applied to `root` rather than the `<input>` itself (which is rendered without a border and only used to show the text), because the `contentBefore` and `contentAfter` slots need to visually appear to be within the input.
 
 ## Migration
 
@@ -285,10 +253,10 @@ Keyboard, cursor, touch, and screen reader interaction will be handled automatic
 | label position               | n/a (use styling)                                     | `labelPosition?: 'above' \| 'inline' \| 'inside'`           | handled by Field                        |
 | description                  | `description?: string`, `onRenderDescription`         | use FormField                                               | handled by Field                        |
 | error message                | see [Spec-variants.md](./Spec-variants.md#validation) | use FormField                                               | handled by Field                        |
-| content outside before field | `prefix?: string`, `onRenderPrefix`                   |                                                             | `bookendBefore` slot                    |
-| content outside after field  | `suffix?: string`, `onRenderSuffix`                   |                                                             | `bookendAfter` slot                     |
-| icon at start of field       | n/a                                                   | `icon?: ShorthandValue<BoxProps>` + `iconPosition: 'start'` | `insideBefore` slot                     |
-| icon at end of field         | `iconProps?: IIconProps`                              | `icon?: ShorthandValue<BoxProps>` + `iconPosition: 'end'`   | `insideAfter` slot                      |
+| content outside before field | `prefix?: string`, `onRenderPrefix`                   | n/a                                                         | TBD (deferred)                          |
+| content outside after field  | `suffix?: string`, `onRenderSuffix`                   | n/a                                                         | TBD (deferred)                          |
+| icon at start of field       | n/a                                                   | `icon?: ShorthandValue<BoxProps>` + `iconPosition: 'start'` | `contentBefore` slot                    |
+| icon at end of field         | `iconProps?: IIconProps`                              | `icon?: ShorthandValue<BoxProps>` + `iconPosition: 'end'`   | `contentAfter` slot                     |
 | value                        | `value?: string`                                      | `value?: string \| number`                                  | `value?: string`                        |
 | defaultValue                 | `defaultValue?: string`                               | `defaultValue?: string \| string[]`                         | `defaultValue?: string`                 |
 | onChange                     | `(ev, value) => void`                                 | `(ev, data: { ...props, value }) => void`                   | `(ev, data: { value: string }) => void` |
