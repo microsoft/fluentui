@@ -37,6 +37,11 @@ export interface IChartHoverCardProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IChartHoverCardStyleProps, IChartHoverCardStyles>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IChartHoverCardStyles {
