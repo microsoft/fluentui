@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "added disabled state for detailsRow",
   "packageName": "office-ui-fabric-react",
   "email": "surya.ravva@microsoft.com",
