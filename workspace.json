@@ -555,8 +555,8 @@
       "root": "apps/todo-app",
       "projectType": "application"
     },
-    "ts-minbar-test-react": {
-      "root": "apps/ts-minbar-test-react",
+    "ts-minbar-test-react-components": {
+      "root": "apps/ts-minbar-test-react-components",
       "projectType": "application"
     },
     "vr-tests": {
