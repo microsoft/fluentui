@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders a default button 1`] = `
+exports[`Button when rendered as a button renders correctly 1`] = `
 <div>
   <button
     class=""
@@ -15,7 +15,6 @@ exports[`Button when rendered as an anchor renders correctly 1`] = `
 <div>
   <a
     class=""
-    data-testid="test-button"
     href="https://www.bing.com"
     role="button"
     tabindex="0"
