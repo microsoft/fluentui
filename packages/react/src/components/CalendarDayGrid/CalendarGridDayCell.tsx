@@ -253,7 +253,6 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         aria-disabled={!ariaHidden && !day.isInBounds}
         type="button"
         role="gridcell" // create grid structure
-        aria-readonly={true} // prevent grid from being "editable"
         tabIndex={isNavigatedDate ? 0 : undefined}
       >
         <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
