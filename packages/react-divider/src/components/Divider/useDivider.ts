@@ -4,8 +4,8 @@ import type { DividerProps, DividerState } from './Divider.types';
 
 /**
  * Returns the props and state required to render the component
- * @param props - User provided props to the Divider component.
- * @param ref - User provided ref to be passed to the Divider component.
+ * @param props - User-provided props to the Divider component.
+ * @param ref - User-provided ref to be passed to the Divider component.
  */
 export const useDivider = (props: DividerProps, ref: React.Ref<HTMLElement>): DividerState => {
   const { alignContent = 'center', appearance, inset = false, vertical = false, wrapper } = props;
