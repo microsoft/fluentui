@@ -11,7 +11,7 @@ type PackedPackages = Record<string, string>;
 /** Shared packed packages between tests since they're not modified by any test */
 let packedPackages: PackedPackages;
 
-function flattenPackageGraph(rootPackages: string[], projectGraph: any, packageList: string[] = []): string[] {
+function flattenPackageGraph(rootPackages: string[], projectGraph, packageList: string[] = []): string[] {
   rootPackages.forEach(packageName => {
     packageList.push(packageName);
 
@@ -64,9 +64,9 @@ export async function packProjectPackages(
     requiredPackages.map(async packageName => {
       const filename = path.join(tmpDirectory, path.basename(packageName)) + '.tgz';
       const packageInfo = projectPackages.find(pkg => pkg.name === packageName);
-      const packagePath = packageInfo ? packageInfo.location : '';
+      const packagePath = packageInfo.location;
 
-      const entryPointPath = packageInfo && packageInfo.main && path.join(packagePath, packageInfo.main);
+      const entryPointPath = packageInfo.main && path.join(packagePath, packageInfo.main);
       if (entryPointPath && !fs.existsSync(entryPointPath)) {
         throw new Error(
           `Package ${packageName} does not appear to have been built yet. Please ensure that root package(s) ` +
