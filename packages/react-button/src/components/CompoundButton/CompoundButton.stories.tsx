@@ -1,0 +1,44 @@
+// import * as React from 'react';
+// import { CompoundButton } from '../../CompoundButton';
+
+// export const Default = () => (
+//   <CompoundButton secondaryContent="This is the secondary content">This is a compound button</CompoundButton>
+// );
+
+// export default {
+//   title: 'Components/CompoundButton',
+//   component: CompoundButton,
+// };
+
+import * as React from 'react';
+import { Meta } from '@storybook/react';
+import { CompoundButton } from '../../CompoundButton';
+import descriptionMd from './CompoundButtonDescription.md';
+import bestPracticesMd from '../Button/ButtonBestPractices.md';
+
+export { Default } from './stories/CompoundButtonDefault.stories';
+export { Shape } from './stories/CompoundButtonShape.stories';
+export { Appearance } from './stories/CompoundButtonAppearance.stories';
+export { Icon } from './stories/CompoundButtonIcon.stories';
+export { Size } from './stories/CompoundButtonSize.stories';
+export { Disabled } from './stories/CompoundButtonDisabled.stories';
+export { WithLongText } from './stories/CompoundButtonWithLongText.stories';
+
+export default {
+  title: 'Components/CompoundButton',
+  component: CompoundButton,
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd, bestPracticesMd].join('\n'),
+      },
+    },
+  },
+  decorators: [
+    Story => (
+      <div>
+        <Story />
+      </div>
+    ),
+  ],
+} as Meta;
