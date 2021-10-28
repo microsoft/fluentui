@@ -170,7 +170,7 @@ export class KeytipTree {
     // We did not find any visible elements associated with any of the nodes.
     // We may be dealing with a keytip that is a submenu in an OverflowSet.
     // Worst case, fall back to the first node returned
-    const overflowNode = matchingNodes.find(node => node.hasOverflowSubMenu);
+    const overflowNode = matchingNodes.find(matchingNode => matchingNode.hasOverflowSubMenu);
     return overflowNode || node;
   }
 

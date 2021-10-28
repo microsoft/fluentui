@@ -27,7 +27,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
     const element = getFirstVisibleElementFromSelector(keytipTarget);
 
     if (!element) {
-      return <React.Fragment></React.Fragment>;
+      return <></>;
     }
 
     keytipTarget = element;

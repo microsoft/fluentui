@@ -360,8 +360,10 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 
 /**
  * Determines if an element is visible and not hidden
- * @param element Element to check
+ * @param element - Element to check
  * @returns Returns true if the given element is visible and not hidden
+ *
+ * @public
  */
 export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean {
   return (
