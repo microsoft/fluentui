@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Slider: support aria-labelledby prop",
-  "packageName": "@fluentui/react",
-  "email": "trang.thule@zoho.com",
-  "dependentChangeType": "patch"
-}

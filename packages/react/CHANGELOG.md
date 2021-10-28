@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 27 Oct 2021 07:29:16 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Oct 2021 07:29:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.37.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.5)
+
+Thu, 28 Oct 2021 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.4..@fluentui/react_v8.37.5)
+
+### Patches
+
+- Slider: support aria-labelledby prop ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by trang.thule@zoho.com)
 
 ## [8.37.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.4)
 
