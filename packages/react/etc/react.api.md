@@ -5555,6 +5555,7 @@ export interface IKeytipProps {
     disabled?: boolean;
     hasDynamicChildren?: boolean;
     hasMenu?: boolean;
+    hasOverflowSubMenu?: boolean;
     keySequences: string[];
     offset?: Point;
     onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
