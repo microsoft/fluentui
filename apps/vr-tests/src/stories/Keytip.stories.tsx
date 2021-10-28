@@ -2,7 +2,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
-import { Keytip } from '@fluentui/react';
+import { Keytip, DefaultButton } from '@fluentui/react';
 
 storiesOf('Keytip', module)
   .addDecorator(story => (
@@ -24,25 +24,19 @@ storiesOf('Keytip', module)
   )
   .addStory('Root', () => (
     <>
-      <button data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a">
-        Button
-      </button>
+      <DefaultButton data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a" label="button" />
       <Keytip content={'A'} keySequences={['a']} visible={true} />
     </>
   ))
   .addStory('Disabled', () => (
     <>
-      <button data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a">
-        Button
-      </button>
+      <DefaultButton data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a" label="button" />
       <Keytip content={'A'} keySequences={['a']} visible={true} disabled={true} />
     </>
   ))
   .addStory('Offset', () => (
     <>
-      <button data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a">
-        Button
-      </button>
+      <DefaultButton data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a" label="button" />
       <Keytip content={'A'} keySequences={['a']} visible={true} offset={{ x: 15, y: 15 }} />
     </>
   ));
