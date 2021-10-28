@@ -3,7 +3,7 @@ import { getSlots } from '@fluentui/react-utilities';
 import { DividerSlots, DividerState } from './Divider.types';
 
 /**
- * Renders a Divider component by passing the state defined props to the appropriate slots.
+ * Renders a Divider component by passing the slot props (defined in `state`) to the appropriate slots.
  */
 export const renderDivider = (state: DividerState) => {
   const { slots, slotProps } = getSlots<DividerSlots>(state, ['root', 'wrapper']);
