@@ -61,6 +61,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     className,
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
     enableUpdateAnimations,
+    disabled,
   } = props;
 
   const { palette, fonts } = theme;
@@ -285,6 +286,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     },
 
     compact && cellCompactStyles,
+    disabled && { opacity: 0.5 },
   ];
 
   return {
