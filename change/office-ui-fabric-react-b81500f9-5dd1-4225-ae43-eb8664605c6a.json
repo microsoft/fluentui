@@ -3,5 +3,5 @@
   "comment": "added disabled state for detailsRow",
   "packageName": "office-ui-fabric-react",
   "email": "surya.ravva@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "minor"
 }
