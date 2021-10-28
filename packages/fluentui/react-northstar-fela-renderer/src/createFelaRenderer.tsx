@@ -47,7 +47,6 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
 }
 
 const blocklistedClassNames = [
-  'ad',
   // Blocklist contains a list of classNames that are used by FontAwesome
   // https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
   'fa',
@@ -62,7 +61,11 @@ const blocklistedClassNames = [
   'cke',
 ];
 
-const filterClassName = (className: string): boolean => blocklistedClassNames.indexOf(className) === -1;
+const filterClassName = (className: string): boolean => {
+  // Also ensure that class name does not contain 'ad' as it might
+  // cause compatibility issues regarding Ad blockers.
+  return className.indexOf('ad') === -1 && blocklistedClassNames.indexOf(className) === -1;
+};
 
 const rendererConfig = {
   devMode: felaDevMode,
