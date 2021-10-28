@@ -22,10 +22,27 @@ storiesOf('Keytip', module)
       {story()}
     </Screener>,
   )
-  .addStory('Root', () => <Keytip content={'A'} keySequences={['a']} visible={true} />)
+  .addStory('Root', () => (
+    <>
+      <button data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a">
+        Button
+      </button>
+      <Keytip content={'A'} keySequences={['a']} visible={true} />
+    </>
+  ))
   .addStory('Disabled', () => (
-    <Keytip content={'A'} keySequences={['a']} visible={true} disabled={true} />
+    <>
+      <button data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a">
+        Button
+      </button>
+      <Keytip content={'A'} keySequences={['a']} visible={true} disabled={true} />
+    </>
   ))
   .addStory('Offset', () => (
-    <Keytip content={'A'} keySequences={['a']} visible={true} offset={{ x: 15, y: 15 }} />
+    <>
+      <button data-ktp-target="ktp-a" data-ktp-execute-target="ktp-a">
+        Button
+      </button>
+      <Keytip content={'A'} keySequences={['a']} visible={true} offset={{ x: 15, y: 15 }} />
+    </>
   ));
