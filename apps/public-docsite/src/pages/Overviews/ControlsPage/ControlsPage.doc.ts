@@ -8,7 +8,7 @@ export const ControlsPageProps: TFabricPlatformPageProps = {
     overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/web/ControlsOverview.md') as string,
     componentUrl,
   },
-  wc: {
+  webcomponents: {
     overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/wc/ControlsOverview.md') as string,
     componentUrl,
   },

@@ -4,7 +4,7 @@ export enum Platforms {
   /** 'default' will be used when there are no platforms for the relevant page/area. */
   default = 'default',
   web = 'web',
-  wc = 'wc',
+  webcomponents = 'webcomponents',
   ios = 'ios',
   android = 'android',
   mac = 'mac',

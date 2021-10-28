@@ -22,7 +22,7 @@ export const ControlsPages: INavPage = {
     require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage)),
   platforms: {
     web: controlsPagesWeb,
-    wc: controlsPagesWc,
+    webcomponents: controlsPagesWc,
     ios: controlsPagesIos,
     android: controlsPagesAndroid,
     mac: controlsPagesMac,

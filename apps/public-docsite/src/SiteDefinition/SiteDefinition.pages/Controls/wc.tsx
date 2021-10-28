@@ -4,7 +4,7 @@ import { INavPage, LoadingComponent } from '@fluentui/react-docsite-components/l
 export const controlsPagesWc: INavPage[] = [
   {
     title: 'Controls',
-    url: '#/controls/wc',
+    url: '#/controls/webcomponents',
     isHiddenFromMainNav: true,
     component: () => <LoadingComponent title="Controls" />,
     getComponent: cb =>

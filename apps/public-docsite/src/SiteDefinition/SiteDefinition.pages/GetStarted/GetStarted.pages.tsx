@@ -24,10 +24,10 @@ export const GetStartedPages: INavPage = {
           ),
       },
     ],
-    wc: [
+    webcomponents: [
       {
         title: 'Get started',
-        url: '#/get-started/wc',
+        url: '#/get-started/webcomponents',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
         getComponent: cb =>

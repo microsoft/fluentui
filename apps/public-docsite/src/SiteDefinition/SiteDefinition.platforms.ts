@@ -7,7 +7,7 @@ export const platforms: { [x in Platforms]?: IPlatform } = {
     icon: 'WebLogo-platformPicker',
     color: '#28A8EA',
   },
-  wc: {
+  webcomponents: {
     name: 'Web components',
     icon: 'WebLogo-platformPicker',
     color: '#f11d69',
