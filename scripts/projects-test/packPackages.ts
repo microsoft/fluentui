@@ -1,4 +1,6 @@
+//@ts-ignore
 import Project from '@lerna/project';
+//@ts-ignore
 import PackageGraph from '@lerna/package-graph';
 import sh from '../gulp/sh';
 import fs from 'fs-extra';
