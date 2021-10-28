@@ -96,7 +96,9 @@ export function useARIAButton<Required extends boolean = false>(
     else {
       delete shorthandProps.disabled;
       shorthandProps['aria-disabled'] = disabled || disabledFocusable;
-      shorthandProps.href = disabled ? undefined : shorthandProps.href;
+      (shorthandProps as IntrinsicShorthandProps<'a'>).href = disabled
+        ? undefined
+        : (shorthandProps as IntrinsicShorthandProps<'a'>).href;
       shorthandProps.onClick = onClickHandler;
       shorthandProps.onKeyDown = onKeyDownHandler;
       shorthandProps.onKeyUp = onKeyupHandler;
