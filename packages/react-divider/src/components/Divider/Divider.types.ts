@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@f
 
 export type DividerSlots = {
   /**
-   * Root of the component that renders as a <div> tag.
+   * Root of the component that renders as a `<div>` tag.
    */
   root: IntrinsicShorthandProps<'div'>;
 
