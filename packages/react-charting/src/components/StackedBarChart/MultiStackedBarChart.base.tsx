@@ -67,7 +67,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { data, theme } = this.props;
+    const { data, theme, culture } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
@@ -114,12 +114,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             {this.props.onRenderCalloutPerDataPoint ? (
               this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
             ) : (
-              <ChartHoverCard
-                Legend={legendName}
-                YValue={calloutYVal}
-                color={this.state.color}
-                culture={this.props.culture}
-              />
+              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} culture={culture} />
             )}
           </>
         </Callout>

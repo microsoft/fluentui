@@ -936,6 +936,7 @@ export const convertToLocaleString = (data: LocaleStringDataProps, culture?: str
   if (!data) {
     return data;
   }
+  culture = culture || undefined;
   if (typeof data === 'number') {
     return data.toLocaleString(culture);
   }
