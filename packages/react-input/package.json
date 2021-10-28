@@ -27,6 +27,7 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
+    "@fluentui/babel-make-styles": "9.0.0-beta.2",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/jest-serializer-make-styles": "9.0.0-beta.2",
     "@fluentui/react-conformance": "*",
