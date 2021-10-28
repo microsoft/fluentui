@@ -10,6 +10,8 @@ export { Default } from './AvatarDefault.stories';
 export { Active } from './AvatarActive.stories';
 export { ActiveAppearance } from './AvatarActiveAppearance.stories';
 export { Color } from './AvatarColor.stories';
+export { ColorNeutralBrand } from './AvatarColorNeutralBrand.stories';
+export { ColorColorful } from './AvatarColorColorful.stories';
 export { GetInitials } from './AvatarGetInitials.stories';
 export { Icon } from './AvatarIcon.stories';
 export { IdForColor } from './AvatarIdForColor.stories';
@@ -73,26 +75,9 @@ export default {
 //         <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
 //         <Avatar name={examples.name[3]} image={{ src: examples.image[3] }} badge={{ status: 'offline' }} />
 //       </StoryExample>
-//       <StoryExample title="Size">
-//         <Avatar size={20} name={examples.name[4]} image={{ src: examples.image[4] }} badge={{ status: 'offline' }} />
-//         <Avatar size={48} name={examples.name[5]} image={{ src: examples.image[5] }} badge={{ status: 'available' }} />
-//         <Avatar size={96} name={examples.name[6]} image={{ src: examples.image[6] }} badge={{ status: 'away' }} />
-//       </StoryExample>
 //       <StoryExample title="Brand color">
 //         <Avatar color="brand" name={examples.name[4]} badge={{ status: 'doNotDisturb' }} />
 //         <Avatar color="brand" badge={{ status: 'available' }} />
-//       </StoryExample>
-//       <StoryExample title="Colorful">
-//         <Avatar color="colorful" name={examples.name[13]} />
-//         <Avatar color="colorful" name={examples.name[14]} />
-//         <Avatar color="colorful" name={examples.name[15]} />
-//         <Avatar color="colorful" name={examples.name[16]} />
-//         <Avatar color="colorful" name={examples.name[17]} />
-//         <Avatar color="colorful" idForColor={examples.name[18]} />
-//         <Avatar color="colorful" idForColor={examples.name[19]} />
-//         <Avatar color="colorful" idForColor={examples.name[20]} />
-//         <Avatar color="colorful" idForColor={examples.name[21]} />
-//         <Avatar color="colorful" idForColor={examples.name[22]} />
 //       </StoryExample>
 //       <StoryExample title="Active/inactive">
 //         <div className={styles.flex}>

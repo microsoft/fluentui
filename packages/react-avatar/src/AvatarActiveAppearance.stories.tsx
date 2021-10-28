@@ -1,29 +1,20 @@
 import * as React from 'react';
 import { Avatar, AvatarProps } from './index';
 
-export const ActiveAppearance = (props: Partial<AvatarProps>) => {
-  return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div>
-        <Avatar active="active" activeAppearance="ring" {...props} />
-        <strong>ring</strong>
-      </div>
-      <div>
-        <Avatar active="active" activeAppearance="shadow" {...props} />
-        <strong>shadow</strong>
-      </div>
-      <div>
-        <Avatar active="active" activeAppearance="glow" {...props} />
-        <strong>glow</strong>
-      </div>
-      <div>
-        <Avatar active="active" activeAppearance="ring-shadow" {...props} />
-        <strong>ring-shadow</strong>
-      </div>
-      <div>
-        <Avatar active="active" activeAppearance="ring-glow" {...props} />
-        <strong>ring-glow</strong>
-      </div>
-    </div>
-  );
+export const ActiveAppearance = (props: Partial<AvatarProps>) => (
+  <div style={{ display: 'flex', gap: '32px' }}>
+    <Avatar {...props} active="active" activeAppearance="ring" />
+    <Avatar {...props} active="active" activeAppearance="shadow" />
+    <Avatar {...props} active="active" activeAppearance="glow" />
+    <Avatar {...props} active="active" activeAppearance="ring-shadow" />
+    <Avatar {...props} active="active" activeAppearance="ring-glow" />
+  </div>
+);
+
+ActiveAppearance.parameters = {
+  docs: {
+    description: {
+      story: 'You can customize the appearance of the active state.',
+    },
+  },
 };
