@@ -2,6 +2,7 @@
   "name": "@uifabric/fabric-website-resources",
   "version": "7.10.15",
   "description": "Fluent UI React local demo app",
+  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [

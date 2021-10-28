@@ -2,6 +2,7 @@
   "name": "@uifabric/api-docs",
   "version": "7.7.10",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
