@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add window.FabricConfig.legacyTheme, which actually calls loadTheme() which will invoke legacy theming",
+  "packageName": "@fluentui/style-utilities",
+  "email": "phkuo@microsoft.com",
+  "dependentChangeType": "patch"
+}
