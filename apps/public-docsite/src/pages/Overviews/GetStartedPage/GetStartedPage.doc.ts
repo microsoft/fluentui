@@ -9,7 +9,7 @@ export const GetStartedPageProps: TFabricPlatformPageProps = {
     componentUrl: componentUrl + '/web',
   },
   webcomponents: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/GetStartedPage/docs/wc/GetStartedOverview.md') as string,
+    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/GetStartedPage/docs/webcomponents/GetStartedOverview.md') as string,
     componentUrl: componentUrl + '/webcomponent',
   },
   ios: {
