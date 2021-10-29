@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 29 Oct 2021 07:29:08 GMT",
+      "tag": "@fluentui/react-charting_v5.4.0",
+      "version": "5.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "v-scharde@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e2ccb576856983ef9ff2390f69cbf9f8f63ca19c",
+            "comment": "Number localization for bar charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.37.6",
+            "commit": "0e0cf06c34f78d54db4468a602a17b0a5a30ac87"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Oct 2021 07:29:14 GMT",
       "tag": "@fluentui/react-charting_v5.3.61",
       "version": "5.3.61",

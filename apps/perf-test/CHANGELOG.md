@@ -1,8 +1,18 @@
 # Change Log - perf-test
 
-This log was last generated on Thu, 28 Oct 2021 07:29:14 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Oct 2021 07:29:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Fri, 29 Oct 2021 07:29:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.6 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.177 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
 
