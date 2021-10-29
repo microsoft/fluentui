@@ -83,6 +83,7 @@ ${display("block")} :host {
 .day,
 .week-day {
   padding: calc(${designUnit} * 1px);
+  border: 0;
 }
 
 .day {
@@ -90,6 +91,7 @@ ${display("block")} :host {
   min-height: calc(${heightNumber} * 1px);
   margin-bottom: calc(${designUnit} * 1px);
   border: calc(${strokeWidth} * 1px) solid transparent;
+  border-radius: calc(${controlCornerRadius} * 1px);
 }
 
 .interact .day {
