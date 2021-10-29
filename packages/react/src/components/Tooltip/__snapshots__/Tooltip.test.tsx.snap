@@ -117,9 +117,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
             }
           }
         >
-          <div
-            role="tooltip"
-          >
+          <div>
             <div />
           </div>
         </div>
