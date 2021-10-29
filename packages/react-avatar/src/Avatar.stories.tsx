@@ -9,6 +9,7 @@ import { Avatar /*, renderAvatar, useAvatar, useAvatarStyles*/ } from './index';
 export { Default } from './AvatarDefault.stories';
 export { Active } from './AvatarActive.stories';
 export { ActiveAppearance } from './AvatarActiveAppearance.stories';
+export { Badge } from './AvatarBadge.stories';
 export { Color } from './AvatarColor.stories';
 export { ColorNeutralBrand } from './AvatarColorNeutralBrand.stories';
 export { ColorColorful } from './AvatarColorColorful.stories';
@@ -61,7 +62,6 @@ export default {
 // });
 //
 // export const KitchenSink = () => {
-//   const styles = useFlexStyles();
 //   return (
 //     <>
 //       <StoryExample title="Shape">
@@ -70,24 +70,9 @@ export default {
 //         <Avatar shape="square" name="Group" />
 //         <Avatar shape="square" icon={<People20Regular />} />
 //       </StoryExample>
-//       <StoryExample title="Badges">
-//         <Avatar name={examples.name[1]} badge={{ status: 'available' }} />
-//         <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
-//         <Avatar name={examples.name[3]} image={{ src: examples.image[3] }} badge={{ status: 'offline' }} />
-//       </StoryExample>
 //       <StoryExample title="Brand color">
 //         <Avatar color="brand" name={examples.name[4]} badge={{ status: 'doNotDisturb' }} />
 //         <Avatar color="brand" badge={{ status: 'available' }} />
-//       </StoryExample>
-//       <StoryExample title="Active/inactive">
-//         <div className={styles.flex}>
-//           <Avatar name={examples.name[7]} active="active" />
-//           <Avatar image={{ src: examples.image[8] }} active="active" activeAppearance="shadow" />
-//           <Avatar image={{ src: examples.image[9] }} active="active" activeAppearance="glow" />
-//           <Avatar image={{ src: examples.image[10] }} active="active" activeAppearance="ring-shadow" />
-//           <Avatar image={{ src: examples.image[11] }} active="active" activeAppearance="ring-glow" />
-//           <Avatar image={{ src: examples.image[12] }} active="inactive" />
-//         </div>
 //       </StoryExample>
 //     </>
 //   );
