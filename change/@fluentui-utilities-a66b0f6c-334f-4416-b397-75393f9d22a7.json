@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Make FocusTrapZone properly focus the first element of a FocusZone.",
+  "packageName": "@fluentui/utilities",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
