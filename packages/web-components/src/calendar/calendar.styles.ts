@@ -141,13 +141,6 @@ ${display("block")} :host {
 `.withBehaviors(
   forcedColorsStylesheetBehavior(
       css`
-          .day,
-          .week-day {
-              background: ${SystemColors.Canvas};
-              color: ${SystemColors.CanvasText};
-              fill: currentcolor;
-          }
-
           .day.selected {
               color: ${SystemColors.Highlight};
           }

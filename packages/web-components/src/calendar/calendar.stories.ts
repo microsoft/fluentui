@@ -106,7 +106,7 @@ const CalendarTemplate = ({
     ${disabledDates ? `disabled-dates="${disabledDates}"` : ''}
     ${selectedDates ? `selected-dates="${selectedDates}"` : ''}
     ${readonly ? `readonly` : ''}
-    ${locale === 'ar-XE-u-ca-islamic-nu-arab' ? "style='direction:rtl'" : ''}
+    ${locale === 'ar-XE-u-ca-islamic-nu-arab' ? "style='direction:rtl' dir='rtl'" : ''}
     ></fluent-calendar>
   `;
 
