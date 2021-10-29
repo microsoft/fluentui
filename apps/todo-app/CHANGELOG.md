@@ -1,8 +1,17 @@
 # Change Log - todo-app
 
-This log was last generated on Wed, 27 Oct 2021 07:29:17 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Oct 2021 07:29:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/todo-app_v1.0.0)
+
+Thu, 28 Oct 2021 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/todo-app_v1.0.0..todo-app_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.5 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/todo-app_v1.0.0)
 

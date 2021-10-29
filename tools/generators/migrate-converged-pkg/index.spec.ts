@@ -57,15 +57,6 @@ describe('migrate-converged-pkg generator', () => {
     );
     tree = setupDummyPackage(tree, options);
     tree = setupDummyPackage(tree, {
-      name: '@proj/react-examples',
-      version: '8.0.0',
-      dependencies: {
-        [options.name]: '9.0.40-alpha1',
-        '@proj/old-v8-foo': '8.0.40',
-        '@proj/old-v8-bar': '8.0.41',
-      },
-    });
-    tree = setupDummyPackage(tree, {
       name: '@proj/babel-make-styles',
       version: '9.0.0-alpha.0',
       dependencies: {
@@ -403,82 +394,47 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`storybook updates`, () => {
-    function setup(_config?: Partial<{ createDummyStories: boolean }>) {
-      const defaults = { createDummyStories: true };
-      const config = { ...defaults, ..._config };
-
+    function setup(config: Partial<{ createDummyStories: boolean }> = {}) {
       const workspaceConfig = readWorkspaceConfiguration(tree);
       const projectConfig = readProjectConfiguration(tree, options.name);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
-      const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
-      const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
 
       const normalizedProjectNameNamesVariants = names(normalizedProjectName);
-
       const paths = {
-        reactExamples: {
-          /* eslint-disable @fluentui/max-len */
-          //  options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummy.stories.tsx
-          storyFileOne: `${pathToStoriesWithinReactExamples}/${normalizedProjectNameNamesVariants.className}/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
-          // if options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
-          storyFileTwo: `${pathToStoriesWithinReactExamples}/${normalizedProjectNameNamesVariants.className}Other/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
-          /* eslint-enable @fluentui/max-len */
-        },
+        storyOne: `${projectConfig.root}/src/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
+        storyTwo: `${projectConfig.root}/src/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
       };
 
       if (config.createDummyStories) {
         tree.write(
-          paths.reactExamples.storyFileOne,
+          paths.storyOne,
           stripIndents`
-         import * as Implementation from '${options.name}';
+         import * as Implementation from './index';
          export const Foo = (props: FooProps) => { return <div>Foo</div>; }
         `,
         );
 
         tree.write(
-          paths.reactExamples.storyFileTwo,
+          paths.storyTwo,
           stripIndents`
-         import * as Implementation from '${options.name}';
+         import * as Implementation from './index';
          export const FooOther = (props: FooPropsOther) => { return <div>FooOther</div>; }
         `,
         );
       }
 
-      function getMovedStoriesData() {
-        const movedStoriesExportNames = {
-          storyOne: `${normalizedProjectNameNamesVariants.className}`,
-          storyTwo: `${normalizedProjectNameNamesVariants.className}Other`,
-        };
-        const movedStoriesFileNames = {
-          storyOne: `${movedStoriesExportNames.storyOne}.stories.tsx`,
-          storyTwo: `${movedStoriesExportNames.storyTwo}.stories.tsx`,
-        };
-        const movedStoriesPaths = {
-          storyOne: `${projectConfig.root}/src/${movedStoriesFileNames.storyOne}`,
-          storyTwo: `${projectConfig.root}/src/${movedStoriesFileNames.storyTwo}`,
-        };
-
-        const movedStoriesContent = {
-          storyOne: tree.read(movedStoriesPaths.storyOne)?.toString('utf-8'),
-          storyTwo: tree.read(movedStoriesPaths.storyTwo)?.toString('utf-8'),
-        };
-
-        return { movedStoriesPaths, movedStoriesExportNames, movedStoriesFileNames, movedStoriesContent };
-      }
-
       return {
         projectConfig,
-        reactExamplesConfig,
         workspaceConfig,
         normalizedProjectName,
-        pathToStoriesWithinReactExamples,
-        getMovedStoriesData,
         projectStorybookConfigPath,
       };
     }
     it(`should setup package storybook when needed`, async () => {
-      const { projectStorybookConfigPath, projectConfig } = setup();
+      const { projectStorybookConfigPath, projectConfig } = setup({ createDummyStories: true });
+
+      console.error({ projectConfig });
 
       expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
 
@@ -570,128 +526,6 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
       expect(readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`).compilerOptions.types).not.toContain(
         'storybook__addons',
-      );
-    });
-
-    it(`should work if there are no package stories in react-examples`, async () => {
-      const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
-      const workspaceConfig = readWorkspaceConfiguration(tree);
-
-      expect(
-        tree.exists(`${reactExamplesConfig.root}/src/${options.name.replace(`@${workspaceConfig.npmScope}/`, '')}`),
-      ).toBe(false);
-
-      const loggerWarnSpy = jest.spyOn(logger, 'warn');
-      let sideEffectsCallback: () => void;
-
-      try {
-        sideEffectsCallback = await generator(tree, options);
-        sideEffectsCallback();
-      } catch (err) {
-        expect(err).toEqual(undefined);
-      }
-
-      expect(loggerWarnSpy).toHaveBeenCalledTimes(1);
-      expect(loggerWarnSpy).toHaveBeenCalledWith(
-        'No package stories found within react-examples. Skipping storybook stories migration...',
-      );
-    });
-
-    it(`should move stories from react-examples package to local package within sourceRoot`, async () => {
-      const { pathToStoriesWithinReactExamples, getMovedStoriesData } = setup();
-
-      const loggerWarnSpy = jest.spyOn(logger, 'warn');
-
-      expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
-
-      const sideEffectsCallback = await generator(tree, options);
-
-      const { movedStoriesPaths } = getMovedStoriesData();
-
-      expect(tree.exists(movedStoriesPaths.storyOne)).toBe(true);
-      expect(tree.exists(movedStoriesPaths.storyTwo)).toBe(true);
-
-      sideEffectsCallback();
-
-      expect(loggerWarnSpy).toHaveBeenCalledTimes(2);
-      expect(loggerWarnSpy.mock.calls[0][0]).toEqual('NOTE: Deleting packages/react-examples/src/react-dummy');
-      expect(loggerWarnSpy.mock.calls[1][0]).toEqual(
-        expect.stringContaining('- Please update your moved stories to follow standard storybook format'),
-      );
-    });
-
-    it(`should delete migrated package folder in react-examples`, async () => {
-      const { pathToStoriesWithinReactExamples, reactExamplesConfig } = setup();
-
-      expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(`${reactExamplesConfig.root}/src/${options.name}`)).toBe(false);
-    });
-
-    it(`should replace absolute import path with relative one from index.ts`, async () => {
-      const { pathToStoriesWithinReactExamples, getMovedStoriesData } = setup();
-
-      expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
-
-      await generator(tree, options);
-
-      const { movedStoriesContent } = getMovedStoriesData();
-
-      expect(movedStoriesContent.storyOne).not.toContain(options.name);
-      expect(movedStoriesContent.storyTwo).not.toContain(options.name);
-
-      expect(movedStoriesContent.storyOne).toContain('./index');
-      expect(movedStoriesContent.storyTwo).toContain('./index');
-    });
-
-    it(`should append storybook CSF default export`, async () => {
-      const { pathToStoriesWithinReactExamples, getMovedStoriesData } = setup();
-
-      expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
-
-      await generator(tree, options);
-
-      const { movedStoriesExportNames, movedStoriesContent } = getMovedStoriesData();
-
-      expect(movedStoriesContent.storyOne).toContain(
-        stripIndents`
-        export default {
-          title: 'Components/${movedStoriesExportNames.storyOne}',
-          component: ${movedStoriesExportNames.storyOne},
-        }
-        `,
-      );
-      expect(movedStoriesContent.storyTwo).toContain(
-        stripIndents`
-        export default {
-          title: 'Components/${movedStoriesExportNames.storyTwo}',
-          component: ${movedStoriesExportNames.storyTwo},
-        }
-      `,
-      );
-    });
-
-    it(`should remove package-dependency from react-examples package.json`, async () => {
-      const { reactExamplesConfig } = setup();
-
-      let reactExamplesPkgJson = readJson<PackageJson>(tree, `${reactExamplesConfig.root}/package.json`);
-
-      expect(reactExamplesPkgJson.dependencies).toEqual(
-        expect.objectContaining({
-          [options.name]: expect.any(String),
-        }),
-      );
-
-      await generator(tree, options);
-
-      reactExamplesPkgJson = readJson<PackageJson>(tree, `${reactExamplesConfig.root}/package.json`);
-
-      expect(reactExamplesPkgJson.dependencies).not.toEqual(
-        expect.objectContaining({
-          [options.name]: expect.any(String),
-        }),
       );
     });
   });
@@ -890,7 +724,7 @@ describe('migrate-converged-pkg generator', () => {
           '@babel/transform-react-pure-annotations',
         ],
       });
-      expect(devDeps[babelMakeStylesPkg]).toBe('^9.0.0-alpha.0');
+      expect(devDeps[babelMakeStylesPkg]).toBe('9.0.0-alpha.0');
     });
 
     it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
@@ -1042,7 +876,6 @@ describe('migrate-converged-pkg generator', () => {
     it(`should run migration on all vNext packages in batch`, async () => {
       const projects = [
         options.name,
-        '@proj/react-examples',
         '@proj/react-foo',
         '@proj/react-bar',
         '@proj/react-moo',
@@ -1062,7 +895,6 @@ describe('migrate-converged-pkg generator', () => {
       expect(configs['@proj/react-moo'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-dummy'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-old'].sourceRoot).not.toBeDefined();
-      expect(configs['@proj/react-examples'].sourceRoot).not.toBeDefined();
     });
   });
 });

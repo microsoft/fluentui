@@ -2,6 +2,63 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 28 Oct 2021 07:29:14 GMT",
+      "tag": "@fluentui/react-examples_v8.34.4",
+      "version": "8.34.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/azure-themes to v8.1.89",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react to v8.37.5",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-cards to v0.200.49",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-charting to v5.3.61",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-docsite-components to v8.3.48",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-experiments to v8.3.30",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.176",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/theme-samples to v8.2.30",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Oct 2021 07:29:17 GMT",
       "tag": "@fluentui/react-examples_v8.34.4",
       "version": "8.34.4",

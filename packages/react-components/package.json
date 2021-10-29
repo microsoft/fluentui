@@ -23,7 +23,8 @@
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-components/src && yarn docs",
     "storybook": "start-storybook --port 3000 -s ./public",
-    "build-storybook": "build-storybook -s ./public -o ./dist/storybook",
+    "storybook:docs": "start-storybook --port 3000 -s ./public --docs --no-manager-cache",
+    "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
     "test": "jest"
   },
   "devDependencies": {
