@@ -476,12 +476,13 @@ describe('ColorPicker', () => {
 
   it('shows error state and tooltip for invalid hex value', () => {
     jest.useFakeTimers();
+    const customHexError = 'test hex error';
     wrapper = mount(
       <ColorPicker
         color="#000000"
         componentRef={colorPickerRef}
         tooltipProps={{ delay: 2 }}
-        strings={{ hexError: 'test hex error' }}
+        strings={{ hexError: customHexError }}
       />,
     );
 
@@ -502,7 +503,7 @@ describe('ColorPicker', () => {
     const hexTooltip = document.querySelector('.ms-Tooltip');
 
     expect(hexInput.getAttribute('aria-invalid')).toEqual('true');
-    expect(hexTooltip?.textContent).toBe('test hex error');
+    expect(hexTooltip?.textContent).toBe(customHexError);
 
     jest.useRealTimers();
   });

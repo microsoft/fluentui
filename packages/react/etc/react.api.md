@@ -2801,6 +2801,7 @@ export interface IColorPickerProps {
     strings?: IColorPickerStrings;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
+    tooltipProps?: ITooltipHostProps;
 }
 
 // @public (undocumented)

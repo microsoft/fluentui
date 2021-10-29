@@ -35,6 +35,10 @@ import type {
 import type { IColor, IRGB } from '../../utilities/color/interfaces';
 
 type ColorComponent = keyof Pick<IColor, 'r' | 'g' | 'b' | 'a' | 't' | 'hex'>;
+type ColorErrorKeys = keyof Pick<
+  IColorPickerStrings,
+  'hexError' | 'alphaError' | 'transparencyError' | 'redError' | 'greenError' | 'blueError'
+>;
 
 export interface IColorPickerState {
   /** Most recently selected color */
@@ -51,6 +55,15 @@ export interface IColorPickerState {
 const getClassNames = classNamesFunction<IColorPickerStyleProps, IColorPickerStyles>();
 
 const allColorComponents: ColorComponent[] = ['hex', 'r', 'g', 'b', 'a', 't'];
+
+const errorKeys: { [component in ColorComponent]: ColorErrorKeys } = {
+  hex: 'hexError',
+  r: 'redError',
+  g: 'greenError',
+  b: 'blueError',
+  a: 'alphaError',
+  t: 'transparencyError',
+};
 
 /**
  * {@docCategory ColorPicker}
@@ -309,29 +322,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       return undefined;
     }
 
-    let errorKey: keyof Pick<
-      IColorPickerStrings,
-      'hexError' | 'alphaError' | 'transparencyError' | 'redError' | 'greenError' | 'blueError'
-    >;
-    switch (component) {
-      case 'hex':
-        errorKey = 'hexError';
-        break;
-      case 'a':
-        errorKey = 'alphaError';
-        break;
-      case 't':
-        errorKey = 'transparencyError';
-        break;
-      case 'r':
-        errorKey = 'redError';
-        break;
-      case 'g':
-        errorKey = 'greenError';
-        break;
-      default:
-        errorKey = 'blueError';
-    }
+    let errorKey: ColorErrorKeys = errorKeys[component];
 
     return this._strings[errorKey];
   }
