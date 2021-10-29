@@ -1606,34 +1606,29 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           : this._getFirstSelectedIndex(),
       );
     } else if (this._selectedElement.current && this._selectedElement.current.offsetParent) {
+      let alignToTop = true;
+
       // We are using refs, scroll the ref into view
-      if (scrollSelectedToTop) {
-        this._selectedElement.current.offsetParent.scrollIntoView(true);
-      } else {
-        let alignToTop = true;
+      if (this._comboBoxMenu.current && this._comboBoxMenu.current.offsetParent) {
+        const scrollableParent = this._comboBoxMenu.current.offsetParent;
+        const selectedElement = this._selectedElement.current.offsetParent;
 
-        if (this._comboBoxMenu.current && this._comboBoxMenu.current.offsetParent) {
-          const scrollableParentRect = this._comboBoxMenu.current.offsetParent.getBoundingClientRect();
-          const selectedElementRect = this._selectedElement.current.offsetParent.getBoundingClientRect();
+        const { offsetHeight, offsetTop } = selectedElement as HTMLElement;
+        const { offsetHeight: parentOffsetHeight, scrollTop } = scrollableParent as HTMLElement;
 
-          // If we are completely in view then we do not need to scroll
-          if (
-            scrollableParentRect.top <= selectedElementRect.top &&
-            scrollableParentRect.top + scrollableParentRect.height >=
-              selectedElementRect.top + selectedElementRect.height
-          ) {
-            return;
-          }
+        const isAbove = offsetTop < scrollTop;
+        const isBelow = offsetTop + offsetHeight > scrollTop + parentOffsetHeight;
 
-          // If we are lower than the scrollable parent viewport then we should align to the bottom
-          if (
-            scrollableParentRect.top + scrollableParentRect.height <=
-            selectedElementRect.top + selectedElementRect.height
-          ) {
-            alignToTop = false;
-          }
+        if (isAbove || scrollSelectedToTop) {
+          alignToTop = false;
+          scrollableParent.scrollTo(0, offsetTop);
+        } else if (isBelow) {
+          scrollableParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
         }
+      }
 
+      // if _comboboxMenu doesn't exist, fall back to scrollIntoView
+      else {
         this._selectedElement.current.offsetParent.scrollIntoView(alignToTop);
       }
     }
@@ -1966,6 +1961,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           return;
         }
 
+        // do not scroll page
+        ev.preventDefault();
+
         // Go to the previous option
         this._setPendingInfoFromIndexAndDirection(index, SearchDirection.backward);
         break;
@@ -1981,6 +1979,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
             index = -1;
           }
+
+          // do not scroll page
+          ev.preventDefault();
 
           // Got to the next option
           this._setPendingInfoFromIndexAndDirection(index, SearchDirection.forward);
