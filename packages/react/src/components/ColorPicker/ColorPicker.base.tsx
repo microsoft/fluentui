@@ -322,7 +322,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       return undefined;
     }
 
-    let errorKey: ColorErrorKeys = errorKeys[component];
+    const errorKey: ColorErrorKeys = errorKeys[component];
 
     return this._strings[errorKey];
   }
