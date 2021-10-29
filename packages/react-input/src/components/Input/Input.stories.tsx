@@ -52,7 +52,7 @@ export const InputExamples = (
         <label htmlFor={inputId1}>with a label</label>
         <Input {...props} id={inputId1} />
       </div>
-      <Input {...props} insideBefore={<SearchIcon />} insideAfter={<DismissIcon />} />
+      <Input {...props} contentBefore={<SearchIcon />} contentAfter={<DismissIcon />} />
       <p>
         Some text with <Input {...props} inline /> inline input
       </p>
@@ -63,8 +63,8 @@ export const InputExamples = (
           disabled: true,
           placeholder: 'disabled',
         }}
-        insideBefore={<SearchIcon />}
-        insideAfter={<DismissIcon />}
+        contentBefore={<SearchIcon />}
+        contentAfter={<DismissIcon />}
       />
       <Input
         {...props}
@@ -74,6 +74,9 @@ export const InputExamples = (
           placeholder: '300px width',
         }}
       />
+      <p>
+        Some text with <Input {...props} inline /> inline input
+      </p>
     </div>
   );
 };
@@ -90,6 +93,7 @@ const argTypes: ArgTypes = {
   // so they get passed through in the example via the input slot
   placeholder: { defaultValue: 'placeholder', control: { type: 'text' } },
   value: { control: { type: 'text' } },
+  disabled: { defaultValue: false, control: { type: 'boolean' } },
 };
 
 export default {

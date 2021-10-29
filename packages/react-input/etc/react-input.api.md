@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
@@ -18,7 +18,6 @@ export type InputCommons = {
     fieldSize?: 'small' | 'medium' | 'large';
     inline?: boolean;
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    bookendAppearance?: 'filled' | 'brand' | 'transparent';
 };
 
 // @public
@@ -31,11 +30,8 @@ export const inputShorthandProps: (keyof InputSlots)[];
 export type InputSlots = {
     root: IntrinsicShorthandProps<'span'>;
     input: IntrinsicShorthandProps<'input'>;
-    inputWrapper: IntrinsicShorthandProps<'span'>;
-    bookendBefore?: IntrinsicShorthandProps<'span'>;
-    bookendAfter?: IntrinsicShorthandProps<'span'>;
-    insideBefore?: IntrinsicShorthandProps<'span'>;
-    insideAfter?: IntrinsicShorthandProps<'span'>;
+    contentBefore?: IntrinsicShorthandProps<'span'>;
+    contentAfter?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public

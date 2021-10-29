@@ -10,13 +10,9 @@ export const renderInput = (state: InputState) => {
   const { slots, slotProps } = getSlots<InputSlots>(state, inputShorthandProps);
   return (
     <slots.root {...slotProps.root}>
-      <slots.bookendBefore {...slotProps.bookendBefore} />
-      <slots.inputWrapper {...slotProps.inputWrapper}>
-        <slots.insideBefore {...slotProps.insideBefore} />
-        <slots.input {...slotProps.input} />
-        <slots.insideAfter {...slotProps.insideAfter} />
-      </slots.inputWrapper>
-      <slots.bookendAfter {...slotProps.bookendAfter} />
+      <slots.contentBefore {...slotProps.contentBefore} />
+      <slots.input {...slotProps.input} />
+      <slots.contentAfter {...slotProps.contentAfter} />
     </slots.root>
   );
 };

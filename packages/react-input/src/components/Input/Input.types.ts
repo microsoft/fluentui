@@ -1,28 +1,24 @@
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type InputSlots = {
+  /**
+   * Wrapper element which visually appears to be the input and is used for borders, focus styling, etc.
+   * (A wrapper is needed to properly position `contentBefore` and `contentAfter` relative to `input`.)
+   */
   root: IntrinsicShorthandProps<'span'>;
 
-  /** The actual `<input>` element. `type="text"` will be automatically applied unless overridden. */
+  /**
+   * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
+   * This is the "primary" slot, so top-level native props (except `className` and `style`) and the
+   * top-level `ref` will go here.
+   */
   input: IntrinsicShorthandProps<'input'>;
 
-  /**
-   * Wrapper element containing `insideBefore`, `input`, and `insideAfter`. This is the element that
-   * visually appears to be the input and is used for borders, focus styling, etc.
-   */
-  inputWrapper: IntrinsicShorthandProps<'span'>;
+  /** Element before the input text, within the input border */
+  contentBefore?: IntrinsicShorthandProps<'span'>;
 
-  /** Element before the input field, visually separated from it */
-  bookendBefore?: IntrinsicShorthandProps<'span'>;
-
-  /** Element after the input field, visually separated from it */
-  bookendAfter?: IntrinsicShorthandProps<'span'>;
-
-  /** Element at the start of the input field, visually appearing to be inside of it */
-  insideBefore?: IntrinsicShorthandProps<'span'>;
-
-  /** Element at the end of the input field, visually appearing to be inside of it */
-  insideAfter?: IntrinsicShorthandProps<'span'>;
+  /** Element after the input text, within the input border */
+  contentAfter?: IntrinsicShorthandProps<'span'>;
 };
 
 export type InputCommons = {
@@ -31,6 +27,7 @@ export type InputCommons = {
    * @default 'medium'
    */
   // NOTE: can't use `size` as the name due to overlap with a native input prop :(
+  // (see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attributes)
   fieldSize?: 'small' | 'medium' | 'large';
 
   /**
@@ -44,12 +41,6 @@ export type InputCommons = {
    * @default 'outline'
    */
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-
-  /**
-   * Controls the colors and borders of the bookends.
-   * @default 'filled'
-   */
-  bookendAppearance?: 'filled' | 'brand' | 'transparent';
 };
 
 /**
