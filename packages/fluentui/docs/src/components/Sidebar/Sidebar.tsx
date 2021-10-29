@@ -455,6 +455,10 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
     fontWeight: 100,
   };
 
+  console.log('amber', 'process.env.nightlyReleaseDate', process.env.nightlyReleaseDate);
+  console.log('amber', 'process.env.NIGHTLYRELEASEDATE', process.env.NIGHTLYRELEASEDATE);
+  console.log('amber', 'process.env', process.env);
+
   return (
     <Segment styles={sidebarStyles}>
       <Flex column hAlign="center" styles={{ padding: '1rem', background: 'black' }}>
