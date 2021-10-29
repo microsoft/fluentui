@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "added disabled prop for tile view",
+  "packageName": "@uifabric/experiments",
+  "email": "surya.ravva@microsoft.com",
+  "dependentChangeType": "minor"
+}
