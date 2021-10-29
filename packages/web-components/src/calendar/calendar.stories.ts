@@ -4,7 +4,7 @@ import { fluentCalendar } from './index';
 const now = new Date();
 const years = new Array(9).fill(null).map((_, index) => (now.getFullYear() - 4 + index).toString());
 const groupsToDates = matrix =>
-  matrix.map(days => days.map(day => `${now.getMonth() + 1}-${day}-${now.getFullYear()}`));
+  matrix.map(days => days.map(day => `${now.getMonth() + 1}-${day}-${now.getFullYear()}`).join(','));
 const disabledDates = groupsToDates([
   [1, 2, 3, 4, now.getDate()],
   [6, 7, 10, 18],
@@ -90,6 +90,11 @@ const CalendarTemplate = ({
   readonly,
 }) =>
   `
+  <style>
+    div.docs-story > div:first-child {
+      height: 22em !important;
+    }
+  </style>
   <fluent-calendar
     ${month ? `month="${month}"` : ''}
     ${year ? `year="${year}"` : ''}
@@ -101,6 +106,7 @@ const CalendarTemplate = ({
     ${disabledDates ? `disabled-dates="${disabledDates}"` : ''}
     ${selectedDates ? `selected-dates="${selectedDates}"` : ''}
     ${readonly ? `readonly` : ''}
+    ${locale === 'ar-XE-u-ca-islamic-nu-arab' ? "style='direction:rtl'" : ''}
     ></fluent-calendar>
   `;
 

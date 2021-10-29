@@ -18,7 +18,35 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import { heightNumber } from '../styles';
+import { DirectionalStyleSheetBehavior, heightNumber } from '../styles';
+
+const ltrStyles = css`
+.selected + .selected {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-width: 0;
+  padding-left: calc(calc(${designUnit}  * 1px) + calc(${controlCornerRadius} * 1px));
+  margin-left: calc(${controlCornerRadius} * -1px);
+}
+
+.day.disabled::before {
+  transform: translate(-50%, calc(${designUnit} * 1px)) rotate(45deg);
+}
+`;
+
+const rtlStyles = css`
+.selected + .selected {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-width: 0;
+  padding-right: calc(calc(${designUnit}  * 1px) + calc(${controlCornerRadius} * 1px));
+  margin-right: calc(${controlCornerRadius} * -1px);
+}
+
+.day.disabled::before {
+  transform: translate(50%, calc(${designUnit} * 1px)) rotate(-45deg);
+}
+`;
 
 /**
  * @internal
@@ -41,6 +69,7 @@ ${display("block")} :host {
 
 .title {
   padding: calc(${designUnit} * 1px);
+  font-weight: 600;
 }
 
 .week-days,
@@ -73,29 +102,19 @@ ${display("block")} :host {
 
 .day.disabled::before {
   content: '';
-  display: block;
+  display: inline-block;
   width: calc(${heightNumber} * .8px);
   height: calc(${strokeWidth} * 1px);
   background: currentColor;
   position: absolute;
-  margin-top: calc(${typeRampBaseLineHeight} * .5);
-  margin-left: calc(calc(${typeRampBaseLineHeight} * .5) + calc(${designUnit} * 1px));
+  margin: calc(${typeRampBaseLineHeight} * .5) auto 0;
   transform-origin: center;
-  transform: translate(-50%, calc(${designUnit} * 1px)) rotate(45deg);
 }
 
 .selected {
   color: ${accentFillRest};
   border: 1px solid ${accentFillRest};
   background: var(--fill-color);
-}
-
-.selected + .selected {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left-width: 0;
-  padding-left: calc(calc(${designUnit}  * 1px) + calc(${controlCornerRadius} * 1px));
-  margin-left: calc(${controlCornerRadius} * -1px);
 }
 
 .date {
@@ -138,5 +157,6 @@ ${display("block")} :host {
               color: ${SystemColors.HighlightText};
           }
       `
-  )
+  ),
+  new DirectionalStyleSheetBehavior(ltrStyles, rtlStyles)
 );
