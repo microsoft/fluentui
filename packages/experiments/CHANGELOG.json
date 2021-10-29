@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 29 Oct 2021 12:26:43 GMT",
+      "tag": "@uifabric/experiments_v7.41.0",
+      "version": "7.41.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added disabled prop for tile view",
+            "author": "surya.ravva@microsoft.com",
+            "commit": "f372aa8129115e0a6e5baa31eada0010ca8eb5fe",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Oct 2021 12:29:03 GMT",
       "tag": "@uifabric/experiments_v7.40.14",
       "version": "7.40.14",

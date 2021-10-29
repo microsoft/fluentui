@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Oct 2021 12:26:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.178.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.178.0)
+
+Fri, 29 Oct 2021 12:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.177.3..office-ui-fabric-react_v7.178.0)
+
+### Minor changes
+
+- added disabled state for detailsRow ([PR #20104](https://github.com/microsoft/fluentui/pull/20104) by surya.ravva@microsoft.com)
 
 ## [7.177.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.177.3)
 

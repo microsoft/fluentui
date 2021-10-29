@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 29 Oct 2021 12:26:43 GMT",
+      "tag": "office-ui-fabric-react_v7.178.0",
+      "version": "7.178.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "added disabled state for detailsRow",
+            "author": "surya.ravva@microsoft.com",
+            "commit": "e18a97c01782ae84d8969ee24c234acb7e23a3dd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Oct 2021 12:29:03 GMT",
       "tag": "office-ui-fabric-react_v7.177.3",
       "version": "7.177.3",
