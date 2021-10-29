@@ -33,7 +33,7 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
                     href={pages && this._getFirstPageUrl(pages)}
                     className={css(styles.button, platformKey === activePlatform && styles.activePlatform)}
                     iconProps={{
-                      iconName: platform.name !== 'Web Components' ? icon : '',
+                      iconName: platform.name !== 'Web Components' ? icon : '', // Hide icon to help label fit
                       className: iconClassName,
                     }}
                     /* eslint-disable-next-line react/jsx-no-bind */
