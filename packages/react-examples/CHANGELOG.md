@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 27 Oct 2021 07:29:17 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Oct 2021 07:29:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
+
+Thu, 28 Oct 2021 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.34.4..@fluentui/react-examples_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.89 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/react to v8.37.5 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/react-cards to v0.200.49 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/react-charting to v5.3.61 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.48 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/react-experiments to v8.3.30 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/react-tabs to v1.0.0-beta.176 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/theme-samples to v8.2.30 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
 
 ## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
 

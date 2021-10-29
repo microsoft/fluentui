@@ -201,9 +201,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-compose": {
-      "implicitDependencies": []
-    },
     "@fluentui/react-conformance": {
       "implicitDependencies": []
     },

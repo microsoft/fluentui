@@ -235,10 +235,6 @@
       "projectType": "library",
       "sourceRoot": "packages/react-components/src"
     },
-    "@fluentui/react-compose": {
-      "root": "packages/react-compose",
-      "projectType": "library"
-    },
     "@fluentui/react-conformance": {
       "root": "packages/react-conformance",
       "projectType": "library"
@@ -553,6 +549,10 @@
     },
     "todo-app": {
       "root": "apps/todo-app",
+      "projectType": "application"
+    },
+    "ts-minbar-test-react": {
+      "root": "apps/ts-minbar-test-react",
       "projectType": "application"
     },
     "ts-minbar-test-react-components": {

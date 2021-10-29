@@ -2,6 +2,45 @@
   "name": "@fluentui/public-docsite-resources",
   "entries": [
     {
+      "date": "Thu, 28 Oct 2021 07:29:14 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-resources",
+            "comment": "Bump @fluentui/react to v8.37.5",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-resources",
+            "comment": "Bump @fluentui/azure-themes to v8.1.89",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-resources",
+            "comment": "Bump @fluentui/react-docsite-components to v8.3.48",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-resources",
+            "comment": "Bump @fluentui/theme-samples to v8.2.30",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-resources",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.2.30",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Oct 2021 07:29:17 GMT",
       "tag": "@fluentui/public-docsite-resources_v8.1.41",
       "version": "8.1.41",
