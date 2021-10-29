@@ -52,6 +52,8 @@ function getExtraTscParams(args: JustArgs) {
     target: 'es5',
     // sourceMap must be true for inlineSources and sourceRoot to work
     ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
+    // docs say pretty is on by default, but for some reason this isn't the case when invoked via just-task
+    pretty: true,
   };
 }
 
