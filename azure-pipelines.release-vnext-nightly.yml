@@ -38,7 +38,7 @@ steps:
   - script: |
       commitSha=$(git log -n 1 --pretty=format:"%h")
       date=$(date +"%Y%m%d")
-      yarn nx workspace-generator version-bump --all --bumpType prerelease --prereleaseTag "nightly.${commitSha}+${date}"
+      yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag "nightly${commitSha}${date}"
       git add .
       git commit -m "bump nightly versions"
       yarn change --type prerelease --message "Release nightly v9"
