@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add alert tooltip to ColorPicker when invalid hex or RGBA values are entered\"",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
