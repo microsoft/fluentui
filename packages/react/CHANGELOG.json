@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 29 Oct 2021 07:29:08 GMT",
+      "tag": "@fluentui/react_v8.37.6",
+      "version": "8.37.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6fa3723d90e131f5f973ab622e03e39f78bd1642",
+            "comment": "Remove explicit readonly semantics from Calendar grid"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Oct 2021 07:29:14 GMT",
       "tag": "@fluentui/react_v8.37.5",
       "version": "8.37.5",
