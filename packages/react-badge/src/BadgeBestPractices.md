@@ -1,4 +1,7 @@
-## Best Practices
+<details>
+<summary>
+ Best Practices
+</summary>
 
 ### Badges should not receive focus
 
@@ -13,3 +16,4 @@
 ### Badge shouldn't rely only on color information
 
 - Include meaningful descriptions when using color to represent meaning in a badge. If relying on color only [unread dot] ensure that non-visual information is included using aria-describedby
+</details>
