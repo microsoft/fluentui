@@ -245,35 +245,28 @@ export const inputForcedColorStyles: (
   definition: FoundationElementDefinition,
   rootSelector: string,
 ) => css`
-  ${rootSelector} {
-    forced-color-adjust: none;
-    background: ${SystemColors.ButtonFace};
-    border-color: ${SystemColors.ButtonText};
+  :host ${rootSelector} {
+    background: ${SystemColors.Field};
+    border-color: ${SystemColors.FieldText};
   }
-  :host(:hover:not([disabled])) ${rootSelector} {
-    background: ${SystemColors.ButtonFace};
+  :host(:hover:not([disabled]):not(:focus-within)) ${rootSelector} {
     border-color: ${SystemColors.Highlight};
   }
-  :host(:focus-within:not([disabled])) ${rootSelector} {
-    border-color: ${SystemColors.Highlight};
-    box-shadow: 0 0 0 1px ${SystemColors.Highlight} inset;
-  }
-  .control,
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: ${SystemColors.FieldText};
+  :host(:not([disabled]):active)::after,
+  :host(:not([disabled]):focus-within:not(:active))::after {
+    border-bottom-color: ${SystemColors.Highlight};
   }
   :host([disabled]) {
     opacity: 1;
   }
   :host([disabled]) ${rootSelector} {
     border-color: ${SystemColors.GrayText};
-    background: ${SystemColors.Field};
   }
   :host([disabled]) ::placeholder,
   :host([disabled]) ::-webkit-input-placeholder,
   :host([disabled]) .label {
     color: ${SystemColors.GrayText};
+    fill: currentcolor;
   }
 `;
 
@@ -289,14 +282,10 @@ export const inputFilledForcedColorStyles: (
   definition: FoundationElementDefinition,
   rootSelector: string,
 ) => css`
-  :host
-    ${rootSelector},
-    :host(:hover:not([disabled]))
-    ${rootSelector},
-    :host(:active:not([disabled]))
-    ${rootSelector},
-    :host(:focus-within:not([disabled]))
-    ${rootSelector} {
+  :host ${rootSelector},
+  :host(:hover:not([disabled])) ${rootSelector},
+  :host(:active:not([disabled])) ${rootSelector},
+  :host(:focus-within:not([disabled])) ${rootSelector} {
     background: ${SystemColors.Field};
     border-color: ${SystemColors.FieldText};
   }
@@ -306,6 +295,5 @@ export const inputFilledForcedColorStyles: (
   }
   :host([disabled]) ${rootSelector} {
     border-color: ${SystemColors.GrayText};
-    background: ${SystemColors.Field};
   }
 `;

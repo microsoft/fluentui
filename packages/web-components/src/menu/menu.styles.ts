@@ -1,5 +1,5 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { display, ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { elevationShadowFlyout } from '../styles/index';
 import {
   designUnit,
@@ -8,6 +8,7 @@ import {
   neutralStrokeDividerRest,
   strokeWidth,
 } from '../design-tokens';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 
 export const menuStyles: (
   context: ElementDefinitionContext,
@@ -37,4 +38,13 @@ export const menuStyles: (
       border: none;
       border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
     }
-  `;
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host([slot='submenu']) {
+          background: ${SystemColors.Canvas};
+          border-color: ${SystemColors.CanvasText};
+        }
+      `
+    ),
+  );
