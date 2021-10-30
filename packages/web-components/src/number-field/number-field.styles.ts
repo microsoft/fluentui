@@ -14,6 +14,7 @@ import {
 } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { designUnit } from '../design-tokens';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 
 export const numberFieldFilledStyles: (
   context: ElementDefinitionContext,
@@ -99,6 +100,10 @@ export const numberFieldStyles = (context, definition) =>
     forcedColorsStylesheetBehavior(
       css`
         ${inputForcedColorStyles(context, definition, '.root')}
+        .step-up,
+        .step-down {
+          fill: ${SystemColors.FieldText};
+        }
       `,
     ),
   );
