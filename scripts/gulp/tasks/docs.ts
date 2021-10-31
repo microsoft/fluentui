@@ -125,7 +125,7 @@ task('build:docs:webpack', cb => {
   const webpackConfig = require('../../webpack/webpack.config').default;
 
   const nightlyBuildEnvVar = {
-    'process.env.NIGHTLYRELEASEDATE': JSON.stringify(process.env['NIGHTLYRELEASEDATE']),
+    'process.env.NIGHTLYRELEASEDATE': JSON.stringify(process.env.NIGHTLYRELEASEDATE),
   };
   webpackConfig.plugins.push(new webpack.DefinePlugin(nightlyBuildEnvVar));
 
