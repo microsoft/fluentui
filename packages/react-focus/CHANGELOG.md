@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Oct 2021 07:39:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.3.4)
+
+Tue, 26 Oct 2021 07:39:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.3.3..@fluentui/react-focus_v8.3.4)
+
+### Patches
+
+- fix(FocusZone): prevent restoration when flag is set ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by email not defined)
 
 ## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.3.2)
 

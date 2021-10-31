@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 /**
@@ -25,12 +26,15 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
  *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
  *    webpackFinal: StorybookWebpackConfig;
  *    core: {builder:'webpack5'};
+ *    previewHead: (head: string) => string
  * }} StorybookConfig
  */
 
 /**
  * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
  */
+
+const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
 module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   stories: [],
@@ -72,10 +76,14 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 
     return config;
   },
-
   core: {
     builder: 'webpack5',
   },
+  /**
+   * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo
+   * @see https://storybook.js.org/docs/react/addons/writing-presets#previewmanager-templates
+   */
+  previewHead: head => head + previewHeadTemplate,
 });
 
 /**

@@ -73,7 +73,14 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     const { componentRef, theme, linkSize, linkFormat, overflowBehavior, focusZoneProps } = props;
 
     let classNames: { [key in keyof IPivotStyles]: string };
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
+    const nameProps = {
+      'aria-label': props['aria-label'],
+      'aria-labelledby': props['aria-labelledby'],
+    };
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, [
+      'aria-label',
+      'aria-labelledby',
+    ]);
 
     let linkCollection = getLinkItems(props, pivotId);
 
@@ -251,10 +258,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     });
 
     return (
-      <div role="toolbar" {...divProps} ref={ref}>
+      <div ref={ref} {...divProps}>
         <FocusZone
           componentRef={focusZoneRef}
           role="tablist"
+          {...nameProps}
           direction={FocusZoneDirection.horizontal}
           {...focusZoneProps}
           className={css(classNames.root, focusZoneProps?.className)}

@@ -1,12 +1,5 @@
 import { black, grey, white, sharedColors } from '../global/colors';
-import type {
-  BrandVariants,
-  GlobalSharedColors,
-  ColorTokens,
-  ColorPaletteTokens,
-  ColorPaletteT,
-  GlobalSharedColorsT,
-} from '../types';
+import type { BrandVariants, GlobalSharedColors, ColorTokens, ColorPaletteTokens } from '../types';
 
 export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForeground1: white, // #ffffff Global.Color.White
@@ -117,9 +110,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
 export const colorPaletteTokens: ColorPaletteTokens = (Object.keys(sharedColors) as Array<
   keyof GlobalSharedColors
 >).reduce((acc, sharedColor) => {
-  const color: GlobalSharedColorsT = (sharedColor.slice(0, 1).toUpperCase() +
-    sharedColor.slice(1)) as GlobalSharedColorsT;
-  const sharedColorTokens: Partial<Record<ColorPaletteT<GlobalSharedColorsT>, string>> = {
+  const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
+  const sharedColorTokens = {
     [`colorPalette${color}Background1`]: sharedColors[sharedColor].shade40,
     [`colorPalette${color}Background2`]: sharedColors[sharedColor].shade30,
     [`colorPalette${color}Background3`]: sharedColors[sharedColor].primary,

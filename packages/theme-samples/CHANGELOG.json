@@ -2,6 +2,111 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Fri, 29 Oct 2021 07:29:08 GMT",
+      "tag": "@fluentui/theme-samples_v8.2.31",
+      "version": "8.2.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.37.6",
+            "commit": "0e0cf06c34f78d54db4468a602a17b0a5a30ac87"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Oct 2021 07:29:14 GMT",
+      "tag": "@fluentui/theme-samples_v8.2.30",
+      "version": "8.2.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.37.5",
+            "commit": "edf9929dc86c78b2449d9729eaf339c76654bf89"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Oct 2021 07:29:17 GMT",
+      "tag": "@fluentui/theme-samples_v8.2.29",
+      "version": "8.2.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.37.4",
+            "commit": "fe4563c46b374c9c4d5543d501cd50cc4a629146"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Oct 2021 07:39:42 GMT",
+      "tag": "@fluentui/theme-samples_v8.2.28",
+      "version": "8.2.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.37.3",
+            "commit": "1563a46da13fce14d6fe59778d057b75d3c16b41"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Oct 2021 07:38:02 GMT",
+      "tag": "@fluentui/theme-samples_v8.2.27",
+      "version": "8.2.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.37.2",
+            "commit": "a88fb53fb38a20912b7ddea33b5f3313a721e148"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/theme-samples_v8.2.26",
+      "version": "8.2.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.37.1",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Oct 2021 07:30:01 GMT",
+      "tag": "@fluentui/theme-samples_v8.2.25",
+      "version": "8.2.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.37.0",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 Oct 2021 07:31:28 GMT",
       "tag": "@fluentui/theme-samples_v8.2.24",
       "version": "8.2.24",

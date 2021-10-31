@@ -15,7 +15,10 @@ const noop = () => null;
 
 describe('version-string-replace generator', () => {
   let tree: Tree;
-  const defaultTestOptions = { bumpType: 'prerelease', prereleaseTag: 'beta' };
+  const defaultTestOptions = {
+    bumpType: 'prerelease',
+    prereleaseTag: 'beta',
+  } as const;
 
   beforeEach(() => {
     jest.restoreAllMocks();
@@ -116,6 +119,19 @@ describe('version-string-replace generator', () => {
             [Error: @proj/babel-make-styles is not converged package consumed by customers.
                     Make sure to run the migration on packages with version 9.x.x and has the alpha tag]
           `);
+  });
+
+  it('should downgrade the version to 0.0.0 when `nightly` is selected as the bump type', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '9.0.0-alpha.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+    });
+
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+
+    const packageJson = readJson(tree, 'packages/make-styles/package.json');
+    expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
   });
 
   describe('--all', () => {
