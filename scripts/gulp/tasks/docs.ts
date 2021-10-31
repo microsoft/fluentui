@@ -122,7 +122,13 @@ task('build:docs:schema', () =>
 );
 
 task('build:docs:webpack', cb => {
-  webpackPlugin(require('../../webpack/webpack.config').default, cb);
+  const webpackConfig = require('../../webpack/webpack.config').default;
+  webpackConfig.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env.NIGHTLYRELEASEDATE': process.env.NIGHTLYRELEASEDATE,
+    }),
+  );
+  webpackPlugin(webpackConfig, cb);
 });
 
 task('build:docs:assets:component:info', cb => {
