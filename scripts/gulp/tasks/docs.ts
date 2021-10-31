@@ -123,6 +123,7 @@ task('build:docs:schema', () =>
 
 task('build:docs:webpack', cb => {
   const webpackConfig = require('../../webpack/webpack.config').default;
+  console.log('amber log process.env', process.env);
   webpackConfig.plugins.push(
     new webpack.DefinePlugin({
       'process.env.NIGHTLYRELEASEDATE': process.env.NIGHTLYRELEASEDATE,
