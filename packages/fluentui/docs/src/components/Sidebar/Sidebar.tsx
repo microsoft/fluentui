@@ -476,7 +476,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
         <VersionDropdown width={props.width} />
-        {process.env.nightlyReleaseDate ? null : (
+        {process.env.NIGHTLYRELEASEDATE ? null : (
           <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
             {(active, onClick) => (
               <Box
