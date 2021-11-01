@@ -31,7 +31,7 @@ describe('AccordionHeader', () => {
   it('should invoke click and toggle', () => {
     const mockClick = jest.fn();
     const component = renderer.create(
-      <Accordion openItems={0} onToggle={mockClick}>
+      <Accordion collapsible openItems={0} onToggle={mockClick}>
         <AccordionItem value={0}>
           <AccordionHeader button={{ onClick: mockClick }}>Header</AccordionHeader>
           <AccordionPanel>Panel</AccordionPanel>
@@ -39,7 +39,7 @@ describe('AccordionHeader', () => {
       </Accordion>,
     );
     renderer.act(() => {
-      component.root.findByType('button').props.onClick({ defaultPrevented: false });
+      component.root.findAllByType('button')[0].props.onClick({ defaultPrevented: false });
     });
     expect(mockClick).toBeCalledTimes(2);
   });
@@ -47,7 +47,7 @@ describe('AccordionHeader', () => {
   it('should invoke click and prevent toggle', () => {
     const mockClick = jest.fn();
     const component = renderer.create(
-      <Accordion openItems={0} onToggle={mockClick}>
+      <Accordion collapsible openItems={0} onToggle={mockClick}>
         <AccordionItem value={0}>
           <AccordionHeader button={{ onClick: mockClick }}>Header</AccordionHeader>
           <AccordionPanel>Panel</AccordionPanel>
@@ -55,7 +55,7 @@ describe('AccordionHeader', () => {
       </Accordion>,
     );
     renderer.act(() => {
-      component.root.findByType('button').props.onClick({ defaultPrevented: true });
+      component.root.findAllByType('button')[0].props.onClick({ defaultPrevented: true });
     });
     expect(mockClick).toBeCalledTimes(1);
   });
