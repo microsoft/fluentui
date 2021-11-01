@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "Charting:Add New Sankey chart to charting package",
+  "type": "minor",
+  "comment": "Add Sankey chart **(not compatible with IE 11)**",
   "packageName": "@fluentui/react-charting",
   "email": "v-scharde@microsoft.com",
   "dependentChangeType": "patch"
