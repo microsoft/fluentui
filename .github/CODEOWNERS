@@ -141,7 +141,6 @@ packages/react-provider/ @microsoft/teams-prg
 packages/react-radio/ @microsoft/cxe-prg
 packages/react-slider/ @microsoft/cxe-red @khmakoto @ecraig12345
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
-packages/react-tabs/ @microsoft/cxe-red @behowell @khmakoto
 packages/react-text/ @microsoft/cxe-prg
 packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
 
