@@ -28,6 +28,7 @@
     "@fluentui/babel-make-styles": "9.0.0-beta.2",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/jest-serializer-make-styles": "9.0.0-beta.2",
+    "@fluentui/react-button": "9.0.0-beta.2",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-make-styles": "9.0.0-beta.2",
     "@fluentui/scripts": "^1.0.0",
