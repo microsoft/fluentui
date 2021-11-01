@@ -11,6 +11,8 @@ export { Active } from './AvatarActive.stories';
 export { ActiveAppearance } from './AvatarActiveAppearance.stories';
 export { Badge } from './AvatarBadge.stories';
 export { Color } from './AvatarColor.stories';
+export { ColorBrand } from './AvatarColorBrand.stories';
+export { ColorNeutral } from './AvatarColorNeutral.stories';
 export { ColorNeutralBrand } from './AvatarColorNeutralBrand.stories';
 export { ColorColorful } from './AvatarColorColorful.stories';
 export { GetInitials } from './AvatarGetInitials.stories';
@@ -35,49 +37,6 @@ export default {
   },
 };
 
-// /**
-//  * Temporary workaround for Buttons
-//  * The converged Button component is not yet migrated to the new DX: https://github.com/microsoft/fluentui/pull/18607
-//  */
-// const Button: React.FC<{ value?: string | number; onClick: React.MouseEventHandler<HTMLButtonElement> }> = props => {
-//   return (
-//     <button value={props.value} onClick={props.onClick}>
-//       {props.children}
-//     </button>
-//   );
-// };
-//
-// const useFlexStyles = makeStyles({
-//   root: {},
-//   stack: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//   },
-//   flex: {
-//     display: 'flex',
-//     flexDirection: 'row',
-//     flexWrap: 'wrap',
-//     gap: '16px',
-//   },
-// });
-//
-// export const KitchenSink = () => {
-//   return (
-//     <>
-//       <StoryExample title="Shape">
-//         <Avatar name="Group" />
-//         <Avatar icon={<People20Regular />} />
-//         <Avatar shape="square" name="Group" />
-//         <Avatar shape="square" icon={<People20Regular />} />
-//       </StoryExample>
-//       <StoryExample title="Brand color">
-//         <Avatar color="brand" name={examples.name[4]} badge={{ status: 'doNotDisturb' }} />
-//         <Avatar color="brand" badge={{ status: 'available' }} />
-//       </StoryExample>
-//     </>
-//   );
-// };
-//
 // export const ShapesAndSizes = () => (
 //   <>
 //     <StoryExample title="Image, default circular">
@@ -103,19 +62,6 @@ export default {
 //
 // export const Colors = () => (
 //   <>
-//     <StoryExample title="Neutral">
-//       <Avatar size={40} color="neutral" />
-//       <Avatar size={40} color="neutral" name={examples.name[0]} />
-//     </StoryExample>
-//     <StoryExample title="Brand">
-//       <Avatar size={40} color="brand" />
-//       <Avatar size={40} color="brand" name={examples.name[0]} />
-//     </StoryExample>
-//     <StoryExample title="Colorful">
-//       {examples.namedColors.map(color => (
-//         <Avatar size={40} color={color} key={color} />
-//       ))}
-//     </StoryExample>
 //     <StoryExample title="Colorful, hash of name">
 //       {examples.name.map(name => (
 //         <Avatar size={40} color="colorful" name={name} key={name} />
