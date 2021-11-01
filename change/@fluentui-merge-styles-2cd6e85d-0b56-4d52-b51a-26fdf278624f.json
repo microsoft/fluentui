@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "applying package updates",
+  "packageName": "@fluentui/merge-styles",
+  "email": "tabrumle@microsoft.com",
+  "dependentChangeType": "patch"
+}
