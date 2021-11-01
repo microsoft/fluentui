@@ -36,6 +36,10 @@ Cypress.Commands.add('clickOn', selector => {
   cy.get(selector).realClick();
 });
 
+Cypress.Commands.add('mouseDownOn', selector => {
+  cy.get(selector).trigger('mousedown');
+});
+
 Cypress.Commands.add('focusOn', selector => {
   cy.get(selector).focus();
 });

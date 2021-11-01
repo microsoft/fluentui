@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeProps, divProperties, initializeComponentRef } from '@fluentui/utilities';
-import { TabItemProps } from './TabItem.types';
+import type { TabItemProps } from './TabItem.types';
 
 // const COMPONENT_NAME = 'TabItem';
 

@@ -1,4 +1,4 @@
-import { IPalette } from '../types/index';
+import type { IPalette } from '../types/index';
 
 // When adding or removing a color, make sure you keep this consistent with IColorClassNames
 // by adding the color variants.

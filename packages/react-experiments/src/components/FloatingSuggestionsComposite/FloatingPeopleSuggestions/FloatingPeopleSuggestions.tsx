@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IFloatingPeopleSuggestionsProps } from './FloatingPeopleSuggestions.types';
 import { BaseFloatingSuggestions } from '../FloatingSuggestions';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { IFloatingSuggestionOnRenderItemProps } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { SuggestionItemNormal } from './FloatingPeopleSuggestionItems/SuggestionItemDefault';
+import type { IFloatingPeopleSuggestionsProps } from './FloatingPeopleSuggestions.types';
+import type { IPersonaProps } from '@fluentui/react/lib/Persona';
+import type { IFloatingSuggestionOnRenderItemProps } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 
 export const FloatingPeopleSuggestions = (props: IFloatingPeopleSuggestionsProps): JSX.Element => {
   const renderSuggestionItem = React.useCallback(

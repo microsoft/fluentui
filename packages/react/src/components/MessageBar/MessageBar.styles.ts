@@ -1,6 +1,4 @@
 import {
-  IStyle,
-  ISemanticColors,
   HighContrastSelector,
   ScreenWidthMaxSmall,
   getScreenSelector,
@@ -9,7 +7,9 @@ import {
   IconFontSizes,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
-import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+import { MessageBarType } from './MessageBar.types';
+import type { IStyle, ISemanticColors } from '../../Styling';
+import type { IMessageBarStyleProps, IMessageBarStyles } from './MessageBar.types';
 
 const GlobalClassNames = {
   root: 'ms-MessageBar',

@@ -78,7 +78,7 @@ storiesOf('TagPicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('TagPicker', module)
@@ -142,5 +142,5 @@ storiesOf('TagItem', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

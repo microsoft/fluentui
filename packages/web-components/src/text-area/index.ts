@@ -58,6 +58,7 @@ export class TextArea extends FoundationTextArea {
  */
 export const fluentTextArea = TextArea.compose({
   baseName: 'text-area',
+  baseClass: FoundationTextArea,
   template,
   styles,
   shadowOptions: {

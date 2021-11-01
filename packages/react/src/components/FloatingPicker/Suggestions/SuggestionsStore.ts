@@ -1,5 +1,5 @@
-import { ISuggestionModel, ITag } from '../../../Pickers';
-import { IPersonaProps } from '../../../Persona';
+import type { ISuggestionModel, ITag } from '../../../Pickers';
+import type { IPersonaProps } from '../../../Persona';
 
 export type SuggestionsStoreOptions<T> = {
   getAriaLabel?: (item: T) => string;

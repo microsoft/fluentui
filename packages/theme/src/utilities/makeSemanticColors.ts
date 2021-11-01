@@ -1,4 +1,4 @@
-import { IEffects, IPalette, ISemanticColors } from '../types/index';
+import type { IEffects, IPalette, ISemanticColors } from '../types/index';
 
 /** Generates all the semantic slot colors based on the theme so far
  * We'll use these as fallbacks for semantic slots that the passed in theme did not define.

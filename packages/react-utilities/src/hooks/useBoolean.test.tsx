@@ -1,5 +1,6 @@
-import { useBoolean, UseBooleanCallbacks } from './useBoolean';
+import { useBoolean } from './useBoolean';
 import { renderHook, act } from '@testing-library/react-hooks';
+import type { UseBooleanCallbacks } from './useBoolean';
 
 describe('useBoolean', () => {
   it.each([true, false])('respects initial value of %s', (initialValue: boolean) => {

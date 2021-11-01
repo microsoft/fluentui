@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { IContextualMenuItem } from '../ContextualMenu.types';
-import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
+import type { IContextualMenuItem } from '../ContextualMenu.types';
+import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 
 describe('ContextualMenuSplitButton', () => {
   describe('creates a normal split button', () => {

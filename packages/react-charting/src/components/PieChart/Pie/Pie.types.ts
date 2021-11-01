@@ -27,10 +27,19 @@ export interface IPieProps {
    */
   colors?: string[];
   /**
+   * Title to apply to the whole chart.
+   */
+  chartTitle?: string;
+  /**
    * shape for pie.
    */
   /* eslint-disable @typescript-eslint/no-explicit-any */
   pie?: any;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IPieStyles {

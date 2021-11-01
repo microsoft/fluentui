@@ -1,5 +1,5 @@
-import { IEditorProps } from './Editor.types';
-import { ICompilerOptions, IPackageGroup, ITransformedExample } from '../interfaces/index';
+import type { IEditorProps } from './Editor.types';
+import type { ICompilerOptions, IPackageGroup, ITransformedExample } from '../interfaces/index';
 
 export interface ITsxEditorProps {
   /**

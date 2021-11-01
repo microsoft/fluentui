@@ -17,5 +17,4 @@ declare module '@storybook/addons/dist/ts3.9/types' {
 }
 
 export * from './FabricDecorator';
-export * from './FluentProviderDecorator';
 export * from './DevOnlyStoryHeader';

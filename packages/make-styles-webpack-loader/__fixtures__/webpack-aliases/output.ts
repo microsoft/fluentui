@@ -6,11 +6,11 @@ const styles = __styles(
   {
     root: {
       De3pzq: 'f1bh81bl',
-      sj55zd: 'f9enjjp',
+      sj55zd: 'fl9q5hc',
     },
   },
   {
-    d: ['.f1bh81bl{background-color:blue;}', '.f9enjjp{color:var(--alias-color-neutral-brandStroke1);}'],
+    d: ['.f1bh81bl{background-color:blue;}', '.fl9q5hc{color:var(--colorBrandStroke1);}'],
   },
 );
 

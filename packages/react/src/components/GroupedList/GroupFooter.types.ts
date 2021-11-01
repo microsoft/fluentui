@@ -1,6 +1,6 @@
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IGroupDividerProps } from './GroupedList.types';
-import { IStyle } from '../../Styling';
+import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IGroupDividerProps } from './GroupedList.types';
+import type { IStyle } from '../../Styling';
 
 /**
  * {@docCategory GroupedList}

@@ -19,7 +19,7 @@ import { Link } from '@fluentui/react-link';
 Once the Link component graduates to a production release, the component will be available at:
 
 ```js
-import { Link } from '@fluentui/react';
+import { Link } from '@fluentui/react-components';
 ```
 
 ### Examples

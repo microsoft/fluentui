@@ -1,6 +1,7 @@
-import { createDOMRenderer, MakeStylesRenderer, rehydrateRendererCache } from '@fluentui/make-styles';
+import { createDOMRenderer, rehydrateRendererCache } from '@fluentui/make-styles';
 import { canUseDOM } from '@fluentui/react-utilities';
 import * as React from 'react';
+import type { MakeStylesRenderer } from '@fluentui/make-styles';
 
 export interface RendererProviderProps {
   /** An instance of makeStyles() renderer. */

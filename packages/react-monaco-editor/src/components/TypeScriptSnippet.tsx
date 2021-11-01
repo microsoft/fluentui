@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { IRawStyle, mergeStyles } from '@fluentui/react/lib/Styling';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { css } from '@fluentui/react/lib/Utilities';
 import { CODE_FONT_FAMILY } from './consts';
+import type { IRawStyle } from '@fluentui/react/lib/Styling';
+import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 
 // react-syntax-highlighter has typings, but they're wrong aside from the props and missing many paths...
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 const SyntaxHighlighter = require<{
   default: React.ComponentType<SyntaxHighlighterProps> & { registerLanguage: (lang: string, func: any) => void };
 }>('react-syntax-highlighter/dist/esm/prism-light').default;

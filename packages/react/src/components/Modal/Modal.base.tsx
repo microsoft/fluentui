@@ -8,16 +8,15 @@ import {
   elementContains,
   EventGroup,
 } from '../../Utilities';
-import { FocusTrapZone, IFocusTrapZone } from '../../FocusTrapZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 import { animationDuration } from './Modal.styles';
-import { IDragOptions, IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
 import { Overlay } from '../../Overlay';
-import { ILayerProps, Layer } from '../../Layer';
+import { Layer } from '../../Layer';
 import { Popup } from '../../Popup';
 import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../../Icon';
-import { DraggableZone, ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
+import { DraggableZone } from '../../utilities/DraggableZone/index';
 import { useWindow } from '@fluentui/react-window-provider';
 import {
   useBoolean,
@@ -28,6 +27,10 @@ import {
   useId,
   useUnmount,
 } from '@fluentui/react-hooks';
+import type { IFocusTrapZone } from '../../FocusTrapZone';
+import type { IDragOptions, IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
+import type { ILayerProps } from '../../Layer';
+import type { ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 

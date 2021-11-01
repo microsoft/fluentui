@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId } from '@fluentui/react-utilities';
 import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
 
 /**
@@ -9,10 +9,12 @@ export function useMenuGroup(props: MenuGroupProps, ref: React.Ref<HTMLElement>)
   const headerId = useId('menu-group');
 
   return {
-    ref,
-    'aria-labelledby': headerId,
-    role: 'group',
+    root: getNativeElementProps('div', {
+      ref,
+      'aria-labelledby': headerId,
+      role: 'group',
+      ...props,
+    }),
     headerId: headerId,
-    ...props,
   };
 }

@@ -2,7 +2,8 @@ import * as React from 'react';
 import { getWindow } from '@fluentui/react/lib/Utilities';
 import { tryParseExample, IMPORT_REGEX } from './exampleParser';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
-import { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
+import type { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
+
 // Don't reference anything importing Monaco in this file to avoid pulling Monaco into the
 // main bundle or breaking tests!
 

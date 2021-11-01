@@ -61,6 +61,7 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
   excludedPropNames?: string[],
 ): TAttributes {
   const allowedPropNames = (tagName && nativeElementMap[tagName]) || htmlElementProperties;
+  allowedPropNames.as = 1;
 
   return getNativeProps(props, allowedPropNames, excludedPropNames);
 }

@@ -5,10 +5,10 @@ import {
   getLeftFormatIndex,
   getMaskDisplay,
   getRightFormatIndex,
-  IMaskValue,
   insertString,
   parseMask,
 } from './inputMask';
+import type { IMaskValue } from './inputMask';
 
 const inputMask = 'Phone number m\\ask: (999) 999 - 9999';
 

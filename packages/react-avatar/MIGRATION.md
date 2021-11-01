@@ -38,7 +38,7 @@ In cases where migration is possible, the following props will need to be rename
 - `imageShouldStartVisible` => NOT SUPPORTED
 - `onPhotoLoadingStateChange` => NOT SUPPORTED
 - `onRender*` => NOT SUPPORTED - add custom components to the slots instead of overriding the rendering
-  - (Or to render a square image, use the `square` prop)
+  - (Or to render a square image, use the `shape='square` prop)
 
 ## Migration from v0
 
@@ -75,9 +75,9 @@ The v0 Avatar maps more closely to the converged Avatar.
 | -                          | icon (slot)      | icon (slot)        |
 | showUnknownPersonaCoin     | -                | -                  |
 | className                  | className        | className          |
-| -                          | square           | square             |
+| -                          | square           | shape              |
 | -                          | -                | active             |
-| -                          | -                | activeDisplay      |
+| -                          | -                | activeAppearance   |
 | -                          | styles           | (tokens)           |
 | -                          | variables        | (tokens)           |
 | -                          | design           | (tokens)           |

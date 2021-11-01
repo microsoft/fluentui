@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
-import { IPositionedData } from '../../../Positioning';
-import { ReactNode } from 'react';
-import { Target } from '@fluentui/react-hooks';
+import type { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
+import type { IPositionedData } from '../../../Positioning';
+import type { ReactNode } from 'react';
+import type { Target } from '@fluentui/react-hooks';
 
 /**
  * {@docCategory Coachmark}

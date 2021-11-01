@@ -1,8 +1,8 @@
 /** @jsx withSlots */
 import { PersonaCoin } from '../../PersonaCoin/PersonaCoin';
 import { getSlots, withSlots } from '@fluentui/foundation-legacy';
-import { IVerticalPersonaComponent, IVerticalPersonaProps, IVerticalPersonaSlots } from './VerticalPersona.types';
 import { PersonaText } from '../PersonaText/PersonaText';
+import type { IVerticalPersonaComponent, IVerticalPersonaProps, IVerticalPersonaSlots } from './VerticalPersona.types';
 
 export const VerticalPersonaView: IVerticalPersonaComponent['view'] = props => {
   const Slots = getSlots<IVerticalPersonaProps, IVerticalPersonaSlots>(props, {

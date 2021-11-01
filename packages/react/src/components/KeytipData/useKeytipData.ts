@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useConst, usePrevious } from '@fluentui/react-hooks';
 import { mergeAriaAttributeValues } from '../../Utilities';
-import { KeytipDataOptions } from './KeytipData.types';
-import { IKeytipProps } from '../../Keytip';
 import { KeytipManager, mergeOverflows, sequencesToID, getAriaDescribedBy } from '../../utilities/keytips/index';
+import type { KeytipDataOptions } from './KeytipData.types';
+import type { IKeytipProps } from '../../Keytip';
 
 export interface IKeytipData {
   ariaDescribedBy: string | undefined;

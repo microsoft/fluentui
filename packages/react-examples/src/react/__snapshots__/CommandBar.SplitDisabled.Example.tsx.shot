@@ -67,6 +67,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
+              role="none"
             >
               <div
                 aria-expanded={false}
@@ -490,6 +491,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
+              role="none"
             >
               <div
                 aria-disabled={true}
@@ -921,6 +923,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
+              role="none"
             >
               <button
                 aria-disabled={true}
@@ -1102,6 +1105,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
+              role="none"
             >
               <div
                 className=
@@ -1114,6 +1118,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                role="none"
               >
                 <button
                   aria-disabled={true}

@@ -10,6 +10,10 @@ import {
 
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+  /**
    * Data to render in the chart.
    */
   data: IGroupedVerticalBarChartData[];
@@ -65,6 +69,11 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * Define a custom callout renderer for a stack
    */
   onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {}

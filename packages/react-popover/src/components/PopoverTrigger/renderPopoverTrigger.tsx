@@ -1,4 +1,4 @@
-import { PopoverTriggerState } from './PopoverTrigger.types';
+import type { PopoverTriggerState } from './PopoverTrigger.types';
 
 /**
  * Render the final JSX of PopoverTrigger

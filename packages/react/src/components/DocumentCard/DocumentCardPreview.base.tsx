@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Icon } from '../../Icon';
 import { Image } from '../../Image';
 import { Link } from '../../Link';
-import { IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, css, initializeComponentRef } from '../../Utilities';
-import {
+import type { IProcessedStyleSet } from '../../Styling';
+import type {
   IDocumentCardPreviewImage,
   IDocumentCardPreviewProps,
   IDocumentCardPreviewStyleProps,

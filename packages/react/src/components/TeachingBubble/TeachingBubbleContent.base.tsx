@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { classNamesFunction, KeyCodes } from '../../Utilities';
-import {
+import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
+import { Stack } from '../../Stack';
+import { FocusTrapZone } from '../../FocusTrapZone';
+import { Image } from '../../Image';
+import { useOnEvent, useMergedRefs, useId } from '@fluentui/react-hooks';
+import { useDocument } from '../../WindowProvider';
+import type {
   ITeachingBubbleProps,
   ITeachingBubbleStyleProps,
   ITeachingBubbleStyles,
   ITeachingBubble,
 } from './TeachingBubble.types';
-import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
-import { Stack } from '../../Stack';
-import { FocusTrapZone } from '../../FocusTrapZone';
-import { Image } from '../../Image';
-import { useOnEvent, useMergedRefs } from '@fluentui/react-hooks';
-import { useDocument } from '../../WindowProvider';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
@@ -36,6 +36,12 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
   const documentRef = useDocument();
   const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
 
+  const ariaDescribedById = useId('teaching-bubble-content-');
+  const ariaLabelledById = useId('teaching-bubble-title-');
+
+  const ariaDescribedBy = props.ariaDescribedBy ?? ariaDescribedById;
+  const ariaLabelledBy = props.ariaLabelledBy ?? ariaLabelledById;
+
   const {
     illustrationImage,
     primaryButtonProps,
@@ -50,8 +56,6 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
     isWide,
     styles,
     theme,
-    ariaDescribedBy,
-    ariaLabelledBy,
     footerContent: customFooterContent,
     focusTrapZoneProps,
   } = props;
@@ -100,7 +104,7 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
 
     headerContent = (
       <div className={classNames.header}>
-        <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
+        <HeaderWrapperAs role="heading" aria-level={3} className={classNames.headline} id={ariaLabelledBy}>
           {headline}
         </HeaderWrapperAs>
       </div>

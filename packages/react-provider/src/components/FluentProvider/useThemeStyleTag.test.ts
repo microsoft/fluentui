@@ -1,8 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { themeToCSSVariables, Theme } from '@fluentui/react-theme';
+import { themeToCSSVariables } from '@fluentui/react-theme';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 import { useThemeStyleTag } from './useThemeStyleTag';
+import type { Theme } from '@fluentui/react-theme';
 
 jest.mock('@fluentui/react-theme');
 

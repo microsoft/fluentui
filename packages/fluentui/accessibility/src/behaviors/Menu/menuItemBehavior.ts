@@ -78,4 +78,4 @@ export type MenuItemBehaviorProps = {
   disabled?: boolean;
   /** If a menu displays elements vertically. */
   vertical?: boolean;
-} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;
+} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby' | 'aria-disabled'>;

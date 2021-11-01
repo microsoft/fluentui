@@ -1,6 +1,6 @@
 import { buildClassMap } from '../utilities/index';
 import { AnimationStyles } from '../styles/index';
-import { IAnimationStyles } from '../interfaces/index';
+import type { IAnimationStyles } from '../interfaces/index';
 
 /**
  * {@docCategory AnimationClassNames}

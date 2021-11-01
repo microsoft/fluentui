@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
-import { Customizations, ISettings } from './Customizations';
+import { Customizations } from './Customizations';
 import { CustomizerContext } from './CustomizerContext';
 import { useCustomizationSettings } from './useCustomizationSettings';
+import type { ISettings } from './Customizations';
 
 describe('useCustomizatioSettings', () => {
   let wrapper: ReactWrapper | undefined;

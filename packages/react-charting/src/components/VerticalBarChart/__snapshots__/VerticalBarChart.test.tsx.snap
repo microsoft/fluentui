@@ -97,66 +97,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={-24}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#00188f"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={-2}
-        />
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -217,6 +160,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -273,7 +217,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -306,6 +249,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -362,7 +306,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -395,6 +338,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -451,7 +395,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -583,66 +526,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout12"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={-24}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout12"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout12"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#00188f"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={-2}
-        />
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -686,6 +572,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="First"
@@ -742,7 +629,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -775,6 +661,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Second"
@@ -831,7 +718,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -864,6 +750,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Third"
@@ -920,7 +807,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1049,66 +935,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout4"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={-24}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout4"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout4"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#00188f"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={-2}
-        />
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -1212,66 +1041,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout8"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={false}
-          fill="#0078d4"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={-24}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout8"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={false}
-          fill="#002050"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout8"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={false}
-          fill="#00188f"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={-2}
-        />
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -1332,6 +1104,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -1388,7 +1161,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1421,6 +1193,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -1477,7 +1250,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1510,6 +1282,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -1566,7 +1339,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1698,66 +1470,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout16"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={-24}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout16"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout16"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#00188f"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={-2}
-        />
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -1818,6 +1533,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -1874,7 +1590,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1907,6 +1622,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -1963,7 +1679,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1996,6 +1711,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -2052,7 +1768,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2184,66 +1899,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout20"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={-24}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout20"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout20"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#00188f"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={-2}
-        />
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -2304,6 +1962,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -2360,7 +2019,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2393,6 +2051,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -2449,7 +2108,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2482,6 +2140,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -2538,7 +2197,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2670,66 +2328,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         transform="translate(40, 0)"
       />
       <g>
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout24"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={56}
-          y={-24}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout24"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={8.30769230769231}
-          y={20}
-        />
-        <rect
-          aria-label="Vertical bar chart"
-          aria-labelledby="toolTipcallout24"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#00188f"
-          height={0}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={32}
-          x={-63.23076923076923}
-          y={-2}
-        />
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -2790,6 +2391,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -2846,7 +2448,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2879,6 +2480,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -2935,7 +2537,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2968,6 +2569,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -3024,7 +2626,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

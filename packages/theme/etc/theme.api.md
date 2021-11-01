@@ -4,9 +4,9 @@
 
 ```ts
 
-import { IFontWeight } from '@fluentui/merge-styles';
-import { IRawStyle } from '@fluentui/merge-styles';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IFontWeight } from '@fluentui/merge-styles';
+import type { IRawStyle } from '@fluentui/merge-styles';
+import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 // @public
 export const AnimationStyles: IAnimationStyles;
@@ -801,7 +801,6 @@ export interface Theme extends IScheme {
         [P in ISchemeNames]?: IScheme;
     };
 }
-
 
 // (No @packageDocumentation comment for this package)
 

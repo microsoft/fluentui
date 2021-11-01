@@ -10,8 +10,6 @@ import { serializeRuleEntries } from './styleToClassName';
  */
 export function keyframes(timeline: IKeyframes): string {
   const stylesheet = Stylesheet.getInstance();
-  const name = stylesheet.getClassName();
-
   const rulesArray: string[] = [];
 
   for (const prop in timeline) {
@@ -21,8 +19,14 @@ export function keyframes(timeline: IKeyframes): string {
   }
   const rules = rulesArray.join('');
 
-  stylesheet.insertRule(`@keyframes ${name}{${rules}}`, true);
+  const className = stylesheet.classNameFromKey(rules);
 
+  if (className) {
+    return className;
+  }
+
+  const name = stylesheet.getClassName();
+  stylesheet.insertRule(`@keyframes ${name}{${rules}}`, true);
   stylesheet.cacheClassName(name, rules, [], ['keyframes', rules]);
 
   return name;

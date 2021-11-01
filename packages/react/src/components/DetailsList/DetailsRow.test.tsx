@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { DetailsList } from './DetailsList';
-import { IDetailsRowProps } from './DetailsRow.types';
-import { IDetailsListProps, IColumn, CheckboxVisibility } from './DetailsList.types';
+import { CheckboxVisibility } from './DetailsList.types';
 import { SelectionMode, Selection } from '../../Selection';
 import { DetailsRow } from './DetailsRow';
 import { getTheme } from '../../Styling';
+import type { IDetailsRowProps } from './DetailsRow.types';
+import type { IDetailsListProps, IColumn } from './DetailsList.types';
 
 const _columns: IColumn[] = [
   {

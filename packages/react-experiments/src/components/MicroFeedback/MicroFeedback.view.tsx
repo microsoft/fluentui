@@ -1,9 +1,9 @@
 /** @jsx withSlots */
 import { Callout, FocusZone, FocusZoneDirection, List, Stack, Text } from '@fluentui/react';
-import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
+import { DefaultButton, IconButton } from '@fluentui/react/lib/Button';
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
-
-import {
+import type { IButtonStyles } from '@fluentui/react/lib/Button';
+import type {
   IMicroFeedbackComponent,
   IMicroFeedbackProps,
   IMicroFeedbackSlots,

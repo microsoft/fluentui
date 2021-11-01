@@ -2,8 +2,9 @@ import * as React from 'react';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
 import { resetIds } from '@fluentui/utilities';
-import { Tabs, TabItem, TabsImperativeHandle } from './index';
+import { Tabs, TabItem } from './index';
 import { isConformant } from '../../common/isConformant';
+import type { TabsImperativeHandle } from './index';
 
 describe('Tabs', () => {
   beforeEach(() => {
@@ -25,6 +26,11 @@ describe('Tabs', () => {
     Component: Tabs,
     displayName: 'Tabs',
     skipAsPropTests: true,
+    testOptions: {
+      'consistent-callback-args': {
+        ignoreProps: ['onTabClick'],
+      },
+    },
   });
 
   it('can be focused', () => {

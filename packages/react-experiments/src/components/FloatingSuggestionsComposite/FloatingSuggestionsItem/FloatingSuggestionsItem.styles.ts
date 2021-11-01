@@ -4,7 +4,10 @@ import {
   HighContrastSelector,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
-import { IFloatingSuggestionItemStylesProps, IFloatingSuggestionItemStyles } from './FloatingSuggestionsItem.types';
+import type {
+  IFloatingSuggestionItemStylesProps,
+  IFloatingSuggestionItemStyles,
+} from './FloatingSuggestionsItem.types';
 
 const GlobalClassNames = {
   root: 'ms-FloatingSuggestionsItem',

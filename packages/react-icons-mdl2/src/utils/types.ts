@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISvgIconProps } from './SvgIcon.types';
+import type { ISvgIconProps } from './SvgIcon.types';
 
 export type SvgIconFuncArg<TProps = ISvgIconProps> = {
   classes: { [iconSlot: string]: string }; // renamed from classes

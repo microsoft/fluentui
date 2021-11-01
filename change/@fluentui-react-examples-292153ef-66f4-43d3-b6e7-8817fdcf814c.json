@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Donut chart custom accessibility change",
-  "packageName": "@fluentui/react-examples",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

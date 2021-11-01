@@ -12,15 +12,10 @@ import {
   classNamesFunction,
   KeyCodes,
 } from '../../Utilities';
-import {
-  ITooltipHostProps,
-  TooltipOverflowMode,
-  ITooltipHostStyles,
-  ITooltipHostStyleProps,
-  ITooltipHost,
-} from './TooltipHost.types';
+import { TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
+import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 
 export interface ITooltipHostState {
   isAriaPlaceholderRendered: boolean;
@@ -70,6 +65,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       directionalHintForRTL,
       hostClassName: className,
       id,
+      // eslint-disable-next-line deprecation/deprecation
       setAriaDescribedBy = true,
       tooltipProps,
       styles,
@@ -99,6 +95,8 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
         onMouseEnter={this._onTooltipMouseEnter}
         onMouseLeave={this._onTooltipMouseLeave}
         onKeyDown={this._onTooltipKeyDown}
+        role="none"
+        // WARNING: aria-describedby on this node provides no value, since it isn't allowed generic elements
         aria-describedby={ariaDescribedBy}
       >
         {children}
@@ -121,7 +119,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
           />
         )}
         {isAriaPlaceholderRendered && (
-          <div id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
+          <div id={tooltipId} role="none" style={hiddenContentStyle as React.CSSProperties}>
             {content}
           </div>
         )}

@@ -1,8 +1,8 @@
-import { IStyle } from '@fluentui/style-utilities';
-import { Theme } from '@fluentui/theme';
 import { useTheme } from './useTheme';
 import { useWindow } from '@fluentui/react-window-provider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
+import type { IStyle } from '@fluentui/style-utilities';
+import type { Theme } from '@fluentui/theme';
 
 const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
   for (const key of path) {

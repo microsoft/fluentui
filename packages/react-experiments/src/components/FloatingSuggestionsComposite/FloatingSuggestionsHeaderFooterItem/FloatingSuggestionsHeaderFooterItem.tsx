@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { classNamesFunction, css } from '../../../Utilities';
-import {
+import { getStyles } from './FloatingSuggestionsHeaderFooterItem.styles';
+import type {
   IFloatingSuggestionsHeaderFooterItemProps,
   IFloatingSuggestionHeaderFooterItemStylesProps,
   IFloatingSuggestionHeaderFooterItemStyles,
 } from './FloatingSuggestionsHeaderFooterItem.types';
-import { getStyles } from './FloatingSuggestionsHeaderFooterItem.styles';
 
 const getClassNames = classNamesFunction<
   IFloatingSuggestionHeaderFooterItemStylesProps,

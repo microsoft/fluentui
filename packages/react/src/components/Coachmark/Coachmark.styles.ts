@@ -1,6 +1,6 @@
 import { keyframes, PulsingBeaconAnimationStyles, HighContrastSelector } from '../../Styling';
-import { ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
 import { getRTL, IsFocusVisibleClassName, memoizeFunction } from '../../Utilities';
+import type { ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
 
 export const COACHMARK_WIDTH = 32;
 export const COACHMARK_HEIGHT = 32;

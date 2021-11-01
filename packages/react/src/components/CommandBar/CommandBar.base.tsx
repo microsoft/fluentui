@@ -3,25 +3,28 @@ import {
   classNamesFunction,
   css,
   nullRender,
-  IComponentAs,
   getNativeProps,
   divProperties,
   composeComponentAs,
   initializeComponentRef,
 } from '../../Utilities';
-import {
+import { OverflowSet } from '../../OverflowSet';
+import { ResizeGroup } from '../../ResizeGroup';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { CommandBarButton } from '../../Button';
+import { TooltipHost } from '../../Tooltip';
+import { getCommandButtonStyles } from './CommandBar.styles';
+import type { IComponentAs } from '../../Utilities';
+import type {
   ICommandBar,
   ICommandBarItemProps,
   ICommandBarProps,
   ICommandBarStyleProps,
   ICommandBarStyles,
 } from './CommandBar.types';
-import { IOverflowSet, OverflowSet } from '../../OverflowSet';
-import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandBarButton, IButtonProps } from '../../Button';
-import { TooltipHost } from '../../Tooltip';
-import { getCommandButtonStyles } from './CommandBar.styles';
+import type { IOverflowSet } from '../../OverflowSet';
+import type { IResizeGroup } from '../../ResizeGroup';
+import type { IButtonProps } from '../../Button';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
@@ -118,16 +121,20 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   }
 
   private _onRenderData = (data: ICommandBarData): JSX.Element => {
+    const { ariaLabel, primaryGroupAriaLabel, farItemsGroupAriaLabel } = this.props;
+    const hasSecondSet = data.farItems && data.farItems.length > 0;
+
     return (
       <FocusZone
         className={css(this._classNames.root)}
         direction={FocusZoneDirection.horizontal}
         role={'menubar'}
-        aria-label={this.props.ariaLabel}
+        aria-label={ariaLabel}
       >
         {/*Primary Items*/}
         <OverflowSet
-          role="none"
+          role={hasSecondSet ? 'group' : 'none'}
+          aria-label={hasSecondSet ? primaryGroupAriaLabel : undefined}
           componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
           items={data.primaryItems}
@@ -137,9 +144,10 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         />
 
         {/*Secondary Items*/}
-        {data.farItems && data.farItems.length > 0 && (
+        {hasSecondSet && (
           <OverflowSet
-            role="none"
+            role="group"
+            aria-label={farItemsGroupAriaLabel}
             className={css(this._classNames.secondarySet)}
             items={data.farItems}
             onRenderItem={this._onRenderItem}
@@ -172,7 +180,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     if (item.iconOnly && (itemText !== undefined || item.tooltipHostProps)) {
       return (
-        <TooltipHost content={itemText} {...item.tooltipHostProps}>
+        <TooltipHost role="none" content={itemText} setAriaDescribedBy={false} {...item.tooltipHostProps}>
           {this._commandButton(item, commandButtonProps)}
         </TooltipHost>
       );

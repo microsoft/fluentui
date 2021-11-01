@@ -1,20 +1,18 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { ButtonState } from './Button.types';
-import { buttonShorthandPropsCompat } from './useButton';
+import { getSlots } from '@fluentui/react-utilities';
+import type { ButtonSlots, ButtonState } from './Button.types';
 
 /**
  * Renders a Button component by passing the state defined props to the appropriate slots.
  */
 export const renderButton = (state: ButtonState) => {
-  const { slots, slotProps } = getSlotsCompat(state, buttonShorthandPropsCompat);
-  const { children, iconOnly, iconPosition } = state;
+  const { slots, slotProps } = getSlots<ButtonSlots>(state, ['root', 'icon']);
+  const { iconOnly, iconPosition } = state;
 
   return (
     <slots.root {...slotProps.root}>
-      {/*{loading && <slots.loader {...slotProps.loader} />}*/}
       {iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
-      {!iconOnly && children}
+      {!iconOnly && state.root.children}
       {iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
     </slots.root>
   );

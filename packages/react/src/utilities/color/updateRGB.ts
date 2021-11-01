@@ -1,5 +1,5 @@
-import { IColor, IRGB } from './interfaces';
 import { getColorFromRGBA } from './getColorFromRGBA';
+import type { IColor, IRGB } from './interfaces';
 
 /**
  * Gets a color with a single RGBA component updated to a new value.

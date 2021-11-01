@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle } from '../../../Styling';
-import { IRefObject, ISize, IStyleFunctionOrObject } from '../../../Utilities';
-import { TileSize } from '../Tile.types';
+import type { IStyle } from '../../../Styling';
+import type { IRefObject, ISize, IStyleFunctionOrObject } from '../../../Utilities';
+import type { TileSize } from '../Tile.types';
 
 export interface IShimmerTile {}
 

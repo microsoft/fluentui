@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { classNamesFunction, KeyCodes } from '../../Utilities';
-import {
+import { ButtonGrid } from '../../utilities/ButtonGrid/ButtonGrid';
+import { ColorPickerGridCell } from './ColorPickerGridCell';
+import { useId, useConst, useSetTimeout, useControllableValue, useWarnings } from '@fluentui/react-hooks';
+import type {
   ISwatchColorPickerProps,
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles,
 } from './SwatchColorPicker.types';
-import { ButtonGrid } from '../../utilities/ButtonGrid/ButtonGrid';
-import { IColorCellProps } from './ColorPickerGridCell.types';
-import { ColorPickerGridCell } from './ColorPickerGridCell';
-import { useId, useConst, useSetTimeout, useControllableValue, useWarnings } from '@fluentui/react-hooks';
-import { IButtonGridProps } from '../../utilities/ButtonGrid/ButtonGrid.types';
+import type { IColorCellProps } from './ColorPickerGridCell.types';
+import type { IButtonGridProps } from '../../utilities/ButtonGrid/ButtonGrid.types';
 
 interface ISwatchColorPickerInternalState {
   isNavigationIdle: boolean;

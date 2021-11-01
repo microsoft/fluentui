@@ -2,18 +2,18 @@ import * as React from 'react';
 
 import { getRTL, getInitials, styled } from '../../../Utilities';
 import { BasePicker, BasePickerListBelow } from '../BasePicker';
-import {
+import { ValidationState } from '../BasePicker.types';
+import { PeoplePickerItem } from './PeoplePickerItems/PeoplePickerItem';
+import { PeoplePickerItemSuggestion } from './PeoplePickerItems/PeoplePickerItemSuggestion';
+import { getStyles } from '../BasePicker.styles';
+import type {
   IBasePickerProps,
   IBasePickerSuggestionsProps,
-  ValidationState,
   IBasePickerStyleProps,
   IBasePickerStyles,
 } from '../BasePicker.types';
-import { PeoplePickerItem } from './PeoplePickerItems/PeoplePickerItem';
-import { IPersonaProps } from '../../../Persona';
-import { PeoplePickerItemSuggestion } from './PeoplePickerItems/PeoplePickerItemSuggestion';
-import { IPeoplePickerItemSelectedProps } from './PeoplePickerItems/PeoplePickerItem.types';
-import { getStyles } from '../BasePicker.styles';
+import type { IPersonaProps } from '../../../Persona';
+import type { IPeoplePickerItemSelectedProps } from './PeoplePickerItems/PeoplePickerItem.types';
 
 /**
  * PeoplePicker props interface which renders Personas as items.

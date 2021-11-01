@@ -21,7 +21,6 @@ Common buttons now all map to `Button`:
 - `children`
 - `disabled`
 - `href`
-- `primary`
 
 ### Renamed props
 
@@ -70,6 +69,7 @@ Common buttons now all map to `Button`:
 - `keytipProps` => Wrap the component with the `Keytip` component instead
 - `onRenderChildren` => Pass the customized `children` as you want instead
 - `onRenderIcon` => Add the icon customized as you want via the `icon` token
+- `primary` => Use `primary` value in `appearance` prop instead
 - `onRenderText` => Add the text customized as you want by passing it as `children` instead
 - `split` => Use `SplitButton` component instead
 - `styles` => Use new styling system via `tokens` instead
@@ -90,14 +90,12 @@ Common buttons now all map to `Button`:
 ### Props that remain as is
 
 - `children`
-- `circular`
 - `disabled`
 - `disabledFocusable`
 - `icon`
 - `iconPosition`
 - `loader`
 - `loading`
-- `primary`
 - `size`
 
 ### Renamed props
@@ -114,7 +112,9 @@ Common buttons now all map to `Button`:
 ### Props no longer supported with an equivalent functionality in converged Button
 
 - `accessibility` => Override accessibility behavior by composing the `Button` how you want
+- `circular` => Use `circular` value in `shape` prop instead
 - `content` => Pass the content as `children` instead
+- `primary` => Use `primary` value in `appearance` prop instead
 - `secondary` => Use the `Button` as it comes by default instead
 
 ### Props TBD
@@ -124,67 +124,67 @@ Common buttons now all map to `Button`:
 
 ## Property mapping
 
-| v8 `Button`                        | v0 `Button`         | Converged `Button`  |
-| ---------------------------------- | ------------------- | ------------------- |
-|                                    | `accessibility`     |                     |
-| `allowDisabledFocus`               | `disabledFocusable` | `disabledFocusable` |
-| `ariaDescription`                  | `aria-description`  | `aria-description`  |
-| `ariaHidden`                       | `aria-hidden`       | `aria-hidden`       |
-| `ariaLabel`                        | `aria-label`        | `aria-label`        |
-| `buttonType`                       |                     |                     |
-| `checked`                          |                     |                     |
-| `children`                         | `children`          | `children`          |
-|                                    | `circular`          | `circular`          |
-| `className`                        | `className`         | `className`         |
-| `componentRef`                     |                     |                     |
-| `data`                             |                     |                     |
-| `defaultRender`                    |                     |                     |
-| `description`                      |                     |                     |
-| `disabled`                         | `disabled`          | `disabled`          |
-| `elementRef`                       |                     | `ref`               |
-|                                    | `fluid`             | `block`             |
-| `getClassNames`                    |                     |                     |
-| `getSplitButtonClassNames`         |                     |                     |
-| `href`                             |                     | `href`              |
-|                                    | `icon`              | `icon`              |
-|                                    | `iconOnly`          | `?`                 |
-|                                    | `iconPosition`      | `iconPosition`      |
-| `iconProps`                        |                     |                     |
-|                                    | `inverted`          | `?`                 |
-| `keytipProps`                      |                     |                     |
-|                                    | `loader`            | `loader`            |
-|                                    | `loading`           | `loading`           |
-| `menuAs`                           |                     |                     |
-| `menuIconProps`                    |                     |                     |
-| `menuProps`                        |                     |                     |
-| `menuTriggerKeyCode`               |                     |                     |
-| `onAfterMenuDismiss`               |                     |                     |
-| `onClick`                          | `onClick`           | `onClick`           |
-| `onFocus`                          | `onFocus`           | `onFocus`           |
-| `onMenuClick`                      |                     |                     |
-| `onRenderAriaDescription`          |                     |                     |
-| `onRenderChildren`                 |                     |                     |
-| `onRenderDescription`              |                     |                     |
-| `onRenderIcon`                     |                     |                     |
-| `onRenderMenu`                     |                     |                     |
-| `onRenderMenuIcon`                 |                     |                     |
-| `onRenderText`                     |                     |                     |
-| `persistMenu`                      |                     |                     |
-| `primary`                          | `primary`           | `primary`           |
-| `primaryActionButtonProps`         |                     |                     |
-| `primaryDisabled`                  |                     |                     |
-| `renderPersistedMenuHiddenOnMount` |                     |                     |
-| `rootProps`                        |                     |                     |
-|                                    | `secondary`         |                     |
-| `secondaryText`                    |                     |                     |
-|                                    | `size`              | `size`              |
-| `split`                            |                     |                     |
-| `splitButtonAriaLabel`             |                     |                     |
-| `splitButtonMenuProps`             |                     |                     |
-| `styles`                           |                     |                     |
-| `text`                             | `content`           |                     |
-|                                    | `text`              | `transparent`       |
-| `theme`                            |                     |                     |
-| `toggle`                           |                     |                     |
-| `toggled`                          |                     |                     |
-| `uniqueId`                         |                     |                     |
+| v8 `Button`                        | v0 `Button`         | Converged `Button`     |
+| ---------------------------------- | ------------------- | ---------------------- |
+|                                    | `accessibility`     |                        |
+| `allowDisabledFocus`               | `disabledFocusable` | `disabledFocusable`    |
+| `ariaDescription`                  | `aria-description`  | `aria-description`     |
+| `ariaHidden`                       | `aria-hidden`       | `aria-hidden`          |
+| `ariaLabel`                        | `aria-label`        | `aria-label`           |
+| `buttonType`                       |                     |                        |
+| `checked`                          |                     |                        |
+| `children`                         | `children`          | `children`             |
+|                                    | `circular`          | `shape=circular`       |
+| `className`                        | `className`         | `className`            |
+| `componentRef`                     |                     |                        |
+| `data`                             |                     |                        |
+| `defaultRender`                    |                     |                        |
+| `description`                      |                     |                        |
+| `disabled`                         | `disabled`          | `disabled`             |
+| `elementRef`                       |                     | `ref`                  |
+|                                    | `fluid`             | `block`                |
+| `getClassNames`                    |                     |                        |
+| `getSplitButtonClassNames`         |                     |                        |
+| `href`                             |                     | `href`                 |
+|                                    | `icon`              | `icon`                 |
+|                                    | `iconOnly`          |                        |
+|                                    | `iconPosition`      | `iconPosition`         |
+| `iconProps`                        |                     |                        |
+|                                    | `inverted`          |                        |
+| `keytipProps`                      |                     |                        |
+|                                    | `loader`            | `loader`               |
+|                                    | `loading`           | `loading`              |
+| `menuAs`                           |                     |                        |
+| `menuIconProps`                    |                     |                        |
+| `menuProps`                        |                     |                        |
+| `menuTriggerKeyCode`               |                     |                        |
+| `onAfterMenuDismiss`               |                     |                        |
+| `onClick`                          | `onClick`           | `onClick`              |
+| `onFocus`                          | `onFocus`           | `onFocus`              |
+| `onMenuClick`                      |                     |                        |
+| `onRenderAriaDescription`          |                     |                        |
+| `onRenderChildren`                 |                     |                        |
+| `onRenderDescription`              |                     |                        |
+| `onRenderIcon`                     |                     |                        |
+| `onRenderMenu`                     |                     |                        |
+| `onRenderMenuIcon`                 |                     |                        |
+| `onRenderText`                     |                     |                        |
+| `persistMenu`                      |                     |                        |
+| `primary`                          | `primary`           | `appearance='primary'` |
+| `primaryActionButtonProps`         |                     |                        |
+| `primaryDisabled`                  |                     |                        |
+| `renderPersistedMenuHiddenOnMount` |                     |                        |
+| `rootProps`                        |                     |                        |
+|                                    | `secondary`         |                        |
+| `secondaryText`                    |                     |                        |
+|                                    | `size`              | `size`                 |
+| `split`                            |                     |                        |
+| `splitButtonAriaLabel`             |                     |                        |
+| `splitButtonMenuProps`             |                     |                        |
+| `styles`                           |                     |                        |
+| `text`                             | `content`           |                        |
+|                                    | `text`              | `transparent`          |
+| `theme`                            |                     |                        |
+| `toggle`                           |                     |                        |
+| `toggled`                          |                     |                        |
+| `uniqueId`                         |                     |                        |

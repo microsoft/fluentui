@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { IPersonaProps, IPersonaStyleProps, IPersonaStyles } from './Persona.types';
 import { PersonaBase } from './Persona.base';
 import { getStyles } from './Persona.styles';
+import type { IPersonaProps, IPersonaStyleProps, IPersonaStyles } from './Persona.types';
 
 /**
  * Personas are used for rendering an individual's avatar, presence and details.

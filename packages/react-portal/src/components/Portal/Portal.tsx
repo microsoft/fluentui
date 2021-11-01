@@ -1,11 +1,12 @@
 import * as React from 'react';
 
 import { usePortal } from './usePortal';
-import { PortalProps } from './Portal.types';
 import { renderPortal } from './renderPortal';
+import type { PortalProps } from './Portal.types';
 
 /**
- * Component that renders children in a React portal
+ * A portal provides a way to render children into a DOM node
+ * that exists outside the DOM hierarchy of the parent component.
  */
 export const Portal: React.FC<PortalProps> = props => {
   const state = usePortal(props);

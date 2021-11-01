@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { initializeComponentRef, IBaseProps } from '../../../../Utilities';
-import { IExtendedPersonaProps } from '../SelectedPeopleList';
-import { ContextualMenu, DirectionalHint, IContextualMenuItem } from '../../../../ContextualMenu';
+import { initializeComponentRef } from '../../../../Utilities';
+import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
+import type { IBaseProps } from '../../../../Utilities';
+import type { IExtendedPersonaProps } from '../SelectedPeopleList';
+import type { IContextualMenuItem } from '../../../../ContextualMenu';
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;

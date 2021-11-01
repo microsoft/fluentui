@@ -4,19 +4,25 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Input: React_2.ForwardRefExoticComponent<InputProps & React_2.RefAttributes<HTMLElement>>;
+export const Input: ForwardRefComponent<InputProps>;
 
 // @public (undocumented)
-export interface InputCommons extends Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> {
+export interface InputCommons {
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    // (undocumented)
+    inline?: boolean;
+    size?: 'small' | 'medium' | 'large';
 }
 
 // @public
-export interface InputProps extends ComponentProps<Partial<InputSlots>>, Partial<InputCommons> {
+export interface InputProps extends InputCommons, Omit<ComponentProps<Partial<InputSlots>>, 'children'> {
 }
 
 // @public
@@ -24,17 +30,17 @@ export const inputShorthandProps: (keyof InputSlots)[];
 
 // @public (undocumented)
 export type InputSlots = {
-    input: React_2.InputHTMLAttributes<HTMLInputElement>;
-    inputWrapper: React_2.HTMLAttributes<HTMLElement>;
-    bookendBefore: React_2.HTMLAttributes<HTMLElement>;
-    bookendAfter: React_2.HTMLAttributes<HTMLElement>;
-    insideStart: React_2.HTMLAttributes<HTMLElement>;
-    insideEnd: React_2.HTMLAttributes<HTMLElement>;
+    root: IntrinsicShorthandProps<'span'>;
+    input: IntrinsicShorthandProps<'input'>;
+    inputWrapper: IntrinsicShorthandProps<'span'>;
+    bookendBefore?: IntrinsicShorthandProps<'span'>;
+    bookendAfter?: IntrinsicShorthandProps<'span'>;
+    insideStart?: IntrinsicShorthandProps<'span'>;
+    insideEnd?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public
-export interface InputState extends ComponentState<InputSlots>, InputCommons {
-    ref: React_2.Ref<HTMLElement>;
+export interface InputState extends InputCommons, ComponentState<InputSlots> {
 }
 
 // @public

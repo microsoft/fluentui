@@ -3,5 +3,6 @@ export function createPopper() {
   return {
     destroy: () => {},
     update: () => {},
+    setOptions: () => {},
   };
 }

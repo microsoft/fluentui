@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Tooltip examples",
-  "packageName": "@fluentui/react-examples",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

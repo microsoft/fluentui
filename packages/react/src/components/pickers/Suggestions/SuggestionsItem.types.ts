@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
-import { ISuggestionModel } from './Suggestions.types';
-
+import type { IStyle, ITheme } from '../../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import type { ISuggestionModel } from './Suggestions.types';
+import { IIconProps } from '../../Icon/Icon.types';
 /**
  * SuggestionItem component.
  * {@docCategory Pickers}
@@ -55,6 +55,12 @@ export interface ISuggestionItemProps<T> {
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;
+
+  /**
+   *  Props for the icon used in the item's remove button.
+   *  @defaultvalue `{ iconName:'Cancel' }`
+   */
+  removeButtonIconProps?: IIconProps;
 }
 
 /**

@@ -86,6 +86,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -103,6 +104,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -130,6 +135,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -223,6 +232,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -240,6 +250,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -268,6 +282,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     stroke-width: 2px;
                     stroke: #ffffff;
                   }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onFocus={[Function]}
@@ -293,6 +311,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
     className=
 
         {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
           margin-top: 5px;
         }
   >
@@ -431,6 +452,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -448,6 +470,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -475,6 +501,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -564,6 +594,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -581,6 +612,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -609,6 +644,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     stroke-width: 2px;
                     stroke: #ffffff;
                   }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onFocus={[Function]}
@@ -634,6 +673,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
     className=
 
         {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
           margin-top: 5px;
         }
   >
@@ -776,6 +818,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -793,6 +836,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -820,6 +867,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -913,6 +964,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -930,6 +982,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -957,6 +1013,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1059,6 +1119,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -1076,6 +1137,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1103,6 +1168,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1196,6 +1265,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -1213,6 +1283,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1241,6 +1315,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     stroke-width: 2px;
                     stroke: #ffffff;
                   }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1266,6 +1344,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
     className=
 
         {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
           margin-top: 5px;
         }
   >
@@ -1318,6 +1399,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Debit card numbers (EU and USA)"
@@ -1374,7 +1456,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1407,6 +1488,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Passport numbers (USA)"
@@ -1463,7 +1545,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1587,6 +1668,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -1604,6 +1686,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1631,6 +1717,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1724,6 +1814,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -1741,6 +1832,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1769,6 +1864,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     stroke-width: 2px;
                     stroke: #ffffff;
                   }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
               data-is-focusable={false}
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1794,6 +1893,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
     className=
 
         {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
           margin-top: 5px;
         }
   >

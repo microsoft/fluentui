@@ -1,11 +1,7 @@
-import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import {
-  HighContrastSelector,
-  getGlobalClassNames,
-  IStyle,
-  getHighContrastNoAdjustStyle,
-} from '@fluentui/style-utilities';
+import { HighContrastSelector, getGlobalClassNames, getHighContrastNoAdjustStyle } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
+import type { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
+import type { IStyle } from '@fluentui/style-utilities';
 
 const GlobalClassNames = {
   root: 'ms-Checkbox',

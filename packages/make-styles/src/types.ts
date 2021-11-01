@@ -88,7 +88,7 @@ export type StyleBucketName =
 export type SequenceHash = string;
 export type PropertyHash = string;
 
-export type CSSClasses = /* ltrClassName */ string | [ltrClassName: string, rtlClassName: string];
+export type CSSClasses = /* ltrClassName */ string | [/* ltrClassName */ string, /* rtlClassName */ string];
 
 export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
 export type CSSClassesMapBySlot<Slots extends string | number> = Record<Slots, CSSClassesMap>;
@@ -97,4 +97,4 @@ export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
 
 export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
 
-export type LookupItem = [definitions: CSSClassesMap, dir: 'rtl' | 'ltr'];
+export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ 'rtl' | 'ltr'];

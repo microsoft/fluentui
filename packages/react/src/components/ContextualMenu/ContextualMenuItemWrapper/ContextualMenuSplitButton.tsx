@@ -10,14 +10,15 @@ import {
   getId,
 } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
-import { IContextualMenuItem } from '../ContextualMenu.types';
-import { IMenuItemClassNames, getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
+import { getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
-import { IKeytipProps } from '../../../Keytip';
-import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
+import type { IContextualMenuItem } from '../ContextualMenu.types';
+import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
+import type { IKeytipProps } from '../../../Keytip';
+import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 
 export interface IContextualMenuSplitButtonState {}
 

@@ -1,15 +1,10 @@
 import * as React from 'react';
-import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
-import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
-import {
-  DayOfWeek,
-  FirstWeekOfYear,
-  DateRangeType,
-  ICalendarStrings,
-  IDateFormatting,
-} from '@fluentui/date-time-utilities';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
+import type { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
+import type { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
+import type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 
 /**
  * {@docCategory Calendar}

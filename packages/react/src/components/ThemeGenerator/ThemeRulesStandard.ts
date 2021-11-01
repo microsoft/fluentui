@@ -1,8 +1,7 @@
 import { Shade } from '../../utilities/color/shades';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { mapEnumByName } from '../../Utilities';
-
-import { IThemeRules } from './IThemeRules';
+import type { IThemeRules } from './IThemeRules';
 
 /* This is the set of rules for our default theme.
    We start with three base slots, defining the background, foreground (text), and

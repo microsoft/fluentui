@@ -11,9 +11,32 @@ import {
 } from './utils/index';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
+import type { PositioningProps } from './types';
 
-import { PopperOptions } from './types';
 type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
+
+interface PopperOptions extends PositioningProps {
+  /**
+   * If false, delays Popper's creation.
+   * @default true
+   */
+  enabled?: boolean;
+
+  onStateUpdate?: (state: Partial<PopperJs.State>) => void;
+
+  /**
+   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
+   * @default false
+   */
+  positionFixed?: boolean;
+
+  /**
+   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
+   * "all" enables this behavior for all axis.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_disableTether?: boolean | 'all';
+}
 
 //
 // Dev utils to detect if nodes have "autoFocus" props.
@@ -60,8 +83,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
     overflowBoundary,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_pinned,
+    pinned,
   } = options;
 
   const isRtl = useFluent().dir === 'rtl';
@@ -122,12 +144,12 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         { name: 'flip', options: { flipVariations: true } },
 
         /**
-         * unstable_pinned disables the flip modifier by setting flip.enabled to false; this
+         * pinned disables the flip modifier by setting flip.enabled to false; this
          * disables automatic repositioning of the popper box; it will always be placed according to
          * the values of `align` and `position` props, regardless of the size of the component, the
          * reference element or the viewport.
          */
-        unstable_pinned && { name: 'flip', enabled: false },
+        pinned && { name: 'flip', enabled: false },
 
         /**
          * When the popper box is placed in the context of a scrollable element, we need to set
@@ -269,7 +291,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       placement,
       strategy,
       unstable_disableTether,
-      unstable_pinned,
+      pinned,
 
       // These can be skipped from deps as they will not ever change
       handleStateUpdate,
@@ -372,7 +394,7 @@ export function usePopper(
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 
   React.useImperativeHandle(
-    options.containerRef,
+    options.popperRef,
     () => ({
       updatePosition: () => {
         popperInstanceRef.current?.update();
@@ -388,14 +410,22 @@ export function usePopper(
       popperInstanceRef.current?.destroy();
       popperInstanceRef.current = null;
     };
-  }, [options.enabled, options.target]);
-  useIsomorphicLayoutEffect(() => {
-    if (!isFirstMount) {
-      popperInstanceRef.current?.setOptions(
-        resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
-      );
-    }
-  }, [resolvePopperOptions]);
+  }, [handlePopperUpdate, options.enabled, options.target]);
+  useIsomorphicLayoutEffect(
+    () => {
+      if (!isFirstMount) {
+        popperInstanceRef.current?.setOptions(
+          resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
+        );
+      }
+    },
+    // Missing deps:
+    // options.target - The useIsomorphicLayoutEffect before this will create a new popper instance if target changes
+    // isFirstMount - Should never change after mount
+    // arrowRef, containerRef, targetRef - Stable between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [resolvePopperOptions],
+  );
 
   if (process.env.NODE_ENV !== 'production') {
     // This checked should run only in development mode

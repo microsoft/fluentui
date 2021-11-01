@@ -1,7 +1,8 @@
-import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, HighContrastSelector } from '../../../Styling';
+import { concatStyleSets, HighContrastSelector } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
+import type { IButtonStyles } from '../Button.types';
+import type { ITheme } from '../../../Styling';
 
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';

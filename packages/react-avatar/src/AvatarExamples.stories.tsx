@@ -39,7 +39,21 @@ export const AvatarExamples = {
   nameAndImage: nameAndImage,
   name: nameAndImage.map(p => p.name),
   image: nameAndImage.map(p => p.image),
-  activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
+  badge: [
+    'available',
+    'away',
+    'busy',
+    'doNotDisturb',
+    'offline',
+    'outOfOffice',
+    { status: 'available', outOfOffice: true },
+    { status: 'away', outOfOffice: true },
+    { status: 'busy', outOfOffice: true },
+    { status: 'doNotDisturb', outOfOffice: true },
+    { status: 'offline', outOfOffice: true },
+    { status: 'outOfOffice', outOfOffice: true },
+  ],
+  activeAppearance: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
   color: ['neutral', 'brand', 'colorful'],
   namedColors: [
     'darkRed',
@@ -82,4 +96,5 @@ export const AvatarExamples = {
     'L35.5921 14.472C36.136 15.4141 36.136 16.5859 35.5921 17.528L28.0846 30.5321' +
     'C27.5592 31.4421 26.6056 32 25.5755 32H10.4245C9.39443 32 8.44076 31.4421 7.91541 30.5321L0.407926 17.528Z"/>' +
     '</svg>',
+  shape: ['circular', 'square'],
 } as const;

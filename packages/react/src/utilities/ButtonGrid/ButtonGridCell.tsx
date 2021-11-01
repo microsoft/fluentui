@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-import { IButtonGridCellProps } from './ButtonGridCell.types';
 import { CommandButton } from '../../Button';
 import { useId } from '@fluentui/react-hooks';
+import type { IButtonGridCellProps } from './ButtonGridCell.types';
 
 export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => {
   const defaultId = useId('gridCell');

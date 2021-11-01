@@ -21,6 +21,11 @@ module.exports = {
         : (config.resolve.plugins = [tsPaths]);
     }
 
+    config.module.rules.unshift({
+      test: /\.(ts|tsx)$/,
+      use: [{ loader: '@fluentui/make-styles-webpack-loader' }],
+    });
+
     return custom(config);
   },
   addons: ['@storybook/addon-actions'],

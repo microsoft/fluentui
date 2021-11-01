@@ -53,7 +53,7 @@ storiesOf('DatePicker', module)
         <DatePicker {...commonProps} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Placeholder', () => (
     <Fabric>

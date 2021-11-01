@@ -1,123 +1,133 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
-import { CompoundButtonState } from './CompoundButton.types';
+import type { CompoundButtonState } from './CompoundButton.types';
 
 const CompoundButtonClassNames = {
   secondaryContent: 'CompoundButton-secondaryContent',
 };
 
 const useRootStyles = makeStyles({
+  // Base styles
   base: theme => ({
-    // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.large,
 
     height: 'auto',
 
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2Hover,
+        color: theme.colorNeutralForeground2Hover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2Pressed,
+        color: theme.colorNeutralForeground2Pressed,
       },
     },
   }),
-  small: theme => ({
-    padding: buttonSpacing.medium,
 
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  medium: theme => ({
-    padding: buttonSpacing.large,
-
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  large: theme => ({
-    padding: buttonSpacing.larger,
-
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
-  }),
+  // Appearance variations
+  outline: {
+    /* No styles */
+  },
   primary: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: theme.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundOnBrand,
+        color: theme.colorNeutralForegroundOnBrand,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundOnBrand,
+        color: theme.colorNeutralForegroundOnBrand,
       },
     },
   }),
   subtle: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandHover,
+        color: theme.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+        color: theme.colorNeutralForeground2BrandPressed,
       },
     },
   }),
   transparent: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandHover,
+        color: theme.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+        color: theme.colorNeutralForeground2BrandPressed,
       },
     },
   }),
+
+  // Size variations
+  small: theme => ({
+    padding: buttonSpacing.medium,
+
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
+  }),
+  medium: theme => ({
+    padding: buttonSpacing.large,
+
+    fontSize: theme.fontSizeBase300,
+    lineHeight: theme.lineHeightBase300,
+  }),
+  large: theme => ({
+    padding: buttonSpacing.larger,
+
+    fontSize: theme.fontSizeBase400,
+    lineHeight: theme.lineHeightBase400,
+  }),
+
+  // Disabled styles
   disabled: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      color: theme.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
+        color: theme.colorNeutralForegroundDisabled,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
+        color: theme.colorNeutralForegroundDisabled,
       },
     },
   }),
 });
 
 const useRootIconOnlyStyles = makeStyles({
+  // Size variations
   small: {
     padding: buttonSpacing.smaller,
 
@@ -139,6 +149,7 @@ const useRootIconOnlyStyles = makeStyles({
 });
 
 const useIconStyles = makeStyles({
+  // Base styles
   base: {
     fontSize: '40px',
     height: '40px',
@@ -147,6 +158,7 @@ const useIconStyles = makeStyles({
 });
 
 const useContentContainerStyles = makeStyles({
+  // Base styles
   base: {
     display: 'flex',
     flexDirection: 'column',
@@ -155,19 +167,22 @@ const useContentContainerStyles = makeStyles({
 });
 
 const useSecondaryContentStyles = makeStyles({
+  // Base styles
   base: theme => ({
     lineHeight: '100%',
     marginTop: '4px',
-    fontWeight: theme.global.type.fontWeights.regular,
+    fontWeight: theme.fontWeightRegular,
   }),
+
+  // Size variations
   small: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
+    fontSize: theme.fontSizeBase200,
   }),
   medium: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
+    fontSize: theme.fontSizeBase200,
   }),
   large: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
+    fontSize: theme.fontSizeBase300,
   }),
 });
 
@@ -178,27 +193,38 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
 
-  state.className = mergeClasses(
+  const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
+
+  state.root.className = mergeClasses(
+    // Root styles
     rootStyles.base,
-    rootStyles[state.size],
-    state.primary && rootStyles.primary,
-    state.subtle && rootStyles.subtle,
-    state.transparent && rootStyles.transparent,
-    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    state.iconOnly && rootIconOnlyStyles[state.size],
-    state.className,
+    appearance && rootStyles[appearance],
+    rootStyles[size],
+
+    // Disabled styles
+    (disabled || disabledFocusable) && rootStyles.disabled,
+
+    // Icon-only styles
+    iconOnly && rootIconOnlyStyles[size],
+
+    // User provided class name
+    state.root.className,
   );
 
-  state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
+  }
 
   state.contentContainer.className = mergeClasses(contentContainerStyles.base, state.contentContainer.className);
 
-  state.secondaryContent.className = mergeClasses(
-    CompoundButtonClassNames.secondaryContent,
-    secondaryContentStyles.base,
-    secondaryContentStyles[state.size],
-    state.secondaryContent.className,
-  );
+  if (state.secondaryContent) {
+    state.secondaryContent.className = mergeClasses(
+      CompoundButtonClassNames.secondaryContent,
+      secondaryContentStyles.base,
+      secondaryContentStyles[size],
+      state.secondaryContent.className,
+    );
+  }
 
   useButtonStyles(state);
 

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IIconProps } from '../../Icon';
-import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
-import { ITheme, IStyle } from '../../Styling';
-import { IFocusZoneProps } from '../../FocusZone';
-import { ITooltipHostProps } from '../../Tooltip';
-import { IButtonProps } from '../../Button';
+import type { IIconProps } from '../../Icon';
+import type { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IFocusZoneProps } from '../../FocusZone';
+import type { ITooltipHostProps } from '../../Tooltip';
+import type { IButtonProps } from '../../Button';
 
 /**
  * {@docCategory Breadcrumb}

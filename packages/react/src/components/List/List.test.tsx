@@ -3,8 +3,8 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { List } from './List';
-import { IPage, IListProps } from './List.types';
 import { isConformant } from '../../common/isConformant';
+import type { IPage, IListProps } from './List.types';
 
 type IMockItem = { key: number; name: string; value: number };
 

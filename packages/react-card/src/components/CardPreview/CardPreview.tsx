@@ -1,15 +1,18 @@
 import * as React from 'react';
-import { useCardSection, CardSectionProps } from '../../CardSection';
+import { useCardPreview } from './useCardPreview';
+import { renderCardPreview } from './renderCardPreview';
 import { useCardPreviewStyles } from './useCardPreviewStyles';
+import type { CardPreviewProps } from './CardPreview.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
-export const CardPreview: React.FunctionComponent<CardSectionProps> = React.forwardRef<HTMLElement, CardSectionProps>(
-  (props, ref) => {
-    const { render, state } = useCardSection(props, ref);
+/**
+ * Component to render image previews of documents or articles in a Card component.
+ */
+export const CardPreview: ForwardRefComponent<CardPreviewProps> = React.forwardRef((props, ref) => {
+  const state = useCardPreview(props, ref);
 
-    useCardPreviewStyles(state);
-
-    return render(state);
-  },
-);
+  useCardPreviewStyles(state);
+  return renderCardPreview(state);
+});
 
 CardPreview.displayName = 'CardPreview';

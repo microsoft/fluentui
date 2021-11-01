@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IContextualMenuItem } from '../ContextualMenu.types';
-import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuButton } from './ContextualMenuButton';
+import type { IContextualMenuItem } from '../ContextualMenu.types';
+import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {

@@ -10,10 +10,12 @@ import {
 import { AreaChartBasicExample } from './AreaChart.Basic.Example';
 import { AreaChartMultipleExample } from './AreaChart.Multiple.Example';
 import { AreaChartStyledExample } from './AreaChart.Styled.Example';
+import { AreaChartCustomAccessibilityExample } from './AreaChart.CustomAccessibility.Example';
 
 const AreaChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
 const AreaChartMultipleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Multiple.Example.tsx') as string;
 const AreaChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Styled.Example.tsx') as string;
+const AreaChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.CustomAccessibility.Example.tsx') as string;
 
 export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -31,6 +33,9 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Styled Area chart" code={AreaChartStyledExampleCode}>
               <AreaChartStyledExample />
+            </ExampleCard>
+            <ExampleCard title="Area chart custom Accessibility" code={AreaChartCustomAccessibilityExampleCode}>
+              <AreaChartCustomAccessibilityExample />
             </ExampleCard>
           </div>
         }

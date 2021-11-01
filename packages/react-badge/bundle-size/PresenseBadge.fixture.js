@@ -1,7 +1,7 @@
-import { PresenseBadge } from '@fluentui/react-badge';
+import { PresenceBadge } from '@fluentui/react-badge';
 
-console.log(PresenseBadge);
+console.log(PresenceBadge);
 
 export default {
-  name: 'PresenseBadge',
+  name: 'PresenceBadge',
 };

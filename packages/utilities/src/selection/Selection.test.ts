@@ -1,5 +1,6 @@
 import { Selection } from './Selection';
-import { IObjectWithKey, SelectionMode } from './Selection.types';
+import { SelectionMode } from './Selection.types';
+import type { IObjectWithKey } from './Selection.types';
 
 const setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
 const setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];

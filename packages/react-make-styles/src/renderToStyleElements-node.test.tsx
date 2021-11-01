@@ -1,4 +1,4 @@
-/**
+/*
  * @jest-environment node
  */
 
@@ -142,20 +142,6 @@ describe('renderToStyleElements', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f1q8eu9e {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-          }
-        }
         @-webkit-keyframes f55c0se {
           from {
             -webkit-transform: rotate(0deg);
@@ -168,6 +154,20 @@ describe('renderToStyleElements', () => {
             -moz-transform: rotate(-360deg);
             -ms-transform: rotate(-360deg);
             transform: rotate(-360deg);
+          }
+        }
+        @keyframes f1q8eu9e {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
           }
         }
         @keyframes f55c0se {

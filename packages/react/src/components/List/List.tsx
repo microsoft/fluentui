@@ -2,8 +2,6 @@ import * as React from 'react';
 import {
   Async,
   EventGroup,
-  IRectangle,
-  IRenderFunction,
   css,
   divProperties,
   findIndex,
@@ -13,16 +11,17 @@ import {
   getWindow,
   initializeComponentRef,
 } from '../../Utilities';
-import {
+import { ScrollToMode } from './List.types';
+import { composeRenderFunction } from '../../Utilities';
+import type { IRectangle, IRenderFunction } from '../../Utilities';
+import type {
   IList,
   IListProps,
   IPage,
   IPageProps,
-  ScrollToMode,
   IListOnRenderSurfaceProps,
   IListOnRenderRootProps,
 } from './List.types';
-import { composeRenderFunction } from '../../Utilities';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;

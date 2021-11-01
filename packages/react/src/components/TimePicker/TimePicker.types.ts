@@ -1,4 +1,4 @@
-import { IComboBoxProps } from '../../ComboBox';
+import type { IComboBoxProps } from '../../ComboBox';
 
 /**
  * Range of start and end hours to be shown in the TimePicker.

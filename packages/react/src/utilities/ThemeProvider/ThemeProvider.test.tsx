@@ -3,8 +3,9 @@ import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { createTheme, Theme, PartialTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
+import type { Theme, PartialTheme } from '@fluentui/theme';
 
 const lightTheme: PartialTheme = {
   semanticColors: {

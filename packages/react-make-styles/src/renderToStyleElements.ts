@@ -1,5 +1,6 @@
-import { MakeStylesRenderer, StyleBucketName, styleBucketOrdering } from '@fluentui/make-styles';
+import { styleBucketOrdering } from '@fluentui/make-styles';
 import * as React from 'react';
+import type { MakeStylesRenderer, StyleBucketName } from '@fluentui/make-styles';
 
 type CSSRulesGroupedByStyleBucket = Record<StyleBucketName, string[]>;
 

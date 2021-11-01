@@ -12,7 +12,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -67,7 +67,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { data, theme } = this.props;
+    const { data, theme, culture } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
@@ -106,6 +106,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           directionalHint={DirectionalHint.topRightEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
+          preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
           {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
@@ -113,7 +114,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             {this.props.onRenderCalloutPerDataPoint ? (
               this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
             ) : (
-              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} />
+              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} culture={culture} />
             )}
           </>
         </Callout>
@@ -129,6 +130,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
   ): JSX.Element {
+    const { culture } = this.props;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -165,6 +167,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         shouldHighlight: shouldHighlight,
         href: href,
       });
+
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
 
       return (
         <g
@@ -205,32 +211,34 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const hideNumber = hideRatio === undefined ? false : hideRatio;
     const showRatio = !hideNumber && data!.chartData!.length === 2;
     const showNumber = !hideNumber && data!.chartData!.length === 1;
-
+    const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
       <div className={this._classNames.singleChartRoot}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
+              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData, culture)}>
                 <strong>{data!.chartTitle}</strong>
               </div>
             )}
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
-                {!hideDenominator && <span>/{total}</span>}
+                <strong>{getChartData()}</strong>
+                {!hideDenominator && <span>/{convertToLocaleString(total, culture)}</span>}
               </div>
             )}
             {showNumber && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data}</strong>
+                <strong>{getChartData()}</strong>
               </div>
             )}
           </div>
         </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <svg className={this._classNames.chart}>{bars}</svg>
+            <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
+              {bars}
+            </svg>
           </div>
         </FocusZone>
       </div>

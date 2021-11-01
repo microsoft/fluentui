@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { useMergedRefs, useEventCallback, useControllableState } from '@fluentui/react-utilities';
+import {
+  useMergedRefs,
+  useEventCallback,
+  useControllableState,
+  getNativeElementProps,
+} from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
-import { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
+import type { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
 
 /**
  * Returns the props and state required to render the component
@@ -23,12 +28,15 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
 
   const innerRef = React.useRef<HTMLElement>(null);
   const initialState: UninitializedMenuListState = {
-    ref: useMergedRefs(ref, innerRef),
-    role: 'menu',
-    'aria-labelledby': menuContext.triggerId,
+    root: getNativeElementProps('div', {
+      ref: useMergedRefs(ref, innerRef),
+      role: 'menu',
+      'aria-labelledby': menuContext.triggerId,
+      ...focusAttributes,
+      ...props,
+    }),
     hasIcons: menuContext.hasIcons,
     hasCheckmarks: menuContext.hasCheckmarks,
-    ...focusAttributes,
     ...(hasMenuContext && menuContext),
     ...props,
   };
@@ -96,7 +104,7 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
         newCheckedItems.push(value);
       }
 
-      onCheckedValueChange?.(e, name, newCheckedItems);
+      onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
       setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
     },
   );
@@ -104,7 +112,7 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
   const selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
     const newCheckedItems = [value];
     setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
-    onCheckedValueChange?.(e, name, newCheckedItems);
+    onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
   });
 
   const state = {

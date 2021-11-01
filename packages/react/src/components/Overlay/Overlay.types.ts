@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Overlay}
@@ -37,8 +37,6 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
    * @defaultvalue false
    */
   isDarkThemed?: boolean;
-
-  onClick?: () => void;
 
   /**
    * Allow body scroll on touch devices. Changing after mounting has no effect.

@@ -1,4 +1,4 @@
-import { VirtualElement } from './types';
+import type { VirtualElement } from './types';
 
 /**
  * Sets the virtual parent of an element.

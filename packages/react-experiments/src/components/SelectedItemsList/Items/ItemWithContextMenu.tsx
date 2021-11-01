@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
-import { ItemCanDispatchTrigger } from './ItemTrigger.types';
+import { ContextualMenu, DirectionalHint } from '@fluentui/react/lib/ContextualMenu';
+import type { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import type { ItemCanDispatchTrigger } from './ItemTrigger.types';
 
 /**
  * Parameters to the EditingItem higher-order component

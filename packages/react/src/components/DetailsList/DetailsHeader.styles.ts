@@ -1,19 +1,18 @@
-import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
 import {
   getFocusStyle,
   focusClear,
-  IStyle,
   getGlobalClassNames,
   HighContrastSelector,
   hiddenContentStyle,
-  ITheme,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import { ICellStyleProps } from './DetailsRow.types';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPANDER_WIDTH } from '../GroupedList/GroupSpacer';
+import type { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
+import type { IStyle, ITheme } from '../../Styling';
+import type { ICellStyleProps } from './DetailsRow.types';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',

@@ -8,15 +8,15 @@ import {
   getRTL,
   initializeComponentRef,
 } from '../../Utilities';
-import {
+import { ScrollablePaneContext } from './ScrollablePane.types';
+import { Sticky } from '../../Sticky';
+import type {
   IScrollablePane,
   IScrollablePaneContext,
   IScrollablePaneProps,
   IScrollablePaneStyleProps,
   IScrollablePaneStyles,
-  ScrollablePaneContext,
 } from './ScrollablePane.types';
-import { Sticky } from '../../Sticky';
 
 export interface IScrollablePaneState {
   stickyTopHeight: number;
