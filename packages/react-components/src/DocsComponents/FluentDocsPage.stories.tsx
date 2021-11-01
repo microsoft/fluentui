@@ -13,6 +13,9 @@ import {
 
 import { Toc, idToHash } from './Toc.stories';
 
+const CONTAINER_WIDTH = '900px';
+const TOC_WIDTH = '300px';
+
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.storyStore.getStoriesForKind(context.kind);
@@ -43,10 +46,10 @@ export const FluentDocsPage = () => {
           gap: '16px',
         }}
       >
-        <div style={{ maxWidth: '672px' }}>
+        <div style={{ maxWidth: TOC_WIDTH }}>
           <Toc stories={stories} />
         </div>
-        <div style={{ width: '672px' }}>
+        <div style={{ width: CONTAINER_WIDTH }}>
           <Subtitle />
           <Description />
           <HeaderMdx as="h3" id={idToHash(primaryStory.id)}>
