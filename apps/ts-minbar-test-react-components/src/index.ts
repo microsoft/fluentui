@@ -34,7 +34,6 @@ async function performTest() {
     fs.mkdirSync(path.resolve(tmpDirectory, 'src'));
     fs.copyFileSync(scaffoldPath('index.tsx'), path.resolve(tmpDirectory, 'src/index.tsx'));
     fs.copyFileSync(scaffoldPath('tsconfig.json'), path.resolve(tmpDirectory, 'tsconfig.json'));
-    fs.copy(scaffoldPath('../../../typings'), path.resolve(tmpDirectory, 'typings'));
     logger(`✔️ Source and configs were copied`);
 
     await sh(`which yarn`);
