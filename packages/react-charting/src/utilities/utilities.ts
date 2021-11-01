@@ -114,7 +114,7 @@ export interface IYAxisParams {
  * @export
  * @param {IXAxisParams} xAxisParams
  */
-export function createNumericXAxis(xAxisParams: IXAxisParams) {
+export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
@@ -132,7 +132,11 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
     .ticks(xAxisCount)
-    .tickSizeOuter(0);
+    .tickSizeOuter(0)
+    .tickFormat((domainValue, index) => {
+      const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
+      return convertToLocaleString(xAxisValue, culture) as string;
+    });
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
@@ -161,14 +165,19 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
 
 /**
  * Create String X axis
- * Currently using for only Vetical stacked bar chart and grouped vertical bar chart
+ * Currently using for only Vertical stacked bar chart and grouped vertical bar chart
  * @export
  * @param {IXAxisParams} xAxisParams
  * @param {ITickParams} tickParams
  * @param {string[]} dataset
  * @returns
  */
-export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, dataset: string[]) {
+export function createStringXAxis(
+  xAxisParams: IXAxisParams,
+  tickParams: ITickParams,
+  dataset: string[],
+  culture?: string,
+) {
   const { domainNRangeValues, xAxisCount = 6, xAxistickSize = 6, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
@@ -178,7 +187,9 @@ export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickPa
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
     .ticks(xAxisCount)
-    .tickFormat((x: string, index: number) => dataset[index] as string);
+    .tickFormat((x: string, index: number) => {
+      return convertToLocaleString(dataset[index], culture) as string;
+    });
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
