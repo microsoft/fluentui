@@ -5,6 +5,7 @@ import {
   forcedColorsStylesheetBehavior,
   NumberFieldOptions,
 } from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 import {
   inputFilledForcedColorStyles,
   inputFilledStyles,
@@ -14,7 +15,6 @@ import {
 } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { designUnit } from '../design-tokens';
-import { SystemColors } from "@microsoft/fast-web-utilities";
 
 export const numberFieldFilledStyles: (
   context: ElementDefinitionContext,

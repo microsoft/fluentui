@@ -25,7 +25,6 @@ import {
   neutralFillStealthHover,
   neutralFillStealthRest,
   neutralForegroundRest,
-  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';

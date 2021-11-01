@@ -1,5 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 import { elevationShadowFlyout } from '../styles/index';
 import {
   designUnit,
@@ -8,7 +9,6 @@ import {
   neutralStrokeDividerRest,
   strokeWidth,
 } from '../design-tokens';
-import { SystemColors } from "@microsoft/fast-web-utilities";
 
 export const menuStyles: (
   context: ElementDefinitionContext,

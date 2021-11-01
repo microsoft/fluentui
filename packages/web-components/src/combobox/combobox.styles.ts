@@ -1,9 +1,9 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { ComboboxOptions, disabledCursor, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 import { selectFilledStyles, selectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { strokeWidth, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
-import { SystemColors } from "@microsoft/fast-web-utilities";
 
 export const comboboxStyles: (context: ElementDefinitionContext, definition: ComboboxOptions) => ElementStyles = (
   context: ElementDefinitionContext,
