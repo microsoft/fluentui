@@ -1,4 +1,5 @@
 import * as rootPreview from '../../../.storybook/preview';
+import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
 
 // load global styles
 import '../public/intro.css';
@@ -24,4 +25,8 @@ const options = {
 export const decorators = [...rootPreview.decorators];
 
 /** @type {typeof rootPreview.parameters} */
-export const parameters = { ...rootPreview.parameters, options };
+export const parameters = {
+  ...rootPreview.parameters,
+  docs: { ...rootPreview.parameters.docs, page: FluentDocsPage },
+  options,
+};
