@@ -3,7 +3,7 @@ import { IImageProps } from '@fluentui/react/lib/Image';
 import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { useBoolean } from '@fluentui/react-hooks';
+import { useBoolean, useId } from '@fluentui/react-hooks';
 
 const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',
@@ -14,6 +14,7 @@ const exampleImageProps: IImageProps = { src: 'http://via.placeholder.com/154x22
 const CalloutProps = { directionalHint: DirectionalHint.bottomCenter };
 
 export const TeachingBubbleWideIllustrationExample: React.FunctionComponent = () => {
+  const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
   const exampleSecondaryButtonProps: IButtonProps = React.useMemo(
     () => ({
@@ -26,7 +27,7 @@ export const TeachingBubbleWideIllustrationExample: React.FunctionComponent = ()
   return (
     <div>
       <DefaultButton
-        id="targetButton"
+        id={buttonId}
         onClick={toggleTeachingBubbleVisible}
         text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
       />
@@ -39,7 +40,7 @@ export const TeachingBubbleWideIllustrationExample: React.FunctionComponent = ()
           hasSmallHeadline={true}
           hasCloseButton={true}
           closeButtonAriaLabel="Close"
-          target="#targetButton"
+          target={`#${buttonId}`}
           primaryButtonProps={examplePrimaryButtonProps}
           secondaryButtonProps={exampleSecondaryButtonProps}
           onDismiss={toggleTeachingBubbleVisible}

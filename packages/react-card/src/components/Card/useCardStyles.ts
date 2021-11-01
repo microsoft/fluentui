@@ -46,17 +46,17 @@ const useStyles = makeStyles({
  */
 export const useCardStyles = (state: CardState): CardState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
-    (state.onClick ||
-      state.onMouseUp ||
-      state.onMouseDown ||
-      state.onPointerUp ||
-      state.onPointerDown ||
-      state.onTouchStart ||
-      state.onTouchEnd) &&
+    (state.root.onClick ||
+      state.root.onMouseUp ||
+      state.root.onMouseDown ||
+      state.root.onPointerUp ||
+      state.root.onPointerDown ||
+      state.root.onTouchStart ||
+      state.root.onTouchEnd) &&
       styles.interactive,
-    state.className,
+    state.root.className,
   );
 
   return state;

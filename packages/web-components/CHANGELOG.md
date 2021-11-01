@@ -1,8 +1,58 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 06 Oct 2021 11:11:56 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Oct 2021 23:04:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.0)
+
+Fri, 22 Oct 2021 23:04:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.3..@fluentui/web-components_v2.0.0)
+
+### Major changes
+
+- Update to Sun Valley visual styling ([PR #19263](https://github.com/microsoft/fluentui/pull/19263) by 47367562+bheston@users.noreply.github.com)
+
+## [1.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.3)
+
+Fri, 22 Oct 2021 19:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.2..@fluentui/web-components_v1.6.3)
+
+### Patches
+
+- update foundation package and react documentation ([PR #20316](https://github.com/microsoft/fluentui/pull/20316) by chhol@microsoft.com)
+
+## [1.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.2)
+
+Thu, 14 Oct 2021 00:11:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.1..@fluentui/web-components_v1.6.2)
+
+### Patches
+
+- remove dependency on lodash-es with fast-web-utilities ([PR #20205](https://github.com/microsoft/fluentui/pull/20205) by chhol@microsoft.com)
+
+## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.1)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.0..@fluentui/web-components_v1.6.1)
+
+### Patches
+
+- add progress animated examples ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.0)
+
+Thu, 07 Oct 2021 07:30:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.6..@fluentui/web-components_v1.6.0)
+
+### Minor changes
+
+- create explicit classes for progress ring and progress to prevent conflicts during tagFor retrieval ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by chhol@microsoft.com)
+- Update token file order and deprecations to prepare for vNext ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by 47367562+bheston@users.noreply.github.com)
+
+### Patches
+
+- add end start selector ([PR #20114](https://github.com/microsoft/fluentui/pull/20114) by khamu@microsoft.com)
 
 ## [1.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.6)
 

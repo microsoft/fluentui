@@ -1436,6 +1436,8 @@ export interface IAutofillProps extends React_2.InputHTMLAttributes<HTMLInputEle
 export interface IAutofillState {
     // (undocumented)
     inputValue: string;
+    // (undocumented)
+    isComposing: boolean;
 }
 
 // @public (undocumented)
@@ -2799,6 +2801,7 @@ export interface IColorPickerProps {
     strings?: IColorPickerStrings;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
+    tooltipProps?: ITooltipHostProps;
 }
 
 // @public (undocumented)
@@ -2814,19 +2817,25 @@ export interface IColorPickerState {
 export interface IColorPickerStrings {
     alpha?: string;
     alphaAriaLabel?: string;
+    alphaError?: string;
     blue?: string;
+    blueError?: string;
     green?: string;
+    greenError?: string;
     hex?: string;
+    hexError?: string;
     // @deprecated
     hue?: string;
     hueAriaLabel?: string;
     red?: string;
+    redError?: string;
     rootAriaLabelFormat?: string;
     svAriaDescription?: string;
     svAriaLabel?: string;
     svAriaValueFormat?: string;
     transparency?: string;
     transparencyAriaLabel?: string;
+    transparencyError?: string;
 }
 
 // @public (undocumented)
@@ -3434,22 +3443,6 @@ export interface IContextualMenuSection extends React_2.ClassAttributes<any> {
     items: IContextualMenuItem[];
     title?: string | IContextualMenuItem;
     topDivider?: boolean;
-}
-
-// @public (undocumented)
-export interface IContextualMenuState {
-    // (undocumented)
-    contextualMenuItems?: IContextualMenuItem[];
-    // (undocumented)
-    contextualMenuTarget?: Element;
-    // (undocumented)
-    positions?: any;
-    // (undocumented)
-    slideDirectionalClassName?: string;
-    // (undocumented)
-    submenuDirection?: DirectionalHint;
-    // (undocumented)
-    subMenuId?: string;
 }
 
 // @public (undocumented)
@@ -6741,7 +6734,7 @@ export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
 export interface IPopupRestoreFocusParams {
     containsFocus: boolean;
     documentContainsFocus: boolean;
-    originalElement?: HTMLElement | Window;
+    originalElement?: HTMLElement | Window | null;
 }
 
 // @public
@@ -8142,6 +8135,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     errorMessage?: string | JSX.Element;
     iconProps?: IIconProps;
     inputClassName?: string;
+    invalid?: boolean;
     label?: string;
     multiline?: boolean;
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;

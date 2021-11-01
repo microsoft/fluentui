@@ -6,11 +6,11 @@ exports[`CardFooter renders a default state 1`] = `
     class=""
   >
     Default CardFooter
-    <span
+    <div
       class=""
     >
       Action slot
-    </span>
+    </div>
   </div>
 </div>
 `;

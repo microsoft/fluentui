@@ -8,7 +8,7 @@ import {
   MenuItemOptions,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { heightNumber } from '../styles/index';
+import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
   bodyFont,
   controlCornerRadius,
@@ -37,7 +37,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       outline: none;
       box-sizing: border-box;
       height: calc(${heightNumber} * 1px);
-      grid-template-columns: minmax(42px, auto) 1fr minmax(42px, auto);
+      grid-template-columns: minmax(32px, auto) 1fr minmax(32px, auto);
       grid-template-rows: auto;
       justify-items: center;
       align-items: center;
@@ -54,7 +54,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     }
 
     :host(.indent-0) {
-      grid-template-columns: auto 1fr minmax(42px, auto);
+      grid-template-columns: auto 1fr minmax(32px, auto);
     }
 
     :host(.indent-0) .content {
@@ -63,8 +63,13 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       margin-inline-start: 10px;
     }
 
+    :host(.indent-0) .expand-collapse-glyph-container {
+      grid-column: 5;
+      grid-row: 1;
+    }
+
     :host(.indent-2) {
-      grid-template-columns: minmax(42px, auto) minmax(42px, auto) 1fr minmax(42px, auto) minmax(42px, auto);
+      grid-template-columns: minmax(32px, auto) minmax(32px, auto) 1fr minmax(32px, auto) minmax(32px, auto);
     }
 
     :host(.indent-2) .content {
@@ -91,12 +96,11 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
     }
 
-    :host(:hover) {
+    :host(:not([disabled]):hover) {
       background: ${neutralFillStealthHover};
     }
 
-    :host([aria-checked='true']),
-    :host(:active),
+    :host(:not([disabled]):active),
     :host(.expanded) {
       background: ${neutralFillStealthActive};
       color: ${neutralForegroundRest};
@@ -105,12 +109,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     :host([disabled]) {
       cursor: ${disabledCursor};
       opacity: ${disabledOpacity};
-    }
-
-    :host([disabled]:hover) .start,
-    :host([disabled]:hover) .end,
-    :host([disabled]:hover)::slotted(svg) {
-      fill: currentcolor;
     }
 
     .content {
@@ -126,29 +124,18 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       justify-content: center;
     }
 
-    ::slotted(svg) {
-      ${
-        /* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''
-      } width: 16px;
-      height: 16px;
-      display: flex;
-    }
-
-    :host(:hover) .start,
-    :host(:hover) .end,
-    :host(:hover)::slotted(svg),
-    :host(:active) .start,
-    :host(:active) .end,
-    :host(:active)::slotted(svg) {
-      fill: ${neutralForegroundRest};
+    :host(.indent-0[aria-haspopup='menu']) {
+      display: grid;
+      grid-template-columns: minmax(32px, auto) auto 1fr minmax(32px, auto) minmax(32px, auto);
+      align-items: center;
+      min-height: 32px;
     }
 
     :host(.indent-1[aria-haspopup='menu']),
     :host(.indent-1[role='menuitemcheckbox']),
     :host(.indent-1[role='menuitemradio']) {
       display: grid;
-      grid-template-columns: minmax(42px, auto) auto 1fr minmax(42px, auto) minmax(42px, auto);
+      grid-template-columns: minmax(32px, auto) auto 1fr minmax(32px, auto) minmax(32px, auto);
       align-items: center;
       min-height: 32px;
     }
@@ -166,13 +153,16 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     :host([role='menuitemcheckbox']) .input-container,
     :host([role='menuitemradio']) .input-container {
       display: grid;
-      margin-inline-end: 10px;
     }
 
     :host([aria-haspopup='menu']) .content,
     :host([role='menuitemcheckbox']) .content,
     :host([role='menuitemradio']) .content {
       grid-column-start: 3;
+    }
+
+    :host([aria-haspopup='menu'].indent-0) .content {
+      grid-column-start: 1;
     }
 
     :host([aria-haspopup='menu']) .end,
@@ -188,25 +178,14 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       align-items: center;
       justify-content: center;
       position: relative;
-      width: 20px;
-      height: 20px;
       box-sizing: border-box;
       outline: none;
-      margin-inline-start: 10px;
-    }
-
-    :host .checkbox {
-      border-radius: calc(${controlCornerRadius} * 1px);
-    }
-
-    :host .radio {
-      border-radius: 999px;
     }
 
     :host .checkbox-indicator,
     :host .radio-indicator,
-    ::slotted([slot='checkbox-indicator']),
-    ::slotted([slot='radio-indicator']) {
+    slot[name='checkbox-indicator'],
+    slot[name='radio-indicator'] {
       display: none;
     }
 
@@ -216,22 +195,10 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     }
 
     :host([aria-checked='true']) .checkbox-indicator,
-    :host([aria-checked='true']) ::slotted([slot='checkbox-indicator']) {
-      width: 100%;
-      height: 100%;
-      display: block;
-      fill: ${neutralForegroundRest};
-      pointer-events: none;
-    }
-
-    :host([aria-checked='true']) .radio-indicator {
-      display: block;
-      pointer-events: none;
-    }
-
-    :host([aria-checked='true']) ::slotted([slot='radio-indicator']) {
-      display: block;
-      pointer-events: none;
+    :host([aria-checked='true']) slot[name='checkbox-indicator'],
+    :host([aria-checked='true']) .radio-indicator,
+    :host([aria-checked='true']) slot[name='radio-indicator'] {
+      display: flex;
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
@@ -287,8 +254,8 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
           background: ${SystemColors.HighlightText};
         }
 
-        :host([checked='true']) .checkbox,
-        :host([checked='true']) .radio {
+        :host([checked]) .checkbox,
+        :host([checked]) .radio {
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.HighlightText};
         }
@@ -299,10 +266,10 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
             :host(:${focusVisible}) .expanded-toggle,
             :host(:${focusVisible}) .checkbox,
             :host(:${focusVisible}) .radio,
-            :host([checked="true"]:hover) .checkbox,
-            :host([checked="true"]:hover) .radio,
-            :host([checked="true"]:${focusVisible}) .checkbox,
-            :host([checked="true"]:${focusVisible}) .radio {
+            :host([checked]:hover) .checkbox,
+            :host([checked]:hover) .radio,
+            :host([checked]:${focusVisible}) .checkbox,
+            :host([checked]:${focusVisible}) .radio {
           border-color: ${SystemColors.HighlightText};
         }
 
@@ -319,6 +286,18 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
 
         :host([aria-checked='true']) .radio-indicator {
           background: ${SystemColors.Highlight};
+        }
+      `,
+    ),
+    new DirectionalStyleSheetBehavior(
+      css`
+        .expand-collapse-glyph-container {
+          transform: rotate(0deg);
+        }
+      `,
+      css`
+        .expand-collapse-glyph-container {
+          transform: rotate(180deg);
         }
       `,
     ),
