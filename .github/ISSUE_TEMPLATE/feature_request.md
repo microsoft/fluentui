@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Do you have Feature or improvement for Fluent UI React? Let us know.
+about: Do you have feature or improvement suggestion for Fluent UI React?
 ---
 
 #### Describe the feature that you would like added

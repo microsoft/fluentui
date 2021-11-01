@@ -23,7 +23,7 @@
 #### Build folders
 /.codesandbox/ @microsoft/fluentui-react-build
 /.devops/ @microsoft/fluentui-react-build
-/.github/ @microsoft/fluentui-react-build
+/.github/workflows/ @microsoft/fluentui-react-build
 /.githooks/ @microsoft/fluentui-react-build
 /.storybook/ @microsoft/fluentui-react-build
 /.vscode/ @microsoft/fluentui-react-build
@@ -54,6 +54,7 @@
 /LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
 /packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
 /.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone @jurokapsiar
+/.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar
 
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
