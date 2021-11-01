@@ -39,7 +39,6 @@
     "@fluentui/react-provider": "9.0.0-beta.3",
     "@fluentui/react-slider": "9.0.0-beta.3",
     "@fluentui/react-switch": "9.0.0-beta.3",
-    "@fluentui/react-tabs": "^1.0.0-beta.178",
     "@fluentui/react-text": "9.0.0-beta.2",
     "@fluentui/react-theme": "9.0.0-beta.2",
     "@fluentui/scripts": "^1.0.0",
