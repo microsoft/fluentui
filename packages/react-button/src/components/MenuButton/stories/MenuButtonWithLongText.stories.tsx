@@ -1,10 +1,35 @@
 import * as React from 'react';
-import { MenuButton } from '../../../MenuButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
-
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, MenuButton } from '@fluentui/react-components';
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 export const WithLongText = () => (
   <>
-    <MenuButton>Text</MenuButton>
-    <MenuButton>Text truncates after it hits the max width token value</MenuButton>
+    <Menu>
+      <MenuTrigger>
+        <MenuButton>Text</MenuButton>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Item a</MenuItem>
+          <MenuItem>Item b</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+
+    <Menu>
+      <MenuTrigger>
+        <MenuButton>Text truncates after it hits the max width token value</MenuButton>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Item a</MenuItem>
+          <MenuItem>Item b</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
   </>
 );
 WithLongText.parameters = {

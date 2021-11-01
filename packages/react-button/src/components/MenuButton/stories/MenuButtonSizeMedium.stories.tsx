@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
-
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, MenuProps, MenuButton } from '@fluentui/react-components';
+import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, MenuButton } from '@fluentui/react-components';
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 export const SizeMedium = () => {
   return (
