@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Mon, 01 Nov 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Nov 2021 21:28:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.51)
+
+Mon, 01 Nov 2021 21:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.50..@fluentui/react-docsite-components_v8.3.51)
+
+### Patches
+
+- remove icon for webcomponents and change wc icon color ([PR #20387](https://github.com/microsoft/fluentui/pull/20387) by mgodbolt@microsoft.com)
 
 ## [8.3.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.50)
 

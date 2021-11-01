@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove icon for webcomponents and change wc icon color",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
