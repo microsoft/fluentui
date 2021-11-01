@@ -5,6 +5,7 @@ import {
   ILinkStyleProps,
   ILinkStyles
 } from './Link.types';
+import { HighContrastSelector } from '../../utilities/styling/index';
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   const { className, isButton, isDisabled, theme } = props;
@@ -29,7 +30,15 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         padding: 0,
         textAlign: 'left',
         textOverflow: 'inherit',
-        userSelect: 'text'
+        userSelect: 'text',
+        borderBottom: '1px solid transparent', // For Firefox high contrast mode
+
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'LinkText',
+            forcedColorAdjust: 'none'
+          }
+        }
       },
       !isButton && {
         textDecoration: 'none'
@@ -51,10 +60,20 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       !isDisabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            color: semanticColors.linkHovered
+            color: semanticColors.linkHovered,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText'
+              },
+            },
           },
           '&:focus': {
-            color: semanticColors.link
+            color: semanticColors.link,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'LinkText'
+              },
+            },
           }
         }
       }
