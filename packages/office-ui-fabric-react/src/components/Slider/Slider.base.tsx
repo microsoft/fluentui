@@ -517,10 +517,18 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
       case KeyCodes.home:
         value = min;
+
+        this._clearOnKeyDownTimer();
+        this._setOnKeyDownTimer(event);
+
         break;
 
       case KeyCodes.end:
         value = max;
+
+        this._clearOnKeyDownTimer();
+        this._setOnKeyDownTimer(event);
+
         break;
 
       default:
