@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { UnifiedPicker } from './UnifiedPicker';
 import { mount, ReactWrapper } from 'enzyme';
-import { ISelectedItemProps, ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
-import { IBaseFloatingSuggestionsProps, BaseFloatingSuggestions } from '../FloatingSuggestionsComposite';
+import { BaseFloatingSuggestions } from '../FloatingSuggestionsComposite';
 import { create } from 'react-test-renderer';
 import { SelectedItemsList } from '../SelectedItemsList';
-import { IFloatingSuggestionItem } from '../../FloatingSuggestionsComposite';
+import type { ISelectedItemProps, ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
+import type { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite';
+import type { IFloatingSuggestionItem } from '../../FloatingSuggestionsComposite';
 
 export interface ISimple {
   key: string;

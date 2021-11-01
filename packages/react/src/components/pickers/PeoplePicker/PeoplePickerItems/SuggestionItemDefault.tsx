@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import { css } from '../../../../Utilities';
-import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
-import { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../Pickers';
-
+import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import * as stylesImport from './SuggestionItemDefault.scss';
+import type { IPersonaProps } from '../../../../Persona';
+import type { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../Pickers';
+
 const styles: any = stylesImport;
 
 /**

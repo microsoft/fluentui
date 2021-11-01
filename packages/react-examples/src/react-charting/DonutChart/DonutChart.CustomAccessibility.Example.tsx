@@ -24,10 +24,8 @@ export class DonutChartCustomAccessibilityExample extends React.Component<IDonut
       },
     ];
 
-    const chartTitle = 'Stacked Bar chart example';
-
     const data: IChartProps = {
-      chartTitle: chartTitle,
+      chartTitle: 'Donut chart custom accessibility example',
       chartData: points,
       chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about Donut chart' },
     };

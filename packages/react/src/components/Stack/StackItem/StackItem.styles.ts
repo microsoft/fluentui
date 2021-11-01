@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../../Styling';
-import { IStackItemComponent, IStackItemStyles, IStackItemStylesReturnType } from './StackItem.types';
+import type { IStackItemComponent, IStackItemStyles, IStackItemStylesReturnType } from './StackItem.types';
 
 const GlobalClassNames = {
   root: 'ms-StackItem',

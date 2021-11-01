@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 import { getStyles } from './HoverCard.styles';
 import { HoverCardBase } from './HoverCard.base';
+import type { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 
 export const HoverCard: React.FunctionComponent<IHoverCardProps> = styled<
   IHoverCardProps,

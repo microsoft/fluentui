@@ -142,4 +142,4 @@ storiesOf('List', module)
       {story()}
     </Screener>,
   )
-  .addStory('Root', () => <List items={items} onRenderCell={onRenderCell} />, { rtl: true });
+  .addStory('Root', () => <List items={items} onRenderCell={onRenderCell} />, { includeRtl: true });

@@ -1,4 +1,5 @@
-import { PopoverContextValue, usePopoverContext } from '../popoverContext';
+import { usePopoverContext } from '../popoverContext';
+import type { PopoverContextValue } from '../popoverContext';
 
 /**
  * A test utility to mock the usePopoverContext hook that relies on context selector
@@ -12,7 +13,6 @@ export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) =
     triggerRef: { current: null },
     contentRef: { current: null },
     arrowRef: { current: null },
-    target: undefined,
     openOnContext: false,
     openOnHover: false,
     size: 'medium',

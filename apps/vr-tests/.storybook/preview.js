@@ -1,10 +1,14 @@
 // @ts-check
-import { createElement } from 'react';
+import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
+import { webLightTheme, webHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
+import { FluentProvider } from '@fluentui/react-provider';
 
 const defaultConfig = {
-  rtl: false,
+  includeRtl: false,
+  includeHighContrast: false,
+  includeDarkMode: false,
 };
 
 /**
@@ -27,16 +31,45 @@ const defaultConfig = {
  */
 setAddon({
   addStory(storyName, storyFn, config = defaultConfig) {
-    this.add(storyName, context => {
-      setRTL(false);
-      return storyFn(context);
-    });
-
-    if (config.rtl) {
-      this.add(storyName + ' - RTL', context => {
-        setRTL(true);
+    // V-Next stories
+    if (this.kind.includes('Converged') || config.provider === 'FluentProvider') {
+      this.add(storyName, context => {
+        return <FluentProvider theme={webLightTheme}>{storyFn({ context })}</FluentProvider>;
+      });
+      if (config.includeRtl) {
+        this.add(storyName + ' - RTL', context => {
+          return (
+            <FluentProvider theme={webLightTheme} dir="rtl">
+              {storyFn({ context })}
+            </FluentProvider>
+          );
+        });
+      }
+      if (config.includeDarkMode) {
+        this.add(storyName + ' - Dark Mode', context => {
+          return <FluentProvider theme={webDarkTheme}>{storyFn({ context })}</FluentProvider>;
+        });
+      }
+      if (config.includeHighContrast) {
+        this.add(storyName + ' - High Contrast', context => {
+          return (
+            <FluentProvider theme={webHighContrastTheme}>{storyFn({ context })}</FluentProvider>
+          );
+        });
+      }
+    }
+    // Other stories
+    else {
+      this.add(storyName, context => {
+        setRTL(false);
         return storyFn(context);
       });
+      if (config.includeRtl) {
+        this.add(storyName + ' - RTL', context => {
+          setRTL(true);
+          return storyFn(context);
+        });
+      }
     }
 
     return this;

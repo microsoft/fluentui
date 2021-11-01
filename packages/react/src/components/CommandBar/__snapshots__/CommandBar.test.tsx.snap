@@ -67,6 +67,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -209,6 +210,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -416,6 +418,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -558,6 +561,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ThemeProviderState } from './ThemeProvider.types';
 import { CustomizerContext, getNativeElementProps, omit } from '@fluentui/utilities';
 import { ThemeContext } from './ThemeContext';
+import type { ThemeProviderState } from './ThemeProvider.types';
 
 export const renderThemeProvider = (state: ThemeProviderState) => {
   const { theme, customizerContext } = state;

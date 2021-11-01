@@ -20,7 +20,7 @@ const baseConfig = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
   moduleNameMapper: { ...tsPathAliases },
-  cacheDirectory: '<rootDir>/.cache/jest',
+  cacheDirectory: '<rootDir>/node_modules/.cache/jest',
   clearMocks: true,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };

@@ -1,5 +1,5 @@
-import { IVerticalDividerPropsStyles, IVerticalDividerStyles } from './VerticalDivider.types';
-import { IStyleFunction } from '../../Utilities';
+import type { IVerticalDividerPropsStyles, IVerticalDividerStyles } from './VerticalDivider.types';
+import type { IStyleFunction } from '../../Utilities';
 
 export const getStyles: IStyleFunction<IVerticalDividerPropsStyles, IVerticalDividerStyles> = (
   props: IVerticalDividerPropsStyles,

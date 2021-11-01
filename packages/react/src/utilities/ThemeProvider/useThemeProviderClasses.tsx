@@ -2,8 +2,8 @@ import * as React from 'react';
 import { css } from '@fluentui/utilities';
 import { useDocument } from '@fluentui/react-window-provider';
 import { makeStyles } from './makeStyles';
-import { ThemeProviderState } from './ThemeProvider.types';
-import { Theme } from '@fluentui/theme';
+import type { ThemeProviderState } from './ThemeProvider.types';
+import type { Theme } from '@fluentui/theme';
 
 const useThemeProviderStyles = makeStyles((theme: Theme) => {
   const { semanticColors, fonts } = theme;

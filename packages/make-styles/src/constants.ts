@@ -7,7 +7,7 @@ export const HASH_PREFIX = 'f';
 export const SEQUENCE_HASH_LENGTH = 7;
 
 /** @internal */
-export const SEQUENCE_PREFIX = '__';
+export const SEQUENCE_PREFIX = '___';
 
 /** @internal */
 export const DEFINITION_LOOKUP_TABLE: Record<SequenceHash, LookupItem> = {};

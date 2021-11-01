@@ -5,14 +5,14 @@
 ```ts
 
 import { createDOMRenderer } from '@fluentui/make-styles';
-import { CSSClassesMapBySlot } from '@fluentui/make-styles';
-import { CSSRulesByBucket } from '@fluentui/make-styles';
-import { MakeStaticStyles } from '@fluentui/make-styles';
-import { MakeStylesRenderer } from '@fluentui/make-styles';
-import { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { CSSClassesMapBySlot } from '@fluentui/make-styles';
+import type { CSSRulesByBucket } from '@fluentui/make-styles';
+import type { MakeStaticStyles } from '@fluentui/make-styles';
+import type { MakeStylesRenderer } from '@fluentui/make-styles';
+import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { mergeClasses } from '@fluentui/make-styles';
 import * as React_2 from 'react';
-import { Theme } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 
 // @internal
 export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket): () => Record<Slots, string>;
@@ -44,7 +44,6 @@ export function renderToStyleElements(renderer: MakeStylesRenderer): React_2.Rea
 
 // @public
 export function useRenderer(): MakeStylesRenderer;
-
 
 // (No @packageDocumentation comment for this package)
 

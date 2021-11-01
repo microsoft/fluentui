@@ -1,5 +1,6 @@
-import { buildKeytipConfigMap, IKeytipConfig } from './KeytipConfig';
+import { buildKeytipConfigMap } from './KeytipConfig';
 import { arraysEqual } from '../../Utilities';
+import type { IKeytipConfig } from './KeytipConfig';
 
 describe('KeytipConfig', () => {
   it('buildKeytipConfigMap test', () => {

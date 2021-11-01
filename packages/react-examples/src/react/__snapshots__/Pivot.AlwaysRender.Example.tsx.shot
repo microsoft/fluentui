@@ -135,11 +135,9 @@ exports[`Component Examples renders Pivot.AlwaysRender.Example.tsx correctly 1`]
       </button>
     </div>
   </div>
-  <div
-    aria-label="Separately Rendered Content Pivot Example"
-    role="toolbar"
-  >
+  <div>
     <div
+      aria-label="Separately Rendered Content Pivot Example"
       className=
           ms-FocusZone
           ms-Pivot

@@ -70,12 +70,6 @@ Icon
 <Divider><Icon /></Divider>
 ```
 
-Important
-
-```html
-<Divider important>This is important!</Divider>
-```
-
 Inset
 
 ```html
@@ -101,53 +95,54 @@ From [Divider.types.tsx](https://github.com/microsoft/fluentui/blob/master/packa
 ### Props
 
 ```ts
-export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Determines the alignment of the content within the divider.
-   * @defaultvalue 'center'
-   */
-  alignContent?: 'start' | 'end' | 'center';
+export type DividerProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * Determines the alignment of the content within the divider.
+     * @defaultvalue 'center'
+     */
+    alignContent?: 'start' | 'end' | 'center';
 
-  /**
-   * Predefined visual styles
-   * @defaultvalue 'default'
-   */
-  appearance?: 'default' | 'subtle' | 'brand' | 'strong';
+    /**
+     * Predefined visual styles
+     * @defaultvalue 'default'
+     */
+    appearance?: 'default' | 'subtle' | 'brand' | 'strong';
 
-  /**
-   * A divider can have a overriding border color
-   */
-  color?: string;
+    /**
+     * A divider can have a overriding border color
+     */
+    color?: string;
 
-  /**
-   * A divider can be classified as important to emphasize its content
-   */
-  important?: boolean;
+    /**
+     * A divider can be classified as important to emphasize its content
+     */
+    important?: boolean;
 
-  /**
-   * Adds a 12px padding to the begining and end of the divider
-   */
-  inset?: boolean;
+    /**
+     * Adds a 12px padding to the begining and end of the divider
+     */
+    inset?: boolean;
 
-  /**
-   * A divider can be horizontal (default) or vertical
-   */
-  vertical?: boolean;
+    /**
+     * A divider can be horizontal (default) or vertical
+     */
+    vertical?: boolean;
 
-  /**
-   * Overrides for border visuals
-   */
-  borderStyle?: string;
-  borderSize?: string | number;
+    /**
+     * Overrides for border visuals
+     */
+    borderStyle?: string;
+    borderSize?: string | number;
 
-  /**
-   * Accessibility wrapper for content when presented.
-   * A shorthand prop can be a literal, object, or
-   * JSX. The `children` prop of the object can be a render function,
-   * taking in the original slot component and props.
-   */
-  wrapper?: ShorthandProps<React.HTMLAttributes<HTMLDivElement>>;
-}
+    /**
+     * Accessibility wrapper for content when presented.
+     * A shorthand prop can be a literal, object, or
+     * JSX. The `children` prop of the object can be a render function,
+     * taking in the original slot component and props.
+     */
+    wrapper?: ShorthandProps<React.HTMLAttributes<HTMLDivElement>>;
+  };
 ```
 
 ## Styling Tokens

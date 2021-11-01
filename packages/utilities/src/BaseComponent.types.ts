@@ -1,4 +1,4 @@
-import { IRefObject } from './createRef';
+import type { IRefObject } from './createRef';
 
 /**
  * BaseProps interface.

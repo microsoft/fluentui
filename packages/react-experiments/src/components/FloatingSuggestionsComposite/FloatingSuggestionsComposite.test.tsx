@@ -2,9 +2,9 @@ import * as React from 'react';
 import { create, act } from 'react-test-renderer';
 import { BaseFloatingSuggestions } from './FloatingSuggestions';
 import * as ReactDOM from 'react-dom';
-import { IFloatingSuggestionItem } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import type { IFloatingSuggestionItem } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
+import type { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
 
 export interface ISimple {
   key: string;

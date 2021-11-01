@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { css, KeyCodes, initializeComponentRef } from '../../../Utilities';
-import { IButton } from '../../../Button';
-import { ISuggestionModel } from '../../../Pickers';
-import {
+import { SuggestionsCore } from './SuggestionsCore';
+import * as stylesImport from './SuggestionsControl.scss';
+import { hiddenContentStyle, mergeStyles } from '../../../Styling';
+import type { IButton } from '../../../Button';
+import type { ISuggestionModel } from '../../../Pickers';
+import type {
   ISuggestionsHeaderFooterItemProps,
   ISuggestionsControlProps,
   ISuggestionsCoreProps,
   ISuggestionsHeaderFooterProps,
 } from './Suggestions.types';
-import { SuggestionsCore } from './SuggestionsCore';
-import * as stylesImport from './SuggestionsControl.scss';
-import { hiddenContentStyle, mergeStyles } from '../../../Styling';
 
 const styles: any = stylesImport;
 

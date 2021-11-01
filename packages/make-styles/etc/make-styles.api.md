@@ -18,7 +18,7 @@ export function createCSSVariablesProxy(prefix?: string): unknown;
 export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
 
 // @public (undocumented)
-export type CSSClasses = /* ltrClassName */ string | [ltrClassName: string, rtlClassName: string];
+export type CSSClasses = /* ltrClassName */ string | [/* ltrClassName */ string, /* rtlClassName */ string];
 
 // @public (undocumented)
 export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
@@ -50,7 +50,7 @@ export const LOOKUP_DEFINITIONS_INDEX = 0;
 export const LOOKUP_DIR_INDEX = 1;
 
 // @public (undocumented)
-export type LookupItem = [definitions: CSSClassesMap, dir: 'rtl' | 'ltr'];
+export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ /* dir */ 'rtl' | 'ltr'];
 
 // @public (undocumented)
 export type MakeStaticStyles = ({
@@ -145,7 +145,7 @@ export const SEQUENCE_HASH_LENGTH = 7;
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const SEQUENCE_PREFIX = "__";
+export const SEQUENCE_PREFIX = "___";
 
 // @public (undocumented)
 export type SequenceHash = string;
@@ -158,7 +158,6 @@ export const styleBucketOrdering: StyleBucketName[];
 
 // @public (undocumented)
 export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
-
 
 // (No @packageDocumentation comment for this package)
 

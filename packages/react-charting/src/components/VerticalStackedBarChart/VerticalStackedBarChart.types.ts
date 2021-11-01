@@ -51,6 +51,11 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   colors?: string[];
 
   /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+
+  /**
    * To display multi stack callout or single callout
    * @default flase
    */
@@ -91,6 +96,11 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * Click handler for bars; type of data is dependant on isCalloutForStack
    */
   onBarClick?: (event: React.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}

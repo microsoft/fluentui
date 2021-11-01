@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-import { IObjectWithKey } from '@fluentui/react/lib/Selection';
-import { IStaticListProps } from './StaticList.types';
-
 import * as stylesImport from './StaticList.scss';
+import type { IObjectWithKey } from '@fluentui/react/lib/Selection';
+import type { IStaticListProps } from './StaticList.types';
 
 export class StaticList<TItem extends IObjectWithKey> extends React.Component<IStaticListProps<TItem>> {
   public render(): JSX.Element {

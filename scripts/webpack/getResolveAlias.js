@@ -15,7 +15,7 @@ function getOutputPath(entryPoint) {
 function getResolveAlias(useLib, cwd) {
   cwd = cwd || process.cwd();
   const gitRoot = findGitRoot();
-  const deps = findRepoDeps(cwd);
+  const deps = findRepoDeps({ cwd });
 
   /** @type {{ [key: string]: string }} */
   const alias = {};

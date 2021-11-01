@@ -1,5 +1,6 @@
-import { Types } from 'tabster';
+import { Types, getMover } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
+import { useTabster } from './useTabster';
 
 export interface UseArrowNavigationGroupOptions {
   /**
@@ -11,6 +12,11 @@ export interface UseArrowNavigationGroupOptions {
    * Focus will cycle to the first/last elements of the group without stopping
    */
   circular?: boolean;
+  /**
+   * Last focused element in the group will be remembered and focused (if still
+   * available) when tabbing from outside of the group
+   */
+  memorizeCurrent?: boolean;
 }
 
 /**
@@ -18,23 +24,28 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
+  const tabster = useTabster();
+
+  if (tabster) {
+    getMover(tabster);
+  }
+
   return useTabsterAttributes({
-    focusable: {
-      mover: {
-        axis: axisToMoverAxis(options?.axis ?? 'vertical'),
-        navigationType: Types.MoverKeys.Arrows,
-        cyclic: !!options?.circular,
-      },
+    mover: {
+      cyclic: !!options?.circular,
+      direction: axisToMoverDirection(options?.axis ?? 'vertical'),
+      memorizeCurrent: options?.memorizeCurrent,
     },
   });
 };
 
-function axisToMoverAxis(axis: UseArrowNavigationGroupOptions['axis']) {
+function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Types.MoverDirection {
   switch (axis) {
     case 'horizontal':
-      return Types.MoverAxis.Horizontal;
+      return Types.MoverDirections.Horizontal;
+
     case 'vertical':
     default:
-      return Types.MoverAxis.Vertical;
+      return Types.MoverDirections.Vertical;
   }
 }

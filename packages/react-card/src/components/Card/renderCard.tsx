@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { CardState } from './Card.types';
+import { getSlots } from '@fluentui/react-utilities';
+import type { CardSlots, CardState } from './Card.types';
 
 /**
- * Define the render function. Given the state of a card, renders it.
+ * Render the final JSX of Card
  */
 export const renderCard = (state: CardState) => {
-  const { slots, slotProps } = getSlotsCompat(state);
-  const { children } = state;
+  const { slots, slotProps } = getSlots<CardSlots>(state);
 
-  return <slots.root {...slotProps.root}>{children}</slots.root>;
+  return <slots.root {...slotProps.root} />;
 };

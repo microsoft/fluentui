@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useEventCallback, UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
+import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
 /**
  * Name of the custom event

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { ISpinButtonProps, ISpinButtonStyles } from './SpinButton.types';
 import { SpinButtonBase } from './SpinButton.base';
 import { getStyles } from './SpinButton.styles';
+import type { ISpinButtonProps, ISpinButtonStyles } from './SpinButton.types';
 
 /**
  * The SpinButton control and related tabs pattern are used for navigating frequently accessed,

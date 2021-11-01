@@ -63,6 +63,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
         </div>
         <div style={rootStyle}>
           <VerticalStackedBarChart
+            chartTitle="Vertical stacked bar chart axis tooltip example"
             data={data}
             height={350}
             width={650}

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '@fluentui/utilities';
-import { TabsProps, TabsStyleProps, TabsStyles } from './Tabs.types';
 import { TabsBase } from './Tabs.base';
 import { getStyles } from './Tabs.styles';
+import type { TabsProps, TabsStyleProps, TabsStyles } from './Tabs.types';
 
 /**
  * The Tabs control and related tabs pattern are used for navigating frequently accessed,

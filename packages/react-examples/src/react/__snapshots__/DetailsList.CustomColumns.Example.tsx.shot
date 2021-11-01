@@ -438,7 +438,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
             >
               <span
                 aria-describedby="header1-thumbnail-tooltip"
-                aria-haspopup={false}
                 aria-labelledby="header1-thumbnail-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -470,7 +469,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-thumbnail"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -596,7 +595,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -628,7 +626,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -731,7 +729,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -763,7 +760,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -866,7 +863,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-description-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -898,7 +894,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-description"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1001,7 +997,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-color-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1033,7 +1028,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-color"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1136,7 +1131,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-shape-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1168,7 +1162,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-shape"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1271,7 +1265,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-location-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1303,7 +1296,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-location"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1406,7 +1399,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-width-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1438,7 +1430,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-width"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1541,7 +1533,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-height-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1573,7 +1564,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-height"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1713,6 +1704,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -2704,6 +2698,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -3693,6 +3690,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -4684,6 +4684,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -5673,6 +5676,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -6664,6 +6670,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -7653,6 +7662,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -8644,6 +8656,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -9634,6 +9649,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -10623,6 +10641,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                           &:hover .is-row-header {
                             color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;

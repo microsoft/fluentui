@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
 import { LayoutGroup } from './LayoutGroup';
+import type { IBaseProps } from '@fluentui/react/lib/Utilities';
 
 export interface ILayoutGroupProps extends IBaseProps, React.HTMLAttributes<LayoutGroup | HTMLDivElement> {
   /**

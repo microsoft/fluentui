@@ -1,6 +1,7 @@
+import type { FunctionComponent } from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { typographyStyles } from '../../typographyStyles/index';
-import { createWrapper } from '../wrapper';
+import { createWrapper, TextWrapperProps } from '../wrapper';
 
 /**
  * Styles for the root slot
@@ -12,4 +13,4 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Display typography variant
  */
-export const Display = createWrapper({ useStyles, displayName: 'Display' });
+export const Display: FunctionComponent<TextWrapperProps> = createWrapper({ useStyles, displayName: 'Display' });

@@ -4,12 +4,13 @@ import { mount } from 'enzyme';
 import { TestImages } from '@fluentui/example-data';
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
-import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
+import { OverflowButtonType } from './Facepile.types';
 import { PersonaSize } from '../../Persona';
 import { Persona } from '../../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
 import { findNodes, expectOne, expectMissing } from '../../common/testUtilities';
 import { isConformant } from '../../common/isConformant';
+import type { IFacepilePersona } from './Facepile.types';
 
 const facepilePersonas: IFacepilePersona[] = [
   {

@@ -11,7 +11,7 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
-  accentForegroundRest,
+  accentFillRest,
   baseHeightMultiplier,
   bodyFont,
   controlCornerRadius,
@@ -19,8 +19,9 @@ import {
   designUnit,
   disabledOpacity,
   focusStrokeOuter,
-  neutralFillRecipe,
-  neutralFillRest,
+  focusStrokeWidth,
+  neutralFillSecondaryRecipe,
+  neutralFillSecondaryRest,
   neutralFillStealthActive,
   neutralFillStealthHover,
   neutralFillStealthRecipe,
@@ -33,51 +34,51 @@ import {
 import { Swatch } from '../color/swatch';
 
 const ltr = css`
-  .expand-collapse-glyph {
+  .expand-collapse-button svg {
     transform: rotate(0deg);
   }
   :host(.nested) .expand-collapse-button {
     left: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    left: calc(var(--focus-outline-width) * 1px);
+    left: calc(${focusStrokeWidth} * 1px);
   }
-  :host([expanded]) > .positioning-region .expand-collapse-glyph {
-    transform: rotate(45deg);
+  :host([expanded]) > .positioning-region .expand-collapse-button svg {
+    transform: rotate(90deg);
   }
 `;
 
 const rtl = css`
-  .expand-collapse-glyph {
+  .expand-collapse-button svg {
     transform: rotate(180deg);
   }
   :host(.nested) .expand-collapse-button {
     right: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    right: calc(var(--focus-outline-width) * 1px);
+    right: calc(${focusStrokeWidth} * 1px);
   }
-  :host([expanded]) > .positioning-region .expand-collapse-glyph {
-    transform: rotate(135deg);
+  :host([expanded]) > .positioning-region .expand-collapse-button svg {
+    transform: rotate(90deg);
   }
 `;
 
 export const expandCollapseButtonSize = cssPartial`((${baseHeightMultiplier} / 2) * ${designUnit}) + ((${designUnit} * ${density}) / 2)`;
 
-const expandCollapseHoverBehavior = DesignToken.create<Swatch>('tree-item-expand-collapse-hover').withDefault(
+const expandCollapseHover = DesignToken.create<Swatch>('tree-item-expand-collapse-hover').withDefault(
   (target: HTMLElement) => {
     const recipe = neutralFillStealthRecipe.getValueFor(target);
     return recipe.evaluate(target, recipe.evaluate(target).hover).hover;
   },
 );
 
-const selectedExpandCollapseHoverBehavior = DesignToken.create<Swatch>(
-  'tree-item-expand-collapse-selected-hover',
-).withDefault((target: HTMLElement) => {
-  const baseRecipe = neutralFillRecipe.getValueFor(target);
-  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
-  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
-});
+const selectedExpandCollapseHover = DesignToken.create<Swatch>('tree-item-expand-collapse-selected-hover').withDefault(
+  (target: HTMLElement) => {
+    const baseRecipe = neutralFillSecondaryRecipe.getValueFor(target);
+    const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
+    return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
+  },
+);
 
 export const treeItemStyles: (context: ElementDefinitionContext, definition: TreeItemOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -89,7 +90,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       position: relative;
       outline: none;
       color: ${neutralForegroundRest};
-      background: ${neutralFillStealthRest};
+      fill: currentcolor;
       cursor: pointer;
       font-family: ${bodyFont};
       --expand-collapse-button-size: calc(${heightNumber} * 1px);
@@ -108,14 +109,15 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       display: flex;
       position: relative;
       box-sizing: border-box;
+      background: ${neutralFillStealthRest};
       border: calc(${strokeWidth} * 1px) solid transparent;
+      border-radius: calc(${controlCornerRadius} * 1px);
       height: calc((${heightNumber} + 1) * 1px);
     }
 
     :host(:${focusVisible}) .positioning-region {
-      border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
-      border-radius: calc(${controlCornerRadius} * 1px);
-      color: ${neutralForegroundRest};
+      border-color: ${focusStrokeOuter};
+      box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter} inset;
     }
 
     .positioning-region::before {
@@ -125,11 +127,11 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       flex-shrink: 0;
     }
 
-    .positioning-region:hover {
+    :host(:not([disabled])) .positioning-region:hover {
       background: ${neutralFillStealthHover};
     }
 
-    .positioning-region:active {
+    :host(:not([disabled])) .positioning-region:active {
       background: ${neutralFillStealthActive};
     }
 
@@ -156,6 +158,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     .expand-collapse-button {
       background: none;
       border: none;
+      border-radius: calc(${controlCornerRadius} * 1px);
       outline: none;
       ${
         /* Width and Height should be based off calc(glyph-size-number + (design-unit * 4) * 1px) -
@@ -170,26 +173,14 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       margin: 0 6px;
     }
 
-    .expand-collapse-glyph {
-      width: 16px;
-      height: 16px;
+    .expand-collapse-button svg {
       transition: transform 0.1s linear;
       pointer-events: none;
-      fill: ${neutralForegroundRest};
     }
 
     .start,
     .end {
       display: flex;
-      fill: currentcolor;
-    }
-
-    ::slotted(svg) {
-      ${
-        /* Glyph size is temporary -
-            replace when glyph-size var is added */ ''
-      } width: 16px;
-      height: 16px;
     }
 
     .start {
@@ -208,7 +199,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       display: block;
     }
 
-    :host([disabled]) .content-region {
+    :host([disabled]) {
       opacity: ${disabledOpacity};
       cursor: ${disabledCursor};
     }
@@ -223,15 +214,15 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host(.nested) .expand-collapse-button:hover {
-      background: ${expandCollapseHoverBehavior};
+      background: ${expandCollapseHover};
     }
 
-    :host([selected]) .positioning-region {
-      background: ${neutralFillRest};
+    :host(:not([disabled])[selected]) .positioning-region {
+      background: ${neutralFillSecondaryRest};
     }
 
-    :host([selected]) .expand-collapse-button:hover {
-      background: ${selectedExpandCollapseHoverBehavior};
+    :host(:not([disabled])[selected]) .expand-collapse-button:hover {
+      background: ${selectedExpandCollapseHover};
     }
 
     :host([selected])::after {
@@ -243,8 +234,8 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       height: calc((${heightNumber} / 2) * 1px);
       ${
         /* The french fry background needs to be calculated based on the selected background state for this control.
-            We currently have no way of chaning that, so setting to accent-foreground-rest for the time being */ ''
-      } background: ${accentForegroundRest};
+            We currently have no way of changing that, so setting to accent-foreground-rest for the time being */ ''
+      } background: ${accentFillRest};
       border-radius: calc(${controlCornerRadius} * 1px);
     }
 
@@ -262,15 +253,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
           background: ${SystemColors.Field};
           color: ${SystemColors.FieldText};
         }
-        :host .content-region {
-          color: ${SystemColors.FieldText};
-        }
-        :host .content-region .expand-collapse-glyph,
-        :host .content-region .start,
-        :host .content-region .end {
-          fill: ${SystemColors.FieldText};
-        }
-        :host .positioning-region:hover,
+        :host(:not([disabled])) .positioning-region:hover,
         :host([selected]) .positioning-region {
           background: ${SystemColors.Highlight};
         }
@@ -278,47 +261,20 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
         :host([selected]) .positioning-region .content-region {
           color: ${SystemColors.HighlightText};
         }
-        :host .positioning-region:hover .content-region .expand-collapse-glyph,
-        :host .positioning-region:hover .content-region .start,
-        :host .positioning-region:hover .content-region .end,
-        :host([selected]) .content-region .expand-collapse-glyph,
-        :host([selected]) .content-region .start,
-        :host([selected]) .content-region .end {
-          fill: ${SystemColors.HighlightText};
-        }
         :host([selected])::after {
           background: ${SystemColors.Field};
         }
         :host(:${focusVisible}) .positioning-region {
           border-color: ${SystemColors.FieldText};
           box-shadow: 0 0 0 2px inset ${SystemColors.Field};
-          color: ${SystemColors.FieldText};
         }
         :host([disabled]) .content-region,
         :host([disabled]) .positioning-region:hover .content-region {
           opacity: 1;
           color: ${SystemColors.GrayText};
         }
-        :host([disabled]) .content-region .expand-collapse-glyph,
-        :host([disabled]) .content-region .start,
-        :host([disabled]) .content-region .end,
-        :host([disabled]) .positioning-region:hover .content-region .expand-collapse-glyph,
-        :host([disabled]) .positioning-region:hover .content-region .start,
-        :host([disabled]) .positioning-region:hover .content-region .end {
-          fill: ${SystemColors.GrayText};
-        }
-        :host([disabled]) .positioning-region:hover {
-          background: ${SystemColors.Field};
-        }
-        .expand-collapse-glyph,
-        .start,
-        .end {
-          fill: ${SystemColors.FieldText};
-        }
         :host(.nested) .expand-collapse-button:hover {
           background: ${SystemColors.Field};
-        }
-        :host(.nested) .expand-collapse-button:hover .expand-collapse-glyph {
           fill: ${SystemColors.FieldText};
         }
       `,

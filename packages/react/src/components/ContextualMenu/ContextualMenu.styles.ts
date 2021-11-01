@@ -1,6 +1,6 @@
-import { IContextualMenuStyleProps, IContextualMenuStyles } from './ContextualMenu.types';
 import { getGlobalClassNames, FontWeights } from '../../Styling';
 import { CONTEXTUAL_MENU_ITEM_HEIGHT } from './ContextualMenu.cnstyles';
+import type { IContextualMenuStyleProps, IContextualMenuStyles } from './ContextualMenu.types';
 
 const GlobalClassNames = {
   root: 'ms-ContextualMenu',

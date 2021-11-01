@@ -291,6 +291,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -347,7 +348,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -380,6 +380,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -436,7 +437,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -469,6 +469,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -525,7 +526,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -834,6 +834,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData1"
@@ -890,7 +891,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -923,6 +923,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData2"
@@ -979,7 +980,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1012,6 +1012,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData3"
@@ -1068,7 +1069,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1628,6 +1628,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -1684,7 +1685,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1717,6 +1717,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -1773,7 +1774,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1806,6 +1806,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -1862,7 +1863,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2188,6 +2188,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -2244,7 +2245,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2277,6 +2277,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -2333,7 +2334,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2366,6 +2366,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -2422,7 +2423,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2748,6 +2748,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -2804,7 +2805,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2837,6 +2837,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -2893,7 +2894,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2926,6 +2926,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -2982,7 +2983,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -3308,6 +3308,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -3364,7 +3365,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -3397,6 +3397,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -3453,7 +3454,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -3486,6 +3486,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -3542,7 +3543,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { useId, useControllableValue, useConst, useSetTimeout } from '@fluentui/react-hooks';
 import {
   KeyCodes,
@@ -11,7 +10,8 @@ import {
   getNativeProps,
   divProperties,
 } from '@fluentui/utilities';
-import { ILabelProps } from '../Label/index';
+import type { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
+import type { ILabelProps } from '../Label/index';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
@@ -93,6 +93,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     styles,
     theme,
     originFromZero,
+    'aria-labelledby': ariaLabelledBy,
     'aria-label': ariaLabel,
     ranged,
     onChange,
@@ -373,6 +374,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         className: classNames.valueLabel,
         children: valueFormat ? valueFormat(value) : value,
         disabled,
+        htmlFor: disabled ? id : undefined,
       }
     : undefined;
 
@@ -431,6 +433,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       'aria-valuenow': value,
       'aria-valuetext': getAriaValueText(value),
       'aria-label': ariaLabel || label,
+      'aria-labelledby': ariaLabelledBy,
     }),
   };
 

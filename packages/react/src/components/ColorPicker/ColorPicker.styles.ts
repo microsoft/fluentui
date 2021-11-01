@@ -1,4 +1,4 @@
-import { IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
+import type { IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
 
 export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => {
   const { className, theme, alphaType } = props;

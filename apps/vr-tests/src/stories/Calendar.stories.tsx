@@ -2,7 +2,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities/index';
-import { Fabric, Calendar } from '@fluentui/react';
+import { Fabric, Calendar, DateRangeType, DayOfWeek } from '@fluentui/react';
 
 const date = new Date(2010, 1, 12);
 storiesOf('Calendar', module)
@@ -19,7 +19,7 @@ storiesOf('Calendar', module)
         <Calendar value={date} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('Calendar - No Month Option', module)
@@ -32,5 +32,24 @@ storiesOf('Calendar - No Month Option', module)
   .addStory('Show Month as Overlay and no Go To Today', () => (
     <Fabric>
       <Calendar value={date} showGoToToday={false} showMonthPickerAsOverlay={true} />
+    </Fabric>
+  ))
+  .addStory('Show Week selection type', () => (
+    <Fabric>
+      <Calendar value={date} dateRangeType={DateRangeType.Week} />
+    </Fabric>
+  ))
+  .addStory('Show Month selection type', () => (
+    <Fabric>
+      <Calendar value={date} dateRangeType={DateRangeType.Month} />
+    </Fabric>
+  ))
+  .addStory('Show Work Week selection type', () => (
+    <Fabric>
+      <Calendar
+        value={date}
+        dateRangeType={DateRangeType.WorkWeek}
+        workWeekDays={[DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Friday]}
+      />
     </Fabric>
   ));

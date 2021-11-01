@@ -8,6 +8,6 @@ export const useStyles = makeStyles({
     ':hover': { color: 'red' },
     ':focus': { ':hover': { color: colorBlue } },
 
-    '& .foo': { ':hover': { color: theme.alias.color.green.foreground1 } },
+    '& .foo': { ':hover': { color: theme.colorPaletteGreenForeground1 } },
   }),
 });

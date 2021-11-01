@@ -63,7 +63,7 @@ storiesOf('Facepile', module)
       {story()}
     </Screener>,
   )
-  .addStory('Root', () => <Facepile {...facepileProps} />, { rtl: true })
+  .addStory('Root', () => <Facepile {...facepileProps} />, { includeRtl: true })
   .addStory('Extra extra small', () => (
     <Facepile {...facepileProps} personaSize={PersonaSize.size24} />
   ))

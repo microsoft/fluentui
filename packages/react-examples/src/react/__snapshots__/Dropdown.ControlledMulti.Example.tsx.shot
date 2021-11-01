@@ -138,9 +138,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-invalid={false}
-      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder

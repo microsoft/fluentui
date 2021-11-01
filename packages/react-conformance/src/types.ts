@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ComponentDoc } from 'react-docgen-typescript';
+import * as ts from 'typescript';
+
 import { defaultTests } from './defaultTests';
 import { mount, ComponentType } from 'enzyme';
 
@@ -10,6 +12,9 @@ export type Tests = keyof typeof defaultTests;
  */
 export interface TestOptions {
   'consistent-callback-names'?: {
+    ignoreProps?: string[];
+  };
+  'consistent-callback-args'?: {
     ignoreProps?: string[];
   };
 }
@@ -86,7 +91,11 @@ export interface IsConformantOptions<TProps = {}> {
   targetComponent?: ComponentType<TProps>;
 }
 
-export type ConformanceTest<TProps = {}> = (componentInfo: ComponentDoc, testInfo: IsConformantOptions<TProps>) => void;
+export type ConformanceTest<TProps = {}> = (
+  componentInfo: ComponentDoc,
+  testInfo: IsConformantOptions<TProps>,
+  tsProgram: ts.Program,
+) => void;
 
 export interface TestObject<TProps = {}> {
   [key: string]: ConformanceTest<TProps>;

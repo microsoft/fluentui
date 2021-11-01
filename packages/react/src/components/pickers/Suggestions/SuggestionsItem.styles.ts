@@ -1,6 +1,6 @@
 import { getGlobalClassNames, HighContrastSelector, getHighContrastNoAdjustStyle } from '../../../Styling';
-import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 import { IsFocusVisibleClassName } from '../../../Utilities';
+import type { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
 export const SuggestionsItemGlobalClassNames = {
   root: 'ms-Suggestions-item',

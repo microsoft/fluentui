@@ -2,7 +2,6 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { MenuGroup } from './MenuGroup';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 
@@ -10,17 +9,14 @@ describe('MenuGroup', () => {
   isConformant({
     Component: MenuGroup,
     displayName: 'MenuGroup',
+    disabledTests: [
+      // MenuGroup does not have own styles
+      'make-styles-overrides-win',
+    ],
   });
-
-  let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
     resetIdsForTests();
-
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**

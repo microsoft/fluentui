@@ -1,12 +1,11 @@
 /** @jsx withSlots */
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
-
-import {
+import { CollapsibleSectionTitle } from './CollapsibleSectionTitle';
+import type {
   ICollapsibleSectionComponent,
   ICollapsibleSectionProps,
   ICollapsibleSectionSlots,
 } from './CollapsibleSection.types';
-import { CollapsibleSectionTitle } from './CollapsibleSectionTitle';
 
 export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = props => {
   const { collapsed, titleElementRef, children, onClick, onKeyDown, indent } = props;

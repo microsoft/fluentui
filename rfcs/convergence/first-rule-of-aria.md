@@ -114,14 +114,10 @@ If isn't equivalent to native elements but can benefit from using native element
 ```html
 <!-- accordion header -->
 <h3 class="header-class">
-  <button id="header-1" aria-disabled="false" class="header-button-class" aria-controls="panel-1">
-    Header
-  </button>
+  <button id="header-1" aria-disabled="false" class="header-button-class" aria-controls="panel-1">Header</button>
 </h3>
 <!-- accordion panel -->
-<div id="panel-1" role="region" aria-labelledby="header-1" class="panel-class">
-  Content
-</div>
+<div id="panel-1" role="region" aria-labelledby="header-1" class="panel-class">Content</div>
 
 <!-- accordion header -->
 <div role="heading" class="header-class">
@@ -130,9 +126,7 @@ If isn't equivalent to native elements but can benefit from using native element
   </div>
 </div>
 <!-- accordion panel -->
-<div id="panel-1" role="region" aria-labelledby="header-1" class="panel-class">
-  Content
-</div>
+<div id="panel-1" role="region" aria-labelledby="header-1" class="panel-class">Content</div>
 ```
 
 ---

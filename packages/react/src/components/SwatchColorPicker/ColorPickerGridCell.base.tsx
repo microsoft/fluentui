@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ITheme, mergeStyleSets, IProcessedStyleSet } from '../../Styling';
+import { mergeStyleSets } from '../../Styling';
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
 import { getColorFromString } from '../../Color';
 import { ButtonGridCell } from '../../utilities/ButtonGrid/ButtonGridCell';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
-import { IButtonClassNames } from '../Button/BaseButton.classNames';
-import {
+import type { ITheme, IProcessedStyleSet } from '../../Styling';
+import type { IButtonClassNames } from '../Button/BaseButton.classNames';
+import type {
   IColorCellProps,
   IColorPickerGridCellProps,
   IColorPickerGridCellStyleProps,

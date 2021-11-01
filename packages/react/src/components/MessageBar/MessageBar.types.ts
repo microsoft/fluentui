@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BaseButton, Button } from '../../Button';
-import { ITheme, IStyle } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IIconProps } from '../../Icon';
 
 /**
  * {@docCategory MessageBar}

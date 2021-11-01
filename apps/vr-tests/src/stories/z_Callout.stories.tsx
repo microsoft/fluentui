@@ -73,7 +73,7 @@ storiesOf('Callout', module)
         {calloutContent}
       </Callout>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Bottom right edge',
@@ -82,7 +82,7 @@ storiesOf('Callout', module)
         {calloutContent}
       </Callout>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Left bottom edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftBottomEdge}>

@@ -1,8 +1,8 @@
-import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { Divider } from './Divider';
 import * as renderer from 'react-test-renderer';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../common/isConformant';
+import { Divider } from './Divider';
 
 describe('Divider', () => {
   afterEach(() => {
@@ -14,9 +14,6 @@ describe('Divider', () => {
     displayName: 'Divider',
   });
 
-  /**
-   * Note: see more visual regression tests for Divider in /apps/vr-tests.
-   */
   it('renders a default divider', () => {
     const component = renderer.create(<Divider />);
     const tree = component.toJSON();
@@ -67,12 +64,6 @@ describe('Divider', () => {
 
   it('renders a content aligned end', () => {
     const component = renderer.create(<Divider alignContent="end">End</Divider>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders a divider with important', () => {
-    const component = renderer.create(<Divider important>Important</Divider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -5,8 +5,8 @@ import { mount, ReactWrapper } from 'enzyme';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { create } from '@fluentui/utilities/lib/test';
 import { Slider } from './Slider';
-import { ISlider } from './Slider.types';
 import { isConformant } from '../../common/isConformant';
+import type { ISlider } from './Slider.types';
 
 const MIN_PREFIX = 'min';
 const MAX_PREFIX = 'max';
@@ -43,6 +43,12 @@ describe('Slider', () => {
     const component = create(<Slider label="I am a ranged slider" ranged defaultValue={5} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('can set aria-labelledby attribute', () => {
+    wrapper = mount(<Slider aria-labelledby="custom-label" />);
+    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+    expect(sliderSlideBox.getDOMNode().getAttribute('aria-labelledby')).toEqual('custom-label');
   });
 
   it('can provide the current value', () => {

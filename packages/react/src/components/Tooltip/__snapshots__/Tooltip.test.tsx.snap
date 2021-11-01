@@ -111,15 +111,13 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
-              "maxHeight": undefined,
+              "maxHeight": "100%",
               "outline": "none",
               "overflowY": undefined,
             }
           }
         >
-          <div
-            role="tooltip"
-          >
+          <div>
             <div />
           </div>
         </div>

@@ -528,6 +528,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 &:hover .is-row-header {
                                   color: #201f1e;
                                 }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
+                                }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
@@ -1068,6 +1071,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 &:hover .is-row-header {
                                   color: #201f1e;
                                 }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
+                                }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
@@ -1607,6 +1613,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 }
                                 &:hover .is-row-header {
                                   color: #201f1e;
+                                }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
                                 }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;
@@ -2552,6 +2561,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 &:hover .is-row-header {
                                   color: #201f1e;
                                 }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
+                                }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
@@ -3092,6 +3104,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 &:hover .is-row-header {
                                   color: #201f1e;
                                 }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
+                                }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
@@ -3631,6 +3646,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 }
                                 &:hover .is-row-header {
                                   color: #201f1e;
+                                }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
                                 }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;
@@ -4576,6 +4594,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 &:hover .is-row-header {
                                   color: #201f1e;
                                 }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
+                                }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
@@ -5116,6 +5137,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 &:hover .is-row-header {
                                   color: #201f1e;
                                 }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
+                                }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
@@ -5655,6 +5679,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 }
                                 &:hover .is-row-header {
                                   color: #201f1e;
+                                }
+                                &:hover .ms-DetailsRow-cell > .ms-Link {
+                                  color: #004578;
                                 }
                                 &:hover .ms-DetailsRow-check {
                                   opacity: 1;

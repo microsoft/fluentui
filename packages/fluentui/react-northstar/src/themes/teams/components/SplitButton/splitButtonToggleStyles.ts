@@ -23,16 +23,7 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
 
-    const borderFocusStyles = getBorderFocusStyles({
-      variables: {
-        borderRadius: v.focusBorderRadius,
-        borderWidth: v.focusBorderWidth,
-        focusInnerBorderColor: v.focusInnerBorderColor,
-        focusOuterBorderColor: v.focusOuterBorderColor,
-        zIndexes: { foreground: v.focusBorderZIndex },
-      },
-      borderPadding: borderWidth,
-    });
+    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables, borderPadding: borderWidth });
 
     const toggleButtonColorHover = () => (p.primary ? v.toggleButtonPrimaryHoverColor : v.toggleButtonColorHover);
 
@@ -54,10 +45,14 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       borderWidth,
       borderStyle: 'solid',
       borderColor: v.toggleButtonBorderColor,
-      boxShadow: v.toggleButtonBoxShadow,
-
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
+      borderLeftColor: 'transparent',
+
+      boxShadow: p.primary ? v.toggleButtonPrimaryBoxShadow : v.toggleButtonBoxShadow,
+      ...((p.flat || p.size === 'small' || p.disabled) && {
+        boxShadow: 'none',
+      }),
 
       ...getIconFillOrOutlineStyles({ outline: true }),
 
@@ -105,9 +100,8 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       ...(p.primary && {
         color: v.toggleButtonPrimaryColor,
         backgroundColor: v.toggleButtonPrimaryBackgroundColor,
-        borderColor: v.toggleButtonPrimaryBorderColor,
-        boxShadow: v.toggleButtonPrimaryBoxShadow,
         borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
+        borderColor: v.toggleButtonPrimaryBorderColor,
 
         ':active': {
           backgroundColor: v.toggleButtonPrimaryBackgroundColorActive,
@@ -145,7 +139,6 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
         height: v.smallDimension,
         width: v.smallDimension,
         minWidth: v.smallMinWidth,
-        boxShadow: v.smallBoxShadow,
       }),
     };
   },

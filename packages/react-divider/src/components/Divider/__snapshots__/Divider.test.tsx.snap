@@ -84,20 +84,6 @@ exports[`Divider renders a divider with different color 1`] = `
 />
 `;
 
-exports[`Divider renders a divider with important 1`] = `
-<div
-  aria-labelledby="divider-1"
-  className=""
-  role="separator"
->
-  <div
-    id="divider-1"
-  >
-    Important
-  </div>
-</div>
-`;
-
 exports[`Divider renders a divider with inset 1`] = `
 <div
   aria-labelledby="divider-1"

@@ -5,33 +5,41 @@ import * as prettier from 'prettier';
 import * as webpack from 'webpack';
 import { merge } from 'webpack-merge';
 
-async function compileSourceWithWebpack(entryPath: string, configOverrides: webpack.Configuration): Promise<string> {
-  const webpackConfig = merge(
-    {
-      context: __dirname,
-      entry: entryPath,
+import type { WebpackLoaderOptions } from './webpackLoader';
+import { shouldTransformSourceCode } from './webpackLoader';
 
-      mode: 'development',
+type CompileOptions = {
+  loaderOptions?: WebpackLoaderOptions;
+  webpackConfig?: webpack.Configuration;
+};
 
-      output: {
-        path: path.resolve(__dirname),
-        filename: 'bundle.js',
-      },
+async function compileSourceWithWebpack(entryPath: string, options: CompileOptions): Promise<string> {
+  const defaultConfig: webpack.Configuration = {
+    context: __dirname,
+    entry: entryPath,
 
-      module: {
-        rules: [
-          {
-            test: /\.(ts|tsx|txt)$/,
-            include: path.dirname(entryPath),
-            use: {
-              loader: path.resolve(__dirname, './index.ts'),
-            },
-          },
-        ],
-      },
+    mode: 'development',
+
+    output: {
+      path: path.resolve(__dirname),
+      filename: 'bundle.js',
     },
-    configOverrides,
-  );
+
+    module: {
+      rules: [
+        {
+          test: /\.(ts|tsx|txt)$/,
+          include: path.dirname(entryPath),
+          use: {
+            loader: path.resolve(__dirname, './index.ts'),
+            options: options.loaderOptions,
+          },
+        },
+      ],
+    },
+  };
+
+  const webpackConfig = merge(defaultConfig, options.webpackConfig || {});
   const compiler = webpack(webpackConfig);
 
   compiler.outputFileSystem = createFsFromVolume(new Volume());
@@ -82,7 +90,7 @@ function fixLineEndings(value: string) {
  *
  * See https://webpack.js.org/contribute/writing-a-loader/#testing.
  */
-function testFixture(fixtureName: string, configOverrides: webpack.Configuration = {}) {
+function testFixture(fixtureName: string, options: CompileOptions = {}) {
   it(`"${fixtureName}" fixture`, async () => {
     const fixturePath = path.resolve(__dirname, '..', '__fixtures__', fixtureName);
 
@@ -128,7 +136,7 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
 
     try {
       result = fixLineEndings(
-        prettier.format(await compileSourceWithWebpack(inputPath, configOverrides), {
+        prettier.format(await compileSourceWithWebpack(inputPath, options), {
           ...require('../../../prettier.config.js'),
           parser: 'typescript',
         }),
@@ -154,22 +162,75 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
   });
 }
 
+describe('shouldTransformSourceCode', () => {
+  it('handles defaults', () => {
+    expect(shouldTransformSourceCode(`import { makeStyles } from "@fluentui/react-make-styles"`, undefined)).toBe(true);
+    expect(shouldTransformSourceCode(`import { makeStyles } from "@fluentui/react-components"`, undefined)).toBe(true);
+
+    expect(shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, undefined)).toBe(false);
+  });
+
+  it('handles options', () => {
+    expect(
+      shouldTransformSourceCode(`import { makeStyles } from "@fluentui/react-make-styles"`, [
+        { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
+      ]),
+    ).toBe(true);
+    expect(
+      shouldTransformSourceCode(`import { createStyles } from "make-styles"`, [
+        { moduleSource: 'make-styles', importName: 'createStyles' },
+      ]),
+    ).toBe(true);
+
+    expect(
+      shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, [
+        { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
+      ]),
+    ).toBe(false);
+  });
+});
+
 describe('webpackLoader', () => {
   // Integration fixtures for base functionality, all scenarios are tested in "babel-make-styles"
   testFixture('object');
   testFixture('function');
 
+  // Integration fixtures for config functionality
+  testFixture('config-modules', {
+    loaderOptions: {
+      modules: [{ moduleSource: 'react-make-styles', importName: 'makeStyles' }],
+    },
+    webpackConfig: {
+      resolve: {
+        alias: {
+          'react-make-styles': '@fluentui/react-make-styles',
+        },
+      },
+    },
+  });
+
   // Asserts that aliases are resolved properly in Babel plugin
   testFixture('webpack-aliases', {
-    resolve: {
-      alias: {
-        'non-existing-color-module': path.resolve(__dirname, '..', '__fixtures__', 'webpack-aliases', 'color.ts'),
+    webpackConfig: {
+      resolve: {
+        alias: {
+          'non-existing-color-module': path.resolve(__dirname, '..', '__fixtures__', 'webpack-aliases', 'color.ts'),
+        },
       },
     },
   });
 
   // Asserts handling errors from Babel plugin
   testFixture('error-argument-count');
+  // Asserts errors in loader's config
+  testFixture('error-config', {
+    loaderOptions: {
+      babelOptions: {
+        // @ts-expect-error "plugins" should be an array, an object is passed to test schema
+        plugins: {},
+      },
+    },
+  });
   // Asserts errors in loader functionality
   testFixture('error-syntax');
 });

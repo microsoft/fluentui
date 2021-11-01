@@ -96,6 +96,9 @@ export interface ButtonProps
 
   /** A button can be sized. */
   size?: 'small' | 'medium';
+
+  /** A button can be elevated or flat. */
+  flat?: boolean;
 }
 
 export type ButtonStylesProps = Pick<
@@ -105,6 +108,7 @@ export type ButtonStylesProps = Pick<
   | 'tinted'
   | 'disabled'
   | 'disabledFocusable'
+  | 'flat'
   | 'circular'
   | 'size'
   | 'loading'
@@ -141,6 +145,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       loader,
       disabled,
       disabledFocusable,
+      flat,
       iconPosition,
       loading,
       text,
@@ -183,6 +188,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         disabled,
         tinted,
         disabledFocusable,
+        flat,
         circular,
         size,
         loading,
@@ -308,6 +314,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       'disabled',
       'tinted',
       'disabledFocusable',
+      'flat',
       'fluid',
       'icon',
       'iconOnly',
@@ -345,6 +352,7 @@ Button.propTypes = {
   circular: PropTypes.bool,
   disabled: PropTypes.bool,
   disabledFocusable: PropTypes.bool,
+  flat: PropTypes.bool,
   fluid: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
   iconOnly: PropTypes.bool,

@@ -1,25 +1,16 @@
 import * as React from 'react';
 import { Accordion } from './Accordion';
 import * as renderer from 'react-test-renderer';
-import { DescendantProvider } from '@fluentui/react-utilities';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { AccordionContext, AccordionDescendantContext } from './AccordionContext';
+import { AccordionContext } from './AccordionContext';
 
 describe('Accordion', () => {
   isConformant({
     Component: Accordion,
     displayName: 'Accordion',
-    helperComponents: [AccordionContext.Provider, DescendantProvider, AccordionDescendantContext.Provider],
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    helperComponents: [AccordionContext.Provider],
+    // Accordion does not have own styles
+    disabledTests: ['make-styles-overrides-win'],
   });
 
   /**

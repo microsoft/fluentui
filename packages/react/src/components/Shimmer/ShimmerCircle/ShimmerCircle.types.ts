@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme, IRawStyle } from '../../../Styling';
-import { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
+import type { IStyle, ITheme, IRawStyle } from '../../../Styling';
+import type { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
 
 /**
  * {@docCategory Shimmer}

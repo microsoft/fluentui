@@ -1,5 +1,6 @@
 import { GlobalSettings, warn } from '@fluentui/utilities';
-import { IRawStyle, IFontFace, fontFace, mergeStyles, Stylesheet } from '@fluentui/merge-styles';
+import { fontFace, mergeStyles, Stylesheet } from '@fluentui/merge-styles';
+import type { IRawStyle, IFontFace } from '@fluentui/merge-styles';
 
 export interface IIconSubset {
   fontFace?: IFontFace;

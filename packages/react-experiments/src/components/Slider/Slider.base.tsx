@@ -8,12 +8,12 @@ import {
   getRTLSafeKeyCode,
   warnMutuallyExclusive,
 } from '../../Utilities';
-import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarks } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '@fluentui/react/lib/Label';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { Async, EventGroup, FocusRects } from '@fluentui/utilities';
+import type { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarks } from './Slider.types';
 
 /* eslint-disable deprecation/deprecation */
 

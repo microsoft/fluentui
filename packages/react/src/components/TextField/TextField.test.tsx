@@ -5,13 +5,15 @@ import { mount, ReactWrapper } from 'enzyme';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import * as path from 'path';
-import { resetIds, setWarningCallback, IRefObject, resetControlledWarnings } from '../../Utilities';
+import { resetIds, setWarningCallback, resetControlledWarnings } from '../../Utilities';
 import { mountAttached, mockEvent, flushPromises } from '../../common/testUtilities';
 
 import { TextField } from './TextField';
-import { TextFieldBase, ITextFieldState } from './TextField.base';
-import { ITextFieldProps, ITextFieldStyles, ITextField } from './TextField.types';
+import { TextFieldBase } from './TextField.base';
 import { isConformant } from '../../common/isConformant';
+import type { IRefObject } from '../../Utilities';
+import type { ITextFieldState } from './TextField.base';
+import type { ITextFieldProps, ITextFieldStyles, ITextField } from './TextField.types';
 
 /**
  * The currently rendered ITextField.

@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { useTooltip } from './useTooltip';
-import { TooltipProps } from './Tooltip.types';
 import { renderTooltip } from './renderTooltip';
 import { useTooltipStyles } from './useTooltipStyles';
+import type { TooltipProps } from './Tooltip.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * A tooltip provides light weight contextual information on top of its target element.
- *
- * {@docCategory Tooltip}
  */
-export const Tooltip = React.forwardRef<HTMLElement, TooltipProps>((props, ref) => {
+export const Tooltip: ForwardRefComponent<TooltipProps> = React.forwardRef((props, ref) => {
   const state = useTooltip(props, ref);
 
   useTooltipStyles(state);

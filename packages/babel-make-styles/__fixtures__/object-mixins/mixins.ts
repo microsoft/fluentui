@@ -12,6 +12,6 @@ export const gridStyles = (gridGap: string): MakeStyles => ({
 });
 
 export const typography: Record<'text' | 'header', MakeStylesStyleRule<Theme>> = {
-  text: theme => ({ fontWeight: theme.global.type.fontWeights.regular }),
+  text: theme => ({ fontWeight: theme.fontWeightRegular }),
   header: { fontWeight: 'bold' },
 };

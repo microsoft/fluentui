@@ -1,7 +1,7 @@
-import { IKeytipProps } from '../../Keytip';
 import { KeytipTree } from './KeytipTree';
-import { IKeytipTreeNode } from './IKeytipTreeNode';
 import { KTP_SEPARATOR, KTP_FULL_PREFIX, KTP_LAYER_ID } from '../../utilities/keytips/KeytipConstants';
+import type { IKeytipProps } from '../../Keytip';
+import type { IKeytipTreeNode } from './IKeytipTreeNode';
 
 let keytipTree = new KeytipTree();
 
@@ -509,6 +509,74 @@ describe('KeytipTree', () => {
       keytipTree.addNode(cWithOverflow, uniqueIdC);
       keytipTree.currentKeytip = keytipTree.getNode('ktp-x-c');
       expect(keytipTree.isCurrentKeytipParent(keytipPropsB)).toEqual(true);
+    });
+  });
+
+  describe('tree updating with multiple parents and children', () => {
+    it('correctly tracks parents and children on add and removal', () => {
+      keytipTree.currentKeytip = keytipTree.root;
+      // Duplicate parents
+      const parent1 = createKeytipProps(['c']);
+      const parent2 = createKeytipProps(['c']);
+      keytipTree.addNode(parent1, '1');
+      keytipTree.addNode(parent2, '2');
+      // Verify parents are both there
+      expect(keytipTree.currentKeytip?.children).toHaveLength(2);
+
+      // Add children
+      const child1 = createKeytipProps(['c', 'a']);
+      const child2 = createKeytipProps(['c', 'b']);
+      keytipTree.addNode(child1, '3');
+      keytipTree.addNode(child2, '4');
+
+      // Verify both parents have 2 children
+      let parents = keytipTree.currentKeytip?.children;
+      expect(parents).toHaveLength(2);
+      let parentNodes = keytipTree.getNodes(parents!);
+      parentNodes.forEach(node => {
+        expect(node.children).toHaveLength(2);
+        expect(node.children[0]).toEqual('ktp-c-a');
+        expect(node.children[1]).toEqual('ktp-c-b');
+      });
+
+      // Update child1 with a new parent
+      const newParent = createKeytipProps(['x']);
+      keytipTree.addNode(newParent, '5');
+      const child1Updated = createKeytipProps(['x', 'a']);
+      keytipTree.updateNode(child1Updated, '3');
+      parents = keytipTree.currentKeytip?.children;
+      parentNodes = keytipTree.getNodes(parents!);
+      expect(parents).toHaveLength(3);
+      parentNodes.forEach(node => {
+        expect(node.children).toHaveLength(1);
+        if (node.id === 'ktp-c') {
+          expect(node.children[0]).toEqual('ktp-c-b');
+        }
+        if (node.id === 'ktp-x') {
+          expect(node.children[0]).toEqual('ktp-x-a');
+        }
+      });
+
+      // Remove one of the children and new parent, add back the original child
+      keytipTree.removeNode(child2, '4');
+      keytipTree.removeNode(newParent, '5');
+      keytipTree.updateNode(child1, '3');
+      parents = keytipTree.currentKeytip?.children;
+      parentNodes = keytipTree.getNodes(parents!);
+      parentNodes.forEach(node => {
+        expect(node.children).toHaveLength(1);
+        expect(node.children[0]).toEqual('ktp-c-a');
+      });
+
+      // Remove one of the parents
+      keytipTree.removeNode(parent1, '1');
+      parents = keytipTree.currentKeytip?.children;
+      expect(parents).toHaveLength(1);
+      parentNodes = keytipTree.getNodes(parents!);
+      parentNodes.forEach(node => {
+        expect(node.children).toHaveLength(1);
+        expect(node.children[0]).toEqual('ktp-c-a');
+      });
     });
   });
 });

@@ -1,5 +1,5 @@
-import { IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import { getGlobalClassNames } from '../../Styling';
+import type { IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 
 const GlobalClassNames = {
   root: 'ms-ChoiceFieldGroup',

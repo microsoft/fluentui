@@ -1,6 +1,6 @@
 import { hiddenContentStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
-import { IAnnouncedStyles, IAnnouncedStyleProps } from './Announced.types';
+import type { IStyleFunction } from '../../Utilities';
+import type { IAnnouncedStyles, IAnnouncedStyleProps } from './Announced.types';
 
 export const getStyles: IStyleFunction<IAnnouncedStyleProps, IAnnouncedStyles> = props => {
   return {

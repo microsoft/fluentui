@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { Callout } from './Callout';
-import { IFocusTrapCalloutProps } from './FocusTrapCallout.types';
 import { FocusTrapZone } from '../../FocusTrapZone';
+import type { IFocusTrapCalloutProps } from './FocusTrapCallout.types';
 
 /**
  * A special Callout that uses FocusTrapZone to trap focus

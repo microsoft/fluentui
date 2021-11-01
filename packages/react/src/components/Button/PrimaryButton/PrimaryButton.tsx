@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { customizable, nullRender } from '../../../Utilities';
 import { DefaultButton } from '../DefaultButton/DefaultButton';
-import { IButtonProps } from '../Button.types';
+import type { IButtonProps } from '../Button.types';
 
 /**
  * {@docCategory Button}

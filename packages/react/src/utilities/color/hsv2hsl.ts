@@ -1,5 +1,5 @@
-import { IHSL } from './interfaces';
 import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from './consts';
+import type { IHSL } from './interfaces';
 
 /** Converts HSV components to an HSL color. */
 export function hsv2hsl(h: number, s: number, v: number): IHSL {

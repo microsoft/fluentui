@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-import { ILayerHostProps } from './LayerHost.types';
 import { notifyHostChanged } from './Layer.notification';
+import type { ILayerHostProps } from './LayerHost.types';
 
 export const LayerHost: React.FunctionComponent<ILayerHostProps> = props => {
   const { id, className } = props;

@@ -1,4 +1,4 @@
-import { IPersonaCoinViewProps } from './PersonaCoin.types';
+import type { IPersonaCoinViewProps } from './PersonaCoin.types';
 
 export function hideInitialsWhenImageIsLoaded(props: IPersonaCoinViewProps): boolean {
   // When the picture is loaded we can remove the initials from the dom.

@@ -2,14 +2,18 @@ import { TestObject, IsConformantOptions } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
+import { getCallbackArguments } from './utils/getCallbackArguments';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import parseDocblock from './utils/parseDocblock';
+import { validateCallbackArguments } from './utils/validateCallbackArguments';
 
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
 import consoleUtil from './utils/consoleUtil';
+
+const CALLBACK_REGEX = /^on(?!Render[A-Z])[A-Z]/;
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -314,7 +318,7 @@ export const defaultTests: TestObject = {
       const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
 
       const invalidProps = propNames.filter(propName => {
-        if (!ignoreProps.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
           const words = propName.slice(2).match(/[A-Z][a-z]+/g);
           if (words) {
             // Make sure last word doesn't end with ed
@@ -329,6 +333,62 @@ export const defaultTests: TestObject = {
         expect(invalidProps).toEqual([]);
       } catch (e) {
         throw new Error(defaultErrorMessages['consistent-callback-names'](testInfo, invalidProps));
+      }
+    });
+  },
+
+  /** Ensures that components have consistent callback arguments (ev, data) */
+  'consistent-callback-args': (componentInfo, testInfo, tsProgram) => {
+    it('has consistent custom callback arguments (consistent-callback-args)', () => {
+      const { testOptions = {} } = testInfo;
+
+      const propNames = Object.keys(componentInfo.props);
+      const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
+
+      const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+          const propInfo = componentInfo.props[propName];
+
+          if (!propInfo.declarations) {
+            throw new Error(
+              [
+                `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
+              ].join(' '),
+            );
+          }
+
+          if (propInfo.declarations.length !== 1) {
+            throw new Error(
+              [
+                `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
+                `"react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
+              ].join(' '),
+            );
+          }
+
+          const rootFileName = propInfo.declarations[0].fileName;
+          const propsTypeName = propInfo.declarations[0].name;
+
+          try {
+            validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
+          } catch (err) {
+            console.log('err', err);
+
+            return { ...errors, [propName]: err };
+          }
+        }
+
+        return errors;
+      }, {});
+
+      try {
+        expect(invalidProps).toEqual({});
+      } catch (e) {
+        throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
       }
     });
   },

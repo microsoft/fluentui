@@ -1,11 +1,13 @@
 import * as Babel from '@babel/core';
-import babelPluginMakeStyles from '@fluentui/babel-make-styles';
+import babelPluginMakeStyles, { BabelPluginOptions } from '@fluentui/babel-make-styles';
 
 export type TransformOptions = {
   filename: string;
 
   inputSourceMap: Babel.TransformOptions['inputSourceMap'];
   enableSourceMaps: boolean;
+
+  pluginOptions: BabelPluginOptions;
 };
 
 export type TransformResult = {
@@ -35,7 +37,7 @@ export function transformSync(sourceCode: string, options: TransformOptions): Tr
     // Ignore all user's configs and apply only our plugin
     babelrc: false,
     configFile: false,
-    plugins: [[babelPluginMakeStyles]],
+    plugins: [[babelPluginMakeStyles, options.pluginOptions]],
 
     filename: options.filename,
 

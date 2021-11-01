@@ -1,14 +1,8 @@
-import {
-  createTheme,
-  ICustomizations,
-  IPalette,
-  Theme,
-  IPersonaCoinStyleProps,
-  IPersonaCoinStyles,
-} from '@fluentui/react';
+import { createTheme } from '@fluentui/react';
 import { DatePickerStyles } from './styles/DatePickerStyles';
 import { PeoplePickerItemStyles } from './styles/PeoplePickerStyles';
 import { addVariants } from '@fluentui/scheme-utilities';
+import type { ICustomizations, IPalette, Theme, IPersonaCoinStyleProps, IPersonaCoinStyles } from '@fluentui/react';
 
 const DarkDefaultPalette: Partial<IPalette> = {
   themeDarker: '#82c7ff',

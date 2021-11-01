@@ -23,7 +23,7 @@ import { FluentProvider, teamsLightTheme, Button } from '@fluentui/react-compone
 
 ReactDOM.render(
   <FluentProvider theme={teamsLightTheme}>
-    <Button primary>I am a button.</Button>
+    <Button appearance="primary">I am a button.</Button>
   </FluentProvider>,
   document.getElementById('root'),
 );

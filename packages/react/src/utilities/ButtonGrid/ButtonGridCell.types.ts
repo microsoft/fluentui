@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
-import { ITheme } from '../../Styling';
+import type { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
+import type { ITheme } from '../../Styling';
 
 export interface IButtonGridCellProps<T> {
   /**

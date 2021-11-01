@@ -24,7 +24,7 @@ A badge is an additional visual descriptor for UI elements. It can be used to de
 `Badge` can have several variations.
 
 - Appearance: `default`, `rounded` and `circular`
-- Size: `smallest`, `smaller`, `small`, `medium`, `large`, `larger`.
+- Size: `tiny`, `extra-small`, `small`, `medium`, `large`, `extra-large`.
 - Styles: `filled`, `outline`, `ghost`, `tint`, `inverted filled`
 
 ## PROPS
@@ -34,9 +34,9 @@ type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 
 type BadgeShape = 'rounded' | 'square' | 'circular';
 
-type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+type BadgeSize = 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 
-interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+type BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * A Badge can be sized.
    */
@@ -119,15 +119,9 @@ interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 A Presence Badge represents someone's availbility or status
 
 ```typescript
-/**
- * {@docCategory PresenceBadge}
- */
 export type PresenceBadgeStatus = 'busy' | 'oof' | 'away' | 'available' | 'offline';
 
-/**
- * {@docCategory PresenceBadge}
- */
-export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+export type PresenceBadgeProps = Omit<BadgeProps, 'shape' | 'appearance'> & {
   /**
    * A PresenceBadge can represent several status
    * @defaultvalue available
@@ -138,12 +132,9 @@ export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearan
    * @defaultvalue true
    */
   inOffice?: boolean;
-}
+};
 
-/**
- * {@docCategory Badge}
- */
-export interface PresenceBadgeState extends BadgeState {
+export type PresenceBadgeState = BadgeState & {
   /**
    * A PresenceBadge can represent several status
    * @defaultvalue available
@@ -154,7 +145,7 @@ export interface PresenceBadgeState extends BadgeState {
    * @defaultvalue true
    */
   inOffice: boolean;
-}
+};
 ```
 
 ### Counter Badge
@@ -162,55 +153,5 @@ export interface PresenceBadgeState extends BadgeState {
 A Counter Badge is a visual indicator for numeric values such as tallies and scores.
 
 ```typescript
-/**
- * {@docCategory CounterBadge}
- */
-export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
-
-/**
- * {@docCategory CounterBadge}
- */
-export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
-  /**
-   * A Badge can be circular or rounded
-   * @defaultvalue circular
-   */
-  shape?: Extract<BadgeShape, 'rounded' | 'circular'>;
-
-  /**
-   * A Badge can be filled, ghost
-   * @defaultvalue filled
-   */
-  appearance?: Extract<BadgeAppearance, 'filled' | 'ghost'>;
-
-  /**
-   * A Badge can have color variations
-   * @defaultvalue accent
-   */
-  color?: CounterBadgeColors;
-
-  /**
-   * Max number to be displayed
-   * @defaultvalue 99
-   */
-  overflowCount?: number;
-
-  /**
-   * Value diplayed by the Badge
-   * @defaultvalue 0
-   */
-  count?: number;
-
-  /**
-   * If the badge should be shown when count is 0
-   * @defaultvalue false
-   */
-  showZero?: boolean;
-
-  /**
-   * If a dot badge should be displayed
-   * @defaultvalue false
-   */
-  dot?: boolean;
-}
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & Partial<CounterBadgeCommons>;
 ```

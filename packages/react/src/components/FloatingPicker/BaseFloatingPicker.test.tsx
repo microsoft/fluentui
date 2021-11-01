@@ -2,10 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
-
-import { IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { BaseFloatingPicker } from './BaseFloatingPicker';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import type { IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [

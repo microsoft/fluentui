@@ -1,9 +1,10 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { createComponent, withSlots, getSlots } from '@fluentui/foundation-legacy';
-import { CollapsibleSection, ICollapsibleSectionProps } from '../../CollapsibleSection';
-import { IAccordionComponent, IAccordionProps, IAccordionSlots } from './Accordion.types';
+import { CollapsibleSection } from '../../CollapsibleSection';
 import { styles } from './Accordion.styles';
+import type { ICollapsibleSectionProps } from '../../CollapsibleSection';
+import type { IAccordionComponent, IAccordionProps, IAccordionSlots } from './Accordion.types';
 
 const AccordionItemType = ((<CollapsibleSection />) as React.ReactElement<ICollapsibleSectionProps>).type;
 

@@ -6,7 +6,7 @@ describe('useOnClickOutside', () => {
     jest.useRealTimers();
   });
 
-  const supportedEvents = ['click', 'touchstart', 'fuiframefocus'];
+  const supportedEvents = ['click', 'touchstart', 'contextmenu', 'fuiframefocus'];
 
   it.each(supportedEvents)('should add %s listener', event => {
     // Arrange
@@ -16,7 +16,7 @@ describe('useOnClickOutside', () => {
     renderHook(() => useOnClickOutside({ element, callback: jest.fn(), refs: [] }));
 
     // Assert
-    expect(element.addEventListener).toHaveBeenCalledTimes(3);
+    expect(element.addEventListener).toHaveBeenCalledTimes(4);
     expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
   });
 
@@ -29,7 +29,7 @@ describe('useOnClickOutside', () => {
     unmount();
 
     // Assert
-    expect(element.removeEventListener).toHaveBeenCalledTimes(3);
+    expect(element.removeEventListener).toHaveBeenCalledTimes(4);
     expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
   });
 

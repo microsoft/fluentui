@@ -1,8 +1,10 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarNavigationIcons, AnimationDirection } from '../Calendar/Calendar.types';
-import { ICalendarStrings, DayOfWeek, IDateFormatting } from '@fluentui/date-time-utilities';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import {
+import { AnimationDirection } from '../Calendar/Calendar.types';
+import { DayOfWeek } from '@fluentui/date-time-utilities';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { ICalendarNavigationIcons } from '../Calendar/Calendar.types';
+import type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type {
   ICalendarDayGridProps,
   ICalendarDayGridStyleProps,
   ICalendarDayGridStyles,

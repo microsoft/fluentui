@@ -1,4 +1,4 @@
-/**
+/*
  * @jest-environment node
  */
 

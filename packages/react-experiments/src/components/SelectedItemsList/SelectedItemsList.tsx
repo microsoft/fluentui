@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
+import type { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
 
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,

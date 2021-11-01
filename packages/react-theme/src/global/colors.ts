@@ -1,4 +1,4 @@
-import { GlobalSharedColors, ColorVariants, Greys, AlphaColors } from '../types';
+import type { GlobalSharedColors, ColorVariants, Greys, AlphaColors } from '../types';
 
 export const grey: Record<Greys, string> = {
   '0': '#000000',

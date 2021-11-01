@@ -3,9 +3,9 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
-import { IFocusTrapZoneProps } from './FocusTrapZone.types';
 import { safeMount } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
+import type { IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 // rAF does not exist in node - let's mock it
 window.requestAnimationFrame = (callback: FrameRequestCallback) => {

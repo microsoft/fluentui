@@ -1,4 +1,4 @@
-import { IPackageGroup } from '../interfaces/index';
+import type { IPackageGroup } from '../interfaces/index';
 
 const fabricGroup: IPackageGroup = {
   globalName: 'FluentUIReact',

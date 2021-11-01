@@ -458,6 +458,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Group One
                     </div>
