@@ -1,7 +1,8 @@
 import * as React from 'react';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, MenuButton } from '@fluentui/react-components';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import { MenuButton } from '@fluentui/react-button';
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 
 export const Appearance = () => (
