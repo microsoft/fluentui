@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-button: Removing use of enzyme in the converged package.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
