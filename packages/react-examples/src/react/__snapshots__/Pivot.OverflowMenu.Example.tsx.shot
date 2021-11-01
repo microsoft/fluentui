@@ -553,11 +553,9 @@ Array [
         }
     dir="ltr"
   >
-    <div
-      aria-label="Pivot Overflow Menu Example"
-      role="toolbar"
-    >
+    <div>
       <div
+        aria-label="Pivot Overflow Menu Example"
         className=
             ms-FocusZone
             ms-Pivot

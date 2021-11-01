@@ -12,7 +12,7 @@ import {
   white,
   black,
 } from '../global/colors';
-import type { GlobalSharedColors, ColorTokens, ColorPaletteTokens, ColorPaletteT, GlobalSharedColorsT } from '../types';
+import type { GlobalSharedColors, ColorTokens, ColorPaletteTokens } from '../types';
 
 export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForeground1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
@@ -123,9 +123,8 @@ export const generateColorTokens = (): ColorTokens => ({
 export const colorPaletteTokens: ColorPaletteTokens = (Object.keys(sharedColors) as Array<
   keyof GlobalSharedColors
 >).reduce((acc, sharedColor) => {
-  const color: GlobalSharedColorsT = (sharedColor.slice(0, 1).toUpperCase() +
-    sharedColor.slice(1)) as GlobalSharedColorsT;
-  const sharedColorTokens: Partial<Record<ColorPaletteT<GlobalSharedColorsT>, string>> = {
+  const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
+  const sharedColorTokens = {
     [`colorPalette${color}Background1`]: white,
     [`colorPalette${color}Background2`]: black,
     [`colorPalette${color}Background3`]: white,

@@ -22,15 +22,6 @@ import { arePromptsEnabled, getProjectConfig, printUserLogs, prompt, updateJestC
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
-/**
- * TASK:
- * 1. migrate to typescript path aliases - #18343 ✅
- * 2. migrate to use standard jest powered by TS path aliases - #18368 ✅
- * 3. bootstrap new storybook config - #18394 ✅
- * 4. collocate all package stories from `react-examples` - #18394 ✅
- * 5. update npm scripts (setup docs task to run api-extractor for local changes verification) - #18403 ✅
- */
-
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
 interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
@@ -88,10 +79,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   // 2. update Jest
   updateLocalJestConfig(tree, options);
   updateRootJestConfig(tree, options);
-
-  // move stories to package
-  moveStorybookFromReactExamples(tree, options, userLog);
-  removeMigratedPackageFromReactExamples(tree, options, userLog);
 
   // update package npm scripts
   updateNpmScripts(tree, options);
@@ -513,90 +500,6 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 }
 
-function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema, userLog: UserLog) {
-  const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
-  const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
-
-  const storyPaths: string[] = [];
-
-  visitNotIgnoredFiles(tree, pathToStoriesWithinReactExamples, treePath => {
-    if (treePath.includes('.stories.')) {
-      storyPaths.push(treePath);
-    }
-  });
-
-  if (storyPaths.length === 0) {
-    userLog.push({
-      type: 'warn',
-      message: 'No package stories found within react-examples. Skipping storybook stories migration...',
-    });
-
-    return tree;
-  }
-
-  storyPaths.forEach(originPath => {
-    const pathSegments = splitPathFragments(originPath);
-    const fileName = pathSegments[pathSegments.length - 1];
-    const componentName = fileName.replace(/\.stories\.tsx?$/, '');
-    let contents = tree.read(originPath)?.toString('utf-8');
-
-    if (contents) {
-      contents = contents.replace(options.name, './index');
-      contents =
-        contents +
-        '\n\n' +
-        stripIndents`
-        export default {
-            title: 'Components/${componentName}',
-            component: ${componentName},
-        }
-      `;
-
-      tree.write(joinPathFragments(options.projectConfig.root, 'src', fileName), contents);
-
-      return;
-    }
-
-    throw new Error(`Error moving ${fileName} from react-examples`);
-  });
-
-  return tree;
-}
-
-function getReactExamplesProjectConfig(tree: Tree, options: NormalizedSchema) {
-  return readProjectConfiguration(tree, `@${options.workspaceConfig.npmScope}/react-examples`);
-}
-
-function removeMigratedPackageFromReactExamples(tree: Tree, options: NormalizedSchema, userLog: UserLog) {
-  const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
-
-  const paths = {
-    packageStoriesWithinReactExamples: `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`,
-    packageJson: `${reactExamplesConfig.root}/package.json`,
-  };
-
-  if (!tree.exists(paths.packageStoriesWithinReactExamples)) {
-    return tree;
-  }
-
-  tree.delete(paths.packageStoriesWithinReactExamples);
-
-  userLog.push(
-    { type: 'warn', message: `NOTE: Deleting ${reactExamplesConfig.root}/src/${options.normalizedPkgName}` },
-    { type: 'warn', message: `      - Please update your moved stories to follow standard storybook format\n` },
-  );
-
-  updateJson(tree, paths.packageJson, (json: PackageJson) => {
-    if (json.dependencies) {
-      delete json.dependencies[options.name];
-    }
-
-    return json;
-  });
-
-  return tree;
-}
-
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = joinPathFragments(options.paths.configRoot, 'tests.js');
   const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
@@ -683,7 +586,7 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   if (shouldAddMakeStylesPlugin) {
     const babelMakeStylesProject = getProjectConfig(tree, { packageName: babelMakeStylesProjectName });
     const babelMakeStylesPkgJson: PackageJson = readJson(tree, babelMakeStylesProject.paths.packageJson);
-    pkgJson.devDependencies[babelMakeStylesProjectName] = `^${babelMakeStylesPkgJson.version}`;
+    pkgJson.devDependencies[babelMakeStylesProjectName] = `${babelMakeStylesPkgJson.version}`;
   } else {
     delete pkgJson.devDependencies[babelMakeStylesProjectName];
   }
@@ -692,8 +595,4 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   writeJson(tree, options.paths.packageJson, pkgJson);
 
   return tree;
-}
-
-function splitPathFragments(filePath: string) {
-  return filePath.split(path.sep);
 }

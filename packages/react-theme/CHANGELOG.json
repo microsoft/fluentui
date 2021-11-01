@@ -2,6 +2,27 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Wed, 27 Oct 2021 12:14:23 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "f81b28ceb3d5d5d52a4f7e7ce50f99aed9832109",
+            "comment": "fix(reat-theme): Remove template literal types for color palette"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-theme",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Oct 2021 10:37:22 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-beta.1",
       "version": "9.0.0-beta.1",
