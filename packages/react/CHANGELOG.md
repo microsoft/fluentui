@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 29 Oct 2021 07:29:08 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Nov 2021 07:32:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.38.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.38.0)
+
+Mon, 01 Nov 2021 07:32:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.6..@fluentui/react_v8.38.0)
+
+### Minor changes
+
+- Add alert tooltip to ColorPicker when invalid hex or RGBA values are entered" ([PR #20394](https://github.com/microsoft/fluentui/pull/20394) by sarah.higley@microsoft.com)
+- Calendar: move role="gridcell" to the td element and make it the focus target ([PR #20412](https://github.com/microsoft/fluentui/pull/20412) by sarah.higley@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.14 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.15 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/react-focus to v8.3.5 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/style-utilities to v8.4.0 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/common-styles to v1.0.20 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+
+### Patches
+
+- fix Combobox scroll into view method to not scroll + close combo menu ([PR #20414](https://github.com/microsoft/fluentui/pull/20414) by sarah.higley@microsoft.com)
 
 ## [8.37.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.6)
 

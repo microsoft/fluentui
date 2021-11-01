@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Mon, 01 Nov 2021 07:32:08 GMT",
+      "tag": "@fluentui/style-utilities_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "phkuo@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "0a61c7c27af1c93cbb5b3d70d7fce0d6f44c26d3",
+            "comment": "Add window.FabricConfig.legacyTheme, which actually calls loadTheme() which will invoke legacy theming"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Oct 2021 07:37:17 GMT",
       "tag": "@fluentui/style-utilities_v8.3.4",
       "version": "8.3.4",
