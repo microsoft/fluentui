@@ -17,9 +17,10 @@ const SwitchTemplate = ({ checked, disabled, label }) => `
 <fluent-switch
   ${checked ? 'checked' : ''}
   ${disabled ? 'disabled' : ''}
->${label}
+>
   <span slot="checked-message">On</span>
   <span slot="unchecked-message">Off</span>
+  <label for="direction-switch">Captions:</label>
 </fluent-switch>
 `;
 

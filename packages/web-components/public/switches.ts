@@ -1,24 +1,24 @@
-import { Direction } from '@microsoft/fast-web-utilities';
-import { baseLayerLuminance, direction, StandardLuminance } from '../src/index';
-
+import { fillColor, StandardLuminance, SwatchRGB } from '../src/index';
 export function toggleBgMode() {
-  const storyContainer = document.querySelector<HTMLElement>('.docs-story')!;
-  const bgChecked = this.checked;
+  const bgChecked = document.getElementById('luminance-switch')!.classList.contains('checked');
   if (bgChecked) {
-    baseLayerLuminance.setValueFor(storyContainer, StandardLuminance.DarkMode);
+    fillColor.setValueFor(
+      document.body,
+      SwatchRGB.create(StandardLuminance.LightMode, StandardLuminance.LightMode, StandardLuminance.LightMode),
+    );
   } else {
-    baseLayerLuminance.setValueFor(storyContainer, StandardLuminance.LightMode);
+    fillColor.setValueFor(
+      document.body,
+      SwatchRGB.create(StandardLuminance.DarkMode, StandardLuminance.DarkMode, StandardLuminance.DarkMode),
+    );
   }
 }
 
 export function toggleLtr() {
-  const storyContainer = document.querySelector<HTMLElement>('.docs-story')!;
-  const dirChecked = this.checked;
-  if (dirChecked) {
-    storyContainer.style.direction = 'rtl';
-    direction.setValueFor(storyContainer, Direction.rtl);
+  const ltrChecked = document.getElementById('direction-switch')!.classList.contains('checked');
+  if (ltrChecked) {
+    document.querySelector<HTMLElement>('.docs-story')!.setAttribute('style', 'direction:ltr;');
   } else {
-    storyContainer.style.direction = 'ltr';
-    direction.setValueFor(storyContainer, Direction.ltr);
+    document.querySelector<HTMLElement>('.docs-story')!.setAttribute('style', 'direction:rtl;');
   }
 }
