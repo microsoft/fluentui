@@ -264,6 +264,9 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
           forced-color-adjust: none;
           color: ${SystemColors.HighlightText};
         }
+        :host([disabled][selected]) .positioning-region .content-region {
+          color: ${SystemColors.GrayText};
+        }
         :host([selected])::after {
           background: ${SystemColors.HighlightText};
         }

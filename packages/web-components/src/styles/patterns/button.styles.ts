@@ -151,7 +151,7 @@ export const baseButtonStyles = (
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
         }
-        :host .control:hover,
+        :host(:not([disabled])) .control:hover,
         :host .control${interactivitySelector}:hover,
         .control${interactivitySelector}:hover {
           forced-color-adjust: none;

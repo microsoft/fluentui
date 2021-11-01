@@ -122,13 +122,13 @@ export const selectStyles = (context, definition) =>
       flex-direction: column;
       left: 0;
       max-height: calc(var(--max-height) - (${heightNumber} * 1px));
-      padding: calc(${designUnit} * 1px) 0;
+      padding: calc((${designUnit} - ${strokeWidth} ) * 1px) 0;
       overflow-y: auto;
       position: absolute;
       width: 100%;
       z-index: 1;
       margin: 1px 0;
-      border: 1px solid transparent;
+      border: calc(${strokeWidth} * 1px) solid transparent;
     }
 
     :host .listbox[hidden] {
@@ -229,7 +229,6 @@ export const selectStyles = (context, definition) =>
       :host {
         background: ${SystemColors.ButtonFace};
         color: ${SystemColors.ButtonText};
-        fill: currentcolor;
       }
       :host(:not([disabled]):not([open]):hover) {
         background: transparent;

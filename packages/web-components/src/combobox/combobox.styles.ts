@@ -45,11 +45,4 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
         outline: none;
     }
 `.withBehaviors(
-  appearanceBehavior('filled', selectFilledStyles(context, definition)),
-  forcedColorsStylesheetBehavior(
-    css`
-      .start, .end, .indicator, ::slotted(svg) {
-        fill: ${SystemColors.FieldText};
-      }
-    `
-));
+  appearanceBehavior('filled', selectFilledStyles(context, definition)));
