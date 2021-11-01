@@ -20,13 +20,13 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.37.6",
+    "@fluentui/react": "^8.38.0",
     "@fluentui/merge-styles": "^8.2.0",
-    "@fluentui/react-docsite-components": "^8.3.49",
-    "@fluentui/foundation-legacy": "^8.1.13",
+    "@fluentui/react-docsite-components": "^8.3.50",
+    "@fluentui/foundation-legacy": "^8.1.14",
     "@fluentui/scheme-utilities": "^8.2.4",
     "@fluentui/set-version": "^8.1.4",
-    "@fluentui/font-icons-mdl2": "^8.1.14",
+    "@fluentui/font-icons-mdl2": "^8.1.15",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-dom": "16.8.6",

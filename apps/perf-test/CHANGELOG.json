@@ -2,6 +2,27 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Mon, 01 Nov 2021 07:32:08 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react to v8.38.0",
+            "commit": "4094351f75ec358c549d02d044d599d0dda84481"
+          },
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.178",
+            "commit": "4094351f75ec358c549d02d044d599d0dda84481"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Oct 2021 07:29:08 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Nov 2021 07:32:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.4.0)
+
+Mon, 01 Nov 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.3.4..@fluentui/style-utilities_v8.4.0)
+
+### Minor changes
+
+- Add window.FabricConfig.legacyTheme, which actually calls loadTheme() which will invoke legacy theming ([PR #20248](https://github.com/microsoft/fluentui/pull/20248) by phkuo@microsoft.com)
 
 ## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.3.4)
 
