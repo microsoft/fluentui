@@ -1,7 +1,5 @@
 # `@fluentui/react-input`: Styling implementation notes
 
-**This is outdated after removal of the bookends from the core component. It will be updated as part of the PR implementing the spec changes.**
-
 Input has multiple size and appearance variants. These tables were created based on the design spec to assist with initial implementation and help ensure everything is handled.
 
 General abbreviations used:
@@ -13,11 +11,9 @@ General abbreviations used:
 ## Sizes
 
 - padding and gap values are from (theoretical) `spacing.horizontal` unless otherwise specified
-- bookend-related sizes are from separate bookends page (everything except L/R padding and spacing within inherits from default)
 - interpretation:
   - "spacing between icon before and content"/"spacing between content and icon after 1" => "spacing start/end to content"
-  - "spacing between icon after 1 and icon after 2" => "spacing within insideEnd" because we're not going to have two icon slots
-  - bookend "spacing between content and icon" => "spacing within bookend"
+  - "spacing between icon after 1 and icon after 2" => "spacing within contentBefore/After" because we're not going to have two icon slots
   - omitted "focus indicator" b/c that's handled elsewhere
 
 | Style         | All                 |
@@ -25,33 +21,29 @@ General abbreviations used:
 | v-align       | vertically centered |
 | border radius | medium              |
 
-| Style                         | medium           | small               | large     |
-| ----------------------------- | ---------------- | ------------------- | --------- |
-| height                        | 32px             | 24px                | 40px      |
-| left/right padding            | mNudge           | sNudge              | m         |
-| left/right padding in content | xxs              | "                   | sNudge    |
-| bookends left/right padding   | s                | sNudge              | m         |
-| content size                  | body1 (base.300) | caption1 (base.200) | base.400  |
-| "icon" size                   | 20Regular        | 16Regular           | 24Regular |
-| spacing start/end to content  | xxs              | "                   | sNudge    |
-| spacing within insideEnd      | xs               | "                   | "         |
-| spacing within bookend        | xs               | "                   | "         |
+| Style                              | medium           | small               | large     |
+| ---------------------------------- | ---------------- | ------------------- | --------- |
+| height                             | 32px             | 24px                | 40px      |
+| left/right padding                 | mNudge           | sNudge              | m         |
+| left/right padding in content      | xxs              | "                   | sNudge    |
+| content size                       | body1 (base.300) | caption1 (base.200) | base.400  |
+| "icon" size                        | 20Regular        | 16Regular           | 24Regular |
+| spacing start/end to content       | xxs              | "                   | sNudge    |
+| spacing within contentBefore/After | xs               | "                   | "         |
 
 ### Sizes application
 
-| Style                         | Slot                         | Notes                                                            |
-| ----------------------------- | ---------------------------- | ---------------------------------------------------------------- |
-| v-align                       | root, inputWrapper           | ???                                                              |
-| height                        | root                         | ? as minHeight or height ?                                       |
-| border radius                 | bookends, inputWrapper, root | set where borders or shadow are defined; don't use if underlined |
-| left/right padding            | inputWrapper                 | padding                                                          |
-| left/right padding in content | input                        | padding                                                          |
-| bookends left/right padding   | bookends                     | padding                                                          |
-| content size                  | root, input                  | fontSize; doesn't inherit to input                               |
-| "icon" size                   | n/a                          | no icons built in                                                |
-| spacing start/end to content  | inputWrapper                 | display: flex (also to grow input), flex gap                     |
-| spacing within insideEnd      | insideEnd                    | display: flex, flex gap                                          |
-| spacing within bookends       | bookends                     | display: flex, flex gap                                          |
+| Style                              | Slot                | Notes                                                            |
+| ---------------------------------- | ------------------- | ---------------------------------------------------------------- |
+| v-align                            | root                | ???                                                              |
+| height                             | root                | ? as minHeight or height ?                                       |
+| border radius                      | root                | set where borders or shadow are defined; don't use if underlined |
+| left/right padding                 | root                | padding                                                          |
+| left/right padding in content      | input               | padding                                                          |
+| content size                       | root, input         | fontSize; doesn't inherit to input                               |
+| "icon" size                        | n/a                 | no icons built in                                                |
+| spacing start/end to content       | root                | display: flex (also to grow input), flex gap                     |
+| spacing within contentBefore/After | contentBefore/After | display: flex, flex gap                                          |
 
 ## Appearance colors and strokes
 
@@ -88,26 +80,39 @@ General abbreviations used:
 
 ### Appearance application
 
-| Style                      | Slot                | Notes                                                    |
-| -------------------------- | ------------------- | -------------------------------------------------------- |
-| content color              | input               | other things have their own colors                       |
-| placeholder color          | input               | `::placeholder`                                          |
-| "icon" color               | insideStart/End     |                                                          |
-| shadow                     | root                | encompasses bookends; requires rounding root corners     |
-| background                 | inputWrapper, input | bookends have separate background; input doesn't inherit |
-| border                     | inputWrapper        |                                                          |
-| border hover               | TODO inputWrapper   | `:hover`                                                 |
-| border pressed             | TODO                |                                                          |
-| border focused             | TODO inputWrapper   | `:focus-within`                                          |
-| borderBottom               | inputWrapper        |                                                          |
-| borderBottom hover         | TODO inputWrapper   | `:hover`                                                 |
-| borderBottom pressed       | TODO                |                                                          |
-| borderBottom focused       | n/a                 | handled by focus indicator                               |
-| in focus indicator         | TODO                |                                                          |
-| in focus indicator pressed | TODO                |                                                          |
-| cursor                     | root, input         |                                                          |
+| Style                      | Slot                | Notes                              |
+| -------------------------- | ------------------- | ---------------------------------- |
+| content color              | input               | other things have their own colors |
+| placeholder color          | input               | `::placeholder`                    |
+| "icon" color               | contentBefore/After |                                    |
+| shadow                     | root                |                                    |
+| background                 | root, input         |                                    |
+| border                     | root                |                                    |
+| border hover               | TODO root           | `:hover`                           |
+| border pressed             | TODO                |                                    |
+| border focused             | TODO root           | `:focus-within`                    |
+| borderBottom               | root                |                                    |
+| borderBottom hover         | TODO root           | `:hover`                           |
+| borderBottom pressed       | TODO                |                                    |
+| borderBottom focused       | n/a                 | handled by focus indicator         |
+| in focus indicator         | TODO                |                                    |
+| in focus indicator pressed | TODO                |                                    |
+| cursor                     | root, input         |                                    |
 
-## Bookend appearance (TODO)
+## Bookends (deferred)
+
+Bookend implementation has been deferred and will likely be handled in a separate component, but leaving these for reference.
+
+### Sizes
+
+| Style              | medium              | small  | large |
+| ------------------ | ------------------- | ------ | ----- |
+| v-align            | vertically centered | "      | "     |
+| border radius      | medium              | "      | "     |
+| left/right padding | s                   | sNudge | m     |
+| spacing within     | xs                  | "      | "     |
+
+### Appearance
 
 | Style           | filled             | brand                    | transparent           |
 | --------------- | ------------------ | ------------------------ | --------------------- |
@@ -119,3 +124,8 @@ General abbreviations used:
 - Inner border ("border right") color is applied separately to before/after bookends.
 - Others are applied in obvious way to both bookends.
 - All borders are thin (1px).
+
+### Changes to default input appearance
+
+- Remove rounded corners from input
+- For filled inputs with shadow, change the shadow to also encompass the bookends
