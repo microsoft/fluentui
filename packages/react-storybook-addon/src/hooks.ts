@@ -20,6 +20,10 @@ export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => voi
   return useStorybookGlobals();
 }
 
-export function setGlobalTheme(themeId: string): void {
+/**
+ * Uses storybook addon API to update globals with the correc theme Id
+ * Can be used externally be decorators and other addon-docs containers
+ */
+export function setGlobalTheme(themeId: ThemeIds): void {
   addons.getChannel().emit('updateGlobals', { globals: { [THEME_ID]: themeId } });
 }
