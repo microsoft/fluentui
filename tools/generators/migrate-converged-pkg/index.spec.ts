@@ -12,6 +12,8 @@ import {
   updateProjectConfiguration,
   serializeJson,
   names,
+  visitNotIgnoredFiles,
+  writeJson,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -22,6 +24,8 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
 interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
   name: string;
 }
+
+type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
 
 jest.mock(
   'enquirer',
@@ -155,68 +159,147 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`tsconfig updates`, () => {
-    function getTsConfig(project: ReturnType<typeof readProjectConfiguration>) {
-      return readJson(tree, `${project.root}/tsconfig.json`);
-    }
     function getBaseTsConfig() {
       return readJson<TsConfig>(tree, `/tsconfig.base.json`);
     }
 
-    it('should update package local tsconfig.json', async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
+    function setup(config: { projectName: string }) {
+      const projectConfig = readProjectConfiguration(tree, config.projectName);
+      const paths = {
+        main: `${projectConfig.root}/tsconfig.json`,
+        lib: `${projectConfig.root}/tsconfig.lib.json`,
+        test: `${projectConfig.root}/tsconfig.spec.json`,
+      };
 
-      let tsConfig = getTsConfig(projectConfig);
+      const getTsConfig = {
+        main: () => readJson<TsConfig>(tree, paths.main),
+        lib: () => readJson<TsConfig>(tree, paths.lib),
+        test: () => readJson<TsConfig>(tree, paths.test),
+      };
 
-      expect(tsConfig).toEqual({
+      return { projectConfig, paths, getTsConfig };
+    }
+
+    it(`should setup TS solution config files`, async () => {
+      const { paths, getTsConfig, projectConfig } = setup({ projectName: options.name });
+      addConformanceSetup(tree, projectConfig);
+
+      let tsConfigMain = getTsConfig.main();
+
+      expect(tsConfigMain).toEqual({
         compilerOptions: {
           baseUrl: '.',
           typeRoots: ['../../node_modules/@types', '../../typings'],
         },
       });
+      expect(tree.exists(paths.lib)).toBeFalsy();
+      expect(tree.exists(paths.test)).toBeFalsy();
 
       await generator(tree, options);
 
-      tsConfig = getTsConfig(projectConfig);
+      tsConfigMain = getTsConfig.main();
+      const tsConfigLib = getTsConfig.lib();
+      const tsConfigTest = getTsConfig.test();
 
-      expect(tsConfig).toEqual({
+      expect(tsConfigMain).toEqual({
+        extends: '../../tsconfig.base.json',
+        compilerOptions: {
+          importHelpers: true,
+          isolatedModules: true,
+          jsx: 'react',
+          noEmit: true,
+          noUnusedLocals: true,
+          target: 'ES2019',
+          preserveConstEnums: true,
+        },
+        files: [],
+        include: [],
+        references: [
+          {
+            path: './tsconfig.lib.json',
+          },
+          {
+            path: './tsconfig.spec.json',
+          },
+        ],
+      });
+
+      expect(tsConfigLib).toEqual({
+        extends: './tsconfig.json',
         compilerOptions: {
           declaration: true,
-          isolatedModules: true,
-          experimentalDecorators: true,
-          importHelpers: true,
-          jsx: 'react',
           lib: ['ES2019', 'dom'],
-          module: 'CommonJS',
-          noUnusedLocals: true,
+          noEmit: false,
           outDir: 'dist',
-          preserveConstEnums: true,
-          target: 'ES2019',
-          types: ['jest', 'static-assets', 'inline-style-expand-shorthand'],
+          types: ['static-assets', 'inline-style-expand-shorthand'],
         },
-        extends: '../../tsconfig.base.json',
-        include: ['src'],
+        exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
+        include: ['./src/**/*.ts', './src/**/*.tsx'],
+      });
+      expect(tsConfigTest).toEqual({
+        extends: './tsconfig.json',
+        compilerOptions: {
+          module: 'CommonJS',
+          outDir: 'dist',
+          types: ['jest', 'node', 'inline-style-expand-shorthand'],
+        },
+        include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
       });
     });
 
-    it('should update compilerOptions.types definition for local tsconfig.json', async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
+    it(`should setup TS solution config files for JS project`, async () => {
+      const { getTsConfig, projectConfig } = setup({ projectName: options.name });
+      const sourceRoot = `${projectConfig.root}/src`;
+      addConformanceSetup(tree, projectConfig);
 
-      updateJson(tree, `${projectConfig.root}/tsconfig.json`, (json: TsConfig) => {
-        json.compilerOptions.types = ['jest', '@testing-library/jest-dom', 'foo-bar'];
-        return json;
+      visitNotIgnoredFiles(tree, sourceRoot, treePath => {
+        const jsPath = treePath.replace(/ts(x)?$/, 'js$1');
+        tree.rename(treePath, jsPath);
       });
 
       await generator(tree, options);
 
-      const tsConfig = getTsConfig(projectConfig);
+      const tsConfigMain = getTsConfig.main();
+      const tsConfigLib = getTsConfig.lib();
+      const tsConfigTest = getTsConfig.test();
 
-      expect(tsConfig.compilerOptions.types).toEqual([
-        'jest',
-        'static-assets',
-        'inline-style-expand-shorthand',
-        '@testing-library/jest-dom',
-        'foo-bar',
+      expect(tsConfigMain.compilerOptions).toEqual(
+        expect.objectContaining({
+          allowJs: true,
+          checkJs: true,
+        }),
+      );
+      expect(tsConfigMain.compilerOptions.preserveConstEnums).toBeUndefined();
+      expect(tsConfigLib.include).toEqual(['./src/**/*.js', './src/**/*.jsx']);
+      expect(tsConfigLib.exclude).toEqual(['**/*.spec.js', '**/*.spec.jsx', '**/*.test.js', '**/*.test.jsx']);
+      expect(tsConfigTest.include).toEqual([
+        '**/*.spec.js',
+        '**/*.spec.jsx',
+        '**/*.test.js',
+        '**/*.test.jsx',
+        '**/*.d.ts',
       ]);
+    });
+
+    describe('setup additional global types', () => {
+      it(`should setup '@testing-library/jest-dom'`, async () => {
+        const { getTsConfig, projectConfig } = setup({ projectName: options.name });
+        const jestSetupFilePath = `${projectConfig.root}/config/tests.js`;
+
+        append(
+          tree,
+          jestSetupFilePath,
+          stripIndents`
+        \n
+        require('@testing-library/jest-dom');
+        `,
+        );
+
+        await generator(tree, options);
+
+        const tsConfigTest = getTsConfig.test();
+        expect(tsConfigTest.compilerOptions.types).toContain('@testing-library/jest-dom');
+      });
     });
 
     // eslint-disable-next-line @fluentui/max-len
@@ -255,7 +338,7 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`jest config updates`, () => {
-    function getProjectJestConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+    function getProjectJestConfig(projectConfig: ReadProjectConfiguration) {
       return tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8');
     }
 
@@ -291,7 +374,7 @@ describe('migrate-converged-pkg generator', () => {
         preset: '../../jest.preset.js',
         globals: {
         'ts-jest': {
-        tsConfig: '<rootDir>/tsconfig.json',
+        tsConfig: '<rootDir>/tsconfig.spec.json',
         diagnostics: false,
         },
         },
@@ -404,6 +487,12 @@ describe('migrate-converged-pkg generator', () => {
       const paths = {
         storyOne: `${projectConfig.root}/src/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
         storyTwo: `${projectConfig.root}/src/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
+        tsconfig: {
+          storybook: `${projectStorybookConfigPath}/tsconfig.json`,
+          main: `${projectConfig.root}/tsconfig.json`,
+          lib: `${projectConfig.root}/tsconfig.lib.json`,
+          test: `${projectConfig.root}/tsconfig.spec.json`,
+        },
       };
 
       if (config.createDummyStories) {
@@ -425,6 +514,7 @@ describe('migrate-converged-pkg generator', () => {
       }
 
       return {
+        paths,
         projectConfig,
         workspaceConfig,
         normalizedProjectName,
@@ -432,34 +522,36 @@ describe('migrate-converged-pkg generator', () => {
       };
     }
     it(`should setup package storybook when needed`, async () => {
-      const { projectStorybookConfigPath, projectConfig } = setup({ createDummyStories: true });
-
-      console.error({ projectConfig });
+      const { projectStorybookConfigPath, paths, projectConfig } = setup({ createDummyStories: true });
+      addConformanceSetup(tree, projectConfig);
 
       expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
 
       await generator(tree, options);
 
       expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
-      expect(readJson(tree, `${projectStorybookConfigPath}/tsconfig.json`)).toMatchInlineSnapshot(`
-        Object {
-          "compilerOptions": Object {
-            "allowJs": true,
-            "checkJs": true,
+
+      expect(readJson(tree, paths.tsconfig.storybook)).toEqual({
+        extends: '../tsconfig.json',
+        compilerOptions: {
+          allowJs: true,
+          checkJs: true,
+          outDir: '',
+          types: ['static-assets', 'inline-style-expand-shorthand', 'storybook__addons'],
+        },
+        exclude: ['../src/common/**', '../**/*.spec.ts', '../**/*.spec.tsx', '../**/*.test.ts', '../**/*.test.tsx'],
+        include: ['../src/**/*', '*.js'],
+      });
+      expect(readJson<TsConfig>(tree, paths.tsconfig.lib).exclude).toEqual(
+        expect.arrayContaining(['**/*.stories.ts', '**/*.stories.tsx']),
+      );
+      expect(readJson<TsConfig>(tree, paths.tsconfig.main).references).toEqual(
+        expect.arrayContaining([
+          {
+            path: './.storybook/tsconfig.json',
           },
-          "exclude": Array [
-            "../**/*.test.ts",
-            "../**/*.test.js",
-            "../**/*.test.tsx",
-            "../**/*.test.jsx",
-          ],
-          "extends": "../tsconfig.json",
-          "include": Array [
-            "../src/**/*",
-            "*.js",
-          ],
-        }
-      `);
+        ]),
+      );
 
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "const rootMain = require('../../../.storybook/main');
@@ -487,14 +579,10 @@ describe('migrate-converged-pkg generator', () => {
         /** @type {typeof rootPreview.parameters} */
         export const parameters = { ...rootPreview.parameters };"
       `);
-
-      expect(readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`).compilerOptions.types).toContain(
-        'storybook__addons',
-      );
     });
 
     it(`should remove unused existing storybook setup`, async () => {
-      const { projectStorybookConfigPath, projectConfig } = setup({ createDummyStories: false });
+      const { projectStorybookConfigPath, projectConfig, paths } = setup({ createDummyStories: false });
 
       const mainJsFilePath = `${projectStorybookConfigPath}/main.js`;
       const packageJsonPath = `${projectConfig.root}/package.json`;
@@ -503,6 +591,7 @@ describe('migrate-converged-pkg generator', () => {
 
       tree.write(mainJsFilePath, 'module.exports = {}');
 
+      // artificially add storybook scripts
       updateJson(tree, packageJsonPath, (json: PackageJson) => {
         json.scripts = json.scripts || {};
 
@@ -512,6 +601,23 @@ describe('migrate-converged-pkg generator', () => {
           'build-storybook': 'echo "hello"',
         });
         return json;
+      });
+
+      // artificially add storybook to project references
+      updateJson(tree, paths.tsconfig.main, (json: TsConfig) => {
+        json.references = json.references || [];
+        json.references.push({ path: './.storybook/tsconfig.json' });
+        return json;
+      });
+      // artificially add stories globs to exclude
+      writeJson<TsConfig>(tree, paths.tsconfig.lib, {
+        compilerOptions: {},
+        exclude: ['../src/common/**', '**/*.test.ts', '**/*.test.tsx', '**/*.stories.ts', '**/*.stories.tsx'],
+      });
+      // artificially create spec ts config
+      writeJson<TsConfig>(tree, paths.tsconfig.test, {
+        compilerOptions: {},
+        include: ['**/*.test.ts', '**/*.test.tsx'],
       });
 
       pkgJson = readJson(tree, packageJsonPath);
@@ -524,9 +630,88 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.exists(mainJsFilePath)).toBeFalsy();
       expect(Object.keys(pkgJson.scripts || [])).not.toContain(['start', 'storybook', 'build-storybook']);
       expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
-      expect(readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`).compilerOptions.types).not.toContain(
-        'storybook__addons',
+      expect(readJson<TsConfig>(tree, paths.tsconfig.lib).exclude).not.toEqual(
+        expect.arrayContaining(['**/*.stories.ts', '**/*.stories.tsx']),
       );
+      expect(readJson<TsConfig>(tree, paths.tsconfig.main).references).not.toEqual(
+        expect.arrayContaining([
+          {
+            path: './.storybook/tsconfig.json',
+          },
+        ]),
+      );
+    });
+  });
+
+  describe(`e2e config`, () => {
+    function setup(config: { projectName: string }) {
+      const projectConfig = readProjectConfiguration(tree, config.projectName);
+      const paths = {
+        e2eRoot: `${projectConfig.root}/e2e`,
+        packageJson: `${projectConfig.root}/package.json`,
+        tsconfig: {
+          main: `${projectConfig.root}/tsconfig.json`,
+          lib: `${projectConfig.root}/tsconfig.lib.json`,
+          test: `${projectConfig.root}/tsconfig.spec.json`,
+          e2e: `${projectConfig.root}/e2e/tsconfig.json`,
+        },
+      };
+
+      function createE2eSetup() {
+        writeJson<TsConfig>(tree, paths.tsconfig.e2e, {
+          extends: '../../tsconfig.base.json',
+          compilerOptions: {},
+        });
+        tree.write(
+          `${paths.e2eRoot}/index.e2e.ts`,
+          stripIndents`
+         describe('E2E test', () => {
+           before(() => {
+            cy.visitStorybook();
+           });
+         });
+        `,
+        );
+
+        return tree;
+      }
+
+      return { projectConfig, paths, createE2eSetup };
+    }
+    it(`should do nothing if e2e setup is missing`, async () => {
+      const { paths } = setup({ projectName: options.name });
+
+      await generator(tree, { name: options.name });
+
+      expect(tree.exists(paths.tsconfig.e2e)).toBeFalsy();
+    });
+
+    it(`should setup e2e if present`, async () => {
+      const { paths, createE2eSetup } = setup({ projectName: options.name });
+
+      createE2eSetup();
+
+      expect(tree.exists(paths.tsconfig.e2e)).toBeTruthy();
+
+      await generator(tree, { name: options.name });
+
+      // // TS Updates
+      const e2eTsConfig: TsConfig = readJson(tree, paths.tsconfig.e2e);
+      const mainTsConfig: TsConfig = readJson(tree, paths.tsconfig.main);
+
+      expect(e2eTsConfig).toEqual({
+        extends: '../tsconfig.json',
+        compilerOptions: {
+          lib: ['ES2019', 'dom'],
+          types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
+        },
+        include: ['**/*.ts'],
+      });
+      expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
+
+      // package.json updates
+      const packageJson: PackageJson = readJson(tree, paths.packageJson);
+      expect(packageJson.scripts).toEqual(expect.objectContaining({ e2e: 'e2e' }));
     });
   });
 
@@ -557,7 +742,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-dummy/src && yarn docs`,
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-dummy/src && yarn docs`,
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
@@ -566,6 +751,7 @@ describe('migrate-converged-pkg generator', () => {
         start: 'yarn storybook',
         storybook: 'start-storybook',
         test: 'jest',
+        'type-check': 'tsc -b tsconfig.json',
       });
     });
 
@@ -592,7 +778,7 @@ describe('migrate-converged-pkg generator', () => {
 
   describe(`npm config setup`, () => {
     it(`should update .npmignore config`, async () => {
-      function getNpmIgnoreConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+      function getNpmIgnoreConfig(projectConfig: ReadProjectConfiguration) {
         return tree.read(`${projectConfig.root}/.npmignore`)?.toString('utf-8');
       }
       const projectConfig = readProjectConfiguration(tree, options.name);
@@ -680,11 +866,11 @@ describe('migrate-converged-pkg generator', () => {
       return `@${workspaceConfig.npmScope}/${pkgName}`;
     };
 
-    function getBabelConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+    function getBabelConfig(projectConfig: ReadProjectConfiguration) {
       const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
       return readJson(tree, babelConfigPath);
     }
-    function getPackageJson(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+    function getPackageJson(projectConfig: ReadProjectConfiguration) {
       const packageJsonPath = `${projectConfig.root}/package.json`;
       return readJson<PackageJson>(tree, packageJsonPath);
     }
@@ -888,7 +1074,7 @@ describe('migrate-converged-pkg generator', () => {
         acc[projectName] = readProjectConfiguration(tree, projectName);
 
         return acc;
-      }, {} as Record<typeof projects[number], ReturnType<typeof readProjectConfiguration>>);
+      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
 
       expect(configs['@proj/react-foo'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-bar'].sourceRoot).toBeDefined();
@@ -909,7 +1095,7 @@ function setupDummyPackage(
       dependencies: Record<string, string>;
       tsConfig: TsConfig;
       babelConfig: Partial<{ presets: string[]; plugins: string[] }>;
-      projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
+      projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
@@ -1023,6 +1209,18 @@ function setupDummyPackage(
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
   tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
+  tree.write(`${paths.root}/src/index.ts`, `export const greet = 'hello' `);
+  tree.write(
+    `${paths.root}/src/index.test.ts`,
+    `
+    import {greet} from './index';
+    describe('test me', () => {
+      it('should greet', () => {
+        expect(greet).toBe('hello');
+      });
+    });
+  `,
+  );
 
   addProjectConfiguration(tree, pkgName, {
     root: paths.root,
@@ -1030,6 +1228,35 @@ function setupDummyPackage(
     targets: {},
     ...options.projectConfiguration,
   });
+
+  return tree;
+}
+
+function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
+  tree.write(
+    `${projectConfig.root}/src/common/isConformant.ts`,
+    stripIndents`
+          import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
+
+          export function isConformant<TProps = {}>(
+            testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string }
+          ){}
+        `,
+  );
+}
+
+function append(tree: Tree, filePath: string, content: string) {
+  if (!tree.exists(filePath)) {
+    throw new Error(`${filePath} doesn't exists`);
+  }
+
+  tree.write(
+    filePath,
+    stripIndents`
+        ${tree.read(filePath)?.toString('utf-8')}\n
+        ${content};
+        `,
+  );
 
   return tree;
 }

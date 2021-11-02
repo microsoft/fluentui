@@ -87,6 +87,8 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   // setup storybook
   setupStorybook(tree, options);
 
+  setupE2E(tree, options);
+
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
 
@@ -105,23 +107,90 @@ const templates = {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: '@fluentui/scripts/api-extractor/api-extractor.common.json',
   },
-  tsconfig: {
-    extends: '../../tsconfig.base.json',
-    include: ['src'],
-    compilerOptions: {
-      target: 'ES2019',
-      isolatedModules: true,
-      module: 'CommonJS',
-      lib: ['ES2019', 'dom'],
-      outDir: 'dist',
-      jsx: 'react',
-      declaration: true,
-      experimentalDecorators: true,
-      importHelpers: true,
-      noUnusedLocals: true,
-      preserveConstEnums: true,
-      types: ['jest', 'static-assets', 'inline-style-expand-shorthand'],
-    } as TsConfig['compilerOptions'],
+  tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
+    return {
+      main: () => {
+        const tsConfig = {
+          extends: '../../tsconfig.base.json',
+          compilerOptions: {
+            target: 'ES2019',
+            // by default we gonna use tsc for type checking only
+            noEmit: true,
+            isolatedModules: true,
+            importHelpers: true,
+            jsx: 'react',
+            noUnusedLocals: true,
+            preserveConstEnums: true,
+          } as TsConfig['compilerOptions'],
+          include: [],
+          files: [],
+          references: [
+            {
+              path: './tsconfig.lib.json',
+            },
+            {
+              path: './tsconfig.spec.json',
+            },
+          ],
+        };
+
+        if (options.js) {
+          tsConfig.compilerOptions.allowJs = true;
+          tsConfig.compilerOptions.checkJs = true;
+          delete tsConfig.compilerOptions.preserveConstEnums;
+        }
+
+        return tsConfig;
+      },
+      lib: () => {
+        const tsConfig = {
+          extends: './tsconfig.json',
+          compilerOptions: {
+            noEmit: false,
+            lib: ['ES2019'],
+            outDir: 'dist',
+            declaration: true,
+            types: ['static-assets'],
+          } as TsConfig['compilerOptions'],
+          exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
+          include: ['./src/**/*.ts', './src/**/*.tsx'],
+        };
+
+        if (options.platform === 'node') {
+          tsConfig.compilerOptions.module = 'CommonJS';
+        }
+        if (options.platform === 'web') {
+          tsConfig.compilerOptions.lib?.push('dom');
+          tsConfig.compilerOptions.types?.push('inline-style-expand-shorthand');
+        }
+        if (options.hasConformance) {
+          tsConfig.exclude.unshift('./src/common/**');
+        }
+        if (options.js) {
+          tsConfig.include = globsToJs(tsConfig.include);
+          tsConfig.exclude = globsToJs(tsConfig.exclude);
+        }
+
+        return tsConfig;
+      },
+      test: () => {
+        const tsConfig = {
+          extends: './tsconfig.json',
+          compilerOptions: {
+            module: 'CommonJS',
+            outDir: 'dist',
+            types: ['jest', 'node', 'inline-style-expand-shorthand'],
+          } as TsConfig['compilerOptions'],
+          include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
+        };
+
+        if (options.js) {
+          tsConfig.include = globsToJs(tsConfig.include);
+        }
+
+        return tsConfig;
+      },
+    };
   },
   babelConfig: (options: { extraPlugins: Array<string> }) => {
     return {
@@ -142,7 +211,7 @@ const templates = {
         preset: '../../jest.preset.js',
         globals: {
           'ts-jest': {
-            tsConfig: '<rootDir>/tsconfig.json',
+            tsConfig: '<rootDir>/tsconfig.spec.json',
             diagnostics: false,
           },
         },
@@ -183,11 +252,24 @@ const templates = {
     tsconfig: {
       extends: '../tsconfig.json',
       compilerOptions: {
+        outDir: '',
         allowJs: true,
         checkJs: true,
       },
-      exclude: ['../**/*.test.ts', '../**/*.test.js', '../**/*.test.tsx', '../**/*.test.jsx'],
+      exclude: [
+        /* added programmatically */
+      ],
       include: ['../src/**/*', '*.js'],
+    },
+  },
+  e2e: {
+    tsconfig: {
+      extends: '../tsconfig.json',
+      compilerOptions: {
+        types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
+        lib: ['ES2019', 'dom'],
+      },
+      include: ['**/*.ts'],
     },
   },
   npmIgnoreConfig:
@@ -374,6 +456,21 @@ function getPackageType(tree: Tree, options: NormalizedSchema) {
   throw new Error('Unable to determine type of package (web or node)');
 }
 
+function isJs(tree: Tree, options: NormalizedSchema) {
+  const jsSourceFiles: string[] = [];
+  visitNotIgnoredFiles(tree, options.paths.sourceRoot, treePath => {
+    if (treePath.includes('.js') || treePath.includes('.jsx')) {
+      jsSourceFiles.push(treePath);
+    }
+  });
+
+  return jsSourceFiles.length > 0;
+}
+
+function hasConformanceSetup(tree: Tree, options: NormalizedSchema) {
+  return tree.exists(options.paths.conformanceSetup);
+}
+
 function uniqueArray<T extends unknown>(value: T[]) {
   return Array.from(new Set(value));
 }
@@ -403,10 +500,11 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   /* eslint-disable @fluentui/max-len */
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
+    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
     storybook: 'start-storybook',
     start: 'yarn storybook',
     test: 'jest',
+    'type-check': 'tsc -b tsconfig.json',
   };
   /* eslint-enable @fluentui/max-len */
 
@@ -431,18 +529,61 @@ function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema)
 }
 
 function setupStorybook(tree: Tree, options: NormalizedSchema) {
+  function transformRelativePath(_path: string) {
+    return joinPathFragments('..', _path);
+  }
+
   const sbAction = shouldSetupStorybook(tree, options);
+
+  const template = {
+    projectReferences: { path: './.storybook/tsconfig.json' },
+    exclude: ['**/*.stories.ts', '**/*.stories.tsx'],
+  };
+
+  const js = isJs(tree, options);
 
   if (sbAction === 'init') {
     tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
     tree.write(options.paths.storybook.main, templates.storybook.main);
     tree.write(options.paths.storybook.preview, templates.storybook.preview);
 
-    updateJson(tree, options.paths.tsconfig, (json: TsConfig) => {
+    const libTsConfig: TsConfig = readJson(tree, options.paths.tsconfig.lib);
+
+    updateJson(tree, options.paths.storybook.tsconfig, (json: TsConfig) => {
       json.compilerOptions.types = json.compilerOptions.types || [];
 
-      json.compilerOptions.types.push('storybook__addons');
+      json.compilerOptions.types.push(...(libTsConfig.compilerOptions.types || []), 'storybook__addons');
       json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
+
+      json.exclude = json.exclude || [];
+      const transformedExcludePaths = (libTsConfig.exclude || []).map(excludePath =>
+        transformRelativePath(excludePath),
+      );
+      json.exclude.push(...transformedExcludePaths);
+
+      return json;
+    });
+
+    // update main ts with project references
+    updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
+      json.references = json.references || [];
+
+      json.references.push(template.projectReferences);
+
+      return json;
+    });
+
+    // update lib ts with new exclude globs
+    updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
+      json.exclude = json.exclude || [];
+
+      json.exclude.push(...template.exclude);
+
+      if (js) {
+        json.exclude = globsToJs(json.exclude);
+      }
+
+      json.exclude = uniqueArray(json.exclude);
 
       return json;
     });
@@ -460,12 +601,21 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
       return json;
     });
 
-    updateJson(tree, options.paths.tsconfig, (json: TsConfig) => {
-      json.compilerOptions.types = json.compilerOptions.types || [];
+    // update main ts with project references
+    updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
+      json.references = json.references || [];
 
-      json.compilerOptions.types = json.compilerOptions.types.filter(
-        typeReference => typeReference !== 'storybook__addons',
-      );
+      json.references = json.references.filter(projectRef => projectRef.path !== template.projectReferences.path);
+
+      return json;
+    });
+
+    // update lib ts with new exclude globs
+    updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
+      const excludeGlobs = js ? globsToJs(template.exclude) : template.exclude;
+      json.exclude = (json.exclude || []).filter(excludeGlob => {
+        return !excludeGlobs.includes(excludeGlob);
+      });
 
       return json;
     });
@@ -500,8 +650,42 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 }
 
+function setupE2E(tree: Tree, options: NormalizedSchema) {
+  if (!shouldSetupE2E(tree, options)) {
+    return tree;
+  }
+
+  tree.rename(joinPathFragments(options.paths.e2e.rootFolder, 'tsconfig.json'), options.paths.e2e.tsconfig);
+
+  writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
+
+  updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
+    json.references?.push({
+      path: `./${path.basename(options.paths.e2e.rootFolder)}/${path.basename(options.paths.e2e.tsconfig)}`,
+    });
+
+    return json;
+  });
+
+  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    json.scripts = json.scripts ?? {};
+    json.scripts.e2e = 'e2e';
+
+    return json;
+  });
+
+  return tree;
+}
+
+function shouldSetupE2E(tree: Tree, options: NormalizedSchema) {
+  return (
+    tree.exists(joinPathFragments(options.paths.e2e.rootFolder, 'tsconfig.json')) ||
+    tree.exists(options.paths.e2e.tsconfig)
+  );
+}
+
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
-  const jestSetupFilePath = joinPathFragments(options.paths.configRoot, 'tests.js');
+  const jestSetupFilePath = options.paths.jestSetupFile;
   const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
 
   const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
@@ -531,16 +715,50 @@ function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
-  const newConfig: TsConfig = { ...templates.tsconfig };
-  const oldConfig = readJson<TsConfig>(tree, options.paths.tsconfig);
+  createTsSolutionConfig(tree, options);
 
-  const oldConfigTypes = oldConfig.compilerOptions.types ?? [];
-  const newConfigTypes = newConfig.compilerOptions.types ?? [];
-  const updatedTypes = uniqueArray([...newConfigTypes, ...oldConfigTypes]);
+  updateTsGlobalTypes(tree, options);
 
-  newConfig.compilerOptions.types = updatedTypes;
+  return tree;
+}
 
-  tree.write(options.paths.tsconfig, serializeJson(newConfig));
+function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
+  const packageType = getPackageType(tree, options);
+  const js = isJs(tree, options);
+  const hasConformance = hasConformanceSetup(tree, options);
+
+  const tsConfigs = templates.tsconfig({ platform: packageType, js, hasConformance });
+  writeJson(tree, options.paths.tsconfig.main, tsConfigs.main());
+  writeJson(tree, options.paths.tsconfig.lib, tsConfigs.lib());
+  writeJson(tree, options.paths.tsconfig.test, tsConfigs.test());
+
+  return tree;
+}
+
+function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
+  // update test TS config
+  updateJson(tree, options.paths.tsconfig.test, (json: TsConfig) => {
+    if (tree.exists(options.paths.jestSetupFile)) {
+      const jestSetupFile = tree.read(options.paths.jestSetupFile)?.toString('utf-8')!;
+
+      if (jestSetupFile.includes(`require('@testing-library/jest-dom')`)) {
+        json.compilerOptions.types = json.compilerOptions.types ?? [];
+        json.compilerOptions.types.push('@testing-library/jest-dom');
+      }
+    }
+
+    if (Array.isArray(json.compilerOptions.types)) {
+      json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
+    }
+
+    return json;
+  });
+
+  // update lib TS config
+  // put your code here
+
+  // update main TS config
+  // put your code here
 
   return tree;
 }
@@ -595,4 +813,14 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   writeJson(tree, options.paths.packageJson, pkgJson);
 
   return tree;
+}
+
+function globsToJs(tsConfigGlob: string[]) {
+  return tsConfigGlob.map(glob => {
+    if (glob.endsWith('.d.ts')) {
+      return glob;
+    }
+
+    return glob.replace(/\.ts(x)?$/, '.js$1');
+  });
 }
