@@ -322,6 +322,9 @@ export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTML
 export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
+export function getFirstVisibleElementFromSelector(selector: string): Element | undefined;
+
+// @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
 
 // @public
@@ -764,6 +767,9 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 
 // @public
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
+
+// @public
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean;
 
 // Warning: (ae-internal-missing-underscore) The name "ISerializableObject" should be prefixed with an underscore because the declaration is marked as @internal
 //
