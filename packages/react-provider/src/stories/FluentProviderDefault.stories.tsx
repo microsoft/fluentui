@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { webLightTheme, teamsLightTheme, teamsDarkTheme } from '@fluentui/react-theme';
-import { Button } from '@fluentui/react-button'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { Button } from '@fluentui/react-button';
 import { FluentProvider } from '@fluentui/react-provider'; // codesandbox-dependency: @fluentui/react-provider ^9.0.0-beta
 
 const useStyles = makeStyles({
