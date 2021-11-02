@@ -1,5 +1,5 @@
 ---
-name: Accessibility Issue
+name: Accessibility issue
 about: Have you identified an accessibility issue regarding a Fluent UI React control?
 ---
 

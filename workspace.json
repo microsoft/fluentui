@@ -406,10 +406,6 @@
       "projectType": "library",
       "sourceRoot": "packages/react-switch/src"
     },
-    "@fluentui/react-tabs": {
-      "root": "packages/react-tabs",
-      "projectType": "library"
-    },
     "@fluentui/react-tabster": {
       "root": "packages/react-tabster",
       "projectType": "library",
@@ -498,6 +494,11 @@
     "a11y-tests": {
       "root": "apps/a11y-tests",
       "projectType": "application"
+    },
+    "typings": {
+      "root": "typings",
+      "projectType": "library",
+      "sourceRoot": "typings"
     },
     "nx-workspace-tools": {
       "root": "tools",

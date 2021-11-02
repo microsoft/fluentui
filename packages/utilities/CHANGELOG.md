@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Nov 2021 07:37:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.3.5)
+
+Tue, 02 Nov 2021 07:37:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.3.4..@fluentui/utilities_v8.3.5)
+
+### Patches
+
+- Add isElementVisibleAndNotHidden utility function ([PR #20396](https://github.com/microsoft/fluentui/pull/20396) by jspurlin@microsoft.com)
 
 ## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.3.4)
 

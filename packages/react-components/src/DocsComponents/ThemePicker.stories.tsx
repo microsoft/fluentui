@@ -6,6 +6,11 @@ import { themes, setGlobalTheme } from '@fluentui/react-storybook-addon';
 const useStyles = makeStyles({
   menuButton: {
     minWidth: '210px',
+    justifyContent: 'flex-start',
+  },
+
+  chevronIcon: {
+    marginLeft: 'auto',
   },
 
   menuPopover: {
@@ -36,8 +41,12 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedTh
       checkedValues={{ theme: selectedThemeId ? [selectedThemeId] : [] }}
     >
       <MenuTrigger>
-        <MenuButton className={styles.menuButton} icon={<PaintBucket24Filled />}>
-          {selectedTheme?.label}
+        <MenuButton
+          className={styles.menuButton}
+          icon={<PaintBucket24Filled />}
+          menuIcon={{ className: styles.chevronIcon }}
+        >
+          {selectedTheme?.label ?? 'Theme'}
         </MenuButton>
       </MenuTrigger>
       <MenuPopover className={styles.menuPopover}>

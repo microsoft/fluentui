@@ -2,6 +2,36 @@
   "name": "ts-minbar-test-react",
   "entries": [
     {
+      "date": "Tue, 02 Nov 2021 07:37:02 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.39.0",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Nov 2021 07:32:08 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.38.0",
+            "commit": "4094351f75ec358c549d02d044d599d0dda84481"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Oct 2021 07:29:08 GMT",
       "tag": "ts-minbar-test-react_v1.0.0",
       "version": "1.0.0",
