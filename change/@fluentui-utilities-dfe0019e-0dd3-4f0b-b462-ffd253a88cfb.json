@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add isElementVisibleAndNotHidden utility function",
+  "packageName": "@fluentui/utilities",
+  "email": "jspurlin@microsoft.com",
+  "dependentChangeType": "patch"
+}
