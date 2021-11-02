@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { FluentProvider } from '@fluentui/react-provider'; // codesandbox-dependency: @fluentui/react-provider ^9.0.0-beta
+import { FluentProvider } from '@fluentui/react-provider';
 export { Default } from './FluentProviderDefault.stories';
 export { Dir } from './FluentProviderDir.stories';
 export { DirNested } from './FluentProviderDirNested.stories';
