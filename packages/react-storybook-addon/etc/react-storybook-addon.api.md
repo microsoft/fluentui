@@ -4,24 +4,9 @@
 
 ```ts
 
-import { Args } from '@storybook/api';
-import { StoryContext } from '@storybook/addons';
-import { Theme } from '@fluentui/react-theme';
-
-// @public
-export interface FluentGlobals extends Args {
-    // Warning: (ae-forgotten-export) The symbol "THEME_ID" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "ThemeIds" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    [THEME_ID]?: ThemeIds;
-}
-
 // @public (undocumented)
-export interface FluentStoryContext extends StoryContext {
-    // (undocumented)
-    globals: FluentGlobals;
-}
+const _default: {};
+export default _default;
 
 // (No @packageDocumentation comment for this package)
 
