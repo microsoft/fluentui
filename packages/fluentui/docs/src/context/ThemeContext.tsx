@@ -15,7 +15,7 @@ export type ThemeContextData = {
 };
 
 export const themeContextDefaults: ThemeContextData = {
-  themeName: 'teamsTheme',
+  themeName: 'teamsV2Theme',
   themeOptions: [
     { text: 'Teams', value: 'teamsTheme' },
     { text: 'Teams Dark', value: 'teamsDarkTheme' },
