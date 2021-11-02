@@ -500,6 +500,11 @@
       "root": "apps/a11y-tests",
       "projectType": "application"
     },
+    "typings": {
+      "root": "typings",
+      "projectType": "library",
+      "sourceRoot": "typings"
+    },
     "nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",

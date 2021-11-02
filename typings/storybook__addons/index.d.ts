@@ -4,7 +4,7 @@
 // Definitions: N/A
 // TypeScript Version: 3.1
 
-import { Parameters, ViewMode } from '@storybook/addons';
+import { ViewMode } from '@storybook/addons';
 
 declare module '@storybook/addons' {
   // PUBLIC API - extended definitions

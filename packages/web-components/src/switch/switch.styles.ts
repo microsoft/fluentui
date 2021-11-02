@@ -214,47 +214,48 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
     ),
     forcedColorsStylesheetBehavior(
       css`
-        slot[name='switch'],
-        :host(:not(.disabled)) .switch:active slot[name='switch'] {
+        :host(:not(.disabled)) .switch slot[name='switch'] {
           forced-color-adjust: none;
-          background: ${SystemColors.FieldText};
+          fill: ${SystemColors.FieldText};
         }
         .switch {
-          forced-color-adjust: none;
           background: ${SystemColors.Field};
           border-color: ${SystemColors.FieldText};
-        }
-        :host(:not(.disabled)) .switch:hover {
-          background: ${SystemColors.HighlightText};
-          border-color: ${SystemColors.Highlight};
         }
         :host(.checked) .switch {
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.Highlight};
         }
-        :host(.checked:not(.disabled)) .switch:hover,
-        :host(:not(.disabled)) .switch:active {
+        :host(:not(.disabled):hover) .switch ,
+        :host(:not(.disabled):active) .switch,
+        :host(.checked:not(.disabled):hover) .switch {
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.Highlight};
         }
-        :host(.checked) slot[name='switch'] {
-          background: ${SystemColors.HighlightText};
+        :host(.checked:not(.disabled)) .switch slot[name="switch"] {
+          fill: ${SystemColors.HighlightText};
         }
-        :host(.checked:not(.disabled)) .switch:hover slot[name='switch'] {
-          background: ${SystemColors.Highlight};
+        :host(.checked:not(.disabled):hover) .switch slot[name='switch'] {
+          fill: ${SystemColors.Highlight};
         }
         :host(:${focusVisible}) .switch {
+          forced-color-adjust: none;
+          background: ${SystemColors.Field};
           border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
+          box-shadow: 0 0 0 1px ${SystemColors.Highlight}, 0 0 0 3px ${SystemColors.FieldText};
         }
         :host(.checked:${focusVisible}:not(.disabled)) .switch {
-          box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
+          forced-color-adjust: none;
+          background: ${SystemColors.Highlight};
+          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
+          border-color: ${SystemColors.Field};
         }
         :host(.disabled) {
           opacity: 1;
         }
         :host(.disabled) slot[name='switch'] {
-          background: ${SystemColors.GrayText};
+          forced-color-adjust: none;
+          fill: ${SystemColors.GrayText};
         }
         :host(.disabled) .switch {
           background: ${SystemColors.Field};
