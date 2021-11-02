@@ -122,14 +122,7 @@ task('build:docs:schema', () =>
 );
 
 task('build:docs:webpack', cb => {
-  const webpackConfig = require('../../webpack/webpack.config').default;
-
-  const nightlyBuildEnvVar = {
-    'process.env.NIGHTLYRELEASEDATE': JSON.stringify(process.env.NIGHTLYRELEASEDATE),
-  };
-  webpackConfig.plugins.push(new webpack.DefinePlugin(nightlyBuildEnvVar));
-
-  webpackPlugin(webpackConfig, cb);
+  webpackPlugin(require('../../webpack/webpack.config').default, cb);
 });
 
 task('build:docs:assets:component:info', cb => {
