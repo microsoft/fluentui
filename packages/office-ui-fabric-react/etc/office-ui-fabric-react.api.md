@@ -3789,6 +3789,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     checkboxCellClassName?: string;
     checkboxVisibility?: CheckboxVisibility;
     checkButtonAriaLabel?: string;
+    checkButtonGroupAriaLabel?: string;
     className?: string;
     columnReorderOptions?: IColumnReorderOptions;
     columns?: IColumn[];

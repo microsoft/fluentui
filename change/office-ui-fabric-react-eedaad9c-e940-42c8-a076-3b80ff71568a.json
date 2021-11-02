@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "cherry-pick fix(DetailsList): add accessible name to group header checkboxes",
+  "packageName": "office-ui-fabric-react",
+  "email": "imoreira@microsoft.com",
+  "dependentChangeType": "patch"
+}
