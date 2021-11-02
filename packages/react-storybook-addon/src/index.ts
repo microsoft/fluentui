@@ -1,1 +1,1 @@
-export type { FluentGlobals, FluentStoryContext } from './hooks';
+export default {};
