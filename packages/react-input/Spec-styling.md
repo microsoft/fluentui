@@ -1,5 +1,7 @@
 # `@fluentui/react-input`: Styling implementation notes
 
+**This is outdated after removal of the bookends from the core component. It will be updated as part of the PR implementing the spec changes.**
+
 Input has multiple size and appearance variants. These tables were created based on the design spec to assist with initial implementation and help ensure everything is handled.
 
 General abbreviations used:
