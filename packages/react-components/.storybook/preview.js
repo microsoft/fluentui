@@ -24,4 +24,7 @@ const options = {
 export const decorators = [...rootPreview.decorators];
 
 /** @type {typeof rootPreview.parameters} */
-export const parameters = { ...rootPreview.parameters, options };
+export const parameters = {
+  ...rootPreview.parameters,
+  options,
+};
