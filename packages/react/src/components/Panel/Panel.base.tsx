@@ -17,9 +17,11 @@ import {
   Async,
   EventGroup,
   initializeComponentRef,
+  getDocument,
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { PanelType } from './Panel.types';
+import { ScreenWidthMinMedium } from '../../Styling';
 import type { IProcessedStyleSet } from '../../Styling';
 import type { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
 
@@ -219,6 +221,8 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       );
     }
 
+    const documentHeight = getDocument()!.documentElement.scrollHeight;
+
     return (
       <Layer {...layerProps}>
         <Popup
@@ -249,8 +253,9 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
                   {(this._hasCustomNavigation || !hasCloseButton) &&
                     onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
                   {onRenderBody(this.props, this._onRenderBody)}
-                  {onRenderFooter(this.props, this._onRenderFooter)}
+                  {documentHeight < ScreenWidthMinMedium && onRenderFooter(this.props, this._onRenderFooter)}
                 </div>
+                {documentHeight >= ScreenWidthMinMedium && onRenderFooter(this.props, this._onRenderFooter)}
               </div>
             </FocusTrapZone>
           </div>
