@@ -201,9 +201,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-compose": {
-      "implicitDependencies": []
-    },
     "@fluentui/react-conformance": {
       "implicitDependencies": []
     },
@@ -337,9 +334,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-tabs": {
-      "implicitDependencies": []
-    },
     "@fluentui/react-tabster": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
@@ -407,6 +401,9 @@
     },
     "a11y-tests": {
       "implicitDependencies": []
+    },
+    "typings": {
+      "tags": ["platform:any"]
     },
     "nx-workspace-tools": {
       "tags": []

@@ -5,7 +5,7 @@ import { OverflowSetPageProps } from '@fluentui/react-examples/lib/react/Overflo
 
 export const OverflowSetPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/OverflowSet.page.json')}
+    jsonDocs={require('../../../dist/api/react/OverflowSet.page.json')}
     {...{ ...OverflowSetPageProps, ...props }}
   />
 );

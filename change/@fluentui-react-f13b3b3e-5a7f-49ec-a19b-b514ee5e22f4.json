@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix(Pivot): add overflow button aria-label prop",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

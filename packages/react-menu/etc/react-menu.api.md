@@ -192,7 +192,8 @@ export type MenuListState = ComponentState<MenuListSlots> & MenuListCommons & {
 };
 
 // @public
-export type MenuOpenChangeData = Pick<MenuState, 'open'> & {
+export type MenuOpenChangeData = {
+    open: boolean;
     keyboard?: boolean;
     bubble?: boolean;
 };

@@ -2655,18 +2655,18 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.1.3.tgz#5c46147401a823835a3833e3e18dae7f06016966"
   integrity sha512-XDEnRYxPO5P3Jsizm4TCxLu1osS/uV3Lym6SfRhq2PxfXPTgEcdvOYDUXyV2drqebs3U5VQnOcYcJiSp73xhng==
 
-"@microsoft/fast-element@^1.5.0", "@microsoft/fast-element@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.5.1.tgz#a4e98da1ac0873568360d69dfcf0e4fcc46a374c"
-  integrity sha512-2wv3svn2fJqT84PrchSNjRjCJ2z74tuzoo7odACouuQaLXuJckv1XexXWUj5INKY6/LB/rN/bJMYauX33JgOZA==
+"@microsoft/fast-element@^1.6.0", "@microsoft/fast-element@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.6.2.tgz#414abc9f49fde85e12002e01025c5cc3dddc16ac"
+  integrity sha512-TrFOpe9k9xIK2iLfIG5T2+bavUAWBvAC/KQ/3ecFsK65l9PAZ/j3zlkyLxNrpIksFtUBkfVdV03kwFurZjqzKQ==
 
-"@microsoft/fast-foundation@^2.17.0":
-  version "2.17.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.17.0.tgz#f8e8f930c12917c86b50ad0882809b696a837839"
-  integrity sha512-UasLgnJW5EsQYQcgwx52uFSwvCyPYQY/a+qs3lm0tJNklpy11Xi7tduj8zz/BeySmudYmQ3GtdIsGzCEokKMmg==
+"@microsoft/fast-foundation@^2.24.0":
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.24.0.tgz#ab78f99e91cf96d5d440172eaa9b5eff25e15d51"
+  integrity sha512-rwUS/QAIaOJ5Uceo42JrgzIUhIAh305g0UZgCc633g4/OOVYa/zjRAG5QBxdrrjYN+U3mJyOWrsY/FJkJpEcQg==
   dependencies:
-    "@microsoft/fast-element" "^1.5.1"
-    "@microsoft/fast-web-utilities" "^5.0.0"
+    "@microsoft/fast-element" "^1.6.2"
+    "@microsoft/fast-web-utilities" "^5.0.2"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^5.2.0"
     tslib "^1.13.0"
@@ -2675,6 +2675,13 @@
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-5.0.0.tgz#b497fb85b6f7e7bb82b3ef166d8f96a8fbee64e9"
   integrity sha512-vy/VZQfak3Y5fg9N/2Jj5c5iUDz1MeQBlhRuUUWAoO4sWSvo2VWgCY8EgWFUXriP85rmsLHaTYQWRK7t0oqUug==
+  dependencies:
+    exenv-es6 "^1.0.0"
+
+"@microsoft/fast-web-utilities@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-5.0.2.tgz#666631e38108893e4ec63cd8f52025f5f35a34a1"
+  integrity sha512-J8Wy64V1NWF/UjFJ1mvmJNNPChbWobsNkJ8xNaV5/M+VKOQEOheojrOS+RmOUG7DKTBlCLIbUvyXsj1YiCfwkA==
   dependencies:
     exenv-es6 "^1.0.0"
 
@@ -4339,6 +4346,18 @@
   resolved "https://registry.yarnpkg.com/@types/d3-path/-/d3-path-1.0.8.tgz#48e6945a8ff43ee0a1ce85c8cfa2337de85c7c79"
   integrity sha512-AZGHWslq/oApTAHu9+yH/Bnk63y9oFOMROtqPAtxl5uB6qm1x2lueWdVEjsjjV3Qc2+QfuzKIwIR5MvVBakfzA==
 
+"@types/d3-path@^1":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@types/d3-path/-/d3-path-1.0.9.tgz#73526b150d14cd96e701597cbf346cfd1fd4a58c"
+  integrity sha512-NaIeSIBiFgSC6IGUBjZWcscUJEq7vpVu7KthHN8eieTV9d9MqkSOZLH4chq1PmcKy06PNe3axLeKmRIyxJ+PZQ==
+
+"@types/d3-sankey@^0.11.0":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@types/d3-sankey/-/d3-sankey-0.11.2.tgz#803214b11dc0a17db5d782fe9055cd92b06a5d75"
+  integrity sha512-U6SrTWUERSlOhnpSrgvMX64WblX1AxX6nEjI2t3mLK2USpQrnbwYYK+AS9SwiE7wgYmOsSSKoSdr8aoKBH0HgQ==
+  dependencies:
+    "@types/d3-shape" "^1"
+
 "@types/d3-scale@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/d3-scale/-/d3-scale-2.0.0.tgz#d40f2ff137f4fe9b13b45c5a8e14f39edd498dcf"
@@ -4350,6 +4369,13 @@
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@types/d3-selection/-/d3-selection-1.4.1.tgz#fa1f8710a6b5d7cfe5c6caa61d161be7cae4a022"
   integrity sha512-bv8IfFYo/xG6dxri9OwDnK3yCagYPeRIjTlrcdYJSx+FDWlCeBDepIHUpqROmhPtZ53jyna0aUajZRk0I3rXNA==
+
+"@types/d3-shape@^1":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@types/d3-shape/-/d3-shape-1.3.8.tgz#c3c15ec7436b4ce24e38de517586850f1fea8e89"
+  integrity sha512-gqfnMz6Fd5H6GOLYixOZP/xlrMtJms9BaS+6oWxTKHNqPGZ93BkWWupQSCYm6YHqx6h9wjRupuJb90bun6ZaYg==
+  dependencies:
+    "@types/d3-path" "^1"
 
 "@types/d3-shape@^1.2.3":
   version "1.3.1"
@@ -4368,7 +4394,7 @@
   resolved "https://registry.yarnpkg.com/@types/d3-time/-/d3-time-1.0.10.tgz#d338c7feac93a98a32aac875d1100f92c7b61f4f"
   integrity sha512-aKf62rRQafDQmSiv1NylKhIMmznsjRN+MnXRXTqHoqm0U/UZzVpdrtRnSIfdiLS616OuC1soYeX1dBg2n1u8Xw==
 
-"@types/dedent@latest":
+"@types/dedent@0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@types/dedent/-/dedent-0.7.0.tgz#155f339ca404e6dd90b9ce46a3f78fd69ca9b050"
   integrity sha512-EGlKlgMhnLt/cM4DbUSafFdrkeJoC9Mvnj0PUCU7tFmTjMjNRT957kXCx0wYm3JuEq4o4ZsS5vG+NlkM2DMd2A==
@@ -7224,10 +7250,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.16.0.tgz#cd8d511782177f55b0b5f9b11071a537b7974346"
-  integrity sha512-8qMuH/ZtusIS9HgSYQ4hrJnpfdIFzxGWpPfCemSrVm/fKMRcjZ6YCNPt6YTnaSDaO0y3tNsOQ+ekMZt3c1fuOw==
+beachball@2.18.0:
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.18.0.tgz#429fbe6c546c9db7557d7594cf35f029263bef49"
+  integrity sha512-3Uk4TJfDQoj/zQy1c9vQeVZZ2sKWWDdL/d3zlyCM2pJsZjQSYveLjRRBJjG7fsz+lFtU0uYiUhbMW4oWn9HXSw==
   dependencies:
     cosmiconfig "^6.0.0"
     execa "^4.0.3"
@@ -9559,12 +9585,7 @@ cypress@6.6.0:
     url "^0.11.0"
     yauzl "^2.10.0"
 
-d3-array@1, d3-array@^1.1.1, d3-array@^1.2.0:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
-  integrity sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw==
-
-d3-array@1.2.1:
+d3-array@1, "d3-array@1 - 2", d3-array@1.2.1, d3-array@^1.1.1, d3-array@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.1.tgz#d1ca33de2f6ac31efadb8e050a021d7e2396d5dc"
   integrity sha512-CyINJQ0SOUHojDdFDH4JEM0552vCR1utGyLHegJHyYH0JyCpSeTPxi4OBqHMA2jJZq4NH782LtaJWBImqI/HBw==
@@ -9624,6 +9645,14 @@ d3-path@1:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.7.tgz#8de7cd693a75ac0b5480d3abaccd94793e58aae8"
   integrity sha512-q0cW1RpvA5c5ma2rch62mX8AYaiLX0+bdaSM2wxSU9tXjU4DNvkx9qiUvjkuWCj3p22UO/hlPivujqMiR9PDzA==
+
+d3-sankey@^0.12.3:
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/d3-sankey/-/d3-sankey-0.12.3.tgz#b3c268627bd72e5d80336e8de6acbfec9d15d01d"
+  integrity sha512-nQhsBRmM19Ax5xEIPLMY9ZmJ/cDvd1BG3UVvt5h3WRxKg5zGRbvnteTyWAbzeSvlh3tW7ZEmq4VwR5mB3tutmQ==
+  dependencies:
+    d3-array "1 - 2"
+    d3-shape "^1.2.0"
 
 d3-sankey@^0.7.1:
   version "0.7.1"
@@ -9964,7 +9993,7 @@ decompress@^4.2.0:
     pify "^2.3.0"
     strip-dirs "^2.0.0"
 
-dedent@^0.7.0:
+dedent@0.7.0, dedent@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
   integrity sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=
@@ -16864,7 +16893,7 @@ lock@^0.1.2:
   resolved "https://registry.yarnpkg.com/lock/-/lock-0.1.4.tgz#fec7deaef17e7c3a0a55e1da042803e25d91745d"
   integrity sha1-/sfervF+fDoKVeHaBCgD4l2RdF0=
 
-lodash-es@^4.17.14, lodash-es@^4.17.20:
+lodash-es@^4.17.14:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.20.tgz#29f6332eefc60e849f869c264bc71126ad61e8f7"
   integrity sha512-JD1COMZsq8maT6mnuz1UMV0jvYD0E0aUsSOdrr1/nAG3dhqQXwRRgeW0cSqH1U43INKcqxaiVIQNOUDld7gRDA==
@@ -23304,10 +23333,10 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-export-to-codesandbox@0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.5.1.tgz#828490c522baa705e36a6d5f2cb73184634ba1a8"
-  integrity sha512-uNb751qS0AF1UJpoHW0iZMWP+2I6MMo8wdxGUQ1QbaXkvMEtGeYo9bcz2fT4uBJ4Vhd1YSbzUzdfiK6VBdFyzg==
+storybook-addon-export-to-codesandbox@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.6.2.tgz#a79b09d96d0a39da413e50547b9bee6299f78373"
+  integrity sha512-HAD/OLgvC6nMUzBcH2J+iOOdvgZqJStJ/KYD11Cz8a85mDQtp/+l93efkofeX1Yk9LcepxwWW7WMVbI4yTBy4w==
   dependencies:
     codesandbox-import-utils "^2.2.3"
 
@@ -25571,9 +25600,9 @@ vm-browserify@^1.1.2:
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
 vm2@^3.6.3:
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/vm2/-/vm2-3.8.4.tgz#882be9135467942d84d1af80b6e6549b57c69041"
-  integrity sha512-5HThl+RBO/pwE9SF0kM4nLrpq5vXHBNk4BMX27xztvl0j1RsZ4/PMVJAu9rM9yfOtTo5KroL7XNX3031ExleSw==
+  version "3.9.5"
+  resolved "https://registry.yarnpkg.com/vm2/-/vm2-3.9.5.tgz#5288044860b4bbace443101fcd3bddb2a0aa2496"
+  integrity sha512-LuCAHZN75H9tdrAiLFf030oW7nJV5xwNMuk1ymOZwopmuK3d2H4L1Kv4+GFHgarKiLfXXLFU+7LDABHnwOkWng==
 
 void-elements@^2.0.0:
   version "2.0.1"

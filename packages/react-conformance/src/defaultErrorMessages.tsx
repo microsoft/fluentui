@@ -1,10 +1,9 @@
 import { IsConformantOptions } from './types';
 
 import { EOL } from 'os';
-import * as _ from 'lodash';
 import * as path from 'path';
 
-import { errorMessageColors, formatArray, getErrorMessage } from './utils/errorMessages';
+import { errorMessageColors, formatArray, getErrorMessage, formatErrors } from './utils/errorMessages';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -488,16 +487,18 @@ export const defaultErrorMessages = {
     });
   },
 
-  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: string[]) => {
+  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: Record<string, Error>) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo } = errorMessageColors;
 
     return getErrorMessage({
       displayName,
       overview: 'uses non-standard callback arguments.',
-      details: ['These callback(s) need have two params:', testErrorInfo(formatArray(invalidProps))],
+      details: ['These callback(s) have issues:', testErrorInfo(formatErrors(invalidProps))],
       suggestions: [
-        `Ensure that ${resolveInfo(displayName + `'s`)} callbacks have two params (an event and data object).`,
+        `Ensure that ${resolveInfo(
+          displayName + `'s`,
+        )} callbacks have two params (an event and data object) and types of arguments are correct.`,
         `If a callback is intended to have a different signature, add the prop to isConformant ${resolveInfo(
           "testOptions['consistent-callback-args'].ignoreProps",
         )}.`,

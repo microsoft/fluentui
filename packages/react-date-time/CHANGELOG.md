@@ -1,8 +1,116 @@
 # Change Log - @fluentui/react-date-time
 
-This log was last generated on Tue, 05 Oct 2021 07:37:17 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Nov 2021 07:37:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.90)
+
+Tue, 02 Nov 2021 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.89..@fluentui/react-date-time_v8.1.90)
+
+### Patches
+
+- Bump @fluentui/react to v8.39.0 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+
+## [8.1.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.89)
+
+Mon, 01 Nov 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.88..@fluentui/react-date-time_v8.1.89)
+
+### Patches
+
+- Bump @fluentui/react to v8.38.0 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+
+## [8.1.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.88)
+
+Fri, 29 Oct 2021 07:29:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.87..@fluentui/react-date-time_v8.1.88)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.6 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+
+## [8.1.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.87)
+
+Thu, 28 Oct 2021 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.86..@fluentui/react-date-time_v8.1.87)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.5 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+
+## [8.1.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.86)
+
+Wed, 27 Oct 2021 07:29:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.85..@fluentui/react-date-time_v8.1.86)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.4 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+
+## [8.1.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.85)
+
+Tue, 26 Oct 2021 07:39:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.84..@fluentui/react-date-time_v8.1.85)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.3 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+
+## [8.1.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.84)
+
+Mon, 25 Oct 2021 07:38:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.83..@fluentui/react-date-time_v8.1.84)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.2 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+
+## [8.1.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.83)
+
+Thu, 21 Oct 2021 07:28:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.82..@fluentui/react-date-time_v8.1.83)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.1 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+
+## [8.1.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.82)
+
+Wed, 20 Oct 2021 07:30:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.81..@fluentui/react-date-time_v8.1.82)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.0 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+
+## [8.1.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.81)
+
+Wed, 13 Oct 2021 07:31:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.80..@fluentui/react-date-time_v8.1.81)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.5 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+
+## [8.1.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.80)
+
+Mon, 11 Oct 2021 07:36:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.79..@fluentui/react-date-time_v8.1.80)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.4 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+
+## [8.1.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.79)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.1.78..@fluentui/react-date-time_v8.1.79)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.3 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
 
 ## [8.1.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.1.78)
 

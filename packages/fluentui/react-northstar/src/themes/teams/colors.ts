@@ -239,6 +239,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     border2: colors.grey[200],
     border3: colors.grey[150],
     borderTransparent: 'transparent',
+    borderTransparentActive: 'transparent',
 
     shadow: colors.black,
     shadowHover: colors.black,
@@ -328,11 +329,13 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundHover: colors.brand[700],
     backgroundHover1: colors.brand[50],
     backgroundHover2: colors.brand[100],
+    backgroundHover3: colors.brand[100],
 
     foregroundPressed: colors.brand[800],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[800],
     backgroundPressed1: colors.brand[100],
+    backgroundPressed2: colors.brand[100],
     borderPressed: colors.brand[300],
 
     foregroundActive: colors.brand[600],

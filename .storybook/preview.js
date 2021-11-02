@@ -1,12 +1,13 @@
-import { withFluentProvider, withStrictMode } from '@fluentui/react-storybook';
+import { withStrictMode } from '@fluentui/react-storybook';
 import 'cypress-storybook/react';
-import dedent from 'dedent';
+import * as dedent from 'dedent';
 
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
-export const decorators = [withFluentProvider, withStrictMode];
+export const decorators = [withStrictMode];
 
 /** @type {import('@storybook/react').Parameters} */
 export const parameters = {
+  viewMode: 'docs',
   controls: {
     disable: true,
     expanded: true,
@@ -20,7 +21,7 @@ export const parameters = {
     requiredDependencies: {
       'react-dom': 'latest', // for React
       'react-scripts': 'latest', // necessary when using typescript in CodeSandbox
-      '@fluentui/react-components': '^9.0.0-alpha', // necessary for FluentProvider
+      '@fluentui/react-components': '^9.0.0-beta', // necessary for FluentProvider
     },
     indexTsx: dedent`
           import * as ReactDOM from 'react-dom';

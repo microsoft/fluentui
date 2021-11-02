@@ -14,7 +14,14 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
+import {
+  ChartTypes,
+  convertToLocaleString,
+  getAccessibleDataObject,
+  XAxisTypes,
+  YAxisType,
+  getTypeOfAxis,
+} from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
@@ -328,7 +335,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               className={this._classNames.text}
               transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
             >
-              {dataPointObject.rectText}
+              {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
             </text>
           </g>
         );
