@@ -32,8 +32,8 @@ const ltrStyles = css`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left-width: 0;
-  padding-left: calc(3px + (${controlCornerRadius} * 1px));
-  margin-left: calc((${controlCornerRadius} * -1px) - 2px);
+  padding-left: calc(var(--calendar-gap) + (${strokeWidth} + ${controlCornerRadius}) * 1px);
+  margin-left: calc((${controlCornerRadius} * -1px) - var(--calendar-gap));
 }
 
 .day.disabled::before {
@@ -50,8 +50,8 @@ const rtlStyles = css`
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right-width: 0;
-  padding-right: calc(3px + (${controlCornerRadius} * 1px));
-  margin-right: calc((${controlCornerRadius} * -1px) - 2px);
+  padding-right: calc(var(--calendar-gap) + (${strokeWidth} + ${controlCornerRadius}) * 1px);
+  margin-right: calc((${controlCornerRadius} * -1px) - var(--calendar-gap));
 }
 
 .day.disabled::before {
@@ -72,6 +72,7 @@ export const calendarStyles: (
 ) => css`
 ${display("inline-block")} :host {
   --calendar-cell-size: calc((${baseHeightMultiplier} + 2 + ${density}) * ${designUnit} * 1px);
+  --calendar-gap: calc(${designUnit} * .5px);
   font-family: ${bodyFont};
   font-size: ${typeRampBaseFontSize};
   line-height: ${typeRampBaseLineHeight};
@@ -91,7 +92,7 @@ ${display("inline-block")} :host {
 .week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-gap: calc(${designUnit} * .5px);
+  grid-gap: var(--calendar-gap);
   border: 0;
   padding: 0;
 }
