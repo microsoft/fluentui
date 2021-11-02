@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { webLightTheme, teamsLightTheme, teamsDarkTheme } from '@fluentui/react-theme';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Button } from '@fluentui/react-button';
 import { FluentProvider } from '@fluentui/react-provider';
 
