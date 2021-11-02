@@ -61,6 +61,7 @@ const useRootStyles = makeStyles({
     minHeight: fieldHeights.large,
     padding: `0 ${horizontalSpacing.m}`,
     ...contentSizes[400](theme),
+    gap: horizontalSpacing.sNudge,
   }),
   inline: {
     display: 'inline-flex',
@@ -68,12 +69,12 @@ const useRootStyles = makeStyles({
   outline: theme => ({
     background: theme.colorNeutralBackground1,
     border: `1px solid ${theme.colorNeutralStroke1}`,
-    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
+    borderBottomColor: theme.colorNeutralStrokeAccessible,
   }),
   underline: theme => ({
     background: theme.colorTransparentBackground,
     borderRadius: 0, // corners look strange if rounded
-    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
+    borderBottomColor: theme.colorNeutralStrokeAccessible,
   }),
   filled: theme => ({
     boxShadow: theme.shadow2, // optional shadow for filled appearances
