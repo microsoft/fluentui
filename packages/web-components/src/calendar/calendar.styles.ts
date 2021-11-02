@@ -21,7 +21,7 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import { DirectionalStyleSheetBehavior, heightNumber } from '../styles';
+import { DirectionalStyleSheetBehavior } from '../styles';
 
 /**
  * LTR styles for calendar
