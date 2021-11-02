@@ -258,7 +258,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     commands: [
       classNames.commands,
       {
-        paddingTop: 18,
+        marginTop: 18,
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
             backgroundColor: semanticColors.bodyBackground,
@@ -332,13 +332,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       sharedPaddingStyles,
       {
         paddingBottom: 20,
-      },
-      isFooterAtBottom && {
-        selectors: {
-          [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
-            minHeight: '100%',
-          },
-        },
       },
     ],
     footer: [
