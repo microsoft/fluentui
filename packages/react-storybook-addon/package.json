@@ -33,7 +33,6 @@
   "dependencies": {
     "@fluentui/react-theme": "9.0.0-beta.2",
     "@fluentui/react-provider": "9.0.0-beta.3",
-    "@fluentui/react-make-styles": "9.0.0-beta.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -5,14 +5,7 @@ import { themes, defaultTheme, FluentProvider } from '../theme';
 import { THEME_ID } from '../constants';
 import { FluentGlobals, FluentStoryContext } from '../hooks';
 
-import { makeStyles } from '@fluentui/react-make-styles';
-
-const useStyles = makeStyles({
-  root: theme => ({
-    padding: '10px',
-    background: theme.colorNeutralBackground1,
-  }),
-});
+import { Theme } from '@fluentui/react-theme';
 
 const getActiveFluentTheme = (globals: FluentGlobals) => {
   const selectedThemeId = globals[THEME_ID];
@@ -23,15 +16,17 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
 
 export const withFluentProvider = (StoryFn: StoryFunction<React.ReactElement>, context: FluentStoryContext) => {
   const { theme } = getActiveFluentTheme(context.globals);
+
   return (
     <FluentProvider theme={theme}>
-      <FluentExampleContainer>{StoryFn()}</FluentExampleContainer>
+      <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>
     </FluentProvider>
   );
 };
 
-const FluentExampleContainer: React.FC = props => {
-  const styles = useStyles();
+const FluentExampleContainer: React.FC<{ theme: Theme }> = props => {
+  const { theme } = props;
 
-  return <div className={styles.root}>{props.children}</div>;
+  const backgroundColor = theme.colorNeutralBackground1;
+  return <div style={{ padding: 10, backgroundColor: backgroundColor }}>{props.children}</div>;
 };
