@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Avatar, AvatarProps } from './index';
 
-export const ColorBrand = (props: Partial<AvatarProps>) => (
-  <>
-    <Avatar color="brand" name="Lydia Bauer" badge={{ status: 'doNotDisturb' }} {...props} />
-    <Avatar color="brand" badge={{ status: 'available' }} {...props} />
-  </>
-);
+export const ColorBrand = (props: Partial<AvatarProps>) => <Avatar {...props} color="brand" />;
 
-ColorBrand.storyName = 'Color: neutral, brand';
+ColorBrand.storyName = 'Color: brand';
