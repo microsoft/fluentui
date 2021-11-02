@@ -5,11 +5,21 @@ import { Button } from '@fluentui/react-button';
 import { FluentProvider } from '@fluentui/react-provider';
 
 const useStyles = makeStyles({
-  example: {
-    margin: '5px',
+  button: {
+    marginTop: '5px',
   },
-  darkThemeBackground: theme => ({
-    backgroundColor: theme.colorBrandBackground,
+  provider: {
+    border: '1px',
+    borderRadius: '5px',
+    padding: '5px',
+  },
+  text: theme => ({
+    backgroundColor: theme.colorBrandBackground2,
+    color: theme.colorBrandForeground2,
+    fontSize: '20px',
+    border: '1px',
+    borderRadius: '5px',
+    padding: '5px',
   }),
 });
 
@@ -18,23 +28,21 @@ export const Default = () => {
   return (
     <>
       <div>
-        <FluentProvider theme={webLightTheme}>
-          <div className={styles.example}>Web Light Theme</div>
-          <Button className={styles.example}>Web Light Theme</Button>
+        <FluentProvider className={styles.provider} theme={webLightTheme}>
+          <div className={styles.text}>Web Light Theme</div>
+          <Button className={styles.button}>Web Light Theme</Button>
         </FluentProvider>
       </div>
       <div>
-        <FluentProvider theme={teamsLightTheme}>
-          <div className={styles.example}>Teams Light Theme</div>
-          <Button className={styles.example}>Teams Light Theme</Button>
+        <FluentProvider className={styles.provider} theme={teamsLightTheme}>
+          <div className={styles.text}>Teams Light Theme</div>
+          <Button className={styles.button}>Teams Light Theme</Button>
         </FluentProvider>
       </div>
       <div>
-        <FluentProvider theme={teamsDarkTheme}>
-          <div className={styles.example}>
-            <div className={styles.darkThemeBackground}>Teams Dark Theme</div>
-          </div>
-          <Button className={styles.example}>Teams Dark Theme</Button>
+        <FluentProvider className={styles.provider} theme={teamsDarkTheme}>
+          <div className={styles.text}>Teams Dark Theme</div>
+          <Button className={styles.button}>Teams Dark Theme</Button>
         </FluentProvider>
       </div>
     </>

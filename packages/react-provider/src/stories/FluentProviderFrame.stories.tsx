@@ -1,71 +1,84 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from '@fluentui/react-button'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
-import { makeStyles } from '@fluentui/react-make-styles';
+import { createDOMRenderer, makeStyles, RendererProvider } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider'; // codesandbox-dependency: @fluentui/react-provider ^9.0.0-beta
-import { teamsDarkTheme, webLightTheme } from '@fluentui/react-theme'; // codesandbox-dependency: @fluentui/react-theme ^9.0.0-beta
 
-const useStyles = makeStyles({
-  example: {
-    margin: '5px',
+const useExampleStyles = makeStyles({
+  button: {
+    marginTop: '5px',
   },
-  darkThemeBackground: theme => ({
-    backgroundColor: theme.colorBrandBackground,
+  text: theme => ({
+    backgroundColor: theme.colorBrandBackground2,
+    color: theme.colorBrandForeground2,
+    fontSize: '20px',
+    border: '1px',
+    borderRadius: '5px',
+    padding: '5px',
   }),
 });
 
-const PortalFrame: React.FunctionComponent<{
-  children: (externalDocument: Document) => React.ReactElement;
-}> = ({ children }) => {
+const useProviderStyles = makeStyles({
+  provider: {
+    border: '1px',
+    borderRadius: '5px',
+    padding: '5px',
+  },
+});
+
+type FrameRendererProps = {
+  children: (externalDocument: Document, renderer: ReturnType<typeof createDOMRenderer>) => React.ReactElement;
+};
+
+const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }) => {
   const [frameRef, setFrameRef] = React.useState<HTMLIFrameElement | null>(null);
+
+  const contentDocument = frameRef ? (frameRef.contentDocument as Document) : undefined;
+  const renderer = React.useMemo(() => createDOMRenderer(contentDocument), [contentDocument]);
 
   return (
     <>
       <iframe
         ref={setFrameRef}
-        style={{ height: 300, width: 600, border: 0, padding: 20 }}
+        style={{ height: 100, width: 500, border: '3px dashed salmon', padding: 10 }}
         title="An example of Provider in iframe"
       />
-      {frameRef &&
-        ReactDOM.createPortal(
-          children(frameRef.contentDocument as Document),
-          (frameRef.contentDocument as Document).body,
-        )}
+      {contentDocument && ReactDOM.createPortal(children(contentDocument, renderer), contentDocument.body)}
+    </>
+  );
+};
+
+const Example: React.FC = props => {
+  const styles = useExampleStyles();
+
+  return (
+    <>
+      <div className={styles.text}>{props.children}</div>
+      <Button className={styles.button}>A button</Button>
     </>
   );
 };
 
 export const Frame = () => {
-  const styles = useStyles();
+  const styles = useProviderStyles();
 
   return (
     <>
-      <FluentProvider theme={teamsDarkTheme}>
-        <div className={styles.example}>
-          <div className={styles.darkThemeBackground}>Teams Dark Theme before iframe</div>
-        </div>
-        <Button className={styles.example}>Teams Dark Theme before iframe</Button>
-        <PortalFrame>
-          {externalDocument => {
-            return (
-              <>
-                <FluentProvider targetDocument={externalDocument}>
-                  <div>
-                    <div className={styles.example}>No theme within iframe</div>
-                    <Button className={styles.example}>No theme within iframe</Button>
-                  </div>
-                </FluentProvider>
-                <FluentProvider targetDocument={externalDocument} theme={webLightTheme}>
-                  <div>
-                    <div className={styles.example}>Web Light Theme within iframe</div>
-                    <Button className={styles.example}>Web Light Theme within iframe</Button>
-                  </div>
-                </FluentProvider>
-              </>
-            );
-          }}
-        </PortalFrame>
+      <FluentProvider className={styles.provider}>
+        <Example>Content rendered outside iframe</Example>
       </FluentProvider>
+
+      <FrameRenderer>
+        {(externalDocument, renderer) => (
+          <RendererProvider renderer={renderer} targetDocument={externalDocument}>
+            <FluentProvider className={styles.provider} targetDocument={externalDocument}>
+              <Example>
+                Content rendered <b>within</b> iframe
+              </Example>
+            </FluentProvider>
+          </RendererProvider>
+        )}
+      </FrameRenderer>
     </>
   );
 };
@@ -73,7 +86,9 @@ export const Frame = () => {
 Frame.parameters = {
   docs: {
     description: {
-      story: 'A Fluent provider does not cross iframes.',
+      story:
+        'A Fluent provider does not cross an iframee boundary.' +
+        'Renderer provider supports Fluent provider within the iframe.',
     },
   },
 };

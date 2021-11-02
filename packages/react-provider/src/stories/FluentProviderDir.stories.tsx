@@ -4,10 +4,18 @@ import { FluentProvider } from '@fluentui/react-provider';
 
 const useStyles = makeStyles({
   example: {
-    margin: '5px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '5px',
+    width: '300px',
   },
-  darkThemeBackground: theme => ({
-    backgroundColor: theme.colorBrandBackground,
+  text: theme => ({
+    backgroundColor: theme.colorBrandBackground2,
+    color: theme.colorBrandForeground2,
+    fontSize: '18px',
+    border: '1px',
+    borderRadius: '5px',
+    padding: '5px',
   }),
 });
 
@@ -15,12 +23,14 @@ export const Dir = () => {
   const styles = useStyles();
   return (
     <>
-      <FluentProvider>
-        <div className={styles.example}>Text left to right</div>
-      </FluentProvider>
-      <FluentProvider dir="rtl">
-        <div className={styles.example}>نص من اليمين إلى اليسار</div>
-      </FluentProvider>
+      <div className={styles.example}>
+        <FluentProvider>
+          <div className={styles.text}>Text left to right</div>
+        </FluentProvider>
+        <FluentProvider dir="rtl">
+          <div className={styles.text}>نص من اليمين إلى اليسار</div>
+        </FluentProvider>
+      </div>
     </>
   );
 };

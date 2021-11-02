@@ -4,37 +4,39 @@ import { webLightTheme } from '@fluentui/react-theme'; // codesandbox-dependency
 import { FluentProvider } from '@fluentui/react-provider'; // codesandbox-dependency: @fluentui/react-provider ^9.0.0-beta
 
 const useStyles = makeStyles({
-  example: {
-    margin: '5px',
-  },
-  themedText: theme => ({
-    border: `5px solid ${theme.colorBrandStroke1}`,
+  example: theme => ({
     backgroundColor: theme.colorBrandBackground2,
     color: theme.colorBrandForeground2,
-    padding: '5px',
+    border: `5px solid ${theme.colorBrandStroke1}`,
+    borderRadius: '5px',
+    margin: '5px',
   }),
+  text: {
+    padding: '5px',
+    fontSize: '18px',
+  },
 });
 
 export const Nested = () => {
   const styles = useStyles();
   return (
-    <>
-      <FluentProvider theme={webLightTheme}>
-        <div className={styles.example}>
-          <div className={styles.themedText}>Web Light Theme using brand tokens</div>
-        </div>
+    <FluentProvider theme={webLightTheme}>
+      <div className={styles.example}>
+        <div className={styles.text}>Web Light Theme using brand tokens</div>
+
         <FluentProvider
           theme={{
-            colorBrandStroke1: 'salmon',
-            colorBrandBackground2: 'white',
+            colorBrandStroke1: '#780510',
+            colorBrandBackground2: '#fa8072',
+            colorBrandForeground2: '#780510',
           }}
         >
           <div className={styles.example}>
-            <div className={styles.themedText}>Nested FluentProvider with partial theme</div>
+            <div className={styles.text}>Nested FluentProvider with partial theme</div>
           </div>
         </FluentProvider>
-      </FluentProvider>
-    </>
+      </div>
+    </FluentProvider>
   );
 };
 
