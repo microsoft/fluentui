@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 02 Nov 2021 07:37:01 GMT",
+      "tag": "@fluentui/react-charting_v5.5.0",
+      "version": "5.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "v-scharde@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bcde40e5d58a8b43d762cb92841471abd7e4b89e",
+            "comment": "Add Sankey chart **(not compatible with IE 11)**"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.3.6",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.39.0",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Nov 2021 07:32:08 GMT",
       "tag": "@fluentui/react-charting_v5.4.1",
       "version": "5.4.1",

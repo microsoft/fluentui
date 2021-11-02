@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixed high contrast visual for web components",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch"
-}

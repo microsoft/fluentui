@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "change input state styles to fix height and prevent z-index from blocking cursor",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch"
-}

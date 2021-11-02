@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adjust TimePicker regex and error message",
-  "packageName": "@fluentui/react",
-  "email": "tinakt3@gmail.com",
-  "dependentChangeType": "patch"
-}

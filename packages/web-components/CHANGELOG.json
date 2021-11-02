@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 02 Nov 2021 07:37:01 GMT",
+      "tag": "@fluentui/web-components_v2.0.1",
+      "version": "2.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "71d4e117d0bad7e238ff53e4d1a0671a6ead7085",
+            "comment": "fix web components webpack integration docs and update the package dependencies"
+          },
+          {
+            "author": "khamu@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2cb0ac33d03c843c556c2cd554fd6ac9a91f4f33",
+            "comment": "fixed high contrast visual for web components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e9e7f438f1530d5629108a27dfd1d81d7c107293",
+            "comment": "change input state styles to fix height and prevent z-index from blocking cursor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Nov 2021 21:28:50 GMT",
       "tag": "@fluentui/web-components_v2.0.0",
       "version": "2.0.0",
