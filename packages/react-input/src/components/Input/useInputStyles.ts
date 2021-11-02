@@ -74,7 +74,7 @@ const useRootStyles = makeStyles({
   underline: theme => ({
     background: theme.colorTransparentBackground,
     borderRadius: 0, // corners look strange if rounded
-    borderBottomColor: theme.colorNeutralStrokeAccessible,
+    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
   }),
   filled: theme => ({
     boxShadow: theme.shadow2, // optional shadow for filled appearances
