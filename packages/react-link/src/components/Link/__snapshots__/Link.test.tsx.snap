@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Link renders as a button if no href is provided 1`] = `
+exports[`Link when rendered as a button renders correctly 1`] = `
 <div>
   <button
     class=""
@@ -11,7 +11,7 @@ exports[`Link renders as a button if no href is provided 1`] = `
 </div>
 `;
 
-exports[`Link renders as an anchor when href is provided 1`] = `
+exports[`Link when rendered as an anchor renders correctly 1`] = `
 <div>
   <a
     class=""

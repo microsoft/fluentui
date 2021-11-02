@@ -127,18 +127,12 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
       css`
         .indeterminate-indicator-1,
         .indeterminate-indicator-2,
-        .determinate {
-          forced-color-adjust: none;
-          background-color: ${SystemColors.FieldText};
-        }
+        .determinate,
         .progress {
-          background-color: ${SystemColors.Field};
-          border: calc(${strokeWidth} * 1px) solid ${SystemColors.FieldText};
+          background-color: ${SystemColors.ButtonText};
         }
         :host(.paused) .indeterminate-indicator-1,
-        .indeterminate-indicator-2 {
-          background-color: ${SystemColors.Field};
-        }
+        :host(.paused) .indeterminate-indicator-2,
         :host(.paused) .determinate {
           background-color: ${SystemColors.GrayText};
         }

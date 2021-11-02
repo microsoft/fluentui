@@ -2,6 +2,77 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 02 Nov 2021 07:37:01 GMT",
+      "tag": "@fluentui/react_v8.39.0",
+      "version": "8.39.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "42315bf9bdc7810cd0fba0cc77ecb975d95ea86e",
+            "comment": "Keytips: Make keytips aware of the visibility of their targets"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.15",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.16",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.6",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.3.5",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.4.1",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.2",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.3.5",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.21",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          }
+        ],
+        "patch": [
+          {
+            "author": "tinakt3@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5",
+            "comment": "Adjust TimePicker regex and error message"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Nov 2021 07:32:07 GMT",
       "tag": "@fluentui/react_v8.38.0",
       "version": "8.38.0",
