@@ -138,7 +138,7 @@ module.exports = {
        * @type {{
           extends: string[];
           include: string[];
-          excludes: string[];
+          exclude: string[];
           compilerOptions: Record<string,unknown>;
           references?: Array<{path:string}>
           }}
@@ -185,6 +185,7 @@ module.exports = {
           project: tsconfigPath,
         },
         rules,
+        excludedFiles: tsconfig.exclude,
       },
     ];
   },
