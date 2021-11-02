@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 01 Nov 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Nov 2021 07:37:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.5.0)
+
+Tue, 02 Nov 2021 07:37:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.4.1..@fluentui/react-charting_v5.5.0)
+
+### Minor changes
+
+- Add Sankey chart **(not compatible with IE 11)** ([PR #19215](https://github.com/microsoft/fluentui/pull/19215) by v-scharde@microsoft.com)
+- Bump @fluentui/react-focus to v8.3.6 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/react to v8.39.0 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
 
 ## [5.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.4.1)
 
