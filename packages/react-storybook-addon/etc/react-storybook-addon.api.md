@@ -10,8 +10,6 @@ import { Theme } from '@fluentui/react-theme';
 
 // @public
 export interface FluentGlobals extends Args {
-    // Warning: (ae-forgotten-export) The symbol "ThemeIds" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     [THEME_ID]?: ThemeIds;
 }
@@ -22,11 +20,14 @@ export interface FluentStoryContext extends StoryContext {
     globals: FluentGlobals;
 }
 
-// @public (undocumented)
-export function setGlobalTheme(themeId: string): void;
+// @public
+export function setGlobalTheme(themeId: ThemeIds): void;
 
 // @public (undocumented)
 export const THEME_ID: "storybook/fluentui-react-addon/theme";
+
+// @public (undocumented)
+export type ThemeIds = typeof themes[number]['id'];
 
 // @public (undocumented)
 export const themes: readonly [{

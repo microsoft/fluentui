@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MenuButton, Menu, MenuPopover, MenuItemRadio, MenuList, MenuTrigger, makeStyles } from '../index';
 import { PaintBucket24Filled } from '@fluentui/react-icons';
-import { themes, setGlobalTheme } from '@fluentui/react-storybook-addon';
+import { themes, ThemeIds, setGlobalTheme } from '@fluentui/react-storybook-addon';
 
 const useStyles = makeStyles({
   menuButton: {
@@ -30,7 +30,7 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedTh
       checkedItems: string[];
     },
   ) => {
-    setGlobalTheme(data.checkedItems[0]);
+    setGlobalTheme(data.checkedItems[0] as ThemeIds);
   };
 
   const selectedTheme = themes.find(theme => theme.id === selectedThemeId);
