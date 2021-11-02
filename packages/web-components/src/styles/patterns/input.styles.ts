@@ -187,7 +187,7 @@ export const inputStateStyles: (
   :host(:not([disabled]):focus-within:not(:active))::after {
     content: '';
     position: absolute;
-    height: 100%;
+    height: calc(${focusStrokeWidth} * 1px);
     bottom: 0;
     border-bottom: calc(${focusStrokeWidth} * 1px) solid ${accentFillRest};
     border-bottom-left-radius: calc(${controlCornerRadius} * 1px);
