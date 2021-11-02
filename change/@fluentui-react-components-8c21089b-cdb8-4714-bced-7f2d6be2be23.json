@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix(react-components): Storybook alphabetical sorting",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

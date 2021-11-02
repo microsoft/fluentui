@@ -16,10 +16,6 @@ Workspace Generator for migrating converged packages to new DX (stage 1)[https:/
 
 ## NOTES
 
-- this generator will migrate existing stories for your package from `react-examples` to your migrated package
-- migrated stories source will be transformed (replacing absolute imports and adding required default export)
-- if your original stories (within react-examples) used non converged packages/tools (like old icons, css/scss for styling), you'll need to manually refactor your stories to remove any non converged dependencies.
-
 ## Usage
 
 ```sh
