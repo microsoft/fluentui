@@ -178,6 +178,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       dragDropEvents,
       item,
       itemIndex,
+      flatIndexOffset = 2,
       id,
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
