@@ -64,7 +64,6 @@ export async function packProjectPackages(
 
   await Promise.all(
     requiredPackages.map(async packageName => {
-      const filename = path.join(tmpDirectory, path.basename(packageName)) + '.tgz';
       const packageInfo = projectPackages.find(pkg => pkg.name === packageName);
       const packagePath = packageInfo ? packageInfo.location : '';
 
@@ -76,8 +75,12 @@ export async function packProjectPackages(
         );
       }
 
-      await sh(`yarn pack --filename ${filename}`, packagePath);
-      packedPackages[packageName] = filename;
+      // Use `npm pack` because `yarn pack` incorrectly calculates the included files when the
+      // files to include/exclude are specified by .npmignore rather than package.json `files`.
+      // (--quiet outputs only the .tgz filename, not all the included files)
+      const packFile = (await sh(`npm pack --quiet ${packagePath}`, tmpDirectory, true /*pipeOutputToResult*/)).trim();
+      packedPackages[packageName] = path.join(tmpDirectory, packFile);
+      console.log('Wrote tarball to', packedPackages[packageName]);
     }),
   );
 
