@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Oct 2021 12:14:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-beta.1..@fluentui/react-divider_v9.0.0-beta.2)
+
+### Changes
+
+- Removed duplicate 'Divider' from story names ([PR #20267](https://github.com/microsoft/fluentui/pull/20267) by gcox@microsoft.com)
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-beta.1)
 

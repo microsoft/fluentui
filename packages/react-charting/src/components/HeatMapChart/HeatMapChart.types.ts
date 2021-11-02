@@ -99,6 +99,11 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 export interface IHeatMapChartStyleProps extends ICartesianChartStyleProps {}
 export interface IHeatMapChartStyles {

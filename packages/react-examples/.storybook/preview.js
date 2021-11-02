@@ -42,7 +42,7 @@ function addCustomDecorators() {
    */
   const customDecorators = new Set();
 
-  if (['react-cards', 'react-tabs'].includes(packageNamePlaceholder)) {
+  if (['react-cards'].includes(packageNamePlaceholder)) {
     initializeIcons();
     customDecorators.add(withStrictMode);
   }

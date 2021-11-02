@@ -3,10 +3,11 @@ import { create } from '@storybook/theming';
 export default create({
   base: 'light',
   brandTitle: 'Fluent Web Components',
-  brandUrl: 'https://example.com',
+  brandUrl: 'https://github.com/microsoft/fluentui',
 
   // Toolbar default and active colors
   barSelectedColor: '#0078d4', // use msft primary blue default
+  barTextColor: '#222',
 
   colorPrimary: '#dedede',
   colorSecondary: 'deepskyblue',
@@ -23,10 +24,6 @@ export default create({
   // Text colors
   textColor: '#222',
   textInverseColor: 'rgba(255,255,255,0.9)',
-
-  // Toolbar default and active colors
-  barTextColor: '#222',
-  barSelectedColor: '#0078d4', // use msft primary blue default
 
   // Form colors
   inputBg: 'white',

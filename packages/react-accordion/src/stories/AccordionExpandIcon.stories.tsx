@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RocketIcon } from '../icons.stories';
+import { Rocket20Regular as RocketIcon } from '@fluentui/react-icons';
 import {
   AccordionItem,
   AccordionHeader,
@@ -41,7 +41,7 @@ ExpandIcon.args = {
 ExpandIcon.parameters = {
   docs: {
     description: {
-      story: 'An Accordion Item can have a custom icon for the expand',
+      story: 'An Accordion Item can have a custom expand icon.',
     },
   },
 };
