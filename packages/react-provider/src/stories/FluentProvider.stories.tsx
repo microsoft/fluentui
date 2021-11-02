@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { FluentProvider } from '@fluentui/react-provider';
+import { FluentProvider } from '../FluentProvider';
 export { Default } from './FluentProviderDefault.stories';
 export { Dir } from './FluentProviderDir.stories';
 export { Nested } from './FluentProviderNested.stories';

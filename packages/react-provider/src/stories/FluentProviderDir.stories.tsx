@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { FluentProvider } from '@fluentui/react-provider';
+import { FluentProvider } from '../FluentProvider';
 
 const useStyles = makeStyles({
   example: {
