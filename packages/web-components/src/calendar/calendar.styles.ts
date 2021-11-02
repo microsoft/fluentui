@@ -70,36 +70,37 @@ export const calendarStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition
 ) => css`
-${display("block")} :host {
+${display("inline-block")} :host {
   --calendar-cell-size: calc((${baseHeightMultiplier} + 2 + ${density}) * ${designUnit} * 1px);
   font-family: ${bodyFont};
   font-size: ${typeRampBaseFontSize};
   line-height: ${typeRampBaseLineHeight};
   color: ${neutralForegroundRest};
-  width: calc((var(--calendar-cell-size) + (${strokeWidth} * 2px)) * 7 + 12px);
-  text-align: center;
 }
 
 .title {
   padding: calc(${designUnit} * 2px);
   font-weight: 600;
-  text-align: left;
+}
+
+.days {
+  text-align: center;
 }
 
 .week-days,
 .week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-gap: 2px;
-  border: none;
+  grid-gap: calc(${designUnit} * .5px);
+  border: 0;
   padding: 0;
 }
 
 .day,
 .week-day {
   border: 0;
-  min-width: var(--calendar-cell-size);
-  min-height: var(--calendar-cell-size);
+  width: var(--calendar-cell-size);
+  height: var(--calendar-cell-size);
   line-height: var(--calendar-cell-size);
 }
 
@@ -116,6 +117,10 @@ ${display("block")} :host {
   cursor: pointer;
 }
 
+.date {
+  height: 100%;
+}
+
 .inactive .date,
 .inactive.disabled::before {
   color: ${neutralForegroundHint};
@@ -124,7 +129,7 @@ ${display("block")} :host {
 .disabled::before {
   content: '';
   display: inline-block;
-  width: calc(${heightNumber} * .8px);
+  width: calc(var(--calendar-cell-size) * .8);
   height: calc(${strokeWidth} * 1px);
   background: currentColor;
   position: absolute;
@@ -137,10 +142,6 @@ ${display("block")} :host {
   color: ${accentFillRest};
   border: 1px solid ${accentFillRest};
   background: ${fillColor};
-}
-
-.date {
-  height: 100%;
 }
 
 .today.disabled::before {
