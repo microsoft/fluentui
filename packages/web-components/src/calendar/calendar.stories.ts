@@ -72,7 +72,7 @@ export default {
     readonly: {
       description: 'A readonly version of the calendar without AT interactions.',
       control: { type: 'boolean' },
-      default: false,
+      default: true,
     },
   },
 };
@@ -105,8 +105,7 @@ const CalendarTemplate = ({
     ${yearFormat ? `year-format="${yearFormat}"` : ''}
     ${disabledDates ? `disabled-dates="${disabledDates}"` : ''}
     ${selectedDates ? `selected-dates="${selectedDates}"` : ''}
-    ${readonly ? `readonly` : ''}
-    ${locale === 'ar-XE-u-ca-islamic-nu-arab' ? "style='direction:rtl' dir='rtl'" : ''}
+    ${readonly === false ? `readonly="false"` : ''}
     ></fluent-calendar>
   `;
 
@@ -117,7 +116,7 @@ Calendar.args = {
   month: (now.getMonth() + 1).toString(),
   year: now.getFullYear().toString(),
   locale: 'en-US',
-  readonly: false,
+  readonly: true,
   dayFormat: 'numeric',
   weekdayFormat: 'short',
   monthFormat: 'long',

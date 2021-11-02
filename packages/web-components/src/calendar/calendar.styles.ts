@@ -8,11 +8,14 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   accentFillRest,
+  baseHeightMultiplier,
   bodyFont,
   controlCornerRadius,
+  density,
   designUnit,
-  disabledOpacity,
+  fillColor,
   foregroundOnAccentRest,
+  neutralForegroundHint,
   neutralForegroundRest,
   strokeWidth,
   typeRampBaseFontSize,
@@ -20,36 +23,45 @@ import {
 } from '../design-tokens';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles';
 
+/**
+ * LTR styles for calendar
+ * @internal
+ */
 const ltrStyles = css`
 .selected + .selected {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left-width: 0;
-  padding-left: calc(calc(${designUnit}  * 1px) + calc(${controlCornerRadius} * 1px));
-  margin-left: calc(${controlCornerRadius} * -1px);
+  padding-left: calc(3px + (${controlCornerRadius} * 1px));
+  margin-left: calc((${controlCornerRadius} * -1px) - 2px);
 }
 
 .day.disabled::before {
-  transform: translate(-50%, calc(${designUnit} * 1px)) rotate(45deg);
+  transform: translate(-50%, 0) rotate(45deg);
 }
 `;
 
+/**
+ * RTL styles for calendar
+ * @internal
+ */
 const rtlStyles = css`
 .selected + .selected {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right-width: 0;
-  padding-right: calc(calc(${designUnit}  * 1px) + calc(${controlCornerRadius} * 1px));
-  margin-right: calc(${controlCornerRadius} * -1px);
+  padding-right: calc(3px + (${controlCornerRadius} * 1px));
+  margin-right: calc((${controlCornerRadius} * -1px) - 2px);
 }
 
 .day.disabled::before {
-  transform: translate(50%, calc(${designUnit} * 1px)) rotate(-45deg);
+  transform: translate(50%, 0) rotate(-45deg);
 }
 `;
 
 /**
- * @internal
+ * Styles for calendar
+ * @public
  */
 export const calendarStyles: (
   context: ElementDefinitionContext,
@@ -59,37 +71,43 @@ export const calendarStyles: (
   definition: FoundationElementDefinition
 ) => css`
 ${display("block")} :host {
+  --calendar-cell-size: calc((${baseHeightMultiplier} + 2 + ${density}) * ${designUnit} * 1px);
   font-family: ${bodyFont};
   font-size: ${typeRampBaseFontSize};
   line-height: ${typeRampBaseLineHeight};
   color: ${neutralForegroundRest};
-  width: calc(calc(${heightNumber} + calc(${designUnit} * 2) + calc(${strokeWidth} * 2)) * 7px);
+  width: calc((var(--calendar-cell-size) + (${strokeWidth} * 2px)) * 7 + 12px);
   text-align: center;
 }
 
 .title {
-  padding: calc(${designUnit} * 1px);
+  padding: calc(${designUnit} * 2px);
   font-weight: 600;
+  text-align: left;
 }
 
 .week-days,
 .week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-gap: 2px;
   border: none;
   padding: 0;
 }
 
 .day,
 .week-day {
-  padding: calc(${designUnit} * 1px);
   border: 0;
+  min-width: var(--calendar-cell-size);
+  min-height: var(--calendar-cell-size);
+  line-height: var(--calendar-cell-size);
+}
+
+.week-day {
+  font-weight: 600;
 }
 
 .day {
-  box-sizing: border-box;
-  min-height: calc(${heightNumber} * 1px);
-  margin-bottom: calc(${designUnit} * 1px);
   border: calc(${strokeWidth} * 1px) solid transparent;
   border-radius: calc(${controlCornerRadius} * 1px);
 }
@@ -98,47 +116,42 @@ ${display("block")} :host {
   cursor: pointer;
 }
 
-.day.inactive .date {
-  opacity: ${disabledOpacity};
+.inactive .date,
+.inactive.disabled::before {
+  color: ${neutralForegroundHint};
 }
 
-.day.disabled::before {
+.disabled::before {
   content: '';
   display: inline-block;
   width: calc(${heightNumber} * .8px);
   height: calc(${strokeWidth} * 1px);
   background: currentColor;
   position: absolute;
-  margin: calc(${typeRampBaseLineHeight} * .5) auto 0;
+  margin-top: calc(var(--calendar-cell-size) / 2);
   transform-origin: center;
+  z-index: 1;
 }
 
 .selected {
   color: ${accentFillRest};
   border: 1px solid ${accentFillRest};
-  background: var(--fill-color);
+  background: ${fillColor};
 }
 
 .date {
-  padding: calc(${designUnit} * 1px);
-  max-width: ${typeRampBaseLineHeight};
-  margin: 0 auto;
+  height: 100%;
 }
 
-.today {
+.today.disabled::before {
   color: ${foregroundOnAccentRest};
 }
 
-.interact .today .date,
 .today .date {
+  color: ${foregroundOnAccentRest};
   background: ${accentFillRest};
   border-radius: 50%;
-}
-
-.today.inactive .date {
-  background: transparent;
-  color: inherit;
-  width: auto;
+  position: relative;
 }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(

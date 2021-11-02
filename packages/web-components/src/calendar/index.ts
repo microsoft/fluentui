@@ -1,10 +1,19 @@
+import { attr, booleanConverter } from '@microsoft/fast-element';
 import {
-  Calendar,
   CalendarOptions,
   CalendarTitleTemplate,
+  Calendar as FoundationCalendar,
   calendarTemplate as template,
 } from '@microsoft/fast-foundation';
 import { calendarStyles as styles } from './calendar.styles';
+
+/**
+ * Updated Calendar class that is readonly by default
+ */
+export class Calendar extends FoundationCalendar {
+  @attr({ converter: booleanConverter })
+  public readonly: boolean = true;
+}
 
 /**
  * The Fluent Calendar Element. Implements {@link @microsoft/fast-foundation#Calendar},
@@ -21,8 +30,4 @@ export const fluentCalendar = Calendar.compose<CalendarOptions>({
   title: CalendarTitleTemplate,
 });
 
-/**
- * Styles for fluent-calendar
- * @public
- */
-export const calendarStyles = styles;
+export { styles as calendarStyles };
