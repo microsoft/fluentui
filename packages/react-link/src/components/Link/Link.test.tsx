@@ -11,7 +11,7 @@ describe('Link', () => {
     displayName: 'Link',
   });
 
-  describe('AccessibilityLinkBehavior', () => {
+  describe('meets accessibility requirements', () => {
     const testFacade = new ComponentTestFacade(Link, {});
     const errors = validateBehavior(linkBehaviorDefinition, testFacade);
     expect(errors).toEqual([]);
@@ -22,121 +22,85 @@ describe('Link', () => {
     });
   });
 
-  it('renders as a button if no href is provided', () => {
-    const result = render(<Link>This is a link</Link>);
-    const button = result.queryAllByRole('button');
-    const anchor = result.queryAllByRole('link');
-    expect(button.length).toBe(1);
-    expect(anchor.length).toBe(0);
+  describe('when rendered as an anchor', () => {
+    it('renders correctly', () => {
+      const result = render(<Link href="https://www.bing.com">This is a link</Link>);
+      const anchor = result.getByRole('link');
+      expect(anchor.tagName).toBe('A');
 
-    expect(result.container).toMatchSnapshot();
+      expect(result.container).toMatchSnapshot();
+    });
+
+    it('can be focused', () => {
+      const result = render(<Link href="https://www.bing.com">This is a link</Link>);
+      const anchor = result.getByRole('link');
+
+      expect(document.activeElement).not.toEqual(anchor);
+      anchor.focus();
+      expect(document.activeElement).toEqual(anchor);
+    });
+
+    it('cannot be focused when disabled has been passed to the component', () => {
+      const result = render(
+        <Link href="https://www.bing.com" disabled>
+          This is a link
+        </Link>,
+      );
+      const anchor = result.getByRole('link');
+
+      expect(document.activeElement).not.toEqual(anchor);
+      anchor.focus();
+      expect(document.activeElement).not.toEqual(anchor);
+    });
+
+    it('can be focused when disabledFocusable has been passed to the component', () => {
+      const result = render(
+        <Link href="https://www.bing.com" disabledFocusable>
+          This is a link
+        </Link>,
+      );
+      const anchor = result.getByRole('link');
+
+      expect(document.activeElement).not.toEqual(anchor);
+      anchor.focus();
+      expect(document.activeElement).toEqual(anchor);
+    });
   });
 
-  it('renders as an anchor when href is provided', () => {
-    const result = render(<Link href="https://www.bing.com">This is a link</Link>);
-    const button = result.queryAllByRole('button');
-    const anchor = result.queryAllByRole('link');
-    expect(button.length).toBe(0);
-    expect(anchor.length).toBe(1);
+  describe('when rendered as a button', () => {
+    it('renders correctly', () => {
+      const result = render(<Link>This is a link</Link>);
+      const button = result.getByRole('button');
+      expect(button.tagName).toBe('BUTTON');
 
-    expect(result.container).toMatchSnapshot();
-  });
+      expect(result.container).toMatchSnapshot();
+    });
 
-  it('can be focused when rendered as an anchor', () => {
-    const rootRef = React.createRef<HTMLAnchorElement>();
+    it('can be focused', () => {
+      const result = render(<Link>This is a link</Link>);
+      const button = result.getByRole('button');
 
-    render(
-      <Link href="https://www.bing.com" ref={rootRef}>
-        This is a link
-      </Link>,
-    );
+      expect(document.activeElement).not.toEqual(button);
+      button.focus();
+      expect(document.activeElement).toEqual(button);
+    });
 
-    expect(typeof rootRef.current).toEqual('object');
-    expect(document.activeElement).not.toEqual(rootRef.current);
+    it('cannot be focused when rendered disabled has been passed to the component', () => {
+      const result = render(<Link disabled>This is a link</Link>);
+      const button = result.getByRole('button');
 
-    rootRef.current?.focus();
+      expect(document.activeElement).not.toEqual(button);
+      button.focus();
+      expect(document.activeElement).not.toEqual(button);
+    });
 
-    expect(document.activeElement).toEqual(rootRef.current);
-  });
+    it('can be focused when disabledFocusable has been passed to the component', () => {
+      const result = render(<Link disabledFocusable>This is a link</Link>);
+      const button = result.getByRole('button');
 
-  it('can be focused when rendered as a button', () => {
-    const rootRef = React.createRef<HTMLAnchorElement>();
-
-    render(<Link ref={rootRef}>This is a link</Link>);
-
-    expect(typeof rootRef.current).toEqual('object');
-    expect(document.activeElement).not.toEqual(rootRef.current);
-
-    rootRef.current?.focus();
-
-    expect(document.activeElement).toEqual(rootRef.current);
-  });
-
-  it('cannot be focused when rendered as an anchor and disabled has been passed to the component', () => {
-    const rootRef = React.createRef<HTMLAnchorElement>();
-
-    render(
-      <Link href="https://www.bing.com" disabled ref={rootRef}>
-        This is a link
-      </Link>,
-    );
-
-    expect(typeof rootRef.current).toEqual('object');
-    expect(document.activeElement).not.toEqual(rootRef.current);
-
-    rootRef.current?.focus();
-
-    expect(document.activeElement).not.toEqual(rootRef.current);
-  });
-
-  it('cannot be focused when rendered as a button and disabled has been passed to the component', () => {
-    const rootRef = React.createRef<HTMLAnchorElement>();
-
-    render(
-      <Link disabled ref={rootRef}>
-        This is a link
-      </Link>,
-    );
-
-    expect(typeof rootRef.current).toEqual('object');
-    expect(document.activeElement).not.toEqual(rootRef.current);
-
-    rootRef.current?.focus();
-
-    expect(document.activeElement).not.toEqual(rootRef.current);
-  });
-
-  it('can be focused when rendered as an anchor and disabledFocusable has been passed to the component', () => {
-    const rootRef = React.createRef<HTMLAnchorElement>();
-
-    render(
-      <Link href="https://www.bing.com" disabledFocusable ref={rootRef}>
-        This is a link
-      </Link>,
-    );
-
-    expect(typeof rootRef.current).toEqual('object');
-    expect(document.activeElement).not.toEqual(rootRef.current);
-
-    rootRef.current?.focus();
-
-    expect(document.activeElement).toEqual(rootRef.current);
-  });
-
-  it('can be focused when rendered as a button and disabledFocusable has been passed to the component', () => {
-    const rootRef = React.createRef<HTMLAnchorElement>();
-
-    render(
-      <Link disabledFocusable ref={rootRef}>
-        This is a link
-      </Link>,
-    );
-
-    expect(typeof rootRef.current).toEqual('object');
-    expect(document.activeElement).not.toEqual(rootRef.current);
-
-    rootRef.current?.focus();
-
-    expect(document.activeElement).toEqual(rootRef.current);
+      expect(document.activeElement).not.toEqual(button);
+      button.focus();
+      expect(document.activeElement).toEqual(button);
+    });
   });
 });

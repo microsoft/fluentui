@@ -64,6 +64,11 @@ export interface ILineChartProps extends ICartesianChartProps {
    * @default false
    */
   allowMultipleShapesForPoints?: boolean;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];

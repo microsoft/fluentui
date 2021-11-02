@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Keytips: Make keytips aware of the visibility of their targets",
+  "packageName": "@fluentui/react",
+  "email": "jspurlin@microsoft.com",
+  "dependentChangeType": "patch"
+}
