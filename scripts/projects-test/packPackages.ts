@@ -6,7 +6,7 @@ import sh from '../gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
 
-import { createTempDir } from './utils';
+import { createTempDir, shEcho } from './utils';
 
 type PackedPackages = Record<string, string>;
 
@@ -61,6 +61,9 @@ export async function packProjectPackages(
 
   const tmpDirectory = createTempDir('project-packed-');
   logger(`✔️ Temporary directory for packed packages was created: ${tmpDirectory}`);
+
+  await shEcho('which npm', tmpDirectory);
+  await shEcho('npm --version', tmpDirectory);
 
   await Promise.all(
     requiredPackages.map(async packageName => {
