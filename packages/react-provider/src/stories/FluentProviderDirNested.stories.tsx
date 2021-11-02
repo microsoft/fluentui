@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { FluentProvider } from '@fluentui/react-provider'; // codesandbox-dependency: @fluentui/react-provider ^9.0.0-beta
+import { FluentProvider } from '@fluentui/react-provider';
 
 const useStyles = makeStyles({
   example: {
