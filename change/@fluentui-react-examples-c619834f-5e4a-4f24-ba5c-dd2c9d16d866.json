@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "cherry-pick fix(DetailsList): add accessible name to group header checkboxes",
-  "packageName": "@fluentui/react-examples",
-  "email": "imoreira@microsoft.com",
-  "dependentChangeType": "patch"
-}
