@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 02 Nov 2021 12:30:11 GMT",
+      "tag": "office-ui-fabric-react_v7.178.1",
+      "version": "7.178.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Slider to fire onChanged when Home and End are pressed",
+            "author": "ololubek@microsoft.com",
+            "commit": "f157072a530201bbe3c12bc172549799d92ae748",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Oct 2021 12:26:43 GMT",
       "tag": "office-ui-fabric-react_v7.178.0",
       "version": "7.178.0",

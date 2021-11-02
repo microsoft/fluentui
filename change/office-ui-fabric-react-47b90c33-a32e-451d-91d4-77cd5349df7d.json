@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Slider to fire onChanged when Home and End are pressed",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}
