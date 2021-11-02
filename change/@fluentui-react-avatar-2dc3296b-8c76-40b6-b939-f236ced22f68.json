@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removed duplicate 'Avatar' from story names",
-  "packageName": "@fluentui/react-avatar",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

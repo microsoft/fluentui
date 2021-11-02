@@ -2,11 +2,9 @@
 
 exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = `
 <div>
-  <div
-    aria-label="Links of Large Tabs Pivot Example"
-    role="toolbar"
-  >
+  <div>
     <div
+      aria-label="Links of Large Tabs Pivot Example"
       className=
           ms-FocusZone
           ms-Pivot
