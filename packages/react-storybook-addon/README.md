@@ -9,7 +9,7 @@ These are not production-ready components and **should never be used in product*
 **Toolbar/Tools**
 
 - adds fluent theme switcher
-  - ![Fluent Theme Switcher](https://user-images.githubusercontent.com/1223799/128166633-bd6a7ad3-fe1a-438c-823c-228a4d3dcf09.png)
+  - ![Fluent Theme Switcher](https://user-images.githubusercontent.com/20744592/138872560-8ef40c25-193c-47db-a216-7c1e86fe8cda.png)
 
 ## Getting Started
 
