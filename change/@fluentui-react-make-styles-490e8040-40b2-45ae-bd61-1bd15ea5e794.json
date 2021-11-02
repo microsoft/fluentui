@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Moved basic and RTL stories to fluentprovider",
   "packageName": "@fluentui/react-make-styles",
   "email": "gcox@microsoft.com",
