@@ -7,7 +7,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { getAccessibleDataObject } from '../../utilities/index';
+import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
 export interface IDonutChartState {
@@ -98,6 +98,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const legendBars = this._createLegends(data!, palette);
     const outerRadius = Math.min(this.state._width!, this.state._height!) / 2;
     const chartData = data && data.chartData;
+    const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
     return (
       <div
         className={this._classNames.root}
@@ -122,7 +123,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
                 calloutId={this._calloutId}
-                valueInsideDonut={this._valueInsideDonut(this.props.valueInsideDonut!, chartData!)}
+                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
                 theme={this.props.theme!}
               />
             </svg>
@@ -148,6 +149,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
               Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend}
               YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.value}
               color={this.state.color}
+              culture={this.props.culture}
             />
           )}
         </Callout>
@@ -280,5 +282,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     } else {
       return valueInsideDonut;
     }
+  }
+
+  private _toLocaleString(data: string | number | undefined) {
+    const localeString = convertToLocaleString(data, this.props.culture);
+    if (!localeString) {
+      return data;
+    }
+    return localeString?.toString();
   }
 }

@@ -16,7 +16,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
   public render(): JSX.Element {
     const { data, width, height, colors, chartTitle } = this.props;
 
-    const { theme, className, styles } = this.props;
+    const { theme, className, styles, culture } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: width!,
@@ -30,6 +30,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
       <div className={this._classNames.root}>
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie
+          culture={culture}
           width={width!}
           height={height!}
           outerRadius={outerRadius}

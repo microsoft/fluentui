@@ -1,8 +1,7 @@
-import { Image } from '../index';
+import { Image } from '../Image';
 import type { Meta } from '@storybook/react';
 import descriptionMd from './ImageDescription.md';
 import bestPracticesMd from './ImageBestPractices.md';
-
 export { Default } from './ImageDefault.stories';
 export { Shape } from './ImageShape.stories';
 export { Bordered } from './ImageBordered.stories';

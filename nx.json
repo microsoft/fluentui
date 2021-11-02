@@ -201,9 +201,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-compose": {
-      "implicitDependencies": []
-    },
     "@fluentui/react-conformance": {
       "implicitDependencies": []
     },
@@ -335,9 +332,6 @@
     },
     "@fluentui/react-switch": {
       "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
-    "@fluentui/react-tabs": {
       "implicitDependencies": []
     },
     "@fluentui/react-tabster": {

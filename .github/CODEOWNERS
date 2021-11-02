@@ -23,7 +23,7 @@
 #### Build folders
 /.codesandbox/ @microsoft/fluentui-react-build
 /.devops/ @microsoft/fluentui-react-build
-/.github/ @microsoft/fluentui-react-build
+/.github/workflows/ @microsoft/fluentui-react-build
 /.githooks/ @microsoft/fluentui-react-build
 /.storybook/ @microsoft/fluentui-react-build
 /.vscode/ @microsoft/fluentui-react-build
@@ -54,6 +54,7 @@
 /LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
 /packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
 /.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone @jurokapsiar
+/.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar
 
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
@@ -65,8 +66,8 @@ packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 
 #### Apps
 # component-demo/
-public-docsite/ @ecraig12345
-public-docsite-resources/ @ecraig12345 @justSlone
+public-docsite/ @ecraig12345 @micahgodbolt
+public-docsite-resources/ @ecraig12345 @micahgodbolt
 perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
 # todo-app/
@@ -93,7 +94,7 @@ packages/react-charting/ @Raghurk
 packages/react-conformance-make-styles/ @microsoft/teams-prg
 packages/react-context-selector/ @microsoft/teams-prg
 packages/react-date-time @lorejoh12 @evlevy
-packages/react-docsite-components/ @ecraig12345
+packages/react-docsite-components/ @ecraig12345 @micahgodbolt
 packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/react-hooks/ @microsoft/cxe-red @ecraig12345
 packages/react-make-styles/ @microsoft/teams-prg
@@ -141,7 +142,6 @@ packages/react-provider/ @microsoft/teams-prg
 packages/react-radio/ @microsoft/cxe-prg
 packages/react-slider/ @microsoft/cxe-red @khmakoto @ecraig12345
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
-packages/react-tabs/ @microsoft/cxe-red @behowell @khmakoto
 packages/react-text/ @microsoft/cxe-prg
 packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
 

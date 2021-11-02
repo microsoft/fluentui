@@ -1,8 +1,84 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 12 Oct 2021 19:45:58 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Oct 2021 12:14:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.3)
+
+Wed, 27 Oct 2021 12:14:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-beta.2..@fluentui/react-components_v9.0.0-beta.3)
+
+### Changes
+
+- `@fluentui/babel-make-styles`
+  - Handle styles defined in an arrow function without any params ([PR #19894](https://github.com/microsoft/fluentui/pull/19894) by elcraig@microsoft.com)
+- `@fluentui/make-styles`
+  - fix(makeStyles): handle comma separated selectors ([PR #20348](https://github.com/microsoft/fluentui/pull/20348) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-aria`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-avatar`
+  - Removed duplicate 'Avatar' from story names ([PR #20264](https://github.com/microsoft/fluentui/pull/20264) by gcox@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-badge`
+  - Removed duplicate 'Badge' from story names ([PR #20265](https://github.com/microsoft/fluentui/pull/20265) by gcox@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-button`
+  - Removed duplicate 'Button' from story names ([PR #20266](https://github.com/microsoft/fluentui/pull/20266) by gcox@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-card`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-checkbox`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-components`
+  - Authored slots documentation ([PR #20318](https://github.com/microsoft/fluentui/pull/20318) by gcox@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-divider`
+  - Removed duplicate 'Divider' from story names ([PR #20267](https://github.com/microsoft/fluentui/pull/20267) by gcox@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-image`
+  - Removed duplicate 'Image' from story names ([PR #20268](https://github.com/microsoft/fluentui/pull/20268) by gcox@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-label`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+  - Removed duplicate 'Label' from story names ([PR #20269](https://github.com/microsoft/fluentui/pull/20269) by gcox@microsoft.com)
+- `@fluentui/react-link`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-make-styles`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-menu`
+  - Simplify type for MenuOpenChangeData ([PR #20096](https://github.com/microsoft/fluentui/pull/20096) by olfedias@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-popover`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+  - Simplify type for OnOpenChangeData ([PR #20096](https://github.com/microsoft/fluentui/pull/20096) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - Removed duplicate 'Portal' from story names ([PR #20270](https://github.com/microsoft/fluentui/pull/20270) by gcox@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-positioning`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-provider`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-slider`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-switch`
+  - Changing the Switch's onKeyDown event to onKeyUp. ([PR #20217](https://github.com/microsoft/fluentui/pull/20217) by czearing@outlook.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-tabster`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-text`
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-theme`
+  - fix(reat-theme): Remove template literal types for color palette ([PR #20251](https://github.com/microsoft/fluentui/pull/20251) by lingfangao@hotmail.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-tooltip`
+  - Removed duplicate 'Tooltip' from story names ([PR #20271](https://github.com/microsoft/fluentui/pull/20271) by gcox@microsoft.com)
+  - added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- `@fluentui/react-utilities`
+  - remove compat utilities and types ([PR #20255](https://github.com/microsoft/fluentui/pull/20255) by olfedias@microsoft.com)
+  - fix(getNativeElementPrps): Add support for `onAuxClick` ([PR #20343](https://github.com/microsoft/fluentui/pull/20343) by lingfangao@hotmail.com)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.2)
 

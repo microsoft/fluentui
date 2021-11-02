@@ -2,7 +2,6 @@ import { Menu } from '../index';
 
 import descriptionMd from './MenuDescription.md';
 import bestPracticesMd from './MenuBestPractices.md';
-
 export { Default } from './MenuDefault.stories';
 export { Interaction } from './MenuInteraction.stories';
 export { MenuItemsWithIcons } from './MenuMenuItemsWithIcons.stories';

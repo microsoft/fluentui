@@ -1,8 +1,17 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Wed, 06 Oct 2021 10:37:22 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Oct 2021 12:14:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-beta.1..@fluentui/make-styles_v9.0.0-beta.2)
+
+### Changes
+
+- fix(makeStyles): handle comma separated selectors ([PR #20348](https://github.com/microsoft/fluentui/pull/20348) by olfedias@microsoft.com)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-beta.1)
 
