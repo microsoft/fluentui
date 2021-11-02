@@ -1788,7 +1788,7 @@ Array [
                         role="presentation"
                       >
                         <div
-                          aria-rowindex={1}
+                          aria-rowindex={2}
                           className=
                               ms-FocusZone
                               ms-DetailsRow
@@ -3095,7 +3095,7 @@ Array [
                         role="presentation"
                       >
                         <div
-                          aria-rowindex={1}
+                          aria-rowindex={2}
                           className=
                               ms-FocusZone
                               ms-DetailsRow
