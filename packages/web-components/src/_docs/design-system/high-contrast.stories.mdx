@@ -18,9 +18,9 @@ High contrast mode uses the CSS media feature, [`forced-colors`](https://develop
 
 FAST has a [forcedColorsStylesheetBehavior](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/utilities/match-media-stylesheet-behavior.ts) utility function that is used to construct `forced-colors` in a stylesheet. This function is passed to the `withBehavior` function from the `css` tagged template object.
 
-:::note
-The reason for this behavior is to avoid the runtime cost of applying `forced-color` style rules when the UA does not match the `forced-colors` @media query. FAST exposes a behavior that conditionally adds and removes stylesheets based on this media query, so forced-colors' stylesheets can then be conditionally applied where necessary.
-:::
+> **Note**:
+>
+> The reason for this behavior is to avoid the runtime cost of applying `forced-color` style rules when the UA does not match the `forced-colors` @media query. FAST exposes a behavior that conditionally adds and removes stylesheets based on this media query, so forced-colors' stylesheets can then be conditionally applied where necessary.
 
 **Example**
 
@@ -150,10 +150,10 @@ After adding `forced-colors` and applying `SystemColors` keywords, the accent bu
 
 ![Accent button forced colors](https://static.fast.design/assets/high-contrast/accent-with-forced-colors.png)
 
-:::note
-[forced-color-adjust](https://www.w3.org/TR/css-color-adjust-1/#forced), controls whether the UA system theme color override, should be applied to an element and its descendants.
-The example is set to `none`, because we are overriding to remove the backplate on the text content in the control, that the UA sets on text elements.
-:::
+> **Note**:
+>
+> [forced-color-adjust](https://www.w3.org/TR/css-color-adjust-1/#forced), controls whether the UA system theme color override, should be applied to an element and its descendants.
+> The example is set to `none`, because we are overriding to remove the backplate on the text content in the control, that the UA sets on text elements.
 
 ### Further resources
 

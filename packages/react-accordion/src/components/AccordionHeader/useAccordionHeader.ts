@@ -4,6 +4,8 @@ import { useAccordionItemContext } from '../AccordionItem/index';
 import { AccordionHeaderExpandIcon } from './AccordionHeaderExpandIcon';
 import { useARIAButton } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { AccordionContext } from '../Accordion/AccordionContext';
 
 /**
  * Const listing which props are shorthand props.
@@ -25,10 +27,21 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   const { icon, button, children, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
 
+  /**
+   * force disabled state on button if accordion isn't collapsible
+   * and this is the only item opened
+   */
+  const disabledFocusable = useContextSelector(
+    AccordionContext,
+    ctx => !ctx.collapsible && ctx.openItems.length === 1 && open,
+  );
+
   const buttonShorthand = useARIAButton(button, {
     required: true,
     defaultProps: {
       disabled,
+      disabledFocusable,
+      'aria-expanded': open,
     },
   });
 

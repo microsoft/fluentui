@@ -2,11 +2,9 @@
 
 exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
 <div>
-  <div
-    aria-label="Remove Pivot Example"
-    role="toolbar"
-  >
+  <div>
     <div
+      aria-label="Remove Pivot Example"
       className=
           ms-FocusZone
           ms-Pivot

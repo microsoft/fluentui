@@ -21,8 +21,8 @@ OutOfOffice.parameters = {
   docs: {
     description: {
       story:
-        'A PresenceBadge supports `available`, `away`, `busy`, `doNotDisutrb`, ' +
-        '`offline`, and `outOfOffice` status on outOfOffice mode',
+        'A PresenceBadge supports `available`, `away`, `busy`, `doNotDisturb`, ' +
+        '`offline`, and `outOfOffice` status on outOfOffice mode.',
     },
   },
 };

@@ -150,7 +150,7 @@ function processDefinitions(
 
   const styleSlots = definitionsPath.get('properties');
 
-  styleSlots.forEach(styleSlotPath => {
+  styleSlots.forEach((styleSlotPath: NodePath<t.SpreadElement | t.ObjectMethod | t.ObjectProperty>) => {
     if (styleSlotPath.isObjectMethod()) {
       throw styleSlotPath.buildCodeFrameError('Object methods are not supported for defining styles');
     }
@@ -269,25 +269,24 @@ function processDefinitions(
        * @example
        *    // ✔ can be resolved in AST
        *    makeStyles({ root: (t) => ({ color: t.red }) })
+       *    makeStyles({ root: () => ({ padding: '12px' }) })
        *    // ❌ lazy evaluation
        *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
        *    // ❌ lazy evaluation, the worst case as function contains body
        *    makeStyles({ root: (t) => { return { color: SOME_VARIABLE } } })
        */
       if (stylesPath.isArrowFunctionExpression()) {
+        const paramError = 'A function in makeStyles() can only have a single param (for tokens/theme)';
         if (stylesPath.get('params').length > 1) {
-          throw stylesPath.buildCodeFrameError('A function in makeStyles() can only a single param');
+          throw stylesPath.buildCodeFrameError(paramError);
         }
 
-        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node>;
+        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node> | undefined;
 
-        if (!paramsPath.isIdentifier()) {
-          throw stylesPath.buildCodeFrameError(
-            'A function in makeStyles() can only a single param and it should be a valid identifier',
-          );
+        if (paramsPath && !paramsPath.isIdentifier()) {
+          throw stylesPath.buildCodeFrameError(`${paramError} and it should be a valid identifier`);
         }
 
-        const paramsName = paramsPath.node.name;
         const bodyPath = stylesPath.get('body');
 
         /**
@@ -296,6 +295,7 @@ function processDefinitions(
          * @example
          *    // ✔ can be resolved in AST
          *    makeStyles({ root: (t) => ({ color: t.red }) })
+         *    makeStyles({ root: () => ({ padding: '12px' }) })
          *    // ❌ lazy evaluation
          *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
          */
@@ -318,13 +318,16 @@ function processDefinitions(
               // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
+                const paramsName = paramsPath?.node.name;
 
-                if (identifierPath.isIdentifier({ name: paramsName })) {
+                if (paramsName && identifierPath.isIdentifier({ name: paramsName })) {
                   const cssVariable = namesToCssVariable(getTokenParts(valuePath));
 
                   valuePath.replaceWith(t.stringLiteral(cssVariable));
+                  return;
                 }
 
+                lazyPaths.push(valuePath);
                 return;
               }
 
@@ -525,7 +528,10 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               const evaluationResult = (nodePath.get('argument') as NodePath<t.Expression>).evaluate();
 
               if (!evaluationResult.confident) {
-                throw nodePath.buildCodeFrameError(
+                // This is undocumented but shows the specific statement that failed
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const deoptPath = (evaluationResult as any).deopt as NodePath | undefined;
+                throw (deoptPath || nodePath).buildCodeFrameError(
                   'Evaluation of a code fragment failed, this is a bug, please report it',
                 );
               }
@@ -545,7 +551,9 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
             const evaluationResult = argumentPath.evaluate();
 
             if (!evaluationResult.confident) {
-              throw argumentPath.buildCodeFrameError(
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const deoptPath = (evaluationResult as any).deopt as NodePath | undefined;
+              throw (deoptPath || argumentPath).buildCodeFrameError(
                 'Evaluation of a code fragment failed, this is a bug, please report it',
               );
             }

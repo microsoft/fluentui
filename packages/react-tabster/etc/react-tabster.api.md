@@ -25,6 +25,13 @@ export const createFocusOutlineStyle: (theme: Theme, options?: {
 } & CreateFocusIndicatorStyleRuleOptions) => MakeStyles;
 
 // @public (undocumented)
+export enum FocusableGroupTabBehavior {
+    Limited,
+    LimitedTrapFocus,
+    Unlimited
+}
+
+// @public (undocumented)
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
 
 // @public (undocumented)
@@ -43,6 +50,14 @@ export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal';
     circular?: boolean;
     memorizeCurrent?: boolean;
+}
+
+// @public
+export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+
+// @public (undocumented)
+export interface UseFocusableGroupOptions {
+    tabBehavior?: FocusableGroupTabBehavior;
 }
 
 // @public

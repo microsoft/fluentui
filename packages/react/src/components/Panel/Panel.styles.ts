@@ -336,7 +336,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       isFooterAtBottom && {
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
-            height: `100%`,
+            minHeight: '100%',
           },
         },
       },

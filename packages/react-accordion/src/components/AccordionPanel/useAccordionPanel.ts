@@ -12,7 +12,6 @@ export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots> = ['
  * Returns the props and state required to render the component
  * @param props - AccordionPanel properties
  * @param ref - reference to root HTMLElement of AccordionPanel
- * @param defaultProps - default values for the properties of AccordionPanel
  */
 export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLElement>): AccordionPanelState => {
   const { open } = useAccordionItemContext();
