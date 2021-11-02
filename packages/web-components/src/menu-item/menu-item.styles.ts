@@ -203,31 +203,33 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
-        :host {
+        :host,
+        ::slotted([slot='end']:not(svg)) {
           forced-color-adjust: none;
-          border-color: transparent;
           color: ${SystemColors.ButtonText};
-          fill: ${SystemColors.ButtonText};
+          fill: currentcolor;
         }
-        :host(:hover) {
+        :host(:not([disabled]):hover) {
           background: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
+          fill: currentcolor;
         }
         :host(:hover) .start,
         :host(:hover) .end,
         :host(:hover)::slotted(svg),
         :host(:active) .start,
         :host(:active) .end,
-        :host(:active)::slotted(svg) {
-          fill: ${SystemColors.HighlightText};
+        :host(:active)::slotted(svg),
+        :host(:hover) ::slotted([slot='end']:not(svg)),
+        :host(:${focusVisible}) ::slotted([slot='end']:not(svg)) {
+          color: ${SystemColors.HighlightText};
+          fill: currentcolor;
         }
-
         :host(.expanded) {
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
         }
-
         :host(:${focusVisible}) {
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.ButtonText};
@@ -235,31 +237,31 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
           color: ${SystemColors.HighlightText};
           fill: currentcolor;
         }
-
         :host([disabled]),
         :host([disabled]:hover),
         :host([disabled]:hover) .start,
         :host([disabled]:hover) .end,
-        :host([disabled]:hover)::slotted(svg) {
-          background: ${SystemColors.Canvas};
+        :host([disabled]:hover)::slotted(svg),
+        :host([disabled]:${focusVisible}) {
+          background: ${SystemColors.ButtonFace};
           color: ${SystemColors.GrayText};
           fill: currentcolor;
           opacity: 1;
         }
-
+        :host([disabled]:${focusVisible}) {
+          border-color: ${SystemColors.GrayText};
+        }
         :host .expanded-toggle,
         :host .checkbox,
         :host .radio {
           border-color: ${SystemColors.ButtonText};
           background: ${SystemColors.HighlightText};
         }
-
         :host([checked]) .checkbox,
         :host([checked]) .radio {
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.HighlightText};
         }
-
         :host(:hover) .expanded-toggle,
             :host(:hover) .checkbox,
             :host(:hover) .radio,
@@ -272,18 +274,15 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
             :host([checked]:${focusVisible}) .radio {
           border-color: ${SystemColors.HighlightText};
         }
-
         :host([aria-checked='true']) {
           background: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
         }
-
         :host([aria-checked='true']) .checkbox-indicator,
         :host([aria-checked='true']) ::slotted([slot='checkbox-indicator']),
         :host([aria-checked='true']) ::slotted([slot='radio-indicator']) {
           fill: ${SystemColors.Highlight};
         }
-
         :host([aria-checked='true']) .radio-indicator {
           background: ${SystemColors.Highlight};
         }

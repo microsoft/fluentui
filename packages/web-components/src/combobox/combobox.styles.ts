@@ -1,5 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { ComboboxOptions, disabledCursor, ElementDefinitionContext, focusVisible } from '@microsoft/fast-foundation';
+import { ComboboxOptions, disabledCursor, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 import { selectFilledStyles, selectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { strokeWidth, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
@@ -43,4 +44,5 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
     .selected-value:active {
         outline: none;
     }
-`.withBehaviors(appearanceBehavior('filled', selectFilledStyles(context, definition)));
+`.withBehaviors(
+  appearanceBehavior('filled', selectFilledStyles(context, definition)));

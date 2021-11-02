@@ -79,17 +79,15 @@ export const progressRingStyles: (
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
-        .indeterminate-indicator-1,
-        .determinate {
-          stroke: ${SystemColors.FieldText};
-        }
         .background {
           stroke: ${SystemColors.Field};
         }
-        :host(.paused) .indeterminate-indicator-1 {
-          stroke: ${SystemColors.Field};
+        .determinate,
+        .indeterminate-indicator-1 {
+          stroke: ${SystemColors.ButtonText};
         }
-        :host(.paused) .determinate {
+        :host(.paused) .determinate,
+        :host(.paused) .indeterminate-indicator-1 {
           stroke: ${SystemColors.GrayText};
         }
       `,
