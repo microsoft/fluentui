@@ -1,5 +1,5 @@
 import * as React from 'react';
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 /* eslint-enable @typescript-eslint/ban-ts-comment */

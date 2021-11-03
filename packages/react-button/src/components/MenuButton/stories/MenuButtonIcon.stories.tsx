@@ -1,9 +1,8 @@
 import * as React from 'react';
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { CalendarMonth24Regular, Filter24Regular } from '@fluentui/react-icons';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-/* eslint-enable @typescript-eslint/ban-ts-comment */
+import { CalendarMonth24Regular, Filter24Regular } from '@fluentui/react-icons';
 import { MenuButton } from '../../../MenuButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
 
 export const Icon = () => (

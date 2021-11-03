@@ -1,9 +1,8 @@
 import * as React from 'react';
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-// @ts-ignore
-import { SplitButton, SplitButtonProps } from './SplitButton';
+import { SplitButton } from './SplitButton';
 
 export const Default = (): JSX.Element => {
   return (
