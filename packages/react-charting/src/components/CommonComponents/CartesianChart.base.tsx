@@ -107,7 +107,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps } = this.props;
+    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps, culture } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -158,16 +158,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     let xScale: any;
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams);
+        xScale = createNumericXAxis(XAxisParams, culture);
         break;
       case XAxisTypes.DateAxis:
         xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
         break;
       case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!);
+        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams);
+        xScale = createNumericXAxis(XAxisParams, culture);
     }
 
     /*
