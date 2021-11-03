@@ -25,4 +25,4 @@ export const defaultTheme = themes[0];
 export type ThemeIds = typeof themes[number]['id'];
 export type ThemeLabels = typeof themes[number]['label'];
 
-export { Theme };
+export type { Theme };
