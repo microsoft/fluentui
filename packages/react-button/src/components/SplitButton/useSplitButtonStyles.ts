@@ -2,9 +2,11 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { SplitButtonState } from './SplitButton.types';
 
+export const splitButtonClassName = 'fui-SplitButton';
+
 const SplitButtonClassNames = {
-  primaryActionButton: 'SplitButton-primaryActionButton',
-  menuButton: 'SplitButton-menuButton',
+  primaryActionButton: `${splitButtonClassName}-primaryActionButton`,
+  menuButton: `${splitButtonClassName}-menuButton`,
 };
 
 const useFocusStyles = makeStyles({
@@ -139,6 +141,7 @@ export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState 
   const { appearance, block, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
+    splitButtonClassName,
     rootStyles.base,
     block && rootStyles.block,
     appearance && rootStyles[appearance],
