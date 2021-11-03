@@ -154,7 +154,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 - _**DOM** - how the component will be rendered as HTML elements_
 
 ```jsx
-<div className="fui-Slider-root">
+<div className="fui-Slider">
   <div className="fui-Slider-markContainer">
     <div className="fui-Slider-markItemContainer">
       <div className="fui-Slider-mark" />
