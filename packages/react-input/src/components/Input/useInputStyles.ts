@@ -33,21 +33,15 @@ const fieldHeights = {
   medium: '32px',
   large: '40px',
 };
-const borderRadius = (theme: Theme) => theme.borderRadiusMedium;
-const backgroundColors = {
-  /** for outline/filledLighter */
-  filledLighter: (theme: Theme) => theme.colorNeutralBackground1,
-  filledDarker: (theme: Theme) => theme.colorNeutralBackground3,
-  /** for underline */
-  transparent: (theme: Theme) => theme.colorTransparentBackground,
-};
 
 const useRootStyles = makeStyles({
   base: theme => ({
     display: 'flex',
-    alignItems: 'stretch',
+    alignItems: 'center',
     flexWrap: 'no-wrap',
+    gap: horizontalSpacing.xxs,
     fontFamily: theme.fontFamilyBase,
+    borderRadius: theme.borderRadiusMedium, // used for all but underline
     boxSizing: 'border-box',
     '*, *:before, *:after': {
       boxSizing: 'border-box',
@@ -55,27 +49,47 @@ const useRootStyles = makeStyles({
   }),
   small: theme => ({
     minHeight: fieldHeights.small,
+    padding: `0 ${horizontalSpacing.sNudge}`,
     ...contentSizes.caption1(theme),
   }),
   medium: theme => ({
-    minHeight: fieldHeights.medium, // minHeight not height in case of tall bookends
+    minHeight: fieldHeights.medium,
+    padding: `0 ${horizontalSpacing.mNudge}`,
     ...contentSizes.body1(theme),
   }),
   large: theme => ({
     minHeight: fieldHeights.large,
+    padding: `0 ${horizontalSpacing.m}`,
     ...contentSizes[400](theme),
+    gap: horizontalSpacing.sNudge,
   }),
   inline: {
     display: 'inline-flex',
   },
-  filled: theme => ({
-    // optional shadow for filled appearances
-    boxShadow: theme.shadow2,
-    borderRadius: borderRadius(theme), // needed for shadow
+  outline: theme => ({
+    background: theme.colorNeutralBackground1,
+    border: `1px solid ${theme.colorNeutralStroke1}`,
+    borderBottomColor: theme.colorNeutralStrokeAccessible,
   }),
-  disabled: {
+  underline: theme => ({
+    background: theme.colorTransparentBackground,
+    borderRadius: 0, // corners look strange if rounded
+    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
+  }),
+  filled: theme => ({
+    boxShadow: theme.shadow2, // optional shadow for filled appearances
+  }),
+  filledDarker: theme => ({
+    background: theme.colorNeutralBackground3,
+  }),
+  filledLighter: theme => ({
+    background: theme.colorNeutralBackground1,
+  }),
+  disabled: theme => ({
     cursor: 'not-allowed',
-  },
+    border: `1px solid ${theme.colorNeutralStrokeDisabled}`,
+    borderRadius: theme.borderRadiusMedium, // because underline doesn't usually have a radius
+  }),
 });
 
 const useInputElementStyles = makeStyles({
@@ -84,6 +98,8 @@ const useInputElementStyles = makeStyles({
     border: 'none', // input itself never has a border (this is handled by inputWrapper)
     padding: `0 ${horizontalSpacing.xxs}`,
     color: theme.colorNeutralForeground1,
+    // Use literal "transparent" (not from the theme) to always let the color from the root show through
+    background: 'transparent',
 
     '::placeholder': {
       color: theme.colorNeutralForeground4,
@@ -104,19 +120,6 @@ const useInputElementStyles = makeStyles({
     ...contentSizes[400](theme),
     padding: `0 ${horizontalSpacing.sNudge}`,
   }),
-  outline: theme => ({
-    // This is set on inputWrapper but doesn't inherit
-    background: backgroundColors.filledLighter(theme),
-  }),
-  underline: theme => ({
-    background: backgroundColors.transparent(theme),
-  }),
-  filledLighter: theme => ({
-    background: backgroundColors.filledLighter(theme),
-  }),
-  filledDarker: theme => ({
-    background: backgroundColors.filledDarker(theme),
-  }),
   disabled: theme => ({
     color: theme.colorNeutralForegroundDisabled,
     background: theme.colorTransparentBackground,
@@ -127,52 +130,7 @@ const useInputElementStyles = makeStyles({
   }),
 });
 
-const useInputWrapperStyles = makeStyles({
-  base: theme => ({
-    flexGrow: 1,
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'no-wrap',
-    gap: horizontalSpacing.xxs,
-
-    // This may need to be conditionally applied to start/end corners when bookend styling is added
-    borderRadius: borderRadius(theme),
-  }),
-  small: {
-    padding: `0 ${horizontalSpacing.sNudge}`,
-  },
-  medium: {
-    padding: `0 ${horizontalSpacing.mNudge}`,
-  },
-  large: {
-    padding: `0 ${horizontalSpacing.m}`,
-  },
-  outline: theme => ({
-    // Set this on inputWrapper rather than root since bookends will have separate background colors and borders
-    background: backgroundColors.filledLighter(theme),
-    border: `1px solid ${theme.colorNeutralStroke1}`,
-    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
-  }),
-  underline: theme => ({
-    backgroundColor: backgroundColors.transparent(theme),
-    borderRadius: 0, // corners look strange if rounded
-    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
-  }),
-  filledDarker: theme => ({
-    background: backgroundColors.filledDarker(theme),
-    border: `1px solid ${theme.colorTransparentStroke}`,
-  }),
-  filledLighter: theme => ({
-    background: backgroundColors.filledLighter(theme),
-    border: `1px solid ${theme.colorTransparentStroke}`,
-  }),
-  disabled: theme => ({
-    border: `1px solid ${theme.colorNeutralStrokeDisabled}`,
-    borderRadius: borderRadius(theme), // because underline doesn't usually have a radius
-  }),
-});
-
-const useInsideStyles = makeStyles({
+const useContentStyles = makeStyles({
   base: theme => ({
     color: theme.colorNeutralForeground3, // "icon color" in design spec
     // special case styling for icons (most common case) to ensure they're centered vertically
@@ -187,18 +145,18 @@ const useInsideStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles = (state: InputState): InputState => {
-  const { size = 'medium', appearance = 'outline' } = state;
+  const { fieldSize = 'medium', appearance = 'outline' } = state;
   const disabled = state.input.disabled;
+  const filled = appearance.startsWith('filled');
+
   const rootStyles = useRootStyles();
   const inputStyles = useInputElementStyles();
-  const inputWrapperStyles = useInputWrapperStyles();
-  const insideStyles = useInsideStyles();
-
-  const filled = appearance.startsWith('filled');
+  const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
     rootStyles.base,
-    rootStyles[size],
+    rootStyles[fieldSize],
+    rootStyles[appearance],
     state.inline && rootStyles.inline,
     filled && rootStyles.filled,
     disabled && rootStyles.disabled,
@@ -207,26 +165,17 @@ export const useInputStyles = (state: InputState): InputState => {
 
   state.input.className = mergeClasses(
     inputStyles.base,
-    inputStyles[size],
-    inputStyles[appearance],
+    inputStyles[fieldSize],
     disabled && inputStyles.disabled,
     state.input.className,
   );
 
-  state.inputWrapper.className = mergeClasses(
-    inputWrapperStyles.base,
-    inputWrapperStyles[size],
-    inputWrapperStyles[appearance],
-    disabled && inputWrapperStyles.disabled,
-    state.inputWrapper.className,
-  );
-
-  const insideClasses = [insideStyles.base, disabled && insideStyles.disabled];
-  if (state.insideStart) {
-    state.insideStart.className = mergeClasses(...insideClasses, state.insideStart.className);
+  const contentClasses = [contentStyles.base, disabled && contentStyles.disabled];
+  if (state.contentBefore) {
+    state.contentBefore.className = mergeClasses(...contentClasses, state.contentBefore.className);
   }
-  if (state.insideEnd) {
-    state.insideEnd.className = mergeClasses(...insideClasses, state.insideEnd.className);
+  if (state.contentAfter) {
+    state.contentAfter.className = mergeClasses(...contentClasses, state.contentAfter.className);
   }
 
   return state;

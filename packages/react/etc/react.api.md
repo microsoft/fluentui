@@ -6664,6 +6664,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;

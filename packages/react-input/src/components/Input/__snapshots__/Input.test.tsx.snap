@@ -5,13 +5,9 @@ exports[`Input renders a default state 1`] = `
   <span
     class=""
   >
-    <span
+    <input
       class=""
-    >
-      <input
-        class=""
-      />
-    </span>
+    />
   </span>
 </div>
 `;

@@ -44,6 +44,7 @@
 /tsconfig.base.json @microsoft/fluentui-react-build
 /yarn.lock @microsoft/fluentui-react-build
 /*.config.js @microsoft/fluentui-react-build
+/typings @microsoft/fluentui-react-build
 
 #### NX related files
 /nx.json @microsoft/fluentui-react-build

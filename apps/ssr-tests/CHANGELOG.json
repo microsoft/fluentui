@@ -2,6 +2,21 @@
   "name": "ssr-tests",
   "entries": [
     {
+      "date": "Wed, 03 Nov 2021 07:36:03 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ssr-tests",
+            "comment": "Bump @fluentui/react to v8.40.0",
+            "commit": "260f9a36c899ed1bbc7d471ec48c72e768d01997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Nov 2021 07:37:02 GMT",
       "tag": "ssr-tests_v1.0.0",
       "version": "1.0.0",
