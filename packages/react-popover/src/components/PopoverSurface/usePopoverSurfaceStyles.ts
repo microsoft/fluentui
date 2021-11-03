@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceState } from './PopoverSurface.types';
 
+export const popoverSurfaceClassName = 'fui-PopoverSurface';
+
 export const arrowHeights: Record<PopoverSize, number> = {
   small: 6,
   medium: 8,
@@ -86,6 +88,7 @@ const useStyles = makeStyles({
 export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurfaceState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    popoverSurfaceClassName,
     styles.root,
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
