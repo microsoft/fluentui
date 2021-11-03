@@ -17,6 +17,9 @@ export const renderSwitch: (state: SwitchState) => JSX.Element;
 export const Switch: ForwardRefComponent<SwitchProps>;
 
 // @public (undocumented)
+export const switchClassName = "fui-Switch";
+
+// @public (undocumented)
 export interface SwitchCommons {
     checked?: boolean;
     defaultChecked?: boolean;

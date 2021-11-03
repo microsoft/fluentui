@@ -34,12 +34,23 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
   },
   customLineColor: {
-    '--divider-color': '#FF00FF',
+    ':before': {
+      borderColor: '#FF00FF',
+    },
+    ':after': {
+      borderColor: '#FF00FF',
+    },
   },
   customLineStyle: {
     borderWidth: '2px',
-    '--divider-borderStyle': 'dashed',
-    '--divider-borderSize': '2px',
+    ':before': {
+      borderTopStyle: 'dashed',
+      borderTopWidth: '2px',
+    },
+    ':after': {
+      borderTopStyle: 'dashed',
+      borderTopWidth: '2px',
+    },
   },
 });
 

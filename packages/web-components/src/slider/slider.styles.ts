@@ -172,10 +172,15 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
           forced-color-adjust: none;
           background: ${SystemColors.FieldText};
         }
+        .thumb-cursor::after,
+        :host(:not(.disabled)) .thumb-cursor:hover::after,
+        :host(:not(.disabled)) .thumb-cursor:active::after {
+          background: ${SystemColors.Field};
+        }
         :host(:${focusVisible}) .thumb-cursor {
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
+          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
         }
         :host(.disabled) {
           opacity: 1;

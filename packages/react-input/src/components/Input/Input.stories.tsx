@@ -35,15 +35,15 @@ export const InputExamples = (
   const inputId1 = useId();
   // pass native input props to the internal input element and custom props to the root
   const { storyFilledBackground, ...rest } = args;
-  const inputProps = getNativeElementProps('input', rest, ['size']);
+  const inputProps = getNativeElementProps('input', rest);
   const props: Partial<InputProps> = { input: inputProps };
   for (const prop of Object.keys(rest) as (keyof InputProps)[]) {
     if (!(inputProps as Partial<InputProps>)[prop]) {
       props[prop] = rest[prop];
     }
   }
-  const SearchIcon = icons.search[props.size!];
-  const DismissIcon = icons.dismiss[props.size!];
+  const SearchIcon = icons.search[props.fieldSize!];
+  const DismissIcon = icons.dismiss[props.fieldSize!];
 
   return (
     <div className={mergeClasses(styles.container, storyFilledBackground && styles.storyFilledBackground)}>
@@ -52,7 +52,7 @@ export const InputExamples = (
         <label htmlFor={inputId1}>with a label</label>
         <Input {...props} id={inputId1} />
       </div>
-      <Input {...props} insideStart={<SearchIcon />} insideEnd={<DismissIcon />} />
+      <Input {...props} contentBefore={<SearchIcon />} contentAfter={<DismissIcon />} />
       <p>
         Some text with <Input {...props} inline /> inline input
       </p>
@@ -63,8 +63,8 @@ export const InputExamples = (
           disabled: true,
           placeholder: 'disabled',
         }}
-        insideStart={<SearchIcon />}
-        insideEnd={<DismissIcon />}
+        contentBefore={<SearchIcon />}
+        contentAfter={<DismissIcon />}
       />
       <Input
         {...props}
@@ -74,12 +74,15 @@ export const InputExamples = (
           placeholder: '300px width',
         }}
       />
+      <p>
+        Some text with <Input {...props} inline /> inline input
+      </p>
     </div>
   );
 };
 
 const argTypes: ArgTypes = {
-  size: { defaultValue: 'medium', control: { type: 'radio', options: ['small', 'medium', 'large'] } },
+  fieldSize: { defaultValue: 'medium', control: { type: 'radio', options: ['small', 'medium', 'large'] } },
   appearance: {
     defaultValue: 'outline',
     control: { type: 'radio', options: ['filledDarker', 'filledLighter', 'underline', 'outline'] },
@@ -90,6 +93,7 @@ const argTypes: ArgTypes = {
   // so they get passed through in the example via the input slot
   placeholder: { defaultValue: 'placeholder', control: { type: 'text' } },
   value: { control: { type: 'text' } },
+  disabled: { defaultValue: false, control: { type: 'boolean' } },
 };
 
 export default {

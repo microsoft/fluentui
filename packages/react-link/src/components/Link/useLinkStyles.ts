@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { LinkState } from './Link.types';
 
+export const linkClassName = 'fui-Link';
+
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
     textDecorationLine: 'underline',
@@ -85,6 +87,7 @@ const useStyles = makeStyles({
 export const useLinkStyles = (state: LinkState): LinkState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    linkClassName,
     styles.root,
     styles.focusIndicator,
     state.root.as === 'a' && state.root.href && styles.href,
