@@ -16,6 +16,9 @@ export interface VersionBumpGeneratorSchema {
 
   /**
    * Same kinds of bumps permitted by semver https://github.com/npm/node-semver
+   *
+   * With the addition of `nightly` which bumps the version down to 0.0.0. Since semver will
+   * match the prerelease tags in ascii order -> ^9.0.0-alpha will match ^9.0.0-nightly
    */
-  bumpType: string;
+  bumpType: 'prerelease' | 'major' | 'premajor' | 'minor' | 'preminor' | 'patch' | 'prepatch' | 'nightly';
 }

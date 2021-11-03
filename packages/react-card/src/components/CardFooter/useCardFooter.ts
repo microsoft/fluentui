@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import type { CardFooterProps, CardFooterShorthandProps, CardFooterState } from './CardFooter.types';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import type { CardFooterProps, CardFooterSlots, CardFooterState } from './CardFooter.types';
 
 /**
  * Array of all shorthand properties listed in CardFooterShorthandProps
  */
-export const cardFooterShorthandProps: CardFooterShorthandProps[] = ['action'];
-
-const mergeProps = makeMergeProps<CardFooterState>({ deepMerge: cardFooterShorthandProps });
+export const cardFooterShorthandProps: Array<keyof CardFooterSlots> = ['root', 'action'];
 
 /**
  * Create the state required to render CardFooter.
@@ -17,20 +15,20 @@ const mergeProps = makeMergeProps<CardFooterState>({ deepMerge: cardFooterShorth
  *
  * @param props - props from this instance of CardFooter
  * @param ref - reference to root HTMLElement of CardFooter
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useCardFooter = (
-  props: CardFooterProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: CardFooterProps,
-): CardFooterState => {
-  const state = mergeProps(
-    {
-      ref,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, cardFooterShorthandProps),
-    resolveShorthandProps(props, cardFooterShorthandProps),
-  );
+export const useCardFooter = (props: CardFooterProps, ref: React.Ref<HTMLElement>): CardFooterState => {
+  const { action } = props;
 
-  return state;
+  return {
+    components: {
+      root: 'div',
+      action: 'div',
+    },
+
+    root: getNativeElementProps('div', {
+      ref,
+      ...props,
+    }),
+    action: resolveShorthand(action),
+  };
 };

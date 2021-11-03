@@ -27,10 +27,9 @@ export type AccordionCommons = {
 export const AccordionContext: Context<AccordionContextValue>;
 
 // @public (undocumented)
-export type AccordionContextValue = {
-    navigable: boolean;
+export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
     openItems: AccordionItemValue[];
-    requestToggle: AccordionToggleEventHandler;
+    requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 };
 
 // @public (undocumented)
@@ -100,15 +99,15 @@ export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 // @public (undocumented)
 export type AccordionItemCommons = {
     disabled: boolean;
+    value: AccordionItemValue;
 };
 
 // @public (undocumented)
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
 // @public (undocumented)
-export type AccordionItemContextValue = {
+export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
     open: boolean;
-    disabled: boolean;
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
 };
 
@@ -118,9 +117,7 @@ export type AccordionItemContextValues = {
 };
 
 // @public (undocumented)
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & {
-    value: AccordionItemValue;
-};
+export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & Pick<AccordionItemCommons, 'value'>;
 
 // @public
 export const accordionItemShorthandProps: Array<keyof AccordionItemSlots>;
@@ -196,7 +193,7 @@ export const renderAccordionItem: (state: AccordionItemState, contextValues: Acc
 // @public
 export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
 
-// @public (undocumented)
+// @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public (undocumented)

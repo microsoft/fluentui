@@ -207,11 +207,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const doc = this._getDocument();
 
     if (
+      !this.props.preventFocusRestoration &&
       doc &&
       this._lastIndexPath &&
-      (doc.activeElement === doc.body ||
-        doc.activeElement === null ||
-        (!this.props.preventFocusRestoration && doc.activeElement === root))
+      (doc.activeElement === doc.body || doc.activeElement === null || doc.activeElement === root)
     ) {
       // The element has been removed after the render, attempt to restore focus.
       const elementToFocus = getFocusableByIndexPath(root as HTMLElement, this._lastIndexPath);

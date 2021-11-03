@@ -475,4 +475,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * props to send to the focuszone
    */
   svgFocusZoneProps?: IFocusZoneProps;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }

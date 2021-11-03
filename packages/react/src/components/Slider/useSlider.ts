@@ -93,6 +93,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     styles,
     theme,
     originFromZero,
+    'aria-labelledby': ariaLabelledBy,
     'aria-label': ariaLabel,
     ranged,
     onChange,
@@ -432,6 +433,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       'aria-valuenow': value,
       'aria-valuetext': getAriaValueText(value),
       'aria-label': ariaLabel || label,
+      'aria-labelledby': ariaLabelledBy,
     }),
   };
 

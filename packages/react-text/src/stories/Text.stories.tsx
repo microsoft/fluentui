@@ -1,8 +1,7 @@
 import { Meta } from '@storybook/react';
 import { Text } from '../Text';
 import textDescriptionMd from './TextDescription.md';
-import textBestPracticesMd from './TextBestPractices.md';
-
+import textBestPractices from './TextBestPractices.md';
 export { Default } from './Default.stories';
 
 export default {
@@ -11,7 +10,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [textDescriptionMd, textBestPracticesMd].join('\n'),
+        component: [textDescriptionMd, textBestPractices].join('\n'),
       },
     },
   },

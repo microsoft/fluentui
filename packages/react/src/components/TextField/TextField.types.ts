@@ -169,6 +169,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   readOnly?: boolean;
 
   /**
+   * If true, the text field is invalid. Will be auto-determined by errorMessage unless set.
+   * @defaultvalue false
+   */
+  invalid?: boolean;
+
+  /**
    * Static error message displayed below the text field. Use `onGetErrorMessage` to dynamically
    * change the error message displayed (if any) based on the current value. `errorMessage` and
    * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).

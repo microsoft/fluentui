@@ -150,6 +150,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -284,6 +285,10 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -351,6 +356,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -452,6 +458,10 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -542,6 +552,10 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -610,6 +624,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
