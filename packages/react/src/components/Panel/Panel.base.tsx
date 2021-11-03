@@ -17,14 +17,11 @@ import {
   Async,
   EventGroup,
   initializeComponentRef,
-  getDocument,
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { PanelType } from './Panel.types';
-import { ScreenWidthMinMedium } from '../../Styling';
 import type { IProcessedStyleSet } from '../../Styling';
 import type { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
-import G = require('glob');
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 const COMPONENT_NAME = 'Panel';
@@ -191,11 +188,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       return null;
     }
 
-    const doc = getDocument();
-    // const docHeight = doc!.documentElement.scrollHeight
-    const documentHeight = doc!.getElementsByClassName('ms-Panel-content')[0]?.scrollHeight;
-
-    console.log('document height ', documentHeight);
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -210,7 +202,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       isHiddenOnDismiss,
       type,
       hasCustomNavigation: this._hasCustomNavigation,
-      documentHeight: documentHeight ?? 10,
     });
 
     const { _classNames, _allowTouchBodyScroll } = this;
