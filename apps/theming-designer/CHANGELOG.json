@@ -2,6 +2,27 @@
   "name": "theming-designer",
   "entries": [
     {
+      "date": "Wed, 03 Nov 2021 07:36:03 GMT",
+      "tag": "theming-designer_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "theming-designer",
+            "comment": "Bump @fluentui/react to v8.40.0",
+            "commit": "260f9a36c899ed1bbc7d471ec48c72e768d01997"
+          },
+          {
+            "author": "beachball",
+            "package": "theming-designer",
+            "comment": "Bump @fluentui/react-docsite-components to v8.3.53",
+            "commit": "260f9a36c899ed1bbc7d471ec48c72e768d01997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Nov 2021 07:37:02 GMT",
       "tag": "theming-designer_v1.0.0",
       "version": "1.0.0",
