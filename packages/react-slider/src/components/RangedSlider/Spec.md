@@ -123,7 +123,7 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
 - _**DOM** - how the component will be rendered as HTML elements_
 
 ```jsx
-<div className="fui-RangedSlider-root">
+<div className="fui-RangedSlider">
   <div className="fui-RangedSlider-markContainer">
     <div className="fui-RangedSlider-markItemContainer">
       <div className="fui-RangedSlider-mark" />
