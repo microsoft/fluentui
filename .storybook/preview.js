@@ -1,9 +1,9 @@
-import { withStrictMode } from '@fluentui/react-storybook';
+import { withFluentProvider, withStrictMode } from '@fluentui/react-storybook';
 import 'cypress-storybook/react';
 import * as dedent from 'dedent';
 
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
-export const decorators = [withStrictMode];
+export const decorators = [withFluentProvider, withStrictMode];
 
 /** @type {import('@storybook/react').Parameters} */
 export const parameters = {
