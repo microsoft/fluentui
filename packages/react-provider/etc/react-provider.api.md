@@ -21,6 +21,9 @@ import { useTheme } from '@fluentui/react-shared-contexts';
 export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
+export const fluentProviderClassName = "fui-FluentProvider";
+
+// @public (undocumented)
 export interface FluentProviderCommons {
     dir: 'ltr' | 'rtl';
     targetDocument: Document | undefined;
@@ -70,6 +73,9 @@ export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HT
 
 // @public (undocumented)
 export function useFluentProviderContextValues(state: FluentProviderState): FluentProviderContextValues;
+
+// @public
+export const useFluentProviderStyles: (state: FluentProviderState) => FluentProviderState;
 
 export { useTheme }
 

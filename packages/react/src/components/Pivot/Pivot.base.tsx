@@ -70,7 +70,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
 
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, focusZoneProps } = props;
+    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, overflowAriaLabel, focusZoneProps } = props;
 
     let classNames: { [key in keyof IPivotStyles]: string };
     const nameProps = {
@@ -275,6 +275,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
               componentRef={overflowMenuButtonComponentRef}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
+              ariaLabel={overflowAriaLabel}
             />
           )}
         </FocusZone>

@@ -1,8 +1,9 @@
 import * as rootPreview from '../../../.storybook/preview';
+// import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
+import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
 
 // load global styles
 import '../public/intro.css';
-import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 
 /** @type {NonNullable<typeof rootPreview.parameters['options']>} */
 const options = {
@@ -28,7 +29,9 @@ export const decorators = [...rootPreview.decorators];
 export const parameters = {
   ...rootPreview.parameters,
   docs: {
-    container: FluentDocsContainer,
+    ...rootPreview.parameters.docs,
+    page: FluentDocsPage,
+    // container: FluentDocsContainer,
   },
   options,
 };
