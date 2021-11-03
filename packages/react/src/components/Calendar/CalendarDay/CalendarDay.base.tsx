@@ -138,7 +138,7 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
           [classNames.disabledStyle]: !prevMonthInBounds,
         })}
         tabIndex={prevMonthInBounds ? undefined : allFocusable ? 0 : -1}
-        disabled={!prevMonthInBounds}
+        aria-disabled={!prevMonthInBounds}
         onClick={prevMonthInBounds ? onSelectPrevMonth : undefined}
         onKeyDown={prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined}
         title={
@@ -155,7 +155,7 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
           [classNames.disabledStyle]: !nextMonthInBounds,
         })}
         tabIndex={nextMonthInBounds ? undefined : allFocusable ? 0 : -1}
-        disabled={!nextMonthInBounds}
+        aria-disabled={!nextMonthInBounds}
         onClick={nextMonthInBounds ? onSelectNextMonth : undefined}
         onKeyDown={nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined}
         title={
