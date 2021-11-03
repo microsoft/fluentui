@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
 
+export const buttonClassName = 'fui-Button';
+
 // TODO: These are named in design specs but not hoisted to global/alias yet.
 //       We're tracking these here to determine how we can hoist them.
 export const buttonSpacing = {
@@ -363,6 +365,8 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
   const { appearance, block, disabled, disabledFocusable, iconOnly, shape, size } = state;
 
   state.root.className = mergeClasses(
+    buttonClassName,
+
     // Root styles
     rootStyles.base,
     block && rootStyles.block,
