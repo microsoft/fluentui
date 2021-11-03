@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "revert(react-storybook-addon): Remove addon and reintroduce `withFluentProvider`",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
