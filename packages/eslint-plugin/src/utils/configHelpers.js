@@ -136,7 +136,7 @@ module.exports = {
        * typically include will not be specified that way
        *
        * @type {{
-          extends: string[];
+          extends: string;
           include: string[];
           exclude: string[];
           compilerOptions: Record<string,unknown>;
@@ -144,6 +144,18 @@ module.exports = {
           }}
        */
     const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
+
+    /**
+     * Handle any necessary extends merging here, make sure to treat just like native tsconfigs would
+     */
+    if (tsconfig.extends) {
+      const parentTsConfigPath = path.join(path.dirname(tsconfigPath), tsconfig.extends);
+      /** @type { typeof tsconfig } */
+      const parentTsConfig = jju.parse(fs.readFileSync(parentTsConfigPath).toString());
+
+      // override exclude from parent tsconfig if it exists
+      tsconfig.exclude = tsconfig.exclude ? tsconfig.exclude : parentTsConfig.exclude;
+    }
 
     // if project is using solution TS style config (process references)
     if (tsconfig.references) {
