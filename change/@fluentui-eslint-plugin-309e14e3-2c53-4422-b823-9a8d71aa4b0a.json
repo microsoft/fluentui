@@ -3,5 +3,5 @@
   "comment": "support excluded files from being linted",
   "packageName": "@fluentui/eslint-plugin",
   "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
