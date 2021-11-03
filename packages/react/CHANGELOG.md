@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 02 Nov 2021 07:37:01 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Nov 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.40.0)
+
+Wed, 03 Nov 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.39.0..@fluentui/react_v8.40.0)
+
+### Minor changes
+
+- fix(Pivot): add overflow button aria-label prop ([PR #20443](https://github.com/microsoft/fluentui/pull/20443) by sarah.higley@microsoft.com)
 
 ## [8.39.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.39.0)
 
