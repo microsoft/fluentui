@@ -170,10 +170,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     hasCustomNavigation,
     theme,
     type = PanelType.smallFixedFar,
+    documentHeight,
   } = props;
   const { effects, fonts, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
+
+  console.log('document height', documentHeight);
 
   return {
     root: [
@@ -344,7 +347,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
             position: 'sticky',
-            bottom: 0,
+            top: '100%',
           },
         },
       },

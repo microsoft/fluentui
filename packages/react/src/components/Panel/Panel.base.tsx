@@ -24,6 +24,7 @@ import { PanelType } from './Panel.types';
 import { ScreenWidthMinMedium } from '../../Styling';
 import type { IProcessedStyleSet } from '../../Styling';
 import type { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
+import G = require('glob');
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 const COMPONENT_NAME = 'Panel';
@@ -190,6 +191,11 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       return null;
     }
 
+    const doc = getDocument();
+    // const docHeight = doc!.documentElement.scrollHeight
+    const documentHeight = doc!.getElementsByClassName('ms-Panel-content')[0]?.scrollHeight;
+
+    console.log('document height ', documentHeight);
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -204,6 +210,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       isHiddenOnDismiss,
       type,
       hasCustomNavigation: this._hasCustomNavigation,
+      documentHeight: documentHeight ?? 10,
     });
 
     const { _classNames, _allowTouchBodyScroll } = this;
@@ -220,8 +227,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
         />
       );
     }
-
-    const documentHeight = getDocument()!.documentElement.scrollHeight;
 
     return (
       <Layer {...layerProps}>
@@ -253,9 +258,8 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
                   {(this._hasCustomNavigation || !hasCloseButton) &&
                     onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
                   {onRenderBody(this.props, this._onRenderBody)}
-                  {documentHeight < ScreenWidthMinMedium && onRenderFooter(this.props, this._onRenderFooter)}
+                  {onRenderFooter(this.props, this._onRenderFooter)}
                 </div>
-                {documentHeight >= ScreenWidthMinMedium && onRenderFooter(this.props, this._onRenderFooter)}
               </div>
             </FocusTrapZone>
           </div>
