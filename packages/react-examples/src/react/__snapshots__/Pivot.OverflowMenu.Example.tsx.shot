@@ -1994,6 +1994,7 @@ Array [
           aria-controls={null}
           aria-expanded={false}
           aria-haspopup={true}
+          aria-label="more items"
           className=
               ms-Button
               ms-Button--action

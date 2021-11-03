@@ -9,4 +9,6 @@
  * https://storybook.js.org/docs/react/writing-stories/decorators#gatsby-focus-wrapper
  */
 
-export const decorators = [];
+import { withFluentProvider } from '../decorators/withFluentProvider';
+
+export const decorators = [withFluentProvider];

@@ -1,8 +1,85 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 26 Oct 2021 07:39:42 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Nov 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.40.0)
+
+Wed, 03 Nov 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.39.0..@fluentui/react_v8.40.0)
+
+### Minor changes
+
+- fix(Pivot): add overflow button aria-label prop ([PR #20443](https://github.com/microsoft/fluentui/pull/20443) by sarah.higley@microsoft.com)
+
+## [8.39.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.39.0)
+
+Tue, 02 Nov 2021 07:37:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.38.0..@fluentui/react_v8.39.0)
+
+### Minor changes
+
+- Keytips: Make keytips aware of the visibility of their targets ([PR #20396](https://github.com/microsoft/fluentui/pull/20396) by jspurlin@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.15 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.16 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/react-focus to v8.3.6 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/react-hooks to v8.3.5 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/style-utilities to v8.4.1 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/theme to v2.4.2 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/utilities to v8.3.5 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/common-styles to v1.0.21 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+
+### Patches
+
+- Adjust TimePicker regex and error message ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by tinakt3@gmail.com)
+
+## [8.38.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.38.0)
+
+Mon, 01 Nov 2021 07:32:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.6..@fluentui/react_v8.38.0)
+
+### Minor changes
+
+- Add alert tooltip to ColorPicker when invalid hex or RGBA values are entered" ([PR #20394](https://github.com/microsoft/fluentui/pull/20394) by sarah.higley@microsoft.com)
+- Calendar: move role="gridcell" to the td element and make it the focus target ([PR #20412](https://github.com/microsoft/fluentui/pull/20412) by sarah.higley@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.14 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.15 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/react-focus to v8.3.5 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/style-utilities to v8.4.0 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/common-styles to v1.0.20 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+
+### Patches
+
+- fix Combobox scroll into view method to not scroll + close combo menu ([PR #20414](https://github.com/microsoft/fluentui/pull/20414) by sarah.higley@microsoft.com)
+
+## [8.37.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.6)
+
+Fri, 29 Oct 2021 07:29:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.5..@fluentui/react_v8.37.6)
+
+### Patches
+
+- Remove explicit readonly semantics from Calendar grid ([PR #20324](https://github.com/microsoft/fluentui/pull/20324) by sarah.higley@microsoft.com)
+
+## [8.37.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.5)
+
+Thu, 28 Oct 2021 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.4..@fluentui/react_v8.37.5)
+
+### Patches
+
+- Slider: support aria-labelledby prop ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by trang.thule@zoho.com)
+
+## [8.37.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.4)
+
+Wed, 27 Oct 2021 07:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.37.3..@fluentui/react_v8.37.4)
+
+### Patches
+
+- Remove incorrect toolbar role from Pivot and pass accname attributes to the tablist ([PR #20317](https://github.com/microsoft/fluentui/pull/20317) by sarah.higley@microsoft.com)
+- ComboBox: Fix hidden options in multiSelect mode ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by 34309778+sgbdev@users.noreply.github.com)
 
 ## [8.37.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.37.3)
 

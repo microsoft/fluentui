@@ -84,16 +84,17 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
           :host(:hover),
           :host(.vertical:hover),
           :host([aria-selected='true']:hover) {
-            background: ${SystemColors.Highlight};
-            color: ${SystemColors.HighlightText};
+            background: transparent;
+            color: ${SystemColors.Highlight};
             fill: currentcolor;
           }
           :host([aria-selected='true']) {
-            background: ${SystemColors.HighlightText};
+            background: transparent;
             color: ${SystemColors.Highlight};
             fill: currentcolor;
           }
           :host(:${focusVisible}) {
+            background: transparent;
             border-color: ${SystemColors.ButtonText};
             box-shadow: none;
           }

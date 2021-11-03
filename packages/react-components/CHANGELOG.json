@@ -2,6 +2,347 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 27 Oct 2021 12:14:12 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/babel-make-styles",
+            "commit": "94f8668470838fa6d9ed3d2aa0dbeb1b0a8d6360",
+            "comment": "Handle styles defined in an arrow function without any params"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/make-styles",
+            "commit": "c6bc2b4129e8ec469ef89ac1e4d2fc10a2e7012d",
+            "comment": "fix(makeStyles): handle comma separated selectors"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-accordion",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-aria",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "31aa6d40ed6b3b411318d94fa56d4963b20b6e55",
+            "comment": "Removed duplicate 'Avatar' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-avatar",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "fd1d90fbddc49971db9f04e691d6dd16a0595f4a",
+            "comment": "Removed duplicate 'Badge' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-badge",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "1708c7b753fb7c9d6d726cfe75f07c6633caaebe",
+            "comment": "Removed duplicate 'Button' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-button",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-card",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-checkbox",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b209885366c2561c89ca63fb5f9d96b2890d412c",
+            "comment": "Authored slots documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-components",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "989d2382c1b8087cac2bb4bc30fa56c237c07a13",
+            "comment": "Removed duplicate 'Divider' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-divider",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "e71393ebda85c52094c46d42d93af1e642f21293",
+            "comment": "Removed duplicate 'Image' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-image",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-label",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "9a5055bbb719173bdfa5c82c1ab14f93efa9c736",
+            "comment": "Removed duplicate 'Label' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-link",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-make-styles",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "1efadb35b4fc630435968de2ee44fe80d539ba1a",
+            "comment": "Simplify type for MenuOpenChangeData"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-menu",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-popover",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "1efadb35b4fc630435968de2ee44fe80d539ba1a",
+            "comment": "Simplify type for OnOpenChangeData"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "d730088d7f6e5965ba5d5ed0d449e250f171d791",
+            "comment": "Removed duplicate 'Portal' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-portal",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-positioning",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-provider",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-slider",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "czearing@outlook.com",
+            "package": "@fluentui/react-switch",
+            "commit": "ae512f66872beea9d95a168d759406d42281d835",
+            "comment": "Changing the Switch's onKeyDown event to onKeyUp."
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-switch",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-tabster",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-text",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "f81b28ceb3d5d5d52a4f7e7ce50f99aed9832109",
+            "comment": "fix(reat-theme): Remove template literal types for color palette"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-theme",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "75a731d1410685b12a091dcd8a60c318f58260f6",
+            "comment": "Removed duplicate 'Tooltip' from story names"
+          },
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-tooltip",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "5cd2c86d041588c98747f16902ff99a7b41c10ac",
+            "comment": "remove compat utilities and types"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b5b740100714724214e097fae2f7c1f51f294e35",
+            "comment": "fix(getNativeElementPrps): Add support for `onAuxClick`"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "193af6527f202f11efdd71da7581cc6e76ca2925",
+            "comment": "replace temporary icons in stories"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "193af6527f202f11efdd71da7581cc6e76ca2925",
+            "comment": "remove unused story file"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7518a483df09e687ef56153d3f25da27802431a3",
+            "comment": "fix bundle size fixture"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "193af6527f202f11efdd71da7581cc6e76ca2925",
+            "comment": "remove unused story file"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "e2723666e63feb392712ade7aa477790a3e5b440",
+            "comment": "chore(Button): Make documentation exportable to codesandbox"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8bcee39f3aefc8d6dc1c1eb9f27aab901e7b55c9",
+            "comment": "remove playground from button examples"
+          },
+          {
+            "author": "ndresx@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "d8162eddd0a6ba0893a7984b8244a033f5cb0f39",
+            "comment": "Migrate react-checkbox tests to rtl"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "46b9ea7036258e7b2d44bf0534cb1d24085f3404",
+            "comment": "docs(Accessibility): Accessibility scenarios in storybook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "a303e113b2197701c4870e703f7b5255f4726326",
+            "comment": "fix(react-components): Storybook alphabetical sorting"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "193af6527f202f11efdd71da7581cc6e76ca2925",
+            "comment": "replace temporary icons in stories"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "138ac075ebfc80d8ed588e23177d14b70ca03593",
+            "comment": "Updated migration guide"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "8cee28054c8667836c0a7ffd69587b4da370658c",
+            "comment": "chore(Link): Make documentation exportable to codesandbox"
+          },
+          {
+            "author": "ndresx@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "63b209caf3d34e87c08cec16cfc2f7433f3cd65c",
+            "comment": "Migrate react-link tests to rtl"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "193af6527f202f11efdd71da7581cc6e76ca2925",
+            "comment": "remove unused file with icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Oct 2021 19:45:58 GMT",
       "tag": "@fluentui/react-components_v9.0.0-beta.2",
       "version": "9.0.0-beta.2",

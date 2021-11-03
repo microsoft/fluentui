@@ -151,64 +151,55 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
     forcedColorsStylesheetBehavior(
       css`
         .control {
-          forced-color-adjust: none;
           border-color: ${SystemColors.FieldText};
           background: ${SystemColors.Field};
         }
-        :host(:not(.disabled)) .control:hover,
-        .control:active {
+        :host(:not(.disabled):hover) .control,
+        :host(:not(.disabled):active) .control {
           border-color: ${SystemColors.Highlight};
           background: ${SystemColors.Field};
         }
-        slot[name='checked-indicator'] {
-          fill: ${SystemColors.FieldText};
-        }
+        slot[name='checked-indicator'],
         slot[name='indeterminate-indicator'] {
           fill: ${SystemColors.FieldText};
         }
         :host(:${focusVisible}) .control {
+          forced-color-adjust: none;
+          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
+          background: ${SystemColors.Field};
           border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
-        }
-        :host(.checked:${focusVisible}:not(.disabled)) .control {
-          box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
         }
         :host(.checked) .control {
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.Highlight};
         }
-        :host(.checked) .control:hover,
-        .control:active {
+        :host(.checked:not(.disabled):hover) .control,
+        :host(.checked:not(.disabled):active) .control {
           background: ${SystemColors.HighlightText};
+          border-color: ${SystemColors.Highlight};
         }
-        :host(.checked) slot[name='checked-indicator'] {
-          fill: ${SystemColors.HighlightText};
+        :host(.checked:${focusVisible}) .control {
+          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
         }
-        :host(.checked) .control:hover slot[name='checked-indicator'] {
-          fill: ${SystemColors.Highlight};
-        }
+        :host(.checked) slot[name='checked-indicator'],
         :host(.checked) slot[name='indeterminate-indicator'] {
           fill: ${SystemColors.HighlightText};
         }
-        :host(.checked) .control:hover slot[name='indeterminate-indicator'] {
+        :host(.checked:hover ) .control slot[name='checked-indicator'],
+        :host(.checked:hover ) .control slot[name='indeterminate-indicator'] {
           fill: ${SystemColors.Highlight};
         }
         :host(.disabled) {
           opacity: 1;
         }
         :host(.disabled) .control {
-          forced-color-adjust: none;
           border-color: ${SystemColors.GrayText};
           background: ${SystemColors.Field};
         }
-        :host(.disabled) slot[name='indeterminate-indicator'],
-        :host(.checked.disabled) .control:hover slot[name='indeterminate-indicator'] {
-          forced-color-adjust: none;
-          fill: ${SystemColors.GrayText};
-        }
         :host(.disabled) slot[name='checked-indicator'],
-        :host(.checked.disabled) .control:hover slot[name='checked-indicator'] {
-          forced-color-adjust: none;
+        :host(.checked.disabled:hover) .control slot[name='checked-indicator'],
+        :host(.disabled) slot[name='indeterminate-indicator'],
+        :host(.checked.disabled:hover) .control slot[name='indeterminate-indicator'] {
           fill: ${SystemColors.GrayText};
         }
       `,
