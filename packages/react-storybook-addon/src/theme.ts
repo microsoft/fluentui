@@ -5,8 +5,9 @@ import {
   teamsLightTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
-  Theme,
 } from '@fluentui/react-theme';
+
+import type { Theme } from '@fluentui/react-theme';
 
 export { FluentProvider } from '@fluentui/react-provider';
 
