@@ -1,7 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import {
-  thumbClassName,
-  trackClassName,
   useActiveRailStyles,
   useMarksWrapperStyles,
   useRailStyles,
@@ -14,6 +12,11 @@ import {
 } from '../Slider/useSliderStyles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';
+
+// These should be imported directly from useSliderStyles.ts, but currently it causes build issues
+// https://github.com/microsoft/fluentui/issues/20480
+const thumbClassName = `fui-Slider-thumb`;
+const trackClassName = `fui-Slider-track`;
 
 export const rangedSliderClassName = 'fui-RangedSlider';
 
