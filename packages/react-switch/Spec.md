@@ -86,10 +86,10 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 - _**DOM**_
 
 ```jsx=
-<div className="fui-switch-root">
-  <div className="fui-switch-track" />
-  <div className="fui-switch-thumbWrapper">
-    <div className="fui-switch-thumb" />
+<div className="fui-Switch">
+  <div className="fui-Switch-track" />
+  <div className="fui-Switch-thumbWrapper">
+    <div className="fui-Switch-thumb" />
   </div>
   <input type="checkbox" />
 </div>;
