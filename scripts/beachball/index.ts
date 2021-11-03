@@ -21,8 +21,8 @@ export const config: BeachballConfig = {
       // Following https://github.com/microsoft/fluentui/pull/20352 all prerelease versions are released with `latest`
       // Adds a post publish hook to continue to tag prerelease versions with appropriate tags
       // can be removed once v9 is fully released
-      if (version.indexOf('beta') !== -1 && process.env.RELEASE_VNEXT) {
-        const tag = 'beta';
+      const tag = 'beta';
+      if (version.includes(tag) && process.env.RELEASE_VNEXT) {
         try {
           console.log(`tagging ${name}@${version} with ${tag}`);
           const res = execSync(`npm dist-tag add ${name}@${version} ${tag}`);
