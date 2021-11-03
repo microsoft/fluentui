@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update story to test build - can ommit on merge",
-  "packageName": "@fluentui/react-menu",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

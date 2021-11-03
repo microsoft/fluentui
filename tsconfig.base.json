@@ -54,5 +54,5 @@
       "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "**/*.stories.tsx"]
+  "exclude": ["node_modules"]
 }
