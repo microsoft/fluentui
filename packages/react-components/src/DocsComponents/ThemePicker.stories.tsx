@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { MenuButton, Menu, MenuPopover, MenuItemRadio, MenuList, MenuTrigger, makeStyles } from '../index';
-import { PaintBucket24Filled } from '@fluentui/react-icons';
 import { themes, ThemeIds, setGlobalTheme } from '@fluentui/react-storybook-addon';
 
 const useStyles = makeStyles({
@@ -41,11 +40,7 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedTh
       checkedValues={{ theme: selectedThemeId ? [selectedThemeId] : [] }}
     >
       <MenuTrigger>
-        <MenuButton
-          className={styles.menuButton}
-          icon={<PaintBucket24Filled />}
-          menuIcon={{ className: styles.chevronIcon }}
-        >
+        <MenuButton className={styles.menuButton} menuIcon={{ className: styles.chevronIcon }}>
           {selectedTheme?.label ?? 'Theme'}
         </MenuButton>
       </MenuTrigger>
