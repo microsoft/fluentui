@@ -33,16 +33,16 @@ export const colors = {
   },
   brand: {
     50: '#e8ebfa',
-    100: '#dcdffa',
+    100: '#dce0fa',
     200: '#c5cbfa',
-    300: '#acb3fa',
-    400: '#9399f5',
-    450: '#9499f5',
-    500: '#7a80eb',
+    300: '#9299f7',
+    400: '#7f85f5',
+    450: '#7f85f5',
+    500: '#7579eb',
     600: '#5b5fc7',
-    700: '#444691',
-    800: '#3d3e78',
-    900: '#383966',
+    700: '#4f52b2',
+    800: '#444791',
+    900: '#3d3e78',
     1000: '#2f2f4a',
   },
 };
@@ -131,7 +131,7 @@ export const colorScheme = {
 
     borderHover: colors.brand['300'],
 
-    backgroundHover: colors.brand['700'],
+    backgroundHover: colors.brand['600'],
     backgroundHover1: colors.brand['50'],
 
     foregroundPressed: colors.brand['700'],
