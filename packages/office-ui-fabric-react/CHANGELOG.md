@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Nov 2021 12:30:11 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Nov 2021 12:29:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.179.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.0)
+
+Thu, 04 Nov 2021 12:29:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.178.1..office-ui-fabric-react_v7.179.0)
+
+### Minor changes
+
+- DetailsList: Making the disabled prop in IDetailsRowStyleProps optional as making it required is a breaking change. ([PR #20489](https://github.com/microsoft/fluentui/pull/20489) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Fix DetailsList off-by-one aria-rowindex values when headers are visible. ([PR #20461](https://github.com/microsoft/fluentui/pull/20461) by tristan.watanabe@gmail.com)
+- cherry-pick fix(DetailsList): add accessible name to group header checkboxes ([PR #20464](https://github.com/microsoft/fluentui/pull/20464) by imoreira@microsoft.com)
 
 ## [7.178.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.178.1)
 

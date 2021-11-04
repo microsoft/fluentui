@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix DetailsList off-by-one aria-rowindex values when headers are visible.",
-  "packageName": "office-ui-fabric-react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

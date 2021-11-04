@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 04 Nov 2021 12:29:25 GMT",
+      "tag": "office-ui-fabric-react_v7.179.0",
+      "version": "7.179.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailsList off-by-one aria-rowindex values when headers are visible.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "65c2c97966c75641a4c7bed4f0e7fffce8d248bb",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "cherry-pick fix(DetailsList): add accessible name to group header checkboxes",
+            "author": "imoreira@microsoft.com",
+            "commit": "2949f7573ef92037c25f98a564d9f0b2757ed3b1",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "DetailsList: Making the disabled prop in IDetailsRowStyleProps optional as making it required is a breaking change.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "060a8a3607cff2be04d8b1ffc18ed022516a82ee",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Nov 2021 12:30:11 GMT",
       "tag": "office-ui-fabric-react_v7.178.1",
       "version": "7.178.1",
