@@ -18,6 +18,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
+  const trapFocus = usePopoverContext(context => context.trapFocus);
   const { triggerAttributes } = useModalAttributes();
 
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -67,7 +68,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   return {
     children: React.cloneElement(child, {
       ...triggerAttributes,
-      'aria-haspopup': 'true',
+      'aria-haspopup': trapFocus ? 'dialog' : 'true',
       ...child.props,
       onClick,
       onMouseEnter,
