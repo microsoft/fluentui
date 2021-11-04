@@ -15,7 +15,7 @@ ColorColorful.storyName = 'Color: colorful';
 ColorColorful.parameters = {
   docs: {
     description: {
-      story: 'A color can be derived automatically from the name.',
+      story: 'An avatar can have the color be automatically generated from the name.',
     },
   },
 };

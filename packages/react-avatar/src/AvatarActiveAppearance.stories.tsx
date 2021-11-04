@@ -14,7 +14,10 @@ export const ActiveAppearance = (props: Partial<AvatarProps>) => (
 ActiveAppearance.parameters = {
   docs: {
     description: {
-      story: 'You can customize the appearance of the active state.',
+      story:
+        'An avatar can have different appearances when active.' +
+        ' Avatar supports `ring`, `shadow`, `glow`, `ring-shadow`, and `ring-glow`.' +
+        ' The default is `ring`.',
     },
   },
 };

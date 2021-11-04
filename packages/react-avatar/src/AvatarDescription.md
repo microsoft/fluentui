@@ -1,1 +1,1 @@
-An avatar displays a photo, image, or initials to represent a user, team, or entity.
+An avatar displays a photo, icon, or initials to represent a user, team, or entity.

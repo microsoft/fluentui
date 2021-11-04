@@ -35,3 +35,11 @@ export const Color = (props: Partial<AvatarProps>) => (
     <Avatar {...props} color="anchor" />
   </>
 );
+
+Color.parameters = {
+  docs: {
+    description: {
+      story: 'An avatar supports multiple named colors (e.g. `seaFoam`, `grape`, or `pumpkin`)',
+    },
+  },
+};

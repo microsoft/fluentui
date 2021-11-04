@@ -12,7 +12,10 @@ export const Active = (props: Partial<AvatarProps>) => (
 Active.parameters = {
   docs: {
     description: {
-      story: 'An Avatar can communicate the state of the user, team, or entity.',
+      story:
+        'An avatar can communicate the state of a user, team, or entity.' +
+        ' Avatar supports `active`, `inactive`, and `unset`.' +
+        ' The default is `unset`.',
     },
   },
 };

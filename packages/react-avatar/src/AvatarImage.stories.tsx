@@ -10,3 +10,11 @@ export const Image = (props: Partial<AvatarProps>) => (
     }}
   />
 );
+
+Image.parameters = {
+  docs: {
+    description: {
+      story: 'An avatar can display an image.',
+    },
+  },
+};

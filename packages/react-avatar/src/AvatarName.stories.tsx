@@ -3,10 +3,11 @@ import { Avatar, AvatarProps } from './index'; // codesandbox-dependency: @fluen
 
 export const Name = (props: Partial<AvatarProps>) => <Avatar {...props} name="Katri Athokas" />;
 
+Name.storyName = 'Initials: based on name';
 Name.parameters = {
   docs: {
     description: {
-      story: "An Avatar can display the user's initials.",
+      story: 'An avatar can display initials based on the name.',
     },
   },
 };
