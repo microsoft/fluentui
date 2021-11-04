@@ -119,7 +119,7 @@ const InlineControlledPopupWithFocus = () => {
 
   return (
     <Popup
-      trigger={<Button content="Show controlled popup" title="Show controlled popup" />}
+      trigger={<Button content="Show controlled popup" title="Show controlled popup inline" />}
       open={open}
       inline
       onOpenChange={(e, { open }) => {
