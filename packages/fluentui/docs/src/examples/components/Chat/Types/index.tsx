@@ -30,6 +30,7 @@ const Types = () => (
       description="A Chat message may contained Edited and/or Translated."
       examplePath="components/Chat/Types/ChatExampleDetails"
     />
+    <ComponentExample title="FZ testing" description="FZ testing" examplePath="components/Chat/Types/ChatExampleFz" />
   </ExampleSection>
 );
 
