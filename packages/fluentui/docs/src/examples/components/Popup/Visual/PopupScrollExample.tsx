@@ -69,7 +69,7 @@ const LoremParagraph = () => (
 const PopupWithTrapFocus = () => {
   return (
     <Popup
-      trigger={<Button content="Show popup" title="Show popup" />}
+      trigger={<Button content="Show popup" title="Show popup with focus" />}
       content={<Button content="Click me!" />}
       trapFocus={{
         firstFocusableSelector: `.${buttonClassName}`,
