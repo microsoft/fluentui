@@ -3,7 +3,7 @@
 exports[`CardHeader renders a default state 1`] = `
 <div>
   <div
-    class=""
+    class="fui-CardHeader"
   >
     <div
       class=""

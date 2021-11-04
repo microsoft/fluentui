@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Mon, 01 Nov 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Nov 2021 07:29:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.54)
+
+Thu, 04 Nov 2021 07:29:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.53..@fluentui/react-docsite-components_v8.3.54)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.0 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.35 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+
+## [8.3.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.53)
+
+Wed, 03 Nov 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.52..@fluentui/react-docsite-components_v8.3.53)
+
+### Patches
+
+- Bump @fluentui/react to v8.40.0 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.34 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+
+## [8.3.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.52)
+
+Tue, 02 Nov 2021 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.51..@fluentui/react-docsite-components_v8.3.52)
+
+### Patches
+
+- Bump @fluentui/react to v8.39.0 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/theme to v2.4.2 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/react-hooks to v8.3.5 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.33 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/common-styles to v1.0.21 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+
+## [8.3.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.51)
+
+Mon, 01 Nov 2021 21:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.50..@fluentui/react-docsite-components_v8.3.51)
+
+### Patches
+
+- remove icon for webcomponents and change wc icon color ([PR #20387](https://github.com/microsoft/fluentui/pull/20387) by mgodbolt@microsoft.com)
 
 ## [8.3.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.50)
 

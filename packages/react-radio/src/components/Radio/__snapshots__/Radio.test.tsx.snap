@@ -3,7 +3,7 @@
 exports[`Radio renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-Radio"
   >
     Default Radio
   </span>

@@ -17,6 +17,9 @@ import * as React_2 from 'react';
 export const Button: ForwardRefComponent<ButtonProps>;
 
 // @public (undocumented)
+export const buttonClassName = "fui-Button";
+
+// @public (undocumented)
 export type ButtonCommons = {
     appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
     block: boolean;
@@ -45,6 +48,9 @@ export type ButtonState = ComponentState<ButtonSlots> & ButtonCommons & {
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
 // @public (undocumented)
+export const compoundButtonClassName = "fui-CompoundButton";
+
+// @public (undocumented)
 export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
@@ -58,6 +64,9 @@ export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<But
 
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
+
+// @public (undocumented)
+export const menuButtonClassName = "fui-MenuButton";
 
 // @public (undocumented)
 export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>> & Partial<MenuTriggerChildProps>;
@@ -88,6 +97,9 @@ export const renderSplitButton: (state: SplitButtonState) => JSX.Element;
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
 // @public (undocumented)
+export const splitButtonClassName = "fui-SplitButton";
+
+// @public (undocumented)
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;
 
 // @public (undocumented)
@@ -102,6 +114,9 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
+
+// @public (undocumented)
+export const toggleButtonClassName = "fui-ToggleButton";
 
 // @public (undocumented)
 export type ToggleButtonCommons = {

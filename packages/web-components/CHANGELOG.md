@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 22 Oct 2021 23:04:22 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Nov 2021 07:37:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.1)
+
+Tue, 02 Nov 2021 07:37:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.0..@fluentui/web-components_v2.0.1)
+
+### Patches
+
+- fix web components webpack integration docs and update the package dependencies ([PR #20429](https://github.com/microsoft/fluentui/pull/20429) by chhol@microsoft.com)
+- fixed high contrast visual for web components ([PR #20418](https://github.com/microsoft/fluentui/pull/20418) by khamu@microsoft.com)
+- change input state styles to fix height and prevent z-index from blocking cursor ([PR #20445](https://github.com/microsoft/fluentui/pull/20445) by chhol@microsoft.com)
 
 ## [2.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.0)
 

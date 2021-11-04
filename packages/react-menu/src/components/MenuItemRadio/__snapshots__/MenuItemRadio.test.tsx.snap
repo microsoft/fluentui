@@ -3,7 +3,7 @@
 exports[`MenuItemRadio renders a default state 1`] = `
 <div
   aria-checked={false}
-  className=""
+  className="fui-MenuItem fui-MenuItemRadio"
   name="radio"
   onClick={[Function]}
   onKeyDown={[Function]}

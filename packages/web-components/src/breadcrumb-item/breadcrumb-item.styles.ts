@@ -102,11 +102,25 @@ export const breadcrumbItemStyles: (
         .start,
         .end,
         .separator {
+          background: ${SystemColors.ButtonFace};
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
         }
         .separator {
           fill: ${SystemColors.ButtonText};
+        }
+        :host([href]) {
+          forced-color-adjust: none;
+          background: ${SystemColors.ButtonFace};
+          color: ${SystemColors.LinkText};
+        }
+        :host([href]) .control:hover {
+          background: ${SystemColors.LinkText};
+          color: ${SystemColors.HighlightText};
+          fill: currentcolor;
+        }
+        :host([href]) .control:${focusVisible}::after {
+          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${SystemColors.LinkText} inset;
         }
       `,
     ),

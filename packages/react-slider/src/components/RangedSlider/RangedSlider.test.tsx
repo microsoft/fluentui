@@ -83,8 +83,8 @@ describe('RangedSlider', () => {
         value: [50, 100],
       });
       expect(inputRef.current?.value).toEqual('50');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('55%');
-      expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('45%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('55%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.left).toEqual('45%');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
@@ -92,8 +92,8 @@ describe('RangedSlider', () => {
         value: [20, 100],
       });
       expect(inputRef.current?.value).toEqual('20');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('76%');
-      expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('24%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('76%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.left).toEqual('24%');
     });
 
     it('calls onChange when pointerDown', () => {
@@ -214,16 +214,16 @@ describe('RangedSlider', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ value: [50, 100] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('100');
-    expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('50%');
-    expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('50%');
+    expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('50%');
+    expect(wrapper.find('.fui-Slider-track').props().style?.left).toEqual('50%');
 
     activeRail.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
     expect(onChange).toBeCalledTimes(2);
     expect(onChange.mock.calls[1][1]).toEqual({ value: [0, 100] });
     expect(lowerInputRef.current?.value).toEqual('0');
     expect(upperInputRef.current?.value).toEqual('100');
-    expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('100%');
-    expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('0%');
+    expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('100%');
+    expect(wrapper.find('.fui-Slider-track').props().style?.left).toEqual('0%');
 
     wrapper.unmount();
   });
@@ -253,16 +253,16 @@ describe('RangedSlider', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ value: [50, 100] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('100');
-    expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('55%');
-    expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('45%');
+    expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('55%');
+    expect(wrapper.find('.fui-Slider-track').props().style?.left).toEqual('45%');
 
     wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 84, clientY: 0 }, { type: 'pointerup' });
     expect(onChange).toBeCalledTimes(2);
     expect(onChange.mock.calls[1][1]).toEqual({ value: [50, 80] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('80');
-    expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('34%');
-    expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('50%');
+    expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('34%');
+    expect(wrapper.find('.fui-Slider-track').props().style?.left).toEqual('50%');
   });
 
   it('handles a keyboardStep prop', () => {

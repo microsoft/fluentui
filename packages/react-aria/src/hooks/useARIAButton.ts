@@ -83,13 +83,22 @@ export function useARIAButton<Required extends boolean = false>(
     if (shorthandProps.as === 'button' || shorthandProps.as === undefined) {
       shorthandProps.disabled = disabled && !disabledFocusable;
       shorthandProps['aria-disabled'] = disabledFocusable;
+
+      // Undefine events if disabledFocusable is passed in
+      if (disabledFocusable) {
+        shorthandProps.onClick = undefined;
+        shorthandProps.onKeyDown = undefined;
+        shorthandProps.onKeyUp = undefined;
+      }
     }
 
-    // If an <a> tag is to be rendered we have to remove disabled and set aria-disabled, role and tabIndex as well as
-    // some event handlers.
+    // If an <a> tag is to be rendered we have to remove disabled and type, and set aria-disabled, role and tabIndex.
     else {
       delete shorthandProps.disabled;
       shorthandProps['aria-disabled'] = disabled || disabledFocusable;
+      (shorthandProps as IntrinsicShorthandProps<'a'>).href = disabled
+        ? undefined
+        : (shorthandProps as IntrinsicShorthandProps<'a'>).href;
       shorthandProps.onClick = onClickHandler;
       shorthandProps.onKeyDown = onKeyDownHandler;
       shorthandProps.onKeyUp = onKeyupHandler;

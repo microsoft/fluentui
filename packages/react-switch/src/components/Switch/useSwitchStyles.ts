@@ -2,9 +2,9 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SwitchState } from './Switch.types';
 
-const rootClassName = 'ms-Switch-root';
-const trackClassName = 'ms-Switch-track';
-const thumbClassName = 'ms-Switch-thumb';
+export const switchClassName = 'fui-Switch';
+const trackClassName = `${switchClassName}-track`;
+const thumbClassName = `${switchClassName}-thumb`;
 
 /**
  * Styles for the root slot
@@ -27,13 +27,13 @@ const useRootStyles = makeStyles({
   }),
 
   unchecked: theme => ({
-    ':hover .ms-Switch-thumb': {
+    [`:hover .${thumbClassName}`]: {
       ':before': {
         background: theme.colorNeutralStrokeAccessibleHover,
       },
     },
 
-    ':hover .ms-Switch-track': {
+    [`:hover .${trackClassName}`]: {
       ':before': {
         borderColor: theme.colorNeutralStrokeAccessibleHover,
       },
@@ -41,13 +41,13 @@ const useRootStyles = makeStyles({
   }),
 
   checked: theme => ({
-    ':hover .ms-Switch-track': {
+    [`:hover .${trackClassName}`]: {
       ':after': {
         background: theme.colorBrandBackgroundHover,
       },
     },
 
-    ':active .ms-Switch-track': {
+    [`:active .${trackClassName}`]: {
       ':after': {
         background: theme.colorBrandBackgroundPressed,
       },
@@ -254,7 +254,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
   const inputStyles = useInputStyle();
 
   state.root.className = mergeClasses(
-    rootClassName + (checked ? ' checked' : ''),
+    switchClassName + (checked ? ' checked' : ''),
     rootStyles.root,
     rootStyles.focusIndicator,
     !disabled && rootStyles.checked,

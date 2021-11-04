@@ -14,6 +14,9 @@ import * as React_2 from 'react';
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
 
+// @public (undocumented)
+export const labelClassName = "fui-Label";
+
 // @public
 export type LabelCommons = {
     disabled: boolean;

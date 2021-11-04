@@ -123,27 +123,27 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
 - _**DOM** - how the component will be rendered as HTML elements_
 
 ```jsx
-<div className="ms-RangedSlider-root">
-  <div className="ms-RangedSlider-markContainer">
-    <div className="ms-RangedSlider-markItemContainer">
-      <div className="ms-RangedSlider-mark" />
-      <div className="ms-RangedSlider-markLabel" />
+<div className="fui-RangedSlider">
+  <div className="fui-RangedSlider-markContainer">
+    <div className="fui-RangedSlider-markItemContainer">
+      <div className="fui-RangedSlider-mark" />
+      <div className="fui-RangedSlider-markLabel" />
     </div>
   </div>
-  <div className="ms-RangedSlider-wrapper">
-    <div className="ms-Slider-rail" />
-    <div className="ms-Slider-trackWrapper">
-      <div className="ms-Slider-track" />
+  <div className="fui-RangedSlider-wrapper">
+    <div className="fui-Slider-rail" />
+    <div className="fui-Slider-trackWrapper">
+      <div className="fui-Slider-track" />
     </div>
-    <div className="ms-RangedSlider-lowerThumbWrapper">
-      <div className="ms-RangedSlider-lowerInput" />
-      <div className="ms-Slider-lowerThumb" />
+    <div className="fui-RangedSlider-lowerThumbWrapper">
+      <div className="fui-RangedSlider-lowerInput" />
+      <div className="fui-Slider-lowerThumb" />
     </div>
-    <div className="ms-RangedSlider-upperThumbWrapper">
-      <div className="ms-RangedSlider-upperInput" />
-      <div className="ms-RangedSlider-upperThumb" />
+    <div className="fui-RangedSlider-upperThumbWrapper">
+      <div className="fui-RangedSlider-upperInput" />
+      <div className="fui-RangedSlider-upperThumb" />
     </div>
-    <div className="ms-RangedSlider-activeRail" />
+    <div className="fui-RangedSlider-activeRail" />
   </div>
 </div>
 ```
