@@ -103,6 +103,8 @@ ${display("inline-block")} :host {
   width: var(--calendar-cell-size);
   height: var(--calendar-cell-size);
   line-height: var(--calendar-cell-size);
+  padding: 0;
+  box-sizing: initial;
 }
 
 .week-day {
