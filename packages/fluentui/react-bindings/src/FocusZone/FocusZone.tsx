@@ -83,13 +83,13 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
 function _onKeyDownCapture(ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
     const window = getWindow(ev.target as Element);
+    const iframes = window!.document.getElementsByTagName('iframe');
 
-    if (window!.document.getElementsByTagName('iframe').length > 0) {
-      const iframes = window!.document.getElementsByTagName('iframe');
+    if (iframes.length > 0) {
       for (let i = 0; i < iframes.length; i++) {
         let anyElementInsideIframe = iframes[i]!.contentWindow!.document.getElementsByTagName('span')[0];
         outerZones.getOutZone(getWindow(anyElementInsideIframe)!)?.forEach(zone => zone.updateTabIndexes());
-        console.log('----------- updating iframe');
+        console.log('-----------> updating iframe');
       }
     }
     outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
