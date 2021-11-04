@@ -15,7 +15,7 @@ export type ThemeContextData = {
 };
 
 export const themeContextDefaults: ThemeContextData = {
-  themeName: 'teamsTheme',
+  themeName: 'teamsV2Theme',
   themeOptions: [
     { text: 'Teams', value: 'teamsTheme' },
     { text: 'Teams Dark', value: 'teamsDarkTheme' },
@@ -25,5 +25,12 @@ export const themeContextDefaults: ThemeContextData = {
   ],
   changeTheme: () => {},
 };
+
+// Existing screener tests assume that they're running with the v1 theme, so
+// set that as the default theme when inside screener. This check is safe
+// because this context is only used in the documentation website.
+if (location.pathname.includes('/react-northstar-screener')) {
+  themeContextDefaults.themeName = 'teamsTheme';
+}
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeContextDefaults);
