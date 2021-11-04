@@ -449,6 +449,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
+        flatIndexOffset: isHeaderVisible ? 2 : 1,
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
@@ -507,6 +508,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       collapseAllVisibility,
       getRowAriaLabel,
       getRowAriaDescribedBy,
+      isHeaderVisible,
       checkButtonAriaLabel,
       checkboxCellClassName,
       useReducedRowRenderer,
