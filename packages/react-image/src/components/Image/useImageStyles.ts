@@ -1,6 +1,8 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import type { ImageState } from './Image.types';
 
+export const imageClassName = 'fui-Image';
+
 const useStyles = makeStyles({
   root: theme => ({
     borderColor: theme.colorNeutralStroke1,
@@ -54,6 +56,7 @@ const useStyles = makeStyles({
 export const useImageStyles = (state: ImageState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    imageClassName,
     styles.root,
     state.bordered && styles.rootBordered,
     state.shape === 'circular' && styles.rootCircular,
