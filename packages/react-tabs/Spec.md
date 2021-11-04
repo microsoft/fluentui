@@ -6,18 +6,16 @@
 
 ## Background
 
-Tabs allow for navigation between two or more content views and relies on text headers to articulate the different sections of content.
+Tabs allow for navigation between two or more content views and relies on text headers to
+articulate the different sections of content.
 
 ## Prior Art - Open UI
 
-Tabs component name: The Open UI component naming matrix indicates Tabs is the most common and popular name for this component. Only Fabric/Fluent UI v8 and earlier named it Pivot.
+Naming: The Open UI component naming matrix indicates Tabs is the most common and popular name for this component.
+Only Fabric/Fluent UI v8 and earlier named it Pivot.
 
 The [Tabs Research](https://open-ui.org/components/tabs.research) notes part naming and terminology are not
-consistent across libraries. ARIA does provide tab-specific roles:
-
-- [tab](https://www.w3.org/TR/wai-aria-1.1/#tab): A grouping label providing a mechanism for selecting the tab content that is to be rendered to the user.
-- [tablist](https://www.w3.org/TR/wai-aria-1.1/#tablist): A list of tab elements, which are references to tabpanel elements.
-- [tabpanel](https://www.w3.org/TR/wai-aria-1.1/#tabpanel): A container for the resources associated with a tab, where each tab is contained in a tablist.
+very consistent across libraries.
 
 The API and implementations depend on how tabs are conceptualized and integrated with existing components.
 For example, a set of tabs can be thought of as:
@@ -54,6 +52,8 @@ Advanced features supported by only a few libraries:
 - State indicators via badges
 - Show or scroll to a specific tab (i.e. ensure visible and selected)
 
+Given the ARIA standard roles of tablist and tab we can follow with TabList and Tab components.
+
 ## Prior Art - Comparison with v0 and v8
 
 The existing components are:
@@ -63,18 +63,20 @@ The existing components are:
 
 ### Approach
 
-v0 provides tabs, toolbars, menus, and even breadcrumbs with the Menu components.
-v0 supports tabs behavior when accessibility={tabListBehavior}
+v0 Menu provides tabs, toolbars, menus, and breadcrumbs.
+v0 Menu supports tabs interaction when accessibility={tabListBehavior}
 
 v8 provides a separate Pivot component with tabs behavior and appearance customization.
 
-### Appearance
+### Appearances
 
 #### **Pivot**
 
 A 'Pivot' appears as a horizontal set of borderless buttons with an underline indicating current selection.
-Both v0 and v8 provide a 'Pivot' appearance.
-v8 by default and v0 when underlined and primary props are true.
+
+v0 and v8 provide a 'Pivot' appearance.
+v0: underlined=true
+v8: by default
 
 #### **Block Tab**
 
@@ -82,35 +84,39 @@ A 'Block Tab' appears as a horizontal set of borderless buttons.
 The selection has an active color, rectangular background.
 
 Both v0 and v8 provide the 'Block Tab' appearance.
-v0 by default and v8 when the linkFormat prop equals "tabs".
+v0: by default
+v8: linkFormat="tabs"
 
 #### **Varations**
 
-v0 supports decorating tabs with arrows pointing toward the associated content when the pointing prop is set.
+v0 supports decorating tabs with arrows pointing toward the associated content.
+v0: pointing=true
 
 v8 supports a large tab style with increased padding per tab.
+v8: linkSize="large"
 
 ### Tab Item Content
 
 Both v0 and v8 support text, icon, and text and icon as tab content.
 v0 additionally supports menus as tab content.
 
-Both v0 and v8 support custom rendering of tab content through a render props callbacks per item.
+Both v0 and v8 support custom rendering of tab content through a render props per item.
 
 ### Overflow
 
-v0 support overflow when behaving as a toolbar with the accessibility={menuAsToolbarBehavior}.
-This is mutually exclusive with the accessibility={tabListBehavior}.
+v0 support overflow when behaving as a toolbar.
+v0: accessibility={menuAsToolbarBehavior}. This is mutually exclusive with accessibility={tabListBehavior}.
 
-v8 supports overflow with the overflowBehavor prop of 'menu' or 'none'.
+v8 supports overflow
+v8: overflowBehavior="menu" | overflowBehavior="none"
 
 ## Sample Code
 
 ### Default
 
-tabs are stacked horizontally
-tab content is stacked horizontally
-default appearance
+- tabs are arranged horizontally
+- tab content is arranged horizontally, centered within each tab boundary
+- transparent appearance
 
 ```tsx
 <TabList>
@@ -120,7 +126,65 @@ default appearance
 </TabList>
 ```
 
-With Icons
+### Vertical
+
+- tabs are arranged vertically
+
+```tsx
+<TabList vertical>
+  <Tab>One</Tab>
+  <Tab>Two</Tab>
+  <Tab>Three</Tab>
+</TabList>
+```
+
+### Vertical Tab content
+
+- tab content is arranged vertically
+
+```tsx
+<TabList verticalContent>
+  <Tab>One</Tab>
+  <Tab>Two</Tab>
+  <Tab>Three</Tab>
+</TabList>
+
+<TabList vertical verticalContent>
+  <Tab>One</Tab>
+  <Tab>Two</Tab>
+  <Tab>Three</Tab>
+</TabList>
+```
+
+### Appearance
+
+Transparent (default)
+
+- no border and background styles
+- selection is indicated by a primary line below the tab
+- hovering over a tab shows a secondary line below the tab
+
+```tsx
+<TabList>
+  <Tab />
+  <Tab />
+  <Tab />
+</TabList>
+
+<TabList appearance="transparent">{/* ... */}</TabList>
+```
+
+Subtle
+
+- similar to transparent, but a light background is set when hovering over a tab
+
+```tsx
+<TabList appearance="subtle">{/* ... */}</TabList>
+```
+
+### With Icon
+
+- icon is positioned before the tab content
 
 ```tsx
 <TabList>
@@ -129,77 +193,29 @@ With Icons
 </TabList>
 ```
 
-### Vertical
-
-tabs are stacked vertically, tab content is stacked horizontally
+- icon only when content omitted
 
 ```tsx
-<TabList vertical>
-  <Tab>One</Tab>
-  <Tab>Two</Tab>
-  <Tab>Three</Tab>
+<TabList>
+  <Tab icon={<CheckboxComposite />} />
+  <Tab icon={<BlockedSite />} />
 </TabList>
 ```
 
-### App Bar
-
-Tab content is stacked vertically
-
-> TODO: Verify with design that tabs in appbar layout are meant to integrate into some vertical command bar later?
-> TODO: Ask design about app bar and difference between allowing tabs to layout vertically
-> TODO: Ask design if appbar can ever be horizontal layout
-> TODO: Ask design if transparent | subtle appearance can be applied to appBar rather than appBar having distinct appearance
-
-```tsx
-<TabList appBar>
-  <Tab>One</Tab>
-  <Tab>Two</Tab>
-  <Tab>Three</Tab>
-</TabList>
-```
-
--or-
-
-```tsx
-<TabList vertical>
-  <Tab vertical>One</Tab>
-  <Tab vertical>Two</Tab>
-  <Tab vertical>Three</Tab>
-</TabList>
-```
-
-### Appearance
-
-> TODO: Confirm with design if transparent is the default.
-> TODO: Confirm with design there is not a manilla folder tab appearance.
-> TODO: Ask design what the subtle and transparent styles are for focus, hover, pressed, disabled.
-
-```tsx
-<TabList>{/* ... */}</TabList>
-
-<TabList appearance="transparent">{/* ... */}</TabList>
-```
-
-```tsx
-<TabList appearance="subtle">{/* ... */}</TabList>
-```
-
-### Badges
-
-> TODO: How to support multiple badge types as a slot?
-> TODO: How to specify icon for basic badge in a slot?
+### With Badge
 
 ```tsx
 <TabList>
   <Tab>Files</Tab>
   <Tab>Search</Tab>
-  <Tab badge={<CounterBadge count={5} />}>Messages</Tab>
+  <Tab badge={<Badge>New</Badge>}>Semantic Search</Tab>
 </TabList>
 ```
 
 ### Overflow
 
-Handling overflow is a built-in feature of tabs and replaceable via a slot.
+- overflow is a menu button
+- replaceable via a slot
 
 ```tsx
 <TabList overflow={</MyOverflowButton}>
@@ -213,18 +229,20 @@ Handling overflow is a built-in feature of tabs and replaceable via a slot.
 
 ### Tab
 
-- TabCommons.value supports an arbitrary identifier for each tab that can be paired with a future tab panel. This is similar to Accordian's selection approach.
+TabCommons.value supports an arbitrary identifier value.
+The value for each tab can be used to display the associated tab panel (future).
+This is similar to Accordian's selection approach.
+
+> TODO: Should value be called key since the tab list has selectedKey?
+> If so, should this key be applied to the tab as a key attribute?
 
 ```ts
 export type TabValue = unknown;
 
 export type TabCommons = {
-  appearance: 'transparent' | 'subtle';
   disabled: boolean;
   disabledFocusable: boolean;
-  size: 'small' | 'medium';
   value: TabValue;
-  vertical: boolean;
 };
 ```
 
@@ -235,22 +253,27 @@ TabContextValue provides context from TabsList
 - single-selection behavior
 - click handling
 
-> TODO: How best to provide a default selectionIndicator slot from a parent?
+> TODO: To provide a selectionIndicator slot implementation from the parent
+> should it be IntrinsicShorthandProps or IntrinsicShorthandValue?
 
 ```ts
 export type TabContextValue = Partial<Omit<TabCommons, 'value'>> & {
+  appearance: 'transparent' | 'subtle';
   selected: boolean;
   selectionIndicator: IntrinsicShorthandProps<'div'>;
+  size: 'small' | 'medium';
+  vertical: boolean;
   onClick(ev: React.MouseEvent | React.KeyboardEvent): void;
 };
 ```
+
+Each tab has badge and icon slots.
 
 ```ts
 export type TabSlots = {
   root: IntrinsicShorthandProps<'div'>;
   badge?: ObjectShorthandProps<BadgeProps>;
   icon?: IntrinsicShorthandProps<'span'>;
-  selectionIndicator?: IntrinsicShorthandProps<'div'>;
 };
 ```
 
@@ -259,6 +282,9 @@ export type TabProps = ComponentProps<TabSlots> & Partial<TabCommons>;
 ```
 
 ### TabList
+
+The tab list has slots for the selection indicator passed to each tab via context,
+and a slot for the overflow menu button.
 
 ```ts
 export type TabListSlots = {
@@ -278,6 +304,8 @@ export type TabSelectedData = {
 export type TabSelectedEventHandler = (event: TabSelectedEvent, data: TabSelectedData) => void;
 ```
 
+Tab list support default and selected keys for controlled and uncontrolled scenarios.
+
 ```ts
 export type TabListProps = ComponentProps<TabListSlots> & {
   appearance?: 'transparent' | 'subtle';
@@ -285,7 +313,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   selectedKey?: string | number;
   size?: 'small' | 'medium';
   vertical?: boolean;
-  verticalTab?: boolean;
+  verticalContent?: boolean;
   onTabSelected?: TabSelectedEventHandler;
 };
 ```
@@ -316,51 +344,61 @@ export type TabListProps = ComponentProps<TabListSlots> & {
 
 ### From v8
 
-- Replace occurances of `<Pivot>` with `<TabList>`
-- Replace occurances of `<PivotItem>` with `<Tab>`
-- Replace `<PivotItem>` content with handling onTabSelected to show/hide associated content.
-- Move PivotItem.headerText to be the content of Tab
+1. Replace occurances of `<Pivot>` with `<TabList>`
+2. Replace occurances of `<PivotItem>` with `<Tab>`
+3. Replace `<PivotItem>` content with handling onTabSelected to show/hide associated content.
+4. Move PivotItem.headerText to be the content of Tab
+5. Subscribe to onTabSelected to show/hide content when a tab is selected.
 
 ### From v0
 
-- Replace use of `<Menu>` with `<TabList>` (full rewrite)
+1. Replace use of `<Menu>` with `<TabList>`
+2. Replace items data with Tab instances, writing a `map` function as needed.
 
 ## Behaviors
 
 ### Selection
 
-The TabList will provide single-selection of a tab.
+TabList provides single select of a tab.
 
-### Programmatic Selection
+Programmatic
 
-The TabList.selectedKey can control the currently selected tab.
-If the tab to be selected is in the overflow, it will be moved into the set of visible tabs.
+- The TabList.selectedKey can control the currently selected tab.
 
-> TODO: Do we need an announce here?
+Mouse/Touch
+
+- Clicking the tab selects it.
+
+Keyboard
+
+- Tablist focus traps the and allows focus of individual tabs.
+- Arrow keys move focus forward/backward.
+- The arrow keys are based on layout. Horizontal: left/right, Vertical: up/down.
+- A tab is selected when the spacebar is pressed for a focused tab.
+- The `TAB` key moves focus from the tabs to the overflow button.
+
+Events
+
+- Tab list raises the onTabSelected event whenever a tab is selected.
+- The event data includes the tab value.
 
 ### Overflow
 
-The overflow part will screen read as a button with text indicating to click for a list of other available tabs.
-
-### Mouse/Touch
-
-Clicking the tab will raise the TabsList.onTabSelected event
-
-### Keyboard
-
-TabsList will focus trap on the set of tabs.
-When focused on the tabs, the user can cycle through tabs with arrow keys.
-The arrow keys are based on layout. Horizontal: left/right, Vertical: up/down
-The TAB key moves focus from tabs to overflow to next control in the tab order.
-
-> TODO: Should Ctrl+Tab and Shift+Ctrl+Tab be supported?
-
-### Screen readers
-
-Screen readers will read each tab's content when moused over similar to button.
-The ARIA tablist and tab roles will inform the screen reader.
+- When there are more tabs than can fit in the available space, the overflow appears.
+- Clicking the overflow button displays the non-visible tabs as a menu.
+- Selecting a tab from the menu will replace the last visible tab with the selected tab.
 
 ## Accessibility
 
+ARIA provides tab-specific roles:
+
+- [tab](https://www.w3.org/TR/wai-aria-1.1/#tab): A grouping label providing a mechanism for selecting the tab content that is to be rendered to the user.
+- [tablist](https://www.w3.org/TR/wai-aria-1.1/#tablist): A list of tab elements, which are references to tabpanel elements.
+- [tabpanel](https://www.w3.org/TR/wai-aria-1.1/#tabpanel): A container for the resources associated with a tab, where each tab is contained in a tablist.
+
 TabList and Tab will apply the `tablist` and `tab` ARIA roles.
-See the behaviors for selection, focus trap, and programmatic accessibility.
+The `tabpanel` will be reserved for possible future component.
+
+### Screen readers
+
+Screen readers will read tab content and focus of the overflow button.
