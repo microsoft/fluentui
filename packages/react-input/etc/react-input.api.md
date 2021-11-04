@@ -14,16 +14,14 @@ import * as React_2 from 'react';
 export const Input: ForwardRefComponent<InputProps>;
 
 // @public (undocumented)
-export interface InputCommons {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    // (undocumented)
+export type InputCommons = {
+    fieldSize?: 'small' | 'medium' | 'large';
     inline?: boolean;
-    size?: 'small' | 'medium' | 'large';
-}
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+};
 
 // @public
-export interface InputProps extends InputCommons, Omit<ComponentProps<Partial<InputSlots>>, 'children'> {
-}
+export type InputProps = InputCommons & Omit<ComponentProps<InputSlots>, 'children'>;
 
 // @public
 export const inputShorthandProps: (keyof InputSlots)[];
@@ -32,16 +30,12 @@ export const inputShorthandProps: (keyof InputSlots)[];
 export type InputSlots = {
     root: IntrinsicShorthandProps<'span'>;
     input: IntrinsicShorthandProps<'input'>;
-    inputWrapper: IntrinsicShorthandProps<'span'>;
-    bookendBefore?: IntrinsicShorthandProps<'span'>;
-    bookendAfter?: IntrinsicShorthandProps<'span'>;
-    insideStart?: IntrinsicShorthandProps<'span'>;
-    insideEnd?: IntrinsicShorthandProps<'span'>;
+    contentBefore?: IntrinsicShorthandProps<'span'>;
+    contentAfter?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public
-export interface InputState extends InputCommons, ComponentState<InputSlots> {
-}
+export type InputState = InputCommons & ComponentState<InputSlots>;
 
 // @public
 export const renderInput: (state: InputState) => JSX.Element;

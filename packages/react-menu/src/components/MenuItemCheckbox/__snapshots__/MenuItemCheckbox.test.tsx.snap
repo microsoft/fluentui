@@ -3,7 +3,7 @@
 exports[`MenuItemCheckbox conformance renders a default state 1`] = `
 <div
   aria-checked={false}
-  className=""
+  className="fui-MenuItem fui-MenuItemCheckbox"
   name="checkbox"
   onClick={[Function]}
   onKeyDown={[Function]}

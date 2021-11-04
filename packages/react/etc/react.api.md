@@ -4037,7 +4037,7 @@ export interface IDetailsRowState {
 }
 
 // @public (undocumented)
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme' | 'disabled'>> & {
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & Pick<IDetailsRowProps, 'disabled'> & {
     isSelected?: boolean;
     anySelected?: boolean;
     canSelect?: boolean;
@@ -6664,6 +6664,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;

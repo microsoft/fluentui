@@ -2,6 +2,8 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { MenuItemState } from './MenuItem.types';
 
+export const menuItemClassName = 'fui-MenuItem';
+
 const useStyles = makeStyles({
   focusIndicator: theme => createFocusOutlineStyle(theme),
   root: theme => ({
@@ -66,6 +68,7 @@ const useStyles = makeStyles({
 export const useMenuItemStyles = (state: MenuItemState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    menuItemClassName,
     styles.root,
     styles.focusIndicator,
     state.disabled && styles.disabled,
