@@ -10,7 +10,7 @@ import {
   PRIMARY_STORY,
   Stories,
 } from '@storybook/addon-docs';
-import { makeStyles } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-make-styles';
 
 import { Toc, idToHash } from './Toc.stories';
 
