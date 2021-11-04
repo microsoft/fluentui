@@ -32,7 +32,12 @@ const useTsBuildInfo =
  */
 function prepareTsTaskConfig(options: TscTaskOptions) {
   const tsConfigFilePath = resolveCwd('./tsconfig.json');
-  const tsConfig: TsConfig = jju.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
+  const tsConfigLibFilePath = resolveCwd('./tsconfig.lib.json');
+  const isUsingTsSolutionConfigs = fs.existsSync(tsConfigLibFilePath);
+
+  const tsConfig: TsConfig = isUsingTsSolutionConfigs
+    ? jju.parse(fs.readFileSync(tsConfigLibFilePath, 'utf-8'))
+    : jju.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
 
   if (tsConfig.extends) {
     logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
@@ -40,9 +45,12 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     const normalizedOptions = { ...options };
     normalizedOptions.baseUrl = '.';
     normalizedOptions.rootDir = './src';
+    normalizedOptions.project = isUsingTsSolutionConfigs ? 'tsconfig.lib.json' : null;
 
     return normalizedOptions;
   }
+
+  options.target = 'es5';
 
   return options;
 }
@@ -88,6 +96,7 @@ export const ts = {
     const extraOptions = getExtraTscParams(getJustArgv());
     const options = prepareTsTaskConfig({
       ...extraOptions,
+      target: 'es5',
       outDir: 'lib-amd',
       module: 'amd',
       ...(useTsBuildInfo && { tsBuildInfoFile: '.amd.tsbuildinfo' }),
