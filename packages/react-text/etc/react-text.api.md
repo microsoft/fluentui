@@ -17,17 +17,32 @@ import * as React_2 from 'react';
 const Body_2: FunctionComponent<TextWrapperProps>;
 export { Body_2 as Body }
 
+// @public (undocumented)
+export const bodyClassName = "fui-Body";
+
 // @public
 export const Caption: FunctionComponent<TextWrapperProps>;
+
+// @public (undocumented)
+export const captionClassName = "fui-Caption";
 
 // @public
 export const Display: FunctionComponent<TextWrapperProps>;
 
+// @public (undocumented)
+export const displayClassName = "fui-Display";
+
 // @public
 export const Headline: FunctionComponent<TextWrapperProps>;
 
+// @public (undocumented)
+export const headlineClassName = "fui-Headline";
+
 // @public
 export const LargeTitle: FunctionComponent<TextWrapperProps>;
+
+// @public (undocumented)
+export const largeTitleClassName = "fui-LargeTitle";
 
 // @public
 export const renderText: (state: TextState) => JSX.Element;
@@ -35,9 +50,15 @@ export const renderText: (state: TextState) => JSX.Element;
 // @public
 export const Subheadline: FunctionComponent<TextWrapperProps>;
 
+// @public (undocumented)
+export const subheadlineClassName = "fui-Subheadline";
+
 // @public
 const Text_2: ForwardRefComponent<TextProps>;
 export { Text_2 as Text }
+
+// @public (undocumented)
+export const textClassName = "fui-Text";
 
 // @public (undocumented)
 export type TextCommons = {
@@ -67,11 +88,20 @@ export type TextState = ComponentState<TextSlots> & TextCommons;
 // @public
 export const Title1: FunctionComponent<TextWrapperProps>;
 
+// @public (undocumented)
+export const title1ClassName = "fui-Title1";
+
 // @public
 export const Title2: FunctionComponent<TextWrapperProps>;
 
+// @public (undocumented)
+export const title2ClassName = "fui-Title2";
+
 // @public
 export const Title3: FunctionComponent<TextWrapperProps>;
+
+// @public (undocumented)
+export const title3ClassName = "fui-Title3";
 
 // @public
 export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>) => TextState;

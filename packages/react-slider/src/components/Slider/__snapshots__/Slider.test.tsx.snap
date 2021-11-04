@@ -3,7 +3,7 @@
 exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -11,20 +11,20 @@ exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 
       style="grid-template-columns: 10% 20% 10% 40%;"
     >
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           <div
             style="width: 10px; height: 10px; background: green;"
@@ -32,22 +32,22 @@ exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           world
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
     </div>
@@ -61,7 +61,7 @@ exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -70,7 +70,7 @@ exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -92,7 +92,7 @@ exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 
 exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -100,20 +100,20 @@ exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = 
       style="grid-template-columns: 10% 20% 10% 40%;"
     >
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
           style="width: 2px; height: 8px; background: red; margin-top: -2px;"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           <div
             style="width: 10px; height: 10px; background: green;"
@@ -121,22 +121,22 @@ exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = 
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           world
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
     </div>
@@ -150,7 +150,7 @@ exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = 
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -159,7 +159,7 @@ exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = 
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -181,7 +181,7 @@ exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = 
 exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -189,248 +189,248 @@ exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
       style="grid-template-columns: 0% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 2.999999999999993% 3.000000000000007% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3%;"
     >
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark ms-Slider-firstMark"
+          class="fui-Slider-mark fui-Slider-firstMark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
     </div>
@@ -444,7 +444,7 @@ exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -453,7 +453,7 @@ exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -475,7 +475,7 @@ exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
 exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -488,7 +488,7 @@ exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 0px; width: 50%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -497,7 +497,7 @@ exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
         style="transform: translateX(50%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -520,7 +520,7 @@ exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
 exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -528,41 +528,41 @@ exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctl
       style="grid-template-columns: 10% 20% 10% 40%;"
     >
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           hello
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           world
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
     </div>
@@ -576,7 +576,7 @@ exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctl
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -585,7 +585,7 @@ exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctl
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -608,7 +608,7 @@ exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctl
 exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -621,7 +621,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 0px; width: 50%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -630,7 +630,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
         style="transform: translateX(50%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -652,7 +652,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
 exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -660,41 +660,41 @@ exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correc
       style="grid-template-columns: 10% 20% 10% 40%;"
     >
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           hello
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           world
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
     </div>
@@ -708,7 +708,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correc
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -717,7 +717,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correc
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -739,7 +739,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correc
 exports[`Slider Snapshot Tests renders horizontal Slider with unique mark values correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -747,31 +747,31 @@ exports[`Slider Snapshot Tests renders horizontal Slider with unique mark values
       style="grid-template-columns: 1% 2% 4.000000000000001% 0.9999999999999991%;"
     >
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
     </div>
@@ -785,7 +785,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider with unique mark values
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 0px; width: 5%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -794,7 +794,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider with unique mark values
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -816,7 +816,7 @@ exports[`Slider Snapshot Tests renders horizontal Slider with unique mark values
 exports[`Slider Snapshot Tests renders horizontal origin Slider correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -829,7 +829,7 @@ exports[`Slider Snapshot Tests renders horizontal origin Slider correctly 1`] = 
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="left: 20%; width: 30%; border-radius: 0px 99px 99px 0px; transition: none;"
         />
       </div>
@@ -838,7 +838,7 @@ exports[`Slider Snapshot Tests renders horizontal origin Slider correctly 1`] = 
         style="transform: translateX(50%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -860,7 +860,7 @@ exports[`Slider Snapshot Tests renders horizontal origin Slider correctly 1`] = 
 exports[`Slider Snapshot Tests renders vertical Slider correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -873,7 +873,7 @@ exports[`Slider Snapshot Tests renders vertical Slider correctly 1`] = `
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="top: 0px; height: 50%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -882,7 +882,7 @@ exports[`Slider Snapshot Tests renders vertical Slider correctly 1`] = `
         style="transform: translateY(50%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -904,7 +904,7 @@ exports[`Slider Snapshot Tests renders vertical Slider correctly 1`] = `
 exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -912,41 +912,41 @@ exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctl
       style="grid-template-rows: 10% 20% 10% 40%;"
     >
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           hello
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
         <div
-          class="ms-Slider-label"
+          class="fui-Slider-label"
         >
           world
         </div>
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
     </div>
@@ -960,7 +960,7 @@ exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctl
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="top: 0px; height: 5%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -969,7 +969,7 @@ exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctl
         style="transform: translateY(5%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -991,7 +991,7 @@ exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctl
 exports[`Slider Snapshot Tests renders vertical Slider with unique mark values correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -999,31 +999,31 @@ exports[`Slider Snapshot Tests renders vertical Slider with unique mark values c
       style="grid-template-rows: 2% 3% 4% 9%;"
     >
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
       <div
-        class="ms-Slider-markItemContainer"
+        class="fui-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark"
+          class="fui-Slider-mark"
         />
       </div>
     </div>
@@ -1037,7 +1037,7 @@ exports[`Slider Snapshot Tests renders vertical Slider with unique mark values c
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="top: 0px; height: 5%; border-radius: 99px; transition: none;"
         />
       </div>
@@ -1046,7 +1046,7 @@ exports[`Slider Snapshot Tests renders vertical Slider with unique mark values c
         style="transform: translateY(5%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div
@@ -1068,7 +1068,7 @@ exports[`Slider Snapshot Tests renders vertical Slider with unique mark values c
 exports[`Slider Snapshot Tests renders vertical origin Slider correctly 1`] = `
 <div>
   <div
-    class=""
+    class="fui-Slider"
     id="slider-1"
   >
     <div
@@ -1081,7 +1081,7 @@ exports[`Slider Snapshot Tests renders vertical origin Slider correctly 1`] = `
         class=""
       >
         <div
-          class="ms-Slider-track"
+          class="fui-Slider-track"
           style="top: 20%; height: 30%; border-radius: 0px 0px 99px 99px; transition: none;"
         />
       </div>
@@ -1090,7 +1090,7 @@ exports[`Slider Snapshot Tests renders vertical origin Slider correctly 1`] = `
         style="transform: translateY(50%); transition: none;"
       >
         <div
-          class="ms-Slider-thumb"
+          class="fui-Slider-thumb"
         />
       </div>
       <div

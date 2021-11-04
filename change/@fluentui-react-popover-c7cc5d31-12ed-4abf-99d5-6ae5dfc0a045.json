@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(Popover): use `dialog` as value for `aria-haspopup` for focus trap",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

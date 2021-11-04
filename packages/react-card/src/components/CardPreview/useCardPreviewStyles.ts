@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { CardPreviewState } from './CardPreview.types';
 
+export const cardPreviewClassName = 'fui-CardPreview';
+
 /**
  * Styles for the root slot
  */
@@ -30,7 +32,7 @@ const useStyles = makeStyles({
  */
 export const useCardPreviewStyles = (state: CardPreviewState): CardPreviewState => {
   const styles = useStyles();
-  state.root.className = mergeClasses('fluentui-react-card-preview', styles.root, state.root.className);
+  state.root.className = mergeClasses(cardPreviewClassName, styles.root, state.root.className);
 
   if (state.logo) {
     state.logo.className = mergeClasses(styles.logo, state.logo.className);
