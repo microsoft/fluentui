@@ -27,8 +27,10 @@ Color.parameters = {
   docs: {
     description: {
       story:
-        'A CounterBadge has predefined set of colors for `brand`, `danger`, `important`, `informative`, ' +
-        '`severe`, `severe`, `success` and `warning`',
+        'A counter badge can be different colors.' +
+        ' The available colors are `brand`, `danger`, `important`, `informative`, ' +
+        '`severe`, `severe`, `success` or `warning`.' +
+        ' The default is `brand`.',
     },
   },
 };
