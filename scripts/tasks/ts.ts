@@ -51,6 +51,9 @@ function getExtraTscParams(args: JustArgs) {
   return {
     // sourceMap must be true for inlineSources and sourceRoot to work
     ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
+    // docs say pretty is on by default, but it's actually disabled when tsc is run in a
+    // non-TTY context (which is what just-scripts tscTask does)
+    pretty: true,
   };
 }
 
