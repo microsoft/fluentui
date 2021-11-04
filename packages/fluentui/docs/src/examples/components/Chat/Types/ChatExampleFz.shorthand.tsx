@@ -13,8 +13,6 @@ const fztesting: React.FC = () => {
         <button>Before</button>
         <br />
         <br />
-        {/* <Frame style={{ height: '500px', width: '90%' }}>{doc && <Example doc={doc} />}</Frame> */}
-
         <Frame style={{ height: '500px', width: '90%' }}> {<Example />} </Frame>
         <button>after</button>
       </div>
