@@ -1,10 +1,16 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
-import { markClassName, markLabelClassName } from '../../utils/renderMarks';
 
-export const thumbClassName = 'ms-Slider-thumb';
-export const trackClassName = 'ms-Slider-track';
+export const sliderClassName = 'fui-Slider';
+
+const thumbClassName = `${sliderClassName}-thumb`;
+const trackClassName = `${sliderClassName}-track`;
+const markContainerClassName = `${sliderClassName}-markItemContainer`;
+const firstMarkClassName = `${sliderClassName}-firstMark`;
+const lastMarkClassName = `${sliderClassName}-lastMark`;
+const markClassName = `${sliderClassName}-mark`;
+const markLabelClassName = `${sliderClassName}-label`;
 
 /**
  * Styles for the root slot
@@ -46,19 +52,19 @@ export const useRootStyles = makeStyles({
   enabled: theme => ({
     cursor: 'grab',
     ':hover': {
-      '& .ms-Slider-thumb': {
+      [`& .${thumbClassName}`]: {
         background: theme.colorBrandBackgroundHover,
       },
-      '& .ms-Slider-track': {
+      [`& .${trackClassName}`]: {
         background: theme.colorBrandBackgroundHover,
       },
     },
     ':active': {
       cursor: 'grabbing',
-      '& .ms-Slider-thumb': {
+      [`& .${thumbClassName}`]: {
         background: theme.colorBrandBackgroundPressed,
       },
-      '& .ms-Slider-track': {
+      [`& .${trackClassName}`]: {
         background: theme.colorBrandBackgroundPressed,
       },
     },
@@ -205,7 +211,7 @@ export const useMarksWrapperStyles = makeStyles({
       fontSize: '12px',
     },
 
-    '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
+    [`& .${firstMarkClassName}, .${lastMarkClassName}`]: {
       opacity: '0',
     },
   }),
@@ -216,7 +222,7 @@ export const useMarksWrapperStyles = makeStyles({
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
     justifyItems: 'end',
 
-    '& .ms-Slider-markItemContainer': {
+    [`& .${markContainerClassName}`]: {
       display: 'flex',
       flexDirection: 'column',
       transform: 'translateX(50%)',
@@ -241,7 +247,7 @@ export const useMarksWrapperStyles = makeStyles({
     marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
     justifyItems: 'start',
 
-    '& .ms-Slider-markItemContainer': {
+    [`& .${markContainerClassName}`]: {
       display: 'flex',
       flexDirection: 'row',
       transform: 'translateY(50%)',
@@ -389,6 +395,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const inputStyles = useInputStyles();
 
   state.root.className = mergeClasses(
+    sliderClassName,
     rootStyles.root,
     rootStyles.focusIndicator,
     rootStyles[state.size!],
