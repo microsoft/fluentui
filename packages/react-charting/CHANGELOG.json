@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 04 Nov 2021 07:29:41 GMT",
+      "tag": "@fluentui/react-charting_v5.5.2",
+      "version": "5.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-scharde@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "216041db1dab3017fcb70df47e9969bfd2456620",
+            "comment": "xAxis number localization"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.41.0",
+            "commit": "bc5ff01fb0274e706b15ab03304bd8c39f8f8cb8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Nov 2021 07:36:03 GMT",
       "tag": "@fluentui/react-charting_v5.5.1",
       "version": "5.5.1",

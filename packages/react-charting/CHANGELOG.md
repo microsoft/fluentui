@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 03 Nov 2021 07:36:03 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Nov 2021 07:29:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.5.2)
+
+Thu, 04 Nov 2021 07:29:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.5.1..@fluentui/react-charting_v5.5.2)
+
+### Patches
+
+- xAxis number localization ([PR #20427](https://github.com/microsoft/fluentui/pull/20427) by v-scharde@microsoft.com)
+- Bump @fluentui/react to v8.41.0 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
 
 ## [5.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.5.1)
 

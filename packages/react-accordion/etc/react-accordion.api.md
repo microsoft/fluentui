@@ -17,6 +17,9 @@ import * as React_2 from 'react';
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
 // @public (undocumented)
+export const accordionClassName = "fui-Accordion";
+
+// @public (undocumented)
 export type AccordionCommons = {
     navigable: boolean;
     multiple: boolean;
@@ -39,6 +42,9 @@ export type AccordionContextValues = {
 
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
+
+// @public (undocumented)
+export const accordionHeaderClassName = "fui-AccordionHeader";
 
 // @public (undocumented)
 export type AccordionHeaderCommons = {
@@ -97,6 +103,9 @@ export type AccordionIndex = number | number[];
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
 // @public (undocumented)
+export const accordionItemClassName = "fui-AccordionItem";
+
+// @public (undocumented)
 export type AccordionItemCommons = {
     disabled: boolean;
     value: AccordionItemValue;
@@ -135,6 +144,9 @@ export type AccordionItemValue = unknown;
 
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
+
+// @public (undocumented)
+export const accordionPanelClassName = "fui-AccordionPanel";
 
 // @public (undocumented)
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
@@ -217,11 +229,17 @@ export const useAccordionItemContext: () => AccordionItemContextValue;
 // @public (undocumented)
 export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues;
 
+// @public (undocumented)
+export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
+
 // @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
 // @public
 export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
+
+// @public (undocumented)
+export const useAccordionStyles: (state: AccordionState) => AccordionState;
 
 // (No @packageDocumentation comment for this package)
 

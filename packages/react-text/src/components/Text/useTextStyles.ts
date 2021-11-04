@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { TextState } from './Text.types';
 
+export const textClassName = 'fui-Text';
+
 /**
  * Styles for the root slot
  */
@@ -104,6 +106,7 @@ export const useTextStyles = (state: TextState): TextState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(
+    textClassName,
     styles.root,
     state.wrap === false && styles.nowrap,
     state.truncate && styles.truncate,
