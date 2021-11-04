@@ -47,7 +47,9 @@ async function performTest() {
     console.error(e);
 
     console.log('');
-    console.log('@fluentui/ts-minbar-test-react-components: The test suite failed.');
+    console.log(
+      '@fluentui/ts-minbar-test-react-components: Test suite failed. Please fix TS 3.9 incompatible code you may have introduced.',
+    );
 
     process.exit(1);
   }
