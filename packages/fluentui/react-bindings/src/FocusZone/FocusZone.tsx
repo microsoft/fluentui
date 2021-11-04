@@ -82,8 +82,10 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
  */
 function _onKeyDownCapture(ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
+    const window = getWindow(ev.target as Element);
+
     if (document.getElementsByTagName('iframe').length > 0) {
-      const iframes = document.getElementsByTagName('iframe');
+      const iframes = window!.document.getElementsByTagName('iframe');
       for (let i = 0; i < iframes.length; i++) {
         let anyElementInsideIframe = iframes[i]!.contentWindow!.document.getElementsByTagName('span')[0];
         outerZones.getOutZone(getWindow(anyElementInsideIframe)!)?.forEach(zone => zone.updateTabIndexes());
