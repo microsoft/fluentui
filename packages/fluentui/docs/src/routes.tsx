@@ -61,6 +61,7 @@ import {
   VirtualizedStickyTreePrototype,
   VirtualizedTablePrototype,
   VirtualizedTreePrototype,
+  FztestingPrototype,
 } from '@fluentui/react-northstar-prototypes';
 
 const ExternalExampleLayout = React.lazy(
@@ -104,6 +105,7 @@ const Routes = () => (
                 <Route exact path="/debugging">
                   <MarkdownPage page={Debugging} />
                 </Route>
+                <Route exact path="/prototype-fztesting" component={FztestingPrototype} />
                 <Route exact path="/quick-start" component={QuickStart} />
                 <Route exact path="/perf-tests" component={PerformanceTests} />
                 <Route exact path="/prototype-roster" component={RosterPrototype} />

@@ -82,6 +82,14 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
  */
 function _onKeyDownCapture(ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
+    if (document.getElementsByTagName('iframe').length > 0) {
+      const iframes = document.getElementsByTagName('iframe');
+      for (let i = 0; i < iframes.length; i++) {
+        let anyElementInsideIframe = iframes[i]!.contentWindow!.document.getElementsByTagName('span')[0];
+        outerZones.getOutZone(getWindow(anyElementInsideIframe)!)?.forEach(zone => zone.updateTabIndexes());
+        console.log('----------- updating iframe');
+      }
+    }
     outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
   }
 }
