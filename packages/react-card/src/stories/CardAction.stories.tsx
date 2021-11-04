@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { Body, Caption } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
-import {
-  Open16Regular,
-  ArrowReply16Regular,
-  MoreHorizontal16Regular,
-  MoreVertical20Regular,
-  Share16Regular,
-} from '@fluentui/react-icons';
+import { Open16Regular, ArrowReply16Regular, MoreVertical20Regular, Share16Regular } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { Card, CardFooter, CardHeader, CardPreview } from '../index';
+import avatarElvia from '../../assets/avatar_elvia.svg';
+import wordLogo from '../../assets/word_logo.svg';
+import docTemplate from '../../assets/doc_template.png';
+
+import avatarMauricio from '../../assets/avatar_mauricio.svg';
+import powerpointLogo from '../../assets/powerpoint_logo.svg';
+import aiDeckTemplate from '../../assets/ai_deck_template.png';
 
 const useStyles = makeStyles({
   actionCard: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles({
     },
   },
 });
+
 const LogoBackground = (props: React.HTMLAttributes<HTMLElement>) => {
   const styles = useStyles();
 
@@ -47,7 +49,7 @@ export const ActionCard = () => {
     <>
       <Card tabIndex={0} className={styles.actionCard}>
         <CardHeader
-          image={<img src="./avatar_elvia.svg" alt="Face of a person" />}
+          image={<img src={avatarElvia} alt="Face of a person" />}
           header={
             <Body>
               <b>Elvia Atkins</b> mentioned you
@@ -59,11 +61,11 @@ export const ActionCard = () => {
         <CardPreview
           logo={
             <LogoBackground>
-              <img src="./word_logo.svg" alt="Microsoft Word logo" />
+              <img src={wordLogo} alt="Microsoft Word logo" />
             </LogoBackground>
           }
         >
-          <img src="./doc_template.png" alt="Preview of a Word document " />
+          <img src={docTemplate} alt="Preview of a Word document " />
         </CardPreview>
 
         <CardFooter>
@@ -76,7 +78,7 @@ export const ActionCard = () => {
 
       <Card tabIndex={0} className={styles.actionCard} onClick={() => console.log('Test action')}>
         <CardHeader
-          image={<img src="./avatar_mauricio.svg" alt="Face of a person" />}
+          image={<img src={avatarMauricio} alt="Face of a person" />}
           header={
             <Body>
               <b>Mauricio August</b> <span className={styles.gray}>+ 7 others edited</span>
@@ -89,11 +91,11 @@ export const ActionCard = () => {
         <CardPreview
           logo={
             <LogoBackground>
-              <img src="./powerpoint_logo.svg" alt="Microsoft PowerPoint logo" />
+              <img src={powerpointLogo} alt="Microsoft PowerPoint logo" />
             </LogoBackground>
           }
         >
-          <img src="./ai_deck_template.png" alt="Preview of an artificial intelligence slide deck" />
+          <img src={aiDeckTemplate} alt="Preview of an artificial intelligence slide deck" />
         </CardPreview>
 
         <CardFooter>
@@ -102,31 +104,4 @@ export const ActionCard = () => {
       </Card>
     </>
   );
-};
-
-export const GridviewCard = () => {
-  const styles = useStyles();
-
-  return (
-    <Card className={styles.gridViewCard}>
-      <CardPreview>
-        <img src="./sales_template.png" alt="Preview of a sales slide deck" />
-      </CardPreview>
-      <CardHeader
-        image={<img src="./powerpoint_logo.svg" alt="Microsoft PowerPoint logo" />}
-        header={
-          <Body>
-            <b>Sales Analysis</b>
-          </Body>
-        }
-        description={<Caption className={styles.gray}>Elvia replied to a comment</Caption>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal16Regular />} />}
-      />
-    </Card>
-  );
-};
-
-export default {
-  title: 'Components/Card',
-  component: Card,
 };
