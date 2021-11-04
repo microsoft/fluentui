@@ -139,4 +139,17 @@ describe('PopoverTrigger', () => {
       ]
     `);
   });
+
+  it('should use aria-haspopup="dialog" if focus trapped', () => {
+    // Arrange
+    mockPopoverContext({ trapFocus: true });
+    const { getByRole } = render(
+      <PopoverTrigger>
+        <button>Trigger</button>
+      </PopoverTrigger>,
+    );
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('dialog');
+  });
 });
