@@ -276,7 +276,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['ttf', 'otf', 'woff'],
   },
   fluid: {
-    extensions: ['b', 'fluid'],
+    extensions: ['fluid', 'loop'],
   },
   form: {},
   genericfile: {},
