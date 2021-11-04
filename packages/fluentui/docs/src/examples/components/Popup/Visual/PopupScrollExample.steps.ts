@@ -4,7 +4,7 @@ import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 const selectors = {
   triggerButtonPopupWithTrapFocus: `.${buttonClassName}[title*="Show popup with focus"]`,
   triggerButtonControlledPopupWithFocus: `.${buttonClassName}[title*="Show controlled popup"]`,
-  triggerButtonInlineControlledPopupWithFocus: `.${buttonClassName}[title*="Show controlled popup"]`,
+  triggerButtonInlineControlledPopupWithFocus: `.${buttonClassName}[title*="Show controlled popup inline"]`,
 };
 
 const config: ScreenerTestsConfig = {
