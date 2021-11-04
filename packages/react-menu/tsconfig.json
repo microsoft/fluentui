@@ -1,12 +1,12 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2019",
-    "lib": ["ES2019", "DOM"],
+    "target": "es5",
+    "lib": ["ES2015", "DOM"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
-    "module": "CommonJS",
+    "module": "commonjs",
     "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,

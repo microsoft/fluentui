@@ -49,6 +49,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
 
 function getExtraTscParams(args: JustArgs) {
   return {
+    target: 'es5',
     // sourceMap must be true for inlineSources and sourceRoot to work
     ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
   };
