@@ -221,7 +221,6 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     let isEventHandled = false;
     let newSelectedActionType = null;
     const currentSelectedAction = this.state.selectedActionType;
-    console.log(currentSelectedAction);
     const suggestionLength = this.props.suggestions.length;
     if (keyCode === KeyCodes.down) {
       switch (currentSelectedAction) {
