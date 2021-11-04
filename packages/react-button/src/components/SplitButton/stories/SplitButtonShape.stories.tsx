@@ -8,7 +8,9 @@ export const Shape = () => (
   <>
     <Menu positioning="below-end">
       <MenuTrigger>
-        {triggerProps => <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} />}
+        {(triggerProps: MenuButtonProps) => (
+          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} />
+        )}
       </MenuTrigger>
 
       <MenuPopover>
@@ -21,7 +23,7 @@ export const Shape = () => (
 
     <Menu positioning="below-end">
       <MenuTrigger>
-        {triggerProps => (
+        {(triggerProps: MenuButtonProps) => (
           <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} shape="circular" />
         )}
       </MenuTrigger>
@@ -36,7 +38,7 @@ export const Shape = () => (
 
     <Menu positioning="below-end">
       <MenuTrigger>
-        {triggerProps => (
+        {(triggerProps: MenuButtonProps) => (
           <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} shape="square" />
         )}
       </MenuTrigger>

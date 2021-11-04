@@ -3,13 +3,13 @@ import * as React from 'react';
 // @ts-ignore
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { CalendarMonth24Regular, Filter24Regular } from '@fluentui/react-icons';
-import { SplitButton } from '../../../SplitButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
 
 export const Icon = () => (
   <>
     <Menu positioning="below-end">
       <MenuTrigger>
-        {triggerProps => (
+        {(triggerProps: MenuButtonProps) => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}
@@ -27,7 +27,7 @@ export const Icon = () => (
 
     <Menu positioning="below-end">
       <MenuTrigger>
-        {triggerProps => (
+        {(triggerProps: MenuButtonProps) => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}
@@ -46,7 +46,7 @@ export const Icon = () => (
 
     <Menu positioning="below-end">
       <MenuTrigger>
-        {triggerProps => (
+        {(triggerProps: MenuButtonProps) => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}

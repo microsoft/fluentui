@@ -2,14 +2,16 @@ import * as React from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import { SplitButton } from '../../../SplitButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
 
 export const Size = () => {
   return (
     <>
       <Menu positioning="below-end">
         <MenuTrigger>
-          {triggerProps => <SplitButton menuButton={triggerProps} primaryActionButton={'Size: small'} size="small" />}
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} primaryActionButton={'Size: small'} size="small" />
+          )}
         </MenuTrigger>
 
         <MenuPopover>
@@ -22,7 +24,9 @@ export const Size = () => {
 
       <Menu positioning="below-end">
         <MenuTrigger>
-          {triggerProps => <SplitButton menuButton={triggerProps} primaryActionButton={'Size: medium'} size="medium" />}
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} primaryActionButton={'Size: medium'} size="medium" />
+          )}
         </MenuTrigger>
 
         <MenuPopover>
@@ -35,7 +39,9 @@ export const Size = () => {
 
       <Menu positioning="below-end">
         <MenuTrigger>
-          {triggerProps => <SplitButton menuButton={triggerProps} primaryActionButton={'Size: large'} size="large" />}
+          {(triggerProps: MenuButtonProps) => (
+            <SplitButton menuButton={triggerProps} primaryActionButton={'Size: large'} size="large" />
+          )}
         </MenuTrigger>
 
         <MenuPopover>
