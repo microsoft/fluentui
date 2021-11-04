@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 03 Nov 2021 07:36:03 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Nov 2021 07:29:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.41.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.0)
+
+Thu, 04 Nov 2021 07:29:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.40.0..@fluentui/react_v8.41.0)
+
+### Minor changes
+
+- DetailsList: Making the disabled prop in IDetailsRowStyleProps optional as making it required is a breaking change. ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by Humberto.Morimoto@microsoft.com)
 
 ## [8.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.40.0)
 

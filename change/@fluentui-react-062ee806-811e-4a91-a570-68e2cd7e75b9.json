@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "DetailsList: Making the disabled prop in IDetailsRowStyleProps optional as making it required is a breaking change.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
