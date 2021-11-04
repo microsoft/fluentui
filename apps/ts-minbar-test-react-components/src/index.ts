@@ -10,9 +10,9 @@ import { createTempDir, log } from '@fluentui/scripts/projects-test/utils';
 
 async function performTest() {
   try {
-    const logger = log('test:ts-minbar-react-components:typings');
+    const logger = log('test:ts-minbar-react-components');
     const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/'));
-    const tmpDirectory = createTempDir('ts-minbar-react-components-typings-');
+    const tmpDirectory = createTempDir('ts-minbar-react-components');
 
     logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
 
