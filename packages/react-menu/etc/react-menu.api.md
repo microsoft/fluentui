@@ -18,6 +18,15 @@ import { usePopperMouseTarget } from '@fluentui/react-positioning';
 export const Menu: React_2.FC<MenuProps>;
 
 // @public (undocumented)
+export type MenuCheckedValueChangeData = {
+    name: string;
+    checkedItems: string[];
+};
+
+// @public (undocumented)
+export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
+
+// @public (undocumented)
 export const MenuContext: Context<MenuContextValue>;
 
 // @public
@@ -169,10 +178,7 @@ export const menuListClassName = "fui-MenuList";
 
 // @public (undocumented)
 export type MenuListCommons = {
-    onCheckedValueChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: {
-        name: string;
-        checkedItems: string[];
-    }) => void;
+    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
     checkedValues: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;
     hasIcons?: boolean;
