@@ -3,6 +3,8 @@ import { makeStyles } from '@fluentui/react-make-styles';
 import { typographyStyles } from '../../typographyStyles/index';
 import { createWrapper, TextWrapperProps } from '../wrapper';
 
+export const captionClassName = 'fui-Caption';
+
 /**
  * Styles for the root slot
  */
@@ -13,4 +15,8 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Caption typography variant
  */
-export const Caption: FunctionComponent<TextWrapperProps> = createWrapper({ useStyles, displayName: 'Caption' });
+export const Caption: FunctionComponent<TextWrapperProps> = createWrapper({
+  useStyles,
+  className: captionClassName,
+  displayName: 'Caption',
+});

@@ -14,6 +14,9 @@ import * as React_2 from 'react';
 export const Radio: ForwardRefComponent<RadioProps>;
 
 // @public (undocumented)
+export const radioClassName = "fui-Radio";
+
+// @public (undocumented)
 export type RadioCommons = {};
 
 // @public

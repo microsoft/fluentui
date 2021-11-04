@@ -1,7 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import {
-  thumbClassName,
-  trackClassName,
   useActiveRailStyles,
   useMarksWrapperStyles,
   useRailStyles,
@@ -15,8 +13,15 @@ import {
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';
 
-export const lowerThumbClassName = mergeClasses(thumbClassName, `${thumbClassName + '-lower'}`);
-export const upperThumbClassName = mergeClasses(thumbClassName, `${thumbClassName + '-upper'}`);
+// These should be imported directly from useSliderStyles.ts, but currently it causes build issues
+// https://github.com/microsoft/fluentui/issues/20480
+const thumbClassName = `fui-Slider-thumb`;
+const trackClassName = `fui-Slider-track`;
+
+export const rangedSliderClassName = 'fui-RangedSlider';
+
+export const lowerThumbClassName = `${thumbClassName} ${thumbClassName + '-lower'}`;
+export const upperThumbClassName = `${thumbClassName} ${thumbClassName + '-upper'}`;
 
 /**
  * Styles for the Input slot
@@ -35,7 +40,7 @@ const useInputStyles = makeStyles({
   lowerInputFocusIndicator: createCustomFocusIndicatorStyle(
     theme => ({
       // TODO: Update this to [`& + .${lowerThumbClassName}`]
-      '& + .ms-Slider-thumb-lower': {
+      '& + .fui-Slider-thumb-lower': {
         ':before': {
           outline: 'none',
           boxSizing: 'border-box',
@@ -49,7 +54,7 @@ const useInputStyles = makeStyles({
   upperInputFocusIndicator: createCustomFocusIndicatorStyle(
     theme => ({
       // TODO: Update this to [`& + .${upperThumbClassName}`]
-      '& + .ms-Slider-thumb-upper': {
+      '& + .fui-Slider-thumb-upper': {
         ':before': {
           outline: 'none',
           boxSizing: 'border-box',
@@ -74,6 +79,7 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
   const inputStyles = useInputStyles();
 
   state.root.className = mergeClasses(
+    rangedSliderClassName,
     rootStyles.root,
     rootStyles[state.size!],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,

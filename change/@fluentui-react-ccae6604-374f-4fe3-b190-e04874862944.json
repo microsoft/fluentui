@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Suggestions: Fixing issue where you couldn't select focused option after hitting 'get more results' button.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

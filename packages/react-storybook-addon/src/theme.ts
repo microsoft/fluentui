@@ -5,8 +5,9 @@ import {
   teamsLightTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
-  Theme,
 } from '@fluentui/react-theme';
+
+import type { Theme } from '@fluentui/react-theme';
 
 export { FluentProvider } from '@fluentui/react-provider';
 
@@ -24,4 +25,4 @@ export const defaultTheme = themes[0];
 export type ThemeIds = typeof themes[number]['id'];
 export type ThemeLabels = typeof themes[number]['label'];
 
-export { Theme };
+export type { Theme };

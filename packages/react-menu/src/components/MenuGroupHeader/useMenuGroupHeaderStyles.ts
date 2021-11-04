@@ -1,6 +1,8 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import type { MenuGroupHeaderState } from './MenuGroupHeader.types';
 
+export const menuGroupHeaderClassName = 'fui-MenuGroupHeader';
+
 const useStyles = makeStyles({
   root: theme => ({
     fontSize: theme.fontSizeBase200,
@@ -16,7 +18,7 @@ const useStyles = makeStyles({
 
 export const useMenuGroupHeaderStyles = (state: MenuGroupHeaderState) => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(menuGroupHeaderClassName, styles.root, state.root.className);
 
   return state;
 };

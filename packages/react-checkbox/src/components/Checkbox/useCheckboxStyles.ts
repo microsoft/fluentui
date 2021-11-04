@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
+export const checkboxClassName = 'fui-Checkbox';
+
 /**
  * Styles for the root slot
  */
@@ -20,14 +22,14 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForegroundDisabled,
     cursor: 'default',
 
-    '& .ms-checkbox-indicator': {
+    [`& .${checkboxClassName}-indicator`]: {
       borderColor: theme.colorNeutralStrokeDisabled,
       color: theme.colorNeutralForegroundDisabled,
       backgroundColor: theme.colorNeutralBackground1,
     },
 
     ':hover': {
-      '& .ms-checkbox-indicator': {
+      [`& .${checkboxClassName}-indicator`]: {
         borderColor: theme.colorNeutralStrokeDisabled,
         color: theme.colorNeutralForegroundDisabled,
         backgroundColor: theme.colorNeutralBackground1,
@@ -35,7 +37,7 @@ const useStyles = makeStyles({
     },
 
     ':active': {
-      '& .ms-checkbox-indicator': {
+      [`& .${checkboxClassName}-indicator`]: {
         borderColor: theme.colorNeutralStrokeDisabled,
         color: theme.colorNeutralForegroundDisabled,
         backgroundColor: theme.colorNeutralBackground1,
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
   unchecked: theme => ({
     color: theme.colorNeutralForeground3,
 
-    '& .ms-checkbox-indicator': {
+    [`& .${checkboxClassName}-indicator`]: {
       borderColor: theme.colorNeutralStrokeAccessible,
       '& > *': {
         opacity: 0,
@@ -56,7 +58,7 @@ const useStyles = makeStyles({
     ':hover': {
       color: theme.colorNeutralForeground2,
 
-      '& .ms-checkbox-indicator': {
+      [`& .${checkboxClassName}-indicator`]: {
         borderColor: theme.colorNeutralStrokeAccessibleHover,
       },
     },
@@ -64,7 +66,7 @@ const useStyles = makeStyles({
     ':active': {
       color: theme.colorNeutralForeground1,
 
-      '& .ms-checkbox-indicator': {
+      [`& .${checkboxClassName}-indicator`]: {
         borderColor: theme.colorNeutralStrokeAccessiblePressed,
       },
     },
@@ -74,20 +76,20 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForeground1,
 
     // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
-    '& .ms-checkbox-indicator': {
+    [`& .${checkboxClassName}-indicator`]: {
       backgroundColor: theme.colorCompoundBrandBackground,
       color: theme.colorNeutralForegroundInverted,
       borderColor: theme.colorBrandBackground,
     },
 
     ':active': {
-      '& .ms-checkbox-indicator': {
+      [`& .${checkboxClassName}-indicator`]: {
         backgroundColor: theme.colorCompoundBrandBackgroundPressed,
       },
     },
 
     ':hover': {
-      '& .ms-checkbox-indicator': {
+      [`& .${checkboxClassName}-indicator`]: {
         backgroundColor: theme.colorCompoundBrandBackgroundHover,
       },
     },
@@ -96,20 +98,20 @@ const useStyles = makeStyles({
   mixed: theme => ({
     color: theme.colorNeutralForeground1,
 
-    '& .ms-checkbox-indicator': {
+    [`& .${checkboxClassName}-indicator`]: {
       borderColor: theme.colorCompoundBrandStroke,
       color: theme.colorCompoundBrandForeground1,
     },
 
     ':active': {
-      '& .ms-checkbox-indicator': {
+      [`& .${checkboxClassName}-indicator`]: {
         borderColor: theme.colorCompoundBrandStrokePressed,
         color: theme.colorCompoundBrandForeground1Pressed,
       },
     },
 
     ':hover': {
-      '& .ms-checkbox-indicator': {
+      [`& .${checkboxClassName}-indicator`]: {
         borderColor: theme.colorCompoundBrandStrokeHover,
         color: theme.colorCompoundBrandForeground1Hover,
       },
@@ -195,6 +197,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(
+    checkboxClassName,
     styles.root,
     styles.focusIndicator,
     styles[checkedState],
@@ -215,10 +218,10 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
     !!state.root.children && containerStyles[state.labelPosition],
   );
   state.indicator.className = mergeClasses(
+    `${checkboxClassName}-indicator`,
     indicatorStyles.box,
     containerStyles[state.size],
     state.circular && indicatorStyles.circular,
-    'ms-checkbox-indicator',
     state.indicator.className,
   );
 
