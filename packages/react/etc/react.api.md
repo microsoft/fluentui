@@ -4037,7 +4037,7 @@ export interface IDetailsRowState {
 }
 
 // @public (undocumented)
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme' | 'disabled'>> & {
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & Pick<IDetailsRowProps, 'disabled'> & {
     isSelected?: boolean;
     anySelected?: boolean;
     canSelect?: boolean;
