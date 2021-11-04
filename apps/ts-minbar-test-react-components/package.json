@@ -9,8 +9,8 @@
   },
   "scripts": {
     "build": "just-scripts build",
-    "lint": "just-scripts lint",
     "clean": "just-scripts clean",
+    "lint": "just-scripts lint",
     "test": "node -r @fluentui/scripts/babel/register src/index.ts"
   }
 }
