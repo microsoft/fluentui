@@ -17,6 +17,9 @@ import type { ShorthandRenderFunction } from '@fluentui/react-utilities';
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
 // @public (undocumented)
+export const avatarClassName = "fui-Avatar";
+
+// @public (undocumented)
 export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
     name: string;
     getInitials: (name: string, isRtl: boolean) => string;
