@@ -221,6 +221,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     let isEventHandled = false;
     let newSelectedActionType = null;
     const currentSelectedAction = this.state.selectedActionType;
+    console.log(currentSelectedAction);
     const suggestionLength = this.props.suggestions.length;
     if (keyCode === KeyCodes.down) {
       switch (currentSelectedAction) {
@@ -437,6 +438,9 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   private _getMoreResults = (): void => {
     if (this.props.onGetMoreResults) {
       this.props.onGetMoreResults();
+
+      // Reset selected action type as it will be of type SuggestionActionType.none after more results are gotten
+      this.setState({ selectedActionType: SuggestionActionType.none });
     }
   };
 
