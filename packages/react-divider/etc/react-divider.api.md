@@ -14,6 +14,9 @@ import * as React_2 from 'react';
 export const Divider: ForwardRefComponent<DividerProps>;
 
 // @public (undocumented)
+export const dividerClassName = "fui-Divider";
+
+// @public (undocumented)
 export type DividerCommons = {
     alignContent: 'start' | 'center' | 'end';
     appearance?: 'brand' | 'strong' | 'subtle';

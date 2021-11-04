@@ -4,6 +4,7 @@ import { useAccordionItemContextValues } from './useAccordionItemContextValues';
 import { renderAccordionItem } from './renderAccordionItem';
 import type { AccordionItemProps } from './AccordionItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useAccordionItemStyles } from './useAccordionItemStyles';
 
 /**
  * Define a styled AccordionItem, using the `useAccordionItem` and `useAccordionItemStyles` hooks.
@@ -11,6 +12,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const AccordionItem: ForwardRefComponent<AccordionItemProps> = React.forwardRef((props, ref) => {
   const state = useAccordionItem(props, ref);
   const contextValues = useAccordionItemContextValues(state);
+
+  useAccordionItemStyles(state);
 
   return renderAccordionItem(state, contextValues);
 });

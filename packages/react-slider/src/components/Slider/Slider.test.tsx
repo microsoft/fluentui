@@ -158,13 +158,13 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('45%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('45%');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
       expect(inputRef.current?.value).toEqual('20');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('24%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('24%');
     });
 
     it('calls onChange when pointerDown', () => {
@@ -237,13 +237,13 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
       expect(inputRef.current?.value).toEqual('100');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('100%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('100%');
 
       sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
       expect(inputRef.current?.value).toEqual('0');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('0%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('0%');
 
       wrapper.unmount();
     });
@@ -264,13 +264,13 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('45%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('45%');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 }, { type: 'pointerup' });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
       expect(inputRef.current?.value).toEqual('20');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('24%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('24%');
     });
 
     it('handles keydown events', () => {
@@ -354,7 +354,7 @@ describe('Slider', () => {
       const { container } = render(<Slider defaultValue={50} max={100} origin={50} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
-      const sliderTrack = container.querySelector('.ms-Slider-track');
+      const sliderTrack = container.querySelector('.fui-Slider-track');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
       expect(sliderTrack?.getAttribute('style')).toContain('0px 99px 99px 0px');
@@ -367,7 +367,7 @@ describe('Slider', () => {
       const { container } = render(<Slider defaultValue={50} vertical max={100} origin={50} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
-      const sliderTrack = container.querySelector('.ms-Slider-track');
+      const sliderTrack = container.querySelector('.fui-Slider-track');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
       expect(sliderTrack?.getAttribute('style')).toContain('0px 0px 99px 99px');
@@ -402,19 +402,19 @@ describe('Slider', () => {
       const { container } = render(<Slider max={10} marks={[0, 10]} marksWrapper={{ className: 'test-class' }} />);
       const sliderWrapper = container.querySelector('.test-class');
       expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 100%');
-      expect(container.querySelector('.ms-Slider-firstMark')).toBeTruthy();
-      expect(container.querySelector('.ms-Slider-lastMark')).toBeTruthy;
+      expect(container.querySelector('.fui-Slider-firstMark')).toBeTruthy();
+      expect(container.querySelector('.fui-Slider-lastMark')).toBeTruthy;
     });
 
     it('correctly calculates the origin border-radius when given min as the origin', () => {
       const { container } = render(<Slider origin={0} min={0} vertical />);
-      const sliderTrack = container.querySelector('.ms-Slider-track');
+      const sliderTrack = container.querySelector('.fui-Slider-track');
       expect(sliderTrack?.getAttribute('style')).toContain('99px');
     });
 
     it('correctly calculates the origin border-radius when given max as the origin', () => {
       const { container } = render(<Slider origin={100} max={100} vertical />);
-      const sliderTrack = container.querySelector('.ms-Slider-track');
+      const sliderTrack = container.querySelector('.fui-Slider-track');
       expect(sliderTrack?.getAttribute('style')).toContain('99px');
     });
 

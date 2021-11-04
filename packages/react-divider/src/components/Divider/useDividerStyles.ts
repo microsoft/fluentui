@@ -1,6 +1,8 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { DividerState } from './Divider.types';
 
+export const dividerClassName = 'fui-Divider';
+
 const contentSpacing = '12px';
 const insetSpacing = '12px';
 const startEndMaxHeight = '8px';
@@ -226,6 +228,8 @@ export const useDividerStyles = (state: DividerState): DividerState => {
   const { alignContent, appearance, inset, vertical } = state;
 
   state.root.className = mergeClasses(
+    dividerClassName,
+
     // Base styles
     baseStyles.base,
     baseStyles[alignContent],

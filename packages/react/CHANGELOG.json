@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 04 Nov 2021 07:29:41 GMT",
+      "tag": "@fluentui/react_v8.41.0",
+      "version": "8.41.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bc5ff01fb0274e706b15ab03304bd8c39f8f8cb8",
+            "comment": "DetailsList: Making the disabled prop in IDetailsRowStyleProps optional as making it required is a breaking change."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Nov 2021 07:36:03 GMT",
       "tag": "@fluentui/react_v8.40.0",
       "version": "8.40.0",

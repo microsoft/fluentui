@@ -14,10 +14,16 @@ import * as React_2 from 'react';
 export const Card: ForwardRefComponent<CardProps>;
 
 // @public (undocumented)
+export const cardClassName = "fui-Card";
+
+// @public (undocumented)
 export type CardCommons = {};
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
+
+// @public (undocumented)
+export const cardFooterClassName = "fui-CardFooter";
 
 // @public
 export type CardFooterProps = ComponentProps<CardFooterSlots>;
@@ -36,6 +42,9 @@ export type CardFooterState = ComponentState<CardFooterSlots>;
 
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
+
+// @public (undocumented)
+export const cardHeaderClassName = "fui-CardHeader";
 
 // @public
 export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
@@ -58,6 +67,9 @@ export type CardHeaderState = ComponentState<CardHeaderSlots>;
 
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
+
+// @public (undocumented)
+export const cardPreviewClassName = "fui-CardPreview";
 
 // @public
 export type CardPreviewProps = ComponentProps<CardPreviewSlots>;

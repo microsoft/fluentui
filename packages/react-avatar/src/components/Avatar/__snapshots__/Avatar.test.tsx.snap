@@ -2,7 +2,7 @@
 
 exports[`Avatar displays a badge 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First Last"
 >
   <span
@@ -12,7 +12,7 @@ exports[`Avatar displays a badge 1`] = `
   </span>
   <div
     aria-hidden={true}
-    className=""
+    className="fui-Badge fui-PresenceBadge"
   >
     <span
       className=""
@@ -39,7 +39,7 @@ exports[`Avatar displays a badge 1`] = `
 
 exports[`Avatar displays custom initials via getInitials 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First Last"
 >
   <span
@@ -52,7 +52,7 @@ exports[`Avatar displays custom initials via getInitials 1`] = `
 
 exports[`Avatar handles customSize 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First Last"
   style={
     Object {
@@ -71,7 +71,7 @@ exports[`Avatar handles customSize 1`] = `
 
 exports[`Avatar prioritizes image over icon 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
 >
   <span
     className=""
@@ -89,7 +89,7 @@ exports[`Avatar prioritizes image over icon 1`] = `
 
 exports[`Avatar prioritizes image over initials 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First Last"
 >
   <span
@@ -106,7 +106,7 @@ exports[`Avatar prioritizes image over initials 1`] = `
 
 exports[`Avatar prioritizes image over initials and icon 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First Last"
 >
   <span
@@ -123,7 +123,7 @@ exports[`Avatar prioritizes image over initials and icon 1`] = `
 
 exports[`Avatar prioritizes initials over icon 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First Last"
 >
   <span
@@ -136,7 +136,7 @@ exports[`Avatar prioritizes initials over icon 1`] = `
 
 exports[`Avatar renders 1 initial with a 1-word name 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First"
 >
   <span
@@ -149,7 +149,7 @@ exports[`Avatar renders 1 initial with a 1-word name 1`] = `
 
 exports[`Avatar renders 2 initials with a 2-word name 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First Last"
 >
   <span
@@ -162,7 +162,7 @@ exports[`Avatar renders 2 initials with a 2-word name 1`] = `
 
 exports[`Avatar renders 2 initials with a 3-word name 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="First M. Last"
 >
   <span
@@ -175,7 +175,7 @@ exports[`Avatar renders 2 initials with a 3-word name 1`] = `
 
 exports[`Avatar renders a default state 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
 >
   <span
     className=""
@@ -206,7 +206,7 @@ exports[`Avatar renders a default state 1`] = `
 
 exports[`Avatar renders an icon 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
 >
   <span
     className=""
@@ -220,7 +220,7 @@ exports[`Avatar renders an icon 1`] = `
 
 exports[`Avatar renders an icon if the name is not alphabetic 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
   name="(111)-555-1234"
 >
   <span
@@ -252,7 +252,7 @@ exports[`Avatar renders an icon if the name is not alphabetic 1`] = `
 
 exports[`Avatar renders an image 1`] = `
 <span
-  className=""
+  className="fui-Avatar"
 >
   <span
     className=""

@@ -9,7 +9,7 @@ module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookCon
     '../src/**/*.stories.@(ts|tsx)',
     ...utils.getVnextStories(),
   ],
-  addons: [...rootMain.addons, '@fluentui/react-storybook-addon'],
+  addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };
 

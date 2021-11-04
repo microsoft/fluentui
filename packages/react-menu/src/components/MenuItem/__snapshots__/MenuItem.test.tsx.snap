@@ -2,7 +2,7 @@
 
 exports[`MenuItem renders a default state 1`] = `
 <div
-  className=""
+  className="fui-MenuItem"
   onClick={[Function]}
   onKeyDown={[Function]}
   onMouseEnter={[Function]}

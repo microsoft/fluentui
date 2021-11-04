@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icon-provider
 
-This log was last generated on Tue, 02 Nov 2021 07:37:02 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Nov 2021 07:29:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.2.7)
+
+Thu, 04 Nov 2021 07:29:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.2.6..@fluentui/react-icon-provider_v1.2.7)
+
+### Patches
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
 
 ## [1.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.2.6)
 

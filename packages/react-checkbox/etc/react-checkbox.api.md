@@ -15,6 +15,9 @@ import * as React_2 from 'react';
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
+// @public (undocumented)
+export const checkboxClassName = "fui-Checkbox";
+
 // @public
 export interface CheckboxCommons {
     checked: 'mixed' | boolean;
