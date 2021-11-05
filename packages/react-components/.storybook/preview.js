@@ -1,5 +1,5 @@
 import * as rootPreview from '../../../.storybook/preview';
-// import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
+import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
 
 // load global styles
@@ -14,7 +14,11 @@ const options = {
      */
     order: [
       'Concepts',
-      ['Introduction', 'Developer', ['Quick Start', 'Migrating from @fluentui/react v8', 'Styling Components']],
+      [
+        'Introduction',
+        'Developer',
+        ['Quick Start', 'Migrating from @fluentui/react v8', 'Styling Components', 'Positioning Components'],
+      ],
       'Theme',
       'Components',
       'Migrations',
@@ -30,6 +34,7 @@ export const parameters = {
   ...rootPreview.parameters,
   docs: {
     ...rootPreview.parameters.docs,
+    container: FluentDocsContainer,
     page: FluentDocsPage,
     // container: FluentDocsContainer,
   },
