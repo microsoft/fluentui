@@ -40,7 +40,7 @@ Inline.args = {
 Inline.parameters = {
   docs: {
     description: {
-      story: 'A Accordion Header can be set to be `inline`',
+      story: 'An accordion header can be set to `inline`',
     },
   },
 };

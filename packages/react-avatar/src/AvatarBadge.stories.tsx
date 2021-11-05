@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar, AvatarProps } from './index'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
 
 export const Badge = (props: Partial<AvatarProps>) => (
   <>
@@ -18,3 +18,11 @@ export const Badge = (props: Partial<AvatarProps>) => (
     <Avatar {...props} badge={{ status: 'doNotDisturb', outOfOffice: true }} />
   </>
 );
+
+Badge.parameters = {
+  docs: {
+    description: {
+      story: 'An avatar can have a badge to indicate presence status.',
+    },
+  },
+};
