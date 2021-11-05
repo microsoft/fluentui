@@ -1,1 +1,0 @@
-{"code":"export * from './button.styles';\r\nexport * from './input.styles';\r\n","references":["/home/chassunc/projects/fluentui/packages/web-components/src/styles/patterns/button.styles.ts","/home/chassunc/projects/fluentui/packages/web-components/src/styles/patterns/input.styles.ts"]}

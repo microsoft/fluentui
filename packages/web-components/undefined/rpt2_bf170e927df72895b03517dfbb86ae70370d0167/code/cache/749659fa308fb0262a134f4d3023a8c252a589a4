@@ -1,1 +1,0 @@
-{"code":"/**\r\n * @internal\r\n */\r\nexport function contrast(a, b) {\r\n    const L1 = a.relativeLuminance > b.relativeLuminance ? a : b;\r\n    const L2 = a.relativeLuminance > b.relativeLuminance ? b : a;\r\n    return (L1.relativeLuminance + 0.05) / (L2.relativeLuminance + 0.05);\r\n}\r\n","references":[]}
