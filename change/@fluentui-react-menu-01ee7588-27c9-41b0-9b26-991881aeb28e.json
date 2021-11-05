@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds typings for `onCheckedValueChange` method",
+  "packageName": "@fluentui/react-menu",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

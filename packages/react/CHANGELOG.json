@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 05 Nov 2021 07:36:39 GMT",
+      "tag": "@fluentui/react_v8.41.1",
+      "version": "8.41.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "01492e29df9145ceb3ea61375c5d471e1c69ff5d",
+            "comment": "Fix uncaught positioning logic when both directionalHintFixed and alignTargetEdge are true"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3a45e96e132e80468402a57bac75a8990f8d11f1",
+            "comment": "Suggestions: Fixing issue where you couldn't select focused option after hitting 'get more results' button."
+          },
+          {
+            "author": "avnowd@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3783a3c05bd36ab5886e460ad9c20e301e1a88dd",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Nov 2021 07:29:41 GMT",
       "tag": "@fluentui/react_v8.41.0",
       "version": "8.41.0",

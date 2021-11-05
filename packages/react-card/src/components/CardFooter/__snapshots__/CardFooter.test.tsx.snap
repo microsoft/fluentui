@@ -3,7 +3,7 @@
 exports[`CardFooter renders a default state 1`] = `
 <div>
   <div
-    class=""
+    class="fui-CardFooter"
   >
     Default CardFooter
     <div

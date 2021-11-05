@@ -1,5 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { cardPreviewClassName } from '../CardPreview/index';
 import type { CardState } from './Card.types';
+
+export const cardClassName = 'fui-Card';
 
 /**
  * Styles for the root slot
@@ -21,7 +24,7 @@ const useStyles = makeStyles({
     gap: '12px',
     borderRadius: theme.borderRadiusMedium,
 
-    '> .fluentui-react-card-preview': {
+    [`> .${cardPreviewClassName}`]: {
       marginLeft: '-12px',
       marginRight: '-12px',
       '&:first-child': {
@@ -47,6 +50,7 @@ const useStyles = makeStyles({
 export const useCardStyles = (state: CardState): CardState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    cardClassName,
     styles.root,
     (state.root.onClick ||
       state.root.onMouseUp ||
