@@ -1,55 +1,59 @@
 import * as React from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Body, Caption } from '@fluentui/react-text';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Button } from '@fluentui/react-button';
 import { MoreHorizontal16Regular } from '@fluentui/react-icons';
-import { makeStyles } from '@fluentui/react-make-styles';
-import { Card, CardHeader, CardPreview } from '../index';
+import { Card, CardHeader, CardPreview } from '../index'; // codesandbox-dependency: @fluentui/react-card ^9.0.0-beta
 
-import powerpointLogo from '../../assets/powerpoint_logo.svg';
-import salesTemplate from '../../assets/sales_template.png';
+const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
 
-const useStyles = makeStyles({
-  actionCard: {
-    minWidth: '368px',
-  },
-  gridViewCard: {
-    minWidth: '254px',
-    maxWidth: '368px',
-  },
-  gray: {
-    color: 'gray',
-  },
-  logo: {
-    background: 'white',
-    padding: '6px',
-    width: '20px',
-    height: '20px',
-
-    '> img': {
-      width: '100%',
-      height: '100%',
-    },
-  },
-});
+const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
+const salesTemplateURL = ASSET_URL + '/assets/sales_template.png';
 
 export const GridCard = () => {
-  const styles = useStyles();
-
   return (
-    <Card className={styles.gridViewCard}>
-      <CardPreview>
-        <img src={salesTemplate} alt="Preview of a sales slide deck" />
-      </CardPreview>
-      <CardHeader
-        image={<img src={powerpointLogo} alt="Microsoft PowerPoint logo" />}
-        header={
-          <Body>
-            <b>Sales Analysis</b>
-          </Body>
-        }
-        description={<Caption className={styles.gray}>Elvia replied to a comment</Caption>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal16Regular />} />}
-      />
-    </Card>
+    <div style={{ display: 'flex', gap: '1em' }}>
+      <Card>
+        <CardPreview>
+          <img src={salesTemplateURL} alt="Preview of a sales slide deck" />
+        </CardPreview>
+        <CardHeader
+          image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+          header={
+            <Body>
+              <b>Sales Analysis</b>
+            </Body>
+          }
+          description={<Caption>Elvia replied to a comment</Caption>}
+          action={<Button appearance="transparent" icon={<MoreHorizontal16Regular />} />}
+        />
+      </Card>
+      <Card>
+        <CardPreview>
+          <img src={salesTemplateURL} alt="Preview of a sales slide deck" />
+        </CardPreview>
+        <CardHeader
+          image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+          header={
+            <Body>
+              <b>Sales Analysis</b>
+            </Body>
+          }
+          description={<Caption>Elvia replied to a comment</Caption>}
+          action={<Button appearance="transparent" icon={<MoreHorizontal16Regular />} />}
+        />
+      </Card>
+    </div>
   );
+};
+
+GridCard.parameters = {
+  docs: {
+    description: {
+      story: 'Cards can be sized to fit into a grid',
+    },
+  },
 };
