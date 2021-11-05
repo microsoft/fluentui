@@ -132,8 +132,8 @@ module.exports = {
     }
 
     /**
-       * Note that this way of reading tsconfig does not account for extends, but that's okay since
-       * typically include will not be specified that way
+       * Note that this approach only accounts for a single level of extends. JJU is used for parsing
+       * the tsconfig because Typescript functions are more complex than necessary.
        *
        * @type {{
           extends: string;
@@ -143,7 +143,7 @@ module.exports = {
           references?: Array<{path:string}>
           }}
        */
-    const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
+    let tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
 
     /**
      * Handle any necessary extends merging here, make sure to treat just like native tsconfigs would
@@ -153,8 +153,9 @@ module.exports = {
       /** @type { typeof tsconfig } */
       const parentTsConfig = jju.parse(fs.readFileSync(parentTsConfigPath).toString());
 
-      // override exclude from parent tsconfig if it exists
-      tsconfig.exclude = tsconfig.exclude ? tsconfig.exclude : parentTsConfig.exclude;
+      // Extending config overrides parent files, include and exclue
+      // https://www.typescriptlang.org/tsconfig#extends
+      tsconfig = { ...parentTsConfig, ...tsconfig };
     }
 
     // if project is using solution TS style config (process references)
