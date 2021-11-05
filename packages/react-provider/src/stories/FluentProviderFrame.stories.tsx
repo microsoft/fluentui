@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 // @ts-ignore
 import { Button } from '@fluentui/react-button';
 import { createDOMRenderer, makeStyles, RendererProvider } from '@fluentui/react-make-styles';
-import { FluentProvider } from '../FluentProvider';
+import { FluentProvider } from '../FluentProvider'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
 
 const useExampleStyles = makeStyles({
   button: {

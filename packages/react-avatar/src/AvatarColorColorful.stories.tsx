@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar, AvatarProps } from './index'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
 
 export const ColorColorful = (props: Partial<AvatarProps>) => (
   <>
@@ -15,7 +15,7 @@ ColorColorful.storyName = 'Color: colorful';
 ColorColorful.parameters = {
   docs: {
     description: {
-      story: 'A color can be derived automatically from the name.',
+      story: 'An avatar can have the color be automatically generated from the name.',
     },
   },
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar, AvatarProps } from './index'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
 
 export const Size = (props: Partial<AvatarProps>) => (
   <>
@@ -18,3 +18,11 @@ export const Size = (props: Partial<AvatarProps>) => (
     <Avatar {...props} label={128} size={128} />
   </>
 );
+
+Size.parameters = {
+  docs: {
+    description: {
+      story: 'An avatar supports a ramp of sizes from 20 to 128. The default is 32.',
+    },
+  },
+};

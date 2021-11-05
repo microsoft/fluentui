@@ -21,8 +21,9 @@ Status.parameters = {
   docs: {
     description: {
       story:
-        'A PresenceBadge supports `available`, `away`, `busy`, `doNotDisturb`, ' +
-        '`offline`, and `outOfOffice` status.',
+        'A presence badge supports `available`, `away`, `busy`, `doNotDisturb`, ' +
+        '`offline`, and `outOfOffice` status.' +
+        ' The default is `available`.',
     },
   },
 };
