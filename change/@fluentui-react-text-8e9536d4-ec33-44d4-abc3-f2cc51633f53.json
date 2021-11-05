@@ -3,5 +3,5 @@
   "comment": "chore(Text): Add docs for each prop and new typography story",
   "packageName": "@fluentui/react-text",
   "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
