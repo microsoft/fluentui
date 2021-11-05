@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Dialog: Removing tooltip from close button.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
