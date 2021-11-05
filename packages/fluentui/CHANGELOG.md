@@ -30,6 +30,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Set default focus border radius to default border radius (`4px`) @Hirse ([#20230](https://github.com/microsoft/fluentui/pull/20230))
 - Set `ChatMessageReadStatus` color to brand @Hirse ([#20231](https://github.com/microsoft/fluentui/pull/20231))
 - Fix broken styles debug of undefined `isReactComponent` @petr-duda ([#20349](https://github.com/microsoft/fluentui/pull/20349))
+- Remove pointer cursor and prevent navigation on carousel paddle click when `disableClickableNav` @chpalac ([#20521](https://github.com/microsoft/fluentui/pull/20521))
 
 ### Features
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
