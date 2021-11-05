@@ -100,11 +100,6 @@ export const CalendarDayGridStyles = (props: ICalendarDayGridStyleProps): Partia
         },
       },
     ],
-    dayIsToday: {
-      backgroundColor: 'none',
-      color: 'none',
-      fontWeight: StyleConstants.fontWeightRegular,
-    },
     datesAbove: {
       '&:after': {
         borderTop: `none`,
