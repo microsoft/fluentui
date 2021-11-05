@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix uncaught positioning logic when both directionalHintFixed and alignTargetEdge are true",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
