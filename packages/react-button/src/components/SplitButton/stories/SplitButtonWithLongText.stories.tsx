@@ -3,7 +3,6 @@ import * as React from 'react';
 // @ts-ignore
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
-// codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
 
 export const WithLongText = () => (
   <>
