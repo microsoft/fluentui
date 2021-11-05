@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { MenuButton, Menu, MenuPopover, MenuItemRadio, MenuList, MenuTrigger, makeStyles } from '../index';
-import { themes, ThemeIds, setGlobalTheme } from '@fluentui/react-storybook-addon';
+import { themes, ThemeIds, THEME_ID } from '@fluentui/react-storybook-addon';
+import addons from '@storybook/addons';
 
 const useStyles = makeStyles({
   menuButton: {
@@ -22,6 +23,10 @@ const useStyles = makeStyles({
  */
 export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedThemeId }) => {
   const styles = useStyles();
+
+  const setGlobalTheme = (themeId: ThemeIds): void => {
+    addons.getChannel().emit('updateGlobals', { globals: { [THEME_ID]: themeId } });
+  };
   const onCheckedValueChange = (
     e: React.MouseEvent | React.KeyboardEvent,
     data: {

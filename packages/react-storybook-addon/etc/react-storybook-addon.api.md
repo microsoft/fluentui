@@ -20,9 +20,6 @@ export interface FluentStoryContext extends StoryContext {
     globals: FluentGlobals;
 }
 
-// @public
-export function setGlobalTheme(themeId: ThemeIds): void;
-
 // @public (undocumented)
 export const THEME_ID: "storybook/fluentui-react-addon/theme";
 
