@@ -11,6 +11,36 @@ These are not production-ready components and **should never be used in product*
 - adds fluent theme switcher
   - ![Fluent Theme Switcher](https://user-images.githubusercontent.com/20744592/138872560-8ef40c25-193c-47db-a216-7c1e86fe8cda.png)
 
+**Theme management in storybook globals**
+
+Exports types and utilities to set and consume the correct Fluent theme in storybook globals. Here's some example picker
+that sets the Fluent them in storybook globals.
+
+```tsx
+import * as React from 'react';
+import { themes, setGlobalTheme, FluentStoryContext, THEME_ID } from '@fluentui/react-storybook-addon';
+
+// storybook context which can be accessed for example in decorators
+// https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking
+export const ThemePicker: React.FC<{ context: FluentStoryContext }> = ({ context }) => {
+  const handleChange = e => {
+    setGlobalTheme(e.target.value);
+  };
+
+  const selectedTheme = themes.find(theme => theme.id === context.globals[THEME_ID]);
+
+  return (
+    <select onChange={handleChange}>
+      {themes.map(theme => (
+        <option selected={selectedTheme.id === theme.id} value={theme.id}>
+          {theme.label}
+        </option>
+      ))}
+    </select>
+  );
+};
+```
+
 ## Getting Started
 
 ### Installation
