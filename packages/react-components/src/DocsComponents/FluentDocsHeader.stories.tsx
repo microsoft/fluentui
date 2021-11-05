@@ -9,9 +9,9 @@ const useStyles = makeStyles({
     top: 0,
     padding: '5px',
     width: '100%',
-    background: theme.colorNeutralBackground2,
+    background: theme.colorNeutralBackground3,
     boxShadow: `${theme.shadow8}`,
-    borderBottom: '1px solid transparent',
+    borderBottom: `1px solid ${theme.colorTransparentStroke}`,
     zIndex: 1000,
   }),
 });
