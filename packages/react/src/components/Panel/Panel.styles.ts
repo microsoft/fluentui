@@ -353,6 +353,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
             position: 'sticky',
+            bottom: 0,
           },
         },
       },
