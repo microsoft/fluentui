@@ -13,7 +13,6 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     justifyItems: 'center',
-    background: 'white',
     minHeight: '96px',
   },
 });
