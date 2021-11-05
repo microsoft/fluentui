@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuButton, Menu, MenuPopover, MenuItemRadio, MenuList, MenuTrigger, makeStyles } from '../index';
+import { MenuButton, Menu, MenuPopover, MenuItemRadio, MenuList, MenuTrigger, makeStyles, MenuProps } from '../index';
 import { themes, ThemeIds, THEME_ID } from '@fluentui/react-storybook-addon';
 import addons from '@storybook/addons';
 
@@ -27,13 +27,7 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedTh
   const setGlobalTheme = (themeId: ThemeIds): void => {
     addons.getChannel().emit('updateGlobals', { globals: { [THEME_ID]: themeId } });
   };
-  const onCheckedValueChange = (
-    e: React.MouseEvent | React.KeyboardEvent,
-    data: {
-      name: string;
-      checkedItems: string[];
-    },
-  ) => {
+  const onCheckedValueChange: MenuProps['onCheckedValueChange'] = (e, data) => {
     setGlobalTheme(data.checkedItems[0] as ThemeIds);
   };
 
