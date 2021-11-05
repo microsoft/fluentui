@@ -1,0 +1,1 @@
+{"code":"import { isDark } from './is-dark';\r\n/**\r\n * @internal\r\n */\r\nexport function directionByIsDark(color) {\r\n    return isDark(color) ? -1 : 1;\r\n}\r\n","references":["/home/chassunc/projects/fluentui/packages/web-components/src/color/swatch.ts","/home/chassunc/projects/fluentui/packages/web-components/src/color/utilities/is-dark.ts"]}
