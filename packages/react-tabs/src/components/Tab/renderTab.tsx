@@ -9,6 +9,10 @@ import type { TabState, TabSlots } from './Tab.types';
 export const renderTab = (state: TabState) => {
   const { slots, slotProps } = getSlots<TabSlots>(state, tabShorthandProps);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root role="tab" {...slotProps.root}>
+      <slots.wrapper {...slotProps.wrapper}>{state.root.children}</slots.wrapper>
+      <slots.selectionIndicator {...slotProps.selectionIndicator} />
+    </slots.root>
+  );
 };

@@ -6,7 +6,8 @@ import type { TabListState } from './TabList.types';
  */
 const useStyles = makeStyles({
   root: theme => ({
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'row',
   }),
 
   // TODO add additional classes for different states and/or slots

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { TabListProps, TabListSlots, TabListState } from './TabList.types';
+import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import type { SelectTabData, SelectTabEvent, TabListProps, TabListSlots, TabListState } from './TabList.types';
 
 /**
  * Array of all shorthand properties listed in TabListSlots
@@ -20,6 +20,19 @@ export const tabListShorthandProps: (keyof TabListSlots)[] = [
  * @param ref - reference to root HTMLElement of TabList
  */
 export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
+  const { onTabSelected } = props;
+
+  const [selectedValue, setSelectedValue] = useControllableState({
+    state: props.selectedKey,
+    defaultState: props.defaultSelectedKey,
+    initialState: undefined,
+  });
+
+  const selectTab = useEventCallback((event: SelectTabEvent, data: SelectTabData) => {
+    onTabSelected?.(event, data);
+    setSelectedValue(data.value);
+  });
+
   return {
     // TODO add appropriate props/defaults
     components: {
@@ -32,5 +45,7 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
       ref,
       ...props,
     }),
+    selectedKey: selectedValue,
+    selectTab,
   };
 };

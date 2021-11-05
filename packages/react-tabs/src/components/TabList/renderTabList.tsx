@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { tabListShorthandProps } from './useTabList';
-import type { TabListState, TabListSlots } from './TabList.types';
+import type { TabListState, TabListSlots, TabListContextValues } from './TabList.types';
+import { TabListContext } from './TabListContext';
 
 /**
  * Render the final JSX of TabList
  */
-export const renderTabList = (state: TabListState) => {
+export const renderTabList = (state: TabListState, contextValues: TabListContextValues) => {
   const { slots, slotProps } = getSlots<TabListSlots>(state, tabListShorthandProps);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      <TabListContext.Provider value={contextValues.tabList}>{state.root.children}</TabListContext.Provider>
+    </slots.root>
+  );
 };
