@@ -67,10 +67,16 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   vertical?: boolean;
 
   thumbnails?: boolean;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselNavigationItemStylesProps = Required<
-  Pick<CarouselNavigationItemProps, 'thumbnails' | 'vertical' | 'active' | 'iconOnly' | 'primary'>
+  Pick<
+    CarouselNavigationItemProps,
+    'thumbnails' | 'vertical' | 'active' | 'iconOnly' | 'primary' | 'disableClickableNav'
+  >
 > & {
   hasContent: boolean;
   hasIndicator: boolean;
@@ -104,6 +110,7 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
     design,
     styles,
     variables,
+    disableClickableNav,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CarouselNavigationItem.handledProps, props);
@@ -130,6 +137,7 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
         iconOnly,
         primary,
         hasIndicator: !!indicator,
+        disableClickableNav,
       }),
       mapPropsToInlineStyles: () => ({
         className,
@@ -202,6 +210,7 @@ CarouselNavigationItem.propTypes = {
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   vertical: PropTypes.bool,
   thumbnails: PropTypes.bool,
+  disableClickableNav: PropTypes.bool,
 };
 
 CarouselNavigationItem.handledProps = Object.keys(CarouselNavigationItem.propTypes) as any;

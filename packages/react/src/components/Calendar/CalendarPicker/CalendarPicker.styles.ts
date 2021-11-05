@@ -231,6 +231,10 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
           color: palette.neutralTertiaryAlt,
           pointerEvents: 'none',
         },
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          forcedColorAdjust: 'none',
+        },
       },
     },
   };
