@@ -325,6 +325,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       isFooterAtBottom && {
         flexGrow: 1,
+        display: 'inherit',
+        flexDirection: 'inherit',
       },
     ],
     content: [
@@ -332,6 +334,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       sharedPaddingStyles,
       {
         paddingBottom: 20,
+      },
+      isFooterAtBottom && {
+        selectors: {
+          [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
+            flexGrow: 1,
+          },
+        },
       },
     ],
     footer: [
@@ -344,7 +353,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
             position: 'sticky',
-            top: '100%',
           },
         },
       },
