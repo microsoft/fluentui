@@ -6,7 +6,7 @@
 
 import { Args } from '@storybook/api';
 import { StoryContext } from '@storybook/addons';
-import { Theme } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 
 // @public
 export interface FluentGlobals extends Args {
