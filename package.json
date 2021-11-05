@@ -114,6 +114,7 @@
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "10.4.9",
     "@testing-library/react-hooks": "5.0.3",
+    "@testing-library/user-event": "13.5.0",
     "@types/babel__helper-plugin-utils": "7.10.0",
     "@types/copy-webpack-plugin": "6.4.0",
     "@types/dedent": "0.7.0",
