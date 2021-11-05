@@ -59,6 +59,9 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
 
   /** A vertical carousel navigation displays elements vertically. */
   vertical?: boolean;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselNavigationStylesProps = Required<
@@ -89,6 +92,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
     vertical,
     thumbnails,
     styles,
+    disableClickableNav,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CarouselNavigation.handledProps, props);
@@ -136,6 +140,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
             secondary,
             vertical,
             thumbnails,
+            disableClickableNav,
           }),
         overrideProps: handleItemOverrides(variables),
       }),
@@ -173,6 +178,7 @@ CarouselNavigation.propTypes = {
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   vertical: PropTypes.bool,
+  disableClickableNav: PropTypes.bool,
 };
 
 CarouselNavigation.defaultProps = {
