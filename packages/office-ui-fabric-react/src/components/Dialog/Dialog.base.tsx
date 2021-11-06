@@ -169,8 +169,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         <DialogContent
           subTextId={this._defaultSubTextId}
           showCloseButton={mergedModalProps.isBlocking}
+          onDismiss={onDismiss}
           {...dialogContentProps}
-          onDismiss={onDismiss ? onDismiss : dialogContentProps.onDismiss}
         >
           {this.props.children}
         </DialogContent>
