@@ -9,6 +9,10 @@ declare module '*.svg' {
   const svgPath: string;
   export default svgPath;
 }
+declare module '*.png' {
+  const value: any;
+  export default value;
+}
 
 /**
  * Generic typings for Markdown files.
