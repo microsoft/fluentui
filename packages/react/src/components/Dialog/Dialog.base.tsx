@@ -160,11 +160,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         forceFocusInsideTrap={forceFocusInsideTrap}
         ignoreExternalFocusing={ignoreExternalFocusing}
         isClickableOutsideFocusTrap={isClickableOutsideFocusTrap}
-        onDismissed={mergedModalProps.onDismissed}
         responsiveMode={responsiveMode}
         {...mergedModalProps}
-        isDarkOverlay={mergedModalProps.isDarkOverlay}
-        isBlocking={mergedModalProps.isBlocking}
         isOpen={isOpen !== undefined ? isOpen : !hidden}
         className={classNames.root}
         containerClassName={classNames.main}
@@ -174,13 +171,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       >
         <DialogContent
           subTextId={this._defaultSubTextId}
-          title={dialogContentProps.title}
-          subText={dialogContentProps.subText}
           showCloseButton={mergedModalProps.isBlocking}
-          topButtonsProps={dialogContentProps.topButtonsProps}
-          type={dialogContentProps.type}
-          onDismiss={onDismiss ? onDismiss : dialogContentProps.onDismiss}
-          className={dialogContentProps.className}
+          onDismiss={onDismiss}
           {...dialogContentProps}
         >
           {this.props.children}
