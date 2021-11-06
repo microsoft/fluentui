@@ -1,14 +1,16 @@
 import * as React from 'react';
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { SplitButton } from './SplitButton';
+import { SplitButton, MenuButtonProps } from '../../../index'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
 
-export const Default = (): JSX.Element => {
+export const Default = () => {
   return (
     <Menu positioning="below-end">
       <MenuTrigger>
-        {triggerProps => <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} />}
+        {(triggerProps: MenuButtonProps) => (
+          <SplitButton menuButton={triggerProps} primaryActionButton={'This is a split button'} />
+        )}
       </MenuTrigger>
 
       <MenuPopover>
@@ -19,9 +21,4 @@ export const Default = (): JSX.Element => {
       </MenuPopover>
     </Menu>
   );
-};
-
-export default {
-  title: 'Components/SplitButton',
-  component: SplitButton,
 };
