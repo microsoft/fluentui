@@ -46,6 +46,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       theme.fonts.medium,
       {
         position: 'absolute',
+        display: 'flex',
         zIndex: doNotLayer ? ZIndexes.Layer : undefined,
         boxSizing: 'border-box',
         borderRadius: effects.roundedCorner2,
