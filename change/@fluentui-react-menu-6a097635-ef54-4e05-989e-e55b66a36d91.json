@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove unneeded export of UninitializedMenuListState",
+  "packageName": "@fluentui/react-menu",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add new APIs for inferring page names by prefix",
+  "packageName": "@fluentui/api-docs",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
