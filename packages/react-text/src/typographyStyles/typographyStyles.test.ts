@@ -1,55 +1,35 @@
 import { typographyStyles } from './index';
-import type { Theme } from '@fluentui/react-theme';
+import type { Theme, PartialTheme } from '@fluentui/react-theme';
 
 const weightsMock = {
   regular: 1,
   semibold: 2,
 };
-type DeepPartial<T> = Partial<{ [P in keyof T]: DeepPartial<T[P]> }>;
-const themeMock: DeepPartial<Theme> = {
-  global: {
-    type: {
-      fontFamilies: {
-        base: 'base',
-      },
-      fontWeights: {
-        regular: weightsMock.regular,
-        semibold: weightsMock.semibold,
-      },
-      fontSizes: {
-        base: {
-          [100]: '100',
-          [200]: '200',
-          [300]: '300',
-          [400]: '400',
-          [500]: '500',
-          [600]: '600',
-        },
-        hero: {
-          [700]: '700',
-          [800]: '800',
-          [900]: '900',
-          [1000]: '1000',
-        },
-      },
-      lineHeights: {
-        base: {
-          [100]: '100',
-          [200]: '200',
-          [300]: '300',
-          [400]: '400',
-          [500]: '500',
-          [600]: '600',
-        },
-        hero: {
-          [700]: '700',
-          [800]: '800',
-          [900]: '900',
-          [1000]: '1000',
-        },
-      },
-    },
-  },
+
+const themeMock: PartialTheme = {
+  fontFamilyBase: 'base',
+  fontWeightRegular: weightsMock.regular,
+  fontWeightSemibold: weightsMock.semibold,
+  fontSizeBase100: '100',
+  fontSizeBase200: '200',
+  fontSizeBase300: '300',
+  fontSizeBase400: '400',
+  fontSizeBase500: '500',
+  fontSizeBase600: '600',
+  fontSizeHero700: '700',
+  fontSizeHero800: '800',
+  fontSizeHero900: '900',
+  fontSizeHero1000: '1000',
+  lineHeightBase100: '100',
+  lineHeightBase200: '200',
+  lineHeightBase300: '300',
+  lineHeightBase400: '400',
+  lineHeightBase500: '500',
+  lineHeightBase600: '600',
+  lineHeightHero700: '700',
+  lineHeightHero800: '800',
+  lineHeightHero900: '900',
+  lineHeightHero1000: '1000',
 };
 
 test.each([

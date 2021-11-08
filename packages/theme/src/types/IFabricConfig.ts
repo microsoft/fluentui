@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import type { IStyleSheetConfig } from '@fluentui/merge-styles';
+import type { ISerializedStylesheet, IStyleSheetConfig } from '@fluentui/merge-styles';
 
 // TODO: figure out a better place (e.g a shared typing package) for this interface.
 
@@ -18,4 +18,9 @@ export interface IFabricConfig {
    * The mergeStyles stylesheet config.
    */
   mergeStyles?: IStyleSheetConfig;
+
+  /**
+   * Serialized form of Stylesheet used for rehydration.
+   */
+  serializedStylesheet?: ISerializedStylesheet;
 }

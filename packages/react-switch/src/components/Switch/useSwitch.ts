@@ -6,13 +6,20 @@ import type { SwitchProps, SwitchSlots, SwitchState } from './Switch.types';
 /**
  * Array of all shorthand properties listed in SwitchSlots
  */
-export const switchShorthandProps: (keyof SwitchSlots)[] = ['root', 'track', 'thumbWrapper', 'thumb', 'input'];
+export const switchShorthandProps: (keyof SwitchSlots)[] = [
+  'root',
+  'track',
+  'thumbWrapper',
+  'thumb',
+  'activeRail',
+  'input',
+];
 
 /**
  * Given user props, returns state and render function for a Switch.
  */
 export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): SwitchState => {
-  const { track, thumbWrapper, thumb, input, defaultChecked, checked, disabled, onChange } = props;
+  const { track, thumbWrapper, thumb, activeRail, input, defaultChecked, checked, disabled, onChange } = props;
   const state: SwitchState = {
     defaultChecked,
     checked,
@@ -28,11 +35,13 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): Swit
       track: 'div',
       thumbWrapper: 'div',
       thumb: 'div',
+      activeRail: 'div',
       input: 'input',
     },
     track: resolveShorthand(track, { required: true }),
     thumbWrapper: resolveShorthand(thumbWrapper, { required: true }),
     thumb: resolveShorthand(thumb, { required: true }),
+    activeRail: resolveShorthand(activeRail, { required: true }),
     input: resolveShorthand(input, {
       required: true,
       defaultProps: {

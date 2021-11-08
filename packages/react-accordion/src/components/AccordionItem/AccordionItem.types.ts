@@ -1,37 +1,34 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-export interface AccordionItemContextValue {
+export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
   open: boolean;
-  disabled: boolean;
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
-}
+};
 
-export interface AccordionItemContextValues {
+export type AccordionItemContextValues = {
   accordionItem: AccordionItemContextValue;
-}
+};
 
 export type AccordionItemSlots = {
   root: IntrinsicShorthandProps<'div'>;
 };
 
-export interface AccordionItemCommons {
+export type AccordionItemCommons = {
   /**
    * Disables opening/closing of panel
    */
   disabled: boolean;
-}
-
-export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
   /**
    * required value that identifies this item inside an Accordion component
    */
   value: AccordionItemValue;
-}
+};
+
+export type AccordionItemProps = ComponentProps<AccordionItemSlots> &
+  Partial<AccordionItemCommons> &
+  Pick<AccordionItemCommons, 'value'>;
 
 export type AccordionItemValue = unknown;
 
-export interface AccordionItemState
-  extends ComponentState<AccordionItemSlots>,
-    AccordionItemCommons,
-    AccordionItemContextValue {}
+export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemCommons & AccordionItemContextValue;

@@ -56,7 +56,7 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
  */
 export interface IPopupRestoreFocusParams {
   /** Element the underlying Popup believes focus should go to */
-  originalElement?: HTMLElement | Window;
+  originalElement?: HTMLElement | Window | null;
   /** Whether the popup currently contains focus */
   containsFocus: boolean;
   /** Whether the document the popup belongs to contains focus (or false if unknown) */

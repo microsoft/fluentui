@@ -17,8 +17,6 @@ import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from '.
  * before being passed to renderMenu.
  *
  * @param props - props from this instance of Menu
- *
- * {@docCategory Menu }
  */
 export const useMenu = (props: MenuProps): MenuState => {
   const triggerId = useId('menu');

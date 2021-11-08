@@ -54,7 +54,7 @@ export type SliderSlots = {
   input: IntrinsicShorthandProps<'input'>;
 };
 
-export interface SliderCommons {
+export type SliderCommons = {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -113,8 +113,9 @@ export interface SliderCommons {
    *
    * - If `true`, marks are visible at each `step`.
    * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
+   * - If `{}[]`, mark is shown at the value location and displays any provided custom labels and marks.
    */
-  marks?: boolean | number[];
+  marks?: boolean | (number | { value: number; label?: string | JSX.Element; mark?: JSX.Element })[];
 
   /**
    * The starting origin point for the Slider.
@@ -140,8 +141,8 @@ export interface SliderCommons {
    * The Slider's current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
-}
+};
 
-export interface SliderProps extends Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'>, SliderCommons {}
+export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
 
-export interface SliderState extends ComponentState<SliderSlots>, SliderCommons {}
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;

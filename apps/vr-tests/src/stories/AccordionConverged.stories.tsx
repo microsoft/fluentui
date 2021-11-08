@@ -40,7 +40,7 @@ storiesOf('Accordion Converged', module)
         </AccordionItem>
       </Accordion>
     ),
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   );
 
 storiesOf('Accordion Converged', module)
@@ -116,7 +116,7 @@ storiesOf('Accordion Converged', module)
         </AccordionItem>
       </Accordion>
     ),
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
     'icon="<Icon/>"',
@@ -144,19 +144,23 @@ storiesOf('Accordion Converged', module)
     ),
     { includeRtl: true },
   )
-  .addStory('disabled', () => (
-    <Accordion openItems={[]}>
-      <AccordionItem value={0} disabled>
-        <AccordionHeader>Disabled Item Opened</AccordionHeader>
-        <AccordionPanel>Disabled Item Opened Panel</AccordionPanel>
-      </AccordionItem>
-      <AccordionItem value={1} disabled>
-        <AccordionHeader>Disabled Item Closed</AccordionHeader>
-        <AccordionPanel>Disabled Item Closed Panel</AccordionPanel>
-      </AccordionItem>
-      <AccordionItem value={2} disabled>
-        <AccordionHeader inline>Disabled Item ClosedInline</AccordionHeader>
-        <AccordionPanel>Disabled Item ClosedInline Panel</AccordionPanel>
-      </AccordionItem>
-    </Accordion>
-  ));
+  .addStory(
+    'disabled',
+    () => (
+      <Accordion openItems={[]}>
+        <AccordionItem value={0} disabled>
+          <AccordionHeader>Disabled Item Opened</AccordionHeader>
+          <AccordionPanel>Disabled Item Opened Panel</AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value={1} disabled>
+          <AccordionHeader>Disabled Item Closed</AccordionHeader>
+          <AccordionPanel>Disabled Item Closed Panel</AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value={2} disabled>
+          <AccordionHeader inline>Disabled Item ClosedInline</AccordionHeader>
+          <AccordionPanel>Disabled Item ClosedInline Panel</AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  );

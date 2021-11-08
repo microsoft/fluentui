@@ -1,3 +1,2 @@
-// TODO: replace with real exports
-export {};
 export * from './Slider';
+export * from './RangedSlider';

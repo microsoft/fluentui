@@ -106,6 +106,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /** Used to allow moving to next focusable element even when we're focusing on a input element when pressing tab */
   private _processingTabKey: boolean;
 
+  /** Provides granular control over `shouldRaiseClicks` and should be preferred over `props.shouldRaiseClicks`. */
+  private _shouldRaiseClicksOnEnter: boolean;
+  private _shouldRaiseClicksOnSpace: boolean;
+
   private _windowElement: Window | undefined;
 
   /** Used for testing purposes only. */
@@ -148,6 +152,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     };
 
     this._processingTabKey = false;
+
+    const shouldRaiseClicksFallback = props.shouldRaiseClicks ?? FocusZone.defaultProps.shouldRaiseClicks ?? true;
+    this._shouldRaiseClicksOnEnter = props.shouldRaiseClicksOnEnter ?? shouldRaiseClicksFallback;
+    this._shouldRaiseClicksOnSpace = props.shouldRaiseClicksOnSpace ?? shouldRaiseClicksFallback;
   }
 
   public componentDidMount(): void {
@@ -199,11 +207,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const doc = this._getDocument();
 
     if (
+      !this.props.preventFocusRestoration &&
       doc &&
       this._lastIndexPath &&
-      (doc.activeElement === doc.body ||
-        doc.activeElement === null ||
-        (!this.props.preventFocusRestoration && doc.activeElement === root))
+      (doc.activeElement === doc.body || doc.activeElement === null || doc.activeElement === root)
     ) {
       // The element has been removed after the render, attempt to restore focus.
       const elementToFocus = getFocusableByIndexPath(root as HTMLElement, this._lastIndexPath);
@@ -634,7 +641,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props, deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.space:
-          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+          if (this._shouldRaiseClicksOnSpace && this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
           }
           return;
@@ -750,7 +757,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           return;
 
         case KeyCodes.enter:
-          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+          if (this._shouldRaiseClicksOnEnter && this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
           }
           return;
@@ -768,7 +775,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Walk up the dom try to find a focusable element.
    */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
-    if (target === this._root.current || !this.props.shouldRaiseClicks) {
+    if (target === this._root.current) {
       return false;
     }
 

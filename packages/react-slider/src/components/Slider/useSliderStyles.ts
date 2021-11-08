@@ -1,15 +1,21 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
-import { markClassName } from './useSliderState';
 
-const thumbClassName = 'ms-Slider-thumb';
-const trackClassName = 'ms-Slider-track';
+export const sliderClassName = 'fui-Slider';
+
+const thumbClassName = `${sliderClassName}-thumb`;
+const trackClassName = `${sliderClassName}-track`;
+const markContainerClassName = `${sliderClassName}-markItemContainer`;
+const firstMarkClassName = `${sliderClassName}-firstMark`;
+const lastMarkClassName = `${sliderClassName}-lastMark`;
+const markClassName = `${sliderClassName}-mark`;
+const markLabelClassName = `${sliderClassName}-label`;
 
 /**
  * Styles for the root slot
  */
-const useRootStyles = makeStyles({
+export const useRootStyles = makeStyles({
   root: theme => ({
     position: 'relative',
     display: 'inline-flex',
@@ -46,20 +52,20 @@ const useRootStyles = makeStyles({
   enabled: theme => ({
     cursor: 'grab',
     ':hover': {
-      '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
+      [`& .${thumbClassName}`]: {
+        background: theme.colorBrandBackgroundHover,
       },
-      '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
+      [`& .${trackClassName}`]: {
+        background: theme.colorBrandBackgroundHover,
       },
     },
     ':active': {
       cursor: 'grabbing',
-      '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
+      [`& .${thumbClassName}`]: {
+        background: theme.colorBrandBackgroundPressed,
       },
-      '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
+      [`& .${trackClassName}`]: {
+        background: theme.colorBrandBackgroundPressed,
       },
     },
   }),
@@ -68,28 +74,14 @@ const useRootStyles = makeStyles({
     cursor: 'not-allowed',
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        top: '-6px',
-        right: '-6px',
-        bottom: '-6px',
-        left: '-6px',
-        boxSizing: 'border-box',
-        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: theme.global.borderRadius.medium,
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
+  focusIndicator: theme =>
+    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '6px' } }),
 });
 
 /**
  * Styles for the slider wrapper slot
  */
-const useSliderWrapper = makeStyles({
+export const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
     overflow: 'hidden',
@@ -113,20 +105,21 @@ const useSliderWrapper = makeStyles({
 /**
  * Styles for the rail slot
  */
-const useRailStyles = makeStyles({
+export const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    borderRadius: theme.global.borderRadius.xLarge,
+    borderRadius: theme.borderRadiusXLarge,
     boxSizing: 'border-box',
     pointerEvents: 'none',
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.neutralStrokeAccessible,
+    background: theme.colorNeutralStrokeAccessible,
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    background: theme.colorNeutralBackgroundDisabled,
+    border: `1px solid ${theme.colorTransparentStrokeDisabled}`,
   }),
 
   horizontal: theme => ({
@@ -149,7 +142,7 @@ const useRailStyles = makeStyles({
 /**
  * Styles for the trackWrapper slot
  */
-const useTrackWrapperStyles = makeStyles({
+export const useTrackWrapperStyles = makeStyles({
   trackWrapper: theme => ({
     position: 'absolute',
   }),
@@ -170,10 +163,10 @@ const useTrackWrapperStyles = makeStyles({
 /**
  * Styles for the track slot
  */
-const useTrackStyles = makeStyles({
+export const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    borderRadius: theme.global.borderRadius.xLarge,
+    borderRadius: theme.borderRadiusXLarge,
   }),
 
   horizontal: theme => ({
@@ -191,18 +184,18 @@ const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.colorCompoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
+    background: theme.colorNeutralForegroundDisabled,
   }),
 });
 
 /**
  * Styles for the mark slot
  */
-const useMarksWrapperStyles = makeStyles({
+export const useMarksWrapperStyles = makeStyles({
   marksWrapper: theme => ({
     position: 'relative',
     display: 'grid',
@@ -210,10 +203,15 @@ const useMarksWrapperStyles = makeStyles({
     zIndex: '1',
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      background: theme.alias.color.neutral.neutralBackground1,
+      background: theme.colorNeutralBackground1,
     },
 
-    '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
+    [`& .${markLabelClassName}`]: {
+      padding: '2px',
+      fontSize: '12px',
+    },
+
+    [`& .${firstMarkClassName}, .${lastMarkClassName}`]: {
       opacity: '0',
     },
   }),
@@ -224,11 +222,17 @@ const useMarksWrapperStyles = makeStyles({
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
     justifyItems: 'end',
 
-    '& .ms-Slider-markItemContainer': {
+    [`& .${markContainerClassName}`]: {
       display: 'flex',
       flexDirection: 'column',
       transform: 'translateX(50%)',
       alignItems: 'center',
+    },
+
+    [`& .${markLabelClassName}`]: {
+      fontFamily: theme.fontFamilyBase,
+      color: theme.colorNeutralForeground1,
+      paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
     [`& .${markClassName}`]: {
@@ -243,7 +247,7 @@ const useMarksWrapperStyles = makeStyles({
     marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
     justifyItems: 'start',
 
-    '& .ms-Slider-markItemContainer': {
+    [`& .${markContainerClassName}`]: {
       display: 'flex',
       flexDirection: 'row',
       transform: 'translateY(50%)',
@@ -252,9 +256,20 @@ const useMarksWrapperStyles = makeStyles({
       maxHeight: '100%',
     },
 
+    [`& .${markLabelClassName}`]: {
+      paddingLeft: 'calc(var(--slider-thumb-size) /2 )',
+      transform: 'scaleY(-1)',
+    },
+
     [`& .${markClassName}`]: {
       height: '1px',
       width: 'var(--slider-mark-size)',
+    },
+  }),
+
+  disabled: theme => ({
+    [`& .${markLabelClassName}`]: {
+      color: theme.colorNeutralForegroundDisabled,
     },
   }),
 });
@@ -262,7 +277,7 @@ const useMarksWrapperStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-const useThumbWrapperStyles = makeStyles({
+export const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
     outline: 'none',
@@ -285,7 +300,7 @@ const useThumbWrapperStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-const useThumbStyles = makeStyles({
+export const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
     width: 'var(--slider-thumb-size)',
@@ -295,9 +310,9 @@ const useThumbStyles = makeStyles({
     bottom: '0px',
     right: '0px',
     outline: 'none',
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: theme.borderRadiusCircular,
     boxSizing: 'border-box',
-    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
     transform: 'translate(-50%, -50%)',
 
     ':before': {
@@ -306,20 +321,22 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.global.borderRadius.circular,
+      borderRadius: theme.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralStroke1}`,
     },
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: theme.colorCompoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
-    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
+    background: theme.colorNeutralForegroundDisabled,
+    ':before': {
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralForegroundDisabled}`,
+    },
   }),
 
   horizontal: theme => ({
@@ -330,7 +347,7 @@ const useThumbStyles = makeStyles({
 /**
  * Styles for the activeRail slot
  */
-const useActiveRailStyles = makeStyles({
+export const useActiveRailStyles = makeStyles({
   activeRail: theme => ({
     position: 'absolute',
   }),
@@ -378,6 +395,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const inputStyles = useInputStyles();
 
   state.root.className = mergeClasses(
+    sliderClassName,
     rootStyles.root,
     rootStyles.focusIndicator,
     rootStyles[state.size!],
@@ -423,6 +441,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.marksWrapper.className = mergeClasses(
     marksWrapperStyles.marksWrapper,
     state.vertical ? marksWrapperStyles.vertical : marksWrapperStyles.horizontal,
+    state.disabled && marksWrapperStyles.disabled,
     state.marksWrapper.className,
   );
 
@@ -436,7 +455,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     thumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.thumb.className,
   );
 

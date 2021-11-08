@@ -37,7 +37,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       marginBottom: '5px',
     },
     legendContainer: {
-      paddingTop: '4px',
+      margin: '4px 0px 0px 4px',
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',

@@ -7,13 +7,12 @@ import { Badge } from '@fluentui/react-badge';
 export const Sizes = () => {
   return (
     <>
-      <Badge size="smallest" />
-      <Badge size="smaller" />
+      <Badge size="tiny" />
+      <Badge size="extra-small" />
       <Badge size="small" />
       <Badge size="medium" />
       <Badge size="large" />
-      <Badge size="larger" />
-      <Badge size="largest" />
+      <Badge size="extra-large" />
     </>
   );
 };
@@ -21,7 +20,9 @@ export const Sizes = () => {
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A Badge supports `smallest`, `smaller`, `small`, `medium`, `large`, `larger`, and `largest` sized',
+      story:
+        'A badge supports `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large` sizes.' +
+        ' The default is `medium`.',
     },
   },
 };

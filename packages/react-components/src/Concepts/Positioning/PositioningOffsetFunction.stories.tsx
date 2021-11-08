@@ -11,7 +11,7 @@ export const OffsetFunction = () => {
   return (
     <Popover positioning={{ position: 'after', offset }} noArrow>
       <PopoverTrigger>
-        <Button primary>Click me</Button>
+        <Button appearance="primary">Click me</Button>
       </PopoverTrigger>
 
       <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
@@ -24,7 +24,7 @@ OffsetFunction.parameters = {
   docs: {
     description: {
       story: [
-        'The positionined element can be offset from the target element by using a callback function.',
+        'The positioned element can be offset from the target element by using a callback function.',
         'The callback function provides the arguments and are a values used directly by Popper.',
         '',
         '- Dimensions and position of the positioned element',

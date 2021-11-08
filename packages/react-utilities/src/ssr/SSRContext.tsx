@@ -7,9 +7,9 @@ import { canUseDOM } from './canUseDOM';
  *
  * @internal
  */
-export interface SSRContextValue {
+export type SSRContextValue = {
   current: number;
-}
+};
 
 /**
  * Default context value to use in case there is no SSRProvider. This is fine for client-only apps.

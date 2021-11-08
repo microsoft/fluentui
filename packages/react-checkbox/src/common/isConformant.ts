@@ -8,6 +8,7 @@ export function isConformant<TProps = {}>(
     asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
     extraTests: makeStylesTests as TestObject<TProps>,
+    skipAsPropTests: true,
   };
 
   baseIsConformant(defaultOptions, testInfo);

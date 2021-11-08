@@ -47,18 +47,6 @@ export const Anchor = (args: DefaultArgs) => {
   return <slots.root {...slotProps.root}>this is an anchor</slots.root>;
 };
 
-export const Span = (args: DefaultArgs) => {
-  const props = useARIAButton({ as: 'span', onClick: args.onClick }, { required: true });
-  const { slots, slotProps } = getSlots({ root: props }, ['root']);
-  return <slots.root {...slotProps.root}>this is a span</slots.root>;
-};
-
-export const Div = (args: DefaultArgs) => {
-  const props = useARIAButton({ as: 'div', onClick: args.onClick }, { required: true });
-  const { slots, slotProps } = getSlots({ root: props }, ['root']);
-  return <slots.root {...slotProps.root}>this is a div</slots.root>;
-};
-
 export default {
   title: 'useARIAButton',
   argTypes: { onClick: { action: 'clicked' } },

@@ -7,12 +7,12 @@ import { PresenceBadge } from '@fluentui/react-badge';
 export const Sizes = () => {
   return (
     <>
-      <PresenceBadge size="smallest" />
-      <PresenceBadge size="smaller" />
+      <PresenceBadge size="tiny" />
+      <PresenceBadge size="extra-small" />
       <PresenceBadge size="small" />
       <PresenceBadge size="medium" />
       <PresenceBadge size="large" />
-      <PresenceBadge size="larger" />
+      <PresenceBadge size="extra-large" />
     </>
   );
 };
@@ -20,7 +20,9 @@ export const Sizes = () => {
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A PresenceBadge supports `smallest`, `smaller`, `small`, `medium`, `large`, and `larger` sizes',
+      story:
+        'A presence badge supports `tiny`, `extra-small`, `small`, `medium`, and `extra-large` sizes.' +
+        ' The default is `medium`.',
     },
   },
 };

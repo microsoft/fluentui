@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Avatar, AvatarProps, AvatarSizeValue } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { Stack } from '@fluentui/react';
 import { People20Regular, PersonCall20Regular } from '@fluentui/react-icons';
 import { AvatarExamples as examples } from '@fluentui/example-data';
@@ -21,7 +21,7 @@ const AvatarList: React.FC<
           key={size}
           size={size}
           name={names && names[i % names.length]}
-          image={images && images[i % images.length]}
+          image={images ? { src: images[i % images.length] } : undefined}
           {...restOfProps}
         />
       ))}
@@ -29,7 +29,7 @@ const AvatarList: React.FC<
   );
 };
 
-const customSizes: { baseSize: AvatarSizeValue; customSize: string }[] = [
+const customSizes: { baseSize: AvatarProps['size']; customSize: string }[] = [
   { baseSize: 20, customSize: '13px' },
   { baseSize: 20, customSize: '21px' },
   { baseSize: 32, customSize: '34px' },
@@ -55,7 +55,7 @@ const AvatarCustomSizeList: React.FC<
           size={baseSize}
           style={{ width: customSize, height: customSize }}
           name={names && names[names.length - (i % names.length) - 1]}
-          image={images && images[images.length - (i % images.length) - 1]}
+          image={images ? { src: images[images.length - (i % images.length) - 1] } : undefined}
           {...restOfProps}
         />
       ))}
@@ -89,55 +89,67 @@ storiesOf('Avatar Converged', module)
         <Avatar name="Three Word Name" />
         <Avatar name="One" />
         <Avatar name="(111)-555-1234" icon={<PersonCall20Regular />} />
-        <Avatar icon={<People20Regular />} square />
-        <Avatar name="Group" icon={<People20Regular />} square />
-        <Avatar image={examples.image[14]} badge="away" />
-        <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
+        <Avatar icon={<People20Regular />} shape="square" />
+        <Avatar name="Group" icon={<People20Regular />} shape="square" />
+        <Avatar image={{ src: examples.image[14] }} badge={{ status: 'away' }} />
+        <Avatar
+          name={examples.name[7]}
+          image={{ src: examples.image[7] }}
+          badge={{ status: 'available' }}
+        />
       </>
     ),
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('size+name', () => <AvatarList names={examples.name} />)
-  .addStory('size+icon+badge+square', () => <AvatarList badge="outOfOffice" square />)
-  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="doNotDisturb" />)
+  .addStory('size+icon+badge+square', () => (
+    <AvatarList badge={{ status: 'outOfOffice' }} shape="square" />
+  ))
+  .addStory('size+image+badge', () => (
+    <AvatarList images={examples.image} badge={{ status: 'doNotDisturb' }} />
+  ))
   .addStory('size+inactive+badge', () => (
-    <AvatarList images={examples.image} active="inactive" badge="offline" />
+    <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
   ))
   .addStory('size+active+badge', () => (
-    <AvatarList images={examples.image} active="active" badge="available" />
+    <AvatarList images={examples.image} active="active" badge={{ status: 'available' }} />
   ))
   .addStory('size+active+shadow', () => (
-    <AvatarList images={examples.image} active="active" activeDisplay="shadow" />
+    <AvatarList images={examples.image} active="active" activeAppearance="shadow" />
   ))
   .addStory('size+active+glow', () => (
-    <AvatarList images={examples.image} active="active" activeDisplay="glow" />
+    <AvatarList images={examples.image} active="active" activeAppearance="glow" />
   ))
   .addStory('size+active+ring-shadow', () => (
-    <AvatarList images={examples.image} active="active" activeDisplay="ring-shadow" />
+    <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
   ))
   .addStory('size+active+ring-glow', () => (
-    <AvatarList images={examples.image} active="active" activeDisplay="ring-glow" />
+    <AvatarList images={examples.image} active="active" activeAppearance="ring-glow" />
   ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
-    <AvatarCustomSizeList names={examples.name} badge="available" />
+    <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
   ))
   .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" />)
-  .addStory('color', () => (
-    <Stack tokens={{ childrenGap: 24 }}>
-      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-        <Avatar color="neutral" />
-        <Avatar color="brand" />
+  .addStory(
+    'color',
+    () => (
+      <Stack tokens={{ childrenGap: 24 }}>
+        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+          <Avatar color="neutral" />
+          <Avatar color="brand" />
+        </Stack>
+        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+          {examples.name.map(name => (
+            <Avatar color="colorful" name={name} key={name} />
+          ))}
+        </Stack>
+        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+          {examples.namedColors.map(color => (
+            <Avatar color={color} key={color} />
+          ))}
+        </Stack>
       </Stack>
-      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-        {examples.name.map(name => (
-          <Avatar color="colorful" name={name} key={name} />
-        ))}
-      </Stack>
-      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-        {examples.namedColors.map(color => (
-          <Avatar color={color} key={color} />
-        ))}
-      </Stack>
-    </Stack>
-  ));
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  );

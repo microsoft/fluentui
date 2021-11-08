@@ -11,17 +11,14 @@ import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.
  * before being passed to renderPopoverTrigger.
  *
  * @param props - props from this instance of PopoverTrigger
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const usePopoverTrigger = (
-  props: PopoverTriggerProps,
-  defaultProps?: PopoverTriggerProps,
-): PopoverTriggerState => {
+export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerState => {
   const setOpen = usePopoverContext(context => context.setOpen);
   const open = usePopoverContext(context => context.open);
   const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
+  const trapFocus = usePopoverContext(context => context.trapFocus);
   const { triggerAttributes } = useModalAttributes();
 
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -70,14 +67,15 @@ export const usePopoverTrigger = (
   const child = React.Children.only(props.children);
   return {
     children: React.cloneElement(child, {
-      'aria-haspopup': 'true',
+      ...triggerAttributes,
+      'aria-haspopup': trapFocus ? 'dialog' : 'true',
+      ...child.props,
       onClick,
       onMouseEnter,
       onKeyDown,
       onMouseLeave,
       onContextMenu,
       ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
-      ...triggerAttributes,
     }),
   };
 };

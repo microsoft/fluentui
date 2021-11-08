@@ -1166,7 +1166,10 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
     className=
 
         {
-          padding-top: 4px;
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
+          margin-top: 4px;
         }
   >
     <div

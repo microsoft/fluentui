@@ -1,1 +1,1 @@
-Image is a visual representation of some content, such as a photo, illustration etc.
+An image displays graphical content such as a photo or illustration.

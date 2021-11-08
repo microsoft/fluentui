@@ -30,7 +30,7 @@ export const PopperImperativeHandle = () => {
   return (
     <Popover positioning={{ position: 'below', popperRef }} noArrow onOpenChange={onOpenChange}>
       <PopoverTrigger>
-        <Button primary>Click me</Button>
+        <Button appearance="primary">Click me</Button>
       </PopoverTrigger>
 
       <PopoverSurface style={{ minWidth: 100 }}>{loading ? 'Loading 1 second...' : <Placeholder />}</PopoverSurface>

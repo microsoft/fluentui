@@ -7,7 +7,7 @@ export const Default = (props: PositioningProps) => {
   return (
     <Popover positioning={props} noArrow>
       <PopoverTrigger>
-        <Button primary>Click me</Button>
+        <Button appearance="primary">Click me</Button>
       </PopoverTrigger>
 
       <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>

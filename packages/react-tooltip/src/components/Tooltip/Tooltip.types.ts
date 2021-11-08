@@ -1,27 +1,39 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 /**
- * Properties for the Tooltip component
- * {@docCategory Tooltip}
+ * Slot properties for Tooltip
  */
-export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type TooltipSlots = {
+  root: Omit<IntrinsicShorthandProps<'div'>, 'children'> & {
+    /**
+     * The child is the element that triggers the Tooltip. It will have additional properties added,
+     * including events and aria properties.
+     * Alternatively, children can be a render function that takes the props and adds
+     * them to the appropriate elements.
+     */
+    children?:
+      | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
+      | ((props: TooltipTriggerProps) => React.ReactNode)
+      | null;
+  };
+};
+
+/**
+ * Properties and state for Tooltip
+ */
+export type TooltipCommons = {
   /**
-   * The child is the element that triggers the Tooltip. It will have additional properties added,
-   * including events and aria properties.
-   * Alternatively, children can be a render function that takes the props and adds
-   * them to the appropriate elements.
+   * A tooltip can appear with the default appearance or inverted.
+   * When not specified, the default appearance is used.
    */
-  children?:
-    | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
-    | ((props: TooltipTriggerProps) => React.ReactNode)
-    | null;
+  appearance?: 'inverted';
 
   /**
    * The content displayed inside the tooltip.
    */
-  content: ShorthandPropsCompat<ComponentPropsCompat>;
+  content: React.ReactNode;
 
   /**
    * Color variant with inverted colors
@@ -35,7 +47,14 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    *
    * @defaultvalue false
    */
-  pointing?: boolean;
+  withArrow?: boolean;
+
+  /**
+   * Configure the positioning of the tooltip
+   *
+   * @defaultvalue above
+   */
+  positioning?: PositioningShorthand;
 
   /**
    * Control the tooltip's visibility programatically.
@@ -64,31 +83,25 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    *
    * @defaultvalue label
    */
-  triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
+  triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
    *
    * @defaultvalue 250
    */
-  showDelay?: number;
+  showDelay: number;
 
   /**
    * Delay before the tooltip is hidden, in milliseconds.
    *
    * @defaultvalue 250
    */
-  hideDelay?: number;
-
-  /**
-   * Configure the positioning of the tooltip
-   */
-  positioning?: PositioningShorthand;
-}
+  hideDelay: number;
+};
 
 /**
  * The properties that are added to the trigger of the Tooltip
- * {@docCategory Tooltip}
  */
 export type TooltipTriggerProps = {
   ref?: React.Ref<never>;
@@ -100,48 +113,39 @@ export type TooltipTriggerProps = {
 /**
  * Data for the Tooltip's onVisibleChange event.
  */
-export interface OnVisibleChangeData {
+export type OnVisibleChangeData = {
   visible: boolean;
-}
+};
 
 /**
- * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
+ * Properties for Tooltip
  */
-export type TooltipShorthandProps = 'content';
-
-/**
- * Names of TooltipProps that have a default value in useTooltip
- * {@docCategory Tooltip}
- */
-export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
+export type TooltipProps = ComponentProps<TooltipSlots> &
+  Partial<Omit<TooltipCommons, 'content'>> &
+  Pick<TooltipCommons, 'content'>;
 
 /**
  * State used in rendering Tooltip
  */
-export interface TooltipState extends ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
-  /**
-   * Ref to the root tooltip element.
-   */
-  ref: React.Ref<HTMLElement>;
+export type TooltipState = ComponentState<TooltipSlots> &
+  TooltipCommons & {
+    /**
+     * Whether the tooltip should be rendered to the DOM.
+     *
+     * Normally the tooltip will only be rendered when visible. However, if
+     * triggerAriaAttribute is labelledby or describedby, the tooltip will
+     * always be rendered even when hidden so that those aria attributes
+     * to always refer to a valid DOM element.
+     */
+    shouldRenderTooltip?: boolean;
 
-  /**
-   * Whether the tooltip should be rendered to the DOM.
-   *
-   * Normally the tooltip will only be rendered when visible. However, if
-   * triggerAriaAttribute is labelledby or describedby, the tooltip will
-   * always be rendered even when hidden so that those aria attributes
-   * to always refer to a valid DOM element.
-   */
-  shouldRenderTooltip?: boolean;
+    /**
+     * Ref to the arrow element
+     */
+    arrowRef?: React.Ref<HTMLDivElement>;
 
-  /**
-   * Ref to the arrow element
-   */
-  arrowRef?: React.Ref<HTMLDivElement>;
-
-  /**
-   * CSS class for the arrow element
-   */
-  arrowClassName?: string;
-}
+    /**
+     * CSS class for the arrow element
+     */
+    arrowClassName?: string;
+  };

@@ -8,13 +8,14 @@ export const imageShorthandProps: Array<keyof ImageSlots> = ['root'];
  * Given user props, returns state and render function for an Image.
  */
 export const useImage = (props: ImageProps, ref: React.Ref<HTMLImageElement>): ImageState => {
-  const { bordered, fit, fluid, circular, rounded } = props;
+  const { bordered, fit, block, shape = 'square', shadow } = props;
+
   const state: ImageState = {
     bordered,
     fit,
-    fluid,
-    circular,
-    rounded,
+    block,
+    shape,
+    shadow,
     components: {
       root: 'img',
     },
@@ -23,8 +24,6 @@ export const useImage = (props: ImageProps, ref: React.Ref<HTMLImageElement>): I
       ...props,
     }),
   };
-
-  state.root['aria-hidden'] = state.root.alt || state.root['aria-label'] ? undefined : 'true';
 
   return state;
 };

@@ -5,7 +5,7 @@ import '../badge';
 import ToolbarTemplate from './fixtures/toolbar.html';
 
 export default {
-  title: 'Toolbar',
+  title: 'Components/Toolbar',
 };
 
 export const Toolbar = () => ToolbarTemplate;

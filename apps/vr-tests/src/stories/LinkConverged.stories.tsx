@@ -3,7 +3,9 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-const AnchorLink = (props: LinkProps) => <Link {...props} href="https://www.bing.com" />;
+const AnchorLink = (props: LinkProps & { as?: 'a' }) => (
+  <Link {...props} href="https://www.bing.com" />
+);
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
 storiesOf('Link Converged - Rendered as anchor', module)
@@ -21,15 +23,23 @@ storiesOf('Link Converged - Rendered as anchor', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, { includeRtl: true })
+  .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, {
+    includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('Stand-alone Disabled', () => (
     <AnchorLink disabled>Stand-alone disabled link</AnchorLink>
   ))
-  .addStory('Stand-alone Disabled Focusable', () => (
-    <AnchorLink disabled disabledFocusable>
-      Stand-alone disabled focusable link
-    </AnchorLink>
-  ))
+  .addStory(
+    'Stand-alone Disabled Focusable',
+    () => (
+      <AnchorLink disabled disabledFocusable>
+        Stand-alone disabled focusable link
+      </AnchorLink>
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  )
   .addStory(
     'Inline',
     () => (

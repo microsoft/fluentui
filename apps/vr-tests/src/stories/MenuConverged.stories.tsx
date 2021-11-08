@@ -104,7 +104,7 @@ storiesOf('Menu Converged - groups', module)
         </MenuPopover>
       </Menu>
     ),
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   );
 
 storiesOf('Menu Converged - selection', module)
@@ -138,7 +138,7 @@ storiesOf('Menu Converged - selection', module)
         </MenuPopover>
       </Menu>
     ),
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   );
 
 storiesOf('Menu Converged - selection groups', module)

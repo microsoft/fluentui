@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import {
+  ComponentProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+  ObjectShorthandProps,
+} from '@fluentui/react-utilities';
 import { LabelProps } from '@fluentui/react-label';
 
 /**
@@ -7,32 +12,21 @@ import { LabelProps } from '@fluentui/react-label';
  *  - Remove as from Omit. Currently it's needed since checkbox Commons shouldn't have as.
  *  - Instead of extending LabelProps, extend LabelCommons once it's added.
  */
-export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'onChange' | 'as'> {
-  /**
-   * Disabled state of the checkbox.
-   */
-  disabled?: boolean;
-
-  /**
-   * Required state of the checkbox.
-   */
-  required?: boolean;
-
+export interface CheckboxCommons {
   /**
    * A checkbox can be rendered with a circular shape.
    */
-  circular?: boolean;
+  circular: boolean;
+  /**
+   * ID of the root element that wraps the checkbox and label.
+   */
+  rootId: string | undefined;
 
   /**
    * A checkbox's state can be controlled.
    * @defaultvalue false
    */
-  checked?: 'mixed' | boolean;
-
-  /**
-   * Whether the checkbox should be rendered as checked by default.
-   */
-  defaultChecked?: 'mixed' | boolean;
+  checked: 'mixed' | boolean;
 
   /**
    * Checkbox supports two different checkbox sizes.
@@ -45,21 +39,11 @@ export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'on
    * @defaultvalue 'after'
    */
   labelPosition: 'before' | 'after';
-
   /**
-   * ID of the root element that wraps the checkbox and label.
+   * Field required to pass className to container instead of input
+   * this will be solved by https://github.com/microsoft/fluentui/pull/18983
    */
-  rootId?: string;
-
-  /**
-   * ID of the native element that represents the checkbox.
-   */
-  id?: string;
-
-  /**
-   * Callback to be called when the checked state value changes.
-   */
-  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+  containerClassName?: string;
 }
 
 /**
@@ -69,33 +53,50 @@ export interface CheckboxOnChangeData {
   checked: 'mixed' | boolean;
 }
 
-/**
- * Checkbox Props
- */
-export interface CheckboxProps extends ComponentPropsCompat, Partial<CheckboxCommons> {
+export type CheckboxSlots = {
+  root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
   /**
    * Hidden input that handles the checkbox's functionality.
    */
-  input?: ShorthandPropsCompat<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
-
+  input: IntrinsicShorthandProps<'input'>;
   /**
    * Renders the checkbox, with the checkmark icon as its child when checked.
    */
-  indicator?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement>>;
-}
+  indicator: IntrinsicShorthandProps<'div'>;
+};
+
+/**
+ * Checkbox Props
+ */
+export type CheckboxProps = Omit<ComponentProps<CheckboxSlots>, 'defaultChecked'> &
+  Partial<CheckboxCommons> & {
+    /**
+     * ID of the native element that represents the checkbox.
+     */
+    id?: string;
+
+    /**
+     * Callback to be called when the checked state value changes.
+     */
+    onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+
+    /**
+     * Whether the checkbox should be rendered as checked by default.
+     */
+    defaultChecked?: 'mixed' | boolean;
+
+    /**
+     * Required state of the checkbox.
+     */
+    required?: boolean;
+
+    /**
+     * Disabled
+     */
+    disabled?: boolean;
+  };
 
 /**
  * State used in rendering Checkbox
  */
-export interface CheckboxState
-  extends ComponentStateCompat<CheckboxProps, 'input' | 'indicator', 'size' | 'labelPosition' | 'input' | 'indicator'> {
-  /**
-   * Ref to the root element.
-   */
-  ref: React.Ref<HTMLElement>;
-
-  /**
-   * CSS class for the container of the input element and indicator slot.
-   */
-  containerClassName?: string;
-}
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;

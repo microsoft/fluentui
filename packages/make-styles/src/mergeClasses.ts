@@ -84,7 +84,7 @@ export function mergeClasses(): string {
           if (process.env.NODE_ENV !== 'production') {
             // eslint-disable-next-line no-console
             console.error(
-              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry` +
+              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry ` +
                 `in cache. Source string: ${className}`,
             );
           }

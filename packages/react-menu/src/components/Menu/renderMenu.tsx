@@ -4,7 +4,6 @@ import type { MenuContextValues, MenuState } from './Menu.types';
 
 /**
  * Render the final JSX of Menu
- * {@docCategory Menu }
  */
 export const renderMenu = (state: MenuState, contextValues: MenuContextValues) => {
   return (
