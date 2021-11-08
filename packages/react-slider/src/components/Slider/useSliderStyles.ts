@@ -4,13 +4,13 @@ import type { SliderState } from './Slider.types';
 
 export const sliderClassName = 'fui-Slider';
 
-const thumbClassName = `${sliderClassName}-thumb`;
-const trackClassName = `${sliderClassName}-track`;
-const markContainerClassName = `${sliderClassName}-markItemContainer`;
-const firstMarkClassName = `${sliderClassName}-firstMark`;
-const lastMarkClassName = `${sliderClassName}-lastMark`;
-const markClassName = `${sliderClassName}-mark`;
-const markLabelClassName = `${sliderClassName}-label`;
+export const thumbClassName = `${sliderClassName}-thumb`;
+export const trackClassName = `${sliderClassName}-track`;
+export const markContainerClassName = `${sliderClassName}-markItemContainer`;
+export const firstMarkClassName = `${sliderClassName}-firstMark`;
+export const lastMarkClassName = `${sliderClassName}-lastMark`;
+export const markClassName = `${sliderClassName}-mark`;
+export const markLabelClassName = `${sliderClassName}-label`;
 
 /**
  * Styles for the root slot
