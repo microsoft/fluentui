@@ -236,7 +236,7 @@ export const defaultTests: TestObject = {
     } = testInfo;
     const componentClassName = `fui-${componentInfo.displayName}`;
 
-    it(`has static classname (component-has-static-classname-at-root)`, () => {
+    it(`has static classname (component-has-static-classname)`, () => {
       const defaultEl = customMount(<Component {...requiredProps} />);
 
       const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
@@ -246,7 +246,7 @@ export const defaultTests: TestObject = {
         expect(classNames).toContain(componentClassName);
       } catch (e) {
         throw new Error(
-          defaultErrorMessages['component-has-static-classname-at-root'](testInfo, e, componentClassName, classNames),
+          defaultErrorMessages['component-has-static-classname'](testInfo, e, componentClassName, classNames),
         );
       }
     });

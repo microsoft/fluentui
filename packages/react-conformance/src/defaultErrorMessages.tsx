@@ -586,7 +586,7 @@ export const defaultErrorMessages = {
     });
   },
 
-  'component-has-static-classname-at-root': (
+  'component-has-static-classname': (
     testInfo: IsConformantOptions,
     error: Error,
     componentClassName: string,
