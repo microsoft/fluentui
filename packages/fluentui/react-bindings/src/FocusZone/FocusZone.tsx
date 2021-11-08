@@ -81,19 +81,11 @@ const ALLOW_VIRTUAL_ELEMENTS = false;
  * Handle global tab presses so that we can patch tabindexes on the fly.
  */
 function _onKeyDownCapture(ev: KeyboardEvent) {
-  if (getCode(ev) === keyboardKey.Tab) {
-    const window = getWindow(ev.target as Element);
-    const iframes = window!.document.getElementsByTagName('iframe');
+  outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
+}
 
-    if (iframes.length > 0) {
-      for (let i = 0; i < iframes.length; i++) {
-        let anyElementInsideIframe = iframes[i]!.contentWindow!.document.getElementsByTagName('span')[0];
-        outerZones.getOutZone(getWindow(anyElementInsideIframe)!)?.forEach(zone => zone.updateTabIndexes());
-        console.log('-----------> updating iframe');
-      }
-    }
-    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
-  }
+function _onIframeListener(ev: KeyboardEvent) {
+  outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
 }
 
 export class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
@@ -203,6 +195,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
 
       if (outerZones.getOutZone(this.windowElement)?.size === 1) {
         this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
+        this.windowElement.addEventListener('iframefocused', _onIframeListener, true);
       }
     }
 
