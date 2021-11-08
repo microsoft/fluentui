@@ -626,8 +626,8 @@ export const defaultErrorMessages = {
         exportName,
       )}) in: ${EOL}${testErrorPath(indexFile)}.`,
       suggestions: [
-        `Make sure that your component's ${resolveInfo('index.ts')} file`,
-        `or a file with styles hook contains \`${resolveInfo(constantValue)}\``,
+        `Make sure that your component's ${resolveInfo('index.ts')} file` +
+          `or a file with styles hook exports \`${resolveInfo(constantValue)}\``,
         `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
       ],
       error,
