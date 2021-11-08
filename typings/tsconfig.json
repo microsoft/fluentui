@@ -1,10 +1,12 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": false,
     "noEmit": true,
-    "esModuleInterop": true,
-    "types": ["node"]
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["**/*.d.ts"]
 }
