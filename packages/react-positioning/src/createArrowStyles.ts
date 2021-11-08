@@ -15,7 +15,7 @@ import type { Theme } from '@fluentui/react-theme';
  *   state.arrow.clasName = mergeClasses(styles.arrow, styles.smallArrow)
  * ```
  *
- * @param size dimensions of the square arrow element in pixels.
+ * @param - size dimensions of the square arrow element in pixels.
  */
 export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
   return theme => {
