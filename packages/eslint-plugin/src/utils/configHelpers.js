@@ -153,9 +153,16 @@ module.exports = {
       /** @type { typeof tsconfig } */
       const parentTsConfig = jju.parse(fs.readFileSync(parentTsConfigPath).toString());
 
-      // Extending config overrides parent files, include and exclue
+      // Extending config overrides parent files, include and exclude
       // https://www.typescriptlang.org/tsconfig#extends
-      tsconfig = { ...parentTsConfig, ...tsconfig, compilerOptions: { ...parentTsConfig.compilerOptions, ...tsConfig.compilerOptions };
+      tsconfig = {
+        ...parentTsConfig,
+        ...tsconfig,
+        compilerOptions: {
+          ...parentTsConfig.compilerOptions,
+          ...tsconfig.compilerOptions,
+        },
+      };
     }
 
     // if project is using solution TS style config (process references)
