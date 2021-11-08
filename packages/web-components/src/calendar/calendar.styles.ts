@@ -28,14 +28,6 @@ import { DirectionalStyleSheetBehavior } from '../styles';
  * @internal
  */
 const ltrStyles = css`
-.selected + .selected {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left-width: 0;
-  padding-left: calc(var(--calendar-gap) + (${strokeWidth} + ${controlCornerRadius}) * 1px);
-  margin-left: calc((${controlCornerRadius} * -1px) - var(--calendar-gap));
-}
-
 .day.disabled::before {
   transform: translate(-50%, 0) rotate(45deg);
 }
@@ -46,14 +38,6 @@ const ltrStyles = css`
  * @internal
  */
 const rtlStyles = css`
-.selected + .selected {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right-width: 0;
-  padding-right: calc(var(--calendar-gap) + (${strokeWidth} + ${controlCornerRadius}) * 1px);
-  margin-right: calc((${controlCornerRadius} * -1px) - var(--calendar-gap));
-}
-
 .day.disabled::before {
   transform: translate(50%, 0) rotate(-45deg);
 }
@@ -72,7 +56,7 @@ export const calendarStyles: (
 ) => css`
 ${display("inline-block")} :host {
   --calendar-cell-size: calc((${baseHeightMultiplier} + 2 + ${density}) * ${designUnit} * 1px);
-  --calendar-gap: calc(${designUnit} * .5px);
+  --calendar-gap: 2px;
   font-family: ${bodyFont};
   font-size: ${typeRampBaseFontSize};
   line-height: ${typeRampBaseLineHeight};
@@ -145,6 +129,14 @@ ${display("inline-block")} :host {
   color: ${accentFillRest};
   border: 1px solid ${accentFillRest};
   background: ${fillColor};
+}
+
+.selected + .selected {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  border-inline-start-width: 0;
+  padding-inline-start: calc(var(--calendar-gap) + (${strokeWidth} + ${controlCornerRadius}) * 1px);
+  margin-inline-start: calc((${controlCornerRadius} * -1px) - var(--calendar-gap));
 }
 
 .today.disabled::before {
