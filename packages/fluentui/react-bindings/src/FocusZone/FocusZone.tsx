@@ -86,8 +86,9 @@ function _onKeyDownCapture(ev: KeyboardEvent) {
   }
 }
 
-function _onIframeListener(ev: KeyboardEvent) {
+function _onFocusZoneStateReset(ev: KeyboardEvent) {
   outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
+  console.log('>>>>>>>>>> updateTabIndexes');
 }
 
 export class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
@@ -197,7 +198,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
 
       if (outerZones.getOutZone(this.windowElement)?.size === 1) {
         this.windowElement.addEventListener('keydown', _onKeyDownCapture, true);
-        this.windowElement.addEventListener('iframefocused', _onIframeListener, true);
+        this.windowElement.addEventListener('focus-zone-state-reset', _onFocusZoneStateReset, true);
       }
     }
 

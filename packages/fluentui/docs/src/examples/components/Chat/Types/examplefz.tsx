@@ -137,9 +137,21 @@ const ChatExample = () => {
     },
   ];
 
+  const focusDummyElement = e => {
+    let event = new Event('focus-zone-state-reset');
+    Object.defineProperty(event, 'target', { writable: false, value: e.target });
+    const iframe = window!.document.getElementsByTagName('iframe')[0];
+    iframe.contentWindow.dispatchEvent(event);
+  };
+
   return (
     <Provider theme={teamsTheme}>
-      <Chat items={items} />
+      <>
+        <div tabIndex={0} onFocus={focusDummyElement}>
+          {' '}
+        </div>
+        <Chat items={items} />
+      </>
     </Provider>
   );
 };
