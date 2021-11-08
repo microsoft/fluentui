@@ -1,5 +1,4 @@
 import { createCSSVariablesProxy, isProxy, resolveProxyValues } from './createCSSVariablesProxy';
-import { expand } from 'inline-style-expand-shorthand';
 
 describe('createCSSVariablesProxy', () => {
   it('should be able to identify as a proxy', () => {
@@ -17,26 +16,21 @@ describe('createCSSVariablesProxy', () => {
   it('should be able to expand objects containing proxies as properties', () => {
     const proxy = createCSSVariablesProxy() as { to: { string: object } };
     expect(Array.isArray(proxy)).toEqual(false);
-    const expanded = expand(
-      resolveProxyValues({
-        padding: proxy.to.string,
-        animationName: {
-          from: {
-            transform: proxy.to.string,
-          },
-          to: {
-            transform: proxy.to.string,
-          },
+    const expanded = resolveProxyValues({
+      padding: proxy.to.string,
+      animationName: {
+        from: {
+          transform: proxy.to.string,
         },
-        animationIterationCount: proxy.to.string,
-        animationDuration: proxy.to.string,
-      }),
-    );
+        to: {
+          transform: proxy.to.string,
+        },
+      },
+      animationIterationCount: proxy.to.string,
+      animationDuration: proxy.to.string,
+    });
     expect(expanded).toEqual({
-      paddingTop: 'var(--to-string)',
-      paddingRight: 'var(--to-string)',
-      paddingBottom: 'var(--to-string)',
-      paddingLeft: 'var(--to-string)',
+      padding: 'var(--to-string)',
       animationName: {
         from: {
           transform: 'var(--to-string)',

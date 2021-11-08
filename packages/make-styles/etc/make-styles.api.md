@@ -93,10 +93,10 @@ export type MakeStaticStylesStyle = {
 // @public (undocumented)
 export function makeStyles<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
 
-// Warning: (ae-forgotten-export) The symbol "MakeStylesCSSObjectCustom" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "MakeStylesCSSObjectCustomL1" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type MakeStylesAnimation = Record<'from' | 'to' | string, MakeStylesCSSObjectCustom>;
+export type MakeStylesAnimation = Record<'from' | 'to' | string, MakeStylesCSSObjectCustomL1>;
 
 // @public (undocumented)
 export interface MakeStylesOptions {
@@ -121,7 +121,7 @@ export interface MakeStylesRenderer {
 // Warning: (ae-forgotten-export) The symbol "MakeStylesStrictCSSObject" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type MakeStylesStyle = MakeStylesStrictCSSObject | MakeStylesCSSObjectCustom;
+export type MakeStylesStyle = MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL1;
 
 // @public (undocumented)
 export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStylesStyle;

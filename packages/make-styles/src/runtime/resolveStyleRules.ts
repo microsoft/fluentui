@@ -5,7 +5,6 @@ import { HASH_PREFIX } from '../constants';
 import { MakeStylesStyle, CSSClassesMap, CSSRulesByBucket, StyleBucketName, MakeStylesAnimation } from '../types';
 import { compileCSS, CompileCSSOptions } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
-import { expandShorthand } from './expandShorthand';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';
@@ -212,8 +211,8 @@ export function resolveStyleRules(
   styles: MakeStylesStyle,
   unstable_cssPriority: number = 0,
 ): [CSSClassesMap, CSSRulesByBucket] {
-  // expandShorthand() and resolveProxyValues() are recursive functions and should be evaluated once for a style object
-  const expandedStyles: MakeStylesStyle = expandShorthand(resolveProxyValues(styles));
+  // resolveProxyValues() is recursive function and should be evaluated once for a style object
+  const expandedStyles: MakeStylesStyle = resolveProxyValues(styles);
 
   return resolveStyleRulesInner(expandedStyles, unstable_cssPriority);
 }
