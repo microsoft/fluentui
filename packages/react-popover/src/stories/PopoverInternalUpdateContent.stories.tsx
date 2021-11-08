@@ -1,18 +1,8 @@
 import * as React from 'react';
-
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-
 import { Button } from '@fluentui/react-button';
-
 import { makeStyles } from '@fluentui/react-make-styles';
 
-// FIXME need to redeclare types because type imports are under @ts-ignore
-export type OpenPopoverEvents =
-  | MouseEvent
-  | TouchEvent
-  | React.MouseEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
+import { Popover, PopoverProps, PopoverTrigger, PopoverSurface } from '../index';
 
 const useStyles = makeStyles({
   contentHeader: {
@@ -35,7 +25,7 @@ export const InternalUpdateContent = () => {
   const [visible, setVisible] = React.useState(false);
 
   const changeContent = () => setVisible(true);
-  const onOpenChange = (e: OpenPopoverEvents, data: { open: boolean }) => {
+  const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
     if (data.open === false) {
       setVisible(false);
     }
