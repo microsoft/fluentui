@@ -600,7 +600,7 @@ export const defaultErrorMessages = {
       overview: `does not have default className (${testErrorInfo(componentClassName)}).`,
       details: [`After render it has the following classes:`, `    ${failedError(`className='${classNames}'`)}`],
       suggestions: [
-        `Ensure that your component has default className and it is ${resolveInfo('merged')} with defaults.`,
+        `Ensure that your component has default a className and it is ${resolveInfo('merged')} with defaults by calling mergeClassNames.`,
       ],
       error,
     });
