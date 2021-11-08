@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForegroundInverted,
   }),
 
-  //  width and height = arrowHeight * sqrt(2)
+  // width and height = arrowHeight * sqrt(2)
   // Update arrowHeight in useTooltip.tsx if this changes
   arrow: createArrowStyles(8.485),
 });
