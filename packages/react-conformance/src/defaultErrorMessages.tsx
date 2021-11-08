@@ -622,7 +622,7 @@ export const defaultErrorMessages = {
 
     return getErrorMessage({
       displayName,
-      overview: `does not have an export for className constant (${testErrorInfo(
+      overview: `default className constant  is not exported (${testErrorInfo(
         exportName,
       )}) in: ${EOL}${testErrorPath(indexFile)}.`,
       suggestions: [
