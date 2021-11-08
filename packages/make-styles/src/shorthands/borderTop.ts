@@ -1,16 +1,15 @@
 import type { BorderColorProperty, BorderStyleProperty, BorderWidthProperty } from 'csstype';
 import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 
-export function borderTop(width: BorderWidthProperty<MakeStylesCSSValue>): MakeStylesStrictCSSObject;
-export function borderTop(
-  width: BorderWidthProperty<MakeStylesCSSValue>,
-  style: BorderStyleProperty,
-): MakeStylesStrictCSSObject;
+type Created = Pick<MakeStylesStrictCSSObject, 'borderTopWidth' | 'borderTopStyle' | 'borderTopColor'>;
+
+export function borderTop(width: BorderWidthProperty<MakeStylesCSSValue>): Created;
+export function borderTop(width: BorderWidthProperty<MakeStylesCSSValue>, style: BorderStyleProperty): Created;
 export function borderTop(
   width: BorderWidthProperty<MakeStylesCSSValue>,
   style: BorderStyleProperty,
   color: BorderColorProperty,
-): MakeStylesStrictCSSObject;
+): Created;
 
 /**
  * A function that implements expansion for "border-top", it's simplified - check usage examples.
@@ -24,10 +23,10 @@ export function borderTop(
  */
 export function borderTop(
   ...values: [BorderWidthProperty<MakeStylesCSSValue>, BorderStyleProperty?, BorderColorProperty?]
-): MakeStylesStrictCSSObject {
+): Created {
   return {
     borderTopWidth: values[0],
-    ...(values[1] && ({ borderTopStyle: values[1] } as MakeStylesStrictCSSObject)),
+    ...(values[1] && ({ borderTopStyle: values[1] } as Created)),
     ...(values[2] && { borderTopColor: values[2] }),
   };
 }

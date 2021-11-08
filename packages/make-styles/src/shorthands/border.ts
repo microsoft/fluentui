@@ -5,16 +5,29 @@ import { borderWidth } from './borderWidth';
 import { borderStyle } from './borderStyle';
 import { borderColor } from './borderColor';
 
-export function border(width: BorderWidthProperty<MakeStylesCSSValue>): MakeStylesStrictCSSObject;
-export function border(
-  width: BorderWidthProperty<MakeStylesCSSValue>,
-  style: BorderStyleProperty,
-): MakeStylesStrictCSSObject;
+type BorderStyles = Pick<
+  MakeStylesStrictCSSObject,
+  | 'borderTopColor'
+  | 'borderTopStyle'
+  | 'borderTopWidth'
+  | 'borderRightColor'
+  | 'borderRightStyle'
+  | 'borderRightWidth'
+  | 'borderBottomColor'
+  | 'borderBottomStyle'
+  | 'borderBottomWidth'
+  | 'borderLeftColor'
+  | 'borderLeftStyle'
+  | 'borderLeftWidth'
+>;
+
+export function border(width: BorderWidthProperty<MakeStylesCSSValue>): BorderStyles;
+export function border(width: BorderWidthProperty<MakeStylesCSSValue>, style: BorderStyleProperty): BorderStyles;
 export function border(
   width: BorderWidthProperty<MakeStylesCSSValue>,
   style: BorderStyleProperty,
   color: BorderColorProperty,
-): MakeStylesStrictCSSObject;
+): BorderStyles;
 
 /**
  * A function that implements expansion for "border" to all sides of an element, it's simplified - check usage examples.
@@ -28,7 +41,7 @@ export function border(
  */
 export function border(
   ...values: [BorderWidthProperty<MakeStylesCSSValue>, BorderStyleProperty?, BorderColorProperty?]
-): MakeStylesStrictCSSObject {
+): BorderStyles {
   return {
     ...borderWidth(values[0]),
     ...(values[1] && borderStyle(values[1])),
