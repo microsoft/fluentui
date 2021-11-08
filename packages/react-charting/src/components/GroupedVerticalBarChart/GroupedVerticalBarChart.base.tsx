@@ -86,6 +86,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       titleForHoverCard: '',
       xCalloutValue: '',
       yCalloutValue: '',
+      YValueHover: [],
+      hoverXValue: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -127,6 +129,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       Legend: this.state.titleForHoverCard,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+      YValueHover: this.state.YValueHover,
+      hoverXValue: this.state.hoverXValue,
       onDismiss: this._closeCallout,
       ...this.props.calloutProps,
       preventDismissOnLostFocus: true,
@@ -210,7 +214,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return shouldHighlight ? '' : '0.1';
   };
 
-  private _onBarHover = (pointData: IGVBarChartSeriesPoint, mouseEvent: React.MouseEvent<SVGElement>): void => {
+  private _onBarHover = (
+    pointData: IGVBarChartSeriesPoint,
+    groupSeries: IGVBarChartSeriesPoint[],
+    mouseEvent: React.MouseEvent<SVGElement>,
+  ): void => {
     mouseEvent.persist();
     if (
       this.state.isLegendSelected === false ||
@@ -226,13 +234,19 @@ export class GroupedVerticalBarChartBase extends React.Component<
         yCalloutValue: pointData.yAxisCalloutData,
         dataPointCalloutProps: pointData,
         callOutAccessibilityData: pointData.callOutAccessibilityData,
+        YValueHover: groupSeries,
+        hoverXValue: pointData.xAxisCalloutData,
       });
     }
   };
 
   private _onBarLeave = (): void => this.setState({ isCalloutVisible: false });
 
-  private _onBarFocus = (pointData: IGVBarChartSeriesPoint, refArrayIndexNumber: number): void => {
+  private _onBarFocus = (
+    pointData: IGVBarChartSeriesPoint,
+    groupSeries: IGVBarChartSeriesPoint[],
+    refArrayIndexNumber: number,
+  ): void => {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.titleForHoverCard === pointData.legend)
@@ -249,6 +263,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
             yCalloutValue: pointData.yAxisCalloutData,
             dataPointCalloutProps: pointData,
             callOutAccessibilityData: pointData.callOutAccessibilityData,
+            YValueHover: groupSeries,
+            hoverXValue: pointData.xAxisCalloutData,
           });
         }
       });
@@ -305,10 +321,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
               this._refCallback(e!, pointData.legend, refIndexNumber);
             }}
             fill={pointData.color}
-            onMouseOver={this._onBarHover.bind(this, pointData)}
-            onMouseMove={this._onBarHover.bind(this, pointData)}
+            onMouseOver={this._onBarHover.bind(this, pointData, singleSet.groupSeries)}
+            onMouseMove={this._onBarHover.bind(this, pointData, singleSet.groupSeries)}
             onMouseOut={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, pointData, refIndexNumber)}
+            onFocus={this._onBarFocus.bind(this, pointData, singleSet.groupSeries, refIndexNumber)}
             onBlur={this._onBarLeave}
             onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
             aria-labelledby={`toolTip${this._calloutId}`}
@@ -345,19 +361,21 @@ export class GroupedVerticalBarChartBase extends React.Component<
     points.forEach((point: IGroupedVerticalBarChartData, index: number) => {
       const singleDatasetPoint: IGVDataPoint = {};
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointforBars: any = {};
+      const singleDatasetPointForBars: any = {};
+      const singleDataSeries: IGVBarChartSeriesPoint[] = [];
 
       point.series.forEach((seriesPoint: IGVBarChartSeriesPoint) => {
         singleDatasetPoint[seriesPoint.key] = seriesPoint.data;
-        singleDatasetPointforBars[seriesPoint.key] = {
+        singleDatasetPointForBars[seriesPoint.key] = {
           ...seriesPoint,
         };
+        singleDataSeries.push(seriesPoint);
       });
 
-      singleDatasetPointforBars.xAxisPoint = point.name;
-      singleDatasetPointforBars.indexNum = index;
-
-      datasetForBars.push(singleDatasetPointforBars);
+      singleDatasetPointForBars.xAxisPoint = point.name;
+      singleDatasetPointForBars.indexNum = index;
+      singleDatasetPointForBars.groupSeries = singleDataSeries;
+      datasetForBars.push(singleDatasetPointForBars);
       dataset.push(singleDatasetPoint);
     });
     this._dataset = dataset;
