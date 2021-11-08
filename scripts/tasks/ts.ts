@@ -31,13 +31,12 @@ const useTsBuildInfo =
  * > - Without setting rootDir we would get output dir mapping following path from monorepo root
  */
 function prepareTsTaskConfig(options: TscTaskOptions) {
-  const tsConfigFilePath = resolveCwd('./tsconfig.json');
+  const tsConfigMainFilePath = resolveCwd('./tsconfig.json');
   const tsConfigLibFilePath = resolveCwd('./tsconfig.lib.json');
   const isUsingTsSolutionConfigs = fs.existsSync(tsConfigLibFilePath);
 
-  const tsConfig: TsConfig = isUsingTsSolutionConfigs
-    ? jju.parse(fs.readFileSync(tsConfigLibFilePath, 'utf-8'))
-    : jju.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
+  const tsConfigFilePath = isUsingTsSolutionConfigs ? tsConfigLibFilePath : tsConfigMainFilePath;
+  const tsConfig: TsConfig = jju.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
 
   if (tsConfig.extends) {
     logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
@@ -45,7 +44,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     const normalizedOptions = { ...options };
     normalizedOptions.baseUrl = '.';
     normalizedOptions.rootDir = './src';
-    normalizedOptions.project = isUsingTsSolutionConfigs ? 'tsconfig.lib.json' : null;
+    normalizedOptions.project = path.basename(tsConfigFilePath);
 
     return normalizedOptions;
   }
