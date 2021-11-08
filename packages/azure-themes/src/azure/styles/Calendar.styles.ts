@@ -10,7 +10,6 @@ import {
   ICalendarPickerStyleProps,
 } from '@fluentui/react';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import * as StyleConstants from '../Constants';
 
 // Effects general area of callout.
 export const CalendarStyles = (props: ICalendarStyleProps): Partial<ICalendarStyles> => {
