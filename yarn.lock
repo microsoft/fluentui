@@ -4135,6 +4135,13 @@
     "@babel/runtime" "^7.10.3"
     "@testing-library/dom" "^7.22.3"
 
+"@testing-library/user-event@13.5.0":
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.5.0.tgz#69d77007f1e124d55314a2b73fd204b333b13295"
+  integrity sha512-5Kwtbo3Y/NowpkbRuSepbyMFkZmHgD+vPzYB/RJ4oxt5Gj/avFFBYjhw27cqSVPVw/3a67NK1PbiIr9k4Gwmdg==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 "@textlint/ast-node-types@^4.2.5":
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/@textlint/ast-node-types/-/ast-node-types-4.4.3.tgz#fdba16e8126cddc50f45433ce7f6c55e7829566c"
@@ -23333,10 +23340,10 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-export-to-codesandbox@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.6.2.tgz#a79b09d96d0a39da413e50547b9bee6299f78373"
-  integrity sha512-HAD/OLgvC6nMUzBcH2J+iOOdvgZqJStJ/KYD11Cz8a85mDQtp/+l93efkofeX1Yk9LcepxwWW7WMVbI4yTBy4w==
+storybook-addon-export-to-codesandbox@0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.6.4.tgz#bda089cedf3ebae25df0201d4c97295cd87ab6db"
+  integrity sha512-IY8nTmeoxqwB/HkFARPXTtzRfXr0MzlrgDbdvCBgCBGXrseB85/cGSO8pS4eBdZxlz7Vr/B2Ano5rfy/Nuvv3Q==
   dependencies:
     codesandbox-import-utils "^2.2.3"
 

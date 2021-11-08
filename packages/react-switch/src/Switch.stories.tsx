@@ -19,19 +19,19 @@ const useIosStyles = makeStyles({
     width: '50px',
     height: '30px',
 
-    ':hover .ms-Switch-thumb': {
+    ':hover .fui-Switch-thumb': {
       ':before': {
         background: 'white',
       },
     },
 
-    ':active .ms-Switch-thumb': {
+    ':active .fui-Switch-thumb': {
       ':before': {
         background: 'white',
       },
     },
 
-    ':hover .ms-Switch-track': {
+    ':hover .fui-Switch-track': {
       // Unchecked
       ':before': {
         borderColor: 'none',
@@ -43,7 +43,7 @@ const useIosStyles = makeStyles({
       },
     },
 
-    ':active .ms-Switch-track': {
+    ':active .fui-Switch-track': {
       ':before': {
         borderColor: 'none',
       },
@@ -92,7 +92,7 @@ const useMaterialStyles = makeStyles({
     width: '34px',
     height: '14px',
 
-    ':hover .ms-Switch-thumb': {
+    ':hover .fui-Switch-thumb': {
       ':before': {
         background: 'white',
       },
@@ -101,7 +101,7 @@ const useMaterialStyles = makeStyles({
       },
     },
 
-    ':hover .ms-Switch-track': {
+    ':hover .fui-Switch-track': {
       ':before': {
         background: '#9f9f9f',
       },
@@ -111,7 +111,7 @@ const useMaterialStyles = makeStyles({
       },
     },
 
-    ':active .ms-Switch-track': {
+    ':active .fui-Switch-track': {
       ':before': {
         background: '#9f9f9f',
       },

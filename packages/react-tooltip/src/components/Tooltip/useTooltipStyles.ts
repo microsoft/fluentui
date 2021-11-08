@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { TooltipState } from './Tooltip.types';
 
+export const tooltipClassName = 'fui-Tooltip';
+
 /**
  * Styles for the tooltip
  */
@@ -67,6 +69,7 @@ export const useTooltipStyles = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(
+    tooltipClassName,
     styles.root,
     state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,

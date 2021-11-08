@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 02 Nov 2021 07:37:01 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Nov 2021 07:35:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.41.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.2)
+
+Mon, 08 Nov 2021 07:35:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.1..@fluentui/react_v8.41.2)
+
+### Patches
+
+- Dialog: Removing tooltip from close button. ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by Humberto.Morimoto@microsoft.com)
+
+## [8.41.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.1)
+
+Fri, 05 Nov 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.0..@fluentui/react_v8.41.1)
+
+### Patches
+
+- Fix uncaught positioning logic when both directionalHintFixed and alignTargetEdge are true ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by sarah.higley@microsoft.com)
+- Suggestions: Fixing issue where you couldn't select focused option after hitting 'get more results' button. ([PR #20487](https://github.com/microsoft/fluentui/pull/20487) by Humberto.Morimoto@microsoft.com)
+- [object Object] ([PR #20308](https://github.com/microsoft/fluentui/pull/20308) by avnowd@microsoft.com)
+
+## [8.41.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.0)
+
+Thu, 04 Nov 2021 07:29:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.40.0..@fluentui/react_v8.41.0)
+
+### Minor changes
+
+- DetailsList: Making the disabled prop in IDetailsRowStyleProps optional as making it required is a breaking change. ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by Humberto.Morimoto@microsoft.com)
+
+## [8.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.40.0)
+
+Wed, 03 Nov 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.39.0..@fluentui/react_v8.40.0)
+
+### Minor changes
+
+- fix(Pivot): add overflow button aria-label prop ([PR #20443](https://github.com/microsoft/fluentui/pull/20443) by sarah.higley@microsoft.com)
 
 ## [8.39.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.39.0)
 

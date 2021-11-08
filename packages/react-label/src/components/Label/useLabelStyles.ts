@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { LabelState } from './Label.types';
 
+export const labelClassName = 'fui-Label';
+
 /**
  * Styles for the label
  */
@@ -46,6 +48,7 @@ const useStyles = makeStyles({
 export const useLabelStyles = (state: LabelState): LabelState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    labelClassName,
     styles.root,
     state.disabled && styles.disabled,
     styles[state.size],
