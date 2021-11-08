@@ -600,7 +600,7 @@ export const defaultErrorMessages = {
       overview: `does not have default className (${testErrorInfo(componentClassName)}).`,
       details: [`After render it has the following classes:`, `    ${failedError(`className='${classNames}'`)}`],
       suggestions: [
-        `Ensure that your component has default a className and it is ${resolveInfo('merged')} with defaults by calling mergeClassNames.`,
+        `Ensure that your component has default a className and it is ${resolveInfo('merged')} with other classNames.`,
       ],
       error,
     });
@@ -622,9 +622,9 @@ export const defaultErrorMessages = {
 
     return getErrorMessage({
       displayName,
-      overview: `default className constant  is not exported (${testErrorInfo(
-        exportName,
-      )}) in: ${EOL}${testErrorPath(indexFile)}.`,
+      overview: `default className constant  is not exported (${testErrorInfo(exportName)}) in: ${EOL}${testErrorPath(
+        indexFile,
+      )}.`,
       suggestions: [
         `Make sure that your component's ${resolveInfo('index.ts')} file` +
           `or a file with styles hook exports \`${resolveInfo(constantValue)}\``,
