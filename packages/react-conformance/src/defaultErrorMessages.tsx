@@ -628,9 +628,7 @@ export const defaultErrorMessages = {
       suggestions: [
         `Make sure that your component's ${resolveInfo('index.ts')} file`,
         `or a file with styles hook contains \`${resolveInfo(constantValue)}\``,
-        `Check if your component is internal and consider enabling ${resolveInfo(
-          'isInternal',
-        )} in your isConformant test.`,
+        `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
       ],
       error,
     });
