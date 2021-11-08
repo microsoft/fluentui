@@ -36,6 +36,8 @@
     "@fluentui/react-link": "9.0.0-beta.3",
     "@fluentui/react-make-styles": "9.0.0-beta.2",
     "@fluentui/react-menu": "9.0.0-beta.3",
+    "@fluentui/react-popover": "9.0.0-beta.3",
+    "@fluentui/react-positioning": "9.0.0-beta.2",
     "@fluentui/react-provider": "9.0.0-beta.3",
     "@fluentui/react-slider": "9.0.0-beta.3",
     "@fluentui/react-switch": "9.0.0-beta.3",

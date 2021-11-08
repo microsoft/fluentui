@@ -33,6 +33,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
+    "@fluentui/make-styles": "9.0.0-beta.2",
     "@fluentui/react-shared-contexts": "9.0.0-beta.2",
     "@fluentui/react-utilities": "9.0.0-beta.2",
     "@popperjs/core": "~2.4.3",

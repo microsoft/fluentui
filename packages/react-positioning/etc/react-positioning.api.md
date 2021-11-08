@@ -4,8 +4,10 @@
 
 ```ts
 
+import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 import * as PopperJs from '@popperjs/core';
 import * as React_2 from 'react';
+import type { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -15,6 +17,9 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 
 // @public (undocumented)
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
+
+// @public
+export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme>;
 
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
