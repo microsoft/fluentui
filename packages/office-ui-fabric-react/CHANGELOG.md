@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 04 Nov 2021 12:29:25 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Nov 2021 12:29:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.179.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.1)
+
+Mon, 08 Nov 2021 12:29:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.179.0..office-ui-fabric-react_v7.179.1)
+
+### Patches
+
+- Dialog: Removing tooltip from close button. ([PR #20531](https://github.com/microsoft/fluentui/pull/20531) by Humberto.Morimoto@microsoft.com)
 
 ## [7.179.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.0)
 

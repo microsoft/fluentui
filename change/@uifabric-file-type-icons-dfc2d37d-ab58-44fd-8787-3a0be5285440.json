@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated filetype icon for Loop files",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "todo-app",
   "entries": [
     {
+      "date": "Mon, 08 Nov 2021 12:29:39 GMT",
+      "tag": "todo-app_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.179.1",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "70e3a84c7eac578cd65c3756ebd75c73c9be2a63",
+            "package": "todo-app"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Nov 2021 12:29:25 GMT",
       "tag": "todo-app_v7.0.0",
       "version": "7.0.0",

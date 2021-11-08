@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 22 Oct 2021 12:29:03 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Nov 2021 12:29:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.5](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.5)
+
+Mon, 08 Nov 2021 12:29:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.8.4..@uifabric/file-type-icons_v7.8.5)
+
+### Patches
+
+- Updated filetype icon for Loop files ([PR #20519](https://github.com/microsoft/fluentui/pull/20519) by caperez@microsoft.com)
 
 ## [7.8.4](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.4)
 
