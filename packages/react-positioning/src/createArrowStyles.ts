@@ -7,12 +7,20 @@ import type { Theme } from '@fluentui/react-theme';
  *
  * ```ts
  *   makeStyles({
- *     arrow: createArrowStyles(),
+ *     arrowWithSize: createArrowStyles(5),
+ *
+ *     arrowWithoutSize: createArrowStyles(5),
+ *     mediumArrow: { aspectRatio: 1, width: '4px' }
  *     smallArrow: { aspectRatio: 1, width: '2px' }
  *   })
  *   ...
  *
- *   state.arrow.clasName = mergeClasses(styles.arrow, styles.smallArrow)
+ *   state.arrowWithSize.clasName = styles.arrowWithSize
+ *   state.arrowWithoutSize.className = mergeClases(
+ *     styles.arrowWithoutSize,
+ *     state.smallArrow && styles.smallArrow,
+ *     state.mediumArrow && styles.mediumArrow,
+ *   )
  * ```
  *
  * @param size - dimensions of the square arrow element in pixels.
