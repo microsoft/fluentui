@@ -14,7 +14,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     this.state = {
       width: 700,
       height: 400,
-      selectedCallout: 'StackCallout',
+      selectedCallout: 'singleCallout',
     };
   }
 
