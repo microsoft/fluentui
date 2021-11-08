@@ -4,6 +4,9 @@
 
 ```ts
 
+import { BorderColorProperty } from 'csstype';
+import { BorderStyleProperty } from 'csstype';
+import { BorderWidthProperty } from 'csstype';
 import { Properties } from 'csstype';
 
 // @internal
@@ -53,6 +56,21 @@ export const LOOKUP_DIR_INDEX = 1;
 export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ /* dir */ 'rtl' | 'ltr'];
 
 // @public (undocumented)
+export const macros: {
+    border: typeof border;
+    borderLeft: typeof borderLeft;
+    borderBottom: typeof borderBottom;
+    borderRight: typeof borderRight;
+    borderTop: typeof borderTop;
+    borderColor: typeof borderColor;
+    borderStyle: typeof borderStyle;
+    borderRadius: typeof borderRadius;
+    borderWidth: typeof borderWidth;
+    margin: typeof margin;
+    padding: typeof padding;
+};
+
+// @public (undocumented)
 export type MakeStaticStyles = ({
     [key: string]: Properties & Record<string, any>;
 } & {
@@ -79,7 +97,7 @@ export interface MakeStaticStylesOptions {
 }
 
 // @public (undocumented)
-export interface MakeStyles extends Omit<Properties, 'animationName'> {
+export interface MakeStyles extends Omit<Properties<MakeStylesCSSValue>, 'animationName'> {
     // (undocumented)
     [key: string]: any;
     // (undocumented)
@@ -88,6 +106,9 @@ export interface MakeStyles extends Omit<Properties, 'animationName'> {
 
 // @public (undocumented)
 export function makeStyles<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
+
+// @public (undocumented)
+export type MakeStylesCSSValue = string | 0;
 
 // @public (undocumented)
 export interface MakeStylesOptions {
@@ -158,6 +179,20 @@ export const styleBucketOrdering: StyleBucketName[];
 
 // @public (undocumented)
 export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
+
+// Warnings were encountered during analysis:
+//
+// lib/index.d.ts:3:5 - (ae-forgotten-export) The symbol "border" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:4:5 - (ae-forgotten-export) The symbol "borderLeft" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:5:5 - (ae-forgotten-export) The symbol "borderBottom" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:6:5 - (ae-forgotten-export) The symbol "borderRight" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:7:5 - (ae-forgotten-export) The symbol "borderTop" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:8:5 - (ae-forgotten-export) The symbol "borderColor" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:9:5 - (ae-forgotten-export) The symbol "borderStyle" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:10:5 - (ae-forgotten-export) The symbol "borderRadius" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:11:5 - (ae-forgotten-export) The symbol "borderWidth" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:12:5 - (ae-forgotten-export) The symbol "margin" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:13:5 - (ae-forgotten-export) The symbol "padding" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,4 +1,25 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-  "extends": "@fluentui/scripts/api-extractor/api-extractor.common.json"
+  "extends": "@fluentui/scripts/api-extractor/api-extractor.common.json",
+  "compiler": {
+    "overrideTsconfig": {
+      "extends": "../../tsconfig.base.json",
+      "include": ["src"],
+      "compilerOptions": {
+        "target": "ES2019",
+        "module": "CommonJS",
+        "lib": ["ES2019", "DOM"],
+        "outDir": "dist",
+        "jsx": "react",
+        "declaration": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "noUnusedLocals": true,
+        "preserveConstEnums": true,
+        "types": ["jest", "custom-global", "inline-style-expand-shorthand"],
+        "isolatedModules": true,
+        "baseUrl": "."
+      }
+    }
+  }
 }
