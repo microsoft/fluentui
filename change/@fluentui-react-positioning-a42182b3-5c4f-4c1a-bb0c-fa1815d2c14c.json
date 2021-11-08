@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat(createArrowStyles): Add utility function to create styles for an arrow element",
+  "comment": "Add utility function to create styles for an arrow element",
   "packageName": "@fluentui/react-positioning",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
