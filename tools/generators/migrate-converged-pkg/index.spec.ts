@@ -191,7 +191,7 @@ describe('migrate-converged-pkg generator', () => {
           outDir: 'dist',
           preserveConstEnums: true,
           target: 'ES2019',
-          types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+          types: ['jest', 'static-assets', 'inline-style-expand-shorthand'],
         },
         extends: '../../tsconfig.base.json',
         include: ['src'],
@@ -212,7 +212,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(tsConfig.compilerOptions.types).toEqual([
         'jest',
-        'custom-global',
+        'static-assets',
         'inline-style-expand-shorthand',
         '@testing-library/jest-dom',
         'foo-bar',
