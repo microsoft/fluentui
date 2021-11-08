@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-import { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
 
 const ExampleContent = () => {
   return (
@@ -13,7 +12,7 @@ const ExampleContent = () => {
   );
 };
 
-const positions: PositioningShorthandValue[] = [
+const positions: NonNullable<PopoverProps['positioning']>[] = [
   'above',
   'above-end',
   'above-start',
@@ -32,7 +31,7 @@ const stories = storiesOf('Popover - positioning', module);
 
 positions.forEach(position => {
   stories.addStory(
-    position,
+    position as string,
     () => (
       <Popover open positioning={position}>
         <PopoverTrigger>
