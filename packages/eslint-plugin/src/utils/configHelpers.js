@@ -155,7 +155,7 @@ module.exports = {
 
       // Extending config overrides parent files, include and exclue
       // https://www.typescriptlang.org/tsconfig#extends
-      tsconfig = { ...parentTsConfig, ...tsconfig };
+      tsconfig = { ...parentTsConfig, ...tsconfig, compilerOptions: { ...parentTsConfig.compilerOptions, ...tsConfig.compilerOptions };
     }
 
     // if project is using solution TS style config (process references)
