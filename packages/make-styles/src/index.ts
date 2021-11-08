@@ -46,5 +46,23 @@ export { createCSSVariablesProxy, resolveProxyValues } from './runtime/createCSS
 export { resolveStyleRules } from './runtime/resolveStyleRules';
 export { __styles } from './__styles';
 
-export * from './types';
 export * from './constants';
+export type {
+  // Static styles
+  MakeStaticStylesStyle,
+  MakeStaticStyles,
+  // Styles
+  MakeStylesAnimation,
+  MakeStylesStyle,
+  MakeStylesStyleRule,
+  MakeStylesStyleFunctionRule,
+  // Internal types
+  CSSClasses,
+  CSSClassesMapBySlot,
+  CSSRulesByBucket,
+  StyleBucketName,
+  // Util
+  MakeStaticStylesOptions,
+  MakeStylesOptions,
+  MakeStylesRenderer,
+} from './types';
