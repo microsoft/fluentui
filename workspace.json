@@ -556,6 +556,10 @@
       "root": "apps/ts-minbar-test-react",
       "projectType": "application"
     },
+    "ts-minbar-test-react-components": {
+      "root": "apps/ts-minbar-test-react-components",
+      "projectType": "application"
+    },
     "vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application"
