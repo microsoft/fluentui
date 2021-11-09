@@ -41,7 +41,7 @@ storiesOf('Dialog', module)
         {footer}
       </Dialog>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Wide Dialog', () => (
     <Dialog

@@ -147,6 +147,18 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('1');
     });
 
+    it('Renders live region attributes only when focused', () => {
+      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
+      let titleElement = wrapper.find('.ms-Dropdown-title');
+
+      expect(titleElement.props()['aria-live']).toBeUndefined();
+
+      wrapper.find('.ms-Dropdown').simulate('focus');
+      titleElement = wrapper.find('.ms-Dropdown-title');
+
+      expect(titleElement.props()['aria-live']).toEqual('polite');
+    });
+
     it('does not change the selected item in when defaultSelectedKey changes', () => {
       wrapper = mount(<Dropdown label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
       const titleElement = wrapper.find('.ms-Dropdown-title');

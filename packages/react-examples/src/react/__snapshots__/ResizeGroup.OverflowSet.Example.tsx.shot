@@ -4115,9 +4115,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           tabIndex={0}
         >
           <span
-            aria-atomic={true}
             aria-invalid={false}
-            aria-live="polite"
             className=
                 ms-Dropdown-title
                 {

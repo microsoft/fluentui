@@ -10,6 +10,7 @@ export function isConformant<TProps = {}>(
     componentPath: module!.parent!.filename.replace('.test', ''),
     disabledTests: ['has-docblock'],
     extraTests: makeStylesTests as TestObject<TProps>,
+    skipAsPropTests: true,
   };
 
   baseIsConformant(defaultOptions, testInfo);

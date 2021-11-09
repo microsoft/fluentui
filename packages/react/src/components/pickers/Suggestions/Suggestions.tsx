@@ -27,7 +27,9 @@ const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItem
   SuggestionsItem,
   suggestionsItemStyles,
   undefined,
-  { scope: 'SuggestionItem' },
+  {
+    scope: 'SuggestionItem',
+  },
 );
 
 /**
@@ -70,6 +72,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     const {
       forceResolveText,
       mostRecentlyUsedHeaderText,
+      searchForMoreIcon,
       searchForMoreText,
       className,
       moreSuggestionsAvailable,
@@ -138,7 +141,9 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     // TODO: cleanup after refactor of pickers to composition pattern and remove SASS support.
     const spinnerClassNameOrStyles = styles
       ? { styles: spinnerStyles }
-      : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
+      : {
+          className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner),
+        };
 
     const noResults = () => (
       // This ID can be used by the parent to set aria-activedescendant to this
@@ -164,7 +169,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
 
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
     const divProps: React.HtmlHTMLAttributes<HTMLDivElement> =
-      hasNoSuggestions || isLoading ? { role: 'dialog', id: suggestionsListId } : {};
+      hasNoSuggestions || isLoading ? { role: 'listbox', id: suggestionsListId } : {};
 
     const forceResolveId =
       this.state.selectedActionType === SuggestionActionType.forceResolve ? 'sug-selectedAction' : undefined;
@@ -193,7 +198,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           <CommandButton
             componentRef={this._searchForMoreButton}
             className={this._classNames.searchForMoreButton}
-            iconProps={{ iconName: 'Search' }}
+            iconProps={searchForMoreIcon || { iconName: 'Search' }}
             id={searchForMoreId}
             onClick={this._getMoreResults}
             data-automationid={'sug-searchForMore'}
@@ -365,6 +370,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       suggestionsContainerAriaLabel,
       suggestionsHeaderText,
       suggestionsListId,
+      removeButtonIconProps,
     } = this.props;
 
     let { suggestions } = this.props;
@@ -420,6 +426,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
               removeButtonAriaLabel={removeSuggestionAriaLabel}
               onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
               id={'sug-' + index}
+              removeButtonIconProps={removeButtonIconProps}
             />
           </div>
         ))}
@@ -430,6 +437,9 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   private _getMoreResults = (): void => {
     if (this.props.onGetMoreResults) {
       this.props.onGetMoreResults();
+
+      // Reset selected action type as it will be of type SuggestionActionType.none after more results are gotten
+      this.setState({ selectedActionType: SuggestionActionType.none });
     }
   };
 

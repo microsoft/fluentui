@@ -62,7 +62,7 @@ storiesOf('Pivot', module)
         </PivotItem>
       </Pivot>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Large', () => (
     <Pivot linkSize="large">
@@ -95,7 +95,7 @@ storiesOf('Pivot', module)
         </PivotItem>
       </Pivot>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Tabs large', () => (
     <Pivot linkFormat="tabs" linkSize="large">

@@ -13,4 +13,16 @@ describe('fontFace', () => {
     });
     expect(_stylesheet.getRules()).toEqual('@font-face{font-family:Segoe UI;src:url("foo");}');
   });
+
+  it('caches font face definitions', () => {
+    const definition = {
+      fontFamily: 'Segoe UI',
+      src: 'url("foo")',
+    };
+    fontFace(definition);
+    fontFace(definition);
+    fontFace(definition);
+
+    expect(_stylesheet.getRules()).toEqual('@font-face{font-family:Segoe UI;src:url("foo");}');
+  });
 });

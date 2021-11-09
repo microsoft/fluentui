@@ -9,6 +9,7 @@ import { fluentBadge } from './badge/index';
 import { fluentBreadcrumb } from './breadcrumb/index';
 import { fluentBreadcrumbItem } from './breadcrumb-item/index';
 import { fluentButton } from './button/index';
+import { fluentCalendar } from './calendar/index';
 import { fluentCard } from './card/index';
 import { fluentCheckbox } from './checkbox/index';
 import { fluentCombobox } from './combobox/index';
@@ -34,6 +35,7 @@ import { fluentSwitch } from './switch/index';
 import { fluentTab, fluentTabPanel, fluentTabs } from './tabs/index';
 import { fluentTextArea } from './text-area/index';
 import { fluentTextField } from './text-field/index';
+import { fluentToolbar } from './toolbar/index';
 import { fluentTooltip } from './tooltip/index';
 import { fluentTreeView } from './tree-view/index';
 import { fluentTreeItem } from './tree-item/index';
@@ -48,6 +50,7 @@ export {
   fluentBreadcrumbItem,
   fluentButton,
   fluentCard,
+  fluentCalendar,
   fluentCheckbox,
   fluentCombobox,
   fluentDataGrid,
@@ -77,6 +80,7 @@ export {
   fluentTabPanel,
   fluentTextArea,
   fluentTextField,
+  fluentToolbar,
   fluentTooltip,
   fluentTreeView,
   fluentTreeItem,
@@ -95,6 +99,7 @@ export const allComponents = {
   fluentBreadcrumb,
   fluentBreadcrumbItem,
   fluentButton,
+  fluentCalendar,
   fluentCard,
   fluentCheckbox,
   fluentCombobox,
@@ -125,10 +130,11 @@ export const allComponents = {
   fluentTabPanel,
   fluentTextArea,
   fluentTextField,
+  fluentToolbar,
   fluentTooltip,
   fluentTreeView,
   fluentTreeItem,
-  register(container?: Container) {
+  register(container?: Container, ...rest: any[]) {
     if (!container) {
       // preserve backward compatibility with code that loops through
       // the values of this object and calls them as funcs with no args
@@ -140,7 +146,7 @@ export const allComponents = {
         continue;
       }
 
-      this[key]().register(container);
+      this[key]().register(container, ...rest);
     }
   },
 };

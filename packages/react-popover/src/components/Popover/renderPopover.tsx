@@ -17,8 +17,7 @@ export const renderPopover = (state: PopoverState) => {
     arrowRef,
     size,
     noArrow,
-    brand,
-    inverted,
+    appearance,
     trapFocus,
   } = state;
 
@@ -35,8 +34,7 @@ export const renderPopover = (state: PopoverState) => {
         arrowRef,
         size,
         noArrow,
-        brand,
-        inverted,
+        appearance,
         trapFocus,
       }}
     >

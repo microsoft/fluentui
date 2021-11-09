@@ -43,7 +43,7 @@ storiesOf('OverflowSet', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('OverflowSet variant', module)

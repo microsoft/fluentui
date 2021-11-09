@@ -32,7 +32,7 @@ storiesOf('TeachingBubble', module)
         </TeachingBubble>
       );
     },
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('SmallHeadline', () => {
     return (

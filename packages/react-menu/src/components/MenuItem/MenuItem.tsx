@@ -5,12 +5,12 @@ import { useMenuItemStyles } from './useMenuItemStyles';
 import { useCheckmarkStyles } from '../../selectable/index';
 import type { MenuItemProps } from './MenuItem.types';
 import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * Define a styled MenuItem, using the `useMenuItem` and `useMenuItemStyles` hook.
- * {@docCategory MenuItem}
  */
-export const MenuItem = React.forwardRef<HTMLElement, MenuItemProps>((props, ref) => {
+export const MenuItem: ForwardRefComponent<MenuItemProps> = React.forwardRef((props, ref) => {
   const state = useMenuItem(props, ref);
 
   useMenuItemStyles(state);

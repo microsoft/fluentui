@@ -181,7 +181,7 @@ storiesOf('Persona', module)
         />
       </div>
     ),
-    { rtl: true }
+    { includeRtl: true }
   )
   .addStory(
     'size120',
@@ -194,7 +194,7 @@ storiesOf('Persona', module)
         />
       </div>
     ),
-    { rtl: true }
+    { includeRtl: true }
   )
   .addStory(
     'Initials',
@@ -204,7 +204,7 @@ storiesOf('Persona', module)
         imageUrl={undefined}
       />
     ),
-    { rtl: true }
+    { includeRtl: true }
   )
   .addStory('Persona with children', () => (
     <Persona { ...examplePersona }>

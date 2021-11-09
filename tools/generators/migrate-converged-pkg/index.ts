@@ -18,18 +18,9 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import { arePromptsEnabled, prompt, updateJestConfig } from '../../utils';
+import { arePromptsEnabled, getProjectConfig, printUserLogs, prompt, updateJestConfig, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
-
-/**
- * TASK:
- * 1. migrate to typescript path aliases - #18343 ✅
- * 2. migrate to use standard jest powered by TS path aliases - #18368 ✅
- * 3. bootstrap new storybook config - #18394 ✅
- * 4. collocate all package stories from `react-examples` - #18394 ✅
- * 5. update npm scripts (setup docs task to run api-extractor for local changes verification) - #18403 ✅
- */
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
 
@@ -38,8 +29,6 @@ interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
 }
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
-
-type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
   const userLog: UserLog = [];
@@ -91,10 +80,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateLocalJestConfig(tree, options);
   updateRootJestConfig(tree, options);
 
-  // move stories to package
-  moveStorybookFromReactExamples(tree, options, userLog);
-  removeMigratedPackageFromReactExamples(tree, options, userLog);
-
   // update package npm scripts
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
@@ -125,6 +110,7 @@ const templates = {
     include: ['src'],
     compilerOptions: {
       target: 'ES2019',
+      isolatedModules: true,
       module: 'CommonJS',
       lib: ['ES2019', 'dom'],
       outDir: 'dist',
@@ -134,7 +120,7 @@ const templates = {
       importHelpers: true,
       noUnusedLocals: true,
       preserveConstEnums: true,
-      types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+      types: ['jest', 'static-assets', 'inline-style-expand-shorthand'],
     } as TsConfig['compilerOptions'],
   },
   babelConfig: (options: { extraPlugins: Array<string> }) => {
@@ -250,34 +236,6 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
      * package name without npmScope (@scopeName)
      */
     normalizedPkgName: options.name.replace(`@${project.workspaceConfig.npmScope}/`, ''),
-  };
-}
-
-function getProjectConfig(tree: Tree, options: { packageName: string }) {
-  const projectConfig = readProjectConfiguration(tree, options.packageName);
-  const workspaceConfig = readWorkspaceConfiguration(tree);
-  const paths = {
-    configRoot: joinPathFragments(projectConfig.root, 'config'),
-    packageJson: joinPathFragments(projectConfig.root, 'package.json'),
-    tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
-    babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
-    jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
-    rootTsconfig: '/tsconfig.base.json',
-    rootJestPreset: '/jest.preset.js',
-    rootJestConfig: '/jest.config.js',
-    npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
-    storybook: {
-      rootFolder: joinPathFragments(projectConfig.root, '.storybook'),
-      tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
-      main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
-      preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
-    },
-  };
-
-  return {
-    projectConfig,
-    workspaceConfig,
-    paths,
   };
 }
 
@@ -542,90 +500,6 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 }
 
-function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema, userLog: UserLog) {
-  const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
-  const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
-
-  const storyPaths: string[] = [];
-
-  visitNotIgnoredFiles(tree, pathToStoriesWithinReactExamples, treePath => {
-    if (treePath.includes('.stories.')) {
-      storyPaths.push(treePath);
-    }
-  });
-
-  if (storyPaths.length === 0) {
-    userLog.push({
-      type: 'warn',
-      message: 'No package stories found within react-examples. Skipping storybook stories migration...',
-    });
-
-    return tree;
-  }
-
-  storyPaths.forEach(originPath => {
-    const pathSegments = splitPathFragments(originPath);
-    const fileName = pathSegments[pathSegments.length - 1];
-    const componentName = fileName.replace(/\.stories\.tsx?$/, '');
-    let contents = tree.read(originPath)?.toString('utf-8');
-
-    if (contents) {
-      contents = contents.replace(options.name, './index');
-      contents =
-        contents +
-        '\n\n' +
-        stripIndents`
-        export default {
-            title: 'Components/${componentName}',
-            component: ${componentName},
-        }
-      `;
-
-      tree.write(joinPathFragments(options.projectConfig.root, 'src', fileName), contents);
-
-      return;
-    }
-
-    throw new Error(`Error moving ${fileName} from react-examples`);
-  });
-
-  return tree;
-}
-
-function getReactExamplesProjectConfig(tree: Tree, options: NormalizedSchema) {
-  return readProjectConfiguration(tree, `@${options.workspaceConfig.npmScope}/react-examples`);
-}
-
-function removeMigratedPackageFromReactExamples(tree: Tree, options: NormalizedSchema, userLog: UserLog) {
-  const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
-
-  const paths = {
-    packageStoriesWithinReactExamples: `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`,
-    packageJson: `${reactExamplesConfig.root}/package.json`,
-  };
-
-  if (!tree.exists(paths.packageStoriesWithinReactExamples)) {
-    return tree;
-  }
-
-  tree.delete(paths.packageStoriesWithinReactExamples);
-
-  userLog.push(
-    { type: 'warn', message: `NOTE: Deleting ${reactExamplesConfig.root}/src/${options.normalizedPkgName}` },
-    { type: 'warn', message: `      - Please update your moved stories to follow standard storybook format\n` },
-  );
-
-  updateJson(tree, paths.packageJson, (json: PackageJson) => {
-    if (json.dependencies) {
-      delete json.dependencies[options.name];
-    }
-
-    return json;
-  });
-
-  return tree;
-}
-
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const jestSetupFilePath = joinPathFragments(options.paths.configRoot, 'tests.js');
   const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
@@ -712,7 +586,7 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   if (shouldAddMakeStylesPlugin) {
     const babelMakeStylesProject = getProjectConfig(tree, { packageName: babelMakeStylesProjectName });
     const babelMakeStylesPkgJson: PackageJson = readJson(tree, babelMakeStylesProject.paths.packageJson);
-    pkgJson.devDependencies[babelMakeStylesProjectName] = `^${babelMakeStylesPkgJson.version}`;
+    pkgJson.devDependencies[babelMakeStylesProjectName] = `${babelMakeStylesPkgJson.version}`;
   } else {
     delete pkgJson.devDependencies[babelMakeStylesProjectName];
   }
@@ -721,16 +595,4 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   writeJson(tree, options.paths.packageJson, pkgJson);
 
   return tree;
-}
-
-function printUserLogs(logs: UserLog) {
-  logger.log(`${'='.repeat(80)}\n`);
-
-  logs.forEach(log => logger[log.type](log.message));
-
-  logger.log(`${'='.repeat(80)}\n`);
-}
-
-function splitPathFragments(filePath: string) {
-  return filePath.split(path.sep);
 }

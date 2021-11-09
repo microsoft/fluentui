@@ -2,6 +2,7 @@ import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 // TODO: Find a way to use pointer events with testing-library and remove enzyme.
+// github.com/microsoft/fluentui/issues/19977
 import { mount, ReactWrapper } from 'enzyme';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
@@ -50,13 +51,85 @@ describe('Slider', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('renders horizontal Slider with (custom marks) correctly', () => {
+    it('renders horizontal Slider with unique mark values correctly', () => {
       const { container } = render(<Slider defaultValue={5} marks={[1, 3, 7, 8]} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders vertical Slider with (custom marks) correctly', () => {
+    it('renders vertical Slider with unique mark values correctly', () => {
       const { container } = render(<Slider defaultValue={5} marks={[2, 5, 9, 18]} vertical />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders horizontal Slider with mark labels correctly', () => {
+      const { container } = render(
+        <Slider defaultValue={5} marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders vertical Slider with mark labels correctly', () => {
+      const { container } = render(
+        <Slider
+          defaultValue={5}
+          marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]}
+          vertical
+        />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders disabled Slider with mark labels correctly', () => {
+      const { container } = render(
+        <Slider
+          defaultValue={5}
+          marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]}
+          disabled
+        />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders Slider with custom mark labels correctly', () => {
+      const { container } = render(
+        <Slider
+          defaultValue={5}
+          marks={[
+            10,
+            { value: 30, label: <div style={{ width: '10px', height: '10px', background: 'green' }} /> },
+            { value: 40, label: 'world' },
+            80,
+          ]}
+        />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders Slider with custom marks correctly', () => {
+      const { container } = render(
+        <Slider
+          defaultValue={5}
+          marks={[
+            10,
+            {
+              value: 30,
+              label: <div style={{ width: '10px', height: '10px', background: 'green' }} />,
+              mark: (
+                <div
+                  style={{
+                    width: '2px',
+                    height: '8px',
+                    background: 'red',
+                    marginTop: '-2px',
+                  }}
+                />
+              ),
+            },
+            { value: 40, label: 'world' },
+            80,
+          ]}
+        />,
+      );
       expect(container).toMatchSnapshot();
     });
   });
@@ -85,13 +158,13 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('45%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('45%');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
       expect(inputRef.current?.value).toEqual('20');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('24%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('24%');
     });
 
     it('calls onChange when pointerDown', () => {
@@ -164,13 +237,13 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
       expect(inputRef.current?.value).toEqual('100');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('100%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('100%');
 
       sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
       expect(inputRef.current?.value).toEqual('0');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('0%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('0%');
 
       wrapper.unmount();
     });
@@ -191,13 +264,13 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('45%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('45%');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 }, { type: 'pointerup' });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
       expect(inputRef.current?.value).toEqual('20');
-      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('24%');
+      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('24%');
     });
 
     it('handles keydown events', () => {
@@ -281,7 +354,7 @@ describe('Slider', () => {
       const { container } = render(<Slider defaultValue={50} max={100} origin={50} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
-      const sliderTrack = container.querySelector('.ms-Slider-track');
+      const sliderTrack = container.querySelector('.fui-Slider-track');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
       expect(sliderTrack?.getAttribute('style')).toContain('0px 99px 99px 0px');
@@ -294,7 +367,7 @@ describe('Slider', () => {
       const { container } = render(<Slider defaultValue={50} vertical max={100} origin={50} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
-      const sliderTrack = container.querySelector('.ms-Slider-track');
+      const sliderTrack = container.querySelector('.fui-Slider-track');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
       expect(sliderTrack?.getAttribute('style')).toContain('0px 0px 99px 99px');
@@ -329,20 +402,41 @@ describe('Slider', () => {
       const { container } = render(<Slider max={10} marks={[0, 10]} marksWrapper={{ className: 'test-class' }} />);
       const sliderWrapper = container.querySelector('.test-class');
       expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 100%');
-      expect(container.querySelector('.ms-Slider-firstMark')).toBeTruthy();
-      expect(container.querySelector('.ms-Slider-lastMark')).toBeTruthy;
+      expect(container.querySelector('.fui-Slider-firstMark')).toBeTruthy();
+      expect(container.querySelector('.fui-Slider-lastMark')).toBeTruthy;
     });
 
     it('correctly calculates the origin border-radius when given min as the origin', () => {
       const { container } = render(<Slider origin={0} min={0} vertical />);
-      const sliderTrack = container.querySelector('.ms-Slider-track');
+      const sliderTrack = container.querySelector('.fui-Slider-track');
       expect(sliderTrack?.getAttribute('style')).toContain('99px');
     });
 
     it('correctly calculates the origin border-radius when given max as the origin', () => {
       const { container } = render(<Slider origin={100} max={100} vertical />);
-      const sliderTrack = container.querySelector('.ms-Slider-track');
+      const sliderTrack = container.querySelector('.fui-Slider-track');
       expect(sliderTrack?.getAttribute('style')).toContain('99px');
+    });
+
+    it('handles a keyboardStep prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      const onChange = jest.fn();
+
+      render(
+        <Slider
+          defaultValue={20}
+          step={3}
+          keyboardStep={5}
+          onChange={onChange}
+          data-testid="test"
+          input={{ ref: inputRef }}
+        />,
+      );
+      const sliderRoot = screen.getByTestId('test');
+
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 25 });
+      expect(inputRef.current?.value).toBe('25');
     });
 
     it('handles a negative step prop', () => {
@@ -369,23 +463,6 @@ describe('Slider', () => {
       expect(inputRef.current?.value).toBe('0.001');
     });
 
-    it('handles role prop', () => {
-      render(<Slider role="test" data-testid="test" />);
-      const sliderRoot = screen.getByTestId('test');
-      expect(sliderRoot.getAttribute('role')).toEqual('test');
-    });
-
-    it('applies ariaValueText', () => {
-      const values = ['small', 'medium', 'large'];
-      const defaultValue = 1;
-      const getTextValue = (value: number) => values[value];
-
-      render(<Slider defaultValue={defaultValue} ariaValueText={getTextValue} />);
-      const sliderInput = screen.getByRole('slider');
-
-      expect(sliderInput.getAttribute('aria-valuetext')).toEqual(values[defaultValue]);
-    });
-
     it('applies focus to the hidden input', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       render(<Slider defaultValue={3} input={{ ref: inputRef }} />);
@@ -394,19 +471,15 @@ describe('Slider', () => {
     });
 
     it('does not allow focus on disabled Slider', () => {
-      let sliderRef: any;
+      const sliderRef = React.createRef<HTMLDivElement>();
+      const inputRef = React.createRef<HTMLInputElement>();
 
-      const SliderTestComponent = () => {
-        sliderRef = React.useRef(null);
-
-        return <Slider defaultValue={3} ref={sliderRef} data-testid="test" disabled />;
-      };
-
-      render(<SliderTestComponent />);
+      render(<Slider ref={sliderRef} disabled input={{ ref: inputRef }} />);
 
       expect(document.activeElement).toEqual(document.body);
-
-      sliderRef.current.focus();
+      sliderRef?.current?.focus();
+      expect(document.activeElement).toEqual(document.body);
+      inputRef?.current?.focus();
       expect(document.activeElement).toEqual(document.body);
     });
 
@@ -446,6 +519,37 @@ describe('Slider', () => {
       expect(eventHandler).toBeCalledTimes(1);
 
       wrapper.unmount();
+    });
+  });
+
+  describe('Accessibility Tests', () => {
+    it('handles role prop', () => {
+      render(<Slider role="test" data-testid="test" />);
+      const sliderRoot = screen.getByTestId('test');
+      expect(sliderRoot.getAttribute('role')).toEqual('test');
+    });
+
+    it('renders the input slot as input', () => {
+      const { container } = render(<Slider input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.tagName).toEqual('INPUT');
+    });
+
+    it('provides the input slot with a type of range', () => {
+      const { container } = render(<Slider input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.getAttribute('type')).toEqual('range');
+    });
+
+    it('applies ariaValueText', () => {
+      const values = ['small', 'medium', 'large'];
+      const defaultValue = 1;
+      const getTextValue = (value: number) => values[value];
+
+      render(<Slider defaultValue={defaultValue} ariaValueText={getTextValue} />);
+      const sliderInput = screen.getByRole('slider');
+
+      expect(sliderInput.getAttribute('aria-valuetext')).toEqual(values[defaultValue]);
     });
   });
 });

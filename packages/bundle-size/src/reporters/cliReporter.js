@@ -50,8 +50,8 @@ module.exports = async function cliReporter(report) {
     const { diff, gzippedSize, minifiedSize, name, packageName } = entry;
     const fixtureColumn = chalk.bold(packageName) + '\n' + name + (diff.empty ? chalk.cyan(' (new)') : '');
 
-    const minifiedBefore = diff.empty ? 'N/A' : formatBytes(minifiedSize + diff.minified.delta);
-    const gzippedBefore = diff.empty ? 'N/A' : formatBytes(gzippedSize + diff.gzip.delta);
+    const minifiedBefore = diff.empty ? 'N/A' : formatBytes(minifiedSize - diff.minified.delta);
+    const gzippedBefore = diff.empty ? 'N/A' : formatBytes(gzippedSize - diff.gzip.delta);
 
     const minifiedAfter = formatBytes(minifiedSize);
     const gzippedAfter = formatBytes(gzippedSize);

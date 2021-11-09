@@ -6,7 +6,7 @@ export const useCharacterSearch = (state: MenuItemState, ref: React.RefObject<HT
   const setFocusByFirstCharacter = useMenuListContext(context => context.setFocusByFirstCharacter);
 
   const { onKeyDown: onKeyDownBase } = state.root;
-  state.root.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  state.root.onKeyDown = e => {
     if (onKeyDownBase) {
       onKeyDownBase(e);
     }

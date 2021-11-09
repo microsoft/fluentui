@@ -6,7 +6,7 @@ import { ProviderContext } from '@fluentui/react-shared-contexts';
 
 const useStyles1 = makeStyles({
   root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
+    color: theme.colorNeutralForeground1,
   }),
   paddingLeft: {
     paddingLeft: '10px',

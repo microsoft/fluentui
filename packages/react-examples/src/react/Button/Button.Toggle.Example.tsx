@@ -17,14 +17,19 @@ export const ButtonToggleExample: React.FunctionComponent<IButtonExampleProps> =
   const [muted, { toggle: setMuted }] = useBoolean(false);
 
   return (
-    <DefaultButton
-      toggle
-      checked={muted || checked}
-      text={muted ? 'Volume muted' : 'Volume unmuted'}
-      iconProps={muted ? volume0Icon : volume3Icon}
-      onClick={setMuted}
-      allowDisabledFocus
-      disabled={disabled}
-    />
+    <>
+      <p>
+        Note: Toggle buttons require the <code>toggle</code> attribute in addition to <code>checked</code>.
+      </p>
+      <DefaultButton
+        toggle
+        checked={muted || checked}
+        text={muted ? 'Volume muted' : 'Volume unmuted'}
+        iconProps={muted ? volume0Icon : volume3Icon}
+        onClick={setMuted}
+        allowDisabledFocus
+        disabled={disabled}
+      />
+    </>
   );
 };

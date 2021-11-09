@@ -14,7 +14,7 @@ variables:
 
   - template: .devops/templates/variables.yml
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: BuildTestLint
@@ -30,7 +30,7 @@ jobs:
 
       - script: |
           yarn checkchange
-        displayName: check change
+        displayName: verify change files
 
       - script: |
           yarn nx workspace-lint

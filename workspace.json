@@ -235,10 +235,6 @@
       "projectType": "library",
       "sourceRoot": "packages/react-components/src"
     },
-    "@fluentui/react-compose": {
-      "root": "packages/react-compose",
-      "projectType": "library"
-    },
     "@fluentui/react-conformance": {
       "root": "packages/react-conformance",
       "projectType": "library"
@@ -380,6 +376,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-provider/src"
     },
+    "@fluentui/react-radio": {
+      "root": "packages/react-radio",
+      "projectType": "library",
+      "sourceRoot": "packages/react-radio/src"
+    },
     "@fluentui/react-shared-contexts": {
       "root": "packages/react-shared-contexts",
       "projectType": "library",
@@ -404,10 +405,6 @@
       "root": "packages/react-switch",
       "projectType": "library",
       "sourceRoot": "packages/react-switch/src"
-    },
-    "@fluentui/react-tabs": {
-      "root": "packages/react-tabs",
-      "projectType": "library"
     },
     "@fluentui/react-tabster": {
       "root": "packages/react-tabster",
@@ -498,6 +495,11 @@
       "root": "apps/a11y-tests",
       "projectType": "application"
     },
+    "typings": {
+      "root": "typings",
+      "projectType": "library",
+      "sourceRoot": "typings"
+    },
     "nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",
@@ -548,6 +550,14 @@
     },
     "todo-app": {
       "root": "apps/todo-app",
+      "projectType": "application"
+    },
+    "ts-minbar-test-react": {
+      "root": "apps/ts-minbar-test-react",
+      "projectType": "application"
+    },
+    "ts-minbar-test-react-components": {
+      "root": "apps/ts-minbar-test-react-components",
       "projectType": "application"
     },
     "vr-tests": {

@@ -1,8 +1,455 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Wed, 08 Sep 2021 07:34:11 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Nov 2021 07:38:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 09 Nov 2021 07:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.3 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
+- Bump @fluentui/azure-themes to v8.1.97 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.57 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
+- Bump @fluentui/theme-samples to v8.2.38 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.38 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 08 Nov 2021 07:35:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.2 ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by beachball)
+- Bump @fluentui/azure-themes to v8.1.96 ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.56 ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by beachball)
+- Bump @fluentui/theme-samples to v8.2.37 ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.37 ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Fri, 05 Nov 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.1 ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by beachball)
+- Bump @fluentui/azure-themes to v8.1.95 ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.55 ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by beachball)
+- Bump @fluentui/theme-samples to v8.2.36 ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.36 ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 04 Nov 2021 07:29:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.41.0 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+- Bump @fluentui/azure-themes to v8.1.94 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.54 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+- Bump @fluentui/theme-samples to v8.2.35 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.35 ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 03 Nov 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.40.0 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+- Bump @fluentui/azure-themes to v8.1.93 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.53 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+- Bump @fluentui/theme-samples to v8.2.34 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.34 ([PR #20036](https://github.com/microsoft/fluentui/pull/20036) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 02 Nov 2021 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.39.0 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/azure-themes to v8.1.92 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.52 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.16 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/theme-samples to v8.2.33 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.33 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 01 Nov 2021 21:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react-docsite-components to v8.3.51 ([PR #20387](https://github.com/microsoft/fluentui/pull/20387) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 01 Nov 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.38.0 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/azure-themes to v8.1.91 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.50 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.15 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/theme-samples to v8.2.32 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.32 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Fri, 29 Oct 2021 07:29:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Minor changes
+
+- Bump @fluentui/react to v8.37.6 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+- Bump @fluentui/azure-themes to v8.1.90 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.49 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+- Bump @fluentui/theme-samples to v8.2.31 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.31 ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 28 Oct 2021 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.5 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/azure-themes to v8.1.89 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.48 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/theme-samples to v8.2.30 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.30 ([PR #20201](https://github.com/microsoft/fluentui/pull/20201) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 27 Oct 2021 07:29:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.4 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+- Bump @fluentui/azure-themes to v8.1.88 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.47 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+- Bump @fluentui/theme-samples to v8.2.29 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.29 ([PR #20334](https://github.com/microsoft/fluentui/pull/20334) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 26 Oct 2021 07:39:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.3 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+- Bump @fluentui/azure-themes to v8.1.87 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.46 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+- Bump @fluentui/theme-samples to v8.2.28 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.28 ([PR #20328](https://github.com/microsoft/fluentui/pull/20328) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 25 Oct 2021 07:38:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.2 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+- Bump @fluentui/azure-themes to v8.1.86 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.45 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+- Bump @fluentui/theme-samples to v8.2.27 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.27 ([PR #19628](https://github.com/microsoft/fluentui/pull/19628) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 21 Oct 2021 07:28:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.1 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+- Bump @fluentui/azure-themes to v8.1.85 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.44 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+- Bump @fluentui/theme-samples to v8.2.26 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.26 ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 20 Oct 2021 07:30:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.37.0 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+- Bump @fluentui/azure-themes to v8.1.84 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.43 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+- Bump @fluentui/theme-samples to v8.2.25 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.25 ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 13 Oct 2021 07:31:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.5 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/azure-themes to v8.1.83 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.42 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/theme-samples to v8.2.24 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.24 ([PR #20138](https://github.com/microsoft/fluentui/pull/20138) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 11 Oct 2021 07:36:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.4 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/azure-themes to v8.1.82 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.41 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/theme-samples to v8.2.23 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.23 ([PR #19730](https://github.com/microsoft/fluentui/pull/19730) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.3 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/azure-themes to v8.1.81 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.40 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/theme-samples to v8.2.22 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.22 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+- Bump @fluentui/api-docs to v8.2.0 ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.2 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/azure-themes to v8.1.80 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.39 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.14 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/theme-samples to v8.2.21 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.21 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.1 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/azure-themes to v8.1.79 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.38 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.13 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/theme-samples to v8.2.20 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.20 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 30 Sep 2021 07:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.0 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/azure-themes to v8.1.78 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.37 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/theme-samples to v8.2.19 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.19 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 29 Sep 2021 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.2 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+- Bump @fluentui/azure-themes to v8.1.77 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.36 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+- Bump @fluentui/theme-samples to v8.2.18 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.18 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/azure-themes to v8.1.76 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.35 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.12 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/theme-samples to v8.2.17 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.17 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/azure-themes to v8.1.75 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.34 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/theme-samples to v8.2.16 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.16 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/azure-themes to v8.1.74 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.33 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/theme-samples to v8.2.15 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.15 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.6 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/azure-themes to v8.1.73 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.32 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/theme-samples to v8.2.14 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.14 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 22 Sep 2021 09:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.5 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+- Bump @fluentui/azure-themes to v8.1.72 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.31 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+- Bump @fluentui/theme-samples to v8.2.13 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.13 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.4 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/azure-themes to v8.1.71 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.30 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/theme-samples to v8.2.12 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.2.12 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.1.41 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.1.41 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.1.41 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.1.41 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.1.41 ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by dmitry@grechka.family)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.1.41 ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by sarah.higley@microsoft.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.1.41 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.33.0 ([PR #19671](https://github.com/microsoft/fluentui/pull/19671) by tschao@microsoft.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 09 Sep 2021 07:39:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.32.0 ([PR #18829](https://github.com/microsoft/fluentui/pull/18829) by shujathlive@gmail.com)
 
 ## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
 

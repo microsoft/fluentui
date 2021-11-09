@@ -1,16 +1,9 @@
-import * as React from 'react';
-import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type MenuGroupHeaderSlots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: IntrinsicShorthandProps<'div'>;
 };
 
-/**
- * {@docCategory MenuGroupHeader}
- */
-export interface MenuGroupHeaderProps extends ComponentProps<MenuGroupHeaderSlots> {}
+export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
 
-/**
- * {@docCategory MenuGroupHeader}
- */
-export interface MenuGroupHeaderState extends ComponentState<MenuGroupHeaderSlots> {}
+export type MenuGroupHeaderState = ComponentState<MenuGroupHeaderSlots>;

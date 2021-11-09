@@ -28,7 +28,7 @@ Basic examples:
 <Button icon={<SVGIcon />} />
 <Button icon={<SVGIcon />}>Text</Button>
 <Button icon={<SVGIcon />} iconPosition="after">Text</Button>
-<Button primary>Text</Button>
+<Button appearance="primary">Text</Button>
 <Button disabled>Text</Button>
 <Button size="small">Text</Button>
 <Button size="large">Text</Button>
@@ -36,23 +36,25 @@ Basic examples:
 
 ## Variants
 
-### Visual appearance
+### Appearance
 
-The `Button` component has five decoration variants depending on where it's being used:
+The `Button` component has several apparance variants depending on where it's being used:
 
-- `Default`: The `Button` is rendered with its default styling indicating a trigger for an action.
-- `Outline`: The `Button` is styled such that it has no background styling and is just emphasized through the styling of its content and borders.
-- `Primary`: The `Button` is styled to emphasize that it represents the primary action.
-- `Subtle`: The `Button` is styled to blend into its background to become less emphasized.
-- `Transparent`: The `Button` is styled such that it has no background or border styling and is just emphasized through its content styling.
+- The default `Button` is rendered with its default styling indicating a trigger for an action.
+- appearance="outline": The `Button` is styled such that it has no background styling and is just emphasized through the styling of its content and borders.
+- appearance="primary": The `Button` is styled to emphasize that it represents the primary action.
+- appearance="subtle": The `Button` is styled to blend into its background to become less emphasized.
+- appearance="transparent": The `Button` is styled such that it has no background or border styling and is just emphasized through its content styling.
 
 ### Icon
 
 The `Button` component can include an `icon` that appears before or after its `children`. If an `icon` is provided without any `children`, then the `Button` becomes an icon-only `Button`.
 
-### Circular
+### Shape
 
-The `Button` component can have completely rounded corners as opposed to the default slightly rounded ones.
+- shape="rounded": The button as rounded corners. This is the default is shape is not set.
+- shape="circular": The button has completely round corners. A button of equal width and height will be a circle.
+- shape="square": The button has right-angle corners.
 
 ### Sizes
 
@@ -80,16 +82,25 @@ The `Button` component can be loading if it's waiting for another action to occu
 export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
     /**
+     * A button can have its content and borders styled for greater emphasis or to be subtle.
+     * - 'primary': Emphasizes the button as a primary action.
+     * - 'outline': Removes background styling.
+     * - 'subtle': Minimzes emphasis to blend into the background until hovered or focused.
+     * - 'transparent': Removes background and border styling.
+     */
+    appearance?: 'primary' | 'outline' | 'subtle' | 'transparent';
+
+    /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
      */
-    icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
-    /**
-     * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag is
-     * set to `true`.
-     */
-    loader?: ShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
+    // /**
+    //  * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag
+    //  * is set to `true`.
+    //  */
+    // loader?: ShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
 
     /**
      * A button can fill the width of its container.
@@ -98,20 +109,15 @@ export type ButtonProps = ComponentPropsCompat &
     block?: boolean;
 
     /**
-     * A button can have completely rounded corners.
-     * @default false
-     */
-    circular?: boolean;
-
-    /**
      * A button can show that it cannot be interacted with.
      * @default false
      */
     disabled?: boolean;
 
     /**
-     * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is
-     * important to keep a consistent tab order for screen reader and keyboard users.
+     * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
+     * is important to keep a consistent tab order for screen reader and keyboard users. The primary example of this
+     * pattern is when the disabled button is in a menu or a commandbar and is seldom used for standalone buttons.
      * @default false
      */
     disabledFocusable?: boolean;
@@ -122,48 +128,24 @@ export type ButtonProps = ComponentPropsCompat &
      */
     iconPosition?: 'before' | 'after';
 
-    /**
-     * A button can show a loading indicator if it is waiting for another action to happen before allowing itself to be
-     * interacted with.
-     * @default false
-     */
-    loading?: boolean;
+    // /**
+    //  * A button can show a loading indicator if it is waiting for another action to happen before allowing itself to
+    //  * be interacted with.
+    //  * @default false
+    //  */
+    // loading?: boolean;
 
     /**
-     * A button can be styled such that it has no background styling and is just emphasized through the styling of its
-     * content and borders.
-     * Mutually exclusive with `primary`, `subtle` and `transparent`.
-     * @default false
+     * A button can be rounded, circular, or square.
+     * @default 'rounded'
      */
-    outline?: boolean;
-
-    /**
-     * A button can be styled to emphasize that it represents the primary action.
-     * Mutually exclusive with `outline`, `subtle` and `transparent`.
-     * @default false
-     */
-    primary?: boolean;
+    shape?: 'rounded' | 'circular' | 'square';
 
     /**
      * A button supports different sizes.
      * @default 'medium'
      */
     size?: 'small' | 'medium' | 'large';
-
-    /**
-     * A button can be styled to blend into its background and become less emphasized.
-     * Mutually exclusive with `outline`, `primary` and `transparent`.
-     * @default false
-     */
-    subtle?: boolean;
-
-    /**
-     * A button can be styled such that it has no background or border styling and is just emphasized through its
-     * content styling.
-     * Mutually exclusive with `outline`, `primary` and `subtle`.
-     * @default false
-     */
-    transparent?: boolean;
   };
 ```
 

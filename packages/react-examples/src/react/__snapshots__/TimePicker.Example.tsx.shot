@@ -421,15 +421,6 @@ exports[`Component Examples renders TimePicker.Example.tsx correctly 1`] = `
         </span>
       </button>
     </div>
-    <div
-      aria-atomic="true"
-      aria-hidden={true}
-      aria-live="polite"
-      id="ComboBox0-error"
-      role="region"
-    >
-      
-    </div>
   </div>
   <div
     className="ms-ComboBox-container "
@@ -829,15 +820,6 @@ exports[`Component Examples renders TimePicker.Example.tsx correctly 1`] = `
         </span>
       </button>
     </div>
-    <div
-      aria-atomic="true"
-      aria-hidden={true}
-      aria-live="polite"
-      id="ComboBox4-error"
-      role="region"
-    >
-      
-    </div>
   </div>
   <div
     className="ms-ComboBox-container "
@@ -1236,15 +1218,6 @@ exports[`Component Examples renders TimePicker.Example.tsx correctly 1`] = `
           </i>
         </span>
       </button>
-    </div>
-    <div
-      aria-atomic="true"
-      aria-hidden={true}
-      aria-live="polite"
-      id="ComboBox8-error"
-      role="region"
-    >
-      
     </div>
   </div>
 </div>

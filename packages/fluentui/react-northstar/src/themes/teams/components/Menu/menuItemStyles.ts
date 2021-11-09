@@ -46,13 +46,6 @@ export const getFocusedStyles = ({
       padding: pxToRem(1),
 
       ...(primary && { color: v.color }),
-
-      ...(active && {
-        color: v.colorActive,
-        background: v.backgroundColorActive || colors.backgroundActive,
-
-        ...(primary && { color: colors.foregroundFocus }),
-      }),
     }),
   };
 };
@@ -182,12 +175,17 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
               ...(underlined && { fontWeight: 700 }),
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
-        ...((underlined || vertical) && {
+
+        ...(underlined && {
           ...getBorderFocusStyles({ variables: siteVariables }),
           ':focus-visible': {
             ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
             borderColor: v.borderColorActive,
           },
+        }),
+
+        ...(vertical && {
+          ...getBorderFocusStyles({ variables: siteVariables, borderRadius: 0 }),
         }),
       }),
 

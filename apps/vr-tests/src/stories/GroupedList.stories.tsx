@@ -111,5 +111,5 @@ storiesOf('GroupedList', module)
         styles={{ root: { color: '#333333' } }}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

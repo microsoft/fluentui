@@ -1,34 +1,42 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Screener from 'screener-storybook/src/screener';
-import { FluentProviderDecorator } from '../utilities/index';
 import { Image } from '@fluentui/react-image';
-
-const ScreenerWrapper = (story: () => React.ReactNode) => (
-  <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-    {story()}
-  </Screener>
-);
 
 const imageUrl =
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 
-storiesOf('react-image Image', module)
-  .addDecorator(ScreenerWrapper)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('Image Converged', module)
+  .addDecorator((story: () => React.ReactNode) => (
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
   .addStory('Default', () => (
     <Image src="https://via.placeholder.com/300x300" alt="Placeholder image" />
   ))
-  .addStory('Image Appearance Shape', () => (
+  .addStory('Image Shape', () => (
     <>
       <div>
         <Image src={imageUrl} alt="Amanda's avatar default" height={200} width={200} />
       </div>
       <div>
-        <Image src={imageUrl} alt="Amanda's avatar rounded" height={200} width={200} rounded />
+        <Image
+          src={imageUrl}
+          alt="Amanda's avatar rounded"
+          height={200}
+          width={200}
+          shape="rounded"
+        />
       </div>
       <div>
-        <Image src={imageUrl} alt="Amanda's avatar circular" height={200} width={200} circular />
+        <Image
+          src={imageUrl}
+          alt="Amanda's avatar circular"
+          height={200}
+          width={200}
+          shape="circular"
+        />
       </div>
     </>
   ))
@@ -40,21 +48,21 @@ storiesOf('react-image Image', module)
       <div>
         <Image
           src={imageUrl}
-          alt="Amanda's avatar boredered and rounded"
+          alt="Amanda's avatar bordered and rounded"
           height={200}
           width={200}
           bordered
-          rounded
+          shape="rounded"
         />
       </div>
       <div>
         <Image
           src={imageUrl}
-          alt="Amanda's avatar boredered and circular"
+          alt="Amanda's avatar bordered and circular"
           height={200}
           width={200}
           bordered
-          circular
+          shape="circular"
         />
       </div>
     </>
@@ -97,10 +105,11 @@ storiesOf('react-image Image', module)
   .addStory('Image Fluid', () => (
     <>
       <div>
-        <Image src="https://via.placeholder.com/900x50" fluid />
+        <Image src="https://via.placeholder.com/900x50" block />
       </div>
       <div>
-        <Image src="https://via.placeholder.com/100x100" fluid />
+        <Image src="https://via.placeholder.com/100x100" block />
       </div>
     </>
-  ));
+  ))
+  .addStory('Image Shadow', () => <Image src="https://via.placeholder.com/900x50" shadow />);

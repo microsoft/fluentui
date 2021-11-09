@@ -1,8 +1,48 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Nov 2021 07:37:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.4.1)
+
+Tue, 02 Nov 2021 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.4.0..@fluentui/style-utilities_v8.4.1)
+
+### Patches
+
+- Bump @fluentui/theme to v2.4.2 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+- Bump @fluentui/utilities to v8.3.5 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.4.0)
+
+Mon, 01 Nov 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.3.4..@fluentui/style-utilities_v8.4.0)
+
+### Minor changes
+
+- Add window.FabricConfig.legacyTheme, which actually calls loadTheme() which will invoke legacy theming ([PR #20248](https://github.com/microsoft/fluentui/pull/20248) by phkuo@microsoft.com)
+
+## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.3.4)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.3.3..@fluentui/style-utilities_v8.3.4)
+
+### Patches
+
+- Bump @fluentui/theme to v2.4.1 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/utilities to v8.3.4 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+
+## [8.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.3.3)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.3.2..@fluentui/style-utilities_v8.3.3)
+
+### Patches
+
+- Bump @fluentui/theme to v2.4.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/merge-styles to v8.2.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
 
 ## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.3.2)
 

@@ -18,6 +18,45 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Fix aria-labelledby passed to `DropdownSearchInput` @chpalac ([#20312](https://github.com/microsoft/fluentui/pull/20312))
+- Fix `preventFocusRestoration` in `FocusZone` @chpalac ([#20328](https://github.com/microsoft/fluentui/pull/20328))
+- `Popup` should not dismiss when its iframe content is focused @ling1726 ([#19955](https://github.com/microsoft/fluentui/pull/19955))
+- `whatInput` Add typings to what input event listeners @ling1726 ([#20024](https://github.com/microsoft/fluentui/pull/20024))
+- Remove `active` as condition to open submenu on `MenuItem` and active styles for vertical menu @chassunc ([#20062](https://github.com/microsoft/fluentui/pull/20062))
+- `carousel` Add disableClickableNav to ProtoTypes list @yifeigogo ([#20053](https://github.com/microsoft/fluentui/pull/20053))
+- Adding brand `backgroundHover3`, brand `backgroundPressed2`, and default `borderTransparentActive` @notandrew ([#20056](https://github.com/microsoft/fluentui/pull/20056))
+- Spread event props from trigger in `Popup` @assuncaocharles ([#20162](https://github.com/microsoft/fluentui/pull/20162))
+- Set default focus border radius to default border radius (`4px`) @Hirse ([#20230](https://github.com/microsoft/fluentui/pull/20230))
+- Set `ChatMessageReadStatus` color to brand @Hirse ([#20231](https://github.com/microsoft/fluentui/pull/20231))
+- Fix broken styles debug of undefined `isReactComponent` @petr-duda ([#20349](https://github.com/microsoft/fluentui/pull/20349))
+- Stop `event.view` usage in `whatInput.ts` for tests @ling1726 ([#20492](https://github.com/microsoft/fluentui/pull/20492))
+- chore(ability-attributes): improve schema for aria-controls, aria-haspopup and aria-hidden @jurokapsiar ([#20194](https://github.com/microsoft/fluentui/pull/20194))
+- Remove pointer cursor and prevent navigation on carousel paddle click when `disableClickableNav` @chpalac ([#20521](https://github.com/microsoft/fluentui/pull/20521))
+
+### Features
+- Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
+
+<!--------------------------------[ v0.59.0 ]------------------------------- -->
+## [v0.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.59.0) (2021-09-20)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.58.0..@fluentui/react-northstar_v0.59.0)
+
+### BREAKING CHANGES
+- Remove Red Foreground 3 from color scheme tokens  @codepretty ([#19761](https://github.com/microsoft/fluentui/pull/19761))
+
+### Fixes
+- Ignore `ChatItem` contentPosition in compact density @Hirse ([#19701](https://github.com/microsoft/fluentui/pull/19701))
+- Fix compact `ChatMessage` focus highlight @Hirse ([#19720](https://github.com/microsoft/fluentui/pull/19720))
+- Set active item of `MenuItem` with submenu on focus @chassunc ([#19820](https://github.com/microsoft/fluentui/pull/19820))
+- Fix `Popup` to have box-shadow when `autoSize` prop is true @yuanboxue-amber ([#19817](https://github.com/microsoft/fluentui/pull/19817))
+
+### Documentation
+- Add Chat Playground @Hirse ([#19702](https://github.com/microsoft/fluentui/pull/19702))
+
+<!--------------------------------[ v0.58.0 ]------------------------------- -->
+## [v0.58.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.58.0) (2021-09-09)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.57.0..@fluentui/react-northstar_v0.58.0)
+
 ### BREAKING CHANGES
 - Make `Tooltip` subtle by default and no pointing by default @chassunc ([#19024](https://github.com/microsoft/fluentui/pull/19024))
 - Don't show `ChatMessage` timestamp if reactions are in the bottom @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
@@ -60,6 +99,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - add `disabledFocusable` for toolbar items @adamsamec ([#18720](https://github.com/microsoft/fluentui/pull/18720))
 - Fix `Tooltip` appearance in high contrast theme @yuanboxue-amber ([#19559](https://github.com/microsoft/fluentui/pull/19559))
 - Fix `Shadow` colors to match redlines @notandrew ([#19552](https://github.com/microsoft/fluentui/pull/19552))
+- Fix `Checkbox` background issue on zoom above 100% @vitthalr ([#19619](https://github.com/microsoft/fluentui/pull/19619))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))

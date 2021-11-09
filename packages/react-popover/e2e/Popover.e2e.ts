@@ -1,11 +1,11 @@
-const popoverTriggerSelector = '[aria-haspopup="true"]';
+const popoverTriggerSelector = '[aria-haspopup]';
 const popoverContentSelector = '[role="dialog"]';
 const popoverStoriesTitle = 'Components/Popover';
 
 const popoverDefaultStory = 'Default';
-const popoverAnchorToTargetStory = 'AnchorToTarget';
-const popoverControlledStory = 'Controlled';
-const popoverWithCustomTriggerStory = 'WithCustomTrigger';
+const popoverAnchorToTargetStory = 'AnchorToCustomTarget';
+const popoverControlledStory = 'ControllingOpenAndClose';
+const popoverWithCustomTriggerStory = 'CustomTrigger';
 const popoverNestedStory = 'NestedPopovers';
 const popoverUpdateContentStory = 'InternalUpdateContent';
 

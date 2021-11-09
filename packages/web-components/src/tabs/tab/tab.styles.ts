@@ -30,15 +30,16 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
         font-size: ${typeRampBaseFontSize};
         font-weight: 400;
         line-height: ${typeRampBaseLineHeight};
-        height: calc(${heightNumber} * 1px);
+        height: calc((${heightNumber} + (${designUnit} * 2)) * 1px);
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         color: ${neutralForegroundRest};
         border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${strokeWidth} * 1px) solid transparent;
         align-items: center;
         justify-content: center;
-        grid-row: 1;
+        grid-row: 1 / 3;
         cursor: pointer;
+        outline: none;
       }
 
       :host([aria-selected='true']) {
@@ -51,18 +52,13 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
       }
 
       :host(:${focusVisible}) {
-        outline: none;
-        border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
-        box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
-      }
-
-      :host(:focus) {
-        outline: none;
+        border-color: ${focusStrokeOuter};
+        box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter} inset;
       }
 
       :host(.vertical) {
-        justify-content: end;
-        grid-column: 2;
+        justify-content: start;
+        grid-column: 1 / 3;
       }
 
       :host(.vertical[aria-selected='true']) {
@@ -88,16 +84,17 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
           :host(:hover),
           :host(.vertical:hover),
           :host([aria-selected='true']:hover) {
-            background: ${SystemColors.Highlight};
-            color: ${SystemColors.HighlightText};
+            background: transparent;
+            color: ${SystemColors.Highlight};
             fill: currentcolor;
           }
           :host([aria-selected='true']) {
-            background: ${SystemColors.HighlightText};
+            background: transparent;
             color: ${SystemColors.Highlight};
             fill: currentcolor;
           }
           :host(:${focusVisible}) {
+            background: transparent;
             border-color: ${SystemColors.ButtonText};
             box-shadow: none;
           }

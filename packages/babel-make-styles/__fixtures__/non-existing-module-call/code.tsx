@@ -4,7 +4,7 @@ import { createModule } from './module';
 export const useStyles = makeStyles({
   container: theme => {
     // This assignment has no sense, but it will prevent us from evaluation in AST
-    const color = theme.alias.color.neutral.neutralStroke1;
+    const color = theme.colorNeutralStroke1;
 
     return { color };
   },

@@ -5,16 +5,16 @@ const react_make_styles_1 = require('@fluentui/react-make-styles');
 const useStyles = react_make_styles_1.__styles(
   {
     root: {
-      Be2twd7: 'flcnb0',
-      Bg96gwp: 'f1syuwty',
-      Bhrd7zp: 'f1du0uop',
+      Be2twd7: 'fkhj508',
+      Bg96gwp: 'f1i3iumi',
+      Bhrd7zp: 'figsok6',
     },
   },
   {
     d: [
-      '.flcnb0{font-size:var(--global-type-fontSizes-base-300);}',
-      '.f1syuwty{line-height:var(--global-type-lineHeights-base-300);}',
-      '.f1du0uop{font-weight:var(--global-type-fontWeights-regular);}',
+      '.fkhj508{font-size:var(--fontSizeBase300);}',
+      '.f1i3iumi{line-height:var(--lineHeightBase300);}',
+      '.figsok6{font-weight:var(--fontWeightRegular);}',
     ],
   },
 );

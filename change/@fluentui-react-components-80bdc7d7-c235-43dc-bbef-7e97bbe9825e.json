@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(storybook): Load custom storybook theme correctly",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
