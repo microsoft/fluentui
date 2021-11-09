@@ -182,4 +182,6 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    * @defaultvalue false
    */
   preventFocusRestoration?: boolean;
+
+  innerRef?: ((instance: any) => void) | React.MutableRefObject<any> | null;
 }
