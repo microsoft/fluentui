@@ -106,6 +106,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
                 overflow-x: hidden;
                 overflow-y: auto;
                 position: relative;
+                width: 100%;
               }
           onKeyDown={[Function]}
           onMouseDown={[Function]}

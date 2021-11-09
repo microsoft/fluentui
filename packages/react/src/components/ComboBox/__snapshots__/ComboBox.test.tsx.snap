@@ -755,6 +755,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
             style="outline: none; max-height: 100%;"
           >
@@ -1517,6 +1518,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
             style="outline: none; max-height: 100%;"
           >

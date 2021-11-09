@@ -242,6 +242,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                     overflow-x: hidden;
                     overflow-y: auto;
                     position: relative;
+                    width: 100%;
                   }
               onKeyDown={[Function]}
               onMouseDown={[Function]}

@@ -419,6 +419,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
             style="outline: none; max-height: 100%;"
           >
@@ -1433,6 +1434,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
             style="outline: none; max-height: 100%;"
           >
