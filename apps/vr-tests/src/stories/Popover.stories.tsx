@@ -28,12 +28,12 @@ const positions: NonNullable<PopoverProps['positioning']>[] = [
   'after-top',
 ];
 
-const stories = storiesOf('Popover - positioning', module).addDecorator(story => (
+let stories = storiesOf('Popover - positioning', module).addDecorator(story => (
   <Screener>{story()}</Screener>
 ));
 
 positions.forEach(position => {
-  stories.addStory(
+  stories = stories.addStory(
     position as string,
     () => (
       <Popover open positioning={position}>
