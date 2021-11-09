@@ -116,15 +116,15 @@ function useBounds(
  */
 function useMaxHeight(
   { calloutMaxHeight, directionalHint, directionalHintFixed, hidden }: ICalloutProps,
+  getBounds: () => IRectangle | undefined,
   positions?: ICalloutPositionedInfo,
-  getBounds?: () => IRectangle,
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const { top, bottom } = positions?.elementPosition ?? {};
 
   React.useEffect(() => {
     const isForcedInBounds = typeof top === 'number' && typeof bottom === 'number';
-    const { top: topBounds, bottom: bottomBounds } = getBounds ? getBounds() : ({} as IRectangle);
+    const { top: topBounds, bottom: bottomBounds } = getBounds() ?? {};
 
     if (!calloutMaxHeight && !isForcedInBounds && !hidden) {
       if (typeof top === 'number' && bottomBounds) {
@@ -424,7 +424,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     });
     const getBounds = useBounds(props, targetRef, targetWindow);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
-    const maxHeight = useMaxHeight(props, positions, getBounds);
+    const maxHeight = useMaxHeight(props, getBounds, positions);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
       props,
       positions,

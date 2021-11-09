@@ -99,6 +99,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         overflowX: 'hidden',
         overflowY: 'auto',
         position: 'relative',
+        width: '100%',
         borderRadius: effects.roundedCorner2,
       },
       overflowYHidden && {
