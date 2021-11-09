@@ -2,6 +2,27 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 09 Nov 2021 07:38:10 GMT",
+      "tag": "@fluentui/azure-themes_v8.1.97",
+      "version": "8.1.97",
+      "comments": {
+        "patch": [
+          {
+            "author": "aidanmc95@gmail.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "4067144a4874d3ed15fd8c945742a04975b0b7e8",
+            "comment": "Calendar/DayPicker Azure theme v8 light and dark mode changes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.41.3",
+            "commit": "627ad67f1163946f1c539002bdcd63eda760c9c6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Nov 2021 07:35:50 GMT",
       "tag": "@fluentui/azure-themes_v8.1.96",
       "version": "8.1.96",

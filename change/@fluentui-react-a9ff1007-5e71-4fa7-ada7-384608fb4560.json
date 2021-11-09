@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Callout): add explicit maxHeight",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
