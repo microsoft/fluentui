@@ -87,7 +87,7 @@ export const useAccessibility = <Props>(
       return React.createElement(FocusZone, {
         ...definition.focusZone.props,
         ...child.props,
-        ref: child.ref,
+        ...(child.ref && { ref: child.ref }),
         as: child.type,
         isRtl: rtl,
       });
