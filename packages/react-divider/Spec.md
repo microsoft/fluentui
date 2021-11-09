@@ -86,4 +86,5 @@ Content, if provided, will self-determine its behaviors.
 ## Accessibility
 
 - The `Divider` component should be assigned a `role="separator"` by default.
+- The `Divider` component should be named by its content.
 - The `Divider` component should have no other accessibility concerns otherwise. The descendant content in the divider must handle any required accessibility behaviors itself when appropriate.
