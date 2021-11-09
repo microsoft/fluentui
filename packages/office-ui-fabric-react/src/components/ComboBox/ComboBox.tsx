@@ -1426,7 +1426,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
 
     return (
-      <div key={item.key} className={this._classNames.header}>
+      <div id={item.id} key={item.key} className={this._classNames.header}>
         {onRenderOption(item, this._onRenderOptionContent)}
       </div>
     );
