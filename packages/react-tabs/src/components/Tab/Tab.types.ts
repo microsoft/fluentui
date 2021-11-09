@@ -10,16 +10,6 @@ export type TabSlots = {
    * Root of the component.
    */
   root: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * Visual indicator that a tab is selected or a candidate for selection.
-   */
-  selectionIndicator: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * Container for the content of the tab.
-   */
-  wrapper: IntrinsicShorthandProps<'div'>;
 };
 
 export type TabCommons = {

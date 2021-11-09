@@ -2,7 +2,6 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { TabState } from './Tab.types';
 
 export const tabClassName = 'fui-Tab';
-const selectionIndicatorClassName = `${tabClassName}-selectionIndicator`;
 
 /**
  * Styles for the root slot
@@ -12,6 +11,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     background: 'none',
     border: 'none',
+    cursor: 'pointer',
     display: 'flex',
     flexDirection: 'column',
     fontFamily: theme.fontFamilyBase,
@@ -19,52 +19,35 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     lineHeight: theme.lineHeightBase300,
     overflow: 'hidden',
+    padding: '12px 12px 0 12px',
+    textOverflow: 'ellipsis',
     verticalAlign: 'middle',
-    cursor: 'pointer',
+    whiteSpace: 'nowrap',
+    ':after': {
+      background: 'none',
+      borderRadius: theme.borderRadiusMedium,
+      boxSizing: 'border-box',
+      content: '""',
+      display: 'block',
+      height: '2px',
+      alignSelf: 'stretch',
+      margin: '10px 0 0 0',
+    },
     ':hover': {
-      [`& .${selectionIndicatorClassName}`]: {
+      ':after': {
         background: theme.colorNeutralStroke1,
       },
     },
   }),
   selected: theme => ({
-    [`& .${selectionIndicatorClassName}`]: {
+    ':after': {
       background: theme.colorBrandStroke1,
-      margin: '0',
     },
     ':hover': {
-      [`& .${selectionIndicatorClassName}`]: {
+      ':after': {
         background: theme.colorBrandStroke1,
-        margin: '0',
       },
     },
-  }),
-});
-
-const useSelectionIndicatorStyles = makeStyles({
-  base: theme => ({
-    background: 'none',
-    borderRadius: theme.borderRadiusMedium,
-    boxSizing: 'border-box',
-    height: '2px',
-    alignSelf: 'stretch',
-    margin: '0 10px',
-  }),
-});
-
-const useWrapperStyles = makeStyles({
-  base: theme => ({
-    alignItems: 'center',
-    background: 'none',
-    border: 'none',
-    display: 'inline-flex',
-    flexGrow: 1,
-    justifyContent: 'center',
-    overflow: 'hidden',
-    padding: '10px',
-    textOverflow: 'ellipsis',
-    verticalAlign: 'middle',
-    whiteSpace: 'nowrap',
   }),
 });
 
@@ -73,8 +56,6 @@ const useWrapperStyles = makeStyles({
  */
 export const useTabStyles = (state: TabState): TabState => {
   const styles = useStyles();
-  const selectionIndicatorStyles = useSelectionIndicatorStyles();
-  const wrapperStyles = useWrapperStyles();
 
   state.root.className = mergeClasses(
     tabClassName,
@@ -83,12 +64,5 @@ export const useTabStyles = (state: TabState): TabState => {
     state.root.className,
   );
 
-  state.selectionIndicator.className = mergeClasses(
-    selectionIndicatorClassName,
-    selectionIndicatorStyles.base,
-    state.selectionIndicator.className,
-  );
-
-  state.wrapper.className = mergeClasses(wrapperStyles.base, state.wrapper.className);
   return state;
 };
