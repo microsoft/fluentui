@@ -120,7 +120,7 @@ const templates = {
       importHelpers: true,
       noUnusedLocals: true,
       preserveConstEnums: true,
-      types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+      types: ['jest', 'static-assets', 'inline-style-expand-shorthand'],
     } as TsConfig['compilerOptions'],
   },
   babelConfig: (options: { extraPlugins: Array<string> }) => {

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 08 Nov 2021 07:35:50 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Nov 2021 07:38:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.41.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.3)
+
+Tue, 09 Nov 2021 07:38:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.2..@fluentui/react_v8.41.3)
+
+### Patches
+
+- fix(Callout): add explicit maxHeight ([PR #20533](https://github.com/microsoft/fluentui/pull/20533) by sarah.higley@microsoft.com)
 
 ## [8.41.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.2)
 

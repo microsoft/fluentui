@@ -14,6 +14,9 @@ import * as React_2 from 'react';
 export const Input: ForwardRefComponent<InputProps>;
 
 // @public (undocumented)
+export const inputClassName = "fui-Input";
+
+// @public (undocumented)
 export type InputCommons = {
     fieldSize?: 'small' | 'medium' | 'large';
     inline?: boolean;

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 02 Nov 2021 07:37:01 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Nov 2021 07:38:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.2)
+
+Tue, 09 Nov 2021 07:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.1..@fluentui/web-components_v2.0.2)
+
+### Patches
+
+- FluentUI calendar component ([PR #20356](https://github.com/microsoft/fluentui/pull/20356) by robarb@microsoft.com)
 
 ## [2.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.1)
 

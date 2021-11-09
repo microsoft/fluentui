@@ -728,6 +728,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                 border-radius: 2px;
                 box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 box-sizing: border-box;
+                display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -754,6 +755,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
             style="outline: none; max-height: 100%;"
           >
@@ -1489,6 +1491,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 border-radius: 2px;
                 box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 box-sizing: border-box;
+                display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -1515,6 +1518,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
             style="outline: none; max-height: 100%;"
           >

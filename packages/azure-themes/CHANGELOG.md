@@ -1,8 +1,18 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 08 Nov 2021 07:35:50 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Nov 2021 07:38:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.97](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.97)
+
+Tue, 09 Nov 2021 07:38:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.96..@fluentui/azure-themes_v8.1.97)
+
+### Patches
+
+- Calendar/DayPicker Azure theme v8 light and dark mode changes ([PR #19873](https://github.com/microsoft/fluentui/pull/19873) by aidanmc95@gmail.com)
+- Bump @fluentui/react to v8.41.3 ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by beachball)
 
 ## [8.1.96](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.96)
 
