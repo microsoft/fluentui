@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
@@ -72,3 +73,5 @@ export type ButtonState = ComponentState<ButtonSlots> &
      */
     iconOnly: boolean;
   };
+
+export type RenderButton = (state: ButtonState) => ReactElement;
