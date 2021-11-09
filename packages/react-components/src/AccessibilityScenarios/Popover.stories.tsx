@@ -1,0 +1,64 @@
+import * as React from 'react';
+
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Button } from '@fluentui/react-button';
+
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+
+import { Scenario, APP_TITLE, APP_TITLE_SEPARATOR } from './utils';
+
+interface IAddPeopleContentProps {
+  setPopoverOpened: (state: boolean) => void;
+}
+
+const AddPeopleContent: React.FunctionComponent<IAddPeopleContentProps> = (props: IAddPeopleContentProps) => {
+  const { setPopoverOpened } = props;
+
+  return (
+    <>
+      <label htmlFor="addPeopleInput">Enter name, email or tag</label>
+      <input type="text" name="addPeopleInput" id="addPeopleInput" />
+      <Button
+        onClick={() => {
+          setPopoverOpened(false);
+        }}
+      >
+        Cancel
+      </Button>
+    </>
+  );
+};
+
+export const AddPeoplePopoverAccessibilityScenario: React.FunctionComponent = () => {
+  const [popoverOpened, setPopoverOpened] = React.useState(false);
+
+  return (
+    <Scenario pageTitle="Add People Popover">
+      <Popover
+        open={popoverOpened}
+        onOpenChange={(event, data) => {
+          setPopoverOpened(data.open);
+        }}
+        trapFocus
+      >
+        <PopoverTrigger>
+          <Button>Add people</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface aria-label="Add someone to the chat">
+          <AddPeopleContent setPopoverOpened={setPopoverOpened} />
+        </PopoverSurface>
+      </Popover>
+    </Scenario>
+  );
+};
+
+export default {
+  title: `Add People Popover${APP_TITLE_SEPARATOR}${APP_TITLE}`,
+  id: 'popover-accessibility-scenario',
+};

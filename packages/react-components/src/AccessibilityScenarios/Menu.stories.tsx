@@ -18,7 +18,7 @@ import {
   MenuItemCheckbox,
   MenuItemRadio,
 } from '@fluentui/react-menu';
-import { Scenario } from './utils';
+import { Scenario, APP_TITLE, APP_TITLE_SEPARATOR } from './utils';
 
 interface StatusSubmenuProps {
   checkedValues: Record<string, string[]>;
@@ -73,7 +73,7 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
   };
 
   return (
-    <Scenario pageTitle="Profile menu">
+    <Scenario pageTitle="Profile Menu">
       <Menu>
         <MenuTrigger>
           <Button>Profile</Button>
@@ -107,6 +107,6 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
 };
 
 export default {
-  title: 'Accessibility Scenarios/ProfileMenu',
+  title: `Profile Menu${APP_TITLE_SEPARATOR}${APP_TITLE}`,
   id: 'menu-accessibility-scenario',
 };

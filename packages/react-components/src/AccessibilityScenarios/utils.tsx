@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-const APP_TITLE = 'Fluent UI usage scenarios';
-const APP_TITLE_SEPARATOR = ' | ';
+export const APP_TITLE = 'Accessibility Scenarios';
+export const APP_TITLE_SEPARATOR = ' | ';
 
 interface FullscreenLinkProps {
   parent: string;
@@ -18,7 +18,7 @@ export const FullscreenLink = (props: FullscreenLinkProps) => (
 );
 
 export const BackLink = () => (
-  <a href={`iframe.html?id=accessibility-scenarios-list-of-scenarios--page`}>Go back to main menu</a>
+  <a href={`iframe.html?id=list-of-scenarios-accessibility-scenarios--page`}>Go back to main menu</a>
 );
 
 export const Scenario: React.FunctionComponent<{ pageTitle: string }> = ({ pageTitle, children }) => {
