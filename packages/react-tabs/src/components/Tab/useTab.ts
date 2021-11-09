@@ -24,6 +24,7 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
 
   const selected = useContextSelector(TabListContext, ctx => ctx.selectedKey === value);
   const selectTab = useContextSelector(TabListContext, ctx => ctx.selectTab);
+  const verticalContent = useContextSelector(TabListContext, ctx => !!ctx.verticalTabContent);
   const verticalList = useContextSelector(TabListContext, ctx => !!ctx.vertical);
 
   const onClick = useEventCallback((event: SelectTabEvent) => selectTab(event, { value }));
@@ -39,6 +40,7 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
     }),
     selected,
     value,
+    verticalContent,
     verticalList,
   };
 };

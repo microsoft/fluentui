@@ -5,6 +5,7 @@ import bestPracticesMd from './TabListBestPractices.md';
 
 export { Default } from './TabListDefault.stories';
 export { Vertical } from './TabListVertical.stories';
+export { VerticalTabContent } from './TabListVerticalTabContent.stories';
 
 export default {
   title: 'Components/TabList',

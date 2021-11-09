@@ -19,6 +19,7 @@ export type TabListCommons = {
   selectedKey?: TabValue;
   onTabSelected?: SelectTabEventHandler;
   vertical?: boolean;
+  verticalTabContent?: boolean;
 };
 
 /**

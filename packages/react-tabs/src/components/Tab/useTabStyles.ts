@@ -95,12 +95,16 @@ const useWrapperStyles = makeStyles({
     background: 'none',
     border: 'none',
     display: 'flex',
+    flexDirection: 'row',
     flexGrow: 1,
     justifyContent: 'center',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     verticalAlign: 'middle',
     whiteSpace: 'nowrap',
+  },
+  verticalContent: {
+    flexDirection: 'column',
   },
 });
 
@@ -121,7 +125,11 @@ export const useTabStyles = (state: TabState): TabState => {
     state.root.className,
   );
 
-  state.contentClassName = mergeClasses(contentClassName, wrapperStyles.base);
+  state.contentClassName = mergeClasses(
+    contentClassName,
+    wrapperStyles.base,
+    state.verticalContent && wrapperStyles.verticalContent,
+  );
 
   return state;
 };
