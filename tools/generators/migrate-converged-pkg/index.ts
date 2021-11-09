@@ -765,12 +765,17 @@ function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
 
 function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
+  const publishedNpmScope = `@${workspaceConfig.npmScope}`;
   const allProjects = getProjects(tree);
 
   const projectPkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  const rootPkgJson = readJson<PackageJson>(tree, options.paths.rootPackageJson);
+  const rootPkgDevDependencies = rootPkgJson.devDependencies || {};
 
   const depsThatNeedToBecomeAliases = Object.keys(projectPkgJson.dependencies ?? {})
-    .filter(pkgName => pkgName.startsWith(`@${workspaceConfig.npmScope}`))
+    .filter(pkgName => {
+      return pkgName.startsWith(publishedNpmScope) && !rootPkgDevDependencies[pkgName];
+    })
     .reduce((acc, pkgName) => {
       acc[pkgName] = [`${allProjects.get(pkgName)?.root}/src/index.ts`];
 
