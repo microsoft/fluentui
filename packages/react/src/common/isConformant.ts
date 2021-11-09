@@ -9,6 +9,8 @@ export function isConformant<TProps = {}>(
       'has-docblock',
       'kebab-aria-attributes',
       'is-static-property-of-parent',
+      // Disabled as v8 has different prefix
+      'component-has-static-classname',
       // Will enable with appropriate overrides separately
       'consistent-callback-names',
       'consistent-callback-args',
