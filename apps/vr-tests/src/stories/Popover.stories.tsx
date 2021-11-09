@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+import Screener from 'screener-storybook/src/screener';
 import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
 
 const ExampleContent = () => {
@@ -27,7 +28,9 @@ const positions: NonNullable<PopoverProps['positioning']>[] = [
   'after-top',
 ];
 
-const stories = storiesOf('Popover - positioning', module);
+const stories = storiesOf('Popover - positioning', module).addDecorator(story => (
+  <Screener>{story()}</Screener>
+));
 
 positions.forEach(position => {
   stories.addStory(
