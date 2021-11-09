@@ -110,7 +110,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     preventFocusRestoration: PropTypes.bool,
     pagingSupportDisabled: PropTypes.bool,
     shouldIgnoreNotFocusable: PropTypes.bool,
-    innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ current: PropTypes.instanceOf(Element) })]),
+    innerRef: PropTypes.any,
   };
 
   static defaultProps: FocusZoneProps = {
