@@ -398,9 +398,16 @@ Clicking the tab selects it.
 
 #### **Keyboard**
 
+The tab list will support the prescribed [ARIA keyboard interaction](https://www.w3.org/TR/wai-aria-practices-1.1/#keyboard-interaction-19).
+
 A Tablist allows focus of individual tabs.
-When the TabList receives focus, the user can use arrow keys to move focus to the next or previous tab.The keys are based on layout. Horizontal uses left/right arrows and vertical uses up/down arrows.
-A tab is selected when the spacebar is pressed for a focused tab.
+
+When the TabList has focus, the user can use arrow keys to move focus to the next or previous tab.
+The keys are based on layout. Horizontal uses left/right arrows and vertical uses up/down arrows.
+
+Whe the TabList has focus, the user can use the home/end keys to move focus to the first/last tab.
+
+A tab is selected when the spacebar/enter key is pressed for a focused tab.
 
 The `TAB` key moves focus out of the tabs.
 
