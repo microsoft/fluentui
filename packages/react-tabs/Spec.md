@@ -3,11 +3,20 @@
 # Tabs
 
 **GitHub Epic issue** - [Tabs/Pivot Convergence #20338](https://github.com/microsoft/fluentui/issues/20338)
+**Figma** - [Tabs](https://www.figma.com/file/dK5AnDvvnSTWV9lduQWeDk/Tabs)
 
 ## Background
 
 Tabs allow for navigation between two or more content views and relies on text headers to
 articulate the different sections of content.
+
+There are a few different components typically provided for tabs:
+
+- Tab or tab header. This is the individual tab the user clicks to display content. It most often has text, an icon, or both.
+- Tab list or tab strip. This is a container for tabs and provides single selection behavior.
+- Tab panel. This is a container for the content to display when an associated tab is selected.
+
+In some cases the tab list and tab panels are provided together in a "tabs" aggregate component. This is historically done to provide the manilla folder tab style where the tab list and tab panels are arranged next to each other.
 
 ## Prior Art - Open UI
 
@@ -87,7 +96,7 @@ Both v0 and v8 provide the 'Block Tab' appearance.
 v0: by default
 v8: linkFormat="tabs"
 
-#### **Varations**
+#### **Variations**
 
 v0 supports decorating tabs with arrows pointing toward the associated content.
 v0: pointing=true
@@ -102,81 +111,81 @@ v0 additionally supports menus as tab content.
 
 Both v0 and v8 support custom rendering of tab content through a render props per item.
 
-### Overflow
+### Tab Panel
 
-v0 support overflow when behaving as a toolbar.
-v0: accessibility={menuAsToolbarBehavior}. This is mutually exclusive with accessibility={tabListBehavior}.
-
-v8 supports overflow
-v8: overflowBehavior="menu" | overflowBehavior="none"
+v0 does not provide a tab panel since it is implemented through the menu component.
+v8 supports the tab panel as the children of PivotItem. The tab content is provided through the header property.
 
 ## Sample Code
 
 ### Default
 
-- tabs are arranged horizontally
-- tab content is arranged horizontally, centered within each tab boundary
-- transparent appearance
+By default tabs are arranged horizontally.
+Content within the tab is arranged horizontally.
+It is centered (horizontally and vertically).
+The default appearance is transparent.
 
 ```tsx
 <TabList>
-  <Tab>One</Tab>
-  <Tab>Two</Tab>
-  <Tab>Three</Tab>
+  <Tab value="tab1">One</Tab>
+  <Tab value="tab2">Two</Tab>
+  <Tab value="tab3">Three</Tab>
 </TabList>
 ```
 
 ### Vertical
 
-- tabs are arranged vertically
+The vertical prop causes the tabs to be arranged vertically.
+Content within the tab is still arranged horizontally and centered.
 
 ```tsx
 <TabList vertical>
-  <Tab>One</Tab>
-  <Tab>Two</Tab>
-  <Tab>Three</Tab>
+  <Tab value="tab1">One</Tab>
+  <Tab value="tab2">Two</Tab>
+  <Tab value="tab3">Three</Tab>
 </TabList>
 ```
 
 ### Vertical Tab content
 
-- tab content is arranged vertically
+The verticalTabContent prop causes the content within the tab to be arranged vertically.
+The content is still centered.
+If the icon prop is set, the rendered icon is part of the vertical tab content.
 
 ```tsx
-<TabList verticalContent>
-  <Tab>One</Tab>
-  <Tab>Two</Tab>
-  <Tab>Three</Tab>
+<TabList verticalTabContent>
+  <Tab value="tab1">One</Tab>
+  <Tab value="tab2">Two</Tab>
+  <Tab value="tab3">Three</Tab>
 </TabList>
 
-<TabList vertical verticalContent>
-  <Tab>One</Tab>
-  <Tab>Two</Tab>
-  <Tab>Three</Tab>
+<TabList vertical verticalTabContent>
+  <Tab value="tab1">One</Tab>
+  <Tab value="tab2">Two</Tab>
+  <Tab value="tab3">Three</Tab>
 </TabList>
 ```
 
 ### Appearance
 
-Transparent (default)
-
-- no border and background styles
-- selection is indicated by a primary line below the tab
-- hovering over a tab shows a secondary line below the tab
+The default appearance is transparent.
+Transparent has no border and background styles.
+The selection indicator is a brand color line below the tab.
+Hovering over a tab shows a gray line below the tab.
 
 ```tsx
 <TabList>
-  <Tab />
-  <Tab />
-  <Tab />
+  {/* ... */}
 </TabList>
 
-<TabList appearance="transparent">{/* ... */}</TabList>
+<TabList appearance="transparent">
+  {/* ... */}
+</TabList>
 ```
 
 Subtle
 
-- similar to transparent, but a light background is set when hovering over a tab
+The subtle appearance is similar to transparent, but a light background is displayed when hovering over a tab.
 
 ```tsx
 <TabList appearance="subtle">{/* ... */}</TabList>
@@ -184,45 +193,70 @@ Subtle
 
 ### With Icon
 
-- icon is positioned before the tab content
+When the icon slot is filled, an icon is positioned before the tab content.
 
 ```tsx
 <TabList>
-  <Tab icon={<CheckboxComposite />}>Allowed</Tab>
-  <Tab icon={<BlockedSite />}>Blocked</Tab>
+  <Tab icon={<CheckboxComposite />} value="allowed">
+    Allowed
+  </Tab>
+  <Tab icon={<BlockedSite />} value="blocked">
+    Blocked
+  </Tab>
 </TabList>
 ```
 
-- icon only when content omitted
+An icon only tab is displayed when the icon slot is filled and tab content is omitted.
 
 ```tsx
 <TabList>
-  <Tab icon={<CheckboxComposite />} />
-  <Tab icon={<BlockedSite />} />
+  <Tab icon={<CheckboxComposite />} value="allowed" />
+  <Tab icon={<BlockedSite />} value="blocked" />
 </TabList>
 ```
 
-### With Badge
+### TabPanel (future)
+
+The initial vNext package will **not** provide a tab panel, but the tab list will be designed to support a tab panel in the future through composition.
+
+Why not now?
+
+- There are many approaches to handling tab panel content: show/hide, conditional render, navigation through a router
+- We're not providing a manilla folder tab appearance, so there is no need for the tab panel to support styling for when the components are co-located.
+- Creating a specific tab panel is trivial, creating a general-purpose tab panel is much more involved.
+
+The tab panels should be able to be placed independently of the TabList.
+Here's a possible approach:
 
 ```tsx
-<TabList>
-  <Tab>Files</Tab>
-  <Tab>Search</Tab>
-  <Tab badge={<Badge>New</Badge>}>Semantic Search</Tab>
+<TabList onTabSelected={(e,data) => setCurrentTab(data.value)}>
+  <Tab value="tab1">One</Tab>
+  <Tab value="tab2">Two</Tab>
+  <Tab value="tab3">Three</Tab>
 </TabList>
+
+<TabPanels value={currentTab}>
+  <TabPanel value="tab1">Tab Panel #1</TabPanel>
+  <TabPanel value="tab2">Tab Panel #2</TabPanel>
+  <TabPanel value="tab3">Tab Panel #3</TabPanel>
+</TabPanels>
 ```
 
-### Overflow
-
-- overflow is a menu button
-- replaceable via a slot
+When they are co-located, maybe an aggregate component could wire the TabPanels and TabList together:
 
 ```tsx
-<TabList overflow={</MyOverflowButton}>
-  <Tab>One</Tab>
-  <Tab>Two</Tab>
-  <Tab>Three</Tab>
-</TabList>
+<Tabs>
+  <TabList>
+    <Tab value="tab1">One</Tab>
+    <Tab value="tab2">Two</Tab>
+    <Tab value="tab3">Three</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel value="tab1">Tab Panel #1</TabPanel>
+    <TabPanel value="tab2">Tab Panel #2</TabPanel>
+    <TabPanel value="tab3">Tab Panel #3</TabPanel>
+  </TabPanels>
+</Tabs>
 ```
 
 ## API
@@ -230,69 +264,43 @@ Subtle
 ### Tab
 
 TabCommons.value supports an arbitrary identifier value.
-The value for each tab can be used to display the associated tab panel (future).
 This is similar to Accordian's selection approach.
-
-> TODO: Should value be called key since the tab list has selectedKey?
-> If so, should this key be applied to the tab as a key attribute?
 
 ```ts
 export type TabValue = unknown;
 
 export type TabCommons = {
-  disabled: boolean;
-  disabledFocusable: boolean;
+  disabled?: boolean;
+  disabledFocusable?: boolean;
   value: TabValue;
 };
 ```
 
-TabContextValue provides context from TabsList
-
-- default appearance, size, and vertical
-- default selectionIndicator slot
-- single-selection behavior
-- click handling
-
-> TODO: To provide a selectionIndicator slot implementation from the parent
-> should it be IntrinsicShorthandProps or IntrinsicShorthandValue?
-
-```ts
-export type TabContextValue = Partial<Omit<TabCommons, 'value'>> & {
-  appearance: 'transparent' | 'subtle';
-  selected: boolean;
-  selectionIndicator: IntrinsicShorthandProps<'div'>;
-  size: 'small' | 'medium';
-  vertical: boolean;
-  onClick(ev: React.MouseEvent | React.KeyboardEvent): void;
-};
-```
-
-Each tab has badge and icon slots.
+Each tab has an icon slot.
 
 ```ts
 export type TabSlots = {
   root: IntrinsicShorthandProps<'div'>;
-  badge?: ObjectShorthandProps<BadgeProps>;
   icon?: IntrinsicShorthandProps<'span'>;
 };
 ```
 
 ```ts
-export type TabProps = ComponentProps<TabSlots> & Partial<TabCommons>;
+export type TabProps = ComponentProps<TabSlots> & TabCommons;
 ```
 
 ### TabList
 
-The tab list has slots for the selection indicator passed to each tab via context,
-and a slot for the overflow menu button.
+The tab list has slots for the selection indicator.
 
 ```ts
 export type TabListSlots = {
   root: IntrinsicShorthandProps<'div'>;
   selectionIndicator?: IntrinsicShorthandProps<'div'>;
-  overflow: ObjectShorthandProps<MenuProps>;
 };
 ```
+
+The tab list supports tab selection events that include the value of the tab selected.
 
 ```ts
 export type TabSelectedEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
@@ -304,17 +312,34 @@ export type TabSelectedData = {
 export type TabSelectedEventHandler = (event: TabSelectedEvent, data: TabSelectedData) => void;
 ```
 
-Tab list support default and selected keys for controlled and uncontrolled scenarios.
+Tab list supports default and selected values for controlled and uncontrolled scenarios.
 
 ```ts
 export type TabListProps = ComponentProps<TabListSlots> & {
   appearance?: 'transparent' | 'subtle';
-  defaultSelectedKey?: string | number;
-  selectedKey?: string | number;
+  defaultSelectedValue?: string | number;
+  selectedValue?: string | number;
   size?: 'small' | 'medium';
   vertical?: boolean;
-  verticalContent?: boolean;
+  verticalTabContent?: boolean;
   onTabSelected?: TabSelectedEventHandler;
+};
+```
+
+The tab list communicates with tabs via context.
+This applies appearance, size, and layout.
+The tab can leverage the selectedValue and is expected to call selectTab when clicked.
+
+By adding these properties to TabProps we could allow individual tabs to override these values.
+However the expectation is that the tabs within a tab list have consistent layout and appearance.
+
+```ts
+export type TabListContextValue = TabListCommons & {
+  appearance: 'transparent' | 'subtle';
+  selectedValue: string;
+  size: 'small' | 'medium';
+  selectTab: SelectTabEventHandler;
+  vertical: boolean;
 };
 ```
 
@@ -323,7 +348,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
 - _**Public**_
 
 ```tsx
-<TabList appBar>
+<TabList>
   <Tab>One</Tab>
   <Tab>Two</Tab>
   <Tab>Three</Tab>
@@ -359,34 +384,25 @@ export type TabListProps = ComponentProps<TabListSlots> & {
 
 ### Selection
 
-TabList provides single select of a tab.
+TabList provides single selection of a tab.
 
-Programmatic
+#### **Programmatic**
 
-- The TabList.selectedKey can control the currently selected tab.
+The TabList.selectedKey can control the currently selected tab.
+The onTabSelected event informs callers of a selection change.
+The event data includes the tab value.
 
-Mouse/Touch
+#### **Mouse/Touch**
 
-- Clicking the tab selects it.
+Clicking the tab selects it.
 
-Keyboard
+#### **Keyboard**
 
-- Tablist focus traps the and allows focus of individual tabs.
-- Arrow keys move focus forward/backward.
-- The arrow keys are based on layout. Horizontal: left/right, Vertical: up/down.
-- A tab is selected when the spacebar is pressed for a focused tab.
-- The `TAB` key moves focus from the tabs to the overflow button.
+A Tablist allows focus of individual tabs.
+When the TabList receives focus, the user can use arrow keys to move focus to the next or previous tab.The keys are based on layout. Horizontal uses left/right arrows and vertical uses up/down arrows.
+A tab is selected when the spacebar is pressed for a focused tab.
 
-Events
-
-- Tab list raises the onTabSelected event whenever a tab is selected.
-- The event data includes the tab value.
-
-### Overflow
-
-- When there are more tabs than can fit in the available space, the overflow appears.
-- Clicking the overflow button displays the non-visible tabs as a menu.
-- Selecting a tab from the menu will replace the last visible tab with the selected tab.
+The `TAB` key moves focus out of the tabs.
 
 ## Accessibility
 
@@ -401,4 +417,37 @@ The `tabpanel` will be reserved for possible future component.
 
 ### Screen readers
 
-Screen readers will read tab content and focus of the overflow button.
+Screen readers will read each tab's content.
+
+# Open issues
+
+## Should this component support overflow?
+
+The design spec details a menu button (...) that displays the list of tabs that were not able to be displayed due to limited space.
+
+The team has raised some concers with providing this overflow functionality by default in the control.
+
+Concerns:
+
+- In the past, it made the v0 toolbar difficult to maintain. Customers hacked around it when it did not meet app requirements.
+- In the past, taking a dependency on menu over-complicated the button component and increased the default footprint. It also created a tighter binding with the overflow props matching the menu props and children.
+- It is one of many possible approaches such as scrolling, paging, multi-row, scroll-into-view. This may be best left as an application-level concern.
+- The dropdown approach is called out by bootstrap as [problematic for usability and accessibility](https://react-bootstrap.github.io/components/tabs/#tabs-with-dropdown).
+- Many (if not most) component libraries do not support dropdown overflow.
+- For vNext, the goal is to keep the components as lean as possible. This feels like a heavy feature to enforce.
+
+- [ ] What do our partners expect and need in the overflow scenario?
+- [ ] Updated design spec needed that details the requirements for overflow
+
+## Should there be a specific badge slot?
+
+Currently the design details a badge and icon as slots the caller can fill. The badge appears before the icon and the icon before the tab content.
+
+This presents a layout problem if badge is not a slot. If the caller provide a badge and text as the tab content and the icon via the slot, then the icon will appear before the badge.
+
+Concerns:
+
+- Historically, adding props for too narrow a use case has led to API bloat.
+
+- [ ] Is the badge a common use case for partners? customer?
+- [ ] Would it be better to have positional slots like Input will have (contentBefore, contentAfter)?
