@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 09 Nov 2021 07:38:10 GMT",
+      "tag": "@fluentui/react_v8.41.3",
+      "version": "8.41.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d3b636814a611ec3b44c14d98f495445ac52e5bb",
+            "comment": "fix(Callout): add explicit maxHeight"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Nov 2021 07:35:50 GMT",
       "tag": "@fluentui/react_v8.41.2",
       "version": "8.41.2",

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 09 Nov 2021 07:38:11 GMT",
+      "tag": "@fluentui/react-charting_v5.5.5",
+      "version": "5.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-scharde@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "7c2744e36167f2bb7cbaf4fa22433ab1d5daefcc",
+            "comment": "Stack Callout for Grouped vertical bar chart immplemented"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.41.3",
+            "commit": "627ad67f1163946f1c539002bdcd63eda760c9c6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Nov 2021 07:35:50 GMT",
       "tag": "@fluentui/react-charting_v5.5.4",
       "version": "5.5.4",

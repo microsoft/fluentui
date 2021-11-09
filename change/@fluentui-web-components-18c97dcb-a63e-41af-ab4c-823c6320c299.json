@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FluentUI calendar component",
-  "packageName": "@fluentui/web-components",
-  "email": "robarb@microsoft.com",
-  "dependentChangeType": "patch"
-}

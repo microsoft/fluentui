@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Calendar/DayPicker Azure theme v8 light and dark mode changes",
-  "packageName": "@fluentui/azure-themes",
-  "email": "aidanmc95@gmail.com",
-  "dependentChangeType": "patch"
-}
