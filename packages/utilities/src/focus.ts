@@ -359,6 +359,22 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 }
 
 /**
+ * Determines if an element is visible and not hidden
+ * @param element - Element to check
+ * @returns Returns true if the given element is visible and not hidden
+ *
+ * @public
+ */
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean {
+  return (
+    !!element &&
+    isElementVisible(element) &&
+    !element.hidden &&
+    window.getComputedStyle(element).visibility !== 'hidden'
+  );
+}
+
+/**
  * Determines if an element can receive focus programmatically or via a mouse click.
  * If checkTabIndex is true, additionally checks to ensure the element can be focused with the tab key,
  * meaning tabIndex != -1.

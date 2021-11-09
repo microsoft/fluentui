@@ -112,6 +112,37 @@ function useBounds(
 }
 
 /**
+ * (Hook) to return the maximum available height for the Callout to render into.
+ */
+function useMaxHeight(
+  { calloutMaxHeight, directionalHint, directionalHintFixed, hidden }: ICalloutProps,
+  getBounds: () => IRectangle | undefined,
+  positions?: ICalloutPositionedInfo,
+) {
+  const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
+  const { top, bottom } = positions?.elementPosition ?? {};
+
+  React.useEffect(() => {
+    const isForcedInBounds = typeof top === 'number' && typeof bottom === 'number';
+    const { top: topBounds, bottom: bottomBounds } = getBounds() ?? {};
+
+    if (!calloutMaxHeight && !isForcedInBounds && !hidden) {
+      if (typeof top === 'number' && bottomBounds) {
+        setMaxHeight(bottomBounds - top);
+      } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
+        setMaxHeight(bottomBounds - topBounds - bottom);
+      }
+    } else if (calloutMaxHeight) {
+      setMaxHeight(calloutMaxHeight);
+    } else {
+      setMaxHeight(undefined);
+    }
+  }, [bottom, calloutMaxHeight, directionalHint, directionalHintFixed, getBounds, hidden, positions, top]);
+
+  return maxHeight;
+}
+
+/**
  * (Hook) to find the current position of Callout. If Callout is resized then a new position is calculated.
  */
 function usePositions(
@@ -393,6 +424,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     });
     const getBounds = useBounds(props, targetRef, targetWindow);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
+    const maxHeight = useMaxHeight(props, getBounds, positions);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
       props,
       positions,
@@ -444,7 +476,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
         <div
           {...getNativeProps(props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
-          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+          style={positions ? { ...positions.elementPosition, maxHeight } : OFF_SCREEN_STYLE}
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}

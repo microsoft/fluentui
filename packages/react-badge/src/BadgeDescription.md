@@ -1,1 +1,1 @@
-A badge is an additional visual decoration for UI elements. It can be used to denote numerical value, status, or general information.
+A badge is a visual decoration for UI elements. Different badges can display numerical values, status, or text.

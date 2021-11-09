@@ -2,8 +2,10 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
+export const compoundButtonClassName = 'fui-CompoundButton';
+
 const CompoundButtonClassNames = {
-  secondaryContent: 'CompoundButton-secondaryContent',
+  secondaryContent: `${compoundButtonClassName}-secondaryContent`,
 };
 
 const useRootStyles = makeStyles({
@@ -196,6 +198,8 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
   const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
 
   state.root.className = mergeClasses(
+    compoundButtonClassName,
+
     // Root styles
     rootStyles.base,
     appearance && rootStyles[appearance],

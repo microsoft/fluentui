@@ -2,6 +2,8 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { useBadgeStyles } from '../../Badge';
 import type { PresenceBadgeState } from './PresenceBadge.types';
 
+export const presenceBadgeClassName = 'fui-PresenceBadge';
+
 const useStyles = makeStyles({
   root: theme => ({
     padding: 0,
@@ -52,6 +54,7 @@ const useStyles = makeStyles({
 export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    presenceBadgeClassName,
     styles.root,
     (state.status === 'busy' || state.status === 'doNotDisturb') && styles.statusBusy,
     state.status === 'away' && styles.statusAway,
