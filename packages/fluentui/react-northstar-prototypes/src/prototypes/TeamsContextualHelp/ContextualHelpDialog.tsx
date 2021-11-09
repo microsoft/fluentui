@@ -253,7 +253,7 @@ export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog
 
   const [dialogOpened, setDialogOpened] = React.useState(false);
   const [page, setPage] = React.useState('contexts');
-  const [defaultPanel, setDefaultPanel] = React.useState(defaultPage as number);
+  const [defaultPanel, setDefaultPanel] = React.useState<number | number[] | undefined>([defaultPage as number]);
 
   React.useEffect(() => {
     if (typeof defaultPage === 'string') {
@@ -267,7 +267,8 @@ export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog
       (first as HTMLElement).focus();
     }
     if (page === 'shortcuts') {
-      setDefaultPanel(undefined);
+      // Expand all accordion panels when navigated from global shortcuts help
+      setDefaultPanel([0, 1, 2]);
     }
   }, [page]); // End useEffect
 
@@ -284,10 +285,10 @@ export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog
             Keyboard shortcuts
           </Breadcrumb.Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item aria-current="page">Contextual keyboard help</Breadcrumb.Item>
+        <Breadcrumb.Item aria-current="page">Chat contextual keyboard help</Breadcrumb.Item>
       </Breadcrumb>
     );
-    content = <Accordion panels={panels2} defaultActiveIndex={defaultPanel} exclusive={true} />;
+    content = <Accordion panels={panels2} defaultActiveIndex={defaultPanel} />;
   }
 
   return (
@@ -325,7 +326,7 @@ export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog
             </Text>
             {page === 'shortcuts' && (
               <Text as="a" href="#contexts" onClick={event => navigateTo('contexts', setPage, event)}>
-                See chats contextual keyboard help
+                See chat contextual keyboard help
               </Text>
             )}
           </>
