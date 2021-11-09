@@ -800,6 +800,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           color: GrayText;
                           forced-color-adjust: none;
                         }
+                    id="ComboBox0header"
                   >
                     <span
                       class=
@@ -1566,6 +1567,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           color: GrayText;
                           forced-color-adjust: none;
                         }
+                    id="ComboBox0header"
                   >
                     <span
                       class=
