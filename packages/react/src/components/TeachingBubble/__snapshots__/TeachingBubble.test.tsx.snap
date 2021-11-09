@@ -61,6 +61,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             overflow-x: hidden;
             overflow-y: hidden;
             position: relative;
+            width: 100%;
           }
       onKeyDown={[Function]}
       onMouseDown={[Function]}
