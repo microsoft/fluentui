@@ -49,8 +49,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       {
         x: 20,
         y: 7000,
-        xAxisCalloutData: '2018/01/01',
-        yAxisCalloutData: '10%',
       },
       {
         x: 25,
@@ -162,6 +160,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
         <div style={rootStyle}>
           <AreaChart
+            culture={window.navigator.language}
             height={this.state.height}
             width={this.state.width}
             data={chartData}

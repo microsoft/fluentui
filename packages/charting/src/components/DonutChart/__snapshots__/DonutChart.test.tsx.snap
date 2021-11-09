@@ -1284,7 +1284,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               textAnchor="middle"
               y={5}
             >
-              1000
+              1,000
             </text>
           </g>
           <g>
@@ -1321,7 +1321,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               textAnchor="middle"
               y={5}
             >
-              1000
+              1,000
             </text>
           </g>
         </g>

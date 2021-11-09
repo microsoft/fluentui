@@ -405,6 +405,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         Legend={props.legend}
         YValue={props.yAxisCalloutData}
         color={props.color}
+        culture={this.props.culture}
       />
     ) : null;
   }
