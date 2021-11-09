@@ -192,9 +192,7 @@ function resolveStyleRulesInner(
       } else {
         if (process.env.NODE_ENV !== 'production') {
           // eslint-disable-next-line no-console
-          console.error(
-            `There was a problem resolving the style rule: \n ${property} \n ${JSON.stringify(value, null, 2)}"`,
-          );
+          console.error(`Please fix the unresolved style rule: \n ${property} \n ${JSON.stringify(value, null, 2)}"`);
         }
       }
     }
