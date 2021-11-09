@@ -9,8 +9,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
   }),
-
-  // TODO add additional classes for different states and/or slots
+  vertical: {
+    flexDirection: 'column',
+  },
 });
 
 /**
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
  */
 export const useTabListStyles = (state: TabListState): TabListState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(styles.root, state.vertical && styles.vertical, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

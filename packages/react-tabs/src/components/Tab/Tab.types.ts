@@ -30,4 +30,8 @@ export type TabProps = ComponentProps<TabSlots> & TabCommons;
 /**
  * State used in rendering Tab
  */
-export type TabState = ComponentState<TabSlots> & TabCommons;
+export type TabState = ComponentState<TabSlots> &
+  TabCommons & {
+    verticalList: boolean;
+    contentClassName?: string;
+  };

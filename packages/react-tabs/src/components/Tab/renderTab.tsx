@@ -11,7 +11,7 @@ export const renderTab = (state: TabState) => {
 
   return (
     <slots.root role="tab" {...slotProps.root}>
-      {state.root.children}
+      <div className={state.contentClassName}>{slotProps.root.children}</div>
     </slots.root>
   );
 };

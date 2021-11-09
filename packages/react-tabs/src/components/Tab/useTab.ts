@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
 import type { TabProps, TabSlots, TabState } from './Tab.types';
 import { TabListContext } from '../TabList/TabListContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -8,7 +8,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 /**
  * Array of all shorthand properties listed in TabSlots
  */
-export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'selectionIndicator', 'wrapper'];
+export const tabShorthandProps: (keyof TabSlots)[] = ['root'];
 
 /**
  * Create the state required to render Tab.
@@ -24,25 +24,21 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
 
   const selected = useContextSelector(TabListContext, ctx => ctx.selectedKey === value);
   const selectTab = useContextSelector(TabListContext, ctx => ctx.selectTab);
+  const verticalList = useContextSelector(TabListContext, ctx => !!ctx.vertical);
 
   const onClick = useEventCallback((event: SelectTabEvent) => selectTab(event, { value }));
 
   return {
     components: {
       root: 'div',
-      selectionIndicator: 'div',
-      wrapper: 'div',
     },
     root: getNativeElementProps('div', {
       ref,
       ...props,
       onClick,
     }),
-
-    selectionIndicator: resolveShorthand(props.selectionIndicator, { required: true }),
-    wrapper: resolveShorthand(props.wrapper, { required: true }),
-
     selected,
     value,
+    verticalList,
   };
 };
