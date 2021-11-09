@@ -291,12 +291,11 @@ export type TabProps = ComponentProps<TabSlots> & TabCommons;
 
 ### TabList
 
-The tab list has slots for the selection indicator.
+The tab list only has the root slot.
 
 ```ts
 export type TabListSlots = {
   root: IntrinsicShorthandProps<'div'>;
-  selectionIndicator?: IntrinsicShorthandProps<'div'>;
 };
 ```
 
