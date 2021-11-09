@@ -53,27 +53,27 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
         transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
       },
 
+      'global([data-popper-placement])': {
+        ':before': arrowHCBorder,
+      },
+
       // Popper sets data-popper-placement on the root element, which is used to align the arrow
       ':global([data-popper-placement^="top"])': {
         bottom: 0,
         '--angle': '0',
-        ':before': arrowHCBorder,
       },
 
       ':global([data-popper-placement^="right"])': {
         left: 0,
         '--angle': '90deg',
-        ':before': arrowHCBorder,
       },
       ':global([data-popper-placement^="bottom"])': {
         top: 0,
         '--angle': '180deg',
-        ':before': arrowHCBorder,
       },
       ':global([data-popper-placement^="left"])': {
         right: 0,
         '--angle': '270deg',
-        ':before': arrowHCBorder,
       },
     };
   };
