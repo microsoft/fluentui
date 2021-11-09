@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Panel: fix isFooterAtBottom bug where unnecessary scrollbar is present.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
