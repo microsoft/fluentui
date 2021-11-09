@@ -13,40 +13,15 @@ export type SliderSlots = {
   rail: IntrinsicShorthandProps<'div'>;
 
   /**
-   * The wrapper around the Slider component.
-   */
-  sliderWrapper: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
-   */
-  trackWrapper: IntrinsicShorthandProps<'div'>;
-
-  /**
    * The bar showing the current selected area adjacent to the Slider's thumb.
    */
   track: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The wrapper holding the marks and mark labels for the Slider.
-   */
-  marksWrapper: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
-   */
-  thumbWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
   thumb: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The area in which the Slider's rail allows for the thumb to be dragged.
-   */
-  activeRail: IntrinsicShorthandProps<'div'>;
 
   /**
    * The hidden input for the Slider.

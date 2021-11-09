@@ -6,18 +6,7 @@ import { SliderProps, SliderSlots, SliderState } from './Slider.types';
 /**
  * Array of all shorthand properties listed in sliderShorthandProps
  */
-export const sliderShorthandProps: (keyof SliderSlots)[] = [
-  'root',
-  'activeRail',
-  'input',
-  'rail',
-  'sliderWrapper',
-  'thumb',
-  'thumbWrapper',
-  'track',
-  'trackWrapper',
-  'marksWrapper',
-];
+export const sliderShorthandProps: (keyof SliderSlots)[] = ['root', 'activeRail', 'input', 'rail', 'thumb', 'track'];
 
 /**
  * Given user props, returns state and render function for a Slider.
@@ -42,13 +31,9 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     // Slots
     activeRail,
     input,
-    marksWrapper,
     rail,
-    sliderWrapper,
     thumb,
-    thumbWrapper,
     track,
-    trackWrapper,
   } = props;
 
   const state: SliderState = {
@@ -68,14 +53,10 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     components: {
       activeRail: 'div',
       input: 'input',
-      marksWrapper: 'div',
       rail: 'div',
       root: 'div',
-      sliderWrapper: 'div',
       thumb: 'div',
-      thumbWrapper: 'div',
       track: 'div',
-      trackWrapper: 'div',
     },
     root: getNativeElementProps('span', {
       ref,
@@ -89,13 +70,9 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
         type: 'range',
       },
     }),
-    marksWrapper: resolveShorthand(marksWrapper, { required: true }),
     rail: resolveShorthand(rail, { required: true }),
-    sliderWrapper: resolveShorthand(sliderWrapper, { required: true }),
     thumb: resolveShorthand(thumb, { required: true }),
-    thumbWrapper: resolveShorthand(thumbWrapper, { required: true }),
     track: resolveShorthand(track, { required: true }),
-    trackWrapper: resolveShorthand(trackWrapper, { required: true }),
   };
 
   useSliderState(state);

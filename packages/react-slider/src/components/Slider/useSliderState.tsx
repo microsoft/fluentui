@@ -11,11 +11,11 @@ import {
 import {
   calculateSteps,
   getKeydownValue,
-  getMarkPercent,
-  getMarkValue,
+  // getMarkPercent,
+  // getMarkValue,
   getPercent,
   on,
-  renderMarks,
+  // renderMarks,
 } from '../../utils/index';
 import type { SliderState } from './Slider.types';
 
@@ -33,7 +33,7 @@ export const useSliderState = (state: SliderState) => {
     disabled = false,
     ariaValueText,
     onChange,
-    marks,
+    // marks,
     vertical = false,
     origin,
   } = state;
@@ -91,7 +91,6 @@ export const useSliderState = (state: SliderState) => {
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const position = calculateSteps(ev, railRef, min, max, step, vertical, dir);
       const currentStepPosition = Math.round(position / step) * step;
-
       setRenderedPosition(position);
       updateValue(currentStepPosition, ev);
     },
@@ -167,16 +166,14 @@ export const useSliderState = (state: SliderState) => {
     return origin !== undefined ? getPercent(origin, min, max) : 0;
   }, [max, min, origin]);
 
-  const markValues = React.useMemo((): number[] => getMarkValue(marks, min, max, step), [marks, max, min, step]);
+  // const markValues = React.useMemo((): number[] => getMarkValue(marks, min, max, step), [marks, max, min, step]);
 
-  const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
+  // const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
 
-  const thumbWrapperStyles = {
-    transform: vertical
-      ? `translateY(${valuePercent}%)`
-      : `translateX(${dir === 'rtl' ? -valuePercent : valuePercent}%)`,
-    transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
-    ...state.thumbWrapper.style,
+  const thumbStyles = {
+    [vertical ? 'top' : 'left']: valuePercent + '%',
+    transition: stepAnimation ? `left ease-in-out ${animationTime}` : 'none',
+    ...state.thumb.style,
   };
 
   const trackStyles = {
@@ -202,13 +199,6 @@ export const useSliderState = (state: SliderState) => {
     ...state.track.style,
   };
 
-  const marksWrapperStyles = marks
-    ? {
-        [vertical ? 'gridTemplateRows' : 'gridTemplateColumns']: markPercent.join(''),
-        ...state.marksWrapper.style,
-      }
-    : {};
-
   // Root props
   if (!disabled) {
     state.root.onPointerDown = onPointerDown;
@@ -218,17 +208,11 @@ export const useSliderState = (state: SliderState) => {
   // Track Props
   state.track.style = trackStyles;
 
-  // Mark props
-  if (marks) {
-    state.marksWrapper.children = renderMarks(markValues, marks);
-    state.marksWrapper.style = marksWrapperStyles;
-  }
-
-  // Thumb Wrapper Props
-  state.thumbWrapper.style = thumbWrapperStyles;
+  // Thumb Props
+  state.thumb.style = thumbStyles;
 
   // Active Rail Props
-  state.activeRail.ref = railRef;
+  state.rail.ref = railRef;
 
   // Input Props
   state.input.ref = useMergedRefs(state.input.ref, inputRef);
