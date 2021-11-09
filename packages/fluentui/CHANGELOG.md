@@ -33,6 +33,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Stop `event.view` usage in `whatInput.ts` for tests @ling1726 ([#20492](https://github.com/microsoft/fluentui/pull/20492))
 - chore(ability-attributes): improve schema for aria-controls, aria-haspopup and aria-hidden @jurokapsiar ([#20194](https://github.com/microsoft/fluentui/pull/20194))
 - Remove pointer cursor and prevent navigation on carousel paddle click when `disableClickableNav` @chpalac ([#20521](https://github.com/microsoft/fluentui/pull/20521))
+- Fix `List` and `ListItem` to properly pass ref to root slots @chpalac ([#20557](https://github.com/microsoft/fluentui/pull/20557))
 
 ### Features
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
