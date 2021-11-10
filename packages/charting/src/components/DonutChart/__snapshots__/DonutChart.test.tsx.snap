@@ -71,6 +71,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -106,6 +107,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -433,6 +435,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -468,6 +471,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -795,6 +799,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -830,6 +835,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -917,6 +923,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -952,6 +959,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -1279,6 +1287,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -1316,6 +1325,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
