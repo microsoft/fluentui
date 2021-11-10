@@ -101,7 +101,7 @@ const useVerticalListStyles = makeStyles({
   }),
 });
 
-const useWrapperStyles = makeStyles({
+const useContentStyles = makeStyles({
   base: {
     alignItems: 'center',
     background: 'none',
@@ -160,25 +160,26 @@ const useIconStyles = makeStyles({
  */
 export const useTabStyles = (state: TabState): TabState => {
   const styles = useStyles();
-  const horizontalStyles = useHorizontalListStyles();
-  const verticalStyles = useVerticalListStyles();
-  const wrapperStyles = useWrapperStyles();
+  const horizontalListStyles = useHorizontalListStyles();
+  const verticalListStyles = useVerticalListStyles();
+  const contentStyles = useContentStyles();
   const iconStyles = useIconStyles();
 
   state.root.className = mergeClasses(
     tabClassName,
     styles.root,
     state.appearance === 'subtle' && styles.subtle,
-    state.verticalList ? verticalStyles.root : horizontalStyles.root,
-    state.selected && (state.verticalList ? verticalStyles.selected : horizontalStyles.selected),
+    state.verticalList ? verticalListStyles.root : horizontalListStyles.root,
+    state.selected && (state.verticalList ? verticalListStyles.selected : horizontalListStyles.selected),
     state.root.className,
   );
 
-  state.contentClassName = mergeClasses(
+  state.content.className = mergeClasses(
     contentClassName,
-    wrapperStyles.base,
-    state.verticalList && wrapperStyles.verticalList,
-    state.verticalContent && wrapperStyles.verticalContent,
+    contentStyles.base,
+    state.verticalList && contentStyles.verticalList,
+    state.verticalContent && contentStyles.verticalContent,
+    state.content.className,
   );
 
   if (state.icon) {

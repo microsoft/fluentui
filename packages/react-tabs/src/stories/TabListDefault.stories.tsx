@@ -18,17 +18,17 @@ export const Default = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="2">
-        <Tab {...props} value="1">
+      <TabList defaultSelectedKey="tab2">
+        <Tab {...props} value="tab1">
           First Tab
         </Tab>
-        <Tab {...props} value="2">
+        <Tab {...props} value="tab2">
           Second Tab
         </Tab>
-        <Tab {...props} value="3">
+        <Tab {...props} value="tab3">
           Third Tab
         </Tab>
-        <Tab {...props} value="4">
+        <Tab {...props} value="tab4">
           Fourth Tab
         </Tab>
       </TabList>

@@ -28,40 +28,40 @@ export const VerticalTabContent = (props: Partial<TabProps>) => {
   return (
     <>
       <div className={styles.root}>
-        <TabList defaultSelectedKey="2" verticalTabContent>
-          <Tab value="1">
+        <TabList defaultSelectedKey="tab2" verticalTabContent>
+          <Tab value="tab1">
             <div className={styles.cube} />
             First Tab
           </Tab>
-          <Tab value="2">
+          <Tab value="tab2">
             <div className={styles.cube} />
             Second Tab
           </Tab>
-          <Tab value="3">
+          <Tab value="tab3">
             <div className={styles.cube} />
             Third Tab
           </Tab>
-          <Tab value="4">
+          <Tab value="tab4">
             <div className={styles.cube} />
             Fourth Tab
           </Tab>
         </TabList>
       </div>
       <div className={styles.root}>
-        <TabList defaultSelectedKey="2" vertical verticalTabContent>
-          <Tab value="1">
+        <TabList defaultSelectedKey="tab2" vertical verticalTabContent>
+          <Tab value="tab1">
             <div className={styles.cube} />
             First Tab
           </Tab>
-          <Tab value="2">
+          <Tab value="tab2">
             <div className={styles.cube} />
             Second Tab
           </Tab>
-          <Tab value="3">
+          <Tab value="tab3">
             <div className={styles.cube} />
             Third Tab
           </Tab>
-          <Tab value="4">
+          <Tab value="tab4">
             <div className={styles.cube} />
             Fourth Tab
           </Tab>

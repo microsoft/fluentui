@@ -20,33 +20,33 @@ export const WithIcon = (props: Partial<TabProps>) => {
   return (
     <>
       <div className={styles.root}>
-        <TabList defaultSelectedKey="2">
-          <Tab icon={<CalendarMonth24Regular />} value="1">
+        <TabList defaultSelectedKey="tab2">
+          <Tab icon={<CalendarMonth24Regular />} value="tab1">
             First Tab
           </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="2">
+          <Tab icon={<CalendarMonth24Regular />} value="tab2">
             Second Tab
           </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="3">
+          <Tab icon={<CalendarMonth24Regular />} value="tab3">
             Third Tab
           </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="4">
+          <Tab icon={<CalendarMonth24Regular />} value="tab4">
             Fourth Tab
           </Tab>
         </TabList>
       </div>
       <div className={styles.root}>
-        <TabList defaultSelectedKey="2" vertical>
-          <Tab icon={<CalendarMonth24Regular />} value="1">
+        <TabList defaultSelectedKey="tab2" vertical>
+          <Tab icon={<CalendarMonth24Regular />} value="tab1">
             First Tab
           </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="2">
+          <Tab icon={<CalendarMonth24Regular />} value="tab2">
             Second Tab
           </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="3">
+          <Tab icon={<CalendarMonth24Regular />} value="tab3">
             Third Tab
           </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="4">
+          <Tab icon={<CalendarMonth24Regular />} value="tab4">
             Fourth Tab
           </Tab>
         </TabList>

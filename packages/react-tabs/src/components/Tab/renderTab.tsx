@@ -11,10 +11,10 @@ export const renderTab = (state: TabState) => {
 
   return (
     <slots.root role="tab" {...slotProps.root}>
-      <div className={state.contentClassName}>
+      <slots.content {...slotProps.content}>
         <slots.icon {...slotProps.icon} />
         {slotProps.root.children}
-      </div>
+      </slots.content>
     </slots.root>
   );
 };

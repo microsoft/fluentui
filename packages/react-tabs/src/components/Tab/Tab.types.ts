@@ -12,7 +12,12 @@ export type TabSlots = {
   root: IntrinsicShorthandProps<'div'>;
 
   /**
-   * Icon that renders either before or after the `children` depending on the tab list layout.
+   * Container to layout tab content based on tab list context.
+   */
+  content: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * Icon that renders before the content.
    */
   icon?: IntrinsicShorthandProps<'span'>;
 };

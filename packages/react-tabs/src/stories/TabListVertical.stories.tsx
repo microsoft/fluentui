@@ -18,11 +18,11 @@ export const Vertical = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="2" vertical>
-        <Tab value="1">First Tab</Tab>
-        <Tab value="2">Second Tab</Tab>
-        <Tab value="3">Third Tab</Tab>
-        <Tab value="4">Fourth Tab</Tab>
+      <TabList defaultSelectedKey="tab2" vertical>
+        <Tab value="tab1">First Tab</Tab>
+        <Tab value="tab2">Second Tab</Tab>
+        <Tab value="tab3">Third Tab</Tab>
+        <Tab value="tab4">Fourth Tab</Tab>
       </TabList>
     </div>
   );

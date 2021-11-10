@@ -8,7 +8,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 /**
  * Array of all shorthand properties listed in TabSlots
  */
-export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'icon'];
+export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'content', 'icon'];
 
 /**
  * Create the state required to render Tab.
@@ -20,7 +20,7 @@ export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'icon'];
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { icon, value } = props;
+  const { content, icon, value } = props;
 
   const appearance = useContextSelector(TabListContext, ctx => ctx.appearance);
   const selected = useContextSelector(TabListContext, ctx => ctx.selectedKey === value);
@@ -34,12 +34,14 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
     components: {
       root: 'div',
       icon: 'span',
+      content: 'div',
     },
     root: getNativeElementProps('div', {
       ref,
       ...props,
       onClick,
     }),
+    content: resolveShorthand(content, { required: true }),
     icon: resolveShorthand(icon),
     appearance,
     selected,
