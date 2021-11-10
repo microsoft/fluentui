@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Nov 2021 12:29:39 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Nov 2021 12:27:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.179.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.2)
+
+Wed, 10 Nov 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.179.1..office-ui-fabric-react_v7.179.2)
+
+### Patches
+
+- Fix Combobox group headers not being associated with items in screenreader ([PR #20532](https://github.com/microsoft/fluentui/pull/20532) by ololubek@microsoft.com)
 
 ## [7.179.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.1)
 

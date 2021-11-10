@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 10 Nov 2021 12:27:00 GMT",
+      "tag": "office-ui-fabric-react_v7.179.2",
+      "version": "7.179.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Combobox group headers not being associated with items in screenreader",
+            "author": "ololubek@microsoft.com",
+            "commit": "ef8e24687db2b072f7350ce976caa1e8f2eb5024",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Nov 2021 12:29:39 GMT",
       "tag": "office-ui-fabric-react_v7.179.1",
       "version": "7.179.1",

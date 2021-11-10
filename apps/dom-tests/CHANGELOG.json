@@ -2,6 +2,21 @@
   "name": "dom-tests",
   "entries": [
     {
+      "date": "Wed, 10 Nov 2021 12:27:00 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.179.2",
+            "author": "ololubek@microsoft.com",
+            "commit": "ef8e24687db2b072f7350ce976caa1e8f2eb5024",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Nov 2021 12:29:39 GMT",
       "tag": "dom-tests_v7.0.0",
       "version": "7.0.0",

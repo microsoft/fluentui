@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Combobox group headers not being associated with items in screenreader",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}
