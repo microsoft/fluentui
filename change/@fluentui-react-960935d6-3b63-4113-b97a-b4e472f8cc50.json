@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Combobox a11y fix to associate group headers with items for screenreaders",
+  "packageName": "@fluentui/react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
