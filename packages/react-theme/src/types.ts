@@ -2,8 +2,10 @@
  * Design tokens for alias colors
  */
 export type ColorTokens = {
-  // https://www.figma.com/file/KB9oUjMKen2cKnyPG7RgdS/Design-tokens-superset?node-id=1963%3A17486
   colorNeutralForeground1: string;
+  colorNeutralForeground1Hover: string;
+  colorNeutralForeground1Pressed: string;
+  colorNeutralForeground1Selected: string;
   colorNeutralForeground2: string;
   colorNeutralForeground2Hover: string;
   colorNeutralForeground2Pressed: string;
@@ -20,6 +22,7 @@ export type ColorTokens = {
   colorNeutralForeground3BrandSelected: string;
   colorNeutralForeground4: string;
   colorNeutralForegroundDisabled: string;
+  colorNeutralForegroundInvertedDisabled: string;
   colorBrandForegroundLink: string;
   colorBrandForegroundLinkHover: string;
   colorBrandForegroundLinkPressed: string;
@@ -30,11 +33,21 @@ export type ColorTokens = {
   colorBrandForeground1: string;
   colorBrandForeground2: string;
   colorNeutralForegroundInverted: string;
+  colorNeutralForegroundInvertedHover: string;
+  colorNeutralForegroundInvertedPressed: string;
+  colorNeutralForegroundInvertedSelected: string;
   colorNeutralForegroundOnBrand: string;
   colorNeutralForegroundInvertedLink: string;
   colorNeutralForegroundInvertedLinkHover: string;
   colorNeutralForegroundInvertedLinkPressed: string;
   colorNeutralForegroundInvertedLinkSelected: string;
+  colorBrandForegroundInverted: string;
+  colorBrandForegroundInvertedHover: string;
+  colorBrandForegroundInvertedPressed: string;
+  colorBrandForegroundOnLight: string;
+  colorBrandForegroundOnLightHover: string;
+  colorBrandForegroundOnLightPressed: string;
+  colorBrandForegroundOnLightSelected: string;
   colorNeutralBackground1: string;
   colorNeutralBackground1Hover: string;
   colorNeutralBackground1Pressed: string;
@@ -61,11 +74,19 @@ export type ColorTokens = {
   colorSubtleBackgroundHover: string;
   colorSubtleBackgroundPressed: string;
   colorSubtleBackgroundSelected: string;
+  colorSubtleBackgroundLightAlphaHover: string;
+  colorSubtleBackgroundLightAlphaPressed: string;
+  colorSubtleBackgroundLightAlphaSelected: string;
+  colorSubtleBackgroundInverted: string;
+  colorSubtleBackgroundInvertedHover: string;
+  colorSubtleBackgroundInvertedPressed: string;
+  colorSubtleBackgroundInvertedSelected: string;
   colorTransparentBackground: string;
   colorTransparentBackgroundHover: string;
   colorTransparentBackgroundPressed: string;
   colorTransparentBackgroundSelected: string;
   colorNeutralBackgroundDisabled: string;
+  colorNeutralBackgroundInvertedDisabled: string;
   colorNeutralStencil1: string;
   colorNeutralStencil2: string;
   colorBrandBackground: string;
@@ -77,6 +98,10 @@ export type ColorTokens = {
   colorCompoundBrandBackgroundPressed: string;
   colorBrandBackgroundStatic: string;
   colorBrandBackground2: string;
+  colorBrandBackgroundInverted: string;
+  colorBrandBackgroundInvertedHover: string;
+  colorBrandBackgroundInvertedPressed: string;
+  colorBrandBackgroundInvertedSelected: string;
   colorNeutralStrokeAccessible: string;
   colorNeutralStrokeAccessibleHover: string;
   colorNeutralStrokeAccessiblePressed: string;
@@ -87,12 +112,18 @@ export type ColorTokens = {
   colorNeutralStroke1Selected: string;
   colorNeutralStroke2: string;
   colorNeutralStroke3: string;
+  colorNeutralStrokeOnBrand: string;
+  colorNeutralStrokeOnBrand2: string;
+  colorNeutralStrokeOnBrand2Hover: string;
+  colorNeutralStrokeOnBrand2Pressed: string;
+  colorNeutralStrokeOnBrand2Selected: string;
   colorBrandStroke1: string;
   colorBrandStroke2: string;
   colorCompoundBrandStroke: string;
   colorCompoundBrandStrokeHover: string;
   colorCompoundBrandStrokePressed: string;
   colorNeutralStrokeDisabled: string;
+  colorNeutralStrokeInvertedDisabled: string;
   colorTransparentStroke: string;
   colorTransparentStrokeInteractive: string;
   colorTransparentStrokeDisabled: string;
