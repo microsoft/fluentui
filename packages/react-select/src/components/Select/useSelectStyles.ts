@@ -2,15 +2,6 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { SelectState } from './Select.types';
 import type { Theme } from '@fluentui/react-theme';
 
-// TODO(sharing) use theme values once available
-const horizontalSpacing = {
-  xxs: '2px',
-  xs: '4px',
-  sNudge: '6px',
-  s: '8px',
-  mNudge: '10px',
-  m: '12px',
-};
 const contentSizes = {
   // TODO: borrowed this from Input, should be in the theme somewhere?
   body1: (theme: Theme) => ({
@@ -37,12 +28,10 @@ const fieldHeights = {
 const borderRadius = (theme: Theme) => theme.borderRadiusMedium;
 
 // TODO: borrowed this from Input, should be in the theme somewhere?
-// Form fields share the same size/appearance variants/font sizes
+// Form fields with text values share the same size/appearance variants/font sizes
 const backgroundColors = {
-  /** for outline/filledLighter */
   filledLighter: (theme: Theme) => theme.colorNeutralBackground1,
   filledDarker: (theme: Theme) => theme.colorNeutralBackground3,
-  /** for underline */
   transparent: (theme: Theme) => theme.colorTransparentBackground,
 };
 
@@ -58,9 +47,9 @@ const useRootStyles = makeStyles({
 
 const useSelectElementStyles = makeStyles({
   base: theme => ({
-    padding: `0 ${horizontalSpacing.xxs}`,
+    appearance: 'none',
     color: theme.colorNeutralForeground1,
-    borderRadios: borderRadius,
+    borderRadius: borderRadius,
 
     ':focus-visible': {
       outline: '2px solid transparent',
@@ -76,7 +65,6 @@ const useSelectElementStyles = makeStyles({
   }),
   large: theme => ({
     height: fieldHeights.large,
-    padding: `0 ${horizontalSpacing.sNudge}`,
     ...contentSizes[400](theme),
   }),
   outline: theme => ({
@@ -94,7 +82,7 @@ const useSelectElementStyles = makeStyles({
   }),
   disabled: theme => ({
     color: theme.colorNeutralForegroundDisabled,
-    background: theme.colorTransparentBackground,
+    background: theme.colorNeutralBackgroundDisabled,
   }),
 });
 

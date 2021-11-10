@@ -15,9 +15,13 @@ export interface SelectCommons {
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
+
   inline?: boolean;
+
   /** @default 'outline' */
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+
+  disabled?: boolean;
 }
 
 export type SelectProps = ComponentProps<SelectSlots> & Partial<SelectCommons>;
