@@ -23961,10 +23961,10 @@ table@^6.0.4:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
-tabster@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.0.4.tgz#1e5f0e1f0c92459b239e72f6c21f72003da51420"
-  integrity sha512-N/XQVfIYB4GIxFxK1VOftCxh6Jvojce36tgV7nDAQ2P+WXYpL8sTn4uUoQ13Urf+knCOnoKmreKwteqa+m5OTw==
+tabster@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.0.5.tgz#5165a31f60e47518fe549f02a2ca4e8756568250"
+  integrity sha512-94MI6wSv+7Dkf8K4YSe/UsMPvD+ZeyqT4iNp31RF8njopHWz28Cm38ep+u7nrqX+6glTxfFDvSZkqHL8ZKbfkA==
   dependencies:
     keyborg "^1.0.0"
 
