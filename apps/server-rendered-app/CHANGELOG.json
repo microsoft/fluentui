@@ -2,6 +2,33 @@
   "name": "server-rendered-app",
   "entries": [
     {
+      "date": "Wed, 10 Nov 2021 07:31:59 GMT",
+      "tag": "server-rendered-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "server-rendered-app",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.17",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          },
+          {
+            "author": "beachball",
+            "package": "server-rendered-app",
+            "comment": "Bump @fluentui/merge-styles to v8.2.1",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          },
+          {
+            "author": "beachball",
+            "package": "server-rendered-app",
+            "comment": "Bump @fluentui/react to v8.41.4",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Nov 2021 07:38:11 GMT",
       "tag": "server-rendered-app_v1.0.0",
       "version": "1.0.0",
