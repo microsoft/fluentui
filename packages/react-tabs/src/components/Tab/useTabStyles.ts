@@ -25,7 +25,10 @@ const useStyles = makeStyles({
   }),
 });
 
-const useHorizontalStyles = makeStyles({
+/**
+ * Styles for the root slot when verticalList=false
+ */
+const useHorizontalListStyles = makeStyles({
   root: theme => ({
     alignItems: 'center',
     display: 'flex',
@@ -60,7 +63,10 @@ const useHorizontalStyles = makeStyles({
   }),
 });
 
-const useVerticalStyles = makeStyles({
+/**
+ * Styles for the root slot when verticalList=true
+ */
+const useVerticalListStyles = makeStyles({
   root: theme => ({
     alignItems: 'flex-start',
     display: 'flex',
@@ -103,14 +109,49 @@ const useWrapperStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    verticalAlign: 'middle',
     whiteSpace: 'nowrap',
+  },
+  verticalList: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   verticalContent: {
     flexDirection: 'column',
+    justifyContent: 'center',
+  },
+});
+
+const useIconStyles = makeStyles({
+  // Base styles
+  base: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    marginRight: '6px',
+  },
+  verticalContent: {
+    marginRight: '0',
+    marginBottom: '4px',
+  },
+
+  // Size variations
+  small: {
+    fontSize: '20px',
+    height: '20px',
+    width: '20px',
+  },
+  medium: {
+    fontSize: '20px',
+    height: '20px',
+    width: '20px',
+  },
+  large: {
+    fontSize: '24px',
+    height: '24px',
+    width: '24px',
   },
 });
 
@@ -119,9 +160,10 @@ const useWrapperStyles = makeStyles({
  */
 export const useTabStyles = (state: TabState): TabState => {
   const styles = useStyles();
-  const horizontalStyles = useHorizontalStyles();
-  const verticalStyles = useVerticalStyles();
+  const horizontalStyles = useHorizontalListStyles();
+  const verticalStyles = useVerticalListStyles();
   const wrapperStyles = useWrapperStyles();
+  const iconStyles = useIconStyles();
 
   state.root.className = mergeClasses(
     tabClassName,
@@ -135,8 +177,18 @@ export const useTabStyles = (state: TabState): TabState => {
   state.contentClassName = mergeClasses(
     contentClassName,
     wrapperStyles.base,
+    state.verticalList && wrapperStyles.verticalList,
     state.verticalContent && wrapperStyles.verticalContent,
   );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(
+      iconStyles.base,
+      iconStyles.medium,
+      state.verticalContent && iconStyles.verticalContent,
+      state.icon.className,
+    );
+  }
 
   return state;
 };

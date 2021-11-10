@@ -19,18 +19,10 @@ export const Appearance = (props: Partial<TabProps>) => {
   return (
     <div className={styles.root}>
       <TabList defaultSelectedKey="2" appearance="subtle">
-        <Tab {...props} value="1">
-          First Tab
-        </Tab>
-        <Tab {...props} value="2">
-          Second Tab
-        </Tab>
-        <Tab {...props} value="3">
-          Third Tab
-        </Tab>
-        <Tab {...props} value="4">
-          Fourth Tab
-        </Tab>
+        <Tab value="1">First Tab</Tab>
+        <Tab value="2">Second Tab</Tab>
+        <Tab value="3">Third Tab</Tab>
+        <Tab value="4">Fourth Tab</Tab>
       </TabList>
     </div>
   );

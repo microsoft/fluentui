@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import type { TabProps, TabSlots, TabState } from './Tab.types';
 import { TabListContext } from '../TabList/TabListContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -8,7 +8,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 /**
  * Array of all shorthand properties listed in TabSlots
  */
-export const tabShorthandProps: (keyof TabSlots)[] = ['root'];
+export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'icon'];
 
 /**
  * Create the state required to render Tab.
@@ -20,7 +20,7 @@ export const tabShorthandProps: (keyof TabSlots)[] = ['root'];
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { value } = props;
+  const { icon, value } = props;
 
   const appearance = useContextSelector(TabListContext, ctx => ctx.appearance);
   const selected = useContextSelector(TabListContext, ctx => ctx.selectedKey === value);
@@ -33,12 +33,14 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
   return {
     components: {
       root: 'div',
+      icon: 'span',
     },
     root: getNativeElementProps('div', {
       ref,
       ...props,
       onClick,
     }),
+    icon: resolveShorthand(icon),
     appearance,
     selected,
     value,

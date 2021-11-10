@@ -10,6 +10,11 @@ export type TabSlots = {
    * Root of the component.
    */
   root: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * Icon that renders either before or after the `children` depending on the tab list layout.
+   */
+  icon?: IntrinsicShorthandProps<'span'>;
 };
 
 export type TabCommons = {
