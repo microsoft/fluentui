@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add some logic to stylesheet that will do a simple append instead of using insert before if the reference node isn't actually a child of the document head.",
-  "packageName": "@fluentui/merge-styles",
-  "email": "tabrumle@microsoft.com",
-  "dependentChangeType": "patch"
-}
