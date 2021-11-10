@@ -59,6 +59,6 @@ export const AddPeoplePopoverAccessibilityScenario: React.FunctionComponent = ()
 };
 
 export default {
-  title: `Add People Popover${APP_TITLE_SEPARATOR}${APP_TITLE}`,
+  title: 'Accessibility Scenarios / Add people Popover',
   id: 'popover-accessibility-scenario',
 };

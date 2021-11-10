@@ -57,6 +57,6 @@ export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent =
 };
 
 export default {
-  title: `Simple Form Accordion${APP_TITLE_SEPARATOR}${APP_TITLE}`,
+  title: 'Accessibility Scenarios / Simple Form Accordion',
   id: 'accordion-accessibility-scenario',
 };

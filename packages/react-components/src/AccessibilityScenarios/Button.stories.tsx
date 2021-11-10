@@ -23,6 +23,6 @@ export const CalendarButtonsAccessibilityScenario: React.FunctionComponent = () 
 };
 
 export default {
-  title: `Calendar Buttons${APP_TITLE_SEPARATOR}${APP_TITLE}`,
+  title: 'Accessibility Scenarios / Calendar Buttons',
   id: 'button-accessibility-scenario',
 };
