@@ -14,6 +14,7 @@ import {
   names,
   visitNotIgnoredFiles,
   writeJson,
+  WorkspaceConfiguration,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -334,6 +335,33 @@ describe('migrate-converged-pkg generator', () => {
           rootTsConfig.compilerOptions.paths as Required<Pick<TsConfig['compilerOptions'], 'paths'>>['paths'],
         ),
       ).not.toContain(['tslib', 'someThirdPartyDep']);
+    });
+
+    it(`should not add 3rd party packages that use same scope as our repo `, async () => {
+      const workspaceConfig = readWorkspaceConfiguration(tree);
+      const normalizedPkgName = getNormalizedPkgName({ pkgName: options.name, workspaceConfig });
+      const thirdPartyPackageName = '@proj/jango-fet';
+
+      updateJson(tree, `./packages/${normalizedPkgName}/package.json`, (json: PackageJson) => {
+        json.dependencies = json.dependencies || {};
+        json.dependencies[thirdPartyPackageName] = '1.2.3';
+
+        return json;
+      });
+      updateJson(tree, './package.json', (json: PackageJson) => {
+        json.devDependencies = json.devDependencies || {};
+        json.devDependencies[thirdPartyPackageName] = '1.2.3';
+
+        return json;
+      });
+
+      await generator(tree, options);
+
+      const rootTsConfig = getBaseTsConfig();
+
+      rootTsConfig.compilerOptions.paths = rootTsConfig.compilerOptions.paths || {};
+
+      expect(rootTsConfig.compilerOptions.paths[thirdPartyPackageName]).toBeUndefined();
     });
   });
 
@@ -1116,7 +1144,7 @@ function setupDummyPackage(
 
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
-  const normalizedPkgName = pkgName.replace(`@${workspaceConfig.npmScope}/`, '');
+  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
   const paths = {
     root: `packages/${normalizedPkgName}`,
   };
@@ -1259,4 +1287,8 @@ function append(tree: Tree, filePath: string, content: string) {
   );
 
   return tree;
+}
+
+function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
+  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
 }

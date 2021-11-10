@@ -88,6 +88,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
     jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
     jestSetupFile: joinPathFragments(projectConfig.root, 'config', 'tests.js'),
     rootTsconfig: '/tsconfig.base.json',
+    rootPackageJson: '/package.json',
     rootJestPreset: '/jest.preset.js',
     rootJestConfig: '/jest.config.js',
     npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
