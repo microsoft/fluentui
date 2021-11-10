@@ -16,6 +16,7 @@ export type TabListSlots = {
 };
 
 export type TabListCommons = {
+  appearance?: 'transparent' | 'subtle';
   selectedKey?: TabValue;
   onTabSelected?: SelectTabEventHandler;
   vertical?: boolean;

@@ -11,11 +11,17 @@ const useStyles = makeStyles({
   root: theme => ({
     background: 'none',
     border: 'none',
+    borderRadius: '4px',
     cursor: 'pointer',
     fontFamily: theme.fontFamilyBase,
     fontSize: theme.fontSizeBase300,
     lineHeight: theme.lineHeightBase300,
     overflow: 'hidden',
+  }),
+  subtle: theme => ({
+    ':hover': {
+      background: theme.colorNeutralBackground1Hover,
+    },
   }),
 });
 
@@ -120,6 +126,7 @@ export const useTabStyles = (state: TabState): TabState => {
   state.root.className = mergeClasses(
     tabClassName,
     styles.root,
+    state.appearance === 'subtle' && styles.subtle,
     state.verticalList ? verticalStyles.root : horizontalStyles.root,
     state.selected && (state.verticalList ? verticalStyles.selected : horizontalStyles.selected),
     state.root.className,
