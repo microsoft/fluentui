@@ -1460,7 +1460,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
           // aria-selected should only be applied to checked items, not hovered items
-          aria-selected={isSelected ? 'true' : 'false'}
+          aria-selected={isChecked ? 'true' : 'false'}
           ariaLabel={item.ariaLabel}
           disabled={item.disabled}
           title={title}
@@ -1476,20 +1476,23 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           id={id + '-list' + item.index}
           ariaLabel={item.ariaLabel}
           key={item.key}
-          data-index={item.index}
           styles={optionStyles}
           className={'ms-ComboBox-option'}
-          data-is-focusable={true}
           onChange={this._onItemClick(item)}
           label={item.text}
-          role="option"
           checked={isChecked}
           title={title}
           disabled={item.disabled}
           // eslint-disable-next-line react/jsx-no-bind
           onRenderLabel={onRenderCheckboxLabel}
           inputProps={{
-            'aria-selected': isSelected ? 'true' : 'false',
+            // aria-selected should only be applied to checked items, not hovered items
+            'aria-selected': isChecked ? 'true' : 'false',
+            role: 'option',
+            ...({
+              'data-index': item.index,
+              'data-is-focusable': true,
+            } as any),
           }}
         />
       );
