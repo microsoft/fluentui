@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
 
@@ -17,3 +18,5 @@ export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<
 
 export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components'>;
+
+export type RenderCompoundButton = (state: CompoundButtonState) => ReactElement;

@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
-import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
-import { useButton } from '../Button/index';
+import type { CompoundButtonProps, CompoundButtonState, RenderCompoundButton } from './CompoundButton.types';
+import { useCompoundButtonState } from './useCompoundButtonState';
+import { useCompoundButtonStyles } from './useCompoundButtonStyles';
+import { renderCompoundButton } from './renderCompoundButton';
+import { useCompoundButtonARIA } from './useCompoundButtonARIA';
 
 /**
  * Given user props, defines default props for the CompoundButton, calls useButtonState, and returns processed state.
@@ -9,21 +11,12 @@ import { useButton } from '../Button/index';
  * @param ref - User provided ref to be passed to the CompoundButton component.
  */
 export const useCompoundButton = (
-  { contentContainer, secondaryContent, ...props }: CompoundButtonProps,
+  props: CompoundButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): CompoundButtonState => {
-  return {
-    // Button state
-    ...useButton(props, ref),
+): { state: CompoundButtonState; render: RenderCompoundButton } => {
+  const state: CompoundButtonState = useCompoundButtonState(props);
+  useCompoundButtonARIA(state, props, ref);
+  useCompoundButtonStyles(state);
 
-    // Slots definition
-    components: {
-      root: 'button',
-      icon: 'span',
-      contentContainer: 'span',
-      secondaryContent: 'span',
-    },
-    contentContainer: resolveShorthand(contentContainer, { required: true }),
-    secondaryContent: resolveShorthand(secondaryContent),
-  };
+  return { state, render: renderCompoundButton };
 };
