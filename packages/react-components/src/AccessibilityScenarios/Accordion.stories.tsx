@@ -9,7 +9,7 @@ import { Scenario, APP_TITLE, APP_TITLE_SEPARATOR } from './utils';
 export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Simple Form Accordion">
-      <Accordion defaultOpenItems={'personalDetails'}>
+      <Accordion defaultOpenItems="personalDetails">
         <AccordionItem value="personalDetails">
           <AccordionHeader>Personal details</AccordionHeader>
           <AccordionPanel>
