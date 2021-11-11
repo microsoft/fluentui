@@ -613,9 +613,7 @@ export const defaultErrorMessages = {
   ) => {
     const { componentPath, displayName } = testInfo;
     const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
-
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const indexFile = path.join(rootPath, 'src', 'index.ts');
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
 
     const constantValue = `export const ${exportName} = "${componentClassName}";`;
 
