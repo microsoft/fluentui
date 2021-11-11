@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 10 Nov 2021 07:31:59 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Nov 2021 07:32:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.5.7)
+
+Thu, 11 Nov 2021 07:32:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.5.6..@fluentui/react-charting_v5.5.7)
+
+### Patches
+
+- Resolved DonutChart valueInsideDonut text does not change to light color font in dark mode theme ([PR #20536](https://github.com/microsoft/fluentui/pull/20536) by v-pkoganti@microsoft.com)
 
 ## [5.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.5.6)
 
