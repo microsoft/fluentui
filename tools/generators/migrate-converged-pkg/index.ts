@@ -46,7 +46,13 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   }
 
   if (hasSchemaFlag(validatedSchema, 'name')) {
-    runMigrationOnProject(tree, validatedSchema, userLog);
+    const projectNames = validatedSchema.name.split(',').filter(Boolean);
+
+    if (projectNames.length > 1) {
+      runBatchMigration(tree, userLog, projectNames);
+    } else {
+      runMigrationOnProject(tree, validatedSchema, userLog);
+    }
   }
 
   await formatFiles(tree);
@@ -56,11 +62,13 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   };
 }
 
-function runBatchMigration(tree: Tree, userLog: UserLog) {
-  const projects = getProjects(tree);
+function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]) {
+  const projects = Array.from(getProjects(tree)).filter(([projectName]) => {
+    return projectNames ? projectNames.includes(projectName) : true;
+  });
 
-  projects.forEach((project, projectName) => {
-    if (!isPackageConverged(tree, project)) {
+  projects.forEach(([projectName, projectConfig]) => {
+    if (!isPackageConverged(tree, projectConfig)) {
       userLog.push({ type: 'error', message: `${projectName} is not converged package. Skipping migration...` });
       return;
     }
@@ -365,13 +373,17 @@ async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSc
   }
 
   if (newSchema.name) {
-    const projectConfig = readProjectConfiguration(tree, newSchema.name);
+    const projectNames = newSchema.name.split(',').filter(Boolean);
 
-    if (!isPackageConverged(tree, projectConfig)) {
-      throw new Error(
-        `${newSchema.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
-      );
-    }
+    projectNames.forEach(projectName => {
+      const projectConfig = readProjectConfiguration(tree, projectName);
+
+      if (!isPackageConverged(tree, projectConfig)) {
+        throw new Error(
+          `${newSchema.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
+        );
+      }
+    });
   }
 
   return newSchema;
@@ -382,7 +394,7 @@ async function triggerDynamicPrompts() {
 
   return prompt<PromptResponse>([
     {
-      message: 'Which converged package would you like migrate to new DX? (ex: @fluentui/react-menu)',
+      message: 'Which converged package/s would you like migrate to new DX? (ex: @fluentui/react-menu)',
       type: 'input',
       name: 'name',
     },
