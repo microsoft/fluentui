@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 11 Nov 2021 12:28:44 GMT",
+      "tag": "@uifabric/charting_v4.18.5",
+      "version": "4.18.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Charting:CherryPick#20536:Resolved DonutChart valueInsideDonut text does not change to light color font in dark mode theme",
+            "author": "v-pkoganti@microsoft.com",
+            "commit": "4f6f26ca35a9bd393d8305ea3ee088f837a5bbb0",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Nov 2021 12:27:00 GMT",
       "tag": "@uifabric/charting_v4.18.4",
       "version": "4.18.4",

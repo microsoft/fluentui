@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Charting:CherryPick#20536:Resolved DonutChart valueInsideDonut text does not change to light color font in dark mode theme",
-  "packageName": "@uifabric/charting",
-  "email": "v-pkoganti@microsoft.com",
-  "dependentChangeType": "patch"
-}
