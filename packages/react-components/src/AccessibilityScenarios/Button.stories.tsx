@@ -14,14 +14,12 @@ export const CalendarButtonsAccessibilityScenario: React.FunctionComponent = () 
 
   return (
     <Scenario pageTitle="Calendar Buttons">
-      <>
-        <Button onClick={onSaveButtonClick}>Save event</Button>
-        <Button disabled>Delete event</Button>
-        <Button disabledFocusable>Show upcoming events</Button>
-        <p>
-          Event status: <span aria-live="polite">{statusText}</span>
-        </p>
-      </>
+      <Button onClick={onSaveButtonClick}>Save event</Button>
+      <Button disabled>Delete event</Button>
+      <Button disabledFocusable>Show upcoming events</Button>
+      <p>
+        Event status: <span aria-live="polite">{statusText}</span>
+      </p>
     </Scenario>
   );
 };
