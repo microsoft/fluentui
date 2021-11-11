@@ -4,6 +4,12 @@ import * as React from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
+
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Label } from '@fluentui/react-label';
+
 import { Scenario } from './utils';
 
 export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
@@ -13,26 +19,26 @@ export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent =
         <AccordionItem value="personalDetails">
           <AccordionHeader>Personal details</AccordionHeader>
           <AccordionPanel>
-            <label htmlFor="name">Name:</label>
+            <Label htmlFor="name">Name:</Label>
             <input type="text" id="name" name="name" />
-            <label htmlFor="email">Email:</label>
+            <Label htmlFor="email">Email:</Label>
             <input type="text" id="email" name="email" />
             <div role="group" aria-label="Gender">
               <input type="radio" id="male" name="gender" value="male" />
-              <label htmlFor="male">male</label>
+              <Label htmlFor="male">male</Label>
               <input type="radio" id="female" name="gender" value="female" />
-              <label htmlFor="female">female</label>
+              <Label htmlFor="female">female</Label>
             </div>
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="residence">
           <AccordionHeader>Residence</AccordionHeader>
           <AccordionPanel>
-            <label htmlFor="street">Street:</label>
+            <Label htmlFor="street">Street:</Label>
             <input type="text" id="street" name="street" />
-            <label htmlFor="city">City:</label>
+            <Label htmlFor="city">City:</Label>
             <input type="text" id="city" name="city" />
-            <label htmlFor="country">Country:</label>
+            <Label htmlFor="country">Country:</Label>
             <input type="text" id="country" name="country" />
           </AccordionPanel>
         </AccordionItem>
@@ -41,13 +47,13 @@ export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent =
           <AccordionPanel>
             <div role="group" aria-label="Hobbies">
               <input type="checkbox" id="books" name="hobbies" value="books" />
-              <label htmlFor="books">books</label>
+              <Label htmlFor="books">books</Label>
               <input type="checkbox" id="sports" name="hobbies" value="sports" />
-              <label htmlFor="sports">sports</label>
+              <Label htmlFor="sports">sports</Label>
               <input type="checkbox" id="music" name="hobbies" value="music" />
-              <label htmlFor="music">music</label>
+              <Label htmlFor="music">music</Label>
               <input type="checkbox" id="travelling" name="hobbies" value="travelling" />
-              <label htmlFor="travelling">travelling</label>
+              <Label htmlFor="travelling">travelling</Label>
             </div>
           </AccordionPanel>
         </AccordionItem>
