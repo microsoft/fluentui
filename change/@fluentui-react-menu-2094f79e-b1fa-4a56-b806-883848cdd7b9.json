@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use react-shared-contexts instead of react-provider",
+  "packageName": "@fluentui/react-menu",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
