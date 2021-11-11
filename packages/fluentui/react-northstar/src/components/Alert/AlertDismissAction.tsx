@@ -15,7 +15,7 @@ import {
 
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -77,8 +77,10 @@ export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames 
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-export const AlertDismissAction: ComponentWithAs<'button', AlertDismissActionProps> &
-  FluentComponentStaticProps<AlertDismissActionProps> = props => {
+export const AlertDismissAction = (React.forwardRef<
+  HTMLButtonElement,
+  AlertDismissActionProps & { as: React.ReactNode }
+>(props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
   setStart();
@@ -173,7 +175,8 @@ export const AlertDismissAction: ComponentWithAs<'button', AlertDismissActionPro
   setEnd();
 
   return result;
-};
+}) as unknown) as ForwardRefWithAs<'button', HTMLButtonElement, AlertDismissActionProps> &
+  FluentComponentStaticProps<AlertDismissActionProps>;
 
 AlertDismissAction.defaultProps = {
   as: 'button',
