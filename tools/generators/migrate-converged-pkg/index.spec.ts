@@ -669,6 +669,39 @@ describe('migrate-converged-pkg generator', () => {
         ]),
       );
     });
+
+    it(`should remove @ts-ignore pragmas from all stories`, async () => {
+      const { paths } = setup({ createDummyStories: true });
+      append(
+        tree,
+        paths.storyOne,
+        stripIndents`
+        // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        import { Button } from '@fluentui/react-button';
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        import { Text } from '@fluentui/react-text';
+      `,
+      );
+
+      await generator(tree, options);
+
+      expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchInlineSnapshot(`
+        "import * as Implementation from './index';
+        export const Foo = (props: FooProps) => { return <div>Foo</div>; }\\\\n
+
+
+
+        import { Button } from '@fluentui/react-button';
+
+
+
+        import { Text } from '@fluentui/react-text';"
+      `);
+    });
   });
 
   describe(`e2e config`, () => {
@@ -1282,7 +1315,7 @@ function append(tree: Tree, filePath: string, content: string) {
     filePath,
     stripIndents`
         ${tree.read(filePath)?.toString('utf-8')}\n
-        ${content};
+        ${content}
         `,
   );
 
