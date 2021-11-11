@@ -563,7 +563,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
   };
 
-  private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
+  private _onToggleMenu = (shouldFocusOnContainer: boolean = false): void => {
     let shouldFocusOnMount = true;
     if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
       shouldFocusOnMount = false;
@@ -825,7 +825,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         onMenuClick(ev, this.props);
       }
 
-      this._onToggleMenu(false);
+      this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
     }
@@ -933,15 +933,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
 
     if (!ev.defaultPrevented) {
-      // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
-      // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-      // between a real click event and a keypress event (detail should be the number of mouse clicks).
-      // ...Plot twist! For a real click event in IE 11, detail is always 0 (Edge sets it properly to 1).
-      // So we also check the pointerType property, which both Edge and IE set to "mouse" for real clicks
-      // and "" for pressing "Enter" with Narrator on.
-      const shouldFocusOnContainer =
-        ev.nativeEvent.detail !== 0 || (ev.nativeEvent as PointerEvent).pointerType === 'mouse';
-      this._onToggleMenu(shouldFocusOnContainer);
+      this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
     }
