@@ -8,9 +8,9 @@ import { Scenario } from './utils';
 
 export const CalendarButtonsAccessibilityScenario: React.FunctionComponent = () => {
   const [statusText, setStatusText] = React.useState('Not saved.');
-  const onSaveButtonClick = React.useCallback(() => {
+  const onSaveButtonClick = () => {
     setStatusText('The event has been saved.');
-  }, []);
+  };
 
   return (
     <Scenario pageTitle="Calendar Buttons">
