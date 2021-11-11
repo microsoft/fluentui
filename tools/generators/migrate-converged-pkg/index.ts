@@ -587,6 +587,8 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
       return json;
     });
+
+    removeTsIgnorePragmas();
   }
 
   if (sbAction === 'remove') {
@@ -619,6 +621,37 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
       return json;
     });
+  }
+
+  function removeTsIgnorePragmas() {
+    const stories: string[] = [];
+    visitNotIgnoredFiles(tree, options.paths.sourceRoot, treePath => {
+      if (treePath.includes('.stories.')) {
+        stories.push(treePath);
+      }
+    });
+
+    stories.forEach(storyPath => {
+      const content = tree.read(storyPath)?.toString('utf-8');
+
+      if (!content) {
+        throw new Error('story file has no code');
+      }
+
+      let updatedContent = content.replace(/\/\/\s+@ts-ignore/g, '');
+      updatedContent = updatedContent.replace(
+        /\/\/\s+eslint-disable-next-line\s+@typescript-eslint\/ban-ts-comment/g,
+        '',
+      );
+      updatedContent = updatedContent.replace(
+        /\/\/\s+https:\/\/github\.com\/microsoft\/fluentui\/pull\/18695#issuecomment-868432982/g,
+        '',
+      );
+
+      tree.write(storyPath, updatedContent);
+    });
+
+    return tree;
   }
 
   return tree;
