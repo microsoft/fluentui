@@ -4,7 +4,7 @@ import * as React from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
-import { Scenario, APP_TITLE, APP_TITLE_SEPARATOR } from './utils';
+import { Scenario } from './utils';
 
 export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
   return (

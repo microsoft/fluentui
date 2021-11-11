@@ -18,7 +18,7 @@ import {
   MenuItemCheckbox,
   MenuItemRadio,
 } from '@fluentui/react-menu';
-import { Scenario, APP_TITLE, APP_TITLE_SEPARATOR } from './utils';
+import { Scenario } from './utils';
 
 interface StatusSubmenuProps {
   checkedValues: Record<string, string[]>;

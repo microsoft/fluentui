@@ -10,7 +10,7 @@ import { Button } from '@fluentui/react-button';
 // @ts-ignore
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 
-import { Scenario, APP_TITLE, APP_TITLE_SEPARATOR } from './utils';
+import { Scenario } from './utils';
 
 interface IAddPeopleContentProps {
   setPopoverOpened: (state: boolean) => void;

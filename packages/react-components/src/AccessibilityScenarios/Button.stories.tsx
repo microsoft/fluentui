@@ -4,11 +4,12 @@ import * as React from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Button } from '@fluentui/react-button';
-import { Scenario, APP_TITLE, APP_TITLE_SEPARATOR } from './utils';
+import { Scenario } from './utils';
 
 export const CalendarButtonsAccessibilityScenario: React.FunctionComponent = () => {
+  const [statusText, setStatusText] = React.useState('Not saved.');
   const onSaveButtonClick = React.useCallback(() => {
-    alert('The calendar event would have been saved.');
+    setStatusText('The event has been saved.');
   }, []);
 
   return (
@@ -17,6 +18,9 @@ export const CalendarButtonsAccessibilityScenario: React.FunctionComponent = () 
         <Button onClick={onSaveButtonClick}>Save event</Button>
         <Button disabled>Delete event</Button>
         <Button disabledFocusable>Show upcoming events</Button>
+        <p>
+          Event status: <span aria-live="polite">{statusText}</span>
+        </p>
       </>
     </Scenario>
   );
