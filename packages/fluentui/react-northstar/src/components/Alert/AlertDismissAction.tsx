@@ -80,7 +80,7 @@ export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames 
 export const AlertDismissAction = (React.forwardRef<
   HTMLButtonElement,
   AlertDismissActionProps & { as: React.ReactNode }
->(props => {
+>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
   setStart();
@@ -157,6 +157,7 @@ export const AlertDismissAction = (React.forwardRef<
         disabled,
         className: classes.root,
         ...unhandledProps,
+        ref,
       })}
     >
       {hasChildren
