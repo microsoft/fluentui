@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { InputState } from './Input.types';
 import type { Theme } from '@fluentui/react-theme';
 
+export const inputClassName = 'fui-Input';
+
 // TODO(sharing) use theme values once available
 const horizontalSpacing = {
   xxs: '2px',
@@ -154,6 +156,7 @@ export const useInputStyles = (state: InputState): InputState => {
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
+    inputClassName,
     rootStyles.base,
     rootStyles[fieldSize],
     rootStyles[appearance],

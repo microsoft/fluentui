@@ -1,3 +1,6 @@
+// @TODO https://github.com/microsoft/fluentui/issues/20544
+/// <reference path="../static-assets/index.d.ts" />
+
 /**
  * Generic typings for sass files.
  */
@@ -5,19 +8,6 @@ declare module '*.scss' {
   const styles: { [className: string]: string };
   export default styles;
 }
-declare module '*.svg' {
-  const svgPath: string;
-  export default svgPath;
-}
-declare module '*.png' {
-  const value: any;
-  export default value;
-}
-
-/**
- * Generic typings for Markdown files.
- */
-declare module '*.md';
 
 // These declarations are meant to represent the parts of Map/WeakMap/Set that exist in IE 11.
 // Therefore, some functionality (such as constructor parameters) is intentionally missing.

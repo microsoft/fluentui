@@ -224,6 +224,53 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Component file has assigned and exported static class */
+  'component-has-static-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const {
+      componentPath,
+      Component,
+      wrapperComponent,
+      helperComponents = [],
+      requiredProps,
+      customMount = mount,
+    } = testInfo;
+    const componentClassName = `fui-${componentInfo.displayName}`;
+
+    it(`has static classname (component-has-static-classname)`, () => {
+      const defaultEl = customMount(<Component {...requiredProps} />);
+
+      const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
+      const classNames = defaultComponent.prop<string>('className');
+
+      try {
+        expect(classNames).toContain(componentClassName);
+      } catch (e) {
+        throw new Error(
+          defaultErrorMessages['component-has-static-classname'](testInfo, e, componentClassName, classNames),
+        );
+      }
+    });
+
+    it(`static classname is exported at top-level (component-has-static-classname-exported)`, () => {
+      if (testInfo.isInternal) {
+        return;
+      }
+
+      const exportName =
+        componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassName';
+
+      try {
+        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
+
+        expect(indexFile[exportName]).toBe(componentClassName);
+      } catch (e) {
+        throw new Error(
+          defaultErrorMessages['component-has-static-classname-exported'](testInfo, e, componentClassName, exportName),
+        );
+      }
+    });
+  },
+
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename (name-matches-filename)`, () => {

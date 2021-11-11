@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 09 Nov 2021 07:38:11 GMT",
+      "tag": "@fluentui/web-components_v2.0.2",
+      "version": "2.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "robarb@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "55a9400f93758ad7cb37789aa524a6eb6b2a5322",
+            "comment": "FluentUI calendar component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Nov 2021 07:37:01 GMT",
       "tag": "@fluentui/web-components_v2.0.1",
       "version": "2.0.1",

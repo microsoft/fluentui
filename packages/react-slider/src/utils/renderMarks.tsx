@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-make-styles';
-
-// These should be imported directly from useSliderStyles.ts, but currently it causes build issues
-// https://github.com/microsoft/fluentui/issues/20480
-const markContainerClassName = `fui-Slider-markItemContainer`;
-const firstMarkClassName = `fui-Slider-firstMark`;
-const lastMarkClassName = `fui-Slider-lastMark`;
-const markClassName = `fui-Slider-mark`;
-const markLabelClassName = `fui-Slider-label`;
+import {
+  firstMarkClassName,
+  lastMarkClassName,
+  markClassName,
+  markContainerClassName,
+  markLabelClassName,
+} from '../components/Slider/useSliderStyles';
 
 /**
  * Renders the marks
