@@ -70,22 +70,23 @@ export function getSubmenuItems(
 ): IContextualMenuItem[] | undefined {
   const target = options?.target;
 
+  // eslint-disable-next-line deprecation/deprecation
   const items = item.subMenuProps ? item.subMenuProps.items : item.items;
 
   if (items) {
     const overrideItems: typeof items = [];
 
-    for (const item of items) {
-      if (item.preferMenuTargetAsEventTarget) {
+    for (const subItem of items) {
+      if (subItem.preferMenuTargetAsEventTarget) {
         // For sub-items which need an overridden target, intercept `onClick`
-        const { onClick, ...contextItem } = item;
+        const { onClick, ...contextItem } = subItem;
 
         overrideItems.push({
           ...contextItem,
           onClick: getOnClickWithOverrideTarget(onClick, target),
         });
       } else {
-        overrideItems.push(item);
+        overrideItems.push(subItem);
       }
     }
 
@@ -150,7 +151,10 @@ function useVisibility(props: IContextualMenuProps, targetWindow: Window | undef
   React.useEffect(() => () => onMenuClosedRef.current?.(propsRef.current), []);
 }
 
-function useSubMenuState({ hidden, items, theme, className, id, target }: IContextualMenuProps, dismiss: () => void) {
+function useSubMenuState(
+  { hidden, items, theme, className, id, target: menuTarget }: IContextualMenuProps,
+  dismiss: () => void,
+) {
   const [expandedMenuItemKey, setExpandedMenuItemKey] = React.useState<string>();
   const [submenuTarget, setSubmenuTarget] = React.useState<HTMLElement>();
   /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
@@ -212,7 +216,7 @@ function useSubMenuState({ hidden, items, theme, className, id, target }: IConte
       if (item.preferMenuTargetAsEventTarget) {
         const { onItemClick } = item;
 
-        submenuProps.onItemClick = getOnClickWithOverrideTarget(onItemClick, target);
+        submenuProps.onItemClick = getOnClickWithOverrideTarget(onItemClick, menuTarget);
       }
     }
     return submenuProps;
@@ -502,7 +506,7 @@ function useMouseHandlers(
   onSubMenuDismiss: (ev?: any, dismissAll?: boolean) => void,
   dismiss: (ev?: any, dismissAll?: boolean) => void,
 ) {
-  const { target } = props;
+  const { target: menuTarget } = props;
 
   const onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
     if (shouldIgnoreMouseEvent()) {
@@ -659,7 +663,7 @@ function useMouseHandlers(
     }
 
     if (item.preferMenuTargetAsEventTarget) {
-      overrideTarget(ev, target);
+      overrideTarget(ev, menuTarget);
     }
 
     let shouldDismiss = false;
