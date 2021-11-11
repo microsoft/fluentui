@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 11 Nov 2021 07:32:31 GMT",
+      "tag": "@fluentui/react-charting_v5.5.7",
+      "version": "5.5.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-pkoganti@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fbae36b19be65e9be5715d74279d03f8b7b1dc04",
+            "comment": "Resolved DonutChart valueInsideDonut text does not change to light color font in dark mode theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Nov 2021 07:31:59 GMT",
       "tag": "@fluentui/react-charting_v5.5.6",
       "version": "5.5.6",
