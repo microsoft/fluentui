@@ -88,7 +88,6 @@ function _onKeyDownCapture(ev: KeyboardEvent) {
 
 function _onFocusZoneStateReset(ev: KeyboardEvent) {
   outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
-  console.log('>>>>>>>>>> updateTabIndexes');
 }
 
 export class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
