@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding firstFocusableTarget prop to FocusTrapZone.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
