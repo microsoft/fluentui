@@ -60,7 +60,6 @@ steps:
       git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
-      NPM_TOKEN: $(npmToken)
     displayName: Publish changes and bump versions
 
   # TODO update release notes script for v9
