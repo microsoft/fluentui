@@ -1,6 +1,13 @@
 import * as yargsParser from 'yargs-parser';
 import type * as Enquirer from 'enquirer';
-import { joinPathFragments, logger, readProjectConfiguration, readWorkspaceConfiguration, Tree } from '@nrwl/devkit';
+import {
+  joinPathFragments,
+  logger,
+  readProjectConfiguration,
+  readWorkspaceConfiguration,
+  Tree,
+  getProjects as getAllProjects,
+} from '@nrwl/devkit';
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
@@ -118,4 +125,29 @@ export function printUserLogs(logs: UserLog) {
   logs.forEach(log => logger[log.type](log.message));
 
   logger.log(`${'='.repeat(80)}\n`);
+}
+
+/**
+ * Overridden `@nrwl/devkit#getProjects` function
+ * Get all workspace projects or only subset, if projectNames array is specified
+ *
+ * @param tree
+ * @param projectNames - array of project names. Use this to return only subset of projects
+ */
+export function getProjects(tree: Tree, projectNames?: string[]) {
+  const allProjects = getAllProjects(tree);
+
+  if (Array.isArray(projectNames) && projectNames.length > 0) {
+    const pickedProjects: ReturnType<typeof getAllProjects> = new Map();
+
+    for (const [projectName, projectConfig] of allProjects.entries()) {
+      if (projectNames.includes(projectName)) {
+        pickedProjects.set(projectName, projectConfig);
+      }
+    }
+
+    return pickedProjects;
+  }
+
+  return allProjects;
 }

@@ -6,7 +6,6 @@ import {
   readWorkspaceConfiguration,
   joinPathFragments,
   readJson,
-  getProjects,
   stripIndents,
   visitNotIgnoredFiles,
   logger,
@@ -18,7 +17,15 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import { arePromptsEnabled, getProjectConfig, printUserLogs, prompt, updateJestConfig, UserLog } from '../../utils';
+import {
+  arePromptsEnabled,
+  getProjectConfig,
+  getProjects,
+  printUserLogs,
+  prompt,
+  updateJestConfig,
+  UserLog,
+} from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -63,11 +70,9 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 }
 
 function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]) {
-  const projects = Array.from(getProjects(tree)).filter(([projectName]) => {
-    return projectNames ? projectNames.includes(projectName) : true;
-  });
+  const projects = getProjects(tree, projectNames);
 
-  projects.forEach(([projectName, projectConfig]) => {
+  projects.forEach((projectConfig, projectName) => {
     if (!isPackageConverged(tree, projectConfig)) {
       userLog.push({ type: 'error', message: `${projectName} is not converged package. Skipping migration...` });
       return;
