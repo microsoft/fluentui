@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated Image stories with codesandbox export comments",
-  "packageName": "@fluentui/react-image",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

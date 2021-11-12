@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump tabster and keyborg to 1.0.7",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

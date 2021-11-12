@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove beta release tag",
-  "packageName": "@fluentui/keyboard-keys",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

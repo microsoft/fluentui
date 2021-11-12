@@ -1,8 +1,19 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Wed, 27 Oct 2021 12:14:12 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Nov 2021 13:25:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-beta.2..@fluentui/babel-make-styles_v9.0.0-beta.3)
+
+### Changes
+
+- use latest @linaria/shaker version ([PR #20538](https://github.com/microsoft/fluentui/pull/20538) by olfedias@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-beta.2)
 

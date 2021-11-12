@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "do not use other packages in devDependencies",
-  "packageName": "@fluentui/react-switch",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove beta release tag",
-  "packageName": "@fluentui/react-switch",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}
