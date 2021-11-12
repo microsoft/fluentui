@@ -2,6 +2,7 @@ import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import type { BadgeTabProps, BadgeTabSlots, BadgeTabState } from './BadgeTab.types';
 import { tabShorthandProps, useTab } from '../Tab/index';
+import { Badge } from '@fluentui/react-badge';
 
 /**
  * Array of all shorthand properties listed in BadgeTabSlots
@@ -26,7 +27,7 @@ export const useBadgeTab = (props: BadgeTabProps, ref: React.Ref<HTMLElement>): 
     ...tabState,
     components: {
       ...tabState.components,
-      badge: 'div',
+      badge: Badge,
       children: 'div',
     } as BadgeTabState['components'],
     badge: resolveShorthand(badge, { required: true }),

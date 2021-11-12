@@ -20,7 +20,13 @@ export const tabListShorthandProps: (keyof TabListSlots)[] = [
  * @param ref - reference to root HTMLElement of TabList
  */
 export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
-  const { appearance, onTabSelected, vertical, verticalTabContent } = props;
+  const {
+    appearance = 'transparent',
+    onTabSelected,
+    size = 'medium',
+    vertical = false,
+    verticalTabContent = false,
+  } = props;
 
   const [selectedValue, setSelectedValue] = useControllableState({
     state: props.selectedKey,
@@ -48,6 +54,7 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
     appearance,
     selectedKey: selectedValue,
     selectTab,
+    size,
     vertical,
     verticalTabContent,
   };

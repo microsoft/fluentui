@@ -8,6 +8,7 @@ export const TabListContext: Context<TabListContextValue> = createContext<TabLis
   selectTab: () => {
     /* noop */
   },
-  vertical: undefined,
-  verticalTabContent: undefined,
+  size: 'medium',
+  vertical: false,
+  verticalTabContent: false,
 });

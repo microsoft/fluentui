@@ -7,6 +7,7 @@ export { Default } from './TabListDefault.stories';
 export { Vertical } from './TabListVertical.stories';
 export { VerticalTabContent } from './TabListVerticalTabContent.stories';
 export { Appearance } from './TabListAppearance.stories';
+export { Size } from './TabListSize.stories';
 export { WithIcon } from './TabListWithIcon.stories';
 export { WithBadge } from './TabListWithBadge.stories';
 

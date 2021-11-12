@@ -17,8 +17,9 @@ export type TabListSlots = {
 
 export type TabListCommons = {
   appearance?: 'transparent' | 'subtle';
-  selectedKey?: TabValue;
   onTabSelected?: SelectTabEventHandler;
+  selectedKey?: TabValue;
+  size?: 'small' | 'medium';
   vertical?: boolean;
   verticalTabContent?: boolean;
 };
@@ -31,7 +32,10 @@ export type TabListProps = ComponentProps<TabListSlots> &
     defaultSelectedKey?: TabValue;
   };
 
-export type TabListContextValue = TabListCommons & {
+type TabListStateContextCommons = TabListCommons &
+  Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical' | 'verticalTabContent'>>;
+
+export type TabListContextValue = TabListStateContextCommons & {
   selectTab: SelectTabEventHandler;
 };
 
@@ -42,4 +46,4 @@ export type TabListContextValues = {
 /**
  * State used in rendering TabList
  */
-export type TabListState = ComponentState<TabListSlots> & TabListCommons & TabListContextValue;
+export type TabListState = ComponentState<TabListSlots> & TabListStateContextCommons & TabListContextValue;

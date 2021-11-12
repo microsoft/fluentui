@@ -44,6 +44,7 @@ export type TabState = ComponentState<TabSlots> &
   TabCommons & {
     appearance?: string;
     contentClassName?: string;
+    size: 'small' | 'medium';
     verticalContent: boolean;
     verticalList: boolean;
   };

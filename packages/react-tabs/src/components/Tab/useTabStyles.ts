@@ -61,6 +61,12 @@ const useHorizontalListStyles = makeStyles({
       },
     },
   }),
+  small: {
+    padding: '6px 6px 0 6px',
+    ':after': {
+      margin: '4px 0 0 0',
+    },
+  },
 });
 
 /**
@@ -99,6 +105,12 @@ const useVerticalListStyles = makeStyles({
       },
     },
   }),
+  small: {
+    padding: '3px 3px 0 5px',
+    ':after': {
+      margin: '0 4px 0 0',
+    },
+  },
 });
 
 const useContentStyles = makeStyles({
@@ -125,19 +137,11 @@ const useContentStyles = makeStyles({
 });
 
 const useIconStyles = makeStyles({
-  // Base styles
   base: {
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
-    marginRight: '6px',
   },
-  verticalContent: {
-    marginRight: '0',
-    marginBottom: '4px',
-  },
-
-  // Size variations
   small: {
     fontSize: '20px',
     height: '20px',
@@ -148,10 +152,34 @@ const useIconStyles = makeStyles({
     height: '20px',
     width: '20px',
   },
-  large: {
-    fontSize: '24px',
-    height: '24px',
-    width: '24px',
+});
+
+const useHorizontalContentIconStyles = makeStyles({
+  small: {
+    marginRight: '3px',
+  },
+  medium: {
+    marginRight: '6px',
+  },
+
+  mediumVerticalContent: {
+    marginRight: '0',
+    marginBottom: '4px',
+  },
+  smallVerticalContent: {
+    marginRight: '0',
+    marginBottom: '2px',
+  },
+});
+
+const useVerticalContentIconStyles = makeStyles({
+  small: {
+    marginRight: '0',
+    marginBottom: '2px',
+  },
+  medium: {
+    marginRight: '0',
+    marginBottom: '4px',
   },
 });
 
@@ -164,12 +192,15 @@ export const useTabStyles = (state: TabState): TabState => {
   const verticalListStyles = useVerticalListStyles();
   const contentStyles = useContentStyles();
   const iconStyles = useIconStyles();
+  const horizontalContentIconStyles = useHorizontalContentIconStyles();
+  const verticalContentIconStyles = useVerticalContentIconStyles();
 
   state.root.className = mergeClasses(
     tabClassName,
     styles.root,
     state.appearance === 'subtle' && styles.subtle,
     state.verticalList ? verticalListStyles.root : horizontalListStyles.root,
+    state.size === 'small' && (state.verticalList ? verticalListStyles.small : horizontalListStyles.small),
     state.selected && (state.verticalList ? verticalListStyles.selected : horizontalListStyles.selected),
     state.root.className,
   );
@@ -185,8 +216,8 @@ export const useTabStyles = (state: TabState): TabState => {
   if (state.icon) {
     state.icon.className = mergeClasses(
       iconStyles.base,
-      iconStyles.medium,
-      state.verticalContent && iconStyles.verticalContent,
+      iconStyles[state.size],
+      state.verticalContent ? verticalContentIconStyles[state.size] : horizontalContentIconStyles[state.size],
       state.icon.className,
     );
   }

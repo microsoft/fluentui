@@ -22,11 +22,17 @@ export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'content', 'icon']
 export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
   const { content, icon, value } = props;
 
-  const appearance = useContextSelector(TabListContext, ctx => ctx.appearance);
-  const selected = useContextSelector(TabListContext, ctx => ctx.selectedKey === value);
-  const selectTab = useContextSelector(TabListContext, ctx => ctx.selectTab);
-  const verticalContent = useContextSelector(TabListContext, ctx => !!ctx.verticalTabContent);
-  const verticalList = useContextSelector(TabListContext, ctx => !!ctx.vertical);
+  const { appearance, selected, selectTab, size, verticalContent, verticalList } = useContextSelector(
+    TabListContext,
+    ctx => ({
+      appearance: ctx.appearance,
+      selected: ctx.selectedKey === value,
+      selectTab: ctx.selectTab,
+      size: ctx.size,
+      verticalContent: !!ctx.verticalTabContent,
+      verticalList: !!ctx.vertical,
+    }),
+  );
 
   const onClick = useEventCallback((event: SelectTabEvent) => selectTab(event, { value }));
 
@@ -45,6 +51,7 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
     icon: resolveShorthand(icon),
     appearance,
     selected,
+    size,
     value,
     verticalContent,
     verticalList,
