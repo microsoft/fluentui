@@ -495,11 +495,6 @@
       "root": "apps/a11y-tests",
       "projectType": "application"
     },
-    "typings": {
-      "root": "typings",
-      "projectType": "library",
-      "sourceRoot": "typings"
-    },
     "nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",
@@ -559,6 +554,11 @@
     "ts-minbar-test-react-components": {
       "root": "apps/ts-minbar-test-react-components",
       "projectType": "application"
+    },
+    "typings": {
+      "root": "typings",
+      "projectType": "library",
+      "sourceRoot": "typings"
     },
     "vr-tests": {
       "root": "apps/vr-tests",
