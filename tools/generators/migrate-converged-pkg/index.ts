@@ -401,7 +401,7 @@ function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
       return;
     }
 
-    if (isProjectMigrated(project)) {
+    if (isProjectMigrated(tree, project)) {
       stats.migrated.push({ projectName, ...project });
 
       return;
@@ -428,10 +428,14 @@ function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
 }
 
 function isProjectMigrated<T extends ProjectConfiguration>(
+  tree: Tree,
   project: T,
 ): project is T & Required<Pick<ProjectConfiguration, 'tags' | 'sourceRoot'>> {
+  const hasTsSolutionConfigSetup = Array.isArray(
+    readJson<TsConfig>(tree, joinPathFragments(project.root, 'tsconfig.json')).references,
+  );
   // eslint-disable-next-line eqeqeq
-  return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
+  return project.sourceRoot != null && Boolean(project.tags?.includes('vNext')) && hasTsSolutionConfigSetup;
 }
 
 function getPackageType(tree: Tree, options: NormalizedSchema) {
