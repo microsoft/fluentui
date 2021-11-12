@@ -1086,17 +1086,11 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, { stats: true });
 
-      // babel-make-styles is booted as migrated
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
-      expect(loggerInfoSpy.mock.calls[3][0]).toEqual(
-        expect.stringContaining(stripIndents`
-      - @proj/babel-make-styles
-      `),
-      );
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
+      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (4):`);
       expect(loggerInfoSpy.mock.calls[6][0]).toEqual(
         expect.stringContaining(stripIndents`
       - @proj/react-dummy
+      - @proj/babel-make-styles
       - @proj/react-foo
       - @proj/react-bar
       `),
@@ -1107,8 +1101,8 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
       await generator(tree, { stats: true });
 
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (2):');
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (2):`);
+      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
+      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
     });
   });
 
@@ -1142,6 +1136,29 @@ describe('migrate-converged-pkg generator', () => {
       expect(configs['@proj/react-moo'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-dummy'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-old'].sourceRoot).not.toBeDefined();
+    });
+  });
+
+  describe(`--name`, () => {
+    it(`should accept comma separated string to exec on multiple projects`, async () => {
+      const projects = [options.name, '@proj/react-one', '@proj/react-two', '@proj/react-old'] as const;
+
+      setupDummyPackage(tree, { name: projects[1], version: '9.0.22' });
+      setupDummyPackage(tree, { name: projects[2], version: '9.0.31' });
+      setupDummyPackage(tree, { name: projects[3], version: '8.0.1' });
+
+      await generator(tree, { name: `${projects[0]},${projects[1]}` });
+
+      const configs = projects.reduce((acc, projectName) => {
+        acc[projectName] = readProjectConfiguration(tree, projectName);
+
+        return acc;
+      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
+
+      expect(configs[projects[0]].sourceRoot).toBeDefined();
+      expect(configs[projects[1]].sourceRoot).toBeDefined();
+      expect(configs[projects[2]].sourceRoot).not.toBeDefined();
+      expect(configs[projects[3]].sourceRoot).not.toBeDefined();
     });
   });
 });

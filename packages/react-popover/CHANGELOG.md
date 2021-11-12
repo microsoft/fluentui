@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 27 Oct 2021 12:14:20 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Nov 2021 13:25:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-beta.4)
+
+Fri, 12 Nov 2021 13:25:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-beta.3..@fluentui/react-popover_v9.0.0-beta.4)
+
+### Changes
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- fix(Popover): use `dialog` as value for `aria-haspopup` for focus trap ([PR #20494](https://github.com/microsoft/fluentui/pull/20494) by lingfangao@hotmail.com)
+- export static classes for components ([PR #20450](https://github.com/microsoft/fluentui/pull/20450) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-beta.4 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.4 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-beta.3)
 

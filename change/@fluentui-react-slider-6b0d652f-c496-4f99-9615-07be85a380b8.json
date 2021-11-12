@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "export static classes for components",
-  "packageName": "@fluentui/react-slider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

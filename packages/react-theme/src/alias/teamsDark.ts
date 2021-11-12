@@ -1,8 +1,11 @@
-import { black, grey, white, sharedColors } from '../global/colors';
+import { black, blackAlpha, grey, white, whiteAlpha, sharedColors } from '../global/colors';
 import type { BrandVariants, GlobalSharedColors, ColorTokens, ColorPaletteTokens } from '../types';
 
 export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForeground1: white, // #ffffff Global.Color.White
+  colorNeutralForeground1Hover: white, // #ffffff Global.Color.White
+  colorNeutralForeground1Pressed: white, // #ffffff Global.Color.White
+  colorNeutralForeground1Selected: white, // #ffffff Global.Color.White
   colorNeutralForeground2: grey[84], // #d6d6d6 Global.Color.Grey.84
   colorNeutralForeground2Hover: white, // #ffffff Global.Color.White
   colorNeutralForeground2Pressed: white, // #ffffff Global.Color.White
@@ -19,6 +22,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForeground3BrandSelected: brand.tint20, // #3aa0f3 Global.Color.Brand.Tint.20
   colorNeutralForeground4: grey[60], // #999999 Global.Color.Grey.60
   colorNeutralForegroundDisabled: grey[36], // #5c5c5c Global.Color.Grey.36
+  colorNeutralForegroundInvertedDisabled: whiteAlpha[40], // rgba(255, 255, 255, 0.4) Global.Color.WhiteAlpha.40
   colorBrandForegroundLink: brand.tint10, // #2899f5 Global.Color.Brand.Tint.10
   colorBrandForegroundLinkHover: brand.tint30, // #6cb8f6 Global.Color.Brand.Tint.30
   colorBrandForegroundLinkPressed: brand.tint20, // #3aa0f3 Global.Color.Brand.Tint.20
@@ -29,11 +33,21 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandForeground1: brand.tint20, // #3aa0f3 Global.Color.Brand.Tint.20
   colorBrandForeground2: brand.tint30, // #6cb8f6 Global.Color.Brand.Tint.30
   colorNeutralForegroundInverted: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedHover: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedPressed: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedSelected: white, // #ffffff Global.Color.White
   colorNeutralForegroundOnBrand: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLink: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkHover: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkPressed: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkSelected: white, // #ffffff Global.Color.White
+  colorBrandForegroundInverted: brand.tint20, // #3aa0f3 Global.Color.Brand.Tint.20
+  colorBrandForegroundInvertedHover: brand.tint30, // #6cb8f6 Global.Color.Brand.Tint.30
+  colorBrandForegroundInvertedPressed: brand.tint20, // #3aa0f3 Global.Color.Brand.Tint.20
+  colorBrandForegroundOnLight: brand.primary, // #106ebe Global.Color.Brand.Primary
+  colorBrandForegroundOnLightHover: brand.shade10, // #106ebe Global.Color.Brand.Shade.10
+  colorBrandForegroundOnLightPressed: brand.shade30, // #004c87 Global.Color.Brand.Shade.30
+  colorBrandForegroundOnLightSelected: brand.shade20, // #005a9e Global.Color.Brand.Shade.20
   colorNeutralBackground1: grey[16], // #292929 Global.Color.Grey.16
   colorNeutralBackground1Hover: grey[24], // #3d3d3d Global.Color.Grey.24
   colorNeutralBackground1Pressed: grey[12], // #1f1f1f Global.Color.Grey.12
@@ -55,16 +69,24 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackground5Pressed: black, // #000000 Global.Color.Black
   colorNeutralBackground5Selected: grey[10], // #1a1a1a Global.Color.Grey.10
   colorNeutralBackground6: grey[20], // #333333 Global.Color.Grey.20
-  colorNeutralBackgroundInverted: white, // #ffffff Global.Color.White
+  colorNeutralBackgroundInverted: grey[24], // #3d3d3d Global.Color.Grey.24
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: grey[22], // #383838 Global.Color.Grey.22
   colorSubtleBackgroundPressed: grey[18], // #2e2e2e Global.Color.Grey.18
   colorSubtleBackgroundSelected: grey[20], // #333333 Global.Color.Grey.20
+  colorSubtleBackgroundLightAlphaHover: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
+  colorSubtleBackgroundLightAlphaPressed: whiteAlpha[5], // rgba(255, 255, 255, 0.05) Global.Color.WhiteAlpha.5
+  colorSubtleBackgroundLightAlphaSelected: 'transparent', // transparent undefined
+  colorSubtleBackgroundInverted: 'transparent', // transparent undefined
+  colorSubtleBackgroundInvertedHover: blackAlpha[10], // rgba(0, 0, 0, 0.1) Global.Color.BlackAlpha.10
+  colorSubtleBackgroundInvertedPressed: blackAlpha[30], // rgba(0, 0, 0, 0.3) Global.Color.BlackAlpha.30
+  colorSubtleBackgroundInvertedSelected: blackAlpha[20], // rgba(0, 0, 0, 0.2) Global.Color.BlackAlpha.20
   colorTransparentBackground: 'transparent', // transparent undefined
   colorTransparentBackgroundHover: 'transparent', // transparent undefined
   colorTransparentBackgroundPressed: 'transparent', // transparent undefined
   colorTransparentBackgroundSelected: 'transparent', // transparent undefined
   colorNeutralBackgroundDisabled: grey[8], // #141414 Global.Color.Grey.8
+  colorNeutralBackgroundInvertedDisabled: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
   colorNeutralStencil1: grey[20], // #333333 Global.Color.Grey.20
   colorNeutralStencil2: grey[34], // #575757 Global.Color.Grey.34
   colorBrandBackground: brand.shade10, // #106ebe Global.Color.Brand.Shade.10
@@ -76,6 +98,10 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorCompoundBrandBackgroundPressed: brand.primary, // #106ebe Global.Color.Brand.Primary
   colorBrandBackgroundStatic: brand.primary, // #106ebe Global.Color.Brand.Primary
   colorBrandBackground2: brand.shade40, // #004578 Global.Color.Brand.Shade.40
+  colorBrandBackgroundInverted: white, // #ffffff Global.Color.White
+  colorBrandBackgroundInvertedHover: brand.tint60, // #eff6fc Global.Color.Brand.Tint.60
+  colorBrandBackgroundInvertedPressed: brand.tint40, // #c7e0f4 Global.Color.Brand.Tint.40
+  colorBrandBackgroundInvertedSelected: brand.tint50, // #deecf9 Global.Color.Brand.Tint.50
   colorNeutralStrokeAccessible: grey[68], // #adadad Global.Color.Grey.68
   colorNeutralStrokeAccessibleHover: grey[74], // #bdbdbd Global.Color.Grey.74
   colorNeutralStrokeAccessiblePressed: grey[70], // #b3b3b3 Global.Color.Grey.70
@@ -86,12 +112,18 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralStroke1Selected: grey[44], // #707070 Global.Color.Grey.44
   colorNeutralStroke2: grey[32], // #525252 Global.Color.Grey.32
   colorNeutralStroke3: grey[24], // #3d3d3d Global.Color.Grey.24
+  colorNeutralStrokeOnBrand: grey[16], // #292929 Global.Color.Grey.16
+  colorNeutralStrokeOnBrand2: white, // #ffffff Global.Color.White
+  colorNeutralStrokeOnBrand2Hover: white, // #ffffff Global.Color.White
+  colorNeutralStrokeOnBrand2Pressed: white, // #ffffff Global.Color.White
+  colorNeutralStrokeOnBrand2Selected: white, // #ffffff Global.Color.White
   colorBrandStroke1: brand.tint10, // #2899f5 Global.Color.Brand.Tint.10
   colorBrandStroke2: brand.shade30, // #004c87 Global.Color.Brand.Shade.30
   colorCompoundBrandStroke: brand.tint10, // #2899f5 Global.Color.Brand.Tint.10
   colorCompoundBrandStrokeHover: brand.tint20, // #3aa0f3 Global.Color.Brand.Tint.20
   colorCompoundBrandStrokePressed: brand.primary, // #106ebe Global.Color.Brand.Primary
   colorNeutralStrokeDisabled: grey[26], // #424242 Global.Color.Grey.26
+  colorNeutralStrokeInvertedDisabled: whiteAlpha[40], // rgba(255, 255, 255, 0.4) Global.Color.WhiteAlpha.40
   colorTransparentStroke: 'transparent', // transparent undefined
   colorTransparentStrokeInteractive: 'transparent', // transparent undefined
   colorTransparentStrokeDisabled: 'transparent', // transparent undefined
