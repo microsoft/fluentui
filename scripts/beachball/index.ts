@@ -30,7 +30,7 @@ export const config: BeachballConfig = {
         return new Promise((resolve, reject) => {
           console.log(`tagging ${name}@${version} with ${tag}`);
 
-          exec(`npm dist-tag add ${name}@${version} ${tag}`, (error, stdout, stderr) => {
+          exec(`npm dist-tag add ${name}@${version} ${tag}`, { cwd: packagePath }, (error, stdout, stderr) => {
             if (error && error.code !== 0) {
               console.error(`failed to tag ${name} with ${tag}`);
               console.error(stderr);
