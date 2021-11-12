@@ -483,23 +483,10 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
     if (win) {
       // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
       win.requestAnimationFrame(() => {
-        const focusableElement = targetToFocusOnNextRepaint as HTMLElement | null;
+        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
 
         // We are done focusing for this frame, so reset the queued focus element
         targetToFocusOnNextRepaint = undefined;
-
-        if (focusableElement) {
-          if (focusableElement.getAttribute && focusableElement.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true') {
-            // Normally, a FocusZone would be responsible for setting the tabindex values on all its descendents.
-            // However, even this animation frame callback can pre-empt the rendering of a FocusZone's child elements,
-            // so it may be necessary to set the tabindex directly here.
-            if (!focusableElement.getAttribute('tabindex')) {
-              focusableElement.setAttribute('tabindex', '0');
-            }
-          }
-
-          focusableElement.focus();
-        }
       });
     }
   }
