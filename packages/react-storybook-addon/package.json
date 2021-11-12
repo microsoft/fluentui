@@ -47,7 +47,6 @@
     "@storybook/theming": "^6.3.6"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

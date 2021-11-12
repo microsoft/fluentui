@@ -36,7 +36,6 @@
     "@fluentui/make-styles": "9.0.0-beta.2"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",
