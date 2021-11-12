@@ -38,8 +38,8 @@
     "@fluentui/react-make-styles": "9.0.0-beta.2",
     "@fluentui/react-shared-contexts": "9.0.0-beta.2",
     "@fluentui/react-utilities": "9.0.0-beta.2",
-    "keyborg": "^1.0.0",
-    "tabster": "^1.0.6",
+    "keyborg": "^1.0.7",
+    "tabster": "^1.0.7",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
