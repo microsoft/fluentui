@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add accessibility docs for react-components storybook",
-  "packageName": "@fluentui/react-components",
-  "email": "jukapsia@microsoft.com",
-  "dependentChangeType": "none"
-}

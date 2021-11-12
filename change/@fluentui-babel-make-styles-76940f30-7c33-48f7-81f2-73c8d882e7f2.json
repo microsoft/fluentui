@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove beta release tag",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

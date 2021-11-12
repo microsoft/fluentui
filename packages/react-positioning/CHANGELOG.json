@@ -2,6 +2,41 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Fri, 12 Nov 2021 13:25:30 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Oct 2021 12:14:21 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-beta.2",
       "version": "9.0.0-beta.2",

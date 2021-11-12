@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixing events being fired when button is disabledFocusable",
-  "packageName": "@fluentui/react-aria",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
