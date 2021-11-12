@@ -394,7 +394,7 @@ async function triggerDynamicPrompts() {
 
   return prompt<PromptResponse>([
     {
-      message: 'Which converged package/s would you like migrate to new DX? (ex: @fluentui/react-menu)',
+      message: 'Which converged package(s) would you like migrate to new DX? (ex: @fluentui/react-menu)',
       type: 'input',
       name: 'name',
     },
