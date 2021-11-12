@@ -31,7 +31,7 @@ const StatusSubmenu: React.FunctionComponent<StatusSubmenuProps> = props => {
   return (
     <Menu checkedValues={checkedValues} onCheckedValueChange={onChange}>
       <MenuTrigger>
-        <MenuItem>Status</MenuItem>
+        <MenuItem wrong={true}>Status</MenuItem>
       </MenuTrigger>
 
       <MenuPopover>
@@ -73,7 +73,7 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
   };
 
   return (
-    <Scenario pageTitle="Profile menu">
+    <Scenario pageTitle="Profile menu xxx">
       <Menu>
         <MenuTrigger>
           <Button>Profile</Button>
