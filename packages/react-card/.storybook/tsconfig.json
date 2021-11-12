@@ -1,9 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "outDir": "",
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "types": ["static-assets", "inline-style-expand-shorthand", "storybook__addons"]
   },
-  "exclude": ["../**/*.test.ts", "../**/*.test.js", "../**/*.test.tsx", "../**/*.test.jsx"],
+  "exclude": ["../src/common/**", "../**/*.spec.ts", "../**/*.spec.tsx", "../**/*.test.ts", "../**/*.test.tsx"],
   "include": ["../src/**/*", "*.js"]
 }
