@@ -1138,6 +1138,29 @@ describe('migrate-converged-pkg generator', () => {
       expect(configs['@proj/react-old'].sourceRoot).not.toBeDefined();
     });
   });
+
+  describe(`--name`, () => {
+    it(`should accept comma separated string to exec on multiple projects`, async () => {
+      const projects = [options.name, '@proj/react-one', '@proj/react-two', '@proj/react-old'] as const;
+
+      setupDummyPackage(tree, { name: projects[1], version: '9.0.22' });
+      setupDummyPackage(tree, { name: projects[2], version: '9.0.31' });
+      setupDummyPackage(tree, { name: projects[3], version: '8.0.1' });
+
+      await generator(tree, { name: `${projects[0]},${projects[1]}` });
+
+      const configs = projects.reduce((acc, projectName) => {
+        acc[projectName] = readProjectConfiguration(tree, projectName);
+
+        return acc;
+      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
+
+      expect(configs[projects[0]].sourceRoot).toBeDefined();
+      expect(configs[projects[1]].sourceRoot).toBeDefined();
+      expect(configs[projects[2]].sourceRoot).not.toBeDefined();
+      expect(configs[projects[3]].sourceRoot).not.toBeDefined();
+    });
+  });
 });
 
 // ==== helpers ====
