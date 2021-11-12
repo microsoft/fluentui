@@ -402,6 +402,9 @@
     "a11y-tests": {
       "implicitDependencies": []
     },
+    "typings": {
+      "tags": ["platform:any"]
+    },
     "nx-workspace-tools": {
       "tags": []
     },
@@ -422,9 +425,6 @@
     },
     "todo-app": {
       "implicitDependencies": []
-    },
-    "typings": {
-      "tags": ["platform:any"]
     },
     "vr-tests": {
       "implicitDependencies": []
