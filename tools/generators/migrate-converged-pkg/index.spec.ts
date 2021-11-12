@@ -1086,17 +1086,11 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, { stats: true });
 
-      // babel-make-styles is booted as migrated
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
-      expect(loggerInfoSpy.mock.calls[3][0]).toEqual(
-        expect.stringContaining(stripIndents`
-      - @proj/babel-make-styles
-      `),
-      );
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
+      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (4):`);
       expect(loggerInfoSpy.mock.calls[6][0]).toEqual(
         expect.stringContaining(stripIndents`
       - @proj/react-dummy
+      - @proj/babel-make-styles
       - @proj/react-foo
       - @proj/react-bar
       `),
@@ -1107,8 +1101,8 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
       await generator(tree, { stats: true });
 
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (2):');
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (2):`);
+      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
+      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
     });
   });
 
