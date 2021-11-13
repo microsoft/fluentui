@@ -11,7 +11,7 @@ export { AnchorToTarget } from './PositioningAnchorToTarget.stories';
 export { PopperImperativeHandle } from './PositioningPopperImperativeHandle.stories';
 
 export default {
-  title: 'Concepts/Developer/Positioning',
+  title: 'Concepts/Developer/Positioning Components',
   component: Positioning,
   parameters: {
     layout: 'centered',

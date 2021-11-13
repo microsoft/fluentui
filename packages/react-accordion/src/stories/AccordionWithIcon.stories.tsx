@@ -41,7 +41,7 @@ WithIcon.args = {
 WithIcon.parameters = {
   docs: {
     description: {
-      story: 'An Accordion header can contain an icon.',
+      story: 'An accordion header can contain an icon.',
     },
   },
 };

@@ -7,8 +7,8 @@ import { toggleBgMode, toggleLtr } from '../public/switches';
 
 Fluent;
 
-document.getElementById('luminance-switch').addEventListener('change', () => toggleBgMode(), false);
-document.getElementById('direction-switch').addEventListener('change', () => toggleLtr(), false);
+document.getElementById('luminance-switch').addEventListener('change', toggleBgMode, false);
+document.getElementById('direction-switch').addEventListener('change', toggleLtr, false);
 
 export const parameters = {
   layout: 'fullscreen',

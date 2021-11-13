@@ -334,9 +334,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-tabs": {
-      "implicitDependencies": []
-    },
     "@fluentui/react-tabster": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
@@ -425,6 +422,9 @@
     },
     "todo-app": {
       "implicitDependencies": []
+    },
+    "typings": {
+      "tags": ["platform:any"]
     },
     "vr-tests": {
       "implicitDependencies": []

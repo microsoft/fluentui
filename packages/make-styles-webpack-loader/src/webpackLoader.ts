@@ -72,6 +72,7 @@ export function webpackLoader(
     ...resolveOptionsDefaults,
     alias: resolveOptionsFromWebpackConfig.alias,
     modules: resolveOptionsFromWebpackConfig.modules,
+    plugins: resolveOptionsFromWebpackConfig.plugins,
   });
 
   const originalResolveFilename = Module._resolveFilename;

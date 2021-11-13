@@ -24,7 +24,7 @@ export const ExpandIconPosition = () => (
 ExpandIconPosition.parameters = {
   docs: {
     description: {
-      story: 'The Expand Icon can be placed at the `start` or `end`',
+      story: 'The expand icon can be placed at the `start` or `end` of the accordian header.',
     },
   },
 };

@@ -4037,7 +4037,7 @@ export interface IDetailsRowState {
 }
 
 // @public (undocumented)
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme' | 'disabled'>> & {
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & Pick<IDetailsRowProps, 'disabled'> & {
     isSelected?: boolean;
     anySelected?: boolean;
     canSelect?: boolean;
@@ -4993,7 +4993,9 @@ export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivEleme
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     enableAriaHiddenSiblings?: boolean;
+    // @deprecated
     firstFocusableSelector?: string | (() => string);
+    firstFocusableTarget?: string | ((element: HTMLElement) => HTMLElement | null);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
@@ -5562,6 +5564,7 @@ export interface IKeytipProps {
     disabled?: boolean;
     hasDynamicChildren?: boolean;
     hasMenu?: boolean;
+    hasOverflowSubMenu?: boolean;
     keySequences: string[];
     offset?: Point;
     onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
@@ -5813,6 +5816,8 @@ export interface IListState<T = any> {
     measureVersion?: number;
     // (undocumented)
     pages?: IPage<T>[];
+    // (undocumented)
+    pagesVersion?: {};
 }
 
 // @public (undocumented)
@@ -6663,6 +6668,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
@@ -8677,7 +8683,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)

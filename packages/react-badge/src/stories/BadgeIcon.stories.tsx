@@ -12,7 +12,7 @@ export const Icon = () => {
 Icon.parameters = {
   docs: {
     description: {
-      story: 'A Badge can contain an icon.',
+      story: 'A badge can display an icon.',
     },
   },
 };

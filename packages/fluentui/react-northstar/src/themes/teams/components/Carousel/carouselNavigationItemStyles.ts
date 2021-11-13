@@ -13,7 +13,7 @@ export const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
   CarouselNavigationVariables
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { active, iconOnly, primary, vertical, thumbnails } = p;
+    const { active, iconOnly, primary, vertical, thumbnails, disableClickableNav } = p;
 
     const colors = getColorScheme(v.colorScheme, null, primary);
 
@@ -63,6 +63,10 @@ export const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
           color: 'inherit',
           borderColor: v.borderColorActive || colors.borderActive,
         }),
+
+      ...(disableClickableNav && {
+        cursor: 'default',
+      }),
 
       ':focus': {
         outline: 0,

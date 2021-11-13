@@ -110,6 +110,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     preventFocusRestoration: PropTypes.bool,
     pagingSupportDisabled: PropTypes.bool,
     shouldIgnoreNotFocusable: PropTypes.bool,
+    innerRef: PropTypes.any,
   };
 
   static defaultProps: FocusZoneProps = {
@@ -267,10 +268,10 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     // Then, later in componentDidUpdate, we can evaluate if we need to restore it in
     // the case the element was removed.
     this.evaluateFocusBeforeRender();
-
     return (
       <ElementType
         {...unhandledProps}
+        ref={this.props.innerRef}
         className={cx(FocusZone.className, className)}
         data-focuszone-id={this._id}
         onKeyDown={this._onKeyDown}

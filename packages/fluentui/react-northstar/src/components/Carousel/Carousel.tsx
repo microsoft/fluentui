@@ -372,6 +372,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const handlePaddleOverrides = (predefinedProps: CarouselPaddleProps, paddleName: string) => ({
     variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     onClick: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
+      if (disableClickableNav) return;
+
       _.invoke(predefinedProps, 'onClick', e, paddleProps);
       if (paddleName === 'paddleNext') {
         showNextSlide(e, false);
@@ -400,6 +402,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
               className: carouselSlotClassNames.paddlePrevious,
               previous: true,
               hidden: items !== undefined && !circular && activeIndex === 0,
+              disableClickableNav,
             }),
           overrideProps: (predefinedProps: CarouselPaddleProps) =>
             handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
@@ -412,6 +415,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
               className: carouselSlotClassNames.paddleNext,
               next: true,
               hidden: items !== undefined && !circular && activeIndex === items.length - 1,
+              disableClickableNav,
             }),
           overrideProps: (predefinedProps: CarouselPaddleProps) => handlePaddleOverrides(predefinedProps, 'paddleNext'),
         })}
@@ -442,6 +446,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
           iconOnly: true,
           activeIndex,
           thumbnails,
+          disableClickableNav,
         }),
         overrideProps: (predefinedProps: CarouselNavigationItemProps) => ({
           onItemClick: (e: React.SyntheticEvent, itemProps: CarouselNavigationItemProps) => {

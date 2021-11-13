@@ -3,15 +3,11 @@
 exports[`Input renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-Input"
   >
-    <span
+    <input
       class=""
-    >
-      <input
-        class=""
-      />
-    </span>
+    />
   </span>
 </div>
 `;

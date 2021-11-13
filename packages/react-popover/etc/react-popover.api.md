@@ -72,6 +72,9 @@ export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
+// @public (undocumented)
+export const popoverSurfaceClassName = "fui-PopoverSurface";
+
 // @public
 export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
