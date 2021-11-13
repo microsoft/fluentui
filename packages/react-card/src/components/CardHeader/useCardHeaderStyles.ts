@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { CardHeaderState } from './CardHeader.types';
 
+export const cardHeaderClassName = 'fui-CardHeader';
+
 /**
  * Styles for the root slot
  */
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
  */
 export const useCardHeaderStyles = (state: CardHeaderState): CardHeaderState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(cardHeaderClassName, styles.root, state.root.className);
 
   if (state.image) {
     state.image.className = mergeClasses(styles.image, state.image.className);

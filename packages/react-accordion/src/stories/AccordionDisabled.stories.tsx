@@ -40,7 +40,7 @@ Disabled.args = {
 Disabled.parameters = {
   docs: {
     description: {
-      story: 'An Accordion Item can be `disabled`',
+      story: 'An accordion item can be `disabled`',
     },
   },
 };

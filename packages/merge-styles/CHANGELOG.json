@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Wed, 10 Nov 2021 07:31:58 GMT",
+      "tag": "@fluentui/merge-styles_v8.2.1",
+      "version": "8.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tabrumle@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "a40470aff64a92bae7bb560bfd69192405001b9e",
+            "comment": "Add some logic to stylesheet that will do a simple append instead of using insert before if the reference node isn't actually a child of the document head."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Sep 2021 22:17:07 GMT",
       "tag": "@fluentui/merge-styles_v8.2.0",
       "version": "8.2.0",

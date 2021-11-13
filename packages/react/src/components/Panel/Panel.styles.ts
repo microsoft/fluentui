@@ -258,7 +258,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     commands: [
       classNames.commands,
       {
-        paddingTop: 18,
+        marginTop: 18,
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
             backgroundColor: semanticColors.bodyBackground,
@@ -325,6 +325,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       isFooterAtBottom && {
         flexGrow: 1,
+        display: 'inherit',
+        flexDirection: 'inherit',
       },
     ],
     content: [
@@ -336,7 +338,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       isFooterAtBottom && {
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
-            minHeight: '100%',
+            flexGrow: 1,
           },
         },
       },

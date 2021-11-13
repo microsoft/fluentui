@@ -8,14 +8,14 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     rowGap: '5px',
   },
-  example: {
+  example: theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyItems: 'center',
-    background: 'white',
-    height: '96px',
-  },
+    minHeight: '96px',
+    backgroundColor: theme.colorNeutralBackground1,
+  }),
   customHeightExample: {
     display: 'flex',
     flexDirection: 'column',

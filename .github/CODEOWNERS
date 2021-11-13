@@ -23,7 +23,7 @@
 #### Build folders
 /.codesandbox/ @microsoft/fluentui-react-build
 /.devops/ @microsoft/fluentui-react-build
-/.github/ @microsoft/fluentui-react-build
+/.github/workflows/ @microsoft/fluentui-react-build
 /.githooks/ @microsoft/fluentui-react-build
 /.storybook/ @microsoft/fluentui-react-build
 /.vscode/ @microsoft/fluentui-react-build
@@ -44,6 +44,7 @@
 /tsconfig.base.json @microsoft/fluentui-react-build
 /yarn.lock @microsoft/fluentui-react-build
 /*.config.js @microsoft/fluentui-react-build
+/typings @microsoft/fluentui-react-build
 
 #### NX related files
 /nx.json @microsoft/fluentui-react-build
@@ -54,6 +55,7 @@
 /LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
 /packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
 /.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone @jurokapsiar
+/.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar
 
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
@@ -75,7 +77,7 @@ perf-test/ @microsoft/fluentui-react-build
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
 packages/babel-make-styles/ @microsoft/teams-prg
 packages/bundle-size/ @microsoft/teams-prg
-packages/date-time-utilities @lorejoh12 @evlevy
+packages/date-time-utilities @ermercer @LuMarti-MS @evlevy
 packages/eslint-plugin/ @microsoft/fluentui-react-build
 packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2/
@@ -92,7 +94,7 @@ packages/react-cards/ @microsoft/cxe-red @khmakoto
 packages/react-charting/ @Raghurk
 packages/react-conformance-make-styles/ @microsoft/teams-prg
 packages/react-context-selector/ @microsoft/teams-prg
-packages/react-date-time @lorejoh12 @evlevy
+packages/react-date-time @ermercer @LuMarti-MS @evlevy
 packages/react-docsite-components/ @ecraig12345 @micahgodbolt
 packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/react-hooks/ @microsoft/cxe-red @ecraig12345
@@ -141,7 +143,6 @@ packages/react-provider/ @microsoft/teams-prg
 packages/react-radio/ @microsoft/cxe-prg
 packages/react-slider/ @microsoft/cxe-red @khmakoto @ecraig12345
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
-packages/react-tabs/ @microsoft/cxe-red @behowell @khmakoto
 packages/react-text/ @microsoft/cxe-prg
 packages/react-tooltip/ @microsoft/cxe-red @behowell @khmakoto
 
@@ -151,14 +152,14 @@ packages/react/src/components/ActivityItem/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Announced/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Breadcrumb/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Button/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Calendar/ @lorejoh12
-packages/react/src/components/CalendarDayGrid/ @lorejoh12
+packages/react/src/components/Calendar/ @ermercer @LuMarti-MS
+packages/react/src/components/CalendarDayGrid/ @ermercer @LuMarti-MS
 packages/react/src/components/Check/ @microsoft/cxe-red @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/ChoiceGroup/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Coachmark/ @microsoft/cxe-red @leddie24
 packages/react/src/components/ColorPicker/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/DatePicker/ @lorejoh12
+packages/react/src/components/DatePicker/ @ermercer @LuMarti-MS
 packages/react/src/components/DetailsList/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/DocumentCard/ @microsoft/cxe-red @yiminwu
 packages/react/src/components/Fabric/ @microsoft/cxe-red @dzearing
@@ -190,7 +191,7 @@ packages/react/src/components/Text/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/TextField/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Toggle/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Tooltip/ @microsoft/cxe-red @behowell
-packages/react/src/components/WeeklyDayPicker/ @lorejoh12
+packages/react/src/components/WeeklyDayPicker/ @ermercer @LuMarti-MS
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing

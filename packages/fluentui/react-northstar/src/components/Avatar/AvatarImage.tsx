@@ -1,12 +1,12 @@
 import { Accessibility, AccessibilityAttributes, imageBehavior, ImageBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -46,8 +46,7 @@ export const avatarImageClassName = imageClassName;
 /**
  * An AvatarImage is a graphic representation used by Avatar.
  */
-export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> &
-  FluentComponentStaticProps<AvatarImageProps> = props => {
+export const AvatarImage = (React.forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarImage.displayName, context.telemetry);
   setStart();
@@ -94,12 +93,13 @@ export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AvatarImage.handledProps, props);
 
-  const result = <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })} />;
+  const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
 
   setEnd();
 
   return result;
-};
+}) as unknown) as ForwardRefWithAs<'img', HTMLImageElement, AvatarImageProps> &
+  FluentComponentStaticProps<AvatarImageProps>;
 
 AvatarImage.displayName = 'AvatarImage';
 AvatarImage.defaultProps = {

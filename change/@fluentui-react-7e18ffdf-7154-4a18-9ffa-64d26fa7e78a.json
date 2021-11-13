@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix Combobox scroll into view method to not scroll + close combo menu",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

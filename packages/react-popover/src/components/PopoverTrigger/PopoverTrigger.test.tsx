@@ -18,6 +18,7 @@ describe('PopoverTrigger', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
+      'component-has-static-classname',
       // PopoverTrigger does not have own styles
       'make-styles-overrides-win',
     ],
@@ -137,5 +138,18 @@ describe('PopoverTrigger', () => {
         </button>,
       ]
     `);
+  });
+
+  it('should use aria-haspopup="dialog" if focus trapped', () => {
+    // Arrange
+    mockPopoverContext({ trapFocus: true });
+    const { getByRole } = render(
+      <PopoverTrigger>
+        <button>Trigger</button>
+      </PopoverTrigger>,
+    );
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('dialog');
   });
 });

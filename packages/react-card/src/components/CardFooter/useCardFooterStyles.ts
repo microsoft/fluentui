@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { CardFooterState } from './CardFooter.types';
 
+export const cardFooterClassName = 'fui-CardFooter';
+
 /**
  * Styles for the root slot
  */
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
  */
 export const useCardFooterStyles = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(cardFooterClassName, styles.root, state.root.className);
 
   if (state.action) {
     state.action.className = mergeClasses(styles.action, state.action.className);

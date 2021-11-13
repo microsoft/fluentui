@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 21 Oct 2021 07:28:35 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Nov 2021 07:31:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.5)
+
+Wed, 10 Nov 2021 07:31:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.4..@fluentui/react-file-type-icons_v8.5.5)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.4.2 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+
+## [8.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.4)
+
+Mon, 08 Nov 2021 07:35:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.3..@fluentui/react-file-type-icons_v8.5.4)
+
+### Patches
+
+- Updating filetypeicon package to support Loop files. ([PR #20518](https://github.com/microsoft/fluentui/pull/20518) by caperez@microsoft.com)
+
+## [8.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.3)
+
+Tue, 02 Nov 2021 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.2..@fluentui/react-file-type-icons_v8.5.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.4.1 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+
+## [8.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.2)
+
+Mon, 01 Nov 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.1..@fluentui/react-file-type-icons_v8.5.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.4.0 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
 
 ## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.1)
 

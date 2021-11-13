@@ -1,6 +1,8 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import type { BadgeState } from './Badge.types';
 
+export const badgeClassName = 'fui-Badge';
+
 const useStyles = makeStyles({
   root: theme => ({
     display: 'inline-flex',
@@ -223,6 +225,7 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
   const isSubtle = state.color === 'subtle';
 
   state.root.className = mergeClasses(
+    badgeClassName,
     styles.root,
     state.size === 'tiny' && styles.rootTiny,
     state.size === 'extra-small' && styles.rootExtraSmall,

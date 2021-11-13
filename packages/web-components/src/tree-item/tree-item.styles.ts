@@ -248,34 +248,43 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     forcedColorsStylesheetBehavior(
       css`
         :host {
-          forced-color-adjust: none;
-          border-color: transparent;
-          background: ${SystemColors.Field};
-          color: ${SystemColors.FieldText};
+          color: ${SystemColors.ButtonText};
+        }
+        .positioning-region {
+          border-color: ${SystemColors.ButtonFace};
+          background: ${SystemColors.ButtonFace};
         }
         :host(:not([disabled])) .positioning-region:hover,
-        :host([selected]) .positioning-region {
+        :host(:not([disabled])) .positioning-region:active,
+        :host(:not([disabled])[selected]) .positioning-region {
           background: ${SystemColors.Highlight};
         }
         :host .positioning-region:hover .content-region,
         :host([selected]) .positioning-region .content-region {
+          forced-color-adjust: none;
           color: ${SystemColors.HighlightText};
         }
+        :host([disabled][selected]) .positioning-region .content-region {
+          color: ${SystemColors.GrayText};
+        }
         :host([selected])::after {
-          background: ${SystemColors.Field};
+          background: ${SystemColors.HighlightText};
         }
         :host(:${focusVisible}) .positioning-region {
-          border-color: ${SystemColors.FieldText};
-          box-shadow: 0 0 0 2px inset ${SystemColors.Field};
+          forced-color-adjust: none;
+          border-color: ${SystemColors.ButtonText};
+          box-shadow: 0 0 0 2px inset ${SystemColors.ButtonFace};
         }
+        :host([disabled]),
         :host([disabled]) .content-region,
         :host([disabled]) .positioning-region:hover .content-region {
           opacity: 1;
           color: ${SystemColors.GrayText};
         }
-        :host(.nested) .expand-collapse-button:hover {
-          background: ${SystemColors.Field};
-          fill: ${SystemColors.FieldText};
+        :host(.nested) .expand-collapse-button:hover,
+        :host(:not([disabled])[selected]) .expand-collapse-button:hover {
+          background: ${SystemColors.ButtonFace};
+          fill: ${SystemColors.ButtonText};
         }
       `,
     ),

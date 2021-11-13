@@ -113,7 +113,6 @@ export const tabsStyles: (
       css`
         .activeIndicator,
         :host(.vertical) .activeIndicator {
-          forced-color-adjust: none;
           background: ${SystemColors.Highlight};
         }
       `,
