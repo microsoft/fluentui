@@ -1,4 +1,3 @@
-import type { ReactElement } from 'react';
 import type { ButtonProps, ButtonState } from '../Button';
 
 export type ToggleButtonCommons = {
@@ -23,4 +22,4 @@ export type ToggleButtonProps = ButtonProps &
 
 export type ToggleButtonState = ButtonState & ToggleButtonCommons;
 
-export type RenderToggleButton = (state: ButtonState) => ReactElement;
+export type RenderToggleButton = (state: ButtonState) => JSX.Element;
