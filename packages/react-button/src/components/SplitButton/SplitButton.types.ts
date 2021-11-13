@@ -31,3 +31,5 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> &
 export type SplitButtonState = ComponentState<SplitButtonSlots> &
   Omit<ButtonState, 'components' | 'iconOnly' | 'root'> &
   Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;
+
+export type RenderSplitButton = (state: SplitButtonState) => JSX.Element;
