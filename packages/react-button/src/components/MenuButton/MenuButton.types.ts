@@ -15,3 +15,5 @@ export type MenuButtonProps = ComponentProps<MenuButtonSlots> &
 
 export type MenuButtonState = ComponentState<MenuButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
+
+export type RenderMenuButton = (state: MenuButtonState) => JSX.Element;
