@@ -2,6 +2,35 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Fri, 12 Nov 2021 13:25:09 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "fe9829e4818f9bb7206df37747d5da332706ae4b",
+            "comment": "feat(react-theme): add/update design tokens"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Oct 2021 12:14:23 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-beta.2",
       "version": "9.0.0-beta.2",
