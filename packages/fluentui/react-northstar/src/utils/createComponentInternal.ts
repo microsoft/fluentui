@@ -1,4 +1,4 @@
-import { AccessibilityActionHandlers, useFluentContext } from '@fluentui/react-bindings';
+import { AccessibilityActionHandlers, useFluentContext, useNorthstarRenderer } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as _ from 'lodash';
 
@@ -43,6 +43,7 @@ export const createComponentInternal = <P extends ObjectOf<any> = any>({
     const ref = React.useRef(null);
 
     const context = useFluentContext();
+    const renderer = useNorthstarRenderer();
     const isFirstRenderRef = React.useRef<boolean>(true);
 
     return renderComponent(
@@ -52,6 +53,7 @@ export const createComponentInternal = <P extends ObjectOf<any> = any>({
         handledProps: _.keys(propTypes).concat(handledProps),
         props,
         state: {},
+        renderer,
         actionHandlers,
         render: config => render(config, props),
         saveDebug: fluentUIDebug => (ref.current = { fluentUIDebug }),

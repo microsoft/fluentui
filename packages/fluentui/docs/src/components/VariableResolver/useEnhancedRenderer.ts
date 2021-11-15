@@ -9,7 +9,8 @@ export type UsedVariables = Record<string, Record<string, null>>;
 /** Enhances passed Fela or Emotion renderer to get actual variables. */
 const useEnhancedRenderer = (
   context: ProviderContextPrepared,
-): [ProviderContextPrepared, React.RefObject<UsedVariables>] => {
+  renderer: Renderer,
+): [Renderer, React.RefObject<UsedVariables>] => {
   const resolvedVariables = React.useRef<UsedVariables>({});
   const renderRule: Renderer['renderRule'] = React.useCallback(
     (styles, rendererParam) => {
@@ -26,20 +27,14 @@ const useEnhancedRenderer = (
         }
       });
 
-      return context.renderer.renderRule(styles, rendererParam);
+      return renderer.renderRule(styles, rendererParam);
     },
     [context],
   );
 
-  const enhancedContext: ProviderContextPrepared = React.useMemo(
-    () => ({
-      ...context,
-      renderer: { ...context.renderer, renderRule },
-    }),
-    [context, renderRule],
-  );
+  const enhancedRenderer: Renderer = React.useMemo(() => ({ ...renderer, renderRule }), [context, renderRule]);
 
-  return [enhancedContext, resolvedVariables];
+  return [enhancedRenderer, resolvedVariables];
 };
 
 export default useEnhancedRenderer;

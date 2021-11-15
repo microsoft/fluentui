@@ -25,6 +25,7 @@ import {
   RULE_TYPE,
 } from 'fela-utils';
 
+import { generateClassName as generateCompatClassName, getStyleBucketName } from './makeStylesCompat';
 import { FelaRenderer, FelaRendererChange } from './types';
 
 function isPlainObject(val: any) {
@@ -120,13 +121,15 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
             /* eslint-enable */
           }
 
-          const className =
-            renderer.selectorPrefix + generateClassName(renderer.getNextRuleIdentifier, renderer.filterClassName);
+          const atomicClassName = renderer.isCompat
+            ? generateCompatClassName(property, value, pseudo, media, support)
+            : generateClassName(renderer.getNextRuleIdentifier, renderer.filterClassName);
+          const className = renderer.selectorPrefix + atomicClassName;
 
           const declaration = cssifyDeclaration(property, value);
           const selector = generateCSSSelector(className, pseudo);
 
-          const change = {
+          const change: FelaRendererChange = {
             type: RULE_TYPE,
             className,
             selector,
@@ -134,6 +137,7 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
             pseudo,
             media,
             support,
+            bucket: getStyleBucketName(pseudo, media, support),
           };
 
           renderer.cache[declarationReference] = change;

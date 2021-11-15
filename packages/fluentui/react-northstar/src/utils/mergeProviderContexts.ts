@@ -4,40 +4,10 @@ import {
   StylesContextPerformance,
   StylesContextPerformanceInput,
 } from '@fluentui/react-bindings';
-import { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { mergeThemes } from '@fluentui/styles';
 
 import { isBrowser } from './isBrowser';
-
-const defaultDocument = { document: 'document' };
-const registeredRenderers = new WeakMap<Document | typeof defaultDocument, Renderer>();
-
-export const getRenderer = (createRenderer: CreateRenderer, target?: Document): Renderer => {
-  let actualTarget: Document | typeof defaultDocument = target || defaultDocument;
-
-  // A valid comparisons, default renderer will be used
-  if (!isBrowser() || typeof target === 'undefined') {
-    actualTarget = defaultDocument;
-  }
-
-  // SSR logic will be handled by condition above
-  // eslint-disable-next-line no-undef
-  if (isBrowser() && target === document) {
-    actualTarget = defaultDocument;
-  }
-
-  if (registeredRenderers.has(actualTarget)) {
-    return registeredRenderers.get(actualTarget);
-  }
-
-  // To avoid errors related to SSR as `document` may not exist we are using a fake object `defaultDocument`.
-  // When a value matches `defaultDocument` we will pass `undefined` to `createRenderer()` and it should handle it
-  // properly.
-  const createdRenderer = createRenderer(actualTarget === defaultDocument ? undefined : (actualTarget as Document));
-  registeredRenderers.set(actualTarget, createdRenderer);
-
-  return createdRenderer;
-};
 
 export const mergePerformanceOptions = (
   target: StylesContextPerformance | StylesContextPerformanceInput,
@@ -77,7 +47,6 @@ export const mergeProviderContexts = (
       enableBooleanVariablesCaching: false,
     },
     telemetry: undefined,
-    renderer: undefined,
   };
 
   return contexts.reduce<ProviderContextPrepared>(
@@ -94,7 +63,6 @@ export const mergeProviderContexts = (
 
       // Use provided renderer if it is defined
       acc.target = next.target || acc.target;
-      acc.renderer = getRenderer(createRenderer, acc.target);
 
       // Latest disableAnimations value wins
       const mergedDisableAnimations = mergeBooleanValues(acc.disableAnimations, next.disableAnimations);

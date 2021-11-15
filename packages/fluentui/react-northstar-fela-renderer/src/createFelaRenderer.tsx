@@ -1,5 +1,5 @@
-import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
-import { createRenderer, IRenderer, IStyle, TPlugin } from 'fela';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { createRenderer, IConfig, IRenderer, IStyle, TPlugin } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
@@ -14,7 +14,9 @@ import { felaInvokeKeyframesPlugin } from './felaInvokeKeyframesPlugin';
 import { felaPerformanceEnhancer } from './felaPerformanceEnhancer';
 import { felaSanitizeCssPlugin } from './felaSanitizeCssPlugin';
 import { felaStylisEnhancer } from './felaStylisEnhancer';
-import { FelaRendererParam } from './types';
+import { insertRule } from './makeStylesCompat';
+import { FelaRenderer, FelaRendererParam } from './types';
+import type { MakeStylesRenderer } from './makeStylesCompat';
 
 let felaDevMode = false;
 
@@ -46,67 +48,60 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   }
 }
 
-const blocklistedClassNames = [
-  // Blocklist contains a list of classNames that are used by FontAwesome
-  // https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
-  'fa',
-  'fas',
-  'far',
-  'fal',
-  'fab',
-  // Used by https://github.com/fullcalendar/fullcalendar
-  'fc',
-  // .cke is used by CKEditor
-  'ck',
-  'cke',
-];
-
-const filterClassName = (className: string): boolean => {
-  // Also ensure that class name does not contain 'ad' as it might
-  // cause compatibility issues regarding Ad blockers.
-  return className.indexOf('ad') === -1 && blocklistedClassNames.indexOf(className) === -1;
+const filterClassName = (): boolean => {
+  return true;
 };
 
-const rendererConfig = {
-  devMode: felaDevMode,
-  filterClassName,
-  enhancers: [felaPerformanceEnhancer, felaFocusVisibleEnhancer, felaStylisEnhancer],
-  plugins: [
-    felaDisableAnimationsPlugin as TPlugin,
+type CreateFelaRenderer = (target?: Document, makeStylesRenderer?: MakeStylesRenderer) => Renderer;
 
-    // is necessary to prevent accidental style typos
-    // from breaking ALL the styles on the page
-    felaSanitizeCssPlugin as TPlugin,
+export const createFelaRenderer: CreateFelaRenderer = (target, makeStylesRenderer) => {
+  const rendererConfig: IConfig = {
+    devMode: felaDevMode,
+    filterClassName,
+    enhancers: [felaPerformanceEnhancer, felaFocusVisibleEnhancer, felaStylisEnhancer],
+    plugins: [
+      felaDisableAnimationsPlugin as TPlugin,
 
-    felaPluginPlaceholderPrefixer(),
-    felaInvokeKeyframesPlugin as TPlugin,
-    felaPluginEmbedded(),
+      // is necessary to prevent accidental style typos
+      // from breaking ALL the styles on the page
+      felaSanitizeCssPlugin as TPlugin,
 
-    felaExpandCssShorthandsPlugin as TPlugin,
+      felaPluginPlaceholderPrefixer(),
+      felaInvokeKeyframesPlugin as TPlugin,
+      felaPluginEmbedded(),
 
-    // Heads up!
-    // This is required after fela-plugin-prefixer to resolve the array of fallback values prefixer produces.
-    felaPluginFallbackValue(),
+      felaExpandCssShorthandsPlugin as TPlugin,
 
-    felaPluginRtl(),
-  ],
-};
+      // Heads up!
+      // This is required after fela-plugin-prefixer to resolve the array of fallback values prefixer produces.
+      felaPluginFallbackValue(),
 
-export const createFelaRenderer: CreateRenderer = target => {
-  const felaRenderer = createRenderer(rendererConfig) as IRenderer & {
-    listeners: [];
-    nodes: Record<string, HTMLStyleElement>;
-    updateSubscription: Function | undefined;
+      felaPluginRtl(),
+    ],
   };
+  const felaRenderer = createRenderer(rendererConfig) as FelaRenderer;
+
+  felaRenderer.isCompat = !!makeStylesRenderer;
   let usedRenderers: number = 0;
 
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
-  const Provider: React.FC = props => (
-    <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: target }}>
-      {props.children}
-    </RendererProvider>
-  );
+  const Provider: React.FC = props => {
+    if (felaRenderer.isCompat) {
+      if (!felaRenderer.updateSubscription) {
+        felaRenderer.updateSubscription = insertRule(target, makeStylesRenderer!);
+        felaRenderer.subscribe(felaRenderer.updateSubscription);
+      }
+
+      return <>{props.children}</>;
+    }
+
+    return (
+      <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: target }}>
+        {props.children}
+      </RendererProvider>
+    );
+  };
 
   return {
     registerUsage: () => {

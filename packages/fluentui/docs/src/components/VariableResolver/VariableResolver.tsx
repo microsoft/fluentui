@@ -1,4 +1,4 @@
-import { useFluentContext, Unstable_FluentContextProvider } from '@fluentui/react-northstar';
+import { useFluentContext, useNorthstarRenderer, Unstable_NorthstarRendererContext } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -15,8 +15,9 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
   const elementRef = React.useRef<HTMLDivElement>();
   const latestVariables = React.useRef<UsedVariables>({});
 
+  const renderer = useNorthstarRenderer();
   const context = useFluentContext();
-  const [enhancedContext, resolvedVariables] = useEnhancedRenderer(context);
+  const [enhancedRenderer, resolvedVariables] = useEnhancedRenderer(context, renderer);
 
   const onClassNamesChange = React.useCallback(() => {
     if (!_.isEqual(resolvedVariables.current, latestVariables.current)) {
@@ -32,9 +33,9 @@ const VariableResolver: React.FunctionComponent<VariableResolverProps> = props =
   useClassNamesListener(elementRef, onClassNamesChange);
 
   return (
-    <Unstable_FluentContextProvider value={enhancedContext}>
+    <Unstable_NorthstarRendererContext.Provider value={enhancedRenderer}>
       <div ref={elementRef}>{props.children}</div>
-    </Unstable_FluentContextProvider>
+    </Unstable_NorthstarRendererContext.Provider>
   );
 };
 

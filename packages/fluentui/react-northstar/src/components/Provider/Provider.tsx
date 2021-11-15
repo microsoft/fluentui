@@ -11,6 +11,7 @@ import {
   Telemetry,
   useFluentContext,
   unstable_getStyles,
+  useNorthstarRenderer,
   useIsomorphicLayoutEffect,
   Unstable_FluentContextProvider,
 } from '@fluentui/react-bindings';
@@ -99,6 +100,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 } = props => {
   const { children, className, design, overwrite, styles, variables, telemetryRef } = props;
 
+  const renderer = useNorthstarRenderer();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Provider.handledProps, props);
 
@@ -160,7 +162,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 
     disableAnimations: outgoingContext.disableAnimations,
     performance: outgoingContext.performance,
-    renderer: outgoingContext.renderer,
+    renderer,
     rtl: outgoingContext.rtl,
     theme: outgoingContext.theme,
     saveDebug: _.noop,
@@ -174,21 +176,21 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   });
 
   useIsomorphicLayoutEffect(() => {
-    renderFontFaces(outgoingContext.renderer, props.theme);
-    renderStaticStyles(outgoingContext.renderer, props.theme, outgoingContext.theme.siteVariables);
+    renderFontFaces(renderer, props.theme);
+    renderStaticStyles(renderer, props.theme, outgoingContext.theme.siteVariables);
 
     if (props.target) {
       setUpWhatInput(props.target);
     }
 
-    outgoingContext.renderer.registerUsage();
+    renderer.registerUsage();
 
     return () => {
       if (props.target) {
         tryCleanupWhatInput(props.target);
       }
 
-      outgoingContext.renderer.unregisterUsage();
+      renderer.unregisterUsage();
     };
   }, []);
 
@@ -201,7 +203,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
           ...rtlProps,
           ...unhandledProps,
         };
-  const RenderProvider = outgoingContext.renderer.Provider;
+  const RenderProvider = renderer.Provider;
 
   return (
     <RenderProvider>

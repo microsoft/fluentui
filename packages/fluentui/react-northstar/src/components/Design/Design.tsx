@@ -1,4 +1,4 @@
-import { ComponentDesignProp, useFluentContext } from '@fluentui/react-bindings';
+import { ComponentDesignProp, useFluentContext, useNorthstarRenderer } from '@fluentui/react-bindings';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { ICSSInJSStyle } from '@fluentui/styles';
@@ -20,6 +20,7 @@ export type DesignProps = {
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Design<DesignProps>({ config, children }) {
+  const renderer = useNorthstarRenderer();
   const context = useFluentContext();
   const getConfig = React.useCallback(() => config, [config]);
 
@@ -31,7 +32,7 @@ export function Design<DesignProps>({ config, children }) {
     sanitizeCss: context.performance.enableSanitizeCssPlugin,
   };
 
-  const className = context.renderer.renderRule(getConfig as ICSSInJSStyle, styleParam);
+  const className = renderer.renderRule(getConfig as ICSSInJSStyle, styleParam);
 
   return children({ className });
 }

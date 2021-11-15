@@ -1,4 +1,6 @@
-import { noopRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { createDOMRenderer } from '@fluentui/make-styles';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { emptyTheme, ThemeInput, ThemePrepared } from '@fluentui/styles';
 import * as React from 'react';
 
@@ -27,7 +29,6 @@ export type ProviderContextPrepared = {
   rtl: boolean;
   disableAnimations: boolean;
   performance: StylesContextPerformance;
-  renderer: Renderer;
   theme: ThemePrepared;
   telemetry: Telemetry | undefined;
   // `target` can be undefined for SSR
@@ -46,7 +47,6 @@ export const defaultContextValue: ProviderContextPrepared = {
   rtl: undefined as any,
   disableAnimations: false,
   performance: defaultPerformanceFlags,
-  renderer: noopRenderer,
   theme: emptyTheme,
   telemetry: undefined,
   target: undefined,
@@ -59,3 +59,11 @@ export function useFluentContext(): ProviderContextPrepared {
 }
 
 export const Unstable_FluentContextProvider = FluentContext.Provider;
+
+export const Unstable_NorthstarRendererContext = React.createContext<Renderer>(
+  createFelaRenderer(document, createDOMRenderer(document)),
+);
+
+export function useNorthstarRenderer(): Renderer {
+  return React.useContext(Unstable_NorthstarRendererContext);
+}

@@ -10,7 +10,7 @@ import {
   unstable_getStyles as getStyles,
   ProviderContextPrepared,
 } from '@fluentui/react-bindings';
-import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import {
   emptyTheme,
   ComponentSlotStylesResolved,
@@ -44,6 +44,7 @@ export interface RenderConfig<P> {
   handledProps: string[];
   props: PropsWithVarsAndStyles;
   state: Record<string, any>;
+  renderer: Renderer;
   actionHandlers: AccessibilityActionHandlers;
   render: RenderComponentCallback<P>;
   saveDebug: (debug: DebugData | null) => void;
@@ -54,7 +55,17 @@ export const renderComponent = <P extends {}>(
   config: RenderConfig<P>,
   context?: ProviderContextPrepared,
 ): React.ReactElement<P> => {
-  const { className, displayName, handledProps, props, state, actionHandlers, render, saveDebug = () => {} } = config;
+  const {
+    className,
+    displayName,
+    handledProps,
+    props,
+    state,
+    actionHandlers,
+    render,
+    renderer,
+    saveDebug = () => {},
+  } = config;
 
   if (_.isEmpty(context)) {
     logProviderMissingWarning();
@@ -83,7 +94,7 @@ export const renderComponent = <P extends {}>(
     primaryDisplayName: displayName,
     componentProps: stateAndProps,
     inlineStylesProps: stateAndProps,
-    renderer: context.renderer || noopRenderer,
+    renderer,
     rtl,
     saveDebug,
     theme: context.theme || emptyTheme,

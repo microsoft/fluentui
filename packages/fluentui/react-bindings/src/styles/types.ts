@@ -1,5 +1,6 @@
 import { DebugData, ICSSInJSStyle, PropsWithVarsAndStyles } from '@fluentui/styles';
 import { ProviderContextPrepared } from '../context';
+import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 
 // Notice:
 // This temporary lives here, will be remove once `animation` prop will be dropped
@@ -57,5 +58,6 @@ export type ResolveStylesOptions = Omit<ProviderContextPrepared, 'target'> & {
   componentProps: Record<string, any>;
   inlineStylesProps: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
+  renderer: Renderer;
   saveDebug: (debug: DebugData | null) => void;
 };

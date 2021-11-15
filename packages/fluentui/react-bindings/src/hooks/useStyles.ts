@@ -2,7 +2,7 @@ import { ComposePreparedOptions } from '../compose';
 import { ComponentSlotStyle, ComponentSlotStylesResolved, ComponentVariablesInput, DebugData } from '@fluentui/styles';
 import * as React from 'react';
 
-import { useFluentContext } from '../context';
+import { useFluentContext, useNorthstarRenderer } from '../context';
 import { ComponentDesignProp, ComponentSlotClasses, PrimitiveProps } from '../styles/types';
 import { getStyles } from '../styles/getStyles';
 
@@ -57,6 +57,7 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
   displayName: string,
   options: UseStylesOptions<StyleProps>,
 ): UseStylesResult => {
+  const renderer = useNorthstarRenderer();
   const context = useFluentContext();
 
   const {
@@ -91,7 +92,7 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
 
     // Context values
     disableAnimations: context.disableAnimations,
-    renderer: context.renderer,
+    renderer,
     rtl,
     saveDebug: fluentUIDebug => (debug.current = { fluentUIDebug }),
     theme: context.theme,

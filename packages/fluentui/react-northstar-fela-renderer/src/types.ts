@@ -2,6 +2,8 @@ import { IRenderer } from 'fela';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import { ICSSInJSStyle } from '@fluentui/styles';
 
+import type { StyleBucketName } from './makeStylesCompat';
+
 export type FelaRenderer = IRenderer & {
   cache: Record<string, FelaRendererChange>;
   selectorPrefix?: string;
@@ -16,6 +18,12 @@ export type FelaRenderer = IRenderer & {
     media?: string,
     support?: string,
   ): string;
+
+  listeners: [];
+  nodes: Record<string, HTMLStyleElement>;
+  updateSubscription: Parameters<IRenderer['subscribe']>[0] | undefined;
+
+  isCompat: boolean;
 };
 
 export type FelaRendererChange = {
@@ -26,6 +34,11 @@ export type FelaRendererChange = {
   pseudo: string;
   media: string;
   support: string;
+
+  // Optional for "type: RULE"
+  bucket?: StyleBucketName;
+  // Optional for "type: STATIC"
+  css?: string;
 };
 
 export type FelaRendererParam = Omit<RendererParam, 'direction'> & { theme: { direction: RendererParam['direction'] } };

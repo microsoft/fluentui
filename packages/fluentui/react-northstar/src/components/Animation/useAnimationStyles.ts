@@ -3,6 +3,7 @@ import {
   unstable_getStyles as getStyles,
   unstable_createAnimationStyles as createAnimationStyles,
   useFluentContext,
+  useNorthstarRenderer,
 } from '@fluentui/react-bindings';
 import { ThemePrepared } from '@fluentui/styles';
 
@@ -19,7 +20,8 @@ const animationCache = new WeakMap<ThemePrepared, Record<string, UseAnimationSty
 export const animationClassName = 'ui-animation';
 
 export const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
-  const { theme, rtl, disableAnimations, renderer, performance } = useFluentContext();
+  const renderer = useNorthstarRenderer();
+  const { theme, rtl, disableAnimations, performance } = useFluentContext();
 
   if (disableAnimations) {
     return {
