@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(Divider): Remove unthemed white background in stories",
-  "packageName": "@fluentui/react-divider",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

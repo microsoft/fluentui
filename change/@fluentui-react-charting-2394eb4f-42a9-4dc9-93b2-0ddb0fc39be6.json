@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Resolved DonutChart valueInsideDonut text does not change to light color font in dark mode theme",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-pkoganti@microsoft.com",
-  "dependentChangeType": "patch"
-}

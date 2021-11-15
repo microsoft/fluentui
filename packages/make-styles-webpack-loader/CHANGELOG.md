@@ -1,8 +1,19 @@
 # Change Log - @fluentui/make-styles-webpack-loader
 
-This log was last generated on Wed, 27 Oct 2021 12:14:24 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Nov 2021 13:25:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-beta.2..@fluentui/make-styles-webpack-loader_v9.0.0-beta.3)
+
+### Changes
+
+- use latest @linaria/shaker version ([PR #20538](https://github.com/microsoft/fluentui/pull/20538) by olfedias@microsoft.com)
+- Support resolve plugins from webpack config ([PR #20559](https://github.com/microsoft/fluentui/pull/20559) by lingfangao@hotmail.com)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-beta.2)
 

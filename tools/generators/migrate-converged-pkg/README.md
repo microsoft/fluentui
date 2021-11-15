@@ -14,8 +14,6 @@ Workspace Generator for migrating converged packages to new DX (stage 1)[https:/
 
 <!-- tocstop -->
 
-## NOTES
-
 ## Usage
 
 ```sh
@@ -59,6 +57,18 @@ Type: `string`
 Package/library name (needs to be full name of the package, scope included - e.g. `@fluentui/<package-name>`)
 
 > NOTE: will trigger CLI prompt if you didn't provide this option
+
+**Run migration on subset of packages:**
+
+To run migration on multiple packages you can specify a comma separated list of project names.
+
+```sh
+# run migration on:
+# - @fluentui/lib-zero
+# - @fluentui/lib-one
+# - @fluentui/lib-two
+yarn nx workspace-generator migrate-converged-pkg --name='@fluentui/lib-zero,@fluentui/lib-one,@fluentui/lib-two'
+```
 
 #### `all`
 

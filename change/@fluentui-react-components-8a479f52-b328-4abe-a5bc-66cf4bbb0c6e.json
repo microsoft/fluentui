@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "update Fluent docs page to use makestyles and flex for layout",
-  "packageName": "@fluentui/react-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}
