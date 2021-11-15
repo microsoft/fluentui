@@ -305,6 +305,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
         <p>Heat map explaining the Air Quality Index</p>
         <div style={rootStyle}>
           <HeatMapChart
+            culture={window.navigator.language}
             chartTitle="Heat map chart basic example"
             data={HeatMapData}
             // eslint-disable-next-line react/jsx-no-bind
