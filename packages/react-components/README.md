@@ -4,7 +4,7 @@
 
 This is a suite package for converged components and related utilities. It is a result of a dedupe effort for `@fluentui/react` and `@fluentui/react-northstar`.
 
-The components are avialable for limited production use, please contact us if you intend to use them in your product. The APIs might change before final release.
+The components are available for limited production use, please contact us if you intend to use them in your product. The APIs might change before final release.
 
 ### Usage
 
