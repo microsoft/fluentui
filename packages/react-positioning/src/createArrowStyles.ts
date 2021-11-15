@@ -39,7 +39,10 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
       visibility: 'hidden',
       zIndex: -1,
 
-      ...(size && { aspectRatio: 1, with: `${size}px` }),
+      ...(size && { 
+        aspectRatio: 1,
+        width: `${size}px`,
+      }),
 
       ':before': {
         content: '""',
