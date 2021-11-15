@@ -1,3 +1,4 @@
+import { CalendarMonth24Regular } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-make-styles';
 import * as React from 'react';
 import { Tab, TabList, TabProps } from '../index'; // codesandbox-dependency: @fluentui/react-tabs ^9.0.0-beta
@@ -13,14 +14,16 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = (props: Partial<TabProps>) => {
+export const SizeSmall = (props: Partial<TabProps>) => {
   const styles = useStyles();
 
   const renderTabs = () => {
     return (
       <>
         <Tab value="tab1">First Tab</Tab>
-        <Tab value="tab2">Second Tab</Tab>
+        <Tab icon={<CalendarMonth24Regular />} value="tab2">
+          Second Tab
+        </Tab>
         <Tab value="tab3">Third Tab</Tab>
         <Tab value="tab4">Fourth Tab</Tab>
       </>
@@ -29,20 +32,26 @@ export const Appearance = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="tab2" appearance="transparent">
+      <TabList defaultSelectedKey="tab2" size="small">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" appearance="subtle">
+      <TabList defaultSelectedKey="tab2" size="small" vertical>
+        {renderTabs()}
+      </TabList>
+      <TabList defaultSelectedKey="tab2" size="small" verticalTabContent>
+        {renderTabs()}
+      </TabList>
+      <TabList defaultSelectedKey="tab2" size="small" vertical verticalTabContent>
         {renderTabs()}
       </TabList>
     </div>
   );
 };
 
-Appearance.parameters = {
+SizeSmall.parameters = {
   docs: {
     description: {
-      story: 'A tab list can have a `transparent` or `subtle` appearance. The default is `transparent`.',
+      story: 'A tab list can have `small` tabs. The default size is `medium`.',
     },
   },
 };

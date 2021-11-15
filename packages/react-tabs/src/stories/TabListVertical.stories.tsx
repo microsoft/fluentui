@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     padding: '50px 20px',
-    rowGap: '5px',
+    rowGap: '20px',
   },
 });
 
@@ -26,4 +26,12 @@ export const Vertical = (props: Partial<TabProps>) => {
       </TabList>
     </div>
   );
+};
+
+Vertical.parameters = {
+  docs: {
+    description: {
+      story: 'The tabs within a tab list can be arranged vertically. The default is false.',
+    },
+  },
 };

@@ -10,47 +10,46 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     padding: '50px 20px',
-    rowGap: '5px',
+    rowGap: '20px',
   },
 });
 
 export const WithIcon = (props: Partial<TabProps>) => {
   const styles = useStyles();
 
+  const renderTabs = () => {
+    return (
+      <>
+        <Tab icon={<CalendarMonth24Regular />} value="tab1">
+          First Tab
+        </Tab>
+        <Tab icon={<CalendarMonth24Regular />} value="tab2">
+          Second Tab
+        </Tab>
+        <Tab icon={<CalendarMonth24Regular />} value="tab3">
+          Third Tab
+        </Tab>
+        <Tab icon={<CalendarMonth24Regular />} value="tab4">
+          Fourth Tab
+        </Tab>
+      </>
+    );
+  };
+
   return (
-    <>
-      <div className={styles.root}>
-        <TabList defaultSelectedKey="tab2">
-          <Tab icon={<CalendarMonth24Regular />} value="tab1">
-            First Tab
-          </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="tab2">
-            Second Tab
-          </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="tab3">
-            Third Tab
-          </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="tab4">
-            Fourth Tab
-          </Tab>
-        </TabList>
-      </div>
-      <div className={styles.root}>
-        <TabList defaultSelectedKey="tab2" vertical>
-          <Tab icon={<CalendarMonth24Regular />} value="tab1">
-            First Tab
-          </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="tab2">
-            Second Tab
-          </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="tab3">
-            Third Tab
-          </Tab>
-          <Tab icon={<CalendarMonth24Regular />} value="tab4">
-            Fourth Tab
-          </Tab>
-        </TabList>
-      </div>
-    </>
+    <div className={styles.root}>
+      <TabList defaultSelectedKey="tab2">{renderTabs()}</TabList>
+      <TabList defaultSelectedKey="tab2" vertical>
+        {renderTabs()}
+      </TabList>
+    </div>
   );
+};
+
+WithIcon.parameters = {
+  docs: {
+    description: {
+      story: 'A tab has an `icon` slot to display an icon before the tab content.',
+    },
+  },
 };

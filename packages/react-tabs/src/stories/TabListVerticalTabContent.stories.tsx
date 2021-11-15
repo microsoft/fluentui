@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     padding: '50px 20px',
-    rowGap: '5px',
+    rowGap: '20px',
   },
   cube: theme => ({
     background: theme.colorBrandBackground2,
@@ -25,48 +25,45 @@ const useStyles = makeStyles({
 export const VerticalTabContent = (props: Partial<TabProps>) => {
   const styles = useStyles();
 
+  const renderTabs = () => {
+    return (
+      <>
+        <Tab value="tab1">
+          <div className={styles.cube} />
+          First Tab
+        </Tab>
+        <Tab value="tab2">
+          <div className={styles.cube} />
+          Second Tab
+        </Tab>
+        <Tab value="tab3">
+          <div className={styles.cube} />
+          Third Tab
+        </Tab>
+        <Tab value="tab4">
+          <div className={styles.cube} />
+          Fourth Tab
+        </Tab>
+      </>
+    );
+  };
+
   return (
-    <>
-      <div className={styles.root}>
-        <TabList defaultSelectedKey="tab2" verticalTabContent>
-          <Tab value="tab1">
-            <div className={styles.cube} />
-            First Tab
-          </Tab>
-          <Tab value="tab2">
-            <div className={styles.cube} />
-            Second Tab
-          </Tab>
-          <Tab value="tab3">
-            <div className={styles.cube} />
-            Third Tab
-          </Tab>
-          <Tab value="tab4">
-            <div className={styles.cube} />
-            Fourth Tab
-          </Tab>
-        </TabList>
-      </div>
-      <div className={styles.root}>
-        <TabList defaultSelectedKey="tab2" vertical verticalTabContent>
-          <Tab value="tab1">
-            <div className={styles.cube} />
-            First Tab
-          </Tab>
-          <Tab value="tab2">
-            <div className={styles.cube} />
-            Second Tab
-          </Tab>
-          <Tab value="tab3">
-            <div className={styles.cube} />
-            Third Tab
-          </Tab>
-          <Tab value="tab4">
-            <div className={styles.cube} />
-            Fourth Tab
-          </Tab>
-        </TabList>
-      </div>
-    </>
+    <div className={styles.root}>
+      <TabList defaultSelectedKey="tab2" verticalTabContent>
+        {renderTabs()}
+      </TabList>
+      <TabList defaultSelectedKey="tab2" vertical verticalTabContent>
+        {renderTabs()}
+      </TabList>
+    </div>
   );
+};
+
+VerticalTabContent.parameters = {
+  docs: {
+    description: {
+      story: 'The content within each tab can be arranged vertically. The default is false.',
+    },
+  },
 };

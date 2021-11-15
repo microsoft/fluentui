@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     padding: '50px 20px',
-    rowGap: '5px',
+    rowGap: '20px',
   },
 });
 
