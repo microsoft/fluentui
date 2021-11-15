@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(docs): Update status message for beta release",
+  "packageName": "@fluentui/react-components",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "none"
+}
