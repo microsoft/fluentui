@@ -62,7 +62,7 @@ const useHorizontalListStyles = makeStyles({
     },
   }),
   small: {
-    padding: '6px 6px 0 6px',
+    padding: '6px 8px 0 8px',
     ':after': {
       margin: '4px 0 0 0',
     },
@@ -156,7 +156,7 @@ const useIconStyles = makeStyles({
 
 const useHorizontalContentIconStyles = makeStyles({
   small: {
-    marginRight: '3px',
+    marginRight: '2px',
   },
   medium: {
     marginRight: '6px',

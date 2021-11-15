@@ -2,7 +2,7 @@ import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import type { BadgeTabProps, BadgeTabSlots, BadgeTabState } from './BadgeTab.types';
 import { tabShorthandProps, useTab } from '../Tab/index';
-import { Badge } from '@fluentui/react-badge';
+import { Badge, BadgeProps } from '@fluentui/react-badge';
 
 /**
  * Array of all shorthand properties listed in BadgeTabSlots
@@ -23,6 +23,9 @@ export const useBadgeTab = (props: BadgeTabProps, ref: React.Ref<HTMLElement>): 
 
   const tabState = useTab(props, ref);
 
+  const defaultBadgeSize: BadgeProps['size'] =
+    tabState.size === 'small' && tabState.icon && tabState.verticalContent ? 'extra-small' : 'small';
+
   return {
     ...tabState,
     components: {
@@ -30,7 +33,7 @@ export const useBadgeTab = (props: BadgeTabProps, ref: React.Ref<HTMLElement>): 
       badge: Badge,
       children: 'div',
     } as BadgeTabState['components'],
-    badge: resolveShorthand(badge, { required: true }),
+    badge: resolveShorthand(badge, { required: true, defaultProps: { size: defaultBadgeSize } }),
     children: resolveShorthand(children as BadgeTabSlots['children'], {
       required: true,
     }),
