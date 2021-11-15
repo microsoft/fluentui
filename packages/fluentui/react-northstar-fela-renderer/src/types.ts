@@ -37,6 +37,8 @@ export type FelaRendererChange = {
 
   // Optional for "type: RULE"
   bucket?: StyleBucketName;
+  // Optional for "type: FONT"
+  fontFace?: string;
   // Optional for "type: STATIC"
   css?: string;
 };
