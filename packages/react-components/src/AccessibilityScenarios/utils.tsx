@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-export const APP_TITLE = 'Accessibility Scenarios';
-export const APP_TITLE_SEPARATOR = ' | ';
+const APP_TITLE = 'Accessibility Scenarios';
+const APP_TITLE_SEPARATOR = ' | ';
 
 interface FullscreenLinkProps {
   parent: string;
