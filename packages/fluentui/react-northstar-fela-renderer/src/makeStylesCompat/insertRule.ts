@@ -54,7 +54,7 @@ export function insertRule(target: Document | undefined, renderer: MakeStylesRen
   return function (change: FelaRendererChange) {
     const { css, selector, declaration, bucket = 'd', type } = change;
     const sheet = target && getStyleSheetForBucket(bucket, target, renderer);
-    console.log('change', change);
+
     switch (type) {
       case KEYFRAME_TYPE:
         // if (node.textContent.indexOf(change.keyframe) === -1) {
@@ -84,9 +84,6 @@ export function insertRule(target: Document | undefined, renderer: MakeStylesRen
 
         break;
       case RULE_TYPE:
-        console.log('insert:css', generateCSSRule(selector, declaration));
-        console.log('insert:sheet', sheet);
-        console.log('insert:bucket', bucket);
         safeInsertToDOM(renderer, sheet, bucket, generateCSSRule(selector, declaration));
         break;
       default:
