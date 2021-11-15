@@ -61,7 +61,10 @@ export function useFluentContext(): ProviderContextPrepared {
 export const Unstable_FluentContextProvider = FluentContext.Provider;
 
 export const Unstable_NorthstarRendererContext = React.createContext<Renderer>(
-  createFelaRenderer(document, createDOMRenderer(document)),
+  createFelaRenderer(
+    typeof document === 'undefined' ? undefined : document,
+    createDOMRenderer(typeof document === 'undefined' ? undefined : document),
+  ),
 );
 
 export function useNorthstarRenderer(): Renderer {

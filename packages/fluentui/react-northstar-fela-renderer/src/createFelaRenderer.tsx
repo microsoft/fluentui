@@ -91,6 +91,10 @@ export const createFelaRenderer: CreateFelaRenderer = (target, makeStylesRendere
       if (!felaRenderer.updateSubscription) {
         felaRenderer.updateSubscription = insertRule(target, makeStylesRenderer!);
         felaRenderer.subscribe(felaRenderer.updateSubscription);
+
+        // simulate rendering to ensure all styles rendered prior to
+        // calling FelaDOM.render are correctly injected as well
+        Object.values(felaRenderer.cache).forEach(felaRenderer._emitChange);
       }
 
       return <>{props.children}</>;
