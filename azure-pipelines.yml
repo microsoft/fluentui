@@ -122,6 +122,7 @@ jobs:
         displayName: yarn
 
       - script: |
+          yarn buildto @fluentui/make-styles --no-cache
           yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
         env:
