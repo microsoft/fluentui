@@ -22,10 +22,11 @@ export type ShorthandProps<Props extends DefaultObjectShorthandProps> =
  * This should ONLY be used in type templates as in `extends DefaultObjectShorthandProps`;
  * it shouldn't be used as the type of a slot.
  */
-export type DefaultObjectShorthandProps = ObjectShorthandProps<{
-  children?: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
-}>;
+export type DefaultObjectShorthandProps = ObjectShorthandProps<
+  Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
+  }
+>;
 
 /**
  * Defines the slot props for a slot that supports a Component type.
@@ -101,7 +102,7 @@ export type ComponentProps<
   {
     [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
   },
-  Primary
+  Primary & 'root' // Omit the 'root' prop only if it is the Primary slot (which is the default case)
 > &
   PropsWithoutRef<Shorthands[Primary]>;
 

@@ -25,6 +25,7 @@ describe('Checkbox', () => {
   isConformant({
     Component: Checkbox,
     displayName: 'Checkbox',
+    primarySlot: 'input',
   });
 
   function getInput(): HTMLInputElement {
@@ -94,7 +95,7 @@ describe('Checkbox', () => {
 
     renderedComponent.unmount();
     checkboxRef = React.createRef<HTMLInputElement>();
-    renderedComponent = render(<Checkbox input={{ ref: checkboxRef }} />);
+    renderedComponent = render(<Checkbox input={{ className: 'foo' }} ref={checkboxRef} />);
     renderedComponent.rerender(<Checkbox defaultChecked input={{ ref: checkboxRef }} />);
 
     input = getInput();

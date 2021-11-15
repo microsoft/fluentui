@@ -65,3 +65,26 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
 
   return getNativeProps(props, allowedPropNames, excludedPropNames);
 }
+
+/**
+ * Returns the native props that always go to the root slot.
+ *
+ * This function is only for use with components where `root` is *not* the primary slot.
+ * Most components should use {@link getNativeElementProps} for their root slot if it is the primary slot.
+ */
+export const getRootSlotNativeProps = ({
+  style,
+  className,
+}: Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>) => ({ style, className });
+
+/**
+ * Returns the native props that go to the primary slot.
+ *
+ * This function is only for use with components where `root` is *not* the primary slot.
+ * Most components should use {@link getNativeElementProps} for their root slot if it is the primary slot.
+ */
+export const getPrimarySlotNativeProps = (
+  tagName: keyof JSX.IntrinsicElements,
+  props: {},
+  excludedPropNames: string[] = [],
+) => getNativeElementProps(tagName, props, [...excludedPropNames, 'style', 'className']);

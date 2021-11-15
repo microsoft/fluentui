@@ -230,9 +230,12 @@ export const defaultErrorMessages = {
     //    your test file.
     return getErrorMessage({
       displayName,
-      overview: `doesn't apply the "ref" prop to its root DOM node.`,
+      overview: `doesn't apply the "ref" prop to its root (or primary) DOM node.`,
       suggestions: [
         `Make sure you're applying the ref to the ${resolveInfo('root element')} in your component.`,
+        `Check if your component has a primary slot other than root, and add ${resolveInfo(
+          `primarySlot`,
+        )} to isConformant in your test file.`,
         `Check if your component uses an element ref and add ${resolveInfo(
           `elementRefName: 'elementRef'`,
         )} to isConformant in your test file.`,

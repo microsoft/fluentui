@@ -1,21 +1,17 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
+  getPrimarySlotNativeProps,
+  getRootSlotNativeProps,
   resolveShorthand,
   useControllableState,
+  useEventCallback,
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
-  useEventCallback,
 } from '@fluentui/react-utilities';
-import { CheckboxProps, CheckboxSlots, CheckboxState } from './Checkbox.types';
+import { CheckboxProps, CheckboxState } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
 import { Label, LabelProps } from '@fluentui/react-label';
-
-/**
- * Array of all shorthand properties listed as the keys of CheckboxSlots
- */
-export const checkboxShorthandProps: Array<keyof CheckboxSlots> = ['root', 'indicator', 'input'];
 
 /**
  * Create the state required to render Checkbox.
@@ -24,51 +20,48 @@ export const checkboxShorthandProps: Array<keyof CheckboxSlots> = ['root', 'indi
  * before being passed to renderCheckbox.
  *
  * @param props - props from this instance of Checkbox
- * @param ref - reference to root HTMLElement of Checkbox
+ * @param ref - reference to <input> element of Checkbox
  */
-export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): CheckboxState => {
-  const { disabled = false, circular = false, required = false, id, rootId, onChange: userOnChange } = props;
+export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
+  const { children, circular, size = 'medium', labelPosition = 'after' } = props;
+
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
     state: props.checked,
     initialState: false,
   });
 
-  const inputInternalRef = React.useRef<HTMLInputElement>(null);
-  const inputShorthand = resolveShorthand(props.input, {
-    required: true,
-    defaultProps: {
-      disabled,
-      type: 'checkbox',
-      required,
-    },
-  });
-
   const state: CheckboxState = {
+    children,
     circular,
     checked,
-    size: 'medium',
-    labelPosition: 'after',
-    rootId,
+    size,
+    labelPosition,
     components: {
       root: props.children !== undefined ? (Label as React.ComponentType<LabelProps>) : 'span',
       indicator: 'div',
       input: 'input',
     },
-    input: {
-      ...inputShorthand,
-      ref: useMergedRefs(inputShorthand.ref, inputInternalRef),
-    },
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: getRootSlotNativeProps(props),
+    }),
+    input: resolveShorthand(props.input, {
+      required: true,
+      defaultProps: {
+        type: 'checkbox',
+        id: useId('checkbox-', props.id),
+        ref,
+        // Exclude checked/defaultChecked/children from the input slot; they have custom handling in useCheckbox
+        ...getPrimarySlotNativeProps('input', props, /* excludedPropNames:*/ ['checked', 'defaultChecked', 'children']),
+      },
+    }),
     indicator: resolveShorthand(props.indicator, {
       required: true,
     }),
-    root: getNativeElementProps('div', { ref, ...props }),
   };
 
-  state.input.checked = checked === true;
-  state.checked = checked ? checked : false;
-
-  if (state.indicator && !state.indicator.children) {
+  if (!state.indicator.children) {
     if (state.size === 'medium') {
       state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
     } else {
@@ -76,26 +69,26 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): 
     }
   }
 
-  const inputOnChange = state.input.onChange;
+  const onChange = state.input.onChange as CheckboxProps['onChange'];
   state.input.onChange = useEventCallback(ev => {
     ev.stopPropagation();
-    inputOnChange?.(ev);
-
     const val = ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked;
-
-    userOnChange?.(ev, { checked: val });
+    onChange?.(ev, { checked: val });
     setChecked(val);
   });
 
-  state.input.id = useId('checkbox-', id);
-  state.root.id = state.rootId;
+  const inputRef = useMergedRefs(state.input.ref);
+  state.input.ref = inputRef;
 
-  const isMixed = checked === 'mixed';
+  // Set the <input> element's checked and indeterminate properties based on our tri-state property.
+  // Since indeterminate can only be set via javascript, it has to be done in a layout effect.
+  state.input.checked = checked === true;
+  const indeterminate = checked === 'mixed';
   useIsomorphicLayoutEffect(() => {
-    if (inputInternalRef.current) {
-      inputInternalRef.current.indeterminate = isMixed;
+    if (inputRef.current) {
+      inputRef.current.indeterminate = indeterminate;
     }
-  }, [isMixed]);
+  }, [inputRef, indeterminate]);
 
   return state;
 };

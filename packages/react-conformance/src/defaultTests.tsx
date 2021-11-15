@@ -130,12 +130,17 @@ export const defaultTests: TestObject = {
           wrapperComponent,
           elementRefName = 'ref',
           targetComponent,
+          primarySlot,
         } = testInfo;
 
-        const rootRef = React.createRef<HTMLDivElement>();
+        const ref = React.createRef<HTMLDivElement>();
         const mergedProps: Partial<{}> = {
           ...requiredProps,
-          [elementRefName]: rootRef,
+          // If primarySlot is specified, add a data attribute so we can find it later
+          ...(primarySlot && {
+            [primarySlot]: { 'data-primarySlot': true },
+          }),
+          [elementRefName]: ref,
         };
 
         const el = targetComponent
@@ -147,9 +152,16 @@ export const defaultTests: TestObject = {
 
           // Do an instanceof check first because if `ref` returns a class instance, the toBe check
           // will print out the very long stringified version in the error (which isn't helpful)
-          expect(rootRef.current).toBeInstanceOf(HTMLElement);
+          expect(ref.current).toBeInstanceOf(HTMLElement);
 
-          expect(rootRef.current).toBe(component.getDOMNode());
+          // The ref should point to the primary slot. By default, that's the root element,
+          // but if it's different, we need to find it via the data attribute added above.
+          let targetNode: Element | null = component.getDOMNode();
+          if (primarySlot) {
+            targetNode = targetNode?.querySelector('[data-primarySlot]');
+          }
+
+          expect(ref.current).toBe(targetNode);
         });
       } catch (e) {
         throw new Error(defaultErrorMessages['component-has-root-ref'](testInfo, e));
