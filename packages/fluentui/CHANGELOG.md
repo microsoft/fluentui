@@ -13,15 +13,12 @@
   - <A helpful short description> @<github username> (<PR number>)
 
 ------------------------------------------------------------------------------->
-
 # Changelog
-
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
 ### Fixes
-
 - Fix aria-labelledby passed to `DropdownSearchInput` @chpalac ([#20312](https://github.com/microsoft/fluentui/pull/20312))
 - Fix `preventFocusRestoration` in `FocusZone` @chpalac ([#20328](https://github.com/microsoft/fluentui/pull/20328))
 - `Popup` should not dismiss when its iframe content is focused @ling1726 ([#19955](https://github.com/microsoft/fluentui/pull/19955))
@@ -45,43 +42,33 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix color of `Dropdown` checkable indicator on hover in high contrast theme @annabratseiko ([#20621](https://github.com/microsoft/fluentui/pull/20621))
 
 ### Features
-
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
 
 <!--------------------------------[ v0.59.0 ]------------------------------- -->
-
 ## [v0.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.59.0) (2021-09-20)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.58.0..@fluentui/react-northstar_v0.59.0)
 
 ### BREAKING CHANGES
-
-- Remove Red Foreground 3 from color scheme tokens @codepretty ([#19761](https://github.com/microsoft/fluentui/pull/19761))
+- Remove Red Foreground 3 from color scheme tokens  @codepretty ([#19761](https://github.com/microsoft/fluentui/pull/19761))
 
 ### Fixes
-
 - Ignore `ChatItem` contentPosition in compact density @Hirse ([#19701](https://github.com/microsoft/fluentui/pull/19701))
 - Fix compact `ChatMessage` focus highlight @Hirse ([#19720](https://github.com/microsoft/fluentui/pull/19720))
 - Set active item of `MenuItem` with submenu on focus @chassunc ([#19820](https://github.com/microsoft/fluentui/pull/19820))
 - Fix `Popup` to have box-shadow when `autoSize` prop is true @yuanboxue-amber ([#19817](https://github.com/microsoft/fluentui/pull/19817))
 
 ### Documentation
-
 - Add Chat Playground @Hirse ([#19702](https://github.com/microsoft/fluentui/pull/19702))
 
 <!--------------------------------[ v0.58.0 ]------------------------------- -->
-
 ## [v0.58.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.58.0) (2021-09-09)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.57.0..@fluentui/react-northstar_v0.58.0)
 
 ### BREAKING CHANGES
-
 - Make `Tooltip` subtle by default and no pointing by default @chassunc ([#19024](https://github.com/microsoft/fluentui/pull/19024))
 - Don't show `ChatMessage` timestamp if reactions are in the bottom @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
 
 ### Fixes
-
 - Fix `Carousel` animation in controlled mode @assuncaocharles ([#18798](https://github.com/microsoft/fluentui/pull/18798))
 - Wrap ChatMessage header elements correctly @Hirse ([#18837](https://github.com/microsoft/fluentui/pull/18837))
 - Align ChatMessageDetails color with ChatMessage header @Hirse ([#18840](https://github.com/microsoft/fluentui/pull/18840))
@@ -109,20 +96,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Menu` high contrast focus for submenus @notandrew ([#19393](https://github.com/microsoft/fluentui/pull/19393))
 - Fix `Card` HC styles on hover @chassunc ([#19382](https://github.com/microsoft/fluentui/pull/19382))
 - Add `AppsIcon`, `AppFolderIcon`, `PageFitIcon`, `SubtractIcon` @notandrew ([#19424](https://github.com/microsoft/fluentui/pull/19424))
-- Fix `Dialog` background in teams dark v2 @chassunc ([#19434](https://github.com/microsoft/fluentui/pull/19434))
+- Fix `Dialog` background in teams dark v2  @chassunc ([#19434](https://github.com/microsoft/fluentui/pull/19434))
 - Fix `Menu` and `Popup` border, box-shadow, and paddings @notandrew ([#19084](https://github.com/microsoft/fluentui/pull/19084))
 - Fix to update Yellow's Background1 color to BackgroundTransparent @notandrew ([#19444](https://github.com/microsoft/fluentui/pull/19444))
-- Add missging pressed state styles for text `Button` @chassunc ([#19480](https://github.com/microsoft/fluentui/pull/19480))
+- Add missging pressed state styles for text `Button`  @chassunc ([#19480](https://github.com/microsoft/fluentui/pull/19480))
 - Fix `MenuItem` apply focus styles for vertical menu from `getBorderFocusStyles` @annabratseiko ([#19419](https://github.com/microsoft/fluentui/pull/19419))
-- Fix default `Tooltip` (`pointing: false`) to have 4px distance to trigger @yuanboxue-amber ([#19478](https://github.com/microsoft/fluentui/pull/19478))
-- Replace `SplitButton` shadow-box by `Divider` @chassunc ([#19477](https://github.com/microsoft/fluentui/pull/19477))
+- Fix default `Tooltip` (`pointing: false`) to have 4px distance to trigger  @yuanboxue-amber ([#19478](https://github.com/microsoft/fluentui/pull/19478))
+- Replace `SplitButton` shadow-box by `Divider`  @chassunc ([#19477](https://github.com/microsoft/fluentui/pull/19477))
 - add `disabledFocusable` for toolbar items @adamsamec ([#18720](https://github.com/microsoft/fluentui/pull/18720))
 - Fix `Tooltip` appearance in high contrast theme @yuanboxue-amber ([#19559](https://github.com/microsoft/fluentui/pull/19559))
 - Fix `Shadow` colors to match redlines @notandrew ([#19552](https://github.com/microsoft/fluentui/pull/19552))
 - Fix `Checkbox` background issue on zoom above 100% @vitthalr ([#19619](https://github.com/microsoft/fluentui/pull/19619))
 
 ### Features
-
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
 - Add 'flat' variation to Button and Splitbutton @codepretty ([#19130](https://github.com/microsoft/fluentui/pull/19130))
 - Add secondary styles for `Loader` @chassunc ([#19104](https://github.com/microsoft/fluentui/pull/19104))
@@ -133,19 +119,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `PersonIcon`, `BuildingIcon`, `BriefcaseIcon`, `TextBulletListTreeIcon`, `CalendarWorkWeekIcon`, `ListIcon`, `DesktopIcon`, `TwitterIcon`, `LinkedInIcon`. @TanelVari ([#19663](https://github.com/microsoft/fluentui/pull/19663))
 
 ### Documentation
-
 - Align author name in compact chat with design spec @Hirse ([#18988](https://github.com/microsoft/fluentui/pull/18988))
 
 <!--------------------------------[ v0.57.0 ]------------------------------- -->
-
 ## [v0.57.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.57.0) (2021-06-29)
 
 ### BREAKING CHANGES
-
 - For `Menu` and `Toolbar`, change submenu indicator from background image mimicking chevron icon to **outlined** chevron icon @yuanboxue-amber ([#18701](https://github.com/microsoft/fluentui/pull/18701))
 
 ### Fixes
-
 - Fixed invalid prop type warning of Input and InputLabel by including "above" in labelPosition @nancy2681 ([#18206](https://github.com/microsoft/fluentui/pull/18206))
 - Update border radius to 4px from 3px @notandrew ([#17748](https://github.com/microsoft/fluentui/pull/17748))
 - Fix `getPointerStyles` transform for emotion @assuncaocharles ([#18070](https://github.com/microsoft/fluentui/pull/18070))
@@ -156,7 +138,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Conditionally add `onClick` to `Pill` based on `actionable` prop to avoid NVDA narrating as clickable @assuncaocharles ([#18113](https://github.com/microsoft/fluentui/pull/18113))
 - Add `aria-hidden="true"` to `PillIcon` and `PillImage` @assuncaocharles ([#18118](https://github.com/microsoft/fluentui/pull/18118))
 - Support selection with Space key for selectable `Pill` @assuncaocharles ([#18138](https://github.com/microsoft/fluentui/pull/18138))
-- Add Avatar\* styles to theme types @assuncaocharles ([#17782](https://github.com/microsoft/fluentui/pull/17782))
+- Add Avatar* styles to theme types @assuncaocharles ([#17782](https://github.com/microsoft/fluentui/pull/17782))
 - Fix events passed to `Tooltip` trigger @assuncaocharles ([#18234](https://github.com/microsoft/fluentui/pull/18234))
 - Fix `Tooltip` to spread unhandledProps to trigger @assuncaocharles ([#18277](https://github.com/microsoft/fluentui/pull/18277))
 - Add animations to `SkeletonText` @assuncaocharles ([#18276](https://github.com/microsoft/fluentui/pull/18276))
@@ -178,7 +160,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix dropdown container overflow-x @assuncaocharles ([#18749](https://github.com/microsoft/fluentui/pull/18749))
 
 ### Features
-
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
 - Add `inline` to `ChatMessage`'s `actionMenu` prop that allows actionMenu to be rendered either inline or attached to body @yuanboxue-amber ([#18147](https://github.com/microsoft/fluentui/pull/18147))
 - Let focus-border inherit border-radius from `ChatMessage` @Hirse ([#18305](https://github.com/microsoft/fluentui/pull/18305))
@@ -191,41 +172,31 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Performance
 
 ### Documentation
-
 - Allow switching to V2 themes in maximized examples @Hirse ([#18292](https://github.com/microsoft/fluentui/pull/18292))
 - Add DocumentTitle from Prototype section @Hirse ([#18539](https://github.com/microsoft/fluentui/pull/18539))
 - Update selectable list example to make sure selection state is visible in all themes @yuanboxue-amber ([#18639](https://github.com/microsoft/fluentui/pull/18639))
 
 <!--------------------------------[ v0.56.0 ]------------------------------- -->
-
 ## [v0.56.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.56.0) (2021-05-14)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.55.0..@fluentui/react-northstar_v0.56.0)
 
 ### BREAKING CHANGES
-
 - `useCSS` hook was removed @layershifter ([#18139](https://github.com/microsoft/fluentui/pull/18139))
 
 ### Fixes
-
 - Fix `focusVisiblePlugin` removing `data-whatinput='initial'` selector @assuncaocharles ([#18074](https://github.com/microsoft/fluentui/pull/18074))
 
 ### Features
-
 - Update to Emotion 11 @layershifter ([#18143](https://github.com/microsoft/fluentui/pull/18143))
 
 <!--------------------------------[ v0.55.0 ]------------------------------- -->
-
 ## [v0.55.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.55.0) (2021-05-05)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.54.0..@fluentui/react-northstar_v0.55.0)
 
 ### BREAKING CHANGES
-
 - `nonce` can be configured for Emotion renderer @layershifter ([#17972](https://github.com/microsoft/fluentui/pull/17972))
 
 ### Fixes
-
 - Correct ref to `Toolbar` overflowSentinel @yuanboxue-amber ([#17813](https://github.com/microsoft/fluentui/pull/17813))
 - Fix `Carousel` to allow click in element inside item @assuncaocharles ([#17814](https://github.com/microsoft/fluentui/pull/17814))
 - Fix `chatMessageStyles` to show reactions on mouse over when variable `showActionMenu` is present @assuncaocharles ([#17853](https://github.com/microsoft/fluentui/pull/17853))
@@ -233,7 +204,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Popup` to only render `Portal` when popup open @yuanboxue-amber ([#17926](https://github.com/microsoft/fluentui/pull/17926))
 
 ### Features
-
 - Add NumberSymbolIcon (#), MoleculeIcon, TaskListIcon; update ReactionsIcon and VideoEmphasisIcon @notandrew ([#18012](https://github.com/microsoft/fluentui/pull/18012))
 - Add default `backgroundActive2` and brand `backgroundPressed1` color slots @notandrew ([#17699](https://github.com/microsoft/fluentui/pull/17699))
 - Add data-popup-trapfocus to differentiate beween dialog and popup @jurokapsiar ([#17743](https://github.com/microsoft/fluentui/pull/17743))
@@ -243,21 +213,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add options on `Popper` `autoSize` modifier to apply max sizes always @yuanboxue-amber ([#17994](https://github.com/microsoft/fluentui/pull/17994))
 
 ### Deprecations
-
 - Set as deprecated `Portal` component @petr-duda ([#17983](https://github.com/microsoft/fluentui/pull/17983))
 
 <!--------------------------------[ v0.54.0 ]------------------------------- -->
-
 ## [v0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.54.0) (2021-04-06)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.53.0..@fluentui/react-northstar_v0.54.0)
 
 ### BREAKING CHANGES
-
 - Change background image of `MenuItem` submenu indicator to chevrons @yuanboxue-amber ([#17664](https://github.com/microsoft/fluentui/pull/17664))
 
 ### Fixes
-
 - Optimized `FileImageIcon` and adding padding to `ImageUnavailableIcon` to match FileImageIcon @notandrew ([#17631](https://github.com/microsoft/fluentui/pull/17631))
 - Add success to AlertDismissAction propTypes @jurokapsiar ([#17542](https://github.com/microsoft/fluentui/pull/17542))
 - Add `overflowSentinel` slot to fix `Toolbar` overflow when parent container does not have fixed width @ling1726 ([#17451](https://github.com/microsoft/fluentui/pull/17451))
@@ -266,7 +231,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Datepicker` so its `Input` value changes on `selectedDate` prop change @yuanboxue-amber ([#17644](https://github.com/microsoft/fluentui/pull/17644))
 
 ### Features
-
 - Add `borderActive4` color slot @notandrew ([#17391](https://github.com/microsoft/fluentui/pull/17391))
 - Add `Pill` base componet @assuncaocharles ([#17500](https://github.com/microsoft/fluentui/pull/17500))
 - Add `PillAction` base componet @assuncaocharles ([#17548](https://github.com/microsoft/fluentui/pull/17548))
@@ -275,22 +239,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `PillGroup` componet @assuncaocharles ([#17601](https://github.com/microsoft/fluentui/pull/17601))
 
 ### Performance
-
 - Optimize memory consumption in `useStyles()` @layershifter ([#17521](https://github.com/microsoft/fluentui/pull/17521))
 
 ### Documentation
-
 - Update left nav in UI Builder to separate add components from navigator @codepretty ([#17002](https://github.com/microsoft/fluentui/pull/17002))
 - Deprecate `useCSS()` hook @layershifter ([#17520](https://github.com/microsoft/fluentui/pull/17520))
 
 <!--------------------------------[ v0.53.0 ]------------------------------- -->
-
 ## [v0.53.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.53.0) (2021-03-13)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.52.2..@fluentui/react-northstar_v0.53.0)
 
 ### BREAKING CHANGES
-
 - Remove unsupported values for `size` prop in `Button` component @notandrew ([#16416](https://github.com/microsoft/fluentui/pull/16416))
 - Removing logic from `buttonBehavior` related to loading state @kolaps33 ([#16663](https://github.com/microsoft/fluentui/pull/16663))
 - Renamed `Card` property `quiet` to `ghost` as per design spec. @TanelVari ([#16585](https://github.com/microsoft/fluentui/pull/16585))
@@ -299,7 +258,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Updated `Datepicker` to allow the entire week selection and removed space between cells. @vejrj ([#16887](https://github.com/microsoft/fluentui/pull/16887))
 
 ### Fixes
-
 - Fix vertical `Menu` background color to pull from the correct color scheme in Teams themes @codepretty ([#17200](https://github.com/microsoft/fluentui/pull/17200))
 - Fix `Menu` iconOnly focus border to be correct style in Teams themes @codepretty ([#17005](https://github.com/microsoft/fluentui/pull/17005))
 - Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
@@ -325,7 +283,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Prevent Popup to be dismissed when scroll happens inside @yuanboxue-amber ([#17419](https://github.com/microsoft/fluentui/pull/17419))
 
 ### Features
-
 - For `Tree`, add keyboard navigation based on the first letter of the text content of tree items @yuanboxue-amber ([#16994](https://github.com/microsoft/fluentui/pull/16994))
 - For `VirtualTreePrototype`, add keyboard navigation based on the first letter of the text content of tree items @yuanboxue-amber ([#17012](https://github.com/microsoft/fluentui/pull/17012))
 - Added `OneNoteMonoIcon`. Updated `VideoProhibitedIcon`. @TanelVari ([#17051](https://github.com/microsoft/fluentui/pull/17051))
@@ -338,7 +295,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Performance
 
 ### Documentation
-
 - Updating avatar images used in examples on the docsite @notandrew ([#16486](https://github.com/microsoft/fluentui/pull/16486))
 - Fix docsite header colors for all themes. `ExampleSnippet` now honors theme colors for background and foreground. @TanelVari ([#16643](https://github.com/microsoft/fluentui/pull/16643))
 - Added virtual cursor simulation to UI Builder. @adamsamec ([#15972](https://github.com/microsoft/fluentui/pull/15972))
@@ -346,32 +302,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix component tree in UI Builder @jurokapsiar ([#16587](https://github.com/microsoft/fluentui/pull/16587))
 
 ### Deprecations
-
 - Set as deprecated prop `control` in `Form.Field` and `fields`in `Form` @assuncaocharles ([#16474](https://github.com/microsoft/fluentui/pull/16474))
 
 <!--------------------------------[ v0.52.2 ]------------------------------- -->
-
 ## [v0.52.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.2) (2021-03-09)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.52.1..@fluentui/react-northstar_v0.52.2)
 
 ### Fixes
-
 - Prevent menu to be dismissed when scroll happens inside `Menu` boundaries @assuncaocharles ([#17294](https://github.com/microsoft/fluentui/pull/17294))
 - Fix double rendering of `ChatMessage` component @layershifter ([#17276](https://github.com/microsoft/fluentui/pull/17276))
 
 ### Features
-
 - Add `usePopper()` hook for positioning @layershifter ([#17276](https://github.com/microsoft/fluentui/pull/17276))
 
+
 <!--------------------------------[ v0.52.1 ]------------------------------- -->
-
 ## [v0.52.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.0) (2021-02-22)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.7..@fluentui/react-northstar_v0.52.1)
 
 ### Features
-
 - Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
 - Added `ChannelShareIcon` @notandrew ([#16619](https://github.com/microsoft/fluentui/pull/16619))
 - Added `FormTextArea` component @assuncaocharles ([#16660](https://github.com/microsoft/fluentui/pull/16660))
@@ -379,27 +328,24 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `ImageAltTextIcon` @notandrew ([#16884](https://github.com/microsoft/fluentui/pull/16884))
 
 ### Fixes
+ - Fix a memory leak in `useEventListener` @layershifter @miroslavstastny ([#16991](https://github.com/microsoft/fluentui/pull/16991))
+ - Export treeContext from `Tree` @yuanboxue-amber ([#16891](https://github.com/microsoft/fluentui/pull/16891))
+ - Add missing prop type for `Dropdown` @pompomon ([#16920](https://github.com/microsoft/fluentui/pull/16920))
+ - Change `TreeTitle`'s `selectionIndicator` from visibility:hidden to display:none @yuanboxue-amber ([#16922](https://github.com/microsoft/fluentui/pull/16922))
+ - Fix event handlers behavior and compatibility with portals in React 17 @layershifter ([#16514](https://github.com/microsoft/fluentui/pull/16514))
+ - Fix `mergeVariablesOverrides` to return `variables` if it's defined and `overrides` are not @assuncaocharles ([#16560](https://github.com/microsoft/fluentui/pull/16560))
+ - Refactor `react-context-selector` to avoid React warnings @assuncaocharles ([#16714](https://github.com/microsoft/fluentui/pull/16714))
+ - Exclude className for CKEditor to avoid collisions with Fela renderer @layershifter ([#17025](https://github.com/microsoft/fluentui/pull/17025))
+ - Remove `role='complementary'` from `popupBehavior` for inline popup @yuanboxue-amber ([#17032](https://github.com/microsoft/fluentui/pull/17032))
 
-- Fix a memory leak in `useEventListener` @layershifter @miroslavstastny ([#16991](https://github.com/microsoft/fluentui/pull/16991))
-- Export treeContext from `Tree` @yuanboxue-amber ([#16891](https://github.com/microsoft/fluentui/pull/16891))
-- Add missing prop type for `Dropdown` @pompomon ([#16920](https://github.com/microsoft/fluentui/pull/16920))
-- Change `TreeTitle`'s `selectionIndicator` from visibility:hidden to display:none @yuanboxue-amber ([#16922](https://github.com/microsoft/fluentui/pull/16922))
-- Fix event handlers behavior and compatibility with portals in React 17 @layershifter ([#16514](https://github.com/microsoft/fluentui/pull/16514))
-- Fix `mergeVariablesOverrides` to return `variables` if it's defined and `overrides` are not @assuncaocharles ([#16560](https://github.com/microsoft/fluentui/pull/16560))
-- Refactor `react-context-selector` to avoid React warnings @assuncaocharles ([#16714](https://github.com/microsoft/fluentui/pull/16714))
-- Exclude className for CKEditor to avoid collisions with Fela renderer @layershifter ([#17025](https://github.com/microsoft/fluentui/pull/17025))
-- Remove `role='complementary'` from `popupBehavior` for inline popup @yuanboxue-amber ([#17032](https://github.com/microsoft/fluentui/pull/17032))
 
 <!--------------------------------[ v0.52.0 ]------------------------------- -->
-
 ## [v0.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.0) (2021-01-26)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.7..@fluentui/react-northstar_v0.52.0)
 
 ### BREAKING CHANGES
-
 - `Form`: removed static properties: `Form.Field`, `Form.FieldCustom`, `Form.Label`, `Form.Message`, `Form.Input`, `Form.Checkbox`, `Form.Dropdown`, `Form.Button`, `Form.RadioGroup`, `Form.Slider`,`Form.Datepicker` @yuanboxue-amber ([#16546](https://github.com/microsoft/fluentui/pull/16546))
-- `Avatar`: removed static properties: `Avatar.Status`, `Avatar.StatusIcon`, `Avatar.Image`, `Avatar.Label`, `Avatar.Icon` @yuanboxue-amber ([#16565](https://github.com/microsoft/fluentui/pull/16565))
+- `Avatar`: removed static properties: `Avatar.Status`, `Avatar.StatusIcon`, `Avatar.Image`, `Avatar.Label`, `Avatar.Icon`  @yuanboxue-amber ([#16565](https://github.com/microsoft/fluentui/pull/16565))
 - `Tree`: removed management of `contentRef` for tree items. `TreeItem`: removed `selected`, `selectableParent` and `indeterminate` props @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
 - Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
 - Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
@@ -413,7 +359,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Styles from `Avatar` icon slot were moved to exact component `AvatarIcon` @assuncaocharles ([#16428](https://github.com/microsoft/fluentui/pull/16428))
 
 ### Fixes
-
 - Fix `useTree` by changing `env.NODE` to `env.NODE_ENV` @yuanboxue-amber ([#16630](https://github.com/microsoft/fluentui/pull/16630))
 - optimize largest icons used by calling @yuanboxue-amber ([#16590](https://github.com/microsoft/fluentui/pull/16590))
 - Fix selectable `Tree` where node with unselectable children displaying wrong selection state @yuanboxue-amber ([#16158](https://github.com/microsoft/fluentui/pull/16158))
@@ -459,7 +404,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix click handler moving it from Menu Item Wrapper to Menu Item itself @assuncaocharles ([#16512](https://github.com/microsoft/fluentui/pull/16512))
 
 ### Features
-
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
 - `Tree`: added `useVirtualTree` hook @yuanboxue-amber ([#16080](https://github.com/microsoft/fluentui/pull/16080))
 - `Tree`: added `useTree` hook @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
@@ -495,7 +439,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added color tokens to be used for search term highlighting. Added default foreground7 and default background6 into Teams theme v1 and v2. @TanelVari ([#16391](https://github.com/microsoft/fluentui/pull/16391))
 
 ### Documentation
-
 - Performance Tests with Roster prototype @vyhnalekl + @yuanboXue-amber ([#16412](https://github.com/microsoft/fluentui/pull/16412))
 - Fix sticky tree's hidden item + focus loss when last sticky header collapsed @yuanboxue-amber ([#16341](https://github.com/microsoft/fluentui/pull/16341))
 - Add `VirtualizedStickyTreePrototype` @yuanboxue-amber ([#16221](https://github.com/microsoft/fluentui/pull/16221))
@@ -536,50 +479,37 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add new sample images for use in Avatar examples @behowell ([#16129](https://github.com/microsoft/fluentui/pull/16129))
 
 <!--------------------------------[ v0.51.7 ]------------------------------- -->
-
 ## [v0.51.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.7) (2021-01-25)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.6..@fluentui/react-northstar_v0.51.7)
 
 ### Fixes
-
 - Fix incorrect fluent icons @notandrew ([#16594](https://github.com/microsoft/fluentui/pull/16594))
 
 <!--------------------------------[ v0.51.6 ]------------------------------- -->
-
 ## [v0.51.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.6) (2021-01-18)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.5..@fluentui/react-northstar_v0.51.6)
 
 ### Fixes
-
 - Optimize `NumberListIcon` for bundled size @ling1726 ([#16473](https://github.com/microsoft/fluentui/pull/16473))
 - Fix event handlers behavior and compatibility with portals in React 17 @layershifter ([#16514](https://github.com/microsoft/fluentui/pull/16514))
 
 <!--------------------------------[ v0.51.5 ]------------------------------- -->
-
 ## [v0.51.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.5) (2021-01-12)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.4..@fluentui/react-northstar_v0.51.5)
 
 ### Fixes
-
 - Do not trigger `Popup` on `click` when `hover` is used with `context` @jurokapsiar ([#16286](https://github.com/microsoft/fluentui/pull/16286))
 - Fix throwing error when using `ChatMessage` with children without declaring the `header` prop @ling1726 ([#16321](https://github.com/microsoft/fluentui/pull/16321))
 - Update icons to Fluent Design style @notandrew ([#15966](https://github.com/microsoft/fluentui/pull/15966))
 
 ### Features
-
 - Added new `borderActive` color design token to `categoryColorScheme` @ling1726 ([#15717](https://github.com/microsoft/fluentui/pull/15717))
 
 <!--------------------------------[ v0.51.4 ]------------------------------- -->
-
 ## [v0.51.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.4) (2020-12-22)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.3..@fluentui/react-northstar_v0.51.4)
 
 ### Fixes
-
 - Fix `Tree` cannot expand/collapse when treeTitle has children @yuanboxue-amber ([#16199](https://github.com/microsoft/fluentui/pull/16199))
 - Export missing type `SplitButtonToggleStyleProps` @ling1726 ([#16215](https://github.com/microsoft/fluentui/pull/16215))
 - Fix wrong grid template in `Checkbox` for `label` end @jurokapsiar ([#16208](https://github.com/microsoft/fluentui/pull/16208))
@@ -589,13 +519,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix the type for `onBlur`callback in the `Dropdown` component @ling1726 ([#16257](https://github.com/microsoft/fluentui/pull/16257))
 
 <!--------------------------------[ v0.51.3 ]------------------------------- -->
-
 ## [v0.51.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.3) (2020-11-24)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/'@fluentui/react-northstar_v'0.51.2..@fluentui/react-northstar_v0.51.3)
 
 ### Fixes
-
 - Cleanup `src` on `Video` component unmount @SreepriyaV, @miroslavstastny ([#15494](https://github.com/microsoft/fluentui/pull/15494))
 - Fix outdated `onChange` call in `RadioGroupItem` @assuncaocharles ([#15997](https://github.com/microsoft/fluentui/pull/15997))
 - Fix `Embed` throws when no style `variables` are passed in @yuanboxue-amber ([#16000](https://github.com/microsoft/fluentui/pull/16000))
@@ -604,23 +531,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Attachment` to pass `actionable` to accessibility behaviors @layershifter ([#16023](https://github.com/microsoft/fluentui/pull/16023))
 
 <!--------------------------------[ v0.51.2 ]------------------------------- -->
-
 ## [v0.51.2](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.2) (2020-09-25)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/'@fluentui/react-northstar_v'0.51.1..'@fluentui/react-northstar_v'0.51.2)
 
 ### Fixes
-
 - Add cleanup to Fela renderer to avoid memory leaks @layershifter @miroslavstastny ([#15211](https://github.com/microsoft/fluentui/pull/15211))
 
 <!--------------------------------[ v0.51.1 ]------------------------------- -->
-
 ## [v0.51.1](https://github.com/microsoft/fluentui/tree/'@fluentui/react-northstar_v'0.51.1) (2020-09-23)
-
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.0..'@fluentui/react-northstar_v'0.51.1)
 
 ### Fixes
-
 - Fix a warning when the `inverted` prop was used in `TextArea` @layershifter ([#14357](https://github.com/microsoft/fluentui/pull/14357))
 - Add `Popper` modifiers to fix initial positioning @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
 - Add `Popper` warning when children with `autoFocus` prop are present @pompomon ([#14737](https://github.com/microsoft/fluentui/pull/14737))
@@ -630,20 +551,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Make `Popup` & `Tooltip` visible on disabled elements @layershifter ([#14756](https://github.com/microsoft/fluentui/pull/14756))
 
 <!--------------------------------[ v0.51.0 ]------------------------------- -->
-
 ## [v0.51.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.51.0) (2020-07-27)
-
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.50.0..@fluentui/react-northstar_v0.51.0)
 
 ## BREAKING CHANGES
-
 - Restricted prop sets in the `Grid` component which are passed to styles functions @layershifter ([#13863](https://github.com/microsoft/fluentui/pull/13863))
 - Restricted prop sets in the `Dropdown` component which are passed to styles functions @layershifter ([#13962](https://github.com/microsoft/fluentui/pull/13962))
 - `UIComponent` and `AutoControlledComponent` are removed @layershifter ([#13962](https://github.com/microsoft/fluentui/pull/13962))
 - Set `Dropdown` to only stop `ESC` keydown propagation if `Dropdown` is open @assuncaocharles ([#14184](https://github.com/microsoft/fluentui/pull/14184))
 
 ### Fixes
-
 - Fix `Tooltip` layouting when it is closed @fealkhou ([#13237](https://github.com/microsoft/fluentui/pull/13237))
 - Updating list item to use the Teams redlines @notandrew ([#13233](https://github.com/microsoft/fluentui/pull/13233))
 - Fix `Avatar` initials when the input only contains whitespace @rymeskar ([#13682](https://github.com/microsoft/fluentui/pull/13682))
@@ -666,7 +583,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix Timestamp in `Text` to match Teams redlines @notandrew ([#14153](https://github.com/microsoft/fluentui/pull/14153))
 
 ### Features
-
 - Add Emotion as an optional CSS-in-JS renderer @layershifter ([#13547](https://github.com/microsoft/fluentui/pull/13547))
 - Add `details` slot for ChatMessage header @assuncaocharles ([#13776](https://github.com/microsoft/fluentui/pull/13776))
 - Add `AppsIcon`, `GeofenceArrivesIcon`, `GeofenceLeavesIcon`, `GeofenceArrivesOrLeavesIcon` @TanelVari ([#13888](https://github.com/microsoft/fluentui/pull/13888))
@@ -676,20 +592,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add navigation and shorthands for `Datepicker` @pompompon ([#14061](https://github.com/microsoft/fluentui/pull/14061))
 
 ### Documentation
-
 - Fix required version of CSB package, improve dependency generation for exported CodeSandboxes @layershifter ([#13637](https://github.com/microsoft/fluentui/pull/13637))
 - Fix docsite not loading in IE 11 @miroslavstastny ([#13766](https://github.com/microsoft/fluentui/pull/13766))
 - Fix `SplitButton` example for controlled menu open @pompomon ([#14023](https://github.com/microsoft/fluentui/pull/14023))
-- Add _Debugging_ page @miroslavstastny ([#13818](https://github.com/microsoft/fluentui/pull/13818))
+- Add *Debugging* page @miroslavstastny ([#13818](https://github.com/microsoft/fluentui/pull/13818))
 
 <!--------------------------------[ v0.50.0 ]------------------------------- -->
-
 ## [v0.50.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.50.0) (2020-06-16)
-
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.49.0..@fluentui/react-northstar_v0.50.0)
 
 ## BREAKING CHANGES
-
 - Restricted prop sets in the `MenuDivider` component which are passed to styles functions @assuncaocharles ([#13069](https://github.com/microsoft/fluentui/pull/13069))
 - Restricted prop sets in the `Segment` component which are passed to styles functions @assuncaocharles ([#13079](https://github.com/microsoft/fluentui/pull/13079))
 - Restricted prop sets in the `Reaction` component which are passed to styles functions @assuncaocharles ([#13081](https://github.com/microsoft/fluentui/pull/13081))
@@ -730,7 +642,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `renderer` prop on `Provider` was replaced with a custom React context @layershifter ([#13602](https://github.com/microsoft/fluentui/pull/13602))
 
 ### Fixes
-
 - Fix `splitButtonBehavior` to exclude `toggleButton` from focus zone @silviuavram ([#13043](https://github.com/microsoft/fluentui/pull/13043))
 - Fix offset computations in `Popup` to properly position pointer @layershifter ([#13002](https://github.com/microsoft/fluentui/pull/13002))
 - Enable back focus zone in `CarouselNavigation` @kolaps33 ([#13086](https://github.com/microsoft/fluentui/pull/13086))
@@ -745,7 +656,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix displaying custom `clearIndicator` prop for `Dropdown` @kolaps33 ([#13486](https://github.com/microsoft/fluentui/pull/13486))
 
 ### Features
-
 - Added icons: `TranscriptIcon`, `FilesGenericColoredIcon`, `FilesHtmlColoredIcon`, `FilesPdfColoredIcon`, `FilesPictureColoredIcon`, `FilesTextColoredIcon`, `PopupIcon`, `ShareGenericIcon`, `ComposeIcon`, `SpotlightStopIcon`, `TenantWorkIcon`, `TenantPersonalIcon`, `WorkOrSchoolIcon`, `EmailWithDotIcon`. Modified: `ShareLocationIcon`, `SpotlightIcon`. @TanelVari ([#12872](https://github.com/microsoft/fluentui/pull/12872))
 - Update `padding` and `margin` styles for `Card` @pompomon ([#13158](https://github.com/microsoft/fluentui/pull/13158))
 - Add `expandabble` prop and styles for `Card` @pompomon ([#13092](https://github.com/microsoft/fluentui/pull/13092))
@@ -754,7 +664,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use `compose()` in `MenuDivider` @layershifter ([#13207](https://github.com/microsoft/fluentui/pull/13207))
 - Add `selected` prop and styles for `Card` @pompomon ([#12921](https://github.com/microsoft/fluentui/pull/12921))
 - Update styles for `selected` `Card` @pompomon ([#13230](https://github.com/microsoft/fluentui/pull/13230))
-- Added icons: `AudioLoadingIcon`, `VideoLoadingIcon`, `TiltPanZoomIcon`, `SpeakerPersonIcon`, `GalleryNewIcon`, `GalleryNewLargeIcon`, `ContentIcon`, `AudienceIcon`, `CameraIcon` @TanelVari ([#13221](https://github.com/microsoft/fluentui/pull/13221))
+- Added icons: `AudioLoadingIcon`, `VideoLoadingIcon`, `TiltPanZoomIcon`, `SpeakerPersonIcon`, `GalleryNewIcon`, `GalleryNewLargeIcon`, `ContentIcon`, `AudienceIcon`, `CameraIcon`  @TanelVari ([#13221](https://github.com/microsoft/fluentui/pull/13221))
 - Add children api support for `Menu` component @assuncaocharles ([#13227](https://github.com/microsoft/fluentui/pull/13227))
 - Add `compose()` support for submenus in `MenuItem` @mnajdova ([#13300](https://github.com/microsoft/fluentui/pull/13300))
 - Use `compose()` in `ToolbarMenuDivider` @mnajdova ([#13318](https://github.com/microsoft/fluentui/pull/13318))
@@ -768,11 +678,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use `compose()` in `ToolbarMenu` @layershifter, @mnajdova ([#13320](https://github.com/microsoft/fluentui/pull/13320))
 - Add `compose()` support for submenus in `Toolbar` @mnajdova ([#13377](https://github.com/microsoft/fluentui/pull/13377))
 - Add `show` and `hide` animations in the `Popup` component @mnajdova ([#13439](https://github.com/microsoft/fluentui/pull/13439))
-- Added icons: `MeetingTimeIcon`, `VideomailIcon`, `ScreenshareIcon`, `Shift24hIcon`, `ShiftActivity` @TanelVari ([#13513](https://github.com/microsoft/fluentui/pull/13513))
+- Added icons: `MeetingTimeIcon`, `VideomailIcon`, `ScreenshareIcon`, `Shift24hIcon`, `ShiftActivity`  @TanelVari ([#13513](https://github.com/microsoft/fluentui/pull/13513))
 - Extract `Renderer` related types to a separate package @layershifter ([#13616](https://github.com/microsoft/fluentui/pull/13616))
 
 ### Performance
-
 - Omit `_.findKey()` usage in `focusVisibleEnhancer()` @layershifter ([#13343](https://github.com/microsoft/fluentui/pull/13343))
 - Use `mergeVariablesOverrides()` to avoid cache breaks when variables are not passed in `Toolbar`, `Menu` & `Table` components @layershifter ([#13374](https://github.com/microsoft/fluentui/pull/13374))
 - Remove `camelCaseProperty` call inside Fela renderer @layershifter ([#13308](https://github.com/microsoft/fluentui/pull/13308))
@@ -780,21 +689,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Improved the perf of the `convertCssTimeToNumber` utility used in `Animation` @layershifter, @mnajdova ([#13604](https://github.com/microsoft/fluentui/pull/13604))
 
 ### Documentation
-
-- `Toolbar` recommendation using toolbar based on aria @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))
-- Fix knobs labels on docsite @pompomon ([#13248](https://github.com/microsoft/fluentui/pull/13248))
-- Add `Card` best practices @pompomon ([#13315](https://github.com/microsoft/fluentui/pull/13315))
+- `Toolbar` recommendation using toolbar based on aria  @kolaps33 ([#13143](https://github.com/microsoft/fluentui/pull/13143))
+- Fix knobs labels on docsite  @pompomon ([#13248](https://github.com/microsoft/fluentui/pull/13248))
+- Add `Card` best practices  @pompomon ([#13315](https://github.com/microsoft/fluentui/pull/13315))
 - `Dropdown` update best practice if `loadingMessage` prop is used @kolaps33 ([#13558](https://github.com/microsoft/fluentui/pull/13558))
 - Add UI Builder Alpha @levithomason @miroslavstastny ([12234](https://github.com/microsoft/fluentui/pull/12234))
 
 <!--------------------------------[ v0.49.0 ]------------------------------- -->
-
 ## [v0.49.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.49.0) (2020-05-10)
-
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/@fluentui/react-northstar_v0.48.0..@fluentui/react-northstar_v0.49.0)
 
 ### BREAKING CHANGES
-
 - `Attachment.slotClassNames` were removed @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
 - Styles from `Attachment` slots were moved to exact components (`AttachmentAction`, `AttachmentHeader`, etc.) @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
 - CSS Grid, `linear-gradient()`, `background-clip`, `cross-fade()` are not prefixed @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
@@ -832,7 +737,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Limit props `activeIndex` and `defaultActiveIndex` in `Carousel` to be only numbers @assuncaocharles ([#13048](https://github.com/microsoft/fluentui/pull/13048))
 
 ### Fixes
-
 - Visually align checkbox and label elements in `Checkbox` component @silviuavram ([#12590](https://github.com/microsoft/fluentui/pull/12590))
 - Fix `Ref` to react on props changes when `forwardRef` is used @mnajdova ([#12817](https://github.com/microsoft/fluentui/pull/12817))
 - Fix `AccordionTitle` to be rendered as `div` by default @pompomon ([#12840](https://github.com/microsoft/fluentui/pull/12840))
@@ -843,16 +747,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Attach an element to `document.body` in `Provider` during render @layershifter ([#13001](https://github.com/microsoft/fluentui/pull/13001))
 
 ### Features
-
 - Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
-- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Accordion`_, `Alert`_, `Animation`, `Attachment`\*, `Avatar` @mnajdova ([#12706](https://github.com/microsoft/fluentui/pull/12706))
-- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Box`, `Button`_, `Card`_ @mnajdova ([#12731](https://github.com/microsoft/fluentui/pull/12731))
-- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Carousel`_, `Chat`_, `Checkbox` @mnajdova ([#12733](https://github.com/microsoft/fluentui/pull/12733))
-- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Dialog`_, `Divider`, `Dropdown`_, `Embed` @mnajdova ([#12734](https://github.com/microsoft/fluentui/pull/12734))
-- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Flex`_, `Form`_, `Grid`, `Header`_, `HierarchicalTree`_, `Image`, `Input` @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
-- Export `componentNameClassName` and `componentNameSlotClassName` const inside `ItemLayout`, `Label`_, `Layout`, `List`_, `Loader`, `Menu`\* @mnajdova ([#12736](https://github.com/microsoft/fluentui/pull/12736))
-- Export `componentNameClassName` and `componentNameSlotClassName` const inside `MenuButton`, `Popup`_, `Provider`, `RadioGroup`_, `Reaction`_, `Segment`, `Slider`_, `SplitButton`_, `Status`, `Slider`, `Table`_ @mnajdova ([#12738](https://github.com/microsoft/fluentui/pull/12738))
-- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Text`, `TextArea`, `Toolbar`_, `Tooltip`_, `Tree`\*, `Video` @mnajdova ([#12741](https://github.com/microsoft/fluentui/pull/12741))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Accordion`*, `Alert`*, `Animation`, `Attachment`*, `Avatar` @mnajdova ([#12706](https://github.com/microsoft/fluentui/pull/12706))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Box`, `Button`*, `Card`* @mnajdova ([#12731](https://github.com/microsoft/fluentui/pull/12731))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Carousel`*, `Chat`*, `Checkbox` @mnajdova ([#12733](https://github.com/microsoft/fluentui/pull/12733))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Dialog`*, `Divider`, `Dropdown`*, `Embed` @mnajdova ([#12734](https://github.com/microsoft/fluentui/pull/12734))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Flex`*, `Form`*, `Grid`, `Header`*, `HierarchicalTree`*, `Image`, `Input` @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `ItemLayout`, `Label`*, `Layout`, `List`*, `Loader`, `Menu`* @mnajdova ([#12736](https://github.com/microsoft/fluentui/pull/12736))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `MenuButton`, `Popup`*, `Provider`, `RadioGroup`*, `Reaction`*, `Segment`, `Slider`*, `SplitButton`*, `Status`, `Slider`, `Table`* @mnajdova ([#12738](https://github.com/microsoft/fluentui/pull/12738))
+- Export `componentNameClassName` and `componentNameSlotClassName` const inside `Text`, `TextArea`, `Toolbar`*, `Tooltip`*, `Tree`*, `Video` @mnajdova ([#12741](https://github.com/microsoft/fluentui/pull/12741))
 - Add `onClick` prop and focusable behaviors to `Card` component @pompomon ([#12688](https://github.com/microsoft/fluentui/pull/12688))
 - Add `disabled` prop and styles to `Card` component @pompomon ([#12743](https://github.com/microsoft/fluentui/pull/12743))
 - Adding multiselection for the `Tree` @kolaps33, @assuncaocharles ([#12362](https://github.com/microsoft/fluentui/pull/12362))
@@ -867,18 +770,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use `compose()` in `ToolbarDivider` @mnajdova ([#13045](https://github.com/microsoft/fluentui/pull/13045))
 
 ### Performance
-
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
 
 ### Fixes
-
 - Replace `escape` with `encodeURIComponent` in the svg urls in Teams theme @mnajdova ([#12742](https://github.com/microsoft/fluentui/pull/12742))
 - Prevent value clear on same item selection in `Dropdown` @silviuavram ([#12784](https://github.com/microsoft/fluentui/pull/12784))
 - Make the `clearIndicator` tabbable in a non-search `Dropdown` @silviuavram ([#12684](https://github.com/microsoft/fluentui/pull/12684))
 - Check for `getItemPositionText` in `Carousel` before rendering the pagination text @silviuavram ([#12791](https://github.com/microsoft/fluentui/pull/12791))
 
 ### Documentation
-
 - `Toolbar` accessibility polish, labelling toolbars @kolaps33 ([#12884](https://github.com/microsoft/fluentui/pull/12884))
 - `Carousel` accessibility polish, labelling items in example @kolaps33 ([#12903](https://github.com/microsoft/fluentui/pull/12903))
 - `Dropdown` - prototype - improvement to highlight first item when open @kolaps33 ([#12856](https://github.com/microsoft/fluentui/pull/12856))
@@ -886,13 +786,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add expandable example for `Card` component @pompomon ([#13000](https://github.com/microsoft/fluentui/pull/13000))
 
 <!--------------------------------[ v0.48.0 ]------------------------------- -->
-
 ## [v0.48.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.48.0) (2020-04-15)
-
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.47.1..@fluentui/react-northstar_v0.48.0)
 
 ### BREAKING CHANGES
-
 - Removed `SplitButton.slotClassNames` and introduced new `SplitButtonToggle` component @mnajdova ([#12432](https://github.com/microsoft/fluentui/pull/12432))
 - Replaced `paddleNext` and `paddlePrevious` to be `ShorthandValue<CarouselPaddleProps>` instead of `ShorthandValue<ButtonProps>` @mnajdova ([#12434](https://github.com/microsoft/fluentui/pull/12434))
 - Restricted prop set in the `PopupContent` component which is passed to styles functions @layershifter ([#12513](https://github.com/microsoft/fluentui/pull/12513))
@@ -903,11 +800,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Changed `icon` prop to be `ShorthandValue<BoxProps>` in all Fluent components (Alert, Attachment, Button, DropdownSelectedItem, Input, Label, MenuItem, Reaction, Status, ToolbarItem, ToolbarMenuitem) @mnajdova ([#12489](https://github.com/microsoft/fluentui/pull/12489))
 - Removed `Icon` component (`@fluentui/react-icons-northstar` icons should be used instead) @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
 - Removed `icons` from `theme` object (`@fluentui/react-icons-northstar` icons should be used instead) @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
-  Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecWithStyles` @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
+Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecWithStyles` @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
 - Restricted prop sets in the `Attachment` component which are passed to styles functions @layershifter ([#12576](https://github.com/microsoft/fluentui/pull/12576))
 
 ### Fixes
-
 - Fix default focused input outline in Safari @sheff146 ([#12279](https://github.com/microsoft/fluentui/pull/12279))
 - Add `inverted` prop to propTypes check in `Button` @silviuavram ([#12414](https://github.com/microsoft/fluentui/pull/12414))
 - Fix hover color for disabled `Dropdown` trigger button @silviuavram ([#12418](https://github.com/microsoft/fluentui/pull/12418))
@@ -924,7 +820,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - fix for `Toolbar` button, change 'aria-pressed' state based on active prop @kolaps33 ([#12587](https://github.com/microsoft/fluentui/pull/12587))
 
 ### Features
-
 - Add `createSvgIcon` factory in `@fluentui/react-bindings` and `SvgIcon` component in `@fluentui/react-northstar` @mnajdova ([#12319](https://github.com/OfficeDev/office-ui-fabric-react/pull/12319))
 - Add `useUnhandledProps()` hook @layershifter ([#12371](https://github.com/OfficeDev/office-ui-fabric-react/pull/12371))
 - Adding base layout and API for `Card` component @pompomon ([#12349](https://github.com/OfficeDev/office-ui-fabric-react/pull/12349))
@@ -940,7 +835,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `icon` prop to `Avatar` component @mnajdova ([#12660](https://github.com/microsoft/fluentui/pull/12660))
 
 ### Documentation
-
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
 - Fix crash on `Loader` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
 - Improve playground on `Card` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
@@ -951,36 +845,29 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add Icons page in the Concepts section @mnajdova ([#12645](https://github.com/microsoft/fluentui/pull/12645))
 
 <!--------------------------------[ v0.47.1 ]------------------------------- -->
-
 ## [v0.47.1](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.1) (2020-04-15)
-
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.47.0..fluentuizero_v0.47.1)
 
 ### BREAKING CHANGES
-
 - Replace `ListItemProps` with `DropdownItemProps` for `Dropdown` slots `noResultsMessage` and `loadingMessage` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
 
 ### Fixes
-
 - Fix positioning for `ToolbarMenu` in `overflowItem` @layershifter ([#12390](https://github.com/microsoft/fluentui/pull/12390))
 - Give higher `zIndex` to `Tooltip` to make it appear on top of `Dialog` @silviuavram ([#12572](https://github.com/microsoft/fluentui/pull/12572))
 - Fix `Dropdown` close on outside click and its double rendering on open @silviuavram ([#12625](https://github.com/microsoft/fluentui/pull/12625))
 - Fix `Downshift` changes handler in `Dropdown` @silviuavram ([#12361](https://github.com/OfficeDev/office-ui-fabric-react/pull/12361))
 
 ### Features
-
 - Add a shorthand to specify Popper props for `ChatMessage`, `Dropdown`, `MenuItem`, `ToolbarItem`, `ToolbarMenuItem` @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
 - Allow to specify `overflowBoundary` & `flipBoundary` props in Popper shorthands @layershifter ([#12439](https://github.com/microsoft/fluentui/pull/12439))
 - Add `headerMessage` slot for `Dropdown` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
 
+
 <!--------------------------------[ v0.47.0 ]------------------------------- -->
-
 ## [v0.47.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.0) (2020-03-19)
-
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.46.0..fluentuizero_v0.47.0)
 
 ### BREAKING CHANGES
-
 - Replaced `icon` with `indicator` in the `Checkbox` component and change it's type to `ShorthandValue<BoxProps>` @mnajdova ([#12183](https://github.com/OfficeDev/office-ui-fabric-react/pull/12183))
 - Changed type of `control` in `Embed` from `ShorthandValue<IconProps>` to `ShorthandValue<BoxProps>` @mnajdova ([#12242](https://github.com/OfficeDev/office-ui-fabric-react/pull/12242))
 - Renamed `icon` on `indicator` and change the type from `ShorthandValue<IconProps>` to `ShorthandValue<BoxProps>` in `RadioGroupItem` and `CarouselNavigationItem` @mnajdova ([#12242](https://github.com/OfficeDev/office-ui-fabric-react/pull/12242))
@@ -988,7 +875,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Rename `@fluentui/react` package to `@fluentui/react-northstar` @dzearing ([#12302](https://github.com/OfficeDev/office-ui-fabric-react/pull/12302))
 
 ### Fixes
-
 - Updating `Menu` border in Teams dark theme to the correct color @notandrew ([#12171](https://github.com/OfficeDev/office-ui-fabric-react/pull/12171))
 - Fix exports for themes to make them treeshakable @layershifter ([#12224](https://github.com/OfficeDev/office-ui-fabric-react/pull/12224))
 - Fix referentially unstable props in `TreeItem` @silviuavram ([#12182](https://github.com/OfficeDev/office-ui-fabric-react/pull/12182))
@@ -1001,7 +887,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix nested `<li>` elements in no results and loading messages for `Dropdown` @silviuavram ([#12330](https://github.com/OfficeDev/office-ui-fabric-react/pull/12330))
 
 ### Features
-
 - Export `broadcast-view-fullscreen` and `broadcast-view-left` as SVG icons @davidfoulkejr ([#12126](https://github.com/OfficeDev/office-ui-fabric-react/pull/12126))
 - Add `square` prop on the `Avatar` component @mnajdova ([#12277](https://github.com/OfficeDev/office-ui-fabric-react/pull/12277))
 - Adding `raise hand`, `raise hand colored`, `raise hand disabled`, `merge calls`, `share location`, `panorama` and `spotlight` icons @TanelVari ([#12212](https://github.com/OfficeDev/office-ui-fabric-react/pull/12212))
@@ -1009,17 +894,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `disabled` versions for `Dropdown` and `Input` @silviuavram ([#12250](https://github.com/OfficeDev/office-ui-fabric-react/pull/12250))
 
 ### Documentation
-
 - Adding context menu for table row to example and prototype @kolaps33 ([#12253](https://github.com/OfficeDev/office-ui-fabric-react/pull/12253))
 
 <!--------------------------------[ v0.46.0 ]------------------------------- -->
-
 ## [v0.46.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.46.0) (2020-03-05)
-
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.45.0..fluentuizero_v0.46.0)
 
 ### BREAKING CHANGES
-
 - Restricted prop sets in the `TreeTitle` & `TreeItem` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
 - Changed `indicator` prop in `MenuItem` and `Menu` to be `Box` shorthand instead of `Icon` @mnajdova ([#12145](https://github.com/OfficeDev/office-ui-fabric-react/pull/12145))
 - Restricted prop sets in the `TableCell` component which are passed to styles functions @pompomon ([#12146](https://github.com/OfficeDev/office-ui-fabric-react/pull/12146))
@@ -1030,13 +911,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `ToolbarMenu`, `ToolbarMenuDivider`, `ToolbarRadioGroup` & `ToolbarMenuRadioGroup` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
 
 <!--------------------------------[ v0.45.0 ]------------------------------- -->
-
 ## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-03-02)
-
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.44.0..HEAD)
 
 ### BREAKING CHANGES
-
 - Restricted prop sets in the `Checkbox`, `Icon`, `Label`, `Slider`, `Status`, `Text` components which are passed to styles functions @layershifter ([#2307](https://github.com/microsoft/fluent-ui-react/pull/2307))
 - Styles caching when no inline overrides are defined is enabled by default; use the `performance` prop on the `Provider` to opt out of this if needed @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
 - Styles for the `Animation` component are removed from Teams theme @layershifter ([#2258](https://github.com/microsoft/fluent-ui-react/pull/2258))
@@ -1057,7 +935,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `ToolbarMenuItem` component which are passed to styles functions @pompomon ([#12120](https://github.com/OfficeDev/office-ui-fabric-react/pull/12120))
 
 ### Fixes
-
 - Remove dependency on Lodash in TypeScript typings @layershifter ([#2323](https://github.com/microsoft/fluent-ui-react/pull/2323))
 - Fix missing aria-describedby in AlertBehavior @delprzemo ([#2208](https://github.com/microsoft/fluent-ui-react/pull/2208))
 - Fix page crash when `Tooltip` content is null @delprzemo ([#2332](https://github.com/microsoft/fluent-ui-react/pull/2332))
@@ -1075,7 +952,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix wrong positioning of pointing beak on content edges in `Popup` and `Tooltip` @layershifter ([#2364](https://github.com/microsoft/fluent-ui-react/pull/2364))
 
 ### Features
-
 - Added 'survey' and 'survey20px' icons @TanelVari ([#2383](https://github.com/microsoft/fluent-ui-react/pull/2383))
 - Added sourcemaps to the dist output to simplify debugging @miroslavstastny ([#2329](https://github.com/microsoft/fluent-ui-react/pull/2329))
 - Adding 'expand', 'collapse', 'companion', 'share-to' and 'settings-audio' icons @TanelVari ([#2343](https://github.com/microsoft/fluent-ui-react/pull/2343))
@@ -1084,20 +960,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Adding prototype for popover in `Table` header @pompomon ([#2379](https://github.com/microsoft/fluent-ui-react/pull/2379))
 
 ### Performance
-
 - Add styles caching when there aren't inline overrides defined @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
 - Styles for `Animation` component are computed again only on prop changes @layershifter ([#2258](https://github.com/microsoft/fluent-ui-react/pull/2258))
 - switch to `inline-style-expand-shorthand` for expanding CSS properties @layershifter ([#1925](https://github.com/microsoft/fluent-ui-react/pull/1925))
 - Add `enableBooleanVariablesCaching` to have styles caching for primitive `variables` overrides @layershifter ([#12073](https://github.com/OfficeDev/office-ui-fabric-react/pull/12073))
 
 <!--------------------------------[ v0.44.0 ]------------------------------- -->
-
 ## [v0.44.0](https://github.com/microsoft/fluent-ui-react/tree/v0.44.0) (2020-02-05)
-
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.43.2..v0.44.0)
 
 ### BREAKING CHANGES
-
 - Add `@fluentui/styles` package for all styles' related utilities and TS types @layershifter, @mnajdova ([#2222](https://github.com/microsoft/fluent-ui-react/pull/2222))
 - Remove `animation` prop from all components @joschect ([#2239](https://github.com/microsoft/fluent-ui-react/pull/2239))
 - `mode` property from `focusZone` configuration in accessibility behaviors is no longer supported - the focus zone will always be in embed mode @layershifter ([#2265](https://github.com/microsoft/fluent-ui-react/pull/2265))
@@ -1110,7 +982,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add typing `ComponentSlotStylesResolved`, that replaces the incorrect `ComponentSlotStylesPrepared` in the return value of `useStyles`, `renderComponent`, `createComponent` @mnajdova ([#2312](https://github.com/microsoft/fluent-ui-react/pull/2312))
 
 ### Fixes
-
 - Fix styleParam to always be required in the styles functions @layershifter, @mnajdova ([#2235](https://github.com/microsoft/fluent-ui-react/pull/2235))
 - Check input and button refs exist before focus in `Dropdown` @silviuavram ([#2248](https://github.com/microsoft/fluent-ui-react/pull/2248))
 - Update iconOnly button hover, focus styles and add new `background5` and `backgroundHover2` design tokens in Teams theme @codepretty ([#2211](https://github.com/microsoft/fluent-ui-react/pull/2211))
@@ -1118,7 +989,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Adding actionable items into `Carousel` @kolaps33 ([#2271](https://github.com/microsoft/fluent-ui-react/pull/2271))
 
 ### Features
-
 - Allow `useRef` hook used for storing debugging data to be defined in any order with other hooks in functional components @layershifter, @mnajdova ([#2236](https://github.com/microsoft/fluent-ui-react/pull/2236))
 - Add `useStyles()` hook to use theming capabilities in custom components @layershifter, @mnajdova ([#2217](https://github.com/microsoft/fluent-ui-react/pull/2217))
 - Add optional wrapper function to `List` which can be used to inject custom scrollbars to `Dropdown` @jurokapsiar ([#2092](https://github.com/microsoft/fluent-ui-react/pull/2092))
@@ -1130,59 +1000,45 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Move `zIndex` values from default variable values and styles to siteVariables object in Teams theme @pompomon ([#2311](https://github.com/microsoft/fluent-ui-react/pull/2311))
 
 ### Documentation
-
 - Add per-component performance charts @miroslavstastny ([#2240](https://github.com/microsoft/fluent-ui-react/pull/2240))
 
 <!--------------------------------[ v0.43.2 ]------------------------------- -->
-
 ## [v0.43.2](https://github.com/microsoft/fluent-ui-react/tree/v0.43.2) (2020-02-05)
-
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.43.1..v0.43.2)
 
 ### BREAKING CHANGES
-
 - Remove `toRefObject` function @layershifter ([#2287](https://github.com/microsoft/fluent-ui-react/pull/2287))
 
 ### Fixes
-
 - Fix positioning fixes for `actions` in `ChatMessage` @layershifter ([#2300](https://github.com/microsoft/fluent-ui-react/pull/2300))
 - `FocusZone`: Cleanup DOM element references when the component is unmounted @johannao76 ([#2306](https://github.com/microsoft/fluent-ui-react/pull/2306))
 
 ### Documentation
-
 - Fix dependencies in project exported to codesandbox @miroslavstastny ([#2314](https://github.com/microsoft/fluent-ui-react/pull/2314))
 
 <!--------------------------------[ v0.43.1 ]------------------------------- -->
-
 ## [v0.43.1](https://github.com/microsoft/fluent-ui-react/tree/v0.43.1) (2020-01-30)
-
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.43.0..v0.43.1)
 
 ### Fixes
-
 - Fix event listener leak in `FocusZone` @miroslavstastny ([#2227](https://github.com/microsoft/fluent-ui-react/pull/2227))
 - Fix element reference memory leaks @jurokapsiar ([#2270](https://github.com/microsoft/fluent-ui-react/pull/2270))
 - Fix element leak in `refFindNode` @miroslavstastny ([#2288](https://github.com/microsoft/fluent-ui-react/pull/2288))
 
 <!--------------------------------[ v0.43.0 ]------------------------------- -->
-
 ## [v0.43.0](https://github.com/microsoft/fluent-ui-react/tree/v0.43.0) (2020-01-08)
-
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.42.0..v0.43.0)
 
 ### BREAKING CHANGES
-
 - Use `tooltipAsLabelBehavior` as default `Tooltip` behavior @silviuavram ([#2195](https://github.com/microsoft/fluent-ui-react/pull/2195))
 
 ### Features
-
 - Add `tag` icon in Teams theme @codepretty ([#2180](https://github.com/microsoft/fluent-ui-react/pull/2180))
 - Add `inverted` prop and style for `Button` for Teams theme @notandrew ([#2076](https://github.com/microsoft/fluent-ui-react/pull/2076))
 - Add `vertical` prop to `Divider` @silviuavram ([#2141](https://github.com/microsoft/fluent-ui-react/pull/2141))
 - Support clickable cells in `Table`, add prototype for table with sorting @jurokapsiar ([#2183](https://github.com/microsoft/fluent-ui-react/pull/2183))
 
 ### Fixes
-
 - Fix `toggle` changing width during animation in Teams theme @mnajdova ([#2189](https://github.com/microsoft/fluent-ui-react/pull/2189))
 - Update `SplitButton` styles in Teams theme [redlines] @notandrew ([#2108](https://github.com/microsoft/fluent-ui-react/pull/2108))
 - Fix `Popup` positioning in multiple cases @layershifter ([#2187](https://github.com/microsoft/fluent-ui-react/pull/2187))
@@ -1190,58 +1046,44 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Use `debounce` from `lodash` in `Dropdown` and `Carouel` @silviuavram ([#2203](https://github.com/microsoft/fluent-ui-react/pull/2203))
 
 <!--------------------------------[ v0.42.0 ]------------------------------- -->
-
 ## [v0.42.0](https://github.com/microsoft/fluent-ui-react/tree/v0.42.0) (2019-12-12)
-
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.41.01..v0.42.0)
 
 ### BREAKING CHANGES
-
 - Rename all "Stardust UI" references to "Fluent UI" @levithomason ([#2165](https://github.com/microsoft/fluent-ui-react/pull/2165))
 
 ### Fixes
-
 - Fix colors expand for `border-color` shorthand @layershifter ([#2160](https://github.com/microsoft/fluent-ui-react/pull/2160))
 
 ### Features
-
 - Adding `table` navigation @kolaps33 ([#2147](https://github.com/microsoft/fluent-ui-react/pull/2147))
 
 <!--------------------------------[ v0.41.1 ]------------------------------- -->
-
 ## [v0.41.1](https://github.com/microsoft/fluent-ui-react/tree/v0.41.1) (2019-12-10)
-
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.41.0...v0.41.1)
 
 ### Fixes
-
 - Prevent text highlight on icon consecutive clicks in `Checkbox` @silviuavram ([#2154](https://github.com/microsoft/fluent-ui-react/pull/2154))
 - Always handle provided onKeyDown event be propagated in inner zone @kolaps33 ([#2140](https://github.com/microsoft/fluent-ui-react/pull/2140))
 - Fixed newly packages to have publishConfig set to public @kenotron ([#2161](https://github.com/microsoft/fluent-ui-react/pull/2161))
 - Rename `lib` directories to `utils` @ecraig12345 ([#2153](https://github.com/microsoft/fluent-ui-react/pull/2153))
 
 ### Features
-
 - Add a new experimental @fluentui/react-theming package that includes a `compose()` @kenotron ([#2152](https://github.com/microsoft/fluent-ui-react/pull/2152))
 - Add `closed-captions` icon in Teams theme @codepretty ([#2100](https://github.com/stardust-ui/react/pull/2100))
 
 ### Features
-
 - Add `presenter`, `no-presenter`, `volume-down`, `volume`, `volume-up` icons to Teams theme @codepretty ([#2156](https://github.com/microsoft/fluent-ui-react/pull/2156))
 
 <!--------------------------------[ v0.41.0 ]------------------------------- -->
-
 ## [v0.41.0](https://github.com/microsoft/fluent-ui-react/tree/v0.41.0) (2019-12-04)
-
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.40.4...v0.41.0)
 
 ### BREAKING CHANGES
-
 - Control Tree `activeItemIds` through `expanded` TreeItem prop @silviuavram ([#2061](https://github.com/stardust-ui/react/pull/2061))
 - Rename all @stardust-ui scope to @fluentui ([#2117](https://github.com/microsoft/fluent-ui-react/pull/2117))
 
 ### Fixes
-
 - Update Silver color scheme, changing `backgroundHover` and `backgroundPressed` for high-contrast theme @pompomon ([#2078](https://github.com/microsoft/fluent-ui-react/pull/2078))
 - Updating the `attachment` component styles to match Teams theme @notandrew ([#2012](https://github.com/stardust-ui/react/pull/2012))
 - Removed `shadowLevel1Darker` in Teams themes and changed all references to `shadowLevel1Dark` affecting `Button` and `ChatMessage` variables files @bcalvery ([#2098](https://github.com/microsoft/fluent-ui-react/pull/2098))
@@ -1256,7 +1098,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix focus handling cases in `MenuButton` and `SplitButton` @silviuavram ([#2145](https://github.com/microsoft/fluent-ui-react/pull/2145))
 
 ### Features
-
 - Add `Table` component base implementation @pompomon ([#2099](https://github.com/microsoft/fluent-ui-react/pull/2099))
 - Add bounce animation to button clicks in Teams theme @notandrew ([#1724](https://github.com/stardust-ui/react/pull/1724))
 - Update Silver color scheme, adding `foregroundHover`, `foregroundPressed` and `background` definitions @pompomon ([#2078](https://github.com/microsoft/fluent-ui-react/pull/2078))
@@ -1265,44 +1106,33 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add support for render props pattern via `children` prop to shorthands @layershifter ([#1951](https://github.com/stardust-ui/react/pull/1951))
 
 ### Documentation
-
 - Add usage example for `Tooltip` on disabled elements @mnajdova ([#2091](https://github.com/microsoft/fluent-ui-react/pull/2091))
 - Prototype for hexgonal avatars @mnajdova ([#2093](https://github.com/microsoft/fluent-ui-react/pull/2093))
 
 <!--------------------------------[ v0.40.4 ]------------------------------- -->
-
 ## [v0.40.4](https://github.com/stardust-ui/react/tree/v0.40.4) (2019-11-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.40.3...v0.40.4)
 
 ### Fixes
-
 - Trigger `whatInput` cleanup when last `Provider` with custom `target` gets removed @silviuavram ([#2127](https://github.com/microsoft/fluent-ui-react/pull/2127))
 
 ### Performance
-
 - Allow suppression of action menu positioning in `ChatMessage` @jurokapsiar ([#2126](https://github.com/microsoft/fluent-ui-react/pull/2126))
 
 <!--------------------------------[ v0.40.3 ]------------------------------- -->
-
 ## [v0.40.3](https://github.com/stardust-ui/react/tree/v0.40.3) (2019-11-08)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.40.2...v0.40.3)
 
 ### Performance
-
 - Add rendering performance telemetry @miroslavstastny ([#2079](https://github.com/microsoft/fluent-ui-react/pull/2079))
 - Skip empty frames in mergeThemes @levithomason @miroslavstastny ([#2095](https://github.com/microsoft/fluent-ui-react/pull/2095))
 - Lazily evaluate styles and classes @levithomason @miroslavstastny ([#2097](https://github.com/microsoft/fluent-ui-react/pull/2097))
 
 <!--------------------------------[ v0.40.2 ]------------------------------- -->
-
 ## [v0.40.2](https://github.com/stardust-ui/react/tree/v0.40.2) (2019-10-30)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.40.1...v0.40.2)
 
 ### Fixes
-
 - Update `call-missed-line` icon in Teams theme @codepretty ([#2059](https://github.com/stardust-ui/react/pull/2059))
 - Show debug panel correctly for components with no owner @miroslavstastny ([#2055](https://github.com/stardust-ui/react/pull/2055))
 - Update `listItem`, `button`, `toolbar`, `toolbarMenu` to use `getBorderFocusStyles` in the Teams theme @bcalvery ([#2011](https://github.com/stardust-ui/react/pull/2011))
@@ -1315,56 +1145,44 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Clean up popper element reference after destroy @jurokapsiar ([#2062](https://github.com/stardust-ui/react/pull/2062))
 
 ### Features
-
 - Add `menu` prop on `ToolbarMenuItem` component @mnajdova ([#1984](https://github.com/stardust-ui/react/pull/1984))
 - Add `unstable_overflow` to `ChatMessage` to provide more flexible position in overflow containers @layershifter ([#2050](https://github.com/stardust-ui/react/pull/2050))
 - Add `foregroundHover2` to Teams theme @miroslavstastny ([#2071](https://github.com/stardust-ui/react/pull/2071))
 
 ### Documentation
-
 - Editor Toolbar prototype: Fix overflow menu overflowing in Portal window @miroslavstastny ([#2053](https://github.com/stardust-ui/react/pull/2053))
 
 <!--------------------------------[ v0.40.1 ]------------------------------- -->
-
 ## [v0.40.1](https://github.com/stardust-ui/react/tree/v0.40.1) (2019-10-18)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.40.0...v0.40.1)
 
 ### Features
-
 - Export `robot`, `tabs` and `plugs` icon to Teams theme @codepretty ([#2026](https://github.com/stardust-ui/react/pull/2026))
 - Add CSSinJS debug panel @levithomason @miroslavstastny @mnajdova ([#1974](https://github.com/stardust-ui/react/pull/1974))
 - Add ability to set custom footer for `Dialog` @kolaps33 ([#2005](https://github.com/stardust-ui/react/pull/2005))
 
 ### Fixes
-
 - Correctly handle RTL in `Alert` component @miroslavstastny ([#2018](https://github.com/stardust-ui/react/pull/2018))
 - Popper should use the correct window instance @jurokapsiar ([#2028](https://github.com/stardust-ui/react/pull/2028))
 - Checking if the slot attributes are defined @mshoho ([#2040](https://github.com/stardust-ui/react/pull/2040))
 
 ### Performance
-
 - Remove redundant usages of `Box` component in `Attachment`, `Popup` and `Tooltip` @layershifter ([#2023](https://github.com/stardust-ui/react/pull/2023))
 - Refactor `ListItem` to avoid usages of `Flex` component @layershifter ([#2025](https://github.com/stardust-ui/react/pull/2025))
 - Cache resolved component variables @jurokapsiar @miroslavstastny ([#2041](https://github.com/stardust-ui/react/pull/2041))
 
 ### Documentation
-
 - Fix 'RTL' and 'Theme it' in examples @miroslavstastny ([#2020](https://github.com/stardust-ui/react/pull/2020))
 - Prototype for custom scrollbar for menu, dialog, popup and list @jurokapsiar ([#1962](https://github.com/stardust-ui/react/pull/1962))
 
 <!--------------------------------[ v0.40.0 ]------------------------------- -->
-
 ## [v0.40.0](https://github.com/stardust-ui/react/tree/v0.40.0) (2019-10-09)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.39.0...v0.40.0)
 
 ### BREAKING CHANGES
-
 - Remove `onReduceItems` prop from Toolbar @miroslavstastny ([#2010](https://github.com/stardust-ui/react/pull/2010))
 
 ### Fixes
-
 - Fix `bodyBackground` color for Teams dark theme to be the correct grey value @codepretty ([#1961](https://github.com/stardust-ui/react/pull/1961))
 - Updating `Button` styles for Teams dark & high contrast themes to match design @notandrew ([#1933](https://github.com/stardust-ui/react/pull/1933))
 - Update Office brand icons in Teams theme with latest version @notandrew ([#1954](https://github.com/stardust-ui/react/pull/1954))
@@ -1372,7 +1190,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix accessibility issue by adding border to reactions in Teams high contrast theme @codepretty ([#2001](https://github.com/stardust-ui/react/pull/2001))
 
 ### Features
-
 - Add experimental runtime accessibility attributes validation (the initial step validates the Button component only) @mshoho ([#1911](https://github.com/stardust-ui/react/pull/1911))
 - Add `sync` icon to Teams theme @codepretty ([#1973](https://github.com/stardust-ui/react/pull/1973))
 - Updating category colors palette and schemes in Teams theme @codepretty ([#1994](https://github.com/stardust-ui/react/pull/1994))
@@ -1382,22 +1199,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `overflow` prop to `Toolbar` @levithomason @miroslavstastny @layershifter ([#2010](https://github.com/stardust-ui/react/pull/2010))
 
 ### Documentation
-
 - Copy to clipboard prototype - attached confirmation @jurokapsiar ([#1900](https://github.com/stardust-ui/react/pull/1900))
 - Add `EditorToolbar` prototype @layershifter ([#2010](https://github.com/stardust-ui/react/pull/2010))
 
+
 <!--------------------------------[ v0.39.0 ]------------------------------- -->
-
 ## [v0.39.0](https://github.com/stardust-ui/react/tree/v0.39.0) (2019-09-23)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.38.1...v0.39.0)
 
 ### BREAKING CHANGES
-
 - Remove base theme and move everything to teams theme @mnajdova ([#1908](https://github.com/stardust-ui/react/pull/1908))
 
 ### Fixes
-
 - Fix `Menu` and `Submenu` to use correct indicator icon and have correct width behavior [redlines] @bcalvery ([#1831](https://github.com/stardust-ui/react/pull/1831))
 - Fix `CreateShorthandOptions` should be typed @lucivpav ([#1886](https://github.com/stardust-ui/react/pull/1886))
 - Add `shadowLevel1Dark` in Teams themes @notandrew ([#1887](https://github.com/stardust-ui/react/pull/1887))
@@ -1408,7 +1221,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix comparison of custom objects in `Dropdown` @lucivpav ([#1943](https://github.com/stardust-ui/react/pull/1943))
 
 ### Features
-
 - Add `TextArea` component @lucivpav ([#1897](https://github.com/stardust-ui/react/pull/1897))
 - Export `bell-slash` and `bell-snooze` icon to Teams theme @musingh ([#1921](https://github.com/stardust-ui/react/pull/1921))
 - Add support for radio & checkbox groups to `Toolbar` component @layershifter ([#1920](https://github.com/stardust-ui/react/pull/1920))
@@ -1417,36 +1229,28 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `notes` icon and update `link` icon in Teams theme @codepretty ([#1953](https://github.com/stardust-ui/react/pull/1953))
 
 ### Documentation
-
 - Remove Usage tab @lucivpav ([#1948](https://github.com/stardust-ui/react/pull/1948))
 - Put props on a single page, fix props links @lucivpav ([#1892](https://github.com/stardust-ui/react/pull/1892))
 - Remove cancel button in a `Dialog` example with a close action @lucivpav ([#1949](https://github.com/stardust-ui/react/pull/1949))
 
 <!--------------------------------[ v0.38.2 ]------------------------------- -->
-
 ## [v0.38.2](https://github.com/stardust-ui/react/tree/v0.38.2) (2019-09-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.38.1...v0.38.2)
 
 ### Fixes
-
 - Fix comparison for `scrollParent` in `unstable_Popper` @layershifter ([#1959](https://github.com/stardust-ui/react/pull/1959))
 - Fix setting `data-whatinput` attribute in child windows @layershifter ([#1972](https://github.com/stardust-ui/react/pull/1972))
 - Avoid usages of global `document` and `window` in components @layershifter ([#1970](https://github.com/stardust-ui/react/pull/1970))
 - Fix make `tooltip` visible for screen reader @kolaps33 ([#1942](https://github.com/stardust-ui/react/pull/1942))
 
 ### Performance
-
 - Resolve styles once in `renderComponent()` @layershifter ([#1957](https://github.com/stardust-ui/react/pull/1957))
 
 <!--------------------------------[ v0.38.1 ]------------------------------- -->
-
 ## [v0.38.1](https://github.com/stardust-ui/react/tree/v0.38.1) (2019-09-13)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.38.0...v0.38.1)
 
 ### Fixes
-
 - Fix order of applying unhandled props and key handlers @jurokapsiar ([#1901](https://github.com/stardust-ui/react/pull/1901))
 - Fix handling of `onMouseEnter` prop in `ChatMessage` @layershifter ([#1903](https://github.com/stardust-ui/react/pull/1903))
 - Fix focus styles for `TreeItem` and `HierarchicalTreeItem` @silviuavram ([#1912](https://github.com/stardust-ui/react/pull/1912))
@@ -1454,28 +1258,22 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Do not force focus inside focus trap zone on outside focus @sophieH29 ([#1930](https://github.com/stardust-ui/react/pull/1930))
 
 ### Features
-
 - Add `navigable` `List` variant @jurokapsiar ([#1904](https://github.com/stardust-ui/react/pull/1904))
 - Add the `SplitButton` component @silviuavram ([#1789](https://github.com/stardust-ui/react/pull/1798))
 
 ### Documentation
-
 - Fix broken code editor in some doc site examples and improve error experience @levithomason ([#1906](https://github.com/stardust-ui/react/pull/1906))
 - Add `VirtualizedTree` prototype @silviuavram ([#1890](https://github.com/stardust-ui/react/pull/1890))
 
 <!--------------------------------[ v0.38.0 ]------------------------------- -->
-
 ## [v0.38.0](https://github.com/stardust-ui/react/tree/v0.38.0) (2019-09-06)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.37...v0.38.0)
 
 ### BREAKING CHANGES
-
 - `Alert`, `Attachment`, `Button`, `ChatMessage`, `Checkbox`, `Embed`, `Grid`, `ListItem`, `RadioGroupItem`, `Reaction`, `Slider`, `ToolbarCustomItem`, `ToolbarItem`, `ToolbarMenuItem` do not have `isFromKeyboard` in their style functions anymore @layershifter ([#1850](https://github.com/stardust-ui/react/pull/1850))
 - `AttachmentState`, `ButtonState`, `GridState`, `ListItemState`, `ReactionState`, `ToolbarCustomItemState`, `ToolbarItemState`, `ToolbarMenuItemState` interfaces are no longer exported @layershifter ([#1850](https://github.com/stardust-ui/react/pull/1850))
 
 ### Fixes
-
 - Fix `muted` prop in `Video` component @layershifter ([#1847](https://github.com/stardust-ui/react/pull/1847))
 - Fix `felaRenderer` is used in `Provider` explicitly @lucivpav ([#1842](https://github.com/stardust-ui/react/pull/1842))
 - Fix `selectableListBehavior` to set `tabindex=-1` to `List`'s container to work correctly with screen readers @sophieH29 ([#1858](https://github.com/stardust-ui/react/pull/1858))
@@ -1485,18 +1283,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Toolbar` overflow screener test @lucivpav ([#1879](https://github.com/stardust-ui/react/pull/1879))
 
 ### Features
-
 - Add `yellow`, `green`, `orange`, `pink`, `amethyst`, `silver` and `onyx` color schemes in Teams theme @mnajdova ([#1826](https://github.com/stardust-ui/react/pull/1826))
 - Add `Tree` component that is flat DOM structured @silviuavram ([#1779](https://github.com/stardust-ui/react/pull/1779))
 - Add `fitted` prop to `Alert` component @layershifter ([#1872](https://github.com/stardust-ui/react/pull/1872))
 - Add `backdrop` and `closeOnOutsideClick` props to `Dialog` component @layershifter ([#1847](https://github.com/stardust-ui/react/pull/1847))
 
 ### Performance
-
 - Use `Object.assign` in `@babel/plugin-proposal-object-rest-spread` @layershifter ([#1895](https://github.com/stardust-ui/react/pull/1895))
 
 ### Documentation
-
 - Add usage example regarding `Checkbox` in `Form` @lucivpav ([#1845](https://github.com/stardust-ui/react/pull/1845))
 - Fix styles in `code-sandbox` package @lucivpav ([#1853](https://github.com/stardust-ui/react/pull/1853))
 - Adding accessibility tab content @kolaps33 ([#1840](https://github.com/stardust-ui/react/pull/1840))
@@ -1506,19 +1301,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `Copy To Clipboard` prototype @lucivpav ([#1860](https://github.com/stardust-ui/react/pull/1860))
 
 <!--------------------------------[ v0.37.0 ]------------------------------- -->
-
 ## [v0.37.0](https://github.com/stardust-ui/react/tree/v0.37.0) (2019-08-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.36.2...v0.37.0)
 
 ### BREAKING CHANGES
-
 - Rename `action` slot to `dismissAction` in `Alert` component @layershifter ([#1823](https://github.com/stardust-ui/react/pull/1823))
 - To make `dismissAction` slot visible in `Alert` component `dismissible` prop is required now @layershifter ([#1823](https://github.com/stardust-ui/react/pull/1823))
 - Fix `Tooltip` shadow incorrect - removed `boxShadowStart`, `boxShadowColor`, `boxShadowEnd` from `tooltipContentVariables`, replaced with `boxShadow` [redlines] @bcalvery ([#1825](https://github.com/stardust-ui/react/pull/1825))
 
 ### Fixes
-
 - Update text `Button` styles for Teams Theme to match [redlines] @codepretty ([#1719](https://github.com/stardust-ui/react/pull/1719))
 - Fix `Menu` and `MenuItem` styles to match [redlines] @bcalvery ([#1712](https://github.com/stardust-ui/react/pull/1712))
 - Make `Embed` focusable via keyboard @lucivpav ([#1758](https://github.com/stardust-ui/react/pull/1758))
@@ -1533,7 +1324,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Do not scroll the page when spacebar is pressed on focused `MenuItem`, fix submenu not closing @lucivpav ([#1735](https://github.com/stardust-ui/react/pull/1735))
 
 ### Features
-
 - Add `overwrite` prop to `Provider` @layershifter ([#1780](https://github.com/stardust-ui/react/pull/1780))
 - Upgrade `FocusZone` to the latest version from `fabric-ui` @sophieH29 ([#1772](https://github.com/stardust-ui/react/pull/1772))
 - Add `inverted` prop to `Input` for changing the background color [redlines] @codepretty ([#1684](https://github.com/stardust-ui/react/pull/1684))
@@ -1549,7 +1339,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `header` and `icon` slots to `Alert` component @lucivpav ([#1821](https://github.com/stardust-ui/react/pull/1821))
 
 ### Documentation
-
 - Restore docs for `Ref` component @layershifter ([#1777](https://github.com/stardust-ui/react/pull/1777))
 - Add prototype for expandable control messages in `Chat` @sophieH29 ([#1765](https://github.com/stardust-ui/react/pull/1765))
 - Remove Font Awesome icons from docs examples @lucivpav ([#1764](https://github.com/stardust-ui/react/pull/1764))
@@ -1559,61 +1348,46 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Improve an example on CodeSandbox @layershifter ([#1844](https://github.com/stardust-ui/react/pull/1844))
 
 <!--------------------------------[ v0.36.3 ]------------------------------- -->
-
 ## [v0.36.3](https://github.com/stardust-ui/react/tree/v0.36.3) (2019-09-03)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.36.2...v0.36.3)
 
-### Fixes
-
+ ### Fixes
 - Use a proper `document` to find nodes in `doesNodeContainClick()` @layershifter ([#1874](https://github.com/stardust-ui/react/pull/1874))
 - Correctly define current document object of the `FocusZone` and `FocusTrapZone` @sophieH29 ([#1820](https://github.com/stardust-ui/react/pull/1820))
 
-### Performance
-
+ ### Performance
 - Fix `Popper` positioning called when unnecessary in `Tooltip` @lucivpav ([#1882](https://github.com/stardust-ui/react/pull/1882))
 
 <!--------------------------------[ v0.36.2 ]------------------------------- -->
-
 ## [v0.36.2](https://github.com/stardust-ui/react/tree/v0.36.2) (2019-08-19)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.36.1...v0.36.2)
 
 ### Fixes
-
 - Update vulnerable version of `lodash` dependency @layershifter ([#1700](https://github.com/stardust-ui/react/pull/1700))
 - Use `target` from `Provider` in `ReactDOM.createPortal()` calls @layershifter ([#1810](https://github.com/stardust-ui/react/pull/1810))
 
 ### Features
-
 - Add possibility for a Toolbar to rearrange its items according to space available @miroslavstastny ([#1657](https://github.com/stardust-ui/react/pull/1657))
 - Focus indicator for additional documents @jurokapsiar ([#1816](https://github.com/stardust-ui/react/pull/1816))
 
 <!--------------------------------[ v0.36.1 ]------------------------------- -->
-
 ## [v0.36.1](https://github.com/stardust-ui/react/tree/v0.36.1) (2019-08-09)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.36.0...v0.36.1)
 
 ### Features
-
 - Add `loading` and `loader` props to `Button` component @mnajdova ([#1662](https://github.com/stardust-ui/react/pull/1662))
 
 <!--------------------------------[ v0.36.0 ]------------------------------- -->
-
 ## [v0.36.0](https://github.com/stardust-ui/react/tree/v0.36.0) (2019-08-08)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.35.0...v0.36.0)
 
 ### BREAKING CHANGES
-
 - Fix `firstFocusableSelector` in `FocusTrapZone` and `AutoFocusZone` @sophieH29 ([#1732](https://github.com/stardust-ui/react/pull/1732))
 - Rename Popup `shouldTriggerBeTabbable` prop to `tabbableTrigger` @jurokapsiar ([#1696](https://github.com/stardust-ui/react/pull/1696))
 - `StackableEventListener` is removed @layershifter ([#1755](https://github.com/stardust-ui/react/pull/1755))
 - Rename `Tree` to `HierarchicalTree` @silviuavram ([#1752](https://github.com/stardust-ui/react/pull/1752))
 
 ### Fixes
-
 - Require `name` prop in `Icon` component @lucivpav ([#1723](https://github.com/stardust-ui/react/pull/1723))
 - Export `broadcast` icon in Teams theme @miroslavstastny ([#1737](https://github.com/stardust-ui/react/pull/1737))
 - Ensure `actionsMenu` is not cut-off by the edge of viewport for `ChatMessage` @kuzhelov ([#1739](https://github.com/stardust-ui/react/pull/1739))
@@ -1621,7 +1395,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix incorrect order of plugin execution in `felaRenderer` @lucivpav ([#1741](https://github.com/stardust-ui/react/pull/1741))
 
 ### Features
-
 - Expose `isFromKeyboard` in `Grid` component @sophieH29 ([#1729](https://github.com/stardust-ui/react/pull/1729))
 - Add `onActiveIndexChange` prop to `Tree` component @lucivpav ([#1728](https://github.com/stardust-ui/react/pull/1728))
 - Add `horizontal` prop for `List` component @mnajdova ([#1721](https://github.com/stardust-ui/react/pull/1721))
@@ -1632,21 +1405,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `useEventListener` hook @layershifter ([#1755](https://github.com/stardust-ui/react/pull/1755))
 
 ### Documentation
-
 - Fix code in changing component variables section of theming examples @lucivpav ([#1626](https://github.com/stardust-ui/react/pull/1626))
 - Fix layout issue rendering extra space when viewing documentation in Firefox @notandrew ([#1427](https://github.com/stardust-ui/react/pull/1427))
 - Add search capability @lucivpav ([#1682](https://github.com/stardust-ui/react/pull/1682))
 - Improve `Theme it` section under component examples @layershifter ([#1748](https://github.com/stardust-ui/react/pull/1748))
 
 <!--------------------------------[ v0.35.0 ]------------------------------- -->
-
 ## [v0.35.0](https://github.com/stardust-ui/react/tree/v0.35.0) (2019-07-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.34.3...v0.35.0)
 
 ### BREAKING CHANGES
-
-- Add `trapFocus` and `autoFocus` props to `Popup` and remove `popupFocusTrapBehavior` and `popupAutoFocusBehavior` @sophieH29 ([#1565](https://github.com/stardust-ui/react/pull/1565))
+-  Add `trapFocus` and `autoFocus` props to `Popup` and remove `popupFocusTrapBehavior` and `popupAutoFocusBehavior` @sophieH29 ([#1565](https://github.com/stardust-ui/react/pull/1565))
 - `defaultBehavior` was removed @layershifter ([#1600](https://github.com/stardust-ui/react/pull/1600))
 - `ReactElement`s are now handled in the same way as string in all shorthands @layershifter ([#1513](https://github.com/stardust-ui/react/pull/1513))
 - `Props` param is required in `ShorthandValue` and `ShorthandCollection` @layershifter ([#1605](https://github.com/stardust-ui/react/pull/1605))
@@ -1655,7 +1424,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `paddingLeftRightValue` variable in `buttonVariables` was renamed to `padding` in Teams theme @layershifter ([#1716](https://github.com/stardust-ui/react/pull/1716))
 
 ### Features
-
 - Split action handlers with "OR" condition in accessibility behaviors @sophieH29 ([#1622](https://github.com/stardust-ui/react/pull/1622))
 - Add `headerAction` slot to the `Dialog` component @mnajdova ([#1617](https://github.com/stardust-ui/react/pull/1617))
 - Add `Slider` component @Bugaa92 ([#1559](https://github.com/stardust-ui/react/pull/1559))
@@ -1671,7 +1439,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `target` prop on `Provider`, allows to specify a `document` where styles should be renderer @layershifter ([#1252](https://github.com/stardust-ui/react/pull/1252))
 
 ### Fixes
-
 - Fix `ChatMessage`'s focus border overlays `actionMenu` in Teams theme @mnajdova ([#1637](https://github.com/stardust-ui/react/pull/1637))
 - Update `Checkbox` files for Teams Theme to match [redlines] @bcalvery ([#1656](https://github.com/stardust-ui/react/pull/1656))
 - Add `color` prop to `Segment` typings @layershifter ([#1702](https://github.com/stardust-ui/react/pull/1702))
@@ -1681,7 +1448,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Close `Toolbar`'s menu when it looses focus @sophieH29 ([#1688](https://github.com/stardust-ui/react/pull/1688))
 
 ### Documentation
-
 - Make sidebar categories collapsible @lucivpav ([#1611](https://github.com/stardust-ui/react/pull/1611))
 - Fix code in nesting themes section of theming examples @lucivpav ([#1616](https://github.com/stardust-ui/react/pull/1616))
 - Make prototypes conditionally public and move them below Behaviors @lucivpav ([#1627](https://github.com/stardust-ui/react/pull/1627))
@@ -1694,34 +1460,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add FAQ entry for `Flex`, `Grid`, `Layout`, `Box`, `Segment` @lucivpav ([#1646](https://github.com/stardust-ui/react/pull/1646))
 
 <!--------------------------------[ v0.34.3 ]------------------------------- -->
-
 ## [v0.34.3](https://github.com/stardust-ui/react/tree/v0.34.3) (2019-07-23)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.34.2...v0.34.3)
 
 ### Fixes
-
 - Fix nesting issues with `Dialog` component inside `Popup` @layershifter ([#1706](https://github.com/stardust-ui/react/pull/1706))
 
 <!--------------------------------[ v0.34.2 ]------------------------------- -->
-
 ## [v0.34.2](https://github.com/stardust-ui/react/tree/v0.34.2) (2019-07-19)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.34.1...v0.34.2)
 
-### Fixes
-
+ ### Fixes
 - Fix a gap in `Checkbox` in RTL mode @layershifter ([#1683](https://github.com/stardust-ui/react/pull/1683))
 - Fix broken background in `Popup` with `pointing` and `FocusTrap` @layershifter ([#1689](https://github.com/stardust-ui/react/pull/1689))
 
 <!--------------------------------[ v0.34.1 ]------------------------------- -->
-
 ## [v0.34.1](https://github.com/stardust-ui/react/tree/v0.34.1) (2019-07-11)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.34.0...v0.34.1)
 
 ### Fixes
-
 - Fix `Dropdown` and `DropdownItem` styles to match [redlines] - modified `ListItem` and ListItemStyles to not set gap in component definition @bcalvery ([#1523](https://github.com/stardust-ui/react/pull/1523))
 - Fix `Dropdown` highlightedIndex on arrow keydown open @silviuavram ([#1570](https://github.com/stardust-ui/react/pull/1570))
 - Fix `Dropdown` ArrowLeft keydown behavior for multiple variants @silviuavram ([#1564](https://github.com/stardust-ui/react/pull/1564))
@@ -1729,7 +1486,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix typings for `Provider` props @miroslavstastny ([#1601](https://github.com/stardust-ui/react/pull/1601))
 
 ### Features
-
 - Add ARIA attributes and focus handling for `RadioGroup` in `Toolbar` @sophieH29 ([#1526](https://github.com/stardust-ui/react/pull/1526))
 - Add ARIA attributes and keyboard navigation for `Menu` in `Toolbar` @sophieH29 ([#1553](https://github.com/stardust-ui/react/pull/1553))
 - Add `alert`, `info`, `share-alt` and `microsoft-stream` icons to Teams theme @marst89 ([#1544](https://github.com/stardust-ui/react/pull/1544))
@@ -1746,7 +1502,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add additional logic for showing/hiding the `actionMenu` inside the `ChatMessage` in Teams theme, based on a variable @mnajdova ([#1590](https://github.com/stardust-ui/react/pull/1590))
 
 ### Documentation
-
 - Ensure docs content doesn't overlap with sidebar @kuzhelov ([#1568](https://github.com/stardust-ui/react/pull/1568))
 - Fixing issue with copy icon taking up entire page in Firefox @notandrew ([#1576](https://github.com/stardust-ui/react/pull/1576))
 - Add prototype for Custom Styled Toolbar @miroslavstastny ([#1541](https://github.com/stardust-ui/react/pull/1541))
@@ -1755,20 +1510,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix error when children are missing in `ExampleSnippet` @layershifter ([#1619](https://github.com/stardust-ui/react/pull/1619))
 
 <!--------------------------------[ v0.34.0 ]------------------------------- -->
-
 ## [v0.34.0](https://github.com/stardust-ui/react/tree/v0.34.0) (2019-06-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.33.0...v0.34.0)
 
 ### BREAKING CHANGES
-
 - Type `FontFaceStyle` was renamed to `FontFaceProps` @layershifter ([#1487](https://github.com/stardust-ui/react/pull/1487))
 - Type `style` was renamed to `props` on `FontFace` @layershifter ([#1487](https://github.com/stardust-ui/react/pull/1487))
 - Remove `boxShadowColor` variable for `Segment` component @Bugaa92 ([#1516](https://github.com/stardust-ui/react/pull/1516))
 - Rename prop `forceFocusInsideTrap` to `forceFocusInsideTrapOnOutsideFocus` in `FocusTrapZone` @sophieH29 ([#1505](https://github.com/stardust-ui/react/pull/1505))
 
 ### Fixes
-
 - Fix prop types of `Tooltip` component @kuzhelov ([#1499](https://github.com/stardust-ui/react/pull/1499))
 - Fix `Popup` styling with `pointer` when it is wrapped by `FocusZones` @layershifter ([#1492](https://github.com/stardust-ui/react/pull/1492))
 - Fix `Attachment` more option button invoke correctly action on space/enter @kolaps33 ([#1452](https://github.com/stardust-ui/react/pull/1452))
@@ -1780,7 +1531,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Replace `css-shorthand-expand` with bundled version to make it work in IE11 @layershifter ([#1542](https://github.com/stardust-ui/react/pull/1542))
 
 ### Features
-
 - Add 'poll' and 'to-do-list' icons to Teams theme @natashamayurshah ([#1498](https://github.com/stardust-ui/react/pull/1498))
 - Add `toolbarBehavior` for `Toolbar` component and apply `buttonBehavior` for `ToolbarItem` component @sophieH29 ([#1468](https://github.com/stardust-ui/react/pull/1468))
 - Integrate ARIA HTML design pattern in the `Tree` component @silviuavram ([#1488](https://github.com/stardust-ui/react/pull/1488))
@@ -1790,27 +1540,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `menu` prop to `Toolbar` @miroslavstastny ([#1518](https://github.com/stardust-ui/react/pull/1518))
 
 ### Performance
-
 - Use single Fela renderer for LTR & RTL @layershifter ([#1459](https://github.com/stardust-ui/react/pull/1459))
 
 ### Documentation
-
 - Add dedicated docs for the `color palette` and `color schema` @mnajdova ([#1494](https://github.com/stardust-ui/react/pull/1494))
 
 <!--------------------------------[ v0.33.0 ]------------------------------- -->
-
 ## [v0.33.0](https://github.com/stardust-ui/react/tree/v0.33.0) (2019-06-13)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.32.0...v0.33.0)
 
 ### BREAKING CHANGES
-
 - Rename `toolbarBehavior` to `menuAsToolbarBehavior` and `toolbarButtonBehavior` to `menuItemAsToolbarButtonBehavior` @miroslavstastny ([#1393](https://github.com/stardust-ui/react/pull/1393))
 - Rename types related to accessibility @layershifter ([#1421](https://github.com/stardust-ui/react/pull/1421))
 - Moved the `rtl` and `renderer` props from the `theme` prop object to the `Provider`'s props API @mnajdova ([#1377](https://github.com/stardust-ui/react/pull/1377))
 
 ### Fixes
-
 - Fix click handling on focus for `action` slot in `Attachment` component @Bugaa92 ([#1444](https://github.com/stardust-ui/react/pull/1444))
 - Fix Teams' theme list item end media styles @mnajdova ([#1448](https://github.com/stardust-ui/react/pull/1448))
 - Fix the order of the fela plugin @mnajdova ([#1461](https://github.com/stardust-ui/react/pull/1461))
@@ -1821,7 +1565,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Generate IDs for `header` and `content` slots once in `Dialog` component @layershifter ([#1449](https://github.com/stardust-ui/react/pull/1449))
 
 ### Features
-
 - Define types for accessibility behaviors props. Do not render `aria-disabled` if the value is `false` @sophieH29 ([#1481](https://github.com/stardust-ui/react/pull/1481))
 - Add `Toolbar` component @miroslavstastny ([#1408](https://github.com/stardust-ui/react/pull/1408))
 - Add `popup` prop to `Toolbar` component @miroslavstastny ([#1408](https://github.com/stardust-ui/react/pull/1480))
@@ -1836,27 +1579,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add 'call-control-release' and 'call-control-request' icon to Teams theme @jay-howe ([#1490](https://github.com/stardust-ui/react/pull/1490))
 
 ### Documentation
-
 - Remove unfinished themes from the docs themes dropdown on components examples pages @alinais ([#1473](https://github.com/stardust-ui/react/pull/1473))
 - Adding table of contents to FAQ page @hughreeling ([#1291](https://github.com/stardust-ui/react/pull/1291))
 
 ### Performance
-
 - Use minified version of `normalize.css` and update it to `8.0.1` @layershifter ([#1476](https://github.com/stardust-ui/react/pull/1476))
 
 <!--------------------------------[ v0.32.0 ]------------------------------- -->
-
 ## [v0.32.0](https://github.com/stardust-ui/react/tree/v0.32.0) (2019-06-03)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.31.0...v0.32.0)
 
 ### BREAKING CHANGES
-
 - Remove convoluted conditions from component's element type calculations @kuzhelov ([#1396](https://github.com/stardust-ui/react/pull/1396))
 - Replace `Dropdown` variables: `borderRadius` with `containerBorderRadius`, `openBorderRadius` with `openAboveContainerBorderRadius` and `openBelowContainerBorderRadius`, `listBorderRadius` with `aboveListBorderRadius` and `belowListBorderRadius` @Bugaa92 ([#1312](https://github.com/stardust-ui/react/pull/1312))
 
 ### Fixes
-
 - ESC key pressed on a trigger element should propagate event if `Popup` is closed @sophieH29 ([#1373](https://github.com/stardust-ui/react/pull/1373))
 - Changing icon behavior as for some cases icon could be visible @kolaps33 ([#1327](https://github.com/stardust-ui/react/pull/1327))
 - Firefox: placeholder color should match redlines @notandrew ([#1406](https://github.com/stardust-ui/react/pull/1406))
@@ -1868,37 +1605,31 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix flickering issues with `Dropdown` and `Popup` components @Bugaa92 ([#1434](https://github.com/stardust-ui/react/pull/1434))
 
 ### Features
-
 - Add keyboard navigation and screen reader support for `Accordion` @silviuavram ([#1322](https://github.com/stardust-ui/react/pull/1322))
 - Add `expanded` prop to `Accordion` @silviuavram ([#1322](https://github.com/stardust-ui/react/pull/1322))
 - Replace `react-popper` package with custom `Popper` component and exposed as `UNSTABLE_Popper` positioning helper @Bugaa92 ([#1358](https://github.com/stardust-ui/react/pull/1358))
 - Add strict types for the `colorScheme` props used in the components' `variables` @mnajdova ([#1340](https://github.com/stardust-ui/react/pull/1340))
-- Export `message-seen`, `presence-available`, `presence-stroke`, `open-outside` and `eye-friendlier` icons to Teams theme @joheredi ([#1390](https://github.com/stardust-ui/react/pull/1390))
+- Export `message-seen`, `presence-available`, `presence-stroke`, `open-outside` and `eye-friendlier`  icons to Teams theme @joheredi ([#1390](https://github.com/stardust-ui/react/pull/1390))
 - Add 'lightning' icon to Teams theme @notandrew ([#1385](https://github.com/stardust-ui/react/pull/1385))
 - Add automatic positioning inside viewport for `Menu` with submenus @Bugaa92 ([#1384](https://github.com/stardust-ui/react/pull/1384))
 - Add `align`, `position`, `offset` props for `Dropdown` component @Bugaa92 ([#1312](https://github.com/stardust-ui/react/pull/1312))
 - Add `Checkbox` component and `toggle` prop for it @layershifter ([#1405](https://github.com/stardust-ui/react/pull/1405))
 
 ### Documentation
-
 - Accessibility: improve introduction section @jurokapsiar ([#1368](https://github.com/stardust-ui/react/pull/1368))
 - Accessibility: improve accessibility descriptions for components @jurokapsiar ([#1371](https://github.com/stardust-ui/react/pull/1371))
 
 <!--------------------------------[ v0.31.0 ]------------------------------- -->
-
 ## [v0.31.0](https://github.com/stardust-ui/react/tree/v0.31.0) (2019-05-21)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.30.0...v0.31.0)
 
 ### BREAKING CHANGES
-
 - Restrict Typescript checks for component props @kuzhelov ([#1290](https://github.com/stardust-ui/react/pull/1290))
 - Aligned focus styles for `Chat.Message` component with latest Teams theme design @Bugaa92 ([#1269](https://github.com/stardust-ui/react/pull/1269))
 - Fix styles for `fill` prop of `Flex` @kuzhelov ([#1352](https://github.com/stardust-ui/react/pull/1352))
 - FontAwesome icons is not part of Teams theme more @layershifter ([#1337](https://github.com/stardust-ui/react/pull/1337))
 
 ### Fixes
-
 - Fixed `Flex.Item` children prop type @mnajdova ([#1320](https://github.com/stardust-ui/react/pull/1320))
 - Fixed `Icon`'s color example to align with the latest color updates @mnajdova ([#1336](https://github.com/stardust-ui/react/pull/1336))
 - Fixed `TreeTitle` - `tabIndex` prop should be camel case in behavior @sophieH29 ([#1345](https://github.com/stardust-ui/react/pull/1345))
@@ -1908,7 +1639,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Remove `NaN` values from positioning styles in `Popup` @kuzhelov ([#1365](https://github.com/stardust-ui/react/pull/1365))
 
 ### Features
-
 - Add `selected`, `isFromKeyboard` props to `DropdownItem` @mnajdova ([#1299](https://github.com/stardust-ui/react/pull/1299))
 - Add styles for the dark and high contrast Teams themes for the `Dropdown` component @mnajdova ([#1299](https://github.com/stardust-ui/react/pull/1299))
 - Highlight options by character keys in `Dropdown` non-search versions @silviuavram ([#1270](https://github.com/stardust-ui/react/pull/1270))
@@ -1918,30 +1648,24 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add red color scheme in Teams theme @mnajdova ([#1353](https://github.com/stardust-ui/react/pull/1353))
 
 ### Documentation
-
 - Clearly identify Slots in DocSite @hughreeling ([#1292](https://github.com/stardust-ui/react/pull/1292))
 
 <!--------------------------------[ v0.30.0 ]------------------------------- -->
-
 ## [v0.30.0](https://github.com/stardust-ui/react/tree/v0.30.0) (2019-05-10)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.29.1...v0.30.0)
 
 ### BREAKING CHANGES
-
 - Rename `context` prop to `mountNode` in `PortalInner` @layershifter ([#1288](https://github.com/stardust-ui/react/pull/1288))
 - Updated Teams' theme color palette values, removed color related site variables @mnajdova ([#1069](https://github.com/stardust-ui/react/pull/1069))
 - Remove `defaultTarget` prop in `Popup` component @layershifter ([#1153](https://github.com/stardust-ui/react/pull/1153))
 - Add focus border styling mechanism in Teams theme @Bugaa92 ([#1269](https://github.com/stardust-ui/react/pull/1269))
 
 ### Fixes
-
 - Fix double rendering of `Popup` component @layershifter ([#1153](https://github.com/stardust-ui/react/pull/1153))
 - Docs: fix(docs): Set maximum width for examples @miroslavstastny ([#1319](https://github.com/stardust-ui/react/pull/1319))
 - Clearable `Input` can be cleared by Escape keydown @silviuavram ([#1306](https://github.com/stardust-ui/react/pull/1306))
 
 ### Features
-
 - Add default child a11y behavior to `Menu` related behaviors @silviuavram ([#1282](https://github.com/stardust-ui/react/pull/1282))
 - `Ref` component extracted to a `@stardust-ui/react-component-ref` @layershifter ([#1281](https://github.com/stardust-ui/react/pull/1281))
 - added `isRefObject()`, `toRefObject()` utils for React refs @layershifter ([#1281](https://github.com/stardust-ui/react/pull/1281))
@@ -1952,13 +1676,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Export `files-upload` SVG icon for `Teams` theme @manindr ([#1293](https://github.com/stardust-ui/react/pull/1293))
 
 <!--------------------------------[ v0.29.1 ]------------------------------- -->
-
 ## [v0.29.1](https://github.com/stardust-ui/react/tree/v0.29.1) (2019-05-01)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.29.0...v0.29.1)
 
 ### Fixes
-
 - Update `ChatMessage` styles in Teams themes @layershifter ([#1246](https://github.com/stardust-ui/react/pull/1246))
 - Fix Teams theme styles for `Alert` [redlines] @codepretty ([#1226](https://github.com/stardust-ui/react/pull/1226))
 - Update background color in Teams dark theme for `Chat` message background color @codepretty ([#1256](https://github.com/stardust-ui/react/pull/1256))
@@ -1967,50 +1688,37 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Expand css shorthands for correct merging of the styles @mnajdova ([#869](https://github.com/stardust-ui/react/pull/869))
 
 ### Features
-
 - Export `call-dialpad` icon in Teams theme @assamad ([#1271](https://github.com/stardust-ui/react/pull/1271))
 
 <!--------------------------------[ v0.29.0 ]------------------------------- -->
-
 ## [v0.29.0](https://github.com/stardust-ui/react/tree/v0.29.0) (2019-04-24)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.28.1...v0.29.0)
 
 ### BREAKING CHANGES
-
 - Rename `inputFocusBorderBottomColor` to `inputFocusBorderColor` in `InputVariables` @layershifter ([#1247](https://github.com/stardust-ui/react/pull/1247))
 
 ### Fixes
-
 - Fix onClick in `DropdownItem` to accept user callback and have its event propagation stopped @silviuavram ([#1248](https://github.com/stardust-ui/react/pull/1248))
 - Fix a11y message cleanup for add and remove items in `Dropdown` @silviuavram ([#1237](https://github.com/stardust-ui/react/pull/1237))
 
 ### Features
-
 - Move `Input` styles to Base theme @layershifter ([#1247](https://github.com/stardust-ui/react/pull/1247))
 - Add `role` attribute to `Popup`'s content in accessibility behaviors @sophieH29 ([1253](https://github.com/stardust-ui/react/pull/1253))
 
 <!--------------------------------[ v0.28.1 ]------------------------------- -->
-
 ## [v0.28.1](https://github.com/stardust-ui/react/tree/v0.28.1) (2019-04-23)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.28.0...v0.28.1)
 
 ### Fixes
-
 - Fix missing npm packages in v0.28.0 @layershifter ([#1251](https://github.com/stardust-ui/react/pull/1251))
 <!--------------------------------[ v0.28.0 ]------------------------------- -->
-
 ## [v0.28.0](https://github.com/stardust-ui/react/tree/v0.28.0) (2019-04-22)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.27.0...v0.28.0)
 
 ### BREAKING CHANGES
-
 - Add `box-sizing: border-box` to all elements, as well as before and after pseudo elements in Teams theme @mnajdova ([#1057](https://github.com/stardust-ui/react/pull/1057))
 
 ### Fixes
-
 - Fix overflowing focus outline for `Grid` items for Teams theme @Bugaa92 ([#1195](https://github.com/stardust-ui/react/pull/1195))
 - Fix routing for accessibility documentation @sophieH29 ([#1208](https://github.com/stardust-ui/react/pull/1208))
 - Fix `content` prop type in `Dialog` @layershifter ([#1212](https://github.com/stardust-ui/react/pull/1212))
@@ -2022,10 +1730,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `isFromKeyboard` to `Alert` component @layershifter ([#1238](https://github.com/stardust-ui/react/pull/1238))
 
 ### Features
-
 - Add `Embed` and `Video` components @stuartlong ([#1108](https://github.com/stardust-ui/react/pull/1108))
 - Move `Flex` styles to `base` theme @kuzhelov ([#1206](https://github.com/stardust-ui/react/pull/1206))
-- Add file video icon on `Icon` component @luzhon ([#1205](https://github.com/stardust-ui/react/pull/1250))
+- Add file video icon on `Icon` component @luzhon  ([#1205](https://github.com/stardust-ui/react/pull/1250))
 - Export `call-missed-line` icon in Teams theme @96andrei ([#1203](https://github.com/stardust-ui/react/pull/1203))
 - Add `pointing` prop to `Popup` ([#1198](https://github.com/stardust-ui/react/pull/1198))
 - [Teams Theme] Export missing read-aloud icon in Teams Theme @joheredi ([#1225](https://github.com/stardust-ui/react/pull/1225))
@@ -2033,18 +1740,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Export `FocusZoneMode` type @sophieH29 ([#1229](https://github.com/stardust-ui/react/pull/1229))
 
 <!--------------------------------[ v0.27.0 ]------------------------------- -->
-
 ## [v0.27.0](https://github.com/stardust-ui/react/tree/v0.27.0) (2019-04-10)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.26.0...v0.27.0)
 
 ### BREAKING CHANGES
-
 - Rename `flipInRtl` Icon's `slot` to `svgFlippingInRtl` in Teams theme @mnajdova ([#1179](https://github.com/stardust-ui/react/pull/1179))
 - Do not set html `font-size` in theme static styles @miroslavstastny ([#1190](https://github.com/stardust-ui/react/pull/1190))
 
 ### Fixes
-
 - Fix the reset of the `highlightedIndex` when search query changes @silviuavram ([#1168](https://github.com/stardust-ui/react/pull/1168))
 - Fix click triggering logic of `Space` and `Enter` keys for `MenuItem` @kuzhelov ([#1175](https://github.com/stardust-ui/react/pull/1175))
 - Truncate `content` and `header` of `ListItem` when used from `DropdownSelectedItem` @silviuavram ([#1161](https://github.com/stardust-ui/react/pull/1161))
@@ -2056,25 +1759,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix example's code of `Theming Examples` guide @kuzhelov ([#1192](https://github.com/stardust-ui/react/pull/1192))
 
 ### Features
-
 - Add `Reaction` variables to Teams dark and HOC themes @mnajdova ([#1152](https://github.com/stardust-ui/react/pull/1152))
 - Move `Grid`'s and `Image`'s styles and variables from Teams to base theme @mnajdova ([#1182](https://github.com/stardust-ui/react/pull/1182))
 - Export `play` and `pause` icons in Teams theme @layershifter ([#1189](https://github.com/stardust-ui/react/pull/1189))
 - Export `eye` and `eye-slash` icons in Teams theme @alinais ([#1194](https://github.com/stardust-ui/react/pull/1194))
 
 ### Performance
-
 - Drop usages of `FelaTheme` component and use `React.Context` to get `theme` directly @layershifter ([#1163](https://github.com/stardust-ui/react/pull/1163))
 - Use `tslib` to replace helpers with their imports, reduces bundle size @layershifter ([#1184](https://github.com/stardust-ui/react/pull/1184))
 
 <!--------------------------------[ v0.26.0 ]------------------------------- -->
-
 ## [v0.26.0](https://github.com/stardust-ui/react/tree/v0.26.0) (2019-04-03)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.25.1...v0.26.0)
 
 ### BREAKING CHANGES
-
 - Remove `Indicator` component, the usages should be replaced with the `Icon` component @mnajdova ([#1120](https://github.com/stardust-ui/react/pull/1120))
 - Add shorthand support for `header` and `content` in `Dropdown`,` DropdownSelectedItem.slotClassNames.removeIcon` usages should be replaced with `DropdownSelectedItem.slotClassNames.icon` @silviuavram ([#1054](https://github.com/stardust-ui/react/pull/1054))
 - `react@16.8` and `react-dom@16.8` are now required @layershifter ([#1147](https://github.com/stardust-ui/react/pull/1147))
@@ -2082,7 +1780,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `color` and `backgroundColor` variables were moved from `PopupContent` to `popup` slot of `Popup` component @kuzhelov ([#1121](https://github.com/stardust-ui/react/pull/1121))
 
 ### Fixes
-
 - Update vertical && pointing `Menu` styles @jaanus03 ([#1116](https://github.com/stardust-ui/react/pull/1116))
 - Fix in `Dropdown`, close it after `searchQuery` will become empty @layershifter ([#1124](https://github.com/stardust-ui/react/pull/1124))
 - Correctly align RTL text in LTR theme and vice versa @miroslavstastny ([#1115](https://github.com/stardust-ui/react/pull/1115))
@@ -2094,7 +1791,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix invalid import in `Alert` @mnajdova ([#1159](https://github.com/stardust-ui/react/pull/1159))
 
 ### Features
-
 - Add predefined icon set for the usages in the `Input`, `Dropdown` and `AccordionTitle` components @mnajdova ([#1120](https://github.com/stardust-ui/react/pull/1120))
 - Add `Popup` styles to Teams Dark and High Contrast themes @kuzhelov ([#1121](https://github.com/stardust-ui/react/pull/1121))
 - export `flag` icon in Teams theme @jaanus03 ([#1133](https://github.com/stardust-ui/react/pull/1133))
@@ -2103,13 +1799,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add functionality for programmatically setting the source in the `what-input` service and used it in the `Popup` component @mnajdova ([#1151](https://github.com/stardust-ui/react/pull/1151))
 
 <!--------------------------------[ v0.25.1 ]------------------------------- -->
-
 ## [v0.25.1](https://github.com/stardust-ui/react/tree/v0.25.1) (2019-03-29)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.25.0...v0.25.1)
 
 ### Fixes
-
 - Fix narration for `Menu` @miroslavstastny ([#1105](https://github.com/stardust-ui/react/pull/1105))
 - Fix `timestamp` to be shown if the `reactionGroup` prop is applied on the `ChatMessage` component in Teams theme @mnajdova ([#1100](https://github.com/stardust-ui/react/pull/1100))
 - Fix typings for `FlexProps` and `FlexItemProps` @miroslavstastny ([#1089](https://github.com/stardust-ui/react/pull/1089))
@@ -2120,44 +1813,34 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add missing types to `role` in accessibility @layershifter ([#1125](https://github.com/stardust-ui/react/pull/1126))
 
 ### Features
-
 - Add `attached` prop on the `ChatMessage` component, which is automatically set by the `ChatItem` component @mnajdova ([#1100](https://github.com/stardust-ui/react/pull/1100))
 - Align `Alert` component styles to latest design for Teams theme @Bugaa92 ([#1111](https://github.com/stardust-ui/react/pull/1111))
 - Add support for SVG animations to `Loader`, update in Teams theme @layershifter ([#1097](https://github.com/stardust-ui/react/pull/1097))
 - Export `ban` and `exclamation-circle` icons in Teams theme @kuzhelov ([#1123](https://github.com/stardust-ui/react/pull/1123))
 
 ### Documentation
-
 - Fix example permalinks @miroslavstastny ([#1122](https://github.com/stardust-ui/react/pull/1122))
 
 <!--------------------------------[ v0.25.0 ]------------------------------- -->
-
 ## [v0.25.0](https://github.com/stardust-ui/react/tree/v0.25.0) (2019-03-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.24.0...v0.25.0)
 
 ### BREAKING CHANGES
-
 - `Provider` now renders `div` element with `dir`, `color` and `background` @miroslavstastny ([#852](https://github.com/stardust-ui/react/pull/852))
 
 ### Fixes
-
 - Fix `RadioButtonGroup` Teams theme styles to be correct @notandrew ([#830](https://github.com/stardust-ui/react/pull/830))
 
 <!--------------------------------[ v0.24.0 ]------------------------------- -->
-
 ## [v0.24.0](https://github.com/stardust-ui/react/tree/v0.24.0) (2019-03-25)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.23.1...v0.24.0)
 
 ### BREAKING CHANGES
-
 - Use regular components instead of `Label` in `RadioGroupItem` @layershifter ([#1070](https://github.com/stardust-ui/react/pull/1070))
 - Remove `Flex.Gap` component, and convert the `gap` styles to `margins` on the child elements of the `Flex` component @mnajdova ([#1074](https://github.com/stardust-ui/react/pull/1074))
 - `Dropdown`: control highlightedIndex from `Dropdown` @silviuavram ([#966](https://github.com/stardust-ui/react/pull/966))
 
 ### Fixes
-
 - Add aria posinset and setsize, hide menu indicator from narration @jurokapsiar ([#1066](https://github.com/stardust-ui/react/pull/1066))
 - Fix applying accessibility key handlers @layershifter ([#1072](https://github.com/stardust-ui/react/pull/1072))
 - Fix `shrink` prop behavior for `Flex.Item` @kuzhelov ([#1086](https://github.com/stardust-ui/react/pull/1086))
@@ -2167,23 +1850,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix issues with clicks inside nested `Popup`s @layershifter ([#949](https://github.com/stardust-ui/react/pull/949))
 
 ### Features
-
 - Add `Alert` component @Bugaa92 ([#1063](https://github.com/stardust-ui/react/pull/1063))
 - Add `placeholderColor` variable for `Input` component in Teams theme @layershifter ([#1092](https://github.com/stardust-ui/react/pull/1092))
 - Add and export files icons in Teams theme @codepretty ([#1094](https://github.com/stardust-ui/react/pull/1094))
 
 ### Documentation
-
 - Add layout guide @kuzhelov ([#1091](https://github.com/stardust-ui/react/pull/1091))
 
 <!--------------------------------[ v0.23.1 ]------------------------------- -->
-
 ## [v0.23.1](https://github.com/stardust-ui/react/tree/v0.23.1) (2019-03-13)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.23.0...v0.23.1)
 
 ### Fixes
-
 - Do not propagate keyboard events outside `Popup`'s content only when focus trap is used @sophieH29 ([#1028](https://github.com/stardust-ui/react/pull/1028))
 - Narrate the first adding/selection of a `Dropdown` item using aria live @silviuavram ([#1032](https://github.com/stardust-ui/react/pull/1032))
 - `*Props` interfaces accept additional props @layershifter ([#1042](https://github.com/stardust-ui/react/pull/1042))
@@ -2191,31 +1869,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix broken border in `Input` when it's focused in Teams theme @layershifter ([#1041](https://github.com/stardust-ui/react/pull/1041))
 
 ### Features
-
 - Add `inline` prop in the `Popup` for rendering the content next to the trigger element @mnajdova ([#1017](https://github.com/stardust-ui/react/pull/1017))
 - Add `exclusive` prop in the `Tree` for expanding one tree item at a time
-  @priyankar205 ([#1018](https://github.com/stardust-ui/react/pull/1018))
+@priyankar205 ([#1018](https://github.com/stardust-ui/react/pull/1018))
 - Export `call-pstn` and `skype-logo` SVG icons to the Teams theme @thewulf7 ([#929](https://github.com/stardust-ui/react/pull/968))
 - Export some Office brand SVG icons to the Teams theme, including `word`, `word-color`, `excel`, `excel-color`, `powerpoint`, `powerpoint-color`, `onenote`, `onenote-color` @codepretty ([#938](https://github.com/stardust-ui/react/pull/938))
 
 ### Documentation
-
 - Add disabled state to menu as toolbar doc example @codepretty ([#933](https://github.com/stardust-ui/react/pull/933))
 
 <!--------------------------------[ v0.23.0 ]------------------------------- -->
-
 ## [v0.23.0](https://github.com/stardust-ui/react/tree/v0.23.0) (2019-03-06)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.22.1...v0.23.0)
 
 ### BREAKING CHANGES
-
 - Changed types of the slot's inside the `ListItem` component (`media`, `content`, `contentMedia`, `header`, `headerMedia` and `endMedia`) from `any` to `ShorthandValue` @mnajdova ([#886](https://github.com/stardust-ui/react/pull/886))
 - Changed class names of the slots inside the `ListItem` (`ItemLayout`'s classnames were replaced with `ListItem`'s) @mnajdova ([#886](https://github.com/stardust-ui/react/pull/886))
 - Replace the `outline` variable with the `outline` prop in `Icon` @layershifter ([#1002](https://github.com/stardust-ui/react/pull/1002))
 
 ### Fixes
-
 - Remove space between `Button.Group` items without `circular` prop @Bugaa92 ([#973](https://github.com/stardust-ui/react/pull/973))
 - Fix allow `Text` component when rendered as div to behave as block element in Teams theme @mnajdova ([#940](https://github.com/stardust-ui/react/pull/940))
 - Correctly apply static styles if the first `Provider` rendered is RTL @miroslavstastny ([#960](https://github.com/stardust-ui/react/pull/960))
@@ -2232,7 +1904,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Improve `Menu` styling, vertical menu in Teams theme ([#934](https://github.com/stardust-ui/react/pull/934))
 
 ### Features
-
 - Add `delay` prop for `Loader` component @layershifter ([#969](https://github.com/stardust-ui/react/pull/969))
 - Add `getNextElement`, `getPreviousElement` and `focusAsync` to exported as `FocusZoneUtilities` @layershifter ([#981](https://github.com/stardust-ui/react/pull/981))
 - Add `Reaction` and `ReactionGroup` components @mnajdova ([#959](https://github.com/stardust-ui/react/pull/959))
@@ -2243,35 +1914,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `AutoFocusZone` component, for focusing inner element on mount @mnajdova ([#1015](https://github.com/stardust-ui/react/pull/1015))
 
 ### Documentation
-
 - Add `MenuButton` prototype (only available in development mode) @layershifter ([#947](https://github.com/stardust-ui/react/pull/947))
 
 <!--------------------------------[ v0.22.1 ]------------------------------- -->
-
 ## [v0.22.1](https://github.com/stardust-ui/react/tree/v0.22.1) (2019-02-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.22.0...v0.22.1)
 
 ### Fixes
-
 - Fix `createComponent()` typings and documentation examples @Bugaa92 ([#954](https://github.com/stardust-ui/react/pull/954))
 
 ### Documentation
-
 - Fix the sidebar missing items for docsite @alinais ([#971](https://github.com/stardust-ui/react/pull/971))
 
 <!--------------------------------[ v0.22.0 ]------------------------------- -->
-
 ## [v0.22.0](https://github.com/stardust-ui/react/tree/v0.22.0) (2019-02-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.21.1...v0.22.0)
 
 ### BREAKING CHANGES
-
 - Remove logic for adding borders by default if the `Icon` has the `circular` prop @mnajdova ([#907](https://github.com/stardust-ui/react/pull/907))
 
 ### Fixes
-
 - Display correctly images in portrait mode inside `Avatar` @layershifter ([#899](https://github.com/stardust-ui/react/pull/899))
 - Expose `Popup`'s content Ref @sophieH29 ([#913](https://github.com/stardust-ui/react/pull/913))
 - Fix `Button` Teams theme styles to use semibold weight @notandrew ([#829](https://github.com/stardust-ui/react/pull/829))
@@ -2284,7 +1946,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Export variables for the `DropdownItem`, `DropdownSearchInput` and `DropdownSelectedItem` components in Teams theme ([#967](https://github.com/stardust-ui/react/pull/967))
 
 ### Features
-
 - Export `lock` SVG icon @VyshnaviDasari ([#906](https://github.com/stardust-ui/react/pull/906))
 - Adding status behavior @kolaps33 ([#880](https://github.com/stardust-ui/react/pull/880))
 - Add basic animation library for Teams theme @bhamlefty @mnajdova ([#871](https://github.com/stardust-ui/react/pull/871))
@@ -2295,28 +1956,22 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Export `chevron-down`, `download`, `search`, `email` and `star` SVG icons to the Teams theme @pajindal([#955](https://github.com/stardust-ui/react/pull/955))
 
 ### Documentation
-
 - Add `Editable Area with Dropdown` prototype for mentioning people using `@` character (only available in development mode) @Bugaa92 ([#931](https://github.com/stardust-ui/react/pull/931))
 - Adjust styles of `Portal` examples @kuzhelov ([#953](https://github.com/stardust-ui/react/pull/953))
 
 <!--------------------------------[ v0.21.1 ]------------------------------- -->
-
 ## [v0.21.1](https://github.com/stardust-ui/react/tree/v0.21.1) (2019-02-14)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.21.0...v0.21.1)
 
 ### BREAKING CHANGES
-
 - Removed colors from `siteVariables` in Teams theme @mnajdova ([#858](https://github.com/stardust-ui/react/pull/858))
 
 ### Features
-
 - Export `arrow-up`,`arrow-down` and `chat` SVG icon @VyshnaviDasari ([#873](https://github.com/stardust-ui/react/pull/873))
 - Export `FocusZone`'s utilities @sophieH29 ([#876](https://github.com/stardust-ui/react/pull/876))
 - Add `clearable` prop for `Dropdown` @layershifter ([#885](https://github.com/stardust-ui/react/pull/885))
 
 ### Fixes
-
 - Properly handle falsy values provided as `Flex` and `Flex.Item` children @kuzhelov ([#890](https://github.com/stardust-ui/react/pull/890))
 - Update cached `rem` size value of `pxToRem` on theme static styles render @kuzhelov ([#883](https://github.com/stardust-ui/react/pull/883))
 - Stardust in TS project with `--isolatedModules` can be built @layershifter ([#894](https://github.com/stardust-ui/react/pull/894))
@@ -2325,17 +1980,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Replace margins with padding in `chatItemStyles` for Teams theme ([#878](https://github.com/stardust-ui/react/pull/878))
 
 <!--------------------------------[ v0.21.0 ]------------------------------- -->
-
 ## [v0.21.0](https://github.com/stardust-ui/react/tree/v0.21.0) (2019-02-12)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.20.0...v0.21.0)
 
 ### BREAKING CHANGES
-
 - Changed site variables' `colors.black` to be `#000` instead of `grey[900](#252424)` in Teams theme @mnajdova ([#855](https://github.com/stardust-ui/react/pull/855))
 
 ### Features
-
 - Add single search flavor for `Dropdown` component @Bugaa92 ([#839](https://github.com/stardust-ui/react/pull/839))
 - Add multiple selection flavor for `Dropdown` component @Bugaa92 ([#845](https://github.com/stardust-ui/react/pull/845))
 - Add `black` and `white` options for the `color` prop of the `Label` component @mnajdova ([#855](https://github.com/stardust-ui/react/pull/855))
@@ -2343,32 +1994,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `inline` prop for `Dropdown` component @Bugaa92 ([#863](https://github.com/stardust-ui/react/pull/863))
 
 ### Fixes
-
 - Focus the last focused element which triggered `Popup` on ESC @sophieH29 ([#861](https://github.com/stardust-ui/react/pull/861))
 - Changing the focus zone to embed for gridBehavior @kolaps33 ([#844] (https://github.com/stardust-ui/react/pull/844))
 - Add polyfills to correctly work in IE11 @layershifter ([#868](https://github.com/stardust-ui/react/pull/868))
 - Fix selectors for `ItemLayout` class names in the `listItemStyles` in Teams theme @mnajdova([#882](https://github.com/stardust-ui/react/pull/882))
 
 ### Documentation
-
 - Add screener with steps testing documentation @silviuavram ([#856](https://github.com/stardust-ui/react/pull/856))
 - Move color palette link to prototypes section @codepretty ([#884](https://github.com/stardust-ui/react/pull/884))
 
 <!--------------------------------[ v0.20.0 ]------------------------------- -->
-
 ## [v0.20.0](https://github.com/stardust-ui/react/tree/v0.20.0) (2019-02-06)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.19.2...v0.20.0)
 
 ### BREAKING CHANGES
-
 - Generalize size values for `Avatar` and `Status` components @kuzhelov ([#828](https://github.com/stardust-ui/react/pull/828))
 - Remove `AvatarPropsWithDefaults` and `StatusPropsWithDefaults` from public API @kuzhelov ([#828](https://github.com/stardust-ui/react/pull/828))
 - Rename `combobox` to `root` in `dropdownSearchInputStyles` @layershifter ([#816](https://github.com/stardust-ui/react/pull/816))
 - Renamed class names for the slots inside the `ItemLayout` component @mnajdova ([#827](https://github.com/stardust-ui/react/pull/827))
 
 ### Features
-
 - Accessibility for menu divider @jurokapsiar ([#822](https://github.com/stardust-ui/react/pull/822))
 - Add static outline and filled class names to icons in Teams theme @miroslavstastny ([#834](https://github.com/stardust-ui/react/pull/834))
 - Added slot class names in `ChatMessage`, `ChatItem`, `Dropdown`, `ItemLayout`, `Layout`, `MenuItem` @mnajdova ([#827](https://github.com/stardust-ui/react/pull/827))
@@ -2379,20 +2024,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add keyboard navigation between selected items in `Dropdown` multiple version @silviuavram ([#842](https://github.com/stardust-ui/react/pull/842))
 
 ### Fixes
-
 - Fix `Dropdown` component styles regression @Bugaa92 ([#824](https://github.com/stardust-ui/react/pull/824))
-- Update vulnerable version of `lodash` dependency @kuzhelov ([#840](https://github.com/stardust-ui/react/pull/840))
+- Update vulnerable version of `lodash` dependency  @kuzhelov ([#840](https://github.com/stardust-ui/react/pull/840))
 - Add `displayName` property to `Ref` and `Provider` components @layershifter ([#836](https://github.com/stardust-ui/react/pull/836))
 - Wrap error text of docs code editor @kuzhelov ([#843](https://github.com/stardust-ui/react/pull/843))
 
 <!--------------------------------[ v0.19.2 ]------------------------------- -->
-
 ## [v0.19.2](https://github.com/stardust-ui/react/tree/v0.19.2) (2019-02-01)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.19.1...v0.19.2)
 
 ### Features
-
 - Export `triangle-down` and `triangle-right` icons in Teams theme @codepretty ([#785](https://github.com/stardust-ui/react/pull/785))
 - Add RTL examples for `Button` and `Divider` components @mnajdova ([#792](https://github.com/stardust-ui/react/pull/792))
 - Add mechanism for marking icons that should rotate in RTL in Teams theme; marked icons: `send`, `bullets`, `leave`, `outdent`, `redo`, `undo`, `send` @mnajdova ([#788](https://github.com/stardust-ui/react/pull/788))
@@ -2407,7 +2048,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add toggle functionality in the `Popoup` even if the `trigger` is not button @kolaps33 ([#758](https://github.com/stardust-ui/react/pull/758))
 
 ### Fixes
-
 - Handle `onClick` and `onFocus` on ListItems correctly @layershifter ([#779](https://github.com/stardust-ui/react/pull/779))
 - Remove popup trigger button default role @jurokapsiar ([#806](https://github.com/stardust-ui/react/pull/806))
 - Improve `Dropdown` component styles @Bugaa92 ([#786](https://github.com/stardust-ui/react/pull/786))
@@ -2417,24 +2057,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Dix `MenuDivider` not shown on horizontal `Menu` @mnajdova ([#813](https://github.com/stardust-ui/react/pull/813))
 
 <!--------------------------------[ v0.19.1 ]------------------------------- -->
-
 ## [v0.19.1](https://github.com/stardust-ui/react/tree/v0.19.1) (2019-01-29)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.19.0...v0.19.1)
 
 ### Fixes
-
 - Fix layout of `Accordion` panel's title @kuzhelov ([#780](https://github.com/stardust-ui/react/pull/780))
 - Allow to use `createRef()` API with `triggerRef` prop in `Portal` component @layershifter ([#787](https://github.com/stardust-ui/react/pull/787))
 
 <!--------------------------------[ v0.19.0 ]------------------------------- -->
-
 ## [v0.19.0](https://github.com/stardust-ui/react/tree/v0.19.0) (2019-01-28)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.18.0...v0.19.0)
 
 ### BREAKING CHANGES
-
 - Update variable names in themes, add missing sizes @layershifter ([#762](https://github.com/stardust-ui/react/pull/762))
 - Rename `toggleButton` prop to `toggleIndicator` and make it visible by default @layershifter ([#729](https://github.com/stardust-ui/react/pull/729))
 - Remove `props` from variables resolution process @kuzhelov ([#770](https://github.com/stardust-ui/react/pull/770))
@@ -2442,30 +2076,24 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Replaced `gutterPosition` with `contentPosition` in ChatItem (`contentPosition='end'` should be added on the ChatItems containing ChatMessage with `mine` prop for teams theme) @mnajdova ([#767](https://github.com/stardust-ui/react/pull/767))
 
 ### Features
-
 - Add `loading` prop for `Dropdown` @layershifter ([#729](https://github.com/stardust-ui/react/pull/729))
 - Export `close` icon in Teams theme @alinais ([#774](https://github.com/stardust-ui/react/pull/774))
 - Add `attached` prop for ChatItem @mnajdova ([#767](https://github.com/stardust-ui/react/pull/767))
 
 ### Fixes
-
 - Make `headerMedia` visible for screen readers in `ListItem` @layershifter ([#772](https://github.com/stardust-ui/react/pull/772))
 - Cleanup for `Dropdown` examples' accessibility and added localisation example. @silviuavram ([#771](https://github.com/stardust-ui/react/pull/771))
 - Fix highlighted selected option in single selection `Dropdown` when opened @silviuavram ([#726](https://github.com/stardust-ui/react/pull/726))
 
 <!--------------------------------[ v0.18.0 ]------------------------------- -->
-
 ## [v0.18.0](https://github.com/stardust-ui/react/tree/v0.18.0) (2019-01-24)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.17.0...v0.18.0)
 
 ### BREAKING CHANGES
-
 - Forwarding props for `createShorthand` calls if the value is a React element @mnajdova ([#759](https://github.com/stardust-ui/react/pull/759))
 - Rename `Slot` component to `Box` and export it @Bugaa92 ([#713](https://github.com/stardust-ui/react/pull/713))
 
 ### Fixes
-
 - Fix focus outline visible only during keyboard navigation in `ListItem` @layershifter ([#727](https://github.com/stardust-ui/react/pull/727))
 - Pass `jest --detectLeaks` tests @miroslavstastny ([#718](https://github.com/stardust-ui/react/pull/718))
 - Fix Avatar's size example @mnajdova ([#745](https://github.com/stardust-ui/react/pull/745))
@@ -2476,56 +2104,44 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `ChatMessage` - Author element should always be rendered @sophieH29 ([#761](https://github.com/stardust-ui/react/pull/761))
 
 ### Features
-
 - Add and export 'missed call' icon in Teams theme @codepretty ([#748](https://github.com/stardust-ui/react/pull/748))
 - Add `Indicator` component and used it in `MenuItem` and `AccordionTitle` @mnajdova ([#721](https://github.com/stardust-ui/react/pull/721))
 - Expose `renderItem` and `renderSelectedItem` callbacks API for `Dropdown` @layershifter ([#746](https://github.com/stardust-ui/react/pull/746))
 - Add RTL support for the strings used inside the components @mnajdova ([#704](https://github.com/stardust-ui/react/pull/704))
 
 ### Documentation
-
 - Refine Shorthand docs page content @kuzhelov ([#751](https://github.com/stardust-ui/react/pull/751))
 
 <!--------------------------------[ v0.17.0 ]------------------------------- -->
-
 ## [v0.17.0](https://github.com/stardust-ui/react/tree/v0.17.0) (2019-01-17)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.16.2...v0.17.0)
 
 ### BREAKING CHANGES
-
 - Rename `DropdownLabel` to `DropdownSelectedItem` and extract styles @layershifter ([#725](https://github.com/stardust-ui/react/pull/725))
 - Make element type of component's event handler to be `HTMLElement` @kuzhelov ([#740](https://github.com/stardust-ui/react/pull/740))
 
 ### Fixes
-
 - Remove `render` from default factories options @layershifter ([#735](https://github.com/stardust-ui/react/pull/735))
 
 ### Features
-
 - Add accessibility for submenu in toolbar and menu behavior @kolaps33 ([#686](https://github.com/stardust-ui/react/pull/686))
 
 ### Documentation
-
 - Fix ignored initial state of knobs @layershifter ([#720](https://github.com/stardust-ui/react/pull/720))
 - Fix unclearable example's code @layershifter ([#720](https://github.com/stardust-ui/react/pull/720))
 - Add ability to export examples to CodeSandbox @layershifter ([#731](https://github.com/stardust-ui/react/pull/731))
 - Fix remove empty item in docs sidebar @layershifter ([#728](https://github.com/stardust-ui/react/pull/728))
 
 <!--------------------------------[ v0.16.2 ]------------------------------- -->
-
 ## [v0.16.2](https://github.com/stardust-ui/react/tree/v0.16.2) (2019-01-14)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.16.1...v0.16.2)
 
 ### Features
-
 - Add `Loader` component @layershifter ([#685](https://github.com/stardust-ui/react/pull/685))
 - Add `color` prop to `Label` component @Bugaa92 ([#647](https://github.com/stardust-ui/react/pull/647))
 - Add `accessibility` and `styles` to the API of `createComponent` @kuzhelov ([#714](https://github.com/stardust-ui/react/pull/714))
 
 ### Fixes
-
 - Fix doc layout for Menu component @codepretty ([#695](https://github.com/stardust-ui/react/pull/695))
 - Fix focus outline visible only during keyboard navigation @kolaps33 ([#689](https://github.com/stardust-ui/react/pull/689))
 - Fix handling changes of `renderer` prop in `Provider` @layershifter ([#702](https://github.com/stardust-ui/react/pull/702))
@@ -2534,19 +2150,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Correctly handle disabled `Menu.Item` in styles and accessibility @miroslavstastny ([#694](https://github.com/stardust-ui/react/pull/694))
 
 <!--------------------------------[ v0.16.1 ]------------------------------- -->
-
 ## [v0.16.1](https://github.com/stardust-ui/react/tree/v0.16.1) (2019-01-10)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.16.0...v0.16.1)
 
 ### Features
-
 - Add `on` and `mouseLeaveDelay` props to `Popup` component @mnajdova ([#622](https://github.com/stardust-ui/react/pull/622))
 - Add Dropdown Single Selection variant @silviuavram ([#584](https://github.com/stardust-ui/react/pull/584))
 - Add `MenuDivider` component and `kind` prop to the `items` inside of the `Menu` for creating different components @mnajdova ([#682](https://github.com/stardust-ui/react/pull/682))
 
 ### Fixes
-
 - Fix unicode arrow characters to be RTL aware @mnajdova ([#690](https://github.com/stardust-ui/react/pull/690))
 - Fix positioning of `Popup` with changable content @layershifter ([#678](https://github.com/stardust-ui/react/pull/678))
 - Fix default props in `Accordion` and `Dropdown` components @layershifter ([#675](https://github.com/stardust-ui/react/pull/675))
@@ -2556,23 +2168,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Temporary revert `pxToRem` changes introduced by [#371](https://github.com/stardust-ui/react/pull/371) @kuzhelov ([#700](https://github.com/stardust-ui/react/pull/700))
 
 ### Documentation
-
 - Add ability to edit examples' code in JavaScript and TypeScript @layershifter ([#650](https://github.com/stardust-ui/react/pull/650))
 - Fix broken switch to Children API when an example is not present @layershifter ([#650](https://github.com/stardust-ui/react/pull/650))
 
 <!--------------------------------[ v0.16.0 ]------------------------------- -->
-
 ## [v0.16.0](https://github.com/stardust-ui/react/tree/v0.16.0) (2019-01-07)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.15.0...v0.16.0)
 
 ### BREAKING CHANGES
-
 - Change available `size` prop values in `Icon` component @codepretty ([#640](https://github.com/stardust-ui/react/pull/640))
 - renamed Teams theme menu variables the contains props names as prefixes @mnajdova ([#539](https://github.com/stardust-ui/react/pull/539))
 
 ### Fixes
-
 - Ensure `Popup` properly flips values of `offset` prop in RTL @kuzhelov ([#612](https://github.com/stardust-ui/react/pull/612))
 - Fix `List` - items should be selectable @sophieH29 ([#566](https://github.com/stardust-ui/react/pull/566))
 - Respect `defaultTabbable` element when `FocusZone` container gets focus @sophieH29 ([#637](https://github.com/stardust-ui/react/pull/637))
@@ -2584,7 +2191,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Unifying the arrow unicode characters used in different components @mnajdova ([#673](https://github.com/stardust-ui/react/pull/673))
 
 ### Features
-
 - Add `color` prop to `Text` component @Bugaa92 ([#597](https://github.com/stardust-ui/react/pull/597))
 - Add `color` prop to `Header` and `HeaderDescription` components @Bugaa92 ([#628](https://github.com/stardust-ui/react/pull/628))
 - Export initial set of compose icons in Teams theme @joheredi ([#638](https://github.com/stardust-ui/react/pull/638))
@@ -2600,24 +2206,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Adding attachment behavior to handle space/enter key @kolaps33 ([#375](https://github.com/stardust-ui/react/pull/375))
 
 ### Documentation
-
-- Add more accessibility descriptions to components and behaviors @jurokapsiar ([#648](https://github.com/stardust-ui/react/pull/648))
+- Add more accessibility descriptions to components and behaviors @jurokapsiar  ([#648](https://github.com/stardust-ui/react/pull/648))
 
 <!--------------------------------[ v0.15.0 ]------------------------------- -->
-
 ## [v0.15.0](https://github.com/stardust-ui/react/tree/v0.15.0) (2018-12-17)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.14.0...v0.15.0)
 
 ### BREAKING CHANGES
-
 - `type` prop is replaced with `color` in `Divider` component @layershifter ([#558](https://github.com/stardust-ui/react/pull/558))
 - Remove `createColorVariants` and `setColorLightness` utils @layershifter ([#583](https://github.com/stardust-ui/react/pull/583))
 - Remove `accessibility` prop (and corresponding behavior) from `ButtonGroup` @kolaps33 ([#605](https://github.com/stardust-ui/react/pull/605))
 - Add `gutter` prop to `Chat.Item`, removed `avatar` from `Chat.Message`, renamed `content` slot to `message` for `Chat.Item`, deprecated Children API for `Chat` components @Bugaa92 ([#556](https://github.com/stardust-ui/react/pull/556))
 
 ### Fixes
-
 - Fix `Provider` is not executing staticStyles with the merged siteVariables @mnajdova ([#559](https://github.com/stardust-ui/react/pull/559))
 - Decouple `pxToRem` from HTML page's font size @kuzhelov ([#371](https://github.com/stardust-ui/react/pull/371))
 - The border color of the Icon is inherited if no value is provided for the `color` and `borderColor` variables @mnajdova ([#569](https://github.com/stardust-ui/react/pull/569))
@@ -2637,7 +2238,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix property names used in shorthand factories @kuzhelov ([#591](https://github.com/stardust-ui/react/pull/591))
 
 ### Features
-
 - `Ref` components uses `forwardRef` API by default @layershifter ([#491](https://github.com/stardust-ui/react/pull/491))
 - Label Processed Teams icons moved to Stardust theme @kuzhelov ([#574](https://github.com/stardust-ui/react/pull/574))
 - Add `Dropdown` component @silviuavram ([#422](https://github.com/stardust-ui/react/pull/422))
@@ -2647,44 +2247,33 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `offset` prop to `Popup` to extend set of popup positioning options @kuzhelov ([#606](https://github.com/stardust-ui/react/pull/606))
 
 ### Documentation
-
-- Add `prettier` support throughout the docs @levithomason ([#568](https://github.com/stardust-ui/react/pull/568))
+- Add `prettier` support throughout the docs @levithomason  ([#568](https://github.com/stardust-ui/react/pull/568))
 - Display available behaviors for component @jurokapsiar ([#510](https://github.com/stardust-ui/react/pull/510))
-- Fix `createComponent()` instructions for `className` @levithomason ([#599](https://github.com/stardust-ui/react/pull/599))
+- Fix `createComponent()` instructions for `className` @levithomason  ([#599](https://github.com/stardust-ui/react/pull/599))
 
 <!--------------------------------[ v0.14.0 ]------------------------------- -->
-
 ## [v0.14.0](https://github.com/stardust-ui/react/tree/v0.14.0) (2018-12-05)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.13.3...v0.14.0)
 
 ### BREAKING CHANGES
-
 - Add `render` callback as an option for shorthand value @kuzhelov ([#562](https://github.com/stardust-ui/react/pull/562))
 - Rename `renderContent` and `renderTitle` to `renderPanelContent` and `renderPanelTitle` for `Accordion` @kuzhelov ([#562](https://github.com/stardust-ui/react/pull/562))
 
 <!--------------------------------[ v0.13.3 ]------------------------------- -->
-
 ## [v0.13.3](https://github.com/stardust-ui/react/tree/v0.13.3) (2018-12-05)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.13.2...v0.13.3)
 
 ### Fixes
-
 - Revert breaking change: `render` callback as an option for shorthand value introduced in #519 @kuzhelov ([#561](https://github.com/stardust-ui/react/pull/561))
 
 <!--------------------------------[ v0.13.2 ]------------------------------- -->
-
 ## [v0.13.2](https://github.com/stardust-ui/react/tree/v0.13.2) (2018-12-05)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.13.1...v0.13.2)
 
 ### Documentation
-
 - Add the concept of the color palette @layershifter ([#451](https://github.com/stardust-ui/react/pull/451))
 
 ### Fixes
-
 - Add `react-dom` as available import in the editor @mnajdova ([#553](https://github.com/stardust-ui/react/pull/553))
 - Fix incorrect and missing filled or outline versions of Teams SVG icons @codepretty ([#552](https://github.com/stardust-ui/react/pull/552))
 - Fix truncate styles in Teams team for the `Button`'s `content` prop used as element @mnajdova ([#551](https://github.com/stardust-ui/react/pull/551))
@@ -2692,87 +2281,67 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix icon overlapping for `iconOnly` prop in `Menu` component with @Bugaa92 ([#486](https://github.com/stardust-ui/react/pull/486))
 
 ### Features
-
 - Add `render` callback as an option for shorthand value @kuzhelov ([#519](https://github.com/stardust-ui/react/pull/519))
 - Add `color` prop to `Divider` component @layershifter ([#451](https://github.com/stardust-ui/react/pull/451))
 
 <!--------------------------------[ v0.13.1 ]------------------------------- -->
-
 ## [v0.13.1](https://github.com/stardust-ui/react/tree/v0.13.1) (2018-12-03)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.13.0...v0.13.1)
 
 ### Fixes
-
 - Prevent blind props forwarding if `Input`'s wrapper is defined as React element @kuzhelov ([#453](https://github.com/stardust-ui/react/pull/453))
 - Fix invalid whatInput import @miroslavstastny ([#541](https://github.com/stardust-ui/react/pull/541))
 - Fix invalid typings and propTypes for the content prop @mnajdova ([#528](https://github.com/stardust-ui/react/pull/528))
 - Fix Teams SVG icons @kuzhelov ([#544](https://github.com/stardust-ui/react/pull/544))
 
 ### Features
-
 - Add all default size Teams icons processed & ready to be consumed by Stardust as needed @codepretty ([#478](https://github.com/stardust-ui/react/pull/478))
 - Add `Tree` Component @priyankar205 ([#479](https://github.com/stardust-ui/react/pull/479))
 - Add several Teams SVG icons @kuzhelov ([#544](https://github.com/stardust-ui/react/pull/544))
 
 <!--------------------------------[ v0.13.0 ]------------------------------- -->
-
 ## [v0.13.0](https://github.com/stardust-ui/react/tree/v0.13.0) (2018-11-27)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.12.1...v0.13.0)
 
 ### BREAKING CHANGES
-
 - Rename `Transition` component to `Animation`, and `animationName` property to `name` @mnajdova ([#505](https://github.com/stardust-ui/react/pull/505))
 
 ### Fixes
-
 - Do not enforce yarn 1.10 via engines @Bugaa92 ([#531](https://github.com/stardust-ui/react/pull/531))
 
 ### Documentation
-
 - Add `Animations` guide as part of the `Theming` docs page @mnajdova ([#505](https://github.com/stardust-ui/react/pull/505))
 
 <!--------------------------------[ v0.12.1 ]------------------------------- -->
-
 ## [v0.12.1](https://github.com/stardust-ui/react/tree/v0.12.1) (2018-11-26)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.12.0...v0.12.1)
 
 ### Features
-
 - Add `createComponent` function in the public API @mnajdova ([#503](https://github.com/stardust-ui/react/pull/503))
-- Apply `dir=auto` attribute to string content of `Text` @kuzhelov ([#5](https://github.com/stardust-ui/react/pull/5))
+- Apply `dir=auto` attribute to string content of `Text` @kuzhelov  ([#5](https://github.com/stardust-ui/react/pull/5))
 - Improve `Menu` accessibility behaviors @sophieH29 ([#523](https://github.com/stardust-ui/react/pull/523))
 - Add ability to style every slot of `Chat.Message` and remove dependency on `Layout` component @Bugaa92 ([#518](https://github.com/stardust-ui/react/pull/518))
 
 ### Fixes
-
 - Fix the behaviour of `AutoControlledComponent` when `undefined` is passed as a prop value @layershifter ([#499](https://github.com/stardust-ui/react/pull/499))
 - Stop event propagation when press Escape on the popup @sophieH29 ([#515](https://github.com/stardust-ui/react/pull/515))
 - Remove role="presentation" from `chatMessageBehavior` and `FocusZone` @sophieH29 ([#530](https://github.com/stardust-ui/react/pull/530))
 
 ### Documentation
-
 - Add `Integrate Custom Components` guide page in the docs @mnajdova ([#517](https://github.com/stardust-ui/react/pull/517))
 
 <!--------------------------------[ v0.12.0 ]------------------------------- -->
-
 ## [v0.12.0](https://github.com/stardust-ui/react/tree/v0.12.0) (2018-11-19)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.11.0...v0.12.0)
 
 ### Documentation
-
 - Replace react-docgen with react-docgen-typescript for generating the props from the TS props interfaces @mnajdova ([#460](https://github.com/stardust-ui/react/pull/460))
 
 ### BREAKING
-
 - Replace the `type` prop with `secondary` and `primary` for `Button` @layershifter ([#419](https://github.com/stardust-ui/react/pull/419))
 - Replace the `type` prop with `secondary` and `primary` for `Menu` @layershifter ([#429](https://github.com/stardust-ui/react/pull/429))
 
 ### Fixes
-
 - Fix endMedia to not be removed from DOM on mouseleave for `ListItem` @musingh1 ([#278](https://github.com/stardust-ui/react/pull/278))
 - Fix focus behavior for `List` @kuzhelov ([#413](https://github.com/stardust-ui/react/pull/413))
 - Remove `Sizes` and `Weights` enums, use typed string in `Text` instead @jurokapsiar ([#446](https://github.com/stardust-ui/react/pull/446))
@@ -2785,7 +2354,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix Popup trigger's props are not passed in onClick handler @sophieH29 ([#521](https://github.com/stardust-ui/react/pull/521))
 
 ### Features
-
 - Make `Grid` keyboard navigable by implementing `gridBehavior` @sophieH29 ([#398](https://github.com/stardust-ui/react/pull/398))
 - Set the ref of the `FocusZone` in `Embed` mode @sophieH29 ([#435](https://github.com/stardust-ui/react/pull/435))
 - Close `Popup` on outside click @kuzhelov ([#410](https://github.com/stardust-ui/react/pull/410))
@@ -2800,22 +2368,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add accessibility behavior `dialogBehavior` @sophieH29 ([#490](https://github.com/stardust-ui/react/pull/490))
 
 ### Documentation
-
 - Add all missing component descriptions and improve those existing @levithomason ([#400](https://github.com/stardust-ui/react/pull/400))
 - Replace the `type` prop with `secondary` and `primary` in Glossary @layershifter ([#432](https://github.com/stardust-ui/react/pull/432))
 
 <!--------------------------------[ v0.11.0 ]------------------------------- -->
-
 ## [v0.11.0](https://github.com/stardust-ui/react/tree/v0.11.0) (2018-10-30)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.10.0...v0.11.0)
 
 ### BREAKING
-
 - Export all typings at the top-level API @levithomason ([#382](https://github.com/stardust-ui/react/pull/382))
 
 ### Fixes
-
 - Fix build on Windows @jurokapsiar ([#383](https://github.com/stardust-ui/react/pull/383))
 - Add warning for rendering components outside provider @Bugaa92 ([#378](https://github.com/stardust-ui/react/pull/378))
 - Fix icon colors for Teams theme @codepretty ([#384](https://github.com/stardust-ui/react/pull/384))
@@ -2827,7 +2390,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix for dotted focus outline in Firefox for `Button` component in docs @Bugaa92 ([#390](https://github.com/stardust-ui/react/pull/390))
 
 ### Features
-
 - Export `mergeThemes` @levithomason ([#285](https://github.com/stardust-ui/react/pull/285))
 - Add Focus Trap Zone @sophieH29 ([#239](https://github.com/stardust-ui/react/pull/239))
 - Add compose icons to Teams theme @joheredi ([#396](https://github.com/stardust-ui/react/pull/396))
@@ -2835,49 +2397,38 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Adding `Partial` utility to enable partial Variables implementations @kuzhelov ([#373](https://github.com/stardust-ui/react/pull/373))
 
 ### Documentation
-
 - Add `Provider` examples @levithomason ([#285](https://github.com/stardust-ui/react/pull/285))
 - Add transparent button to examples @levithomason ([#407](https://github.com/stardust-ui/react/pull/407))
 - Add component descriptions and fix accessibility errors @levithomason ([#387](https://github.com/stardust-ui/react/pull/387))
 
 <!--------------------------------[ v0.10.0 ]------------------------------- -->
-
 ## [v0.10.0](https://github.com/stardust-ui/react/tree/v0.10.0) (2018-10-19)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.9.1...v0.10.0)
 
 ### BREAKING
-
 - Removed `type...` prefix from multiple variables in `buttonStyles.ts` @bcalvery ([#336](https://github.com/stardust-ui/react/pull/336))
 
 ### Documentation
-
 - Add `Usage` examples for `Button` showing style override @bcalvery ([#336](https://github.com/stardust-ui/react/pull/336))
 
 ### Fixes
-
 - Fix for cropped rounded corners in `Menu` component @Bugaa92 ([#360](https://github.com/stardust-ui/react/pull/360))
 - Remove hardcoded `status` size calculations in `Avatar` component @Bugaa92 ([#358](https://github.com/stardust-ui/react/pull/358))
 - Remove necessity to use `skipLibCheck` flag for client's typescript projects that consume Stardust @kuzhelov ([#367](https://github.com/stardust-ui/react/pull/367))
 
 ### Features
-
 - Add `target` prop to `Popup` @kuzhelog ([#356](https://github.com/stardust-ui/react/pull/356))
 - Add new `Input` component with `wrapper` prop @Bugaa92 ([#326](https://github.com/stardust-ui/react/pull/326))
 - Add `Form` and `Form.Field` components @mnajdova ([#353](https://github.com/stardust-ui/react/pull/353))
 
 <!--------------------------------[ v0.9.1 ]------------------------------- -->
-
 ## [v0.9.1](https://github.com/stardust-ui/react/tree/v0.9.1) (2018-10-11)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.9.0...v0.9.1)
 
 ### Fixes
-
 - Fix Button's `renderIcon` prop @levithomason ([#347](https://github.com/stardust-ui/react/pull/347))
 
 ### Features
-
 - Make `content` to be a shorthand prop for `Popup` @kuzhelov ([#322](https://github.com/stardust-ui/react/pull/322))
 - Add base focus handling for `List` component @smykhailov ([#256](https://github.com/stardust-ui/react/pull/256))
 - Add generic `Slot` component (used internally) and use it as shorthand for `Button` `content` prop @Bugaa92 ([#335](https://github.com/stardust-ui/react/pull/335))
@@ -2885,19 +2436,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `content` and `renderContent` to Chat API @levithomason ([#348](https://github.com/stardust-ui/react/pull/348))
 
 <!--------------------------------[ v0.9.0 ]------------------------------- -->
-
 ## [v0.9.0](https://github.com/stardust-ui/react/tree/v0.9.0) (2018-10-07)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.8.0...v0.9.0)
 
 ### BREAKING
-
 - Add `render*` props for each shorthand prop @levithomason ([#328](https://github.com/stardust-ui/react/pull/328))
 
 ### Fixes
-
 - Fix FocusZone with defaultTabbableElement prop set tabindexes are not updated accordingly @sophieH29
-  ([#342](https://github.com/stardust-ui/react/pull/342))
+([#342](https://github.com/stardust-ui/react/pull/342))
 - Fix Attachment `styles` prop typing @levithomason ([#299](https://github.com/stardust-ui/react/pull/299))
 - Fix generation of `key` for the `Accordion.Content` @mnajdova ([#305](https://github.com/stardust-ui/react/pull/305))
 - Ensure `Popup` is rendered as direct child of `body` element in the DOM tree @kuzhelov ([#302](https://github.com/stardust-ui/react/pull/302))
@@ -2909,111 +2456,86 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Make theme variables and styles types extensible @levithomason ([#292](https://github.com/stardust-ui/react/pull/292))
 
 ### Features
-
 - Add focus styles for `Menu.Item` component @Bugaa92 ([#286](https://github.com/stardust-ui/react/pull/286))
 - Add keyboard handling and ARIA attributes for `ButtonGroup`, `Tablist` and `Toolbar` behaviors @jurokapsiar ([#254](https://github.com/stardust-ui/react/pull/254))
 - Add autocontrolled mode for `Popup` @kuzhelov ([#319](https://github.com/stardust-ui/react/pull/319)
 - Improve accessibility behaviors @sophieH29 ([#247](https://github.com/stardust-ui/react/pull/247))
 
 ### Documentation
-
 - Improve `Contributing` documentation for accessibility @jurokapsiar ([#303](https://github.com/stardust-ui/react/pull/303))
 - Add theme switcher for exploring different themes on the docs (only available in development mode) @mnajdova ([#280](https://github.com/stardust-ui/react/pull/280))
 - Add `Prototypes` section and `Chat Pane` prototype (only available in development mode) @Bugaa92 ([#235](https://github.com/stardust-ui/react/pull/235))
 - Remove cruft prop `suiVersion` from the `ComponentExample` component @layershifter ([#329](https://github.com/stardust-ui/react/pull/329))
 
 <!--------------------------------[ v0.8.0 ]------------------------------- -->
-
 ## [v0.8.0](https://github.com/stardust-ui/react/tree/v0.8.0) (2018-10-01)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.7.0...v0.8.0)
 
 ### BREAKING CHANGES
-
 - Change font ramp and Text size API @codepretty ([#214](https://github.com/stardust-ui/react/pull/214))
 - Add `ChatItem` component that can be used inside the `Chat` via the Children API or the `items` prop, instead of the `Chat.Message` used directly in the previous `messages` prop @mnajdova ([#255](https://github.com/stardust-ui/react/pull/255))
 - Make `Popup` to be a controlled component @kuzhelov ([#282](https://github.com/stardust-ui/react/pull/282))
 
 ### Features
-
 - Add embed mode for `FocusZone` and use it in newly added Chat behaviors @tomasiser ([#233](https://github.com/stardust-ui/react/pull/233))
 - Add default accessibility behavior to `Popup` @sophieH29 ([#218](https://github.com/stardust-ui/react/pull/218))
 
 ### Documentation
-
 - Improve `Contributing` documentation @alinais, @levithomason ([#189](https://github.com/stardust-ui/react/pull/189))
 
 <!--------------------------------[ v0.7.0 ]------------------------------- -->
-
 ## [v0.7.0](https://github.com/stardust-ui/react/tree/v0.7.0) (2018-09-25)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.6.0...v0.7.0)
 
 ### BREAKING CHANGES
-
 - Add `image` and `label` shorthands props for `Avatar` @mnajdova ([#270](https://github.com/stardust-ui/react/pull/270))
 
 ### Features
-
 - Add `Attachment` component @levithomason ([#220](https://github.com/stardust-ui/react/pull/220))
 - Add `atMention="me"` value to Text API @codepretty ([#277](https://github.com/stardust-ui/react/pull/277))
 
 ### Documentation
-
 - Add `Theming` guide @almedint, @levithomason ([#152](https://github.com/stardust-ui/react/pull/152))
 - Update `Theming` guide @levithomason ([#274](https://github.com/stardust-ui/react/pull/274))
 - Add `Theming Examples` guide @almedint ([#252](https://github.com/stardust-ui/react/pull/252))
 
 <!--------------------------------[ v0.6.0 ]------------------------------- -->
-
 ## [v0.6.0](https://github.com/stardust-ui/react/tree/v0.6.0) (2018-09-24)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.5.2...v0.6.0)
 
 ### BREAKING CHANGES
-
 - Fixed `Divider` wrong usage of the `typeSecondary{color, backgroundColor}` and `default{color, backgroundColor}` variables; renamed `default{color, backgroundColor}` variables to `color` and `backgroundColor` @mnajdova ([#234](https://github.com/stardust-ui/react/pull/234))
 - Restrict the `styles` prop to styling the root element only @levithomason ([#238](https://github.com/stardust-ui/react/pull/238))
 - Add `RadioGroup` compliant with ARIA patterns. `Radio` changed to `RadioGroup.Item` @jurokapsiar ([#229](https://github.com/stardust-ui/react/pull/229))
 - `Divider` refactored variables names and the way they are used @codepretty ([#249](https://github.com/stardust-ui/react/pull/249))
 
 ### Fixes
-
 - Allow string or number as Input value @levithomason ([#250](https://github.com/stardust-ui/react/pull/250))
 - Do not throw on missing Icon names @levithomason ([#251](https://github.com/stardust-ui/react/pull/251))
 
 ### Features
-
 - Add `author` and `timestamp` props for `Chat.Message` component @Bugaa92 ([#242](https://github.com/stardust-ui/react/pull/242))
 - Add support for custom (theme-defined) SVG and font-based icons @kuzhelov ([#260](https://github.com/stardust-ui/react/pull/260))
 
 <!--------------------------------[ v0.5.2 ]------------------------------- -->
-
 ## [v0.5.2](https://github.com/stardust-ui/react/tree/v0.5.2) (2018-09-14)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.5.1...v0.5.2)
 
 ### Fixes
-
 - Fix Provider incorrectly rendering font face rules @levithomason ([#227](https://github.com/stardust-ui/react/pull/227))
 
 ### Features
-
 - Add `FocusZone` to `renderComponent`, change `Menu` behavior to support arrow keys @tomasiser ([#116](https://github.com/stardust-ui/react/pull/116))
 - Add `value`, `disabled`, `checked`, `defaultChecked` and `onChange` props to `Radio` component @mnajdova ([#206](https://github.com/stardust-ui/react/pull/206))
 
 ### Performance
-
 - Enable Webpack tree shaking with `sideEffects: false` @levithomason ([#224](https://github.com/stardust-ui/react/pull/224))
 
 <!--------------------------------[ v0.5.1 ]------------------------------- -->
-
 ## [v0.5.1](https://github.com/stardust-ui/react/tree/v0.5.1) (2018-09-11)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.5.0...v0.5.1)
 
 ### Fixes
-
 - Fixed fonts to support zwj gender emojis ([#215](https://github.com/stardust-ui/react/pull/215))
 - Correct Teams theme site variables @sergiorv ([#110](https://github.com/stardust-ui/react/pull/110))
 - Fixed missing colors in Teams' siteVariables @mnajdova ([#200](https://github.com/stardust-ui/react/pull/200))
@@ -3022,11 +2544,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Preserve fonts and static styles in `mergeThemes` @levithomason ([#217](https://github.com/stardust-ui/react/pull/217))
 
 ### Features
-
 - Add `state` to `props` in component styling functions @Bugaa92 ([#173](https://github.com/stardust-ui/react/pull/173))
 - Add `avatar` prop to `Chat.Message` subcomponent @Bugaa92 ([#159](https://github.com/stardust-ui/react/pull/159))
 - add `iconOnly` prop to `Button` @mnajdova ([#182](https://github.com/stardust-ui/react/pull/182))
-- Add Label `image` and `imagePosition`, removed `onIconClick` prop @mnajdova ([#55](https://github.com/stardust-ui/react/pull/55/))
+- Add Label `image` and `imagePosition`, removed `onIconClick` prop  @mnajdova ([#55](https://github.com/stardust-ui/react/pull/55/))
 - Add `ButtonGroup` component @mnajdova ([#179](https://github.com/stardust-ui/react/pull/179))
 - Add Button `text` prop @mnajdova ([#177](https://github.com/stardust-ui/react/pull/177))
 - Add accessibility keyboard action handlers @sophieH29 ([#121](https://github.com/stardust-ui/react/pull/121))
@@ -3038,45 +2559,35 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `Status` as a separate component @musingh1 ([#208](https://github.com/stardust-ui/react/pull/208))
 
 ### Documentation
-
 - Add `behaviors` section to the menu, under the components @kolaps33 ([#119](https://github.com/stardust-ui/react/pull/119))
 - Add accessibility description for behaviors @kolaps33 ([#181](https://github.com/stardust-ui/react/pull/181))
 
 <!--------------------------------[ v0.5.0 ]------------------------------- -->
-
 ## [v0.5.0](https://github.com/stardust-ui/react/tree/v0.5.0) (2018-08-30)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.4.0...v0.5.0)
 
 ### BREAKING CHANGES
-
 - Rework Provider API and `themes` pattern to resolve import issue @levithomason ([#114](https://github.com/stardust-ui/react/pull/114))
 
 ### Fixes
-
 - Adjust layout and rendered HTML of Input @kuzhelov ([#127](https://github.com/stardust-ui/react/pull/127))
 - Fix Button component's layout and icon color @kuzhelov ([#135](https://github.com/stardust-ui/react/pull/135))
 
 <!--------------------------------[ v0.4.0 ]------------------------------- -->
-
 ## [v0.4.0](https://github.com/stardust-ui/react/tree/v0.4.0) (2018-08-29)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.3.0...v0.4.0)
 
 ### BREAKING CHANGES
-
 - Split Menu `shape` prop to separate `pills`, `pointing` and `underlined` props @miroslavstastny ([#114](https://github.com/stardust-ui/react/pull/114))
 
 ### Fixes
-
 - Fix docs pages presenting examples of wrong component @kuzhelov ([#124](https://github.com/stardust-ui/react/pull/124))
 - Fix component variables when merging themes @levithomason ([#128](https://github.com/stardust-ui/react/pull/128))
-- Fix docs _Maximize_ for shorthand examples @miroslavstastny ([#122](https://github.com/stardust-ui/react/pull/122))
+- Fix docs *Maximize* for shorthand examples @miroslavstastny ([#122](https://github.com/stardust-ui/react/pull/122))
 - Fix Button styles when rendered as an anchor @levithomason ([#145](https://github.com/stardust-ui/react/pull/145))
 - Fix Layout doc page showing ItemLayout examples @levithomason ([#160](https://github.com/stardust-ui/react/pull/160))
 
 ### Features
-
 - Add basic `Radio` component @alinais ([#100](https://github.com/stardust-ui/react/pull/100))
 - Add `descriptionColor` to Header @kuzhelov ([#78](https://github.com/stardust-ui/react/pull/78))
 - Add accessibility behavior description @kolaps33 ([#74](https://github.com/stardust-ui/react/pull/74))
@@ -3085,21 +2596,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add support for Menu `vertical pointing` prop @miroslavstastny ([#123](https://github.com/stardust-ui/react/pull/123))
 
 ### Documentation
-
 - Add a Quick Start guide @levithomason ([#145](https://github.com/stardust-ui/react/pull/145))
 
 <!--------------------------------[ v0.3.0 ]------------------------------- -->
-
 ## [v0.3.0](https://github.com/stardust-ui/react/tree/v0.3.0) (2018-08-22)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.7...v0.3.0)
 
 ### BREAKING CHANGES
-
 - Remove Children API support from Menu component @miroslavstastny ([#111](https://github.com/stardust-ui/react/pull/111))
 
 ### Fixes
-
 - Fix wrong typings generated for dist @kuzhelov ([#99](https://github.com/stardust-ui/react/pull/99))
 - Fix components generation script @kuzhelov ([#105](https://github.com/stardust-ui/react/pull/105))
 - Reactivate tests for `Text` @kuzhelov ([#104](https://github.com/stardust-ui/react/pull/104))
@@ -3107,19 +2613,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `icon` shorthand property for Button @kuzhelov ([#112](https://github.com/stardust-ui/react/pull/112))
 
 ### Features
-
 - Add Menu `iconOnly`, MenuItem `iconOnly` and `icon` props @miroslavstastny ([#73](https://github.com/stardust-ui/react/pull/73))
 - Add `Grid` component base implementation @Bugaa92 ([#93](https://github.com/stardust-ui/react/pull/93))
 - Add basic `Segment` component @kuzhelov ([#103](https://github.com/stardust-ui/react/pull/103))
 
 <!--------------------------------[ v0.2.7 ]------------------------------- -->
-
 ## [v0.2.7](https://github.com/stardust-ui/react/tree/v0.2.7) (2018-08-13)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.6...v0.2.7)
 
 ### Fixes
-
 - Add selection property to child items in ListExampleSelection so that styles and roles are applied properly @jurokapsiar ([#70](https://github.com/stardust-ui/react/pull/70))
 - Menu `onClick` handler moved from `li` to `a` (accessibility) @miroslavstastny ([#61](https://github.com/stardust-ui/react/pull/61))
 - Image `fluid` is applied on the avatar variations @mnajdova ([#77](https://github.com/stardust-ui/react/pull/77))
@@ -3128,19 +2630,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `MenuItem` broken styles @miroslavstastny ([#94](https://github.com/stardust-ui/react/pull/94))
 
 ### Features
-
 - Add `color` variables to Header and Header.Description @kuzhelov ([#72](https://github.com/stardust-ui/react/pull/72))
 - Add `ItemLayout` component @mnajdova ([#60](https://github.com/stardust-ui/react/pull/60))
 - Add Input `clearable` prop @alinais ([#37](https://github.com/stardust-ui/react/pull/37))
 
 <!--------------------------------[ v0.2.6 ]------------------------------- -->
-
 ## [v0.2.6](https://github.com/stardust-ui/react/tree/v0.2.6) (2018-08-09)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.5...v0.2.6)
 
 ### Fixes
-
 - Remove unused dependencies and move development dependencies to devDependencies @levithomason ([#51](https://github.com/stardust-ui/react/pull/51))
 - Fix Avatar alignment issue and initials for long names @mnajdova ([#38](https://github.com/stardust-ui/react/pull/38))
 - Changing the default styles for Input component @alinais ([#25](https://github.com/stardust-ui/react/pull/25))
@@ -3148,7 +2646,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Prevent Fela from rendering CSS property values that could crash all styling on the page @kuzhelov ([#65](https://github.com/stardust-ui/react/pull/65))
 
 ### Features
-
 - Behaviors for accessibility roles and other ARIA attributes @smykhailov, @jurokapsiar, @sophieH29 ([#29](https://github.com/stardust-ui/react/pull/29))
 - Update styles for Menu underlined primary @miroslavstastny ([#20](https://github.com/stardust-ui/react/pull/20))
 - Add Avatar `getInitials` prop and `presenceIndicatorBackground` variable @mnajdova ([#38](https://github.com/stardust-ui/react/pull/38))
@@ -3158,28 +2655,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Support `styles` prop and nested theme Providers @levithomason ([#16](https://github.com/stardust-ui/react/pull/16))
 
 <!--------------------------------[ v0.2.5 ]------------------------------- -->
-
 ## [v0.2.5](https://github.com/stardust-ui/react/tree/v0.2.5) (2018-08-03)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.4...v0.2.5)
 
 ### Fixes
-
 - Include typings for each module target in dist @levithomason ([#48](https://github.com/stardust-ui/react/pull/48))
 
 <!--------------------------------[ v0.2.4 ]------------------------------- -->
-
 ## [v0.2.4](https://github.com/stardust-ui/react/tree/v0.2.4) (2018-08-03)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.3...v0.2.4)
 
 ### Fixes
-
 - Replaced Header `subheader` with `description` and fixed it to render well-formed HTML @mnajdova ([#17](https://github.com/stardust-ui/react/pull/17))
 - Removed allowSyntheticDefaultImports from shared tsconfig but allow it on docs @aniknafs ([#46](https://github.com/stardust-ui/react/pull/46))
 
 ### Features
-
 - Add Icon `xSpacing` prop @Bugaa92 ([#22](https://github.com/stardust-ui/react/pull/22))
 - Add Button `icon` prop and Text `truncated` prop @Bugaa92 ([#13](https://github.com/stardust-ui/react/pull/13))
 - Add Button `disabled` prop @Bugaa92 ([#14](https://github.com/stardust-ui/react/pull/14))
@@ -3189,49 +2679,37 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add Icon support for `background` variable @kuzhelov ([#47](https://github.com/stardust-ui/react/pull/47))
 
 ### Documentation
-
 - Improve UX for "knobs" form on component examples @levithomason ([#20](https://github.com/stardust-ui/react/pull/20))
 - Use correct styles in RTL component preview @miroslavstastny ([#34](https://github.com/stardust-ui/react/pull/34))
 
 <!--------------------------------[ v0.2.3 ]------------------------------- -->
-
 ## [v0.2.3](https://github.com/stardust-ui/react/tree/v0.2.3) (2018-07-24)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.2...v0.2.3)
 
 ### Fixes
-
 - Make Chat.Messages position relative to contain absolutely positioned children @levithomason (7625becc55fc051175fa3143bdfbc212de2d436c)
 
 ### Features
-
 - Add Button `fluid` prop @Bugaa92 ([#6](https://github.com/stardust-ui/react/pull/6))
 - Add Icon `disabled` prop @Bugaa92 ([#12](https://github.com/stardust-ui/react/pull/12))
 
 <!--------------------------------[ v0.2.2 ]------------------------------- -->
-
 ## [v0.2.2](https://github.com/stardust-ui/react/tree/v0.2.2) (2018-07-24)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.1...v0.2.2)
 
 ### Fixes
-
 - Fix Layout vertical prop not making layouts vertical @levithomason ([#10](https://github.com/stardust-ui/react/pulls/10))
 
 <!--------------------------------[ v0.2.1 ]------------------------------- -->
-
 ## [v0.2.1](https://github.com/stardust-ui/react/tree/v0.2.1) (2018-07-20)
-
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.0...v0.2.1)
 
 ### Fixes
-
 - Remove broken normalize.css button styles @levithomason ([#79](https://github.com/stardust-ui/react-old/pulls/79))
 - Add missing Button styles @levithomason ([#82](https://github.com/stardust-ui/react-old/pulls/82))
 - Fix Accordion to hide the content provided as nested children when closed ([#108](https://github.com/stardust-ui/react-old/pull/108))
 
 ### Features
-
 - Add `rtl` flag to rules (styles) function @kuzhelov ([#109](https://github.com/stardust-ui/react-old/pull/109))
 - Add Icon `circular` and `bordered` props @kuzhelov ([#85](https://github.com/stardust-ui/react-old/pull/85))
 - Add Divider `type` and `important` props @mnajdova ([#67](https://github.com/stardust-ui/react-old/pulls/67))
@@ -3242,7 +2720,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add Avatar `alt` prop @mnajdova ([#124](https://github.com/stardust-ui/react-old/pull/124))
 
 ### Documentation
-
 - Add accessibility section to each component @mnajdova ([#46](https://github.com/stardust-ui/react-old/pulls/46))
 - Fix down doc site, bad links, and bad image src paths @levithomason ([#77](https://github.com/stardust-ui/react-old/pulls/77))
 - Add JSX and HTML code preview and card view for component examples in the doc site @Bugaa92 ([#62](https://github.com/stardust-ui/react-old/pull/62))
@@ -3252,33 +2729,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Improve general clarity in README @davezuko ([#118](https://github.com/stardust-ui/react-old/pull/118]))
 
 <!--------------------------------[ v0.2.0 ]------------------------------- -->
-
 ## [v0.2.0](https://github.com/stardust-ui/react-old/tree/v0.2.0) (2018-07-10)
-
 [Compare changes](https://github.com/stardust-ui/react-old/compare/v0.1.0...v0.2.0)
 
 ### Fixes
-
 - Fix merging of theme values for nested Providers @kuzhelov ([#55](https://github.com/stardust-ui/react-old/pulls/55))
 
 ### Features
-
 - Publish TypeScript typings with package @levithomason (54caeb56219e2d92d2e2fe24da4b797ea92e9d09)
 - Add Chat component @levithomason ([#32](https://github.com/stardust-ui/react-old/pulls/32))
 - Add Menu `secondary` and `pointing` props @mnajdova ([#49](https://github.com/stardust-ui/react-old/pulls/49))
 - Add Menu `items` shorthand prop @miroslavstastny ([#41](https://github.com/stardust-ui/react-old/pulls/41))
 
 ### Documentation
-
 - Fix nav links for examples, remove introduction @seankeating ([#58](https://github.com/stardust-ui/react-old/pulls/58))
 - Fix live edit for component variables @kuzhelov ([#55](https://github.com/stardust-ui/react-old/pulls/55))
 
 ### Performance
-
 - Implement a base UIComponent @levithomason ([#21](https://github.com/stardust-ui/react-old/pulls/21))
 
 <!--------------------------------[ v0.1.0 ]------------------------------- -->
-
 ## [v0.1.0](https://github.com/stardust-ui/react-old/tree/v0.2.0) (2018-07-05)
 
 Initial prototype release
