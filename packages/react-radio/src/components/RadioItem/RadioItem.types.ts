@@ -39,7 +39,13 @@ export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * RadioItem Props
  */
-export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons;
+export type RadioItemProps = ComponentProps<RadioItemSlots> &
+  RadioItemCommons & {
+    /**
+     * ID of the native element that represents the checkbox.
+     */
+    id?: string;
+  };
 
 /**
  * State used in rendering RadioItem

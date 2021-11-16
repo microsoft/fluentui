@@ -5,6 +5,7 @@ import {
   resolveShorthand,
   useControllableState,
   useEventCallback,
+  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import type { RadioItemProps, RadioItemSlots, RadioItemState } from './RadioItem.types';
@@ -24,6 +25,7 @@ export const radioItemShorthandProps: (keyof RadioItemSlots)[] = ['root', 'indic
  * @param ref - reference to root HTMLElement of RadioItem
  */
 export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>): RadioItemState => {
+  const { id } = props;
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
     state: props.checked,
@@ -50,7 +52,7 @@ export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>)
   });
 
   // TODO(Peter): Add ID logic.
-  return {
+  const state: RadioItemState = {
     checked,
     components: {
       root: 'span',
@@ -75,4 +77,9 @@ export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>)
       required: true,
     }),
   };
+
+  state.input.id = useId('radio-item-', id);
+  state.label.htmlFor = state.input.id;
+
+  return state;
 };
