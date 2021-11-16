@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adds verification to compilation error",
+  "packageName": "@fluentui/bundle-size",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
