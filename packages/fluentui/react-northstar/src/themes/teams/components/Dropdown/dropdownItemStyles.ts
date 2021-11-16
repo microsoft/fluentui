@@ -29,9 +29,6 @@ export const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesP
       ...(!p.isFromKeyboard && {
         color: v.listItemColorHover,
         backgroundColor: v.listItemBackgroundColorHover,
-        [`& .${dropdownItemSlotClassNames.checkableIndicator}`]: {
-          backgroundImage: checkableIndicatorUrl(v.listItemColorHover),
-        },
         ...(p.hasHeader && {
           [`& .${dropdownItemSlotClassNames.header}`]: {
             color: v.listItemColorHover,
@@ -72,8 +69,11 @@ export const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesP
     fontSize: v.listItemContentFontSize,
     color: v.listItemContentColor,
   }),
-  checkableIndicator: ({ variables: v }) => ({
+  checkableIndicator: ({ props: p, variables: v }) => ({
     backgroundImage: checkableIndicatorUrl(v.listItemSelectedColor),
+    ...(p.active && {
+      backgroundImage: checkableIndicatorUrl(v.listItemColorHover),
+    }),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     position: 'absolute',
