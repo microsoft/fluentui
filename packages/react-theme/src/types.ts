@@ -845,6 +845,15 @@ export type ShadowTokens = {
   shadow64: string;
 };
 
+export type ShadowBrandTokens = {
+  shadow2Brand: string;
+  shadow4Brand: string;
+  shadow8Brand: string;
+  shadow16Brand: string;
+  shadow28Brand: string;
+  shadow64Brand: string;
+};
+
 export type GhostColorTokens = {
   ghostBackground: string;
   ghostBackgroundHover: string;
@@ -937,6 +946,7 @@ export type Theme = FontSizeTokens &
   BorderRadiusTokens &
   StrokeWidthTokens &
   ShadowTokens &
+  ShadowBrandTokens &
   FontFamilyTokens &
   FontWeightTokens &
   ColorPaletteTokens &
