@@ -1,4 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+
 import type { TabState } from './Tab.types';
 
 export const tabClassName = 'fui-Tab';
@@ -10,8 +12,9 @@ const contentClassName = `${tabClassName}-content`;
 const useStyles = makeStyles({
   root: theme => ({
     background: 'none',
-    border: 'none',
+    borderColor: 'none',
     borderRadius: '4px',
+    borderWidth: '2px',
     cursor: 'pointer',
     fontFamily: theme.fontFamilyBase,
     fontSize: theme.fontSizeBase300,
@@ -23,6 +26,18 @@ const useStyles = makeStyles({
       background: theme.colorNeutralBackground1Hover,
     },
   }),
+});
+
+const useFocusStyles = makeStyles({
+  base: createCustomFocusIndicatorStyle(theme => ({
+    borderColor: 'transparent',
+    outline: '2px solid transparent',
+    boxShadow: `
+      ${theme.shadow4},
+      0 0 0 2px ${theme.colorStrokeFocus2}
+    `,
+    zIndex: 1,
+  })),
 });
 
 /**
@@ -188,8 +203,10 @@ const useVerticalContentIconStyles = makeStyles({
  */
 export const useTabStyles = (state: TabState): TabState => {
   const styles = useStyles();
+  const focusStyles = useFocusStyles();
   const horizontalListStyles = useHorizontalListStyles();
   const verticalListStyles = useVerticalListStyles();
+
   const contentStyles = useContentStyles();
   const iconStyles = useIconStyles();
   const horizontalContentIconStyles = useHorizontalContentIconStyles();
@@ -198,6 +215,7 @@ export const useTabStyles = (state: TabState): TabState => {
   state.root.className = mergeClasses(
     tabClassName,
     styles.root,
+    focusStyles.base,
     state.appearance === 'subtle' && styles.subtle,
     state.verticalList ? verticalListStyles.root : horizontalListStyles.root,
     state.size === 'small' && (state.verticalList ? verticalListStyles.small : horizontalListStyles.small),

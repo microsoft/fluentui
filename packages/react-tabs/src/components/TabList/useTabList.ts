@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { SelectTabData, SelectTabEvent, TabListProps, TabListSlots, TabListState } from './TabList.types';
 
@@ -28,6 +29,8 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
     verticalTabContent = false,
   } = props;
 
+  const focusAttributes = useArrowNavigationGroup({ circular: true, axis: vertical ? 'vertical' : 'horizontal' });
+
   const [selectedValue, setSelectedValue] = useControllableState({
     state: props.selectedKey,
     defaultState: props.defaultSelectedKey,
@@ -49,6 +52,8 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
     // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
+      role: 'tablist',
+      ...focusAttributes,
       ...props,
     }),
     appearance,

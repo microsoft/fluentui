@@ -44,10 +44,12 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
     },
     root: getNativeElementProps('div', {
       ref,
+      role: 'tab',
+      tabIndex: 0,
       ...props,
       onClick,
     }),
-    content: resolveShorthand(content, { required: true }),
+    content: resolveShorthand(content, { required: true, defaultProps: { children: props.children } }),
     icon: resolveShorthand(icon),
     appearance,
     selected,
