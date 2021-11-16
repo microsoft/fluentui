@@ -1,45 +1,62 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
-import { useBadge } from '../Badge/index';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import {
-  SkypeMinusIcon,
-  SkypeClockIcon,
-  SkypeArrowIcon,
-  SkypeCheckIcon,
-  CancelIcon,
-} from './DefaultPresenceBadgeIcons';
-import type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
+  presenceAvailableFilled,
+  presenceAvailableRegular,
+  presenceAwayFilled,
+  presenceBusyFilled,
+  presenceDndFilled,
+  presenceDndRegular,
+  presenceOfflineRegular,
+  presenceOofRegular,
+  presenceUnknownRegular,
+} from './presenceIcons';
+import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
 
-const iconMap: (outOfOffice: boolean) => Record<PresenceBadgeStatus, JSX.Element | null> = outOfOffice => ({
-  busy: null,
-  available: outOfOffice ? <SkypeArrowIcon /> : <SkypeCheckIcon />,
-  away: outOfOffice ? <SkypeArrowIcon /> : <SkypeClockIcon />,
-  offline: <CancelIcon />,
-  outOfOffice: <SkypeArrowIcon />,
-  doNotDisturb: <SkypeMinusIcon />,
-});
+const iconMap = (
+  status: PresenceBadgeState['status'],
+  outOfOffice: boolean,
+  size: PresenceBadgeState['size'],
+): React.FunctionComponent | null => {
+  switch (status) {
+    case 'available':
+      return outOfOffice ? presenceAvailableRegular[size] : presenceAvailableFilled[size];
+    case 'away':
+      return outOfOffice ? presenceAwayFilled[size] : presenceOofRegular[size];
+    case 'busy':
+      return outOfOffice ? presenceUnknownRegular[size] : presenceBusyFilled[size];
+    case 'doNotDisturb':
+      return outOfOffice ? presenceDndRegular[size] : presenceDndFilled[size];
+    case 'offline':
+      return presenceOfflineRegular[size];
+    case 'outOfOffice':
+      return presenceOofRegular[size];
+  }
+};
 
 /**
  * Returns the props and state required to render the component
  */
 export const usePresenceBadge = (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>): PresenceBadgeState => {
   const state: PresenceBadgeState = {
-    ...useBadge(
-      {
-        size: 'small',
-        ...props,
-        icon: resolveShorthand(props.icon, {
-          required: true,
-        }),
-      },
-      ref,
-    ),
+    size: props.size ?? 'medium',
     status: props.status ?? 'available',
     outOfOffice: props.outOfOffice ?? false,
+    iconPosition: 'after',
+    components: {
+      root: 'div',
+      icon: 'span',
+    },
+    root: getNativeElementProps('div', {
+      ref,
+      ...props,
+    }),
+    icon: resolveShorthand(undefined, { required: true }),
   };
 
-  if (!state.icon?.children) {
-    state.icon!.children = iconMap(state.outOfOffice)[state.status];
+  const IconElement = iconMap(state.status, state.outOfOffice, state.size);
+  if (IconElement) {
+    state.icon!.children = <IconElement />;
   }
 
   return state;
