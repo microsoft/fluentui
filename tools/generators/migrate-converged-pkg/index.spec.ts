@@ -567,8 +567,7 @@ describe('migrate-converged-pkg generator', () => {
           outDir: '',
           types: ['static-assets', 'environment', 'inline-style-expand-shorthand', 'storybook__addons'],
         },
-        exclude: ['../src/common/**', '../**/*.spec.ts', '../**/*.spec.tsx', '../**/*.test.ts', '../**/*.test.tsx'],
-        include: ['../src/**/*', '*.js'],
+        include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
       });
       expect(readJson<TsConfig>(tree, paths.tsconfig.lib).exclude).toEqual(
         expect.arrayContaining(['**/*.stories.ts', '**/*.stories.tsx']),

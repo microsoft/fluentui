@@ -269,10 +269,7 @@ const templates = {
         allowJs: true,
         checkJs: true,
       },
-      exclude: [
-        /* added programmatically */
-      ],
-      include: ['../src/**/*', '*.js'],
+      include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
     },
   },
   e2e: {
@@ -575,12 +572,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
       json.compilerOptions.types.push(...(libTsConfig.compilerOptions.types || []), 'storybook__addons');
       json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
-
-      json.exclude = json.exclude || [];
-      const transformedExcludePaths = (libTsConfig.exclude || []).map(excludePath =>
-        transformRelativePath(excludePath),
-      );
-      json.exclude.push(...transformedExcludePaths);
 
       return json;
     });
