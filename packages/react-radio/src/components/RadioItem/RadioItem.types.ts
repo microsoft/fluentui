@@ -21,6 +21,11 @@ export type RadioItemSlots = {
    * Label to be associated with Radio element.
    */
   label: ObjectShorthandProps<LabelProps>;
+
+  /**
+   * Subtext added below label.
+   */
+  subtext?: IntrinsicShorthandProps<'span'>;
 };
 
 export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {

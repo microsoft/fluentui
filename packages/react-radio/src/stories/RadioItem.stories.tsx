@@ -26,5 +26,7 @@ export const RadioItemVariations = () => (
     <RadioItem label="RadioItem with label positioned on the bottom" labelPosition="bottom" />
     <RadioItem label="Required RadioItem" required />
     <RadioItem label="Disabled RadioItem" disabled />
+    <RadioItem label="RadioItem with subtext" subtext="subtext added here" />
+    <RadioItem label="Disabled RadioItem with subtext" subtext="subtext added here" disabled />
   </div>
 );

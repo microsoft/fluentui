@@ -168,6 +168,16 @@ const useIndicatorStyles = makeStyles({
   }),
 });
 
+const useSubtextStyles = makeStyles({
+  subtext: theme => ({
+    display: 'block',
+    fontFamily: theme.fontFamilyBase,
+    fontSize: theme.fontSizeBase200,
+    lineHeight: theme.lineHeightBase200,
+    fontWeight: theme.fontWeightRegular,
+  }),
+});
+
 /**
  * Apply styling to the RadioItem slots based on the state
  */
@@ -177,6 +187,7 @@ export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
   const indicatorStyles = useIndicatorStyles();
   const inputStyles = useInputStyles();
   const labelStyles = useLabelStyles();
+  const subtextStyles = useSubtextStyles();
   const styles = useStyles();
 
   state.root.className = mergeClasses(
@@ -214,6 +225,8 @@ export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
     state.input.disabled && labelStyles.disabled,
     state.label.className,
   );
+
+  state.subtext ? (state.subtext.className = mergeClasses(subtextStyles.subtext, state.subtext.className)) : null;
 
   return state;
 };

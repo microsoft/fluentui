@@ -13,7 +13,7 @@ import type { RadioItemProps, RadioItemSlots, RadioItemState } from './RadioItem
 /**
  * Array of all shorthand properties listed in RadioItemSlots
  */
-export const radioItemShorthandProps: (keyof RadioItemSlots)[] = ['root', 'indicator', 'input', 'label'];
+export const radioItemShorthandProps: (keyof RadioItemSlots)[] = ['root', 'indicator', 'input', 'label', 'subtext'];
 
 /**
  * Create the state required to render RadioItem.
@@ -59,6 +59,7 @@ export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>)
       indicator: 'div',
       input: 'input',
       label: Label as React.ComponentType<LabelProps>,
+      subtext: 'span',
     },
     root: getNativeElementProps('div', {
       ref,
@@ -75,6 +76,9 @@ export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>)
     }),
     label: resolveShorthand(props.label, {
       required: true,
+    }),
+    subtext: resolveShorthand(props.subtext, {
+      required: false,
     }),
   };
 
