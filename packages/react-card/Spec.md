@@ -398,19 +398,17 @@ Hovering the card changes the cursor style to not-allowed
 
 ![Visual interaction of non-interactive selectable cards using the keyboard](./assets/non-interactive-selectable-interaction-keyboard.png)
 
-Keyboard interaction
-
 1. Focus
 
    Initial focus is set on card, to access items within the card use EnterKey or Spacebar.
 
 2. Focus-Inside
 
-   Focus moves to first actionable item in the card. Use ArrowKeys or TabKey to move focus to child elements within the card. To exit card use EscKey, to move focus back to card.
+   Focus moves to first actionable item in the card. Use `ArrowKeys` or `TabKey` to move focus to child elements within the card. To exit card use `EscKey`, to move focus back to card.
 
 3. Checkbox-Focus
 
-   Depending on your tab order of items within the card, the number of keystrokes will vary. Once focus is set on the checkbox by default it will be set to unselected
+   Depending on your tab order of items within the card, the number of keystrokes will vary.
 
 4. SpaceBar or EnterKey while focused on the Checkbox
 
