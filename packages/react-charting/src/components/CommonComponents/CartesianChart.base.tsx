@@ -14,6 +14,7 @@ import {
   convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
+  IAxisData,
   getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
@@ -198,12 +199,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScale: any;
+    const axisData: IAxisData = { yAxisDomainValues: [] };
     if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
     } else {
-      yScale = createYAxis(YAxisParams, this._isRtl);
+      yScale = createYAxis(YAxisParams, this._isRtl, axisData);
     }
-
+    this.props.getAxisData && this.props.getAxisData(axisData);
     // Callback function for chart, returns axis
     this._getData(xScale, yScale);
 

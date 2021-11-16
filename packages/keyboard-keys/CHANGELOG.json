@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Fri, 12 Nov 2021 13:25:11 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Oct 2021 10:37:22 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0-beta.1",
       "version": "9.0.0-beta.1",

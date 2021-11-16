@@ -119,7 +119,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
-            y={5.333333333333329}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout0"
@@ -207,7 +207,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             role="text"
             width={7.267759562841528}
             x={8.0327868852459}
-            y={20}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout0"
@@ -679,7 +679,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
-            y={5.333333333333329}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout12"
@@ -767,7 +767,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             role="text"
             width={7.267759562841528}
             x={8.0327868852459}
-            y={20}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout12"
@@ -1219,7 +1219,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
-            y={5.333333333333329}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout4"
@@ -1307,7 +1307,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             role="text"
             width={7.267759562841528}
             x={8.0327868852459}
-            y={20}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout4"
@@ -1456,7 +1456,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
-            y={5.333333333333329}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout8"
@@ -1544,7 +1544,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             role="text"
             width={7.267759562841528}
             x={8.0327868852459}
-            y={20}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout8"
@@ -2016,7 +2016,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
-            y={5.333333333333329}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout16"
@@ -2104,7 +2104,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             role="text"
             width={7.267759562841528}
             x={8.0327868852459}
-            y={20}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout16"
@@ -2576,7 +2576,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
-            y={5.333333333333329}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout20"
@@ -2664,7 +2664,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             role="text"
             width={7.267759562841528}
             x={8.0327868852459}
-            y={20}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout20"
@@ -3136,7 +3136,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
-            y={5.333333333333329}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout24"
@@ -3224,7 +3224,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             role="text"
             width={7.267759562841528}
             x={8.0327868852459}
-            y={20}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout24"

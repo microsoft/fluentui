@@ -2,6 +2,833 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 12 Nov 2021 13:25:06 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358",
+            "comment": "Add useFocusableGroup hook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ed2d7c8d638535c89e24e3c3de3534c4fae30172",
+            "comment": "Use uncontrolled tabbing by default"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "da10ba8b6cca0c4cf921dc176bb9b7ea57fde9fa",
+            "comment": "Bump tabster and keyborg to 1.0.7"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "3d5ca9b57c3a6ed9d60a041abc1f5417686ba41e",
+            "comment": "Updated with codesandbox comments"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "259d0bf8475629b0b2521157a9b33e97fcf8d513",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "fe9829e4818f9bb7206df37747d5da332706ae4b",
+            "comment": "feat(react-theme): add/update design tokens"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "d5810cfc819dcb2126ffaa081bf117fcae83dc73",
+            "comment": "Updated stories to support codesandbox"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "f078af73d95d0f2c380144a40127bd08e389aa2d",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/babel-make-styles",
+            "commit": "e48014a7fd9c030eafc1eec68463d013eac58baa",
+            "comment": "use latest @linaria/shaker version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/make-styles-webpack-loader",
+            "commit": "e48014a7fd9c030eafc1eec68463d013eac58baa",
+            "comment": "use latest @linaria/shaker version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/make-styles-webpack-loader",
+            "commit": "165eff476b2b54a4c66b8d305eeb4d5b2308fac5",
+            "comment": "Support resolve plugins from webpack config"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "825ea92aae027295a94048368157c180358260f2",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a4ea9b6227d2f634f85b40fe4cec10e4c391244b",
+            "comment": "Updating AccordionHeader tests to match changes in useARIAButton."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "a4ea9b6227d2f634f85b40fe4cec10e4c391244b",
+            "comment": "Fixing events being fired when button is disabledFocusable"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e42f50656c1b703d88c398b114f225ba5f1f5f22",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e42f50656c1b703d88c398b114f225ba5f1f5f22",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "7eb7d2daebaa11dbdcd555b0b962407013a7ca80",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "a4ea9b6227d2f634f85b40fe4cec10e4c391244b",
+            "comment": "react-button: Removing use of enzyme in the converged package."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "0e0cf06c34f78d54db4468a602a17b0a5a30ac87",
+            "comment": "Fixing incomplete comment."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "22460e1421c0f3b2bdf9c76d80a2cb202fa30079",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "70e81a56249d55dae418217ddcef5d16e030862a",
+            "comment": "Migrate to new useFocusableGroup usage"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "7eb7d2daebaa11dbdcd555b0b962407013a7ca80",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "d8c3066ef1fd265cc8d76882c1245e82b1097c4f",
+            "comment": "Refactored divider stories for codesandbox"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "7eb7d2daebaa11dbdcd555b0b962407013a7ca80",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "0e0cf06c34f78d54db4468a602a17b0a5a30ac87",
+            "comment": "Divider: Updating the component to the latest patterns."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "627ad67f1163946f1c539002bdcd63eda760c9c6",
+            "comment": "Divider: Updating Spec to reflect changes that have happened since it was first created."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "22460e1421c0f3b2bdf9c76d80a2cb202fa30079",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "8555daca54fa0ab490b5400b8d67a9430be9e8e5",
+            "comment": "Updated Image stories with codesandbox export comments"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "9186578324773f95f4d61be3d70e67752159d843",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "7eb7d2daebaa11dbdcd555b0b962407013a7ca80",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "a4ea9b6227d2f634f85b40fe4cec10e4c391244b",
+            "comment": "Updating Link tests."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-make-styles",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "390056fd15a4413af93083ad0f5a0b15c4709ed1",
+            "comment": "Adds typings for `onCheckedValueChange` method"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "28b87b619b5be37c8e4a3a75ba10071a93f2b10b",
+            "comment": "use react-shared-contexts instead of react-provider"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ade4f5d3fa5a6b1c81097403f5c2f2afd859aa14",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "054822c82e40601815f6cd77733a761b72047e4b",
+            "comment": "fix(Popover): use `dialog` as value for `aria-haspopup` for focus trap"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ade4f5d3fa5a6b1c81097403f5c2f2afd859aa14",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "36404e1921159b0a69b4824ae86e6276e0723ea2",
+            "comment": "Broke up stories added codesandbox refs"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "825ea92aae027295a94048368157c180358260f2",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "f078af73d95d0f2c380144a40127bd08e389aa2d",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e48014a7fd9c030eafc1eec68463d013eac58baa",
+            "comment": "remove temporary workaround with duplicated classes constants"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "9186578324773f95f4d61be3d70e67752159d843",
+            "comment": "export static classes for components"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "5e04b6208619318aa256768635101d5e64b96cc5",
+            "comment": "chore(Text): Add docs for each prop and new typography story"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/babel-make-styles",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/jest-serializer-make-styles",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/make-styles",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/make-styles-webpack-loader",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "cdbe0769d2a6ee91a98a3e62c6ac9329a714355c",
+            "comment": "Docs update"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "cdbe0769d2a6ee91a98a3e62c6ac9329a714355c",
+            "comment": "Docs update"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "88568113e0d36674210fe3323af7e9dcaa998a45",
+            "comment": "Storybook stories"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-badge",
+            "commit": "cdbe0769d2a6ee91a98a3e62c6ac9329a714355c",
+            "comment": "Docs update"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "d28932cc68561cf46a56a4300b6e18d7de8af14b",
+            "comment": "adding toggle and split button docs"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "73857e89e8c403370ba723415121f2ce1e530fff",
+            "comment": "add docs for menu and compound button"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "114b089957bcbf547bb8713f2bfb4811239fb5a2",
+            "comment": "add default and move assets to github urls"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "9186578324773f95f4d61be3d70e67752159d843",
+            "comment": "update snapshots"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c62593339a19c6abbabed742a0cc83fa9a85b97e",
+            "comment": "Add accessibility docs for react-components storybook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "f84331566966969bb54516d7d6af525796613058",
+            "comment": "chore(react-components): Add script to start storybook in docs mode"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "8a0784f640a7908099565c8557b896c73d6fc881",
+            "comment": "chore(storybook): Register theme picker addon from monorepo"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "08bd47e97c2a14080793f78ccb57ebfb798c32eb",
+            "comment": "chore(storybook): Add custom DocsContainer to react-components storybook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "452cf097c44829ccf7f8a02ff83fb6b14240c732",
+            "comment": "chore(react-components): Theme picker for storybook `--docs` mode"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "5caefa0b72c6c9d70c876377a49beccbf25c460a",
+            "comment": "chore(storybook): Theme picker as storybook addon"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "ed9dfd8e9ba2b0920f6c4bc396204b4ced4cacb2",
+            "comment": "chore(docs): Rename `Positioning` docs to `Positinoing Components`"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "7dbbcf2bcbd4d444b737aa3f4889ec6978cb8aa5",
+            "comment": "docs(storybook): add TOC"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "f28a39af5f4675837a888f579af2d32ed4dcfacc",
+            "comment": "fix(storybook): Load custom storybook theme correctly"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "405b1c4bb908b50005733552fae4cd16c99a4705",
+            "comment": "update Fluent docs page to use makestyles and flex for layout"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "9a2b1438add4bb1b7a8e22f63d11a43b89028da3",
+            "comment": "revert(react-storybook-addon): Remove addon and reintroduce `withFluentProvider`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "260afbfcfda1ac23f9e3f00309642af5ada0bb02",
+            "comment": "fix(react-components): remove `alpha` tag from quickstart install instructions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-make-styles",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "4398bf56796f354a3210f5babff1b04f612abcaa",
+            "comment": "chore(Divider): Remove unthemed white background in stories"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "7eff1eb4a259988273f8bc709e2951dbb8e0b695",
+            "comment": "chore(Label): Rework documentation to desired format"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-make-styles",
+            "commit": "f32855d6039f4049b69b005fe6dde0686eed503c",
+            "comment": "Moved basic and RTL stories to fluentprovider"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-make-styles",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-provider",
+            "commit": "cdbe0769d2a6ee91a98a3e62c6ac9329a714355c",
+            "comment": "Docs update"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f32855d6039f4049b69b005fe6dde0686eed503c",
+            "comment": "Refactored stories"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "9e6977945782df1cc997c92804a1b214cc4e4f43",
+            "comment": "do not use other packages in devDependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Oct 2021 12:14:12 GMT",
       "tag": "@fluentui/react-components_v9.0.0-beta.3",
       "version": "9.0.0-beta.3",
