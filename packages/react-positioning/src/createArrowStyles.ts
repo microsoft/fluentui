@@ -9,7 +9,7 @@ import type { Theme } from '@fluentui/react-theme';
  *   makeStyles({
  *     arrowWithSize: createArrowStyles(5),
  *
- *     arrowWithoutSize: createArrowStyles(5),
+ *     arrowWithoutSize: createArrowStyles(),
  *     mediumArrow: { aspectRatio: 1, width: '4px' }
  *     smallArrow: { aspectRatio: 1, width: '2px' }
  *   })
@@ -39,7 +39,7 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
       visibility: 'hidden',
       zIndex: -1,
 
-      ...(size && { 
+      ...(size && {
         aspectRatio: 1,
         width: `${size}px`,
       }),
