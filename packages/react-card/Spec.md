@@ -279,6 +279,20 @@ The card surface can be used as a clickable target
 
    Executes action assigned to card i.e. “Open file, Open link in browser etc...”
 
+### Non-interactive cards with interactive child components
+
+![Visual interaction of non-interactive cards using the mouse](./assets/non-interactive-interaction-mouse.png)
+
+Cards that have multiple actions within them cannot be clickable. We preserve the use of `EnterKey` for moving focus to actionable controls inside the card.
+
+1. OnMouseEnter / Hover
+
+   Cursor style stays at default, rest state stays persistent no visual feedback is applied to the card surface
+
+2. Hover & onClick
+
+   Hover state only applies to actionable items within card i.e. buttons, links etc. Cursor changes to pointer (or follows behavior of that component) ”
+
 #### Selectable cards
 
 ![Visual interaction of selectable cards using the mouse](./assets/selectable-interaction-mouse.png)
@@ -301,11 +315,11 @@ Clicking the card surface can toggle the checkbox state to `selected`. Note that
 
    Card and Checkbox are both in selected state, clicking again toggles components to unselected state
 
-### Non-interactive cards
+### Non-interactive selectable cards
 
-![Visual interaction of non-interactive cards using the mouse](./assets/non-interactive-interaction-mouse.png)
+![Visual interaction of non-interactive selectable cards using the mouse](./assets/non-interactive-selectable-interaction-mouse.png)
 
-Cards that have multiple actionable child components are expected to not be clickable. We preserve the use of `EnterKey` for moving focus to actionable controls inside the card, therefore the card surface should not be used to set the state of the card but is reliant on the checkbox or similar inputs to set the card state.
+Cards that have multiple actionable child components within them cannot be clickable. We preserve the use of `EnterKey` for moving focus to actionable controls inside the card, therefore the card surface cannot be used to set the state of the card but is reliant on the checkbox or similar inputs to set the card state.
 
 If users have a scenario that requires them to use actionable components within a clickable Card then the bubbling of events is expected to be managed by the users themselves.
 
@@ -326,6 +340,9 @@ Mouse interaction
 #### Disabled
 
 ![Visual interaction of Disabled cards using the mouse](./assets/disabled.png)
+
+In scenarios where a selectable card may be disabled both the card and the checkbox should be set to disabled.
+Hovering the card changes the cursor style to not-allowed
 
 1. Unselected disabled
 
