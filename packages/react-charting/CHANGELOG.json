@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 16 Nov 2021 07:36:41 GMT",
+      "tag": "@fluentui/react-charting_v5.5.9",
+      "version": "5.5.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-scharde@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "911f39dfaf00fe5dac653f5e1f944edad51dfd23",
+            "comment": "YAxis issue for bar charts solved, when highest y axis value is odd number"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.42.1",
+            "commit": "9edaf68d440c3196d4660b91384a1587339b7b47"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Nov 2021 07:29:05 GMT",
       "tag": "@fluentui/react-charting_v5.5.8",
       "version": "5.5.8",

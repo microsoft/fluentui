@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 16 Nov 2021 07:36:41 GMT",
+      "tag": "@fluentui/react_v8.42.1",
+      "version": "8.42.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9edaf68d440c3196d4660b91384a1587339b7b47",
+            "comment": "Callout: Specifying that gapSpace prop has pixels as its unit in prop comment."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Nov 2021 07:29:05 GMT",
       "tag": "@fluentui/react_v8.42.0",
       "version": "8.42.0",

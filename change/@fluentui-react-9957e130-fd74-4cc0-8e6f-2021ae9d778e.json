@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Callout: Specifying that gapSpace prop has pixels as its unit in prop comment.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
