@@ -323,8 +323,6 @@ Cards that have multiple actionable child components within them cannot be click
 
 If users have a scenario that requires them to use actionable components within a clickable Card then the bubbling of events is expected to be managed by the users themselves.
 
-Mouse interaction
-
 - OnMouseEnter / Hover
 
   Cursor style stays at default, rest state stays persistent no visual feedback is applied to the card surface
@@ -418,6 +416,10 @@ Keyboard interaction
 
    Will toggle both Card and Checkbox to selected state. Keying again will toggle to unselected
 
+### Disabled
+
+If a card is in a disabled state it should not receive focus from the tab order. And navigation to actionable child elements within the card should not be possible.
+
 ## Accessibility
 
 > ⚠️ Note: All other accessibility information, not covered in this section, is provided throughout the spec.
@@ -488,6 +490,8 @@ Each card is of `role="group"`.
 #### Disabled
 
 ![Two disabled cards. One is unselected and one is selected](./assets/disabled-narrator.png)
+
+If a card is in a disabled state it should not receive focus from the tab order.
 
 1 Unselected disabled
 
