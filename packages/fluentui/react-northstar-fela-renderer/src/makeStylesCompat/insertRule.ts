@@ -82,7 +82,7 @@ export function insertRule(target: Document | undefined, renderer: MakeStylesRen
 
         break;
       case RULE_TYPE:
-        safeInsertToDOM(renderer, sheet, bucket, generateCSSRule(selector, declaration));
+        safeInsertToDOM(renderer, sheet, bucket, generateCSSRule(selector, declaration + ';'));
         break;
       default:
         return;
