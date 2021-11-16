@@ -5,6 +5,7 @@ export interface DialogVariables {
   rootBackground: string;
   rootBorderRadius: string;
   rootPadding: string;
+  rootPaddingZoom: string;
   rootWidth: string;
 
   contentMargin: string;
@@ -28,8 +29,9 @@ export const dialogVariables = (siteVariables): Partial<DialogVariables> => ({
 
   rootBackground: siteVariables.colors.white,
   rootBorderRadius: siteVariables.borderRadiusXLarge,
-  rootWidth: '50vw',
+  rootWidth: '600px',
   rootPadding: `${pxToRem(27)} ${pxToRem(32)} ${pxToRem(32)} ${pxToRem(32)}`,
+  rootPaddingZoom: `${pxToRem(12)}`,
 
   contentMargin: `0 0 ${pxToRem(20)} 0`,
 

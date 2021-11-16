@@ -1,6 +1,8 @@
 import { DialogStylesProps } from '../../../../components/Dialog/Dialog';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DialogVariables } from './dialogVariables';
+import { buttonClassName } from 'src/components/Button/Button';
+import { flexClassName } from 'src/components/Flex/Flex';
 
 export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, DialogVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
@@ -11,6 +13,10 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
     padding: v.rootPadding,
     position: 'relative',
     width: v.rootWidth,
+    maxWidth: '100vw',
+    maxHeight: '100vh',
+    overflowX: 'hidden',
+    overflowY: 'auto',
 
     display: 'grid',
     gridTemplateColumns: '1fr auto',
@@ -18,6 +24,9 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
 
     boxShadow: v.boxShadow,
     color: v.foregroundColor,
+    '@media screen and (max-width: 500px)': {
+      padding: v.rootPaddingZoom,
+    },
   }),
 
   footer: (): ICSSInJSStyle => ({
@@ -27,7 +36,23 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
   }),
 
   actions: (): ICSSInJSStyle => ({
-    display: 'inline-block',
+    display: 'flex',
+    width: '100%',
+    [`& .${flexClassName}`]: {
+      display: 'flex',
+      justifyContent: 'end',
+      flexWrap: 'wrap',
+      width: '100%',
+    },
+    '@media screen and (max-width: 300px)': {
+      [`& .${buttonClassName}`]: {
+        width: '100%',
+        margin: 0,
+      },
+      [`& .${flexClassName} > :not(:last-child)`]: {
+        marginBottom: '0.5rem',
+      },
+    },
   }),
 
   content: ({ variables: v }): ICSSInJSStyle => ({
