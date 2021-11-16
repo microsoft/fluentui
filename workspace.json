@@ -249,6 +249,11 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-combobox": {
+      "root": "packages/react-combobox",
+      "projectType": "library",
+      "sourceRoot": "packages/react-combobox/src"
+    },
     "@fluentui/react-component-event-listener": {
       "root": "packages/fluentui/react-component-event-listener",
       "projectType": "library",

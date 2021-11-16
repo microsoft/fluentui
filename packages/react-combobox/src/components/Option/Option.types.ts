@@ -1,7 +1,8 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type OptionSlots = {
-  root: Slot<'div'>;
+  // TODO Add slots here and to optionShorthandProps in useOption.ts
+  root: IntrinsicShorthandProps<'div'>;
 };
 
 export type OptionCommons = {

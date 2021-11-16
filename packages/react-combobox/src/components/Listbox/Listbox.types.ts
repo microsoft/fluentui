@@ -1,7 +1,8 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type ListboxSlots = {
-  root: Slot<'div'>;
+  // TODO Add slots here and to listboxShorthandProps in useListbox.ts
+  root: IntrinsicShorthandProps<'div'>;
 };
 
 export type ListboxCommons = {

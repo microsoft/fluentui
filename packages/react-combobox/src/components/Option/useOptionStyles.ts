@@ -7,9 +7,9 @@ export const optionClassName = 'fui-Option';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
+  root: theme => ({
     // TODO Add default styles for the root element
-  },
+  }),
 
   // TODO add additional classes for different states and/or slots
 });
@@ -17,9 +17,9 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Option slots based on the state
  */
-export const useOptionStyles_unstable = (state: OptionState): OptionState => {
+export const useOptionStyles = (state: OptionState): OptionState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(optionClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
