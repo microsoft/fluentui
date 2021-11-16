@@ -31,7 +31,11 @@ const useTsBuildInfo =
  * > - Without setting rootDir we would get output dir mapping following path from monorepo root
  */
 function prepareTsTaskConfig(options: TscTaskOptions) {
-  const tsConfigFilePath = resolveCwd('./tsconfig.json');
+  const tsConfigMainFilePath = resolveCwd('./tsconfig.json');
+  const tsConfigLibFilePath = resolveCwd('./tsconfig.lib.json');
+  const isUsingTsSolutionConfigs = fs.existsSync(tsConfigLibFilePath);
+
+  const tsConfigFilePath = isUsingTsSolutionConfigs ? tsConfigLibFilePath : tsConfigMainFilePath;
   const tsConfig: TsConfig = jju.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
 
   if (tsConfig.extends) {
@@ -40,9 +44,12 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     const normalizedOptions = { ...options };
     normalizedOptions.baseUrl = '.';
     normalizedOptions.rootDir = './src';
+    normalizedOptions.project = path.basename(tsConfigFilePath);
 
     return normalizedOptions;
   }
+
+  options.target = 'es5';
 
   return options;
 }
@@ -88,6 +95,7 @@ export const ts = {
     const extraOptions = getExtraTscParams(getJustArgv());
     const options = prepareTsTaskConfig({
       ...extraOptions,
+      target: 'es5',
       outDir: 'lib-amd',
       module: 'amd',
       ...(useTsBuildInfo && { tsBuildInfoFile: '.amd.tsbuildinfo' }),

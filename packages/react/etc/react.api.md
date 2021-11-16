@@ -4993,7 +4993,9 @@ export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivEleme
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     enableAriaHiddenSiblings?: boolean;
+    // @deprecated
     firstFocusableSelector?: string | (() => string);
+    firstFocusableTarget?: string | ((element: HTMLElement) => HTMLElement | null);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
@@ -5814,6 +5816,8 @@ export interface IListState<T = any> {
     measureVersion?: number;
     // (undocumented)
     pages?: IPage<T>[];
+    // (undocumented)
+    pagesVersion?: {};
 }
 
 // @public (undocumented)
@@ -8679,7 +8683,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)

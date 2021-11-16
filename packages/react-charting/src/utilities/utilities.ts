@@ -44,6 +44,10 @@ export interface IWrapLabelProps {
   showXAxisLablesTooltip: boolean;
 }
 
+export interface IAxisData {
+  yAxisDomainValues: number[];
+}
+
 export interface IMargins {
   /**
    * left margin for the chart.
@@ -220,7 +224,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
  * @param {IYAxisParams} yAxisParams
  * @param {boolean} isRtl
  */
-export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
+export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -252,6 +256,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
 }
 

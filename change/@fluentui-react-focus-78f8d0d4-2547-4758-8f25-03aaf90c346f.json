@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "disable conformance test",
-  "packageName": "@fluentui/react-focus",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

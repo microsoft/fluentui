@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Divider: Updating Spec to reflect changes that have happened since it was first created.",
-  "packageName": "@fluentui/react-divider",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

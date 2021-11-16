@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Support resolve plugins from webpack config",
-  "packageName": "@fluentui/make-styles-webpack-loader",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
