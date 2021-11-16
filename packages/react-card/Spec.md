@@ -93,6 +93,14 @@ Card goes for a more structural and generic approach to a card component and is 
 
 ![visual anatomy of the Card component](./assets/Card.png)
 
+#### DOM
+
+```HTML
+<div role="group">
+  {children}
+</div>
+```
+
 #### API
 
 | Property    | Values                                                                               | Default    | Purpose                                                                                   |
@@ -144,6 +152,18 @@ Context menu should be handled in conjunction with the @fluentui/react-menu comp
 
 ![visual anatomy of the CardHeader component](./assets/CardHeader.png)
 
+#### DOM
+
+```HTML
+<div>
+  <div>{image}</div>
+  <div>
+    {header}
+    {description}
+  </div>
+</div>
+```
+
 #### API
 
 | Property    | Values | Default   | Purpose                                           |
@@ -152,13 +172,22 @@ Context menu should be handled in conjunction with the @fluentui/react-menu comp
 | header      | _slot_ | undefined | Header of the card                                |
 | description | _slot_ | undefined | Further description of the content                |
 
-### CardBody
-
-This component has no custom props and only ensures the proper positioning of content and itself within the card.
-
 ### CardPreview
 
+#### Anatomy
+
 ![visual anatomy of the CardPreview component](./assets/CardPreview.png)
+
+#### DOM
+
+```HTML
+<div>
+  {children}
+  <div>
+    {logo}
+  </div>
+</div>
+```
 
 #### API
 
@@ -170,7 +199,15 @@ This component has no custom props and only ensures the proper positioning of co
 
 ### CardFooter
 
+#### Anatomy
+
 This component has no custom props and only ensures the proper positioning of content and itself within the card.
+
+#### DOM
+
+```HTML
+<div>{children}</div>
+```
 
 ## Sample Code
 
