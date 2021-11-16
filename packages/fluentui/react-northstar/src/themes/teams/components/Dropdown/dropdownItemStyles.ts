@@ -29,6 +29,9 @@ export const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesP
       ...(!p.isFromKeyboard && {
         color: v.listItemColorHover,
         backgroundColor: v.listItemBackgroundColorHover,
+        [`& .${dropdownItemSlotClassNames.checkableIndicator}`]: {
+          backgroundImage: checkableIndicatorUrl(v.listItemColorHover),
+        },
         ...(p.hasHeader && {
           [`& .${dropdownItemSlotClassNames.header}`]: {
             color: v.listItemColorHover,
