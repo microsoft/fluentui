@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { RadioItemState } from './RadioItem.types';
 
+export const radioItemClassName = 'fui-RadioItem';
+
 /**
  * Styles for the root slot
  */
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForeground1,
 
     // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
-    '& .ms-checkbox-indicator': {
+    [`& .${radioItemClassName}-indicator`]: {
       backgroundColor: theme.colorCompoundBrandBackground,
       color: theme.colorNeutralForegroundInverted,
       borderColor: theme.colorBrandBackground,
@@ -28,13 +30,13 @@ const useStyles = makeStyles({
     },
 
     ':active': {
-      '& .ms-checkbox-indicator': {
+      [`& .${radioItemClassName}-indicator`]: {
         backgroundColor: theme.colorCompoundBrandBackgroundPressed,
       },
     },
 
     ':hover': {
-      '& .ms-checkbox-indicator': {
+      [`& .${radioItemClassName}-indicator`]: {
         backgroundColor: theme.colorCompoundBrandBackgroundHover,
       },
     },
@@ -43,7 +45,7 @@ const useStyles = makeStyles({
   unchecked: theme => ({
     color: theme.colorNeutralForeground3,
 
-    '& .ms-checkbox-indicator': {
+    [`& .${radioItemClassName}-indicator`]: {
       borderColor: theme.colorNeutralStrokeAccessible,
       '& > *': {
         opacity: 0,
@@ -53,7 +55,7 @@ const useStyles = makeStyles({
     ':hover': {
       color: theme.colorNeutralForeground2,
 
-      '& .ms-checkbox-indicator': {
+      [`& .${radioItemClassName}-indicator`]: {
         borderColor: theme.colorNeutralStrokeAccessibleHover,
       },
     },
@@ -61,7 +63,7 @@ const useStyles = makeStyles({
     ':active': {
       color: theme.colorNeutralForeground1,
 
-      '& .ms-checkbox-indicator': {
+      [`& .${radioItemClassName}-indicator`]: {
         borderColor: theme.colorNeutralStrokeAccessiblePressed,
       },
     },
@@ -71,14 +73,14 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForegroundDisabled,
     cursor: 'default',
 
-    '& .ms-checkbox-indicator': {
+    [`& .${radioItemClassName}-indicator`]: {
       borderColor: theme.colorNeutralStrokeDisabled,
       color: theme.colorNeutralForegroundDisabled,
       backgroundColor: theme.colorNeutralBackground1,
     },
 
     ':hover': {
-      '& .ms-checkbox-indicator': {
+      [`& .${radioItemClassName}-indicator`]: {
         borderColor: theme.colorNeutralStrokeDisabled,
         color: theme.colorNeutralForegroundDisabled,
         backgroundColor: theme.colorNeutralBackground1,
@@ -86,7 +88,7 @@ const useStyles = makeStyles({
     },
 
     ':active': {
-      '& .ms-checkbox-indicator': {
+      [`& .${radioItemClassName}-indicator`]: {
         borderColor: theme.colorNeutralStrokeDisabled,
         color: theme.colorNeutralForegroundDisabled,
         backgroundColor: theme.colorNeutralBackground1,
@@ -123,9 +125,19 @@ const useInputStyles = makeStyles({
   },
 
   disabled: {
-    // TODO(Peter): Add this to label as well
     cursor: 'not-allowed',
   },
+});
+
+const useLabelStyles = makeStyles({
+  label: {
+    cursor: 'pointer',
+  },
+
+  disabled: theme => ({
+    cursor: 'not-allowed',
+    color: theme.colorNeutralForegroundDisabled,
+  }),
 });
 
 const useIndicatorStyles = makeStyles({
@@ -153,9 +165,11 @@ export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
   const containerStyles = useContainerStyles();
   const indicatorStyles = useIndicatorStyles();
   const inputStyles = useInputStyles();
+  const labelStyles = useLabelStyles();
   const styles = useStyles();
 
   state.root.className = mergeClasses(
+    radioItemClassName,
     styles.root,
     styles.focusIndicator,
     styles[checkedState],
@@ -173,10 +187,16 @@ export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
   state.containerClassName = mergeClasses(containerStyles.container, containerStyles.dimensions);
 
   state.indicator.className = mergeClasses(
+    `${radioItemClassName}-indicator`,
     indicatorStyles.indicator,
     containerStyles.dimensions,
-    'ms-checkbox-indicator',
     state.indicator.className,
+  );
+
+  state.label.className = mergeClasses(
+    labelStyles.label,
+    state.input.disabled && labelStyles.disabled,
+    state.label.className,
   );
 
   return state;

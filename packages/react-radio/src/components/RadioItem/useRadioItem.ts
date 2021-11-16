@@ -51,7 +51,6 @@ export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>)
     setChecked(isChecked);
   });
 
-  // TODO(Peter): Add ID logic.
   const state: RadioItemState = {
     checked,
     components: {
