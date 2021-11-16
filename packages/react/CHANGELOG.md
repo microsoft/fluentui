@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 15 Nov 2021 07:29:05 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Nov 2021 07:36:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.42.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.1)
+
+Tue, 16 Nov 2021 07:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.0..@fluentui/react_v8.42.1)
+
+### Patches
+
+- Callout: Specifying that gapSpace prop has pixels as its unit in prop comment. ([PR #20605](https://github.com/microsoft/fluentui/pull/20605) by Humberto.Morimoto@microsoft.com)
 
 ## [8.42.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.0)
 
