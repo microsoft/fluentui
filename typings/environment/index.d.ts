@@ -8,9 +8,14 @@ declare namespace NodeJS {
     };
   }
 
-  // @ts-ignore - ignore type checking on `/typings` package scope, because `@types/webpack-env` defines `env` as `any`,
-  // thus making extension incompatible.
-  // - `@types/webpack-env` leaks here because we override `@storybook/addons` module type definitions which internally reference `@types/webpack-env`
+  /**
+   * NOTE:
+   * proper DX and type-checking wont work whenever a library that uses `@types/webpack-env` is used in your code.
+   *
+   * WHY?:
+   * - `@types/webpack-env` defines `env` as `any`, thus making extension incompatible. @see https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/webpack-env/index.d.ts#L275
+   * - `@storybook/addons` module type definitions internally reference `@types/webpack-env` so `process.env` type checking/DX wont work in all storybook configs/files
+   */
   export interface ProcessEnv extends ExtendedProcessEnv {}
 }
 
