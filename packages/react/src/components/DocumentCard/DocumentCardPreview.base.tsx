@@ -131,7 +131,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
         <Link
           className={this._classNames.fileListLink}
           // eslint-disable-next-line deprecation/deprecation
-          href={(file.linkProps && file.linkProps.href) || file.url}
+          href={file.url}
           {...file.linkProps}
         >
           {file.name}
