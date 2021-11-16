@@ -10,7 +10,7 @@ import {
   borderWidth,
   margin,
   padding,
-} from './macros';
+} from './macros/index';
 
 export const macros = {
   border,
