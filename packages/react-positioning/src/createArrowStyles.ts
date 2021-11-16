@@ -39,7 +39,10 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
       visibility: 'hidden',
       zIndex: -1,
 
-      ...(size && { aspectRatio: 1, with: `${size}px` }),
+      ...(size && { 
+        aspectRatio: 1,
+        width: `${size}px`,
+      }),
 
       ':before': {
         content: '""',
@@ -53,7 +56,7 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
         transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
       },
 
-      'global([data-popper-placement])': {
+      ':global([data-popper-placement])': {
         ':before': arrowHCBorder,
       },
 
