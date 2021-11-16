@@ -3949,6 +3949,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     flatIndexOffset?: number;
     focusZoneProps?: IFocusZoneProps;
     getRowAriaDescribedBy?: (item: any) => string;
+    getRowAriaDescription?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
     group?: IGroup;
     id?: string;
