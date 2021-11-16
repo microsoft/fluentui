@@ -5,8 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": false,
     "noEmit": true,
-    "types": [],
-    "typeRoots": ["node_modules/@types"]
+    "types": []
   },
   "include": ["**/*.d.ts"]
 }
