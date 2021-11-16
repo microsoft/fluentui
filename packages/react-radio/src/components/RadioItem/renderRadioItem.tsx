@@ -15,7 +15,7 @@ export const renderRadioItem = (state: RadioItemState) => {
         <slots.indicator {...slotProps.indicator} />
         <slots.input {...slotProps.input} />
       </div>
-      <slots.label {...slotProps.label}>
+      <slots.label>
         {state.label.children}
         {state.subtext && <slots.subtext {...slotProps.subtext} />}
       </slots.label>
