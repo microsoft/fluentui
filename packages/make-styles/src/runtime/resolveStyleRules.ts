@@ -189,6 +189,11 @@ function resolveStyleRulesInner(
           cssClassesMap,
           cssRulesByBucket,
         );
+      } else {
+        if (process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.error(`Please fix the unresolved style rule: \n ${property} \n ${JSON.stringify(value, null, 2)}"`);
+        }
       }
     }
   }
