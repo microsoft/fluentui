@@ -10,12 +10,12 @@ const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 export const CommandBarBasicExample: React.FunctionComponent = () => {
   const [enableFocusTrap, setEnableFocusTrap] = React.useState(false);
 
-  const onChangeEnableFocusTrap = (
-    ev?: React.FormEvent<HTMLElement | HTMLInputElement> | undefined,
-    checked?: boolean | undefined,
-  ) => {
-    setEnableFocusTrap(!!checked);
-  };
+  const onChangeEnableFocusTrap = React.useCallback(
+    (ev?: React.FormEvent<HTMLElement | HTMLInputElement> | undefined, checked?: boolean | undefined) => {
+      setEnableFocusTrap(!!checked);
+    },
+    [],
+  );
 
   return (
     <FocusTrapZone disabled={!enableFocusTrap}>
