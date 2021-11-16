@@ -368,19 +368,9 @@ Hovering the card changes the cursor style to not-allowed
 
    EnterKey Perfoms action on card “Open file, Open link in browser etc...”
 
-#### Selectable cards
+### Non-interactive cards with interactive child components
 
-![Visual interaction of selectable cards using the keyboard](./assets/selectable-interaction-keyboard.png)
-
-1. Rest Default state is ‘unselected’
-2. Focus Focus rectangle is shown on card
-3. Focus Use spacebar to toggle state (selected/unselected)
-
-### Non-interactive cards
-
-![Visual interaction of non-interactive cards using the keyboard](./assets/non-interactive-interaction-keyboard.png)
-
-Keyboard interaction
+![Visual interaction of interactive cards using the keyboard](./assets/non-interactive-interaction-keyboard.png)
 
 1. Focus
 
@@ -388,13 +378,45 @@ Keyboard interaction
 
 2. Focus-Inside
 
-   Focus moves to first actionable item in the card. Use ArrowKeys or TabKey to move focus to child elements within the card. To exit card use EscKey, to move focus back to card [parent]
+   Focus moves to first actionable item in the card. Use `ArrowKeys` or `TabKey` to move focus to child elements within the card. To exit card use EscKey, to move focus back to card
+
+#### Selectable cards
+
+![Visual interaction of selectable cards using the keyboard](./assets/selectable-interaction-keyboard.png)
+
+1. Rest
+
+   Default state is ‘unselected’
+
+2. Focus
+
+   Focus rectangle is shown on card
+
+3. Focus
+
+   Use spacebar to toggle state (selected/unselected)
+
+### Non-interactive selectable cards
+
+![Visual interaction of non-interactive selectable cards using the keyboard](./assets/non-interactive-selectable-interaction-keyboard.png)
+
+Keyboard interaction
+
+1. Focus
+
+   Initial focus is set on card, to access items within the card use EnterKey or Spacebar.
+
+2. Focus-Inside
+
+   Focus moves to first actionable item in the card. Use ArrowKeys or TabKey to move focus to child elements within the card. To exit card use EscKey, to move focus back to card.
 
 3. Checkbox-Focus
 
    Depending on your tab order of items within the card, the number of keystrokes will vary. Once focus is set on the checkbox by default it will be set to unselected
 
-4. SpaceBar or EnterKey, while focused on the Checkbox, will toggle both Card and Checkbox to selected state. Keying again will toggle to unselected
+4. SpaceBar or EnterKey while focused on the Checkbox
+
+   Will toggle both Card and Checkbox to selected state. Keying again will toggle to unselected
 
 ## Accessibility
 
