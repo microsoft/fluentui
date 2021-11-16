@@ -62,7 +62,7 @@ export function insertRule(target: Document | undefined, renderer: MakeStylesRen
         // }
         break;
       case FONT_TYPE:
-        safeInsertToDOM(renderer, sheet, bucket, change.fontFace);
+        safeInsertToDOM(renderer, sheet, bucket, change.fontFace!);
         break;
       case STATIC_TYPE:
         serialize(

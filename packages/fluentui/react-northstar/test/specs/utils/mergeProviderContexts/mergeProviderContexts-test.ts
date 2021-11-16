@@ -1,25 +1,5 @@
 import { ProviderContextInput } from '@fluentui/react-bindings';
-import { mergeProviderContexts, mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
-
-describe('getRenderer', () => {
-  const createRenderer = jest.fn().mockImplementation(target => ({ target }));
-
-  test(`without "target" defaults to a document`, () => {
-    // will be "undefined" as we call createRenderer() with "undefined"
-    expect(getRenderer(createRenderer)).toHaveProperty('target', undefined);
-  });
-
-  test(`with "target" equals a default document will use its renderer`, () => {
-    // will be "undefined" as we call createRenderer() with "undefined"
-    expect(getRenderer(createRenderer)).toHaveProperty('target', undefined);
-  });
-
-  test(`creates a new renderer for a new "target" and keeps it`, () => {
-    const target = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
-
-    expect(getRenderer(createRenderer, target)).toHaveProperty('target', target);
-  });
-});
+import { mergeProviderContexts, mergePerformanceOptions } from 'src/utils/mergeProviderContexts';
 
 describe('mergePerformanceOptions', () => {
   test(`options from "sources" always override`, () => {

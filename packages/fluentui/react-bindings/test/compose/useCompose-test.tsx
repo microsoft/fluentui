@@ -5,25 +5,26 @@ import {
   useUnhandledProps,
   Unstable_FluentContextProvider,
 } from '@fluentui/react-bindings';
-import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+// import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
-import cx from 'classnames';
+// import cx from 'classnames';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
 
 const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
   const value: ProviderContextPrepared = {
     disableAnimations: false,
-    renderer: {
-      ...noopRenderer,
-      renderRule: (props: any) => {
-        return cx(
-          props.color && `color-${props.color}`,
-          props.hidden && `hidden-${props.hidden}`,
-          props.visible && `visible-${props.visible}`,
-        );
-      },
-    },
+    // TODO: fix me
+    // renderer: {
+    //   ...noopRenderer,
+    //   renderRule: (props: any) => {
+    //     return cx(
+    //       props.color && `color-${props.color}`,
+    //       props.hidden && `hidden-${props.hidden}`,
+    //       props.visible && `visible-${props.visible}`,
+    //     );
+    //   },
+    // },
     performance: {
       enableStylesCaching: false,
       enableVariablesCaching: false,
