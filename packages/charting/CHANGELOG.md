@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 11 Nov 2021 12:28:44 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Nov 2021 12:29:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.0)
+
+Tue, 16 Nov 2021 12:29:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.18.5..@uifabric/charting_v4.19.0)
+
+### Minor changes
+
+- Number localization in chart ([PR #20553](https://github.com/microsoft/fluentui/pull/20553) by v-scharde@microsoft.com)
 
 ## [4.18.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.18.5)
 
