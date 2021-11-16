@@ -83,7 +83,6 @@ Card goes for a more structural and generic approach to a card component and is 
 | ----------- | ------------------------------------------------------------------------ |
 | Card        | Wrapper for the main content of a card.                                  |
 | CardHeader  | Optional header slot for the card.                                       |
-| CardBody    | Main slot of the Card                                                    |
 | CardPreview | Previewing the document/article presented in the card through an image   |
 | CardFooter  | Optional footer slot for the card. (non-applicable for horizontal cards) |
 
@@ -103,17 +102,16 @@ Card goes for a more structural and generic approach to a card component and is 
 
 #### API
 
-| Property    | Values                                                                               | Default    | Purpose                                                                                   |
-| ----------- | ------------------------------------------------------------------------------------ | ---------- | ----------------------------------------------------------------------------------------- |
-| orientation | `vertical`, `horizontal`                                                             | `vertical` | Orientation of the card                                                                   |
-| size        | `smallest`, `smaller`, `small`, `medium`, `large`                                    | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card          |
-| scale       | `fixed`, `auto-width`, `auto-height`, `auto`, `fluid-width`, `fluid-height`, `fluid` | `auto`     | Manages how the card handles it's scaling depending on the content                        |
-| onClick     | function                                                                             | undefined  | Function to call when clicking the card. Makes the card assume the interactive appearance |
-| appearance  | `filled`, `filled-alternative`, `outline`, `subtle`                                  | `filled`   | Define the appearance of the card                                                         |
-| selectable  | boolean                                                                              | false      | Makes the card selectable by adding a checkbox to the _Actions_ area                      |
-| selected    | boolean                                                                              | false      | Set to `true` if card is selected                                                         |
-| expandable  | boolean                                                                              | false      | Allow card to expand to show whole content                                                |
-| disabled    | boolean                                                                              | false      | Makes the card and card selection disabled (not propagated to children)                   |
+| Property    | Values                                                                               | Default    | Purpose                                                                          |
+| ----------- | ------------------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------- |
+| orientation | `vertical`, `horizontal`                                                             | `vertical` | Orientation of the card                                                          |
+| size        | `smallest`, `smaller`, `small`, `medium`, `large`                                    | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card |
+| scale       | `fixed`, `auto-width`, `auto-height`, `auto`, `fluid-width`, `fluid-height`, `fluid` | `auto`     | Manages how the card handles it's scaling depending on the content               |
+| appearance  | `filled`, `filled-alternative`, `outline`, `subtle`                                  | `filled`   | Define the appearance of the card                                                |
+| selectable  | boolean                                                                              | false      | Makes the card selectable by adding a checkbox to the _Actions_ area             |
+| selected    | boolean                                                                              | false      | Set to `true` if card is selected                                                |
+| expandable  | boolean                                                                              | false      | Allow card to expand to show whole content                                       |
+| disabled    | boolean                                                                              | false      | Makes the card and card selection disabled (not propagated to children)          |
 
 #### `scale` property
 
@@ -191,11 +189,9 @@ Context menu should be handled in conjunction with the @fluentui/react-menu comp
 
 #### API
 
-| Property | Values | Default   | Purpose                                                  |
-| -------- | ------ | --------- | -------------------------------------------------------- |
-| src      | string | undefined | Source of the media to be displayed on the `img` element |
-| alt      | string | undefined | Alternative text to describe the media presented         |
-| logo     | _slot_ | undefined | A logo/file type to add over the image preview           |
+| Property | Values | Default   | Purpose                                        |
+| -------- | ------ | --------- | ---------------------------------------------- |
+| logo     | _slot_ | undefined | A logo/file type to add over the image preview |
 
 ### CardFooter
 
@@ -224,9 +220,9 @@ This component has no custom props and only ensures the proper positioning of co
 ```jsx
 <Card>
   <CardHeader image={<img src="app_logo.png" />} header="App Name" description="Developer" />
-  <CardBody>
+  <span>
     Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
-  </CardBody>
+  </span>
 </Card>
 ```
 
@@ -247,18 +243,16 @@ This component has no custom props and only ensures the proper positioning of co
 ```jsx
 <Card>
   <CardPreview src="monkey.png" alt="image of monkey" />
-  <CardBody>
-    <div>
-      <span>Length</span>
-      <span>4.6-39.6 IN</span>
-      <span>11.7-100.6 cm</span>
-    </div>
-    <div>
-      <span>Diet</span>
-      <span>Omnivore</span>
-      <span>nuts, fruits, eggs</span>
-    </div>
-  </CardBody>
+  <div>
+    <span>Length</span>
+    <span>4.6-39.6 IN</span>
+    <span>11.7-100.6 cm</span>
+  </div>
+  <div>
+    <span>Diet</span>
+    <span>Omnivore</span>
+    <span>nuts, fruits, eggs</span>
+  </div>
   <CardFooter>
     <Button>Share</Button>
   </CardFooter>
