@@ -7,7 +7,10 @@
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { InputHTMLAttributes } from 'react';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { LabelProps } from '@fluentui/react-label';
+import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -21,6 +24,38 @@ export type RadioCommons = {};
 
 // @public
 export type RadioDefaultedProps = never;
+
+// @public
+export const RadioItem: ForwardRefComponent<RadioItemProps>;
+
+// @public (undocumented)
+export const radioItemClassName = "fui-RadioItem";
+
+// @public (undocumented)
+export type RadioItemCommons = InputHTMLAttributes<HTMLInputElement> & {
+    labelPosition?: 'bottom' | 'inline';
+    containerClassName?: string;
+};
+
+// @public
+export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons & {
+    id?: string;
+};
+
+// @public
+export const radioItemShorthandProps: (keyof RadioItemSlots)[];
+
+// @public (undocumented)
+export type RadioItemSlots = {
+    root: IntrinsicShorthandProps<'span'>;
+    indicator: IntrinsicShorthandProps<'div'>;
+    input: IntrinsicShorthandProps<'input'>;
+    label: ObjectShorthandProps<LabelProps>;
+    subtext?: IntrinsicShorthandProps<'span'>;
+};
+
+// @public
+export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
 
 // @public
 export type RadioProps = ComponentProps<RadioSlots> & Partial<RadioCommons> & {};
@@ -43,7 +78,16 @@ export type RadioState = ComponentState<RadioSlots> & RadioCommons;
 export const renderRadio: (state: RadioState) => JSX.Element;
 
 // @public
+export const renderRadioItem: (state: RadioItemState) => JSX.Element;
+
+// @public
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
+
+// @public
+export const useRadioItem: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
+
+// @public
+export const useRadioItemStyles: (state: RadioItemState) => RadioItemState;
 
 // @public
 export const useRadioStyles: (state: RadioState) => RadioState;
