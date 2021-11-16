@@ -163,7 +163,7 @@ const templates = {
             lib: ['ES2019'],
             outDir: 'dist',
             declaration: true,
-            types: ['static-assets'],
+            types: ['static-assets', 'environment'],
           } as TsConfig['compilerOptions'],
           exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
           include: ['./src/**/*.ts', './src/**/*.tsx'],
