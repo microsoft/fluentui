@@ -25,7 +25,7 @@ export const radioItemShorthandProps: (keyof RadioItemSlots)[] = ['root', 'indic
  * @param ref - reference to root HTMLElement of RadioItem
  */
 export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>): RadioItemState => {
-  const { id } = props;
+  const { id, labelPosition = 'inline' } = props;
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
     state: props.checked,
@@ -53,6 +53,7 @@ export const useRadioItem = (props: RadioItemProps, ref: React.Ref<HTMLElement>)
 
   const state: RadioItemState = {
     checked,
+    labelPosition,
     components: {
       root: 'span',
       indicator: 'div',

@@ -96,6 +96,12 @@ const useStyles = makeStyles({
     },
   }),
 
+  bottomLabelPosition: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignSelf: 'flex-start',
+  },
+
   focusIndicator: theme =>
     createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' }, selector: 'focus-within' }),
 });
@@ -112,6 +118,11 @@ const useContainerStyles = makeStyles({
   dimensions: {
     width: '16px',
     height: '16px',
+  },
+
+  bottomLabelPosition: {
+    marginRight: '0px',
+    marginBottom: '12px',
   },
 });
 
@@ -174,6 +185,7 @@ export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
     styles.focusIndicator,
     styles[checkedState],
     state.input.disabled && styles.disabled,
+    state.labelPosition === 'bottom' && styles.bottomLabelPosition,
     state.root.className,
   );
 
@@ -184,7 +196,11 @@ export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
     state.input.className,
   );
 
-  state.containerClassName = mergeClasses(containerStyles.container, containerStyles.dimensions);
+  state.containerClassName = mergeClasses(
+    containerStyles.container,
+    state.labelPosition === 'bottom' && containerStyles.bottomLabelPosition,
+    containerStyles.dimensions,
+  );
 
   state.indicator.className = mergeClasses(
     `${radioItemClassName}-indicator`,
