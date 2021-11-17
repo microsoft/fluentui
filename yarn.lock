@@ -5028,11 +5028,6 @@
   resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
   integrity sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==
 
-"@types/sarif@2.1.1", "@types/sarif@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@types/sarif/-/sarif-2.1.1.tgz#d398d201eade0a88958dffdd13ca88f7a37546df"
-  integrity sha512-OI9w+yqOhvT3Z9tF/4d+YVFbdYojotHMRfuKrVtAzeKu3L0kBiK6CnHADkNrfSeVOgkIMeg8OqIQFfcsm7HgCg==
-
 "@types/scheduler@^0.16.1":
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
@@ -6763,35 +6758,15 @@ axe-core@3.4.1:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.4.1.tgz#e42623918bb85b5ef674633852cb9029db0309c5"
   integrity sha512-+EhIdwR0hF6aeMx46gFDUy6qyCfsL0DmBrV3Z+LxYbsOd8e1zBaPHa3f9Rbjsz2dEwSBkLw6TwML/CAIIAqRpw==
 
-axe-core@3.5.0, axe-core@^3.0.3, axe-core@^3.1.2, axe-core@^3.2.2:
+axe-core@3.5.0, axe-core@^3.0.3:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.0.tgz#161b17fc6ce07a5470ff179e0703957c422b2220"
   integrity sha512-wJqOIreoFiGjvZ1UZvGLAUs8H3QQ3cS833+6ctFcCdr/xFd5oB66mmwGWnwQlBXFFaefRt+KR+m2dY9em2RxVg==
 
-axe-core@^4.0.2:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.1.tgz#0c6a076e4a1c3e0544ba6a9479158f9be7a7928e"
-  integrity sha512-3WVgVPs/7OnKU3s+lqMtkv3wQlg3WxK1YifmpJSDO0E1aPBrZWlrrTO6cxRqCXLuX2aYgCljqXIQd0VnRidV0g==
-
-axe-core@^4.2.0:
+axe-core@^4.0.2, axe-core@^4.2.0:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.2.tgz#fcf8777b82c62cfc69c7e9f32c0d2226287680e7"
   integrity sha512-5LMaDRWm8ZFPAEdzTYmgjjEdj1YnQcpfrVajO/sn/LhbpGp0Y0H64c2hLZI1gRMxfA+w1S71Uc/nHaOXgcCvGg==
-
-axe-puppeteer@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/axe-puppeteer/-/axe-puppeteer-1.0.0.tgz#cebbeec2c65a2e0cb7d5fd1e7aef26c5f71895a4"
-  integrity sha512-hTF3u4mtatgTN7fsLVyVgbRdNc15ngjDcTEuqhn9A7ugqLhLCryJWp9fzqZkNlrW8awPcxugyTwLPR7mRdPZmA==
-  dependencies:
-    axe-core "^3.1.2"
-
-axe-sarif-converter@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.0.1.tgz#747c7ebdc8fcb2a7b66545bbc6db1b4fa7467856"
-  integrity sha512-Fd0wNxEc68K28B40KaCqSJiCnHfYRx0gmPn5aNgGaInRJQQWY9G0IRZcCF7cweHqc+1zDC1ZrkFWAQcOecVBaQ==
-  dependencies:
-    "@types/sarif" "2.1.1"
-    axe-core "^3.2.2"
 
 axobject-query@^2.2.0:
   version "2.2.0"

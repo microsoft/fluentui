@@ -399,9 +399,6 @@
     "@fluentui/webpack-utilities": {
       "implicitDependencies": []
     },
-    "a11y-tests": {
-      "implicitDependencies": []
-    },
     "nx-workspace-tools": {
       "tags": []
     },
