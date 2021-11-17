@@ -71,7 +71,6 @@ public-docsite/ @ecraig12345 @micahgodbolt
 public-docsite-resources/ @ecraig12345 @micahgodbolt
 perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
-# todo-app/
 
 #### Packages
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd

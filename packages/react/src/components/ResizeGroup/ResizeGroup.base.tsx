@@ -422,7 +422,7 @@ function useResizingBehavior(props: IResizeGroupProps, rootRef: React.RefObject<
       );
 
       updateResizeState(nextState);
-    });
+    }, rootRef.current);
   });
 
   const win = useWindow();

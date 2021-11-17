@@ -2,6 +2,63 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 17 Nov 2021 07:36:21 GMT",
+      "tag": "@fluentui/react-charting_v5.5.10",
+      "version": "5.5.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.42.2",
+            "commit": "8825574c42f414c26f9d49238be02ca7dcb44cfe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Nov 2021 07:36:41 GMT",
+      "tag": "@fluentui/react-charting_v5.5.9",
+      "version": "5.5.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-scharde@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "911f39dfaf00fe5dac653f5e1f944edad51dfd23",
+            "comment": "YAxis issue for bar charts solved, when highest y axis value is odd number"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.42.1",
+            "commit": "9edaf68d440c3196d4660b91384a1587339b7b47"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Nov 2021 07:29:05 GMT",
+      "tag": "@fluentui/react-charting_v5.5.8",
+      "version": "5.5.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.3.8",
+            "commit": "906d31cfa368c25d75f23e47821299575eda1eb1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.42.0",
+            "commit": "906d31cfa368c25d75f23e47821299575eda1eb1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Nov 2021 07:32:31 GMT",
       "tag": "@fluentui/react-charting_v5.5.7",
       "version": "5.5.7",
