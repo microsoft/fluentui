@@ -2,6 +2,21 @@
   "name": "@fluentui/bundle-size",
   "entries": [
     {
+      "date": "Wed, 17 Nov 2021 07:36:21 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.2",
+      "version": "1.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "a75c8c07c5296206b998f9500baced6952e3f81b",
+            "comment": "Adds verification to compilation error"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Sep 2021 07:34:24 GMT",
       "tag": "@fluentui/bundle-size_v1.1.1",
       "version": "1.1.1",
