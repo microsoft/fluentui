@@ -1,8 +1,17 @@
 # Change Log - @fluentui/cra-template
 
-This log was last generated on Tue, 16 Nov 2021 07:36:41 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Nov 2021 07:36:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.33)
+
+Wed, 17 Nov 2021 07:36:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.0.32..@fluentui/cra-template_v8.0.33)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.2 ([PR #20635](https://github.com/microsoft/fluentui/pull/20635) by beachball)
 
 ## [8.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.0.32)
 
