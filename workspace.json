@@ -539,10 +539,6 @@
       "root": "apps/theming-designer",
       "projectType": "application"
     },
-    "todo-app": {
-      "root": "apps/todo-app",
-      "projectType": "application"
-    },
     "ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",
       "projectType": "application"
