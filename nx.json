@@ -417,9 +417,6 @@
     "theming-designer": {
       "implicitDependencies": []
     },
-    "todo-app": {
-      "implicitDependencies": []
-    },
     "typings": {
       "tags": ["platform:any"]
     },
