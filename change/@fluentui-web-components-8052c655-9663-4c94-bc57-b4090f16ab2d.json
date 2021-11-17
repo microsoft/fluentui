@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: tabpanel shifting in vertical layout",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
