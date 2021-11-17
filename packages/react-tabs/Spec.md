@@ -191,6 +191,23 @@ The subtle appearance is similar to transparent, but a light background is displ
 <TabList appearance="subtle">{/* ... */}</TabList>
 ```
 
+### Size
+
+Small and medium sizes are supported.
+The size affects the padding and spacing between elements.
+Size can also affect the default icon (and badge) size.
+The default size is medium.
+
+```tsx
+<TabList size="small">
+  {/* ... */}
+</TabList>
+
+<TabList size="medium">
+  {/* ... */}
+</TabList>
+```
+
 ### With Icon
 
 When the icon slot is filled, an icon is positioned before the tab content.
@@ -212,6 +229,24 @@ An icon only tab is displayed when the icon slot is filled and tab content is om
 <TabList>
   <Tab icon={<CheckboxComposite />} value="allowed" />
   <Tab icon={<BlockedSite />} value="blocked" />
+</TabList>
+```
+
+### With Badge
+
+Adding a badge to a tab is done through the BadgeTab variant.
+This follows a extensible approach of MenuItem rather than defining a badge slot on the Tab component.
+The BadgeTab has a badge slot (BadgeProps) and leverages hooks from Badge.
+
+The badge is positioned relative to the icon depending on the verticalTabContent and size props.
+The BadgeTab variant support content and icon in addition to the badge.
+
+```tsx
+<TabList>
+  <BadgeTab badge="24">Inbox</BadgeTab>
+  <BadgeTab badge="24" icon={<MailMessage />}>
+    Inbox
+  </BadgeTab>
 </TabList>
 ```
 
@@ -444,16 +479,3 @@ Concerns:
 
 - [ ] What do our partners expect and need in the overflow scenario?
 - [ ] Updated design spec needed that details the requirements for overflow
-
-## Should there be a specific badge slot?
-
-Currently the design details a badge and icon as slots the caller can fill. The badge appears before the icon and the icon before the tab content.
-
-This presents a layout problem if badge is not a slot. If the caller provide a badge and text as the tab content and the icon via the slot, then the icon will appear before the badge.
-
-Concerns:
-
-- Historically, adding props for too narrow a use case has led to API bloat.
-
-- [ ] Is the badge a common use case for partners? customer?
-- [ ] Would it be better to have positional slots like Input will have (contentBefore, contentAfter)?
