@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated with codesandbox comments",
-  "packageName": "@fluentui/react-text",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { createArrowStyles } from '@fluentui/react-positioning';
 import type { TooltipState } from './Tooltip.types';
 
 export const tooltipClassName = 'fui-Tooltip';
@@ -35,31 +36,9 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForegroundInverted,
   }),
 
-  arrow: theme => ({
-    position: 'absolute',
-    width: '8.485px', //  width and height = arrowHeight * sqrt(2)
-    height: '8.485px', // Update arrowHeight in useTooltip.tsx if this changes
-    background: 'inherit',
-    visibility: 'hidden',
-    zIndex: -1,
-
-    ':before': {
-      content: '""',
-      position: 'absolute',
-      width: 'inherit',
-      height: 'inherit',
-      background: 'inherit',
-      visibility: 'visible',
-      borderBottomRightRadius: theme.borderRadiusSmall,
-      transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
-    },
-
-    // Popper sets data-popper-placement on the root element, which is used to align the arrow
-    ':global([data-popper-placement^="top"])': { bottom: 0, '--angle': '0' },
-    ':global([data-popper-placement^="right"])': { left: 0, '--angle': '90deg' },
-    ':global([data-popper-placement^="bottom"])': { top: 0, '--angle': '180deg' },
-    ':global([data-popper-placement^="left"])': { right: 0, '--angle': '270deg' },
-  }),
+  // width and height = arrowHeight * sqrt(2)
+  // Update arrowHeight in useTooltip.tsx if this changes
+  arrow: createArrowStyles(8.485),
 });
 
 /**

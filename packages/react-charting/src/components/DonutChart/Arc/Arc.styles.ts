@@ -21,6 +21,7 @@ export const getStyles = (props: IArcProps): IArcStyles => {
     },
     insideDonutString: {
       fontSize: FontSizes.large,
+      fill: theme.semanticColors.bodyText,
     },
   };
 };

@@ -1,8 +1,110 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 27 Oct 2021 12:14:12 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Nov 2021 13:25:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.4)
+
+Fri, 12 Nov 2021 13:25:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-beta.3..@fluentui/react-components_v9.0.0-beta.4)
+
+### Changes
+
+- `@fluentui/react-tabster`
+  - Add useFocusableGroup hook ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by andredias@microsoft.com)
+  - Use uncontrolled tabbing by default ([PR #20571](https://github.com/microsoft/fluentui/pull/20571) by lingfangao@hotmail.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - Bump tabster and keyborg to 1.0.7 ([PR #20593](https://github.com/microsoft/fluentui/pull/20593) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - Updated with codesandbox comments ([PR #20371](https://github.com/microsoft/fluentui/pull/20371) by gcox@microsoft.com)
+  - export static classes for components ([PR #20449](https://github.com/microsoft/fluentui/pull/20449) by olfedias@microsoft.com)
+- `@fluentui/react-theme`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - feat(react-theme): add/update design tokens ([PR #20569](https://github.com/microsoft/fluentui/pull/20569) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Updated stories to support codesandbox ([PR #20373](https://github.com/microsoft/fluentui/pull/20373) by gcox@microsoft.com)
+  - export static classes for components ([PR #20455](https://github.com/microsoft/fluentui/pull/20455) by olfedias@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-utilities`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/babel-make-styles`
+  - use latest @linaria/shaker version ([PR #20538](https://github.com/microsoft/fluentui/pull/20538) by olfedias@microsoft.com)
+- `@fluentui/make-styles-webpack-loader`
+  - use latest @linaria/shaker version ([PR #20538](https://github.com/microsoft/fluentui/pull/20538) by olfedias@microsoft.com)
+  - Support resolve plugins from webpack config ([PR #20559](https://github.com/microsoft/fluentui/pull/20559) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - export static classes for components ([PR #20451](https://github.com/microsoft/fluentui/pull/20451) by olfedias@microsoft.com)
+  - Updating AccordionHeader tests to match changes in useARIAButton. ([PR #20342](https://github.com/microsoft/fluentui/pull/20342) by Humberto.Morimoto@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-aria`
+  - Fixing events being fired when button is disabledFocusable ([PR #20342](https://github.com/microsoft/fluentui/pull/20342) by Humberto.Morimoto@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-avatar`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - export static classes for components ([PR #20453](https://github.com/microsoft/fluentui/pull/20453) by olfedias@microsoft.com)
+- `@fluentui/react-badge`
+  - export static classes for components ([PR #20453](https://github.com/microsoft/fluentui/pull/20453) by olfedias@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - export static classes for components ([PR #20454](https://github.com/microsoft/fluentui/pull/20454) by olfedias@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - react-button: Removing use of enzyme in the converged package. ([PR #20342](https://github.com/microsoft/fluentui/pull/20342) by Humberto.Morimoto@microsoft.com)
+  - Fixing incomplete comment. ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-card`
+  - export static classes for components ([PR #20447](https://github.com/microsoft/fluentui/pull/20447) by olfedias@microsoft.com)
+  - Migrate to new useFocusableGroup usage ([PR #20131](https://github.com/microsoft/fluentui/pull/20131) by andredias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - export static classes for components ([PR #20454](https://github.com/microsoft/fluentui/pull/20454) by olfedias@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-components`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-context-selector`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-divider`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - Refactored divider stories for codesandbox ([PR #20393](https://github.com/microsoft/fluentui/pull/20393) by gcox@microsoft.com)
+  - export static classes for components ([PR #20454](https://github.com/microsoft/fluentui/pull/20454) by olfedias@microsoft.com)
+  - Divider: Updating the component to the latest patterns. ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by Humberto.Morimoto@microsoft.com)
+  - Divider: Updating Spec to reflect changes that have happened since it was first created. ([PR #20441](https://github.com/microsoft/fluentui/pull/20441) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-image`
+  - export static classes for components ([PR #20447](https://github.com/microsoft/fluentui/pull/20447) by olfedias@microsoft.com)
+  - Updated Image stories with codesandbox export comments ([PR #20369](https://github.com/microsoft/fluentui/pull/20369) by gcox@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-label`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - export static classes for components ([PR #20456](https://github.com/microsoft/fluentui/pull/20456) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - export static classes for components ([PR #20454](https://github.com/microsoft/fluentui/pull/20454) by olfedias@microsoft.com)
+  - Updating Link tests. ([PR #20342](https://github.com/microsoft/fluentui/pull/20342) by Humberto.Morimoto@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-make-styles`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-menu`
+  - Adds typings for `onCheckedValueChange` method ([PR #20493](https://github.com/microsoft/fluentui/pull/20493) by bsunderhus@microsoft.com)
+  - use react-shared-contexts instead of react-provider ([PR #20578](https://github.com/microsoft/fluentui/pull/20578) by olfedias@microsoft.com)
+  - export static classes for components ([PR #20450](https://github.com/microsoft/fluentui/pull/20450) by olfedias@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - fix(Popover): use `dialog` as value for `aria-haspopup` for focus trap ([PR #20494](https://github.com/microsoft/fluentui/pull/20494) by lingfangao@hotmail.com)
+  - export static classes for components ([PR #20450](https://github.com/microsoft/fluentui/pull/20450) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - Broke up stories added codesandbox refs ([PR #20372](https://github.com/microsoft/fluentui/pull/20372) by gcox@microsoft.com)
+- `@fluentui/react-positioning`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-provider`
+  - export static classes for components ([PR #20451](https://github.com/microsoft/fluentui/pull/20451) by olfedias@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- `@fluentui/react-slider`
+  - export static classes for components ([PR #20455](https://github.com/microsoft/fluentui/pull/20455) by olfedias@microsoft.com)
+  - Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+  - remove temporary workaround with duplicated classes constants ([PR #20538](https://github.com/microsoft/fluentui/pull/20538) by olfedias@microsoft.com)
+- `@fluentui/react-switch`
+  - export static classes for components ([PR #20456](https://github.com/microsoft/fluentui/pull/20456) by olfedias@microsoft.com)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.3)
 

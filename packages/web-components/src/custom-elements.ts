@@ -9,6 +9,7 @@ import { fluentBadge } from './badge/index';
 import { fluentBreadcrumb } from './breadcrumb/index';
 import { fluentBreadcrumbItem } from './breadcrumb-item/index';
 import { fluentButton } from './button/index';
+import { fluentCalendar } from './calendar/index';
 import { fluentCard } from './card/index';
 import { fluentCheckbox } from './checkbox/index';
 import { fluentCombobox } from './combobox/index';
@@ -49,6 +50,7 @@ export {
   fluentBreadcrumbItem,
   fluentButton,
   fluentCard,
+  fluentCalendar,
   fluentCheckbox,
   fluentCombobox,
   fluentDataGrid,
@@ -97,6 +99,7 @@ export const allComponents = {
   fluentBreadcrumb,
   fluentBreadcrumbItem,
   fluentButton,
+  fluentCalendar,
   fluentCard,
   fluentCheckbox,
   fluentCombobox,

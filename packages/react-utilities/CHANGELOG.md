@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 27 Oct 2021 12:14:24 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Nov 2021 13:25:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-beta.2..@fluentui/react-utilities_v9.0.0-beta.3)
+
+### Changes
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.2)
 

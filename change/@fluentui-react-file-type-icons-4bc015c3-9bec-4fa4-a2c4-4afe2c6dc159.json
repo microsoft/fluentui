@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating filetypeicon package to support Loop files.",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}

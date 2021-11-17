@@ -76,6 +76,8 @@ export function isConformant(
       'component-handles-ref',
       'component-has-root-ref',
       'consistent-callback-args',
+      // Disabled as v0 has different prefix
+      'component-has-static-classname',
     ],
     helperComponents: [Ref, RefFindNode, FocusZone],
   };
