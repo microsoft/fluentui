@@ -14,6 +14,7 @@ import {
   convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
+  IAxisData,
   getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
@@ -107,7 +108,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps } = this.props;
+    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps, culture } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -158,16 +159,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     let xScale: any;
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams);
+        xScale = createNumericXAxis(XAxisParams, culture);
         break;
       case XAxisTypes.DateAxis:
         xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
         break;
       case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!);
+        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams);
+        xScale = createNumericXAxis(XAxisParams, culture);
     }
 
     /*
@@ -198,12 +199,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScale: any;
+    const axisData: IAxisData = { yAxisDomainValues: [] };
     if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
     } else {
-      yScale = createYAxis(YAxisParams, this._isRtl);
+      yScale = createYAxis(YAxisParams, this._isRtl, axisData);
     }
-
+    this.props.getAxisData && this.props.getAxisData(axisData);
     // Callback function for chart, returns axis
     this._getData(xScale, yScale);
 

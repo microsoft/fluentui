@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-components): Add script to start storybook in docs mode",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

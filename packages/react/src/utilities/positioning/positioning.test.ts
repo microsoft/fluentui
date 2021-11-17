@@ -158,6 +158,34 @@ describe('Callout Positioning', () => {
     validateNoBeakTest(basicTestCase, DirectionalHint.topRightEdge, validateTopRight);
   });
 
+  it('Correctly positions the callout when out of bounds and directionalHintFixed is true', () => {
+    const basicTestCase: ITestValues = {
+      callout: new Rectangle(0, 200, 0, 200),
+      target: new Rectangle(150, 160, 150, 160),
+      bounds: new Rectangle(8, 300, 8, 300),
+      beakWidth: 0,
+    };
+
+    // should align at the bottom, even if it doesn't fit
+    // the alignment edge (left) can adjust, but not the bottom position
+    const validateBottomLeft: ITestValidation = {
+      callout: new Rectangle(100, 300, 160, 300),
+      beak: null,
+    };
+
+    // manually call _positionElementWithinBounds to pass in directionalHintFixed value
+    const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(
+      basicTestCase.callout,
+      basicTestCase.target,
+      basicTestCase.bounds,
+      __positioningTestPackage._getPositionData(DirectionalHint.bottomLeftEdge),
+      basicTestCase.beakWidth,
+      true, // directionalHintFixed value
+    );
+
+    expect(result.elementRectangle).toEqual(validateBottomLeft.callout);
+  });
+
   it('Correctly determines max height', () => {
     const getMaxHeight = __positioningTestPackage._getMaxHeightFromTargetRectangle;
 

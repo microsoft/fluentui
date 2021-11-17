@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 12 Nov 2021 13:25:10 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Oct 2021 12:14:24 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-beta.2",
       "version": "9.0.0-beta.2",

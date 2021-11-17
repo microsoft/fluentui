@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar, AvatarProps } from './index'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
 
 export const IdForColor = (props: Partial<AvatarProps>) => (
   <>
@@ -17,12 +17,11 @@ export const IdForColor = (props: Partial<AvatarProps>) => (
   </>
 );
 
-IdForColor.storyName = 'IdForColor';
+IdForColor.storyName = 'Color: by ID';
 IdForColor.parameters = {
   docs: {
     description: {
-      name: 'idForColor',
-      story: 'A colorful Avatar can generate stable colors from an id',
+      story: 'An avatar can generate stable colors from an ID.',
     },
   },
 };

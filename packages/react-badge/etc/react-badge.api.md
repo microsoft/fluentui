@@ -14,6 +14,9 @@ import * as React_2 from 'react';
 export const Badge: ForwardRefComponent<BadgeProps>;
 
 // @public (undocumented)
+export const badgeClassName = "fui-Badge";
+
+// @public (undocumented)
 export type BadgeCommons = {
     appearance: 'filled' | 'ghost' | 'outline' | 'tint';
     color: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
@@ -38,6 +41,9 @@ export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 
 // @public (undocumented)
+export const counterBadgeClassName = "fui-CounterBadge";
+
+// @public (undocumented)
 export type CounterBadgeCommons = {
     overflowCount: number;
     count: number;
@@ -45,16 +51,20 @@ export type CounterBadgeCommons = {
     dot: boolean;
     shape: 'circular' | 'rounded';
     appearance: 'filled' | 'ghost';
+    color: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
 };
 
 // @public (undocumented)
-export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & Partial<CounterBadgeCommons>;
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
 
 // @public (undocumented)
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape'> & CounterBadgeCommons;
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color'> & CounterBadgeCommons;
 
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
+
+// @public (undocumented)
+export const presenceBadgeClassName = "fui-PresenceBadge";
 
 // @public (undocumented)
 export interface PresenceBadgeCommons {
