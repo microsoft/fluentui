@@ -145,9 +145,10 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
             cursor: pointer;
             height: 32px;
             line-height: 30px;
+            padding-top: 1px;
             position: absolute;
             right: 8px;
-            top: 1px;
+            top: 0px;
           }
     >
       <i
@@ -318,9 +319,10 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
             cursor: pointer;
             height: 32px;
             line-height: 30px;
+            padding-top: 1px;
             position: absolute;
             right: 8px;
-            top: 1px;
+            top: 0px;
           }
     >
       <i
@@ -1160,9 +1162,10 @@ exports[`Dropdown single-select Renders correctly 1`] = `
             cursor: pointer;
             height: 32px;
             line-height: 30px;
+            padding-top: 1px;
             position: absolute;
             right: 8px;
-            top: 1px;
+            top: 0px;
           }
     >
       <i
@@ -1333,9 +1336,10 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
             cursor: pointer;
             height: 32px;
             line-height: 30px;
+            padding-top: 1px;
             position: absolute;
             right: 8px;
-            top: 1px;
+            top: 0px;
           }
     >
       <i
