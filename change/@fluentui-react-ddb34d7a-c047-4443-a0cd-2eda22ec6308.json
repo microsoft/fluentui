@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Dropdown: Removing unintended extra height.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
