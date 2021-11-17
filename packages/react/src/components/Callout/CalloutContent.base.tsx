@@ -444,7 +444,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 
     // do not set both top and bottom css props from positions
     // instead, use maxHeight
-    const isForcedInBounds = positions?.elementPosition.top && positions.elementPosition.bottom;
+    const isForcedInBounds = positions?.elementPosition.top && positions?.elementPosition.bottom;
     const cssPositions = {
       ...positions?.elementPosition,
       maxHeight,
