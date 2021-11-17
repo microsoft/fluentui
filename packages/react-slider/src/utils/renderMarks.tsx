@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-make-styles';
-
-// The mark related classNames are needed since they are used in a JSX element that is dynamically generated.
-const markContainerClassName = 'ms-Slider-markItemContainer';
-const firstMarkClassName = 'ms-Slider-firstMark';
-const lastMarkClassName = 'ms-Slider-lastMark';
-export const markClassName = 'ms-Slider-mark';
-export const markLabelClassName = 'ms-Slider-label';
+import {
+  firstMarkClassName,
+  lastMarkClassName,
+  markClassName,
+  markContainerClassName,
+  markLabelClassName,
+} from '../components/Slider/useSliderStyles';
 
 /**
  * Renders the marks

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar, AvatarProps } from './index'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
 
 export const ActiveAppearance = (props: Partial<AvatarProps>) => (
   <div style={{ display: 'flex', gap: '32px' }}>
@@ -14,7 +14,10 @@ export const ActiveAppearance = (props: Partial<AvatarProps>) => (
 ActiveAppearance.parameters = {
   docs: {
     description: {
-      story: 'You can customize the appearance of the active state.',
+      story:
+        'An avatar can have different appearances when active.' +
+        ' Avatar supports `ring`, `shadow`, `glow`, `ring-shadow`, and `ring-glow`.' +
+        ' The default is `ring`.',
     },
   },
 };

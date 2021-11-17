@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Refactored stories",
-  "packageName": "@fluentui/react-provider",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Thu, 21 Oct 2021 07:28:35 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Nov 2021 07:29:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.1)
+
+Mon, 15 Nov 2021 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.0..@fluentui/react-conformance_v0.7.1)
+
+### Patches
+
+- fix paths generated in defaultErrorMessages ([PR #20580](https://github.com/microsoft/fluentui/pull/20580) by olfedias@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.0)
+
+Wed, 10 Nov 2021 07:31:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.6.0..@fluentui/react-conformance_v0.7.0)
+
+### Minor changes
+
+- add new test for classnames ([PR #20383](https://github.com/microsoft/fluentui/pull/20383) by olfedias@microsoft.com)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.6.0)
 

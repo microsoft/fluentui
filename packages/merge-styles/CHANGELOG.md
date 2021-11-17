@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Tue, 28 Sep 2021 22:17:07 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Nov 2021 07:31:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.1)
+
+Wed, 10 Nov 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.0..@fluentui/merge-styles_v8.2.1)
+
+### Patches
+
+- Add some logic to stylesheet that will do a simple append instead of using insert before if the reference node isn't actually a child of the document head. ([PR #20439](https://github.com/microsoft/fluentui/pull/20439) by tabrumle@microsoft.com)
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.0)
 

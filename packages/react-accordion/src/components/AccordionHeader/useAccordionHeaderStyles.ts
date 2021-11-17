@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { AccordionHeaderState } from './AccordionHeader.types';
 
+export const accordionHeaderClassName = 'fui-AccordionHeader';
+
 const useStyles = makeStyles({
   // TODO: this should be extracted to another package
   resetButton: {
@@ -87,6 +89,7 @@ const useStyles = makeStyles({
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    accordionHeaderClassName,
     styles.root,
     state.inline && styles.rootInline,
     state.disabled && styles.rootDisabled,

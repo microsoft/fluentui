@@ -7,8 +7,8 @@ import { CounterBadge, CounterBadgeProps } from '@fluentui/react-badge';
 export const Shapes = (args: CounterBadgeProps) => {
   return (
     <>
-      <CounterBadge {...args} shape="rounded" />
       <CounterBadge {...args} shape="circular" />
+      <CounterBadge {...args} shape="rounded" />
     </>
   );
 };
@@ -20,7 +20,7 @@ Shapes.args = {
 Shapes.parameters = {
   docs: {
     description: {
-      story: 'A CounterBadge can be represented in the `rounded` and `circular` shapes.',
+      story: 'A counter badge can have a `rounded` or `circular` shape. The default is `circular`.',
     },
   },
 };

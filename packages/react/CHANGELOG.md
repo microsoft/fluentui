@@ -1,8 +1,94 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 02 Nov 2021 07:37:01 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Nov 2021 07:36:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.42.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.1)
+
+Tue, 16 Nov 2021 07:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.0..@fluentui/react_v8.42.1)
+
+### Patches
+
+- Callout: Specifying that gapSpace prop has pixels as its unit in prop comment. ([PR #20605](https://github.com/microsoft/fluentui/pull/20605) by Humberto.Morimoto@microsoft.com)
+
+## [8.42.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.0)
+
+Mon, 15 Nov 2021 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.4..@fluentui/react_v8.42.0)
+
+### Minor changes
+
+- Adding firstFocusableTarget prop to FocusTrapZone. ([PR #20413](https://github.com/microsoft/fluentui/pull/20413) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-focus to v8.3.8 ([PR #20419](https://github.com/microsoft/fluentui/pull/20419) by beachball)
+
+## [8.41.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.4)
+
+Wed, 10 Nov 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.3..@fluentui/react_v8.41.4)
+
+### Patches
+
+- Panel: fix isFooterAtBottom bug where unnecessary scrollbar is present. ([PR #20467](https://github.com/microsoft/fluentui/pull/20467) by tristan.watanabe@gmail.com)
+- Combobox a11y fix to associate group headers with items for screenreaders ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by ololubek@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.16 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.17 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/merge-styles to v8.2.1 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/react-focus to v8.3.7 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/react-hooks to v8.3.6 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/style-utilities to v8.4.2 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/theme to v2.4.3 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/utilities to v8.3.6 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/common-styles to v1.0.22 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.12 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+
+## [8.41.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.3)
+
+Tue, 09 Nov 2021 07:38:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.2..@fluentui/react_v8.41.3)
+
+### Patches
+
+- fix(Callout): add explicit maxHeight ([PR #20533](https://github.com/microsoft/fluentui/pull/20533) by sarah.higley@microsoft.com)
+
+## [8.41.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.2)
+
+Mon, 08 Nov 2021 07:35:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.1..@fluentui/react_v8.41.2)
+
+### Patches
+
+- Dialog: Removing tooltip from close button. ([PR #20530](https://github.com/microsoft/fluentui/pull/20530) by Humberto.Morimoto@microsoft.com)
+
+## [8.41.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.1)
+
+Fri, 05 Nov 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.0..@fluentui/react_v8.41.1)
+
+### Patches
+
+- Fix uncaught positioning logic when both directionalHintFixed and alignTargetEdge are true ([PR #20514](https://github.com/microsoft/fluentui/pull/20514) by sarah.higley@microsoft.com)
+- Suggestions: Fixing issue where you couldn't select focused option after hitting 'get more results' button. ([PR #20487](https://github.com/microsoft/fluentui/pull/20487) by Humberto.Morimoto@microsoft.com)
+- [object Object] ([PR #20308](https://github.com/microsoft/fluentui/pull/20308) by avnowd@microsoft.com)
+
+## [8.41.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.0)
+
+Thu, 04 Nov 2021 07:29:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.40.0..@fluentui/react_v8.41.0)
+
+### Minor changes
+
+- DetailsList: Making the disabled prop in IDetailsRowStyleProps optional as making it required is a breaking change. ([PR #20488](https://github.com/microsoft/fluentui/pull/20488) by Humberto.Morimoto@microsoft.com)
+
+## [8.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.40.0)
+
+Wed, 03 Nov 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.39.0..@fluentui/react_v8.40.0)
+
+### Minor changes
+
+- fix(Pivot): add overflow button aria-label prop ([PR #20443](https://github.com/microsoft/fluentui/pull/20443) by sarah.higley@microsoft.com)
 
 ## [8.39.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.39.0)
 

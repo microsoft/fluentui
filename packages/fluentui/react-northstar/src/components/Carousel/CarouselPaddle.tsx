@@ -51,13 +51,19 @@ export interface CarouselPaddleProps
 
   /** A paddle can indicate that it slides to the previous item. */
   previous?: boolean;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselPaddleSlotClassNames = {
   content: string;
 };
 
-export type CarouselPaddleStylesProps = Pick<CarouselPaddleProps, 'disabled' | 'next' | 'previous' | 'hidden'>;
+export type CarouselPaddleStylesProps = Pick<
+  CarouselPaddleProps,
+  'disabled' | 'next' | 'previous' | 'hidden' | 'disableClickableNav'
+>;
 export const carouselPaddleClassName = 'ui-carousel__paddle';
 export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
   content: `${carouselPaddleClassName}__content`,
@@ -88,6 +94,7 @@ export const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
     previous,
     styles,
     variables,
+    disableClickableNav,
   } = props;
 
   const hasChildren = childrenExist(children);
@@ -113,6 +120,7 @@ export const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
       hidden,
       next,
       previous,
+      disableClickableNav,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -180,6 +188,7 @@ CarouselPaddle.propTypes = {
   onClick: PropTypes.func,
   next: customPropTypes.every([customPropTypes.disallow(['previous']), PropTypes.bool]),
   previous: customPropTypes.every([customPropTypes.disallow(['next']), PropTypes.bool]),
+  disableClickableNav: PropTypes.bool,
 };
 
 CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;

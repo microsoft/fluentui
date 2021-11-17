@@ -54,7 +54,7 @@ describe('useThemeStyleTag', () => {
 
     expect(rule.selectorText).toEqual(`.${result.current}`);
     expect(themeToCSSVariables).toHaveBeenCalledTimes(1);
-    expect(rule.cssText).toMatchInlineSnapshot(`".fluent-provider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
+    expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
   });
 
   it('should update style tag on theme change', () => {
@@ -73,6 +73,6 @@ describe('useThemeStyleTag', () => {
     const rule = sheet.cssRules[0] as CSSStyleRule;
     expect(themeToCSSVariables).toHaveBeenCalledTimes(2);
     expect(rule.selectorText).toEqual(`.${result.current}`);
-    expect(rule.cssText).toMatchInlineSnapshot(`".fluent-provider1 {--css-variable-update: xxx;}"`);
+    expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-update: xxx;}"`);
   });
 });
