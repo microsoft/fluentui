@@ -491,10 +491,6 @@
       "root": "packages/webpack-utilities",
       "projectType": "library"
     },
-    "a11y-tests": {
-      "root": "apps/a11y-tests",
-      "projectType": "application"
-    },
     "nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",
