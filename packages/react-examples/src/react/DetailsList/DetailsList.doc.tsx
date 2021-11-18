@@ -48,7 +48,7 @@ import { DetailsListCustomFooterExample } from './DetailsList.CustomFooter.Examp
 const DetailsListCustomFooterExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomFooter.Example.tsx') as string;
 
 import { DetailsListKeyboardAccessibleResizeAndReorderExample } from './DetailsList.KeyboardAccessibleResizeAndReorder.Example';
-const DetailsListKeyboardAccessibleResizeAndReorderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardAccessibleResizeAndReorder.Example') as string;
+const DetailsListKeyboardAccessibleResizeAndReorderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardAccessibleResizeAndReorder.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
