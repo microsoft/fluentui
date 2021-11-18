@@ -160,6 +160,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Prevent focusable elements to be selectable @assuncaocharles ([#18738](https://github.com/microsoft/fluentui/pull/18738))
 - Fix `MenuButton` to avoid arrow keys to move to cells inside a table @assuncaocharles ([#18663](https://github.com/microsoft/fluentui/pull/18663))
 - Fix dropdown container overflow-x @assuncaocharles ([#18749](https://github.com/microsoft/fluentui/pull/18749))
+- Optimized `felaInvokeKeyframesPlugin` to not create new objects but reuse existing one in `reduce` @mbman ([#20649](https://github.com/microsoft/fluentui/pull/20649))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
