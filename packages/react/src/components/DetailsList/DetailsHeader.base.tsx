@@ -173,6 +173,7 @@ export class DetailsHeaderBase
       useFastIcons,
       checkboxVisibility,
       className,
+      keyboardColumnReorderProps,
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -180,10 +181,6 @@ export class DetailsHeaderBase
     const isCheckboxAlwaysVisible = checkboxVisibility === CheckboxVisibility.always;
 
     const columnReorderProps = this._getColumnReorderProps();
-    const frozenColumnCountFromStart =
-      columnReorderProps && columnReorderProps.frozenColumnCountFromStart
-        ? columnReorderProps.frozenColumnCountFromStart
-        : 0;
     const frozenColumnCountFromEnd =
       columnReorderProps && columnReorderProps.frozenColumnCountFromEnd
         ? columnReorderProps.frozenColumnCountFromEnd
@@ -294,9 +291,13 @@ export class DetailsHeaderBase
         ) : null}
         <GroupSpacer indentWidth={indentWidth} role="gridcell" count={groupNestingDepth! - 1} />
         {columns.map((column: IColumn, columnIndex: number) => {
-          const _isDraggable = columnReorderProps
-            ? columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd
-            : false;
+          const _isDraggable = this._isDraggable(columnIndex);
+          // check if valid column to be dragged and has keyboard reorder props.
+          const keyboardColumnReorder =
+            _isDraggable && keyboardColumnReorderProps && keyboardColumnReorderProps.columnKey === column.key
+              ? true
+              : false;
+
           return [
             columnReorderProps &&
               (_isDraggable || columnIndex === columns.length - frozenColumnCountFromEnd) &&
@@ -317,6 +318,8 @@ export class DetailsHeaderBase
               isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
               cellStyleProps={this.props.cellStyleProps}
               useFastIcons={useFastIcons}
+              keyboardColumnReorder={keyboardColumnReorder}
+              onDrop={this._onDrop}
             />,
             this._renderColumnDivider(columnIndex),
           ];
@@ -383,17 +386,32 @@ export class DetailsHeaderBase
   };
 
   private _onDrop = (item?: any, event?: DragEvent): void => {
+    const { keyboardColumnReorderProps } = this.props;
+
     // Safe to assume this is defined since we're handling a drop event
     const columnReorderProps = this._getColumnReorderProps()!;
-
     // Target index will not get changed if draggeditem is after target item.
-    if (this._draggedColumnIndex >= 0 && event) {
-      const targetIndex =
-        this._draggedColumnIndex > this._currentDropHintIndex
-          ? this._currentDropHintIndex
-          : this._currentDropHintIndex - 1;
-      const isValidDrop = this._isValidCurrentDropHintIndex();
-      event.stopPropagation();
+    if ((this._draggedColumnIndex >= 0 && event) || keyboardColumnReorderProps) {
+      let targetIndex;
+      if (keyboardColumnReorderProps) {
+        targetIndex = this._isCheckboxColumnHidden()
+          ? keyboardColumnReorderProps.inputValue - 1
+          : keyboardColumnReorderProps.inputValue - 2;
+
+        const isValidTargetIndex = this._isDraggable(targetIndex);
+        if (!isValidTargetIndex) {
+          return;
+        }
+      } else {
+        targetIndex =
+          this._draggedColumnIndex > this._currentDropHintIndex
+            ? this._currentDropHintIndex
+            : this._currentDropHintIndex - 1;
+      }
+      const isValidDrop = this._isValidCurrentDropHintIndex() || !!keyboardColumnReorderProps;
+      if (event) {
+        event.stopPropagation();
+      }
       if (isValidDrop) {
         this._onDropIndexInfo.sourceIndex = this._draggedColumnIndex;
         this._onDropIndexInfo.targetIndex = targetIndex;
@@ -424,6 +442,24 @@ export class DetailsHeaderBase
     const { selectionMode, checkboxVisibility } = this.props;
 
     return selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
+  }
+
+  private _isDraggable(columnIndex: number) {
+    const { columns = NO_COLUMNS } = this.props;
+    const columnReorderProps = this._getColumnReorderProps();
+
+    if (columnReorderProps) {
+      const frozenColumnCountFromStart = columnReorderProps.frozenColumnCountFromStart
+        ? columnReorderProps.frozenColumnCountFromStart
+        : 0;
+      const frozenColumnCountFromEnd = columnReorderProps.frozenColumnCountFromEnd
+        ? columnReorderProps.frozenColumnCountFromEnd
+        : 0;
+
+      return columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd;
+    }
+
+    return false;
   }
 
   private _updateDragInfo = (props: { itemIndex: number }, event?: MouseEvent) => {

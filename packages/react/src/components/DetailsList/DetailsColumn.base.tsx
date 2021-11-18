@@ -241,6 +241,11 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       this._events.off(this._root.current, 'mousedown');
       delete this._dragDropSubscription;
     }
+
+    if (this.props.keyboardColumnReorder && this.props.onDrop) {
+      this._updateHeaderDragInfo(this.props.columnIndex);
+      this.props.onDrop();
+    }
   }
 
   private _onRenderFilterIcon = (classNames: IProcessedStyleSet<IDetailsColumnStyles>) => (

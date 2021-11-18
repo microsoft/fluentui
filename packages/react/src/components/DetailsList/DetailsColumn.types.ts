@@ -89,6 +89,14 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+  /**
+   * Whether or not the column should be reordered.
+   */
+  keyboardColumnReorder?: boolean;
+  /**
+   * Callback for drop event.
+   */
+  onDrop?: (item?: any, event?: DragEvent) => void;
 }
 
 /**
