@@ -31,7 +31,6 @@ import {
 } from '../../index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
-const GROUP_PADDING = 16;
 const CUSTOMBARWIDTH_BARSPACE = 2.5;
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
 type StringAxis = D3Axis<string>;
@@ -398,7 +397,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
           ? [containerWidth! - this.margins.right!, this.margins.left!]
           : [this.margins.left!, containerWidth! - this.margins.right!],
       )
-      .padding(GROUP_PADDING / 100);
+      .padding(0.1);
     return x0Axis;
   };
 
