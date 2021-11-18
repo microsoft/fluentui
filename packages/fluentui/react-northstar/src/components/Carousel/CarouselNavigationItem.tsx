@@ -17,13 +17,13 @@ import {
 import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface CarouselNavigationItemSlotClassNames {
@@ -91,8 +91,7 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
 /**
  * A CarouselItem is an actionable item within a Carousel.
  */
-export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
-  FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
+export const CarouselNavigationItem = (React.forwardRef<HTMLLIElement, CarouselNavigationItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
   setStart();
@@ -184,6 +183,7 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
         onBlur: handleBlur,
         onFocus: handleFocus,
         onClick: handleClick,
+        ref,
         ...unhandledProps,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
@@ -195,7 +195,8 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, CarouselNavigationItemProps> &
+  FluentComponentStaticProps<CarouselNavigationItemProps>;
 
 CarouselNavigationItem.displayName = 'CarouselNavigationItem';
 
