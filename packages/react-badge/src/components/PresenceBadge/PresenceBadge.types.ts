@@ -15,12 +15,9 @@ export type PresenceBadgeCommons = {
    * @default false
    */
   outOfOffice: boolean;
+} & BadgeCommons;
 
-  size: BadgeCommons['size'];
-};
+export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> &
+  Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
-export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> & Partial<PresenceBadgeCommons>;
-
-export type PresenceBadgeState = {} & PresenceBadgeCommons &
-  ComponentState<BadgeSlots> &
-  Pick<BadgeCommons, 'iconPosition'>;
+export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;

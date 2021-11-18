@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import {
   presenceAvailableFilled,
   presenceAvailableRegular,
@@ -11,6 +11,7 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
+import { useBadge } from '../Badge';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
 
 const iconMap = (
@@ -39,19 +40,18 @@ const iconMap = (
  */
 export const usePresenceBadge = (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>): PresenceBadgeState => {
   const state: PresenceBadgeState = {
-    size: props.size ?? 'medium',
+    ...useBadge(
+      {
+        size: 'medium',
+        ...props,
+        icon: resolveShorthand(undefined, {
+          required: true,
+        }),
+      },
+      ref,
+    ),
     status: props.status ?? 'available',
     outOfOffice: props.outOfOffice ?? false,
-    iconPosition: 'after',
-    components: {
-      root: 'div',
-      icon: 'span',
-    },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    icon: resolveShorthand(undefined, { required: true }),
   };
 
   const IconElement = iconMap(state.status, state.outOfOffice, state.size);
