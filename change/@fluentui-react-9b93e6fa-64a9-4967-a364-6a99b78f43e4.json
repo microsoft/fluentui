@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Allow focusZoneProps to override default values passed to FocusZone.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
