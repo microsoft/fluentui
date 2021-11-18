@@ -93,6 +93,7 @@
     "@nrwl/node": "12.5.9",
     "@nrwl/tao": "12.5.9",
     "@nrwl/workspace": "12.5.9",
+    "@rnx-kit/eslint-plugin": "^0.2.4",
     "@storybook/addon-a11y": "6.3.6",
     "@storybook/addon-actions": "6.3.6",
     "@storybook/addon-docs": "6.3.6",
