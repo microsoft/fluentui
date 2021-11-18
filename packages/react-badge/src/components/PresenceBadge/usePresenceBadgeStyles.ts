@@ -6,7 +6,6 @@ export const presenceBadgeClassName = 'fui-PresenceBadge';
 const useStyles = makeStyles({
   root: theme => ({
     padding: 0,
-    borderWidth: theme.strokeWidthThin,
     display: 'inline-flex',
     boxSizing: 'border-box',
     alignItems: 'center',
@@ -15,6 +14,9 @@ const useStyles = makeStyles({
     '& .root-span': {
       display: 'flex',
     },
+  }),
+  thinBorder: theme => ({
+    borderWidth: theme.strokeWidthThin,
   }),
   statusBusy: theme => ({
     color: theme.colorPaletteRedBackground3,
@@ -44,6 +46,9 @@ const useStyles = makeStyles({
     color: theme.colorPaletteMarigoldBackground3,
   }),
 
+  // Icons are not resizeable, and these sizes are currently missing
+  // use `!important` to size the currently available icons to the missing ones
+  //
   tiny: {
     aspectRatio: '1',
     width: '6px',
