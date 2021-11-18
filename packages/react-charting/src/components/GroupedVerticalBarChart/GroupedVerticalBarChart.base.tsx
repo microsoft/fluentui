@@ -403,11 +403,15 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createX1Scale = (xScale0: any): any => {
-    const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
-    const totalWidth = this.props.barwidth! * tempDataSet.length + CUSTOMBARWIDTH_BARSPACE * tempDataSet.length;
-    this._isCustomBarWidth = totalWidth < xScale0.bandwidth();
-    const bandWidth = this._isCustomBarWidth ? totalWidth : xScale0.bandwidth();
-    this._x1TotalBandWidth = bandWidth;
+    let bandWidth = xScale0.bandwidth();
+    if (this.props.barwidth) {
+      const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
+      const totalWidth = (this.props.barwidth! + CUSTOMBARWIDTH_BARSPACE) * tempDataSet.length;
+      this._isCustomBarWidth = totalWidth < xScale0.bandwidth();
+      bandWidth = this._isCustomBarWidth ? totalWidth : xScale0.bandwidth();
+      this._x1TotalBandWidth = bandWidth;
+    }
+
     return d3ScaleBand()
       .domain(this._keys)
       .range(this._isRtl ? [bandWidth, 0] : [0, bandWidth])
