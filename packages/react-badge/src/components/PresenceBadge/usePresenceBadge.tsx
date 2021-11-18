@@ -23,7 +23,7 @@ const iconMap = (
     case 'available':
       return outOfOffice ? presenceAvailableRegular[size] : presenceAvailableFilled[size];
     case 'away':
-      return outOfOffice ? presenceAwayFilled[size] : presenceOofRegular[size];
+      return outOfOffice ? presenceOfflineRegular[size] : presenceAwayFilled[size];
     case 'busy':
       return outOfOffice ? presenceUnknownRegular[size] : presenceBusyFilled[size];
     case 'doNotDisturb':

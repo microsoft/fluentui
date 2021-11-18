@@ -14,9 +14,8 @@ const useStyles = makeStyles({
     '& .root-span': {
       display: 'flex',
     },
-  }),
-  thinBorder: theme => ({
-    borderWidth: theme.strokeWidthThin,
+    borderRadius: '50%',
+    backgroundColor: theme.colorNeutralBackground1,
   }),
   statusBusy: theme => ({
     color: theme.colorPaletteRedBackground3,
@@ -92,7 +91,8 @@ export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadge
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
     state.outOfOffice && (state.status === 'busy' || state.status === 'doNotDisturb') && styles.outOfOfficeBusy,
     state.outOfOffice && state.status === 'away' && styles.outOfOfficeAway,
-    (state.size === 'tiny' || state.size === 'extra-small') && styles.thinBorder,
+    state.outOfOffice && state.status === 'offline' && styles.statusOffline,
+    state.outOfOffice && state.status === 'outOfOffice' && styles.statusOutOfOffice,
     state.size === 'tiny' && styles.tiny,
     state.size === 'large' && styles.large,
     state.size === 'extra-large' && styles.extraLarge,
