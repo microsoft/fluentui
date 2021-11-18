@@ -51,13 +51,14 @@ export type CounterBadgeCommons = {
     dot: boolean;
     shape: 'circular' | 'rounded';
     appearance: 'filled' | 'ghost';
+    color: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
 };
 
 // @public (undocumented)
-export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & Partial<CounterBadgeCommons>;
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
 
 // @public (undocumented)
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape'> & CounterBadgeCommons;
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color'> & CounterBadgeCommons;
 
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;

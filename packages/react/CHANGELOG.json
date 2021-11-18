@@ -2,6 +2,63 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 18 Nov 2021 07:29:22 GMT",
+      "tag": "@fluentui/react_v8.42.3",
+      "version": "8.42.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8faa94d1143b3853d88630c40e66e50dd247f997",
+            "comment": "ContextualMenu: Allow focusZoneProps to override default values passed to FocusZone."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "20a59a53b4a579295d98f43265ad4918e36aa74a",
+            "comment": "Dropdown: Removing unintended extra height."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Nov 2021 07:36:21 GMT",
+      "tag": "@fluentui/react_v8.42.2",
+      "version": "8.42.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a0954c2d7c3ae0deb94ac05c78de4a4577a4668d",
+            "comment": "Fix linkProps spreading on DocumentCardPreviewBase component"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d888426da44609c65dc720f708b8aadc70611410",
+            "comment": "Adds root element ref to async.requestAnimationFrame invocation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Nov 2021 07:36:41 GMT",
+      "tag": "@fluentui/react_v8.42.1",
+      "version": "8.42.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9edaf68d440c3196d4660b91384a1587339b7b47",
+            "comment": "Callout: Specifying that gapSpace prop has pixels as its unit in prop comment."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Nov 2021 07:29:05 GMT",
       "tag": "@fluentui/react_v8.42.0",
       "version": "8.42.0",
