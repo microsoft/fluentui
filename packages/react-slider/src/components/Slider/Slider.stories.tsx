@@ -13,7 +13,7 @@ export default {
   component: Slider,
   decorators: [
     Story => (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1em', alignItems: 'flex-start' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1em', alignItems: 'flex-start', padding: 20 }}>
         <Story />
       </div>
     ),
