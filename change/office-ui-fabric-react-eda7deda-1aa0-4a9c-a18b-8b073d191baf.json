@@ -1,0 +1,10 @@
+{
+  "type": "patch",
+  "comment": {
+    "title": "",
+    "value": ""
+  },
+  "packageName": "office-ui-fabric-react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
