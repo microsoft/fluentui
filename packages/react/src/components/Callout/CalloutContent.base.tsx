@@ -218,6 +218,7 @@ function usePositions(
     directionalHint,
     async,
     calloutElement,
+    calloutMaxHeight,
     hostElement,
     targetRef,
     finalHeight,

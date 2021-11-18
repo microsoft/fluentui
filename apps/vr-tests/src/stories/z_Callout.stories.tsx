@@ -183,8 +183,8 @@ storiesOf('Callout', module)
     const bounds = {
       left: 50,
       top: 50,
-      width: 200,
-      height: 100,
+      width: 150,
+      height: 50,
     };
     return (
       <Callout {...defaultProps} bounds={bounds}>
