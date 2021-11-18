@@ -20,18 +20,15 @@ export const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle 
           styles[cssPropertyName] = callable(animationDefinition.keyframe)(animationDefinition.params || {});
         }
 
-        return {
-          ...acc,
-          [cssPropertyName]: styles[cssPropertyName],
-        };
+        acc[cssPropertyName] = styles[cssPropertyName];
+        return acc;
       }
 
-      return {
-        ...acc,
-        [cssPropertyName]: felaInvokeKeyframesPlugin(cssPropertyValue as ICSSInJSStyle),
-      };
+      acc[cssPropertyName] = felaInvokeKeyframesPlugin(cssPropertyValue as ICSSInJSStyle);
+      return acc;
     }
 
-    return { ...acc, [cssPropertyName]: styles[cssPropertyName] };
+    acc[cssPropertyName] = styles[cssPropertyName];
+    return acc;
   }, {});
 };
