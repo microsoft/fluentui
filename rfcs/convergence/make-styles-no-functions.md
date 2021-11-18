@@ -1,6 +1,6 @@
 # Problem
 
-Currently `makeStyles()` implements two on how styles can be defined:
+Currently `makeStyles()` can define style rules in two different ways
 
 ```ts
 makeStyles({
@@ -9,13 +9,13 @@ makeStyles({
 });
 ```
 
-`theme` is typed strictly and offers tokens from `@fluentui/react-theme`. This tokens shape is not extensible for customers.
+`theme` is typed and coupled to tokens from `@fluentui/react-theme`. This tokens shape is not extensible for customers.
 
 # Solution
 
 ## Export tokens separately
 
-Tokens are just CSS variables, we should be clear with customers on what they are using. This also removes need in `useTheme()` hook as tokens can be accessed directly.
+Tokens are just CSS variables, we communicate this fact to customers so that they understand clearly what they are using. This also removes need in `useTheme()` hook as tokens can be accessed directly.
 
 ```tsx
 import { tokens } from '@fluentui/react-theme';
@@ -39,7 +39,7 @@ const tokens: Theme = {
 
 ## Remove functions
 
-Once `tokens` are available there is no sense to keep functions in `makeStyles()`:
+Once `tokens` are available there is no more need for functional style rules in `makeStyles()`:
 
 ```diff
 import { makeStyles } from '@fluentui/react-make-styles';
@@ -53,7 +53,7 @@ makeStyles({
 
 ## Simplify types in `FluentProvider`
 
-Currently `FluentProvider` accepts `theme` only as `Theme` type from `@fluentui/react-theme`. If we will simplify it to `Record<string, string | number>` this will allow customers to extend our theme.
+Currently `FluentProvider` only supports the `Theme` type from `@fluentui/react-theme`. If we simplify this to `Record<string, string | number>` , we enable consumers to extend the default theme.
 
 ```tsx
 import { FluentProvider } from '@fluentui/react-provider';
@@ -71,11 +71,11 @@ function App() {
 }
 ```
 
-Usage of `FluentProvider` will inject all customer tokens properly and will make them available on React Portals.
+`FluentProvider` will inject all customer tokens properly. These tokens will also be available on React Portals.
 
 ## Using custom tokens in `makeStyles()`
 
-Once tokens are injected on `FluentProvider` they could be used in `makeStyles()`.
+Once tokens are injected through the `FluentProvider` they can be used in `makeStyles()`.
 
 ```tsx
 import { tokens } from '@fluentui/react-theme';
