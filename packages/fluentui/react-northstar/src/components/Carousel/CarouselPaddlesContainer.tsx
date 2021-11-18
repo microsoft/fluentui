@@ -6,7 +6,7 @@ import {
   useAccessibility,
   getElementType,
   useUnhandledProps,
-  ComponentWithAs,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
   commonPropTypes,
@@ -29,8 +29,7 @@ export const carouselPaddlesContainerClassName = 'ui-carrouselpaddles_container'
 /**
  * A CarouselPaddlesContainer is a container for the Carousel Paddles.
  */
-export const CarouselPaddlesContainer: ComponentWithAs<'div', CarouselPaddlesContainerProps> &
-  FluentComponentStaticProps<CarouselPaddlesContainerProps> = props => {
+export const CarouselPaddlesContainer = (React.forwardRef<HTMLDivElement, CarouselPaddlesContainerProps>(props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselPaddlesContainer.displayName, context.telemetry);
   setStart();
@@ -64,7 +63,8 @@ export const CarouselPaddlesContainer: ComponentWithAs<'div', CarouselPaddlesCon
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CarouselPaddlesContainerProps> &
+  FluentComponentStaticProps<CarouselPaddlesContainerProps>;
 
 CarouselPaddlesContainer.displayName = 'CarouselPaddlesContainer';
 CarouselPaddlesContainer.propTypes = {
