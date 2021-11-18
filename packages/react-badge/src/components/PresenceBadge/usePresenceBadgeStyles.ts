@@ -6,10 +6,15 @@ export const presenceBadgeClassName = 'fui-PresenceBadge';
 const useStyles = makeStyles({
   root: theme => ({
     padding: 0,
-    borderWidth: theme.strokeWidthThick,
-  }),
-  thinBorder: theme => ({
     borderWidth: theme.strokeWidthThin,
+    display: 'inline-flex',
+    boxSizing: 'border-box',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    '& .root-span': {
+      display: 'flex',
+    },
   }),
   statusBusy: theme => ({
     color: theme.colorPaletteRedBackground3,
@@ -38,6 +43,31 @@ const useStyles = makeStyles({
   outOfOfficeAway: theme => ({
     color: theme.colorPaletteMarigoldBackground3,
   }),
+
+  tiny: {
+    aspectRatio: '1',
+    width: '6px',
+    '& svg': {
+      width: '6px !important',
+      height: '6px !important',
+    },
+  },
+  large: {
+    aspectRatio: '1',
+    width: '20px',
+    '& svg': {
+      width: '20px !important',
+      height: '20px !important',
+    },
+  },
+  extraLarge: {
+    aspectRatio: '1',
+    width: '28px',
+    '& svg': {
+      width: '28px !important',
+      height: '28px !important',
+    },
+  },
 });
 
 /**
@@ -58,6 +88,9 @@ export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadge
     state.outOfOffice && (state.status === 'busy' || state.status === 'doNotDisturb') && styles.outOfOfficeBusy,
     state.outOfOffice && state.status === 'away' && styles.outOfOfficeAway,
     (state.size === 'tiny' || state.size === 'extra-small') && styles.thinBorder,
+    state.size === 'tiny' && styles.tiny,
+    state.size === 'large' && styles.large,
+    state.size === 'extra-large' && styles.extraLarge,
     state.root.className,
   );
 
