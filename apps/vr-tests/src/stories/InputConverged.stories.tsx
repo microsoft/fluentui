@@ -1,23 +1,14 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { DecoratorFunction } from '@storybook/addons';
 import { Input } from '@fluentui/react-input';
 import { Search20Regular, Dismiss20Regular } from '@fluentui/react-icons';
-import { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/preview/types';
-
-const InputDecorator: DecoratorFunction<StoryFnReactReturnType> = story => (
-  <div style={{ display: 'flex' }}>
-    <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
-      {story()}
-    </div>
-  </div>
-);
+import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
 // TODO move input.* props to root once primary slot helper is integrated
 
 storiesOf('Input Converged', module)
-  .addDecorator(InputDecorator)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -40,8 +31,8 @@ storiesOf('Input Converged', module)
     <Input appearance="filledDarker" input={{ placeholder: 'Placeholder' }} />
   ))
   .addStory('Appearance: filledLighter', () => (
-    // filledLighter requires a background to show up (this is colorNeutralBackground3)
-    <div style={{ background: '#141414', padding: '10px' }}>
+    // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
+    <div style={{ background: '#f5f5f5', padding: '10px' }}>
       <Input appearance="filledLighter" input={{ placeholder: 'Placeholder' }} />
     </div>
   ))
@@ -49,8 +40,9 @@ storiesOf('Input Converged', module)
   // TODO move defaultValue prop to root
   .addStory('With value', () => <Input input={{ defaultValue: 'Value!' }} />);
 
-storiesOf('Input Converged (non-interactive)', module)
-  .addDecorator(InputDecorator)
+// Non-interactive stories
+storiesOf('Input Converged', module)
+  // note: due to reused "Input Converged" story ID, TestWrapperDecoratorFixedWidth is also reused
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
