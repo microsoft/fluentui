@@ -185,6 +185,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onRenderDefaultRow,
     selectionZoneRef,
     focusZoneProps,
+    keyboardColumnEditProps,
   } = props;
 
   const defaultRole = 'grid';
@@ -704,6 +705,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
                 onRenderDetailsCheckbox: onRenderCheckbox,
                 rowWidth: sumColumnWidths(adjustedColumns),
                 useFastIcons,
+                keyboardColumnReorderProps: keyboardColumnEditProps && keyboardColumnEditProps.columnReorder,
               },
               onRenderDetailsHeader,
             )}
@@ -1177,7 +1179,13 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
   private _getFixedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
-    const { selectionMode = this._selection.mode, checkboxVisibility, flexMargin, skipViewportMeasures } = this.props;
+    const {
+      selectionMode = this._selection.mode,
+      checkboxVisibility,
+      flexMargin,
+      skipViewportMeasures,
+      keyboardColumnEditProps,
+    } = this.props;
     let remainingWidth = viewportWidth - (flexMargin || 0);
     let sumProportionalWidth = 0;
 
@@ -1236,13 +1244,20 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         }
       }
 
+      if (
+        keyboardColumnEditProps &&
+        keyboardColumnEditProps.columnResize &&
+        column.key === keyboardColumnEditProps.columnResize.columnKey
+      ) {
+        newColumn.calculatedWidth = keyboardColumnEditProps.columnResize.inputValue;
+      }
       return newColumn;
     });
   }
 
   /** Builds a set of columns to fix within the viewport width. */
   private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
-    const { selectionMode = this._selection.mode, checkboxVisibility } = props;
+    const { selectionMode = this._selection.mode, checkboxVisibility, keyboardColumnEditProps } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
@@ -1255,6 +1270,14 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH,
       };
 
+      //save new keyboard input resize value to columnOverrides
+      if (
+        keyboardColumnEditProps &&
+        keyboardColumnEditProps.columnResize &&
+        column.key === keyboardColumnEditProps.columnResize.columnKey
+      ) {
+        this._rememberCalculatedWidth(column, keyboardColumnEditProps.columnResize.inputValue);
+      }
       const newColumn = {
         ...baseColumn,
         ...this._columnOverrides[column.key],
