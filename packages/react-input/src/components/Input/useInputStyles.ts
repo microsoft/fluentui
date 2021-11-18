@@ -13,6 +13,14 @@ const horizontalSpacing = {
   mNudge: '10px',
   m: '12px',
 };
+const motionDurations = {
+  ultraFast: '0.05s',
+  normal: '0.2s',
+};
+const motionCurves = {
+  accelerateMid: 'cubic-bezier(0.7,0,1,0.5)',
+  decelerateMid: 'cubic-bezier(0.1,0.9,0.2,1)',
+};
 const contentSizes = {
   // TODO(sharing) shouldn't these be in the theme?
   body1: (theme: Theme) => ({
@@ -44,9 +52,46 @@ const useRootStyles = makeStyles({
     gap: horizontalSpacing.xxs,
     fontFamily: theme.fontFamilyBase,
     borderRadius: theme.borderRadiusMedium, // used for all but underline
+    position: 'relative',
     boxSizing: 'border-box',
-    '*, *:before, *:after': {
+
+    // This is all for the bottom focus border.
+    // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
+    ':after': {
       boxSizing: 'border-box',
+      content: '""',
+      position: 'absolute',
+      left: '-1px',
+      bottom: '-1px',
+      right: '-1px',
+
+      // Maintaining the correct corner radius:
+      // Use the whole border-radius as the height and only put radii on the bottom corners.
+      // (Otherwise the radius would be automatically reduced to fit available space.)
+      // max() ensures the focus border still shows up even if someone sets theme.borderRadiusMedium to 0.
+      height: `max(2px, ${theme.borderRadiusMedium})`,
+      borderBottomLeftRadius: theme.borderRadiusMedium,
+      borderBottomRightRadius: theme.borderRadiusMedium,
+
+      // Flat 2px border:
+      // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
+      // (This could be done without trimming using `background: linear-gradient(...)`, but using
+      // borderBottom makes it easier for people to override the color if needed.)
+      borderBottom: `2px solid ${theme.colorCompoundBrandStroke}`,
+      clipPath: 'inset(calc(100% - 2px) 0 0 0)',
+
+      // Animation for focus OUT
+      transform: 'scaleX(0)',
+      transition: `transform ${motionDurations.ultraFast} ${motionCurves.accelerateMid}`,
+    },
+    ':focus-within:after': {
+      // Animation for focus IN
+      transform: 'scaleX(1)',
+      transition: `transform ${motionDurations.normal} ${motionCurves.decelerateMid}`,
+    },
+    ':focus-within:active:after': {
+      // This is if the user clicks the field again while it's already focused
+      borderBottomColor: theme.colorCompoundBrandStrokePressed,
     },
   }),
   small: theme => ({
@@ -72,14 +117,39 @@ const useRootStyles = makeStyles({
     background: theme.colorNeutralBackground1,
     border: `1px solid ${theme.colorNeutralStroke1}`,
     borderBottomColor: theme.colorNeutralStrokeAccessible,
+    ':hover': {
+      borderColor: theme.colorNeutralStroke1Hover,
+      borderBottomColor: theme.colorNeutralStrokeAccessibleHover,
+    },
+    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
+    ':active,:focus-within': {
+      borderColor: theme.colorNeutralStroke1Pressed,
+      borderBottomColor: theme.colorNeutralStrokeAccessiblePressed,
+    },
   }),
   underline: theme => ({
     background: theme.colorTransparentBackground,
     borderRadius: 0, // corners look strange if rounded
     borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
+    ':hover': {
+      borderBottomColor: theme.colorNeutralStrokeAccessibleHover,
+    },
+    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
+    ':active,:focus-within': {
+      borderBottomColor: theme.colorNeutralStrokeAccessiblePressed,
+    },
+    ':after': {
+      borderRadius: 0, // remove rounded corners from focus underline
+    },
   }),
   filled: theme => ({
     boxShadow: theme.shadow2, // optional shadow for filled appearances
+    border: `1px solid ${theme.colorTransparentStroke}`,
+    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
+    ':hover,:focus-within': {
+      // also handles pressed border color (:active)
+      borderColor: theme.colorTransparentStrokeInteractive,
+    },
   }),
   filledDarker: theme => ({
     background: theme.colorNeutralBackground3,
@@ -96,6 +166,7 @@ const useRootStyles = makeStyles({
 
 const useInputElementStyles = makeStyles({
   base: theme => ({
+    boxSizing: 'border-box',
     flexGrow: 1,
     border: 'none', // input itself never has a border (this is handled by inputWrapper)
     padding: `0 ${horizontalSpacing.xxs}`,
@@ -134,6 +205,7 @@ const useInputElementStyles = makeStyles({
 
 const useContentStyles = makeStyles({
   base: theme => ({
+    boxSizing: 'border-box',
     color: theme.colorNeutralForeground3, // "icon color" in design spec
     // special case styling for icons (most common case) to ensure they're centered vertically
     '> span > svg': { display: 'block' },
