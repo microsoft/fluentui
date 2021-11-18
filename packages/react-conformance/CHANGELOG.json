@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Mon, 15 Nov 2021 07:29:05 GMT",
+      "tag": "@fluentui/react-conformance_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "afe1d6ba9ffe71919c50a42c11ea213f9984008d",
+            "comment": "fix paths generated in defaultErrorMessages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Nov 2021 07:31:59 GMT",
       "tag": "@fluentui/react-conformance_v0.7.0",
       "version": "0.7.0",

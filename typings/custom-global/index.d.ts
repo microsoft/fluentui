@@ -1,5 +1,6 @@
 // @TODO https://github.com/microsoft/fluentui/issues/20544
 /// <reference path="../static-assets/index.d.ts" />
+/// <reference path="../environment/index.d.ts" />
 
 /**
  * Generic typings for sass files.
@@ -63,21 +64,3 @@ declare interface SetConstructor {
 }
 /** Partial Set constructor representing what's available in IE 11 */
 declare var Set: SetConstructor;
-
-declare namespace NodeJS {
-  interface Process {
-    env: {
-      // This is mainly so we can do `process.env.NODE_ENV` checks without any extra conditionals.
-      //
-      // By default, webpack will (at compile time) replace instances of `process.env.NODE_ENV`
-      // with either "production" or "development" based on the `mode` property (webpack 4.0+).
-      // This is powered by the webpack DefinePlugin.
-      //
-      // For `mode` see: https://webpack.js.org/configuration/mode/#usage
-      // For DefinePlugin see: https://webpack.js.org/plugins/define-plugin/#root
-      [key: string]: string | undefined;
-    };
-  }
-}
-
-declare var process: NodeJS.Process;
