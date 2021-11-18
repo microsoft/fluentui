@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 17 Nov 2021 07:36:21 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Nov 2021 07:29:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.42.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.3)
+
+Thu, 18 Nov 2021 07:29:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.2..@fluentui/react_v8.42.3)
+
+### Patches
+
+- ContextualMenu: Allow focusZoneProps to override default values passed to FocusZone. ([PR #20642](https://github.com/microsoft/fluentui/pull/20642) by Humberto.Morimoto@microsoft.com)
+- Dropdown: Removing unintended extra height. ([PR #20636](https://github.com/microsoft/fluentui/pull/20636) by Humberto.Morimoto@microsoft.com)
 
 ## [8.42.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.2)
 

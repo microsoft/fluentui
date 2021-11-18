@@ -41,6 +41,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `ButtonGroup` comoponent to properly pass ref to root slots @chpalac ([#20595](https://github.com/microsoft/fluentui/pull/20595))
 - Fix color of `Dropdown` checkable indicator on hover in high contrast theme @annabratseiko ([#20621](https://github.com/microsoft/fluentui/pull/20621))
 - Fix `Carousel` comoponents to properly pass ref to root slots @chpalac ([#20645](https://github.com/microsoft/fluentui/pull/20645))
+- Fix `Card` comoponent to properly pass ref to root slots @chpalac ([#20644](https://github.com/microsoft/fluentui/pull/20644))
 
 ### Features
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
