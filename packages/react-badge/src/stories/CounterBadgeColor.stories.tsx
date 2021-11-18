@@ -11,10 +11,6 @@ export const Color = (args: CounterBadgeProps) => {
       <CounterBadge appearance="filled" color="danger" {...args} />
       <CounterBadge appearance="filled" color="important" {...args} />
       <CounterBadge appearance="filled" color="informative" {...args} />
-      <CounterBadge appearance="filled" color="severe" {...args} />
-      <CounterBadge appearance="filled" color="subtle" {...args} />
-      <CounterBadge appearance="filled" color="success" {...args} />
-      <CounterBadge appearance="filled" color="warning" {...args} />
     </>
   );
 };

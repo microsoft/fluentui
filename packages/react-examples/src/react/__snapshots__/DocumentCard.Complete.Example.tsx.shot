@@ -200,6 +200,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 }
             href="http://bing.com"
             onClick={[Function]}
+            target="_blank"
           >
             2016 Conference Presentation
           </a>
@@ -324,6 +325,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 }
             href="http://bing.com"
             onClick={[Function]}
+            target="_blank"
           >
             New Contoso Collaboration for Conference Presentation Draft
           </a>
@@ -448,6 +450,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 }
             href="http://bing.com"
             onClick={[Function]}
+            target="_blank"
           >
             Spec Sheet for design
           </a>
