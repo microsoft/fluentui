@@ -2,11 +2,13 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Screener from 'screener-storybook/src/screener';
 import { Image } from '@fluentui/react-image';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 const imageUrl =
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 
 storiesOf('Image Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator((story: () => React.ReactNode) => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       {story()}

@@ -2,18 +2,15 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Label } from '@fluentui/react-label';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Label Converged', module)
-  .addDecorator(story =>
-    // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>,
-  )
+    </Screener>
+  ))
   .addStory('Root', () => <Label>I'm a label</Label>, {
     includeRtl: true,
     includeHighContrast: true,

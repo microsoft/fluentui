@@ -14,11 +14,23 @@ import {
   MenuDivider,
 } from '@fluentui/react-menu';
 import { Cut20Regular, Edit20Regular, ClipboardPaste20Regular } from '@fluentui/react-icons';
+import { getTestWrapperDecorator } from '../utilities/TestWrapperDecorator';
+
+const MenuDecorator = getTestWrapperDecorator({ padding: '10px', width: '200px', height: '200px' });
+const MenuDecoratorTall = getTestWrapperDecorator({
+  padding: '10px',
+  width: '200px',
+  height: '350px',
+});
 
 storiesOf('Menu Converged - basic', module)
+  .addDecorator(MenuDecorator)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
+      steps={new Screener.Steps()
+        .hover('[role="menuitem"]')
+        .snapshot('hover menuitem', { cropTo: '.testWrapper' })
+        .end()}
     >
       {story()}
     </Screener>
@@ -44,9 +56,13 @@ storiesOf('Menu Converged - basic', module)
   );
 
 storiesOf('Menu Converged - secondary content', module)
+  .addDecorator(MenuDecorator)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
+      steps={new Screener.Steps()
+        .hover('[role="menuitem"]')
+        .snapshot('hover menuitem', { cropTo: '.testWrapper' })
+        .end()}
     >
       {story()}
     </Screener>
@@ -76,7 +92,12 @@ storiesOf('Menu Converged - secondary content', module)
   );
 
 storiesOf('Menu Converged - groups', module)
-  .addDecorator(story => <Screener>{story()}</Screener>)
+  .addDecorator(MenuDecoratorTall)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
   .addStory(
     'default',
     () => (
@@ -108,9 +129,13 @@ storiesOf('Menu Converged - groups', module)
   );
 
 storiesOf('Menu Converged - selection', module)
+  .addDecorator(MenuDecorator)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
+      steps={new Screener.Steps()
+        .click('[role="menuitemcheckbox"]')
+        .snapshot('selected', { cropTo: '.testWrapper' })
+        .end()}
     >
       {story()}
     </Screener>
@@ -142,9 +167,13 @@ storiesOf('Menu Converged - selection', module)
   );
 
 storiesOf('Menu Converged - selection groups', module)
+  .addDecorator(MenuDecoratorTall)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
+      steps={new Screener.Steps()
+        .click('[role="menuitemcheckbox"]')
+        .snapshot('selected', { cropTo: '.testWrapper' })
+        .end()}
     >
       {story()}
     </Screener>
@@ -192,9 +221,15 @@ storiesOf('Menu Converged - selection groups', module)
   );
 
 storiesOf('Menu Converged - nested submenus', module)
+  .addDecorator(getTestWrapperDecorator({ padding: '10px', width: '300px', height: '300px' }))
   .addDecorator(story => (
     // https://github.com/microsoft/fluentui/issues/19782
-    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('all open').end()}>
+    <Screener
+      steps={new Screener.Steps()
+        .click('#nestedTrigger')
+        .snapshot('all open', { cropTo: '.testWrapper' })
+        .end()}
+    >
       {story()}
     </Screener>
   ))

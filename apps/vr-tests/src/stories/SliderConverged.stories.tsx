@@ -2,6 +2,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Slider } from '@fluentui/react-slider';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 const LabelComponent = () => <div style={{ width: '30px', height: '30px', background: 'green' }} />;
 
@@ -16,6 +17,7 @@ const MarkComponent = () => (
 );
 
 storiesOf('Slider Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Steps()

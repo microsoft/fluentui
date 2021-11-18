@@ -8,8 +8,10 @@ import {
   AccordionPanel,
 } from '@fluentui/react-accordion';
 import { CircleRingIcon } from '@fluentui/react-icons-mdl2';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Accordion Converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -20,9 +22,7 @@ storiesOf('Accordion Converged', module)
         .snapshot('focus closed', { cropTo: '.testWrapper' })
         .end()}
     >
-      <div className="testWrapper" style={{ width: '300px' }}>
-        {story()}
-      </div>
+      {story()}
     </Screener>
   ))
 
@@ -44,6 +44,7 @@ storiesOf('Accordion Converged', module)
   );
 
 storiesOf('Accordion Converged', module)
+  // note: due to reused "Accordion Converged" story ID, TestWrapperDecoratorFixedWidth is also reused
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       <div className="testWrapper" style={{ width: '300px' }}>

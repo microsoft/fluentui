@@ -2,8 +2,10 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/react-button';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Button Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -108,6 +110,7 @@ storiesOf('Button Converged', module)
   });
 
 storiesOf('Button Block Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -165,6 +168,7 @@ storiesOf('Button Block Converged', module)
   ));
 
 storiesOf('CompoundButton Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -274,6 +278,7 @@ storiesOf('CompoundButton Converged', module)
   });
 
 storiesOf('CompoundButton Block Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -339,6 +344,7 @@ storiesOf('CompoundButton Block Converged', module)
   ));
 
 storiesOf('ToggleButton Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -418,6 +424,7 @@ storiesOf('ToggleButton Converged', module)
   ));
 
 storiesOf('ToggleButton Block Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -495,6 +502,7 @@ storiesOf('ToggleButton Block Converged', module)
   ));
 
 storiesOf('MenuButton Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -551,6 +559,7 @@ storiesOf('MenuButton Converged', module)
   .addStory('Circular and icon only', () => <MenuButton shape="circular" icon="X" />);
 
 storiesOf('MenuButton Block Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

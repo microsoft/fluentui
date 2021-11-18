@@ -2,6 +2,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 const AnchorLink = (props: LinkProps & { as?: 'a' }) => (
   <Link {...props} href="https://www.bing.com" />
@@ -9,6 +10,7 @@ const AnchorLink = (props: LinkProps & { as?: 'a' }) => (
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
 storiesOf('Link Converged - Rendered as anchor', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -69,6 +71,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
   ));
 
 storiesOf('Link Converged - Rendered as button', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Steps()

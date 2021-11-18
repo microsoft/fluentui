@@ -1,18 +1,11 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { mergeStyles } from '@fluentui/react';
 import { Divider } from '@fluentui/react-divider';
-
-const verticalStyles = mergeStyles({
-  height: '400px',
-});
-
-const horizontalStyles = mergeStyles({
-  width: '400px',
-});
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Divider Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
@@ -21,7 +14,7 @@ storiesOf('Divider Converged', module)
   .addStory(
     'Horizontal without content',
     () => (
-      <div className={horizontalStyles}>
+      <div style={{ width: '200px' }}>
         <Divider />
       </div>
     ),
@@ -30,7 +23,7 @@ storiesOf('Divider Converged', module)
   .addStory(
     'Horizontal with content',
     () => (
-      <div className={horizontalStyles}>
+      <div style={{ width: '200px' }}>
         <Divider>Today</Divider>
       </div>
     ),
@@ -39,7 +32,7 @@ storiesOf('Divider Converged', module)
   .addStory(
     'Horizontal Start Aligned',
     () => (
-      <div className={horizontalStyles}>
+      <div style={{ width: '200px' }}>
         <Divider alignContent="start">Today</Divider>
       </div>
     ),
@@ -48,26 +41,26 @@ storiesOf('Divider Converged', module)
   .addStory(
     'Horizontal End Aligned',
     () => (
-      <div className={horizontalStyles}>
+      <div style={{ width: '200px' }}>
         <Divider alignContent="end">Today</Divider>
       </div>
     ),
     { includeRtl: true },
   )
   .addStory('Vertical Center Aligned', () => (
-    <div className={verticalStyles}>
+    <div style={{ height: '200px' }}>
       <Divider vertical>Today</Divider>
     </div>
   ))
   .addStory('Vertical Start Aligned', () => (
-    <div className={verticalStyles}>
+    <div style={{ height: '200px' }}>
       <Divider vertical alignContent="start">
         Today
       </Divider>
     </div>
   ))
   .addStory('Vertical End Aligned', () => (
-    <div className={verticalStyles}>
+    <div style={{ height: '200px' }}>
       <Divider vertical alignContent="end">
         Today
       </Divider>
@@ -76,7 +69,7 @@ storiesOf('Divider Converged', module)
   .addStory(
     'Appearance subtle',
     () => (
-      <div className={verticalStyles}>
+      <div style={{ width: '200px' }}>
         <Divider appearance="subtle">Today</Divider>
       </div>
     ),
@@ -85,7 +78,7 @@ storiesOf('Divider Converged', module)
   .addStory(
     'Appearance strong',
     () => (
-      <div className={verticalStyles}>
+      <div style={{ width: '200px' }}>
         <Divider appearance="strong">Today</Divider>
       </div>
     ),
@@ -94,19 +87,19 @@ storiesOf('Divider Converged', module)
   .addStory(
     'Appearance brand',
     () => (
-      <div className={verticalStyles}>
+      <div style={{ width: '200px' }}>
         <Divider appearance="brand">Today</Divider>
       </div>
     ),
     { includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('Inset', () => (
-    <div className={verticalStyles}>
+    <div style={{ width: '200px' }}>
       <Divider inset>Today</Divider>
     </div>
   ))
   .addStory('Vertical inset', () => (
-    <div className={verticalStyles}>
+    <div style={{ height: '200px' }}>
       <Divider inset vertical>
         Today
       </Divider>
