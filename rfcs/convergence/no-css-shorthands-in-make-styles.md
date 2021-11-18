@@ -208,6 +208,7 @@ Additional functions can be implemented based on customer requests.
 - 👍 No CSS shorthands => no problems
 - 👍 No new syntax
 - 👎 Non obvious TypeScript errors in some cases
+  - Might be solved with ESLint rules that will provide relevant information
 - 👎 We have to explain this to users of `makeStyles` in our documentation
 
 ## Discarded Solutions
