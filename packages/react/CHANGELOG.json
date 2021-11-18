@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 18 Nov 2021 07:29:22 GMT",
+      "tag": "@fluentui/react_v8.42.3",
+      "version": "8.42.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8faa94d1143b3853d88630c40e66e50dd247f997",
+            "comment": "ContextualMenu: Allow focusZoneProps to override default values passed to FocusZone."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "20a59a53b4a579295d98f43265ad4918e36aa74a",
+            "comment": "Dropdown: Removing unintended extra height."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Nov 2021 07:36:21 GMT",
       "tag": "@fluentui/react_v8.42.2",
       "version": "8.42.2",
