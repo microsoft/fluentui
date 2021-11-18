@@ -11,16 +11,49 @@ export type SelectTabEvent<E = HTMLElement> = React.MouseEvent<E> | React.Keyboa
 export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData) => void;
 
 export type TabListSlots = {
-  // TODO Add slots here and to tabListShorthandProps in useTabList.ts
+  /**
+   * The slot associated with the root element of this tab list.
+   */
   root: IntrinsicShorthandProps<'div'>;
 };
 
 export type TabListCommons = {
+  /**
+   * A tab list can supports 'transparent' and 'subtle' appearance.
+   * - 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
+   * - 'transparent': No background and border styling
+   * The appearance affects each of the contained tabs.
+   * @default 'transparent'
+   */
   appearance?: 'transparent' | 'subtle';
+
+  /**
+   * Raised when a tab is selected.
+   */
   onTabSelected?: SelectTabEventHandler;
-  selectedKey?: TabValue;
+
+  /**
+   * The value of the currently selected tab.
+   */
+  selectedValue?: TabValue;
+
+  /**
+   * A tab list can be either 'small' or 'medium' size.
+   * The size affects each of the contained tabs.
+   * @default 'medium'
+   */
   size?: 'small' | 'medium';
+
+  /**
+   * A tab list can arrange its tabs vertically.
+   * @default false
+   */
   vertical?: boolean;
+
+  /**
+   * A tab list can arrange the content within each tab vertically.
+   * @default false
+   */
   verticalTabContent?: boolean;
 };
 
@@ -29,21 +62,34 @@ export type TabListCommons = {
  */
 export type TabListProps = ComponentProps<TabListSlots> &
   TabListCommons & {
-    defaultSelectedKey?: TabValue;
+    /**
+     * The value of the tab to be selected by default.
+     * Typically useful when the selectedValue is uncontrolled.
+     */
+    defaultSelectedValue?: TabValue;
   };
 
 type TabListStateContextCommons = TabListCommons &
   Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical' | 'verticalTabContent'>>;
 
 export type TabListContextValue = TabListStateContextCommons & {
+  /**
+   * A callback to allow a tab to select itself when pressed.
+   */
   selectTab: SelectTabEventHandler;
 };
 
+/**
+ * Context values used in rendering TabList.
+ */
 export type TabListContextValues = {
+  /**
+   * The context of the tab list available to each tab.
+   */
   tabList: TabListContextValue;
 };
 
 /**
- * State used in rendering TabList
+ * State used in rendering TabList.
  */
 export type TabListState = ComponentState<TabListSlots> & TabListStateContextCommons & TabListContextValue;

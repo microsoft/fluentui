@@ -18,7 +18,7 @@ export const Vertical = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="tab2" vertical>
+      <TabList defaultSelectedValue="tab2" vertical>
         <Tab value="tab1">First Tab</Tab>
         <Tab value="tab2">Second Tab</Tab>
         <Tab value="tab3">Third Tab</Tab>

@@ -36,14 +36,14 @@ export const WithBadgeTab = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="inbox">{renderTabs()}</TabList>
-      <TabList defaultSelectedKey="inbox" vertical>
+      <TabList defaultSelectedValue="inbox">{renderTabs()}</TabList>
+      <TabList defaultSelectedValue="inbox" vertical>
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="inbox" verticalTabContent>
+      <TabList defaultSelectedValue="inbox" verticalTabContent>
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="inbox" vertical verticalTabContent>
+      <TabList defaultSelectedValue="inbox" vertical verticalTabContent>
         {renderTabs()}
       </TabList>
     </div>

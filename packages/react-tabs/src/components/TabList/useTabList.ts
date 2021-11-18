@@ -32,8 +32,8 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
   const focusAttributes = useArrowNavigationGroup({ circular: true, axis: vertical ? 'vertical' : 'horizontal' });
 
   const [selectedValue, setSelectedValue] = useControllableState({
-    state: props.selectedKey,
-    defaultState: props.defaultSelectedKey,
+    state: props.selectedValue,
+    defaultState: props.defaultSelectedValue,
     initialState: undefined,
   });
 
@@ -57,7 +57,7 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
       ...props,
     }),
     appearance,
-    selectedKey: selectedValue,
+    selectedValue: selectedValue,
     selectTab,
     size,
     vertical,

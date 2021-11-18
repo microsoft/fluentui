@@ -50,10 +50,10 @@ export const VerticalTabContent = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="tab2" verticalTabContent>
+      <TabList defaultSelectedValue="tab2" verticalTabContent>
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" vertical verticalTabContent>
+      <TabList defaultSelectedValue="tab2" vertical verticalTabContent>
         {renderTabs()}
       </TabList>
     </div>

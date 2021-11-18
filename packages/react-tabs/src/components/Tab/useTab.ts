@@ -26,7 +26,7 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
     TabListContext,
     ctx => ({
       appearance: ctx.appearance,
-      selected: ctx.selectedKey === value,
+      selected: ctx.selectedValue === value,
       selectTab: ctx.selectTab,
       size: ctx.size,
       verticalContent: !!ctx.verticalTabContent,

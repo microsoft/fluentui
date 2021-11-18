@@ -4,8 +4,14 @@ import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@flue
 import { TabCommons, TabSlots, TabState } from '../Tab/index';
 
 export type BadgeTabSlots = TabSlots & {
+  /**
+   * Badge that displays with the content.
+   */
   badge: ObjectShorthandProps<BadgeProps>;
 
+  /**
+   * The children elements of this tab.
+   */
   children: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 };
 

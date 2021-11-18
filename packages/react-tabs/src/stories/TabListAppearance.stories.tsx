@@ -29,10 +29,10 @@ export const Appearance = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="tab2" appearance="transparent">
+      <TabList defaultSelectedValue="tab2" appearance="transparent">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" appearance="subtle">
+      <TabList defaultSelectedValue="tab2" appearance="subtle">
         {renderTabs()}
       </TabList>
     </div>

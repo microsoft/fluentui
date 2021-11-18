@@ -23,6 +23,8 @@ export const useBadgeTab = (props: BadgeTabProps, ref: React.Ref<HTMLElement>): 
 
   const tabState = useTab(props, ref);
 
+  // The design calls for the default badge size to change based on the tab list size and layout
+  // and the presence of an icon.
   const defaultBadgeSize: BadgeProps['size'] =
     tabState.size === 'small' && tabState.icon && tabState.verticalContent ? 'extra-small' : 'small';
 

@@ -32,16 +32,16 @@ export const SizeSmall = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="tab2" size="small">
+      <TabList defaultSelectedValue="tab2" size="small">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" size="small" vertical>
+      <TabList defaultSelectedValue="tab2" size="small" vertical>
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" size="small" verticalTabContent>
+      <TabList defaultSelectedValue="tab2" size="small" verticalTabContent>
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" size="small" vertical verticalTabContent>
+      <TabList defaultSelectedValue="tab2" size="small" vertical verticalTabContent>
         {renderTabs()}
       </TabList>
     </div>

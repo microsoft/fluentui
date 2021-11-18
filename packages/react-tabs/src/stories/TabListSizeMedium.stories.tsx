@@ -32,16 +32,16 @@ export const SizeMedium = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="tab2" size="medium">
+      <TabList defaultSelectedValue="tab2" size="medium">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" size="medium" vertical>
+      <TabList defaultSelectedValue="tab2" size="medium" vertical>
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" size="medium" verticalTabContent>
+      <TabList defaultSelectedValue="tab2" size="medium" verticalTabContent>
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedKey="tab2" size="medium" vertical verticalTabContent>
+      <TabList defaultSelectedValue="tab2" size="medium" vertical verticalTabContent>
         {renderTabs()}
       </TabList>
     </div>

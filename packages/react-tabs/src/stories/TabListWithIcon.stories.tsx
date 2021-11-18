@@ -38,8 +38,8 @@ export const WithIcon = (props: Partial<TabProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedKey="tab2">{renderTabs()}</TabList>
-      <TabList defaultSelectedKey="tab2" vertical>
+      <TabList defaultSelectedValue="tab2">{renderTabs()}</TabList>
+      <TabList defaultSelectedValue="tab2" vertical>
         {renderTabs()}
       </TabList>
     </div>

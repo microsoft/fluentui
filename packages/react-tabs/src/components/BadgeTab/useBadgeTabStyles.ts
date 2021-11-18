@@ -2,12 +2,19 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { useTabStyles } from '../Tab/useTabStyles';
 import type { BadgeTabState } from './BadgeTab.types';
 
+// The overlap of the badge and icon is specified as:
+// - the lower-left-hand quarter of the badge
+// - overlaps the upper-right-hand third of the icon.
+// - the icon remains centered (the badge does not push the icon left)
+// To achieve this, a 5x4 grid is used where:
+// - the badge occupies columns 4-5 and rows 1,2
+// - the icon occupies column 2-4 and rows 2,3,4.
 const useContentStyles = makeStyles({
   iconBadgeOverlap: {
     display: 'grid',
     flexDirection: 'unset',
-    gridTemplateColumns: 'auto auto auto auto auto auto',
-    gridTemplateRows: 'auto auto auto auto auto;',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+    gridTemplateRows: '1fr 1fr 1fr 1fr',
     justifyContent: 'center',
     justifyItems: 'center',
     alignContent: 'center',
