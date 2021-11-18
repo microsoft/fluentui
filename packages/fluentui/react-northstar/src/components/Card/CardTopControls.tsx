@@ -26,7 +26,7 @@ export const cardTopControlsClassName = 'ui-card__topcontrols';
 /**
  * A CardTopControls is used to render control elements in the top of a Card component.
  */
-export const CardTopControls = (React.forwardRef<HTMLDivElement, CardTopControlsProps>(props => {
+export const CardTopControls = (React.forwardRef<HTMLDivElement, CardTopControlsProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardTopControls.displayName, context.telemetry);
   setStart();
@@ -54,6 +54,7 @@ export const CardTopControls = (React.forwardRef<HTMLDivElement, CardTopControls
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
