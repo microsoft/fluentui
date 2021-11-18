@@ -45,93 +45,6 @@ describe('Slider', () => {
       const { container } = render(<Slider defaultValue={5} origin={2} vertical min={0} max={10} />);
       expect(container).toMatchSnapshot();
     });
-
-    it('renders Slider with marks correctly', () => {
-      const { container } = render(<Slider defaultValue={5} marks={true} step={3} />);
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders horizontal Slider with unique mark values correctly', () => {
-      const { container } = render(<Slider defaultValue={5} marks={[1, 3, 7, 8]} />);
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders vertical Slider with unique mark values correctly', () => {
-      const { container } = render(<Slider defaultValue={5} marks={[2, 5, 9, 18]} vertical />);
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders horizontal Slider with mark labels correctly', () => {
-      const { container } = render(
-        <Slider defaultValue={5} marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders vertical Slider with mark labels correctly', () => {
-      const { container } = render(
-        <Slider
-          defaultValue={5}
-          marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]}
-          vertical
-        />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders disabled Slider with mark labels correctly', () => {
-      const { container } = render(
-        <Slider
-          defaultValue={5}
-          marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]}
-          disabled
-        />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders Slider with custom mark labels correctly', () => {
-      const { container } = render(
-        <Slider
-          defaultValue={5}
-          marks={[
-            10,
-            { value: 30, label: <div style={{ width: '10px', height: '10px', background: 'green' }} /> },
-            { value: 40, label: 'world' },
-            80,
-          ]}
-        />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders Slider with custom marks correctly', () => {
-      const { container } = render(
-        <Slider
-          defaultValue={5}
-          marks={[
-            10,
-            {
-              value: 30,
-              label: <div style={{ width: '10px', height: '10px', background: 'green' }} />,
-              mark: (
-                <div
-                  style={{
-                    width: '2px',
-                    height: '8px',
-                    background: 'red',
-                    marginTop: '-2px',
-                  }}
-                />
-              ),
-            },
-            { value: 40, label: 'world' },
-            80,
-          ]}
-        />,
-      );
-      expect(container).toMatchSnapshot();
-    });
   });
 
   describe('Unit Tests', () => {
@@ -146,7 +59,7 @@ describe('Slider', () => {
       const onChange = jest.fn();
 
       const wrapper: ReactWrapper = mount(
-        <Slider step={10} activeRail={{ className: 'active-rail' }} onChange={onChange} input={{ ref: inputRef }} />,
+        <Slider step={10} rail={{ className: 'active-rail' }} onChange={onChange} input={{ ref: inputRef }} />,
       );
 
       const activeRail = wrapper.find('.active-rail');
@@ -252,7 +165,7 @@ describe('Slider', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();
       const wrapper: ReactWrapper = mount(
-        <Slider step={10} activeRail={{ className: 'active-rail' }} input={{ ref: inputRef }} onChange={onChange} />,
+        <Slider step={10} rail={{ className: 'active-rail' }} input={{ ref: inputRef }} onChange={onChange} />,
       );
 
       const activeRail = wrapper.find('.active-rail');
@@ -374,36 +287,6 @@ describe('Slider', () => {
       fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
       fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
       expect(sliderTrack?.getAttribute('style')).toContain('99px 99px 0px 0px');
-    });
-
-    it('correctly calculates marks for each step', () => {
-      const { container } = render(
-        <Slider step={2} max={10} marks={true} marksWrapper={{ className: 'test-class' }} />,
-      );
-      const sliderWrapper = container.querySelector('.test-class');
-      expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 20% 20% 20% 20% 20%');
-    });
-
-    it('correctly calculates marks for custom values', () => {
-      const { container } = render(
-        <Slider step={2} max={10} marks={[1, 4, 7, 9]} marksWrapper={{ className: 'test-class' }} />,
-      );
-      const sliderWrapper = container.querySelector('.test-class');
-      expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 10% 30% 30% 20%');
-    });
-
-    it('correctly calculates marks position at a single custom value', () => {
-      const { container } = render(<Slider step={2} max={10} marks={[4]} marksWrapper={{ className: 'test-class' }} />);
-      const sliderWrapper = container.querySelector('.test-class');
-      expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 40%');
-    });
-
-    it('correctly defines the first and last marks', () => {
-      const { container } = render(<Slider max={10} marks={[0, 10]} marksWrapper={{ className: 'test-class' }} />);
-      const sliderWrapper = container.querySelector('.test-class');
-      expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 100%');
-      expect(container.querySelector('.fui-Slider-firstMark')).toBeTruthy();
-      expect(container.querySelector('.fui-Slider-lastMark')).toBeTruthy;
     });
 
     it('correctly calculates the origin border-radius when given min as the origin', () => {

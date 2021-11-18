@@ -8,15 +8,7 @@ import {
   useUnmount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import {
-  calculateSteps,
-  getKeydownValue,
-  getMarkPercent,
-  getMarkValue,
-  getPercent,
-  on,
-  renderMarks,
-} from '../../utils/index';
+import { calculateSteps, getKeydownValue, getPercent, on } from '../../utils/index';
 import type { SliderState } from './Slider.types';
 
 // TODO: Awaiting animation time from design spec.
@@ -33,7 +25,6 @@ export const useSliderState = (state: SliderState) => {
     disabled = false,
     ariaValueText,
     onChange,
-    marks,
     vertical = false,
     origin,
   } = state;
@@ -166,10 +157,6 @@ export const useSliderState = (state: SliderState) => {
     return origin !== undefined ? getPercent(origin, min, max) : 0;
   }, [max, min, origin]);
 
-  const markValues = React.useMemo((): number[] => getMarkValue(marks, min, max, step), [marks, max, min, step]);
-
-  const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
-
   const thumbStyles = {
     [vertical ? 'top' : 'left']: valuePercent + '%',
     transition: stepAnimation ? `left ease-in-out ${animationTime}` : 'none',
@@ -207,12 +194,6 @@ export const useSliderState = (state: SliderState) => {
 
   // Track Props
   state.track.style = trackStyles;
-
-  // Mark props
-  // if (marks) {
-  //   state.marksWrapper.children = renderMarks(markValues, marks);
-  //   state.marksWrapper.style = marksWrapperStyles;
-  // }
 
   // Thumb Props
   state.thumb.style = thumbStyles;

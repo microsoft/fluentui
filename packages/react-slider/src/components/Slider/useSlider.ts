@@ -6,7 +6,7 @@ import { SliderProps, SliderSlots, SliderState } from './Slider.types';
 /**
  * Array of all shorthand properties listed in sliderShorthandProps
  */
-export const sliderShorthandProps: (keyof SliderSlots)[] = ['root', 'activeRail', 'input', 'rail', 'thumb', 'track'];
+export const sliderShorthandProps: (keyof SliderSlots)[] = ['root', 'input', 'rail', 'thumb', 'track'];
 
 /**
  * Given user props, returns state and render function for a Slider.
@@ -23,13 +23,11 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     disabled,
     ariaValueText,
     onChange,
-    marks,
     vertical,
     size = 'medium',
     origin,
 
     // Slots
-    activeRail,
     input,
     rail,
     thumb,
@@ -41,7 +39,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     defaultValue,
     disabled,
     keyboardStep,
-    marks,
     max,
     min,
     onChange,
@@ -51,7 +48,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     vertical,
     value,
     components: {
-      activeRail: 'div',
       input: 'input',
       rail: 'div',
       root: 'div',
@@ -63,7 +59,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
       ...props,
       id: useId('slider-', props.id),
     }),
-    activeRail: resolveShorthand(activeRail, { required: true }),
     input: resolveShorthand(input, {
       required: true,
       defaultProps: {

@@ -1,8 +1,76 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 08 Nov 2021 07:35:50 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Nov 2021 07:29:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.42.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.3)
+
+Thu, 18 Nov 2021 07:29:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.2..@fluentui/react_v8.42.3)
+
+### Patches
+
+- ContextualMenu: Allow focusZoneProps to override default values passed to FocusZone. ([PR #20642](https://github.com/microsoft/fluentui/pull/20642) by Humberto.Morimoto@microsoft.com)
+- Dropdown: Removing unintended extra height. ([PR #20636](https://github.com/microsoft/fluentui/pull/20636) by Humberto.Morimoto@microsoft.com)
+
+## [8.42.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.2)
+
+Wed, 17 Nov 2021 07:36:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.1..@fluentui/react_v8.42.2)
+
+### Patches
+
+- Fix linkProps spreading on DocumentCardPreviewBase component ([PR #20335](https://github.com/microsoft/fluentui/pull/20335) by bsunderhus@microsoft.com)
+- Adds root element ref to async.requestAnimationFrame invocation ([PR #20149](https://github.com/microsoft/fluentui/pull/20149) by bsunderhus@microsoft.com)
+
+## [8.42.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.1)
+
+Tue, 16 Nov 2021 07:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.0..@fluentui/react_v8.42.1)
+
+### Patches
+
+- Callout: Specifying that gapSpace prop has pixels as its unit in prop comment. ([PR #20605](https://github.com/microsoft/fluentui/pull/20605) by Humberto.Morimoto@microsoft.com)
+
+## [8.42.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.0)
+
+Mon, 15 Nov 2021 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.4..@fluentui/react_v8.42.0)
+
+### Minor changes
+
+- Adding firstFocusableTarget prop to FocusTrapZone. ([PR #20413](https://github.com/microsoft/fluentui/pull/20413) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-focus to v8.3.8 ([PR #20419](https://github.com/microsoft/fluentui/pull/20419) by beachball)
+
+## [8.41.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.4)
+
+Wed, 10 Nov 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.3..@fluentui/react_v8.41.4)
+
+### Patches
+
+- Panel: fix isFooterAtBottom bug where unnecessary scrollbar is present. ([PR #20467](https://github.com/microsoft/fluentui/pull/20467) by tristan.watanabe@gmail.com)
+- Combobox a11y fix to associate group headers with items for screenreaders ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by ololubek@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.16 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.17 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/merge-styles to v8.2.1 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/react-focus to v8.3.7 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/react-hooks to v8.3.6 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/style-utilities to v8.4.2 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/theme to v2.4.3 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/utilities to v8.3.6 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/common-styles to v1.0.22 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.12 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+
+## [8.41.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.3)
+
+Tue, 09 Nov 2021 07:38:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.41.2..@fluentui/react_v8.41.3)
+
+### Patches
+
+- fix(Callout): add explicit maxHeight ([PR #20533](https://github.com/microsoft/fluentui/pull/20533) by sarah.higley@microsoft.com)
 
 ## [8.41.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.41.2)
 

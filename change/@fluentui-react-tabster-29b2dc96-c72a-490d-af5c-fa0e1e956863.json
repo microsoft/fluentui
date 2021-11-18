@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add useFocusableGroup hook",
-  "packageName": "@fluentui/react-tabster",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch"
-}

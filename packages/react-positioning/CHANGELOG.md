@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 27 Oct 2021 12:14:21 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Nov 2021 13:25:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-beta.2..@fluentui/react-positioning_v9.0.0-beta.3)
+
+### Changes
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.2)
 

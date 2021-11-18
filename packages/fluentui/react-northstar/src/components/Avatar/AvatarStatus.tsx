@@ -6,7 +6,7 @@ import {
   useAccessibility,
   getElementType,
   useUnhandledProps,
-  ComponentWithAs,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { commonPropTypes, SizeValue, UIComponentProps, createShorthandFactory, createShorthand } from '../../utils';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -40,7 +40,7 @@ export const avatarStatusClassName = statusClassName;
 /**
  * A AvatarStatus provides a status for the Avatar.
  */
-export const AvatarStatus: ComponentWithAs<'span', AvatarStatusProps> & FluentComponentStaticProps = props => {
+export const AvatarStatus = (React.forwardRef<HTMLSpanElement, AvatarStatusProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarStatus.displayName, context.telemetry);
   setStart();
@@ -68,19 +68,25 @@ export const AvatarStatus: ComponentWithAs<'span', AvatarStatusProps> & FluentCo
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AvatarStatus.handledProps, props);
 
-  const iconElement = createShorthand(AvatarStatusIcon, icon, {
-    defaultProps: () => ({
-      state,
-    }),
-  });
+  const iconElement = createShorthand(
+    AvatarStatusIcon,
+    icon as ShorthandValue<AvatarStatusIconProps & { as: 'span' }>,
+    {
+      defaultProps: () => ({
+        state,
+      }),
+    },
+  );
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>{iconElement}</ElementType>
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+      {iconElement}
+    </ElementType>
   );
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusProps> & FluentComponentStaticProps;
 
 AvatarStatus.displayName = 'AvatarStatus';
 AvatarStatus.propTypes = {

@@ -1,6 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { calculateSteps } from '../../utils/calculateSteps';
 import type { SliderState } from './Slider.types';
 
 export const sliderClassName = 'fui-Slider';
@@ -8,11 +7,6 @@ export const sliderClassName = 'fui-Slider';
 const thumbClassName = `${sliderClassName}-thumb`;
 const trackClassName = `${sliderClassName}-track`;
 const railClassName = `${sliderClassName}-rail`;
-// const markContainerClassName = `${sliderClassName}-markItemContainer`;
-// const firstMarkClassName = `${sliderClassName}-firstMark`;
-// const lastMarkClassName = `${sliderClassName}-lastMark`;
-// const markClassName = `${sliderClassName}-mark`;
-// const markLabelClassName = `${sliderClassName}-label`;
 
 /**
  * Styles for the root slot
@@ -29,13 +23,11 @@ export const useRootStyles = makeStyles({
   small: {
     '--slider-thumb-size': '10px',
     '--slider-rail-size': '2px',
-    '--slider-mark-size': '2px',
   },
 
   medium: {
     '--slider-thumb-size': '20px',
     '--slider-rail-size': '4px',
-    '--slider-mark-size': '4px',
   },
 
   horizontal: {

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updating Link tests.",
-  "packageName": "@fluentui/react-link",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
