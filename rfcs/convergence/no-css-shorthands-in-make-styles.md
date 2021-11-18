@@ -161,30 +161,30 @@ makeStyles({
 As it will be annoying and redundant to use CSS longhands in every case we will have special functions for expansion.
 
 ```js
-import { macros } from '@fluentui/react-make-styles';
+import { shorthands } from '@fluentui/react-make-styles';
 
 makeStyles({
   rootA: { paddingLeft: '4px', paddingRight: '4px', paddingBottom: '4px', paddingTop: '4px' },
   rootB: {
-    ...macros.padding('4px'),
-    ...macros.padding('4px', '8px'),
-    ...macros.padding('4px', '8px', '16px', 0),
+    ...shorthands.padding('4px'),
+    ...shorthands.padding('4px', '8px'),
+    ...shorthands.padding('4px', '8px', '16px', 0),
   },
 });
 ```
 
-`macros.padding('4px')` from the example above will expand it two four properties:
+`shorthands.padding('4px')` from the example above will expand it two four properties:
 
 ```js
 shallowEqual(
   { paddingLeft: '4px', paddingRight: '4px', paddingBottom: '4px', paddingTop: '4px' },
-  macros.padding('4px'),
+  shorthands.padding('4px'),
 ); // returns "true"
 ```
 
 Each macro will implement arguments order & expand based on CSS spec.
 
-For initial implementation following macros will be implemented:
+For initial implementation following shorthands will be implemented:
 
 - `border`
 - `borderLeft`
