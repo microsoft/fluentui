@@ -167,7 +167,7 @@ function usePositions(
             bounds: getBounds(),
           };
 
-          // duplicate calloutElement & remove maxHeight for position calc
+          // duplicate calloutElement & remove useMaxHeight's maxHeight for position calc
           const dupeCalloutElement = calloutElement.cloneNode(true) as HTMLElement;
           dupeCalloutElement.style.maxHeight = calloutMaxHeight ? `${calloutMaxHeight}` : '';
           dupeCalloutElement.style.visibility = 'hidden';

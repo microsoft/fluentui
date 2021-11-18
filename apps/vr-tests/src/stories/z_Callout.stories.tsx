@@ -178,4 +178,17 @@ storiesOf('Callout', module)
         </Callout>
       </>
     );
+  })
+  .addStory('Callout rendered within small bounds', () => {
+    const bounds = {
+      left: 50,
+      top: 50,
+      width: 200,
+      height: 100,
+    };
+    return (
+      <Callout {...defaultProps} bounds={bounds}>
+        {calloutContent}
+      </Callout>
+    );
   });
