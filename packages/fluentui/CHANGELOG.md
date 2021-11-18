@@ -42,6 +42,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix color of `Dropdown` checkable indicator on hover in high contrast theme @annabratseiko ([#20621](https://github.com/microsoft/fluentui/pull/20621))
 - Fix `Carousel` comoponents to properly pass ref to root slots @chpalac ([#20645](https://github.com/microsoft/fluentui/pull/20645))
 - Fix `Card` comoponent to properly pass ref to root slots @chpalac ([#20644](https://github.com/microsoft/fluentui/pull/20644))
+- Optimized `felaInvokeKeyframesPlugin` to not create new objects but reuse existing one in `reduce` @mbman ([#20649](https://github.com/microsoft/fluentui/pull/20649))
 
 ### Features
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
@@ -160,7 +161,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Prevent focusable elements to be selectable @assuncaocharles ([#18738](https://github.com/microsoft/fluentui/pull/18738))
 - Fix `MenuButton` to avoid arrow keys to move to cells inside a table @assuncaocharles ([#18663](https://github.com/microsoft/fluentui/pull/18663))
 - Fix dropdown container overflow-x @assuncaocharles ([#18749](https://github.com/microsoft/fluentui/pull/18749))
-- Optimized `felaInvokeKeyframesPlugin` to not create new objects but reuse existing one in `reduce` @mbman ([#20649](https://github.com/microsoft/fluentui/pull/20649))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
