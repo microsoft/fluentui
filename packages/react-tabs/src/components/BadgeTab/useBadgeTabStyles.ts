@@ -6,15 +6,16 @@ import type { BadgeTabState } from './BadgeTab.types';
 // - the lower-left-hand quarter of the badge
 // - overlaps the upper-right-hand third of the icon.
 // - the icon remains centered (the badge does not push the icon left)
-// To achieve this, a 5x4 grid is used where:
+// To achieve this, a 5x5 grid is used where:
 // - the badge occupies columns 4-5 and rows 1,2
 // - the icon occupies column 2-4 and rows 2,3,4.
+// - the text appears on the last row
 const useContentStyles = makeStyles({
   iconBadgeOverlap: {
     display: 'grid',
     flexDirection: 'unset',
-    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
-    gridTemplateRows: '1fr 1fr 1fr 1fr',
+    gridTemplateColumns: 'auto auto auto auto auto auto',
+    gridTemplateRows: 'auto auto auto auto auto',
     justifyContent: 'center',
     justifyItems: 'center',
     alignContent: 'center',
