@@ -1,24 +1,25 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src"],
   "compilerOptions": {
     "target": "ES2019",
+    "noEmit": true,
     "isolatedModules": true,
-    "module": "CommonJS",
-    "lib": ["ES2019", "dom"],
-    "outDir": "dist",
-    "jsx": "react",
-    "declaration": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
+    "jsx": "react",
     "noUnusedLocals": true,
-    "preserveConstEnums": true,
-    "types": [
-      "jest",
-      "custom-global",
-      "inline-style-expand-shorthand",
-      "@testing-library/jest-dom",
-      "storybook__addons"
-    ]
-  }
+    "preserveConstEnums": true
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
+  ]
 }
