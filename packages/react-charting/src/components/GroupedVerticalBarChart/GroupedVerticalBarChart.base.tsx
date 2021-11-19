@@ -31,7 +31,7 @@ import {
 } from '../../index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
-const CUSTOMBARWIDTH_BARSPACE = 2.5;
+const BAR_SPACE = 2.5;
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
 type StringAxis = D3Axis<string>;
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -406,7 +406,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     let bandWidth = xScale0.bandwidth();
     if (this.props.barwidth) {
       const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
-      const totalWidth = (this.props.barwidth! + CUSTOMBARWIDTH_BARSPACE) * tempDataSet.length;
+      const totalWidth = (this.props.barwidth! + BAR_SPACE) * tempDataSet.length;
       this._isCustomBarWidth = totalWidth < xScale0.bandwidth();
       bandWidth = this._isCustomBarWidth ? totalWidth : xScale0.bandwidth();
       this._x1TotalBandWidth = bandWidth;
