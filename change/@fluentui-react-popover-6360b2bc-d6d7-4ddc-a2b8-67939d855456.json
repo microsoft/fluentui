@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update api files",
+  "packageName": "@fluentui/react-popover",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
