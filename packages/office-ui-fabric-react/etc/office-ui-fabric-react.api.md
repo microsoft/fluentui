@@ -6046,6 +6046,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     containerClassName?: string;
     dragOptions?: IDragOptions;
     enableAriaHiddenSiblings?: boolean;
+    isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;
