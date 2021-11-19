@@ -24,6 +24,7 @@ export const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle 
         return acc;
       }
 
+      // Without casting to any TSC gives "Expression produces a union type that is too complex to represent" error
       (acc as any)[cssPropertyName] = felaInvokeKeyframesPlugin(cssPropertyValue as ICSSInJSStyle);
       return acc;
     }
