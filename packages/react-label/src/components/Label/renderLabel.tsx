@@ -12,7 +12,7 @@ export const renderLabel = (state: LabelState) => {
   return (
     <slots.root {...slotProps.root}>
       {state.root.children}
-      <slots.required {...slotProps.required} />
+      <slots.required aria-hidden="true" {...slotProps.required} />
     </slots.root>
   );
 };
