@@ -55,7 +55,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           onBlur={this._onBlur}
           opacity={opacity}
           onClick={href ? this._redirectToUrl.bind(this, href) : this.props.data?.data.onClick}
-          aria-labelledby={this.props.calloutId}
+          aria-labelledby={focusedArcId === id ? this.props.calloutId : undefined}
           role="text"
         />
         <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>

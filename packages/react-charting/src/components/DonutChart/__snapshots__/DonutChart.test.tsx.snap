@@ -44,7 +44,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout0"
               className=
 
                   {
@@ -80,7 +79,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout0"
               className=
 
                   {
@@ -402,7 +400,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         >
           <g>
             <path
-              aria-labelledby="callout9"
               className=
 
                   {
@@ -438,7 +435,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           </g>
           <g>
             <path
-              aria-labelledby="callout9"
               className=
 
                   {
@@ -760,7 +756,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout3"
               className=
 
                   {
@@ -796,7 +791,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout3"
               className=
 
                   {
@@ -884,7 +878,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout6"
               className=
 
                   {
@@ -920,7 +913,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout6"
               className=
 
                   {
@@ -1242,7 +1234,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         >
           <g>
             <path
-              aria-labelledby="callout12"
               className=
 
                   {
@@ -1280,7 +1271,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           </g>
           <g>
             <path
-              aria-labelledby="callout12"
               className=
 
                   {
