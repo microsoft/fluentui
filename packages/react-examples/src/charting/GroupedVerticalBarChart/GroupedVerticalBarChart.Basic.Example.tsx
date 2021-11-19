@@ -4,6 +4,7 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 interface IGroupedBarChartState {
   width: number;
   height: number;
+  barwidth: number;
 }
 
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
@@ -12,6 +13,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     this.state = {
       width: 700,
       height: 400,
+      barwidth: 10,
     };
   }
 
@@ -25,7 +27,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
   private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ height: parseInt(e.target.value, 10) });
   };
-
+  private _onBarwidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ barwidth: parseInt(e.target.value, 10) });
+  };
   private _basicExample(): JSX.Element {
     const data = [
       {
@@ -122,6 +126,10 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <br />
+        <label>change Barwidth:</label>
+        <input type="range" value={this.state.barwidth} min={10} max={70} onChange={this._onBarwidthChange} />
+        <label>{this.state.barwidth}</label>
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             culture={window.navigator.language}
@@ -131,6 +139,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             width={this.state.width}
             showYAxisGridLines
             wrapXAxisLables
+            barwidth={this.state.barwidth}
           />
         </div>
       </>
