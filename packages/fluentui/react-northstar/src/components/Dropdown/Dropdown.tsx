@@ -552,7 +552,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
-      'aria-haspopup': 'listbox',
       ...(open && { 'aria-expanded': true }),
     });
 
