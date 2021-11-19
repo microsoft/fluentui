@@ -31,6 +31,7 @@ export {
   ScreenWidthMinXXXLarge,
   Stylesheet,
   ThemeSettingName,
+  ZIndexes,
   buildClassMap,
   concatStyleSets,
   concatStyleSetsWithProps,
