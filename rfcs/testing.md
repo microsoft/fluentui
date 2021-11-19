@@ -64,6 +64,8 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   Prevent regressions in user flows by testing interactions. We're currently using [Cypress](https://www.cypress.io/) for this.
 
+We should also consider as a best practice for writing our tests the following article: https://kentcdodds.com/blog/write-tests
+
 ### Pros and Cons
 
 There are no pros and cons currently. We should agree on the standards first.
