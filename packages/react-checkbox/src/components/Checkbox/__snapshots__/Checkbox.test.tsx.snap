@@ -1,9 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox renders a default state 1`] = `
+exports[`Checkbox renders a custom indicator 1`] = `
 <div>
   <label
     class="fui-Label fui-Checkbox"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="fui-Checkbox-indicator"
+      >
+        <span
+          id="indicator"
+        />
+      </div>
+      <input
+        class=""
+        id="checkbox-1"
+        type="checkbox"
+      />
+    </div>
+    Custom indicator
+  </label>
+</div>
+`;
+
+exports[`Checkbox renders a default state 1`] = `
+<div>
+  <span
+    class="fui-Checkbox"
   >
     <div
       class=""
@@ -28,12 +54,11 @@ exports[`Checkbox renders a default state 1`] = `
         type="checkbox"
       />
     </div>
-    Default Checkbox
-  </label>
+  </span>
 </div>
 `;
 
-exports[`Checkbox renders checked correctly 1`] = `
+exports[`Checkbox renders checked 1`] = `
 <div>
   <label
     class="fui-Label fui-Checkbox"
@@ -62,12 +87,12 @@ exports[`Checkbox renders checked correctly 1`] = `
         type="checkbox"
       />
     </div>
-    Default Checkbox
+    Checked Checkbox
   </label>
 </div>
 `;
 
-exports[`Checkbox renders mixed correctly 1`] = `
+exports[`Checkbox renders mixed 1`] = `
 <div>
   <label
     class="fui-Label fui-Checkbox"
@@ -99,12 +124,12 @@ exports[`Checkbox renders mixed correctly 1`] = `
         type="checkbox"
       />
     </div>
-    Default Checkbox
+    Mixed Checkbox
   </label>
 </div>
 `;
 
-exports[`Checkbox renders unchecked correctly 1`] = `
+exports[`Checkbox renders with a label 1`] = `
 <div>
   <label
     class="fui-Label fui-Checkbox"
@@ -132,7 +157,7 @@ exports[`Checkbox renders unchecked correctly 1`] = `
         type="checkbox"
       />
     </div>
-    Default Checkbox
+    Unchecked Checkbox
   </label>
 </div>
 `;
