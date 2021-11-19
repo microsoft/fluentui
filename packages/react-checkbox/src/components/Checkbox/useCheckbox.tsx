@@ -12,6 +12,16 @@ import { CheckboxProps, CheckboxState } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
 import { Label, LabelProps } from '@fluentui/react-label';
 
+const CheckmarkIcon = {
+  medium: <Checkmark12Regular />,
+  large: <Checkmark16Regular />,
+};
+
+const MixedIcon = {
+  medium: <Mixed12Regular />,
+  large: <Mixed16Regular />,
+};
+
 /**
  * Create the state required to render Checkbox.
  *
@@ -63,17 +73,11 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     }),
     indicator: resolveShorthand(props.indicator, {
       required: true,
+      defaultProps: {
+        children: checked === 'mixed' ? MixedIcon[size] : CheckmarkIcon[size],
+      },
     }),
   };
-
-  // Add the the default checkmark icon if none was provided
-  if (!state.indicator.children) {
-    if (state.size === 'medium') {
-      state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
-    } else {
-      state.indicator.children = checked === 'mixed' ? <Mixed16Regular /> : <Checkmark16Regular />;
-    }
-  }
 
   const onChange = state.input.onChange as CheckboxProps['onChange'];
   state.input.onChange = useEventCallback(ev => {
