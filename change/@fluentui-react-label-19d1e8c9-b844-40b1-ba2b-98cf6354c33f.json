@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add aria-hidden to Label required field",
+  "packageName": "@fluentui/react-label",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
