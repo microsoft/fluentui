@@ -40,6 +40,8 @@ export async function createChrome(): Promise<Browser> {
     openPage: async url => {
       const page = await browser.newPage();
 
+      page.emulateCPUThrottling();
+
       await page.goto(url);
 
       return {

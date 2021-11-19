@@ -10,9 +10,9 @@ import {
   borderWidth,
   margin,
   padding,
-} from './macros/index';
+} from './shorthands/index';
 
-export const macros = {
+export const shorthands = {
   border,
   borderLeft,
   borderBottom,

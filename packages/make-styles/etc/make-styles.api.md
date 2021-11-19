@@ -56,21 +56,6 @@ export const LOOKUP_DIR_INDEX = 1;
 export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ /* dir */ 'rtl' | 'ltr'];
 
 // @public (undocumented)
-export const macros: {
-    border: typeof border;
-    borderLeft: typeof borderLeft;
-    borderBottom: typeof borderBottom;
-    borderRight: typeof borderRight;
-    borderTop: typeof borderTop;
-    borderColor: typeof borderColor;
-    borderStyle: typeof borderStyle;
-    borderRadius: typeof borderRadius;
-    borderWidth: typeof borderWidth;
-    margin: typeof margin;
-    padding: typeof padding;
-};
-
-// @public (undocumented)
 export type MakeStaticStyles = ({
     [key: string]: Properties & Record<string, any>;
 } & {
@@ -170,6 +155,21 @@ export const SEQUENCE_PREFIX = "___";
 
 // @public (undocumented)
 export type SequenceHash = string;
+
+// @public (undocumented)
+export const shorthands: {
+    border: typeof border;
+    borderLeft: typeof borderLeft;
+    borderBottom: typeof borderBottom;
+    borderRight: typeof borderRight;
+    borderTop: typeof borderTop;
+    borderColor: typeof borderColor;
+    borderStyle: typeof borderStyle;
+    borderRadius: typeof borderRadius;
+    borderWidth: typeof borderWidth;
+    margin: typeof margin;
+    padding: typeof padding;
+};
 
 // @public
 export type StyleBucketName = 'd' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 'k' | 't';
