@@ -44,6 +44,11 @@ export const useSliderState = (state: SliderState) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
 
+  const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
+  const originPercent = React.useMemo(() => {
+    return origin !== undefined ? getPercent(origin, min, max) : 0;
+  }, [max, min, origin]);
+
   /**
    * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
    */
@@ -133,46 +138,23 @@ export const useSliderState = (state: SliderState) => {
     [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
-  const getTrackBorderRadius = () => {
-    if (origin !== undefined && origin !== (max || min)) {
-      if (vertical) {
-        return originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px';
-      } else {
-        return (dir === 'rtl' ? valuePercent > originPercent : valuePercent < originPercent)
-          ? '99px 0px 0px 99px'
-          : '0px 99px 99px 0px';
-      }
-    }
-    return '99px';
-  };
-
   useUnmount(() => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
   });
 
-  const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
-
-  const originPercent = React.useMemo(() => {
-    return origin !== undefined ? getPercent(origin, min, max) : 0;
-  }, [max, min, origin]);
-
-  const thumbStyles = {
-    [vertical ? 'top' : 'left']: valuePercent + '%',
-    transition: stepAnimation ? `left ease-in-out ${animationTime}` : 'none',
-    ...state.thumb.style,
+  const thumbVariables = {
+    '--slider-thumb-position': valuePercent + '%',
+    '--slider-thumb-transition': stepAnimation ? `left ease-in-out ${animationTime}` : 'none',
   };
 
-  const trackStyles = {
-    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']:
-      origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
-    [vertical ? 'height' : 'width']:
+  const trackVariables = {
+    '--slider-track-offset': origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
+    '--slider-track-progress':
       origin !== undefined
         ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
         : `${valuePercent}%`,
-    borderRadius: getTrackBorderRadius(),
-    // When a transition is applied with the origin, a visible animation plays when it goes below the min.
-    transition: stepAnimation
+    '--slider-track-transition': stepAnimation
       ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}${
           origin !== undefined
             ? ', ' + vertical
@@ -183,22 +165,34 @@ export const useSliderState = (state: SliderState) => {
             : ''
         }`
       : 'none',
-    ...state.track.style,
+    '--slider-track-border-radius':
+      // if has !origin, border on one end
+      origin !== undefined && origin !== (max || min)
+        ? // top or bottom if vertical
+          vertical
+          ? originPercent > valuePercent
+            ? '99px 99px 0px 0px'
+            : '0px 0px 99px 99px'
+          : // left or right depending on rtl and values
+          (dir === 'rtl' ? valuePercent > originPercent : valuePercent < originPercent)
+          ? '99px 0px 0px 99px'
+          : '0px 99px 99px 0px'
+        : '99px',
   };
 
   // Root props
+  state.root.style = {
+    ...thumbVariables,
+    ...trackVariables,
+    ...state.root.style,
+  };
+
   if (!disabled) {
     state.root.onPointerDown = onPointerDown;
     state.root.onKeyDown = onKeyDown;
   }
 
-  // Track Props
-  state.track.style = trackStyles;
-
-  // Thumb Props
-  state.thumb.style = thumbStyles;
-
-  // Active Rail Props
+  // Rail Props
   state.rail.ref = railRef;
 
   // Input Props

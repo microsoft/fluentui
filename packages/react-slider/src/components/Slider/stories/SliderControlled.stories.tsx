@@ -1,6 +1,8 @@
 import * as React from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Label } from '@fluentui/react-label';
-import { Slider } from '../../../index';
+import { Slider, SliderProps } from '../../../index';
 
 export const Controlled = () => {
   const [sliderValue, setSliderValue] = React.useState(160);
@@ -11,7 +13,7 @@ export const Controlled = () => {
 
   return (
     <>
-      <Label htmlFor='controlled-slider'>Controlled Example [ Current Value: {sliderValue} ]</Label>
+      <Label htmlFor="controlled-slider">Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider
         value={sliderValue}
         min={10}

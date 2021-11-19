@@ -107,17 +107,22 @@ export const useRailStyles = makeStyles({
  */
 export const useTrackStyles = makeStyles({
   track: theme => ({
-    borderRadius: theme.borderRadiusXLarge,
+    borderRadius: `var(--slider-track-border-radius, ${theme.borderRadiusXLarge})`,
     gridArea: 'slider',
     position: 'relative',
+    transition: 'var(--slider-track-transition)',
   }),
 
   horizontal: {
     height: 'var(--slider-rail-size)',
+    left: 'var(--slider-track-offset)',
+    width: 'var(--slider-track-progress)',
   },
 
   vertical: {
     width: 'var(--slider-rail-size)',
+    top: 'var(--slider-track-offset)',
+    height: 'var(--slider-track-progress)',
   },
 
   enabled: theme => ({
@@ -141,8 +146,8 @@ export const useThumbStyles = makeStyles({
     borderRadius: theme.borderRadiusCircular,
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
     transform: 'translateX(-50%)',
-    left: 0,
 
+    transition: 'var(--slider-thumb-transition)',
     ':before': {
       position: 'absolute',
       top: '0px',
@@ -166,10 +171,13 @@ export const useThumbStyles = makeStyles({
       border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralForegroundDisabled}`,
     },
   }),
-
-  vertical: theme => ({
+  horizontal: {
+    left: 'var(--slider-thumb-position)',
+  },
+  vertical: {
     transform: 'translateY(-50%)',
-  }),
+    top: 'var(--slider-thumb-position)',
+  },
 });
 
 /**
@@ -227,7 +235,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.thumb.className = mergeClasses(
     thumbClassName,
     thumbStyles.thumb,
-    state.vertical && thumbStyles.vertical,
+    state.vertical ? thumbStyles.vertical : thumbStyles.horizontal,
     state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.thumb.className,
   );

@@ -6,6 +6,7 @@ export * from './stories/SliderDefault.stories';
 export * from './stories/SliderControlled.stories';
 export * from './stories/SliderStep.stories';
 export * from './stories/SliderOrigin.stories';
+export * from './stories/SliderVertical.stories';
 export * from './stories/SliderDisabled.stories';
 
 export default {
