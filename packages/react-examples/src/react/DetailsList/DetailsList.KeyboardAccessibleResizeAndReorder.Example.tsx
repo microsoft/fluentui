@@ -18,7 +18,7 @@ import { TextField, ITextFieldStyles, ITextField } from '@fluentui/react/lib/Tex
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { getTheme, mergeStyles } from '@fluentui/react/lib/Styling';
 import { ContextualMenu, IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/components/Button';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import Dialog, { DialogFooter, DialogType } from '@fluentui/react/lib/Dialog';
 
 const RESIZE = 'Resize';
