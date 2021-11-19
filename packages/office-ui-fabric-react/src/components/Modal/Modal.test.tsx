@@ -22,6 +22,7 @@ describe('Modal', () => {
 
     ReactDOM.createPortal.mockClear();
   });
+
   it('renders Modeless Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
@@ -43,6 +44,7 @@ describe('Modal', () => {
 
     ReactDOM.createPortal.mockClear();
   });
+
   it('renders Draggable Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
@@ -69,6 +71,7 @@ describe('Modal', () => {
 
     ReactDOM.createPortal.mockClear();
   });
+
   it('renders a Modal with ARIA role alertDialog when isAlert is true', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
@@ -85,6 +88,7 @@ describe('Modal', () => {
     expect(component.root.findByType(Popup).props.role).toBe('alertdialog');
     ReactDOM.createPortal.mockClear();
   });
+
   it('renders Modal with ARIA role dialog when isModeless and isBlocking are set to true', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
@@ -131,6 +135,7 @@ describe('Modal', () => {
     expect(component.root.findByType(Popup).props.role).toBe('dialog');
     ReactDOM.createPortal.mockClear();
   });
+
   it('renders Modal with ARIA role alertdialog when isBlocking is true', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
