@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
-  getPrimarySlotNativeProps,
-  getRootSlotNativeProps,
+  getPartitionedNativeProps,
   resolveShorthand,
   useControllableState,
   useEventCallback,
@@ -31,6 +30,17 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     initialState: false,
   });
 
+  // Create a ref object for the input element so we can use it later.
+  // Use useMergedRefs, since the passed `ref` might be undefined or a function-ref (no .current)
+  const inputRef = useMergedRefs(ref);
+
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    tagName: 'input',
+    // Exclude checked/defaultChecked/children from the input slot; they have custom handling in useCheckbox
+    excludedPropNames: ['checked', 'defaultChecked', 'children'],
+  });
+
   const state: CheckboxState = {
     children,
     circular,
@@ -44,16 +54,16 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     },
     root: resolveShorthand(props.root, {
       required: true,
-      defaultProps: getRootSlotNativeProps(props),
+      defaultProps: nativeProps.root,
     }),
     input: resolveShorthand(props.input, {
       required: true,
       defaultProps: {
         type: 'checkbox',
         id: useId('checkbox-', props.id),
-        ref,
-        // Exclude checked/defaultChecked/children from the input slot; they have custom handling in useCheckbox
-        ...getPrimarySlotNativeProps('input', props, /* excludedPropNames:*/ ['checked', 'defaultChecked', 'children']),
+        ref: inputRef,
+        checked: checked === true,
+        ...nativeProps.primary,
       },
     }),
     indicator: resolveShorthand(props.indicator, {
@@ -77,12 +87,8 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     setChecked(val);
   });
 
-  const inputRef = useMergedRefs(state.input.ref);
-  state.input.ref = inputRef;
-
   // Set the <input> element's checked and indeterminate properties based on our tri-state property.
   // Since indeterminate can only be set via javascript, it has to be done in a layout effect.
-  state.input.checked = checked === true;
   const indeterminate = checked === 'mixed';
   useIsomorphicLayoutEffect(() => {
     if (inputRef.current) {

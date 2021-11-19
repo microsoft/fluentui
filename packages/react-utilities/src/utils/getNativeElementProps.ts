@@ -67,24 +67,29 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
 }
 
 /**
- * Returns the native props that always go to the root slot.
+ * Splits the native props into ones that go to the 'root' slot, and ones that go to the 'primary' slot.
  *
- * This function is only for use with components where `root` is *not* the primary slot.
+ * This function is only for use with components that have a primary slot other than 'root'.
  * Most components should use {@link getNativeElementProps} for their root slot if it is the primary slot.
+ *
+ * @returns An object containing the native props for the `root` and `primary` slots.
  */
-export const getRootSlotNativeProps = ({
-  style,
-  className,
-}: Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>) => ({ style, className });
+export const getPartitionedNativeProps = ({
+  tagName,
+  props,
+  excludedPropNames,
+}: {
+  /** The element's tag name (e.g. 'div') */
+  tagName: keyof JSX.IntrinsicElements;
 
-/**
- * Returns the native props that go to the primary slot.
- *
- * This function is only for use with components where `root` is *not* the primary slot.
- * Most components should use {@link getNativeElementProps} for their root slot if it is the primary slot.
- */
-export const getPrimarySlotNativeProps = (
-  tagName: keyof JSX.IntrinsicElements,
-  props: {},
-  excludedPropNames: string[] = [],
-) => getNativeElementProps(tagName, props, [...excludedPropNames, 'style', 'className']);
+  /** The component's props object */
+  props: Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
+
+  /** List of native props to exclude from the returned value */
+  excludedPropNames?: string[];
+}) => {
+  return {
+    root: { style: props.style, className: props.className },
+    primary: getNativeElementProps(tagName, props, [...(excludedPropNames ?? []), 'style', 'className']),
+  };
+};
