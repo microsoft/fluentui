@@ -39,12 +39,9 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   Focus on testing the behaviour or functionality. We should use them to guarantee the outcome, whether this is a styling, behaviour or functionality change.
   We should try to focus on behaviour, when possible, but mainly on the expected results for the code.
+  We also try to mock as little as possible and join in integration testing.
 
   These are all the additional unit tests defined in your `*.test.ts[x]` file.
-
-- **Integration**
-
-  Share focus with Unit tests, but for cases where you want to test your component/service with other components/services, without mocking those dependencies. Currently we don't differentiate them from Unit tests but a possibility would be to split them into separate files. However, given our tight dependency on other utilities on our components (i.e. `make-styles`) such delineation might be complicated.
 
 - **Performance**
 
