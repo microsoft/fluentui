@@ -6,7 +6,7 @@ import type { RadioItemProps } from './RadioItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * RadioItem component
+ * RadioItem component is a wrapper for a radio button with a label.
  */
 export const RadioItem: ForwardRefComponent<RadioItemProps> = React.forwardRef((props, ref) => {
   const state = useRadioItem(props, ref);
