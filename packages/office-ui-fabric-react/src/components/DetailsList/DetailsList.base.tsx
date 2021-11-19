@@ -1070,7 +1070,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   }
 
   private _notifyColumnsResized(): void {
-    this.state.adjustedColumns.forEach((column) => {
+    this.state.adjustedColumns.forEach(column => {
       if (column.onColumnResize) {
         column.onColumnResize(column.currentWidth);
       }
@@ -1126,13 +1126,13 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       adjustedColumns = this._getFixedColumns(newColumns, viewportWidth, newProps);
 
       // Preserve adjusted column calculated widths.
-      adjustedColumns.forEach((column) => {
+      adjustedColumns.forEach(column => {
         this._rememberCalculatedWidth(column, column.calculatedWidth!);
       });
     } else {
       adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
 
-      adjustedColumns.forEach((column) => {
+      adjustedColumns.forEach(column => {
         this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
       });
     }
@@ -1183,7 +1183,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     widthFraction = remainingWidth > 0 ? remainingWidth / sumProportionalWidth : 0;
 
-    return newColumns.map((column) => {
+    return newColumns.map(column => {
       const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
 
       // Delay computation until viewport width is available.
