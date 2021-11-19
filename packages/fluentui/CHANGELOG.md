@@ -42,6 +42,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix color of `Dropdown` checkable indicator on hover in high contrast theme @annabratseiko ([#20621](https://github.com/microsoft/fluentui/pull/20621))
 - Fix `Carousel` comoponents to properly pass ref to root slots @chpalac ([#20645](https://github.com/microsoft/fluentui/pull/20645))
 - Fix `Card` comoponent to properly pass ref to root slots @chpalac ([#20644](https://github.com/microsoft/fluentui/pull/20644))
+- Fix `Dropdown` by conditionally adding `aria-expanded="true"` to the button trigger @chpalac ([#20671](https://github.com/microsoft/fluentui/pull/20671))
 - Optimized `felaInvokeKeyframesPlugin` to not create new objects but reuse existing one in `reduce` @mbman ([#20649](https://github.com/microsoft/fluentui/pull/20649))
 
 ### Features
