@@ -9,15 +9,15 @@ import {
   IColumnReorderOptions,
   IDragDropEvents,
   IDragDropContext,
-  IDetailsColumnProps,
   IDetailsListKeyboardColumnEditProps,
+  ColumnActionsMode,
 } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { TextField, ITextFieldStyles, ITextField } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { getTheme, mergeStyles } from '@fluentui/react/lib/Styling';
-import { IContextualMenuItemProps, IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
+import { ContextualMenu, IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/components/Button';
 import Dialog, { DialogFooter, DialogType } from '@fluentui/react/lib/Dialog';
 
@@ -162,21 +162,26 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     hideDialog();
   };
 
-  const onRenderHeader = (props: IDetailsColumnProps) => {
-    const { column } = props;
-    const menuProps: IContextualMenuProps = {
-      shouldFocusOnMount: true,
-      contextualMenuItemAs: (contextualMenuItemProps: IContextualMenuItemProps) => (
-        <div onClick={contextualMenuItemProps.item.onClick}>{contextualMenuItemProps.item.text}</div>
-      ),
-      items: [
-        { key: 'resize', text: 'Resize', onClick: () => resizeColumn(column) },
-        { key: 'reorder', text: 'Reorder', onClick: () => reorderColumn(column) },
-        { key: 'sort', text: 'Sort', onClick: () => sortColumn(column) },
-      ],
-    };
+  const onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
+    if (column.columnActionsMode !== ColumnActionsMode.disabled) {
+      setContextualMenuProps(getContextualMenuProps(ev, column));
+    }
+  };
 
-    return <DefaultButton text={column.fieldName} menuProps={menuProps} />;
+  const getContextualMenuProps = (ev: React.MouseEvent<HTMLElement>, column: IColumn): IContextualMenuProps => {
+    const items = [
+      { key: 'resize', text: 'Resize', onClick: () => resizeColumn(column) },
+      { key: 'reorder', text: 'Reorder', onClick: () => reorderColumn(column) },
+      { key: 'sort', text: 'Sort', onClick: () => sortColumn(column) },
+    ];
+
+    return {
+      items: items,
+      target: ev.currentTarget as HTMLElement,
+      gapSpace: 10,
+      isBeakVisible: true,
+      onDismiss: onHideContextualMenu,
+    };
   };
 
   const hideDialog = () => setIsDialogHidden(true);
@@ -209,13 +214,15 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     setColumns(sortedColumns);
   };
 
+  const onHideContextualMenu = React.useCallback(() => setContextualMenuProps(undefined), []);
+
   const selection = new Selection();
   const dragDropEvents = getDragDropEvents();
   const [draggedItem, setDraggedItem] = React.useState(undefined);
   const [draggedIndex, setDraggedIndex] = React.useState(-1);
   const [items, setItems] = React.useState<IExampleItem[]>(createListItems(5, 0));
   const [sortedItems, setSortedItems] = React.useState<IExampleItem[]>(items);
-  const [columns, setColumns] = React.useState<IColumn[]>(buildColumns(items, true, undefined, undefined, false));
+  const [columns, setColumns] = React.useState<IColumn[]>(buildColumns(items, true, onColumnClick, undefined, false));
   const [isColumnReorderEnabled, setIsColumnReorderEnabled] = React.useState<boolean>(true);
   const [frozenColumnCountFromStart, setFrozenColumnCountFromStart] = React.useState<string>('1');
   const [frozenColumnCountFromEnd, setFrozenColumnCountFromEnd] = React.useState<string>('0');
@@ -223,17 +230,14 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const textfieldRef = React.useRef<ITextField>(null);
   const columnToEdit = React.useRef<IColumn | null>(null);
   const clickHandler = React.useRef<string>(RESIZE);
-  const cols = columns.map(_col => ({
-    ..._col,
-    onRenderHeader: onRenderHeader,
-  }));
+  const [contextualMenuProps, setContextualMenuProps] = React.useState<IContextualMenuProps | undefined>(undefined);
 
   const [keyboardColumnEditProps, setKeyboardColumnEditProps] = React.useState<
     IDetailsListKeyboardColumnEditProps | undefined
   >(undefined);
 
   React.useEffect(() => {
-    // reset keyboardColumnEditProps back to undefined to keep dragging and resizing dynamic.
+    // reset keyboardColumnEditProps back to undefined to keep reordering and resizing dynamic.
     setKeyboardColumnEditProps(undefined);
   }, [keyboardColumnEditProps]);
 
@@ -241,14 +245,14 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     type: DialogType.normal,
     title: 'Resize Column',
     closeButtonAriaLabel: 'Close',
-    subText: 'Enter desired column width:',
+    subText: 'Enter desired column width pixels:',
   };
 
   const reorderDialogContentProps = {
     type: DialogType.normal,
     title: 'Reorder Column',
     closeButtonAriaLabel: 'Close',
-    subText: 'Enter which column you want to move this column from 1 to end.',
+    subText: 'Enter which column to move this to (use 1-based indexing):',
   };
 
   const modalProps = {
@@ -288,7 +292,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         <DetailsList
           setKey="items"
           items={sortedItems}
-          columns={cols}
+          columns={columns}
           selection={selection}
           selectionPreservedOnEmptyClick={true}
           onItemInvoked={onItemInvoked}
@@ -300,6 +304,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
           checkButtonAriaLabel="select row"
           keyboardColumnEditProps={keyboardColumnEditProps}
         />
+        {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
       </MarqueeSelection>
 
       <Dialog
