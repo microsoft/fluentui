@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 19 Nov 2021 07:45:28 GMT",
+      "tag": "@fluentui/react_v8.42.4",
+      "version": "8.42.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "67a015efa01f6b07a701798d97c8edb3495834a0",
+            "comment": "update Callout to update both maxHeight and positions when recalculating"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Nov 2021 07:29:22 GMT",
       "tag": "@fluentui/react_v8.42.3",
       "version": "8.42.3",

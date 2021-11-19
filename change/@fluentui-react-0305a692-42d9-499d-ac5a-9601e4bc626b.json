@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update Callout to update both maxHeight and positions when recalculating",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
