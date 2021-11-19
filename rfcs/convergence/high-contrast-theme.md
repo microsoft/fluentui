@@ -62,22 +62,22 @@ Besides the media query, [CSS system colors](https://www.w3.org/TR/css-color-4/#
 
 #### High Contrast Black (Windows built-in, matches FUI HC theme)
 
-![Black High contrast theme screenshot](assets/high-contrast-theme-black.png)
+![Black High contrast theme screenshot](../assets/high-contrast-theme-black.png)
 
 #### High Contrast White (Windows built-in)
 
-![White High contrast theme screenshot](assets/high-contrast-theme-white.png)
+![White High contrast theme screenshot](../assets/high-contrast-theme-white.png)
 
 #### High Contrast with custom user-defined colors
 
-![Custom High contrast theme screenshot](assets/high-contrast-theme-custom.png)
+![Custom High contrast theme screenshot](../assets/high-contrast-theme-custom.png)
 
 The screenshots are from a [codesandbox showing the usage of CSS system colors](https://codesandbox.io/s/high-contrast-1usny?file=/index.html) to render the same layout as Windows settings dialog for HC.
 
 ### Implementation in FUI theme
 
 Current HC FUI theme uses the following five colors - `white`, `black`, `hyperlink`, `disabled`, `selected`:
-![Current HC colors](assets/high-contrast-theme-current-colors.png).
+![Current HC colors](../assets/high-contrast-theme-current-colors.png).
 
 A simple solution would be to create five new color tokens and, using a combination of `forced-colors` media query and css variables, map them to the FUI colors if `forced-colors` are not active and to system colors if `forced-colors` are active.
 After discussion with design, we decided to use all the eight colors currently available in Windows High Contrast theme. That adds HighlightText, ButtonText and ButtonFace to the 5 colors which are currently used in the high contrast theme.
@@ -121,7 +121,89 @@ After discussion with design, we decided to use all the eight colors currently a
 
 ### Allowing custom colors
 
-When HC theme is enabled in Windows, browsers enforce the system colors based on semantics. In that case styling options are quite limited. To avoid the limitation, a web application can set `forced-color-adjust: none` CSS property. FUI theme will set it on its root.
+When HC theme is enabled in Windows, browsers enforce the system colors based on semantics. In that case styling options are quite limited. To avoid the limitation, a web application can set `forced-color-adjust: none` CSS property. FUI theme should provide an option to set this to its root.
+
+```tsx
+<FluentProvider noForcedColors>{children}</FluentProvider>
+```
+
+For cases where there might be bugs in the OS forced colors rendering `forced-color-adjust:none` should only be applied in Fluent to the smallest part
+of the DOM where this is necessary. An example of can be for the styling of a primary button where `background-color` and `color` don't achieve the
+required results without `forced-color-adjust:none`
+
+```css
+@media (forced-colors: active) {
+  background-color: CanvasText;
+  color: Canvas;
+}
+
+@media (forced-colors: active) {
+  forced-color-adjust: none;
+  background-color: CanvasText;
+  color: Canvas;
+}
+```
+
+The first media query gives the result on the left, and the second media query gives the result on the right:
+
+![Scenario where forced-colors-adjust: none is necessary](../assets/force-color-adjust-necessary.png)
+
+### Applying high contrast styles
+
+High contrast media queries should only be applied when we are sure that `forced-colors-adjust: none` is not being used
+by any of the parent `FluentProvider` parents. This is because some applications (notably Teams) have a requirement that
+other themes can be used while OS high contrast mode is active.
+
+In this case, even if `forced-colors-adjust:none` is set on an element, media queries are still applied since the OS
+high contrast mode is still active. In this case, you can end up with a mixture of system colours and normal hex colours.
+
+```css
+.element {
+  color: white;
+  backgroundcolor: #FFFFF;
+}
+
+@media (forced-colors: active) {
+  .element {
+    forced-color-adjust: none;
+    /* in CSS this background-color wins because it is written later to DOM */
+    background-color: CanvasText;
+  }
+}
+```
+
+The above example uses `color: white` and `background-color: CanvasText` ⚠️⚠️
+
+Since `makeStyles` alway writes media queries last in the stylesheet, they will always override other styles.
+
+#### Apply forced color media queries only when required
+
+In order to rememdy this problem when the `FluentProvider` uses `forced-colors-adjust: none`
+
+```tsx
+<FluentProvider noForcedColors>{children}</FluentProvider>
+```
+
+We should create hook that will allow us to selectively apply media query styles. This hooks will be based on the value
+of `noForcedColors` flag in the `FluentProvider`.
+
+```ts
+const useStyles = makeStyles({
+  root: {
+    color: 'white',
+  },
+
+  rootHC: {
+    '@media (forced-colors: active)': {
+      color: 'CanvasText',
+    },
+  },
+});
+
+const styles = useStyles();
+const forcedColors: boolean = useIsForcedColors();
+state.root.className = mergeClases(styles.root, forcedColors && rootHC);
+```
 
 ### Other operating systems
 
