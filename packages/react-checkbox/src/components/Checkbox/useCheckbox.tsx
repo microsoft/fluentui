@@ -30,14 +30,9 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     initialState: false,
   });
 
-  // Create a ref object for the input element so we can use it later.
-  // Use useMergedRefs, since the passed `ref` might be undefined or a function-ref (no .current)
-  const inputRef = useMergedRefs(ref);
-
   const nativeProps = getPartitionedNativeProps({
     props,
     tagName: 'input',
-    // Exclude checked/defaultChecked/children from the input slot; they have custom handling in useCheckbox
     excludedPropNames: ['checked', 'defaultChecked', 'children'],
   });
 
@@ -60,8 +55,8 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
       required: true,
       defaultProps: {
         type: 'checkbox',
-        id: useId('checkbox-', props.id),
-        ref: inputRef,
+        id: useId('checkbox-', nativeProps.primary.id),
+        ref,
         checked: checked === true,
         ...nativeProps.primary,
       },
@@ -71,6 +66,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     }),
   };
 
+  // Add the the default checkmark icon if none was provided
   if (!state.indicator.children) {
     if (state.size === 'medium') {
       state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
@@ -86,6 +82,11 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     onChange?.(ev, { checked: val });
     setChecked(val);
   });
+
+  // Create a ref object for the input element so we can use it to set the indeterminate prop.
+  // Use useMergedRefs, since the ref might be undefined or a function-ref (no .current)
+  const inputRef = useMergedRefs(state.input.ref);
+  state.input.ref = inputRef;
 
   // Set the <input> element's checked and indeterminate properties based on our tri-state property.
   // Since indeterminate can only be set via javascript, it has to be done in a layout effect.
