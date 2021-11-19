@@ -5,8 +5,25 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": false,
     "noEmit": true,
-    "types": ["node"],
-    "typeRoots": ["node_modules/@types"]
+    "types": []
   },
-  "include": ["**/*.d.ts"]
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./environment/tsconfig.json"
+    },
+    {
+      "path": "./static-assets/tsconfig.json"
+    },
+    {
+      "path": "./inline-style-expand-shorthand/tsconfig.json"
+    },
+    {
+      "path": "./storybook__addons/tsconfig.json"
+    },
+    {
+      "path": "./custom-global/tsconfig.json"
+    }
+  ]
 }

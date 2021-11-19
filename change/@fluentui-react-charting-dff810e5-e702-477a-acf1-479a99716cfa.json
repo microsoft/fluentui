@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "YAxis issue for bar charts solved, when highest y axis value is odd number",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

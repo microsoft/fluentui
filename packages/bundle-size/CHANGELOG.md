@@ -1,8 +1,17 @@
 # Change Log - @fluentui/bundle-size
 
-This log was last generated on Mon, 27 Sep 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Nov 2021 07:36:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.2)
+
+Wed, 17 Nov 2021 07:36:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.1..@fluentui/bundle-size_v1.1.2)
+
+### Patches
+
+- Adds verification to compilation error ([PR #20613](https://github.com/microsoft/fluentui/pull/20613) by bsunderhus@microsoft.com)
 
 ## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.1)
 
