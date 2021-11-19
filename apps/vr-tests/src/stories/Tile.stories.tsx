@@ -11,7 +11,7 @@ import {
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 
 interface IDocumentItem {
   name: JSX.Element;
@@ -129,7 +129,7 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
 
 storiesOf('Tile', module)
   .addDecorator(story => <Fabric>{story()}</Fabric>)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -214,7 +214,7 @@ storiesOf('Tile', module)
 
 storiesOf('MediaTile', module)
   .addDecorator(story => <Fabric>{story()}</Fabric>)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener

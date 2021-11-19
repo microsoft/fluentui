@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { createArrowStyles } from '@fluentui/react-positioning';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceState } from './PopoverSurface.types';
 
@@ -55,31 +56,7 @@ const useStyles = makeStyles({
     height: `${Math.SQRT2 * arrowHeights.medium}px`,
   }),
 
-  // TODO dedupe these styles with tooltip
-  arrow: theme => ({
-    position: 'absolute',
-    background: 'inherit',
-    visibility: 'hidden',
-    zIndex: -1,
-
-    ':before': {
-      content: '""',
-      borderRadius: '4px',
-      position: 'absolute',
-      width: 'inherit',
-      height: 'inherit',
-      background: 'inherit',
-      visibility: 'visible',
-      borderBottomRightRadius: theme.borderRadiusSmall,
-      transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
-    },
-
-    // Popper sets data-popper-placement on the root element, which is used to align the arrow
-    ':global([data-popper-placement^="top"])': { bottom: 0, '--angle': '0' },
-    ':global([data-popper-placement^="right"])': { left: 0, '--angle': '90deg' },
-    ':global([data-popper-placement^="bottom"])': { top: 0, '--angle': '180deg' },
-    ':global([data-popper-placement^="left"])': { right: 0, '--angle': '270deg' },
-  }),
+  arrow: createArrowStyles(),
 });
 
 /**
