@@ -36,7 +36,6 @@ export {
   concatStyleSets,
   concatStyleSetsWithProps,
   createFontStyles,
-  createTheme,
   focusClear,
   fontFace,
   // eslint-disable-next-line deprecation/deprecation
@@ -61,7 +60,6 @@ export {
   mergeStyles,
   noWrap,
   normalize,
-  registerDefaultFontFaces,
   registerIconAlias,
   registerIcons,
   registerOnThemeChangeCallback,
@@ -69,6 +67,7 @@ export {
   setIconOptions,
   unregisterIcons,
 } from '@fluentui/style-utilities';
+export { createTheme, registerDefaultFontFaces } from '@fluentui/theme';
 export type {
   GlobalClassNames,
   IAnimationStyles,
