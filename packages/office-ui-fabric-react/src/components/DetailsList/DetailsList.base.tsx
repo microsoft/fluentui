@@ -415,8 +415,10 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderHeader: finalOnRenderDetailsGroupHeader,
       // pass through custom group header checkbox label
       headerProps: {
+        ...groupProps?.headerProps,
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
+          ...groupProps?.headerProps?.selectAllButtonProps,
         },
       },
     };
