@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Resolved In Browse mode, NVDA reads the callout content of first focus section multiple times",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-pkoganti@microsoft.com",
+  "dependentChangeType": "patch"
+}
