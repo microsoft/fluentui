@@ -23,10 +23,10 @@ https://open-ui.org/components/slider.research
 
 #### Research Summary
 
-**Marks**: Amongst other component libraries marks/ticks/notches are used to help visibly differ the current location of the thumb. Marks are also used to create custom steps through providing an array of values to jump too. Marks will be excluded from v1 of the Slider to reduce complexity and await guidance for marks from design and partners.
+**Marks**: Amongst other component libraries marks/ticks/notches are used to help visibly differ the current location of the thumb. Marks are also used to create custom steps through providing an array of values to jump too. Marks will be excluded from initial release of the Slider to reduce complexity and await guidance for marks from design and partners.
 
 **Ranged Slider**
-Since the `RangedSlider` and `Slider` have very different use cases and accessibility concerns they are planned to be separated into different components. Slider component will be the focus of v1 with the multi-thumb slider being a focus after launch.
+Since the `RangedSlider` and `Slider` have very different use cases and accessibility concerns they are planned to be separated into different components. Slider component will be the focus of initial release with the multi-thumb slider being a focus after launch.
 
 ## Sample Code
 
