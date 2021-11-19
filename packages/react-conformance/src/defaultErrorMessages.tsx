@@ -231,7 +231,7 @@ export const defaultErrorMessages = {
     //    your test file.
     return getErrorMessage({
       displayName,
-      overview: `doesn't apply the "ref" prop to its root (or primary) DOM node.`,
+      overview: `doesn't apply the "ref" prop to its root DOM node.`,
       suggestions: [
         `Make sure you're applying the ref to the ${resolveInfo('root element')} in your component.`,
         `Check if your component has a primary slot other than root, and add ${resolveInfo(
@@ -657,6 +657,23 @@ export const defaultErrorMessages = {
         `Check if you are missing any ${resolveInfo('requiredProps')} within the isConformant in your test file.`,
         `Make sure that your component's implementation contains a valid return statement.`,
         `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
+      ],
+      error,
+    });
+  },
+
+  'primary-slot-gets-native-props': (testInfo: IsConformantOptions, error: Error) => {
+    const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `doesn't forward native props (except className and style) to the primary slot.`,
+      suggestions: [
+        `Make sure you're using the ${resolveInfo(
+          'getPartitionedNativeProps',
+        )} function to assign the correct native props to the root and primary slots.`,
+        `Check that the ${resolveInfo(`primarySlot`)} argument to isConformant is correct in your test file.`,
       ],
       error,
     });
