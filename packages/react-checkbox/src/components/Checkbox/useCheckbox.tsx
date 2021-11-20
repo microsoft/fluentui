@@ -42,6 +42,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     checked,
     size,
     labelPosition,
+    hasLabel: !!children,
     components: {
       root: props.children !== undefined ? (Label as React.ComponentType<LabelProps>) : 'span',
       indicator: 'div',

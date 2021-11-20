@@ -84,4 +84,8 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
 /**
  * State used in rendering Checkbox
  */
-export type CheckboxState = ComponentState<CheckboxSlots> & Pick<CheckboxProps, 'children'> & CheckboxCommons;
+export type CheckboxState = ComponentState<CheckboxSlots> &
+  Pick<CheckboxProps, 'children'> &
+  CheckboxCommons & {
+    hasLabel: boolean;
+  };
