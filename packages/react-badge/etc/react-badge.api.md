@@ -30,8 +30,8 @@ export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeComm
 
 // @public (undocumented)
 export type BadgeSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, React_2.Ref<HTMLElement>>;
+    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, React_2.Ref<HTMLElement>>;
 };
 
 // @public (undocumented)

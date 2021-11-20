@@ -106,8 +106,8 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 // @public (undocumented)
 export type SplitButtonSlots = {
     root: IntrinsicShorthandProps<'div'>;
-    menuButton?: ObjectShorthandProps<MenuButtonProps, HTMLButtonElement | HTMLAnchorElement>;
-    primaryActionButton?: ObjectShorthandProps<ButtonProps, HTMLButtonElement | HTMLAnchorElement>;
+    menuButton?: ObjectShorthandProps<MenuButtonProps, React_2.Ref<HTMLButtonElement | HTMLAnchorElement>>;
+    primaryActionButton?: ObjectShorthandProps<ButtonProps, React_2.Ref<HTMLButtonElement | HTMLAnchorElement>>;
 };
 
 // @public (undocumented)

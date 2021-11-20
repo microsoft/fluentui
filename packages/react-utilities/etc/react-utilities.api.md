@@ -135,11 +135,11 @@ export const nullRender: () => null;
 // @public
 export type ObjectShorthandProps<Props extends {
     children?: React_2.ReactNode;
-} = {}, RefElement = Element> = Props & {
+} = {}, Ref = Props extends {
+    ref?: infer R;
+} ? R : React_2.Ref<Element>> = Props & {
     children?: Props['children'] | ShorthandRenderFunction<Props>;
-    ref?: Props extends {
-        ref?: infer R;
-    } ? R : React_2.Ref<RefElement>;
+    ref?: Ref;
 };
 
 // @public (undocumented)

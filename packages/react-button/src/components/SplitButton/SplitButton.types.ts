@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type {
   ComponentProps,
   ComponentState,
@@ -16,12 +17,12 @@ export type SplitButtonSlots = {
   /**
    * Button that opens menu with secondary actions in SplitButton.
    */
-  menuButton?: ObjectShorthandProps<MenuButtonProps, HTMLButtonElement | HTMLAnchorElement>;
+  menuButton?: ObjectShorthandProps<MenuButtonProps, React.Ref<HTMLButtonElement | HTMLAnchorElement>>;
 
   /**
    * Button to perform primary action in SplitButton.
    */
-  primaryActionButton?: ObjectShorthandProps<ButtonProps, HTMLButtonElement | HTMLAnchorElement>;
+  primaryActionButton?: ObjectShorthandProps<ButtonProps, React.Ref<HTMLButtonElement | HTMLAnchorElement>>;
 };
 
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> &

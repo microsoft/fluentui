@@ -32,9 +32,12 @@ export type DefaultObjectShorthandProps = ObjectShorthandProps<{
  *
  * For intrinsic elements like 'div', use {@link IntrinsicShorthandProps} instead.
  */
-export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}, RefElement = Element> = Props & {
+export type ObjectShorthandProps<
+  Props extends { children?: React.ReactNode } = {},
+  Ref = Props extends { ref?: infer R } ? R : React.Ref<Element>
+> = Props & {
   children?: Props['children'] | ShorthandRenderFunction<Props>;
-  ref?: Props extends { ref?: infer R } ? R : React.Ref<RefElement>;
+  ref?: Ref;
 };
 
 /**

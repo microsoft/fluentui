@@ -2,8 +2,8 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export type BadgeSlots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, React.Ref<HTMLElement>>;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, React.Ref<HTMLElement>>;
 };
 
 export type BadgeCommons = {
