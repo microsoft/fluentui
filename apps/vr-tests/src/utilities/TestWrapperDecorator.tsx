@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
-import { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/preview/types';
+import { ExtendedStoryFnReturnType } from './types';
 
-export const TestWrapperDecorator: DecoratorFunction<StoryFnReactReturnType> = story => (
+export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
       {story()}
@@ -10,7 +10,7 @@ export const TestWrapperDecorator: DecoratorFunction<StoryFnReactReturnType> = s
   </div>
 );
 
-export const TestWrapperDecoratorTall: DecoratorFunction<StoryFnReactReturnType> = story => (
+export const TestWrapperDecoratorTall: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
       {story()}
@@ -18,7 +18,7 @@ export const TestWrapperDecoratorTall: DecoratorFunction<StoryFnReactReturnType>
   </div>
 );
 
-export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
+export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
       {story()}
@@ -26,7 +26,7 @@ export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<StoryFnReactR
   </div>
 );
 
-export const TestWrapperDecoratorFixedWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
+export const TestWrapperDecoratorFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
       {story()}
@@ -34,7 +34,7 @@ export const TestWrapperDecoratorFixedWidth: DecoratorFunction<StoryFnReactRetur
   </div>
 );
 
-export const TestWrapperDecoratorFullWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
+export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
       {story()}
@@ -71,7 +71,7 @@ const mapper = { default: '', fixed: '300px', full: '100%' };
  */
 export function modifyDeprecatedDecoratorStyles(options: {
   mode: keyof typeof mapper;
-}): DecoratorFunction<StoryFnReactReturnType> {
+}): DecoratorFunction<ExtendedStoryFnReturnType> {
   const { mode } = options;
   return story => {
     return (
