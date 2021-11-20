@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding ref to ObjectShorthandProps so we can always pass a ref down in composite components.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

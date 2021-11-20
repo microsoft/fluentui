@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating types to conform to change in ObjectShorthandProps.",
+  "packageName": "@fluentui/react-badge",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
