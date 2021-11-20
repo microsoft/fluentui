@@ -1,8 +1,17 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { teamsLightTheme } from '@fluentui/react-theme';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { FluentProvider } from '@fluentui/react-provider';
 import { Switch, SwitchProps } from './components/Switch/index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Label } from '@fluentui/react-label';
 import { Meta } from '@storybook/react';
 
@@ -19,19 +28,19 @@ const useIosStyles = makeStyles({
     width: '50px',
     height: '30px',
 
-    ':hover .ms-Switch-thumb': {
+    ':hover .fui-Switch-thumb': {
       ':before': {
         background: 'white',
       },
     },
 
-    ':active .ms-Switch-thumb': {
+    ':active .fui-Switch-thumb': {
       ':before': {
         background: 'white',
       },
     },
 
-    ':hover .ms-Switch-track': {
+    ':hover .fui-Switch-track': {
       // Unchecked
       ':before': {
         borderColor: 'none',
@@ -43,7 +52,7 @@ const useIosStyles = makeStyles({
       },
     },
 
-    ':active .ms-Switch-track': {
+    ':active .fui-Switch-track': {
       ':before': {
         borderColor: 'none',
       },
@@ -92,7 +101,7 @@ const useMaterialStyles = makeStyles({
     width: '34px',
     height: '14px',
 
-    ':hover .ms-Switch-thumb': {
+    ':hover .fui-Switch-thumb': {
       ':before': {
         background: 'white',
       },
@@ -101,7 +110,7 @@ const useMaterialStyles = makeStyles({
       },
     },
 
-    ':hover .ms-Switch-track': {
+    ':hover .fui-Switch-track': {
       ':before': {
         background: '#9f9f9f',
       },
@@ -111,7 +120,7 @@ const useMaterialStyles = makeStyles({
       },
     },
 
-    ':active .ms-Switch-track': {
+    ':active .fui-Switch-track': {
       ':before': {
         background: '#9f9f9f',
       },

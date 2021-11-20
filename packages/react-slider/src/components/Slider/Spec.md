@@ -154,23 +154,23 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 - _**DOM** - how the component will be rendered as HTML elements_
 
 ```jsx
-<div className="ms-Slider-root">
-  <div className="ms-Slider-markContainer">
-    <div className="ms-Slider-markItemContainer">
-      <div className="ms-Slider-mark" />
-      <div className="ms-Slider-markLabel" />
+<div className="fui-Slider">
+  <div className="fui-Slider-markContainer">
+    <div className="fui-Slider-markItemContainer">
+      <div className="fui-Slider-mark" />
+      <div className="fui-Slider-markLabel" />
     </div>
   </div>
-  <div className="ms-Slider-wrapper">
-    <div className="ms-Slider-rail" />
-    <div className="ms-Slider-trackWrapper">
-      <div className="ms-Slider-track" />
+  <div className="fui-Slider-wrapper">
+    <div className="fui-Slider-rail" />
+    <div className="fui-Slider-trackWrapper">
+      <div className="fui-Slider-track" />
     </div>
     <div className="thumbWrapper">
-      <div className="ms-Slider-thumb" />
+      <div className="fui-Slider-thumb" />
     </div>
-    <div className="ms-Slider-activeRail" />
-    <div className="ms-Slider-input" />
+    <div className="fui-Slider-activeRail" />
+    <div className="fui-Slider-input" />
   </div>
 </div>
 ```

@@ -14,7 +14,7 @@ Dot.args = {
 Dot.parameters = {
   docs: {
     description: {
-      story: 'A Badge can be represented as a dot.',
+      story: 'A counter badge can display a small dot.',
     },
   },
 };

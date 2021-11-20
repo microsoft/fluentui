@@ -12,14 +12,18 @@ interface FullscreenLinkProps {
 // https://storybook.js.org/addons/@storybook/addon-links does not allow opening a story in new tab
 // so this is a naive attempt for opening a story in full screen
 export const FullscreenLink = (props: FullscreenLinkProps) => (
-  <a href={`iframe.html?id=${props.parent}--${props.story}`} target="_blank">
+  <a className="sbdocs sbdocs-a" href={`iframe.html?id=${props.parent}--${props.story}`} target="_blank">
     {props.content}
   </a>
 );
 
-export const BackLink = () => (
-  <a href={`iframe.html?id=accessibility-scenarios-list-of-scenarios--page`}>Go back to main menu</a>
+export const ScenariosListLink: React.FC = props => (
+  <a className="sbdocs sbdocs-a" href={`iframe.html?id=accessibility-scenarios-list-of-scenarios--page`}>
+    {props.children}
+  </a>
 );
+
+export const BackLink = () => <ScenariosListLink>Go back to main menu</ScenariosListLink>;
 
 export const Scenario: React.FunctionComponent<{ pageTitle: string }> = ({ pageTitle, children }) => {
   React.useEffect(() => {

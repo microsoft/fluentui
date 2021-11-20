@@ -220,6 +220,36 @@ describe('webpackLoader', () => {
     },
   });
 
+  // Asserts that aliases are resolved properly in Babel plugin with resolve plugins
+  testFixture('webpack-aliases', {
+    webpackConfig: {
+      resolve: {
+        plugins: [
+          {
+            // Simple plugin that will detect the non-existent module we are testing for and replace with
+            // correct path from the fixture
+            apply: function (resolver) {
+              const target = resolver.ensureHook('resolve');
+              resolver.getHook('before-resolve').tapAsync('ResolveFallback', (request, resolveContext, callback) => {
+                if (request.request === 'non-existing-color-module') {
+                  const obj = {
+                    directory: request.directory,
+                    path: request.path,
+                    query: request.query,
+                    request: path.resolve(__dirname, '..', '__fixtures__', 'webpack-resolve-plugins', 'color.ts'),
+                  };
+                  return resolver.doResolve(target, obj, null, resolveContext, callback);
+                }
+
+                callback();
+              });
+            },
+          },
+        ],
+      },
+    },
+  });
+
   // Asserts handling errors from Babel plugin
   testFixture('error-argument-count');
   // Asserts errors in loader's config

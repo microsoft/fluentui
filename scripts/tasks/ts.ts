@@ -31,7 +31,11 @@ const useTsBuildInfo =
  * > - Without setting rootDir we would get output dir mapping following path from monorepo root
  */
 function prepareTsTaskConfig(options: TscTaskOptions) {
-  const tsConfigFilePath = resolveCwd('./tsconfig.json');
+  const tsConfigMainFilePath = resolveCwd('./tsconfig.json');
+  const tsConfigLibFilePath = resolveCwd('./tsconfig.lib.json');
+  const isUsingTsSolutionConfigs = fs.existsSync(tsConfigLibFilePath);
+
+  const tsConfigFilePath = isUsingTsSolutionConfigs ? tsConfigLibFilePath : tsConfigMainFilePath;
   const tsConfig: TsConfig = jju.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
 
   if (tsConfig.extends) {
@@ -40,18 +44,23 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     const normalizedOptions = { ...options };
     normalizedOptions.baseUrl = '.';
     normalizedOptions.rootDir = './src';
+    normalizedOptions.project = path.basename(tsConfigFilePath);
 
     return normalizedOptions;
   }
+
+  options.target = 'es5';
 
   return options;
 }
 
 function getExtraTscParams(args: JustArgs) {
   return {
-    target: 'es5',
     // sourceMap must be true for inlineSources and sourceRoot to work
     ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
+    // docs say pretty is on by default, but it's actually disabled when tsc is run in a
+    // non-TTY context (which is what just-scripts tscTask does)
+    pretty: true,
   };
 }
 
@@ -86,6 +95,7 @@ export const ts = {
     const extraOptions = getExtraTscParams(getJustArgv());
     const options = prepareTsTaskConfig({
       ...extraOptions,
+      target: 'es5',
       outDir: 'lib-amd',
       module: 'amd',
       ...(useTsBuildInfo && { tsBuildInfoFile: '.amd.tsbuildinfo' }),

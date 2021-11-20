@@ -16,7 +16,7 @@ exports[`Tooltip renders a description tooltip content always 1`] = `
     dir="ltr"
   >
     <div
-      class=""
+      class="fui-Tooltip"
       data-testid="the-tooltip"
       id="tooltip-1"
       role="tooltip"
@@ -54,7 +54,7 @@ exports[`Tooltip renders the content of a nontrivial tooltip 1`] = `
     dir="ltr"
   >
     <div
-      class=""
+      class="fui-Tooltip"
       data-testid="the-tooltip"
       id="the-tooltip-id"
       role="tooltip"

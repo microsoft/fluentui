@@ -20,7 +20,7 @@ Appearance.args = {
 Appearance.parameters = {
   docs: {
     description: {
-      story: 'A CounterBadge can have appearance as `ghost`, `filled`',
+      story: 'A counter badge can have a `ghost` or `filled` appearance. The default is `filled`.',
     },
   },
 };

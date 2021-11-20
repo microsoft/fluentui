@@ -14,6 +14,9 @@ import * as React_2 from 'react';
 export const Link: ForwardRefComponent<LinkProps>;
 
 // @public (undocumented)
+export const linkClassName = "fui-Link";
+
+// @public (undocumented)
 export type LinkCommons = {
     appearance?: 'subtle';
     disabled?: boolean;

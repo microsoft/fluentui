@@ -1,13 +1,13 @@
 import {
-  hcCanvasText,
-  hcHighlightText,
-  hcDisabled,
-  hcHyperlink,
-  hcHighlight,
+  grey,
+  hcButtonFace,
   hcButtonText,
   hcCanvas,
-  hcButtonFace,
-  grey,
+  hcCanvasText,
+  hcDisabled,
+  hcHighlight,
+  hcHighlightText,
+  hcHyperlink,
   sharedColors,
   white,
   black,
@@ -16,6 +16,9 @@ import type { GlobalSharedColors, ColorTokens, ColorPaletteTokens } from '../typ
 
 export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForeground1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralForeground1Hover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground1Pressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground1Selected: hcHighlightText, // #000000 Global.Color.hcHighlightText
   colorNeutralForeground2: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorNeutralForeground2Hover: hcHighlightText, // #000000 Global.Color.hcHighlightText
   colorNeutralForeground2Pressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
@@ -32,6 +35,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForeground3BrandSelected: hcHighlightText, // #000000 Global.Color.hcHighlightText
   colorNeutralForeground4: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorNeutralForegroundDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
+  colorNeutralForegroundInvertedDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
   colorBrandForegroundLink: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
   colorBrandForegroundLinkHover: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
   colorBrandForegroundLinkPressed: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
@@ -41,12 +45,22 @@ export const generateColorTokens = (): ColorTokens => ({
   colorCompoundBrandForeground1Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorBrandForeground1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorBrandForeground2: hcButtonText, // #000000 Global.Color.hcButtonText
-  colorNeutralForegroundInverted: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralForegroundInverted: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralForegroundInvertedHover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForegroundInvertedPressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForegroundInvertedSelected: hcHighlightText, // #000000 Global.Color.hcHighlightText
   colorNeutralForegroundOnBrand: hcButtonText, // #000000 Global.Color.hcButtonText
   colorNeutralForegroundInvertedLink: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkHover: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkPressed: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkSelected: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorBrandForegroundInverted: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandForegroundInvertedHover: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandForegroundInvertedPressed: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandForegroundOnLight: hcButtonText, // #000000 Global.Color.hcButtonText
+  colorBrandForegroundOnLightHover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorBrandForegroundOnLightPressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorBrandForegroundOnLightSelected: hcHighlightText, // #000000 Global.Color.hcHighlightText
   colorNeutralBackground1: hcCanvas, // #000000 Global.Color.hcCanvas
   colorNeutralBackground1Hover: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralBackground1Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
@@ -68,16 +82,24 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralBackground5Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralBackground5Selected: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralBackground6: hcCanvas, // #000000 Global.Color.hcCanvas
-  colorNeutralBackgroundInverted: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralBackgroundInverted: hcCanvas, // #000000 Global.Color.hcCanvas
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorSubtleBackgroundPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorSubtleBackgroundSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundLightAlphaHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundLightAlphaPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundLightAlphaSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundInverted: 'transparent', // transparent undefined
+  colorSubtleBackgroundInvertedHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundInvertedPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundInvertedSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorTransparentBackground: 'transparent', // transparent undefined
   colorTransparentBackgroundHover: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorTransparentBackgroundPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorTransparentBackgroundSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralBackgroundDisabled: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralBackgroundInvertedDisabled: hcCanvas, // #000000 Global.Color.hcCanvas
   colorNeutralStencil1: grey[8], // #141414 Global.Color.Grey.8
   colorNeutralStencil2: grey[52], // #858585 Global.Color.Grey.52
   colorBrandBackground: hcButtonFace, // #ffffff Global.Color.hcButtonFace
@@ -89,6 +111,10 @@ export const generateColorTokens = (): ColorTokens => ({
   colorCompoundBrandBackgroundPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorBrandBackgroundStatic: hcCanvas, // #000000 Global.Color.hcCanvas
   colorBrandBackground2: hcButtonFace, // #ffffff Global.Color.hcButtonFace
+  colorBrandBackgroundInverted: hcButtonFace, // #ffffff Global.Color.hcButtonFace
+  colorBrandBackgroundInvertedHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorBrandBackgroundInvertedPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorBrandBackgroundInvertedSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralStrokeAccessible: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorNeutralStrokeAccessibleHover: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralStrokeAccessiblePressed: hcHighlight, // #1aebff Global.Color.hcHighlight
@@ -99,12 +125,18 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralStroke1Selected: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralStroke2: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorNeutralStroke3: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeOnBrand: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralStrokeOnBrand2: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeOnBrand2Hover: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeOnBrand2Pressed: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeOnBrand2Selected: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorBrandStroke1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorBrandStroke2: hcCanvas, // #000000 Global.Color.hcCanvas
   colorCompoundBrandStroke: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorCompoundBrandStrokeHover: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorCompoundBrandStrokePressed: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralStrokeDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
+  colorNeutralStrokeInvertedDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
   colorTransparentStroke: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorTransparentStrokeInteractive: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorTransparentStrokeDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled

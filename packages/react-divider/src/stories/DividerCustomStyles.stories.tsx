@@ -8,14 +8,14 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     rowGap: '5px',
   },
-  example: {
+  example: theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyItems: 'center',
-    background: 'white',
-    height: '96px',
-  },
+    minHeight: '96px',
+    backgroundColor: theme.colorNeutralBackground1,
+  }),
   customHeightExample: {
     display: 'flex',
     flexDirection: 'column',
@@ -34,12 +34,23 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
   },
   customLineColor: {
-    '--divider-color': '#FF00FF',
+    ':before': {
+      borderColor: '#FF00FF',
+    },
+    ':after': {
+      borderColor: '#FF00FF',
+    },
   },
   customLineStyle: {
     borderWidth: '2px',
-    '--divider-borderStyle': 'dashed',
-    '--divider-borderSize': '2px',
+    ':before': {
+      borderTopStyle: 'dashed',
+      borderTopWidth: '2px',
+    },
+    ':after': {
+      borderTopStyle: 'dashed',
+      borderTopWidth: '2px',
+    },
   },
 });
 

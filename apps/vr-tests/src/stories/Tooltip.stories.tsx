@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities/index';
+import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { TooltipHost } from '@fluentui/react';
 
 storiesOf('Tooltip', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().hover('.ms-TooltipHost').wait(200).snapshot('default').end()}
@@ -20,7 +20,7 @@ storiesOf('Tooltip', module)
   ));
 
 storiesOf('Tooltip - Multiple', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

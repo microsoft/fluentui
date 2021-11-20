@@ -24,7 +24,9 @@ Sizes.args = {
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A CounterBadge supports `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large` sizes.',
+      story:
+        'A counter badge supports `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large` sizes.' +
+        ' The default is `medium`.',
     },
   },
 };
