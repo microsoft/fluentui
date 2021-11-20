@@ -15,7 +15,9 @@ To this point, build "firefighting" tends to de facto fall to one or two particu
 - Build-related knowledge stays concentrated with a very limited number of people
 - Harder to recognize patterns of failures
 
-Having build shield as a desginated, rotating responsibility will help address all of these issues. It will also help more people on the team gain experience with build troubleshooting.
+Having build shield as a desginated, rotating responsibility will help address all of these issues. It will also help more people gain experience with build troubleshooting.
+
+(Longer-term, we'd like to start scheduling ongoing efforts for build improvements/upgrades, but this is an incremental step in the meantime. And even if we get the build in a better state overall, random "fires" will still happen sometimes, and someone needs to be on point to investigate.)
 
 ## Detailed Design or Proposal
 
@@ -25,11 +27,24 @@ Initially this will rotate within the build v-team, but once we have better docu
 
 Since the focus is addressing urgent issues, we need **one person per time zone.**
 
+Initial Redmond rotation:
+
+- @ecraig12345
+- @TristanWatanabe
+- Need to find at least one more person
+
+Initial Europe rotation:
+
+- @ling1726
+- @Hotell (when back from leave)
+- @varholak-peter
+- @andrefcdias
+
 ### Time commitment
 
-Shift duration will probably be either 1 or 2 weeks (need to discuss).
+Initially we'll try a shift duration of 1 week.
 
-Total time commitment would be allocated as **up to 25%**. _(DISCUSS: is this enough?)_
+Total time commitment would be allocated as **up to 25%** (can change later if it's not enough).
 
 Some weeks you'll get lucky and have almost nothing to do, but other weeks something will "blow up" in a way that requires much more time to address. If the time goes beyond ~25% _(or whatever number we decide above)_ it's worth calling out to management and/or pulling in other people as needed.
 
@@ -48,15 +63,25 @@ This includes monitoring for:
 
 Prioritization is roughly as follows. As with normal shield, it's fine to pull in others for consultation/help as needed, especially if it's a particularly complex or urgent issue, or if a more in-depth fix turns out to be necessary.
 
-| Issue type                                      | Priority                                                                     |
-| ----------------------------------------------- | ---------------------------------------------------------------------------- |
-| Release build failed                            | 🔥 Investigate ASAP (fix issue, or retry if intermittent)                    |
-| CI _consistently_ broken                        | 🔥 Fix ASAP                                                                  |
-| PR builds _consistently_ broken (CI okay)       | 🔥 Fix ASAP                                                                  |
-| Local builds _consistently_ broken (PR/CI okay) | 🔥 Fix ASAP                                                                  |
-| Published package broken                        | 🔥 Fix ASAP (usually due to dep issue or missing file)                       |
-| CI _intermittently_ broken                      | ⚠️ Try to investigate/fix, or file an issue if it will take significant time |
-| v7/8 website release failed (uncommon)          | ⚠️ Re-run failed stage, or see internal wiki                                 |
+| Issue type                                            | Priority                                                                                                            |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Release build failed                                  | 🔥 Investigate ASAP (fix issue, or retry if intermittent)                                                           |
+| CI build fails > 50%                                  | 🔥 Fix ASAP (or notify team if external issue)                                                                      |
+| PR builds fail > 50% on non-user errors (CI okay)     | 🔥 ^                                                                                                                |
+| Local builds broken for most/all of team (PR/CI okay) | 🔥 Fix or at least find workaround ASAP                                                                             |
+| Published package broken                              | 🔥 Fix ASAP (usually due to dep issue or missing file)                                                              |
+| CI build intermittently broken                        | ⚠️ Try to investigate/fix (greater frequency => higher priority), or file an issue if it will take significant time |
+| PR intermittently fail on non-user errors (CI okay)   | ⚠️ ^                                                                                                                |
+| Local builds broken for one person/scenario           | ⚠️ ^ but at least get them unblocked                                                                                |
+| v7/8 website release failed (uncommon)                | ⚠️ Re-run failed stage, or see internal wiki                                                                        |
+
+Another way to think about it is that whenever there's an automated failure notification, it's build shield's responsibility to at least click the link and look at the error message ASAP (and add a note to the failure post about what the error was).
+
+- If it's something that's likely to cause a failure every time and block PRs (like a snapshot issue), fix it yourself or find someone to fix it right away.
+- If it's a known intermittent error (the localDependencies issue is a current example), no immediate action needed.
+- Otherwise, up to your judgment. Look into it now if you have time, or wait and see if it happens again.
+
+Note that PR builds (and local builds) are a little different because in those cases, there are no automated notifications and no way to meaningfully track metrics (PR builds are expected to fail a lot). So in that case you're relying on team members noticing and posting about issues.
 
 #### Documenting issues and troubleshooting procedures
 
@@ -100,8 +125,4 @@ We may in the future make build shield a larger responsibility (with larger time
 
 The regular shield person has more than enough to do already, so it probably doesn't make sense to add this to their responsibilities.
 
-## Open Issues
-
-- Specific list of people on the rotation
-- Rotation length
-- How to balance scheduling with other responsibilities
+As mentioned earlier, we'd like to start scheduling ongoing build improvements (and when that happens, some of the build shield responsibility could move there), but setting up a separate rotation in the meantime is an incremental improvement.
