@@ -16,12 +16,12 @@ export type SplitButtonSlots = {
   /**
    * Button that opens menu with secondary actions in SplitButton.
    */
-  menuButton?: ObjectShorthandProps<MenuButtonProps>;
+  menuButton?: ObjectShorthandProps<MenuButtonProps, HTMLButtonElement | HTMLAnchorElement>;
 
   /**
    * Button to perform primary action in SplitButton.
    */
-  primaryActionButton?: ObjectShorthandProps<ButtonProps>;
+  primaryActionButton?: ObjectShorthandProps<ButtonProps, HTMLButtonElement | HTMLAnchorElement>;
 };
 
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> &
