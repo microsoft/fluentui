@@ -4,6 +4,12 @@ import { CheckboxState } from './Checkbox.types';
 
 export const checkboxClassName = 'fui-Checkbox';
 
+const indicatorVars = {
+  color: '--fui-Checkbox-indicator-color',
+  borderColor: '--fui-Checkbox-indicator-borderColor',
+  backgroundColor: '--fui-Checkbox-indicator-backgroundColor',
+};
+
 /**
  * Styles for the root slot
  */
@@ -22,99 +28,68 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForegroundDisabled,
     cursor: 'default',
 
-    [`& .${checkboxClassName}-indicator`]: {
-      borderColor: theme.colorNeutralStrokeDisabled,
-      color: theme.colorNeutralForegroundDisabled,
-      backgroundColor: theme.colorNeutralBackground1,
-    },
+    [indicatorVars.borderColor]: theme.colorNeutralStrokeDisabled,
+    [indicatorVars.color]: theme.colorNeutralForegroundDisabled,
+    [indicatorVars.backgroundColor]: theme.colorNeutralBackground1,
 
     ':hover': {
-      [`& .${checkboxClassName}-indicator`]: {
-        borderColor: theme.colorNeutralStrokeDisabled,
-        color: theme.colorNeutralForegroundDisabled,
-        backgroundColor: theme.colorNeutralBackground1,
-      },
+      [indicatorVars.borderColor]: theme.colorNeutralStrokeDisabled,
+      [indicatorVars.color]: theme.colorNeutralForegroundDisabled,
+      [indicatorVars.backgroundColor]: theme.colorNeutralBackground1,
     },
 
     ':active': {
-      [`& .${checkboxClassName}-indicator`]: {
-        borderColor: theme.colorNeutralStrokeDisabled,
-        color: theme.colorNeutralForegroundDisabled,
-        backgroundColor: theme.colorNeutralBackground1,
-      },
+      [indicatorVars.borderColor]: theme.colorNeutralStrokeDisabled,
+      [indicatorVars.color]: theme.colorNeutralForegroundDisabled,
+      [indicatorVars.backgroundColor]: theme.colorNeutralBackground1,
     },
   }),
 
   unchecked: theme => ({
     color: theme.colorNeutralForeground3,
-
-    [`& .${checkboxClassName}-indicator`]: {
-      borderColor: theme.colorNeutralStrokeAccessible,
-      '& > *': {
-        opacity: 0,
-      },
-    },
+    [indicatorVars.borderColor]: theme.colorNeutralStrokeAccessible,
 
     ':hover': {
       color: theme.colorNeutralForeground2,
-
-      [`& .${checkboxClassName}-indicator`]: {
-        borderColor: theme.colorNeutralStrokeAccessibleHover,
-      },
+      [indicatorVars.borderColor]: theme.colorNeutralStrokeAccessibleHover,
     },
 
     ':active': {
       color: theme.colorNeutralForeground1,
-
-      [`& .${checkboxClassName}-indicator`]: {
-        borderColor: theme.colorNeutralStrokeAccessiblePressed,
-      },
+      [indicatorVars.borderColor]: theme.colorNeutralStrokeAccessiblePressed,
     },
   }),
 
   checked: theme => ({
     color: theme.colorNeutralForeground1,
 
-    // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
-    [`& .${checkboxClassName}-indicator`]: {
-      backgroundColor: theme.colorCompoundBrandBackground,
-      color: theme.colorNeutralForegroundInverted,
-      borderColor: theme.colorBrandBackground,
-    },
+    [indicatorVars.backgroundColor]: theme.colorCompoundBrandBackground,
+    [indicatorVars.color]: theme.colorNeutralForegroundOnBrand,
+    [indicatorVars.borderColor]: theme.colorBrandBackground,
 
     ':active': {
-      [`& .${checkboxClassName}-indicator`]: {
-        backgroundColor: theme.colorCompoundBrandBackgroundPressed,
-      },
+      [indicatorVars.backgroundColor]: theme.colorCompoundBrandBackgroundPressed,
     },
 
     ':hover': {
-      [`& .${checkboxClassName}-indicator`]: {
-        backgroundColor: theme.colorCompoundBrandBackgroundHover,
-      },
+      [indicatorVars.backgroundColor]: theme.colorCompoundBrandBackgroundHover,
     },
   }),
 
   mixed: theme => ({
     color: theme.colorNeutralForeground1,
 
-    [`& .${checkboxClassName}-indicator`]: {
-      borderColor: theme.colorCompoundBrandStroke,
-      color: theme.colorCompoundBrandForeground1,
-    },
+    [indicatorVars.borderColor]: theme.colorCompoundBrandStroke,
+    [indicatorVars.color]: theme.colorCompoundBrandForeground1,
 
     ':active': {
-      [`& .${checkboxClassName}-indicator`]: {
-        borderColor: theme.colorCompoundBrandStrokePressed,
-        color: theme.colorCompoundBrandForeground1Pressed,
-      },
+      [indicatorVars.borderColor]: theme.colorCompoundBrandStrokePressed,
+      [indicatorVars.color]: theme.colorCompoundBrandForeground1Pressed,
     },
 
     ':hover': {
-      [`& .${checkboxClassName}-indicator`]: {
-        borderColor: theme.colorCompoundBrandStrokeHover,
-        color: theme.colorCompoundBrandForeground1Hover,
-      },
+      [indicatorVars.borderColor]: theme.colorCompoundBrandStrokeHover,
+      [indicatorVars.color]: theme.colorCompoundBrandForeground1Hover,
     },
   }),
 
@@ -166,7 +141,7 @@ const useInputStyles = makeStyles({
 });
 
 const useIndicatorStyles = makeStyles({
-  box: theme => ({
+  default: theme => ({
     width: '100%',
     height: '100%',
     fill: 'currentColor',
@@ -179,11 +154,20 @@ const useIndicatorStyles = makeStyles({
     borderStyle: 'solid',
     borderRadius: theme.borderRadiusSmall,
     borderWidth: theme.strokeWidthThin,
+    borderColor: `var(${indicatorVars.borderColor})`,
+    color: `var(${indicatorVars.color})`,
+    backgroundColor: `var(${indicatorVars.backgroundColor})`,
   }),
 
   circular: theme => ({
     borderRadius: theme.borderRadiusCircular,
   }),
+
+  unchecked: {
+    '& > *': {
+      opacity: 0,
+    },
+  },
 });
 
 /**
@@ -215,13 +199,13 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   state.containerClassName = mergeClasses(
     containerStyles.container,
     containerStyles[state.size],
-    !!state.root.children && containerStyles[state.labelPosition],
+    state.hasLabel && containerStyles[state.labelPosition],
   );
+
   state.indicator.className = mergeClasses(
-    `${checkboxClassName}-indicator`,
-    indicatorStyles.box,
-    containerStyles[state.size],
+    indicatorStyles.default,
     state.circular && indicatorStyles.circular,
+    !state.checked && indicatorStyles.unchecked,
     state.indicator.className,
   );
 
