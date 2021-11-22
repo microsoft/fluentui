@@ -47,7 +47,9 @@ export type CheckboxSlots = {
 };
 
 // @public
-export type CheckboxState = ComponentState<CheckboxSlots> & Pick<CheckboxProps, 'children'> & CheckboxCommons;
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons & {
+    hasLabel: boolean;
+};
 
 // @public (undocumented)
 export const renderCheckbox: (state: CheckboxState) => JSX.Element;

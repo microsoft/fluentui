@@ -668,7 +668,7 @@ export const defaultErrorMessages = {
 
     return getErrorMessage({
       displayName,
-      overview: `doesn't forward native props (except className and style) to the primary slot.`,
+      overview: `doesn't properly apply native props to the primary and root slots.`,
       suggestions: [
         `Make sure you're using the ${resolveInfo(
           'getPartitionedNativeProps',
