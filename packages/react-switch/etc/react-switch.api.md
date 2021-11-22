@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

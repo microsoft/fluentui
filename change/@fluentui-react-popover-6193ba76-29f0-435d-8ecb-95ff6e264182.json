@@ -1,7 +1,7 @@
 {
   "type": "none",
-  "comment": "Updates react-provider.api.md",
-  "packageName": "@fluentui/react-provider",
+  "comment": "Update react-popover.api.md",
+  "packageName": "@fluentui/react-popover",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "none"
 }
