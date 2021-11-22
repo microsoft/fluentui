@@ -3122,7 +3122,7 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@rnx-kit/eslint-plugin@0.2.5", "@rnx-kit/eslint-plugin@^0.2.5":
+"@rnx-kit/eslint-plugin@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@rnx-kit/eslint-plugin/-/eslint-plugin-0.2.5.tgz#30b4398e6db4f7a81b301c5e825341c4386f6821"
   integrity sha512-69Xlsz7fMMAQqLJ9ghglH5fXvU5xXZR09gCkjoK4gephhnQR/i+QDyt0wlqKt2HBo0RUGFbO+EA8aNPcOrJDJg==
