@@ -113,14 +113,6 @@
     "@opentelemetry/api" "^0.6.1"
     tslib "^1.10.0"
 
-"@azure/core-xml@1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@azure/core-xml/-/core-xml-1.0.0-beta.1.tgz#4a922721f86f96da8953185288bfd7348acd85bc"
-  integrity sha512-7d2w0yd8pb1c9aj87JV/1ntOp+sCMcJ9QoGDxs6/7BLDh8Gb6kd2h3n+9JYhcLZO8wdHZb4d4GZgmRIwaAU72w==
-  dependencies:
-    tslib "^2.0.0"
-    xml2js "^0.4.19"
-
 "@azure/core-xml@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@azure/core-xml/-/core-xml-1.0.0.tgz#294b8a8d5ae82bec5699dd8b9847722777e6986c"
@@ -129,21 +121,7 @@
     tslib "^2.2.0"
     xml2js "^0.4.19"
 
-"@azure/data-tables@12.0.0-beta.3":
-  version "12.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@azure/data-tables/-/data-tables-12.0.0-beta.3.tgz#a997a29056b598b593928fdd3788eb5cfb53dc2f"
-  integrity sha512-ruMUJIdGPCoDwcQNnqYP3ila6aq90w9oRFtyRWeTyPpjbcMkBcwLjJWwMsL41FLOpjU3iot7ILjYPpPfeoAgkw==
-  dependencies:
-    "@azure/core-client" "^1.0.0"
-    "@azure/core-paging" "^1.1.1"
-    "@azure/core-rest-pipeline" "^1.0.0"
-    "@azure/core-tracing" "1.0.0-preview.11"
-    "@azure/core-xml" "1.0.0-beta.1"
-    "@azure/logger" "^1.0.0"
-    tslib "^2.0.0"
-    uuid "^8.3.0"
-
-"@azure/data-tables@^13.0.0":
+"@azure/data-tables@13.0.0", "@azure/data-tables@^13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@azure/data-tables/-/data-tables-13.0.0.tgz#e5bf9cce2a32365bb170d1a48a37dd9a7139abda"
   integrity sha512-OA9X0rsTP7AM+cZENppMljihYWfn02Tkwa1IdbU8jNfCjV5SL8x2e76L7SN5z/sFxAJ3hdcyMa3sAOXvuSs6/Q==
