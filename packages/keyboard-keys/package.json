@@ -26,7 +26,6 @@
   },
   "dependencies": {},
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

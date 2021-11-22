@@ -403,9 +403,6 @@
     "@fluentui/webpack-utilities": {
       "implicitDependencies": []
     },
-    "a11y-tests": {
-      "implicitDependencies": []
-    },
     "nx-workspace-tools": {
       "tags": []
     },
@@ -424,8 +421,8 @@
     "theming-designer": {
       "implicitDependencies": []
     },
-    "todo-app": {
-      "implicitDependencies": []
+    "typings": {
+      "tags": ["platform:any"]
     },
     "typings": {
       "tags": ["platform:any"]

@@ -17,7 +17,7 @@ export const Shapes = () => {
 Shapes.parameters = {
   docs: {
     description: {
-      story: 'A Badge can be represented in the `square`, `rounded` and `circular` shapes.',
+      story: 'A badge can have `square`, `rounded` or `circular` shape. The default is `circular`.',
     },
   },
 };

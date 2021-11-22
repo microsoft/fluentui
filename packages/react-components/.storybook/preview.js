@@ -14,7 +14,11 @@ const options = {
      */
     order: [
       'Concepts',
-      ['Introduction', 'Developer', ['Quick Start', 'Migrating from @fluentui/react v8', 'Styling Components']],
+      [
+        'Introduction',
+        'Developer',
+        ['Quick Start', 'Migrating from @fluentui/react v8', 'Styling Components', 'Positioning Components'],
+      ],
       'Theme',
       'Components',
       'Migrations',

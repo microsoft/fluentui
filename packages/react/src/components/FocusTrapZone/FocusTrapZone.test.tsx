@@ -796,6 +796,54 @@ describe('FocusTrapZone', () => {
 
       expect(document.activeElement).toBe(buttonA);
     });
+
+    it('Focuses on firstFocusableTarget selector on mount', async () => {
+      expect.assertions(1);
+
+      const { buttonC } = setupTest({ firstFocusableTarget: '.c' });
+
+      expect(document.activeElement).toBe(buttonC);
+    });
+
+    it('Focuses on firstFocusableTarget callback on mount', async () => {
+      expect.assertions(1);
+
+      const { buttonC } = setupTest({ firstFocusableTarget: (element: HTMLElement) => element.querySelector('.c') });
+
+      expect(document.activeElement).toBe(buttonC);
+    });
+
+    it('Does not focus on firstFocusableTarget selector on mount while disabled', async () => {
+      expect.assertions(1);
+
+      const activeElement = document.activeElement;
+
+      setupTest({ firstFocusableTarget: '.c', disabled: true });
+
+      expect(document.activeElement).toBe(activeElement);
+    });
+
+    it('Does not focus on firstFocusableTarget callback on mount while disabled', async () => {
+      expect.assertions(1);
+
+      const activeElement = document.activeElement;
+
+      setupTest({ firstFocusableTarget: (element: HTMLElement) => element.querySelector('.c'), disabled: true });
+
+      expect(document.activeElement).toBe(activeElement);
+    });
+
+    it('Falls back to first focusable element with invalid firstFocusableTarget selector', async () => {
+      const { buttonA } = setupTest({ firstFocusableTarget: '.invalidSelector' });
+
+      expect(document.activeElement).toBe(buttonA);
+    });
+
+    it('Falls back to first focusable element with invalid firstFocusableTarget callback', async () => {
+      const { buttonA } = setupTest({ firstFocusableTarget: () => null });
+
+      expect(document.activeElement).toBe(buttonA);
+    });
   });
 
   describe('Focusing the FTZ', () => {

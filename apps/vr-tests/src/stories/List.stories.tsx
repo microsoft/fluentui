@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { List } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
@@ -131,7 +131,7 @@ const items = [
 const onRenderCell = (item: any) => <div>{item.name}</div>;
 
 storiesOf('List', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener

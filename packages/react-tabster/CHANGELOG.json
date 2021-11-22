@@ -2,6 +2,65 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Fri, 12 Nov 2021 13:25:07 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358",
+            "comment": "Add useFocusableGroup hook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ed2d7c8d638535c89e24e3c3de3534c4fae30172",
+            "comment": "Use uncontrolled tabbing by default"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "da10ba8b6cca0c4cf921dc176bb9b7ea57fde9fa",
+            "comment": "Bump tabster and keyborg to 1.0.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Oct 2021 12:14:22 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-beta.3",
       "version": "9.0.0-beta.3",

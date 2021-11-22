@@ -20,7 +20,9 @@ export const Sizes = () => {
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A Badge supports `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large` sizes.',
+      story:
+        'A badge supports `tiny`, `extra-small`, `small`, `medium`, `large`, and `extra-large` sizes.' +
+        ' The default is `medium`.',
     },
   },
 };
