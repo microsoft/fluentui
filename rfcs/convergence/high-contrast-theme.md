@@ -178,7 +178,7 @@ Since `makeStyles` alway writes media queries last in the stylesheet, they will 
 
 #### Apply forced color media queries only when required
 
-In order to rememdy this problem when the `FluentProvider` uses `forced-colors-adjust: none`
+In order to remedy this problem when the `FluentProvider` uses `forced-colors-adjust: none`
 
 ```tsx
 <FluentProvider noForcedColors>{children}</FluentProvider>
