@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 22 Nov 2021 12:27:56 GMT",
+      "tag": "@uifabric/charting_v4.19.2",
+      "version": "4.19.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Grouped Vertical Bar chart, Bar width issue solved",
+            "author": "v-scharde@microsoft.com",
+            "commit": "57b0f8c17324ac53eb85d45e8a4e3f5962c4db93",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Nov 2021 12:31:34 GMT",
+      "tag": "@uifabric/charting_v4.19.1",
+      "version": "4.19.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.179.3",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "a25820b52a95a0fc4799a3922e569df6de31fb01",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Nov 2021 12:29:06 GMT",
       "tag": "@uifabric/charting_v4.19.0",
       "version": "4.19.0",

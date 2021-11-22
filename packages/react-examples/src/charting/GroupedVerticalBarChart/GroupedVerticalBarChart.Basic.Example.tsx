@@ -6,6 +6,7 @@ interface IGroupedBarChartState {
   width: number;
   height: number;
   selectedCallout: 'singleCallout' | 'StackCallout';
+  barwidth: number;
 }
 
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
@@ -15,6 +16,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
       width: 700,
       height: 400,
       selectedCallout: 'singleCallout',
+      barwidth: 10,
     };
   }
 
@@ -30,6 +32,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
   };
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
     this.setState({ selectedCallout: option.key as IGroupedBarChartState['selectedCallout'] });
+  };
+  private _onBarwidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ barwidth: parseInt(e.target.value, 10) });
   };
   private _basicExample(): JSX.Element {
     const data = [
@@ -137,6 +142,10 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           onChange={this._onChange}
           label="Pick one"
         />
+        <br />
+        <label>change Barwidth:</label>
+        <input type="range" value={this.state.barwidth} min={10} max={70} onChange={this._onBarwidthChange} />
+        <label>{this.state.barwidth}</label>
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             culture={window.navigator.language}
@@ -147,6 +156,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             showYAxisGridLines
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
+            barwidth={this.state.barwidth}
           />
         </div>
       </>
