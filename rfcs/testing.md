@@ -55,6 +55,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 - **Accessibility**
 
   We do not automate accessibility testing as of the writing of this document. E2E tests are used to ensure the component's accessibility requirements are met.
+  Research on accessibility testing automation is being done and tracked in [issue #17243](https://github.com/microsoft/fluentui/issues/17243).
 
 - **Visual Regression**
 
