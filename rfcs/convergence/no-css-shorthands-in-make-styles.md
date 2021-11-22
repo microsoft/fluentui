@@ -201,7 +201,7 @@ For initial implementation following shorthands will be implemented:
 Additional functions can be implemented based on customer requests.
 
 - These functions will not have significant impact on runtime version of `makeStyles()` as they are very lightweight.
-- These functions will not **any** impact when Babel plugin/Webpack loader are used as they will be evaluated during build.
+- These functions will not have **any** impact when Babel plugin/Webpack loader are used as they will be evaluated during build.
 
 ### Pros and Cons
 
