@@ -299,7 +299,7 @@ When they are co-located, maybe an aggregate component could wire the TabPanels 
 ### Tab
 
 TabCommons.value supports an arbitrary identifier value.
-This is similar to Accordian's selection approach.
+This is similar to Accordion's selection approach.
 
 ```ts
 export type TabValue = unknown;
@@ -403,8 +403,8 @@ export type TabListContextValue = TabListCommons & {
 
 ### From v8
 
-1. Replace occurances of `<Pivot>` with `<TabList>`
-2. Replace occurances of `<PivotItem>` with `<Tab>`
+1. Replace occurrences of `<Pivot>` with `<TabList>`
+2. Replace occurrences of `<PivotItem>` with `<Tab>`
 3. Replace `<PivotItem>` content with handling onTabSelected to show/hide associated content.
 4. Move PivotItem.headerText to be the content of Tab
 5. Subscribe to onTabSelected to show/hide content when a tab is selected.
@@ -439,7 +439,7 @@ A Tablist allows focus of individual tabs.
 When the TabList has focus, the user can use arrow keys to move focus to the next or previous tab.
 The keys are based on layout. Horizontal uses left/right arrows and vertical uses up/down arrows.
 
-Whe the TabList has focus, the user can use the home/end keys to move focus to the first/last tab.
+When the TabList has focus, the user can use the home/end keys to move focus to the first/last tab.
 
 A tab is selected when the spacebar/enter key is pressed for a focused tab.
 
@@ -460,22 +460,15 @@ The `tabpanel` will be reserved for possible future component.
 
 Screen readers will read each tab's content.
 
-# Open issues
-
-## Should this component support overflow?
+# Future - Overflow support
 
 The design spec details a menu button (...) that displays the list of tabs that were not able to be displayed due to limited space.
 
-The team has raised some concers with providing this overflow functionality by default in the control.
+Dev has some concerns providing overflow as a default feature of tabs. The v1 of TabList and Tab will not include overflow.
 
-Concerns:
-
-- In the past, it made the v0 toolbar difficult to maintain. Customers hacked around it when it did not meet app requirements.
-- In the past, taking a dependency on menu over-complicated the button component and increased the default footprint. It also created a tighter binding with the overflow props matching the menu props and children.
-- It is one of many possible approaches such as scrolling, paging, multi-row, scroll-into-view. This may be best left as an application-level concern.
+- Overflow made the v0 toolbar difficult to maintain. Customers hacked around it when it did not meet app requirements.
+- In v8,tTaking a dependency on menu over-complicated the button component and increased the default footprint. It also created a tighter binding with the overflow props matching the menu props and children.
+- Overflow dropdown is one of many possible approaches such as scrolling, paging, multi-row, scroll-into-view. This may be best left as an application-level concern.
 - The dropdown approach is called out by bootstrap as [problematic for usability and accessibility](https://react-bootstrap.github.io/components/tabs/#tabs-with-dropdown).
 - Many (if not most) component libraries do not support dropdown overflow.
-- For vNext, the goal is to keep the components as lean as possible. This feels like a heavy feature to enforce.
-
-- [ ] What do our partners expect and need in the overflow scenario?
-- [ ] Updated design spec needed that details the requirements for overflow
+- There is not a general purpose overflow solution in vNext infrastructure. The team needs to explore options and formulate an approach.
