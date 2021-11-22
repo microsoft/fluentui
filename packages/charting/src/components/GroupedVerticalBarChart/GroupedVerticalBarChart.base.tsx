@@ -15,6 +15,7 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
   ChartTypes,
+  IAxisData,
   getAccessibleDataObject,
   tooltipOfXAxislabels,
   XAxisTypes,
@@ -163,6 +164,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
+        getAxisData={this._getAxisData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {
@@ -488,5 +490,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         {...this.props.legendProps}
       />
     );
+  };
+
+  private _getAxisData = (yAxisData: IAxisData) => {
+    if (yAxisData && yAxisData.yAxisDomainValues.length) {
+      const { yAxisDomainValues: domainValue } = yAxisData;
+      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+    }
   };
 }
