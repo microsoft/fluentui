@@ -1,7 +1,7 @@
 {
-  "type": "none",
-  "comment": "update api files",
+  "type": "prerelease",
+  "comment": "update react-icons dependency",
   "packageName": "@fluentui/react-badge",
   "email": "ololubek@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
