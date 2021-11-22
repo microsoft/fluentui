@@ -184,7 +184,7 @@ In order to remedy this problem when the `FluentProvider` uses `forced-colors-ad
 <FluentProvider noForcedColors>{children}</FluentProvider>
 ```
 
-We should create hook that will allow us to selectively apply media query styles. This hooks will be based on the value
+We should create a hook that will allow us to selectively apply media query styles. This hook will be based on the value
 of `noForcedColors` flag in the `FluentProvider`.
 
 ```ts
