@@ -1,5 +1,6 @@
 {
   "type": "prerelease",
+  "comment": "fix border color for brand tint combination",
   "packageName": "@fluentui/react-badge",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
