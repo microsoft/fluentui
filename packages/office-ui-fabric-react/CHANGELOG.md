@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 Nov 2021 12:31:34 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Nov 2021 12:27:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.179.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.4)
+
+Mon, 22 Nov 2021 12:27:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.179.3..office-ui-fabric-react_v7.179.4)
+
+### Patches
+
+- preseve checkButtonAriaLabel if explicit selectAllButtonProps are passed ([PR #20659](https://github.com/microsoft/fluentui/pull/20659) by sarah.higley@microsoft.com)
 
 ## [7.179.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.3)
 

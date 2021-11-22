@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "preseve checkButtonAriaLabel if explicit selectAllButtonProps are passed",
-  "packageName": "office-ui-fabric-react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

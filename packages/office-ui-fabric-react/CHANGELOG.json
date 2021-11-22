@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 22 Nov 2021 12:27:56 GMT",
+      "tag": "office-ui-fabric-react_v7.179.4",
+      "version": "7.179.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "preseve checkButtonAriaLabel if explicit selectAllButtonProps are passed",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fdec719abde2edf78db701230dc8cdc849c25ac3",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Nov 2021 12:31:34 GMT",
       "tag": "office-ui-fabric-react_v7.179.3",
       "version": "7.179.3",

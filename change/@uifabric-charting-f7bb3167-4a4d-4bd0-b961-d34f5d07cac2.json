@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Grouped Vertical Bar chart, Bar width issue solved",
-  "packageName": "@uifabric/charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}
