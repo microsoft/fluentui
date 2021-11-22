@@ -34,7 +34,7 @@ export type DialogFooterStylesProps = never;
 /**
  * A DialogFooter represents footer content in Dialog, usually shows dialog actions.
  */
-export const DialogFooter = (React.forwardRef<HTMLDivElement, DialogFooterProps>(props => {
+export const DialogFooter = (React.forwardRef<HTMLDivElement, DialogFooterProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
   setStart();
@@ -56,7 +56,7 @@ export const DialogFooter = (React.forwardRef<HTMLDivElement, DialogFooterProps>
     rtl: context.rtl,
   });
   const element = (
-    <ElementType {...getA11yProps('root', { className: classes.root, ...unhandledProps })}>
+    <ElementType {...getA11yProps('root', { className: classes.root, ref, ...unhandledProps })}>
       {childrenExist(children) ? children : content}
     </ElementType>
   );
