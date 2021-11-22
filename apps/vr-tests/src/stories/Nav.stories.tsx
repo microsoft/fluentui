@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Nav, INavLink } from '@fluentui/react/lib/Nav';
 
 const links: INavLink[] = [
@@ -87,7 +87,7 @@ const disabledLinks: INavLink[] = [
 ];
 
 storiesOf('Nav', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

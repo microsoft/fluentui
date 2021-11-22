@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 18 Nov 2021 07:29:22 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Nov 2021 07:36:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.5.13)
+
+Mon, 22 Nov 2021 07:36:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.5.12..@fluentui/react-charting_v5.5.13)
+
+### Patches
+
+- Grouped Vertical Bar chart, Barwidth issue solved ([PR #20652](https://github.com/microsoft/fluentui/pull/20652) by v-scharde@microsoft.com)
+- Bump @fluentui/react to v8.42.5 ([PR #20408](https://github.com/microsoft/fluentui/pull/20408) by beachball)
+
+## [5.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.5.12)
+
+Fri, 19 Nov 2021 07:45:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.5.11..@fluentui/react-charting_v5.5.12)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.4 ([PR #20639](https://github.com/microsoft/fluentui/pull/20639) by beachball)
 
 ## [5.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.5.11)
 
