@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 22 Nov 2021 07:36:13 GMT",
+      "tag": "@fluentui/react_v8.42.5",
+      "version": "8.42.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f53e2c545efd6f6b47fc0b69321420fea1516643",
+            "comment": "DetailsList: preserve selectAllButtonProps in group header props"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "31c72ff6a585c8fca5e73b3517230cb7c7af2a1f",
+            "comment": "Update Dropdown positioning focus management."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Nov 2021 07:45:28 GMT",
       "tag": "@fluentui/react_v8.42.4",
       "version": "8.42.4",
