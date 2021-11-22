@@ -366,7 +366,7 @@ Hovering the card changes the cursor style to not-allowed
 
 2. Keyboard interaction
 
-   EnterKey Perfoms action on card “Open file, Open link in browser etc...”
+   `EnterKey` Perfoms action on card “Open file, Open link in browser etc...”
 
 ### Non-interactive cards with interactive child components
 
@@ -374,11 +374,11 @@ Hovering the card changes the cursor style to not-allowed
 
 1. Focus
 
-   Initial focus is set on card, to access items within the card use EnterKey or Spacebar
+   Initial focus is set on card, to access items within the card use `EnterKey` or `Spacebar`
 
 2. Focus-Inside
 
-   Focus moves to first actionable item in the card. Use `ArrowKeys` or `TabKey` to move focus to child elements within the card. To exit card use EscKey, to move focus back to card
+   Focus moves to first actionable item in the card. Use `ArrowKeys` or `TabKey` to move focus to child elements within the card. To exit card use `EscKey`, to move focus back to card
 
 #### Selectable cards
 
@@ -402,7 +402,7 @@ Hovering the card changes the cursor style to not-allowed
 
 1. Focus
 
-   Initial focus is set on card, to access items within the card use EnterKey or Spacebar.
+   Initial focus is set on card, to access items within the card use `EnterKey` or `Spacebar`.
 
 2. Focus-Inside
 
@@ -412,7 +412,7 @@ Hovering the card changes the cursor style to not-allowed
 
    Depending on your tab order of items within the card, the number of keystrokes will vary.
 
-4. SpaceBar or EnterKey while focused on the Checkbox
+4. `SpaceBar` or `EnterKey` while focused on the Checkbox
 
    Will toggle both Card and Checkbox to selected state. Keying again will toggle to unselected
 
