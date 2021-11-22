@@ -1,7 +1,7 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "update api files",
   "packageName": "@fluentui/react-switch",
   "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }

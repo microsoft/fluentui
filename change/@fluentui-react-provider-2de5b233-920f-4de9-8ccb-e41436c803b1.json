@@ -3,5 +3,5 @@
   "comment": "update api files",
   "packageName": "@fluentui/react-provider",
   "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
