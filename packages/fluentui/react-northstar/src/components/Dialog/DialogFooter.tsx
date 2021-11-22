@@ -11,13 +11,13 @@ import {
 
 import { FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useUnhandledProps,
   useFluentContext,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 
@@ -34,8 +34,7 @@ export type DialogFooterStylesProps = never;
 /**
  * A DialogFooter represents footer content in Dialog, usually shows dialog actions.
  */
-export const DialogFooter: ComponentWithAs<'div', DialogFooterProps> &
-  FluentComponentStaticProps<DialogFooterProps> = props => {
+export const DialogFooter = (React.forwardRef<HTMLDivElement, DialogFooterProps>(props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
   setStart();
@@ -63,7 +62,8 @@ export const DialogFooter: ComponentWithAs<'div', DialogFooterProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DialogFooterProps> &
+  FluentComponentStaticProps<DialogFooterProps>;
 
 DialogFooter.displayName = 'DialogFooter';
 
