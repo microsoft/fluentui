@@ -1,3 +1,5 @@
+// This should be just "export * as shorthands from "
+// https://github.com/microsoft/fluentui/issues/20694
 import {
   border,
   borderLeft,
