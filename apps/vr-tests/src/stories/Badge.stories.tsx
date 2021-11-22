@@ -27,7 +27,7 @@ badgeColors.forEach(color => {
         ))}
       </div>
     ),
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   );
 });
 
@@ -47,5 +47,5 @@ storiesOf('Badge Converged - sizes', module).addStory(
       ))}
     </div>
   ),
-  { includeRtl: true },
+  { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
 );
