@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { ChevronDown16Regular } from '@fluentui/react-icons';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '@fluentui/react-menu';
 
 // FIXME need to redeclare types since type import is under a @ts-ignore

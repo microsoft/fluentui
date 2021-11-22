@@ -149,7 +149,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-accordion": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-aria": {
@@ -270,7 +270,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-menu": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-monaco-editor": {
@@ -296,7 +296,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-portal": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-positioning": {
