@@ -201,8 +201,8 @@ const useStyles = makeStyles({
 });
 
 const styles = useStyles();
-const forcedColors: boolean = useIsForcedColors();
-state.root.className = mergeClases(styles.root, forcedColors && rootHC);
+const isForcedColors: boolean = useIsForcedColors();
+state.root.className = mergeClases(styles.root, isForcedColors && rootHC);
 ```
 
 ### Other operating systems
