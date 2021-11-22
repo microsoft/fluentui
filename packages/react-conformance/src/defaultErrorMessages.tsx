@@ -1,10 +1,10 @@
 import { IsConformantOptions } from './types';
 
 import { EOL } from 'os';
-import * as _ from 'lodash';
 import * as path from 'path';
 
-import { errorMessageColors, formatArray, getErrorMessage } from './utils/errorMessages';
+import { errorMessageColors, formatArray, getErrorMessage, formatErrors } from './utils/errorMessages';
+import { getPackagePath } from './defaultTests';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -363,8 +363,7 @@ export const defaultErrorMessages = {
   'exported-top-level': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName, componentPath } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const indexFile = path.join(rootPath, 'src', 'index');
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index');
 
     const exportInfo = testInfo.useDefaultExport
       ? `export { default as ${displayName} } from './${displayName};`
@@ -392,8 +391,7 @@ export const defaultErrorMessages = {
   'has-top-level-file': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName, componentPath } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const topLevelFile = path.join(rootPath, 'src', displayName);
+    const topLevelFile = path.join(getPackagePath(componentPath), 'src', displayName);
 
     // Message Description: Handles scenario where the displayName doesn't match the component's filename.
     //
@@ -488,16 +486,18 @@ export const defaultErrorMessages = {
     });
   },
 
-  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: string[]) => {
+  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: Record<string, Error>) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo } = errorMessageColors;
 
     return getErrorMessage({
       displayName,
       overview: 'uses non-standard callback arguments.',
-      details: ['These callback(s) need have two params:', testErrorInfo(formatArray(invalidProps))],
+      details: ['These callback(s) have issues:', testErrorInfo(formatErrors(invalidProps))],
       suggestions: [
-        `Ensure that ${resolveInfo(displayName + `'s`)} callbacks have two params (an event and data object).`,
+        `Ensure that ${resolveInfo(
+          displayName + `'s`,
+        )} callbacks have two params (an event and data object) and types of arguments are correct.`,
         `If a callback is intended to have a different signature, add the prop to isConformant ${resolveInfo(
           "testOptions['consistent-callback-args'].ignoreProps",
         )}.`,
@@ -580,6 +580,52 @@ export const defaultErrorMessages = {
         `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
         `Ensure that you are ${resolveInfo('spreading extra props')} to the "as" component when rendering.`,
         `Ensure that there is not a problem rendering the component (check previous test results).`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classname': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    classNames: string,
+  ) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, failedError } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `does not have default className (${testErrorInfo(componentClassName)}).`,
+      details: [`After render it has the following classes:`, `    ${failedError(`className='${classNames}'`)}`],
+      suggestions: [
+        `Ensure that your component has default a className and it is ${resolveInfo('merged')} with other classNames.`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classname-exported': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    exportName: string,
+  ) => {
+    const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
+
+    const constantValue = `export const ${exportName} = "${componentClassName}";`;
+
+    return getErrorMessage({
+      displayName,
+      overview: `default className constant  is not exported (${testErrorInfo(exportName)}) in: ${EOL}${testErrorPath(
+        indexFile,
+      )}.`,
+      suggestions: [
+        `Make sure that your component's ${resolveInfo('index.ts')} file` +
+          `or a file with styles hook exports \`${resolveInfo(constantValue)}\``,
+        `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
       ],
       error,
     });

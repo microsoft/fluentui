@@ -14,12 +14,6 @@ Workspace Generator for migrating converged packages to new DX (stage 1)[https:/
 
 <!-- tocstop -->
 
-## NOTES
-
-- this generator will migrate existing stories for your package from `react-examples` to your migrated package
-- migrated stories source will be transformed (replacing absolute imports and adding required default export)
-- if your original stories (within react-examples) used non converged packages/tools (like old icons, css/scss for styling), you'll need to manually refactor your stories to remove any non converged dependencies.
-
 ## Usage
 
 ```sh
@@ -63,6 +57,18 @@ Type: `string`
 Package/library name (needs to be full name of the package, scope included - e.g. `@fluentui/<package-name>`)
 
 > NOTE: will trigger CLI prompt if you didn't provide this option
+
+**Run migration on subset of packages:**
+
+To run migration on multiple packages you can specify a comma separated list of project names.
+
+```sh
+# run migration on:
+# - @fluentui/lib-zero
+# - @fluentui/lib-one
+# - @fluentui/lib-two
+yarn nx workspace-generator migrate-converged-pkg --name='@fluentui/lib-zero,@fluentui/lib-one,@fluentui/lib-two'
+```
 
 #### `all`
 

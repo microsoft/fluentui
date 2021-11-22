@@ -9,6 +9,7 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
+  IAxisData,
   getAccessibleDataObject,
   tooltipOfXAxislabels,
   XAxisTypes,
@@ -86,12 +87,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
       titleForHoverCard: '',
       xCalloutValue: '',
       yCalloutValue: '',
+      YValueHover: [],
+      hoverXValue: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
       showXAxisPath: 'Dont use this property. Axis line removed default.',
       showYAxisPath: 'Dont use this property. No need to display Y axis path. Handling default',
-      showXAxisGridLines: 'Dont use this proprty. Handling with default value.',
+      showXAxisGridLines: 'Dont use this property. Handling with default value.',
       legendColor: 'Dont use this property. colour will pick from given data.',
     });
     this._refArray = [];
@@ -127,6 +130,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       Legend: this.state.titleForHoverCard,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+      YValueHover: this.state.YValueHover,
+      hoverXValue: this.state.hoverXValue,
       onDismiss: this._closeCallout,
       ...this.props.calloutProps,
       preventDismissOnLostFocus: true,
@@ -155,6 +160,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
+        getAxisData={this._getAxisData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {
@@ -210,7 +216,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return shouldHighlight ? '' : '0.1';
   };
 
-  private _onBarHover = (pointData: IGVBarChartSeriesPoint, mouseEvent: React.MouseEvent<SVGElement>): void => {
+  private _onBarHover = (
+    pointData: IGVBarChartSeriesPoint,
+    groupSeries: IGVBarChartSeriesPoint[],
+    mouseEvent: React.MouseEvent<SVGElement>,
+  ): void => {
     mouseEvent.persist();
     if (
       this.state.isLegendSelected === false ||
@@ -226,13 +236,19 @@ export class GroupedVerticalBarChartBase extends React.Component<
         yCalloutValue: pointData.yAxisCalloutData,
         dataPointCalloutProps: pointData,
         callOutAccessibilityData: pointData.callOutAccessibilityData,
+        YValueHover: groupSeries,
+        hoverXValue: pointData.xAxisCalloutData,
       });
     }
   };
 
   private _onBarLeave = (): void => this.setState({ isCalloutVisible: false });
 
-  private _onBarFocus = (pointData: IGVBarChartSeriesPoint, refArrayIndexNumber: number): void => {
+  private _onBarFocus = (
+    pointData: IGVBarChartSeriesPoint,
+    groupSeries: IGVBarChartSeriesPoint[],
+    refArrayIndexNumber: number,
+  ): void => {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.titleForHoverCard === pointData.legend)
@@ -249,6 +265,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
             yCalloutValue: pointData.yAxisCalloutData,
             dataPointCalloutProps: pointData,
             callOutAccessibilityData: pointData.callOutAccessibilityData,
+            YValueHover: groupSeries,
+            hoverXValue: pointData.xAxisCalloutData,
           });
         }
       });
@@ -289,7 +307,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
-      // Not rendaring data with 0.
+      // Not rendering data with 0.
       pointData.data &&
         singleGroup.push(
           <rect
@@ -305,10 +323,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
               this._refCallback(e!, pointData.legend, refIndexNumber);
             }}
             fill={pointData.color}
-            onMouseOver={this._onBarHover.bind(this, pointData)}
-            onMouseMove={this._onBarHover.bind(this, pointData)}
+            onMouseOver={this._onBarHover.bind(this, pointData, singleSet.groupSeries)}
+            onMouseMove={this._onBarHover.bind(this, pointData, singleSet.groupSeries)}
             onMouseOut={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, pointData, refIndexNumber)}
+            onFocus={this._onBarFocus.bind(this, pointData, singleSet.groupSeries, refIndexNumber)}
             onBlur={this._onBarLeave}
             onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
             aria-labelledby={`toolTip${this._calloutId}`}
@@ -345,19 +363,21 @@ export class GroupedVerticalBarChartBase extends React.Component<
     points.forEach((point: IGroupedVerticalBarChartData, index: number) => {
       const singleDatasetPoint: IGVDataPoint = {};
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointforBars: any = {};
+      const singleDatasetPointForBars: any = {};
+      const singleDataSeries: IGVBarChartSeriesPoint[] = [];
 
       point.series.forEach((seriesPoint: IGVBarChartSeriesPoint) => {
         singleDatasetPoint[seriesPoint.key] = seriesPoint.data;
-        singleDatasetPointforBars[seriesPoint.key] = {
+        singleDatasetPointForBars[seriesPoint.key] = {
           ...seriesPoint,
         };
+        singleDataSeries.push(seriesPoint);
       });
 
-      singleDatasetPointforBars.xAxisPoint = point.name;
-      singleDatasetPointforBars.indexNum = index;
-
-      datasetForBars.push(singleDatasetPointforBars);
+      singleDatasetPointForBars.xAxisPoint = point.name;
+      singleDatasetPointForBars.indexNum = index;
+      singleDatasetPointForBars.groupSeries = singleDataSeries;
+      datasetForBars.push(singleDatasetPointForBars);
       dataset.push(singleDatasetPoint);
     });
     this._dataset = dataset;
@@ -469,5 +489,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         {...this.props.legendProps}
       />
     );
+  };
+
+  private _getAxisData = (yAxisData: IAxisData) => {
+    if (yAxisData && yAxisData.yAxisDomainValues.length) {
+      const { yAxisDomainValues: domainValue } = yAxisData;
+      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+    }
   };
 }

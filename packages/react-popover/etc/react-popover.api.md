@@ -20,7 +20,9 @@ import type { usePopperMouseTarget } from '@fluentui/react-positioning';
 export const arrowHeights: Record<PopoverSize, number>;
 
 // @public
-export type OnOpenChangeData = Pick<PopoverState, 'open'>;
+export type OnOpenChangeData = {
+    open: boolean;
+};
 
 // @public
 export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
@@ -69,6 +71,9 @@ export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
 
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
+
+// @public (undocumented)
+export const popoverSurfaceClassName = "fui-PopoverSurface";
 
 // @public
 export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;

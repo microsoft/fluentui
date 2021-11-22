@@ -201,9 +201,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-compose": {
-      "implicitDependencies": []
-    },
     "@fluentui/react-conformance": {
       "implicitDependencies": []
     },
@@ -337,9 +334,6 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-tabs": {
-      "implicitDependencies": []
-    },
     "@fluentui/react-tabster": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
@@ -405,9 +399,6 @@
     "@fluentui/webpack-utilities": {
       "implicitDependencies": []
     },
-    "a11y-tests": {
-      "implicitDependencies": []
-    },
     "nx-workspace-tools": {
       "tags": []
     },
@@ -426,8 +417,8 @@
     "theming-designer": {
       "implicitDependencies": []
     },
-    "todo-app": {
-      "implicitDependencies": []
+    "typings": {
+      "tags": ["platform:any"]
     },
     "vr-tests": {
       "implicitDependencies": []

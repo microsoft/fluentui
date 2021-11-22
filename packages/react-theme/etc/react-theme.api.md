@@ -21,15 +21,65 @@ export type BrandVariants = ColorVariants & {
     shade60: string;
 };
 
-// Warning: (ae-forgotten-export) The symbol "ColorPaletteT" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "GlobalSharedColorsT" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkRed" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBurgundy" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteCranberry" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteRed" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkOrange" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBronze" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePumpkin" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteOrange" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePeach" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteMarigold" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteYellow" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteGold" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBrass" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBrown" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkBrown" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLime" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteForest" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteSeafoam" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLightGreen" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteGreen" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkGreen" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLightTeal" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteTeal" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkTeal" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteCyan" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteSteel" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLightBlue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBlue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteRoyalBlue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkBlue" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteCornflower" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteNavy" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLavender" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePurple" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteDarkPurple" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteOrchid" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteGrape" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBerry" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteLilac" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePink" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteHotPink" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteMagenta" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePlum" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteBeige" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteMink" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteSilver" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPalettePlatinum" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteAnchor" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ColorPaletteCharcoal" needs to be exported by the entry point index.d.ts
 //
-// @public
-export type ColorPaletteTokens = Record<ColorPaletteT<GlobalSharedColorsT>, string>;
+// @public (undocumented)
+export type ColorPaletteTokens = Record<ColorPaletteDarkRed | ColorPaletteBurgundy | ColorPaletteCranberry | ColorPaletteRed | ColorPaletteDarkOrange | ColorPaletteBronze | ColorPalettePumpkin | ColorPaletteOrange | ColorPalettePeach | ColorPaletteMarigold | ColorPaletteYellow | ColorPaletteGold | ColorPaletteBrass | ColorPaletteBrown | ColorPaletteDarkBrown | ColorPaletteLime | ColorPaletteForest | ColorPaletteSeafoam | ColorPaletteLightGreen | ColorPaletteGreen | ColorPaletteDarkGreen | ColorPaletteLightTeal | ColorPaletteTeal | ColorPaletteDarkTeal | ColorPaletteCyan | ColorPaletteSteel | ColorPaletteLightBlue | ColorPaletteBlue | ColorPaletteRoyalBlue | ColorPaletteDarkBlue | ColorPaletteCornflower | ColorPaletteNavy | ColorPaletteLavender | ColorPalettePurple | ColorPaletteDarkPurple | ColorPaletteOrchid | ColorPaletteGrape | ColorPaletteBerry | ColorPaletteLilac | ColorPalettePink | ColorPaletteHotPink | ColorPaletteMagenta | ColorPalettePlum | ColorPaletteBeige | ColorPaletteMink | ColorPaletteSilver | ColorPalettePlatinum | ColorPaletteAnchor | ColorPaletteCharcoal, string>;
 
 // @public
 export type ColorTokens = {
     colorNeutralForeground1: string;
+    colorNeutralForeground1Hover: string;
+    colorNeutralForeground1Pressed: string;
+    colorNeutralForeground1Selected: string;
     colorNeutralForeground2: string;
     colorNeutralForeground2Hover: string;
     colorNeutralForeground2Pressed: string;
@@ -46,6 +96,7 @@ export type ColorTokens = {
     colorNeutralForeground3BrandSelected: string;
     colorNeutralForeground4: string;
     colorNeutralForegroundDisabled: string;
+    colorNeutralForegroundInvertedDisabled: string;
     colorBrandForegroundLink: string;
     colorBrandForegroundLinkHover: string;
     colorBrandForegroundLinkPressed: string;
@@ -56,11 +107,21 @@ export type ColorTokens = {
     colorBrandForeground1: string;
     colorBrandForeground2: string;
     colorNeutralForegroundInverted: string;
+    colorNeutralForegroundInvertedHover: string;
+    colorNeutralForegroundInvertedPressed: string;
+    colorNeutralForegroundInvertedSelected: string;
     colorNeutralForegroundOnBrand: string;
     colorNeutralForegroundInvertedLink: string;
     colorNeutralForegroundInvertedLinkHover: string;
     colorNeutralForegroundInvertedLinkPressed: string;
     colorNeutralForegroundInvertedLinkSelected: string;
+    colorBrandForegroundInverted: string;
+    colorBrandForegroundInvertedHover: string;
+    colorBrandForegroundInvertedPressed: string;
+    colorBrandForegroundOnLight: string;
+    colorBrandForegroundOnLightHover: string;
+    colorBrandForegroundOnLightPressed: string;
+    colorBrandForegroundOnLightSelected: string;
     colorNeutralBackground1: string;
     colorNeutralBackground1Hover: string;
     colorNeutralBackground1Pressed: string;
@@ -87,11 +148,19 @@ export type ColorTokens = {
     colorSubtleBackgroundHover: string;
     colorSubtleBackgroundPressed: string;
     colorSubtleBackgroundSelected: string;
+    colorSubtleBackgroundLightAlphaHover: string;
+    colorSubtleBackgroundLightAlphaPressed: string;
+    colorSubtleBackgroundLightAlphaSelected: string;
+    colorSubtleBackgroundInverted: string;
+    colorSubtleBackgroundInvertedHover: string;
+    colorSubtleBackgroundInvertedPressed: string;
+    colorSubtleBackgroundInvertedSelected: string;
     colorTransparentBackground: string;
     colorTransparentBackgroundHover: string;
     colorTransparentBackgroundPressed: string;
     colorTransparentBackgroundSelected: string;
     colorNeutralBackgroundDisabled: string;
+    colorNeutralBackgroundInvertedDisabled: string;
     colorNeutralStencil1: string;
     colorNeutralStencil2: string;
     colorBrandBackground: string;
@@ -103,6 +172,10 @@ export type ColorTokens = {
     colorCompoundBrandBackgroundPressed: string;
     colorBrandBackgroundStatic: string;
     colorBrandBackground2: string;
+    colorBrandBackgroundInverted: string;
+    colorBrandBackgroundInvertedHover: string;
+    colorBrandBackgroundInvertedPressed: string;
+    colorBrandBackgroundInvertedSelected: string;
     colorNeutralStrokeAccessible: string;
     colorNeutralStrokeAccessibleHover: string;
     colorNeutralStrokeAccessiblePressed: string;
@@ -113,12 +186,18 @@ export type ColorTokens = {
     colorNeutralStroke1Selected: string;
     colorNeutralStroke2: string;
     colorNeutralStroke3: string;
+    colorNeutralStrokeOnBrand: string;
+    colorNeutralStrokeOnBrand2: string;
+    colorNeutralStrokeOnBrand2Hover: string;
+    colorNeutralStrokeOnBrand2Pressed: string;
+    colorNeutralStrokeOnBrand2Selected: string;
     colorBrandStroke1: string;
     colorBrandStroke2: string;
     colorCompoundBrandStroke: string;
     colorCompoundBrandStrokeHover: string;
     colorCompoundBrandStrokePressed: string;
     colorNeutralStrokeDisabled: string;
+    colorNeutralStrokeInvertedDisabled: string;
     colorTransparentStroke: string;
     colorTransparentStrokeInteractive: string;
     colorTransparentStrokeDisabled: string;
@@ -194,6 +273,16 @@ export function mergeThemes(a: Theme | undefined, b: PartialTheme | Theme | unde
 // @public (undocumented)
 export type PartialTheme = Partial<Theme>;
 
+// @public (undocumented)
+export type ShadowBrandTokens = {
+    shadow2Brand: string;
+    shadow4Brand: string;
+    shadow8Brand: string;
+    shadow16Brand: string;
+    shadow28Brand: string;
+    shadow64Brand: string;
+};
+
 // @public
 export type ShadowTokens = {
     shadow2: string;
@@ -222,7 +311,7 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 
 // @public (undocumented)
 export function themeToCSSVariables(theme: Theme): Record<string, string | number>;

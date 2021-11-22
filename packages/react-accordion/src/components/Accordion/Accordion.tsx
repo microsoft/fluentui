@@ -4,6 +4,7 @@ import { useAccordion } from './useAccordion';
 import { useAccordionContextValues } from './useAccordionContextValues';
 import type { AccordionProps } from './Accordion.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useAccordionStyles } from './useAccordionStyles';
 
 /**
  * Define a styled Accordion, using the `useAccordion` and `useAccordionStyles` hooks.
@@ -12,6 +13,8 @@ export const Accordion: ForwardRefComponent<AccordionProps> = React.forwardRef<H
   (props, ref) => {
     const state = useAccordion(props, ref);
     const contextValues = useAccordionContextValues(state);
+
+    useAccordionStyles(state);
 
     return renderAccordion(state, contextValues);
   },

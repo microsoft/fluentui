@@ -46,6 +46,14 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
+export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+
+// @public (undocumented)
+export interface UseFocusableGroupOptions {
+    tabBehavior?: 'unlimited' | 'limited' | 'limitedTrapFocus';
+}
+
+// @public
 export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;

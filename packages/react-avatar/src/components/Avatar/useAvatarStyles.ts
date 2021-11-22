@@ -1,6 +1,8 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import type { AvatarState } from './Avatar.types';
 
+export const avatarClassName = 'fui-Avatar';
+
 //
 // TODO: All animation constants should go to theme or globals?
 // https://github.com/microsoft/fluentui/issues/16372#issuecomment-778240665
@@ -415,7 +417,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     }
   }
 
-  state.root.className = mergeClasses(...rootClasses, state.root.className);
+  state.root.className = mergeClasses(avatarClassName, ...rootClasses, state.root.className);
 
   if (state.badge) {
     state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);

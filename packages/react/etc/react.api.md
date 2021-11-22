@@ -1436,6 +1436,8 @@ export interface IAutofillProps extends React_2.InputHTMLAttributes<HTMLInputEle
 export interface IAutofillState {
     // (undocumented)
     inputValue: string;
+    // (undocumented)
+    isComposing: boolean;
 }
 
 // @public (undocumented)
@@ -2799,6 +2801,7 @@ export interface IColorPickerProps {
     strings?: IColorPickerStrings;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
+    tooltipProps?: ITooltipHostProps;
 }
 
 // @public (undocumented)
@@ -2814,19 +2817,25 @@ export interface IColorPickerState {
 export interface IColorPickerStrings {
     alpha?: string;
     alphaAriaLabel?: string;
+    alphaError?: string;
     blue?: string;
+    blueError?: string;
     green?: string;
+    greenError?: string;
     hex?: string;
+    hexError?: string;
     // @deprecated
     hue?: string;
     hueAriaLabel?: string;
     red?: string;
+    redError?: string;
     rootAriaLabelFormat?: string;
     svAriaDescription?: string;
     svAriaLabel?: string;
     svAriaValueFormat?: string;
     transparency?: string;
     transparencyAriaLabel?: string;
+    transparencyError?: string;
 }
 
 // @public (undocumented)
@@ -4028,7 +4037,7 @@ export interface IDetailsRowState {
 }
 
 // @public (undocumented)
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme' | 'disabled'>> & {
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & Pick<IDetailsRowProps, 'disabled'> & {
     isSelected?: boolean;
     anySelected?: boolean;
     canSelect?: boolean;
@@ -4984,7 +4993,9 @@ export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivEleme
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     enableAriaHiddenSiblings?: boolean;
+    // @deprecated
     firstFocusableSelector?: string | (() => string);
+    firstFocusableTarget?: string | ((element: HTMLElement) => HTMLElement | null);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
@@ -5553,6 +5564,7 @@ export interface IKeytipProps {
     disabled?: boolean;
     hasDynamicChildren?: boolean;
     hasMenu?: boolean;
+    hasOverflowSubMenu?: boolean;
     keySequences: string[];
     offset?: Point;
     onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
@@ -5804,6 +5816,8 @@ export interface IListState<T = any> {
     measureVersion?: number;
     // (undocumented)
     pages?: IPage<T>[];
+    // (undocumented)
+    pagesVersion?: {};
 }
 
 // @public (undocumented)
@@ -6654,6 +6668,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
     onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
@@ -8126,6 +8141,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     errorMessage?: string | JSX.Element;
     iconProps?: IIconProps;
     inputClassName?: string;
+    invalid?: boolean;
     label?: string;
     multiline?: boolean;
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
@@ -8667,7 +8683,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)

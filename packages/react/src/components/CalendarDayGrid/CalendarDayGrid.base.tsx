@@ -384,7 +384,6 @@ export const CalendarDayGridBase: React.FunctionComponent<ICalendarDayGridProps>
     <FocusZone className={classNames.wrapper}>
       <table
         className={classNames.table}
-        aria-readonly="true"
         aria-multiselectable="false"
         aria-labelledby={labelledBy}
         aria-activedescendant={activeDescendantId}

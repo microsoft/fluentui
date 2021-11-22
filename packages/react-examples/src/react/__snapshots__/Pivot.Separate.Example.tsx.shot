@@ -14,11 +14,9 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
       }
     }
   />
-  <div
-    aria-label="Separately Rendered Content Pivot Example"
-    role="toolbar"
-  >
+  <div>
     <div
+      aria-label="Separately Rendered Content Pivot Example"
       className=
           ms-FocusZone
           ms-Pivot
