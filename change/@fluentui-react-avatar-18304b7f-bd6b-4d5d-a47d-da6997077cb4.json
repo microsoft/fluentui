@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update snapshots from presence badge changes",
+  "packageName": "@fluentui/react-avatar",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}

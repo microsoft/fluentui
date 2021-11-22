@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 18 Nov 2021 07:29:22 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Nov 2021 07:36:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.42.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.5)
+
+Mon, 22 Nov 2021 07:36:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.4..@fluentui/react_v8.42.5)
+
+### Patches
+
+- DetailsList: preserve selectAllButtonProps in group header props ([PR #20677](https://github.com/microsoft/fluentui/pull/20677) by sarah.higley@microsoft.com)
+- Update Dropdown positioning focus management. ([PR #20656](https://github.com/microsoft/fluentui/pull/20656) by seanmonahan@microsoft.com)
+
+## [8.42.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.4)
+
+Fri, 19 Nov 2021 07:45:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.3..@fluentui/react_v8.42.4)
+
+### Patches
+
+- update Callout to update both maxHeight and positions when recalculating ([PR #20639](https://github.com/microsoft/fluentui/pull/20639) by sarah.higley@microsoft.com)
 
 ## [8.42.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.3)
 
