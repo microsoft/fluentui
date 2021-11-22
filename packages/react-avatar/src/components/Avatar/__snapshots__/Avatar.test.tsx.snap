@@ -15,23 +15,19 @@ exports[`Avatar displays a badge 1`] = `
     className="fui-PresenceBadge"
   >
     <span>
-      <span
+      <svg
         aria-hidden={true}
-        className="root-span"
+        className=""
+        fill="currentColor"
+        height={10}
+        viewBox="0 0 10 10"
+        width={10}
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          className="svg"
-          fill="currentColor"
-          height={10}
-          viewBox="0 0 10 10"
-          width={10}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M5 10A5 5 0 105 0a5 5 0 000 10zm2.1-5.9L4.85 6.35a.5.5 0 01-.7 0l-1-1a.5.5 0 01.7-.7l.65.64 1.9-1.9a.5.5 0 01.7.71z"
-          />
-        </svg>
-      </span>
+        <path
+          d="M5 10A5 5 0 105 0a5 5 0 000 10zm2.1-5.9L4.85 6.35a.5.5 0 01-.7 0l-1-1a.5.5 0 01.7-.7l.65.64 1.9-1.9a.5.5 0 01.7.71z"
+        />
+      </svg>
     </span>
   </div>
 </span>
