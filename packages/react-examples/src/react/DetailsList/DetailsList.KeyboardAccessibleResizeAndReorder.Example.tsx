@@ -304,8 +304,8 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
           checkButtonAriaLabel="select row"
           keyboardColumnEditProps={keyboardColumnEditProps}
         />
-        {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
       </MarqueeSelection>
+      {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
 
       <Dialog
         hidden={isDialogHidden}
