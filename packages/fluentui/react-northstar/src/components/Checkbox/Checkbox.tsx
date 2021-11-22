@@ -198,18 +198,18 @@ Checkbox.displayName = 'Checkbox';
 Checkbox.defaultProps = {
   accessibility: checkboxBehavior,
   indicator: {},
-  labelPosition: 'end' as const,
+  labelPosition: 'end',
 };
 Checkbox.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  checked: PropTypes.oneOf<true | false | 'mixed'>([true, false, 'mixed'] as const),
+  checked: PropTypes.oneOf<true | false | 'mixed'>([true, false, 'mixed']),
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
   label: customPropTypes.itemShorthand,
-  labelPosition: PropTypes.oneOf<'start' | 'end'>(['start', 'end'] as const),
+  labelPosition: PropTypes.oneOf<'start' | 'end'>(['start', 'end']),
   onChange: PropTypes.func,
   onClick: PropTypes.func,
   toggle: PropTypes.bool,
