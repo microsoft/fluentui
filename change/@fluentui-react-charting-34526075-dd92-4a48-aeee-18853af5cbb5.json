@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Grouped Vertical Bar chart, Barwidth issue solved",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}
