@@ -23,7 +23,7 @@ badgeColors.forEach(color => {
     () => (
       <div style={{ display: 'flex', gap: 10 }}>
         {badgeAppearances.map(appearance => (
-          <Badge appearance={appearance} key={appearance} />
+          <Badge appearance={appearance} key={appearance} color={color} />
         ))}
       </div>
     ),
