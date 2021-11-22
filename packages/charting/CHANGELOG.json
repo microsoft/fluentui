@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 22 Nov 2021 12:27:56 GMT",
+      "tag": "@uifabric/charting_v4.19.2",
+      "version": "4.19.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Grouped Vertical Bar chart, Bar width issue solved",
+            "author": "v-scharde@microsoft.com",
+            "commit": "57b0f8c17324ac53eb85d45e8a4e3f5962c4db93",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Nov 2021 12:31:34 GMT",
       "tag": "@uifabric/charting_v4.19.1",
       "version": "4.19.1",

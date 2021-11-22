@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 19 Nov 2021 12:31:34 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Nov 2021 12:27:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.19.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.2)
+
+Mon, 22 Nov 2021 12:27:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.19.1..@uifabric/charting_v4.19.2)
+
+### Patches
+
+- Grouped Vertical Bar chart, Bar width issue solved ([PR #20666](https://github.com/microsoft/fluentui/pull/20666) by v-scharde@microsoft.com)
 
 ## [4.19.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.1)
 

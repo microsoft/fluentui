@@ -2,6 +2,21 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Mon, 22 Nov 2021 12:27:56 GMT",
+      "tag": "vr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.179.4",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fdec719abde2edf78db701230dc8cdc849c25ac3",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Nov 2021 12:31:34 GMT",
       "tag": "vr-tests_v7.0.0",
       "version": "7.0.0",
