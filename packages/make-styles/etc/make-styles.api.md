@@ -7,6 +7,7 @@
 import { BorderColorProperty } from 'csstype';
 import { BorderStyleProperty } from 'csstype';
 import { BorderWidthProperty } from 'csstype';
+import { OverflowProperty } from 'csstype';
 import { Properties } from 'csstype';
 
 // @internal
@@ -167,8 +168,10 @@ export const shorthands: {
     borderStyle: typeof borderStyle;
     borderRadius: typeof borderRadius;
     borderWidth: typeof borderWidth;
+    gap: typeof gap;
     margin: typeof margin;
     padding: typeof padding;
+    overflow: typeof overflow;
 };
 
 // @public
@@ -191,8 +194,10 @@ export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots,
 // lib/index.d.ts:9:5 - (ae-forgotten-export) The symbol "borderStyle" needs to be exported by the entry point index.d.ts
 // lib/index.d.ts:10:5 - (ae-forgotten-export) The symbol "borderRadius" needs to be exported by the entry point index.d.ts
 // lib/index.d.ts:11:5 - (ae-forgotten-export) The symbol "borderWidth" needs to be exported by the entry point index.d.ts
-// lib/index.d.ts:12:5 - (ae-forgotten-export) The symbol "margin" needs to be exported by the entry point index.d.ts
-// lib/index.d.ts:13:5 - (ae-forgotten-export) The symbol "padding" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:12:5 - (ae-forgotten-export) The symbol "gap" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:13:5 - (ae-forgotten-export) The symbol "margin" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:14:5 - (ae-forgotten-export) The symbol "padding" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:15:5 - (ae-forgotten-export) The symbol "overflow" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

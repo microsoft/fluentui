@@ -7,5 +7,7 @@ export { borderColor } from './borderColor';
 export { borderStyle } from './borderStyle';
 export { borderRadius } from './borderRadius';
 export { borderWidth } from './borderWidth';
+export { gap } from './gap';
 export { margin } from './margin';
 export { padding } from './padding';
+export { overflow } from './overflow';

@@ -10,8 +10,10 @@ import {
   borderStyle,
   borderRadius,
   borderWidth,
+  gap,
   margin,
   padding,
+  overflow,
 } from './shorthands/index';
 
 export const shorthands = {
@@ -24,8 +26,10 @@ export const shorthands = {
   borderStyle,
   borderRadius,
   borderWidth,
+  gap,
   margin,
   padding,
+  overflow,
 };
 
 export { createDOMRenderer } from './renderer/createDOMRenderer';
