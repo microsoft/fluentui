@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { Image, ImageFit, Label, Layer, IImageProps } from '@fluentui/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 
 const img350x150 = 'http://via.placeholder.com/350x150';
 
@@ -49,7 +49,7 @@ const imagePropsMaximizeFrame: IImageProps = {
 const border = 'solid 1px black';
 
 storiesOf('Image', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
