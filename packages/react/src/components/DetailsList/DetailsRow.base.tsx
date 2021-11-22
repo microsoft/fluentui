@@ -23,6 +23,7 @@ import type { IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles } f
 import type { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import type { IProcessedStyleSet } from '../../Styling';
+import { getId } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -57,6 +58,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
   private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
+  private _ariaRowDescriptionId: string;
 
   public static getDerivedStateFromProps(
     nextProps: IDetailsRowBaseProps,
@@ -214,7 +216,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const isDraggable = dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined;
     const droppingClassName = isDropping ? this._droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
-    const ariaDescription = getRowAriaDescription ? getRowAriaDescription(item) : undefined;
+    const ariaRowDescription = getRowAriaDescription ? getRowAriaDescription(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
     const canSelect = !!selection && selection.canSelectItem(item, itemIndex) && !disabled;
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
@@ -277,6 +279,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     const defaultRole = 'row';
     const role = this.props.role ? this.props.role : defaultRole;
+    this._ariaRowDescriptionId = getId('DetailsRow-description');
 
     return (
       <FocusZone
@@ -295,8 +298,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         role={role}
         aria-label={ariaLabel}
         aria-disabled={disabled || undefined}
-        aria-description={ariaDescription}
-        aria-describedby={ariaDescribedBy}
+        aria-describedby={ariaRowDescription ? this._ariaRowDescriptionId : ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
@@ -311,6 +313,11 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         aria-selected={ariaSelected}
         allowFocusRoot={true}
       >
+        {ariaRowDescription ? (
+          <span key="description" role="presentation" hidden={true} id={this._ariaRowDescriptionId}>
+            {ariaRowDescription}
+          </span>
+        ) : null}
         {showCheckbox && (
           <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
