@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Dropdown positioning focus management.",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
