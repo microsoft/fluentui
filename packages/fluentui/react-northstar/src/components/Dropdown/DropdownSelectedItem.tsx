@@ -92,7 +92,7 @@ export type DropdownSelectedItemStylesProps = { hasImage: boolean };
 /**
  * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
  */
-export const DropdownSelectedItem = (React.forwardRef<HTMLSpanElement, DropdownSelectedItemProps>(props => {
+export const DropdownSelectedItem = (React.forwardRef<HTMLSpanElement, DropdownSelectedItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
@@ -193,6 +193,7 @@ export const DropdownSelectedItem = (React.forwardRef<HTMLSpanElement, DropdownS
           className: classes.root,
           onClick: handleClick,
           onKeyDown: handleKeyDown,
+          ref,
           ...unhandledProps,
         })}
       >
