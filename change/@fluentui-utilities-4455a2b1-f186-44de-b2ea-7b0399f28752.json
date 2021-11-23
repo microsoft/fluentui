@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add new IOnRender flow to fix issues with IRenderFunction",
+  "packageName": "@fluentui/utilities",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
