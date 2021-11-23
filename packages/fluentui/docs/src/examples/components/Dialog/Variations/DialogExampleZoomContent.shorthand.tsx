@@ -6,12 +6,16 @@ import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 const DialogExampleZoomContent: React.FC = () => {
   const [open, setOpen] = useBooleanKnob({ name: 'open' });
+  const dialogVariables = {
+    rootWidth: '550px',
+  };
   return (
     <Dialog
       open={open}
       onOpen={() => setOpen(true)}
       onCancel={() => setOpen(false)}
       onConfirm={() => setOpen(false)}
+      variables={dialogVariables}
       cancelButton="Cancel"
       confirmButton="Confirm"
       content={{
@@ -34,7 +38,8 @@ const DialogExampleZoomContent: React.FC = () => {
           height: '100%',
           maxHeight: '250px',
           overflow: 'auto',
-          '@media screen and (max-width: 500px)': {
+          // max-width should be same as rootWidth to keep it consistent (default value is 600px)
+          [`@media screen and (max-width: ${dialogVariables.rootWidth})`]: {
             maxHeight: '100%',
             overflow: 'unset',
           },

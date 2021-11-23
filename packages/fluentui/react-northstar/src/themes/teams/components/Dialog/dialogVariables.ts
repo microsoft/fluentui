@@ -22,6 +22,7 @@ export interface DialogVariables {
   headerFontWeight: number;
 
   headerActionMargin: string;
+  footerActionsBreakpoint: string;
 }
 
 export const dialogVariables = (siteVariables): Partial<DialogVariables> => ({
@@ -46,4 +47,6 @@ export const dialogVariables = (siteVariables): Partial<DialogVariables> => ({
   overlayZIndex: siteVariables.zIndexes.overlay,
 
   headerActionMargin: `${pxToRem(-3)} ${pxToRem(-8)} 0 0`,
+  // in case of customized footer this var allows to align styles
+  footerActionsBreakpoint: '300px',
 });

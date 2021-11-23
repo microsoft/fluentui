@@ -24,7 +24,7 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
 
     boxShadow: v.boxShadow,
     color: v.foregroundColor,
-    '@media screen and (max-width: 500px)': {
+    [`@media screen and (max-width: ${v.rootWidth})`]: {
       padding: v.rootPaddingZoom,
     },
   }),
@@ -35,7 +35,7 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
     msGridRow: 3,
   }),
 
-  actions: (): ICSSInJSStyle => ({
+  actions: ({ variables: v }): ICSSInJSStyle => ({
     display: 'flex',
     width: '100%',
     [`& .${flexClassName}`]: {
@@ -44,9 +44,10 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
       flexWrap: 'wrap',
       width: '100%',
     },
-    '@media screen and (max-width: 300px)': {
+    [`@media screen and (max-width: ${v.footerActionsBreakpoint})`]: {
       [`& .${buttonClassName}`]: {
         width: '100%',
+        maxWidth: '100%',
         margin: 0,
       },
       [`& .${flexClassName} > :not(:last-child)`]: {
