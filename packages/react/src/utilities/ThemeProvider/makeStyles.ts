@@ -44,6 +44,8 @@ export type UseStylesOptions = {
  *
  * @param styleOrFunction - Either a css javascript object, or a function which takes in `ITheme`
  * and returns a css javascript object.
+ *
+ * @deprecated Use `mergeStyles` instead.
  */
 export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle } = { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),

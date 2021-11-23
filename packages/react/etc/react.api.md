@@ -8722,7 +8722,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
     };
 }
 
-// @public
+// @public @deprecated
 export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
 } = {
