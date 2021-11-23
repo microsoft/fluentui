@@ -1,3 +1,5 @@
+export {};
+
 const popoverTriggerSelector = '[aria-haspopup]';
 const popoverContentSelector = '[role="dialog"]';
 const popoverStoriesTitle = 'Components/Popover';
@@ -24,7 +26,7 @@ describe('Popover', () => {
         cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
       });
 
-      ['{enter}', 'Space'].forEach((key: '{enter}' | 'Space') => {
+      (['{enter}', 'Space'] as const).forEach((key: '{enter}' | 'Space') => {
         it(`should open with ${key}`, () => {
           cy.get(popoverTriggerSelector).focus().realPress(key);
 
