@@ -10,7 +10,7 @@ export function borderLeft(
 ): MakeStyles;
 
 /**
- * A function that implements expansion for "border", it's simplified - check usage examples.
+ * A function that implements expansion for "border-left", it's simplified - check usage examples.
  *
  * @example
  *  borderLeft('2px')

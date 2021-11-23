@@ -10,7 +10,7 @@ export function borderBottom(
 ): MakeStyles;
 
 /**
- * A function that implements expansion for "border", it's simplified - check usage examples.
+ * A function that implements expansion for "border-bottom", it's simplified - check usage examples.
  *
  * @example
  *  borderBottom('2px')

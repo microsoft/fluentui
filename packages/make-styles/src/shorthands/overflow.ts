@@ -2,7 +2,7 @@ import { OverflowProperty } from 'csstype';
 import { MakeStyles } from '../types';
 
 /**
- * A function that implements CSS spec conformant expansion for "gap"
+ * A function that implements CSS spec conformant expansion for "overflow"
  *
  * @example
  *   overflow('hidden')

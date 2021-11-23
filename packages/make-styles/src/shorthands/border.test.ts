@@ -1,7 +1,7 @@
 import { border } from './border';
 
 describe('border', () => {
-  it('properly applies a value when passed only one', () => {
+  it('properly applies a value when used with width', () => {
     expect(border('2px')).toEqual({
       borderBottomWidth: '2px',
       borderLeftWidth: '2px',
@@ -10,7 +10,7 @@ describe('border', () => {
     });
   });
 
-  it('properly applies values when passed two', () => {
+  it('properly applies values when used with width and style', () => {
     expect(border('2px', 'solid')).toEqual({
       borderBottomWidth: '2px',
       borderLeftWidth: '2px',
@@ -23,7 +23,7 @@ describe('border', () => {
     });
   });
 
-  it('properly applies values when passed three', () => {
+  it('properly applies values when used with width, style and color', () => {
     expect(border('2px', 'solid', 'red')).toEqual({
       borderBottomWidth: '2px',
       borderLeftWidth: '2px',

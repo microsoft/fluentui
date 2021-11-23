@@ -14,7 +14,7 @@ export function border(
 ): MakeStyles;
 
 /**
- * A function that implements expansion for "border", it's simplified - check usage examples.
+ * A function that implements expansion for "border" to all sides of an element, it's simplified - check usage examples.
  *
  * @example
  *  border('2px')

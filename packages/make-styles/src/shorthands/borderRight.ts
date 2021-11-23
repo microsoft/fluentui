@@ -10,7 +10,7 @@ export function borderRight(
 ): MakeStyles;
 
 /**
- * A function that implements expansion for "border", it's simplified - check usage examples.
+ * A function that implements expansion for "border-right", it's simplified - check usage examples.
  *
  * @example
  *  borderRight('2px')
