@@ -4,11 +4,10 @@ import { CheckboxState } from './Checkbox.types';
 
 export const checkboxClassName = 'fui-Checkbox';
 
-const indicatorVars = {
-  color: '--fui-Checkbox-indicator-color',
-  borderColor: '--fui-Checkbox-indicator-borderColor',
-  backgroundColor: '--fui-Checkbox-indicator-backgroundColor',
-};
+// CSS variables used to control the indicator colors based on :hover and :active on the root
+const indicatorColor = '--fui-Checkbox-indicator-color';
+const indicatorBorderColor = '--fui-Checkbox-indicator-borderColor';
+const indicatorBackgroundColor = '--fui-Checkbox-indicator-backgroundColor';
 
 /**
  * Styles for the root slot
@@ -28,68 +27,68 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForegroundDisabled,
     cursor: 'default',
 
-    [indicatorVars.borderColor]: theme.colorNeutralStrokeDisabled,
-    [indicatorVars.color]: theme.colorNeutralForegroundDisabled,
-    [indicatorVars.backgroundColor]: theme.colorNeutralBackground1,
+    [indicatorBorderColor]: theme.colorNeutralStrokeDisabled,
+    [indicatorColor]: theme.colorNeutralForegroundDisabled,
+    [indicatorBackgroundColor]: theme.colorNeutralBackground1,
 
     ':hover': {
-      [indicatorVars.borderColor]: theme.colorNeutralStrokeDisabled,
-      [indicatorVars.color]: theme.colorNeutralForegroundDisabled,
-      [indicatorVars.backgroundColor]: theme.colorNeutralBackground1,
+      [indicatorBorderColor]: theme.colorNeutralStrokeDisabled,
+      [indicatorColor]: theme.colorNeutralForegroundDisabled,
+      [indicatorBackgroundColor]: theme.colorNeutralBackground1,
     },
 
     ':active': {
-      [indicatorVars.borderColor]: theme.colorNeutralStrokeDisabled,
-      [indicatorVars.color]: theme.colorNeutralForegroundDisabled,
-      [indicatorVars.backgroundColor]: theme.colorNeutralBackground1,
+      [indicatorBorderColor]: theme.colorNeutralStrokeDisabled,
+      [indicatorColor]: theme.colorNeutralForegroundDisabled,
+      [indicatorBackgroundColor]: theme.colorNeutralBackground1,
     },
   }),
 
   unchecked: theme => ({
     color: theme.colorNeutralForeground3,
-    [indicatorVars.borderColor]: theme.colorNeutralStrokeAccessible,
+    [indicatorBorderColor]: theme.colorNeutralStrokeAccessible,
 
     ':hover': {
       color: theme.colorNeutralForeground2,
-      [indicatorVars.borderColor]: theme.colorNeutralStrokeAccessibleHover,
+      [indicatorBorderColor]: theme.colorNeutralStrokeAccessibleHover,
     },
 
     ':active': {
       color: theme.colorNeutralForeground1,
-      [indicatorVars.borderColor]: theme.colorNeutralStrokeAccessiblePressed,
+      [indicatorBorderColor]: theme.colorNeutralStrokeAccessiblePressed,
     },
   }),
 
   checked: theme => ({
     color: theme.colorNeutralForeground1,
 
-    [indicatorVars.backgroundColor]: theme.colorCompoundBrandBackground,
-    [indicatorVars.color]: theme.colorNeutralForegroundOnBrand,
-    [indicatorVars.borderColor]: theme.colorBrandBackground,
+    [indicatorBackgroundColor]: theme.colorCompoundBrandBackground,
+    [indicatorColor]: theme.colorNeutralForegroundOnBrand,
+    [indicatorBorderColor]: theme.colorBrandBackground,
 
     ':active': {
-      [indicatorVars.backgroundColor]: theme.colorCompoundBrandBackgroundPressed,
+      [indicatorBackgroundColor]: theme.colorCompoundBrandBackgroundPressed,
     },
 
     ':hover': {
-      [indicatorVars.backgroundColor]: theme.colorCompoundBrandBackgroundHover,
+      [indicatorBackgroundColor]: theme.colorCompoundBrandBackgroundHover,
     },
   }),
 
   mixed: theme => ({
     color: theme.colorNeutralForeground1,
 
-    [indicatorVars.borderColor]: theme.colorCompoundBrandStroke,
-    [indicatorVars.color]: theme.colorCompoundBrandForeground1,
+    [indicatorBorderColor]: theme.colorCompoundBrandStroke,
+    [indicatorColor]: theme.colorCompoundBrandForeground1,
 
     ':active': {
-      [indicatorVars.borderColor]: theme.colorCompoundBrandStrokePressed,
-      [indicatorVars.color]: theme.colorCompoundBrandForeground1Pressed,
+      [indicatorBorderColor]: theme.colorCompoundBrandStrokePressed,
+      [indicatorColor]: theme.colorCompoundBrandForeground1Pressed,
     },
 
     ':hover': {
-      [indicatorVars.borderColor]: theme.colorCompoundBrandStrokeHover,
-      [indicatorVars.color]: theme.colorCompoundBrandForeground1Hover,
+      [indicatorBorderColor]: theme.colorCompoundBrandStrokeHover,
+      [indicatorColor]: theme.colorCompoundBrandForeground1Hover,
     },
   }),
 
@@ -154,9 +153,9 @@ const useIndicatorStyles = makeStyles({
     borderStyle: 'solid',
     borderRadius: theme.borderRadiusSmall,
     borderWidth: theme.strokeWidthThin,
-    borderColor: `var(${indicatorVars.borderColor})`,
-    color: `var(${indicatorVars.color})`,
-    backgroundColor: `var(${indicatorVars.backgroundColor})`,
+    borderColor: `var(${indicatorBorderColor})`,
+    color: `var(${indicatorColor})`,
+    backgroundColor: `var(${indicatorBackgroundColor})`,
   }),
 
   circular: theme => ({
