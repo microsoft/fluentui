@@ -136,6 +136,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label>change Barwidth:</label>
+        <input type="range" value={this.state.barwidth} min={10} max={70} onChange={this._onBarwidthChange} />
+        <label>{this.state.barwidth}</label>
         <ChoiceGroup
           options={options}
           selectedKey={this.state.selectedCallout}
@@ -143,9 +146,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           label="Pick one"
         />
         <br />
-        <label>change Barwidth:</label>
-        <input type="range" value={this.state.barwidth} min={10} max={70} onChange={this._onBarwidthChange} />
-        <label>{this.state.barwidth}</label>
+
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             culture={window.navigator.language}
