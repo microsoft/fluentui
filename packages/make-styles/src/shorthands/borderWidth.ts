@@ -1,6 +1,6 @@
-import { BorderWidthProperty } from 'csstype';
+import type { BorderWidthProperty } from 'csstype';
 
-import { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { MakeStyles, MakeStylesCSSValue } from '../types';
 import { generateStyles } from './generateStyles';
 
 export function borderWidth(all: BorderWidthProperty<MakeStylesCSSValue>): MakeStyles;

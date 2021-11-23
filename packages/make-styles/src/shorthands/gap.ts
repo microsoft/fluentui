@@ -1,4 +1,4 @@
-import { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { MakeStyles, MakeStylesCSSValue } from '../types';
 
 /**
  * A function that implements CSS spec conformant expansion for "gap"

@@ -1,5 +1,5 @@
-import { BorderColorProperty, BorderStyleProperty, BorderWidthProperty } from 'csstype';
-import { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { BorderColorProperty, BorderStyleProperty, BorderWidthProperty } from 'csstype';
+import type { MakeStyles, MakeStylesCSSValue } from '../types';
 
 export function borderTop(width: BorderWidthProperty<MakeStylesCSSValue>): MakeStyles;
 export function borderTop(width: BorderWidthProperty<MakeStylesCSSValue>, style: BorderStyleProperty): MakeStyles;

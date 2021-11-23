@@ -1,6 +1,6 @@
-import { BorderStyleProperty } from 'csstype';
+import type { BorderStyleProperty } from 'csstype';
 
-import { MakeStyles } from '../types';
+import type { MakeStyles } from '../types';
 import { generateStyles } from './generateStyles';
 
 export function borderStyle(all: BorderStyleProperty): MakeStyles;

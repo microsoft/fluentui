@@ -1,6 +1,6 @@
-import { BorderColorProperty, BorderStyleProperty, BorderWidthProperty } from 'csstype';
+import type { BorderColorProperty, BorderStyleProperty, BorderWidthProperty } from 'csstype';
 
-import { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { MakeStyles, MakeStylesCSSValue } from '../types';
 import { borderWidth } from './borderWidth';
 import { borderStyle } from './borderStyle';
 import { borderColor } from './borderColor';

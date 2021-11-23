@@ -4,10 +4,10 @@
 
 ```ts
 
-import { BorderColorProperty } from 'csstype';
-import { BorderStyleProperty } from 'csstype';
-import { BorderWidthProperty } from 'csstype';
-import { OverflowProperty } from 'csstype';
+import type { BorderColorProperty } from 'csstype';
+import type { BorderStyleProperty } from 'csstype';
+import type { BorderWidthProperty } from 'csstype';
+import type { OverflowProperty } from 'csstype';
 import { Properties } from 'csstype';
 
 // @internal

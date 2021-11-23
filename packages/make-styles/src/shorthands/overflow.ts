@@ -1,5 +1,5 @@
-import { OverflowProperty } from 'csstype';
-import { MakeStyles } from '../types';
+import type { OverflowProperty } from 'csstype';
+import type { MakeStyles } from '../types';
 
 /**
  * A function that implements CSS spec conformant expansion for "overflow"

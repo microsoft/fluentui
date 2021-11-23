@@ -1,4 +1,4 @@
-import { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { MakeStyles, MakeStylesCSSValue } from '../types';
 import { generateStyles } from './generateStyles';
 
 export function padding(all: MakeStylesCSSValue): MakeStyles;
