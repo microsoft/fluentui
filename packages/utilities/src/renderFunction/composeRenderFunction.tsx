@@ -10,14 +10,41 @@ function createComposedRenderFunction<TProps>(
 ): (inner: IRenderFunction<TProps>) => IRenderFunction<TProps> {
   const outerMemoizer = createMemoizer((inner: IRenderFunction<TProps>) => {
     const innerMemoizer = createMemoizer((defaultRender: IRenderFunction<TProps>) => {
-      return (innerProps?: TProps) => {
+      function innerRenderFunctionWithDefaultRender(innerProps?: TProps): JSX.Element | null {
         return inner(innerProps, defaultRender);
+      }
+
+      (innerRenderFunctionWithDefaultRender as {
+        composed?: {
+          outer: IRenderFunction<TProps>;
+          inner: IRenderFunction<TProps>;
+        };
+      }).composed = {
+        outer: inner,
+        inner: defaultRender,
       };
+
+      return innerRenderFunctionWithDefaultRender;
     });
 
-    return (outerProps?: TProps, defaultRender?: IRenderFunction<TProps>) => {
+    function outerRenderFunctionWithDefaultRender(
+      outerProps?: TProps,
+      defaultRender?: IRenderFunction<TProps>,
+    ): JSX.Element | null {
       return outer(outerProps, defaultRender ? innerMemoizer(defaultRender) : inner);
+    }
+
+    (outerRenderFunctionWithDefaultRender as {
+      composed?: {
+        outer: IRenderFunction<TProps>;
+        inner: IRenderFunction<TProps>;
+      };
+    }).composed = {
+      outer,
+      inner,
     };
+
+    return outerRenderFunctionWithDefaultRender;
   });
 
   return outerMemoizer;

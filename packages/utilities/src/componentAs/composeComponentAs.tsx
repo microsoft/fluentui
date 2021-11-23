@@ -25,6 +25,16 @@ function createComposedComponent<TProps>(
         return <Inner {...innerProps} defaultRender={defaultRender} />;
       };
 
+      (InnerWithDefaultRender as {
+        composed?: {
+          outer: IComponentAs<TProps>;
+          inner: IComponentAs<TProps>;
+        };
+      }).composed = {
+        outer: inner,
+        inner: defaultRender,
+      };
+
       return InnerWithDefaultRender;
     });
 
@@ -34,6 +44,16 @@ function createComposedComponent<TProps>(
       const { defaultRender } = outerProps;
 
       return <Outer {...outerProps} defaultRender={defaultRender ? innerMemoizer(defaultRender) : Inner} />;
+    };
+
+    (OuterWithDefaultRender as {
+      composed?: {
+        outer: IComponentAs<TProps>;
+        inner: IComponentAs<TProps>;
+      };
+    }).composed = {
+      outer,
+      inner,
     };
 
     return OuterWithDefaultRender;

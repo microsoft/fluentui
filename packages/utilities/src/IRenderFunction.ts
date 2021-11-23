@@ -1,5 +1,5 @@
 /**
- * Render function interface for providing overrideable render callbacks.
+ * Render function interface for providing overrideable render callbacks, where the props are optional.
  *
  * @public
  */
