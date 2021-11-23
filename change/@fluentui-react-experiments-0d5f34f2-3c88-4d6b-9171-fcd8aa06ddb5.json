@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixed aria description implementation",
-  "packageName": "@fluentui/react-experiments",
-  "email": "surya.ravva@microsoft.com",
-  "dependentChangeType": "patch"
-}

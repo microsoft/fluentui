@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: remove margins from host elements",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
