@@ -45,6 +45,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Dropdown` by conditionally adding `aria-expanded="true"` to the button trigger @chpalac ([#20671](https://github.com/microsoft/fluentui/pull/20671))
 - Optimized `felaInvokeKeyframesPlugin` to not create new objects but reuse existing one in `reduce` @mbman ([#20649](https://github.com/microsoft/fluentui/pull/20649))
 - Fix `Checkbox` component to properly pass down ref to root slots @chpalac ([#20696](https://github.com/microsoft/fluentui/pull/20696))
+- Fix `Embed` component to properly pass ref to root slots @chpalac ([#20703](https://github.com/microsoft/fluentui/pull/20703))
 - Fix `Chat` components to properly pass ref to root slots @chpalac ([#20691](https://github.com/microsoft/fluentui/pull/20691))
 
 ### Features
