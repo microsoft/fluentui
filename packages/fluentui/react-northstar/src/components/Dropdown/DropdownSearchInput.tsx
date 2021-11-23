@@ -153,7 +153,7 @@ export const DropdownSearchInput = (React.forwardRef<HTMLInputElement, DropdownS
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLInputElement, DropdownSearchInputProps> &
+}) as unknown) as ForwardRefWithAs<'input', HTMLInputElement, DropdownSearchInputProps> &
   FluentComponentStaticProps<DropdownSearchInputProps>;
 
 DropdownSearchInput.displayName = 'DropdownSearchInput';
