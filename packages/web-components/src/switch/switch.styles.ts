@@ -47,7 +47,6 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       align-items: center;
       outline: none;
       font-family: ${bodyFont};
-      margin: calc(${designUnit} * 1px) 0;
       ${
         /*
          * Chromium likes to select label text or the default slot when
@@ -140,8 +139,9 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       cursor: pointer;
     }
 
-    .status-message {
-      margin-inline-start: calc(${designUnit} * 2px + 2px);
+    ::slotted([slot="checked-message"]),
+    ::slotted([slot="unchecked-message"]) {
+        margin-inline-start: calc(${designUnit} * 2px + 2px);
     }
 
     :host(.checked) .switch {
