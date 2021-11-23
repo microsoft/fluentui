@@ -29,10 +29,10 @@ const MixedIcon = {
  * before being passed to renderCheckbox.
  *
  * @param props - props from this instance of Checkbox
- * @param ref - reference to <input> element of Checkbox
+ * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  const { children, circular, size = 'medium', labelPosition = 'after' } = props;
+  const { circular, size = 'medium', labelPosition = 'after' } = props;
 
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
@@ -42,17 +42,16 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
 
   const nativeProps = getPartitionedNativeProps({
     props,
-    tagName: 'input',
+    primarySlotTagName: 'input',
     excludedPropNames: ['checked', 'defaultChecked', 'children'],
   });
 
   const state: CheckboxState = {
-    children,
     circular,
     checked,
     size,
     labelPosition,
-    hasLabel: !!children,
+    hasLabel: !!props.children,
     components: {
       root: props.children !== undefined ? (Label as React.ComponentType<LabelProps>) : 'span',
       indicator: 'div',
@@ -60,7 +59,10 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     },
     root: resolveShorthand(props.root, {
       required: true,
-      defaultProps: nativeProps.root,
+      defaultProps: {
+        children: props.children,
+        ...nativeProps.root,
+      },
     }),
     input: resolveShorthand(props.input, {
       required: true,

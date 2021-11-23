@@ -1,6 +1,6 @@
 import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -53,14 +53,7 @@ export const chatSlotClassNames: ChatSlotClassNames = {
 /**
  * A Chat displays messages from a conversation between multiple users.
  */
-export const Chat: ComponentWithAs<'ul', ChatProps> &
-  FluentComponentStaticProps<ChatProps> & {
-    Item: typeof ChatItem;
-    Message: typeof ChatMessage;
-    MessageDetails: typeof ChatMessageDetails;
-    MessageReadStatus: typeof ChatMessageReadStatus;
-    MessageHeader: typeof ChatMessageHeader;
-  } = props => {
+export const Chat = (React.forwardRef<HTMLUListElement, ChatProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
@@ -90,6 +83,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -108,7 +102,14 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'ul', HTMLUListElement, ChatProps> &
+  FluentComponentStaticProps<ChatProps> & {
+    Item: typeof ChatItem;
+    Message: typeof ChatMessage;
+    MessageDetails: typeof ChatMessageDetails;
+    MessageReadStatus: typeof ChatMessageReadStatus;
+    MessageHeader: typeof ChatMessageHeader;
+  };
 
 Chat.displayName = 'Chat';
 

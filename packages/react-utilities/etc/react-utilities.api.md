@@ -85,8 +85,8 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export const getPartitionedNativeProps: ({ tagName, props, excludedPropNames, }: {
-    tagName: keyof JSX.IntrinsicElements;
+export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPropNames, }: {
+    primarySlotTagName: keyof JSX.IntrinsicElements;
     props: Pick<React_2.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
     excludedPropNames?: string[] | undefined;
 }) => {

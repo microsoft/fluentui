@@ -47,14 +47,17 @@ export interface CheckboxOnChangeData {
 
 export type CheckboxSlots = {
   /**
-   * The root element of the checkbox is its <label>.
+   * The root element of the checkbox is its `<label>`.
+   *
+   * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
+   * All other native props will be applied to the primary slot `input`.
    */
   root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
 
   /**
    * Hidden input that handles the checkbox's functionality.
    *
-   * This is the PRIMARY slot: all native properties specified directly on <Checkbox> will be forwarded to this slot,
+   * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
   input: IntrinsicShorthandProps<'input'>;
@@ -85,7 +88,6 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
  * State used in rendering Checkbox
  */
 export type CheckboxState = ComponentState<CheckboxSlots> &
-  Pick<CheckboxProps, 'children'> &
   CheckboxCommons & {
     hasLabel: boolean;
   };
