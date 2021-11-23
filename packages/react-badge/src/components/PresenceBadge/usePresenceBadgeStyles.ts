@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
 
-    '& .root-span': {
+    '& span': {
       display: 'flex',
     },
     borderRadius: '50%',
