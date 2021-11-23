@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 23 Nov 2021 07:27:34 GMT",
+      "tag": "@fluentui/react_v8.43.0",
+      "version": "8.43.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "surya.ravva@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f941a28b004091d671f232ba7bff4aa9451dc3ab",
+            "comment": "added new prop getAriaDescription to detailsRow"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Nov 2021 07:36:13 GMT",
       "tag": "@fluentui/react_v8.42.5",
       "version": "8.42.5",
