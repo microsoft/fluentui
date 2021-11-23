@@ -194,28 +194,8 @@ describe('makeStyles', () => {
     // Style elements should be different for different renderers
     expect(rendererA.styleElements.d).not.toBe(rendererB.styleElements.d);
 
-    expect(rendererA).toMatchInlineSnapshot(`
-      .f22iagw {
-        display: flex;
-      }
-      .frdkuqy {
-        padding-left: 10px;
-      }
-      .f81rol6 {
-        padding-right: 10px;
-      }
-    `);
-    expect(rendererB).toMatchInlineSnapshot(`
-      .f22iagw {
-        display: flex;
-      }
-      .frdkuqy {
-        padding-left: 10px;
-      }
-      .f81rol6 {
-        padding-right: 10px;
-      }
-    `);
+    expect(rendererA).toMatchInlineSnapshot(``);
+    expect(rendererB).toMatchInlineSnapshot(``);
   });
 
   it('handles tokens', () => {

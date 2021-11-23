@@ -16,7 +16,7 @@ expect.addSnapshotSerializer({
     return typeof val === 'string';
   },
   print(val) {
-    return stripAnsi(val);
+    return stripAnsi(/** @type {string} */ (val));
   },
 });
 

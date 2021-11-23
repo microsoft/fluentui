@@ -4,18 +4,17 @@ import { resolveStyleRules } from '../runtime/resolveStyleRules';
 import { MakeStylesRenderer, CSSRulesByBucket, StyleBucketName } from '../types';
 
 export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  test(value: MakeStylesRenderer | any) {
+  test(value: MakeStylesRenderer) {
     return typeof value.styleElements === 'object';
   },
-  print(renderer: MakeStylesRenderer) {
-    const rules = Object.keys(renderer.styleElements).reduce<string[]>((acc, styleEl) => {
-      const styleElement: HTMLStyleElement | undefined = renderer.styleElements[styleEl as StyleBucketName];
+  print(renderer) {
+    const rules = Object.keys((renderer as MakeStylesRenderer).styleElements).reduce<string[]>((acc, styleEl) => {
+      const styleElement: HTMLStyleElement | undefined = (renderer as MakeStylesRenderer).styleElements[
+        styleEl as StyleBucketName
+      ];
 
       if (styleElement) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const cssRules: CSSRule[] = Array.from((styleElement.sheet as CSSStyleSheet).cssRules);
+        const cssRules = Array.from(styleElement.sheet?.cssRules || []);
 
         return [...acc, ...cssRules.map(rule => rule.cssText)];
       }
@@ -28,12 +27,11 @@ export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
 };
 
 export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  test(value: any) {
+  test(value) {
     return Array.isArray(value) && value.length === 2;
   },
-  print(value: ReturnType<typeof resolveStyleRules>) {
-    const cssRulesByBucket: CSSRulesByBucket = value[1];
+  print(value) {
+    const cssRulesByBucket: CSSRulesByBucket = (value as ReturnType<typeof resolveStyleRules>)[1];
 
     return (Object.keys(cssRulesByBucket) as StyleBucketName[]).reduce((acc, styleBucketName) => {
       const rules: string[] = cssRulesByBucket[styleBucketName]!;

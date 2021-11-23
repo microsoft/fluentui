@@ -46,7 +46,6 @@
     "@types/react-test-renderer": "^16.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "jest-snapshot": "~24.9.0",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",

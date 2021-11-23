@@ -17,8 +17,8 @@ expect.addSnapshotSerializer({
   test(value) {
     return typeof value === 'string';
   },
-  print(value: string) {
-    return prettier.format(value, { parser: 'html' }).trim();
+  print(value) {
+    return prettier.format(value as string, { parser: 'html' }).trim();
   },
 });
 
