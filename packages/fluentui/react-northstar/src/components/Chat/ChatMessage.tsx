@@ -7,7 +7,6 @@ import {
   menuAsToolbarBehavior,
 } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useAutoControlled,
@@ -17,6 +16,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   useMergedRefs,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -216,8 +216,7 @@ function partitionActionMenuPropsFromShorthand<P>(
 /**
  * A ChatMessage represents a single message in chat.
  */
-export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
-  FluentComponentStaticProps<ChatMessageProps> = props => {
+export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
@@ -576,6 +575,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             onMouseEnter: handleMouseEnter,
             onMouseLeave: handleMouseLeave,
             onKeyDown: handleKeyDown,
+            ref,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),
             ...unhandledProps,
           })}
@@ -588,7 +588,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, ChatMessageProps> &
+  FluentComponentStaticProps<ChatMessageProps>;
 
 ChatMessage.displayName = 'ChatMessage';
 
