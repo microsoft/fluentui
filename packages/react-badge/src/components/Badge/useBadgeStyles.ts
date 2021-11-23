@@ -99,7 +99,7 @@ const useStyles = makeStyles({
   rootFilledSevere: theme => ({
     backgroundColor: theme.colorPaletteDarkOrangeBackground3,
     color: theme.colorNeutralForegroundOnBrand,
-    borderColor: 'none',
+    borderColor: theme.colorTransparentStroke,
   }),
   rootOutlineSevere: theme => ({
     color: theme.colorPaletteDarkOrangeForeground3,
@@ -133,7 +133,7 @@ const useStyles = makeStyles({
   rootFilledSuccess: theme => ({
     backgroundColor: theme.colorPaletteGreenBackground3,
     color: theme.colorNeutralForegroundOnBrand,
-    borderColor: 'none',
+    borderColor: theme.colorTransparentStroke,
   }),
   rootOutlineSuccess: theme => ({
     color: theme.colorPaletteGreenForeground2,
@@ -170,7 +170,6 @@ const useStyles = makeStyles({
     borderColor: theme.colorTransparentStroke,
   }),
   rootOutlineInformative: theme => ({
-    backgroundColor: theme.colorPaletteDarkOrangeBackground3,
     color: theme.colorNeutralBackground5,
     borderColor: theme.colorNeutralBackground5,
   }),
