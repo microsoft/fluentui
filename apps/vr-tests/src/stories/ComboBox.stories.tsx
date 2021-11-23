@@ -64,7 +64,7 @@ storiesOf('ComboBox', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory('Styled', () => (
