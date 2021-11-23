@@ -62,7 +62,8 @@ export async function packProjectPackages(
   const tmpDirectory = createTempDir('project-packed-');
   logger(`✔️ Temporary directory for packed packages was created: ${tmpDirectory}`);
 
-  await shEcho('which npm', tmpDirectory);
+  await shEcho('npm i npm-which', tmpDirectory);
+  await shEcho('npm-which npm', tmpDirectory);
   await shEcho('npm --version', tmpDirectory);
 
   await Promise.all(
