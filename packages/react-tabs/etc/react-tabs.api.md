@@ -4,32 +4,95 @@
 
 ```ts
 
+import { BadgeProps } from '@fluentui/react-badge';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+
+// @public
+export const BadgeTab: ForwardRefComponent<BadgeTabProps>;
+
+// @public (undocumented)
+export type BadgeTabCommons = TabCommons;
+
+// @public
+export type BadgeTabProps = ComponentProps<BadgeTabSlots> & BadgeTabCommons;
+
+// @public
+export const badgeTabShorthandProps: (keyof BadgeTabSlots)[];
+
+// @public (undocumented)
+export type BadgeTabSlots = TabSlots & {
+    badge: ObjectShorthandProps<BadgeProps>;
+    children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+};
+
+// @public
+export type BadgeTabState = ComponentState<BadgeTabSlots> & BadgeTabCommons & Omit<TabState, keyof TabSlots | 'components'>;
+
+// @public
+export const renderBadgeTab: (state: BadgeTabState) => JSX.Element;
 
 // @public
 export const renderTab: (state: TabState) => JSX.Element;
 
 // @public
-export const renderTabList: (state: TabListState) => JSX.Element;
+export const renderTabList: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
+
+// @public (undocumented)
+export type SelectTabData = {
+    value: TabValue;
+};
+
+// @public (undocumented)
+export type SelectTabEvent<E = HTMLElement> = React_2.MouseEvent<E> | React_2.KeyboardEvent<E>;
+
+// @public (undocumented)
+export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData) => void;
 
 // @public
 export const Tab: ForwardRefComponent<TabProps>;
 
 // @public (undocumented)
-export type TabCommons = {};
+export const tabClassName = "fui-Tab";
+
+// @public (undocumented)
+export type TabCommons = {
+    value: TabValue;
+};
 
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
 
 // @public (undocumented)
-export type TabListCommons = {};
+export type TabListCommons = {
+    appearance?: 'transparent' | 'subtle';
+    onTabSelected?: SelectTabEventHandler;
+    selectedValue?: TabValue;
+    size?: 'small' | 'medium';
+    vertical?: boolean;
+    verticalTabContent?: boolean;
+};
+
+// Warning: (ae-forgotten-export) The symbol "TabListStateContextCommons" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type TabListContextValue = TabListStateContextCommons & {
+    selectTab: SelectTabEventHandler;
+};
 
 // @public
-export type TabListProps = ComponentProps<TabListSlots> & TabListCommons;
+export type TabListContextValues = {
+    tabList: TabListContextValue;
+};
+
+// @public
+export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
+    defaultSelectedValue?: TabValue;
+};
 
 // @public
 export const tabListShorthandProps: (keyof TabListSlots)[];
@@ -40,7 +103,7 @@ export type TabListSlots = {
 };
 
 // @public
-export type TabListState = ComponentState<TabListSlots> & TabListCommons;
+export type TabListState = ComponentState<TabListSlots> & TabListStateContextCommons & TabListContextValue;
 
 // @public
 export type TabProps = ComponentProps<TabSlots> & TabCommons;
@@ -51,10 +114,27 @@ export const tabShorthandProps: (keyof TabSlots)[];
 // @public (undocumented)
 export type TabSlots = {
     root: IntrinsicShorthandProps<'div'>;
+    content: IntrinsicShorthandProps<'div'>;
+    icon?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public
-export type TabState = ComponentState<TabSlots> & TabCommons;
+export type TabState = ComponentState<TabSlots> & TabCommons & {
+    appearance?: string;
+    selected?: boolean;
+    size: 'small' | 'medium';
+    verticalContent: boolean;
+    verticalList: boolean;
+};
+
+// @public
+export type TabValue = unknown;
+
+// @public
+export const useBadgeTab: (props: BadgeTabProps, ref: React_2.Ref<HTMLElement>) => BadgeTabState;
+
+// @public
+export const useBadgeTabStyles: (state: BadgeTabState) => BadgeTabState;
 
 // @public
 export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;

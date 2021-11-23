@@ -1608,6 +1608,23 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/babel-make-styles@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/babel-make-styles/-/babel-make-styles-9.0.0-beta.2.tgz#e9010d5dc3345483f5c7238d01fb38f0dff32869"
+  integrity sha512-PcosofYrag1enT98UM1R6vB5KSIE5ppuJ3V/gevDo/fyczkxfPLEfu1R6quT2mL6z1q6mgSE/DzWzRHWF5Q5kA==
+  dependencies:
+    "@babel/core" "^7.10.4"
+    "@babel/generator" "^7.12.13"
+    "@babel/helper-plugin-utils" "^7.12.13"
+    "@babel/preset-typescript" "^7.10.4"
+    "@babel/template" "^7.12.13"
+    "@babel/traverse" "^7.12.13"
+    "@fluentui/make-styles" "9.0.0-beta.2"
+    "@linaria/babel-preset" "^3.0.0-beta.13"
+    "@linaria/shaker" "^3.0.0-beta.13"
+    ajv "^8.4.0"
+    tslib "^2.1.0"
+
 "@fluentui/dom-utilities@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@fluentui/dom-utilities/-/dom-utilities-1.1.1.tgz#b0bbab665fe726f245800bb9e7883b1ceb54248b"
@@ -1616,10 +1633,91 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
+"@fluentui/jest-serializer-make-styles@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/jest-serializer-make-styles/-/jest-serializer-make-styles-9.0.0-beta.2.tgz#d641de8fb50c69d25d213470acf94cb4ee096455"
+  integrity sha512-d1TNbBjBUD9wS0SkEIom1vIgYQS/9jg1ALKqaMstNnBLSzJdHJPUG38Aqi6ENbpgnzhsCMfjbAqaxqYFElnwfw==
+  dependencies:
+    "@fluentui/make-styles" "9.0.0-beta.2"
+
+"@fluentui/react-badge@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-badge/-/react-badge-9.0.0-beta.2.tgz#5ca1ecd269a4eb5bb55235d8f7807805da02f5c1"
+  integrity sha512-lrV3z7djhDs+EgqOHjaQuklY6O6TBHT7lzieaDQ9FAs5/1VWwK7xnDSBIRoo0/j4NQPqIW37uIfyE+9FODsfdw==
+  dependencies:
+    "@fluentui/react-make-styles" "9.0.0-beta.2"
+    "@fluentui/react-theme" "9.0.0-beta.2"
+    "@fluentui/react-utilities" "9.0.0-beta.2"
+    tslib "^2.1.0"
+
+"@fluentui/react-conformance-make-styles@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-conformance-make-styles/-/react-conformance-make-styles-9.0.0-beta.2.tgz#434e333815b8a3429e2135c4f27329562027f173"
+  integrity sha512-ZUv52EeFvEJTHeqbP6RNVodEkhdxQpZXtRUZOQe0N+MKT9DNLzgQ3ki2czQO0lakbMIl79FmO1cOpt6gs57mWQ==
+  dependencies:
+    "@fluentui/react-make-styles" "9.0.0-beta.2"
+    tslib "^2.1.0"
+
+"@fluentui/react-context-selector@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-context-selector/-/react-context-selector-9.0.0-beta.2.tgz#ab5cbc1093356384f940ab81a282ebde7aa14376"
+  integrity sha512-PSsLbjAeRp/1SJU6VZImpgcrR3kHWg/hpRsnuRKc+O1TpY22cAk4DiJ9usNhqxSM9Xp7gFcg2mKRhAKfb1c0fQ==
+  dependencies:
+    "@fluentui/react-utilities" "9.0.0-beta.2"
+    scheduler "^0.20.1"
+    tslib "^2.1.0"
+
 "@fluentui/react-icons@^1.1.140":
   version "1.1.141"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-1.1.141.tgz#87e04a8f8302b7b8d0d81528a0596731dad2f3de"
   integrity sha512-9/wIK7/Tv6Ya5BHYgEONNN0KBJzcZhwvsCoV5ByFp+mNMc0mfdSi7VfOsgtWgUbORzIJdXqW7BF1gXA2hGkT1A==
+
+"@fluentui/react-make-styles@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-make-styles/-/react-make-styles-9.0.0-beta.2.tgz#a3128abea8bd22754893ba3021e474c742670a86"
+  integrity sha512-CiywBEEledQGgPYG2be9itlukvaz8NrPXwC04yvy/vdw2T5nuT43aEX5Y/oKBZ0A0OMzWV7sEZTENJg0nrFa4g==
+  dependencies:
+    "@fluentui/make-styles" "9.0.0-beta.2"
+    "@fluentui/react-shared-contexts" "9.0.0-beta.2"
+    "@fluentui/react-theme" "9.0.0-beta.2"
+    "@fluentui/react-utilities" "9.0.0-beta.2"
+    tslib "^2.1.0"
+
+"@fluentui/react-shared-contexts@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-shared-contexts/-/react-shared-contexts-9.0.0-beta.2.tgz#bc039a327faff830d5d8b0fb1a6160c386291a7d"
+  integrity sha512-ljN9qUDpb9v/bXkkSCyn34Lv2IPyN3xUPCc0YODeJzzH/bf5V4CRz5wMMu8UguV11hBqDBRlIJs1e1Ak0aAcqg==
+  dependencies:
+    "@fluentui/react-theme" "9.0.0-beta.2"
+    tslib "^2.1.0"
+
+"@fluentui/react-tabster@9.0.0-beta.3":
+  version "9.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-tabster/-/react-tabster-9.0.0-beta.3.tgz#47b0565be9d11dcf44302edd463c4834f35ebcc0"
+  integrity sha512-AKDbzDMM7M119wsli41kKWde/vWNjEw+Ih7R4u4wEdOJ8wDEqlp4NvKn0p+yR5jiGNn54F5uoIXXeoNIT7+i3Q==
+  dependencies:
+    "@fluentui/make-styles" "9.0.0-beta.2"
+    "@fluentui/react-make-styles" "9.0.0-beta.2"
+    "@fluentui/react-shared-contexts" "9.0.0-beta.2"
+    "@fluentui/react-utilities" "9.0.0-beta.2"
+    keyborg "^1.0.0"
+    tabster "^1.0.0"
+    tslib "^2.1.0"
+
+"@fluentui/react-theme@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-theme/-/react-theme-9.0.0-beta.2.tgz#c5c2975afeb0ef589a7b265f23bfbbcae75b9ea1"
+  integrity sha512-ZLTYcOBd4k+YP+YQ0/v7v+eq3U4KuxVFqpb2p9pLQgY0YpXq1hiUoq7VqtQCjMDd9YTcGmNjD4X+yE/8uUGVuQ==
+  dependencies:
+    tslib "^2.1.0"
+
+"@fluentui/react-utilities@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-utilities/-/react-utilities-9.0.0-beta.2.tgz#24389527eb3f0990daede23bcf519348081dd00b"
+  integrity sha512-Oie2hLmWCQdH6dBjSZeFsJmk7GAK7G2msmPeLW1d6hE+YD7dvhmdL+lxKv8oT4UqHhq7yq0/aqgPSY/xdF+KEg==
+  dependencies:
+    "@fluentui/keyboard-keys" "9.0.0-beta.1"
+    tslib "^2.1.0"
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
@@ -2531,6 +2629,20 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@linaria/babel-preset@^3.0.0-beta.13":
+  version "3.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.13.tgz#bce5c199bfd72f754fb962dc72c292f076150b72"
+  integrity sha512-UeurIwmORp1lG+f69bKquRug7ZFVSrQha6TJWvHmGQIFwFx5qpMCXJLhOp2dUpM4y7/NhbKYXqj58RtG3wi4ZQ==
+  dependencies:
+    "@babel/generator" ">=7"
+    "@babel/plugin-syntax-dynamic-import" ">=7"
+    "@babel/template" ">=7"
+    "@linaria/core" "^3.0.0-beta.13"
+    "@linaria/logger" "^3.0.0-beta.3"
+    cosmiconfig "^5.1.0"
+    source-map "^0.7.3"
+    stylis "^3.5.4"
+
 "@linaria/babel-preset@^3.0.0-beta.14":
   version "3.0.0-beta.14"
   resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.14.tgz#4f204e12948dd9e8a540374806b7c1a64d3b7918"
@@ -2557,12 +2669,34 @@
   dependencies:
     debug "^4.1.1"
 
+"@linaria/preeval@^3.0.0-beta.13":
+  version "3.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/@linaria/preeval/-/preeval-3.0.0-beta.13.tgz#360220c7d46db814d6278c2b6c1d09f856b17eb4"
+  integrity sha512-0tia6DHxJ9h3/9LWWxseZw8z2wuB0OHwakQrDFV138m3ym3LwHnRalk9VUpIESnnFOiATya20+drUSx0GRxq/Q==
+  dependencies:
+    "@linaria/babel-preset" "^3.0.0-beta.13"
+
 "@linaria/preeval@^3.0.0-beta.14":
   version "3.0.0-beta.14"
   resolved "https://registry.yarnpkg.com/@linaria/preeval/-/preeval-3.0.0-beta.14.tgz#bf4e99bbb89237a68f5a56e23781b1f027bf0e0d"
   integrity sha512-SnyHqUf5uKEiP7N7Dd1yK9TEEycqq6qomUiWnoaH1F4VVIeFCOfDE5zGaVl9o4fM1rS0BWkeZZTnzg5ggrjnnA==
   dependencies:
     "@linaria/babel-preset" "^3.0.0-beta.14"
+
+"@linaria/shaker@^3.0.0-beta.13":
+  version "3.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/@linaria/shaker/-/shaker-3.0.0-beta.13.tgz#df01ae1c182dfac984a04d05e56cab3e9411b5ab"
+  integrity sha512-/ejyBA63pY5OnGK4VxrcD7FxYdQ/weRuPZyy8YEWgh0vVkyeXegwrfupfn+Nt7Lodnej+hrMexloKjxe2NTKfA==
+  dependencies:
+    "@babel/generator" ">=7"
+    "@babel/plugin-transform-runtime" ">=7"
+    "@babel/plugin-transform-template-literals" ">=7"
+    "@babel/preset-env" ">=7"
+    "@linaria/babel-preset" "^3.0.0-beta.13"
+    "@linaria/logger" "^3.0.0-beta.3"
+    "@linaria/preeval" "^3.0.0-beta.13"
+    babel-plugin-transform-react-remove-prop-types "^0.4.24"
+    ts-invariant "^0.9.0"
 
 "@linaria/shaker@^3.0.0-beta.14":
   version "3.0.0-beta.14"
@@ -16394,7 +16528,7 @@ karma@^5.0.4:
     ua-parser-js "0.7.21"
     yargs "^15.3.1"
 
-keyborg@^1.0.7:
+keyborg@^1.0.0, keyborg@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.0.7.tgz#7a4ccc74541b655e4eb9e5ec44c7dd126fb24669"
   integrity sha512-wvbDuAXjsZHLfmaPIMUXIZ8C8QTg3WFTVJxneSjCfLydRG1qMOwV4/WUBTjbGVgz7eTTyEFl5i+M76fRvoYiVQ==
@@ -23929,7 +24063,7 @@ table@^6.0.4:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
-tabster@^1.0.7:
+tabster@^1.0.0, tabster@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.0.7.tgz#0388228fc347d794ebdfbbe03b429b646ab7ce0a"
   integrity sha512-AkCP3SF9hgPopOZ2r80s0LvAnQNKA4GM136YgZz55d4Y8gLBFmKJcm23YZfj3l30pMy+ktxuPyGAy+VN+5/h2Q==

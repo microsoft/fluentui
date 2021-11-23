@@ -30,7 +30,7 @@ export type TabListCommons = {
   /**
    * Raised when a tab is selected.
    */
-  onTabSelected?: SelectTabEventHandler;
+  onTabSelect?: SelectTabEventHandler;
 
   /**
    * The value of the currently selected tab.
@@ -76,7 +76,7 @@ export type TabListContextValue = TabListStateContextCommons & {
   /**
    * A callback to allow a tab to select itself when pressed.
    */
-  selectTab: SelectTabEventHandler;
+  onSelect: SelectTabEventHandler;
 };
 
 /**

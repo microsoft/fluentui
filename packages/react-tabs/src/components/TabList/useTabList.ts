@@ -23,7 +23,7 @@ export const tabListShorthandProps: (keyof TabListSlots)[] = [
 export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
   const {
     appearance = 'transparent',
-    onTabSelected,
+    onTabSelect,
     size = 'medium',
     vertical = false,
     verticalTabContent = false,
@@ -37,8 +37,8 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
     initialState: undefined,
   });
 
-  const selectTab = useEventCallback((event: SelectTabEvent, data: SelectTabData) => {
-    onTabSelected?.(event, data);
+  const onSelect = useEventCallback((event: SelectTabEvent, data: SelectTabData) => {
+    onTabSelect?.(event, data);
     setSelectedValue(data.value);
   });
 
@@ -58,7 +58,7 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
     }),
     appearance,
     selectedValue: selectedValue,
-    selectTab,
+    onSelect,
     size,
     vertical,
     verticalTabContent,

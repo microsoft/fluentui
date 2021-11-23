@@ -7,7 +7,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTabListContextValues } from './useTabListContextValues';
 
 /**
- * TabList component
+ * A tab list provides single selection from a set of tabs.
  */
 export const TabList: ForwardRefComponent<TabListProps> = React.forwardRef((props, ref) => {
   const state = useTabList(props, ref);
