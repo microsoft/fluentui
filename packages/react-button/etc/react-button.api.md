@@ -9,7 +9,6 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { MenuTriggerChildProps } from '@fluentui/react-menu';
 import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
@@ -68,6 +67,8 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 // @public (undocumented)
 export const menuButtonClassName = "fui-MenuButton";
 
+// Warning: (ae-forgotten-export) The symbol "MenuTriggerChildProps" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>> & Partial<MenuTriggerChildProps>;
 

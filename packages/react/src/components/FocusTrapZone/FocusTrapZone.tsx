@@ -74,7 +74,9 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     elementToFocusOnDismiss,
     forceFocusInsideTrap = true,
     focusPreviouslyFocusedInnerElement,
+    // eslint-disable-next-line deprecation/deprecation
     firstFocusableSelector,
+    firstFocusableTarget,
     ignoreExternalFocusing,
     isClickableOutsideFocusTrap = false,
     onFocus,
@@ -113,7 +115,11 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     let firstFocusableChild: HTMLElement | null = null;
 
     if (root.current) {
-      if (focusSelector) {
+      if (typeof firstFocusableTarget === 'string') {
+        firstFocusableChild = root.current.querySelector(firstFocusableTarget);
+      } else if (firstFocusableTarget) {
+        firstFocusableChild = firstFocusableTarget(root.current);
+      } else if (focusSelector) {
         firstFocusableChild = root.current.querySelector('.' + focusSelector);
       }
 
@@ -132,7 +138,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     if (firstFocusableChild) {
       focusAsync(firstFocusableChild);
     }
-  }, [firstFocusableSelector, focusPreviouslyFocusedInnerElement, internalState]);
+  }, [firstFocusableSelector, firstFocusableTarget, focusPreviouslyFocusedInnerElement, internalState]);
 
   const onBumperFocus = React.useCallback(
     (isFirstBumper: boolean) => {

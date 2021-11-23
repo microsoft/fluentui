@@ -552,6 +552,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
+      ...(open && { 'aria-expanded': true }),
     });
 
     const { onClick, onFocus, onBlur, onKeyDown, ...restTriggerButtonProps } = triggerButtonProps;

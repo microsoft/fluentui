@@ -4,6 +4,7 @@ import { EOL } from 'os';
 import * as path from 'path';
 
 import { errorMessageColors, formatArray, getErrorMessage, formatErrors } from './utils/errorMessages';
+import { getPackagePath } from './defaultTests';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -362,8 +363,7 @@ export const defaultErrorMessages = {
   'exported-top-level': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName, componentPath } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const indexFile = path.join(rootPath, 'src', 'index');
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index');
 
     const exportInfo = testInfo.useDefaultExport
       ? `export { default as ${displayName} } from './${displayName};`
@@ -391,8 +391,7 @@ export const defaultErrorMessages = {
   'has-top-level-file': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName, componentPath } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const topLevelFile = path.join(rootPath, 'src', displayName);
+    const topLevelFile = path.join(getPackagePath(componentPath), 'src', displayName);
 
     // Message Description: Handles scenario where the displayName doesn't match the component's filename.
     //
@@ -614,9 +613,7 @@ export const defaultErrorMessages = {
   ) => {
     const { componentPath, displayName } = testInfo;
     const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
-
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const indexFile = path.join(rootPath, 'src', 'index.ts');
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
 
     const constantValue = `export const ${exportName} = "${componentClassName}";`;
 

@@ -375,9 +375,10 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
               cursor: pointer;
               height: 32px;
               line-height: 30px;
+              padding-top: 1px;
               position: absolute;
               right: 8px;
-              top: 1px;
+              top: 0px;
             }
       >
         <i

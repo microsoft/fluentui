@@ -9,6 +9,7 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
+  IAxisData,
   getAccessibleDataObject,
   tooltipOfXAxislabels,
   XAxisTypes,
@@ -30,7 +31,7 @@ import {
 } from '../../index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
-const GROUP_PADDING = 16;
+const BAR_SPACE = 2.5;
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
 type StringAxis = D3Axis<string>;
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -72,6 +73,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _tooltipId: string;
   private _isNumeric: XAxisTypes;
   private _isRtl: boolean = getRTL();
+  private _isCustomBarWidth: boolean;
+  private _x1TotalBandWidth: number;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -159,6 +162,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
+        getAxisData={this._getAxisData}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {
@@ -346,8 +350,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
       };
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
+    const customXScale = this._isCustomBarWidth ? (xScale0.bandwidth() - this._x1TotalBandWidth) / 2 : 0;
     return (
-      <g key={singleSet.indexNum} transform={`translate(${xScale0(singleSet.xAxisPoint)}, 0)`}>
+      <g key={singleSet.indexNum} transform={`translate(${xScale0(singleSet.xAxisPoint) + customXScale}, 0)`}>
         {singleGroup}
       </g>
     );
@@ -392,15 +397,24 @@ export class GroupedVerticalBarChartBase extends React.Component<
           ? [containerWidth! - this.margins.right!, this.margins.left!]
           : [this.margins.left!, containerWidth! - this.margins.right!],
       )
-      .padding(GROUP_PADDING / 100);
+      .padding(0.1);
     return x0Axis;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createX1Scale = (xScale0: any): any => {
+    let bandWidth = xScale0.bandwidth();
+    if (this.props.barwidth) {
+      const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
+      const totalWidth = (this.props.barwidth! + BAR_SPACE) * tempDataSet.length;
+      this._isCustomBarWidth = totalWidth < xScale0.bandwidth();
+      bandWidth = this._isCustomBarWidth ? totalWidth : xScale0.bandwidth();
+      this._x1TotalBandWidth = bandWidth;
+    }
+
     return d3ScaleBand()
       .domain(this._keys)
-      .range(this._isRtl ? [xScale0.bandwidth(), 0] : [0, xScale0.bandwidth()])
+      .range(this._isRtl ? [bandWidth, 0] : [0, bandWidth])
       .padding(0.05);
   };
 
@@ -487,5 +501,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         {...this.props.legendProps}
       />
     );
+  };
+
+  private _getAxisData = (yAxisData: IAxisData) => {
+    if (yAxisData && yAxisData.yAxisDomainValues.length) {
+      const { yAxisDomainValues: domainValue } = yAxisData;
+      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+    }
   };
 }
