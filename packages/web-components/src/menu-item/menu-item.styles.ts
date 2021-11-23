@@ -12,7 +12,6 @@ import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
   bodyFont,
   controlCornerRadius,
-  designUnit,
   disabledOpacity,
   focusStrokeOuter,
   focusStrokeWidth,
@@ -42,7 +41,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       justify-items: center;
       align-items: center;
       padding: 0;
-      margin: 0 calc(${designUnit} * 1px);
       white-space: nowrap;
       color: ${neutralForegroundRest};
       fill: currentcolor;

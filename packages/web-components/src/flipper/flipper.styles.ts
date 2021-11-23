@@ -31,7 +31,6 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       height: calc((${heightNumber} + ${designUnit}) * 1px);
       justify-content: center;
       align-items: center;
-      margin: 0;
       fill: currentcolor;
       color: ${neutralFillStrongRest};
       background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
