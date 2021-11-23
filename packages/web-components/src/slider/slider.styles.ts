@@ -39,7 +39,6 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
       --track-width: ${designUnit};
       align-items: center;
       width: 100%;
-      margin: calc(${designUnit} * 1px) 0;
       user-select: none;
       box-sizing: border-box;
       border-radius: calc(${controlCornerRadius} * 1px);

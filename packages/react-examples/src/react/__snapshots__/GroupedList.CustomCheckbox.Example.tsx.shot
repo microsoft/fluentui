@@ -542,7 +542,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone11"
+                            data-focuszone-id="FocusZone12"
                             data-is-focusable={true}
                             data-item-index={0}
                             data-selection-index={0}
@@ -1085,7 +1085,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone12"
+                            data-focuszone-id="FocusZone14"
                             data-is-focusable={true}
                             data-item-index={1}
                             data-selection-index={1}
@@ -1628,7 +1628,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone13"
+                            data-focuszone-id="FocusZone16"
                             data-is-focusable={true}
                             data-item-index={2}
                             data-selection-index={2}
@@ -2575,7 +2575,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone14"
+                            data-focuszone-id="FocusZone18"
                             data-is-focusable={true}
                             data-item-index={3}
                             data-selection-index={3}
@@ -3118,7 +3118,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone15"
+                            data-focuszone-id="FocusZone20"
                             data-is-focusable={true}
                             data-item-index={4}
                             data-selection-index={4}
@@ -3661,7 +3661,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone16"
+                            data-focuszone-id="FocusZone22"
                             data-is-focusable={true}
                             data-item-index={5}
                             data-selection-index={5}
@@ -4608,7 +4608,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone17"
+                            data-focuszone-id="FocusZone24"
                             data-is-focusable={true}
                             data-item-index={6}
                             data-selection-index={6}
@@ -5151,7 +5151,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone18"
+                            data-focuszone-id="FocusZone26"
                             data-is-focusable={true}
                             data-item-index={7}
                             data-selection-index={7}
@@ -5694,7 +5694,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   flex-shrink: 0;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone19"
+                            data-focuszone-id="FocusZone28"
                             data-is-focusable={true}
                             data-item-index={8}
                             data-selection-index={8}
