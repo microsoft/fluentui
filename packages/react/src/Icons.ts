@@ -1,5 +1,6 @@
-export {
+export { initializeIcons } from '@fluentui/font-icons-mdl2';
+
+export type {
   // eslint-disable-next-line deprecation/deprecation
   IconNames,
-  initializeIcons,
 } from '@fluentui/font-icons-mdl2';
