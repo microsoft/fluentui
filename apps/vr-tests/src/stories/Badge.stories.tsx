@@ -21,11 +21,21 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     alignItems: 'center',
+  },
+
+  badgeContainer: {
+    display: 'flex',
+    alignItems: 'center',
     gap: '5px',
     padding: '5px',
   },
-  subtleContainer: theme => ({
-    backgroundColor: theme.colorBrandBackground,
+
+  label: {
+    marginLeft: '10px',
+  },
+
+  brandContainer: theme => ({
+    backgroundColor: theme.colorBrandBackgroundStatic,
   }),
 });
 
@@ -100,16 +110,19 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
       {Object.keys(badges)
         .sort()
         .map((color: BadgeCommons['color'], i) => (
-          <div
-            key={i}
-            className={mergeClasses(
-              styles.container,
-              (color === 'subtle' || color === 'informative') &&
-                (appearance === 'ghost' || appearance === 'outline') &&
-                styles.subtleContainer,
-            )}
-          >
-            {badges[color]} {color}
+          <div key={i} className={styles.container}>
+            <div
+              className={mergeClasses(
+                styles.badgeContainer,
+                color === 'subtle' && appearance === 'outline' && styles.brandContainer,
+                color === 'informative' && appearance === 'outline' && styles.brandContainer,
+                color === 'subtle' && appearance === 'ghost' && styles.brandContainer,
+                color === 'informative' && appearance === 'ghost' && styles.brandContainer,
+              )}
+            >
+              {badges[color]}
+            </div>
+            <div className={styles.label}>{color}</div>
           </div>
         ))}
     </div>

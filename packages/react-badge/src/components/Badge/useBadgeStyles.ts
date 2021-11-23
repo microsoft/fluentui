@@ -187,8 +187,8 @@ const useStyles = makeStyles({
     borderColor: theme.colorTransparentStroke,
   }),
   rootOutlineSubtle: theme => ({
-    color: theme.colorNeutralForegroundOnBrand,
-    borderColor: theme.colorNeutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundInverted,
+    borderColor: theme.colorNeutralForegroundInverted,
   }),
   rootTintSubtle: theme => ({
     backgroundColor: theme.colorNeutralBackground1,
@@ -196,7 +196,7 @@ const useStyles = makeStyles({
     borderColor: theme.colorNeutralStroke2,
   }),
   rootGhostSubtle: theme => ({
-    color: theme.colorNeutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundInverted,
   }),
   icon: {
     display: 'flex',
