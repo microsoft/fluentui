@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 22 Nov 2021 07:36:13 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Nov 2021 07:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.43.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.43.0)
+
+Tue, 23 Nov 2021 07:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.42.5..@fluentui/react_v8.43.0)
+
+### Minor changes
+
+- added new prop getAriaDescription to detailsRow ([PR #20631](https://github.com/microsoft/fluentui/pull/20631) by surya.ravva@microsoft.com)
 
 ## [8.42.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.42.5)
 
