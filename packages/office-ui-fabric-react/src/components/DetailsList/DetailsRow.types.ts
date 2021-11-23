@@ -158,6 +158,11 @@ export interface IDetailsRowBaseProps
   getRowAriaLabel?: (item: any) => string;
 
   /**
+   * Callback for getting the row aria description
+   */
+  getRowAriaDescription?: (item: any) => string;
+
+  /**
    * Callback for getting the row aria-describedby
    */
   getRowAriaDescribedBy?: (item: any) => string;
