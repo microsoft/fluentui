@@ -3,6 +3,7 @@ import {
   display,
   ElementDefinitionContext,
   FoundationElementDefinition,
+  ListboxOption
 } from '@microsoft/fast-foundation';
 import {
   controlCornerRadius,
@@ -24,6 +25,10 @@ export const listboxStyles: (
       flex-direction: column;
       padding: calc(${designUnit} * 1px) 0;
       outline: none;
+    }
+
+    ::slotted(${context.tagFor(ListboxOption)}) {
+      margin: 0 calc(${designUnit} * 1px);
     }
 
     :host(:focus-within:not([disabled])) {
