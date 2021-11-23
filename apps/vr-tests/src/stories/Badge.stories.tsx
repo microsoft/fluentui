@@ -44,16 +44,15 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
 }) => {
   const styles = useStyles();
 
-  const badges: Record<BadgeCommons['color'], JSX.Element[]> = {
-    brand: [],
-    danger: [],
-    important: [],
-    informative: [],
-    severe: [],
-    subtle: [],
-    success: [],
-    warning: [],
-  };
+  const badges = new Map<BadgeCommons['color'], JSX.Element[]>();
+  badges.set('brand', []);
+  badges.set('danger', []);
+  badges.set('severe', []);
+  badges.set('warning', []);
+  badges.set('success', []);
+  badges.set('important', []);
+  badges.set('informative', []);
+  badges.set('subtle', []);
 
   badgeColors.forEach(color => {
     const circularWithText = (
@@ -95,36 +94,36 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
       </Badge>
     );
 
-    badges[color].push(
-      circularWithText,
-      circularWithIcon,
-      roundedWithIcon,
-      roundedWithText,
-      roundedWithTextAndIconAfter,
-      roundedWithTextAndIconBefore,
-    );
+    badges
+      .get(color)!
+      .push(
+        circularWithText,
+        circularWithIcon,
+        roundedWithIcon,
+        roundedWithText,
+        roundedWithTextAndIconAfter,
+        roundedWithTextAndIconBefore,
+      );
   });
 
   return (
     <div>
-      {Object.keys(badges)
-        .sort()
-        .map((color: BadgeCommons['color'], i) => (
-          <div key={i} className={styles.container}>
-            <div
-              className={mergeClasses(
-                styles.badgeContainer,
-                color === 'subtle' && appearance === 'outline' && styles.brandContainer,
-                color === 'informative' && appearance === 'outline' && styles.brandContainer,
-                color === 'subtle' && appearance === 'ghost' && styles.brandContainer,
-                color === 'informative' && appearance === 'ghost' && styles.brandContainer,
-              )}
-            >
-              {badges[color]}
-            </div>
-            <div className={styles.label}>{color}</div>
+      {Array.from(badges.keys()).map((color: BadgeCommons['color'], i) => (
+        <div key={i} className={styles.container}>
+          <div
+            className={mergeClasses(
+              styles.badgeContainer,
+              color === 'subtle' && appearance === 'outline' && styles.brandContainer,
+              color === 'informative' && appearance === 'outline' && styles.brandContainer,
+              color === 'subtle' && appearance === 'ghost' && styles.brandContainer,
+              color === 'informative' && appearance === 'ghost' && styles.brandContainer,
+            )}
+          >
+            {badges.get(color)}
           </div>
-        ))}
+          <div className={styles.label}>{color}</div>
+        </div>
+      ))}
     </div>
   );
 };
