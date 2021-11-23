@@ -72,11 +72,7 @@ const getColorBoxTextColor = (color: string | undefined, variables: ColorBoxVari
     }
   }
 
-  try {
-    return Color(color).isDark() ? variables.colorWhite : variables.colorBlack;
-  } catch (err) {}
-
-  return variables.colorBlack;
+  return Color(color).isDark() ? variables.colorWhite : variables.colorBlack;
 };
 
 export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVariables> = {
