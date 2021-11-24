@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "various styling fixes for base Badge component",
+  "packageName": "@fluentui/react-badge",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

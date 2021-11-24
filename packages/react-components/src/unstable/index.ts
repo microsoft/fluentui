@@ -1,3 +1,42 @@
 // Stub for unstable exports
 
-export * from '@fluentui/react-card';
+export {
+  Card,
+  CardFooter,
+  CardHeader,
+  CardPreview,
+  cardClassName,
+  cardFooterClassName,
+  cardFooterShorthandProps,
+  cardHeaderClassName,
+  cardHeaderShorthandProps,
+  cardPreviewClassName,
+  cardPreviewShorthandProps,
+  renderCard,
+  renderCardFooter,
+  renderCardHeader,
+  renderCardPreview,
+  useCard,
+  useCardFooter,
+  useCardFooterStyles,
+  useCardHeader,
+  useCardHeaderStyles,
+  useCardPreview,
+  useCardPreviewStyles,
+  useCardStyles,
+} from '@fluentui/react-card';
+export type {
+  CardCommons,
+  CardFooterProps,
+  CardFooterSlots,
+  CardFooterState,
+  CardHeaderProps,
+  CardHeaderSlots,
+  CardHeaderState,
+  CardPreviewProps,
+  CardPreviewSlots,
+  CardPreviewState,
+  CardProps,
+  CardSlots,
+  CardState,
+} from '@fluentui/react-card';
