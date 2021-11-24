@@ -534,6 +534,12 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
 
     Object.assign(json.scripts, scripts);
 
+    const isNodePackage = options.projectConfig.tags?.some(tag => tag === 'platform:node');
+    if (isNodePackage) {
+      delete json.scripts['start'];
+      delete json.scripts['storybook'];
+    }
+
     return json;
   });
 

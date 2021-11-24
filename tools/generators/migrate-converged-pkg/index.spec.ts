@@ -45,6 +45,12 @@ describe('migrate-converged-pkg generator', () => {
   let tree: Tree;
   const options = { name: '@proj/react-dummy' } as const;
 
+  const getScopedPkgName = (pkgName: string) => {
+    const workspaceConfig = readWorkspaceConfiguration(tree);
+
+    return `@${workspaceConfig.npmScope}/${pkgName}`;
+  };
+
   beforeEach(() => {
     jest.restoreAllMocks();
 
@@ -816,6 +822,46 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
+    it(`should not add start scripts to node packages`, async () => {
+      const nodePackageName = getScopedPkgName('babel-make-styles');
+      const projectConfig = readProjectConfiguration(tree, nodePackageName);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.scripts).toMatchInlineSnapshot(`
+        Object {
+          "build": "just-scripts build",
+          "clean": "just-scripts clean",
+          "code-style": "just-scripts code-style",
+          "just": "just-scripts",
+          "lint": "just-scripts lint",
+          "start": "just-scripts dev:storybook",
+          "start-test": "just-scripts jest-watch",
+          "test": "just-scripts test",
+          "test:watch": "just-scripts jest-watch",
+          "update-snapshots": "just-scripts jest -u",
+        }
+      `);
+
+      await generator(tree, {
+        name: nodePackageName,
+      });
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.scripts).toEqual({
+        build: 'just-scripts build',
+        // eslint-disable-next-line @fluentui/max-len
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs`,
+        clean: 'just-scripts clean',
+        'code-style': 'just-scripts code-style',
+        docs: 'api-extractor run --config=config/api-extractor.local.json --local',
+        just: 'just-scripts',
+        lint: 'just-scripts lint',
+        test: 'jest',
+        'type-check': 'tsc -b tsconfig.json',
+      });
+    });
+
     it(`should create api-extractor.json`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
 
@@ -921,12 +967,6 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`babel config setup`, () => {
-    const getScopedPkgName = (pkgName: string) => {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
-
-      return `@${workspaceConfig.npmScope}/${pkgName}`;
-    };
-
     function getBabelConfig(projectConfig: ReadProjectConfiguration) {
       const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
       return readJson(tree, babelConfigPath);
