@@ -17,6 +17,6 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    },
+    }
   ]
 }
