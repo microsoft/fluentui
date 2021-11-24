@@ -74,6 +74,12 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * To display multi stack callout or single callout
+   * @default false
+   */
+  isCalloutForStack?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {}
