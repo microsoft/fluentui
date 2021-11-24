@@ -6,5 +6,15 @@
     "checkJs": true,
     "types": ["static-assets", "environment", "inline-style-expand-shorthand", "storybook__addons"]
   },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.js",
+    "**/*.spec.jsx",
+    "**/*.test.js",
+    "**/*.test.jsx"
+  ],
   "include": ["../src/**/*.stories.ts", "../src/**/*.stories.tsx", "*.js"]
 }

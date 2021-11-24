@@ -6,13 +6,16 @@ import { PositioningProps } from '@fluentui/react-positioning';
 export const PopperImperativeHandle = () => {
   const [loading, setLoading] = React.useState(true);
   const popperRef: PositioningProps['popperRef'] = React.useRef({ updatePosition: () => null });
-  const timeoutRef = React.useRef(0);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
 
   const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
     if (!data.open) {
       setLoading(true);
     } else {
-      clearTimeout(timeoutRef.current);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
       timeoutRef.current = setTimeout(() => setLoading(false), 1000);
     }
   };
@@ -24,7 +27,11 @@ export const PopperImperativeHandle = () => {
   }, [loading]);
 
   React.useEffect(() => {
-    return () => clearTimeout(timeoutRef.current);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   });
 
   return (
