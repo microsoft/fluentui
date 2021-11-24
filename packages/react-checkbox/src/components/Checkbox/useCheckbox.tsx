@@ -69,7 +69,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     }),
   };
 
-  // Add the the default checkmark icon if none was provided
+  // Add the default checkmark icon if none was provided
   if (!state.indicator.children) {
     if (state.size === 'medium') {
       state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;

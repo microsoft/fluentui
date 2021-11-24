@@ -50,7 +50,7 @@ export type CheckboxSlots = {
    * The root element of the checkbox is its `<label>`.
    *
    * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
-   * All other native props will be applied to the primary slot `input`.
+   * All other native props will be applied to the primary slot: `input`
    */
   root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
 
