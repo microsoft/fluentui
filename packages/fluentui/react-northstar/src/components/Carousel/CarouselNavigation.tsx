@@ -1,6 +1,5 @@
 import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   useTelemetry,
   mergeVariablesOverrides,
   getElementType,
@@ -8,6 +7,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -73,8 +73,7 @@ export const carouselNavigationClassName = 'ui-carousel__navigation';
 /**
  * A Carousel navigation helps switching between Carousel items.
  */
-export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
-  FluentComponentStaticProps<CarouselNavigationProps> = props => {
+export const CarouselNavigation = (React.forwardRef<HTMLUListElement, CarouselNavigationProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
   setStart();
@@ -151,6 +150,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
@@ -162,7 +162,8 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'ul', HTMLUListElement, CarouselNavigationProps> &
+  FluentComponentStaticProps<CarouselNavigationProps>;
 
 CarouselNavigation.displayName = 'CarouselNavigation';
 

@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
+    "@fluentui/make-styles": "9.0.0-beta.2",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42"
   },

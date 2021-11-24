@@ -1,10 +1,9 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-button';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { webLightTheme, teamsLightTheme, teamsDarkTheme } from '@fluentui/react-theme';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Button } from '@fluentui/react-button';
-import { FluentProvider } from '../FluentProvider'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
+
+import { FluentProvider } from '../FluentProvider';
 
 const useStyles = makeStyles({
   button: {

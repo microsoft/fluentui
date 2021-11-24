@@ -41,7 +41,6 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
       --input-size: calc((${heightNumber} / 2) + ${designUnit});
       align-items: center;
       outline: none;
-      margin: calc(${designUnit} * 1px) 0;
       ${
         /*
          * Chromium likes to select label text or the default slot when

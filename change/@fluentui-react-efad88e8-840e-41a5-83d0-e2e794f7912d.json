@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adds root element ref to async.requestAnimationFrame invocation",
-  "packageName": "@fluentui/react",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

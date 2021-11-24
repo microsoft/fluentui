@@ -866,7 +866,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone7"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
@@ -1344,7 +1344,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone6"
+                      data-focuszone-id="FocusZone9"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
@@ -1822,7 +1822,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone7"
+                      data-focuszone-id="FocusZone11"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
@@ -2300,7 +2300,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone8"
+                      data-focuszone-id="FocusZone13"
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
@@ -2778,7 +2778,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone9"
+                      data-focuszone-id="FocusZone15"
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
@@ -3253,7 +3253,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
               flex-shrink: 0;
             }
         data-automationid="DetailsRow"
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone5"
         data-is-focusable={true}
         data-item-index={-1}
         data-selection-index={-1}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { GroupedList } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
@@ -86,7 +86,7 @@ const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
 };
 
 storiesOf('GroupedList', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

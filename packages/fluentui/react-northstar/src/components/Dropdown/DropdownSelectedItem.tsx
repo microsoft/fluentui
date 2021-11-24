@@ -22,13 +22,13 @@ import { createShorthandFactory, commonPropTypes } from '../../utils';
 import { Image, ImageProps } from '../Image/Image';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  ComponentWithAs,
   useUnhandledProps,
   useStyles,
   useFluentContext,
   useTelemetry,
   getElementType,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface DropdownSelectedItemSlotClassNames {
@@ -92,8 +92,7 @@ export type DropdownSelectedItemStylesProps = { hasImage: boolean };
 /**
  * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
  */
-export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemProps> &
-  FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
+export const DropdownSelectedItem = (React.forwardRef<HTMLSpanElement, DropdownSelectedItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
@@ -194,6 +193,7 @@ export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemP
           className: classes.root,
           onClick: handleClick,
           onKeyDown: handleKeyDown,
+          ref,
           ...unhandledProps,
         })}
       >
@@ -206,7 +206,8 @@ export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemP
 
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, DropdownSelectedItemProps> &
+  FluentComponentStaticProps<DropdownSelectedItemProps>;
 
 DropdownSelectedItem.displayName = 'DropdownSelectedItem';
 

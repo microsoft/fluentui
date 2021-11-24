@@ -232,7 +232,7 @@ describe('migrate-converged-pkg generator', () => {
           lib: ['ES2019', 'dom'],
           noEmit: false,
           outDir: 'dist',
-          types: ['static-assets', 'inline-style-expand-shorthand'],
+          types: ['static-assets', 'environment', 'inline-style-expand-shorthand'],
         },
         exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
         include: ['./src/**/*.ts', './src/**/*.tsx'],
@@ -565,10 +565,9 @@ describe('migrate-converged-pkg generator', () => {
           allowJs: true,
           checkJs: true,
           outDir: '',
-          types: ['static-assets', 'inline-style-expand-shorthand', 'storybook__addons'],
+          types: ['static-assets', 'environment', 'inline-style-expand-shorthand', 'storybook__addons'],
         },
-        exclude: ['../src/common/**', '../**/*.spec.ts', '../**/*.spec.tsx', '../**/*.test.ts', '../**/*.test.tsx'],
-        include: ['../src/**/*', '*.js'],
+        include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
       });
       expect(readJson<TsConfig>(tree, paths.tsconfig.lib).exclude).toEqual(
         expect.arrayContaining(['**/*.stories.ts', '**/*.stories.tsx']),
