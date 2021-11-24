@@ -69,15 +69,13 @@ export type TabListProps = ComponentProps<TabListSlots> &
     defaultSelectedValue?: TabValue;
   };
 
-type TabListStateContextCommons = TabListCommons &
-  Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical' | 'verticalTabContent'>>;
-
-export type TabListContextValue = TabListStateContextCommons & {
-  /**
-   * A callback to allow a tab to select itself when pressed.
-   */
-  onSelect: SelectTabEventHandler;
-};
+export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> &
+  Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical' | 'verticalTabContent'>> & {
+    /**
+     * A callback to allow a tab to select itself when pressed.
+     */
+    onSelect: SelectTabEventHandler;
+  };
 
 /**
  * Context values used in rendering TabList.
@@ -92,4 +90,4 @@ export type TabListContextValues = {
 /**
  * State used in rendering TabList.
  */
-export type TabListState = ComponentState<TabListSlots> & TabListStateContextCommons & TabListContextValue;
+export type TabListState = ComponentState<TabListSlots> & TabListContextValue;
