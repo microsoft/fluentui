@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Button } from '@fluentui/react-button';
 import { createDOMRenderer, makeStyles, RendererProvider } from '@fluentui/react-make-styles';
-import { FluentProvider } from '../FluentProvider'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
+
+import { FluentProvider } from '../FluentProvider';
 
 const useExampleStyles = makeStyles({
   button: {
