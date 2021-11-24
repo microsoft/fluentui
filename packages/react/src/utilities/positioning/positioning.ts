@@ -513,7 +513,14 @@ function _finalizeElementPosition(
   const hostRect: Rectangle = _getRectangleFromElement(hostElement);
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
   let returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
-  if (!doNotFinalizeReturnEdge) {
+
+  // If the opposite edge is flush against the bounds,
+  // choose that as the anchor edge so the element rect can grow away from the bounds' edge
+  const oppositeReturnEdge = getOppositeEdge(returnEdge);
+  const oppositeEdgeOnBounds =
+    bounds && _getEdgeValue(elementRectangle, oppositeReturnEdge) === _getEdgeValue(bounds, oppositeReturnEdge);
+
+  if (!doNotFinalizeReturnEdge || oppositeEdgeOnBounds) {
     returnEdge = _finalizeReturnEdge(elementRectangle, returnEdge, bounds);
   }
 
