@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DetailsColumnBase } from './DetailsColumn.base';
-import type { IColumn } from './DetailsList.types';
+import type { IColumn, IDragDropOptions } from './DetailsList.types';
 import type { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { ITooltipHostProps } from '../../Tooltip';
 import type { IDragDropHelper } from '../../DragDrop';
@@ -96,7 +96,7 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
   /**
    * Callback for drop event.
    */
-  onDrop?: (item?: any, event?: DragEvent) => void;
+  onDrop?: IDragDropOptions['onDrop'];
 }
 
 /**
