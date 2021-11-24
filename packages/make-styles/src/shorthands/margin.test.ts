@@ -1,7 +1,7 @@
 import { margin } from './margin';
 
 describe('margin', () => {
-  it('properly applies a value when passed only one', () => {
+  it('for a given value', () => {
     expect(margin('12px')).toEqual({
       marginBottom: '12px',
       marginLeft: '12px',
@@ -10,7 +10,7 @@ describe('margin', () => {
     });
   });
 
-  it('properly applies values when passed two', () => {
+  it('for given vertical and horizontal values', () => {
     expect(margin('12px', '24px')).toEqual({
       marginBottom: '12px',
       marginLeft: '24px',
@@ -19,7 +19,7 @@ describe('margin', () => {
     });
   });
 
-  it('properly applies values when passed three', () => {
+  it('for given top, horizontal and bottom values', () => {
     expect(margin('12px', '24px', '36px')).toEqual({
       marginBottom: '36px',
       marginLeft: '24px',
@@ -28,7 +28,7 @@ describe('margin', () => {
     });
   });
 
-  it('properly applies values when passed four', () => {
+  it('for given top, right, bottom and left values', () => {
     expect(margin('12px', '24px', '36px', '48px')).toEqual({
       marginBottom: '36px',
       marginLeft: '48px',
@@ -37,7 +37,7 @@ describe('margin', () => {
     });
   });
 
-  it('properly applies zero value', () => {
+  it('for a given zero value', () => {
     expect(margin(0)).toEqual({
       marginBottom: 0,
       marginLeft: 0,

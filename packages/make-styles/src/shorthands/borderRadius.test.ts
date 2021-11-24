@@ -1,7 +1,7 @@
 import { borderRadius } from './borderRadius';
 
 describe('borderRadius', () => {
-  it('expands to an object for a single value', () => {
+  it('for a given length', () => {
     expect(borderRadius('10px')).toEqual({
       borderBottomRightRadius: '10px',
       borderBottomLeftRadius: '10px',
@@ -10,7 +10,7 @@ describe('borderRadius', () => {
     });
   });
 
-  it('expands to an object for 2 values', () => {
+  it('for a top-left-and-bottom-right length and a top-right-and-bottom-left percentage', () => {
     expect(borderRadius('10px', '5%')).toEqual({
       borderTopLeftRadius: '10px',
       borderTopRightRadius: '5%',
@@ -19,7 +19,7 @@ describe('borderRadius', () => {
     });
   });
 
-  it('expands to an object for 3 values', () => {
+  it('for a top-left, top-right-and-bottom-left and bottom-right length', () => {
     expect(borderRadius('2px', '4px', '8px')).toEqual({
       borderTopLeftRadius: '2px',
       borderTopRightRadius: '4px',
@@ -28,7 +28,7 @@ describe('borderRadius', () => {
     });
   });
 
-  it('expands to an object for 4 values', () => {
+  it('for a top-left, top-right, bottom-right and bottom-left length', () => {
     expect(borderRadius('1px', 0, '3px', '4px')).toEqual({
       borderTopLeftRadius: '1px',
       borderTopRightRadius: 0,

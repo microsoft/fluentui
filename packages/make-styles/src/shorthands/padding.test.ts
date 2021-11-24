@@ -1,7 +1,7 @@
 import { padding } from './padding';
 
 describe('padding', () => {
-  it('properly applies a value when passed only one', () => {
+  it('for a given value', () => {
     expect(padding('12px')).toEqual({
       paddingBottom: '12px',
       paddingLeft: '12px',
@@ -10,7 +10,7 @@ describe('padding', () => {
     });
   });
 
-  it('properly applies values when passed two', () => {
+  it('for given vertical and horizontal values', () => {
     expect(padding('12px', '24px')).toEqual({
       paddingBottom: '12px',
       paddingLeft: '24px',
@@ -19,7 +19,7 @@ describe('padding', () => {
     });
   });
 
-  it('properly applies values when passed three', () => {
+  it('for given top, horizontal and bottom values', () => {
     expect(padding('12px', '24px', '36px')).toEqual({
       paddingBottom: '36px',
       paddingLeft: '24px',
@@ -28,7 +28,7 @@ describe('padding', () => {
     });
   });
 
-  it('properly applies values when passed four', () => {
+  it('for given top, right, bottom and left values', () => {
     expect(padding('12px', '24px', '36px', '48px')).toEqual({
       paddingBottom: '36px',
       paddingLeft: '48px',
@@ -37,7 +37,7 @@ describe('padding', () => {
     });
   });
 
-  it('properly applies zero value', () => {
+  it('for a given zero value', () => {
     expect(padding(0)).toEqual({
       paddingBottom: 0,
       paddingLeft: 0,

@@ -1,20 +1,20 @@
 import { borderLeft } from './borderLeft';
 
 describe('borderLeft', () => {
-  it('properly applies a value when passed only one', () => {
+  it('for a given width', () => {
     expect(borderLeft('2px')).toEqual({
       borderLeftWidth: '2px',
     });
   });
 
-  it('properly applies values when passed two', () => {
+  it('for a given width and style', () => {
     expect(borderLeft('2px', 'solid')).toEqual({
       borderLeftWidth: '2px',
       borderLeftStyle: 'solid',
     });
   });
 
-  it('properly applies values when passed three', () => {
+  it('for a given width, style and color', () => {
     expect(borderLeft('2px', 'solid', 'red')).toEqual({
       borderLeftWidth: '2px',
       borderLeftStyle: 'solid',

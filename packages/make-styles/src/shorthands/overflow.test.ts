@@ -1,14 +1,14 @@
 import { overflow } from './overflow';
 
 describe('overflow', () => {
-  it('properly applies a value when passed only one', () => {
+  it('for a given value', () => {
     expect(overflow('hidden')).toEqual({
       overflowX: 'hidden',
       overflowY: 'hidden',
     });
   });
 
-  it('properly applies values when passed two', () => {
+  it('for given x and y values', () => {
     expect(overflow('visible', 'hidden')).toEqual({
       overflowX: 'visible',
       overflowY: 'hidden',

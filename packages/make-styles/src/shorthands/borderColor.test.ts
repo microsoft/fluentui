@@ -1,7 +1,7 @@
 import { borderColor } from './borderColor';
 
 describe('borderColor', () => {
-  it('properly applies a value when passed only one', () => {
+  it('for a given value', () => {
     expect(borderColor('red')).toEqual({
       borderBottomColor: 'red',
       borderLeftColor: 'red',
@@ -10,7 +10,7 @@ describe('borderColor', () => {
     });
   });
 
-  it('properly applies values when passed two', () => {
+  it('for given vertical and horizontal values', () => {
     expect(borderColor('red', 'blue')).toEqual({
       borderBottomColor: 'red',
       borderLeftColor: 'blue',
@@ -19,7 +19,7 @@ describe('borderColor', () => {
     });
   });
 
-  it('properly applies values when passed three', () => {
+  it('for given top, horizontal and bottom values', () => {
     expect(borderColor('red', 'blue', 'green')).toEqual({
       borderBottomColor: 'green',
       borderLeftColor: 'blue',
@@ -28,7 +28,7 @@ describe('borderColor', () => {
     });
   });
 
-  it('properly applies values when passed four', () => {
+  it('for given top, right, bottom and left values', () => {
     expect(borderColor('red', 'blue', 'green', 'yellow')).toEqual({
       borderBottomColor: 'green',
       borderLeftColor: 'yellow',

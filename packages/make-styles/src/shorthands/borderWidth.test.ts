@@ -1,7 +1,7 @@
 import { borderWidth } from './borderWidth';
 
 describe('borderWidth', () => {
-  it('properly applies a value when passed only one', () => {
+  it('for a given value', () => {
     expect(borderWidth('12px')).toEqual({
       borderBottomWidth: '12px',
       borderLeftWidth: '12px',
@@ -10,7 +10,7 @@ describe('borderWidth', () => {
     });
   });
 
-  it('properly applies values when passed two', () => {
+  it('for given vertical and horizontal values', () => {
     expect(borderWidth('12px', '24px')).toEqual({
       borderBottomWidth: '12px',
       borderLeftWidth: '24px',
@@ -19,7 +19,7 @@ describe('borderWidth', () => {
     });
   });
 
-  it('properly applies values when passed three', () => {
+  it('for given top, horizontal and bottom values', () => {
     expect(borderWidth('12px', '24px', '36px')).toEqual({
       borderBottomWidth: '36px',
       borderLeftWidth: '24px',
@@ -28,7 +28,7 @@ describe('borderWidth', () => {
     });
   });
 
-  it('properly applies values when passed four', () => {
+  it('for given top, right, bottom and left values', () => {
     expect(borderWidth('12px', '24px', '36px', '48px')).toEqual({
       borderBottomWidth: '36px',
       borderLeftWidth: '48px',
@@ -37,7 +37,7 @@ describe('borderWidth', () => {
     });
   });
 
-  it('properly applies values when passed zero', () => {
+  it('for a given zero value', () => {
     expect(borderWidth(0)).toEqual({
       borderBottomWidth: 0,
       borderLeftWidth: 0,
