@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Portal } from '../Portal'; // codesandbox-dependency: @fluentui/react-portal ^9.0.0-beta
+import { Portal } from '../Portal';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({

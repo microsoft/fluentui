@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Removing export stars in favor of named exports.",
+  "packageName": "@fluentui/react-date-time",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}

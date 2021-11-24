@@ -5,13 +5,14 @@ import { Input } from './Input';
 import { getNativeElementProps, useId } from '@fluentui/react-utilities';
 import { InputProps } from './Input.types';
 import { ArgTypes } from '@storybook/react';
-// prevent terrible reload times by using deep imports :(
-import Search16Regular from '@fluentui/react-icons/lib/esm/components/Search16Regular';
-import Search20Regular from '@fluentui/react-icons/lib/esm/components/Search20Regular';
-import Search24Regular from '@fluentui/react-icons/lib/esm/components/Search24Regular';
-import Dismiss16Regular from '@fluentui/react-icons/lib/esm/components/Dismiss16Regular';
-import Dismiss20Regular from '@fluentui/react-icons/lib/esm/components/Dismiss20Regular';
-import Dismiss24Regular from '@fluentui/react-icons/lib/esm/components/Dismiss24Regular';
+import {
+  Search16Regular,
+  Search20Regular,
+  Search24Regular,
+  Dismiss16Regular,
+  Dismiss20Regular,
+  Dismiss24Regular,
+} from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   container: {

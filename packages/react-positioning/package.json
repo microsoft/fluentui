@@ -20,9 +20,8 @@
     "lint": "just-scripts lint",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-positioning/src && yarn docs",
-    "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-positioning/src && yarn docs",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -30,7 +29,8 @@
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "@fluentui/babel-make-styles": "9.0.0-beta.3"
   },
   "dependencies": {
     "@fluentui/react-make-styles": "9.0.0-beta.3",

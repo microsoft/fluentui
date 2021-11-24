@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding rnx-kit dependency and enabling the no-export-all rule for exporting library surfaces.",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "none"
+}

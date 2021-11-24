@@ -1,15 +1,9 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+
 import { Button } from '@fluentui/react-button';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { makeStyles } from '@fluentui/react-make-styles';
 
 // FIXME need to redeclare types because type imports are under @ts-ignore
