@@ -36,7 +36,7 @@ async function performTest() {
     fs.copyFileSync(scaffoldPath('tsconfig.json'), path.resolve(tmpDirectory, 'tsconfig.json'));
     logger(`✔️ Source and configs were copied`);
 
-    await sh(`which yarn`);
+    await sh(`npx npm-which yarn`);
 
     await sh(`yarn --version`);
     await sh(`yarn tsc --version`);
