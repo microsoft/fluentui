@@ -44,6 +44,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Card` comoponent to properly pass ref to root slots @chpalac ([#20644](https://github.com/microsoft/fluentui/pull/20644))
 - Fix `Dropdown` by conditionally adding `aria-expanded="true"` to the button trigger @chpalac ([#20671](https://github.com/microsoft/fluentui/pull/20671))
 - Optimized `felaInvokeKeyframesPlugin` to not create new objects but reuse existing one in `reduce` @mbman ([#20649](https://github.com/microsoft/fluentui/pull/20649))
+- Fix `Divider` component to properly pass ref to root slots @chpalac ([#20700](https://github.com/microsoft/fluentui/pull/20700))
 - Fix `Dropdown` component to properly pass ref to root slots @chpalac ([#20702](https://github.com/microsoft/fluentui/pull/20702))
 - Fix `Checkbox` component to properly pass down ref to root slots @chpalac ([#20696](https://github.com/microsoft/fluentui/pull/20696))
 - Fix `Datepicker` components to properly pass ref to root slots @chpalac ([#20697](https://github.com/microsoft/fluentui/pull/20697))
