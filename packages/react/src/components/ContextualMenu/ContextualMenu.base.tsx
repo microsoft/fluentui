@@ -1121,11 +1121,11 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
     }
 
     const adjustedFocusZoneProps = {
-      ...focusZoneProps,
-      className: classNames.root,
-      isCircularNavigation: true,
+      direction: FocusZoneDirection.vertical,
       handleTabKey: FocusZoneTabbableElements.all,
-      direction: props.focusZoneProps?.direction ?? FocusZoneDirection.vertical,
+      isCircularNavigation: true,
+      ...focusZoneProps,
+      className: css(classNames.root, props.focusZoneProps?.className),
     };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);

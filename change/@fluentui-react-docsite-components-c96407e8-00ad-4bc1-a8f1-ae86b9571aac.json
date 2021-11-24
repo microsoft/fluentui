@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add lint rule override",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}

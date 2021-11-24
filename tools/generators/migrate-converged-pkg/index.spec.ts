@@ -762,6 +762,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(e2eTsConfig).toEqual({
         extends: '../tsconfig.json',
         compilerOptions: {
+          isolatedModules: false,
           lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         },
