@@ -315,7 +315,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         >
           <div
             className={this._classNames.calloutContentX}
-            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData)}
+            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
             {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
           </div>
@@ -330,7 +330,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               const { shouldDrawBorderBottom = false } = yValue;
               return (
                 <div
-                  {...getAccessibleDataObject(yValue.callOutAccessibilityData)}
+                  {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
                   key={`callout-content-${index}`}
                   style={
                     yValueHoverSubCountsExists
