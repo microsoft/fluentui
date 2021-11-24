@@ -300,7 +300,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-positioning": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-proptypes": {
