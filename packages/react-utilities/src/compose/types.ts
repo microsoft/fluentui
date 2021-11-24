@@ -22,10 +22,11 @@ export type ShorthandProps<Props extends DefaultObjectShorthandProps> =
  * This should ONLY be used in type templates as in `extends DefaultObjectShorthandProps`;
  * it shouldn't be used as the type of a slot.
  */
-export type DefaultObjectShorthandProps = ObjectShorthandProps<{
-  children?: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
-}>;
+export type DefaultObjectShorthandProps = ObjectShorthandProps<
+  Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
+  }
+>;
 
 /**
  * Defines the slot props for a slot that supports a Component type.
@@ -94,16 +95,20 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
-export type ComponentProps<
-  Shorthands extends ObjectShorthandPropsRecord,
-  Primary extends keyof Shorthands = 'root'
-> = Omit<
-  {
-    [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-  },
-  Primary
-> &
-  PropsWithoutRef<Shorthands[Primary]>;
+export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> =
+  // Include shorthand slot props for each of the component's slots.
+  Omit<
+    {
+      [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+    },
+    // This `Omit<..., Primary & 'root'>` is a little tricky. Here's what it's doing:
+    // * If the Primary slot is 'root', then omit the `root` slot prop.
+    // * Otherwise, don't omit any props: include *both* the Primary and `root` props.
+    //   We need both props to allow the user to specify native props for either slot because the `root` slot is
+    //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
+    Primary & 'root'
+  > &
+    PropsWithoutRef<Shorthands[Primary]>;
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {

@@ -48,7 +48,7 @@ export const colProperties: Record<string, number>;
 // @public (undocumented)
 export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
     [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-}, Primary> & PropsWithoutRef<Shorthands[Primary]>;
+}, Primary & 'root'> & PropsWithoutRef<Shorthands[Primary]>;
 
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
@@ -58,8 +58,7 @@ export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
 } & Shorthands;
 
 // @public
-export type DefaultObjectShorthandProps = ObjectShorthandProps<{
-    children?: React_2.ReactNode;
+export type DefaultObjectShorthandProps = ObjectShorthandProps<Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
     as?: keyof JSX.IntrinsicElements;
 }>;
 
@@ -84,6 +83,19 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
+
+// @public
+export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPropNames, }: {
+    primarySlotTagName: keyof JSX.IntrinsicElements;
+    props: Pick<React_2.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
+    excludedPropNames?: string[] | undefined;
+}) => {
+    root: {
+        style: React_2.CSSProperties | undefined;
+        className: string | undefined;
+    };
+    primary: React_2.HTMLAttributes<any>;
+};
 
 // @public
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
