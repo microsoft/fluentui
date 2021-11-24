@@ -522,7 +522,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
     'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
     storybook: 'start-storybook',
     start: 'yarn storybook',
-    test: 'jest',
+    test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
   /* eslint-enable @fluentui/max-len */
