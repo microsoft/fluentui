@@ -171,7 +171,7 @@
     "eslint-plugin-jest": "23.13.2",
     "eslint-plugin-jsdoc": "^36.0.7",
     "eslint-plugin-jsx-a11y": "6.4.1",
-    "eslint-plugin-react": "7.24.0",
+    "eslint-plugin-react": "7.26.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "express": "4.17.1",
     "file-loader": "6.2.0",
@@ -293,6 +293,7 @@
         "dependencies": [
           "@babel/core",
           "@babel/preset-typescript",
+          "@rnx-kit/eslint-plugin",
           "@types/react-test-renderer",
           "@typescript-eslint/eslint-plugin",
           "@typescript-eslint/experimental-utils",
