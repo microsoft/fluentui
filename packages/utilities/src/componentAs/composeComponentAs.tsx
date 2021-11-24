@@ -12,10 +12,6 @@ function createComposedComponent<TProps>(
   const Outer = outer;
 
   const outerMemoizer = createMemoizer((inner: IComponentAs<TProps>) => {
-    if (outer === inner) {
-      throw new Error('Attempted to compose a component with itself.');
-    }
-
     const Inner = inner;
 
     const innerMemoizer = createMemoizer((defaultRender: IComponentAs<TProps>) => {
