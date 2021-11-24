@@ -254,7 +254,8 @@ describe('Callout Positioning', () => {
       targetEdge: RectangleEdge.top,
       alignmentEdge: RectangleEdge.left,
     };
-    const bounds = new Rectangle(0, 500, 0, 500);
+    const bounds = new Rectangle(0, 501, 0, 501);
+    const flushBounds = new Rectangle(0, 500, 0, 500);
     const target = new Rectangle(0, 100, 0, 100);
 
     // Normal positioning should target the alignment edge and the opposite of the target edge.
@@ -286,6 +287,14 @@ describe('Callout Positioning', () => {
     expect(finalizedPosition.elementPosition.left).toBeDefined();
     expect(finalizedPosition.elementPosition.bottom).toBeDefined();
     expect(finalizedPosition.elementPosition.right).toBeUndefined();
+
+    // With bounds flush against the edge of the elementRectangle, change the edge such that the elementRectangle
+    // will grow correctly but will not visually change
+    // In this case, that's bottom (opposite of target) and right (flush against the bounds)
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, flushBounds, false, true);
+    expect(finalizedPosition.elementPosition.left).toBeUndefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.right).toBeDefined();
 
     // With bounds introduced, the alignment should apply to the beak as well, aligning it to
     // the edge closest to bounds
