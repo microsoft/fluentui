@@ -17,6 +17,9 @@ export interface FluentProviderCommons {
 
   /** Provides the document, can be undefined during SSR render. */
   targetDocument: Document | undefined;
+
+  /** The provider will use `forced-color-adjust: none` to bail out from system forced colors */
+  noForcedColors?: boolean;
 }
 
 export interface FluentProviderProps

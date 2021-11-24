@@ -26,14 +26,20 @@ export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTM
    * nesting providers with the same "dir" should not add additional attributes to DOM
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
-  const { dir = parentContext.dir, targetDocument = parentContext.targetDocument, theme = {} } = props;
+  const {
+    dir = parentContext.dir,
+    targetDocument = parentContext.targetDocument,
+    theme = {},
+    noForcedColors = parentContext.noForcedColors,
+  } = props;
   const mergedTheme = mergeThemes(parentTheme, theme);
 
   return {
     dir,
+    noForcedColors,
     targetDocument,
     theme: mergedTheme,
-    themeClassName: useThemeStyleTag({ theme: mergedTheme, targetDocument }),
+    themeClassName: useThemeStyleTag({ theme: mergedTheme, targetDocument, noForcedColors }),
 
     components: {
       root: 'div',
