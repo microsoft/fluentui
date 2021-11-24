@@ -7,7 +7,8 @@
     "importHelpers": true,
     "jsx": "react",
     "noUnusedLocals": true,
-    "preserveConstEnums": true
+    "allowJs": true,
+    "checkJs": true
   },
   "include": [],
   "files": [],
