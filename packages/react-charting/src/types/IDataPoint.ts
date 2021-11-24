@@ -526,6 +526,11 @@ export interface IGroupedVerticalBarChartData {
    * Data points for Grouped vertical bar chart
    */
   series: IGVBarChartSeriesPoint[];
+
+  /**
+   * Accessibility data for Group Bars Stack Callout
+   */
+  stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IGVDataPoint {
