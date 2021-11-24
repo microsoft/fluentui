@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "add macro functions for styles",
+  "comment": "Add shorthand functions for styles",
   "packageName": "@fluentui/make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
