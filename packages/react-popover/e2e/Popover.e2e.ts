@@ -1,5 +1,3 @@
-export {};
-
 const popoverTriggerSelector = '[aria-haspopup]';
 const popoverContentSelector = '[role="dialog"]';
 const popoverStoriesTitle = 'Components/Popover';
