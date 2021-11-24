@@ -183,8 +183,6 @@ Hovering over a tab shows a gray line below the tab.
 </TabList>
 ```
 
-Subtle
-
 The subtle appearance is similar to transparent, but a light background is displayed when hovering over a tab.
 
 ```tsx
@@ -260,11 +258,12 @@ Why not now?
 - We're not providing a manilla folder tab appearance, so there is no need for the tab panel to support styling for when the components are co-located.
 - Creating a specific tab panel is trivial, creating a general-purpose tab panel is much more involved.
 
-The tab panels should be able to be placed independently of the TabList.
+The tab panels should be able to be placed independent of the TabList in the DOM.
+
 Here's a possible approach:
 
 ```tsx
-<TabList onTabSelected={(e,data) => setCurrentTab(data.value)}>
+<TabList onTabSelect={(e,data) => setCurrentTab(data.value)}>
   <Tab value="tab1">One</Tab>
   <Tab value="tab2">Two</Tab>
   <Tab value="tab3">Three</Tab>
@@ -467,7 +466,7 @@ The design spec details a menu button (...) that displays the list of tabs that 
 Dev has some concerns providing overflow as a default feature of tabs. The v1 of TabList and Tab will not include overflow.
 
 - Overflow made the v0 toolbar difficult to maintain. Customers hacked around it when it did not meet app requirements.
-- In v8,tTaking a dependency on menu over-complicated the button component and increased the default footprint. It also created a tighter binding with the overflow props matching the menu props and children.
+- In v8, taking a dependency on menu over-complicated the button component and increased the default footprint. It also created a tighter binding with the overflow props matching the menu props and children.
 - Overflow dropdown is one of many possible approaches such as scrolling, paging, multi-row, scroll-into-view. This may be best left as an application-level concern.
 - The dropdown approach is called out by bootstrap as [problematic for usability and accessibility](https://react-bootstrap.github.io/components/tabs/#tabs-with-dropdown).
 - Many (if not most) component libraries do not support dropdown overflow.
