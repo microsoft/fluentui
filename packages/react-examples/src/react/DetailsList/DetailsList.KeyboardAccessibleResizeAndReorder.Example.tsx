@@ -11,6 +11,7 @@ import {
   IDragDropContext,
   IDetailsListKeyboardColumnEditProps,
   ColumnActionsMode,
+  SelectionMode,
 } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
@@ -155,8 +156,11 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
 
   const handleReorder = () => {
     if (columnToEdit.current && textfieldRef.current) {
+      const { value } = textfieldRef.current;
+      const inputValue = selection.mode ? Number(value) + 1 : Number(value);
+
       setKeyboardColumnEditProps({
-        columnReorder: { columnKey: columnToEdit.current.key, inputValue: Number(textfieldRef.current.value) },
+        columnReorder: { columnKey: columnToEdit.current.key, inputValue: inputValue },
       });
     }
     hideDialog();
@@ -224,7 +228,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const [sortedItems, setSortedItems] = React.useState<IExampleItem[]>(items);
   const [columns, setColumns] = React.useState<IColumn[]>(buildColumns(items, true, onColumnClick, undefined, false));
   const [isColumnReorderEnabled, setIsColumnReorderEnabled] = React.useState<boolean>(true);
-  const [frozenColumnCountFromStart, setFrozenColumnCountFromStart] = React.useState<string>('1');
+  const [frozenColumnCountFromStart, setFrozenColumnCountFromStart] = React.useState<string>('0');
   const [frozenColumnCountFromEnd, setFrozenColumnCountFromEnd] = React.useState<string>('0');
   const [isDialogHidden, setIsDialogHidden] = React.useState(true);
   const textfieldRef = React.useRef<ITextField>(null);
