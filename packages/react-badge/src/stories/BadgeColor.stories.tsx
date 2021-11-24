@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Badge } from '@fluentui/react-badge';
+import { Badge } from '../index';
 
 export const Color = () => {
   return (
