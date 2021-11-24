@@ -11,7 +11,6 @@ import {
   IDragDropContext,
   IDetailsListKeyboardColumnEditProps,
   ColumnActionsMode,
-  SelectionMode,
 } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
