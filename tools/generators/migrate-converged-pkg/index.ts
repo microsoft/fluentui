@@ -276,6 +276,7 @@ const templates = {
     tsconfig: {
       extends: '../tsconfig.json',
       compilerOptions: {
+        isolatedModules: false,
         types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
