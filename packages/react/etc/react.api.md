@@ -3593,7 +3593,7 @@ export interface IDetailsColumnProps extends React_2.ClassAttributes<DetailsColu
     keyboardColumnReorder?: boolean;
     onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void;
     onColumnContextMenu?: (column: IColumn, ev: React_2.MouseEvent<HTMLElement>) => void;
-    onDrop?: (item?: any, event?: DragEvent) => void;
+    onDrop?: IDragDropOptions['onDrop'];
     onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
     parentId?: string;
     // @deprecated (undocumented)
