@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds `noForcedColors` boolean flage to `ProviderContext`",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
