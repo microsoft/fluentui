@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Ensure \"Select all\" checkbox only applies in multi-select mode",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
