@@ -1,6 +1,9 @@
 import { DEFINITION_LOOKUP_TABLE, CSSClasses } from '@fluentui/make-styles';
 
-export function print(val: string) {
+export function print(val: unknown) {
+  if (typeof val !== 'string') {
+    throw new Error(`Expected "val" to be string but received a "${typeof val}" type.`);
+  }
   const regexParts: string[] = [];
   const regex = lookupRegex();
   if (!regex) {
