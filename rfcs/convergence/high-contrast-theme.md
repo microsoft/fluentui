@@ -184,8 +184,7 @@ In order to remedy this problem when the `FluentProvider` uses `forced-colors-ad
 <FluentProvider noForcedColors>{children}</FluentProvider>
 ```
 
-We should create a hook that will allow us to selectively apply media query styles. This hook will be based on the value
-of `noForcedColors` flag in the `FluentProvider`.
+We can leverage the `FluentProvider` to pass this flav down through context. This will allow us to selectively apply media query styles.
 
 ```ts
 const useStyles = makeStyles({
@@ -193,7 +192,7 @@ const useStyles = makeStyles({
     color: 'white',
   },
 
-  rootHC: {
+  rootForcedColors: {
     '@media (forced-colors: active)': {
       color: 'CanvasText',
     },
@@ -201,8 +200,8 @@ const useStyles = makeStyles({
 });
 
 const styles = useStyles();
-const isForcedColors: boolean = useIsForcedColors();
-state.root.className = mergeClases(styles.root, isForcedColors && rootHC);
+const { noForcedColors } = useFluent();
+state.root.className = mergeClases(styles.root, !isForcedColors && rootForcedColors);
 ```
 
 ### Other operating systems
