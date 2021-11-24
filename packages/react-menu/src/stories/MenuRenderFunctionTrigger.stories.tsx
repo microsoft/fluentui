@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ChevronDown16Regular } from '@fluentui/react-icons';
 
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '@fluentui/react-menu';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '../index';
 
 // FIXME need to redeclare types since type import is under a @ts-ignore
 type MenuOpenEvents =

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { MenuList, MenuItem } from '@fluentui/react-menu';
+import { MenuList, MenuItem } from '../index';
 
 import { makeStyles } from '@fluentui/react-make-styles';
 

@@ -9,7 +9,7 @@ import {
   MenuDivider,
   MenuGroupHeader,
   MenuPopover,
-} from '@fluentui/react-menu';
+} from '../index';
 
 import { Button } from '@fluentui/react-button';
 import {
