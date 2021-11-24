@@ -203,6 +203,11 @@ export class DetailsHeaderBase
     const classNames = this._classNames;
     const IconComponent = useFastIcons ? FontIcon : Icon;
 
+    const checkboxLabel =
+      selectionMode === SelectionMode.multiple || isAllSelected
+        ? ariaLabelForSelectAllCheckbox
+        : ariaLabelForSelectionColumn;
+
     const isRTL = getRTL(theme);
     return (
       <FocusZone
@@ -230,20 +235,16 @@ export class DetailsHeaderBase
                     hostClassName: classNames.checkTooltip,
                     id: `${this._id}-checkTooltip`,
                     setAriaDescribedBy: false,
-                    content: ariaLabelForSelectAllCheckbox,
+                    content: checkboxLabel,
                     children: (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
-                        aria-label={
-                          selectionMode === SelectionMode.multiple
-                            ? ariaLabelForSelectAllCheckbox
-                            : ariaLabelForSelectionColumn
-                        }
+                        aria-label={checkboxLabel}
                         data-is-focusable={!isCheckboxHidden || undefined}
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}
-                        canSelect={!isCheckboxHidden}
+                        canSelect={selectionMode === SelectionMode.multiple ? !isCheckboxHidden : !!isAllSelected}
                         className={classNames.check}
                         onRenderDetailsCheckbox={onRenderDetailsCheckbox}
                         useFastIcons={useFastIcons}
