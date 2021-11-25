@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Reduce colour set and align with base badge colours",
-  "packageName": "@fluentui/react-badge",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

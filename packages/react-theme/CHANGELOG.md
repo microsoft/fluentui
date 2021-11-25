@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Fri, 12 Nov 2021 13:25:09 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.3..@fluentui/react-theme_v9.0.0-beta.4)
+
+### Changes
+
+- feat(react-theme): update shadow design tokens ([PR #20604](https://github.com/microsoft/fluentui/pull/20604) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.3)
 

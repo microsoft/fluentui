@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 08:34:09 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "718e63006d8d07d24efab9c32942041963d78dc7",
+            "comment": "Migrate package to use solution style ts-configs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "99adff5a9aab9086e8bc4737040654ab23f0febe",
+            "comment": "Update utility types to support specifying a primary slot other than root"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Nov 2021 13:25:10 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-beta.3",
       "version": "9.0.0-beta.3",

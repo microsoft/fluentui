@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update utility types to support specifying a primary slot other than root",
-  "packageName": "@fluentui/react-utilities",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
