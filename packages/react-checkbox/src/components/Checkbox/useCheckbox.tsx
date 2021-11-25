@@ -66,17 +66,22 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     }),
     indicator: resolveShorthand(props.indicator, {
       required: true,
+      defaultProps: {
+        children:
+          size === 'large' ? (
+            checked === 'mixed' ? (
+              <Mixed16Regular />
+            ) : (
+              <Checkmark16Regular />
+            )
+          ) : checked === 'mixed' ? (
+            <Mixed12Regular />
+          ) : (
+            <Checkmark12Regular />
+          ),
+      },
     }),
   };
-
-  // Add the default checkmark icon if none was provided
-  if (!state.indicator.children) {
-    if (state.size === 'medium') {
-      state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
-    } else {
-      state.indicator.children = checked === 'mixed' ? <Mixed16Regular /> : <Checkmark16Regular />;
-    }
-  }
 
   const onChange = state.input.onChange as CheckboxProps['onChange'];
   state.input.onChange = useEventCallback(ev => {
