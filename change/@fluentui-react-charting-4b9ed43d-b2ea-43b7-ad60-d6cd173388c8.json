@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Stack callout accessibility prop added in Grouped Bar chart for Stack callout",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "minor"
-}

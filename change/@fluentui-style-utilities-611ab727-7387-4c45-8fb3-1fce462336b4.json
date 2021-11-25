@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Removing export stars in favor of named exports.",
-  "packageName": "@fluentui/style-utilities",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch"
-}

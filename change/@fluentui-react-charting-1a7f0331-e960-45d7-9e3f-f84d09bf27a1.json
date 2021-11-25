@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Callout content focusable removed and Title for SVG added",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

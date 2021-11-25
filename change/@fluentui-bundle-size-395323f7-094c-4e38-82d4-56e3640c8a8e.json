@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adds missing dependencies to bundle-size tool",
-  "packageName": "@fluentui/bundle-size",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

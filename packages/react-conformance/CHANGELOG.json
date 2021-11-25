@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 14:54:15 GMT",
+      "tag": "@fluentui/react-conformance_v0.7.2",
+      "version": "0.7.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "99adff5a9aab9086e8bc4737040654ab23f0febe",
+            "comment": "Update component-has-root-ref test to support primarySlot"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Nov 2021 07:29:05 GMT",
       "tag": "@fluentui/react-conformance_v0.7.1",
       "version": "0.7.1",

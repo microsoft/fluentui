@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Revert usage of @rnx-kit/eslint-plugin",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch"
-}
