@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "added new prop getAriaDescription to detailsRow",
-  "packageName": "@fluentui/react",
-  "email": "surya.ravva@microsoft.com",
-  "dependentChangeType": "patch"
-}

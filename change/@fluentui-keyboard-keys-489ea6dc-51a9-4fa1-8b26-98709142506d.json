@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update tooling config",
+  "packageName": "@fluentui/keyboard-keys",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

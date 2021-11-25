@@ -21,8 +21,9 @@
     "start": "yarn storybook",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-badge/src && yarn docs",
-    "storybook": "start-storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-badge/src && yarn docs",
+    "storybook": "start-storybook",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/babel-make-styles": "9.0.0-beta.3",
@@ -43,7 +44,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^1.1.140",
+    "@fluentui/react-icons": "^2.0.152-beta.3",
     "@fluentui/react-make-styles": "9.0.0-beta.3",
     "@fluentui/react-theme": "9.0.0-beta.3",
     "@fluentui/react-utilities": "9.0.0-beta.3",
