@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "xAxis number localization",
-  "packageName": "@uifabric/charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

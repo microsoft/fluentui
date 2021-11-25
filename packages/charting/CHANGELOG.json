@@ -2,6 +2,33 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 12:26:54 GMT",
+      "tag": "@uifabric/charting_v4.19.3",
+      "version": "4.19.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stacked Callout implemented  for Grouped Vertical Bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "19287228d67fa32183759eff46d45ca886360a2a",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "xAxis number localization",
+            "author": "v-scharde@microsoft.com",
+            "commit": "4192f8a53b5c2368de2bc3fe62612401bad255d7",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "YAxis issue for bar charts solved, when highest y axis value is odd n",
+            "author": "v-scharde@microsoft.com",
+            "commit": "7225cd362b7ddf05beba4edf2ab44f3e508d1460",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Nov 2021 12:27:56 GMT",
       "tag": "@uifabric/charting_v4.19.2",
       "version": "4.19.2",

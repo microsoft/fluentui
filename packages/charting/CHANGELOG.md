@@ -1,8 +1,19 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 22 Nov 2021 12:27:56 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 12:26:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.19.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.3)
+
+Thu, 25 Nov 2021 12:26:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.19.2..@uifabric/charting_v4.19.3)
+
+### Patches
+
+- Stacked Callout implemented  for Grouped Vertical Bar chart ([PR #20674](https://github.com/microsoft/fluentui/pull/20674) by v-scharde@microsoft.com)
+- xAxis number localization ([PR #20667](https://github.com/microsoft/fluentui/pull/20667) by v-scharde@microsoft.com)
+- YAxis issue for bar charts solved, when highest y axis value is odd n ([PR #20704](https://github.com/microsoft/fluentui/pull/20704) by v-scharde@microsoft.com)
 
 ## [4.19.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.2)
 
