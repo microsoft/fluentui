@@ -73,7 +73,7 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
   };
 
   return (
-    <Scenario pageTitle="Profile Menu">
+    <Scenario pageTitle="Profile menu">
       <Menu>
         <MenuTrigger>
           <Button>Profile</Button>
@@ -107,6 +107,6 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
 };
 
 export default {
-  title: 'Accessibility Scenarios / Profile Menu',
+  title: 'Accessibility Scenarios / Profile menu',
   id: 'menu-accessibility-scenario',
 };

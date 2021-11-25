@@ -38,7 +38,7 @@ export const AddPeoplePopoverAccessibilityScenario: React.FunctionComponent = ()
   const [popoverOpened, setPopoverOpened] = React.useState(false);
 
   return (
-    <Scenario pageTitle="Add People Popover">
+    <Scenario pageTitle="Add people popover">
       <Popover
         open={popoverOpened}
         onOpenChange={(event, data) => {
@@ -59,6 +59,6 @@ export const AddPeoplePopoverAccessibilityScenario: React.FunctionComponent = ()
 };
 
 export default {
-  title: 'Accessibility Scenarios / Add people Popover',
+  title: 'Accessibility Scenarios / Add people popover',
   id: 'popover-accessibility-scenario',
 };

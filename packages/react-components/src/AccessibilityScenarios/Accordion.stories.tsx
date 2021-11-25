@@ -14,7 +14,7 @@ import { Scenario } from './utils';
 
 export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
   return (
-    <Scenario pageTitle="Simple Form Accordion">
+    <Scenario pageTitle="Simple form accordion">
       <Accordion defaultOpenItems="personalDetails">
         <AccordionItem value="personalDetails">
           <AccordionHeader>Personal details</AccordionHeader>
@@ -63,6 +63,6 @@ export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent =
 };
 
 export default {
-  title: 'Accessibility Scenarios / Simple Form Accordion',
+  title: 'Accessibility Scenarios / Simple form accordion',
   id: 'accordion-accessibility-scenario',
 };
