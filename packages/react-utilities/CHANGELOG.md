@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 12 Nov 2021 13:25:10 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-beta.3..@fluentui/react-utilities_v9.0.0-beta.4)
+
+### Changes
+
+- Update utility types to support specifying a primary slot other than root ([PR #20617](https://github.com/microsoft/fluentui/pull/20617) by behowell@microsoft.com)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-beta.3)
 

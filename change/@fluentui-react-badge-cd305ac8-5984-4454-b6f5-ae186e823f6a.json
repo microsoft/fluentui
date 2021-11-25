@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove props and return correct presence icons",
-  "packageName": "@fluentui/react-badge",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

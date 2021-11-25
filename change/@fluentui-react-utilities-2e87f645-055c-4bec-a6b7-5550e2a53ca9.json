@@ -1,7 +1,0 @@
-{
-  "comment": "Migrate package to use solution style ts-configs",
-  "type": "none",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}
