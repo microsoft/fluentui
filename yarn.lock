@@ -1607,23 +1607,6 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@fluentui/babel-make-styles@9.0.0-beta.3":
-  version "9.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/babel-make-styles/-/babel-make-styles-9.0.0-beta.3.tgz#0ad8263eef5dd47995ff6008be2c2b5c77c8fa6a"
-  integrity sha512-Q4UZ5PirLM/Enc+Tbzi3plDjxy5tQs2vH51bVEBlWbssW35PyWHzFdIRd9qPlti1kir2xz3vUUb72NUNmhliOg==
-  dependencies:
-    "@babel/core" "^7.10.4"
-    "@babel/generator" "^7.12.13"
-    "@babel/helper-plugin-utils" "^7.12.13"
-    "@babel/preset-typescript" "^7.10.4"
-    "@babel/template" "^7.12.13"
-    "@babel/traverse" "^7.12.13"
-    "@fluentui/make-styles" "9.0.0-beta.2"
-    "@linaria/babel-preset" "^3.0.0-beta.14"
-    "@linaria/shaker" "^3.0.0-beta.14"
-    ajv "^8.4.0"
-    tslib "^2.1.0"
-
 "@fluentui/dom-utilities@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@fluentui/dom-utilities/-/dom-utilities-1.1.1.tgz#b0bbab665fe726f245800bb9e7883b1ceb54248b"
@@ -1631,18 +1614,6 @@
   dependencies:
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
-
-"@fluentui/make-styles@9.0.0-beta.2":
-  version "9.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/make-styles/-/make-styles-9.0.0-beta.2.tgz#95d39f8eda655ad87e7500aa3ee54166cfb5c733"
-  integrity sha512-ygAxSE3kiw1i7KTka/WrebT8wlKU/ph29/DibjwgVmWjy1fCx0sJGFo2ltvc4e0W9kerqc+WjTVoL6YPxk0HSw==
-  dependencies:
-    "@emotion/hash" "^0.8.0"
-    csstype "^2.6.7"
-    inline-style-expand-shorthand "^1.2.0"
-    rtl-css-js "^1.14.1"
-    stylis "^4.0.6"
-    tslib "^2.1.0"
 
 "@fluentui/react-icons@^2.0.152-beta.3":
   version "2.0.152-beta.3"
@@ -22229,7 +22200,7 @@ rsvp@^4.8.4:
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
   integrity sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==
 
-rtl-css-js@^1.1.3, rtl-css-js@^1.14.1, rtl-css-js@^1.14.5:
+rtl-css-js@^1.1.3, rtl-css-js@^1.14.5:
   version "1.14.5"
   resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.14.5.tgz#fd92685acd024e688dda899a28c5fb9270b79974"
   integrity sha512-+ng7LWVvPjQUdgDVviR6vKi2X4JiBtlw5rdY0UM5/Cj39c2/KDUsY/VxEzGE25m4KR5g0dvuKfrDq7DaoDooIA==
