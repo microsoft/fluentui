@@ -186,9 +186,19 @@ export const Animation: React.FC<AnimationProps> & {
       {...unhandledProps}
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
-      {isChildrenFunction
-        ? () => (children as AnimationChildrenProp)({ classes: cx(animationClasses, className) })
-        : child}
+      {state => {
+        const currentClasses = {
+          entering: animationClasses,
+          entered: undefined,
+          exiting: animationClasses,
+          exited: undefined,
+        };
+        const finalClasses = cx(currentClasses[state], className, (child as any)?.props?.className);
+
+        return isChildrenFunction
+          ? () => (children as AnimationChildrenProp)({ classes: finalClasses })
+          : React.cloneElement(child, { className: finalClasses });
+      }}
     </Transition>
   );
   setEnd();
