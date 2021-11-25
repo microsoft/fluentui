@@ -818,6 +818,46 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
+    it(`should not add start scripts to node packages`, async () => {
+      const nodePackageName = getScopedPkgName(tree, 'babel-make-styles');
+      const projectConfig = readProjectConfiguration(tree, nodePackageName);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.scripts).toMatchInlineSnapshot(`
+        Object {
+          "build": "just-scripts build",
+          "clean": "just-scripts clean",
+          "code-style": "just-scripts code-style",
+          "just": "just-scripts",
+          "lint": "just-scripts lint",
+          "start": "just-scripts dev:storybook",
+          "start-test": "just-scripts jest-watch",
+          "test": "just-scripts test",
+          "test:watch": "just-scripts jest-watch",
+          "update-snapshots": "just-scripts jest -u",
+        }
+      `);
+
+      await generator(tree, {
+        name: nodePackageName,
+      });
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.scripts).toEqual({
+        build: 'just-scripts build',
+        // eslint-disable-next-line @fluentui/max-len
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs`,
+        clean: 'just-scripts clean',
+        'code-style': 'just-scripts code-style',
+        docs: 'api-extractor run --config=config/api-extractor.local.json --local',
+        just: 'just-scripts',
+        lint: 'just-scripts lint',
+        test: 'jest --passWithNoTests',
+        'type-check': 'tsc -b tsconfig.json',
+      });
+    });
+
     it(`should create api-extractor.json`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
 
@@ -923,12 +963,6 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`babel config setup`, () => {
-    const getScopedPkgName = (pkgName: string) => {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
-
-      return `@${workspaceConfig.npmScope}/${pkgName}`;
-    };
-
     function getBabelConfig(projectConfig: ReadProjectConfiguration) {
       const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
       return readJson(tree, babelConfigPath);
@@ -939,7 +973,7 @@ describe('migrate-converged-pkg generator', () => {
     }
 
     it(`should setup .babelrc.json`, async () => {
-      const babelMakeStylesPkg = getScopedPkgName('babel-make-styles');
+      const babelMakeStylesPkg = getScopedPkgName(tree, 'babel-make-styles');
       const projectConfig = readProjectConfiguration(tree, options.name);
 
       let packageJson = getPackageJson(projectConfig);
@@ -978,12 +1012,12 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      const babelMakeStylesPkg = getScopedPkgName('babel-make-styles');
+      const babelMakeStylesPkg = getScopedPkgName(tree, 'babel-make-styles');
 
       updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
         if (json.dependencies) {
-          delete json.dependencies[getScopedPkgName('react-make-styles')];
-          delete json.dependencies[getScopedPkgName('make-styles')];
+          delete json.dependencies[getScopedPkgName(tree, 'react-make-styles')];
+          delete json.dependencies[getScopedPkgName(tree, 'make-styles')];
         }
 
         json.devDependencies = json.devDependencies || {};
@@ -1166,6 +1200,12 @@ describe('migrate-converged-pkg generator', () => {
 });
 
 // ==== helpers ====
+
+function getScopedPkgName(tree: Tree, pkgName: string) {
+  const workspaceConfig = readWorkspaceConfiguration(tree);
+
+  return `@${workspaceConfig.npmScope}/${pkgName}`;
+}
 
 function setupDummyPackage(
   tree: Tree,
