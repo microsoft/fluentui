@@ -21,6 +21,8 @@ export function expandShorthand(style: MakeStylesStyle, result: MakeStylesStyle 
       // eslint-disable-next-line eqeqeq
     } else if (value == null) {
       // should skip
+    } else if (Array.isArray(value)) {
+      result[property as 'animationName'] = value;
     } else if (typeof value === 'object') {
       result[property as keyof MakeStylesStyle] = expandShorthand(value as MakeStylesStyle);
     }
