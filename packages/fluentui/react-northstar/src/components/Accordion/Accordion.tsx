@@ -276,17 +276,19 @@ export const Accordion = (React.forwardRef<HTMLDListElement, AccordionProps>((pr
           render: renderPanelTitle,
         }),
       );
-      children.push(
-        createShorthand(AccordionContent, content, {
-          defaultProps: () => ({
-            className: accordionSlotClassNames.content,
-            active,
-            id: contentId,
-            accordionTitleId: titleId,
+      if (active) {
+        children.push(
+          createShorthand(AccordionContent, content, {
+            defaultProps: () => ({
+              className: accordionSlotClassNames.content,
+              active,
+              id: contentId,
+              accordionTitleId: titleId,
+            }),
+            render: renderPanelContent,
           }),
-          render: renderPanelContent,
-        }),
-      );
+        );
+      }
     });
     return children;
   };
