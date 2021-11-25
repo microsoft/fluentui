@@ -1,8 +1,18 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Wed, 27 Oct 2021 12:14:12 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-beta.3)
+
+Thu, 25 Nov 2021 08:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-beta.2..@fluentui/make-styles_v9.0.0-beta.3)
+
+### Changes
+
+- Add development warning for unresolved style rules ([PR #20541](https://github.com/microsoft/fluentui/pull/20541) by lingfangao@hotmail.com)
+- Bumps rtl-css-js to 1.14.5, fixes[#20572](https://github.com/microsoft/fluentui/issues/20572) ([PR #20610](https://github.com/microsoft/fluentui/pull/20610) by lingfangao@hotmail.com)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-beta.2)
 

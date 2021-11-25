@@ -478,7 +478,7 @@ function getPackageType(tree: Tree, options: NormalizedSchema) {
 function isJs(tree: Tree, options: NormalizedSchema) {
   const jsSourceFiles: string[] = [];
   visitNotIgnoredFiles(tree, options.paths.sourceRoot, treePath => {
-    if (treePath.includes('.js') || treePath.includes('.jsx')) {
+    if (treePath.endsWith('.js') || treePath.endsWith('.jsx')) {
       jsSourceFiles.push(treePath);
     }
   });
@@ -522,7 +522,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
     'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
     storybook: 'start-storybook',
     start: 'yarn storybook',
-    test: 'jest',
+    test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
   /* eslint-enable @fluentui/max-len */

@@ -78,10 +78,10 @@ async function runE2ETest() {
   logger(`✔️ Test React app is successfully created: ${testAppPath}`);
 
   logger('STEP 3. Build test app');
-  await shEcho(`CI=1 yarn build`, testAppPath);
+  await shEcho(`npx cross-env CI=1 yarn build`, testAppPath);
 
   logger('STEP 4. Run test app tests');
-  await shEcho(`CI=1 yarn test`, testAppPath);
+  await shEcho(`npx cross-env CI=1 yarn test`, testAppPath);
 
   logger('STEP 5. Load the test app in the browser');
   await performBrowserTest(path.join(testAppPath, 'build'));
