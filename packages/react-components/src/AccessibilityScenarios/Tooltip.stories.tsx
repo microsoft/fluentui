@@ -16,11 +16,11 @@ export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = 
   return (
     <Scenario pageTitle="Buttons with tooltip">
       <Tooltip content="Tooltip as a replacement label" triggerAriaAttribute="label">
-        <button>First</button>
+        <Button>First</Button>
       </Tooltip>
 
       <Tooltip content="Tooltip as a description" triggerAriaAttribute="describedby">
-        <button>Second</button>
+        <Button>Second</Button>
       </Tooltip>
     </Scenario>
   );
