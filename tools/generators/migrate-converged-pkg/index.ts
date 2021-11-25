@@ -560,7 +560,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   };
 
   const js = isJs(tree, options);
-  console.log({ js, options });
 
   if (sbAction === 'init') {
     tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
