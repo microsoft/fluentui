@@ -15,7 +15,7 @@ import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../ut
 import { ComponentEventHandler } from '../../types';
 import { useAnimationStyles } from './useAnimationStyles';
 
-export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
+export type AnimationChildrenProp = (props: { classes: string; state: string }) => React.ReactNode;
 
 export interface AnimationProps extends ChildrenComponentProps<AnimationChildrenProp | React.ReactChild> {
   /** Additional CSS class name(s) to apply.  */
@@ -187,16 +187,9 @@ export const Animation: React.FC<AnimationProps> & {
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
       {state => {
-        const currentClasses = {
-          entering: animationClasses,
-          entered: undefined,
-          exiting: animationClasses,
-          exited: undefined,
-        };
-        const finalClasses = cx(currentClasses[state], className, (child as any)?.props?.className);
-
+        const finalClasses = cx(animationClasses, className, (child as any)?.props?.className);
         return isChildrenFunction
-          ? () => (children as AnimationChildrenProp)({ classes: finalClasses })
+          ? (children as AnimationChildrenProp)({ classes: finalClasses, state })
           : React.cloneElement(child, { className: finalClasses });
       }}
     </Transition>
