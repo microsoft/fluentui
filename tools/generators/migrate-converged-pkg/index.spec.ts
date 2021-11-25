@@ -1011,7 +1011,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
+      let projectConfig = readProjectConfiguration(tree, options.name);
       const babelMakeStylesPkg = getScopedPkgName(tree, 'babel-make-styles');
 
       updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
