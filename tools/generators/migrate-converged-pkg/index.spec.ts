@@ -853,7 +853,7 @@ describe('migrate-converged-pkg generator', () => {
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         just: 'just-scripts',
         lint: 'just-scripts lint',
-        test: 'jest',
+        test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
     });
