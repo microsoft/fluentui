@@ -2,6 +2,21 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 14:54:16 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react to v8.44.0",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 08:34:17 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

@@ -2,6 +2,27 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 14:54:12 GMT",
+      "tag": "@fluentui/codemods_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "none": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "cf59ae965a25831ad4969e5cda932a4c15938a9e",
+            "comment": "Adding makestyle as a devdep to codemods."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/codemods",
+            "commit": "989c43132491b61ed7c6da70100ca4f9aac8173a",
+            "comment": "Fix version mismatches"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Oct 2021 07:27:12 GMT",
       "tag": "@fluentui/codemods_v8.3.0",
       "version": "8.3.0",

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "CRA-Template: fix errors when running test using Windows",
-  "packageName": "@fluentui/cra-template",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

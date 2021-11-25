@@ -2,6 +2,29 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 14:54:13 GMT",
+      "tag": "@fluentui/cra-template_v8.0.38",
+      "version": "8.0.38",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/cra-template",
+            "commit": "72217f5e352be25cf81a1b593f528960b76f4751",
+            "comment": "CRA-Template: fix errors when running test using Windows"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.44.0",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Nov 2021 07:27:34 GMT",
       "tag": "@fluentui/cra-template_v8.0.37",
       "version": "8.0.37",

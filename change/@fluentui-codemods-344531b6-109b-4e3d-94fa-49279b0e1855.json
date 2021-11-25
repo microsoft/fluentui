@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Adding makestyle as a devdep to codemods.",
-  "packageName": "@fluentui/codemods",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "none"
-}
