@@ -15,8 +15,8 @@ import type { Theme } from '@fluentui/react-theme';
  *   })
  *   ...
  *
- *   state.arrowWithSize.clasName = styles.arrowWithSize
- *   state.arrowWithoutSize.className = mergeClases(
+ *   state.arrowWithSize.className = styles.arrowWithSize
+ *   state.arrowWithoutSize.className = mergeClasses(
  *     styles.arrowWithoutSize,
  *     state.smallArrow && styles.smallArrow,
  *     state.mediumArrow && styles.mediumArrow,
