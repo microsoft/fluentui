@@ -560,7 +560,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   };
 
   const js = isJs(tree, options);
-  console.log({ js, options });
+  // console.log({ js, options });
 
   if (sbAction === 'init') {
     tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
@@ -846,8 +846,10 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
   const shouldAddMakeStylesPlugin =
-    pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
-    pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`];
+    !options.name.includes('make-styles') &&
+    (pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
+      pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`]);
+
   const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
 
   const config = templates.babelConfig({ extraPlugins });
