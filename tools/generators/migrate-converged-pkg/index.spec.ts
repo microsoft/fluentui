@@ -184,6 +184,7 @@ describe('migrate-converged-pkg generator', () => {
     it(`should setup TS solution config files`, async () => {
       const { paths, getTsConfig, projectConfig } = setup({ projectName: options.name });
       addConformanceSetup(tree, projectConfig);
+      addUnstableSetup(tree, projectConfig);
 
       let tsConfigMain = getTsConfig.main();
 
@@ -252,6 +253,7 @@ describe('migrate-converged-pkg generator', () => {
       const { getTsConfig, projectConfig } = setup({ projectName: options.name });
       const sourceRoot = `${projectConfig.root}/src`;
       addConformanceSetup(tree, projectConfig);
+      addUnstableSetup(tree, projectConfig);
 
       visitNotIgnoredFiles(tree, sourceRoot, treePath => {
         const jsPath = treePath.replace(/ts(x)?$/, 'js$1');
@@ -1320,6 +1322,28 @@ function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration
             testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string }
           ){}
         `,
+  );
+}
+
+function addUnstableSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
+  const unstableRootPath = `${projectConfig.root}/src/unstable`;
+  writeJson(tree, `${unstableRootPath}/package.json`, {
+    description: 'Separate entrypoint for unstable version',
+    main: '../lib-commonjs/unstable/index.js',
+    module: '../lib/unstable/index.js',
+    typings: '../lib/unstable/index.d.ts',
+    sideEffects: false,
+    license: 'MIT',
+  });
+  writeJson(tree, `${unstableRootPath}/tsconfig.json`, { extends: '../../tsconfig.json', include: ['index.ts'] });
+
+  tree.write(
+    `${unstableRootPath}/index.ts`,
+    stripIndents`
+    // Stub for unstable exports
+
+    export {}
+  `,
   );
 }
 
