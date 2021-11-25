@@ -33,7 +33,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'children'],
+    excludedPropNames: ['checked', 'defaultChecked', 'size', 'children'],
   });
 
   const state: CheckboxState = {
