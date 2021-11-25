@@ -32,19 +32,30 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      <div>Simple circle swatch color picker:</div>
-      <SwatchColorPicker columnCount={5} cellShape={'circle'} colorCells={colorCellsExample1} />
-      <div>Simple square swatch color picker with default size of 20px:</div>
-      <SwatchColorPicker columnCount={5} cellShape={'square'} colorCells={colorCellsExample1} />
-      <div>Simple square swatch color picker with custom size of 35px:</div>
+      <div id="circleLabel">Simple circle swatch color picker:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellShape={'circle'}
+        colorCells={colorCellsExample1}
+        aria-labelledby="circleLabel"
+      />
+      <div id="squareLabel">Simple square swatch color picker with default size of 20px:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellShape={'square'}
+        colorCells={colorCellsExample1}
+        aria-labelledby="squareLabel"
+      />
+      <div id="customSizeLabel">Simple square swatch color picker with custom size of 35px:</div>
       <SwatchColorPicker
         columnCount={5}
         cellHeight={35}
         cellWidth={35}
         cellShape={'square'}
         colorCells={colorCellsExample1}
+        aria-labelledby="customSizeLabel"
       />
-      <div>
+      <div id="gridLabel">
         Simple swatch color picker with multiple rows and larger cells that updates its icon color and shows a preview
         color:
       </div>
@@ -67,9 +78,16 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
         cellWidth={35}
         cellBorderWidth={3}
         colorCells={colorCellsExample2}
+        aria-labelledby="gridLabel"
       />
-      <div>Simple disabled circle swatch color picker:</div>
-      <SwatchColorPicker disabled columnCount={5} cellShape={'circle'} colorCells={colorCellsExample1} />
+      <div id="disabledLabel">Simple disabled circle swatch color picker:</div>
+      <SwatchColorPicker
+        disabled
+        columnCount={5}
+        cellShape={'circle'}
+        colorCells={colorCellsExample1}
+        aria-labelledby="disabledLabel"
+      />
     </div>
   );
 };

@@ -52,6 +52,11 @@ export interface IButtonGridProps
   onBlur?: () => void;
 
   /**
+   * If true, uses radiogroup semantics for the ButtonGrid
+   */
+  isSemanticRadio?: boolean;
+
+  /**
    * Position this ButtonGrid is in the parent set (index in a parent menu, for example)
    */
   ariaPosInSet?: number;

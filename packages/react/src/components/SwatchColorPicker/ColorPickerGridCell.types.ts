@@ -23,6 +23,12 @@ export interface IColorPickerGridCellProps {
   idPrefix?: string;
 
   /**
+   * If true, uses radio semantics for the color cell
+   * @defaultvalue false
+   */
+  isRadio?: boolean;
+
+  /**
    * Tooltip and aria label for this item
    */
   label?: string;
