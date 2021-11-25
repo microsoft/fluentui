@@ -813,7 +813,7 @@ describe('migrate-converged-pkg generator', () => {
         lint: 'just-scripts lint',
         start: 'yarn storybook',
         storybook: 'start-storybook',
-        test: 'jest',
+        test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
     });
