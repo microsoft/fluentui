@@ -77,7 +77,7 @@ const useStyles = makeStyles({
   rootTint: theme => ({
     backgroundColor: theme.colorBrandBackground2,
     color: theme.colorBrandForeground2,
-    borderColor: 'none',
+    borderColor: theme.colorBrandStroke2,
   }),
   rootFilledDanger: theme => ({
     backgroundColor: theme.colorPaletteRedBackground3,
@@ -99,7 +99,7 @@ const useStyles = makeStyles({
   rootFilledSevere: theme => ({
     backgroundColor: theme.colorPaletteDarkOrangeBackground3,
     color: theme.colorNeutralForegroundOnBrand,
-    borderColor: 'none',
+    borderColor: theme.colorTransparentStroke,
   }),
   rootOutlineSevere: theme => ({
     color: theme.colorPaletteDarkOrangeForeground3,
@@ -133,7 +133,7 @@ const useStyles = makeStyles({
   rootFilledSuccess: theme => ({
     backgroundColor: theme.colorPaletteGreenBackground3,
     color: theme.colorNeutralForegroundOnBrand,
-    borderColor: 'none',
+    borderColor: theme.colorTransparentStroke,
   }),
   rootOutlineSuccess: theme => ({
     color: theme.colorPaletteGreenForeground2,
@@ -170,7 +170,6 @@ const useStyles = makeStyles({
     borderColor: theme.colorTransparentStroke,
   }),
   rootOutlineInformative: theme => ({
-    backgroundColor: theme.colorPaletteDarkOrangeBackground3,
     color: theme.colorNeutralBackground5,
     borderColor: theme.colorNeutralBackground5,
   }),
@@ -188,8 +187,8 @@ const useStyles = makeStyles({
     borderColor: theme.colorTransparentStroke,
   }),
   rootOutlineSubtle: theme => ({
-    color: theme.colorNeutralForegroundOnBrand,
-    borderColor: theme.colorNeutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundInverted,
+    borderColor: theme.colorNeutralForegroundInverted,
   }),
   rootTintSubtle: theme => ({
     backgroundColor: theme.colorNeutralBackground1,
@@ -197,7 +196,7 @@ const useStyles = makeStyles({
     borderColor: theme.colorNeutralStroke2,
   }),
   rootGhostSubtle: theme => ({
-    color: theme.colorNeutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundInverted,
   }),
   icon: {
     display: 'flex',

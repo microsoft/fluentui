@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 19 Nov 2021 07:45:28 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Nov 2021 07:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.3.46)
+
+Tue, 23 Nov 2021 07:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.3.45..@fluentui/react-experiments_v8.3.46)
+
+### Patches
+
+- fixed aria description implementation ([PR #20631](https://github.com/microsoft/fluentui/pull/20631) by surya.ravva@microsoft.com)
+- Bump @fluentui/react to v8.43.0 ([PR #20697](https://github.com/microsoft/fluentui/pull/20697) by beachball)
+
+## [8.3.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.3.45)
+
+Mon, 22 Nov 2021 07:36:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.3.44..@fluentui/react-experiments_v8.3.45)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.5 ([PR #20408](https://github.com/microsoft/fluentui/pull/20408) by beachball)
 
 ## [8.3.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.3.44)
 

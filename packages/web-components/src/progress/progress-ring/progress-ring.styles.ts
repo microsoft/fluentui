@@ -19,7 +19,6 @@ export const progressRingStyles: (
       outline: none;
       height: calc(${heightNumber} * 1px);
       width: calc(${heightNumber} * 1px);
-      margin: calc(${heightNumber} * 1px) 0;
     }
 
     .progress {

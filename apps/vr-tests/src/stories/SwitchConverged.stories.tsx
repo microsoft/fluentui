@@ -19,12 +19,12 @@ storiesOf('Switch Converged', module)
     </Screener>
   ))
   .addStory('Root (unchecked)', () => <Switch className="test-class" defaultChecked={false} />, {
-    rtl: true,
+    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
   .addStory('Root (checked)', () => <Switch className="test-class" defaultChecked={true} />, {
-    rtl: true,
+    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
