@@ -45,12 +45,6 @@ describe('migrate-converged-pkg generator', () => {
   let tree: Tree;
   const options = { name: '@proj/react-dummy' } as const;
 
-  const getScopedPkgName = (pkgName: string) => {
-    const workspaceConfig = readWorkspaceConfiguration(tree);
-
-    return `@${workspaceConfig.npmScope}/${pkgName}`;
-  };
-
   beforeEach(() => {
     jest.restoreAllMocks();
 
@@ -823,7 +817,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should not add start scripts to node packages`, async () => {
-      const nodePackageName = getScopedPkgName('babel-make-styles');
+      const nodePackageName = getScopedPkgName(tree, 'babel-make-styles');
       const projectConfig = readProjectConfiguration(tree, nodePackageName);
       let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
@@ -977,7 +971,7 @@ describe('migrate-converged-pkg generator', () => {
     }
 
     it(`should setup .babelrc.json`, async () => {
-      const babelMakeStylesPkg = getScopedPkgName('babel-make-styles');
+      const babelMakeStylesPkg = getScopedPkgName(tree, 'babel-make-styles');
       const projectConfig = readProjectConfiguration(tree, options.name);
 
       let packageJson = getPackageJson(projectConfig);
@@ -1016,12 +1010,12 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      const babelMakeStylesPkg = getScopedPkgName('babel-make-styles');
+      const babelMakeStylesPkg = getScopedPkgName(tree, 'babel-make-styles');
 
       updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
         if (json.dependencies) {
-          delete json.dependencies[getScopedPkgName('react-make-styles')];
-          delete json.dependencies[getScopedPkgName('make-styles')];
+          delete json.dependencies[getScopedPkgName(tree, 'react-make-styles')];
+          delete json.dependencies[getScopedPkgName(tree, 'make-styles')];
         }
 
         json.devDependencies = json.devDependencies || {};
@@ -1204,6 +1198,12 @@ describe('migrate-converged-pkg generator', () => {
 });
 
 // ==== helpers ====
+
+function getScopedPkgName(tree: Tree, pkgName: string) {
+  const workspaceConfig = readWorkspaceConfiguration(tree);
+
+  return `@${workspaceConfig.npmScope}/${pkgName}`;
+}
 
 function setupDummyPackage(
   tree: Tree,
