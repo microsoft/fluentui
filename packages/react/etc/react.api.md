@@ -10006,7 +10006,7 @@ export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options
 // @public
 export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode | undefined) => ResponsiveMode;
 
-// @public
+// @public @deprecated
 export type UseStylesOptions = {
     theme?: Theme;
 };
