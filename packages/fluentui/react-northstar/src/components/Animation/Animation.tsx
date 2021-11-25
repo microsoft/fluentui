@@ -15,7 +15,7 @@ import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../ut
 import { ComponentEventHandler } from '../../types';
 import { useAnimationStyles } from './useAnimationStyles';
 
-export type AnimationChildrenProp = (props: { classes: string; state: string }) => React.ReactNode;
+export type AnimationChildrenProp = (props: { classes: string; state: 'unmounted' | 'exited' | 'entering' | 'entered' | 'exiting' }) => React.ReactNode;
 
 export interface AnimationProps extends ChildrenComponentProps<AnimationChildrenProp | React.ReactChild> {
   /** Additional CSS class name(s) to apply.  */
