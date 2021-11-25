@@ -15,7 +15,10 @@ import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../ut
 import { ComponentEventHandler } from '../../types';
 import { useAnimationStyles } from './useAnimationStyles';
 
-export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
+export type AnimationChildrenProp = (props: {
+  classes: string;
+  state: 'unmounted' | 'exited' | 'entering' | 'entered' | 'exiting';
+}) => React.ReactNode;
 
 export interface AnimationProps extends ChildrenComponentProps<AnimationChildrenProp | React.ReactChild> {
   /** Additional CSS class name(s) to apply.  */
@@ -187,8 +190,12 @@ export const Animation: React.FC<AnimationProps> & {
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
       {isChildrenFunction
-        ? () => (children as AnimationChildrenProp)({ classes: cx(animationClasses, className) })
-        : child}
+        ? ({ state }) =>
+            (children as AnimationChildrenProp)({
+              classes: cx(animationClasses, className, (child as any)?.props?.className),
+              state,
+            })
+        : React.cloneElement(child, { className: cx(animationClasses, className, (child as any)?.props?.className) })}
     </Transition>
   );
   setEnd();
