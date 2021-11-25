@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+- fix(Accordion) Render divs instead of dd and dt elements for Accordion and AccordionTitle @jurokapsiar ([#20773](https://github.com/microsoft/fluentui/pull/20773))
+
 ### Fixes
 - Fix aria-labelledby passed to `DropdownSearchInput` @chpalac ([#20312](https://github.com/microsoft/fluentui/pull/20312))
 - Fix `preventFocusRestoration` in `FocusZone` @chpalac ([#20328](https://github.com/microsoft/fluentui/pull/20328))
