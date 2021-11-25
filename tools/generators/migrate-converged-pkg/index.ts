@@ -534,6 +534,11 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
 
     Object.assign(json.scripts, scripts);
 
+    if (getPackageType(tree, options) === 'node') {
+      delete json.scripts.start;
+      delete json.scripts.storybook;
+    }
+
     return json;
   });
 
