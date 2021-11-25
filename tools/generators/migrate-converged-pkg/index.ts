@@ -478,7 +478,7 @@ function getPackageType(tree: Tree, options: NormalizedSchema) {
 function isJs(tree: Tree, options: NormalizedSchema) {
   const jsSourceFiles: string[] = [];
   visitNotIgnoredFiles(tree, options.paths.sourceRoot, treePath => {
-    if (treePath.includes('.js') || treePath.includes('.jsx')) {
+    if (treePath.endsWith('.js') || treePath.endsWith('.jsx')) {
       jsSourceFiles.push(treePath);
     }
   });
@@ -560,6 +560,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   };
 
   const js = isJs(tree, options);
+  console.log({ js, options });
 
   if (sbAction === 'init') {
     tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
