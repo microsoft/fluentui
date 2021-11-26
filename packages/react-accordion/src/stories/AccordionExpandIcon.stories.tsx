@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { Rocket20Regular as RocketIcon } from '@fluentui/react-icons';
-import {
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-  Accordion,
-  AccordionHeaderProps,
-} from '@fluentui/react-accordion';
+
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionHeaderProps } from '../index';
 
 export const ExpandIcon = (args: AccordionHeaderProps) => (
   <Accordion>

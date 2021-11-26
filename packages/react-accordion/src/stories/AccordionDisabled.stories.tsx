@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-  Accordion,
-  AccordionItemProps,
-} from '@fluentui/react-accordion';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionItemProps } from '../index';
 
 export const Disabled = (args: AccordionItemProps) => (
   <Accordion>
