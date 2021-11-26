@@ -78,6 +78,10 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
       id={id}
       data-index={index}
       data-is-focusable
+      aria-selected={selected}
+      ariaLabel={label}
+      title={label}
+      {...buttonProps}
       className={css(className, {
         ['' + cellIsSelectedStyle]: selected,
         ['' + cellDisabledStyle]: disabled,
@@ -87,11 +91,7 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocus}
-      aria-selected={selected}
-      ariaLabel={label}
-      title={label}
       getClassNames={getClassNames}
-      {...buttonProps}
     >
       {onRenderItem(item)}
     </CommandButton>
