@@ -264,6 +264,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             backgroundColor: semanticColors.bodyBackground,
             position: 'sticky',
             top: 0,
+            zIndex: 1,
           },
         },
       },
@@ -350,6 +351,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         flexShrink: 0,
         borderTop: '1px solid transparent',
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`,
+        background: semanticColors.bodyBackground,
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
             position: 'sticky',
@@ -358,7 +360,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         },
       },
       isFooterSticky && {
-        background: semanticColors.bodyBackground,
         borderTopColor: semanticColors.variantBorder,
       },
     ],
