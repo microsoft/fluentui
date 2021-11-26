@@ -8,6 +8,7 @@ export {
   makeStyles,
   mergeClasses,
   renderToStyleElements,
+  shorthands,
   useRenderer,
 } from '@fluentui/react-make-styles';
 export type { RendererProviderProps } from '@fluentui/react-make-styles';

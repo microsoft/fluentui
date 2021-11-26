@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update component-has-root-ref test to support primarySlot",
-  "packageName": "@fluentui/react-conformance",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

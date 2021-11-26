@@ -2,7 +2,7 @@ import * as React from 'react';
 import { keyboardKey } from '@fluentui/accessibility';
 
 import { Accordion } from 'src/components/Accordion/Accordion';
-import { handlesAccessibility, isConformant } from 'test/specs/commonTests';
+import { handlesAccessibility, htmlIsAccessibilityCompliant, isConformant } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent, findIntrinsicElement } from 'test/utils';
 import { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
@@ -221,5 +221,9 @@ describe('Accordion', () => {
 
   describe('accessibility', () => {
     handlesAccessibility(Accordion, { defaultRootRole: 'presentation' });
+  });
+
+  describe('HTML accessibility rules validation', () => {
+    test('default Accordion', async () => await htmlIsAccessibilityCompliant(<Accordion panels={panels} />));
   });
 });

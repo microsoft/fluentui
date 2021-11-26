@@ -282,6 +282,7 @@ import { SelectableHandler } from '@fluentui/react-menu';
 import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
+import { shorthands } from '@fluentui/react-make-styles';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
@@ -960,6 +961,8 @@ export { setVirtualParent }
 export { ShadowBrandTokens }
 
 export { ShadowTokens }
+
+export { shorthands }
 
 export { SplitButton }
 

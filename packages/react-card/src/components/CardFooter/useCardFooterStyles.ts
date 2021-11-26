@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import type { CardFooterState } from './CardFooter.types';
 
 export const cardFooterClassName = 'fui-CardFooter';
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    gap: '12px',
+    ...shorthands.gap('12px'),
   },
   action: {
     marginLeft: 'auto',
