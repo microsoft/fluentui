@@ -1,16 +1,17 @@
 import * as React from 'react';
+import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+
 import { Portal } from '../Portal';
-import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   container: theme => ({
-    border: `3px solid ${theme.colorPaletteRedBackground3}`,
-    padding: '10px',
+    ...shorthands.border('3px', 'solid', theme.colorPaletteRedBackground3),
+    ...shorthands.padding('10px'),
   }),
 
   portalContent: theme => ({
     backgroundColor: theme.colorPaletteYellowBackground3,
-    border: '3px dashed',
+    ...shorthands.border('3px', 'dashed'),
     marginTop: '10px',
   }),
 });
