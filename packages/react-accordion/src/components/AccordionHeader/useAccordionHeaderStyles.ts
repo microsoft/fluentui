@@ -56,8 +56,8 @@ const useStyles = makeStyles({
     paddingRight: '8px',
   },
   expandIconEnd: {
-    flexGrow: '1',
-    flexShrink: '1',
+    flexGrow: 1,
+    flexShrink: 1,
     flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
@@ -75,7 +75,7 @@ const useStyles = makeStyles({
     fontFamily: theme.fontFamilyBase,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-   ....shorthands.overflow('hidden'),
+    ...shorthands.overflow('hidden'),
   }),
   childrenSmall: theme => ({
     fontSize: theme.fontSizeBase200,
