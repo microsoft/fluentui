@@ -351,15 +351,16 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         flexShrink: 0,
         borderTop: '1px solid transparent',
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`,
-        background: semanticColors.bodyBackground,
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
+            background: semanticColors.bodyBackground,
             position: 'sticky',
             bottom: 0,
           },
         },
       },
       isFooterSticky && {
+        background: semanticColors.bodyBackground,
         borderTopColor: semanticColors.variantBorder,
       },
     ],
