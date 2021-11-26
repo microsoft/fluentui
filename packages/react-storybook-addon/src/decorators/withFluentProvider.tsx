@@ -11,14 +11,14 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
   const selectedThemeId = globals[THEME_ID];
   const { theme } = themes.find(value => value.id === selectedThemeId) ?? defaultTheme;
 
-  return { theme, themeId: selectedThemeId };
+  return { theme };
 };
 
 export const withFluentProvider = (StoryFn: StoryFunction<React.ReactElement>, context: FluentStoryContext) => {
-  const { theme, themeId } = getActiveFluentTheme(context.globals);
+  const { theme } = getActiveFluentTheme(context.globals);
 
   return (
-    <FluentProvider noForcedColors={themeId === 'teams-high-contrast'} theme={theme}>
+    <FluentProvider theme={theme}>
       <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>
     </FluentProvider>
   );
