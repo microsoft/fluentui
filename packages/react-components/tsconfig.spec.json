@@ -11,10 +11,5 @@
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/*.d.ts",
-    "**/*.spec.js",
-    "**/*.spec.jsx",
-    "**/*.test.js",
-    "**/*.test.jsx",
-    "**/*.d.ts"
   ]
 }
