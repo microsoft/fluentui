@@ -21,11 +21,12 @@
     "lint": "just-scripts lint",
     "start": "yarn storybook",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-components/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-components/src && yarn docs",
     "storybook": "start-storybook --port 3000 -s ./public",
     "storybook:docs": "start-storybook --port 3000 -s ./public --docs --no-manager-cache",
     "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -34,7 +35,8 @@
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "@fluentui/babel-make-styles": "9.0.0-beta.4"
   },
   "dependencies": {
     "@fluentui/react-accordion": "9.0.0-beta.5",
