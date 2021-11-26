@@ -21,6 +21,8 @@ export const TimePickerBasicExample: React.FC = () => {
   };
   const onFormatDate = (date: Date) => `Custom prefix + ${date.toLocaleTimeString()}`;
 
+  const onSelectTime = (date: Date) => console.log('SELECTED DATE: ', date);
+
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>
       <TimePicker
@@ -29,6 +31,8 @@ export const TimePickerBasicExample: React.FC = () => {
         allowFreeform
         autoComplete="on"
         label={'TimePicker basic example'}
+        onSelectTime={onSelectTime}
+        defaultValue={new Date('November 25, 2021 09:15:00')}
         useComboBoxAsMenuWidth
       />
       <TimePicker
@@ -40,6 +44,7 @@ export const TimePickerBasicExample: React.FC = () => {
         label={'TimePicker with non default options'}
         useComboBoxAsMenuWidth
         timeRange={timeRange}
+        onSelectTime={onSelectTime}
       />
       <TimePicker
         styles={timePickerStyles}
