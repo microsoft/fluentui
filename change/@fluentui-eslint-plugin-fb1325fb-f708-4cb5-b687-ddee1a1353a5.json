@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "handle `common` directory as test files",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}
