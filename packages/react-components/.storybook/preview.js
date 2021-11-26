@@ -36,7 +36,6 @@ export const parameters = {
     ...rootPreview.parameters.docs,
     container: FluentDocsContainer,
     page: FluentDocsPage,
-    // container: FluentDocsContainer,
   },
   options,
 };
