@@ -63,7 +63,7 @@ export const colorScheme = {
     backgroundDisabled1: colors.grey['800'],
   },
   brand: {
-    background: colors.brand['600'],
+    background: colors.brand['700'],
     background1: colors.brand['1000'],
     background2: colors.brand['900'],
     background3: colors.brand['1000'],
@@ -86,7 +86,7 @@ export const colorScheme = {
 
     borderHover: colors.brand['600'],
 
-    backgroundHover: colors.brand['700'],
+    backgroundHover: colors.brand['600'],
     backgroundHover1: colors.brand['900'],
 
     foregroundPressed: colors.brand['200'],
