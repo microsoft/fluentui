@@ -31,6 +31,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   useHour12 = false,
   timeRange,
   strings = getDefaultStrings(useHour12, showSeconds),
+  defaultValue,
+  onSelectTime,
   onFormatDate,
   onValidateUserInput,
   onChange,
@@ -41,12 +43,17 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
+  const defaultTime: Date = React.useMemo(() => generateDefaultTime(increments, timeRange, defaultValue), [
+    increments,
+    timeRange,
+    defaultValue,
+  ]);
+
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
     const optionsList = Array(optionsCount);
     for (let i = 0; i < optionsCount; i++) {
       optionsList[i] = 0;
     }
-    const defaultTime = generateDefaultTime(increments, timeRange);
 
     return optionsList.map((_, index) => {
       const option = addMinutes(defaultTime, increments * index);
@@ -101,6 +108,12 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         updatedUserText = option.text;
       }
 
+      if (onSelectTime) {
+        const selectedTime = value ? value : option ? option.text : '';
+        const date = getDateFromSelection(showSeconds, useHour12, defaultTime, selectedTime);
+        onSelectTime(date);
+      }
+
       setErrorMessage(errorMessageToDisplay);
       setUserText(updatedUserText);
       setSelectedKey(key);
@@ -112,6 +125,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       showSeconds,
       useHour12,
       onChange,
+      onSelectTime,
       strings.invalidInputErrorMessage,
     ],
   );
@@ -156,8 +170,49 @@ const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   };
 };
 
-const generateDefaultTime = (increments: number, timeRange: ITimeRange | undefined) => {
-  const newDefaultTime = new Date();
+const getDateFromSelection = (showSeconds: boolean, useHour12: boolean, defaultTime: Date, selectedTime: string) => {
+  const splitValue = selectedTime.split(':');
+  let hours = +splitValue[0];
+  let minutes;
+  let seconds = 0;
+  let ap;
+  if (showSeconds) {
+    minutes = +splitValue[1];
+    seconds = +splitValue[2].split(' ')[0];
+    if (useHour12) {
+      ap = splitValue[2].split(' ')[1];
+    }
+  } else {
+    minutes = +splitValue[1].split(' ')[0];
+    if (useHour12) {
+      ap = splitValue[1].split(' ')[1];
+    }
+  }
+
+  if (useHour12 && ap && ap.toLowerCase() === 'pm' && hours !== 12) {
+    hours += TimeConstants.OffsetTo24HourFormat;
+  }
+
+  let hoursOffset;
+  if (useHour12 && defaultTime.getHours() >= hours) {
+    hoursOffset = TimeConstants.HoursInOneDay - defaultTime.getHours() + hours;
+  } else {
+    hoursOffset = Math.abs(defaultTime.getHours() - hours);
+  }
+
+  const offset =
+    TimeConstants.MillisecondsIn1Sec * TimeConstants.MinutesInOneHour * hoursOffset * TimeConstants.SecondsInOneHour +
+    seconds;
+
+  const date = new Date(defaultTime.getTime() + offset);
+  date.setMinutes(minutes);
+  date.setSeconds(defaultTime.getSeconds());
+
+  return date;
+};
+
+const generateDefaultTime = (increments: number, timeRange: ITimeRange | undefined, defaultValue?: Date) => {
+  const newDefaultTime = defaultValue ? defaultValue : new Date();
   if (timeRange) {
     const clampedTimeRange = clampTimeRange(timeRange);
     newDefaultTime.setHours(clampedTimeRange.start);

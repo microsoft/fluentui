@@ -9,4 +9,6 @@ export const TimeConstants = {
   DaysInOneWeek: 7,
   MonthInOneYear: 12,
   HoursInOneDay: 24,
+  SecondsInOneHour: 60,
+  OffsetTo24HourFormat: 12,
 };
