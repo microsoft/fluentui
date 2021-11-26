@@ -158,7 +158,8 @@ export async function getPerfRegressions() {
       const testUrlParams = `?scenario=${scenarioName}&iterations=${iterations}&renderType=${renderType}`;
 
       scenarios[scenarioKey] = {
-        baseline: `${urlForMaster}${testUrlParams}`,
+        // always check links in out put to make sure the baseline is what you think it is
+        baseline: `file:///home/lingga/fluentui/apps/perf-test/dist/index.html?scenario=MakeStyles&iterations=1&renderType=mount`,
         scenario: `${urlForDeploy}${testUrlParams}`,
       };
 

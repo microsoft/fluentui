@@ -8,6 +8,10 @@
  * memoization logic help avoid certain code paths.
  */
 
+// first two only renders 1 instance at a time
+// virtual-rerender: rerender doing nothing inbetween
+// virtual-rerender-with-unmount: rerender after unmounting previous
+// mount: loop and render n instances
 const AllRenderTypes = ['mount', 'virtual-rerender', 'virtual-rerender-with-unmount'];
 const DefaultRenderTypes = ['mount'];
 
