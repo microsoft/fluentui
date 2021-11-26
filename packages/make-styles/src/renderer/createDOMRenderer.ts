@@ -2,6 +2,9 @@ import { MakeStylesRenderer, StyleBucketName } from '../types';
 import { getStyleSheetForBucket } from './getStyleSheetForBucket';
 
 let lastIndex = 0;
+interface CreateDOMRendererOptions {
+  filterRule?: (cssRule: string) => boolean;
+}
 
 /**
  * Creates a new instances of a renderer.
@@ -10,7 +13,10 @@ let lastIndex = 0;
  */
 export function createDOMRenderer(
   target: Document | undefined = typeof document === 'undefined' ? undefined : document,
+  options: CreateDOMRendererOptions = {},
 ): MakeStylesRenderer {
+  const { filterRule } = options;
+
   const renderer: MakeStylesRenderer = {
     insertionCache: {},
     styleElements: {},
@@ -35,7 +41,13 @@ export function createDOMRenderer(
 
           if (sheet) {
             try {
-              sheet.insertRule(ruleCSS, sheet.cssRules.length);
+              if (filterRule) {
+                if (filterRule(ruleCSS)) {
+                  sheet.insertRule(ruleCSS, sheet.cssRules.length);
+                }
+              } else {
+                sheet.insertRule(ruleCSS, sheet.cssRules.length);
+              }
             } catch (e) {
               // We've disabled these warnings due to false-positive errors with browser prefixes
               if (process.env.NODE_ENV !== 'production' && !ignoreSuffixesRegex.test(ruleCSS)) {

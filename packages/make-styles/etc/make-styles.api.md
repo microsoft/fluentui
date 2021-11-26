@@ -18,8 +18,10 @@ export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBy
 // @internal (undocumented)
 export function createCSSVariablesProxy(prefix?: string): unknown;
 
+// Warning: (ae-forgotten-export) The symbol "CreateDOMRendererOptions" needs to be exported by the entry point index.d.ts
+//
 // @public
-export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
+export function createDOMRenderer(target?: Document | undefined, options?: CreateDOMRendererOptions): MakeStylesRenderer;
 
 // @public (undocumented)
 export type CSSClasses = /* ltrClassName */ string | [/* ltrClassName */ string, /* rtlClassName */ string];

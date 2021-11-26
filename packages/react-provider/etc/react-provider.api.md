@@ -26,7 +26,6 @@ export const fluentProviderClassName = "fui-FluentProvider";
 // @public (undocumented)
 export interface FluentProviderCommons {
     dir: 'ltr' | 'rtl';
-    noForcedColors?: boolean;
     targetDocument: Document | undefined;
 }
 

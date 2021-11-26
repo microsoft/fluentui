@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds `noForcedColors` flag that applies `forced-color-adjust: none` to provider and managed portals",
-  "packageName": "@fluentui/react-provider",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

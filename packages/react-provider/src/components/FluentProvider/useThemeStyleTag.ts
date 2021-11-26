@@ -9,8 +9,8 @@ import { fluentProviderClassName } from './useFluentProviderStyles';
  *
  * @returns CSS class to apply the rule
  */
-export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument' | 'noForcedColors'>) => {
-  const { targetDocument, theme, noForcedColors } = options;
+export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
+  const { targetDocument, theme } = options;
 
   const styleTagId = useId(fluentProviderClassName);
   const styleTag = React.useMemo(() => {
@@ -31,10 +31,9 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
       return cssVarRule;
     }, '');
 
-    const noForcedColorsRule = `forced-color-adjust: none;`;
     // result: .fluent-provider1 { --css-var: '#fff' }
-    return `.${styleTagId} { ${cssVarsAsString} ${noForcedColors ? noForcedColorsRule : ''} }`;
-  }, [theme, styleTagId, noForcedColors]);
+    return `.${styleTagId} { ${cssVarsAsString} }`;
+  }, [theme, styleTagId]);
   const previousCssRule = usePrevious(cssRule);
 
   if (styleTag && previousCssRule !== cssRule) {

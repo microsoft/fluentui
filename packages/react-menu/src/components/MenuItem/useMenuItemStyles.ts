@@ -1,13 +1,11 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { useFluent } from '@fluentui/react-shared-contexts';
 import type { MenuItemState } from './MenuItem.types';
 
 export const menuItemClassName = 'fui-MenuItem';
 
 const useStyles = makeStyles({
   focusIndicator: theme => createFocusOutlineStyle(theme),
-  focusIndicatorForced: theme => createFocusOutlineStyle(theme, { style: { outlineColor: 'HighLight' } }),
   root: theme => ({
     borderRadius: theme.borderRadiusMedium,
     position: 'relative',
@@ -64,44 +62,16 @@ const useStyles = makeStyles({
       color: theme.colorNeutralForegroundDisabled,
     },
   }),
-
-  hoverForcedColors: {
-    '@media (forced-colors: active)': {
-      ':hover': {
-        forcedColorAdjust: 'none',
-        backgroundColor: 'HighLight',
-        color: 'HighLightText',
-      },
-    },
-  },
-
-  disabledForcedColors: {
-    '@media (forced-colors: active)': {
-      ':hover': {
-        forcedColorAdjust: 'none',
-        backgroundColor: 'Canvas',
-        color: 'GrayText',
-      },
-      ':focus': {
-        color: 'GrayText',
-      },
-      color: 'GrayText',
-    },
-  },
 });
 
 /** Applies style classnames to slots */
 export const useMenuItemStyles = (state: MenuItemState) => {
-  const { noForcedColors } = useFluent();
   const styles = useStyles();
   state.root.className = mergeClasses(
     menuItemClassName,
     styles.root,
     styles.focusIndicator,
     state.disabled && styles.disabled,
-    !noForcedColors && styles.focusIndicatorForced,
-    !noForcedColors && styles.hoverForcedColors,
-    !noForcedColors && state.disabled && styles.disabledForcedColors,
     state.root.className,
   );
   state.content.className = mergeClasses(styles.content, state.content.className);
