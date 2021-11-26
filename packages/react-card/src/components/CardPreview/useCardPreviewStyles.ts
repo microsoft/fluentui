@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { CardPreviewState } from './CardPreview.types';
 
 export const cardPreviewClassName = 'fui-CardPreview';
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   root: theme => ({
     position: 'relative',
     // TODO: Explore alternate way of applying padding on parent Card
-    margin: '0 -12px',
+    ...shorthands.margin('0', '-12px'),
 
     '> *': {
       display: 'block',

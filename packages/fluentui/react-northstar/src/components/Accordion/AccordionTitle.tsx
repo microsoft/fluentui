@@ -219,7 +219,7 @@ export const AccordionTitle = (React.forwardRef<HTMLDListElement, AccordionTitle
     setEnd();
     return element;
   },
-) as unknown) as ForwardRefWithAs<'dt', HTMLDListElement, AccordionTitleProps> &
+) as unknown) as ForwardRefWithAs<'div', HTMLDListElement, AccordionTitleProps> &
   FluentComponentStaticProps<AccordionTitleProps>;
 
 AccordionTitle.displayName = 'AccordionTitle';
@@ -245,7 +245,7 @@ AccordionTitle.handledProps = Object.keys(AccordionTitle.propTypes) as any;
 
 AccordionTitle.defaultProps = {
   accessibility: accordionTitleBehavior,
-  as: 'dt',
+  as: 'div',
   contentRef: _.noop,
   indicator: {},
   contentWrapper: {},
