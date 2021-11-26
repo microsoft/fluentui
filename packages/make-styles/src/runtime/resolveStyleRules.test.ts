@@ -1,4 +1,4 @@
-import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
+import { makeStylesRulesSerializer } from '../common/snapshotSerializers';
 import { resolveStyleRules } from './resolveStyleRules';
 import { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
 

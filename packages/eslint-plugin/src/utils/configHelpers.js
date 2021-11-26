@@ -7,7 +7,7 @@ const jju = require('jju');
 const testFiles = [
   '**/*{.,-}test.{ts,tsx}',
   '**/*.stories.tsx',
-  '**/{test,tests,stories}/**',
+  '**/{common,test,tests,stories}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/isConformant.{ts,tsx}',
 ];
