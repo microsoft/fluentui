@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles } from '@fluentui/react-make-styles';
 import { webLightTheme } from '@fluentui/react-theme';
-import { FluentProvider } from '../FluentProvider'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
+
+import { FluentProvider } from '../FluentProvider';
 
 const useStyles = makeStyles({
   example: theme => ({
     backgroundColor: theme.colorBrandBackground2,
     color: theme.colorBrandForeground2,
-    border: `5px solid ${theme.colorBrandStroke1}`,
-    borderRadius: '5px',
-    margin: '5px',
+    ...shorthands.border('5px', 'solid', theme.colorBrandStroke1),
+    ...shorthands.borderRadius('5px'),
+    ...shorthands.margin('5px'),
   }),
   text: {
-    padding: '5px',
+    ...shorthands.padding('5px'),
     fontSize: '18px',
   },
 });
