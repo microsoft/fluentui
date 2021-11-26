@@ -21,8 +21,7 @@ export const PanelFooterExample: React.FunctionComponent = () => {
     ),
     [dismissPanel],
   );
-  const [content, setContent] = React.useState('Content goes here.');
-  const [show, setShow] = React.useState(false);
+
   return (
     <div>
       <DefaultButton text="Open panel" onClick={openPanel} />
@@ -36,64 +35,7 @@ export const PanelFooterExample: React.FunctionComponent = () => {
         // at the bottom of the page
         isFooterAtBottom={true}
       >
-        {
-          <DefaultButton
-            text="Lots of content"
-            onClick={
-              !show
-                ? () => {
-                    setContent(
-                      'Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. Content goes here. THE END.',
-                    );
-                    setShow(true);
-                  }
-                : () => {
-                    setContent('');
-                    setShow(false);
-                  }
-            }
-          />
-        }
-        {/* <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" />
-        <DefaultButton text="LOTS OF CONTENT" /> */}
-
-        <p>{content}</p>
+        <p>Content goes here.</p>
       </Panel>
     </div>
   );
