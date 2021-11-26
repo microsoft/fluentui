@@ -21,15 +21,16 @@
     "start": "yarn storybook",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-radio/src && yarn docs",
-    "storybook": "start-storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-radio/src && yarn docs",
+    "storybook": "start-storybook",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-beta.3",
+    "@fluentui/babel-make-styles": "9.0.0-beta.4",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.3",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.4",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-beta.3",
+    "@fluentui/react-conformance-make-styles": "9.0.0-beta.4",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -43,8 +44,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "9.0.0-beta.3",
-    "@fluentui/react-utilities": "9.0.0-beta.3",
+    "@fluentui/react-make-styles": "9.0.0-beta.4",
+    "@fluentui/react-utilities": "9.0.0-beta.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

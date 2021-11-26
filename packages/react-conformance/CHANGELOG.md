@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Mon, 15 Nov 2021 07:29:05 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 14:54:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.2)
+
+Thu, 25 Nov 2021 14:54:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.1..@fluentui/react-conformance_v0.7.2)
+
+### Patches
+
+- Update component-has-root-ref test to support primarySlot ([PR #20617](https://github.com/microsoft/fluentui/pull/20617) by behowell@microsoft.com)
 
 ## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.1)
 

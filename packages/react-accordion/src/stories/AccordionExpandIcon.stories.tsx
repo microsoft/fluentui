@@ -6,9 +6,6 @@ import {
   AccordionPanel,
   Accordion,
   AccordionHeaderProps,
-  // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
 } from '@fluentui/react-accordion';
 
 export const ExpandIcon = (args: AccordionHeaderProps) => (

@@ -41,7 +41,6 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
     ${display('inline-flex')} :host {
       align-items: center;
       outline: none;
-      margin: calc(${designUnit} * 1px) 0;
       ${
         /*
          * Chromium likes to select label text or the default slot when

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix linkProps spreading on DocumentCardPreviewBase component",
-  "packageName": "@fluentui/react",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

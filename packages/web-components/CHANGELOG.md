@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 09 Nov 2021 07:38:11 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Nov 2021 07:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.0)
+
+Tue, 23 Nov 2021 07:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.2..@fluentui/web-components_v2.1.0)
+
+### Minor changes
+
+- fix: remove margins from host elements ([PR #20710](https://github.com/microsoft/fluentui/pull/20710) by jes@microsoft.com)
 
 ## [2.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.2)
 

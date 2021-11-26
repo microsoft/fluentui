@@ -1,8 +1,30 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 14:54:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.5.0)
+
+Thu, 25 Nov 2021 14:54:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.4.2..@fluentui/eslint-plugin_v1.5.0)
+
+### Minor changes
+
+- Adding rnx-kit dependency and enabling the no-export-all rule for exporting library surfaces. ([PR #20665](https://github.com/microsoft/fluentui/pull/20665) by dzearing@microsoft.com)
+
+### Patches
+
+- Revert usage of @rnx-kit/eslint-plugin ([PR #20781](https://github.com/microsoft/fluentui/pull/20781) by andredias@microsoft.com)
+
+## [1.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.2)
+
+Mon, 22 Nov 2021 07:36:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.4.1..@fluentui/eslint-plugin_v1.4.2)
+
+### Patches
+
+- support excluded files from being linted ([PR #20466](https://github.com/microsoft/fluentui/pull/20466) by mgodbolt@microsoft.com)
 
 ## [1.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.1)
 

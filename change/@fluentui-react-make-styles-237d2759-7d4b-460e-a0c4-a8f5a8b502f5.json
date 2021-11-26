@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Re-export shorthand functions for styles",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
