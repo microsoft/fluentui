@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
@@ -9,6 +10,7 @@ import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { ContextualMenuItemType } from './ContextualMenu.types';
 import { DefaultButton } from '../../Button';
 import { resetIds } from '@fluentui/utilities';
+import { createTestContainer } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 import type {
   IContextualMenuProps,
@@ -588,8 +590,10 @@ describe('ContextualMenu', () => {
       },
     ];
 
+    const { removeTestContainer, testContainer } = createTestContainer();
+
     ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+      ReactDOM.render(<ContextualMenu items={items} />, testContainer);
     });
 
     const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
@@ -606,6 +610,8 @@ describe('ContextualMenu', () => {
     menuItems[2].focus();
     expect(document.activeElement!.textContent).toEqual('TestText 3');
     expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
+
+    removeTestContainer();
   });
 
   it('cannot click on disabled items', () => {
@@ -849,8 +855,10 @@ describe('ContextualMenu', () => {
       },
     ];
 
+    const { removeTestContainer, testContainer } = createTestContainer();
+
     ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+      ReactDOM.render(<ContextualMenu items={items} />, testContainer);
     });
 
     ReactTestUtils.act(() => {
@@ -864,6 +872,8 @@ describe('ContextualMenu', () => {
       jest.runAllTimers();
     });
     expect(document.activeElement).toEqual(itemToFocus);
+
+    removeTestContainer();
   });
 
   it('merges callout classNames', () => {
@@ -1095,11 +1105,11 @@ describe('ContextualMenu', () => {
     });
 
     it('Menu should correctly return focus to previously focused element when dismissed and document has focus', () => {
-      const temp = ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-        <div>
-          <DefaultButton menuProps={{ items: menu }} text="but" id="btn" />
-        </div>,
-      ) as HTMLElement;
+      const { removeTestContainer, testContainer: temp } = createTestContainer();
+
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<DefaultButton menuProps={{ items: menu }} text="but" id="btn" />, temp);
+      });
 
       // Get and make sure that the button is the active element
       const btn = temp.querySelector('#btn')! as HTMLElement;
@@ -1129,6 +1139,8 @@ describe('ContextualMenu', () => {
       if (document.hasFocus()) {
         expect(document.activeElement).toEqual(btn);
       }
+
+      removeTestContainer();
     });
   });
 
