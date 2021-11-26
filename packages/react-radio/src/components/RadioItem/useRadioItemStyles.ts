@@ -226,7 +226,9 @@ export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
     state.label.className,
   );
 
-  state.subtext ? (state.subtext.className = mergeClasses(subtextStyles.subtext, state.subtext.className)) : null;
+  if (state.subtext) {
+    state.subtext.className = mergeClasses(subtextStyles.subtext, state.subtext.className);
+  }
 
   return state;
 };
