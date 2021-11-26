@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add transparent outline to arrow for HC",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

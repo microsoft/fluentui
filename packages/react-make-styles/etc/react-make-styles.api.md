@@ -12,6 +12,7 @@ import type { MakeStylesRenderer } from '@fluentui/make-styles';
 import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { mergeClasses } from '@fluentui/make-styles';
 import * as React_2 from 'react';
+import { shorthands } from '@fluentui/make-styles';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal
@@ -41,6 +42,8 @@ export interface RendererProviderProps {
 
 // @public
 export function renderToStyleElements(renderer: MakeStylesRenderer): React_2.ReactElement[];
+
+export { shorthands }
 
 // @public
 export function useRenderer(): MakeStylesRenderer;
