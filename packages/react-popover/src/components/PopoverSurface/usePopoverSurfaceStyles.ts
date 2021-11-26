@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createArrowStyles } from '@fluentui/react-positioning';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceState } from './PopoverSurface.types';
@@ -18,8 +18,8 @@ const useStyles = makeStyles({
   root: theme => ({
     backgroundColor: theme.colorNeutralBackground1,
     boxShadow: theme.shadow16,
-    borderRadius: '4px',
-    border: `1px solid ${theme.colorTransparentStroke}`,
+    ...shorthands.borderRadius('4px'),
+    ...shorthands.border('1px', 'solid', theme.colorTransparentStroke),
   }),
 
   inverted: theme => ({
@@ -35,15 +35,15 @@ const useStyles = makeStyles({
   }),
 
   smallPadding: () => ({
-    padding: '12px',
+    ...shorthands.padding('12px'),
   }),
 
   mediumPadding: () => ({
-    padding: '16px',
+    ...shorthands.padding('16px'),
   }),
 
   largePadding: () => ({
-    padding: '20px',
+    ...shorthands.padding('20px'),
   }),
 
   smallArrow: () => ({
