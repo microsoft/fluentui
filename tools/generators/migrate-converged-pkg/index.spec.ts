@@ -1011,7 +1011,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
+      let projectConfig = readProjectConfiguration(tree, options.name);
       const babelMakeStylesPkg = getScopedPkgName(tree, 'babel-make-styles');
 
       updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
@@ -1040,6 +1040,18 @@ describe('migrate-converged-pkg generator', () => {
       expect(devDeps[babelMakeStylesPkg]).toBe('^9.0.0-alpha.0');
 
       await generator(tree, options);
+
+      babelConfig = getBabelConfig(projectConfig);
+      packageJson = getPackageJson(projectConfig);
+      devDeps = packageJson.devDependencies || {};
+
+      expect(babelConfig).toEqual({
+        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      });
+      expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
+
+      projectConfig = readProjectConfiguration(tree, '@proj/babel-make-styles');
+      await generator(tree, { name: '@proj/babel-make-styles' });
 
       babelConfig = getBabelConfig(projectConfig);
       packageJson = getPackageJson(projectConfig);
