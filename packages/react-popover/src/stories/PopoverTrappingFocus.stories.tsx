@@ -1,10 +1,8 @@
 import * as React from 'react';
-
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-
 import { Button } from '@fluentui/react-button';
-
 import { makeStyles } from '@fluentui/react-make-styles';
+
+import { Popover, PopoverTrigger, PopoverSurface } from '../index';
 
 const useStyles = makeStyles({
   contentHeader: {
