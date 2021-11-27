@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updated examples to use new props",
+  "packageName": "@fluentui/react",
+  "email": "jamwu@microsoft.com",
+  "dependentChangeType": "patch"
+}
