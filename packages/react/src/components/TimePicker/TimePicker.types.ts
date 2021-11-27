@@ -20,7 +20,10 @@ export interface ITimePickerStrings {
 }
 
 export interface ITimePickerProps
-  extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text'> {
+  extends Omit<
+    IComboBoxProps,
+    'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue'
+  > {
   /**
    * Label of the component
    */

@@ -274,8 +274,9 @@ export const TimeConstants: {
     DaysInOneWeek: number;
     MonthInOneYear: number;
     HoursInOneDay: number;
+    SecondsInOneHour: number;
+    OffsetTo24HourFormat: number;
 };
-
 
 // (No @packageDocumentation comment for this package)
 

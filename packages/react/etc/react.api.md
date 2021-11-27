@@ -9066,11 +9066,13 @@ export interface IThemeSlotRule {
 }
 
 // @public (undocumented)
-export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text'> {
+export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue'> {
     allowFreeform?: boolean;
+    defaultValue?: Date;
     increments?: number;
     label?: string;
     onFormatDate?: (date: Date) => string;
+    onSelectTime?: (time: Date) => void;
     onValidateUserInput?: (userInput: string) => string;
     showSeconds?: boolean;
     strings?: ITimePickerStrings;
