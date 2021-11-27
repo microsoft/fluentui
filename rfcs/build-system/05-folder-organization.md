@@ -1,14 +1,5 @@
 # RFC: Fluent UI Repo Folder Organization
 
-<!--
-An RFC can be anything. A question, a suggestion, a plan. The purpose of this template is to give some structure to help folks write successful RFCs. However, don't feel constrained by this template; use your best judgement.
-Tips for writing a successful RFC:
-- Simple plain words that make your point, fancy words obfuscate
-- Try to stay concise, but don't gloss over important details
-- Try to write a neutral problem statement, not one that motivates your desired solution
-- Remember, "Writing is thinking". It's natural to realize new ideas while writing your proposal
--->
-
 ---
 
 Contributors: Fluent UI React Build team, @justSlone
@@ -16,9 +7,9 @@ Contributors: Fluent UI React Build team, @justSlone
 ## Summary
 
 This propsoal covers 3 topics:
-1. rfcs folder
-2. specs folder
-3. packages folder
+1. organization of rfcs folder
+2. organization (or removal) of specs folder
+3. organization of packages folder
 
 The rfcs and specs folder changes should and can be made easily and soon. The packages folder change can be made later. 
 
@@ -49,16 +40,24 @@ contributors visiting our repo, and generally a ramp-up headache.
 2. We should remove the specs folder. We should be keeping specs up to date under the relevant package folders. Associating specs with particular packages scales better in a large repo such as this. 
 The reason we don't do this for RFCs is that they span packages (and as is in the case of this RFC, sometimes span projects). 
 3. We should also (though can be done later) re-organize the packages folder by suite package name. Using the same names `react`, `react-components`, `react-northstar`, `web-components`.
+   - This can be done by an nx generator. Suggestion is that someone other than @hotell writes the generator to spread the knowledge. 
 4. An optional, though probably desirable change would be to organize the `apps` folder in a similar way
 
 ### Pros and Cons
 
-<!-- Enumerate the pros and cons of the proposal. Make sure to think about and be clear on the cons or drawbacks of this propsoal. If there are multiple proposals include this for each. -->
+Pros:
+- Better organization of repo, more clear for contributors
+- Improves the scale of the repo, could allow more projects in the future, or at least makes working with the projects we have more pleasant
+
+Cons:
+- Moving files around, especially in the packages folder, can break things
+- Large file moves cause merge conflicts
+- For package moves, this will make cherry picking fixes to branches like for 7.0 more difficult
 
 ## Discarded Solutions
 
-<!-- As you enumerate possible solutions, try to keep track of the discarded ones. This should include why we discarded the solution. -->
+Considered moving everything under the packages folders, including RFCs. Decided to leave RFCs at the root for better discoverability as they are good introductions to the project. 
 
 ## Open Issues
 
-<!-- Optional section, but useful for first drafts. Use this section to track open issues on unanswered questions regarding the design or proposal.  -->
+Only the timing and who would write the generator to move the packages folder. 
