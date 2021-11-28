@@ -349,6 +349,10 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-theme-sass": {
+      "tags": ["vNext", "platform:node"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-tooltip": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
