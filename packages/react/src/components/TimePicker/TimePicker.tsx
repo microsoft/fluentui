@@ -64,7 +64,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         text: optionText,
       };
     });
-  }, [timeRange, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
+  }, [defaultTime, timeRange, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
 
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(timePickerOptions[0].key);
 
@@ -119,6 +119,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       setSelectedKey(key);
     },
     [
+      defaultTime,
       allowFreeform,
       onFormatDate,
       onValidateUserInput,
