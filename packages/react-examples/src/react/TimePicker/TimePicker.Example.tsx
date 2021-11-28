@@ -14,14 +14,14 @@ const timePickerStyles: Partial<IComboBoxStyles> = {
   },
 };
 
+const onFormatDate = (date: Date) => `Custom prefix + ${date.toLocaleTimeString()}`;
+const onSelectTime = (date: Date) => console.log('SELECTED DATE: ', date);
+
 export const TimePickerBasicExample: React.FC = () => {
   const timeRange: ITimeRange = {
     start: 8,
     end: 14,
   };
-  const onFormatDate = (date: Date) => `Custom prefix + ${date.toLocaleTimeString()}`;
-
-  const onSelectTime = (date: Date) => console.log('SELECTED DATE: ', date);
 
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>
