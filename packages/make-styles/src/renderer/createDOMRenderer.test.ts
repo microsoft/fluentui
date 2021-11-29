@@ -1,5 +1,6 @@
 import { CSSRulesByBucket } from '../types';
 import { createDOMRenderer } from './createDOMRenderer';
+import { makeStylesRendererSerializer } from '../common/snapshotSerializers';
 
 function createFakeDocument(): Document {
   const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
@@ -7,6 +8,8 @@ function createFakeDocument(): Document {
 
   return doc;
 }
+
+expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
 describe('createDOMRenderer', () => {
   it('should apply filter for css rules for multiple buckets', () => {
@@ -23,9 +26,11 @@ describe('createDOMRenderer', () => {
 
     renderer.insertCSSRules(cssRules);
 
-    expect(mediaQueryFilter).toHaveBeenCalledTimes(2);
-    expect(mediaQueryFilter).toHaveNthReturnedWith(1, false);
-    expect(mediaQueryFilter).toHaveNthReturnedWith(2, true);
+    expect(renderer).toMatchInlineSnapshot(`
+      .foo {
+        background-color: red;
+      }
+    `);
   });
 
   it('should apply filter for css rules within single bucket', () => {
@@ -43,9 +48,10 @@ describe('createDOMRenderer', () => {
     };
 
     renderer.insertCSSRules(cssRules);
-
-    expect(mediaQueryFilter).toHaveBeenCalledTimes(2);
-    expect(mediaQueryFilter).toHaveNthReturnedWith(1, false);
-    expect(mediaQueryFilter).toHaveNthReturnedWith(2, true);
+    expect(renderer).toMatchInlineSnapshot(`
+      .foo {
+        background-color: red;
+      }
+    `);
   });
 });
