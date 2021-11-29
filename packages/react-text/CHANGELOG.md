@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Fri, 12 Nov 2021 13:25:08 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-beta.3..@fluentui/react-text_v9.0.0-beta.4)
+
+### Changes
+
+- Migrate Text ([PR #20653](https://github.com/microsoft/fluentui/pull/20653) by andredias@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-beta.3)
 

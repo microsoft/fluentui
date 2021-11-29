@@ -1,4 +1,4 @@
-export { mergeClasses, createDOMRenderer } from '@fluentui/make-styles';
+export { shorthands, mergeClasses, createDOMRenderer } from '@fluentui/make-styles';
 
 export { makeStyles } from './makeStyles';
 export { makeStaticStyles } from './makeStaticStyles';

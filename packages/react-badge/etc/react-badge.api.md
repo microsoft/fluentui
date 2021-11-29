@@ -30,7 +30,7 @@ export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeComm
 
 // @public (undocumented)
 export type BadgeSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    root: ObjectShorthandProps<Omit<React_2.HTMLAttributes<HTMLElement>, 'color'>>;
     icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
@@ -51,13 +51,14 @@ export type CounterBadgeCommons = {
     dot: boolean;
     shape: 'circular' | 'rounded';
     appearance: 'filled' | 'ghost';
+    color: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
 };
 
 // @public (undocumented)
-export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & Partial<CounterBadgeCommons>;
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
 
 // @public (undocumented)
-export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape'> & CounterBadgeCommons;
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color'> & CounterBadgeCommons;
 
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
@@ -66,16 +67,16 @@ export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 export const presenceBadgeClassName = "fui-PresenceBadge";
 
 // @public (undocumented)
-export interface PresenceBadgeCommons {
-    outOfOffice: boolean;
+export type PresenceBadgeCommons = {
     status: PresenceBadgeStatus;
-}
+    outOfOffice: boolean;
+} & BadgeCommons;
 
 // @public (undocumented)
-export type PresenceBadgeProps = BadgeProps & Partial<PresenceBadgeCommons>;
+export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
 // @public (undocumented)
-export type PresenceBadgeState = BadgeState & PresenceBadgeCommons;
+export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;
 
 // @public (undocumented)
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';

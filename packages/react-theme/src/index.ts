@@ -9,6 +9,7 @@ export type {
   BorderRadiusTokens,
   StrokeWidthTokens,
   ShadowTokens,
+  ShadowBrandTokens,
   FontFamilyTokens,
   ColorPaletteTokens,
   ColorTokens,

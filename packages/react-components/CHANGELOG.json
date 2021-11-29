@@ -2,6 +2,242 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 08:34:09 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-beta.5",
+      "version": "9.0.0-beta.5",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "718e63006d8d07d24efab9c32942041963d78dc7",
+            "comment": "Migrate package to use solution style ts-configs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "532579ec884b3bad9e2db6dff139eb467f3c2bbc",
+            "comment": "update tooling config"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "8a141d14f3a14de2e1c4691dad908622f310a9d1",
+            "comment": "Migrate package to use solution tsconfigs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "8a820339f7f4084d8c46e97f06eebbeb18111397",
+            "comment": "update tooling config"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "48e52fc91e41ab721c9842f8f68ac84ad569a851",
+            "comment": "Update snapshots from presence badge changes"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "cc3fe8e29cbb4b9d03f26e9a06b58d7aa24ffb65",
+            "comment": "Migrate package to use solution style ts-config"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "4733216f73b47f1dd4fbd88a601a922cd583d0b8",
+            "comment": "fix(docs): Update status message for beta release"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "59b3bebb1944aa35f8e8754beec16dcc95f1d5fb",
+            "comment": "update tooling configs"
+          },
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "01111bb9f10ad2bbe10902a48d15dce2e9cc4264",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-make-styles",
+            "commit": "f472b7b8b893b2b076bc47da294d308cb956f1b6",
+            "comment": "update tooling configs"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "8a141d14f3a14de2e1c4691dad908622f310a9d1",
+            "comment": "Migrate package to use solution tsconfigs"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "8a141d14f3a14de2e1c4691dad908622f310a9d1",
+            "comment": "Migrate package to use solution tsconfigs"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "8a141d14f3a14de2e1c4691dad908622f310a9d1",
+            "comment": "Migrate package to use solution tsconfigs"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "718e63006d8d07d24efab9c32942041963d78dc7",
+            "comment": "Migrate package to use solution style ts-configs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "14b1e35b8da2f04538c2183a9be6c6b76dad3cca",
+            "comment": "update tooling configs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ba05e3ba0a8fec662323e2e39e628cf015dae3ef",
+            "comment": "update tooling configs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "66670cf47c716e284c7ac7ae5f25d1f77f3aced3",
+            "comment": "update tooling configs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "99adff5a9aab9086e8bc4737040654ab23f0febe",
+            "comment": "Update utility types to support specifying a primary slot other than root"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/make-styles",
+            "commit": "58db204f28af1d68df7260ff580cf91f0adcfb66",
+            "comment": "Add development warning for unresolved style rules"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/make-styles",
+            "commit": "400f5b5001c96721477b84c467541c36ee2a9454",
+            "comment": "Bumps rtl-css-js to 1.14.5, fixes[#20572](https://github.com/microsoft/fluentui/issues/20572)"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "ecab13cfd6ac22657020db8f86eb89f952b0f953",
+            "comment": "update react-icons dependency"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "6183f8ae46233d7ecec2a3d12e7348b7b41eea0c",
+            "comment": "various styling fixes for base Badge component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c5c66cb39e6906f506bf30c9e56c0839f10e2d51",
+            "comment": "Reduce colour set and align with base badge colours"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "ecab13cfd6ac22657020db8f86eb89f952b0f953",
+            "comment": "update react-icons dependency"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "48e52fc91e41ab721c9842f8f68ac84ad569a851",
+            "comment": "Remove props and return correct presence icons"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8825574c42f414c26f9d49238be02ca7dcb44cfe",
+            "comment": "MenuButton: Removing tight coupling with Menu by replicating type locally."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "ecab13cfd6ac22657020db8f86eb89f952b0f953",
+            "comment": "update react-icons dependency"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "5f5fb9fe289f45c7f9afe9f052c51f19cfd41160",
+            "comment": "Migrate Card"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "99adff5a9aab9086e8bc4737040654ab23f0febe",
+            "comment": "Implement primary slot: 'input' is now the primary slot and receives native props passed to Checkbox"
+          },
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cf59ae965a25831ad4969e5cda932a4c15938a9e",
+            "comment": "Removing export stars in favor of named exports."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "a683ee69b17c667227acb71c59f609b4f1ca1ef9",
+            "comment": "Add aria-hidden to Label required field"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ecab13cfd6ac22657020db8f86eb89f952b0f953",
+            "comment": "update react-icons dependency"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "58db204f28af1d68df7260ff580cf91f0adcfb66",
+            "comment": "Add transparent outline to arrow for HC"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "58db204f28af1d68df7260ff580cf91f0adcfb66",
+            "comment": "Add utility function to create styles for an arrow element"
+          },
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "168b9343fc93f5d188c6dbf4c9ced75f8ee4f41b",
+            "comment": "Migrate Text"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "0a328c7a57bfa78ff9a4cd896f17e2887da64bec",
+            "comment": "feat(react-theme): update shadow design tokens"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "58db204f28af1d68df7260ff580cf91f0adcfb66",
+            "comment": "Add transparent outline to arrow for HC"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Nov 2021 13:25:06 GMT",
       "tag": "@fluentui/react-components_v9.0.0-beta.4",
       "version": "9.0.0-beta.4",

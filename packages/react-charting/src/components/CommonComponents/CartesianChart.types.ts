@@ -480,4 +480,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getAxisData?: any;
 }
