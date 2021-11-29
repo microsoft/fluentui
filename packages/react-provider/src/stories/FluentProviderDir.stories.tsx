@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
-import { FluentProvider } from '../FluentProvider'; // codesandbox-dependency: @fluentui/react-components ^9.0.0-beta
+import { shorthands, makeStyles } from '@fluentui/react-make-styles';
+
+import { FluentProvider } from '../FluentProvider';
 
 const useStyles = makeStyles({
   example: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '5px',
+    ...shorthands.gap('5px'),
     width: '300px',
   },
   text: theme => ({
     backgroundColor: theme.colorBrandBackground2,
     color: theme.colorBrandForeground2,
     fontSize: '18px',
-    border: '1px',
-    borderRadius: '5px',
-    padding: '5px',
+    ...shorthands.border('1px'),
+    ...shorthands.borderRadius('5px'),
+    ...shorthands.padding('5px'),
   }),
 });
 

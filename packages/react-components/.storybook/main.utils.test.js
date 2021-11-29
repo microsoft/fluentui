@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 const utils = require('./main.utils');
 
 describe(`main utils`, () => {

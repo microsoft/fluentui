@@ -30,7 +30,7 @@ export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeComm
 
 // @public (undocumented)
 export type BadgeSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    root: ObjectShorthandProps<Omit<React_2.HTMLAttributes<HTMLElement>, 'color'>>;
     icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
@@ -67,16 +67,16 @@ export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 export const presenceBadgeClassName = "fui-PresenceBadge";
 
 // @public (undocumented)
-export interface PresenceBadgeCommons {
-    outOfOffice: boolean;
+export type PresenceBadgeCommons = {
     status: PresenceBadgeStatus;
-}
+    outOfOffice: boolean;
+} & BadgeCommons;
 
 // @public (undocumented)
-export type PresenceBadgeProps = BadgeProps & Partial<PresenceBadgeCommons>;
+export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
 // @public (undocumented)
-export type PresenceBadgeState = BadgeState & PresenceBadgeCommons;
+export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;
 
 // @public (undocumented)
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';

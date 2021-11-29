@@ -1,9 +1,7 @@
 import * as React from 'react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { Body, Caption } from '@fluentui/react-text';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { Button } from '@fluentui/react-button';
 import { Open16Regular, MoreVertical20Regular } from '@fluentui/react-icons';
 import { Card, CardFooter, CardHeader, CardPreview } from '../index'; // codesandbox-dependency: @fluentui/react-card ^9.0.0-beta

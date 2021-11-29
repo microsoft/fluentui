@@ -1,5 +1,5 @@
 import type { Theme } from '@fluentui/react-theme';
-import type { MakeStyles, MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { MakeStylesStyle, MakeStylesStyleRule } from '@fluentui/react-make-styles';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
@@ -72,7 +72,7 @@ export const createFocusOutlineStyle = (
   options: {
     style: Partial<FocusOutlineStyleOptions>;
   } & CreateFocusIndicatorStyleRuleOptions = { style: {}, ...defaultOptions },
-): MakeStyles => ({
+): MakeStylesStyle => ({
   ':focus-visible': {
     outline: 'none',
   },
