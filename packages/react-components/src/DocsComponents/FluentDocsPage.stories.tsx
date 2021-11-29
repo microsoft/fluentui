@@ -10,7 +10,7 @@ import {
   PRIMARY_STORY,
   Stories,
 } from '@storybook/addon-docs';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 
 import { Toc, idToHash } from './Toc.stories';
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     flexWrap: 'wrap',
     flexDirection: 'row-reverse',
     justifyContent: 'flex-end',
-    gap: '16px',
+    ...shorthands.gap('16px'),
   },
   toc: {
     flexBasis: '200px',

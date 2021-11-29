@@ -19,7 +19,7 @@ export const useStyles = __styles(
     },
     image: {
       mc9l5x: 'f13qh94s',
-      w08cwm: 'fz44487',
+      a6qtfi: 'f85kjgz',
       sj55zd: 'fka9v86',
     },
   },
@@ -31,7 +31,7 @@ export const useStyles = __styles(
       '.f16wzh4i{font-weight:bold;}',
       '.fe3e8s9{color:red;}',
       '.f13qh94s{display:grid;}',
-      '.fz44487{grid-gap:10px;}',
+      '.f85kjgz{grid-row-gap:10px;}',
       '.fka9v86{color:green;}',
     ],
   },

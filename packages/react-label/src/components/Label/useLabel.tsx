@@ -24,7 +24,7 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>): LabelS
     disabled,
     required: resolveShorthand(required === false ? null : required, {
       required: !!required,
-      defaultProps: { children: '*' },
+      defaultProps: { children: '*', 'aria-hidden': 'true' },
     }),
     strong,
     size,

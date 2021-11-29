@@ -29,7 +29,7 @@ storiesOf('ColorPicker', module)
       </Fabric>
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory('Blue', () => (

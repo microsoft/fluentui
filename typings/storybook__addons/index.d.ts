@@ -5,6 +5,7 @@
 // TypeScript Version: 3.1
 
 import { ViewMode } from '@storybook/addons';
+import * as React from 'react';
 
 declare module '@storybook/addons' {
   // PUBLIC API - extended definitions
@@ -35,6 +36,10 @@ declare module '@storybook/addons' {
          */
         excludeDecorators: boolean;
       };
+
+      container: React.ComponentType<any>;
+      page: React.ComponentType<any>;
+
       /**
        * https://github.com/storybookjs/storybook/tree/next/addons/docs/react#inline-stories
        */

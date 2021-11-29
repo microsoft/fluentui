@@ -2,6 +2,44 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 29 Nov 2021 07:31:31 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.5.1",
+      "version": "1.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "7c5dc03c415baf9a2d8a7ff104b2c0e3bff6daca",
+            "comment": "handle `common` directory as test files"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:13 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.5.0",
+      "version": "1.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "cf59ae965a25831ad4969e5cda932a4c15938a9e",
+            "comment": "Adding rnx-kit dependency and enabling the no-export-all rule for exporting library surfaces."
+          }
+        ],
+        "patch": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "1fb5698fb5b996402373339e5f7698595f6a76d4",
+            "comment": "Revert usage of @rnx-kit/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Nov 2021 07:36:13 GMT",
       "tag": "@fluentui/eslint-plugin_v1.4.2",
       "version": "1.4.2",
