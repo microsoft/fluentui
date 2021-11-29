@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '@fluentui/react-accordion';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
 
 export const Navigable = (args: AccordionProps) => (
   <Accordion {...args}>

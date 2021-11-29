@@ -2,6 +2,29 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 08:34:16 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "66670cf47c716e284c7ac7ae5f25d1f77f3aced3",
+            "comment": "update tooling configs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "0a328c7a57bfa78ff9a4cd896f17e2887da64bec",
+            "comment": "feat(react-theme): update shadow design tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Nov 2021 13:25:09 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-beta.3",
       "version": "9.0.0-beta.3",

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 import { webLightTheme, teamsLightTheme, teamsDarkTheme } from '@fluentui/react-theme';
 
 import { FluentProvider } from '../FluentProvider';
@@ -10,17 +10,17 @@ const useStyles = makeStyles({
     marginTop: '5px',
   },
   provider: {
-    border: '1px',
-    borderRadius: '5px',
-    padding: '5px',
+    ...shorthands.border('1px'),
+    ...shorthands.borderRadius('5px'),
+    ...shorthands.padding('5px'),
   },
   text: theme => ({
     backgroundColor: theme.colorBrandBackground2,
     color: theme.colorBrandForeground2,
     fontSize: '20px',
-    border: '1px',
-    borderRadius: '5px',
-    padding: '5px',
+    ...shorthands.border('1px'),
+    ...shorthands.borderRadius('5px'),
+    ...shorthands.padding('5px'),
   }),
 });
 

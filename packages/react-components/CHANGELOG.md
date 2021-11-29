@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 12 Nov 2021 13:25:06 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.5)
+
+Thu, 25 Nov 2021 08:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-beta.4..@fluentui/react-components_v9.0.0-beta.5)
+
+### Changes
+
+- `@fluentui/react-utilities`
+  - Update utility types to support specifying a primary slot other than root ([PR #20617](https://github.com/microsoft/fluentui/pull/20617) by behowell@microsoft.com)
+- `@fluentui/make-styles`
+  - Add development warning for unresolved style rules ([PR #20541](https://github.com/microsoft/fluentui/pull/20541) by lingfangao@hotmail.com)
+  - Bumps rtl-css-js to 1.14.5, fixes[#20572](https://github.com/microsoft/fluentui/issues/20572) ([PR #20610](https://github.com/microsoft/fluentui/pull/20610) by lingfangao@hotmail.com)
+- `@fluentui/react-avatar`
+  - update react-icons dependency ([PR #20563](https://github.com/microsoft/fluentui/pull/20563) by ololubek@microsoft.com)
+- `@fluentui/react-badge`
+  - various styling fixes for base Badge component ([PR #20693](https://github.com/microsoft/fluentui/pull/20693) by lingfangao@hotmail.com)
+  - Reduce colour set and align with base badge colours ([PR #20596](https://github.com/microsoft/fluentui/pull/20596) by lingfangao@hotmail.com)
+  - update react-icons dependency ([PR #20563](https://github.com/microsoft/fluentui/pull/20563) by ololubek@microsoft.com)
+  - Remove props and return correct presence icons ([PR #20630](https://github.com/microsoft/fluentui/pull/20630) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - MenuButton: Removing tight coupling with Menu by replicating type locally. ([PR #20635](https://github.com/microsoft/fluentui/pull/20635) by Humberto.Morimoto@microsoft.com)
+  - update react-icons dependency ([PR #20563](https://github.com/microsoft/fluentui/pull/20563) by ololubek@microsoft.com)
+- `@fluentui/react-card`
+  - Migrate Card ([PR #20599](https://github.com/microsoft/fluentui/pull/20599) by andredias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Implement primary slot: 'input' is now the primary slot and receives native props passed to Checkbox ([PR #20617](https://github.com/microsoft/fluentui/pull/20617) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - Removing export stars in favor of named exports. ([PR #20665](https://github.com/microsoft/fluentui/pull/20665) by dzearing@microsoft.com)
+- `@fluentui/react-label`
+  - Add aria-hidden to Label required field ([PR #20680](https://github.com/microsoft/fluentui/pull/20680) by ololubek@microsoft.com)
+- `@fluentui/react-menu`
+  - update react-icons dependency ([PR #20563](https://github.com/microsoft/fluentui/pull/20563) by ololubek@microsoft.com)
+- `@fluentui/react-popover`
+  - Add transparent outline to arrow for HC ([PR #20541](https://github.com/microsoft/fluentui/pull/20541) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - Add utility function to create styles for an arrow element ([PR #20541](https://github.com/microsoft/fluentui/pull/20541) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - Migrate Text ([PR #20653](https://github.com/microsoft/fluentui/pull/20653) by andredias@microsoft.com)
+- `@fluentui/react-theme`
+  - feat(react-theme): update shadow design tokens ([PR #20604](https://github.com/microsoft/fluentui/pull/20604) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Add transparent outline to arrow for HC ([PR #20541](https://github.com/microsoft/fluentui/pull/20541) by lingfangao@hotmail.com)
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-beta.4)
 

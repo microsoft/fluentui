@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { cardPreviewClassName } from '../CardPreview/index';
 import type { CardState } from './Card.types';
 
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   root: theme => ({
     display: 'flex',
     flexDirection: 'column',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
 
     boxShadow: theme.shadow4,
     color: theme.colorNeutralForeground1,
@@ -20,9 +20,9 @@ const useStyles = makeStyles({
     // Size: medium
     // TODO: Validate if we should use a token instead + the unit of said token
     // TODO: Explore alternate way of applying padding
-    padding: '12px',
-    gap: '12px',
-    borderRadius: theme.borderRadiusMedium,
+    ...shorthands.padding('12px'),
+    ...shorthands.gap('12px'),
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
 
     [`> .${cardPreviewClassName}`]: {
       marginLeft: '-12px',
