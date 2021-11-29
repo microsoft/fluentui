@@ -230,69 +230,6 @@ An icon only tab is displayed when the icon slot is filled and tab content is om
 </TabList>
 ```
 
-### With Badge
-
-Adding a badge to a tab is done through the BadgeTab variant.
-This follows a extensible approach of MenuItem rather than defining a badge slot on the Tab component.
-The BadgeTab has a badge slot (BadgeProps) and leverages hooks from Badge.
-
-The badge is positioned relative to the icon depending on the verticalTabContent and size props.
-The BadgeTab variant support content and icon in addition to the badge.
-
-```tsx
-<TabList>
-  <BadgeTab badge="24">Inbox</BadgeTab>
-  <BadgeTab badge="24" icon={<MailMessage />}>
-    Inbox
-  </BadgeTab>
-</TabList>
-```
-
-### TabPanel (future)
-
-The initial vNext package will **not** provide a tab panel, but the tab list will be designed to support a tab panel in the future through composition.
-
-Why not now?
-
-- There are many approaches to handling tab panel content: show/hide, conditional render, navigation through a router
-- We're not providing a manilla folder tab appearance, so there is no need for the tab panel to support styling for when the components are co-located.
-- Creating a specific tab panel is trivial, creating a general-purpose tab panel is much more involved.
-
-The tab panels should be able to be placed independent of the TabList in the DOM.
-
-Here's a possible approach:
-
-```tsx
-<TabList onTabSelect={(e,data) => setCurrentTab(data.value)}>
-  <Tab value="tab1">One</Tab>
-  <Tab value="tab2">Two</Tab>
-  <Tab value="tab3">Three</Tab>
-</TabList>
-
-<TabPanels value={currentTab}>
-  <TabPanel value="tab1">Tab Panel #1</TabPanel>
-  <TabPanel value="tab2">Tab Panel #2</TabPanel>
-  <TabPanel value="tab3">Tab Panel #3</TabPanel>
-</TabPanels>
-```
-
-When they are co-located, maybe an aggregate component could wire the TabPanels and TabList together:
-
-```tsx
-<Tabs>
-  <TabList>
-    <Tab value="tab1">One</Tab>
-    <Tab value="tab2">Two</Tab>
-    <Tab value="tab3">Three</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel value="tab1">Tab Panel #1</TabPanel>
-    <TabPanel value="tab2">Tab Panel #2</TabPanel>
-    <TabPanel value="tab3">Tab Panel #3</TabPanel>
-  </TabPanels>
-</Tabs>
-```
-
 ## API
 
 ### Tab
@@ -459,11 +396,11 @@ The `tabpanel` will be reserved for possible future component.
 
 Screen readers will read each tab's content.
 
-# Future - Overflow support
+# Future
 
-The design spec details a menu button (...) that displays the list of tabs that were not able to be displayed due to limited space.
+## Overflow Button/Dropdown
 
-Dev has some concerns providing overflow as a default feature of tabs. The v1 of TabList and Tab will not include overflow.
+The design spec details a menu button (...) that displays the list of tabs that were not able to be displayed due to limited space. We have some concerns providing overflow as a default feature of tabs. The v1 of TabList and Tab will not include overflow.
 
 - Overflow made the v0 toolbar difficult to maintain. Customers hacked around it when it did not meet app requirements.
 - In v8, taking a dependency on menu over-complicated the button component and increased the default footprint. It also created a tighter binding with the overflow props matching the menu props and children.
@@ -471,3 +408,26 @@ Dev has some concerns providing overflow as a default feature of tabs. The v1 of
 - The dropdown approach is called out by bootstrap as [problematic for usability and accessibility](https://react-bootstrap.github.io/components/tabs/#tabs-with-dropdown).
 - Many (if not most) component libraries do not support dropdown overflow.
 - There is not a general purpose overflow solution in vNext infrastructure. The team needs to explore options and formulate an approach.
+
+### Tab with Badge
+
+The design spec shows a badge which is arranged near the icon or text. The initial vNext package will not provide a badge variant or badge slot.
+
+- It is unclear if the badge is a common enough scenario to warrant the package dependency on react-badge.
+- The positioning of the badge relative to other parts is not confirmed in the design spec
+- Other controls may want to overlay a badge. We may want a general purpose badge overlay solution.
+- The badge appears most often in an app bar scenario. It is unclear if the items with badges are really tabs, or some other kind of command button. We may have a future app bar/nav bar/toolbar component that handles the badge scenario.
+
+> The intial work to explore supporting a badge used a BadgeTab variant.
+
+### TabPanel
+
+While the design spec does not cover tab panels, v8 Pivot supports them through the content of the PivotItem. They are also a common scenario when the tabs are adjacent to the content associated with each tab.
+
+- There are many approaches to handling tab panel content: show/hide, conditional render, navigation through a router
+- We're not providing a manilla folder tab appearance, so there is no need for the tab panel to support styling for when the components are co-located. We may want to have a manilla folder appearance.
+
+If/When we do support tab panels,
+
+- we should provide flexible composition. The tabs should be able to be placed independent of the tab panels in the DOM. The caller should be able to wire the two together easily through event callbacks or state binding.
+- we should make connecting tabs and tab panels easy by a Tabs container component that wires them together.
