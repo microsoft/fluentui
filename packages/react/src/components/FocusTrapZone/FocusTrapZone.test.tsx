@@ -451,15 +451,9 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 0 tabbable items', () => {
-    let cleanupTest: Function;
-
-    afterEach(() => {
-      cleanupTest();
-    });
-
     function setupTest(props: IFocusTrapZoneProps) {
       const { removeTestContainer, testContainer } = createTestContainer();
-      cleanupTest = removeTestContainer;
+
       ReactTestUtils.act(() => {
         render(
           <div onFocusCapture={_onFocus}>
@@ -522,13 +516,14 @@ describe('FocusTrapZone', () => {
         buttonZ2,
         firstBumper,
         lastBumper,
+        removeTestContainer,
       };
     }
 
     it('focuses first focusable element when focusing first bumper', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonB, firstBumper } = setupTest({});
+      const { buttonA, buttonB, firstBumper, removeTestContainer } = setupTest({});
 
       ReactTestUtils.act(() => {
         ReactTestUtils.Simulate.focus(buttonB);
@@ -540,12 +535,14 @@ describe('FocusTrapZone', () => {
         ReactTestUtils.Simulate.focus(firstBumper);
       });
       expect(lastFocusedElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('focuses first focusable element when focusing last bumper', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonB, lastBumper } = setupTest({});
+      const { buttonA, buttonB, lastBumper, removeTestContainer } = setupTest({});
 
       ReactTestUtils.act(() => {
         ReactTestUtils.Simulate.focus(buttonB);
@@ -557,12 +554,14 @@ describe('FocusTrapZone', () => {
         ReactTestUtils.Simulate.focus(lastBumper);
       });
       expect(lastFocusedElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('focuses first focusable element when focusing outside of FTZ with 0 tabbable items', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonB, buttonZ2 } = setupTest({});
+      const { buttonA, buttonB, buttonZ2, removeTestContainer } = setupTest({});
 
       ReactTestUtils.act(() => {
         ReactTestUtils.Simulate.focus(buttonB);
@@ -580,12 +579,14 @@ describe('FocusTrapZone', () => {
         },
       });
       expect(lastFocusedElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('focuses previously focused element when focusing outside of FTZ with 0 tabbable items', async () => {
       expect.assertions(2);
 
-      const { buttonB, buttonZ2 } = setupTest({
+      const { buttonB, buttonZ2, removeTestContainer } = setupTest({
         focusPreviouslyFocusedInnerElement: true,
       });
 
@@ -605,19 +606,14 @@ describe('FocusTrapZone', () => {
         },
       });
       expect(lastFocusedElement).toBe(buttonB);
+
+      removeTestContainer();
     });
   });
 
   describe('Focus behavior based on default and explicit prop values', () => {
-    let cleanupTest: Function;
-
-    afterEach(() => {
-      cleanupTest();
-    });
-
     function setupTest(props: IFocusTrapZoneProps) {
       const { removeTestContainer, testContainer } = createTestContainer();
-      cleanupTest = removeTestContainer;
 
       // data-is-visible is embedded in buttons here for testing focus behavior on initial render.
       // Components have to be marked visible before setupElement has a chance to apply the data-is-visible attribute.
@@ -677,13 +673,14 @@ describe('FocusTrapZone', () => {
         buttonZ2,
         firstBumper,
         lastBumper,
+        removeTestContainer,
       };
     }
 
     it('Restores focus to FTZ when clicking outside FTZ', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonB, buttonZ2 } = setupTest({});
+      const { buttonA, buttonB, buttonZ2, removeTestContainer } = setupTest({});
 
       ReactTestUtils.act(() => {
         ReactTestUtils.Simulate.focus(buttonB);
@@ -701,22 +698,26 @@ describe('FocusTrapZone', () => {
         },
       });
       expect(lastFocusedElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('Does not restore focus to FTZ when clicking outside FTZ with isClickableOutsideFocusTrap', async () => {
       expect.assertions(1);
 
-      setupTest({ isClickableOutsideFocusTrap: true });
+      const { removeTestContainer } = setupTest({ isClickableOutsideFocusTrap: true });
 
       // FTZ doesn't register a window click listener when isClickableOutsideFocusTrap is true, so we can't simulate
       // clicks directly. Therefore we test indirectly by making sure FTZ doesn't register a window click listener.
       expect(componentEventListeners.click).toBeUndefined();
+
+      removeTestContainer();
     });
 
     it('Focuses first element when FTZ does not have focus and first bumper receives focus', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonZ1, firstBumper } = setupTest({
+      const { buttonA, buttonZ1, firstBumper, removeTestContainer } = setupTest({
         disableFirstFocus: true,
         isClickableOutsideFocusTrap: true,
       });
@@ -730,12 +731,14 @@ describe('FocusTrapZone', () => {
         ReactTestUtils.Simulate.focus(firstBumper);
       });
       expect(lastFocusedElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('Focuses last element when FTZ does not have focus and last bumper receives focus', async () => {
       expect.assertions(2);
 
-      const { buttonC, buttonZ2, lastBumper } = setupTest({
+      const { buttonC, buttonZ2, lastBumper, removeTestContainer } = setupTest({
         disableFirstFocus: true,
         isClickableOutsideFocusTrap: true,
       });
@@ -749,12 +752,14 @@ describe('FocusTrapZone', () => {
         ReactTestUtils.Simulate.focus(lastBumper);
       });
       expect(lastFocusedElement).toBe(buttonC);
+
+      removeTestContainer();
     });
 
     it('Restores focus to FTZ when focusing outside FTZ', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonB, buttonZ2 } = setupTest({});
+      const { buttonA, buttonB, buttonZ2, removeTestContainer } = setupTest({});
 
       ReactTestUtils.act(() => {
         ReactTestUtils.Simulate.focus(buttonB);
@@ -772,24 +777,30 @@ describe('FocusTrapZone', () => {
         },
       });
       expect(lastFocusedElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('Does not restore focus to FTZ when forceFocusInsideTrap is false', async () => {
       expect.assertions(1);
 
-      setupTest({ forceFocusInsideTrap: false });
+      const { removeTestContainer } = setupTest({ forceFocusInsideTrap: false });
 
       // FTZ doesn't register a window focus listener when isClickableOutsideFocusTrap is true, so we can't simulate
       // focus directly. Therefore we test indirectly by making sure FTZ doesn't register a window focus listener.
       expect(componentEventListeners.focus).toBeUndefined();
+
+      removeTestContainer();
     });
 
     it('Focuses first on mount', async () => {
       expect.assertions(1);
 
-      const { buttonA } = setupTest({});
+      const { buttonA, removeTestContainer } = setupTest({});
 
       expect(document.activeElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('Does not focus first on mount with disableFirstFocus', async () => {
@@ -797,12 +808,14 @@ describe('FocusTrapZone', () => {
 
       const activeElement = document.activeElement;
 
-      setupTest({ disableFirstFocus: true });
+      const { removeTestContainer } = setupTest({ disableFirstFocus: true });
 
       // document.activeElement can be used to detect activeElement after component mount, but it does not
       // update based on focus events due to limitations of ReactDOM.
       // Make sure activeElement didn't change.
       expect(document.activeElement).toBe(activeElement);
+
+      removeTestContainer();
     });
 
     it('Does not focus first on mount while disabled', async () => {
@@ -810,20 +823,24 @@ describe('FocusTrapZone', () => {
 
       const activeElement = document.activeElement;
 
-      setupTest({ disabled: true });
+      const { removeTestContainer } = setupTest({ disabled: true });
 
       // document.activeElement can be used to detect activeElement after component mount, but it does not
       // update based on focus events due to limitations of ReactDOM.
       // Make sure activeElement didn't change.
       expect(document.activeElement).toBe(activeElement);
+
+      removeTestContainer();
     });
 
     it('Focuses on firstFocusableSelector on mount', async () => {
       expect.assertions(1);
 
-      const { buttonC } = setupTest({ firstFocusableSelector: 'c' });
+      const { buttonC, removeTestContainer } = setupTest({ firstFocusableSelector: 'c' });
 
       expect(document.activeElement).toBe(buttonC);
+
+      removeTestContainer();
     });
 
     it('Does not focus on firstFocusableSelector on mount while disabled', async () => {
@@ -831,33 +848,43 @@ describe('FocusTrapZone', () => {
 
       const activeElement = document.activeElement;
 
-      setupTest({ firstFocusableSelector: 'c', disabled: true });
+      const { removeTestContainer } = setupTest({ firstFocusableSelector: 'c', disabled: true });
 
       expect(document.activeElement).toBe(activeElement);
+
+      removeTestContainer();
     });
 
     it('Falls back to first focusable element with invalid firstFocusableSelector', async () => {
-      const { buttonA } = setupTest({
+      const { buttonA, removeTestContainer } = setupTest({
         firstFocusableSelector: 'invalidSelector',
       });
 
       expect(document.activeElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('Focuses on firstFocusableTarget selector on mount', async () => {
       expect.assertions(1);
 
-      const { buttonC } = setupTest({ firstFocusableTarget: '.c' });
+      const { buttonC, removeTestContainer } = setupTest({ firstFocusableTarget: '.c' });
 
       expect(document.activeElement).toBe(buttonC);
+
+      removeTestContainer();
     });
 
     it('Focuses on firstFocusableTarget callback on mount', async () => {
       expect.assertions(1);
 
-      const { buttonC } = setupTest({ firstFocusableTarget: (element: HTMLElement) => element.querySelector('.c') });
+      const { buttonC, removeTestContainer } = setupTest({
+        firstFocusableTarget: (element: HTMLElement) => element.querySelector('.c'),
+      });
 
       expect(document.activeElement).toBe(buttonC);
+
+      removeTestContainer();
     });
 
     it('Does not focus on firstFocusableTarget selector on mount while disabled', async () => {
@@ -865,9 +892,11 @@ describe('FocusTrapZone', () => {
 
       const activeElement = document.activeElement;
 
-      setupTest({ firstFocusableTarget: '.c', disabled: true });
+      const { removeTestContainer } = setupTest({ firstFocusableTarget: '.c', disabled: true });
 
       expect(document.activeElement).toBe(activeElement);
+
+      removeTestContainer();
     });
 
     it('Does not focus on firstFocusableTarget callback on mount while disabled', async () => {
@@ -875,34 +904,36 @@ describe('FocusTrapZone', () => {
 
       const activeElement = document.activeElement;
 
-      setupTest({ firstFocusableTarget: (element: HTMLElement) => element.querySelector('.c'), disabled: true });
+      const { removeTestContainer } = setupTest({
+        firstFocusableTarget: (element: HTMLElement) => element.querySelector('.c'),
+        disabled: true,
+      });
 
       expect(document.activeElement).toBe(activeElement);
+
+      removeTestContainer();
     });
 
     it('Falls back to first focusable element with invalid firstFocusableTarget selector', async () => {
-      const { buttonA } = setupTest({ firstFocusableTarget: '.invalidSelector' });
+      const { buttonA, removeTestContainer } = setupTest({ firstFocusableTarget: '.invalidSelector' });
 
       expect(document.activeElement).toBe(buttonA);
+
+      removeTestContainer();
     });
 
     it('Falls back to first focusable element with invalid firstFocusableTarget callback', async () => {
-      const { buttonA } = setupTest({ firstFocusableTarget: () => null });
+      const { buttonA, removeTestContainer } = setupTest({ firstFocusableTarget: () => null });
 
       expect(document.activeElement).toBe(buttonA);
+
+      removeTestContainer();
     });
   });
 
   describe('Focusing the FTZ', () => {
-    let cleanupTest: Function;
-
-    afterEach(() => {
-      cleanupTest();
-    });
-
     function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
       const { removeTestContainer, testContainer } = createTestContainer();
-      cleanupTest = removeTestContainer;
 
       const focusTrapZoneRef = React.createRef<HTMLElement>();
       ReactTestUtils.act(() => {
@@ -951,13 +982,16 @@ describe('FocusTrapZone', () => {
         buttonA,
         buttonB,
         buttonZ,
+        removeTestContainer,
       };
     }
 
     it('goes to previously focused element when focusing the FTZ', async () => {
       expect.assertions(4);
 
-      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(true /*focusPreviouslyFocusedInnerElement*/);
+      const { focusTrapZone, buttonF, buttonB, buttonZ, removeTestContainer } = setupTest(
+        true /*focusPreviouslyFocusedInnerElement*/,
+      );
 
       // Manually focusing FTZ when FTZ has never
       // had focus within should go to 1st focusable inner element.
@@ -984,12 +1018,16 @@ describe('FocusTrapZone', () => {
       });
 
       expect(lastFocusedElement).toBe(buttonB);
+
+      removeTestContainer();
     });
 
     it('goes to first focusable element when focusing the FTZ', async () => {
       expect.assertions(4);
 
-      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(false /*focusPreviouslyFocusedInnerElement*/);
+      const { focusTrapZone, buttonF, buttonB, buttonZ, removeTestContainer } = setupTest(
+        false /*focusPreviouslyFocusedInnerElement*/,
+      );
 
       // Manually focusing FTZ when FTZ has never
       // had focus within should go to 1st focusable inner element.
@@ -1015,6 +1053,8 @@ describe('FocusTrapZone', () => {
         focusTrapZone?.focus();
       });
       expect(lastFocusedElement).toBe(buttonF);
+
+      removeTestContainer();
     });
   });
 
