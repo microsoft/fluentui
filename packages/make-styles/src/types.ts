@@ -1,43 +1,52 @@
-import { Properties as CSSProperties } from 'csstype';
+import * as CSS from 'csstype';
 
 export type MakeStylesCSSValue = string | 0;
 
-export interface MakeStyles extends Omit<CSSProperties<MakeStylesCSSValue>, 'animationName'> {
-  // TODO Questionable: how else would users target their own children?
-  [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+type MakeStylesCSSProperties = Omit<
+  CSS.Properties<MakeStylesCSSValue>,
+  // We have custom definition for "animationName"
+  'animationName'
+>;
 
-  animationName?: object | string;
-}
+export type MakeStylesStrictCSSObject = MakeStylesCSSProperties &
+  MakeStylesCSSPseudos & { animationName?: MakeStylesAnimation | MakeStylesAnimation[] | CSS.AnimationProperty };
 
-export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
-export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
+type MakeStylesCSSObjectCustom = {
+  [Property: string]: MakeStylesStyle | string | 0;
+};
+type MakeStylesCSSPseudos = { [Property in CSS.Pseudos]?: MakeStylesStrictCSSObject & { content?: string } };
+
+export type MakeStylesAnimation = Record<'from' | 'to' | string, MakeStylesCSSObjectCustom>;
+export type MakeStylesStyle = MakeStylesStrictCSSObject | MakeStylesCSSObjectCustom;
+
+export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStylesStyle;
+export type MakeStylesStyleRule<Tokens> = MakeStylesStyle | MakeStylesStyleFunctionRule<Tokens>;
 
 export interface MakeStylesOptions {
   dir: 'ltr' | 'rtl';
   renderer: MakeStylesRenderer;
 }
 
-export type MakeStaticStyles =
-  | ({
-      [key: string]: CSSProperties &
-        // TODO Questionable: how else would users target their own children?
-        Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
-    } & {
-      '@font-face'?: {
-        fontFamily: string;
-        src: string;
+export type MakeStaticStylesStyle = {
+  [key: string]: CSS.Properties &
+    // TODO Questionable: how else would users target their own children?
+    Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+} & {
+  '@font-face'?: {
+    fontFamily: string;
+    src: string;
 
-        fontFeatureSettings?: string;
-        fontStretch?: string;
-        fontStyle?: string;
-        fontVariant?: string;
-        fontVariationSettings?: string;
-        fontWeight?: number | string;
+    fontFeatureSettings?: string;
+    fontStretch?: string;
+    fontStyle?: string;
+    fontVariant?: string;
+    fontVariationSettings?: string;
+    fontWeight?: number | string;
 
-        unicodeRange?: string;
-      };
-    })
-  | string;
+    unicodeRange?: string;
+  };
+};
+export type MakeStaticStyles = MakeStaticStylesStyle | string;
 
 export interface MakeStaticStylesOptions {
   renderer: MakeStylesRenderer;

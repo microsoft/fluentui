@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 import type { MenuListState } from './MenuList.types';
 
 export const menuListClassName = 'fui-MenuList';
@@ -7,7 +7,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '2px',
+    ...shorthands.gap('2px'),
   },
 });
 

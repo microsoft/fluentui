@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Badge, BadgeCommons } from '@fluentui/react-badge';
 import { Circle12Regular } from '@fluentui/react-icons';
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 
 const badgeColors: BadgeCommons['color'][] = [
   'brand',
@@ -26,8 +26,8 @@ const useStyles = makeStyles({
   badgeContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: '5px',
-    padding: '5px',
+    ...shorthands.gap('5px'),
+    ...shorthands.padding('5px'),
   },
 
   label: {
