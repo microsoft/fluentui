@@ -68,20 +68,21 @@ export type TabCommons = {
 export const TabList: ForwardRefComponent<TabListProps>;
 
 // @public (undocumented)
+export const tabListClassName = "fui-TabList";
+
+// @public (undocumented)
 export type TabListCommons = {
     appearance?: 'transparent' | 'subtle';
-    onTabSelected?: SelectTabEventHandler;
+    onTabSelect?: SelectTabEventHandler;
     selectedValue?: TabValue;
     size?: 'small' | 'medium';
     vertical?: boolean;
     verticalTabContent?: boolean;
 };
 
-// Warning: (ae-forgotten-export) The symbol "TabListStateContextCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type TabListContextValue = TabListStateContextCommons & {
-    selectTab: SelectTabEventHandler;
+export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical' | 'verticalTabContent'>> & {
+    onSelect: SelectTabEventHandler;
 };
 
 // @public
@@ -103,7 +104,7 @@ export type TabListSlots = {
 };
 
 // @public
-export type TabListState = ComponentState<TabListSlots> & TabListStateContextCommons & TabListContextValue;
+export type TabListState = ComponentState<TabListSlots> & TabListContextValue;
 
 // @public
 export type TabProps = ComponentProps<TabSlots> & TabCommons;

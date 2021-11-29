@@ -12,7 +12,11 @@ describe('BadgeTab', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<BadgeTab>Default BadgeTab</BadgeTab>);
+    const result = render(
+      <BadgeTab value="1" badge="1">
+        Default BadgeTab
+      </BadgeTab>,
+    );
     expect(result.container).toMatchSnapshot();
   });
 });
