@@ -194,7 +194,7 @@ describe('FocusTrapZone', () => {
     it('can tab across FocusZones with different button structures', async () => {
       expect.assertions(3);
 
-      const { removeTestContainer, testContainer: topLevelDiv } = createTestContainer();
+      const { removeTestContainer, testContainer } = createTestContainer();
 
       ReactTestUtils.act(() => {
         render(
@@ -222,18 +222,18 @@ describe('FocusTrapZone', () => {
               </FocusZone>
             </FocusTrapZone>
           </div>,
-          topLevelDiv,
+          testContainer,
         );
       });
 
-      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
-      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
-      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
-      const buttonD = topLevelDiv.querySelector('.d') as HTMLElement;
-      const buttonE = topLevelDiv.querySelector('.e') as HTMLElement;
-      const buttonF = topLevelDiv.querySelector('.f') as HTMLElement;
+      const buttonA = testContainer.querySelector('.a') as HTMLElement;
+      const buttonB = testContainer.querySelector('.b') as HTMLElement;
+      const buttonC = testContainer.querySelector('.c') as HTMLElement;
+      const buttonD = testContainer.querySelector('.d') as HTMLElement;
+      const buttonE = testContainer.querySelector('.e') as HTMLElement;
+      const buttonF = testContainer.querySelector('.f') as HTMLElement;
 
-      const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
+      const { firstBumper, lastBumper } = getFtzBumpers(testContainer);
 
       // Assign bounding locations to buttons.
       setupElement(buttonA, {
@@ -278,7 +278,7 @@ describe('FocusTrapZone', () => {
     it('can tab across a FocusZone with different button structures', async () => {
       expect.assertions(3);
 
-      const { removeTestContainer, testContainer: topLevelDiv } = createTestContainer();
+      const { removeTestContainer, testContainer } = createTestContainer();
 
       ReactTestUtils.act(() => {
         render(
@@ -301,17 +301,17 @@ describe('FocusTrapZone', () => {
               </FocusZone>
             </FocusTrapZone>
           </div>,
-          topLevelDiv,
+          testContainer,
         );
       });
 
-      const buttonX = topLevelDiv.querySelector('.x') as HTMLElement;
-      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
-      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
-      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
-      const buttonD = topLevelDiv.querySelector('.d') as HTMLElement;
+      const buttonX = testContainer.querySelector('.x') as HTMLElement;
+      const buttonA = testContainer.querySelector('.a') as HTMLElement;
+      const buttonB = testContainer.querySelector('.b') as HTMLElement;
+      const buttonC = testContainer.querySelector('.c') as HTMLElement;
+      const buttonD = testContainer.querySelector('.d') as HTMLElement;
 
-      const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
+      const { firstBumper, lastBumper } = getFtzBumpers(testContainer);
 
       // Assign bounding locations to buttons.
       setupElement(buttonX, {
@@ -354,7 +354,7 @@ describe('FocusTrapZone', () => {
       are not the first inner element`, async () => {
       expect.assertions(4);
 
-      const { removeTestContainer, testContainer: topLevelDiv } = createTestContainer();
+      const { removeTestContainer, testContainer } = createTestContainer();
 
       ReactTestUtils.act(() => {
         render(
@@ -375,21 +375,21 @@ describe('FocusTrapZone', () => {
             </FocusTrapZone>
             <button className={'z2'}>z2</button>
           </div>,
-          topLevelDiv,
+          testContainer,
         );
       });
 
-      const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
-      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
-      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
-      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
-      const buttonD = topLevelDiv.querySelector('.d') as HTMLElement;
-      const buttonE = topLevelDiv.querySelector('.e') as HTMLElement;
-      const buttonF = topLevelDiv.querySelector('.f') as HTMLElement;
-      const buttonG = topLevelDiv.querySelector('.g') as HTMLElement;
-      const buttonZ2 = topLevelDiv.querySelector('.z2') as HTMLElement;
+      const buttonZ1 = testContainer.querySelector('.z1') as HTMLElement;
+      const buttonA = testContainer.querySelector('.a') as HTMLElement;
+      const buttonB = testContainer.querySelector('.b') as HTMLElement;
+      const buttonC = testContainer.querySelector('.c') as HTMLElement;
+      const buttonD = testContainer.querySelector('.d') as HTMLElement;
+      const buttonE = testContainer.querySelector('.e') as HTMLElement;
+      const buttonF = testContainer.querySelector('.f') as HTMLElement;
+      const buttonG = testContainer.querySelector('.g') as HTMLElement;
+      const buttonZ2 = testContainer.querySelector('.z2') as HTMLElement;
 
-      const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
+      const { firstBumper, lastBumper } = getFtzBumpers(testContainer);
 
       // Assign bounding locations to buttons.
       setupElement(buttonZ1, {
@@ -458,7 +458,7 @@ describe('FocusTrapZone', () => {
     });
 
     function setupTest(props: IFocusTrapZoneProps) {
-      const { removeTestContainer, testContainer: topLevelDiv } = createTestContainer();
+      const { removeTestContainer, testContainer } = createTestContainer();
       cleanupTest = removeTestContainer;
       ReactTestUtils.act(() => {
         render(
@@ -477,17 +477,17 @@ describe('FocusTrapZone', () => {
             </FocusTrapZone>
             <button className={'z2'}>z2</button>
           </div>,
-          topLevelDiv,
+          testContainer,
         );
       });
 
-      const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
-      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
-      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
-      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
-      const buttonZ2 = topLevelDiv.querySelector('.z2') as HTMLElement;
+      const buttonZ1 = testContainer.querySelector('.z1') as HTMLElement;
+      const buttonA = testContainer.querySelector('.a') as HTMLElement;
+      const buttonB = testContainer.querySelector('.b') as HTMLElement;
+      const buttonC = testContainer.querySelector('.c') as HTMLElement;
+      const buttonZ2 = testContainer.querySelector('.z2') as HTMLElement;
 
-      const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
+      const { firstBumper, lastBumper } = getFtzBumpers(testContainer);
 
       // Have to set bumpers as "visible" for focus utilities to find them.
       // This is needed for 0 tabbable element tests to make sure that next tabbable element
@@ -616,7 +616,7 @@ describe('FocusTrapZone', () => {
     });
 
     function setupTest(props: IFocusTrapZoneProps) {
-      const { removeTestContainer, testContainer: topLevelDiv } = createTestContainer();
+      const { removeTestContainer, testContainer } = createTestContainer();
       cleanupTest = removeTestContainer;
 
       // data-is-visible is embedded in buttons here for testing focus behavior on initial render.
@@ -640,17 +640,17 @@ describe('FocusTrapZone', () => {
               <button className={'z2'}>z2</button>
             </div>
           </div>,
-          topLevelDiv,
+          testContainer,
         );
       });
 
-      const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
-      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
-      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
-      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
-      const buttonZ2 = topLevelDiv.querySelector('.z2') as HTMLElement;
+      const buttonZ1 = testContainer.querySelector('.z1') as HTMLElement;
+      const buttonA = testContainer.querySelector('.a') as HTMLElement;
+      const buttonB = testContainer.querySelector('.b') as HTMLElement;
+      const buttonC = testContainer.querySelector('.c') as HTMLElement;
+      const buttonZ2 = testContainer.querySelector('.z2') as HTMLElement;
 
-      const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
+      const { firstBumper, lastBumper } = getFtzBumpers(testContainer);
 
       // Assign bounding locations to buttons.
       setupElement(buttonZ1, {
@@ -901,7 +901,7 @@ describe('FocusTrapZone', () => {
     });
 
     function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
-      const { removeTestContainer, testContainer: topLevelDiv } = createTestContainer();
+      const { removeTestContainer, testContainer } = createTestContainer();
       cleanupTest = removeTestContainer;
 
       const focusTrapZoneRef = React.createRef<HTMLElement>();
@@ -922,14 +922,14 @@ describe('FocusTrapZone', () => {
             </FocusTrapZone>
             <button className={'z'}>z</button>
           </div>,
-          topLevelDiv,
+          testContainer,
         );
       });
 
-      const buttonF = topLevelDiv.querySelector('.f') as HTMLElement;
-      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
-      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
-      const buttonZ = topLevelDiv.querySelector('.z') as HTMLElement;
+      const buttonF = testContainer.querySelector('.f') as HTMLElement;
+      const buttonA = testContainer.querySelector('.a') as HTMLElement;
+      const buttonB = testContainer.querySelector('.b') as HTMLElement;
+      const buttonZ = testContainer.querySelector('.z') as HTMLElement;
 
       // Assign bounding locations to buttons.
       setupElement(buttonF, {
