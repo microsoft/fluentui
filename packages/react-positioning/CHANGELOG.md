@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 12 Nov 2021 13:25:30 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-beta.3..@fluentui/react-positioning_v9.0.0-beta.4)
+
+### Changes
+
+- Add utility function to create styles for an arrow element ([PR #20541](https://github.com/microsoft/fluentui/pull/20541) by lingfangao@hotmail.com)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-beta.3)
 

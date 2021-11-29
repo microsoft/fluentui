@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update tooling configs",
+  "packageName": "@fluentui/react-conformance-make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

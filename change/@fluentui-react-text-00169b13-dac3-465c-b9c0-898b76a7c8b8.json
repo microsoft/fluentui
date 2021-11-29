@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Migrate Text",
-  "packageName": "@fluentui/react-text",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch"
-}

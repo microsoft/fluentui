@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { useBadgeStyles } from '../Badge/useBadgeStyles';
 import type { CounterBadgeState } from './CounterBadge.types';
 
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   dot: {
     width: '6px',
     height: '6px',
-    padding: '0',
+    ...shorthands.padding('0'),
   },
   hide: {
     display: 'none',

@@ -1,9 +1,9 @@
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
-import { MakeStyles } from '../types';
+import { MakeStylesAnimation } from '../types';
 
 describe('compileKeyframeRule', () => {
   it('stringifies an object with keyframes', () => {
-    const keyframes: MakeStyles = {
+    const keyframes: MakeStylesAnimation = {
       from: {
         transform: 'rotate(0deg)',
       },
@@ -19,7 +19,7 @@ describe('compileKeyframeRule', () => {
 
 describe('compileKeyframeCSS', () => {
   it('creates CSS from strings with keyframes', () => {
-    const keyframes: MakeStyles = {
+    const keyframes: MakeStylesAnimation = {
       from: {
         height: '10px',
       },

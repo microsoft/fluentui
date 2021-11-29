@@ -1,5 +1,5 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { display, Divider, ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition, MenuItem } from '@microsoft/fast-foundation';
 import { SystemColors } from "@microsoft/fast-web-utilities";
 import { elevationShadowFlyout } from '../styles/index';
 import {
@@ -20,7 +20,6 @@ export const menuStyles: (
       border: calc(${strokeWidth} * 1px) solid transparent;
       border-radius: calc(${layerCornerRadius} * 1px);
       box-shadow: ${elevationShadowFlyout};
-      margin: 0;
       padding: calc(${designUnit} * 1px) 0;
       max-width: 368px;
       min-width: 64px;
@@ -29,6 +28,14 @@ export const menuStyles: (
     :host([slot='submenu']) {
       width: max-content;
       margin: 0 calc(${designUnit} * 2px);
+    }
+
+    ::slotted(${context.tagFor(MenuItem)}) {
+      margin: 0 calc(${designUnit} * 1px);
+    }
+
+    ::slotted(${context.tagFor(Divider)}) {
+      margin: calc(${designUnit} * 1px) 0;
     }
 
     ::slotted(hr) {

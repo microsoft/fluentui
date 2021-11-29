@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
 import * as PopperJs from '@popperjs/core';
 import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
