@@ -1,4 +1,4 @@
-import type { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 
 /**
  * A function that implements CSS spec conformant expansion for "gap"
@@ -9,7 +9,7 @@ import type { MakeStyles, MakeStylesCSSValue } from '../types';
  *
  * See https://developer.mozilla.org/en-US/docs/Web/CSS/gap
  */
-export function gap(columnGap: MakeStylesCSSValue, rowGap: MakeStylesCSSValue = columnGap): MakeStyles {
+export function gap(columnGap: MakeStylesCSSValue, rowGap: MakeStylesCSSValue = columnGap): MakeStylesStrictCSSObject {
   return {
     columnGap,
     rowGap,

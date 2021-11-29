@@ -1,12 +1,12 @@
-import { MakeStyles, MakeStylesStyleRule } from '@fluentui/make-styles';
+import { MakeStylesStyle, MakeStylesStyleRule } from '@fluentui/make-styles';
 import { Theme } from '@fluentui/react-theme';
 
-export const flexStyles: MakeStyles = {
+export const flexStyles: MakeStylesStyle = {
   display: 'flex',
   flexDirection: 'column',
 };
 
-export const gridStyles = (gridGap: string): MakeStyles => ({
+export const gridStyles = (gridGap: string): MakeStylesStyle => ({
   display: 'grid',
   gridRowGap: gridGap,
 });

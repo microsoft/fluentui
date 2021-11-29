@@ -9,7 +9,9 @@ import type { CSSClassesMapBySlot } from '@fluentui/make-styles';
 import type { CSSRulesByBucket } from '@fluentui/make-styles';
 import type { MakeStaticStyles } from '@fluentui/make-styles';
 import type { MakeStylesRenderer } from '@fluentui/make-styles';
-import type { MakeStylesStyleRule } from '@fluentui/make-styles';
+import { MakeStylesStyle } from '@fluentui/make-styles';
+import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
+import { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { mergeClasses } from '@fluentui/make-styles';
 import * as React_2 from 'react';
 import { shorthands } from '@fluentui/make-styles';
@@ -25,6 +27,12 @@ export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStati
 
 // @public (undocumented)
 export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): () => Record<Slots, string>;
+
+export { MakeStylesStyle }
+
+export { MakeStylesStyleFunctionRule }
+
+export { MakeStylesStyleRule }
 
 export { mergeClasses }
 
