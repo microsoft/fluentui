@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Deprecating v8 makeStyles.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

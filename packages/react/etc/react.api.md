@@ -9538,7 +9538,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 
 export { loadTheme }
 
-// @public
+// @public @deprecated
 export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
 } = {
@@ -10992,7 +10992,7 @@ export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options
 // @public
 export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode | undefined) => ResponsiveMode;
 
-// @public
+// @public @deprecated
 export type UseStylesOptions = {
     theme?: Theme;
 };
