@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Panel: Content no longer overlaps with header and footer when scrolling.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
