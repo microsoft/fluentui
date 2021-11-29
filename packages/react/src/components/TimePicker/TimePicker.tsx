@@ -202,8 +202,8 @@ const getDateFromSelection = (showSeconds: boolean, useHour12: boolean, defaultT
   }
 
   const offset =
-    TimeConstants.MillisecondsIn1Sec * TimeConstants.MinutesInOneHour * hoursOffset * TimeConstants.SecondsInOneHour +
-    seconds;
+    TimeConstants.MillisecondsIn1Sec * TimeConstants.MinutesInOneHour * hoursOffset * TimeConstants.SecondsInOneMinute +
+    seconds * TimeConstants.MillisecondsIn1Sec;
 
   const date = new Date(defaultTime.getTime() + offset);
   date.setMinutes(minutes);
