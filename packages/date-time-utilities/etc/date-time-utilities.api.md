@@ -274,7 +274,7 @@ export const TimeConstants: {
     DaysInOneWeek: number;
     MonthInOneYear: number;
     HoursInOneDay: number;
-    SecondsInOneHour: number;
+    SecondsInOneMinute: number;
     OffsetTo24HourFormat: number;
 };
 
