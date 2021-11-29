@@ -364,6 +364,15 @@ export type {
 export { Portal, elementContains, renderPortal, setVirtualParent, usePortal } from '@fluentui/react-portal';
 export type { PortalCommons, PortalProps, PortalState } from '@fluentui/react-portal';
 export {
+  Slider,
+  renderSlider,
+  sliderClassName,
+  useSlider,
+  useSliderStyles,
+  useSliderState,
+} from '@fluentui/react-slider';
+export type { SliderCommons, SliderProps, SliderSlots, SliderState } from '@fluentui/react-slider';
+export {
   Body,
   Caption,
   Display,
