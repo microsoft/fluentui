@@ -4,11 +4,19 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { KeyCodes, resetIds } from '../../Utilities';
+import { safeCreate } from '@uifabric/test-utilities';
 
 import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { expectOne, expectMissing, renderIntoDocument } from '../../common/testUtilities';
+
+const RENDER_OPTIONS: IComboBoxOption[] = [
+  { key: 'header', text: 'Header', itemType: SelectableOptionMenuItemType.Header },
+  { key: '1', text: 'Option 1' },
+  { key: 'divider', text: '', itemType: SelectableOptionMenuItemType.Divider },
+  { key: '2', text: 'Option 2' },
+];
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
@@ -45,10 +53,16 @@ let domNode: HTMLElement | undefined;
 const createNodeMock = (el: React.ReactElement<{}>) => {
   return {
     __events__: {},
+    addEventListener: () => undefined,
+    removeEventListener: () => undefined,
   };
 };
 
 describe('ComboBox', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();
@@ -70,9 +84,41 @@ describe('ComboBox', () => {
   });
 
   it('Renders correctly', () => {
-    const component = renderer.create(<ComboBox options={DEFAULT_OPTIONS} text={'testValue'} />, { createNodeMock });
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    safeCreate(
+      <ComboBox options={DEFAULT_OPTIONS} text={'testValue'} />,
+      component => {
+        const tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+      },
+      { createNodeMock },
+    );
+  });
+
+  it('Renders correctly when open', () => {
+    // Mock createPortal so that the options list ends up inside the wrapper for snapshotting.
+    // Since this is the first test to call mount(), we have to mount something with the real
+    // version of createPortal first to allow some global setup to run properly.
+    wrapper = mount(<div />);
+    wrapper.unmount();
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
+    const ref = React.createRef<IComboBox>();
+    wrapper = mount(<ComboBox options={RENDER_OPTIONS} defaultSelectedKey="2" componentRef={ref} />);
+    ref.current!.focus(true);
+    wrapper.update();
+    // Unlike react-test-renderer's toJSON, snapshots of DOM nodes don't include event handlers
+    // and have a few other differences, but it's a decent tradeoff since react-test-renderer
+    // doesn't support refs and makes it hard/impossible to open the ComboBox for a snapshot.
+    expect(wrapper.getDOMNode()).toMatchSnapshot();
+  });
+
+  it('Renders correctly when opened in multi-select mode', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+    const ref = React.createRef<IComboBox>();
+    wrapper = mount(<ComboBox multiSelect options={RENDER_OPTIONS} defaultSelectedKey="2" componentRef={ref} />);
+    ref.current!.focus(true);
+    wrapper.update();
+    expect(wrapper.getDOMNode()).toMatchSnapshot();
   });
 
   it('renders with a Keytip correctly', () => {

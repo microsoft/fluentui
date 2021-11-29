@@ -13,28 +13,28 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
   extends React.HTMLAttributes<TListenerElement> {
   /**
-   * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Optional callback to access the component interface (usually `IDropdown` or `IComboBox`).
+   * Use this instead of `ref` for accessing the public methods and properties of the component.
    */
   componentRef?: IRefObject<TComponent>;
 
   /**
-   * Descriptive label for the ISelectableDroppableText
+   * Descriptive label for the field
    */
   label?: string;
 
   /**
-   * Aria Label for the ISelectableDroppableText for screen reader users.
+   * Aria Label for the field for screen reader users.
    */
   ariaLabel?: string;
 
   /**
-   * Id of the ISelectableDroppableText
+   * ID of the field
    */
   id?: string;
 
   /**
-   * If provided, additional class name to provide on the root element.
+   * Additional class name for the root element.
    */
   className?: string;
 
@@ -42,7 +42,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
    * The key(s) that will be initially used to set a selected item.
    *
    * Mutually exclusive with `selectedKey`.
-   * For Dropdown in multi-select mode, use `defaultSelectedKeys` instead.
+   * For Dropdown (but not ComboBox) in multi-select mode, use `defaultSelectedKeys` instead.
    */
   defaultSelectedKey?: string | number | string[] | number[] | null;
 
@@ -52,68 +52,69 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
    * Note that passing in `null` will cause selection to be reset.
    *
    * Mutually exclusive with `defaultSelectedKey`.
-   * For Dropdown in multi-select mode, use `selectedKeys` instead.
+   * For Dropdown (but not ComboBox) in multi-select mode, use `selectedKeys` instead.
    */
   selectedKey?: string | number | string[] | number[] | null;
 
   /**
-   * Optional prop that indicates if multi-choice selections are allowed or not.
+   * Whether multi-choice selections are allowed or not.
    * @defaultvalue false
    */
   multiSelect?: boolean;
 
   /**
-   * Collection of options for this ISelectableDroppableText
+   * Collection of options for this field
    */
   options?: any;
 
   /**
-   * Optional custom renderer for the ISelectableDroppableText container
+   * Optional custom renderer for the option list container
    */
   onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
 
   /**
-   * Optional custom renderer for the ISelectableDroppableText list
+   * Optional custom renderer for the option list
    */
   onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
 
   /**
-   * Optional custom renderer for the ISelectableDroppableText options
+   * Optional custom renderer for all items, including headers and dividers as well as normal options.
    */
   onRenderItem?: IRenderFunction<ISelectableOption>;
 
   /**
-   * Optional custom renderer for the ISelectableDroppableText option content
+   * Optional custom renderer for normal options only.
+   * Use `onRenderItem` to control rendering for separators and headers as well.
    */
   onRenderOption?: IRenderFunction<ISelectableOption>;
 
   /**
-   * Callback that is issued when the options callout is dismissed
+   * Callback for when the options list callout is dismissed
    */
   onDismiss?: () => void;
 
   /**
-   * Whether or not the ISelectableDroppableText is disabled.
+   * Whether or not the field is disabled.
    */
   disabled?: boolean;
 
   /**
-   * Whether or not the ISelectableDroppableText is required.
+   * Whether or not the field is required.
    */
   required?: boolean;
 
   /**
-   * Custom properties for ISelectableDroppableText's Callout used to render options.
+   * Custom properties for the Callout used to render the option list.
    */
   calloutProps?: ICalloutProps;
 
   /**
-   * Custom properties for ISelectableDroppableText's Panel used to render options on small devices.
+   * Custom properties for the Panel used to render the option list on small devices.
    */
   panelProps?: IPanelProps;
 
   /**
-   * Descriptive label for the ISelectableDroppableText Error Message
+   * Error message for the field.
    */
   errorMessage?: string;
 
