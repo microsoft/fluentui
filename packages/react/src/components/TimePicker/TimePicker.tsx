@@ -175,7 +175,7 @@ const getDateFromSelection = (showSeconds: boolean, useHour12: boolean, defaultT
   const splitValue = selectedTime.split(':');
   let hours = +splitValue[0];
   let minutes;
-  let seconds = 0;
+  let seconds = defaultTime.getSeconds();
   let ap;
   if (showSeconds) {
     minutes = +splitValue[1];
@@ -190,12 +190,19 @@ const getDateFromSelection = (showSeconds: boolean, useHour12: boolean, defaultT
     }
   }
 
-  if (useHour12 && ap && ap.toLowerCase() === 'pm' && hours !== 12) {
-    hours += TimeConstants.OffsetTo24HourFormat;
+  if (useHour12 && ap) {
+    if (ap.toLowerCase() === 'pm' && hours !== 12) {
+      hours += TimeConstants.OffsetTo24HourFormat;
+    } else if (ap.toLowerCase() === 'am' && hours === 12) {
+      hours -= TimeConstants.OffsetTo24HourFormat;
+    }
   }
 
   let hoursOffset;
-  if (useHour12 && defaultTime.getHours() >= hours) {
+  if (
+    useHour12 &&
+    (defaultTime.getHours() > hours || (defaultTime.getHours() === hours && defaultTime.getMinutes() > minutes))
+  ) {
     hoursOffset = TimeConstants.HoursInOneDay - defaultTime.getHours() + hours;
   } else {
     hoursOffset = Math.abs(defaultTime.getHours() - hours);
@@ -207,7 +214,7 @@ const getDateFromSelection = (showSeconds: boolean, useHour12: boolean, defaultT
 
   const date = new Date(defaultTime.getTime() + offset);
   date.setMinutes(minutes);
-  date.setSeconds(defaultTime.getSeconds());
+  date.setSeconds(seconds);
 
   return date;
 };
