@@ -11,7 +11,7 @@ export interface CreateDOMRendererOptions {
    *
    * ⚠️ Keep the filter as performant as possible to avoid negative performance impacts to your application.
    */
-  filterCssRule?: (cssRule: string) => boolean;
+  filterCSSRule?: (cssRule: string) => boolean;
 }
 
 /**
@@ -23,7 +23,7 @@ export function createDOMRenderer(
   target: Document | undefined = typeof document === 'undefined' ? undefined : document,
   options: CreateDOMRendererOptions = {},
 ): MakeStylesRenderer {
-  const { filterCssRule } = options;
+  const { filterCSSRule } = options;
   const renderer: MakeStylesRenderer = {
     insertionCache: {},
     styleElements: {},
@@ -48,8 +48,8 @@ export function createDOMRenderer(
 
           if (sheet) {
             try {
-              if (filterCssRule) {
-                if (filterCssRule(ruleCSS)) {
+              if (filterCSSRule) {
+                if (filterCSSRule(ruleCSS)) {
                   sheet.insertRule(ruleCSS, sheet.cssRules.length);
                 }
               } else {

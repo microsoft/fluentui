@@ -1,25 +1,45 @@
 import { CSSRulesByBucket } from '../types';
 import { createDOMRenderer } from './createDOMRenderer';
 
+function createFakeDocument(): Document {
+  const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
+  doc.documentElement.appendChild(document.createElementNS('http://www.w3.org/1999/xhtml', 'head'));
+
+  return doc;
+}
+
 describe('createDOMRenderer', () => {
-  beforeEach(() => {
-    // clean up style elements
-    document.querySelectorAll('style').forEach(el => el.remove());
-  });
-
-  it('should apply filter for css rules if provided', () => {
+  it('should apply filter for css rules for multiple buckets', () => {
+    const targetDocument = createFakeDocument();
     const mediaQueryFilter = jest.fn().mockImplementation(cssRule => {
-      if (cssRule.startsWith('@media')) {
-        return false;
-      }
-
-      return true;
+      return !cssRule.startsWith('@media');
     });
-    const renderer = createDOMRenderer(document, { filterCssRule: mediaQueryFilter });
+    const renderer = createDOMRenderer(targetDocument, { filterCSSRule: mediaQueryFilter });
 
     const cssRules: CSSRulesByBucket = {
       t: ['@media only screen and (max-width: 600px) { .bar: { background-color: red; } }'],
       d: ['.foo { background-color: red; }'],
+    };
+
+    renderer.insertCSSRules(cssRules);
+
+    expect(mediaQueryFilter).toHaveBeenCalledTimes(2);
+    expect(mediaQueryFilter).toHaveNthReturnedWith(1, false);
+    expect(mediaQueryFilter).toHaveNthReturnedWith(2, true);
+  });
+
+  it('should apply filter for css rules within single bucket', () => {
+    const targetDocument = createFakeDocument();
+    const mediaQueryFilter = jest.fn().mockImplementation(cssRule => {
+      return !cssRule.startsWith('@media');
+    });
+    const renderer = createDOMRenderer(targetDocument, { filterCSSRule: mediaQueryFilter });
+
+    const cssRules: CSSRulesByBucket = {
+      t: [
+        '@media only screen and (max-width: 600px) { .bar: { background-color: red; } }',
+        '.foo { background-color: red; }',
+      ],
     };
 
     renderer.insertCSSRules(cssRules);
