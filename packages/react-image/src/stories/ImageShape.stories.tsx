@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image } from '../Image'; // codesandbox-dependency: @fluentui/react-image ^9.0.0-beta
+import { Image } from '../Image';
 
 export const Shape = () => (
   <div style={{ display: 'flex', gap: 8 }}>

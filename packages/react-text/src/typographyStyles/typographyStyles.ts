@@ -1,4 +1,4 @@
-import type { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
+import type { MakeStylesStyleFunctionRule } from '@fluentui/react-make-styles';
 import type { Theme } from '@fluentui/react-theme';
 
 /**

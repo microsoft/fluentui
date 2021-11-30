@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
 
@@ -23,39 +23,36 @@ const useRootStyles = makeStyles({
     justifyContent: 'center',
     verticalAlign: 'middle',
 
-    margin: 0,
+    ...shorthands.margin(0),
 
     maxWidth: '280px',
 
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
 
-    background: theme.colorNeutralBackground1,
+    backgroundColor: theme.colorNeutralBackground1,
     color: theme.colorNeutralForeground1,
-
-    borderColor: theme.colorNeutralStroke1,
-    borderStyle: 'solid',
-    borderWidth: theme.strokeWidthThin,
+    ...shorthands.border(theme.strokeWidthThin, 'solid', theme.colorNeutralStroke1),
 
     fontFamily: theme.fontFamilyBase,
 
-    outline: 'none',
+    outlineStyle: 'none',
 
     ':hover': {
-      background: theme.colorNeutralBackground1Hover,
-      borderColor: theme.colorNeutralStroke1Hover,
+      backgroundColor: theme.colorNeutralBackground1Hover,
+      ...shorthands.borderColor(theme.colorNeutralStroke1Hover),
       color: theme.colorNeutralForeground1,
 
       cursor: 'pointer',
     },
 
     ':active': {
-      background: theme.colorNeutralBackground1Pressed,
-      borderColor: theme.colorNeutralStroke1Pressed,
+      backgroundColor: theme.colorNeutralBackground1Pressed,
+      ...shorthands.borderColor(theme.colorNeutralStroke1Pressed),
       color: theme.colorNeutralForeground1,
 
-      outline: 'none',
+      outlineStyle: 'none',
     },
   }),
 
@@ -67,114 +64,114 @@ const useRootStyles = makeStyles({
 
   // Appearance variations
   outline: theme => ({
-    background: theme.colorTransparentBackground,
+    backgroundColor: theme.colorTransparentBackground,
 
     ':hover': {
-      background: theme.colorTransparentBackgroundHover,
+      backgroundColor: theme.colorTransparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.colorTransparentBackgroundPressed,
+      backgroundColor: theme.colorTransparentBackgroundPressed,
     },
   }),
   primary: theme => ({
-    background: theme.colorBrandBackground,
-    borderColor: 'transparent',
+    backgroundColor: theme.colorBrandBackground,
+    ...shorthands.borderColor('transparent'),
     color: theme.colorNeutralForegroundOnBrand,
 
     ':hover': {
-      background: theme.colorBrandBackgroundHover,
-      borderColor: 'transparent',
+      backgroundColor: theme.colorBrandBackgroundHover,
+      ...shorthands.borderColor('transparent'),
       color: theme.colorNeutralForegroundOnBrand,
     },
 
     ':active': {
-      background: theme.colorBrandBackgroundPressed,
-      borderColor: 'transparent',
+      backgroundColor: theme.colorBrandBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
       color: theme.colorNeutralForegroundOnBrand,
     },
   }),
   subtle: theme => ({
-    background: theme.colorSubtleBackground,
-    borderColor: 'transparent',
+    backgroundColor: theme.colorSubtleBackground,
+    ...shorthands.borderColor('transparent'),
     color: theme.colorNeutralForeground2,
 
     ':hover': {
-      background: theme.colorSubtleBackgroundHover,
-      borderColor: 'transparent',
+      backgroundColor: theme.colorSubtleBackgroundHover,
+      ...shorthands.borderColor('transparent'),
       color: theme.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.colorSubtleBackgroundPressed,
-      borderColor: 'transparent',
+      backgroundColor: theme.colorSubtleBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
       color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
   transparent: theme => ({
-    background: theme.colorTransparentBackground,
-    borderColor: 'transparent',
+    backgroundColor: theme.colorTransparentBackground,
+    ...shorthands.borderColor('transparent'),
     color: theme.colorNeutralForeground2,
 
     ':hover': {
-      background: theme.colorTransparentBackgroundHover,
-      borderColor: 'transparent',
+      backgroundColor: theme.colorTransparentBackgroundHover,
+      ...shorthands.borderColor('transparent'),
       color: theme.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.colorTransparentBackgroundPressed,
-      borderColor: 'transparent',
+      backgroundColor: theme.colorTransparentBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
       color: theme.colorNeutralForeground2BrandPressed,
     },
   }),
 
   // Shape variations
   circular: theme => ({
-    borderRadius: theme.borderRadiusCircular,
+    ...shorthands.borderRadius(theme.borderRadiusCircular),
   }),
   rounded: {
     /* The borderRadius rounded styles are handled in the size variations */
   },
   square: theme => ({
-    borderRadius: theme.borderRadiusNone,
+    ...shorthands.borderRadius(theme.borderRadiusNone),
   }),
 
   // Size variations
   small: theme => ({
-    gap: buttonSpacing.smaller,
-    padding: `0 ${buttonSpacing.medium}`,
+    ...shorthands.gap(buttonSpacing.smaller),
+    ...shorthands.padding('0', buttonSpacing.medium),
 
     height: '24px',
     minWidth: '64px',
 
-    borderRadius: theme.borderRadiusSmall,
+    ...shorthands.borderRadius(theme.borderRadiusSmall),
 
     fontSize: theme.fontSizeBase200,
     fontWeight: theme.fontWeightRegular,
     lineHeight: theme.lineHeightBase200,
   }),
   medium: theme => ({
-    gap: buttonSpacing.small,
-    padding: `0 ${buttonSpacing.large}`,
+    ...shorthands.gap(buttonSpacing.small),
+    ...shorthands.padding('0', buttonSpacing.large),
 
     height: '32px',
     minWidth: '96px',
 
-    borderRadius: theme.borderRadiusMedium,
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
 
     fontSize: theme.fontSizeBase300,
     fontWeight: theme.fontWeightSemibold,
     lineHeight: theme.lineHeightBase300,
   }),
   large: theme => ({
-    gap: buttonSpacing.small,
-    padding: `0 ${buttonSpacing.larger}`,
+    ...shorthands.gap(buttonSpacing.small),
+    ...shorthands.padding('0', buttonSpacing.larger),
 
     height: '40px',
     minWidth: '96px',
 
-    borderRadius: theme.borderRadiusMedium,
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
 
     fontSize: theme.fontSizeBase400,
     fontWeight: theme.fontWeightSemibold,
@@ -185,23 +182,23 @@ const useRootStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: theme => ({
-    background: theme.colorNeutralBackgroundDisabled,
-    borderColor: theme.colorNeutralStrokeDisabled,
+    backgroundColor: theme.colorNeutralBackgroundDisabled,
+    ...shorthands.borderColor(theme.colorNeutralStrokeDisabled),
     color: theme.colorNeutralForegroundDisabled,
 
     cursor: 'not-allowed',
 
     ':hover': {
-      background: theme.colorNeutralBackgroundDisabled,
-      borderColor: theme.colorNeutralStrokeDisabled,
+      backgroundColor: theme.colorNeutralBackgroundDisabled,
+      ...shorthands.borderColor(theme.colorNeutralStrokeDisabled),
       color: theme.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
     },
 
     ':active': {
-      background: theme.colorNeutralBackgroundDisabled,
-      borderColor: theme.colorNeutralStrokeDisabled,
+      backgroundColor: theme.colorNeutralBackgroundDisabled,
+      ...shorthands.borderColor(theme.colorNeutralStrokeDisabled),
       color: theme.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
@@ -210,53 +207,53 @@ const useRootDisabledStyles = makeStyles({
 
   // Appearance variations
   outline: theme => ({
-    background: theme.colorTransparentBackground,
+    backgroundColor: theme.colorTransparentBackground,
 
     ':hover': {
-      background: theme.colorTransparentBackgroundHover,
+      backgroundColor: theme.colorTransparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.colorTransparentBackgroundPressed,
+      backgroundColor: theme.colorTransparentBackgroundPressed,
     },
   }),
   primary: {
-    borderColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      borderColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
 
     ':active': {
-      borderColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
   },
   subtle: {
-    background: 'none',
-    borderColor: 'transparent',
+    backgroundColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      background: 'none',
-      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
 
     ':active': {
-      background: 'none',
-      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    background: 'none',
-    borderColor: 'transparent',
+    backgroundColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      background: 'none',
-      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
 
     ':active': {
-      background: 'none',
-      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
   },
 });
@@ -273,8 +270,10 @@ const useRootFocusStyles = makeStyles({
   // square: theme => createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.none } }),
 
   base: createCustomFocusIndicatorStyle(theme => ({
-    borderColor: 'transparent',
-    outline: '2px solid transparent',
+    ...shorthands.borderColor('transparent'),
+    outlineColor: 'transparent',
+    outlineWidth: '2px',
+    outlineStyle: 'solid',
     boxShadow: `
       ${theme.shadow4},
       0 0 0 2px ${theme.colorStrokeFocus2}
@@ -283,46 +282,46 @@ const useRootFocusStyles = makeStyles({
   })),
 
   circular: createCustomFocusIndicatorStyle(theme => ({
-    borderRadius: theme.borderRadiusCircular,
+    ...shorthands.borderRadius(theme.borderRadiusCircular),
   })),
   rounded: {},
   // Primary styles
   primary: createCustomFocusIndicatorStyle(theme => ({
-    borderColor: theme.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(theme.colorNeutralForegroundOnBrand),
     boxShadow: `${theme.shadow2}, 0 0 0 2px ${theme.colorStrokeFocus2}`,
   })),
   square: createCustomFocusIndicatorStyle(theme => ({
-    borderRadius: theme.borderRadiusNone,
+    ...shorthands.borderRadius(theme.borderRadiusNone),
   })),
 
   // Size variations
   small: createCustomFocusIndicatorStyle(theme => ({
-    borderRadius: theme.borderRadiusSmall,
+    ...shorthands.borderRadius(theme.borderRadiusSmall),
   })),
   medium: createCustomFocusIndicatorStyle(theme => ({
-    borderRadius: theme.borderRadiusMedium,
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
   })),
   large: createCustomFocusIndicatorStyle(theme => ({
-    borderRadius: theme.borderRadiusLarge,
+    ...shorthands.borderRadius(theme.borderRadiusLarge),
   })),
 });
 
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    padding: buttonSpacing.smaller,
+    ...shorthands.padding(buttonSpacing.smaller),
 
     minWidth: '28px',
     maxWidth: '28px',
   },
   medium: {
-    padding: buttonSpacing.smaller,
+    ...shorthands.padding(buttonSpacing.smaller),
 
     minWidth: '32px',
     maxWidth: '32px',
   },
   large: {
-    padding: buttonSpacing.small,
+    ...shorthands.padding(buttonSpacing.small),
 
     minWidth: '40px',
     maxWidth: '40px',

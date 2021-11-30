@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { MenuItemState } from './MenuItem.types';
 
@@ -7,7 +7,7 @@ export const menuItemClassName = 'fui-MenuItem';
 const useStyles = makeStyles({
   focusIndicator: theme => createFocusOutlineStyle(theme),
   root: theme => ({
-    borderRadius: theme.borderRadiusMedium,
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
     position: 'relative',
     color: theme.colorNeutralForeground1,
     backgroundColor: theme.colorNeutralBackground1,
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     fontSize: theme.fontSizeBase300,
     cursor: 'pointer',
-    gap: '4px',
+    ...shorthands.gap('4px'),
 
     ':hover': {
       backgroundColor: theme.colorNeutralBackground1Hover,

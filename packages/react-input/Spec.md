@@ -92,42 +92,16 @@ export type InputCommons = FieldSizeProps & {
    * @default 'outline'
    */
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-};
-```
 
-### Field sizing
-
-This should be common between most types of fields.
-
-```ts
-export type FieldSize = 'small' | 'medium' | 'large';
-
-export type FieldSizeProps = {
   /**
    * Size of the input (changes the font size and spacing).
    * @default 'medium'
    */
-  // NOTE: can't use `size` as the name due to overlap with a native input prop
-  // (see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attributes)
-  fieldSize?: FieldSize;
+  size?: 'small' | 'medium' | 'large';
 };
 ```
 
-```ts
-export const fieldHeights = {
-  small: '24px',
-  medium: '32px',
-  large: '40px',
-};
-
-export const useFieldSizeStyles = makeStyles({
-  small: theme => ({
-    // font sizes, height
-  }),
-  medium: theme => ({}),
-  large: theme => ({}),
-});
-```
+`size` [overlaps with a native prop](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size) which sets the width of the field in "number of characters." This isn't ideal, but we're going with it since the native prop isn't very useful in practice, and it was hard to find another reasonable/consistent name for the visual size prop. It's also consistent with the approach used by most other libraries which have a prop for setting the visual size. (If anyone needs the native functionality, we could add an `htmlSize` prop in the future.)
 
 ### Slots
 
