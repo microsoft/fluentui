@@ -179,6 +179,8 @@ export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref
     shorthandConfig: ShorthandConfig<LoaderProps>;
   };
 
+Loader.displayName = 'Loader';
+
 Loader.propTypes = {
   ...commonPropTypes.createCommon({
     children: false,
