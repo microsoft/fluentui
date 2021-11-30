@@ -58,12 +58,12 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   /**
    * Sets the aria-roledescription attribute.
    */
-  ariaRoleDescription?: string;
+  'aria-roledescription'?: string;
 
   /**
    * Sets the aria-label attribute for carousel.
    */
-  ariaLabel?: string;
+  'aria-label'?: string;
 
   /** Specifies if the process of switching slides is circular. */
   circular?: boolean;
@@ -150,8 +150,8 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     navigation,
     thumbnails,
     children,
-    ariaRoleDescription,
-    ariaLabel,
+    'aria-roledescription': ariaRoleDescription,
+    'aria-label': ariaLabel,
     className,
     design,
     styles,
@@ -205,8 +205,8 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     mapPropsToBehavior: () => ({
       navigation,
       ariaLiveOn,
-      ariaRoleDescription,
-      ariaLabel,
+      'aria-roledescription': ariaRoleDescription,
+      'aria-label': ariaLabel,
     }),
   });
 
@@ -501,8 +501,8 @@ Carousel.propTypes = {
     content: false,
   }),
   activeIndex: PropTypes.number,
-  ariaRoleDescription: PropTypes.string,
-  ariaLabel: PropTypes.string,
+  'aria-roledescription': PropTypes.string,
+  'aria-label': PropTypes.string,
   circular: PropTypes.bool,
   defaultActiveIndex: PropTypes.number,
   getItemPositionText: PropTypes.func,

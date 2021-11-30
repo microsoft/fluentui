@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### BREAKING CHANGES
 - fix(Accordion) Render divs instead of dd and dt elements for Accordion and AccordionTitle @jurokapsiar ([#20773](https://github.com/microsoft/fluentui/pull/20773))
+- Carousels uses native ARIA props @layershifter ([#20848](https://github.com/microsoft/fluentui/pull/20848))
 
 ### Fixes
 - Remove unsupported styling props in `Popup` @layershifter ([#20853](https://github.com/microsoft/fluentui/pull/20853))
