@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "update stories to not use CSS shorthands in styles",
+  "comment": "update styles to not use CSS shorthands",
   "packageName": "@fluentui/react-avatar",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
