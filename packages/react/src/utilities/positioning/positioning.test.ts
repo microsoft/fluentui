@@ -308,6 +308,45 @@ describe('Callout Positioning', () => {
     expect(finalizedBeakPosition.elementPosition.bottom).toBeDefined();
     expect(finalizedBeakPosition.elementPosition.left).toBeUndefined();
   });
+
+  it('Correctly determines the correct edges to return when against bounds', () => {
+    // Create a dummy host, this isn't the part that we care about for this test
+    const host = {
+      getBoundingClientRect: () => {
+        return {
+          bottom: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          width: 0,
+          height: 0,
+        };
+      },
+    };
+    // create a dummy beak
+    const pos: IElementPosition = {
+      elementRectangle: new Rectangle(400, 500, 400, 500),
+      targetEdge: RectangleEdge.top,
+      alignmentEdge: RectangleEdge.left,
+    };
+    const bounds = new Rectangle(0, 500, 0, 500);
+
+    // When we allow finalizing the return edge, we should specify the bottom such that the host grows away from
+    // the edge of the bounds
+    // In this case, that's the bottom (opposite of target) and right (closer to edge of bounds)
+    let finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, bounds, false, false);
+    expect(finalizedPosition.elementPosition.right).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.top).toBeUndefined();
+
+    // When we don't allow finalizing the return edge, but the host is flush against the edge of the bounds,
+    // we should have the same result as before
+    // In this case, that's the bottom (opposite of target) and right (closer to edge of bounds)
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, bounds, false, true);
+    expect(finalizedPosition.elementPosition.right).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.top).toBeUndefined();
+  });
 });
 
 describe('getBoundingRectangle', () => {
