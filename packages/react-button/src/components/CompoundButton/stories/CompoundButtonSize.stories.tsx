@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CompoundButton } from '../../../CompoundButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { CompoundButton } from '../../../CompoundButton';
 
 export const Size = () => {
   return (

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
-import { Button } from '../../../Button'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { Button } from '../../../Button';
 
 export const Icon = () => (
   <>
