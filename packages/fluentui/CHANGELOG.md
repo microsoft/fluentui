@@ -57,6 +57,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Chat` components to properly pass ref to root slots @chpalac ([#20691](https://github.com/microsoft/fluentui/pull/20691))
 - Fix `Flex` component to properly pass ref to root slots @chpalac ([#20752](https://github.com/microsoft/fluentui/pull/20752))
 - Fix `Animation` to expose `Transition` state for the consumer @chpalac ([#20776](https://github.com/microsoft/fluentui/pull/20776))
+- Fix `Grid` component to properly pass ref to root slots @chpalac ([#20810](https://github.com/microsoft/fluentui/pull/20810))
 - Fix `Form` components to properly pass ref to root slots @chpalac ([#20809](https://github.com/microsoft/fluentui/pull/20809))
 - Fix `Loader` component to properly pass ref to root slots @chpalac ([#20814](https://github.com/microsoft/fluentui/pull/20814))
 - Fix `Label` component to properly pass ref to root slots @chpalac ([#20813](https://github.com/microsoft/fluentui/pull/20813))
