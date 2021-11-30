@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { makeStyles } from '@fluentui/react-make-styles';
+const makeStyles = () => null;
 
 export const useStylesA = makeStyles({
   neutral: theme => ({
