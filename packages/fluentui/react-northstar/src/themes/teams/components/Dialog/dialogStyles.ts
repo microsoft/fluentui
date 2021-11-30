@@ -1,8 +1,8 @@
 import { DialogStylesProps } from '../../../../components/Dialog/Dialog';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DialogVariables } from './dialogVariables';
-import { buttonClassName } from 'src/components/Button/Button';
-import { flexClassName } from 'src/components/Flex/Flex';
+import { buttonClassName } from '../../../../components/Button/Button';
+import { flexClassName } from '../../../../components/Flex/Flex';
 
 export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, DialogVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
