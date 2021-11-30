@@ -68,6 +68,11 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
 
     justifySelf: 'left',
     width: '100%',
+
+    [`@media screen and (max-width: ${v.rootWidth}), screen and (max-height: 400px)`]: {
+      maxHeight: '100%',
+      overflow: 'unset',
+    },
   }),
 
   header: ({ variables: v }): ICSSInJSStyle => ({

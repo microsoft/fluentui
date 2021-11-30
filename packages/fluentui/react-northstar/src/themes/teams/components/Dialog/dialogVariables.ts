@@ -48,5 +48,5 @@ export const dialogVariables = (siteVariables): Partial<DialogVariables> => ({
 
   headerActionMargin: `${pxToRem(-3)} ${pxToRem(-8)} 0 0`,
   // in case of customized footer this var allows to align styles
-  footerActionsBreakpoint: '300px',
+  footerActionsBreakpoint: '400px',
 });
