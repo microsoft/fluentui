@@ -1,4 +1,4 @@
-import type { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
 import type { Theme } from '@fluentui/react-theme';
 
 /**
@@ -15,8 +15,8 @@ import type { Theme } from '@fluentui/react-theme';
  *   })
  *   ...
  *
- *   state.arrowWithSize.clasName = styles.arrowWithSize
- *   state.arrowWithoutSize.className = mergeClases(
+ *   state.arrowWithSize.className = styles.arrowWithSize
+ *   state.arrowWithoutSize.className = mergeClasses(
  *     styles.arrowWithoutSize,
  *     state.smallArrow && styles.smallArrow,
  *     state.mediumArrow && styles.mediumArrow,
@@ -40,7 +40,7 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
       zIndex: -1,
 
       ...(size && {
-        aspectRatio: 1,
+        aspectRatio: '1',
         width: `${size}px`,
       }),
 
