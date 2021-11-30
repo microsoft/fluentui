@@ -58,6 +58,7 @@ export interface ButtonVariables {
   textPrimaryColorHover: string;
   textColorDisabled: string;
   textColorIconOnlyHover: string;
+  textColorActive: string;
 
   primaryBoxShadow: string;
   boxShadow: string;
@@ -76,6 +77,15 @@ export interface ButtonVariables {
   sizeSmallLoaderSize: string;
   sizeSmallLoaderSvgHeight: string;
   sizeSmallLoaderSvgAnimationHeight: string;
+
+  invertedBackgroundColor: string;
+  invertedTextColor: string;
+  invertedBackgroundColorActive: string;
+  invertedColorActive: string;
+  invertedBackgroundColorHover: string;
+  invertedBackgroundColorFocus: string;
+  invertedColorHover: string;
+  invertedColorFocus: string;
 }
 
 export const buttonVariables = (siteVars: any): ButtonVariables => ({
@@ -133,6 +143,7 @@ export const buttonVariables = (siteVars: any): ButtonVariables => ({
   textPrimaryColorHover: siteVars.colorScheme.brand.foreground1,
   textColorDisabled: siteVars.colorScheme.brand.foregroundDisabled1,
   textColorIconOnlyHover: siteVars.colorScheme.brand.foregroundHover,
+  textColorActive: siteVars.colorScheme.brand.backgroundPressed,
 
   primaryBoxShadow: siteVars.shadowLevel1Dark,
   boxShadow: siteVars.shadowLevel1,
@@ -151,4 +162,13 @@ export const buttonVariables = (siteVars: any): ButtonVariables => ({
   sizeSmallLoaderSize: pxToRem(15),
   sizeSmallLoaderSvgHeight: pxToRem(895),
   sizeSmallLoaderSvgAnimationHeight: pxToRem(-880),
+
+  invertedBackgroundColor: siteVars.colorScheme.silver.background,
+  invertedTextColor: siteVars.colorScheme.silver.foreground,
+  invertedBackgroundColorActive: siteVars.colorScheme.silver.backgroundPressed,
+  invertedColorActive: siteVars.colorScheme.silver.foregroundHover,
+  invertedBackgroundColorFocus: siteVars.colorScheme.silver.backgroundPressed,
+  invertedBackgroundColorHover: siteVars.colorScheme.silver.backgroundHover,
+  invertedColorFocus: siteVars.colorScheme.silver.foregroundHover,
+  invertedColorHover: siteVars.colorScheme.silver.foregroundHover,
 });

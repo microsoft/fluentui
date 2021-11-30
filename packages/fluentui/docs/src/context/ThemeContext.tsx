@@ -16,13 +16,13 @@ export type ThemeContextData = {
 };
 
 export const themeContextDefaults: ThemeContextData = {
-  themeName: 'teamsV2Theme',
+  themeName: 'systemColorsTheme',
   themeOptions: [
-    { text: 'Teams', value: 'teamsTheme' },
-    { text: 'Teams Dark', value: 'teamsDarkTheme' },
-    { text: 'Teams High Contrast', value: 'teamsHighContrastTheme' },
-    { text: 'Teams V2', value: 'teamsV2Theme' },
-    { text: 'Teams Dark V2', value: 'teamsDarkV2Theme' },
+    // { text: 'Teams', value: 'teamsTheme' },
+    // { text: 'Teams Dark', value: 'teamsDarkTheme' },
+    // { text: 'Teams High Contrast', value: 'teamsHighContrastTheme' },
+    // { text: 'Teams V2', value: 'teamsV2Theme' },
+    // { text: 'Teams Dark V2', value: 'teamsDarkV2Theme' },
     { text: 'System Colors', value: 'systemColorsTheme' },
   ],
   changeTheme: () => {},

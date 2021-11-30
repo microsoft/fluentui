@@ -20,6 +20,10 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
       ':focus-visible': {
         forcedColorAdjust: 'none',
       },
+
+      ':disabled': {
+        forcedColorAdjust: 'none',
+      },
     };
   },
 };

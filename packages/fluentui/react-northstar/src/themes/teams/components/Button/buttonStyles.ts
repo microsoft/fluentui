@@ -117,7 +117,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           ...getIconFillOrOutlineStyles({ outline: false }),
         },
         ':active': {
-          color: siteVariables.colorScheme.brand.backgroundPressed,
+          color: v.textColorActive,
         },
         ':focus': {
           boxShadow: 'none',
@@ -158,21 +158,21 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         }),
 
       ...(p.inverted && {
-        backgroundColor: siteVariables.colorScheme.silver.background,
+        backgroundColor: v.invertedBackgroundColor,
         borderColor: siteVariables.colorScheme.silver.border,
-        color: siteVariables.colorScheme.silver.foreground,
+        color: v.invertedTextColor,
 
         ...(!p.disabledFocusable && {
           ':active': {
             transition: ultraFast,
-            backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
-            color: siteVariables.colorScheme.silver.foregroundHover,
+            backgroundColor: v.invertedBackgroundColorActive,
+            color: v.invertedColorActive,
           },
         }),
 
         ':hover': {
-          backgroundColor: siteVariables.colorScheme.silver.backgroundHover,
-          color: siteVariables.colorScheme.silver.foregroundHover,
+          backgroundColor: v.invertedBackgroundColorHover,
+          color: v.invertedColorHover,
         },
 
         ':focus': {
@@ -183,8 +183,8 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         ':focus-visible': {
           ...borderFocusStyles[':focus-visible'],
           ...(!p.disabledFocusable && {
-            backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
-            color: siteVariables.colorScheme.silver.foregroundHover,
+            backgroundColor: v.invertedBackgroundColorFocus,
+            color: v.invertedColorFocus,
           }),
         },
       }),
