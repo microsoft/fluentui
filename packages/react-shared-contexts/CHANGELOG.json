@@ -2,6 +2,29 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 08:34:16 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ba05e3ba0a8fec662323e2e39e628cf015dae3ef",
+            "comment": "update tooling configs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Nov 2021 13:25:32 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.0.0-beta.3",
       "version": "9.0.0-beta.3",

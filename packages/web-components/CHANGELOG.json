@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 23 Nov 2021 07:27:34 GMT",
+      "tag": "@fluentui/web-components_v2.1.0",
+      "version": "2.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2dbe9eadd8ae071bbb056ad15461c1c7ea8d9430",
+            "comment": "fix: remove margins from host elements"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Nov 2021 07:38:11 GMT",
       "tag": "@fluentui/web-components_v2.0.2",
       "version": "2.0.2",

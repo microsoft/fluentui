@@ -1755,7 +1755,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         flex-shrink: 0;
       }
   data-automationid="DetailsRow"
-  data-focuszone-id="FocusZone32"
+  data-focuszone-id="FocusZone43"
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}

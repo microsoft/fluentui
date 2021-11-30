@@ -1,20 +1,20 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 import type { PresenceBadgeState } from './PresenceBadge.types';
 
 export const presenceBadgeClassName = 'fui-PresenceBadge';
 
 const useStyles = makeStyles({
   root: theme => ({
-    padding: 0,
+    ...shorthands.padding(0),
     display: 'inline-flex',
     boxSizing: 'border-box',
     alignItems: 'center',
     justifyContent: 'center',
 
-    '& .root-span': {
+    '& span': {
       display: 'flex',
     },
-    borderRadius: '50%',
+    ...shorthands.borderRadius('50%'),
     backgroundColor: theme.colorNeutralBackground1,
   }),
   statusBusy: theme => ({

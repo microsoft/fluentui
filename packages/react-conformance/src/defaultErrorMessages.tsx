@@ -234,12 +234,45 @@ export const defaultErrorMessages = {
       overview: `doesn't apply the "ref" prop to its root DOM node.`,
       suggestions: [
         `Make sure you're applying the ref to the ${resolveInfo('root element')} in your component.`,
+        `Check if your component overrides the primary slot, and add ${resolveInfo(
+          `primarySlot`,
+        )} to isConformant in your test file.`,
         `Check if your component uses an element ref and add ${resolveInfo(
           `elementRefName: 'elementRef'`,
         )} to isConformant in your test file.`,
         `Check if your component passes ref to an inner component and add ${resolveInfo(
           `targetComponent`,
         )} to isConformant in your test file.`,
+      ],
+      error,
+    });
+  },
+
+  'omits-size-prop': (testInfo: IsConformantOptions, error: Error, sizeValue: string, appliedToElement: Element) => {
+    const { displayName } = testInfo;
+    const { resolveInfo, testErrorName } = errorMessageColors;
+
+    // Message Description: Handles scenario where a component defines a custom 'size' prop but also
+    // applies 'size' as a native prop. (See the comment on the test definition for more background.)
+    //
+    // It appears that "displayName" has a custom 'size' prop but also applies 'size' as a native prop.
+    // After passing 'size="sizeValue"' to "displayName" it was applied to this element:
+    // <html here>
+    //
+    // Possible solutions:
+    // 1. Make sure that your component accepts a className prop.
+    // 2. Make sure that nothing is overwriting the className prop (it should be merged with defaults).
+    // 3. Make sure that your component is applying the className to the root.
+    return getErrorMessage({
+      displayName,
+      overview: `has a custom 'size' prop but also applies 'size' as a native prop.`,
+      details: [
+        `After passing 'size="${sizeValue}"' to ${testErrorName(displayName)} it was applied to this element:`,
+        appliedToElement.outerHTML,
+      ],
+      suggestions: [
+        `Ensure 'size' is omitted when calling native props helpers.`,
+        `If native 'size' functionality is needed, add an ${resolveInfo('htmlSize')} prop.`,
       ],
       error,
     });
@@ -654,6 +687,23 @@ export const defaultErrorMessages = {
         `Check if you are missing any ${resolveInfo('requiredProps')} within the isConformant in your test file.`,
         `Make sure that your component's implementation contains a valid return statement.`,
         `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
+      ],
+      error,
+    });
+  },
+
+  'primary-slot-gets-native-props': (testInfo: IsConformantOptions, error: Error) => {
+    const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `doesn't properly apply native props to the primary and root slots.`,
+      suggestions: [
+        `Make sure you're using the ${resolveInfo(
+          'getPartitionedNativeProps',
+        )} function to assign the correct native props to the root and primary slots.`,
+        `Check that the ${resolveInfo(`primarySlot`)} argument to isConformant is correct in your test file.`,
       ],
       error,
     });

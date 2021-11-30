@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Wed, 10 Nov 2021 07:31:59 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 14:54:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.3.9)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.3.7..@fluentui/react-focus_v8.3.9)
+
+### Patches
+
+- Bump @fluentui/keyboard-key to v0.3.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/merge-styles to v8.2.2 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/style-utilities to v8.5.0 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/utilities to v8.3.7 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.13 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
 
 ## [8.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.3.7)
 

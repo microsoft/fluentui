@@ -3,7 +3,7 @@ import { resolveStyleRules } from './runtime/resolveStyleRules';
 import {
   CSSClassesMapBySlot,
   CSSRulesByBucket,
-  MakeStyles,
+  MakeStylesStyle,
   MakeStylesStyleFunctionRule,
   StyleBucketName,
   StylesBySlots,
@@ -28,10 +28,10 @@ export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>
 
   // eslint-disable-next-line guard-for-in
   for (const slotName in stylesBySlots) {
-    const slotStyles: MakeStyles =
+    const slotStyles: MakeStylesStyle =
       typeof stylesBySlots[slotName] === 'function'
         ? (stylesBySlots[slotName] as MakeStylesStyleFunctionRule<Tokens>)(tokensProxy)
-        : stylesBySlots[slotName];
+        : (stylesBySlots[slotName] as MakeStylesStyle);
     const [cssClassMap, cssRulesByBucket] = resolveStyleRules(slotStyles, unstable_cssPriority);
 
     classesMapBySlot[slotName] = cssClassMap;
