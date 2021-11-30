@@ -1,4 +1,4 @@
-import type { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 
 /**
  * A function that implements CSS spec conformant expansion for "borderRadius". "/" is not supported, please use CSS
@@ -17,7 +17,7 @@ export function borderRadius(
   value2: MakeStylesCSSValue = value1,
   value3: MakeStylesCSSValue = value1,
   value4: MakeStylesCSSValue = value2,
-): MakeStyles {
+): MakeStylesStrictCSSObject {
   return {
     borderBottomRightRadius: value3,
     borderBottomLeftRadius: value4,

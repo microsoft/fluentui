@@ -12,7 +12,7 @@ export type InputSlots = {
    * This is the "primary" slot, so top-level native props (except `className` and `style`) and the
    * top-level `ref` will go here.
    */
-  input: IntrinsicShorthandProps<'input'>;
+  input: Omit<IntrinsicShorthandProps<'input'>, 'size'>;
 
   /** Element before the input text, within the input border */
   contentBefore?: IntrinsicShorthandProps<'span'>;
@@ -26,9 +26,10 @@ export type InputCommons = {
    * Size of the input (changes the font size and spacing).
    * @default 'medium'
    */
-  // NOTE: can't use `size` as the name due to overlap with a native input prop :(
-  // (see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attributes)
-  fieldSize?: 'small' | 'medium' | 'large';
+  // This name overlaps with the native `size` prop, but that prop isn't very useful in practice
+  // (we could add `htmlSize` for the native functionality if someone needs it)
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * If true, the field will have inline display, allowing it be used within text content.

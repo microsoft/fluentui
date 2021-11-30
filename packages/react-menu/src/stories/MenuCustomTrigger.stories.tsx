@@ -1,16 +1,7 @@
 import * as React from 'react';
-
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '../index';
-
 import { Button } from '@fluentui/react-button';
 
-// FIXME need to redeclare types since type import is under a @ts-ignore
-type MenuOpenEvents =
-  | MouseEvent
-  | TouchEvent
-  | React.MouseEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
+import { Menu, MenuProps, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '../index';
 
 const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTriggerChildProps>>((props, ref) => {
   return (
@@ -22,7 +13,7 @@ const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTrigge
 
 export const CustomTrigger = () => {
   const [open, setOpen] = React.useState(false);
-  const onOpenChange = (e: MenuOpenEvents, data: { open: boolean }) => {
+  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
     setOpen(data.open);
   };
 

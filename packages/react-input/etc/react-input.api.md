@@ -18,7 +18,7 @@ export const inputClassName = "fui-Input";
 
 // @public (undocumented)
 export type InputCommons = {
-    fieldSize?: 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large';
     inline?: boolean;
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
 };
@@ -32,7 +32,7 @@ export const inputShorthandProps: (keyof InputSlots)[];
 // @public (undocumented)
 export type InputSlots = {
     root: IntrinsicShorthandProps<'span'>;
-    input: IntrinsicShorthandProps<'input'>;
+    input: Omit<IntrinsicShorthandProps<'input'>, 'size'>;
     contentBefore?: IntrinsicShorthandProps<'span'>;
     contentAfter?: IntrinsicShorthandProps<'span'>;
 };

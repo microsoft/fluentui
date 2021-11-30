@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 25 Nov 2021 14:54:13 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Nov 2021 07:37:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.45.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.45.0)
+
+Tue, 30 Nov 2021 07:37:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.44.0..@fluentui/react_v8.45.0)
+
+### Minor changes
+
+- Deprecating v8 makeStyles. ([PR #20712](https://github.com/microsoft/fluentui/pull/20712) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-focus to v8.3.10 ([PR #20833](https://github.com/microsoft/fluentui/pull/20833) by beachball)
+
+### Patches
+
+- Panel: Content no longer overlaps with header and footer when scrolling. ([PR #20806](https://github.com/microsoft/fluentui/pull/20806) by tristan.watanabe@gmail.com)
 
 ## [8.44.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.44.0)
 
