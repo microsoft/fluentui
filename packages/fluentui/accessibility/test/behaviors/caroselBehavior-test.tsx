@@ -23,7 +23,7 @@ describe('carouselBehavior.ts', () => {
       const expectedResult = carouselBehavior({
         ariaLiveOn: false,
         navigation: false,
-        ariaLabel: label,
+        'aria-label': label,
       });
       expect(expectedResult.attributes.root['aria-label']).toEqual(label);
     });
@@ -33,7 +33,7 @@ describe('carouselBehavior.ts', () => {
         ariaLiveOn: false,
         navigation: true,
         'aria-roledescription': roleDescription,
-        ariaLabel: label,
+        'aria-label': label,
       });
       expect(expectedResult.attributes.root['aria-roledescription']).toBeUndefined();
       expect(expectedResult.attributes.root['aria-label']).toBeUndefined();
