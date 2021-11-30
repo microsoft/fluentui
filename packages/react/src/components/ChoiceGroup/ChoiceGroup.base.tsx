@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Label } from '../../Label';
 import {
   classNamesFunction,
+  elementContains,
   find,
   getNativeProps,
   divProperties,
@@ -30,6 +31,16 @@ const findOption = (options: IChoiceGroupOption[], key: string | number | undefi
   return key === undefined ? undefined : find(options, value => value.key === key);
 };
 
+const focusSelectedOption = (options: IChoiceGroupOption[], keyChecked: string | number | undefined, id: string) => {
+  const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
+  const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
+
+  if (elementToFocus) {
+    elementToFocus.focus();
+    setFocusVisibility(true, elementToFocus as Element);
+  }
+};
+
 const useComponentRef = (
   options: IChoiceGroupOption[],
   keyChecked: string | number | undefined,
@@ -43,13 +54,7 @@ const useComponentRef = (
         return findOption(options, keyChecked);
       },
       focus() {
-        const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
-        const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
-
-        if (elementToFocus) {
-          elementToFocus.focus();
-          setFocusVisibility(true, elementToFocus as Element);
-        }
+        focusSelectedOption(options, keyChecked, id);
       },
     }),
     [options, keyChecked, id],
@@ -127,9 +132,20 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
     [onChange, options, setKeyChecked],
   );
 
+  const onRadioFocus = React.useCallback(
+    (evt: React.FocusEvent<HTMLElement>) => {
+      // Override focus behavior when the focus comes from oustide the DOM subtree of the radio group.
+      // Handles scenarios like this bug: https://github.com/microsoft/fluentui/issues/20173
+      if (evt.relatedTarget && !elementContains(evt.currentTarget, evt.relatedTarget as HTMLElement)) {
+        focusSelectedOption(options, keyChecked, id);
+      }
+    },
+    [options, keyChecked, id],
+  );
+
   return (
     <div className={classNames.root} {...divProps} ref={mergedRootRefs}>
-      <div role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
+      <div role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })} onFocus={onRadioFocus}>
         {label && (
           <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>
             {label}
