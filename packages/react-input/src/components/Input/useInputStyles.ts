@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import type { InputState } from './Input.types';
 import type { Theme } from '@fluentui/react-theme';
 
@@ -48,10 +48,10 @@ const useRootStyles = makeStyles({
   base: theme => ({
     display: 'flex',
     alignItems: 'center',
-    flexWrap: 'no-wrap',
-    gap: horizontalSpacing.xxs,
+    flexWrap: 'nowrap',
+    ...shorthands.gap(horizontalSpacing.xxs),
     fontFamily: theme.fontFamilyBase,
-    borderRadius: theme.borderRadiusMedium, // used for all but underline
+    ...shorthands.borderRadius(theme.borderRadiusMedium), // used for all but underline
     position: 'relative',
     boxSizing: 'border-box',
 
@@ -77,7 +77,9 @@ const useRootStyles = makeStyles({
       // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
       // (This could be done without trimming using `background: linear-gradient(...)`, but using
       // borderBottom makes it easier for people to override the color if needed.)
-      borderBottom: `2px solid ${theme.colorCompoundBrandStroke}`,
+      borderBottomWidth: '2px',
+      borderBottomStyle: 'solid',
+      borderBottomColor: theme.colorCompoundBrandStroke,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
 
       // Animation for focus OUT
@@ -96,41 +98,43 @@ const useRootStyles = makeStyles({
   }),
   small: theme => ({
     minHeight: fieldHeights.small,
-    padding: `0 ${horizontalSpacing.sNudge}`,
+    ...shorthands.padding(`0 ${horizontalSpacing.sNudge}`),
     ...contentSizes.caption1(theme),
   }),
   medium: theme => ({
     minHeight: fieldHeights.medium,
-    padding: `0 ${horizontalSpacing.mNudge}`,
+    ...shorthands.padding(`0 ${horizontalSpacing.mNudge}`),
     ...contentSizes.body1(theme),
   }),
   large: theme => ({
     minHeight: fieldHeights.large,
-    padding: `0 ${horizontalSpacing.m}`,
+    ...shorthands.padding(`0 ${horizontalSpacing.m}`),
     ...contentSizes[400](theme),
-    gap: horizontalSpacing.sNudge,
+    ...shorthands.gap(horizontalSpacing.sNudge),
   }),
   inline: {
     display: 'inline-flex',
   },
   outline: theme => ({
     background: theme.colorNeutralBackground1,
-    border: `1px solid ${theme.colorNeutralStroke1}`,
+    ...shorthands.border('1px', 'solid', theme.colorNeutralStroke1),
     borderBottomColor: theme.colorNeutralStrokeAccessible,
     ':hover': {
-      borderColor: theme.colorNeutralStroke1Hover,
+      ...shorthands.borderColor(theme.colorNeutralStroke1Hover),
       borderBottomColor: theme.colorNeutralStrokeAccessibleHover,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
-      borderColor: theme.colorNeutralStroke1Pressed,
+      ...shorthands.borderColor(theme.colorNeutralStroke1Pressed),
       borderBottomColor: theme.colorNeutralStrokeAccessiblePressed,
     },
   }),
   underline: theme => ({
     background: theme.colorTransparentBackground,
-    borderRadius: 0, // corners look strange if rounded
-    borderBottom: `1px solid ${theme.colorNeutralStrokeAccessible}`,
+    ...shorthands.borderRadius(0), // corners look strange if rounded
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: theme.colorNeutralStrokeAccessible,
     ':hover': {
       borderBottomColor: theme.colorNeutralStrokeAccessibleHover,
     },
@@ -138,17 +142,15 @@ const useRootStyles = makeStyles({
     ':active,:focus-within': {
       borderBottomColor: theme.colorNeutralStrokeAccessiblePressed,
     },
-    ':after': {
-      borderRadius: 0, // remove rounded corners from focus underline
-    },
+    ':after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   }),
   filled: theme => ({
     boxShadow: theme.shadow2, // optional shadow for filled appearances
-    border: `1px solid ${theme.colorTransparentStroke}`,
+    ...shorthands.border('1px', 'solid', theme.colorTransparentStroke),
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':hover,:focus-within': {
       // also handles pressed border color (:active)
-      borderColor: theme.colorTransparentStrokeInteractive,
+      ...shorthands.borderColor(theme.colorTransparentStrokeInteractive),
     },
   }),
   filledDarker: theme => ({
@@ -159,8 +161,8 @@ const useRootStyles = makeStyles({
   }),
   disabled: theme => ({
     cursor: 'not-allowed',
-    border: `1px solid ${theme.colorNeutralStrokeDisabled}`,
-    borderRadius: theme.borderRadiusMedium, // because underline doesn't usually have a radius
+    ...shorthands.border('1px', 'solid', theme.colorNeutralStrokeDisabled),
+    ...shorthands.borderRadius(theme.borderRadiusMedium), // because underline doesn't usually have a radius
   }),
 });
 
@@ -168,8 +170,8 @@ const useInputElementStyles = makeStyles({
   base: theme => ({
     boxSizing: 'border-box',
     flexGrow: 1,
-    border: 'none', // input itself never has a border (this is handled by inputWrapper)
-    padding: `0 ${horizontalSpacing.xxs}`,
+    ...shorthands.borderStyle('none'), // input itself never has a border (this is handled by inputWrapper)
+    ...shorthands.padding('0', horizontalSpacing.xxs),
     color: theme.colorNeutralForeground1,
     // Use literal "transparent" (not from the theme) to always let the color from the root show through
     background: 'transparent',
@@ -191,7 +193,7 @@ const useInputElementStyles = makeStyles({
   }),
   large: theme => ({
     ...contentSizes[400](theme),
-    padding: `0 ${horizontalSpacing.sNudge}`,
+    ...shorthands.padding('0', horizontalSpacing.sNudge),
   }),
   disabled: theme => ({
     color: theme.colorNeutralForegroundDisabled,
