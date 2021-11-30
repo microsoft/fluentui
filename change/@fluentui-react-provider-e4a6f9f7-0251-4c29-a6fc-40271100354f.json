@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Removes `themeToCSSVariables` from `react-theme`",
+  "comment": "Remove `themeToCSSVariables` function",
   "packageName": "@fluentui/react-provider",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
