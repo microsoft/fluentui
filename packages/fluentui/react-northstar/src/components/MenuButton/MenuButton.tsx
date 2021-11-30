@@ -188,7 +188,6 @@ export const MenuButton = (React.forwardRef<HTMLDivElement, MenuButtonProps>((pr
   const popupProps: PopupProps = {
     accessibility,
     align,
-    className,
     defaultOpen,
     mountNode,
     mouseLeaveDelay,
@@ -203,13 +202,11 @@ export const MenuButton = (React.forwardRef<HTMLDivElement, MenuButtonProps>((pr
     position,
     positionFixed,
     tabbableTrigger,
-    styles: props.styles,
     target,
     trigger,
     unstable_disableTether,
     unstable_pinned,
     autoSize,
-    variables,
   };
 
   const { classes, styles: resolvedStyles } = useStyles<MenuButtonStylesProps>(MenuButton.displayName, {

@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - fix(Accordion) Render divs instead of dd and dt elements for Accordion and AccordionTitle @jurokapsiar ([#20773](https://github.com/microsoft/fluentui/pull/20773))
 
 ### Fixes
+- Remove unsupported styling props in `Popup` @layershifter ([#20853](https://github.com/microsoft/fluentui/pull/20853))
 - Fix aria-labelledby passed to `DropdownSearchInput` @chpalac ([#20312](https://github.com/microsoft/fluentui/pull/20312))
 - Fix `preventFocusRestoration` in `FocusZone` @chpalac ([#20328](https://github.com/microsoft/fluentui/pull/20328))
 - `Popup` should not dismiss when its iframe content is focused @ling1726 ([#19955](https://github.com/microsoft/fluentui/pull/19955))
