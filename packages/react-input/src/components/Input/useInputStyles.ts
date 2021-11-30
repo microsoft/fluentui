@@ -77,9 +77,7 @@ const useRootStyles = makeStyles({
       // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
       // (This could be done without trimming using `background: linear-gradient(...)`, but using
       // borderBottom makes it easier for people to override the color if needed.)
-      borderBottomWidth: '2px',
-      borderBottomStyle: 'solid',
-      borderBottomColor: theme.colorCompoundBrandStroke,
+      ...shorthands.borderBottom('2px', 'solid', theme.colorCompoundBrandStroke),
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
 
       // Animation for focus OUT
@@ -98,17 +96,17 @@ const useRootStyles = makeStyles({
   }),
   small: theme => ({
     minHeight: fieldHeights.small,
-    ...shorthands.padding(`0 ${horizontalSpacing.sNudge}`),
+    ...shorthands.padding('0', horizontalSpacing.sNudge),
     ...contentSizes.caption1(theme),
   }),
   medium: theme => ({
     minHeight: fieldHeights.medium,
-    ...shorthands.padding(`0 ${horizontalSpacing.mNudge}`),
+    ...shorthands.padding('0', horizontalSpacing.mNudge),
     ...contentSizes.body1(theme),
   }),
   large: theme => ({
     minHeight: fieldHeights.large,
-    ...shorthands.padding(`0 ${horizontalSpacing.m}`),
+    ...shorthands.padding('0', horizontalSpacing.m),
     ...contentSizes[400](theme),
     ...shorthands.gap(horizontalSpacing.sNudge),
   }),
@@ -132,9 +130,7 @@ const useRootStyles = makeStyles({
   underline: theme => ({
     background: theme.colorTransparentBackground,
     ...shorthands.borderRadius(0), // corners look strange if rounded
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: theme.colorNeutralStrokeAccessible,
+    ...shorthands.borderBottom('1px', 'solid', theme.colorNeutralStrokeAccessible),
     ':hover': {
       borderBottomColor: theme.colorNeutralStrokeAccessibleHover,
     },
