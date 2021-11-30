@@ -109,5 +109,5 @@ PillIcon.propTypes = {
 PillIcon.handledProps = Object.keys(PillIcon.propTypes) as any;
 
 PillIcon.shorthandConfig = {
-  mappedProp: 'content' as const,
+  mappedProp: 'content',
 };
