@@ -264,6 +264,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             backgroundColor: semanticColors.bodyBackground,
             position: 'sticky',
             top: 0,
+            zIndex: 1,
           },
         },
       },
@@ -352,6 +353,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`,
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
+            background: semanticColors.bodyBackground,
             position: 'sticky',
             bottom: 0,
           },
