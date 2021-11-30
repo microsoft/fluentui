@@ -16,10 +16,10 @@ export const Controlled = () => {
       <Label htmlFor="controlled-slider">Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider
         value={sliderValue}
-        min={10}
+        min={20}
         max={200}
-        step={10}
-        keyboardStep={2}
+        step={20}
+        keyboardStep={10}
         onChange={onSliderChange}
         input={{ id: 'controlled-slider' }}
       />

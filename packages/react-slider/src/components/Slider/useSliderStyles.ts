@@ -7,18 +7,20 @@ export const sliderClassName = 'fui-Slider';
 const thumbClassName = `${sliderClassName}-thumb`;
 const trackClassName = `${sliderClassName}-track`;
 const railClassName = `${sliderClassName}-rail`;
+const stepIndex = 10;
+const thumbIndex = 20;
 
 /**
  * Styles for the root slot
  */
 export const useRootStyles = makeStyles({
-  root: {
+  root: theme => ({
     position: 'relative',
     display: 'inline-grid',
     gridTemplateAreas: '"slider"',
     userSelect: 'none',
     touchAction: 'none',
-  },
+  }),
 
   small: {
     '--slider-thumb-size': '10px',
@@ -81,6 +83,12 @@ export const useRailStyles = makeStyles({
     borderRadius: theme.borderRadiusXLarge,
     pointerEvents: 'none',
     gridArea: 'slider',
+    position: 'relative',
+    ':before': {
+      content: "''",
+      position: 'absolute',
+      zIndex: stepIndex,
+    },
   }),
 
   enabled: theme => ({
@@ -94,11 +102,35 @@ export const useRailStyles = makeStyles({
 
   horizontal: {
     height: 'var(--slider-rail-size)',
+    ':before': {
+      left: '-1px',
+      right: '-1px',
+      height: 'var(--slider-rail-size)',
+      background: `repeating-linear-gradient(
+        90deg,
+        #0000 0%,
+        #0000 calc(var(--slider-root-steps-percent) - 1px),
+        #fff calc(var(--slider-root-steps-percent) - 1px),
+        #fff var(--slider-root-steps-percent)
+      )`,
+    },
   },
 
   vertical: {
     width: 'var(--slider-rail-size)',
     height: '100%',
+    ':before': {
+      width: 'var(--slider-rail-size)',
+      top: '1px',
+      bottom: '-1px',
+      background: `repeating-linear-gradient(
+        180deg,
+        #0000 0%,
+        #0000 calc(var(--slider-root-steps-percent) - 1px),
+        #fff calc(var(--slider-root-steps-percent) - 1px),
+        #fff var(--slider-root-steps-percent)
+      )`,
+    },
   },
 });
 
@@ -140,6 +172,7 @@ export const useTrackStyles = makeStyles({
 export const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
+    zIndex: thumbIndex,
     width: 'var(--slider-thumb-size)',
     height: 'var(--slider-thumb-size)',
     outline: 'none',

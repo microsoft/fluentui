@@ -18,7 +18,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     defaultValue,
     min,
     max,
-    step = 1,
+    step,
     keyboardStep,
     disabled,
     ariaValueText,
