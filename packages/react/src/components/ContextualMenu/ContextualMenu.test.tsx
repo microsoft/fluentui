@@ -978,13 +978,13 @@ describe('ContextualMenu', () => {
   describe('ContextualMenu snapshot', () => {
     it('ContextualMenu should be present in DOM when hidden (snapshot)', () => {
       // Mock createPortal to capture its component hierarchy in snapshot output.
-      const ReactDOM = require('react-dom');
-      const createPortal = ReactDOM.createPortal;
-      ReactTestUtils.act(() => {
-        ReactDOM.createPortal = jest.fn(element => {
-          return element;
-        });
-      });
+
+      const createPortalMock = (children => {
+        return children;
+      }) as typeof ReactDOM.createPortal;
+
+      jest.spyOn(ReactDOM, 'createPortal').mockImplementation(createPortalMock);
+
       const buttonRef = React.createRef<IButton>();
       const component = renderer.create(
         <DefaultButton
@@ -1013,9 +1013,10 @@ describe('ContextualMenu', () => {
       buttonRef.current!.openMenu();
       buttonRef.current!.dismissMenu();
       const tree = component.toJSON();
+
       expect(tree).toMatchSnapshot();
 
-      ReactDOM.createPortal = createPortal;
+      jest.resetAllMocks();
     });
   });
 
