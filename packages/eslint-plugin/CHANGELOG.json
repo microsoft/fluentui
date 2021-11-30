@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 29 Nov 2021 07:31:31 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.5.1",
+      "version": "1.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "7c5dc03c415baf9a2d8a7ff104b2c0e3bff6daca",
+            "comment": "handle `common` directory as test files"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 14:54:13 GMT",
       "tag": "@fluentui/eslint-plugin_v1.5.0",
       "version": "1.5.0",
