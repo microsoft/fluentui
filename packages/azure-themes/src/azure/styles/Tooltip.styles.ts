@@ -1,5 +1,6 @@
 import { ITooltipStyles, ITooltipStyleProps } from 'office-ui-fabric-react';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import * as StyleConstants from '../Constants';
 
 export const TooltipStyles = (props: ITooltipStyleProps): Partial<ITooltipStyles> => {
   const { theme } = props;
@@ -9,11 +10,11 @@ export const TooltipStyles = (props: ITooltipStyleProps): Partial<ITooltipStyles
   return {
     root: {
       maxWidth: '480px',
-      padding: '0',
+      padding: 0,
     },
     content: {
       backgroundColor: extendedSemanticColors.controlBackground,
-      padding: 8,
+      padding: StyleConstants.inputControlPadding,
     },
   };
 };
