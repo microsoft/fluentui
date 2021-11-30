@@ -1,8 +1,92 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Wed, 10 Nov 2021 07:31:59 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Nov 2021 07:37:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.200.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.67)
+
+Tue, 30 Nov 2021 07:37:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.66..@fluentui/react-cards_v0.200.67)
+
+### Patches
+
+- Bump @fluentui/react to v8.45.0 ([PR #20833](https://github.com/microsoft/fluentui/pull/20833) by beachball)
+
+## [0.200.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.66)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.65..@fluentui/react-cards_v0.200.66)
+
+### Patches
+
+- Bump @fluentui/react to v8.44.0 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/foundation-legacy to v8.1.17 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.13 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+
+## [0.200.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.65)
+
+Tue, 23 Nov 2021 07:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.64..@fluentui/react-cards_v0.200.65)
+
+### Patches
+
+- Bump @fluentui/react to v8.43.0 ([PR #20697](https://github.com/microsoft/fluentui/pull/20697) by beachball)
+
+## [0.200.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.64)
+
+Mon, 22 Nov 2021 07:36:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.63..@fluentui/react-cards_v0.200.64)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.5 ([PR #20408](https://github.com/microsoft/fluentui/pull/20408) by beachball)
+
+## [0.200.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.63)
+
+Fri, 19 Nov 2021 07:45:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.62..@fluentui/react-cards_v0.200.63)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.4 ([PR #20639](https://github.com/microsoft/fluentui/pull/20639) by beachball)
+
+## [0.200.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.62)
+
+Thu, 18 Nov 2021 07:29:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.61..@fluentui/react-cards_v0.200.62)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.3 ([PR #20642](https://github.com/microsoft/fluentui/pull/20642) by beachball)
+
+## [0.200.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.61)
+
+Wed, 17 Nov 2021 07:36:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.60..@fluentui/react-cards_v0.200.61)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.2 ([PR #20635](https://github.com/microsoft/fluentui/pull/20635) by beachball)
+
+## [0.200.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.60)
+
+Tue, 16 Nov 2021 07:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.59..@fluentui/react-cards_v0.200.60)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.1 ([PR #20605](https://github.com/microsoft/fluentui/pull/20605) by beachball)
+
+## [0.200.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.59)
+
+Mon, 15 Nov 2021 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.200.58..@fluentui/react-cards_v0.200.59)
+
+### Patches
+
+- Bump @fluentui/react to v8.42.0 ([PR #20419](https://github.com/microsoft/fluentui/pull/20419) by beachball)
 
 ## [0.200.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.58)
 

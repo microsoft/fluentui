@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "restore exports for CommunicationColors, NeutralColors & SharedColors",
+  "packageName": "@fluentui/react",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

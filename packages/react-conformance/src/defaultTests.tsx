@@ -130,12 +130,21 @@ export const defaultTests: TestObject = {
           wrapperComponent,
           elementRefName = 'ref',
           targetComponent,
+          primarySlot = 'root',
         } = testInfo;
 
         const rootRef = React.createRef<HTMLDivElement>();
         const mergedProps: Partial<{}> = {
           ...requiredProps,
-          [elementRefName]: rootRef,
+          ...(primarySlot !== 'root'
+            ? {
+                // If primarySlot is something other than 'root', add the ref to
+                // the root slot rather than to the component's props.
+                root: { ref: rootRef },
+              }
+            : {
+                [elementRefName]: rootRef,
+              }),
         };
 
         const el = targetComponent
@@ -153,6 +162,53 @@ export const defaultTests: TestObject = {
         });
       } catch (e) {
         throw new Error(defaultErrorMessages['component-has-root-ref'](testInfo, e));
+      }
+    });
+  },
+
+  /**
+   * Component does not apply `size` as a native prop when a custom version is defined.
+   *
+   * Background: `input` and `select` support a `size` prop which is not very useful
+   * (https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size).
+   * Since we don't anticipate ever needing this functionality, and we often want to use the prop name
+   * `size` to refer to visual size (like small/medium/large), we want to ensure that components defining
+   * a custom `size` prop don't also apply it as a native prop by accident.
+   *
+   * (In the extremely unlikely event that someone has a compelling need for the native functionality
+   * in the future, it can be added under an `htmlSize` prop.)
+   */
+  'omits-size-prop': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const sizeType = componentInfo.props.size?.type?.name;
+    if (!sizeType || componentInfo.props.htmlSize) {
+      return;
+    }
+    // if the size prop is defined, type.name will probably be 'string | undefined'
+    // or something like '"small" | "medium" | "large" | undefined'
+    const sizeIsString = /\bstring\b/.test(sizeType);
+    const sizeLiteralMatch = sizeType.match(/"(.*?)"/);
+    if (!sizeIsString || sizeLiteralMatch) {
+      return; // not a format we know how to test
+    }
+
+    it(`does not apply native size prop if custom one is defined (omits-size-prop)`, () => {
+      const { customMount = mount, Component, requiredProps, helperComponents = [], wrapperComponent } = testInfo;
+
+      const size = sizeLiteralMatch?.[1] || 'foo';
+      const mergedProps = {
+        ...requiredProps,
+        size,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any; // we know the size prop is supported but there's not a good way to derive the actual type
+
+      const el = customMount(<Component {...mergedProps} />);
+      const component = getComponent(el, helperComponents, wrapperComponent);
+      const elementWithSize = component.getDOMNode().querySelector('[size]');
+
+      try {
+        expect(elementWithSize).toBeFalsy();
+      } catch (e) {
+        throw new Error(defaultErrorMessages['omits-size-prop'](testInfo, e, size, elementWithSize!));
       }
     });
   },
@@ -562,6 +618,88 @@ export const defaultTests: TestObject = {
         });
       } catch (e) {
         throw new Error(defaultErrorMessages['as-renders-html'](testInfo, e));
+      }
+    });
+  },
+
+  /** If the primary slot is specified, it receives native props other than 'className' and 'style' */
+  'primary-slot-gets-native-props': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    it(`applies correct native props to the primary and root slots (primary-slot-gets-native-props)`, () => {
+      try {
+        const {
+          customMount = mount,
+          Component,
+          requiredProps,
+          helperComponents = [],
+          wrapperComponent,
+          targetComponent,
+          primarySlot = 'root',
+        } = testInfo;
+
+        // This test only applies if this component has a primary slot other than 'root'
+        if (primarySlot === 'root') {
+          return;
+        }
+
+        // Add this data attribute directly to the primary slot so that its DOM node can be
+        // found to verify that the props went to the correct element
+        const primarySlotDataTag = 'data-primary-slot';
+
+        // Add these values to the component's props to make sure they are forwarded to the appropriate slot
+        const ref = React.createRef<HTMLElement>();
+        const testDataAttribute = 'data-conformance-test'; // A data attribute is a proxy for any arbitrary native prop
+        const testClass = 'conformance-test-class-name';
+        const testStyleFontFamily = 'conformance-test-font-family';
+
+        const mergedProps: Partial<{}> = {
+          ...requiredProps,
+          [primarySlot]: {
+            [primarySlotDataTag]: true,
+          },
+          ref,
+          className: testClass,
+          style: { fontFamily: testStyleFontFamily },
+          [testDataAttribute]: testDataAttribute,
+        };
+
+        const el = targetComponent
+          ? customMount(<Component {...mergedProps} />).find(targetComponent)
+          : customMount(<Component {...mergedProps} />);
+
+        act(() => {
+          const component = getComponent(el, helperComponents, wrapperComponent);
+
+          const rootNode = component.getDOMNode();
+          expect(rootNode).toBeInstanceOf(HTMLElement);
+          if (!(rootNode instanceof HTMLElement)) {
+            return;
+          }
+
+          // Find the node that represents the primary slot, searching for its data attribute
+          const primaryNode = rootNode.querySelector(`[${primarySlotDataTag}]`);
+
+          // We should have found the primary slot's node
+          expect(primaryNode).toBeInstanceOf(HTMLElement);
+          if (!(primaryNode instanceof HTMLElement)) {
+            return;
+          }
+
+          // className and style should go the *root* slot
+          expect(rootNode.className).toContain(testClass);
+          expect(rootNode.style.fontFamily).toEqual(testStyleFontFamily);
+          // ... and not the primary slot
+          expect(primaryNode.className).not.toContain(testClass);
+          expect(primaryNode.style.fontFamily).not.toEqual(testStyleFontFamily);
+
+          // Ref and all other native props should go to the *primary* slot
+          expect(primaryNode).toBe(ref.current);
+          expect(primaryNode.getAttribute(testDataAttribute)).toEqual(testDataAttribute);
+          // ... and not the root slot
+          expect(rootNode).not.toBe(ref.current);
+          expect(rootNode.getAttribute(testDataAttribute)).not.toEqual(testDataAttribute);
+        });
+      } catch (e) {
+        throw new Error(defaultErrorMessages['primary-slot-gets-native-props'](testInfo, e));
       }
     });
   },

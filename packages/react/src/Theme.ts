@@ -1,2 +1,36 @@
-export * from '@fluentui/theme';
+export {
+  AnimationStyles,
+  AnimationVariables,
+  CommunicationColors,
+  DefaultEffects,
+  DefaultFontStyles,
+  DefaultPalette,
+  DefaultSpacing,
+  Depths,
+  FluentTheme,
+  createFontStyles,
+  createTheme,
+  mergeThemes,
+  NeutralColors,
+  SharedColors,
+  registerDefaultFontFaces,
+} from '@fluentui/theme';
+export type {
+  ComponentStyles,
+  ComponentsStyles,
+  IAnimationStyles,
+  IAnimationVariables,
+  IEffects,
+  IFontStyles,
+  IPalette,
+  IPartialTheme,
+  IScheme,
+  ISchemeNames,
+  ISemanticColors,
+  ISemanticTextColors,
+  ISpacing,
+  ITheme,
+  PartialTheme,
+  Theme,
+} from '@fluentui/theme';
 export * from './utilities/ThemeProvider/index';

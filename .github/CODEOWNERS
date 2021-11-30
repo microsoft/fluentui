@@ -61,6 +61,8 @@
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
 packages/a11y-testing/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
 packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
+packages/fluentui/react-northstar/src/components/Chat/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726 @Hirse
+packages/fluentui/react-northstar/src/themes/teams/components/Chat/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726 @Hirse
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
@@ -71,7 +73,6 @@ public-docsite/ @ecraig12345 @micahgodbolt
 public-docsite-resources/ @ecraig12345 @micahgodbolt
 perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
-# todo-app/
 
 #### Packages
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd

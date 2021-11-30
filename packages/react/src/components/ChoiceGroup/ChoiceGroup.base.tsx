@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import { classNamesFunction, find, getNativeProps, divProperties, setFocusVisibility } from '../../Utilities';
+import {
+  classNamesFunction,
+  find,
+  getNativeProps,
+  divProperties,
+  setFocusVisibility,
+  useFocusRects,
+} from '../../Utilities';
 import { ChoiceGroupOption } from './ChoiceGroupOption/index';
-import { useId, useControllableValue, useWarnings } from '@fluentui/react-hooks';
+import { useId, useControllableValue, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import type { IRefObject } from '../../Utilities';
 import type {
   IChoiceGroupOption,
@@ -88,8 +95,12 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
   const [keyChecked, setKeyChecked] = useControllableValue(props.selectedKey, defaultSelectedKey);
   const [keyFocused, setKeyFocused] = React.useState<string | number>();
 
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const mergedRootRefs: React.Ref<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
+
   useDebugWarnings(props);
   useComponentRef(options, keyChecked, id, componentRef);
+  useFocusRects(rootRef);
 
   const onFocus = React.useCallback((ev?: React.FocusEvent<HTMLElement>, option?: IChoiceGroupOptionProps) => {
     if (option) {
@@ -117,7 +128,7 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
   );
 
   return (
-    <div className={classNames.root} {...divProps} ref={forwardedRef}>
+    <div className={classNames.root} {...divProps} ref={mergedRootRefs}>
       <div role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
         {label && (
           <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>

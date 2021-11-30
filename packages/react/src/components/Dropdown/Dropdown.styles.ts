@@ -325,11 +325,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     caretDownWrapper: [
       globalClassnames.caretDownWrapper,
       {
-        position: 'absolute',
-        top: 1,
-        right: 8,
         height: DROPDOWN_HEIGHT,
         lineHeight: DROPDOWN_HEIGHT - 2, // height minus the border
+        paddingTop: 1,
+        position: 'absolute',
+        right: 8,
+        top: 0,
       },
       !disabled && {
         cursor: 'pointer',

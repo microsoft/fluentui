@@ -26,6 +26,7 @@ import {
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
+  IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
@@ -83,6 +84,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _createLegendsForLine: (data: IVerticalStackedChartProps[]) => LineLegends[];
   private _lineObject: LineObject;
   private _tooltipId: string;
+  private _yMax: number;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -177,6 +179,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         }
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
+        getAxisData={this._getAxisData}
         customizedCallout={this._getCustomizedCallout()}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
@@ -631,10 +634,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.props.href ? (window.location.href = this.props.href) : '';
   }
 
-  private _getYMax = (dataset: IDataPoint[]) => {
-    return Math.max(d3Max(dataset, (point: IDataPoint) => point.y)!, this.props.yMaxValue || 0);
-  };
-
   private _getBarGapAndScale(
     bars: IVSChartDataPoint[],
     yBarScale: NumericScale,
@@ -811,7 +810,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _getScales = (containerHeight: number, containerWidth: number, isNumeric: boolean) => {
-    const yMax = this._getYMax(this._dataset);
+    const yMax = this._yMax;
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -874,5 +873,12 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAxisData = (yAxisData: IAxisData) => {
+    if (yAxisData && yAxisData.yAxisDomainValues.length) {
+      const { yAxisDomainValues: domainValue } = yAxisData;
+      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+    }
   };
 }

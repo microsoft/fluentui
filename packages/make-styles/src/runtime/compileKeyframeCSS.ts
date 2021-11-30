@@ -1,8 +1,8 @@
-import { MakeStyles } from '../types';
+import { MakeStylesAnimation } from '../types';
 import { compile, middleware, serialize, rulesheet, stringify, prefixer } from 'stylis';
 import { cssifyObject } from './utils/cssifyObject';
 
-export function compileKeyframeRule(keyframeObject: MakeStyles): string {
+export function compileKeyframeRule(keyframeObject: MakeStylesAnimation): string {
   let css: string = '';
 
   // eslint-disable-next-line guard-for-in

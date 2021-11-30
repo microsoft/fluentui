@@ -491,15 +491,6 @@
       "root": "packages/webpack-utilities",
       "projectType": "library"
     },
-    "a11y-tests": {
-      "root": "apps/a11y-tests",
-      "projectType": "application"
-    },
-    "typings": {
-      "root": "typings",
-      "projectType": "library",
-      "sourceRoot": "typings"
-    },
     "nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",
@@ -548,10 +539,6 @@
       "root": "apps/theming-designer",
       "projectType": "application"
     },
-    "todo-app": {
-      "root": "apps/todo-app",
-      "projectType": "application"
-    },
     "ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",
       "projectType": "application"
@@ -559,6 +546,11 @@
     "ts-minbar-test-react-components": {
       "root": "apps/ts-minbar-test-react-components",
       "projectType": "application"
+    },
+    "typings": {
+      "root": "typings",
+      "projectType": "library",
+      "sourceRoot": "typings"
     },
     "vr-tests": {
       "root": "apps/vr-tests",

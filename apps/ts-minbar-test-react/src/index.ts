@@ -10,7 +10,7 @@ import { createTempDir, log } from '@fluentui/scripts/projects-test/utils';
 
 async function performTest() {
   try {
-    const logger = log('test:ts-minbar-react:typings');
+    const logger = log('test:ts-minbar-react');
     const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/'));
     const tmpDirectory = createTempDir('ts-minbar-react-typings-');
 
@@ -41,7 +41,7 @@ async function performTest() {
     fs.copyFileSync(scaffoldPath('tsconfig.json'), path.resolve(tmpDirectory, 'tsconfig.json'));
     logger(`✔️ Source and configs were copied`);
 
-    await sh(`which yarn`);
+    await sh(`npx npm-which yarn`);
 
     await sh(`yarn --version`);
     await sh(`yarn tsc --version`);
