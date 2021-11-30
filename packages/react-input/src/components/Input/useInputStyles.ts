@@ -147,7 +147,7 @@ const useContentStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles = (state: InputState): InputState => {
-  const { fieldSize = 'medium', appearance = 'outline' } = state;
+  const { size = 'medium', appearance = 'outline' } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 
@@ -158,7 +158,7 @@ export const useInputStyles = (state: InputState): InputState => {
   state.root.className = mergeClasses(
     inputClassName,
     rootStyles.base,
-    rootStyles[fieldSize],
+    rootStyles[size],
     rootStyles[appearance],
     state.inline && rootStyles.inline,
     filled && rootStyles.filled,
@@ -168,7 +168,7 @@ export const useInputStyles = (state: InputState): InputState => {
 
   state.input.className = mergeClasses(
     inputStyles.base,
-    inputStyles[fieldSize],
+    inputStyles[size],
     disabled && inputStyles.disabled,
     state.input.className,
   );

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.44.0",
+  "version": "8.45.0",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -57,7 +57,7 @@
     "@fluentui/foundation-legacy": "^8.1.17",
     "@fluentui/font-icons-mdl2": "^8.1.18",
     "@fluentui/merge-styles": "^8.2.2",
-    "@fluentui/react-focus": "^8.3.9",
+    "@fluentui/react-focus": "^8.3.10",
     "@fluentui/react-hooks": "^8.3.7",
     "@fluentui/react-window-provider": "^2.1.5",
     "@fluentui/set-version": "^8.1.5",

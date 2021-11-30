@@ -1,24 +1,24 @@
 import type { BorderWidthProperty } from 'csstype';
 
-import type { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 import { generateStyles } from './generateStyles';
 
-export function borderWidth(all: BorderWidthProperty<MakeStylesCSSValue>): MakeStyles;
+export function borderWidth(all: BorderWidthProperty<MakeStylesCSSValue>): MakeStylesStrictCSSObject;
 export function borderWidth(
   vertical: BorderWidthProperty<MakeStylesCSSValue>,
   horizontal: BorderWidthProperty<MakeStylesCSSValue>,
-): MakeStyles;
+): MakeStylesStrictCSSObject;
 export function borderWidth(
   top: BorderWidthProperty<MakeStylesCSSValue>,
   horizontal: BorderWidthProperty<MakeStylesCSSValue>,
   bottom: BorderWidthProperty<MakeStylesCSSValue>,
-): MakeStyles;
+): MakeStylesStrictCSSObject;
 export function borderWidth(
   top: BorderWidthProperty<MakeStylesCSSValue>,
   right: BorderWidthProperty<MakeStylesCSSValue>,
   bottom: BorderWidthProperty<MakeStylesCSSValue>,
   left: BorderWidthProperty<MakeStylesCSSValue>,
-): MakeStyles;
+): MakeStylesStrictCSSObject;
 
 /**
  * A function that implements CSS spec conformant expansion for "borderWidth"
@@ -31,6 +31,6 @@ export function borderWidth(
  *
  * See https://developer.mozilla.org/en-US/docs/Web/CSS/border-width
  */
-export function borderWidth(...values: BorderWidthProperty<MakeStylesCSSValue>[]): MakeStyles {
+export function borderWidth(...values: BorderWidthProperty<MakeStylesCSSValue>[]): MakeStylesStrictCSSObject {
   return generateStyles('border', 'Width', ...values);
 }

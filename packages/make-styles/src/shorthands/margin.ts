@@ -1,15 +1,19 @@
-import type { MakeStyles, MakeStylesCSSValue } from '../types';
+import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 import { generateStyles } from './generateStyles';
 
-export function margin(all: MakeStylesCSSValue): MakeStyles;
-export function margin(vertical: MakeStylesCSSValue, horizontal: MakeStylesCSSValue): MakeStyles;
-export function margin(top: MakeStylesCSSValue, horizontal: MakeStylesCSSValue, bottom: MakeStylesCSSValue): MakeStyles;
+export function margin(all: MakeStylesCSSValue): MakeStylesStrictCSSObject;
+export function margin(vertical: MakeStylesCSSValue, horizontal: MakeStylesCSSValue): MakeStylesStrictCSSObject;
+export function margin(
+  top: MakeStylesCSSValue,
+  horizontal: MakeStylesCSSValue,
+  bottom: MakeStylesCSSValue,
+): MakeStylesStrictCSSObject;
 export function margin(
   top: MakeStylesCSSValue,
   right: MakeStylesCSSValue,
   bottom: MakeStylesCSSValue,
   left: MakeStylesCSSValue,
-): MakeStyles;
+): MakeStylesStrictCSSObject;
 
 /**
  * A function that implements CSS spec conformant expansion for "margin"
@@ -22,6 +26,6 @@ export function margin(
  *
  * See https://developer.mozilla.org/en-US/docs/Web/CSS/margin
  */
-export function margin(...values: MakeStylesCSSValue[]): MakeStyles {
+export function margin(...values: MakeStylesCSSValue[]): MakeStylesStrictCSSObject {
   return generateStyles('margin', '', ...values);
 }
