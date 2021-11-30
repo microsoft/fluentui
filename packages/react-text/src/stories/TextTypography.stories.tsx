@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Body, Caption, Display, Headline, LargeTitle, Title1, Title2, Title3, Subheadline } from '../index'; // codesandbox-dependency: @fluentui/react-text ^9.0.0-beta
+import { Body, Caption, Display, Headline, LargeTitle, Title1, Title2, Title3, Subheadline } from '../index';
 
 export const Typography = () => (
   <>
