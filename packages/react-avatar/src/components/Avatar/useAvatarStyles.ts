@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 import type { AvatarState } from './Avatar.types';
 
 export const avatarClassName = 'fui-Avatar';
@@ -57,7 +57,7 @@ const useStyles = makeStyles({
     flexShrink: 0,
     position: 'relative',
     verticalAlign: 'middle',
-    borderRadius: theme.borderRadiusCircular,
+    ...shorthands.borderRadius(theme.borderRadiusCircular),
     fontFamily: theme.fontFamilyBase,
     fontWeight: theme.fontWeightSemibold,
     boxShadow: `0 0 0 ${theme.strokeWidthThin} ${theme.colorTransparentStroke} inset`,
@@ -73,16 +73,24 @@ const useStyles = makeStyles({
   textSubtitle1: theme => ({ fontSize: theme.fontSizeBase500 }),
   textTitle: theme => ({ fontSize: theme.fontSizeBase600 }),
 
-  squareSmall: theme => ({ borderRadius: theme.borderRadiusSmall }),
-  squareMedium: theme => ({ borderRadius: theme.borderRadiusMedium }),
-  squareLarge: theme => ({ borderRadius: theme.borderRadiusLarge }),
-  squareXLarge: theme => ({ borderRadius: theme.borderRadiusXLarge }),
+  squareSmall: theme => ({
+    ...shorthands.borderRadius(theme.borderRadiusSmall),
+  }),
+  squareMedium: theme => ({
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
+  }),
+  squareLarge: theme => ({
+    ...shorthands.borderRadius(theme.borderRadiusLarge),
+  }),
+  squareXLarge: theme => ({
+    ...shorthands.borderRadius(theme.borderRadiusXLarge),
+  }),
 
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
-    transition:
-      `transform ${animationTiming.ultraSlow} ${animations.fastEase}, ` +
-      `opacity ${animationTiming.faster} ${animations.nullEasing}`,
+    transitionProperty: 'transform, opacity',
+    transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
+    transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
 
     ':before': {
       content: '""',
@@ -92,35 +100,35 @@ const useStyles = makeStyles({
       bottom: 0,
       right: 0,
 
-      borderRadius: 'inherit',
-      transition:
-        `margin ${animationTiming.ultraSlow} ${animations.fastEase}, ` +
-        `opacity ${animationTiming.slower} ${animations.nullEasing}`,
+      ...shorthands.borderRadius('inherit'),
+      transitionProperty: 'margin, opacity',
+      transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
+      transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
     },
   },
 
   ring: theme => ({
     ':before': {
-      borderColor: theme.colorBrandBackgroundStatic,
-      borderStyle: 'solid',
+      ...shorthands.borderColor(theme.colorBrandBackgroundStatic),
+      ...shorthands.borderStyle('solid'),
     },
   }),
   ringThick: theme => ({
     ':before': {
-      margin: `calc(-2 * ${theme.strokeWidthThick})`,
-      borderWidth: theme.strokeWidthThick,
+      ...shorthands.margin(`calc(-2 * ${theme.strokeWidthThick})`),
+      ...shorthands.borderWidth(theme.strokeWidthThick),
     },
   }),
   ringThicker: theme => ({
     ':before': {
-      margin: `calc(-2 * ${theme.strokeWidthThicker})`,
-      borderWidth: theme.strokeWidthThicker,
+      ...shorthands.margin(`calc(-2 * ${theme.strokeWidthThicker})`),
+      ...shorthands.borderWidth(theme.strokeWidthThicker),
     },
   }),
   ringThickest: theme => ({
     ':before': {
-      margin: `calc(-2 * ${theme.strokeWidthThickest})`,
-      borderWidth: theme.strokeWidthThickest,
+      ...shorthands.margin(`calc(-2 * ${theme.strokeWidthThickest})`),
+      ...shorthands.borderWidth(theme.strokeWidthThickest),
     },
   }),
 
@@ -138,16 +146,18 @@ const useStyles = makeStyles({
   inactive: {
     opacity: '0.8',
     transform: 'scale(0.875)',
-    transition:
-      `transform ${animationTiming.ultraSlow} ${animations.fastOutSlowInMin}, ` +
-      `opacity ${animationTiming.faster} ${animations.nullEasing}`,
+
+    transitionProperty: 'transform, opacity',
+    transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
+    transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
 
     ':before': {
-      margin: 0,
+      ...shorthands.margin(0),
       opacity: 0,
-      transition:
-        `margin ${animationTiming.ultraSlow} ${animations.fastOutSlowInMin}, ` +
-        `opacity ${animationTiming.slower} ${animations.nullEasing}`,
+
+      transitionProperty: 'margin, opacity',
+      transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
+      transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
     },
   },
 
@@ -168,7 +178,7 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
 
-    borderRadius: 'inherit',
+    ...shorthands.borderRadius('inherit'),
     objectFit: 'cover',
     verticalAlign: 'top',
   },
@@ -179,14 +189,14 @@ const useStyles = makeStyles({
     left: 0,
     width: '100%',
     height: '100%',
-    lineHeight: 1,
+    lineHeight: '1',
 
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     verticalAlign: 'center',
     textAlign: 'center',
-    borderRadius: 'inherit',
+    ...shorthands.borderRadius('inherit'),
   },
 });
 
@@ -209,131 +219,131 @@ const useSizeStyles = makeStyles({
 const useColorStyles = makeStyles({
   neutral: theme => ({
     color: theme.colorNeutralForeground3,
-    background: theme.colorNeutralBackground6,
+    backgroundColor: theme.colorNeutralBackground6,
   }),
   brand: theme => ({
     color: theme.colorNeutralForegroundInverted,
-    background: theme.colorBrandBackgroundStatic,
+    backgroundColor: theme.colorBrandBackgroundStatic,
   }),
   darkRed: theme => ({
     color: theme.colorPaletteDarkRedForeground2,
-    background: theme.colorPaletteDarkRedBackground2,
+    backgroundColor: theme.colorPaletteDarkRedBackground2,
   }),
   cranberry: theme => ({
     color: theme.colorPaletteCranberryForeground2,
-    background: theme.colorPaletteCranberryBackground2,
+    backgroundColor: theme.colorPaletteCranberryBackground2,
   }),
   red: theme => ({
     color: theme.colorPaletteRedForeground2,
-    background: theme.colorPaletteRedBackground2,
+    backgroundColor: theme.colorPaletteRedBackground2,
   }),
   pumpkin: theme => ({
     color: theme.colorPalettePumpkinForeground2,
-    background: theme.colorPalettePumpkinBackground2,
+    backgroundColor: theme.colorPalettePumpkinBackground2,
   }),
   peach: theme => ({
     color: theme.colorPalettePeachForeground2,
-    background: theme.colorPalettePeachBackground2,
+    backgroundColor: theme.colorPalettePeachBackground2,
   }),
   marigold: theme => ({
     color: theme.colorPaletteMarigoldForeground2,
-    background: theme.colorPaletteMarigoldBackground2,
+    backgroundColor: theme.colorPaletteMarigoldBackground2,
   }),
   gold: theme => ({
     color: theme.colorPaletteGoldForeground2,
-    background: theme.colorPaletteGoldBackground2,
+    backgroundColor: theme.colorPaletteGoldBackground2,
   }),
   brass: theme => ({
     color: theme.colorPaletteBrassForeground2,
-    background: theme.colorPaletteBrassBackground2,
+    backgroundColor: theme.colorPaletteBrassBackground2,
   }),
   brown: theme => ({
     color: theme.colorPaletteBrownForeground2,
-    background: theme.colorPaletteBrownBackground2,
+    backgroundColor: theme.colorPaletteBrownBackground2,
   }),
   forest: theme => ({
     color: theme.colorPaletteForestForeground2,
-    background: theme.colorPaletteForestBackground2,
+    backgroundColor: theme.colorPaletteForestBackground2,
   }),
   seafoam: theme => ({
     color: theme.colorPaletteSeafoamForeground2,
-    background: theme.colorPaletteSeafoamBackground2,
+    backgroundColor: theme.colorPaletteSeafoamBackground2,
   }),
   darkGreen: theme => ({
     color: theme.colorPaletteDarkGreenForeground2,
-    background: theme.colorPaletteDarkGreenBackground2,
+    backgroundColor: theme.colorPaletteDarkGreenBackground2,
   }),
   lightTeal: theme => ({
     color: theme.colorPaletteLightTealForeground2,
-    background: theme.colorPaletteLightTealBackground2,
+    backgroundColor: theme.colorPaletteLightTealBackground2,
   }),
   teal: theme => ({
     color: theme.colorPaletteTealForeground2,
-    background: theme.colorPaletteTealBackground2,
+    backgroundColor: theme.colorPaletteTealBackground2,
   }),
   steel: theme => ({
     color: theme.colorPaletteSteelForeground2,
-    background: theme.colorPaletteSteelBackground2,
+    backgroundColor: theme.colorPaletteSteelBackground2,
   }),
   blue: theme => ({
     color: theme.colorPaletteBlueForeground2,
-    background: theme.colorPaletteBlueBackground2,
+    backgroundColor: theme.colorPaletteBlueBackground2,
   }),
   royalBlue: theme => ({
     color: theme.colorPaletteRoyalBlueForeground2,
-    background: theme.colorPaletteRoyalBlueBackground2,
+    backgroundColor: theme.colorPaletteRoyalBlueBackground2,
   }),
   cornflower: theme => ({
     color: theme.colorPaletteCornflowerForeground2,
-    background: theme.colorPaletteCornflowerBackground2,
+    backgroundColor: theme.colorPaletteCornflowerBackground2,
   }),
   navy: theme => ({
     color: theme.colorPaletteNavyForeground2,
-    background: theme.colorPaletteNavyBackground2,
+    backgroundColor: theme.colorPaletteNavyBackground2,
   }),
   lavender: theme => ({
     color: theme.colorPaletteLavenderForeground2,
-    background: theme.colorPaletteLavenderBackground2,
+    backgroundColor: theme.colorPaletteLavenderBackground2,
   }),
   purple: theme => ({
     color: theme.colorPalettePurpleForeground2,
-    background: theme.colorPalettePurpleBackground2,
+    backgroundColor: theme.colorPalettePurpleBackground2,
   }),
   grape: theme => ({
     color: theme.colorPaletteGrapeForeground2,
-    background: theme.colorPaletteGrapeBackground2,
+    backgroundColor: theme.colorPaletteGrapeBackground2,
   }),
   lilac: theme => ({
     color: theme.colorPaletteLilacForeground2,
-    background: theme.colorPaletteLilacBackground2,
+    backgroundColor: theme.colorPaletteLilacBackground2,
   }),
   pink: theme => ({
     color: theme.colorPalettePinkForeground2,
-    background: theme.colorPalettePinkBackground2,
+    backgroundColor: theme.colorPalettePinkBackground2,
   }),
   magenta: theme => ({
     color: theme.colorPaletteMagentaForeground2,
-    background: theme.colorPaletteMagentaBackground2,
+    backgroundColor: theme.colorPaletteMagentaBackground2,
   }),
   plum: theme => ({
     color: theme.colorPalettePlumForeground2,
-    background: theme.colorPalettePlumBackground2,
+    backgroundColor: theme.colorPalettePlumBackground2,
   }),
   beige: theme => ({
     color: theme.colorPaletteBeigeForeground2,
-    background: theme.colorPaletteBeigeBackground2,
+    backgroundColor: theme.colorPaletteBeigeBackground2,
   }),
   mink: theme => ({
     color: theme.colorPaletteMinkForeground2,
-    background: theme.colorPaletteMinkBackground2,
+    backgroundColor: theme.colorPaletteMinkBackground2,
   }),
   platinum: theme => ({
     color: theme.colorPalettePlatinumForeground2,
-    background: theme.colorPalettePlatinumBackground2,
+    backgroundColor: theme.colorPalettePlatinumBackground2,
   }),
   anchor: theme => ({
     color: theme.colorPaletteAnchorForeground2,
-    background: theme.colorPaletteAnchorBackground2,
+    backgroundColor: theme.colorPaletteAnchorBackground2,
   }),
 });
 
