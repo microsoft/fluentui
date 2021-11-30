@@ -39,8 +39,6 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
     display: 'flex',
     width: '100%',
     [`& .${flexClassName}`]: {
-      display: 'flex',
-      justifyContent: 'end',
       flexWrap: 'wrap',
       width: '100%',
     },

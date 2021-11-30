@@ -303,7 +303,7 @@ export const Dialog = (React.forwardRef<HTMLDivElement, DialogProps>((props, ref
       }),
       overrideProps: {
         content: (
-          <Flex gap="gap.smaller">
+          <Flex gap="gap.smaller" hAlign={context.rtl ? 'start' : 'end'}>
             {cancelElement}
             {confirmElement}
           </Flex>
