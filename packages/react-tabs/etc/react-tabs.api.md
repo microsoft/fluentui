@@ -4,37 +4,11 @@
 
 ```ts
 
-import { BadgeProps } from '@fluentui/react-badge';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-
-// @public
-export const BadgeTab: ForwardRefComponent<BadgeTabProps>;
-
-// @public (undocumented)
-export type BadgeTabCommons = TabCommons;
-
-// @public
-export type BadgeTabProps = ComponentProps<BadgeTabSlots> & BadgeTabCommons;
-
-// @public
-export const badgeTabShorthandProps: (keyof BadgeTabSlots)[];
-
-// @public (undocumented)
-export type BadgeTabSlots = TabSlots & {
-    badge: ObjectShorthandProps<BadgeProps>;
-    children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
-};
-
-// @public
-export type BadgeTabState = ComponentState<BadgeTabSlots> & BadgeTabCommons & Omit<TabState, keyof TabSlots | 'components'>;
-
-// @public
-export const renderBadgeTab: (state: BadgeTabState) => JSX.Element;
 
 // @public
 export const renderTab: (state: TabState) => JSX.Element;
@@ -77,11 +51,10 @@ export type TabListCommons = {
     selectedValue?: TabValue;
     size?: 'small' | 'medium';
     vertical?: boolean;
-    verticalTabContent?: boolean;
 };
 
 // @public (undocumented)
-export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical' | 'verticalTabContent'>> & {
+export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
     onSelect: SelectTabEventHandler;
 };
 
@@ -124,18 +97,11 @@ export type TabState = ComponentState<TabSlots> & TabCommons & {
     appearance?: string;
     selected?: boolean;
     size: 'small' | 'medium';
-    verticalContent: boolean;
     verticalList: boolean;
 };
 
 // @public
 export type TabValue = unknown;
-
-// @public
-export const useBadgeTab: (props: BadgeTabProps, ref: React_2.Ref<HTMLElement>) => BadgeTabState;
-
-// @public
-export const useBadgeTabStyles: (state: BadgeTabState) => BadgeTabState;
 
 // @public
 export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;

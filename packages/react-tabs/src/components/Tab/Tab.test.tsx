@@ -18,7 +18,6 @@ describe('Tab', () => {
     appearance: 'transparent',
     size: 'medium',
     vertical: false,
-    verticalTabContent: false,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     onSelect: () => {},
   };
@@ -27,14 +26,8 @@ describe('Tab', () => {
     ['default', { ...defaultContext }],
     ['subtle appearance', { ...defaultContext, appearance: 'subtle' }],
     ['vertical', { ...defaultContext, vertical: true }],
-    ['verticalTabContent', { ...defaultContext, verticalTabContent: true }],
-    ['vertical and verticalTabContent', { ...defaultContext, vertical: true, verticalTabContent: true }],
     ['small size', { ...defaultContext, size: 'small' }],
     ['small size and vertical', { ...defaultContext, size: 'small', vertical: true }],
-    [
-      'small size, vertical, and verticalTabContent',
-      { ...defaultContext, size: 'small', vertical: true, verticalTabContent: true },
-    ],
     ['selected', { ...defaultContext, selectedValue: '1' }],
     ['not selected', { ...defaultContext, selectedValue: '2' }],
   ])('renders %s correctly', (_testName, tabList) => {
@@ -72,14 +65,8 @@ describe('Tab', () => {
     ['default', { ...defaultContext }],
     ['subtle appearance', { ...defaultContext, appearance: 'subtle' }],
     ['vertical', { ...defaultContext, vertical: true }],
-    ['verticalTabContent', { ...defaultContext, verticalTabContent: true }],
-    ['vertical and verticalTabContent', { ...defaultContext, vertical: true, verticalTabContent: true }],
     ['small size', { ...defaultContext, size: 'small' }],
     ['small size and vertical', { ...defaultContext, size: 'small', vertical: true }],
-    [
-      'small size, vertical, and verticalTabContent',
-      { ...defaultContext, size: 'small', vertical: true, verticalTabContent: true },
-    ],
   ])('renders %s correctly with icon slotted', (_testName, tabList) => {
     const contextValues = {
       tabList: tabList as TabListContextValue,

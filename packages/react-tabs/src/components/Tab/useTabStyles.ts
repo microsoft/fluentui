@@ -145,10 +145,6 @@ const useContentStyles = makeStyles({
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
-  verticalContent: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
 });
 
 const useIconStyles = makeStyles({
@@ -169,35 +165,6 @@ const useIconStyles = makeStyles({
   },
 });
 
-const useHorizontalContentIconStyles = makeStyles({
-  small: {
-    marginRight: '2px',
-  },
-  medium: {
-    marginRight: '6px',
-  },
-
-  mediumVerticalContent: {
-    marginRight: '0',
-    marginBottom: '4px',
-  },
-  smallVerticalContent: {
-    marginRight: '0',
-    marginBottom: '2px',
-  },
-});
-
-const useVerticalContentIconStyles = makeStyles({
-  small: {
-    marginRight: '0',
-    marginBottom: '2px',
-  },
-  medium: {
-    marginRight: '0',
-    marginBottom: '4px',
-  },
-});
-
 /**
  * Apply styling to the Tab slots based on the state
  */
@@ -209,8 +176,6 @@ export const useTabStyles = (state: TabState): TabState => {
 
   const contentStyles = useContentStyles();
   const iconStyles = useIconStyles();
-  const horizontalContentIconStyles = useHorizontalContentIconStyles();
-  const verticalContentIconStyles = useVerticalContentIconStyles();
 
   state.root.className = mergeClasses(
     tabClassName,
@@ -227,17 +192,11 @@ export const useTabStyles = (state: TabState): TabState => {
     contentClassName,
     contentStyles.base,
     state.verticalList && contentStyles.verticalList,
-    state.verticalContent && contentStyles.verticalContent,
     state.content.className,
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(
-      iconStyles.base,
-      iconStyles[state.size],
-      state.verticalContent ? verticalContentIconStyles[state.size] : horizontalContentIconStyles[state.size],
-      state.icon.className,
-    );
+    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
   }
 
   return state;

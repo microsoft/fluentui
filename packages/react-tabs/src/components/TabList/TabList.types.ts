@@ -20,8 +20,8 @@ export type TabListSlots = {
 export type TabListCommons = {
   /**
    * A tab list can supports 'transparent' and 'subtle' appearance.
-   * - 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
-   * - 'transparent': No background and border styling
+   *- 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
+   *- 'transparent': No background and border styling
    * The appearance affects each of the contained tabs.
    * @default 'transparent'
    */
@@ -49,12 +49,6 @@ export type TabListCommons = {
    * @default false
    */
   vertical?: boolean;
-
-  /**
-   * A tab list can arrange the content within each tab vertically.
-   * @default false
-   */
-  verticalTabContent?: boolean;
 };
 
 /**
@@ -70,7 +64,7 @@ export type TabListProps = ComponentProps<TabListSlots> &
   };
 
 export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> &
-  Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical' | 'verticalTabContent'>> & {
+  Required<Pick<TabListCommons, 'appearance' | 'size' | 'vertical'>> & {
     /**
      * A callback to allow a tab to select itself when pressed.
      */

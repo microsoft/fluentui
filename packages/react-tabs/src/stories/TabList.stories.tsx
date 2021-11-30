@@ -5,12 +5,10 @@ import bestPracticesMd from './TabListBestPractices.md';
 
 export { Default } from './TabListDefault.stories';
 export { Vertical } from './TabListVertical.stories';
-export { VerticalTabContent } from './TabListVerticalTabContent.stories';
 export { Appearance } from './TabListAppearance.stories';
 export { SizeSmall } from './TabListSizeSmall.stories';
 export { SizeMedium } from './TabListSizeMedium.stories';
 export { WithIcon } from './TabListWithIcon.stories';
-export { WithBadgeTab } from './TabListWithBadgeTab.stories';
 
 export default {
   title: 'Components/TabList',

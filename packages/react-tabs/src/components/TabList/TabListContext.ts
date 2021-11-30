@@ -10,5 +10,4 @@ export const TabListContext: Context<TabListContextValue> = createContext<TabLis
   },
   size: 'medium',
   vertical: false,
-  verticalTabContent: false,
 });

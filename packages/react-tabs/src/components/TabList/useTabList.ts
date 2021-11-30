@@ -21,13 +21,7 @@ export const tabListShorthandProps: (keyof TabListSlots)[] = [
  * @param ref - reference to root HTMLElement of TabList
  */
 export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
-  const {
-    appearance = 'transparent',
-    onTabSelect,
-    size = 'medium',
-    vertical = false,
-    verticalTabContent = false,
-  } = props;
+  const { appearance = 'transparent', onTabSelect, size = 'medium', vertical = false } = props;
 
   const focusAttributes = useArrowNavigationGroup({ circular: true, axis: vertical ? 'vertical' : 'horizontal' });
 
@@ -61,6 +55,5 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
     onSelect,
     size,
     vertical,
-    verticalTabContent,
   };
 };

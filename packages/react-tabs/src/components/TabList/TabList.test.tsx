@@ -16,11 +16,8 @@ describe('TabList', () => {
     ['default', {}],
     ['subtle appearance', { appearance: 'subtle' }],
     ['vertical', { vertical: true }],
-    ['verticalTabContent', { verticalTabContent: true }],
-    ['vertical and verticalTabContent', { vertical: true, verticalTabContent: true }],
     ['small size', { size: 'small' }],
     ['small size and vertical', { size: 'small', vertical: true }],
-    ['small size, vertical, and verticalTabContent', { size: 'small', vertical: true, verticalTabContent: true }],
     ['second selected', { selectedValue: '2' }],
     ['second selected (default)', { defaultSelectedValue: '2' }],
   ])('renders %s correctly', (_testName, props) => {

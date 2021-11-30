@@ -55,11 +55,6 @@ export type TabState = ComponentState<TabSlots> &
      */
     size: 'small' | 'medium';
     /**
-     * A tab can arrange its content vertically.
-     * Provided by TabList context verticalTabContent.
-     */
-    verticalContent: boolean;
-    /**
      * A tab can arrange its content based on if the tabs in the list are arranged vertically.
      * Provided by TabList context vertical.
      */

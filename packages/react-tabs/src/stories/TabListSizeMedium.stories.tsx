@@ -38,12 +38,6 @@ export const SizeMedium = (props: Partial<TabProps>) => {
       <TabList defaultSelectedValue="tab2" size="medium" vertical>
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedValue="tab2" size="medium" verticalTabContent>
-        {renderTabs()}
-      </TabList>
-      <TabList defaultSelectedValue="tab2" size="medium" vertical verticalTabContent>
-        {renderTabs()}
-      </TabList>
     </div>
   );
 };
