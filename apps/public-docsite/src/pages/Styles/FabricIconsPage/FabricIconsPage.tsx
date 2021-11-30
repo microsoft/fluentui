@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { Pivot, PivotItem } from '@fluentui/react';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
+import { ReactIconGrid } from '../../../components/ReactIconGrid/ReactIconGrid';
 import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { FabricIconsPageProps } from './FabricIconsPage.doc';
 import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
+import { FluentIconsProps } from '@fluentui/react-icons';
+import * as ReactIcons from '@fluentui/react-icons';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FabricIconsPage/docs';
@@ -26,6 +29,11 @@ export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props 
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+  const icons: React.FC<FluentIconsProps>[] = [];
+  // eslint-disable-next-line guard-for-in
+  for (const iconName in ReactIcons) {
+    icons.push(ReactIcons[iconName]);
+  }
   switch (platform) {
     case 'web':
       return [
@@ -51,6 +59,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               </PivotItem>
               <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
                 <IconGrid icons={fabricCoreIcons} />
+              </PivotItem>
+              <PivotItem headerText="React Icons" className={styles.iconGrid}>
+                <ReactIconGrid icons={icons} />
               </PivotItem>
             </Pivot>
           ),
