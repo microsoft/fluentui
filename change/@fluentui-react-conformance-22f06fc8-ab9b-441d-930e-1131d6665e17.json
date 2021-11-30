@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add test preventing accidental application of native size prop",
+  "packageName": "@fluentui/react-conformance",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
