@@ -189,6 +189,7 @@ export const defaultTests: TestObject = {
       const mergedProps = {
         ...requiredProps,
         size,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any; // we know the size prop is supported but there's not a good way to derive the actual type
 
       const el = customMount(<Component {...mergedProps} />);
