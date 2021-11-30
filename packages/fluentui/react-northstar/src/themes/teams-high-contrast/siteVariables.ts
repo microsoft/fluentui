@@ -1,13 +1,12 @@
 import { colors } from '../teams/siteVariables';
-import { accessibleCyan } from './colors';
 
-export * from './colors';
+export * from '../teams/colors';
 
 //
 // BORDER STYLES
 //
-export const focusInnerBorderColor = colors.black;
-export const focusOuterBorderColor = accessibleCyan;
+export const focusInnerBorderColor = 'HighlightText';
+export const focusOuterBorderColor = 'Highlight';
 
 //
 // SHADOW LEVELS

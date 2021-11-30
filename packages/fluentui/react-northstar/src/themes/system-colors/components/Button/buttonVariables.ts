@@ -2,16 +2,22 @@ import { ButtonVariables } from '../../../teams/components/Button/buttonVariable
 
 export const buttonVariables = (siteVars: any): Partial<ButtonVariables> => {
   return {
-    backgroundColorActive: siteVars.colors.white,
-    backgroundColorFocus: siteVars.accessibleCyan,
+    backgroundColorActive: 'CanvasText',
+    backgroundColorHover: 'Highlight',
+    colorHover: 'HighlightText',
+    backgroundColorFocus: 'Highlight',
     borderColorActive: siteVars.colors.white,
     borderColorHover: 'transparent',
     borderColorFocus: 'transparent',
-    backgroundColorDisabled: siteVars.accessibleGreen,
-    colorFocus: siteVars.colorScheme.default.foregroundHover,
+    backgroundColorDisabled: 'GrayText',
+    colorFocus: 'HighlightText',
 
-    primaryBackgroundColorActive: siteVars.colors.white,
-    primaryBackgroundColorFocus: siteVars.accessibleCyan,
+    primaryBackgroundColor: 'CanvasText',
+    primaryColor: 'Canvas',
+    primaryBackgroundColorActive: 'CanvasText',
+    primaryBackgroundColorFocus: 'CanvasText',
+    primaryBackgroundColorHover: 'Highlight',
+    textPrimaryColorHover: 'HighlightText',
 
     boxShadow: 'none',
     primaryBoxShadow: 'none',
