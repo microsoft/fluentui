@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Remove v9 make-styles dependency",
   "packageName": "@fluentui/codemods",
   "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
