@@ -1,8 +1,9 @@
-import type { BadgeProps, BadgeState } from '../Badge/index';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { BadgeCommons, BadgeSlots } from '../Badge/index';
 
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
 
-export interface PresenceBadgeCommons {
+export type PresenceBadgeCommons = {
   /**
    * Represents several status
    * @default available
@@ -14,8 +15,9 @@ export interface PresenceBadgeCommons {
    * @default false
    */
   outOfOffice: boolean;
-}
+} & BadgeCommons;
 
-export type PresenceBadgeProps = BadgeProps & Partial<PresenceBadgeCommons>;
+export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> &
+  Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
 
-export type PresenceBadgeState = BadgeState & PresenceBadgeCommons;
+export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;

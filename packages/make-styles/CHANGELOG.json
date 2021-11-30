@@ -2,6 +2,27 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 08:34:10 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/make-styles",
+            "commit": "58db204f28af1d68df7260ff580cf91f0adcfb66",
+            "comment": "Add development warning for unresolved style rules"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/make-styles",
+            "commit": "400f5b5001c96721477b84c467541c36ee2a9454",
+            "comment": "Bumps rtl-css-js to 1.14.5, fixes[#20572](https://github.com/microsoft/fluentui/issues/20572)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Nov 2021 13:25:11 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-beta.2",
       "version": "9.0.0-beta.2",

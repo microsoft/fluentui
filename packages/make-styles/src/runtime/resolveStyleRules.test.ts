@@ -1,4 +1,4 @@
-import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
+import { makeStylesRulesSerializer } from '../common/snapshotSerializers';
 import { resolveStyleRules } from './resolveStyleRules';
 import { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
 
@@ -599,10 +599,10 @@ describe('resolveStyleRules', () => {
             },
             {
               from: {
-                opacity: 0,
+                opacity: '0',
               },
               to: {
-                opacity: 1,
+                opacity: '1',
               },
             },
           ],

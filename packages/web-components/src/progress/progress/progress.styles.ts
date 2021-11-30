@@ -23,7 +23,6 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
       align-items: center;
       outline: none;
       height: calc((${strokeWidth} * 3) * 1px);
-      margin: calc(${designUnit} * 1px) 0;
     }
 
     .progress {
