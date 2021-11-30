@@ -1,40 +1,57 @@
 import * as prettier from 'prettier';
 
 import { resolveStyleRules } from '../runtime/resolveStyleRules';
-import { MakeStylesRenderer, CSSRulesByBucket, StyleBucketName } from '../types';
+import type { MakeStylesRenderer } from '../types';
+
+// eslint-disable-next-line eqeqeq
+const isObject = (value: unknown) => value != null && !Array.isArray(value) && typeof value === 'object';
 
 export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
-  test(value: MakeStylesRenderer) {
-    return typeof value.styleElements === 'object';
+  test(value) {
+    return isObject(value) && isObject(value.styleElements);
   },
-  print(renderer) {
-    const rules = Object.keys((renderer as MakeStylesRenderer).styleElements).reduce<string[]>((acc, styleEl) => {
-      const styleElement: HTMLStyleElement | undefined = (renderer as MakeStylesRenderer).styleElements[
-        styleEl as StyleBucketName
-      ];
+  print(value) {
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _value = value as MakeStylesRenderer;
+
+    const styleElementsKeys = Object.keys(_value.styleElements) as (keyof typeof _value['styleElements'])[];
+
+    const rules = styleElementsKeys.reduce((acc, styleEl) => {
+      const styleElement = _value.styleElements[styleEl];
 
       if (styleElement) {
-        const cssRules = Array.from(styleElement.sheet?.cssRules || []);
+        const cssRules = styleElement.sheet ? Array.from(styleElement.sheet.cssRules) : [];
 
         return [...acc, ...cssRules.map(rule => rule.cssText)];
       }
 
       return acc;
-    }, []);
+    }, [] as string[]);
 
     return prettier.format(rules.join('\n'), { parser: 'css' }).trim();
   },
 };
 
+type StyleRulesTuple = ReturnType<typeof resolveStyleRules>;
+const isStyleRulesTuple = (value: unknown): value is StyleRulesTuple => Array.isArray(value) && value.length === 2;
+
 export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
   test(value) {
-    return Array.isArray(value) && value.length === 2;
+    return isStyleRulesTuple(value);
   },
   print(value) {
-    const cssRulesByBucket: CSSRulesByBucket = (value as ReturnType<typeof resolveStyleRules>)[1];
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _value = value as StyleRulesTuple;
 
-    return (Object.keys(cssRulesByBucket) as StyleBucketName[]).reduce((acc, styleBucketName) => {
-      const rules: string[] = cssRulesByBucket[styleBucketName]!;
+    const cssRulesByBucket = _value[1];
+    const keys = Object.keys(cssRulesByBucket) as (keyof typeof cssRulesByBucket)[];
+
+    return keys.reduce((acc, styleBucketName) => {
+      const rules = cssRulesByBucket[styleBucketName]!;
 
       return prettier.format(acc + rules.join(''), { parser: 'css' }).trim();
     }, '');

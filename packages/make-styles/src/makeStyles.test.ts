@@ -5,18 +5,15 @@ import { MakeStylesRenderer } from './types';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
-function createFakeDocument(): Document {
-  const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
-  doc.documentElement.appendChild(document.createElementNS('http://www.w3.org/1999/xhtml', 'head'));
-
-  return doc;
-}
-
 describe('makeStyles', () => {
   let renderer: MakeStylesRenderer;
 
   beforeEach(() => {
     renderer = createDOMRenderer(document);
+  });
+
+  afterEach(() => {
+    document.head.innerHTML = '';
   });
 
   it('returns a single classname for a single style', () => {
@@ -177,8 +174,8 @@ describe('makeStyles', () => {
   });
 
   it('handles multiple renderers', () => {
-    const rendererA = createDOMRenderer(createFakeDocument());
-    const rendererB = createDOMRenderer(createFakeDocument());
+    const rendererA = createDOMRenderer();
+    const rendererB = createDOMRenderer();
 
     const computeClasses = makeStyles({
       root: { display: 'flex', paddingLeft: '10px' },
@@ -194,8 +191,28 @@ describe('makeStyles', () => {
     // Style elements should be different for different renderers
     expect(rendererA.styleElements.d).not.toBe(rendererB.styleElements.d);
 
-    expect(rendererA).toMatchInlineSnapshot(``);
-    expect(rendererB).toMatchInlineSnapshot(``);
+    expect(rendererA).toMatchInlineSnapshot(`
+      .f22iagw {
+        display: flex;
+      }
+      .frdkuqy {
+        padding-left: 10px;
+      }
+      .f81rol6 {
+        padding-right: 10px;
+      }
+    `);
+    expect(rendererB).toMatchInlineSnapshot(`
+      .f22iagw {
+        display: flex;
+      }
+      .frdkuqy {
+        padding-left: 10px;
+      }
+      .f81rol6 {
+        padding-right: 10px;
+      }
+    `);
   });
 
   it('handles tokens', () => {
