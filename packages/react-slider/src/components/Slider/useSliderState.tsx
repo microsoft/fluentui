@@ -148,8 +148,8 @@ export const useSliderState = (state: SliderState) => {
     '--slider-thumb-transition': stepAnimation ? `left ease-in-out ${animationTime}` : 'none',
   };
 
-  const rootVariables = {
-    '--slider-root-steps-percent': state.step ? `${(step * 100) / (max - min)}%` : '',
+  const railVariables = {
+    '--slider-rail-steps-percent': state.step ? `${(step * 100) / (max - min)}%` : '',
   };
   const trackVariables = {
     '--slider-track-offset': origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
@@ -185,7 +185,7 @@ export const useSliderState = (state: SliderState) => {
 
   // Root props
   state.root.style = {
-    ...rootVariables,
+    ...railVariables,
     ...thumbVariables,
     ...trackVariables,
     ...state.root.style,

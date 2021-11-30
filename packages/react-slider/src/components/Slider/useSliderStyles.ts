@@ -109,9 +109,9 @@ export const useRailStyles = makeStyles({
       background: `repeating-linear-gradient(
         90deg,
         #0000 0%,
-        #0000 calc(var(--slider-root-steps-percent) - 1px),
-        #fff calc(var(--slider-root-steps-percent) - 1px),
-        #fff var(--slider-root-steps-percent)
+        #0000 calc(var(--slider-rail-steps-percent) - 1px),
+        #fff calc(var(--slider-rail-steps-percent) - 1px),
+        #fff var(--slider-rail-steps-percent)
       )`,
     },
   },
@@ -126,9 +126,9 @@ export const useRailStyles = makeStyles({
       background: `repeating-linear-gradient(
         180deg,
         #0000 0%,
-        #0000 calc(var(--slider-root-steps-percent) - 1px),
-        #fff calc(var(--slider-root-steps-percent) - 1px),
-        #fff var(--slider-root-steps-percent)
+        #0000 calc(var(--slider-rail-steps-percent) - 1px),
+        #fff calc(var(--slider-rail-steps-percent) - 1px),
+        #fff var(--slider-rail-steps-percent)
       )`,
     },
   },
