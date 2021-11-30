@@ -166,6 +166,53 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /**
+   * Component does not apply `size` as a native prop when a custom version is defined.
+   *
+   * Background: `input` and `select` support a `size` prop which is not very useful
+   * (https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size).
+   * Since we don't anticipate ever needing this functionality, and we often want to use the prop name
+   * `size` to refer to visual size (like small/medium/large), we want to ensure that components defining
+   * a custom `size` prop don't also apply it as a native prop by accident.
+   *
+   * (In the extremely unlikely event that someone has a compelling need for the native functionality
+   * in the future, it can be added under an `htmlSize` prop.)
+   */
+  'omits-size-prop': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const sizeType = componentInfo.props.size?.type?.name;
+    if (!sizeType || componentInfo.props.htmlSize) {
+      return;
+    }
+    // if the size prop is defined, type.name will probably be 'string | undefined'
+    // or something like '"small" | "medium" | "large" | undefined'
+    const sizeIsString = /\bstring\b/.test(sizeType);
+    const sizeLiteralMatch = sizeType.match(/"(.*?)"/);
+    if (!sizeIsString || sizeLiteralMatch) {
+      return; // not a format we know how to test
+    }
+
+    it(`does not apply native size prop if custom one is defined (omits-size-prop)`, () => {
+      const { customMount = mount, Component, requiredProps, helperComponents = [], wrapperComponent } = testInfo;
+
+      const size = sizeLiteralMatch?.[1] || 'foo';
+      const mergedProps = {
+        ...requiredProps,
+        size,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any; // we know the size prop is supported but there's not a good way to derive the actual type
+
+      const el = customMount(<Component {...mergedProps} />);
+      const component = getComponent(el, helperComponents, wrapperComponent);
+      const elementWithSize = component.getDOMNode().querySelector('[size]');
+
+      try {
+        expect(elementWithSize).toBeFalsy();
+      } catch (e) {
+        throw new Error(defaultErrorMessages['omits-size-prop'](testInfo, e, size, elementWithSize!));
+      }
+    });
+  },
+
   /** Component file handles classname prop */
   'component-handles-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { Component, wrapperComponent, helperComponents = [], requiredProps, customMount = mount } = testInfo;

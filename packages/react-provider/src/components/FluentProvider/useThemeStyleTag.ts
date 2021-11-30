@@ -1,5 +1,4 @@
 import { useId, usePrevious } from '@fluentui/react-utilities';
-import { themeToCSSVariables } from '@fluentui/react-theme';
 import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderClassName } from './useFluentProviderStyles';
@@ -25,9 +24,8 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
   }, [styleTagId, targetDocument]);
 
   const cssRule = React.useMemo(() => {
-    const cssVars = themeToCSSVariables(theme);
-    const cssVarsAsString = Object.keys(cssVars).reduce((cssVarRule, cssVar) => {
-      cssVarRule += `${cssVar}: ${cssVars[cssVar]}; `;
+    const cssVarsAsString = Object.keys(theme).reduce((cssVarRule, cssVar) => {
+      cssVarRule += `--${cssVar}: ${theme[cssVar as keyof typeof theme]}; `;
       return cssVarRule;
     }, '');
 

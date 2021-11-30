@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Tue, 30 Nov 2021 07:37:33 GMT",
+      "tag": "@fluentui/react-conformance_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "b2deb9be17a76cce366fffb466d34ebd1fc45405",
+            "comment": "Add test preventing accidental application of native size prop"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 14:54:15 GMT",
       "tag": "@fluentui/react-conformance_v0.7.2",
       "version": "0.7.2",
