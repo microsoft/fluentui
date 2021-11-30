@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 30 Nov 2021 12:33:21 GMT",
+      "tag": "office-ui-fabric-react_v7.179.5",
+      "version": "7.179.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: fix multi-select checkbox role; improve docs and examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "cac88c0f424d0e16020f51452b40e32f2888d251",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Nov 2021 12:27:56 GMT",
       "tag": "office-ui-fabric-react_v7.179.4",
       "version": "7.179.4",

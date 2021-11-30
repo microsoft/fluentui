@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Nov 2021 12:27:56 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Nov 2021 12:33:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.179.5](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.5)
+
+Tue, 30 Nov 2021 12:33:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.179.4..office-ui-fabric-react_v7.179.5)
+
+### Patches
+
+- ComboBox: fix multi-select checkbox role; improve docs and examples ([PR #16329](https://github.com/microsoft/fluentui/pull/16329) by elcraig@microsoft.com)
 
 ## [7.179.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.179.4)
 

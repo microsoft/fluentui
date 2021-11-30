@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 25 Nov 2021 12:26:54 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Nov 2021 12:33:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.19.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.4)
+
+Tue, 30 Nov 2021 12:33:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.19.3..@uifabric/charting_v4.19.4)
+
+### Patches
+
+- Stack callout accessibility prop added in Grouped Bar chart for Stack callout ([PR #20771](https://github.com/microsoft/fluentui/pull/20771) by v-scharde@microsoft.com)
 
 ## [4.19.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.3)
 
