@@ -80,7 +80,7 @@ The top-level `ref` prop also points to the `<input>`. This can be used for thin
 Most custom props are defined in `InputCommons` since they're shared with `InputState`.
 
 ```ts
-export type InputCommons = FieldSizeProps & {
+export type InputCommons = {
   /**
    * If true, the field will have inline display, allowing it be used within text content.
    * If false (the default), the field will have block display.
