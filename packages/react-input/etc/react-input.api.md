@@ -24,10 +24,7 @@ export type InputCommons = {
 };
 
 // @public
-export type InputProps = InputCommons & Omit<ComponentProps<InputSlots>, 'children'>;
-
-// @public
-export const inputShorthandProps: (keyof InputSlots)[];
+export type InputProps = InputCommons & Omit<ComponentProps<InputSlots, 'input'>, 'children'>;
 
 // @public (undocumented)
 export type InputSlots = {
@@ -44,7 +41,7 @@ export type InputState = InputCommons & ComponentState<InputSlots>;
 export const renderInput: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
+export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
 
 // @public
 export const useInputStyles: (state: InputState) => InputState;

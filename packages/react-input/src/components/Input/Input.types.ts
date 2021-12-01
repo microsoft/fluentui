@@ -4,13 +4,18 @@ export type InputSlots = {
   /**
    * Wrapper element which visually appears to be the input and is used for borders, focus styling, etc.
    * (A wrapper is needed to properly position `contentBefore` and `contentAfter` relative to `input`.)
+   *
+   * The root slot receives the `className` and `style` specified directly on the `<Input>`.
+   * All other top-level native props will be applied to the primary slot, `input`.
    */
   root: IntrinsicShorthandProps<'span'>;
 
   /**
    * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
-   * This is the "primary" slot, so top-level native props (except `className` and `style`) and the
-   * top-level `ref` will go here.
+   *
+   * This is the "primary" slot, so native props specified directly on the `<Input>` will go here
+   * (except `className` and `style`, which go to the `root` slot). The top-level `ref` will
+   * also go here.
    */
   input: Omit<IntrinsicShorthandProps<'input'>, 'size'>;
 
@@ -47,7 +52,7 @@ export type InputCommons = {
 /**
  * Input Props
  */
-export type InputProps = InputCommons & Omit<ComponentProps<InputSlots>, 'children'>;
+export type InputProps = InputCommons & Omit<ComponentProps<InputSlots, 'input'>, 'children'>;
 
 /**
  * State used in rendering Input
