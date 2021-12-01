@@ -30,7 +30,10 @@ This leads to a fairly confusing and difficult to navigate repo. In particular w
 1. Within the rfcs folder we should create a new subfolder called `react-components` and move all existing rfcs to this folder. 
    - if needed additional `react`, `react-northstar`, or `web-components` RFCs can be created
    - RFCs that apply to the whole repo can go in a folder called `shared` 
-2. We should remove the specs folder. We should be keeping specs up to date under the relevant package folders. Associating specs with particular packages scales better in a large repo such as this. The reason we don't do this for RFCs is that they span packages (and as is in the case of this RFC, sometimes span projects). 
+2. Remove the specs folder and move any specs to the relevant packages folders
+   - We should be keeping specs up to date under the relevant package folders. 
+   - Associating specs with particular packages scales better in a large repo such as this. 
+   - The reason we don't do this for RFCs is that they span packages (and as is in the case of this RFC, sometimes span projects). 
 
 ### Pros and Cons
 
