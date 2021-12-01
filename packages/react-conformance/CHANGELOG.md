@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Thu, 25 Nov 2021 14:54:15 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Nov 2021 07:37:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.8.0)
+
+Tue, 30 Nov 2021 07:37:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.2..@fluentui/react-conformance_v0.8.0)
+
+### Minor changes
+
+- Add test preventing accidental application of native size prop ([PR #20833](https://github.com/microsoft/fluentui/pull/20833) by elcraig@microsoft.com)
 
 ## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.2)
 

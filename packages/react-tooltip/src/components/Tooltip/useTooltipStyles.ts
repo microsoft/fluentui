@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createArrowStyles } from '@fluentui/react-positioning';
 import type { TooltipState } from './Tooltip.types';
 
@@ -10,15 +10,17 @@ export const tooltipClassName = 'fui-Tooltip';
 const useStyles = makeStyles({
   root: theme => ({
     display: 'none',
-    padding: '5px 12px 7px 12px',
+    ...shorthands.padding('5px', '12px', '7px', '12px'),
     maxWidth: '240px',
     cursor: 'default',
     fontFamily: theme.fontFamilyBase,
     fontSize: theme.fontSizeBase200,
     lineHeight: theme.lineHeightBase200,
-    borderRadius: theme.borderRadiusMedium, // Update tooltipBorderRadius in useTooltip.tsx if this changes
 
-    background: theme.colorNeutralBackground1,
+    // Update tooltipBorderRadius in useTooltip.tsx if this changes
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
+
+    backgroundColor: theme.colorNeutralBackground1,
     color: theme.colorNeutralForeground1,
 
     // TODO need to add versions of theme.alias.shadow.shadow8, etc. that work with filter
@@ -32,7 +34,7 @@ const useStyles = makeStyles({
   },
 
   inverted: theme => ({
-    background: theme.colorNeutralForeground2, // TODO should be neutralBackgroundInverted
+    backgroundColor: theme.colorNeutralBackgroundInverted,
     color: theme.colorNeutralForegroundInverted,
   }),
 

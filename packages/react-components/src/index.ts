@@ -39,7 +39,6 @@ export {
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
-  themeToCSSVariables,
   webDarkTheme,
   webHighContrastTheme,
   webLightTheme,

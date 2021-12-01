@@ -74,7 +74,7 @@ export const createFocusOutlineStyle = (
   } & CreateFocusIndicatorStyleRuleOptions = { style: {}, ...defaultOptions },
 ): MakeStylesStyle => ({
   ':focus-visible': {
-    outline: 'none',
+    outlineStyle: 'none',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: getFocusOutlineStyles({
     outlineColor: theme.colorStrokeFocus2,
@@ -96,7 +96,7 @@ export const createCustomFocusIndicatorStyle = (
   options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
 ): MakeStylesStyleRule<Theme> => theme => ({
   ':focus-visible': {
-    outline: 'none',
+    outlineStyle: 'none',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]:
     typeof rule === 'function' ? rule(theme) : rule,

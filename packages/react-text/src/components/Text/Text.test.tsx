@@ -32,7 +32,8 @@ describe('Text', () => {
       display: inline;
       text-align: start;
       white-space: normal;
-      overflow: visible;
+      overflow-x: visible;
+      overflow-y: visible;
       text-overflow: clip;
     `);
   });
@@ -43,7 +44,8 @@ describe('Text', () => {
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
       white-space: nowrap;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: hidden;
     `);
   });
 
@@ -79,7 +81,7 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      text-decoration: underline;
+      text-decoration-line: underline;
     `);
   });
 
@@ -88,7 +90,7 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      text-decoration: line-through;
+      text-decoration-line: line-through;
     `);
   });
 
@@ -101,7 +103,7 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      text-decoration: line-through underline;
+      text-decoration-line: line-through underline;
     `);
   });
 

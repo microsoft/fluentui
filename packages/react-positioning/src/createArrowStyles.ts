@@ -1,3 +1,4 @@
+import { shorthands } from '@fluentui/react-make-styles';
 import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
 import type { Theme } from '@fluentui/react-theme';
 
@@ -26,58 +27,54 @@ import type { Theme } from '@fluentui/react-theme';
  * @param size - dimensions of the square arrow element in pixels.
  */
 export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
-  return theme => {
-    const arrowHCBorderStyle = `1px solid transparent`;
-    const arrowHCBorder = {
-      borderRight: arrowHCBorderStyle,
-      borderBottom: arrowHCBorderStyle,
-    };
+  return theme => ({
+    position: 'absolute',
+    backgroundColor: 'inherit',
+    visibility: 'hidden',
+    zIndex: -1,
 
-    return {
+    ...(size && {
+      aspectRatio: '1',
+      width: `${size}px`,
+    }),
+
+    ':before': {
+      content: '""',
+      ...shorthands.borderRadius('4px'),
       position: 'absolute',
-      background: 'inherit',
-      visibility: 'hidden',
-      zIndex: -1,
+      width: 'inherit',
+      height: 'inherit',
+      backgroundColor: 'inherit',
+      visibility: 'visible',
+      borderBottomRightRadius: theme.borderRadiusSmall,
+      transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
+    },
 
-      ...(size && {
-        aspectRatio: '1',
-        width: `${size}px`,
-      }),
-
+    ':global([data-popper-placement])': {
       ':before': {
-        content: '""',
-        borderRadius: '4px',
-        position: 'absolute',
-        width: 'inherit',
-        height: 'inherit',
-        background: 'inherit',
-        visibility: 'visible',
-        borderBottomRightRadius: theme.borderRadiusSmall,
-        transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
+        // Special border for High Contrast mode
+        ...shorthands.borderRight('1px', 'solid', 'transparent'),
+        ...shorthands.borderBottom('1px', 'solid', 'transparent'),
       },
+    },
 
-      ':global([data-popper-placement])': {
-        ':before': arrowHCBorder,
-      },
+    // Popper sets data-popper-placement on the root element, which is used to align the arrow
+    ':global([data-popper-placement^="top"])': {
+      bottom: 0,
+      '--angle': '0',
+    },
 
-      // Popper sets data-popper-placement on the root element, which is used to align the arrow
-      ':global([data-popper-placement^="top"])': {
-        bottom: 0,
-        '--angle': '0',
-      },
-
-      ':global([data-popper-placement^="right"])': {
-        left: 0,
-        '--angle': '90deg',
-      },
-      ':global([data-popper-placement^="bottom"])': {
-        top: 0,
-        '--angle': '180deg',
-      },
-      ':global([data-popper-placement^="left"])': {
-        right: 0,
-        '--angle': '270deg',
-      },
-    };
-  };
+    ':global([data-popper-placement^="right"])': {
+      left: 0,
+      '--angle': '90deg',
+    },
+    ':global([data-popper-placement^="bottom"])': {
+      top: 0,
+      '--angle': '180deg',
+    },
+    ':global([data-popper-placement^="left"])': {
+      right: 0,
+      '--angle': '270deg',
+    },
+  });
 }
