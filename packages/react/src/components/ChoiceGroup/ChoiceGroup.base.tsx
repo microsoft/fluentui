@@ -41,6 +41,11 @@ const focusSelectedOption = (options: IChoiceGroupOption[], keyChecked: string |
   }
 };
 
+// Test if focus came from a sibling DOM element
+const focusFromSibling = (evt: React.FocusEvent<HTMLElement>): boolean => {
+  return !!(evt.relatedTarget && !elementContains(evt.currentTarget, evt.relatedTarget as HTMLElement));
+};
+
 const useComponentRef = (
   options: IChoiceGroupOption[],
   keyChecked: string | number | undefined,
@@ -134,9 +139,8 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
 
   const onRadioFocus = React.useCallback(
     (evt: React.FocusEvent<HTMLElement>) => {
-      // Override focus behavior when the focus comes from oustide the DOM subtree of the radio group.
       // Handles scenarios like this bug: https://github.com/microsoft/fluentui/issues/20173
-      if (evt.relatedTarget && !elementContains(evt.currentTarget, evt.relatedTarget as HTMLElement)) {
+      if (focusFromSibling(evt)) {
         focusSelectedOption(options, keyChecked, id);
       }
     },
