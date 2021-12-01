@@ -2,22 +2,18 @@ import { CSSRulesByBucket } from '../types';
 import { createDOMRenderer } from './createDOMRenderer';
 import { makeStylesRendererSerializer } from '../common/snapshotSerializers';
 
-function createFakeDocument(): Document {
-  const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
-  doc.documentElement.appendChild(document.createElementNS('http://www.w3.org/1999/xhtml', 'head'));
-
-  return doc;
-}
-
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
 describe('createDOMRenderer', () => {
+  beforeEach(() => {
+    document.head.innerHTML = '';
+  });
+
   it('should apply filter for css rules for multiple buckets', () => {
-    const targetDocument = createFakeDocument();
     const mediaQueryFilter = jest.fn().mockImplementation(cssRule => {
       return !cssRule.startsWith('@media');
     });
-    const renderer = createDOMRenderer(targetDocument, { unstable_filterCSSRule: mediaQueryFilter });
+    const renderer = createDOMRenderer(document, { unstable_filterCSSRule: mediaQueryFilter });
 
     const cssRules: CSSRulesByBucket = {
       t: ['@media only screen and (max-width: 600px) { .bar: { background-color: red; } }'],
@@ -34,11 +30,10 @@ describe('createDOMRenderer', () => {
   });
 
   it('should apply filter for css rules within single bucket', () => {
-    const targetDocument = createFakeDocument();
     const mediaQueryFilter = jest.fn().mockImplementation(cssRule => {
       return !cssRule.startsWith('@media');
     });
-    const renderer = createDOMRenderer(targetDocument, { unstable_filterCSSRule: mediaQueryFilter });
+    const renderer = createDOMRenderer(document, { unstable_filterCSSRule: mediaQueryFilter });
 
     const cssRules: CSSRulesByBucket = {
       t: [
