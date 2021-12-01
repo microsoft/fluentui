@@ -64,7 +64,7 @@ describe('useControllableState', () => {
 
     rerender();
 
-    expect(result.current[1]).toEqual(firstResult[1]);
+    expect(result.current[1]).toBe(firstResult[1]);
   });
 
   it('returns the same setter callback even if param states change', () => {
@@ -78,7 +78,7 @@ describe('useControllableState', () => {
     defaultState = 'bar';
     rerender();
 
-    expect(result.current[1]).toEqual(firstResult[1]);
+    expect(result.current[1]).toBe(firstResult[1]);
   });
 
   it('should update state with dispatch', () => {
