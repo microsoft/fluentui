@@ -10,8 +10,9 @@ export interface CreateDOMRendererOptions {
    * affecting build time styles.
    *
    * ⚠️ Keep the filter as performant as possible to avoid negative performance impacts to your application.
+   * ⚠️ This API is unstable and can be removed from the library at any time.
    */
-  filterCSSRule?: (cssRule: string) => boolean;
+  unstable_filterCSSRule?: (cssRule: string) => boolean;
 }
 
 /**
@@ -23,7 +24,7 @@ export function createDOMRenderer(
   target: Document | undefined = typeof document === 'undefined' ? undefined : document,
   options: CreateDOMRendererOptions = {},
 ): MakeStylesRenderer {
-  const { filterCSSRule } = options;
+  const { unstable_filterCSSRule } = options;
   const renderer: MakeStylesRenderer = {
     insertionCache: {},
     styleElements: {},
@@ -48,8 +49,8 @@ export function createDOMRenderer(
 
           if (sheet) {
             try {
-              if (filterCSSRule) {
-                if (filterCSSRule(ruleCSS)) {
+              if (unstable_filterCSSRule) {
+                if (unstable_filterCSSRule(ruleCSS)) {
                   sheet.insertRule(ruleCSS, sheet.cssRules.length);
                 }
               } else {

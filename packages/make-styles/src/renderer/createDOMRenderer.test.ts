@@ -17,7 +17,7 @@ describe('createDOMRenderer', () => {
     const mediaQueryFilter = jest.fn().mockImplementation(cssRule => {
       return !cssRule.startsWith('@media');
     });
-    const renderer = createDOMRenderer(targetDocument, { filterCSSRule: mediaQueryFilter });
+    const renderer = createDOMRenderer(targetDocument, { unstable_filterCSSRule: mediaQueryFilter });
 
     const cssRules: CSSRulesByBucket = {
       t: ['@media only screen and (max-width: 600px) { .bar: { background-color: red; } }'],
@@ -38,7 +38,7 @@ describe('createDOMRenderer', () => {
     const mediaQueryFilter = jest.fn().mockImplementation(cssRule => {
       return !cssRule.startsWith('@media');
     });
-    const renderer = createDOMRenderer(targetDocument, { filterCSSRule: mediaQueryFilter });
+    const renderer = createDOMRenderer(targetDocument, { unstable_filterCSSRule: mediaQueryFilter });
 
     const cssRules: CSSRulesByBucket = {
       t: [
