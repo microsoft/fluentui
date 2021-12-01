@@ -50,7 +50,7 @@ Currently there are two unsolved issues: "buildless builds", "build dependency h
 The problem is described in [microsoft/fluentui#18357](https://github.com/microsoft/fluentui/issues/18357):
 
 - we cannot dogfood our Babel plugin/Webpack loader as it breaks buildless environment: to start Storybook you will need to run `yarn build --to @fluentui/make-styles-webpack-loader`
-- even now to run tests it's required to build `@fluentui/jest-serializer-make-styles`
+- even currently it's required to build `@fluentui/jest-serializer-make-styles` before running tests
 
 #### Dependency issues
 
