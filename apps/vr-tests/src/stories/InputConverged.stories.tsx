@@ -52,7 +52,8 @@ storiesOf('Input Converged', module)
   .addStory('Size: large', () => <Input size="large" input={{ placeholder: 'Placeholder' }} />)
   .addStory('Inline', () => (
     <p>
-      Some text with <Input inline input={{ placeholder: 'Placeholder' }} /> inline input
+      Some text with <Input inline input={{ placeholder: 'hello', style: { width: '75px' } }} />{' '}
+      inline input
     </p>
   ))
   .addStory(
