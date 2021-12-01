@@ -12,11 +12,6 @@ export type TabSlots = {
   root: IntrinsicShorthandProps<'div'>;
 
   /**
-   * Container to layout tab content based on tab list context.
-   */
-  content: IntrinsicShorthandProps<'div'>;
-
-  /**
    * Icon that renders before the content.
    */
   icon?: IntrinsicShorthandProps<'span'>;
@@ -58,5 +53,5 @@ export type TabState = ComponentState<TabSlots> &
      * A tab can arrange its content based on if the tabs in the list are arranged vertically.
      * Provided by TabList context vertical.
      */
-    verticalList: boolean;
+    vertical: boolean;
   };

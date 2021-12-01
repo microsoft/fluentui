@@ -88,7 +88,6 @@ export const tabShorthandProps: (keyof TabSlots)[];
 // @public (undocumented)
 export type TabSlots = {
     root: IntrinsicShorthandProps<'div'>;
-    content: IntrinsicShorthandProps<'div'>;
     icon?: IntrinsicShorthandProps<'span'>;
 };
 
@@ -97,7 +96,7 @@ export type TabState = ComponentState<TabSlots> & TabCommons & {
     appearance?: string;
     selected?: boolean;
     size: 'small' | 'medium';
-    verticalList: boolean;
+    vertical: boolean;
 };
 
 // @public

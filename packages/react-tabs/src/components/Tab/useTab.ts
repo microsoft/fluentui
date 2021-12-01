@@ -8,7 +8,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 /**
  * Array of all shorthand properties listed in TabSlots
  */
-export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'content', 'icon'];
+export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'icon'];
 
 /**
  * Create the state required to render Tab.
@@ -20,14 +20,14 @@ export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'content', 'icon']
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { content, icon, value } = props;
+  const { icon, value } = props;
 
-  const { appearance, selected, onSelect, size, verticalList } = useContextSelector(TabListContext, ctx => ({
+  const { appearance, selected, onSelect, size, vertical } = useContextSelector(TabListContext, ctx => ({
     appearance: ctx.appearance,
     selected: ctx.selectedValue === value,
     onSelect: ctx.onSelect,
     size: ctx.size,
-    verticalList: !!ctx.vertical,
+    vertical: !!ctx.vertical,
   }));
 
   const onClick = useEventCallback((event: SelectTabEvent) => onSelect(event, { value }));
@@ -36,7 +36,6 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
     components: {
       root: 'div',
       icon: 'span',
-      content: 'div',
     },
     root: getNativeElementProps('div', {
       ref,
@@ -45,12 +44,11 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
       ...props,
       onClick,
     }),
-    content: resolveShorthand(content, { required: true, defaultProps: { children: props.children } }),
     icon: resolveShorthand(icon),
     appearance,
     selected,
     size,
     value,
-    verticalList,
+    vertical,
   };
 };

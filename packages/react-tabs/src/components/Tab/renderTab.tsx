@@ -11,10 +11,8 @@ export const renderTab = (state: TabState) => {
 
   return (
     <slots.root role="tab" {...slotProps.root}>
-      <slots.content {...slotProps.content}>
-        <slots.icon {...slotProps.icon} />
-        {slotProps.root.children}
-      </slots.content>
+      <slots.icon {...slotProps.icon} />
+      {slotProps.root.children}
     </slots.root>
   );
 };

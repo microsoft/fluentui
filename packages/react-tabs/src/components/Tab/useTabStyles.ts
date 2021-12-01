@@ -4,23 +4,41 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { TabState } from './Tab.types';
 
 export const tabClassName = 'fui-Tab';
-const contentClassName = `${tabClassName}-content`;
+
+const indicatorThickness = '2px';
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: theme => ({
+const useRootStyles = makeStyles({
+  base: theme => ({
     background: 'none',
     borderColor: 'none',
-    borderRadius: '4px',
-    borderWidth: '2px',
+    borderRadius: theme.borderRadiusMedium,
+    borderWidth: theme.strokeWidthThin,
+    columnGap: '6px',
     cursor: 'pointer',
+    display: 'flex',
+    flexDirection: 'row',
     fontFamily: theme.fontFamilyBase,
     fontSize: theme.fontSizeBase300,
     lineHeight: theme.lineHeightBase300,
+    padding: '12px',
+    position: 'relative',
     overflow: 'hidden',
   }),
+  horizontal: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  vertical: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  small: {
+    padding: '6px',
+    columnGap: '2px',
+  },
   subtle: theme => ({
     ':hover': {
       background: theme.colorNeutralBackground1Hover,
@@ -41,24 +59,22 @@ const useFocusStyles = makeStyles({
 });
 
 /**
- * Styles for the root slot when verticalList=false
+ * While the indicator is applied to the root it is thought of as a separate element
+ * since it uses :after and absolute positioning.
+ * The horizontal and vertical indicators are separated since are styled independently.
  */
-const useHorizontalListStyles = makeStyles({
-  root: theme => ({
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    padding: '12px 12px 0 12px',
+const useHorizontalIndicatorStyles = makeStyles({
+  base: theme => ({
     ':after': {
       background: 'none',
       borderRadius: theme.borderRadiusMedium,
       boxSizing: 'border-box',
       content: '""',
-      display: 'block',
-      height: '2px',
-      alignSelf: 'stretch',
-      margin: '10px 0 0 0',
+      position: 'absolute',
+      height: indicatorThickness,
+      bottom: '0',
+      left: '12px',
+      right: '12px',
     },
     ':hover': {
       ':after': {
@@ -77,32 +93,30 @@ const useHorizontalListStyles = makeStyles({
     },
   }),
   small: {
-    padding: '6px 8px 0 8px',
     ':after': {
-      margin: '4px 0 0 0',
+      left: '6px',
+      right: '6px',
     },
   },
 });
 
 /**
- * Styles for the root slot when verticalList=true
+ * While the indicator is applied to the root it is thought of as a separate element
+ * since it uses :before and absolute positioning.
+ * The horizontal and vertical indicators are separated since are styled independently.
  */
-const useVerticalListStyles = makeStyles({
-  root: theme => ({
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'row',
-    padding: '7px 0 7px 9px',
-    justifyContent: 'flex-start',
+const useVerticalIndicatorStyles = makeStyles({
+  base: theme => ({
     ':before': {
       background: 'none',
       borderRadius: theme.borderRadiusMedium,
       boxSizing: 'border-box',
       content: '""',
-      display: 'block',
-      width: '2px',
-      alignSelf: 'stretch',
-      margin: '0 10px 0 0',
+      position: 'absolute',
+      width: indicatorThickness,
+      left: '0px',
+      top: '12px',
+      bottom: '12px',
     },
     ':hover': {
       ':before': {
@@ -121,29 +135,10 @@ const useVerticalListStyles = makeStyles({
     },
   }),
   small: {
-    padding: '3px 3px 0 5px',
-    ':after': {
-      margin: '0 4px 0 0',
+    ':before': {
+      top: '6px',
+      bottom: '6px',
     },
-  },
-});
-
-const useContentStyles = makeStyles({
-  base: {
-    alignItems: 'center',
-    background: 'none',
-    border: 'none',
-    display: 'flex',
-    flexDirection: 'row',
-    flexGrow: 1,
-    justifyContent: 'flex-start',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-  },
-  verticalList: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
   },
 });
 
@@ -169,30 +164,23 @@ const useIconStyles = makeStyles({
  * Apply styling to the Tab slots based on the state
  */
 export const useTabStyles = (state: TabState): TabState => {
-  const styles = useStyles();
+  const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
-  const horizontalListStyles = useHorizontalListStyles();
-  const verticalListStyles = useVerticalListStyles();
-
-  const contentStyles = useContentStyles();
+  const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
+  const verticalIndicatorStyles = useVerticalIndicatorStyles();
   const iconStyles = useIconStyles();
+
+  console.log('selected', state.selected);
 
   state.root.className = mergeClasses(
     tabClassName,
-    styles.root,
+    rootStyles.base,
     focusStyles.base,
-    state.appearance === 'subtle' && styles.subtle,
-    state.verticalList ? verticalListStyles.root : horizontalListStyles.root,
-    state.size === 'small' && (state.verticalList ? verticalListStyles.small : horizontalListStyles.small),
-    state.selected && (state.verticalList ? verticalListStyles.selected : horizontalListStyles.selected),
+    state.appearance === 'subtle' && rootStyles.subtle,
+    state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base,
+    state.size === 'small' && (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
+    state.selected && (state.vertical ? verticalIndicatorStyles.selected : horizontalIndicatorStyles.selected),
     state.root.className,
-  );
-
-  state.content.className = mergeClasses(
-    contentClassName,
-    contentStyles.base,
-    state.verticalList && contentStyles.verticalList,
-    state.content.className,
   );
 
   if (state.icon) {
