@@ -170,12 +170,11 @@ export const useTabStyles = (state: TabState): TabState => {
   const verticalIndicatorStyles = useVerticalIndicatorStyles();
   const iconStyles = useIconStyles();
 
-  console.log('selected', state.selected);
-
   state.root.className = mergeClasses(
     tabClassName,
     rootStyles.base,
     focusStyles.base,
+    state.size === 'small' && rootStyles.small,
     state.appearance === 'subtle' && rootStyles.subtle,
     state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base,
     state.size === 'small' && (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
