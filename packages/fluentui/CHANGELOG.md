@@ -71,6 +71,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `TextArea` component to properly pass ref to root slots @chpalac ([#20875](https://github.com/microsoft/fluentui/pull/20875))
 - Fix `Tree` component to properly pass ref to root slots @chpalac ([#20877](https://github.com/microsoft/fluentui/pull/20877))
 - Fix `Video` component to properly pass ref to root slots @chpalac ([#20878](https://github.com/microsoft/fluentui/pull/20878))
+- Fix `TooltipContent` component to properly pass ref to root slots @chpalac ([#20876](https://github.com/microsoft/fluentui/pull/20876))
 
 ### Features
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
