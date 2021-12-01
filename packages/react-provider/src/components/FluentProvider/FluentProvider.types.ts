@@ -1,14 +1,14 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { PartialTheme, Theme } from '@fluentui/react-theme';
 import type {
   ProviderContextValue,
   TooltipContextType,
   ThemeContextValue,
   ThemeClassNameContextValue,
 } from '@fluentui/react-shared-contexts';
+import type { PartialTheme, Theme } from '@fluentui/react-theme';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 export type FluentProviderSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: IntrinsicSlotProps<'div'>;
 };
 
 export interface FluentProviderCommons {

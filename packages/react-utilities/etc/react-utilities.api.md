@@ -46,19 +46,22 @@ export const colGroupProperties: Record<string, number>;
 export const colProperties: Record<string, number>;
 
 // @public (undocumented)
-export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
-    [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-}, Primary & 'root'> & PropsWithoutRef<Shorthands[Primary]>;
-
-// @public (undocumented)
-export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
-    components?: {
-        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-    };
-} & Shorthands;
+export type ComponentProps<SlotProps extends ObjectSlotPropsRecord, Primary extends keyof SlotProps = 'root'> = Omit<{
+    [Key in keyof SlotProps]?: ShorthandProps<NonNullable<SlotProps[Key]>>;
+}, Primary & 'root'> & PropsWithoutRef<SlotProps[Primary]>;
 
 // @public
-export type DefaultObjectShorthandProps = ObjectShorthandProps<Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+export type ComponentSlotProps<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? ObjectSlotProps<Props> : never;
+
+// @public (undocumented)
+export type ComponentState<SlotProps extends ObjectSlotPropsRecord> = {
+    components?: {
+        [Key in keyof SlotProps]-?: React_2.ComponentType<NonNullable<SlotProps[Key]> extends ObjectSlotProps<infer P> ? P : NonNullable<SlotProps[Key]>> | (NonNullable<SlotProps[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    };
+} & SlotProps;
+
+// @public
+export type DefaultObjectSlotProps = ObjectSlotProps<Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
     as?: keyof JSX.IntrinsicElements;
 }>;
 
@@ -101,7 +104,7 @@ export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPr
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
-export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {
+export function getSlots<R extends ObjectSlotPropsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {
     slots: Slots<R>;
     slotProps: SlotProps<R>;
 };
@@ -122,12 +125,12 @@ export const imgProperties: Record<string, number>;
 export const inputProperties: Record<string, number>;
 
 // @public
-export type IntrinsicShorthandProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
+export type IntrinsicSlotProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicSlotProps must be a single element type, not a union of types' : ({
     as?: DefaultAs;
-} & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
+} & ObjectSlotProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
     [As in AlternateAs]: {
         as: As;
-    } & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[As]>>;
+    } & ObjectSlotProps<React_2.PropsWithRef<JSX.IntrinsicElements[As]>>;
 }[AlternateAs];
 
 // @public
@@ -145,14 +148,14 @@ export const liProperties: Record<string, number>;
 export const nullRender: () => null;
 
 // @public
-export type ObjectShorthandProps<Props extends {
+export type ObjectSlotProps<Props extends {
     children?: React_2.ReactNode;
 } = {}> = Props & {
-    children?: Props['children'] | ShorthandRenderFunction<Props>;
+    children?: Props['children'] | SlotRenderFunction<Props>;
 };
 
 // @public (undocumented)
-export type ObjectShorthandPropsRecord = Record<string, DefaultObjectShorthandProps | undefined>;
+export type ObjectSlotPropsRecord = Record<string, DefaultObjectSlotProps | undefined>;
 
 // @public
 export const olProperties: Record<string, number>;
@@ -176,7 +179,7 @@ export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 export function resetIdsForTests(): void;
 
 // @public
-export function resolveShorthand<Props extends DefaultObjectShorthandProps, Required extends boolean = false>(value: ShorthandProps<Props>, options?: ResolveShorthandOptions<Props, Required>): Required extends false ? Props | undefined : Props;
+export function resolveShorthand<Props extends DefaultObjectSlotProps, Required extends boolean = false>(value: ShorthandProps<Props>, options?: ResolveShorthandOptions<Props, Required>): Required extends false ? Props | undefined : Props;
 
 // @public (undocumented)
 export type ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> = {
@@ -188,17 +191,17 @@ export type ResolveShorthandOptions<Props extends Record<string, any>, Required 
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
-export type ShorthandProps<Props extends DefaultObjectShorthandProps> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | Props;
-
-// @public (undocumented)
-export type ShorthandRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
+export type ShorthandProps<Props extends DefaultObjectSlotProps> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | Props;
 
 // @public
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
 // @public (undocumented)
-export type Slots<S extends ObjectShorthandPropsRecord> = {
-    [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As> ? As : S[K] extends ObjectShorthandProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
+export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
+
+// @public (undocumented)
+export type Slots<S extends ObjectSlotPropsRecord> = {
+    [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As> ? As : S[K] extends ObjectSlotProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
 };
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal

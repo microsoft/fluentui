@@ -1,12 +1,12 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 export type CardHeaderSlots = {
-  root: IntrinsicShorthandProps<'div'>;
-  image: IntrinsicShorthandProps<'div'>;
-  content?: IntrinsicShorthandProps<'div'>;
-  header: IntrinsicShorthandProps<'span'>;
-  description: IntrinsicShorthandProps<'span'>;
-  action?: IntrinsicShorthandProps<'div'>;
+  root: IntrinsicSlotProps<'div'>;
+  image: IntrinsicSlotProps<'div'>;
+  content?: IntrinsicSlotProps<'div'>;
+  header: IntrinsicSlotProps<'span'>;
+  description: IntrinsicSlotProps<'span'>;
+  action?: IntrinsicSlotProps<'div'>;
 };
 
 /**

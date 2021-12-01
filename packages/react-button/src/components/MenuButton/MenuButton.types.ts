@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 // This type mimics the interface found in MenuTrigger.types.ts to allow MenuButton and Menu to play correctly with each
@@ -16,7 +16,7 @@ export type MenuButtonSlots = ButtonSlots & {
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
    */
-  menuIcon?: IntrinsicShorthandProps<'span'>;
+  menuIcon?: IntrinsicSlotProps<'span'>;
 };
 
 export type MenuButtonProps = ComponentProps<MenuButtonSlots> &
