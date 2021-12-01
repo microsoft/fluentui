@@ -16442,10 +16442,10 @@ karma@^5.0.4:
     ua-parser-js "0.7.21"
     yargs "^15.3.1"
 
-keyborg@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.0.7.tgz#7a4ccc74541b655e4eb9e5ec44c7dd126fb24669"
-  integrity sha512-wvbDuAXjsZHLfmaPIMUXIZ8C8QTg3WFTVJxneSjCfLydRG1qMOwV4/WUBTjbGVgz7eTTyEFl5i+M76fRvoYiVQ==
+keyborg@^1.1.0-alpha.1:
+  version "1.1.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.1.0-alpha.1.tgz#63755559f3439807506c69d5567df57d10bbc010"
+  integrity sha512-dSypF+mLAIDnqdN1FvoxEpCGaNs9fLEfxeUUWSYKeJy3OfLhSyExRn9A/vubGYScUbXrXTCyju02LLeqfPBE9Q==
 
 keyv@3.0.0:
   version "3.0.0"
@@ -23917,12 +23917,12 @@ table@^6.0.4:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
-tabster@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.0.7.tgz#0388228fc347d794ebdfbbe03b429b646ab7ce0a"
-  integrity sha512-AkCP3SF9hgPopOZ2r80s0LvAnQNKA4GM136YgZz55d4Y8gLBFmKJcm23YZfj3l30pMy+ktxuPyGAy+VN+5/h2Q==
+tabster@^1.1.0-alpha.0:
+  version "1.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.1.0-alpha.0.tgz#0b8684f0dce4482dc8798c7756173fef6dcdbdf4"
+  integrity sha512-QQTttvw/uBEDy2ph8jn+DHGAvFiPL+ZjydaCrxc7LwWT3WerF5SAarbXjTWcIFPHXV7UKwLtnlt6PK14eRqMAw==
   dependencies:
-    keyborg "^1.0.7"
+    keyborg "^1.1.0-alpha.1"
     tslib "^2.1.0"
 
 tapable@^1.0.0, tapable@^1.1.3:
