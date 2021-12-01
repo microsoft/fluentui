@@ -1,6 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   AutoFocusZone,
   AutoFocusZoneProps,
   FocusTrapZone,
@@ -11,6 +10,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
@@ -90,8 +90,7 @@ export const popupContentSlotClassNames: PopupContentSlotClassNames = {
 /**
  * A PopupContent displays the content of a Popup component.
  */
-export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
-  FluentComponentStaticProps<PopupContentProps> = props => {
+export const PopupContent = (React.forwardRef<HTMLDivElement, PopupContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
   setStart();
@@ -148,7 +147,7 @@ export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
   const popupContent = (
     <>
       {pointing && <div className={classes.pointer} ref={pointerRef} />}
-      <div className={cx(popupContentSlotClassNames.content, classes.content)}>
+      <div ref={ref} className={cx(popupContentSlotClassNames.content, classes.content)}>
         {childrenExist(children) ? children : content}
       </div>
     </>
@@ -177,7 +176,8 @@ export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, PopupContentProps> &
+  FluentComponentStaticProps<PopupContentProps>;
 
 PopupContent.displayName = 'PopupContent';
 
