@@ -3,7 +3,7 @@ import type { IStackProps } from './Stack.types';
 
 // Helper function that converts a themed spacing key (if given) to the corresponding themed spacing value.
 const _getThemedSpacing = (space: string, theme: ITheme): string => {
-  if (theme.spacing.hasOwnProperty(space)) {
+  if (theme.spacing && theme.spacing.hasOwnProperty(space)) {
     return theme.spacing[space as keyof typeof theme.spacing];
   }
   return space;
