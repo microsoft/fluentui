@@ -23,7 +23,7 @@ export function createDOMRenderer(target?: Document | undefined, options?: Creat
 
 // @public (undocumented)
 export interface CreateDOMRendererOptions {
-    filterCSSRule?: (cssRule: string) => boolean;
+    unstable_filterCSSRule?: (cssRule: string) => boolean;
 }
 
 // @public (undocumented)
