@@ -22,11 +22,17 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
 }
 
 /**
- * A `useState`-like hook to manage a value that could be either controlled or uncontrolled, such as
- * a checked state or text box string.
- * @returns Same as [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate): an array of the current
- * value and an updater callback. The updater callback always has the same identity, and it can take
- * either a new value, or a function which is passed the previous value and returns the new value.
+ * A `useState`-like hook to manage a value that could be either controlled or uncontrolled,
+ * such as a checked state or text input string.
+ *
+ * Unlike `setState`, it's okay to call the returned updater (dispatch) function for either a
+ * controlled or uncontrolled component. Calls will only be respected if the component is uncontrolled.
+ *
+ * @returns Same as [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate): an array
+ * of the current value and an updater (dispatch) function. The updater function always has the same
+ * identity, and it can take either a new value, or a function which is passed the previous value
+ * and returns the new value. Unlike `setState`, calls to the updater function will only be
+ * respected if the component is uncontrolled.
  * @see https://reactjs.org/docs/uncontrolled-components.html
  */
 export const useControllableState = <State>(

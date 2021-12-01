@@ -108,6 +108,8 @@ describe('useControllableState', () => {
   });
 
   it('should ignore dispatch when controlled', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
     const state = 'foo';
     const defaultState = 'world';
     const initialState = '';
@@ -118,6 +120,7 @@ describe('useControllableState', () => {
     });
 
     expect(result.current[0]).toEqual('foo');
+    expect(spy).toHaveBeenCalledTimes(0);
   });
 
   it.each([
