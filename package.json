@@ -157,8 +157,8 @@
     "cypress-real-events": "1.2.0",
     "cypress-storybook": "0.5.1",
     "danger": "^6.0.5",
-    "del": "6.0.0",
     "dedent": "0.7.0",
+    "del": "6.0.0",
     "enhanced-resolve": "5.8.2",
     "enquirer": "2.3.6",
     "eslint": "7.25.0",
@@ -212,6 +212,7 @@
     "satisfied": "^1.1.1",
     "schema-utils": "3.1.1",
     "semver": "^6.2.0",
+    "storybook-addon-export-to-codesandbox": "0.6.4",
     "storybook-addon-performance": "0.14.0",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
@@ -234,8 +235,7 @@
     "webpack-merge": "5.7.3",
     "workspace-tools": "0.16.2",
     "yargs": "13.3.2",
-    "yargs-parser": "13.1.2",
-    "storybook-addon-export-to-codesandbox": "0.6.4"
+    "yargs-parser": "13.1.2"
   },
   "license": "MIT",
   "workspaces": {
