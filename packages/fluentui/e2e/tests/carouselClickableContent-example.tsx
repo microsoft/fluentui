@@ -41,7 +41,7 @@ const CarouselClickableContentExample = () => {
           })),
         }}
         className={selectors.CarouselClass}
-        ariaRoleDescription="carousel"
+        aria-roledescription="carousel"
         items={carouselItems}
       />
     </>
