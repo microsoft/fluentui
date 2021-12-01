@@ -1,12 +1,12 @@
 import { Accessibility, treeItemBehavior, TreeItemBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStyles,
   useTelemetry,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -122,7 +122,7 @@ export const treeItemClassName = 'ui-tree__item';
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = props => {
+export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
@@ -279,7 +279,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     _.invoke(props, 'onKeyDown', e, props);
   };
 
-  const ref = React.useCallback(
+  const elementRef = React.useCallback(
     node => {
       registerItemRef(id, node);
       handleRef(contentRef, node);
@@ -294,6 +294,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       {...getA11Props('root', {
         className: classes.root,
         id,
+        ref,
         selected: selected === true,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
@@ -326,11 +327,11 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     </ElementType>
   );
 
-  const elementWithRef = <Ref innerRef={ref}>{element}</Ref>;
+  const elementWithRef = <Ref innerRef={elementRef}>{element}</Ref>;
   setEnd();
 
   return elementWithRef;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, TreeItemProps> & FluentComponentStaticProps<TreeItemProps>;
 
 TreeItem.displayName = 'TreeItem';
 
