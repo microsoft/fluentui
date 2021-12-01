@@ -48,8 +48,8 @@ storiesOf('Input Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Size: small', () => <Input fieldSize="small" input={{ placeholder: 'Placeholder' }} />)
-  .addStory('Size: large', () => <Input fieldSize="large" input={{ placeholder: 'Placeholder' }} />)
+  .addStory('Size: small', () => <Input size="small" input={{ placeholder: 'Placeholder' }} />)
+  .addStory('Size: large', () => <Input size="large" input={{ placeholder: 'Placeholder' }} />)
   .addStory('Inline', () => (
     <p>
       Some text with <Input inline input={{ placeholder: 'Placeholder' }} /> inline input
