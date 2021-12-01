@@ -4,28 +4,28 @@
 
 ## Summary
 
-`makeStyles()` is CSS-in-JS engine that is used in Fluent UI React v9. At this moment it seems that `makeStyles()` is more than just a piece of Fluent UI and there is sense to move out it to a separate repository for better visibility in community.
+`makeStyles()` is CSS-in-JS engine that is used in Fluent UI React v9. At this moment it seems that `makeStyles()` is more than just a piece of Fluent UI and moving it out a separate repository can bring result in more visibility in the community to both `makeStyles` and Fluent.
 
-An example there can be [Braid Design System](https://seek-oss.github.io/braid-design-system/) that uses [Vanilla Extract](https://github.com/seek-oss/vanilla-extract): design system and CSS-in-JS live in separate repositories.
+We can take [Braid Design System](https://seek-oss.github.io/braid-design-system/) as an example. It uses [Vanilla Extract](https://github.com/seek-oss/vanilla-extract): as its CSS-in-JS engine which lives in a separate repositories.
 
 ## Problem statement
 
 ### No community engagement
 
-In Fluent UI repository we have already 4 projects, `makeStyles` stays invisible behind them 🙄 This results in inability to get community feedback and consumers outside Fluent UI.
+In Fluent UI repository we have already 4 projects, `makeStyles` is invisible behind them 🙄 This results in inability to get community feedback and consumers outside of Fluent UI.
 
-In the same time, community might have interest in `makeStyles` as it solves its goals efficiently. Taking into account that:
+At the same time, the community might have interest in `makeStyles` as it solves its goals efficiently. Taking into account that:
 
 - `makeStyles` is based on similar ideas as [Stylex](https://www.youtube.com/watch?v=9JZHodNR184&t=229s) from Facebook
-- we use module evaluation for [Linaria](https://github.com/callstack/linaria)
+- we use module evaluation from [Linaria](https://github.com/callstack/linaria)
 
-It is a good opportunity to improve collaboration 🚀
+It is a good opportunity to improve collaboration with the wider open source community as a company 🚀
 
 ### `makeStyles` is coupled to Fluent UI
 
-Even if there is interest to use `makeStyles` separately from Fluent UI, it's currently impossible as it's coupled with Fluent UI React v9. There is a proposal how to decouple `makeStyles` (see RFC [microsoft/fluentui#20651](https://github.com/microsoft/fluentui/pull/20651)).
+Even if there is interest to use `makeStyles` separately from Fluent UI, it's currently impossible since it's coupled with Fluent UI React v9. There is a separate proposal to decouple `makeStyles` from Fluent (see RFC [microsoft/fluentui#20651](https://github.com/microsoft/fluentui/pull/20651)).
 
-But until it stays as a folder in Fluent UI repo there is no clarity about it for third parties.
+But while it stays as a folder in Fluent UI repo there is no clarity about how to use it for third parties.
 
 ### Lack of docs
 
@@ -33,11 +33,13 @@ Compared to other CSS-in-JS `makeStyles` does not have enough docs to explain AP
 
 ### "Bad" naming
 
-It's something that was not considered initially, but `makeStyles` is also a function in [MUI](https://mui.com/styles/basics/) and any search queries will point to it.
+It's a point that was not considered initially, but `makeStyles` is also a function in [MUI](https://mui.com/styles/basics/) and any search queries will point to it.
 
 ### Opportunities for partners
 
-Without strict dependency on Fluent UI v9 we can potentially involve more partners to be consumers of `makeStyles` as they will be able to try new styling engine even without consuming v9 components.
+Without a strict dependency on Fluent UI v9 we can potentially involve more partners to be consumers of `makeStyles` since they will be able to try the new styling engine even without consuming v9 components.
+
+Partners using other component libraries can still see a performance improvement when using `makeStyles` with their components. This has been proven in the Teams chat list in T2.
 
 ### Build issues
 
@@ -52,7 +54,7 @@ The problem is described in [microsoft/fluentui#18357](https://github.com/micros
 
 #### Dependency issues
 
-For incremental adoption with Teams we are looking into building compat layer between `makeStyles` & Fela ([microsoft/fluentui#20611](https://github.com/microsoft/fluentui/pull/20611)). This requires to be have `makeStyles` core as a dependency of Fluent UI React Northstar.
+For incremental adoption with Teams we are looking into a compat layer between `makeStyles` & Fela ([microsoft/fluentui#20611](https://github.com/microsoft/fluentui/pull/20611)). This requires Fluent UI React Northstar (v0) take `makeStyles` core as a dependency.
 
 Existing issues:
 
@@ -62,7 +64,7 @@ Existing issues:
 
 #### Circular dependencies between repos
 
-Currently `@fluentui/react-icons` depends on `@fluentui/react-make-styles`. When we will need to perform major bump of `@fluentui/react-make-styles`:
+Currently `@fluentui/react-icons` depends on `@fluentui/react-make-styles`. When we need to perform major bump of `@fluentui/react-make-styles`:
 
 - try to bump `@fluentui/react-make-styles` to v10
 - `@fluentui/react-icons` still uses v10 (double dependency)
