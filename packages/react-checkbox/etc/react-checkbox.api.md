@@ -24,13 +24,14 @@ export interface CheckboxCommons {
     circular: boolean;
     labelPosition: 'before' | 'after';
     size: 'medium' | 'large';
-}
+    labelPosition: 'before' | 'after';
+    containerClassName?: string;
+};
 
 // @public
-export interface CheckboxOnChangeData {
-    // (undocumented)
+export type CheckboxOnChangeData = {
     checked: 'mixed' | boolean;
-}
+};
 
 // @public
 export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {

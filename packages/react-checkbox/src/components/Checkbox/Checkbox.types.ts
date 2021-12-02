@@ -7,7 +7,7 @@ import {
 } from '@fluentui/react-utilities';
 import { LabelProps } from '@fluentui/react-label';
 
-export interface CheckboxCommons {
+export type CheckboxCommons = {
   /**
    * Whether to render the checkbox in a circular shape instead of square.
    * This variant is only recommended to be used in a tasks-style UI (checklist),
@@ -17,30 +17,32 @@ export interface CheckboxCommons {
   circular: boolean;
 
   /**
-   * A checkbox's state can be controlled.
-   * @defaultvalue false
+   * Current state of the checkbox. Provide this if the checkbox is a controlled component where you
+   * are maintaining its current state; otherwise, use `defaultChecked`.
+   *
+   * (This prop is mutually exclusive with `defaultChecked`.)
    */
   checked: 'mixed' | boolean;
 
   /**
-   * Checkbox supports two different checkbox sizes.
-   * @defaultvalue medium
+   * Determines the font and icon size of the checkbox.
+   * @defaultvalue 'medium'
    */
   size: 'medium' | 'large';
 
   /**
    * Determines whether the label should be positioned before or after the checkbox.
-   * @defaultvalue after
+   * @defaultvalue 'after'
    */
   labelPosition: 'before' | 'after';
-}
+};
 
 /**
  * Data for the onChange event for checkbox.
  */
-export interface CheckboxOnChangeData {
-  checked: 'mixed' | boolean;
-}
+export type CheckboxOnChangeData = {
+  checked: boolean;
+};
 
 export type CheckboxSlots = {
   /**
@@ -89,7 +91,10 @@ export type CheckboxProps = Omit<
     onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
 
     /**
-     * Whether the checkbox should be rendered as checked by default.
+     * Whether the checkbox should be checked by default. Provide this if the checkbox should be an
+     * uncontrolled component which tracks its current state internally; otherwise, use `checked`.
+     *
+     * (This prop is mutually exclusive with `checked`.)
      */
     defaultChecked?: 'mixed' | boolean;
   };
