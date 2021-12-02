@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 02 Dec 2021 07:36:29 GMT",
+      "tag": "@fluentui/web-components_v2.1.1",
+      "version": "2.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a69b283c2eb799c0edc5276d9d1094d1f3d4e4ac",
+            "comment": "fix: tabpanel shifting in vertical layout"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Nov 2021 07:27:34 GMT",
       "tag": "@fluentui/web-components_v2.1.0",
       "version": "2.1.0",

@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 01 Dec 2021 07:41:08 GMT",
+      "tag": "@fluentui/codemods_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/codemods",
+            "commit": "a26a84c84557fdcf96f9dba73f9090510d40e599",
+            "comment": "Remove v9 make-styles dependency"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 14:54:12 GMT",
       "tag": "@fluentui/codemods_v8.3.1",
       "version": "8.3.1",
