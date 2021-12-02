@@ -168,7 +168,6 @@ _Explain how the component will behave in use, including:_
   - _Screen readers_
     - **`root`:**
       - renders `as` div
-      - handles native props expected from the element type in `as`
     - **`hidden input element`:**
       - Handles aria for the Slider.
 

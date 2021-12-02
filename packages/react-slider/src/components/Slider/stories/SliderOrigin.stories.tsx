@@ -7,6 +7,6 @@ import { Slider } from '../../../index';
 export const Origin = () => (
   <>
     <Label htmlFor="origin-slider">Origin Example</Label>
-    <Slider defaultValue={8} origin={3} min={0} max={10} input={{ id: 'origin-slider' }} />
+    <Slider defaultValue={8} origin={3} min={0} max={10} id="origin-slider" />
   </>
 );

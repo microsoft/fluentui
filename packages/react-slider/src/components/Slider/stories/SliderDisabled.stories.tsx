@@ -7,6 +7,6 @@ import { Slider } from '../../../index';
 export const Disabled = () => (
   <>
     <Label htmlFor="disabled-slider">Disabled Example</Label>
-    <Slider defaultValue={30} disabled input={{ id: 'disabled-slider' }} />
+    <Slider defaultValue={30} disabled id="disabled-slider" />
   </>
 );

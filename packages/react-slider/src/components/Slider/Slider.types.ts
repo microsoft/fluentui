@@ -4,6 +4,8 @@ import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluent
 export type SliderSlots = {
   /**
    * The root of the Slider.
+   * The root slot receives the `className` and `style` specified directly on the `<Slider>`.
+   * All other native props will be applied to the primary slot: `input`
    */
   root: IntrinsicShorthandProps<'div'>;
 
@@ -25,6 +27,8 @@ export type SliderSlots = {
 
   /**
    * The hidden input for the Slider.
+   * This is the PRIMARY slot: all native properties specified directly on `<Slider>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
    */
   input: IntrinsicShorthandProps<'input'>;
 };
@@ -109,6 +113,6 @@ export type SliderCommons = {
   ariaValueText?: (value: number) => string;
 };
 
-export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue'> & SliderCommons;
 
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;

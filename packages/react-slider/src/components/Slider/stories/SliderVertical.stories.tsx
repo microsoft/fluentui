@@ -7,6 +7,6 @@ import { Slider } from '../../../index';
 export const Vertical = () => (
   <>
     <Label htmlFor="vertical-slider">Vertical Example</Label>
-    <Slider vertical step={2} defaultValue={6} min={0} max={10} input={{ id: 'vertical-slider' }} />
+    <Slider vertical step={2} defaultValue={6} min={0} max={10} id="vertical-slider" />
   </>
 );

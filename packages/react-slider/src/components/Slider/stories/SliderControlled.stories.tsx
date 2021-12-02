@@ -21,7 +21,7 @@ export const Controlled = () => {
         step={20}
         keyboardStep={10}
         onChange={onSliderChange}
-        input={{ id: 'controlled-slider' }}
+        id="controlled-slider"
       />
     </>
   );

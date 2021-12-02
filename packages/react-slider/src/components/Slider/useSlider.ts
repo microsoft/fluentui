@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { useSliderState } from './useSliderState';
 import { SliderProps, SliderSlots, SliderState } from './Slider.types';
 
@@ -11,7 +11,13 @@ export const sliderShorthandProps: (keyof SliderSlots)[] = ['root', 'input', 'ra
 /**
  * Given user props, returns state and render function for a Slider.
  */
-export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): SliderState => {
+export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'input',
+    excludedPropNames: [],
+  });
+
   const {
     // Props
     value,
@@ -28,6 +34,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     origin,
 
     // Slots
+    root,
     input,
     rail,
     thumb,
@@ -54,14 +61,18 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
       thumb: 'div',
       track: 'div',
     },
-    root: getNativeElementProps('span', {
-      ref,
-      ...props,
-      id: useId('slider-', props.id),
+    root: resolveShorthand(root, {
+      required: true,
+      defaultProps: {
+        ...nativeProps.root,
+      },
     }),
     input: resolveShorthand(input, {
       required: true,
       defaultProps: {
+        id: useId('slider-', props.id),
+        ref,
+        ...nativeProps.primary,
         type: 'range',
       },
     }),

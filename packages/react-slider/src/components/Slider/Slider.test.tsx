@@ -13,6 +13,7 @@ describe('Slider', () => {
   isConformant({
     Component: Slider,
     displayName: 'Slider',
+    primarySlot: 'input',
     disabledTests: ['kebab-aria-attributes'],
   });
 
@@ -354,7 +355,7 @@ describe('Slider', () => {
     });
 
     it('does not allow focus on disabled Slider', () => {
-      const sliderRef = React.createRef<HTMLDivElement>();
+      const sliderRef = React.createRef<HTMLInputElement>();
       const inputRef = React.createRef<HTMLInputElement>();
 
       render(<Slider ref={sliderRef} disabled input={{ ref: inputRef }} />);
