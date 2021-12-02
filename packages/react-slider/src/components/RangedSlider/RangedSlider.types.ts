@@ -1,39 +1,39 @@
 import * as React from 'react';
-import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, IntrinsicSlotProps } from '@fluentui/react-utilities';
 import type { SliderSlots, SliderCommons } from '../Slider/Slider.types';
 
 export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
   /**
    * The lower draggable icon used to select a given value in the RangedSlider.
    */
-  lowerThumb: IntrinsicShorthandProps<'div'>;
+  lowerThumb: IntrinsicSlotProps<'div'>;
 
   /**
    * The wrapper around the RangedSlider's lower thumb.
    * It is primarily used to handle the dragging animation from translateX.
    */
-  lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
+  lowerThumbWrapper: IntrinsicSlotProps<'div'>;
 
   /**
    * The upper draggable icon used to select a given value in the RangedSlider.
    */
-  upperThumb: IntrinsicShorthandProps<'div'>;
+  upperThumb: IntrinsicSlotProps<'div'>;
 
   /**
    * The wrapper around the RangedSlider's upper thumb.
    * It is primarily used to handle the dragging animation from translateX.
    */
-  upperThumbWrapper: IntrinsicShorthandProps<'div'>;
+  upperThumbWrapper: IntrinsicSlotProps<'div'>;
 
   /**
    * The hidden input for the Slider's lower thumb.
    */
-  lowerInput: IntrinsicShorthandProps<'input'>;
+  lowerInput: IntrinsicSlotProps<'input'>;
 
   /**
    * The hidden input for the Slider's upper thumb.
    */
-  upperInput: IntrinsicShorthandProps<'input'>;
+  upperInput: IntrinsicSlotProps<'input'>;
 };
 
 export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {

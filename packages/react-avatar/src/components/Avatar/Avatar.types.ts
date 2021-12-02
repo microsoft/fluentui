@@ -1,38 +1,38 @@
 import * as React from 'react';
+import type { PresenceBadgeProps } from '@fluentui/react-badge';
 import type {
   ComponentProps,
   ComponentState,
-  IntrinsicShorthandProps,
-  ObjectShorthandProps,
-  ShorthandRenderFunction,
+  IntrinsicSlotProps,
+  ObjectSlotProps,
+  SlotRenderFunction,
 } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
 export type AvatarSlots = {
-  root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
+  root: Omit<IntrinsicSlotProps<'span'>, 'color'> & { children?: never };
 
   /**
    * This overidden in the component's props, it's only here to make `getSlots` work
    * `img`  is an exception since it should never accept children, but can accept a children render function
    */
-  image?: IntrinsicShorthandProps<'img'>;
+  image?: IntrinsicSlotProps<'img'>;
 
   /**
    * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
    */
-  label?: IntrinsicShorthandProps<'span'>;
+  label?: IntrinsicSlotProps<'span'>;
 
   /**
    * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
    *
    * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
    */
-  icon?: IntrinsicShorthandProps<'span'>;
+  icon?: IntrinsicSlotProps<'span'>;
 
   /**
    * Badge to show the avatar's presence status.
    */
-  badge?: ObjectShorthandProps<PresenceBadgeProps>;
+  badge?: ObjectSlotProps<PresenceBadgeProps>;
 };
 
 export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
@@ -147,8 +147,8 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> &
      * The Avatar's image. Cannot be typed as a normal slot since it should not accept any children
      * but can accept a children render function.
      */
-    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
-      children?: ShorthandRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
+    image?: Omit<IntrinsicSlotProps<'img'>, 'children'> & {
+      children?: SlotRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
     };
   };
 

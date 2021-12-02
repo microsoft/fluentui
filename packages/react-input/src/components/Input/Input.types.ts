@@ -1,24 +1,24 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 export type InputSlots = {
   /**
    * Wrapper element which visually appears to be the input and is used for borders, focus styling, etc.
    * (A wrapper is needed to properly position `contentBefore` and `contentAfter` relative to `input`.)
    */
-  root: IntrinsicShorthandProps<'span'>;
+  root: IntrinsicSlotProps<'span'>;
 
   /**
    * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
    * This is the "primary" slot, so top-level native props (except `className` and `style`) and the
    * top-level `ref` will go here.
    */
-  input: Omit<IntrinsicShorthandProps<'input'>, 'size'>;
+  input: Omit<IntrinsicSlotProps<'input'>, 'size'>;
 
   /** Element before the input text, within the input border */
-  contentBefore?: IntrinsicShorthandProps<'span'>;
+  contentBefore?: IntrinsicSlotProps<'span'>;
 
   /** Element after the input text, within the input border */
-  contentAfter?: IntrinsicShorthandProps<'span'>;
+  contentAfter?: IntrinsicSlotProps<'span'>;
 };
 
 export type InputCommons = {

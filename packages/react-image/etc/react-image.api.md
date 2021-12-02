@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -34,7 +34,7 @@ export const imageShorthandProps: Array<keyof ImageSlots>;
 
 // @public (undocumented)
 export type ImageSlots = {
-    root: IntrinsicShorthandProps<'img'>;
+    root: IntrinsicSlotProps<'img'>;
 };
 
 // @public (undocumented)

@@ -4,13 +4,13 @@
 
 ```ts
 
-import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -73,7 +73,7 @@ export const AccordionHeaderExpandIcon: ForwardRefComponent<AccordionHeaderExpan
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderExpandIconProps = IntrinsicShorthandProps<'span'>;
+export type AccordionHeaderExpandIconProps = IntrinsicSlotProps<'span'>;
 
 // @public (undocumented)
 export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
@@ -86,11 +86,11 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    button: ARIAButtonShorthandProps;
+    root: IntrinsicSlotProps<'div'>;
+    button: ARIAButtonSlotProps;
     expandIcon: AccordionHeaderExpandIconProps;
-    icon?: IntrinsicShorthandProps<'div'>;
-    children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    icon?: IntrinsicSlotProps<'div'>;
+    children: ComponentSlotProps<React_2.ComponentType<React_2.HTMLAttributes<HTMLElement>>>;
 };
 
 // @public (undocumented)
@@ -133,7 +133,7 @@ export const accordionItemShorthandProps: Array<keyof AccordionItemSlots>;
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -156,7 +156,7 @@ export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -176,7 +176,7 @@ export const accordionShorthandProps: Array<keyof AccordionSlots>;
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)

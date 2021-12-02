@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
 import { nullRender } from './nullRender';
-import { ObjectShorthandProps, IntrinsicShorthandProps } from './types';
+import type { IntrinsicSlotProps, ObjectSlotProps } from './types';
 
 describe('getSlots', () => {
   type FooProps = { id?: string; children?: React.ReactNode };
   const Foo = (props: FooProps) => <div />;
 
   it('returns div for root if the as prop is not provided', () => {
-    type Slots = { root: IntrinsicShorthandProps<'div'> };
+    type Slots = { root: IntrinsicSlotProps<'div'> };
     expect(
       getSlots<Slots>({ root: {} }),
     ).toEqual({
@@ -18,7 +18,7 @@ describe('getSlots', () => {
   });
 
   it('returns root slot as a span with no props', () => {
-    type Slots = { root: IntrinsicShorthandProps<'span'> };
+    type Slots = { root: IntrinsicSlotProps<'span'> };
     expect(
       getSlots<Slots>({ root: { as: 'span' } }),
     ).toEqual({
@@ -28,7 +28,7 @@ describe('getSlots', () => {
   });
 
   it('does not omit invalid props for the rendered element', () => {
-    type Slots = { root: IntrinsicShorthandProps<'button'> };
+    type Slots = { root: IntrinsicSlotProps<'button'> };
     const invalidProp = { href: 'href' } as React.ButtonHTMLAttributes<HTMLButtonElement>;
     expect(
       getSlots<Slots>({ root: { as: 'button', id: 'id', ...invalidProp } }),
@@ -39,7 +39,7 @@ describe('getSlots', () => {
   });
 
   it('returns root slot as an anchor, leaving the href intact', () => {
-    type Slots = { root: IntrinsicShorthandProps<'a'> };
+    type Slots = { root: IntrinsicSlotProps<'a'> };
     expect(
       getSlots<Slots>({ root: { as: 'a', id: 'id', href: 'href' } }),
     ).toEqual({
@@ -50,8 +50,8 @@ describe('getSlots', () => {
 
   it('returns a component slot with no children', () => {
     type Slots = {
-      root: IntrinsicShorthandProps<'div'>;
-      icon: ObjectShorthandProps<FooProps>;
+      root: IntrinsicSlotProps<'div'>;
+      icon: ObjectSlotProps<FooProps>;
     };
     expect(
       getSlots<Slots>(
@@ -70,8 +70,8 @@ describe('getSlots', () => {
 
   it('returns slot as button', () => {
     type Slots = {
-      root: IntrinsicShorthandProps<'div', 'span'>;
-      icon: IntrinsicShorthandProps<'button'>;
+      root: IntrinsicSlotProps<'div', 'span'>;
+      icon: IntrinsicSlotProps<'button'>;
     };
     expect(
       getSlots<Slots>(
@@ -90,8 +90,8 @@ describe('getSlots', () => {
 
   it('returns slot as anchor and includes supported props (href)', () => {
     type Slots = {
-      root: IntrinsicShorthandProps<'div'>;
-      icon: IntrinsicShorthandProps<'a'>;
+      root: IntrinsicSlotProps<'div'>;
+      icon: IntrinsicSlotProps<'a'>;
     };
     expect(
       getSlots<Slots>(
@@ -110,8 +110,8 @@ describe('getSlots', () => {
 
   it('returns a component and includes all props', () => {
     type Slots = {
-      root: IntrinsicShorthandProps<'div'>;
-      icon: IntrinsicShorthandProps<'a'> | ObjectShorthandProps<FooProps>;
+      root: IntrinsicSlotProps<'div'>;
+      icon: IntrinsicSlotProps<'a'> | ObjectSlotProps<FooProps>;
     };
     expect(
       getSlots<Slots>(
@@ -130,8 +130,8 @@ describe('getSlots', () => {
 
   it('can use slot children functions to replace default slot rendering', () => {
     type Slots = {
-      root: IntrinsicShorthandProps<'div'>;
-      icon: IntrinsicShorthandProps<'a'>;
+      root: IntrinsicSlotProps<'div'>;
+      icon: IntrinsicSlotProps<'a'>;
     };
     expect(
       getSlots<Slots>(
@@ -150,9 +150,9 @@ describe('getSlots', () => {
 
   it('can render a primitive input with no children', () => {
     type Slots = {
-      root: IntrinsicShorthandProps<'div'>;
-      input: IntrinsicShorthandProps<'input'>;
-      icon?: IntrinsicShorthandProps<'a'>;
+      root: IntrinsicSlotProps<'div'>;
+      input: IntrinsicSlotProps<'input'>;
+      icon?: IntrinsicSlotProps<'a'>;
     };
     expect(
       getSlots<Slots>(

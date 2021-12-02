@@ -4,10 +4,10 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -31,12 +31,12 @@ export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots
 
 // @public (undocumented)
 export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
-    lowerThumb: IntrinsicShorthandProps<'div'>;
-    lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
-    upperThumb: IntrinsicShorthandProps<'div'>;
-    upperThumbWrapper: IntrinsicShorthandProps<'div'>;
-    lowerInput: IntrinsicShorthandProps<'input'>;
-    upperInput: IntrinsicShorthandProps<'input'>;
+    lowerThumb: IntrinsicSlotProps<'div'>;
+    lowerThumbWrapper: IntrinsicSlotProps<'div'>;
+    upperThumb: IntrinsicSlotProps<'div'>;
+    upperThumbWrapper: IntrinsicSlotProps<'div'>;
+    lowerInput: IntrinsicSlotProps<'input'>;
+    upperInput: IntrinsicSlotProps<'input'>;
 };
 
 // @public (undocumented)
@@ -86,16 +86,16 @@ export const sliderShorthandProps: (keyof SliderSlots)[];
 
 // @public (undocumented)
 export type SliderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    rail: IntrinsicShorthandProps<'div'>;
-    sliderWrapper: IntrinsicShorthandProps<'div'>;
-    trackWrapper: IntrinsicShorthandProps<'div'>;
-    track: IntrinsicShorthandProps<'div'>;
-    marksWrapper: IntrinsicShorthandProps<'div'>;
-    thumbWrapper: IntrinsicShorthandProps<'div'>;
-    thumb: IntrinsicShorthandProps<'div'>;
-    activeRail: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
+    root: IntrinsicSlotProps<'div'>;
+    rail: IntrinsicSlotProps<'div'>;
+    sliderWrapper: IntrinsicSlotProps<'div'>;
+    trackWrapper: IntrinsicSlotProps<'div'>;
+    track: IntrinsicSlotProps<'div'>;
+    marksWrapper: IntrinsicSlotProps<'div'>;
+    thumbWrapper: IntrinsicSlotProps<'div'>;
+    thumb: IntrinsicSlotProps<'div'>;
+    activeRail: IntrinsicSlotProps<'div'>;
+    input: IntrinsicSlotProps<'input'>;
 };
 
 // @public (undocumented)
