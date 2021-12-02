@@ -18,7 +18,7 @@ export const markLabelClassName = `${sliderClassName}-label`;
 export const useRootStyles = makeStyles({
   root: theme => ({
     position: 'relative',
-    display: 'inline-flex',
+    display: 'flex',
     userSelect: 'none',
     touchAction: 'none',
     verticalAlign: 'bottom',
