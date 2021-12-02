@@ -12,12 +12,12 @@ import { Label } from '@fluentui/react-label';
 
 import { Scenario } from './utils';
 
-export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
+export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
   return (
-    <Scenario pageTitle="Simple form accordion">
-      <Accordion defaultOpenItems="personalDetails">
-        <AccordionItem value="personalDetails">
-          <AccordionHeader>Personal details</AccordionHeader>
+    <Scenario pageTitle="Personal form accordion">
+      <Accordion defaultOpenItems="basicInfo">
+        <AccordionItem value="basicInfo">
+          <AccordionHeader>Basic information</AccordionHeader>
           <AccordionPanel>
             <Label htmlFor="name">Name:</Label>
             <input type="text" id="name" name="name" />
@@ -63,6 +63,6 @@ export const SimpleFormAccordionAccessibilityScenario: React.FunctionComponent =
 };
 
 export default {
-  title: 'Accessibility Scenarios / Simple form accordion',
+  title: 'Accessibility Scenarios / Personal form accordion',
   id: 'accordion-accessibility-scenario',
 };
