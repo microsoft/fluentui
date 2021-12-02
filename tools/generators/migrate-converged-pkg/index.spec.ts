@@ -985,11 +985,15 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        plugins: [
-          'module:@fluentui/babel-make-styles',
-          'annotate-pure-calls',
-          '@babel/transform-react-pure-annotations',
-        ],
+        env: {
+          production: {
+            plugins: [
+              'module:@fluentui/babel-make-styles',
+              'annotate-pure-calls',
+              '@babel/transform-react-pure-annotations',
+            ],
+          },
+        },
       });
 
       tree.delete(`${projectConfig.root}/.babelrc.json`);
@@ -1001,11 +1005,15 @@ describe('migrate-converged-pkg generator', () => {
       devDeps = packageJson.devDependencies || {};
 
       expect(babelConfig).toEqual({
-        plugins: [
-          'module:@fluentui/babel-make-styles',
-          'annotate-pure-calls',
-          '@babel/transform-react-pure-annotations',
-        ],
+        env: {
+          production: {
+            plugins: [
+              'module:@fluentui/babel-make-styles',
+              'annotate-pure-calls',
+              '@babel/transform-react-pure-annotations',
+            ],
+          },
+        },
       });
       expect(devDeps[babelMakeStylesPkg]).toBe('9.0.0-alpha.0');
     });
@@ -1031,11 +1039,15 @@ describe('migrate-converged-pkg generator', () => {
       let devDeps = packageJson.devDependencies || {};
 
       expect(babelConfig).toEqual({
-        plugins: [
-          'module:@fluentui/babel-make-styles',
-          'annotate-pure-calls',
-          '@babel/transform-react-pure-annotations',
-        ],
+        env: {
+          production: {
+            plugins: [
+              'module:@fluentui/babel-make-styles',
+              'annotate-pure-calls',
+              '@babel/transform-react-pure-annotations',
+            ],
+          },
+        },
       });
       expect(devDeps[babelMakeStylesPkg]).toBe('^9.0.0-alpha.0');
 
@@ -1046,7 +1058,11 @@ describe('migrate-converged-pkg generator', () => {
       devDeps = packageJson.devDependencies || {};
 
       expect(babelConfig).toEqual({
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+        env: {
+          production: {
+            plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+          },
+        },
       });
       expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
 
@@ -1058,7 +1074,11 @@ describe('migrate-converged-pkg generator', () => {
       devDeps = packageJson.devDependencies || {};
 
       expect(babelConfig).toEqual({
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+        env: {
+          production: {
+            plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+          },
+        },
       });
       expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
     });
@@ -1241,7 +1261,15 @@ function setupDummyPackage(
       someThirdPartyDep: '^11.1.2',
     },
     babelConfig: {
-      plugins: ['module:@fluentui/babel-make-styles', 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      env: {
+        production: {
+          plugins: [
+            'module:@fluentui/babel-make-styles',
+            'annotate-pure-calls',
+            '@babel/transform-react-pure-annotations',
+          ],
+        },
+      },
     },
     tsConfig: { compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] } },
   };
