@@ -31,6 +31,9 @@ export async function babel() {
       caller: { name: 'just-scripts' },
       filename: filePath,
 
+      // Explicitly set environment variable to active production mode in ".babelrc"
+      envName: 'production',
+
       sourceFileName: path.basename(filename),
     });
     const resultCode = addSourceMappingUrl(result.code, path.basename(filename) + '.map');
