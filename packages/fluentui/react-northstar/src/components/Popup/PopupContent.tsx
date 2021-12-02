@@ -141,7 +141,6 @@ export const PopupContent = (React.forwardRef<HTMLDivElement, PopupContentProps>
     className: classes.root,
     ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
     ...unhandledProps,
-    ref,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
   });
@@ -171,7 +170,11 @@ export const PopupContent = (React.forwardRef<HTMLDivElement, PopupContentProps>
     };
     element = <AutoFocusZone {...autoFocusZoneProps}>{popupContent}</AutoFocusZone>;
   } else {
-    element = <ElementType {...popupContentProps}>{popupContent}</ElementType>;
+    element = (
+      <ElementType ref={ref} {...popupContentProps}>
+        {popupContent}
+      </ElementType>
+    );
   }
 
   setEnd();
