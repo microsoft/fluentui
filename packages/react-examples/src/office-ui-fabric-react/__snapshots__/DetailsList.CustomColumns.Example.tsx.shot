@@ -1713,7 +1713,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone4"
+                      data-focuszone-id="FocusZone5"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
@@ -2697,7 +2697,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone7"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
@@ -3681,7 +3681,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone6"
+                      data-focuszone-id="FocusZone9"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
@@ -4665,7 +4665,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone7"
+                      data-focuszone-id="FocusZone11"
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
@@ -5649,7 +5649,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone8"
+                      data-focuszone-id="FocusZone13"
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
@@ -6633,7 +6633,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone9"
+                      data-focuszone-id="FocusZone15"
                       data-is-focusable={true}
                       data-item-index={5}
                       data-selection-index={5}
@@ -7617,7 +7617,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone10"
+                      data-focuszone-id="FocusZone17"
                       data-is-focusable={true}
                       data-item-index={6}
                       data-selection-index={6}
@@ -8601,7 +8601,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone11"
+                      data-focuszone-id="FocusZone19"
                       data-is-focusable={true}
                       data-item-index={7}
                       data-selection-index={7}
@@ -9585,7 +9585,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone12"
+                      data-focuszone-id="FocusZone21"
                       data-is-focusable={true}
                       data-item-index={8}
                       data-selection-index={8}
@@ -10569,7 +10569,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone13"
+                      data-focuszone-id="FocusZone23"
                       data-is-focusable={true}
                       data-item-index={9}
                       data-selection-index={9}

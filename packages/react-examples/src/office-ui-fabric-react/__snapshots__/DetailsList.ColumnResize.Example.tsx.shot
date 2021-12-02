@@ -1853,7 +1853,7 @@ Array [
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
-                          data-focuszone-id="FocusZone24"
+                          data-focuszone-id="FocusZone25"
                           data-is-focusable={true}
                           data-item-index={0}
                           data-selection-index={0}
@@ -3160,7 +3160,7 @@ Array [
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
-                          data-focuszone-id="FocusZone25"
+                          data-focuszone-id="FocusZone27"
                           data-is-focusable={true}
                           data-item-index={0}
                           data-selection-index={0}
