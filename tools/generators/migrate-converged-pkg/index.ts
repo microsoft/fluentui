@@ -208,7 +208,7 @@ const templates = {
   babelConfig: (options: { extraPlugins: Array<string> }) => {
     return {
       env: {
-        production: {
+        build: {
           plugins: [...options.extraPlugins, 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
         },
       },

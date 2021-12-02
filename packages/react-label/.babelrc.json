@@ -1,6 +1,6 @@
 {
   "env": {
-    "production": {
+    "build": {
       "plugins": [
         "module:@fluentui/babel-make-styles",
         "annotate-pure-calls",

@@ -31,8 +31,8 @@ export async function babel() {
       caller: { name: 'just-scripts' },
       filename: filePath,
 
-      // Explicitly set environment variable to active production mode in ".babelrc"
-      envName: 'production',
+      // Explicitly set environment variable to activate "build" mode in ".babelrc"
+      envName: 'build',
 
       sourceFileName: path.basename(filename),
     });

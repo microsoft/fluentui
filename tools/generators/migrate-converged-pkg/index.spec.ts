@@ -986,7 +986,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(babelConfig).toEqual({
         env: {
-          production: {
+          build: {
             plugins: [
               'module:@fluentui/babel-make-styles',
               'annotate-pure-calls',
@@ -1006,7 +1006,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(babelConfig).toEqual({
         env: {
-          production: {
+          build: {
             plugins: [
               'module:@fluentui/babel-make-styles',
               'annotate-pure-calls',
@@ -1040,7 +1040,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(babelConfig).toEqual({
         env: {
-          production: {
+          build: {
             plugins: [
               'module:@fluentui/babel-make-styles',
               'annotate-pure-calls',
@@ -1059,7 +1059,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(babelConfig).toEqual({
         env: {
-          production: {
+          build: {
             plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
           },
         },
@@ -1075,7 +1075,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(babelConfig).toEqual({
         env: {
-          production: {
+          build: {
             plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
           },
         },
@@ -1262,7 +1262,7 @@ function setupDummyPackage(
     },
     babelConfig: {
       env: {
-        production: {
+        build: {
           plugins: [
             'module:@fluentui/babel-make-styles',
             'annotate-pure-calls',
