@@ -424,9 +424,6 @@
     "typings": {
       "tags": ["platform:any"]
     },
-    "typings": {
-      "tags": ["platform:any"]
-    },
     "vr-tests": {
       "implicitDependencies": []
     }
