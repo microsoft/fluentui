@@ -2,7 +2,7 @@ import { createKeyborg } from 'keyborg';
 import { useEffect, useMemo, useRef } from 'react';
 import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import type { KeyborgCallback } from 'keyborg/lib/Keyborg';
+import type { KeyborgCallback } from 'keyborg/keyborg/Keyborg';
 import type { RefObject } from 'react';
 
 /**
