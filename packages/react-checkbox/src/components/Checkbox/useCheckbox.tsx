@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxState } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
-import { Label, LabelProps } from '@fluentui/react-label';
+import { Label } from '@fluentui/react-label';
 
 /**
  * Create the state required to render Checkbox.
@@ -22,7 +22,7 @@ import { Label, LabelProps } from '@fluentui/react-label';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  const { circular, size = 'medium', labelPosition = 'after' } = props;
+  const { disabled, required, circular, size = 'medium', labelPosition = 'after' } = props;
 
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
@@ -36,16 +36,18 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     excludedPropNames: ['checked', 'defaultChecked', 'size', 'children'],
   });
 
+  const id = useId('checkbox-', nativeProps.primary.id);
+
   const state: CheckboxState = {
     circular,
     checked,
     size,
     labelPosition,
-    hasLabel: !!props.children,
     components: {
-      root: props.children !== undefined ? (Label as React.ComponentType<LabelProps>) : 'span',
-      indicator: 'div',
+      root: 'label',
       input: 'input',
+      indicator: 'div',
+      label: Label,
     },
     root: resolveShorthand(props.root, {
       required: true,
@@ -58,15 +60,25 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
       required: true,
       defaultProps: {
         type: 'checkbox',
-        id: useId('checkbox-', nativeProps.primary.id),
+        id,
         ref,
         checked: checked === true,
         ...nativeProps.primary,
       },
     }),
+    label: resolveShorthand(props.label, {
+      required: false,
+      defaultProps: {
+        htmlFor: id,
+        disabled,
+        required,
+        size: 'medium', // Even if the checkbox itself is large
+      },
+    }),
     indicator: resolveShorthand(props.indicator, {
       required: true,
       defaultProps: {
+        'aria-hidden': true,
         children:
           size === 'large' ? (
             checked === 'mixed' ? (

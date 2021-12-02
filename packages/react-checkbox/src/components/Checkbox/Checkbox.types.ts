@@ -9,7 +9,10 @@ import { LabelProps } from '@fluentui/react-label';
 
 export interface CheckboxCommons {
   /**
-   * A checkbox can be rendered with a circular shape.
+   * Whether to render the checkbox in a circular shape instead of square.
+   * This variant is only recommended to be used in a tasks-style UI (checklist),
+   * since it otherwise could be confused for a `RadioItem`.
+   * @defaultvalue false
    */
   circular: boolean | undefined;
 
@@ -21,21 +24,15 @@ export interface CheckboxCommons {
 
   /**
    * Checkbox supports two different checkbox sizes.
-   * @defaultvalue 'medium'
+   * @defaultvalue medium
    */
   size: 'medium' | 'large';
 
   /**
    * Determines whether the label should be positioned before or after the checkbox.
-   * @defaultvalue 'after'
+   * @defaultvalue after
    */
   labelPosition: 'before' | 'after';
-
-  /**
-   * Field required to pass className to container instead of input
-   * this will be solved by https://github.com/microsoft/fluentui/pull/18983
-   */
-  containerClassName?: string;
 }
 
 /**
@@ -47,12 +44,17 @@ export interface CheckboxOnChangeData {
 
 export type CheckboxSlots = {
   /**
-   * The root element of the checkbox is its `<label>`.
+   * The root element of the Checkbox.
    *
    * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
    * All other native props will be applied to the primary slot: `input`
    */
-  root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
+  root: IntrinsicShorthandProps<'label', 'span'>;
+
+  /**
+   * The Checkbox's label.
+   */
+  label?: ObjectShorthandProps<LabelProps>;
 
   /**
    * Hidden input that handles the checkbox's functionality.
@@ -87,7 +89,4 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
 /**
  * State used in rendering Checkbox
  */
-export type CheckboxState = ComponentState<CheckboxSlots> &
-  CheckboxCommons & {
-    hasLabel: boolean;
-  };
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;

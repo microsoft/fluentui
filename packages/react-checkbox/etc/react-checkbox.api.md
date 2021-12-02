@@ -22,7 +22,6 @@ export const checkboxClassName = "fui-Checkbox";
 export interface CheckboxCommons {
     checked: 'mixed' | boolean;
     circular: boolean | undefined;
-    containerClassName?: string;
     labelPosition: 'before' | 'after';
     size: 'medium' | 'large';
 }
@@ -41,15 +40,14 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
+    root: IntrinsicShorthandProps<'label', 'span'>;
+    label?: ObjectShorthandProps<LabelProps>;
     input: IntrinsicShorthandProps<'input'>;
     indicator: IntrinsicShorthandProps<'div'>;
 };
 
 // @public
-export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons & {
-    hasLabel: boolean;
-};
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
 
 // @public (undocumented)
 export const renderCheckbox: (state: CheckboxState) => JSX.Element;
