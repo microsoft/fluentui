@@ -5,12 +5,12 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputHTMLAttributes } from 'react';
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
+import type { LabelProps } from '@fluentui/react-label';
+import type { ObjectSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -50,7 +50,7 @@ export type RadioItemSlots = {
     root: IntrinsicSlotProps<'span'>;
     indicator: IntrinsicSlotProps<'div'>;
     input: IntrinsicSlotProps<'input'>;
-    label: ComponentSlotProps<typeof Label>;
+    label: ObjectSlotProps<LabelProps>;
     subtext?: IntrinsicSlotProps<'span'>;
 };
 

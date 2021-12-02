@@ -6,11 +6,11 @@
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ObjectSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -90,7 +90,7 @@ export type AccordionHeaderSlots = {
     button: ARIAButtonSlotProps;
     expandIcon: AccordionHeaderExpandIconProps;
     icon?: IntrinsicSlotProps<'div'>;
-    children: ComponentSlotProps<React_2.ComponentType<React_2.HTMLAttributes<HTMLElement>>>;
+    children: ObjectSlotProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
 // @public (undocumented)

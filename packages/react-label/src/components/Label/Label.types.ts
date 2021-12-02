@@ -41,5 +41,5 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
      * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
      * @defaultvalue false
      */
-    required?: boolean | ObjectSlotProps<React.ComponentType<React.HTMLAttributes<HTMLElement>>> | React.ReactNode;
+    required?: boolean | ObjectSlotProps<React.HTMLAttributes<HTMLElement>> | React.ReactNode;
   };

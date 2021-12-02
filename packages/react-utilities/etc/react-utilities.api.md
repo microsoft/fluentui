@@ -51,9 +51,6 @@ export type ComponentProps<Slots extends ObjectSlotsRecord, Primary extends keyo
 }, Primary & 'root'> & PropsWithoutRef<Slots[Primary]>;
 
 // @public
-export type ComponentSlotProps<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? ObjectSlotProps<Props> : never;
-
-// @public
 export type ComponentState<Slots extends ObjectSlotsRecord> = {
     components?: {
         [Key in keyof Slots]-?: React_2.ComponentType<NonNullable<Slots[Key]> extends ObjectSlotProps<infer P> ? P : NonNullable<Slots[Key]>> | (NonNullable<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);

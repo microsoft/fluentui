@@ -5,9 +5,9 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ObjectSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -30,8 +30,8 @@ export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeComm
 
 // @public (undocumented)
 export type BadgeSlots = {
-    root: ComponentSlotProps<React_2.ComponentType<Omit<React_2.HTMLAttributes<HTMLElement>, 'color'>>>;
-    icon?: ComponentSlotProps<React_2.ComponentType<React_2.HTMLAttributes<HTMLElement>>>;
+    root: ObjectSlotProps<Omit<React_2.HTMLAttributes<HTMLElement>, 'color'>>;
+    icon?: ObjectSlotProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
 // @public (undocumented)

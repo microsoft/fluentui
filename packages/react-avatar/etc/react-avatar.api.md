@@ -5,11 +5,11 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import { PresenceBadge } from '@fluentui/react-badge';
+import type { ObjectSlotProps } from '@fluentui/react-utilities';
+import type { PresenceBadgeProps } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
 
@@ -49,7 +49,7 @@ export type AvatarSlots = {
     image?: IntrinsicSlotProps<'img'>;
     label?: IntrinsicSlotProps<'span'>;
     icon?: IntrinsicSlotProps<'span'>;
-    badge?: ComponentSlotProps<typeof PresenceBadge>;
+    badge?: ObjectSlotProps<PresenceBadgeProps>;
 };
 
 // @public

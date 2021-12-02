@@ -6,10 +6,10 @@
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ObjectSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -106,8 +106,8 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 // @public (undocumented)
 export type SplitButtonSlots = {
     root: IntrinsicSlotProps<'div'>;
-    menuButton?: ComponentSlotProps<typeof MenuButton>;
-    primaryActionButton?: ComponentSlotProps<typeof Button>;
+    menuButton?: ObjectSlotProps<MenuButtonProps>;
+    primaryActionButton?: ObjectSlotProps<ButtonProps>;
 };
 
 // @public (undocumented)

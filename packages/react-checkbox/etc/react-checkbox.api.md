@@ -5,11 +5,11 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
+import type { LabelProps } from '@fluentui/react-label';
+import type { ObjectSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -41,7 +41,7 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: ComponentSlotProps<typeof Label> | IntrinsicSlotProps<'span'>;
+    root: ObjectSlotProps<LabelProps> | IntrinsicSlotProps<'span'>;
     input: IntrinsicSlotProps<'input'>;
     indicator: IntrinsicSlotProps<'div'>;
 };
