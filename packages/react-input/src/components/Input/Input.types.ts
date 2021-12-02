@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type InputSlots = {
@@ -17,7 +18,7 @@ export type InputSlots = {
    * (except `className` and `style`, which go to the `root` slot). The top-level `ref` will
    * also go here.
    */
-  input: Omit<IntrinsicShorthandProps<'input'>, 'size'>;
+  input: IntrinsicShorthandProps<'input'>;
 
   /** Element before the input text, within the input border */
   contentBefore?: IntrinsicShorthandProps<'span'>;
@@ -26,7 +27,14 @@ export type InputSlots = {
   contentAfter?: IntrinsicShorthandProps<'span'>;
 };
 
-export type InputCommons = {
+/**
+ * Input Props
+ */
+export type InputProps = Omit<
+  ComponentProps<InputSlots, 'input'>,
+  // `children` is unsupported. The rest of these native props have customized definitions.
+  'children' | 'defaultValue' | 'onChange' | 'size' | 'value'
+> & {
   /**
    * Size of the input (changes the font size and spacing).
    * @default 'medium'
@@ -37,24 +45,48 @@ export type InputCommons = {
   size?: 'small' | 'medium' | 'large';
 
   /**
-   * If true, the field will have inline display, allowing it be used within text content.
-   * If false (the default), the field will have block display.
+   * If true, the input will have inline display, allowing it be used within text content.
+   * If false (the default), the input will have block display.
    */
   inline?: boolean;
 
   /**
-   * Controls the colors and borders of the field.
+   * Controls the colors and borders of the input.
    * @default 'outline'
    */
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-};
 
-/**
- * Input Props
- */
-export type InputProps = InputCommons & Omit<ComponentProps<InputSlots, 'input'>, 'children'>;
+  /**
+   * Default value of the input. Provide this if the input should be an uncontrolled component
+   * which tracks its current state internally; otherwise, use `value`.
+   *
+   * (This prop is mutually exclusive with `value`.)
+   */
+  defaultValue?: string;
+
+  /**
+   * Current value of the input. Provide this if the input is a controlled component where you
+   * are maintaining its current state; otherwise, use `defaultValue`.
+   *
+   * (This prop is mutually exclusive with `defaultValue`.)
+   */
+  value?: string;
+
+  /**
+   * Called when the user changes the input's value.
+   */
+  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+};
 
 /**
  * State used in rendering Input
  */
-export type InputState = InputCommons & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
+
+/**
+ * Data passed to the `onChange` callback when a user changes the input's value.
+ */
+export type InputOnChangeData = {
+  /** Updated input value from the user */
+  value: string;
+};

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import type { InputProps, InputState } from './Input.types';
 
 /**
@@ -12,14 +12,15 @@ import type { InputProps, InputState } from './Input.types';
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
-  const { size, appearance, inline } = props;
+  const { size = 'medium', appearance = 'outline', inline = false, onChange } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
+    excludedPropNames: ['size', 'onChange'],
   });
 
-  return {
+  const state: InputState = {
     size,
     appearance,
     inline,
@@ -44,4 +45,11 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLInputElement>): I
       defaultProps: nativeProps.root,
     }),
   };
+
+  state.input.onChange = useEventCallback(ev => {
+    const newValue = ev.target.value;
+    onChange?.(ev, { value: newValue });
+  });
+
+  return state;
 };
