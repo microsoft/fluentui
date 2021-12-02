@@ -1,15 +1,15 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type DividerSlots = {
   /**
    * Root of the component that renders as a `<div>` tag.
    */
-  root: IntrinsicSlotProps<'div'>;
+  root: IntrinsicShorthandProps<'div'>;
 
   /**
    * Accessibility wrapper for content when presented.
    */
-  wrapper: IntrinsicSlotProps<'div'>;
+  wrapper: IntrinsicShorthandProps<'div'>;
 };
 
 export type DividerCommons = {

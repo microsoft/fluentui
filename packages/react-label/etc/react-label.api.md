@@ -8,7 +8,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -34,8 +34,8 @@ export const labelShorthandProps: Array<keyof LabelSlots>;
 
 // @public (undocumented)
 export type LabelSlots = {
-    root: IntrinsicSlotProps<'label'>;
-    required?: IntrinsicSlotProps<'span'>;
+    root: IntrinsicShorthandProps<'label'>;
+    required?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public

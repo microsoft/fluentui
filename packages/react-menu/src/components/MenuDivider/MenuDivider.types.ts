@@ -1,7 +1,7 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type MenuDividerSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: IntrinsicShorthandProps<'div'>;
 };
 
 export type MenuDividerProps = ComponentProps<MenuDividerSlots>;

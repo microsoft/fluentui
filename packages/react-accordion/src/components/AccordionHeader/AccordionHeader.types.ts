@@ -1,6 +1,11 @@
 import * as React from 'react';
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import type { ComponentProps, ComponentSlotProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type {
+  ComponentProps,
+  ComponentSlotProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+} from '@fluentui/react-utilities';
 import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
@@ -18,11 +23,11 @@ export type AccordionHeaderContextValues = {
 };
 
 export type AccordionHeaderSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  root: IntrinsicShorthandProps<'div'>;
   /**
    * The component to be used as button in heading
    */
-  button: ARIAButtonSlotProps;
+  button: ARIAButtonShorthandProps;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
@@ -30,7 +35,7 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon?: IntrinsicSlotProps<'div'>;
+  icon?: IntrinsicShorthandProps<'div'>;
   // TODO: children should never be a slot, this should be refactored so that behavior is correct.
   children: ComponentSlotProps<React.ComponentType<React.HTMLAttributes<HTMLElement>>>;
 };

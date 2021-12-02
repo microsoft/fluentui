@@ -4,12 +4,12 @@
 
 ```ts
 
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -34,8 +34,8 @@ export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: ARIAButtonSlotProps;
-    icon?: IntrinsicSlotProps<'span'>;
+    root: ARIAButtonShorthandProps;
+    icon?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public (undocumented)
@@ -54,8 +54,8 @@ export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
-    secondaryContent?: IntrinsicSlotProps<'span'>;
-    contentContainer: IntrinsicSlotProps<'span'>;
+    secondaryContent?: IntrinsicShorthandProps<'span'>;
+    contentContainer: IntrinsicShorthandProps<'span'>;
 };
 
 // @public (undocumented)
@@ -74,7 +74,7 @@ export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<But
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {
-    menuIcon?: IntrinsicSlotProps<'span'>;
+    menuIcon?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public (undocumented)
@@ -105,7 +105,7 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
     menuButton?: ComponentSlotProps<typeof MenuButton>;
     primaryActionButton?: ComponentSlotProps<typeof Button>;
 };

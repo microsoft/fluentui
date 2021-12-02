@@ -1,10 +1,10 @@
-import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type LinkSlots = {
   /**
    * Root of the component that renders as either an <a> or a <button> tag.
    */
-  root: IntrinsicSlotProps<'a', 'button'>;
+  root: IntrinsicShorthandProps<'a', 'button'>;
 };
 
 export type LinkCommons = {

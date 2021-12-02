@@ -1,57 +1,57 @@
 import * as React from 'react';
-import type { ComponentState, ComponentProps, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type SliderSlots = {
   /**
    * The root of the Slider.
    */
-  root: IntrinsicSlotProps<'div'>;
+  root: IntrinsicShorthandProps<'div'>;
 
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail: IntrinsicSlotProps<'div'>;
+  rail: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider component.
    */
-  sliderWrapper: IntrinsicSlotProps<'div'>;
+  sliderWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
    */
-  trackWrapper: IntrinsicSlotProps<'div'>;
+  trackWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The bar showing the current selected area adjacent to the Slider's thumb.
    */
-  track: IntrinsicSlotProps<'div'>;
+  track: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper holding the marks and mark labels for the Slider.
    */
-  marksWrapper: IntrinsicSlotProps<'div'>;
+  marksWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
-  thumbWrapper: IntrinsicSlotProps<'div'>;
+  thumbWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb: IntrinsicSlotProps<'div'>;
+  thumb: IntrinsicShorthandProps<'div'>;
 
   /**
    * The area in which the Slider's rail allows for the thumb to be dragged.
    */
-  activeRail: IntrinsicSlotProps<'div'>;
+  activeRail: IntrinsicShorthandProps<'div'>;
 
   /**
    * The hidden input for the Slider.
    */
-  input: IntrinsicSlotProps<'input'>;
+  input: IntrinsicShorthandProps<'input'>;
 };
 
 export type SliderCommons = {

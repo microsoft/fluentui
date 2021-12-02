@@ -1,5 +1,10 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentSlotProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentSlotProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+} from '@fluentui/react-utilities';
 
 /**
  * Label Props
@@ -25,8 +30,8 @@ export type LabelCommons = {
 };
 
 export type LabelSlots = {
-  root: IntrinsicSlotProps<'label'>;
-  required?: IntrinsicSlotProps<'span'>;
+  root: IntrinsicShorthandProps<'label'>;
+  required?: IntrinsicShorthandProps<'span'>;
 };
 
 /**

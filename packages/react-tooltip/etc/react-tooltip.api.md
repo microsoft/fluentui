@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 
@@ -44,7 +44,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCo
 
 // @public
 export type TooltipSlots = {
-    root: Omit<IntrinsicSlotProps<'div'>, 'children'> & {
+    root: Omit<IntrinsicShorthandProps<'div'>, 'children'> & {
         children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
             ref?: React_2.Ref<unknown>;
         }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;

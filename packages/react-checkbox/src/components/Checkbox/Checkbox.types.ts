@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
-import type { ComponentProps, ComponentSlotProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentSlotProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+} from '@fluentui/react-utilities';
 
 export interface CheckboxCommons {
   /**
@@ -47,7 +52,7 @@ export type CheckboxSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
    * All other native props will be applied to the primary slot: `input`
    */
-  root: ComponentSlotProps<typeof Label> | IntrinsicSlotProps<'span'>;
+  root: ComponentSlotProps<typeof Label> | IntrinsicShorthandProps<'span'>;
 
   /**
    * Hidden input that handles the checkbox's functionality.
@@ -55,12 +60,12 @@ export type CheckboxSlots = {
    * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
-  input: IntrinsicSlotProps<'input'>;
+  input: IntrinsicShorthandProps<'input'>;
 
   /**
    * Renders the checkbox, with the checkmark icon as its child when checked.
    */
-  indicator: IntrinsicSlotProps<'div'>;
+  indicator: IntrinsicShorthandProps<'div'>;
 };
 
 /**

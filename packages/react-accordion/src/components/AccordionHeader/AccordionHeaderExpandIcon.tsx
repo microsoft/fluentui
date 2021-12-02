@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useAccordionHeaderContext } from './AccordionHeaderContext';
 import type { AccordionHeaderContextValue } from './AccordionHeader.types';
-import type { ForwardRefComponent, IntrinsicSlotProps } from '@fluentui/react-utilities';
+import type { ForwardRefComponent, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-export type AccordionHeaderExpandIconProps = IntrinsicSlotProps<'span'>;
+export type AccordionHeaderExpandIconProps = IntrinsicShorthandProps<'span'>;
 
 export const AccordionHeaderExpandIcon: ForwardRefComponent<AccordionHeaderExpandIconProps> = React.forwardRef(
   ({ children, ...rest }, ref) => {

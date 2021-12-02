@@ -1,10 +1,10 @@
 import { useARIAButton } from './useARIAButton';
 import { renderHook } from '@testing-library/react-hooks';
-import type { ARIAButtonSlotProps } from './useARIAButton';
+import type { ARIAButtonShorthandProps } from './useARIAButton';
 
 describe('useARIAButton', () => {
   it('should return by default shorthand props for a button', () => {
-    const shorthand: ARIAButtonSlotProps = { as: 'button' };
+    const shorthand: ARIAButtonShorthandProps = { as: 'button' };
     renderHook(() => useARIAButton(shorthand));
     expect(shorthand.as).toBe('button');
     expect(shorthand.disabled).toBeUndefined();
@@ -17,7 +17,7 @@ describe('useARIAButton', () => {
   });
 
   it('should return handlers for anchor when anchor element is declared', () => {
-    const shorthand: ARIAButtonSlotProps = { as: 'a' };
+    const shorthand: ARIAButtonShorthandProps = { as: 'a' };
     renderHook(() => useARIAButton(shorthand));
     expect(shorthand.as).toBe('a');
     expect(shorthand['aria-disabled']).toBeUndefined();

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-export type SlotRenderFunction<Props> = (
+export type ShorthandRenderFunction<Props> = (
   Component: React.ElementType<Props>,
   props: Omit<Props, 'children' | 'as'>,
 ) => React.ReactNode;
 
-export type ObjectSlotsRecord = Record<string, DefaultObjectSlotProps | undefined>;
+export type ObjectShorthandPropsRecord = Record<string, DefaultObjectShorthandProps | undefined>;
 
-export type ShorthandProps<Props extends DefaultObjectSlotProps> =
+export type ShorthandProps<Props extends DefaultObjectShorthandProps> =
   | React.ReactChild
   | React.ReactNodeArray
   | React.ReactPortal
@@ -17,12 +17,12 @@ export type ShorthandProps<Props extends DefaultObjectSlotProps> =
   | Props;
 
 /**
- * Matches any slot props type.
+ * Matches any shorthand props type.
  *
- * This should ONLY be used in type templates as in `extends DefaultObjectSlotProps`;
+ * This should ONLY be used in type templates as in `extends DefaultObjectShorthandProps`;
  * it shouldn't be used as the type of a slot.
  */
-export type DefaultObjectSlotProps = ObjectSlotProps<
+export type DefaultObjectShorthandProps = ObjectShorthandProps<
   Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
     as?: keyof JSX.IntrinsicElements;
   }
@@ -32,43 +32,43 @@ export type DefaultObjectSlotProps = ObjectSlotProps<
  * Takes the props we want to support for a slot and adds the ability for `children` to be a render function that takes
  * those props.
  */
-export type ObjectSlotProps<Props extends { children?: React.ReactNode } = {}> = Props & {
-  children?: Props['children'] | SlotRenderFunction<Props>;
+export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}> = Props & {
+  children?: Props['children'] | ShorthandRenderFunction<Props>;
 };
 
 /**
  * Defines the slot props for a slot that supports a Component type.
  *
- * For intrinsic elements like 'div', use {@link IntrinsicSlotProps} instead.
+ * For intrinsic elements like 'div', use {@link IntrinsicShorthandProps} instead.
  */
 export type ComponentSlotProps<Component extends React.ComponentType> = Component extends React.ComponentType<
   infer Props
 >
-  ? ObjectSlotProps<Props>
+  ? ObjectShorthandProps<Props>
   : never;
 
 /**
  * Define the slot arguments for a slot that supports one or more intrinsic element types, such as 'div'.
- * For slots that support custom components, use {@link ObjectSlotProps} instead.
+ * For slots that support custom components, use {@link ComponentSlotProps} instead.
  *
  * The first param is the slot's default type if no `as` prop is specified.
  * The second param is an optional union of alternative types that can be specified for the `as` prop.
  *
  * ```
- * IntrinsicSlotProps<'div'> // Slot is always div
- * IntrinsicSlotProps<'button', 'a'> // Defaults to button, but allows as="a" with anchor-specific props
- * IntrinsicSlotProps<'label', 'span' | 'div'>; // Defaults to label, but allows as="span" or as="div"
+ * IntrinsicShorthandProps<'div'> // Slot is always div
+ * IntrinsicShorthandProps<'button', 'a'> // Defaults to button, but allows as="a" with anchor-specific props
+ * IntrinsicShorthandProps<'label', 'span' | 'div'>; // Defaults to label, but allows as="span" or as="div"
  * ```
  */
-export type IntrinsicSlotProps<
+export type IntrinsicShorthandProps<
   DefaultAs extends keyof JSX.IntrinsicElements,
   AlternateAs extends keyof JSX.IntrinsicElements = never
 > = IsSingleton<DefaultAs> extends false
-  ? 'Error: first parameter to IntrinsicSlotProps must be a single element type, not a union of types'
+  ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types'
   :
-      | ({ as?: DefaultAs } & ObjectSlotProps<React.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>)
+      | ({ as?: DefaultAs } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>)
       | {
-          [As in AlternateAs]: { as: As } & ObjectSlotProps<React.PropsWithRef<JSX.IntrinsicElements[As]>>;
+          [As in AlternateAs]: { as: As } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[As]>>;
         }[AlternateAs];
 
 /**
@@ -98,7 +98,7 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 
 /**
  * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
+ * IntrinsicShorthandProps). This allows IntrinsicShorthandProps to be used with React.forwardRef.
  *
  * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
  * types, to prevent unions from being expanded.
@@ -109,11 +109,11 @@ export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Om
  * Takes a slots record and returns a mapping of slot names to shorthand props for each slot along with putting the
  * shorthand props of the primary slot at the top level.
  */
-export type ComponentProps<Slots extends ObjectSlotsRecord, Primary extends keyof Slots = 'root'> =
+export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> =
   // Include shorthand slot props for each of the component's slots.
   Omit<
     {
-      [Key in keyof Slots]?: ShorthandProps<NonNullable<Slots[Key]>>;
+      [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
     },
     // This `Omit<..., Primary & 'root'>` is a little tricky. Here's what it's doing:
     // * If the Primary slot is 'root', then omit the `root` slot prop.
@@ -122,19 +122,21 @@ export type ComponentProps<Slots extends ObjectSlotsRecord, Primary extends keyo
     //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
     Primary & 'root'
   > &
-    PropsWithoutRef<Slots[Primary]>;
+    PropsWithoutRef<Shorthands[Primary]>;
 
 /**
  * Takes a slots record and adds to it a 'components' object that is a mapping of slot names to the type of elements
  * that each slot can be rendered as.
  */
-export type ComponentState<Slots extends ObjectSlotsRecord> = {
+export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
-    [Key in keyof Slots]-?:
-      | React.ComponentType<NonNullable<Slots[Key]> extends ObjectSlotProps<infer P> ? P : NonNullable<Slots[Key]>>
-      | (NonNullable<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [Key in keyof Shorthands]-?:
+      | React.ComponentType<
+          NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>
+        >
+      | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
-} & Slots;
+} & Shorthands;
 
 /**
  * This is part of a hack to infer the element type from a native element *props* type.
