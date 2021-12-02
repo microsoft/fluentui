@@ -68,6 +68,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `MenuItemIcon` to allow icon `size` to be in effect @yuanboxue-amber ([#20803](https://github.com/microsoft/fluentui/pull/20803))
 - Fix `Pill` components to properly pass ref to root slots @chpalac ([#20838](https://github.com/microsoft/fluentui/pull/20838))
 - Fix `MenuButton` component to properly pass ref to root slots @chpalac ([#20837](https://github.com/microsoft/fluentui/pull/20837))
+- Fix `Status` component to properly pass ref to root slots @chpalac ([#20872](https://github.com/microsoft/fluentui/pull/20872))
 - Fix `SplitButton` components to properly pass ref to root slots @chpalac ([#20871](https://github.com/microsoft/fluentui/pull/20871))
 - Fix `Segment` component to properly pass ref to root slots @chpalac ([#20869](https://github.com/microsoft/fluentui/pull/20869))
 - Fix `MenuButton` component to properly pass ref to root slots @chpalac ([#20870](https://github.com/microsoft/fluentui/pull/20870))
