@@ -15,6 +15,7 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  moduleFileExtensions: ['scss', 'ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
 };

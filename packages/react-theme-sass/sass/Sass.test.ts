@@ -6,7 +6,7 @@ describe('Sass tokens', () => {
     const data = [
       '@import "sass/tokens.scss";',
       ...Object.keys(webLightTheme)
-        .filter(t => !t.startsWith('colorPalette')) // FIXME
+        // .filter(t => !t.startsWith('colorPalette')) // FIXME
         .map(tokenName => `$expected__${tokenName}: $${tokenName};`),
     ].join('\n');
 
