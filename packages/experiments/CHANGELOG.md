@@ -1,8 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 30 Nov 2021 12:33:21 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Dec 2021 12:27:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.42.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.42.0)
+
+Thu, 02 Dec 2021 12:27:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.41.7..@uifabric/experiments_v7.42.0)
+
+### Minor changes
+
+- updated aria description implemtation for tile view ([PR #20731](https://github.com/microsoft/fluentui/pull/20731) by surya.ravva@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.180.0 ([PR #20731](https://github.com/microsoft/fluentui/pull/20731) by surya.ravva@microsoft.com)
+- Bump @uifabric/azure-themes to v7.9.8 ([PR #20731](https://github.com/microsoft/fluentui/pull/20731) by surya.ravva@microsoft.com)
+- Bump @uifabric/example-app-base to v7.21.8 ([PR #20731](https://github.com/microsoft/fluentui/pull/20731) by surya.ravva@microsoft.com)
+- Bump @uifabric/fluent-theme to v7.6.8 ([PR #20731](https://github.com/microsoft/fluentui/pull/20731) by surya.ravva@microsoft.com)
+- Bump @uifabric/theme-samples to v7.4.8 ([PR #20731](https://github.com/microsoft/fluentui/pull/20731) by surya.ravva@microsoft.com)
 
 ## [7.41.7](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.41.7)
 

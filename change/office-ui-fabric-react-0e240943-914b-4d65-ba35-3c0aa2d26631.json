@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "added aria description for a details row view",
-  "packageName": "office-ui-fabric-react",
-  "email": "surya.ravva@microsoft.com",
-  "dependentChangeType": "patch"
-}

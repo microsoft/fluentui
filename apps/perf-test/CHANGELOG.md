@@ -1,8 +1,17 @@
 # Change Log - perf-test
 
-This log was last generated on Tue, 30 Nov 2021 12:33:21 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Dec 2021 12:27:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v7.0.0)
+
+Thu, 02 Dec 2021 12:27:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v7.0.0..perf-test_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.42.0 ([PR #20731](https://github.com/microsoft/fluentui/pull/20731) by surya.ravva@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v7.0.0)
 

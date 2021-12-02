@@ -2,6 +2,53 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 02 Dec 2021 12:27:37 GMT",
+      "tag": "@uifabric/experiments_v7.42.0",
+      "version": "7.42.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "updated aria description implemtation for tile view",
+            "author": "surya.ravva@microsoft.com",
+            "commit": "964724a18e9a02d4040cc39d69d814a77c785391",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.180.0",
+            "author": "surya.ravva@microsoft.com",
+            "commit": "964724a18e9a02d4040cc39d69d814a77c785391",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.9.8",
+            "author": "surya.ravva@microsoft.com",
+            "commit": "964724a18e9a02d4040cc39d69d814a77c785391",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.21.8",
+            "author": "surya.ravva@microsoft.com",
+            "commit": "964724a18e9a02d4040cc39d69d814a77c785391",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/fluent-theme to v7.6.8",
+            "author": "surya.ravva@microsoft.com",
+            "commit": "964724a18e9a02d4040cc39d69d814a77c785391",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.4.8",
+            "author": "surya.ravva@microsoft.com",
+            "commit": "964724a18e9a02d4040cc39d69d814a77c785391",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Nov 2021 12:33:21 GMT",
       "tag": "@uifabric/experiments_v7.41.7",
       "version": "7.41.7",

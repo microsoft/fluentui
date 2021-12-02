@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "updated aria description implemtation for tile view",
-  "packageName": "@uifabric/experiments",
-  "email": "surya.ravva@microsoft.com",
-  "dependentChangeType": "patch"
-}
