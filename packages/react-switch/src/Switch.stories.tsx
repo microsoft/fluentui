@@ -1,17 +1,11 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { teamsLightTheme } from '@fluentui/react-theme';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { FluentProvider } from '@fluentui/react-provider';
 import { Switch, SwitchProps } from './components/Switch/index';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { Label } from '@fluentui/react-label';
 import { Meta } from '@storybook/react';
 
