@@ -5,7 +5,19 @@ import type { TabState } from './Tab.types';
 
 export const tabClassName = 'fui-Tab';
 
-const indicatorThickness = '2px';
+// TODO: These constants should be replaced with design tokens
+const pendingTheme = {
+  tabPadding: {
+    medium: '10px',
+    small: '6px',
+  },
+  indicatorThickness: '2px',
+  gap: { medium: '6px', small: '2px' },
+  contentPadding: {
+    medium: '2px',
+    small: '2px',
+  },
+};
 
 /**
  * Styles for the root slot
@@ -16,14 +28,14 @@ const useRootStyles = makeStyles({
     borderColor: 'none',
     borderRadius: theme.borderRadiusMedium,
     borderWidth: theme.strokeWidthThin,
-    columnGap: '6px',
+    columnGap: pendingTheme.gap.medium,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
     fontFamily: theme.fontFamilyBase,
     fontSize: theme.fontSizeBase300,
     lineHeight: theme.lineHeightBase300,
-    padding: '12px',
+    padding: pendingTheme.tabPadding.medium,
     position: 'relative',
     overflow: 'hidden',
   }),
@@ -36,8 +48,8 @@ const useRootStyles = makeStyles({
     justifyContent: 'flex-start',
   },
   small: {
-    padding: '6px',
-    columnGap: '2px',
+    padding: pendingTheme.tabPadding.small,
+    columnGap: pendingTheme.gap.small,
   },
   subtle: theme => ({
     ':hover': {
@@ -49,10 +61,12 @@ const useRootStyles = makeStyles({
 const useFocusStyles = makeStyles({
   base: createCustomFocusIndicatorStyle(theme => ({
     borderColor: 'transparent',
-    outline: '2px solid transparent',
+    outlineWidth: theme.strokeWidthThick,
+    outlineColor: 'tranparent',
+    outlineStyle: 'solid',
     boxShadow: `
       ${theme.shadow4},
-      0 0 0 2px ${theme.colorStrokeFocus2}
+      0 0 0 ${theme.strokeWidthThick} ${theme.colorStrokeFocus2}
     `,
     zIndex: 1,
   })),
@@ -71,10 +85,10 @@ const useHorizontalIndicatorStyles = makeStyles({
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      height: indicatorThickness,
+      height: pendingTheme.indicatorThickness,
       bottom: '0',
-      left: '12px',
-      right: '12px',
+      left: pendingTheme.tabPadding.medium,
+      right: pendingTheme.tabPadding.medium,
     },
     ':hover': {
       ':after': {
@@ -94,8 +108,8 @@ const useHorizontalIndicatorStyles = makeStyles({
   }),
   small: {
     ':after': {
-      left: '6px',
-      right: '6px',
+      left: pendingTheme.tabPadding.small,
+      right: pendingTheme.tabPadding.small,
     },
   },
 });
@@ -113,10 +127,10 @@ const useVerticalIndicatorStyles = makeStyles({
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
-      width: indicatorThickness,
-      left: '0px',
-      top: '12px',
-      bottom: '12px',
+      width: pendingTheme.indicatorThickness,
+      left: '0',
+      top: pendingTheme.tabPadding.medium,
+      bottom: pendingTheme.tabPadding.medium,
     },
     ':hover': {
       ':before': {
@@ -136,8 +150,8 @@ const useVerticalIndicatorStyles = makeStyles({
   }),
   small: {
     ':before': {
-      top: '6px',
-      bottom: '6px',
+      top: pendingTheme.tabPadding.small,
+      bottom: pendingTheme.tabPadding.small,
     },
   },
 });
@@ -160,6 +174,17 @@ const useIconStyles = makeStyles({
   },
 });
 
+const useContentStyles = makeStyles({
+  base: {
+    paddingLeft: pendingTheme.contentPadding.medium,
+    paddingRight: pendingTheme.contentPadding.medium,
+  },
+  small: {
+    paddingLeft: pendingTheme.contentPadding.small,
+    paddingRight: pendingTheme.contentPadding.small,
+  },
+});
+
 /**
  * Apply styling to the Tab slots based on the state
  */
@@ -169,6 +194,7 @@ export const useTabStyles = (state: TabState): TabState => {
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
   const verticalIndicatorStyles = useVerticalIndicatorStyles();
   const iconStyles = useIconStyles();
+  const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
     tabClassName,
@@ -185,6 +211,12 @@ export const useTabStyles = (state: TabState): TabState => {
   if (state.icon) {
     state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
   }
+
+  state.content.className = mergeClasses(
+    contentStyles.base,
+    state.size === 'small' && contentStyles.small,
+    state.content.className,
+  );
 
   return state;
 };

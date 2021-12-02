@@ -15,6 +15,12 @@ export type TabSlots = {
    * Icon that renders before the content.
    */
   icon?: IntrinsicShorthandProps<'span'>;
+
+  /**
+   * Component children are placed in this slot
+   * Avoid using the `children` property in this slot in favour of Component children whenever possible.
+   */
+  content: IntrinsicShorthandProps<'span'>;
 };
 
 export type TabCommons = {
