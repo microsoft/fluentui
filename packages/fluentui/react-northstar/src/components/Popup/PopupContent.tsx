@@ -141,13 +141,14 @@ export const PopupContent = (React.forwardRef<HTMLDivElement, PopupContentProps>
     className: classes.root,
     ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
     ...unhandledProps,
+    ref,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
   });
   const popupContent = (
     <>
       {pointing && <div className={classes.pointer} ref={pointerRef} />}
-      <div ref={ref} className={cx(popupContentSlotClassNames.content, classes.content)}>
+      <div className={cx(popupContentSlotClassNames.content, classes.content)}>
         {childrenExist(children) ? children : content}
       </div>
     </>
