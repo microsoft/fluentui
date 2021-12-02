@@ -24,7 +24,6 @@
     "react": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-storybook": "9.0.0-beta.0",
     "@fluentui/react": "^8.46.1",
     "@fluentui/theme": "^2.4.4",
     "@storybook/addon-knobs": "6.3.0",
