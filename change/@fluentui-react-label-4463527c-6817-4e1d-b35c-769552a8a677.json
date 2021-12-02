@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update required asterisk token for better contrast",
+  "packageName": "@fluentui/react-label",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
