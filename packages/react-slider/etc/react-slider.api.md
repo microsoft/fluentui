@@ -38,7 +38,7 @@ export type SliderCommons = {
 };
 
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue'> & SliderCommons;
 
 // @public
 export const sliderShorthandProps: (keyof SliderSlots)[];
@@ -56,7 +56,7 @@ export type SliderSlots = {
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
 
 // @public (undocumented)
 export const useSliderState: (state: SliderState) => SliderState;
