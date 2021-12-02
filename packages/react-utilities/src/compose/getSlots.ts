@@ -6,12 +6,12 @@ import type {
   AsIntrinsicElement,
   ComponentState,
   ObjectSlotProps,
-  ObjectSlotPropsRecord,
+  ObjectSlotsRecord,
   SlotRenderFunction,
   UnionToIntersection,
 } from './types';
 
-export type Slots<S extends ObjectSlotPropsRecord> = {
+export type Slots<S extends ObjectSlotsRecord> = {
   [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
     ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
       As
@@ -20,7 +20,7 @@ export type Slots<S extends ObjectSlotPropsRecord> = {
     : React.ElementType<NonNullable<S[K]>>;
 };
 
-type SlotProps<S extends ObjectSlotPropsRecord> = {
+type SlotProps<S extends ObjectSlotsRecord> = {
   [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
     ? // For intrinsic element types, return the intersection of all possible
       // element's props, to be compatible with the As type returned by Slots<>
@@ -46,7 +46,7 @@ type SlotProps<S extends ObjectSlotPropsRecord> = {
  * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-export function getSlots<R extends ObjectSlotPropsRecord>(
+export function getSlots<R extends ObjectSlotsRecord>(
   state: ComponentState<R>,
   slotNames: (keyof R)[] = ['root'],
 ): {
@@ -64,7 +64,7 @@ export function getSlots<R extends ObjectSlotPropsRecord>(
   return { slots, slotProps: (slotProps as unknown) as SlotProps<R> };
 }
 
-function getSlot<R extends ObjectSlotPropsRecord, K extends keyof R>(
+function getSlot<R extends ObjectSlotsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]>, R[K]] {

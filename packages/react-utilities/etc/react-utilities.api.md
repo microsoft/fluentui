@@ -45,20 +45,20 @@ export const colGroupProperties: Record<string, number>;
 // @public (undocumented)
 export const colProperties: Record<string, number>;
 
-// @public (undocumented)
-export type ComponentProps<SlotProps extends ObjectSlotPropsRecord, Primary extends keyof SlotProps = 'root'> = Omit<{
-    [Key in keyof SlotProps]?: ShorthandProps<NonNullable<SlotProps[Key]>>;
-}, Primary & 'root'> & PropsWithoutRef<SlotProps[Primary]>;
+// @public
+export type ComponentProps<Slots extends ObjectSlotsRecord, Primary extends keyof Slots = 'root'> = Omit<{
+    [Key in keyof Slots]?: ShorthandProps<NonNullable<Slots[Key]>>;
+}, Primary & 'root'> & PropsWithoutRef<Slots[Primary]>;
 
 // @public
 export type ComponentSlotProps<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? ObjectSlotProps<Props> : never;
 
-// @public (undocumented)
-export type ComponentState<SlotProps extends ObjectSlotPropsRecord> = {
+// @public
+export type ComponentState<Slots extends ObjectSlotsRecord> = {
     components?: {
-        [Key in keyof SlotProps]-?: React_2.ComponentType<NonNullable<SlotProps[Key]> extends ObjectSlotProps<infer P> ? P : NonNullable<SlotProps[Key]>> | (NonNullable<SlotProps[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Slots]-?: React_2.ComponentType<NonNullable<Slots[Key]> extends ObjectSlotProps<infer P> ? P : NonNullable<Slots[Key]>> | (NonNullable<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
-} & SlotProps;
+} & Slots;
 
 // @public
 export type DefaultObjectSlotProps = ObjectSlotProps<Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
@@ -104,7 +104,7 @@ export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPr
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
-export function getSlots<R extends ObjectSlotPropsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {
+export function getSlots<R extends ObjectSlotsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {
     slots: Slots<R>;
     slotProps: SlotProps<R>;
 };
@@ -155,7 +155,7 @@ export type ObjectSlotProps<Props extends {
 };
 
 // @public (undocumented)
-export type ObjectSlotPropsRecord = Record<string, DefaultObjectSlotProps | undefined>;
+export type ObjectSlotsRecord = Record<string, DefaultObjectSlotProps | undefined>;
 
 // @public
 export const olProperties: Record<string, number>;
@@ -200,7 +200,7 @@ export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.Keyboar
 export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
 
 // @public (undocumented)
-export type Slots<S extends ObjectSlotPropsRecord> = {
+export type Slots<S extends ObjectSlotsRecord> = {
     [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As> ? As : S[K] extends ObjectSlotProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
 };
 
