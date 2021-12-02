@@ -55,8 +55,6 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     }
 
     if (config.module && config.module.rules) {
-      overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
-
       config.module.rules.unshift({
         test: /\.stories\.tsx$/,
         exclude: /node_modules/,
@@ -85,35 +83,3 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
    */
   previewHead: head => head + previewHeadTemplate,
 });
-
-/**
- * This is a temporary quick-fix solution. Remove this once we'll came up with robust solution - @see https://github.com/microsoft/fluentui/issues/18775
- *
- * Note: this function mutates rules argument
- *
- * @param {import("webpack").RuleSetRule[]} rules
- */
-function overrideDefaultBabelLoader(rules) {
-  const customLoaderPath = path.resolve(__dirname, './custom-loader.js');
-  const ruleIdx = rules.findIndex(rule => {
-    return String(/** @type {import("webpack").RuleSetRule}*/ (rule).test) === '/\\.(mjs|tsx?|jsx?)$/';
-  });
-
-  const rule = /** @type {import("webpack").RuleSetRule}*/ (rules[ruleIdx]);
-
-  if (!Array.isArray(rule.use)) {
-    throw new Error('storybook webpack rules changed');
-  }
-
-  const loaderIdx = rule.use.findIndex(loaderConfig => {
-    return /** @type {LoaderObjectDef} */ (loaderConfig).loader.includes('babel-loader');
-  });
-
-  const loader = /** @type {LoaderObjectDef}*/ (rule.use[loaderIdx]);
-
-  if (!Object.prototype.hasOwnProperty.call(loader, 'options')) {
-    throw new Error('storybook webpack rules changed');
-  }
-
-  loader.options.customize = customLoaderPath;
-}
