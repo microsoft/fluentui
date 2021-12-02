@@ -65,7 +65,7 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
     },
 
     ':global([data-popper-placement^="right"])': {
-      left: 0,
+      left: '0 /* @noflip */',
       '--angle': '90deg',
     },
     ':global([data-popper-placement^="bottom"])': {
@@ -73,7 +73,7 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
       '--angle': '180deg',
     },
     ':global([data-popper-placement^="left"])': {
-      right: 0,
+      right: '0 /* @noflip */',
       '--angle': '270deg',
     },
   });
