@@ -19,18 +19,16 @@ export const Checkbox: ForwardRefComponent<CheckboxProps>;
 export const checkboxClassName = "fui-Checkbox";
 
 // @public (undocumented)
-export interface CheckboxCommons {
-    checked: 'mixed' | boolean;
+export type CheckboxCommons = {
     circular: boolean;
-    labelPosition: 'before' | 'after';
+    checked: 'mixed' | boolean;
     size: 'medium' | 'large';
     labelPosition: 'before' | 'after';
-    containerClassName?: string;
 };
 
 // @public
 export type CheckboxOnChangeData = {
-    checked: 'mixed' | boolean;
+    checked: boolean;
 };
 
 // @public

@@ -41,6 +41,10 @@ export type CheckboxCommons = {
  * Data for the onChange event for checkbox.
  */
 export type CheckboxOnChangeData = {
+  /**
+   * Whether the checkbox is now checked. Note that this can only be of type `boolean` since it's
+   * not possible to change a checkbox to `mixed` state via user interaction.
+   */
   checked: boolean;
 };
 
