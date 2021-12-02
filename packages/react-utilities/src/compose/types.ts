@@ -5,7 +5,7 @@ export type SlotRenderFunction<Props> = (
   props: Omit<Props, 'children' | 'as'>,
 ) => React.ReactNode;
 
-export type ObjectSlotPropsRecord = Record<string, DefaultObjectSlotProps | undefined>;
+export type ObjectSlotsRecord = Record<string, DefaultObjectSlotProps | undefined>;
 
 export type ShorthandProps<Props extends DefaultObjectSlotProps> =
   | React.ReactChild
@@ -105,11 +105,15 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
-export type ComponentProps<SlotProps extends ObjectSlotPropsRecord, Primary extends keyof SlotProps = 'root'> =
+/**
+ * Takes a slots record and returns a mapping of slot names to shorthand props for each slot along with putting the
+ * shorthand props of the primary slot at the top level.
+ */
+export type ComponentProps<Slots extends ObjectSlotsRecord, Primary extends keyof Slots = 'root'> =
   // Include shorthand slot props for each of the component's slots.
   Omit<
     {
-      [Key in keyof SlotProps]?: ShorthandProps<NonNullable<SlotProps[Key]>>;
+      [Key in keyof Slots]?: ShorthandProps<NonNullable<Slots[Key]>>;
     },
     // This `Omit<..., Primary & 'root'>` is a little tricky. Here's what it's doing:
     // * If the Primary slot is 'root', then omit the `root` slot prop.
@@ -118,17 +122,19 @@ export type ComponentProps<SlotProps extends ObjectSlotPropsRecord, Primary exte
     //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
     Primary & 'root'
   > &
-    PropsWithoutRef<SlotProps[Primary]>;
+    PropsWithoutRef<Slots[Primary]>;
 
-export type ComponentState<SlotProps extends ObjectSlotPropsRecord> = {
+/**
+ * Takes a slots record and adds to it a 'components' object that is a mapping of slot names to the type of elements
+ * that each slot can be rendered as.
+ */
+export type ComponentState<Slots extends ObjectSlotsRecord> = {
   components?: {
-    [Key in keyof SlotProps]-?:
-      | React.ComponentType<
-          NonNullable<SlotProps[Key]> extends ObjectSlotProps<infer P> ? P : NonNullable<SlotProps[Key]>
-        >
-      | (NonNullable<SlotProps[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [Key in keyof Slots]-?:
+      | React.ComponentType<NonNullable<Slots[Key]> extends ObjectSlotProps<infer P> ? P : NonNullable<Slots[Key]>>
+      | (NonNullable<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
-} & SlotProps;
+} & Slots;
 
 /**
  * This is part of a hack to infer the element type from a native element *props* type.
