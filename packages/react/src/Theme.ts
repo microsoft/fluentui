@@ -1,6 +1,7 @@
 export {
   AnimationStyles,
   AnimationVariables,
+  CommunicationColors,
   DefaultEffects,
   DefaultFontStyles,
   DefaultPalette,
@@ -10,6 +11,8 @@ export {
   createFontStyles,
   createTheme,
   mergeThemes,
+  NeutralColors,
+  SharedColors,
   registerDefaultFontFaces,
 } from '@fluentui/theme';
 export type {

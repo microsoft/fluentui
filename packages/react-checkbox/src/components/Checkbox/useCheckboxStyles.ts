@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     position: 'relative',
     alignSelf: 'flex-start',
     alignItems: 'center',
-    padding: '4px',
+    ...shorthands.padding('4px'),
     userSelect: 'none',
     cursor: 'pointer',
   }),
@@ -155,8 +155,8 @@ const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',
-    margin: 0,
-    padding: 0,
+    ...shorthands.margin(0),
+    ...shorthands.padding(0),
     cursor: 'pointer',
   },
 
@@ -170,19 +170,19 @@ const useIndicatorStyles = makeStyles({
     width: '100%',
     height: '100%',
     fill: 'currentColor',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
     boxSizing: 'border-box',
-    borderStyle: 'solid',
-    borderRadius: theme.borderRadiusSmall,
-    borderWidth: theme.strokeWidthThin,
+    ...shorthands.borderStyle('solid'),
+    ...shorthands.borderWidth(theme.strokeWidthThin),
+    ...shorthands.borderRadius(theme.borderRadiusSmall),
   }),
 
   circular: theme => ({
-    borderRadius: theme.borderRadiusCircular,
+    ...shorthands.borderRadius(theme.borderRadiusCircular),
   }),
 });
 
