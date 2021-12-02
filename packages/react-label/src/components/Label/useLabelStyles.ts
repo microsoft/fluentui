@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   }),
 
   required: theme => ({
-    color: theme.colorPaletteRedForeground3,
+    color: theme.colorPaletteRedForeground1,
     paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
   }),
 
