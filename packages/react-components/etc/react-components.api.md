@@ -273,6 +273,7 @@ import { renderPopover } from '@fluentui/react-popover';
 import { renderPopoverSurface } from '@fluentui/react-popover';
 import { renderPopoverTrigger } from '@fluentui/react-popover';
 import { renderPortal } from '@fluentui/react-portal';
+import { renderSlider } from '@fluentui/react-slider';
 import { renderSplitButton } from '@fluentui/react-button';
 import { renderText } from '@fluentui/react-text';
 import { renderToggleButton } from '@fluentui/react-button';
@@ -283,6 +284,12 @@ import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@fluentui/react-make-styles';
+import { Slider } from '@fluentui/react-slider';
+import { sliderClassName } from '@fluentui/react-slider';
+import { SliderCommons } from '@fluentui/react-slider';
+import { SliderProps } from '@fluentui/react-slider';
+import { SliderSlots } from '@fluentui/react-slider';
+import { SliderState } from '@fluentui/react-slider';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
@@ -392,6 +399,9 @@ import { usePopoverTrigger } from '@fluentui/react-popover';
 import { usePortal } from '@fluentui/react-portal';
 import { usePresenceBadge } from '@fluentui/react-badge';
 import { useRenderer } from '@fluentui/react-make-styles';
+import { useSlider } from '@fluentui/react-slider';
+import { useSliderState } from '@fluentui/react-slider';
+import { useSliderStyles } from '@fluentui/react-slider';
 import { useSplitButton } from '@fluentui/react-button';
 import { useSplitButtonStyles } from '@fluentui/react-button';
 import { useText } from '@fluentui/react-text';
@@ -943,6 +953,8 @@ export { renderPopoverTrigger }
 
 export { renderPortal }
 
+export { renderSlider }
+
 export { renderSplitButton }
 
 export { renderText }
@@ -962,6 +974,18 @@ export { ShadowBrandTokens }
 export { ShadowTokens }
 
 export { shorthands }
+
+export { Slider }
+
+export { sliderClassName }
+
+export { SliderCommons }
+
+export { SliderProps }
+
+export { SliderSlots }
+
+export { SliderState }
 
 export { SplitButton }
 
@@ -1180,6 +1204,12 @@ export { usePortal }
 export { usePresenceBadge }
 
 export { useRenderer }
+
+export { useSlider }
+
+export { useSliderState }
+
+export { useSliderStyles }
 
 export { useSplitButton }
 
