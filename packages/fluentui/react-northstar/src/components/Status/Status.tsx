@@ -109,8 +109,8 @@ Status.handledProps = Object.keys(Status.propTypes) as any;
 Status.defaultProps = {
   accessibility: statusBehavior,
   as: 'span' as const,
-  size: 'medium' as const,
-  state: 'unknown' as const,
+  size: 'medium',
+  state: 'unknown',
 };
 
 Status.create = createShorthandFactory({ Component: Status, mappedProp: 'state' });
