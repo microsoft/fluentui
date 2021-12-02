@@ -11,7 +11,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   ],
   addons: [
     ...rootMain.addons,
-    // Should be re-enabled, see @GH
+    // Should be re-enabled, see https://github.com/microsoft/fluentui/issues/20896
     // '@fluentui/react-storybook-addon'
   ],
   webpackFinal: (config, options) => {
