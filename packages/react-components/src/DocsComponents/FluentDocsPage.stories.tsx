@@ -65,7 +65,6 @@ export const FluentDocsPage = () => {
           </HeaderMdx>
           <Primary />
           <ArgsTable story={PRIMARY_STORY} />
-
           <Stories />
         </div>
       </div>
