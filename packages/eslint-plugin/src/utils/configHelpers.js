@@ -7,7 +7,7 @@ const jju = require('jju');
 const testFiles = [
   '**/*{.,-}test.{ts,tsx}',
   '**/*.stories.tsx',
-  '**/{test,tests,stories}/**',
+  '**/{common,test,tests,stories}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/isConformant.{ts,tsx}',
 ];
@@ -132,18 +132,38 @@ module.exports = {
     }
 
     /**
-       * Note that this way of reading tsconfig does not account for extends, but that's okay since
-       * typically include will not be specified that way
+       * Note that this approach only accounts for a single level of extends. JJU is used for parsing
+       * the tsconfig because Typescript functions are more complex than necessary.
        *
        * @type {{
-          extends: string[];
+          extends: string;
           include: string[];
-          excludes: string[];
+          exclude: string[];
           compilerOptions: Record<string,unknown>;
           references?: Array<{path:string}>
           }}
        */
-    const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
+    let tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
+
+    /**
+     * Handle any necessary extends merging here, make sure to treat just like native tsconfigs would
+     */
+    if (tsconfig.extends) {
+      const parentTsConfigPath = path.join(path.dirname(tsconfigPath), tsconfig.extends);
+      /** @type { typeof tsconfig } */
+      const parentTsConfig = jju.parse(fs.readFileSync(parentTsConfigPath).toString());
+
+      // Extending config overrides parent files, include and exclude
+      // https://www.typescriptlang.org/tsconfig#extends
+      tsconfig = {
+        ...parentTsConfig,
+        ...tsconfig,
+        compilerOptions: {
+          ...parentTsConfig.compilerOptions,
+          ...tsconfig.compilerOptions,
+        },
+      };
+    }
 
     // if project is using solution TS style config (process references)
     if (tsconfig.references) {
@@ -185,6 +205,7 @@ module.exports = {
           project: tsconfigPath,
         },
         rules,
+        excludedFiles: tsconfig.exclude,
       },
     ];
   },

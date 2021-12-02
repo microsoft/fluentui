@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
@@ -11,7 +11,7 @@ const CompoundButtonClassNames = {
 const useRootStyles = makeStyles({
   // Base styles
   base: theme => ({
-    gap: buttonSpacing.large,
+    ...shorthands.gap(buttonSpacing.large),
 
     height: 'auto',
 
@@ -90,19 +90,19 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: theme => ({
-    padding: buttonSpacing.medium,
+    ...shorthands.padding(buttonSpacing.medium),
 
     fontSize: theme.fontSizeBase300,
     lineHeight: theme.lineHeightBase300,
   }),
   medium: theme => ({
-    padding: buttonSpacing.large,
+    ...shorthands.padding(buttonSpacing.large),
 
     fontSize: theme.fontSizeBase300,
     lineHeight: theme.lineHeightBase300,
   }),
   large: theme => ({
-    padding: buttonSpacing.larger,
+    ...shorthands.padding(buttonSpacing.larger),
 
     fontSize: theme.fontSizeBase400,
     lineHeight: theme.lineHeightBase400,
@@ -131,19 +131,19 @@ const useRootStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    padding: buttonSpacing.smaller,
+    ...shorthands.padding(buttonSpacing.smaller),
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    padding: buttonSpacing.small,
+    ...shorthands.padding(buttonSpacing.small),
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    padding: buttonSpacing.medium,
+    ...shorthands.padding(buttonSpacing.medium),
 
     maxWidth: '56px',
     minWidth: '56px',

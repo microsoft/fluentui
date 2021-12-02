@@ -18,7 +18,7 @@ const useTocStyles = makeStyles({
     paddingInlineStart: '8px',
 
     '& a': {
-      textDecoration: 'none',
+      textDecorationLine: 'none',
       color: '#0078d4',
       fontSize: '14px',
       lineHeight: '24px',

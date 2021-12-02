@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Fri, 12 Nov 2021 13:25:15 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-beta.3..@fluentui/react-badge_v9.0.0-beta.4)
+
+### Changes
+
+- various styling fixes for base Badge component ([PR #20693](https://github.com/microsoft/fluentui/pull/20693) by lingfangao@hotmail.com)
+- Reduce colour set and align with base badge colours ([PR #20596](https://github.com/microsoft/fluentui/pull/20596) by lingfangao@hotmail.com)
+- update react-icons dependency ([PR #20563](https://github.com/microsoft/fluentui/pull/20563) by ololubek@microsoft.com)
+- Remove props and return correct presence icons ([PR #20630](https://github.com/microsoft/fluentui/pull/20630) by lingfangao@hotmail.com)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-beta.3)
 
