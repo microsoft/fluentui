@@ -30,15 +30,6 @@ const useStyles = makeStyles({
     flexBasis: '700px',
     flexGrow: 1,
   },
-  argsTable: {
-    // hide editors in ArgsTable
-    '& .docblock-argstable-body>tr>td:nth-child(4)': {
-      display: 'none',
-    },
-    '& .docblock-argstable-head>tr>th:nth-child(4)': {
-      display: 'none',
-    },
-  },
 });
 
 export const FluentDocsPage = () => {
@@ -73,9 +64,7 @@ export const FluentDocsPage = () => {
             {primaryStory.name}
           </HeaderMdx>
           <Primary />
-          <div className={styles.argsTable}>
-            <ArgsTable story={PRIMARY_STORY} />
-          </div>
+          <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </div>
       </div>
