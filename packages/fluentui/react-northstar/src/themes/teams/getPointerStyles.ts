@@ -41,7 +41,7 @@ export const getContainerStyles = (options: GetContainerStylesOptions): ICSSInJS
 };
 
 export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyle => {
-  const { backgroundColor, borderColor, borderSize, gap, height, padding, placement, svg, width } = options;
+  const { backgroundColor, borderColor, rtl, borderSize, gap, height, padding, placement, svg, width } = options;
 
   return {
     display: 'block',
@@ -173,7 +173,7 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
 
           left: gap,
           bottom: `calc(${width} - ${height} + ${borderSize})`,
-          transform: 'rotate(90deg) /* @noflip */',
+          transform: `rotate(${rtl ? -90 : 90}deg)`,
         }),
         ...(placement === 'top' && {
           height: `calc(${width} + (${gap} * 2))`,
@@ -181,21 +181,21 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
 
           left: gap,
           bottom: `calc(${gap} + ${height} - ${borderSize})`,
-          transform: 'rotate(-90deg) /* @noflip */',
+          transform: `rotate(${rtl ? 90 : -90}deg)`,
         }),
         ...(placement === 'left' && {
           height: width,
           width: height,
 
           left: 0,
-          transform: 'rotate(180deg) /* @noflip */',
+          transform: `rotate(${rtl ? 0 : 180}deg)`,
         }),
         ...(placement === 'right' && {
           height: width,
           width: height,
 
           right: 0,
-          transform: 'rotate(0deg) /* @noflip */',
+          transform: `rotate(${rtl ? 180 : 0}deg)`,
         }),
       },
       '::after': undefined,
