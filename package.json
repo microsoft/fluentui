@@ -397,7 +397,9 @@
         "dependencies": [
           "@azure/data-tables",
           "prettier",
-          "workspace-tools"
+          "workspace-tools",
+          "ci-info",
+          "node-fetch"
         ]
       }
     ]

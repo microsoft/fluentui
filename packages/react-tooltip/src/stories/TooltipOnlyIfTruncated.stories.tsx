@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tooltip } from '../Tooltip'; // codesandbox-dependency: @fluentui/react-tooltip ^9.0.0-beta
+import { Tooltip } from '../Tooltip';
 
 export const OnlyIfTruncated = () => {
   const textContainerRef = React.useRef<HTMLDivElement>(null);
