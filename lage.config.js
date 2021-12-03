@@ -1,6 +1,5 @@
 // Configuration documentation: https://microsoft.github.io/lage/guide/config.html
 module.exports = {
-  repoWideChanges: [],
   pipeline: {
     build: ['^build'],
     'build:info': [],
@@ -15,7 +14,7 @@ module.exports = {
   },
 
   // Ignores these minimatch patterns when considers what packages have changed for the --since flag
-  ignore: ['change/**', 'README.md', 'packages/fluentui/*/**'],
+  ignore: ['change/**', 'README.md'],
 
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md
   cacheOptions: {
