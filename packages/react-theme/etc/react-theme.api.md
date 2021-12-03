@@ -96,7 +96,6 @@ export type ColorTokens = {
     colorNeutralForeground3BrandSelected: string;
     colorNeutralForeground4: string;
     colorNeutralForegroundDisabled: string;
-    colorNeutralForegroundInvertedDisabled: string;
     colorBrandForegroundLink: string;
     colorBrandForegroundLinkHover: string;
     colorBrandForegroundLinkPressed: string;
@@ -104,17 +103,18 @@ export type ColorTokens = {
     colorCompoundBrandForeground1: string;
     colorCompoundBrandForeground1Hover: string;
     colorCompoundBrandForeground1Pressed: string;
-    colorBrandForeground1: string;
-    colorBrandForeground2: string;
+    colorNeutralForegroundOnBrand: string;
     colorNeutralForegroundInverted: string;
     colorNeutralForegroundInvertedHover: string;
     colorNeutralForegroundInvertedPressed: string;
     colorNeutralForegroundInvertedSelected: string;
-    colorNeutralForegroundOnBrand: string;
     colorNeutralForegroundInvertedLink: string;
     colorNeutralForegroundInvertedLinkHover: string;
     colorNeutralForegroundInvertedLinkPressed: string;
     colorNeutralForegroundInvertedLinkSelected: string;
+    colorNeutralForegroundInvertedDisabled: string;
+    colorBrandForeground1: string;
+    colorBrandForeground2: string;
     colorBrandForegroundInverted: string;
     colorBrandForegroundInvertedHover: string;
     colorBrandForegroundInvertedPressed: string;
@@ -312,6 +312,9 @@ export const teamsLightTheme: Theme;
 
 // @public (undocumented)
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+
+// @public (undocumented)
+export const tokens: Record<keyof Theme, string>;
 
 // @public (undocumented)
 export const webDarkTheme: Theme;

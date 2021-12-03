@@ -1,131 +1,130 @@
 import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
 export const compoundButtonClassName = 'fui-CompoundButton';
-
-const CompoundButtonClassNames = {
-  secondaryContent: `${compoundButtonClassName}-secondaryContent`,
-};
+const cBClassName = 'fui-CompoundButton';
+const compoundButtonSecondaryContentClassName = `${cBClassName}-secondaryContent`;
 
 const useRootStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     ...shorthands.gap(buttonSpacing.large),
 
     height: 'auto',
 
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForeground2,
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2Hover,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2Pressed,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForeground2Pressed,
       },
     },
-  }),
+  },
 
   // Appearance variations
   outline: {
     /* No styles */
   },
-  primary: theme => ({
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForegroundOnBrand,
+  primary: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
+      color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForegroundOnBrand,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForegroundOnBrand,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForegroundOnBrand,
       },
     },
-  }),
-  subtle: theme => ({
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForeground2,
+  },
+  subtle: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2BrandHover,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2BrandPressed,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
-  }),
-  transparent: theme => ({
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForeground2,
+  },
+  transparent: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2BrandHover,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForeground2BrandPressed,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
-  }),
+  },
 
   // Size variations
-  small: theme => ({
+  small: {
     ...shorthands.padding(buttonSpacing.medium),
 
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-  }),
-  medium: theme => ({
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  medium: {
     ...shorthands.padding(buttonSpacing.large),
 
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
-  }),
-  large: theme => ({
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  large: {
     ...shorthands.padding(buttonSpacing.larger),
 
-    fontSize: theme.fontSizeBase400,
-    lineHeight: theme.lineHeightBase400,
-  }),
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+  },
 
   // Disabled styles
-  disabled: theme => ({
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.colorNeutralForegroundDisabled,
+  disabled: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForegroundDisabled,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.colorNeutralForegroundDisabled,
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
-  }),
+  },
 });
 
 const useRootIconOnlyStyles = makeStyles({
@@ -170,22 +169,22 @@ const useContentContainerStyles = makeStyles({
 
 const useSecondaryContentStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     lineHeight: '100%',
     marginTop: '4px',
-    fontWeight: theme.fontWeightRegular,
-  }),
+    fontWeight: tokens.fontWeightRegular,
+  },
 
   // Size variations
-  small: theme => ({
-    fontSize: theme.fontSizeBase200,
-  }),
-  medium: theme => ({
-    fontSize: theme.fontSizeBase200,
-  }),
-  large: theme => ({
-    fontSize: theme.fontSizeBase300,
-  }),
+  small: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  medium: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  large: {
+    fontSize: tokens.fontSizeBase300,
+  },
 });
 
 export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
@@ -223,7 +222,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
-      CompoundButtonClassNames.secondaryContent,
+      compoundButtonSecondaryContentClassName,
       secondaryContentStyles.base,
       secondaryContentStyles[size],
       state.secondaryContent.className,

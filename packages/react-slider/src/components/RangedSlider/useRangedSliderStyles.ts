@@ -1,4 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import {
   thumbClassName,
   trackClassName,
@@ -12,7 +13,6 @@ import {
   useTrackStyles,
   useTrackWrapperStyles,
 } from '../Slider/useSliderStyles';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';
 
 export const rangedSliderClassName = 'fui-RangedSlider';
@@ -35,7 +35,7 @@ const useInputStyles = makeStyles({
   },
 
   lowerInputFocusIndicator: createCustomFocusIndicatorStyle(
-    theme => ({
+    {
       // TODO: Update this to [`& + .${lowerThumbClassName}`]
       '& + .fui-Slider-thumb-lower': {
         ':before': {
@@ -44,12 +44,12 @@ const useInputStyles = makeStyles({
           border: 'calc(var(--slider-thumb-size) * .05) solid black',
         },
       },
-    }),
+    },
     { selector: 'focus' },
   ),
 
   upperInputFocusIndicator: createCustomFocusIndicatorStyle(
-    theme => ({
+    {
       // TODO: Update this to [`& + .${upperThumbClassName}`]
       '& + .fui-Slider-thumb-upper': {
         ':before': {
@@ -58,7 +58,7 @@ const useInputStyles = makeStyles({
           border: 'calc(var(--slider-thumb-size) * .05) solid black',
         },
       },
-    }),
+    },
     { selector: 'focus' },
   ),
 });

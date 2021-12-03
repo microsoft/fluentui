@@ -1,23 +1,25 @@
 import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
+import type { CSSProperties } from 'react';
 import type { BadgeState } from './Badge.types';
 
 export const badgeClassName = 'fui-Badge';
 
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     display: 'inline-flex',
     boxSizing: 'border-box',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colorBrandBackground,
-    ...shorthands.borderColor(theme.colorBrandBackground),
-    color: theme.colorNeutralForegroundOnBrand,
-    fontWeight: theme.fontWeightSemibold,
-    ...shorthands.borderWidth(theme.strokeWidthThin),
+    backgroundColor: tokens.colorBrandBackground,
+    ...shorthands.borderColor(tokens.colorBrandBackground),
+    color: tokens.colorNeutralForegroundOnBrand,
+    fontWeight: tokens.fontWeightSemibold as CSSProperties['fontWeight'],
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
     ...shorthands.borderStyle('solid'),
-    fontFamily: theme.fontFamilyBase,
+    fontFamily: tokens.fontFamilyBase,
     position: 'relative',
-  }),
+  },
   rootTiny: {
     width: '6px',
     height: '6px',
@@ -52,158 +54,158 @@ const useStyles = makeStyles({
     fontSize: '12px',
     ...shorthands.gap('6px'),
   },
-  rootExtraLarge: theme => ({
+  rootExtraLarge: {
     minWidth: '32px',
     height: '32px',
     paddingRight: '12px',
     paddingLeft: '12px',
     ...shorthands.gap('6px'),
     fontSize: '12px',
-    ...shorthands.borderWidth(theme.strokeWidthThick),
-  }),
-  rootRounded: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
-  }),
-  rootRoundedSmallToTiny: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusSmall),
-  }),
+    ...shorthands.borderWidth(tokens.strokeWidthThick),
+  },
+  rootRounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  rootRoundedSmallToTiny: {
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+  },
   rootCircular: {
     ...shorthands.borderRadius('99px'),
   },
-  rootGhost: theme => ({
+  rootGhost: {
     backgroundColor: 'transparent',
     ...shorthands.borderStyle('none'),
-    color: theme.colorBrandBackground,
-  }),
-  rootOutline: theme => ({
+    color: tokens.colorBrandBackground,
+  },
+  rootOutline: {
     backgroundColor: 'transparent',
-    ...shorthands.borderColor(theme.colorBrandBackground),
-    color: theme.colorBrandBackground,
-  }),
-  rootTint: theme => ({
-    backgroundColor: theme.colorBrandBackground2,
-    color: theme.colorBrandForeground2,
-    ...shorthands.borderColor(theme.colorBrandStroke2),
-  }),
-  rootFilledDanger: theme => ({
-    backgroundColor: theme.colorPaletteRedBackground3,
-    color: theme.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(theme.colorPaletteRedBackground3),
-  }),
-  rootOutlineDanger: theme => ({
-    color: theme.colorPaletteRedForeground3,
-    ...shorthands.borderColor(theme.colorPaletteRedForeground3),
-  }),
-  rootTintDanger: theme => ({
-    backgroundColor: theme.colorPaletteRedBackground1,
-    color: theme.colorPaletteRedForeground1,
-    ...shorthands.borderColor(theme.colorPaletteRedForeground2),
-  }),
-  rootGhostDanger: theme => ({
-    color: theme.colorPaletteRedForeground3,
-  }),
-  rootFilledSevere: theme => ({
-    backgroundColor: theme.colorPaletteDarkOrangeBackground3,
-    color: theme.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineSevere: theme => ({
-    color: theme.colorPaletteDarkOrangeForeground3,
-    ...shorthands.borderColor(theme.colorPaletteDarkOrangeForeground3),
-  }),
-  rootTintSevere: theme => ({
-    backgroundColor: theme.colorPaletteDarkOrangeBackground1,
-    color: theme.colorPaletteDarkOrangeForeground1,
-    ...shorthands.borderColor(theme.colorPaletteDarkOrangeForeground2),
-  }),
-  rootGhostSevere: theme => ({
-    color: theme.colorPaletteDarkOrangeForeground3,
-  }),
-  rootFilledWarning: theme => ({
-    backgroundColor: theme.colorPaletteYellowBackground3,
-    color: theme.colorNeutralForeground1,
-    ...shorthands.borderColor(theme.colorPaletteYellowBackground3),
-  }),
-  rootOutlineWarning: theme => ({
-    color: theme.colorPaletteYellowForeground2,
-    ...shorthands.borderColor(theme.colorPaletteYellowForeground2),
-  }),
-  rootTintWarning: theme => ({
-    backgroundColor: theme.colorPaletteYellowBackground1,
-    color: theme.colorPaletteYellowForeground2,
-    ...shorthands.borderColor(theme.colorPaletteYellowBackground2),
-  }),
-  rootGhostWarning: theme => ({
-    color: theme.colorPaletteYellowForeground2,
-  }),
-  rootFilledSuccess: theme => ({
-    backgroundColor: theme.colorPaletteGreenBackground3,
-    color: theme.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineSuccess: theme => ({
-    color: theme.colorPaletteGreenForeground2,
-    ...shorthands.borderColor(theme.colorPaletteGreenForeground2),
-  }),
-  rootTintSuccess: theme => ({
-    backgroundColor: theme.colorPaletteGreenBackground1,
-    color: theme.colorPaletteGreenForeground1,
-    ...shorthands.borderColor(theme.colorPaletteGreenBackground2),
-  }),
-  rootGhostSuccess: theme => ({
-    color: theme.colorPaletteGreenForeground3,
-  }),
-  rootFilledImportant: theme => ({
-    backgroundColor: theme.colorNeutralForeground1,
-    color: theme.colorNeutralBackground1,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineImportant: theme => ({
-    color: theme.colorNeutralForeground1,
-    ...shorthands.borderColor(theme.colorNeutralForeground1),
-  }),
-  rootTintImportant: theme => ({
-    backgroundColor: theme.colorNeutralForeground3,
-    color: theme.colorNeutralBackground1,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootGhostImportant: theme => ({
-    color: theme.colorNeutralForeground1,
-  }),
-  rootFilledInformative: theme => ({
-    backgroundColor: theme.colorNeutralBackground5,
-    color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineInformative: theme => ({
-    color: theme.colorNeutralBackground5,
-    ...shorthands.borderColor(theme.colorNeutralBackground5),
-  }),
-  rootTintInformative: theme => ({
-    backgroundColor: theme.colorNeutralBackground4,
-    color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorNeutralStroke2),
-  }),
-  rootGhostInformative: theme => ({
-    color: theme.colorNeutralBackground5,
-  }),
-  rootFilledSubtle: theme => ({
-    backgroundColor: theme.colorNeutralBackground1,
-    color: theme.colorNeutralForeground1,
-    ...shorthands.borderColor(theme.colorTransparentStroke),
-  }),
-  rootOutlineSubtle: theme => ({
-    color: theme.colorNeutralForegroundInverted,
-    ...shorthands.borderColor(theme.colorNeutralForegroundInverted),
-  }),
-  rootTintSubtle: theme => ({
-    backgroundColor: theme.colorNeutralBackground1,
-    color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorNeutralStroke2),
-  }),
-  rootGhostSubtle: theme => ({
-    color: theme.colorNeutralForegroundInverted,
-  }),
+    ...shorthands.borderColor(tokens.colorBrandBackground),
+    color: tokens.colorBrandBackground,
+  },
+  rootTint: {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
+    ...shorthands.borderColor(tokens.colorBrandStroke2),
+  },
+  rootFilledDanger: {
+    backgroundColor: tokens.colorPaletteRedBackground3,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorPaletteRedBackground3),
+  },
+  rootOutlineDanger: {
+    color: tokens.colorPaletteRedForeground3,
+    ...shorthands.borderColor(tokens.colorPaletteRedForeground3),
+  },
+  rootTintDanger: {
+    backgroundColor: tokens.colorPaletteRedBackground1,
+    color: tokens.colorPaletteRedForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteRedForeground2),
+  },
+  rootGhostDanger: {
+    color: tokens.colorPaletteRedForeground3,
+  },
+  rootFilledSevere: {
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  },
+  rootOutlineSevere: {
+    color: tokens.colorPaletteDarkOrangeForeground3,
+    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeForeground3),
+  },
+  rootTintSevere: {
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
+    color: tokens.colorPaletteDarkOrangeForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeForeground2),
+  },
+  rootGhostSevere: {
+    color: tokens.colorPaletteDarkOrangeForeground3,
+  },
+  rootFilledWarning: {
+    backgroundColor: tokens.colorPaletteYellowBackground3,
+    color: tokens.colorNeutralForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteYellowBackground3),
+  },
+  rootOutlineWarning: {
+    color: tokens.colorPaletteYellowForeground2,
+    ...shorthands.borderColor(tokens.colorPaletteYellowForeground2),
+  },
+  rootTintWarning: {
+    backgroundColor: tokens.colorPaletteYellowBackground1,
+    color: tokens.colorPaletteYellowForeground2,
+    ...shorthands.borderColor(tokens.colorPaletteYellowBackground2),
+  },
+  rootGhostWarning: {
+    color: tokens.colorPaletteYellowForeground2,
+  },
+  rootFilledSuccess: {
+    backgroundColor: tokens.colorPaletteGreenBackground3,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  },
+  rootOutlineSuccess: {
+    color: tokens.colorPaletteGreenForeground2,
+    ...shorthands.borderColor(tokens.colorPaletteGreenForeground2),
+  },
+  rootTintSuccess: {
+    backgroundColor: tokens.colorPaletteGreenBackground1,
+    color: tokens.colorPaletteGreenForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteGreenBackground2),
+  },
+  rootGhostSuccess: {
+    color: tokens.colorPaletteGreenForeground3,
+  },
+  rootFilledImportant: {
+    backgroundColor: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralBackground1,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  },
+  rootOutlineImportant: {
+    color: tokens.colorNeutralForeground1,
+    ...shorthands.borderColor(tokens.colorNeutralForeground1),
+  },
+  rootTintImportant: {
+    backgroundColor: tokens.colorNeutralForeground3,
+    color: tokens.colorNeutralBackground1,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  },
+  rootGhostImportant: {
+    color: tokens.colorNeutralForeground1,
+  },
+  rootFilledInformative: {
+    backgroundColor: tokens.colorNeutralBackground5,
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  },
+  rootOutlineInformative: {
+    color: tokens.colorNeutralBackground5,
+    ...shorthands.borderColor(tokens.colorNeutralBackground5),
+  },
+  rootTintInformative: {
+    backgroundColor: tokens.colorNeutralBackground4,
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStroke2),
+  },
+  rootGhostInformative: {
+    color: tokens.colorNeutralBackground5,
+  },
+  rootFilledSubtle: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  },
+  rootOutlineSubtle: {
+    color: tokens.colorNeutralForegroundInverted,
+    ...shorthands.borderColor(tokens.colorNeutralForegroundInverted),
+  },
+  rootTintSubtle: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStroke2),
+  },
+  rootGhostSubtle: {
+    color: tokens.colorNeutralForegroundInverted,
+  },
   icon: {
     display: 'flex',
     alignContent: 'center',

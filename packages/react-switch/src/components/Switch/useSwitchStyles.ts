@@ -1,16 +1,18 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { SwitchState } from './Switch.types';
 
 export const switchClassName = 'fui-Switch';
-const trackClassName = `${switchClassName}-track`;
-const thumbClassName = `${switchClassName}-thumb`;
+const sClassName = 'fui-Switch';
+const trackClassName = `${sClassName}-track`;
+const thumbClassName = `${sClassName}-thumb`;
 
 /**
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
-  root: theme => ({
+  root: {
     '--switch-width': '40px',
     '--switch-height': '20px',
     '--switch-thumb-size': '14px',
@@ -24,35 +26,35 @@ const useRootStyles = makeStyles({
     userSelect: 'none',
     touchAction: 'none',
     verticalAlign: 'bottom',
-  }),
+  },
 
-  unchecked: theme => ({
+  unchecked: {
     [`:hover .${thumbClassName}`]: {
       ':before': {
-        background: theme.colorNeutralStrokeAccessibleHover,
+        background: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
 
     [`:hover .${trackClassName}`]: {
       ':before': {
-        borderColor: theme.colorNeutralStrokeAccessibleHover,
+        borderColor: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
-  }),
+  },
 
-  checked: theme => ({
+  checked: {
     [`:hover .${trackClassName}`]: {
       ':after': {
-        background: theme.colorBrandBackgroundHover,
+        background: tokens.colorBrandBackgroundHover,
       },
     },
 
     [`:active .${trackClassName}`]: {
       ':after': {
-        background: theme.colorBrandBackgroundPressed,
+        background: tokens.colorBrandBackgroundPressed,
       },
     },
-  }),
+  },
 
   enabled: {
     '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
@@ -64,15 +66,14 @@ const useRootStyles = makeStyles({
     pointerEvents: 'none',
   },
 
-  focusIndicator: theme =>
-    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '8px' } }),
+  focusIndicator: createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: '8px' } }),
 });
 
 /**
  * Styles for the track slot
  */
 const useTrackStyles = makeStyles({
-  track: theme => ({
+  track: {
     position: 'absolute',
     width: '100%',
     height: '100%',
@@ -103,34 +104,34 @@ const useTrackStyles = makeStyles({
       content: "''",
       opacity: 'var(--switch-checked-opacity)',
     },
-  }),
+  },
 
-  unchecked: theme => ({
+  unchecked: {
     ':before': {
-      border: `1px solid ${theme.colorNeutralStrokeAccessible}`,
+      border: `1px solid ${tokens.colorNeutralStrokeAccessible}`,
       background: 'none',
     },
-  }),
+  },
 
-  checked: theme => ({
+  checked: {
     ':after': {
-      background: theme.colorBrandBackground,
+      background: tokens.colorBrandBackground,
       border: 'none',
     },
-  }),
+  },
 
-  disabledUnchecked: theme => ({
+  disabledUnchecked: {
     ':before': {
-      border: `1px solid ${theme.colorNeutralStrokeDisabled}`,
+      border: `1px solid ${tokens.colorNeutralStrokeDisabled}`,
     },
-  }),
+  },
 
-  disabledChecked: theme => ({
+  disabledChecked: {
     ':after': {
-      border: `1px solid ${theme.colorTransparentStrokeDisabled}`,
-      background: theme.colorNeutralBackgroundDisabled,
+      border: `1px solid ${tokens.colorTransparentStrokeDisabled}`,
+      background: tokens.colorNeutralBackgroundDisabled,
     },
-  }),
+  },
 });
 
 /**
@@ -152,12 +153,12 @@ const useThumbWrapperStyles = makeStyles({
  * Styles for the thumb slot
  */
 const useThumbStyles = makeStyles({
-  thumb: theme => ({
+  thumb: {
     position: 'absolute',
     width: 'var(--switch-thumb-size)',
     height: 'var(--switch-thumb-size)',
     boxSizing: 'border-box',
-    borderRadius: theme.borderRadiusCircular,
+    borderRadius: tokens.borderRadiusCircular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
     transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
@@ -170,7 +171,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.borderRadiusCircular,
+      borderRadius: tokens.borderRadiusCircular,
       content: "''",
       opacity: 'var(--switch-unchecked-opacity)',
     },
@@ -181,36 +182,36 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.borderRadiusCircular,
+      borderRadius: tokens.borderRadiusCircular,
       content: "''",
       opacity: 'var(--switch-checked-opacity)',
     },
-  }),
+  },
 
-  unchecked: theme => ({
+  unchecked: {
     ':before': {
-      background: theme.colorNeutralStrokeAccessible,
+      background: tokens.colorNeutralStrokeAccessible,
     },
-  }),
+  },
 
-  checked: theme => ({
+  checked: {
     ':after': {
-      background: theme.colorNeutralForegroundOnBrand,
+      background: tokens.colorNeutralForegroundOnBrand,
     },
-  }),
+  },
 
-  disabledUnchecked: theme => ({
+  disabledUnchecked: {
     ':before': {
-      border: `1px solid ${theme.colorNeutralForegroundDisabled}`,
-      background: theme.colorNeutralBackground1,
+      border: `1px solid ${tokens.colorNeutralForegroundDisabled}`,
+      background: tokens.colorNeutralBackground1,
     },
-  }),
+  },
 
-  disabledChecked: theme => ({
+  disabledChecked: {
     ':after': {
-      background: theme.colorNeutralForegroundDisabled,
+      background: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 });
 
 /**

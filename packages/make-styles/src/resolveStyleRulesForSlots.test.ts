@@ -3,7 +3,7 @@ import { StylesBySlots } from './types';
 
 describe('resolveStyleRulesForSlots', () => {
   it('returns classnames and CSS rules to apply', () => {
-    const stylesBySlots: StylesBySlots<'root' | 'icon', never> = {
+    const stylesBySlots: StylesBySlots<'root' | 'icon'> = {
       root: { color: 'red', background: 'pink' },
       icon: { color: 'blue', background: 'lightblue' },
     };

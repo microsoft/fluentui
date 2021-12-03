@@ -19,9 +19,6 @@ type MakeStylesCSSPseudos = { [Property in CSS.Pseudos]?: MakeStylesStrictCSSObj
 export type MakeStylesAnimation = Record<'from' | 'to' | string, MakeStylesCSSObjectCustom>;
 export type MakeStylesStyle = MakeStylesStrictCSSObject | MakeStylesCSSObjectCustom;
 
-export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStylesStyle;
-export type MakeStylesStyleRule<Tokens> = MakeStylesStyle | MakeStylesStyleFunctionRule<Tokens>;
-
 export interface MakeStylesOptions {
   dir: 'ltr' | 'rtl';
   renderer: MakeStylesRenderer;
@@ -106,6 +103,6 @@ export type CSSClassesMapBySlot<Slots extends string | number> = Record<Slots, C
 
 export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
 
-export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
+export type StylesBySlots<Slots extends string | number> = Record<Slots, MakeStylesStyle>;
 
 export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ 'rtl' | 'ltr'];
