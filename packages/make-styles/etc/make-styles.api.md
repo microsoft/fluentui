@@ -19,7 +19,12 @@ export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBy
 export function createCSSVariablesProxy(prefix?: string): unknown;
 
 // @public
-export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
+export function createDOMRenderer(target?: Document | undefined, options?: CreateDOMRendererOptions): MakeStylesRenderer;
+
+// @public (undocumented)
+export interface CreateDOMRendererOptions {
+    unstable_filterCSSRule?: (cssRule: string) => boolean;
+}
 
 // @public (undocumented)
 export type CSSClasses = /* ltrClassName */ string | [/* ltrClassName */ string, /* rtlClassName */ string];

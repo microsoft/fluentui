@@ -12,7 +12,7 @@ import {
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 
-import { Toc, idToHash } from './Toc.stories';
+import { Toc, nameToHash } from './Toc.stories';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -60,12 +60,11 @@ export const FluentDocsPage = () => {
         <div className={styles.container}>
           <Subtitle />
           <Description />
-          <HeaderMdx as="h3" id={idToHash(primaryStory.id)}>
+          <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
             {primaryStory.name}
           </HeaderMdx>
           <Primary />
           <ArgsTable story={PRIMARY_STORY} />
-
           <Stories />
         </div>
       </div>
