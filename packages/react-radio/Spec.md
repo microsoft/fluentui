@@ -5,6 +5,18 @@ Use the Radio component to represent two or more available choices, preferably u
 
 ## Background
 
+### Prior Art
+
+- [OpenUI research](https://open-ui.org/components/radio-button.research)
+- [Epic](https://github.com/microsoft/fluentui/issues/19953)
+
+### Comparison of [Fabric ChoiceGroup](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup) and [Stardust RadioGroup](https://fluentsite.z22.web.core.windows.net/components/radio-group/definition)
+
+- All mentions of v7 or v8 refer to Fabric - `@fluentui/react` ([docsite](https://developer.microsoft.com/en-us/fluentui#/))
+- All mentions of v0 refer to Northstar - `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
+
+See Appendix for a detailed comparison of the two components.
+
 In Fabric the Radio component is represented by the [ChoiceGroup](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup) component.
 Fabric creates options based on data passed in via the `options` prop.
 It uses the option's `key` property as the input value and holds the currently selected value in the `selectedKey` prop.
@@ -38,75 +50,75 @@ It uses the option's `value` property as the input value and holds the currently
 />
 ```
 
-### Prior Art
+## Radio Component vNext
 
-- [OpenUI research](https://open-ui.org/components/radio-button.research)
-- [Epic](https://github.com/microsoft/fluentui/issues/19953)
+### Variants
 
-### Comparison of [Fabric ChoiceGroup](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup) and [Stardust RadioGroup](https://fluentsite.z22.web.core.windows.net/components/radio-group/definition)
-
-- All mentions of v7 or v8 refer to Fabric - `@fluentui/react` ([docsite](https://developer.microsoft.com/en-us/fluentui#/))
-- All mentions of v0 refer to Northstar - `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
-
-_⚠️ Props not included in this section are marked as deprecated and will not be considered._
-
-_Include background research done for this component_
-
-- [x] _Link to Open UI research_
-- [ ] _Link to comparison of v7 and v0_
-- [x] _Link to GitHub epic issue for the converged component_
-
-## Variants
-
-TODO: pics
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+The variants of the Radio component include visual styles and behaviour. The Radio component is expected to have the option of adding input or dorpdown component as a radio item (represented in the `Vertical with dropdown` and `Vertical with input` sections).
 
 ### Horizonal
+
+Inline positioning of the inputs and labels.
 
 ![Horizontal group](./etc/images/horizontal-group.png)
 
 ### Horizonal stacked
 
+Positioning the label at the bottom of the radio inputs.
+
 ![Horizontal group - stacked](./etc/images/horizontal-group-stacked.png)
 
 ### Vertical
+
+Default vertical positioning of Radio items.
 
 ![Vertical group](./etc/images/vertical-group.png)
 
 ### Vertical with input
 
+Default positioning of Radio items with an input as its last Radio item.
+
 ![Vertical group with input](./etc/images/vertical-group-with-input.png)
 
 ### Vertical with dropdown
+
+Default positioning of Radio items with a dropdown as its last Radio item.
 
 ![Vertical group with dropdown](./etc/images/vertical-group-with-dropdown.png)
 
 ### Vertical with subtext
 
+Additional text under the label of Radio items.
+
 ![Vertical group with subtext](./etc/images/vertical-group-with-subtext.png)
 
-## API
-
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+## Proposed API
 
 ### Components
 
-| Component | Purpose                                             |
-| --------- | --------------------------------------------------- |
-| Radio     | Wraps radio inputs. Provides API for control group. |
-| RadioItem | Represents a single radio input.                    |
+| Component | Purpose                                                                   |
+| --------- | ------------------------------------------------------------------------- |
+| Radio     | Wraps radio inputs. Provides API for control group (fieldset and legend). |
+| RadioItem | Represents a single radio item (input and label).                         |
 
 ### Radio
 
-| Prop           | Type                         | Purpose                                                                          |
-| -------------- | ---------------------------- | -------------------------------------------------------------------------------- |
-| defaultValue   | `string`                     | Which option should be preselected by default. (default: undefined)              |
-| label (legend) | `string \| (slot)`           | Label for the group of radio controls.                                           |
-| name           | `string`                     | Name property passed to child inputs.                                            |
-| orientation    | `"horizontal" \| "vertical"` | Specifies how the layout in which the controls are rendered. (default: vertical) |
-| value          | `string`                     | Currently selected value. Used only for controlled mode.                         |
+| Prop           | Type                         | Default value | Purpose                                                      |
+| -------------- | ---------------------------- | ------------- | ------------------------------------------------------------ |
+| defaultValue   | `string`                     | `undefined`   | Which option should be preselected by default.               |
+| label (legend) | `string \| (slot)`           |               | Label for the group of radio controls.                       |
+| name           | `string`                     |               | Name property passed to child inputs.                        |
+| orientation    | `"horizontal" \| "vertical"` | `"vertical"`  | Specifies how the layout in which the controls are rendered. |
+| value          | `string`                     |               | Currently selected value. Used only for controlled mode.     |
+
+`orientation` property:
+
+- `horizontal`: The radio inputs are rendered horizontally, referring to the `Horizontal Group` variant.
+- `vertical`: The radio inputs are rendered vertically, referring to the `Vertical Group` variant.
 
 ### RadioItem
+
+Link to [RadioItem.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-radio/src/components/RadioItem/RadioItem.types.ts)
 
 | Prop                              | Type               | Purpose                                                  |
 | --------------------------------- | ------------------ | -------------------------------------------------------- |
@@ -115,6 +127,9 @@ _List the **Props** and **Slots** proposed for the component. Ideally this would
 | label (label)                     | `string \| (slot)` | Label that will be rendered next to the radio input.     |
 | checked (input)                   | `boolean`          | Whether the input is checked or not.                     |
 | disabled (input)                  | `boolean`          | Whether the input is disabled or not.                    |
+| subtext (label)                   | `string`           | Text shown as subtext to label                           |
+
+`subtext` property referrs to the `Radio with subtext` variant.
 
 ### Sample Code
 
@@ -140,66 +155,72 @@ const iceCreams = [
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+### Expected DOM structure
 
-### DOM structure
+TODO: change the DOM structure of what it really is.
 
 ```html
 <fieldset>
   <legend>Which ice cream would you like?</legend>
   <span>
-    <input id="ic-Chocolate" name="ice-cream" type="radio" />
+    <div>
+      <div className='input-indicator'></div>
+      <input id="ic-Chocolate" name="ice-cream" type="radio" />
+    <div>
     <label for="ic-Chocolate">Chocolate</label>
   </span>
   <span>
-    <input id="ic-Strawberry" name="ice-cream" type="radio" />
+    <div>
+      <div className='input-indicator'></div>
+      <input id="ic-Strawberry" name="ice-cream" type="radio" />
+    <div>
     <label for="ic-Strawberry">Strawberry</label>
   </span>
   <span>
-    <input id="ic-Mango" name="ice-cream" type="radio" />
+     <div>
+      <div className='input-indicator'></div>
+      <input id="ic-Mango" name="ice-cream" type="radio" />
+    <div>
     <label for="ic-Mango">Mango</label>
   </span>
 </fieldset>
 ```
 
-<!--
-## Migration
-
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_ -->
-
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+- Component States
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+  - Rest (unchecked)
+  - Hover
+  - Pressed
+  - Checked
+  - Disabled
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+The Radio component will use the `<fieldset>` native element to provide the default accessibility behaviour of role group. This element requires `<legend>` element to be the main label for the Radio group.
+This implementation based on the [Grouping Controls](https://www.w3.org/WAI/tutorials/forms/grouping/) examples of Web Accessibility Tutorials (that follow WCAG).
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+The Radio items are wrapped in `<span>` element that includes the wrapper of the `<input role="radio">` element and the `<label>` element.
+
+<!--
+## Migration
+TBD: Link to Migration guide
+-->
+
+### Keyboard Navigation based on [ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#radiobutton):
+
+- `Tab` moves the focus in and out of Radio group (the fieldset).
+- `Enter` or `space` selects the Radio item.
+- `Up` and `down` arrow keys move the focus to the next and previous Radio item.
 
 # Appendix
 
+## v8 vs v0 comparison
+
 ### RadioGroup (v0) vs ChoiceGroup (v8) prop mapping
+
+_⚠️ Props not included in this section are marked as deprecated and will not be considered._
 
 | Purpose                                                                                           | Fabric (v8)        | Northstar (v0)       | Matching                                   |
 | ------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | ------------------------------------------ |
