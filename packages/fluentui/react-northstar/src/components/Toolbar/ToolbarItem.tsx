@@ -9,8 +9,9 @@ import {
   useStyles,
   useTelemetry,
   useContextSelectors,
+  useMergedRefs,
 } from '@fluentui/react-bindings';
-import { handleRef, Ref } from '@fluentui/react-component-ref';
+import { Ref } from '@fluentui/react-component-ref';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -137,7 +138,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     } = props;
     const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
-    const itemRef = React.useRef<HTMLElement>();
+    const itemRef = useMergedRefs(ref);
     const menuRef = React.useRef<HTMLElement>();
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
@@ -264,25 +265,19 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const itemElement = (
-      <Ref
-        innerRef={node => {
-          itemRef.current = node;
-          handleRef(ref, node);
-        }}
+      <ElementType
+        {...getA11yProps('root', {
+          ...unhandledProps,
+          disabled,
+          className: classes.root,
+          onBlur: handleBlur,
+          onFocus: handleFocus,
+          onClick: handleClick,
+        })}
+        ref={itemRef}
       >
-        <ElementType
-          {...getA11yProps('root', {
-            ...unhandledProps,
-            disabled,
-            className: classes.root,
-            onBlur: handleBlur,
-            onFocus: handleFocus,
-            onClick: handleClick,
-          })}
-        >
-          {childrenExist(children) ? children : createShorthand(composeOptions.slots.icon, icon, slotProps.icon)}
-        </ElementType>
-      </Ref>
+        {childrenExist(children) ? children : createShorthand(composeOptions.slots.icon, icon, slotProps.icon)}
+      </ElementType>
     );
 
     const submenuElement = menuOpen ? (
