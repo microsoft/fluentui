@@ -15,6 +15,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
 >
   <div
     aria-labelledby="ChoiceGroupLabel1"
+    onFocus={[Function]}
     role="radiogroup"
   >
     <label

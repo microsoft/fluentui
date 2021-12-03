@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 01 Dec 2021 07:41:08 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Dec 2021 07:36:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.46.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.1)
+
+Fri, 03 Dec 2021 07:36:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.0..@fluentui/react_v8.46.1)
+
+### Patches
+
+- update ChoiceGroup focus handling ([PR #20859](https://github.com/microsoft/fluentui/pull/20859) by seanmonahan@microsoft.com)
 
 ## [8.46.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.0)
 
