@@ -138,7 +138,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     } = props;
     const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
-    const itemRef = useMergedRefs(ref);
+    const itemRef = React.useRef<HTMLElement>();
     const menuRef = React.useRef<HTMLElement>();
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
@@ -264,6 +264,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const slotProps = composeOptions.resolveSlotProps<ToolbarItemProps>(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
+    const mergedRef = useMergedRefs(ref, itemRef);
     const itemElement = (
       <ElementType
         {...getA11yProps('root', {
@@ -274,7 +275,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
           onFocus: handleFocus,
           onClick: handleClick,
         })}
-        ref={itemRef}
+        ref={mergedRef}
       >
         {childrenExist(children) ? children : createShorthand(composeOptions.slots.icon, icon, slotProps.icon)}
       </ElementType>
