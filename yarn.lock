@@ -16447,6 +16447,11 @@ keyborg@^1.1.0-alpha.2:
   resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.1.0-alpha.2.tgz#7dcb4724b4fc7258d2f2d6aedc020ee66ceef37e"
   integrity sha512-yQm8bLLorZHO5BnWpvXQX/eXxZe30/MfBKM5w6OrSVOFA1lBrMpjZaPLTRrFAhjNmHa1jsFcJQ2rd6GdZ7Sjyg==
 
+keyborg@^1.1.0-alpha.3:
+  version "1.1.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.1.0-alpha.3.tgz#e134cd03cb9cdea149560a7f9b88883ca2ed3d55"
+  integrity sha512-UxkNGa1sFSuWyPHRtm+fUD48IikiwmjNVa4J5Hmpnsi1iiCF0cUNuyafzv68JM8C3phsuQ3uVxOqII+y9SGDLw==
+
 keyv@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-3.0.0.tgz#44923ba39e68b12a7cec7df6c3268c031f2ef373"
@@ -23917,10 +23922,10 @@ table@^6.0.4:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
-tabster@^1.1.0-alpha.2:
-  version "1.1.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.1.0-alpha.2.tgz#62ffd5125be67ab0f4d3379937d1ec7f003f9e76"
-  integrity sha512-/RFiL0wuRiIiCoUUlawT8fNzg4hPyDScnd1/jVUXcGEjgCPT6UD5Z7kE1CYO7WTklWQN2fC/bOn7YGaKhuoRcQ==
+tabster@^1.1.0-alpha.3:
+  version "1.1.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.1.0-alpha.3.tgz#1ce19eaa8d442fd724c3c448ae2f38a4890b2d07"
+  integrity sha512-pFtV+PwiSmCFph8YKIJZqFviku/my/t8tA1IoAlKyAfVk/GBJuDoCjfgftNylaxLUL4Di+0Fulc+XE42KhngQA==
   dependencies:
     keyborg "^1.1.0-alpha.2"
     tslib "^2.1.0"
