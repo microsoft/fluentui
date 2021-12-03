@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import type { TextState } from './Text.types';
 
 export const textClassName = 'fui-Text';
@@ -15,12 +15,12 @@ const useStyles = makeStyles({
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
-    overflow: 'visible',
+    ...shorthands.overflow('visible'),
     textOverflow: 'clip',
   }),
   nowrap: {
     whiteSpace: 'nowrap',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
   },
   truncate: {
     textOverflow: 'ellipsis',
@@ -32,13 +32,13 @@ const useStyles = makeStyles({
     fontStyle: 'italic',
   },
   underline: {
-    textDecoration: 'underline',
+    textDecorationLine: 'underline',
   },
   strikethrough: {
-    textDecoration: 'line-through',
+    textDecorationLine: 'line-through',
   },
   strikethroughUnderline: {
-    textDecoration: 'line-through underline',
+    textDecorationLine: 'line-through underline',
   },
   base100: theme => ({
     fontSize: theme.fontSizeBase100,

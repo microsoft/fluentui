@@ -1,11 +1,9 @@
-import * as React from 'react';
 import { shorthands, makeStyles } from '@fluentui/react-make-styles';
-import { Switch, SwitchProps } from './components/Switch/index';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Label } from '@fluentui/react-label';
 import { Meta } from '@storybook/react';
+import * as React from 'react';
+
+import { Switch, SwitchProps } from './components/Switch/index';
 
 const useStyles = makeStyles({
   root: {

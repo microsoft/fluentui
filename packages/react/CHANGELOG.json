@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 03 Dec 2021 07:36:11 GMT",
+      "tag": "@fluentui/react_v8.46.1",
+      "version": "8.46.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fbe2be4d09423fc320ff1909b3212a56016b2f53",
+            "comment": "update ChoiceGroup focus handling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Dec 2021 07:41:08 GMT",
+      "tag": "@fluentui/react_v8.46.0",
+      "version": "8.46.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a6c6e46aa4cde15d90a000477ec6a36da3cbe2f9",
+            "comment": "restore exports for CommunicationColors, NeutralColors & SharedColors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Nov 2021 07:37:32 GMT",
       "tag": "@fluentui/react_v8.45.0",
       "version": "8.45.0",

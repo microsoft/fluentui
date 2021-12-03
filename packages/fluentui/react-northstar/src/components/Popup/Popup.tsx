@@ -29,7 +29,6 @@ import { elementContains, setVirtualParent } from '@fluentui/dom-utilities';
 import {
   ChildrenComponentProps,
   ContentComponentProps,
-  StyledComponentProps,
   commonPropTypes,
   isFromKeyboard,
   doesNodeContainClick,
@@ -69,8 +68,7 @@ function getRealEventProps(element: React.ReactElement) {
 }
 
 export interface PopupProps
-  extends StyledComponentProps<PopupProps>,
-    ChildrenComponentProps,
+  extends ChildrenComponentProps,
     ContentComponentProps<ShorthandValue<PopupContentProps>>,
     PositioningProps {
   /**
@@ -78,9 +76,6 @@ export interface PopupProps
    * @available dialogBehavior
    */
   accessibility?: Accessibility<PopupBehaviorProps>;
-
-  /** Additional CSS class name(s) to apply.  */
-  className?: string;
 
   /** Initial value for 'open'. */
   defaultOpen?: boolean;
