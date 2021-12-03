@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 23 Nov 2021 07:27:34 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Dec 2021 07:36:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.1)
+
+Thu, 02 Dec 2021 07:36:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.0..@fluentui/web-components_v2.1.1)
+
+### Patches
+
+- fix: tabpanel shifting in vertical layout ([PR #20641](https://github.com/microsoft/fluentui/pull/20641) by jes@microsoft.com)
 
 ## [2.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.0)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/bundle-size
 
-This log was last generated on Thu, 25 Nov 2021 14:54:12 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Dec 2021 07:36:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.4)
+
+Fri, 03 Dec 2021 07:36:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.3..@fluentui/bundle-size_v1.1.4)
+
+### Patches
+
+- Adds missing dependencies to bundle-size ([PR #20885](https://github.com/microsoft/fluentui/pull/20885) by bsunderhus@microsoft.com)
 
 ## [1.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.3)
 

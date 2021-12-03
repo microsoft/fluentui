@@ -68,6 +68,13 @@
     color: #000000;
   }
 
+  #docs-root .sbdocs-h3:before {
+    content: '';
+    display: block;
+    height: 60px;
+    margin: -60px 0 0;
+  }
+
   #docs-root .sbdocs-li {
     font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
       sans-serif;
@@ -148,6 +155,14 @@
 
   #docs-root thead.docblock-argstable-head {
     border-bottom: 1px solid #edebe9;
+  }
+
+  #docs-root .docblock-argstable-body > tr > td:nth-child(4) {
+    display: none;
+  }
+
+  #docs-root .docblock-argstable-head > tr > th:nth-child(4) {
+    display: none;
   }
 
   #docs-root .docblock-argstable tbody tr {
