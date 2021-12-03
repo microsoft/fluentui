@@ -8,7 +8,7 @@ import { FabricIconsPageProps } from './FabricIconsPage.doc';
 import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 import { FluentIconsProps } from '@fluentui/react-icons';
-import * as ReactIcons from '@fluentui/react-icons';
+import * as ReactIcons from '@fluentui/react-icons/lib/sizedIcons';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FabricIconsPage/docs';
