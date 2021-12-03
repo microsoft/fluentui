@@ -2,6 +2,21 @@
   "name": "@fluentui/react-date-time",
   "entries": [
     {
+      "date": "Fri, 03 Dec 2021 07:36:12 GMT",
+      "tag": "@fluentui/react-date-time_v8.2.3",
+      "version": "8.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.46.1",
+            "commit": "131c59c96177944b46ac63905a592f22e20ec67c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Dec 2021 07:41:09 GMT",
       "tag": "@fluentui/react-date-time_v8.2.2",
       "version": "8.2.2",

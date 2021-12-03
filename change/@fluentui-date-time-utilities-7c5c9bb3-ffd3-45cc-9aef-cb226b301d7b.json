@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test(date-time-utils): make test pass for every contributor",
-  "packageName": "@fluentui/date-time-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
