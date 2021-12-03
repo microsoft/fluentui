@@ -14,10 +14,10 @@ import { renderButton } from './renderButton';
 export const useButton = (
   props: ButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): { state: ButtonState; render: RenderButton } => {
+): [ButtonState, RenderButton] => {
   const state = useButtonState(props);
   useButtonARIA(state, props, ref);
   useButtonStyles(state);
 
-  return { state, render: renderButton };
+  return [state, renderButton];
 };

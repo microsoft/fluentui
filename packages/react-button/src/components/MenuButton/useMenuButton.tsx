@@ -11,10 +11,10 @@ import type { MenuButtonProps, MenuButtonState, RenderMenuButton } from './MenuB
 export const useMenuButton = (
   { menuIcon, ...props }: MenuButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): { state: MenuButtonState; render: RenderMenuButton } => {
+): [MenuButtonState, RenderMenuButton] => {
   const state: MenuButtonState = useMenuButtonState(props);
   useMenuButtonARIA(state, props, ref);
   useMenuButtonStyles(state);
 
-  return { state, render: renderMenuButton };
+  return [state, renderMenuButton];
 };

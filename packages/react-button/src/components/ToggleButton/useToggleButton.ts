@@ -12,12 +12,12 @@ import { renderToggleButton } from './renderToggleButton';
  * @param ref - User provided ref to be passed to the ToggleButton component.
  */
 export const useToggleButton = (
-  { checked, defaultChecked, ...props }: ToggleButtonProps,
+  props: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): { state: ToggleButtonState; render: RenderToggleButton } => {
+): [ToggleButtonState, RenderToggleButton] => {
   const state: ToggleButtonState = useToggleButtonState(props);
   useToggleButtonARIA(state, props, ref);
   useToggleButtonStyles(state);
 
-  return { state, render: renderToggleButton };
+  return [state, renderToggleButton];
 };

@@ -13,10 +13,10 @@ import { useCompoundButtonARIA } from './useCompoundButtonARIA';
 export const useCompoundButton = (
   props: CompoundButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): { state: CompoundButtonState; render: RenderCompoundButton } => {
+): [CompoundButtonState, RenderCompoundButton] => {
   const state: CompoundButtonState = useCompoundButtonState(props);
   useCompoundButtonARIA(state, props, ref);
   useCompoundButtonStyles(state);
 
-  return { state, render: renderCompoundButton };
+  return [state, renderCompoundButton];
 };

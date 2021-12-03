@@ -13,10 +13,10 @@ import type { SplitButtonState, SplitButtonProps, RenderSplitButton } from './Sp
 export const useSplitButton = (
   props: SplitButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): { state: SplitButtonState; render: RenderSplitButton } => {
+): [SplitButtonState, RenderSplitButton] => {
   const state: SplitButtonState = useSplitButtonState(props);
   useSplitButtonARIA(state, props, ref);
   useSplitButtonStyles(state);
 
-  return { state, render: renderSplitButton };
+  return [state, renderSplitButton];
 };

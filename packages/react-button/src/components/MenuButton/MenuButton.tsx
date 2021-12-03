@@ -7,7 +7,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * MenuButtons are buttons that handle opening and closing a menu when they are triggered.
  */
 export const MenuButton: ForwardRefComponent<MenuButtonProps> = React.forwardRef((props, ref) => {
-  const { state, render } = useMenuButton(props, ref);
+  const [state, render] = useMenuButton(props, ref);
 
   return render(state);
   // Casting is required due to lack of distributive union to support unions on @types/react
