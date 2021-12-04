@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing functions from makeStyles and decoupling from react-theme.",
+  "packageName": "@fluentui/make-styles",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

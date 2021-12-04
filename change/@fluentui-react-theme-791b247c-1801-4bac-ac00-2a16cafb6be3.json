@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding ability to extend theme with custom tokens and decoupling from makeStyles.",
+  "packageName": "@fluentui/react-theme",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

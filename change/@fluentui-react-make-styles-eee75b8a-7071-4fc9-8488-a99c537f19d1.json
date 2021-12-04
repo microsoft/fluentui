@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing unwanted changes.",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
