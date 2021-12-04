@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing unused fixtures now that makeStyles does not support functions.",
+  "packageName": "@fluentui/babel-make-styles",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
