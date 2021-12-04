@@ -29,10 +29,10 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
  * controlled or uncontrolled component. Calls will only be respected if the component is uncontrolled.
  *
  * @returns Same as [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate): an array
- * of the current value and an updater (dispatch) function. The updater function always has the same
- * identity, and it can take either a new value, or a function which is passed the previous value
- * and returns the new value. Unlike `setState`, calls to the updater function will only be
- * respected if the component is uncontrolled.
+ * of the current value and an updater (dispatch) function. The updater function is referentially
+ * stable (won't change during the component's lifecycle). It can take either a new value, or a
+ * function which is passed the previous value and returns the new value. Unlike `setState`, calls
+ * to the updater function will only be respected if the component is uncontrolled.
  * @see https://reactjs.org/docs/uncontrolled-components.html
  */
 export const useControllableState = <State>(
