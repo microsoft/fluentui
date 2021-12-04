@@ -47,12 +47,16 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
           <p>Your meeting starts in 10 minutes.</p>
           <Menu positioning="below-end">
             <MenuTrigger>
-              {(triggerProps: MenuButtonProps) => (
-                <SplitButton
-                  menuButton={triggerProps}
-                  primaryActionButton={{ children: 'Dismiss', onClick: onDismissButtonClick }}
-                />
-              )}
+              {(triggerProps: MenuButtonProps) => {
+                triggerProps['aria-label'] = 'Postpone';
+
+                return (
+                  <SplitButton
+                    menuButton={triggerProps}
+                    primaryActionButton={{ children: 'Dismiss', onClick: onDismissButtonClick }}
+                  />
+                );
+              }}
             </MenuTrigger>
 
             <MenuPopover>
