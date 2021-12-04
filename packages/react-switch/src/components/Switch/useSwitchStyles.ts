@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SwitchState } from './Switch.types';
@@ -31,7 +31,7 @@ const useRootStyles = makeStyles({
   unchecked: {
     [`:hover .${thumbClassName}`]: {
       ':before': {
-        background: tokens.colorNeutralStrokeAccessibleHover,
+        backgroundColor: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
 
@@ -45,13 +45,13 @@ const useRootStyles = makeStyles({
   checked: {
     [`:hover .${trackClassName}`]: {
       ':after': {
-        background: tokens.colorBrandBackgroundHover,
+        backgroundColor: tokens.colorBrandBackgroundHover,
       },
     },
 
     [`:active .${trackClassName}`]: {
       ':after': {
-        background: tokens.colorBrandBackgroundPressed,
+        backgroundColor: tokens.colorBrandBackgroundPressed,
       },
     },
   },
@@ -77,7 +77,9 @@ const useTrackStyles = makeStyles({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    transitionProperty: 'backgroundColor',
+    transitionDuration: '0.1s',
+    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
     touchAction: 'none',
     pointerEvents: 'none',
 
@@ -88,7 +90,7 @@ const useTrackStyles = makeStyles({
       bottom: '0px',
       right: '0px',
       boxSizing: 'border-box',
-      borderRadius: '999px',
+      ...shorthands.borderRadius('999px'),
       content: "''",
       opacity: 'var(--switch-unchecked-opacity)',
     },
@@ -100,7 +102,7 @@ const useTrackStyles = makeStyles({
       bottom: '0px',
       right: '0px',
       boxSizing: 'border-box',
-      borderRadius: '999px',
+      ...shorthands.borderRadius('999px'),
       content: "''",
       opacity: 'var(--switch-checked-opacity)',
     },
@@ -108,28 +110,28 @@ const useTrackStyles = makeStyles({
 
   unchecked: {
     ':before': {
-      border: `1px solid ${tokens.colorNeutralStrokeAccessible}`,
-      background: 'none',
+      backgroundColor: 'none',
+      ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeAccessible),
     },
   },
 
   checked: {
     ':after': {
-      background: tokens.colorBrandBackground,
-      border: 'none',
+      backgroundColor: tokens.colorBrandBackground,
+      ...shorthands.borderStyle('none'),
     },
   },
 
   disabledUnchecked: {
     ':before': {
-      border: `1px solid ${tokens.colorNeutralStrokeDisabled}`,
+      ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
     },
   },
 
   disabledChecked: {
     ':after': {
-      border: `1px solid ${tokens.colorTransparentStrokeDisabled}`,
-      background: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
     },
   },
 });
@@ -158,10 +160,12 @@ const useThumbStyles = makeStyles({
     width: 'var(--switch-thumb-size)',
     height: 'var(--switch-thumb-size)',
     boxSizing: 'border-box',
-    borderRadius: tokens.borderRadiusCircular,
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
     top: '50%',
     transform: 'translate(-50%, -50%)',
-    transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    transitionProperty: 'backgroundColor',
+    transitionDuration: '0.1s',
+    transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
     touchAction: 'none',
     pointerEvents: 'none',
 
@@ -171,7 +175,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: tokens.borderRadiusCircular,
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       content: "''",
       opacity: 'var(--switch-unchecked-opacity)',
     },
@@ -182,7 +186,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: tokens.borderRadiusCircular,
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       content: "''",
       opacity: 'var(--switch-checked-opacity)',
     },
@@ -190,26 +194,26 @@ const useThumbStyles = makeStyles({
 
   unchecked: {
     ':before': {
-      background: tokens.colorNeutralStrokeAccessible,
+      backgroundColor: tokens.colorNeutralStrokeAccessible,
     },
   },
 
   checked: {
     ':after': {
-      background: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorNeutralForegroundOnBrand,
     },
   },
 
   disabledUnchecked: {
     ':before': {
-      border: `1px solid ${tokens.colorNeutralForegroundDisabled}`,
-      background: tokens.colorNeutralBackground1,
+      backgroundColor: tokens.colorNeutralBackground1,
+      ...shorthands.border('1px', 'solid', tokens.colorNeutralForegroundDisabled),
     },
   },
 
   disabledChecked: {
     ':after': {
-      background: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralForegroundDisabled,
     },
   },
 });
@@ -232,8 +236,8 @@ const useInputStyle = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',
-    padding: 0,
-    margin: 0,
+    ...shorthands.padding(0),
+    ...shorthands.margin(0),
     width: '100%',
     height: '100%',
     touchAction: 'none',
