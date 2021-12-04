@@ -13,6 +13,9 @@ module.exports = {
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
   },
 
+  // Adds some ADO-specific logging commands for reporting failures
+  ...(process.env.TF_BUILD && { reporter: 'adoLog' }),
+
   // Ignores these minimatch patterns when considers what packages have changed for the --since flag
   ignore: ['change/**', 'README.md'],
 
