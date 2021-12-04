@@ -3,7 +3,19 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Divider } from '@fluentui/react-divider';
 
-storiesOf('Divider', module)
+const HorizontalWrapper: React.FC = props => (
+  <div className="testWrapper" style={{ display: 'flex', padding: '10px', width: '300px' }}>
+    {props.children}
+  </div>
+);
+
+const VerticalWrapper: React.FC = props => (
+  <div className="testWrapper" style={{ display: 'flex', padding: '10px', height: '200px' }}>
+    {props.children}
+  </div>
+);
+
+storiesOf('Divider Converged', module)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
@@ -12,94 +24,94 @@ storiesOf('Divider', module)
   .addStory(
     'Horizontal without content',
     () => (
-      <div style={{ width: '400px' }}>
+      <HorizontalWrapper>
         <Divider />
-      </div>
+      </HorizontalWrapper>
     ),
     { includeRtl: true },
   )
   .addStory(
     'Horizontal with content',
     () => (
-      <div style={{ width: '400px' }}>
+      <HorizontalWrapper>
         <Divider>Today</Divider>
-      </div>
+      </HorizontalWrapper>
     ),
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
     'Horizontal Start Aligned',
     () => (
-      <div style={{ width: '400px' }}>
+      <HorizontalWrapper>
         <Divider alignContent="start">Today</Divider>
-      </div>
+      </HorizontalWrapper>
     ),
     { includeRtl: true },
   )
   .addStory(
     'Horizontal End Aligned',
     () => (
-      <div style={{ width: '400px' }}>
+      <HorizontalWrapper>
         <Divider alignContent="end">Today</Divider>
-      </div>
+      </HorizontalWrapper>
     ),
     { includeRtl: true },
   )
   .addStory('Vertical Center Aligned', () => (
-    <div style={{ height: '400px' }}>
+    <VerticalWrapper>
       <Divider vertical>Today</Divider>
-    </div>
+    </VerticalWrapper>
   ))
   .addStory('Vertical Start Aligned', () => (
-    <div style={{ height: '400px' }}>
+    <VerticalWrapper>
       <Divider vertical alignContent="start">
         Today
       </Divider>
-    </div>
+    </VerticalWrapper>
   ))
   .addStory('Vertical End Aligned', () => (
-    <div style={{ height: '400px' }}>
+    <VerticalWrapper>
       <Divider vertical alignContent="end">
         Today
       </Divider>
-    </div>
+    </VerticalWrapper>
   ))
   .addStory(
     'Appearance subtle',
     () => (
-      <div style={{ width: '400px' }}>
+      <HorizontalWrapper>
         <Divider appearance="subtle">Today</Divider>
-      </div>
+      </HorizontalWrapper>
     ),
     { includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
     'Appearance strong',
     () => (
-      <div style={{ width: '400px' }}>
+      <HorizontalWrapper>
         <Divider appearance="strong">Today</Divider>
-      </div>
+      </HorizontalWrapper>
     ),
     { includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
     'Appearance brand',
     () => (
-      <div style={{ width: '400px' }}>
+      <HorizontalWrapper>
         <Divider appearance="brand">Today</Divider>
-      </div>
+      </HorizontalWrapper>
     ),
     { includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('Inset', () => (
-    <div style={{ width: '400px' }}>
+    <HorizontalWrapper>
       <Divider inset>Today</Divider>
-    </div>
+    </HorizontalWrapper>
   ))
   .addStory('Vertical inset', () => (
-    <div style={{ height: '400px' }}>
+    <VerticalWrapper>
       <Divider inset vertical>
         Today
       </Divider>
-    </div>
+    </VerticalWrapper>
   ));

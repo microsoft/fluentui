@@ -231,7 +231,7 @@ storiesOf('Avatar Converged', module)
       const rowStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '8px' };
 
       return (
-        <div style={{ display: 'flex', gap: '24px' }}>
+        <div style={{ display: 'flex', gap: '24px', flexDirection: 'row' }}>
           <div style={rowStyles}>
             <Avatar color="neutral" />
             <Avatar color="brand" />
