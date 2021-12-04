@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating test based on removal of functions from makeStyles.",
+  "packageName": "@fluentui/jest-serializer-make-styles",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
