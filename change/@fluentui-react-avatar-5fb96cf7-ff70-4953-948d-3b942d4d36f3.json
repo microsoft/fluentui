@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "bump icons",
+  "packageName": "@fluentui/react-avatar",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

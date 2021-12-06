@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "bump icons",
+  "packageName": "@fluentui/react-button",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
