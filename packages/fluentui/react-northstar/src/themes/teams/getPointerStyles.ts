@@ -188,14 +188,14 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
           width: height,
 
           left: 0,
-          transform: `rotate(${rtl ? 0 : 180}deg)`,
+          transform: rtl ? 'rotate(0) /* @noflip */' : 'rotate(180deg) /* @noflip */',
         }),
         ...(placement === 'right' && {
           height: width,
           width: height,
 
           right: 0,
-          transform: `rotate(${rtl ? 180 : 0}deg)`,
+          transform: rtl ? 'rotate(180deg) /* @noflip */' : 'rotate(0) /* @noflip */',
         }),
       },
       '::after': undefined,
