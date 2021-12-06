@@ -3,6 +3,7 @@ import { Button, Tooltip, Text } from '@fluentui/react-northstar';
 
 const TooltipExampleRtl = () => (
   <Tooltip
+    pointing
     trigger={<Button content="ا يجلبه إلينا الأس" />}
     content={
       <>
