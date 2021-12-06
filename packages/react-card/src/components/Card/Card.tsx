@@ -9,7 +9,9 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * A card provides scaffolding for hosting actions and content for a single topic.
  */
 export const Card: ForwardRefComponent<CardProps> = React.forwardRef((props, ref) => {
-  const state = useCard(props, ref);
+  let state = useCard(props, ref);
+
+  state = state;
 
   useCardStyles(state);
   return renderCard(state);
