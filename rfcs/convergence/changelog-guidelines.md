@@ -65,7 +65,7 @@ label has been applied.
 
 ### Stricter reviews for changefile comments
 
-There is no easy way to automate the quality of a changelog entry, this has to be done by humans in the PR reivew.
+There is no easy way to automate the quality of a changelog entry, this has to be done by humans in the PR review.
 This proposal tries to spread awareness that changefile entries are directly a part of our changelog and they should
 be reviewed strictly.
 
