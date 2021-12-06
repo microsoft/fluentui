@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { Tooltip } from '../Tooltip'; // codesandbox-dependency: @fluentui/react-tooltip ^9.0.0-beta
-import { makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles } from '@fluentui/react-make-styles';
+
+import { Tooltip } from '../Tooltip';
 
 const useStyles = makeStyles({
   exampleList: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    margin: '16px 0',
-    gap: '16px',
+    ...shorthands.margin('16px', '0'),
+    ...shorthands.gap('16px'),
   },
 });
 

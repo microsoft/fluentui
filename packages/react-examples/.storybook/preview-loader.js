@@ -5,9 +5,8 @@ import * as path from 'path';
  * Replace the PACKAGE_NAME token in preview.js with the actual current package name
  * (or error if the package doesn't have examples).
  *
- * Also if this is the storybook for `@fluentui/react` or `@fluentui/react-components`, replace the
- * REACT_DEPS token with the actual list of dependencies which have their own examples but should be
- * included in the suite package storybook.
+ * Also if this is the storybook for `@fluentui/react`, replace the REACT_DEPS token with the actual
+ * list of deps which have their own examples but should be included in the suite package storybook.
  * @this {{addDependency: (file: string)=>void;callback: ((err: Error | null)=>void)}} loader context - https://webpack.js.org/api/loaders/#the-loader-context
  * @param {string} source
  */

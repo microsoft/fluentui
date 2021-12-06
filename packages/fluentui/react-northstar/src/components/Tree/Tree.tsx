@@ -1,12 +1,12 @@
 import { Accessibility, treeBehavior, TreeBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   useTelemetry,
   useUnhandledProps,
   getElementType,
   useAccessibility,
   useStyles,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -107,11 +107,7 @@ export type TreeStylesProps = never;
  * [Tree as table in Mac > VoiceOver narrates " 0 items enclosed " when user navigates to expaded treeitem](https://bugs.chromium.org/p/chromium/issues/detail?id=1273540)
  * [Tree as table in Mac > VoiceOver doesn't narrate aria-labelledby element on treeitem](https://bugs.chromium.org/p/chromium/issues/detail?id=1273544)
  */
-export const Tree: ComponentWithAs<'div', TreeProps> &
-  FluentComponentStaticProps<TreeProps> & {
-    Item: typeof TreeItem;
-    Title: typeof TreeTitle;
-  } = props => {
+export const Tree = (React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tree.displayName, context.telemetry);
   setStart();
@@ -200,6 +196,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         <ElementType
           {...getA11yProps('root', {
             className: classes.root,
+            ref,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),
             ...unhandledProps,
           })}
@@ -211,7 +208,11 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, TreeProps> &
+  FluentComponentStaticProps<TreeProps> & {
+    Item: typeof TreeItem;
+    Title: typeof TreeTitle;
+  };
 
 Tree.displayName = 'Tree';
 
