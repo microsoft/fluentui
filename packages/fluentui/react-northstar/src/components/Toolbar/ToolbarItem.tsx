@@ -9,9 +9,8 @@ import {
   useStyles,
   useTelemetry,
   useContextSelectors,
-  useMergedRefs,
 } from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
+import { handleRef, Ref } from '@fluentui/react-component-ref';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -264,21 +263,26 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const slotProps = composeOptions.resolveSlotProps<ToolbarItemProps>(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const mergedRef = useMergedRefs(ref, itemRef);
     const itemElement = (
-      <ElementType
-        {...getA11yProps('root', {
-          ...unhandledProps,
-          disabled,
-          className: classes.root,
-          onBlur: handleBlur,
-          onFocus: handleFocus,
-          onClick: handleClick,
-        })}
-        ref={mergedRef}
+      <Ref
+        innerRef={node => {
+          itemRef.current = node;
+          handleRef(ref, node);
+        }}
       >
-        {childrenExist(children) ? children : createShorthand(composeOptions.slots.icon, icon, slotProps.icon)}
-      </ElementType>
+        <ElementType
+          {...getA11yProps('root', {
+            ...unhandledProps,
+            disabled,
+            className: classes.root,
+            onBlur: handleBlur,
+            onFocus: handleFocus,
+            onClick: handleClick,
+          })}
+        >
+          {childrenExist(children) ? children : createShorthand(composeOptions.slots.icon, icon, slotProps.icon)}
+        </ElementType>
+      </Ref>
     );
 
     const submenuElement = menuOpen ? (
