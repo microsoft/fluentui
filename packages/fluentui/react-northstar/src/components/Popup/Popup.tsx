@@ -18,7 +18,7 @@ import {
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
-import { handleRef, Ref } from '@fluentui/react-component-ref';
+import { handleRef, Ref, RefFindNode, RefForward } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
 import * as _ from 'lodash';
@@ -51,12 +51,21 @@ import { createShorthandFactory } from '../../utils/factories';
 import { isRightClick } from '../../utils/isRightClick';
 import { PortalInner } from '../Portal/PortalInner';
 import { Animation } from '../Animation/Animation';
-import { getRealEventProps } from '../../utils/getRealEventProps';
 
 export type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
 export type RestrictedClickEvents = 'click' | 'focus';
 export type RestrictedHoverEvents = 'hover' | 'focus' | 'context';
 export type PopupEventsArray = RestrictedClickEvents[] | RestrictedHoverEvents[];
+
+function getRealEventProps(element: React.ReactElement) {
+  if (element.type === Ref || element.type === RefFindNode || element.type === RefForward) {
+    return getRealEventProps(element.props.children as React.ReactElement);
+  }
+
+  return Object.keys(element.props).reduce((acc, propName) => {
+    return propName.startsWith('on') ? { ...acc, [propName]: element.props[propName] } : acc;
+  }, {});
+}
 
 export interface PopupProps
   extends ChildrenComponentProps,

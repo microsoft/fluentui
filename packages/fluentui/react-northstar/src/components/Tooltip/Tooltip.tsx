@@ -38,7 +38,6 @@ import {
 } from '../../utils/positioner';
 import { PortalInner } from '../Portal/PortalInner';
 import { TooltipContent, TooltipContentProps } from './TooltipContent';
-import { getRealEventProps } from '../../utils/getRealEventProps';
 
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
@@ -269,12 +268,7 @@ export const Tooltip: React.FC<TooltipProps> &
         <Ref innerRef={triggerRef}>
           {React.cloneElement(
             triggerElement,
-            getA11Props('trigger', {
-              ...getRealEventProps(triggerElement),
-              ...unhandledProps,
-              ...triggerElement.props,
-              ...triggerProps,
-            }),
+            getA11Props('trigger', { ...unhandledProps, ...triggerElement.props, ...triggerProps }),
           )}
         </Ref>
       )}
