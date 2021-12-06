@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updating based on removal of functions from makeStyles.",
+  "packageName": "@fluentui/codemods",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
