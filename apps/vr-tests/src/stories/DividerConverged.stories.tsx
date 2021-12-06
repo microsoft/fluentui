@@ -2,116 +2,61 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Divider } from '@fluentui/react-divider';
+import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
 
-const HorizontalWrapper: React.FC = props => (
-  <div className="testWrapper" style={{ display: 'flex', padding: '10px', width: '300px' }}>
-    {props.children}
-  </div>
-);
-
-const VerticalWrapper: React.FC = props => (
-  <div className="testWrapper" style={{ display: 'flex', padding: '10px', height: '200px' }}>
-    {props.children}
-  </div>
-);
-
-storiesOf('Divider Converged', module)
+storiesOf('Divider Converged - Horizontal', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
   ))
-  .addStory(
-    'Horizontal without content',
-    () => (
-      <HorizontalWrapper>
-        <Divider />
-      </HorizontalWrapper>
-    ),
-    { includeRtl: true },
-  )
-  .addStory(
-    'Horizontal with content',
-    () => (
-      <HorizontalWrapper>
-        <Divider>Today</Divider>
-      </HorizontalWrapper>
-    ),
-    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Horizontal Start Aligned',
-    () => (
-      <HorizontalWrapper>
-        <Divider alignContent="start">Today</Divider>
-      </HorizontalWrapper>
-    ),
-    { includeRtl: true },
-  )
-  .addStory(
-    'Horizontal End Aligned',
-    () => (
-      <HorizontalWrapper>
-        <Divider alignContent="end">Today</Divider>
-      </HorizontalWrapper>
-    ),
-    { includeRtl: true },
-  )
-  .addStory('Vertical Center Aligned', () => (
-    <VerticalWrapper>
-      <Divider vertical>Today</Divider>
-    </VerticalWrapper>
+  .addStory('without content', () => <Divider />, { includeRtl: true })
+  .addStory('with content', () => <Divider>Today</Divider>, {
+    includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('Start Aligned', () => <Divider alignContent="start">Today</Divider>, {
+    includeRtl: true,
+  })
+  .addStory('End Aligned', () => <Divider alignContent="end">Today</Divider>, { includeRtl: true })
+  .addStory('Appearance subtle', () => <Divider appearance="subtle">Today</Divider>, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('Appearance strong', () => <Divider appearance="strong">Today</Divider>, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('Appearance brand', () => <Divider appearance="brand">Today</Divider>, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('Inset', () => <Divider inset>Today</Divider>);
+
+storiesOf('Divider Converged - Vertical', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <div style={{ height: '200px' }}>
+      <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+        {story()}
+      </Screener>
+    </div>
   ))
-  .addStory('Vertical Start Aligned', () => (
-    <VerticalWrapper>
-      <Divider vertical alignContent="start">
-        Today
-      </Divider>
-    </VerticalWrapper>
+  .addStory('Center Aligned', () => <Divider vertical>Today</Divider>)
+  .addStory('Start Aligned', () => (
+    <Divider vertical alignContent="start">
+      Today
+    </Divider>
   ))
-  .addStory('Vertical End Aligned', () => (
-    <VerticalWrapper>
-      <Divider vertical alignContent="end">
-        Today
-      </Divider>
-    </VerticalWrapper>
+  .addStory('End Aligned', () => (
+    <Divider vertical alignContent="end">
+      Today
+    </Divider>
   ))
-  .addStory(
-    'Appearance subtle',
-    () => (
-      <HorizontalWrapper>
-        <Divider appearance="subtle">Today</Divider>
-      </HorizontalWrapper>
-    ),
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Appearance strong',
-    () => (
-      <HorizontalWrapper>
-        <Divider appearance="strong">Today</Divider>
-      </HorizontalWrapper>
-    ),
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Appearance brand',
-    () => (
-      <HorizontalWrapper>
-        <Divider appearance="brand">Today</Divider>
-      </HorizontalWrapper>
-    ),
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory('Inset', () => (
-    <HorizontalWrapper>
-      <Divider inset>Today</Divider>
-    </HorizontalWrapper>
-  ))
-  .addStory('Vertical inset', () => (
-    <VerticalWrapper>
-      <Divider inset vertical>
-        Today
-      </Divider>
-    </VerticalWrapper>
+  .addStory('inset', () => (
+    <Divider inset vertical>
+      Today
+    </Divider>
   ));
