@@ -1,6 +1,7 @@
 /// <reference types="@fluentui/react-icons" />
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import { Input } from './Input';
 import { getNativeElementProps, useId } from '@fluentui/react-utilities';
 import { InputProps } from './Input.types';
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
     gap: '20px',
     padding: '20px',
   },
-  storyFilledBackground: theme => ({ background: theme.colorNeutralBackground3 }),
+  storyFilledBackground: { background: tokens.colorNeutralBackground3 },
 });
 
 const icons = {
