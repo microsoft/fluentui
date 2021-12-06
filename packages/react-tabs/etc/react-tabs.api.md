@@ -89,6 +89,7 @@ export const tabShorthandProps: (keyof TabSlots)[];
 export type TabSlots = {
     root: IntrinsicShorthandProps<'div'>;
     icon?: IntrinsicShorthandProps<'span'>;
+    content: IntrinsicShorthandProps<'span'>;
 };
 
 // @public
