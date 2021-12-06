@@ -60,31 +60,6 @@ storiesOf('TabList and Tab Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory('VerticalTabContent', () => (
-    <TabList verticalTabContent>
-      <Tab value="1">First</Tab>
-      <Tab className="test-class" value="2">
-        Second
-      </Tab>
-      <Tab value="3">Third</Tab>
-    </TabList>
-  ))
-  .addStory(
-    'Vertical and VerticalTabContent',
-    () => (
-      <TabList vertical verticalTabContent>
-        <Tab value="1">First</Tab>
-        <Tab className="test-class" value="2">
-          Second
-        </Tab>
-        <Tab value="3">Third</Tab>
-      </TabList>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
   .addStory(
     'Small size',
     () => (
@@ -105,22 +80,6 @@ storiesOf('TabList and Tab Converged', module)
     'Vertical and small size',
     () => (
       <TabList size="small" vertical>
-        <Tab value="1">First</Tab>
-        <Tab className="test-class" value="2">
-          Second
-        </Tab>
-        <Tab value="3">Third</Tab>
-      </TabList>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Vertical and vertical content and Small size',
-    () => (
-      <TabList size="small" vertical verticalTabContent>
         <Tab value="1">First</Tab>
         <Tab className="test-class" value="2">
           Second
