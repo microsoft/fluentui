@@ -5,26 +5,26 @@ const makeStyles = () => null;
 
 export const useStylesA = makeStyles({
   neutral: {
-    border: `5px solid ${tokens.alias.color.neutral.neutralStroke1}`,
-    color: tokens.alias.color.neutral.neutralForeground1,
+    border: `5px solid ${tokens.colorNeutralStroke1}`,
+    color: tokens.colorNeutralForeground1,
   },
   colors: {
-    border: `5px solid ${tokens.alias.color.blue.border2}`,
-    color: tokens.alias.color.marigold.foreground2,
+    border: `5px solid ${tokens.colorPaletteBlueBorder2}`,
+    color: tokens.colorPaletteMarigoldForeground2,
   },
   shadow: {
-    boxShadow: tokens.alias.shadow.shadow8,
+    boxShadow: tokens.shadow8,
   },
   border: {
-    borderRadius: tokens.global.borderRadius.circular,
+    borderRadius: tokens.borderRadiusCircular,
   },
   stroke: {
-    borderBottomWidth: tokens.global.strokeWidth.thin,
+    borderBottomWidth: tokens.strokeWidthThin,
   },
   type: {
-    fontFamily: tokens.global.type.fontFamilies.base,
-    fontSize: tokens.global.type.fontSizes.base[300],
-    lineHeight: tokens.global.type.lineHeights.base[300],
-    fontWeight: tokens.global.type.fontWeights.regular,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    fontWeight: tokens.fontWeightRegular,
   },
 });

@@ -22,26 +22,26 @@ describe('v9: Theme flattening', () => {
         neutral: {
           border: \`5px solid \${tokens.colorNeutralStroke1}\`,
           color: tokens.colorNeutralForeground1,
-        }),
+        },
         colors: {
           border: \`5px solid \${tokens.colorPaletteBlueBorder2}\`,
           color: tokens.colorPaletteMarigoldForeground2,
-        }),
+        },
         shadow: {
           boxShadow: tokens.shadow8,
-        }),
+        },
         border: {
           borderRadius: tokens.borderRadiusCircular,
-        }),
+        },
         stroke: {
           borderBottomWidth: tokens.strokeWidthThin,
-        }),
+        },
         type: {
           fontFamily: tokens.fontFamilyBase,
           fontSize: tokens.fontSizeBase300,
           lineHeight: tokens.lineHeightBase300,
           fontWeight: tokens.fontWeightRegular,
-        }),
+        },
       });
       "
     `);
