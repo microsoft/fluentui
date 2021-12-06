@@ -37,13 +37,9 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
   });
 
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add slot types here if needed (div is the default)
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
       role: 'tablist',

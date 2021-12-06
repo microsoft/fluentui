@@ -12,8 +12,6 @@ describe('Tab', () => {
     displayName: 'Tab',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   const defaultContext: TabListContextValue = {
     appearance: 'transparent',
     size: 'medium',

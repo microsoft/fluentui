@@ -42,22 +42,18 @@ export type TabState = ComponentState<TabSlots> &
   TabCommons & {
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
-     * Provided by TabList context.
      */
     appearance?: string;
     /**
      * If this tab is selected.
-     * Calculated from TabList context selectedValue.
      */
     selected?: boolean;
     /**
      * A tab can be either 'small' or 'medium' size.
-     * Provided by TabList context.
      */
     size: 'small' | 'medium';
     /**
      * A tab can arrange its content based on if the tabs in the list are arranged vertically.
-     * Provided by TabList context vertical.
      */
     vertical: boolean;
   };

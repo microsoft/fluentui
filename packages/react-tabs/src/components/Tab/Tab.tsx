@@ -6,7 +6,7 @@ import type { TabProps } from './Tab.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * A tab provides a selectable header in a tab list.
+ * A tab provides a selectable item in a tab list.
  */
 export const Tab: ForwardRefComponent<TabProps> = React.forwardRef((props, ref) => {
   const state = useTab(props, ref);

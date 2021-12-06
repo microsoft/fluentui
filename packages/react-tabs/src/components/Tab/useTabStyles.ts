@@ -1,7 +1,7 @@
+import type { TabState } from './Tab.types';
+
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-
-import type { TabState } from './Tab.types';
 
 export const tabClassName = 'fui-Tab';
 
@@ -58,6 +58,9 @@ const useRootStyles = makeStyles({
   }),
 });
 
+/**
+ * Focus styles for the root slot
+ */
 const useFocusStyles = makeStyles({
   base: createCustomFocusIndicatorStyle(theme => ({
     borderColor: 'transparent',
@@ -73,9 +76,7 @@ const useFocusStyles = makeStyles({
 });
 
 /**
- * While the indicator is applied to the root it is thought of as a separate element
- * since it uses :after and absolute positioning.
- * The horizontal and vertical indicators are separated since are styled independently.
+ * Indicator styles for the root slot when horizontal.
  */
 const useHorizontalIndicatorStyles = makeStyles({
   base: theme => ({
@@ -115,9 +116,7 @@ const useHorizontalIndicatorStyles = makeStyles({
 });
 
 /**
- * While the indicator is applied to the root it is thought of as a separate element
- * since it uses :before and absolute positioning.
- * The horizontal and vertical indicators are separated since are styled independently.
+ * Indicator styles for the root slot when vertical.
  */
 const useVerticalIndicatorStyles = makeStyles({
   base: theme => ({
@@ -156,6 +155,9 @@ const useVerticalIndicatorStyles = makeStyles({
   },
 });
 
+/**
+ * Styles for the icon slot.
+ */
 const useIconStyles = makeStyles({
   base: {
     alignItems: 'center',
@@ -174,6 +176,9 @@ const useIconStyles = makeStyles({
   },
 });
 
+/**
+ * Styles for the content slot (children)
+ */
 const useContentStyles = makeStyles({
   base: {
     paddingLeft: pendingTheme.contentPadding.medium,

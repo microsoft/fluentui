@@ -3,6 +3,9 @@ import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@f
 import { TabValue } from '../Tab/Tab.types';
 
 export type SelectTabData = {
+  /**
+   * The value of the selected tab.
+   */
   value: TabValue;
 };
 
