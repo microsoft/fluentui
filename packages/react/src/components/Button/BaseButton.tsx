@@ -563,7 +563,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
   };
 
-  private _onToggleMenu = (shouldFocusOnContainer: boolean = false): void => {
+  private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
     let shouldFocusOnMount = true;
     if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
       shouldFocusOnMount = false;

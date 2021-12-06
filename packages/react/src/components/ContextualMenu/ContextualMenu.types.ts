@@ -148,7 +148,9 @@ export interface IContextualMenuProps
   shouldFocusOnMount?: boolean;
 
   /**
-   * Whether to focus on the contextual menu container (as opposed to the first menu item).
+   * @deprecated Avoid using as it breaks the default focus behaviour when using assistive technologies.
+   *
+   * * Whether to focus on the contextual menu container (as opposed to the first menu item).
    */
   shouldFocusOnContainer?: boolean;
 
