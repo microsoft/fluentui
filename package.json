@@ -12,7 +12,7 @@
     "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components --min",
     "build:fluentui:docs": "gulp build:docs",
     "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --to @fluentui/react-components --min",
-    "buildci": "yarn prelint && lage build test lint --verbose && yarn nx affected --parallel --target=type-check --skip-nx-cache",
+    "buildci": "yarn prelint && lage build test lint --verbose && yarn nx affected --parallel --target=type-check --skip-nx-cache --base=origin/master",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
     "buildto:lerna": "node ./scripts/monorepo/buildTo.js",
