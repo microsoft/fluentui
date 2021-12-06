@@ -302,7 +302,7 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const getTriggerProps = triggerElement => {
-    const triggerElementEventProps = getRealEventProps(triggerElement);
+    const triggerElementEventProps = triggerElement ? getRealEventProps(triggerElement) : {};
     const triggerProps: any = {};
     const normalizedOn = _.isArray(on) ? on : [on];
 
