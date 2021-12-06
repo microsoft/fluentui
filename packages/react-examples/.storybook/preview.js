@@ -11,8 +11,11 @@ import { withKeytipLayer, withStrictMode } from '@fluentui/storybook';
  */
 const packageNamePlaceholder = 'PACKAGE_NAME';
 
+initializeIcons();
+
 addDecorator(withPerformance);
-addCustomDecorators();
+addDecorator(withStrictMode);
+addDecorator(withKeytipLayer);
 
 addParameters({
   a11y: {
@@ -27,30 +30,6 @@ export const parameters = {};
 // ================================
 //          Helpers
 // ================================
-
-/**
- * Add various storybook decorators narrowed by package name.
- *
- * NOTE:
- *  - this is a temporary workaround until we migrate to new storybook 6 APIs -> old `addDecorator` duplicates rendered decorators
- *  - source of this function is interpolated during runtime with webpack
- *
- */
-function addCustomDecorators() {
-  /**
-   * @type {Set<import('@storybook/react').DecoratorFn>}
-   */
-  const customDecorators = new Set();
-
-  if (['react-cards'].includes(packageNamePlaceholder)) {
-    initializeIcons();
-    customDecorators.add(withStrictMode);
-  }
-
-  customDecorators.add(withKeytipLayer);
-
-  customDecorators.forEach(decorator => addDecorator(decorator));
-}
 
 /**
  * @typedef {{
@@ -108,20 +87,6 @@ function generateStoriesFromExamples(key, stories, req) {
 
   if (segments.length < 3) {
     console.warn(`Invalid storybook context location found: key: ${key} | segments: ${segments}`);
-    return;
-  }
-
-  const isCollocatedStory = segments.includes('src');
-
-  if (key.endsWith('.mdx') || isCollocatedStory) {
-    // opt out of the custom naming for mdx and collocated, use meta information
-
-    const content = req(key);
-    if (content.default) {
-      stories.set(key, req(key));
-    } else {
-      console.warn(`No default export in ${key} - stories ignored`);
-    }
     return;
   }
 

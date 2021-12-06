@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "[breaking] Remove AvatarExamples",
+  "packageName": "@fluentui/example-data",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
