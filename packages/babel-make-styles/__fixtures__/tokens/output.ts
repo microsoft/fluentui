@@ -1,4 +1,5 @@
 import { __styles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 export const useStyles = __styles(
   {
     root: {
