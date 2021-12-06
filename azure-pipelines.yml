@@ -60,6 +60,7 @@ jobs:
 
   - job: DeployE2E
     displayName: Deploy and E2E
+    dependsOn: BuildTestLint
     workspace:
       clean: all
     steps:
@@ -111,6 +112,7 @@ jobs:
       - template: .devops/templates/cleanup.yml
 
   - job: ScreenerNorthstar
+    dependsOn: BuildTestLint
     workspace:
       clean: all
     steps:
@@ -147,6 +149,7 @@ jobs:
       - template: .devops/templates/cleanup.yml
 
   - job: Screener
+    dependsOn: BuildTestLint
     workspace:
       clean: all
     steps:
