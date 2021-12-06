@@ -18,11 +18,6 @@ const DialogExamples = () => (
     <Rtl />
     <NonPublicSection title="Visual tests">
       <ComponentExample examplePath="components/Dialog/Variations/DialogExampleScroll" />
-      <ComponentExample title="Zoom with content" examplePath="components/Dialog/Variations/DialogExampleZoomContent" />
-      <ComponentExample
-        title="Zoom with custom footer"
-        examplePath="components/Dialog/Variations/DialogExampleZoomCustomFooter"
-      />
     </NonPublicSection>
   </>
 );
