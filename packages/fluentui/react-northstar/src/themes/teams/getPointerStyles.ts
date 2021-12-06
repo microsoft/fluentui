@@ -173,7 +173,7 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
 
           left: gap,
           bottom: `calc(${width} - ${height} + ${borderSize})`,
-          transform: `rotate(${rtl ? -90 : 90}deg)`,
+          transform: 'rotate(90deg) /* @noflip */',
         }),
         ...(placement === 'top' && {
           height: `calc(${width} + (${gap} * 2))`,
@@ -181,7 +181,7 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
 
           left: gap,
           bottom: `calc(${gap} + ${height} - ${borderSize})`,
-          transform: `rotate(${rtl ? 90 : -90}deg)`,
+          transform: 'rotate(-90deg) /* @noflip */',
         }),
         ...(placement === 'left' && {
           height: width,
