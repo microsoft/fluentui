@@ -77,6 +77,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
             },
             [`:hover .${classNames.icon}`]: {
               opacity: 0,
+              pointerEvents: 'none',
             },
           },
         },
