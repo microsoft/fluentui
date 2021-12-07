@@ -116,7 +116,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
 
   const disabled = child?.props?.disabled;
   const triggerProps: MenuTriggerChildProps = {
-    'aria-haspopup': true,
+    'aria-haspopup': 'menu',
     'aria-expanded': open,
     id: child?.props?.id || triggerId,
 
