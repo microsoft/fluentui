@@ -29,6 +29,7 @@
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-make-styles": ["packages/react-conformance-make-styles/src/index.ts"],
       "@fluentui/react-context-selector": ["packages/react-context-selector/src/index.ts"],
+      "@fluentui/react-dialog": ["packages/react-dialog/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-divider/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-image": ["packages/react-image/src/index.ts"],
