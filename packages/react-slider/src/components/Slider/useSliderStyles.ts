@@ -5,22 +5,19 @@ import type { SliderState } from './Slider.types';
 export const sliderClassName = 'fui-Slider';
 
 const thumbClassName = `${sliderClassName}-thumb`;
-const trackClassName = `${sliderClassName}-track`;
 const railClassName = `${sliderClassName}-rail`;
-const stepIndex = 10;
-const thumbIndex = 20;
 
 /**
  * Styles for the root slot
  */
 export const useRootStyles = makeStyles({
-  root: theme => ({
+  root: {
     position: 'relative',
     display: 'inline-grid',
     gridTemplateAreas: '"slider"',
     userSelect: 'none',
     touchAction: 'none',
-  }),
+  },
 
   small: {
     '--slider-thumb-size': '10px',
@@ -39,7 +36,6 @@ export const useRootStyles = makeStyles({
   },
 
   vertical: {
-    transform: 'scaleY(-1)',
     width: 'var(--slider-thumb-size)',
     minHeight: '120px',
     justifyItems: 'center',
@@ -47,32 +43,37 @@ export const useRootStyles = makeStyles({
   },
 
   enabled: theme => ({
-    cursor: 'grab',
+    '--slider-rail-color': theme.colorNeutralStrokeAccessible,
+    '--slider-progress-color': theme.colorCompoundBrandBackground,
     ':hover': {
       [`& .${thumbClassName}`]: {
         background: theme.colorBrandBackgroundHover,
       },
-      [`& .${trackClassName}`]: {
-        background: theme.colorBrandBackgroundHover,
-      },
+      '--slider-progress-color': theme.colorBrandBackgroundHover,
     },
     ':active': {
-      cursor: 'grabbing',
       [`& .${thumbClassName}`]: {
         background: theme.colorBrandBackgroundPressed,
       },
-      [`& .${trackClassName}`]: {
-        background: theme.colorBrandBackgroundPressed,
-      },
+      '--slider-progress-color': theme.colorBrandBackgroundPressed,
     },
   }),
 
   disabled: theme => ({
-    cursor: 'not-allowed',
+    '--slider-rail-color': theme.colorNeutralBackgroundDisabled,
+    '--slider-progress-color': theme.colorNeutralForegroundDisabled,
   }),
 
-  focusIndicator: theme =>
-    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '6px' } }),
+  focusIndicatorHorizontal: theme =>
+    createFocusOutlineStyle(theme, {
+      selector: 'focus-within',
+      style: { outlineOffset: { top: '6px', bottom: '6px', left: '10px', right: '10px' } },
+    }),
+  focusIndicatorVertical: theme =>
+    createFocusOutlineStyle(theme, {
+      selector: 'focus-within',
+      style: { outlineOffset: { top: '10px', bottom: '10px', left: '6px', right: '6px' } },
+    }),
 });
 
 /**
@@ -84,86 +85,51 @@ export const useRailStyles = makeStyles({
     pointerEvents: 'none',
     gridArea: 'slider',
     position: 'relative',
+    background: `linear-gradient(
+      var(--slider-rail-direction),
+      var(--slider-rail-color) 0%,
+      var(--slider-rail-color) var(--slider-rail-offset),
+      var(--slider-progress-color) var(--slider-rail-offset),
+      var(--slider-progress-color) calc(var(--slider-rail-offset) + var(--slider-rail-progress)),
+      var(--slider-rail-color) calc(var(--slider-rail-offset) + var(--slider-rail-progress))
+    )`,
     ':before': {
       content: "''",
       position: 'absolute',
-      zIndex: stepIndex,
+      background: `repeating-linear-gradient(
+        var(--slider-rail-direction),
+        #0000 0%,
+        #0000 calc(var(--slider-rail-steps-percent) - 1px),
+        #fff calc(var(--slider-rail-steps-percent) - 1px),
+        #fff var(--slider-rail-steps-percent)
+      )`,
     },
   }),
 
-  enabled: theme => ({
-    backgroundColor: theme.colorNeutralStrokeAccessible,
-  }),
-
   disabled: theme => ({
-    backgroundColor: theme.colorNeutralBackgroundDisabled,
     ...shorthands.border('1px', 'solid', theme.colorTransparentStrokeDisabled),
   }),
 
   horizontal: {
+    '--slider-rail-direction': '90deg',
     height: 'var(--slider-rail-size)',
     ':before': {
       left: '-1px',
       right: '-1px',
       height: 'var(--slider-rail-size)',
-      background: `repeating-linear-gradient(
-        90deg,
-        #0000 0%,
-        #0000 calc(var(--slider-rail-steps-percent) - 1px),
-        #fff calc(var(--slider-rail-steps-percent) - 1px),
-        #fff var(--slider-rail-steps-percent)
-      )`,
     },
   },
 
   vertical: {
+    '--slider-rail-direction': '0deg',
     width: 'var(--slider-rail-size)',
     height: '100%',
     ':before': {
       width: 'var(--slider-rail-size)',
-      top: '1px',
-      bottom: '-1px',
-      background: `repeating-linear-gradient(
-        180deg,
-        #0000 0%,
-        #0000 calc(var(--slider-rail-steps-percent) - 1px),
-        #fff calc(var(--slider-rail-steps-percent) - 1px),
-        #fff var(--slider-rail-steps-percent)
-      )`,
+      top: '-1px',
+      bottom: '1px',
     },
   },
-});
-
-/**
- * Styles for the track slot
- */
-export const useTrackStyles = makeStyles({
-  track: theme => ({
-    ...shorthands.borderRadius(`var(--slider-track-border-radius, ${theme.borderRadiusXLarge})`),
-    gridArea: 'slider',
-    position: 'relative',
-    transition: 'var(--slider-track-transition)',
-  }),
-
-  horizontal: {
-    height: 'var(--slider-rail-size)',
-    left: 'var(--slider-track-offset)',
-    width: 'var(--slider-track-progress)',
-  },
-
-  vertical: {
-    width: 'var(--slider-rail-size)',
-    top: 'var(--slider-track-offset)',
-    height: 'var(--slider-track-progress)',
-  },
-
-  enabled: theme => ({
-    backgroundColor: theme.colorCompoundBrandBackground,
-  }),
-
-  disabled: theme => ({
-    backgroundColor: theme.colorNeutralForegroundDisabled,
-  }),
 });
 
 /**
@@ -172,15 +138,12 @@ export const useTrackStyles = makeStyles({
 export const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
-    zIndex: thumbIndex,
     width: 'var(--slider-thumb-size)',
     height: 'var(--slider-thumb-size)',
     outline: 'none',
     ...shorthands.borderRadius(theme.borderRadiusCircular),
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
     transform: 'translateX(-50%)',
-
-    transition: 'var(--slider-thumb-transition)',
     ':before': {
       position: 'absolute',
       top: '0px',
@@ -208,8 +171,8 @@ export const useThumbStyles = makeStyles({
     left: 'var(--slider-thumb-position)',
   },
   vertical: {
-    transform: 'translateY(-50%)',
-    top: 'var(--slider-thumb-position)',
+    transform: 'translateY(50%)',
+    bottom: 'var(--slider-thumb-position)',
   },
 });
 
@@ -220,11 +183,16 @@ const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     gridArea: 'slider',
-    ...shorthands.padding('0'),
-    ...shorthands.margin('0'),
+    ...shorthands.padding(0),
+    ...shorthands.margin(0),
+  },
+  horizontal: {
     height: 'var(--slider-thumb-size)',
-    touchAction: 'none',
-    pointerEvents: 'none',
+  },
+  vertical: {
+    writingMode: 'bt-lr',
+    '-webkit-appearance': 'slider-vertical',
+    width: 'var(--slider-thumb-size)',
   },
 });
 
@@ -234,18 +202,16 @@ const useInputStyles = makeStyles({
 export const useSliderStyles = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
-  const trackStyles = useTrackStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
 
   state.root.className = mergeClasses(
     sliderClassName,
     rootStyles.root,
-    rootStyles.focusIndicator,
+    state.vertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
     rootStyles[state.size!],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     state.disabled ? rootStyles.disabled : rootStyles.enabled,
-    rootStyles.focusIndicator,
     state.root.className,
   );
 
@@ -253,16 +219,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     railClassName,
     railStyles.rail,
     state.vertical ? railStyles.vertical : railStyles.horizontal,
-    state.disabled ? railStyles.disabled : railStyles.enabled,
+    state.disabled && railStyles.disabled,
     state.rail.className,
-  );
-
-  state.track.className = mergeClasses(
-    trackClassName,
-    trackStyles.track,
-    state.vertical ? trackStyles.vertical : trackStyles.horizontal,
-    state.disabled ? trackStyles.disabled : trackStyles.enabled,
-    state.track.className,
   );
 
   state.thumb.className = mergeClasses(
@@ -273,7 +231,11 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.thumb.className,
   );
 
-  state.input.className = mergeClasses(inputStyles.input, state.input.className);
+  state.input.className = mergeClasses(
+    inputStyles.input,
+    state.vertical ? inputStyles.vertical : inputStyles.horizontal,
+    state.input.className,
+  );
 
   return state;
 };

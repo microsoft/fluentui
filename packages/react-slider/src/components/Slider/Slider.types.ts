@@ -15,11 +15,6 @@ export type SliderSlots = {
   rail: IntrinsicShorthandProps<'div'>;
 
   /**
-   * The bar showing the current selected area adjacent to the Slider's thumb.
-   */
-  track: IntrinsicShorthandProps<'div'>;
-
-  /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
@@ -66,15 +61,6 @@ export type SliderCommons = {
   step?: number;
 
   /**
-   * The number of steps that the Slider's value will change by during a key press. When provided, the `keyboardSteps`
-   * will be separated from the pointer `steps` allowing for the value to go outside of pointer related
-   * snapping values.
-   *
-   * @default `step` or 1
-   */
-  keyboardStep?: number;
-
-  /**
    *  Whether to render the Slider as disabled.
    *
    * @default `false` (renders enabled)
@@ -102,16 +88,17 @@ export type SliderCommons = {
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  onChange?: (
-    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
-    data: { value: number },
-  ) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
 
   /**
    * The Slider's current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
 };
+
+interface SliderOnChangeData {
+  value: number;
+}
 
 export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue'> & SliderCommons;
 

@@ -6,7 +6,7 @@ import { SliderProps, SliderSlots, SliderState } from './Slider.types';
 /**
  * Array of all shorthand properties listed in sliderShorthandProps
  */
-export const sliderShorthandProps: (keyof SliderSlots)[] = ['root', 'input', 'rail', 'thumb', 'track'];
+export const sliderShorthandProps: (keyof SliderSlots)[] = ['root', 'input', 'rail', 'thumb'];
 
 /**
  * Given user props, returns state and render function for a Slider.
@@ -15,7 +15,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: [],
+    excludedPropNames: ['onChange'],
   });
 
   const {
@@ -25,7 +25,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     min,
     max,
     step,
-    keyboardStep,
     disabled,
     ariaValueText,
     onChange,
@@ -38,14 +37,12 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     input,
     rail,
     thumb,
-    track,
   } = props;
 
   const state: SliderState = {
     ariaValueText,
     defaultValue,
     disabled,
-    keyboardStep,
     max,
     min,
     onChange,
@@ -59,7 +56,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
       rail: 'div',
       root: 'div',
       thumb: 'div',
-      track: 'div',
     },
     root: resolveShorthand(root, {
       required: true,
@@ -78,7 +74,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     }),
     rail: resolveShorthand(rail, { required: true }),
     thumb: resolveShorthand(thumb, { required: true }),
-    track: resolveShorthand(track, { required: true }),
   };
 
   useSliderState(state);
