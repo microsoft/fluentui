@@ -6,10 +6,7 @@ import type { SelectTabData, SelectTabEvent, TabListProps, TabListSlots, TabList
 /**
  * Array of all shorthand properties listed in TabListSlots
  */
-export const tabListShorthandProps: (keyof TabListSlots)[] = [
-  'root',
-  // TODO add shorthand property names
-];
+export const tabListShorthandProps: (keyof TabListSlots)[] = ['root'];
 
 /**
  * Create the state required to render TabList.

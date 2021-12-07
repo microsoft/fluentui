@@ -10,7 +10,7 @@ export const renderTab = (state: TabState) => {
   const { slots, slotProps } = getSlots<TabSlots>(state, tabShorthandProps);
 
   return (
-    <slots.root role="tab" {...slotProps.root}>
+    <slots.root {...slotProps.root}>
       <slots.icon {...slotProps.icon} />
       <slots.content {...slotProps.content} />
     </slots.root>
