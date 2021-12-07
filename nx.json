@@ -322,6 +322,10 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-spinner": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-storybook": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
