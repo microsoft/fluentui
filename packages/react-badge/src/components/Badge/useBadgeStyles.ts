@@ -159,8 +159,8 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(theme.colorTransparentStroke),
   }),
   rootOutlineImportant: theme => ({
-    color: theme.colorNeutralForeground1,
-    ...shorthands.borderColor(theme.colorNeutralForeground1),
+    color: theme.colorNeutralForeground3,
+    ...shorthands.borderColor(theme.colorNeutralStrokeAccessible),
   }),
   rootTintImportant: theme => ({
     backgroundColor: theme.colorNeutralForeground3,
@@ -185,7 +185,7 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(theme.colorNeutralStroke2),
   }),
   rootGhostInformative: theme => ({
-    color: theme.colorNeutralBackground5,
+    color: theme.colorNeutralForeground3,
   }),
   rootFilledSubtle: theme => ({
     backgroundColor: theme.colorNeutralBackground1,
