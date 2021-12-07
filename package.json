@@ -223,7 +223,7 @@
     "tsconfig-paths": "3.9.0",
     "tsconfig-paths-webpack-plugin": "3.5.1",
     "tslib": "2.2.0",
-    "typescript": "4.3.5",
+    "typescript": "4.4.4",
     "webpack": "5.44.0",
     "webpack-bundle-analyzer": "4.4.2",
     "webpack-cli": "4.7.2",
@@ -262,6 +262,7 @@
     ]
   },
   "resolutions": {
+    "@microsoft/api-extractor/typescript": "4.4.4",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
