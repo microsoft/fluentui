@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-  Accordion,
-  AccordionHeaderProps,
-} from '@fluentui/react-accordion';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionHeaderProps } from '../index';
 
 export const Inline = (args: AccordionHeaderProps) => (
   <Accordion>

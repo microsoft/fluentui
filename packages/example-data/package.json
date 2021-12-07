@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/example-data",
-  "version": "8.2.7",
+  "version": "8.2.8",
   "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

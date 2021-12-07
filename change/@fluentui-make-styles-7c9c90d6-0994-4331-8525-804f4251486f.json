@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bumps rtl-css-js to 1.14.5, fixes[#20572](https://github.com/microsoft/fluentui/issues/20572)",
-  "packageName": "@fluentui/make-styles",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

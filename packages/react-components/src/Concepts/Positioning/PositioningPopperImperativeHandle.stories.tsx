@@ -13,7 +13,7 @@ export const PopperImperativeHandle = () => {
       setLoading(true);
     } else {
       clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => setLoading(false), 1000);
+      timeoutRef.current = window.setTimeout(() => setLoading(false), 1000);
     }
   };
 

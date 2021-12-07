@@ -18,7 +18,7 @@ const useTocStyles = makeStyles({
     paddingInlineStart: '8px',
 
     '& a': {
-      textDecoration: 'none',
+      textDecorationLine: 'none',
       color: '#0078d4',
       fontSize: '14px',
       lineHeight: '24px',
@@ -41,7 +41,7 @@ const navigate = (url: string) => {
   addons.getChannel().emit(NAVIGATE_URL, url);
 };
 
-export const idToHash = (id: string): string => id.split('--')[1];
+export const nameToHash = (id: string): string => id.toLowerCase().replace(/[^a-z0-9]/gi, '-');
 
 export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
   const tocClasses = useTocStyles();
@@ -53,10 +53,10 @@ export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
           return (
             <li key={s.id}>
               <a
-                href={`#${idToHash(s.id)}`}
+                href={`#${nameToHash(s.name)}`}
                 target="_self"
                 onClick={e => {
-                  navigate(`#${idToHash(s.id)}`);
+                  navigate(`#${nameToHash(s.name)}`);
                 }}
               >
                 {s.name}

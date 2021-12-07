@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
@@ -18,8 +18,8 @@ const useRootStyles = makeStyles({
     gridTemplateAreas: '"indicator"',
     alignItems: 'center',
     justifyContent: 'start',
-    padding: '8px', // TODO: change to SpacingHorizontalS once it's added to the theme
-    gap: '12px', // TODO: change to SpacingHorizontalM once it's added to the theme
+    ...shorthands.padding('8px'), // TODO: change to SpacingHorizontalS once it's added to the theme
+    ...shorthands.gap('12px'), // TODO: change to SpacingHorizontalM once it's added to the theme
   },
 
   // With label; positioned before the checkbox
@@ -101,8 +101,8 @@ const useInputStyles = makeStyles({
     height: 'auto',
     placeSelf: 'stretch',
     opacity: 0,
-    margin: 0,
-    padding: 0,
+    ...shorthands.margin(0),
+    ...shorthands.padding(0),
     cursor: 'inherit',
   },
 });
@@ -111,14 +111,14 @@ const useIndicatorStyles = makeStyles({
   base: theme => ({
     gridArea: 'indicator',
     fill: 'currentColor',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    borderStyle: 'solid',
-    borderRadius: theme.borderRadiusSmall,
-    borderWidth: theme.strokeWidthThin,
+    ...shorthands.borderStyle('solid'),
+    ...shorthands.borderWidth(theme.strokeWidthThin),
+    ...shorthands.borderRadius(theme.borderRadiusSmall),
     borderColor: `var(${indicatorBorderColor})`,
     color: `var(${indicatorColor})`,
     backgroundColor: `var(${indicatorBackgroundColor})`,
@@ -136,7 +136,7 @@ const useIndicatorStyles = makeStyles({
   },
 
   circular: theme => ({
-    borderRadius: theme.borderRadiusCircular,
+    ...shorthands.borderRadius(theme.borderRadiusCircular),
   }),
 
   unchecked: {

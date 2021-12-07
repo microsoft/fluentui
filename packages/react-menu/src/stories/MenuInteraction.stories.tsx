@@ -1,15 +1,13 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-button';
+import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '../index';
-
-import { Button } from '@fluentui/react-button';
-
-import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    gap: '10px',
+    ...shorthands.gap('10px'),
   },
 
   indicator: {

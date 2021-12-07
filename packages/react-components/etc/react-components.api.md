@@ -282,6 +282,7 @@ import { SelectableHandler } from '@fluentui/react-menu';
 import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
+import { shorthands } from '@fluentui/react-make-styles';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
@@ -301,7 +302,6 @@ import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
-import { themeToCSSVariables } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
 import { title1ClassName } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
@@ -961,6 +961,8 @@ export { ShadowBrandTokens }
 
 export { ShadowTokens }
 
+export { shorthands }
+
 export { SplitButton }
 
 export { splitButtonClassName }
@@ -998,8 +1000,6 @@ export { TextSlots }
 export { TextState }
 
 export { Theme }
-
-export { themeToCSSVariables }
 
 export { Title1 }
 

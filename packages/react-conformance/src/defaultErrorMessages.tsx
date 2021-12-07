@@ -248,6 +248,36 @@ export const defaultErrorMessages = {
     });
   },
 
+  'omits-size-prop': (testInfo: IsConformantOptions, error: Error, sizeValue: string, appliedToElement: Element) => {
+    const { displayName } = testInfo;
+    const { resolveInfo, testErrorName } = errorMessageColors;
+
+    // Message Description: Handles scenario where a component defines a custom 'size' prop but also
+    // applies 'size' as a native prop. (See the comment on the test definition for more background.)
+    //
+    // It appears that "displayName" has a custom 'size' prop but also applies 'size' as a native prop.
+    // After passing 'size="sizeValue"' to "displayName" it was applied to this element:
+    // <html here>
+    //
+    // Possible solutions:
+    // 1. Make sure that your component accepts a className prop.
+    // 2. Make sure that nothing is overwriting the className prop (it should be merged with defaults).
+    // 3. Make sure that your component is applying the className to the root.
+    return getErrorMessage({
+      displayName,
+      overview: `has a custom 'size' prop but also applies 'size' as a native prop.`,
+      details: [
+        `After passing 'size="${sizeValue}"' to ${testErrorName(displayName)} it was applied to this element:`,
+        appliedToElement.outerHTML,
+      ],
+      suggestions: [
+        `Ensure 'size' is omitted when calling native props helpers.`,
+        `If native 'size' functionality is needed, add an ${resolveInfo('htmlSize')} prop.`,
+      ],
+      error,
+    });
+  },
+
   'component-handles-classname': (
     testInfo: IsConformantOptions,
     error: Error,
