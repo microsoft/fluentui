@@ -109,8 +109,13 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
     focusedContainer: classNames.focusedContainer,
   };
 
-  // if there is only one row of cells, they should use radio semantics
-  // multi-row swatch cells should use grid semantics
+  /**
+   * If there is only one row of cells, they should use radio semantics,
+   * multi-row swatch cells should use grid semantics.
+   * There are two reasons for this:
+   *   1. Radios are a more simple and understandable control, and a better fit for a single-dimensional picker.
+   *   2. Multiple browsers use heuristics to strip table and grid roles from single-row tables with no column headers.
+   */
   const isSemanticRadio = colorCells.length <= columnCount;
 
   /**
