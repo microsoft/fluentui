@@ -271,9 +271,7 @@
     "eslint": "^7.1.0",
     "//": "pretty-format contains typing only supported by TS 3.8+ remove when support in this repo is available",
     "@testing-library/dom": "7.22.3",
-    "copy-to-clipboard": "3.2.0",
-    "react-docgen-typescript": "2.1.0",
-    "@storybook/react-docgen-typescript-plugin": "1.0.2-canary.f7e28c0.0"
+    "copy-to-clipboard": "3.2.0"
   },
   "syncpack": {
     "prod": true,
