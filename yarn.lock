@@ -3963,17 +3963,17 @@
   dependencies:
     core-js "^3.8.2"
 
-"@storybook/react-docgen-typescript-plugin@1.0.2-canary.253f8c1.0", "@storybook/react-docgen-typescript-plugin@1.0.2-canary.f7e28c0.0":
-  version "1.0.2-canary.f7e28c0.0"
-  resolved "https://registry.yarnpkg.com/@storybook/react-docgen-typescript-plugin/-/react-docgen-typescript-plugin-1.0.2-canary.f7e28c0.0.tgz#7d286d6476305d0dd5f4f17d76688d0b883d4593"
-  integrity sha512-E1Fc8JN43GqLYpCcJdankERI2sAaGdgHVsT0jnIaNu/V+Ru4nB+XvErJluhlsgLbhnisC84kzerU0lIpKVWhGQ==
+"@storybook/react-docgen-typescript-plugin@1.0.2-canary.253f8c1.0":
+  version "1.0.2-canary.253f8c1.0"
+  resolved "https://registry.yarnpkg.com/@storybook/react-docgen-typescript-plugin/-/react-docgen-typescript-plugin-1.0.2-canary.253f8c1.0.tgz#f2da40e6aae4aa586c2fb284a4a1744602c3c7fa"
+  integrity sha512-mmoRG/rNzAiTbh+vGP8d57dfcR2aP+5/Ll03KKFyfy5FqWFm/Gh7u27ikx1I3LmVMI8n6jh5SdWMkMKon7/tDw==
   dependencies:
     debug "^4.1.1"
     endent "^2.0.1"
     find-cache-dir "^3.3.1"
     flat-cache "^3.0.4"
     micromatch "^4.0.2"
-    react-docgen-typescript "^1.22.0"
+    react-docgen-typescript "^2.0.0"
     tslib "^2.0.0"
 
 "@storybook/react@6.3.6":
@@ -20868,10 +20868,10 @@ react-dev-utils@^11.0.3:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-docgen-typescript@2.1.0, react-docgen-typescript@^1.22.0, react-docgen-typescript@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.1.0.tgz#20db64a7fd62e63a8a9469fb4abd90600878cbb2"
-  integrity sha512-7kpzLsYzVxff//HUVz1sPWLCdoSNvHD3M8b/iQLdF8fgf7zp26eVysRrAUSxiAT4yQv2zl09zHjJEYSYNxQ8Jw==
+react-docgen-typescript@^2.0.0, react-docgen-typescript@^2.1.0:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.2.1.tgz#608ef48bd54661c2e59cc094ce5726c9e9636e30"
+  integrity sha512-ycVaidV55GOeDOKRP6PCw1i1502dElQ1KG/IInj8sOg50imG+Pmv6LY6DG2xlAF0asd8zXLcyFlWNnICKWP1LA==
 
 react-docgen@^5.0.0:
   version "5.1.0"
