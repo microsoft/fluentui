@@ -7,6 +7,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  useAccessibilityBehaviorOverride,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -60,7 +61,7 @@ export const Chat = (React.forwardRef<HTMLUListElement, ChatProps>((props, ref) 
 
   const { accessibility, children, className, density, design, items, styles, variables } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
+  const getA11Props = useAccessibility(useAccessibilityBehaviorOverride('Chat', accessibility), {
     debugName: Chat.displayName,
     rtl: context.rtl,
   });

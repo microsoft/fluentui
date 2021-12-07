@@ -17,6 +17,7 @@ import {
   useUnhandledProps,
   useMergedRefs,
   ForwardRefWithAs,
+  useAccessibilityBehaviorOverride,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -295,7 +296,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   // `focused` state is used for show/hide actionMenu
   const [focused, setFocused] = React.useState<boolean>(false);
 
-  const getA11Props = useAccessibility(accessibility, {
+  const getA11Props = useAccessibility(useAccessibilityBehaviorOverride('ChatMessage', accessibility), {
     actionHandlers: {
       // prevents default FocusZone behavior, e.g., in ChatMessageBehavior, it prevents FocusZone from using arrow keys
       // as navigation (only Tab key should work)
