@@ -6,7 +6,7 @@ Contributors: Fluent UI React Build team, @justSlone
 
 ## Summary
 
-This propsoal covers 2 topics:
+This proposal covers 2 topics:
 1. organization of rfcs folder
 2. organization (or removal) of specs folder
 
