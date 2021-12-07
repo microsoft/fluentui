@@ -2,7 +2,7 @@
 
 **React Select components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-The Select component provides a styled wrapper around the native `<select>` element. It is recommended over Combobox when feautres like editing and virutalization are not required. It provides better cross-platform functionality, particularly on mobile, and better accessibility.
+The Select component provides a styled wrapper around the native `<select>` element. It is recommended over Combobox when features like filtering and virtualization are not required. It provides better cross-platform functionality particularly on mobile, and better accessibility.
 
 ## STATUS: WIP 🚧
 

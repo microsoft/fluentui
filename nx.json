@@ -318,6 +318,10 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-select": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-slider": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
