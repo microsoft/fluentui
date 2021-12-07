@@ -223,15 +223,12 @@ const useMenuOpenState = (
       focusFirst();
     }
 
-    // rest of this effect is for keyboard focus handling
-    if (!shouldHandleKeyboardRef.current) {
-      return;
-    }
-
-    if (shouldHandleTabRef.current && !state.isSubmenu) {
-      pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
-    } else {
-      state.triggerRef.current?.focus();
+    if (shouldHandleKeyboardRef.current && !open) {
+      if (shouldHandleTabRef.current && !state.isSubmenu) {
+        pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
+      } else {
+        state.triggerRef.current?.focus();
+      }
     }
 
     shouldHandleKeyboardRef.current = false;
