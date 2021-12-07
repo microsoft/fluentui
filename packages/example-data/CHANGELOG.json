@@ -2,6 +2,21 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Tue, 07 Dec 2021 07:31:32 GMT",
+      "tag": "@fluentui/example-data_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "3defe8482167a065a9ee9653fd0c34d5d3ecf055",
+            "comment": "[breaking] Remove AvatarExamples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Sep 2021 07:34:24 GMT",
       "tag": "@fluentui/example-data_v8.2.7",
       "version": "8.2.7",

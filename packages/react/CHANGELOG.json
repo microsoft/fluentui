@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 07 Dec 2021 07:31:32 GMT",
+      "tag": "@fluentui/react_v8.46.2",
+      "version": "8.46.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "owcampbe@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ebf02572f71df78caaedac9c8ea5e91412c3694c",
+            "comment": "Swap edge if on boundary"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/example-data to v8.3.0",
+            "commit": "ebf02572f71df78caaedac9c8ea5e91412c3694c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Dec 2021 07:36:11 GMT",
       "tag": "@fluentui/react_v8.46.1",
       "version": "8.46.1",
