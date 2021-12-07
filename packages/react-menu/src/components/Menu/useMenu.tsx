@@ -219,18 +219,19 @@ const useMenuOpenState = (
   }, [open, focusFirst]);
 
   React.useEffect(() => {
+    if (open) {
+      focusFirst();
+    }
+
+    // rest of this effect is for keyboard focus handling
     if (!shouldHandleKeyboardRef.current) {
       return;
     }
 
-    if (open) {
-      focusFirst();
+    if (shouldHandleTabRef.current && !state.isSubmenu) {
+      pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
     } else {
-      if (shouldHandleTabRef.current && !state.isSubmenu) {
-        pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
-      } else {
-        state.triggerRef.current?.focus();
-      }
+      state.triggerRef.current?.focus();
     }
 
     shouldHandleKeyboardRef.current = false;
