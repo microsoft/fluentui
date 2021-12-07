@@ -140,6 +140,10 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
         }),
   };
 
+  if (!open && !isSubmenu) {
+    triggerProps['aria-expanded'] = undefined;
+  }
+
   state.children = applyTriggerPropsToChildren(state.children, {
     ...triggerProps,
     ref: useMergedRefs((typeof state.children !== 'function' && state.children.ref) || null, triggerRef),

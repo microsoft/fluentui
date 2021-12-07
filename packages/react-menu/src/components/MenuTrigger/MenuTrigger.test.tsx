@@ -50,7 +50,6 @@ describe('MenuTrigger', () => {
     expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-expanded="false"
           aria-haspopup="true"
           id=""
         >
@@ -81,7 +80,6 @@ describe('MenuTrigger', () => {
     expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-expanded="false"
           aria-haspopup="true"
           id=""
         >
