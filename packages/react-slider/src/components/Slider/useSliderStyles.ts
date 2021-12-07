@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
 
@@ -84,7 +84,7 @@ export const useRootStyles = makeStyles({
 export const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
   }),
 
   horizontal: theme => ({
@@ -108,18 +108,18 @@ export const useSliderWrapper = makeStyles({
 export const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    borderRadius: theme.borderRadiusXLarge,
+    ...shorthands.borderRadius(theme.borderRadiusXLarge),
     boxSizing: 'border-box',
     pointerEvents: 'none',
   }),
 
   enabled: theme => ({
-    background: theme.colorNeutralStrokeAccessible,
+    backgroundColor: theme.colorNeutralStrokeAccessible,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralBackgroundDisabled,
-    border: `1px solid ${theme.colorTransparentStrokeDisabled}`,
+    backgroundColor: theme.colorNeutralBackgroundDisabled,
+    ...shorthands.border('1px', 'solid', theme.colorTransparentStrokeDisabled),
   }),
 
   horizontal: theme => ({
@@ -166,7 +166,7 @@ export const useTrackWrapperStyles = makeStyles({
 export const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    borderRadius: theme.borderRadiusXLarge,
+    ...shorthands.borderRadius(theme.borderRadiusXLarge),
   }),
 
   horizontal: theme => ({
@@ -184,11 +184,11 @@ export const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.colorCompoundBrandBackground,
+    backgroundColor: theme.colorCompoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralForegroundDisabled,
+    backgroundColor: theme.colorNeutralForegroundDisabled,
   }),
 });
 
@@ -199,15 +199,15 @@ export const useMarksWrapperStyles = makeStyles({
   marksWrapper: theme => ({
     position: 'relative',
     display: 'grid',
-    outline: 'none',
-    zIndex: '1',
+    outlineStyle: 'none',
+    zIndex: 1,
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      background: theme.colorNeutralBackground1,
+      backgroundColor: theme.colorNeutralBackground1,
     },
 
     [`& .${markLabelClassName}`]: {
-      padding: '2px',
+      ...shorthands.padding('2px'),
       fontSize: '12px',
     },
 
@@ -280,8 +280,8 @@ export const useMarksWrapperStyles = makeStyles({
 export const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
-    outline: 'none',
-    zIndex: '2',
+    outlineStyle: 'none',
+    zIndex: 2,
   }),
 
   horizontal: theme => ({
@@ -309,8 +309,8 @@ export const useThumbStyles = makeStyles({
     left: '0px',
     bottom: '0px',
     right: '0px',
-    outline: 'none',
-    borderRadius: theme.borderRadiusCircular,
+    outlineStyle: 'none',
+    ...shorthands.borderRadius(theme.borderRadiusCircular),
     boxSizing: 'border-box',
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
     transform: 'translate(-50%, -50%)',
@@ -321,21 +321,21 @@ export const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.borderRadiusCircular,
+      ...shorthands.borderRadius(theme.borderRadiusCircular),
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralStroke1}`,
+      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', theme.colorNeutralStroke1),
     },
   }),
 
   enabled: theme => ({
-    background: theme.colorCompoundBrandBackground,
+    backgroundColor: theme.colorCompoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralForegroundDisabled,
+    backgroundColor: theme.colorNeutralForegroundDisabled,
     ':before': {
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralForegroundDisabled}`,
+      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', theme.colorNeutralForegroundDisabled),
     },
   }),
 
@@ -370,8 +370,8 @@ const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',
-    padding: 0,
-    margin: 0,
+    ...shorthands.padding('0'),
+    ...shorthands.margin('0'),
     width: '100%',
     height: '100%',
     touchAction: 'none',

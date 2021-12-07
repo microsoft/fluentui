@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 import { Slider } from './index';
 import { Label } from '@fluentui/react-label';
 import type { SliderProps } from './index';
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '10px',
+    ...shorthands.gap('10px'),
     width: '400px',
   },
   slider: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
   verticalWrapper: {
     display: 'flex',
-    gap: '10px',
+    ...shorthands.gap('10px'),
   },
 });
 

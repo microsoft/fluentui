@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 01 Dec 2021 07:41:08 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Dec 2021 07:31:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.46.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.2)
+
+Tue, 07 Dec 2021 07:31:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.1..@fluentui/react_v8.46.2)
+
+### Patches
+
+- Swap edge if on boundary ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by owcampbe@microsoft.com)
+- Bump @fluentui/example-data to v8.3.0 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+
+## [8.46.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.1)
+
+Fri, 03 Dec 2021 07:36:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.0..@fluentui/react_v8.46.1)
+
+### Patches
+
+- update ChoiceGroup focus handling ([PR #20859](https://github.com/microsoft/fluentui/pull/20859) by seanmonahan@microsoft.com)
 
 ## [8.46.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.0)
 

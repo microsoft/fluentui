@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update ChoiceGroup focus handling",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
