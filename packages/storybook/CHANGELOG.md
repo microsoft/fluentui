@@ -1,8 +1,19 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Fri, 03 Dec 2021 07:36:12 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Dec 2021 07:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 07 Dec 2021 07:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.2 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+- Bump @fluentui/azure-themes to v8.1.110 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+- Bump @fluentui/theme-samples to v8.2.51 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
 

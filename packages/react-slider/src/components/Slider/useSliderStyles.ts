@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
 
@@ -72,7 +72,7 @@ export const useRootStyles = makeStyles({
   }),
 
   focusIndicator: theme =>
-    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '10px' } }),
+    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '6px' } }),
 });
 
 /**
@@ -80,7 +80,7 @@ export const useRootStyles = makeStyles({
  */
 export const useRailStyles = makeStyles({
   rail: theme => ({
-    borderRadius: theme.borderRadiusXLarge,
+    ...shorthands.borderRadius(theme.borderRadiusXLarge),
     pointerEvents: 'none',
     gridArea: 'slider',
     position: 'relative',
@@ -92,12 +92,12 @@ export const useRailStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.colorNeutralStrokeAccessible,
+    backgroundColor: theme.colorNeutralStrokeAccessible,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralBackgroundDisabled,
-    border: `1px solid ${theme.colorTransparentStrokeDisabled}`,
+    backgroundColor: theme.colorNeutralBackgroundDisabled,
+    ...shorthands.border('1px', 'solid', theme.colorTransparentStrokeDisabled),
   }),
 
   horizontal: {
@@ -139,7 +139,7 @@ export const useRailStyles = makeStyles({
  */
 export const useTrackStyles = makeStyles({
   track: theme => ({
-    borderRadius: `var(--slider-track-border-radius, ${theme.borderRadiusXLarge})`,
+    ...shorthands.borderRadius(`var(--slider-track-border-radius, ${theme.borderRadiusXLarge})`),
     gridArea: 'slider',
     position: 'relative',
     transition: 'var(--slider-track-transition)',
@@ -158,11 +158,11 @@ export const useTrackStyles = makeStyles({
   },
 
   enabled: theme => ({
-    background: theme.colorCompoundBrandBackground,
+    backgroundColor: theme.colorCompoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralForegroundDisabled,
+    backgroundColor: theme.colorNeutralForegroundDisabled,
   }),
 });
 
@@ -176,7 +176,7 @@ export const useThumbStyles = makeStyles({
     width: 'var(--slider-thumb-size)',
     height: 'var(--slider-thumb-size)',
     outline: 'none',
-    borderRadius: theme.borderRadiusCircular,
+    ...shorthands.borderRadius(theme.borderRadiusCircular),
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
     transform: 'translateX(-50%)',
 
@@ -187,21 +187,21 @@ export const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.borderRadiusCircular,
+      ...shorthands.borderRadius(theme.borderRadiusCircular),
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralStroke1}`,
+      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', theme.colorNeutralStroke1),
     },
   }),
 
   enabled: theme => ({
-    background: theme.colorCompoundBrandBackground,
+    backgroundColor: theme.colorCompoundBrandBackground,
   }),
 
   disabled: theme => ({
-    background: theme.colorNeutralForegroundDisabled,
+    backgroundColor: theme.colorNeutralForegroundDisabled,
     ':before': {
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.colorNeutralForegroundDisabled}`,
+      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', theme.colorNeutralForegroundDisabled),
     },
   }),
   horizontal: {
@@ -220,8 +220,8 @@ const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     gridArea: 'slider',
-    padding: 0,
-    margin: 0,
+    ...shorthands.padding('0'),
+    ...shorthands.margin('0'),
     height: 'var(--slider-thumb-size)',
     touchAction: 'none',
     pointerEvents: 'none',

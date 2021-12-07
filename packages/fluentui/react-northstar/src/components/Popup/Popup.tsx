@@ -302,6 +302,7 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const getTriggerProps = triggerElement => {
+    const triggerElementEventProps = triggerElement ? getRealEventProps(triggerElement) : {};
     const triggerProps: any = {};
     const normalizedOn = _.isArray(on) ? on : [on];
 
@@ -314,18 +315,18 @@ export const Popup: React.FC<PopupProps> &
         if (isFromKeyboard()) {
           trySetOpen(true, e);
         }
-        _.invoke(triggerElement, 'props.onFocus', e, ...args);
+        _.invoke(triggerElementEventProps, 'onFocus', e, ...args);
       };
       triggerProps.onBlur = (e, ...args) => {
         if (shouldBlurClose(e)) {
           trySetOpen(false, e);
         }
-        _.invoke(triggerElement, 'props.onBlur', e, ...args);
+        _.invoke(triggerElementEventProps, 'onBlur', e, ...args);
       };
       if (!_.includes(normalizedOn, 'context')) {
         triggerProps.onClick = (e, ...args) => {
           setPopupOpen(true, e);
-          _.invoke(triggerElement, 'props.onClick', e, ...args);
+          _.invoke(triggerElementEventProps, 'onClick', e, ...args);
         };
       }
     }
@@ -336,7 +337,7 @@ export const Popup: React.FC<PopupProps> &
     if (_.includes(normalizedOn, 'click')) {
       triggerProps.onClick = (e, ...args) => {
         trySetOpen(!open, e);
-        _.invoke(triggerElement, 'props.onClick', e, ...args);
+        _.invoke(triggerElementEventProps, 'onClick', e, ...args);
       };
     }
 
@@ -346,7 +347,7 @@ export const Popup: React.FC<PopupProps> &
     if (_.includes(normalizedOn, 'context')) {
       triggerProps.onContextMenu = (e, ...args) => {
         setPopupOpen(!open, e);
-        _.invoke(triggerElement, 'props.onContextMenu', e, ...args);
+        _.invoke(triggerElementEventProps, 'onContextMenu', e, ...args);
         e.preventDefault();
       };
     }
@@ -359,27 +360,27 @@ export const Popup: React.FC<PopupProps> &
       triggerProps.onMouseEnter = (e, ...args) => {
         setPopupOpen(true, e);
         setWhatInputSource(context.target, 'mouse');
-        _.invoke(triggerElement, 'props.onMouseEnter', e, ...args);
+        _.invoke(triggerElementEventProps, 'onMouseEnter', e, ...args);
       };
       triggerProps.onMouseLeave = (e, ...args) => {
         setPopupOpen(false, e);
-        _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
+        _.invoke(triggerElementEventProps, 'onMouseLeave', e, ...args);
       };
       if (!_.includes(normalizedOn, 'context')) {
         triggerProps.onClick = (e, ...args) => {
           setPopupOpen(true, e);
-          _.invoke(triggerElement, 'props.onClick', e, ...args);
+          _.invoke(triggerElementEventProps, 'onClick', e, ...args);
         };
       }
       triggerProps.onBlur = (e, ...args) => {
         if (shouldBlurClose(e)) {
           trySetOpen(false, e);
         }
-        _.invoke(triggerElement, 'props.onBlur', e, ...args);
+        _.invoke(triggerElementEventProps, 'onBlur', e, ...args);
       };
     }
 
-    return triggerProps;
+    return { ...triggerElementEventProps, ...triggerProps };
   };
 
   const getContentProps = (predefinedProps?) => {
@@ -618,12 +619,10 @@ export const Popup: React.FC<PopupProps> &
       }}
     </Animation>
   );
+
   const triggerElement = triggerNode && (
     <Ref innerRef={triggerRef}>
-      {React.cloneElement(
-        triggerNode as React.ReactElement,
-        getA11yProps('trigger', { ...getRealEventProps(triggerNode), ...triggerProps }),
-      )}
+      {React.cloneElement(triggerNode as React.ReactElement, getA11yProps('trigger', triggerProps))}
     </Ref>
   );
 
