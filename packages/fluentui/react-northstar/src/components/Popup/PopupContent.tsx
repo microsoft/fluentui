@@ -161,14 +161,22 @@ export const PopupContent = (React.forwardRef<HTMLDivElement, PopupContentProps>
       ...((_.keys(trapFocus).length && trapFocus) as FocusTrapZoneProps),
       as: ElementType,
     };
-    element = <FocusTrapZone {...focusTrapZoneProps}>{popupContent}</FocusTrapZone>;
+    element = (
+      <FocusTrapZone innerRef={ref} {...focusTrapZoneProps}>
+        {popupContent}
+      </FocusTrapZone>
+    );
   } else if (autoFocus) {
     const autoFocusZoneProps = {
       ...popupContentProps,
       ...((_.keys(autoFocus).length && autoFocus) as AutoFocusZoneProps),
       as: ElementType,
     };
-    element = <AutoFocusZone {...autoFocusZoneProps}>{popupContent}</AutoFocusZone>;
+    element = (
+      <AutoFocusZone innerRef={ref} {...autoFocusZoneProps}>
+        {popupContent}
+      </AutoFocusZone>
+    );
   } else {
     element = (
       <ElementType ref={ref} {...popupContentProps}>

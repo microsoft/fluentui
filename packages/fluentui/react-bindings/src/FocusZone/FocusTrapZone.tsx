@@ -16,6 +16,7 @@ import {
   HIDDEN_FROM_ACC_TREE,
 } from './focusUtilities';
 import { FocusTrapZoneProps } from './FocusTrapZone.types';
+import { handleRef } from '@fluentui/react-component-ref/src';
 
 /** FocusTrapZone is used to trap the focus in any html element placed in body
  *  and hide other elements outside of Focus Trap Zone from accessibility tree.
@@ -62,6 +63,7 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     as: 'div',
     isClickableOutsideFocusTrap: true,
     forceFocusInsideTrapOnOutsideFocus: false,
+    innerRef: PropTypes.any,
   };
 
   componentDidMount(): void {
@@ -140,7 +142,10 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
         <ElementType
           {...unhandledProps}
           className={className}
-          ref={this.createRef}
+          ref={(ele: HTMLElement) => {
+            handleRef(this.createRef, ele);
+            handleRef(this.props.innerRef, ele);
+          }}
           aria-labelledby={ariaLabelledBy}
           onKeyDown={this._onKeyboardHandler}
           onFocusCapture={this._onFocusCapture}
