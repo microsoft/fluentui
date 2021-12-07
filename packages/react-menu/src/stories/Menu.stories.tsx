@@ -2,6 +2,8 @@ import { Menu } from '../index';
 
 import descriptionMd from './MenuDescription.md';
 import bestPracticesMd from './MenuBestPractices.md';
+export { AriaOwnsOnTrigger } from './MenuAriaOwnsOnTrigger.stories';
+export { AriaOwnsOnVirtualParent } from './MenuAriaOwnsOnVirtualParent.stories';
 export { Default } from './MenuDefault.stories';
 export { Interaction } from './MenuInteraction.stories';
 export { MenuItemsWithIcons } from './MenuMenuItemsWithIcons.stories';
