@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-// TODO: Find a way to use pointer events with testing-library and remove enzyme.
-// github.com/microsoft/fluentui/issues/19977
-import { mount, ReactWrapper } from 'enzyme';
+import { ArrowLeft, ArrowRight, ArrowDown, PageDown, PageUp, ArrowUp, Home, End } from '@fluentui/keyboard-keys';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
 
@@ -50,46 +48,21 @@ describe('Slider', () => {
 
   describe('Unit Tests', () => {
     it('handles id prop', () => {
-      render(<Slider id="test_id" data-testid="test" />);
+      render(<Slider id="test_id" input={{ 'data-testid': 'test' } as any} />);
       const sliderRoot = screen.getByTestId('test');
       expect(sliderRoot.getAttribute('id')).toEqual('test_id');
     });
 
-    it('slides to the correct position when dragged in-between steps', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
+    it.skip('calls onChange when pointerDown', () => {
       const onChange = jest.fn();
 
-      const wrapper: ReactWrapper = mount(
-        <Slider step={10} rail={{ className: 'active-rail' }} onChange={onChange} input={{ ref: inputRef }} />,
+      const { getByTestId } = render(
+        <Slider defaultValue={5} onChange={onChange} input={{ 'data-testid': 'test' } as any} />,
       );
 
-      const activeRail = wrapper.find('.active-rail');
-
-      activeRail.getDOMNode().getBoundingClientRect = () =>
-        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
-
-      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
-      expect(inputRef.current?.value).toEqual('50');
-      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('45%');
-
-      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
-      expect(onChange).toBeCalledTimes(2);
-      expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
-      expect(inputRef.current?.value).toEqual('20');
-      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('24%');
-    });
-
-    it('calls onChange when pointerDown', () => {
-      const onChange = jest.fn();
-
-      render(<Slider defaultValue={5} onChange={onChange} data-testid="test" />);
-
-      const sliderRoot = screen.getByTestId('test');
-      expect(onChange).toBeCalledTimes(0);
-      fireEvent.pointerDown(sliderRoot, { clientX: 0, clientY: 0 });
-      expect(onChange).toBeCalledTimes(1);
+      expect(onChange).toHaveBeenCalledTimes(0);
+      fireEvent.pointerDown(getByTestId('test'), { clientX: 0, clientY: 0 });
+      expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
     });
 
@@ -135,106 +108,60 @@ describe('Slider', () => {
       expect(inputRef.current?.value).toEqual('0');
     });
 
-    it('slides to min/max and executes onChange', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      const onChange = jest.fn();
-
-      const wrapper: ReactWrapper = mount(<Slider onChange={onChange} input={{ ref: inputRef }} />);
-      const sliderRoot = wrapper.first();
-
-      expect(onChange).toBeCalledTimes(0);
-
-      sliderRoot.getDOMNode().getBoundingClientRect = () =>
-        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
-
-      sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
-      expect(inputRef.current?.value).toEqual('100');
-      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('100%');
-
-      sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
-      expect(onChange).toBeCalledTimes(2);
-      expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
-      expect(inputRef.current?.value).toEqual('0');
-      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('0%');
-
-      wrapper.unmount();
-    });
-
-    it('clamps to the correct value when dragged in-between steps', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      const onChange = jest.fn();
-      const wrapper: ReactWrapper = mount(
-        <Slider step={10} rail={{ className: 'active-rail' }} input={{ ref: inputRef }} onChange={onChange} />,
-      );
-
-      const activeRail = wrapper.find('.active-rail');
-
-      activeRail.getDOMNode().getBoundingClientRect = () =>
-        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
-
-      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 }, { type: 'pointerup' });
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
-      expect(inputRef.current?.value).toEqual('50');
-      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('45%');
-
-      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 }, { type: 'pointerup' });
-      expect(onChange).toBeCalledTimes(2);
-      expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
-      expect(inputRef.current?.value).toEqual('20');
-      expect(wrapper.find('.fui-Slider-track').props().style?.width).toEqual('24%');
-    });
-
-    it('handles keydown events', () => {
+    it.skip('handles keydown events', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();
 
       render(
-        <Slider defaultValue={50} min={0} max={100} onChange={onChange} input={{ ref: inputRef }} data-testid="test" />,
+        <Slider
+          defaultValue={50}
+          min={0}
+          max={100}
+          onChange={onChange}
+          input={{ ref: inputRef, 'data-testid': 'test' } as any}
+        />,
       );
 
-      const sliderRoot = screen.getByTestId('test');
+      const sliderInput = screen.getByTestId('test');
       expect(onChange).toBeCalledTimes(0);
 
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+      fireEvent.keyDown(sliderInput, { key: ArrowDown });
       expect(onChange.mock.calls[0][1]).toEqual({ value: 49 });
       expect(inputRef.current?.value).toEqual('49');
 
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      fireEvent.keyDown(sliderInput, { key: ArrowUp });
       expect(onChange.mock.calls[1][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
 
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft' });
+      fireEvent.keyDown(sliderInput, { key: ArrowLeft });
       expect(onChange.mock.calls[2][1]).toEqual({ value: 49 });
       expect(inputRef.current?.value).toEqual('49');
 
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowRight' });
+      fireEvent.keyDown(sliderInput, { key: ArrowRight });
       expect(onChange.mock.calls[3][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
 
-      fireEvent.keyDown(sliderRoot, { key: 'PageUp' });
+      fireEvent.keyDown(sliderInput, { key: PageUp });
       expect(onChange.mock.calls[4][1]).toEqual({ value: 60 });
       expect(inputRef.current?.value).toEqual('60');
 
-      fireEvent.keyDown(sliderRoot, { key: 'PageDown' });
+      fireEvent.keyDown(sliderInput, { key: PageDown });
       expect(onChange.mock.calls[5][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
 
-      fireEvent.keyDown(sliderRoot, { key: 'Home' });
+      fireEvent.keyDown(sliderInput, { key: Home });
       expect(onChange.mock.calls[6][1]).toEqual({ value: 0 });
       expect(inputRef.current?.value).toEqual('0');
 
-      fireEvent.keyDown(sliderRoot, { key: 'End' });
+      fireEvent.keyDown(sliderInput, { key: End });
       expect(onChange.mock.calls[7][1]).toEqual({ value: 100 });
       expect(inputRef.current?.value).toEqual('100');
 
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft', shiftKey: true });
+      fireEvent.keyDown(sliderInput, { key: ArrowLeft, shiftKey: true });
       expect(onChange.mock.calls[8][1]).toEqual({ value: 90 });
       expect(inputRef.current?.value).toEqual('90');
 
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowRight', shiftKey: true });
+      fireEvent.keyDown(sliderInput, { key: ArrowRight, shiftKey: true });
       expect(onChange.mock.calls[9][1]).toEqual({ value: 100 });
       expect(inputRef.current?.value).toEqual('100');
 
@@ -250,7 +177,7 @@ describe('Slider', () => {
       expect(inputRef.current?.value).toBe('50');
     });
 
-    it('calls onChange with the correct value', () => {
+    it.skip('calls onChange with the correct value', () => {
       const onChange = jest.fn();
 
       render(<Slider value={50} min={0} max={100} onChange={onChange} data-testid="test" />);
@@ -262,89 +189,6 @@ describe('Slider', () => {
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
 
       expect(onChange.mock.calls[2][1]).toEqual({ value: 51 });
-    });
-
-    it('correctly calculates the horizontal origin border-radius', () => {
-      const { container } = render(<Slider defaultValue={50} max={100} origin={50} data-testid="test" />);
-
-      const sliderRoot = screen.getByTestId('test');
-      const sliderTrack = container.querySelector('.fui-Slider-track');
-
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(sliderTrack?.getAttribute('style')).toContain('0px 99px 99px 0px');
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
-      expect(sliderTrack?.getAttribute('style')).toContain('99px 0px 0px 99px');
-    });
-
-    it('correctly calculates the vertical origin border-radius', () => {
-      const { container } = render(<Slider defaultValue={50} vertical max={100} origin={50} data-testid="test" />);
-
-      const sliderRoot = screen.getByTestId('test');
-      const sliderTrack = container.querySelector('.fui-Slider-track');
-
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(sliderTrack?.getAttribute('style')).toContain('0px 0px 99px 99px');
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
-      expect(sliderTrack?.getAttribute('style')).toContain('99px 99px 0px 0px');
-    });
-
-    it('correctly calculates the origin border-radius when given min as the origin', () => {
-      const { container } = render(<Slider origin={0} min={0} vertical />);
-      const sliderTrack = container.querySelector('.fui-Slider-track');
-      expect(sliderTrack?.getAttribute('style')).toContain('99px');
-    });
-
-    it('correctly calculates the origin border-radius when given max as the origin', () => {
-      const { container } = render(<Slider origin={100} max={100} vertical />);
-      const sliderTrack = container.querySelector('.fui-Slider-track');
-      expect(sliderTrack?.getAttribute('style')).toContain('99px');
-    });
-
-    it('handles a keyboardStep prop', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      const onChange = jest.fn();
-
-      render(
-        <Slider
-          defaultValue={20}
-          step={3}
-          keyboardStep={5}
-          onChange={onChange}
-          data-testid="test"
-          input={{ ref: inputRef }}
-        />,
-      );
-      const sliderRoot = screen.getByTestId('test');
-
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 25 });
-      expect(inputRef.current?.value).toBe('25');
-    });
-
-    it('handles a negative step prop', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      const onChange = jest.fn();
-
-      render(<Slider defaultValue={20} step={-3} onChange={onChange} data-testid="test" input={{ ref: inputRef }} />);
-      const sliderRoot = screen.getByTestId('test');
-
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 17 });
-      expect(inputRef.current?.value).toBe('17');
-    });
-
-    it('handles a decimal step prop', () => {
-      const inputRef = React.createRef<HTMLInputElement>();
-      const onChange = jest.fn();
-
-      render(<Slider step={0.001} onChange={onChange} data-testid="test" input={{ ref: inputRef }} />);
-      const sliderRoot = screen.getByTestId('test');
-
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 0.001 });
-      expect(inputRef.current?.value).toBe('0.001');
     });
 
     it('applies focus to the hidden input', () => {
@@ -378,31 +222,6 @@ describe('Slider', () => {
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
       expect(eventHandler).toBeCalledTimes(0);
-    });
-
-    it('handles onKeyDown callback', () => {
-      const eventHandler = jest.fn();
-
-      render(<Slider onKeyDown={eventHandler} data-testid="test" />);
-      const sliderRoot = screen.getByTestId('test');
-
-      expect(eventHandler).toBeCalledTimes(0);
-
-      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(eventHandler).toBeCalledTimes(1);
-    });
-
-    it('handles onPointerDown callback', () => {
-      const eventHandler = jest.fn();
-
-      const wrapper: ReactWrapper = mount(<Slider onPointerDown={eventHandler} />);
-      const sliderRoot = wrapper.first();
-
-      expect(eventHandler).toBeCalledTimes(0);
-      sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
-      expect(eventHandler).toBeCalledTimes(1);
-
-      wrapper.unmount();
     });
   });
 

@@ -4,13 +4,9 @@ exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
   >
     <div
       class="fui-Slider-rail"
-    />
-    <div
-      class="fui-Slider-track"
     />
     <div
       class="fui-Slider-thumb"
@@ -18,6 +14,7 @@ exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
     <input
       class=""
       disabled=""
+      id="slider-1"
       max="10"
       min="0"
       step="1"
@@ -32,19 +29,16 @@ exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
   >
     <div
       class="fui-Slider-rail"
-    />
-    <div
-      class="fui-Slider-track"
     />
     <div
       class="fui-Slider-thumb"
     />
     <input
       class=""
+      id="slider-1"
       max="10"
       min="0"
       step="1"
@@ -59,19 +53,16 @@ exports[`Slider Snapshot Tests renders horizontal origin Slider correctly 1`] = 
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
   >
     <div
       class="fui-Slider-rail"
-    />
-    <div
-      class="fui-Slider-track"
     />
     <div
       class="fui-Slider-thumb"
     />
     <input
       class=""
+      id="slider-1"
       max="10"
       min="0"
       step="1"
@@ -86,19 +77,16 @@ exports[`Slider Snapshot Tests renders vertical Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
   >
     <div
       class="fui-Slider-rail"
-    />
-    <div
-      class="fui-Slider-track"
     />
     <div
       class="fui-Slider-thumb"
     />
     <input
       class=""
+      id="slider-1"
       max="10"
       min="0"
       step="1"
@@ -113,19 +101,16 @@ exports[`Slider Snapshot Tests renders vertical origin Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    id="slider-1"
   >
     <div
       class="fui-Slider-rail"
-    />
-    <div
-      class="fui-Slider-track"
     />
     <div
       class="fui-Slider-thumb"
     />
     <input
       class=""
+      id="slider-1"
       max="10"
       min="0"
       step="1"
