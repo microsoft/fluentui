@@ -1,0 +1,34 @@
+import { stripIndents } from '@nrwl/devkit';
+import * as os from 'os';
+
+export const npmignore =
+  stripIndents`
+  .storybook/
+  .vscode/
+  bundle-size/
+  config/
+  coverage/
+  e2e/
+  etc/
+  node_modules/
+  src/
+  temp/
+  __fixtures__
+  __mocks__
+  __tests__
+
+  *.api.json
+  *.log
+  *.spec.*
+  *.stories.*
+  *.test.*
+  *.yml
+
+  # config files
+  *config.*
+  *rc.*
+  .editorconfig
+  .eslint*
+  .git*
+  .prettierignore
+` + os.EOL;

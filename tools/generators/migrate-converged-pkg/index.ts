@@ -1,41 +1,25 @@
-import {
-  Tree,
-  formatFiles,
-  updateJson,
-  readProjectConfiguration,
-  readWorkspaceConfiguration,
-  joinPathFragments,
-  readJson,
-  stripIndents,
-  visitNotIgnoredFiles,
-  logger,
-  writeJson,
-  updateProjectConfiguration,
-  serializeJson,
-} from '@nrwl/devkit';
-import * as path from 'path';
-import * as os from 'os';
+import { Tree, formatFiles, readProjectConfiguration, joinPathFragments, readJson, logger } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
-import {
-  arePromptsEnabled,
-  getProjectConfig,
-  getProjects,
-  printUserLogs,
-  prompt,
-  updateJestConfig,
-  UserLog,
-} from '../../utils';
+import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
+import { AssertedSchema, NormalizedSchema } from './types';
+import {
+  updateApiExtractorForLocalBuilds,
+  updateBabel,
+  updateBaseTsConfig,
+  updateE2E,
+  updateLocalJestConfig,
+  updateLocalTsConfig,
+  updateNpmIgnore,
+  updateNpmScripts,
+  updateNxWorkspace,
+  updateRootJestConfig,
+  updateStorybook,
+} from './updaters';
 
 interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
-
-interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
-  name: string;
-}
-
-interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
   const userLog: UserLog = [];
@@ -50,9 +34,7 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 
   if (hasSchemaFlag(validatedSchema, 'all')) {
     runBatchMigration(tree, userLog);
-  }
-
-  if (hasSchemaFlag(validatedSchema, 'name')) {
+  } else if (hasSchemaFlag(validatedSchema, 'name')) {
     const projectNames = validatedSchema.name.split(',').filter(Boolean);
 
     if (projectNames.length > 1) {
@@ -85,238 +67,26 @@ function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]
 function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
-  // 1. update TsConfigs
-  updatedLocalTsConfig(tree, options);
-  updatedBaseTsConfig(tree, options);
+  updateLocalTsConfig(tree, options);
+  updateBaseTsConfig(tree, options);
 
-  // 2. update Jest
   updateLocalJestConfig(tree, options);
   updateRootJestConfig(tree, options);
 
-  // update package npm scripts
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
 
-  // setup storybook
-  setupStorybook(tree, options);
+  updateStorybook(tree, options);
 
-  setupE2E(tree, options);
+  updateE2E(tree, options);
 
-  setupNpmIgnoreConfig(tree, options);
-  setupBabel(tree, options);
+  updateNpmIgnore(tree, options);
+  updateBabel(tree, options);
 
   updateNxWorkspace(tree, options);
 }
 
-// ==== helpers ====
-
-const templates = {
-  apiExtractorLocal: {
-    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
-  },
-  apiExtractor: {
-    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: '@fluentui/scripts/api-extractor/api-extractor.common.json',
-  },
-  tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
-    return {
-      main: () => {
-        const tsConfig = {
-          extends: '../../tsconfig.base.json',
-          compilerOptions: {
-            target: 'ES2019',
-            // by default we gonna use tsc for type checking only
-            noEmit: true,
-            isolatedModules: true,
-            importHelpers: true,
-            jsx: 'react',
-            noUnusedLocals: true,
-            preserveConstEnums: true,
-          } as TsConfig['compilerOptions'],
-          include: [],
-          files: [],
-          references: [
-            {
-              path: './tsconfig.lib.json',
-            },
-            {
-              path: './tsconfig.spec.json',
-            },
-          ],
-        };
-
-        if (options.js) {
-          tsConfig.compilerOptions.allowJs = true;
-          tsConfig.compilerOptions.checkJs = true;
-          delete tsConfig.compilerOptions.preserveConstEnums;
-        }
-
-        return tsConfig;
-      },
-      lib: () => {
-        const tsConfig = {
-          extends: './tsconfig.json',
-          compilerOptions: {
-            noEmit: false,
-            lib: ['ES2019'],
-            outDir: 'dist',
-            declaration: true,
-            types: ['static-assets', 'environment'],
-          } as TsConfig['compilerOptions'],
-          exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
-          include: ['./src/**/*.ts', './src/**/*.tsx'],
-        };
-
-        if (options.platform === 'node') {
-          tsConfig.compilerOptions.module = 'CommonJS';
-        }
-        if (options.platform === 'web') {
-          tsConfig.compilerOptions.lib?.push('dom');
-          tsConfig.compilerOptions.types?.push('inline-style-expand-shorthand');
-        }
-        if (options.hasConformance) {
-          tsConfig.exclude.unshift('./src/common/**');
-        }
-        if (options.js) {
-          tsConfig.include = globsToJs(tsConfig.include);
-          tsConfig.exclude = globsToJs(tsConfig.exclude);
-        }
-
-        return tsConfig;
-      },
-      test: () => {
-        const tsConfig = {
-          extends: './tsconfig.json',
-          compilerOptions: {
-            module: 'CommonJS',
-            outDir: 'dist',
-            types: ['jest', 'node', 'inline-style-expand-shorthand'],
-          } as TsConfig['compilerOptions'],
-          include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
-        };
-
-        if (options.js) {
-          tsConfig.include = globsToJs(tsConfig.include);
-        }
-
-        return tsConfig;
-      },
-    };
-  },
-  babelConfig: (options: { extraPlugins: Array<string> }) => {
-    return {
-      plugins: [...options.extraPlugins, 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
-    };
-  },
-  jestSetup: stripIndents`
-   /** Jest test setup file. */
-  `,
-  jest: (options: { pkgName: string; addSnapshotSerializers: boolean; testSetupFilePath: string }) => stripIndents`
-      // @ts-check
-
-      /**
-      * @type {jest.InitialOptions}
-      */
-      module.exports = {
-        displayName: '${options.pkgName}',
-        preset: '../../jest.preset.js',
-        globals: {
-          'ts-jest': {
-            tsConfig: '<rootDir>/tsconfig.spec.json',
-            diagnostics: false,
-          },
-        },
-        transform: {
-          '^.+\\.tsx?$': 'ts-jest',
-        },
-        coverageDirectory: './coverage',
-        setupFilesAfterEnv: ['${options.testSetupFilePath}'],
-        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],` : ''}
-      };
-  `,
-  storybook: {
-    main: stripIndents`
-      const rootMain = require('../../../.storybook/main');
-
-      module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
-        ...rootMain,
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
-        addons: [...rootMain.addons],
-        webpackFinal: (config, options) => {
-          const localConfig = { ...rootMain.webpackFinal(config, options) };
-
-          // add your own webpack tweaks if needed
-
-          return localConfig;
-        },
-      });
-    `,
-    preview: stripIndents`
-      import * as rootPreview from '../../../.storybook/preview';
-
-      /** @type {typeof rootPreview.decorators} */
-      export const decorators = [...rootPreview.decorators];
-
-      /** @type {typeof rootPreview.parameters} */
-      export const parameters = { ...rootPreview.parameters };
-    `,
-    tsconfig: {
-      extends: '../tsconfig.json',
-      compilerOptions: {
-        outDir: '',
-        allowJs: true,
-        checkJs: true,
-      },
-      include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
-    },
-  },
-  e2e: {
-    tsconfig: {
-      extends: '../tsconfig.json',
-      compilerOptions: {
-        isolatedModules: false,
-        types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
-        lib: ['ES2019', 'dom'],
-      },
-      include: ['**/*.ts'],
-    },
-  },
-  npmIgnoreConfig:
-    stripIndents`
-    .storybook/
-    .vscode/
-    bundle-size/
-    config/
-    coverage/
-    e2e/
-    etc/
-    node_modules/
-    src/
-    temp/
-    __fixtures__
-    __mocks__
-    __tests__
-
-    *.api.json
-    *.log
-    *.spec.*
-    *.stories.*
-    *.test.*
-    *.yml
-
-    # config files
-    *config.*
-    *rc.*
-    .editorconfig
-    .eslint*
-    .git*
-    .prettierignore
-  ` + os.EOL,
-};
-
-function normalizeOptions(host: Tree, options: AssertedSchema) {
+function normalizeOptions(host: Tree, options: AssertedSchema): NormalizedSchema {
   const defaults = {};
   const project = getProjectConfig(host, { packageName: options.name });
 
@@ -324,10 +94,6 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
     ...defaults,
     ...options,
     ...project,
-
-    /**
-     * package name without npmScope (@scopeName)
-     */
     normalizedPkgName: options.name.replace(`@${project.workspaceConfig.npmScope}/`, ''),
   };
 }
@@ -389,7 +155,7 @@ async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSc
     });
   }
 
-  return newSchema;
+  return newSchema as AssertedSchema;
 }
 
 async function triggerDynamicPrompts() {
@@ -451,434 +217,4 @@ function isProjectMigrated<T extends ProjectConfiguration>(
   );
   // eslint-disable-next-line eqeqeq
   return project.sourceRoot != null && Boolean(project.tags?.includes('vNext')) && hasTsSolutionConfigSetup;
-}
-
-function getPackageType(tree: Tree, options: NormalizedSchema) {
-  const tags = options.projectConfig.tags || [];
-
-  const pkgJson: PackageJson = readJson(tree, options.paths.packageJson);
-  const scripts = pkgJson.scripts || {};
-  const isNode =
-    tags.includes('platform:node') ||
-    Boolean(pkgJson.bin) ||
-    (scripts.build && scripts.build === 'just-scripts build --commonjs');
-  const isWeb = tags.includes('platform:web') || !isNode;
-
-  if (isNode) {
-    return 'node';
-  }
-
-  if (isWeb) {
-    return 'web';
-  }
-
-  throw new Error('Unable to determine type of package (web or node)');
-}
-
-function isJs(tree: Tree, options: NormalizedSchema) {
-  const jsSourceFiles: string[] = [];
-  visitNotIgnoredFiles(tree, options.paths.sourceRoot, treePath => {
-    if (treePath.endsWith('.js') || treePath.endsWith('.jsx')) {
-      jsSourceFiles.push(treePath);
-    }
-  });
-
-  return jsSourceFiles.length > 0;
-}
-
-function hasConformanceSetup(tree: Tree, options: NormalizedSchema) {
-  return tree.exists(options.paths.conformanceSetup);
-}
-
-function uniqueArray<T extends unknown>(value: T[]) {
-  return Array.from(new Set(value));
-}
-
-function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
-  const packageType = getPackageType(tree, options);
-  const tags = {
-    web: 'platform:web',
-    node: 'platform:node',
-  };
-  updateProjectConfiguration(tree, options.name, {
-    ...options.projectConfig,
-    sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
-    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
-  });
-
-  return tree;
-}
-
-function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
-
-  return tree;
-}
-
-function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
-  /* eslint-disable @fluentui/max-len */
-  const scripts = {
-    docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'start-storybook',
-    start: 'yarn storybook',
-    test: 'jest --passWithNoTests',
-    'type-check': 'tsc -b tsconfig.json',
-  };
-  /* eslint-enable @fluentui/max-len */
-
-  updateJson(tree, options.paths.packageJson, json => {
-    delete json.scripts['update-snapshots'];
-    delete json.scripts['start-test'];
-    delete json.scripts['test:watch'];
-
-    Object.assign(json.scripts, scripts);
-
-    if (getPackageType(tree, options) === 'node') {
-      delete json.scripts.start;
-      delete json.scripts.storybook;
-    }
-
-    return json;
-  });
-
-  return tree;
-}
-
-function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema) {
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractorLocal);
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), templates.apiExtractor);
-
-  return tree;
-}
-
-function setupStorybook(tree: Tree, options: NormalizedSchema) {
-  function transformRelativePath(_path: string) {
-    return joinPathFragments('..', _path);
-  }
-
-  const sbAction = shouldSetupStorybook(tree, options);
-
-  const template = {
-    projectReferences: { path: './.storybook/tsconfig.json' },
-    exclude: ['**/*.stories.ts', '**/*.stories.tsx'],
-  };
-
-  const js = isJs(tree, options);
-
-  if (sbAction === 'init') {
-    tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
-    tree.write(options.paths.storybook.main, templates.storybook.main);
-    tree.write(options.paths.storybook.preview, templates.storybook.preview);
-
-    const libTsConfig: TsConfig = readJson(tree, options.paths.tsconfig.lib);
-
-    updateJson(tree, options.paths.storybook.tsconfig, (json: TsConfig) => {
-      json.compilerOptions.types = json.compilerOptions.types || [];
-
-      json.compilerOptions.types.push(...(libTsConfig.compilerOptions.types || []), 'storybook__addons');
-      json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
-
-      return json;
-    });
-
-    // update main ts with project references
-    updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
-      json.references = json.references || [];
-
-      json.references.push(template.projectReferences);
-
-      return json;
-    });
-
-    // update lib ts with new exclude globs
-    updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
-      json.exclude = json.exclude || [];
-
-      json.exclude.push(...template.exclude);
-
-      if (js) {
-        json.exclude = globsToJs(json.exclude);
-      }
-
-      json.exclude = uniqueArray(json.exclude);
-
-      return json;
-    });
-
-    removeTsIgnorePragmas();
-  }
-
-  if (sbAction === 'remove') {
-    tree.delete(options.paths.storybook.rootFolder);
-    updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
-      json.scripts = json.scripts || {};
-
-      delete json.scripts.start;
-      delete json.scripts.storybook;
-      delete json.scripts['build-storybook'];
-
-      return json;
-    });
-
-    // update main ts with project references
-    updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
-      json.references = json.references || [];
-
-      json.references = json.references.filter(projectRef => projectRef.path !== template.projectReferences.path);
-
-      return json;
-    });
-
-    // update lib ts with new exclude globs
-    updateJson(tree, options.paths.tsconfig.lib, (json: TsConfig) => {
-      const excludeGlobs = js ? globsToJs(template.exclude) : template.exclude;
-      json.exclude = (json.exclude || []).filter(excludeGlob => {
-        return !excludeGlobs.includes(excludeGlob);
-      });
-
-      return json;
-    });
-  }
-
-  function removeTsIgnorePragmas() {
-    const stories: string[] = [];
-    visitNotIgnoredFiles(tree, options.paths.sourceRoot, treePath => {
-      if (treePath.includes('.stories.')) {
-        stories.push(treePath);
-      }
-    });
-
-    stories.forEach(storyPath => {
-      const content = tree.read(storyPath)?.toString('utf-8');
-
-      if (!content) {
-        throw new Error('story file has no code');
-      }
-
-      let updatedContent = content.replace(/\/\/\s+@ts-ignore/g, '');
-      updatedContent = updatedContent.replace(
-        /\/\/\s+eslint-disable-next-line\s+@typescript-eslint\/ban-ts-comment/g,
-        '',
-      );
-      updatedContent = updatedContent.replace(
-        /\/\/\s+https:\/\/github\.com\/microsoft\/fluentui\/pull\/18695#issuecomment-868432982/g,
-        '',
-      );
-
-      tree.write(storyPath, updatedContent);
-    });
-
-    return tree;
-  }
-
-  return tree;
-}
-
-function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
-  const hasStorybookConfig = tree.exists(options.paths.storybook.main);
-  let hasStories = false;
-
-  visitNotIgnoredFiles(tree, options.projectConfig.root, treePath => {
-    if (treePath.includes('.stories.')) {
-      hasStories = true;
-      return;
-    }
-  });
-
-  const tags = options.projectConfig.tags || [];
-  const hasTags = tags.includes('vNext') && tags.includes('platform:web');
-
-  const shouldInit = hasStories || hasTags;
-  const shouldDelete = !shouldInit && hasStorybookConfig;
-
-  if (shouldInit) {
-    return 'init';
-  }
-
-  if (shouldDelete) {
-    return 'remove';
-  }
-}
-
-function setupE2E(tree: Tree, options: NormalizedSchema) {
-  if (!shouldSetupE2E(tree, options)) {
-    return tree;
-  }
-
-  tree.rename(joinPathFragments(options.paths.e2e.rootFolder, 'tsconfig.json'), options.paths.e2e.tsconfig);
-
-  writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
-
-  updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
-    json.references?.push({
-      path: `./${path.basename(options.paths.e2e.rootFolder)}/${path.basename(options.paths.e2e.tsconfig)}`,
-    });
-
-    return json;
-  });
-
-  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
-    json.scripts = json.scripts ?? {};
-    json.scripts.e2e = 'e2e';
-
-    return json;
-  });
-
-  return tree;
-}
-
-function shouldSetupE2E(tree: Tree, options: NormalizedSchema) {
-  return (
-    tree.exists(joinPathFragments(options.paths.e2e.rootFolder, 'tsconfig.json')) ||
-    tree.exists(options.paths.e2e.tsconfig)
-  );
-}
-
-function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
-  const jestSetupFilePath = options.paths.jestSetupFile;
-  const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
-
-  const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
-  packageJson.dependencies = packageJson.dependencies ?? {};
-
-  const config = {
-    pkgName: options.normalizedPkgName,
-    addSnapshotSerializers: Object.keys(packageJson.dependencies).some(pkgDepName =>
-      packagesThatTriggerAddingSnapshots.includes(pkgDepName),
-    ),
-    testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
-  };
-
-  tree.write(options.paths.jestConfig, templates.jest(config));
-
-  if (!tree.exists(jestSetupFilePath)) {
-    tree.write(jestSetupFilePath, templates.jestSetup);
-  }
-
-  return tree;
-}
-
-function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
-  updateJestConfig(tree, { project: options.name });
-
-  return tree;
-}
-
-function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
-  createTsSolutionConfig(tree, options);
-
-  updateTsGlobalTypes(tree, options);
-
-  return tree;
-}
-
-function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
-  const packageType = getPackageType(tree, options);
-  const js = isJs(tree, options);
-  const hasConformance = hasConformanceSetup(tree, options);
-
-  const tsConfigs = templates.tsconfig({ platform: packageType, js, hasConformance });
-  writeJson(tree, options.paths.tsconfig.main, tsConfigs.main());
-  writeJson(tree, options.paths.tsconfig.lib, tsConfigs.lib());
-  writeJson(tree, options.paths.tsconfig.test, tsConfigs.test());
-
-  return tree;
-}
-
-function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
-  // update test TS config
-  updateJson(tree, options.paths.tsconfig.test, (json: TsConfig) => {
-    if (tree.exists(options.paths.jestSetupFile)) {
-      const jestSetupFile = tree.read(options.paths.jestSetupFile)?.toString('utf-8')!;
-
-      if (jestSetupFile.includes(`require('@testing-library/jest-dom')`)) {
-        json.compilerOptions.types = json.compilerOptions.types ?? [];
-        json.compilerOptions.types.push('@testing-library/jest-dom');
-      }
-    }
-
-    if (Array.isArray(json.compilerOptions.types)) {
-      json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
-    }
-
-    return json;
-  });
-
-  // update lib TS config
-  // put your code here
-
-  // update main TS config
-  // put your code here
-
-  return tree;
-}
-
-function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
-  const publishedNpmScope = `@${workspaceConfig.npmScope}`;
-  const allProjects = getProjects(tree);
-
-  const projectPkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
-  const rootPkgJson = readJson<PackageJson>(tree, options.paths.rootPackageJson);
-  const rootPkgDevDependencies = rootPkgJson.devDependencies || {};
-
-  const depsThatNeedToBecomeAliases = Object.keys(projectPkgJson.dependencies ?? {})
-    .filter(pkgName => {
-      return pkgName.startsWith(publishedNpmScope) && !rootPkgDevDependencies[pkgName];
-    })
-    .reduce((acc, pkgName) => {
-      acc[pkgName] = [`${allProjects.get(pkgName)?.root}/src/index.ts`];
-
-      return acc;
-    }, {} as Required<Pick<TsConfig['compilerOptions'], 'paths'>>['paths']);
-
-  updateJson<TsConfig, TsConfig>(tree, options.paths.rootTsconfig, json => {
-    json.compilerOptions.paths = json.compilerOptions.paths ?? {};
-    json.compilerOptions.paths[options.name] = [`${options.projectConfig.root}/src/index.ts`];
-
-    Object.assign(json.compilerOptions.paths, depsThatNeedToBecomeAliases);
-
-    return json;
-  });
-}
-
-function setupBabel(tree: Tree, options: NormalizedSchema) {
-  const currentProjectNpmScope = `@${options.workspaceConfig.npmScope}`;
-  const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
-  pkgJson.dependencies = pkgJson.dependencies || {};
-  pkgJson.devDependencies = pkgJson.devDependencies || {};
-
-  const shouldAddMakeStylesPlugin =
-    !options.name.includes('make-styles') &&
-    (pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
-      pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`]);
-
-  const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
-
-  const config = templates.babelConfig({ extraPlugins });
-
-  const babelMakeStylesProjectName = `${currentProjectNpmScope}/babel-make-styles`;
-  if (shouldAddMakeStylesPlugin) {
-    const babelMakeStylesProject = getProjectConfig(tree, { packageName: babelMakeStylesProjectName });
-    const babelMakeStylesPkgJson: PackageJson = readJson(tree, babelMakeStylesProject.paths.packageJson);
-    pkgJson.devDependencies[babelMakeStylesProjectName] = `${babelMakeStylesPkgJson.version}`;
-  } else {
-    delete pkgJson.devDependencies[babelMakeStylesProjectName];
-  }
-
-  tree.write(options.paths.babelConfig, serializeJson(config));
-  writeJson(tree, options.paths.packageJson, pkgJson);
-
-  return tree;
-}
-
-function globsToJs(tsConfigGlob: string[]) {
-  return tsConfigGlob.map(glob => {
-    if (glob.endsWith('.d.ts')) {
-      return glob;
-    }
-
-    return glob.replace(/\.ts(x)?$/, '.js$1');
-  });
 }

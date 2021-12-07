@@ -1,0 +1,5 @@
+export const apiExtractorLocal = {
+  $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+  extends: './api-extractor.json',
+  mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
+};
