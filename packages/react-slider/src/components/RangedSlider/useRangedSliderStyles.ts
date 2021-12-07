@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import {
   thumbClassName,
   trackClassName,
@@ -27,8 +27,8 @@ const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',
-    padding: 0,
-    margin: 0,
+    ...shorthands.padding(0),
+    ...shorthands.margin(0),
     width: '0px',
     height: '0px',
     pointerEvents: 'none',
@@ -39,9 +39,9 @@ const useInputStyles = makeStyles({
       // TODO: Update this to [`& + .${lowerThumbClassName}`]
       '& + .fui-Slider-thumb-lower': {
         ':before': {
-          outline: 'none',
+          outlineStyle: 'none',
           boxSizing: 'border-box',
-          border: 'calc(var(--slider-thumb-size) * .05) solid black',
+          ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', 'black'),
         },
       },
     }),
@@ -53,9 +53,9 @@ const useInputStyles = makeStyles({
       // TODO: Update this to [`& + .${upperThumbClassName}`]
       '& + .fui-Slider-thumb-upper': {
         ':before': {
-          outline: 'none',
+          outlineStyle: 'none',
           boxSizing: 'border-box',
-          border: 'calc(var(--slider-thumb-size) * .05) solid black',
+          ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', 'black'),
         },
       },
     }),
