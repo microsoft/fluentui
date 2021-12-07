@@ -100,8 +100,6 @@ interface SliderOnChangeData {
   value: number;
 }
 
-type SlotProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue'>;
-
-export type SliderProps = SlotProps & SliderCommons;
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue'> & SliderCommons;
 
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
