@@ -38,7 +38,7 @@ This leads to a fairly confusing and difficult to navigate repo. In particular w
 ### Pros and Cons
 
 Pros:
-- Better organization of repo, more clear for contributors
+- Better organization of repo, clearer for contributors
 - Improves the scale of the repo, could allow more projects in the future, or at least makes working with the projects we have more pleasant
 
 Cons:
