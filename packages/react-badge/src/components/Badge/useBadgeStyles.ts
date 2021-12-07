@@ -177,7 +177,7 @@ const useStyles = makeStyles({
   }),
   rootOutlineInformative: theme => ({
     color: theme.colorNeutralForeground3,
-    ...shorthands.borderColor(theme.colorNeutralStrokeAccessible),
+    ...shorthands.borderColor(theme.colorNeutralStroke2),
   }),
   rootTintInformative: theme => ({
     backgroundColor: theme.colorNeutralBackground4,
