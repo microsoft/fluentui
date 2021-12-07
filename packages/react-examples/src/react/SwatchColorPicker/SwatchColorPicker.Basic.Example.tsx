@@ -34,7 +34,7 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      <div id={`${baseId}-square`}>Simple circle swatch color picker:</div>
+      <div id={`${baseId}-circle`}>Simple circle swatch color picker:</div>
       <SwatchColorPicker
         columnCount={5}
         cellShape={'circle'}
