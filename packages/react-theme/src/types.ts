@@ -700,7 +700,9 @@ export type ColorVariants = {
   tint60: string;
 };
 
-export type BrandVariants = ColorVariants & { shade60: string };
+export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160;
+
+export type BrandVariants = Record<Brands, string>;
 
 /**
  * All the global shared colors and their shade/tint variants
@@ -852,36 +854,6 @@ export type ShadowBrandTokens = {
   shadow16Brand: string;
   shadow28Brand: string;
   shadow64Brand: string;
-};
-
-export type GhostColorTokens = {
-  ghostBackground: string;
-  ghostBackgroundHover: string;
-  ghostBackgroundPressed: string;
-  ghostBackgroundSelected: string;
-};
-
-export type TransparentColorTokens = {
-  transparentBackground: string;
-  transparentBackgroundHover: string;
-  transparentBackgroundPressed: string;
-  transparentBackgroundSelected: string;
-};
-
-export type BackgroundColorTokens = {
-  background: string;
-  backgroundHover: string;
-  backgroundPressed: string;
-  backgroundSelected: string;
-};
-
-export type BrandColorTokens = {
-  brandBackground: string;
-  brandBackgroundHover: string;
-  brandBackgroundPressed: string;
-  brandBackgroundSelected: string;
-  brandBackgroundStatic: string;
-  // FIXME: the rest is unclear in the spec
 };
 
 export type Greys =
