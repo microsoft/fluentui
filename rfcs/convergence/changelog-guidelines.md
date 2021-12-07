@@ -3,7 +3,7 @@
 ## Summary
 
 This RFC proposes a set of guidelines when creating changefiles during a PR. These changefiles are directly translated
-(in most cases) to our changelog which is important for users to see what changed beteween releases of Fluent. Therefore
+(in most cases) to our changelog which is important for users to see what changed between releases of Fluent. Therefore
 this RFC proposes the following requirements for the changelog:
 
 - Changes that do not affect published code should not be in the changelog
