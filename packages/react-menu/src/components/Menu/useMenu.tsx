@@ -213,6 +213,12 @@ const useMenuOpenState = (
   }, [findPrevFocusable, state.triggerRef]);
 
   React.useEffect(() => {
+    if (open) {
+      focusFirst();
+    }
+  }, [open, focusFirst]);
+
+  React.useEffect(() => {
     if (!shouldHandleKeyboardRef.current) {
       return;
     }
