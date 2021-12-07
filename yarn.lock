@@ -1632,46 +1632,10 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/jest-serializer-make-styles@9.0.0-beta.2":
-  version "9.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/jest-serializer-make-styles/-/jest-serializer-make-styles-9.0.0-beta.2.tgz#d641de8fb50c69d25d213470acf94cb4ee096455"
-  integrity sha512-d1TNbBjBUD9wS0SkEIom1vIgYQS/9jg1ALKqaMstNnBLSzJdHJPUG38Aqi6ENbpgnzhsCMfjbAqaxqYFElnwfw==
-  dependencies:
-    "@fluentui/make-styles" "9.0.0-beta.2"
-
-"@fluentui/make-styles@9.0.0-beta.2":
-  version "9.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/make-styles/-/make-styles-9.0.0-beta.2.tgz#95d39f8eda655ad87e7500aa3ee54166cfb5c733"
-  integrity sha512-ygAxSE3kiw1i7KTka/WrebT8wlKU/ph29/DibjwgVmWjy1fCx0sJGFo2ltvc4e0W9kerqc+WjTVoL6YPxk0HSw==
-  dependencies:
-    "@emotion/hash" "^0.8.0"
-    csstype "^2.6.7"
-    inline-style-expand-shorthand "^1.2.0"
-    rtl-css-js "^1.14.1"
-    stylis "^4.0.6"
-    tslib "^2.1.0"
-
-"@fluentui/react-conformance-make-styles@9.0.0-beta.2":
-  version "9.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-conformance-make-styles/-/react-conformance-make-styles-9.0.0-beta.2.tgz#434e333815b8a3429e2135c4f27329562027f173"
-  integrity sha512-ZUv52EeFvEJTHeqbP6RNVodEkhdxQpZXtRUZOQe0N+MKT9DNLzgQ3ki2czQO0lakbMIl79FmO1cOpt6gs57mWQ==
-  dependencies:
-    "@fluentui/react-make-styles" "9.0.0-beta.2"
-    tslib "^2.1.0"
-
-"@fluentui/react-context-selector@9.0.0-beta.2":
-  version "9.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-context-selector/-/react-context-selector-9.0.0-beta.2.tgz#ab5cbc1093356384f940ab81a282ebde7aa14376"
-  integrity sha512-PSsLbjAeRp/1SJU6VZImpgcrR3kHWg/hpRsnuRKc+O1TpY22cAk4DiJ9usNhqxSM9Xp7gFcg2mKRhAKfb1c0fQ==
-  dependencies:
-    "@fluentui/react-utilities" "9.0.0-beta.2"
-    scheduler "^0.20.1"
-    tslib "^2.1.0"
-
-"@fluentui/react-icons@^2.0.152-beta.3":
-  version "2.0.152-beta.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.152-beta.3.tgz#b1b7c8c2ae131c47a850e792997e46b44604fdd6"
-  integrity sha512-RsNriRJyj+jyhFBqJerFNmRsO1KMBRhxiDPz6eAUSDFsEgaKNKxU+gmS00E9EyV10SxKX15QGQgABF/gofRYFw==
+"@fluentui/react-icons@^2.0.154-beta.5":
+  version "2.0.154-beta.5"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.154-beta.5.tgz#6266d5fa1048bf9b3bffc461dc40e02862ac5cd3"
+  integrity sha512-U+bdvX1BZELUEN5MK4BX7H35p92Kyt/M+26PWJG/gvc2KCgpfFTFedBXjABKEf1Jo8wIcQl8VWciKSkpzhUaQw==
 
 "@fluentui/react-make-styles@9.0.0-beta.2":
   version "9.0.0-beta.2"
