@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { KeyCodes } from '../../Utilities';
-import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrement } from '@fluentui/date-time-utilities';
+import {
+  TimeConstants,
+  addMinutes,
+  formatTimeString,
+  ceilMinuteToIncrement,
+  getDateFromTimeSelection,
+} from '@fluentui/date-time-utilities';
 import { ComboBox } from '../../ComboBox';
 import type { IComboBox, IComboBoxOption } from '../../ComboBox';
 import type { ITimePickerProps, ITimeRange, ITimePickerStrings } from './TimePicker.types';
@@ -43,7 +49,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
-  const defaultTime: Date = React.useMemo(() => generateDefaultTime(increments, timeRange, defaultValue), [
+  const baseDate: Date = React.useMemo(() => generatebaseDate(increments, timeRange, defaultValue), [
     increments,
     timeRange,
     defaultValue,
@@ -56,7 +62,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
     }
 
     return optionsList.map((_, index) => {
-      const option = addMinutes(defaultTime, increments * index);
+      const option = addMinutes(baseDate, increments * index);
       option.setSeconds(0);
       const optionText = onFormatDate ? onFormatDate(option) : formatTimeString(option, showSeconds, useHour12);
       return {
@@ -64,7 +70,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         text: optionText,
       };
     });
-  }, [defaultTime, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
+  }, [baseDate, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
 
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(timePickerOptions[0].key);
 
@@ -110,7 +116,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
       if (onSelectTime) {
         const selectedTime = value ? value : option ? option.text : '';
-        const date = getDateFromSelection(showSeconds, useHour12, defaultTime, selectedTime);
+        const date = getDateFromTimeSelection(showSeconds, useHour12, baseDate, selectedTime);
         onSelectTime(date);
       }
 
@@ -119,7 +125,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       setSelectedKey(key);
     },
     [
-      defaultTime,
+      baseDate,
       allowFreeform,
       onFormatDate,
       onValidateUserInput,
@@ -171,62 +177,14 @@ const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   };
 };
 
-const getDateFromSelection = (showSeconds: boolean, useHour12: boolean, defaultTime: Date, selectedTime: string) => {
-  const splitValue = selectedTime.split(':');
-  let hours = +splitValue[0];
-  let minutes;
-  let seconds = defaultTime.getSeconds();
-  let ap;
-  if (showSeconds) {
-    minutes = +splitValue[1];
-    seconds = +splitValue[2].split(' ')[0];
-    if (useHour12) {
-      ap = splitValue[2].split(' ')[1];
-    }
-  } else {
-    minutes = +splitValue[1].split(' ')[0];
-    if (useHour12) {
-      ap = splitValue[1].split(' ')[1];
-    }
-  }
-
-  if (useHour12 && ap) {
-    if (ap.toLowerCase() === 'pm' && hours !== 12) {
-      hours += TimeConstants.OffsetTo24HourFormat;
-    } else if (ap.toLowerCase() === 'am' && hours === 12) {
-      hours -= TimeConstants.OffsetTo24HourFormat;
-    }
-  }
-
-  let hoursOffset;
-  if (
-    useHour12 &&
-    (defaultTime.getHours() > hours || (defaultTime.getHours() === hours && defaultTime.getMinutes() > minutes))
-  ) {
-    hoursOffset = TimeConstants.HoursInOneDay - defaultTime.getHours() + hours;
-  } else {
-    hoursOffset = Math.abs(defaultTime.getHours() - hours);
-  }
-
-  const offset =
-    TimeConstants.MillisecondsIn1Sec * TimeConstants.MinutesInOneHour * hoursOffset * TimeConstants.SecondsInOneMinute +
-    seconds * TimeConstants.MillisecondsIn1Sec;
-
-  const date = new Date(defaultTime.getTime() + offset);
-  date.setMinutes(minutes);
-  date.setSeconds(seconds);
-
-  return date;
-};
-
-const generateDefaultTime = (increments: number, timeRange: ITimeRange | undefined, defaultValue?: Date) => {
-  const newDefaultTime = defaultValue ? defaultValue : new Date();
+const generatebaseDate = (increments: number, timeRange: ITimeRange | undefined, defaultValue?: Date) => {
+  const newbaseDate = defaultValue ? defaultValue : new Date();
   if (timeRange) {
     const clampedTimeRange = clampTimeRange(timeRange);
-    newDefaultTime.setHours(clampedTimeRange.start);
+    newbaseDate.setHours(clampedTimeRange.start);
   }
 
-  return ceilMinuteToIncrement(newDefaultTime, increments);
+  return ceilMinuteToIncrement(newbaseDate, increments);
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: ITimeRange | undefined) => {
