@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "SearchBox: disable pointer events when is focused",
+  "packageName": "@fluentui/react",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
