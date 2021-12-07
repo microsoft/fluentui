@@ -167,6 +167,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       },
       hasFocus && {
         opacity: 0,
+        pointerEvents: 'none',
       },
       !disableAnimation && {
         transition: `opacity ${AnimationVariables.durationValue1} 0s`,
