@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Swap edge if on boundary",
-  "packageName": "@fluentui/react",
-  "email": "owcampbe@microsoft.com",
-  "dependentChangeType": "patch"
-}
