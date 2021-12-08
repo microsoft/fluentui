@@ -18,7 +18,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+- fix(Accordion) Render divs instead of dd and dt elements for Accordion and AccordionTitle @jurokapsiar ([#20773](https://github.com/microsoft/fluentui/pull/20773))
+- Carousels uses native ARIA props @layershifter ([#20848](https://github.com/microsoft/fluentui/pull/20848))
+
 ### Fixes
+- Remove unsupported styling props in `Popup` @layershifter ([#20853](https://github.com/microsoft/fluentui/pull/20853))
 - Fix aria-labelledby passed to `DropdownSearchInput` @chpalac ([#20312](https://github.com/microsoft/fluentui/pull/20312))
 - Fix `preventFocusRestoration` in `FocusZone` @chpalac ([#20328](https://github.com/microsoft/fluentui/pull/20328))
 - `Popup` should not dismiss when its iframe content is focused @ling1726 ([#19955](https://github.com/microsoft/fluentui/pull/19955))
@@ -40,6 +45,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Avatar` Components to properly pass ref to root slots @chpalac ([#20588](https://github.com/microsoft/fluentui/pull/20588))
 - Fix `ButtonGroup` comoponent to properly pass ref to root slots @chpalac ([#20595](https://github.com/microsoft/fluentui/pull/20595))
 - Fix color of `Dropdown` checkable indicator on hover in high contrast theme @annabratseiko ([#20621](https://github.com/microsoft/fluentui/pull/20621))
+- Updating Teams Brand colors to refreshed Fluent colors @notandrew ([#20057](https://github.com/microsoft/fluentui/pull/20057))
 - Fix `Carousel` comoponents to properly pass ref to root slots @chpalac ([#20645](https://github.com/microsoft/fluentui/pull/20645))
 - Fix `Card` comoponent to properly pass ref to root slots @chpalac ([#20644](https://github.com/microsoft/fluentui/pull/20644))
 - Fix `Dropdown` by conditionally adding `aria-expanded="true"` to the button trigger @chpalac ([#20671](https://github.com/microsoft/fluentui/pull/20671))
@@ -53,9 +59,37 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Chat` components to properly pass ref to root slots @chpalac ([#20691](https://github.com/microsoft/fluentui/pull/20691))
 - Fix `Flex` component to properly pass ref to root slots @chpalac ([#20752](https://github.com/microsoft/fluentui/pull/20752))
 - Accordion content does not get rendered for inactive panels @jurokapsiar ([#20783](https://github.com/microsoft/fluentui/pull/20783))
+- Fix `Animation` to expose `Transition` state for the consumer @chpalac ([#20776](https://github.com/microsoft/fluentui/pull/20776))
+- Fix `Image` component to properly pass ref to root slots @chpalac ([#20812](https://github.com/microsoft/fluentui/pull/20812))
+- Fix `Header` components to properly pass ref to root slots @chpalac ([#20811](https://github.com/microsoft/fluentui/pull/20811))
+- Fix `Grid` component to properly pass ref to root slots @chpalac ([#20810](https://github.com/microsoft/fluentui/pull/20810))
+- Fix `Form` components to properly pass ref to root slots @chpalac ([#20809](https://github.com/microsoft/fluentui/pull/20809))
+- Fix `Loader` component to properly pass ref to root slots @chpalac ([#20814](https://github.com/microsoft/fluentui/pull/20814))
+- Fix `Label` component to properly pass ref to root slots @chpalac ([#20813](https://github.com/microsoft/fluentui/pull/20813))
+- Fix `MenuItemIcon` to allow icon `size` to be in effect @yuanboxue-amber ([#20803](https://github.com/microsoft/fluentui/pull/20803))
+- Fix `PopupContent` component to properly pass ref to root slots @chpalac ([#20866](https://github.com/microsoft/fluentui/pull/20866))
+- Fix `Pill` components to properly pass ref to root slots @chpalac ([#20838](https://github.com/microsoft/fluentui/pull/20838))
+- Fix `MenuButton` component to properly pass ref to root slots @chpalac ([#20837](https://github.com/microsoft/fluentui/pull/20837))
+- Fix `getPointerStyles` transform for RTL @chpalac ([#20915](https://github.com/microsoft/fluentui/pull/20915))
+- Fix `Table` component to properly pass ref to root slots @chpalac ([#20873](https://github.com/microsoft/fluentui/pull/20873))
+- Fix `Status` component to properly pass ref to root slots @chpalac ([#20872](https://github.com/microsoft/fluentui/pull/20872))
+- Fix `SplitButton` components to properly pass ref to root slots @chpalac ([#20871](https://github.com/microsoft/fluentui/pull/20871))
+- Fix `Segment` component to properly pass ref to root slots @chpalac ([#20869](https://github.com/microsoft/fluentui/pull/20869))
+- Fix `MenuButton` component to properly pass ref to root slots @chpalac ([#20870](https://github.com/microsoft/fluentui/pull/20870))
+- Fix `Reaction` components to properly pass ref to root slots @chpalac ([#20868](https://github.com/microsoft/fluentui/pull/20868))
+- Fix `RadioGroup` component to properly pass ref to root slots @chpalac ([#20867](https://github.com/microsoft/fluentui/pull/20867))
+- Fix `Text` component to properly pass ref to root slots @chpalac ([#20874](https://github.com/microsoft/fluentui/pull/20874))
+- Fix `TextArea` component to properly pass ref to root slots @chpalac ([#20875](https://github.com/microsoft/fluentui/pull/20875))
+- Fix `Tree` component to properly pass ref to root slots @chpalac ([#20877](https://github.com/microsoft/fluentui/pull/20877))
+- Fix `Video` component to properly pass ref to root slots @chpalac ([#20878](https://github.com/microsoft/fluentui/pull/20878))
+- Fix `TooltipContent` component to properly pass ref to root slots @chpalac ([#20876](https://github.com/microsoft/fluentui/pull/20876))
+- Fix `Popup` to invoke event handlers on trigger wrapped in `Ref` @yuanboxue-amber ([#20911](https://github.com/microsoft/fluentui/pull/20911))
 
 ### Features
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
+
+### Documentation
+- Removing examples for tree as list @kolaps33 ([#20780](https://github.com/microsoft/fluentui/pull/20780))
 
 <!--------------------------------[ v0.59.0 ]------------------------------- -->
 ## [v0.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.59.0) (2021-09-20)

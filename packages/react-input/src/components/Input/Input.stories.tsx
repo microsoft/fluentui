@@ -1,6 +1,6 @@
 /// <reference types="@fluentui/react-icons" />
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { Input } from './Input';
 import { getNativeElementProps, useId } from '@fluentui/react-utilities';
 import { InputProps } from './Input.types';
@@ -18,10 +18,10 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    padding: '20px',
+    ...shorthands.gap('20px'),
+    ...shorthands.padding('20px'),
   },
-  storyFilledBackground: theme => ({ background: theme.colorNeutralBackground3 }),
+  storyFilledBackground: theme => ({ backgroundColor: theme.colorNeutralBackground3 }),
 });
 
 const icons = {
@@ -36,15 +36,15 @@ export const InputExamples = (
   const inputId1 = useId();
   // pass native input props to the internal input element and custom props to the root
   const { storyFilledBackground, ...rest } = args;
-  const inputProps = getNativeElementProps('input', rest);
+  const inputProps = getNativeElementProps('input', rest, ['size']);
   const props: Partial<InputProps> = { input: inputProps };
   for (const prop of Object.keys(rest) as (keyof InputProps)[]) {
     if (!(inputProps as Partial<InputProps>)[prop]) {
       props[prop] = rest[prop];
     }
   }
-  const SearchIcon = icons.search[props.fieldSize!];
-  const DismissIcon = icons.dismiss[props.fieldSize!];
+  const SearchIcon = icons.search[props.size!];
+  const DismissIcon = icons.dismiss[props.size!];
 
   return (
     <div className={mergeClasses(styles.container, storyFilledBackground && styles.storyFilledBackground)}>
@@ -83,7 +83,7 @@ export const InputExamples = (
 };
 
 const argTypes: ArgTypes = {
-  fieldSize: { defaultValue: 'medium', control: { type: 'radio', options: ['small', 'medium', 'large'] } },
+  size: { defaultValue: 'medium', control: { type: 'radio', options: ['small', 'medium', 'large'] } },
   appearance: {
     defaultValue: 'outline',
     control: { type: 'radio', options: ['filledDarker', 'filledLighter', 'underline', 'outline'] },

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Implement primary slot: 'input' is now the primary slot and receives native props passed to Checkbox",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

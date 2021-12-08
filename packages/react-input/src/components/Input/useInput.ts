@@ -17,10 +17,10 @@ export const inputShorthandProps: (keyof InputSlots)[] = ['input', 'contentBefor
  * @param ref - reference to root HTMLInputElement of Input
  */
 export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputState => {
-  const { input, contentAfter, contentBefore, fieldSize, appearance, inline } = props;
+  const { input, contentAfter, contentBefore, size, appearance, inline } = props;
 
   return {
-    fieldSize,
+    size,
     appearance,
     inline,
     components: {
