@@ -115,7 +115,6 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
               styles.badgeContainer,
               color === 'subtle' && appearance === 'outline' && styles.brandContainer,
               color === 'subtle' && appearance === 'ghost' && styles.brandContainer,
-              color === 'informative' && appearance === 'ghost' && styles.brandContainer,
             )}
           >
             {badges.get(color)}
