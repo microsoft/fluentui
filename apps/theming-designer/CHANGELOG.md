@@ -1,8 +1,18 @@
 # Change Log - theming-designer
 
-This log was last generated on Tue, 07 Dec 2021 07:31:33 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Dec 2021 07:28:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Wed, 08 Dec 2021 07:28:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.3 ([PR #20831](https://github.com/microsoft/fluentui/pull/20831) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.71 ([PR #20831](https://github.com/microsoft/fluentui/pull/20831) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
 

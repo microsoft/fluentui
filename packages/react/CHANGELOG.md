@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 07 Dec 2021 07:31:32 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Dec 2021 07:28:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.46.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.3)
+
+Wed, 08 Dec 2021 07:28:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.2..@fluentui/react_v8.46.3)
+
+### Patches
+
+- SearchBox: disable pointer events when is focused ([PR #20951](https://github.com/microsoft/fluentui/pull/20951) by olfedias@microsoft.com)
 
 ## [8.46.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.2)
 
