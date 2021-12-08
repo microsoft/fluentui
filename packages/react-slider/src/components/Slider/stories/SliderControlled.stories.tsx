@@ -6,7 +6,7 @@ import { Slider, SliderProps } from '../../../index';
 
 export const Controlled = () => {
   const [sliderValue, setSliderValue] = React.useState(160);
-  const onSliderChange: SliderProps['onChange'] = (ev, data) => setSliderValue(data.value);
+  const onSliderChange: SliderProps['onChange'] = ev => setSliderValue(Number(ev.target.value));
 
   return (
     <>

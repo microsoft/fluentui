@@ -7,6 +7,6 @@ import { Slider } from '../../../index';
 export const Default = () => (
   <>
     <Label htmlFor="basic-slider">Basic Example</Label>
-    <Slider id="basic-slider" />
+    <Slider defaultValue={20} id="basic-slider" />
   </>
 );

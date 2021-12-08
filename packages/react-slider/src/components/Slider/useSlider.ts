@@ -15,7 +15,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['onChange'],
+    excludedPropNames: [],
   });
 
   const {
@@ -27,7 +27,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     step,
     disabled,
     ariaValueText,
-    onChange,
     vertical,
     size = 'medium',
     origin,
@@ -45,7 +44,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     disabled,
     max,
     min,
-    onChange,
     origin,
     size,
     step,
