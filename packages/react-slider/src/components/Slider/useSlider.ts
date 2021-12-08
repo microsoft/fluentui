@@ -15,7 +15,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: [],
+    excludedPropNames: ['onChange'],
   });
 
   const {
@@ -30,7 +30,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     vertical,
     size = 'medium',
     origin,
-
+    onChange,
     // Slots
     root,
     input,
@@ -49,6 +49,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     step,
     vertical,
     value,
+    onChange,
     components: {
       input: 'input',
       rail: 'div',

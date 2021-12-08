@@ -30,7 +30,7 @@ export type SliderCommons = {
     vertical?: boolean;
     origin?: number;
     size?: 'small' | 'medium';
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
     ariaValueText?: (value: number) => string;
 };
 
@@ -59,6 +59,10 @@ export const useSliderState: (state: SliderState) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;
+
+// Warnings were encountered during analysis:
+//
+// lib/components/Slider/Slider.types.d.ts:77:5 - (ae-forgotten-export) The symbol "SliderOnChangeData" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -88,13 +88,17 @@ export type SliderCommons = {
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
 
   /**
    * The Slider's current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
 };
+
+interface SliderOnChangeData {
+  value: number;
+}
 
 export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue'> & SliderCommons;
 
