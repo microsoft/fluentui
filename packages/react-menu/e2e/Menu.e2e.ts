@@ -21,24 +21,13 @@ describe('Menu', () => {
   });
 
   describe('MenuTrigger', () => {
-    it('should open menu when clicked', () => {
-      cy.loadStory(menuStoriesTitle, defaultStory)
-        .get(menuTriggerSelector)
-        .click()
-        .get(menuSelector)
-        .should('be.visible');
-    });
-
-    it('should focus first menu item on down arrow when focus is on the trigger', () => {
+    it('should open menu and focus first item when clicked', () => {
       cy.loadStory(menuStoriesTitle, defaultStory)
         .get(menuTriggerSelector)
         .click()
         .get(menuSelector)
         .should('be.visible')
-        .get(menuTriggerSelector)
-        .type('{downarrow}')
         .get(menuItemSelector)
-        .first()
         .should('be.focused');
     });
 
@@ -260,7 +249,7 @@ describe('Menu', () => {
   // [nestedMenuStory, nestedMenuControlledStory].forEach(story => {
   [nestedMenuStory, nestedMenuControlledStory].forEach(story => {
     describe(`Nested Menus (${story.includes('Controlled') ? 'Controlled' : 'Uncontrolled'})`, () => {
-      it('should open on trigger hover', () => {
+      it('should open on trigger hover and focus first item', () => {
         cy.loadStory(menuStoriesTitle, story)
           .get(menuTriggerSelector)
           .click()
@@ -269,11 +258,16 @@ describe('Menu', () => {
             cy.get(menuTriggerSelector).trigger('mousemove');
           })
           .get(menuSelector)
-          .should('have.length', 2);
+          .should('have.length', 2)
+          .get(menuSelector)
+          .eq(1)
+          .within(() => {
+            cy.get(menuItemSelector).first().should('be.focused');
+          });
       });
 
       ['{rightarrow}', '{enter}', ' '].forEach(key => {
-        it(`should open on trigger ${key === ' ' ? 'space' : key}`, () => {
+        it(`should open on trigger ${key === ' ' ? 'space' : key} and focus first item`, () => {
           cy.loadStory(menuStoriesTitle, story)
             .get(menuTriggerSelector)
             .click()
