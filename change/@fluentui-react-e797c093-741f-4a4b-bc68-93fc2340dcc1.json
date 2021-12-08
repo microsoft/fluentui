@@ -1,9 +1,6 @@
 {
   "type": "patch",
-  "comment": {
-    "title": "",
-    "value": ""
-  },
+  "comment": "Extending target to composedPatd in Callout dismiss listener",
   "packageName": "@fluentui/react",
   "email": "marion.lepontois@skatteetaten.no",
   "dependentChangeType": "patch"
