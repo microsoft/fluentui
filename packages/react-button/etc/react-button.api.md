@@ -53,6 +53,9 @@ export const compoundButtonClassName = "fui-CompoundButton";
 export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
 
 // @public (undocumented)
+export const compoundButtonSecondaryContentClassName: string;
+
+// @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
     secondaryContent?: IntrinsicShorthandProps<'span'>;
     contentContainer: IntrinsicShorthandProps<'span'>;
@@ -99,6 +102,12 @@ export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
 // @public (undocumented)
 export const splitButtonClassName = "fui-SplitButton";
+
+// @public (undocumented)
+export const splitButtonMenuButtonClassName: string;
+
+// @public (undocumented)
+export const splitButtonPrimaryActionButtonClassName: string;
 
 // @public (undocumented)
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;

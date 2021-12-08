@@ -3,11 +3,8 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { SplitButtonState } from './SplitButton.types';
 
 export const splitButtonClassName = 'fui-SplitButton';
-
-const SplitButtonClassNames = {
-  primaryActionButton: `${splitButtonClassName}-primaryActionButton`,
-  menuButton: `${splitButtonClassName}-menuButton`,
-};
+export const splitButtonPrimaryActionButtonClassName = `${splitButtonClassName}-primaryActionButton`;
+export const splitButtonMenuButtonClassName = `${splitButtonClassName}-menuButton`;
 
 const useFocusStyles = makeStyles({
   primaryActionButton: createCustomFocusIndicatorStyle({
@@ -31,13 +28,13 @@ const useRootStyles = makeStyles({
     verticalAlign: 'middle',
 
     // Use classnames to increase specificy of rootStyles and avoid collisions.
-    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+    [`& .${splitButtonPrimaryActionButtonClassName}`]: {
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
     },
 
     // Use classnames to increase specificy of rootStyles and avoid collisions.
-    [`& .${SplitButtonClassNames.menuButton}`]: {
+    [`& .${splitButtonMenuButtonClassName}`]: {
       borderLeftWidth: 0,
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
@@ -55,54 +52,54 @@ const useRootStyles = makeStyles({
   },
   primary: theme => ({
     // Use classnames to increase specificy of rootStyles and avoid collisions.
-    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+    [`& .${splitButtonPrimaryActionButtonClassName}`]: {
       borderRightColor: theme.colorNeutralForegroundInverted,
     },
 
     ':hover': {
-      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+      [`& .${splitButtonPrimaryActionButtonClassName}`]: {
         borderRightColor: theme.colorNeutralForegroundInverted,
       },
     },
 
     ':active': {
-      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+      [`& .${splitButtonPrimaryActionButtonClassName}`]: {
         borderRightColor: theme.colorNeutralForegroundInverted,
       },
     },
   }),
   subtle: theme => ({
     // Use classnames to increase specificy of rootStyles and avoid collisions.
-    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+    [`& .${splitButtonPrimaryActionButtonClassName}`]: {
       borderRightColor: theme.colorNeutralStroke1Hover,
     },
 
     ':hover': {
-      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+      [`& .${splitButtonPrimaryActionButtonClassName}`]: {
         borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
 
     ':active': {
-      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+      [`& .${splitButtonPrimaryActionButtonClassName}`]: {
         borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
   }),
   transparent: theme => ({
     // Use classnames to increase specificy of rootStyles and avoid collisions.
-    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+    [`& .${splitButtonPrimaryActionButtonClassName}`]: {
       borderRightColor: theme.colorNeutralStroke1Hover,
     },
 
     ':hover': {
-      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+      [`& .${splitButtonPrimaryActionButtonClassName}`]: {
         borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
 
     ':active': {
-      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+      [`& .${splitButtonPrimaryActionButtonClassName}`]: {
         borderRightColor: theme.colorNeutralStroke1Hover,
       },
     },
@@ -116,18 +113,18 @@ const useRootStyles = makeStyles({
   // Disabled rootStyles
   disabled: theme => ({
     // Use classnames to increase specificy of rootStyles and avoid collisions.
-    [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+    [`& .${splitButtonPrimaryActionButtonClassName}`]: {
       borderRightColor: theme.colorNeutralStrokeDisabled,
     },
 
     ':hover': {
-      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+      [`& .${splitButtonPrimaryActionButtonClassName}`]: {
         borderRightColor: theme.colorNeutralStrokeDisabled,
       },
     },
 
     ':active': {
-      [`& .${SplitButtonClassNames.primaryActionButton}`]: {
+      [`& .${splitButtonPrimaryActionButtonClassName}`]: {
         borderRightColor: theme.colorNeutralStrokeDisabled,
       },
     },
@@ -151,7 +148,7 @@ export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState 
 
   if (state.menuButton) {
     state.menuButton.className = mergeClasses(
-      SplitButtonClassNames.menuButton,
+      splitButtonMenuButtonClassName,
       focusStyles.menuButton,
       state.menuButton.className,
     );
@@ -159,7 +156,7 @@ export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState 
 
   if (state.primaryActionButton) {
     state.primaryActionButton.className = mergeClasses(
-      SplitButtonClassNames.primaryActionButton,
+      splitButtonPrimaryActionButtonClassName,
       focusStyles.primaryActionButton,
       state.primaryActionButton.className,
     );

@@ -2,4 +2,9 @@ export * from './SplitButton';
 export * from './SplitButton.types';
 export * from './renderSplitButton';
 export * from './useSplitButton';
-export { splitButtonClassName, useSplitButtonStyles } from './useSplitButtonStyles';
+export {
+  splitButtonClassName,
+  splitButtonMenuButtonClassName,
+  splitButtonPrimaryActionButtonClassName,
+  useSplitButtonStyles,
+} from './useSplitButtonStyles';

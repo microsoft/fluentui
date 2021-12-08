@@ -3,10 +3,7 @@ import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
 export const compoundButtonClassName = 'fui-CompoundButton';
-
-const CompoundButtonClassNames = {
-  secondaryContent: `${compoundButtonClassName}-secondaryContent`,
-};
+export const compoundButtonSecondaryContentClassName = `${compoundButtonClassName}-secondaryContent`;
 
 const useRootStyles = makeStyles({
   // Base styles
@@ -15,18 +12,18 @@ const useRootStyles = makeStyles({
 
     height: 'auto',
 
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
       color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForeground2Hover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForeground2Pressed,
       },
     },
@@ -37,52 +34,52 @@ const useRootStyles = makeStyles({
     /* No styles */
   },
   primary: theme => ({
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
       color: theme.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForegroundOnBrand,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForegroundOnBrand,
       },
     },
   }),
   subtle: theme => ({
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
       color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForeground2BrandPressed,
       },
     },
   }),
   transparent: theme => ({
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
       color: theme.colorNeutralForeground2,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForeground2BrandPressed,
       },
     },
@@ -110,18 +107,18 @@ const useRootStyles = makeStyles({
 
   // Disabled styles
   disabled: theme => ({
-    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+    [`& .${compoundButtonSecondaryContentClassName}`]: {
       color: theme.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForegroundDisabled,
       },
     },
 
     ':active': {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      [`& .${compoundButtonSecondaryContentClassName}`]: {
         color: theme.colorNeutralForegroundDisabled,
       },
     },
@@ -223,7 +220,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
-      CompoundButtonClassNames.secondaryContent,
+      compoundButtonSecondaryContentClassName,
       secondaryContentStyles.base,
       secondaryContentStyles[size],
       state.secondaryContent.className,
