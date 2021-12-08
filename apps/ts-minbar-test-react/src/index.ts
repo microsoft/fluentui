@@ -8,16 +8,19 @@ import {
 } from '@fluentui/scripts/projects-test/packPackages';
 import { createTempDir, log } from '@fluentui/scripts/projects-test/utils';
 
+const tsVersion = '3.9';
+
 async function performTest() {
+  let tmpDirectory: string;
+  const logger = log('test:ts-minbar-react');
+
   try {
-    const logger = log('test:ts-minbar-react');
     const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/'));
-    const tmpDirectory = createTempDir('ts-minbar-react-typings-');
+    tmpDirectory = createTempDir('ts-minbar-react-typings-');
 
     logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
 
     // Install dependencies, using the minimum TS version supported for consumers
-    const tsVersion = '3.9';
     const dependencies = [
       '@types/node',
       '@types/react',
@@ -46,13 +49,24 @@ async function performTest() {
     await sh(`yarn --version`);
     await sh(`yarn tsc --version`);
     await sh(`yarn tsc --version`, tmpDirectory);
+  } catch (e) {
+    console.error('Something went wrong setting up the test:');
+    console.error(e?.stack || e);
+    process.exit(1);
+  }
+
+  try {
     await sh(`yarn tsc --noEmit`, tmpDirectory);
-    logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
+    logger(`✔️ Example project was successfully built with typescript@${tsVersion}`);
   } catch (e) {
     console.error(e);
 
     console.log('');
-    console.log('@fluentui/ts-minbar-test-react: The test suite failed.');
+    console.error(`Building a test project referencing @fluentui/react using typescript@${tsVersion} failed.`);
+    console.error(
+      `This is most likely because you added an API in @fluentui/react or a dependency which uses ` +
+        `typescript features introduced in a version newer than ${tsVersion} (see logs above for the exact error).`,
+    );
 
     process.exit(1);
   }
