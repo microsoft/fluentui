@@ -217,7 +217,19 @@ function processDefinitions(
           }
 
           if (propertyPath.isObjectProperty()) {
+            const keyPath = propertyPath.get('key');
             const valuePath = propertyPath.get('value');
+
+            /**
+             * Computed properties may require lazy evaluation.
+             *
+             * @example
+             *    makeStyles({ [var]: { color: 'red' } })
+             *    makeStyles({ [`${var}`]: { color: SOME_VARIABLE } })
+             */
+            if (propertyPath.node.computed) {
+              lazyPaths.push(keyPath);
+            }
 
             if (valuePath.isStringLiteral() || valuePath.isNullLiteral() || valuePath.isNumericLiteral()) {
               return;
@@ -315,7 +327,7 @@ function processDefinitions(
                 return;
               }
 
-              // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
+              // This condition resolves "theme.aliasColorGreenForeground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
                 const paramsName = paramsPath?.node.name;
