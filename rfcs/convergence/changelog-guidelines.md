@@ -36,9 +36,8 @@ for partners. Even in the context of lockstep versioning these kinds of changes 
 ### Changelog entries that are focused on the PR
 
 Quite often, a PR will address/fix an issue that spans several packages. While it's good practice to keep PRs as
-small as possible, it is still possible that mutliple changes in different packages that need to be modified. This
-can also be acceptable when an internal API is modified in a non breaking way, but several consumers need to be updated
-at the same time.
+small as possible, it is still possible that multiple packages need to be modified. This can also be acceptable when
+an internal API is modified in a non-breaking way, but several consumers need to be updated at the same time.
 
 It is very easy to write a single changefile message during PR creating and apply it to all the changed packages in
 the PR. This makes the change harder to understand since the contents might only apply vaguely, or not at all to the package.
