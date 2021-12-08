@@ -23,9 +23,63 @@ const TabsTemplate = ({ activeId, activeIndicator, orientation }) => `
   <fluent-tab id="TabOne">Tab one</fluent-tab>
   <fluent-tab id="TabTwo">Tab two</fluent-tab>
   <fluent-tab id="TabThree">Tab three</fluent-tab>
-  <fluent-tab-panel> Tab one content. This is for testing. </fluent-tab-panel>
+  <fluent-tab-panel>
+    Tab one content. This is for testing. Tab three content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+    Tab one content. This is for testing.
+    <br />
+  </fluent-tab-panel>
   <fluent-tab-panel> Tab two content. This is for testing. </fluent-tab-panel>
-  <fluent-tab-panel> Tab three content. This is for testing. </fluent-tab-panel>
+  <fluent-tab-panel>
+    Tab three content. This is for testing. Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+    Tab three content. This is for testing.
+    <br />
+  </fluent-tab-panel>
 </fluent-tabs>`;
 
 export const Tabs = TabsTemplate.bind({});

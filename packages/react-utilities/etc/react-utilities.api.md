@@ -33,9 +33,6 @@ export const buttonProperties: Record<string, number>;
 // @public
 export function canUseDOM(): boolean;
 
-// @public (undocumented)
-export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
-
 // @public
 export const clamp: (value: number, min: number, max: number) => number;
 
@@ -260,14 +257,6 @@ export type UseControllableStateOptions<State> = {
     initialState: State;
 };
 
-// Warning: (ae-forgotten-export) The symbol "DefaultValue" needs to be exported by the entry point index.d.ts
-//
-// @public
-export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>) => void]>;
-
-// @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
-
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
 
@@ -326,7 +315,7 @@ export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
-// lib/compose/getSlots.d.ts:27:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
+// lib/compose/getSlots.d.ts:29:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
