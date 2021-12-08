@@ -2,6 +2,8 @@ import * as React from 'react';
 import * as stylesImport from './ReactIconGrid.module.scss';
 import { IIconGridProps } from './IconGridProps.types';
 import { FluentIconsProps } from '@fluentui/react-icons';
+import { SearchBox } from '@fluentui/react';
+import { ChoiceGroup, IChoiceGroupOption, IChoiceGroupStyles } from '@fluentui/react/lib/ChoiceGroup';
 const styles: any = stylesImport;
 
 export const ReactIconGrid = (iconGridProps: IIconGridProps) => {
@@ -24,7 +26,7 @@ export const ReactIconGrid = (iconGridProps: IIconGridProps) => {
     );
   };
 
-  const _filterBySize = (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const _filterBySize = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
     const newSize = ev.currentTarget.value;
     newSize === 'All' ? setSize('') : setSize(newSize);
   };
@@ -41,24 +43,34 @@ export const ReactIconGrid = (iconGridProps: IIconGridProps) => {
   };
 
   const filteredIcons = _getItems(iconGridProps);
+  const options: IChoiceGroupOption[] = [
+    { key: '16', text: '16', value: '16' },
+    { key: '20', text: '20', value: '20' },
+    { key: '24', text: '24', value: '24' },
+    { key: '28', text: '28', value: '28' },
+    { key: '32', text: '32', value: '32' },
+    { key: '48', text: '48', value: '48' },
+    { key: 'All', text: 'All', value: 'All' },
+  ];
+
+  const cstyles: Partial<IChoiceGroupStyles> = {
+    flexContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      flexDirection: 'row',
+      gap: '15px',
+    },
+  };
 
   return (
     <div>
-      <input placeholder="Search icons" value={search} onChange={_onSearchQueryChanged} className={styles.searchBox} />
-      <input type="radio" value={16} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>16</label>
-      <input type="radio" value={20} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>20</label>
-      <input type="radio" value={24} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>24</label>
-      <input type="radio" value={28} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>28</label>
-      <input type="radio" value={32} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>32</label>
-      <input type="radio" value={48} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>48</label>
-      <input type="radio" value="All" name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>All</label>
+      <SearchBox
+        placeholder="Search icons"
+        value={search}
+        onChange={_onSearchQueryChanged}
+        className={styles.searchBox}
+      />
+      <ChoiceGroup styles={cstyles} defaultSelectedKey="All" options={options} onChange={_filterBySize} />
       <ul className={styles.grid}>{filteredIcons.map(_renderIcon)}</ul>
     </div>
   );
