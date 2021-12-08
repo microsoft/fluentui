@@ -29,10 +29,10 @@ export interface IButton {
    * Params are optional overrides to the ones defined in `menuProps` to apply to just this instance of
    * opening the menu.
    *
-   * @deprecated Avoid using `shouldFocusOnContainer` as it breaks the default focus behaviour when using
-   * assistive technologies.
    * @param shouldFocusOnContainer - override to the ContextualMenu `shouldFocusOnContainer` prop.
    * BaseButton implementation defaults to `undefined`.
+   * Avoid using `shouldFocusOnContainer` as it breaks the default focus behaviour when using
+   * assistive technologies.
    * @param shouldFocusOnMount - override to the ContextualMenu `shouldFocusOnMount` prop.
    * BaseButton implementation defaults to `true`.
    */

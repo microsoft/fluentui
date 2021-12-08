@@ -825,7 +825,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         onMenuClick(ev, this.props);
       }
 
-      this._onToggleMenu();
+      this._onToggleMenu(false);
       ev.preventDefault();
       ev.stopPropagation();
     }
@@ -933,7 +933,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
 
     if (!ev.defaultPrevented) {
-      this._onToggleMenu();
+      this._onToggleMenu(false);
       ev.preventDefault();
       ev.stopPropagation();
     }
