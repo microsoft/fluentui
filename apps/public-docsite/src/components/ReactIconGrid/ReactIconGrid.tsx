@@ -26,7 +26,7 @@ export const ReactIconGrid = (iconGridProps: IIconGridProps) => {
     );
   };
 
-  const _filterBySize = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
+  const _filterBySize = (ev: React.FormEvent<HTMLInputElement>) => {
     const newSize = ev.currentTarget.value;
     newSize === 'All' ? setSize('') : setSize(newSize);
   };
