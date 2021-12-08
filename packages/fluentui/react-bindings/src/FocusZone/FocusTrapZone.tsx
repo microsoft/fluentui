@@ -142,9 +142,9 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
         <ElementType
           {...unhandledProps}
           className={className}
-          ref={(ele: HTMLElement) => {
-            handleRef(this.createRef, ele);
-            handleRef(this.props.innerRef, ele);
+          ref={(element: HTMLElement) => {
+            this.createRef(element);
+            handleRef(this.props.innerRef, element);
           }}
           aria-labelledby={ariaLabelledBy}
           onKeyDown={this._onKeyboardHandler}

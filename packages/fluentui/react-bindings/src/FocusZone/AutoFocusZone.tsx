@@ -31,9 +31,9 @@ export class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
 
     return (
       <ElementType
-        ref={(ele: HTMLElement) => {
-          handleRef(this.root, ele);
-          handleRef(this.props.innerRef, ele);
+        ref={(element: HTMLElement) => {
+          handleRef(this.root, element);
+          handleRef(this.props.innerRef, element);
         }}
         {...unhandledProps}
       >
