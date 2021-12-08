@@ -17,6 +17,9 @@ export const renderSpinButton: (state: SpinButtonState) => JSX.Element;
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 
 // @public (undocumented)
+export const spinButtonClassName = "fui-SpinButton";
+
+// @public (undocumented)
 export type SpinButtonCommons = {};
 
 // @public
