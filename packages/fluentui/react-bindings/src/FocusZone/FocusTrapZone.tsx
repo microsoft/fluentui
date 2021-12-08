@@ -57,13 +57,13 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     disableFirstFocus: PropTypes.bool,
     focusPreviouslyFocusedInnerElement: PropTypes.bool,
     focusTriggerOnOutsideClick: PropTypes.bool,
+    innerRef: PropTypes.any,
   };
 
   static defaultProps: FocusTrapZoneProps = {
     as: 'div',
     isClickableOutsideFocusTrap: true,
     forceFocusInsideTrapOnOutsideFocus: false,
-    innerRef: PropTypes.any,
   };
 
   componentDidMount(): void {
