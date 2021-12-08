@@ -66,6 +66,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Loader` component to properly pass ref to root slots @chpalac ([#20814](https://github.com/microsoft/fluentui/pull/20814))
 - Fix `Label` component to properly pass ref to root slots @chpalac ([#20813](https://github.com/microsoft/fluentui/pull/20813))
 - Fix `MenuItemIcon` to allow icon `size` to be in effect @yuanboxue-amber ([#20803](https://github.com/microsoft/fluentui/pull/20803))
+- Fix `PopupContent` component to properly pass ref to root slots @chpalac ([#20866](https://github.com/microsoft/fluentui/pull/20866))
 - Fix `Pill` components to properly pass ref to root slots @chpalac ([#20838](https://github.com/microsoft/fluentui/pull/20838))
 - Fix `MenuButton` component to properly pass ref to root slots @chpalac ([#20837](https://github.com/microsoft/fluentui/pull/20837))
 - Fix `getPointerStyles` transform for RTL @chpalac ([#20915](https://github.com/microsoft/fluentui/pull/20915))
