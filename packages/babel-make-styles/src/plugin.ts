@@ -217,7 +217,19 @@ function processDefinitions(
           }
 
           if (propertyPath.isObjectProperty()) {
+            const keyPath = propertyPath.get('key');
             const valuePath = propertyPath.get('value');
+
+            /**
+             * Computed properties may require lazy evaluation.
+             *
+             * @example
+             *    makeStyles({ [var]: { color: 'red' } })
+             *    makeStyles({ [`${var}`]: { color: SOME_VARIABLE } })
+             */
+            if (propertyPath.node.computed) {
+              lazyPaths.push(keyPath);
+            }
 
             if (valuePath.isStringLiteral() || valuePath.isNullLiteral() || valuePath.isNumericLiteral()) {
               return;
