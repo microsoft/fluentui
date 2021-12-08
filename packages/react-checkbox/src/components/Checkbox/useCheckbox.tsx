@@ -33,7 +33,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'size', 'children'],
+    excludedPropNames: ['checked', 'defaultChecked', 'size'],
   });
 
   const id = useId('checkbox-', nativeProps.primary.id);
@@ -44,17 +44,14 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
     size,
     labelPosition,
     components: {
-      root: 'label',
+      root: 'span',
       input: 'input',
       indicator: 'div',
       label: Label,
     },
     root: resolveShorthand(props.root, {
       required: true,
-      defaultProps: {
-        children: props.children,
-        ...nativeProps.root,
-      },
+      defaultProps: nativeProps.root,
     }),
     input: resolveShorthand(props.input, {
       required: true,

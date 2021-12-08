@@ -4,6 +4,12 @@ import { CheckboxState } from './Checkbox.types';
 
 export const checkboxClassName = 'fui-Checkbox';
 
+// TODO replace these spacing constants with theme values once they're on the theme
+const spacingHorizontalS = '8px';
+const spacingHorizontalM = '12px';
+
+// CSS variables for the indicator colors.
+// These let the colors be picked based on the :hover, etc. states on the root
 const indicatorColor = '--fui-Checkbox-indicator-color';
 const indicatorBorderColor = '--fui-Checkbox-indicator-borderColor';
 const indicatorBackgroundColor = '--fui-Checkbox-indicator-backgroundColor';
@@ -14,39 +20,28 @@ const indicatorBackgroundColor = '--fui-Checkbox-indicator-backgroundColor';
 const useRootStyles = makeStyles({
   base: {
     position: 'relative',
-    display: 'inline-grid',
-    gridTemplateAreas: '"indicator"',
+    display: 'inline-flex',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'start',
-    ...shorthands.padding('8px'), // TODO: change to SpacingHorizontalS once it's added to the theme
-    ...shorthands.gap('12px'), // TODO: change to SpacingHorizontalM once it's added to the theme
-  },
-
-  // With label; positioned before the checkbox
-  labelBefore: {
-    gridTemplateAreas: '"label indicator"',
-  },
-
-  // With label; positioned after the checkbox
-  labelAfter: {
-    gridTemplateAreas: '"indicator label"',
-  },
-
-  enabled: {
     cursor: 'pointer',
+    columnGap: spacingHorizontalM,
+    ...shorthands.padding(spacingHorizontalS),
+  },
+
+  labelBefore: {
+    flexDirection: 'row-reverse',
+  },
+
+  disabled: {
+    cursor: 'default',
   },
 
   focusIndicator: theme => createFocusOutlineStyle(theme, { style: {}, selector: 'focus-within' }),
 });
 
+// Colors for the root element. These styles are mutually exclusive: exactly one should be applied at any time
 const useRootColorStyles = makeStyles({
-  disabled: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
-    [indicatorBorderColor]: theme.colorNeutralStrokeDisabled,
-    [indicatorColor]: theme.colorNeutralForegroundDisabled,
-    [indicatorBackgroundColor]: theme.colorNeutralBackground1,
-  }),
-
   unchecked: theme => ({
     color: theme.colorNeutralForeground3,
     [indicatorBorderColor]: theme.colorNeutralStrokeAccessible,
@@ -92,35 +87,41 @@ const useRootColorStyles = makeStyles({
       [indicatorColor]: theme.colorCompoundBrandForeground1Hover,
     },
   }),
+
+  disabled: theme => ({
+    color: theme.colorNeutralForegroundDisabled,
+    [indicatorBorderColor]: theme.colorNeutralStrokeDisabled,
+    [indicatorColor]: theme.colorNeutralForegroundDisabled,
+    [indicatorBackgroundColor]: theme.colorNeutralBackground1,
+  }),
 });
 
 const useInputStyles = makeStyles({
   base: {
-    gridArea: 'indicator',
-    width: 'auto',
-    height: 'auto',
-    placeSelf: 'stretch',
-    opacity: 0,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    boxSizing: 'border-box',
     ...shorthands.margin(0),
-    ...shorthands.padding(0),
+    opacity: 0,
     cursor: 'inherit',
   },
 });
 
 const useIndicatorStyles = makeStyles({
   base: theme => ({
-    gridArea: 'indicator',
-    fill: 'currentColor',
-    ...shorthands.overflow('hidden'),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     boxSizing: 'border-box',
-    ...shorthands.borderStyle('solid'),
-    ...shorthands.borderWidth(theme.strokeWidthThin),
+    ...shorthands.overflow('hidden'),
+    ...shorthands.border(theme.strokeWidthThin, 'solid'),
     ...shorthands.borderRadius(theme.borderRadiusSmall),
-    borderColor: `var(${indicatorBorderColor})`,
+    fill: 'currentColor',
     color: `var(${indicatorColor})`,
+    borderColor: `var(${indicatorBorderColor})`,
     backgroundColor: `var(${indicatorBackgroundColor})`,
     cursor: 'inherit',
   }),
@@ -148,10 +149,17 @@ const useIndicatorStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   base: {
-    gridArea: 'label',
     userSelect: 'none',
     cursor: 'inherit',
     color: 'inherit',
+  },
+
+  medium: {
+    lineHeight: '16px',
+  },
+
+  large: {
+    lineHeight: '20px',
   },
 });
 
@@ -159,34 +167,33 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Checkbox slots based on the state
  */
 export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
-  const rootStyles = useRootStyles();
   const rootColorStyles = useRootColorStyles();
-  const inputStyles = useInputStyles();
-  const indicatorStyles = useIndicatorStyles();
-
-  let rootColors: string;
+  let rootColorClass: string;
   if (state.input.disabled) {
-    rootColors = rootColorStyles.disabled;
+    rootColorClass = rootColorStyles.disabled;
   } else if (state.checked === 'mixed') {
-    rootColors = rootColorStyles.mixed;
+    rootColorClass = rootColorStyles.mixed;
   } else if (state.checked) {
-    rootColors = rootColorStyles.checked;
+    rootColorClass = rootColorStyles.checked;
   } else {
-    rootColors = rootColorStyles.unchecked;
+    rootColorClass = rootColorStyles.unchecked;
   }
 
+  const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     checkboxClassName,
     rootStyles.base,
     rootStyles.focusIndicator,
-    rootColors,
-    state.label && (state.labelPosition === 'before' ? rootStyles.labelBefore : rootStyles.labelAfter),
-    !state.input.disabled && rootStyles.enabled,
+    state.labelPosition === 'before' && rootStyles.labelBefore,
+    state.input.disabled && rootStyles.disabled,
+    rootColorClass,
     state.root.className,
   );
 
-  state.input.className = mergeClasses(inputStyles.base, indicatorStyles[state.size], state.input.className);
+  const inputStyles = useInputStyles();
+  state.input.className = mergeClasses(inputStyles.base, state.input.className);
 
+  const indicatorStyles = useIndicatorStyles();
   state.indicator.className = mergeClasses(
     indicatorStyles.base,
     indicatorStyles[state.size],
@@ -197,7 +204,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
 
   const labelStyles = useLabelStyles();
   if (state.label) {
-    state.label.className = mergeClasses(labelStyles.base, state.label.className);
+    state.label.className = mergeClasses(labelStyles.base, labelStyles[state.size], state.label.className);
   }
 
   return state;

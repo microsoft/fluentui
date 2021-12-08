@@ -49,7 +49,7 @@ export type CheckboxSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
    * All other native props will be applied to the primary slot: `input`
    */
-  root: IntrinsicShorthandProps<'label', 'span'>;
+  root: IntrinsicShorthandProps<'span'>;
 
   /**
    * The Checkbox's label.
@@ -75,6 +75,11 @@ export type CheckboxSlots = {
  */
 export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked'> &
   Partial<CheckboxCommons> & {
+    /**
+     * Checkboxes don't support children. To add a label, use the `label` prop.
+     */
+    children?: null | undefined;
+
     /**
      * Callback to be called when the checked state value changes.
      */

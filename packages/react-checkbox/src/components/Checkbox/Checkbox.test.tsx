@@ -23,27 +23,27 @@ describe('Checkbox', () => {
   });
 
   it('renders with a label', () => {
-    const renderedComponent = render(<Checkbox>Unchecked Checkbox</Checkbox>);
+    const renderedComponent = render(<Checkbox label="Unchecked Checkbox" />);
     expect(renderedComponent.container).toMatchSnapshot();
   });
 
   it('renders checked', () => {
-    const renderedComponent = render(<Checkbox checked>Checked Checkbox</Checkbox>);
+    const renderedComponent = render(<Checkbox checked label="Checked Checkbox" />);
     expect(renderedComponent.container).toMatchSnapshot();
   });
 
   it('renders mixed', () => {
-    const renderedComponent = render(<Checkbox checked="mixed">Mixed Checkbox</Checkbox>);
+    const renderedComponent = render(<Checkbox checked="mixed" label="Mixed Checkbox" />);
     expect(renderedComponent.container).toMatchSnapshot();
   });
 
   it('renders a custom indicator', () => {
-    const renderedComponent = render(<Checkbox indicator={<span id="indicator" />}>Custom indicator</Checkbox>);
+    const renderedComponent = render(<Checkbox indicator={<span id="indicator" />} label="Custom indicator" />);
     expect(renderedComponent.container).toMatchSnapshot();
   });
 
   it('respects id prop', () => {
-    const renderedComponent = render(<Checkbox id="checkbox">Checkbox</Checkbox>);
+    const renderedComponent = render(<Checkbox id="checkbox" label="Checkbox" />);
     expect(renderedComponent.getByRole('checkbox').id).toEqual('checkbox');
   });
 

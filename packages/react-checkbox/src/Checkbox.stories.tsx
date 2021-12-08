@@ -89,24 +89,24 @@ export const Checked = () => <Checkbox defaultChecked label="Checked checkbox" /
 Checked.parameters = {
   docs: {
     description: {
-      story: 'A checkbox can be checked by default using `defaultChecked`, or controlled via the `checked` property.',
+      story: 'A checkbox can be initially checked using `defaultChecked`, or controlled via the `checked` property.',
     },
   },
 };
 
 export const Mixed = () => <Checkbox defaultChecked="mixed" label="Mixed checkbox" />;
-Checked.parameters = {
+Mixed.parameters = {
   docs: {
     description: {
       story:
-        'A checkbox can be mixed (also known as indeterminate) by default using `defaultChecked="mixed"`, ' +
+        'A checkbox can be initially mixed (also known as indeterminate) using `defaultChecked="mixed"`, ' +
         'or controlled via `checked="mixed"`',
     },
   },
 };
 
 export const ExternalLabel = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', padding: '8px' }}>
+  <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start' }}>
     <Checkbox id="exampleCheckbox" />
     <label htmlFor="exampleCheckbox">This is an external label</label>
   </div>

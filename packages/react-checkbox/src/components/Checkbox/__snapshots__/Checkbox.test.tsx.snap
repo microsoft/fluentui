@@ -2,7 +2,7 @@
 
 exports[`Checkbox renders a custom indicator 1`] = `
 <div>
-  <label
+  <span
     class="fui-Checkbox"
   >
     <div
@@ -18,13 +18,19 @@ exports[`Checkbox renders a custom indicator 1`] = `
       id="checkbox-1"
       type="checkbox"
     />
-  </label>
+    <label
+      class="fui-Label"
+      for="checkbox-1"
+    >
+      Custom indicator
+    </label>
+  </span>
 </div>
 `;
 
 exports[`Checkbox renders a default state 1`] = `
 <div>
-  <label
+  <span
     class="fui-Checkbox"
   >
     <div
@@ -47,13 +53,13 @@ exports[`Checkbox renders a default state 1`] = `
       id="checkbox-1"
       type="checkbox"
     />
-  </label>
+  </span>
 </div>
 `;
 
 exports[`Checkbox renders checked 1`] = `
 <div>
-  <label
+  <span
     class="fui-Checkbox"
   >
     <div
@@ -77,13 +83,19 @@ exports[`Checkbox renders checked 1`] = `
       id="checkbox-1"
       type="checkbox"
     />
-  </label>
+    <label
+      class="fui-Label"
+      for="checkbox-1"
+    >
+      Checked Checkbox
+    </label>
+  </span>
 </div>
 `;
 
 exports[`Checkbox renders mixed 1`] = `
 <div>
-  <label
+  <span
     class="fui-Checkbox"
   >
     <div
@@ -110,13 +122,19 @@ exports[`Checkbox renders mixed 1`] = `
       id="checkbox-1"
       type="checkbox"
     />
-  </label>
+    <label
+      class="fui-Label"
+      for="checkbox-1"
+    >
+      Mixed Checkbox
+    </label>
+  </span>
 </div>
 `;
 
 exports[`Checkbox renders with a label 1`] = `
 <div>
-  <label
+  <span
     class="fui-Checkbox"
   >
     <div
@@ -139,6 +157,12 @@ exports[`Checkbox renders with a label 1`] = `
       id="checkbox-1"
       type="checkbox"
     />
-  </label>
+    <label
+      class="fui-Label"
+      for="checkbox-1"
+    >
+      Unchecked Checkbox
+    </label>
+  </span>
 </div>
 `;
