@@ -159,6 +159,7 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
       },
 
       ...(iconOnly && {
+        borderRadius: v.iconOnlyBorderRadius,
         display: 'flex',
       }),
 
