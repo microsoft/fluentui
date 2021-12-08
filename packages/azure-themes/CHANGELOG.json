@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Wed, 08 Dec 2021 12:26:22 GMT",
+      "tag": "@uifabric/azure-themes_v7.9.9",
+      "version": "7.9.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip dark theme fix",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "a98a6923a08b4f47cfa96484488d64beab729760",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Dec 2021 12:27:37 GMT",
       "tag": "@uifabric/azure-themes_v7.9.8",
       "version": "7.9.8",
