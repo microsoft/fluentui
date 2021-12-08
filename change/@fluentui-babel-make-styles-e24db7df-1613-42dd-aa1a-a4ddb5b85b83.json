@@ -3,5 +3,5 @@
   "comment": "fix: handle computed keys on objects",
   "packageName": "@fluentui/babel-make-styles",
   "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
