@@ -278,8 +278,9 @@ export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
-export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'aria-expanded' | 'id'>> & {
+export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
     ref?: React_2.Ref<never>;
+    'aria-expanded': boolean | undefined;
 };
 
 // @public (undocumented)

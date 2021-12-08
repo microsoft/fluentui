@@ -271,4 +271,43 @@ describe('useTriggerElement', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(expect.anything(), { open: true, keyboard: true });
   });
+
+  it('should set aria-expanded on trigger element if it is open', () => {
+    // Arrange
+    mockUseMenuContext({ open: true });
+    const trigger = <button>Trigger button</button>;
+    const { result } = renderHook(() => useTriggerElement({ children: trigger }));
+
+    // Act
+    const { getByRole } = render(result.current.children as React.ReactElement);
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('should not set aria-expanded on trigger element if it is closed and not a submenu', () => {
+    // Arrange
+    mockUseMenuContext({ open: false, isSubmenu: false });
+    const trigger = <button>Trigger button</button>;
+    const { result } = renderHook(() => useTriggerElement({ children: trigger }));
+
+    // Act
+    const { getByRole } = render(result.current.children as React.ReactElement);
+
+    // Assert
+    expect(getByRole('button').hasAttribute('aria-expanded')).toBe(false);
+  });
+
+  it('should set aria-expanded on trigger element if it is closed and a submenu', () => {
+    // Arrange
+    mockUseMenuContext({ open: false, isSubmenu: true });
+    const trigger = <button>Trigger button</button>;
+    const { result } = renderHook(() => useTriggerElement({ children: trigger }));
+
+    // Act
+    const { getByRole } = render(result.current.children as React.ReactElement);
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-expanded')).toBe('false');
+  });
 });

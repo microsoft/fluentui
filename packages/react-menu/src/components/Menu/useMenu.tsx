@@ -213,13 +213,17 @@ const useMenuOpenState = (
   }, [findPrevFocusable, state.triggerRef]);
 
   React.useEffect(() => {
-    if (!shouldHandleKeyboardRef.current) {
-      return;
-    }
-
     if (open) {
       focusFirst();
-    } else {
+    }
+  }, [open, focusFirst]);
+
+  React.useEffect(() => {
+    if (open) {
+      focusFirst();
+    }
+
+    if (shouldHandleKeyboardRef.current && !open) {
       if (shouldHandleTabRef.current && !state.isSubmenu) {
         pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
       } else {

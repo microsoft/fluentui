@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Migrate package to use solution tsconfigs",
+  "packageName": "@fluentui/react-switch",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "none"
+}
