@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { SpinButtonState } from './SpinButton.types';
 
+export const spinButtonClassName = 'fui-SpinButton';
+
 /**
  * Styles for the root slot
  */
@@ -17,7 +19,7 @@ const useStyles = makeStyles({
  */
 export const useSpinButtonStyles = (state: SpinButtonState): SpinButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(spinButtonClassName, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

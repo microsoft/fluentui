@@ -6,7 +6,7 @@ import type { SpinButtonProps } from './SpinButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * SpinButton component
+ * A SpinButton allows someone to incrementally adjust a value in small steps.
  */
 export const SpinButton: ForwardRefComponent<SpinButtonProps> = React.forwardRef((props, ref) => {
   const state = useSpinButton(props, ref);
