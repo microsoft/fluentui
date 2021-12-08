@@ -2702,14 +2702,13 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.6.2.tgz#414abc9f49fde85e12002e01025c5cc3dddc16ac"
   integrity sha512-TrFOpe9k9xIK2iLfIG5T2+bavUAWBvAC/KQ/3ecFsK65l9PAZ/j3zlkyLxNrpIksFtUBkfVdV03kwFurZjqzKQ==
 
-"@microsoft/fast-foundation@^2.24.0":
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.24.0.tgz#ab78f99e91cf96d5d440172eaa9b5eff25e15d51"
-  integrity sha512-rwUS/QAIaOJ5Uceo42JrgzIUhIAh305g0UZgCc633g4/OOVYa/zjRAG5QBxdrrjYN+U3mJyOWrsY/FJkJpEcQg==
+"@microsoft/fast-foundation@^2.27.1":
+  version "2.27.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.27.1.tgz#3db3f5c4f4c540957c46a9a024eb8addc41d683c"
+  integrity sha512-HDbyjqhkFxF8LAAsS5hZRVzNTG8wFRem3FuW391hCLh8vP7+JibEFxFIMMSG1sdRkOOzRfWxlsj4gYGpkZgMAw==
   dependencies:
     "@microsoft/fast-element" "^1.6.2"
     "@microsoft/fast-web-utilities" "^5.0.2"
-    "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^5.2.0"
     tslib "^1.13.0"
 
@@ -2740,16 +2739,6 @@
     "@microsoft/load-themed-styles" "1.10.26"
     loader-utils "~1.1.0"
 
-"@microsoft/tsdoc-config@^0.13.4":
-  version "0.13.5"
-  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc-config/-/tsdoc-config-0.13.5.tgz#2efeb27f5e4d191b8356aa4eb09e146c0813070c"
-  integrity sha512-KlnIdTRnPSsU9Coz9wzDAkT8JCLopP3ec1sgsgo7trwE6QLMKRpM4hZi2uzVX897SW49Q4f439auGBcQLnZQfA==
-  dependencies:
-    "@microsoft/tsdoc" "0.12.20"
-    ajv "~6.12.3"
-    jju "~1.4.0"
-    resolve "~1.12.0"
-
 "@microsoft/tsdoc-config@~0.15.2":
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc-config/-/tsdoc-config-0.15.2.tgz#eb353c93f3b62ab74bdc9ab6f4a82bcf80140f14"
@@ -2759,11 +2748,6 @@
     ajv "~6.12.6"
     jju "~1.4.0"
     resolve "~1.19.0"
-
-"@microsoft/tsdoc@0.12.20":
-  version "0.12.20"
-  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.12.20.tgz#4261285f666ee0c0378f810585dd4ec5bbfa8852"
-  integrity sha512-/b13m37QZYPV6nCOiqkFyvlQjlTNvAcQpgFZ6ZKIqtStJxNdqVo/frULubxMUMWi6p9Uo5f4BRlguv5ViFcL0A==
 
 "@microsoft/tsdoc@0.13.2":
   version "0.13.2"
@@ -6102,7 +6086,7 @@ ajv@^5.0.0, ajv@^5.1.0:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
 
-ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5, ajv@^6.5.5, ajv@~6.12.3, ajv@~6.12.6:
+ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5, ajv@^6.5.5, ajv@~6.12.6:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
