@@ -151,6 +151,7 @@ export const colorPaletteTokens: ColorPaletteTokens = (Object.keys(sharedColors)
     [`colorPalette${color}Foreground2`]: sharedColors[sharedColor].tint40,
     [`colorPalette${color}Foreground3`]: sharedColors[sharedColor].tint20,
     [`colorPalette${color}BorderActive`]: sharedColors[sharedColor].tint30,
+    [`colorPalette${color}Border1`]: sharedColors[sharedColor].primary,
     [`colorPalette${color}Border2`]: sharedColors[sharedColor].tint20,
   };
 
