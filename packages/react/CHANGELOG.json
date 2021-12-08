@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 08 Dec 2021 07:28:19 GMT",
+      "tag": "@fluentui/react_v8.46.3",
+      "version": "8.46.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d5d3ef6592218c4876fa351d22b7b717b82e7602",
+            "comment": "SearchBox: disable pointer events when is focused"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Dec 2021 07:31:32 GMT",
       "tag": "@fluentui/react_v8.46.2",
       "version": "8.46.2",
