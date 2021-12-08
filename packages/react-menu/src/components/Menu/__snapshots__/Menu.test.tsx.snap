@@ -3,8 +3,7 @@
 exports[`Menu renders a default state 1`] = `
 <div>
   <button
-    aria-expanded="false"
-    aria-haspopup="true"
+    aria-haspopup="menu"
     id="menu1"
   >
     Menu trigger

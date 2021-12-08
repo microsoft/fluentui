@@ -114,9 +114,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
             className={mergeClasses(
               styles.badgeContainer,
               color === 'subtle' && appearance === 'outline' && styles.brandContainer,
-              color === 'informative' && appearance === 'outline' && styles.brandContainer,
               color === 'subtle' && appearance === 'ghost' && styles.brandContainer,
-              color === 'informative' && appearance === 'ghost' && styles.brandContainer,
             )}
           >
             {badges.get(color)}
