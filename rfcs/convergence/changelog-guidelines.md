@@ -56,7 +56,7 @@ This RFC proposes four labels in the following form:
 ```
 feat:  This label communicates that a feature was added to the package
 fix:   This label communicates that a fix was applied to the package
-chore: This label communicates that changes which should not have an affect on th user were applied
+chore: This label communicates that changes which should not have an affect on the user were applied
 docs:  This label communicates that documentation was changed
 ```
 
