@@ -73,6 +73,8 @@ export function isConformant(
     // List of the components that will either require the test to be disabled or fixed: (https://hackmd.io/OAUn0pF6Qj-vc315wAHXLQ)
     disabledTests: [
       'as-renders-react-class',
+      'component-has-root-ref',
+      'component-handles-ref',
       'has-top-level-file',
       'consistent-callback-args',
       // Disabled as v0 has different prefix
