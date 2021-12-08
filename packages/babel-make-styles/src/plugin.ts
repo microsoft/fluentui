@@ -327,7 +327,7 @@ function processDefinitions(
                 return;
               }
 
-              // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
+              // This condition resolves "theme.aliasColorGreenForeground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
                 const paramsName = paramsPath?.node.name;
