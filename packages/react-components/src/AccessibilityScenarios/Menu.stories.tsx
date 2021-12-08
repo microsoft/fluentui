@@ -1,9 +1,9 @@
 import * as React from 'react';
-
+b;
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { Button } from '@fluentui/react-button';
+import { MenuButton } from '@fluentui/react-button';
 
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -78,7 +78,7 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
     <Scenario pageTitle="Profile menu">
       <Menu>
         <MenuTrigger>
-          <Button>Profile</Button>
+          <MenuButton>Profile</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
