@@ -72,9 +72,8 @@ export function isConformant(
     // TODO enable component-has-root-ref and disable test where necessary.
     // List of the components that will either require the test to be disabled or fixed: (https://hackmd.io/OAUn0pF6Qj-vc315wAHXLQ)
     disabledTests: [
+      'as-renders-react-class',
       'has-top-level-file',
-      'component-handles-ref',
-      'component-has-root-ref',
       'consistent-callback-args',
       // Disabled as v0 has different prefix
       'component-has-static-classname',
