@@ -73,7 +73,7 @@ This is possible if components:
 
 ## Current Implementation
 
-First we calculate the `state` for a component then we add styles and render it. Button example:
+First we calculate the `state` for a component then we add styles and render it.
 
 ```tsx
 export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
@@ -82,7 +82,29 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
   useComponentStyles(state);
 
   return renderComponent(state);
-}) as ForwardRefComponent<ButtonProps>;
+});
+```
+
+Some render functions take an additional context values parameter.
+See the [context-values RFC](https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/context-values.md)
+for background.
+
+```ts
+export const renderComponent =
+  (state: ComponentState, contextValues: ComponentContextValues) => { ... }
+```
+
+The component must acquire the context values and pass it to the render function.
+
+```tsx
+export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
+  const state = useComponent(props, ref);
+  const contextValues = useComponentContextValues(state);
+
+  useComponentStyles(state);
+
+  return renderComponent(state, contextValues);
+});
 ```
 
 ## Current Problems
@@ -110,7 +132,7 @@ Each `use*` function must be imported separately and assembled in the proper ord
 import { useFoo, useFooStyles, useFooContextValues, renderFoo } from '@fluentui/react-components';
 ```
 
-Since the pattern is consistent, there is no way for the consumer to know what they need to import to create a component.
+Since the pattern is inconsistent, there is no way for the consumer to know what they need to import to create a component.
 They will need to consult the docs for each component.
 
 ### 3. `useFoo` is not usable on its own
@@ -119,7 +141,16 @@ The name implies I am using the full component, yet, without styles it is not tr
 
 It is also not intuitive as to why the `state` calculated by `useFoo` includes all props, but the `className` prop is handled separately in `useFooStyles`. Especially since there are other calls inside `useFoo` for resolving shorthand, calculating aria, and adding event listeners.
 
-### 4. Not learn-once
+### 4. Components should not be aware of context values
+
+It is an an unnecessary burden to require the caller to get the context values back just to pass it to render.
+Context values are not designed to be modified between useComponent and render.
+If the caller does need to modify them, it should be done where the values are set on React context, not where
+the values are consumed.
+
+Since not all components will use context values. Conditionally returning context values from useComponent would re-introduce inconsistency.
+
+### 5. Not learn-once
 
 Ideally, the overall story for our composition would be learn-once-apply-everywhere. Currently, many implementations have just a small difference from others.
 
@@ -161,8 +192,15 @@ The `useComponent` function would call all other state functions and return the 
 - `useComponentARIA`
 - return `[state, renderCompoonent]`
 
+### How are context values handled?
+
+The useComponent method should curry the render function to encapsulate knowledge of context within the hook
+
+```ts
+return [state, state => renderComponent(state, contextValues)];
 ## FAQ
 
 ### How to update `state` before styles are calculated?
 
 If there is a use case where the consumer needs to get in between the state hooks, they can drop down a level and compose each hook together individually.
+```
