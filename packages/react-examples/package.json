@@ -35,6 +35,7 @@
   "dependencies": {
     "@fluentui/azure-themes": "^8.1.111",
     "@fluentui/date-time-utilities": "^8.2.3",
+    "@fluentui/dom-utilities": "^2.1.5",
     "@fluentui/example-data": "^8.3.0",
     "@fluentui/font-icons-mdl2": "^8.1.18",
     "@fluentui/foundation-legacy": "^8.1.17",
