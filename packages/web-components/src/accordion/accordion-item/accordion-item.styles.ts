@@ -131,7 +131,6 @@ export const accordionItemStyles: (
       align-items: center;
       justify-content: center;
       grid-column: 4;
-      position: relative;
       pointer-events: none;
       background: ${neutralFillStealthRestOnNeutralFillLayerRest};
       border-radius: calc(${controlCornerRadius} * 1px);
@@ -171,7 +170,6 @@ export const accordionItemStyles: (
       padding-inline-start: calc(${designUnit} * 2 * 1px);
       justify-content: center;
       grid-column: 1;
-      position: relative;
     }
 
     .end {
@@ -179,6 +177,11 @@ export const accordionItemStyles: (
       align-items: center;
       justify-content: center;
       grid-column: 3;
+    }
+
+    .icon,
+    .start,
+    .end {
       position: relative;
     }
   `.withBehaviors(
