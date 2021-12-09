@@ -149,11 +149,11 @@
       "implicitDependencies": []
     },
     "@fluentui/react-accordion": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-aria": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-avatar": {
@@ -270,7 +270,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-menu": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-monaco-editor": {
@@ -296,11 +296,11 @@
       "implicitDependencies": []
     },
     "@fluentui/react-portal": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-positioning": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-proptypes": {
@@ -319,6 +319,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-slider": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
+    "@fluentui/react-spinbutton": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -399,12 +403,6 @@
     "@fluentui/webpack-utilities": {
       "implicitDependencies": []
     },
-    "a11y-tests": {
-      "implicitDependencies": []
-    },
-    "typings": {
-      "tags": ["platform:any"]
-    },
     "nx-workspace-tools": {
       "tags": []
     },
@@ -423,8 +421,8 @@
     "theming-designer": {
       "implicitDependencies": []
     },
-    "todo-app": {
-      "implicitDependencies": []
+    "typings": {
+      "tags": ["platform:any"]
     },
     "vr-tests": {
       "implicitDependencies": []

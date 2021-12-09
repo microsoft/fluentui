@@ -44,6 +44,7 @@
       "@fluentui/react-radio": ["packages/react-radio/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
       "@fluentui/react-slider": ["packages/react-slider/src/index.ts"],
+      "@fluentui/react-spinbutton": ["packages/react-spinbutton/src/index.ts"],
       "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"],
       "@fluentui/react-storybook-addon": ["packages/react-storybook-addon/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-switch/src/index.ts"],

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use latest @linaria/shaker version",
-  "packageName": "@fluentui/make-styles-webpack-loader",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

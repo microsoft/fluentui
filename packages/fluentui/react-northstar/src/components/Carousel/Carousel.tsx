@@ -23,7 +23,6 @@ import { CarouselNavigation, CarouselNavigationProps } from './CarouselNavigatio
 import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
 import { CarouselPaddle, CarouselPaddleProps } from './CarouselPaddle';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
@@ -33,6 +32,7 @@ import {
   useStateManager,
   mergeVariablesOverrides,
   usePrevious,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
@@ -58,12 +58,12 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   /**
    * Sets the aria-roledescription attribute.
    */
-  ariaRoleDescription?: string;
+  'aria-roledescription'?: string;
 
   /**
    * Sets the aria-label attribute for carousel.
    */
-  ariaLabel?: string;
+  'aria-label'?: string;
 
   /** Specifies if the process of switching slides is circular. */
   circular?: boolean;
@@ -136,14 +136,7 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
  * @accessibilityIssues
  * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
  */
-export const Carousel: ComponentWithAs<'div', CarouselProps> &
-  FluentComponentStaticProps<CarouselProps> & {
-    Item: typeof CarouselItem;
-    Navigation: typeof CarouselNavigation;
-    NavigationItem: typeof CarouselNavigationItem;
-    Paddle: typeof CarouselPaddle;
-    PaddlesContainer: typeof CarouselPaddlesContainer;
-  } = props => {
+export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
   setStart();
@@ -157,8 +150,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     navigation,
     thumbnails,
     children,
-    ariaRoleDescription,
-    ariaLabel,
+    'aria-roledescription': ariaRoleDescription,
+    'aria-label': ariaLabel,
     className,
     design,
     styles,
@@ -212,8 +205,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     mapPropsToBehavior: () => ({
       navigation,
       ariaLiveOn,
-      ariaRoleDescription,
-      ariaLabel,
+      'aria-roledescription': ariaRoleDescription,
+      'aria-label': ariaLabel,
     }),
   });
 
@@ -475,6 +468,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -491,7 +485,14 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CarouselProps> &
+  FluentComponentStaticProps<CarouselProps> & {
+    Item: typeof CarouselItem;
+    Navigation: typeof CarouselNavigation;
+    NavigationItem: typeof CarouselNavigationItem;
+    Paddle: typeof CarouselPaddle;
+    PaddlesContainer: typeof CarouselPaddlesContainer;
+  };
 
 Carousel.displayName = 'Carousel';
 
@@ -500,8 +501,8 @@ Carousel.propTypes = {
     content: false,
   }),
   activeIndex: PropTypes.number,
-  ariaRoleDescription: PropTypes.string,
-  ariaLabel: PropTypes.string,
+  'aria-roledescription': PropTypes.string,
+  'aria-label': PropTypes.string,
   circular: PropTypes.bool,
   defaultActiveIndex: PropTypes.number,
   getItemPositionText: PropTypes.func,

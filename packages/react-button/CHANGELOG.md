@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 27 Oct 2021 12:14:15 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.5)
+
+Thu, 25 Nov 2021 08:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.4..@fluentui/react-button_v9.0.0-beta.5)
+
+### Changes
+
+- MenuButton: Removing tight coupling with Menu by replicating type locally. ([PR #20635](https://github.com/microsoft/fluentui/pull/20635) by Humberto.Morimoto@microsoft.com)
+- update react-icons dependency ([PR #20563](https://github.com/microsoft/fluentui/pull/20563) by ololubek@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.5 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.4)
+
+Fri, 12 Nov 2021 13:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-beta.3..@fluentui/react-button_v9.0.0-beta.4)
+
+### Changes
+
+- export static classes for components ([PR #20454](https://github.com/microsoft/fluentui/pull/20454) by olfedias@microsoft.com)
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- react-button: Removing use of enzyme in the converged package. ([PR #20342](https://github.com/microsoft/fluentui/pull/20342) by Humberto.Morimoto@microsoft.com)
+- Fixing incomplete comment. ([PR #20273](https://github.com/microsoft/fluentui/pull/20273) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-beta.4 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/babel-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-menu to v9.0.0-beta.4 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-beta.3)
 

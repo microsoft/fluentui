@@ -1,6 +1,6 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -61,7 +61,7 @@ export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosit
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
  */
-export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentStaticProps<ChatItemProps> = props => {
+export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
@@ -133,6 +133,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -143,7 +144,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, ChatItemProps> & FluentComponentStaticProps<ChatItemProps>;
 
 ChatItem.displayName = 'ChatItem';
 

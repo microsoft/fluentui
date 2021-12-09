@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme",
-  "version": "9.0.0-beta.2",
+  "version": "9.0.0-beta.4",
   "description": "Fluent UI themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -18,11 +18,12 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "storybook",
+    "start": "yarn storybook",
     "storybook": "start-storybook",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-theme/src && yarn docs"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-theme/src && yarn docs",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -42,7 +43,6 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

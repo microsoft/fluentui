@@ -5,6 +5,7 @@ import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup
 interface IGroupedBarChartState {
   width: number;
   height: number;
+  barwidth: number;
   selectedCallout: 'singleCallout' | 'StackCallout';
 }
 
@@ -14,6 +15,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     this.state = {
       width: 700,
       height: 400,
+      barwidth: 10,
       selectedCallout: 'singleCallout',
     };
   }
@@ -28,7 +30,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
   private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ height: parseInt(e.target.value, 10) });
   };
-
+  private _onBarwidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ barwidth: parseInt(e.target.value, 10) });
+  };
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
     this.setState({ selectedCallout: option.key as IGroupedBarChartState['selectedCallout'] });
   };
@@ -134,6 +138,10 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <br />
+        <label>change Barwidth:</label>
+        <input type="range" value={this.state.barwidth} min={10} max={70} onChange={this._onBarwidthChange} />
+        <label>{this.state.barwidth}</label>
         <ChoiceGroup
           options={options}
           selectedKey={this.state.selectedCallout}
@@ -150,6 +158,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             showYAxisGridLines
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
+            barwidth={this.state.barwidth}
           />
         </div>
       </>

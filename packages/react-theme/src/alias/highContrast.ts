@@ -164,6 +164,7 @@ export const colorPaletteTokens: ColorPaletteTokens = (Object.keys(sharedColors)
     [`colorPalette${color}Foreground2`]: white,
     [`colorPalette${color}Foreground3`]: white,
     [`colorPalette${color}BorderActive`]: hcHighlight,
+    [`colorPalette${color}Border1`]: white,
     [`colorPalette${color}Border2`]: white,
   };
 

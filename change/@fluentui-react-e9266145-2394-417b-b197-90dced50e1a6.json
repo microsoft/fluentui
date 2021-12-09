@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix minor issues with promise handling",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

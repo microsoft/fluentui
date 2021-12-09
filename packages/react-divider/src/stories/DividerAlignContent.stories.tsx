@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { Divider } from '../Divider'; // codesandbox-dependency: @fluentui/react-divider ^9.0.0-beta
+import { Divider } from '../Divider';
 
 const useStyles = makeStyles({
   root: {

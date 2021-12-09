@@ -361,14 +361,7 @@ const getOverrides = () => [
     files: [...configHelpers.testFiles],
     rules: {
       'no-console': 'off',
-      'react/jsx-no-bind': [
-        'error',
-        {
-          allowArrowFunctions: true, // inline lambdas ok in tests
-          allowFunctions: false,
-          allowBind: false,
-        },
-      ],
+      'react/jsx-no-bind': 'off',
     },
   },
   {

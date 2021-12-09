@@ -4,8 +4,8 @@
 
 ```ts
 
-import type { MakeStyles } from '@fluentui/make-styles';
-import type { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { MakeStylesStyle } from '@fluentui/react-make-styles';
+import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
 import type { RefObject } from 'react';
 import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
@@ -22,7 +22,7 @@ export interface CreateFocusIndicatorStyleRuleOptions {
 // @public
 export const createFocusOutlineStyle: (theme: Theme, options?: {
     style: Partial<FocusOutlineStyleOptions>;
-} & CreateFocusIndicatorStyleRuleOptions) => MakeStyles;
+} & CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyle;
 
 // @public (undocumented)
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;

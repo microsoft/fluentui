@@ -492,6 +492,17 @@ function _finalizeReturnEdge(
 }
 
 /**
+ * Whether or not the considered edge of the elementRectangle is lying on the edge of the bounds
+ * @param elementRectangle The rectangle whose edge we are considering
+ * @param bounds The rectangle marking the bounds
+ * @param edge The target edge we're considering
+ * @returns If the target edge of the elementRectangle is in the same location as that edge of the bounds
+ */
+function _isEdgeOnBounds(elementRectangle: Rectangle, edge: RectangleEdge, bounds?: Rectangle): boolean {
+  return bounds !== undefined && _getEdgeValue(elementRectangle, edge) === _getEdgeValue(bounds, edge);
+}
+
+/**
  * Finalizes the element position based on the hostElement. Only returns the
  * rectangle values to position such that they are anchored to the target.
  * This helps prevent resizing from looking very strange.
@@ -513,7 +524,13 @@ function _finalizeElementPosition(
   const hostRect: Rectangle = _getRectangleFromElement(hostElement);
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
   let returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
-  if (!doNotFinalizeReturnEdge) {
+
+  // If we are finalizing the return edge, choose the edge such that we grow away from the bounds
+  // If we are not finalizing the return edge but the opposite edge is flush against the bounds,
+  // choose that as the anchor edge so the element rect can grow away from the bounds' edge
+  // In this case there will not be a visual difference because there is no more room for the elementRectangle to grow
+  // in the usual direction
+  if (!doNotFinalizeReturnEdge || _isEdgeOnBounds(elementRectangle, getOppositeEdge(returnEdge), bounds)) {
     returnEdge = _finalizeReturnEdge(elementRectangle, returnEdge, bounds);
   }
 

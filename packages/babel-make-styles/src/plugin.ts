@@ -2,7 +2,7 @@ import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel-preset';
 import shakerEvaluator from '@linaria/shaker';
-import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
+import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStylesStyle } from '@fluentui/make-styles';
 
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
@@ -217,7 +217,19 @@ function processDefinitions(
           }
 
           if (propertyPath.isObjectProperty()) {
+            const keyPath = propertyPath.get('key');
             const valuePath = propertyPath.get('value');
+
+            /**
+             * Computed properties may require lazy evaluation.
+             *
+             * @example
+             *    makeStyles({ [var]: { color: 'red' } })
+             *    makeStyles({ [`${var}`]: { color: SOME_VARIABLE } })
+             */
+            if (propertyPath.node.computed) {
+              lazyPaths.push(keyPath);
+            }
 
             if (valuePath.isStringLiteral() || valuePath.isNullLiteral() || valuePath.isNumericLiteral()) {
               return;
@@ -315,7 +327,7 @@ function processDefinitions(
                 return;
               }
 
-              // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
+              // This condition resolves "theme.aliasColorGreenForeground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
                 const paramsName = paramsPath?.node.name;
@@ -536,7 +548,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
                 );
               }
 
-              const stylesBySlots: Record<string /* slot*/, MakeStyles> = evaluationResult.value;
+              const stylesBySlots: Record<string /* slot*/, MakeStylesStyle> = evaluationResult.value;
 
               nodePath.replaceWithMultiple((astify(stylesBySlots) as t.ObjectExpression).properties);
             }
@@ -558,7 +570,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               );
             }
 
-            const stylesBySlots: Record<string /* slot */, MakeStyles> = evaluationResult.value;
+            const stylesBySlots: Record<string /* slot */, MakeStylesStyle> = evaluationResult.value;
             const [classnamesMapping, cssRules] = resolveStyleRulesForSlots(stylesBySlots, 0);
 
             // TODO: find a better way to replace arguments

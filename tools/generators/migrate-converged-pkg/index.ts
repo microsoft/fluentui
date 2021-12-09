@@ -6,7 +6,6 @@ import {
   readWorkspaceConfiguration,
   joinPathFragments,
   readJson,
-  getProjects,
   stripIndents,
   visitNotIgnoredFiles,
   logger,
@@ -18,7 +17,15 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import { arePromptsEnabled, getProjectConfig, printUserLogs, prompt, updateJestConfig, UserLog } from '../../utils';
+import {
+  arePromptsEnabled,
+  getProjectConfig,
+  getProjects,
+  printUserLogs,
+  prompt,
+  updateJestConfig,
+  UserLog,
+} from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -46,7 +53,13 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   }
 
   if (hasSchemaFlag(validatedSchema, 'name')) {
-    runMigrationOnProject(tree, validatedSchema, userLog);
+    const projectNames = validatedSchema.name.split(',').filter(Boolean);
+
+    if (projectNames.length > 1) {
+      runBatchMigration(tree, userLog, projectNames);
+    } else {
+      runMigrationOnProject(tree, validatedSchema, userLog);
+    }
   }
 
   await formatFiles(tree);
@@ -56,11 +69,11 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   };
 }
 
-function runBatchMigration(tree: Tree, userLog: UserLog) {
-  const projects = getProjects(tree);
+function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]) {
+  const projects = getProjects(tree, projectNames);
 
-  projects.forEach((project, projectName) => {
-    if (!isPackageConverged(tree, project)) {
+  projects.forEach((projectConfig, projectName) => {
+    if (!isPackageConverged(tree, projectConfig)) {
       userLog.push({ type: 'error', message: `${projectName} is not converged package. Skipping migration...` });
       return;
     }
@@ -150,7 +163,7 @@ const templates = {
             lib: ['ES2019'],
             outDir: 'dist',
             declaration: true,
-            types: ['static-assets'],
+            types: ['static-assets', 'environment'],
           } as TsConfig['compilerOptions'],
           exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
           include: ['./src/**/*.ts', './src/**/*.tsx'],
@@ -256,16 +269,14 @@ const templates = {
         allowJs: true,
         checkJs: true,
       },
-      exclude: [
-        /* added programmatically */
-      ],
-      include: ['../src/**/*', '*.js'],
+      include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
     },
   },
   e2e: {
     tsconfig: {
       extends: '../tsconfig.json',
       compilerOptions: {
+        isolatedModules: false,
         types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
@@ -365,13 +376,17 @@ async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSc
   }
 
   if (newSchema.name) {
-    const projectConfig = readProjectConfiguration(tree, newSchema.name);
+    const projectNames = newSchema.name.split(',').filter(Boolean);
 
-    if (!isPackageConverged(tree, projectConfig)) {
-      throw new Error(
-        `${newSchema.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
-      );
-    }
+    projectNames.forEach(projectName => {
+      const projectConfig = readProjectConfiguration(tree, projectName);
+
+      if (!isPackageConverged(tree, projectConfig)) {
+        throw new Error(
+          `${newSchema.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
+        );
+      }
+    });
   }
 
   return newSchema;
@@ -382,7 +397,7 @@ async function triggerDynamicPrompts() {
 
   return prompt<PromptResponse>([
     {
-      message: 'Which converged package would you like migrate to new DX? (ex: @fluentui/react-menu)',
+      message: 'Which converged package(s) would you like migrate to new DX? (ex: @fluentui/react-menu)',
       type: 'input',
       name: 'name',
     },
@@ -401,7 +416,7 @@ function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
       return;
     }
 
-    if (isProjectMigrated(project)) {
+    if (isProjectMigrated(tree, project)) {
       stats.migrated.push({ projectName, ...project });
 
       return;
@@ -428,10 +443,14 @@ function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
 }
 
 function isProjectMigrated<T extends ProjectConfiguration>(
+  tree: Tree,
   project: T,
 ): project is T & Required<Pick<ProjectConfiguration, 'tags' | 'sourceRoot'>> {
+  const hasTsSolutionConfigSetup = Array.isArray(
+    readJson<TsConfig>(tree, joinPathFragments(project.root, 'tsconfig.json')).references,
+  );
   // eslint-disable-next-line eqeqeq
-  return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
+  return project.sourceRoot != null && Boolean(project.tags?.includes('vNext')) && hasTsSolutionConfigSetup;
 }
 
 function getPackageType(tree: Tree, options: NormalizedSchema) {
@@ -459,7 +478,7 @@ function getPackageType(tree: Tree, options: NormalizedSchema) {
 function isJs(tree: Tree, options: NormalizedSchema) {
   const jsSourceFiles: string[] = [];
   visitNotIgnoredFiles(tree, options.paths.sourceRoot, treePath => {
-    if (treePath.includes('.js') || treePath.includes('.jsx')) {
+    if (treePath.endsWith('.js') || treePath.endsWith('.jsx')) {
       jsSourceFiles.push(treePath);
     }
   });
@@ -503,7 +522,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
     'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
     storybook: 'start-storybook',
     start: 'yarn storybook',
-    test: 'jest',
+    test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
   /* eslint-enable @fluentui/max-len */
@@ -514,6 +533,11 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
     delete json.scripts['test:watch'];
 
     Object.assign(json.scripts, scripts);
+
+    if (getPackageType(tree, options) === 'node') {
+      delete json.scripts.start;
+      delete json.scripts.storybook;
+    }
 
     return json;
   });
@@ -554,12 +578,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
       json.compilerOptions.types.push(...(libTsConfig.compilerOptions.types || []), 'storybook__addons');
       json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
-
-      json.exclude = json.exclude || [];
-      const transformedExcludePaths = (libTsConfig.exclude || []).map(excludePath =>
-        transformRelativePath(excludePath),
-      );
-      json.exclude.push(...transformedExcludePaths);
 
       return json;
     });
@@ -832,8 +850,10 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
   const shouldAddMakeStylesPlugin =
-    pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
-    pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`];
+    !options.name.includes('make-styles') &&
+    (pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
+      pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`]);
+
   const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
 
   const config = templates.babelConfig({ extraPlugins });

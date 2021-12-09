@@ -1,8 +1,6 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { CounterBadge, CounterBadgeProps } from '@fluentui/react-badge';
+
+import { CounterBadge, CounterBadgeProps } from '../index';
 
 export const Color = (args: CounterBadgeProps) => {
   return (
@@ -11,10 +9,6 @@ export const Color = (args: CounterBadgeProps) => {
       <CounterBadge appearance="filled" color="danger" {...args} />
       <CounterBadge appearance="filled" color="important" {...args} />
       <CounterBadge appearance="filled" color="informative" {...args} />
-      <CounterBadge appearance="filled" color="severe" {...args} />
-      <CounterBadge appearance="filled" color="subtle" {...args} />
-      <CounterBadge appearance="filled" color="success" {...args} />
-      <CounterBadge appearance="filled" color="warning" {...args} />
     </>
   );
 };

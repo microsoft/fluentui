@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Wed, 10 Nov 2021 07:31:59 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Nov 2021 07:37:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.8.0)
+
+Tue, 30 Nov 2021 07:37:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.2..@fluentui/react-conformance_v0.8.0)
+
+### Minor changes
+
+- Add test preventing accidental application of native size prop ([PR #20833](https://github.com/microsoft/fluentui/pull/20833) by elcraig@microsoft.com)
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.2)
+
+Thu, 25 Nov 2021 14:54:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.1..@fluentui/react-conformance_v0.7.2)
+
+### Patches
+
+- Update component-has-root-ref test to support primarySlot ([PR #20617](https://github.com/microsoft/fluentui/pull/20617) by behowell@microsoft.com)
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.1)
+
+Mon, 15 Nov 2021 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.7.0..@fluentui/react-conformance_v0.7.1)
+
+### Patches
+
+- fix paths generated in defaultErrorMessages ([PR #20580](https://github.com/microsoft/fluentui/pull/20580) by olfedias@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.7.0)
 

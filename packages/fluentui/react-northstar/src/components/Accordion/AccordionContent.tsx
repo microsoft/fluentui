@@ -103,7 +103,7 @@ export const AccordionContent = (React.forwardRef<HTMLDListElement, AccordionCon
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'dd', HTMLDListElement, AccordionContentProps> &
+}) as unknown) as ForwardRefWithAs<'div', HTMLDListElement, AccordionContentProps> &
   FluentComponentStaticProps<AccordionContentProps>;
 
 AccordionContent.displayName = 'AccordionContent';
@@ -121,7 +121,7 @@ AccordionContent.propTypes = {
 
 AccordionContent.defaultProps = {
   accessibility: accordionContentBehavior,
-  as: 'dd',
+  as: 'div',
 };
 
 AccordionContent.handledProps = Object.keys(AccordionContent.propTypes) as any;
