@@ -6,6 +6,7 @@ export const counterBadgeClassName = 'fui-CounterBadge';
 
 const useStyles = makeStyles({
   dot: {
+    minWidth: 'auto',
     width: '6px',
     height: '6px',
     ...shorthands.padding('0'),
