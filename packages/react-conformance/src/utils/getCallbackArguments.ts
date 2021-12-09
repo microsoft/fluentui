@@ -116,7 +116,7 @@ function typeToString(typeChecker: ts.TypeChecker, type: ts.Type): ArgumentValue
     return type.intrinsicName;
   }
 
-  if (type.symbol) {
+  if (type.symbol?.declarations?.length) {
     const firstDeclaration = type.symbol.declarations[0];
     const fileName = firstDeclaration.parent.getSourceFile().fileName;
 
@@ -322,7 +322,7 @@ const findPropertySignature = (
         const statementType = typeChecker.getTypeFromTypeNode(statement.type);
         const property = typeChecker.getPropertyOfType(statementType, propertyName);
 
-        if (property && ts.isPropertySignature(property.valueDeclaration)) {
+        if (property?.valueDeclaration && ts.isPropertySignature(property.valueDeclaration)) {
           return property.valueDeclaration;
         }
       } else {
@@ -401,7 +401,7 @@ export function getCallbackArguments(
     const typeAtLocation = typeChecker.getTypeAtLocation(propertySignature.type);
     const typeDeclarations = typeAtLocation.symbol.declarations;
 
-    if (typeDeclarations.length !== 1) {
+    if (typeDeclarations?.length !== 1) {
       throw new Error(
         [
           `A definition for "${typeName}.${propertyName}" has multiple declarations, it's not expected.`,
