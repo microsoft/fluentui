@@ -26,7 +26,7 @@ makeStyles({
 
 ## Export tokens separately
 
-Initially we planed support IE11 via runtime tricks, but with the deprecation of IE11, we are now able to leverage CSS Variables for tokens and theming purposes. We communicate this fact to customers so that they understand clearly what they are using.
+Initially we planed to support IE11 via runtime tricks, but with the deprecation of IE11, we are now able to leverage CSS Variables for tokens and theming purposes. We communicate this fact to customers so that they understand clearly what they are using.
 
 The proposal is to export `tokens` as a plain object:
 
@@ -40,7 +40,7 @@ const tokens: Theme = {
 };
 ```
 
-This also removes need in `useTheme()` hook for customers as tokens can be accessed directly, for example:
+This also removes the need of using the `useTheme()` hook for customers as tokens can be accessed directly, for example:
 
 ```tsx
 import { tokens } from '@fluentui/react-theme';
@@ -68,7 +68,9 @@ makeStyles({
 
 ## Simplify types in `FluentProvider`
 
-Currently `FluentProvider` only supports the `Theme` type from `@fluentui/react-theme`. If we simplify this to `Record<string, string | number>`, we enable consumers to extend the default theme:
+Currently `FluentProvider` only supports the `Theme` type from `@fluentui/react-theme`.
+
+If we simplify this to `Record<string, string | number>`, we enable consumers to extend the default theme:
 
 ```tsx
 import { FluentProvider } from '@fluentui/react-provider';
@@ -86,7 +88,39 @@ function App() {
 }
 ```
 
-`FluentProvider` will inject all customer tokens properly including scenarios with React Portals.
+We could alternatively make the theme property in `FluentProvider` extend from `PartialTheme` if we want to ensure that the theme that is passed in always has the keys for the default tokens we provide.
+
+The type of `FluentProviderProps` would then be:
+
+```ts
+export interface FluentProviderProps<TTheme extends PartialTheme = PartialTheme>
+  extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>,
+    Partial<FluentProviderCommons> {
+  theme?: TTheme;
+}
+```
+
+And we could then use it as follows:
+
+```tsx
+import { FluentProvider } from '@fluentui/react-provider';
+import { mergeThemes, teamsLightTheme, Theme } from '@fluentui/react-theme';
+
+type CustomTokens = {
+  tokenA: string;
+};
+type CustomTheme = CustomTokens & Theme;
+
+const extendedTheme: CustomTheme = mergeThemes(teamsLightTheme, { tokenA: 'red' });
+
+function App() {
+  return <FluentProvider theme={extendedTheme} />;
+}
+```
+
+In both scenarios above, `FluentProvider` will still inject all customer tokens properly including scenarios with React Portals.
+
+Also, in case there is an ask for it, we can decide to export a primitive component in the future (named for example `TokensProvider`) whose only purpose would be to render variables for `Record<string, string | number>`.
 
 ## Using custom tokens in `makeStyles()`
 
