@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as stylesImport from './ReactIconGrid.module.scss';
 import { IIconGridProps } from './IconGridProps.types';
 import { FluentIconsProps } from '@fluentui/react-icons';
-import { SearchBox } from '@fluentui/react';
+import { SearchBox } from '@fluentui/react/lib/SearchBox';
 import { ChoiceGroup, IChoiceGroupOption, IChoiceGroupStyles } from '@fluentui/react/lib/ChoiceGroup';
 const styles: any = stylesImport;
 
