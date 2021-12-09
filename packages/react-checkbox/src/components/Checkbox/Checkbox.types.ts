@@ -73,7 +73,10 @@ export type CheckboxSlots = {
 /**
  * Checkbox Props
  */
-export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked'> &
+export type CheckboxProps = Omit<
+  ComponentProps<CheckboxSlots, 'input'>,
+  'size' | 'checked' | 'defaultChecked' | 'onChange'
+> &
   Partial<CheckboxCommons> & {
     /**
      * Checkboxes don't support children. To add a label, use the `label` prop.
