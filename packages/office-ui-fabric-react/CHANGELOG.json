@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 09 Dec 2021 12:27:04 GMT",
+      "tag": "office-ui-fabric-react_v7.180.1",
+      "version": "7.180.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: disable pointer events when is focused",
+            "author": "olfedias@microsoft.com",
+            "commit": "067520ec522f2a0d3618af9ca4fd580d5296fdcd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Dec 2021 12:27:37 GMT",
       "tag": "office-ui-fabric-react_v7.180.0",
       "version": "7.180.0",

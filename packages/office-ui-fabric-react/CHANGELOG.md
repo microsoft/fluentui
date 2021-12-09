@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 02 Dec 2021 12:27:37 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Dec 2021 12:27:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.180.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.180.1)
+
+Thu, 09 Dec 2021 12:27:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.180.0..office-ui-fabric-react_v7.180.1)
+
+### Patches
+
+- SearchBox: disable pointer events when is focused ([PR #20971](https://github.com/microsoft/fluentui/pull/20971) by olfedias@microsoft.com)
 
 ## [7.180.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.180.0)
 
