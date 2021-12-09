@@ -5,10 +5,8 @@ import type { CounterBadgeState } from './CounterBadge.types';
 export const counterBadgeClassName = 'fui-CounterBadge';
 
 const useStyles = makeStyles({
-  root: {
-    minWidth: 'auto',
-  },
   dot: {
+    minWidth: 'auto',
     width: '6px',
     height: '6px',
     ...shorthands.padding('0'),
@@ -25,7 +23,6 @@ export const useCounterBadgeStyles = (state: CounterBadgeState): CounterBadgeSta
   const styles = useStyles();
   state.root.className = mergeClasses(
     counterBadgeClassName,
-    styles.root,
     state.dot && styles.dot,
     !state.showZero && state.count === 0 && !state.dot && styles.hide,
     state.root.className,
