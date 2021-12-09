@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "packageName": "@fluentui/react-conformance",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
