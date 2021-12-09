@@ -1,10 +1,5 @@
 import * as React from 'react';
-import type {
-  ComponentProps,
-  ComponentSlotProps,
-  ComponentState,
-  IntrinsicShorthandProps,
-} from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * Label Props
@@ -46,5 +41,5 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
      * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
      * @defaultvalue false
      */
-    required?: boolean | ComponentSlotProps<React.ComponentType<React.HTMLAttributes<HTMLElement>>> | React.ReactNode;
+    required?: boolean | IntrinsicShorthandProps<'span'> | React.ReactNode;
   };

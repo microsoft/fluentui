@@ -51,7 +51,7 @@ describe('getSlots', () => {
   it('returns a component slot with no children', () => {
     type Slots = {
       root: IntrinsicShorthandProps<'div'>;
-      icon: ComponentSlotProps<React.ComponentType<FooProps>>;
+      icon: ComponentSlotProps<typeof Foo>;
     };
     expect(
       getSlots<Slots>(
@@ -111,7 +111,7 @@ describe('getSlots', () => {
   it('returns a component and includes all props', () => {
     type Slots = {
       root: IntrinsicShorthandProps<'div'>;
-      icon: IntrinsicShorthandProps<'a'> | ComponentSlotProps<React.ComponentType<FooProps>>;
+      icon: IntrinsicShorthandProps<'a'> | ComponentSlotProps<typeof Foo>;
     };
     expect(
       getSlots<Slots>(

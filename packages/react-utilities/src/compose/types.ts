@@ -40,6 +40,11 @@ export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = 
  * Defines the slot props for a slot that supports a Component type.
  *
  * For intrinsic elements like 'div', use {@link IntrinsicShorthandProps} instead.
+ *
+ * The template param is the type of a control, using the `typeof` keyword. For example:
+ * ```
+ * ComponentSlotProps<typeof Button>
+ * ```
  */
 export type ComponentSlotProps<Component extends React.ComponentType> = Component extends React.ComponentType<
   infer Props
@@ -105,10 +110,6 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
-/**
- * Takes a slots record and returns a mapping of slot names to shorthand props for each slot along with putting the
- * shorthand props of the primary slot at the top level.
- */
 export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> =
   // Include shorthand slot props for each of the component's slots.
   Omit<
@@ -124,10 +125,6 @@ export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primar
   > &
     PropsWithoutRef<Shorthands[Primary]>;
 
-/**
- * Takes a slots record and adds to it a 'components' object that is a mapping of slot names to the type of elements
- * that each slot can be rendered as.
- */
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
     [Key in keyof Shorthands]-?:

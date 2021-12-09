@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import {
   presenceAvailableFilled,
   presenceAvailableRegular,
@@ -44,7 +44,7 @@ export const usePresenceBadge = (props: PresenceBadgeProps, ref: React.Ref<HTMLE
       {
         size: 'medium',
         ...props,
-        icon: resolveShorthand(undefined, {
+        icon: resolveShorthand((undefined as unknown) as IntrinsicShorthandProps<'span'>, {
           required: true,
         }),
       },

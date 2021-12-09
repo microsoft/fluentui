@@ -2,9 +2,9 @@ import * as React from 'react';
 import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 import type {
   ComponentProps,
-  ComponentSlotProps,
   ComponentState,
   IntrinsicShorthandProps,
+  ObjectShorthandProps,
 } from '@fluentui/react-utilities';
 import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
 
@@ -37,7 +37,7 @@ export type AccordionHeaderSlots = {
    */
   icon?: IntrinsicShorthandProps<'div'>;
   // TODO: children should never be a slot, this should be refactored so that behavior is correct.
-  children: ComponentSlotProps<React.ComponentType<React.HTMLAttributes<HTMLElement>>>;
+  children: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 };
 
 export type AccordionHeaderCommons = {

@@ -42,7 +42,7 @@ export const colGroupProperties: Record<string, number>;
 // @public (undocumented)
 export const colProperties: Record<string, number>;
 
-// @public
+// @public (undocumented)
 export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
     [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
 }, Primary & 'root'> & PropsWithoutRef<Shorthands[Primary]>;
@@ -50,7 +50,7 @@ export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primar
 // @public
 export type ComponentSlotProps<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? ObjectShorthandProps<Props> : never;
 
-// @public
+// @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
     components?: {
         [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
