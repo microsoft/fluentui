@@ -121,6 +121,7 @@ As an interim step (to avoid blocking RC), we could **stop exporting `FooCommons
 
 ### Cons
 
+- Adds complexity to FooState type definition when FooState includes most/all of FooCommons
 - More work to do
 - Potential for delaying RC
   - This is mitigated by the last paragraph in the "Proposal" section
