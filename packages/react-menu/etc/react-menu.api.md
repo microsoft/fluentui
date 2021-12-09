@@ -348,7 +348,7 @@ export function useMenuContextValues(state: MenuState): MenuContextValues;
 export const useMenuDivider: (props: MenuDividerProps, ref: React_2.Ref<HTMLElement>) => MenuDividerState;
 
 // @public (undocumented)
-export const useMenuDividerStyles: (state: MenuDividerState) => ComponentState<MenuDividerSlots>;
+export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
 
 // @public
 export function useMenuGroup(props: MenuGroupProps, ref: React_2.Ref<HTMLElement>): MenuGroupState;
@@ -363,7 +363,7 @@ export function useMenuGroupContextValues(state: MenuGroupState): MenuGroupConte
 export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>): MenuGroupHeaderState;
 
 // @public (undocumented)
-export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => ComponentState<MenuGroupHeaderSlots>;
+export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
 
 // @public (undocumented)
 export const useMenuGroupStyles: (state: MenuGroupState) => MenuGroupState;
