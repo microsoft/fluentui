@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 09 Dec 2021 07:27:17 GMT",
+      "tag": "@fluentui/react_v8.47.0",
+      "version": "8.47.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "442708a3657b4deb5c607bed865b3f29a4a8c7ad",
+            "comment": "Support ability to prefer the menu target as an item's click event target"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Dec 2021 07:28:19 GMT",
       "tag": "@fluentui/react_v8.46.3",
       "version": "8.46.3",

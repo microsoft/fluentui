@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support ability to prefer the menu target as an item's click event target",
-  "packageName": "@fluentui/react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}
