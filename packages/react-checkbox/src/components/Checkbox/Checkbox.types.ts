@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
-import type {
-  ComponentProps,
-  ComponentSlotProps,
-  ComponentState,
-  IntrinsicShorthandProps,
-} from '@fluentui/react-utilities';
+import { ComponentProps, ComponentSlotProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export interface CheckboxCommons {
   /**

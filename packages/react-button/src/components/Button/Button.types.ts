@@ -1,4 +1,4 @@
-import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type ButtonSlots = {

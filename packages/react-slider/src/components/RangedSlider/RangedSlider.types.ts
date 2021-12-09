@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { SliderSlots, SliderCommons } from '../Slider/Slider.types';
 
 export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {

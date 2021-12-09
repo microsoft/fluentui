@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { MenuListContextValue } from '../../contexts/menuListContext';
-import type { SelectableHandler } from '../../selectable/index';
+import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import { MenuListContextValue } from '../../contexts/menuListContext';
+import { SelectableHandler } from '../../selectable/index';
 
 export type MenuCheckedValueChangeEvent = React.MouseEvent | React.KeyboardEvent;
 
