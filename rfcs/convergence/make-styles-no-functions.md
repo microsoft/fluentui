@@ -1,31 +1,34 @@
-# Problem
+# RFC: No functions in `makeStyles()`
 
-Currently `makeStyles()` can define style rules in two different ways
+---
+
+@layershifter @khmakoto
+
+## Summary/problem
+
+Currently `makeStyles()` allows to define style rules in two different ways:
 
 ```ts
 makeStyles({
+  // 👇 as an object
   rootA: { color: 'red' },
+  // 👇 as a function
   rootB: theme => ({ color: theme.tokenB }),
 });
 ```
 
-`theme` is typed and coupled to tokens from `@fluentui/react-theme`. This tokens shape is not extensible for customers.
+- `rootB` uses a function where `theme` is typed and coupled to tokens from `@fluentui/react-theme`. This tokens shape is not extensible for customers.
 
-# Solution
+# Proposed solution
+
+- Remove functions from `makeStyles()` calls
+- Export the `tokens` object with CSS variables
 
 ## Export tokens separately
 
-Tokens are just CSS variables, we communicate this fact to customers so that they understand clearly what they are using. This also removes need in `useTheme()` hook as tokens can be accessed directly.
+Initially we planed support IE11 via runtime tricks, but with the deprecation of IE11, we are now able to leverage CSS Variables for tokens and theming purposes. We communicate this fact to customers so that they understand clearly what they are using.
 
-```tsx
-import { tokens } from '@fluentui/react-theme';
-
-function CustomComponent() {
-  return <div style={{ color: tokens.tokensA }} />;
-}
-```
-
-`tokens` is just a plain object:
+The proposal is to export `tokens` as a plain object:
 
 ```ts
 import type { Theme } from '@fluentui/react-theme';
@@ -37,7 +40,19 @@ const tokens: Theme = {
 };
 ```
 
-## Remove functions
+This also removes need in `useTheme()` hook for customers as tokens can be accessed directly, for example:
+
+```tsx
+import { tokens } from '@fluentui/react-theme';
+
+function CustomComponent() {
+  return <div style={{ color: tokens.borderRadiusNone /* is "var(--borderRadiusNone)" */ }} />;
+}
+```
+
+That simplifies also integration with other CSS-in-JS from Fluent UI v8 or Fluent UI Northstar.
+
+## Remove functions in `makeStyles()`
 
 Once `tokens` are available there is no more need for functional style rules in `makeStyles()`:
 
@@ -53,7 +68,7 @@ makeStyles({
 
 ## Simplify types in `FluentProvider`
 
-Currently `FluentProvider` only supports the `Theme` type from `@fluentui/react-theme`. If we simplify this to `Record<string, string | number>` , we enable consumers to extend the default theme.
+Currently `FluentProvider` only supports the `Theme` type from `@fluentui/react-theme`. If we simplify this to `Record<string, string | number>`, we enable consumers to extend the default theme:
 
 ```tsx
 import { FluentProvider } from '@fluentui/react-provider';
@@ -71,7 +86,7 @@ function App() {
 }
 ```
 
-`FluentProvider` will inject all customer tokens properly. These tokens will also be available on React Portals.
+`FluentProvider` will inject all customer tokens properly including scenarios with React Portals.
 
 ## Using custom tokens in `makeStyles()`
 
