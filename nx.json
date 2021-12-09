@@ -322,6 +322,10 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-spinbutton": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-storybook": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
