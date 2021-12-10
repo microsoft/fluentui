@@ -66,7 +66,6 @@ export class SankeyChartBase extends React.Component<
       <div
         className={this._classNames.root}
         role={'presentation'}
-        // eslint-disable-next-line react/jsx-no-bind
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <svg width={width} height={height} id={getId('sankeyChart')}>

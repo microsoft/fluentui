@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use new types from makeStyles core",
+  "packageName": "@fluentui/babel-make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

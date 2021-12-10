@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities/index';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { Fabric, IDatePickerProps, DatePicker } from '@fluentui/react';
 
 const customDayClass = 'test-dayCell';
@@ -27,7 +27,7 @@ const commonProps: Partial<IDatePickerProps> = {
 };
 
 storiesOf('DatePicker', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -82,7 +82,7 @@ storiesOf('DatePicker', module)
   ));
 
 storiesOf('DatePicker - No Month Option', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -106,7 +106,7 @@ storiesOf('DatePicker - No Month Option', module)
   ));
 
 storiesOf('DatePicker - Disabled', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

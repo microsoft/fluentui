@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import {
   thumbClassName,
   trackClassName,
@@ -15,8 +15,10 @@ import {
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';
 
-export const lowerThumbClassName = mergeClasses(thumbClassName, `${thumbClassName + '-lower'}`);
-export const upperThumbClassName = mergeClasses(thumbClassName, `${thumbClassName + '-upper'}`);
+export const rangedSliderClassName = 'fui-RangedSlider';
+
+export const lowerThumbClassName = `${thumbClassName} ${thumbClassName + '-lower'}`;
+export const upperThumbClassName = `${thumbClassName} ${thumbClassName + '-upper'}`;
 
 /**
  * Styles for the Input slot
@@ -25,8 +27,8 @@ const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',
-    padding: 0,
-    margin: 0,
+    ...shorthands.padding(0),
+    ...shorthands.margin(0),
     width: '0px',
     height: '0px',
     pointerEvents: 'none',
@@ -35,11 +37,11 @@ const useInputStyles = makeStyles({
   lowerInputFocusIndicator: createCustomFocusIndicatorStyle(
     theme => ({
       // TODO: Update this to [`& + .${lowerThumbClassName}`]
-      '& + .ms-Slider-thumb-lower': {
+      '& + .fui-Slider-thumb-lower': {
         ':before': {
-          outline: 'none',
+          outlineStyle: 'none',
           boxSizing: 'border-box',
-          border: 'calc(var(--slider-thumb-size) * .05) solid black',
+          ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', 'black'),
         },
       },
     }),
@@ -49,11 +51,11 @@ const useInputStyles = makeStyles({
   upperInputFocusIndicator: createCustomFocusIndicatorStyle(
     theme => ({
       // TODO: Update this to [`& + .${upperThumbClassName}`]
-      '& + .ms-Slider-thumb-upper': {
+      '& + .fui-Slider-thumb-upper': {
         ':before': {
-          outline: 'none',
+          outlineStyle: 'none',
           boxSizing: 'border-box',
-          border: 'calc(var(--slider-thumb-size) * .05) solid black',
+          ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', 'black'),
         },
       },
     }),
@@ -74,6 +76,7 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
   const inputStyles = useInputStyles();
 
   state.root.className = mergeClasses(
+    rangedSliderClassName,
     rootStyles.root,
     rootStyles[state.size!],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,

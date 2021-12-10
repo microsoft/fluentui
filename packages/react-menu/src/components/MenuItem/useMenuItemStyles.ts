@@ -1,11 +1,15 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { useCheckmarkStyles } from '../../selectable/index';
+import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemState } from './MenuItem.types';
+
+export const menuItemClassName = 'fui-MenuItem';
 
 const useStyles = makeStyles({
   focusIndicator: theme => createFocusOutlineStyle(theme),
   root: theme => ({
-    borderRadius: theme.borderRadiusMedium,
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
     position: 'relative',
     color: theme.colorNeutralForeground1,
     backgroundColor: theme.colorNeutralBackground1,
@@ -16,7 +20,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     fontSize: theme.fontSizeBase300,
     cursor: 'pointer',
-    gap: '4px',
+    ...shorthands.gap('4px'),
 
     ':hover': {
       backgroundColor: theme.colorNeutralBackground1Hover,
@@ -66,6 +70,7 @@ const useStyles = makeStyles({
 export const useMenuItemStyles = (state: MenuItemState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    menuItemClassName,
     styles.root,
     styles.focusIndicator,
     state.disabled && styles.disabled,
@@ -86,4 +91,5 @@ export const useMenuItemStyles = (state: MenuItemState) => {
   if (state.submenuIndicator) {
     state.submenuIndicator.className = mergeClasses(styles.submenuIndicator, state.submenuIndicator.className);
   }
+  useCheckmarkStyles(state as MenuItemCheckboxState);
 };

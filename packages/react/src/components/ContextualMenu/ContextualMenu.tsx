@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled, composeRenderFunction } from '../../Utilities';
 import { ContextualMenuBase } from './ContextualMenu.base';
 import { getStyles } from './ContextualMenu.styles';
 import type { IContextualMenuProps, IContextualMenuStyleProps, IContextualMenuStyles } from './ContextualMenu.types';
@@ -13,7 +13,16 @@ const LocalContextualMenu: React.FunctionComponent<IContextualMenuProps> = style
   IContextualMenuProps,
   IContextualMenuStyleProps,
   IContextualMenuStyles
->(ContextualMenuBase, getStyles, () => ({ onRenderSubMenu }), { scope: 'ContextualMenu' });
+>(
+  ContextualMenuBase,
+  getStyles,
+  (props: IContextualMenuProps) => ({
+    onRenderSubMenu: props.onRenderSubMenu
+      ? composeRenderFunction(props.onRenderSubMenu, onRenderSubMenu)
+      : onRenderSubMenu,
+  }),
+  { scope: 'ContextualMenu' },
+);
 
 /**
  * ContextualMenu description

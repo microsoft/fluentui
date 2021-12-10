@@ -21,8 +21,9 @@
     "start": "yarn storybook",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-storybook-addon/src && yarn docs",
-    "storybook": "start-storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-storybook-addon/src && yarn docs",
+    "storybook": "start-storybook",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -31,8 +32,8 @@
     "react": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-theme": "9.0.0-beta.2",
-    "@fluentui/react-provider": "9.0.0-beta.3",
+    "@fluentui/react-theme": "9.0.0-beta.4",
+    "@fluentui/react-provider": "9.0.0-beta.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -47,7 +48,6 @@
     "@storybook/theming": "^6.3.6"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

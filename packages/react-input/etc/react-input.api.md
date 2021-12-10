@@ -14,16 +14,17 @@ import * as React_2 from 'react';
 export const Input: ForwardRefComponent<InputProps>;
 
 // @public (undocumented)
-export interface InputCommons {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    // (undocumented)
-    inline?: boolean;
+export const inputClassName = "fui-Input";
+
+// @public (undocumented)
+export type InputCommons = {
     size?: 'small' | 'medium' | 'large';
-}
+    inline?: boolean;
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+};
 
 // @public
-export interface InputProps extends InputCommons, Omit<ComponentProps<Partial<InputSlots>>, 'children'> {
-}
+export type InputProps = InputCommons & Omit<ComponentProps<InputSlots>, 'children'>;
 
 // @public
 export const inputShorthandProps: (keyof InputSlots)[];
@@ -31,17 +32,13 @@ export const inputShorthandProps: (keyof InputSlots)[];
 // @public (undocumented)
 export type InputSlots = {
     root: IntrinsicShorthandProps<'span'>;
-    input: IntrinsicShorthandProps<'input'>;
-    inputWrapper: IntrinsicShorthandProps<'span'>;
-    bookendBefore?: IntrinsicShorthandProps<'span'>;
-    bookendAfter?: IntrinsicShorthandProps<'span'>;
-    insideStart?: IntrinsicShorthandProps<'span'>;
-    insideEnd?: IntrinsicShorthandProps<'span'>;
+    input: Omit<IntrinsicShorthandProps<'input'>, 'size'>;
+    contentBefore?: IntrinsicShorthandProps<'span'>;
+    contentAfter?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public
-export interface InputState extends InputCommons, ComponentState<InputSlots> {
-}
+export type InputState = InputCommons & ComponentState<InputSlots>;
 
 // @public
 export const renderInput: (state: InputState) => JSX.Element;

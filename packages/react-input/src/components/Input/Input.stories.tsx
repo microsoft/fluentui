@@ -1,26 +1,27 @@
 /// <reference types="@fluentui/react-icons" />
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { Input } from './Input';
 import { getNativeElementProps, useId } from '@fluentui/react-utilities';
 import { InputProps } from './Input.types';
 import { ArgTypes } from '@storybook/react';
-// prevent terrible reload times by using deep imports :(
-import Search16Regular from '@fluentui/react-icons/lib/esm/components/Search16Regular';
-import Search20Regular from '@fluentui/react-icons/lib/esm/components/Search20Regular';
-import Search24Regular from '@fluentui/react-icons/lib/esm/components/Search24Regular';
-import Dismiss16Regular from '@fluentui/react-icons/lib/esm/components/Dismiss16Regular';
-import Dismiss20Regular from '@fluentui/react-icons/lib/esm/components/Dismiss20Regular';
-import Dismiss24Regular from '@fluentui/react-icons/lib/esm/components/Dismiss24Regular';
+import {
+  Search16Regular,
+  Search20Regular,
+  Search24Regular,
+  Dismiss16Regular,
+  Dismiss20Regular,
+  Dismiss24Regular,
+} from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    padding: '20px',
+    ...shorthands.gap('20px'),
+    ...shorthands.padding('20px'),
   },
-  storyFilledBackground: theme => ({ background: theme.colorNeutralBackground3 }),
+  storyFilledBackground: theme => ({ backgroundColor: theme.colorNeutralBackground3 }),
 });
 
 const icons = {
@@ -52,7 +53,7 @@ export const InputExamples = (
         <label htmlFor={inputId1}>with a label</label>
         <Input {...props} id={inputId1} />
       </div>
-      <Input {...props} insideStart={<SearchIcon />} insideEnd={<DismissIcon />} />
+      <Input {...props} contentBefore={<SearchIcon />} contentAfter={<DismissIcon />} />
       <p>
         Some text with <Input {...props} inline /> inline input
       </p>
@@ -63,8 +64,8 @@ export const InputExamples = (
           disabled: true,
           placeholder: 'disabled',
         }}
-        insideStart={<SearchIcon />}
-        insideEnd={<DismissIcon />}
+        contentBefore={<SearchIcon />}
+        contentAfter={<DismissIcon />}
       />
       <Input
         {...props}
@@ -74,6 +75,9 @@ export const InputExamples = (
           placeholder: '300px width',
         }}
       />
+      <p>
+        Some text with <Input {...props} inline /> inline input
+      </p>
     </div>
   );
 };
@@ -90,6 +94,7 @@ const argTypes: ArgTypes = {
   // so they get passed through in the example via the input slot
   placeholder: { defaultValue: 'placeholder', control: { type: 'text' } },
   value: { control: { type: 'text' } },
+  disabled: { defaultValue: false, control: { type: 'boolean' } },
 };
 
 export default {

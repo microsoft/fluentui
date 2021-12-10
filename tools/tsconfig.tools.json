@@ -6,7 +6,8 @@
     "module": "commonjs",
     "target": "es5",
     "types": ["node"],
-    "importHelpers": false
+    "importHelpers": false,
+    "downlevelIteration": true
   },
   "exclude": ["**/*.spec.ts"],
   "include": ["**/*.ts"]

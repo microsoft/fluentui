@@ -18,6 +18,15 @@ import { usePopperMouseTarget } from '@fluentui/react-positioning';
 export const Menu: React_2.FC<MenuProps>;
 
 // @public (undocumented)
+export type MenuCheckedValueChangeData = {
+    name: string;
+    checkedItems: string[];
+};
+
+// @public (undocumented)
+export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
+
+// @public (undocumented)
 export const MenuContext: Context<MenuContextValue>;
 
 // @public
@@ -35,6 +44,9 @@ export type MenuContextValues = {
 export const MenuDivider: ForwardRefComponent<MenuDividerProps>;
 
 // @public (undocumented)
+export const menuDividerClassName = "fui-MenuDivider";
+
+// @public (undocumented)
 export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
 
 // @public (undocumented)
@@ -47,6 +59,9 @@ export type MenuDividerState = ComponentState<MenuDividerSlots>;
 
 // @public
 export const MenuGroup: ForwardRefComponent<MenuGroupProps>;
+
+// @public (undocumented)
+export const menuGroupClassName = "fui-MenuGroup";
 
 // @public (undocumented)
 export const MenuGroupContextProvider: React_2.Provider<MenuGroupContextValue>;
@@ -63,6 +78,9 @@ export type MenuGroupContextValues = {
 
 // @public
 export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps>;
+
+// @public (undocumented)
+export const menuGroupHeaderClassName = "fui-MenuGroupHeader";
 
 // @public (undocumented)
 export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
@@ -95,10 +113,16 @@ export const MenuItem: ForwardRefComponent<MenuItemProps>;
 export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
 
 // @public (undocumented)
+export const menuItemCheckboxClassName = "fui-MenuItemCheckbox";
+
+// @public (undocumented)
 export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
 
 // @public (undocumented)
 export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
+
+// @public (undocumented)
+export const menuItemClassName = "fui-MenuItem";
 
 // Warning: (ae-forgotten-export) The symbol "MenuItemCommons" needs to be exported by the entry point index.d.ts
 //
@@ -107,6 +131,9 @@ export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCom
 
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
+
+// @public (undocumented)
+export const menuItemRadioClassName = "fui-MenuItemRadio";
 
 // @public (undocumented)
 export type MenuItemRadioProps = MenuItemProps & MenuItemSelectableProps;
@@ -147,11 +174,11 @@ export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;
 export const MenuList: ForwardRefComponent<MenuListProps>;
 
 // @public (undocumented)
+export const menuListClassName = "fui-MenuList";
+
+// @public (undocumented)
 export type MenuListCommons = {
-    onCheckedValueChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: {
-        name: string;
-        checkedItems: string[];
-    }) => void;
+    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
     checkedValues: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;
     hasIcons?: boolean;
@@ -204,6 +231,9 @@ export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLEl
 // @public
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
 
+// @public (undocumented)
+export const menuPopoverClassName = "fui-MenuPopover";
+
 // @public
 export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
 
@@ -248,8 +278,9 @@ export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
-export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'aria-expanded' | 'id'>> & {
+export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
     ref?: React_2.Ref<never>;
+    'aria-expanded': boolean | undefined;
 };
 
 // @public (undocumented)
@@ -334,14 +365,23 @@ export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React_2.Ref
 // @public (undocumented)
 export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => ComponentState<MenuGroupHeaderSlots>;
 
+// @public (undocumented)
+export const useMenuGroupStyles: (state: MenuGroupState) => MenuGroupState;
+
 // @public
 export const useMenuItem: (props: MenuItemProps, ref: React_2.Ref<HTMLElement>) => MenuItemState;
 
 // @public
 export const useMenuItemCheckbox: (props: MenuItemCheckboxProps, ref: React_2.Ref<HTMLElement>) => MenuItemCheckboxState;
 
+// @public (undocumented)
+export const useMenuItemCheckboxStyles: (state: MenuItemCheckboxState) => void;
+
 // @public
 export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React_2.Ref<HTMLElement>) => MenuItemRadioState;
+
+// @public (undocumented)
+export const useMenuItemRadioStyles: (state: MenuItemRadioState) => void;
 
 // @public
 export const useMenuItemStyles: (state: MenuItemState) => void;

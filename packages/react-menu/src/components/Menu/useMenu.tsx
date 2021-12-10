@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { usePopperMouseTarget, usePopper, resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuTrigger } from '../MenuTrigger/index';
@@ -213,13 +213,17 @@ const useMenuOpenState = (
   }, [findPrevFocusable, state.triggerRef]);
 
   React.useEffect(() => {
-    if (!shouldHandleKeyboardRef.current) {
-      return;
-    }
-
     if (open) {
       focusFirst();
-    } else {
+    }
+  }, [open, focusFirst]);
+
+  React.useEffect(() => {
+    if (open) {
+      focusFirst();
+    }
+
+    if (shouldHandleKeyboardRef.current && !open) {
       if (shouldHandleTabRef.current && !state.isSubmenu) {
         pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
       } else {

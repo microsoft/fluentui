@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Tue, 02 Nov 2021 07:37:02 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 14:54:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.6)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.5..@fluentui/react-file-type-icons_v8.5.6)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/style-utilities to v8.5.0 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+
+## [8.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.5)
+
+Wed, 10 Nov 2021 07:31:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.4..@fluentui/react-file-type-icons_v8.5.5)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.4.2 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+
+## [8.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.4)
+
+Mon, 08 Nov 2021 07:35:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.3..@fluentui/react-file-type-icons_v8.5.4)
+
+### Patches
+
+- Updating filetypeicon package to support Loop files. ([PR #20518](https://github.com/microsoft/fluentui/pull/20518) by caperez@microsoft.com)
 
 ## [8.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.3)
 
