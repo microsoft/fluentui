@@ -18,7 +18,7 @@ export default {
 
   decorators: [
     Story => (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', padding: '12px' }}>
         <Story />
       </div>
     ),
