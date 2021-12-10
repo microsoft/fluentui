@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add missing null check detected by typescript 4.3",
-  "packageName": "@fluentui/react-focus",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix minor issue with promise handling in FloatingSuggestions",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
