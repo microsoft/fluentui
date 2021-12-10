@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { Checkbox } from './Checkbox';
 import { isConformant } from '../../common/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { CheckboxOnChangeData } from './Checkbox.types';
 
 // TODO: add more tests here, and create visual regression tests in /apps/vr-tests
 
@@ -130,19 +131,21 @@ describe('Checkbox', () => {
   });
 
   it('calls onChange with the correct value', () => {
-    const eventHandler = jest.fn();
+    const onChange = jest.fn<void, [React.FormEvent<HTMLInputElement>, CheckboxOnChangeData]>();
 
-    const renderedComponent = render(<Checkbox checked onChange={eventHandler} />);
+    const renderedComponent = render(<Checkbox onChange={onChange} />);
     const input = renderedComponent.getByRole('checkbox') as HTMLInputElement;
 
-    expect(eventHandler).toBeCalledTimes(0);
+    expect(onChange).toBeCalledTimes(0);
 
     fireEvent.click(input);
     fireEvent.click(input);
     fireEvent.click(input);
 
-    expect(eventHandler).toBeCalledTimes(3);
-    expect(eventHandler.mock.calls[2][1]).toEqual({ checked: false });
+    expect(onChange).toBeCalledTimes(3);
+    expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
+    expect(onChange.mock.calls[1][1]).toEqual({ checked: false });
+    expect(onChange.mock.calls[2][1]).toEqual({ checked: true });
   });
 
   it("doesn't remove controlled mixed when no onChange provided", () => {
