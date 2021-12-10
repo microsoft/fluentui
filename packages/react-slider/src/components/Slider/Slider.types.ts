@@ -96,7 +96,7 @@ export type SliderCommons = {
   ariaValueText?: (value: number) => string;
 };
 
-interface SliderOnChangeData {
+export type SliderOnChangeData = {
   value: number;
 }
 
