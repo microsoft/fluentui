@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 01 Dec 2021 07:41:09 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Dec 2021 07:27:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.6)
+
+Thu, 09 Dec 2021 07:27:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.5..@fluentui/react-experiments_v8.4.6)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.0 ([PR #20161](https://github.com/microsoft/fluentui/pull/20161) by beachball)
+
+## [8.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.5)
+
+Wed, 08 Dec 2021 07:28:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.4..@fluentui/react-experiments_v8.4.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.3 ([PR #20831](https://github.com/microsoft/fluentui/pull/20831) by beachball)
+
+## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.4)
+
+Tue, 07 Dec 2021 07:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.3..@fluentui/react-experiments_v8.4.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.2 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+- Bump @fluentui/example-data to v8.3.0 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+
+## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.3)
+
+Fri, 03 Dec 2021 07:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.2..@fluentui/react-experiments_v8.4.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.1 ([PR #20887](https://github.com/microsoft/fluentui/pull/20887) by beachball)
 
 ## [8.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.2)
 

@@ -34,6 +34,7 @@ export interface MenuVariables {
   colorActive: string;
 
   iconSize: string;
+  iconOnlyBorderRadius: string;
   iconOnlyColorActive: string;
   iconOnlyColorFocus: string;
   iconOnlyBackgroundColorHover: string;
@@ -139,6 +140,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
 
     iconSize: pxToRem(16),
 
+    iconOnlyBorderRadius: siteVars.borderRadiusMedium,
     iconOnlyColorActive: siteVars.colors.brand[600],
     iconOnlyColorFocus: siteVars.colors.brand[600],
     iconOnlyWrapperBackgroundColorFocus: undefined,

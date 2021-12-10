@@ -7,7 +7,7 @@ import {
   AccordionHeader,
   AccordionPanel,
 } from '@fluentui/react-accordion';
-import { CircleRingIcon } from '@fluentui/react-icons-mdl2';
+import { CircleRegular } from '@fluentui/react-icons';
 
 storiesOf('Accordion Converged', module)
   .addDecorator(story => (
@@ -97,19 +97,19 @@ storiesOf('Accordion Converged', module)
     () => (
       <Accordion openItems={[]}>
         <AccordionItem value={0}>
-          <AccordionHeader expandIcon={<CircleRingIcon />} expandIconPosition="start">
+          <AccordionHeader expandIcon={<CircleRegular />} expandIconPosition="start">
             Expand Icon Start
           </AccordionHeader>
           <AccordionPanel>Expand Icon Start Panel</AccordionPanel>
         </AccordionItem>
         <AccordionItem value={1}>
-          <AccordionHeader expandIcon={<CircleRingIcon />} expandIconPosition="end">
+          <AccordionHeader expandIcon={<CircleRegular />} expandIconPosition="end">
             Expand Icon End
           </AccordionHeader>
           <AccordionPanel>Expand Icon End Panel</AccordionPanel>
         </AccordionItem>
         <AccordionItem value={2}>
-          <AccordionHeader inline expandIcon={<CircleRingIcon />} expandIconPosition="end">
+          <AccordionHeader inline expandIcon={<CircleRegular />} expandIconPosition="end">
             Expand Icon Inline End
           </AccordionHeader>
           <AccordionPanel>Expand Icon Inline End Panel</AccordionPanel>
@@ -123,19 +123,19 @@ storiesOf('Accordion Converged', module)
     () => (
       <Accordion openItems={[]}>
         <AccordionItem value={0}>
-          <AccordionHeader icon={<CircleRingIcon />} expandIconPosition="start">
+          <AccordionHeader icon={<CircleRegular />} expandIconPosition="start">
             Icon Start
           </AccordionHeader>
           <AccordionPanel>Icon Start Panel</AccordionPanel>
         </AccordionItem>
         <AccordionItem value={1}>
-          <AccordionHeader icon={<CircleRingIcon />} expandIconPosition="end">
+          <AccordionHeader icon={<CircleRegular />} expandIconPosition="end">
             Icon End
           </AccordionHeader>
           <AccordionPanel>Icon End Panel</AccordionPanel>
         </AccordionItem>
         <AccordionItem value={2}>
-          <AccordionHeader inline icon={<CircleRingIcon />} expandIconPosition="end">
+          <AccordionHeader inline icon={<CircleRegular />} expandIconPosition="end">
             Icon Inline End
           </AccordionHeader>
           <AccordionPanel>Icon Inline End Panel</AccordionPanel>
