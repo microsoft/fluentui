@@ -254,7 +254,8 @@ describe('Callout Positioning', () => {
       targetEdge: RectangleEdge.top,
       alignmentEdge: RectangleEdge.left,
     };
-    const bounds = new Rectangle(0, 500, 0, 500);
+    const bounds = new Rectangle(0, 501, 0, 501);
+    const flushBounds = new Rectangle(0, 500, 0, 500);
     const target = new Rectangle(0, 100, 0, 100);
 
     // Normal positioning should target the alignment edge and the opposite of the target edge.
@@ -287,6 +288,14 @@ describe('Callout Positioning', () => {
     expect(finalizedPosition.elementPosition.bottom).toBeDefined();
     expect(finalizedPosition.elementPosition.right).toBeUndefined();
 
+    // With bounds flush against the edge of the elementRectangle, change the edge such that the elementRectangle
+    // will grow correctly but will not visually change
+    // In this case, that's bottom (opposite of target) and right (flush against the bounds)
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, flushBounds, false, true);
+    expect(finalizedPosition.elementPosition.left).toBeUndefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.right).toBeDefined();
+
     // With bounds introduced, the alignment should apply to the beak as well, aligning it to
     // the edge closest to bounds
     // In this case, that's the bottom (opposite of target) and right (closer to edge of bounds)
@@ -298,6 +307,45 @@ describe('Callout Positioning', () => {
     expect(finalizedBeakPosition.elementPosition.right).toBeDefined();
     expect(finalizedBeakPosition.elementPosition.bottom).toBeDefined();
     expect(finalizedBeakPosition.elementPosition.left).toBeUndefined();
+  });
+
+  it('Correctly determines the correct edges to return when against bounds', () => {
+    // Create a dummy host, this isn't the part that we care about for this test
+    const host = {
+      getBoundingClientRect: () => {
+        return {
+          bottom: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          width: 0,
+          height: 0,
+        };
+      },
+    };
+    // create a dummy beak
+    const pos: IElementPosition = {
+      elementRectangle: new Rectangle(400, 500, 400, 500),
+      targetEdge: RectangleEdge.top,
+      alignmentEdge: RectangleEdge.left,
+    };
+    const bounds = new Rectangle(0, 500, 0, 500);
+
+    // When we allow finalizing the return edge, we should specify the bottom such that the host grows away from
+    // the edge of the bounds
+    // In this case, that's the bottom (opposite of target) and right (closer to edge of bounds)
+    let finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, bounds, false, false);
+    expect(finalizedPosition.elementPosition.right).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.top).toBeUndefined();
+
+    // When we don't allow finalizing the return edge, but the host is flush against the edge of the bounds,
+    // we should have the same result as before
+    // In this case, that's the bottom (opposite of target) and right (closer to edge of bounds)
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, bounds, false, true);
+    expect(finalizedPosition.elementPosition.right).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.top).toBeUndefined();
   });
 });
 

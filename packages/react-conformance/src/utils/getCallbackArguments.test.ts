@@ -155,7 +155,7 @@ describe('getCallbackArguments', () => {
         export type TypeA = React.MouseEvent;
         export type TypeString = string;
         export type TypeB = React.MouseEvent | MouseEvent | TypeString | number;
-        
+
         export type AccordionToggleEventHandler = (a: TypeA, b: TypeB, c: React.MouseEvent) => void;
 
         export interface AccordionProps {
@@ -195,7 +195,7 @@ describe('getCallbackArguments', () => {
           key: string
           value: AccordionItemValue;
         }
-        
+
         export type AccordionToggleEventHandler = (data: Data) => void;
 
         export interface AccordionProps {
@@ -295,7 +295,7 @@ describe('getCallbackArguments', () => {
       expect(() =>
         getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle'),
       ).toThrowErrorMatchingInlineSnapshot(
-        `"We received a type \\"Pick<TypeA, \\"open\\">\\" that is too complex to resolve. Please simply it, for example remove usage of \\"Pick\\"."`,
+        `"We received a type \\"TypeB\\" that is too complex to resolve. Please simply it, for example remove usage of \\"Pick\\"."`,
       );
       /* eslint-enable @fluentui/max-len */
     });

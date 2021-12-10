@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 30 Nov 2021 07:37:33 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Dec 2021 07:30:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.9.0)
+
+Fri, 10 Dec 2021 07:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.8.0..@fluentui/react-conformance_v0.9.0)
+
+### Minor changes
+
+- Update typescript to 4.3 and update react-docgen-typescript ([PR #20909](https://github.com/microsoft/fluentui/pull/20909) by elcraig@microsoft.com)
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.8.0)
 

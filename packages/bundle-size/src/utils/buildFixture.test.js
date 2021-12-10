@@ -46,6 +46,6 @@ describe('buildFixture', () => {
 
   it('should throw on compilation errors', async () => {
     const fixturePath = await setup(`import something from 'unknown-pkg'`);
-    expect(buildFixture(fixturePath, true)).rejects.toThrow();
+    await expect(buildFixture(fixturePath, true)).rejects.toBeDefined();
   });
 });

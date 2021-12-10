@@ -81,12 +81,16 @@ const useRootStyles = makeStyles({
 
       // Animation for focus OUT
       transform: 'scaleX(0)',
-      transition: `transform ${motionDurations.ultraFast} ${motionCurves.accelerateMid}`,
+      transitionProperty: 'transform',
+      transitionDuration: motionDurations.ultraFast,
+      transitionDelay: motionCurves.accelerateMid,
     },
     ':focus-within:after': {
       // Animation for focus IN
       transform: 'scaleX(1)',
-      transition: `transform ${motionDurations.normal} ${motionCurves.decelerateMid}`,
+      transitionProperty: 'transform',
+      transitionDuration: motionDurations.normal,
+      transitionDelay: motionCurves.decelerateMid,
     },
     ':focus-within:active:after': {
       // This is if the user clicks the field again while it's already focused
@@ -113,7 +117,7 @@ const useRootStyles = makeStyles({
     display: 'inline-flex',
   },
   outline: {
-    background: tokens.colorNeutralBackground1,
+    backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
     ':hover': {
@@ -127,7 +131,7 @@ const useRootStyles = makeStyles({
     },
   },
   underline: {
-    background: tokens.colorTransparentBackground,
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderRadius(0), // corners look strange if rounded
     ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
     ':hover': {
@@ -149,10 +153,10 @@ const useRootStyles = makeStyles({
     },
   },
   filledDarker: {
-    background: tokens.colorNeutralBackground3,
+    backgroundColor: tokens.colorNeutralBackground3,
   },
   filledLighter: {
-    background: tokens.colorNeutralBackground1,
+    backgroundColor: tokens.colorNeutralBackground1,
   },
   disabled: {
     cursor: 'not-allowed',
@@ -169,14 +173,14 @@ const useInputElementStyles = makeStyles({
     ...shorthands.padding('0', horizontalSpacing.xxs),
     color: tokens.colorNeutralForeground1,
     // Use literal "transparent" (not from the theme) to always let the color from the root show through
-    background: 'transparent',
+    backgroundColor: 'transparent',
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,
       opacity: 1, // browser style override
     },
     ':focus-visible': {
-      outline: 'none', // disable default browser outline
+      outlineStyle: 'none', // disable default browser outline
     },
   },
   small: {
@@ -192,7 +196,7 @@ const useInputElementStyles = makeStyles({
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
-    background: tokens.colorTransparentBackground,
+    backgroundColor: tokens.colorTransparentBackground,
     cursor: 'not-allowed',
     '::placeholder': {
       color: tokens.colorNeutralForegroundDisabled,

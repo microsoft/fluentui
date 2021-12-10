@@ -33,8 +33,7 @@ const useStyles = makeStyles({
   rootSmall: {
     minWidth: '16px',
     height: '16px',
-    paddingRight: '6px',
-    paddingLeft: '6px',
+    ...shorthands.padding('2px'),
     ...shorthands.gap('4px'),
     fontSize: '8px',
   },
@@ -42,23 +41,20 @@ const useStyles = makeStyles({
     height: '20px',
     minWidth: '20px',
     ...shorthands.gap('4px'),
-    paddingRight: '8px',
-    paddingLeft: '8px',
+    ...shorthands.padding('4px'),
     fontSize: '10px',
   },
   rootLarge: {
     minWidth: '24px',
     height: '24px',
-    paddingRight: '8px',
-    paddingLeft: '8px',
+    ...shorthands.padding('4px'),
     fontSize: '12px',
-    ...shorthands.gap('6px'),
+    ...shorthands.gap('4px'),
   },
   rootExtraLarge: {
     minWidth: '32px',
     height: '32px',
-    paddingRight: '12px',
-    paddingLeft: '12px',
+    ...shorthands.padding('6px'),
     ...shorthands.gap('6px'),
     fontSize: '12px',
     ...shorthands.borderWidth(tokens.strokeWidthThick),
@@ -99,7 +95,7 @@ const useStyles = makeStyles({
   rootTintDanger: {
     backgroundColor: tokens.colorPaletteRedBackground1,
     color: tokens.colorPaletteRedForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteRedForeground2),
+    ...shorthands.borderColor(tokens.colorPaletteRedBorder1),
   },
   rootGhostDanger: {
     color: tokens.colorPaletteRedForeground3,
@@ -161,8 +157,8 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
   rootOutlineImportant: {
-    color: tokens.colorNeutralForeground1,
-    ...shorthands.borderColor(tokens.colorNeutralForeground1),
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
   },
   rootTintImportant: {
     backgroundColor: tokens.colorNeutralForeground3,
@@ -178,8 +174,8 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
   rootOutlineInformative: {
-    color: tokens.colorNeutralBackground5,
-    ...shorthands.borderColor(tokens.colorNeutralBackground5),
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   rootTintInformative: {
     backgroundColor: tokens.colorNeutralBackground4,
@@ -187,7 +183,7 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   rootGhostInformative: {
-    color: tokens.colorNeutralBackground5,
+    color: tokens.colorNeutralForeground3,
   },
   rootFilledSubtle: {
     backgroundColor: tokens.colorNeutralBackground1,

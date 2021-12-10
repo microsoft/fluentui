@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SliderState } from './Slider.types';
@@ -91,7 +91,7 @@ export const useRootStyles = makeStyles({
 export const useSliderWrapper = makeStyles({
   sliderWrapper: {
     position: 'absolute',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
   },
 
   horizontal: {
@@ -115,18 +115,18 @@ export const useSliderWrapper = makeStyles({
 export const useRailStyles = makeStyles({
   rail: {
     position: 'absolute',
-    borderRadius: tokens.borderRadiusXLarge,
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     boxSizing: 'border-box',
     pointerEvents: 'none',
   },
 
   enabled: {
-    background: tokens.colorNeutralStrokeAccessible,
+    backgroundColor: tokens.colorNeutralStrokeAccessible,
   },
 
   disabled: {
-    background: tokens.colorNeutralBackgroundDisabled,
-    border: `1px solid ${tokens.colorTransparentStrokeDisabled}`,
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
   },
 
   horizontal: {
@@ -173,7 +173,7 @@ export const useTrackWrapperStyles = makeStyles({
 export const useTrackStyles = makeStyles({
   track: {
     position: 'absolute',
-    borderRadius: tokens.borderRadiusXLarge,
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
   },
 
   horizontal: {
@@ -191,11 +191,11 @@ export const useTrackStyles = makeStyles({
   },
 
   enabled: {
-    background: tokens.colorCompoundBrandBackground,
+    backgroundColor: tokens.colorCompoundBrandBackground,
   },
 
   disabled: {
-    background: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: tokens.colorNeutralForegroundDisabled,
   },
 });
 
@@ -206,15 +206,15 @@ export const useMarksWrapperStyles = makeStyles({
   marksWrapper: {
     position: 'relative',
     display: 'grid',
-    outline: 'none',
-    zIndex: '1',
+    outlineStyle: 'none',
+    zIndex: 1,
     whiteSpace: 'nowrap',
     [`& .${internalMarkClassName}`]: {
-      background: tokens.colorNeutralBackground1,
+      backgroundColor: tokens.colorNeutralBackground1,
     },
 
     [`& .${internalMarkLabelClassName}`]: {
-      padding: '2px',
+      ...shorthands.padding('2px'),
       fontSize: '12px',
     },
 
@@ -287,8 +287,8 @@ export const useMarksWrapperStyles = makeStyles({
 export const useThumbWrapperStyles = makeStyles({
   thumbWrapper: {
     position: 'absolute',
-    outline: 'none',
-    zIndex: '2',
+    outlineStyle: 'none',
+    zIndex: 2,
   },
 
   horizontal: {
@@ -316,8 +316,8 @@ export const useThumbStyles = makeStyles({
     left: '0px',
     bottom: '0px',
     right: '0px',
-    outline: 'none',
-    borderRadius: tokens.borderRadiusCircular,
+    outlineStyle: 'none',
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
     boxSizing: 'border-box',
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${tokens.colorNeutralBackground1} inset`,
     transform: 'translate(-50%, -50%)',
@@ -328,10 +328,10 @@ export const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: tokens.borderRadiusCircular,
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid ${tokens.colorNeutralStroke1}`,
+      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', tokens.colorNeutralStroke1),
     },
   },
 
@@ -342,7 +342,7 @@ export const useThumbStyles = makeStyles({
   disabled: {
     background: tokens.colorNeutralForegroundDisabled,
     ':before': {
-      border: `calc(var(--slider-thumb-size) * .05) solid ${tokens.colorNeutralForegroundDisabled}`,
+      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', tokens.colorNeutralForegroundDisabled),
     },
   },
 
@@ -377,8 +377,8 @@ const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',
-    padding: 0,
-    margin: 0,
+    ...shorthands.padding('0'),
+    ...shorthands.margin('0'),
     width: '100%',
     height: '100%',
     touchAction: 'none',

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 02 Dec 2021 07:36:29 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Dec 2021 07:30:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.2)
+
+Fri, 10 Dec 2021 07:30:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.1..@fluentui/web-components_v2.1.2)
+
+### Patches
+
+- fix: z-index in accordion header renders above content ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by robarb@microsoft.com)
 
 ## [2.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.1)
 

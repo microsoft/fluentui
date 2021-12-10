@@ -11,7 +11,7 @@ import * as React_2 from 'react';
 export const anchorProperties: Record<string, number>;
 
 // @public
-export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
 
 // @public
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
@@ -32,9 +32,6 @@ export const buttonProperties: Record<string, number>;
 
 // @public
 export function canUseDOM(): boolean;
-
-// @public (undocumented)
-export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
 // @public
 export const clamp: (value: number, min: number, max: number) => number;
@@ -161,7 +158,7 @@ export const olProperties: Record<string, number>;
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
 
 // @public
-export const onlyChild: <P>(child: string | number | boolean | {} | React_2.ReactNodeArray | React_2.ReactPortal | React_2.ReactElement<P, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | null | undefined) => React_2.ReactElement<P, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)>;
+export const onlyChild: <P>(child: boolean | React_2.ReactText | React_2.ReactFragment | React_2.ReactPortal | React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> | null | undefined) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
@@ -257,14 +254,6 @@ export type UseControllableStateOptions<State> = {
     initialState: State;
 };
 
-// Warning: (ae-forgotten-export) The symbol "DefaultValue" needs to be exported by the entry point index.d.ts
-//
-// @public
-export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>) => void]>;
-
-// @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
-
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
 
@@ -323,7 +312,7 @@ export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
-// lib/compose/getSlots.d.ts:27:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
+// lib/compose/getSlots.d.ts:29:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

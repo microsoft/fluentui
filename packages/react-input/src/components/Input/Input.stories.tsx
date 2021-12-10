@@ -1,6 +1,6 @@
 /// <reference types="@fluentui/react-icons" />
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import { Input } from './Input';
 import { getNativeElementProps, useId } from '@fluentui/react-utilities';
@@ -19,10 +19,10 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    padding: '20px',
+    ...shorthands.gap('20px'),
+    ...shorthands.padding('20px'),
   },
-  storyFilledBackground: { background: tokens.colorNeutralBackground3 },
+  storyFilledBackground: { backgroundColor: tokens.colorNeutralBackground3 },
 });
 
 const icons = {
