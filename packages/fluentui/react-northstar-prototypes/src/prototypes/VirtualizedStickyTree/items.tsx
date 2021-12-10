@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Loader } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
+// import getItems from './itemsGenerator';
 
-const loader = {
-  id: `loader`,
+const loader = id => ({
+  id: `loader-${id}`,
   title: {
     content: <Loader />,
     style: { display: 'flex', height: '100%' },
   },
-};
+});
 
 export const splitItemsToPages = numOfPage => {
   const flattened = [{ id: 'ROOT' }];
@@ -32,16 +33,29 @@ export const splitItemsToPages = numOfPage => {
     const result = reBuild(pageFlatItems);
     if (pageIndex < numOfPage - 1) {
       // push loader
-      // // option 1 push as sticky header
+      // - option 1 push as sticky header
       // result.push(loader);
-      // option 2 push as child
-      const lastItem = result[result.length - 1];
-      lastItem.items = lastItem.items.length ? [...lastItem.items, loader] : [loader];
+      // - option 2 push as child
+      // const lastItem = result[result.length - 1];
+      // lastItem.items = lastItem.items.length ? [...lastItem.items, loader] : [loader];
+      // - option 3 push to unload sticky
+      fillinUnloadSticky(result);
     }
     return result;
   };
 
   return getNthPage;
+};
+
+const fillinUnloadSticky = currItems => {
+  const lastLoadedSticky = currItems[currItems.length - 1];
+  lastLoadedSticky.items.push(loader(lastLoadedSticky.id));
+
+  items.forEach(stickyItem => {
+    if (!currItems.filter(item => item.id === stickyItem.id).length) {
+      currItems.push({ ...stickyItem, items: [loader(stickyItem.id)] });
+    }
+  });
 };
 
 const getNumPerPage = (numOfPage: number, itemCount: number): number[] =>
@@ -79,6 +93,7 @@ const reBuild = flattened => {
   return nodeMap['ROOT'].items;
 };
 
+// const items = getItems(3, 30, 2);
 const items = [
   {
     id: '0',

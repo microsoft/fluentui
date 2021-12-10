@@ -40,9 +40,9 @@ const VirtualStickyTreePaginationPrototype = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [hasNextPage, setHasNextPage] = React.useState(true);
 
-  // control activeItemIds state to always load sticky header as expanded
-  const [activeItemIds, setActiveItemIds] = React.useState(items.map(item => item.id));
-  const handleActiveItemIdsChange = (_e, data) => setActiveItemIds(data.activeItemIds);
+  // // control activeItemIds state to always load sticky header as expanded
+  // const [activeItemIds, setActiveItemIds] = React.useState(items.map(item => item.id));
+  // const handleActiveItemIdsChange = (_e, data) => setActiveItemIds(data.activeItemIds);
 
   const loadMoreRows = isLoading
     ? () => Promise.resolve()
@@ -52,10 +52,10 @@ const VirtualStickyTreePaginationPrototype = () => {
         setIsLoading(false);
         setHasNextPage(result.hasNextPage);
 
-        // load sticky header as expanded
-        const currSticky = items.map(item => item.id);
-        const newlyLoadedSticky = result.items.map(item => item.id).filter(id => currSticky.indexOf(id) < 0);
-        setActiveItemIds(prevActiveItemIds => [...prevActiveItemIds, ...newlyLoadedSticky]);
+        // // load sticky header as expanded
+        // const currSticky = items.map(item => item.id);
+        // const newlyLoadedSticky = result.items.map(item => item.id).filter(id => currSticky.indexOf(id) < 0);
+        // setActiveItemIds(prevActiveItemIds => [...prevActiveItemIds, ...newlyLoadedSticky]);
 
         setItems(result.items);
       };
@@ -72,9 +72,9 @@ const VirtualStickyTreePaginationPrototype = () => {
         hasNextPage={hasNextPage}
         isNextPageLoading={isLoading}
         onLoadNextPage={loadMoreRows}
-        paginationThreshold={2}
-        activeItemIds={activeItemIds}
-        onActiveItemIdsChange={handleActiveItemIdsChange}
+        paginationThreshold={10}
+        // activeItemIds={activeItemIds}
+        // onActiveItemIdsChange={handleActiveItemIdsChange}
       />
     </div>
   );
