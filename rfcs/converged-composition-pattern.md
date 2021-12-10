@@ -232,8 +232,8 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 
   // apply custom styles
   // passing the existing class name first allows layering customStyles on top of those set by useComponent.
-  // to replace styles with custom styles, omit state.root.className from the mergeStyles call.
-  state.root.className = mergeStyles(state.root.className, customStyles.root);
+  // to replace styles with custom styles, omit state.root.className from the mergeClasses call.
+  state.root.className = mergeClasses(state.root.className, customStyles.root);
 
   return render(state);
 });
@@ -276,8 +276,8 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 
   // apply custom styles
   // passing the existing class name first allows layering customStyles on top of those set by useComponent.
-  // to replace styles with custom styles, omit state.root.className from the mergeStyles call.
-  state.root.className = mergeStyles(state.root.className, customStyles.root);
+  // to replace styles with custom styles, omit state.root.className from the mergeClasses call.
+  state.root.className = mergeClasses(state.root.className, customStyles.root);
 
   return render(state);
 });
