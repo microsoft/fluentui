@@ -14,6 +14,9 @@ const indicatorColor = '--fui-Checkbox-indicator-color';
 const indicatorBorderColor = '--fui-Checkbox-indicator-borderColor';
 const indicatorBackgroundColor = '--fui-Checkbox-indicator-backgroundColor';
 
+// The indicator size is used by the indicator and label styles
+const indicatorSize = '--fui-Checkbox-indicator-size';
+
 /**
  * Styles for the root slot
  */
@@ -25,6 +28,14 @@ const useRootStyles = makeStyles({
     cursor: 'pointer',
     columnGap: spacingHorizontalM,
     ...shorthands.padding(spacingHorizontalS),
+  },
+
+  medium: {
+    [indicatorSize]: '16px',
+  },
+
+  large: {
+    [indicatorSize]: '20px',
   },
 
   disabled: {
@@ -105,6 +116,8 @@ const useInputStyles = makeStyles({
 const useIndicatorStyles = makeStyles({
   base: theme => ({
     alignSelf: 'flex-start',
+    width: `var(${indicatorSize})`,
+    height: `var(${indicatorSize})`,
     boxSizing: 'border-box',
     flexShrink: 0,
 
@@ -122,16 +135,6 @@ const useIndicatorStyles = makeStyles({
     cursor: 'inherit',
   }),
 
-  medium: {
-    width: '16px',
-    height: '16px',
-  },
-
-  large: {
-    width: '20px',
-    height: '20px',
-  },
-
   circular: theme => ({
     ...shorthands.borderRadius(theme.borderRadiusCircular),
   }),
@@ -144,21 +147,15 @@ const useIndicatorStyles = makeStyles({
 });
 
 const useLabelStyles = makeStyles({
-  base: {
+  base: theme => ({
+    // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
+    // This prevents the label from expanding the height of the Checkbox, but preserves line height if the label wraps.
+    ...shorthands.margin(`calc((var(${indicatorSize}) - ${theme.lineHeightBase300}) / 2)`, 0),
     alignSelf: 'center',
     userSelect: 'none',
     cursor: 'inherit',
     color: 'inherit',
-  },
-
-  medium: {
-    // Use a negative margin to account for the difference between the indicator's height (16px) and the
-    // label's line height (20px). This prevents the label from expanding the height of the Checkbox, but
-    // preserves the line height if the label wraps.
-    // (When the size is large, the line-height matches the indicator height, so no margin is necessary)
-    marginTop: '-2px',
-    marginBottom: '-2px',
-  },
+  }),
 });
 
 /**
@@ -169,6 +166,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   state.root.className = mergeClasses(
     checkboxClassName,
     rootStyles.base,
+    rootStyles[state.size],
     rootStyles.focusIndicator,
     state.input.disabled && rootStyles.disabled,
     // Use exactly one of the color classes, depending on `disabled` and `checked`
@@ -188,7 +186,6 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const indicatorStyles = useIndicatorStyles();
   state.indicator.className = mergeClasses(
     indicatorStyles.base,
-    indicatorStyles[state.size],
     state.circular && indicatorStyles.circular,
     !state.checked && indicatorStyles.unchecked,
     state.indicator.className,
@@ -196,11 +193,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
 
   const labelStyles = useLabelStyles();
   if (state.label) {
-    state.label.className = mergeClasses(
-      labelStyles.base,
-      state.size === 'medium' && labelStyles.medium,
-      state.label.className,
-    );
+    state.label.className = mergeClasses(labelStyles.base, state.label.className);
   }
 
   return state;
