@@ -4,6 +4,18 @@ We use functions and hooks to author our components. This makes it possible to b
 
 Currently, there are several patterns consumers need to guess at in order to compose a component. This RFC update will propose a pattern that normalizes usage of hooks for converged components.
 
+#### Goals
+
+- Simplify component composition
+- Make upgrades more manageable
+- Easily customize state and/or style
+- Start simple, iterate based on user needs
+
+#### Out of scope:
+
+- Remove styling hook (we can ship an unstyled package)
+- Remove a single part of state creation, like aria props
+
 ## Current Capabilities
 
 Maybe you want to:
