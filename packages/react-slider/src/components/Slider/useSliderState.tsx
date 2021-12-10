@@ -1,12 +1,19 @@
 import * as React from 'react';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { getPercent } from '../../utils/index';
-import { railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar } from './useSliderStyles';
+import {
+  railOffsetVar,
+  railStepsPercentVar,
+  railProgressVar,
+  thumbPositionVar,
+  railDirectionVar,
+} from './useSliderStyles';
 import type { SliderState } from './Slider.types';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 export const useSliderState = (state: SliderState) => {
   const { value, defaultValue = 0, min = 0, max = 100, step = 1, getAriaValueText, origin } = state;
-
+  const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clamp(value, min, max),
     defaultState: clamp(defaultValue, min, max),
@@ -33,6 +40,7 @@ export const useSliderState = (state: SliderState) => {
   });
 
   const rootVariables = {
+    [railDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
     [thumbPositionVar]: valuePercent + '%',
     [railStepsPercentVar]: state.step && state.step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [railOffsetVar]: origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : '0%',

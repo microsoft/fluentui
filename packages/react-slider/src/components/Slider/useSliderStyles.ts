@@ -6,11 +6,11 @@ export const sliderClassName = 'fui-Slider';
 
 const thumbSizeVar = `--fui-slider-thumb-size`;
 const railSizeVar = `--fui-slider-rail-size`;
-const railDirectionVar = `--fui-slider-rail-direction`;
 const railColorVar = `--fui-slider-rail-color`;
 const progressColorVar = `--fui-slider-progress-color`;
 const thumbColorVar = `--fui-slider-thumb-color`;
 
+export const railDirectionVar = `--fui-slider-rail-direction`;
 export const railOffsetVar = `--fui-slider-rail-offset`;
 export const railProgressVar = `--fui-slider-rail-progress`;
 export const railStepsPercentVar = `--fui-slider-rail-steps-percent`;
@@ -41,14 +41,12 @@ export const useRootStyles = makeStyles({
   },
 
   horizontal: {
-    [railDirectionVar]: '90deg',
     minWidth: '120px',
     height: get(thumbSizeVar),
     alignItems: 'center',
   },
 
   vertical: {
-    [railDirectionVar]: '0deg',
     width: get(thumbSizeVar),
     minHeight: '120px',
     justifyItems: 'center',
