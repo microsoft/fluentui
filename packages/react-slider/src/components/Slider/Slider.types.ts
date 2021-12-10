@@ -5,7 +5,7 @@ export type SliderSlots = {
   /**
    * The root of the Slider.
    * The root slot receives the `className` and `style` specified directly on the `<Slider>`.
-   * All other native props will be applied to the primary slot: `input`
+   * All other native props will be applied to the primary slot, `input`.
    */
   root: IntrinsicShorthandProps<'div'>;
 
