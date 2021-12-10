@@ -47,7 +47,8 @@ export function invokeKeyframes(cache: EmotionCache, styles: ICSSInJSStyle) {
         continue;
       }
 
-      styles[property] = invokeKeyframes(cache, styles[property] as ICSSInJSStyle);
+      // Cast to any to avoid "error TS2590: Expression produces a union type that is too complex to represent"
+      (styles as any)[property] = invokeKeyframes(cache, styles[property] as ICSSInJSStyle);
     }
   }
 

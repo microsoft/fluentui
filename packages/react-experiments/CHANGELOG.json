@@ -2,6 +2,27 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 10 Dec 2021 07:30:34 GMT",
+      "tag": "@fluentui/react-experiments_v8.4.7",
+      "version": "8.4.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Fix minor issue with promise handling in FloatingSuggestions"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.47.1",
+            "commit": "89deee5b2a8a5da67a557cd6b19fe9c51ab36de1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Dec 2021 07:27:18 GMT",
       "tag": "@fluentui/react-experiments_v8.4.6",
       "version": "8.4.6",

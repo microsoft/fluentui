@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 09 Dec 2021 07:27:18 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Dec 2021 07:30:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.7)
+
+Fri, 10 Dec 2021 07:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.6..@fluentui/react-experiments_v8.4.7)
+
+### Patches
+
+- Fix minor issue with promise handling in FloatingSuggestions ([PR #20909](https://github.com/microsoft/fluentui/pull/20909) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.47.1 ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by beachball)
 
 ## [8.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.6)
 
