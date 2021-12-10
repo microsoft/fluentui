@@ -22,7 +22,7 @@ import { Label } from '@fluentui/react-label';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  const { disabled, required, circular, size = 'medium', labelPosition = 'after' } = props;
+  const { disabled, required, circular = false, size = 'medium', labelPosition = 'after' } = props;
 
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,

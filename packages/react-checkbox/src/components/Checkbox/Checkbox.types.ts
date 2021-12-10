@@ -14,7 +14,7 @@ export interface CheckboxCommons {
    * since it otherwise could be confused for a `RadioItem`.
    * @defaultvalue false
    */
-  circular: boolean | undefined;
+  circular: boolean;
 
   /**
    * A checkbox's state can be controlled.
