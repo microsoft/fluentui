@@ -4,17 +4,17 @@ import type { SliderState } from './Slider.types';
 
 export const sliderClassName = 'fui-Slider';
 
-const thumbSizeVar = `--${sliderClassName}-thumb-size`;
-const railSizeVar = `--${sliderClassName}-rail-size`;
-const railDirectionVar = `--${sliderClassName}-rail-direction`;
-const railColorVar = `--${sliderClassName}-rail-color`;
-const progressColorVar = `--${sliderClassName}-progress-color`;
-const thumbColorVar = `--${sliderClassName}-thumb-color`;
+const thumbSizeVar = `--fui-slider-thumb-size`;
+const railSizeVar = `--fui-slider-rail-size`;
+const railDirectionVar = `--fui-slider-rail-direction`;
+const railColorVar = `--fui-slider-rail-color`;
+const progressColorVar = `--fui-slider-progress-color`;
+const thumbColorVar = `--fui-slider-thumb-color`;
 
-export const railOffsetVar = `--${sliderClassName}-rail-offset`;
-export const railProgressVar = `--${sliderClassName}-rail-progress`;
-export const railStepsPercentVar = `--${sliderClassName}-rail-steps-percent`;
-export const thumbPositionVar = `--${sliderClassName}-thumb-position`;
+export const railOffsetVar = `--fui-slider-rail-offset`;
+export const railProgressVar = `--fui-slider-rail-progress`;
+export const railStepsPercentVar = `--fui-slider-rail-steps-percent`;
+export const thumbPositionVar = `--fui-slider-thumb-position`;
 
 const get = (value: string) => `var(${value})`;
 
