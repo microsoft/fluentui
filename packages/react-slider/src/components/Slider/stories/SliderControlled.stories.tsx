@@ -1,6 +1,4 @@
 import * as React from 'react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Label } from '@fluentui/react-label';
 import { Slider, SliderProps } from '../../../index';
 

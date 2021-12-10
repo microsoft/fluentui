@@ -22,11 +22,11 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     // Props
     value,
     defaultValue,
-    min,
-    max,
+    min = 0,
+    max = 100,
     step,
     disabled,
-    ariaValueText,
+    getAriaValueText,
     vertical,
     size = 'medium',
     origin,
@@ -39,7 +39,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
   } = props;
 
   const state: SliderState = {
-    ariaValueText,
+    getAriaValueText,
     defaultValue,
     disabled,
     max,

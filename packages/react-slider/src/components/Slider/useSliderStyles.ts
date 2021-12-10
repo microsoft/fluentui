@@ -4,8 +4,19 @@ import type { SliderState } from './Slider.types';
 
 export const sliderClassName = 'fui-Slider';
 
-const thumbClassName = `${sliderClassName}-thumb`;
-const railClassName = `${sliderClassName}-rail`;
+const thumbSizeVar = `--${sliderClassName}-thumb-size`;
+const railSizeVar = `--${sliderClassName}-rail-size`;
+const railDirectionVar = `--${sliderClassName}-rail-direction`;
+const railColorVar = `--${sliderClassName}-rail-color`;
+const progressColorVar = `--${sliderClassName}-progress-color`;
+const thumbColorVar = `--${sliderClassName}-thumb-color`;
+
+export const railOffsetVar = `--${sliderClassName}-rail-offset`;
+export const railProgressVar = `--${sliderClassName}-rail-progress`;
+export const railStepsPercentVar = `--${sliderClassName}-rail-steps-percent`;
+export const thumbPositionVar = `--${sliderClassName}-thumb-position`;
+
+const get = (value: string) => `var(${value})`;
 
 /**
  * Styles for the root slot
@@ -20,48 +31,48 @@ export const useRootStyles = makeStyles({
   },
 
   small: {
-    '--slider-thumb-size': '10px',
-    '--slider-rail-size': '2px',
+    [thumbSizeVar]: '16px',
+    [railSizeVar]: '2px',
   },
 
   medium: {
-    '--slider-thumb-size': '20px',
-    '--slider-rail-size': '4px',
+    [thumbSizeVar]: '20px',
+    [railSizeVar]: '4px',
   },
 
   horizontal: {
+    [railDirectionVar]: '90deg',
     minWidth: '120px',
-    height: 'var(--slider-thumb-size)',
+    height: get(thumbSizeVar),
     alignItems: 'center',
   },
 
   vertical: {
-    width: 'var(--slider-thumb-size)',
+    [railDirectionVar]: '0deg',
+    width: get(thumbSizeVar),
     minHeight: '120px',
     justifyItems: 'center',
-    gridTemplateColumns: 'var(--slider-thumb-size)',
+    gridTemplateColumns: get(thumbSizeVar),
   },
 
   enabled: theme => ({
-    '--slider-rail-color': theme.colorNeutralStrokeAccessible,
-    '--slider-progress-color': theme.colorCompoundBrandBackground,
+    [railColorVar]: theme.colorNeutralStrokeAccessible,
+    [progressColorVar]: theme.colorCompoundBrandBackground,
+    [thumbColorVar]: theme.colorCompoundBrandBackground,
     ':hover': {
-      [`& .${thumbClassName}`]: {
-        background: theme.colorBrandBackgroundHover,
-      },
-      '--slider-progress-color': theme.colorBrandBackgroundHover,
+      [thumbColorVar]: theme.colorBrandBackgroundHover,
+      [progressColorVar]: theme.colorBrandBackgroundHover,
     },
     ':active': {
-      [`& .${thumbClassName}`]: {
-        background: theme.colorBrandBackgroundPressed,
-      },
-      '--slider-progress-color': theme.colorBrandBackgroundPressed,
+      [thumbColorVar]: theme.colorBrandBackgroundPressed,
+      [progressColorVar]: theme.colorBrandBackgroundPressed,
     },
   }),
 
   disabled: theme => ({
-    '--slider-rail-color': theme.colorNeutralBackgroundDisabled,
-    '--slider-progress-color': theme.colorNeutralForegroundDisabled,
+    [thumbColorVar]: theme.colorNeutralForegroundDisabled,
+    [railColorVar]: theme.colorNeutralBackgroundDisabled,
+    [progressColorVar]: theme.colorNeutralForegroundDisabled,
   }),
 
   focusIndicatorHorizontal: theme =>
@@ -86,46 +97,40 @@ export const useRailStyles = makeStyles({
     gridArea: 'slider',
     position: 'relative',
     background: `linear-gradient(
-      var(--slider-rail-direction),
-      var(--slider-rail-color) 0%,
-      var(--slider-rail-color) var(--slider-rail-offset),
-      var(--slider-progress-color) var(--slider-rail-offset),
-      var(--slider-progress-color) calc(var(--slider-rail-offset) + var(--slider-rail-progress)),
-      var(--slider-rail-color) calc(var(--slider-rail-offset) + var(--slider-rail-progress))
+      var(${railDirectionVar}),
+      var(${railColorVar}) 0%,
+      var(${railColorVar}) var(${railOffsetVar}),
+      var(${progressColorVar}) var(${railOffsetVar}),
+      var(${progressColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar})),
+      var(${railColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar}))
     )`,
     ':before': {
       content: "''",
       position: 'absolute',
       background: `repeating-linear-gradient(
-        var(--slider-rail-direction),
+        var(${railDirectionVar}),
         #0000 0%,
-        #0000 calc(var(--slider-rail-steps-percent) - 1px),
-        #fff calc(var(--slider-rail-steps-percent) - 1px),
-        #fff var(--slider-rail-steps-percent)
+        #0000 calc(var(${railStepsPercentVar}) - 1px),
+        ${theme.colorNeutralBackground1} calc(var(${railStepsPercentVar}) - 1px),
+        ${theme.colorNeutralBackground1} var(${railStepsPercentVar})
       )`,
     },
   }),
 
-  disabled: theme => ({
-    ...shorthands.border('1px', 'solid', theme.colorTransparentStrokeDisabled),
-  }),
-
   horizontal: {
-    '--slider-rail-direction': '90deg',
-    height: 'var(--slider-rail-size)',
+    height: get(railSizeVar),
     ':before': {
       left: '-1px',
       right: '-1px',
-      height: 'var(--slider-rail-size)',
+      height: get(railSizeVar),
     },
   },
 
   vertical: {
-    '--slider-rail-direction': '0deg',
-    width: 'var(--slider-rail-size)',
+    width: get(railSizeVar),
     height: '100%',
     ':before': {
-      width: 'var(--slider-rail-size)',
+      width: get(railSizeVar),
       top: '-1px',
       bottom: '1px',
     },
@@ -138,11 +143,12 @@ export const useRailStyles = makeStyles({
 export const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
-    width: 'var(--slider-thumb-size)',
-    height: 'var(--slider-thumb-size)',
+    width: get(thumbSizeVar),
+    height: get(thumbSizeVar),
     outline: 'none',
     ...shorthands.borderRadius(theme.borderRadiusCircular),
-    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${theme.colorNeutralBackground1} inset`,
+    background: get(thumbColorVar),
     transform: 'translateX(-50%)',
     ':before': {
       position: 'absolute',
@@ -153,26 +159,20 @@ export const useThumbStyles = makeStyles({
       ...shorthands.borderRadius(theme.borderRadiusCircular),
       boxSizing: 'border-box',
       content: "''",
-      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', theme.colorNeutralStroke1),
+      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', theme.colorNeutralStroke1),
     },
   }),
-
-  enabled: theme => ({
-    backgroundColor: theme.colorCompoundBrandBackground,
-  }),
-
   disabled: theme => ({
-    backgroundColor: theme.colorNeutralForegroundDisabled,
     ':before': {
-      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', theme.colorNeutralForegroundDisabled),
+      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', theme.colorNeutralForegroundDisabled),
     },
   }),
   horizontal: {
-    left: 'var(--slider-thumb-position)',
+    left: get(thumbPositionVar),
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: 'var(--slider-thumb-position)',
+    bottom: get(thumbPositionVar),
   },
 });
 
@@ -187,12 +187,12 @@ const useInputStyles = makeStyles({
     ...shorthands.margin(0),
   },
   horizontal: {
-    height: 'var(--slider-thumb-size)',
+    height: get(thumbSizeVar),
   },
   vertical: {
     writingMode: 'bt-lr',
     '-webkit-appearance': 'slider-vertical',
-    width: 'var(--slider-thumb-size)',
+    width: get(thumbSizeVar),
   },
 });
 
@@ -216,18 +216,15 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   );
 
   state.rail.className = mergeClasses(
-    railClassName,
     railStyles.rail,
     state.vertical ? railStyles.vertical : railStyles.horizontal,
-    state.disabled && railStyles.disabled,
     state.rail.className,
   );
 
   state.thumb.className = mergeClasses(
-    thumbClassName,
     thumbStyles.thumb,
     state.vertical ? thumbStyles.vertical : thumbStyles.horizontal,
-    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
+    state.disabled && thumbStyles.disabled,
     state.thumb.className,
   );
 

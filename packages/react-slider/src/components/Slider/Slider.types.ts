@@ -93,13 +93,14 @@ export type SliderCommons = {
   /**
    * The Slider's current value label to be read by the screen reader.
    */
-  ariaValueText?: (value: number) => string;
+  getAriaValueText?: (value: number) => string;
 };
 
 export type SliderOnChangeData = {
   value: number;
-}
+};
 
-export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue'> & SliderCommons;
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue' | 'size' | 'value'> &
+  SliderCommons;
 
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
