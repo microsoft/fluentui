@@ -32,11 +32,9 @@ const useRootStyles = makeStyles({
   },
 
   focusIndicator: theme => createFocusOutlineStyle(theme, { style: {}, selector: 'focus-within' }),
-});
 
-// These color styles are mutually exclusive: exactly one should be applied at any time
-const useColorStyles = makeStyles({
-  unchecked: theme => ({
+  // These `__Colors` styles are mutually exclusive: exactly one should be applied at any time
+  uncheckedColors: theme => ({
     color: theme.colorNeutralForeground3,
     [indicatorBorderColor]: theme.colorNeutralStrokeAccessible,
 
@@ -51,7 +49,7 @@ const useColorStyles = makeStyles({
     },
   }),
 
-  checked: theme => ({
+  checkedColors: theme => ({
     color: theme.colorNeutralForeground1,
     [indicatorBackgroundColor]: theme.colorCompoundBrandBackground,
     [indicatorColor]: theme.colorNeutralForegroundOnBrand,
@@ -66,7 +64,7 @@ const useColorStyles = makeStyles({
     },
   }),
 
-  mixed: theme => ({
+  mixedColors: theme => ({
     color: theme.colorNeutralForeground1,
     [indicatorBorderColor]: theme.colorCompoundBrandStroke,
     [indicatorColor]: theme.colorCompoundBrandForeground1,
@@ -82,7 +80,7 @@ const useColorStyles = makeStyles({
     },
   }),
 
-  disabled: theme => ({
+  disabledColors: theme => ({
     color: theme.colorNeutralForegroundDisabled,
     [indicatorBorderColor]: theme.colorNeutralStrokeDisabled,
     [indicatorColor]: theme.colorNeutralForegroundDisabled,
@@ -155,7 +153,7 @@ const useLabelStyles = makeStyles({
 
   medium: {
     // Use a negative margin to account for the difference between the indicator's height (16px) and the
-    // label's line height (20px). This prevents the label from expanding the height of the checkbox, but
+    // label's line height (20px). This prevents the label from expanding the height of the Checkbox, but
     // preserves the line height if the label wraps.
     // (When the size is large, the line-height matches the indicator height, so no margin is necessary)
     marginTop: '-2px',
@@ -167,25 +165,20 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Checkbox slots based on the state
  */
 export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
-  const colorStyles = useColorStyles();
-  let colorClass: string;
-  if (state.input.disabled) {
-    colorClass = colorStyles.disabled;
-  } else if (state.checked === 'mixed') {
-    colorClass = colorStyles.mixed;
-  } else if (state.checked) {
-    colorClass = colorStyles.checked;
-  } else {
-    colorClass = colorStyles.unchecked;
-  }
-
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     checkboxClassName,
     rootStyles.base,
     rootStyles.focusIndicator,
     state.input.disabled && rootStyles.disabled,
-    colorClass,
+    // Use exactly one of the color classes, depending on `disabled` and `checked`
+    state.input.disabled
+      ? rootStyles.disabledColors
+      : state.checked === 'mixed'
+      ? rootStyles.mixedColors
+      : state.checked
+      ? rootStyles.checkedColors
+      : rootStyles.uncheckedColors,
     state.root.className,
   );
 
