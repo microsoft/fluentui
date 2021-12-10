@@ -159,7 +159,7 @@ Ideally, the overall story for our composition would be learn-once-apply-everywh
 Prioritizing a learn-once approach and simplification, we can consider this API:
 
 ```tsx
-const [state, render] = useComponent();
+const [state, render] = useComponent(props, ref);
 
 // modify state
 
@@ -168,39 +168,184 @@ return render(state);
 
 Problems solved:
 
-1. **Inconsistent** - All components will have the same API since all components have `state` and `render`.
+1. **Inconsistency** - All components will have the same API since all components have `state` and `render`.
 2. **Complex Imports** - There is one import per component, named `useComponent`, opposed to 3-4 imports.
 3. **useFoo not usable** - "Using" a component returns a fully usable yet customizable component API.
 4. **Not learn-once** - Since this is consistent, and abstracts over all components, it is learn-once-apply-everywhere.
 
-### How is `useComponent` implemented?
+### useComponent implementation
+
+The useComponent is implemented by sequencing individual hooks to build up state and then returning the state and render function.
 
 ```tsx
-export const Component: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
-  const { state, render } = useButton(props, ref);
+export const useComponent = (
+  props: ComponentProps,
+  ref: React.Ref<HTMLButtonElement>,
+): [ComponentState, RenderComponent] => {
+  const state = useComponentState(props);
+  useComponentARIA(state, props, ref);
+  useComponentStyles(state);
 
-  return render(state);
-}) as ForwardRefComponent<ButtonProps>;
+  return [state, renderComponent];
+};
 ```
 
-The `useComponent` function would call all other state functions and return the state and the renderer:
-
-`useComponent`
-
-- `useComponentState`
-- `useComponentStyle`
-- `useComponentARIA`
-- return `[state, renderCompoonent]`
-
-### How are context values handled?
+### Encapsulating context
 
 The useComponent method should curry the render function to encapsulate knowledge of context within the hook
 
 ```ts
 return [state, state => renderComponent(state, contextValues)];
-## FAQ
+```
 
-### How to update `state` before styles are calculated?
+## Use case examples
 
-If there is a use case where the consumer needs to get in between the state hooks, they can drop down a level and compose each hook together individually.
+### Customizing styles
+
+Outside the composition pattern, styles can be customized with the className property available on each component.
+This supports the most common cases of customization, but does not handle customizations based on state.
+
+```tsx
+const useCustomStyles = makeStyles({
+  root: theme => ({
+    // custom CSS here
+  }),
+});
+
+const customStyles = useCustomStyles();
+
+<Component className={customStyles.root} />;
+```
+
+Styles changes made based on state can be done between the useComponent and render calls.
+
+```tsx
+const useCustomStyles = makeStyles({
+  root: theme => ({
+    // custom CSS here
+  }),
+});
+export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
+  const [state, render] = useComponent(props, ref);
+
+  const customStyles = useCustomStyles();
+
+  // apply custom styles
+  // passing the existing class name first allows layering customStyles on top of those set by useComponent.
+  // to replace styles with custom styles, omit state.root.className from the mergeStyles call.
+  state.root.className = mergeStyles(state.root.className, customStyles.root);
+
+  return render(state);
+});
+```
+
+### Customizing props
+
+Prop changes can be done before the call to useComponent.
+
+```tsx
+export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
+
+  const { {['removeProp']: removedProp, ...rest} = props
+
+  const updatedProps = {
+    ...rest,
+    addedProp: 'some value',
+    replacedProp: 'some value'
+  };
+
+  const [state, render] = useComponent(props, ref);
+  return render(state);
+});
+```
+
+### Customizing slot components
+
+Slot components are in state and resolved as part of the render implmentation (through a call to getSlots).
+This means they can be changed between useComponent and render.
+
+```tsx
+export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
+  const [state, render] = useComponent(props, ref);
+
+  // the default element type for a slot can be replaced
+  state.components.icon = 'div';
+
+  // alternatively, the entire slot can also be replace
+  state.icon = resolveShorthand(state.components.icon, { required = true });
+
+  // apply custom styles
+  // passing the existing class name first allows layering customStyles on top of those set by useComponent.
+  // to replace styles with custom styles, omit state.root.className from the mergeStyles call.
+  state.root.className = mergeStyles(state.root.className, customStyles.root);
+
+  return render(state);
+});
+```
+
+### Customizing render template
+
+The call to the render method can be replaced to change the template.
+
+```tsx
+const customRender = (state: ComponentState) => {
+  const { slots, slotProps } = getSlots<ComponentSlots>(state, ['root', 'icon']);
+
+  // Assume the icon normally renders before the children
+  // This custom render would put the icon after the children
+  return (
+    <slots.root {...slotProps.root}>
+      {state.root.children}
+      <slots.icon {...slotProps.icon} />
+    </slots.root>
+  );
+};
+
+export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
+  const [state] = useComponent(props, ref);
+  return customRender(state);
+});
+```
+
+### Modifying order and injecting hooks
+
+The useComponent call can be replaced with calls to individual hooks to get inbetween hooks within useComponent.
+This should generally be done by writing a new hook similar to useComponent.
+
+**TODO** - Need to find a case where this is absolutely required because the state cannot be modified post useComponent,
+the dev effort is impractical or it causes a performance problem.
+
+```tsx
+export const useCustomComponent = (
+  props: ComponentProps,
+  ref: React.Ref<HTMLButtonElement>,
+): [ComponentState, RenderComponent] => {
+  const state = useComponentState(props);
+  useComponentARIA(state, props, ref);
+
+  // modify state between props->state and styles
+  state.iconOnly = true;
+
+  useComponentStyles(state);
+
+  return [state, renderComponent];
+};
+
+export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
+  const [state, render] = useCustomComponent(props, ref);
+  return render(state);
+});
+```
+
+## Pros & Cons
+
+- **Con: Limits hook tree-shaking**
+  A single useComponent doesn't allow tree shaking out other hooks, like useComponentStyles.
+  However, we can ship a style-less package if needed.
+
+- **Con: Increased exported API surface**
+  Increases API surface by abstracting over other hooks with useComponent.
+
+```
+
 ```
