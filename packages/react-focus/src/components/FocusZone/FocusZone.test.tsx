@@ -15,13 +15,19 @@ import type { IFocusZone } from './FocusZone.types';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
+  let testContainer: HTMLElement | undefined;
 
   beforeEach(() => {
     resetIds();
   });
 
-  beforeEach(() => {
+  afterEach(() => {
     lastFocusedElement = undefined;
+    if (testContainer) {
+      ReactDOM.unmountComponentAtNode(testContainer);
+      testContainer.remove();
+      testContainer = undefined;
+    }
   });
 
   function _onFocus(ev: any): void {
@@ -189,7 +195,7 @@ describe('FocusZone', () => {
   });
 
   it('can restore focus to the following item when item removed', () => {
-    const { testContainer, removeTestContainer } = createTestContainer();
+    testContainer = createTestContainer();
 
     // Render component.
     ReactDOM.render(
@@ -225,12 +231,10 @@ describe('FocusZone', () => {
     );
 
     expect(document.activeElement).toBe(testContainer.querySelector('#c'));
-
-    removeTestContainer();
   });
 
   it('can restore focus to the previous item when end item removed', () => {
-    const { testContainer, removeTestContainer } = createTestContainer();
+    testContainer = createTestContainer();
 
     // Render component.
     ReactDOM.render(
@@ -266,14 +270,12 @@ describe('FocusZone', () => {
     );
 
     expect(document.activeElement).toBe(testContainer.querySelector('#b'));
-
-    removeTestContainer();
   });
 
   it('only adds outerzones to be updated for tab changes', () => {
     const activeZones = FocusZone.getOuterZones();
 
-    const { removeTestContainer, testContainer } = createTestContainer();
+    testContainer = createTestContainer();
 
     // Render component without button A.
     ReactDOM.render(
@@ -290,8 +292,6 @@ describe('FocusZone', () => {
     ReactDOM.unmountComponentAtNode(testContainer);
 
     expect(FocusZone.getOuterZones()).toEqual(activeZones);
-
-    removeTestContainer();
   });
 
   it('can call onActiveItemChanged when the active item is changed', () => {
@@ -325,7 +325,7 @@ describe('FocusZone', () => {
 
   describe('parking and unparking', () => {
     function setup() {
-      const { removeTestContainer, testContainer } = createTestContainer();
+      testContainer = createTestContainer();
 
       // Render component.
       ReactDOM.render(
@@ -351,19 +351,17 @@ describe('FocusZone', () => {
         testContainer,
       );
 
-      return { testContainer, removeTestContainer };
+      return testContainer;
     }
 
     it('can move focus to container when last item removed', () => {
-      const { removeTestContainer, testContainer } = setup();
+      testContainer = setup();
 
       expect(document.activeElement).toBe(testContainer.querySelector('#fz'));
-
-      removeTestContainer();
     });
 
     it('can move focus from container to first item when added', () => {
-      const { removeTestContainer, testContainer } = setup();
+      testContainer = setup();
 
       ReactDOM.render(
         <div>
@@ -378,24 +376,20 @@ describe('FocusZone', () => {
       );
 
       expect(document.activeElement).toBe(testContainer.querySelector('#a'));
-
-      removeTestContainer();
     });
 
     it('removes focusability when moving from focused container', () => {
-      const { removeTestContainer, testContainer } = setup();
+      testContainer = setup();
 
       expect(testContainer.querySelector('#fz')!.getAttribute('tabindex')).toEqual('-1');
 
       (testContainer.querySelector('#z') as HTMLElement).focus();
 
       expect(testContainer.querySelector('#fz')!.getAttribute('tabindex')).toBeNull();
-
-      removeTestContainer();
     });
 
     it('does not move focus when items added without container focus', () => {
-      const { removeTestContainer, testContainer } = setup();
+      testContainer = setup();
 
       expect(testContainer.querySelector('#fz')!.getAttribute('tabindex')).toEqual('-1');
 
@@ -414,8 +408,6 @@ describe('FocusZone', () => {
       );
 
       expect(document.activeElement).toBe(testContainer.querySelector('#z'));
-
-      removeTestContainer();
     });
   });
 

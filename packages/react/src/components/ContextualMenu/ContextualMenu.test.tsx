@@ -590,7 +590,7 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    const { removeTestContainer, testContainer } = createTestContainer();
+    const testContainer = createTestContainer();
 
     ReactTestUtils.act(() => {
       ReactDOM.render(<ContextualMenu items={items} />, testContainer);
@@ -610,8 +610,6 @@ describe('ContextualMenu', () => {
     menuItems[2].focus();
     expect(document.activeElement!.textContent).toEqual('TestText 3');
     expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
-
-    removeTestContainer();
   });
 
   it('cannot click on disabled items', () => {
@@ -855,7 +853,7 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    const { removeTestContainer, testContainer } = createTestContainer();
+    const testContainer = createTestContainer();
 
     ReactTestUtils.act(() => {
       ReactDOM.render(<ContextualMenu items={items} />, testContainer);
@@ -872,8 +870,6 @@ describe('ContextualMenu', () => {
       jest.runAllTimers();
     });
     expect(document.activeElement).toEqual(itemToFocus);
-
-    removeTestContainer();
   });
 
   it('merges callout classNames', () => {
@@ -1106,14 +1102,14 @@ describe('ContextualMenu', () => {
     });
 
     it('Menu should correctly return focus to previously focused element when dismissed and document has focus', () => {
-      const { removeTestContainer, testContainer: temp } = createTestContainer();
+      const testContainer = createTestContainer();
 
       ReactTestUtils.act(() => {
-        ReactDOM.render(<DefaultButton menuProps={{ items: menu }} text="but" id="btn" />, temp);
+        ReactDOM.render(<DefaultButton menuProps={{ items: menu }} text="but" id="btn" />, testContainer);
       });
 
       // Get and make sure that the button is the active element
-      const btn = temp.querySelector('#btn')! as HTMLElement;
+      const btn = testContainer.querySelector('#btn')! as HTMLElement;
       expect(btn).not.toEqual(null);
       btn.focus();
       expect(document.activeElement).toEqual(btn);
@@ -1140,8 +1136,6 @@ describe('ContextualMenu', () => {
       if (document.hasFocus()) {
         expect(document.activeElement).toEqual(btn);
       }
-
-      removeTestContainer();
     });
   });
 

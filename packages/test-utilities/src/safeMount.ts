@@ -7,7 +7,8 @@ import { mount, MountRendererProps, ReactWrapper } from 'enzyme';
  *
  * @param content - JSX content to test.
  * @param callback - Function callback which receives the component to use.
- * @param mountOptions - Options for enzyme mount function.
+ * @param mountOptions - Options for enzyme mount function. If `attachTo` is provided, the element
+ * will be removed during the cleanup.
  */
 export function safeMount<
   TComponent extends React.Component,
@@ -25,6 +26,9 @@ export function safeMount<
   } finally {
     if (wrapper.exists()) {
       wrapper.unmount();
+    }
+    if (mountOptions?.attachTo) {
+      mountOptions.attachTo.remove();
     }
   }
 }

@@ -69,12 +69,13 @@ function customColumnDivider(
 describe('DetailsList', () => {
   beforeEach(() => {
     resetIds();
-    jest.useFakeTimers();
   });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers();
-    jest.useRealTimers();
+    if (((setTimeout as unknown) as jest.Mock).mock) {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
+    }
   });
 
   it('renders List correctly with onRenderDivider props', () => {
@@ -133,6 +134,8 @@ describe('DetailsList', () => {
   });
 
   it('renders a single proportional column with correct width', () => {
+    jest.useFakeTimers();
+
     let component: IDetailsList | null;
     safeMount(
       <DetailsList
@@ -186,6 +189,8 @@ describe('DetailsList', () => {
   });
 
   it('renders proportional columns with proper width ratios', () => {
+    jest.useFakeTimers();
+
     let component: IDetailsList | null;
     safeMount(
       <DetailsList
@@ -236,6 +241,8 @@ describe('DetailsList', () => {
   });
 
   it('renders proportional columns with proper width ratios when delayFirstMeasure', () => {
+    jest.useFakeTimers();
+
     let component: IDetailsList | null;
     safeMount(
       <DetailsList
@@ -330,7 +337,7 @@ describe('DetailsList', () => {
   it('focuses row by index', () => {
     jest.useFakeTimers();
 
-    const { removeTestContainer, testContainer } = createTestContainer();
+    const testContainer = createTestContainer();
 
     let component: IDetailsList | null;
     safeMount(
@@ -353,7 +360,6 @@ describe('DetailsList', () => {
       },
       { attachTo: testContainer },
     );
-    removeTestContainer();
   });
 
   it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
@@ -487,6 +493,8 @@ describe('DetailsList', () => {
   });
 
   it('focuses into row element', () => {
+    jest.useFakeTimers();
+
     const onRenderColumn = (item: any, index: number, column: IColumn) => {
       let value = item && column && column.fieldName ? item[column.fieldName] : '';
       if (value === null || value === undefined) {
@@ -504,7 +512,7 @@ describe('DetailsList', () => {
       return valueKey;
     };
 
-    const { removeTestContainer, testContainer } = createTestContainer();
+    const testContainer = createTestContainer();
 
     let component: IDetailsList | null;
     safeMount(
@@ -539,11 +547,12 @@ describe('DetailsList', () => {
       },
       { attachTo: testContainer },
     );
-    removeTestContainer();
   });
 
   it('reset focusedItemIndex when setKey updates', () => {
-    const { removeTestContainer, testContainer } = createTestContainer();
+    jest.useFakeTimers();
+
+    const testContainer = createTestContainer();
 
     let component: any;
 
@@ -579,10 +588,11 @@ describe('DetailsList', () => {
       },
       { attachTo: testContainer },
     );
-    removeTestContainer();
   });
 
   it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
+    jest.useFakeTimers();
+
     const columns: IColumn[] = mockData(2, true);
     columns[0].onColumnResize = jest.fn();
     columns[1].onColumnResize = jest.fn();
