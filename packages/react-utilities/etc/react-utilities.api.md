@@ -42,10 +42,14 @@ export const colGroupProperties: Record<string, number>;
 // @public (undocumented)
 export const colProperties: Record<string, number>;
 
-// @public (undocumented)
-export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
-    [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-}, Primary & 'root'> & PropsWithoutRef<Shorthands[Primary]>;
+// @public
+export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = PropsWithoutRef<Shorthands[Primary]> & {
+    [Key in keyof Omit<Shorthands, Primary | 'root'>]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+} & (Primary extends 'root' ? {} : {
+    [Key in keyof Primary]?: Pick<React_2.HTMLAttributes<{}>, 'className' | 'style'>;
+} & {
+    root?: Shorthands['root'];
+});
 
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {

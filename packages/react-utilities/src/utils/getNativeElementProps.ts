@@ -74,7 +74,7 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
  *
  * @returns An object containing the native props for the `root` and primary slots.
  */
-export const getPartitionedNativeProps = ({
+export function getPartitionedNativeProps<NativeProps extends React.HTMLAttributes<unknown>>({
   primarySlotTagName,
   props,
   excludedPropNames,
@@ -83,13 +83,17 @@ export const getPartitionedNativeProps = ({
   primarySlotTagName: keyof JSX.IntrinsicElements;
 
   /** The component's props object */
-  props: Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
+  props: Pick<NativeProps, 'style' | 'className'>;
 
   /** List of native props to exclude from the returned value */
   excludedPropNames?: string[];
-}) => {
+}) {
   return {
     root: { style: props.style, className: props.className },
-    primary: getNativeElementProps(primarySlotTagName, props, [...(excludedPropNames || []), 'style', 'className']),
+    primary: getNativeElementProps<NativeProps>(primarySlotTagName, props, [
+      ...(excludedPropNames || []),
+      'style',
+      'className',
+    ]),
   };
-};
+}

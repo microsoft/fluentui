@@ -90,7 +90,9 @@ The _**primary**_ slot is the slot that receives the native props that are speci
 
 - All native props are forwarded to the primary slot, _except_ `className` and `style`.
 - The `className` and `style` props are _always_ forwarded to the `root` slot.
-- Both `root` and the primary slot are exposed as props, to allow for props to be explicitly set on those slots.
+- Both `root` and the primary slot are exposed as props:
+  - For the `root` slot, all native props can be set on the slot.
+  - For the primary slot, only `className` and `style` can be set on the slot.
 - The primary slot is intrinsic to the component, and is part of how it works. Users cannot designate a different slot as primary.
 
 See [Usage examples](#Usage-examples) below for examples of how this works.
@@ -117,31 +119,37 @@ Examples include:
 The `ComponentProps` type has a template parameter to specify the primary slot:
 
 ```ts
-export type ComponentProps<Shorthands, Primary extends keyof Shorthands = 'root'> =
-  // Put the primary slot's props directly on the ComponentProps
-  Shorthands[Primary] &
-    // Add shorthand props for the other slots
+export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> =
+  // Allow all props from the primary slot to be specified at the root
+  PropsWithoutRef<Shorthands[Primary]> &
+    // Include shorthand slot props for each of the component's slots, except the primary slot and `root`
     {
-      [Key in Exclude<
-        keyof Shorthands,
-        // Exclude `root` only if it is the primary slot
-        Primary extends 'root' ? Primary : never
-      >]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-    };
+      [Key in keyof Omit<Shorthands, Primary | 'root'>]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+    } &
+    // If the primary slot is customized...
+    (Primary extends 'root'
+      ? {}
+      : {
+          // Add a named prop for the primary slot which ONLY accepts className and style
+          [Key in keyof Primary]?: Pick<React.HTMLAttributes<{}>, 'className' | 'style'>;
+        } & {
+          // Add a `root` prop which accepts any native props, but NOT shorthand syntax
+          root?: Shorthands['root'];
+        });
 ```
 
 #### Implementation
 
 Add a function similar to `getNativeElementProps` function, except it handles splitting the `className` and `style` props to the root slot, as well as mixing in the primary slot.
 
-Something along the lines of this (names and API is still a work in progress):
+Something along the lines of this:
 
 ```ts
-const [rootProps, inputProps] = getRootAndPrimaryNativeElementProps(props, 'input');
+const nativeProps = getPartitionedNativeProps(props, 'input');
 const state = {
   // ...
-  root: rootProps,
-  input: inputProps, // primary slot
+  root: nativeProps.root,
+  input: nativeProps.primary, // primary slot
 };
 ```
 
@@ -149,9 +157,8 @@ const state = {
 
 - Need to be able to specify which is the primary slot in conformance tests
 - Check that `className` and `style` always go to the root slot
-- Check that slot props take precedence over top-level props (with custom primary slot):
-  - `<Input className="foo" root={{ className: 'bar' }} />` => root element has `className="bar"`
-  - `<Input id="foo" input={{ id: 'bar' }} />` => input has `id="bar"`
+- Check that specifying `className` and `style` on the primary slot works
+- Check that `className` and `style` specified on the `root` slot take precedence over top-level props (with custom primary slot): `<Input className="foo" root={{ className: 'bar' }} />` => root element has `className="bar"`
 - Check that `<input>` elements are always the primary slot
 
 ## Usage examples
@@ -185,28 +192,33 @@ There is no `root` prop:
 **Given JSX:**
 
 ```jsx
-<Checkbox id="myId" className="myClass" />
+<Checkbox id="myId" className="myClass" input={{ className: 'inputClass' }} />
 ```
 
 **Resulting DOM (simplified):**
 
 ```html
 <div class="myClass">
-  <input id="myId" />
+  <input id="myId" className="inputClass" />
 </div>
 ```
 
-If props are specified on the `root` or `input` slots, they always go to the specified slot, and always win over props specified on the element itself:
+To reduce confusion about which props take precedence, it's not allowed to specify props other than `className` and `style` on the primary slot:
+
+```jsx
+// ❌ Fails to compile
+<Checkbox input={{ id: 'inputId' }} />
+```
+
+However, explicitly specifying `className` and `style` on the `root` slot is allowed, and these will win over props specified on the element itself:
 
 **Given JSX:**
 
 ```jsx
 <Checkbox
-  id="myId" // ⚠ overridden by "inputId" below
   className="myClass" // ⚠ overridden by "rootClass" below
   style={{ color: 'red' }}
   root={{ id: 'rootId', className: 'rootClass' }}
-  input={{ id: 'inputId', className: 'inputClass' }}
 />
 ```
 
@@ -214,7 +226,7 @@ If props are specified on the `root` or `input` slots, they always go to the spe
 
 ```html
 <div id="rootId" class="rootClass" style="color: red">
-  <input id="inputId" class="inputClass" />
+  <input class="inputClass" />
 </div>
 ```
 

@@ -95,20 +95,32 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
+/**
+ * Defines props for a component based on its slots.
+ * - Props from the primary slot (`root` by default) are allowed at the top level.
+ * - There's an optional shorthand prop for each slot (except the primary slot and `root`).
+ * - If the primary slot is customized:
+ *   - There's an optional named prop for the primary slot which ONLY takes `className` and `style`.
+ *   - There's an optional prop for `root` which accepts appropriate native props, but NOT shorthands.
+ */
 export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> =
-  // Include shorthand slot props for each of the component's slots.
-  Omit<
+  // Allow all props from the primary slot to be specified at the root
+  PropsWithoutRef<Shorthands[Primary]> &
+    // Include shorthand slot props for each of the component's slots, except the primary slot and `root`
     {
-      [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-    },
-    // This `Omit<..., Primary & 'root'>` is a little tricky. Here's what it's doing:
-    // * If the Primary slot is 'root', then omit the `root` slot prop.
-    // * Otherwise, don't omit any props: include *both* the Primary and `root` props.
-    //   We need both props to allow the user to specify native props for either slot because the `root` slot is
-    //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
-    Primary & 'root'
-  > &
-    PropsWithoutRef<Shorthands[Primary]>;
+      [Key in keyof Omit<Shorthands, Primary | 'root'>]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+    } &
+    // If the primary slot is customized...
+    // (per https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/native-element-props.md)
+    (Primary extends 'root'
+      ? {}
+      : {
+          // Add a named prop for the primary slot which ONLY accepts className and style
+          [Key in keyof Primary]?: Pick<React.HTMLAttributes<{}>, 'className' | 'style'>;
+        } & {
+          // Add a `root` prop which accepts any native props, but NOT shorthand syntax
+          root?: Shorthands['root'];
+        });
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update ComponentProps handling of a customized primary slot: the prop for root accepts any native props (but not shorthands), and the prop for the primary slot accepts only className and style",
+  "packageName": "@fluentui/react-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
