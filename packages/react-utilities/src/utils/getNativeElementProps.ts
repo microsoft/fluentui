@@ -24,7 +24,7 @@ import {
   getNativeProps,
 } from './properties';
 
-const nativeElementMap: Record<string, Record<string, number>> = {
+const nativeElementMap: Record<keyof JSX.IntrinsicElements, Set<string>> = {
   label: labelProperties,
   audio: audioProperties,
   video: videoProperties,
@@ -40,7 +40,7 @@ const nativeElementMap: Record<string, Record<string, number>> = {
   tr: trProperties,
   th: thProperties,
   td: tdProperties,
-  colGroup: colGroupProperties,
+  colgroup: colGroupProperties,
   col: colProperties,
   form: formProperties,
   iframe: iframeProperties,
@@ -56,14 +56,13 @@ const nativeElementMap: Record<string, Record<string, number>> = {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(
-  tagName: string,
+  tagName: keyof JSX.IntrinsicElements,
   props: {},
   excludedPropNames?: string[],
 ): TAttributes {
   const allowedPropNames = (tagName && nativeElementMap[tagName]) || htmlElementProperties;
-  allowedPropNames.as = 1;
 
-  return getNativeProps(props, allowedPropNames, excludedPropNames);
+  return getNativeProps(props, allowedPropNames, excludedPropNames, ['as']);
 }
 
 /**
@@ -74,7 +73,7 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
  *
  * @returns An object containing the native props for the `root` and primary slots.
  */
-export const getPartitionedNativeProps = ({
+export function getPartitionedNativeProps<NativeProps extends React.HTMLAttributes<unknown>>({
   primarySlotTagName,
   props,
   excludedPropNames,
@@ -83,13 +82,17 @@ export const getPartitionedNativeProps = ({
   primarySlotTagName: keyof JSX.IntrinsicElements;
 
   /** The component's props object */
-  props: Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
+  props: Pick<NativeProps, 'style' | 'className'>;
 
   /** List of native props to exclude from the returned value */
   excludedPropNames?: string[];
-}) => {
+}) {
   return {
     root: { style: props.style, className: props.className },
-    primary: getNativeElementProps(primarySlotTagName, props, [...(excludedPropNames || []), 'style', 'className']),
+    primary: getNativeElementProps<NativeProps>(primarySlotTagName, props, [
+      ...(excludedPropNames || []),
+      'style',
+      'className',
+    ]),
   };
-};
+}

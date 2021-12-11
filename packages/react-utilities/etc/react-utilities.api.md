@@ -8,9 +8,6 @@ import { DispatchWithoutAction } from 'react';
 import * as React_2 from 'react';
 
 // @public
-export const anchorProperties: Record<string, number>;
-
-// @public
 export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
 
 // @public
@@ -19,28 +16,10 @@ export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
 };
 
 // @public
-export const audioProperties: Record<string, number>;
-
-// @public
-export const baseElementEvents: Record<string, number>;
-
-// @public
-export const baseElementProperties: Record<string, number>;
-
-// @public
-export const buttonProperties: Record<string, number>;
-
-// @public
 export function canUseDOM(): boolean;
 
 // @public
 export const clamp: (value: number, min: number, max: number) => number;
-
-// @public (undocumented)
-export const colGroupProperties: Record<string, number>;
-
-// @public (undocumented)
-export const colProperties: Record<string, number>;
 
 // @public (undocumented)
 export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
@@ -64,12 +43,6 @@ export type DefaultObjectShorthandProps = ObjectShorthandProps<Pick<React_2.HTML
 // @internal
 export const defaultSSRContextValue: SSRContextValue;
 
-// @public
-export const divProperties: Record<string, number>;
-
-// @public
-export const formProperties: Record<string, number>;
-
 // Warning: (ae-forgotten-export) The symbol "ObscureEventName" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -79,19 +52,16 @@ export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? 
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
-export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
-
-// @public
-export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPropNames, }: {
+export function getPartitionedNativeProps<NativeProps extends React_2.HTMLAttributes<unknown>>({ primarySlotTagName, props, excludedPropNames, }: {
     primarySlotTagName: keyof JSX.IntrinsicElements;
-    props: Pick<React_2.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
-    excludedPropNames?: string[] | undefined;
-}) => {
+    props: Pick<NativeProps, 'style' | 'className'>;
+    excludedPropNames?: string[];
+}): {
     root: {
-        style: React_2.CSSProperties | undefined;
-        className: string | undefined;
+        style: NativeProps["style"] | undefined;
+        className: NativeProps["className"] | undefined;
     };
-    primary: React_2.HTMLAttributes<any>;
+    primary: NativeProps;
 };
 
 // @public
@@ -102,21 +72,6 @@ export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentS
     slots: Slots<R>;
     slotProps: SlotProps<R>;
 };
-
-// @public
-export const htmlElementProperties: Record<string, number>;
-
-// @public
-export const iframeProperties: Record<string, number>;
-
-// @public @deprecated (undocumented)
-export const imageProperties: Record<string, number>;
-
-// @public
-export const imgProperties: Record<string, number>;
-
-// @public
-export const inputProperties: Record<string, number>;
 
 // @public
 export type IntrinsicShorthandProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
@@ -133,12 +88,6 @@ export type IsSingleton<T extends string> = {
 }[T];
 
 // @public
-export const labelProperties: Record<string, number>;
-
-// @public
-export const liProperties: Record<string, number>;
-
-// @public
 export const nullRender: () => null;
 
 // @public
@@ -152,16 +101,10 @@ export type ObjectShorthandProps<Props extends {
 export type ObjectShorthandPropsRecord = Record<string, DefaultObjectShorthandProps | undefined>;
 
 // @public
-export const olProperties: Record<string, number>;
-
-// @public
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
 
 // @public
 export const onlyChild: <P>(child: boolean | React_2.ReactText | React_2.ReactFragment | React_2.ReactPortal | React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> | null | undefined) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>>;
-
-// @public (undocumented)
-export const optionProperties: Record<string, number>;
 
 // @public
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
@@ -180,9 +123,6 @@ export type ResolveShorthandOptions<Props extends Record<string, any>, Required 
     required?: Required;
     defaultProps?: Props;
 };
-
-// @public
-export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
 export type ShorthandProps<Props extends DefaultObjectShorthandProps> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | Props;
@@ -212,21 +152,6 @@ export type SSRContextValue = {
 
 // @public
 export const SSRProvider: React_2.FC;
-
-// @public
-export const tableProperties: Record<string, number>;
-
-// @public
-export const tdProperties: Record<string, number>;
-
-// @public
-export const textAreaProperties: Record<string, number>;
-
-// @public
-export const thProperties: Record<string, number>;
-
-// @public
-export const trProperties: Record<string, number>;
 
 // @public
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
@@ -306,9 +231,6 @@ export function useTimeout(): readonly [(fn: () => void, delay: number) => void,
 
 // @public
 export const useUnmount: (callback: () => void) => void;
-
-// @public
-export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //

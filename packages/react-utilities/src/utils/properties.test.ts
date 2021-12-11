@@ -58,7 +58,7 @@ describe('getNativeProps', () => {
   });
 
   it('can exclude properties', () => {
-    const result = getNativeProps<{ a: number; b: number }>({ a: 1, b: 2 }, ['a', 'b'], ['b']);
+    const result = getNativeProps<{ a: number; b: number }>({ a: 1, b: 2 }, new Set(['a', 'b']), ['b']);
 
     expect(result.a).toBeDefined();
     expect(result.b).toBeUndefined();
