@@ -4,8 +4,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { RadioItemState } from './RadioItem.types';
 
 export const radioItemClassName = 'fui-RadioItem';
-const rIClassName = 'fui-RadioItem';
-const radioItemClassNameIndicator = `${rIClassName}-indicator`;
+const radioItemClassNameIndicator = `${radioItemClassName}-indicator`;
 
 /**
  * Styles for the root slot

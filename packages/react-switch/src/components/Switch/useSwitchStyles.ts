@@ -4,9 +4,8 @@ import { tokens } from '@fluentui/react-theme';
 import type { SwitchState } from './Switch.types';
 
 export const switchClassName = 'fui-Switch';
-const sClassName = 'fui-Switch';
-const trackClassName = `${sClassName}-track`;
-const thumbClassName = `${sClassName}-thumb`;
+const trackClassName = `${switchClassName}-track`;
+const thumbClassName = `${switchClassName}-thumb`;
 
 /**
  * Styles for the root slot

@@ -13,13 +13,6 @@ export const lastMarkClassName = `${sliderClassName}-lastMark`;
 export const markClassName = `${sliderClassName}-mark`;
 export const markLabelClassName = `${sliderClassName}-label`;
 
-const sClassName = 'fui-Slider';
-const internalMarkContainerClassName = `${sClassName}-markItemContainer`;
-const internalFirstMarkClassName = `${sClassName}-firstMark`;
-const internalLastMarkClassName = `${sClassName}-lastMark`;
-const internalMarkClassName = `${sClassName}-mark`;
-const internalMarkLabelClassName = `${sClassName}-label`;
-
 /**
  * Styles for the root slot
  */
@@ -209,16 +202,16 @@ export const useMarksWrapperStyles = makeStyles({
     outlineStyle: 'none',
     zIndex: 1,
     whiteSpace: 'nowrap',
-    [`& .${internalMarkClassName}`]: {
+    [`& .${markClassName}`]: {
       backgroundColor: tokens.colorNeutralBackground1,
     },
 
-    [`& .${internalMarkLabelClassName}`]: {
+    [`& .${markLabelClassName}`]: {
       ...shorthands.padding('2px'),
       fontSize: '12px',
     },
 
-    [`& .${internalFirstMarkClassName}, .${internalLastMarkClassName}`]: {
+    [`& .${firstMarkClassName}, .${lastMarkClassName}`]: {
       opacity: '0',
     },
   },
@@ -229,20 +222,20 @@ export const useMarksWrapperStyles = makeStyles({
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
     justifyItems: 'end',
 
-    [`& .${internalMarkContainerClassName}`]: {
+    [`& .${markContainerClassName}`]: {
       display: 'flex',
       flexDirection: 'column',
       transform: 'translateX(50%)',
       alignItems: 'center',
     },
 
-    [`& .${internalMarkLabelClassName}`]: {
+    [`& .${markLabelClassName}`]: {
       fontFamily: tokens.fontFamilyBase,
       color: tokens.colorNeutralForeground1,
       paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
-    [`& .${internalMarkClassName}`]: {
+    [`& .${markClassName}`]: {
       height: '4px',
       width: '1px',
     },
@@ -254,7 +247,7 @@ export const useMarksWrapperStyles = makeStyles({
     marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
     justifyItems: 'start',
 
-    [`& .${internalMarkContainerClassName}`]: {
+    [`& .${markContainerClassName}`]: {
       display: 'flex',
       flexDirection: 'row',
       transform: 'translateY(50%)',
@@ -263,19 +256,19 @@ export const useMarksWrapperStyles = makeStyles({
       maxHeight: '100%',
     },
 
-    [`& .${internalMarkLabelClassName}`]: {
+    [`& .${markLabelClassName}`]: {
       paddingLeft: 'calc(var(--slider-thumb-size) /2 )',
       transform: 'scaleY(-1)',
     },
 
-    [`& .${internalMarkClassName}`]: {
+    [`& .${markClassName}`]: {
       height: '1px',
       width: 'var(--slider-mark-size)',
     },
   },
 
   disabled: {
-    [`& .${internalMarkLabelClassName}`]: {
+    [`& .${markLabelClassName}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
   },

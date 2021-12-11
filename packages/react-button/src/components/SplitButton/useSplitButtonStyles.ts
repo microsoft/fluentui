@@ -4,9 +4,8 @@ import { tokens } from '@fluentui/react-theme';
 import type { SplitButtonState } from './SplitButton.types';
 
 export const splitButtonClassName = 'fui-SplitButton';
-const sBClassName = 'fui-SplitButton';
-const splitButtonPrimaryActionButtonClassName = `${sBClassName}-primaryActionButton`;
-const splitButtonMenuButtonClassName = `${sBClassName}-menuButton`;
+const splitButtonPrimaryActionButtonClassName = `${splitButtonClassName}-primaryActionButton`;
+const splitButtonMenuButtonClassName = `${splitButtonClassName}-menuButton`;
 
 const useFocusStyles = makeStyles({
   primaryActionButton: createCustomFocusIndicatorStyle({

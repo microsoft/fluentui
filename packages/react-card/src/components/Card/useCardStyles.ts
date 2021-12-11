@@ -1,10 +1,9 @@
 import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
-// import { cardPreviewClassName } from '../CardPreview/index';
+import { cardPreviewClassName } from '../CardPreview/index';
 import type { CardState } from './Card.types';
 
 export const cardClassName = 'fui-Card';
-const cardPreviewClassName = 'fui-CardPreview';
 
 /**
  * Styles for the root slot

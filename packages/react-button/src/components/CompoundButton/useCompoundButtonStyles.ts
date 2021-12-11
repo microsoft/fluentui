@@ -4,8 +4,7 @@ import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
 export const compoundButtonClassName = 'fui-CompoundButton';
-const cBClassName = 'fui-CompoundButton';
-const compoundButtonSecondaryContentClassName = `${cBClassName}-secondaryContent`;
+const compoundButtonSecondaryContentClassName = `${compoundButtonClassName}-secondaryContent`;
 
 const useRootStyles = makeStyles({
   // Base styles

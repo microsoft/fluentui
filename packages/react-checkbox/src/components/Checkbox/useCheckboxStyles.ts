@@ -4,8 +4,7 @@ import { tokens } from '@fluentui/react-theme';
 import { CheckboxState } from './Checkbox.types';
 
 export const checkboxClassName = 'fui-Checkbox';
-const cClassName = 'fui-Checkbox';
-const checkboxClassNameIndicator = `${cClassName}-indicator`;
+const checkboxClassNameIndicator = `${checkboxClassName}-indicator`;
 
 /**
  * Styles for the root slot
