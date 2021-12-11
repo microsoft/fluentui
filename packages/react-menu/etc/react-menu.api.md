@@ -278,8 +278,9 @@ export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
-export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'aria-expanded' | 'id'>> & {
+export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
     ref?: React_2.Ref<never>;
+    'aria-expanded': boolean | undefined;
 };
 
 // @public (undocumented)
@@ -347,7 +348,7 @@ export function useMenuContextValues(state: MenuState): MenuContextValues;
 export const useMenuDivider: (props: MenuDividerProps, ref: React_2.Ref<HTMLElement>) => MenuDividerState;
 
 // @public (undocumented)
-export const useMenuDividerStyles: (state: MenuDividerState) => ComponentState<MenuDividerSlots>;
+export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
 
 // @public
 export function useMenuGroup(props: MenuGroupProps, ref: React_2.Ref<HTMLElement>): MenuGroupState;
@@ -362,7 +363,7 @@ export function useMenuGroupContextValues(state: MenuGroupState): MenuGroupConte
 export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>): MenuGroupHeaderState;
 
 // @public (undocumented)
-export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => ComponentState<MenuGroupHeaderSlots>;
+export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
 
 // @public (undocumented)
 export const useMenuGroupStyles: (state: MenuGroupState) => MenuGroupState;

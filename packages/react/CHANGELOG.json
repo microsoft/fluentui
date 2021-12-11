@@ -2,6 +2,57 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 10 Dec 2021 07:30:34 GMT",
+      "tag": "@fluentui/react_v8.47.1",
+      "version": "8.47.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Fix minor issues with promise handling"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.11",
+            "commit": "89deee5b2a8a5da67a557cd6b19fe9c51ab36de1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Dec 2021 07:27:17 GMT",
+      "tag": "@fluentui/react_v8.47.0",
+      "version": "8.47.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "442708a3657b4deb5c607bed865b3f29a4a8c7ad",
+            "comment": "Support ability to prefer the menu target as an item's click event target"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Dec 2021 07:28:19 GMT",
+      "tag": "@fluentui/react_v8.46.3",
+      "version": "8.46.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d5d3ef6592218c4876fa351d22b7b717b82e7602",
+            "comment": "SearchBox: disable pointer events when is focused"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Dec 2021 07:31:32 GMT",
       "tag": "@fluentui/react_v8.46.2",
       "version": "8.46.2",

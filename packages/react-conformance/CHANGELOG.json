@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Fri, 10 Dec 2021 07:30:34 GMT",
+      "tag": "@fluentui/react-conformance_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update typescript to 4.3 and update react-docgen-typescript"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Nov 2021 07:37:33 GMT",
       "tag": "@fluentui/react-conformance_v0.8.0",
       "version": "0.8.0",

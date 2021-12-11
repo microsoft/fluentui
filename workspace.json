@@ -391,6 +391,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-slider/src"
     },
+    "@fluentui/react-spinbutton": {
+      "root": "packages/react-spinbutton",
+      "projectType": "library",
+      "sourceRoot": "packages/react-spinbutton/src"
+    },
     "@fluentui/react-storybook": {
       "root": "packages/react-storybook",
       "projectType": "library",

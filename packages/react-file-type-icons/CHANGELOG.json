@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Fri, 10 Dec 2021 07:30:34 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.5.6",
+      "version": "8.5.6",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Disable isolatedModules compiler option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Nov 2021 14:54:16 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.5.6",
       "version": "8.5.6",
