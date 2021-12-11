@@ -81,7 +81,7 @@ export type CheckboxProps = Omit<
     /**
      * Checkboxes don't support children. To add a label, use the `label` prop.
      */
-    children?: null | undefined;
+    children?: never;
 
     /**
      * Callback to be called when the checked state value changes.

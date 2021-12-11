@@ -21,7 +21,7 @@ export const checkboxClassName = "fui-Checkbox";
 // @public (undocumented)
 export interface CheckboxCommons {
     checked: 'mixed' | boolean;
-    circular: boolean | undefined;
+    circular: boolean;
     labelPosition: 'before' | 'after';
     size: 'medium' | 'large';
 }
