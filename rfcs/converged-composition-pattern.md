@@ -304,6 +304,30 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 });
 ```
 
+Sometimes a component uses `context` which requires passing it along to the `Provider`.
+
+```tsx
+const customRender = (state: ComponentState, context: ComponentContext) => {
+  const { slots, slotProps } = getSlots<ComponentSlots>(state, ['root', 'icon']);
+
+  // Assume the icon normally renders before the children
+  // This custom render would put the icon after the children
+  return (
+    <slots.root {...slotProps.root}>
+      <ComponentContext.Provider value={context}>
+        {state.root.children}
+        <slots.icon {...slotProps.icon} />
+      </ComponentContext.Provider>
+    </slots.root>
+  );
+};
+
+export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
+  const [state, unusedRender, context] = useComponent(props, ref);
+  return customRender(state, context);
+});
+```
+
 ### Modifying order and injecting hooks
 
 The useComponent call can be replaced with calls to individual hooks to get between hooks within useComponent. This should generally be done by writing a new hook similar to useComponent.
