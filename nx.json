@@ -338,6 +338,10 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-tabs": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-tabster": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []

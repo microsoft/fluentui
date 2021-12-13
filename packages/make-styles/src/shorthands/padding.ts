@@ -1,19 +1,21 @@
 import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 import { generateStyles } from './generateStyles';
 
-export function padding(all: MakeStylesCSSValue): MakeStylesStrictCSSObject;
-export function padding(vertical: MakeStylesCSSValue, horizontal: MakeStylesCSSValue): MakeStylesStrictCSSObject;
+type PaddingStyle = Pick<MakeStylesStrictCSSObject, 'paddingTop' | 'paddingRight' | 'paddingBottom' | 'paddingLeft'>;
+
+export function padding(all: MakeStylesCSSValue): PaddingStyle;
+export function padding(vertical: MakeStylesCSSValue, horizontal: MakeStylesCSSValue): PaddingStyle;
 export function padding(
   top: MakeStylesCSSValue,
   horizontal: MakeStylesCSSValue,
   bottom: MakeStylesCSSValue,
-): MakeStylesStrictCSSObject;
+): PaddingStyle;
 export function padding(
   top: MakeStylesCSSValue,
   right: MakeStylesCSSValue,
   bottom: MakeStylesCSSValue,
   left: MakeStylesCSSValue,
-): MakeStylesStrictCSSObject;
+): PaddingStyle;
 
 /**
  * A function that implements CSS spec conformant expansion for "padding"
@@ -26,6 +28,6 @@ export function padding(
  *
  * See https://developer.mozilla.org/en-US/docs/Web/CSS/padding
  */
-export function padding(...values: MakeStylesCSSValue[]): MakeStylesStrictCSSObject {
+export function padding(...values: MakeStylesCSSValue[]): PaddingStyle {
   return generateStyles('padding', '', ...values);
 }
