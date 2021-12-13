@@ -16,7 +16,10 @@ export function expandShorthand(style: MakeStylesStyle, result: MakeStylesStyle 
       if (expansion) {
         Object.assign(result, expansion);
       } else {
-        result[property as keyof MakeStylesStyle] = value;
+        // Cast to any to avoid "error TS2590: Expression produces a union type that is too complex to represent"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (result as any)[property as keyof MakeStylesStyle] = value;
+        // result[property as keyof MakeStylesStyle] = value;
       }
       // eslint-disable-next-line eqeqeq
     } else if (value == null) {
@@ -24,7 +27,8 @@ export function expandShorthand(style: MakeStylesStyle, result: MakeStylesStyle 
     } else if (Array.isArray(value)) {
       result[property as 'animationName'] = value;
     } else if (typeof value === 'object') {
-      result[property as keyof MakeStylesStyle] = expandShorthand(value as MakeStylesStyle);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (result as any)[property as keyof MakeStylesStyle] = expandShorthand(value as MakeStylesStyle);
     }
   }
 

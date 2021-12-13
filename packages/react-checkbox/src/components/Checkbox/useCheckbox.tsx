@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxState } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
-import { Label, LabelProps } from '@fluentui/react-label';
+import { Label } from '@fluentui/react-label';
 
 /**
  * Create the state required to render Checkbox.
@@ -22,7 +22,7 @@ import { Label, LabelProps } from '@fluentui/react-label';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  const { circular, size = 'medium', labelPosition = 'after' } = props;
+  const { disabled, required, circular = false, size = 'medium', labelPosition = 'after' } = props;
 
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
@@ -33,54 +33,67 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'children'],
+    excludedPropNames: ['checked', 'defaultChecked', 'size'],
   });
+
+  const id = useId('checkbox-', nativeProps.primary.id);
 
   const state: CheckboxState = {
     circular,
     checked,
     size,
     labelPosition,
-    hasLabel: !!props.children,
     components: {
-      root: props.children !== undefined ? (Label as React.ComponentType<LabelProps>) : 'span',
-      indicator: 'div',
+      root: 'span',
       input: 'input',
+      indicator: 'div',
+      label: Label,
     },
     root: resolveShorthand(props.root, {
       required: true,
-      defaultProps: {
-        children: props.children,
-        ...nativeProps.root,
-      },
+      defaultProps: nativeProps.root,
     }),
     input: resolveShorthand(props.input, {
       required: true,
       defaultProps: {
         type: 'checkbox',
-        id: useId('checkbox-', nativeProps.primary.id),
+        id,
         ref,
         checked: checked === true,
         ...nativeProps.primary,
       },
     }),
+    label: resolveShorthand(props.label, {
+      required: false,
+      defaultProps: {
+        htmlFor: id,
+        disabled,
+        required,
+        size: 'medium', // Even if the checkbox itself is large
+      },
+    }),
     indicator: resolveShorthand(props.indicator, {
       required: true,
+      defaultProps: {
+        'aria-hidden': true,
+        children:
+          size === 'large' ? (
+            checked === 'mixed' ? (
+              <Mixed16Regular />
+            ) : (
+              <Checkmark16Regular />
+            )
+          ) : checked === 'mixed' ? (
+            <Mixed12Regular />
+          ) : (
+            <Checkmark12Regular />
+          ),
+      },
     }),
   };
 
-  // Add the default checkmark icon if none was provided
-  if (!state.indicator.children) {
-    if (state.size === 'medium') {
-      state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
-    } else {
-      state.indicator.children = checked === 'mixed' ? <Mixed16Regular /> : <Checkmark16Regular />;
-    }
-  }
-
   const onChange = state.input.onChange as CheckboxProps['onChange'];
   state.input.onChange = useEventCallback(ev => {
-    ev.stopPropagation();
     const val = ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked;
     onChange?.(ev, { checked: val });
     setChecked(val);

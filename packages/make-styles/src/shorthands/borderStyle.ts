@@ -3,19 +3,24 @@ import type { BorderStyleProperty } from 'csstype';
 import type { MakeStylesStrictCSSObject } from '../types';
 import { generateStyles } from './generateStyles';
 
-export function borderStyle(all: BorderStyleProperty): MakeStylesStrictCSSObject;
-export function borderStyle(vertical: BorderStyleProperty, horizontal: BorderStyleProperty): MakeStylesStrictCSSObject;
+type BorderStyleStyle = Pick<
+  MakeStylesStrictCSSObject,
+  'borderTopStyle' | 'borderRightStyle' | 'borderBottomStyle' | 'borderLeftStyle'
+>;
+
+export function borderStyle(all: BorderStyleProperty): BorderStyleStyle;
+export function borderStyle(vertical: BorderStyleProperty, horizontal: BorderStyleProperty): BorderStyleStyle;
 export function borderStyle(
   top: BorderStyleProperty,
   horizontal: BorderStyleProperty,
   bottom: BorderStyleProperty,
-): MakeStylesStrictCSSObject;
+): BorderStyleStyle;
 export function borderStyle(
   top: BorderStyleProperty,
   right: BorderStyleProperty,
   bottom: BorderStyleProperty,
   left: BorderStyleProperty,
-): MakeStylesStrictCSSObject;
+): BorderStyleStyle;
 
 /**
  * A function that implements CSS spec conformant expansion for "borderStyle"
@@ -28,6 +33,6 @@ export function borderStyle(
  *
  * See https://developer.mozilla.org/en-US/docs/Web/CSS/border-style
  */
-export function borderStyle(...values: BorderStyleProperty[]): MakeStylesStrictCSSObject {
+export function borderStyle(...values: BorderStyleProperty[]): BorderStyleStyle {
   return generateStyles('border', 'Style', ...values);
 }
