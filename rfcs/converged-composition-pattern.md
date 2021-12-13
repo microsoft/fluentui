@@ -277,7 +277,7 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
   state.components.icon = 'div';
 
   // alternatively, the entire slot can also be replace
-  state.icon = resolveShorthand(state.components.icon, { required = true });
+  state.icon = resolveShorthand(state.components.icon, { required: true });
 
   // apply custom styles
   // passing the existing class name first allows layering customStyles on top of those set by useComponent.
@@ -314,11 +314,10 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 
 ### Modifying order and injecting hooks
 
-The useComponent call can be replaced with calls to individual hooks to get inbetween hooks within useComponent.
-This should generally be done by writing a new hook similar to useComponent.
+The useComponent call can be replaced with calls to individual hooks to get between hooks within useComponent. This should generally be done by writing a new hook similar to useComponent.
 
-**TODO** - Need to find a case where this is absolutely required because the state cannot be modified post useComponent,
-the dev effort is impractical or it causes a performance problem.
+> **TODO** Need to find a case where this is absolutely required because the state cannot be modified post useComponent,
+> the dev effort is impractical, or it causes a performance problem.
 
 ```tsx
 export const useCustomComponent = (
@@ -344,21 +343,50 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 
 ## Pros & Cons
 
-- ✅ **Consistency**
-  All components will have the same API since all components have `state` and `render`.
+✅ **Consistency**
+All components will have the same API since all components have `state` and `render`.
 
-- ✅ **Simplified Imports**
-  There is one import per component, named `useComponent`, opposed to 3-4 imports.
+✅ **Simplified Imports**
+There is one import per component, named `useComponent`, opposed to 3-4 imports.
 
-- ✅ **useFoo not usable**
-  "Using" a component returns a fully usable yet customizable component API.
+✅ **useFoo not usable**
+"Using" a component returns a fully usable yet customizable component API.
 
-- ✅ **Learn-once**
-  Since this is consistent, and abstracts over all components, it is learn-once-apply-everywhere.
+✅ **Learn-once**
+Since this is consistent, and abstracts over all components, it is learn-once-apply-everywhere.
 
-- ❌ **Limits hook tree-shaking**
-  A single useComponent doesn't allow tree shaking out other hooks, like useComponentStyles.
-  However, we can ship a style-less package if needed.
+❌ **Limits hook tree-shaking**
+A single useComponent doesn't allow tree shaking out other hooks, like useComponentStyles. However, we can ship a style-less package if needed.
 
-- ❌ **Increased exported API surface**
-  Increases API surface by abstracting over other hooks with useComponent.
+❌ **Increased exported API surface**
+Increases API surface by abstracting over other hooks with useComponent.
+
+## Alternative Solution
+
+The proposed solution removes the ability to get between individual hooks, like state and styles. One alternative is to expose the hooks for modification without exporting them:
+
+```jsx
+const [state, render] = useButton(props, ref, {
+  styles: (hook, args) => {},
+  state: (hook, args) => {},
+  aria: (hook, args) => {
+    // before
+    hook(args);
+    // after
+  },
+  context: (hook, args) => {},
+});
+```
+
+### Pros & Cons:
+
+- ✅ Upgrade problem goes away, we still control number of hooks and order
+- ✅ User can still add/remove/replace before/after any hook
+- ✅ User doesn't need to "wire" the hooks together
+- ❌ Not tree shakable if user wants to remove hook, can only skip functionality
+- ❌ More objects in memory
+- ❓ Anonymous functions?
+
+### Unstyled Package
+
+The style hook is likely the only hook a partner would potentially want to remove from the bundle. We could/should ship an unstyled version of our components if that need arises. Else, the consumer needs to rewrite the entire library with hooks, just omitting the style hook.
