@@ -1,6 +1,6 @@
 import type { TabState } from './Tab.types';
 
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tabClassName = 'fui-Tab';
@@ -24,9 +24,9 @@ const pendingTheme = {
  */
 const useRootStyles = makeStyles({
   base: theme => ({
-    background: 'none',
-    borderColor: 'none',
-    borderRadius: theme.borderRadiusMedium,
+    backgroundColor: 'none',
+    ...shorthands.borderColor('none'),
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
     borderWidth: theme.strokeWidthThin,
     columnGap: pendingTheme.gap.medium,
     cursor: 'pointer',
@@ -35,9 +35,9 @@ const useRootStyles = makeStyles({
     fontFamily: theme.fontFamilyBase,
     fontSize: theme.fontSizeBase300,
     lineHeight: theme.lineHeightBase300,
-    padding: pendingTheme.tabPadding.medium,
+    ...shorthands.padding(pendingTheme.tabPadding.medium),
     position: 'relative',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
   }),
   horizontal: {
     alignItems: 'center',
@@ -48,12 +48,12 @@ const useRootStyles = makeStyles({
     justifyContent: 'flex-start',
   },
   small: {
-    padding: pendingTheme.tabPadding.small,
+    ...shorthands.padding(pendingTheme.tabPadding.small),
     columnGap: pendingTheme.gap.small,
   },
   subtle: theme => ({
     ':hover': {
-      background: theme.colorNeutralBackground1Hover,
+      backgroundColor: theme.colorNeutralBackground1Hover,
     },
   }),
 });
@@ -63,7 +63,7 @@ const useRootStyles = makeStyles({
  */
 const useFocusStyles = makeStyles({
   base: createCustomFocusIndicatorStyle(theme => ({
-    borderColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
     outlineWidth: theme.strokeWidthThick,
     outlineColor: 'tranparent',
     outlineStyle: 'solid',
@@ -81,8 +81,8 @@ const useFocusStyles = makeStyles({
 const useHorizontalIndicatorStyles = makeStyles({
   base: theme => ({
     ':after': {
-      background: 'none',
-      borderRadius: theme.borderRadiusMedium,
+      backgroundColor: 'none',
+      ...shorthands.borderRadius(theme.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -93,17 +93,17 @@ const useHorizontalIndicatorStyles = makeStyles({
     },
     ':hover': {
       ':after': {
-        background: theme.colorNeutralStroke1,
+        backgroundColor: theme.colorNeutralStroke1,
       },
     },
   }),
   selected: theme => ({
     ':after': {
-      background: theme.colorBrandStroke1,
+      backgroundColor: theme.colorBrandStroke1,
     },
     ':hover': {
       ':after': {
-        background: theme.colorBrandStroke1,
+        backgroundColor: theme.colorBrandStroke1,
       },
     },
   }),
@@ -121,8 +121,8 @@ const useHorizontalIndicatorStyles = makeStyles({
 const useVerticalIndicatorStyles = makeStyles({
   base: theme => ({
     ':before': {
-      background: 'none',
-      borderRadius: theme.borderRadiusMedium,
+      backgroundColor: 'none',
+      ...shorthands.borderRadius(theme.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -133,17 +133,17 @@ const useVerticalIndicatorStyles = makeStyles({
     },
     ':hover': {
       ':before': {
-        background: theme.colorNeutralStroke1,
+        backgroundColor: theme.colorNeutralStroke1,
       },
     },
   }),
   selected: theme => ({
     ':before': {
-      background: theme.colorBrandStroke1,
+      backgroundColor: theme.colorBrandStroke1,
     },
     ':hover': {
       ':before': {
-        background: theme.colorBrandStroke1,
+        backgroundColor: theme.colorBrandStroke1,
       },
     },
   }),
