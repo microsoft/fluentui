@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
-import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { AccordionContext } from '../Accordion/AccordionContext';
-import type { AccordionItemProps, AccordionItemState, AccordionItemSlots } from './AccordionItem.types';
-import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
+import type {
+  AccordionItemProps,
+  AccordionItemState,
+  AccordionItemSlots,
+  RenderAccordionItem,
+} from './AccordionItem.types';
+import { useAccordionItemState } from './useAccordionItemState';
+import { useAccordionItemContextValues } from './useAccordionItemContextValues';
+import { useAccordionItemStyles } from './useAccordionItemStyles';
+import { renderAccordionItem } from './renderAccordionItem';
 
 /**
  * Const listing which props are shorthand props.
@@ -16,29 +20,26 @@ export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = ['ro
  * @param props - AccordionItem properties
  * @param ref - reference to root HTMLElement of AccordionItem
  */
-export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
-  const { value, disabled = false } = props;
-  const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
-  const tabsterAttributes = useTabsterAttributes({
-    groupper: {},
-  });
+export const useAccordionItem = (
+  props: AccordionItemProps,
+  ref: React.Ref<HTMLElement>,
+): [AccordionItemState, RenderAccordionItem] => {
+  const state = useAccordionItemState(props, ref);
 
-  const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
-  const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(value));
-  const onAccordionHeaderClick = React.useCallback((ev: AccordionToggleEvent) => requestToggle(ev, { value }), [
-    requestToggle,
-    value,
-  ]);
+  const contextValues = useAccordionItemContextValues(state);
 
-  return {
-    open,
-    value,
-    disabled,
-    onHeaderClick: onAccordionHeaderClick,
-    root: getNativeElementProps('div', {
-      ref: ref,
-      ...(navigable ? tabsterAttributes : {}),
-      ...props,
-    }),
-  };
+  useAccordionItemStyles(state);
+
+  // TODO: Judgement tells me we shouldn't be doing logical work like
+  //       assembling this renderer here in the useAccordionItem hook.
+  //       The renderAccordionItem hook itself may be responsible for getting the context since it alone uses it?
+  //       At the least, all logic should be contained within the hooks themselves, not outside.
+  const render = React.useCallback(
+    (accordionItemState: AccordionItemState) => {
+      return renderAccordionItem(accordionItemState, contextValues);
+    },
+    [contextValues],
+  );
+
+  return [state, render];
 };
