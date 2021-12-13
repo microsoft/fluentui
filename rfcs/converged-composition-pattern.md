@@ -178,13 +178,6 @@ const [state, render] = useComponent(props, ref);
 return render(state);
 ```
 
-Problems solved:
-
-1. **Inconsistency** - All components will have the same API since all components have `state` and `render`.
-2. **Complex Imports** - There is one import per component, named `useComponent`, opposed to 3-4 imports.
-3. **useFoo not usable** - "Using" a component returns a fully usable yet customizable component API.
-4. **Not learn-once** - Since this is consistent, and abstracts over all components, it is learn-once-apply-everywhere.
-
 ### useComponent implementation
 
 The useComponent is implemented by sequencing individual hooks to build up state and then returning the state and render function.
@@ -351,13 +344,21 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 
 ## Pros & Cons
 
-- **Con: Limits hook tree-shaking**
+- ✅ **Consistency**
+  All components will have the same API since all components have `state` and `render`.
+
+- ✅ **Simplified Imports**
+  There is one import per component, named `useComponent`, opposed to 3-4 imports.
+
+- ✅ **useFoo not usable**
+  "Using" a component returns a fully usable yet customizable component API.
+
+- ✅ **Learn-once**
+  Since this is consistent, and abstracts over all components, it is learn-once-apply-everywhere.
+
+- ❌ **Limits hook tree-shaking**
   A single useComponent doesn't allow tree shaking out other hooks, like useComponentStyles.
   However, we can ship a style-less package if needed.
 
-- **Con: Increased exported API surface**
+- ❌ **Increased exported API surface**
   Increases API surface by abstracting over other hooks with useComponent.
-
-```
-
-```
