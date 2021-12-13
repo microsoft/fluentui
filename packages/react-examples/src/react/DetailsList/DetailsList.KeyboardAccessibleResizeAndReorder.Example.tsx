@@ -236,7 +236,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const columnToEdit = React.useRef<IColumn | null>(null);
   const clickHandler = React.useRef<string>(RESIZE);
   const [contextualMenuProps, setContextualMenuProps] = React.useState<IContextualMenuProps | undefined>(undefined);
-  const [editColumnProps, setEditColumnProps] = React.useState<IEditColumnProps | null>(null);
+  const [editColumnProps, setEditColumnProps] = React.useState<IEditColumnProps | undefined>(undefined);
   const input = React.useRef<number | null>(null);
 
   const resizeDialogContentProps = {
