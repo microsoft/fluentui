@@ -11,7 +11,6 @@ import {
   useAccessibility,
   useAutoControlled,
   useContextSelector,
-  useContextSelectors,
   useFluentContext,
   useStyles,
   useTelemetry,
@@ -62,7 +61,7 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
-import { ChatContext, ChatContextSubscribedValue, ChatDensity } from './chatContext';
+import { useChatContextSelectors, ChatDensity } from './chatContext';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
@@ -223,10 +222,10 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
-  const chatProps = (useContextSelectors(ChatContext, {
+  const chatProps = useChatContextSelectors({
     density: v => v.density,
     accessibility: v => v.behaviors.message,
-  }) as unknown) as ChatContextSubscribedValue;
+  });
 
   const props = {
     density: chatProps.density,

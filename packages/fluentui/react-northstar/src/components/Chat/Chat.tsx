@@ -79,7 +79,7 @@ export const Chat = (React.forwardRef<HTMLUListElement, ChatProps>((props, ref) 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Chat.handledProps, props);
 
-  const childBehaviors = accessibility && accessibility(props).childBehaviors;
+  const childBehaviors = accessibility && (accessibility as Accessibility<ChatProps>)(props).childBehaviors;
 
   const contextProps: ChatContextValue = {
     density,

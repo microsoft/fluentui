@@ -3,7 +3,6 @@ import {
   ForwardRefWithAs,
   getElementType,
   useAccessibility,
-  useContextSelectors,
   useFluentContext,
   useStyles,
   useTelemetry,
@@ -23,7 +22,7 @@ import {
   UIComponentProps,
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
-import { ChatContext, ChatContextSubscribedValue, ChatDensity } from './chatContext';
+import { useChatContextSelectors, ChatDensity } from './chatContext';
 import { ChatItemContextProvider } from './chatItemContext';
 
 export interface ChatItemSlotClassNames {
@@ -67,10 +66,10 @@ export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputPr
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
 
-  const chatProps = (useContextSelectors(ChatContext, {
+  const chatProps = useChatContextSelectors({
     density: v => v.density,
     accessibility: v => v.behaviors.item,
-  }) as unknown) as ChatContextSubscribedValue;
+  });
   const props = {
     ...chatProps,
     ...inputProps,

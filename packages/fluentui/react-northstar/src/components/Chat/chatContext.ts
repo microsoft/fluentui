@@ -1,4 +1,4 @@
-import { createContext } from '@fluentui/react-bindings';
+import { ContextSelector, createContext, useContextSelectors } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 
 export type ChatDensity = 'comfy' | 'compact';
@@ -17,8 +17,9 @@ export type ChatContextSubscribedValue = {
   density: ChatDensity;
   accessibility: Accessibility;
 };
+type ChatSelectorProperties = keyof ChatContextSubscribedValue;
 
-export const ChatContext = createContext<ChatContextValue>({
+const ChatContext = createContext<ChatContextValue>({
   density: defaultChatDensity,
   behaviors: {
     item: undefined,
@@ -26,3 +27,10 @@ export const ChatContext = createContext<ChatContextValue>({
   },
 });
 export const ChatContextProvider = ChatContext.Provider;
+
+export const useChatContextSelectors = <
+  Selectors extends Record<ChatSelectorProperties, ContextSelector<ChatContextValue, any>>
+>(
+  selectors: Selectors,
+): Record<ChatSelectorProperties, any> =>
+  (useContextSelectors(ChatContext, selectors) as unknown) as ChatContextSubscribedValue;
