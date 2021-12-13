@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsHeaderBase } from './DetailsHeader.base';
-import { DetailsListLayoutMode, ColumnDragEndLocation, IKeyboardColumnEdit } from './DetailsList.types';
+import { DetailsListLayoutMode, ColumnDragEndLocation, IColumnEditProps } from './DetailsList.types';
 import { SelectionMode } from '../../Selection';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { ITheme, IStyle } from '../../Styling';
@@ -100,12 +100,9 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
   useFastIcons?: boolean;
 
   /**
-   * Allows for reordering columns; prop contains the key of the column that should be reordered and
-   * the column index that it should be moved to. Calculates new column location using 1-based indexing.
-   * Note: Determining if the column index passed is valid is done by the component. If index is
-   * invalid, component simply returns without making any changes.
+   * Allows for programatic column resize and reorder.
    */
-  keyboardColumnReorderProps?: IKeyboardColumnEdit;
+  columnEditProps?: IColumnEditProps;
 }
 
 /**

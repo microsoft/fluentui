@@ -333,9 +333,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   focusZoneProps?: IFocusZoneProps;
 
   /**
-   * Gives ability to resize and reorder a column using the keyboard based on an inputValue passed in.
+   * Allows for programatic column resize and reorder.
    */
-  keyboardColumnEditProps?: IDetailsListKeyboardColumnEditProps;
+  columnEditProps?: IColumnEditProps;
 }
 
 /**
@@ -691,18 +691,10 @@ export type {
   IWithViewportProps,
 };
 
-/**
- * {@docCategory DetailsList}
- */
-export interface IKeyboardColumnEdit {
-  columnKey: string;
-  inputValue: number;
-}
-
-/**
- * {@docCategory DetailsList}
- */
-export interface IDetailsListKeyboardColumnEditProps {
-  columnReorder?: IKeyboardColumnEdit;
-  columnResize?: IKeyboardColumnEdit;
+export interface IColumnEditProps {
+  column: IColumn;
+  onEditColumn: (props: {
+    column: IColumn;
+    updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
+  }) => void;
 }
