@@ -1,12 +1,14 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
   Button,
+  DesignToken,
   display,
   ElementDefinitionContext,
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import {
+  heightNumber,
   inputFilledForcedColorStyles,
   inputFilledStyles,
   inputForcedColorStyles,
@@ -14,8 +16,9 @@ import {
   inputStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
-import { designUnit } from '../design-tokens';
+import { bodyFont, controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
 import { DirectionalStyleSheetBehavior } from '../styles';
+import { Swatch } from '../color/swatch';
 
 /**
  * LTR styles for calendar
@@ -36,6 +39,23 @@ import { DirectionalStyleSheetBehavior } from '../styles';
   left: 1px;
  }
  `;
+
+const closeButtonHover = DesignToken.create<Swatch>("close-button-hover").withDefault(
+  (target: HTMLElement) => {
+      const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
+      const inputRecipe = neutralFillInputRecipe.getValueFor(target);
+      return buttonRecipe.evaluate(target, inputRecipe.evaluate(target).focus).hover;
+  }
+);
+
+const closeButtonActive = DesignToken.create<Swatch>("close-button-active").withDefault(
+  (target: HTMLElement) => {
+      const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
+      const inputRecipe = neutralFillInputRecipe.getValueFor(target);
+      return buttonRecipe.evaluate(target, inputRecipe.evaluate(target).focus).active;
+  }
+);
+
 
 export const searchFilledStyles: (
   context: ElementDefinitionContext,
@@ -83,6 +103,25 @@ export const searchStyles = (context, definition) =>
       top: 1px;
       height: calc(100% - 3px);
       opacity: 0;
+      background: transparent;
+      color: ${neutralForegroundRest};
+      fill: currentcolor;
+      border: none;
+      border-radius: calc(${controlCornerRadius} * 1px);
+      min-width: calc(${heightNumber} * 1px);
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      outline: none;
+      font-family: ${bodyFont};
+      padding: 0 calc((10 + (${designUnit} * 2 * ${density})) * 1px);
+    }
+
+    .clear-button:hover {
+      background: ${closeButtonHover};
+    }
+
+    .clear-button:active {
+      background: ${closeButtonActive};
     }
 
     :host(:hover:not([disabled], [readOnly])) .clear-button,
