@@ -140,6 +140,11 @@ export class DetailsHeaderBase
     if (this.props.isAllCollapsed !== prevProps.isAllCollapsed) {
       this.setState({ isAllCollapsed: this.props.isAllCollapsed });
     }
+
+    if (this.props.columnEditProps && prevProps.columnEditProps !== this.props.columnEditProps) {
+      const column = this.props.columnEditProps.column;
+      this.props.columnEditProps.onEditColumn({ column: column, updateColumn: this._updateColumn.bind(this) });
+    }
   }
 
   public componentWillUnmount(): void {
@@ -173,7 +178,6 @@ export class DetailsHeaderBase
       useFastIcons,
       checkboxVisibility,
       className,
-      keyboardColumnReorderProps,
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -292,12 +296,6 @@ export class DetailsHeaderBase
         <GroupSpacer indentWidth={indentWidth} role="gridcell" count={groupNestingDepth! - 1} />
         {columns.map((column: IColumn, columnIndex: number) => {
           const _isDraggable = this._isDraggable(columnIndex);
-          // check if valid column to be dragged and has keyboard reorder props.
-          const keyboardColumnReorder =
-            _isDraggable && keyboardColumnReorderProps && keyboardColumnReorderProps.columnKey === column.key
-              ? true
-              : false;
-
           return [
             columnReorderProps &&
               (_isDraggable || columnIndex === columns.length - frozenColumnCountFromEnd) &&
@@ -318,8 +316,6 @@ export class DetailsHeaderBase
               isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
               cellStyleProps={this.props.cellStyleProps}
               useFastIcons={useFastIcons}
-              keyboardColumnReorder={keyboardColumnReorder}
-              onDrop={this._onDrop}
             />,
             this._renderColumnDivider(columnIndex),
           ];
@@ -386,32 +382,16 @@ export class DetailsHeaderBase
   };
 
   private _onDrop = (item?: any, event?: DragEvent): void => {
-    const { keyboardColumnReorderProps } = this.props;
-
     // Safe to assume this is defined since we're handling a drop event
     const columnReorderProps = this._getColumnReorderProps()!;
     // Target index will not get changed if draggeditem is after target item.
-    if ((this._draggedColumnIndex >= 0 && event) || keyboardColumnReorderProps) {
-      let targetIndex;
-      if (keyboardColumnReorderProps) {
-        targetIndex = this._isCheckboxColumnHidden()
-          ? keyboardColumnReorderProps.inputValue - 1
-          : keyboardColumnReorderProps.inputValue - 2;
-
-        const isValidTargetIndex = this._isDraggable(targetIndex);
-        if (!isValidTargetIndex) {
-          return;
-        }
-      } else {
-        targetIndex =
-          this._draggedColumnIndex > this._currentDropHintIndex
-            ? this._currentDropHintIndex
-            : this._currentDropHintIndex - 1;
-      }
-      const isValidDrop = this._isValidCurrentDropHintIndex() || !!keyboardColumnReorderProps;
-      if (event) {
-        event.stopPropagation();
-      }
+    if (this._draggedColumnIndex >= 0 && event) {
+      const targetIndex =
+        this._draggedColumnIndex > this._currentDropHintIndex
+          ? this._currentDropHintIndex
+          : this._currentDropHintIndex - 1;
+      const isValidDrop = this._isValidCurrentDropHintIndex();
+      event.stopPropagation();
       if (isValidDrop) {
         this._onDropIndexInfo.sourceIndex = this._draggedColumnIndex;
         this._onDropIndexInfo.targetIndex = targetIndex;
@@ -927,6 +907,42 @@ export class DetailsHeaderBase
       onToggleCollapseAll(newCollapsed);
     }
   };
+
+  private _updateColumn(column: IColumn, width?: number, newColumnIndex?: number) {
+    const { columns, onColumnResized, selectAllVisibility, columnReorderProps } = this.props;
+    const index = columns?.findIndex(col => col.key === column.key);
+
+    if (width) {
+      onColumnResized!(column, width, index!);
+    }
+
+    if (newColumnIndex) {
+      const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
+      const columnIndex = (showCheckbox ? 2 : 1) + index!;
+
+      this._updateDragInfo({ itemIndex: columnIndex });
+
+      const targetIndex = this._isCheckboxColumnHidden() ? newColumnIndex - 1 : newColumnIndex - 2;
+      const isValidTargetIndex = this._isDraggable(targetIndex);
+      if (!isValidTargetIndex) {
+        return;
+      }
+
+      if (columnReorderProps) {
+        if (columnReorderProps.onColumnDrop) {
+          const dragDropDetails: IColumnDragDropDetails = {
+            draggedIndex: this._draggedColumnIndex,
+            targetIndex: targetIndex,
+          };
+          columnReorderProps.onColumnDrop(dragDropDetails);
+          /* eslint-disable deprecation/deprecation */
+        } else if (columnReorderProps.handleColumnReorder) {
+          columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
+          /* eslint-enable deprecation/deprecation */
+        }
+      }
+    }
+  }
 }
 
 function _liesBetween(rtl: boolean, target: number, left: number, right: number): boolean {
