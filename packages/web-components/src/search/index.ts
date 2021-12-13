@@ -1,7 +1,6 @@
-import { attr, DOM } from '@microsoft/fast-element';
-import { Search as FoundationSearch, SearchOptions, searchTemplate as template } from '@microsoft/fast-foundation';
-import { fillColor, neutralFillInputRecipe } from '../design-tokens';
-import { Swatch } from '../index';
+import { attr } from '@microsoft/fast-element';
+import { Search as FoundationSearch, SearchOptions } from '@microsoft/fast-foundation';
+import { searchTemplate as template } from './search.template';
 import { searchStyles as styles } from './search.styles';
 
 /**
@@ -24,18 +23,6 @@ export class Search extends FoundationSearch {
    */
   @attr
   public appearance: SearchAppearance = 'outline';
-
-  connectedCallback() {
-    super.connectedCallback();
-
-    DOM.queueUpdate(() => {
-      fillColor.setValueFor(
-        this.root,
-        (target: HTMLElement): Swatch =>
-          neutralFillInputRecipe.getValueFor(target).evaluate(target, fillColor.getValueFor(this)).focus,
-      );
-    });
-  }
 }
 
 /**
@@ -59,6 +46,8 @@ export const fluentSearch = Search.compose<SearchOptions>({
     delegatesFocus: true,
   },
 });
+
+export * from './search.template';
 
 /**
  * Styles for Search
