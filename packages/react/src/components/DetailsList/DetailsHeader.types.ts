@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsHeaderBase } from './DetailsHeader.base';
-import { DetailsListLayoutMode, ColumnDragEndLocation, IColumnEditProps } from './DetailsList.types';
+import { DetailsListLayoutMode, ColumnDragEndLocation, IEditColumnProps } from './DetailsList.types';
 import { SelectionMode } from '../../Selection';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { ITheme, IStyle } from '../../Styling';
@@ -102,7 +102,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
   /**
    * Allows for programatic column resize and reorder.
    */
-  columnEditProps?: IColumnEditProps;
+  editColumnProps?: IEditColumnProps;
 }
 
 /**

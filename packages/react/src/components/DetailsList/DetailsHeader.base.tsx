@@ -141,9 +141,9 @@ export class DetailsHeaderBase
       this.setState({ isAllCollapsed: this.props.isAllCollapsed });
     }
 
-    if (this.props.columnEditProps && prevProps.columnEditProps !== this.props.columnEditProps) {
-      const column = this.props.columnEditProps.column;
-      this.props.columnEditProps.onEditColumn({ column: column, updateColumn: this._updateColumn.bind(this) });
+    if (this.props.editColumnProps && prevProps.editColumnProps !== this.props.editColumnProps) {
+      const column = this.props.editColumnProps.column;
+      this.props.editColumnProps.onEditColumn({ column: column, updateColumn: this._updateColumn.bind(this) });
     }
   }
 

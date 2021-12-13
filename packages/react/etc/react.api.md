@@ -2976,17 +2976,6 @@ export interface IColumnDragDropDetails {
 }
 
 // @public (undocumented)
-export interface IColumnEditProps {
-    // (undocumented)
-    column: IColumn;
-    // (undocumented)
-    onEditColumn: (props: {
-        column: IColumn;
-        updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
-    }) => void;
-}
-
-// @public (undocumented)
 export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
     onColumnDragEnd?: (props: {
         dropLocation?: ColumnDragEndLocation;
@@ -3687,10 +3676,10 @@ export interface IDetailsHeaderBaseProps extends React_2.ClassAttributes<Details
     ariaLabelForToggleAllGroupsButton?: string;
     className?: string;
     collapseAllVisibility?: CollapseAllVisibility;
-    columnEditProps?: IColumnEditProps;
     columnReorderOptions?: IColumnReorderOptions;
     columnReorderProps?: IColumnReorderHeaderProps;
     componentRef?: IRefObject<IDetailsHeader>;
+    editColumnProps?: IEditColumnProps;
     isAllCollapsed?: boolean;
     layoutMode: DetailsListLayoutMode;
     minimumPixelsForDrag?: number;
@@ -3818,7 +3807,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     checkButtonAriaLabel?: string;
     checkButtonGroupAriaLabel?: string;
     className?: string;
-    columnEditProps?: IColumnEditProps;
     columnReorderOptions?: IColumnReorderOptions;
     columns?: IColumn[];
     compact?: boolean;
@@ -3826,6 +3814,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     constrainMode?: ConstrainMode;
     disableSelectionZone?: boolean;
     dragDropEvents?: IDragDropEvents;
+    editColumnProps?: IEditColumnProps;
     enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
     flexMargin?: number;
@@ -4767,6 +4756,14 @@ export interface IDropHintDetails {
     originX: number;
     // (undocumented)
     startX: number;
+}
+
+// @public (undocumented)
+export interface IEditColumnProps {
+    // (undocumented)
+    column: IColumn;
+    // (undocumented)
+    onEditColumn: (props: IOnEditColumnProps) => void;
 }
 
 // @public (undocumented)
@@ -6181,6 +6178,14 @@ export interface INavStyles {
 export function initializeResponsiveMode(element?: HTMLElement): void;
 
 export { IObjectWithKey }
+
+// @public (undocumented)
+export interface IOnEditColumnProps {
+    // (undocumented)
+    column: IColumn;
+    // (undocumented)
+    updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
+}
 
 // @public (undocumented)
 export interface IOnRenderComboBoxLabelProps {

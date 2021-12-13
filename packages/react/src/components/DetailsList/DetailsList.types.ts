@@ -335,7 +335,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Allows for programatic column resize and reorder.
    */
-  columnEditProps?: IColumnEditProps;
+  editColumnProps?: IEditColumnProps;
 }
 
 /**
@@ -691,10 +691,12 @@ export type {
   IWithViewportProps,
 };
 
-export interface IColumnEditProps {
+export interface IOnEditColumnProps {
   column: IColumn;
-  onEditColumn: (props: {
-    column: IColumn;
-    updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
-  }) => void;
+  updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
+}
+
+export interface IEditColumnProps {
+  column: IColumn;
+  onEditColumn: (props: IOnEditColumnProps) => void;
 }

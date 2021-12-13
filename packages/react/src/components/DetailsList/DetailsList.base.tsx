@@ -185,7 +185,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onRenderDefaultRow,
     selectionZoneRef,
     focusZoneProps,
-    columnEditProps,
+    editColumnProps,
   } = props;
 
   const defaultRole = 'grid';
@@ -705,7 +705,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
                 onRenderDetailsCheckbox: onRenderCheckbox,
                 rowWidth: sumColumnWidths(adjustedColumns),
                 useFastIcons,
-                columnEditProps: columnEditProps,
+                editColumnProps: editColumnProps,
               },
               onRenderDetailsHeader,
             )}
