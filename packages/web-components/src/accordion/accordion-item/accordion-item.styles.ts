@@ -80,7 +80,6 @@ export const accordionItemStyles: (
       position: relative;
       grid-template-columns: auto 1fr auto auto;
       align-items: center;
-      z-index: 2;
     }
 
     .button {
@@ -105,7 +104,6 @@ export const accordionItemStyles: (
       left: 0;
       right: 0;
       bottom: 0;
-      z-index: 1;
       cursor: pointer;
     }
 
@@ -133,7 +131,6 @@ export const accordionItemStyles: (
       align-items: center;
       justify-content: center;
       grid-column: 4;
-      z-index: 2;
       pointer-events: none;
       background: ${neutralFillStealthRestOnNeutralFillLayerRest};
       border-radius: calc(${controlCornerRadius} * 1px);
@@ -173,7 +170,6 @@ export const accordionItemStyles: (
       padding-inline-start: calc(${designUnit} * 2 * 1px);
       justify-content: center;
       grid-column: 1;
-      z-index: 2;
     }
 
     .end {
@@ -181,7 +177,12 @@ export const accordionItemStyles: (
       align-items: center;
       justify-content: center;
       grid-column: 3;
-      z-index: 2;
+    }
+
+    .icon,
+    .start,
+    .end {
+      position: relative;
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(

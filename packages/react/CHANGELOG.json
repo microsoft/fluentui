@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 10 Dec 2021 07:30:34 GMT",
+      "tag": "@fluentui/react_v8.47.1",
+      "version": "8.47.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Fix minor issues with promise handling"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.11",
+            "commit": "89deee5b2a8a5da67a557cd6b19fe9c51ab36de1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Dec 2021 07:27:17 GMT",
       "tag": "@fluentui/react_v8.47.0",
       "version": "8.47.0",

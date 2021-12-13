@@ -3963,17 +3963,17 @@
   dependencies:
     core-js "^3.8.2"
 
-"@storybook/react-docgen-typescript-plugin@1.0.2-canary.253f8c1.0", "@storybook/react-docgen-typescript-plugin@1.0.2-canary.f7e28c0.0":
-  version "1.0.2-canary.f7e28c0.0"
-  resolved "https://registry.yarnpkg.com/@storybook/react-docgen-typescript-plugin/-/react-docgen-typescript-plugin-1.0.2-canary.f7e28c0.0.tgz#7d286d6476305d0dd5f4f17d76688d0b883d4593"
-  integrity sha512-E1Fc8JN43GqLYpCcJdankERI2sAaGdgHVsT0jnIaNu/V+Ru4nB+XvErJluhlsgLbhnisC84kzerU0lIpKVWhGQ==
+"@storybook/react-docgen-typescript-plugin@1.0.2-canary.253f8c1.0":
+  version "1.0.2-canary.253f8c1.0"
+  resolved "https://registry.yarnpkg.com/@storybook/react-docgen-typescript-plugin/-/react-docgen-typescript-plugin-1.0.2-canary.253f8c1.0.tgz#f2da40e6aae4aa586c2fb284a4a1744602c3c7fa"
+  integrity sha512-mmoRG/rNzAiTbh+vGP8d57dfcR2aP+5/Ll03KKFyfy5FqWFm/Gh7u27ikx1I3LmVMI8n6jh5SdWMkMKon7/tDw==
   dependencies:
     debug "^4.1.1"
     endent "^2.0.1"
     find-cache-dir "^3.3.1"
     flat-cache "^3.0.4"
     micromatch "^4.0.2"
-    react-docgen-typescript "^1.22.0"
+    react-docgen-typescript "^2.0.0"
     tslib "^2.0.0"
 
 "@storybook/react@6.3.6":
@@ -20868,10 +20868,10 @@ react-dev-utils@^11.0.3:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-docgen-typescript@^1.16.6, react-docgen-typescript@^1.22.0:
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.22.0.tgz#00232c8e8e47f4437cac133b879b3e9437284bee"
-  integrity sha512-MPLbF8vzRwAG3GcjdL+OHQlhgtWsLTXs+7uJiHfEeT3Ur7IsZaNYqRTLQ9sj2nB6M6jylcPCeCmH7qbszJmecg==
+react-docgen-typescript@^2.0.0, react-docgen-typescript@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.1.1.tgz#c9f9ccb1fa67e0f4caf3b12f2a07512a201c2dcf"
+  integrity sha512-XWe8bsYqVjxciKdpNoufaHiB7FgUHIOnVQgxUolRL3Zlof2zkdTzuQH6SU2n3Ek9kfy3O1c63ojMtNfpiuNeZQ==
 
 react-docgen@^5.0.0:
   version "5.1.0"
@@ -24926,10 +24926,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@4.1.5, typescript@~4.3.2:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.5.tgz#123a3b214aaff3be32926f0d8f1f6e704eb89a72"
-  integrity sha512-6OSu9PTIzmn9TCDiovULTnET6BgXtDYL4Gg4szY+cGsc3JP1dQL8qvE8kShTRx1NIw4Q9IBHlwODjkjWEtMUyA==
+typescript@4.3.5, typescript@~4.3.2:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
 ua-parser-js@0.7.21, ua-parser-js@^0.7.18:
   version "0.7.21"

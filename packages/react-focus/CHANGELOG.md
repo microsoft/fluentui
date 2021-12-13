@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 25 Nov 2021 14:54:16 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Dec 2021 07:30:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.3.11)
+
+Fri, 10 Dec 2021 07:30:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.3.9..@fluentui/react-focus_v8.3.11)
+
+### Patches
+
+- Add missing null check detected by typescript 4.3 ([PR #20909](https://github.com/microsoft/fluentui/pull/20909) by elcraig@microsoft.com)
 
 ## [8.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.3.9)
 
