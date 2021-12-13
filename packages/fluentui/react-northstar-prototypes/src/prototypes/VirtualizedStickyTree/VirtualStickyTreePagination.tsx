@@ -92,6 +92,7 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
     stable_stickyItemIds,
     stickyItemPusherHeights,
     getItemOverrideProps,
+    getItemRef,
   } = useVirtualStickyTree(props);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
@@ -140,10 +141,24 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
 
   const { hasNextPage, isNextPageLoading, onLoadNextPage, paginationThreshold } = props;
 
-  const isItemLoaded = React.useCallback((index: number) => !hasNextPage || index < visibleItemIds.length, [
-    hasNextPage,
-    visibleItemIds.length,
-  ]);
+  const isItemLoaded = React.useCallback(
+    (index: number) => {
+      if (!hasNextPage) {
+        return true;
+      }
+      if (index < visibleItemIds.length) {
+        // make sure item is not a loader
+        const id = visibleItemIds[index];
+        if (id.startsWith('loader') && getItemRef(id)) {
+          // a loader item is visible, trying to load more items
+          return false;
+        }
+        return true;
+      }
+      return false;
+    },
+    [getItemRef, hasNextPage, visibleItemIds],
+  );
 
   const itemCount = hasNextPage ? visibleItemIds.length + 1 : visibleItemIds.length;
 
@@ -207,5 +222,5 @@ VirtualStickyTreePagination.displayName = 'VirtualStickyTreePagination';
 VirtualStickyTreePagination.defaultProps = {
   accessibility: treeBehavior,
   itemSize: 50,
-  paginationThreshold: 5,
+  paginationThreshold: 15,
 };

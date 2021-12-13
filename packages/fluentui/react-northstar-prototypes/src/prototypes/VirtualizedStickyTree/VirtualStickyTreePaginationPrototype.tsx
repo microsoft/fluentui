@@ -1,14 +1,54 @@
 import * as React from 'react';
-import { TriangleDownIcon, TreeTitleProps, TriangleEndIcon } from '@fluentui/react-northstar';
+import {
+  TriangleDownIcon,
+  TreeTitleProps,
+  TriangleEndIcon,
+  ObjectShorthandCollection,
+  TreeItemProps,
+  Loader,
+} from '@fluentui/react-northstar';
 import { VirtualStickyTreePagination } from './VirtualStickyTreePagination';
-import { splitItemsToPages } from './items';
+import { getAllStickyHeaders, splitItemsToPages } from './paginationItemsGenerator';
 
 const NUM_OF_PAGE = 5;
-const FETCH_TIMEOUT = 3000;
+let pageIndex = 1;
 
-const getNthPage = splitItemsToPages(NUM_OF_PAGE);
+const FETCH_TIMEOUT = 3000;
+const allStickyHeaders: ObjectShorthandCollection<Omit<TreeItemProps, 'items'>> = getAllStickyHeaders();
+
+const getLoader = (id: string) => ({
+  id,
+  title: {
+    content: <Loader />,
+    style: { display: 'flex', height: '100%' },
+  },
+});
+
+/**
+ * During pagination, it can happen that some sticky headers are not loaded.
+ * In this case, we still render the unloaded sticky headers, with a loader as child item.
+ * The loader item will be replaced with real items on load.
+ * @param currItems
+ */
+const addUnloadesStickyItems = (currItems: ObjectShorthandCollection<TreeItemProps>) => {
+  const lastLoadedSticky = currItems[currItems.length - 1];
+  lastLoadedSticky.items.push(getLoader(`loader-${lastLoadedSticky.id}`));
+
+  allStickyHeaders.forEach(stickyHeader => {
+    if (!currItems.filter(item => item.id === stickyHeader.id).length) {
+      currItems.push({ ...stickyHeader, items: [getLoader(`loader-${stickyHeader.id}`)] });
+    }
+  });
+};
+
+const getNthPage = (pageIndex: number) => {
+  const currItems = splitItemsToPages(NUM_OF_PAGE)(pageIndex);
+  if (pageIndex < NUM_OF_PAGE - 1) {
+    addUnloadesStickyItems(currItems);
+  }
+  return currItems;
+};
 const initialItems = getNthPage(0);
-let i = 1;
 
 const CustomTreeTitle = (
   Component: React.ElementType<TreeTitleProps>,
@@ -26,10 +66,10 @@ const fetchData = () => {
   return new Promise<{ items: any; hasNextPage: boolean }>(resolve =>
     setTimeout(() => {
       const result = {
-        items: getNthPage(i),
-        hasNextPage: i < NUM_OF_PAGE - 1,
+        items: getNthPage(pageIndex),
+        hasNextPage: pageIndex < NUM_OF_PAGE - 1,
       };
-      i++;
+      pageIndex++;
       resolve(result);
     }, FETCH_TIMEOUT),
   );
@@ -40,10 +80,6 @@ const VirtualStickyTreePaginationPrototype = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [hasNextPage, setHasNextPage] = React.useState(true);
 
-  // // control activeItemIds state to always load sticky header as expanded
-  // const [activeItemIds, setActiveItemIds] = React.useState(items.map(item => item.id));
-  // const handleActiveItemIdsChange = (_e, data) => setActiveItemIds(data.activeItemIds);
-
   const loadMoreRows = isLoading
     ? () => Promise.resolve()
     : async () => {
@@ -51,12 +87,6 @@ const VirtualStickyTreePaginationPrototype = () => {
         const result = await fetchData();
         setIsLoading(false);
         setHasNextPage(result.hasNextPage);
-
-        // // load sticky header as expanded
-        // const currSticky = items.map(item => item.id);
-        // const newlyLoadedSticky = result.items.map(item => item.id).filter(id => currSticky.indexOf(id) < 0);
-        // setActiveItemIds(prevActiveItemIds => [...prevActiveItemIds, ...newlyLoadedSticky]);
-
         setItems(result.items);
       };
 
@@ -72,9 +102,7 @@ const VirtualStickyTreePaginationPrototype = () => {
         hasNextPage={hasNextPage}
         isNextPageLoading={isLoading}
         onLoadNextPage={loadMoreRows}
-        paginationThreshold={10}
-        // activeItemIds={activeItemIds}
-        // onActiveItemIdsChange={handleActiveItemIdsChange}
+        paginationThreshold={20}
       />
     </div>
   );
