@@ -4,8 +4,6 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 describe('Slider', () => {
   isConformant({
     Component: Slider,
