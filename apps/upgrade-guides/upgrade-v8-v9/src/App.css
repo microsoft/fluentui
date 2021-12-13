@@ -1,0 +1,52 @@
+.app {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  padding: 25px;
+}
+
+.variants {
+  padding-left: 50px;
+}
+
+.example {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 0 25px 0;
+  padding: 10px 0;
+}
+
+.example .name {
+  font-size: 24px;
+  margin: 0 0 5px 0;
+}
+
+.variants .example .name {
+  font-size: 18px;
+}
+
+.example .description {
+  font-size: 14px;
+  color: #777;
+  margin: 0 0 5px 5px;
+}
+
+.example .controls {
+  margin: 10px 0 0 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  row-gap: 1em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+}
