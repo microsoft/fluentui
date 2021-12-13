@@ -9,7 +9,8 @@ import {
   IColumnReorderOptions,
   IDragDropEvents,
   IDragDropContext,
-  IColumnEditProps,
+  IOnEditColumnProps,
+  IEditColumnProps,
   ColumnActionsMode,
 } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
@@ -107,8 +108,8 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     };
   };
 
-  const onEditColumn = (editColumnProps: IColumnEditProps) => {
-    const { column, updateColumn } = editColumnProps;
+  const onEditColumn = (onEditColumnProps: IOnEditColumnProps) => {
+    const { column, updateColumn } = onEditColumnProps;
 
     if (clickHandler.current === RESIZE && input.current) {
       const width = input.current;
@@ -160,7 +161,9 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     if (textfieldRef.current) {
       input.current = Number(textfieldRef.current.value);
     }
-    setColumnEditProps({ column: columnToEdit.current, onEditColumn: onEditColumn });
+    if (columnToEdit.current) {
+      setEditColumnProps({ column: columnToEdit.current, onEditColumn: onEditColumn });
+    }
     hideDialog();
   };
 
@@ -233,7 +236,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const columnToEdit = React.useRef<IColumn | null>(null);
   const clickHandler = React.useRef<string>(RESIZE);
   const [contextualMenuProps, setContextualMenuProps] = React.useState<IContextualMenuProps | undefined>(undefined);
-  const [columnEditProps, setColumnEditProps] = React.useState<IColumnEditProps>(null);
+  const [editColumnProps, setEditColumnProps] = React.useState<IEditColumnProps | null>(null);
   const input = React.useRef<number | null>(null);
 
   const resizeDialogContentProps = {
@@ -297,7 +300,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
           ariaLabelForSelectionColumn="Toggle selection"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           checkButtonAriaLabel="select row"
-          columnEditProps={columnEditProps}
+          editColumnProps={editColumnProps}
         />
       </MarqueeSelection>
       {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
