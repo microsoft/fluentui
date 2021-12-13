@@ -155,7 +155,7 @@ It is also not intuitive as to why the `state` calculated by `useFoo` includes a
 
 ### 4. Components should not be aware of context values
 
-It is an an unnecessary burden to require the caller to get the context values back just to pass it to render.
+It is an unnecessary burden to require the caller to get the context values back just to pass it to render.
 Context values are not designed to be modified between useComponent and render.
 If the caller does need to modify them, it should be done where the values are set on React context, not where
 the values are consumed.
@@ -171,11 +171,11 @@ Ideally, the overall story for our composition would be learn-once-apply-everywh
 Prioritizing a learn-once approach and simplification, we can consider this API:
 
 ```tsx
-const [state, render] = useComponent(props, ref);
+const [state, render, context] = useComponent(props, ref);
 
 // modify state
 
-return render(state);
+return render(state, context);
 ```
 
 ### useComponent implementation
@@ -188,19 +188,12 @@ export const useComponent = (
   ref: React.Ref<HTMLButtonElement>,
 ): [ComponentState, RenderComponent] => {
   const state = useComponentState(props);
+  const contextValues = useComponentContextValues(state);
   useComponentARIA(state, props, ref);
   useComponentStyles(state);
 
-  return [state, renderComponent];
+  return [state, renderComponent, contextValues];
 };
-```
-
-### Encapsulating context
-
-The useComponent method should curry the render function to encapsulate knowledge of context within the hook
-
-```ts
-return [state, state => renderComponent(state, contextValues)];
 ```
 
 ## Use case examples
@@ -360,7 +353,17 @@ A single useComponent doesn't allow tree shaking out other hooks, like useCompon
 ❌ **Increased exported API surface**
 Increases API surface by abstracting over other hooks with useComponent.
 
-## Alternative Solution
+## Discarded Solutions
+
+### Encapsulating context
+
+The useComponent method should curry the render function to encapsulate knowledge of context within the hook
+
+```ts
+return [state, state => renderComponent(state, contextValues)];
+```
+
+### Expose individual hooks
 
 The proposed solution removes the ability to get between individual hooks, like state and styles. One alternative is to expose the hooks for modification without exporting them:
 
@@ -377,7 +380,7 @@ const [state, render] = useButton(props, ref, {
 });
 ```
 
-### Pros & Cons:
+#### Pros & Cons:
 
 - ✅ Upgrade problem goes away, we still control number of hooks and order
 - ✅ User can still add/remove/replace before/after any hook
