@@ -1,18 +1,15 @@
 import type { BorderColorProperty, BorderStyleProperty, BorderWidthProperty } from 'csstype';
 import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 
-type BorderLeftStyles = Pick<MakeStylesStrictCSSObject, 'borderLeftColor' | 'borderLeftStyle' | 'borderLeftWidth'>;
+type BorderLeftStyle = Pick<MakeStylesStrictCSSObject, 'borderLeftColor' | 'borderLeftStyle' | 'borderLeftWidth'>;
 
-export function borderLeft(width: BorderWidthProperty<MakeStylesCSSValue>): BorderLeftStyles;
-export function borderLeft(
-  width: BorderWidthProperty<MakeStylesCSSValue>,
-  style: BorderStyleProperty,
-): BorderLeftStyles;
+export function borderLeft(width: BorderWidthProperty<MakeStylesCSSValue>): BorderLeftStyle;
+export function borderLeft(width: BorderWidthProperty<MakeStylesCSSValue>, style: BorderStyleProperty): BorderLeftStyle;
 export function borderLeft(
   width: BorderWidthProperty<MakeStylesCSSValue>,
   style: BorderStyleProperty,
   color: BorderColorProperty,
-): BorderLeftStyles;
+): BorderLeftStyle;
 
 /**
  * A function that implements expansion for "border-left", it's simplified - check usage examples.
@@ -26,7 +23,7 @@ export function borderLeft(
  */
 export function borderLeft(
   ...values: [BorderWidthProperty<MakeStylesCSSValue>, BorderStyleProperty?, BorderColorProperty?]
-): BorderLeftStyles {
+): BorderLeftStyle {
   return {
     borderLeftWidth: values[0],
     ...(values[1] && ({ borderLeftStyle: values[1] } as MakeStylesStrictCSSObject)),
