@@ -6,7 +6,8 @@ import type { CheckboxProps } from './Checkbox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * A Checkbox component provides a way to represent options that can be selected
+ * Checkboxes give people a way to select one or more items from a group,
+ * or switch between two mutually exclusive options (checked or unchecked).
  */
 export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef((props, ref) => {
   const state = useCheckbox(props, ref);
