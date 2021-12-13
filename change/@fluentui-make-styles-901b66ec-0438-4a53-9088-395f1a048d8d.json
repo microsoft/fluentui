@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: improve return types for shorthand functions",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
