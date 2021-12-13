@@ -9,7 +9,7 @@ import {
   IColumnReorderOptions,
   IDragDropEvents,
   IDragDropContext,
-  IDetailsListKeyboardColumnEditProps,
+  IColumnEditProps,
   ColumnActionsMode,
 } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
@@ -107,6 +107,20 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     };
   };
 
+  const onEditColumn = (editColumnProps: IColumnEditProps) => {
+    const { column, updateColumn } = editColumnProps;
+
+    if (clickHandler.current === RESIZE && input.current) {
+      const width = input.current;
+      updateColumn(column, width);
+    } else if (clickHandler.current === REORDER && input.current) {
+      const targetIndex = selection.mode ? input.current + 1 : input.current;
+      updateColumn(column, undefined, targetIndex);
+    }
+
+    input.current = null;
+  };
+
   const onItemInvoked = (item: IExampleItem) => alert(`Item invoked ${item.name}`);
 
   const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
@@ -136,32 +150,17 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     showDialog();
   };
 
-  const handleResize = () => {
-    if (columnToEdit.current && textfieldRef.current) {
-      setKeyboardColumnEditProps({
-        columnResize: { columnKey: columnToEdit.current.key, inputValue: Number(textfieldRef.current.value) },
-      });
-    }
-
-    hideDialog();
-    columnToEdit.current = null;
-  };
-
   const reorderColumn = (column: IColumn) => {
     columnToEdit.current = column;
     clickHandler.current = REORDER;
     showDialog();
   };
 
-  const handleReorder = () => {
-    if (columnToEdit.current && textfieldRef.current) {
-      const { value } = textfieldRef.current;
-      const inputValue = selection.mode ? Number(value) + 1 : Number(value);
-
-      setKeyboardColumnEditProps({
-        columnReorder: { columnKey: columnToEdit.current.key, inputValue: inputValue },
-      });
+  const confirmDialog = () => {
+    if (textfieldRef.current) {
+      input.current = Number(textfieldRef.current.value);
     }
+    setColumnEditProps({ column: columnToEdit.current, onEditColumn: onEditColumn });
     hideDialog();
   };
 
@@ -234,15 +233,8 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const columnToEdit = React.useRef<IColumn | null>(null);
   const clickHandler = React.useRef<string>(RESIZE);
   const [contextualMenuProps, setContextualMenuProps] = React.useState<IContextualMenuProps | undefined>(undefined);
-
-  const [keyboardColumnEditProps, setKeyboardColumnEditProps] = React.useState<
-    IDetailsListKeyboardColumnEditProps | undefined
-  >(undefined);
-
-  React.useEffect(() => {
-    // reset keyboardColumnEditProps back to undefined to keep reordering and resizing dynamic.
-    setKeyboardColumnEditProps(undefined);
-  }, [keyboardColumnEditProps]);
+  const [columnEditProps, setColumnEditProps] = React.useState<IColumnEditProps>(null);
+  const input = React.useRef<number | null>(null);
 
   const resizeDialogContentProps = {
     type: DialogType.normal,
@@ -305,7 +297,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
           ariaLabelForSelectionColumn="Toggle selection"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           checkButtonAriaLabel="select row"
-          keyboardColumnEditProps={keyboardColumnEditProps}
+          columnEditProps={columnEditProps}
         />
       </MarqueeSelection>
       {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
@@ -318,10 +310,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
       >
         <TextField componentRef={textfieldRef} />
         <DialogFooter>
-          <PrimaryButton
-            onClick={clickHandler.current === RESIZE ? handleResize : handleReorder}
-            text={clickHandler.current}
-          />
+          <PrimaryButton onClick={confirmDialog} text={clickHandler.current} />
           <DefaultButton onClick={hideDialog} text="Cancel" />
         </DialogFooter>
       </Dialog>
