@@ -7,9 +7,9 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * Define a styled AccordionItem, using the `useAccordionItem` and `useAccordionItemStyles` hooks.
  */
 export const AccordionItem: ForwardRefComponent<AccordionItemProps> = React.forwardRef((props, ref) => {
-  const [state, render, contextValues] = useAccordionItem(props, ref);
+  const [state, render, context] = useAccordionItem(props, ref);
 
-  return render(state, contextValues);
+  return render(state, context);
 });
 
 AccordionItem.displayName = 'AccordionItem';

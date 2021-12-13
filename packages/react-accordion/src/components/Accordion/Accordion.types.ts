@@ -62,4 +62,4 @@ export type AccordionProps = ComponentProps<AccordionSlots> &
 
 export type AccordionState = ComponentState<AccordionSlots> & AccordionCommons & AccordionContextValue;
 
-export type RenderAccordion = (state: AccordionState) => JSX.Element;
+export type RenderAccordion = (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;

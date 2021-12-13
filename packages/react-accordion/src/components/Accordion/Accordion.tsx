@@ -8,9 +8,9 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  */
 export const Accordion: ForwardRefComponent<AccordionProps> = React.forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
-    const [state, render] = useAccordion(props, ref);
+    const [state, render, context] = useAccordion(props, ref);
 
-    return render(state);
+    return render(state, context);
   },
 );
 
