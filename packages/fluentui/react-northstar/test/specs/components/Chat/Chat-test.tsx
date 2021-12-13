@@ -36,7 +36,7 @@ describe('Chat', () => {
       const messageBehavior = () => ({
         attributes: {
           root: {
-            role: 'button',
+            role: 'button' as const,
           },
         },
       });
