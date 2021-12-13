@@ -157,31 +157,31 @@ const iceCreams = [
 
 ### Expected DOM structure
 
-TODO: change the DOM structure of what it really is.
-
 ```html
 <fieldset>
   <legend>Which ice cream would you like?</legend>
-  <span>
+  <span class="fui-RadioItem">
     <div>
-      <div className='input-indicator'></div>
-      <input id="ic-Chocolate" name="ice-cream" type="radio" />
-    <div>
-    <label for="ic-Chocolate">Chocolate</label>
+      <div class="fui-RadioItem-indicator"></div>
+      <input type="radio" id="ic-Mango" name="ice-cream" />
+    </div>
+    <label for="ic-Mango" class="fui-Label">Mango</label>
   </span>
-  <span>
+
+  <span class="fui-RadioItem">
     <div>
-      <div className='input-indicator'></div>
-      <input id="ic-Strawberry" name="ice-cream" type="radio" />
-    <div>
-    <label for="ic-Strawberry">Strawberry</label>
+      <div class="fui-RadioItem-indicator"></div>
+      <input type="radio" id="ic-Strawberry" name="ice-cream" />
+    </div>
+    <label for="ic-Strawberry" class="fui-Label">Strawberry</label>
   </span>
-  <span>
-     <div>
-      <div className='input-indicator'></div>
-      <input id="ic-Mango" name="ice-cream" type="radio" />
+
+  <span class="fui-RadioItem">
     <div>
-    <label for="ic-Mango">Mango</label>
+      <div class="fui-RadioItem-indicator"></div>
+      <input type="radio" id="ic-Chocolate" name="ice-cream" />
+    </div>
+    <label for="ic-Chocolate" class="fui-Label">Chocolate</label>
   </span>
 </fieldset>
 ```
