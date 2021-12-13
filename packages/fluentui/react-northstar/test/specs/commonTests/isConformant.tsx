@@ -73,6 +73,7 @@ export function isConformant(
     // TODO enable component-has-root-ref and disable test where necessary.
     // List of the components that will either require the test to be disabled or fixed: (https://hackmd.io/OAUn0pF6Qj-vc315wAHXLQ)
     disabledTests: [
+      'as-renders-fc',
       'as-renders-react-class',
       'component-has-root-ref',
       'component-handles-ref',
