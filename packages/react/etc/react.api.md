@@ -2976,6 +2976,17 @@ export interface IColumnDragDropDetails {
 }
 
 // @public (undocumented)
+export interface IColumnEditProps {
+    // (undocumented)
+    column: IColumn;
+    // (undocumented)
+    onEditColumn: (props: {
+        column: IColumn;
+        updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
+    }) => void;
+}
+
+// @public (undocumented)
 export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
     onColumnDragEnd?: (props: {
         dropLocation?: ColumnDragEndLocation;
@@ -3590,10 +3601,8 @@ export interface IDetailsColumnProps extends React_2.ClassAttributes<DetailsColu
     dragDropHelper?: IDragDropHelper | null;
     isDraggable?: boolean;
     isDropped?: boolean;
-    keyboardColumnReorder?: boolean;
     onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void;
     onColumnContextMenu?: (column: IColumn, ev: React_2.MouseEvent<HTMLElement>) => void;
-    onDrop?: IDragDropOptions['onDrop'];
     onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
     parentId?: string;
     // @deprecated (undocumented)
@@ -3678,11 +3687,11 @@ export interface IDetailsHeaderBaseProps extends React_2.ClassAttributes<Details
     ariaLabelForToggleAllGroupsButton?: string;
     className?: string;
     collapseAllVisibility?: CollapseAllVisibility;
+    columnEditProps?: IColumnEditProps;
     columnReorderOptions?: IColumnReorderOptions;
     columnReorderProps?: IColumnReorderHeaderProps;
     componentRef?: IRefObject<IDetailsHeader>;
     isAllCollapsed?: boolean;
-    keyboardColumnReorderProps?: IKeyboardColumnEdit;
     layoutMode: DetailsListLayoutMode;
     minimumPixelsForDrag?: number;
     onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
@@ -3797,14 +3806,6 @@ export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 }
 
 // @public (undocumented)
-export interface IDetailsListKeyboardColumnEditProps {
-    // (undocumented)
-    columnReorder?: IKeyboardColumnEdit;
-    // (undocumented)
-    columnResize?: IKeyboardColumnEdit;
-}
-
-// @public (undocumented)
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
     ariaLabel?: string;
     ariaLabelForGrid?: string;
@@ -3817,6 +3818,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     checkButtonAriaLabel?: string;
     checkButtonGroupAriaLabel?: string;
     className?: string;
+    columnEditProps?: IColumnEditProps;
     columnReorderOptions?: IColumnReorderOptions;
     columns?: IColumn[];
     compact?: boolean;
@@ -3840,7 +3842,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     isHeaderVisible?: boolean;
     isPlaceholderData?: boolean;
     items: any[];
-    keyboardColumnEditProps?: IDetailsListKeyboardColumnEditProps;
     layoutMode?: DetailsListLayoutMode;
     listProps?: IListProps;
     minimumPixelsForDrag?: number;
@@ -5492,14 +5493,6 @@ export interface IImageStyles {
 export interface IInputProps extends React_2.InputHTMLAttributes<HTMLInputElement> {
     'aria-label'?: string;
     defaultVisibleValue?: string;
-}
-
-// @public (undocumented)
-export interface IKeyboardColumnEdit {
-    // (undocumented)
-    columnKey: string;
-    // (undocumented)
-    inputValue: number;
 }
 
 // @public (undocumented)
