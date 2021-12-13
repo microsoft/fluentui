@@ -4,6 +4,7 @@ import type {
   AccordionItemState,
   AccordionItemSlots,
   RenderAccordionItem,
+  AccordionItemContextValues,
 } from './AccordionItem.types';
 import { useAccordionItemState } from './useAccordionItemState';
 import { useAccordionItemContextValues } from './useAccordionItemContextValues';
@@ -23,23 +24,12 @@ export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = ['ro
 export const useAccordionItem = (
   props: AccordionItemProps,
   ref: React.Ref<HTMLElement>,
-): [AccordionItemState, RenderAccordionItem] => {
+): [AccordionItemState, RenderAccordionItem, AccordionItemContextValues] => {
   const state = useAccordionItemState(props, ref);
 
   const contextValues = useAccordionItemContextValues(state);
 
   useAccordionItemStyles(state);
 
-  // TODO: Judgement tells me we shouldn't be doing logical work like
-  //       assembling this renderer here in the useAccordionItem hook.
-  //       The renderAccordionItem hook itself may be responsible for getting the context since it alone uses it?
-  //       At the least, all logic should be contained within the hooks themselves, not outside.
-  const render = React.useCallback(
-    (accordionItemState: AccordionItemState) => {
-      return renderAccordionItem(accordionItemState, contextValues);
-    },
-    [contextValues],
-  );
-
-  return [state, render];
+  return [state, renderAccordionItem, contextValues];
 };

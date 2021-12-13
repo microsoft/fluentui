@@ -33,4 +33,4 @@ export type AccordionItemValue = unknown;
 
 export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemCommons & AccordionItemContextValue;
 
-export type RenderAccordionItem = (state: AccordionItemState) => JSX.Element;
+export type RenderAccordionItem = (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
