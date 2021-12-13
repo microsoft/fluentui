@@ -75,8 +75,6 @@ export function isConformant(
     disabledTests: [
       'as-renders-fc',
       'as-renders-react-class',
-      'component-has-root-ref',
-      'component-handles-ref',
       'has-top-level-file',
       'consistent-callback-args',
       // Disabled as v0 has different prefix
