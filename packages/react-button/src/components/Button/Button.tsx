@@ -14,21 +14,3 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
 }) as ForwardRefComponent<ButtonProps>;
 
 Button.displayName = 'Button';
-
-/**
-const useStyles = makeStyles({
-  fooS: {},
-  barS: {},
-});
-
-const WiseButton = (props: ButtonProps & { foo: boolean; bar: boolean }) => {
-  const classes = useStyles();
-  const { state, render } = useButton(props, ref);
-
-  // add some styles for foo
-  state.slots.root.className = mergeClasses(state.slots.root.className, foo && classes.foo);
-
-  // add some styles for bar
-  render(state);
-};
- */
