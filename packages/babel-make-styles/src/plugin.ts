@@ -19,7 +19,7 @@ type AstStyleNode =
     }
   | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
   | { kind: 'LAZY_EXPRESSION_CALL'; nodePath: NodePath<t.CallExpression> }
-  | { kind: 'LAZY_SEQUENCE_EXPRESSION_CALL'; nodePath: NodePath<t.SequenceExpression> }
+  | { kind: 'LAZY_SEQUENCE_EXPRESSION'; nodePath: NodePath<t.SequenceExpression> }
   | { kind: 'LAZY_MEMBER'; nodePath: NodePath<t.MemberExpression> }
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
@@ -440,7 +440,7 @@ function processDefinitions(
        * TODO !!! FEEL ME!
        */
       if (stylesPath.isSequenceExpression()) {
-        state.styleNodes?.push({ kind: 'LAZY_SEQUENCE_EXPRESSION_CALL', nodePath: stylesPath });
+        state.styleNodes?.push({ kind: 'LAZY_SEQUENCE_EXPRESSION', nodePath: stylesPath });
         return;
       }
     }
@@ -514,7 +514,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
                 styleNode.kind === 'LAZY_FUNCTION' ||
                 styleNode.kind === 'LAZY_MEMBER' ||
                 styleNode.kind === 'LAZY_EXPRESSION_CALL' ||
-                styleNode.kind === 'LAZY_SEQUENCE_EXPRESSION_CALL'
+                styleNode.kind === 'LAZY_SEQUENCE_EXPRESSION'
               ) {
                 return [...acc, styleNode.nodePath];
               }

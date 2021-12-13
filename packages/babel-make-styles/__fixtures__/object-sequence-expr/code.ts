@@ -1,10 +1,10 @@
-const react_make_styles_1 = require('@fluentui/react-make-styles');
+import { makeStyles, MakeStylesStyle } from '@fluentui/react-make-styles';
 
 const switchClassName = 'fui-Switch';
-let _a;
+let _a: Record<string, MakeStylesStyle>;
 
-const useRootStyles = react_make_styles_1.makeStyles({
-  unchecked:
+export const useStyles = makeStyles({
+  root:
     ((_a = {}),
     (_a[':hover .' + switchClassName] = {
       ':before': {

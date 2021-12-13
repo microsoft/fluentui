@@ -1,12 +1,11 @@
-const react_make_styles_1 = require('@fluentui/react-make-styles');
-
+import { __styles, MakeStylesStyle } from '@fluentui/react-make-styles';
 const switchClassName = 'fui-Switch';
 
-let _a;
+let _a: Record<string, MakeStylesStyle>;
 
-const useRootStyles = react_make_styles_1.__styles(
+export const useStyles = __styles(
   {
-    unchecked: {
+    root: {
       ozcac4: 'f1cm6cy7',
     },
   },
