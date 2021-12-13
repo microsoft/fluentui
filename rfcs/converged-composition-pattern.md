@@ -250,13 +250,12 @@ Prop changes can be done before the call to useComponent.
 
 ```tsx
 export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
-
-  const { {['removeProp']: removedProp, ...rest} = props
+  const { removeProp, ...rest } = props;
 
   const updatedProps = {
     ...rest,
     addedProp: 'some value',
-    replacedProp: 'some value'
+    replacedProp: 'some value',
   };
 
   const [state, render] = useComponent(props, ref);
