@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import { getPercent } from '../../utils/index';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   railOffsetVar,
   railStepsPercentVar,
@@ -9,7 +9,10 @@ import {
   railDirectionVar,
 } from './useSliderStyles';
 import type { SliderState } from './Slider.types';
-import { useFluent } from '@fluentui/react-shared-contexts';
+
+const getPercent = (value: number, min: number, max: number) => {
+  return max === min ? 0 : ((value - min) / (max - min)) * 100;
+};
 
 export const useSliderState = (state: SliderState) => {
   const { value, defaultValue = 0, min = 0, max = 100, step = 1, getAriaValueText, origin } = state;

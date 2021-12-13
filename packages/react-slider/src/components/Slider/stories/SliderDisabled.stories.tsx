@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
+import { useId } from '@fluentui/react-utilities';
 import { Slider } from '../../../index';
 
-export const Disabled = () => (
-  <>
-    <Label htmlFor="disabled-slider">Disabled Example</Label>
-    <Slider defaultValue={30} disabled id="disabled-slider" />
-  </>
-);
+export const Disabled = () => {
+  const id = useId();
+  return (
+    <>
+      <Label htmlFor={id}>Disabled Example</Label>
+      <Slider defaultValue={30} disabled id={id} />
+    </>
+  );
+};

@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
+import { useId } from '@fluentui/react-utilities';
 import { Slider } from '../../../index';
 
-export const Default = () => (
-  <>
-    <Label htmlFor="basic-slider">Basic Example</Label>
-    <Slider defaultValue={20} id="basic-slider" />
-  </>
-);
+export const Default = () => {
+  const id = useId();
+  return (
+    <>
+      <Label htmlFor={id}>Basic Example</Label>
+      <Slider defaultValue={20} id={id} />
+    </>
+  );
+};
