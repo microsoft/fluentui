@@ -2,7 +2,7 @@
 
 ## How to use this guide
 
-This document will help guide you through building a plan to upgrade from React Fluent UI v8 to v9.
+This document will help guide you through building a plan to upgrade from `@fluentui/react` version 8 to `@fluentui/react-components` version 9.
 We recommend you read through it once before starting to plan your upgrade, then reference the detail sections as you plan.
 
 Each upgrade will go through before, during, and after phases.
