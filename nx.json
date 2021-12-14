@@ -428,7 +428,7 @@
     "typings": {
       "tags": ["platform:any"]
     },
-    "upgrade-v8-v9": {
+    "upgrade-v8-v9/1-before": {
       "implicitDependencies": []
     },
     "vr-tests": {
