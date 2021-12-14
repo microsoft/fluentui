@@ -26,7 +26,6 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
   const packageJsonPath = options.paths.packageJson;
   let nextVersion = '';
 
-  console.log(schema.name, schema.exclude);
   if (schema.exclude.includes(schema.name)) {
     userLog.push({ type: 'info', message: `excluding ${schema.name} from version bump` });
     return;

@@ -225,10 +225,10 @@ describe('version-string-replace generator', () => {
       const makeStylesPackageJson = readJson(tree, 'packages/make-styles/package.json');
       const reactButtonPackageJson = readJson(tree, 'packages/react-button/package.json');
       const reactUtilitiesPackageJson = readJson(tree, 'packages/react-utilities/package.json');
-      expect(reactButtonPackageJson.version).toMatchInlineSnapshot(`"9.0.0-beta.0"`);
-      expect(makeStylesPackageJson.version).toMatchInlineSnapshot(`"9.0.0-beta.0"`);
-      expect(reactThemePackageJson.version).toMatchInlineSnapshot(`"9.0.0-alpha.0"`);
-      expect(reactUtilitiesPackageJson.version).toMatchInlineSnapshot(`"9.0.0-alpha.0"`);
+      expect(reactButtonPackageJson.version).toEqual('9.0.0-beta.0');
+      expect(makeStylesPackageJson.version).toEqual('9.0.0-beta.0');
+      expect(reactThemePackageJson.version).toEqual('9.0.0-alpha.0');
+      expect(reactUtilitiesPackageJson.version).toEqual('9.0.0-alpha.0');
       expect(reactButtonPackageJson.dependencies).toMatchInlineSnapshot(`
         Object {
           "@proj/make-styles": "^9.0.0-beta.0",
