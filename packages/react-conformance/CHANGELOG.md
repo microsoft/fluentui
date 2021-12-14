@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Fri, 10 Dec 2021 07:30:34 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Dec 2021 07:30:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.9.1)
+
+Tue, 14 Dec 2021 07:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.9.0..@fluentui/react-conformance_v0.9.1)
+
+### Patches
+
+- Fix consistent-callback-args test to handle string literal types ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by behowell@microsoft.com)
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.9.0)
 
