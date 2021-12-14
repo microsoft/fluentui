@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import { resetIds } from '@fluentui/utilities';
 import { Pivot, PivotItem } from './index';
 import { isConformant } from '../../common/isConformant';
+import { mountAttached } from '../../common/testUtilities';
 import type { IPivot } from './index';
 
 describe('Pivot', () => {
@@ -30,7 +31,7 @@ describe('Pivot', () => {
   it('can be focused', () => {
     const pivotRef = React.createRef<IPivot>();
 
-    mount(
+    mountAttached(
       <Pivot componentRef={pivotRef}>
         <PivotItem headerText="Link 1" />
         <PivotItem headerText="Link 2" />
