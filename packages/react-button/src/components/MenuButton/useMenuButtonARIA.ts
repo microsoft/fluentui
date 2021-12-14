@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useButtonARIA } from '../Button/useButtonAria';
-import type { MenuButtonState, MenuButtonProps } from '@fluentui/react-button';
+import type { MenuButtonState, MenuButtonProps, ButtonState } from '@fluentui/react-button';
 
 /**
  * Modifies state to include aria props and keyboard navigation handlers.
@@ -13,6 +13,13 @@ export const useMenuButtonARIA = (
   props: MenuButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ) => {
-  // state: ButtonState requires an iconPosition even though MenuButton doesn't need it
-  useButtonARIA({ ...state, iconPosition: 'before' }, props, ref);
+  // HEADS UP!
+  // ButtonState requires an iconPosition but MenuButton doesn't define it.
+  //
+  // We can't do { ...state, iconPosition } because we break object references and
+  // the popover menu becomes misaligned with the menu button.
+  const buttonState = state as ButtonState;
+  buttonState.iconPosition = 'before';
+
+  useButtonARIA(buttonState, props, ref);
 };
