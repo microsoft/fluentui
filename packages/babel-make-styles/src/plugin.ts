@@ -437,7 +437,7 @@ function processDefinitions(
       }
 
       /**
-       * A scenario when slots styles are represented by a function call that eventually evaluates to an object.
+       * A scenario when slots styles are represented by a sequence expression.
        *
        * @example
        *    // ❌ lazy evaluation
