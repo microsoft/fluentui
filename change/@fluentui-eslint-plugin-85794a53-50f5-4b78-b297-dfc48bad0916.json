@@ -1,6 +1,6 @@
 {
-  "type": "none",
-  "comment": "Upgrade to node 14",
+  "type": "patch",
+  "comment": "Re-enable `@rnx-kit/no-export-all`",
   "packageName": "@fluentui/eslint-plugin",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "none"
