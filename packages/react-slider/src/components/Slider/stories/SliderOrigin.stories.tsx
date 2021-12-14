@@ -12,3 +12,13 @@ export const Origin = () => {
     </>
   );
 };
+
+Origin.parameters = {
+  docs: {
+    description: {
+      story: `A slider's progress can be represented with an origin so that values below the
+      origin will have negative progress and those above will have positive progress.
+      Origin, however, has no effect on the actual value of the slider.`,
+    },
+  },
+};

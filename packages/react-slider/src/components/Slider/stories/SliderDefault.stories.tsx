@@ -12,3 +12,11 @@ export const Default = () => {
     </>
   );
 };
+
+Default.parameters = {
+  docs: {
+    description: {
+      story: 'A default slider',
+    },
+  },
+};

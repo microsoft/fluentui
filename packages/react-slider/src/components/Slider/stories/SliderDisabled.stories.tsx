@@ -12,3 +12,11 @@ export const Disabled = () => {
     </>
   );
 };
+
+Disabled.parameters = {
+  docs: {
+    description: {
+      story: 'A disabled slider will not change or fire events on click or keyboard press.',
+    },
+  },
+};

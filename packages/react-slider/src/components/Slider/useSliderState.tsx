@@ -18,7 +18,7 @@ export const useSliderState = (state: SliderState) => {
   const { value, defaultValue = 0, min = 0, max = 100, step = 1, getAriaValueText, origin } = state;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
-    state: value && clamp(value, min, max),
+    state: value !== undefined ? clamp(value, min, max) : undefined,
     defaultState: clamp(defaultValue, min, max),
     initialState: 0,
   });
@@ -33,7 +33,7 @@ export const useSliderState = (state: SliderState) => {
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
     const newValue = Number(ev.target.value);
-    setCurrentValue(newValue);
+    setCurrentValue(clamp(newValue, min, max));
 
     if (inputOnChange && inputOnChange !== propsOnChange) {
       inputOnChange(ev);
