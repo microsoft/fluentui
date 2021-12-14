@@ -1,13 +1,16 @@
-import { Button, Dialog } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
+import { Button, Dialog } from '@fluentui/react-northstar';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-const DialogExampleScroll = () => (
+const DialogExampleZoomContent: React.FC = () => (
   <Dialog
+    cancelButton="Cancel"
+    confirmButton="Confirm"
     content={{
       content: (
         <>
-          {_.times(10, i => (
+          {_.times(5, i => (
             <p key={i}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ornare, neque eget egestas fermentum,
               massa risus mollis orci, et ullamcorper purus turpis at risus. Fusce pharetra mollis sapien nec commodo.
@@ -20,12 +23,16 @@ const DialogExampleScroll = () => (
         </>
       ),
       styles: {
-        maxHeight: '500px',
-        overflow: 'scroll',
+        // keep only 1 scrollbar while zooming
+        height: '100%',
+        maxHeight: '250px',
+        overflow: 'auto',
       },
     }}
+    header="Action confirmation"
+    headerAction={{ icon: <CloseIcon />, title: 'Close' }}
     trigger={<Button content="Open a dialog" />}
   />
 );
 
-export default DialogExampleScroll;
+export default DialogExampleZoomContent;
