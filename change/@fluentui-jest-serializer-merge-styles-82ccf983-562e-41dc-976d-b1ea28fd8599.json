@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update all jest deps to v26",
+  "packageName": "@fluentui/jest-serializer-merge-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

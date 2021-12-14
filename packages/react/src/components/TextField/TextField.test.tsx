@@ -826,7 +826,7 @@ describe('TextField', () => {
   });
 
   it('sets focus to the input via ITextField focus', () => {
-    wrapper = mount(<TextField componentRef={textFieldRef} />);
+    wrapper = mountAttached(<TextField componentRef={textFieldRef} />);
     const inputEl = wrapper.find('input').getDOMNode();
 
     textField!.focus();
@@ -835,7 +835,7 @@ describe('TextField', () => {
   });
 
   it('blurs the input via ITextField blur', () => {
-    wrapper = mount(<TextField componentRef={textFieldRef} />);
+    wrapper = mountAttached(<TextField componentRef={textFieldRef} />);
     const inputEl = wrapper.find('input').getDOMNode();
 
     textField!.focus();
