@@ -366,7 +366,9 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     handleRef(this.props.innerRef, elem);
     if (process.env.NODE_ENV !== 'production') {
       if (elem !== null && !(elem?.nodeType === 1)) {
-        throw new Error('FocusZone: we expect that ElementType ("as" prop) will be a plain element (div, span, etc.) or an element that supports ref forwarding (React.forwardRef())');
+        throw new Error(
+          'FocusZone: we expect that ElementType ("as" prop) will be a plain element (div, span, etc.) or an element that supports ref forwarding (React.forwardRef())',
+        );
       }
     }
   };
