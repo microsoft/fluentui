@@ -374,10 +374,20 @@ const getOverrides = () => [
   },
   {
     // Example overrides
-    files: '**/*.Example.tsx',
+    files: '**/*.{Example,stories}.tsx',
     rules: {
       'no-alert': 'off',
       'no-console': 'off',
+    },
+  },
+  {
+    files: '**/*.stories.tsx',
+    rules: {
+      // allow arrow functions in stories for now (may want to change this later since using
+      // constantly-mutating functions can be an anti-pattern which we may not want to demonstrate
+      // in our converged components docs; it happened to be allowed starting out because .stories
+      // files were being linted as tests)
+      'react/jsx-no-bind': 'off',
     },
   },
   {
