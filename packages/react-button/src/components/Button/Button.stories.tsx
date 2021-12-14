@@ -5,6 +5,7 @@ import descriptionMd from './ButtonDescription.md';
 import bestPracticesMd from './ButtonBestPractices.md';
 
 export { Default } from './stories/ButtonDefault.stories';
+export { Toggle } from './stories/MyToggleButton.stories';
 export { Shape } from './stories/ButtonShape.stories';
 export { Appearance } from './stories/ButtonAppearance.stories';
 export { Icon } from './stories/ButtonIcon.stories';

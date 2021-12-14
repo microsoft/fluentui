@@ -357,6 +357,47 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 });
 ```
 
+### Implementing ToggleButton
+
+Fluent UI React provides a `ToggleButton`, however, for extensibility reasons includes more code than a consumer implementation would. This implementation shows how a consumer would create a toggle button using the proposed pattern. There is a working implementation in the storybook as well.
+
+```jsx
+import * as React from 'react';
+import type { ButtonProps } from './Button.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useButton } from '@fluentui/react-button';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+
+const useStyles = makeStyles({
+  isActive: {
+    /* ... */
+  },
+});
+
+export const MyToggleButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const [isActive, setIsActive] = React.useState(false);
+  const [state, render] = useButton(props, ref);
+  const classes = useStyles();
+
+  // add toggle handler
+  const originalOnClick = state.root.onClick;
+  state.root.onClick = React.useCallback(
+    e => {
+      setIsActive(!isActive);
+      if (originalOnClick) {
+        originalOnClick(e);
+      }
+    },
+    [isActive, originalOnClick],
+  );
+
+  // add toggle classes
+  state.root.className = mergeClasses(state.root.className, isActive && classes.isActive);
+
+  return render(state);
+});
+```
+
 ## Pros & Cons
 
 ✅ **Consistency**
