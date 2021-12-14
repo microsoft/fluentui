@@ -1,9 +1,13 @@
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type SelectSlots = {
-  /** Root of the component, renders as a `<span>`. */
+  /*
+   * Wrapper for both the select and icon, renders as a `<span>`.
+   * The `className` and `style` props on `<Select>` are applied to this slot;
+   * All other top-level props are applied to the primary slot, `select`.
+   */
   root: IntrinsicShorthandProps<'span'>;
-  /** The actual `<select>` element */
+  /** Primary slot: the actual `<select>` element */
   select: IntrinsicShorthandProps<'select'>;
   /** the icon, typically a down arrow */
   icon: IntrinsicShorthandProps<'span'>;
@@ -20,10 +24,8 @@ export interface SelectCommons {
 
   /** @default 'outline' */
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-
-  disabled?: boolean;
 }
 
-export type SelectProps = ComponentProps<SelectSlots> & Partial<SelectCommons>;
+export type SelectProps = Omit<ComponentProps<SelectSlots, 'select'>, 'size'> & Partial<SelectCommons>;
 
 export type SelectState = ComponentState<SelectSlots> & SelectCommons;

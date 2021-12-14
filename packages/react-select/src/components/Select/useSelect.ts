@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { SelectProps, SelectSlots, SelectState } from './Select.types';
 
 /**
@@ -14,10 +14,16 @@ export const selectShorthandProps: (keyof SelectSlots)[] = ['select', 'icon', 'r
  * before being passed to renderSelect.
  *
  * @param props - props from this instance of Select
- * @param ref - reference to root HTMLSelectElement of Select
+ * @param ref - reference to the `<select>` element in Select
  */
-export const useSelect = (props: SelectProps, ref: React.Ref<HTMLElement>): SelectState => {
-  const { select, icon, size, appearance, inline } = props;
+export const useSelect = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
+  const { select, icon, root, size, appearance, inline } = props;
+
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'select',
+    excludedPropNames: ['appearance', 'inline', 'size'],
+  });
 
   return {
     size,
@@ -28,11 +34,17 @@ export const useSelect = (props: SelectProps, ref: React.Ref<HTMLElement>): Sele
       select: 'select',
       icon: 'span',
     },
-    select: resolveShorthand(select, { required: true }),
+    select: resolveShorthand(select, {
+      required: true,
+      defaultProps: {
+        ref,
+        ...nativeProps.primary,
+      },
+    }),
     icon: resolveShorthand(icon, { required: true }),
-    root: getNativeElementProps('span', {
-      ref,
-      ...props,
+    root: resolveShorthand(root, {
+      required: true,
+      defaultProps: nativeProps.root,
     }),
   };
 };
