@@ -15,6 +15,7 @@ const config = {
   parser: '@typescript-eslint/parser',
   plugins: [
     '@fluentui',
+    '@rnx-kit',
     '@typescript-eslint',
     'deprecation',
     'import',
@@ -72,6 +73,7 @@ const config = {
     '**/*.scss.ts',
   ],
   rules: {
+    '@rnx-kit/no-export-all': ['error', { expand: 'external-only' }],
     '@fluentui/no-global-react': 'error',
     '@fluentui/max-len': [
       'error',
