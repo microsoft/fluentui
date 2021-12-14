@@ -62,6 +62,9 @@ const useRootStyles = makeStyles({
  * Focus styles for the root slot
  */
 const useFocusStyles = makeStyles({
+  // Tab creates a custom focus indicator because the default focus indicator
+  // is applied using an :after pseudo-element on the root. Since the selection
+  // indicator uses an :after pseudo-element on the root, there is a conflict.
   base: createCustomFocusIndicatorStyle(theme => ({
     ...shorthands.borderColor('transparent'),
     outlineWidth: theme.strokeWidthThick,
@@ -164,6 +167,8 @@ const useIconStyles = makeStyles({
     display: 'inline-flex',
     justifyContent: 'center',
   },
+  // per design, the small and medium font sizes are the same.
+  // the size prop only affects spacing.
   small: {
     fontSize: '20px',
     height: '20px',

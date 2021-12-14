@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SizeMedium = (props: Partial<TabProps>) => {
+export const SizeMedium = () => {
   const styles = useStyles();
 
   const renderTabs = () => {
