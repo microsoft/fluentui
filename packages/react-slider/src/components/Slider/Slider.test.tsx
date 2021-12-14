@@ -44,7 +44,7 @@ describe('Slider', () => {
 
   // Unit tests
   it('handles id prop', () => {
-    const testId = "test_id";
+    const testId = 'test_id';
     render(<Slider id={testId} />);
     const sliderRoot = screen.getByRole('slider');
     expect(sliderRoot.getAttribute('id')).toEqual(testId);
