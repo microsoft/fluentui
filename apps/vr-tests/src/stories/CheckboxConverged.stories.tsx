@@ -19,13 +19,10 @@ storiesOf('Checkbox Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('default', () => <Checkbox />)
-  .addStory('label', () => <Checkbox label="Checkbox" />)
+  .addStory('unchecked', () => <Checkbox label="Unchecked" />)
   .addStory('checked', () => <Checkbox checked label="Checked" />)
   .addStory('mixed', () => <Checkbox checked="mixed" label="Mixed" />)
-  .addStory('disabled', () => <Checkbox disabled label="Disabled" />)
-  .addStory('disabled checked', () => <Checkbox disabled checked label="Disabled checked" />)
-  .addStory('disabled mixed', () => <Checkbox disabled checked="mixed" label="Disabled mixed" />);
+  .addStory('disabled', () => <Checkbox disabled label="Disabled" />);
 
 storiesOf('Checkbox Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -34,6 +31,9 @@ storiesOf('Checkbox Converged', module)
       {story()}
     </Screener>
   ))
+  .addStory('disabled checked', () => <Checkbox disabled checked label="Disabled checked" />)
+  .addStory('disabled mixed', () => <Checkbox disabled checked="mixed" label="Disabled mixed" />)
+  .addStory('no-label', () => <Checkbox />)
   .addStory('label-before', () => <Checkbox labelPosition="before" label="Label before" />)
   .addStory('label-wrapping', () => (
     <Checkbox
@@ -58,6 +58,13 @@ storiesOf('Checkbox Converged', module)
   .addStory('large', () => <Checkbox size="large" label="Large" />)
   .addStory('large checked', () => <Checkbox size="large" checked label="Large checked" />)
   .addStory('large mixed', () => <Checkbox size="large" checked="mixed" label="Large mixed" />)
+  .addStory('large circular', () => <Checkbox size="large" circular label="Large circular" />)
+  .addStory('large circular checked', () => (
+    <Checkbox size="large" circular checked label="Large circular checked" />
+  ))
+  .addStory('large circular mixed', () => (
+    <Checkbox size="large" circular checked="mixed" label="Large circular mixed" />
+  ))
   .addStory('large label-wrapping', () => (
     <Checkbox
       size="large"
@@ -68,11 +75,4 @@ storiesOf('Checkbox Converged', module)
         </>
       }
     />
-  ))
-  .addStory('large circular', () => <Checkbox size="large" circular label="Large circular" />)
-  .addStory('large circular checked', () => (
-    <Checkbox size="large" circular checked label="Large circular checked" />
-  ))
-  .addStory('large circular mixed', () => (
-    <Checkbox size="large" circular checked="mixed" label="Large circular mixed" />
   ));
