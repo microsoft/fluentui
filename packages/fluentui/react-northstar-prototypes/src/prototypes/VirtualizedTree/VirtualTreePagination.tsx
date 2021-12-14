@@ -106,7 +106,19 @@ const usePaginationUtils = ({
         return true;
       }
       if (index === visibleItemIds.length && visibleItemIds[index - 1].indexOf('loader') >= 0) {
-        // the last item is a loader
+        // requested index is over visibleItemIds.length, and the last item in the list is a loader.
+        // this could happen when user scroll within threshold, so the infinite loader is trying to load more items while the last loader is not mounted.
+        //
+        // For example, if there's header-0 and header-1, neither has finished loading all children.
+        // when user scrolls down to load more header-1, the loader at the end of header-1 is not mounted,
+        // it will cause infinite loader to check index visibleItemIds.length.
+        //
+        // if we loadMoreRows based on index >= visibleItemIds.length, the newly loaded row will be header-0's children.
+        // This is because, we have no reliable way to know which header to load, so we load the 1st header that has not finished loading.
+        //
+        // But in this case, header-1's children should be loaded instead.
+        // So when we detect this situation, do not request infinite loader to load more items (by return true).
+        // And only request more items (return false) when the loader is mounted.
         return checkLoaderItem(visibleItemIds[index - 1]);
       }
 
