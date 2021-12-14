@@ -8,7 +8,22 @@ export const Mixed = () => {
 
   return (
     <>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, auto)', gridAutoFlow: 'row' }}>
+        <Checkbox />
+        <Checkbox checked />
+        <Checkbox checked="mixed" />
+        <Checkbox size="large" />
+        <Checkbox size="large" checked />
+        <Checkbox size="large" checked="mixed" />
+        <Checkbox circular />
+        <Checkbox circular checked />
+        <Checkbox circular checked="mixed" />
+        <Checkbox size="large" circular />
+        <Checkbox size="large" circular checked />
+        <Checkbox size="large" circular checked="mixed" />
+      </div>
       <Checkbox
+        circular
         checked={option1 && option2 && option3 ? true : !(option1 || option2 || option3) ? false : 'mixed'}
         onChange={(_ev, data) => {
           setOption1(!!data.checked);
