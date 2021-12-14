@@ -314,11 +314,11 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-shared-contexts": {
+    "@fluentui/react-select": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-select": {
+    "@fluentui/react-shared-contexts": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
