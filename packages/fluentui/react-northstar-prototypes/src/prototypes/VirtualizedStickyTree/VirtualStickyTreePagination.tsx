@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { treeBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   useUnhandledProps,
   getElementType,
   useAccessibility,
@@ -33,7 +32,14 @@ export interface VirtualStickyTreePaginationProps extends VirtualStickyTreeProps
 
 export const VirtualStickyTreePaginationClassName = 'ui-virtualstickytreepagination';
 
-export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTreePaginationProps> = props => {
+export type VirtualStickyTreePaginationHandle = {
+  getItemRef: (id: string) => HTMLElement;
+};
+
+export const VirtualStickyTreePagination = React.forwardRef<
+  VirtualStickyTreePaginationHandle,
+  VirtualStickyTreePaginationProps
+>((props, ref) => {
   const context = useFluentContext();
 
   const {
@@ -46,6 +52,7 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
     stickyItemSize,
     accessibility,
     renderItemTitle,
+    outerRef,
   } = props;
 
   const ElementType = getElementType(props);
@@ -59,6 +66,7 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
       'isNextPageLoading',
       'onLoadNextPage',
       'paginationThreshold',
+      'outerRef',
     ],
     props,
   );
@@ -94,6 +102,8 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
     getItemOverrideProps,
     getItemRef,
   } = useVirtualStickyTree(props);
+
+  React.useImperativeHandle(ref, () => ({ getItemRef }), [getItemRef]);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
     () => ({
@@ -149,7 +159,7 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
       if (index < visibleItemIds.length) {
         // make sure item is not a loader
         const id = visibleItemIds[index];
-        if (id.startsWith('loader') && getItemRef(id)) {
+        if (id.indexOf('loader') >= 0 && getItemRef(id)) {
           // a loader item is visible, trying to load more items
           return false;
         }
@@ -180,6 +190,7 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
         <ElementType
           {...getA11yProps('root', {
             className: classes.root,
+            ref,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),
             ...unhandledProps,
           })}
@@ -203,6 +214,7 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
                   outerElementType={OuterElementType}
                   innerElementType={InnerElementType}
                   innerRef={ref}
+                  outerRef={outerRef}
                   onItemsRendered={onItemsRendered}
                 >
                   {ItemWrapper}
@@ -215,7 +227,7 @@ export const VirtualStickyTreePagination: ComponentWithAs<'div', VirtualStickyTr
     </TreeContext.Provider>
   );
   return element;
-};
+});
 
 VirtualStickyTreePagination.displayName = 'VirtualStickyTreePagination';
 
