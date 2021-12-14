@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
-import { safeMount } from '@fluentui/test-utilities';
+import { createTestContainer, safeMount } from '@fluentui/test-utilities';
 import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
 import { SelectionMode, Selection, SelectionZone } from '../../Selection';
 import { getTheme } from '../../Styling';
@@ -69,6 +69,13 @@ function customColumnDivider(
 describe('DetailsList', () => {
   beforeEach(() => {
     resetIds();
+  });
+
+  afterEach(() => {
+    if (((setTimeout as unknown) as jest.Mock).mock) {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
+    }
   });
 
   it('renders List correctly with onRenderDivider props', () => {
@@ -330,6 +337,8 @@ describe('DetailsList', () => {
   it('focuses row by index', () => {
     jest.useFakeTimers();
 
+    const testContainer = createTestContainer();
+
     let component: IDetailsList | null;
     safeMount(
       <DetailsList
@@ -349,6 +358,7 @@ describe('DetailsList', () => {
         }, 0);
         jest.runOnlyPendingTimers();
       },
+      { attachTo: testContainer },
     );
   });
 
@@ -483,6 +493,8 @@ describe('DetailsList', () => {
   });
 
   it('focuses into row element', () => {
+    jest.useFakeTimers();
+
     const onRenderColumn = (item: any, index: number, column: IColumn) => {
       let value = item && column && column.fieldName ? item[column.fieldName] : '';
       if (value === null || value === undefined) {
@@ -500,7 +512,7 @@ describe('DetailsList', () => {
       return valueKey;
     };
 
-    jest.useFakeTimers();
+    const testContainer = createTestContainer();
 
     let component: IDetailsList | null;
     safeMount(
@@ -533,11 +545,14 @@ describe('DetailsList', () => {
         expect((document.activeElement as HTMLElement).textContent).toEqual('4');
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
       },
+      { attachTo: testContainer },
     );
   });
 
   it('reset focusedItemIndex when setKey updates', () => {
     jest.useFakeTimers();
+
+    const testContainer = createTestContainer();
 
     let component: any;
 
@@ -552,20 +567,18 @@ describe('DetailsList', () => {
       />,
       (wrapper: ReactWrapper) => {
         expect(component).toBeTruthy();
-        component.setState({ focusedItemIndex: 3 });
-        setTimeout(() => {
-          expect(component.state.focusedItemIndex).toEqual(3);
-        }, 0);
+        component!.focusIndex(3);
         jest.runOnlyPendingTimers();
+        expect(
+          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+        ).toEqual('3');
 
         // update props to new setKey
         const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
         wrapper.setProps(newProps);
         wrapper.update();
 
-        // verify that focusedItemIndex is reset to 0 and 0th row is focused
         setTimeout(() => {
-          expect(component.state.focusedItemIndex).toEqual(0);
           expect(
             (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
           ).toEqual('0');
@@ -573,10 +586,13 @@ describe('DetailsList', () => {
         }, 0);
         jest.runOnlyPendingTimers();
       },
+      { attachTo: testContainer },
     );
   });
 
   it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
+    jest.useFakeTimers();
+
     const columns: IColumn[] = mockData(2, true);
     columns[0].onColumnResize = jest.fn();
     columns[1].onColumnResize = jest.fn();

@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 07 Dec 2021 07:31:33 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Dec 2021 07:30:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.8)
+
+Tue, 14 Dec 2021 07:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.7..@fluentui/react-experiments_v8.4.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.2 ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by beachball)
+
+## [8.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.7)
+
+Fri, 10 Dec 2021 07:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.6..@fluentui/react-experiments_v8.4.7)
+
+### Patches
+
+- Fix minor issue with promise handling in FloatingSuggestions ([PR #20909](https://github.com/microsoft/fluentui/pull/20909) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.47.1 ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by beachball)
+
+## [8.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.6)
+
+Thu, 09 Dec 2021 07:27:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.5..@fluentui/react-experiments_v8.4.6)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.0 ([PR #20161](https://github.com/microsoft/fluentui/pull/20161) by beachball)
+
+## [8.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.5)
+
+Wed, 08 Dec 2021 07:28:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.4.4..@fluentui/react-experiments_v8.4.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.3 ([PR #20831](https://github.com/microsoft/fluentui/pull/20831) by beachball)
 
 ## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.4.4)
 

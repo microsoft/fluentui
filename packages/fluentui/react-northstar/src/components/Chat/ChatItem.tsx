@@ -22,7 +22,8 @@ import {
   UIComponentProps,
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
-import { ChatDensity, useChatDensityContext } from './chatDensityContext';
+import { useChatContextSelectors } from './chatContext';
+import { ChatDensity } from './chatDensity';
 import { ChatItemContextProvider } from './chatItemContext';
 
 export interface ChatItemSlotClassNames {
@@ -61,19 +62,27 @@ export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosit
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
  */
-export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((props, ref) => {
+export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
 
-  const chatDensity = useChatDensityContext();
+  const chatProps = useChatContextSelectors({
+    density: v => v.density,
+    accessibility: v => v.behaviors.item,
+  });
+  const props = {
+    ...chatProps,
+    ...inputProps,
+  };
+
   const {
     accessibility,
     attached,
     children,
     className,
     contentPosition,
-    density = chatDensity,
+    density,
     design,
     gutter,
     message,

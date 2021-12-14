@@ -1,16 +1,18 @@
 import type { BorderColorProperty, BorderStyleProperty, BorderWidthProperty } from 'csstype';
 import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 
-export function borderRight(width: BorderWidthProperty<MakeStylesCSSValue>): MakeStylesStrictCSSObject;
+type BorderRightStyle = Pick<MakeStylesStrictCSSObject, 'borderRightWidth' | 'borderRightStyle' | 'borderRightColor'>;
+
+export function borderRight(width: BorderWidthProperty<MakeStylesCSSValue>): BorderRightStyle;
 export function borderRight(
   width: BorderWidthProperty<MakeStylesCSSValue>,
   style: BorderStyleProperty,
-): MakeStylesStrictCSSObject;
+): BorderRightStyle;
 export function borderRight(
   width: BorderWidthProperty<MakeStylesCSSValue>,
   style: BorderStyleProperty,
   color: BorderColorProperty,
-): MakeStylesStrictCSSObject;
+): BorderRightStyle;
 
 /**
  * A function that implements expansion for "border-right", it's simplified - check usage examples.
@@ -24,10 +26,10 @@ export function borderRight(
  */
 export function borderRight(
   ...values: [BorderWidthProperty<MakeStylesCSSValue>, BorderStyleProperty?, BorderColorProperty?]
-): MakeStylesStrictCSSObject {
+): BorderRightStyle {
   return {
     borderRightWidth: values[0],
-    ...(values[1] && ({ borderRightStyle: values[1] } as MakeStylesStrictCSSObject)),
+    ...(values[1] && ({ borderRightStyle: values[1] } as BorderRightStyle)),
     ...(values[2] && { borderRightColor: values[2] }),
   };
 }

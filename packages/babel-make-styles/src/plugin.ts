@@ -19,6 +19,7 @@ type AstStyleNode =
     }
   | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
   | { kind: 'LAZY_EXPRESSION_CALL'; nodePath: NodePath<t.CallExpression> }
+  | { kind: 'LAZY_SEQUENCE_EXPRESSION'; nodePath: NodePath<t.SequenceExpression> }
   | { kind: 'LAZY_MEMBER'; nodePath: NodePath<t.MemberExpression> }
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
@@ -217,7 +218,19 @@ function processDefinitions(
           }
 
           if (propertyPath.isObjectProperty()) {
+            const keyPath = propertyPath.get('key');
             const valuePath = propertyPath.get('value');
+
+            /**
+             * Computed properties may require lazy evaluation.
+             *
+             * @example
+             *    makeStyles({ [var]: { color: 'red' } })
+             *    makeStyles({ [`${var}`]: { color: SOME_VARIABLE } })
+             */
+            if (propertyPath.node.computed) {
+              lazyPaths.push(keyPath);
+            }
 
             if (valuePath.isStringLiteral() || valuePath.isNullLiteral() || valuePath.isNumericLiteral()) {
               return;
@@ -315,7 +328,7 @@ function processDefinitions(
                 return;
               }
 
-              // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
+              // This condition resolves "theme.aliasColorGreenForeground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
                 const paramsName = paramsPath?.node.name;
@@ -422,6 +435,20 @@ function processDefinitions(
         state.styleNodes?.push({ kind: 'LAZY_MEMBER', nodePath: stylesPath });
         return;
       }
+
+      /**
+       * A scenario when slots styles are represented by a sequence expression.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: (_a: { color: 'red' }, _a.backgroundColor: 'blue', _a ) })
+       *    makeStyles({ root: (_a: { color: SOME_VARIABLE }, _a.backgroundColor: 'blue', _a) })
+       *    makeStyles({ root: (_a: { color: 'red' }, _a[`. ${some_className}`]: { color: 'blue' }, _a) })
+       */
+      if (stylesPath.isSequenceExpression()) {
+        state.styleNodes?.push({ kind: 'LAZY_SEQUENCE_EXPRESSION', nodePath: stylesPath });
+        return;
+      }
     }
 
     throw styleSlotPath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
@@ -492,7 +519,8 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
                 styleNode.kind === 'LAZY_IDENTIFIER' ||
                 styleNode.kind === 'LAZY_FUNCTION' ||
                 styleNode.kind === 'LAZY_MEMBER' ||
-                styleNode.kind === 'LAZY_EXPRESSION_CALL'
+                styleNode.kind === 'LAZY_EXPRESSION_CALL' ||
+                styleNode.kind === 'LAZY_SEQUENCE_EXPRESSION'
               ) {
                 return [...acc, styleNode.nodePath];
               }
