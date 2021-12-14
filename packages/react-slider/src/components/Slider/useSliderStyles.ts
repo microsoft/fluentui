@@ -16,8 +16,6 @@ export const railProgressVar = `--fui-slider-rail-progress`;
 export const railStepsPercentVar = `--fui-slider-rail-steps-percent`;
 export const thumbPositionVar = `--fui-slider-thumb-position`;
 
-const get = (value: string) => `var(${value})`;
-
 /**
  * Styles for the root slot
  */
@@ -28,6 +26,8 @@ export const useRootStyles = makeStyles({
     gridTemplateAreas: '"slider"',
     userSelect: 'none',
     touchAction: 'none',
+    alignItems: 'center',
+    justifyItems: 'center',
   },
 
   small: {
@@ -42,15 +42,13 @@ export const useRootStyles = makeStyles({
 
   horizontal: {
     minWidth: '120px',
-    height: get(thumbSizeVar),
-    alignItems: 'center',
+    height: `var(${thumbSizeVar})`,
   },
 
   vertical: {
-    width: get(thumbSizeVar),
+    width: `var(${thumbSizeVar})`,
     minHeight: '120px',
-    justifyItems: 'center',
-    gridTemplateColumns: get(thumbSizeVar),
+    gridTemplateColumns: `var(${thumbSizeVar})`,
   },
 
   enabled: theme => ({
@@ -116,19 +114,20 @@ export const useRailStyles = makeStyles({
   }),
 
   horizontal: {
-    height: get(railSizeVar),
+    width: '100%',
+    height: `var(${railSizeVar})`,
     ':before': {
       left: '-1px',
       right: '-1px',
-      height: get(railSizeVar),
+      height: `var(${railSizeVar})`,
     },
   },
 
   vertical: {
-    width: get(railSizeVar),
+    width: `var(${railSizeVar})`,
     height: '100%',
     ':before': {
-      width: get(railSizeVar),
+      width: `var(${railSizeVar})`,
       top: '-1px',
       bottom: '1px',
     },
@@ -141,12 +140,13 @@ export const useRailStyles = makeStyles({
 export const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
-    width: get(thumbSizeVar),
-    height: get(thumbSizeVar),
+    width: `var(${thumbSizeVar})`,
+    height: `var(${thumbSizeVar})`,
+    pointerEvents: 'none',
     outline: 'none',
     ...shorthands.borderRadius(theme.borderRadiusCircular),
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${theme.colorNeutralBackground1} inset`,
-    background: get(thumbColorVar),
+    background: `var(${thumbColorVar})`,
     transform: 'translateX(-50%)',
     ':before': {
       position: 'absolute',
@@ -166,11 +166,11 @@ export const useThumbStyles = makeStyles({
     },
   }),
   horizontal: {
-    left: get(thumbPositionVar),
+    left: `var(${thumbPositionVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: get(thumbPositionVar),
+    bottom: `var(${thumbPositionVar})`,
   },
 });
 
@@ -185,12 +185,14 @@ const useInputStyles = makeStyles({
     ...shorthands.margin(0),
   },
   horizontal: {
-    height: get(thumbSizeVar),
+    height: `var(${thumbSizeVar})`,
+    width: `calc(100% + var(${thumbSizeVar}))`,
   },
   vertical: {
+    height: `calc(100% + var(${thumbSizeVar}))`,
+    width: `var(${thumbSizeVar})`,
     writingMode: 'bt-lr',
     '-webkit-appearance': 'slider-vertical',
-    width: get(thumbSizeVar),
   },
 });
 
