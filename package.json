@@ -101,6 +101,7 @@
     "@storybook/addons": "6.3.6",
     "@storybook/api": "6.3.6",
     "@storybook/builder-webpack5": "6.3.6",
+    "ignore-not-found-export-webpack-plugin": "1.0.1",
     "@storybook/channels": "6.3.6",
     "@storybook/client-api": "6.3.6",
     "@storybook/components": "6.3.6",
@@ -400,6 +401,14 @@
           "workspace-tools",
           "ci-info",
           "node-fetch"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/public-docsite"
+        ],
+        "dependencies": [
+          "@fluentui/react-make-styles"
         ]
       }
     ]

@@ -1,14 +1,11 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from '@fluentui/react';
+import { Pivot, PivotItem, Spinner } from '@fluentui/react';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
-import { ReactIconGrid } from '../../../components/ReactIconGrid/ReactIconGrid';
 import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { FabricIconsPageProps } from './FabricIconsPage.doc';
 import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
-import { FluentIconsProps } from '@fluentui/react-icons';
-import * as ReactIcons from '@fluentui/react-icons';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FabricIconsPage/docs';
@@ -16,6 +13,7 @@ const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
 const fabricReactIcons = require('@fluentui/font-icons-mdl2/lib/data/AllIconNames.json');
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
+const ReactIconGrid = React.lazy(() => import('../../../components/ReactIconGrid/ReactIconGrid'));
 
 export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -28,12 +26,11 @@ export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props 
   );
 };
 
+const fontIconsHeaderText = 'Fluent UI React (font-based)';
+const reactIconsHeaderText = 'React Icons';
+
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
-  const icons: React.FC<FluentIconsProps>[] = [];
-  // eslint-disable-next-line guard-for-in
-  for (const iconName in ReactIcons) {
-    icons.push(ReactIcons[iconName]);
-  }
+  const [isReactIcons, setIsReactIcons] = React.useState(false);
   switch (platform) {
     case 'web':
       return [
@@ -54,15 +51,23 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Available icons',
           content: (
-            <Pivot>
-              <PivotItem headerText="Fluent UI React (font-based)" className={styles.iconGrid}>
+            <Pivot
+              onLinkClick={item => {
+                setIsReactIcons(item.props.headerText === reactIconsHeaderText);
+              }}
+            >
+              <PivotItem headerText={fontIconsHeaderText} className={styles.iconGrid}>
                 <IconGrid icons={fabricReactIcons} useFabricIcons={true} />
               </PivotItem>
               <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
                 <IconGrid icons={fabricCoreIcons} />
               </PivotItem>
-              <PivotItem headerText="React Icons" className={styles.iconGrid}>
-                <ReactIconGrid icons={icons} />
+              <PivotItem headerText={reactIconsHeaderText} className={styles.iconGrid}>
+                {isReactIcons && (
+                  <React.Suspense fallback={<Spinner label="Loading..." />}>
+                    <ReactIconGrid />
+                  </React.Suspense>
+                )}
               </PivotItem>
             </Pivot>
           ),

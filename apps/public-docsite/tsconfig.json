@@ -2,7 +2,8 @@
   "compilerOptions": {
     "outDir": "lib",
     "target": "es5",
-    "module": "commonjs",
+    //ensure webpack can do async imports
+    "module": "esnext",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
@@ -14,7 +15,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es5", "dom", "ES2015.Promise"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["webpack-env", "custom-global"]
   },

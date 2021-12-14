@@ -4,7 +4,7 @@ You can use Fluent UI's icons in a few ways, depending on if you're using React 
 
 The Fluent UI SVG icon set is released under the MIT License.
 
-The `@fluentui/react-icons` package contains SVG-based icons wrapped in React components. Because each icon is its own component, you only need to import and bundle the icons used in your application.
+The `@fluentui/react-icons` package is an icon offering from the fluentui-system-icons design set. It contains SVG-based icons wrapped in React components. Because each icon is its own component, you only need to import and bundle the icons used in your application.
 
 There are two different styles of each icon, `Filled` and `Regular`. These are by default sized to `1em`, and can be scaled up or down to suit your needs.
 
@@ -68,7 +68,7 @@ ReactDOM.render(<MyIconButton />, document.body.firstChild);
 
 #### Fluent UI React: SVG-based icons
 
-The Fluent UI SVG-based icon set is open source and released under the MIT license.
+The Fluent UI SVG-based icon set is open source and released under the MIT license. They are an svg based icon library from the MDL2 icon set. This is the same one used in the font icons, but they are shipped as SVG icons.
 
 This icon set allows you to import and bundle only the icons you need, resulting in smaller download sizes compared to the font-based approach with `initializeIcons`, which downloads all icons by default.
 

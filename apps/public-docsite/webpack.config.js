@@ -6,6 +6,7 @@ const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const { addMonacoWebpackConfig } = require('@fluentui/react-monaco-editor/scripts/addMonacoWebpackConfig');
 const { getLoadSiteConfig } = require('@fluentui/public-docsite-setup/scripts/getLoadSiteConfig');
+const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 
 /**
  * https://webpack.js.org/configuration/configuration-types/#exporting-a-function
@@ -47,6 +48,8 @@ module.exports = function (env, argv) {
 
       // The website config intentionally doesn't have React as an external because we bundle it
       // to ensure we get a consistent version.
+
+      plugins: [new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] })],
 
       resolve: {
         alias: getResolveAlias(true /*useLib*/),

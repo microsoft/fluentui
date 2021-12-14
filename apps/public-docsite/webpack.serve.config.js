@@ -7,6 +7,7 @@ const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const { addMonacoWebpackConfig } = require('@fluentui/react-monaco-editor/scripts/addMonacoWebpackConfig');
 const { getLoadSiteConfig } = require('@fluentui/public-docsite-setup/scripts/getLoadSiteConfig');
+const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 
 // Must be kept in sync with the value in apps/public-docsite/bin/create-site-manifests.js
 // (just referencing the type, not the actual constant, in case the package hasn't been built yet)
@@ -51,6 +52,8 @@ module.exports = [
       optimization: {
         removeAvailableModules: false,
       },
+
+      plugins: [new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] })],
 
       resolve: {
         alias: getResolveAlias(),
