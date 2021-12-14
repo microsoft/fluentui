@@ -5,12 +5,6 @@ exports[`Slider renders disabled Slider correctly 1`] = `
   <div
     class="fui-Slider"
   >
-    <div
-      class=""
-    />
-    <div
-      class=""
-    />
     <input
       class=""
       disabled=""
@@ -19,6 +13,12 @@ exports[`Slider renders disabled Slider correctly 1`] = `
       min="0"
       type="range"
       value="5"
+    />
+    <div
+      class=""
+    />
+    <div
+      class=""
     />
   </div>
 </div>
@@ -29,12 +29,6 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
   <div
     class="fui-Slider"
   >
-    <div
-      class=""
-    />
-    <div
-      class=""
-    />
     <input
       class=""
       id="slider-1"
@@ -42,6 +36,12 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
       min="0"
       type="range"
       value="5"
+    />
+    <div
+      class=""
+    />
+    <div
+      class=""
     />
   </div>
 </div>
@@ -52,12 +52,6 @@ exports[`Slider renders horizontal origin Slider correctly 1`] = `
   <div
     class="fui-Slider"
   >
-    <div
-      class=""
-    />
-    <div
-      class=""
-    />
     <input
       class=""
       id="slider-1"
@@ -65,6 +59,12 @@ exports[`Slider renders horizontal origin Slider correctly 1`] = `
       min="0"
       type="range"
       value="5"
+    />
+    <div
+      class=""
+    />
+    <div
+      class=""
     />
   </div>
 </div>
@@ -75,12 +75,6 @@ exports[`Slider renders vertical Slider correctly 1`] = `
   <div
     class="fui-Slider"
   >
-    <div
-      class=""
-    />
-    <div
-      class=""
-    />
     <input
       class=""
       id="slider-1"
@@ -88,6 +82,12 @@ exports[`Slider renders vertical Slider correctly 1`] = `
       min="0"
       type="range"
       value="5"
+    />
+    <div
+      class=""
+    />
+    <div
+      class=""
     />
   </div>
 </div>
@@ -98,12 +98,6 @@ exports[`Slider renders vertical origin Slider correctly 1`] = `
   <div
     class="fui-Slider"
   >
-    <div
-      class=""
-    />
-    <div
-      class=""
-    />
     <input
       class=""
       id="slider-1"
@@ -111,6 +105,12 @@ exports[`Slider renders vertical origin Slider correctly 1`] = `
       min="0"
       type="range"
       value="5"
+    />
+    <div
+      class=""
+    />
+    <div
+      class=""
     />
   </div>
 </div>

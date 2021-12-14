@@ -61,6 +61,18 @@ describe('Slider', () => {
     expect(inputRef.current?.value).toEqual('10');
   });
 
+  it('applies the correct value prop when min is set', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Slider value={0} min={20} ref={inputRef} />);
+    expect(inputRef.current?.value).toEqual('20');
+  });
+
+  it('applies the correct value prop when max is set', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Slider value={30} max={20} ref={inputRef} />);
+    expect(inputRef.current?.value).toEqual('20');
+  });
+
   it('applies the disabled prop', () => {
     const inputRef = React.createRef<HTMLInputElement>();
     render(<Slider disabled={true} ref={inputRef} />);
