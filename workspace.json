@@ -562,6 +562,10 @@
       "projectType": "library",
       "sourceRoot": "typings"
     },
+    "upgrade-v8-v9": {
+      "root": "apps/upgrade-guides/upgrade-v8-v9",
+      "projectType": "application"
+    },
     "vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application"

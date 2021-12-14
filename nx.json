@@ -428,6 +428,9 @@
     "typings": {
       "tags": ["platform:any"]
     },
+    "upgrade-v8-v9": {
+      "implicitDependencies": []
+    },
     "vr-tests": {
       "implicitDependencies": []
     }
