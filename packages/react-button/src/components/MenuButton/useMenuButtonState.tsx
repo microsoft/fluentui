@@ -11,6 +11,8 @@ import { useButtonState } from '../Button/useButtonState';
 export const useMenuButtonState = ({ menuIcon, ...buttonProps }: MenuButtonProps): MenuButtonState => {
   const buttonState = useButtonState(buttonProps);
 
+  // TODO: We need to document MUTATION ONLY of state.
+  //       Creating a new object like this can break other hooks' mutations of state :(
   return {
     ...buttonState,
 
