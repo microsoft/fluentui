@@ -22,7 +22,8 @@ import {
   UIComponentProps,
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
-import { useChatContextSelectors, ChatDensity } from './chatContext';
+import { useChatContextSelectors } from './chatContext';
+import { ChatDensity } from './chatDensity';
 import { ChatItemContextProvider } from './chatItemContext';
 
 export interface ChatItemSlotClassNames {
