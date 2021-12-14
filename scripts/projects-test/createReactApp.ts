@@ -22,7 +22,7 @@ export async function prepareCreateReactApp(
 
   try {
     // restoring bits of create-react-app inside util project
-    await shEcho('yarn add create-react-app', tempUtilProjectPath);
+    await shEcho('yarn add create-react-app@4', tempUtilProjectPath);
 
     // create test project with util's create-react-app
     fs.mkdirSync(appProjectPath);
