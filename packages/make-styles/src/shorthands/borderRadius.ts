@@ -1,5 +1,10 @@
 import type { MakeStylesStrictCSSObject, MakeStylesCSSValue } from '../types';
 
+type BorderRadiusStyle = Pick<
+  MakeStylesStrictCSSObject,
+  'borderBottomRightRadius' | 'borderBottomLeftRadius' | 'borderTopRightRadius' | 'borderTopLeftRadius'
+>;
+
 /**
  * A function that implements CSS spec conformant expansion for "borderRadius". "/" is not supported, please use CSS
  * longhands directly.
@@ -17,7 +22,7 @@ export function borderRadius(
   value2: MakeStylesCSSValue = value1,
   value3: MakeStylesCSSValue = value1,
   value4: MakeStylesCSSValue = value2,
-): MakeStylesStrictCSSObject {
+): BorderRadiusStyle {
   return {
     borderBottomRightRadius: value3,
     borderBottomLeftRadius: value4,

@@ -411,6 +411,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-switch/src"
     },
+    "@fluentui/react-tabs": {
+      "root": "packages/react-tabs",
+      "projectType": "library",
+      "sourceRoot": "packages/react-tabs/src"
+    },
     "@fluentui/react-tabster": {
       "root": "packages/react-tabster",
       "projectType": "library",
