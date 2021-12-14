@@ -196,6 +196,26 @@ export const useComponent = (
 };
 ```
 
+## Pros & Cons
+
+✅ **Consistency**
+All components will have the same API since all components have `state` and `render`.
+
+✅ **Simplified Imports**
+There is one import per component, named `useComponent`, opposed to 3-4 imports.
+
+✅ **useFoo not usable**
+"Using" a component returns a fully usable yet customizable component API.
+
+✅ **Learn-once**
+Since this is consistent, and abstracts over all components, it is learn-once-apply-everywhere.
+
+❌ **Limits hook tree-shaking**
+A single useComponent doesn't allow tree shaking out other hooks, like useComponentStyles. However, we can ship a style-less package if needed.
+
+❌ **Increased exported API surface**
+Increases API surface by abstracting over other hooks with useComponent.
+
 ## Use case examples
 
 ### Customizing styles
@@ -397,26 +417,6 @@ export const MyToggleButton: ForwardRefComponent<ButtonProps> = React.forwardRef
   return render(state);
 });
 ```
-
-## Pros & Cons
-
-✅ **Consistency**
-All components will have the same API since all components have `state` and `render`.
-
-✅ **Simplified Imports**
-There is one import per component, named `useComponent`, opposed to 3-4 imports.
-
-✅ **useFoo not usable**
-"Using" a component returns a fully usable yet customizable component API.
-
-✅ **Learn-once**
-Since this is consistent, and abstracts over all components, it is learn-once-apply-everywhere.
-
-❌ **Limits hook tree-shaking**
-A single useComponent doesn't allow tree shaking out other hooks, like useComponentStyles. However, we can ship a style-less package if needed.
-
-❌ **Increased exported API surface**
-Increases API surface by abstracting over other hooks with useComponent.
 
 ## Discarded Solutions
 
