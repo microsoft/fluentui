@@ -9,7 +9,14 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxState } from './Checkbox.types';
-import { Checkmark } from './Checkmark';
+import {
+  Checkmark12Filled,
+  Checkmark16Filled,
+  Square12Filled,
+  Square16Filled,
+  Circle12Filled,
+  Circle16Filled,
+} from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 
 /**
@@ -38,6 +45,17 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
 
   const mixed = checked === 'mixed';
   const id = useId('checkbox-', nativeProps.primary.id);
+
+  let checkmarkIcon;
+  if (mixed) {
+    if (circular) {
+      checkmarkIcon = size === 'large' ? <Circle16Filled /> : <Circle12Filled />;
+    } else {
+      checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
+    }
+  } else {
+    checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
+  }
 
   const state: CheckboxState = {
     circular,
@@ -77,7 +95,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
       required: true,
       defaultProps: {
         'aria-hidden': true,
-        children: <Checkmark size={size === 'large' ? 10 : 8} mixed={mixed} circular={circular} />,
+        children: checkmarkIcon,
       },
     }),
   };
