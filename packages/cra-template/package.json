@@ -8,8 +8,7 @@
     "directory": "packages/cra-template"
   },
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "test": "node -r @fluentui/scripts/babel/register scripts/test.ts"
+    "lint": "eslint --ext .js,.ts,.tsx ."
   },
   "license": "MIT",
   "files": [
