@@ -25,7 +25,7 @@ You may notice the examples are pulled from storybook, but this app does not use
 
 ## Motivation
 
-React Fluent UI v9 provides a signficantly improved set of components, composition and deployment features, and a modern design language for styling and theming.
+Fluent UI React v9 provides a significantly improved set of components, composition and deployment features, and a modern design language for styling and theming.
 
 Some reasons to upgrade to v9:
 
