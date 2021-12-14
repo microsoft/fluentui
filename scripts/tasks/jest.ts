@@ -1,6 +1,6 @@
 import { jestTask, JestTaskOptions } from 'just-scripts';
 import * as path from 'path';
-import * as unparse from 'yargs-unparser';
+import unparse from 'yargs-unparser';
 import { getJustArgv, JustArgs } from './argv';
 
 const commonJestTask = (options: JestTaskOptions = {}) => {
@@ -29,7 +29,7 @@ const commonJestTask = (options: JestTaskOptions = {}) => {
     _: [
       // jestTask doesn't have explicit support for all jest args (https://jestjs.io/docs/en/cli),
       // so unparse any extra args and pass them through here
-      ...unparse(otherArgs),
+      ...unparse({ ...otherArgs, _: [] }),
       // and pass any positional args (to narrow down tests to be run)
       ..._.filter(arg => arg !== 'jest' && arg !== 'jest-watch'),
     ],

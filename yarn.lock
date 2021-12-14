@@ -5276,6 +5276,11 @@
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-15.0.0.tgz#cb3f9f741869e20cce330ffbeb9271590483882d"
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
+"@types/yargs-unparser@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@types/yargs-unparser/-/yargs-unparser-2.0.1.tgz#9c804fddbe3693f7efade3fe24eccb35818a5217"
+  integrity sha512-fAnDylacESFJBN4a1J2VnYCl2bTIMkwZ6f3CLCA04x/qCDalGR9aAec89KtS3K4zu05JxjQGn0aRWSPYQJ6zRQ==
+
 "@types/yargs@13.0.11":
   version "13.0.11"
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-13.0.11.tgz#def2f0c93e4bdf2c61d7e34899b17e34be28d3b1"
