@@ -10,7 +10,7 @@ import { VirtualStickyTreePagination, VirtualStickyTreePaginationHandle } from '
 import {
   initialItems,
   loadMoreItems,
-  isStickyItemFinishedLoading,
+  isHeaderItemFinishedLoading,
   getHeaderIdFromLoaderId,
 } from './paginationItemsGenerator';
 
@@ -34,7 +34,7 @@ const fetchData = (currItems: ObjectShorthandCollection<TreeItemProps>, headers:
       const items = loadMoreItems(currItems, headers);
       const result = {
         items,
-        hasNextPage: items.filter(item => !isStickyItemFinishedLoading(item)).length > 0,
+        hasNextPage: items.filter(item => !isHeaderItemFinishedLoading(item)).length > 0,
       };
       resolve(result);
     }, FETCH_TIMEOUT),

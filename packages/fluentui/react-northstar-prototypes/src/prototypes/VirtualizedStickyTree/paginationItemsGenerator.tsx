@@ -22,27 +22,30 @@ const getLoader = (headerId: string) => ({
 });
 
 // initially load 15 items under 'Favorite', and render a loader under other sticky headers
-export const initialItems: ObjectShorthandCollection<TreeItemProps> = STICKY_HEADERS.map((header, i) =>
-  i === 0
-    ? {
-        id: header,
-        title: header,
-        items: [...generateTeams(header, 0, 15, 15), getLoader(header)],
-      }
-    : {
-        id: header,
-        title: header,
-        items: [getLoader(header)],
-      },
+export const initialItems: ObjectShorthandCollection<TreeItemProps & { itemSize: number }> = STICKY_HEADERS.map(
+  (header, i) =>
+    i === 0
+      ? {
+          id: header,
+          title: header,
+          itemSize: 20,
+          items: [...generateTeams(header, 0, 15, 15), getLoader(header)],
+        }
+      : {
+          id: header,
+          title: header,
+          itemSize: 20,
+          items: [getLoader(header)],
+        },
 );
 
-export const isStickyItemFinishedLoading = stickyItem =>
+export const isHeaderItemFinishedLoading = stickyItem =>
   stickyItem.items[stickyItem.items.length - 1].id !== getLoaderId(stickyItem.id);
 
-export const loadMoreItems = (currItems, headers: string[]) => {
+export const fetchMoreItems = (currItems, headers: string[]) => {
   headers.forEach(header => {
     const stickyItem = currItems.find(item => item.id === header);
-    if (!isStickyItemFinishedLoading(stickyItem)) {
+    if (!isHeaderItemFinishedLoading(stickyItem)) {
       loadMoreItemsForOne(stickyItem);
     }
   });
@@ -71,6 +74,7 @@ function generateTeams(header: string, startIndex = 0, minItems = 15, maxItems =
       const item = {
         id,
         title: id,
+        itemSize: 30,
         ...(level < maxLevel && { items: generateLevel(level + 1, id, 0) }),
       };
       result.push(item);
