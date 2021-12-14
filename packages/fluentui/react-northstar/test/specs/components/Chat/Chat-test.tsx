@@ -23,7 +23,8 @@ describe('Chat', () => {
   describe('child behaviors', () => {
     const items = [
       {
-        message: <Chat.Message content="Hello" author="Robert Tolbert" timestamp="10:15 PM" mine />,
+        key: 'item-1',
+        message: <Chat.Message key="message-1" content="Hello" author="Robert Tolbert" timestamp="10:15 PM" mine />,
       },
     ];
 
