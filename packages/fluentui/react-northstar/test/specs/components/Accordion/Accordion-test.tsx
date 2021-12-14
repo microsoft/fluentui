@@ -5,6 +5,7 @@ import { Accordion } from 'src/components/Accordion/Accordion';
 import { handlesAccessibility, htmlIsAccessibilityCompliant, isConformant } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent, findIntrinsicElement } from 'test/utils';
 import { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
+import { accordionContentClassName } from 'src/components/Accordion/AccordionContent';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 
 const panels = [
@@ -30,6 +31,10 @@ const getTitleButtonAtIndex = (wrapper: ReactWrapper, index: number): CommonWrap
     .find(`.${accordionTitleSlotClassNames.contentWrapper}`)
     .filterWhere(n => typeof n.type() === 'string')
     .at(index);
+};
+
+const getContentPanels = (wrapper: ReactWrapper): CommonWrapper => {
+  return findIntrinsicElement(wrapper, `.${accordionContentClassName}`);
 };
 
 const getExclusiveItemWithPropIndex = (accordion, prop) =>
@@ -216,6 +221,15 @@ describe('Accordion', () => {
       getTitleButtonAtIndex(wrapper, 0).simulate('click');
 
       expect(onTitleClick).toBeCalledTimes(1);
+    });
+
+    it('renders just active panels', () => {
+      const defaultActiveIndex = [1, 2];
+      const accordion = mountWithProviderAndGetComponent(
+        Accordion,
+        <Accordion panels={panels} defaultActiveIndex={defaultActiveIndex} />,
+      );
+      expect(getContentPanels(accordion).length).toBe(2);
     });
   });
 

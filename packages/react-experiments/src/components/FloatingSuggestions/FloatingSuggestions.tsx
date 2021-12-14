@@ -175,13 +175,13 @@ export class FloatingSuggestions<TItem>
     // If it is then resolve it asynchronously.
     if (Array.isArray(suggestions)) {
       this.updateSuggestions(suggestions, true /*forceUpdate*/);
-    } else if (suggestions && suggestions.then) {
+    } else if (suggestions && (suggestions as PromiseLike<TItem[]>).then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
-      const promise: PromiseLike<TItem[]> = (this.currentPromise = suggestions);
-      promise.then((newSuggestions: TItem[]) => {
+      this.currentPromise = suggestions;
+      suggestions.then((newSuggestions: TItem[]) => {
         // Only update if the next promise has not yet resolved and
         // the floating picker is still mounted.
-        if (promise === this.currentPromise && this.isComponentMounted) {
+        if (suggestions === this.currentPromise && this.isComponentMounted) {
           this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
         }
       });

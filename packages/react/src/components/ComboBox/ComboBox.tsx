@@ -1080,12 +1080,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // If it is then resolve it asynchronously.
       if (Array.isArray(newOptions)) {
         this.props.hoisted.setCurrentOptions(newOptions);
-      } else if (newOptions && newOptions.then) {
+      } else if (newOptions && (newOptions as PromiseLike<IComboBoxOption[]>).then) {
         // Ensure that the promise will only use the callback if it was the most recent one
         // and update the state when the promise returns
-        const promise: PromiseLike<IComboBoxOption[]> = (this._currentPromise = newOptions);
-        promise.then((newOptionsFromPromise: IComboBoxOption[]) => {
-          if (promise === this._currentPromise) {
+        this._currentPromise = newOptions;
+        newOptions.then((newOptionsFromPromise: IComboBoxOption[]) => {
+          if (newOptions === this._currentPromise) {
             this.props.hoisted.setCurrentOptions(newOptionsFromPromise);
           }
         });
