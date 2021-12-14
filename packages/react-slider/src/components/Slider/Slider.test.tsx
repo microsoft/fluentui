@@ -44,9 +44,10 @@ describe('Slider', () => {
 
   // Unit tests
   it('handles id prop', () => {
-    render(<Slider id="test_id" />);
+    const testId = "test_id";
+    render(<Slider id={testId} />);
     const sliderRoot = screen.getByRole('slider');
-    expect(sliderRoot.getAttribute('id')).toEqual('test_id');
+    expect(sliderRoot.getAttribute('id')).toEqual(testId);
   });
 
   it('applies the defaultValue prop', () => {
