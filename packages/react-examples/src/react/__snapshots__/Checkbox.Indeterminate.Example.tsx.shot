@@ -351,7 +351,7 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
-                opacity: 1;
+                opacity: 0;
                 speak: none;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
