@@ -2,27 +2,27 @@
 const makeStyles = () => null;
 
 export const useStylesA = makeStyles({
-  neutral: theme => ({
-    border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
-    color: theme.alias.color.neutral.neutralForeground1,
-  }),
-  colors: theme => ({
-    border: `5px solid ${theme.alias.color.blue.border2}`,
-    color: theme.alias.color.marigold.foreground2,
-  }),
-  shadow: theme => ({
-    boxShadow: theme.alias.shadow.shadow8,
-  }),
-  border: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
-  }),
-  stroke: theme => ({
-    borderBottomWidth: theme.global.strokeWidth.thin,
-  }),
-  type: theme => ({
-    fontFamily: theme.global.type.fontFamilies.base,
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-    fontWeight: theme.global.type.fontWeights.regular,
-  }),
+  neutral: {
+    border: `5px solid ${tokens.colorNeutralStroke1}`,
+    color: tokens.colorNeutralForeground1,
+  },
+  colors: {
+    border: `5px solid ${tokens.colorPaletteBlueBorder2}`,
+    color: tokens.colorPaletteMarigoldForeground2,
+  },
+  shadow: {
+    boxShadow: tokens.shadow8,
+  },
+  border: {
+    borderRadius: tokens.borderRadiusCircular,
+  },
+  stroke: {
+    borderBottomWidth: tokens.strokeWidthThin,
+  },
+  type: {
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    fontWeight: tokens.fontWeightRegular,
+  },
 });

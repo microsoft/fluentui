@@ -107,7 +107,7 @@ const v9ThemeFlattening: CodeMod = {
           const nodeText = node.getText();
 
           if (
-            (nodeText.startsWith('theme.global') || nodeText.startsWith('theme.alias')) &&
+            (nodeText.startsWith('tokens.global') || nodeText.startsWith('tokens.alias')) &&
             nodeText.indexOf('.', 6) !== -1
           ) {
             const newToken = renameToken(nodeText);

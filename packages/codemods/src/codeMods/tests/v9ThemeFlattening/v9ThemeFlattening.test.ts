@@ -17,28 +17,28 @@ describe('v9: Theme flattening', () => {
       "const makeStyles = () => null;
 
       export const useStylesA = makeStyles({
-        neutral: theme => ({
-          border: \`5px solid \${theme.colorNeutralStroke1}\`,
-          color: theme.colorNeutralForeground1,
+        neutral:  ({
+          border: \`5px solid \${tokens.colorNeutralStroke1}\`,
+          color: tokens.colorNeutralForeground1,
         }),
-        colors: theme => ({
-          border: \`5px solid \${theme.colorPaletteBlueBorder2}\`,
-          color: theme.colorPaletteMarigoldForeground2,
+        colors:  ({
+          border: \`5px solid \${tokens.colorPaletteBlueBorder2}\`,
+          color: tokens.colorPaletteMarigoldForeground2,
         }),
-        shadow: theme => ({
-          boxShadow: theme.shadow8,
+        shadow:  ({
+          boxShadow: tokens.shadow8,
         }),
-        border: theme => ({
-          borderRadius: theme.borderRadiusCircular,
+        border:  ({
+          borderRadius: tokens.borderRadiusCircular,
         }),
-        stroke: theme => ({
-          borderBottomWidth: theme.strokeWidthThin,
+        stroke:  ({
+          borderBottomWidth: tokens.strokeWidthThin,
         }),
-        type: theme => ({
-          fontFamily: theme.fontFamilyBase,
-          fontSize: theme.fontSizeBase300,
-          lineHeight: theme.lineHeightBase300,
-          fontWeight: theme.fontWeightRegular,
+        type:  ({
+          fontFamily: tokens.fontFamilyBase,
+          fontSize: tokens.fontSizeBase300,
+          lineHeight: tokens.lineHeightBase300,
+          fontWeight: tokens.fontWeightRegular,
         }),
       });
       "
