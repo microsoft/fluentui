@@ -26,7 +26,8 @@ import {
 export interface VirtualStickyTreePaginationProps extends VirtualStickyTreeProps {
   hasNextPage: boolean;
   isNextPageLoading: boolean;
-  onLoadNextPage: () => Promise<unknown>;
+  isItemLoaded: (index: number) => boolean;
+  onLoadNextPage: (startIndex: number, stopIndex: number) => Promise<void>;
   paginationThreshold?: number;
 }
 
@@ -34,6 +35,7 @@ export const VirtualStickyTreePaginationClassName = 'ui-virtualstickytreepaginat
 
 export type VirtualStickyTreePaginationHandle = {
   getItemRef: (id: string) => HTMLElement;
+  visibleItemIds: string[];
 };
 
 export const VirtualStickyTreePagination = React.forwardRef<
@@ -52,7 +54,6 @@ export const VirtualStickyTreePagination = React.forwardRef<
     stickyItemSize,
     accessibility,
     renderItemTitle,
-    outerRef,
   } = props;
 
   const ElementType = getElementType(props);
@@ -64,9 +65,9 @@ export const VirtualStickyTreePagination = React.forwardRef<
       'itemToString',
       'hasNextPage',
       'isNextPageLoading',
+      'isItemLoaded',
       'onLoadNextPage',
       'paginationThreshold',
-      'outerRef',
     ],
     props,
   );
@@ -103,7 +104,7 @@ export const VirtualStickyTreePagination = React.forwardRef<
     getItemRef,
   } = useVirtualStickyTree(props);
 
-  React.useImperativeHandle(ref, () => ({ getItemRef }), [getItemRef]);
+  React.useImperativeHandle(ref, () => ({ getItemRef, visibleItemIds }), [getItemRef, visibleItemIds]);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
     () => ({
@@ -149,40 +150,24 @@ export const VirtualStickyTreePagination = React.forwardRef<
 
   const getItemKey = React.useCallback((index: number, data: VirtualItemData) => data.visibleItemIds[index], []);
 
-  const { hasNextPage, isNextPageLoading, onLoadNextPage, paginationThreshold } = props;
-
-  const isItemLoaded = React.useCallback(
-    (index: number) => {
-      if (!hasNextPage) {
-        return true;
-      }
-      if (index < visibleItemIds.length) {
-        // make sure item is not a loader
-        const id = visibleItemIds[index];
-        if (id.indexOf('loader') >= 0 && getItemRef(id)) {
-          // a loader item is visible, trying to load more items
-          return false;
-        }
-        return true;
-      }
-      return false;
-    },
-    [getItemRef, hasNextPage, visibleItemIds],
-  );
+  const { hasNextPage, isNextPageLoading, isItemLoaded, onLoadNextPage, paginationThreshold } = props;
 
   const itemCount = hasNextPage ? visibleItemIds.length + 1 : visibleItemIds.length;
 
-  const loadMoreItems = React.useCallback(() => {
-    const indexBeforeNextPage = visibleItemIds.length;
-    if (isNextPageLoading) {
-      return Promise.resolve();
-    }
-    return onLoadNextPage().then(() => {
-      if (listRef.current) {
-        listRef.current.resetAfterIndex(indexBeforeNextPage, true);
+  const loadMoreItems = React.useCallback(
+    (startIndex: number, stopIndex: number) => {
+      const indexBeforeNextPage = visibleItemIds.length;
+      if (isNextPageLoading) {
+        return Promise.resolve();
       }
-    });
-  }, [visibleItemIds.length, isNextPageLoading, onLoadNextPage, listRef]);
+      return onLoadNextPage(startIndex, stopIndex).then(() => {
+        if (listRef.current) {
+          listRef.current.resetAfterIndex(indexBeforeNextPage, true);
+        }
+      });
+    },
+    [visibleItemIds.length, isNextPageLoading, onLoadNextPage, listRef],
+  );
 
   const element = (
     <TreeContext.Provider value={contextValue}>
@@ -214,7 +199,6 @@ export const VirtualStickyTreePagination = React.forwardRef<
                   outerElementType={OuterElementType}
                   innerElementType={InnerElementType}
                   innerRef={ref}
-                  outerRef={outerRef}
                   onItemsRendered={onItemsRendered}
                 >
                   {ItemWrapper}

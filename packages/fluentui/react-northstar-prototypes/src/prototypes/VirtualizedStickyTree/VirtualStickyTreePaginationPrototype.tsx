@@ -8,11 +8,10 @@ import {
 } from '@fluentui/react-northstar';
 import { VirtualStickyTreePagination, VirtualStickyTreePaginationHandle } from './VirtualStickyTreePagination';
 import {
-  STICKY_HEADERS,
   initialItems,
-  getLoaderId,
   loadMoreItems,
   isStickyItemFinishedLoading,
+  getHeaderIdFromLoaderId,
 } from './paginationItemsGenerator';
 
 const FETCH_TIMEOUT = 3000;
@@ -37,13 +36,11 @@ const fetchData = (currItems: ObjectShorthandCollection<TreeItemProps>, headers:
         items,
         hasNextPage: items.filter(item => !isStickyItemFinishedLoading(item)).length > 0,
       };
-      console.log('fetch result', result);
       resolve(result);
     }, FETCH_TIMEOUT),
   );
 };
 
-const stickyItemSize = 20;
 const VirtualStickyTreePaginationPrototype = () => {
   const [items, setItems] = React.useState(initialItems);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -51,100 +48,64 @@ const VirtualStickyTreePaginationPrototype = () => {
 
   const ref = React.useRef<VirtualStickyTreePaginationHandle>(null);
 
-  const outerRef = React.useRef(null);
-  const scrollDirection = React.useRef<'backward' | 'forward' | undefined>();
-  const prevScrollOffset = React.useRef(0);
-  const updateScrollDirection: EventListener = React.useCallback(event => {
-    if (!event.currentTarget) {
-      return;
-    }
-    const { clientHeight, scrollHeight, scrollTop } = event.currentTarget as HTMLElement;
-    const scrollOffset = Math.max(0, Math.min(scrollTop, scrollHeight - clientHeight));
-    scrollDirection.current = prevScrollOffset.current < scrollOffset ? 'forward' : 'backward';
-    prevScrollOffset.current = scrollOffset;
-    console.log('amber', 'scrollDirection', scrollDirection.current);
-  }, []);
-  React.useEffect(() => {
-    const node = outerRef.current;
-    if (node) {
-      node?.addEventListener('scroll', updateScrollDirection);
-    }
-    return () => node?.removeEventListener('scroll', updateScrollDirection);
-  }, [updateScrollDirection]);
-
-  const getLastItemIdStickToTop = React.useCallback(() => {
-    const getItemRef = ref.current?.getItemRef;
-    if (!getItemRef) {
-      return items[0].id;
-    }
-    const firstItem = getItemRef(items[0].id);
-    if (!firstItem) {
-      return items[0].id;
-    }
-
-    const treeTop = firstItem.getBoundingClientRect().top;
-    const lastItemStickToTop = items
-      .map(item => item.id)
-      .reverse()
-      .find((id, index, arr) => {
-        const itemRef = getItemRef(id);
-        if (!itemRef) {
-          return false;
+  const isItemLoaded = React.useCallback(
+    (index: number) => {
+      if (!hasNextPage) {
+        return true;
+      }
+      if (!ref.current) {
+        return true;
+      }
+      const { visibleItemIds, getItemRef } = ref.current;
+      if (!visibleItemIds || !getItemRef) {
+        if (process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.error('<VirtualStickyTree>Invalid ref to VirtualStickyTreePagination. Imperative handles not found');
         }
-        return itemRef.getBoundingClientRect().top - treeTop === stickyItemSize * (arr.length - index - 1);
-      });
-    if (!lastItemStickToTop) {
-      return items[0].id;
-    }
-    return lastItemStickToTop;
-  }, [items]);
+        return true;
+      }
+      if (index < visibleItemIds.length) {
+        const id = visibleItemIds[index];
+        if (id.indexOf('loader') >= 0) {
+          // item is a loader
+          const loaderElement = getItemRef(id);
+          if (loaderElement) {
+            // loader is mounted
+            const stickHeader = getItemRef(getHeaderIdFromLoaderId(id));
+            if (
+              stickHeader &&
+              loaderElement.getBoundingClientRect().bottom > stickHeader.getBoundingClientRect().bottom
+            ) {
+              // if it is below it's sticky header
+              // trying to load more items
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+      return false;
+    },
+    [hasNextPage],
+  );
 
   const loadMoreRows = isLoading
-    ? () => Promise.resolve()
-    : async () => {
+    ? (_startIndex, _stopIndex) => Promise.resolve()
+    : async startIndex => {
         setIsLoading(true);
 
-        const headersToLoadMore = [];
-
-        // first check if there's any loader mounted, they may be visible to user
-        STICKY_HEADERS.forEach((header, i) => {
-          const loaderId = getLoaderId(header);
-          const loaderRef = ref.current?.getItemRef(loaderId);
-          if (loaderRef) {
-            // loader is mounted
-            // check if loader's sticky header's right sibling is sticked to top, which means the loader is scrolled out of visible area
-            const nextHeaderRef = STICKY_HEADERS[i + 1] && ref.current?.getItemRef(STICKY_HEADERS[i + 1]);
-            const treeTop = ref.current?.getItemRef(STICKY_HEADERS[0])?.getBoundingClientRect().top;
-            if (nextHeaderRef && nextHeaderRef.getBoundingClientRect().top - treeTop === stickyItemSize * (i + 1)) {
-              // in this case, do not try to fetch more page of this header when scroll forward or click to pull up sticky header
-              if (scrollDirection.current !== 'backward') {
-                return;
-              }
-            }
-            // otherwise try to fetch next page for this header
-            headersToLoadMore.push(header);
-          }
-        });
-
-        // no loader found, load the last header sticked to top
-        if (!headersToLoadMore.length) {
-          const lastItemIdStickToTop = getLastItemIdStickToTop();
-          const index = items.findIndex(item => item.id === lastItemIdStickToTop);
-          if (!isStickyItemFinishedLoading(items[index])) {
-            // last header sticked to top has not finished loading yet, load next page of it
-            headersToLoadMore.push(lastItemIdStickToTop);
-          } else {
-            // last header sticked to top is fully loaded, find another item after it, that has not finished loading yet
-            for (let i = index + 1; i < items.length; ++i) {
-              if (!isStickyItemFinishedLoading(items[i])) {
-                headersToLoadMore.push(items[i].id);
-                break;
-              }
+        let headersToLoadMore = items[items.length - 1].id;
+        if (ref.current?.visibleItemIds) {
+          const visibleItemIds = ref.current?.visibleItemIds;
+          if (startIndex < visibleItemIds?.length) {
+            const headerId = getHeaderIdFromLoaderId(visibleItemIds?.[startIndex]);
+            if (headerId) {
+              headersToLoadMore = headerId;
             }
           }
         }
 
-        const result = await fetchData(items, headersToLoadMore);
+        const result = await fetchData(items, [headersToLoadMore]);
         setIsLoading(false);
         setHasNextPage(result.hasNextPage);
         setItems(result.items);
@@ -156,15 +117,15 @@ const VirtualStickyTreePaginationPrototype = () => {
         items={items}
         renderItemTitle={CustomTreeTitle}
         itemSize={30}
-        stickyItemSize={stickyItemSize}
+        stickyItemSize={20}
         height={500}
         itemToString={itemToString}
         hasNextPage={hasNextPage}
         isNextPageLoading={isLoading}
         onLoadNextPage={loadMoreRows}
+        isItemLoaded={isItemLoaded}
         paginationThreshold={20}
         ref={ref}
-        outerRef={outerRef}
       />
     </div>
   );

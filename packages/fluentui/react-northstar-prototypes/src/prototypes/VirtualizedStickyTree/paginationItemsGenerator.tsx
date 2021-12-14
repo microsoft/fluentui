@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 export const STICKY_HEADERS = ['Favorite', 'Teams', 'Hidden'];
 
 export const getLoaderId = (headerId: string) => `${headerId}-loader`;
+export const getHeaderIdFromLoaderId = (loaderId: string) => loaderId.substring(0, loaderId.indexOf('-loader'));
 
 export const MAX_ITEMS = {
   Favorite: 20,
@@ -39,8 +40,6 @@ export const isStickyItemFinishedLoading = stickyItem =>
   stickyItem.items[stickyItem.items.length - 1].id !== getLoaderId(stickyItem.id);
 
 export const loadMoreItems = (currItems, headers: string[]) => {
-  console.log('amber', 'load more', headers);
-
   headers.forEach(header => {
     const stickyItem = currItems.find(item => item.id === header);
     if (!isStickyItemFinishedLoading(stickyItem)) {

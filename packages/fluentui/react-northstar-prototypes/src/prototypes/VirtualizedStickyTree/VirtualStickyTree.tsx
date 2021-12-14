@@ -27,7 +27,7 @@ import { useVirtualStickyTree } from './useVirtualStickyTree';
 
 export interface VirtualStickyTreeProps
   extends Omit<TreeProps, 'selectedItemIds' | 'defaultSelectedItemIds' | 'onSelectedItemIdsChange' | 'selectable'>,
-    Pick<VariableSizeListProps, 'height' | 'outerRef'> {
+    Pick<VariableSizeListProps, 'height'> {
   /** height of a non-sticky tree item */
   itemSize: number;
   /** height of 1st level sticky tree item */
