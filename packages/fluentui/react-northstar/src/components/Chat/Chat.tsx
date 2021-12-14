@@ -22,7 +22,8 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import { ChatDensity, ChatContextProvider, defaultChatDensity, ChatContextValue } from './chatContext';
+import { ChatContextProvider, ChatContextValue } from './chatContext';
+import { ChatDensity, defaultChatDensity } from './chatDensity';
 import { ChatItem, ChatItemProps } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';

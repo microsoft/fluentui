@@ -1,8 +1,6 @@
 import { ContextSelector, createContext, useContextSelectors } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
-
-export type ChatDensity = 'comfy' | 'compact';
-export const defaultChatDensity: ChatDensity = 'comfy';
+import { ChatDensity, defaultChatDensity } from './chatDensity';
 
 export type ChatContextValue = {
   density: ChatDensity;
