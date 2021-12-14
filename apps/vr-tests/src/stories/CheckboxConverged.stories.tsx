@@ -25,7 +25,15 @@ storiesOf('Checkbox Converged', module)
   .addStory('mixed', () => <Checkbox checked="mixed" label="Mixed" />)
   .addStory('disabled', () => <Checkbox disabled label="Disabled" />)
   .addStory('disabled checked', () => <Checkbox disabled checked label="Disabled checked" />)
-  .addStory('disabled mixed', () => <Checkbox disabled checked="mixed" label="Disabled mixed" />)
+  .addStory('disabled mixed', () => <Checkbox disabled checked="mixed" label="Disabled mixed" />);
+
+storiesOf('Checkbox Converged', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <Screener steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
   .addStory('label-before', () => <Checkbox labelPosition="before" label="Label before" />)
   .addStory('label-wrapping', () => (
     <Checkbox
