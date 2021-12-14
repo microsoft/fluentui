@@ -93,7 +93,7 @@ Run batch migration on all vNext packages with the tag `platform:web` in `nx.jso
 
 Type: `string`
 
-Comma delimited list of packages that should not be bumped when using he --all flag
+Comma-delimited list of packages that should not be bumped when using the `--all` flag
 
 #### `bumpType`
 
