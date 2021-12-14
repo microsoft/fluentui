@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Upgrade to node 14",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
