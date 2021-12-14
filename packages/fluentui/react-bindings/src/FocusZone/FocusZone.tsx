@@ -460,6 +460,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       const maybeElementToFocus =
         defaultTabbableElement &&
         typeof defaultTabbableElement === 'function' &&
+        this._root.current &&
         defaultTabbableElement(this._root.current);
 
       // try to focus defaultTabbable element

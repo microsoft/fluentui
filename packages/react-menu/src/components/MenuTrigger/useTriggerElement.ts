@@ -81,10 +81,6 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
       focusFirst();
     }
 
-    if (open && key === ArrowDown && !isSubmenu) {
-      focusFirst();
-    }
-
     child?.props?.onKeyDown?.(e);
   });
 

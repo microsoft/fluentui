@@ -2,6 +2,21 @@
   "name": "@fluentui/bundle-size",
   "entries": [
     {
+      "date": "Mon, 13 Dec 2021 07:27:44 GMT",
+      "tag": "@fluentui/bundle-size_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/bundle-size",
+            "commit": "e8092e63498f4d42c54a11325172dd3e6f2d65d6",
+            "comment": "fix: incorrect promise test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Dec 2021 07:36:11 GMT",
       "tag": "@fluentui/bundle-size_v1.1.4",
       "version": "1.1.4",

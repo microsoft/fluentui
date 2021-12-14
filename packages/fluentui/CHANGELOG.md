@@ -36,6 +36,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Set `ChatMessageReadStatus` color to brand @Hirse ([#20231](https://github.com/microsoft/fluentui/pull/20231))
 - Fix broken styles debug of undefined `isReactComponent` @petr-duda ([#20349](https://github.com/microsoft/fluentui/pull/20349))
 - Use semibold font-weight for ChatMessage author slot in compact chat density @Hirse ([#20419](https://github.com/microsoft/fluentui/pull/20419))
+- Set border radius for `ToolbarItem` and icon-only `MenuItem` @Hirse ([#20422](https://github.com/microsoft/fluentui/pull/20422))
 - Stop `event.view` usage in `whatInput.ts` for tests @ling1726 ([#20492](https://github.com/microsoft/fluentui/pull/20492))
 - chore(ability-attributes): improve schema for aria-controls, aria-haspopup and aria-hidden @jurokapsiar ([#20194](https://github.com/microsoft/fluentui/pull/20194))
 - Remove pointer cursor and prevent navigation on carousel paddle click when `disableClickableNav` @chpalac ([#20521](https://github.com/microsoft/fluentui/pull/20521))
@@ -57,7 +58,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Datepicker` components to properly pass ref to root slots @chpalac ([#20697](https://github.com/microsoft/fluentui/pull/20697))
 - Fix `Embed` component to properly pass ref to root slots @chpalac ([#20703](https://github.com/microsoft/fluentui/pull/20703))
 - Fix `Chat` components to properly pass ref to root slots @chpalac ([#20691](https://github.com/microsoft/fluentui/pull/20691))
+- Fix `Dialog` component to support zoom up to 400% @annabratseiko ([#20722](https://github.com/microsoft/fluentui/pull/20722))
 - Fix `Flex` component to properly pass ref to root slots @chpalac ([#20752](https://github.com/microsoft/fluentui/pull/20752))
+- Accordion content does not get rendered for inactive panels @jurokapsiar ([#20783](https://github.com/microsoft/fluentui/pull/20783))
 - Fix `Animation` to expose `Transition` state for the consumer @chpalac ([#20776](https://github.com/microsoft/fluentui/pull/20776))
 - Fix `Image` component to properly pass ref to root slots @chpalac ([#20812](https://github.com/microsoft/fluentui/pull/20812))
 - Fix `Header` components to properly pass ref to root slots @chpalac ([#20811](https://github.com/microsoft/fluentui/pull/20811))
@@ -83,6 +86,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Video` component to properly pass ref to root slots @chpalac ([#20878](https://github.com/microsoft/fluentui/pull/20878))
 - Fix `TooltipContent` component to properly pass ref to root slots @chpalac ([#20876](https://github.com/microsoft/fluentui/pull/20876))
 - Fix `Popup` to invoke event handlers on trigger wrapped in `Ref` @yuanboxue-amber ([#20911](https://github.com/microsoft/fluentui/pull/20911))
+- Fix `Animation` component to properly pass ref to root slots @chpalac ([#20972](https://github.com/microsoft/fluentui/pull/20972))
 
 ### Features
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
