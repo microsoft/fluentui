@@ -100,7 +100,7 @@ export type SliderOnChangeData = {
   value: number;
 };
 
-export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue' | 'size' | 'value'> &
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> &
   SliderCommons;
 
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
