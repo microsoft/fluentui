@@ -1,4 +1,6 @@
 // @ts-nocheck
+import { tokens } from '@fluentui/react-theme';
+
 const makeStyles = () => null;
 
 export const useStylesA = makeStyles({

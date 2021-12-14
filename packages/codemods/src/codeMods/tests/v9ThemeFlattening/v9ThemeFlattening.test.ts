@@ -14,7 +14,9 @@ describe('v9: Theme flattening', () => {
     v9ThemeFlattening.run(file);
 
     expect(file.getText()).toMatchInlineSnapshot(`
-      "const makeStyles = () => null;
+      "import { tokens } from '@fluentui/react-theme';
+
+      const makeStyles = () => null;
 
       export const useStylesA = makeStyles({
         neutral:  ({
