@@ -211,8 +211,9 @@ export function resolveStyleRules(
   styles: MakeStylesStyle,
   unstable_cssPriority: number = 0,
 ): [CSSClassesMap, CSSRulesByBucket] {
-  // resolveProxyValues() is recursive function and should be evaluated once for a style object
-  const expandedStyles: MakeStylesStyle = resolveProxyValues(styles);
-
-  return resolveStyleRulesInner(expandedStyles, unstable_cssPriority);
+  return resolveStyleRulesInner(
+    // resolveProxyValues() is recursive function and should be evaluated once for a style object
+    resolveProxyValues(styles),
+    unstable_cssPriority,
+  );
 }

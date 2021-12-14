@@ -118,7 +118,7 @@ describe('mergeClasses', () => {
   describe('"dir" option', () => {
     it('performs deduplication for RTL classes', () => {
       const computeClasses = makeStyles({
-        start: { borderRightWidth: '5px' },
+        start: { borderLeftWidth: '5px', borderRightWidth: '5px' },
         end: { borderRightWidth: '5px' },
       });
 
@@ -129,7 +129,7 @@ describe('mergeClasses', () => {
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toBe(rtlClasses2.start);
 
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start, rtlClasses1.end, rtlClasses2.end)).toBe(
-        '___o93f2j0 fo2qazs',
+        '___1soy3ld f93e62u fo2qazs',
       );
     });
 

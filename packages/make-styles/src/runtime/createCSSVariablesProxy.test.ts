@@ -13,7 +13,7 @@ describe('createCSSVariablesProxy', () => {
     const proxy = createCSSVariablesProxy('prefix') as { to: { string: object } };
     expect(proxy.to.string.toString()).toStrictEqual('var(--prefix-to-string)');
   });
-  it('should be able to expand objects containing proxies as properties', () => {
+  it('should be able to resolve objects containing proxies as properties', () => {
     const proxy = createCSSVariablesProxy() as { to: { string: object } };
     expect(Array.isArray(proxy)).toEqual(false);
     const expanded = resolveProxyValues({
