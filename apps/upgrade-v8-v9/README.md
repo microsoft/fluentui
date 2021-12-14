@@ -1,4 +1,4 @@
-# React Fluent UI v8 to v9 Upgrade Guide
+# Fluent UI React v8 to v9 Upgrade Guide
 
 ## How to use this guide
 
