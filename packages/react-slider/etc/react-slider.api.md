@@ -40,7 +40,7 @@ export type SliderOnChangeData = {
 };
 
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'onChange' | 'defaultValue' | 'size' | 'value'> & SliderCommons;
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 
 // @public
 export const sliderShorthandProps: (keyof SliderSlots)[];
