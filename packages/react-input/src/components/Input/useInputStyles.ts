@@ -31,7 +31,6 @@ const contentSizes = {
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
   },
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   400: {
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
