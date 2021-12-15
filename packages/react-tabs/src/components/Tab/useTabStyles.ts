@@ -62,17 +62,18 @@ const useRootStyles = makeStyles({
  * Focus styles for the root slot
  */
 const useFocusStyles = makeStyles({
-  base: createCustomFocusIndicatorStyle(theme => ({
-    ...shorthands.borderColor('transparent'),
-    outlineWidth: theme.strokeWidthThick,
-    outlineColor: 'tranparent',
-    outlineStyle: 'solid',
-    boxShadow: `
+  base: theme =>
+    createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor('transparent'),
+      outlineWidth: theme.strokeWidthThick,
+      outlineColor: 'tranparent',
+      outlineStyle: 'solid',
+      boxShadow: `
       ${theme.shadow4},
       0 0 0 ${theme.strokeWidthThick} ${theme.colorStrokeFocus2}
     `,
-    zIndex: 1,
-  })),
+      zIndex: 1,
+    }),
 });
 
 /**

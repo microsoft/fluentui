@@ -35,7 +35,7 @@ const useInputStyles = makeStyles({
   },
 
   lowerInputFocusIndicator: createCustomFocusIndicatorStyle(
-    theme => ({
+    {
       // TODO: Update this to [`& + .${lowerThumbClassName}`]
       '& + .fui-Slider-thumb-lower': {
         ':before': {
@@ -44,12 +44,12 @@ const useInputStyles = makeStyles({
           ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', 'black'),
         },
       },
-    }),
+    },
     { selector: 'focus' },
   ),
 
   upperInputFocusIndicator: createCustomFocusIndicatorStyle(
-    theme => ({
+    {
       // TODO: Update this to [`& + .${upperThumbClassName}`]
       '& + .fui-Slider-thumb-upper': {
         ':before': {
@@ -58,7 +58,7 @@ const useInputStyles = makeStyles({
           ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', 'black'),
         },
       },
-    }),
+    },
     { selector: 'focus' },
   ),
 });

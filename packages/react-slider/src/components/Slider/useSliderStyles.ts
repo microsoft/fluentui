@@ -74,8 +74,7 @@ export const useRootStyles = makeStyles({
     cursor: 'not-allowed',
   }),
 
-  focusIndicator: theme =>
-    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '6px' } }),
+  focusIndicator: createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: '6px' } }),
 });
 
 /**
