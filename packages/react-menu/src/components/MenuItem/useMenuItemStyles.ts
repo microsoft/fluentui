@@ -1,5 +1,6 @@
 import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import { useCheckmarkStyles } from '../../selectable/index';
 import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemState } from './MenuItem.types';
@@ -8,44 +9,44 @@ export const menuItemClassName = 'fui-MenuItem';
 
 const useStyles = makeStyles({
   focusIndicator: createFocusOutlineStyle(),
-  root: theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
+  root: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     position: 'relative',
-    color: theme.colorNeutralForeground1,
-    backgroundColor: theme.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '32px',
     display: 'flex',
     alignItems: 'center',
-    fontSize: theme.fontSizeBase300,
+    fontSize: tokens.fontSizeBase300,
     cursor: 'pointer',
     ...shorthands.gap('4px'),
 
     ':hover': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
-      color: theme.colorNeutralForeground2Hover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     userSelect: 'none',
-  }),
+  },
   content: {
     paddingLeft: '2px',
     paddingRight: '2px',
     backgroundColor: 'transparent',
     flexGrow: 1,
   },
-  secondaryContent: theme => ({
+  secondaryContent: {
     paddingLeft: '2px',
     paddingRight: '2px',
-    color: theme.colorNeutralForeground3,
+    color: tokens.colorNeutralForeground3,
     ':hover': {
-      color: theme.colorNeutralForeground3Hover,
+      color: tokens.colorNeutralForeground3Hover,
     },
     ':focus': {
-      color: theme.colorNeutralForeground3Hover,
+      color: tokens.colorNeutralForeground3Hover,
     },
-  }),
+  },
   icon: {
     width: '20px',
     height: '20px',
@@ -54,16 +55,16 @@ const useStyles = makeStyles({
     width: '20px',
     height: '20px',
   },
-  disabled: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':focus': {
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 });
 
 /** Applies style classnames to slots */
