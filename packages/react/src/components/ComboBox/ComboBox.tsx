@@ -760,6 +760,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return;
     }
 
+    if (this.props.onInputValueChange) {
+      this.props.onInputValueChange(updatedValue);
+    }
+
     this.props.allowFreeform
       ? this._processInputChangeWithFreeform(updatedValue)
       : this._processInputChangeWithoutFreeform(updatedValue);
