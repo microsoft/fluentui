@@ -81,6 +81,12 @@ The [WAI-ARIA spec for SpinButton](https://www.w3.org/TR/wai-aria-practices/#spi
 
 Fluent UI v8 (Fabric) ships a `SpinButton` control. This control supports directly typing values into the input field, stepping via step buttons, clamping values in a min-max range and suffixes on the displayed value. The control also supports variants like including an icon in the label, label positioning and styling overrides. `SpinButton` has RTL support and implements the correct ARIA attributes for proper accessibility support.
 
+One interesting aspect of `SpinButton` in v8 is that the `value` prop (the prop that dictacts the actual current value of the control) is a string but `min`, `max` and `step` are all numbers. This is in keeping with `<input type="number">` where the `value` attribute is also a string but it feels odd for a React component that works with numeric values to take in a string `value` prop.
+
+The choice to type `value` as string seems to complicate scenarios that involve custom formatting as `value` can either be a "raw value" (e.g., `1`, `2.2`, `100`) or a "formatted value" (e.g., "12 pt", "2.54cm"). [This is a Codepen example of how to apply a suffix in v8](https://codepen.io/seanms/pen/NWadoWj). Because the value is a string it must be parsed with user-supplied functions and internal `SpinButton` logic like clamping the value between `min` and `max` must be reimplemented by users.
+
+v8 supports an optional icon that appears before the label. None of the other v8 input controls support adding an icon next to the label as part of the component API so this feature will be omitted from this proposed API. This can be achieved by aligning an icon with the control or perhaps by updating the vNext `Label` component to support icons.
+
 #### Props
 
 Props not directly related to `SpinButton` functionality omitted for brevity. [See the complete implementation list](https://developer.microsoft.com/en-us/fluentui#/controls/web/spinbutton#implementation) all props.
@@ -152,8 +158,6 @@ Inspecting a native number input with devtools shows that it implements the [spi
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
-
 ### Uncontrolled Example
 
 ```tsx
@@ -164,7 +168,8 @@ _Provide some representative example code that uses the proposed API for the com
 
 ```tsx
 type SpinButtonChangeData = {
-  value: number;
+  value: number; // The "raw value", e.g., 2
+  formattedValue: string; // The "formatted value", e.g., "$2.00"
 };
 
 const [value, setValue] = useState<number>(2);
@@ -180,6 +185,7 @@ const onControlledExampleChange = (_event, data: SpinButtonChangeData) => {
 ```tsx
 type SpinButtonChangeData = {
   value: number;
+  formattedValue: string;
 };
 
 type SpinButtonFormatter = (value: number) => string;
@@ -218,47 +224,67 @@ const fontParser: SpinButtonParser = formattedValue => {
 />
 ```
 
-### Validation
+### Basic Example Implementation
 
-```tsx
-const min = 0;
-const max = 100;
+A very basic example to demonstrate how formatting will work in practice.
 
-type SpinButtonValidator = (value: number, formattedValue: string) => boolean;
-
-const fontValidator: SpinButtonValidator = (value, formattedValue) => {
-  if (value < min || value > max) {
-    return false;
-  }
-
-  return /^[\d]+(\s)?pt$/.test(formattedValue);
-};
-
-//... other functions from previous examples ...
-
-<SpinButton
-  label="Controlled Formatted Example"
-  value={value}
-  formatter={fontFormatter}
-  parser={fontParser}
-  validator={fontValidator}
-  onChange={onControlledExampleChange}
-/>;
-```
+[Link to example on Codesandbox](https://codesandbox.io/s/spinbutton-example-formatted-values-66pou?file=/src/SpinButton/SpinButton.js)
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+[The native HTML number input can be associated with a list](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#offering_suggested_values) to provide suggested values in the `SpinButton`. This fits nicely when a scenario where a `SpinButton` is used as a font size selector however it seems to have some overlap with a `ComboBox`. As the existing v8 `SpinButton` lacks this feature it will be left off the initial implementation.
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+[See the types](./components/SpinButton/SpinButton.types.ts)
 
 ## Structure
 
 - _**Public**_
+
+```tsx
+const formatter = (value: number): string => {
+  return `${$value.toFixed(2)}`;
+};
+
+<SpinButton label="Spin me right round" value={10} min={1} max={100} step={5} formatter={formatter} />;
+```
+
 - _**Internal**_
+
+```tsx
+<slots.root {...slotProps.root}>
+  <slots.label {...slotProps.label} />
+  <div className={state.spinButtonWrapper}>
+    <slots.input {...slotProps.input} />
+    <slots.incrementButton {...slots.incrementButton} />
+    <slots.decrementButton {...slots.decrementButton} />
+  </div>
+</slots.root>
+```
+
 - _**DOM** - how the component will be rendered as HTML elements_
+
+```html
+<div class="fui-SpinButton">
+  <label class="fui-SpinButton-label" id="unique-spinbutton-id">Spin me right round</label>
+  <div class="fui-SpinButton-wrapper">
+    <input
+      type="text"
+      role="spinbutton"
+      class="fui-SpinButton-input"
+      value="$10.00"
+      aria-valuenow="10"
+      aria-valuemin="1"
+      aria-valuemax="100"
+      aria-valuetext="$10.00"
+      aria-labeledby="unique-spinbutton-id"
+    />
+    <button tabindex="-1" type="button" class="fui-SpinButton-button fui-SpinButton-increment-button">+</button>
+    <button tabindex="-1" type="button" class="fui-SpinButton-button fui-SpinButton-decrement-button">-</button>
+  </div>
+</div>
+```
 
 ## Migration
 
