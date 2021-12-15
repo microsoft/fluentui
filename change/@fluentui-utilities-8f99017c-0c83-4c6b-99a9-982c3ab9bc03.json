@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test(utilities): fix test with JSDOM 16 in place",
-  "packageName": "@fluentui/utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

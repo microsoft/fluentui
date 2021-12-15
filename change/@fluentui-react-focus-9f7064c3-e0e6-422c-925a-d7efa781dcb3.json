@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test(react-focus): make test work with new JSDOM",
-  "packageName": "@fluentui/react-focus",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

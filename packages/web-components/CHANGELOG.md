@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 10 Dec 2021 07:30:35 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Dec 2021 07:31:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.3)
+
+Wed, 15 Dec 2021 07:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.2..@fluentui/web-components_v2.1.3)
+
+### Patches
+
+- fix: prevent disabled flipper from emitting event ([PR #21003](https://github.com/microsoft/fluentui/pull/21003) by jes@microsoft.com)
 
 ## [2.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.2)
 
