@@ -1,4 +1,4 @@
-// import { createReactApp } from './createReactApp';
+import { createReactApp } from './createReactApp';
 import { nextjs } from './nextjs';
 import { rollup } from './rollup';
 import { typings } from './typings';
