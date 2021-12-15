@@ -10,8 +10,7 @@ async function performTest() {
     await rollup();
     await typings();
 
-    // Skip it till node update
-    // await createReactApp();
+    await createReactApp();
     await nextjs();
   } catch (e) {
     console.log(e);
