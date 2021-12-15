@@ -9,7 +9,7 @@ import {
 import { VirtualStickyTreePagination, VirtualStickyTreePaginationHandle } from './VirtualStickyTreePagination';
 import {
   initialItems,
-  loadMoreItems,
+  fetchMoreItems,
   isHeaderItemFinishedLoading,
   getHeaderIdFromLoaderId,
 } from './paginationItemsGenerator';
@@ -28,10 +28,11 @@ const CustomTreeTitle = (
 
 const itemToString = item => item.title;
 
-const fetchData = (currItems: ObjectShorthandCollection<TreeItemProps>, headers: string[]) => {
+const fetchData = (currItems: ObjectShorthandCollection<TreeItemProps>, headersToFetchMore: string[]) => {
+  console.log('fetch', headersToFetchMore);
   return new Promise<{ items: any; hasNextPage: boolean }>(resolve =>
     setTimeout(() => {
-      const items = loadMoreItems(currItems, headers);
+      const items = fetchMoreItems(currItems, headersToFetchMore);
       const result = {
         items,
         hasNextPage: items.filter(item => !isHeaderItemFinishedLoading(item)).length > 0,
@@ -47,6 +48,22 @@ const VirtualStickyTreePaginationPrototype = () => {
   const [hasNextPage, setHasNextPage] = React.useState(true);
 
   const ref = React.useRef<VirtualStickyTreePaginationHandle>(null);
+
+  const checkLoaderItem = React.useCallback((id, getItemRef) => {
+    // item is a loader
+    const loaderElement = getItemRef(id);
+    if (loaderElement) {
+      // loader is mounted
+      const stickHeader = getItemRef(getHeaderIdFromLoaderId(id));
+      if (stickHeader && loaderElement.getBoundingClientRect().bottom > stickHeader.getBoundingClientRect().bottom) {
+        // if it is below it's sticky header
+        // trying to load more items
+        console.log('--- isItemLoaded false', id);
+        return false;
+      }
+    }
+    return true;
+  }, []);
 
   const isItemLoaded = React.useCallback(
     (index: number) => {
@@ -68,48 +85,45 @@ const VirtualStickyTreePaginationPrototype = () => {
         const id = visibleItemIds[index];
         if (id.indexOf('loader') >= 0) {
           // item is a loader
-          const loaderElement = getItemRef(id);
-          if (loaderElement) {
-            // loader is mounted
-            const stickHeader = getItemRef(getHeaderIdFromLoaderId(id));
-            if (
-              stickHeader &&
-              loaderElement.getBoundingClientRect().bottom > stickHeader.getBoundingClientRect().bottom
-            ) {
-              // if it is below it's sticky header
-              // trying to load more items
-              return false;
-            }
-          }
+          return checkLoaderItem(id, getItemRef);
         }
         return true;
       }
+      if (index === visibleItemIds.length && visibleItemIds[index - 1].indexOf('loader') >= 0) {
+        return checkLoaderItem(visibleItemIds[index - 1], getItemRef);
+      }
+      console.log('--- isItemLoaded false', 'index < visibleItemIds.length');
       return false;
     },
-    [hasNextPage],
+    [checkLoaderItem, hasNextPage],
   );
 
-  const loadMoreRows = isLoading
-    ? (_startIndex, _stopIndex) => Promise.resolve()
-    : async startIndex => {
-        setIsLoading(true);
+  const loadMoreRows = async (startIndex: number) => {
+    setIsLoading(true);
 
-        let headersToLoadMore = items[items.length - 1].id;
-        if (ref.current?.visibleItemIds) {
-          const visibleItemIds = ref.current?.visibleItemIds;
-          if (startIndex < visibleItemIds?.length) {
-            const headerId = getHeaderIdFromLoaderId(visibleItemIds?.[startIndex]);
-            if (headerId) {
-              headersToLoadMore = headerId;
-            }
-          }
+    let headersToLoadMore;
+    if (ref.current?.visibleItemIds) {
+      const visibleItemIds = ref.current?.visibleItemIds;
+      if (startIndex < visibleItemIds?.length) {
+        const headerId = getHeaderIdFromLoaderId(visibleItemIds?.[startIndex]);
+        if (headerId) {
+          console.log('+++ loader found for', headerId);
+          headersToLoadMore = headerId;
         }
+      }
+    }
 
-        const result = await fetchData(items, [headersToLoadMore]);
-        setIsLoading(false);
-        setHasNextPage(result.hasNextPage);
-        setItems(result.items);
-      };
+    if (!headersToLoadMore) {
+      console.log('+++ no loader found');
+      // no loader found, try to load more item for the 1st section that has unloaded items
+      headersToLoadMore = items.find(item => !isHeaderItemFinishedLoading(item)).id;
+    }
+
+    const result = await fetchData(items, [headersToLoadMore]);
+    setIsLoading(false);
+    setHasNextPage(result.hasNextPage);
+    setItems(result.items);
+  };
 
   return (
     <div style={{ width: 400 }}>

@@ -8,20 +8,27 @@ import {
   useFluentContext,
 } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
-import { rtlTextContainer, TreeItem, Tree, TreeStylesProps, treeClassName } from '@fluentui/react-northstar';
-import { TreeContext, TreeRenderContextValue } from '@fluentui/react-northstar/src/components/Tree/context';
+import {
+  rtlTextContainer,
+  TreeItem,
+  Tree,
+  TreeStylesProps,
+  treeClassName,
+  TreeContext,
+  TreeRenderContextValue,
+} from '@fluentui/react-northstar';
 import { VariableSizeList } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
-import { useVirtualStickyTree } from './useVirtualStickyTree';
 import {
-  VirtualStickyTreeProps,
-  InnerElementContextType,
-  VirtualItemData,
   InnerElementContext,
-  OuterElementType,
+  InnerElementContextType,
   InnerElementType,
   ItemWrapper,
-} from './VirtualStickyTree';
+  OuterElementType,
+  useVirtualStickyTree,
+  VirtualItemData,
+} from './useVirtualStickyTree';
+import { VirtualStickyTreeProps } from './VirtualStickyTree';
 
 export interface VirtualStickyTreePaginationProps extends VirtualStickyTreeProps {
   hasNextPage: boolean;
@@ -190,7 +197,10 @@ export const VirtualStickyTreePagination = React.forwardRef<
               {({ onItemsRendered, ref }) => (
                 <VariableSizeList
                   width={-1} // width is not used for vertical list
-                  ref={listRef}
+                  ref={list => {
+                    listRef.current = list;
+                    typeof ref === 'function' ? ref(list) : (ref.current = list);
+                  }}
                   height={height}
                   itemSize={getItemSize}
                   itemKey={getItemKey}
@@ -198,7 +208,7 @@ export const VirtualStickyTreePagination = React.forwardRef<
                   itemCount={itemCount}
                   outerElementType={OuterElementType}
                   innerElementType={InnerElementType}
-                  innerRef={ref}
+                  // innerRef={ref}
                   onItemsRendered={onItemsRendered}
                 >
                   {ItemWrapper}
