@@ -320,7 +320,10 @@ export const VirtualTreePagination = (props: VirtualTreePaginationProps) => {
             {({ onItemsRendered, ref }) => (
               <VariableSizeList
                 width={-1} // width is not used for vertical list
-                ref={listRef}
+                ref={list => {
+                  listRef.current = list;
+                  typeof ref === 'function' ? ref(list) : (ref.current = list);
+                }}
                 height={height}
                 estimatedItemSize={estimatedItemSize}
                 itemSize={getItemSize}
@@ -329,7 +332,7 @@ export const VirtualTreePagination = (props: VirtualTreePaginationProps) => {
                 itemCount={visibleItemIds.length}
                 outerElementType={OuterElementType}
                 innerElementType={InnerElementType}
-                innerRef={ref}
+                // innerRef={ref}
                 onItemsRendered={onItemsRendered}
               >
                 {ItemWrapper}
