@@ -23,6 +23,7 @@ export type InputOnChangeData = {
 
 // @public
 export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'value'> & {
+    children?: never;
     size?: 'small' | 'medium' | 'large';
     inline?: boolean;
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';

@@ -35,6 +35,9 @@ export type InputProps = Omit<
   // `children` is unsupported. The rest of these native props have customized definitions.
   'children' | 'defaultValue' | 'onChange' | 'size' | 'value'
 > & {
+  /** Input can't have children. */
+  children?: never;
+
   /**
    * Size of the input (changes the font size and spacing).
    * @default 'medium'
