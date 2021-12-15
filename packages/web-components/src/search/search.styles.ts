@@ -17,28 +17,8 @@ import {
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { bodyFont, controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
-import { DirectionalStyleSheetBehavior } from '../styles';
 import { Swatch } from '../color/swatch';
 
-/**
- * LTR styles for calendar
- * @internal
- */
- const ltrStyles = css`
- .clear-button {
-   right: 1px;
- }
- `;
-
- /**
-  * RTL styles for calendar
-  * @internal
-  */
- const rtlStyles = css`
- .clear-button {
-  left: 1px;
- }
- `;
 
 const closeButtonHover = DesignToken.create<Swatch>("close-button-hover").withDefault(
   (target: HTMLElement) => {
@@ -178,6 +158,5 @@ export const searchStyles = (context, definition) =>
       css`
         ${inputForcedColorStyles(context, definition, '.root')}
       `,
-    ),
-    new DirectionalStyleSheetBehavior(ltrStyles, rtlStyles)
+    )
   );
