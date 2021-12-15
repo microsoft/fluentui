@@ -103,23 +103,23 @@ export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Om
  *   - There's an optional named prop for the primary slot which ONLY takes `className` and `style`.
  *   - There's an optional prop for `root` which accepts appropriate native props, but NOT shorthands.
  */
-export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> =
+export type ComponentProps<Slots extends ObjectShorthandPropsRecord, Primary extends keyof Slots = 'root'> =
   // Allow all props from the primary slot to be specified at the root
-  PropsWithoutRef<Shorthands[Primary]> &
+  PropsWithoutRef<Slots[Primary]> &
     // Include shorthand slot props for each of the component's slots, except the primary slot and `root`
     {
-      [Key in keyof Omit<Shorthands, Primary | 'root'>]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+      [Key in keyof Omit<Slots, Primary | 'root'>]?: ShorthandProps<NonNullable<Slots[Key]>>;
     } &
-    // If the primary slot is customized...
-    // (per https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/native-element-props.md)
     (Primary extends 'root'
       ? {}
-      : {
+      : // If the primary slot is customized...
+        // (per https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/native-element-props.md)
+        {
           // Add a named prop for the primary slot which ONLY accepts className and style
-          [Key in keyof Primary]?: Pick<React.HTMLAttributes<{}>, 'className' | 'style'>;
+          [Key in Primary]?: Pick<React.HTMLAttributes<{}>, 'className' | 'style'>;
         } & {
           // Add a `root` prop which accepts any native props, but NOT shorthand syntax
-          root?: Shorthands['root'];
+          root?: Slots['root'];
         });
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {

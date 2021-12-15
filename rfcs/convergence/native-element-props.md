@@ -148,8 +148,8 @@ Something along the lines of this:
 const nativeProps = getPartitionedNativeProps(props, 'input');
 const state = {
   // ...
-  root: nativeProps.root,
-  input: nativeProps.primary, // primary slot
+  root: resolveShorthand(props.root, { required: true, defaultProps: nativeProps.root }),
+  input: resolveShorthand(props.input, { required: true, defaultProps: nativeProps.primary }), // primary slot
 };
 ```
 
@@ -163,9 +163,13 @@ const state = {
 
 ## Usage examples
 
-### Example with `root` as the primary slot (default case)
+### `root` as the primary slot (default case)
 
-`Button` falls into the default case, where `root` is its primary slot. All native props specified on the component go to the `root` slot:
+`Button` falls into the default case, where `root` is its primary slot.
+
+#### Top-level native props
+
+All native props specified on the component go to the `root` slot:
 
 **Given JSX:**
 
@@ -179,15 +183,19 @@ const state = {
 <button id="myId" class="myClass" />
 ```
 
+#### Error: using `root` prop
+
 There is no `root` prop:
 
 ```jsx
 <Button root={{ id: 'myId' }} /> // ❌ Fails to compile: root is not a prop
 ```
 
-### Example with `input` as the primary slot
+### `input` as custom primary slot
 
 `Checkbox` specifies its `input` slot as the primary slot. (Its `root` slot is a wrapper `<div>` around the `<input>` element.)
+
+#### Top-level native props + primary slot props
 
 **Given JSX:**
 
@@ -203,12 +211,16 @@ There is no `root` prop:
 </div>
 ```
 
+#### Error: specifying extra props on primary slot
+
 To reduce confusion about which props take precedence, it's not allowed to specify props other than `className` and `style` on the primary slot:
 
 ```jsx
 // ❌ Fails to compile
 <Checkbox input={{ id: 'inputId' }} />
 ```
+
+#### Precedence of `className` and `style` at top level vs. on `root` slot
 
 However, explicitly specifying `className` and `style` on the `root` slot is allowed, and these will win over props specified on the element itself:
 
@@ -217,6 +229,7 @@ However, explicitly specifying `className` and `style` on the `root` slot is all
 ```jsx
 <Checkbox
   className="myClass" // ⚠ overridden by "rootClass" below
+  id="myId"
   style={{ color: 'red' }}
   root={{ id: 'rootId', className: 'rootClass' }}
 />
@@ -226,7 +239,7 @@ However, explicitly specifying `className` and `style` on the `root` slot is all
 
 ```html
 <div id="rootId" class="rootClass" style="color: red">
-  <input class="inputClass" />
+  <input id="myId" />
 </div>
 ```
 

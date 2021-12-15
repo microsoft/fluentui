@@ -43,12 +43,13 @@ export const colGroupProperties: Record<string, number>;
 export const colProperties: Record<string, number>;
 
 // @public
-export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = PropsWithoutRef<Shorthands[Primary]> & {
-    [Key in keyof Omit<Shorthands, Primary | 'root'>]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-} & (Primary extends 'root' ? {} : {
-    [Key in keyof Primary]?: Pick<React_2.HTMLAttributes<{}>, 'className' | 'style'>;
+export type ComponentProps<Slots extends ObjectShorthandPropsRecord, Primary extends keyof Slots = 'root'> = PropsWithoutRef<Slots[Primary]> & {
+    [Key in keyof Omit<Slots, Primary | 'root'>]?: ShorthandProps<NonNullable<Slots[Key]>>;
+} & (Primary extends 'root' ? {} : // If the primary slot is customized...
+    {
+    [Key in Primary]?: Pick<React_2.HTMLAttributes<{}>, 'className' | 'style'>;
 } & {
-    root?: Shorthands['root'];
+    root?: Slots['root'];
 });
 
 // @public (undocumented)
@@ -86,16 +87,16 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPropNames, }: {
+export function getPartitionedNativeProps<NativeProps extends React_2.HTMLAttributes<unknown>>({ primarySlotTagName, props, excludedPropNames, }: {
     primarySlotTagName: keyof JSX.IntrinsicElements;
-    props: Pick<React_2.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
-    excludedPropNames?: string[] | undefined;
-}) => {
+    props: Pick<NativeProps, 'style' | 'className'>;
+    excludedPropNames?: string[];
+}): {
     root: {
-        style: React_2.CSSProperties | undefined;
-        className: string | undefined;
+        style: NativeProps["style"] | undefined;
+        className: NativeProps["className"] | undefined;
     };
-    primary: React_2.HTMLAttributes<any>;
+    primary: NativeProps;
 };
 
 // @public
