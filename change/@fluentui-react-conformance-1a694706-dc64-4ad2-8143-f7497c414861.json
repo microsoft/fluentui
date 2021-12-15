@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update all jest deps to v25 + apply single version policy",
-  "packageName": "@fluentui/react-conformance",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
