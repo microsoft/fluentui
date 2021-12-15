@@ -134,7 +134,7 @@ describe('BasePicker', () => {
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    ReactTestUtils.Simulate.focus(input); // input.focus() doesn't work in react 17/jest 25
+    input.focus();
     input.value = 'b';
     ReactTestUtils.Simulate.input(input);
     runAllTimers();
@@ -159,7 +159,7 @@ describe('BasePicker', () => {
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    ReactTestUtils.Simulate.focus(input); // input.focus() doesn't work in react 17/jest 25
+    input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
     runAllTimers();
@@ -487,12 +487,16 @@ describe('BasePicker', () => {
     jest.useFakeTimers();
     document.body.appendChild(root);
 
-    const resolveMock = jest.fn(onResolveSuggestions);
+    let count = 0;
+    const resolveCounter = (val: string) => {
+      count++;
+      return onResolveSuggestions(val);
+    };
     const picker = React.createRef<IBasePicker<ISimple>>();
 
     ReactDOM.render(
       <BasePickerWithType
-        onResolveSuggestions={resolveMock}
+        onResolveSuggestions={resolveCounter}
         onRenderItem={onRenderItem}
         onRenderSuggestionsItem={basicSuggestionRenderer}
         componentRef={picker}
@@ -502,10 +506,10 @@ describe('BasePicker', () => {
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    ReactTestUtils.Simulate.focus(input); // input.focus() doesn't work in react 17/jest 25
+    input.focus();
     runAllTimers();
 
-    expect(resolveMock).toHaveBeenCalledTimes(1);
+    expect(count).toEqual(1);
 
     expect(getSuggestions(document)).toBeTruthy();
   });
