@@ -19,29 +19,29 @@ describe('v9: Theme flattening', () => {
       const makeStyles = () => null;
 
       export const useStylesA = makeStyles({
-        neutral:  ({
+        neutral: {
           border: \`5px solid \${tokens.colorNeutralStroke1}\`,
           color: tokens.colorNeutralForeground1,
-        }),
-        colors:  ({
+        },
+        colors: {
           border: \`5px solid \${tokens.colorPaletteBlueBorder2}\`,
           color: tokens.colorPaletteMarigoldForeground2,
-        }),
-        shadow:  ({
+        },
+        shadow: {
           boxShadow: tokens.shadow8,
-        }),
-        border:  ({
+        },
+        border: {
           borderRadius: tokens.borderRadiusCircular,
-        }),
-        stroke:  ({
+        },
+        stroke: {
           borderBottomWidth: tokens.strokeWidthThin,
-        }),
-        type:  ({
+        },
+        type: {
           fontFamily: tokens.fontFamilyBase,
           fontSize: tokens.fontSizeBase300,
           lineHeight: tokens.lineHeightBase300,
           fontWeight: tokens.fontWeightRegular,
-        }),
+        },
       });
       "
     `);
