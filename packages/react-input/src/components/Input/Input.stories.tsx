@@ -1,10 +1,5 @@
 /// <reference types="@fluentui/react-icons" />
 import * as React from 'react';
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { Input } from './Input';
-import { getNativeElementProps, useId } from '@fluentui/react-utilities';
-import { InputProps } from './Input.types';
-import { ArgTypes } from '@storybook/react';
 import {
   Search16Regular,
   Search20Regular,
@@ -13,6 +8,12 @@ import {
   Dismiss20Regular,
   Dismiss24Regular,
 } from '@fluentui/react-icons';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { getNativeElementProps, useId } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
+import { ArgTypes } from '@storybook/react';
+import { Input } from './Input';
+import { InputProps } from './Input.types';
 
 const useStyles = makeStyles({
   container: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
     ...shorthands.gap('20px'),
     ...shorthands.padding('20px'),
   },
-  storyFilledBackground: theme => ({ backgroundColor: theme.colorNeutralBackground3 }),
+  storyFilledBackground: { backgroundColor: tokens.colorNeutralBackground3 },
 });
 
 const icons = {
