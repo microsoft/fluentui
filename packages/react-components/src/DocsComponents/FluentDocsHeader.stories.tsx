@@ -1,19 +1,20 @@
 import * as React from 'react';
 import { FluentGlobals, THEME_ID } from '@fluentui/react-storybook-addon';
+import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles } from '../index';
 import { ThemePicker } from './ThemePicker.stories';
 
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     position: 'fixed',
     top: 0,
     ...shorthands.padding('5px'),
     width: '100%',
-    backgroundColor: theme.colorNeutralBackground3,
-    boxShadow: `${theme.shadow8}`,
-    ...shorthands.border('1px', 'solid', theme.colorTransparentStroke),
+    backgroundColor: tokens.colorNeutralBackground3,
+    boxShadow: `${tokens.shadow8}`,
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     zIndex: 1000,
-  }),
+  },
 });
 
 /**
