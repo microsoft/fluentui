@@ -1,4 +1,5 @@
 import { mergeClasses, shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import { DividerState } from './Divider.types';
 
 export const dividerClassName = 'fui-Divider';
@@ -9,37 +10,37 @@ const startEndMaxHeight = '8px';
 
 const useBaseStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     alignItems: 'center',
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'row',
-    flexGrow: 1,
+    flexGrow: '1',
     position: 'relative',
 
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase200,
-    fontWeight: theme.fontWeightRegular,
-    lineHeight: theme.lineHeightBase200,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightRegular,
+    lineHeight: tokens.lineHeightBase200,
 
-    color: theme.colorNeutralForeground2,
+    color: tokens.colorNeutralForeground2,
 
     ':before': {
       boxSizing: 'border-box',
       display: 'flex',
-      flexGrow: 1,
+      flexGrow: '1',
 
-      ...shorthands.borderColor(theme.colorNeutralStroke2),
+      ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
 
     ':after': {
       boxSizing: 'border-box',
       display: 'flex',
-      flexGrow: 1,
+      flexGrow: '1',
 
-      ...shorthands.borderColor(theme.colorNeutralStroke2),
+      ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
-  }),
+  },
 
   // Childless styles
   childless: {
@@ -75,52 +76,52 @@ const useBaseStyles = makeStyles({
   },
 
   // Appearance variations
-  brand: theme => ({
-    color: theme.colorBrandForeground1,
+  brand: {
+    color: tokens.colorBrandForeground1,
 
     ':before': {
-      ...shorthands.borderColor(theme.colorBrandStroke1),
+      ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
 
     ':after': {
-      ...shorthands.borderColor(theme.colorBrandStroke1),
+      ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
-  }),
-  subtle: theme => ({
+  },
+  subtle: {
     ':before': {
-      ...shorthands.borderColor(theme.colorNeutralStroke3),
+      ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
 
     ':after': {
-      ...shorthands.borderColor(theme.colorNeutralStroke3),
+      ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
-  }),
-  strong: theme => ({
+  },
+  strong: {
     ':before': {
-      ...shorthands.borderColor(theme.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
 
     ':after': {
-      ...shorthands.borderColor(theme.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
-  }),
+  },
 });
 
 const useHorizontalStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     width: '100%',
 
     ':before': {
       borderTopStyle: 'solid',
-      borderTopWidth: theme.strokeWidthThin,
+      borderTopWidth: tokens.strokeWidthThin,
     },
 
     ':after': {
       borderTopStyle: 'solid',
-      borderTopWidth: theme.strokeWidthThin,
+      borderTopWidth: tokens.strokeWidthThin,
     },
-  }),
+  },
 
   // Inset styles
   inset: {
@@ -162,20 +163,20 @@ const useHorizontalStyles = makeStyles({
 
 const useVerticalStyles = makeStyles({
   // Base styles
-  base: theme => ({
+  base: {
     flexDirection: 'column',
     minHeight: '20px',
 
     ':before': {
       borderRightStyle: 'solid',
-      borderRightWidth: theme.strokeWidthThin,
+      borderRightWidth: tokens.strokeWidthThin,
     },
 
     ':after': {
       borderRightStyle: 'solid',
-      borderRightWidth: theme.strokeWidthThin,
+      borderRightWidth: tokens.strokeWidthThin,
     },
-  }),
+  },
 
   // Inset styles
   inset: {
