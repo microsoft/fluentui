@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 15 Dec 2021 07:31:29 GMT",
+      "tag": "@fluentui/web-components_v2.1.3",
+      "version": "2.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bd40a6eca1aaa0702e7989087b01de32c9aa6c3d",
+            "comment": "fix: prevent disabled flipper from emitting event"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v26"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Dec 2021 07:30:35 GMT",
       "tag": "@fluentui/web-components_v2.1.2",
       "version": "2.1.2",
