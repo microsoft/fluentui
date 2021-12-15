@@ -7,9 +7,9 @@ export const spinButtonClassName = 'fui-SpinButton';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     // TODO Add default styles for the root element
-  }),
+  },
 
   // TODO add additional classes for different states and/or slots
 });
