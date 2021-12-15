@@ -46,10 +46,21 @@ export type SpinButtonChangeData = {
    * E.g., `"$1.00"`
    */
   formattedValue: string;
+
+  /**
+   * Previous value, before the change.
+   */
+  prevValue: number;
+
+  /**
+   * Previous formatted value, before the change.
+   */
+  prevFormattedValue: string;
 };
 
 export type SpinButtonFormatter = (value: number) => string;
 export type SpinButtonParser = (formattedValue: string) => number;
+export type SpinButtonKeyboardDirection = 'none' | 'up' | 'down';
 
 export type SpinButtonCommons = {
   /**

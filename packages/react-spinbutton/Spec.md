@@ -53,7 +53,7 @@ This specification recommends `SpinButton` as the name for this component. Given
 2. **max**: the maximum value value for the control
 3. **step**: the step size or amount the value is changed by one increment or decrement
 
-#### Typed Input
+#### Direct Input
 
 All `SpinButtons` surveyed can take input directly by typing into the control's input field. Many clamp this value in the range of `min`-`max` but, notably, the native HTML control does not. Rather, it allows values outside this range but puts the control into an invalid state. The [ARIA spec](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-18) allows for the native control behavior or for values to be restricted to only valid values as determined by users of the control.
 
@@ -82,8 +82,6 @@ The [WAI-ARIA spec for SpinButton](https://www.w3.org/TR/wai-aria-practices/#spi
 Fluent UI v8 (Fabric) ships a `SpinButton` control. This control supports directly typing values into the input field, stepping via step buttons, clamping values in a min-max range and suffixes on the displayed value. The control also supports variants like including an icon in the label, label positioning and styling overrides. `SpinButton` has RTL support and implements the correct ARIA attributes for proper accessibility support.
 
 One interesting aspect of `SpinButton` in v8 is that the `value` prop (the prop that dictacts the actual current value of the control) is a string but `min`, `max` and `step` are all numbers. This is in keeping with `<input type="number">` where the `value` attribute is also a string but it feels odd for a React component that works with numeric values to take in a string `value` prop.
-
-The choice to type `value` as string seems to complicate scenarios that involve custom formatting as `value` can either be a "raw value" (e.g., `1`, `2.2`, `100`) or a "formatted value" (e.g., "12 pt", "2.54cm"). [This is a Codepen example of how to apply a suffix in v8](https://codepen.io/seanms/pen/NWadoWj). Because the value is a string it must be parsed with user-supplied functions and internal `SpinButton` logic like clamping the value between `min` and `max` must be reimplemented by users.
 
 v8 supports an optional icon that appears before the label. None of the other v8 input controls support adding an icon next to the label as part of the component API so this feature will be omitted from this proposed API. This can be achieved by aligning an icon with the control or perhaps by updating the vNext `Label` component to support icons.
 
@@ -122,13 +120,13 @@ Props not directly related to `SpinButton` functionality omitted for brevity. [S
 
 ### [SpinButton in v0/Northstar](https://fluentsite.z22.web.core.windows.net/0.59.0/components/input/definition)
 
-Northstar lacks a dedicated `SpinButton` component, rather in has `Input` which takes a `type` prop that can be set to `"number"` making the component equivalent of [<input type="number">](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number).
+Northstar lacks a dedicated `SpinButton` component, rather in has `Input` which takes a `type` prop that can be set to `"number"` making the component equivalent of [input type="number"](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number).
 
-Given that Northstar is only providing the native web platform number input with custom styling applied it will not be considered further. In its place the native number input will be considered as it has behavior similar to `SpinButton`.
+Given that Northstar is only providing the native web platform number input without custom styling applied it will not be considered further. In its place the native number input will be considered as it has behavior similar to `SpinButton`.
 
-### [<input type="number">](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number)
+### [input type="number"](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number)
 
-This is a standard HTML control for entering numbers. It includes built-in validation to reject non-numeric values and _optionally_ provides stepper arrows to increment or decrement the value.
+This is a standard HTML control for entering numbers. It includes built-in validation to reject non-numeric values and optionally provides stepper arrows to increment or decrement the value.
 
 #### Element Attributes
 
@@ -143,7 +141,7 @@ This is not an exhaustive list of attributes for this element but a curated list
 
 Despite supporting both `min` and `max` attributes a native number input will allow users to enter values outside the specified bounds. This situation is resolved via a process called [constraint validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation) that adds CSS pseudo classes to the element for styling purposes and raises validation events.
 
-There are very few options for cross-browser styling of native number inputs. The [::-webkit-inner-spin-button](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-inner-spin-button) pseudo element allows for selecting the spin buttons of a number input but only supported by Webkit and Blink based browsers.
+There are very few options for cross-browser styling of native number inputs. The [::-webkit-inner-spin-button](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-inner-spin-button) pseudo element allows for selecting the spin buttons of a number input but is only supported by Webkit and Blink based browsers.
 
 Native number inputs are meant strictly for number input but what constitutes number input is inconsistent across browsers ([see this Bugzilla issue for details](https://bugzilla.mozilla.org/show_bug.cgi?id=1398528)). You can easily see this on [MDN's simple example](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#a_simple_number_input). In Edge 96 you can enter exponential numbers like "1e+343434" but not arbitrary strings like "cats". On the same example in Firefox 95 you can enter both "1e+343434" and "cats".
 
@@ -170,6 +168,8 @@ Inspecting a native number input with devtools shows that it implements the [spi
 type SpinButtonChangeData = {
   value: number; // The "raw value", e.g., 2
   formattedValue: string; // The "formatted value", e.g., "$2.00"
+  prevValue: number;
+  prevFormattedValue: string;
 };
 
 const [value, setValue] = useState<number>(2);
@@ -186,6 +186,8 @@ const onControlledExampleChange = (_event, data: SpinButtonChangeData) => {
 type SpinButtonChangeData = {
   value: number;
   formattedValue: string;
+  prevValue: number;
+  prevFormattedValue: string;
 };
 
 type SpinButtonFormatter = (value: number) => string;
@@ -247,7 +249,7 @@ const formatter = (value: number): string => {
   return `${$value.toFixed(2)}`;
 };
 
-<SpinButton label="Spin me right round" value={10} min={1} max={100} step={5} formatter={formatter} />;
+<SpinButton label="Example SpinButton" value={10} min={1} max={100} step={5} formatter={formatter} />;
 ```
 
 - _**Internal**_
@@ -265,10 +267,15 @@ const formatter = (value: number): string => {
 
 - _**DOM** - how the component will be rendered as HTML elements_
 
+Note that `aria-valuetext` is conditionally rendered. In this case it is rendered because formatting it applied in this example with the `formatter` prop in JSX.
+
 ```html
+<!-- root slot -->
 <div class="fui-SpinButton">
-  <label class="fui-SpinButton-label" id="unique-spinbutton-id">Spin me right round</label>
+  <!-- label slot -->
+  <label class="fui-SpinButton-label" id="unique-spinbutton-id">Example SpinButton</label>
   <div class="fui-SpinButton-wrapper">
+    <!-- input slot -->
     <input
       type="text"
       role="spinbutton"
@@ -280,7 +287,10 @@ const formatter = (value: number): string => {
       aria-valuetext="$10.00"
       aria-labeledby="unique-spinbutton-id"
     />
+    <!-- increment button slot -->
+    <!-- note we'll probably using icons rather than "+" and "-" inside the buttons -->
     <button tabindex="-1" type="button" class="fui-SpinButton-button fui-SpinButton-increment-button">+</button>
+    <!-- decrement button slot -->
     <button tabindex="-1" type="button" class="fui-SpinButton-button fui-SpinButton-decrement-button">-</button>
   </div>
 </div>
@@ -291,29 +301,73 @@ const formatter = (value: number): string => {
 _Describe what will need to be done to upgrade from the existing implementations:_
 
 - _Migration from v8_
+
+1. Ensure `value` prop is a number, not a string
+2. Replace `onIncrement` and `onDecrement` callbacks with `onChange`.
+   1. Increment/decrement logic can be handled by comparing `data.value` and `data.prevValue` in the `onChange` callback.
+3. Update `onChange` callback to handle new signature.
+4. Remove `onValidate` callback.
+5. Change ARIA props.
+   1. Change non-standard props to standard ones (e.g., `ariaLabel` to `aria-label`).
+   2. Remove `ariaPositionInSet`, `ariaSetSize`, `ariaValueNow`, `ariaValueText`. The first two are not relevant for a spinbutton and the latter two are internal implementation details managed by the component.
+
 - _Migration from v0_
+
+Not applicable as v0 does not implement this component or one like it.
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+`SpinButton`'s `value` prop is always a number, in contrast to the v8 implementation that gave `value` a string typez. `SpinButton`s manipulate numeric values and making `value` a number aligns it with the other related props: `min`, `max` and `step`. `SpinButton`'s `value` is always displayed as a string which is determined with the `formatter()` function. By default this function stringifies `value` but it can do more sophisticated formatting like apply currency formatting. The inverse of `formatter()` is `parser()` which takes the stringified display value and converts it back to a number. The default implementation calls `parseFloat()` on the display value. `parser()` is called when a user directly types a value into `SpinButton`'s `<input>` element so this value can be converted to a number for computation. If `parser()` returns a non-number value (e.g., `NaN`, `undefined`, `null`) `value` will not be changed.
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+`formatter()` and `parser()` allow users to hook into `SpinButton`'s display behavior without having to reimplement features like clamping `value` between `min` and `max` which is required when adding [custom suffixes in v8](https://codepen.io/seanms/pen/QWqpQWp).
+
+`SpinButton` does not allow values less than `min` or greater than `max` when these props are specified. When using the step buttons/arrow keys the value will not step outside the min/max bounds. If a value is typed into `<input>` that is outside the min/max range it will be clamped to the relevant bound, that is values less than `min` will be set to `min` and values greater than `max` will be set to `max`.
+
+Aside from min/max range clamping `SpinButton` does not currently implement any input validation.
+
+No error states are currently implemented.
+
+### Component States
+
+- Normal (no value or valid value, not focused)
+- Focused
+- Disabled
+- Error/Warning (value is invalid in some way). NB: error and validation are not currently supported.
+
+### Interaction
+
+#### Keyboard
+
+- Tab focuses the `<input>` element
+- Up arrow key increments the value by `step` until `max`, if specified.
+- Down arrow key decrements the value by `step` until `min`, if specified.
+- Home key sets the value to `min`, if specified.
+- End key sets the value to `max`, if specified.
+- Tab never focuses the increment or decrement buttons as their functionality is fully available via the keyboard
+
+#### Cursor
+
+- Clicking on the `<input>` focuses it.
+  - Input supports all device/platform mouse interactions (i.e., text selection)
+- Clicking the increment button increases the value by `step` until `max`, if specified.
+- Clicking the decrement button decreases the value by `step` until `min`, if specified.
+
+#### Touch
+
+Same as cursor.
+
+#### Screen Readers
+
+- `<input>` is focusable and editable using standard device/platform interactions.
+- increment and decrement buttons are both focusable and usable with standard device/platform interactions.
+- If formatting is applied to values `aria-valuetext` is applied to the `spinbutton` and read by the screen reader.
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+The converged `SpinButton` component will not use the native HTML spin button (`input type="number"`) as this control has inconsistent cross-browser behavior and lacks styling options. Rather ARIA will be applied to achieve an accessible component that behaves consistently on all support platforms with robust styling options.
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+Only the `<input>` element of `SpinButton` can be focused via the keyboard. The ARIA `spinbutton` design pattern calls for keyboard shortcuts (up/down arrow) to fulfill the value step functionality, making focus for the increment and decrement buttons redundant.
+
+- [ARIA design pattern: SpinButton](https://www.w3.org/TR/wai-aria-practices/#spinbutton)
+  - [Date Picker Example](https://www.w3.org/TR/wai-aria-practices/examples/spinbutton/datepicker-spinbuttons.html)
+  - [Toolbar (Font Picker) Example](https://www.w3.org/TR/wai-aria-practices/examples/toolbar/toolbar.html)
