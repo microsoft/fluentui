@@ -1,7 +1,6 @@
 import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import type { InputState } from './Input.types';
-import type { Theme } from '@fluentui/react-theme';
 
 export const inputClassName = 'fui-Input';
 
@@ -24,19 +23,19 @@ const motionCurves = {
 };
 const contentSizes = {
   // TODO(sharing) shouldn't these be in the theme?
-  body1: (theme: Theme) => ({
+  body1: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-  }),
-  caption1: (theme: Theme) => ({
+  },
+  caption1: {
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
-  }),
+  },
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  400: (theme: Theme) => ({
+  400: {
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
-  }),
+  },
 };
 // TODO(sharing) should these be shared somewhere?
 const fieldHeights = {
@@ -102,17 +101,17 @@ const useRootStyles = makeStyles({
   small: {
     minHeight: fieldHeights.small,
     ...shorthands.padding('0', horizontalSpacing.sNudge),
-    ...contentSizes.caption1(theme),
+    ...contentSizes.caption1,
   },
   medium: {
     minHeight: fieldHeights.medium,
     ...shorthands.padding('0', horizontalSpacing.mNudge),
-    ...contentSizes.body1(theme),
+    ...contentSizes.body1,
   },
   large: {
     minHeight: fieldHeights.large,
     ...shorthands.padding('0', horizontalSpacing.m),
-    ...contentSizes[400](theme),
+    ...contentSizes[400],
     ...shorthands.gap(horizontalSpacing.sNudge),
   },
   inline: {
@@ -187,13 +186,13 @@ const useInputElementStyles = makeStyles({
   },
   small: {
     // This is set on root but doesn't inherit
-    ...contentSizes.caption1(theme),
+    ...contentSizes.caption1,
   },
   medium: {
-    ...contentSizes.body1(theme),
+    ...contentSizes.body1,
   },
   large: {
-    ...contentSizes[400](theme),
+    ...contentSizes[400],
     ...shorthands.padding('0', horizontalSpacing.sNudge),
   },
   disabled: {
