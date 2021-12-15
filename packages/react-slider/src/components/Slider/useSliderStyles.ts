@@ -1,5 +1,6 @@
 import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { SliderState } from './Slider.types';
 
 export const sliderClassName = 'fui-Slider';
@@ -16,13 +17,13 @@ export const markLabelClassName = `${sliderClassName}-label`;
  * Styles for the root slot
  */
 export const useRootStyles = makeStyles({
-  root: theme => ({
+  root: {
     position: 'relative',
     display: 'inline-flex',
     userSelect: 'none',
     touchAction: 'none',
     verticalAlign: 'bottom',
-  }),
+  },
 
   small: {
     '--slider-thumb-size': '10px',
@@ -36,43 +37,43 @@ export const useRootStyles = makeStyles({
     '--slider-mark-size': '4px',
   },
 
-  horizontal: theme => ({
+  horizontal: {
     minWidth: '120px',
     minHeight: 'var(--slider-thumb-size)',
     flexDirection: 'column',
-  }),
+  },
 
-  vertical: theme => ({
+  vertical: {
     transform: 'scaleY(-1)',
     minWidth: 'var(--slider-thumb-size)',
     minHeight: '120px',
     flexDirection: 'row',
-  }),
+  },
 
-  enabled: theme => ({
+  enabled: {
     cursor: 'grab',
     ':hover': {
       [`& .${thumbClassName}`]: {
-        background: theme.colorBrandBackgroundHover,
+        background: tokens.colorBrandBackgroundHover,
       },
       [`& .${trackClassName}`]: {
-        background: theme.colorBrandBackgroundHover,
+        background: tokens.colorBrandBackgroundHover,
       },
     },
     ':active': {
       cursor: 'grabbing',
       [`& .${thumbClassName}`]: {
-        background: theme.colorBrandBackgroundPressed,
+        background: tokens.colorBrandBackgroundPressed,
       },
       [`& .${trackClassName}`]: {
-        background: theme.colorBrandBackgroundPressed,
+        background: tokens.colorBrandBackgroundPressed,
       },
     },
-  }),
+  },
 
-  disabled: theme => ({
+  disabled: {
     cursor: 'not-allowed',
-  }),
+  },
 
   focusIndicator: createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: '6px' } }),
 });
@@ -81,128 +82,128 @@ export const useRootStyles = makeStyles({
  * Styles for the slider wrapper slot
  */
 export const useSliderWrapper = makeStyles({
-  sliderWrapper: theme => ({
+  sliderWrapper: {
     position: 'absolute',
     ...shorthands.overflow('hidden'),
-  }),
+  },
 
-  horizontal: theme => ({
+  horizontal: {
     left: '0px',
     right: '0px',
     top: '0px',
     minHeight: 'var(--slider-thumb-size)',
-  }),
+  },
 
-  vertical: theme => ({
+  vertical: {
     top: '0px',
     bottom: '0px',
     left: '0px',
     minWidth: 'var(--slider-thumb-size)',
-  }),
+  },
 });
 
 /**
  * Styles for the rail slot
  */
 export const useRailStyles = makeStyles({
-  rail: theme => ({
+  rail: {
     position: 'absolute',
-    ...shorthands.borderRadius(theme.borderRadiusXLarge),
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     boxSizing: 'border-box',
     pointerEvents: 'none',
-  }),
+  },
 
-  enabled: theme => ({
-    backgroundColor: theme.colorNeutralStrokeAccessible,
-  }),
+  enabled: {
+    backgroundColor: tokens.colorNeutralStrokeAccessible,
+  },
 
-  disabled: theme => ({
-    backgroundColor: theme.colorNeutralBackgroundDisabled,
-    ...shorthands.border('1px', 'solid', theme.colorTransparentStrokeDisabled),
-  }),
+  disabled: {
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
+  },
 
-  horizontal: theme => ({
+  horizontal: {
     height: 'var(--slider-rail-size)',
     top: '50%',
     left: 'calc(var(--slider-thumb-size) * .5)',
     right: 'calc(var(--slider-thumb-size) * .5)',
     transform: 'translateY(-50%)',
-  }),
+  },
 
-  vertical: theme => ({
+  vertical: {
     width: 'var(--slider-rail-size)',
     left: '50%',
     top: 'calc(var(--slider-thumb-size) * .5)',
     bottom: 'calc(var(--slider-thumb-size) * .5)',
     transform: 'translateX(-50%)',
-  }),
+  },
 });
 
 /**
  * Styles for the trackWrapper slot
  */
 export const useTrackWrapperStyles = makeStyles({
-  trackWrapper: theme => ({
+  trackWrapper: {
     position: 'absolute',
-  }),
+  },
 
-  horizontal: theme => ({
+  horizontal: {
     top: '50%',
     left: 'calc(var(--slider-thumb-size) * .5)',
     right: 'calc(var(--slider-thumb-size) * .5)',
-  }),
+  },
 
-  vertical: theme => ({
+  vertical: {
     left: '50%',
     top: 'calc(var(--slider-thumb-size) * .5)',
     bottom: 'calc(var(--slider-thumb-size) * .5)',
-  }),
+  },
 });
 
 /**
  * Styles for the track slot
  */
 export const useTrackStyles = makeStyles({
-  track: theme => ({
+  track: {
     position: 'absolute',
-    ...shorthands.borderRadius(theme.borderRadiusXLarge),
-  }),
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
+  },
 
-  horizontal: theme => ({
+  horizontal: {
     height: 'var(--slider-rail-size)',
     top: '50%',
     transform: 'translateY(-50%)',
     minWidth: 'calc(var(--slider-thumb-size) / 4)',
-  }),
+  },
 
-  vertical: theme => ({
+  vertical: {
     width: 'var(--slider-rail-size)',
     left: '50%',
     transform: 'translateX(-50%)',
     minHeight: 'calc(var(--slider-thumb-size) / 4)',
-  }),
+  },
 
-  enabled: theme => ({
-    backgroundColor: theme.colorCompoundBrandBackground,
-  }),
+  enabled: {
+    backgroundColor: tokens.colorCompoundBrandBackground,
+  },
 
-  disabled: theme => ({
-    backgroundColor: theme.colorNeutralForegroundDisabled,
-  }),
+  disabled: {
+    backgroundColor: tokens.colorNeutralForegroundDisabled,
+  },
 });
 
 /**
  * Styles for the mark slot
  */
 export const useMarksWrapperStyles = makeStyles({
-  marksWrapper: theme => ({
+  marksWrapper: {
     position: 'relative',
     display: 'grid',
     outlineStyle: 'none',
     zIndex: 1,
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      backgroundColor: theme.colorNeutralBackground1,
+      backgroundColor: tokens.colorNeutralBackground1,
     },
 
     [`& .${markLabelClassName}`]: {
@@ -213,9 +214,9 @@ export const useMarksWrapperStyles = makeStyles({
     [`& .${firstMarkClassName}, .${lastMarkClassName}`]: {
       opacity: '0',
     },
-  }),
+  },
 
-  horizontal: theme => ({
+  horizontal: {
     marginTop: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
@@ -229,8 +230,8 @@ export const useMarksWrapperStyles = makeStyles({
     },
 
     [`& .${markLabelClassName}`]: {
-      fontFamily: theme.fontFamilyBase,
-      color: theme.colorNeutralForeground1,
+      fontFamily: tokens.fontFamilyBase,
+      color: tokens.colorNeutralForeground1,
       paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
@@ -238,9 +239,9 @@ export const useMarksWrapperStyles = makeStyles({
       height: '4px',
       width: '1px',
     },
-  }),
+  },
 
-  vertical: theme => ({
+  vertical: {
     marginTop: 'calc(var(--slider-thumb-size) / 2)',
     marginBottom: 'calc(var(--slider-thumb-size) / 2)',
     marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
@@ -264,43 +265,43 @@ export const useMarksWrapperStyles = makeStyles({
       height: '1px',
       width: 'var(--slider-mark-size)',
     },
-  }),
+  },
 
-  disabled: theme => ({
+  disabled: {
     [`& .${markLabelClassName}`]: {
-      color: theme.colorNeutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 });
 
 /**
  * Styles for the thumb slot
  */
 export const useThumbWrapperStyles = makeStyles({
-  thumbWrapper: theme => ({
+  thumbWrapper: {
     position: 'absolute',
     outlineStyle: 'none',
     zIndex: 2,
-  }),
+  },
 
-  horizontal: theme => ({
+  horizontal: {
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
     top: '50%',
-  }),
+  },
 
-  vertical: theme => ({
+  vertical: {
     top: 'calc(var(--slider-thumb-size) / 2)',
     bottom: 'calc(var(--slider-thumb-size) / 2)',
     left: '50%',
-  }),
+  },
 });
 
 /**
  * Styles for the thumb slot
  */
 export const useThumbStyles = makeStyles({
-  thumb: theme => ({
+  thumb: {
     position: 'absolute',
     width: 'var(--slider-thumb-size)',
     height: 'var(--slider-thumb-size)',
@@ -309,9 +310,9 @@ export const useThumbStyles = makeStyles({
     bottom: '0px',
     right: '0px',
     outlineStyle: 'none',
-    ...shorthands.borderRadius(theme.borderRadiusCircular),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
     boxSizing: 'border-box',
-    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${tokens.colorNeutralBackground1} inset`,
     transform: 'translate(-50%, -50%)',
 
     ':before': {
@@ -320,46 +321,46 @@ export const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      ...shorthands.borderRadius(theme.borderRadiusCircular),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       boxSizing: 'border-box',
       content: "''",
-      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', theme.colorNeutralStroke1),
+      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', tokens.colorNeutralStroke1),
     },
-  }),
+  },
 
-  enabled: theme => ({
-    backgroundColor: theme.colorCompoundBrandBackground,
-  }),
+  enabled: {
+    backgroundColor: tokens.colorCompoundBrandBackground,
+  },
 
-  disabled: theme => ({
-    backgroundColor: theme.colorNeutralForegroundDisabled,
+  disabled: {
+    backgroundColor: tokens.colorNeutralForegroundDisabled,
     ':before': {
-      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', theme.colorNeutralForegroundDisabled),
+      ...shorthands.border('calc(var(--slider-thumb-size) * .05)', 'solid', tokens.colorNeutralForegroundDisabled),
     },
-  }),
+  },
 
-  horizontal: theme => ({
+  horizontal: {
     top: '50%',
-  }),
+  },
 });
 
 /**
  * Styles for the activeRail slot
  */
 export const useActiveRailStyles = makeStyles({
-  activeRail: theme => ({
+  activeRail: {
     position: 'absolute',
-  }),
+  },
 
-  horizontal: theme => ({
+  horizontal: {
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
-  }),
+  },
 
-  vertical: theme => ({
+  vertical: {
     top: 'calc(var(--slider-thumb-size) / 2)',
     bottom: 'calc(var(--slider-thumb-size) / 2)',
-  }),
+  },
 });
 
 /**

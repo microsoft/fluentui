@@ -1,4 +1,5 @@
 import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import {
   thumbClassName,
   trackClassName,
@@ -12,7 +13,6 @@ import {
   useTrackStyles,
   useTrackWrapperStyles,
 } from '../Slider/useSliderStyles';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';
 
 export const rangedSliderClassName = 'fui-RangedSlider';
