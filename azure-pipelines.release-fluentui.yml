@@ -111,8 +111,8 @@ jobs:
 
             touch packages/fluentui/.npmrc
 
-            echo "@fluentui:registry=http://registry.npmjs.org/" > packages/fluentui/.npmrc
-            echo "registry=http://registry.npmjs.org/" >> packages/fluentui/.npmrc
+            echo "@fluentui:registry=https://registry.npmjs.org/" > packages/fluentui/.npmrc
+            echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
             yarn release:fluentui:$(version) --yes
