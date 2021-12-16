@@ -5,7 +5,7 @@ import * as tmp from 'tmp';
 import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 import * as fs from 'fs';
 
-(function () {
+function tagPackages() {
   const packagesToTag = getPackagesToTag();
   const { path: npmrcPath, cleanup: cleanupTmpFiles } = createTmpNpmrc();
 
@@ -14,7 +14,7 @@ import * as fs from 'fs';
   });
 
   cleanupTmpFiles();
-})();
+}
 
 function tagPackage(name: string, version: string, npmrcPath: string) {
   const prereleaseTag = semver.parse(version).prerelease[0];
@@ -64,4 +64,8 @@ function createTmpNpmrc() {
   };
 
   return { path: npmrc.name, cleanup };
+}
+
+if (require.main === module) {
+  tagPackages();
 }
