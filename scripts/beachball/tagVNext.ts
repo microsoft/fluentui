@@ -19,9 +19,8 @@ const packagesToTag = Object.values(packageInfos)
 
 packagesToTag.forEach(pkg => {
   const prereleaseTag = semver.parse(pkg.version).prerelease[0];
-  let command = `npm dist-tag add ${pkg.name}@${pkg.version} ${prereleaseTag}`;
+  const command = `npm dist-tag add ${pkg.name}@${pkg.version} ${prereleaseTag}`;
   console.log(command);
-  command = `${command} --//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}`;
   try {
     const res = execSync(command);
     console.log(res.toString());
