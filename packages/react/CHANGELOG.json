@@ -2,6 +2,124 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 16 Dec 2021 07:26:40 GMT",
+      "tag": "@fluentui/react_v8.48.0",
+      "version": "8.48.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dennisgeorge.mec@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "ea9138af414daa0116faa88df213afb173db2f55",
+            "comment": "ComboBox: Add callback to listen to raw text input"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/test-utilities to v8.2.0",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4"
+          }
+        ],
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f71032d515f2395d85e935f075f8dbfede670b05",
+            "comment": "Fix test issues"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:27 GMT",
+      "tag": "@fluentui/react_v8.47.3",
+      "version": "8.47.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "18d700bb8010105ffcebb27eaab0a31cefc498ae",
+            "comment": "Add aria-multiselectable to multiselect Combobox"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a00fc291f6ffac69ad73907e886ef2d14c48a110",
+            "comment": "Made checkmark opacity 0 for indeterminate"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.18",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.19",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.13",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.3.8",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.1.6",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.5.1",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.5",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.3.8",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.24",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/test-utilities to v8.1.0",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v25 + apply single version policy"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Dec 2021 07:30:02 GMT",
       "tag": "@fluentui/react_v8.47.2",
       "version": "8.47.2",

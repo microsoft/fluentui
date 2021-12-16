@@ -1,8 +1,7 @@
-/// <reference types="@fluentui/react-icons" />
 import * as React from 'react';
 import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { Input } from './Input';
-import { getNativeElementProps, useId } from '@fluentui/react-utilities';
+import { useId } from '@fluentui/react-utilities';
 import { InputProps } from './Input.types';
 import { ArgTypes } from '@storybook/react';
 import {
@@ -29,20 +28,10 @@ const icons = {
   dismiss: { small: Dismiss16Regular, medium: Dismiss20Regular, large: Dismiss24Regular },
 };
 
-export const InputExamples = (
-  args: Partial<InputProps> & React.InputHTMLAttributes<HTMLInputElement> & { storyFilledBackground: boolean },
-) => {
+export const InputExamples = (args: InputProps & { storyFilledBackground: boolean }) => {
   const styles = useStyles();
   const inputId1 = useId();
-  // pass native input props to the internal input element and custom props to the root
-  const { storyFilledBackground, ...rest } = args;
-  const inputProps = getNativeElementProps('input', rest, ['size']);
-  const props: Partial<InputProps> = { input: inputProps };
-  for (const prop of Object.keys(rest) as (keyof InputProps)[]) {
-    if (!(inputProps as Partial<InputProps>)[prop]) {
-      props[prop] = rest[prop];
-    }
-  }
+  const { storyFilledBackground, ...props } = args;
   const SearchIcon = icons.search[props.size!];
   const DismissIcon = icons.dismiss[props.size!];
 
@@ -90,8 +79,6 @@ const argTypes: ArgTypes = {
   },
   // this one is for the example
   storyFilledBackground: { defaultValue: false, control: { type: 'boolean' } },
-  // NOTE: these are not actually top-level props right now until RFC is resolved,
-  // so they get passed through in the example via the input slot
   placeholder: { defaultValue: 'placeholder', control: { type: 'text' } },
   value: { control: { type: 'text' } },
   disabled: { defaultValue: false, control: { type: 'boolean' } },
