@@ -4,15 +4,17 @@ import * as tmp from 'tmp';
 import * as fs from 'fs';
 import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 
+// Clean up created files/folders on exit, even after exceptions
+// (will not catch SIGINT on windows)
+tmp.setGracefulCleanup();
+
 function tagPackages() {
   const packagesToTag = getPackagesToTag();
-  const { path: npmrcPath, cleanup: cleanupTmpFiles } = createTmpNpmrc();
+  const npmrcPath = createTmpNpmrc();
 
   packagesToTag.forEach(pkg => {
     tagPackage(pkg.name, pkg.version, npmrcPath);
   });
-
-  cleanupTmpFiles();
 }
 
 function tagPackage(name: string, version: string, npmrcPath: string) {
@@ -25,7 +27,7 @@ function tagPackage(name: string, version: string, npmrcPath: string) {
   const command = `npm dist-tag add ${name}@${version} ${prereleaseTag} --userconfig ${npmrcPath} --registry https://registry.npmjs.org/`;
   console.log(command);
   try {
-    const res = execSync(command);
+    const res = execSync(command, { stdio: 'inherit' });
     console.log(res.toString());
   } catch (e) {
     console.error(`failed to tag ${name}@${version}`);
@@ -48,7 +50,7 @@ function getPackagesToTag() {
 }
 
 function createTmpNpmrc() {
-  const tmpDir = tmp.dirSync();
+  const tmpDir = tmp.dirSync({ unsafeCleanup: true });
 
   const npmrc = tmp.fileSync({
     name: '.npmrc',
@@ -57,12 +59,7 @@ function createTmpNpmrc() {
 
   fs.writeFileSync(npmrc.name, '//registry.npmjs.org/:_authToken=${NPM_TOKEN}');
 
-  const cleanup = () => {
-    npmrc.removeCallback();
-    tmpDir.removeCallback();
-  };
-
-  return { path: npmrc.name, cleanup };
+  return npmrc.name;
 }
 
 if (require.main === module && process.env.RELEASE_VNEXT) {
