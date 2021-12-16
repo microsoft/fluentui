@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 15 Dec 2021 07:31:27 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Dec 2021 07:26:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.48.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.48.0)
+
+Thu, 16 Dec 2021 07:26:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.3..@fluentui/react_v8.48.0)
+
+### Minor changes
+
+- ComboBox: Add callback to listen to raw text input ([PR #21069](https://github.com/microsoft/fluentui/pull/21069) by dennisgeorge.mec@gmail.com)
+- Bump @fluentui/test-utilities to v8.2.0 ([PR #21011](https://github.com/microsoft/fluentui/pull/21011) by beachball)
 
 ## [8.47.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.3)
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.47.3",
+  "version": "8.48.0",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
     "@fluentui/jest-serializer-merge-styles": "^8.0.13",
     "@fluentui/react-conformance": "*",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/test-utilities": "^8.1.0",
+    "@fluentui/test-utilities": "^8.2.0",
     "@fluentui/webpack-utilities": "^8.1.6",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "ComboBox: Add callback to listen to raw text input",
-  "packageName": "@fluentui/react",
-  "email": "dennisgeorge.mec@gmail.com",
-  "dependentChangeType": "patch"
-}
