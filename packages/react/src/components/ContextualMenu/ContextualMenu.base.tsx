@@ -31,7 +31,7 @@ import {
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useAsync, useWarnings, useId } from '@fluentui/react-hooks';
+import { useTarget, usePrevious, useAsync, useWarnings, useId, Target } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { MenuContext } from '../../utilities/MenuContext/index';
 import type {
@@ -62,8 +62,36 @@ const DEFAULT_PROPS: Partial<IContextualMenuProps> = {
   beakWidth: 16,
 };
 
-export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined {
-  return item.subMenuProps ? item.subMenuProps.items : item.items;
+export function getSubmenuItems(
+  item: IContextualMenuItem,
+  options?: {
+    target?: Target;
+  },
+): IContextualMenuItem[] | undefined {
+  const target = options?.target;
+
+  // eslint-disable-next-line deprecation/deprecation
+  const items = item.subMenuProps ? item.subMenuProps.items : item.items;
+
+  if (items) {
+    const overrideItems: typeof items = [];
+
+    for (const subItem of items) {
+      if (subItem.preferMenuTargetAsEventTarget) {
+        // For sub-items which need an overridden target, intercept `onClick`
+        const { onClick, ...contextItem } = subItem;
+
+        overrideItems.push({
+          ...contextItem,
+          onClick: getOnClickWithOverrideTarget(onClick, target),
+        });
+      } else {
+        overrideItems.push(subItem);
+      }
+    }
+
+    return overrideItems;
+  }
 }
 
 /**
@@ -123,7 +151,10 @@ function useVisibility(props: IContextualMenuProps, targetWindow: Window | undef
   React.useEffect(() => () => onMenuClosedRef.current?.(propsRef.current), []);
 }
 
-function useSubMenuState({ hidden, items, theme, className, id }: IContextualMenuProps, dismiss: () => void) {
+function useSubMenuState(
+  { hidden, items, theme, className, id, target: menuTarget }: IContextualMenuProps,
+  dismiss: () => void,
+) {
   const [expandedMenuItemKey, setExpandedMenuItemKey] = React.useState<string>();
   const [submenuTarget, setSubmenuTarget] = React.useState<HTMLElement>();
   /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
@@ -180,6 +211,12 @@ function useSubMenuState({ hidden, items, theme, className, id }: IContextualMen
 
       if (item.subMenuProps) {
         assign(submenuProps, item.subMenuProps);
+      }
+
+      if (item.preferMenuTargetAsEventTarget) {
+        const { onItemClick } = item;
+
+        submenuProps.onItemClick = getOnClickWithOverrideTarget(onItemClick, menuTarget);
       }
     }
     return submenuProps;
@@ -469,6 +506,8 @@ function useMouseHandlers(
   onSubMenuDismiss: (ev?: any, dismissAll?: boolean) => void,
   dismiss: (ev?: any, dismissAll?: boolean) => void,
 ) {
+  const { target: menuTarget } = props;
+
   const onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
     if (shouldIgnoreMouseEvent()) {
       return;
@@ -621,6 +660,10 @@ function useMouseHandlers(
   ): void => {
     if (item.disabled || item.isDisabled) {
       return;
+    }
+
+    if (item.preferMenuTargetAsEventTarget) {
+      overrideTarget(ev, menuTarget);
     }
 
     let shouldDismiss = false;
@@ -1287,6 +1330,42 @@ function findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): ICon
       }
     } else if (item.key && item.key === key) {
       return item;
+    }
+  }
+}
+
+function getOnClickWithOverrideTarget(
+  onClick:
+    | ((
+        ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined,
+        item?: IContextualMenuItem | undefined,
+      ) => boolean | void)
+    | undefined,
+  target: Target | undefined,
+) {
+  return onClick
+    ? (
+        ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined,
+        item?: IContextualMenuItem | undefined,
+      ) => {
+        overrideTarget(ev, target);
+
+        return onClick(ev, item);
+      }
+    : onClick;
+}
+
+function overrideTarget(
+  ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined,
+  target?: Target,
+): void {
+  if (ev && target) {
+    ev.persist();
+
+    if (target instanceof Event) {
+      ev.target = target.target as HTMLElement;
+    } else if (target instanceof Element) {
+      ev.target = target;
     }
   }
 }

@@ -350,7 +350,7 @@ import { styled } from '@fluentui/utilities';
 import { StyleFunction } from '@fluentui/utilities';
 import { Stylesheet } from '@fluentui/style-utilities';
 import { tableProperties } from '@fluentui/utilities';
-import type { Target } from '@fluentui/react-hooks';
+import { Target } from '@fluentui/react-hooks';
 import { tdProperties } from '@fluentui/utilities';
 import { textAreaProperties } from '@fluentui/utilities';
 import { Theme } from '@fluentui/theme';
@@ -1813,7 +1813,9 @@ export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean
 export { getStartDateOfWeek }
 
 // @public (undocumented)
-export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
+export function getSubmenuItems(item: IContextualMenuItem, options?: {
+    target?: Target;
+}): IContextualMenuItem[] | undefined;
 
 export { getTheme }
 
@@ -3731,6 +3733,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     isButtonAriaHidden?: boolean;
     multiSelectDelimiter?: string;
     onChange?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+    onInputValueChange?: (text: string) => void;
     onItemClick?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
     onMenuDismissed?: () => void;
@@ -3915,6 +3918,8 @@ export interface IContextualMenuItem {
     // @deprecated (undocumented)
     inactive?: boolean;
     itemProps?: Partial<IContextualMenuItemProps>;
+    // @deprecated (undocumented)
+    items?: IContextualMenuItem[];
     // (undocumented)
     itemType?: ContextualMenuItemType;
     key: string;
@@ -3926,6 +3931,7 @@ export interface IContextualMenuItem {
     onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React_2.ReactNode;
     onRenderContent?: (props: IContextualMenuItemProps, defaultRenders: IContextualMenuItemRenderFunctions) => React_2.ReactNode;
     onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
+    preferMenuTargetAsEventTarget?: boolean;
     primaryDisabled?: boolean;
     rel?: string;
     role?: string;

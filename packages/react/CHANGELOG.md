@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 08 Dec 2021 07:28:19 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Dec 2021 07:26:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.48.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.48.0)
+
+Thu, 16 Dec 2021 07:26:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.3..@fluentui/react_v8.48.0)
+
+### Minor changes
+
+- ComboBox: Add callback to listen to raw text input ([PR #21069](https://github.com/microsoft/fluentui/pull/21069) by dennisgeorge.mec@gmail.com)
+- Bump @fluentui/test-utilities to v8.2.0 ([PR #21011](https://github.com/microsoft/fluentui/pull/21011) by beachball)
+
+## [8.47.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.3)
+
+Wed, 15 Dec 2021 07:31:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.2..@fluentui/react_v8.47.3)
+
+### Patches
+
+- Add aria-multiselectable to multiselect Combobox ([PR #21024](https://github.com/microsoft/fluentui/pull/21024) by sarah.higley@microsoft.com)
+- Made checkmark opacity 0 for indeterminate ([PR #21005](https://github.com/microsoft/fluentui/pull/21005) by gcox@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.18 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.1.19 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/react-focus to v8.3.13 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/react-hooks to v8.3.8 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/react-window-provider to v2.1.6 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/style-utilities to v8.5.1 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/theme to v2.4.5 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/utilities to v8.3.8 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/common-styles to v1.0.24 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+- Bump @fluentui/test-utilities to v8.1.0 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+
+## [8.47.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.2)
+
+Tue, 14 Dec 2021 07:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.1..@fluentui/react_v8.47.2)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.3.12 ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by beachball)
+
+## [8.47.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.1)
+
+Fri, 10 Dec 2021 07:30:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.47.0..@fluentui/react_v8.47.1)
+
+### Patches
+
+- Fix minor issues with promise handling ([PR #20909](https://github.com/microsoft/fluentui/pull/20909) by elcraig@microsoft.com)
+- Bump @fluentui/react-focus to v8.3.11 ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by beachball)
+
+## [8.47.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.47.0)
+
+Thu, 09 Dec 2021 07:27:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.46.3..@fluentui/react_v8.47.0)
+
+### Minor changes
+
+- Support ability to prefer the menu target as an item's click event target ([PR #20161](https://github.com/microsoft/fluentui/pull/20161) by tmichon@microsoft.com)
 
 ## [8.46.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.46.3)
 

@@ -10,6 +10,11 @@ export interface VersionBumpGeneratorSchema {
   all?: boolean;
 
   /**
+   * Comma-delimited list of packages that should not be bumped when using the `--all` flag
+   */
+  exclude?: string;
+
+  /**
    * Prerelease tag e.g. alpha
    */
   prereleaseTag: string;
