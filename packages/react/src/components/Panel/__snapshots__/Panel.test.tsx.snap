@@ -185,12 +185,13 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
                 className=
                     ms-Panel-commands
                     {
-                      padding-top: 18px;
+                      margin-top: 18px;
                     }
                     @media (min-height: 480px){& {
                       background-color: #ffffff;
                       position: sticky;
                       top: 0px;
+                      z-index: 1;
                     }
                 data-is-visible={true}
               >
@@ -585,12 +586,13 @@ exports[`Panel renders Panel correctly 1`] = `
                 className=
                     ms-Panel-commands
                     {
-                      padding-top: 18px;
+                      margin-top: 18px;
                     }
                     @media (min-height: 480px){& {
                       background-color: #ffffff;
                       position: sticky;
                       top: 0px;
+                      z-index: 1;
                     }
                 data-is-visible={true}
               >

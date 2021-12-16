@@ -7,3 +7,11 @@ export const Shape = (props: Partial<AvatarProps>) => (
     <Avatar {...props} shape="square" />
   </>
 );
+
+Shape.parameters = {
+  docs: {
+    description: {
+      story: 'An avatar can be circular or square. The default shape is circular.',
+    },
+  },
+};

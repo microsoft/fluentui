@@ -224,7 +224,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         aria-selected={isSelected}
         {...getNativeProps(divProps, divProperties)}
         aria-labelledby={ariaLabel ? this._labelId : this._nameId}
-        aria-describedby={ariaLabelWithSelectState ? this._descriptionId : this._activityId}
+        aria-describedby={ariaLabelWithSelectState || descriptionAriaLabel ? this._descriptionId : this._activityId}
         aria-disabled={disabled || undefined}
         className={css('ms-Tile', className, TileStyles.tile, {
           [`ms-Tile--isSmall ${TileStyles.isSmall}`]: tileSize === 'small',
@@ -251,11 +251,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       >
         {link}
         {descriptionAriaLabel ? (
-          <span
-            key="description"
-            id={this._descriptionId}
-            className={css('ms-Tile-description', TileStylesModule.description)}
-          >
+          <span key="description" role="presentation" hidden={true} id={this._descriptionId}>
             {descriptionAriaLabel}
           </span>
         ) : null}

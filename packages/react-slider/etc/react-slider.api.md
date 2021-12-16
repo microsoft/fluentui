@@ -10,11 +10,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
-// @public (undocumented)
-export const lowerThumbClassName: string;
-
 // @public
 export const RangedSlider: ForwardRefComponent<RangedSliderProps>;
+
+// @public (undocumented)
+export const rangedSliderClassName = "fui-RangedSlider";
 
 // @public (undocumented)
 export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
@@ -51,6 +51,9 @@ export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
+
+// @public (undocumented)
+export const sliderClassName = "fui-Slider";
 
 // @public (undocumented)
 export type SliderCommons = {
@@ -97,9 +100,6 @@ export type SliderSlots = {
 
 // @public (undocumented)
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
-
-// @public (undocumented)
-export const upperThumbClassName: string;
 
 // @public
 export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;

@@ -1,5 +1,7 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import type { BadgeState } from './Badge.types';
+
+export const badgeClassName = 'fui-Badge';
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -8,11 +10,11 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: theme.colorBrandBackground,
-    borderColor: theme.colorBrandBackground,
+    ...shorthands.borderColor(theme.colorBrandBackground),
     color: theme.colorNeutralForegroundOnBrand,
     fontWeight: theme.fontWeightSemibold,
-    borderWidth: theme.strokeWidthThin,
-    borderStyle: 'solid',
+    ...shorthands.borderWidth(theme.strokeWidthThin),
+    ...shorthands.borderStyle('solid'),
     fontFamily: theme.fontFamilyBase,
     position: 'relative',
   }),
@@ -29,67 +31,69 @@ const useStyles = makeStyles({
   rootSmall: {
     minWidth: '16px',
     height: '16px',
-    paddingRight: '6px',
-    paddingLeft: '6px',
-    gap: '4px',
+    ...shorthands.padding('2px'),
+    ...shorthands.gap('4px'),
     fontSize: '8px',
   },
   rootMedium: {
     height: '20px',
     minWidth: '20px',
-    gap: '4px',
-    paddingRight: '8px',
-    paddingLeft: '8px',
+    ...shorthands.gap('4px'),
+    ...shorthands.padding('4px'),
     fontSize: '10px',
   },
   rootLarge: {
     minWidth: '24px',
     height: '24px',
-    paddingRight: '8px',
-    paddingLeft: '8px',
+    ...shorthands.padding('4px'),
     fontSize: '12px',
-    gap: '6px',
+    ...shorthands.gap('4px'),
   },
   rootExtraLarge: theme => ({
     minWidth: '32px',
     height: '32px',
-    paddingRight: '12px',
-    paddingLeft: '12px',
-    gap: '6px',
+    ...shorthands.padding('6px'),
+    ...shorthands.gap('6px'),
     fontSize: '12px',
-    borderWidth: theme.strokeWidthThick,
+    ...shorthands.borderWidth(theme.strokeWidthThick),
   }),
-  rootRounded: theme => ({ borderRadius: theme.borderRadiusMedium }),
-  rootRoundedSmallToTiny: theme => ({ borderRadius: theme.borderRadiusSmall }),
-  rootCircular: { borderRadius: '99px' },
+  rootRounded: theme => ({
+    ...shorthands.borderRadius(theme.borderRadiusMedium),
+  }),
+  rootRoundedSmallToTiny: theme => ({
+    ...shorthands.borderRadius(theme.borderRadiusSmall),
+  }),
+  rootCircular: {
+    ...shorthands.borderRadius('99px'),
+  },
   rootGhost: theme => ({
-    background: 'transparent',
-    border: 'none',
+    backgroundColor: 'transparent',
+    ...shorthands.borderStyle('none'),
     color: theme.colorBrandBackground,
   }),
   rootOutline: theme => ({
-    background: 'transparent',
-    borderColor: theme.colorBrandBackground,
+    backgroundColor: 'transparent',
+    ...shorthands.borderColor(theme.colorBrandBackground),
     color: theme.colorBrandBackground,
   }),
   rootTint: theme => ({
     backgroundColor: theme.colorBrandBackground2,
     color: theme.colorBrandForeground2,
-    borderColor: 'none',
+    ...shorthands.borderColor(theme.colorBrandStroke2),
   }),
   rootFilledDanger: theme => ({
     backgroundColor: theme.colorPaletteRedBackground3,
     color: theme.colorNeutralForegroundOnBrand,
-    borderColor: theme.colorPaletteRedBackground3,
+    ...shorthands.borderColor(theme.colorPaletteRedBackground3),
   }),
   rootOutlineDanger: theme => ({
     color: theme.colorPaletteRedForeground3,
-    borderColor: theme.colorPaletteRedForeground3,
+    ...shorthands.borderColor(theme.colorPaletteRedForeground3),
   }),
   rootTintDanger: theme => ({
     backgroundColor: theme.colorPaletteRedBackground1,
     color: theme.colorPaletteRedForeground1,
-    borderColor: theme.colorPaletteRedForeground2,
+    ...shorthands.borderColor(theme.colorPaletteRedBorder1),
   }),
   rootGhostDanger: theme => ({
     color: theme.colorPaletteRedForeground3,
@@ -97,16 +101,16 @@ const useStyles = makeStyles({
   rootFilledSevere: theme => ({
     backgroundColor: theme.colorPaletteDarkOrangeBackground3,
     color: theme.colorNeutralForegroundOnBrand,
-    borderColor: 'none',
+    ...shorthands.borderColor(theme.colorTransparentStroke),
   }),
   rootOutlineSevere: theme => ({
     color: theme.colorPaletteDarkOrangeForeground3,
-    borderColor: theme.colorPaletteDarkOrangeForeground3,
+    ...shorthands.borderColor(theme.colorPaletteDarkOrangeForeground3),
   }),
   rootTintSevere: theme => ({
     backgroundColor: theme.colorPaletteDarkOrangeBackground1,
     color: theme.colorPaletteDarkOrangeForeground1,
-    borderColor: theme.colorPaletteDarkOrangeForeground2,
+    ...shorthands.borderColor(theme.colorPaletteDarkOrangeForeground2),
   }),
   rootGhostSevere: theme => ({
     color: theme.colorPaletteDarkOrangeForeground3,
@@ -114,16 +118,16 @@ const useStyles = makeStyles({
   rootFilledWarning: theme => ({
     backgroundColor: theme.colorPaletteYellowBackground3,
     color: theme.colorNeutralForeground1,
-    borderColor: theme.colorPaletteYellowBackground3,
+    ...shorthands.borderColor(theme.colorPaletteYellowBackground3),
   }),
   rootOutlineWarning: theme => ({
     color: theme.colorPaletteYellowForeground2,
-    borderColor: theme.colorPaletteYellowForeground2,
+    ...shorthands.borderColor(theme.colorPaletteYellowForeground2),
   }),
   rootTintWarning: theme => ({
     backgroundColor: theme.colorPaletteYellowBackground1,
     color: theme.colorPaletteYellowForeground2,
-    borderColor: theme.colorPaletteYellowBackground2,
+    ...shorthands.borderColor(theme.colorPaletteYellowBackground2),
   }),
   rootGhostWarning: theme => ({
     color: theme.colorPaletteYellowForeground2,
@@ -131,16 +135,16 @@ const useStyles = makeStyles({
   rootFilledSuccess: theme => ({
     backgroundColor: theme.colorPaletteGreenBackground3,
     color: theme.colorNeutralForegroundOnBrand,
-    borderColor: 'none',
+    ...shorthands.borderColor(theme.colorTransparentStroke),
   }),
   rootOutlineSuccess: theme => ({
     color: theme.colorPaletteGreenForeground2,
-    borderColor: theme.colorPaletteGreenForeground2,
+    ...shorthands.borderColor(theme.colorPaletteGreenForeground2),
   }),
   rootTintSuccess: theme => ({
     backgroundColor: theme.colorPaletteGreenBackground1,
     color: theme.colorPaletteGreenForeground1,
-    borderColor: theme.colorPaletteGreenBackground2,
+    ...shorthands.borderColor(theme.colorPaletteGreenBackground2),
   }),
   rootGhostSuccess: theme => ({
     color: theme.colorPaletteGreenForeground3,
@@ -148,16 +152,16 @@ const useStyles = makeStyles({
   rootFilledImportant: theme => ({
     backgroundColor: theme.colorNeutralForeground1,
     color: theme.colorNeutralBackground1,
-    borderColor: theme.colorTransparentStroke,
+    ...shorthands.borderColor(theme.colorTransparentStroke),
   }),
   rootOutlineImportant: theme => ({
-    color: theme.colorNeutralForeground1,
-    borderColor: theme.colorNeutralForeground1,
+    color: theme.colorNeutralForeground3,
+    ...shorthands.borderColor(theme.colorNeutralStrokeAccessible),
   }),
   rootTintImportant: theme => ({
     backgroundColor: theme.colorNeutralForeground3,
     color: theme.colorNeutralBackground1,
-    borderColor: theme.colorTransparentStroke,
+    ...shorthands.borderColor(theme.colorTransparentStroke),
   }),
   rootGhostImportant: theme => ({
     color: theme.colorNeutralForeground1,
@@ -165,37 +169,36 @@ const useStyles = makeStyles({
   rootFilledInformative: theme => ({
     backgroundColor: theme.colorNeutralBackground5,
     color: theme.colorNeutralForeground3,
-    borderColor: theme.colorTransparentStroke,
+    ...shorthands.borderColor(theme.colorTransparentStroke),
   }),
   rootOutlineInformative: theme => ({
-    backgroundColor: theme.colorPaletteDarkOrangeBackground3,
-    color: theme.colorNeutralBackground5,
-    borderColor: theme.colorNeutralBackground5,
+    color: theme.colorNeutralForeground3,
+    ...shorthands.borderColor(theme.colorNeutralStroke2),
   }),
   rootTintInformative: theme => ({
     backgroundColor: theme.colorNeutralBackground4,
     color: theme.colorNeutralForeground3,
-    borderColor: theme.colorNeutralStroke2,
+    ...shorthands.borderColor(theme.colorNeutralStroke2),
   }),
   rootGhostInformative: theme => ({
-    color: theme.colorNeutralBackground5,
+    color: theme.colorNeutralForeground3,
   }),
   rootFilledSubtle: theme => ({
     backgroundColor: theme.colorNeutralBackground1,
     color: theme.colorNeutralForeground1,
-    borderColor: theme.colorTransparentStroke,
+    ...shorthands.borderColor(theme.colorTransparentStroke),
   }),
   rootOutlineSubtle: theme => ({
-    color: theme.colorNeutralForegroundOnBrand,
-    borderColor: theme.colorNeutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundInverted,
+    ...shorthands.borderColor(theme.colorNeutralForegroundInverted),
   }),
   rootTintSubtle: theme => ({
     backgroundColor: theme.colorNeutralBackground1,
     color: theme.colorNeutralForeground3,
-    borderColor: theme.colorNeutralStroke2,
+    ...shorthands.borderColor(theme.colorNeutralStroke2),
   }),
   rootGhostSubtle: theme => ({
-    color: theme.colorNeutralForegroundOnBrand,
+    color: theme.colorNeutralForegroundInverted,
   }),
   icon: {
     display: 'flex',
@@ -223,6 +226,7 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
   const isSubtle = state.color === 'subtle';
 
   state.root.className = mergeClasses(
+    badgeClassName,
     styles.root,
     state.size === 'tiny' && styles.rootTiny,
     state.size === 'extra-small' && styles.rootExtraSmall,

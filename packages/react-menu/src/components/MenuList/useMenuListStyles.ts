@@ -1,11 +1,13 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 import type { MenuListState } from './MenuList.types';
+
+export const menuListClassName = 'fui-MenuList';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '2px',
+    ...shorthands.gap('2px'),
   },
 });
 
@@ -14,6 +16,6 @@ const useStyles = makeStyles({
  */
 export const useMenuListStyles = (state: MenuListState): MenuListState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(menuListClassName, styles.root, state.root.className);
   return state;
 };

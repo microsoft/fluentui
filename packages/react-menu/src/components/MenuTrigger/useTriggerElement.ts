@@ -81,10 +81,6 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
       focusFirst();
     }
 
-    if (open && key === ArrowDown && !isSubmenu) {
-      focusFirst();
-    }
-
     child?.props?.onKeyDown?.(e);
   });
 
@@ -116,7 +112,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
 
   const disabled = child?.props?.disabled;
   const triggerProps: MenuTriggerChildProps = {
-    'aria-haspopup': true,
+    'aria-haspopup': 'menu',
     'aria-expanded': open,
     id: child?.props?.id || triggerId,
 
@@ -139,6 +135,10 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
           onMouseMove: noop,
         }),
   };
+
+  if (!open && !isSubmenu) {
+    triggerProps['aria-expanded'] = undefined;
+  }
 
   state.children = applyTriggerPropsToChildren(state.children, {
     ...triggerProps,

@@ -5,7 +5,7 @@ export var makeButtonTokens = (theme: Theme) => {
   return {
     primary: {
       hovered: {
-        background: theme.colorBrandBackgroundHover,
+        backgroundColor: theme.colorBrandBackgroundHover,
       },
     },
   };
@@ -17,7 +17,7 @@ export var useStyles = makeStyles({
     var buttonTokens = makeButtonTokens(theme);
     return {
       color: 'red',
-      background: (_a = buttonTokens.primary.hovered) === null || _a === void 0 ? void 0 : _a.background,
+      backgroundColor: (_a = buttonTokens.primary.hovered) === null || _a === void 0 ? void 0 : _a.backgroundColor,
     };
   },
 });

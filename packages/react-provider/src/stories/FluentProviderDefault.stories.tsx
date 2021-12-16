@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
-import { webLightTheme, teamsLightTheme, teamsDarkTheme } from '@fluentui/react-theme';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Button } from '@fluentui/react-button';
+import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { webLightTheme, teamsLightTheme, teamsDarkTheme } from '@fluentui/react-theme';
+
 import { FluentProvider } from '../FluentProvider';
 
 const useStyles = makeStyles({
@@ -11,17 +10,17 @@ const useStyles = makeStyles({
     marginTop: '5px',
   },
   provider: {
-    border: '1px',
-    borderRadius: '5px',
-    padding: '5px',
+    ...shorthands.border('1px'),
+    ...shorthands.borderRadius('5px'),
+    ...shorthands.padding('5px'),
   },
   text: theme => ({
     backgroundColor: theme.colorBrandBackground2,
     color: theme.colorBrandForeground2,
     fontSize: '20px',
-    border: '1px',
-    borderRadius: '5px',
-    padding: '5px',
+    ...shorthands.border('1px'),
+    ...shorthands.borderRadius('5px'),
+    ...shorthands.padding('5px'),
   }),
 });
 

@@ -195,6 +195,14 @@ if (__PROD__) {
   if (__PERF__) {
     webpackConfig.optimization.minimizer = [];
   }
+
+  if (process.env.NIGHTLYRELEASEDATE) {
+    webpackConfig.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.NIGHTLYRELEASEDATE': JSON.stringify(process.env.NIGHTLYRELEASEDATE),
+      }),
+    );
+  }
 }
 
 if (process.env.ANALYZE) {

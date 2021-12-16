@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
-import { Divider } from '../Divider'; // codesandbox-dependency: @fluentui/react-divider ^9.0.0-beta
+import { shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { Divider } from '../Divider';
 
 const useStyles = makeStyles({
   root: {
@@ -8,19 +8,19 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     rowGap: '5px',
   },
-  example: {
+  example: theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyItems: 'center',
-    background: 'white',
-    height: '96px',
-  },
+    minHeight: '96px',
+    backgroundColor: theme.colorNeutralBackground1,
+  }),
   customHeightExample: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    background: 'white',
+    backgroundColor: 'white',
     minHeight: '192px',
   },
   customWidth: {
@@ -35,14 +35,14 @@ const useStyles = makeStyles({
   },
   customLineColor: {
     ':before': {
-      borderColor: '#FF00FF',
+      ...shorthands.borderColor('#FF00FF'),
     },
     ':after': {
-      borderColor: '#FF00FF',
+      ...shorthands.borderColor('#FF00FF'),
     },
   },
   customLineStyle: {
-    borderWidth: '2px',
+    ...shorthands.borderWidth('2px'),
     ':before': {
       borderTopStyle: 'dashed',
       borderTopWidth: '2px',

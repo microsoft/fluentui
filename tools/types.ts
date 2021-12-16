@@ -45,21 +45,6 @@ export interface PackageJson {
  * type Test = RemoveRecordIndexSignature<MapWithIndexType>
  * ```
  */
-export type RemoveRecordIndexSignature<T extends Record<string, unknown>> = Pick<T, KnownKeys<T>>;
-
-/**
- * Get proper known keys from object which contains index type `[key:string]: any`
- *
- * @example
- *
- * ```ts
- * type MapWithIndexType = { one: number; two: string; [k: string]: any; }
- * // $ExpectType 'one' | 'two'
- * type Test = KnownKeys<MapWithIndexType>
- * ```
- */
-export type KnownKeys<T> = {
-  [K in keyof T]: string extends K ? never : number extends K ? never : K;
-} extends { [_ in keyof T]: infer U }
-  ? U
-  : never;
+export type RemoveRecordIndexSignature<T extends Record<string, unknown>> = {
+  [K in keyof T as {} extends Record<K, 1> ? never : K]: T[K];
+};

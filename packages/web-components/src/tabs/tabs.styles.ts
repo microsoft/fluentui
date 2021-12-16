@@ -81,6 +81,7 @@ export const tabsStyles: (
         position: relative;
         width: max-content;
         justify-self: end;
+        align-self: flex-start;
         width: 100%;
       }
 

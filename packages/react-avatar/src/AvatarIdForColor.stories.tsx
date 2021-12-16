@@ -17,12 +17,11 @@ export const IdForColor = (props: Partial<AvatarProps>) => (
   </>
 );
 
-IdForColor.storyName = 'IdForColor';
+IdForColor.storyName = 'Color: by ID';
 IdForColor.parameters = {
   docs: {
     description: {
-      name: 'idForColor',
-      story: 'A colorful Avatar can generate stable colors from an id',
+      story: 'An avatar can generate stable colors from an ID.',
     },
   },
 };

@@ -760,6 +760,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return;
     }
 
+    if (this.props.onInputValueChange) {
+      this.props.onInputValueChange(updatedValue);
+    }
+
     this.props.allowFreeform
       ? this._processInputChangeWithFreeform(updatedValue)
       : this._processInputChangeWithoutFreeform(updatedValue);
@@ -1080,12 +1084,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // If it is then resolve it asynchronously.
       if (Array.isArray(newOptions)) {
         this.props.hoisted.setCurrentOptions(newOptions);
-      } else if (newOptions && newOptions.then) {
+      } else if (newOptions && (newOptions as PromiseLike<IComboBoxOption[]>).then) {
         // Ensure that the promise will only use the callback if it was the most recent one
         // and update the state when the promise returns
-        const promise: PromiseLike<IComboBoxOption[]> = (this._currentPromise = newOptions);
-        promise.then((newOptionsFromPromise: IComboBoxOption[]) => {
-          if (promise === this._currentPromise) {
+        this._currentPromise = newOptions;
+        newOptions.then((newOptionsFromPromise: IComboBoxOption[]) => {
+          if (newOptions === this._currentPromise) {
             this.props.hoisted.setCurrentOptions(newOptionsFromPromise);
           }
         });
@@ -1331,7 +1335,62 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   // Render List of items
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem, options, label, ariaLabel } = props;
+    const { onRenderItem = this._onRenderItem, label, ariaLabel, multiSelect } = props;
+
+    let queue: { id?: string; items: JSX.Element[] } = { items: [] };
+    let renderedList: JSX.Element[] = [];
+
+    const emptyQueue = (): void => {
+      const newGroup = queue.id
+        ? [
+            <div role="group" key={queue.id} aria-labelledby={queue.id}>
+              {queue.items}
+            </div>,
+          ]
+        : queue.items;
+
+      renderedList = [...renderedList, ...newGroup];
+      // Flush items and id
+      queue = { items: [] };
+    };
+
+    const placeRenderedOptionIntoQueue = (item: IComboBoxOption, index: number) => {
+      /*
+        Case Header
+          empty queue if it's not already empty
+          ensure unique ID for header and set queue ID
+          push header into queue
+        Case Divider
+          push divider into queue if not first item
+          empty queue if not already empty
+        Default
+          push item into queue
+      */
+      switch (item.itemType) {
+        case SelectableOptionMenuItemType.Header:
+          queue.items.length > 0 && emptyQueue();
+
+          const id = this._id + item.key;
+          queue.items.push(onRenderItem({ id, ...item, index }, this._onRenderItem)!);
+          queue.id = id;
+          break;
+        case SelectableOptionMenuItemType.Divider:
+          index > 0 && queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+
+          queue.items.length > 0 && emptyQueue();
+          break;
+        default:
+          queue.items.push(onRenderItem({ ...item, index }, this._onRenderItem)!);
+      }
+    };
+
+    // Place options into the queue. Queue will be emptied anytime a Header or Divider is encountered
+    props.options.forEach((item: IComboBoxOption, index: number) => {
+      placeRenderedOptionIntoQueue(item, index);
+    });
+
+    // Push remaining items into all renderedList
+    queue.items.length > 0 && emptyQueue();
 
     const id = this._id;
     return (
@@ -1340,9 +1399,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         className={this._classNames.optionsContainer}
         aria-labelledby={label && id + '-label'}
         aria-label={ariaLabel && !label ? ariaLabel : undefined}
+        aria-multiselectable={multiSelect ? 'true' : undefined}
         role="listbox"
       >
-        {options.map(item => onRenderItem?.(item, this._onRenderItem))}
+        {renderedList}
       </div>
     );
   };
@@ -1383,7 +1443,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { onRenderOption = this._onRenderOptionContent } = this.props;
 
     return (
-      <div key={item.key} className={this._classNames.header}>
+      <div id={item.id} key={item.key} className={this._classNames.header}>
         {onRenderOption(item, this._onRenderOptionContent)}
       </div>
     );

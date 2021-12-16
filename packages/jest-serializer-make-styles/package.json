@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/jest-serializer-make-styles",
-  "version": "9.0.0-beta.2",
+  "version": "9.0.0-beta.4",
   "description": "Jest serializer for make-styles.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,14 +17,14 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/jest-serializer-make-styles/src && yarn docs"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/jest-serializer-make-styles/src && yarn docs",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-make-styles": "9.0.0-beta.2",
-    "@fluentui/react-shared-contexts": "9.0.0-beta.2",
+    "@fluentui/react-make-styles": "9.0.0-beta.4",
+    "@fluentui/react-shared-contexts": "9.0.0-beta.4",
     "@fluentui/scripts": "^1.0.0",
-    "@types/jest": "24.9.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
@@ -33,10 +33,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/make-styles": "9.0.0-beta.2"
+    "@fluentui/make-styles": "9.0.0-beta.3"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

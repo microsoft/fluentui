@@ -2,7 +2,7 @@
 
 exports[`AccordionHeader renders a default state 1`] = `
 <div
-  className=""
+  className="fui-AccordionHeader"
   role="heading"
 >
   <button

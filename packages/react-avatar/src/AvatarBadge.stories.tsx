@@ -18,3 +18,11 @@ export const Badge = (props: Partial<AvatarProps>) => (
     <Avatar {...props} badge={{ status: 'doNotDisturb', outOfOffice: true }} />
   </>
 );
+
+Badge.parameters = {
+  docs: {
+    description: {
+      story: 'An avatar can have a badge to indicate presence status.',
+    },
+  },
+};

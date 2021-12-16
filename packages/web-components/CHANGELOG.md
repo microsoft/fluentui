@@ -1,8 +1,53 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 02 Nov 2021 07:37:01 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Dec 2021 07:31:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.3)
+
+Wed, 15 Dec 2021 07:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.2..@fluentui/web-components_v2.1.3)
+
+### Patches
+
+- fix: prevent disabled flipper from emitting event ([PR #21003](https://github.com/microsoft/fluentui/pull/21003) by jes@microsoft.com)
+
+## [2.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.2)
+
+Fri, 10 Dec 2021 07:30:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.1..@fluentui/web-components_v2.1.2)
+
+### Patches
+
+- fix: z-index in accordion header renders above content ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by robarb@microsoft.com)
+
+## [2.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.1)
+
+Thu, 02 Dec 2021 07:36:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.0..@fluentui/web-components_v2.1.1)
+
+### Patches
+
+- fix: tabpanel shifting in vertical layout ([PR #20641](https://github.com/microsoft/fluentui/pull/20641) by jes@microsoft.com)
+
+## [2.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.0)
+
+Tue, 23 Nov 2021 07:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.2..@fluentui/web-components_v2.1.0)
+
+### Minor changes
+
+- fix: remove margins from host elements ([PR #20710](https://github.com/microsoft/fluentui/pull/20710) by jes@microsoft.com)
+
+## [2.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.2)
+
+Tue, 09 Nov 2021 07:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.1..@fluentui/web-components_v2.0.2)
+
+### Patches
+
+- FluentUI calendar component ([PR #20356](https://github.com/microsoft/fluentui/pull/20356) by robarb@microsoft.com)
 
 ## [2.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.1)
 

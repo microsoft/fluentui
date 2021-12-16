@@ -1,6 +1,8 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { LinkState } from './Link.types';
+
+export const linkClassName = 'fui-Link';
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
@@ -10,8 +12,11 @@ const useStyles = makeStyles({
   // Common styles.
   root: theme => ({
     backgroundColor: 'transparent',
-    border: 'none',
-    borderBottom: 'solid transparent',
+    borderTopStyle: 'none',
+    borderLeftStyle: 'none',
+    borderRightStyle: 'none',
+    borderBottomColor: 'transparent',
+    borderBottomStyle: 'solid',
     borderBottomWidth: theme.strokeWidthThin,
     boxSizing: 'border-box',
     color: theme.colorBrandForegroundLink,
@@ -20,11 +25,11 @@ const useStyles = makeStyles({
     fontFamily: theme.fontFamilyBase,
     fontSize: theme.fontSizeBase300,
     fontWeight: theme.fontWeightRegular,
-    margin: 0,
-    overflow: 'inherit',
-    padding: 0,
+    ...shorthands.margin(0),
+    ...shorthands.padding(0),
+    ...shorthands.overflow('inherit'),
     textAlign: 'left',
-    textDecoration: 'none',
+    textDecorationLine: 'none',
     textOverflow: 'inherit',
     userSelect: 'text',
 
@@ -85,6 +90,7 @@ const useStyles = makeStyles({
 export const useLinkStyles = (state: LinkState): LinkState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    linkClassName,
     styles.root,
     styles.focusIndicator,
     state.root.as === 'a' && state.root.href && styles.href,

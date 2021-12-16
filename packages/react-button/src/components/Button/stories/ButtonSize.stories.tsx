@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
-import { Button } from '../../../Button'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { Button } from '../../../Button';
 
 export const Size = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
   const headerStyles: React.CSSProperties = { width: '100%', margin: 0 };
+
   return (
     <>
       <div style={groupStyles}>

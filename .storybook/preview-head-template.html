@@ -68,6 +68,13 @@
     color: #000000;
   }
 
+  #docs-root .sbdocs-h3:before {
+    content: '';
+    display: block;
+    height: 60px;
+    margin: -60px 0 0;
+  }
+
   #docs-root .sbdocs-li {
     font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
       sans-serif;
@@ -108,7 +115,7 @@
     display: none;
   }
 
-  #docs-root div[class^='fluent-provider'] {
+  #docs-root div[class^='fui-FluentProvider'] {
     background: #faf9f8;
   }
 
@@ -150,6 +157,14 @@
     border-bottom: 1px solid #edebe9;
   }
 
+  #docs-root .docblock-argstable-body > tr > td:nth-child(4) {
+    display: none;
+  }
+
+  #docs-root .docblock-argstable-head > tr > th:nth-child(4) {
+    display: none;
+  }
+
   #docs-root .docblock-argstable tbody tr {
     border: none;
   }
@@ -169,10 +184,6 @@
     line-height: 150%;
     letter-spacing: -0.01em;
     color: #616161;
-  }
-
-  #docs-root .docblock-argstable tbody tr:nth-child(even) td {
-    background: #fafafa;
   }
 
   #docs-root .docblock-argstable tbody tr td {
@@ -195,10 +206,6 @@
   #docs-root .docs-story > div {
     padding: 0;
     background: none;
-  }
-
-  #docs-root .docs-story > div > div[scale] {
-    padding: 48px 24px;
   }
 
   #docs-root .docs-story > div:last-child {

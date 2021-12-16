@@ -16,6 +16,7 @@ const theme = {
 const ShadowBox: React.FunctionComponent<
   React.HTMLAttributes<HTMLDivElement> & {
     shadow: string;
+    isBrand: boolean;
   }
 > = props => (
   <div
@@ -29,6 +30,10 @@ const ShadowBox: React.FunctionComponent<
       minHeight: '2rem',
       fontFamily: 'monospace',
       fontSize: 10,
+      ...(props.isBrand && {
+        backgroundColor: theme.light.colorBrandBackground,
+        color: theme.light.colorNeutralForegroundOnBrand,
+      }),
     }}
   >
     {props.shadow.split('),').map((line, index, arr) => {
@@ -57,12 +62,15 @@ export const Shadows = () => {
       <h3 key="shadow-title-light">Light</h3>
       <h3 key="shadow-title-dark">Dark</h3>
       <h3 key="shadow-title-hc">High Contrast</h3>
-      {shadowTokens.map(shadow => [
-        <div key={shadow}>{shadow}</div>,
-        <ShadowBox key={`${shadow}-light`} shadow={theme.light[shadow]} />,
-        <ShadowBox key={`${shadow}-dark`} shadow={theme.dark[shadow]} />,
-        <ShadowBox key={`${shadow}-hc`} shadow={theme.highContrast[shadow]} />,
-      ])}
+      {shadowTokens.map(shadow => {
+        const isBrand = shadow.indexOf('Brand') >= 0;
+        return [
+          <div key={shadow}>{shadow}</div>,
+          <ShadowBox key={`${shadow}-light`} shadow={theme.light[shadow]} isBrand={isBrand} />,
+          <ShadowBox key={`${shadow}-dark`} shadow={theme.dark[shadow]} isBrand={isBrand} />,
+          <ShadowBox key={`${shadow}-hc`} shadow={theme.highContrast[shadow]} isBrand={isBrand} />,
+        ];
+      })}
     </div>
   );
 };
