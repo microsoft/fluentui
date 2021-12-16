@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Classify .stories.tsx as examples not tests",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

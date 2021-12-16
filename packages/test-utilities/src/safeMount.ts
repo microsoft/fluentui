@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { mount, MountRendererProps, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
+import { createTestContainer } from './createTestContainer';
 
 /**
  * Calls `mount` from enzyme, calls the callback, and unmounts. This prevents mounted components
@@ -7,8 +8,8 @@ import { mount, MountRendererProps, ReactWrapper } from 'enzyme';
  *
  * @param content - JSX content to test.
  * @param callback - Function callback which receives the component to use.
- * @param mountOptions - Options for enzyme mount function. If `attachTo` is provided, the element
- * will be removed during the cleanup.
+ * @param attach - Whether to use a container element which is attached to the document
+ * (sometimes needed for event handlers)
  */
 export function safeMount<
   TComponent extends React.Component,
@@ -17,9 +18,10 @@ export function safeMount<
 >(
   content: React.ReactElement<TProps>,
   callback?: (wrapper: ReactWrapper<TProps, TState, TComponent>) => void,
-  mountOptions?: MountRendererProps,
+  attach?: boolean,
 ): void {
-  const wrapper = mount<TComponent, TProps, TState>(content, mountOptions);
+  const testContainer = attach ? createTestContainer() : undefined;
+  const wrapper = mount<TComponent, TProps, TState>(content, { ...(testContainer && { attachTo: testContainer }) });
 
   try {
     callback?.(wrapper);
@@ -27,8 +29,6 @@ export function safeMount<
     if (wrapper.exists()) {
       wrapper.unmount();
     }
-    if (mountOptions?.attachTo) {
-      mountOptions.attachTo.remove();
-    }
+    testContainer?.remove();
   }
 }

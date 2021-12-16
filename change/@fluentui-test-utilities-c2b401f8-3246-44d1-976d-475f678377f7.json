@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: improve test utilities",
-  "packageName": "@fluentui/test-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
