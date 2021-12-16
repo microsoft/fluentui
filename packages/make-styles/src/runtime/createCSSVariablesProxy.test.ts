@@ -17,7 +17,7 @@ describe('createCSSVariablesProxy', () => {
     const proxy = createCSSVariablesProxy() as { to: { string: object } };
     expect(Array.isArray(proxy)).toEqual(false);
     const expanded = resolveProxyValues({
-      padding: proxy.to.string,
+      paddingLeft: proxy.to.string,
       animationName: {
         from: {
           transform: proxy.to.string,
@@ -30,7 +30,7 @@ describe('createCSSVariablesProxy', () => {
       animationDuration: proxy.to.string,
     });
     expect(expanded).toEqual({
-      padding: 'var(--to-string)',
+      paddingLeft: 'var(--to-string)',
       animationName: {
         from: {
           transform: 'var(--to-string)',
