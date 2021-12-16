@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix test issues",
-  "packageName": "@fluentui/react-hooks",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
