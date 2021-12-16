@@ -142,9 +142,7 @@ export interface AnimationProps extends ChildrenComponentProps<AnimationChildren
 /**
  * An Animation provides animation effects to rendered elements.
  */
-export const Animation: React.FC<AnimationProps> & {
-  handledProps: (keyof AnimationProps)[];
-} = props => {
+export const Animation = (React.forwardRef<HTMLDivElement, AnimationProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Animation.displayName, context.telemetry);
   setStart();
@@ -175,6 +173,7 @@ export const Animation: React.FC<AnimationProps> & {
 
   const element = (
     <Transition
+      nodeRef={ref}
       in={visible}
       appear={appear}
       mountOnEnter={mountOnEnter}
@@ -201,6 +200,8 @@ export const Animation: React.FC<AnimationProps> & {
   setEnd();
 
   return element;
+}) as unknown) as React.FC<AnimationProps> & {
+  handledProps: (keyof AnimationProps)[];
 };
 
 Animation.displayName = 'Animation';
