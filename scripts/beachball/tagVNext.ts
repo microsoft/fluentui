@@ -30,7 +30,7 @@ fs.writeFileSync(npmrc.name, '//registry.npmjs.org/:_authToken=${NPM_TOKEN}');
 
 packagesToTag.forEach(pkg => {
   const prereleaseTag = semver.parse(pkg.version).prerelease[0];
-  const command = `npm dist-tag add ${pkg.name}@${pkg.version} ${prereleaseTag} --userconfig ${npmrc.name}`;
+  const command = `npm dist-tag add ${pkg.name}@${pkg.version} ${prereleaseTag} --userconfig ${npmrc.name} --registry https://registry.npmjs.org/`;
   console.log(command);
   try {
     const res = execSync(command);
