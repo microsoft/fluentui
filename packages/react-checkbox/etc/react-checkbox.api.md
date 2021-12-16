@@ -21,8 +21,7 @@ export const checkboxClassName = "fui-Checkbox";
 // @public (undocumented)
 export interface CheckboxCommons {
     checked: 'mixed' | boolean;
-    circular: boolean | undefined;
-    containerClassName?: string;
+    circular: boolean;
     labelPosition: 'before' | 'after';
     size: 'medium' | 'large';
 }
@@ -34,22 +33,22 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked'> & Partial<CheckboxCommons> & {
+export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
+    children?: never;
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     defaultChecked?: 'mixed' | boolean;
 };
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
+    root: IntrinsicShorthandProps<'span'>;
+    label?: ObjectShorthandProps<LabelProps>;
     input: IntrinsicShorthandProps<'input'>;
     indicator: IntrinsicShorthandProps<'div'>;
 };
 
 // @public
-export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons & {
-    hasLabel: boolean;
-};
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
 
 // @public (undocumented)
 export const renderCheckbox: (state: CheckboxState) => JSX.Element;

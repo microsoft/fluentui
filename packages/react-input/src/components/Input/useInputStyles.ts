@@ -221,7 +221,7 @@ const useContentStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles = (state: InputState): InputState => {
-  const { size = 'medium', appearance = 'outline' } = state;
+  const { size, appearance } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 
