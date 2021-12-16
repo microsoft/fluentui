@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add aria-level to TeachingBubble heading",
-  "packageName": "office-ui-fabric-react",
-  "email": "huiyan@microsoft.com",
-  "dependentChangeType": "patch"
-}

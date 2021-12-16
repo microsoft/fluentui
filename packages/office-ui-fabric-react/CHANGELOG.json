@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 16 Dec 2021 12:24:57 GMT",
+      "tag": "office-ui-fabric-react_v7.180.2",
+      "version": "7.180.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add aria-level to TeachingBubble heading",
+            "author": "huiyan@microsoft.com",
+            "commit": "5570f5c78c4f226fa391e17eb18ee92c98f4502a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Dec 2021 12:27:04 GMT",
       "tag": "office-ui-fabric-react_v7.180.1",
       "version": "7.180.1",
