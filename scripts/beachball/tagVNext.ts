@@ -1,9 +1,9 @@
-import { getScopes } from './getScopes';
 import { execSync } from 'child_process';
 import * as semver from 'semver';
 import * as tmp from 'tmp';
-import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 import * as fs from 'fs';
+import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
+import { getScopes } from './getScopes';
 
 function tagPackages() {
   const packagesToTag = getPackagesToTag();
