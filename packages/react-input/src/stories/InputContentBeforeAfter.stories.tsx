@@ -9,6 +9,8 @@ const useStyles = makeStyles({
   root: {
     '& label': { display: 'block', paddingBottom: '2px' },
     '& label:not(:first-child)': { paddingTop: '20px' },
+    // Icons default to 1em; we want them a bit larger
+    '& svg': { fontSize: '20px' },
   },
 });
 
