@@ -66,7 +66,5 @@ function createTmpNpmrc() {
 }
 
 if (require.main === module && process.env.RELEASE_VNEXT) {
-  console.log(tagPackages);
-  const version = '9.0.0';
-  console.log(semver.parse(version).prerelease);
+  tagPackages();
 }
