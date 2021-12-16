@@ -3,7 +3,6 @@ import * as semver from 'semver';
 import * as tmp from 'tmp';
 import * as fs from 'fs';
 import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
-import { getScopes } from './getScopes';
 
 function tagPackages() {
   const packagesToTag = getPackagesToTag();
@@ -30,15 +29,10 @@ function tagPackage(name: string, version: string, npmrcPath: string) {
 }
 
 function getPackagesToTag() {
-  const vNextScope = getScopes();
   const packageInfos: AllPackageInfo = getAllPackageInfo();
   return Object.values(packageInfos)
     .map(packageInfo => {
-      if (
-        !packageInfo.packageJson.private &&
-        isConvergedPackage(packageInfo.packageJson) &&
-        vNextScope.includes(packageInfo.packagePath)
-      ) {
+      if (!packageInfo.packageJson.private && isConvergedPackage(packageInfo.packageJson)) {
         return {
           name: packageInfo.packageJson.name,
           version: packageInfo.packageJson.version,
@@ -66,6 +60,6 @@ function createTmpNpmrc() {
   return { path: npmrc.name, cleanup };
 }
 
-if (require.main === module) {
+if (require.main === module && process.env.RELEASE_VNEXT) {
   tagPackages();
 }
