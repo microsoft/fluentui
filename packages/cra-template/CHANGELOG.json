@@ -2,6 +2,29 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Thu, 16 Dec 2021 07:26:39 GMT",
+      "tag": "@fluentui/cra-template_v8.0.48",
+      "version": "8.0.48",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "08bb967395c61ccbf53a638b5e16f4b5723a03c9",
+            "comment": "Use a custom yarn cache in the test"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.48.0",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Dec 2021 07:31:29 GMT",
       "tag": "@fluentui/cra-template_v8.0.47",
       "version": "8.0.47",
