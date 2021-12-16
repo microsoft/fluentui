@@ -16,7 +16,12 @@ function tagPackages() {
 }
 
 function tagPackage(name: string, version: string, npmrcPath: string) {
-  const prereleaseTag = semver.parse(version).prerelease[0];
+  const prerelease = semver.parse(version).prerelease;
+  if (prerelease.length == 0) {
+    return;
+  }
+
+  const prereleaseTag = prerelease[0];
   const command = `npm dist-tag add ${name}@${version} ${prereleaseTag} --userconfig ${npmrcPath} --registry https://registry.npmjs.org/`;
   console.log(command);
   try {
@@ -61,5 +66,7 @@ function createTmpNpmrc() {
 }
 
 if (require.main === module && process.env.RELEASE_VNEXT) {
-  tagPackages();
+  console.log(tagPackages);
+  const version = '9.0.0';
+  console.log(semver.parse(version).prerelease);
 }
