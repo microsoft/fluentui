@@ -2,6 +2,27 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Thu, 16 Dec 2021 07:26:40 GMT",
+      "tag": "@fluentui/react-hooks_v8.3.8",
+      "version": "8.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "f71032d515f2395d85e935f075f8dbfede670b05",
+            "comment": "Fix test issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/test-utilities to v8.2.0",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Dec 2021 07:31:29 GMT",
       "tag": "@fluentui/react-hooks_v8.3.8",
       "version": "8.3.8",
