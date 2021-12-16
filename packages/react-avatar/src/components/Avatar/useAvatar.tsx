@@ -2,14 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { getInitials as getInitialsDefault } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
-import {
-  Person16Regular,
-  Person20Regular,
-  Person24Regular,
-  Person28Regular,
-  Person32Regular,
-  Person48Regular,
-} from '@fluentui/react-icons';
+import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
@@ -78,17 +71,17 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
 
 const getDefaultIcon = (size: NonNullable<AvatarProps['size']>) => {
   if (size <= 24) {
-    return <Person16Regular />;
+    return <PersonRegular fontSize={16} />;
   } else if (size <= 40) {
-    return <Person20Regular />;
+    return <PersonRegular fontSize={20} />;
   } else if (size <= 48) {
-    return <Person24Regular />;
+    return <PersonRegular fontSize={24} />;
   } else if (size <= 56) {
-    return <Person28Regular />;
+    return <PersonRegular fontSize={28} />;
   } else if (size <= 72) {
-    return <Person32Regular />;
+    return <PersonRegular fontSize={32} />;
   } else {
-    return <Person48Regular />;
+    return <PersonRegular fontSize={48} />;
   }
 };
 

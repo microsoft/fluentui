@@ -4,9 +4,9 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../index';
 
 import { Button } from '@fluentui/react-button';
 import {
-  Cut20Regular as CutIcon,
-  ClipboardPaste20Regular as PasteIcon,
-  Edit20Regular as EditIcon,
+  CutRegular as CutIcon,
+  ClipboardPasteRegular as PasteIcon,
+  EditRegular as EditIcon,
 } from '@fluentui/react-icons';
 
 export const MenuItemsWithIcons = () => (
@@ -17,9 +17,9 @@ export const MenuItemsWithIcons = () => (
 
     <MenuPopover>
       <MenuList>
-        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
-        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
-        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+        <MenuItem icon={<CutIcon fontSize={20} />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon fontSize={20} />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon fontSize={20} />}>Edit</MenuItem>
       </MenuList>
     </MenuPopover>
   </Menu>

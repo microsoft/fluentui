@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import { Checkmark16Filled } from '@fluentui/react-icons';
+import { CheckmarkFilled } from '@fluentui/react-icons';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem } from '../MenuItem/useMenuItem';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
@@ -16,7 +16,7 @@ export const useMenuItemCheckbox = (
       persistOnClick: true,
       ...props,
       checkmark: resolveShorthand(props.checkmark, {
-        defaultProps: { children: <Checkmark16Filled /> },
+        defaultProps: { children: <CheckmarkFilled fontSize={16} /> },
         required: true,
       }),
     },
