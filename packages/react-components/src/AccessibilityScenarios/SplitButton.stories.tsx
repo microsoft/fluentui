@@ -33,6 +33,7 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
   const showPostponeText = (duration: string) => {
     const postponeMessages: Record<string, string> = {
       tenMinutes: 'for 10 minutes',
+      thirtyMinutes: 'for 30 minutes',
       oneHour: 'for 1 hour',
       tomorrow: 'until tomorrow',
     };
@@ -45,18 +46,24 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
       {!statusText && (
         <>
           <p>Your meeting starts in 10 minutes.</p>
+          <Button onClick={onDismissButtonClick}>Dismiss</Button>
           <Menu positioning="below-end">
             <MenuTrigger>
               {(menuButtonProps: MenuButtonProps) => {
                 const extendedMenuButtonProps = {
                   ...menuButtonProps,
-                  'aria-label': 'Postpone',
+                  'aria-label': 'Postpone for later',
                 };
 
                 return (
                   <SplitButton
                     menuButton={extendedMenuButtonProps}
-                    primaryActionButton={{ children: 'Dismiss', onClick: onDismissButtonClick }}
+                    primaryActionButton={{
+                      children: 'Postpone for 10 minutes',
+                      onClick: () => {
+                        showPostponeText('tenMinutes');
+                      },
+                    }}
                   />
                 );
               }}
@@ -66,10 +73,10 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
               <MenuList>
                 <MenuItem
                   onClick={() => {
-                    showPostponeText('tenMinutes');
+                    showPostponeText('thirtyMinutes');
                   }}
                 >
-                  Postpone for 10 minutes
+                  Postpone for 30 minutes
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
