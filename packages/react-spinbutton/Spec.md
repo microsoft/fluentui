@@ -327,6 +327,15 @@ Aside from min/max range clamping `SpinButton` does not currently implement any 
 
 No error states are currently implemented.
 
+`SpinButton`'s `onChange` callback is invoked every time a change is committed. A change is committed when:
+
+1. A step button is activated
+2. When a user presses the `Up` or `Down` arrow keys while focused on the component.
+3. When a user presses the `Enter` key while focused on the `<input>`
+4. When the `blur` event is fired from the `<input>`
+
+The `onChange` callback is not invoked while a user is focused on the `<input>` and editing the value of the `SpinButton` directly.
+
 ### Component States
 
 - Normal (no value or valid value, not focused)
