@@ -120,7 +120,7 @@ Props not directly related to `SpinButton` functionality omitted for brevity. [S
 
 ### [SpinButton in v0/Northstar](https://fluentsite.z22.web.core.windows.net/0.59.0/components/input/definition)
 
-Northstar lacks a dedicated `SpinButton` component, rather in has `Input` which takes a `type` prop that can be set to `"number"` making the component equivalent of [input type="number"](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number).
+Northstar [lacks a dedicated `SpinButton` component](https://github.com/microsoft/fluentui/issues/16273), rather in has `Input` which takes a `type` prop that can be set to `"number"` making the component equivalent of [input type="number"](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number).
 
 Given that Northstar is only providing the native web platform number input without custom styling applied it will not be considered further. In its place the native number input will be considered as it has behavior similar to `SpinButton`.
 
