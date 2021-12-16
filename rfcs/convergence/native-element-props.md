@@ -91,7 +91,7 @@ The _**primary**_ slot is the slot that receives the native props that are speci
 - All native props are forwarded to the primary slot, _except_ `className` and `style`.
 - The `className` and `style` props are _always_ forwarded to the `root` slot.
 - Both `root` and the primary slot are exposed as props:
-  - For the `root` slot, all native props can be set on the slot.
+  - For the `root` slot, all native props _except_ `className` and `style` can be set on the slot. It also doesn't accept shorthands (because overriding the root in this way doesn't make sense).
   - For the primary slot, only `className` and `style` can be set on the slot.
 - The primary slot is intrinsic to the component, and is part of how it works. Users cannot designate a different slot as primary.
 
@@ -158,7 +158,7 @@ const state = {
 - Need to be able to specify which is the primary slot in conformance tests
 - Check that `className` and `style` always go to the root slot
 - Check that specifying `className` and `style` on the primary slot works
-- Check that `className` and `style` specified on the `root` slot take precedence over top-level props (with custom primary slot): `<Input className="foo" root={{ className: 'bar' }} />` => root element has `className="bar"`
+- Check that specifying `className` and `style` directly on the `root` slot is not allowed
 - Check that `<input>` elements are always the primary slot
 
 ## Usage examples
@@ -220,27 +220,13 @@ To reduce confusion about which props take precedence, it's not allowed to speci
 <Checkbox input={{ id: 'inputId' }} />
 ```
 
-#### Precedence of `className` and `style` at top level vs. on `root` slot
+#### Error: specifying `className` or `style` on `root` slot
 
-However, explicitly specifying `className` and `style` on the `root` slot is allowed, and these will win over props specified on the element itself:
-
-**Given JSX:**
+It's also not allowed to specify `className` and `style` on the `root` slot.
 
 ```jsx
-<Checkbox
-  className="myClass" // ⚠ overridden by "rootClass" below
-  id="myId"
-  style={{ color: 'red' }}
-  root={{ id: 'rootId', className: 'rootClass' }}
-/>
-```
-
-**Resulting DOM (simplified):**
-
-```html
-<div id="rootId" class="rootClass" style="color: red">
-  <input id="myId" />
-</div>
+// ❌ Fails to compile
+<Checkbox root={{ className: 'rootClass' }} />
 ```
 
 ## Discarded Solutions

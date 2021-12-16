@@ -49,7 +49,7 @@ export type ComponentProps<Slots extends ObjectShorthandPropsRecord, Primary ext
     {
     [Key in Primary]?: Pick<React_2.HTMLAttributes<{}>, 'className' | 'style'>;
 } & {
-    root?: Slots['root'];
+    root?: Omit<Slots['root'], 'className' | 'style'>;
 });
 
 // @public (undocumented)
@@ -87,16 +87,13 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export function getPartitionedNativeProps<NativeProps extends React_2.HTMLAttributes<unknown>>({ primarySlotTagName, props, excludedPropNames, }: {
+export function getPartitionedNativeProps<Props extends Pick<React_2.HTMLAttributes<HTMLElement>, 'className' | 'style'>>(params: {
     primarySlotTagName: keyof JSX.IntrinsicElements;
-    props: Pick<NativeProps, 'style' | 'className'>;
+    props: Props;
     excludedPropNames?: string[];
 }): {
-    root: {
-        style: NativeProps["style"] | undefined;
-        className: NativeProps["className"] | undefined;
-    };
-    primary: NativeProps;
+    root: Pick<Props, 'className' | 'style'>;
+    primary: Omit<Props, 'className' | 'style'>;
 };
 
 // @public

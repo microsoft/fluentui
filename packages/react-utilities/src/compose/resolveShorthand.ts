@@ -13,7 +13,10 @@ export type ResolveShorthandOptions<Props extends Record<string, any>, Required 
  * @param value - the base ShorthandProps
  * @param options - options to resolve ShorthandProps
  */
-export function resolveShorthand<Props extends DefaultObjectShorthandProps, Required extends boolean = false>(
+export function resolveShorthand<
+  Props extends Omit<DefaultObjectShorthandProps, 'style' | 'className'>,
+  Required extends boolean = false
+>(
   value: ShorthandProps<Props>,
   options?: ResolveShorthandOptions<Props, Required>,
 ): Required extends false ? Props | undefined : Props {

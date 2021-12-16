@@ -118,8 +118,8 @@ export type ComponentProps<Slots extends ObjectShorthandPropsRecord, Primary ext
           // Add a named prop for the primary slot which ONLY accepts className and style
           [Key in Primary]?: Pick<React.HTMLAttributes<{}>, 'className' | 'style'>;
         } & {
-          // Add a `root` prop which accepts any native props, but NOT shorthand syntax
-          root?: Slots['root'];
+          // Add a `root` prop which accepts any native props (EXCEPT className and style), but NOT shorthand syntax
+          root?: Omit<Slots['root'], 'className' | 'style'>;
         });
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
