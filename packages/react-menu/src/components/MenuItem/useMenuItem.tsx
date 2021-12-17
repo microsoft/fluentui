@@ -33,7 +33,7 @@ export const menuItemSlots: Array<keyof MenuItemSlots> = [
  * Returns the props and state required to render the component
  */
 export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
-  const hasSubmenu = useMenuTriggerContext();
+  const hasSubmenu = props.hasSubmenu ?? useMenuTriggerContext();
   const hasIcons = useMenuListContext(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);
   const setOpen = useMenuContext(context => context.setOpen);
