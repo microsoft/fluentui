@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
     // Update tooltipBorderRadius in useTooltip.tsx if this changes
     ...shorthands.borderRadius(theme.borderRadiusMedium),
-
+    ...shorthands.border('1px', 'solid', theme.colorTransparentStroke),
     backgroundColor: theme.colorNeutralBackground1,
     color: theme.colorNeutralForeground1,
 

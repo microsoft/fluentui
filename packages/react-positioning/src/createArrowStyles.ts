@@ -30,6 +30,8 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
   return theme => ({
     position: 'absolute',
     backgroundColor: 'inherit',
+    ...shorthands.borderRight('inherit', 'inherit', 'inherit'),
+    ...shorthands.borderBottom('inherit', 'inherit', 'inherit'),
     visibility: 'hidden',
     zIndex: -1,
 
@@ -40,22 +42,16 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
 
     ':before': {
       content: '""',
+      visibility: 'visible',
       position: 'absolute',
       width: 'inherit',
       height: 'inherit',
       boxSizing: 'border-box',
       backgroundColor: 'inherit',
-      visibility: 'visible',
+      ...shorthands.borderRight('inherit', 'inherit', 'inherit'),
+      ...shorthands.borderBottom('inherit', 'inherit', 'inherit'),
       borderBottomRightRadius: theme.borderRadiusSmall,
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
-    },
-
-    ':global([data-popper-placement])': {
-      ':before': {
-        // Special border for High Contrast mode
-        ...shorthands.borderRight('1px', 'solid', 'transparent'),
-        ...shorthands.borderBottom('1px', 'solid', 'transparent'),
-      },
     },
 
     // Popper sets data-popper-placement on the root element, which is used to align the arrow
