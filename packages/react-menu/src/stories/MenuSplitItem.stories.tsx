@@ -6,7 +6,7 @@ import { Button } from '@fluentui/react-button';
 import { useMenuContext } from '../contexts/menuContext';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles } from '@fluentui/react-make-styles';
 import { ArrowLeft, ArrowRight, ArrowDown, Escape } from '@fluentui/keyboard-keys';
 import { shouldPreventDefaultOnKeyDown, useEventCallback } from '@fluentui/react-utilities';
 import { MenuTriggerChildProps } from '../components/MenuTrigger/MenuTrigger.types';
@@ -20,9 +20,14 @@ const useStyles = makeStyles({
     '& > :nth-child(2)': {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
-      ...shorthands.borderLeft('1px', 'solid', theme.colorNeutralStroke1),
       paddingLeft: 0,
       marginLeft: 'auto',
+      ':before': {
+        content: '""',
+        width: theme.strokeWidthThin,
+        height: '24px',
+        backgroundColor: theme.colorNeutralStroke1,
+      },
     },
   }),
 });
@@ -66,7 +71,7 @@ export const SplitMenuItem = () => (
         <Menu>
           <MenuSplitItemTrigger>
             <MenuItem>Main</MenuItem>
-            <MenuItem hasSubmenu />
+            <MenuItem />
           </MenuSplitItemTrigger>
           <MenuPopover>
             <MenuList>
@@ -262,5 +267,5 @@ const useTriggerElement = (child: React.ReactElement) => {
     triggerProps['aria-expanded'] = undefined;
   }
 
-  return React.cloneElement(child, { ...triggerProps, ref: triggerRef });
+  return React.cloneElement(child, { ...triggerProps, ref: triggerRef, content: null, hasSubmenu: true });
 };
