@@ -177,8 +177,12 @@ const useIconStyles = makeStyles({
  * Apply styling to the Select slots based on the state
  */
 export const useSelectStyles = (state: SelectState): SelectState => {
-  const { appearance, inline, size } = state;
-  const disabled = state.select.disabled;
+  const {
+    appearance,
+    inline,
+    size,
+    select: { disabled },
+  } = state;
   const selectStyles = useStyles();
   const iconStyles = useIconStyles();
 
