@@ -34,16 +34,16 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
     zIndex: -1,
 
     ...(size && {
-      aspectRatio: '1',
       width: `${size}px`,
+      height: `${size}px`,
     }),
 
     ':before': {
       content: '""',
-      ...shorthands.borderRadius('4px'),
       position: 'absolute',
       width: 'inherit',
       height: 'inherit',
+      boxSizing: 'border-box',
       backgroundColor: 'inherit',
       visibility: 'visible',
       borderBottomRightRadius: theme.borderRadiusSmall,
