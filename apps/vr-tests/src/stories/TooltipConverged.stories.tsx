@@ -42,7 +42,7 @@ storiesOf('Tooltip Converged', module)
         </Tooltip>
       </div>
     ),
-    { includeDarkMode: true, includeHighContrast: true },
+    { includeDarkMode: true },
   )
   .addStory(
     'withArrow',
@@ -64,7 +64,7 @@ storiesOf('Tooltip Converged', module)
         </Tooltip>
       </div>
     ),
-    { includeDarkMode: true, includeHighContrast: true },
+    { includeDarkMode: true },
   )
   .addStory('text-wrapping', () => (
     <div className={useStyles().wrapper}>
