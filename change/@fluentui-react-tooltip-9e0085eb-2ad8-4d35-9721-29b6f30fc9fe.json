@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove `inverted` prop that was added back by a merge conflict",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
