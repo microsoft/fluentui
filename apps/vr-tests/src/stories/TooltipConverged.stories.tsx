@@ -36,8 +36,8 @@ const PositioningStory = (props: Partial<TooltipProps>) => {
 };
 
 storiesOf('Tooltip Converged', module)
-  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => <div style={{ padding: '50px 150px' }}>{story()}</div>)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
