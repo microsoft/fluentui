@@ -1,107 +1,131 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Tooltip, TooltipProps } from '@fluentui/react-tooltip';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
+import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 
-const PositioningStory = (props: Partial<TooltipProps>) => {
-  const [target, setTarget] = React.useState<HTMLDivElement | null>(null);
-  const positions = [
-    ['above', 'start'],
-    ['above', 'center'],
-    ['above', 'end'],
-    ['below', 'start'],
-    ['below', 'center'],
-    ['below', 'end'],
-    ['before', 'top'],
-    ['before', 'center'],
-    ['before', 'bottom'],
-    ['after', 'top'],
-    ['after', 'center'],
-    ['after', 'bottom'],
-  ] as const;
-  return (
-    <div style={{ width: '300px', height: '150px', border: '1px solid gray' }} ref={setTarget}>
-      {...positions.map(([position, align]) => (
-        <Tooltip
-          key={position + align}
-          content={position + ' ' + align}
-          positioning={{ position, align, target }}
-          visible
-          {...props}
-        />
-      ))}
-    </div>
-  );
-};
+const useStyles = makeStyles({
+  wrapper: theme => ({
+    display: 'flex',
+    gap: '5px',
+    ...shorthands.padding('50px', '120px'),
+    backgroundColor: theme.colorNeutralBackground1,
+
+    '& button, & .target': {
+      color: theme.colorNeutralForeground1,
+      backgroundColor: theme.colorNeutralBackground1,
+      ...shorthands.border('1px', 'solid', theme.colorNeutralStroke1),
+    },
+  }),
+});
 
 storiesOf('Tooltip Converged', module)
-  .addDecorator(story => <div style={{ padding: '50px 150px' }}>{story()}</div>)
   .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </Screener>
-  ))
   .addStory(
     'basic',
     () => (
-      <Tooltip visible content="This is a tooltip">
-        <button>Target</button>
-      </Tooltip>
+      <div className={useStyles().wrapper}>
+        <Tooltip visible content="This is a tooltip">
+          <button>Target</button>
+        </Tooltip>
+      </div>
     ),
     { includeDarkMode: true, includeHighContrast: true },
   )
   .addStory(
     'inverted',
     () => (
-      <Tooltip visible appearance="inverted" content="Inverted tooltip">
-        <button>Target</button>
-      </Tooltip>
+      <div className={useStyles().wrapper}>
+        <Tooltip visible appearance="inverted" content="Inverted tooltip">
+          <button>Target</button>
+        </Tooltip>
+      </div>
     ),
     { includeDarkMode: true, includeHighContrast: true },
   )
   .addStory(
     'withArrow',
     () => (
-      <Tooltip visible withArrow content="Tooltip with an arrow">
-        <button>Target</button>
-      </Tooltip>
+      <div className={useStyles().wrapper}>
+        <Tooltip visible withArrow content="Tooltip with an arrow">
+          <button>Target</button>
+        </Tooltip>
+      </div>
     ),
     { includeDarkMode: true, includeHighContrast: true },
   )
   .addStory(
     'inverted withArrow',
     () => (
-      <Tooltip visible appearance="inverted" withArrow content="Inverted tooltip with an arrow">
-        <button>Target</button>
-      </Tooltip>
+      <div className={useStyles().wrapper}>
+        <Tooltip visible appearance="inverted" withArrow content="Inverted tooltip with an arrow">
+          <button>Target</button>
+        </Tooltip>
+      </div>
     ),
     { includeDarkMode: true, includeHighContrast: true },
   )
   .addStory('text-wrapping', () => (
-    <Tooltip visible content="This tooltip's text is long enough to wrap to a new line">
-      <button>Target</button>
-    </Tooltip>
+    <div className={useStyles().wrapper}>
+      <Tooltip visible content="This tooltip's text is long enough to wrap to a new line">
+        <button>Target</button>
+      </Tooltip>
+    </div>
   ))
-  .addStory('positioning', () => <PositioningStory />, { includeRtl: true })
   .addStory(
-    'positioning inverted withArrow',
-    () => <PositioningStory appearance="inverted" withArrow />,
+    'positioning',
+    () => {
+      const positions = [
+        ['above', 'start'],
+        ['above', 'center'],
+        ['above', 'end'],
+        ['below', 'start'],
+        ['below', 'center'],
+        ['below', 'end'],
+        ['before', 'top'],
+        ['before', 'center'],
+        ['before', 'bottom'],
+        ['after', 'top'],
+        ['after', 'center'],
+        ['after', 'bottom'],
+      ] as const;
+      const [target, setTarget] = React.useState<HTMLDivElement | null>(null);
+      return (
+        <div className={useStyles().wrapper}>
+          <div ref={setTarget} className="target" style={{ width: '300px', height: '150px' }}>
+            {...positions.map(([position, align]) => (
+              <Tooltip
+                key={position + align}
+                content={position + ' ' + align}
+                positioning={{ position, align, target }}
+                withArrow
+                visible
+              />
+            ))}
+          </div>
+        </div>
+      );
+    },
     { includeRtl: true },
   );
 
-storiesOf('Tooltip Converged', module).addStory('activation', () => (
-  <Screener
-    steps={new Steps()
-      .hover('.hoverTarget')
-      .wait(251)
-      .snapshot('hover', { cropTo: '.testWrapper' })
-      .focus('.focusTarget')
-      .snapshot('focus', { cropTo: '.testWrapper' })
-      .end()}
-  >
-    <div style={{ display: 'flex', gap: '5px' }}>
+storiesOf('Tooltip Converged', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .hover('.hoverTarget')
+        .wait(251)
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .focus('.focusTarget')
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('activation', () => (
+    <div className={useStyles().wrapper}>
       <Tooltip content="This tooltip appeared on hover">
         <button className="hoverTarget">Hover</button>
       </Tooltip>
@@ -109,5 +133,4 @@ storiesOf('Tooltip Converged', module).addStory('activation', () => (
         <button className="focusTarget">Focus</button>
       </Tooltip>
     </div>
-  </Screener>
-));
+  ));
