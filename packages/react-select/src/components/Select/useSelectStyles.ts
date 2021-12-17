@@ -104,19 +104,6 @@ const useStyles = makeStyles({
       outlineColor: 'transparent',
     },
   }),
-  icon: theme => ({
-    color: theme.colorNeutralStrokeAccessible,
-    display: 'block',
-    position: 'absolute',
-    right: '0',
-    pointerEvents: 'none',
-
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
-      display: 'block',
-    },
-  }),
   disabled: theme => ({
     backgroundColor: theme.colorTransparentBackground,
     color: theme.colorNeutralForegroundDisabled,
@@ -127,28 +114,16 @@ const useStyles = makeStyles({
     ...shorthands.padding('0', horizontalSpacing.sNudge),
     ...contentSizes.caption1(theme),
   }),
-  smallIcon: {
-    paddingRight: horizontalSpacing.sNudge,
-    paddingLeft: horizontalSpacing.xxs,
-  },
   medium: theme => ({
     height: fieldHeights.medium,
     ...shorthands.padding('0', horizontalSpacing.mNudge),
     ...contentSizes.body1(theme),
   }),
-  mediumIcon: {
-    paddingRight: horizontalSpacing.mNudge,
-    paddingLeft: horizontalSpacing.xxs,
-  },
   large: theme => ({
     height: fieldHeights.large,
     ...shorthands.padding('0', horizontalSpacing.m),
     ...contentSizes[400](theme),
   }),
-  largeIcon: {
-    paddingRight: horizontalSpacing.m,
-    paddingLeft: horizontalSpacing.sNudge,
-  },
   outline: theme => ({
     backgroundColor: backgroundColors.filledLighter(theme),
     ...shorthands.border('1px', 'solid', theme.colorNeutralStroke1),
@@ -170,13 +145,42 @@ const useStyles = makeStyles({
   },
 });
 
+const useIconStyles = makeStyles({
+  icon: theme => ({
+    color: theme.colorNeutralStrokeAccessible,
+    display: 'block',
+    position: 'absolute',
+    right: '0',
+    pointerEvents: 'none',
+
+    // the SVG must have display: block for accurate positioning
+    // otherwise an extra inline space is inserted after the svg element
+    '& svg': {
+      display: 'block',
+    },
+  }),
+  small: {
+    paddingRight: horizontalSpacing.sNudge,
+    paddingLeft: horizontalSpacing.xxs,
+  },
+  medium: {
+    paddingRight: horizontalSpacing.mNudge,
+    paddingLeft: horizontalSpacing.xxs,
+  },
+  large: {
+    paddingRight: horizontalSpacing.m,
+    paddingLeft: horizontalSpacing.sNudge,
+  },
+});
+
 /**
  * Apply styling to the Select slots based on the state
  */
 export const useSelectStyles = (state: SelectState): SelectState => {
-  const { appearance = 'outline', inline, size = 'medium' } = state;
+  const { appearance, inline, size } = state;
   const disabled = state.select.disabled;
   const selectStyles = useStyles();
+  const iconStyles = useIconStyles();
 
   state.root.className = mergeClasses(selectStyles.wrapper, inline && selectStyles.inline, state.root.className);
 
@@ -188,7 +192,7 @@ export const useSelectStyles = (state: SelectState): SelectState => {
     state.select.className,
   );
 
-  state.icon.className = mergeClasses(selectStyles.icon, selectStyles[`${size}Icon`], state.icon.className);
+  state.icon.className = mergeClasses(iconStyles.icon, iconStyles[size], state.icon.className);
 
   return state;
 };

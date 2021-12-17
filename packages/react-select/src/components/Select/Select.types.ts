@@ -18,12 +18,12 @@ export interface SelectCommons {
    * Matches the Input sizes
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size: 'small' | 'medium' | 'large';
 
   inline?: boolean;
 
   /** @default 'outline' */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+  appearance: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
 }
 
 export type SelectProps = Omit<ComponentProps<SelectSlots, 'select'>, 'size'> & Partial<SelectCommons>;

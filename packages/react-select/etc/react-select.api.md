@@ -18,10 +18,10 @@ export const Select: ForwardRefComponent<SelectProps>;
 
 // @public (undocumented)
 export interface SelectCommons {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    appearance: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     // (undocumented)
     inline?: boolean;
-    size?: 'small' | 'medium' | 'large';
+    size: 'small' | 'medium' | 'large';
 }
 
 // @public (undocumented)
