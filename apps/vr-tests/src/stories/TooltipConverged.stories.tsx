@@ -43,51 +43,64 @@ storiesOf('Tooltip Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('basic', () => (
-    <Tooltip visible content="This is a tooltip">
-      <button>Target</button>
-    </Tooltip>
-  ))
+  .addStory(
+    'basic',
+    () => (
+      <Tooltip visible content="This is a tooltip">
+        <button>Target</button>
+      </Tooltip>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  )
+  .addStory(
+    'inverted',
+    () => (
+      <Tooltip visible appearance="inverted" content="Inverted tooltip">
+        <button>Target</button>
+      </Tooltip>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  )
+  .addStory(
+    'withArrow',
+    () => (
+      <Tooltip visible withArrow content="Tooltip with an arrow">
+        <button>Target</button>
+      </Tooltip>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  )
+  .addStory(
+    'inverted withArrow',
+    () => (
+      <Tooltip visible appearance="inverted" withArrow content="Inverted tooltip with an arrow">
+        <button>Target</button>
+      </Tooltip>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  )
   .addStory('text-wrapping', () => (
     <Tooltip visible content="This tooltip's text is long enough to wrap to a new line">
       <button>Target</button>
     </Tooltip>
   ))
-  .addStory('inverted', () => (
-    <Tooltip visible appearance="inverted" content="Inverted tooltip">
-      <button>Target</button>
-    </Tooltip>
-  ))
-  .addStory('withArrow', () => (
-    <Tooltip visible withArrow content="Tooltip with an arrow">
-      <button>Target</button>
-    </Tooltip>
-  ))
-  .addStory('inverted withArrow', () => (
-    <Tooltip visible appearance="inverted" withArrow content="Inverted tooltip with an arrow">
-      <button>Target</button>
-    </Tooltip>
-  ))
-  .addStory('positioning', () => <PositioningStory />)
-  .addStory('positioning inverted withArrow', () => (
-    <PositioningStory appearance="inverted" withArrow />
-  ));
+  .addStory('positioning', () => <PositioningStory />, { includeRtl: true })
+  .addStory(
+    'positioning inverted withArrow',
+    () => <PositioningStory appearance="inverted" withArrow />,
+    { includeRtl: true },
+  );
 
-storiesOf('Tooltip Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .hover('.hoverTarget')
-        .wait(251)
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .focus('.focusTarget')
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('activation', () => (
+storiesOf('Tooltip Converged', module).addStory('activation', () => (
+  <Screener
+    steps={new Steps()
+      .hover('.hoverTarget')
+      .wait(251)
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .focus('.focusTarget')
+      .snapshot('focus', { cropTo: '.testWrapper' })
+      .end()}
+  >
     <div style={{ display: 'flex', gap: '5px' }}>
       <Tooltip content="This tooltip appeared on hover">
         <button className="hoverTarget">Hover</button>
@@ -96,4 +109,5 @@ storiesOf('Tooltip Converged', module)
         <button className="focusTarget">Focus</button>
       </Tooltip>
     </div>
-  ));
+  </Screener>
+));
