@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding the translate='no' tag for the icons",
+  "packageName": "@fluentui/react",
+  "email": "mavarsh@microsoft.com",
+  "dependentChangeType": "patch"
+}
