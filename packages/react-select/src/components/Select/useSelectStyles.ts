@@ -2,6 +2,8 @@ import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-style
 import type { Theme } from '@fluentui/react-theme';
 import type { SelectState } from './Select.types';
 
+export const selectClassName = 'fui-Select';
+
 // TODO: (also from Input) use theme values once available
 const horizontalSpacing = {
   xxs: '2px',
@@ -186,7 +188,12 @@ export const useSelectStyles = (state: SelectState): SelectState => {
   const selectStyles = useStyles();
   const iconStyles = useIconStyles();
 
-  state.root.className = mergeClasses(selectStyles.wrapper, inline && selectStyles.inline, state.root.className);
+  state.root.className = mergeClasses(
+    selectClassName,
+    selectStyles.wrapper,
+    inline && selectStyles.inline,
+    state.root.className,
+  );
 
   state.select.className = mergeClasses(
     selectStyles.select,
