@@ -78,6 +78,7 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
       // Apply the font family this way to ensure it doesn't get overridden by Fabric Core ms-Icon styles
       // https://github.com/microsoft/fluentui/issues/10449
       style={{ fontFamily, ...style }}
+      translate="no"
     >
       {finalChildren}
     </i>

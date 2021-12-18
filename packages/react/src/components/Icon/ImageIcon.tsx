@@ -41,7 +41,12 @@ export const ImageIcon: React.FunctionComponent<IImageIconProps> = props => {
       };
 
   return (
-    <div {...containerProps} {...nativeProps} className={css(MS_ICON, classNames.root, classNames.image, className)}>
+    <div
+      {...containerProps}
+      {...nativeProps}
+      className={css(MS_ICON, classNames.root, classNames.image, className)}
+      translate="no"
+    >
       <Image {...imageNameProps} {...imageProps} alt={hasName ? altText : ''} />
     </div>
   );
