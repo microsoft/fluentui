@@ -26,6 +26,11 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
   const packageJsonPath = options.paths.packageJson;
   let nextVersion = '';
 
+  if (schema.exclude.includes(schema.name)) {
+    userLog.push({ type: 'info', message: `excluding ${schema.name} from version bump` });
+    return;
+  }
+
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag);
     packageJson.version = nextVersion;
@@ -93,7 +98,13 @@ function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog
     if (isPackageConverged(projectName, host)) {
       runMigrationOnProject(
         host,
-        { name: projectName, all: false, bumpType: schema.bumpType, prereleaseTag: schema.prereleaseTag },
+        {
+          name: projectName,
+          all: false,
+          bumpType: schema.bumpType,
+          prereleaseTag: schema.prereleaseTag,
+          exclude: schema.exclude,
+        },
         userLog,
       );
     }
@@ -168,8 +179,10 @@ export const validbumpTypes = [
   'nightly',
 ] as const;
 
-interface ValidatedSchema extends Required<VersionBumpGeneratorSchema> {
+interface ValidatedSchema extends Required<Omit<VersionBumpGeneratorSchema, 'exclude'>> {
   bumpType: typeof validbumpTypes[number];
+
+  exclude: string[];
 }
 
 function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
@@ -198,6 +211,7 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
     prereleaseTag: schema.prereleaseTag ?? '',
     all: schema.all ?? false,
     name: schema.name ?? '',
+    exclude: schema.exclude ? schema.exclude.split(',') : [],
   };
 
   return validatedSchema;

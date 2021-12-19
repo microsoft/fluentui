@@ -40,7 +40,7 @@ Current state of development that we wanna improve:
     - demos/storybook
     - bundling (TBA, we might not need to update how we bundle for this iteration)
 
-> Rather then leveraging solutions that might feel appealing (like TS Project refs etc, lerna/yarn workspace symlinks), we can leverage battle tested solution that has been in place for quite some time, thus makes its adoption compatibility with 3rd party toolign straightforward.
+> Rather then leveraging solutions that might feel appealing (like TS Project refs etc, lerna/yarn workspace symlinks), we can leverage battle tested solution that has been in place for quite some time, thus makes its adoption compatibility with 3rd party tooling straightforward.
 
 **Example:**
 
