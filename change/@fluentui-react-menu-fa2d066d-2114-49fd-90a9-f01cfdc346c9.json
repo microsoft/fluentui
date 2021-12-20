@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: MenuSplitItem implementation",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

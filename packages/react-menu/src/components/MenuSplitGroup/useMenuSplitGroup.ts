@@ -59,9 +59,10 @@ export const unstable_useMenuSplitGroup = (
       root: 'div',
     },
     root: getNativeElementProps('div', {
-      ...props,
+      role: 'presentation',
       ref: useMergedRefs(ref, innerRef),
       onKeyDown,
+      ...props,
     }),
   };
 };
