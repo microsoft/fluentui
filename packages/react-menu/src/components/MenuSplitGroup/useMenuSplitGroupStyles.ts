@@ -1,6 +1,8 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import type { MenuSplitGroupState } from './MenuSplitGroup.types';
 
+export const menuSplitGroupClassName = 'fui-MenuSplitGroup';
+
 /**
  * Styles for the root slot
  */
@@ -30,6 +32,6 @@ const useStyles = makeStyles({
  */
 export const unstable_useMenuSplitGroupStyles = (state: MenuSplitGroupState): MenuSplitGroupState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(menuSplitGroupClassName, styles.root, state.root.className);
   return state;
 };

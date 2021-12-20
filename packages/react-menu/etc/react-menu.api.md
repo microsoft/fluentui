@@ -160,7 +160,7 @@ export type MenuItemSlots = {
     icon?: IntrinsicShorthandProps<'span'>;
     checkmark?: IntrinsicShorthandProps<'span'>;
     submenuIndicator?: IntrinsicShorthandProps<'span'>;
-    content: IntrinsicShorthandProps<'span'>;
+    content?: IntrinsicShorthandProps<'span'>;
     secondaryContent?: IntrinsicShorthandProps<'span'>;
 };
 
@@ -261,6 +261,29 @@ export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React
 // @public (undocumented)
 export type MenuSlots = {};
 
+// @public
+export const MenuSplitGroup_unstable: ForwardRefComponent<MenuSplitGroupProps>;
+
+// @public (undocumented)
+export const menuSplitGroupClassName = "fui-MenuSplitGroup";
+
+// @public (undocumented)
+export type MenuSplitGroupCommons = {};
+
+// @public
+export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommons;
+
+// @public
+export const menuSplitGroupShorthandProps: (keyof MenuSplitGroupSlots)[];
+
+// @public (undocumented)
+export type MenuSplitGroupSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+};
+
+// @public
+export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & MenuSplitGroupCommons;
+
 // @public (undocumented)
 export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
     setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
@@ -331,6 +354,15 @@ export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, 
 
 // @public (undocumented)
 export type UninitializedMenuListState = Omit<MenuListState, 'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'> & Partial<Pick<MenuListState, 'checkedValues'>>;
+
+// @public
+export const unstable_renderMenuSplitGroup: (state: MenuSplitGroupState) => JSX.Element;
+
+// @public
+export const unstable_useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
+
+// @public
+export const unstable_useMenuSplitGroupStyles: (state: MenuSplitGroupState) => MenuSplitGroupState;
 
 // @public
 export const useCheckmarkStyles: (state: MenuItemSelectableState & Pick<MenuItemSlots, 'checkmark'>) => void;

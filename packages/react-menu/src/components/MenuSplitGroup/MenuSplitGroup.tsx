@@ -6,7 +6,7 @@ import type { MenuSplitGroupProps } from './MenuSplitGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * MenuSplitGroup component
+ * Layout wrapper that provides extra keyboard navigation behavior for two `MenuItem` components.
  */
 export const MenuSplitGroup_unstable: ForwardRefComponent<MenuSplitGroupProps> = React.forwardRef((props, ref) => {
   const state = unstable_useMenuSplitGroup(props, ref);

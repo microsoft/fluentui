@@ -6,6 +6,7 @@ import { isConformant } from '../../common/isConformant';
 describe('MenuSplitGroup', () => {
   isConformant({
     Component: MenuSplitGroup_unstable,
+    disabledTests: ['exports-component', 'has-top-level-file', 'exported-top-level'],
     displayName: 'MenuSplitGroup',
   });
 

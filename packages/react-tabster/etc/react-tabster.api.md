@@ -58,8 +58,8 @@ export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
 };
 
 // @public
