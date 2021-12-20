@@ -32,7 +32,7 @@ export const useMenu = (props: MenuProps): MenuState => {
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
   if (process.env.NODE_ENV !== 'production') {
-    if (children.length == 0) {
+    if (children.length === 0) {
       // eslint-disable-next-line no-console
       console.warn('Menu must contain at least one child');
     }
