@@ -50,7 +50,6 @@ export const SplitMenuItem = () => (
     <MenuTrigger>
       <Button>Toggle menu</Button>
     </MenuTrigger>
-
     <MenuPopover>
       <MenuList>
         <MenuItem>New </MenuItem>
@@ -69,10 +68,15 @@ export const SplitMenuItem = () => (
           </MenuPopover>
         </Menu>
         <Menu>
-          <MenuSplitItemTrigger>
-            <MenuItem>Main</MenuItem>
-            <MenuItem />
-          </MenuSplitItemTrigger>
+          {/**
+           * Renders DOM
+           * MenuSplitItem uses context
+           * Different relationship compared to the MenuTrigger, doesn't clone elements
+           */}
+          <MenuSplitGroup>
+            <MenuSplitItem>Main</MenuSplitItem>
+            <MenuSplitItem secondary />
+          </MenuSplitGroup>
           <MenuPopover>
             <MenuList>
               <MenuItem>Item</MenuItem>
@@ -86,19 +90,20 @@ export const SplitMenuItem = () => (
   </Menu>
 );
 
-const MenuSplitItemTrigger: React.FC<{}> = props => {
-  const children = React.Children.toArray(props.children) as React.ReactElement[];
+const MenuSplitGroup: React.FC<{}> = props => {
   const styles = useStyles();
 
-  const action = useTriggerActionElement(children[0]);
-  const trigger = useTriggerElement(children[1]);
+  return <div className={styles.root}>{props.children}</div>;
+};
 
-  return (
-    <div className={styles.root}>
-      {action}
-      {trigger}
-    </div>
-  );
+const MenuSplitItem: React.FC<{ secondary?: boolean }> = props => {
+  const item = <MenuItem hasSubmenu={props.secondary}>{props.children}</MenuItem>;
+
+  if (props.secondary) {
+    return useTriggerElement(item);
+  } else {
+    return useTriggerActionElement(item);
+  }
 };
 
 const useTriggerActionElement = (child: React.ReactElement) => {
@@ -267,5 +272,5 @@ const useTriggerElement = (child: React.ReactElement) => {
     triggerProps['aria-expanded'] = undefined;
   }
 
-  return React.cloneElement(child, { ...triggerProps, ref: triggerRef, content: null, hasSubmenu: true });
+  return React.cloneElement(child, { ...triggerProps, ref: triggerRef });
 };

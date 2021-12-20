@@ -24,12 +24,12 @@ export const useFocusFinders = () => {
   ]);
 
   const findNextFocusable = React.useCallback(
-    (currentElement: HTMLElement) => tabster?.focusable.findNext({ currentElement }),
+    (currentElement: HTMLElement, container: HTMLElement) => tabster?.focusable.findNext({ currentElement, container }),
     [tabster],
   );
 
   const findPrevFocusable = React.useCallback(
-    (currentElement: HTMLElement) => tabster?.focusable.findPrev({ currentElement }),
+    (currentElement: HTMLElement, container: HTMLElement) => tabster?.focusable.findPrev({ currentElement, container }),
     [tabster],
   );
 

@@ -69,7 +69,10 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
         children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
       },
     }),
-    content: resolveShorthand(props.content, { required: true, defaultProps: { children: props.children } }),
+    content: resolveShorthand(props.content, {
+      required: !!props.children,
+      defaultProps: { children: props.children },
+    }),
     secondaryContent: resolveShorthand(props.secondaryContent),
   };
 
