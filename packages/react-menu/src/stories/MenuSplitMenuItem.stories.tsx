@@ -28,6 +28,7 @@ export const SplitMenuItem = () => (
             </MenuList>
           </MenuPopover>
         </Menu>
+        <MenuItem>Preferences</MenuItem>
       </MenuList>
     </MenuPopover>
   </Menu>
