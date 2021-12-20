@@ -43,8 +43,14 @@ export const useMenu = (props: MenuProps): MenuState => {
     }
   }
 
-  const menuTrigger = children[0];
-  const menuPopover = children[1];
+  let menuTrigger: React.ReactElement | undefined = undefined;
+  let menuPopover: React.ReactElement | undefined = undefined;
+  if (children.length === 2) {
+    menuTrigger = children[0];
+    menuPopover = children[1];
+  } else if (children.length === 1) {
+    menuPopover = children[0];
+  }
 
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePopper(popperState);
 
