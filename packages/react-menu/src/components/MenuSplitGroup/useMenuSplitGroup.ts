@@ -1,0 +1,67 @@
+import * as React from 'react';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFluent } from '@fluentui/react-shared-contexts';
+import type { MenuSplitGroupProps, MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
+import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
+
+/**
+ * Array of all shorthand properties listed in MenuSplitGroupSlots
+ */
+export const menuSplitGroupShorthandProps: (keyof MenuSplitGroupSlots)[] = ['root'];
+
+/**
+ * Create the state required to render MenuSplitGroup.
+ *
+ * The returned state can be modified with hooks such as useMenuSplitGroupStyles,
+ * before being passed to renderMenuSplitGroup.
+ *
+ * @param props - props from this instance of MenuSplitGroup
+ * @param ref - reference to root HTMLElement of MenuSplitGroup
+ */
+export const unstable_useMenuSplitGroup = (
+  props: MenuSplitGroupProps,
+  ref: React.Ref<HTMLElement>,
+): MenuSplitGroupState => {
+  const innerRef = React.useRef<HTMLElement>();
+  const { dir } = useFluent();
+
+  const nextArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
+  const prevArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
+
+  const { findNextFocusable, findPrevFocusable } = useFocusFinders();
+
+  const onKeyDown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLElement>) => {
+      if (!document.activeElement) {
+        return;
+      }
+
+      if (!innerRef.current?.contains(document.activeElement)) {
+        return;
+      }
+
+      if (e.key === nextArrowKey) {
+        const next = findNextFocusable(document.activeElement as HTMLElement, { container: innerRef.current });
+        next?.focus();
+      }
+
+      if (e.key === prevArrowKey) {
+        const prev = findPrevFocusable(document.activeElement as HTMLElement, { container: innerRef.current });
+        prev?.focus();
+      }
+    },
+    [findNextFocusable, findPrevFocusable],
+  );
+
+  return {
+    components: {
+      root: 'div',
+    },
+    root: getNativeElementProps('div', {
+      ...props,
+      ref: useMergedRefs(ref, innerRef),
+      onKeyDown,
+    }),
+  };
+};
