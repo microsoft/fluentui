@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "breaking: MenuTrigger must be the first child of the `Menu`",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
