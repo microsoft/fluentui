@@ -26,6 +26,8 @@ export const DeviceControlsToggleButtonsAccessibilityScenario: React.FunctionCom
 
   return (
     <Scenario pageTitle="Device controls toggle buttons">
+      <h1>Device controls</h1>
+      <p>This is a basic control panel for your device</p>
       <ToggleButton onClick={onWiFiButtonClick}>Wi-Fi</ToggleButton>
       <ToggleButton
         checked={hotspotButtonPressed}
