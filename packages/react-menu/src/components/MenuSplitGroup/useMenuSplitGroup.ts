@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, getRTLSafeKey, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { MenuSplitGroupProps, MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
@@ -23,8 +23,8 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
   const innerRef = React.useRef<HTMLElement>();
   const { dir, targetDocument } = useFluent();
 
-  const nextArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
-  const prevArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
+  const nextArrowKey = getRTLSafeKey(ArrowRight, dir);
+  const prevArrowKey = getRTLSafeKey(ArrowLeft, dir);
 
   const { findNextFocusable, findPrevFocusable } = useFocusFinders();
 

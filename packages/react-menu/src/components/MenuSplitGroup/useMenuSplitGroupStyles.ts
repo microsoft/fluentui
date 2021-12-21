@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { menuItemClassName } from '../MenuItem/useMenuItemStyles';
 import type { MenuSplitGroupState } from './MenuSplitGroup.types';
 
 export const menuSplitGroupClassName = 'fui-MenuSplitGroup';
@@ -9,10 +10,10 @@ export const menuSplitGroupClassName = 'fui-MenuSplitGroup';
 const useStyles = makeStyles({
   root: theme => ({
     display: 'flex',
-    '& > [role="menuitem"]:nth-child(1)': {
+    [`& > .${menuItemClassName}:nth-child(1)`]: {
       width: '100%',
     },
-    '& > [role="menuitem"]:nth-child(2)': {
+    [`& > .${menuItemClassName}:nth-child(2)`]: {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
       paddingLeft: 0,
