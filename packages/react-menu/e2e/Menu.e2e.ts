@@ -4,6 +4,7 @@ const customTriggerStory = 'CustomTrigger';
 const selectionGroupStory = 'SelectionGroup';
 const nestedMenuStory = 'NestedSubmenus';
 const nestedMenuControlledStory = 'NestedSubmenusControlled';
+const anchorToCustomTargetStory = 'AnchorToCustomTarget';
 
 const menuStoriesTitle = 'Components/Menu';
 
@@ -75,6 +76,28 @@ describe('Menu', () => {
         .click('bottomRight')
         .get(menuSelector)
         .should('not.exist');
+    });
+  });
+
+  describe('Usage without trigger', () => {
+    it('should be able to share the same anchor target', () => {
+      cy.loadStory(menuStoriesTitle, anchorToCustomTargetStory)
+        .get(menuSelector)
+        .should('have.length', 0)
+        .get('body')
+        .contains('Open menu')
+        .click()
+        .get(menuSelector)
+        .should('be.visible')
+        .get('body')
+        .click('bottomRight')
+        .get(menuSelector)
+        .should('not.exist')
+        .get('body')
+        .contains('Custom target')
+        .click()
+        .get(menuSelector)
+        .should('be.visible');
     });
   });
 
