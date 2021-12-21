@@ -21,7 +21,7 @@ export const menuSplitGroupShorthandProps: (keyof MenuSplitGroupSlots)[] = ['roo
  */
 export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTMLElement>): MenuSplitGroupState => {
   const innerRef = React.useRef<HTMLElement>();
-  const { dir } = useFluent();
+  const { dir, targetDocument } = useFluent();
 
   const nextArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
   const prevArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
@@ -30,25 +30,26 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
 
   const onKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>) => {
-      if (!document.activeElement) {
+      const activeElement = targetDocument?.activeElement;
+      if (!activeElement) {
         return;
       }
 
-      if (!innerRef.current?.contains(document.activeElement)) {
+      if (!innerRef.current?.contains(activeElement)) {
         return;
       }
 
       if (e.key === nextArrowKey) {
-        const next = findNextFocusable(document.activeElement as HTMLElement, { container: innerRef.current });
+        const next = findNextFocusable(activeElement as HTMLElement, { container: innerRef.current });
         next?.focus();
       }
 
       if (e.key === prevArrowKey) {
-        const prev = findPrevFocusable(document.activeElement as HTMLElement, { container: innerRef.current });
+        const prev = findPrevFocusable(activeElement as HTMLElement, { container: innerRef.current });
         prev?.focus();
       }
     },
-    [findNextFocusable, findPrevFocusable],
+    [findNextFocusable, findPrevFocusable, targetDocument],
   );
 
   return {
