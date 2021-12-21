@@ -19,10 +19,7 @@ export const menuSplitGroupShorthandProps: (keyof MenuSplitGroupSlots)[] = ['roo
  * @param props - props from this instance of MenuSplitGroup
  * @param ref - reference to root HTMLElement of MenuSplitGroup
  */
-export const unstable_useMenuSplitGroup = (
-  props: MenuSplitGroupProps,
-  ref: React.Ref<HTMLElement>,
-): MenuSplitGroupState => {
+export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTMLElement>): MenuSplitGroupState => {
   const innerRef = React.useRef<HTMLElement>();
   const { dir } = useFluent();
 

@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { MenuSplitGroup_unstable } from './MenuSplitGroup';
+import { MenuSplitGroup } from './MenuSplitGroup';
 import { isConformant } from '../../common/isConformant';
 
 describe('MenuSplitGroup', () => {
   isConformant({
-    Component: MenuSplitGroup_unstable,
-    disabledTests: ['exports-component', 'has-top-level-file', 'exported-top-level'],
+    Component: MenuSplitGroup,
     displayName: 'MenuSplitGroup',
   });
 
   it('renders a default state', () => {
-    const result = render(<MenuSplitGroup_unstable>Default MenuSplitGroup</MenuSplitGroup_unstable>);
+    const result = render(<MenuSplitGroup>Default MenuSplitGroup</MenuSplitGroup>);
     expect(result.container).toMatchSnapshot();
   });
 });

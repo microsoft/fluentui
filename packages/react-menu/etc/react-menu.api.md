@@ -262,7 +262,7 @@ export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React
 export type MenuSlots = {};
 
 // @public
-export const MenuSplitGroup_unstable: ForwardRefComponent<MenuSplitGroupProps>;
+export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
 
 // @public (undocumented)
 export const menuSplitGroupClassName = "fui-MenuSplitGroup";
@@ -347,6 +347,9 @@ export const renderMenuList: (state: MenuListState, contextValues: MenuListConte
 export const renderMenuPopover: (state: MenuPopoverState) => JSX.Element;
 
 // @public
+export const renderMenuSplitGroup: (state: MenuSplitGroupState) => JSX.Element;
+
+// @public
 export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
 
 // @public (undocumented)
@@ -354,15 +357,6 @@ export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, 
 
 // @public (undocumented)
 export type UninitializedMenuListState = Omit<MenuListState, 'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'> & Partial<Pick<MenuListState, 'checkedValues'>>;
-
-// @public
-export const unstable_renderMenuSplitGroup: (state: MenuSplitGroupState) => JSX.Element;
-
-// @public
-export const unstable_useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
-
-// @public
-export const unstable_useMenuSplitGroupStyles: (state: MenuSplitGroupState) => MenuSplitGroupState;
 
 // @public
 export const useCheckmarkStyles: (state: MenuItemSelectableState & Pick<MenuItemSlots, 'checkmark'>) => void;
@@ -435,6 +429,12 @@ export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElem
 
 // @public
 export const useMenuPopoverStyles: (state: MenuPopoverState) => MenuPopoverState;
+
+// @public
+export const useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
+
+// @public
+export const useMenuSplitGroupStyles: (state: MenuSplitGroupState) => MenuSplitGroupState;
 
 // @public
 export const useMenuTrigger: (props: MenuTriggerProps) => MenuTriggerState;
