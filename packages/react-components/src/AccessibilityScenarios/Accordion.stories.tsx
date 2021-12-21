@@ -23,11 +23,13 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
             <input type="text" id="name" name="name" />
             <Label htmlFor="email">Email:</Label>
             <input type="text" id="email" name="email" />
-            <div role="group" aria-label="Gender">
+            <div role="radiogroup" aria-label="Gender">
               <input type="radio" id="male" name="gender" value="male" />
               <Label htmlFor="male">male</Label>
               <input type="radio" id="female" name="gender" value="female" />
               <Label htmlFor="female">female</Label>
+              <input type="radio" id="otherGender" name="gender" value="other" />
+              <Label htmlFor="otherGender">other</Label>
             </div>
           </AccordionPanel>
         </AccordionItem>
