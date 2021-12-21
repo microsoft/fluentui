@@ -32,7 +32,7 @@ export const useMenu = (props: MenuProps): MenuState => {
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
   if (process.env.NODE_ENV !== 'production') {
-    if (children.length == 0) {
+    if (children.length === 0) {
       // eslint-disable-next-line no-console
       console.warn('Menu must contain at least one child');
     }
@@ -51,7 +51,6 @@ export const useMenu = (props: MenuProps): MenuState => {
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
-
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePopper(popperState);
 
   const initialState = {
