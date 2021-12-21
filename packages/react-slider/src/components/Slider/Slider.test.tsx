@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
+import { debug } from 'console';
 
 describe('Slider', () => {
   isConformant({
@@ -44,110 +46,90 @@ describe('Slider', () => {
 
   // Unit tests
   it('handles id prop', () => {
-    const testId = 'test_id';
+    const testId = 'test-id';
     render(<Slider id={testId} />);
-    const sliderRoot = screen.getByRole('slider');
-    expect(sliderRoot.getAttribute('id')).toEqual(testId);
+    expect(screen.getByRole('slider').getAttribute('id')).toEqual(testId);
   });
 
   it('applies the defaultValue prop', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider defaultValue={10} ref={inputRef} />);
-    expect(inputRef.current?.value).toEqual('10');
+    render(<Slider defaultValue={10} />);
+    expect(screen.getByRole('slider').getAttribute('value')).toEqual('10');
   });
 
   it('applies the value prop', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider value={10} ref={inputRef} />);
-    expect(inputRef.current?.value).toEqual('10');
+    render(<Slider value={10} />);
+    expect(screen.getByRole('slider').getAttribute('value')).toEqual('10');
   });
 
   it('applies the correct value prop when min is set', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider value={0} min={20} ref={inputRef} />);
-    expect(inputRef.current?.value).toEqual('20');
+    render(<Slider value={0} min={20} />);
+    expect(screen.getByRole('slider').getAttribute('value')).toEqual('20');
   });
 
   it('applies the correct value prop when max is set', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider value={30} max={20} ref={inputRef} />);
-    expect(inputRef.current?.value).toEqual('20');
+    render(<Slider value={30} max={20} />);
+    expect(screen.getByRole('slider').getAttribute('value')).toEqual('20');
   });
 
   it('applies the disabled prop', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider disabled={true} ref={inputRef} />);
-    expect(inputRef.current?.disabled).toEqual(true);
+    render(<Slider disabled={true} />);
+    expect(screen.getByRole('slider').getAttribute('disabled')).toBeDefined();
   });
 
   it('applies the min prop', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider min={11} disabled={true} ref={inputRef} />);
-    expect(inputRef.current?.min).toEqual('11');
+    render(<Slider min={11} disabled={true} />);
+    expect(screen.getByRole('slider').getAttribute('min')).toEqual('11');
   });
 
   it('applies the max prop', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider max={11} disabled={true} ref={inputRef} />);
-    expect(inputRef.current?.max).toEqual('11');
+    render(<Slider max={11} disabled={true} />);
+    expect(screen.getByRole('slider').getAttribute('max')).toEqual('11');
   });
 
   it('applies the step prop', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider step={11} disabled={true} ref={inputRef} />);
-    expect(inputRef.current?.step).toEqual('11');
+    render(<Slider step={11} disabled={true} />);
+    expect(screen.getByRole('slider').getAttribute('step')).toEqual('11');
   });
 
   it('clamps an initial defaultValue that is out of bounds', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider defaultValue={-10} min={0} max={100} ref={inputRef} />);
-    expect(inputRef.current?.value).toEqual('0');
+    render(<Slider defaultValue={-10} min={0} max={100} />);
+    expect(screen.getByRole('slider').getAttribute('value')).toEqual('0');
   });
 
   it('applies focus to the hidden input', () => {
-    const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider defaultValue={3} ref={inputRef} />);
-    inputRef?.current?.focus();
-    expect(document.activeElement).toEqual(inputRef.current);
+    render(<Slider defaultValue={3} />);
+    const input = screen.getByRole('slider');
+
+    input.focus();
+    expect(document.activeElement).toEqual(input);
   });
 
   it('does not allow focus on disabled Slider', () => {
-    const sliderRef = React.createRef<HTMLInputElement>();
-
-    render(<Slider ref={sliderRef} disabled />);
-
+    render(<Slider disabled />);
+    const slider = screen.getByRole('slider');
     expect(document.activeElement).toEqual(document.body);
-    sliderRef?.current?.focus();
+    slider.focus();
     expect(document.activeElement).toEqual(document.body);
   });
 
   // Accessibility tests
   it('handles role prop', () => {
-    render(<Slider role="test" data-testid="test" />);
-    const sliderInput = screen.getByTestId('test');
-    expect(sliderInput.getAttribute('role')).toEqual('test');
-  });
-
-  it('renders the input slot as input', () => {
-    const { container } = render(<Slider input={{ className: 'test' }} />);
-    const inputElement = container.querySelector('.test');
-    expect(inputElement?.tagName).toEqual('INPUT');
+    render(<Slider role="test" />);
+    const customRole = screen.getByRole('test');
+    expect(customRole).toBeDefined();
   });
 
   it('provides the input slot with a type of range', () => {
-    const { container } = render(<Slider input={{ className: 'test' }} />);
-    const inputElement = container.querySelector('.test');
-    expect(inputElement?.getAttribute('type')).toEqual('range');
+    render(<Slider input={{ className: 'test' }} />);
+    expect(screen.getByRole('slider').getAttribute('type')).toEqual('range');
   });
 
   it('applies ariaValueText', () => {
-    const values = ['small', 'medium', 'large'];
-    const defaultValue = 1;
-    const getTextValue = (value: number) => values[value];
+    const testValue = 'test-value';
+    const getTextValue = () => testValue;
 
-    render(<Slider defaultValue={defaultValue} getAriaValueText={getTextValue} />);
-    const sliderInput = screen.getByRole('slider');
+    render(<Slider getAriaValueText={getTextValue} />);
 
-    expect(sliderInput.getAttribute('aria-valuetext')).toEqual(values[defaultValue]);
+    expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual(testValue);
   });
 });
