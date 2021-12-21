@@ -17,7 +17,7 @@ export const SplitMenuItem = () => (
           <MenuSplitGroup>
             <MenuItem>Open</MenuItem>
             <MenuTrigger>
-              <MenuItem />
+              <MenuItem aria-label="Open on platform" />
             </MenuTrigger>
           </MenuSplitGroup>
           <MenuPopover>
@@ -33,3 +33,14 @@ export const SplitMenuItem = () => (
     </MenuPopover>
   </Menu>
 );
+
+SplitMenuItem.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A menu item can be split into a main action and a trigger that opens a submenu.',
+        'Use this pattern sparingly. Make sure to add an `aria-label` to the trigger for screen reader users.',
+      ].join('\n'),
+    },
+  },
+};

@@ -49,7 +49,7 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
         prev?.focus();
       }
     },
-    [findNextFocusable, findPrevFocusable, targetDocument],
+    [findNextFocusable, findPrevFocusable, targetDocument, nextArrowKey, prevArrowKey],
   );
 
   return {
