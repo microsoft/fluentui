@@ -7,6 +7,7 @@ describe('Select', () => {
   isConformant({
     Component: Select,
     displayName: 'Select',
+    primarySlot: 'select',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

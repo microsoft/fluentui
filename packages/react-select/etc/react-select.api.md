@@ -17,6 +17,9 @@ export const renderSelect: (state: SelectState) => JSX.Element;
 export const Select: ForwardRefComponent<SelectProps>;
 
 // @public (undocumented)
+export const selectClassName = "fui-Select";
+
+// @public (undocumented)
 export interface SelectCommons {
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     // (undocumented)
