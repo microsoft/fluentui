@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
-import { debug } from 'console';
 
 describe('Slider', () => {
   isConformant({
