@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuSplitGroup_unstable } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuSplitGroup } from '../index';
 
 import { Button } from '@fluentui/react-button';
 
@@ -14,12 +14,12 @@ export const SplitMenuItem = () => (
         <MenuItem>New </MenuItem>
         <MenuItem>New Window</MenuItem>
         <Menu>
-          <MenuSplitGroup_unstable>
+          <MenuSplitGroup>
             <MenuItem>Open</MenuItem>
             <MenuTrigger>
               <MenuItem />
             </MenuTrigger>
-          </MenuSplitGroup_unstable>
+          </MenuSplitGroup>
           <MenuPopover>
             <MenuList>
               <MenuItem>In browser</MenuItem>
