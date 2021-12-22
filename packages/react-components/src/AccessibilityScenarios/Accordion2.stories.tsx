@@ -15,6 +15,7 @@ import { Scenario } from './utils';
 export const FAQAccordionAccessibilityScenario: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="FAQ accordion">
+      <h1>Frequently asked questions about Windows</h1>
       <Accordion multiple>
         <AccordionItem value="faq1">
           <AccordionHeader>What's the difference between 32-bit and 64-bit versions of Windows?</AccordionHeader>

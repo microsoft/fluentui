@@ -15,6 +15,7 @@ import { Scenario } from './utils';
 export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Personal form accordion">
+      <h1>Personal form</h1>
       <Accordion defaultOpenItems="basicInfo">
         <AccordionItem value="basicInfo">
           <AccordionHeader>Basic information</AccordionHeader>
