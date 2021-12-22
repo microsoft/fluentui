@@ -97,7 +97,7 @@ export interface IsConformantOptions<TProps = {}> {
 
   /**
    * Test will load the first tsconfig.json file working upwards from `tsconfigDir`.
-   * The default value of `tsconfigDir` is the directory of the component being tested
+   * @defaultvalue the directory of the component being tested
    */
   tsconfigDir?: string;
 }
