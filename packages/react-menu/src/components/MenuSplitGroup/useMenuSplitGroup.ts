@@ -57,7 +57,7 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
       root: 'div',
     },
     root: getNativeElementProps('div', {
-      role: 'presentation',
+      role: 'group',
       ref: useMergedRefs(ref, innerRef),
       onKeyDown,
       ...props,

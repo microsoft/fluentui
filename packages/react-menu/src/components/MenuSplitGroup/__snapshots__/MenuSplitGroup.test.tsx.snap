@@ -4,7 +4,7 @@ exports[`MenuSplitGroup renders a default state 1`] = `
 <div>
   <div
     class="fui-MenuSplitGroup"
-    role="presentation"
+    role="group"
   >
     Default MenuSplitGroup
   </div>
