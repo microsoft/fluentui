@@ -48,6 +48,13 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
    * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
   onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
+
+  /**
+   * Puts aria-hidden=true on all non-ancestors of the current element, for screen readers. This
+   * is an experimental feature that will be graduated to default behavior after testing. This
+   * flag will be removed with the next major release.
+   */
+  enableAriaHiddenSiblings?: boolean;
 }
 
 /**

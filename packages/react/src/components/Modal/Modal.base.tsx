@@ -457,6 +457,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
             shouldRestoreFocus={!ignoreExternalFocusing}
+            enableAriaHiddenSiblings={enableAriaHiddenSiblings}
           >
             <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (

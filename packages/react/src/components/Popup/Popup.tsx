@@ -124,30 +124,32 @@ function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivEl
   const isModalOrPanel = props['aria-modal'];
 
   React.useEffect(() => {
-    const targetDocument = getDocument();
-    if (isModalOrPanel && targetDocument && root && root.current) {
-      const popupPortalNode = root.current.parentElement?.parentElement;
-      let nodesToHide: HTMLElement[] = findSiblingNodes(popupPortalNode, popupPortalNode?.parentElement);
+    if (props.enableAriaHiddenSiblings) {
+      const targetDocument = getDocument();
+      if (isModalOrPanel && targetDocument && root && root.current) {
+        const popupPortalNode = root.current.parentElement?.parentElement;
+        let nodesToHide: HTMLElement[] = findSiblingNodes(popupPortalNode, popupPortalNode?.parentElement);
 
-      //if popupPortalNode is not a direct child of body, its ancestor's siblings need to be hidden as well.
-      if (popupPortalNode?.parentElement !== targetDocument.body) {
-        const popupAncestorNode = findAncestorNode(root.current, targetDocument);
-        nodesToHide.concat(findSiblingNodes(popupAncestorNode, targetDocument.body));
+        //if popupPortalNode is not a direct child of body, its ancestor's siblings need to be hidden as well.
+        if (popupPortalNode?.parentElement !== targetDocument.body) {
+          const popupAncestorNode = findAncestorNode(root.current, targetDocument);
+          nodesToHide.concat(findSiblingNodes(popupAncestorNode, targetDocument.body));
+        }
+
+        nodesToHide = nodesToHide.filter(
+          child =>
+            child.tagName !== 'TEMPLATE' &&
+            child.tagName !== 'SCRIPT' &&
+            child.tagName !== 'STYLE' &&
+            !child.hasAttribute('aria-hidden'),
+        );
+
+        nodesToHide.forEach(node => node.setAttribute('aria-hidden', 'true'));
+
+        return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
       }
-
-      nodesToHide = nodesToHide.filter(
-        child =>
-          child.tagName !== 'TEMPLATE' &&
-          child.tagName !== 'SCRIPT' &&
-          child.tagName !== 'STYLE' &&
-          !child.hasAttribute('aria-hidden'),
-      );
-
-      nodesToHide.forEach(node => node.setAttribute('aria-hidden', 'true'));
-
-      return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
     }
-  }, [isModalOrPanel, root]);
+  }, [isModalOrPanel, root, props.enableAriaHiddenSiblings]);
 }
 
 function findAncestorNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
