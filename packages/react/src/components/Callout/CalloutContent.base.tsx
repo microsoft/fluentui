@@ -420,7 +420,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       target,
       hidden,
       onLayerMounted,
-      enableAriaHiddenSiblings,
+      enableAriaHiddenSiblings = true,
     } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);

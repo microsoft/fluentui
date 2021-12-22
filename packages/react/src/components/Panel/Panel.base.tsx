@@ -178,6 +178,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const popupPropsWithDefaults = { enableAriaHiddenSiblings: true, ...popupProps };
     const isOpen = this.isActive;
     const isAnimating =
       visibility === PanelVisibilityState.animatingClosed || visibility === PanelVisibilityState.animatingOpen;
@@ -227,7 +228,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           ariaLabelledBy={this._headerTextId ? this._headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
-          {...popupProps}
+          {...popupPropsWithDefaults}
         >
           <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
             {overlay}

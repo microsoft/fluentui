@@ -165,13 +165,6 @@ export interface IDialogProps
    * than the value specified in max-width.
    */
   maxWidth?: ICSSRule | ICSSPixelUnitRule;
-
-  /**
-   * Puts aria-hidden=true on all non-ancestors of the current element, for screen readers. This
-   * is an experimental feature that will be graduated to default behavior after testing. This
-   * flag will be removed with the next major release.
-   */
-  enableAriaHiddenSiblings?: boolean;
 }
 
 /**

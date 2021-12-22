@@ -18,6 +18,7 @@ const DefaultModalProps: IModalProps = {
   className: '',
   containerClassName: '',
   topOffsetFixed: false,
+  enableAriaHiddenSiblings: true,
 };
 
 const DefaultDialogContentProps: IDialogContentProps = {
@@ -92,7 +93,6 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       minWidth,
       maxWidth,
       modalProps,
-      enableAriaHiddenSiblings,
     } = this.props;
 
     const mergedLayerProps: ILayerProps = {
@@ -127,7 +127,6 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       ...modalProps,
       layerProps: mergedLayerProps,
       dragOptions,
-      enableAriaHiddenSiblings,
     };
 
     const dialogContentProps: IDialogContentProps = {

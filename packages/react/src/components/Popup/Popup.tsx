@@ -175,7 +175,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
   (props, forwardedRef) => {
     // Default props
     // eslint-disable-next-line deprecation/deprecation
-    props = { shouldRestoreFocus: true, ...props };
+    props = { shouldRestoreFocus: true, enableAriaHiddenSiblings: true, ...props };
 
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;

@@ -3014,6 +3014,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     directionalHintForRTL?: DirectionalHint;
     dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
+    enableAriaHiddenSiblings?: boolean;
     finalHeight?: number;
     gapSpace?: number;
     hidden?: boolean;
@@ -7469,6 +7470,7 @@ export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
+    enableAriaHiddenSiblings?: boolean;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     role?: string;

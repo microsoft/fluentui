@@ -59,6 +59,7 @@ const DEFAULT_PROPS: Partial<IModalProps> = {
   isDarkOverlay: true,
   className: '',
   containerClassName: '',
+  enableAriaHiddenSiblings: true,
 };
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
