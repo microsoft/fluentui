@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 22 Dec 2021 07:29:44 GMT",
+      "tag": "@fluentui/react_v8.48.1",
+      "version": "8.48.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "aduran@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "36d59e339779ed43ffa112594bb7c3b339c8ca2e",
+            "comment": "Fixing Stack behavior when a React.Fragment wraps StackItems, it should be ignored."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Dec 2021 07:26:40 GMT",
       "tag": "@fluentui/react_v8.48.0",
       "version": "8.48.0",

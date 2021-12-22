@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing Stack behavior when a React.Fragment wraps StackItems, it should be ignored.",
-  "packageName": "@fluentui/react",
-  "email": "aduran@microsoft.com",
-  "dependentChangeType": "patch"
-}
