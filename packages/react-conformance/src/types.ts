@@ -94,6 +94,11 @@ export interface IsConformantOptions<TProps = {}> {
    * This is 'root' by default, and only needs to be specified if it's a slot other than 'root'.
    */
   primarySlot?: keyof TProps | 'root';
+
+  /**
+   * Directory to tsconfig.json
+   */
+  tsconfigDir?: string;
 }
 
 export type ConformanceTest<TProps = {}> = (
