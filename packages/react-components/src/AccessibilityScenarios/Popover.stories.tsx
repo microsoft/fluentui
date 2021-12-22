@@ -12,11 +12,11 @@ import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover
 
 import { Scenario } from './utils';
 
-interface IAddPeopleContentProps {
+interface AddPeopleContentProps {
   setPopoverOpened: (state: boolean) => void;
 }
 
-const AddPeopleContent: React.FunctionComponent<IAddPeopleContentProps> = (props: IAddPeopleContentProps) => {
+const AddPeopleContent: React.FunctionComponent<AddPeopleContentProps> = (props: AddPeopleContentProps) => {
   const { setPopoverOpened } = props;
 
   return (

@@ -8,23 +8,43 @@ import { Button } from '@fluentui/react-button';
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+import { Label } from '@fluentui/react-label';
+
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Tooltip } from '@fluentui/react-tooltip';
+
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Menu, MenuTrigger, MenuList, MenuPopover, MenuItem } from '@fluentui/react-menu';
 
 import { Scenario } from './utils';
 
 export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = () => {
+  const [tooltipVisible, setTooltipVisible] = React.useState(false);
+
   return (
     <Scenario pageTitle="Buttons with tooltip">
-      <Tooltip content="Default tooltip behavior">
-        <Button>First</Button>
+      <h2>Tooltip as a password requirements</h2>
+      <Label htmlFor="password">Password</Label>
+      <input type="password" id="password" name="password" />
+      <Tooltip
+        visible={tooltipVisible}
+        content="Password must be at least 8 characters long, contain a capital letter, and a number."
+      >
+        <Button onClick={() => setTooltipVisible(visible => !visible)}>Password requirements</Button>
       </Tooltip>
 
-      <Tooltip content="Tooltip as a replacement label" triggerAriaAttribute="label">
-        <Button>Second</Button>
+      <h2>Tooltips for text formatting icon-only buttons</h2>
+      <Tooltip content="Make text bold" triggerAriaAttribute="label">
+        <Button>Bold</Button>
       </Tooltip>
 
-      <Tooltip content="Tooltip as a description" triggerAriaAttribute="describedby">
-        <Button>Third</Button>
+      <h2>Tooltip as an additional button description</h2>
+      <Tooltip content="App and account settings, status and more" triggerAriaAttribute="describedby">
+        <Button>Settings</Button>
       </Tooltip>
     </Scenario>
   );
