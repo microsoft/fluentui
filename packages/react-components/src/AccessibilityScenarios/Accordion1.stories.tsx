@@ -23,14 +23,15 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
             <input type="text" id="name" name="name" />
             <Label htmlFor="email">Email:</Label>
             <input type="text" id="email" name="email" />
-            <div role="radiogroup" aria-label="Gender">
-              <input type="radio" id="male" name="gender" value="male" />
-              <Label htmlFor="male">male</Label>
-              <input type="radio" id="female" name="gender" value="female" />
-              <Label htmlFor="female">female</Label>
-              <input type="radio" id="otherGender" name="gender" value="other" />
-              <Label htmlFor="otherGender">other</Label>
-            </div>
+            <fieldset>
+              <legend>Age</legend>
+              <input type="radio" id="ageClass1" name="age" value="ageClass1" />
+              <Label htmlFor="ageClass1">Below 18</Label>
+              <input type="radio" id="ageClass2" name="age" value="ageClass2" />
+              <Label htmlFor="ageClass2">Between 18 and 30</Label>
+              <input type="radio" id="ageClass3" name="age" value="ageClass3" />
+              <Label htmlFor="ageClass3">Over 30</Label>
+            </fieldset>
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="residence">
@@ -66,5 +67,5 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
 
 export default {
   title: 'Accessibility Scenarios / Personal form accordion',
-  id: 'accordion-accessibility-scenario',
+  id: 'accordion1-accessibility-scenario',
 };
