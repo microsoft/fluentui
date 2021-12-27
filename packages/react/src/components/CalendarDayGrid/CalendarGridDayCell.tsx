@@ -239,7 +239,6 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
       aria-readonly="true"
       aria-current={day.isSelected ? 'date' : undefined}
       aria-selected={day.isInBounds ? day.isSelected : undefined}
-      data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
     >
       <button
         key={day.key + 'button'}
@@ -254,8 +253,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         ref={isNavigatedDate ? navigatedDayRef : undefined}
         disabled={!ariaHidden && !day.isInBounds}
         type="button"
-        tabIndex={-1}
-        data-is-focusable="false"
+        data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
       >
         <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}
