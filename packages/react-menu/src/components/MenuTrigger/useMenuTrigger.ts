@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useTriggerElement } from './useTriggerElement';
 import type { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 
@@ -7,9 +8,9 @@ import type { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
  *
  * @param props - props from this instance of MenuTrigger
  */
-export const useMenuTrigger = (props: MenuTriggerProps): MenuTriggerState => {
+export const useMenuTrigger = (props: MenuTriggerProps, ref: React.Ref<HTMLElement>): MenuTriggerState => {
   const state = { ...props };
 
   // TODO just move the contents of this hook here
-  return useTriggerElement(state);
+  return useTriggerElement(state, ref);
 };
