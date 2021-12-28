@@ -13,7 +13,7 @@ export type MenuTriggerProps = {
 export type MenuTriggerChildProps = Required<
   Pick<
     React.HTMLAttributes<HTMLElement>,
-    'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'
+    'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'
   >
 > & {
   ref?: React.Ref<never>;
