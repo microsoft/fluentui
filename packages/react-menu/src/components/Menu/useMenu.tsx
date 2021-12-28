@@ -65,6 +65,7 @@ export const useMenu = (props: MenuProps): MenuState => {
     menuPopover,
     triggerRef,
     menuPopoverRef,
+    components: {},
   } as const;
 
   // TODO Better way to narrow types ?

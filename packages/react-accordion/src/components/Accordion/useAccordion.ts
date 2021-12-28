@@ -47,6 +47,9 @@ export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>)
     navigable,
     openItems,
     requestToggle,
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       ...props,
       ref,
