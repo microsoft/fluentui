@@ -124,7 +124,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
           );
         }
       }
-    } else if (this._inputElement.current && cursor !== null && !this.state.isComposing) {
+    } else if (this._inputElement.current && cursor && !this.state.isComposing) {
       this._inputElement.current.setSelectionRange(cursor.start, cursor.end, cursor.dir);
     }
   }
@@ -238,7 +238,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         case KeyCodes.right:
           if (this._autoFillEnabled) {
             // eslint-disable-next-line deprecation/deprecation
-            if (this.props.value === undefined && this.props.updateValueInWillReceiveProps === undefined) {
+            if (this.props.value === undefined && !this.props.updateValueInWillReceiveProps) {
               this.setState({ inputValue: this.props.suggestedDisplayValue || '' });
             }
 
@@ -324,15 +324,14 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     }
 
     // eslint-disable-next-line deprecation/deprecation
-    const { onInputChange, onInputValueChange } = this.props;
+    const { onInputChange, onInputValueChange, updateValueInWillReceiveProps } = this.props;
 
     // onInputChange is deprecated but will still need to support it until it is removed.
     if (onInputChange) {
       newValue = onInputChange?.(newValue, composing) || '';
     }
 
-    // eslint-disable-next-line deprecation/deprecation
-    if (this.props.value === undefined && this.props.updateValueInWillReceiveProps === undefined) {
+    if (this.props.value === undefined && !updateValueInWillReceiveProps) {
       this.setState({ inputValue: newValue });
     }
 
