@@ -7,7 +7,6 @@ export type CardSlots = {
 export type CardCommons = {
   /*
    * TODO Add props and slots here
-   * Any slot property should be listed in the cardShorthandProps array below
    * Any property that has a default value should be listed in CardDefaultedProps as e.g. 'size' | 'icon'
    */
 };

@@ -49,7 +49,6 @@ type SlotProps<S extends ObjectShorthandPropsRecord> = {
  */
 export function getSlots<R extends ObjectShorthandPropsRecord>(
   state: ComponentState<R>,
-  _slotNames?: unknown,
 ): {
   slots: Slots<R>;
   slotProps: SlotProps<R>;
@@ -58,13 +57,11 @@ export function getSlots<R extends ObjectShorthandPropsRecord>(
   const slotProps = {} as R;
 
   const slotNames: (keyof R)[] = Object.keys(state.components);
-
   for (const slotName of slotNames) {
     const [slot, props] = getSlot(state, slotName);
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
   }
-
   return { slots, slotProps: (slotProps as unknown) as SlotProps<R> };
 }
 

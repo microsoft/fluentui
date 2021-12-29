@@ -42,9 +42,6 @@ export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons &
     id?: string;
 };
 
-// @public
-export const radioItemShorthandProps: (keyof RadioItemSlots)[];
-
 // @public (undocumented)
 export type RadioItemSlots = {
     root: IntrinsicShorthandProps<'span'>;
@@ -62,9 +59,6 @@ export type RadioProps = ComponentProps<RadioSlots> & Partial<RadioCommons> & {}
 
 // @public
 export type RadioShorthandProps = never;
-
-// @public
-export const radioShorthandProps: Array<keyof RadioSlots>;
 
 // @public (undocumented)
 export type RadioSlots = {

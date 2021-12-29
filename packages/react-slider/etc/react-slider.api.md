@@ -81,9 +81,6 @@ export type SliderCommons = {
 // @public (undocumented)
 export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
 
-// @public
-export const sliderShorthandProps: (keyof SliderSlots)[];
-
 // @public (undocumented)
 export type SliderSlots = {
     root: IntrinsicShorthandProps<'div'>;

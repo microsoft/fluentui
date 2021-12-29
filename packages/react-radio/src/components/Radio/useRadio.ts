@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { RadioProps, RadioSlots, RadioState } from './Radio.types';
-
-/**
- * Array of all shorthand properties listed in RadioShorthandProps
- */
-export const radioShorthandProps: Array<keyof RadioSlots> = ['root'];
+import { RadioProps, RadioState } from './Radio.types';
 
 /**
  * Create the state required to render Radio.

@@ -12,7 +12,6 @@ export type RadioProps = ComponentProps<RadioSlots> &
   Partial<RadioCommons> & {
     /*
      * TODO Add props and slots here
-     * Any slot property should be listed in the radioShorthandProps array below
      * Any property that has a default value should be listed in RadioDefaultedProps as e.g. 'size' | 'icon'
      */
   };

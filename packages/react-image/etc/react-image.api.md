@@ -30,9 +30,6 @@ export type ImageCommons = {
 export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 
 // @public (undocumented)
-export const imageShorthandProps: Array<keyof ImageSlots>;
-
-// @public (undocumented)
 export type ImageSlots = {
     root: IntrinsicShorthandProps<'img'>;
 };

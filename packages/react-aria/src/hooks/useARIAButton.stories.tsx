@@ -23,7 +23,7 @@ export const Default = (args: DefaultArgs) => {
       children: React.Fragment,
     },
   };
-  const { slots, slotProps } = getSlots<Slots>(state, ['button', 'root']);
+  const { slots, slotProps } = getSlots<Slots>(state);
   return (
     <slots.root {...slotProps.root}>
       <slots.button {...slotProps.button}>this is a button</slots.button>

@@ -98,7 +98,7 @@ export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPr
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
-export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>, _slotNames?: unknown): {
+export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: SlotProps<R>;
 };
