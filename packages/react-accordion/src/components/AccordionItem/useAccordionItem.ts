@@ -30,7 +30,9 @@ export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLE
     value,
     disabled,
     onHeaderClick: onAccordionHeaderClick,
-    components: { root: 'div' },
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       ref: ref,
       ...(navigable ? tabsterAttributes : {}),

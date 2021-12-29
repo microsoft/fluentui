@@ -33,7 +33,9 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
     arrowRef,
     open,
     mountNode,
-    components: { root: 'div' },
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, contentRef),
       role: 'dialog',

@@ -33,7 +33,10 @@ export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTM
     theme: mergedTheme,
     themeClassName: useThemeStyleTag({ theme: mergedTheme, targetDocument }),
 
-    components: { root: 'div' },
+    components: {
+      root: 'div',
+    },
+
     root: getNativeElementProps('div', {
       ...props,
       dir,

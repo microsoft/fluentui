@@ -48,7 +48,9 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
   );
 
   return {
-    components: { root: 'div' },
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       role: 'group',
       ref: useMergedRefs(ref, innerRef),

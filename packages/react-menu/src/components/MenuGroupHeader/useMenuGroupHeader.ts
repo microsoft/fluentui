@@ -10,7 +10,9 @@ export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React.Ref<H
   const { headerId: id } = useMenuGroupContext();
 
   return {
-    components: { root: 'div' },
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       ref,
       id,
