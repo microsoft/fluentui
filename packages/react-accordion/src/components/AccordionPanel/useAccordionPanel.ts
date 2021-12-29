@@ -12,9 +12,7 @@ export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTM
   const { open } = useAccordionItemContext();
   return {
     open,
-    components: {
-      root: 'div',
-    },
+    components: { root: 'div' },
     root: getNativeElementProps('div', {
       ref,
       role: 'region',

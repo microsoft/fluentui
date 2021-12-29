@@ -29,9 +29,7 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
   });
 
   return {
-    components: {
-      root: 'div',
-    },
+    components: { root: 'div' },
     root: getNativeElementProps('div', {
       ref,
       role: 'tablist',
