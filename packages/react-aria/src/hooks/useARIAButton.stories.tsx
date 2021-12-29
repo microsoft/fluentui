@@ -17,6 +17,7 @@ interface DefaultArgs {
 
 export const Default = (args: DefaultArgs) => {
   const state: State = {
+    components: { root: 'div', button: 'button' },
     root: {},
     button: {
       ...useARIAButton({ as: 'button', onClick: args.onClick }, { required: true }),
@@ -32,6 +33,9 @@ export const Default = (args: DefaultArgs) => {
 };
 
 export const Anchor = (args: DefaultArgs) => {
+  type AnchorSlots = {
+    root: ARIAButtonShorthandProps;
+  };
   const props = useARIAButton(
     {
       as: 'a',
@@ -43,7 +47,10 @@ export const Anchor = (args: DefaultArgs) => {
     },
     { required: true },
   );
-  const { slots, slotProps } = getSlots({ root: props }, ['root']);
+  const { slots, slotProps } = getSlots<AnchorSlots>({
+    components: { root: 'a' },
+    root: props,
+  });
   return <slots.root {...slotProps.root}>this is an anchor</slots.root>;
 };
 
