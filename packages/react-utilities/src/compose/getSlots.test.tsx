@@ -18,9 +18,9 @@ describe('getSlots', () => {
   });
 
   it('returns root slot as a span with no props', () => {
-    type Slots = { root: IntrinsicShorthandProps<'span'> };
+    type Slots = { root: IntrinsicShorthandProps<'div', 'span'> };
     expect(
-      getSlots<Slots>({ root: { as: 'span' }, components: { root: 'span' } }),
+      getSlots<Slots>({ root: { as: 'span' }, components: { root: 'div' } }),
     ).toEqual({
       slots: { root: 'span' },
       slotProps: { root: {} },
