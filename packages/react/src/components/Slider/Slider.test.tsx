@@ -45,6 +45,12 @@ describe('Slider', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('can set aria-labelledby attribute', () => {
+    wrapper = mount(<Slider aria-labelledby="custom-label" />);
+    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+    expect(sliderSlideBox.getDOMNode().getAttribute('aria-labelledby')).toEqual('custom-label');
+  });
+
   it('can provide the current value', () => {
     const slider = React.createRef<ISlider>();
 

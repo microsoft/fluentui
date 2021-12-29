@@ -1,5 +1,5 @@
 import type { Theme } from '@fluentui/react-theme';
-import type { MakeStyles, MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { MakeStylesStyle, MakeStylesStyleRule } from '@fluentui/react-make-styles';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
@@ -72,9 +72,9 @@ export const createFocusOutlineStyle = (
   options: {
     style: Partial<FocusOutlineStyleOptions>;
   } & CreateFocusIndicatorStyleRuleOptions = { style: {}, ...defaultOptions },
-): MakeStyles => ({
+): MakeStylesStyle => ({
   ':focus-visible': {
-    outline: 'none',
+    outlineStyle: 'none',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: getFocusOutlineStyles({
     outlineColor: theme.colorStrokeFocus2,
@@ -96,7 +96,7 @@ export const createCustomFocusIndicatorStyle = (
   options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
 ): MakeStylesStyleRule<Theme> => theme => ({
   ':focus-visible': {
-    outline: 'none',
+    outlineStyle: 'none',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]:
     typeof rule === 'function' ? rule(theme) : rule,

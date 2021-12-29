@@ -22,6 +22,7 @@ export class Pie extends React.Component<IPieProps, {}> {
   public arcGenerator = (d: IArcData, i: number): JSX.Element => {
     return (
       <LabeledArc
+        culture={this.props.culture}
         key={i}
         data={d}
         innerRadius={this.props.innerRadius}

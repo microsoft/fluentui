@@ -19,21 +19,22 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-storybook/src && yarn docs",
-    "storybook": "start-storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-storybook/src && yarn docs",
+    "storybook": "start-storybook",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.1"
+    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.4"
   },
   "dependencies": {
-    "@fluentui/react-provider": "9.0.0-beta.2",
-    "@fluentui/react-theme": "9.0.0-beta.1",
+    "@fluentui/react-provider": "9.0.0-beta.5",
+    "@fluentui/react-theme": "9.0.0-beta.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -43,7 +44,6 @@
     "@storybook/addons": "^6.0.28"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

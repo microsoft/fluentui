@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image } from '../index';
+import { Image } from '../Image';
 
 export const Shadow = () => <Image shadow src="https://via.placeholder.com/300x300" />;
 Shadow.parameters = {

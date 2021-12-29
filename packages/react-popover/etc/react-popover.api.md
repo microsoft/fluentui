@@ -72,6 +72,9 @@ export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
+// @public (undocumented)
+export const popoverSurfaceClassName = "fui-PopoverSurface";
+
 // @public
 export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
@@ -112,7 +115,7 @@ export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
 export const usePopover: (props: PopoverProps) => PopoverState;
 
 // @public (undocumented)
-export const usePopoverContext: <T>(selector: ContextSelector<Pick<PopoverState, "mountNode" | "open" | "setOpen" | "triggerRef" | "contentRef" | "openOnHover" | "openOnContext" | "noArrow" | "arrowRef" | "size" | "appearance" | "trapFocus">, T>) => T;
+export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public
 export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;

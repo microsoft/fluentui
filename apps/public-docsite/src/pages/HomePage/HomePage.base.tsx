@@ -180,7 +180,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             <TitleStack>
               <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
               <MarkdownHeader as="h3" className={classNames.cardTitle}>
-                Web
+                React
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
@@ -213,6 +213,20 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                 >
                   {selectedMajorName}
                 </ActionButton>
+              </li>
+            </ul>
+          </div>
+          <div className={classNames.card}>
+            <TitleStack>
+              <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Web Components
+              </MarkdownHeader>
+            </TitleStack>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/webcomponents', 'Controls')}</li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/webcomponents', 'Get started')}
               </li>
             </ul>
           </div>

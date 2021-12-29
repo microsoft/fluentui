@@ -15,7 +15,10 @@ import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../ut
 import { ComponentEventHandler } from '../../types';
 import { useAnimationStyles } from './useAnimationStyles';
 
-export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
+export type AnimationChildrenProp = (props: {
+  classes: string;
+  state: 'unmounted' | 'exited' | 'entering' | 'entered' | 'exiting';
+}) => React.ReactNode;
 
 export interface AnimationProps extends ChildrenComponentProps<AnimationChildrenProp | React.ReactChild> {
   /** Additional CSS class name(s) to apply.  */
@@ -139,9 +142,7 @@ export interface AnimationProps extends ChildrenComponentProps<AnimationChildren
 /**
  * An Animation provides animation effects to rendered elements.
  */
-export const Animation: React.FC<AnimationProps> & {
-  handledProps: (keyof AnimationProps)[];
-} = props => {
+export const Animation = (React.forwardRef<HTMLDivElement, AnimationProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Animation.displayName, context.telemetry);
   setStart();
@@ -172,6 +173,7 @@ export const Animation: React.FC<AnimationProps> & {
 
   const element = (
     <Transition
+      nodeRef={ref}
       in={visible}
       appear={appear}
       mountOnEnter={mountOnEnter}
@@ -187,13 +189,19 @@ export const Animation: React.FC<AnimationProps> & {
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
       {isChildrenFunction
-        ? () => (children as AnimationChildrenProp)({ classes: cx(animationClasses, className) })
-        : child}
+        ? ({ state }) =>
+            (children as AnimationChildrenProp)({
+              classes: cx(animationClasses, className, (child as any)?.props?.className),
+              state,
+            })
+        : React.cloneElement(child, { className: cx(animationClasses, className, (child as any)?.props?.className) })}
     </Transition>
   );
   setEnd();
 
   return element;
+}) as unknown) as React.FC<AnimationProps> & {
+  handledProps: (keyof AnimationProps)[];
 };
 
 Animation.displayName = 'Animation';

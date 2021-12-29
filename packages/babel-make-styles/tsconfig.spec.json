@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": true
+    "module": "CommonJS",
+    "outDir": "dist",
+    "types": ["jest", "node", "inline-style-expand-shorthand"]
   },
-  "include": ["__fixtures__/**/code.ts"]
+  "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.d.ts", "__fixtures__/**/code.ts"]
 }

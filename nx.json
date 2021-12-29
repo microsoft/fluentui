@@ -149,11 +149,11 @@
       "implicitDependencies": []
     },
     "@fluentui/react-accordion": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-aria": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-avatar": {
@@ -199,9 +199,6 @@
     },
     "@fluentui/react-components": {
       "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
-    "@fluentui/react-compose": {
       "implicitDependencies": []
     },
     "@fluentui/react-conformance": {
@@ -273,7 +270,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-menu": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-monaco-editor": {
@@ -299,11 +296,11 @@
       "implicitDependencies": []
     },
     "@fluentui/react-portal": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-positioning": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-proptypes": {
@@ -325,6 +322,10 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-spinbutton": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-storybook": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
@@ -338,6 +339,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-tabs": {
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-tabster": {
@@ -405,9 +407,6 @@
     "@fluentui/webpack-utilities": {
       "implicitDependencies": []
     },
-    "a11y-tests": {
-      "implicitDependencies": []
-    },
     "nx-workspace-tools": {
       "tags": []
     },
@@ -426,8 +425,8 @@
     "theming-designer": {
       "implicitDependencies": []
     },
-    "todo-app": {
-      "implicitDependencies": []
+    "typings": {
+      "tags": ["platform:any"]
     },
     "vr-tests": {
       "implicitDependencies": []

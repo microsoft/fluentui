@@ -7,20 +7,14 @@ import {
 } from '@fluentui/react-utilities';
 import { LabelProps } from '@fluentui/react-label';
 
-/**
- * TODO:
- *  - Remove as from Omit. Currently it's needed since checkbox Commons shouldn't have as.
- *  - Instead of extending LabelProps, extend LabelCommons once it's added.
- */
 export interface CheckboxCommons {
   /**
-   * A checkbox can be rendered with a circular shape.
+   * Whether to render the checkbox in a circular shape instead of square.
+   * This variant is only recommended to be used in a tasks-style UI (checklist),
+   * since it otherwise could be confused for a `RadioItem`.
+   * @defaultvalue false
    */
   circular: boolean;
-  /**
-   * ID of the root element that wraps the checkbox and label.
-   */
-  rootId: string | undefined;
 
   /**
    * A checkbox's state can be controlled.
@@ -30,20 +24,15 @@ export interface CheckboxCommons {
 
   /**
    * Checkbox supports two different checkbox sizes.
-   * @defaultvalue 'medium'
+   * @defaultvalue medium
    */
   size: 'medium' | 'large';
 
   /**
    * Determines whether the label should be positioned before or after the checkbox.
-   * @defaultvalue 'after'
+   * @defaultvalue after
    */
   labelPosition: 'before' | 'after';
-  /**
-   * Field required to pass className to container instead of input
-   * this will be solved by https://github.com/microsoft/fluentui/pull/18983
-   */
-  containerClassName?: string;
 }
 
 /**
@@ -54,11 +43,27 @@ export interface CheckboxOnChangeData {
 }
 
 export type CheckboxSlots = {
-  root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
+  /**
+   * The root element of the Checkbox.
+   *
+   * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
+   * All other native props will be applied to the primary slot: `input`
+   */
+  root: IntrinsicShorthandProps<'span'>;
+
+  /**
+   * The Checkbox's label.
+   */
+  label?: ObjectShorthandProps<LabelProps>;
+
   /**
    * Hidden input that handles the checkbox's functionality.
+   *
+   * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
    */
   input: IntrinsicShorthandProps<'input'>;
+
   /**
    * Renders the checkbox, with the checkmark icon as its child when checked.
    */
@@ -68,12 +73,15 @@ export type CheckboxSlots = {
 /**
  * Checkbox Props
  */
-export type CheckboxProps = Omit<ComponentProps<CheckboxSlots>, 'defaultChecked'> &
+export type CheckboxProps = Omit<
+  ComponentProps<CheckboxSlots, 'input'>,
+  'size' | 'checked' | 'defaultChecked' | 'onChange'
+> &
   Partial<CheckboxCommons> & {
     /**
-     * ID of the native element that represents the checkbox.
+     * Checkboxes don't support children. To add a label, use the `label` prop.
      */
-    id?: string;
+    children?: never;
 
     /**
      * Callback to be called when the checked state value changes.
@@ -84,16 +92,6 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots>, 'defaultChecked'
      * Whether the checkbox should be rendered as checked by default.
      */
     defaultChecked?: 'mixed' | boolean;
-
-    /**
-     * Required state of the checkbox.
-     */
-    required?: boolean;
-
-    /**
-     * Disabled
-     */
-    disabled?: boolean;
   };
 
 /**

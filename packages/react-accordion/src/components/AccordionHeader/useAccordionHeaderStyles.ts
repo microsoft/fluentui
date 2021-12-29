@@ -1,17 +1,20 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { AccordionHeaderState } from './AccordionHeader.types';
+
+export const accordionHeaderClassName = 'fui-AccordionHeader';
 
 const useStyles = makeStyles({
   // TODO: this should be extracted to another package
   resetButton: {
     boxSizing: 'content-box',
-    background: 'none',
+    backgroundColor: 'inherit',
     color: 'inherit',
-    font: 'inherit',
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
     lineHeight: 'normal',
-    overflow: 'visible',
-    padding: '0',
+    ...shorthands.overflow('visible'),
+    ...shorthands.padding(0),
     WebkitAppearance: 'button',
     userSelect: 'none',
     textAlign: 'unset',
@@ -20,10 +23,10 @@ const useStyles = makeStyles({
   root: theme => ({
     color: theme.colorNeutralForeground1,
     backgroundColor: theme.colorNeutralBackground1,
-    borderRadius: '2px',
+    ...shorthands.borderRadius('2px'),
   }),
   rootDisabled: theme => ({
-    backgroundColor: 'none',
+    backgroundImage: 'none',
     color: theme.colorNeutralForegroundDisabled,
   }),
   rootInline: {
@@ -32,7 +35,7 @@ const useStyles = makeStyles({
   button: {
     position: 'relative',
     width: 'calc(100% - 22px)',
-    border: '1px solid transparent',
+    ...shorthands.border('1px', 'solid', 'transparent'),
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '44px',
@@ -53,7 +56,9 @@ const useStyles = makeStyles({
     paddingRight: '8px',
   },
   expandIconEnd: {
-    flex: '1',
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
     paddingLeft: '8px',
@@ -70,7 +75,7 @@ const useStyles = makeStyles({
     fontFamily: theme.fontFamilyBase,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
   }),
   childrenSmall: theme => ({
     fontSize: theme.fontSizeBase200,
@@ -87,6 +92,7 @@ const useStyles = makeStyles({
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    accordionHeaderClassName,
     styles.root,
     state.inline && styles.rootInline,
     state.disabled && styles.rootDisabled,

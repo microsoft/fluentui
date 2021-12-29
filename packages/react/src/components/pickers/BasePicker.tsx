@@ -463,15 +463,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   }
 
   protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string) {
-    const suggestionsArray: T[] = suggestions as T[];
-    const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
-
     // Check to see if the returned value is an array, if it is then just pass it into the next function .
     // If the returned value is not an array then check to see if it's a promise or PromiseLike.
     // If it is then resolve it asynchronously.
-    if (Array.isArray(suggestionsArray)) {
-      this._updateAndResolveValue(updatedValue, suggestionsArray);
-    } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
+    if (Array.isArray(suggestions)) {
+      this._updateAndResolveValue(updatedValue, suggestions);
+    } else if (suggestions && (suggestions as PromiseLike<T[]>).then) {
       this.setState({
         suggestionsLoading: true,
       });
@@ -490,9 +487,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       }
 
       // Ensure that the promise will only use the callback if it was the most recent one.
-      const promise: PromiseLike<T[]> = (this.currentPromise = suggestionsPromiseLike);
-      promise.then((newSuggestions: T[]) => {
-        if (promise === this.currentPromise) {
+      this.currentPromise = suggestions;
+      suggestions.then((newSuggestions: T[]) => {
+        if (suggestions === this.currentPromise) {
           this._updateAndResolveValue(updatedValue, newSuggestions);
         }
       });

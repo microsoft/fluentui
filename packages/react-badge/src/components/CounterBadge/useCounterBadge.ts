@@ -16,7 +16,7 @@ export const useCounterBadge = (props: CounterBadgeProps, ref: React.Ref<HTMLEle
   } = props;
 
   const state: CounterBadgeState = {
-    ...useBadge(props, ref),
+    ...(useBadge(props, ref) as CounterBadgeState),
     shape,
     appearance,
     showZero,

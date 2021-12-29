@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 12 Oct 2021 19:45:58 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-beta.5)
+
+Thu, 25 Nov 2021 08:34:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-beta.4..@fluentui/react-tabster_v9.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-beta.3 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.4 ([PR #20762](https://github.com/microsoft/fluentui/pull/20762) by beachball)
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-beta.4)
+
+Fri, 12 Nov 2021 13:25:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-beta.3..@fluentui/react-tabster_v9.0.0-beta.4)
+
+### Changes
+
+- Add useFocusableGroup hook ([PR #20132](https://github.com/microsoft/fluentui/pull/20132) by andredias@microsoft.com)
+- Use uncontrolled tabbing by default ([PR #20571](https://github.com/microsoft/fluentui/pull/20571) by lingfangao@hotmail.com)
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- Bump tabster and keyborg to 1.0.7 ([PR #20593](https://github.com/microsoft/fluentui/pull/20593) by lingfangao@hotmail.com)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.3 ([PR #20583](https://github.com/microsoft/fluentui/pull/20583) by beachball)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-beta.3)
+
+Wed, 27 Oct 2021 12:14:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-beta.2..@fluentui/react-tabster_v9.0.0-beta.3)
+
+### Changes
+
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+- Bump @fluentui/make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-make-styles to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-beta.2 ([PR #20353](https://github.com/microsoft/fluentui/pull/20353) by beachball)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-beta.2)
 

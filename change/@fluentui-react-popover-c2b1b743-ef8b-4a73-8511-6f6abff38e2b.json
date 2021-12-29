@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Simplify type for OnOpenChangeData",
-  "packageName": "@fluentui/react-popover",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,36 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 03 Dec 2021 07:36:11 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.2.3",
+      "version": "8.2.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "131c59c96177944b46ac63905a592f22e20ec67c",
+            "comment": "test(date-time-utils): make test pass for every contributor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:16 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.2.3",
+      "version": "8.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/date-time-utilities",
+            "comment": "Bump @fluentui/set-version to v8.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Sep 2021 07:36:26 GMT",
       "tag": "@fluentui/date-time-utilities_v8.2.2",
       "version": "8.2.2",
