@@ -1634,56 +1634,10 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/make-styles@9.0.0-beta.2":
-  version "9.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/make-styles/-/make-styles-9.0.0-beta.2.tgz#95d39f8eda655ad87e7500aa3ee54166cfb5c733"
-  integrity sha512-ygAxSE3kiw1i7KTka/WrebT8wlKU/ph29/DibjwgVmWjy1fCx0sJGFo2ltvc4e0W9kerqc+WjTVoL6YPxk0HSw==
-  dependencies:
-    "@emotion/hash" "^0.8.0"
-    csstype "^2.6.7"
-    inline-style-expand-shorthand "^1.2.0"
-    rtl-css-js "^1.14.1"
-    stylis "^4.0.6"
-    tslib "^2.1.0"
-
 "@fluentui/react-icons@^2.0.154-beta.5":
   version "2.0.154-beta.5"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.154-beta.5.tgz#6266d5fa1048bf9b3bffc461dc40e02862ac5cd3"
   integrity sha512-U+bdvX1BZELUEN5MK4BX7H35p92Kyt/M+26PWJG/gvc2KCgpfFTFedBXjABKEf1Jo8wIcQl8VWciKSkpzhUaQw==
-
-"@fluentui/react-make-styles@9.0.0-beta.3":
-  version "9.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-make-styles/-/react-make-styles-9.0.0-beta.3.tgz#6ae27145484af58b1c853cdd5ef3fb7f4e40c1af"
-  integrity sha512-YS+Hd64bAdMDpAtI+U9hkXxjoXXe6mqybpfGiheRTv546f9aivplMr+j3k5PeWRBS4zt/IYF5va/3MU0SqWYnA==
-  dependencies:
-    "@fluentui/make-styles" "9.0.0-beta.2"
-    "@fluentui/react-shared-contexts" "9.0.0-beta.3"
-    "@fluentui/react-theme" "9.0.0-beta.3"
-    "@fluentui/react-utilities" "9.0.0-beta.3"
-    tslib "^2.1.0"
-
-"@fluentui/react-shared-contexts@9.0.0-beta.3":
-  version "9.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-shared-contexts/-/react-shared-contexts-9.0.0-beta.3.tgz#e36cfd119aa2a0803acf93e654a262acc91eca53"
-  integrity sha512-Fjo4/lGJEm2ZqK7ImL8PbXDuTgXfMrHkt+sMeWeO4yJPP0T9rZx8A6qniQKEgJYe2klBqUj5e4Sm16xci4iWPw==
-  dependencies:
-    "@fluentui/react-theme" "9.0.0-beta.3"
-    tslib "^2.1.0"
-
-"@fluentui/react-theme@9.0.0-beta.3":
-  version "9.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-theme/-/react-theme-9.0.0-beta.3.tgz#433deb471d8e1de23c9a7512ddd66c535b743f88"
-  integrity sha512-kidHLlshpHaFUooo1bbk/t5vIhRfMPDXSF/KmBpEy/EovxTQwMZi3Z7GnyOfyGSXQbiYDNJtezaDV9SO5vUWew==
-  dependencies:
-    tslib "^2.1.0"
-
-"@fluentui/react-utilities@9.0.0-beta.3":
-  version "9.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-utilities/-/react-utilities-9.0.0-beta.3.tgz#a0fb5c59967f80aaaa48bbfd4b7704b3bf664a1f"
-  integrity sha512-l8QI1h0gU2x55q79AJKl5zcN5xuDoClwMoEWLhm9WtFJutbaN1F+XPZ9Ypvh48+j0UIbrt21PJhMQkz0glozIg==
-  dependencies:
-    "@fluentui/keyboard-keys" "9.0.0-beta.1"
-    tslib "^2.1.0"
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
@@ -22273,13 +22227,6 @@ rtl-css-js@^1.1.3, rtl-css-js@^1.14.5:
   version "1.14.5"
   resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.14.5.tgz#fd92685acd024e688dda899a28c5fb9270b79974"
   integrity sha512-+ng7LWVvPjQUdgDVviR6vKi2X4JiBtlw5rdY0UM5/Cj39c2/KDUsY/VxEzGE25m4KR5g0dvuKfrDq7DaoDooIA==
-  dependencies:
-    "@babel/runtime" "^7.1.2"
-
-rtl-css-js@^1.14.1:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.15.0.tgz#680ed816e570a9ebccba9e1cd0f202c6a8bb2dc0"
-  integrity sha512-99Cu4wNNIhrI10xxUaABHsdDqzalrSRTie4GeCmbGVuehm4oj+fIy8fTzB+16pmKe8Bv9rl+hxIBez6KxExTew==
   dependencies:
     "@babel/runtime" "^7.1.2"
 
