@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add Input to react-components",
+  "packageName": "@fluentui/react-components",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

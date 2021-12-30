@@ -40,3 +40,5 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
+export { Input, inputClassName, renderInput, useInput, useInputStyles } from '@fluentui/react-input';
+export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';

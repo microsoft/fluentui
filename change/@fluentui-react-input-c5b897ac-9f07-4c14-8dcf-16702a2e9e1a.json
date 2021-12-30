@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Publish react-input",
+  "packageName": "@fluentui/react-input",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
