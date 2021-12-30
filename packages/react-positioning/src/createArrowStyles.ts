@@ -1,19 +1,33 @@
-import { shorthands } from '@fluentui/react-make-styles';
-import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
+import { MakeStylesStyle, shorthands } from '@fluentui/react-make-styles';
 import type { Theme } from '@fluentui/react-theme';
+
+/**
+ * Options parameter for the createArrowStyles function
+ */
+export type CreateArrowStylesOptions = {
+  /**
+   * The height of the arrow from the base to the tip. The base width of the arrow is always twice its height.
+   */
+  arrowHeight?: number;
+
+  /**
+   * The border of the arrow. This should be the same border as the parent element.
+   */
+  border?: [width: string, style: string, color: string];
+};
 
 /**
  * Helper that creates a makeStyles rule for an arrow element.
  * For runtime arrow size toggling simply create extra classnames to apply to the arrow element
  *
  * ```ts
- *   makeStyles({
- *     arrowWithSize: createArrowStyles(5),
+ *   makeStyles(theme => ({
+ *     arrowWithSize: createArrowStyles(theme, { arrowHeight: 6 }),
  *
- *     arrowWithoutSize: createArrowStyles(),
- *     mediumArrow: { aspectRatio: 1, width: '4px' }
- *     smallArrow: { aspectRatio: 1, width: '2px' }
- *   })
+ *     arrowWithoutSize: createArrowStyles(theme),
+ *     mediumArrow: createArrowHeightStyles(4),
+ *     smallArrow: createArrowHeightStyles(2),
+ *   }))
  *   ...
  *
  *   state.arrowWithSize.className = styles.arrowWithSize
@@ -23,54 +37,67 @@ import type { Theme } from '@fluentui/react-theme';
  *     state.mediumArrow && styles.mediumArrow,
  *   )
  * ```
- *
- * @param size - dimensions of the square arrow element in pixels.
  */
-export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
-  return theme => ({
+export function createArrowStyles(theme: Theme, options: CreateArrowStylesOptions = {}): MakeStylesStyle {
+  const { arrowHeight, border } = options;
+
+  // const [borderWidth] = border || [0];
+
+  return {
     position: 'absolute',
     backgroundColor: 'inherit',
-    ...shorthands.borderRight('inherit', 'inherit', 'inherit'),
-    ...shorthands.borderBottom('inherit', 'inherit', 'inherit'),
     visibility: 'hidden',
     zIndex: -1,
 
-    ...(size && {
-      width: `${size}px`,
-      height: `${size}px`,
-    }),
+    ...(arrowHeight && createArrowHeightStyles(arrowHeight)),
 
     ':before': {
       content: '""',
       visibility: 'visible',
       position: 'absolute',
+      boxSizing: 'border-box',
       width: 'inherit',
       height: 'inherit',
-      boxSizing: 'border-box',
       backgroundColor: 'inherit',
-      ...shorthands.borderRight('inherit', 'inherit', 'inherit'),
-      ...shorthands.borderBottom('inherit', 'inherit', 'inherit'),
+      ...(border && {
+        ...shorthands.borderRight(...border),
+        ...shorthands.borderBottom(...border),
+        ...shorthands.margin(`-${border[0]}`),
+      }),
       borderBottomRightRadius: theme.borderRadiusSmall,
-      transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
+      transform: `rotate(var(--angle)) translate(0, 50%) rotate(45deg)`,
     },
 
     // Popper sets data-popper-placement on the root element, which is used to align the arrow
     ':global([data-popper-placement^="top"])': {
       bottom: 0,
+      // bottom: `-${borderWidth}`,
       '--angle': '0',
     },
-
     ':global([data-popper-placement^="right"])': {
-      left: '0 /* @noflip */',
+      left: `0 /* @noflip */`,
+      // left: `-${borderWidth} /* @noflip */`,
       '--angle': '90deg',
     },
     ':global([data-popper-placement^="bottom"])': {
       top: 0,
+      // top: `-${borderWidth}`,
       '--angle': '180deg',
     },
     ':global([data-popper-placement^="left"])': {
-      right: '0 /* @noflip */',
+      right: `0 /* @noflip */`,
+      // right: `-${borderWidth} /* @noflip */`,
       '--angle': '270deg',
     },
-  });
+  };
+}
+
+/**
+ * Creates styles to size the arrow created by createArrowStyles to the given height.
+ */
+export function createArrowHeightStyles(arrowHeight: number): MakeStylesStyle {
+  return {
+    width: `${Math.SQRT2 * arrowHeight}px`,
+    height: `${Math.SQRT2 * arrowHeight}px`,
+  };
 }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
@@ -107,30 +106,5 @@ storiesOf('Tooltip Converged', module)
         </div>
       );
     },
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true },
   );
-
-storiesOf('Tooltip Converged', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .hover('.hoverTarget')
-        .wait(251)
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .focus('.focusTarget')
-        .snapshot('focus', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('activation', () => (
-    <div className={useStyles().wrapper}>
-      <Tooltip content="This tooltip appeared on hover">
-        <button className="hoverTarget">Hover</button>
-      </Tooltip>
-      <Tooltip content="This tooltip appeared on focus">
-        <button className="focusTarget">Focus</button>
-      </Tooltip>
-    </div>
-  ));
