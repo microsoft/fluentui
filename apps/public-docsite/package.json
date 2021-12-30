@@ -39,7 +39,7 @@
     "@fluentui/react-experiments": "^8.4.11",
     "@fluentui/react-file-type-icons": "^8.5.7",
     "@fluentui/react-icons": "^2.0.154-beta.5",
-    "@fluentui/react-make-styles": "^9.0.0-beta.4",
+    "@fluentui/react-make-styles": "9.0.0-beta.3",
     "@fluentui/set-version": "^8.1.5",
     "@fluentui/theme": "^2.4.5",
     "@fluentui/theme-samples": "^8.2.58",
