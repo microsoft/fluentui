@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates to work with changes to createArrowStyles",
+  "packageName": "@fluentui/react-popover",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
