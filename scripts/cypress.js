@@ -13,18 +13,21 @@ const baseConfig = {
     ? // Base path hard coded for converged for now, can be modified to be configurable if required to other projects
       `${process.env.DEPLOYURL}/react-components/storybook`
     : 'http://localhost:3000',
-  fixturesFolder: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/fixtures')),
+  fixturesFolder: path.join(__dirname, 'cypress/fixtures'),
   integrationFolder: '.',
-  pluginsFile: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/plugins/index.js')),
+  pluginsFile: path.join(__dirname, 'cypress/plugins/index.js'),
   retries: {
     runMode: 2,
     openMode: 0,
   },
   screenshotOnRunFailure: false,
-  supportFile: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/support/index.js')),
+  // due to https://github.com/cypress-io/cypress/issues/8599 this must point to a path within the package,
+  // not a relative path into scripts
+  supportFile: 'e2e/support.js',
   testFiles: ['**/e2e/**/*.e2e.ts'],
   video: false,
 };
+console.dir(baseConfig);
 
 const run = () => {
   return cypress.run({
