@@ -7,13 +7,15 @@ import type { Theme } from '@fluentui/react-theme';
 export type CreateArrowStylesOptions = {
   /**
    * The height of the arrow from the base to the tip. The base width of the arrow is always twice its height.
+   *
+   * If this is omitted, you must add styles created by createArrowHeightStyles to set the arrow's size correctly.
    */
   arrowHeight?: number;
 
   /**
    * The border of the arrow. This should be the same border as the parent element.
    */
-  border?: [width: string, style: string, color: string];
+  border?: [/*width:*/ string, /*style:*/ string, /*color:*/ string];
 };
 
 /**
@@ -30,7 +32,7 @@ export type CreateArrowStylesOptions = {
  *   }))
  *   ...
  *
- *   state.arrowWithSize.className = styles.arrowWithSize
+ *   state.arrowWithSize.className = styles.arrowWithSize;
  *   state.arrowWithoutSize.className = mergeClasses(
  *     styles.arrowWithoutSize,
  *     state.smallArrow && styles.smallArrow,
@@ -40,8 +42,7 @@ export type CreateArrowStylesOptions = {
  */
 export function createArrowStyles(theme: Theme, options: CreateArrowStylesOptions = {}): MakeStylesStyle {
   const { arrowHeight, border } = options;
-
-  // const [borderWidth] = border || [0];
+  const [borderWidth] = border || [0];
 
   return {
     position: 'absolute',
@@ -62,42 +63,40 @@ export function createArrowStyles(theme: Theme, options: CreateArrowStylesOption
       ...(border && {
         ...shorthands.borderRight(...border),
         ...shorthands.borderBottom(...border),
-        ...shorthands.margin(`-${border[0]}`),
       }),
       borderBottomRightRadius: theme.borderRadiusSmall,
-      transform: `rotate(var(--angle)) translate(0, 50%) rotate(45deg)`,
+      transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },
 
     // Popper sets data-popper-placement on the root element, which is used to align the arrow
     ':global([data-popper-placement^="top"])': {
-      bottom: 0,
-      // bottom: `-${borderWidth}`,
+      bottom: `-${borderWidth}`,
       '--angle': '0',
     },
     ':global([data-popper-placement^="right"])': {
-      left: `0 /* @noflip */`,
-      // left: `-${borderWidth} /* @noflip */`,
+      left: `-${borderWidth} /* @noflip */`,
       '--angle': '90deg',
     },
     ':global([data-popper-placement^="bottom"])': {
-      top: 0,
-      // top: `-${borderWidth}`,
+      top: `-${borderWidth}`,
       '--angle': '180deg',
     },
     ':global([data-popper-placement^="left"])': {
-      right: `0 /* @noflip */`,
-      // right: `-${borderWidth} /* @noflip */`,
+      right: `-${borderWidth} /* @noflip */`,
       '--angle': '270deg',
     },
   };
 }
 
 /**
- * Creates styles to size the arrow created by createArrowStyles to the given height.
+ * Creates CSS styles to size the arrow created by createArrowStyles to the given height.
+ *
+ * Use this when you need to create classes for several different arrow sizes. If you only need a
+ * constant arrow size, you can pass the `arrowHeight` param to createArrowStyles instead.
  */
-export function createArrowHeightStyles(arrowHeight: number): MakeStylesStyle {
-  return {
-    width: `${Math.SQRT2 * arrowHeight}px`,
-    height: `${Math.SQRT2 * arrowHeight}px`,
-  };
+export function createArrowHeightStyles(arrowHeight: number) {
+  // The arrow is a square rotated 45 degrees to have its bottom and right edges form a right triangle.
+  // Multiply the triangle's height by sqrt(2) to get length of its edges.
+  const edgeLength = `${1.414 * arrowHeight}px`;
+  return { width: edgeLength, height: edgeLength };
 }

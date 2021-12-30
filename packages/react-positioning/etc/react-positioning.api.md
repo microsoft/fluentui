@@ -19,7 +19,10 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
 // @public
-export function createArrowHeightStyles(arrowHeight: number): MakeStylesStyle;
+export function createArrowHeightStyles(arrowHeight: number): {
+    width: string;
+    height: string;
+};
 
 // @public
 export function createArrowStyles(theme: Theme, options?: CreateArrowStylesOptions): MakeStylesStyle;
@@ -27,7 +30,7 @@ export function createArrowStyles(theme: Theme, options?: CreateArrowStylesOptio
 // @public
 export type CreateArrowStylesOptions = {
     arrowHeight?: number;
-    border?: [width: string, style: string, color: string];
+    border?: [/*width:*/ string, /*style:*/ string, /*color:*/ string];
 };
 
 // @public
