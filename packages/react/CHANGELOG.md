@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 16 Dec 2021 07:26:40 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Dec 2021 07:29:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.48.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.48.1)
+
+Wed, 22 Dec 2021 07:29:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.48.0..@fluentui/react_v8.48.1)
+
+### Patches
+
+- Fixing Stack behavior when a React.Fragment wraps StackItems, it should be ignored. ([PR #21090](https://github.com/microsoft/fluentui/pull/21090) by aduran@microsoft.com)
 
 ## [8.48.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.48.0)
 

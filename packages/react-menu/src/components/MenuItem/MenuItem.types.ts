@@ -23,7 +23,7 @@ export type MenuItemSlots = {
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
-  content: IntrinsicShorthandProps<'span'>;
+  content?: IntrinsicShorthandProps<'span'>;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
