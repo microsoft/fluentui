@@ -2,7 +2,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Input } from '@fluentui/react-input';
-import { Search20Regular, Dismiss20Regular } from '@fluentui/react-icons';
+import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Input Converged', module)
@@ -54,11 +54,21 @@ storiesOf('Input Converged', module)
   ))
   .addStory(
     'contentBefore',
-    () => <Input contentBefore={<Search20Regular />} placeholder="Placeholder" />,
+    () => (
+      <Input
+        contentBefore={<SearchRegular style={{ fontSize: '20px' }} />}
+        placeholder="Placeholder"
+      />
+    ),
     { includeRtl: true },
   )
   .addStory(
     'contentAfter',
-    () => <Input contentAfter={<Dismiss20Regular />} placeholder="Placeholder" />,
+    () => (
+      <Input
+        contentAfter={<DismissRegular style={{ fontSize: '20px' }} />}
+        placeholder="Placeholder"
+      />
+    ),
     { includeRtl: true },
   );
