@@ -40,7 +40,7 @@ export const useTriggerElement = (
     universalCallbacks[callbackName] = universalCallback;
   });
 
-  const props = Object.assign({}, ...overrideProps, childProps, universalCallbacks);
+  const props = Object.assign({}, ...overrideProps, universalCallbacks);
   // undocumented, but react supports ref cloning through props
   props.ref = useMergedRefs(childRef, ...refs);
 
