@@ -26,6 +26,21 @@ const isTargetDisabled = (e: React.SyntheticEvent | Event) => {
   return false;
 };
 
+interface ReactSyntheticEvent extends React.SyntheticEvent<HTMLElement> {
+  // React 17
+  _reactName: string | undefined;
+
+  // React 16
+  dispatchConfig:
+    | {
+        phasedRegistrationNames: {
+          bubbled: string;
+          captured: string;
+        };
+      }
+    | undefined;
+}
+
 /**
  * Adds the necessary props to the trigger element
  */
@@ -53,7 +68,7 @@ export const useTriggerElement = (state: MenuTriggerState, ref: React.Ref<HTMLEl
 
   const child = React.isValidElement(state.children) ? onlyChild(state.children) : undefined;
 
-  const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
     if (isTargetDisabled(e)) {
       return;
     }
@@ -62,9 +77,7 @@ export const useTriggerElement = (state: MenuTriggerState, ref: React.Ref<HTMLEl
       e.preventDefault();
       setOpen(e, { open: true, keyboard: false });
     }
-
-    child?.props?.onContextMenu?.(e);
-  });
+  };
 
   const onClick = (e: React.MouseEvent<HTMLElement>) => {
     if (isTargetDisabled(e)) {
@@ -75,8 +88,6 @@ export const useTriggerElement = (state: MenuTriggerState, ref: React.Ref<HTMLEl
       setOpen(e, { open: !open, keyboard: openedWithKeyboardRef.current });
       openedWithKeyboardRef.current = false;
     }
-
-    child?.props?.onClick?.(e);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -104,8 +115,6 @@ export const useTriggerElement = (state: MenuTriggerState, ref: React.Ref<HTMLEl
     if (open && key === OpenArrowKey && isSubmenu) {
       focusFirst();
     }
-
-    child?.props?.onKeyDown?.(e);
   };
 
   const onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
@@ -115,8 +124,6 @@ export const useTriggerElement = (state: MenuTriggerState, ref: React.Ref<HTMLEl
     if (openOnHover && hasMouseMoved.current) {
       setOpen(e, { open: true, keyboard: false });
     }
-
-    child?.props?.onMouseEnter?.(e);
   };
 
   // Opening a menu when a mouse hasn't moved and just entering the trigger is a bad a11y experience
@@ -139,8 +146,6 @@ export const useTriggerElement = (state: MenuTriggerState, ref: React.Ref<HTMLEl
     if (openOnHover) {
       setOpen(e, { open: false, keyboard: false });
     }
-
-    child?.props?.onMouseLeave?.(e);
   };
 
   const triggerProps: MenuTriggerChildProps = {
@@ -159,14 +164,21 @@ export const useTriggerElement = (state: MenuTriggerState, ref: React.Ref<HTMLEl
     triggerProps['aria-expanded'] = undefined;
   }
 
-  const mergedCallbacks = mergeSharedCallbacks(child?.props, rest, triggerProps);
+  // const mergedCallbacks = mergeSharedCallbacks(child?.props, rest, triggerProps);
+  // const universalCallback = useUniversalEventCallback(mergedCallbacks);
+  // const universalCallbacks: Record<string, typeof universalCallback> = {};
+  // Object.keys(mergedCallbacks).forEach(callbackName => {
+  //   universalCallbacks[callbackName] = universalCallback;
+  // });
 
-  state.children = applyTriggerPropsToChildren(state.children, {
-    ...rest,
-    ...triggerProps,
-    ...mergedCallbacks,
-    ref: useMergedRefs((typeof state.children !== 'function' && state.children.ref) || null, triggerRef, ref),
-  }) as React.ReactElement;
+  // state.children = applyTriggerPropsToChildren(state.children, {
+  //   ...rest,
+  //   ...triggerProps,
+  //   ...universalCallbacks,
+  //   ref: useMergedRefs((typeof state.children !== 'function' && state.children.ref) || null, triggerRef, ref),
+  // }) as React.ReactElement;
+
+  state.children = useGenericTriggerElement(state.children, [triggerRef, ref], [rest, triggerProps]);
 
   return state as MenuTriggerState;
 };
@@ -192,8 +204,22 @@ const mergeTwoCallbacks = <TEvent extends React.SyntheticEvent>(
   };
 };
 
-const mergeCallbacks = <TEvent extends React.SyntheticEvent>(...args: (React.EventHandler<TEvent> | undefined)[]) => {
-  const filtered = args.filter(cb => cb !== undefined) as React.EventHandler<TEvent>[];
+const useUniversalEventCallback = (callbacks: Record<string, React.EventHandler<React.SyntheticEvent>>) => {
+  return useEventCallback((e: ReactSyntheticEvent) => {
+    if (e.dispatchConfig) {
+      callbacks[e.dispatchConfig.phasedRegistrationNames.bubbled]?.(e);
+      callbacks[e.dispatchConfig.phasedRegistrationNames.captured]?.(e);
+    }
+
+    if (e._reactName) {
+      const callbackName: string = e._reactName;
+      callbacks[callbackName]?.(e);
+    }
+  });
+};
+
+const mergeCallbacks = (...args: (React.EventHandler<React.SyntheticEvent> | undefined)[]) => {
+  const filtered = args.filter(cb => cb !== undefined) as React.EventHandler<React.SyntheticEvent>[];
 
   return filtered.reduce(
     (mergedCallback, callback) => {
@@ -207,13 +233,30 @@ const mergeCallbacks = <TEvent extends React.SyntheticEvent>(...args: (React.Eve
   );
 };
 
+const useGenericTriggerElement = (children: React.ReactNode, refs: React.Ref<unknown>[], overrideProps: {}[]) => {
+  const child = onlyChild(children);
+  const childRef = ((child as unknown) as { ref?: React.Ref<unknown> }).ref || null;
+
+  const mergedCallbacks = mergeSharedCallbacks(child?.props, ...overrideProps);
+  const universalCallback = useUniversalEventCallback(mergedCallbacks);
+  const universalCallbacks: Record<string, typeof universalCallback> = {};
+  Object.keys(mergedCallbacks).forEach(callbackName => {
+    universalCallbacks[callbackName] = universalCallback;
+  });
+
+  const props = Object.assign({}, ...overrideProps, universalCallbacks);
+  props.ref = useMergedRefs(childRef, ...refs);
+
+  return applyTriggerPropsToChildren(child, props) as React.ReactElement;
+};
+
 /**
- * Accepts multiple props and merges shared event handler callback like `onClick` or `onBlur`
+ * Accepts multiple props and merges event handler callbacks like `onClick` or `onBlur`
  * @param propsCollection - collection of props which can contain React event handler callbacks
- * @returns Map of event handler callback names to the merge event callback
+ * @returns Map of event handler callback names to the merged event callback
  */
 const mergeSharedCallbacks = (...propsCollection: React.DOMAttributes<Element>[]) => {
-  const callbacks: Record<string, React.EventHandler<React.SyntheticEvent>[]> = {};
+  const mergedCallbacks: Record<string, React.EventHandler<React.SyntheticEvent>> = {};
 
   propsCollection.forEach(props => {
     if (!props) {
@@ -224,28 +267,19 @@ const mergeSharedCallbacks = (...propsCollection: React.DOMAttributes<Element>[]
       if (
         typeof key === 'string' &&
         key.startsWith('on') &&
-        typeof props[key as keyof React.DOMAttributes<Element>] === 'function'
+        typeof props[key as keyof React.DOMAttributes<HTMLElement>] === 'function'
       ) {
-        callbacks[key] ??= [];
-        callbacks[key].push(
-          props[key as keyof React.DOMAttributes<Element>] as React.EventHandler<React.SyntheticEvent>,
-        );
+        const callback = props[
+          key as keyof React.DOMAttributes<HTMLElement>
+        ] as React.EventHandler<React.SyntheticEvent>;
+        if (!mergedCallbacks[key]) {
+          mergedCallbacks[key] = callback;
+        } else {
+          mergedCallbacks[key] = mergeCallbacks(mergedCallbacks[key], callback);
+        }
       }
     }
   });
-
-  Object.keys(callbacks).forEach(callback => {
-    if (callbacks[callback].length <= 1) {
-      delete callbacks[callback];
-    }
-  });
-
-  const mergedCallbacks: Record<string, React.EventHandler<React.SyntheticEvent>> = {};
-  for (const callback in callbacks) {
-    if (Object.prototype.hasOwnProperty.call(callbacks, callback)) {
-      mergedCallbacks[callback] = mergeCallbacks(...callbacks[callback]);
-    }
-  }
 
   return mergedCallbacks;
 };
