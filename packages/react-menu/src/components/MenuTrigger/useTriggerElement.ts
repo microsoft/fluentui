@@ -25,6 +25,8 @@ export const useTriggerElement = (
 ) => {
   let childProps = {};
   let childRef = null;
+  // child can be a render func, `applyTriggerPropsToChildren`does the same check again
+  // TODO figure out a way to only do this check once
   if (React.isValidElement(children)) {
     const child = onlyChild(children);
     childProps = child.props;
