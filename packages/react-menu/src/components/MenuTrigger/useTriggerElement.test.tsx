@@ -77,7 +77,7 @@ describe('useTriggerElement', () => {
   });
 
   describe('on hover', () => {
-    it('should use original on mouse enter handler', () =>
+    it.only('should use original on mouse enter handler', () =>
       testOriginalEventHandlerExists('onMouseEnter', fireEvent.mouseEnter));
 
     it('should use original on blur handler', () => testOriginalEventHandlerExists('onBlur', fireEvent.blur));
