@@ -298,10 +298,10 @@ export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
 };
 
 // @public
-export const MenuTrigger: React_2.FC<MenuTriggerProps>;
+export const MenuTrigger: React_2.ForwardRefExoticComponent<MenuTriggerProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
+export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
     ref?: React_2.Ref<never>;
     'aria-expanded': boolean | undefined;
 };
@@ -437,7 +437,7 @@ export const useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HT
 export const useMenuSplitGroupStyles: (state: MenuSplitGroupState) => MenuSplitGroupState;
 
 // @public
-export const useMenuTrigger: (props: MenuTriggerProps) => MenuTriggerState;
+export const useMenuTrigger: (props: MenuTriggerProps, ref: React_2.Ref<HTMLElement>) => MenuTriggerState;
 
 // @public (undocumented)
 export const useMenuTriggerContext: () => boolean;
