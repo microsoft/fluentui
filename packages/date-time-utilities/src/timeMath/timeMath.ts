@@ -49,8 +49,8 @@ export const getDateFromTimeSelection = (useHour12: boolean, baseDate: Date, sel
     TimeConstants.TimeFormatRegex.exec(selectedTime) || [];
 
   let hours = +selectedHours;
-  let minutes = +selectedMinutes;
-  let seconds = selectedSeconds ? +selectedSeconds : 0;
+  const minutes = +selectedMinutes;
+  const seconds = selectedSeconds ? +selectedSeconds : 0;
 
   if (useHour12 && selectedAp) {
     if (selectedAp.toLowerCase() === 'pm' && hours !== TimeConstants.OffsetTo24HourFormat) {
