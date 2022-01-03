@@ -1,4 +1,4 @@
-import type { IComboBoxProps } from '../../ComboBox';
+import type { IComboBox, IComboBoxProps } from '../../ComboBox';
 
 /**
  * Range of start and end hours to be shown in the TimePicker.
@@ -22,7 +22,7 @@ export interface ITimePickerStrings {
 export interface ITimePickerProps
   extends Omit<
     IComboBoxProps,
-    'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue'
+    'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'
   > {
   /**
    * Label of the component
@@ -69,9 +69,9 @@ export interface ITimePickerProps
   defaultValue?: Date;
 
   /**
-   * Callback issued when a time is selected
+   * Callback issued when the time is changed
    */
-  onSelectTime?: (time: Date) => void;
+  onChange?: (event: React.FormEvent<IComboBox>, time: Date) => void;
 
   /**
    * Callback to localize the date strings displayed for dropdown options

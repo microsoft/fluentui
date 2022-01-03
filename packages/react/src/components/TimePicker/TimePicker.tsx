@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useConst } from '@fluentui/react-hooks';
 import { KeyCodes } from '../../Utilities';
 import {
   TimeConstants,
@@ -38,10 +39,9 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   timeRange,
   strings = getDefaultStrings(useHour12, showSeconds),
   defaultValue,
-  onSelectTime,
+  onChange,
   onFormatDate,
   onValidateUserInput,
-  onChange,
   ...rest
 }: ITimePickerProps) => {
   const [userText, setUserText] = React.useState<string>('');
@@ -49,10 +49,11 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
-  const baseDate: Date = React.useMemo(() => generateBaseDate(increments, timeRange, defaultValue), [
+  const initialValue = useConst(defaultValue || new Date());
+  const baseDate: Date = React.useMemo(() => generateBaseDate(increments, timeRange, initialValue), [
     increments,
     timeRange,
-    defaultValue,
+    initialValue,
   ]);
 
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
@@ -76,10 +77,6 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const onInputChange = React.useCallback(
     (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
-      if (onChange) {
-        onChange(event, option, index, value);
-      }
-
       const validateUserInput = (userInput: string): string => {
         let errorMessageToDisplay = '';
         let regex: RegExp;
@@ -114,10 +111,10 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         updatedUserText = option.text;
       }
 
-      if (onSelectTime && !errorMessageToDisplay) {
+      if (onChange && !errorMessageToDisplay) {
         const selectedTime = value ? value : option ? option.text : '';
         const date = getDateFromTimeSelection(useHour12, baseDate, selectedTime);
-        onSelectTime(date);
+        onChange(event, date);
       }
 
       setErrorMessage(errorMessageToDisplay);
@@ -127,12 +124,11 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
     [
       baseDate,
       allowFreeform,
+      onChange,
       onFormatDate,
       onValidateUserInput,
       showSeconds,
       useHour12,
-      onChange,
-      onSelectTime,
       strings.invalidInputErrorMessage,
     ],
   );
@@ -177,14 +173,13 @@ const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   };
 };
 
-const generateBaseDate = (increments: number, timeRange: ITimeRange | undefined, defaultValue?: Date) => {
-  const newbaseDate = defaultValue ? defaultValue : new Date();
+const generateBaseDate = (increments: number, timeRange: ITimeRange | undefined, baseDate: Date) => {
   if (timeRange) {
     const clampedTimeRange = clampTimeRange(timeRange);
-    newbaseDate.setHours(clampedTimeRange.start);
+    baseDate.setHours(clampedTimeRange.start);
   }
 
-  return ceilMinuteToIncrement(newbaseDate, increments);
+  return ceilMinuteToIncrement(baseDate, increments);
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: ITimeRange | undefined) => {

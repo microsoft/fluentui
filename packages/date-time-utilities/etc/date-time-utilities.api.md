@@ -279,6 +279,7 @@ export const TimeConstants: {
     HoursInOneDay: number;
     SecondsInOneMinute: number;
     OffsetTo24HourFormat: number;
+    TimeFormatRegex: RegExp;
 };
 
 // (No @packageDocumentation comment for this package)

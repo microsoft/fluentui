@@ -9066,13 +9066,13 @@ export interface IThemeSlotRule {
 }
 
 // @public (undocumented)
-export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue'> {
+export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'> {
     allowFreeform?: boolean;
     defaultValue?: Date;
     increments?: number;
     label?: string;
+    onChange?: (event: React.FormEvent<IComboBox>, time: Date) => void;
     onFormatDate?: (date: Date) => string;
-    onSelectTime?: (time: Date) => void;
     onValidateUserInput?: (userInput: string) => string;
     showSeconds?: boolean;
     strings?: ITimePickerStrings;
