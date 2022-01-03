@@ -369,7 +369,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               groupNestingDepth,
               indentWidth,
               selection,
-              selectionMode,
+              selectionMode: checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none,
               viewport,
               checkboxVisibility,
               cellStyleProps,
