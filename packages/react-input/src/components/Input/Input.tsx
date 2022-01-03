@@ -6,7 +6,7 @@ import type { InputProps } from './Input.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Input component
+ * The Input component allows people to enter and edit text.
  */
 export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, ref) => {
   const state = useInput(props, ref);

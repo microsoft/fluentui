@@ -1,5 +1,6 @@
 /* eslint-disable deprecation/deprecation */
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
 import { Customizer } from './customizations/Customizer';
@@ -74,10 +75,10 @@ describe('styled', () => {
   });
 
   afterEach(() => {
-    if (component) {
-      component.unmount();
+    ReactTestUtils.act(() => {
+      component?.unmount();
       component = undefined;
-    }
+    });
 
     lastStylesInBaseComponent = undefined;
   });
