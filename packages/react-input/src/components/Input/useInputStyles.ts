@@ -54,7 +54,8 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius(theme.borderRadiusMedium), // used for all but underline
     position: 'relative',
     boxSizing: 'border-box',
-
+  }),
+  interactive: theme => ({
     // This is all for the bottom focus border.
     // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
     ':after': {
@@ -121,6 +122,8 @@ const useRootStyles = makeStyles({
     backgroundColor: theme.colorNeutralBackground1,
     ...shorthands.border('1px', 'solid', theme.colorNeutralStroke1),
     borderBottomColor: theme.colorNeutralStrokeAccessible,
+  }),
+  outlineInteractive: theme => ({
     ':hover': {
       ...shorthands.borderColor(theme.colorNeutralStroke1Hover),
       borderBottomColor: theme.colorNeutralStrokeAccessibleHover,
@@ -135,6 +138,8 @@ const useRootStyles = makeStyles({
     backgroundColor: theme.colorTransparentBackground,
     ...shorthands.borderRadius(0), // corners look strange if rounded
     ...shorthands.borderBottom('1px', 'solid', theme.colorNeutralStrokeAccessible),
+  }),
+  underlineInteractive: theme => ({
     ':hover': {
       borderBottomColor: theme.colorNeutralStrokeAccessibleHover,
     },
@@ -147,6 +152,8 @@ const useRootStyles = makeStyles({
   filled: theme => ({
     boxShadow: theme.shadow2, // optional shadow for filled appearances
     ...shorthands.border('1px', 'solid', theme.colorTransparentStroke),
+  }),
+  filledInteractive: theme => ({
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':hover,:focus-within': {
       // also handles pressed border color (:active)
@@ -234,6 +241,10 @@ export const useInputStyles = (state: InputState): InputState => {
     rootStyles.base,
     rootStyles[size],
     rootStyles[appearance],
+    !disabled && rootStyles.interactive,
+    !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
+    !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
+    !disabled && filled && rootStyles.filledInteractive,
     state.inline && rootStyles.inline,
     filled && rootStyles.filled,
     disabled && rootStyles.disabled,
