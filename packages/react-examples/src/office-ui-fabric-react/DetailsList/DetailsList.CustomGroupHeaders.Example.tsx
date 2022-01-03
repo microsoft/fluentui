@@ -89,12 +89,13 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           checkButtonAriaLabel="select row"
           onRenderDetailsHeader={this._onRenderDetailsHeader}
+          checkboxVisibility={CheckboxVisibility[this.state.selectedItem.key as keyof typeof CheckboxVisibility]}
         />
       </>
     );
   }
 
- private _onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption) => {
+  private _onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption) => {
     this.setState({ selectedItem: item });
   };
 
