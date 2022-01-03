@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Updated examples to use new props",
+  "comment": "Added getDateFromTimeSelection function, TimeConstant values OffsetTo24HourFormat and TimeFormatRegex",
   "packageName": "@fluentui/date-time-utilities",
   "email": "jamwu@microsoft.com",
   "dependentChangeType": "patch"
