@@ -34,3 +34,11 @@ export const Vertical = () => {
     </div>
   );
 };
+
+Vertical.parameters = {
+  docs: {
+    description: {
+      story: 'A divider can vertically separate two pieces of content.',
+    },
+  },
+};

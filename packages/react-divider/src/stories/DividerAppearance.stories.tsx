@@ -38,3 +38,11 @@ export const Appearance = () => {
     </div>
   );
 };
+
+Appearance.parameters = {
+  docs: {
+    description: {
+      story: 'A divider can have its line inset from the edges of its container.',
+    },
+  },
+};
