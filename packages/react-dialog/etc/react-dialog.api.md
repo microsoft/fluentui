@@ -14,6 +14,9 @@ import * as React_2 from 'react';
 export const Dialog: ForwardRefComponent<DialogProps>;
 
 // @public (undocumented)
+export const dialogClassName = "fui-Dialog";
+
+// @public (undocumented)
 export type DialogCommons = {};
 
 // @public
