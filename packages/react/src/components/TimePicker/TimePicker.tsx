@@ -49,7 +49,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
-  const baseDate: Date = React.useMemo(() => generatebaseDate(increments, timeRange, defaultValue), [
+  const baseDate: Date = React.useMemo(() => generateBaseDate(increments, timeRange, defaultValue), [
     increments,
     timeRange,
     defaultValue,
@@ -177,7 +177,7 @@ const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   };
 };
 
-const generatebaseDate = (increments: number, timeRange: ITimeRange | undefined, defaultValue?: Date) => {
+const generateBaseDate = (increments: number, timeRange: ITimeRange | undefined, defaultValue?: Date) => {
   const newbaseDate = defaultValue ? defaultValue : new Date();
   if (timeRange) {
     const clampedTimeRange = clampTimeRange(timeRange);
