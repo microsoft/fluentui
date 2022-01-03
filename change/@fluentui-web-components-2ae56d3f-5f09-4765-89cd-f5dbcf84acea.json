@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: prevent disabled flipper from emitting event",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

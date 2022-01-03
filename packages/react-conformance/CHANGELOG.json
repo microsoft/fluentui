@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Wed, 15 Dec 2021 07:31:28 GMT",
+      "tag": "@fluentui/react-conformance_v0.9.2",
+      "version": "0.9.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v25 + apply single version policy"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Dec 2021 07:30:02 GMT",
       "tag": "@fluentui/react-conformance_v0.9.1",
       "version": "0.9.1",

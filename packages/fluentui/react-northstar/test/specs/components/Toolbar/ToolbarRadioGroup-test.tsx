@@ -1,7 +1,7 @@
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 
 import { ToolbarRadioGroup } from 'src/components/Toolbar/ToolbarRadioGroup';
-import { mountWithProvider } from 'test/utils';
+import { createTestContainer, mountWithProvider } from 'test/utils';
 import * as React from 'react';
 
 describe('ToolbarRadioGroup', () => {
@@ -37,7 +37,10 @@ describe('ToolbarRadioGroup', () => {
 
     const testKeyDown = (testName, items, keyCode, expectedFocusedIndex) => {
       it(`keyDown test - ${testName}`, () => {
-        const radioButtons = mountWithProvider(<ToolbarRadioGroup items={items} />).find('button');
+        const { testContainer, removeTestContainer } = createTestContainer();
+        const radioButtons = mountWithProvider(<ToolbarRadioGroup items={items} />, { attachTo: testContainer }).find(
+          'button',
+        );
 
         const expectedActiveElement = radioButtons.at(expectedFocusedIndex).getDOMNode();
 
@@ -46,6 +49,7 @@ describe('ToolbarRadioGroup', () => {
         radioButtons.first().simulate('keyDown', { preventDefault() {}, keyCode, which: keyCode });
 
         expect(document.activeElement).toBe(expectedActiveElement);
+        removeTestContainer();
       });
     };
 
