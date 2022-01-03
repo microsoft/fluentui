@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix onRenderDetailsGroupHeader props for custom group.onRenderHeader (#18101)",
+  "packageName": "office-ui-fabric-react",
+  "email": "shagra@microsoft.com",
+  "dependentChangeType": "patch"
+}
