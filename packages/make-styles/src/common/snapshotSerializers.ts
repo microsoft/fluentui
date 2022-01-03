@@ -1,42 +1,57 @@
 import * as prettier from 'prettier';
 
 import { resolveStyleRules } from '../runtime/resolveStyleRules';
-import { MakeStylesRenderer, CSSRulesByBucket, StyleBucketName } from '../types';
+import type { MakeStylesRenderer } from '../types';
+
+// eslint-disable-next-line eqeqeq
+const isObject = (value: unknown) => value != null && !Array.isArray(value) && typeof value === 'object';
 
 export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  test(value: MakeStylesRenderer | any) {
-    return typeof value.styleElements === 'object';
+  test(value) {
+    return isObject(value) && isObject(value.styleElements);
   },
-  print(renderer: MakeStylesRenderer) {
-    const rules = Object.keys(renderer.styleElements).reduce<string[]>((acc, styleEl) => {
-      const styleElement: HTMLStyleElement | undefined = renderer.styleElements[styleEl as StyleBucketName];
+  print(value) {
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _value = value as MakeStylesRenderer;
+
+    const styleElementsKeys = Object.keys(_value.styleElements) as (keyof typeof _value['styleElements'])[];
+
+    const rules = styleElementsKeys.reduce((acc, styleEl) => {
+      const styleElement = _value.styleElements[styleEl];
 
       if (styleElement) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const cssRules: CSSRule[] = Array.from((styleElement.sheet as CSSStyleSheet).cssRules);
+        const cssRules = styleElement.sheet ? Array.from(styleElement.sheet.cssRules) : [];
 
         return [...acc, ...cssRules.map(rule => rule.cssText)];
       }
 
       return acc;
-    }, []);
+    }, [] as string[]);
 
     return prettier.format(rules.join('\n'), { parser: 'css' }).trim();
   },
 };
 
-export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  test(value: any) {
-    return Array.isArray(value) && value.length === 2;
-  },
-  print(value: ReturnType<typeof resolveStyleRules>) {
-    const cssRulesByBucket: CSSRulesByBucket = value[1];
+type StyleRulesTuple = ReturnType<typeof resolveStyleRules>;
+const isStyleRulesTuple = (value: unknown): value is StyleRulesTuple => Array.isArray(value) && value.length === 2;
 
-    return (Object.keys(cssRulesByBucket) as StyleBucketName[]).reduce((acc, styleBucketName) => {
-      const rules: string[] = cssRulesByBucket[styleBucketName]!;
+export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
+  test(value) {
+    return isStyleRulesTuple(value);
+  },
+  print(value) {
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _value = value as StyleRulesTuple;
+
+    const cssRulesByBucket = _value[1];
+    const keys = Object.keys(cssRulesByBucket) as (keyof typeof cssRulesByBucket)[];
+
+    return keys.reduce((acc, styleBucketName) => {
+      const rules = cssRulesByBucket[styleBucketName]!;
 
       return prettier.format(acc + rules.join(''), { parser: 'css' }).trim();
     }, '');
