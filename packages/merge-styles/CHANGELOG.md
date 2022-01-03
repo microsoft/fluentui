@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Thu, 25 Nov 2021 14:54:16 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jan 2022 23:32:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.3)
+
+Mon, 03 Jan 2022 23:32:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.2..@fluentui/merge-styles_v8.2.3)
+
+### Patches
+
+- Add new css properties into `IRawStyleBase` ([PR #18915](https://github.com/microsoft/fluentui/pull/18915) by 1586939317@qq.com)
 
 ## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.2)
 
