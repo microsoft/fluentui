@@ -39,40 +39,23 @@ export const ceilMinuteToIncrement = (date: Date, increments: number) => {
 
 /**
  * Returns a date object from the selected time.
- * @param showSeconds - If the time picker showed seconds
  * @param useHour12 - If the time picker uses 12 or 24 hour formatting
  * @param baseDate - The baseline date to calculate the offset of the selected time
  * @param selectedTime - A string representing the user selected time
  * @returns A new date object offset from the baseDate using the selected time.
  */
-export const getDateFromTimeSelection = (
-  showSeconds: boolean,
-  useHour12: boolean,
-  baseDate: Date,
-  selectedTime: string,
-): Date => {
-  const splitValue = selectedTime.split(':');
-  let hours = +splitValue[0];
-  let minutes;
-  let seconds = baseDate.getSeconds();
-  let ap;
-  if (showSeconds) {
-    minutes = +splitValue[1];
-    seconds = +splitValue[2].split(' ')[0];
-    if (useHour12) {
-      ap = splitValue[2].split(' ')[1];
-    }
-  } else {
-    minutes = +splitValue[1].split(' ')[0];
-    if (useHour12) {
-      ap = splitValue[1].split(' ')[1];
-    }
-  }
+export const getDateFromTimeSelection = (useHour12: boolean, baseDate: Date, selectedTime: string): Date => {
+  const [, selectedHours, selectedMinutes, selectedSeconds, selectedAp] =
+    TimeConstants.TimeFormatRegex.exec(selectedTime) || [];
 
-  if (useHour12 && ap) {
-    if (ap.toLowerCase() === 'pm' && hours !== 12) {
+  let hours = +selectedHours;
+  let minutes = +selectedMinutes;
+  let seconds = selectedSeconds ? +selectedSeconds : 0;
+
+  if (useHour12 && selectedAp) {
+    if (selectedAp.toLowerCase() === 'pm' && hours !== TimeConstants.OffsetTo24HourFormat) {
       hours += TimeConstants.OffsetTo24HourFormat;
-    } else if (ap.toLowerCase() === 'am' && hours === 12) {
+    } else if (selectedAp.toLowerCase() === 'am' && hours === TimeConstants.OffsetTo24HourFormat) {
       hours -= TimeConstants.OffsetTo24HourFormat;
     }
   }

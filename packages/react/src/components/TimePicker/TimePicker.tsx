@@ -114,9 +114,9 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         updatedUserText = option.text;
       }
 
-      if (onSelectTime) {
+      if (onSelectTime && !errorMessageToDisplay) {
         const selectedTime = value ? value : option ? option.text : '';
-        const date = getDateFromTimeSelection(showSeconds, useHour12, baseDate, selectedTime);
+        const date = getDateFromTimeSelection(useHour12, baseDate, selectedTime);
         onSelectTime(date);
       }
 
