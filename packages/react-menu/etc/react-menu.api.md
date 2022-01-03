@@ -160,7 +160,7 @@ export type MenuItemSlots = {
     icon?: IntrinsicShorthandProps<'span'>;
     checkmark?: IntrinsicShorthandProps<'span'>;
     submenuIndicator?: IntrinsicShorthandProps<'span'>;
-    content: IntrinsicShorthandProps<'span'>;
+    content?: IntrinsicShorthandProps<'span'>;
     secondaryContent?: IntrinsicShorthandProps<'span'>;
 };
 
@@ -261,6 +261,29 @@ export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React
 // @public (undocumented)
 export type MenuSlots = {};
 
+// @public
+export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
+
+// @public (undocumented)
+export const menuSplitGroupClassName = "fui-MenuSplitGroup";
+
+// @public (undocumented)
+export type MenuSplitGroupCommons = {};
+
+// @public
+export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommons;
+
+// @public
+export const menuSplitGroupShorthandProps: (keyof MenuSplitGroupSlots)[];
+
+// @public (undocumented)
+export type MenuSplitGroupSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+};
+
+// @public
+export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & MenuSplitGroupCommons;
+
 // @public (undocumented)
 export type MenuState = MenuCommons & ComponentState<MenuSlots> & {
     setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
@@ -322,6 +345,9 @@ export const renderMenuList: (state: MenuListState, contextValues: MenuListConte
 
 // @public
 export const renderMenuPopover: (state: MenuPopoverState) => JSX.Element;
+
+// @public
+export const renderMenuSplitGroup: (state: MenuSplitGroupState) => JSX.Element;
 
 // @public
 export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
@@ -403,6 +429,12 @@ export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElem
 
 // @public
 export const useMenuPopoverStyles: (state: MenuPopoverState) => MenuPopoverState;
+
+// @public
+export const useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
+
+// @public
+export const useMenuSplitGroupStyles: (state: MenuSplitGroupState) => MenuSplitGroupState;
 
 // @public
 export const useMenuTrigger: (props: MenuTriggerProps) => MenuTriggerState;

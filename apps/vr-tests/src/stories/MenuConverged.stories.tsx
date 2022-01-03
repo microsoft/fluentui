@@ -12,6 +12,7 @@ import {
   MenuGroup,
   MenuGroupHeader,
   MenuDivider,
+  MenuSplitGroup,
 } from '@fluentui/react-menu';
 import { Cut20Regular, Edit20Regular, ClipboardPaste20Regular } from '@fluentui/react-icons';
 
@@ -221,6 +222,49 @@ storiesOf('Menu Converged - nested submenus', module)
                   <MenuItem>New </MenuItem>
                   <MenuItem>New Window</MenuItem>
                   <MenuItem>Open Folder</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { includeRtl: true },
+  );
+
+storiesOf('Menu Converged - split item', module)
+  .addDecorator(story => (
+    // https://github.com/microsoft/fluentui/issues/19782
+    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('submenu open').end()}>
+      {story()}
+    </Screener>
+  ))
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>New </MenuItem>
+            <MenuItem>New Window</MenuItem>
+            <MenuItem>Open Folder</MenuItem>
+            <Menu>
+              <MenuSplitGroup>
+                <MenuItem>Open</MenuItem>
+                <MenuTrigger>
+                  <MenuItem id="nestedTrigger" />
+                </MenuTrigger>
+              </MenuSplitGroup>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>In browser</MenuItem>
+                  <MenuItem>In desktop app</MenuItem>
+                  <MenuItem>In mobile</MenuItem>
                 </MenuList>
               </MenuPopover>
             </Menu>
