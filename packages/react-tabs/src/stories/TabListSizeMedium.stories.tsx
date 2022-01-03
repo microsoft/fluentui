@@ -1,7 +1,7 @@
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-make-styles';
 import * as React from 'react';
-import { Tab, TabList, TabProps } from '../index'; // codesandbox-dependency: @fluentui/react-tabs ^9.0.0-beta
+import { Tab, TabList } from '../index'; // codesandbox-dependency: @fluentui/react-tabs ^9.0.0-beta
 
 const useStyles = makeStyles({
   root: {
