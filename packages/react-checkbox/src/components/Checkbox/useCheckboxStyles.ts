@@ -46,7 +46,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active': {
+    ':active:hover': {
       color: theme.colorNeutralForeground1,
       [`& .${indicatorClassName}`]: {
         borderColor: theme.colorNeutralStrokeAccessiblePressed,
@@ -59,18 +59,20 @@ const useRootStyles = makeStyles({
     [`& .${indicatorClassName}`]: {
       backgroundColor: theme.colorCompoundBrandBackground,
       color: theme.colorNeutralForegroundOnBrand,
-      borderColor: theme.colorBrandBackground,
-    },
-
-    ':active': {
-      [`& .${indicatorClassName}`]: {
-        backgroundColor: theme.colorCompoundBrandBackgroundPressed,
-      },
+      borderColor: theme.colorCompoundBrandBackground,
     },
 
     ':hover': {
       [`& .${indicatorClassName}`]: {
         backgroundColor: theme.colorCompoundBrandBackgroundHover,
+        borderColor: theme.colorCompoundBrandBackgroundHover,
+      },
+    },
+
+    ':active:hover': {
+      [`& .${indicatorClassName}`]: {
+        backgroundColor: theme.colorCompoundBrandBackgroundPressed,
+        borderColor: theme.colorCompoundBrandBackgroundPressed,
       },
     },
   }),
@@ -82,17 +84,17 @@ const useRootStyles = makeStyles({
       color: theme.colorCompoundBrandForeground1,
     },
 
-    ':active': {
-      [`& .${indicatorClassName}`]: {
-        borderColor: theme.colorCompoundBrandStrokePressed,
-        color: theme.colorCompoundBrandForeground1Pressed,
-      },
-    },
-
     ':hover': {
       [`& .${indicatorClassName}`]: {
         borderColor: theme.colorCompoundBrandStrokeHover,
         color: theme.colorCompoundBrandForeground1Hover,
+      },
+    },
+
+    ':active:hover': {
+      [`& .${indicatorClassName}`]: {
+        borderColor: theme.colorCompoundBrandStrokePressed,
+        color: theme.colorCompoundBrandForeground1Pressed,
       },
     },
   }),
@@ -102,7 +104,6 @@ const useRootStyles = makeStyles({
     [`& .${indicatorClassName}`]: {
       borderColor: theme.colorNeutralStrokeDisabled,
       color: theme.colorNeutralForegroundDisabled,
-      backgroundColor: theme.colorNeutralBackground1,
     },
   }),
 });
@@ -187,7 +188,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
     rootStyles.base,
     rootStyles.focusIndicator,
     state.input.disabled && rootStyles.disabled,
-    // Use exactly one of the color classes, depending on `disabled` and `checked`
+    // Pick exactly one of the color classes, based on `disabled` and `checked`
     state.input.disabled
       ? rootStyles.disabledColors
       : state.checked === 'mixed'

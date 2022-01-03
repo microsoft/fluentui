@@ -4,7 +4,6 @@ import { useControllableState, useId, useOnClickOutside, useEventCallback } from
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
@@ -32,20 +31,26 @@ export const useMenu = (props: MenuProps): MenuState => {
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
-  if (children.length !== 2 && process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line no-console
-    console.warn('Menu can only take one MenuTrigger and one MenuList as children');
-  }
-
-  const { menuTrigger, menuPopover } = children.reduce((acc, child) => {
-    if (child.type === MenuTrigger) {
-      acc.menuTrigger = child;
-    } else {
-      acc.menuPopover = child;
+  if (process.env.NODE_ENV !== 'production') {
+    if (children.length === 0) {
+      // eslint-disable-next-line no-console
+      console.warn('Menu must contain at least one child');
     }
 
-    return acc;
-  }, {} as Pick<MenuState, 'menuTrigger' | 'menuPopover'>);
+    if (children.length > 2) {
+      // eslint-disable-next-line no-console
+      console.warn('Menu must contain at most two children');
+    }
+  }
+
+  let menuTrigger: React.ReactElement | undefined = undefined;
+  let menuPopover: React.ReactElement | undefined = undefined;
+  if (children.length === 2) {
+    menuTrigger = children[0];
+    menuPopover = children[1];
+  } else if (children.length === 1) {
+    menuPopover = children[0];
+  }
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePopper(popperState);
 
   const initialState = {
