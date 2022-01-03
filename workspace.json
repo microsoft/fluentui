@@ -253,6 +253,11 @@
       "root": "packages/react-date-time",
       "projectType": "library"
     },
+    "@fluentui/react-dialog": {
+      "root": "packages/react-dialog",
+      "projectType": "library",
+      "sourceRoot": "packages/react-dialog/src"
+    },
     "@fluentui/react-divider": {
       "root": "packages/react-divider",
       "projectType": "library",
