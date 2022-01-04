@@ -5,11 +5,10 @@ const path = require('path');
 const jju = require('jju');
 
 const testFiles = [
-  '**/*{.,-}test.{ts,tsx}',
-  '**/*.stories.tsx',
-  '**/{common,test,tests,stories}/**',
+  '**/*{.,-}{test,spec}.{ts,tsx}',
+  '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
-  '**/common/isConformant.{ts,tsx}',
+  '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
 ];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
@@ -47,8 +46,16 @@ module.exports = {
   /** Files for build configuration */
   configFiles,
 
-  /** Files which may reference devDependencies: tests, docs (excluding examples), config/build */
-  devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles],
+  /**
+   * Files which may reference `devDependencies`:
+   * - tests
+   * - docs (excluding v8 examples)
+   * - config/build
+   * - stories, for now
+   *   - may need to reconsider for converged components depending on website approach
+   *   - the stories suffix is also used for screener stories in `vr-tests`
+   */
+  devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, '**/*.stories.tsx'],
 
   /**
    * Whether linting is running in context of lint-staged (which should disable rules requiring
