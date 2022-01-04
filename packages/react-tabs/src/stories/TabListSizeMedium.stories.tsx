@@ -1,7 +1,7 @@
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 import * as React from 'react';
-import { Tab, TabList, TabProps } from '../index';
+import { Tab, TabList } from '../index';
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SizeMedium = (props: Partial<TabProps>) => {
+export const SizeMedium = () => {
   const styles = useStyles();
 
   const renderTabs = () => {
