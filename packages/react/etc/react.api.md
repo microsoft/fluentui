@@ -841,6 +841,8 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    // (undocumented)
+    updateColumn(column: IColumn, width?: number, newColumnIndex?: number): void;
 }
 
 // @public (undocumented)
@@ -3679,7 +3681,6 @@ export interface IDetailsHeaderBaseProps extends React_2.ClassAttributes<Details
     columnReorderOptions?: IColumnReorderOptions;
     columnReorderProps?: IColumnReorderHeaderProps;
     componentRef?: IRefObject<IDetailsHeader>;
-    editColumnProps?: IEditColumnProps;
     isAllCollapsed?: boolean;
     layoutMode: DetailsListLayoutMode;
     minimumPixelsForDrag?: number;
@@ -3788,6 +3789,7 @@ export interface IDetailsList extends IList {
     focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
+    updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
 }
 
 // @public (undocumented)
@@ -3814,7 +3816,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     constrainMode?: ConstrainMode;
     disableSelectionZone?: boolean;
     dragDropEvents?: IDragDropEvents;
-    editColumnProps?: IEditColumnProps;
     enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
     flexMargin?: number;
@@ -4756,14 +4757,6 @@ export interface IDropHintDetails {
     originX: number;
     // (undocumented)
     startX: number;
-}
-
-// @public (undocumented)
-export interface IEditColumnProps {
-    // (undocumented)
-    column: IColumn;
-    // (undocumented)
-    onEditColumn: (props: IOnEditColumnProps) => void;
 }
 
 // @public (undocumented)
@@ -6178,14 +6171,6 @@ export interface INavStyles {
 export function initializeResponsiveMode(element?: HTMLElement): void;
 
 export { IObjectWithKey }
-
-// @public (undocumented)
-export interface IOnEditColumnProps {
-    // (undocumented)
-    column: IColumn;
-    // (undocumented)
-    updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
-}
 
 // @public (undocumented)
 export interface IOnRenderComboBoxLabelProps {
