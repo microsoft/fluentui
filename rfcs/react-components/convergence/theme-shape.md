@@ -25,7 +25,7 @@ Current implementation in `@fluentui/react-theme@9.0.0-alpha.22`.
 - alias token implemented as a "reference" to a global token: `--alias-token: var(--global-token)`.
 - **Each reflow takes ~150ms (1500 ms total for the 10 mounts)**
 
-![Flamechart - Master](theme-shape/perf-master.png)
+![Flamechart - Master](../../assets/theme-shape-perf-master.png)
 
 ### Inline values to alias tokens.
 
@@ -33,14 +33,14 @@ Current implementation in `@fluentui/react-theme@9.0.0-alpha.22`.
 - Instead of "referencing" global tokens in the alias tokens, inline the values: `--alias-token: #fff`.
 - **Each reflow takes ~90ms (1000 ms total for the 10 mounts)**
 
-![Flamechart - Inline values to alias tokens](theme-shape/perf-inline-alias.png)
+![Flamechart - Inline values to alias tokens](../../assets/theme-shape-perf-inline-alias.png)
 
 ### Reduce number of tokens (CSS variables)
 
 - Removed global color tokens, number of CSS variables reduced to 550.
 - **Each reflow takes ~50ms (600 ms total for the 10 mounts)**
 
-![Flamechart - Reduce number of tokens](theme-shape/perf-no-global.png)
+![Flamechart - Reduce number of tokens](../../assets/theme-shape-perf-no-global.png)
 
 ### Remove even more tokens
 
@@ -49,7 +49,7 @@ It seems that the rendering performance depends on the number of CSS variables i
 - Removed alias shared color tokens, number of CSS variables reduced to 160.
 - **Each reflow takes ~20ms (350 ms total for the 10 mounts)**
 
-![Flamechart - Remove even more tokens](theme-shape/perf-no-colors.png)
+![Flamechart - Remove even more tokens](../../assets/theme-shape-perf-no-colors.png)
 
 ### Hash CSS variables
 
@@ -59,13 +59,13 @@ In inline aliases scenario, there are 1200 CSS variables with names like `--alia
 
 **The perf example intentionally uses precomputed hashes to keep the hash computation out of the measured code path.**
 
-![Flamechart - Hash CSS variables](theme-shape/perf-hash-variables.png)
+![Flamechart - Hash CSS variables](../../assets/theme-shape-perf-hash-variables.png)
 
 ### Results Summary
 
 We also used flamegrill to compare the approaches. Inlined aliases is used as a baseline all other approaches are compared to. For each experiment we run the test 10 times for both the experiment and the baseline to get comparable numbers.
 
-![Flamegrill - Results Summary](theme-shape/perf-flamegrill.png)
+![Flamegrill - Results Summary](../../assets/theme-shape-perf-flamegrill.png)
 
 ## Proposed changes to the theme shape
 

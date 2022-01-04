@@ -2458,6 +2458,7 @@ export interface IButtonGridProps extends React_2.TableHTMLAttributes<HTMLTableE
     // @deprecated
     containerClassName?: string;
     doNotContainWithinFocusZone?: boolean;
+    isSemanticRadio?: boolean;
     items: any[];
     onBlur?: () => void;
     onRenderItem: (item: any, index: number) => JSX.Element;
@@ -3388,6 +3389,7 @@ export interface IColorPickerGridCellProps {
     id?: string;
     idPrefix?: string;
     index?: number;
+    isRadio?: boolean;
     item: IColorCellProps;
     label?: string;
     onClick?: (item: IColorCellProps) => void;
