@@ -32,6 +32,7 @@ import {
 } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
 import { IKeytipProps } from '../Keytip/Keytip.types';
+import { composeComponentAs } from '../../Utilities';
 
 /**
  * {@docCategory Button}
@@ -336,7 +337,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
           {menuProps &&
             !menuProps.doNotLayer &&
             this._shouldRenderMenu() &&
-            onRenderMenu(menuProps, this._onRenderMenu)}
+            onRenderMenu(this._getMenuProps(menuProps), this._onRenderMenu)}
         </span>
       </Tag>
     );
@@ -358,7 +359,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       return (
         <span style={{ display: 'inline-block' }}>
           {Content}
-          {this._shouldRenderMenu() && onRenderMenu(menuProps, this._onRenderMenu)}
+          {this._shouldRenderMenu() && onRenderMenu(this._getMenuProps(menuProps), this._onRenderMenu)}
         </span>
       );
     }
@@ -509,10 +510,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return <FontIcon iconName="ChevronDown" {...menuIconProps} className={this._classNames.menuIcon} />;
   };
 
-  private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
+  private _getMenuProps(menuProps: IContextualMenuProps): IContextualMenuProps {
     const { persistMenu } = this.props;
     const { menuHidden } = this.state;
-    const MenuType = this.props.menuAs || (ContextualMenu as React.ElementType<IContextualMenuProps>);
 
     // the accessible menu label (accessible name) has a relationship to the button.
     // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
@@ -521,19 +521,23 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       menuProps = { ...menuProps, labelElementId: this._labelId };
     }
 
-    return (
-      <MenuType
-        id={this._labelId + '-menu'}
-        directionalHint={DirectionalHint.bottomLeftEdge}
-        {...menuProps}
-        shouldFocusOnContainer={this._menuShouldFocusOnContainer}
-        shouldFocusOnMount={this._menuShouldFocusOnMount}
-        hidden={persistMenu ? menuHidden : undefined}
-        className={css('ms-BaseButton-menuhost', menuProps.className)}
-        target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
-        onDismiss={this._onDismissMenu}
-      />
-    );
+    return {
+      id: this._labelId + '-menu',
+      directionalHint: DirectionalHint.bottomLeftEdge,
+      ...menuProps,
+      shouldFocusOnContainer: this._menuShouldFocusOnContainer,
+      shouldFocusOnMount: this._menuShouldFocusOnMount,
+      hidden: persistMenu ? menuHidden : undefined,
+      className: css('ms-BaseButton-menuhost', menuProps.className),
+      target: this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current,
+      onDismiss: this._onDismissMenu,
+    };
+  }
+
+  private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
+    const MenuType = this.props.menuAs ? composeComponentAs(this.props.menuAs, ContextualMenu) : ContextualMenu;
+
+    return <MenuType {...menuProps} />;
   };
 
   private _onDismissMenu: IContextualMenuProps['onDismiss'] = ev => {
