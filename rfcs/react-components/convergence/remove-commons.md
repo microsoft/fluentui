@@ -63,7 +63,7 @@ export type CheckboxState =
 
 ## Problem statement
 
-Our current use of `FooCommons` interfaces as part of component props could cause unnecessary confusion for a user looking at our types:
+Our current use of `FooCommons` interfaces as part of component props could cause unnecessary confusion for a user looking at our props types (which are the only types users will care about 99% of the time):
 
 - Not straightforward to understand what's optional or required when
 - Additional level of indirection to understand what's included in props
@@ -76,9 +76,13 @@ We're also inconsistent about how required/optional things are handled in common
 
 ## Detailed Design or Proposal
 
-Rather than making a consistent rule for whether commons should more closely reflect props or state, I think a better solution is to remove the `FooCommons` types entirely. Instead, put everything in `FooProps`, and use `Pick`/`Required` to define `FooState` (and `FooContext` if needed).
+Rather than making a consistent rule for whether commons should more closely reflect props or state, I think a better solution is to remove the `FooCommons` types entirely.
 
-This makes the user-facing type (props) very clear/explicit and confines the implementation details to the internal types (state, context).
+Instead, put everything in `FooProps`, and mark props as required or optional based on what's actually required for the user to pass in to the component.
+
+Since `FooState`/`FooContext` are implementation details that only the component author and people with advanced recomposition use cases need to think about, define them with `Pick`/`Required`/etc from `FooProps`.
+
+This makes what's included and required/optional in the user-facing type (props) very explicit and confines the implementation details to the "internal"/advanced use types (state, context).
 
 Modified Input example from above:
 
@@ -115,13 +119,15 @@ As an interim step (to avoid blocking RC), we could **stop exporting `FooCommons
 
 ### Pros
 
-- User-facing types (props) will be very clear/explicit
+- The primary user-facing types (props) will be very clear and explicit
+- Implementation details that most users don't need to care about are confined to internal/advanced use types (state, context)
 - Fewer types for a user to step through when trying to understand available props
-- Implementation details that most users don't need to care about are confined to internal types (state, context)
 
 ### Cons
 
-- Adds complexity to FooState type definition when FooState includes most/all of FooCommons
+- Adds complexity to `FooState` type definition, especially when `FooState` includes most/all of `FooCommons`
+  - Note: doing something like `Required<FooProps>` won't work since `FooProps` also includes all the native props
+  - This is less of a concern since it's
 - More work to do
 - Potential for delaying RC
   - This is mitigated by the last paragraph in the "Proposal" section
