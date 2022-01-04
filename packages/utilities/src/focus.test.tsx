@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { createTestContainer } from '@fluentui/test-utilities';
+
 import {
   isElementVisible,
   isElementTabbable,
@@ -11,47 +12,62 @@ import {
   getLastTabbable,
 } from './focus';
 
-let _hiddenElement: HTMLElement | undefined;
-let _visibleElement: HTMLElement | undefined;
-let _element: HTMLElement | undefined;
+function renderIntoDocument(element: React.ReactElement<{}>, container: HTMLElement): HTMLElement {
+  const component = ReactDOM.render(element, container) as React.ReactInstance;
+  const renderedDOM = ReactDOM.findDOMNode(component) as HTMLElement;
 
-function renderIntoDocument(element: React.ReactElement<{}>): HTMLElement {
-  const component = ReactTestUtils.renderIntoDocument(element);
-  const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-  return renderedDOM as HTMLElement;
-}
-
-function _initialize(): void {
-  _hiddenElement = renderIntoDocument(
-    <div data-is-visible={false}>
-      <button />
-    </div>,
-  ) as HTMLElement;
-  _visibleElement = renderIntoDocument(
-    <div data-is-visible={true}>
-      <button />
-    </div>,
-  ) as HTMLElement;
-  _element = renderIntoDocument(
-    <div>
-      <button />
-    </div>,
-  ) as HTMLElement;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (_element as any).isVisible = true;
+  return renderedDOM;
 }
 
 describe('isElementVisible', () => {
-  beforeEach(() => _initialize());
+  let testContainer: HTMLElement | undefined;
+
+  afterEach(() => {
+    if (testContainer) {
+      ReactDOM.unmountComponentAtNode(testContainer);
+      testContainer.remove();
+      testContainer = undefined;
+    }
+  });
+
   it('returns false if data-is-visible is false', () => {
+    testContainer = createTestContainer();
+
+    const _hiddenElement = renderIntoDocument(
+      <div data-is-visible={false}>
+        <button />
+      </div>,
+      testContainer,
+    ) as HTMLElement;
+
     expect(isElementVisible(_hiddenElement)).toEqual(false);
   });
 
   it('returns true if data-is-visible is true', () => {
+    testContainer = createTestContainer();
+    const _visibleElement = renderIntoDocument(
+      <div data-is-visible={true}>
+        <button />
+      </div>,
+      testContainer,
+    ) as HTMLElement;
+
     expect(isElementVisible(_visibleElement)).toEqual(true);
   });
 
   it('returns true if data-is-visible is undefined but element is visible', () => {
+    testContainer = createTestContainer();
+
+    const _element = renderIntoDocument(
+      <div>
+        <button />
+      </div>,
+      testContainer,
+    ) as HTMLElement;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (_element as any).isVisible = true;
+
     expect(isElementVisible(_element)).toEqual(true);
   });
 });
@@ -140,23 +156,35 @@ describe('isElementTabbable', () => {
 });
 
 describe('focusAsync', () => {
-  // rAF does not exist in node - let's mock it
-  window.requestAnimationFrame = (callback: FrameRequestCallback) => {
-    return window.setTimeout(callback, 16);
-  };
+  let testContainer: HTMLElement | undefined;
+  afterEach(() => {
+    if (testContainer) {
+      ReactDOM.unmountComponentAtNode(testContainer);
+      testContainer.remove();
+      testContainer = undefined;
+    }
+  });
 
-  jest.useFakeTimers();
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
 
   it('focuses on an item on the next frame', () => {
-    const component = renderIntoDocument(
+    testContainer = createTestContainer();
+
+    const container = renderIntoDocument(
       <div>
         <button className="a">a</button>
         <button className="b">b</button>
         <button className="c">c</button>
       </div>,
+      testContainer,
     );
 
-    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const buttonA = container.querySelector('.a') as HTMLElement;
     const buttonB = container.querySelector('.b') as HTMLElement;
     const buttonC = container.querySelector('.c') as HTMLElement;
@@ -195,15 +223,15 @@ describe('getFocusableByIndexPath', () => {
     const parent = document.createElement('div');
 
     parent.innerHTML = `
-    <div>
-      <div></div>
-      <div></div>
       <div>
         <div></div>
-        <button id='child' data-is-visible='true' />
+        <div></div>
+        <div>
+          <div></div>
+          <button id='child' data-is-visible='true' />
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
     const child = parent.querySelector('#child') as HTMLElement;
 
@@ -214,15 +242,15 @@ describe('getFocusableByIndexPath', () => {
     const parent = document.createElement('div');
 
     parent.innerHTML = `
-    <div>
-      <div></div>
-      <div></div>
       <div>
         <div></div>
-        <button id='child' data-is-visible='false' />
+        <div></div>
+        <div>
+          <div></div>
+          <button id='child' data-is-visible='false' />
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
     parent.querySelector('#child') as HTMLElement;
 
@@ -233,14 +261,14 @@ describe('getFocusableByIndexPath', () => {
     const parent = document.createElement('div');
 
     parent.innerHTML = `
-    <div>
-      <button id='child' data-is-visible='true'>
-        <div>
-          <div/>
-        </div>
-      </button>
-    </div>
-  `;
+      <div>
+        <button id='child' data-is-visible='true'>
+          <div>
+            <div/>
+          </div>
+        </button>
+      </div>
+    `;
 
     const child = parent.querySelector('#child') as HTMLElement;
 
@@ -253,15 +281,15 @@ describe('getElementIndexPath', () => {
     const parent = document.createElement('div');
 
     parent.innerHTML = `
-      <div>
-        <div></div>
-        <div></div>
         <div>
           <div></div>
-          <div id='child'></div>
+          <div></div>
+          <div>
+            <div></div>
+            <div id='child'></div>
+          </div>
         </div>
-      </div>
-    `;
+      `;
 
     const child = parent.querySelector('#child') as HTMLElement;
 
@@ -276,8 +304,18 @@ describe('getElementIndexPath', () => {
 });
 
 describe('getFirstTabbable', () => {
+  let testContainer: HTMLElement | undefined;
+  afterEach(() => {
+    if (testContainer) {
+      ReactDOM.unmountComponentAtNode(testContainer);
+      testContainer.remove();
+      testContainer = undefined;
+    }
+  });
+
   it('focuses on the next tabbable item', () => {
-    const component = renderIntoDocument(
+    testContainer = createTestContainer();
+    const container = renderIntoDocument(
       <div>
         <div className="parent">
           <button className="a" data-is-visible={true}>
@@ -291,9 +329,9 @@ describe('getFirstTabbable', () => {
           </button>
         </div>
       </div>,
+      testContainer,
     );
 
-    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
     const parent = container.querySelector('.parent') as HTMLElement;
     const buttonA = container.querySelector('.a') as HTMLElement;
     const buttonB = container.querySelector('.b') as HTMLElement;
@@ -302,7 +340,8 @@ describe('getFirstTabbable', () => {
   });
 
   it('does not focus on an item with tabIndex of -1', () => {
-    const component = renderIntoDocument(
+    testContainer = createTestContainer();
+    const container = renderIntoDocument(
       <div>
         <div className="parent">
           <button className="a" data-is-visible={true} tabIndex={-1}>
@@ -316,9 +355,9 @@ describe('getFirstTabbable', () => {
           </button>
         </div>
       </div>,
+      testContainer,
     );
 
-    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
     const parent = container.querySelector('.parent') as HTMLElement;
     const buttonA = container.querySelector('.a') as HTMLElement;
 
@@ -327,8 +366,18 @@ describe('getFirstTabbable', () => {
 });
 
 describe('getLastTabbable', () => {
+  let testContainer: HTMLElement | undefined;
+  afterEach(() => {
+    if (testContainer) {
+      ReactDOM.unmountComponentAtNode(testContainer);
+      testContainer.remove();
+      testContainer = undefined;
+    }
+  });
+
   it('focuses on the last tabbable item', () => {
-    const component = renderIntoDocument(
+    testContainer = createTestContainer();
+    const container = renderIntoDocument(
       <div>
         <div className="parent">
           <button className="a" data-is-visible={true}>
@@ -342,9 +391,9 @@ describe('getLastTabbable', () => {
           </button>
         </div>
       </div>,
+      testContainer,
     );
 
-    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
     const parent = container.querySelector('.parent') as HTMLElement;
     const buttonB = container.querySelector('.b') as HTMLElement;
     const buttonC = container.querySelector('.c') as HTMLElement;
@@ -353,7 +402,8 @@ describe('getLastTabbable', () => {
   });
 
   it('does not focus on an item with tabIndex of -1', () => {
-    const component = renderIntoDocument(
+    testContainer = createTestContainer();
+    const container = renderIntoDocument(
       <div>
         <div className="parent">
           <button className="a" data-is-visible={true} tabIndex={-1}>
@@ -367,9 +417,9 @@ describe('getLastTabbable', () => {
           </button>
         </div>
       </div>,
+      testContainer,
     );
 
-    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
     const parent = container.querySelector('.parent') as HTMLElement;
     const buttonC = container.querySelector('.c') as HTMLElement;
 
