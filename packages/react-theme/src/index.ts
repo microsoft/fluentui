@@ -1,7 +1,7 @@
 export * from './themes/index';
 export * from './utils/index';
 
-export { tokens } from './global/tokens';
+export { tokens } from './tokens';
 
 export type {
   Brands,

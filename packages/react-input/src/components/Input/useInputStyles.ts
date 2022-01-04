@@ -53,7 +53,8 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium), // used for all but underline
     position: 'relative',
     boxSizing: 'border-box',
-
+  },
+  interactive: {
     // This is all for the bottom focus border.
     // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
     ':after': {
@@ -120,6 +121,8 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  },
+  outlineInteractive: {
     ':hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
@@ -134,6 +137,8 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderRadius(0), // corners look strange if rounded
     ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
+  },
+  underlineInteractive: {
     ':hover': {
       borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
     },
@@ -146,6 +151,8 @@ const useRootStyles = makeStyles({
   filled: {
     boxShadow: tokens.shadow2, // optional shadow for filled appearances
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+  },
+  filledInteractive: {
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':hover,:focus-within': {
       // also handles pressed border color (:active)
@@ -220,7 +227,7 @@ const useContentStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles = (state: InputState): InputState => {
-  const { size = 'medium', appearance = 'outline' } = state;
+  const { size, appearance } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 
@@ -233,6 +240,10 @@ export const useInputStyles = (state: InputState): InputState => {
     rootStyles.base,
     rootStyles[size],
     rootStyles[appearance],
+    !disabled && rootStyles.interactive,
+    !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
+    !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
+    !disabled && filled && rootStyles.filledInteractive,
     state.inline && rootStyles.inline,
     filled && rootStyles.filled,
     disabled && rootStyles.disabled,
