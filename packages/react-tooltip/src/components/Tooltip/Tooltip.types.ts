@@ -36,6 +36,13 @@ export type TooltipCommons = {
   content: React.ReactNode;
 
   /**
+   * Color variant with inverted colors
+   *
+   * @defaultvalue false
+   */
+  inverted?: boolean;
+
+  /**
    * Render an arrow pointing to the target element
    *
    * @defaultvalue false

@@ -35,6 +35,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
 
   const {
     content,
+    inverted,
     withArrow,
     positioning,
     onVisibleChange,
@@ -59,6 +60,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
 
   const state: TooltipState = {
     content,
+    inverted,
     withArrow,
     positioning,
     showDelay,

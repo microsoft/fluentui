@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Remove `inverted` prop that was added back by a merge conflict",
+  "comment": "Add high contrast border around Tooltip",
   "packageName": "@fluentui/react-tooltip",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
