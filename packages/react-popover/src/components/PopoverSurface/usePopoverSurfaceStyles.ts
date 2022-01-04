@@ -50,7 +50,9 @@ const useStyles = makeStyles({
   mediumLargeArrow: createArrowHeightStyles(arrowHeights.medium),
   arrow: theme =>
     createArrowStyles(theme, {
-      border: ['1px', 'solid', theme.colorTransparentStroke],
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: theme.colorTransparentStroke,
     }),
 });
 
