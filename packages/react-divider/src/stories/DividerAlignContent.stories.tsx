@@ -49,3 +49,12 @@ export const AlignContent = () => {
     </div>
   );
 };
+
+AlignContent.parameters = {
+  docs: {
+    description: {
+      story:
+        'The label associated with the divider can be aligned at the `start`, `center`, or `end` of the divider line.',
+    },
+  },
+};

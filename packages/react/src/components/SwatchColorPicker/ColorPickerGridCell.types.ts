@@ -23,6 +23,13 @@ export interface IColorPickerGridCellProps {
   idPrefix?: string;
 
   /**
+   * If true, uses radio semantics for the color cell.
+   * This should be set to true for cells within a single-row colorpicker.
+   * @defaultvalue false
+   */
+  isRadio?: boolean;
+
+  /**
    * Tooltip and aria label for this item
    */
   label?: string;
