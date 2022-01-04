@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { IComboBox, IComboBoxProps } from '../../ComboBox';
 
 /**
