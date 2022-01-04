@@ -198,6 +198,13 @@ const useStyles = makeStyles({
     textAlign: 'center',
     ...shorthands.borderRadius('inherit'),
   },
+
+  icon16: { fontSize: '16px' },
+  icon20: { fontSize: '20px' },
+  icon24: { fontSize: '24px' },
+  icon28: { fontSize: '28px' },
+  icon32: { fontSize: '32px' },
+  icon48: { fontSize: '48px' },
 });
 
 const useSizeStyles = makeStyles({
@@ -442,7 +449,22 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   }
 
   if (state.icon) {
-    state.icon.className = mergeClasses(styles.iconLabel, state.icon.className);
+    let iconSizeClass;
+    if (size <= 24) {
+      iconSizeClass = styles.icon16;
+    } else if (size <= 40) {
+      iconSizeClass = styles.icon20;
+    } else if (size <= 48) {
+      iconSizeClass = styles.icon24;
+    } else if (size <= 56) {
+      iconSizeClass = styles.icon28;
+    } else if (size <= 72) {
+      iconSizeClass = styles.icon32;
+    } else {
+      iconSizeClass = styles.icon48;
+    }
+
+    state.icon.className = mergeClasses(styles.iconLabel, iconSizeClass, state.icon.className);
   }
 
   return state;
