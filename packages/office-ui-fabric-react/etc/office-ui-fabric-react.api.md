@@ -1390,7 +1390,9 @@ export function getShade(color: IColor, shade: Shade, isInverted?: boolean): ICo
 export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
 
 // @public (undocumented)
-export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
+export function getSubmenuItems(item: IContextualMenuItem, options?: {
+    target?: Target_2;
+}): IContextualMenuItem[] | undefined;
 
 // @public @deprecated (undocumented)
 export const Grid: React.FunctionComponent<IButtonGridProps>;
@@ -3203,6 +3205,8 @@ export interface IContextualMenuItem {
     // @deprecated
     inactive?: boolean;
     itemProps?: Partial<IContextualMenuItemProps>;
+    // @deprecated (undocumented)
+    items?: IContextualMenuItem[];
     // (undocumented)
     itemType?: ContextualMenuItemType;
     key: string;
@@ -3214,6 +3218,7 @@ export interface IContextualMenuItem {
     onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
     onRenderContent?: (props: IContextualMenuItemProps, defaultRenders: IContextualMenuItemRenderFunctions) => React.ReactNode;
     onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
+    preferMenuTargetAsEventTarget?: boolean;
     primaryDisabled?: boolean;
     rel?: string;
     role?: string;
@@ -10352,6 +10357,7 @@ export * from "@uifabric/utilities";
 // Warnings were encountered during analysis:
 //
 // lib/components/ColorPicker/ColorPicker.base.d.ts:11:9 - (ae-forgotten-export) The symbol "ColorComponent" needs to be exported by the entry point index.d.ts
+// lib/components/ContextualMenu/ContextualMenu.base.d.ts:21:5 - (ae-forgotten-export) The symbol "Target" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
