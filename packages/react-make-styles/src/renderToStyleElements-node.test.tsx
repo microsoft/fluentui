@@ -17,8 +17,13 @@ expect.addSnapshotSerializer({
   test(value) {
     return typeof value === 'string';
   },
-  print(value: string) {
-    return prettier.format(value, { parser: 'html' }).trim();
+  print(value) {
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _value = value as string;
+
+    return prettier.format(_value, { parser: 'html' }).trim();
   },
 });
 

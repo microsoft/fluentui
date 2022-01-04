@@ -7,7 +7,7 @@ import { carouselNavigationClassName } from 'src/components/Carousel/CarouselNav
 import { carouselNavigationItemClassName } from 'src/components/Carousel/CarouselNavigationItem';
 import { Text } from 'src/components/Text/Text';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
-import { findIntrinsicElement, mountWithProvider } from 'test/utils';
+import { createTestContainer, findIntrinsicElement, mountWithProvider } from 'test/utils';
 
 const buttonName = 'button-to-test';
 
@@ -34,13 +34,14 @@ const items = [
   },
 ];
 
-function renderCarousel(props?: CarouselProps): ReactWrapper {
+function renderCarousel(props?: CarouselProps, attachTo?: HTMLElement): ReactWrapper {
   return mountWithProvider(
     <Carousel
       items={items}
       getItemPositionText={(index: number, length: number) => `${index + 1} of ${length}`}
       {...props}
     />,
+    { attachTo },
   );
 }
 
@@ -213,23 +214,27 @@ describe('Carousel', () => {
     });
 
     it('next should be focused on last slide transition if pagination and not circular', () => {
-      const wrapper = renderCarousel({ defaultActiveIndex: 1 });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const wrapper = renderCarousel({ defaultActiveIndex: 1 }, testContainer);
       const paddleNext = getPaddleNextWrapper(wrapper);
       const paddlePrevios = getPaddlePreviousWrapper(wrapper);
 
       paddlePrevios.simulate('keydown', { key: 'Enter' });
 
       expect(document.activeElement).toEqual(paddleNext.getDOMNode());
+      removeTestContainer();
     });
 
     it('previous should be focused on first slide transition if pagination and not circular', () => {
-      const wrapper = renderCarousel({ defaultActiveIndex: 2 });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const wrapper = renderCarousel({ defaultActiveIndex: 2 }, testContainer);
       const paddleNext = getPaddleNextWrapper(wrapper);
       const paddlePrevios = getPaddlePreviousWrapper(wrapper);
 
       paddleNext.simulate('keydown', { key: 'Enter' });
 
       expect(document.activeElement).toEqual(paddlePrevios.getDOMNode());
+      removeTestContainer();
     });
   });
 
@@ -262,12 +267,14 @@ describe('Carousel', () => {
     });
 
     it('should show and focus the appropriate slide when clicked', () => {
-      const wrapper = renderCarousel({ navigation });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const wrapper = renderCarousel({ navigation }, testContainer);
       const secondNavigationItemWrapper = getNavigationNavigationItemAtIndexWrapper(wrapper, 1);
 
       secondNavigationItemWrapper.simulate('click');
       jest.runAllTimers();
       expect(document.activeElement.firstElementChild.innerHTML).toEqual('item2');
+      removeTestContainer();
     });
 
     it('should show no pagination if getItemPositionText is not passed', () => {

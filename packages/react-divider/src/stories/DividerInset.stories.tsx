@@ -39,3 +39,13 @@ export const Inset = () => {
     </div>
   );
 };
+
+Inset.parameters = {
+  docs: {
+    description: {
+      story:
+        'A divider can have a `brand`, `subtle`, or `strong` appearance.' +
+        ' When not specified, it has its default experience.',
+    },
+  },
+};
