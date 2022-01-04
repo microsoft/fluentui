@@ -78,3 +78,11 @@ export const CustomStyles = () => {
     </div>
   );
 };
+
+CustomStyles.parameters = {
+  docs: {
+    description: {
+      story: 'A divider can have custom styles applied to both the label and the line.',
+    },
+  },
+};

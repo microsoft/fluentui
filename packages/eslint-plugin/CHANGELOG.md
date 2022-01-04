@@ -1,8 +1,18 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 29 Nov 2021 07:31:31 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Dec 2021 07:31:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.5.2)
+
+Wed, 15 Dec 2021 07:31:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.5.1..@fluentui/eslint-plugin_v1.5.2)
+
+### Patches
+
+- Classify .stories.tsx as examples not tests ([PR #20681](https://github.com/microsoft/fluentui/pull/20681) by elcraig@microsoft.com)
+- Re-enable `@rnx-kit/no-export-all` ([PR #21021](https://github.com/microsoft/fluentui/pull/21021) by lingfangao@hotmail.com)
 
 ## [1.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.5.1)
 
