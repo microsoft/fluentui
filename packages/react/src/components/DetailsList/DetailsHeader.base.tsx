@@ -385,6 +385,7 @@ export class DetailsHeaderBase
   private _onDrop = (item?: any, event?: DragEvent): void => {
     // Safe to assume this is defined since we're handling a drop event
     const columnReorderProps = this._getColumnReorderProps()!;
+
     // Target index will not get changed if draggeditem is after target item.
     if (this._draggedColumnIndex >= 0 && event) {
       const targetIndex =
