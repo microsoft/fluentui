@@ -1,4 +1,4 @@
-import { MakeStylesStyle, shorthands } from '@fluentui/react-make-styles';
+import { MakeStylesStyle } from '@fluentui/react-make-styles';
 import type { Theme } from '@fluentui/react-theme';
 
 /**
@@ -6,16 +6,26 @@ import type { Theme } from '@fluentui/react-theme';
  */
 export type CreateArrowStylesOptions = {
   /**
-   * The height of the arrow from the base to the tip. The base width of the arrow is always twice its height.
+   * The height of the arrow from the base to the tip, in px. The base width of the arrow is always twice its height.
    *
    * If this is omitted, you must add styles created by createArrowHeightStyles to set the arrow's size correctly.
    */
   arrowHeight?: number;
 
   /**
-   * The border of the arrow. This should be the same border as the parent element.
+   * The borderWidth of the arrow. Should be the same borderWidth as the parent element.
    */
-  border?: [/*width:*/ string, /*style:*/ string, /*color:*/ string];
+  borderWidth?: MakeStylesStyle['borderWidth'];
+
+  /**
+   * The borderStyle for the arrow. Should be the same borderStyle as the parent element.
+   */
+  borderStyle?: MakeStylesStyle['borderStyle'];
+
+  /**
+   * The borderColor of the arrow. Should be the same borderColor as the parent element.
+   */
+  borderColor?: MakeStylesStyle['borderColor'];
 };
 
 /**
@@ -41,14 +51,13 @@ export type CreateArrowStylesOptions = {
  * ```
  */
 export function createArrowStyles(theme: Theme, options: CreateArrowStylesOptions = {}): MakeStylesStyle {
-  const { arrowHeight, border } = options;
-  const [borderWidth] = border || [0];
+  const { arrowHeight, borderWidth = 0, borderStyle, borderColor } = options;
 
   return {
     position: 'absolute',
     backgroundColor: 'inherit',
     visibility: 'hidden',
-    zIndex: -1,
+    zIndex: '-1',
 
     ...(arrowHeight && createArrowHeightStyles(arrowHeight)),
 
@@ -60,10 +69,9 @@ export function createArrowStyles(theme: Theme, options: CreateArrowStylesOption
       width: 'inherit',
       height: 'inherit',
       backgroundColor: 'inherit',
-      ...(border && {
-        ...shorthands.borderRight(...border),
-        ...shorthands.borderBottom(...border),
-      }),
+      ...(borderWidth && { borderRightWidth: borderWidth, borderBottomWidth: borderWidth }),
+      ...(borderStyle && { borderRightStyle: borderStyle, borderBottomStyle: borderStyle }),
+      ...(borderColor && { borderRightColor: borderColor, borderBottomColor: borderColor }),
       borderBottomRightRadius: theme.borderRadiusSmall,
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },

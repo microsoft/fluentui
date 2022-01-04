@@ -30,7 +30,9 @@ export function createArrowStyles(theme: Theme, options?: CreateArrowStylesOptio
 // @public
 export type CreateArrowStylesOptions = {
     arrowHeight?: number;
-    border?: [/*width:*/ string, /*style:*/ string, /*color:*/ string];
+    borderWidth?: MakeStylesStyle['borderWidth'];
+    borderStyle?: MakeStylesStyle['borderStyle'];
+    borderColor?: MakeStylesStyle['borderColor'];
 };
 
 // @public

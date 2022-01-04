@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     fontSize: theme.fontSizeBase200,
     lineHeight: theme.lineHeightBase200,
 
-    ...shorthands.borderRadius(theme.borderRadiusMedium), // Matches tooltipBorderRadius in useTooltip.tsx
+    ...shorthands.borderRadius(theme.borderRadiusMedium), // Must match tooltipBorderRadius in useTooltip.tsx
     ...shorthands.border('1px', 'solid', theme.colorTransparentStroke),
     ...shorthands.padding('4px', '11px', '6px', '11px'), // '5px 12px 7px 12px' minus the border width '1px'
     backgroundColor: theme.colorNeutralBackground1,
@@ -40,8 +40,10 @@ const useStyles = makeStyles({
 
   arrow: theme =>
     createArrowStyles(theme, {
-      arrowHeight: 6, // Matches arrowHeight in useTooltip.tsx
-      border: ['1px', 'solid', theme.colorTransparentStroke],
+      arrowHeight: 6, // Must match arrowHeight in useTooltip.tsx
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: theme.colorTransparentStroke,
     }),
 });
 
