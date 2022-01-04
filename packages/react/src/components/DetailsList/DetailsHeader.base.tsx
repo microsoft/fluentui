@@ -140,11 +140,6 @@ export class DetailsHeaderBase
     if (this.props.isAllCollapsed !== prevProps.isAllCollapsed) {
       this.setState({ isAllCollapsed: this.props.isAllCollapsed });
     }
-
-    if (this.props.editColumnProps && prevProps.editColumnProps !== this.props.editColumnProps) {
-      const column = this.props.editColumnProps.column;
-      this.props.editColumnProps.onEditColumn({ column: column, updateColumn: this._updateColumn.bind(this) });
-    }
   }
 
   public componentWillUnmount(): void {
@@ -185,6 +180,10 @@ export class DetailsHeaderBase
     const isCheckboxAlwaysVisible = checkboxVisibility === CheckboxVisibility.always;
 
     const columnReorderProps = this._getColumnReorderProps();
+    const frozenColumnCountFromStart =
+      columnReorderProps && columnReorderProps.frozenColumnCountFromStart
+        ? columnReorderProps.frozenColumnCountFromStart
+        : 0;
     const frozenColumnCountFromEnd =
       columnReorderProps && columnReorderProps.frozenColumnCountFromEnd
         ? columnReorderProps.frozenColumnCountFromEnd
@@ -295,7 +294,9 @@ export class DetailsHeaderBase
         ) : null}
         <GroupSpacer indentWidth={indentWidth} role="gridcell" count={groupNestingDepth! - 1} />
         {columns.map((column: IColumn, columnIndex: number) => {
-          const _isDraggable = this._isDraggable(columnIndex);
+          const _isDraggable = columnReorderProps
+            ? columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd
+            : false;
           return [
             columnReorderProps &&
               (_isDraggable || columnIndex === columns.length - frozenColumnCountFromEnd) &&
@@ -422,24 +423,6 @@ export class DetailsHeaderBase
     const { selectionMode, checkboxVisibility } = this.props;
 
     return selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
-  }
-
-  private _isDraggable(columnIndex: number) {
-    const { columns = NO_COLUMNS } = this.props;
-    const columnReorderProps = this._getColumnReorderProps();
-
-    if (columnReorderProps) {
-      const frozenColumnCountFromStart = columnReorderProps.frozenColumnCountFromStart
-        ? columnReorderProps.frozenColumnCountFromStart
-        : 0;
-      const frozenColumnCountFromEnd = columnReorderProps.frozenColumnCountFromEnd
-        ? columnReorderProps.frozenColumnCountFromEnd
-        : 0;
-
-      return columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd;
-    }
-
-    return false;
   }
 
   private _updateDragInfo = (props: { itemIndex: number }, event?: MouseEvent) => {
@@ -907,42 +890,6 @@ export class DetailsHeaderBase
       onToggleCollapseAll(newCollapsed);
     }
   };
-
-  private _updateColumn(column: IColumn, width?: number, newColumnIndex?: number) {
-    const { columns, onColumnResized, selectAllVisibility, columnReorderProps } = this.props;
-    const index = columns?.findIndex(col => col.key === column.key);
-
-    if (width) {
-      onColumnResized!(column, width, index!);
-    }
-
-    if (newColumnIndex) {
-      const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
-      const columnIndex = (showCheckbox ? 2 : 1) + index!;
-
-      this._updateDragInfo({ itemIndex: columnIndex });
-
-      const targetIndex = this._isCheckboxColumnHidden() ? newColumnIndex - 1 : newColumnIndex - 2;
-      const isValidTargetIndex = this._isDraggable(targetIndex);
-      if (!isValidTargetIndex) {
-        return;
-      }
-
-      if (columnReorderProps) {
-        if (columnReorderProps.onColumnDrop) {
-          const dragDropDetails: IColumnDragDropDetails = {
-            draggedIndex: this._draggedColumnIndex,
-            targetIndex: targetIndex,
-          };
-          columnReorderProps.onColumnDrop(dragDropDetails);
-          /* eslint-disable deprecation/deprecation */
-        } else if (columnReorderProps.handleColumnReorder) {
-          columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
-          /* eslint-enable deprecation/deprecation */
-        }
-      }
-    }
-  }
 }
 
 function _liesBetween(rtl: boolean, target: number, left: number, right: number): boolean {
