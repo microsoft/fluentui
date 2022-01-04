@@ -16,6 +16,7 @@ import {
   ConstrainMode,
   DetailsListLayoutMode,
   ColumnDragEndLocation,
+  IColumnDragDropDetails,
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { SelectAllVisibility } from '../DetailsList/DetailsHeader.types';
@@ -185,7 +186,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onRenderDefaultRow,
     selectionZoneRef,
     focusZoneProps,
-    editColumnProps,
   } = props;
 
   const defaultRole = 'grid';
@@ -705,7 +705,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
                 onRenderDetailsCheckbox: onRenderCheckbox,
                 rowWidth: sumColumnWidths(adjustedColumns),
                 useFastIcons,
-                editColumnProps: editColumnProps,
               },
               onRenderDetailsHeader,
             )}
@@ -844,6 +843,54 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       return this._groupedList.current.getStartItemIndexInView();
     }
     return 0;
+  }
+
+  public updateColumn(column: IColumn, width?: number, newColumnIndex?: number) {
+    const NO_COLUMNS: IColumn[] = [];
+
+    const { columns = NO_COLUMNS, selectionMode, checkboxVisibility, columnReorderOptions } = this.props;
+    const index = columns.findIndex(col => col.key === column.key);
+
+    if (width) {
+      this._onColumnResized(column, width, index!);
+    }
+
+    if (newColumnIndex) {
+      const isCheckboxColumnHidden =
+        selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
+
+      const showCheckbox = checkboxVisibility !== CheckboxVisibility.hidden;
+      const columnIndex = (showCheckbox ? 2 : 1) + index!;
+
+      const draggedIndex = isCheckboxColumnHidden ? columnIndex - 1 : columnIndex - 2;
+      const targetIndex = isCheckboxColumnHidden ? newColumnIndex - 1 : newColumnIndex - 2;
+
+      let isValidTargetIndex;
+
+      if (columnReorderOptions) {
+        const frozenColumnCountFromStart = columnReorderOptions.frozenColumnCountFromStart ?? 0;
+        const frozenColumnCountFromEnd = columnReorderOptions.frozenColumnCountFromEnd ?? 0;
+        isValidTargetIndex =
+          targetIndex >= frozenColumnCountFromStart && targetIndex < columns.length - frozenColumnCountFromEnd;
+      }
+      if (!isValidTargetIndex) {
+        return;
+      }
+
+      if (columnReorderOptions) {
+        if (columnReorderOptions.onColumnDrop) {
+          const dragDropDetails: IColumnDragDropDetails = {
+            draggedIndex: draggedIndex,
+            targetIndex: targetIndex,
+          };
+          columnReorderOptions.onColumnDrop(dragDropDetails);
+          /* eslint-disable deprecation/deprecation */
+        } else if (columnReorderOptions.handleColumnReorder) {
+          columnReorderOptions.handleColumnReorder(draggedIndex, targetIndex);
+          /* eslint-enable deprecation/deprecation */
+        }
+      }
+    }
   }
 
   public componentWillUnmount(): void {

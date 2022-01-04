@@ -55,6 +55,14 @@ export interface IDetailsList extends IList {
    * Get the start index of the page that is currently in view
    */
   getStartItemIndexInView: () => number;
+
+  /**
+   * Use to programatically resize and/or reorder columns in the DetailsList.
+   * @param column - column to resize/reorder.
+   * @param width - desired width in pixels the column should be resized to.
+   * @param newColumnIndex - desired index position where the column should be moved to.
+   */
+  updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
 }
 
 /**
@@ -331,11 +339,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Properties to pass through to the FocusZone.
    */
   focusZoneProps?: IFocusZoneProps;
-
-  /**
-   * Allows for programatic column resize and reorder.
-   */
-  editColumnProps?: IEditColumnProps;
 }
 
 /**
@@ -690,13 +693,3 @@ export type {
   IViewport,
   IWithViewportProps,
 };
-
-export interface IOnEditColumnProps {
-  column: IColumn;
-  updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
-}
-
-export interface IEditColumnProps {
-  column: IColumn;
-  onEditColumn: (props: IOnEditColumnProps) => void;
-}
