@@ -149,7 +149,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
       input.current = Number(textfieldRef.current.value);
     }
 
-    if (input.current && detailsList) {
+    if (columnToEdit.current && input.current && detailsList) {
       if (clickHandler.current === RESIZE) {
         const width = input.current;
         detailsList.updateColumn(columnToEdit.current, width);
