@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fixup! fixup! chore: update all jest deps to v25 + apply single version policy",
+  "packageName": "@fluentui/make-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

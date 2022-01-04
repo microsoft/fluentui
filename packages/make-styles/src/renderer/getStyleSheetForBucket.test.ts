@@ -17,7 +17,7 @@ describe('getStyleSheetForBucket', () => {
     getStyleSheetForBucket('h', target, renderer);
 
     expect(target.head.innerHTML).toMatchInlineSnapshot(
-      `"<style data-make-styles-bucket=\\"d\\"></style><style data-make-styles-bucket=\\"h\\"></style>"`,
+      `"<style xmlns=\\"http://www.w3.org/1999/xhtml\\" data-make-styles-bucket=\\"d\\"></style><style xmlns=\\"http://www.w3.org/1999/xhtml\\" data-make-styles-bucket=\\"h\\"></style>"`,
     );
   });
 });
