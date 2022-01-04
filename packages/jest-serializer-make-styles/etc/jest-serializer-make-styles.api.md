@@ -5,15 +5,12 @@
 ```ts
 
 // @public (undocumented)
-function print_2(val: string): string;
-
+function print_2(val: unknown): string;
 export { print_2 as print }
 
 // @public (undocumented)
 function test_2(val: unknown): boolean;
-
 export { test_2 as test }
-
 
 // (No @packageDocumentation comment for this package)
 
