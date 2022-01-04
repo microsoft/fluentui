@@ -100,6 +100,7 @@ export const useRailStyles = makeStyles({
       var(${progressColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar})),
       var(${railColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar}))
     )`,
+    outline: '1px solid transparent',
     ':before': {
       content: "''",
       position: 'absolute',
