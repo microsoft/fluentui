@@ -73,8 +73,6 @@ module.exports = {
 
         globals: {
           'ts-jest': {
-            tsConfig: path.resolve(packageRoot, 'tsconfig.json'),
-            packageJson: path.resolve(packageRoot, 'package.json'),
             diagnostics: false,
           },
         },

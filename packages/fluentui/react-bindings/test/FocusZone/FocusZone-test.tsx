@@ -10,6 +10,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
+import { createTestContainer } from './test-utils';
+
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
   let host: HTMLElement;
@@ -1536,7 +1538,7 @@ describe('FocusZone', () => {
 
   describe('restores focus', () => {
     it('to the following item when item removed', () => {
-      host = document.createElement('div');
+      const { testContainer, removeTestContainer } = createTestContainer();
 
       ReactDOM.render(
         <FocusZone>
@@ -1550,10 +1552,10 @@ describe('FocusZone', () => {
             button c
           </button>
         </FocusZone>,
-        host,
+        testContainer,
       );
 
-      const buttonB = host.querySelector('#b') as HTMLElement;
+      const buttonB = testContainer.querySelector('#b') as HTMLElement;
 
       buttonB.focus();
 
@@ -1567,14 +1569,16 @@ describe('FocusZone', () => {
             button c
           </button>
         </FocusZone>,
-        host,
+        testContainer,
       );
 
-      expect(document.activeElement).toBe(host.querySelector('#c'));
+      expect(document.activeElement).toBe(testContainer.querySelector('#c'));
+
+      removeTestContainer();
     });
 
     it('can restore focus to the previous item when end item removed', () => {
-      host = document.createElement('div');
+      const { testContainer, removeTestContainer } = createTestContainer();
 
       ReactDOM.render(
         <FocusZone>
@@ -1588,10 +1592,10 @@ describe('FocusZone', () => {
             button c
           </button>
         </FocusZone>,
-        host,
+        testContainer,
       );
 
-      const buttonC = host.querySelector('#c') as HTMLElement;
+      const buttonC = testContainer.querySelector('#c') as HTMLElement;
 
       buttonC.focus();
 
@@ -1605,18 +1609,20 @@ describe('FocusZone', () => {
             button b
           </button>
         </FocusZone>,
-        host,
+        testContainer,
       );
 
-      expect(document.activeElement).toBe(host.querySelector('#b'));
+      expect(document.activeElement).toBe(testContainer.querySelector('#b'));
+
+      removeTestContainer();
     });
   });
 
   describe('parking and unparking', () => {
     let buttonA: HTMLElement;
 
-    beforeEach(() => {
-      host = document.createElement('div');
+    function setup() {
+      const { testContainer, removeTestContainer } = createTestContainer();
 
       ReactDOM.render(
         <div>
@@ -1627,9 +1633,9 @@ describe('FocusZone', () => {
             </button>
           </FocusZone>
         </div>,
-        host,
+        testContainer,
       );
-      buttonA = host.querySelector('#a') as HTMLElement;
+      buttonA = testContainer.querySelector('#a') as HTMLElement;
       buttonA.focus();
 
       // Render component without button A.
@@ -1638,15 +1644,27 @@ describe('FocusZone', () => {
           <button key="z" id="z" data-is-visible="true" />
           <FocusZone id="fz" />
         </div>,
-        host,
+        testContainer,
       );
-    });
+
+      return { testContainer, removeTestContainer };
+    }
+
+    // beforeEach(() => {
+    //   host = document.createElement('div');
+    // });
 
     it('can move focus to container when last item removed', () => {
-      expect(document.activeElement).toBe(host.querySelector('#fz'));
+      const { removeTestContainer, testContainer } = setup();
+
+      expect(document.activeElement).toBe(testContainer.querySelector('#fz'));
+
+      removeTestContainer();
     });
 
     it('can move focus from container to first item when added', () => {
+      const { removeTestContainer, testContainer } = setup();
+
       ReactDOM.render(
         <div>
           <button key="z" id="z" />
@@ -1656,20 +1674,28 @@ describe('FocusZone', () => {
             </button>
           </FocusZone>
         </div>,
-        host,
+        testContainer,
       );
-      expect(document.activeElement).toBe(host.querySelector('#a'));
+      expect(document.activeElement).toBe(testContainer.querySelector('#a'));
+
+      removeTestContainer();
     });
 
     it('removes focusability when moving from focused container', () => {
-      expect(host.querySelector('#fz')!.getAttribute('tabindex')).toEqual('-1');
-      (host.querySelector('#z') as HTMLElement).focus();
-      expect(host.querySelector('#fz')!.getAttribute('tabindex')).toBeNull();
+      const { removeTestContainer, testContainer } = setup();
+
+      expect(testContainer.querySelector('#fz')!.getAttribute('tabindex')).toEqual('-1');
+      (testContainer.querySelector('#z') as HTMLElement).focus();
+      expect(testContainer.querySelector('#fz')!.getAttribute('tabindex')).toBeNull();
+
+      removeTestContainer();
     });
 
     it('does not move focus when items added without container focus', () => {
-      expect(host.querySelector('#fz')!.getAttribute('tabindex')).toEqual('-1');
-      (host.querySelector('#z') as HTMLElement).focus();
+      const { removeTestContainer, testContainer } = setup();
+
+      expect(testContainer.querySelector('#fz')!.getAttribute('tabindex')).toEqual('-1');
+      (testContainer.querySelector('#z') as HTMLElement).focus();
 
       ReactDOM.render(
         <div>
@@ -1680,9 +1706,11 @@ describe('FocusZone', () => {
             </button>
           </FocusZone>
         </div>,
-        host,
+        testContainer,
       );
-      expect(document.activeElement).toBe(host.querySelector('#z'));
+      expect(document.activeElement).toBe(testContainer.querySelector('#z'));
+
+      removeTestContainer();
     });
   });
 

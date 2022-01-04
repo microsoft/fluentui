@@ -1532,6 +1532,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               class="ms-ComboBox-optionsContainerWrapper "
             >
               <div
+                aria-multiselectable="true"
                 class=
                     ms-ComboBox-optionsContainer
                     {
