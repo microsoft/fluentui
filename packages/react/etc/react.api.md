@@ -9071,7 +9071,7 @@ export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'sele
     defaultValue?: Date;
     increments?: number;
     label?: string;
-    onChange?: (event: React.FormEvent<IComboBox>, time: Date) => void;
+    onChange?: (event: React_2.FormEvent<IComboBox>, time: Date) => void;
     onFormatDate?: (date: Date) => string;
     onValidateUserInput?: (userInput: string) => string;
     showSeconds?: boolean;
