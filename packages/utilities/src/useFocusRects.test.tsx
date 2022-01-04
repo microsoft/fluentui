@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { FocusRects } from './useFocusRects';
 import { IsFocusHiddenClassName, IsFocusVisibleClassName } from './setFocusVisibility';
 import { KeyCodes } from './KeyCodes';
@@ -136,9 +137,13 @@ describe('useFocusRects', () => {
 
     expect(mockWindow.addEventListenerCallCount).toBe(3);
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRects1.unmount();
+    ReactTestUtils.act(() => {
+      focusRects1.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRects2.unmount();
+    ReactTestUtils.act(() => {
+      focusRects2.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(3);
   });
 
@@ -169,12 +174,16 @@ describe('useFocusRects', () => {
 
     expect(mockWindow.addEventListenerCallCount).toBe(3);
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRects1.unmount();
+    ReactTestUtils.act(() => {
+      focusRects1.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(3);
 
     expect(mockWindow2.addEventListenerCallCount).toBe(3);
     expect(mockWindow2.removeEventListenerCallCount).toBe(0);
-    focusRects2.unmount();
+    ReactTestUtils.act(() => {
+      focusRects2.unmount();
+    });
     expect(mockWindow2.removeEventListenerCallCount).toBe(3);
   });
 
@@ -191,9 +200,13 @@ describe('useFocusRects', () => {
 
     expect(mockWindow.addEventListenerCallCount).toBe(3);
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRects1.unmount();
+    ReactTestUtils.act(() => {
+      focusRects1.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRects2.unmount();
+    ReactTestUtils.act(() => {
+      focusRects2.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(3);
   });
 
@@ -214,7 +227,9 @@ describe('useFocusRects', () => {
 
     expect(mockWindow.addEventListenerCallCount).toBe(3);
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRects1.unmount();
+    ReactTestUtils.act(() => {
+      focusRects1.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(3);
   });
 
@@ -237,9 +252,13 @@ describe('useFocusRects', () => {
 
     expect(mockWindow.addEventListenerCallCount).toBe(3);
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRects1.unmount();
+    ReactTestUtils.act(() => {
+      focusRects1.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRects2.unmount();
+    ReactTestUtils.act(() => {
+      focusRects2.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(3);
   });
 
@@ -257,7 +276,9 @@ describe('useFocusRects', () => {
 
     expect(mockWindow.addEventListenerCallCount).toBe(0);
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
-    focusRect.unmount();
+    ReactTestUtils.act(() => {
+      focusRect.unmount();
+    });
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
     expect(mockWindow.removeEventListenerCallCount).toBe(0);
   });
