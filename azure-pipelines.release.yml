@@ -1,3 +1,8 @@
+#################################################
+# This branch no longer has scheduled releases. #
+# If you need a release, trigger it manually.   #
+#################################################
+
 pr: none
 trigger: none
 
@@ -10,15 +15,6 @@ variables:
 
 pool:
   vmImage: 'Ubuntu 20.04'
-
-schedules:
-# minute 0, hour 11 in UTC (4am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
-# https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-- cron: '0 11 * * 1-5'
-  displayName: 'Daily release (M-F at 4am)' # will be 3am when DST ends unless trigger is updated
-  branches:
-    include:
-      - 5.0
 
 steps:
   - task: NodeTool@0
