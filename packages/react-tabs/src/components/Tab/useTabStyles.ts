@@ -27,7 +27,7 @@ const useRootStyles = makeStyles({
     backgroundColor: 'none',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(theme.borderRadiusMedium),
-    borderWidth: theme.strokeWidthThin,
+    ...shorthands.borderWidth(theme.strokeWidthThin),
     columnGap: pendingTheme.gap.medium,
     cursor: 'pointer',
     display: 'flex',
@@ -65,7 +65,7 @@ const useFocusStyles = makeStyles({
   base: createCustomFocusIndicatorStyle(theme => ({
     ...shorthands.borderColor('transparent'),
     outlineWidth: theme.strokeWidthThick,
-    outlineColor: 'tranparent',
+    outlineColor: 'transparent',
     outlineStyle: 'solid',
     boxShadow: `
       ${theme.shadow4},
