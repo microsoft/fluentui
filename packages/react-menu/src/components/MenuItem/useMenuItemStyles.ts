@@ -76,7 +76,11 @@ export const useMenuItemStyles = (state: MenuItemState) => {
     state.disabled && styles.disabled,
     state.root.className,
   );
-  state.content.className = mergeClasses(styles.content, state.content.className);
+
+  if (state.content) {
+    state.content.className = mergeClasses(styles.content, state.content.className);
+  }
+
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
       !state.disabled && styles.secondaryContent,
