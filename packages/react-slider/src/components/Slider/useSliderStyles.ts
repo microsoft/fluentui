@@ -90,9 +90,12 @@ export const useRailStyles = makeStyles({
   rail: theme => ({
     ...shorthands.borderRadius(theme.borderRadiusXLarge),
     pointerEvents: 'none',
-    gridArea: 'slider',
+    gridRowStart: 'slider',
+    gridRowEnd: 'slider',
+    gridColumnStart: 'slider',
+    gridColumnEnd: 'slider',
     position: 'relative',
-    background: `linear-gradient(
+    backgroundImage: `linear-gradient(
       var(${railDirectionVar}),
       var(${railColorVar}) 0%,
       var(${railColorVar}) var(${railOffsetVar}),
@@ -100,11 +103,13 @@ export const useRailStyles = makeStyles({
       var(${progressColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar})),
       var(${railColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar}))
     )`,
-    outline: '1px solid transparent',
+    outlineWidth: '1px',
+    outlineStyle: 'solid',
+    outlineColor: theme.colorTransparentStroke,
     ':before': {
       content: "''",
       position: 'absolute',
-      background: `repeating-linear-gradient(
+      backgroundImage: `repeating-linear-gradient(
         var(${railDirectionVar}),
         #0000 0%,
         #0000 calc(var(${railStepsPercentVar}) - 1px),
@@ -144,10 +149,10 @@ export const useThumbStyles = makeStyles({
     width: `var(${thumbSizeVar})`,
     height: `var(${thumbSizeVar})`,
     pointerEvents: 'none',
-    outline: 'none',
+    outlineStyle: 'none',
     ...shorthands.borderRadius(theme.borderRadiusCircular),
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${theme.colorNeutralBackground1} inset`,
-    background: `var(${thumbColorVar})`,
+    backgroundColor: `var(${thumbColorVar})`,
     transform: 'translateX(-50%)',
     ':before': {
       position: 'absolute',
@@ -181,7 +186,10 @@ export const useThumbStyles = makeStyles({
 const useInputStyles = makeStyles({
   input: {
     opacity: 0,
-    gridArea: 'slider',
+    gridRowStart: 'slider',
+    gridRowEnd: 'slider',
+    gridColumnStart: 'slider',
+    gridColumnEnd: 'slider',
     ...shorthands.padding(0),
     ...shorthands.margin(0),
   },
@@ -192,7 +200,6 @@ const useInputStyles = makeStyles({
   vertical: {
     height: `calc(100% + var(${thumbSizeVar}))`,
     width: `var(${thumbSizeVar})`,
-    writingMode: 'bt-lr',
     '-webkit-appearance': 'slider-vertical',
   },
 });
