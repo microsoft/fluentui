@@ -67,83 +67,72 @@ In the future we may implement behavior variants, such as a password field with 
 
 In this component, `input` is the primary slot. See notes under [Structure](#structure).
 
-```ts
-export type InputProps = InputCommons & Omit<ComponentProps<InputSlots, 'input'>, 'children'>;
-```
-
 ### Main props
 
 All native HTML `<input>` props are supported. Since the `input` slot is primary (more on that later), top-level native props except `className` and `style` will go to the input.
 
 The top-level `ref` prop also points to the `<input>`. This can be used for things like getting the current value or manipulating focus or selection (instead of explicitly exposing an imperative API).
 
-Most custom props are defined in `InputCommons` since they're shared with `InputState`.
+For the full current props, see the types file:
+https://github.com/microsoft/fluentui/blob/master/packages/react-input/src/components/Input/Input.types.ts
 
 ```ts
-export type InputCommons = {
-  /**
-   * If true, the field will have inline display, allowing it be used within text content.
-   * If false (the default), the field will have block display.
-   */
+// Simplified version of the props (including only summaries of custom props)
+type SimplifiedInputProps = {
+  /** Toggle inline display instead of block */
   inline?: boolean;
 
-  /**
-   * Controls the colors and borders of the field.
-   * @default 'outline'
-   */
+  /** Controls the colors and borders of the field (default `outline`) */
   appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
 
-  /**
-   * Size of the input (changes the font size and spacing).
-   * @default 'medium'
-   */
+  /** Size of the input (default `medium`) */
   size?: 'small' | 'medium' | 'large';
+
+  /** Default value (uncontrolled) */
+  defaultValue?: string;
+
+  /** Controlled value */
+  value?: string;
+
+  /** Called when the user changes the value */
+  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: { value: string }) => void;
+
+  /** Allowed values for the native `type` prop */
+  type?: 'text' | '...'; // this is an enumeration of all text-like values
 };
 ```
 
-`size` [overlaps with a native prop](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size) which sets the width of the field in "number of characters." This isn't ideal, but we're going with it since the native prop isn't very useful in practice, and it was hard to find another reasonable/consistent name for the visual size prop. It's also consistent with the approach used by most other libraries which have a prop for setting the visual size. (If anyone needs the native functionality, we could add an `htmlSize` prop in the future.)
+Notes on native prop conflicts/overrides:
+
+- `size` [overlaps with a native prop](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size) which sets the width of the field in "number of characters." This isn't ideal, but we're going with it since the native prop isn't very useful in practice, and it was hard to find another reasonable/consistent name for the visual size prop. It's also consistent with the approach used by most other libraries which have a prop for setting the visual size. (If anyone needs the native functionality, we could add an `htmlSize` prop in the future.)
+- `value` and `defaultValue` are defined in `InputHTMLAttributes` (from `@types/react`) as `string | ReadonlyArray<string> | number` since the same props interface is used for all input element types. To reflect actual usage, we override the types to only accept strings.
+- `onChange` is overridden per the [RFC on event handler arguments](https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/event-handlers-arguments.md).
+- `type` is defined in `@types/react` as `string`, but for `Input`, I'm restricting it to a list of only the text-like values [listed on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types). Making this explicit should help avoid people thinking that Input can handle all the same behaviors as a native `<input>`.
 
 ### Slots
 
 Note that the field **does not** include a label, required indicator, description, or error message.
 
-```ts
-export type InputSlots = {
-  /**
-   * Wrapper element which visually appears to be the input and is used for borders, focus styling, etc.
-   * (A wrapper is needed to properly position `contentBefore` and `contentAfter` relative to `input`.)
-   */
-  root: IntrinsicShorthandProps<'span'>;
+An overview of the slots is as follows. For the current slot types and full docs, see the types file:
+https://github.com/microsoft/fluentui/blob/master/packages/react-input/src/components/Input/Input.types.ts
 
-  /**
-   * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
-   * This is the "primary" slot, so top-level native props (except `className` and `style`) and the
-   * top-level `ref` will go here.
-   */
-  input: IntrinsicShorthandProps<'input'>;
-
-  /** Element before the input text, within the input border */
-  contentBefore?: IntrinsicShorthandProps<'span'>;
-
-  /** Element after the input text, within the input border */
-  contentAfter?: IntrinsicShorthandProps<'span'>;
-};
-```
+- `root` (`span`): Wrapper which visually appears to be the input (needed to position `contentBefore` and `contentAfter` relative to the actual `input`)
+- `input` (`input`, primary slot): The actual text input element
+- `contentBefore` (`span`): Element before the input text, within the input border (most often used for icons)
+- `contentAfter` (`span`): Element after the input text, within the input border (most often used for icons)
 
 ## Structure
 
 In this component, `input` is the primary slot. Per the [native element props/primary slot RFC](https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/native-element-props.md), this means that most top-level props will go to `input`, but the top-level `className` and `style` will go to the actual root element.
 
 ```tsx
-{
-  /* Out of top-level native props, only `className` and `style` go here */
-}
+// Out of top-level native props, only `className` and `style` go here
 <slots.root {...slotProps.root}>
   <slots.contentBefore {...slotProps.contentBefore} />
   {/* Primary slot. Top-level native props except `className` and `style` go here. */}
   <slots.input {...slotProps.input} />
   <slots.contentAfter {...slotProps.contentAfter} />
-</slots.root>;
+</slots.root>
 ```
 
 Notes on the HTML rendering:
