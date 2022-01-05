@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Dec 2021 12:24:57 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Jan 2022 12:29:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.180.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.180.3)
+
+Wed, 05 Jan 2022 12:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.180.2..office-ui-fabric-react_v7.180.3)
+
+### Patches
+
+- Added check for disabled prop ([PR #20839](https://github.com/microsoft/fluentui/pull/20839) by tkrasniqi@microsoft.com)
 
 ## [7.180.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.180.2)
 
