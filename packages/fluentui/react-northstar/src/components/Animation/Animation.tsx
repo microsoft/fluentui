@@ -3,7 +3,9 @@ import {
   unstable_calculateAnimationTimeout as calculateAnimationTimeout,
   useFluentContext,
   useTelemetry,
+  useMergedRefs,
 } from '@fluentui/react-bindings';
+import { Ref } from '@fluentui/react-component-ref';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -163,6 +165,8 @@ export const Animation = (React.forwardRef<HTMLDivElement, AnimationProps>((prop
 
   const unhandledProps = useUnhandledProps(Animation.handledProps, props);
 
+  const mergedRef = useMergedRefs(ref);
+
   if (_.isNil(children)) {
     setEnd();
     return null;
@@ -173,7 +177,7 @@ export const Animation = (React.forwardRef<HTMLDivElement, AnimationProps>((prop
 
   const element = (
     <Transition
-      nodeRef={ref}
+      nodeRef={mergedRef}
       in={visible}
       appear={appear}
       mountOnEnter={mountOnEnter}
@@ -188,13 +192,17 @@ export const Animation = (React.forwardRef<HTMLDivElement, AnimationProps>((prop
       {...unhandledProps}
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
-      {isChildrenFunction
-        ? ({ state }) =>
-            (children as AnimationChildrenProp)({
-              classes: cx(animationClasses, className, (child as any)?.props?.className),
-              state,
-            })
-        : React.cloneElement(child, { className: cx(animationClasses, className, (child as any)?.props?.className) })}
+      {isChildrenFunction ? (
+        ({ state }) =>
+          (children as AnimationChildrenProp)({
+            classes: cx(animationClasses, className, (child as any)?.props?.className),
+            state,
+          })
+      ) : (
+        <Ref innerRef={mergedRef}>
+          {React.cloneElement(child, { className: cx(animationClasses, className, (child as any)?.props?.className) })}
+        </Ref>
+      )}
     </Transition>
   );
   setEnd();
