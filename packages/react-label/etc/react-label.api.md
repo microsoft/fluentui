@@ -17,14 +17,14 @@ export const Label: ForwardRefComponent<LabelProps>;
 // @public (undocumented)
 export const labelClassName = "fui-Label";
 
-// @public
+// @public (undocumented)
 export type LabelCommons = {
     disabled: boolean;
     size: 'small' | 'medium' | 'large';
     strong: boolean;
 };
 
-// @public (undocumented)
+// @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
     required?: boolean | ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>> | React_2.ReactNode;
 };

@@ -25,7 +25,6 @@ const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts
  *
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
 export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
