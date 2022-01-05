@@ -122,9 +122,10 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
 
 function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const isModalOrPanel = props['aria-modal'];
+  const enableAriaHiddenSiblings = props.enableAriaHiddenSiblings;
 
   React.useEffect(() => {
-    if (props.enableAriaHiddenSiblings) {
+    if (enableAriaHiddenSiblings) {
       const targetDocument = getDocument();
       if (isModalOrPanel && targetDocument && root && root.current) {
         const popupPortalNode = root.current.parentElement?.parentElement;
@@ -133,7 +134,7 @@ function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivEl
         //if popupPortalNode is not a direct child of body, its ancestor's siblings need to be hidden as well.
         if (popupPortalNode?.parentElement !== targetDocument.body) {
           const popupAncestorNode = findAncestorNode(root.current, targetDocument);
-          nodesToHide.concat(findSiblingNodes(popupAncestorNode, targetDocument.body));
+          nodesToHide = nodesToHide.concat(findSiblingNodes(popupAncestorNode, targetDocument.body));
         }
 
         nodesToHide = nodesToHide.filter(
@@ -149,7 +150,7 @@ function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivEl
         return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
       }
     }
-  }, [isModalOrPanel, root, props.enableAriaHiddenSiblings]);
+  }, [isModalOrPanel, root, enableAriaHiddenSiblings]);
 }
 
 function findAncestorNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
