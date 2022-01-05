@@ -24,7 +24,7 @@ const meta: Meta = {
           ...(context.viewMode === 'docs' && {
             // docs mode has buttons on the bottom right which cover the input
             // if it's allowed to be full width
-            maxWidth: '600px',
+            maxWidth: '500px',
             // and the corners of the rounded box clip the example
             padding: '24px',
           }),
