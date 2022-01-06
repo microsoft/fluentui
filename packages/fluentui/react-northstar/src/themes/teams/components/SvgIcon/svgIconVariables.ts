@@ -40,13 +40,13 @@ export const svgIconVariables = (siteVars): SvgIconVariables => ({
   redColor: siteVars.colors.red[400],
   disabledColor: siteVars.colors.grey[250],
 
-  smallestSize: pxToRem(7),
-  smallerSize: pxToRem(10),
-  smallSize: pxToRem(12),
-  mediumSize: pxToRem(16),
-  largeSize: pxToRem(20),
-  largerSize: pxToRem(32),
-  largestSize: pxToRem(40),
+  smallestSize: pxToRem(11),
+  smallerSize: pxToRem(14),
+  smallSize: pxToRem(16),
+  mediumSize: pxToRem(20),
+  largeSize: pxToRem(24),
+  largerSize: pxToRem(36),
+  largestSize: pxToRem(44),
 
   horizontalSpace: pxToRem(10),
 });
