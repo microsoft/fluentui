@@ -15,7 +15,6 @@ export const radioShorthandProps: Array<keyof RadioSlots> = ['root'];
  *
  * @param props - props from this instance of Radio
  * @param ref - reference to root HTMLElement of Radio
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
 export const useRadio = (props: RadioProps, ref: React.Ref<HTMLElement>): RadioState => {
   const state: RadioState = {
