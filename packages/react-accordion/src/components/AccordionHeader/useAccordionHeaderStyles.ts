@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     userSelect: 'none',
     textAlign: 'unset',
   },
-  focusIndicator: theme => createFocusOutlineStyle(theme),
+  focusIndicator: createFocusOutlineStyle(),
   root: theme => ({
     color: theme.colorNeutralForeground1,
     backgroundColor: theme.colorNeutralBackground1,
