@@ -130,14 +130,14 @@
           "description": "Contents of the end slot are positioned after the input area"
         },
         {
-          "name": "close-button",
-          "title": "Close button slot",
-          "description": "Contents of the close button slot are positioned after the content and is what clears the value when a value is set"
+          "name": "clear-button",
+          "title": "Clear button slot",
+          "description": "Contents of the clear button slot are positioned after the content and is what clears the value when a value is set"
         },
         {
-          "name": "close-glyph",
-          "title": "Close glyph slot",
-          "description": "Contents of the close button"
+          "name": "clear-glyph",
+          "title": "Clear glyph slot",
+          "description": "Contents of the clear button"
         }
       ]
     }

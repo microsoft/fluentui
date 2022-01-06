@@ -20,7 +20,7 @@ import { bodyFont, controlCornerRadius, density, designUnit, neutralFillInputRec
 import { Swatch } from '../color/swatch';
 
 
-const closeButtonHover = DesignToken.create<Swatch>("close-button-hover").withDefault(
+const clearButtonHover = DesignToken.create<Swatch>("clear-button-hover").withDefault(
   (target: HTMLElement) => {
       const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
       const inputRecipe = neutralFillInputRecipe.getValueFor(target);
@@ -28,7 +28,7 @@ const closeButtonHover = DesignToken.create<Swatch>("close-button-hover").withDe
   }
 );
 
-const closeButtonActive = DesignToken.create<Swatch>("close-button-active").withDefault(
+const clearButtonActive = DesignToken.create<Swatch>("clear-button-active").withDefault(
   (target: HTMLElement) => {
       const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
       const inputRecipe = neutralFillInputRecipe.getValueFor(target);
@@ -90,10 +90,10 @@ export const searchStyles = (context, definition) =>
       padding: 0 calc((10 + (${designUnit} * 2 * ${density})) * 1px);
     }
     .clear-button:hover {
-      background: ${closeButtonHover};
+      background: ${clearButtonHover};
     }
     .clear-button:active {
-      background: ${closeButtonActive};
+      background: ${clearButtonActive};
     }
     :host(:hover:not([disabled], [readOnly])) .clear-button,
     :host(:active:not([disabled], [readOnly])) .clear-button,
