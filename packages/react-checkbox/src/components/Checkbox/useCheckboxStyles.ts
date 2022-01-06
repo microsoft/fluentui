@@ -155,7 +155,7 @@ const useIndicatorStyles = makeStyles({
 
   unchecked: {
     '& > *': {
-      opacity: 0,
+      opacity: '0',
     },
   },
 });
