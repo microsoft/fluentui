@@ -168,8 +168,6 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     }
 
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
-    const divProps: React.HtmlHTMLAttributes<HTMLDivElement> =
-      hasNoSuggestions || isLoading ? { role: 'listbox', id: suggestionsListId } : {};
 
     const forceResolveId =
       this.state.selectedActionType === SuggestionActionType.forceResolve ? 'sug-selectedAction' : undefined;
@@ -177,7 +175,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       this.state.selectedActionType === SuggestionActionType.searchMore ? 'sug-selectedAction' : undefined;
 
     return (
-      <div className={this._classNames.root} {...divProps}>
+      <div className={this._classNames.root} role="listbox" id={suggestionsListId}>
         <Announced message={this._getAlertText()} aria-live="polite" />
 
         {headerText ? <div className={this._classNames.title}>{headerText}</div> : null}
@@ -202,6 +200,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
             id={searchForMoreId}
             onClick={this._getMoreResults}
             data-automationid={'sug-searchForMore'}
+            role={'option'}
           >
             {searchForMoreText}
           </CommandButton>
@@ -369,7 +368,6 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       showRemoveButtons,
       suggestionsContainerAriaLabel,
       suggestionsHeaderText,
-      suggestionsListId,
       removeButtonIconProps,
     } = this.props;
 
@@ -406,9 +404,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     return (
       <div
         className={this._classNames.suggestionsContainer}
-        id={suggestionsListId}
         ref={this._scrollContainer}
-        role="listbox"
         aria-label={suggestionsContainerAriaLabel || headerText}
       >
         {suggestions.map((suggestion, index) => (
