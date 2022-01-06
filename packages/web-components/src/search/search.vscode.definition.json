@@ -16,7 +16,7 @@
         {
           "name": "appearance",
           "title": "Appearance",
-          "description": "The search's visual treatment",
+          "description": "The field's visual treatment",
           "default": "outline",
           "values": [{ "name": "outline" }, { "name": "filled" }],
           "type": "string",
