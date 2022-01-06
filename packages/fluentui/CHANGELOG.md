@@ -19,7 +19,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Fixes
+- Fix `ChatMessage` to use chat context as default value when user prop is explicitly undefined @yuanboxue-amber ([#21189](https://github.com/microsoft/fluentui/pull/21189))
 - bump react-transition-group from 4.3.0 to 4.4.1 @yuanboxue-amber ([#21187](https://github.com/microsoft/fluentui/pull/21187))
+
 
 <!--------------------------------[ v0.60.0 ]------------------------------- -->
 ## [v0.60.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.0) (2021-12-14)
