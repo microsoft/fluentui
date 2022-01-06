@@ -99,7 +99,7 @@
         {
           "name": "disabled",
           "title": "Disabled",
-          "description": "Sets the disabled state of the number field",
+          "description": "Sets the disabled state of the field",
           "type": "boolean",
           "default": false,
           "required": false
