@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import * as React from 'react';
 import { tokens } from '@fluentui/react-theme';
 import type { LabelState } from './Label.types';
 
@@ -35,11 +36,11 @@ const useStyles = makeStyles({
   large: {
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
   },
 
   strong: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
   },
 });
 
