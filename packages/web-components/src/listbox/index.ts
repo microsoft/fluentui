@@ -1,5 +1,7 @@
-import { Listbox, listboxTemplate as template } from '@microsoft/fast-foundation';
+import { Listbox as FoundationListboxElement, listboxTemplate as template } from '@microsoft/fast-foundation';
 import { listboxStyles as styles } from './listbox.styles';
+
+export class Listbox extends FoundationListboxElement {}
 
 /**
  * The Fluent listbox Custom Element. Implements, {@link @microsoft/fast-foundation#Listbox}
@@ -22,9 +24,3 @@ export const fluentListbox = Listbox.compose({
  * @public
  */
 export const listboxStyles = styles;
-
-/**
- * Listbox base class
- * @public
- */
-export { Listbox };
