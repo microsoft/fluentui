@@ -48,12 +48,7 @@ const useStyles = makeStyles({
 
   smallArrow: createArrowHeightStyles(arrowHeights.small),
   mediumLargeArrow: createArrowHeightStyles(arrowHeights.medium),
-  arrow: theme =>
-    createArrowStyles(theme, {
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: theme.colorTransparentStroke,
-    }),
+  arrow: createArrowStyles({ arrowHeight: undefined }),
 });
 
 /**

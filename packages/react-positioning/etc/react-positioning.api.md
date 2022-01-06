@@ -7,7 +7,6 @@
 import { MakeStylesStyle } from '@fluentui/react-make-styles';
 import * as PopperJs from '@popperjs/core';
 import * as React_2 from 'react';
-import type { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -25,14 +24,14 @@ export function createArrowHeightStyles(arrowHeight: number): {
 };
 
 // @public
-export function createArrowStyles(theme: Theme, options?: CreateArrowStylesOptions): MakeStylesStyle;
+export function createArrowStyles(options: CreateArrowStylesOptions): MakeStylesStyle;
 
 // @public
 export type CreateArrowStylesOptions = {
-    arrowHeight?: number;
-    borderWidth?: MakeStylesStyle['borderWidth'];
-    borderStyle?: MakeStylesStyle['borderStyle'];
-    borderColor?: MakeStylesStyle['borderColor'];
+    arrowHeight: number | undefined;
+    borderWidth?: MakeStylesStyle['borderBottomWidth'];
+    borderStyle?: MakeStylesStyle['borderBottomStyle'];
+    borderColor?: MakeStylesStyle['borderBottomColor'];
 };
 
 // @public

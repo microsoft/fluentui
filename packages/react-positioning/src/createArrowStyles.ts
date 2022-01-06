@@ -1,5 +1,5 @@
-import { MakeStylesStyle } from '@fluentui/react-make-styles';
-import type { Theme } from '@fluentui/react-theme';
+import { MakeStylesStyle, shorthands } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 
 /**
  * Options parameter for the createArrowStyles function
@@ -8,24 +8,31 @@ export type CreateArrowStylesOptions = {
   /**
    * The height of the arrow from the base to the tip, in px. The base width of the arrow is always twice its height.
    *
-   * If this is omitted, you must add styles created by createArrowHeightStyles to set the arrow's size correctly.
+   * This can be undefined to leave out the arrow size styles. You must then add styles created by
+   * createArrowHeightStyles to set the arrow's size correctly. This can be useful if the arrow can be different sizes.
    */
-  arrowHeight?: number;
+  arrowHeight: number | undefined;
 
   /**
    * The borderWidth of the arrow. Should be the same borderWidth as the parent element.
+   *
+   * @defaultvalue 1px
    */
-  borderWidth?: MakeStylesStyle['borderWidth'];
+  borderWidth?: MakeStylesStyle['borderBottomWidth'];
 
   /**
    * The borderStyle for the arrow. Should be the same borderStyle as the parent element.
+   *
+   * @defaultvalue solid
    */
-  borderStyle?: MakeStylesStyle['borderStyle'];
+  borderStyle?: MakeStylesStyle['borderBottomStyle'];
 
   /**
    * The borderColor of the arrow. Should be the same borderColor as the parent element.
+   *
+   * @defaultvalue tokens.colorTransparentStroke
    */
-  borderColor?: MakeStylesStyle['borderColor'];
+  borderColor?: MakeStylesStyle['borderBottomColor'];
 };
 
 /**
@@ -33,13 +40,13 @@ export type CreateArrowStylesOptions = {
  * For runtime arrow size toggling simply create extra classnames to apply to the arrow element
  *
  * ```ts
- *   makeStyles(theme => ({
- *     arrowWithSize: createArrowStyles(theme, { arrowHeight: 6 }),
+ *   makeStyles({
+ *     arrowWithSize: createArrowStyles({ arrowHeight: 6 }),
  *
- *     arrowWithoutSize: createArrowStyles(theme),
+ *     arrowWithoutSize: createArrowStyles({ arrowHeight: undefined }),
  *     mediumArrow: createArrowHeightStyles(4),
  *     smallArrow: createArrowHeightStyles(2),
- *   }))
+ *   })
  *   ...
  *
  *   state.arrowWithSize.className = styles.arrowWithSize;
@@ -50,14 +57,19 @@ export type CreateArrowStylesOptions = {
  *   )
  * ```
  */
-export function createArrowStyles(theme: Theme, options: CreateArrowStylesOptions = {}): MakeStylesStyle {
-  const { arrowHeight, borderWidth = 0, borderStyle, borderColor } = options;
+export function createArrowStyles(options: CreateArrowStylesOptions): MakeStylesStyle {
+  const {
+    arrowHeight,
+    borderWidth = '1px',
+    borderStyle = 'solid',
+    borderColor = tokens.colorTransparentStroke,
+  } = options;
 
   return {
     position: 'absolute',
     backgroundColor: 'inherit',
     visibility: 'hidden',
-    zIndex: '-1',
+    zIndex: -1,
 
     ...(arrowHeight && createArrowHeightStyles(arrowHeight)),
 
@@ -69,10 +81,9 @@ export function createArrowStyles(theme: Theme, options: CreateArrowStylesOption
       width: 'inherit',
       height: 'inherit',
       backgroundColor: 'inherit',
-      ...(borderWidth && { borderRightWidth: borderWidth, borderBottomWidth: borderWidth }),
-      ...(borderStyle && { borderRightStyle: borderStyle, borderBottomStyle: borderStyle }),
-      ...(borderColor && { borderRightColor: borderColor, borderBottomColor: borderColor }),
-      borderBottomRightRadius: theme.borderRadiusSmall,
+      ...shorthands.borderRight(borderWidth, borderStyle, borderColor),
+      ...shorthands.borderBottom(borderWidth, borderStyle, borderColor),
+      borderBottomRightRadius: tokens.borderRadiusSmall,
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },
 

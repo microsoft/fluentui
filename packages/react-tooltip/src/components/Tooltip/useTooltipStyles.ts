@@ -38,13 +38,7 @@ const useStyles = makeStyles({
     color: theme.colorNeutralForegroundInverted,
   }),
 
-  arrow: theme =>
-    createArrowStyles(theme, {
-      arrowHeight: 6, // Must match arrowHeight in useTooltip.tsx
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: theme.colorTransparentStroke,
-    }),
+  arrow: createArrowStyles({ arrowHeight: 6 }), // Must match arrowHeight in useTooltip.tsx
 });
 
 /**
