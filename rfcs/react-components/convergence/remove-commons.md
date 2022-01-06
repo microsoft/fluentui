@@ -115,7 +115,7 @@ export type CheckboxState = Required<Pick<CheckboxProps, 'size'>> &
   };
 ```
 
-As an interim step (to avoid blocking RC), we could **stop exporting `FooCommons` types**. This way, if the actual changes aren't finished before RC, we could finish changing the types later without breaking public APIs (since the final included props and their optional/required status should be the same either way).
+As an interim step (to avoid blocking RC), we'll **stop exporting `FooCommons` types**, implemented in [this PR](https://github.com/microsoft/fluentui/pull/21195). This way, if the actual changes aren't finished before RC, we could finish changing the types later without breaking public APIs (since the final included props and their optional/required status should be the same either way).
 
 ### Pros
 
@@ -127,7 +127,6 @@ As an interim step (to avoid blocking RC), we could **stop exporting `FooCommons
 
 - Adds complexity to `FooState` type definition, especially when `FooState` includes most/all of `FooCommons`
   - Note: doing something like `Required<FooProps>` won't work since `FooProps` also includes all the native props
-  - This is less of a concern since it's
 - More work to do
 - Potential for delaying RC
   - This is mitigated by the last paragraph in the "Proposal" section
