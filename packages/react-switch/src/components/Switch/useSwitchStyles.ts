@@ -64,8 +64,7 @@ const useRootStyles = makeStyles({
     pointerEvents: 'none',
   },
 
-  focusIndicator: theme =>
-    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '8px' } }),
+  focusIndicator: createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: '8px' } }),
 });
 
 /**
