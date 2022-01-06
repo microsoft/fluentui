@@ -47,6 +47,7 @@
     "@fluentui/react-tabs": "9.0.0-beta.4",
     "@fluentui/react-text": "9.0.0-beta.4",
     "@fluentui/react-theme": "9.0.0-beta.4",
+    "@fluentui/react-tooltip": "9.0.0-beta.5",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
     "@types/react": "16.9.42",
