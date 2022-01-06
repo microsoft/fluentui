@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { mergeClasses, shorthands, makeStyles } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import { DividerState } from './Divider.types';
@@ -15,12 +16,12 @@ const useBaseStyles = makeStyles({
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'row',
-    flexGrow: '1',
+    flexGrow: 1,
     position: 'relative',
 
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
     lineHeight: tokens.lineHeightBase200,
 
     color: tokens.colorNeutralForeground2,
@@ -28,7 +29,7 @@ const useBaseStyles = makeStyles({
     ':before': {
       boxSizing: 'border-box',
       display: 'flex',
-      flexGrow: '1',
+      flexGrow: 1,
 
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
@@ -36,7 +37,7 @@ const useBaseStyles = makeStyles({
     ':after': {
       boxSizing: 'border-box',
       display: 'flex',
-      flexGrow: '1',
+      flexGrow: 1,
 
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
