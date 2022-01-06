@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -149,7 +150,7 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
 
     fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
@@ -162,7 +163,7 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
@@ -175,7 +176,7 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
     lineHeight: tokens.lineHeightBase400,
   },
 });

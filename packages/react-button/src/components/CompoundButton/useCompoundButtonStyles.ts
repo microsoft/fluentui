@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
@@ -174,7 +175,7 @@ const useSecondaryContentStyles = makeStyles({
   base: {
     lineHeight: '100%',
     marginTop: '4px',
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
   },
 
   // Size variations
