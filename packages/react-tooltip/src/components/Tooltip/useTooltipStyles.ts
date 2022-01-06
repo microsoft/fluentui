@@ -11,16 +11,16 @@ export const tooltipClassName = 'fui-Tooltip';
 const useStyles = makeStyles({
   root: {
     display: 'none',
-    ...shorthands.padding('5px', '12px', '7px', '12px'),
+    boxSizing: 'border-box',
     maxWidth: '240px',
     cursor: 'default',
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
 
-    // Update tooltipBorderRadius in useTooltip.tsx if this changes
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-
+    ...shorthands.borderRadius(tokens.borderRadiusMedium), // Must match tooltipBorderRadius in useTooltip.tsx
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+    ...shorthands.padding('4px', '11px', '6px', '11px'), // '5px 12px 7px 12px' minus the border width '1px'
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
 
@@ -39,9 +39,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundInverted,
   },
 
-  // width and height = arrowHeight * sqrt(2)
-  // Update arrowHeight in useTooltip.tsx if this changes
-  arrow: createArrowStyles(8.485),
+  arrow: createArrowStyles({ arrowHeight: 6 }), // Must match arrowHeight in useTooltip.tsx
 });
 
 /**
