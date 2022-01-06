@@ -8,11 +8,11 @@ storiesOf('TabList and Tab Converged', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.test-class')
+        .hover('.mouse-target')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('.test-class')
+        .mouseDown('.mouse-target')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('.test-class')
+        .mouseUp('.mouse-target')
         .end()}
     >
       {story()}
@@ -23,7 +23,7 @@ storiesOf('TabList and Tab Converged', module)
     () => (
       <TabList>
         <Tab value="1">First</Tab>
-        <Tab className="test-class" value="2">
+        <Tab className="mouse-target" value="2">
           Second
         </Tab>
         <Tab value="3">Third</Tab>
@@ -38,7 +38,7 @@ storiesOf('TabList and Tab Converged', module)
   .addStory('Vertical', () => (
     <TabList vertical>
       <Tab value="1">First</Tab>
-      <Tab className="test-class" value="2">
+      <Tab className="mouse-target" value="2">
         Second
       </Tab>
       <Tab value="3">Third</Tab>
@@ -49,7 +49,7 @@ storiesOf('TabList and Tab Converged', module)
     () => (
       <TabList appearance="subtle">
         <Tab value="1">First</Tab>
-        <Tab className="test-class" value="2">
+        <Tab className="mouse-target" value="2">
           Second
         </Tab>
         <Tab value="3">Third</Tab>
@@ -65,7 +65,7 @@ storiesOf('TabList and Tab Converged', module)
     () => (
       <TabList size="small">
         <Tab value="1">First</Tab>
-        <Tab className="test-class" value="2">
+        <Tab className="mouse-target" value="2">
           Second
         </Tab>
         <Tab value="3">Third</Tab>
@@ -81,7 +81,7 @@ storiesOf('TabList and Tab Converged', module)
     () => (
       <TabList size="small" vertical>
         <Tab value="1">First</Tab>
-        <Tab className="test-class" value="2">
+        <Tab className="mouse-target" value="2">
           Second
         </Tab>
         <Tab value="3">Third</Tab>
@@ -97,7 +97,7 @@ storiesOf('TabList and Tab Converged', module)
     () => (
       <TabList defaultSelectedValue="2">
         <Tab value="1">First</Tab>
-        <Tab className="test-class" value="2">
+        <Tab className="mouse-target" value="2">
           Second
         </Tab>
         <Tab value="3">Third</Tab>
@@ -113,7 +113,7 @@ storiesOf('TabList and Tab Converged', module)
     () => (
       <TabList selectedValue="2">
         <Tab value="1">First</Tab>
-        <Tab className="test-class" value="2">
+        <Tab className="mouse-target" value="2">
           Second
         </Tab>
         <Tab value="3">Third</Tab>
@@ -131,7 +131,26 @@ storiesOf('TabList and Tab Converged', module)
         <Tab icon="A" value="1">
           First
         </Tab>
-        <Tab icon="B" className="test-class" value="2">
+        <Tab icon="B" className="mouse-target" value="2">
+          Second
+        </Tab>
+        <Tab icon="C" value="3">
+          Third
+        </Tab>
+      </TabList>
+    ),
+    {
+      includeRtl: true,
+    },
+  )
+  .addStory(
+    'With icon and vertical',
+    () => (
+      <TabList vertical>
+        <Tab icon="A" value="1">
+          First
+        </Tab>
+        <Tab icon="B" className="mouse-target" value="2">
           Second
         </Tab>
         <Tab icon="C" value="3">
@@ -148,11 +167,24 @@ storiesOf('TabList and Tab Converged', module)
     () => (
       <TabList>
         <Tab icon="A" value="1" />
-        <Tab icon="B" className="test-class" value="2" />
+        <Tab icon="B" className="mouse-target" value="2" />
         <Tab icon="C" value="3" />
       </TabList>
     ),
     {
-      includeRtl: true,
+      includeRtl: false,
+    },
+  )
+  .addStory(
+    'With icon only and vertical',
+    () => (
+      <TabList vertical>
+        <Tab icon="A" value="1" />
+        <Tab icon="B" className="mouse-target" value="2" />
+        <Tab icon="C" value="3" />
+      </TabList>
+    ),
+    {
+      includeRtl: false,
     },
   );

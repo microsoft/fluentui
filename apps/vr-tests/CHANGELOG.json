@@ -2,6 +2,45 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Mon, 03 Jan 2022 23:32:11 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.20",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react to v8.49.0",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-experiments to v8.4.12",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-hooks to v8.3.9",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.2.11",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Dec 2021 07:29:45 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

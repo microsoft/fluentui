@@ -30,7 +30,6 @@
   "dependencies": {
     "@emotion/hash": "^0.8.0",
     "csstype": "^2.6.7",
-    "inline-style-expand-shorthand": "^1.2.0",
     "rtl-css-js": "^1.14.5",
     "stylis": "^4.0.6",
     "tslib": "^2.1.0"
