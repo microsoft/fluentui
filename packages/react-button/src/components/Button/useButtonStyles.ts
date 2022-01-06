@@ -263,47 +263,54 @@ const useRootFocusStyles = makeStyles({
   // used by the outline pseudo-element. Need to introduce a text container for children and set
   // overflow there so that default focus outline can work
   //
-  // base: theme => createFocusOutlineStyle(theme),
+  // base: createFocusOutlineStyle(),
   // circular: theme =>
-  //  createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.circular } }),
-  // primary: theme => createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' } }),
-  // square: theme => createFocusOutlineStyle(theme, { style: { outlineRadius: theme.global.borderRadius.none } }),
+  //  createFocusOutlineStyle({ style: { outlineRadius: theme.global.borderRadius.circular } }),
+  // primary: theme => createFocusOutlineStyle({ style: { outlineOffset: '2px' } }),
+  // square: theme => createFocusOutlineStyle({ style: { outlineRadius: theme.global.borderRadius.none } }),
 
-  base: createCustomFocusIndicatorStyle(theme => ({
-    ...shorthands.borderColor('transparent'),
-    outlineColor: 'transparent',
-    outlineWidth: '2px',
-    outlineStyle: 'solid',
-    boxShadow: `
+  base: theme =>
+    createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor('transparent'),
+      outlineColor: 'transparent',
+      outlineWidth: '2px',
+      outlineStyle: 'solid',
+      boxShadow: `
       ${theme.shadow4},
       0 0 0 2px ${theme.colorStrokeFocus2}
     `,
-    zIndex: 1,
-  })),
+      zIndex: 1,
+    }),
 
-  circular: createCustomFocusIndicatorStyle(theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusCircular),
-  })),
+  circular: theme =>
+    createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(theme.borderRadiusCircular),
+    }),
   rounded: {},
   // Primary styles
-  primary: createCustomFocusIndicatorStyle(theme => ({
-    ...shorthands.borderColor(theme.colorNeutralForegroundOnBrand),
-    boxShadow: `${theme.shadow2}, 0 0 0 2px ${theme.colorStrokeFocus2}`,
-  })),
-  square: createCustomFocusIndicatorStyle(theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusNone),
-  })),
+  primary: theme =>
+    createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(theme.colorNeutralForegroundOnBrand),
+      boxShadow: `${theme.shadow2}, 0 0 0 2px ${theme.colorStrokeFocus2}`,
+    }),
+  square: theme =>
+    createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(theme.borderRadiusNone),
+    }),
 
   // Size variations
-  small: createCustomFocusIndicatorStyle(theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusSmall),
-  })),
-  medium: createCustomFocusIndicatorStyle(theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
-  })),
-  large: createCustomFocusIndicatorStyle(theme => ({
-    ...shorthands.borderRadius(theme.borderRadiusLarge),
-  })),
+  small: theme =>
+    createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(theme.borderRadiusSmall),
+    }),
+  medium: theme =>
+    createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(theme.borderRadiusMedium),
+    }),
+  large: theme =>
+    createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(theme.borderRadiusLarge),
+    }),
 });
 
 const useRootIconOnlyStyles = makeStyles({
