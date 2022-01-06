@@ -127,7 +127,7 @@
         {
           "name": "end",
           "title": "End slot",
-          "description": "Contents of the end slot are positioned after the option content"
+          "description": "Contents of the end slot are positioned after the input area"
         },
         {
           "name": "close-button",
