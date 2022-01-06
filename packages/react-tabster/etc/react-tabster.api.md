@@ -9,11 +9,7 @@ import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
 // @public
-<<<<<<< HEAD
-export const createCustomFocusIndicatorStyle: (rule: MakeStylesStyle, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyle;
-=======
 export const createCustomFocusIndicatorStyle: (style: MakeStylesStyle, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyle;
->>>>>>> 9204703d0a42ee34a20ae4cf28952e13872647ba
 
 // @public (undocumented)
 export interface CreateFocusIndicatorStyleRuleOptions {
