@@ -77,10 +77,6 @@ export const useRootStyles = makeStyles({
     style: { outlineOffset: { top: '6px', bottom: '6px', left: '10px', right: '10px' } },
   }),
 
-  focusIndicatorHorizontal: createFocusOutlineStyle({
-    selector: 'focus-within',
-    style: { outlineOffset: { top: '6px', bottom: '6px', left: '10px', right: '10px' } },
-  }),
   focusIndicatorVertical: createFocusOutlineStyle({
     selector: 'focus-within',
     style: { outlineOffset: { top: '10px', bottom: '10px', left: '6px', right: '6px' } },
