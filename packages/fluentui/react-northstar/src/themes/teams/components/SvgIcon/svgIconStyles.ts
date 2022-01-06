@@ -83,6 +83,12 @@ export const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgI
     };
   },
 
+  temp_8_8_16_16: (): ICSSInJSStyle => {
+    return {
+      transform: 'translate(2px, 2px)',
+    };
+  },
+
   svg: ({ props: { size, disabled, rotate }, variables: v, rtl }): ICSSInJSStyle => {
     const iconSizeInRems = getIconSize(size, v);
 
