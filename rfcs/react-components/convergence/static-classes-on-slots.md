@@ -1,19 +1,7 @@
 # RFC: Conventions for static class names on slots
 
-<!--
-An RFC can be anything. A question, a suggestion, a plan. The purpose of this template is to give some structure to help folks write successful RFCs. However, don't feel constrained by this template; use your best judgement.
-
-Tips for writing a successful RFC:
-
-- Simple plain words that make your point, fancy words obfuscate
-- Try to stay concise, but don't gloss over important details
-- Try to write a neutral problem statement, not one that motivates your desired solution
-- Remember, "Writing is thinking". It's natural to realize new ideas while writing your proposal
--->
-
----
-
-@behowell
+Contributors: @behowell
+RFC Issue: [#21206](https://github.com/microsoft/fluentui/pull/21206)
 
 ## Summary/Background
 
@@ -45,6 +33,8 @@ const useStyles = makeStyles({
 
 ## Detailed Design or Proposal
 
+### Slot Names
+
 The root slot already has a static className with the format `fui-{ComponentName}`, per [#19937](https://github.com/microsoft/fluentui/issues/19937). This RFC proposes that every other slot of a component should have a static className added, with the format `fui-{ComponentName}-{slot}`. The static className would be added to the start before any other classNames.
 
 For example, the HTML tree of Checkbox would look like:
@@ -57,12 +47,14 @@ For example, the HTML tree of Checkbox would look like:
 </span>
 ```
 
-This would be added to every slot of every component, and enforced by a conformance test.
+### Exports
 
-These classNames could be exported from each components in an object:
+These classNames could be exported from each components in an object. This would replace the existing `{component}ClassName` export.
+
+Although these names could be automatically generated, there is value in having them be explicitly written out in the source code so it can be found via searching.
 
 ```ts
-export const checkboxClassNames: ClassNames<CheckboxSlots> = {
+export const checkboxClassNames: ClassNames<'Checkbox', CheckboxSlots> = {
   root: 'fui-Checkbox',
   label: 'fui-Checkbox-label',
   input: 'fui-Checkbox-input',
@@ -70,42 +62,28 @@ export const checkboxClassNames: ClassNames<CheckboxSlots> = {
 };
 ```
 
-With the helper type:
+With the helper type that ensures every slot type is defined:
 
 ```ts
-export type ClassNames<Slots extends Record<string, unknown>> = {
-  [SlotName in keyof Slots]-?: SlotName extends 'root' ? `fui-${string}` : `fui-${string}-${Extract<SlotName, string>}`;
+export type ClassNames<ComponentName extends string, Slots> = {
+  [SlotName in keyof Slots]-?: SlotName extends 'root'
+    ? `fui-${ComponentName}`
+    : `fui-${ComponentName}-${Extract<SlotName, string>}`;
 };
 ```
 
-### Pros and Cons
+### Conformance Tests
 
-#### Pros
+There would be a new conformance test that would check that each slot has a static class name. We'd need to figure out the best way to implement it, but it might require passing the `{component}ClassNames` object so the test knows the names of all of the slots.
 
-- Reliable, predictable class names for every element in our components
+## Pros and Cons
 
-#### Cons
+### Pros
+
+- Users can rely on every slot having a static class name they can use for selectors
+- The naming convention is predictable
+
+### Cons
 
 - Adds extra classes that may never be used
 - Encourages styling by static classes, which could have precedence issues with our atomic css classes(?)
-
-## Open Issues
-
-### Should we export constants for each slot?
-
-We could export constants, or just rely on the single export for the root className, and people can follow the naming convention if they want slot names? if we want to export the slots, it could be done like so:
-
-```ts
-// Helper type in react-utilities:
-export type ClassNames<Slots extends Record<string, unknown>> = {
-  [SlotName in keyof Slots]-?: SlotName extends 'root' ? `fui-${string}` : `fui-${string}-${Extract<SlotName, string>}`;
-};
-
-// Exported from react-checkbox:
-export const checkboxClassNames: ClassNames<CheckboxSlots> = {
-  root: 'fui-Checkbox',
-  label: 'fui-Checkbox-label',
-  input: 'fui-Checkbox-input',
-  indicator: 'fui-Checkbox-indicator',
-};
-```
