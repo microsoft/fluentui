@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add new css properties into `IRawStyleBase`",
-  "packageName": "@fluentui/merge-styles",
-  "email": "1586939317@qq.com",
-  "dependentChangeType": "patch"
-}
