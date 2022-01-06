@@ -11,42 +11,6 @@ import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const RangedSlider: ForwardRefComponent<RangedSliderProps>;
-
-// @public (undocumented)
-export const rangedSliderClassName = "fui-RangedSlider";
-
-// @public (undocumented)
-export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
-    defaultValue?: [number, number];
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        value: [number, number];
-    }) => void;
-    value?: [number, number];
-}
-
-// @public (undocumented)
-export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
-}
-
-// @public (undocumented)
-export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
-    lowerThumb: IntrinsicShorthandProps<'div'>;
-    lowerThumbWrapper: IntrinsicShorthandProps<'div'>;
-    upperThumb: IntrinsicShorthandProps<'div'>;
-    upperThumbWrapper: IntrinsicShorthandProps<'div'>;
-    lowerInput: IntrinsicShorthandProps<'input'>;
-    upperInput: IntrinsicShorthandProps<'input'>;
-};
-
-// @public (undocumented)
-export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
-}
-
-// @public
-export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
-
-// @public
 export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
@@ -62,24 +26,21 @@ export type SliderCommons = {
     min?: number;
     max?: number;
     step?: number;
-    keyboardStep?: number;
     disabled?: boolean;
     vertical?: boolean;
-    marks?: boolean | (number | {
-        value: number;
-        label?: string | JSX.Element;
-        mark?: JSX.Element;
-    })[];
     origin?: number;
     size?: 'small' | 'medium';
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        value: number;
-    }) => void;
-    ariaValueText?: (value: number) => string;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
+    getAriaValueText?: (value: number) => string;
 };
 
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
+export type SliderOnChangeData = {
+    value: number;
+};
+
+// @public (undocumented)
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 
 // @public
 export const sliderShorthandProps: (keyof SliderSlots)[];
@@ -88,13 +49,7 @@ export const sliderShorthandProps: (keyof SliderSlots)[];
 export type SliderSlots = {
     root: IntrinsicShorthandProps<'div'>;
     rail: IntrinsicShorthandProps<'div'>;
-    sliderWrapper: IntrinsicShorthandProps<'div'>;
-    trackWrapper: IntrinsicShorthandProps<'div'>;
-    track: IntrinsicShorthandProps<'div'>;
-    marksWrapper: IntrinsicShorthandProps<'div'>;
-    thumbWrapper: IntrinsicShorthandProps<'div'>;
     thumb: IntrinsicShorthandProps<'div'>;
-    activeRail: IntrinsicShorthandProps<'div'>;
     input: IntrinsicShorthandProps<'input'>;
 };
 
@@ -102,16 +57,7 @@ export type SliderSlots = {
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
 
 // @public
-export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
-
-// @public (undocumented)
-export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
-
-// @public (undocumented)
-export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
-
-// @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
 
 // @public (undocumented)
 export const useSliderState: (state: SliderState) => SliderState;

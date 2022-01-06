@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "react-theme: Exporting token to css variable mapping.",
+  "comment": "feat: Export tokens as mapping to CSS variables",
   "packageName": "@fluentui/react-theme",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"
