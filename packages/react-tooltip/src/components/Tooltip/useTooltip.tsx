@@ -15,7 +15,7 @@ import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.
 
 // Style values that are required for popper to properly position the tooltip
 const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes
-const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts if this changes
+const arrowHeight = 6; // Update arrowHeight in useTooltipStyles.ts if this changes
 
 /**
  * Create the state required to render Tooltip.

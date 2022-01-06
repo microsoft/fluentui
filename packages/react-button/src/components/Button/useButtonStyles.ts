@@ -266,10 +266,9 @@ const useRootFocusStyles = makeStyles({
   // overflow there so that default focus outline can work
   //
   // base: createFocusOutlineStyle(),
-  // circular:
-  //  createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.circular } }),
-  // primary:  createFocusOutlineStyle({ style: { outlineOffset: '2px' } }),
-  // square:  createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.none } }),
+  // circular: createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.circular } }),
+  // primary: createFocusOutlineStyle({ style: { outlineOffset: '2px' } }),
+  // square: createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.none } }),
 
   base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
