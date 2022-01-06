@@ -6,9 +6,20 @@ const createRule = require('../utils/createRule');
 // For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
  * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ImportSpecifier} ImportSpecifier
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ImportDeclaration} ImportDeclaration
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ExportSpecifier} ExportSpecifier
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
  *
- * @typedef {{ path?: string; pathRegex?: string; names?: string[]; message?: string; }} OptionsInput
- * @typedef {{ path?: string; pathRegex?: RegExp; names?: string[]; message?: string; }} Options
+ * @typedef {{
+ *   path?: string;
+ *   pathRegex?: string;
+ *   names?: (string | { regex: string })[];
+ *   message?: string;
+ * }} OptionsInput
+ * @typedef {Pick<OptionsInput, 'path' | 'message'> & {
+ *   pathRegex?: RegExp;
+ *   names?: (string | RegExp)[];
+ * }} Options
  */
 
 /** */
@@ -17,7 +28,7 @@ module.exports = createRule({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Ban importing certain identifiers from certain paths or modules.',
+      description: 'Ban importing (or re-exporting) certain identifiers from certain paths or modules.',
       category: 'Best Practices',
       recommended: false,
     },
@@ -41,7 +52,17 @@ module.exports = createRule({
           },
           names: {
             type: 'array',
-            items: { type: 'string' },
+            items: {
+              oneOf: [
+                { type: 'string' },
+                {
+                  type: 'object',
+                  properties: {
+                    regex: { type: 'string', description: 'Regex for names to ban' },
+                  },
+                },
+              ],
+            },
             description:
               'If specified, only ban importing these names (if not specified, ban all imports from this path)',
           },
@@ -69,49 +90,71 @@ module.exports = createRule({
       return {
         path: entry.path,
         pathRegex: entry.pathRegex ? new RegExp(entry.pathRegex) : undefined,
-        names: entry.names,
+        names: entry.names
+          ? entry.names.map(name => (typeof name === 'string' ? name : new RegExp(name.regex)))
+          : undefined,
       };
     });
 
-    return {
-      ImportDeclaration: imprt => {
-        if (imprt.source.type !== AST_NODE_TYPES.Literal || typeof imprt.source.value !== 'string') {
-          return;
-        }
+    /**
+     * @param {ImportDeclaration | ExportNamedDeclaration} importOrExport
+     */
+    function checkImportOrExport(importOrExport) {
+      if (
+        !importOrExport.source ||
+        importOrExport.source.type !== AST_NODE_TYPES.Literal ||
+        typeof importOrExport.source.value !== 'string'
+      ) {
+        return;
+      }
 
-        const importPath = imprt.source.value;
-        // Filter out default imports and namespace (star) imports
-        const specifiers = /** @type {ImportSpecifier[]} */ (imprt.specifiers.filter(
-          spec => spec.type === AST_NODE_TYPES.ImportSpecifier,
-        ));
+      const importPath = importOrExport.source.value;
+      const specifiers =
+        importOrExport.type === AST_NODE_TYPES.ExportNamedDeclaration
+          ? importOrExport.specifiers
+          : // Filter out default imports and namespace (star) imports
+            /** @type {ImportSpecifier[]} */ (importOrExport.specifiers.filter(
+              spec => spec.type === AST_NODE_TYPES.ImportSpecifier,
+            ));
 
-        for (const rule of options) {
-          const { path, pathRegex, names, message = '' } = rule;
-          const pathForErrors = path || /** @type {RegExp} */ (pathRegex).source;
-          const messageForErrors = message && `: ${message}`;
+      for (const rule of options) {
+        const { path, pathRegex, names, message = '' } = rule;
+        const pathForErrors = path || /** @type {RegExp} */ (pathRegex).source;
+        const messageForErrors = message && `: ${message}`;
 
-          if ((path && path === importPath) || (pathRegex && pathRegex.test(importPath))) {
-            if (!names) {
-              // All imports from this path are banned
-              context.report({
-                node: imprt,
-                messageId: 'pathNotAllowed',
-                data: { path: pathForErrors, message: messageForErrors },
-              });
-            } else {
-              // Only certain imports from this path are banned
-              for (const spec of specifiers) {
-                if (names.includes(spec.imported.name)) {
-                  context.report({
-                    node: spec.imported,
-                    messageId: 'nameNotAllowed',
-                    data: { path: pathForErrors, name: spec.imported.name, message: messageForErrors },
-                  });
-                }
+        if ((path && path === importPath) || (pathRegex && pathRegex.test(importPath))) {
+          if (!names) {
+            // All imports from this path are banned
+            context.report({
+              node: importOrExport,
+              messageId: 'pathNotAllowed',
+              data: { path: pathForErrors, message: messageForErrors },
+            });
+          } else {
+            // Only certain imports from this path are banned
+            for (const spec of specifiers) {
+              const identifier = spec.type === AST_NODE_TYPES.ExportSpecifier ? spec.local : spec.imported;
+              if (
+                names.some(name => (typeof name === 'string' ? name === identifier.name : name.test(identifier.name)))
+              ) {
+                context.report({
+                  node: identifier,
+                  messageId: 'nameNotAllowed',
+                  data: { path: pathForErrors, name: identifier.name, message: messageForErrors },
+                });
               }
             }
           }
         }
+      }
+    }
+
+    return {
+      ImportDeclaration: imprt => {
+        checkImportOrExport(imprt);
+      },
+      ExportNamedDeclaration: exprt => {
+        checkImportOrExport(exprt);
       },
     };
   },
