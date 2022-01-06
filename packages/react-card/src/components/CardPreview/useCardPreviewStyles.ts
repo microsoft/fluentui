@@ -7,7 +7,7 @@ export const cardPreviewClassName = 'fui-CardPreview';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     position: 'relative',
     // TODO: Explore alternate way of applying padding on parent Card
     ...shorthands.margin('0', '-12px'),
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
       display: 'block',
       width: '100%',
     },
-  }),
+  },
 
   logo: {
     position: 'absolute',
