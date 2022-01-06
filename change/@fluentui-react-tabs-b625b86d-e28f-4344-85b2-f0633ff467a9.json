@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated beta and RC components to ES2019",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
