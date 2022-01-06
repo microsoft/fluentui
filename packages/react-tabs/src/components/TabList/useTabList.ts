@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { SelectTabData, SelectTabEvent, TabListProps, TabListSlots, TabListState } from './TabList.types';
-
-/**
- * Array of all shorthand properties listed in TabListSlots
- */
-export const tabListShorthandProps: (keyof TabListSlots)[] = ['root'];
+import type { SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
 
 /**
  * Create the state required to render TabList.

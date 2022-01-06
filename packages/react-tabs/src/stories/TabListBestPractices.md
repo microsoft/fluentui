@@ -4,7 +4,6 @@
 
 - Use on content-heavy pages that require a significant amount of scrolling to access the various sections.
 - Be concise on the navigation labels, ideally one or two words rather than a phrase.
-- Make sure all the children of the `TabList` are a `Tab` or variant of `Tab`.
 
 ### Don't
 
