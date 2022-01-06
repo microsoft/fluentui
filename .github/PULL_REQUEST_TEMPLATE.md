@@ -3,7 +3,7 @@ Thank you for submitting a pull request!
 
 Please verify that:
 * [ ] Code is up-to-date with the `master` branch
-* [ ] You changes are covered by tests (if possible)
+* [ ] Your changes are covered by tests (if possible)
 * [ ] You've run `yarn change` locally
 
 
