@@ -97,7 +97,7 @@ export default [
   'react-is@16.8.2',
   'react-is@16.9.0',
   'react-resize-detector@4.2.0',
-  'react-transition-group@4.3.0',
+  'react-transition-group@4.4.1',
   'react@16.8.3',
   'resize-observer-polyfill@1.5.1',
   'rtl-css-js@1.11.0',
