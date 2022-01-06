@@ -4,6 +4,7 @@ import {
   useFluentContext,
   useTelemetry,
   useMergedRefs,
+  ForwardRefComponent,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import cx from 'classnames';
@@ -144,7 +145,7 @@ export interface AnimationProps extends ChildrenComponentProps<AnimationChildren
 /**
  * An Animation provides animation effects to rendered elements.
  */
-export const Animation = (React.forwardRef<HTMLDivElement, AnimationProps>((props, ref) => {
+export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Animation.displayName, context.telemetry);
   setStart();
@@ -193,11 +194,16 @@ export const Animation = (React.forwardRef<HTMLDivElement, AnimationProps>((prop
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
       {isChildrenFunction ? (
-        ({ state }) =>
-          (children as AnimationChildrenProp)({
-            classes: cx(animationClasses, className, (child as any)?.props?.className),
-            state,
-          })
+        ({ state }) => (
+          <Ref innerRef={mergedRef}>
+            {
+              (children as AnimationChildrenProp)({
+                classes: cx(animationClasses, className, (child as any)?.props?.className),
+                state,
+              }) as React.ReactElement
+            }
+          </Ref>
+        )
       ) : (
         <Ref innerRef={mergedRef}>
           {React.cloneElement(child, { className: cx(animationClasses, className, (child as any)?.props?.className) })}
@@ -208,9 +214,7 @@ export const Animation = (React.forwardRef<HTMLDivElement, AnimationProps>((prop
   setEnd();
 
   return element;
-}) as unknown) as React.FC<AnimationProps> & {
-  handledProps: (keyof AnimationProps)[];
-};
+}) as ForwardRefComponent<AnimationProps>;
 
 Animation.displayName = 'Animation';
 
