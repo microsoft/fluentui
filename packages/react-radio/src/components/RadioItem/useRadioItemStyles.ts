@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -174,7 +175,7 @@ const useSubtextStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
   },
 });
 
