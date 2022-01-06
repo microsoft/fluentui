@@ -16,9 +16,6 @@ export const Card: ForwardRefComponent<CardProps>;
 // @public (undocumented)
 export const cardClassName = "fui-Card";
 
-// @public (undocumented)
-export type CardCommons = {};
-
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
@@ -87,7 +84,7 @@ export type CardPreviewSlots = {
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
 // @public
-export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
+export type CardProps = ComponentProps<CardSlots>;
 
 // @public (undocumented)
 export type CardSlots = {
@@ -95,7 +92,7 @@ export type CardSlots = {
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & CardCommons;
+export type CardState = ComponentState<CardSlots>;
 
 // @public
 export const renderCard: (state: CardState) => JSX.Element;
