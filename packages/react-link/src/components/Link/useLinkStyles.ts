@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
     display: 'inline',
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
     ...shorthands.margin(0),
     ...shorthands.padding(0),
     ...shorthands.overflow('inherit'),
