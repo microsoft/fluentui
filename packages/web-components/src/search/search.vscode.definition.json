@@ -117,7 +117,7 @@
         {
           "name": "",
           "title": "Default slot",
-          "description": "The content of the radio represents its visual label"
+          "description": "The content of the field represents its visual label"
         },
         {
           "name": "start",
