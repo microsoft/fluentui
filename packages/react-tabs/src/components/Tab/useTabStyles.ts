@@ -27,7 +27,7 @@ const useRootStyles = makeStyles({
     backgroundColor: 'none',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(theme.borderRadiusMedium),
-    borderWidth: theme.strokeWidthThin,
+    ...shorthands.borderWidth(theme.strokeWidthThin),
     columnGap: pendingTheme.gap.medium,
     cursor: 'pointer',
     display: 'flex',
@@ -62,10 +62,13 @@ const useRootStyles = makeStyles({
  * Focus styles for the root slot
  */
 const useFocusStyles = makeStyles({
+  // Tab creates a custom focus indicator because the default focus indicator
+  // is applied using an :after pseudo-element on the root. Since the selection
+  // indicator uses an :after pseudo-element on the root, there is a conflict.
   base: createCustomFocusIndicatorStyle(theme => ({
     ...shorthands.borderColor('transparent'),
     outlineWidth: theme.strokeWidthThick,
-    outlineColor: 'tranparent',
+    outlineColor: 'transparent',
     outlineStyle: 'solid',
     boxShadow: `
       ${theme.shadow4},
@@ -164,6 +167,8 @@ const useIconStyles = makeStyles({
     display: 'inline-flex',
     justifyContent: 'center',
   },
+  // per design, the small and medium font sizes are the same.
+  // the size prop only affects spacing.
   small: {
     fontSize: '20px',
     height: '20px',
