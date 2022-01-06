@@ -102,8 +102,7 @@ const useStyles = makeStyles({
     alignSelf: 'flex-start',
   },
 
-  focusIndicator: theme =>
-    createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' }, selector: 'focus-within' }),
+  focusIndicator: createFocusOutlineStyle({ style: { outlineOffset: '2px' }, selector: 'focus-within' }),
 });
 
 const useContainerStyles = makeStyles({
