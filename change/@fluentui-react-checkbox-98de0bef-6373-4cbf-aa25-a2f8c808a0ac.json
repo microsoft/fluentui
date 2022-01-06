@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "react-checkbox: Replacing use of functions in makeStyles with direct use of tokens.",
+  "comment": "Replacing use of functions in makeStyles with direct use of tokens.",
   "packageName": "@fluentui/react-checkbox",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"
