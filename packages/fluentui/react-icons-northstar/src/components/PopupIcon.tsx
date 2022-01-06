@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const PopupIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M9.51562 6C9.23948 6 9.01562 6.22386 9.01562 6.5C9.01562 6.77614 9.23948 7 9.51562 7H12.2929L8.14645 11.1464C7.95118 11.3417 7.95118 11.6583 8.14645 11.8536C8.34171 12.0488 8.65829 12.0488 8.85355 11.8536L13 7.70711V10.4844C13 10.7605 13.2239 10.9844 13.5 10.9844C13.7761 10.9844 14 10.7605 14 10.4844V6.5C14 6.22386 13.7761 6 13.5 6H9.51562Z" />
         <path

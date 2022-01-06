@@ -6,7 +6,7 @@ export const TwitterIcon = createSvgIcon({
     <svg
       role="presentation"
       focusable="false"
-      viewBox="2 2 16 16"
+      viewBox="0 0 20 20"
       className={classes.svg}
       style={{ overflow: 'visible' }}
     >

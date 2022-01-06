@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ZoomToFitIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M5.5 4C4.67157 4 4 4.67157 4 5.5V6.5C4 6.77614 3.77614 7 3.5 7C3.22386 7 3 6.77614 3 6.5V5.5C3 4.11929 4.11929 3 5.5 3H6.5C6.77614 3 7 3.22386 7 3.5C7 3.77614 6.77614 4 6.5 4H5.5Z" />
         <path d="M16 5.5C16 4.67157 15.3284 4 14.5 4H13.5C13.2239 4 13 3.77614 13 3.5C13 3.22386 13.2239 3 13.5 3H14.5C15.8807 3 17 4.11929 17 5.5V6.5C17 6.77614 16.7761 7 16.5 7C16.2239 7 16 6.77614 16 6.5V5.5Z" />

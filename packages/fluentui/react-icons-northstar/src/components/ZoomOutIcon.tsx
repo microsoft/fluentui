@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ZoomOutIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M11 8C11.2761 8 11.5 8.22386 11.5 8.5C11.5 8.77614 11.2761 9 11 9H6C5.72386 9 5.5 8.77614 5.5 8.5C5.5 8.22386 5.72386 8 6 8H11Z" />
         <path

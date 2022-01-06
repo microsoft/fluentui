@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const TagIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M13.999 7C14.5513 7 14.999 6.55228 14.999 6C14.999 5.44772 14.5513 5 13.999 5C13.4467 5 12.999 5.44772 12.999 6C12.999 6.55228 13.4467 7 13.999 7Z" />
         <path

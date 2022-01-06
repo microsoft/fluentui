@@ -9,7 +9,7 @@ export const EmailWithDotIcon = createSvgIcon({
       style={{ overflow: 'visible' }}
       role="presentation"
       focusable="false"
-      viewBox="2 2 16 16"
+      viewBox="0 0 20 20"
       className={classes.svg}
     >
       <path

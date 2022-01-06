@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const CompanionIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg className={classes.svg} viewBox="2 2 16 16" role="presentation" focusable="false">
+    <svg className={classes.svg} viewBox="0 0 20 20" role="presentation" focusable="false">
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M6 3H16C16.5523 3 17 3.44772 17 4V11C17 11.5523 16.5523 12 16 12H9V13H12V15H9V16H14.5C14.7761 16 15 15.7761 15 15.5C15 15.2239 14.7761 15 14.5 15H13V13H16C17.1046 13 18 12.1046 18 11V4C18 2.89543 17.1046 2 16 2H6C4.89543 2 4 2.89543 4 4V7H5V4C5 3.44772 5.44772 3 6 3Z" />
         <path d="M4.5 15C4.22386 15 4 15.2239 4 15.5C4 15.7761 4.22386 16 4.5 16H5.5C5.77614 16 6 15.7761 6 15.5C6 15.2239 5.77614 15 5.5 15H4.5Z" />

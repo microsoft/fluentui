@@ -8,7 +8,7 @@ export const ContactGroupCallIcon = createSvgIcon({
     <svg
       style={{ overflow: 'visible' }}
       className={classes.svg}
-      viewBox="2 2 16 16"
+      viewBox="0 0 20 20"
       role="presentation"
       focusable="false"
     >

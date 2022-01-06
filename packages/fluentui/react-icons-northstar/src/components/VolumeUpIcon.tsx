@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const VolumeUpIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" className={classes.svg} viewBox="2 2 16 16">
+    <svg role="presentation" focusable="false" className={classes.svg} viewBox="0 0 20 20">
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path
           fillRule="evenodd"

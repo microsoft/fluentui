@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const BulletsIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svgFlippingInRtl}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svgFlippingInRtl}>
       <path
         className={cx(iconClassNames.outline, classes.outlinePart)}
         d="M3 6.5C3.55228 6.5 4 6.05228 4 5.5C4 4.94772 3.55228 4.5 3 4.5C2.44772 4.5 2 4.94772 2 5.5C2 6.05228 2.44772 6.5 3 6.5ZM6 5.5C6 5.22386 6.22386 5 6.5 5H17.5C17.7761 5 18 5.22386 18 5.5C18 5.77614 17.7761 6 17.5 6H6.5C6.22386 6 6 5.77614 6 5.5ZM6 10.5C6 10.2239 6.22386 10 6.5 10H17.5C17.7761 10 18 10.2239 18 10.5C18 10.7761 17.7761 11 17.5 11H6.5C6.22386 11 6 10.7761 6 10.5ZM6.5 15C6.22386 15 6 15.2239 6 15.5C6 15.7761 6.22386 16 6.5 16H17.5C17.7761 16 18 15.7761 18 15.5C18 15.2239 17.7761 15 17.5 15H6.5ZM4 15.5C4 16.0523 3.55228 16.5 3 16.5C2.44772 16.5 2 16.0523 2 15.5C2 14.9477 2.44772 14.5 3 14.5C3.55228 14.5 4 14.9477 4 15.5ZM3 11.5C3.55228 11.5 4 11.0523 4 10.5C4 9.94772 3.55228 9.5 3 9.5C2.44772 9.5 2 9.94772 2 10.5C2 11.0523 2.44772 11.5 3 11.5Z"

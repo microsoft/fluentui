@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const CodeSnippetIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" className={classes.svg} viewBox="2 2 16 16">
+    <svg role="presentation" focusable="false" className={classes.svg} viewBox="0 0 20 20">
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M12.9667 3.6795C13.0658 3.42177 12.9372 3.13247 12.6795 3.03334C12.4218 2.93421 12.1325 3.06279 12.0333 3.32052L7.03334 16.3205C6.93421 16.5783 7.06279 16.8676 7.32052 16.9667C7.57826 17.0658 7.86756 16.9372 7.96669 16.6795L12.9667 3.6795Z" />
         <path d="M5.8254 6.12038C6.03506 6.30009 6.05934 6.61574 5.87963 6.8254L3.15854 10L5.87963 13.1746C6.05934 13.3843 6.03506 13.6999 5.8254 13.8796C5.61573 14.0593 5.30008 14.0351 5.12037 13.8254L2.12037 10.3254C1.95988 10.1382 1.95988 9.86186 2.12037 9.67461L5.12037 6.17461C5.30008 5.96495 5.61573 5.94067 5.8254 6.12038Z" />

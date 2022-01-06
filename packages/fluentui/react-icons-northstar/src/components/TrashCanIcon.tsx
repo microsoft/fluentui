@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const TrashCanIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <path
         className={cx(iconClassNames.outline, classes.outlinePart)}
         d="M11.5 4a1.5 1.5 0 00-3 0h-1a2.5 2.5 0 015 0H17a.5.5 0 010 1h-.554L15.15 16.23A2 2 0 0113.163 18H6.837a2 2 0 01-1.987-1.77L3.553 5H3a.5.5 0 01-.492-.41L2.5 4.5A.5.5 0 013 4h8.5zm3.938 1H4.561l1.282 11.115a1 1 0 00.994.885h6.326a1 1 0 00.993-.885L15.438 5zM8.5 7.5c.245 0 .45.155.492.359L9 7.938v6.125c0 .241-.224.437-.5.437-.245 0-.45-.155-.492-.359L8 14.062V7.939c0-.242.224-.438.5-.438zm3 0c.245 0 .45.155.492.359l.008.079v6.125c0 .241-.224.437-.5.437-.245 0-.45-.155-.492-.359L11 14.062V7.939c0-.242.224-.438.5-.438z"

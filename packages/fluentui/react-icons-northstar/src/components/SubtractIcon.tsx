@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const SubtractIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <rect className={cx(iconClassNames.outline, classes.outlinePart)} x="3" y="9.5" width="14" height="1" rx="0.5" />
       <rect
         className={cx(iconClassNames.filled, classes.filledPart)}

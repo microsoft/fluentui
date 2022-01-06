@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ExclamationTriangleIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" className={classes.svg} viewBox="2 2 16 16">
+    <svg role="presentation" focusable="false" className={classes.svg} viewBox="0 0 20 20">
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M9.99835 7C10.2745 7 10.4984 7.22386 10.4984 7.5V11.5C10.4984 11.7761 10.2745 12 9.99835 12C9.72221 12 9.49835 11.7761 9.49835 11.5V7.5C9.49835 7.22386 9.72221 7 9.99835 7Z" />
         <path d="M9.99835 14.5C10.4126 14.5 10.7484 14.1642 10.7484 13.75C10.7484 13.3358 10.4126 13 9.99835 13C9.58414 13 9.24835 13.3358 9.24835 13.75C9.24835 14.1642 9.58414 14.5 9.99835 14.5Z" />

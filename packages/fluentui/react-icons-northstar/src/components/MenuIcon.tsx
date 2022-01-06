@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const MenuIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M2 5.5C2 5.22386 2.22386 5 2.5 5H17.5C17.7761 5 18 5.22386 18 5.5C18 5.77614 17.7761 6 17.5 6H2.5C2.22386 6 2 5.77614 2 5.5Z" />
         <path d="M2 10.5C2 10.2239 2.22386 10 2.5 10H17.5C17.7761 10 18 10.2239 18 10.5C18 10.7761 17.7761 11 17.5 11H2.5C2.22386 11 2 10.7761 2 10.5Z" />

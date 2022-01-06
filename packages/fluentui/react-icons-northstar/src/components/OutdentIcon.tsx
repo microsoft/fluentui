@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const OutdentIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svgFlippingInRtl}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svgFlippingInRtl}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M6.00003 4.5C6.00003 4.22386 6.22389 4 6.50003 4H14.5C14.7762 4 15 4.22386 15 4.5C15 4.77614 14.7762 5 14.5 5H6.50003C6.22389 5 6.00003 4.77614 6.00003 4.5Z" />
         <path d="M3.56066 7.73226C3.75592 7.537 4.0725 7.537 4.26777 7.73226C4.46303 7.92752 4.46303 8.24411 4.26777 8.43937L3.20711 9.50003L4.26777 10.5607C4.46303 10.756 4.46303 11.0725 4.26777 11.2678C4.0725 11.4631 3.75592 11.4631 3.56066 11.2678L2.14645 9.85358C1.95118 9.65832 1.95118 9.34174 2.14645 9.14648L3.56066 7.73226Z" />

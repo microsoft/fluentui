@@ -3,7 +3,7 @@ import { createSvgIcon } from '../utils/createSvgIcon';
 
 export const OutlookColorIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <path
         d="M17.8 9.52L11.5 5.92H11.41C11.3005 5.8427 11.1732 5.79453 11.04 5.78C10.9047 5.77891 10.7711 5.80974 10.65 5.87H10.56L4.25998 9.47C4.20058 9.50425 4.15156 9.55394 4.11811 9.6138C4.08466 9.67366 4.06803 9.74145 4.06998 9.81C4.06975 9.87571 4.08613 9.94042 4.1176 9.99811C4.14906 10.0558 4.1946 10.1046 4.24998 10.14L11.04 15L17.85 10.19C17.9066 10.1551 17.9536 10.1067 17.9868 10.0491C18.0199 9.99144 18.0382 9.92646 18.04 9.86C18.0362 9.78644 18.0116 9.71548 17.9691 9.65531C17.9266 9.59514 17.868 9.54822 17.8 9.52Z"
         fill="#0A2767"

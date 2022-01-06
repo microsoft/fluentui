@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const StrikeIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M6.528 4.026C7.428 3.403 8.654 3 10 3c2.688 0 4.326 1.434 4.9 2.2a.5.5 0 01-.8.6C13.674 5.232 12.312 4 10 4c-1.153 0-2.178.347-2.903.849C6.36 5.359 6 5.976 6 6.5c0 .909.432 1.484 1.167 1.933.362.22.784.403 1.248.567H6.23C5.498 8.43 5 7.637 5 6.5c0-.976.64-1.86 1.528-2.474zM16.5 10a.5.5 0 010 1h-2.73c.732.57 1.23 1.363 1.23 2.5 0 1.228-.721 2.12-1.677 2.681-.945.556-2.163.819-3.323.819-1.126 0-2.078-.128-2.893-.478-.827-.356-1.477-.925-2.023-1.745a.5.5 0 01.832-.554c.454.68.96 1.111 1.586 1.38C8.141 15.878 8.94 16 10 16c1.028 0 2.06-.237 2.817-.681.748-.44 1.183-1.047 1.183-1.819 0-.909-.432-1.484-1.167-1.933A6.651 6.651 0 0011.585 11H3.5a.5.5 0 010-1h13z" />
       </g>

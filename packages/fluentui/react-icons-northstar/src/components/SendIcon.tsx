@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const SendIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svgFlippingInRtl}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svgFlippingInRtl}>
       <g>
         <path
           className={cx(iconClassNames.outline, classes.outlinePart)}

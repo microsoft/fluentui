@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const FontSizeIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg viewBox="2 2 16 16" role="presentation" focusable="false" className={classes.svg}>
+    <svg viewBox="0 0 20 20" role="presentation" focusable="false" className={classes.svg}>
       <path
         className={cx(iconClassNames.outline, classes.outlinePart)}
         fillRule="evenodd"

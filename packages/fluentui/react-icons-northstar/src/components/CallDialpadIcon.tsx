@@ -3,7 +3,7 @@ import { createSvgIcon } from '../utils/createSvgIcon';
 
 export const CallDialpadIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <path d="M6 5C6.55228 5 7 4.55228 7 4C7 3.44772 6.55228 3 6 3C5.44772 3 5 3.44772 5 4C5 4.55228 5.44772 5 6 5Z" />
       <path d="M6 9C6.55228 9 7 8.55228 7 8C7 7.44772 6.55228 7 6 7C5.44772 7 5 7.44772 5 8C5 8.55228 5.44772 9 6 9Z" />
       <path d="M7 12C7 12.5523 6.55228 13 6 13C5.44772 13 5 12.5523 5 12C5 11.4477 5.44772 11 6 11C6.55228 11 7 11.4477 7 12Z" />

@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ShareAltIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg viewBox="2 2 16 16" role="presentation" className={classes.svg}>
+    <svg viewBox="0 0 20 20" role="presentation" className={classes.svg}>
       <path
         className={cx(iconClassNames.filled, classes.filledPart)}
         d="M17 5.5C17 6.88071 15.8807 8 14.5 8C13.7014 8 12.9903 7.62559 12.5326 7.04275L7.91508 9.35154C7.97047 9.55834 8 9.77572 8 10C8 10.2243 7.97046 10.4417 7.91505 10.6486L12.5326 12.9573C12.9903 12.3744 13.7014 12 14.5 12C15.8807 12 17 13.1193 17 14.5C17 15.8807 15.8807 17 14.5 17C13.1193 17 12 15.8807 12 14.5C12 14.2757 12.0295 14.0583 12.0849 13.8515L7.46735 11.5427C7.00966 12.1256 6.29855 12.5 5.5 12.5C4.11929 12.5 3 11.3807 3 10C3 8.61929 4.11929 7.5 5.5 7.5C6.29859 7.5 7.00973 7.87444 7.46742 8.45734L12.0849 6.14856C12.0295 5.94173 12 5.72431 12 5.5C12 4.11929 13.1193 3 14.5 3C15.8807 3 17 4.11929 17 5.5Z"

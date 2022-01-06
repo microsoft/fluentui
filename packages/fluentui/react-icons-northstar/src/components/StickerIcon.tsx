@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const StickerIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <path
         className={cx(iconClassNames.outline, classes.outlinePart)}
         d="M15.111 2c1.54 0 2.8 1.206 2.884 2.725l.005.164v6.041c0 .53-.19 1.042-.531 1.442l-.12.13-4.847 4.847c-.375.375-.87.602-1.396.644L10.93 18H4.89c-1.54 0-2.8-1.206-2.884-2.725L2 15.111V4.89c0-1.54 1.206-2.8 2.725-2.884L4.889 2H15.11zm-.08 1H4.97c-1.042 0-1.895.81-1.964 1.834L3 4.969V15.03c0 1.042.81 1.895 1.834 1.964l.135.005h6.029v-3.092a5.423 5.423 0 01-4.853-1.515.5.5 0 01.71-.704 4.426 4.426 0 004.18 1.189 2.51 2.51 0 01.02-.154c.384-1.032 1.352-1.655 2.502-1.72L13.72 11H17V4.969c0-1.042-.81-1.895-1.834-1.964L15.031 3zm1.554 9h-2.762c-.965 0-1.755.75-1.819 1.698l-.004.125v2.761l.087-.078 4.419-4.42a1.21 1.21 0 00.079-.086zM7 7a1 1 0 110 2 1 1 0 010-2zm6 0a1 1 0 110 2 1 1 0 010-2z"

@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const IndentIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svgFlippingInRtl}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svgFlippingInRtl}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M6 4.5C6 4.22386 6.22386 4 6.5 4H14.5C14.7761 4 15 4.22386 15 4.5C15 4.77614 14.7761 5 14.5 5H6.5C6.22386 5 6 4.77614 6 4.5Z" />
         <path d="M6 9.5C6 9.22386 6.22386 9 6.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H6.5C6.22386 10 6 9.77614 6 9.5Z" />

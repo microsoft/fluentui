@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ToDoListIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M9.35357 6.39646C9.54882 6.59172 9.54881 6.9083 9.35355 7.10356L7.60355 8.85347C7.41451 9.04251 7.11021 9.04939 6.91281 8.8691L6.16281 8.1841C5.95891 7.99788 5.94459 7.68162 6.13081 7.47772C6.31704 7.27382 6.6333 7.2595 6.8372 7.44572L7.23436 7.80847L8.64646 6.39644C8.84173 6.20118 9.15831 6.20119 9.35357 6.39646Z" />
         <path d="M9.35355 12.1036C9.54881 11.9083 9.54882 11.5917 9.35357 11.3965C9.15831 11.2012 8.84173 11.2012 8.64646 11.3964L7.23436 12.8085L6.8372 12.4457C6.6333 12.2595 6.31704 12.2738 6.13081 12.4777C5.94459 12.6816 5.95891 12.9979 6.16281 13.1841L6.91281 13.8691C7.11021 14.0494 7.41451 14.0425 7.60355 13.8535L9.35355 12.1036Z" />

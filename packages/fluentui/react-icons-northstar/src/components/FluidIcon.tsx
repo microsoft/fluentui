@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const FluidIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M8 4H13.5C14.3284 4 15 4.67157 15 5.5V9H14V5.5C14 5.22386 13.7761 5 13.5 5H8V4ZM5 8V13.5C5 13.7761 5.22386 14 5.5 14H9V15H5.5C4.67157 15 4 14.3284 4 13.5V8H5Z" />
         <path d="M2 3.5C2 2.67157 2.67157 2 3.5 2H5.5C6.32843 2 7 2.67157 7 3.5V5.54331C7 6.37174 6.32843 7.04331 5.5 7.04331H3.5C2.67157 7.04331 2 6.37174 2 5.54331V3.5ZM3.5 3C3.22386 3 3 3.22386 3 3.5V5.54331C3 5.81946 3.22386 6.04331 3.5 6.04331H5.5C5.77614 6.04331 6 5.81946 6 5.54331V3.5C6 3.22386 5.77614 3 5.5 3H3.5Z" />

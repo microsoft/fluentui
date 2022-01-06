@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const TenantWorkIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg className={classes.svg} viewBox="2 2 16 16" role="presentation" focusable="false">
+    <svg className={classes.svg} viewBox="0 0 20 20" role="presentation" focusable="false">
       <path
         className={cx(iconClassNames.outline, classes.outlinePart)}
         fillRule="evenodd"

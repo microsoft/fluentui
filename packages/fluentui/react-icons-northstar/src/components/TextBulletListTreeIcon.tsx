@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const TextBulletListTreeIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M3 6.5C3.55228 6.5 4 6.05228 4 5.5C4 4.94772 3.55228 4.5 3 4.5C2.44772 4.5 2 4.94772 2 5.5C2 6.05228 2.44772 6.5 3 6.5Z" />
         <path d="M6 5.5C6 5.22386 6.22386 5 6.5 5H17.5C17.7761 5 18 5.22386 18 5.5C18 5.77614 17.7761 6 17.5 6H6.5C6.22386 6 6 5.77614 6 5.5Z" />

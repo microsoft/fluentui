@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const NotesIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" className={classes.svg} viewBox="2 2 16 16">
+    <svg role="presentation" focusable="false" className={classes.svg} viewBox="0 0 20 20">
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M7.5 7C7.22386 7 7 7.22386 7 7.5C7 7.77614 7.22386 8 7.5 8H12.5C12.7761 8 13 7.77614 13 7.5C13 7.22386 12.7761 7 12.5 7H7.5Z" />
         <path d="M7 10.5C7 10.2239 7.22386 10 7.5 10H12.5C12.7761 10 13 10.2239 13 10.5C13 10.7761 12.7761 11 12.5 11H7.5C7.22386 11 7 10.7761 7 10.5Z" />

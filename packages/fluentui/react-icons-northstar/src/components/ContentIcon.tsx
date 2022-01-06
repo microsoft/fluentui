@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const ContentIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="0 0 20 20" className={classes.svg}>
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M5 7C5 6.44772 5.44772 6 6 6H14C14.5523 6 15 6.44771 15 7V9C15 9.55228 14.5523 10 14 10H6C5.44772 10 5 9.55229 5 9V7ZM14 7H6V9H14V7Z" />
         <path d="M12 11C11.4477 11 11 11.4477 11 12V13C11 13.5523 11.4477 14 12 14H14C14.5523 14 15 13.5523 15 13V12C15 11.4477 14.5523 11 14 11H12ZM12 12H14V13H12V12Z" />

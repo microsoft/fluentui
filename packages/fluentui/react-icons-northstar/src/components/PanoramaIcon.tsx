@@ -5,7 +5,7 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const PanoramaIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg className={classes.svg} viewBox="2 2 16 16" role="presentation" focusable="false">
+    <svg className={classes.svg} viewBox="0 0 20 20" role="presentation" focusable="false">
       <g className={cx(iconClassNames.outline, classes.outlinePart)}>
         <path d="M11 8.99994C11 9.55222 10.5523 9.99994 10 9.99994C9.44772 9.99994 9 9.55222 9 8.99994C9 8.44765 9.44772 7.99994 10 7.99994C10.5523 7.99994 11 8.44765 11 8.99994Z" />
         <path d="M7 9.99994C7 10.5522 6.55228 10.9999 6 10.9999C5.44772 10.9999 5 10.5522 5 9.99994C5 9.44765 5.44772 8.99994 6 8.99994C6.55228 8.99994 7 9.44765 7 9.99994Z" />

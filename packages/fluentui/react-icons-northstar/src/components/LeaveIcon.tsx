@@ -9,7 +9,7 @@ export const LeaveIcon = createSvgIcon({
       role="presentation"
       style={{ overflow: 'visible' }}
       focusable="false"
-      viewBox="2 2 16 16"
+      viewBox="0 0 20 20"
       className={classes.svgFlippingInRtl}
     >
       <path
