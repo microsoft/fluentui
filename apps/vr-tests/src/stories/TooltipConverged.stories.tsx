@@ -3,20 +3,21 @@ import { storiesOf } from '@storybook/react';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
-  wrapper: theme => ({
+  wrapper: {
     display: 'flex',
-    gap: '5px',
+    ...shorthands.gap('5px'),
     ...shorthands.padding('50px', '120px'),
-    backgroundColor: theme.colorNeutralBackground1,
+    backgroundColor: tokens.colorNeutralBackground1,
 
     '& button, & .target': {
-      color: theme.colorNeutralForeground1,
-      backgroundColor: theme.colorNeutralBackground1,
-      ...shorthands.border('1px', 'solid', theme.colorNeutralStroke1),
+      color: tokens.colorNeutralForeground1,
+      backgroundColor: tokens.colorNeutralBackground1,
+      ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     },
-  }),
+  },
 });
 
 storiesOf('Tooltip Converged', module)
