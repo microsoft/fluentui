@@ -3,5 +3,5 @@
   "comment": "Replacing use of functions in makeStyles with direct use of tokens",
   "packageName": "@fluentui/react-portal",
   "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
