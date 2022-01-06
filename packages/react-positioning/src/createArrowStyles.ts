@@ -1,6 +1,6 @@
 import { shorthands } from '@fluentui/react-make-styles';
-import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
-import type { Theme } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
+import type { MakeStylesStyle } from '@fluentui/react-make-styles';
 
 /**
  * Helper that creates a makeStyles rule for an arrow element.
@@ -26,8 +26,8 @@ import type { Theme } from '@fluentui/react-theme';
  *
  * @param size - dimensions of the square arrow element in pixels.
  */
-export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
-  return theme => ({
+export function createArrowStyles(size?: number): MakeStylesStyle {
+  return {
     position: 'absolute',
     backgroundColor: 'inherit',
     visibility: 'hidden',
@@ -46,7 +46,7 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
       height: 'inherit',
       backgroundColor: 'inherit',
       visibility: 'visible',
-      borderBottomRightRadius: theme.borderRadiusSmall,
+      borderBottomRightRadius: tokens.borderRadiusSmall,
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },
 
@@ -76,5 +76,5 @@ export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme> {
       right: '0 /* @noflip */',
       '--angle': '270deg',
     },
-  });
+  };
 }

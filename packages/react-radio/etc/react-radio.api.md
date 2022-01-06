@@ -19,12 +19,6 @@ export const Radio: ForwardRefComponent<RadioProps>;
 // @public (undocumented)
 export const radioClassName = "fui-Radio";
 
-// @public (undocumented)
-export type RadioCommons = {};
-
-// @public
-export type RadioDefaultedProps = never;
-
 // @public
 export const RadioItem: ForwardRefComponent<RadioItemProps>;
 
@@ -55,10 +49,7 @@ export type RadioItemSlots = {
 export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
 
 // @public
-export type RadioProps = ComponentProps<RadioSlots> & Partial<RadioCommons> & {};
-
-// @public
-export type RadioShorthandProps = never;
+export type RadioProps = ComponentProps<RadioSlots>;
 
 // @public (undocumented)
 export type RadioSlots = {
@@ -66,7 +57,7 @@ export type RadioSlots = {
 };
 
 // @public
-export type RadioState = ComponentState<RadioSlots> & RadioCommons;
+export type RadioState = ComponentState<RadioSlots>;
 
 // @public
 export const renderRadio: (state: RadioState) => JSX.Element;
