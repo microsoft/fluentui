@@ -102,6 +102,23 @@ function App() {
 
 - 👎 `props` are not accessible, but we can reconsider this decision later
 
+### Addendum: all inputs should expose a customized `onChange` handler
+
+For consistency, all inputs (form controls) should expose a customized `onChange` handler with the `(ev, data) => void` signature described above.
+
+We can add a conformance test to verify that an `onChange` prop exists for all input components. (We already have another test confirming it has the correct signature.) The main challenge for the new test will be whether there's a way to programmatically determine what counts as an input component. If that's not reasonable, we'll have to add a prop to enable the test and ensure it's used in all relevant components.
+
+#### Pros
+
+- Consistency across all input components: `value` (_or other meaningful property, for example `checked`_) is always predictable in the `value` prop, rather than having to know where to look in the event object
+- Type safety is simple: sometimes `event.target` doesn't have a specific enough element type, or the value on the target element has an overly-broad type that doesn't reflect the usage
+- Similar to the approach in v8 and v0
+- Provides a clear path for exposing additional values later (for example, the original props object as discussed in the previous proposal)
+
+#### Cons
+
+- Adds a small amount of additional complexity that is not technically 100% necessary for simple components (`Input`, `Checkbox`, `Slider`) where the value could be accessed on the underlying `<input>` as `event.target.value`
+
 ## Discarded solutions
 
 ### Option A:
