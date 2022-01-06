@@ -68,9 +68,6 @@ export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
     defaultSelectedValue?: TabValue;
 };
 
-// @public
-export const tabListShorthandProps: (keyof TabListSlots)[];
-
 // @public (undocumented)
 export type TabListSlots = {
     root: IntrinsicShorthandProps<'div'>;
@@ -81,9 +78,6 @@ export type TabListState = ComponentState<TabListSlots> & TabListContextValue;
 
 // @public
 export type TabProps = ComponentProps<TabSlots> & TabCommons;
-
-// @public
-export const tabShorthandProps: (keyof TabSlots)[];
 
 // @public (undocumented)
 export type TabSlots = {
