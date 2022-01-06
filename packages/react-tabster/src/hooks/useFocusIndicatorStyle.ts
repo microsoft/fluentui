@@ -85,17 +85,17 @@ export const createFocusOutlineStyle = (
 });
 
 /**
- * Creates a style rule for @see makeStyles that includes the necessary selectors for focus.
+ * Creates a style for @see makeStyles that includes the necessary selectors for focus.
  * Should be used only when @see createFocusOutlineStyle does not fit requirements
  *
- * @param rule - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
+ * @param style - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
  */
 export const createCustomFocusIndicatorStyle = (
-  rule: MakeStylesStyle,
+  style: MakeStylesStyle,
   options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
 ): MakeStylesStyle => ({
   ':focus-visible': {
     outlineStyle: 'none',
   },
-  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: rule,
+  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: style,
 });
