@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "SwatchColorPicker: use radio roles on single-row swatches",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
