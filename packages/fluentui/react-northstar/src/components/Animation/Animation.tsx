@@ -166,7 +166,8 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
 
   const unhandledProps = useUnhandledProps(Animation.handledProps, props);
 
-  const mergedRef = useMergedRefs(ref);
+  const nodeRef = React.useRef();
+  const mergedRef = useMergedRefs(ref, nodeRef);
 
   if (_.isNil(children)) {
     setEnd();
@@ -178,7 +179,7 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
 
   const element = (
     <Transition
-      nodeRef={mergedRef}
+      nodeRef={nodeRef}
       in={visible}
       appear={appear}
       mountOnEnter={mountOnEnter}
@@ -194,16 +195,13 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
       {isChildrenFunction ? (
-        ({ state }) => (
-          <Ref innerRef={mergedRef}>
-            {
-              (children as AnimationChildrenProp)({
-                classes: cx(animationClasses, className, (child as any)?.props?.className),
-                state,
-              }) as React.ReactElement
-            }
-          </Ref>
-        )
+        ({ state }) => {
+          const childWithClasses = (children as AnimationChildrenProp)({
+            classes: cx(animationClasses, className, (child as any)?.props?.className),
+            state,
+          }) as React.ReactElement;
+          return childWithClasses ? <Ref innerRef={mergedRef}>{childWithClasses}</Ref> : childWithClasses;
+        }
       ) : (
         <Ref innerRef={mergedRef}>
           {React.cloneElement(child, { className: cx(animationClasses, className, (child as any)?.props?.className) })}
