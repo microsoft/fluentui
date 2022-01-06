@@ -74,6 +74,8 @@ export const searchStyles = (context, definition) =>
       line-height: inherit;
     }
     .clear-button {
+      display: inline-flex;
+      align-items: center;
       margin: 1px;
       height: calc(100% - 2px);
       opacity: 0;
