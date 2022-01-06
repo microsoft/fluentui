@@ -1,5 +1,6 @@
-import { MakeStylesStyle, shorthands } from '@fluentui/react-make-styles';
+import { shorthands } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
+import type { MakeStylesStyle } from '@fluentui/react-make-styles';
 
 /**
  * Options parameter for the createArrowStyles function
