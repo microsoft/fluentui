@@ -2,6 +2,7 @@ import type { TabState } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 
 export const tabClassName = 'fui-Tab';
 
@@ -27,7 +28,7 @@ const useRootStyles = makeStyles({
     backgroundColor: 'none',
     ...shorthands.borderColor('none'),
     ...shorthands.borderRadius(theme.borderRadiusMedium),
-    borderWidth: theme.strokeWidthThin,
+    ...shorthands.borderWidth(theme.strokeWidthThin),
     columnGap: pendingTheme.gap.medium,
     cursor: 'pointer',
     display: 'flex',
@@ -62,17 +63,20 @@ const useRootStyles = makeStyles({
  * Focus styles for the root slot
  */
 const useFocusStyles = makeStyles({
-  base: createCustomFocusIndicatorStyle(theme => ({
+  // Tab creates a custom focus indicator because the default focus indicator
+  // is applied using an :after pseudo-element on the root. Since the selection
+  // indicator uses an :after pseudo-element on the root, there is a conflict.
+  base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
-    outlineWidth: theme.strokeWidthThick,
-    outlineColor: 'tranparent',
+    outlineWidth: tokens.strokeWidthThick,
+    outlineColor: 'transparent',
     outlineStyle: 'solid',
     boxShadow: `
-      ${theme.shadow4},
-      0 0 0 ${theme.strokeWidthThick} ${theme.colorStrokeFocus2}
+      ${tokens.shadow4},
+      0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}
     `,
     zIndex: 1,
-  })),
+  }),
 });
 
 /**
@@ -164,6 +168,8 @@ const useIconStyles = makeStyles({
     display: 'inline-flex',
     justifyContent: 'center',
   },
+  // per design, the small and medium font sizes are the same.
+  // the size prop only affects spacing.
   small: {
     fontSize: '20px',
     height: '20px',

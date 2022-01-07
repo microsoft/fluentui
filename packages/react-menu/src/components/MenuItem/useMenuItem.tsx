@@ -30,7 +30,7 @@ export const menuItemSlots: Array<keyof MenuItemSlots> = [
  * Returns the props and state required to render the component
  */
 export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
-  const hasSubmenu = useMenuTriggerContext();
+  const hasSubmenu = useMenuTriggerContext() || props.hasSubmenu;
   const hasIcons = useMenuListContext(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);
   const setOpen = useMenuContext(context => context.setOpen);
@@ -66,7 +66,10 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
         children: dir === 'ltr' ? <ChevronRightIcon fontSize={20} /> : <ChevronLeftIcon fontSize={20} />,
       },
     }),
-    content: resolveShorthand(props.content, { required: true, defaultProps: { children: props.children } }),
+    content: resolveShorthand(props.content, {
+      required: !!props.children,
+      defaultProps: { children: props.children },
+    }),
     secondaryContent: resolveShorthand(props.secondaryContent),
   };
 

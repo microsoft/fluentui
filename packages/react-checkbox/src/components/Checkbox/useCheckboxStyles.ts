@@ -30,7 +30,7 @@ const useRootStyles = makeStyles({
     cursor: 'default',
   },
 
-  focusIndicator: theme => createFocusOutlineStyle(theme, { style: {}, selector: 'focus-within' }),
+  focusIndicator: createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 
   // These `__Colors` styles are mutually exclusive: exactly one should be applied at any time
   uncheckedColors: theme => ({
@@ -155,7 +155,7 @@ const useIndicatorStyles = makeStyles({
 
   unchecked: {
     '& > *': {
-      opacity: 0,
+      opacity: '0',
     },
   },
 });

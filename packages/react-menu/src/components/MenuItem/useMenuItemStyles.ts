@@ -7,7 +7,7 @@ import type { MenuItemState } from './MenuItem.types';
 export const menuItemClassName = 'fui-MenuItem';
 
 const useStyles = makeStyles({
-  focusIndicator: theme => createFocusOutlineStyle(theme),
+  focusIndicator: createFocusOutlineStyle(),
   root: theme => ({
     ...shorthands.borderRadius(theme.borderRadiusMedium),
     position: 'relative',
@@ -76,7 +76,11 @@ export const useMenuItemStyles = (state: MenuItemState) => {
     state.disabled && styles.disabled,
     state.root.className,
   );
-  state.content.className = mergeClasses(styles.content, state.content.className);
+
+  if (state.content) {
+    state.content.className = mergeClasses(styles.content, state.content.className);
+  }
+
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
       !state.disabled && styles.secondaryContent,

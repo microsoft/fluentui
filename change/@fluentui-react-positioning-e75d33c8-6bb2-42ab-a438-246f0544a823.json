@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix popover arrow styling",
+  "packageName": "@fluentui/react-positioning",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

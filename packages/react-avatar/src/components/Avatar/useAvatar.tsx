@@ -60,29 +60,13 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
       state.icon = resolveShorthand(props.icon, {
         required: true,
         defaultProps: {
-          children: getDefaultIcon(state.size),
+          children: <PersonRegular />,
         },
       });
     }
   }
 
   return state;
-};
-
-const getDefaultIcon = (size: NonNullable<AvatarProps['size']>) => {
-  if (size <= 24) {
-    return <PersonRegular fontSize={16} />;
-  } else if (size <= 40) {
-    return <PersonRegular fontSize={20} />;
-  } else if (size <= 48) {
-    return <PersonRegular fontSize={24} />;
-  } else if (size <= 56) {
-    return <PersonRegular fontSize={28} />;
-  } else if (size <= 72) {
-    return <PersonRegular fontSize={32} />;
-  } else {
-    return <PersonRegular fontSize={48} />;
-  }
 };
 
 const getBadgeSize = (size: NonNullable<AvatarProps['size']>) => {
