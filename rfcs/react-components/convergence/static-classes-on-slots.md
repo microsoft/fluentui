@@ -2,21 +2,19 @@
 
 Contributors: @behowell
 
-#### Associated Issues
+History:
 
-- RFC Submission: [#21206](https://github.com/microsoft/fluentui/pull/21206)
+- [PR #21206](https://github.com/microsoft/fluentui/pull/21206) - Initial submission
 
-## Summary/Background
+## Summary
 
-Every slot of every component should have a static className with a consistent and predictable format for class names on slots
-
-## Background
-
-We currently have a static class name `"fui-{ComponentName}"` (e.g. `"fui-Button"`) added to the root slot of every component, as described in issue [#19937](https://github.com/microsoft/fluentui/issues/19937).
+This RFC proposes adding a static className to every slot, with a consistent and predictable naming format.
 
 ## Problem statement
 
-It can be useful to have a static class name on the slot of a component, including by users of our library if they want to write static styles targeting a slot. We don't currently have any formal specification of the format of these static class names, nor any conformance tests ensuring that they are added to every slot.
+It can be useful to have a static class name on the slot of a component, including by users of our library if they want to write static styles targeting a slot.
+
+We currently have a static class name `"fui-{ComponentName}"` (e.g. `"fui-Button"`) added to the root slot of every component, as described in issue [#19937](https://github.com/microsoft/fluentui/issues/19937). However, we don't currently have any formal specification of the format of the classNames for other slots, nor any conformance tests ensuring that they are added to every slot.
 
 Some of our components already have static classNames on slots (e.g. Checkbox's `indicator` slot). However, this patchwork addition of static classes makes it unpredictable for users of our library.
 
@@ -83,10 +81,10 @@ There would be a new conformance test that would check that each slot has a stat
 
 ### Pros
 
-- Users can rely on every slot having a static class name they can use for selectors
-- The naming convention is predictable
+- Users can rely on every slot having a static class name they can use for selectors.
+- The naming convention is predictable.
 
 ### Cons
 
-- Adds extra classes that may never be used
-- Encourages styling by static classes, which could have precedence issues with our atomic css classes(?)
+- Adds extra classes that may never be used.
+- Encourages styling by static classes, which could(?) have precedence issues with our atomic css classes.
