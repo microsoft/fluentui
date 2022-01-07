@@ -38,6 +38,8 @@
     "@fluentui/react-examples": "^8.34.4",
     "@fluentui/react-experiments": "^8.4.16",
     "@fluentui/react-file-type-icons": "^8.5.8",
+    "@fluentui/react-icons-mdl2": "^1.2.11",
+    "@fluentui/react-icons-mdl2-branded": "^1.1.20",
     "@fluentui/set-version": "^8.1.5",
     "@fluentui/theme": "^2.4.6",
     "@fluentui/theme-samples": "^8.2.63",

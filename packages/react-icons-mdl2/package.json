@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-icons-mdl2",
   "version": "1.2.11",
-  "description": "React components for building web experiences.",
+  "description": "SVG icon components for @fluentui/react",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
