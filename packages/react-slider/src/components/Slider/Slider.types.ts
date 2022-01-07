@@ -24,8 +24,12 @@ export type SliderSlots = {
    * The hidden input for the Slider.
    * This is the PRIMARY slot: all native properties specified directly on `<Slider>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
+   *
+   * Orient is a non standard attribute that allows for vertical orientation in Firefox
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes
+   * Webkit/blink support provided via css property
    */
-  input: IntrinsicShorthandProps<'input'>;
+  input: IntrinsicShorthandProps<'input'> & { orient?: 'horizontal' | 'vertical' };
 };
 
 export type SliderCommons = {
