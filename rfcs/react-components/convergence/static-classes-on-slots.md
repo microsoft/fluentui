@@ -1,7 +1,10 @@
 # RFC: Conventions for static class names on slots
 
 Contributors: @behowell
-RFC Issue: [#21206](https://github.com/microsoft/fluentui/pull/21206)
+
+#### Associated Issues
+
+- RFC Submission: [#21206](https://github.com/microsoft/fluentui/pull/21206)
 
 ## Summary/Background
 
