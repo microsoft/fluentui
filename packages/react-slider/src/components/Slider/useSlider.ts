@@ -69,7 +69,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
         ref,
         ...nativeProps.primary,
         type: 'range',
-        orient: vertical ? 'vertical' : 'horizontal',
+        orient: vertical ? 'vertical' : undefined,
       },
     }),
     rail: resolveShorthand(rail, { required: true }),
