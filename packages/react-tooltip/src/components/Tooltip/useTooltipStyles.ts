@@ -1,6 +1,7 @@
 import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createArrowStyles } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
+import { arrowHeight } from './private/constants';
 import type { TooltipState } from './Tooltip.types';
 
 export const tooltipClassName = 'fui-Tooltip';
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
 
-    ...shorthands.borderRadius(tokens.borderRadiusMedium), // Must match tooltipBorderRadius in useTooltip.tsx
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...shorthands.padding('4px', '11px', '6px', '11px'), // '5px 12px 7px 12px' minus the border width '1px'
     backgroundColor: tokens.colorNeutralBackground1,
@@ -39,7 +40,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundInverted,
   },
 
-  arrow: createArrowStyles({ arrowHeight: 6 }), // Must match arrowHeight in useTooltip.tsx
+  arrow: createArrowStyles({ arrowHeight }),
 });
 
 /**
