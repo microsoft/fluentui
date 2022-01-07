@@ -66,6 +66,7 @@ const useStyles = makeStyles({
   icon: {
     marginRight: '8px',
     marginLeft: '8px',
+    fontSize: '20px',
   },
   iconExpandIconEnd: {
     marginLeft: '10px',
