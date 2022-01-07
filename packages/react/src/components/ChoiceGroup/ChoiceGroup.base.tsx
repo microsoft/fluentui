@@ -43,7 +43,11 @@ const focusSelectedOption = (options: IChoiceGroupOption[], keyChecked: string |
 
 // Test if focus came from a sibling DOM element
 const focusFromSibling = (evt: React.FocusEvent<HTMLElement>): boolean => {
-  return !!(evt.relatedTarget && !elementContains(evt.currentTarget, evt.relatedTarget as HTMLElement));
+  return !!(
+    evt.relatedTarget &&
+    !elementContains(evt.currentTarget, evt.relatedTarget as HTMLElement) &&
+    !elementContains(evt.relatedTarget as HTMLElement, evt.currentTarget)
+  );
 };
 
 const useComponentRef = (
