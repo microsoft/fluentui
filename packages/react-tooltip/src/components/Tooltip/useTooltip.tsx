@@ -12,10 +12,7 @@ import {
   useTimeout,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
-
-// Style values that are required for popper to properly position the tooltip
-const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes
-const arrowHeight = 6; // Update arrowHeight in useTooltipStyles.ts if this changes
+import { arrowHeight, tooltipBorderRadius } from './private/constants';
 
 /**
  * Create the state required to render Tooltip.

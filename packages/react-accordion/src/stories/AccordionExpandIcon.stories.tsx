@@ -27,7 +27,7 @@ export const ExpandIcon = (args: AccordionHeaderProps) => (
 );
 
 ExpandIcon.args = {
-  expandIcon: <RocketIcon />,
+  expandIcon: <RocketIcon fontSize={20} />,
 } as AccordionHeaderProps;
 
 ExpandIcon.parameters = {

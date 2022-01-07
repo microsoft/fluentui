@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removing makeStyles related codemods as they are not relevant anymore.",
-  "packageName": "@fluentui/codemods",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

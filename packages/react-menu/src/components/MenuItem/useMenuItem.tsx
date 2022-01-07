@@ -63,7 +63,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
     submenuIndicator: resolveShorthand(props.submenuIndicator, {
       required: hasSubmenu,
       defaultProps: {
-        children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
+        children: dir === 'ltr' ? <ChevronRightIcon fontSize={20} /> : <ChevronLeftIcon fontSize={20} />,
       },
     }),
     content: resolveShorthand(props.content, {
