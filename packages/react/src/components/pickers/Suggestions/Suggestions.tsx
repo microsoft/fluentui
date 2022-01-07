@@ -93,6 +93,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       theme,
       styles,
       suggestionsListId,
+      suggestionsContainerAriaLabel,
     } = this.props;
 
     // TODO
@@ -175,7 +176,12 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       this.state.selectedActionType === SuggestionActionType.searchMore ? 'sug-selectedAction' : undefined;
 
     return (
-      <div className={this._classNames.root} role="listbox" id={suggestionsListId}>
+      <div
+        className={this._classNames.root}
+        aria-label={suggestionsContainerAriaLabel || headerText}
+        id={suggestionsListId}
+        role="listbox"
+      >
         <Announced message={this._getAlertText()} aria-live="polite" />
 
         {headerText ? <div className={this._classNames.title}>{headerText}</div> : null}
@@ -359,15 +365,11 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
 
   private _renderSuggestions(): JSX.Element | null {
     const {
-      isMostRecentlyUsedVisible,
-      mostRecentlyUsedHeaderText,
       onRenderSuggestion,
       removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel,
-      suggestionsHeaderText,
       removeButtonIconProps,
     } = this.props;
 
@@ -395,18 +397,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       return null;
     }
 
-    // MostRecently Used text should supercede the header text if it's there and available.
-    let headerText: string | undefined = suggestionsHeaderText;
-    if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
-      headerText = mostRecentlyUsedHeaderText;
-    }
-
     return (
-      <div
-        className={this._classNames.suggestionsContainer}
-        ref={this._scrollContainer}
-        aria-label={suggestionsContainerAriaLabel || headerText}
-      >
+      <div className={this._classNames.suggestionsContainer} ref={this._scrollContainer} role="presentation">
         {suggestions.map((suggestion, index) => (
           <div
             ref={suggestion.selected ? this._selectedElement : undefined}
