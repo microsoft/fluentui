@@ -41,10 +41,9 @@ function addFiles(host: Tree, options: NormalizedSchema) {
     tmpl: '',
   };
 
-  generateFiles(
-    host,
-    path.join(__dirname, 'files'),
-    path.join(options.paths.generators, options.name),
-    templateOptions,
-  );
+  const projectRoot = path.join(options.paths.generators, options.name);
+
+  generateFiles(host, path.join(__dirname, 'files'), projectRoot, templateOptions);
+
+  host.write(path.join(projectRoot, 'files', 'constants.ts__tmpl__'), 'exportconst variable = "<%= name %>";');
 }
