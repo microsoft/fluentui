@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add option 'tsconfigDir'; change default tsconfig dir to component path",
-  "packageName": "@fluentui/react-conformance",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
