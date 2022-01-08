@@ -1,6 +1,15 @@
+import type { CSSProperties } from 'react';
 import type { Theme } from './types';
 
-export const tokens: Record<keyof Theme, string> = {
+type CustomTokenTypes = {
+  fontWeightRegular: NonNullable<CSSProperties['fontWeight']>;
+  fontWeightMedium: NonNullable<CSSProperties['fontWeight']>;
+  fontWeightSemibold: NonNullable<CSSProperties['fontWeight']>;
+};
+
+type Tokens = Omit<Record<keyof Theme, string>, keyof CustomTokenTypes> & CustomTokenTypes;
+
+export const tokens: Tokens = {
   // Color tokens
   colorNeutralForeground1: 'var(--colorNeutralForeground1)',
   colorNeutralForeground1Hover: 'var(--colorNeutralForeground1Hover)',
@@ -704,9 +713,9 @@ export const tokens: Record<keyof Theme, string> = {
   fontSizeHero1000: 'var(--fontSizeHero1000)',
 
   // Font weight tokens
-  fontWeightRegular: 'var(--fontWeightRegular)',
-  fontWeightMedium: 'var(--fontWeightMedium)',
-  fontWeightSemibold: 'var(--fontWeightSemibold)',
+  fontWeightRegular: 'var(--fontWeightRegular)' as NonNullable<CSSProperties['fontWeight']>,
+  fontWeightMedium: 'var(--fontWeightMedium)' as NonNullable<CSSProperties['fontWeight']>,
+  fontWeightSemibold: 'var(--fontWeightSemibold)' as NonNullable<CSSProperties['fontWeight']>,
 
   // Line height tokens
   lineHeightBase100: 'var(--lineHeightBase100)',

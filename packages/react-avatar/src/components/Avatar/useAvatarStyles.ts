@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import type { AvatarState } from './Avatar.types';
@@ -61,13 +60,13 @@ const useStyles = makeStyles({
     verticalAlign: 'middle',
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     fontFamily: tokens.fontFamilyBase,
-    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightSemibold,
     boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke} inset`,
   },
 
   textCaption2: {
     fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
   },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
   textBody1Strong: { fontSize: tokens.fontSizeBase300 },
