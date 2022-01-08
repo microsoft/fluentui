@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "tokens: Removing need to cast fontWeight token as React.CSSProperties['fontWeight'] when using it inside of a makeStyles call.",
+  "packageName": "@fluentui/react-theme",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
