@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "List: when role is removed, remove aria-label as well.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

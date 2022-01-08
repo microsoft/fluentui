@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 03 Jan 2022 23:32:10 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jan 2022 07:27:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.49.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.1)
+
+Fri, 07 Jan 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.0..@fluentui/react_v8.49.1)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.3.15 ([PR #21201](https://github.com/microsoft/fluentui/pull/21201) by beachball)
 
 ## [8.49.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.0)
 
