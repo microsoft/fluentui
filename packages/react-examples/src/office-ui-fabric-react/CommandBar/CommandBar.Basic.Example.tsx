@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { setVirtualParent } from '@uifabric/utilities/lib/dom/setVirtualParent';
+import { setVirtualParent } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
