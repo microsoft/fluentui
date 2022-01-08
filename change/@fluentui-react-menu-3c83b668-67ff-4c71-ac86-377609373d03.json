@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update styling to set fontSize for the icon",
+  "packageName": "@fluentui/react-menu",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

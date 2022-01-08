@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove fixed sizing from icons in story examples",
+  "packageName": "@fluentui/react-button",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
