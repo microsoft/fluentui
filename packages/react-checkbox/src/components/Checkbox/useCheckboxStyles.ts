@@ -37,20 +37,20 @@ const useRootStyles = makeStyles({
   uncheckedColors: {
     color: tokens.colorNeutralForeground3,
     [`& .${indicatorClassName}`]: {
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
     },
 
     ':hover': {
       color: tokens.colorNeutralForeground2,
       [`& .${indicatorClassName}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
       },
     },
 
     ':active:hover': {
       color: tokens.colorNeutralForeground1,
       [`& .${indicatorClassName}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
       },
     },
   },
@@ -60,20 +60,20 @@ const useRootStyles = makeStyles({
     [`& .${indicatorClassName}`]: {
       backgroundColor: tokens.colorCompoundBrandBackground,
       color: tokens.colorNeutralForegroundOnBrand,
-      borderColor: tokens.colorCompoundBrandBackground,
+      ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
     },
 
     ':hover': {
       [`& .${indicatorClassName}`]: {
         backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-        borderColor: tokens.colorCompoundBrandBackgroundHover,
+        ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundHover),
       },
     },
 
     ':active:hover': {
       [`& .${indicatorClassName}`]: {
         backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-        borderColor: tokens.colorCompoundBrandBackgroundPressed,
+        ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundPressed),
       },
     },
   },
@@ -81,20 +81,20 @@ const useRootStyles = makeStyles({
   mixedColors: {
     color: tokens.colorNeutralForeground1,
     [`& .${indicatorClassName}`]: {
-      borderColor: tokens.colorCompoundBrandStroke,
+      ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
       color: tokens.colorCompoundBrandForeground1,
     },
 
     ':hover': {
       [`& .${indicatorClassName}`]: {
-        borderColor: tokens.colorCompoundBrandStrokeHover,
+        ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
         color: tokens.colorCompoundBrandForeground1Hover,
       },
     },
 
     ':active:hover': {
       [`& .${indicatorClassName}`]: {
-        borderColor: tokens.colorCompoundBrandStrokePressed,
+        ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
         color: tokens.colorCompoundBrandForeground1Pressed,
       },
     },
@@ -103,7 +103,7 @@ const useRootStyles = makeStyles({
   disabledColors: {
     color: tokens.colorNeutralForegroundDisabled,
     [`& .${indicatorClassName}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
       color: tokens.colorNeutralForegroundDisabled,
     },
   },

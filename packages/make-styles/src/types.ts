@@ -70,19 +70,19 @@ type MakeStylesCSSPseudos = {
 //
 
 type MakeStylesCSSObjectCustomL1 = {
-  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL2;
+  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesCSSObjectCustomL2;
 } & MakeStylesStrictCSSObject;
 type MakeStylesCSSObjectCustomL2 = {
-  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL3;
+  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesCSSObjectCustomL3;
 } & MakeStylesStrictCSSObject;
 type MakeStylesCSSObjectCustomL3 = {
-  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL4;
+  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesCSSObjectCustomL4;
 } & MakeStylesStrictCSSObject;
 type MakeStylesCSSObjectCustomL4 = {
-  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL5;
+  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesCSSObjectCustomL5;
 } & MakeStylesStrictCSSObject;
 type MakeStylesCSSObjectCustomL5 = {
-  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesStrictCSSObject;
+  [Property: string]: MakeStylesCSSValue | undefined;
 } & MakeStylesStrictCSSObject;
 
 export type MakeStylesAnimation = Record<'from' | 'to' | string, MakeStylesCSSObjectCustomL1>;

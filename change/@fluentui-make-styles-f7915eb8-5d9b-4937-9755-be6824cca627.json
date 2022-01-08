@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding ability to provide CSS objects to selectors in types.",
-  "packageName": "@fluentui/make-styles",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
