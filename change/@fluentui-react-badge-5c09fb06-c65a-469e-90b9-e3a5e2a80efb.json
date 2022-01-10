@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Badge: add fontSize styling to icon slot, to automatically size user-provided icons",
+  "comment": "Add fontSize styling to icon slot, to automatically size user-provided icons",
   "packageName": "@fluentui/react-badge",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
