@@ -845,10 +845,11 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     return 0;
   }
 
-  public updateColumn(column: IColumn, width?: number, newColumnIndex?: number) {
+  public updateColumn(column: IColumn, newProps: { width?: number; newColumnIndex?: number }) {
     const NO_COLUMNS: IColumn[] = [];
 
     const { columns = NO_COLUMNS, selectionMode, checkboxVisibility, columnReorderOptions } = this.props;
+    const { width, newColumnIndex } = newProps;
     const index = columns.findIndex(col => col.key === column.key);
 
     if (width) {

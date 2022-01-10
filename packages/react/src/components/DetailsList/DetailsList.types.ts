@@ -62,7 +62,7 @@ export interface IDetailsList extends IList {
    * @param width - desired width in pixels the column should be resized to.
    * @param newColumnIndex - desired index position where the column should be moved to.
    */
-  updateColumn: (column: IColumn, width?: number, newColumnIndex?: number) => void;
+  updateColumn: (column: IColumn, newProps: { width?: number; newColumnIndex?: number }) => void;
 }
 
 /**
