@@ -8,7 +8,7 @@ const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
   // use icons in the memo because JSX will always create a new object
   // possible to memoize icons but it can be overkill
   return (
-    <MenuItemCheckbox icon={<EditIcon fontSize={20} />} name={props.name} value={props.value}>
+    <MenuItemCheckbox icon={<EditIcon />} name={props.name} value={props.value}>
       {props.children}
     </MenuItemCheckbox>
   );

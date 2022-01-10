@@ -28,34 +28,29 @@ export const SelectionGroup = () => (
       <MenuList>
         <MenuGroup>
           <MenuGroupHeader>Checkbox group</MenuGroupHeader>
-          <MenuItemCheckbox secondaryContent="Ctrl+N" icon={<CutIcon fontSize={20} />} name="edit" value="cut">
+          <MenuItemCheckbox secondaryContent="Ctrl+N" icon={<CutIcon />} name="edit" value="cut">
             Show Menu Bar
           </MenuItemCheckbox>
-          <MenuItemCheckbox
-            secondaryContent="Ctrl+Shift+N"
-            icon={<PasteIcon fontSize={20} />}
-            name="edit"
-            value="paste"
-          >
+          <MenuItemCheckbox secondaryContent="Ctrl+Shift+N" icon={<PasteIcon />} name="edit" value="paste">
             Show Side Bar
           </MenuItemCheckbox>
-          <MenuItemCheckbox secondaryContent="Ctrl+Shift+O" icon={<EditIcon fontSize={20} />} name="edit" value="edit">
+          <MenuItemCheckbox secondaryContent="Ctrl+Shift+O" icon={<EditIcon />} name="edit" value="edit">
             Show Status Bar
           </MenuItemCheckbox>
-          <MenuItemCheckbox disabled icon={<EditIcon fontSize={20} />} name="disabled" value="disabled">
+          <MenuItemCheckbox disabled icon={<EditIcon />} name="disabled" value="disabled">
             Show Debug Panel
           </MenuItemCheckbox>
         </MenuGroup>
         <MenuDivider />
         <MenuGroup>
           <MenuGroupHeader>Radio group</MenuGroupHeader>
-          <MenuItemRadio secondaryContent="Ctrl+N" icon={<CutIcon fontSize={20} />} name="font" value="segoe">
+          <MenuItemRadio secondaryContent="Ctrl+N" icon={<CutIcon />} name="font" value="segoe">
             Segoe
           </MenuItemRadio>
-          <MenuItemRadio secondaryContent="Ctrl+Shift+N" icon={<PasteIcon fontSize={20} />} name="font" value="calibri">
+          <MenuItemRadio secondaryContent="Ctrl+Shift+N" icon={<PasteIcon />} name="font" value="calibri">
             Caliri
           </MenuItemRadio>
-          <MenuItemRadio secondaryContent="Ctrl+Shift+N" icon={<EditIcon fontSize={20} />} name="font" value="arial">
+          <MenuItemRadio secondaryContent="Ctrl+Shift+N" icon={<EditIcon />} name="font" value="arial">
             Arial
           </MenuItemRadio>
         </MenuGroup>

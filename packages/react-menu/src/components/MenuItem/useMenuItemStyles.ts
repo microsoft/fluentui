@@ -50,10 +50,12 @@ const useStyles = makeStyles({
   icon: {
     width: '20px',
     height: '20px',
+    fontSize: '20px',
   },
   submenuIndicator: {
     width: '20px',
     height: '20px',
+    fontSize: '20px',
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
