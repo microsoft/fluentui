@@ -317,7 +317,9 @@ export type MenuTriggerProps = {
 };
 
 // @public (undocumented)
-export type MenuTriggerState = MenuTriggerProps;
+export type MenuTriggerState = {
+    children: React_2.ReactNode;
+};
 
 // @public
 export const renderMenu: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
