@@ -2,6 +2,7 @@ import type { TabState } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 
 export const tabClassName = 'fui-Tab';
 
@@ -65,17 +66,17 @@ const useFocusStyles = makeStyles({
   // Tab creates a custom focus indicator because the default focus indicator
   // is applied using an :after pseudo-element on the root. Since the selection
   // indicator uses an :after pseudo-element on the root, there is a conflict.
-  base: createCustomFocusIndicatorStyle(theme => ({
+  base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
-    outlineWidth: theme.strokeWidthThick,
+    outlineWidth: tokens.strokeWidthThick,
     outlineColor: 'transparent',
     outlineStyle: 'solid',
     boxShadow: `
-      ${theme.shadow4},
-      0 0 0 ${theme.strokeWidthThick} ${theme.colorStrokeFocus2}
+      ${tokens.shadow4},
+      0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}
     `,
     zIndex: 1,
-  })),
+  }),
 });
 
 /**

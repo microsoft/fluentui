@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-avatar: Replacing use of functions in makeStyles with direct use of tokens.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
