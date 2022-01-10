@@ -81,7 +81,7 @@ export function useTriggerElement<TriggerProps extends React.HTMLProps<unknown>>
     ref: useMergedRefs(childRef, ref),
   });
 
-  // TODO: fix me
+  // TODO: fix me after https://github.com/microsoft/fluentui/issues/21229
   // Causes TS error:
   // "Property 'fromEntries' does not exist on type 'ObjectConstructor'"
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
