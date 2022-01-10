@@ -84,6 +84,7 @@ export function useTriggerElement<TriggerProps extends React.HTMLProps<unknown>>
   // TODO: fix me
   // Causes TS error:
   // "Property 'fromEntries' does not exist on type 'ObjectConstructor'"
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const triggerProps = (Object as any).fromEntries(
     mergedPropEntries.map(([propName, propValue]) => {
       if (propName.match(CAPTURE_CALLBACK_REGEX)) {
