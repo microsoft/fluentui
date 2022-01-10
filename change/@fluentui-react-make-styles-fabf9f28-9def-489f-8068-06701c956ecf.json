@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating makeStyles declaration based on updated types in @fluentui/make-styles.",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
