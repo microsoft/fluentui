@@ -8,6 +8,9 @@ import * as React from 'react';
 export const useUnmount = (callback: () => void) => {
   const unmountRef = React.useRef(callback);
   unmountRef.current = callback;
+
+  console.log(Object.fromEntries([]));
+
   React.useEffect(
     () => () => {
       unmountRef.current?.();
