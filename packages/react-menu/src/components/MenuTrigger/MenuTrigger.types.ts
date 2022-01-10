@@ -21,4 +21,6 @@ export type MenuTriggerChildProps = Required<
   'aria-expanded': boolean | undefined;
 };
 
-export type MenuTriggerState = MenuTriggerProps;
+export type MenuTriggerState = {
+  children: React.ReactNode;
+};

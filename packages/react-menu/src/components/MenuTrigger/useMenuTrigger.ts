@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { useTriggerElement } from './useTriggerElement';
 import type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
-import { onlyChild } from '@fluentui/react-utilities';
+import { onlyChild, useMergedRefs, useTriggerElement } from '@fluentui/react-utilities';
 import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 
 /**
@@ -17,6 +16,7 @@ import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
  */
 export const useMenuTrigger = (props: MenuTriggerProps, ref: React.Ref<HTMLElement>): MenuTriggerState => {
   const { children, ...rest } = props;
+
   const triggerRef = useMenuContext(context => context.triggerRef);
   const menuPopoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
@@ -24,7 +24,9 @@ export const useMenuTrigger = (props: MenuTriggerProps, ref: React.Ref<HTMLEleme
   const triggerId = useMenuContext(context => context.triggerId);
   const openOnHover = useMenuContext(context => context.openOnHover);
   const openOnContext = useMenuContext(context => context.openOnContext);
+
   const isSubmenu = useIsSubmenu();
+
   const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(menuPopoverRef.current);
@@ -119,7 +121,7 @@ export const useMenuTrigger = (props: MenuTriggerProps, ref: React.Ref<HTMLEleme
     }
   };
 
-  const triggerProps: MenuTriggerChildProps = {
+  const overrideProps: MenuTriggerChildProps = {
     'aria-haspopup': 'menu',
     'aria-expanded': open,
     id: child?.props?.id || triggerId,
@@ -132,10 +134,17 @@ export const useMenuTrigger = (props: MenuTriggerProps, ref: React.Ref<HTMLEleme
   };
 
   if (!open && !isSubmenu) {
-    triggerProps['aria-expanded'] = undefined;
+    overrideProps['aria-expanded'] = undefined;
   }
 
-  return { children: useTriggerElement(children, [triggerRef, ref], [rest, triggerProps]) };
+  return {
+    children: useTriggerElement({
+      children,
+      ref: useMergedRefs(triggerRef, ref),
+      outerProps: rest,
+      overrideProps,
+    }),
+  };
 };
 
 const isTargetDisabled = (e: React.SyntheticEvent | Event) => {
@@ -144,9 +153,5 @@ const isTargetDisabled = (e: React.SyntheticEvent | Event) => {
     return true;
   }
 
-  if (e.currentTarget instanceof HTMLElement && isDisabled(e.currentTarget)) {
-    return true;
-  }
-
-  return false;
+  return e.currentTarget instanceof HTMLElement && isDisabled(e.currentTarget);
 };

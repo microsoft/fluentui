@@ -1,17 +1,14 @@
 import * as React from 'react';
+import { Tooltip } from '@fluentui/react-tooltip';
+import { Button } from '@fluentui/react-button';
 
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../index';
-import { Tooltip } from '@fluentui/react-tooltip';
-
-import { Button } from '@fluentui/react-button';
 
 export const MenuTriggerWithTooltip = () => (
   <Menu>
     <Tooltip content="This is a tooltip">
       <MenuTrigger>
-        <Button onBlur={() => null} onClick={() => null}>
-          Toggle menu
-        </Button>
+        <Button>Toggle menu</Button>
       </MenuTrigger>
     </Tooltip>
 
@@ -25,3 +22,11 @@ export const MenuTriggerWithTooltip = () => (
     </MenuPopover>
   </Menu>
 );
+
+MenuTriggerWithTooltip.parameters = {
+  docs: {
+    description: {
+      story: ['A trigger for `Menu` can also have a tooltip.'].join('\n'),
+    },
+  },
+};

@@ -1,0 +1,94 @@
+import * as React from 'react';
+
+import { applyTriggerPropsToChildren } from '../utils/applyTriggerPropsToChildren';
+import { getReactCallbackName } from '../utils/getReactCallbackName';
+import { onlyChild } from '../utils/onlyChild';
+import { useEventCallback } from './useEventCallback';
+import { useMergedRefs } from './useMergedRefs';
+import type { ReactCallbackName } from '../utils/getReactCallbackName';
+
+export type UseTriggerElementOptions<TriggerProps> = {
+  /** An actual trigger element or render props function. */
+  children: React.ReactElement | ((props: TriggerProps) => React.ReactNode) | null | undefined;
+
+  /** A ref to trigger element. */
+  ref: React.Ref<unknown> | undefined;
+
+  /** Props that are passed to a parent component and should be forwarded down. */
+  outerProps: React.HTMLProps<unknown>;
+
+  /** Custom props including callbacks. */
+  overrideProps: TriggerProps;
+};
+
+const CAPTURE_CALLBACK_REGEX = /on[A-Z].+Capture/;
+const CALLBACK_REGEX = /on[A-Z].+/;
+
+/**
+ * A hook that handles "trigger" pattern.
+ *
+ * Clones a passed element or calls render props. Merges props including refs and callbacks, callbacks are kept stable
+ * by reference.
+ */
+export function useTriggerElement<TriggerProps extends React.HTMLProps<unknown>>(
+  options: UseTriggerElementOptions<TriggerProps>,
+): React.ReactNode {
+  const { children, ref, outerProps, overrideProps } = options;
+
+  let childProps: React.HTMLProps<unknown> = {};
+  let childRef = null;
+
+  // child can be a render func, `applyTriggerPropsToChildren`does the same check again
+  // TODO figure out a way to only do this check once
+  if (React.isValidElement(children)) {
+    const child = onlyChild(children);
+
+    childProps = child.props;
+    childRef = ((child as unknown) as { ref?: React.Ref<unknown> }).ref;
+  }
+
+  // Two separate callbacks are needed to handle properly bubble and capture callbacks
+  // "getReactCallbackName()" could return proper callback name, but it's possible only with React 17
+
+  const handleBubbleEvent = useEventCallback((e: React.SyntheticEvent<unknown>) => {
+    const callbackName = getReactCallbackName(e);
+
+    if (callbackName) {
+      childProps[callbackName]?.(e as any);
+      overrideProps[callbackName]?.(e as any);
+      outerProps[callbackName]?.(e as any);
+    }
+  });
+  const mergedPropEntries = Object.entries({
+    ...outerProps,
+    ...overrideProps,
+    ...childProps,
+    // Undocumented, but react supports ref cloning through props
+    ref: useMergedRefs(childRef, ref),
+  });
+
+  const handleCaptureEvent = useEventCallback((e: React.SyntheticEvent<unknown>) => {
+    const callbackName = (getReactCallbackName(e) + 'Capture') as ReactCallbackName;
+
+    if (callbackName) {
+      childProps[callbackName]?.(e as any);
+      overrideProps[callbackName]?.(e as any);
+      outerProps[callbackName]?.(e as any);
+    }
+  });
+  const triggerProps = Object.fromEntries(
+    mergedPropEntries.map(([propName, propValue]) => {
+      if (propName.match(CAPTURE_CALLBACK_REGEX)) {
+        return [propName, handleCaptureEvent];
+      }
+
+      if (propName.match(CALLBACK_REGEX)) {
+        return [propName, handleBubbleEvent];
+      }
+
+      return [propName, propValue];
+    }),
+  ) as TriggerProps;
+
+  return applyTriggerPropsToChildren(children, triggerProps);
+}
