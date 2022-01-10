@@ -50,12 +50,15 @@ type MakeStylesUnsupportedCSSProperties = {
 type MakeStylesCSSProperties = Omit<
   CSS.Properties<MakeStylesCSSValue>,
   // We have custom definition for "animationName"
-  'animationName'
+  'animationName' | 'fontWeight'
 > &
   MakeStylesUnsupportedCSSProperties;
 
 export type MakeStylesStrictCSSObject = MakeStylesCSSProperties &
-  MakeStylesCSSPseudos & { animationName?: MakeStylesAnimation | MakeStylesAnimation[] | CSS.AnimationProperty };
+  MakeStylesCSSPseudos & {
+    animationName?: MakeStylesAnimation | MakeStylesAnimation[] | CSS.AnimationProperty;
+    fontWeight?: CSS.Properties['fontWeight'] | string;
+  };
 
 type MakeStylesCSSPseudos = {
   [Property in CSS.Pseudos]?:

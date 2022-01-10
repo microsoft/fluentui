@@ -4,8 +4,6 @@
 
 ```ts
 
-import type { CSSProperties } from 'react';
-
 // @public (undocumented)
 export type BorderRadiusTokens = {
     borderRadiusNone: string;
@@ -411,10 +409,8 @@ export const teamsLightTheme: Theme;
 // @public (undocumented)
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 
-// Warning: (ae-forgotten-export) The symbol "Tokens" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export const tokens: Tokens;
+export const tokens: Record<keyof Theme, string>;
 
 // @public (undocumented)
 export const webDarkTheme: Theme;
