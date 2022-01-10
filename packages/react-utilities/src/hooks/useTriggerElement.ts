@@ -59,6 +59,16 @@ export function useTriggerElement<TriggerProps extends React.HTMLProps<unknown>>
       outerProps[callbackName]?.(e as any);
     }
   });
+  const handleCaptureEvent = useEventCallback((e: React.SyntheticEvent<unknown>) => {
+    const callbackName = ((getReactCallbackName(e) + 'Capture') as unknown) as ReactCallbackName;
+
+    if (callbackName) {
+      childProps[callbackName]?.(e as any);
+      overrideProps[callbackName]?.(e as any);
+      outerProps[callbackName]?.(e as any);
+    }
+  });
+
   const mergedPropEntries = Object.entries({
     ...outerProps,
     ...overrideProps,
@@ -67,16 +77,10 @@ export function useTriggerElement<TriggerProps extends React.HTMLProps<unknown>>
     ref: useMergedRefs(childRef, ref),
   });
 
-  const handleCaptureEvent = useEventCallback((e: React.SyntheticEvent<unknown>) => {
-    const callbackName = (getReactCallbackName(e) + 'Capture') as ReactCallbackName;
-
-    if (callbackName) {
-      childProps[callbackName]?.(e as any);
-      overrideProps[callbackName]?.(e as any);
-      outerProps[callbackName]?.(e as any);
-    }
-  });
-  const triggerProps = Object.fromEntries(
+  // TODO: fix me
+  // Causes TS error:
+  // "Property 'fromEntries' does not exist on type 'ObjectConstructor'"
+  const triggerProps = (Object as any).fromEntries(
     mergedPropEntries.map(([propName, propValue]) => {
       if (propName.match(CAPTURE_CALLBACK_REGEX)) {
         return [propName, handleCaptureEvent];

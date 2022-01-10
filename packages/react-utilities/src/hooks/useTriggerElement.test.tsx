@@ -10,8 +10,7 @@ type TestTriggerProps = React.HTMLAttributes<unknown> & {
 
 const TestTrigger = React.forwardRef<unknown, TestTriggerProps>((props, ref) => {
   const { children, onCustom, ...rest } = props;
-
-  return useTriggerElement({
+  const element = useTriggerElement({
     children,
     ref,
     outerProps: rest,
@@ -20,6 +19,8 @@ const TestTrigger = React.forwardRef<unknown, TestTriggerProps>((props, ref) => 
       role: 'button',
     },
   });
+
+  return <>{element}</>;
 });
 
 describe('useTriggerElement', () => {

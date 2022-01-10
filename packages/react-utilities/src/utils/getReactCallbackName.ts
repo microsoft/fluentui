@@ -15,7 +15,12 @@ interface ReactSyntheticEvent extends React.SyntheticEvent<unknown> {
   };
 }
 
-export type ReactCallbackName = keyof Omit<React.DOMAttributes<unknown>, 'dangerouslySetInnerHTML' | 'children'>;
+type NonUndefined<A> = A extends undefined ? never : A;
+type FunctionKeys<T extends object> = {
+  [K in keyof T]-?: NonUndefined<T[K]> extends Function ? K : never;
+}[keyof T];
+
+export type ReactCallbackName = FunctionKeys<React.DOMAttributes<unknown>>;
 
 /**
  * React.SyntheticEvent contains name of a callback that should be fired, this function returns it.
