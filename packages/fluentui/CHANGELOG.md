@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixes
 - Fix `ChatMessage` to use chat context as default value when user prop is explicitly undefined @yuanboxue-amber ([#21189](https://github.com/microsoft/fluentui/pull/21189))
 - bump react-transition-group from 4.3.0 to 4.4.1 @yuanboxue-amber ([#21187](https://github.com/microsoft/fluentui/pull/21187))
+- Fix `Animation` to pass object ref to `Transition` nodeRef @yuanboxue-amber ([#21173](https://github.com/microsoft/fluentui/pull/21173))
 
 
 <!--------------------------------[ v0.60.0 ]------------------------------- -->
