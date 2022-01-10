@@ -54,18 +54,22 @@ export function useTriggerElement<TriggerProps extends React.HTMLProps<unknown>>
     const callbackName = getReactCallbackName(e);
 
     if (callbackName) {
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       childProps[callbackName]?.(e as any);
       overrideProps[callbackName]?.(e as any);
       outerProps[callbackName]?.(e as any);
+      /* eslint-enable @typescript-eslint/no-explicit-any */
     }
   });
   const handleCaptureEvent = useEventCallback((e: React.SyntheticEvent<unknown>) => {
     const callbackName = ((getReactCallbackName(e) + 'Capture') as unknown) as ReactCallbackName;
 
     if (callbackName) {
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       childProps[callbackName]?.(e as any);
       overrideProps[callbackName]?.(e as any);
       outerProps[callbackName]?.(e as any);
+      /* eslint-enable @typescript-eslint/no-explicit-any */
     }
   });
 
