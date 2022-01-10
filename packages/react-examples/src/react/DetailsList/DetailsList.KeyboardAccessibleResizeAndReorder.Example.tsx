@@ -152,10 +152,10 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     if (columnToEdit.current && input.current && detailsList) {
       if (clickHandler.current === RESIZE) {
         const width = input.current;
-        detailsList.updateColumn(columnToEdit.current, width);
+        detailsList.updateColumn(columnToEdit.current, { width: width });
       } else if (clickHandler.current === REORDER) {
         const targetIndex = selection.mode ? input.current + 1 : input.current;
-        detailsList.updateColumn(columnToEdit.current, undefined, targetIndex);
+        detailsList.updateColumn(columnToEdit.current, { newColumnIndex: targetIndex });
       }
     }
 
@@ -200,19 +200,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     // Sort the items.
     const newSortedItems = copyAndSort(sortedItems, column.fieldName!, isSortedDescending);
 
-    // Reset the items and columns to match the state.
-    const sortedColumns = columns.map(col => {
-      col.isSorted = col.key === column.key;
-
-      if (col.isSorted) {
-        col.isSortedDescending = isSortedDescending;
-      }
-
-      return col;
-    });
-
     setSortedItems(newSortedItems);
-    setColumns(sortedColumns);
   };
 
   const onHideContextualMenu = React.useCallback(() => setContextualMenuProps(undefined), []);
