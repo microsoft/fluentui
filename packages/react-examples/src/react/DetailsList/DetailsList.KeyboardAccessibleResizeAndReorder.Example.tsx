@@ -76,37 +76,6 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const onChangeColumnReorderEnabled = (event: React.MouseEvent<HTMLElement>, checked: boolean) =>
     setIsColumnReorderEnabled(checked);
 
-  const getDragDropEvents = (): IDragDropEvents => {
-    return {
-      canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => {
-        return true;
-      },
-      canDrag: (item?: any) => {
-        return true;
-      },
-      onDragEnter: (item?: any, event?: DragEvent) => {
-        // return string is the css classes that will be added to the entering element.
-        return dragEnterClass;
-      },
-      onDragLeave: (item?: any, event?: DragEvent) => {
-        return;
-      },
-      onDrop: (item?: any, event?: DragEvent) => {
-        if (draggedItem) {
-          insertBeforeItem(item);
-        }
-      },
-      onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
-        setDraggedItem(item);
-        setDraggedIndex(itemIndex!);
-      },
-      onDragEnd: (item?: any, event?: DragEvent) => {
-        setDraggedItem(undefined);
-        setDraggedIndex(-1);
-      },
-    };
-  };
-
   const onItemInvoked = (item: IExampleItem) => alert(`Item invoked ${item.name}`);
 
   const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
@@ -115,19 +84,6 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
       return <Link data-selection-invoke={true}>{item[key]}</Link>;
     }
     return String(item[key]);
-  };
-
-  const insertBeforeItem = (item: IExampleItem) => {
-    const draggedItems = selection.isIndexSelected(draggedIndex)
-      ? (selection.getSelection() as IExampleItem[])
-      : [draggedItem!];
-
-    const insertIndex = items.indexOf(item);
-    const listItems = items.filter(itm => draggedItems.indexOf(itm) === -1);
-
-    items.splice(insertIndex, 0, ...draggedItems);
-
-    setItems(listItems);
   };
 
   const resizeColumn = (column: IColumn) => {
@@ -200,14 +156,23 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     // Sort the items.
     const newSortedItems = copyAndSort(sortedItems, column.fieldName!, isSortedDescending);
 
+    columns.map(col => {
+      col.isSorted = col.key === column.key;
+
+      if (col.isSorted) {
+        col.isSortedDescending = isSortedDescending;
+      }
+
+      return col;
+    });
+
     setSortedItems(newSortedItems);
   };
 
   const onHideContextualMenu = React.useCallback(() => setContextualMenuProps(undefined), []);
 
-  const selection = new Selection();
-  const dragDropEvents = getDragDropEvents();
   const [draggedItem, setDraggedItem] = React.useState(undefined);
+  const [selection] = React.useState(new Selection());
   const [draggedIndex, setDraggedIndex] = React.useState(-1);
   const [items, setItems] = React.useState<IExampleItem[]>(createListItems(5, 0));
   const [sortedItems, setSortedItems] = React.useState<IExampleItem[]>(items);
@@ -222,6 +187,55 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const [contextualMenuProps, setContextualMenuProps] = React.useState<IContextualMenuProps | undefined>(undefined);
   const detailsListRef = React.useRef<IDetailsList>(null);
   const input = React.useRef<number | null>(null);
+
+  const insertBeforeItem = React.useCallback(
+    (item: IExampleItem) => {
+      const draggedItems = selection.isIndexSelected(draggedIndex)
+        ? (selection.getSelection() as IExampleItem[])
+        : [draggedItem!];
+
+      const insertIndex = items.indexOf(item);
+      const listItems = items.filter(itm => draggedItems.indexOf(itm) === -1);
+
+      items.splice(insertIndex, 0, ...draggedItems);
+
+      setItems(listItems);
+    },
+    [draggedIndex, draggedItem, items, selection],
+  );
+
+  const getDragDropEvents = React.useCallback((): IDragDropEvents => {
+    return {
+      canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => {
+        return true;
+      },
+      canDrag: (item?: any) => {
+        return true;
+      },
+      onDragEnter: (item?: any, event?: DragEvent) => {
+        // return string is the css classes that will be added to the entering element.
+        return dragEnterClass;
+      },
+      onDragLeave: (item?: any, event?: DragEvent) => {
+        return;
+      },
+      onDrop: (item?: any, event?: DragEvent) => {
+        if (draggedItem) {
+          insertBeforeItem(item);
+        }
+      },
+      onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
+        setDraggedItem(item);
+        setDraggedIndex(itemIndex!);
+      },
+      onDragEnd: (item?: any, event?: DragEvent) => {
+        setDraggedItem(undefined);
+        setDraggedIndex(-1);
+      },
+    };
+  }, [draggedItem, insertBeforeItem]);
+
+  const dragDropEvents = getDragDropEvents();
 
   const resizeDialogContentProps = {
     type: DialogType.normal,
