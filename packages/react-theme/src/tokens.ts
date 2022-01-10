@@ -1,13 +1,4 @@
-// import type { CSSProperties } from 'react';
 import type { Theme } from './types';
-
-// type CustomTokenTypes = {
-//   fontWeightRegular: NonNullable<CSSProperties['fontWeight']>;
-//   fontWeightMedium: NonNullable<CSSProperties['fontWeight']>;
-//   fontWeightSemibold: NonNullable<CSSProperties['fontWeight']>;
-// };
-
-// type Tokens = Omit<Record<keyof Theme, string>, keyof CustomTokenTypes> & CustomTokenTypes;
 
 export const tokens: Record<keyof Theme, string> = {
   // Color tokens
