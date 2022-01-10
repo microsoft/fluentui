@@ -21,7 +21,7 @@ export type UseTriggerElementOptions<TriggerProps> = {
   overrideProps: TriggerProps;
 };
 
-const CAPTURE_CALLBACK_REGEX = /on[A-Z].+Capture/;
+const CAPTURE_CALLBACK_REGEX = /on[A-Z].+Capture$/;
 const CALLBACK_REGEX = /on[A-Z].+/;
 
 /**
