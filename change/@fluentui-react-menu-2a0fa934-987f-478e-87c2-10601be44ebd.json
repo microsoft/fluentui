@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "experiment: Allow `MenuTrigger` to be wrapped by another trigger",
+  "comment": "Allow `MenuTrigger` to be wrapped by another trigger",
   "packageName": "@fluentui/react-menu",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
