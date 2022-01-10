@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add search web component",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

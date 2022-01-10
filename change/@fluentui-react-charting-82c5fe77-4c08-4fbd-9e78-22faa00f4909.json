@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Make last point in line chart focusable even when hidenonactivedots is true. Also change draw order of points so aren't drawn over other lines.",
+  "packageName": "@fluentui/react-charting",
+  "email": "nojittip@microsoft.com",
+  "dependentChangeType": "patch"
+}

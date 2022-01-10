@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChevronDown20Regular, ChevronDown24Regular } from '@fluentui/react-icons';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { useButton } from '../Button/index';
 import type { MenuButtonProps, MenuButtonState } from './MenuButton.types';
@@ -28,7 +28,8 @@ export const useMenuButton = (
 
     menuIcon: resolveShorthand(menuIcon, {
       defaultProps: {
-        children: buttonState.size === 'large' ? <ChevronDown24Regular /> : <ChevronDown20Regular />,
+        children:
+          buttonState.size === 'large' ? <ChevronDownRegular fontSize={24} /> : <ChevronDownRegular fontSize={20} />,
       },
       required: true,
     }),

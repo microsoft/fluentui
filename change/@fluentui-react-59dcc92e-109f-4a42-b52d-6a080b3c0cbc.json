@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Suggestions: add searchForMoreText button to the suggestions listbox.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
