@@ -1,4 +1,5 @@
-import { __styles } from '@fluentui/react-make-styles'; // @ts-ignore
+import { __styles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme'; // @ts-ignore
 
 import color from 'non-existing-color-module';
 
@@ -13,5 +14,4 @@ const styles = __styles(
     d: ['.f1bh81bl{background-color:blue;}', '.fl9q5hc{color:var(--colorBrandStroke1);}'],
   },
 );
-
 console.log(styles);

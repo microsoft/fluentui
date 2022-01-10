@@ -1,4 +1,5 @@
 import { __styles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 
 const styles = __styles(
   {
@@ -10,5 +11,4 @@ const styles = __styles(
     d: ['.fl9q5hc{color:var(--colorBrandStroke1);}'],
   },
 );
-
 console.log(styles);
