@@ -60,11 +60,7 @@ export async function performBrowserTest(publicDirectory: string) {
 
   const url = `http://${config.server_host}:${listenPort}`;
   console.log(`Loading ${url} in puppeteer...`);
-  try {
-    await page.goto(url);
-  } catch (e) {
-    await page.goto(url, { waitUntil: 'networkidle2' });
-  }
+  await page.goto(url);
   console.log('Page loaded');
 
   await page.close();
