@@ -31,7 +31,12 @@ Disabled.parameters = {
   docs: {
     description: {
       story: `A button can be \`disabled\` or \`disabledFocusable\`.
-      \`disabledFocusable\` is used when discoverability of a disabled button using the keyboard and screen reader is important, i.e., when the presence of such button cannot be implied from the presence of another button. For example, a "Increase font size" button implies the presence of a "Decrese font size" button, but the presence of a disabled "Send message" button is not implied by the presence of any other button, thus it should be \`disabledFocusable\`.
+      \`disabledFocusable\` is used when discoverability
+      of a disabled button using the keyboard and screen reader is important, i.e.,
+      when the presence of such button cannot be implied from the presence of another button.
+      For example, a "Increase font size" button implies the presence of a "Decrese font size" button,
+      but the presence of a disabled "Send message" button is not implied by the presence of any other button,
+      thus it should be \`disabledFocusable\`.
               \`disabledFocusable\` is also used in scenarios where it is important to keep a consistent tab order
               for screen reader and keyboard users. The primary example of this pattern is when
               the disabled button is in a menu or a commandbar and is seldom used for standalone buttons.`,
