@@ -77,7 +77,7 @@ export function useTriggerElement<TriggerProps extends React.HTMLProps<unknown>>
     ...outerProps,
     ...overrideProps,
     ...childProps,
-    // Undocumented, but react supports ref cloning through props
+    // Undocumented, but React supports ref cloning through props
     ref: useMergedRefs(childRef, ref),
   });
 
