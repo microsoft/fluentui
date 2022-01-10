@@ -8,7 +8,7 @@ export const Icon = () => (
   <>
     <Menu>
       <MenuTrigger>
-        <MenuButton icon={<CalendarMonthRegular fontSize={24} />}>This is a Menu Button</MenuButton>
+        <MenuButton icon={<CalendarMonthRegular />}>This is a Menu Button</MenuButton>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
@@ -20,7 +20,7 @@ export const Icon = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton icon={<CalendarMonthRegular fontSize={24} />} menuIcon={<FilterRegular fontSize={24} />}>
+        <MenuButton icon={<CalendarMonthRegular />} menuIcon={<FilterRegular />}>
           This is a Menu Button
         </MenuButton>
       </MenuTrigger>
@@ -34,7 +34,7 @@ export const Icon = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton icon={<CalendarMonthRegular fontSize={24} />} />
+        <MenuButton icon={<CalendarMonthRegular />} />
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
