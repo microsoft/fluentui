@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { useAccordionItemContext } from '../AccordionItem/index';
-import { AccordionHeaderExpandIcon } from './AccordionHeaderExpandIcon';
 import { useARIAButton } from '@fluentui/react-aria';
-import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
+import type {
+  AccordionHeaderProps,
+  AccordionHeaderState,
+  AccordionHeaderSlots,
+  AccordionHeaderContextValue,
+} from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
+import { ChevronRightRegular } from '@fluentui/react-icons';
 
 /**
  * Const listing which props are shorthand props.
@@ -54,7 +59,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     components: {
       root: 'div',
       button: 'button',
-      expandIcon: AccordionHeaderExpandIcon,
+      expandIcon: 'span',
       icon: 'div',
       children: 'div',
     },
@@ -67,6 +72,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     expandIcon: resolveShorthand(expandIcon, {
       required: true,
       defaultProps: {
+        children: <ChevronRightRegular transform={`rotate(${mapStateToRotation({ open, expandIconPosition })})`} />,
         'aria-hidden': true,
       },
     }),
@@ -86,3 +92,16 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     }),
   };
 };
+
+function mapStateToRotation({
+  open,
+  expandIconPosition,
+}: Pick<AccordionHeaderContextValue, 'open' | 'expandIconPosition'>) {
+  if (open && expandIconPosition === 'end') {
+    return '-90';
+  }
+  if ((!open && expandIconPosition === 'end') || (open && expandIconPosition === 'start')) {
+    return '90';
+  }
+  return '0';
+}

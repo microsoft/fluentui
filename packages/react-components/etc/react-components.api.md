@@ -16,9 +16,7 @@ import { accordionHeaderClassName } from '@fluentui/react-accordion';
 import { AccordionHeaderCommons } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValue } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValues } from '@fluentui/react-accordion';
-import { AccordionHeaderExpandIcon } from '@fluentui/react-accordion';
 import { AccordionHeaderExpandIconPosition } from '@fluentui/react-accordion';
-import { AccordionHeaderExpandIconProps } from '@fluentui/react-accordion';
 import { AccordionHeaderProps } from '@fluentui/react-accordion';
 import { accordionHeaderShorthandProps } from '@fluentui/react-accordion';
 import { AccordionHeaderSize } from '@fluentui/react-accordion';
@@ -429,11 +427,7 @@ export { AccordionHeaderContextValue }
 
 export { AccordionHeaderContextValues }
 
-export { AccordionHeaderExpandIcon }
-
 export { AccordionHeaderExpandIconPosition }
-
-export { AccordionHeaderExpandIconProps }
 
 export { AccordionHeaderProps }
 
