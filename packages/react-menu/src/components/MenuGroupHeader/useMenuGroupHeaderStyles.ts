@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderState } from './MenuGroupHeader.types';
@@ -11,7 +10,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
     paddingLeft: '12px',
     paddingRight: '12px',
-    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightSemibold,
     height: '32px',
     display: 'flex',
     alignItems: 'center',
