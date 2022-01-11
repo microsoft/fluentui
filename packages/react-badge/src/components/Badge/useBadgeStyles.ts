@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import type { BadgeState } from './Badge.types';
@@ -14,7 +13,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
     ...shorthands.borderColor(tokens.colorBrandBackground),
     color: tokens.colorNeutralForegroundOnBrand,
-    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightSemibold,
     ...shorthands.borderWidth(tokens.strokeWidthThin),
     ...shorthands.borderStyle('solid'),
     fontFamily: tokens.fontFamilyBase,
