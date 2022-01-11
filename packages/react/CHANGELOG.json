@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 10 Jan 2022 07:26:30 GMT",
+      "tag": "@fluentui/react_v8.49.2",
+      "version": "8.49.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "8acbdf96615839c45d0a3e22f81ed6b067521275",
+            "comment": "List: when role is removed, remove aria-label as well."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Jan 2022 07:27:47 GMT",
       "tag": "@fluentui/react_v8.49.1",
       "version": "8.49.1",

@@ -209,7 +209,7 @@
     "react-app-polyfill": "2.0.0",
     "react-dom": "16.8.6",
     "react-test-renderer": "16.8.6",
-    "sass-loader": "10.1.1",
+    "sass-loader": "12.4.0",
     "satisfied": "^1.1.1",
     "schema-utils": "3.1.1",
     "semver": "^6.2.0",
