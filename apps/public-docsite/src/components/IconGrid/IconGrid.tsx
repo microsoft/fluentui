@@ -50,6 +50,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
           value={searchQuery}
           onChange={this._onSearchQueryChanged}
           className={styles.searchBox}
+          onClear={this._onSearchQueryCleared}
         />
         <ul className={styles.grid}>{icons.map(this._renderIcon)}</ul>
       </div>
@@ -58,7 +59,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
 
   private _getItems = (): { name: string }[] => {
     const { icons } = this.props;
-    const { searchQuery } = this.state;
+    const { searchQuery = '' } = this.state;
 
     return icons.filter(icon => icon && icon.name && icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
   };
@@ -86,6 +87,13 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
   private _onSearchQueryChanged = (ev, newValue: string): void => {
     this.setState({
       searchQuery: newValue,
+    });
+  };
+
+  private _onSearchQueryCleared = (ev): void => {
+    ev.preventDefault();
+    this.setState({
+      searchQuery: '',
     });
   };
 }
