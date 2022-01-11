@@ -60,6 +60,8 @@ describe('Menu', () => {
       items[1].on = 'hover';
       const menu = mountWithProvider(<Menu items={items} />);
 
+      expect(menu.find('li').at(1).getDOMNode().getAttribute('on')).toBeNull();
+
       expect(menu.find('MenuItem').length).toBe(2);
 
       menu.find('MenuItem').find('a').at(1).simulate('click');
