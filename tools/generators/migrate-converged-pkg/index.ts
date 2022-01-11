@@ -174,7 +174,6 @@ const templates = {
         }
         if (options.platform === 'web') {
           tsConfig.compilerOptions.lib?.push('dom');
-          tsConfig.compilerOptions.types?.push('inline-style-expand-shorthand');
         }
         if (options.hasConformance) {
           tsConfig.exclude.unshift('./src/common/**');
@@ -192,7 +191,7 @@ const templates = {
           compilerOptions: {
             module: 'CommonJS',
             outDir: 'dist',
-            types: ['jest', 'node', 'inline-style-expand-shorthand'],
+            types: ['jest', 'node'],
           } as TsConfig['compilerOptions'],
           include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
         };
