@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuItemCheckbox, MenuPopover } from '../index';
 
 import { Button } from '@fluentui/react-button';
-import { Cut20Regular as CutIcon } from '@fluentui/react-icons';
+import { CutRegular as CutIcon } from '@fluentui/react-icons';
 
 export const AligningWithSelectableItems = () => (
   <Menu hasIcons hasCheckmarks>
@@ -12,7 +12,7 @@ export const AligningWithSelectableItems = () => (
     </MenuTrigger>
     <MenuPopover>
       <MenuList>
-        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+        <MenuItemCheckbox icon={<CutIcon fontSize={20} />} name="edit" value="cut">
           Checkbox item
         </MenuItemCheckbox>
         <MenuItem>Menu item</MenuItem>

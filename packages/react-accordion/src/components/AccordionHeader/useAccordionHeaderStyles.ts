@@ -1,5 +1,6 @@
 import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { AccordionHeaderState } from './AccordionHeader.types';
 
 export const accordionHeaderClassName = 'fui-AccordionHeader';
@@ -19,16 +20,16 @@ const useStyles = makeStyles({
     userSelect: 'none',
     textAlign: 'unset',
   },
-  focusIndicator: theme => createFocusOutlineStyle(theme),
-  root: theme => ({
-    color: theme.colorNeutralForeground1,
-    backgroundColor: theme.colorNeutralBackground1,
+  focusIndicator: createFocusOutlineStyle(),
+  root: {
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.borderRadius('2px'),
-  }),
-  rootDisabled: theme => ({
+  },
+  rootDisabled: {
     backgroundImage: 'none',
-    color: theme.colorNeutralForegroundDisabled,
-  }),
+    color: tokens.colorNeutralForegroundDisabled,
+  },
   rootInline: {
     display: 'inline-block',
   },
@@ -70,22 +71,22 @@ const useStyles = makeStyles({
   iconExpandIconEnd: {
     marginLeft: '10px',
   },
-  children: theme => ({
-    fontSize: theme.fontSizeBase300,
-    fontFamily: theme.fontFamilyBase,
+  children: {
+    fontSize: tokens.fontSizeBase300,
+    fontFamily: tokens.fontFamilyBase,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     ...shorthands.overflow('hidden'),
-  }),
-  childrenSmall: theme => ({
-    fontSize: theme.fontSizeBase200,
-  }),
-  childrenLarge: theme => ({
-    fontSize: theme.fontSizeBase400,
-  }),
-  childrenExtraLarge: theme => ({
-    fontSize: theme.fontSizeBase500,
-  }),
+  },
+  childrenSmall: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  childrenLarge: {
+    fontSize: tokens.fontSizeBase400,
+  },
+  childrenExtraLarge: {
+    fontSize: tokens.fontSizeBase500,
+  },
 });
 
 /** Applies style classnames to slots */

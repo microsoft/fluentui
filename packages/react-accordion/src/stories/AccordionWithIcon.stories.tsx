@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Rocket20Regular as RocketIcon } from '@fluentui/react-icons';
+import { RocketRegular as RocketIcon } from '@fluentui/react-icons';
 
 import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionHeaderProps } from '../index';
 
@@ -27,7 +27,7 @@ export const WithIcon = (args: AccordionHeaderProps) => (
 );
 
 WithIcon.args = {
-  icon: <RocketIcon />,
+  icon: <RocketIcon fontSize={20} />,
 } as AccordionHeaderProps;
 
 WithIcon.parameters = {

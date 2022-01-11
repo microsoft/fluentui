@@ -4,9 +4,9 @@ import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover } from '../i
 
 import { Button } from '@fluentui/react-button';
 import {
-  Cut20Regular as CutIcon,
-  ClipboardPaste20Regular as PasteIcon,
-  Edit20Regular as EditIcon,
+  CutRegular as CutIcon,
+  ClipboardPasteRegular as PasteIcon,
+  EditRegular as EditIcon,
 } from '@fluentui/react-icons';
 
 export const CheckboxItems = () => {
@@ -17,13 +17,13 @@ export const CheckboxItems = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
-          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+          <MenuItemCheckbox icon={<CutIcon fontSize={20} />} name="edit" value="cut">
             Cut
           </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
+          <MenuItemCheckbox icon={<PasteIcon fontSize={20} />} name="edit" value="paste">
             Paste
           </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
+          <MenuItemCheckbox icon={<EditIcon fontSize={20} />} name="edit" value="edit">
             Edit
           </MenuItemCheckbox>
         </MenuList>

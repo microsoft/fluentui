@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 03 Jan 2022 23:32:10 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jan 2022 07:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.49.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.2)
+
+Mon, 10 Jan 2022 07:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.1..@fluentui/react_v8.49.2)
+
+### Patches
+
+- List: when role is removed, remove aria-label as well. ([PR #21176](https://github.com/microsoft/fluentui/pull/21176) by tristan.watanabe@gmail.com)
+
+## [8.49.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.1)
+
+Fri, 07 Jan 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.0..@fluentui/react_v8.49.1)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.3.15 ([PR #21201](https://github.com/microsoft/fluentui/pull/21201) by beachball)
 
 ## [8.49.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.0)
 
