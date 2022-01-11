@@ -6,10 +6,11 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
+import { ShorthandRenderFunction } from '@fluentui/react-utilities';
 
 // @public
 export type OnVisibleChangeData = {
@@ -20,7 +21,21 @@ export type OnVisibleChangeData = {
 export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: ForwardRefComponent<TooltipProps>;
+export const Tooltip: React_2.ForwardRefExoticComponent<Omit<{
+    content?: ShorthandProps<    {
+    as?: "div" | undefined;
+    } & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
+    } & {
+    children?: React_2.ReactNode | ShorthandRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
+    }>;
+    }>;
+}, "root"> & Partial<Omit<TooltipCommons, "relationship">> & Pick<TooltipCommons, "relationship"> & {
+    children?: (React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> & {
+        ref?: React_2.Ref<unknown> | undefined;
+    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | undefined;
+} & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export const tooltipClassName = "fui-Tooltip";
@@ -28,7 +43,6 @@ export const tooltipClassName = "fui-Tooltip";
 // @public
 export type TooltipCommons = {
     appearance?: 'normal' | 'inverted';
-    content: React_2.ReactNode;
     withArrow?: boolean;
     positioning?: PositioningShorthand;
     visible?: boolean;
@@ -39,19 +53,20 @@ export type TooltipCommons = {
 };
 
 // @public
-export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content' | 'relationship'>> & Pick<TooltipCommons, 'content' | 'relationship'>;
+export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
+    children?: (React_2.ReactElement & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: TooltipTriggerProps) => React_2.ReactNode);
+};
 
 // @public
 export type TooltipSlots = {
-    root: Omit<IntrinsicShorthandProps<'div'>, 'children'> & {
-        children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
-            ref?: React_2.Ref<unknown>;
-        }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
-    };
+    content: IntrinsicShorthandProps<'div'>;
 };
 
 // @public
 export type TooltipState = ComponentState<TooltipSlots> & TooltipCommons & {
+    children?: React_2.ReactNode;
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;
@@ -63,7 +78,7 @@ export type TooltipTriggerProps = {
 } & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip_unstable: (props: TooltipProps, ref: React_2.Ref<HTMLDivElement>) => TooltipState;
+export const useTooltip_unstable: (props: TooltipProps, ref: React_2.Ref<HTMLElement>) => TooltipState;
 
 // @public
 export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
