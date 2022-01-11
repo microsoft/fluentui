@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Removing functions from makeStyles.",
+  "comment": "BREAKING: remove functions support from makeStyles()",
   "packageName": "@fluentui/make-styles",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"
