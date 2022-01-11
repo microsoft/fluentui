@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Updating makeStyles declaration based on updated types in @fluentui/make-styles.",
+  "comment": "BREAKING: remove functions support from makeStyles()",
   "packageName": "@fluentui/react-make-styles",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"
