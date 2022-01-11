@@ -2,15 +2,11 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { useAccordionItemContext } from '../AccordionItem/index';
 import { useARIAButton } from '@fluentui/react-aria';
-import type {
-  AccordionHeaderProps,
-  AccordionHeaderState,
-  AccordionHeaderSlots,
-  AccordionHeaderContextValue,
-} from './AccordionHeader.types';
+import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
 import { ChevronRightRegular } from '@fluentui/react-icons';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * Const listing which props are shorthand props.
@@ -40,6 +36,18 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     AccordionContext,
     ctx => !ctx.collapsible && ctx.openItems.length === 1 && open,
   );
+
+  const { dir } = useFluent();
+
+  // Calculate how to rotate the expand icon [>] (ChevronRightRegular)
+  let expandIconRotation: 0 | 90 | -90 | 180;
+  if (expandIconPosition === 'end') {
+    // If expand icon is at the end, the chevron points up [^] when open, and down [v] when closed
+    expandIconRotation = open ? -90 : 90;
+  } else {
+    // Otherwise, the chevron points down [v] when open, and right [>] (or left [<] in RTL) when closed
+    expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
+  }
 
   const buttonShorthand = useARIAButton(button, {
     required: true,
@@ -72,7 +80,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     expandIcon: resolveShorthand(expandIcon, {
       required: true,
       defaultProps: {
-        children: <ChevronRightRegular transform={`rotate(${mapStateToRotation({ open, expandIconPosition })})`} />,
+        children: <ChevronRightRegular transform={`rotate(${expandIconRotation})`} />,
         'aria-hidden': true,
       },
     }),
@@ -92,16 +100,3 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     }),
   };
 };
-
-function mapStateToRotation({
-  open,
-  expandIconPosition,
-}: Pick<AccordionHeaderContextValue, 'open' | 'expandIconPosition'>) {
-  if (open && expandIconPosition === 'end') {
-    return '-90';
-  }
-  if ((!open && expandIconPosition === 'end') || (open && expandIconPosition === 'start')) {
-    return '90';
-  }
-  return '0';
-}
