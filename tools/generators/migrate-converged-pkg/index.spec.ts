@@ -710,6 +710,7 @@ describe('migrate-converged-pkg generator', () => {
       const projectConfig = readProjectConfiguration(tree, config.projectName);
       const paths = {
         e2eRoot: `${projectConfig.root}/e2e`,
+        e2eSupport: `${projectConfig.root}/e2e/support.js`,
         packageJson: `${projectConfig.root}/package.json`,
         tsconfig: {
           main: `${projectConfig.root}/tsconfig.json`,
@@ -771,6 +772,13 @@ describe('migrate-converged-pkg generator', () => {
         include: ['**/*.ts'],
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
+
+      // support.js
+      const supportFile = tree.read(paths.e2eSupport)?.toString('utf-8');
+      expect(supportFile).toMatchInlineSnapshot(`
+        "// workaround for https://github.com/cypress-io/cypress/issues/8599
+        import '@fluentui/scripts/cypress/support';"
+      `);
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
