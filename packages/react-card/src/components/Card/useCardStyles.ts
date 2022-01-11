@@ -1,4 +1,5 @@
 import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import { cardPreviewClassName } from '../CardPreview/index';
 import type { CardState } from './Card.types';
 
@@ -8,21 +9,21 @@ export const cardClassName = 'fui-Card';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     display: 'flex',
     flexDirection: 'column',
     ...shorthands.overflow('hidden'),
 
-    boxShadow: theme.shadow4,
-    color: theme.colorNeutralForeground1,
-    backgroundColor: theme.colorNeutralBackground1,
+    boxShadow: tokens.shadow4,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
 
     // Size: medium
     // TODO: Validate if we should use a token instead + the unit of said token
     // TODO: Explore alternate way of applying padding
     ...shorthands.padding('12px'),
     ...shorthands.gap('12px'),
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     [`> .${cardPreviewClassName}`]: {
       marginLeft: '-12px',
@@ -31,17 +32,17 @@ const useStyles = makeStyles({
         marginTop: '-12px',
       },
     },
-  }),
+  },
 
-  interactive: theme => ({
+  interactive: {
     cursor: 'pointer',
     ':hover': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
     },
     ':active': {
-      backgroundColor: theme.colorNeutralBackground1Pressed,
+      backgroundColor: tokens.colorNeutralBackground1Pressed,
     },
-  }),
+  },
 });
 
 /**

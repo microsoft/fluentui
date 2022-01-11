@@ -3,9 +3,9 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuGroup, MenuDivider, MenuGrou
 
 import { Button } from '@fluentui/react-button';
 import {
-  Cut20Regular as CutIcon,
-  ClipboardPaste20Regular as PasteIcon,
-  Edit20Regular as EditIcon,
+  CutRegular as CutIcon,
+  ClipboardPasteRegular as PasteIcon,
+  EditRegular as EditIcon,
 } from '@fluentui/react-icons';
 
 export const GrouppingItems = () => (
@@ -18,16 +18,16 @@ export const GrouppingItems = () => (
       <MenuList>
         <MenuGroup>
           <MenuGroupHeader>Section header</MenuGroupHeader>
-          <MenuItem icon={<CutIcon />}>Cut</MenuItem>
-          <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
-          <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+          <MenuItem icon={<CutIcon fontSize={20} />}>Cut</MenuItem>
+          <MenuItem icon={<PasteIcon fontSize={20} />}>Paste</MenuItem>
+          <MenuItem icon={<EditIcon fontSize={20} />}>Edit</MenuItem>
         </MenuGroup>
         <MenuDivider />
         <MenuGroup>
           <MenuGroupHeader>Section header</MenuGroupHeader>
-          <MenuItem icon={<CutIcon />}>Cut</MenuItem>
-          <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
-          <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+          <MenuItem icon={<CutIcon fontSize={20} />}>Cut</MenuItem>
+          <MenuItem icon={<PasteIcon fontSize={20} />}>Paste</MenuItem>
+          <MenuItem icon={<EditIcon fontSize={20} />}>Edit</MenuItem>
         </MenuGroup>
       </MenuList>
     </MenuPopover>

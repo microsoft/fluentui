@@ -26,7 +26,6 @@ export {
   useCardStyles,
 } from '@fluentui/react-card';
 export type {
-  CardCommons,
   CardFooterProps,
   CardFooterSlots,
   CardFooterState,

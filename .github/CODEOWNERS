@@ -142,7 +142,7 @@ packages/react-menu/ @microsoft/teams-prg
 packages/react-popover/ @microsoft/teams-prg
 packages/react-portal/ @microsoft/teams-prg
 packages/react-provider/ @microsoft/teams-prg
-packages/react-radio/ @microsoft/cxe-prg
+packages/react-radio/ @microsoft/cxe-red
 packages/react-slider/ @microsoft/cxe-red @khmakoto @ecraig12345
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
 packages/react-text/ @microsoft/cxe-prg

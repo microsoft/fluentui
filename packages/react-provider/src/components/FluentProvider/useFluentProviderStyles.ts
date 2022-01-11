@@ -1,16 +1,18 @@
+import * as React from 'react';
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import type { FluentProviderState } from './FluentProvider.types';
 
 export const fluentProviderClassName = 'fui-FluentProvider';
 
 const useStyles = makeStyles({
-  root: theme => ({
-    color: theme.colorNeutralForeground1,
-    backgroundColor: theme.colorNeutralBackground1,
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase300,
-    fontWeight: theme.fontWeightRegular,
-  }),
+  root: {
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+  },
 });
 
 /** Applies style classnames to slots */

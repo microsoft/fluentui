@@ -2,6 +2,51 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Tue, 11 Jan 2022 07:29:05 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react to v8.49.3",
+            "commit": "d61d7925180bc36f13e83c6512c8f3e1885025a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Jan 2022 07:26:30 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react to v8.49.2",
+            "commit": "ecca467a89869ec2812b160b26a7f68fa69dac10"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Jan 2022 07:27:47 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "perf-test",
+            "comment": "Bump @fluentui/react to v8.49.1",
+            "commit": "8c37bdfa24fecc3eb93eb52e2dbe1c68ac0869f1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jan 2022 23:32:11 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

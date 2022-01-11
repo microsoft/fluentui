@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../index';
 
 import { Button } from '@fluentui/react-button';
-import { ClipboardPaste20Regular as PasteIcon } from '@fluentui/react-icons';
+import { ClipboardPasteRegular as PasteIcon } from '@fluentui/react-icons';
 
 export const AligningWithIcons = () => (
   <Menu hasIcons>
@@ -13,7 +13,7 @@ export const AligningWithIcons = () => (
     <MenuPopover>
       <MenuList>
         <MenuItem>Cut</MenuItem>
-        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<PasteIcon fontSize={20} />}>Paste</MenuItem>
         <MenuItem>Edit</MenuItem>
       </MenuList>
     </MenuPopover>

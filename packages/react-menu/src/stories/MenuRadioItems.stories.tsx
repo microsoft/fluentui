@@ -4,9 +4,9 @@ import { Menu, MenuTrigger, MenuList, MenuItemRadio, MenuPopover } from '../inde
 
 import { Button } from '@fluentui/react-button';
 import {
-  Cut20Regular as CutIcon,
-  ClipboardPaste20Regular as PasteIcon,
-  Edit20Regular as EditIcon,
+  CutRegular as CutIcon,
+  ClipboardPasteRegular as PasteIcon,
+  EditRegular as EditIcon,
 } from '@fluentui/react-icons';
 
 export const RadioItems = () => {
@@ -17,13 +17,13 @@ export const RadioItems = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
-          <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
+          <MenuItemRadio icon={<CutIcon fontSize={20} />} name="font" value="segoe">
             Segoe
           </MenuItemRadio>
-          <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri">
+          <MenuItemRadio icon={<PasteIcon fontSize={20} />} name="font" value="calibri">
             Calibri
           </MenuItemRadio>
-          <MenuItemRadio icon={<EditIcon />} name="font" value="arial">
+          <MenuItemRadio icon={<EditIcon fontSize={20} />} name="font" value="arial">
             Arial
           </MenuItemRadio>
         </MenuList>

@@ -410,6 +410,9 @@ export const teamsLightTheme: Theme;
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
 
 // @public (undocumented)
+export const tokens: Record<keyof Theme, string>;
+
+// @public (undocumented)
 export const webDarkTheme: Theme;
 
 // @public (undocumented)
