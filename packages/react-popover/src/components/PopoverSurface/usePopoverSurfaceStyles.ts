@@ -35,17 +35,17 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundInverted,
   },
 
-  smallPadding: () => ({
+  smallPadding: {
     ...shorthands.padding('12px'),
-  }),
+  },
 
-  mediumPadding: () => ({
+  mediumPadding: {
     ...shorthands.padding('16px'),
-  }),
+  },
 
-  largePadding: () => ({
+  largePadding: {
     ...shorthands.padding('20px'),
-  }),
+  },
 
   smallArrow: createArrowHeightStyles(arrowHeights.small),
   mediumLargeArrow: createArrowHeightStyles(arrowHeights.medium),

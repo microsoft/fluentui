@@ -7,10 +7,10 @@ export const tabListClassName = 'fui-TabList';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     display: 'flex',
     flexDirection: 'row',
-  }),
+  },
   vertical: {
     flexDirection: 'column',
   },
