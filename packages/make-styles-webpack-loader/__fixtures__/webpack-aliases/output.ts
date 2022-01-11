@@ -14,4 +14,5 @@ const styles = __styles(
     d: ['.f1bh81bl{background-color:blue;}', '.fl9q5hc{color:var(--colorBrandStroke1);}'],
   },
 );
+
 console.log(styles);

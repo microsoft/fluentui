@@ -11,4 +11,5 @@ const styles = __styles(
     d: ['.fl9q5hc{color:var(--colorBrandStroke1);}'],
   },
 );
+
 console.log(styles);
