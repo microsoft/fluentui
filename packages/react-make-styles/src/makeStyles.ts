@@ -3,8 +3,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
 import { useRenderer } from './RendererContext';
-import type { MakeStylesOptions, MakeStylesStyleRule } from '@fluentui/make-styles';
-import type { Theme } from '@fluentui/react-theme';
+import type { MakeStylesOptions, MakeStylesStyle } from '@fluentui/make-styles';
 
 function isInsideComponent() {
   try {
@@ -16,7 +15,7 @@ function isInsideComponent() {
   }
 }
 
-export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
+export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyle>) {
   const getStyles = vanillaMakeStyles(stylesBySlots);
 
   if (process.env.NODE_ENV !== 'production') {
