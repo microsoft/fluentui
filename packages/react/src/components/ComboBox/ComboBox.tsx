@@ -477,7 +477,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * {@inheritdoc}
    */
   public focus = (shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void => {
-    if (this.props.disabled === true) {
+    if (this.props.disabled) {
       return;
     }
 
