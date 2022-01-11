@@ -49,7 +49,7 @@ type MakeStylesUnsupportedCSSProperties = {
 };
 type MakeStylesCSSProperties = Omit<
   CSS.Properties<MakeStylesCSSValue>,
-  // We have custom definition for "animationName"
+  // We have custom definition for "animationName" and "fontWeight"
   'animationName' | 'fontWeight'
 > &
   MakeStylesUnsupportedCSSProperties;
