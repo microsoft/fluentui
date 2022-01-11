@@ -218,7 +218,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
         /**
          * Handles case when `makeStyles()` is `CallExpression`.
          *
-         * @example module.makeStyles({})
+         * @example makeStyles({})
          */
         if (!state.importDeclarationPath) {
           return;
