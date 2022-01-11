@@ -2,7 +2,6 @@ import * as React from 'react';
 import { mergeArrowOffset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
-  applyTriggerPropsToChildren,
   resolveShorthand,
   useControllableState,
   useId,
@@ -10,6 +9,7 @@ import {
   useIsSSR,
   useMergedRefs,
   useTimeout,
+  useTriggerElement,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
@@ -21,8 +21,9 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
  * before being passed to renderTooltip_unstable.
  *
  * @param props - props from this instance of Tooltip
+ * @param ref - reference to trigger HTMLElement of Tooltip
  */
-export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
+export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
@@ -38,9 +39,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     relationship,
     showDelay = 250,
     hideDelay = 250,
+    visible: visibleProp,
+    ...rest
   } = props;
 
-  const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
+  const [visible, setVisibleInternal] = useControllableState({ state: visibleProp, initialState: false });
   const setVisible = React.useCallback(
     (newVisible: boolean, ev?: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       clearDelayTimeout();
@@ -185,22 +188,13 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   state.content.onPointerEnter = useMergedCallbacks(state.content.onPointerEnter, clearDelayTimeout);
   state.content.onPointerLeave = useMergedCallbacks(state.content.onPointerLeave, onLeaveTrigger);
 
-  const child = React.isValidElement(children) ? children : undefined;
-
   // The props to add to the trigger element (child)
   const triggerProps: TooltipTriggerProps = {
-    onPointerEnter: useMergedCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
-    onPointerLeave: useMergedCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
-    onFocus: useMergedCallbacks(child?.props?.onFocus, onEnterTrigger),
-    onBlur: useMergedCallbacks(child?.props?.onBlur, onLeaveTrigger),
+    onPointerEnter: onEnterTrigger,
+    onPointerLeave: onLeaveTrigger,
+    onFocus: onEnterTrigger,
+    onBlur: onLeaveTrigger,
   };
-
-  // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-  const childWithRef = child as { ref?: React.Ref<unknown> } | undefined;
-  const childTargetRef = useMergedRefs(childWithRef?.ref, targetRef);
-  if (popperOptions.target === undefined) {
-    triggerProps.ref = childTargetRef;
-  }
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
@@ -219,8 +213,17 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     }
   }
 
-  // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  state.children = applyTriggerPropsToChildren(children, triggerProps);
+  state.children = useTriggerElement({
+    children,
+    ref: useMergedRefs(
+      // If the target prop is not provided, attach targetRef to the trigger element's ref prop
+      popperOptions.target === undefined ? targetRef : undefined,
+      ref,
+    ),
+    outerProps: rest,
+    overrideProps: triggerProps,
+  });
+
   return state;
 };
 
