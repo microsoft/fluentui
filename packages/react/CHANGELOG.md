@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 10 Jan 2022 07:26:30 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jan 2022 07:29:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.49.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.3)
+
+Tue, 11 Jan 2022 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.2..@fluentui/react_v8.49.3)
+
+### Patches
+
+- Suggestions: add searchForMoreText button to the suggestions listbox. ([PR #21199](https://github.com/microsoft/fluentui/pull/21199) by tristan.watanabe@gmail.com)
 
 ## [8.49.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.2)
 

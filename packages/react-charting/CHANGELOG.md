@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 10 Jan 2022 07:26:30 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jan 2022 07:29:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.6.15)
+
+Tue, 11 Jan 2022 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.6.14..@fluentui/react-charting_v5.6.15)
+
+### Patches
+
+- Make last point in line chart focusable even when hidenonactivedots is true. Also change draw order of points so aren't drawn over other lines. ([PR #20640](https://github.com/microsoft/fluentui/pull/20640) by nojittip@microsoft.com)
+- Bump @fluentui/react to v8.49.3 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
 
 ## [5.6.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.6.14)
 

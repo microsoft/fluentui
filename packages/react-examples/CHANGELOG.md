@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 10 Jan 2022 07:26:30 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jan 2022 07:29:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
+
+Tue, 11 Jan 2022 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.34.4..@fluentui/react-examples_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.121 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+- Bump @fluentui/react to v8.49.3 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+- Bump @fluentui/react-cards to v0.200.81 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+- Bump @fluentui/react-charting to v5.6.15 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+- Bump @fluentui/react-docsite-components to v8.3.81 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+- Bump @fluentui/react-experiments to v8.4.15 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+- Bump @fluentui/theme-samples to v8.2.62 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
 
 ## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
 
