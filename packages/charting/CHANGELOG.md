@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 05 Jan 2022 12:29:16 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jan 2022 12:22:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.19.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.9)
+
+Tue, 11 Jan 2022 12:22:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.19.8..@uifabric/charting_v4.19.9)
+
+### Patches
+
+- Make last point in line chart focusable even when hidenonactivedots is true. Also change draw order of points so aren't drawn over other lines. ([PR #21233](https://github.com/microsoft/fluentui/pull/21233) by nojittip@microsoft.com)
 
 ## [4.19.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.8)
 
