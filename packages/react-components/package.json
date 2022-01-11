@@ -39,12 +39,14 @@
     "@fluentui/babel-make-styles": "9.0.0-beta.4"
   },
   "dependencies": {
+    "@fluentui/react": "8.49.0",
     "@fluentui/react-accordion": "9.0.0-beta.5",
     "@fluentui/react-avatar": "9.0.0-beta.4",
     "@fluentui/react-badge": "9.0.0-beta.4",
     "@fluentui/react-button": "9.0.0-beta.5",
     "@fluentui/react-card": "9.0.0-beta.5",
     "@fluentui/react-divider": "9.0.0-beta.4",
+    "@fluentui/react-icons": "2.0.154-beta.5",
     "@fluentui/react-image": "9.0.0-beta.4",
     "@fluentui/react-label": "9.0.0-beta.4",
     "@fluentui/react-link": "9.0.0-beta.5",
