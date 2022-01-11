@@ -273,6 +273,10 @@ const templates = {
     },
   },
   e2e: {
+    support: stripIndents`
+    // workaround for https://github.com/cypress-io/cypress/issues/8599
+    import '@fluentui/scripts/cypress/support';
+    `,
     tsconfig: {
       extends: '../tsconfig.json',
       compilerOptions: {
@@ -709,6 +713,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
   tree.rename(joinPathFragments(options.paths.e2e.rootFolder, 'tsconfig.json'), options.paths.e2e.tsconfig);
 
   writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
+
+  tree.write(options.paths.e2e.support, templates.e2e.support);
 
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
