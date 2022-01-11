@@ -22,7 +22,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/react-theme": "9.0.0-beta.4"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",

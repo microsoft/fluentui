@@ -24,22 +24,22 @@ const pendingTheme = {
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
-  base: theme => ({
+  base: {
     backgroundColor: 'none',
     ...shorthands.borderColor('none'),
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
-    ...shorthands.borderWidth(theme.strokeWidthThin),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
     columnGap: pendingTheme.gap.medium,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
     ...shorthands.padding(pendingTheme.tabPadding.medium),
     position: 'relative',
     ...shorthands.overflow('hidden'),
-  }),
+  },
   horizontal: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -52,11 +52,11 @@ const useRootStyles = makeStyles({
     ...shorthands.padding(pendingTheme.tabPadding.small),
     columnGap: pendingTheme.gap.small,
   },
-  subtle: theme => ({
+  subtle: {
     ':hover': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
     },
-  }),
+  },
 });
 
 /**
@@ -83,10 +83,10 @@ const useFocusStyles = makeStyles({
  * Indicator styles for the root slot when horizontal.
  */
 const useHorizontalIndicatorStyles = makeStyles({
-  base: theme => ({
+  base: {
     ':after': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(theme.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -97,20 +97,20 @@ const useHorizontalIndicatorStyles = makeStyles({
     },
     ':hover': {
       ':after': {
-        backgroundColor: theme.colorNeutralStroke1,
+        backgroundColor: tokens.colorNeutralStroke1,
       },
     },
-  }),
-  selected: theme => ({
+  },
+  selected: {
     ':after': {
-      backgroundColor: theme.colorBrandStroke1,
+      backgroundColor: tokens.colorBrandStroke1,
     },
     ':hover': {
       ':after': {
-        backgroundColor: theme.colorBrandStroke1,
+        backgroundColor: tokens.colorBrandStroke1,
       },
     },
-  }),
+  },
   small: {
     ':after': {
       left: pendingTheme.tabPadding.small,
@@ -123,10 +123,10 @@ const useHorizontalIndicatorStyles = makeStyles({
  * Indicator styles for the root slot when vertical.
  */
 const useVerticalIndicatorStyles = makeStyles({
-  base: theme => ({
+  base: {
     ':before': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(theme.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -137,20 +137,20 @@ const useVerticalIndicatorStyles = makeStyles({
     },
     ':hover': {
       ':before': {
-        backgroundColor: theme.colorNeutralStroke1,
+        backgroundColor: tokens.colorNeutralStroke1,
       },
     },
-  }),
-  selected: theme => ({
+  },
+  selected: {
     ':before': {
-      backgroundColor: theme.colorBrandStroke1,
+      backgroundColor: tokens.colorBrandStroke1,
     },
     ':hover': {
       ':before': {
-        backgroundColor: theme.colorBrandStroke1,
+        backgroundColor: tokens.colorBrandStroke1,
       },
     },
-  }),
+  },
   small: {
     ':before': {
       top: pendingTheme.tabPadding.small,
