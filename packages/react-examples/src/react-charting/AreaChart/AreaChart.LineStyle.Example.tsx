@@ -129,12 +129,10 @@ export class AreaChartLineStyleExample extends React.Component<{}, IAreaChartBas
         color: DefaultPalette.accent,
         opacity: 0.7,
         lineOptions: {
-          strokeWidth: 5,
-          strokeDasharray: 0,
-          strokeDashoffset: 15,
-          strokeLinecap: 'butt',
-          lineBorderWidth: 10,
-          lineBorderColor: 'red',
+          strokeWidth: 15,
+          strokeDasharray: '1',
+          stroke: 'red',
+          opacity: 1,
         },
       },
     ];
@@ -142,6 +140,8 @@ export class AreaChartLineStyleExample extends React.Component<{}, IAreaChartBas
     const chartData: IChartProps = {
       chartTitle: 'Area chart basic example',
       lineChartData: chartPoints,
+      circleData: { stroke: 'red', strokeOpacity: 0.2 },
+      crossLineData: { strokeWidth: 3, stroke: 'red' },
     };
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px`, paddingTop: '50px' };

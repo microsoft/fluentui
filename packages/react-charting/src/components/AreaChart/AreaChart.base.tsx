@@ -9,7 +9,6 @@ import {
   IAccessibilityProps,
   CartesianChart,
   IChartProps,
-  ILineChartLineOptions,
   ICustomizedCalloutData,
   IAreaChartProps,
   IBasestate,
@@ -38,7 +37,6 @@ const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>
 const bisect = bisector((d: any) => d.x).left;
 
 const COMPONENT_NAME = 'AREA CHART';
-const DEFAULT_LINE_STROKE_SIZE = 3;
 
 enum InterceptVisibility {
   show = 'visibility',
@@ -513,6 +511,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
     const points = this.props.data.lineChartData!;
+    const { circleData, crossLineData } = this.props.data;
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
@@ -538,11 +537,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             id={`${index}-line-${this._uniqueIdForGraph}`}
             d={line(singleStackedData)!}
             fill={'transparent'}
-            {...this._getLineDataObject(points[index]!.lineOptions! || {}, this._colors[index])}
+            strokeWidth={3}
+            stroke={this._colors[index]}
             opacity={this._getLineOpacity(points[index]!.legend)}
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
             onMouseOver={this._onRectMouseMove}
+            {...points[index]!.lineOptions}
           />
           <path
             id={`${index}-graph-${this._uniqueIdForGraph}`}
@@ -584,6 +585,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                {...circleData}
               />
             );
           })}
@@ -603,6 +605,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         stroke={lineColor!}
         opacity={0.5}
         visibility={this.state.displayOfLine}
+        {...crossLineData}
       />,
     );
     const classNames = getClassNames(this.props.styles!, {
@@ -630,26 +633,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
     return graph;
-  };
-
-  private _getLineDataObject = (lineOptions: ILineChartLineOptions, color: string) => {
-    const {
-      lineBorderWidth,
-      strokeWidth,
-      strokeLinecap,
-      strokeDasharray,
-      strokeDashoffset,
-      lineBorderColor,
-    } = lineOptions!;
-    const lineBorderWidthVal = lineBorderWidth ? Number.parseFloat(lineBorderWidth!.toString()) : 0;
-    const strokeWidthValue = strokeWidth || DEFAULT_LINE_STROKE_SIZE;
-    return {
-      strokeWidth: Number.parseFloat(strokeWidthValue.toString()) + lineBorderWidthVal,
-      strokeLinecap: strokeLinecap,
-      strokeDasharray: strokeDasharray,
-      strokeDashoffset: strokeDashoffset,
-      stroke: lineBorderColor || color,
-    };
   };
 
   private _getCircleRadius = (xDataPoint: number): number => {

@@ -1,3 +1,4 @@
+import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
 import * as d3Sankey from 'd3-sankey';
 export interface IBasestate {
@@ -367,6 +368,16 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   SankeyChartData?: ISankeyChartData;
+
+  /**
+   * data for the points in the line chart
+   */
+  circleData?: SVGProps<SVGCircleElement>;
+
+  /**
+   * data for the points in the line chart
+   */
+  crossLineData?: SVGProps<SVGLineElement>;
 }
 
 export interface ISankeyChartData {
