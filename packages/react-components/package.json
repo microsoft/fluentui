@@ -22,9 +22,12 @@
     "start": "yarn storybook",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-components/src && yarn docs",
-    "storybook": "start-storybook --port 3000 -s ./public",
+    "prestorybook": "yarn prepare-storybook-local-build",
+    "storybook": "start-storybook --port 3000 -s ./public --no-manager-cache",
+    "prestorybook:docs": "yarn prepare-storybook-local-build",
     "storybook:docs": "start-storybook --port 3000 -s ./public --docs --no-manager-cache",
     "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
+    "prepare-storybook-local-build": "lage build --to @fluentui/babel-make-styles @fluentui/react-storybook-addon",
     "test": "jest",
     "type-check": "tsc -b tsconfig.json"
   },
