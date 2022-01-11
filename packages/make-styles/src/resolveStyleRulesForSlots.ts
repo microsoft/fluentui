@@ -1,13 +1,5 @@
-import { createCSSVariablesProxy } from './runtime/createCSSVariablesProxy';
 import { resolveStyleRules } from './runtime/resolveStyleRules';
-import {
-  CSSClassesMapBySlot,
-  CSSRulesByBucket,
-  MakeStylesStyle,
-  MakeStylesStyleFunctionRule,
-  StyleBucketName,
-  StylesBySlots,
-} from './types';
+import { CSSClassesMapBySlot, CSSRulesByBucket, MakeStylesStyle, StyleBucketName, StylesBySlots } from './types';
 
 /**
  * Calls resolveStyleRules() for each slot, is also used by build time transform.
@@ -17,21 +9,16 @@ import {
  *
  * @return - A tuple with an object classnames mapping where a key is a slot name and an array with CSS rules
  */
-export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>(
-  stylesBySlots: StylesBySlots<Slots, Tokens>,
+export function resolveStyleRulesForSlots<Slots extends string | number>(
+  stylesBySlots: StylesBySlots<Slots>,
   unstable_cssPriority: number,
 ): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket] {
-  const tokensProxy = createCSSVariablesProxy() as Tokens;
-
   const classesMapBySlot = {} as CSSClassesMapBySlot<Slots>;
   const cssRules: CSSRulesByBucket = {};
 
   // eslint-disable-next-line guard-for-in
   for (const slotName in stylesBySlots) {
-    const slotStyles: MakeStylesStyle =
-      typeof stylesBySlots[slotName] === 'function'
-        ? (stylesBySlots[slotName] as MakeStylesStyleFunctionRule<Tokens>)(tokensProxy)
-        : (stylesBySlots[slotName] as MakeStylesStyle);
+    const slotStyles: MakeStylesStyle = stylesBySlots[slotName];
     const [cssClassMap, cssRulesByBucket] = resolveStyleRules(slotStyles, unstable_cssPriority);
 
     classesMapBySlot[slotName] = cssClassMap;
