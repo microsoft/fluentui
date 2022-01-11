@@ -23,18 +23,13 @@ export const ContentBeforeAfter = () => {
   return (
     <div className={styles.root}>
       <Label htmlFor={beforeId}>Content before</Label>
-      <Input contentBefore={<SearchRegular />} id={beforeId} placeholder="placeholder" />
+      <Input contentBefore={<SearchRegular />} id={beforeId} />
 
       <Label htmlFor={afterId}>Content after</Label>
-      <Input contentAfter={<DismissRegular />} id={afterId} placeholder="placeholder" />
+      <Input contentAfter={<DismissRegular />} id={afterId} />
 
       <Label htmlFor={bothId}>Content before and after</Label>
-      <Input
-        contentBefore={<SearchRegular />}
-        contentAfter={<DismissRegular />}
-        id={bothId}
-        placeholder="placeholder"
-      />
+      <Input contentBefore={<SearchRegular />} contentAfter={<DismissRegular />} id={bothId} />
     </div>
   );
 };
