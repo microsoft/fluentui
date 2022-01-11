@@ -9,6 +9,7 @@ import {
   IAccessibilityProps,
   CartesianChart,
   IChartProps,
+  ILineChartLineOptions,
   ICustomizedCalloutData,
   IAreaChartProps,
   IBasestate,
@@ -37,6 +38,7 @@ const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>
 const bisect = bisector((d: any) => d.x).left;
 
 const COMPONENT_NAME = 'AREA CHART';
+const DEFAULT_LINE_STROKE_SIZE = 3;
 
 enum InterceptVisibility {
   show = 'visibility',
@@ -69,8 +71,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _createSet: (data: IChartProps) => { colors: string[]; stackedInfo: any; calloutPoints: any };
+  private _createSet: (
+    data: IChartProps,
+  ) => { colors: string[]; opacity: number[]; stackedInfo: any; calloutPoints: any };
   private _colors: string[];
+  private _opacity: number[];
   private _uniqueIdForGraph: string;
   private _verticalLineId: string;
   private _circleId: string;
@@ -114,10 +119,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public render(): JSX.Element {
     const { lineChartData, chartTitle } = this.props.data;
-    const { colors, stackedInfo, calloutPoints } = this._createSet(this.props.data);
+    const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
     this._calloutPoints = calloutPoints;
     const isXAxisDateType = getXAxisType(lineChartData!);
     this._colors = colors;
+    this._opacity = opacity;
     this._stackedData = stackedInfo.stackedData;
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
 
@@ -310,12 +316,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const allChartPoints: ILineChartDataPoint[] = [];
     const dataSet: IAreaChartDataSetPoint[] = [];
     const colors: string[] = [];
+    const opacity: number[] = [];
     const calloutPoints = calloutData(points!);
 
     points &&
       points.length &&
       points.forEach((singleChartPoint: ILineChartPoints) => {
         colors.push(singleChartPoint.color);
+        opacity.push(singleChartPoint.opacity || 1);
         allChartPoints.push(...singleChartPoint.data);
       });
 
@@ -352,6 +360,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     return {
       colors,
+      opacity,
       keys,
       stackedInfo,
       calloutPoints,
@@ -529,8 +538,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             id={`${index}-line-${this._uniqueIdForGraph}`}
             d={line(singleStackedData)!}
             fill={'transparent'}
-            strokeWidth={3}
-            stroke={this._colors[index]}
+            {...this._getLineDataObject(points[index]!.lineOptions! || {}, this._colors[index])}
             opacity={this._getLineOpacity(points[index]!.legend)}
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
@@ -540,6 +548,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             id={`${index}-graph-${this._uniqueIdForGraph}`}
             d={area(singleStackedData)!}
             fill={this._colors[index]}
+            opacity={this._opacity[index]}
             fillOpacity={this._getOpacity(points[index]!.legend)}
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
@@ -621,6 +630,26 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
     return graph;
+  };
+
+  private _getLineDataObject = (lineOptions: ILineChartLineOptions, color: string) => {
+    const {
+      lineBorderWidth,
+      strokeWidth,
+      strokeLinecap,
+      strokeDasharray,
+      strokeDashoffset,
+      lineBorderColor,
+    } = lineOptions!;
+    const lineBorderWidthVal = lineBorderWidth ? Number.parseFloat(lineBorderWidth!.toString()) : 0;
+    const strokeWidthValue = strokeWidth || DEFAULT_LINE_STROKE_SIZE;
+    return {
+      strokeWidth: Number.parseFloat(strokeWidthValue.toString()) + lineBorderWidthVal,
+      strokeLinecap: strokeLinecap,
+      strokeDasharray: strokeDasharray,
+      strokeDashoffset: strokeDashoffset,
+      stroke: lineBorderColor || color,
+    };
   };
 
   private _getCircleRadius = (xDataPoint: number): number => {

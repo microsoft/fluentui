@@ -313,6 +313,11 @@ export interface ILineChartPoints {
   color: string;
 
   /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
    * options for the line drawn
    */
   lineOptions?: ILineChartLineOptions;

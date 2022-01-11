@@ -11,11 +11,13 @@ import { AreaChartBasicExample } from './AreaChart.Basic.Example';
 import { AreaChartMultipleExample } from './AreaChart.Multiple.Example';
 import { AreaChartStyledExample } from './AreaChart.Styled.Example';
 import { AreaChartCustomAccessibilityExample } from './AreaChart.CustomAccessibility.Example';
+import { AreaChartLineStyleExample } from './AreaChart.LineStyle.Example';
 
 const AreaChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
 const AreaChartMultipleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Multiple.Example.tsx') as string;
 const AreaChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Styled.Example.tsx') as string;
 const AreaChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.CustomAccessibility.Example.tsx') as string;
+const AreaChartLineStyleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.LineStyle.Example.tsx') as string;
 
 export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -36,6 +38,9 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Area chart custom Accessibility" code={AreaChartCustomAccessibilityExampleCode}>
               <AreaChartCustomAccessibilityExample />
+            </ExampleCard>
+            <ExampleCard title="Area chart Line Style" code={AreaChartLineStyleExampleCode}>
+              <AreaChartLineStyleExample />
             </ExampleCard>
           </div>
         }
