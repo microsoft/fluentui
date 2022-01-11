@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 11 Jan 2022 07:29:05 GMT",
+      "tag": "@fluentui/react_v8.49.3",
+      "version": "8.49.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "7ddd27082b9a097d848cc9babc4fc55af7dccbc6",
+            "comment": "Suggestions: add searchForMoreText button to the suggestions listbox."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Jan 2022 07:26:30 GMT",
       "tag": "@fluentui/react_v8.49.2",
       "version": "8.49.2",

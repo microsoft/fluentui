@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 11 Jan 2022 07:29:05 GMT",
+      "tag": "@fluentui/react-charting_v5.6.15",
+      "version": "5.6.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "nojittip@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "cf32e448e62eeca4158e235cdc0624e4d6b33f19",
+            "comment": "Make last point in line chart focusable even when hidenonactivedots is true. Also change draw order of points so aren't drawn over other lines."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.49.3",
+            "commit": "d61d7925180bc36f13e83c6512c8f3e1885025a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Jan 2022 07:26:30 GMT",
       "tag": "@fluentui/react-charting_v5.6.14",
       "version": "5.6.14",
