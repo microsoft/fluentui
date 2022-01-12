@@ -46,7 +46,7 @@
 **`schema.ts`**
 
 - TypeScript interface that matches schema.json
-- you can use following command to automate the conversion from json:
+- you can use the following command to automate the conversion from json:
   - `npx json-schema-to-typescript -i tools/generators/<generator-name>/schema.json -o tools/generators/<generator-name>/schema.ts`
 
 **`schema.json`**
