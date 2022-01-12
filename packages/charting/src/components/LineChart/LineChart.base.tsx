@@ -479,7 +479,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
   private _createLines(xElement: SVGElement): JSX.Element[] {
     const lines: JSX.Element[] = [];
-    const points: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
@@ -534,7 +533,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const isLegendSelected: boolean =
           this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
 
-        const hideNonActiveDots = activePoint !== circleId && this._points[i].hideNonActiveDots;
+        const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
         pointsForLine.push(
           <path
             id={circleId}
@@ -547,8 +546,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
             onBlur={this._handleMouseOut}
             onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
-            visibility={hideNonActiveDots ? 'hidden' : 'visible'}
-            opacity={isLegendSelected ? 1 : 0.01}
+            opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
             fill={this._getPointFill(lineColor, circleId, j, false)}
             stroke={lineColor}
             strokeWidth={2}
@@ -556,6 +554,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         );
         if (j + 1 === this._points[i].data.length) {
           const lastCircleId = `${circleId}${j}L`;
+          const lastPointHidden = this._points[i].hideNonActiveDots && activePoint !== lastCircleId;
           path = this._getPath(
             this._xAxisScale(x2),
             this._yAxisScale(y2),
@@ -594,8 +593,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               }
               onBlur={this._handleMouseOut}
               onClick={this._onDataPointClick.bind(this, this._points[i].data[j].onDataPointClick)}
-              visibility={hideNonActiveDots ? 'hidden' : 'visible'}
-              opacity={isLegendSelected ? 1 : 0.01}
+              opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
               fill={this._getPointFill(lineColor, lastCircleId, j, true)}
               stroke={lineColor}
               strokeWidth={2}
@@ -684,8 +682,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           }
         }
       }
-      lines.push(...bordersForLine, ...linesForLine);
-      points.push(...pointsForLine);
+      lines.push(...bordersForLine, ...linesForLine, ...pointsForLine);
     }
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -711,7 +708,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       };
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
-    return lines.concat(points);
+    return lines;
   }
 
   private _createColorFillBars = (containerHeight: number) => {

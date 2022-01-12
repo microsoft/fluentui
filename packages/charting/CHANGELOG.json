@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 11 Jan 2022 12:22:43 GMT",
+      "tag": "@uifabric/charting_v4.19.9",
+      "version": "4.19.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make last point in line chart focusable even when hidenonactivedots is true. Also change draw order of points so aren't drawn over other lines.",
+            "author": "nojittip@microsoft.com",
+            "commit": "e93ff154e10385cb9d509059998a802d72dcfde3",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 Jan 2022 12:29:16 GMT",
       "tag": "@uifabric/charting_v4.19.8",
       "version": "4.19.8",
