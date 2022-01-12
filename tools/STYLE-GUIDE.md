@@ -3,6 +3,7 @@
 ## Generators
 
 - generators live in `tools/generators` folder
+- [learn more about generators](https://nx.dev/generators/workspace-generators)
 
 ### Scaffolding
 
@@ -81,6 +82,7 @@ yarn nx workspace-generator workspace-generator
 ## Executors
 
 - executors live in `tools/executors` folder
+- [learn more about executors](https://nx.dev/executors/using-builders)
 
 ### Scaffolding
 
