@@ -248,7 +248,7 @@ export interface ILineChartGap {
   endIndex: number;
 }
 
-export interface ILineChartLineOptions {
+export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
   /**
    * Width of the line/stroke.
    * Overrides the strokeWidth set on ICartesianChartProps level.
@@ -372,12 +372,12 @@ export interface IChartProps {
   /**
    * data for the points in the line chart
    */
-  circleData?: SVGProps<SVGCircleElement>;
+  pointOptions?: SVGProps<SVGCircleElement>;
 
   /**
-   * data for the points in the line chart
+   * data for the dotted line on hovering the point
    */
-  crossLineData?: SVGProps<SVGLineElement>;
+  pointLineOptions?: SVGProps<SVGLineElement>;
 }
 
 export interface ISankeyChartData {

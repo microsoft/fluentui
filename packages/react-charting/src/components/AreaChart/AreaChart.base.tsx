@@ -71,7 +71,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createSet: (
     data: IChartProps,
-  ) => { colors: string[]; opacity: number[]; stackedInfo: any; calloutPoints: any };
+  ) => {
+    colors: string[];
+    opacity: number[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    stackedInfo: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    calloutPoints: any;
+  };
   private _colors: string[];
   private _opacity: number[];
   private _uniqueIdForGraph: string;
@@ -511,7 +518,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
     const points = this.props.data.lineChartData!;
-    const { circleData, crossLineData } = this.props.data;
+    const { pointOptions, pointLineOptions } = this.props.data;
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
@@ -585,7 +592,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
-                {...circleData}
+                {...pointOptions}
               />
             );
           })}
@@ -605,7 +612,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         stroke={lineColor!}
         opacity={0.5}
         visibility={this.state.displayOfLine}
-        {...crossLineData}
+        {...pointLineOptions}
       />,
     );
     const classNames = getClassNames(this.props.styles!, {
