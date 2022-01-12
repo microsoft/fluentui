@@ -4,17 +4,17 @@ import { CompoundButton } from '../../../CompoundButton';
 
 export const Icon = () => (
   <>
-    <CompoundButton secondaryContent="This is the secondary content" icon={<CalendarMonthRegular fontSize={24} />}>
+    <CompoundButton secondaryContent="This is the secondary content" icon={<CalendarMonthRegular />}>
       Text
     </CompoundButton>
     <CompoundButton
       secondaryContent="This is the secondary content"
-      icon={<CalendarMonthRegular fontSize={24} />}
+      icon={<CalendarMonthRegular />}
       iconPosition="after"
     >
       Text
     </CompoundButton>
-    <CompoundButton secondaryContent="This is the secondary content" icon={<CalendarMonthRegular fontSize={24} />} />
+    <CompoundButton secondaryContent="This is the secondary content" icon={<CalendarMonthRegular />} />
   </>
 );
 Icon.parameters = {

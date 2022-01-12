@@ -7,6 +7,9 @@ import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
  */
 export const useMenuDivider = (props: MenuDividerProps, ref: React.Ref<HTMLElement>): MenuDividerState => {
   return {
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       role: 'presentation',
       'aria-hidden': true,

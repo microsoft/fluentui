@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import { menuItemClassName } from '../MenuItem/useMenuItemStyles';
 import type { MenuSplitGroupState } from './MenuSplitGroup.types';
 
@@ -8,7 +9,7 @@ export const menuSplitGroupClassName = 'fui-MenuSplitGroup';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     display: 'flex',
     [`& > .${menuItemClassName}:nth-child(1)`]: {
       width: '100%',
@@ -20,12 +21,12 @@ const useStyles = makeStyles({
       marginLeft: 'auto',
       ':before': {
         content: '""',
-        width: theme.strokeWidthThin,
+        width: tokens.strokeWidthThin,
         height: '24px',
-        backgroundColor: theme.colorNeutralStroke1,
+        backgroundColor: tokens.colorNeutralStroke1,
       },
     },
-  }),
+  },
 });
 
 /**

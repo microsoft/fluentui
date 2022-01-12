@@ -20,7 +20,7 @@ export const Disabled = () => {
         <CompoundButton
           secondaryContent="This is the secondary content"
           appearance="primary"
-          icon={<CalendarMonthRegular fontSize={24} />}
+          icon={<CalendarMonthRegular />}
         >
           Primary
         </CompoundButton>
@@ -28,7 +28,7 @@ export const Disabled = () => {
           secondaryContent="This is the secondary content"
           appearance="primary"
           disabled
-          icon={<CalendarMonthRegular fontSize={24} />}
+          icon={<CalendarMonthRegular />}
         >
           Primary disabled
         </CompoundButton>

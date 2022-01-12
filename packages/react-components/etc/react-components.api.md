@@ -7,41 +7,34 @@
 import { __styles } from '@fluentui/react-make-styles';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassName } from '@fluentui/react-accordion';
-import { AccordionCommons } from '@fluentui/react-accordion';
 import { AccordionContext } from '@fluentui/react-accordion';
 import { AccordionContextValue } from '@fluentui/react-accordion';
 import { AccordionContextValues } from '@fluentui/react-accordion';
 import { AccordionHeader } from '@fluentui/react-accordion';
 import { accordionHeaderClassName } from '@fluentui/react-accordion';
-import { AccordionHeaderCommons } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValue } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValues } from '@fluentui/react-accordion';
 import { AccordionHeaderExpandIconPosition } from '@fluentui/react-accordion';
 import { AccordionHeaderProps } from '@fluentui/react-accordion';
-import { accordionHeaderShorthandProps } from '@fluentui/react-accordion';
 import { AccordionHeaderSize } from '@fluentui/react-accordion';
 import { AccordionHeaderSlots } from '@fluentui/react-accordion';
 import { AccordionHeaderState } from '@fluentui/react-accordion';
 import { AccordionIndex } from '@fluentui/react-accordion';
 import { AccordionItem } from '@fluentui/react-accordion';
 import { accordionItemClassName } from '@fluentui/react-accordion';
-import { AccordionItemCommons } from '@fluentui/react-accordion';
 import { AccordionItemContext } from '@fluentui/react-accordion';
 import { AccordionItemContextValue } from '@fluentui/react-accordion';
 import { AccordionItemContextValues } from '@fluentui/react-accordion';
 import { AccordionItemProps } from '@fluentui/react-accordion';
-import { accordionItemShorthandProps } from '@fluentui/react-accordion';
 import { AccordionItemSlots } from '@fluentui/react-accordion';
 import { AccordionItemState } from '@fluentui/react-accordion';
 import { AccordionItemValue } from '@fluentui/react-accordion';
 import { AccordionPanel } from '@fluentui/react-accordion';
 import { accordionPanelClassName } from '@fluentui/react-accordion';
 import { AccordionPanelProps } from '@fluentui/react-accordion';
-import { accordionPanelShorthandProps } from '@fluentui/react-accordion';
 import { AccordionPanelSlots } from '@fluentui/react-accordion';
 import { AccordionPanelState } from '@fluentui/react-accordion';
 import { AccordionProps } from '@fluentui/react-accordion';
-import { accordionShorthandProps } from '@fluentui/react-accordion';
 import { AccordionSlots } from '@fluentui/react-accordion';
 import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
@@ -50,14 +43,12 @@ import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassName } from '@fluentui/react-avatar';
-import { AvatarCommons } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarState } from '@fluentui/react-avatar';
 import { Badge } from '@fluentui/react-badge';
 import { badgeClassName } from '@fluentui/react-badge';
-import { BadgeCommons } from '@fluentui/react-badge';
 import { BadgeProps } from '@fluentui/react-badge';
 import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
@@ -67,7 +58,6 @@ import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { buttonClassName } from '@fluentui/react-button';
-import { ButtonCommons } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
@@ -82,7 +72,6 @@ import { CompoundButtonSlots } from '@fluentui/react-button';
 import { CompoundButtonState } from '@fluentui/react-button';
 import { CounterBadge } from '@fluentui/react-badge';
 import { counterBadgeClassName } from '@fluentui/react-badge';
-import { CounterBadgeCommons } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
 import { createDarkTheme } from '@fluentui/react-theme';
@@ -94,17 +83,14 @@ import { Display } from '@fluentui/react-text';
 import { displayClassName } from '@fluentui/react-text';
 import { Divider } from '@fluentui/react-divider';
 import { dividerClassName } from '@fluentui/react-divider';
-import { DividerCommons } from '@fluentui/react-divider';
 import { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
 import { DividerState } from '@fluentui/react-divider';
 import { elementContains } from '@fluentui/react-portal';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassName } from '@fluentui/react-provider';
-import { FluentProviderCommons } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
-import { fluentProviderShorthandProps } from '@fluentui/react-provider';
 import { FluentProviderSlots } from '@fluentui/react-provider';
 import { FluentProviderState } from '@fluentui/react-provider';
 import { FontFamilyTokens } from '@fluentui/react-theme';
@@ -114,16 +100,12 @@ import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassName } from '@fluentui/react-image';
-import { ImageCommons } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
-import { imageShorthandProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
 import { Label } from '@fluentui/react-label';
 import { labelClassName } from '@fluentui/react-label';
-import { LabelCommons } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
-import { labelShorthandProps } from '@fluentui/react-label';
 import { LabelSlots } from '@fluentui/react-label';
 import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
@@ -131,7 +113,6 @@ import { largeTitleClassName } from '@fluentui/react-text';
 import { LineHeightTokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
 import { linkClassName } from '@fluentui/react-link';
-import { LinkCommons } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
@@ -180,11 +161,9 @@ import { MenuItemRadioState } from '@fluentui/react-menu';
 import { MenuItemSelectableProps } from '@fluentui/react-menu';
 import { MenuItemSelectableState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
-import { menuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
 import { menuListClassName } from '@fluentui/react-menu';
-import { MenuListCommons } from '@fluentui/react-menu';
 import { MenuListContext } from '@fluentui/react-menu';
 import { MenuListContextValue } from '@fluentui/react-menu';
 import { MenuListContextValues } from '@fluentui/react-menu';
@@ -215,7 +194,6 @@ import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
 import { PartialTheme } from '@fluentui/react-theme';
 import { Popover } from '@fluentui/react-popover';
-import { PopoverCommons } from '@fluentui/react-popover';
 import { PopoverContext } from '@fluentui/react-popover';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { PopoverProps } from '@fluentui/react-popover';
@@ -225,18 +203,15 @@ import { PopoverSurface } from '@fluentui/react-popover';
 import { popoverSurfaceClassName } from '@fluentui/react-popover';
 import { PopoverSurfaceProps } from '@fluentui/react-popover';
 import { PopoverSurfaceSlots } from '@fluentui/react-popover';
-import { popoverSurfaceSlots } from '@fluentui/react-popover';
 import { PopoverSurfaceState } from '@fluentui/react-popover';
 import { PopoverTrigger } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
-import { PortalCommons } from '@fluentui/react-portal';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { presenceBadgeClassName } from '@fluentui/react-badge';
-import { PresenceBadgeCommons } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
@@ -295,7 +270,6 @@ import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
 import { textClassName } from '@fluentui/react-text';
-import { TextCommons } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
@@ -308,12 +282,10 @@ import { Title3 } from '@fluentui/react-text';
 import { title3ClassName } from '@fluentui/react-text';
 import { ToggleButton } from '@fluentui/react-button';
 import { toggleButtonClassName } from '@fluentui/react-button';
-import { ToggleButtonCommons } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { tooltipClassName } from '@fluentui/react-tooltip';
-import { TooltipCommons } from '@fluentui/react-tooltip';
 import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
@@ -409,8 +381,6 @@ export { Accordion }
 
 export { accordionClassName }
 
-export { AccordionCommons }
-
 export { AccordionContext }
 
 export { AccordionContextValue }
@@ -421,8 +391,6 @@ export { AccordionHeader }
 
 export { accordionHeaderClassName }
 
-export { AccordionHeaderCommons }
-
 export { AccordionHeaderContextValue }
 
 export { AccordionHeaderContextValues }
@@ -430,8 +398,6 @@ export { AccordionHeaderContextValues }
 export { AccordionHeaderExpandIconPosition }
 
 export { AccordionHeaderProps }
-
-export { accordionHeaderShorthandProps }
 
 export { AccordionHeaderSize }
 
@@ -445,8 +411,6 @@ export { AccordionItem }
 
 export { accordionItemClassName }
 
-export { AccordionItemCommons }
-
 export { AccordionItemContext }
 
 export { AccordionItemContextValue }
@@ -454,8 +418,6 @@ export { AccordionItemContextValue }
 export { AccordionItemContextValues }
 
 export { AccordionItemProps }
-
-export { accordionItemShorthandProps }
 
 export { AccordionItemSlots }
 
@@ -469,15 +431,11 @@ export { accordionPanelClassName }
 
 export { AccordionPanelProps }
 
-export { accordionPanelShorthandProps }
-
 export { AccordionPanelSlots }
 
 export { AccordionPanelState }
 
 export { AccordionProps }
-
-export { accordionShorthandProps }
 
 export { AccordionSlots }
 
@@ -495,8 +453,6 @@ export { Avatar }
 
 export { avatarClassName }
 
-export { AvatarCommons }
-
 export { AvatarNamedColor }
 
 export { AvatarProps }
@@ -508,8 +464,6 @@ export { AvatarState }
 export { Badge }
 
 export { badgeClassName }
-
-export { BadgeCommons }
 
 export { BadgeProps }
 
@@ -528,8 +482,6 @@ export { BrandVariants }
 export { Button }
 
 export { buttonClassName }
-
-export { ButtonCommons }
 
 export { ButtonProps }
 
@@ -559,8 +511,6 @@ export { CounterBadge }
 
 export { counterBadgeClassName }
 
-export { CounterBadgeCommons }
-
 export { CounterBadgeProps }
 
 export { CounterBadgeState }
@@ -583,8 +533,6 @@ export { Divider }
 
 export { dividerClassName }
 
-export { DividerCommons }
-
 export { DividerProps }
 
 export { DividerSlots }
@@ -597,13 +545,9 @@ export { FluentProvider }
 
 export { fluentProviderClassName }
 
-export { FluentProviderCommons }
-
 export { FluentProviderContextValues }
 
 export { FluentProviderProps }
-
-export { fluentProviderShorthandProps }
 
 export { FluentProviderSlots }
 
@@ -623,11 +567,7 @@ export { Image_2 as Image }
 
 export { imageClassName }
 
-export { ImageCommons }
-
 export { ImageProps }
-
-export { imageShorthandProps }
 
 export { ImageSlots }
 
@@ -637,11 +577,7 @@ export { Label }
 
 export { labelClassName }
 
-export { LabelCommons }
-
 export { LabelProps }
-
-export { labelShorthandProps }
 
 export { LabelSlots }
 
@@ -656,8 +592,6 @@ export { LineHeightTokens }
 export { Link }
 
 export { linkClassName }
-
-export { LinkCommons }
 
 export { LinkProps }
 
@@ -755,15 +689,11 @@ export { MenuItemSelectableState }
 
 export { MenuItemSlots }
 
-export { menuItemSlots }
-
 export { MenuItemState }
 
 export { MenuList }
 
 export { menuListClassName }
-
-export { MenuListCommons }
 
 export { MenuListContext }
 
@@ -825,8 +755,6 @@ export { PartialTheme }
 
 export { Popover }
 
-export { PopoverCommons }
-
 export { PopoverContext }
 
 export { PopoverContextValue }
@@ -845,8 +773,6 @@ export { PopoverSurfaceProps }
 
 export { PopoverSurfaceSlots }
 
-export { popoverSurfaceSlots }
-
 export { PopoverSurfaceState }
 
 export { PopoverTrigger }
@@ -857,8 +783,6 @@ export { PopoverTriggerState }
 
 export { Portal }
 
-export { PortalCommons }
-
 export { PortalProps }
 
 export { PortalState }
@@ -866,8 +790,6 @@ export { PortalState }
 export { PresenceBadge }
 
 export { presenceBadgeClassName }
-
-export { PresenceBadgeCommons }
 
 export { PresenceBadgeProps }
 
@@ -985,8 +907,6 @@ export { Text_2 as Text }
 
 export { textClassName }
 
-export { TextCommons }
-
 export { TextProps }
 
 export { TextSlots }
@@ -1011,8 +931,6 @@ export { ToggleButton }
 
 export { toggleButtonClassName }
 
-export { ToggleButtonCommons }
-
 export { ToggleButtonProps }
 
 export { ToggleButtonState }
@@ -1020,8 +938,6 @@ export { ToggleButtonState }
 export { Tooltip }
 
 export { tooltipClassName }
-
-export { TooltipCommons }
 
 export { TooltipProps }
 

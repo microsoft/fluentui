@@ -89,6 +89,9 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
 
   return {
     inline,
+    components: {
+      root: 'div',
+    },
     root: rootProps,
   };
 };
