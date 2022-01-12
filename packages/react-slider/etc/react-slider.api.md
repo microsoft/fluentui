@@ -47,7 +47,9 @@ export type SliderSlots = {
     root: IntrinsicShorthandProps<'div'>;
     rail: IntrinsicShorthandProps<'div'>;
     thumb: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
+    input: IntrinsicShorthandProps<'input'> & {
+        orient?: 'horizontal' | 'vertical';
+    };
 };
 
 // @public (undocumented)

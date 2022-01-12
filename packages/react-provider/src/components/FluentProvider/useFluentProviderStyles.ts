@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import type { FluentProviderState } from './FluentProvider.types';
@@ -11,7 +10,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
   },
 });
 

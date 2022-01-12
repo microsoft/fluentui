@@ -12,7 +12,6 @@ exports[`Slider renders disabled Slider correctly 1`] = `
       id="slider-1"
       max="10"
       min="0"
-      orient=""
       type="range"
       value="5"
     />
@@ -37,7 +36,6 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
       id="slider-1"
       max="10"
       min="0"
-      orient=""
       type="range"
       value="5"
     />
@@ -62,7 +60,6 @@ exports[`Slider renders horizontal origin Slider correctly 1`] = `
       id="slider-1"
       max="10"
       min="0"
-      orient=""
       type="range"
       value="5"
     />

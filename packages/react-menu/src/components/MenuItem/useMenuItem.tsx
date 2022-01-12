@@ -9,10 +9,7 @@ import {
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
-import {
-  ChevronRight20Regular as ChevronRightIcon,
-  ChevronLeft20Regular as ChevronLeftIcon,
-} from '@fluentui/react-icons';
+import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuContext } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';

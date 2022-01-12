@@ -1,7 +1,8 @@
 import { makeStyles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 
 const styles = makeStyles({
-  root: theme => ({ color: theme.colorBrandStroke1 }),
+  root: { color: tokens.colorBrandStroke1 },
 });
 
 console.log(styles);

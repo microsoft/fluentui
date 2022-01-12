@@ -18,7 +18,21 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
 // @public
-export function createArrowStyles(size?: number): MakeStylesStyle;
+export function createArrowHeightStyles(arrowHeight: number): {
+    width: string;
+    height: string;
+};
+
+// @public
+export function createArrowStyles(options: CreateArrowStylesOptions): MakeStylesStyle;
+
+// @public
+export type CreateArrowStylesOptions = {
+    arrowHeight: number | undefined;
+    borderWidth?: MakeStylesStyle['borderBottomWidth'];
+    borderStyle?: MakeStylesStyle['borderBottomStyle'];
+    borderColor?: MakeStylesStyle['borderBottomColor'];
+};
 
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;

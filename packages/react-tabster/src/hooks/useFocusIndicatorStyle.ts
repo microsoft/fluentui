@@ -1,6 +1,6 @@
-import type { Theme } from '@fluentui/react-theme';
-import type { MakeStylesStyle, MakeStylesStyleRule } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
+import type { MakeStylesStyle } from '@fluentui/react-make-styles';
 
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
 export type FocusOutlineStyleOptions = {
@@ -68,7 +68,6 @@ const defaultOptions: CreateFocusIndicatorStyleRuleOptions = {
  * @returns focus outline styles object for @see makeStyles
  */
 export const createFocusOutlineStyle = (
-  theme: Theme,
   options: {
     style: Partial<FocusOutlineStyleOptions>;
   } & CreateFocusIndicatorStyleRuleOptions = { style: {}, ...defaultOptions },
@@ -77,27 +76,26 @@ export const createFocusOutlineStyle = (
     outlineStyle: 'none',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: getFocusOutlineStyles({
-    outlineColor: theme.colorStrokeFocus2,
-    outlineRadius: theme.borderRadiusMedium,
-    // FIXME: theme.global.strokeWidth.thick causes some weird bugs
+    outlineColor: tokens.colorStrokeFocus2,
+    outlineRadius: tokens.borderRadiusMedium,
+    // FIXME: tokens.strokeWidthThick causes some weird bugs
     outlineWidth: '2px',
     ...options.style,
   }),
 });
 
 /**
- * Creates a style rule for @see makeStyles that includes the necessary selectors for focus.
+ * Creates a style for @see makeStyles that includes the necessary selectors for focus.
  * Should be used only when @see createFocusOutlineStyle does not fit requirements
  *
- * @param rule - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
+ * @param style - styling applied on focus, defaults to @see getDefaultFocusOutlineStyes
  */
 export const createCustomFocusIndicatorStyle = (
-  rule: MakeStylesStyleRule<Theme>,
+  style: MakeStylesStyle,
   options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
-): MakeStylesStyleRule<Theme> => theme => ({
+): MakeStylesStyle => ({
   ':focus-visible': {
     outlineStyle: 'none',
   },
-  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]:
-    typeof rule === 'function' ? rule(theme) : rule,
+  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]: style,
 });
