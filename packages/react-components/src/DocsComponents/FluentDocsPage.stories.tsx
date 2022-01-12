@@ -11,10 +11,15 @@ import {
   Stories,
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@fluentui/react-make-styles';
-
 import { Toc, nameToHash } from './Toc.stories';
 
 const useStyles = makeStyles({
+  divider: {
+    height: '1px',
+    backgroundColor: '#e1dfdd',
+    ...shorthands.border('0px', 'none'),
+    ...shorthands.margin('48px', '0px'),
+  },
   wrapper: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -60,6 +65,7 @@ export const FluentDocsPage = () => {
         <div className={styles.container}>
           <Subtitle />
           <Description />
+          <hr className={styles.divider} />
           <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
             {primaryStory.name}
           </HeaderMdx>

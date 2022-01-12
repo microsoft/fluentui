@@ -1,9 +1,5 @@
 const rootMain = require('../../../.storybook/main');
 const utils = require('./main.utils');
-const path = require('path');
-const fs = require('fs');
-
-const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
@@ -18,7 +14,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     // Should be re-enabled, see https://github.com/microsoft/fluentui/issues/20896
     // '@fluentui/react-storybook-addon'
   ],
-  previewHead: head => head + previewHeadTemplate,
+  previewHead: head => head,
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };
 

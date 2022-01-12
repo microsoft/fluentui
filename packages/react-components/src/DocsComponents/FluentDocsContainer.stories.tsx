@@ -19,6 +19,7 @@ export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ childr
       <FluentProvider theme={selectedTheme?.theme ?? webLightTheme}>
         <FluentDocsHeader storybookGlobals={context.globals} />
       </FluentProvider>
+
       {/** TODO add table of contents */}
       <DocsContainer context={context}>{children}</DocsContainer>
     </>

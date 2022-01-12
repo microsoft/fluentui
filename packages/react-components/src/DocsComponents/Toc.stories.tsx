@@ -2,29 +2,56 @@ import * as React from 'react';
 import { PublishedStoreItem } from '@storybook/client-api';
 import { addons } from '@storybook/addons';
 import { NAVIGATE_URL } from '@storybook/core-events';
-import { makeStyles } from '../index';
+import { makeStyles, shorthands } from '../index';
 
 const useTocStyles = makeStyles({
   root: {
     top: '64px',
     position: 'sticky',
+    marginLeft: '80px',
   },
   heading: {
-    fontSize: '16px',
+    fontSize: '11px',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    marginBottom: '20px',
   },
   ol: {
+    position: 'relative',
     listStyleType: 'none',
     marginLeft: 0,
-    paddingInlineStart: '8px',
-
+    marginTop: 0,
+    paddingInlineStart: '20px',
+    '& li': {
+      marginBottom: '15px',
+      lineHeight: '16px',
+    },
     '& a': {
       textDecorationLine: 'none',
-      color: '#0078d4',
+      color: '#201F1E',
       fontSize: '14px',
-      lineHeight: '24px',
       ':hover': {
-        color: '#106EBE',
+        color: '#201F1E',
       },
+    },
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      left: 0,
+      height: '100%',
+      width: '3px',
+      backgroundColor: '#EDEBE9',
+      ...shorthands.borderRadius('4px'),
+    },
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      left: 0,
+      height: '16px',
+      top: 0,
+      width: '3px',
+      backgroundColor: '#436DCD',
+      ...shorthands.borderRadius('4px'),
     },
   },
 });
