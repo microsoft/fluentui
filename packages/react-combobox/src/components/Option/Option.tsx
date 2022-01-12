@@ -8,11 +8,15 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * Option component
  */
-export const Option: ForwardRefComponent<OptionProps> = React.forwardRef((props, ref) => {
-  const state = useOption(props, ref);
+export const Option: ForwardRefComponent<OptionProps> & { fluentComponentType?: string } = React.forwardRef(
+  (props, ref) => {
+    const state = useOption(props, ref);
 
-  useOptionStyles(state);
-  return renderOption(state);
-});
+    useOptionStyles(state);
+    return renderOption(state);
+  },
+);
+
+Option.fluentComponentType = 'Option';
 
 Option.displayName = 'Option';

@@ -31,7 +31,9 @@ export type ListboxSlots = {
 export type ListboxState = ComponentState<ListboxSlots> & ListboxCommons;
 
 // @public
-const Option_2: ForwardRefComponent<OptionProps>;
+const Option_2: ForwardRefComponent<OptionProps> & {
+    processOption?: Function;
+};
 export { Option_2 as Option }
 
 // @public (undocumented)
@@ -51,8 +53,10 @@ export type OptionSlots = {
 // @public
 export type OptionState = ComponentState<OptionSlots> & OptionCommons;
 
+// Warning: (ae-forgotten-export) The symbol "OptionGroupContextValues" needs to be exported by the entry point index.d.ts
+//
 // @public
-export const renderListbox: (state: ListboxState) => JSX.Element;
+export const renderListbox: (state: ListboxState, contextValues: OptionGroupContextValues) => JSX.Element;
 
 // @public
 export const renderOption: (state: OptionState) => JSX.Element;

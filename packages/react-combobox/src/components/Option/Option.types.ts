@@ -17,4 +17,7 @@ export type OptionProps = ComponentProps<OptionSlots> & OptionCommons;
 /**
  * State used in rendering Option
  */
-export type OptionState = ComponentState<OptionSlots> & OptionCommons;
+export type OptionState = ComponentState<OptionSlots> &
+  OptionCommons & {
+    isActive: boolean;
+  };

@@ -9,6 +9,5 @@ import type { OptionState, OptionSlots } from './Option.types';
 export const renderOption = (state: OptionState) => {
   const { slots, slotProps } = getSlots<OptionSlots>(state, optionShorthandProps);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>;
 };

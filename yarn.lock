@@ -1655,6 +1655,23 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluentui/babel-make-styles@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/babel-make-styles/-/babel-make-styles-9.0.0-beta.2.tgz#e9010d5dc3345483f5c7238d01fb38f0dff32869"
+  integrity sha512-PcosofYrag1enT98UM1R6vB5KSIE5ppuJ3V/gevDo/fyczkxfPLEfu1R6quT2mL6z1q6mgSE/DzWzRHWF5Q5kA==
+  dependencies:
+    "@babel/core" "^7.10.4"
+    "@babel/generator" "^7.12.13"
+    "@babel/helper-plugin-utils" "^7.12.13"
+    "@babel/preset-typescript" "^7.10.4"
+    "@babel/template" "^7.12.13"
+    "@babel/traverse" "^7.12.13"
+    "@fluentui/make-styles" "9.0.0-beta.2"
+    "@linaria/babel-preset" "^3.0.0-beta.13"
+    "@linaria/shaker" "^3.0.0-beta.13"
+    ajv "^8.4.0"
+    tslib "^2.1.0"
+
 "@fluentui/dom-utilities@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@fluentui/dom-utilities/-/dom-utilities-1.1.1.tgz#b0bbab665fe726f245800bb9e7883b1ceb54248b"
@@ -1715,6 +1732,40 @@
     enhanced-resolve "^5.8.2"
     loader-utils "^2.0.0"
     schema-utils "^3.1.1"
+
+"@fluentui/react-make-styles@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-make-styles/-/react-make-styles-9.0.0-beta.2.tgz#a3128abea8bd22754893ba3021e474c742670a86"
+  integrity sha512-CiywBEEledQGgPYG2be9itlukvaz8NrPXwC04yvy/vdw2T5nuT43aEX5Y/oKBZ0A0OMzWV7sEZTENJg0nrFa4g==
+  dependencies:
+    "@fluentui/make-styles" "9.0.0-beta.2"
+    "@fluentui/react-shared-contexts" "9.0.0-beta.2"
+    "@fluentui/react-theme" "9.0.0-beta.2"
+    "@fluentui/react-utilities" "9.0.0-beta.2"
+    tslib "^2.1.0"
+
+"@fluentui/react-shared-contexts@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-shared-contexts/-/react-shared-contexts-9.0.0-beta.2.tgz#bc039a327faff830d5d8b0fb1a6160c386291a7d"
+  integrity sha512-ljN9qUDpb9v/bXkkSCyn34Lv2IPyN3xUPCc0YODeJzzH/bf5V4CRz5wMMu8UguV11hBqDBRlIJs1e1Ak0aAcqg==
+  dependencies:
+    "@fluentui/react-theme" "9.0.0-beta.2"
+    tslib "^2.1.0"
+
+"@fluentui/react-theme@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-theme/-/react-theme-9.0.0-beta.2.tgz#c5c2975afeb0ef589a7b265f23bfbbcae75b9ea1"
+  integrity sha512-ZLTYcOBd4k+YP+YQ0/v7v+eq3U4KuxVFqpb2p9pLQgY0YpXq1hiUoq7VqtQCjMDd9YTcGmNjD4X+yE/8uUGVuQ==
+  dependencies:
+    tslib "^2.1.0"
+
+"@fluentui/react-utilities@9.0.0-beta.2":
+  version "9.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-utilities/-/react-utilities-9.0.0-beta.2.tgz#24389527eb3f0990daede23bcf519348081dd00b"
+  integrity sha512-Oie2hLmWCQdH6dBjSZeFsJmk7GAK7G2msmPeLW1d6hE+YD7dvhmdL+lxKv8oT4UqHhq7yq0/aqgPSY/xdF+KEg==
+  dependencies:
+    "@fluentui/keyboard-keys" "9.0.0-beta.1"
+    tslib "^2.1.0"
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
@@ -2802,6 +2853,21 @@
   resolved "https://registry.yarnpkg.com/@linaria/core/-/core-3.0.0-beta.13.tgz#049c5be5faa67e341e413a0f6b641d5d78d91056"
   integrity sha512-3zEi5plBCOsEzUneRVuQb+2SAx3qaC1dj0FfFAI6zIJQoDWu0dlSwKijMRack7oO9tUWrchfj3OkKQAd1LBdVg==
 
+"@linaria/core@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@linaria/core/-/core-3.0.0-beta.15.tgz#570fab9430e5b4f2677fbb4eaeda66c041030f08"
+  integrity sha512-9sqPCcWIlA1zTck45uNGqrjtnWj5HGa7Lxbaw1ZsCcm6K6WcMVyOqW3OQkMBHuf3OzC50Mzb8z7d7d6Rpg8uFw==
+  dependencies:
+    "@linaria/utils" "^3.0.0-beta.15"
+
+"@linaria/logger@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@linaria/logger/-/logger-3.0.0-beta.15.tgz#be0490e71da8e5e637ad5aaef59b0a021dc4fec3"
+  integrity sha512-tKytEEus47CZ4/7pbgRYD+Por4tH7/5Um2Quof6Qamd7Xj7brhmAPRRoZzYu4pht+S7V9oNL0X4IBSmNIOYRZw==
+  dependencies:
+    debug "^4.1.1"
+    picocolors "^1.0.0"
+
 "@linaria/logger@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@linaria/logger/-/logger-3.0.0-beta.3.tgz#4bb8f0f36567cea7cac16a60fb3474fbfec491a7"
@@ -2815,6 +2881,28 @@
   integrity sha512-SnyHqUf5uKEiP7N7Dd1yK9TEEycqq6qomUiWnoaH1F4VVIeFCOfDE5zGaVl9o4fM1rS0BWkeZZTnzg5ggrjnnA==
   dependencies:
     "@linaria/babel-preset" "^3.0.0-beta.14"
+
+"@linaria/preeval@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@linaria/preeval/-/preeval-3.0.0-beta.15.tgz#dabcfc3e42de95e5521d002d35667fc67d779e3f"
+  integrity sha512-621wPHry4L4YFRdMXE0wxVKsocFL2KC+RECSdc6Oy4MVtMMeTyps671pV27+kQldWIRvp1ZsdhknNMEug+rKdg==
+  dependencies:
+    "@linaria/babel-preset" "^3.0.0-beta.15"
+
+"@linaria/shaker@^3.0.0-beta.13":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@linaria/shaker/-/shaker-3.0.0-beta.15.tgz#8f4835ffe0185afbd14a17dcf4fb6ca042331250"
+  integrity sha512-+PZRf8hM7fO4RiNpVVYUhIXQPPKYxowXYMaiILq/9zGcy2tQ6onqsKaQ71SCXvVrL+gVo6A/R13njOCJRZRTew==
+  dependencies:
+    "@babel/generator" ">=7"
+    "@babel/plugin-transform-runtime" ">=7"
+    "@babel/plugin-transform-template-literals" ">=7"
+    "@babel/preset-env" ">=7"
+    "@linaria/babel-preset" "^3.0.0-beta.15"
+    "@linaria/logger" "^3.0.0-beta.15"
+    "@linaria/preeval" "^3.0.0-beta.15"
+    babel-plugin-transform-react-remove-prop-types "^0.4.24"
+    ts-invariant "^0.9.0"
 
 "@linaria/shaker@^3.0.0-beta.14":
   version "3.0.0-beta.14"
@@ -2830,6 +2918,11 @@
     "@linaria/preeval" "^3.0.0-beta.14"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     ts-invariant "^0.9.0"
+
+"@linaria/utils@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@linaria/utils/-/utils-3.0.0-beta.15.tgz#001d8dacf113c443960651593144e64bf39e995a"
+  integrity sha512-CF0T8ueWjHK8zJT0oqdAq8JgL9a40WCyE5/t6q8WPvC7xRdsrfyUKA7Z8qEsQse2LKESVWJ5cvkkn8J80B6c+A==
 
 "@mdx-js/loader@^1.5.5", "@mdx-js/loader@^1.6.22":
   version "1.6.22"
@@ -21473,6 +21566,11 @@ react-dev-utils@^11.0.3:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
+react-docgen-typescript@^1.16.6:
+  version "1.22.0"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.22.0.tgz#00232c8e8e47f4437cac133b879b3e9437284bee"
+  integrity sha512-MPLbF8vzRwAG3GcjdL+OHQlhgtWsLTXs+7uJiHfEeT3Ur7IsZaNYqRTLQ9sj2nB6M6jylcPCeCmH7qbszJmecg==
+
 react-docgen-typescript@^2.0.0, react-docgen-typescript@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.1.1.tgz#c9f9ccb1fa67e0f4caf3b12f2a07512a201c2dcf"
@@ -22913,6 +23011,13 @@ rsvp@^4.8.4:
   integrity sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==
 
 rtl-css-js@^1.1.3, rtl-css-js@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.15.0.tgz#680ed816e570a9ebccba9e1cd0f202c6a8bb2dc0"
+  integrity sha512-99Cu4wNNIhrI10xxUaABHsdDqzalrSRTie4GeCmbGVuehm4oj+fIy8fTzB+16pmKe8Bv9rl+hxIBez6KxExTew==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+
+rtl-css-js@^1.14.1:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.15.0.tgz#680ed816e570a9ebccba9e1cd0f202c6a8bb2dc0"
   integrity sha512-99Cu4wNNIhrI10xxUaABHsdDqzalrSRTie4GeCmbGVuehm4oj+fIy8fTzB+16pmKe8Bv9rl+hxIBez6KxExTew==

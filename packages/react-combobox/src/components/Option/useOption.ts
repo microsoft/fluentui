@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
+import { useContextSelector } from '@fluentui/react-context-selector';
+// import { OptionGroupContext } from '../../contexts/OptionGroupContext';
+import { ListboxContext } from '../../contexts/ListboxContext';
 import type { OptionProps, OptionSlots, OptionState } from './Option.types';
 
 /**
@@ -20,17 +23,33 @@ export const optionShorthandProps: (keyof OptionSlots)[] = [
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
+  const { registerOption, unRegisterOption, activeId } = useContextSelector(ListboxContext, ctx => ({
+    activeId: ctx.activeId,
+    registerOption: ctx.registerOption,
+    unRegisterOption: ctx.unRegisterOption,
+  }));
+  const { id } = props;
+
+  // register option data with context
+  React.useEffect(() => {
+    // TODO: fix types for id
+    registerOption({ id: id as string, value: 'placeholder' });
+
+    return () => {
+      unRegisterOption(id as string);
+    };
+  }, [registerOption, unRegisterOption, id]);
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add slot types here if needed (div is the default)
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
+      role: 'option',
+      id,
       ...props,
     }),
+    isActive: id === activeId,
   };
 };
