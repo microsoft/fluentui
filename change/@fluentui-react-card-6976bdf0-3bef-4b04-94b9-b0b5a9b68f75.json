@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add new appearance property to allow for different card styles",
+  "packageName": "@fluentui/react-card",
+  "email": "39736248+andrefcdias@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
