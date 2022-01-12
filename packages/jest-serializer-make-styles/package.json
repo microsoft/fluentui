@@ -12,7 +12,7 @@
   "scripts": {
     "build": "just-scripts build --commonjs",
     "lint": "just-scripts lint",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
