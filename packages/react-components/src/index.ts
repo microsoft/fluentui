@@ -20,7 +20,6 @@ export {
   useFluentProvider,
   useFluentProviderContextValues,
   useFluentProviderStyles,
-  useTheme,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
@@ -37,6 +36,7 @@ export {
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
+  tokens,
   webDarkTheme,
   webHighContrastTheme,
   webLightTheme,

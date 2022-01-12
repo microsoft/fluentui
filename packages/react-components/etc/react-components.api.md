@@ -284,6 +284,7 @@ import { ToggleButton } from '@fluentui/react-button';
 import { toggleButtonClassName } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
+import { tokens } from '@fluentui/react-theme';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { tooltipClassName } from '@fluentui/react-tooltip';
 import { TooltipProps } from '@fluentui/react-tooltip';
@@ -366,7 +367,6 @@ import { useSplitButton } from '@fluentui/react-button';
 import { useSplitButtonStyles } from '@fluentui/react-button';
 import { useText } from '@fluentui/react-text';
 import { useTextStyles } from '@fluentui/react-text';
-import { useTheme } from '@fluentui/react-provider';
 import { useToggleButton } from '@fluentui/react-button';
 import { useToggleButtonStyles } from '@fluentui/react-button';
 import { useTooltip } from '@fluentui/react-tooltip';
@@ -935,6 +935,8 @@ export { ToggleButtonProps }
 
 export { ToggleButtonState }
 
+export { tokens }
+
 export { Tooltip }
 
 export { tooltipClassName }
@@ -1098,8 +1100,6 @@ export { useSplitButtonStyles }
 export { useText }
 
 export { useTextStyles }
-
-export { useTheme }
 
 export { useToggleButton }
 
