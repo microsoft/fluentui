@@ -207,6 +207,24 @@ const useStyles = makeStyles({
     alignItems: 'center',
     height: '100%',
   },
+  iconTiny: {
+    fontSize: '6px',
+  },
+  iconExtraSmall: {
+    fontSize: '10px',
+  },
+  iconSmall: {
+    fontSize: '12px',
+  },
+  iconMedium: {
+    fontSize: '12px',
+  },
+  iconLarge: {
+    fontSize: '16px',
+  },
+  iconExtraLarge: {
+    fontSize: '20px',
+  },
 });
 
 /**
@@ -275,7 +293,16 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      styles.icon,
+      state.size === 'tiny' && styles.iconTiny,
+      state.size === 'extra-small' && styles.iconExtraSmall,
+      state.size === 'small' && styles.iconSmall,
+      state.size === 'medium' && styles.iconMedium,
+      state.size === 'large' && styles.iconLarge,
+      state.size === 'extra-large' && styles.iconExtraLarge,
+      state.icon.className,
+    );
   }
 
   return state;
