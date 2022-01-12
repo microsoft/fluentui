@@ -13,7 +13,7 @@ export const AligningWithIcons = () => (
     <MenuPopover>
       <MenuList>
         <MenuItem>Cut</MenuItem>
-        <MenuItem icon={<PasteIcon fontSize={20} />}>Paste</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
         <MenuItem>Edit</MenuItem>
       </MenuList>
     </MenuPopover>
