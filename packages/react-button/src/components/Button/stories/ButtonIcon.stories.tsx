@@ -4,11 +4,11 @@ import { Button } from '../../../Button';
 
 export const Icon = () => (
   <>
-    <Button icon={<CalendarMonthRegular fontSize={24} />}>Text</Button>
-    <Button icon={<CalendarMonthRegular fontSize={24} />} iconPosition="after">
+    <Button icon={<CalendarMonthRegular />}>Text</Button>
+    <Button icon={<CalendarMonthRegular />} iconPosition="after">
       Text
     </Button>
-    <Button icon={<CalendarMonthRegular fontSize={24} />} />
+    <Button icon={<CalendarMonthRegular />} />
   </>
 );
 Icon.parameters = {

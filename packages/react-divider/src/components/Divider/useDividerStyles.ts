@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { mergeClasses, shorthands, makeStyles } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import { DividerState } from './Divider.types';
@@ -21,7 +20,7 @@ const useBaseStyles = makeStyles({
 
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
 
     color: tokens.colorNeutralForeground2,
