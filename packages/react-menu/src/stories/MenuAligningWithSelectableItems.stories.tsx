@@ -12,7 +12,7 @@ export const AligningWithSelectableItems = () => (
     </MenuTrigger>
     <MenuPopover>
       <MenuList>
-        <MenuItemCheckbox icon={<CutIcon fontSize={20} />} name="edit" value="cut">
+        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
           Checkbox item
         </MenuItemCheckbox>
         <MenuItem>Menu item</MenuItem>
