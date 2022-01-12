@@ -25,9 +25,6 @@ export const cardFooterClassName = "fui-CardFooter";
 // @public
 export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
-// @public
-export const cardFooterShorthandProps: Array<keyof CardFooterSlots>;
-
 // @public (undocumented)
 export type CardFooterSlots = {
     root: IntrinsicShorthandProps<'div'>;
@@ -45,9 +42,6 @@ export const cardHeaderClassName = "fui-CardHeader";
 
 // @public
 export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
-
-// @public (undocumented)
-export const cardHeaderShorthandProps: Array<keyof CardHeaderSlots>;
 
 // @public (undocumented)
 export type CardHeaderSlots = {
@@ -70,9 +64,6 @@ export const cardPreviewClassName = "fui-CardPreview";
 
 // @public
 export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
-
-// @public
-export const cardPreviewShorthandProps: Array<keyof CardPreviewSlots>;
 
 // @public (undocumented)
 export type CardPreviewSlots = {

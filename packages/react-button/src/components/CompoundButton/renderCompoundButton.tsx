@@ -6,12 +6,7 @@ import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.
  * Renders a CompoundButton component by passing the state defined props to the appropriate slots.
  */
 export const renderCompoundButton = (state: CompoundButtonState) => {
-  const { slots, slotProps } = getSlots<CompoundButtonSlots>(state, [
-    'root',
-    'contentContainer',
-    'icon',
-    'secondaryContent',
-  ]);
+  const { slots, slotProps } = getSlots<CompoundButtonSlots>(state);
   const { iconOnly, iconPosition } = state;
 
   return (

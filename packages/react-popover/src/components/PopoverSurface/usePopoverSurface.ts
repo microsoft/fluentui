@@ -2,9 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext } from '../../popoverContext';
-import type { PopoverSurfaceProps, PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
-
-export const popoverSurfaceSlots: Array<keyof PopoverSurfaceSlots> = ['root'];
+import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
  * Create the state required to render PopoverSurface.

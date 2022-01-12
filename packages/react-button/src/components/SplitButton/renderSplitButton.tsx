@@ -6,7 +6,7 @@ import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
  * Renders a SplitButton component by passing the state defined props to the appropriate slots.
  */
 export const renderSplitButton = (state: SplitButtonState) => {
-  const { slots, slotProps } = getSlots<SplitButtonSlots>(state, ['root', 'menuButton', 'primaryActionButton']);
+  const { slots, slotProps } = getSlots<SplitButtonSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

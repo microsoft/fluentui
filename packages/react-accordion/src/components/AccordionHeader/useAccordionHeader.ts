@@ -8,17 +8,6 @@ import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
 
 /**
- * Const listing which props are shorthand props.
- */
-export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = [
-  'root',
-  'icon',
-  'button',
-  'children',
-  'expandIcon',
-];
-
-/**
  * Returns the props and state required to render the component
  * @param props - AccordionHeader properties
  * @param ref - reference to root HTMLElement of AccordionHeader

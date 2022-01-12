@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { useSliderState } from './useSliderState';
-import { SliderProps, SliderSlots, SliderState } from './Slider.types';
-
-/**
- * Array of all shorthand properties listed in sliderShorthandProps
- */
-export const sliderShorthandProps: (keyof SliderSlots)[] = ['root', 'input', 'rail', 'thumb'];
+import { SliderProps, SliderState } from './Slider.types';
 
 /**
  * Given user props, returns state and render function for a Slider.
