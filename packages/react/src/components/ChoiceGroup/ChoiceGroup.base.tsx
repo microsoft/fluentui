@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Label } from '../../Label';
 import {
   classNamesFunction,
-  elementContains,
   find,
   getNativeProps,
   divProperties,
@@ -41,13 +40,8 @@ const focusSelectedOption = (options: IChoiceGroupOption[], keyChecked: string |
   }
 };
 
-// Test if focus came from a sibling DOM element
-const focusFromSibling = (evt: React.FocusEvent<HTMLElement>): boolean => {
-  return !!(
-    evt.relatedTarget &&
-    !elementContains(evt.currentTarget, evt.relatedTarget as HTMLElement) &&
-    !elementContains(evt.relatedTarget as HTMLElement, evt.currentTarget)
-  );
+const focusFromFocusTrapZone = (evt: React.FocusEvent<HTMLElement>): boolean => {
+  return !!(evt.relatedTarget && (evt.relatedTarget as HTMLElement)?.dataset.isFocusTrapZoneBumper === 'true');
 };
 
 const useComponentRef = (
@@ -144,7 +138,7 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
   const onRadioFocus = React.useCallback(
     (evt: React.FocusEvent<HTMLElement>) => {
       // Handles scenarios like this bug: https://github.com/microsoft/fluentui/issues/20173
-      if (focusFromSibling(evt)) {
+      if (focusFromFocusTrapZone(evt)) {
         focusSelectedOption(options, keyChecked, id);
       }
     },
