@@ -1,14 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { SpinButtonProps, SpinButtonSlots, SpinButtonState } from './SpinButton.types';
-
-/**
- * Array of all shorthand properties listed in SpinButtonSlots
- */
-export const spinButtonShorthandProps: (keyof SpinButtonSlots)[] = [
-  'root',
-  // TODO add shorthand property names
-];
+import type { SpinButtonProps, SpinButtonState } from './SpinButton.types';
 
 /**
  * Create the state required to render SpinButton.

@@ -1,14 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { DialogProps, DialogSlots, DialogState } from './Dialog.types';
-
-/**
- * Array of all shorthand properties listed in DialogSlots
- */
-export const dialogShorthandProps: (keyof DialogSlots)[] = [
-  'root',
-  // TODO add shorthand property names
-];
+import type { DialogProps, DialogState } from './Dialog.types';
 
 /**
  * Create the state required to render Dialog.

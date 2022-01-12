@@ -15,7 +15,6 @@ export type { RendererProviderProps } from '@fluentui/react-make-styles';
 export {
   FluentProvider,
   fluentProviderClassName,
-  fluentProviderShorthandProps,
   renderFluentProvider,
   useFluent,
   useFluentProvider,
@@ -70,12 +69,8 @@ export {
   AccordionPanel,
   accordionClassName,
   accordionHeaderClassName,
-  accordionHeaderShorthandProps,
   accordionItemClassName,
-  accordionItemShorthandProps,
   accordionPanelClassName,
-  accordionPanelShorthandProps,
-  accordionShorthandProps,
   renderAccordion,
   renderAccordionHeader,
   renderAccordionItem,
@@ -192,23 +187,9 @@ export type {
 } from '@fluentui/react-button';
 export { Divider, dividerClassName, renderDivider, useDivider, useDividerStyles } from '@fluentui/react-divider';
 export type { DividerProps, DividerSlots, DividerState } from '@fluentui/react-divider';
-export {
-  Image,
-  imageClassName,
-  imageShorthandProps,
-  renderImage,
-  useImage,
-  useImageStyles,
-} from '@fluentui/react-image';
+export { Image, imageClassName, renderImage, useImage, useImageStyles } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
-export {
-  Label,
-  labelClassName,
-  labelShorthandProps,
-  renderLabel,
-  useLabel,
-  useLabelStyles,
-} from '@fluentui/react-label';
+export { Label, labelClassName, renderLabel, useLabel, useLabelStyles } from '@fluentui/react-label';
 export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
 export { Link, linkClassName, renderLink, useLink, useLinkState, useLinkStyles } from '@fluentui/react-link';
 export type { LinkProps, LinkSlots, LinkState } from '@fluentui/react-link';
@@ -235,7 +216,6 @@ export {
   menuItemCheckboxClassName,
   menuItemClassName,
   menuItemRadioClassName,
-  menuItemSlots,
   menuListClassName,
   menuPopoverClassName,
   renderMenu,
@@ -326,7 +306,6 @@ export {
   PopoverTrigger,
   arrowHeights,
   popoverSurfaceClassName,
-  popoverSurfaceSlots,
   renderPopover,
   renderPopoverSurface,
   renderPopoverTrigger,

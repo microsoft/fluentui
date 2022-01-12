@@ -4,9 +4,7 @@ import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useThemeStyleTag } from './useThemeStyleTag';
-import type { FluentProviderProps, FluentProviderSlots, FluentProviderState } from './FluentProvider.types';
-
-export const fluentProviderShorthandProps: (keyof FluentProviderSlots)[] = ['root'];
+import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
 /**
  * Create the state required to render FluentProvider.
