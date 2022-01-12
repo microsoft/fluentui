@@ -4,11 +4,11 @@ import { ToggleButton } from '../../../ToggleButton'; // codesandbox-dependency:
 
 export const Icon = () => (
   <>
-    <ToggleButton icon={<CalendarMonthRegular fontSize={24} />}>Text</ToggleButton>
-    <ToggleButton icon={<CalendarMonthRegular fontSize={24} />} iconPosition="after">
+    <ToggleButton icon={<CalendarMonthRegular />}>Text</ToggleButton>
+    <ToggleButton icon={<CalendarMonthRegular />} iconPosition="after">
       Text
     </ToggleButton>
-    <ToggleButton icon={<CalendarMonthRegular fontSize={24} />} />
+    <ToggleButton icon={<CalendarMonthRegular />} />
   </>
 );
 Icon.parameters = {
