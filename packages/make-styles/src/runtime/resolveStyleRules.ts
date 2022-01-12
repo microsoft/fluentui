@@ -13,7 +13,6 @@ import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 import { isObject } from './utils/isObject';
 import { getStyleBucketName } from './getStyleBucketName';
 import { hashClassName } from './utils/hashClassName';
-import { resolveProxyValues } from './createCSSVariablesProxy';
 import { hashPropertyKey } from './utils/hashPropertyKey';
 
 function pushToClassesMap(
@@ -41,7 +40,6 @@ function pushToCSSRules(
 
 function resolveStyleRulesInner(
   styles: MakeStylesStyle,
-  unstable_cssPriority: number = 0,
   pseudo = '',
   media = '',
   support = '',
@@ -67,7 +65,6 @@ function resolveStyleRulesInner(
         support,
         pseudo,
         property,
-        unstable_cssPriority,
       });
 
       const rtlDefinition = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
@@ -80,7 +77,6 @@ function resolveStyleRulesInner(
             pseudo,
             media,
             support,
-            unstable_cssPriority,
           })
         : undefined;
       const rtlCompileOptions: Partial<CompileCSSOptions> | undefined = flippedInRtl
@@ -99,7 +95,6 @@ function resolveStyleRulesInner(
         property,
         support,
         value,
-        unstable_cssPriority,
         ...rtlCompileOptions,
       });
 
@@ -147,7 +142,6 @@ function resolveStyleRulesInner(
 
       resolveStyleRulesInner(
         { animationName: animationNames.join(', ') },
-        unstable_cssPriority,
         pseudo,
         media,
         support,
@@ -159,7 +153,6 @@ function resolveStyleRulesInner(
       if (isNestedSelector(property)) {
         resolveStyleRulesInner(
           value as MakeStylesStyle,
-          unstable_cssPriority,
           pseudo + normalizeNestedProperty(property),
           media,
           support,
@@ -171,7 +164,6 @@ function resolveStyleRulesInner(
 
         resolveStyleRulesInner(
           value as MakeStylesStyle,
-          unstable_cssPriority,
           pseudo,
           combinedMediaQuery,
           support,
@@ -183,7 +175,6 @@ function resolveStyleRulesInner(
 
         resolveStyleRulesInner(
           value as MakeStylesStyle,
-          unstable_cssPriority,
           pseudo,
           media,
           combinedSupportQuery,
@@ -207,13 +198,6 @@ function resolveStyleRulesInner(
  *
  * @internal
  */
-export function resolveStyleRules(
-  styles: MakeStylesStyle,
-  unstable_cssPriority: number = 0,
-): [CSSClassesMap, CSSRulesByBucket] {
-  return resolveStyleRulesInner(
-    // resolveProxyValues() is recursive function and should be evaluated once for a style object
-    resolveProxyValues(styles),
-    unstable_cssPriority,
-  );
+export function resolveStyleRules(styles: MakeStylesStyle): [CSSClassesMap, CSSRulesByBucket] {
+  return resolveStyleRulesInner(styles);
 }
