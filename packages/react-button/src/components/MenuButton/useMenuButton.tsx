@@ -28,8 +28,7 @@ export const useMenuButton = (
 
     menuIcon: resolveShorthand(menuIcon, {
       defaultProps: {
-        children:
-          buttonState.size === 'large' ? <ChevronDownRegular fontSize={24} /> : <ChevronDownRegular fontSize={20} />,
+        children: <ChevronDownRegular />,
       },
       required: true,
     }),

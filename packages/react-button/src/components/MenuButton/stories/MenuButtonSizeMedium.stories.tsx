@@ -22,7 +22,7 @@ export const SizeMedium = () => {
 
       <Menu>
         <MenuTrigger>
-          <MenuButton icon={<CalendarMonthRegular fontSize={24} />} size="medium">
+          <MenuButton icon={<CalendarMonthRegular />} size="medium">
             This is a Menu Button
           </MenuButton>
         </MenuTrigger>
