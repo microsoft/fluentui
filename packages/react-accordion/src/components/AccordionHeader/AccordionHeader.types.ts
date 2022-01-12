@@ -5,7 +5,6 @@ import type {
   IntrinsicShorthandProps,
   ObjectShorthandProps,
 } from '@fluentui/react-utilities';
-import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
 import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
@@ -31,7 +30,7 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: AccordionHeaderExpandIconProps;
+  expandIcon: IntrinsicShorthandProps<'span'>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */

@@ -67,13 +67,7 @@ export type AccordionHeaderContextValues = {
 };
 
 // @public (undocumented)
-export const AccordionHeaderExpandIcon: ForwardRefComponent<AccordionHeaderExpandIconProps>;
-
-// @public (undocumented)
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
-
-// @public (undocumented)
-export type AccordionHeaderExpandIconProps = IntrinsicShorthandProps<'span'>;
 
 // @public (undocumented)
 export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
@@ -85,7 +79,7 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderSlots = {
     root: IntrinsicShorthandProps<'div'>;
     button: ARIAButtonShorthandProps;
-    expandIcon: AccordionHeaderExpandIconProps;
+    expandIcon: IntrinsicShorthandProps<'span'>;
     icon?: IntrinsicShorthandProps<'div'>;
     children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { useAccordionItemContext } from '../AccordionItem/index';
-import { AccordionHeaderExpandIcon } from './AccordionHeaderExpandIcon';
 import { useARIAButton } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
+import { ChevronRightRegular } from '@fluentui/react-icons';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * Returns the props and state required to render the component
@@ -25,6 +26,18 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     ctx => !ctx.collapsible && ctx.openItems.length === 1 && open,
   );
 
+  const { dir } = useFluent();
+
+  // Calculate how to rotate the expand icon [>] (ChevronRightRegular)
+  let expandIconRotation: 0 | 90 | -90 | 180;
+  if (expandIconPosition === 'end') {
+    // If expand icon is at the end, the chevron points up [^] when open, and down [v] when closed
+    expandIconRotation = open ? -90 : 90;
+  } else {
+    // Otherwise, the chevron points down [v] when open, and right [>] (or left [<] in RTL) when closed
+    expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
+  }
+
   const buttonShorthand = useARIAButton(button, {
     required: true,
     defaultProps: {
@@ -43,7 +56,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     components: {
       root: 'div',
       button: 'button',
-      expandIcon: AccordionHeaderExpandIcon,
+      expandIcon: 'span',
       icon: 'div',
       children: 'div',
     },
@@ -56,6 +69,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     expandIcon: resolveShorthand(expandIcon, {
       required: true,
       defaultProps: {
+        children: <ChevronRightRegular transform={`rotate(${expandIconRotation})`} />,
         'aria-hidden': true,
       },
     }),
