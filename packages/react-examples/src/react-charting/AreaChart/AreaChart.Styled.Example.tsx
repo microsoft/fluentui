@@ -94,6 +94,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
         opacity: 0.8,
         lineOptions: {
           strokeWidth: 5,
+          stroke: DefaultPalette.blueDark,
         },
       },
     ];
@@ -101,8 +102,8 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
     const chartData = {
       chartTitle: 'Area chart styled example',
       lineChartData: chartPoints,
-      pointOptions: { radius: 8, strokeWidth: 3, opacity: 1, stroke: DefaultPalette.blueLight },
-      pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: DefaultPalette.blueLight },
+      pointOptions: { radius: 8, strokeWidth: 3, opacity: 1, stroke: DefaultPalette.blueDark },
+      pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: DefaultPalette.blueDark },
     };
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
