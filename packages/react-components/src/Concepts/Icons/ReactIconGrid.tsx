@@ -1,8 +1,9 @@
 import * as React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { FluentIconsProps } from '@fluentui/react-icons';
-import { SearchBox } from '@fluentui/react/lib/SearchBox';
-import { ChoiceGroup, IChoiceGroupOption, IChoiceGroupStyles } from '@fluentui/react/lib/ChoiceGroup';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as ReactIcons from '@fluentui/react-icons';
+import { Input } from '@fluentui/react-input';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -39,41 +40,26 @@ const useStyles = makeStyles({
     },
   }),
 
-  searchBox: () => ({
-    margin: '20px',
+  searchBox: {
     maxWidth: '320px',
-  }),
+  },
+
+  radio: {
+    fontSize: 'small',
+    fontFamily: 'Courier New, Courier, monospace',
+  },
 });
 
 const reactIcons: React.FC<ReactIcons.FluentIconsProps>[] = Object.keys(ReactIcons)
   .map(iconName => ReactIcons[iconName])
   .filter(icon => !!icon && !!icon.displayName);
 
-const options: IChoiceGroupOption[] = [
-  { key: '16', text: '16', value: '16' },
-  { key: '20', text: '20', value: '20' },
-  { key: '24', text: '24', value: '24' },
-  { key: '28', text: '28', value: '28' },
-  { key: '32', text: '32', value: '32' },
-  { key: '48', text: '48', value: '48' },
-  { key: 'All', text: 'All', value: 'All' },
-];
-
-const cstyles: Partial<IChoiceGroupStyles> = {
-  flexContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    gap: '15px',
-  },
-};
-
-const ReactIconGrid = () => {
+export const ReactIconGrid = () => {
   const [search, setSearch] = React.useState('');
   const [size, setSize] = React.useState('');
   const styles = useStyles();
 
-  const _onSearchQueryChanged = (ev?: React.ChangeEvent<HTMLInputElement>) => {
+  const _onSearchQueryChanged = (ev?: React.FormEvent<HTMLInputElement>) => {
     setSearch(ev ? ev.currentTarget.value : '');
   };
 
@@ -103,24 +89,29 @@ const ReactIconGrid = () => {
 
   return (
     <div>
-      <SearchBox
+      <Input
+        type="search"
         placeholder="Search icons"
         value={search}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={_onSearchQueryChanged}
         className={styles.searchBox}
       />
-      <ChoiceGroup
-        label="Sizes"
-        styles={cstyles}
-        defaultSelectedKey="All"
-        options={options}
-        // eslint-disable-next-line react/jsx-no-bind
-        onChange={_filterBySize}
-      />
+      <input type="radio" value={16} name="size" onChange={_filterBySize} />
+      <label className={styles.radio}>16</label>
+      <input type="radio" value={20} name="size" onChange={_filterBySize} />
+      <label className={styles.radio}>20</label>
+      <input type="radio" value={24} name="size" onChange={_filterBySize} />
+      <label className={styles.radio}>24</label>
+      <input type="radio" value={28} name="size" onChange={_filterBySize} />
+      <label className={styles.radio}>28</label>
+      <input type="radio" value={32} name="size" onChange={_filterBySize} />
+      <label className={styles.radio}>32</label>
+      <input type="radio" value={48} name="size" onChange={_filterBySize} />
+      <label className={styles.radio}>48</label>
+      <input type="radio" value="All" name="size" onChange={_filterBySize} />
+      <label className={styles.radio}>All</label>
       <ul className={styles.grid}>{filteredIcons.map(_renderIcon)}</ul>
     </div>
   );
 };
-
-export default ReactIconGrid;
