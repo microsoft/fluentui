@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FontIcon, ISearchBoxProps, SearchBox, Spinner } from '@fluentui/react';
+import { FontIcon, ISearchBoxProps, SearchBox, Spinner, SpinnerSize } from '@fluentui/react';
 import * as stylesImport from './IconGrid.module.scss';
 const styles: any = stylesImport;
 
@@ -97,22 +97,23 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
   }
 
   public render(): JSX.Element {
-    let { searchQuery } = this.state;
-
+    const areIconsLoaded = !!this.state.resolvedIcons;
     const icons = this._getItems();
 
     return (
-      <div>
-        <SearchBox
-          placeholder="Search icons"
-          value={searchQuery}
-          onChange={this._onSearchQueryChanged}
-          className={styles.searchBox}
-        />
-        {icons.length ? (
-          <ul className={styles.grid}>{icons.map(this._renderIcon)}</ul>
+      <div className={styles.root}>
+        {areIconsLoaded ? (
+          <>
+            <SearchBox
+              placeholder="Search icons"
+              value={this.state.searchQuery}
+              onChange={this._onSearchQueryChanged}
+              className={styles.searchBox}
+            />
+            {icons.length ? <ul className={styles.grid}>{icons.map(this._renderIcon)}</ul> : <div>No results</div>}
+          </>
         ) : (
-          <Spinner label="Loading icons..." />
+          <Spinner label="Loading icons..." className={styles.loading} size={SpinnerSize.large} />
         )}
       </div>
     );

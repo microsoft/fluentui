@@ -1,5 +1,13 @@
 @import '../../styles/common';
 
+.root {
+  min-height: 200px;
+}
+
+.loading {
+  margin: 20px 0;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
