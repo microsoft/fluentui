@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 12 Jan 2022 07:32:29 GMT",
+      "tag": "@fluentui/react_v8.49.4",
+      "version": "8.49.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4835e911f807fc921e9a1560405d5e7c4d77d60e",
+            "comment": "Added check for disabled prop"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Jan 2022 07:29:05 GMT",
       "tag": "@fluentui/react_v8.49.3",
       "version": "8.49.3",

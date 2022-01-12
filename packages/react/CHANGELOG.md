@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 11 Jan 2022 07:29:05 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jan 2022 07:32:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.49.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.4)
+
+Wed, 12 Jan 2022 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.3..@fluentui/react_v8.49.4)
+
+### Patches
+
+- Added check for disabled prop ([PR #20973](https://github.com/microsoft/fluentui/pull/20973) by tkrasniqi@microsoft.com)
 
 ## [8.49.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.3)
 
