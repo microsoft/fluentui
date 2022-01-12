@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Clarify readme",
+  "packageName": "@fluentui/react-icons-mdl2-branded",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
