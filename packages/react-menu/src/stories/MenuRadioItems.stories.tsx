@@ -17,13 +17,13 @@ export const RadioItems = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
-          <MenuItemRadio icon={<CutIcon fontSize={20} />} name="font" value="segoe">
+          <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
             Segoe
           </MenuItemRadio>
-          <MenuItemRadio icon={<PasteIcon fontSize={20} />} name="font" value="calibri">
+          <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri">
             Calibri
           </MenuItemRadio>
-          <MenuItemRadio icon={<EditIcon fontSize={20} />} name="font" value="arial">
+          <MenuItemRadio icon={<EditIcon />} name="font" value="arial">
             Arial
           </MenuItemRadio>
         </MenuList>

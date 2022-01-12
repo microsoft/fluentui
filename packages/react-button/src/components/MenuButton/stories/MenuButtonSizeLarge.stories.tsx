@@ -22,7 +22,7 @@ export const SizeLarge = () => {
 
       <Menu>
         <MenuTrigger>
-          <MenuButton icon={<CalendarMonthRegular fontSize={24} />} size="large">
+          <MenuButton icon={<CalendarMonthRegular />} size="large">
             This is a Menu Button
           </MenuButton>
         </MenuTrigger>

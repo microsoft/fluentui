@@ -17,9 +17,9 @@ export const MenuItemsWithIcons = () => (
 
     <MenuPopover>
       <MenuList>
-        <MenuItem icon={<CutIcon fontSize={20} />}>Cut</MenuItem>
-        <MenuItem icon={<PasteIcon fontSize={20} />}>Paste</MenuItem>
-        <MenuItem icon={<EditIcon fontSize={20} />}>Edit</MenuItem>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
       </MenuList>
     </MenuPopover>
   </Menu>

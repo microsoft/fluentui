@@ -24,13 +24,13 @@ export const ControlledCheckboxItems = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
-          <MenuItemCheckbox icon={<CutIcon fontSize={20} />} name="edit" value="cut">
+          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
             Cut
           </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<PasteIcon fontSize={20} />} name="edit" value="paste">
+          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
             Paste
           </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<EditIcon fontSize={20} />} name="edit" value="edit">
+          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
             Edit
           </MenuItemCheckbox>
         </MenuList>

@@ -11,24 +11,24 @@ export const Size = () => {
       <div style={groupStyles}>
         <h4 style={headerStyles}>small</h4>
         <Button size="small">Text</Button>
-        <Button size="small" icon={<CalendarMonthRegular fontSize={24} />}>
+        <Button size="small" icon={<CalendarMonthRegular />}>
           Text
         </Button>
-        <Button size="small" icon={<CalendarMonthRegular fontSize={24} />} />
+        <Button size="small" icon={<CalendarMonthRegular />} />
       </div>
       <div style={groupStyles}>
         <h4 style={headerStyles}>medium</h4>
         <Button>Text</Button>
-        <Button icon={<CalendarMonthRegular fontSize={24} />}>Text</Button>
-        <Button icon={<CalendarMonthRegular fontSize={24} />} />
+        <Button icon={<CalendarMonthRegular />}>Text</Button>
+        <Button icon={<CalendarMonthRegular />} />
       </div>
       <div style={groupStyles}>
         <h4 style={headerStyles}>large</h4>
         <Button size="large">Text</Button>
-        <Button size="large" icon={<CalendarMonthRegular fontSize={24} />}>
+        <Button size="large" icon={<CalendarMonthRegular />}>
           Text
         </Button>
-        <Button size="large" icon={<CalendarMonthRegular fontSize={24} />} />
+        <Button size="large" icon={<CalendarMonthRegular />} />
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 import * as React from 'react';
 import { Tab, TabList } from '../index';
@@ -21,7 +21,7 @@ export const SizeMedium = () => {
     return (
       <>
         <Tab value="tab1">First Tab</Tab>
-        <Tab icon={<CalendarMonth24Regular />} value="tab2">
+        <Tab icon={<CalendarMonthRegular />} value="tab2">
           Second Tab
         </Tab>
         <Tab value="tab3">Third Tab</Tab>
