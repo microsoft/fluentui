@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 07 Jan 2022 07:27:47 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jan 2022 07:32:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.1)
+
+Wed, 12 Jan 2022 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.0..@fluentui/web-components_v2.2.1)
+
+### Patches
+
+- Update tab panel to base type size ([PR #21180](https://github.com/microsoft/fluentui/pull/21180) by 47367562+bheston@users.noreply.github.com)
 
 ## [2.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.0)
 

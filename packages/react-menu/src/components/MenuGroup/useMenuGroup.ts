@@ -9,6 +9,9 @@ export function useMenuGroup(props: MenuGroupProps, ref: React.Ref<HTMLElement>)
   const headerId = useId('menu-group');
 
   return {
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       ref,
       'aria-labelledby': headerId,

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "SearchBox: properly pass the new value to onChange, and only call onChange once",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

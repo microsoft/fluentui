@@ -52,6 +52,7 @@ const useStyles = makeStyles({
   },
   expandIcon: {
     lineHeight: '0',
+    fontSize: '20px',
   },
   expandIconStart: {
     paddingRight: '8px',
@@ -66,7 +67,7 @@ const useStyles = makeStyles({
   },
   icon: {
     marginRight: '8px',
-    marginLeft: '8px',
+    fontSize: '20px',
   },
   iconExpandIconEnd: {
     marginLeft: '10px',
