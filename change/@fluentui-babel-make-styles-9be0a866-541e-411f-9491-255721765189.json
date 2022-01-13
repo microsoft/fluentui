@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "adopt API changes from makeStyles",
+  "comment": "makeStyles: remove \"unstable_cssPriority\"",
   "packageName": "@fluentui/babel-make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
