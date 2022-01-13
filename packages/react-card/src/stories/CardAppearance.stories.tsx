@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { action } from '@storybook/addon-actions';
 import { Body, Caption, Headline } from '@fluentui/react-text';
 import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Title = (props: any) => {
+const Title = (props: { children: React.ReactNode }) => {
   const styles = useStyles();
 
   return (
@@ -73,7 +74,7 @@ export const AppearanceCard = () => {
       </div>
       <div>
         <Title>Filled - Interactive</Title>
-        <SampleCard onClick={() => {}} appearance="filled" />
+        <SampleCard onClick={action('Filled Card clicked')} appearance="filled" />
       </div>
       <div>
         <Title>Filled Alternative</Title>
@@ -81,7 +82,7 @@ export const AppearanceCard = () => {
       </div>
       <div>
         <Title>Filled Alternative - Interactive</Title>
-        <SampleCard onClick={() => {}} appearance="filled-alternative" />
+        <SampleCard onClick={action('Filled Alternative Card clicked')} appearance="filled-alternative" />
       </div>
       <div>
         <Title>Outline</Title>
@@ -89,7 +90,7 @@ export const AppearanceCard = () => {
       </div>
       <div>
         <Title>Outline - Interactive</Title>
-        <SampleCard onClick={() => {}} appearance="outline" />
+        <SampleCard onClick={action('Outline Card clicked')} appearance="outline" />
       </div>
       <div>
         <Title>Subtle</Title>
@@ -97,7 +98,7 @@ export const AppearanceCard = () => {
       </div>
       <div>
         <Title>Subtle - Interactive</Title>
-        <SampleCard onClick={() => {}} appearance="subtle" />
+        <SampleCard onClick={action('Subtle Card clicked')} appearance="subtle" />
       </div>
     </div>
   );
