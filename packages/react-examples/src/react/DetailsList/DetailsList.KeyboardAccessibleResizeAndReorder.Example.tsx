@@ -324,7 +324,10 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         dialogContentProps={clickHandler.current === RESIZE ? resizeDialogContentProps : reorderDialogContentProps}
         modalProps={modalProps}
       >
-        <TextField componentRef={textfieldRef} />
+        <TextField
+          componentRef={textfieldRef}
+          ariaLabel={clickHandler.current === RESIZE ? 'Enter column width' : 'Enter column index '}
+        />
         <DialogFooter>
           <PrimaryButton onClick={confirmDialog} text={clickHandler.current} />
           <DefaultButton onClick={hideDialog} text="Cancel" />
