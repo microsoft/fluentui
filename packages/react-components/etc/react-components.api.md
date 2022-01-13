@@ -14,11 +14,8 @@ import { AccordionHeader } from '@fluentui/react-accordion';
 import { accordionHeaderClassName } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValue } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValues } from '@fluentui/react-accordion';
-import { AccordionHeaderExpandIcon } from '@fluentui/react-accordion';
 import { AccordionHeaderExpandIconPosition } from '@fluentui/react-accordion';
-import { AccordionHeaderExpandIconProps } from '@fluentui/react-accordion';
 import { AccordionHeaderProps } from '@fluentui/react-accordion';
-import { accordionHeaderShorthandProps } from '@fluentui/react-accordion';
 import { AccordionHeaderSize } from '@fluentui/react-accordion';
 import { AccordionHeaderSlots } from '@fluentui/react-accordion';
 import { AccordionHeaderState } from '@fluentui/react-accordion';
@@ -29,18 +26,15 @@ import { AccordionItemContext } from '@fluentui/react-accordion';
 import { AccordionItemContextValue } from '@fluentui/react-accordion';
 import { AccordionItemContextValues } from '@fluentui/react-accordion';
 import { AccordionItemProps } from '@fluentui/react-accordion';
-import { accordionItemShorthandProps } from '@fluentui/react-accordion';
 import { AccordionItemSlots } from '@fluentui/react-accordion';
 import { AccordionItemState } from '@fluentui/react-accordion';
 import { AccordionItemValue } from '@fluentui/react-accordion';
 import { AccordionPanel } from '@fluentui/react-accordion';
 import { accordionPanelClassName } from '@fluentui/react-accordion';
 import { AccordionPanelProps } from '@fluentui/react-accordion';
-import { accordionPanelShorthandProps } from '@fluentui/react-accordion';
 import { AccordionPanelSlots } from '@fluentui/react-accordion';
 import { AccordionPanelState } from '@fluentui/react-accordion';
 import { AccordionProps } from '@fluentui/react-accordion';
-import { accordionShorthandProps } from '@fluentui/react-accordion';
 import { AccordionSlots } from '@fluentui/react-accordion';
 import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
@@ -97,7 +91,6 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassName } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
-import { fluentProviderShorthandProps } from '@fluentui/react-provider';
 import { FluentProviderSlots } from '@fluentui/react-provider';
 import { FluentProviderState } from '@fluentui/react-provider';
 import { FontFamilyTokens } from '@fluentui/react-theme';
@@ -108,13 +101,11 @@ import { headlineClassName } from '@fluentui/react-text';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassName } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
-import { imageShorthandProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
 import { Label } from '@fluentui/react-label';
 import { labelClassName } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
-import { labelShorthandProps } from '@fluentui/react-label';
 import { LabelSlots } from '@fluentui/react-label';
 import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
@@ -170,7 +161,6 @@ import { MenuItemRadioState } from '@fluentui/react-menu';
 import { MenuItemSelectableProps } from '@fluentui/react-menu';
 import { MenuItemSelectableState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
-import { menuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
 import { menuListClassName } from '@fluentui/react-menu';
@@ -213,7 +203,6 @@ import { PopoverSurface } from '@fluentui/react-popover';
 import { popoverSurfaceClassName } from '@fluentui/react-popover';
 import { PopoverSurfaceProps } from '@fluentui/react-popover';
 import { PopoverSurfaceSlots } from '@fluentui/react-popover';
-import { popoverSurfaceSlots } from '@fluentui/react-popover';
 import { PopoverSurfaceState } from '@fluentui/react-popover';
 import { PopoverTrigger } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
@@ -295,6 +284,7 @@ import { ToggleButton } from '@fluentui/react-button';
 import { toggleButtonClassName } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
+import { tokens } from '@fluentui/react-theme';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { tooltipClassName } from '@fluentui/react-tooltip';
 import { TooltipProps } from '@fluentui/react-tooltip';
@@ -377,7 +367,6 @@ import { useSplitButton } from '@fluentui/react-button';
 import { useSplitButtonStyles } from '@fluentui/react-button';
 import { useText } from '@fluentui/react-text';
 import { useTextStyles } from '@fluentui/react-text';
-import { useTheme } from '@fluentui/react-provider';
 import { useToggleButton } from '@fluentui/react-button';
 import { useToggleButtonStyles } from '@fluentui/react-button';
 import { useTooltip } from '@fluentui/react-tooltip';
@@ -406,15 +395,9 @@ export { AccordionHeaderContextValue }
 
 export { AccordionHeaderContextValues }
 
-export { AccordionHeaderExpandIcon }
-
 export { AccordionHeaderExpandIconPosition }
 
-export { AccordionHeaderExpandIconProps }
-
 export { AccordionHeaderProps }
-
-export { accordionHeaderShorthandProps }
 
 export { AccordionHeaderSize }
 
@@ -436,8 +419,6 @@ export { AccordionItemContextValues }
 
 export { AccordionItemProps }
 
-export { accordionItemShorthandProps }
-
 export { AccordionItemSlots }
 
 export { AccordionItemState }
@@ -450,15 +431,11 @@ export { accordionPanelClassName }
 
 export { AccordionPanelProps }
 
-export { accordionPanelShorthandProps }
-
 export { AccordionPanelSlots }
 
 export { AccordionPanelState }
 
 export { AccordionProps }
-
-export { accordionShorthandProps }
 
 export { AccordionSlots }
 
@@ -572,8 +549,6 @@ export { FluentProviderContextValues }
 
 export { FluentProviderProps }
 
-export { fluentProviderShorthandProps }
-
 export { FluentProviderSlots }
 
 export { FluentProviderState }
@@ -594,8 +569,6 @@ export { imageClassName }
 
 export { ImageProps }
 
-export { imageShorthandProps }
-
 export { ImageSlots }
 
 export { ImageState }
@@ -605,8 +578,6 @@ export { Label }
 export { labelClassName }
 
 export { LabelProps }
-
-export { labelShorthandProps }
 
 export { LabelSlots }
 
@@ -718,8 +689,6 @@ export { MenuItemSelectableState }
 
 export { MenuItemSlots }
 
-export { menuItemSlots }
-
 export { MenuItemState }
 
 export { MenuList }
@@ -803,8 +772,6 @@ export { popoverSurfaceClassName }
 export { PopoverSurfaceProps }
 
 export { PopoverSurfaceSlots }
-
-export { popoverSurfaceSlots }
 
 export { PopoverSurfaceState }
 
@@ -967,6 +934,8 @@ export { toggleButtonClassName }
 export { ToggleButtonProps }
 
 export { ToggleButtonState }
+
+export { tokens }
 
 export { Tooltip }
 
@@ -1131,8 +1100,6 @@ export { useSplitButtonStyles }
 export { useText }
 
 export { useTextStyles }
-
-export { useTheme }
 
 export { useToggleButton }
 

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import { tokens } from '@fluentui/react-theme';
 import type { TextState } from './Text.types';
@@ -13,7 +12,7 @@ const useStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
@@ -85,10 +84,10 @@ const useStyles = makeStyles({
     fontFamily: tokens.fontFamilyNumeric,
   },
   weightMedium: {
-    fontWeight: tokens.fontWeightMedium as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightMedium,
   },
   weightSemibold: {
-    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightSemibold,
   },
   alignCenter: {
     textAlign: 'center',

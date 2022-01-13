@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { ImageProps, ImageSlots, ImageState } from './Image.types';
-
-export const imageShorthandProps: Array<keyof ImageSlots> = ['root'];
+import type { ImageProps, ImageState } from './Image.types';
 
 /**
  * Given user props, returns state and render function for an Image.

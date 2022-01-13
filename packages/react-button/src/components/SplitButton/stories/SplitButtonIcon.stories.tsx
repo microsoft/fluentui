@@ -12,7 +12,7 @@ export const Icon = () => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}
-            icon={<CalendarMonthRegular fontSize={24} />}
+            icon={<CalendarMonthRegular />}
           />
         )}
       </MenuTrigger>
@@ -30,8 +30,8 @@ export const Icon = () => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}
-            icon={<CalendarMonthRegular fontSize={24} />}
-            menuIcon={<FilterRegular fontSize={24} />}
+            icon={<CalendarMonthRegular />}
+            menuIcon={<FilterRegular />}
           />
         )}
       </MenuTrigger>
@@ -49,7 +49,7 @@ export const Icon = () => (
           <SplitButton
             menuButton={triggerProps}
             primaryActionButton={'This is a split button'}
-            icon={<CalendarMonthRegular fontSize={24} />}
+            icon={<CalendarMonthRegular />}
           />
         )}
       </MenuTrigger>

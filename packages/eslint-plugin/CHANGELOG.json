@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Thu, 13 Jan 2022 07:30:57 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a9c3d10d957ef651a0f9f43c86e565f18c8edffa",
+            "comment": "Expand ban-imports rule to also support exports, and support regular expressions for names"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Dec 2021 07:31:27 GMT",
       "tag": "@fluentui/eslint-plugin_v1.5.2",
       "version": "1.5.2",

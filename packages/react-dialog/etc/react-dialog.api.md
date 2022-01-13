@@ -22,9 +22,6 @@ export type DialogCommons = {};
 // @public
 export type DialogProps = ComponentProps<DialogSlots> & DialogCommons;
 
-// @public
-export const dialogShorthandProps: (keyof DialogSlots)[];
-
 // @public (undocumented)
 export type DialogSlots = {
     root: IntrinsicShorthandProps<'div'>;
