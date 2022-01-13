@@ -524,7 +524,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
     'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'start-storybook',
+    storybook: 'node ../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
