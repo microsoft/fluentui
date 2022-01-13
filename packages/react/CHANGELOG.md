@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 12 Jan 2022 07:32:29 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jan 2022 07:30:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.49.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.5)
+
+Thu, 13 Jan 2022 07:30:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.4..@fluentui/react_v8.49.5)
+
+### Patches
+
+- SearchBox: properly pass the new value to onChange, and only call onChange once ([PR #21268](https://github.com/microsoft/fluentui/pull/21268) by elcraig@microsoft.com)
 
 ## [8.49.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.4)
 

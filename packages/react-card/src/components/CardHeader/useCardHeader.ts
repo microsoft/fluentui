@@ -1,15 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { CardHeaderProps, CardHeaderSlots, CardHeaderState } from './CardHeader.types';
-
-export const cardHeaderShorthandProps: Array<keyof CardHeaderSlots> = [
-  'root',
-  'image',
-  'content',
-  'header',
-  'description',
-  'action',
-];
+import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
 
 /**
  * Create the state required to render CardHeader.

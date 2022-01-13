@@ -12,19 +12,7 @@ import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
 import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuContext } from '../../contexts/menuContext';
-import type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem.types';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const menuItemSlots: Array<keyof MenuItemSlots> = [
-  'root',
-  'icon',
-  'submenuIndicator',
-  'content',
-  'secondaryContent',
-  'checkmark',
-];
+import type { MenuItemProps, MenuItemState } from './MenuItem.types';
 
 /**
  * Returns the props and state required to render the component

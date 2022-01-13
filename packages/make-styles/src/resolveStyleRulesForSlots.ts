@@ -5,13 +5,11 @@ import { CSSClassesMapBySlot, CSSRulesByBucket, MakeStylesStyle, StyleBucketName
  * Calls resolveStyleRules() for each slot, is also used by build time transform.
  *
  * @param stylesBySlots - An object with makeStyles rules where a key is a slot name
- * @param unstable_cssPriority - Defines priority for selectors of generated CSS rules
  *
  * @return - A tuple with an object classnames mapping where a key is a slot name and an array with CSS rules
  */
 export function resolveStyleRulesForSlots<Slots extends string | number>(
   stylesBySlots: StylesBySlots<Slots>,
-  unstable_cssPriority: number,
 ): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket] {
   const classesMapBySlot = {} as CSSClassesMapBySlot<Slots>;
   const cssRules: CSSRulesByBucket = {};
@@ -19,7 +17,7 @@ export function resolveStyleRulesForSlots<Slots extends string | number>(
   // eslint-disable-next-line guard-for-in
   for (const slotName in stylesBySlots) {
     const slotStyles: MakeStylesStyle = stylesBySlots[slotName];
-    const [cssClassMap, cssRulesByBucket] = resolveStyleRules(slotStyles, unstable_cssPriority);
+    const [cssClassMap, cssRulesByBucket] = resolveStyleRules(slotStyles);
 
     classesMapBySlot[slotName] = cssClassMap;
 

@@ -12,7 +12,6 @@ export interface CompileCSSOptions {
 
   property: string;
   value: number | string;
-  unstable_cssPriority: number;
 
   rtlClassName?: string;
   rtlProperty?: string;
@@ -20,10 +19,6 @@ export interface CompileCSSOptions {
 }
 
 const PSEUDO_SELECTOR_REGEX = /,( *[^ &])/g;
-
-function repeatSelector(selector: string, times: number) {
-  return new Array(times + 2).join(selector);
-}
 
 /**
  * Normalizes pseudo selectors to always contain &, requires to work properly with comma-separated selectors.
@@ -65,27 +60,16 @@ export function compileCSSRules(cssRules: string): string[] {
 }
 
 export function compileCSS(options: CompileCSSOptions): [string /* ltr definition */, string? /* rtl definition */] {
-  const {
-    className,
-    media,
-    pseudo,
-    support,
-    property,
-    rtlClassName,
-    rtlProperty,
-    rtlValue,
-    value,
-    unstable_cssPriority,
-  } = options;
+  const { className, media, pseudo, support, property, rtlClassName, rtlProperty, rtlValue, value } = options;
 
-  const classNameSelector = repeatSelector(`.${className}`, unstable_cssPriority);
+  const classNameSelector = `.${className}`;
   const cssDeclaration = `{ ${hyphenateProperty(property)}: ${value}; }`;
 
   let rtlClassNameSelector: string | null = null;
   let rtlCSSDeclaration: string | null = null;
 
   if (rtlProperty && rtlClassName) {
-    rtlClassNameSelector = repeatSelector(`.${rtlClassName}`, unstable_cssPriority);
+    rtlClassNameSelector = `.${rtlClassName}`;
     rtlCSSDeclaration = `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
   }
 

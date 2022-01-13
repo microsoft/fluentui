@@ -49,7 +49,7 @@ export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primar
 
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
-    components?: {
+    components: {
         [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & Shorthands;
@@ -98,7 +98,7 @@ export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPr
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
-export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {
+export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: SlotProps<R>;
 };
@@ -312,7 +312,7 @@ export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
-// lib/compose/getSlots.d.ts:29:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
+// lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

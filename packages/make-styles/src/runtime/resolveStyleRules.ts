@@ -13,7 +13,6 @@ import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 import { isObject } from './utils/isObject';
 import { getStyleBucketName } from './getStyleBucketName';
 import { hashClassName } from './utils/hashClassName';
-import { resolveProxyValues } from './createCSSVariablesProxy';
 import { hashPropertyKey } from './utils/hashPropertyKey';
 
 function pushToClassesMap(
@@ -39,9 +38,13 @@ function pushToCSSRules(
   }
 }
 
-function resolveStyleRulesInner(
+/**
+ * Transforms input styles to classes maps & CSS rules.
+ *
+ * @internal
+ */
+export function resolveStyleRules(
   styles: MakeStylesStyle,
-  unstable_cssPriority: number = 0,
   pseudo = '',
   media = '',
   support = '',
@@ -67,7 +70,6 @@ function resolveStyleRulesInner(
         support,
         pseudo,
         property,
-        unstable_cssPriority,
       });
 
       const rtlDefinition = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
@@ -80,7 +82,6 @@ function resolveStyleRulesInner(
             pseudo,
             media,
             support,
-            unstable_cssPriority,
           })
         : undefined;
       const rtlCompileOptions: Partial<CompileCSSOptions> | undefined = flippedInRtl
@@ -99,7 +100,6 @@ function resolveStyleRulesInner(
         property,
         support,
         value,
-        unstable_cssPriority,
         ...rtlCompileOptions,
       });
 
@@ -145,9 +145,8 @@ function resolveStyleRulesInner(
         rtlAnimationNames.push(rtlAnimationName);
       }
 
-      resolveStyleRulesInner(
+      resolveStyleRules(
         { animationName: animationNames.join(', ') },
-        unstable_cssPriority,
         pseudo,
         media,
         support,
@@ -157,9 +156,8 @@ function resolveStyleRulesInner(
       );
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {
-        resolveStyleRulesInner(
+        resolveStyleRules(
           value as MakeStylesStyle,
-          unstable_cssPriority,
           pseudo + normalizeNestedProperty(property),
           media,
           support,
@@ -169,9 +167,8 @@ function resolveStyleRulesInner(
       } else if (isMediaQuerySelector(property)) {
         const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
 
-        resolveStyleRulesInner(
+        resolveStyleRules(
           value as MakeStylesStyle,
-          unstable_cssPriority,
           pseudo,
           combinedMediaQuery,
           support,
@@ -181,9 +178,8 @@ function resolveStyleRulesInner(
       } else if (isSupportQuerySelector(property)) {
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
-        resolveStyleRulesInner(
+        resolveStyleRules(
           value as MakeStylesStyle,
-          unstable_cssPriority,
           pseudo,
           media,
           combinedSupportQuery,
@@ -200,20 +196,4 @@ function resolveStyleRulesInner(
   }
 
   return [cssClassesMap, cssRulesByBucket];
-}
-
-/**
- * Transforms input styles to classes maps & CSS rules.
- *
- * @internal
- */
-export function resolveStyleRules(
-  styles: MakeStylesStyle,
-  unstable_cssPriority: number = 0,
-): [CSSClassesMap, CSSRulesByBucket] {
-  return resolveStyleRulesInner(
-    // resolveProxyValues() is recursive function and should be evaluated once for a style object
-    resolveProxyValues(styles),
-    unstable_cssPriority,
-  );
 }

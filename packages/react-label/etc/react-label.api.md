@@ -29,9 +29,6 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<
     required?: boolean | ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>> | React_2.ReactNode;
 };
 
-// @public
-export const labelShorthandProps: Array<keyof LabelSlots>;
-
 // @public (undocumented)
 export type LabelSlots = {
     root: IntrinsicShorthandProps<'label'>;
