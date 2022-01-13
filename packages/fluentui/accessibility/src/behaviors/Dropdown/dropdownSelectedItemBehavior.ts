@@ -12,6 +12,7 @@ export const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBeh
     root: {
       role: 'option',
       tabIndex: props.active ? 0 : -1,
+      id: props.id,
     },
     icon: {
       'aria-hidden': 'true',
@@ -19,4 +20,4 @@ export const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBeh
   },
 });
 
-export type DropdownSelectedItemBehaviorProps = { header: string; active: boolean };
+export type DropdownSelectedItemBehaviorProps = { header: string; active: boolean; id: string };

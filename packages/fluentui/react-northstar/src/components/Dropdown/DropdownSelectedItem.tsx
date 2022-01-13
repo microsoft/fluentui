@@ -78,6 +78,8 @@ export interface DropdownSelectedItemProps extends UIComponentProps<DropdownSele
    * @param data - All props and proposed value.
    */
   onRemove?: ComponentEventHandler<DropdownSelectedItemProps>;
+
+  id?: string;
 }
 
 export const dropdownSelectedItemClassName = 'ui-dropdown__selecteditem';
@@ -97,7 +99,7 @@ export const DropdownSelectedItem = (React.forwardRef<HTMLSpanElement, DropdownS
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
 
-  const { active, header, icon, image, className, design, styles, variables } = props;
+  const { active, header, icon, image, className, design, styles, variables, id } = props;
 
   const itemRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
@@ -107,6 +109,7 @@ export const DropdownSelectedItem = (React.forwardRef<HTMLSpanElement, DropdownS
     debugName: DropdownSelectedItem.displayName,
     mapPropsToBehavior: () => ({
       header: header as string,
+      id: id,
       active,
     }),
     rtl: context.rtl,
@@ -215,6 +218,7 @@ DropdownSelectedItem.propTypes = {
   ...commonPropTypes.createCommon({
     children: false,
   }),
+  id: PropTypes.string,
   active: PropTypes.bool,
   header: customPropTypes.itemShorthand,
   icon: customPropTypes.shorthandAllowingChildren,

@@ -75,6 +75,8 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
   /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
   'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
 
+  'aria-describedby'?: AccessibilityAttributes['aria-describedby'];
+
   /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `triggerButton`. */
   'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 
@@ -305,6 +307,7 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
 
 const a11yStatusCleanupTime = 500;
 const charKeyPressedCleanupTime = 500;
+let selectedItemsIds = [];
 
 /** `normalizedValue` should be normalized always as it can be received from props */
 function normalizeValue(multiple: boolean, rawValue: DropdownProps['value']): ShorthandCollection<DropdownItemProps> {
@@ -373,6 +376,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
   const {
     'aria-labelledby': ariaLabelledby,
+    'aria-describedby': ariaDescribedby,
     'aria-invalid': ariaInvalid,
     clearable,
     clearIndicator,
@@ -610,6 +614,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         inline,
         variables,
         disabled,
+        ariaDescribedByIds: selectedItemsIds.toString(),
       }),
       overrideProps: handleSearchInputOverrides(
         highlightedIndex,
@@ -772,16 +777,31 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     return null;
   };
 
+  const getSelectedItemsIds = () => {
+    if (value.length === 0) {
+      return null;
+    }
+
+    const selectedItemsIds = [];
+    for (let index = 0; index < value.length; index++) {
+      selectedItemsIds.push(`${dropdownSlotClassNames.selectedItem}-${index}`);
+    }
+    return selectedItemsIds;
+  };
+
   const renderSelectedItems = () => {
     if (value.length === 0) {
       return null;
     }
 
-    const selectedItems = value.map((item: DropdownItemProps, index) =>
+    const selectedItemsIds = getSelectedItemsIds();
+
+    const selectedItems = value.map((item: DropdownItemProps, index) => {
       // (!) an item matches DropdownItemProps
-      DropdownSelectedItem.create(item, {
+      return DropdownSelectedItem.create(item, {
         defaultProps: () => ({
           className: dropdownSlotClassNames.selectedItem,
+          id: selectedItemsIds[index],
           active: isSelectedItemActive(index),
           variables,
           ...(typeof item === 'object' &&
@@ -791,8 +811,8 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         }),
         overrideProps: handleSelectedItemOverrides(item),
         render: renderSelectedItem,
-      }),
-    );
+      });
+    });
     return (
       <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
         {selectedItems}
@@ -1099,6 +1119,8 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       });
     };
 
+    const selectedItemsIds = getSelectedItemsIds();
+
     return {
       // getInputProps adds Downshift handlers. We also add our own by passing them as params to that function.
       // user handlers were also added to our handlers previously, at the beginning of this function.
@@ -1122,6 +1144,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
             setSearchQuery(e.target.value);
           },
           'aria-labelledby': ariaLabelledby,
+          'aria-describedby': ariaDescribedby ? ariaDescribedby : selectedItemsIds && selectedItemsIds.join(' '),
         }),
       },
       // same story as above for getRootProps.
@@ -1720,6 +1743,7 @@ Dropdown.propTypes = {
   triggerButton: customPropTypes.itemShorthand,
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
+  'aria-describedby': PropTypes.string,
   'aria-invalid': PropTypes.bool,
   a11ySelectedItemsMessage: PropTypes.string,
   // positioning props
