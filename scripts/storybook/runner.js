@@ -16,6 +16,8 @@
  * ```
  */
 
+const path = require('path');
+const fs = require('fs');
 const { execSync } = require('child_process');
 const chalk = require('chalk');
 
@@ -24,32 +26,59 @@ main();
 function main() {
   const args = process.argv.slice(2);
   const COMMAND_PREFIX = `${chalk.cyan('>')} ${chalk.inverse(chalk.bold(chalk.cyan(' STORYBOOK RUNNER ')))}`;
-  const dependencies = [
-    { name: '@fluentui/babel-make-styles', description: 'custom babel plugin that compiles make-styles definitions' },
+  const implicitDependencies = [
     {
       name: '@fluentui/react-storybook-addon',
       description: 'fluentui storybook addon that adds functionality to storybook',
     },
   ];
+  const dependencies = [
+    { name: '@fluentui/babel-make-styles', description: 'custom babel plugin that compiles make-styles definitions' },
+  ];
 
-  const sbCommand = `start-storybook ${args.join(' ')}`;
-  const dependencyBuildCommand = `lage build --to ${dependencies.map(dep => dep.name).join(' ')}`;
+  /**
+   * @type {{name:string;devDependencies: Record<string,string>,[key:string]:unknown}}
+   */
+  const projectPackageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
 
-  console.log(COMMAND_PREFIX, shouldInvokeHelp() ? '\n' : `pre-building dependencies needed to run storybook:\n`);
+  const dependenciesToBuild = [
+    ...dependencies.filter(dep => {
+      return projectPackageJson.devDependencies[dep.name];
+    }),
+    ...implicitDependencies.filter(dep => {
+      return projectPackageJson.name !== dep.name;
+    }),
+  ];
 
-  if (!shouldInvokeHelp()) {
-    listDependencies();
+  console.log({ devDep: projectPackageJson.devDependencies, pName: projectPackageJson.name, dependenciesToBuild });
+
+  const shouldInvokeHelp = args.includes('--help');
+  const shouldExecPreBuild = !shouldInvokeHelp && dependenciesToBuild.length > 0;
+
+  const storybookCommand = `start-storybook ${args.join(' ')}`;
+  const dependencyBuildCommand = `lage build --to ${dependenciesToBuild.map(dep => dep.name).join(' ')}`;
+
+  printTitle();
+
+  if (shouldExecPreBuild) {
+    printDependencies();
+
     execSync(dependencyBuildCommand, { stdio: [0, 1, 2] });
   }
 
-  execSync(sbCommand, { stdio: [0, 1, 2] });
+  execSync(storybookCommand, { stdio: [0, 1, 2] });
 
-  function shouldInvokeHelp() {
-    return args.includes('--help');
+  function printTitle() {
+    console.log(
+      COMMAND_PREFIX,
+      shouldExecPreBuild
+        ? `pre-building dependencies needed to run storybook:\n`
+        : 'no pre-building needed. Running storybook...\n',
+    );
   }
 
-  function listDependencies() {
-    dependencies.map(dep => {
+  function printDependencies() {
+    dependenciesToBuild.map(dep => {
       console.log(`${chalk.bold(dep.name)} (${dep.description})`);
     });
 
