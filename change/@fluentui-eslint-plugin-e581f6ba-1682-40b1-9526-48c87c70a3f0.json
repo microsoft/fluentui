@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Expand ban-imports rule to also support exports, and support regular expressions for names",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
