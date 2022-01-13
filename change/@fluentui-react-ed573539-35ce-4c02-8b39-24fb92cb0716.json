@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add an onRenderContent override to the Breadcrumb",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
