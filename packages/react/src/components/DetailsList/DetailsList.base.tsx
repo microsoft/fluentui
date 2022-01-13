@@ -574,7 +574,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const focusZoneInnerProps: IFocusZoneProps = {
     ...focusZoneProps,
-    componentRef: focusZoneRef,
+    componentRef: focusZoneProps && focusZoneProps.componentRef ? focusZoneProps.componentRef : focusZoneRef,
     className: classNames.focusZone,
     direction: focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.vertical,
     shouldEnterInnerZone:
