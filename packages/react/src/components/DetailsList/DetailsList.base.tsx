@@ -1486,6 +1486,7 @@ export function buildColumns(
   isSortedDescending?: boolean,
   groupedColumnKey?: string,
   isMultiline?: boolean,
+  columnActionsMode?: ColumnActionsMode,
 ) {
   const columns: IColumn[] = [];
 
@@ -1506,7 +1507,7 @@ export function buildColumns(
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,
           isRowHeader: false,
-          columnActionsMode: ColumnActionsMode.clickable,
+          columnActionsMode: columnActionsMode ?? ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
           onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName,
