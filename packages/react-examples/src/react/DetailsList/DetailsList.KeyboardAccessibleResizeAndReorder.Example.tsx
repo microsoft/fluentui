@@ -178,7 +178,9 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const [draggedIndex, setDraggedIndex] = React.useState(-1);
   const [items, setItems] = React.useState<IExampleItem[]>(createListItems(5, 0));
   const [sortedItems, setSortedItems] = React.useState<IExampleItem[]>(items);
-  const [columns, setColumns] = React.useState<IColumn[]>(buildColumns(items, true, onColumnClick, undefined, false));
+  const [columns, setColumns] = React.useState<IColumn[]>(
+    buildColumns(items, true, onColumnClick, undefined, false, undefined, undefined, ColumnActionsMode.hasDropdown),
+  );
   const [isColumnReorderEnabled, setIsColumnReorderEnabled] = React.useState<boolean>(true);
   const [frozenColumnCountFromStart, setFrozenColumnCountFromStart] = React.useState<string>('0');
   const [frozenColumnCountFromEnd, setFrozenColumnCountFromEnd] = React.useState<string>('0');
