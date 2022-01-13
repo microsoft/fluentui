@@ -62,6 +62,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
         CustomFooter: { title: 'Custom Footer' },
         CustomGroupHeaders: { title: 'Custom Group Headers' },
         Advanced: { title: 'Variable Row Heights', url: 'variablerowheights' },
+        KeyboardDragDrop: { title: 'Keyboard Drag & Drop', url: 'keyboarddraganddrop' },
         DragDrop: { title: 'Drag & Drop', url: 'draganddrop' },
         NavigatingFocus: { title: 'Inner Navigation', url: 'innernavigation' },
         Shimmer: {},
