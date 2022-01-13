@@ -75,6 +75,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
   /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
   'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
 
+  /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
   'aria-describedby'?: AccessibilityAttributes['aria-describedby'];
 
   /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `triggerButton`. */
@@ -307,7 +308,6 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
 
 const a11yStatusCleanupTime = 500;
 const charKeyPressedCleanupTime = 500;
-let selectedItemsIds = [];
 
 /** `normalizedValue` should be normalized always as it can be received from props */
 function normalizeValue(multiple: boolean, rawValue: DropdownProps['value']): ShorthandCollection<DropdownItemProps> {
@@ -614,7 +614,6 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         inline,
         variables,
         disabled,
-        ariaDescribedByIds: selectedItemsIds.toString(),
       }),
       overrideProps: handleSearchInputOverrides(
         highlightedIndex,
@@ -778,7 +777,8 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   };
 
   const getSelectedItemsIds = () => {
-    if (value.length === 0) {
+    // genereate ids only in multiple case
+    if (value.length === 0 || !multiple) {
       return null;
     }
 
