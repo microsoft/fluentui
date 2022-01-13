@@ -18,13 +18,13 @@ Helpers for customizing configuration are exported under a `configHelpers` objec
 
 ### `ban-imports`
 
-Ban importing from certain paths or modules. You can either ban the entire path, or only certain names. (Inspired by TSLint's [`import-blacklist`](https://palantir.github.io/tslint/rules/import-blacklist/).)
+Ban importing or re-exporting from certain paths or modules. You can either ban the entire path, or only certain names. (Inspired by TSLint's [`import-blacklist`](https://palantir.github.io/tslint/rules/import-blacklist/).)
 
 Requires one or more options objects. Either `path` or `pathRegex` is required.
 
 - `path` (`string`): Path or module to ban importing from (non-regex)
 - `pathRegex` (`string`): Regex for path or module to ban importing from
-- `names` (`string[]`, optional): If provided, only ban imports of these names. Otherwise, ban all imports from the path.
+- `names` (`(string | { regex: string })[]`, optional): If provided, only ban imports of these names and/or regular expressions. Otherwise, ban all imports from the path.
 - `message` (`string[]`, optional): Custom message to show with errors
 
 Example:
@@ -33,7 +33,7 @@ Example:
 "@fluentui/ban-imports": [
   "error",
   { "path": "lodash" },
-  { "path": "foo", "names": ["bar", "baz"] },
+  { "path": "foo", "names": ["bar", { "regex": "^baz" }] },
   { "pathRegex": "^\.", message: "no relative imports" },
   { "pathRegex": "^\.\./(foo|bar)$", "names": ["baz"] }
 ]

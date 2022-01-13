@@ -11,6 +11,7 @@ export const config: BeachballConfig = {
     '**/*.{shot,snap}',
     '**/*.{test,spec}.{ts,tsx}',
     '**/*.stories.tsx',
+    '**/.eslintrc.*',
     '**/__fixtures__/**',
     '**/__mocks__/**',
     '**/common/isConformant.ts',
