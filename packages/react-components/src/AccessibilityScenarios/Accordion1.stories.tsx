@@ -10,6 +10,11 @@ import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@flue
 // @ts-ignore
 import { Label } from '@fluentui/react-label';
 
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Button } from '@fluentui/react-button';
+
 import { Scenario } from './utils';
 
 export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent = () => {
@@ -18,7 +23,7 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
       <h1>Personal form</h1>
       <Accordion defaultOpenItems="basicInfo">
         <AccordionItem value="basicInfo">
-          <AccordionHeader>Basic information</AccordionHeader>
+          <AccordionHeader>Basic information - 1 of 3</AccordionHeader>
           <AccordionPanel>
             <Label htmlFor="name">Name:</Label>
             <input type="text" id="name" name="name" />
@@ -36,7 +41,7 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="residence">
-          <AccordionHeader>Residence</AccordionHeader>
+          <AccordionHeader>Residence - 2 of 3</AccordionHeader>
           <AccordionPanel>
             <Label htmlFor="street">Street:</Label>
             <input type="text" id="street" name="street" />
@@ -47,7 +52,7 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="hobbies">
-          <AccordionHeader>Hobbies</AccordionHeader>
+          <AccordionHeader>Hobbies - 3 of 3</AccordionHeader>
           <AccordionPanel>
             <div role="group" aria-label="Hobbies">
               <input type="checkbox" id="books" name="hobbies" value="books" />
@@ -62,6 +67,7 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
+      <Button>Submit</Button>
     </Scenario>
   );
 };
