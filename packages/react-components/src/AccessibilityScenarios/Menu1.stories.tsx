@@ -110,5 +110,5 @@ export const ProfileMenuAccessibilityScenario: React.FunctionComponent = () => {
 
 export default {
   title: 'Accessibility Scenarios / Profile menu',
-  id: 'menu-accessibility-scenario',
+  id: 'menu1-accessibility-scenario',
 };
