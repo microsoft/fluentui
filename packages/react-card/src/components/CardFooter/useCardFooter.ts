@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { CardFooterProps, CardFooterSlots, CardFooterState } from './CardFooter.types';
-
-/**
- * Array of all shorthand properties listed in CardFooterShorthandProps
- */
-export const cardFooterShorthandProps: Array<keyof CardFooterSlots> = ['root', 'action'];
+import type { CardFooterProps, CardFooterState } from './CardFooter.types';
 
 /**
  * Create the state required to render CardFooter.

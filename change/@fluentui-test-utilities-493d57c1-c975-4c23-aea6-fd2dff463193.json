@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Simplify safeMount attach API",
-  "packageName": "@fluentui/test-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

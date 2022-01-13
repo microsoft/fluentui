@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update checkmark icons and color styles to match visual spec",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
