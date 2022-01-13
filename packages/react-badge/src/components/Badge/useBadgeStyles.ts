@@ -17,9 +17,8 @@ const useRootStyles = makeStyles({
     position: 'relative',
   },
 
-  //
   // size
-  //
+
   tiny: {
     width: '6px',
     height: '6px',
@@ -60,9 +59,8 @@ const useRootStyles = makeStyles({
     ...shorthands.borderWidth(tokens.strokeWidthThick),
   },
 
-  //
   // shape
-  //
+
   square: {
     // Default border radius
   },
@@ -76,16 +74,14 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius('99px'),
   },
 
-  //
   // appearance
-  //
+
   ghost: {
     ...shorthands.borderColor('transparent'),
   },
 
-  //
   // appearance-color
-  //
+
   'filled-brand': {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
@@ -225,6 +221,9 @@ const useIconStyles = makeStyles({
     alignItems: 'center',
     height: '100%',
   },
+
+  // size
+
   tiny: {
     fontSize: '6px',
   },
