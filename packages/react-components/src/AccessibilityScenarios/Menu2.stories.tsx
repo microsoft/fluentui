@@ -22,9 +22,8 @@ export const MenuWithSplitItemAccessibilityScenario: React.FunctionComponent = (
 
         <MenuPopover>
           <MenuList>
-            <MenuItem>New </MenuItem>
             <MenuItem>New Window</MenuItem>
-            <MenuItem>Open Folder</MenuItem>
+            <MenuItem>Create Folder</MenuItem>
             <Menu>
               <MenuSplitGroup>
                 <MenuItem>Open</MenuItem>
