@@ -212,7 +212,13 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   React.useEffect(() => {
     //sets keyboard focus back to header of column that was reordered.
     if (clickHandler.current === REORDER && columnToEdit.current) {
-      const columnHeaderReorderedIndex = columns.findIndex(column => column.key === columnToEdit.current?.key);
+      let columnHeaderReorderedIndex = -1;
+      for (let i = 0; i < columns.length; i++) {
+        if (columns[i].key === columnToEdit.current.key) {
+          columnHeaderReorderedIndex = i;
+          break;
+        }
+      }
       const element = getDocument()?.querySelector(`[id*=${columns[columnHeaderReorderedIndex].key}]`);
       const columnHeaderReordered = (element as HTMLElement) ?? undefined;
 
