@@ -20,6 +20,8 @@ import { getTheme, mergeStyles } from '@fluentui/react/lib/Styling';
 import { ContextualMenu, IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import Dialog, { DialogFooter, DialogType } from '@fluentui/react/lib/Dialog';
+import { IFocusZone } from '@fluentui/react-focus';
+import { getDocument } from '@fluentui/utilities';
 
 const RESIZE = 'Resize';
 const REORDER = 'Reorder';
@@ -187,6 +189,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const [contextualMenuProps, setContextualMenuProps] = React.useState<IContextualMenuProps | undefined>(undefined);
   const detailsListRef = React.useRef<IDetailsList>(null);
   const input = React.useRef<number | null>(null);
+  const focusZoneRef = React.useRef<IFocusZone>(null);
 
   const insertBeforeItem = React.useCallback(
     (item: IExampleItem) => {
@@ -203,6 +206,17 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     },
     [draggedIndex, draggedItem, items, selection],
   );
+
+  React.useEffect(() => {
+    //sets keyboard focus back to header of column that was reordered.
+    if (clickHandler.current === REORDER && columnToEdit.current) {
+      const columnHeaderReorderedIndex = columns.findIndex(column => column.key === columnToEdit.current?.key);
+      const element = getDocument()?.querySelector(`[id*=${columns[columnHeaderReorderedIndex].key}]`);
+      const columnHeaderReordered = (element as HTMLElement) ?? undefined;
+
+      focusZoneRef.current?.focusElement(columnHeaderReordered);
+    }
+  }, [columns]);
 
   const getDragDropEvents = React.useCallback((): IDragDropEvents => {
     return {
@@ -287,6 +301,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
       <MarqueeSelection selection={selection}>
         <DetailsList
           componentRef={detailsListRef}
+          focusZoneProps={{ componentRef: focusZoneRef }}
           setKey="items"
           items={sortedItems}
           columns={columns}
