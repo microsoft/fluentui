@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Badge } from '../index';
-import { ClipboardPaste20Regular as PasteIcon } from '@fluentui/react-icons';
+import { ClipboardPasteRegular as PasteIcon } from '@fluentui/react-icons';
 
 export const Icon = () => {
   return <Badge size="medium" icon={<PasteIcon />} />;

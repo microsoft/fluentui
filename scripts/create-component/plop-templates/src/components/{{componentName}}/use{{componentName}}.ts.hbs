@@ -1,14 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { {{componentName}}Props, {{componentName}}Slots, {{componentName}}State } from './{{componentName}}.types';
-
-/**
- * Array of all shorthand properties listed in {{componentName}}Slots
- */
-export const {{camelCase componentName}}ShorthandProps: (keyof {{componentName}}Slots)[] = [
-  'root',
-  // TODO add shorthand property names
-];
+import type { {{componentName}}Props, {{componentName}}State } from './{{componentName}}.types';
 
 /**
  * Create the state required to render {{componentName}}.
@@ -23,7 +15,7 @@ export const use{{componentName}} = (props: {{componentName}}Props, ref: React.R
   return {
     // TODO add appropriate props/defaults
     components: {
-      // TODO add slot types here if needed (div is the default)
+      // TODO add each slot's element type or component
       root: 'div',
     },
     // TODO add appropriate slots, for example:

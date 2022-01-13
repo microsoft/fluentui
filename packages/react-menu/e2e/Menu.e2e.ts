@@ -4,6 +4,7 @@ const customTriggerStory = 'CustomTrigger';
 const selectionGroupStory = 'SelectionGroup';
 const nestedMenuStory = 'NestedSubmenus';
 const nestedMenuControlledStory = 'NestedSubmenusControlled';
+const splitMenuItemStory = 'SplitMenuItem';
 const anchorToCustomTargetStory = 'AnchorToCustomTarget';
 
 const menuStoriesTitle = 'Components/Menu';
@@ -383,6 +384,41 @@ describe('Menu', () => {
           .get(menuSelector)
           .should('not.exist');
       });
+    });
+  });
+
+  describe('SplitMenuItem', () => {
+    it('should be able to reach the trigger with down arrow', () => {
+      cy.loadStory(menuStoriesTitle, splitMenuItemStory).get(menuTriggerSelector).focus();
+
+      // Can't find a better way than hard code the number of tabstops
+      for (let i = 0; i < 4; i++) {
+        cy.focused().focus().type('{downarrow}');
+      }
+
+      cy.focused().focus().type('{rightarrow}');
+      cy.get(menuSelector).should('have.length', 2);
+    });
+
+    it('should be able to navigate horizontally within split item', () => {
+      cy.loadStory(menuStoriesTitle, splitMenuItemStory).get(menuTriggerSelector).focus();
+
+      // Can't find a better way than hard code the number of tabstops
+      for (let i = 0; i < 4; i++) {
+        cy.focused().focus().type('{downarrow}');
+      }
+
+      cy.focused()
+        .focus()
+        .type('{leftarrow}') // focus main action of split item
+        .focused()
+        .should('have.text', 'Open')
+        .focus()
+        .type('{rightarrow}')
+        .focused()
+        .type('{rightarrow}'); // open submenu
+
+      cy.get(menuSelector).should('have.length', 2);
     });
   });
 });
