@@ -7,11 +7,7 @@ export const ChoiceGroupCustomExample: React.FunctionComponent = () => {
   return <ChoiceGroup defaultSelectedKey="B" options={options} label="Pick one" />;
 };
 
-const optionRootClass = mergeStyles({ display: 'flex', alignItems: 'center' });
-const iconStyles = {
-  marginBottom: 0,
-  marginLeft: 5,
-};
+const optionRootClass = mergeStyles({ display: 'flex', alignItems: 'center', gap: '5px' });
 
 const options: IChoiceGroupOption[] = [
   {
@@ -22,7 +18,7 @@ const options: IChoiceGroupOption[] = [
       return (
         <div className={optionRootClass}>
           {render!(props)}
-          <CatIcon style={iconStyles} />
+          <CatIcon />
         </div>
       );
     },
