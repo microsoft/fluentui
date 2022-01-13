@@ -796,9 +796,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
     const selectedItemsIds = getSelectedItemsIds();
 
-    const selectedItems = value.map((item: DropdownItemProps, index) => {
+    const selectedItems = value.map((item: DropdownItemProps, index) =>
       // (!) an item matches DropdownItemProps
-      return DropdownSelectedItem.create(item, {
+      DropdownSelectedItem.create(item, {
         defaultProps: () => ({
           className: dropdownSlotClassNames.selectedItem,
           id: selectedItemsIds[index],
@@ -811,8 +811,8 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         }),
         overrideProps: handleSelectedItemOverrides(item),
         render: renderSelectedItem,
-      });
-    });
+      }),
+    );
     return (
       <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
         {selectedItems}
