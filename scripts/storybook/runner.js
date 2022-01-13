@@ -45,12 +45,8 @@ function main() {
     ...dependencies.filter(dep => {
       return projectPackageJson.devDependencies[dep.name];
     }),
-    ...implicitDependencies.filter(dep => {
-      return projectPackageJson.name !== dep.name;
-    }),
+    ...implicitDependencies,
   ];
-
-  console.log({ devDep: projectPackageJson.devDependencies, pName: projectPackageJson.name, dependenciesToBuild });
 
   const shouldInvokeHelp = args.includes('--help');
   const shouldExecPreBuild = !shouldInvokeHelp && dependenciesToBuild.length > 0;
