@@ -105,6 +105,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 {
                   align-items: center;
                   display: flex;
+                  gap: 5px;
                 }
           >
             <label
@@ -193,12 +194,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
             <span
               aria-hidden={true}
               className=""
-              style={
-                Object {
-                  "marginBottom": 0,
-                  "marginLeft": 5,
-                }
-              }
+              style={Object {}}
             >
               <svg
                 focusable="false"
