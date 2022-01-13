@@ -472,7 +472,7 @@ export class BreadcrumbBase extends React_2.Component<IBreadcrumbProps, any> {
 }
 
 // @public (undocumented)
-export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
+export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean, columnActionsMode?: ColumnActionsMode): IColumn[];
 
 // @public
 export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap;
