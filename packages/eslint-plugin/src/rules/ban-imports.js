@@ -124,14 +124,7 @@ module.exports = createRule({
           verb: importOrExport.type === AST_NODE_TYPES.ImportDeclaration ? 'Importing' : 'Exporting',
         };
 
-        if (!names) {
-          // All imports from this path are banned
-          context.report({
-            node: importOrExport,
-            messageId: 'pathNotAllowed',
-            data: errorData,
-          });
-        } else {
+        if (names) {
           // Only certain imports from this path are banned
           for (const identifier of identifiers) {
             if (names.some(name => isMatch(identifier.name, name))) {
@@ -142,6 +135,13 @@ module.exports = createRule({
               });
             }
           }
+        } else {
+          // All imports from this path are banned
+          context.report({
+            node: importOrExport,
+            messageId: 'pathNotAllowed',
+            data: errorData,
+          });
         }
       }
     }
