@@ -820,7 +820,7 @@ describe('migrate-converged-pkg generator', () => {
         just: 'just-scripts',
         lint: 'just-scripts lint',
         start: 'yarn storybook',
-        storybook: 'start-storybook',
+        storybook: 'node ../../scripts/storybook/runner',
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
