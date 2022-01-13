@@ -38,7 +38,12 @@ function pushToCSSRules(
   }
 }
 
-function resolveStyleRulesInner(
+/**
+ * Transforms input styles to classes maps & CSS rules.
+ *
+ * @internal
+ */
+export function resolveStyleRules(
   styles: MakeStylesStyle,
   pseudo = '',
   media = '',
@@ -140,7 +145,7 @@ function resolveStyleRulesInner(
         rtlAnimationNames.push(rtlAnimationName);
       }
 
-      resolveStyleRulesInner(
+      resolveStyleRules(
         { animationName: animationNames.join(', ') },
         pseudo,
         media,
@@ -151,7 +156,7 @@ function resolveStyleRulesInner(
       );
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {
-        resolveStyleRulesInner(
+        resolveStyleRules(
           value as MakeStylesStyle,
           pseudo + normalizeNestedProperty(property),
           media,
@@ -162,7 +167,7 @@ function resolveStyleRulesInner(
       } else if (isMediaQuerySelector(property)) {
         const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
 
-        resolveStyleRulesInner(
+        resolveStyleRules(
           value as MakeStylesStyle,
           pseudo,
           combinedMediaQuery,
@@ -173,7 +178,7 @@ function resolveStyleRulesInner(
       } else if (isSupportQuerySelector(property)) {
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
-        resolveStyleRulesInner(
+        resolveStyleRules(
           value as MakeStylesStyle,
           pseudo,
           media,
@@ -191,13 +196,4 @@ function resolveStyleRulesInner(
   }
 
   return [cssClassesMap, cssRulesByBucket];
-}
-
-/**
- * Transforms input styles to classes maps & CSS rules.
- *
- * @internal
- */
-export function resolveStyleRules(styles: MakeStylesStyle): [CSSClassesMap, CSSRulesByBucket] {
-  return resolveStyleRulesInner(styles);
 }

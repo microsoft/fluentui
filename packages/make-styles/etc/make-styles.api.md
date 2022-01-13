@@ -137,7 +137,7 @@ export function resolveProxyValues<T>(value: T): T;
 // Warning: (ae-internal-missing-underscore) The name "resolveStyleRules" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export function resolveStyleRules(styles: MakeStylesStyle): [CSSClassesMap, CSSRulesByBucket];
+export function resolveStyleRules(styles: MakeStylesStyle, pseudo?: string, media?: string, support?: string, cssClassesMap?: CSSClassesMap, cssRulesByBucket?: CSSRulesByBucket, rtlValue?: string): [CSSClassesMap, CSSRulesByBucket];
 
 // @public
 export function resolveStyleRulesForSlots<Slots extends string | number>(stylesBySlots: StylesBySlots<Slots>): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
