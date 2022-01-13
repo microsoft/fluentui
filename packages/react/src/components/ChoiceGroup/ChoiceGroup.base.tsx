@@ -41,7 +41,7 @@ const focusSelectedOption = (options: IChoiceGroupOption[], keyChecked: string |
 };
 
 const focusFromFocusTrapZone = (evt: React.FocusEvent<HTMLElement>): boolean => {
-  return !!(evt.relatedTarget && (evt.relatedTarget as HTMLElement)?.dataset.isFocusTrapZoneBumper === 'true');
+  return (evt.relatedTarget instanceof HTMLElement) && evt.relatedTarget.dataset.isFocusTrapZoneBumper === 'true';
 };
 
 const useComponentRef = (
