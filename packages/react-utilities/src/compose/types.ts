@@ -111,7 +111,7 @@ export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primar
     PropsWithoutRef<Shorthands[Primary]>;
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
-  components?: {
+  components: {
     [Key in keyof Shorthands]-?:
       | React.ComponentType<
           NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>

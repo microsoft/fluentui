@@ -5,13 +5,11 @@
 ```ts
 
 import type { MakeStylesStyle } from '@fluentui/react-make-styles';
-import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
 import type { RefObject } from 'react';
-import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
 // @public
-export const createCustomFocusIndicatorStyle: (rule: MakeStylesStyleRule<Theme>, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyleRule<Theme>;
+export const createCustomFocusIndicatorStyle: (style: MakeStylesStyle, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyle;
 
 // @public (undocumented)
 export interface CreateFocusIndicatorStyleRuleOptions {
@@ -20,7 +18,7 @@ export interface CreateFocusIndicatorStyleRuleOptions {
 }
 
 // @public
-export const createFocusOutlineStyle: (theme: Theme, options?: {
+export const createFocusOutlineStyle: (options?: {
     style: Partial<FocusOutlineStyleOptions>;
 } & CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyle;
 
@@ -58,8 +56,8 @@ export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
 };
 
 // @public

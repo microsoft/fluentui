@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Badge, BadgeCommons } from '@fluentui/react-badge';
 import { Circle12Regular } from '@fluentui/react-icons';
 import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 
 const badgeColors: BadgeCommons['color'][] = [
   'brand',
@@ -34,9 +35,9 @@ const useStyles = makeStyles({
     marginLeft: '10px',
   },
 
-  brandContainer: theme => ({
-    backgroundColor: theme.colorBrandBackgroundStatic,
-  }),
+  brandContainer: {
+    backgroundColor: tokens.colorBrandBackgroundStatic,
+  },
 });
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance'] }> = ({

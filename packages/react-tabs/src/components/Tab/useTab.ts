@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import type { TabProps, TabSlots, TabState } from './Tab.types';
+import type { TabProps, TabState } from './Tab.types';
 import { TabListContext } from '../TabList/TabListContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { SelectTabEvent } from '../TabList/TabList.types';
-
-/**
- * Array of all shorthand properties listed in TabSlots
- */
-export const tabShorthandProps: (keyof TabSlots)[] = ['root', 'icon', 'content'];
 
 /**
  * Create the state required to render Tab.

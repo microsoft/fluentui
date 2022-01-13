@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Replacing use of functions in makeStyles with direct use of tokens",
+  "packageName": "@fluentui/react-popover",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
