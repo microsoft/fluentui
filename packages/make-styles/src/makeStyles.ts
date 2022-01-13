@@ -2,10 +2,7 @@ import { reduceToClassNameForSlots } from './runtime/reduceToClassNameForSlots';
 import { resolveStyleRulesForSlots } from './resolveStyleRulesForSlots';
 import { CSSClassesMapBySlot, CSSRulesByBucket, MakeStylesOptions, StylesBySlots } from './types';
 
-export function makeStyles<Slots extends string | number>(
-  stylesBySlots: StylesBySlots<Slots>,
-  unstable_cssPriority: number = 0,
-) {
+export function makeStyles<Slots extends string | number>(stylesBySlots: StylesBySlots<Slots>) {
   const insertionCache: Record<string, boolean> = {};
 
   let classesMapBySlot: CSSClassesMapBySlot<Slots> | null = null;
@@ -18,7 +15,7 @@ export function makeStyles<Slots extends string | number>(
     const { dir, renderer } = options;
 
     if (classesMapBySlot === null) {
-      [classesMapBySlot, cssRules] = resolveStyleRulesForSlots(stylesBySlots, unstable_cssPriority);
+      [classesMapBySlot, cssRules] = resolveStyleRulesForSlots(stylesBySlots);
     }
 
     const isLTR = dir === 'ltr';
