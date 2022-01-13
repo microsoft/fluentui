@@ -2,6 +2,33 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Thu, 13 Jan 2022 07:30:58 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react to v8.49.5",
+            "commit": "a9c3d10d957ef651a0f9f43c86e565f18c8edffa"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-experiments to v8.4.17",
+            "commit": "a9c3d10d957ef651a0f9f43c86e565f18c8edffa"
+          },
+          {
+            "author": "beachball",
+            "package": "vr-tests",
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.2.12",
+            "commit": "a9c3d10d957ef651a0f9f43c86e565f18c8edffa"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Jan 2022 07:32:29 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",
