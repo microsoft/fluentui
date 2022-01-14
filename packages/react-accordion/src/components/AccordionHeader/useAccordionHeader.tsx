@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { useAccordionItemContext } from '../AccordionItem/index';
 import { useARIAButton } from '@fluentui/react-aria';
-import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
+import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
 import { ChevronRightRegular } from '@fluentui/react-icons';
