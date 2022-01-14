@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 14 Jan 2022 12:22:39 GMT",
+      "tag": "@uifabric/charting_v4.20.0",
+      "version": "4.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "style control prop added in area chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "8a650ad15f2bc9c86655fb648e31b964d62ed87a",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Jan 2022 12:22:43 GMT",
       "tag": "@uifabric/charting_v4.19.9",
       "version": "4.19.9",

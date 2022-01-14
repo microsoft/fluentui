@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 11 Jan 2022 12:22:43 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jan 2022 12:22:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.20.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.20.0)
+
+Fri, 14 Jan 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.19.9..@uifabric/charting_v4.20.0)
+
+### Minor changes
+
+- style control prop added in area chart ([PR #21260](https://github.com/microsoft/fluentui/pull/21260) by v-scharde@microsoft.com)
 
 ## [4.19.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.19.9)
 
