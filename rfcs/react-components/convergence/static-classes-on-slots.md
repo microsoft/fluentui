@@ -8,7 +8,7 @@ History:
 
 ## Summary
 
-This RFC proposes adding a static className to every slot, with a consistent and predictable naming format.
+This RFC proposes adding a static className to every slot, using the naming format `"fui-{ComponentName}__{slotName}"`.
 
 ## Problem statement
 
@@ -24,7 +24,7 @@ One example internal usage would be to write a style such as this, which changes
 const useStyles = makeStyles({
   root: {
     ':hover': {
-      '& .fui-Checkbox-indicator': {
+      '& .fui-Checkbox__indicator': {
         backgroundColor: tokens.colorCompoundBrandBackgroundHover,
       },
     },
@@ -36,15 +36,15 @@ const useStyles = makeStyles({
 
 ### Slot Names
 
-The root slot already has a static className with the format `fui-{ComponentName}`, per [#19937](https://github.com/microsoft/fluentui/issues/19937). This RFC proposes that every other slot of a component should have a static className added, with the format `fui-{ComponentName}-{slot}`. The static className would be added to the start before any other classNames.
+The root slot already has a static className with the format `fui-{ComponentName}`, per [#19937](https://github.com/microsoft/fluentui/issues/19937). This RFC proposes that every other slot of a component should have a static className added, with the format `fui-{ComponentName}__{slot}`. The static className would be added to the start before any other classNames.
 
 For example, the HTML tree of Checkbox would look like:
 
 ```html
 <span className="fui-Checkbox ...other classes...">
-  <span className="fui-Checkbox-indicator ...other classes..."> ... </span>
-  <input className="fui-Checkbox-input ...other classes..." />
-  <label className="fui-Checkbox-label ...other classes..."> ... </label>
+  <span className="fui-Checkbox__indicator ...other classes..."> ... </span>
+  <input className="fui-Checkbox__input ...other classes..." />
+  <label className="fui-Checkbox__label ...other classes..."> ... </label>
 </span>
 ```
 
@@ -55,21 +55,19 @@ These classNames could be exported from each components in an object. This would
 Although these names could be automatically generated, there is value in having them be explicitly written out in the source code so it can be found via searching.
 
 ```ts
-export const checkboxClassNames: ClassNames<'Checkbox', CheckboxSlots> = {
+export const checkboxClassNames: ClassNames<CheckboxSlots> = {
   root: 'fui-Checkbox',
-  label: 'fui-Checkbox-label',
-  input: 'fui-Checkbox-input',
-  indicator: 'fui-Checkbox-indicator',
+  label: 'fui-Checkbox__label',
+  input: 'fui-Checkbox__input',
+  indicator: 'fui-Checkbox__indicator',
 };
 ```
 
 With the helper type that ensures every slot type is defined:
 
 ```ts
-export type ClassNames<ComponentName extends string, Slots> = {
-  [SlotName in keyof Slots]-?: SlotName extends 'root'
-    ? `fui-${ComponentName}`
-    : `fui-${ComponentName}-${Extract<SlotName, string>}`;
+export type ClassNames<Slots> = {
+  [SlotName in keyof Slots]-?: string;
 };
 ```
 
@@ -83,8 +81,12 @@ There would be a new conformance test that would check that each slot has a stat
 
 - Users can rely on every slot having a static class name they can use for selectors.
 - The naming convention is predictable.
+- Simplifies debugging: you can see which component and slot the element applies to.
+- Gives users an option to avoid writing code that relies on the specific DOM order of our elements. For example, instead of using something fragile like `.fui-Checkbox:nth-child(3)`, they can instead use `.fui-Checkbox__indicator`.
+- Reinforces that slots are a part of the API of a component: changes to a slot's name, or removing a slot, are breaking changes.
 
 ### Cons
 
 - Adds extra classes that may never be used.
 - Encourages styling by static classes, which could(?) have precedence issues with our atomic css classes.
+- Increases bundle size (by a trivial amount).
