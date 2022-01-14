@@ -364,9 +364,6 @@ export type LineHeightTokens = {
 };
 
 // @public (undocumented)
-export function mergeThemes(a: Theme | undefined, b: PartialTheme | Theme | undefined): Theme;
-
-// @public (undocumented)
 export type PartialTheme = Partial<Theme>;
 
 // @public (undocumented)
