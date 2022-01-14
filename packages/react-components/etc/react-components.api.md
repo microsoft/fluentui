@@ -188,7 +188,6 @@ import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
 import { mergeClasses } from '@fluentui/react-make-styles';
-import { mergeThemes } from '@fluentui/react-theme';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
@@ -742,8 +741,6 @@ export { MenuTriggerProps }
 export { MenuTriggerState }
 
 export { mergeClasses }
-
-export { mergeThemes }
 
 export { OnOpenChangeData }
 
