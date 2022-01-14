@@ -1,5 +1,5 @@
 import { createDOMRenderer } from './renderer/createDOMRenderer';
-import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
+import { makeStylesRendererSerializer } from './common/snapshotSerializers';
 import { makeStaticStyles } from './makeStaticStyles';
 import { makeStyles } from './makeStyles';
 import { MakeStylesRenderer } from './types';

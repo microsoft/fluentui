@@ -22,10 +22,11 @@ export type ShorthandProps<Props extends DefaultObjectShorthandProps> =
  * This should ONLY be used in type templates as in `extends DefaultObjectShorthandProps`;
  * it shouldn't be used as the type of a slot.
  */
-export type DefaultObjectShorthandProps = ObjectShorthandProps<{
-  children?: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
-}>;
+export type DefaultObjectShorthandProps = ObjectShorthandProps<
+  Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
+  }
+>;
 
 /**
  * Defines the slot props for a slot that supports a Component type.
@@ -94,19 +95,23 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
-export type ComponentProps<
-  Shorthands extends ObjectShorthandPropsRecord,
-  Primary extends keyof Shorthands = 'root'
-> = Omit<
-  {
-    [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-  },
-  Primary
-> &
-  PropsWithoutRef<Shorthands[Primary]>;
+export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> =
+  // Include shorthand slot props for each of the component's slots.
+  Omit<
+    {
+      [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+    },
+    // This `Omit<..., Primary & 'root'>` is a little tricky. Here's what it's doing:
+    // * If the Primary slot is 'root', then omit the `root` slot prop.
+    // * Otherwise, don't omit any props: include *both* the Primary and `root` props.
+    //   We need both props to allow the user to specify native props for either slot because the `root` slot is
+    //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
+    Primary & 'root'
+  > &
+    PropsWithoutRef<Shorthands[Primary]>;
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
-  components?: {
+  components: {
     [Key in keyof Shorthands]-?:
       | React.ComponentType<
           NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>
@@ -142,74 +147,3 @@ export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
 // export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
 //   ? React.ForwardRefExoticComponent<Props> & React.RefAttributes<Element>
 //   : never;
-
-/////////////////////////// COMPAT /////////////////////////////////////////////////////////////////////
-
-export type ComponentPropsCompat = {
-  as?: React.ElementType;
-  className?: string;
-  children?: React.ReactNode;
-};
-
-// Shorthand types
-
-export type ShorthandRenderFunctionCompat<TProps> = (
-  Component: React.ElementType<TProps>,
-  props: TProps,
-) => React.ReactNode;
-
-export type ShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> =
-  | React.ReactChild
-  | React.ReactNodeArray
-  | React.ReactPortal
-  | number
-  | null
-  | undefined
-  | ObjectShorthandPropsCompat<TProps>;
-
-export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> = TProps &
-  Omit<ComponentPropsCompat, 'children'> & {
-    children?: TProps['children'] | ShorthandRenderFunctionCompat<TProps>;
-  };
-
-export type BaseSlotsCompat = {
-  root: React.ElementType;
-};
-
-export type SlotPropsCompat<
-  TSlots extends BaseSlotsCompat,
-  TProps,
-  TRootProps extends React.HTMLAttributes<HTMLElement>
-> = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
-} & {
-  root: TRootProps;
-};
-
-/**
- * Helper type to convert the given props of type ShorthandProps into ObjectShorthandProps
- */
-export type ResolvedShorthandPropsCompat<T, K extends keyof T> = Omit<T, K> &
-  { [P in K]: T[P] extends ShorthandPropsCompat<infer U> ? ObjectShorthandPropsCompat<U> : T[P] };
-
-/**
- * Helper type to mark the given props as required.
- * Similar to Required<T> except it only requires a subset of the props.
- */
-export type RequiredPropsCompat<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: T[P] };
-
-/**
- * Converts a components Props type to a State type:
- * * Ensures the specified ShorthandProps are of type ObjectShorthandProps<T>
- * * Marks the given defaulted props as required (-?)
- *
- * @template Props - The component's Props type
- * @template ShorthandPropNames - The keys of Props that correspond to ShorthandProps
- * @template DefaultedPropNames - The keys of Props that will always have a default value provided
- */
-export type ComponentStateCompat<
-  Props,
-  ShorthandPropNames extends keyof Props = never,
-  DefaultedPropNames extends keyof ResolvedShorthandPropsCompat<Props, ShorthandPropNames> = never
-> = RequiredPropsCompat<ResolvedShorthandPropsCompat<Props, ShorthandPropNames>, DefaultedPropNames>;

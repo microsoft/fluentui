@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Image } from '../index';
+import { Image } from '../Image';
 
-export const ImageShape = () => (
+export const Shape = () => (
   <div style={{ display: 'flex', gap: 8 }}>
     <Image
       alt="Allan's avatar"
@@ -25,7 +25,7 @@ export const ImageShape = () => (
     />
   </div>
 );
-ImageShape.parameters = {
+Shape.parameters = {
   docs: {
     description: {
       story: 'Images can be styled as square (default), circular, or with rounded corners.',

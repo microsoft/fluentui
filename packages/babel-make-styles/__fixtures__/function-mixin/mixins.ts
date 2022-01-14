@@ -1,9 +1,7 @@
-import { MakeStyles, MakeStylesStyleRule } from '@fluentui/make-styles';
-import { Theme } from '@fluentui/react-theme';
+import { MakeStylesStyle } from '@fluentui/make-styles';
+import { tokens } from '@fluentui/react-theme';
 
-export const createMixin = (rule: MakeStyles): MakeStylesStyleRule<Theme> => {
-  return theme => ({
-    color: theme.colorBrandBackground,
-    ...rule,
-  });
-};
+export const createMixin = (rule: MakeStylesStyle): MakeStylesStyle => ({
+  color: tokens.colorBrandBackground,
+  ...rule,
+});

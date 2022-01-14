@@ -1,8 +1,6 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Badge } from '@fluentui/react-badge';
+
+import { Badge } from '../index';
 
 export const Appearance = () => {
   return (
@@ -18,7 +16,7 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story: 'A Badge can have appearance as `ghost`, `filled`, `outline`, `tint`',
+      story: 'A badge can have a `ghost`, `filled`, `outline`, or `tint` appearance. The default is `filled`.',
     },
   },
 };

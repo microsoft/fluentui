@@ -3,6 +3,8 @@ import { makeStyles } from '@fluentui/react-make-styles';
 import { typographyStyles } from '../../typographyStyles/index';
 import { createWrapper, TextWrapperProps } from '../wrapper';
 
+export const subheadlineClassName = 'fui-Subheadline';
+
 /**
  * Styles for the root slot
  */
@@ -15,5 +17,6 @@ const useStyles = makeStyles({
  */
 export const Subheadline: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,
+  className: subheadlineClassName,
   displayName: 'Subheadline',
 });

@@ -162,7 +162,12 @@ jobs:
         displayName: build Webpack loader
 
       - script: |
-          yarn lage screener --to vr-tests --debug --verbose --no-cache
+          yarn workspace vr-tests screener:build
+        displayName: build vr-tests storybook
+
+      # Don't use lage here because it eats long output for reasons that are hard to debug
+      - script: |
+          yarn workspace vr-tests screener
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)

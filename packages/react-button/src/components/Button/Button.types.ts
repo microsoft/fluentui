@@ -3,7 +3,7 @@ import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@f
 
 export type ButtonSlots = {
   /**
-   * Root of the component that renders as either a <button> tag.
+   * Root of the component that renders as either a `<button>` tag or an `<a>` tag.
    */
   root: ARIAButtonShorthandProps;
 
@@ -47,7 +47,7 @@ export type ButtonCommons = {
    * A button can format its icon to appear before or after its content.
    * @default 'before'
    */
-  iconPosition: 'before' | 'after';
+  iconPosition?: 'before' | 'after';
 
   /**
    * A button can be rounded, circular, or square.

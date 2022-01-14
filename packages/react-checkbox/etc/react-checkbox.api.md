@@ -15,13 +15,14 @@ import * as React_2 from 'react';
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
-// @public
+// @public (undocumented)
+export const checkboxClassName = "fui-Checkbox";
+
+// @public (undocumented)
 export interface CheckboxCommons {
     checked: 'mixed' | boolean;
     circular: boolean;
-    containerClassName?: string;
     labelPosition: 'before' | 'after';
-    rootId: string | undefined;
     size: 'medium' | 'large';
 }
 
@@ -32,20 +33,16 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export type CheckboxProps = Omit<ComponentProps<CheckboxSlots>, 'defaultChecked'> & Partial<CheckboxCommons> & {
-    id?: string;
+export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
+    children?: never;
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     defaultChecked?: 'mixed' | boolean;
-    required?: boolean;
-    disabled?: boolean;
 };
-
-// @public
-export const checkboxShorthandProps: Array<keyof CheckboxSlots>;
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    root: ObjectShorthandProps<LabelProps> | IntrinsicShorthandProps<'span'>;
+    root: IntrinsicShorthandProps<'span'>;
+    label?: ObjectShorthandProps<LabelProps>;
     input: IntrinsicShorthandProps<'input'>;
     indicator: IntrinsicShorthandProps<'div'>;
 };
@@ -57,7 +54,7 @@ export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
 export const renderCheckbox: (state: CheckboxState) => JSX.Element;
 
 // @public
-export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>) => CheckboxState;
+export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
 
 // @public
 export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;

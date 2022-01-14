@@ -1,41 +1,121 @@
-import { Properties as CSSProperties } from 'csstype';
+import * as CSS from 'csstype';
 
-export interface MakeStyles extends Omit<CSSProperties, 'animationName'> {
-  // TODO Questionable: how else would users target their own children?
-  [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+export type MakeStylesCSSValue = string | 0;
 
-  animationName?: object | string;
-}
+type MakeStylesUnsupportedCSSProperties = {
+  // We don't support expansion of CSS shorthands
+  animation?: never;
+  background?: never;
+  border?: never;
+  borderBlock?: never;
+  borderBlockEnd?: never;
+  borderBlockStart?: never;
+  borderBottom?: never;
+  borderColor?: never;
+  borderImage?: never;
+  borderInline?: never;
+  borderInlineEnd?: never;
+  borderInlineStart?: never;
+  borderLeft?: never;
+  borderRadius?: never;
+  borderRight?: never;
+  borderStyle?: never;
+  borderTop?: never;
+  borderWidth?: never;
+  columnRule?: never;
+  flex?: never;
+  flexFlow?: never;
+  font?: never;
+  gap?: never;
+  grid?: never;
+  gridArea?: never;
+  gridColumn?: never;
+  gridGap?: never;
+  gridRow?: never;
+  gridTemplate?: never;
+  listStyle?: never;
+  margin?: never;
+  mask?: never;
+  maskBorder?: never;
+  offset?: never;
+  outline?: never;
+  overflow?: never;
+  padding?: never;
+  placeItems?: never;
+  placeSelf?: never;
+  textDecoration?: never;
+  textEmphasis?: never;
+  transition?: never;
+};
+type MakeStylesCSSProperties = Omit<
+  CSS.Properties<MakeStylesCSSValue>,
+  // We have custom definition for "animationName" and "fontWeight"
+  'animationName' | 'fontWeight'
+> &
+  MakeStylesUnsupportedCSSProperties;
 
-export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
-export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
+export type MakeStylesStrictCSSObject = MakeStylesCSSProperties &
+  MakeStylesCSSPseudos & {
+    animationName?: MakeStylesAnimation | MakeStylesAnimation[] | CSS.AnimationProperty;
+    fontWeight?: CSS.Properties['fontWeight'] | string;
+  };
+
+type MakeStylesCSSPseudos = {
+  [Property in CSS.Pseudos]?:
+    | (MakeStylesStrictCSSObject & { content?: string })
+    | (MakeStylesCSSObjectCustomL1 & { content?: string });
+};
+
+//
+// "MakeStylesCSSObjectCustom*" is a workaround to avoid circular references in types that are breaking TS <4.
+// Once we will support "typesVersions" (types downleleving) or update our requirements for TS this should be
+// updated or removed.
+//
+
+type MakeStylesCSSObjectCustomL1 = {
+  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesCSSObjectCustomL2;
+} & MakeStylesStrictCSSObject;
+type MakeStylesCSSObjectCustomL2 = {
+  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesCSSObjectCustomL3;
+} & MakeStylesStrictCSSObject;
+type MakeStylesCSSObjectCustomL3 = {
+  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesCSSObjectCustomL4;
+} & MakeStylesStrictCSSObject;
+type MakeStylesCSSObjectCustomL4 = {
+  [Property: string]: MakeStylesCSSValue | undefined | MakeStylesCSSObjectCustomL5;
+} & MakeStylesStrictCSSObject;
+type MakeStylesCSSObjectCustomL5 = {
+  [Property: string]: MakeStylesCSSValue | undefined;
+} & MakeStylesStrictCSSObject;
+
+export type MakeStylesAnimation = Record<'from' | 'to' | string, MakeStylesCSSObjectCustomL1>;
+export type MakeStylesStyle = MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL1;
 
 export interface MakeStylesOptions {
   dir: 'ltr' | 'rtl';
   renderer: MakeStylesRenderer;
 }
 
-export type MakeStaticStyles =
-  | ({
-      [key: string]: CSSProperties &
-        // TODO Questionable: how else would users target their own children?
-        Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
-    } & {
-      '@font-face'?: {
-        fontFamily: string;
-        src: string;
+export type MakeStaticStylesStyle = {
+  [key: string]: CSS.Properties &
+    // TODO Questionable: how else would users target their own children?
+    Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+} & {
+  '@font-face'?: {
+    fontFamily: string;
+    src: string;
 
-        fontFeatureSettings?: string;
-        fontStretch?: string;
-        fontStyle?: string;
-        fontVariant?: string;
-        fontVariationSettings?: string;
-        fontWeight?: number | string;
+    fontFeatureSettings?: string;
+    fontStretch?: string;
+    fontStyle?: string;
+    fontVariant?: string;
+    fontVariationSettings?: string;
+    fontWeight?: number | string;
 
-        unicodeRange?: string;
-      };
-    })
-  | string;
+    unicodeRange?: string;
+  };
+};
+export type MakeStaticStyles = MakeStaticStylesStyle | string;
 
 export interface MakeStaticStylesOptions {
   renderer: MakeStylesRenderer;
@@ -95,6 +175,6 @@ export type CSSClassesMapBySlot<Slots extends string | number> = Record<Slots, C
 
 export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
 
-export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
+export type StylesBySlots<Slots extends string | number> = Record<Slots, MakeStylesStyle>;
 
 export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ 'rtl' | 'ltr'];

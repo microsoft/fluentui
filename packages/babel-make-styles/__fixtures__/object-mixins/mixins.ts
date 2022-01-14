@@ -1,17 +1,17 @@
-import { MakeStyles, MakeStylesStyleRule } from '@fluentui/make-styles';
-import { Theme } from '@fluentui/react-theme';
+import { MakeStylesStyle } from '@fluentui/make-styles';
+import { tokens } from '@fluentui/react-theme';
 
-export const flexStyles: MakeStyles = {
+export const flexStyles: MakeStylesStyle = {
   display: 'flex',
   flexDirection: 'column',
 };
 
-export const gridStyles = (gridGap: string): MakeStyles => ({
+export const gridStyles = (gridGap: string): MakeStylesStyle => ({
   display: 'grid',
-  gridGap,
+  gridRowGap: gridGap,
 });
 
-export const typography: Record<'text' | 'header', MakeStylesStyleRule<Theme>> = {
-  text: theme => ({ fontWeight: theme.fontWeightRegular }),
+export const typography: Record<'text' | 'header', MakeStylesStyle> = {
+  text: { fontWeight: tokens.fontWeightRegular },
   header: { fontWeight: 'bold' },
 };

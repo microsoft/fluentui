@@ -120,17 +120,19 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
-function useHideSiblingNodes(props: IPopupProps) {
+function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const isModalOrPanel = props['aria-modal'];
 
   React.useEffect(() => {
     const targetDocument = getDocument();
-    if (isModalOrPanel && targetDocument) {
-      const children = targetDocument.body.children;
-      let nodesToHide: Element[] = [];
+    if (isModalOrPanel && targetDocument && root && root.current) {
+      const popupPortalNode = root.current.parentElement?.parentElement;
+      let nodesToHide: HTMLElement[] = findSiblingNodes(popupPortalNode, popupPortalNode?.parentElement);
 
-      for (let i = 0; i < children.length - 1; i++) {
-        nodesToHide.push(children[i]);
+      //if popupPortalNode is not a direct child of body, its ancestor's siblings need to be hidden as well.
+      if (popupPortalNode?.parentElement !== targetDocument.body) {
+        const popupAncestorNode = findAncestorNode(root.current, targetDocument);
+        nodesToHide.concat(findSiblingNodes(popupAncestorNode, targetDocument.body));
       }
 
       nodesToHide = nodesToHide.filter(
@@ -145,8 +147,24 @@ function useHideSiblingNodes(props: IPopupProps) {
 
       return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
     }
-  }, [isModalOrPanel]);
+  }, [isModalOrPanel, root]);
 }
+
+function findAncestorNode(node: HTMLElement | null, targetDocument: Document): HTMLElement | null {
+  let currNode = node;
+
+  while (currNode && currNode.parentElement !== targetDocument.body) {
+    currNode = currNode.parentElement;
+  }
+
+  return currNode;
+}
+
+const findSiblingNodes = (
+  node: HTMLElement | null | undefined,
+  parentNode: HTMLElement | null | undefined,
+): HTMLElement[] =>
+  node && parentNode ? [].slice.call(parentNode.children).filter((child: HTMLElement) => child !== node) : [];
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -160,7 +178,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    useHideSiblingNodes(props);
+    useHideSiblingNodes(props, root);
     useRestoreFocus(props, root);
 
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;

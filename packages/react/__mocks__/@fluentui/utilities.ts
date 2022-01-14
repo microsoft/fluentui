@@ -8,14 +8,14 @@ declare function setTimeout(cb: Function, delay: number): number;
 // https://github.com/facebook/jest/issues/3465
 // Mock impl inspired from issue.
 class MockAsync extends Async {
-  private _timeoutId: number | null;
+  private _timeoutId: number | undefined;
 
   public debounce(callback: Function, timeout: number) {
-    this._timeoutId = null;
+    this._timeoutId = undefined;
     const debounced = (...args: any[]) => {
       if (this._timeoutId) {
         clearTimeout(this._timeoutId);
-        this._timeoutId = null;
+        this._timeoutId = undefined;
       }
       // Callback functions throughout repo aren't binding properly, so we have to access
       // Async's private _parent member and invoke callbacks the same way Async.debounce does.
@@ -26,7 +26,7 @@ class MockAsync extends Async {
     const cancel = () => {
       if (this._timeoutId) {
         clearTimeout(this._timeoutId);
-        this._timeoutId = null;
+        this._timeoutId = undefined;
       }
     };
 
@@ -36,8 +36,10 @@ class MockAsync extends Async {
   }
 
   public dispose() {
-    clearTimeout(this._timeoutId);
-    this._timeoutId = null;
+    if (this._timeoutId) {
+      clearTimeout(this._timeoutId);
+    }
+    this._timeoutId = undefined;
 
     super.dispose();
   }

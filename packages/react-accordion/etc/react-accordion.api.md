@@ -17,6 +17,9 @@ import * as React_2 from 'react';
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
 // @public (undocumented)
+export const accordionClassName = "fui-Accordion";
+
+// @public (undocumented)
 export type AccordionCommons = {
     navigable: boolean;
     multiple: boolean;
@@ -41,6 +44,9 @@ export type AccordionContextValues = {
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 
 // @public (undocumented)
+export const accordionHeaderClassName = "fui-AccordionHeader";
+
+// @public (undocumented)
 export type AccordionHeaderCommons = {
     size: AccordionHeaderSize;
     expandIconPosition: AccordionHeaderExpandIconPosition;
@@ -61,19 +67,10 @@ export type AccordionHeaderContextValues = {
 };
 
 // @public (undocumented)
-export const AccordionHeaderExpandIcon: ForwardRefComponent<AccordionHeaderExpandIconProps>;
-
-// @public (undocumented)
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderExpandIconProps = IntrinsicShorthandProps<'span'>;
-
-// @public (undocumented)
 export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
-
-// @public
-export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
@@ -82,7 +79,7 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderSlots = {
     root: IntrinsicShorthandProps<'div'>;
     button: ARIAButtonShorthandProps;
-    expandIcon: AccordionHeaderExpandIconProps;
+    expandIcon: IntrinsicShorthandProps<'span'>;
     icon?: IntrinsicShorthandProps<'div'>;
     children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };
@@ -95,6 +92,9 @@ export type AccordionIndex = number | number[];
 
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
+
+// @public (undocumented)
+export const accordionItemClassName = "fui-AccordionItem";
 
 // @public (undocumented)
 export type AccordionItemCommons = {
@@ -119,9 +119,6 @@ export type AccordionItemContextValues = {
 // @public (undocumented)
 export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & Pick<AccordionItemCommons, 'value'>;
 
-// @public
-export const accordionItemShorthandProps: Array<keyof AccordionItemSlots>;
-
 // @public (undocumented)
 export type AccordionItemSlots = {
     root: IntrinsicShorthandProps<'div'>;
@@ -137,10 +134,10 @@ export type AccordionItemValue = unknown;
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
 
 // @public (undocumented)
-export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
+export const accordionPanelClassName = "fui-AccordionPanel";
 
-// @public
-export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots>;
+// @public (undocumented)
+export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
@@ -158,9 +155,6 @@ export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionC
     defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
     onToggle?: AccordionToggleEventHandler;
 };
-
-// @public (undocumented)
-export const accordionShorthandProps: Array<keyof AccordionSlots>;
 
 // @public (undocumented)
 export type AccordionSlots = {
@@ -217,11 +211,17 @@ export const useAccordionItemContext: () => AccordionItemContextValue;
 // @public (undocumented)
 export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues;
 
+// @public (undocumented)
+export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
+
 // @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
 // @public
 export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
+
+// @public (undocumented)
+export const useAccordionStyles: (state: AccordionState) => AccordionState;
 
 // (No @packageDocumentation comment for this package)
 

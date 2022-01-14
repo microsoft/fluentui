@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { CardPreviewProps, CardPreviewSlots, CardPreviewState } from './CardPreview.types';
-
-/**
- * Array of all shorthand properties listed in CardPreviewShorthandProps
- */
-export const cardPreviewShorthandProps: Array<keyof CardPreviewSlots> = ['root', 'logo'];
+import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
 
 /**
  * Create the state required to render CardPreview.

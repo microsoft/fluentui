@@ -1,4 +1,4 @@
-import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
+import { makeStylesRulesSerializer } from '../common/snapshotSerializers';
 import { resolveStyleRules } from './resolveStyleRules';
 import { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
 
@@ -113,99 +113,6 @@ describe('resolveStyleRules', () => {
         }
         .fr90kjk {
           -moz-animation: initial;
-        }
-      `);
-    });
-
-    it('performs expansion of shorthands', () => {
-      expect(resolveStyleRules({ outline: '1px' })).toMatchInlineSnapshot(`
-        .fpvhumw {
-          outline-width: 1px;
-        }
-      `);
-      expect(resolveStyleRules({ padding: '5px' })).toMatchInlineSnapshot(`
-        .f1sbtcvk {
-          padding-top: 5px;
-        }
-        .fwiuce9 {
-          padding-right: 5px;
-        }
-        .f15vdbe4 {
-          padding-left: 5px;
-        }
-        .fdghr9 {
-          padding-bottom: 5px;
-        }
-        .f15vdbe4 {
-          padding-left: 5px;
-        }
-        .fwiuce9 {
-          padding-right: 5px;
-        }
-      `);
-    });
-
-    it('performs expansion of shorthands on nested objects', () => {
-      expect(resolveStyleRules({ outline: '1px', ':hover': { outline: '5px' } })).toMatchInlineSnapshot(`
-        .fpvhumw {
-          outline-width: 1px;
-        }
-        .fmcm1e3:hover {
-          outline-width: 5px;
-        }
-      `);
-    });
-
-    it('shorthands and longhands work like in CSS', () => {
-      expect(
-        resolveStyleRules({
-          margin: '5px',
-          marginLeft: '10px',
-        }),
-      ).toMatchInlineSnapshot(`
-        .f1rqyxcv {
-          margin-top: 5px;
-        }
-        .fq02s40 {
-          margin-right: 5px;
-        }
-        .f1f7bkv5 {
-          margin-left: 5px;
-        }
-        .f475ppk {
-          margin-bottom: 5px;
-        }
-        .f1oou7ox {
-          margin-left: 10px;
-        }
-        .f1pxv85q {
-          margin-right: 10px;
-        }
-      `);
-
-      expect(
-        resolveStyleRules({
-          marginLeft: '10px',
-          margin: '5px',
-        }),
-      ).toMatchInlineSnapshot(`
-        .f1f7bkv5 {
-          margin-left: 5px;
-        }
-        .fq02s40 {
-          margin-right: 5px;
-        }
-        .f1rqyxcv {
-          margin-top: 5px;
-        }
-        .fq02s40 {
-          margin-right: 5px;
-        }
-        .f1f7bkv5 {
-          margin-left: 5px;
-        }
-        .f475ppk {
-          margin-bottom: 5px;
         }
       `);
     });
@@ -599,10 +506,10 @@ describe('resolveStyleRules', () => {
             },
             {
               from: {
-                opacity: 0,
+                opacity: '0',
               },
               to: {
-                opacity: 1,
+                opacity: '1',
               },
             },
           ],
@@ -708,61 +615,6 @@ describe('resolveStyleRules', () => {
         sj55zd: 'fe3e8s9',
         uwmqm3: ['frdkuqy', 'f81rol6'],
       });
-    });
-  });
-
-  describe('experimental', () => {
-    it('allows to increase specificity', () => {
-      expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
-        .fe3e8s91.fe3e8s91 {
-          color: red;
-        }
-      `);
-      expect(resolveStyleRules({ color: 'red' }, 2)).toMatchInlineSnapshot(`
-        .fe3e8s92.fe3e8s92.fe3e8s92 {
-          color: red;
-        }
-      `);
-    });
-
-    it('allows to increase for media queries', () => {
-      expect(
-        resolveStyleRules(
-          {
-            '@media screen and (max-width: 992px)': {
-              color: 'red',
-            },
-          },
-          1,
-        ),
-      ).toMatchInlineSnapshot(`
-        @media screen and (max-width: 992px) {
-          .f1ojdyje1.f1ojdyje1 {
-            color: red;
-          }
-        }
-      `);
-    });
-
-    it('allows to increase for RTL', () => {
-      expect(resolveStyleRules({ left: '5px' }, 1)).toMatchInlineSnapshot(`
-        .f5b3q4t1.f5b3q4t1 {
-          left: 5px;
-        }
-        .flgfsvn1.flgfsvn1 {
-          right: 5px;
-        }
-      `);
-    });
-
-    it('generates unique classnames with different specificity', () => {
-      const classnamesSet = new Set<string>();
-
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' }, 1)));
-      classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' }, 2)));
-
-      expect(classnamesSet.size).toBe(3);
     });
   });
 });

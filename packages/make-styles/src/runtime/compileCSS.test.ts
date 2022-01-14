@@ -1,16 +1,11 @@
-import { compileCSS, CompileCSSOptions } from './compileCSS';
+import { compileCSS, CompileCSSOptions, normalizePseudoSelector } from './compileCSS';
 
-const defaultOptions: Pick<
-  CompileCSSOptions,
-  'rtlClassName' | 'className' | 'media' | 'pseudo' | 'support' | 'unstable_cssPriority'
-> = {
+const defaultOptions: Pick<CompileCSSOptions, 'rtlClassName' | 'className' | 'media' | 'pseudo' | 'support'> = {
   className: 'foo',
   rtlClassName: 'rtl-foo',
   media: '',
   pseudo: '',
   support: '',
-
-  unstable_cssPriority: 0,
 };
 
 describe('compileCSS', () => {
@@ -153,5 +148,25 @@ describe('compileCSS', () => {
       ]
     `);
     });
+  });
+});
+
+describe('normalizePseudoSelector', () => {
+  it('handles basic ', () => {
+    expect(normalizePseudoSelector(':hover')).toMatchInlineSnapshot(`"&:hover"`);
+  });
+
+  it('handles spacing', () => {
+    expect(normalizePseudoSelector(' :hover')).toMatchInlineSnapshot(`"& :hover"`);
+  });
+
+  it('handles multiple pseudos', () => {
+    expect(normalizePseudoSelector(':focus:hover')).toMatchInlineSnapshot(`"&:focus:hover"`);
+  });
+
+  it('handles comma separated pseudos', () => {
+    expect(normalizePseudoSelector('& :hover, & :focus')).toMatchInlineSnapshot(`"& :hover, & :focus"`);
+    expect(normalizePseudoSelector(':focus,:hover')).toMatchInlineSnapshot(`"&:focus,&:hover"`);
+    expect(normalizePseudoSelector(':focus, :hover')).toMatchInlineSnapshot(`"&:focus,& :hover"`);
   });
 });

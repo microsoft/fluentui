@@ -131,7 +131,7 @@ function getPackageAndExampleName(examplePath: string): [string, string] {
 }
 
 /** Run tests on these packages' examples */
-const includedPackages = ['react', 'react-button', 'react-checkbox', 'react-focus', 'react-link', 'react-tabs'];
+const includedPackages = ['react', 'react-button', 'react-checkbox', 'react-focus', 'react-link'];
 
 declare const global: any;
 

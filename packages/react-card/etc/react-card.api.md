@@ -14,16 +14,16 @@ import * as React_2 from 'react';
 export const Card: ForwardRefComponent<CardProps>;
 
 // @public (undocumented)
-export type CardCommons = {};
+export const cardClassName = "fui-Card";
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
-// @public
-export type CardFooterProps = ComponentProps<CardFooterSlots>;
+// @public (undocumented)
+export const cardFooterClassName = "fui-CardFooter";
 
 // @public
-export const cardFooterShorthandProps: Array<keyof CardFooterSlots>;
+export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
 // @public (undocumented)
 export type CardFooterSlots = {
@@ -37,11 +37,11 @@ export type CardFooterState = ComponentState<CardFooterSlots>;
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 
+// @public (undocumented)
+export const cardHeaderClassName = "fui-CardHeader";
+
 // @public
 export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
-
-// @public (undocumented)
-export const cardHeaderShorthandProps: Array<keyof CardHeaderSlots>;
 
 // @public (undocumented)
 export type CardHeaderSlots = {
@@ -59,11 +59,11 @@ export type CardHeaderState = ComponentState<CardHeaderSlots>;
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
-// @public
-export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
+// @public (undocumented)
+export const cardPreviewClassName = "fui-CardPreview";
 
 // @public
-export const cardPreviewShorthandProps: Array<keyof CardPreviewSlots>;
+export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 // @public (undocumented)
 export type CardPreviewSlots = {
@@ -75,7 +75,7 @@ export type CardPreviewSlots = {
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
 // @public
-export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
+export type CardProps = ComponentProps<CardSlots>;
 
 // @public (undocumented)
 export type CardSlots = {
@@ -83,7 +83,7 @@ export type CardSlots = {
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & CardCommons;
+export type CardState = ComponentState<CardSlots>;
 
 // @public
 export const renderCard: (state: CardState) => JSX.Element;

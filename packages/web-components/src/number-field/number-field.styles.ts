@@ -1,179 +1,66 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
-  disabledCursor,
   display,
   ElementDefinitionContext,
-  focusVisible,
   forcedColorsStylesheetBehavior,
   NumberFieldOptions,
 } from '@microsoft/fast-foundation';
-import { SystemColors } from '@microsoft/fast-web-utilities';
-import { fillStateStyles, heightNumber } from '../styles/index';
-import { appearanceBehavior } from '../utilities/behaviors';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 import {
-  bodyFont,
-  controlCornerRadius,
-  designUnit,
-  disabledOpacity,
-  focusStrokeOuter,
-  neutralFillHover,
-  neutralFillInputActive,
-  neutralFillInputHover,
-  neutralFillInputRest,
-  neutralFillRest,
-  neutralForegroundRest,
-  neutralStrokeActive,
-  neutralStrokeHover,
-  neutralStrokeRest,
-  strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
-} from '../design-tokens';
+  inputFilledForcedColorStyles,
+  inputFilledStyles,
+  inputForcedColorStyles,
+  inputStateStyles,
+  inputStyles,
+} from '../styles/index';
+import { appearanceBehavior } from '../utilities/behaviors';
+import { designUnit } from '../design-tokens';
 
 export const numberFieldFilledStyles: (
   context: ElementDefinitionContext,
   definition: NumberFieldOptions,
 ) => ElementStyles = (context: ElementDefinitionContext, definition: NumberFieldOptions) =>
   css`
-    :host([appearance='filled']) .root {
-      background: ${neutralFillRest};
-      border-color: transparent;
-    }
-
-    :host([appearance='filled']:hover:not([disabled])) .root {
-      background: ${neutralFillHover};
-      border-color: transparent;
-    }
-
-    :host([appearance='filled']:focus-within:not([disabled])) .root {
-      border-color: transparent;
-      box-shadow: none;
-    }
-    ${fillStateStyles(context, definition)}
+    ${inputFilledStyles(context, definition, '.root')}
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
-        :host([appearance='filled']) .root,
-        :host([appearance='filled']:hover:not([disabled])) .root {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.FieldText};
-        }
-        :host([appearance='filled']:active:not([disabled])) .root,
-        :host([appearance='filled']:focus-within:not([disabled])) .root {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.FieldText};
-        }
-        :host([appearance='filled']:not([disabled]):active)::after,
-        :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
-          border-bottom-color: ${SystemColors.Highlight};
-        }
-        :host([appearance='filled'][disabled]) .root {
-          border-color: ${SystemColors.GrayText};
-          background: ${SystemColors.Field};
-        }
-        :host([appearance='filled'][disabled]) .root {
-          border-color: ${SystemColors.GrayText};
-          background: ${SystemColors.Field};
-        }
+        ${inputFilledForcedColorStyles(context, definition, '.root')}
       `,
     ),
   );
 
 export const numberFieldStyles = (context, definition) =>
   css`
-    ${display('inline-block')} :host {
-      font-family: ${bodyFont};
-      outline: none;
-      user-select: none;
-      position: relative;
-    }
+    ${display('inline-block')}
+
+    ${inputStyles(context, definition, '.root')}
+
+    ${inputStateStyles(context, definition, '.root')}
 
     .root {
-      box-sizing: border-box;
-      position: relative;
       display: flex;
       flex-direction: row;
-      color: ${neutralForegroundRest};
-      background: ${neutralFillInputRest};
-      border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-      height: calc(${heightNumber} * 1px);
     }
 
     .control {
       -webkit-appearance: none;
-      font: inherit;
+      color: inherit;
       background: transparent;
       border: 0;
-      color: inherit;
       height: calc(100% - 4px);
-      width: 100%;
       margin-top: auto;
       margin-bottom: auto;
-      border: none;
       padding: 0 calc(${designUnit} * 2px + 1px);
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-    }
-
-    .control:hover,
-    .control:${focusVisible},
-    .control:disabled,
-    .control:active {
-      outline: none;
-    }
-
-    .controls {
-      opacity: 0;
-    }
-
-    .label {
-      display: block;
-      color: ${neutralForegroundRest};
-      cursor: pointer;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-      margin-bottom: 4px;
-    }
-
-    .label__hidden {
-      display: none;
-      visibility: hidden;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
     }
 
     .start,
     .end {
       margin: auto;
       fill: currentcolor;
-    }
-
-    .step-up,
-    .step-down {
-      padding: 2px 10px;
-      cursor: pointer;
-    }
-
-    .step-up:before,
-    .step-down:before {
-      content: '';
-      display: block;
-      border: solid transparent 6px;
-    }
-
-    .step-up:before {
-      border-bottom-color: ${neutralForegroundRest};
-    }
-
-    .step-down:before {
-      border-top-color: ${neutralForegroundRest};
-    }
-
-    ::slotted(svg) {
-      ${
-        /* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''
-      } width: 16px;
-      height: 16px;
     }
 
     .start {
@@ -186,19 +73,11 @@ export const numberFieldStyles = (context, definition) =>
       margin-inline-end: 11px;
     }
 
-    :host(:hover:not([disabled])) .root {
-      background: ${neutralFillInputHover};
-      border-color: ${neutralStrokeHover};
-    }
-
-    :host(:active:not([disabled])) .root {
-      background: ${neutralFillInputActive};
-      border-color: ${neutralStrokeActive};
-    }
-
-    :host(:focus-within:not([disabled])) .root {
-      border-color: ${focusStrokeOuter};
-      box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
+    .controls {
+      opacity: 0;
+      position: relative;
+      top: -1px;
+      z-index: 3;
     }
 
     :host(:hover:not([disabled])) .controls,
@@ -206,63 +85,24 @@ export const numberFieldStyles = (context, definition) =>
       opacity: 1;
     }
 
-    :host([disabled]) .label,
-    :host([readonly]) .label,
-    :host([readonly]) .control,
-    :host([disabled]) .control {
-      cursor: ${disabledCursor};
+    .step-up,
+    .step-down {
+      display: flex;
+      padding: 0 8px;
+      cursor: pointer;
     }
 
-    :host([disabled]) {
-      opacity: ${disabledOpacity};
-    }
-
-    :host([disabled]) .control {
-      border-color: ${neutralStrokeRest};
+    .step-up {
+      padding-top: 3px;
     }
   `.withBehaviors(
     appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`
-        .root {
-          forced-color-adjust: none;
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.FieldText};
-        }
-        :host(:hover:not([disabled])) .root {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.Highlight};
-        }
-        :host(:focus-within:enabled) .root {
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 1px ${SystemColors.Highlight} inset;
-        }
-        .control,
-        ::placeholder,
-        ::-webkit-input-placeholder {
-          color: ${SystemColors.FieldText};
-        }
-        .step-up:before {
-          border-bottom-color: ${SystemColors.FieldText};
-        }
-        .step-down:before {
-          border-top-color: ${SystemColors.FieldText};
-        }
-        .start,
-        .end {
+        ${inputForcedColorStyles(context, definition, '.root')}
+        .step-up,
+        .step-down {
           fill: ${SystemColors.FieldText};
-        }
-        :host([disabled]) {
-          opacity: 1;
-        }
-        :host([disabled]) .root {
-          border-color: ${SystemColors.GrayText};
-          background: ${SystemColors.Field};
-        }
-        :host([disabled]) ::placeholder,
-        :host([disabled]) ::-webkit-input-placeholder,
-        :host([disabled]) .label {
-          color: ${SystemColors.GrayText};
         }
       `,
     ),

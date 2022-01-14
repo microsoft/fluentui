@@ -55,4 +55,10 @@ export interface IKeytipTreeNode {
    * T/F if this keytip is a persisted keytip
    */
   persisted?: boolean;
+
+  /**
+   * Whether or not this keytip belongs to a component that is in an overflow menu
+   * and also has a menu
+   */
+  hasOverflowSubMenu?: boolean;
 }

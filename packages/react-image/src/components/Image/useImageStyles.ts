@@ -1,27 +1,30 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import type { ImageState } from './Image.types';
 
+export const imageClassName = 'fui-Image';
+
 const useStyles = makeStyles({
-  root: theme => ({
-    borderColor: theme.colorNeutralStroke1,
-    borderRadius: theme.borderRadiusNone,
+  root: {
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
 
     boxSizing: 'border-box',
     display: 'inline-block',
-  }),
-  rootBordered: theme => ({
-    borderStyle: 'solid',
-    borderWidth: theme.strokeWidthThin,
-  }),
-  rootCircular: theme => ({
-    borderRadius: theme.borderRadiusCircular,
-  }),
-  rootRounded: theme => ({
-    borderRadius: theme.borderRadiusMedium,
-  }),
-  rootShadow: theme => ({
-    boxShadow: theme.shadow4,
-  }),
+  },
+  rootBordered: {
+    ...shorthands.borderStyle('solid'),
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
+  },
+  rootCircular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+  },
+  rootRounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  rootShadow: {
+    boxShadow: tokens.shadow4,
+  },
   rootFitNone: {
     objectFit: 'none',
     objectPosition: 'left top',
@@ -54,6 +57,7 @@ const useStyles = makeStyles({
 export const useImageStyles = (state: ImageState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    imageClassName,
     styles.root,
     state.bordered && styles.rootBordered,
     state.shape === 'circular' && styles.rootCircular,

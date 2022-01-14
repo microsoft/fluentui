@@ -11,6 +11,7 @@ describe('MenuTrigger', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
+      'component-has-static-classname',
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
     ],
@@ -49,8 +50,7 @@ describe('MenuTrigger', () => {
     expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-expanded="false"
-          aria-haspopup="true"
+          aria-haspopup="menu"
           id=""
         >
           Trigger
@@ -80,8 +80,7 @@ describe('MenuTrigger', () => {
     expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-expanded="false"
-          aria-haspopup="true"
+          aria-haspopup="menu"
           id=""
         >
           Trigger

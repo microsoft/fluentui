@@ -1,8 +1,109 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 08 Oct 2021 07:31:50 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jan 2022 07:32:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.1)
+
+Wed, 12 Jan 2022 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.0..@fluentui/web-components_v2.2.1)
+
+### Patches
+
+- Update tab panel to base type size ([PR #21180](https://github.com/microsoft/fluentui/pull/21180) by 47367562+bheston@users.noreply.github.com)
+
+## [2.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.0)
+
+Fri, 07 Jan 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.3..@fluentui/web-components_v2.2.0)
+
+### Minor changes
+
+- feat: add search web component ([PR #21177](https://github.com/microsoft/fluentui/pull/21177) by jes@microsoft.com)
+
+## [2.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.3)
+
+Wed, 15 Dec 2021 07:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.2..@fluentui/web-components_v2.1.3)
+
+### Patches
+
+- fix: prevent disabled flipper from emitting event ([PR #21003](https://github.com/microsoft/fluentui/pull/21003) by jes@microsoft.com)
+
+## [2.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.2)
+
+Fri, 10 Dec 2021 07:30:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.1..@fluentui/web-components_v2.1.2)
+
+### Patches
+
+- fix: z-index in accordion header renders above content ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by robarb@microsoft.com)
+
+## [2.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.1)
+
+Thu, 02 Dec 2021 07:36:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.0..@fluentui/web-components_v2.1.1)
+
+### Patches
+
+- fix: tabpanel shifting in vertical layout ([PR #20641](https://github.com/microsoft/fluentui/pull/20641) by jes@microsoft.com)
+
+## [2.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.0)
+
+Tue, 23 Nov 2021 07:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.2..@fluentui/web-components_v2.1.0)
+
+### Minor changes
+
+- fix: remove margins from host elements ([PR #20710](https://github.com/microsoft/fluentui/pull/20710) by jes@microsoft.com)
+
+## [2.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.2)
+
+Tue, 09 Nov 2021 07:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.1..@fluentui/web-components_v2.0.2)
+
+### Patches
+
+- FluentUI calendar component ([PR #20356](https://github.com/microsoft/fluentui/pull/20356) by robarb@microsoft.com)
+
+## [2.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.1)
+
+Tue, 02 Nov 2021 07:37:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.0..@fluentui/web-components_v2.0.1)
+
+### Patches
+
+- fix web components webpack integration docs and update the package dependencies ([PR #20429](https://github.com/microsoft/fluentui/pull/20429) by chhol@microsoft.com)
+- fixed high contrast visual for web components ([PR #20418](https://github.com/microsoft/fluentui/pull/20418) by khamu@microsoft.com)
+- change input state styles to fix height and prevent z-index from blocking cursor ([PR #20445](https://github.com/microsoft/fluentui/pull/20445) by chhol@microsoft.com)
+
+## [2.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.0)
+
+Fri, 22 Oct 2021 23:04:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.3..@fluentui/web-components_v2.0.0)
+
+### Major changes
+
+- Update to Sun Valley visual styling ([PR #19263](https://github.com/microsoft/fluentui/pull/19263) by 47367562+bheston@users.noreply.github.com)
+
+## [1.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.3)
+
+Fri, 22 Oct 2021 19:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.2..@fluentui/web-components_v1.6.3)
+
+### Patches
+
+- update foundation package and react documentation ([PR #20316](https://github.com/microsoft/fluentui/pull/20316) by chhol@microsoft.com)
+
+## [1.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.2)
+
+Thu, 14 Oct 2021 00:11:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.1..@fluentui/web-components_v1.6.2)
+
+### Patches
+
+- remove dependency on lodash-es with fast-web-utilities ([PR #20205](https://github.com/microsoft/fluentui/pull/20205) by chhol@microsoft.com)
 
 ## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.1)
 

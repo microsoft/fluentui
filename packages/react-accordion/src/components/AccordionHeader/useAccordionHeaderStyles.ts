@@ -1,38 +1,42 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { AccordionHeaderState } from './AccordionHeader.types';
+
+export const accordionHeaderClassName = 'fui-AccordionHeader';
 
 const useStyles = makeStyles({
   // TODO: this should be extracted to another package
   resetButton: {
     boxSizing: 'content-box',
-    background: 'none',
+    backgroundColor: 'inherit',
     color: 'inherit',
-    font: 'inherit',
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
     lineHeight: 'normal',
-    overflow: 'visible',
-    padding: '0',
+    ...shorthands.overflow('visible'),
+    ...shorthands.padding(0),
     WebkitAppearance: 'button',
     userSelect: 'none',
     textAlign: 'unset',
   },
-  focusIndicator: theme => createFocusOutlineStyle(theme),
-  root: theme => ({
-    color: theme.colorNeutralForeground1,
-    backgroundColor: theme.colorNeutralBackground1,
-    borderRadius: '2px',
-  }),
-  rootDisabled: theme => ({
-    backgroundColor: 'none',
-    color: theme.colorNeutralForegroundDisabled,
-  }),
+  focusIndicator: createFocusOutlineStyle(),
+  root: {
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.borderRadius('2px'),
+  },
+  rootDisabled: {
+    backgroundImage: 'none',
+    color: tokens.colorNeutralForegroundDisabled,
+  },
   rootInline: {
     display: 'inline-block',
   },
   button: {
     position: 'relative',
     width: 'calc(100% - 22px)',
-    border: '1px solid transparent',
+    ...shorthands.border('1px', 'solid', 'transparent'),
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '44px',
@@ -48,45 +52,49 @@ const useStyles = makeStyles({
   },
   expandIcon: {
     lineHeight: '0',
+    fontSize: '20px',
   },
   expandIconStart: {
     paddingRight: '8px',
   },
   expandIconEnd: {
-    flex: '1',
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
     paddingLeft: '8px',
   },
   icon: {
     marginRight: '8px',
-    marginLeft: '8px',
+    fontSize: '20px',
   },
   iconExpandIconEnd: {
     marginLeft: '10px',
   },
-  children: theme => ({
-    fontSize: theme.fontSizeBase300,
-    fontFamily: theme.fontFamilyBase,
+  children: {
+    fontSize: tokens.fontSizeBase300,
+    fontFamily: tokens.fontFamilyBase,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    overflow: 'hidden',
-  }),
-  childrenSmall: theme => ({
-    fontSize: theme.fontSizeBase200,
-  }),
-  childrenLarge: theme => ({
-    fontSize: theme.fontSizeBase400,
-  }),
-  childrenExtraLarge: theme => ({
-    fontSize: theme.fontSizeBase500,
-  }),
+    ...shorthands.overflow('hidden'),
+  },
+  childrenSmall: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  childrenLarge: {
+    fontSize: tokens.fontSizeBase400,
+  },
+  childrenExtraLarge: {
+    fontSize: tokens.fontSizeBase500,
+  },
 });
 
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
+    accordionHeaderClassName,
     styles.root,
     state.inline && styles.rootInline,
     state.disabled && styles.rootDisabled,

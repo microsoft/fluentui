@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import {
   Fabric,
   CompactPeoplePicker,
@@ -133,7 +133,7 @@ const getPeople = () => people;
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for
 // suggestion items won't exist
 storiesOf('PeoplePicker', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addStory('Normal disabled', () => (
     <Fabric>
       <NormalPeoplePicker

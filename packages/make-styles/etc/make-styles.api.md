@@ -4,7 +4,11 @@
 
 ```ts
 
-import { Properties } from 'csstype';
+import type { BorderColorProperty } from 'csstype';
+import type { BorderStyleProperty } from 'csstype';
+import type { BorderWidthProperty } from 'csstype';
+import * as CSS_2 from 'csstype';
+import type { OverflowProperty } from 'csstype';
 
 // @internal
 export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket): (options: Pick<MakeStylesOptions, 'dir' | 'renderer'>) => Record<Slots, string>;
@@ -15,20 +19,26 @@ export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBy
 export function createCSSVariablesProxy(prefix?: string): unknown;
 
 // @public
-export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
+export function createDOMRenderer(target?: Document | undefined, options?: CreateDOMRendererOptions): MakeStylesRenderer;
+
+// @public (undocumented)
+export interface CreateDOMRendererOptions {
+    unstable_filterCSSRule?: (cssRule: string) => boolean;
+}
 
 // @public (undocumented)
 export type CSSClasses = /* ltrClassName */ string | [/* ltrClassName */ string, /* rtlClassName */ string];
 
-// @public (undocumented)
-export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
-
+// Warning: (ae-forgotten-export) The symbol "CSSClassesMap" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type CSSClassesMapBySlot<Slots extends string | number> = Record<Slots, CSSClassesMap>;
 
 // @public (undocumented)
 export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
 
+// Warning: (ae-forgotten-export) The symbol "SequenceHash" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "LookupItem" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-missing-underscore) The name "DEFINITION_LOOKUP_TABLE" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
@@ -50,11 +60,20 @@ export const LOOKUP_DEFINITIONS_INDEX = 0;
 export const LOOKUP_DIR_INDEX = 1;
 
 // @public (undocumented)
-export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ /* dir */ 'rtl' | 'ltr'];
+export type MakeStaticStyles = MakeStaticStylesStyle | string;
+
+// @public
+export function makeStaticStyles(styles: MakeStaticStyles | MakeStaticStyles[]): (options: MakeStaticStylesOptions) => void;
 
 // @public (undocumented)
-export type MakeStaticStyles = ({
-    [key: string]: Properties & Record<string, any>;
+export interface MakeStaticStylesOptions {
+    // (undocumented)
+    renderer: MakeStylesRenderer;
+}
+
+// @public (undocumented)
+export type MakeStaticStylesStyle = {
+    [key: string]: CSS_2.Properties & Record<string, any>;
 } & {
     '@font-face'?: {
         fontFamily: string;
@@ -67,27 +86,17 @@ export type MakeStaticStyles = ({
         fontWeight?: number | string;
         unicodeRange?: string;
     };
-}) | string;
+};
 
-// @public
-export function makeStaticStyles(styles: MakeStaticStyles | MakeStaticStyles[]): (options: MakeStaticStylesOptions) => void;
-
+// Warning: (ae-forgotten-export) The symbol "StylesBySlots" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface MakeStaticStylesOptions {
-    // (undocumented)
-    renderer: MakeStylesRenderer;
-}
+export function makeStyles<Slots extends string | number>(stylesBySlots: StylesBySlots<Slots>): (options: MakeStylesOptions) => Record<Slots, string>;
 
+// Warning: (ae-forgotten-export) The symbol "MakeStylesCSSObjectCustomL1" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface MakeStyles extends Omit<Properties, 'animationName'> {
-    // (undocumented)
-    [key: string]: any;
-    // (undocumented)
-    animationName?: object | string;
-}
-
-// @public (undocumented)
-export function makeStyles<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
+export type MakeStylesAnimation = Record<'from' | 'to' | string, MakeStylesCSSObjectCustomL1>;
 
 // @public (undocumented)
 export interface MakeStylesOptions {
@@ -109,17 +118,13 @@ export interface MakeStylesRenderer {
     styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
 }
 
+// Warning: (ae-forgotten-export) The symbol "MakeStylesStrictCSSObject" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
-
-// @public (undocumented)
-export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
+export type MakeStylesStyle = MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL1;
 
 // @public
 export function mergeClasses(...classNames: (string | false | undefined)[]): string;
-
-// @public (undocumented)
-export type PropertyHash = string;
 
 // @public
 export function rehydrateRendererCache(renderer: MakeStylesRenderer, target?: Document | undefined): void;
@@ -132,10 +137,10 @@ export function resolveProxyValues<T>(value: T): T;
 // Warning: (ae-internal-missing-underscore) The name "resolveStyleRules" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export function resolveStyleRules(styles: MakeStyles, unstable_cssPriority?: number): [CSSClassesMap, CSSRulesByBucket];
+export function resolveStyleRules(styles: MakeStylesStyle, pseudo?: string, media?: string, support?: string, cssClassesMap?: CSSClassesMap, cssRulesByBucket?: CSSRulesByBucket, rtlValue?: string): [CSSClassesMap, CSSRulesByBucket];
 
 // @public
-export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority: number): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
+export function resolveStyleRulesForSlots<Slots extends string | number>(stylesBySlots: StylesBySlots<Slots>): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
 
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -148,7 +153,21 @@ export const SEQUENCE_HASH_LENGTH = 7;
 export const SEQUENCE_PREFIX = "___";
 
 // @public (undocumented)
-export type SequenceHash = string;
+export const shorthands: {
+    border: typeof border;
+    borderLeft: typeof borderLeft;
+    borderBottom: typeof borderBottom;
+    borderRight: typeof borderRight;
+    borderTop: typeof borderTop;
+    borderColor: typeof borderColor;
+    borderStyle: typeof borderStyle;
+    borderRadius: typeof borderRadius;
+    borderWidth: typeof borderWidth;
+    gap: typeof gap;
+    margin: typeof margin;
+    padding: typeof padding;
+    overflow: typeof overflow;
+};
 
 // @public
 export type StyleBucketName = 'd' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 'k' | 't';
@@ -156,8 +175,21 @@ export type StyleBucketName = 'd' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 'k
 // @public
 export const styleBucketOrdering: StyleBucketName[];
 
-// @public (undocumented)
-export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
+// Warnings were encountered during analysis:
+//
+// lib/index.d.ts:3:5 - (ae-forgotten-export) The symbol "border" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:4:5 - (ae-forgotten-export) The symbol "borderLeft" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:5:5 - (ae-forgotten-export) The symbol "borderBottom" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:6:5 - (ae-forgotten-export) The symbol "borderRight" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:7:5 - (ae-forgotten-export) The symbol "borderTop" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:8:5 - (ae-forgotten-export) The symbol "borderColor" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:9:5 - (ae-forgotten-export) The symbol "borderStyle" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:10:5 - (ae-forgotten-export) The symbol "borderRadius" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:11:5 - (ae-forgotten-export) The symbol "borderWidth" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:12:5 - (ae-forgotten-export) The symbol "gap" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:13:5 - (ae-forgotten-export) The symbol "margin" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:14:5 - (ae-forgotten-export) The symbol "padding" needs to be exported by the entry point index.d.ts
+// lib/index.d.ts:15:5 - (ae-forgotten-export) The symbol "overflow" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
