@@ -55,8 +55,6 @@ export type {
   // Styles
   MakeStylesAnimation,
   MakeStylesStyle,
-  MakeStylesStyleRule,
-  MakeStylesStyleFunctionRule,
   // Internal types
   CSSClasses,
   CSSClassesMapBySlot,

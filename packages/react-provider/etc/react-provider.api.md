@@ -48,9 +48,6 @@ export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderS
 }
 
 // @public (undocumented)
-export const fluentProviderShorthandProps: (keyof FluentProviderSlots)[];
-
-// @public (undocumented)
 export type FluentProviderSlots = {
     root: IntrinsicShorthandProps<'div'>;
 };

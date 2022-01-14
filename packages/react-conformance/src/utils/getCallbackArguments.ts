@@ -52,7 +52,7 @@ function keywordNodeToPrimitive(node: ts.Node): null | string | undefined {
 /**
  * Converts AST node with "LiteralType" that has "*Keyword" kind to a primitive value.
  */
-function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boolean {
+function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boolean | string {
   if (node.kind === ts.SyntaxKind.NullKeyword) {
     return null;
   }
@@ -65,8 +65,13 @@ function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boo
     return true;
   }
 
+  if (node.kind === ts.SyntaxKind.StringLiteral) {
+    return node.getText();
+  }
+
   throw new Error(
-    'Unexpected kind of node is passed, this could be a bug or an unhandled scenario. Please report it if it happens',
+    `Unexpected kind of node is passed (${node.kind}), this could be a bug or an unhandled scenario. ` +
+      `Please report it if it happens.`,
   );
 }
 

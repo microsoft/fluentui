@@ -2,6 +2,171 @@
   "name": "ts-minbar-test-react",
   "entries": [
     {
+      "date": "Fri, 14 Jan 2022 07:28:39 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.49.6",
+            "commit": "5ab766c40fb058ea9756ba5b5942768c016a5391"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jan 2022 07:30:58 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.49.5",
+            "commit": "a9c3d10d957ef651a0f9f43c86e565f18c8edffa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jan 2022 07:32:29 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.49.4",
+            "commit": "3bc0517363984081469903ee137a06543f825f1c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jan 2022 07:29:05 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.49.3",
+            "commit": "d61d7925180bc36f13e83c6512c8f3e1885025a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Jan 2022 07:26:30 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.49.2",
+            "commit": "ecca467a89869ec2812b160b26a7f68fa69dac10"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Jan 2022 07:27:47 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.49.1",
+            "commit": "8c37bdfa24fecc3eb93eb52e2dbe1c68ac0869f1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jan 2022 23:32:11 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.49.0",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Dec 2021 07:29:45 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.48.1",
+            "commit": "36d59e339779ed43ffa112594bb7c3b339c8ca2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Dec 2021 07:26:41 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.48.0",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:29 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.47.3",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Dec 2021 07:30:02 GMT",
+      "tag": "ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.47.2",
+            "commit": "f1be0a9728e05ca33ad67e77ae7d1cba3384106f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Dec 2021 07:30:35 GMT",
       "tag": "ts-minbar-test-react_v1.0.0",
       "version": "1.0.0",

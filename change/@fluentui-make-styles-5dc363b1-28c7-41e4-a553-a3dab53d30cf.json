@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Making it so that fontWeight can handle string as a type in makeStyles calls.",
+  "packageName": "@fluentui/make-styles",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -40,5 +40,7 @@ module.exports = {
     '<rootDir>/packages/react-conformance-make-styles',
     '<rootDir>/packages/react-radio',
     '<rootDir>/packages/react-spinbutton',
+    '<rootDir>/packages/react-tabs',
+    '<rootDir>/packages/react-dialog',
   ],
 };

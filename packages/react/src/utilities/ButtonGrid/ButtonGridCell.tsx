@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
+import { css, getNativeProps, buttonProperties } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { useId } from '@fluentui/react-hooks';
 import type { IButtonGridCellProps } from './ButtonGridCell.types';
@@ -10,7 +10,6 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
     item,
     id = defaultId,
     className,
-    role,
     selected,
     disabled = false,
     onRenderItem,
@@ -26,6 +25,8 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
     onMouseEnter,
     onFocus,
   } = props;
+
+  const buttonProps = getNativeProps(props, buttonProperties);
 
   const handleClick = React.useCallback((): void => {
     if (onClick && !disabled) {
@@ -77,7 +78,10 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
       id={id}
       data-index={index}
       data-is-focusable
-      disabled={disabled}
+      aria-selected={selected}
+      ariaLabel={label}
+      title={label}
+      {...buttonProps}
       className={css(className, {
         ['' + cellIsSelectedStyle]: selected,
         ['' + cellDisabledStyle]: disabled,
@@ -87,10 +91,6 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocus}
-      role={role}
-      aria-selected={selected}
-      ariaLabel={label}
-      title={label}
       getClassNames={getClassNames}
     >
       {onRenderItem(item)}

@@ -1,12 +1,10 @@
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
-import { mergeThemes } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useThemeStyleTag } from './useThemeStyleTag';
-import type { FluentProviderProps, FluentProviderSlots, FluentProviderState } from './FluentProvider.types';
-
-export const fluentProviderShorthandProps: (keyof FluentProviderSlots)[] = ['root'];
+import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
 /**
  * Create the state required to render FluentProvider.
@@ -46,3 +44,16 @@ export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTM
     }),
   };
 };
+
+function mergeThemes(a: Theme | undefined, b: Partial<Theme> | Theme | undefined): Theme {
+  // Merge impacts perf: we should like to avoid it if it's possible
+  if (a && b) {
+    return { ...a, ...b };
+  }
+
+  if (a) {
+    return a;
+  }
+
+  return b as Theme;
+}
