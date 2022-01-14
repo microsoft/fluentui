@@ -23,7 +23,7 @@ describe('useFluentProvider', () => {
 
     expect(result.current.theme).toBe(undefined);
     expect(logWarnSpy).toHaveBeenCalledTimes(2);
-    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('FluentProvider: your theme is not set !'));
+    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('FluentProvider: your "theme" is not defined !'));
   });
 
   it('should merge themes', () => {
