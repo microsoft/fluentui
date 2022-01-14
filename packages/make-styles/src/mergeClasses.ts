@@ -36,6 +36,7 @@ export function mergeClasses(...classNames: (string | false | undefined)[]): str
 export function mergeClasses(): string {
   // arguments are parsed manually to avoid double loops as TS & Babel transforms rest via an additional loop
   // @see https://babeljs.io/docs/en/babel-plugin-transform-parameters
+  /* eslint-disable prefer-rest-params */
 
   let dir: 'ltr' | 'rtl' | null = null;
   let resultClassName = '';
@@ -45,7 +46,6 @@ export function mergeClasses(): string {
   const sequencesIds: (SequenceHash | undefined)[] = new Array(arguments.length);
 
   for (let i = 0; i < arguments.length; i++) {
-    // eslint-disable-next-line prefer-rest-params
     const className = arguments[i];
 
     if (typeof className === 'string') {
