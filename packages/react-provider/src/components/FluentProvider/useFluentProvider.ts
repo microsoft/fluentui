@@ -31,8 +31,8 @@ export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTM
     if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
       // eslint-disable-next-line no-console
       console.warn(`
-      FluentProvider: your theme is not set !
-      =======================================
+      FluentProvider: your "theme" is not defined !
+      =============================================
       Make sure your root FluentProvider has set a theme or you're setting the theme in your child FluentProvider.
       `);
     }
