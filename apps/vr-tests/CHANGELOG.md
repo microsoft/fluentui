@@ -1,8 +1,18 @@
 # Change Log - vr-tests
 
-This log was last generated on Thu, 13 Jan 2022 07:30:58 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jan 2022 07:28:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Fri, 14 Jan 2022 07:28:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.6 ([PR #21215](https://github.com/microsoft/fluentui/pull/21215) by beachball)
+- Bump @fluentui/react-experiments to v8.4.18 ([PR #21215](https://github.com/microsoft/fluentui/pull/21215) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 

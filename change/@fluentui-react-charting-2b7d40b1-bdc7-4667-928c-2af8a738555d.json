@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "style control prop added in area chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}
