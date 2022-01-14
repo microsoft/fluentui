@@ -2,6 +2,96 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 14 Jan 2022 07:28:38 GMT",
+      "tag": "@fluentui/react_v8.49.6",
+      "version": "8.49.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5ab766c40fb058ea9756ba5b5942768c016a5391",
+            "comment": "fix an issue with ChoiceGroup and focus rectangles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jan 2022 07:30:57 GMT",
+      "tag": "@fluentui/react_v8.49.5",
+      "version": "8.49.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6a1cfa0763a06d4077cfe9b495da64710996eb99",
+            "comment": "SearchBox: properly pass the new value to onChange, and only call onChange once"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jan 2022 07:32:29 GMT",
+      "tag": "@fluentui/react_v8.49.4",
+      "version": "8.49.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4835e911f807fc921e9a1560405d5e7c4d77d60e",
+            "comment": "Added check for disabled prop"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jan 2022 07:29:05 GMT",
+      "tag": "@fluentui/react_v8.49.3",
+      "version": "8.49.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "7ddd27082b9a097d848cc9babc4fc55af7dccbc6",
+            "comment": "Suggestions: add searchForMoreText button to the suggestions listbox."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Jan 2022 07:26:30 GMT",
+      "tag": "@fluentui/react_v8.49.2",
+      "version": "8.49.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "8acbdf96615839c45d0a3e22f81ed6b067521275",
+            "comment": "List: when role is removed, remove aria-label as well."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Jan 2022 07:27:47 GMT",
+      "tag": "@fluentui/react_v8.49.1",
+      "version": "8.49.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.15",
+            "commit": "8c37bdfa24fecc3eb93eb52e2dbe1c68ac0869f1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jan 2022 23:32:10 GMT",
       "tag": "@fluentui/react_v8.49.0",
       "version": "8.49.0",

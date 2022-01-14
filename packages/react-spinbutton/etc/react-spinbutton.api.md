@@ -25,9 +25,6 @@ export type SpinButtonCommons = {};
 // @public
 export type SpinButtonProps = ComponentProps<SpinButtonSlots> & SpinButtonCommons;
 
-// @public
-export const spinButtonShorthandProps: (keyof SpinButtonSlots)[];
-
 // @public (undocumented)
 export type SpinButtonSlots = {
     root: IntrinsicShorthandProps<'div'>;

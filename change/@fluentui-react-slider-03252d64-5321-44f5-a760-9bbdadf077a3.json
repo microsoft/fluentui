@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Refactor slider component: removed marks support, RangedSlider is removed",
-  "packageName": "@fluentui/react-slider",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

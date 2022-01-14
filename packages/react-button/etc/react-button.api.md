@@ -24,7 +24,7 @@ export type ButtonCommons = {
     block: boolean;
     disabledFocusable: boolean;
     disabled: boolean;
-    iconPosition: 'before' | 'after';
+    iconPosition?: 'before' | 'after';
     shape: 'rounded' | 'circular' | 'square';
     size: 'small' | 'medium' | 'large';
 };

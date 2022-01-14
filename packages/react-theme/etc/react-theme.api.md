@@ -364,9 +364,6 @@ export type LineHeightTokens = {
 };
 
 // @public (undocumented)
-export function mergeThemes(a: Theme | undefined, b: PartialTheme | Theme | undefined): Theme;
-
-// @public (undocumented)
 export type PartialTheme = Partial<Theme>;
 
 // @public (undocumented)
@@ -408,6 +405,9 @@ export const teamsLightTheme: Theme;
 
 // @public (undocumented)
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+
+// @public (undocumented)
+export const tokens: Record<keyof Theme, string>;
 
 // @public (undocumented)
 export const webDarkTheme: Theme;

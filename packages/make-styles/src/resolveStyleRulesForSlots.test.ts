@@ -3,12 +3,12 @@ import { StylesBySlots } from './types';
 
 describe('resolveStyleRulesForSlots', () => {
   it('returns classnames and CSS rules to apply', () => {
-    const stylesBySlots: StylesBySlots<'root' | 'icon', never> = {
+    const stylesBySlots: StylesBySlots<'root' | 'icon'> = {
       root: { color: 'red', backgroundColor: 'pink' },
       icon: { color: 'blue', backgroundColor: 'lightblue' },
     };
 
-    expect(resolveStyleRulesForSlots(stylesBySlots, 0)).toMatchInlineSnapshot(`
+    expect(resolveStyleRulesForSlots(stylesBySlots)).toMatchInlineSnapshot(`
       Array [
         Object {
           "icon": Object {

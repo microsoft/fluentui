@@ -65,6 +65,6 @@ module.exports = {
 
 1. Run inner loop from monorepo root `yarn workspace @fluentui/react-storybook-addon storybook`
 
-   - > 💡 this will run `build` script that compiles addon implementation so it can be consumed by local storybook
+   - > 💡 this will run `prestorybook` script that compiles addon implementation with all of its direct dependencies that live within monorepo, so it can be consumed by local storybook
 
 2. Every time you do any change to implementation, after you ran your local storybook you'll need to manually run `yarn workspace @fluentui/react-storybook-addon build` to reflect those changes

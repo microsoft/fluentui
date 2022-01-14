@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { menuItemSlots } from '../MenuItem/index';
 import type { MenuItemRadioState } from './MenuItemRadio.types';
 import type { MenuItemSlots } from '../MenuItem/MenuItem.types';
 
@@ -9,7 +8,7 @@ import type { MenuItemSlots } from '../MenuItem/MenuItem.types';
  * slots to children.
  */
 export const renderMenuItemRadio = (state: MenuItemRadioState) => {
-  const { slots, slotProps } = getSlots<MenuItemSlots>(state, menuItemSlots);
+  const { slots, slotProps } = getSlots<MenuItemSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

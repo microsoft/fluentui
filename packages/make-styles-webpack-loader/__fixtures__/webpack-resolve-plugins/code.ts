@@ -1,12 +1,13 @@
 import { makeStyles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 // @ts-ignore
 import color from 'non-existing-color-module';
 
 const styles = makeStyles({
-  root: theme => ({
+  root: {
     backgroundColor: color,
-    color: theme.colorBrandStroke1,
-  }),
+    color: tokens.colorBrandStroke1,
+  },
 });
 
 console.log(styles);

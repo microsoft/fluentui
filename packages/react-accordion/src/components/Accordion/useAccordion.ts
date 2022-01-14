@@ -1,15 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type {
-  AccordionProps,
-  AccordionSlots,
-  AccordionState,
-  AccordionToggleData,
-  AccordionToggleEvent,
-} from './Accordion.types';
+import type { AccordionProps, AccordionState, AccordionToggleData, AccordionToggleEvent } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
-
-export const accordionShorthandProps: Array<keyof AccordionSlots> = ['root'];
 
 /**
  * Returns the props and state required to render the component
@@ -47,6 +39,9 @@ export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>)
     navigable,
     openItems,
     requestToggle,
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       ...props,
       ref,

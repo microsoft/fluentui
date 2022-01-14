@@ -83,9 +83,6 @@ export type PopoverSurfaceSlots = {
     root: IntrinsicShorthandProps<'div'>;
 };
 
-// @public (undocumented)
-export const popoverSurfaceSlots: Array<keyof PopoverSurfaceSlots>;
-
 // @public
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'appearance' | 'arrowRef'> & {
     arrowClassName?: string;

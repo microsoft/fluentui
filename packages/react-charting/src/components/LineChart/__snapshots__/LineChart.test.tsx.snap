@@ -142,7 +142,6 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
           <path
             d="M-20.5 20
@@ -162,7 +161,6 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
         </g>
       </g>
@@ -458,7 +456,6 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
           <path
             d="M-20.5 20
@@ -478,7 +475,6 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
         </g>
       </g>
@@ -754,7 +750,6 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
           <path
             d="M-20.5 20
@@ -774,7 +769,6 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
         </g>
       </g>
@@ -925,7 +919,6 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
           <path
             d="M-20.5 20
@@ -945,7 +938,6 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
         </g>
       </g>
@@ -1241,7 +1233,6 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
           <path
             d="M-20.5 20
@@ -1261,7 +1252,6 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
         </g>
       </g>
@@ -1557,7 +1547,6 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
           <path
             d="M-20.5 20
@@ -1577,7 +1566,6 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
         </g>
       </g>
@@ -1873,7 +1861,6 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
           <path
             d="M-20.5 20
@@ -1893,7 +1880,6 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             opacity={1}
             stroke="red"
             strokeWidth={2}
-            visibility="visible"
           />
         </g>
       </g>

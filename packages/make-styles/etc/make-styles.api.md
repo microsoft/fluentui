@@ -91,7 +91,7 @@ export type MakeStaticStylesStyle = {
 // Warning: (ae-forgotten-export) The symbol "StylesBySlots" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export function makeStyles<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
+export function makeStyles<Slots extends string | number>(stylesBySlots: StylesBySlots<Slots>): (options: MakeStylesOptions) => Record<Slots, string>;
 
 // Warning: (ae-forgotten-export) The symbol "MakeStylesCSSObjectCustomL1" needs to be exported by the entry point index.d.ts
 //
@@ -123,12 +123,6 @@ export interface MakeStylesRenderer {
 // @public (undocumented)
 export type MakeStylesStyle = MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL1;
 
-// @public (undocumented)
-export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStylesStyle;
-
-// @public (undocumented)
-export type MakeStylesStyleRule<Tokens> = MakeStylesStyle | MakeStylesStyleFunctionRule<Tokens>;
-
 // @public
 export function mergeClasses(...classNames: (string | false | undefined)[]): string;
 
@@ -143,10 +137,10 @@ export function resolveProxyValues<T>(value: T): T;
 // Warning: (ae-internal-missing-underscore) The name "resolveStyleRules" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export function resolveStyleRules(styles: MakeStylesStyle, unstable_cssPriority?: number): [CSSClassesMap, CSSRulesByBucket];
+export function resolveStyleRules(styles: MakeStylesStyle, pseudo?: string, media?: string, support?: string, cssClassesMap?: CSSClassesMap, cssRulesByBucket?: CSSRulesByBucket, rtlValue?: string): [CSSClassesMap, CSSRulesByBucket];
 
 // @public
-export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority: number): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
+export function resolveStyleRulesForSlots<Slots extends string | number>(stylesBySlots: StylesBySlots<Slots>): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
 
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
 //
