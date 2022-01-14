@@ -24,8 +24,20 @@ export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTM
    * nesting providers with the same "dir" should not add additional attributes to DOM
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
-  const { dir = parentContext.dir, targetDocument = parentContext.targetDocument, theme = {} } = props;
+  const { dir = parentContext.dir, targetDocument = parentContext.targetDocument, theme } = props;
   const mergedTheme = mergeThemes(parentTheme, theme);
+
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
+      // eslint-disable-next-line no-console
+      console.warn(`
+      FluentProvider: your "theme" is not defined !
+      =============================================
+      Make sure your root FluentProvider has set a theme or you're setting the theme in your child FluentProvider.
+      `);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     dir,
@@ -45,7 +57,7 @@ export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTM
   };
 };
 
-function mergeThemes(a: Theme | undefined, b: Partial<Theme> | Theme | undefined): Theme {
+function mergeThemes(a: Theme | Partial<Theme> | undefined, b: typeof a): Theme | Partial<Theme> | undefined {
   // Merge impacts perf: we should like to avoid it if it's possible
   if (a && b) {
     return { ...a, ...b };
@@ -55,5 +67,5 @@ function mergeThemes(a: Theme | undefined, b: Partial<Theme> | Theme | undefined
     return a;
   }
 
-  return b as Theme;
+  return b;
 }
