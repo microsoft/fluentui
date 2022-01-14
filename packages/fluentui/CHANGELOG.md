@@ -98,7 +98,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `TooltipContent` component to properly pass ref to root slots @chpalac ([#20876](https://github.com/microsoft/fluentui/pull/20876))
 - Fix `Popup` to invoke event handlers on trigger wrapped in `Ref` @yuanboxue-amber ([#20911](https://github.com/microsoft/fluentui/pull/20911))
 - Fix `Animation` component to properly pass ref to root slots @chpalac ([#20972](https://github.com/microsoft/fluentui/pull/20972))
-- Fix `MenuItemWrapper` to have selected styles when is as tablist behavior @chpalac ([#21287](https://github.com/microsoft/fluentui/pull/21287))
 
 ### Features
 - Adding `ViewPersonSparkleIcon`, `CartIcon`, and fixing `EmojiAddIcon` and `AccessibilityIcon` - @notandrew ([#20054](https://github.com/microsoft/fluentui/pull/20054))
