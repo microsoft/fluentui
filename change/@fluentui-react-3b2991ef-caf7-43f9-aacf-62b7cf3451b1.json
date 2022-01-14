@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix an issue with ChoiceGroup and focus rectangles",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

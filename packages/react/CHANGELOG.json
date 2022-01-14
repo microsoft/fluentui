@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 14 Jan 2022 07:28:38 GMT",
+      "tag": "@fluentui/react_v8.49.6",
+      "version": "8.49.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5ab766c40fb058ea9756ba5b5942768c016a5391",
+            "comment": "fix an issue with ChoiceGroup and focus rectangles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Jan 2022 07:30:57 GMT",
       "tag": "@fluentui/react_v8.49.5",
       "version": "8.49.5",
