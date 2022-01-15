@@ -1,34 +1,26 @@
 import * as React from 'react';
-import { shorthands, makeStyles } from '@fluentui/react-make-styles';
-
+import { ChatRegular } from '@fluentui/react-icons';
+import { Button } from '@fluentui/react-button';
 import { Tooltip } from '../Tooltip';
 
-const useStyles = makeStyles({
-  exampleList: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    ...shorthands.margin('16px', '0'),
-    ...shorthands.gap('16px'),
+export const Aria = () => (
+  <>
+    <Tooltip content="Label for the button" triggerAriaAttribute="label">
+      <Button icon={<ChatRegular />} />
+    </Tooltip>
+    <Tooltip content="This is the description of the button" triggerAriaAttribute="describedby">
+      <Button>Description</Button>
+    </Tooltip>
+  </>
+);
+
+Aria.parameters = {
+  docs: {
+    description: {
+      story:
+        'The `triggerAriaAttribute` can be used to tell screen readers whether the tooltip is the label or ' +
+        'description for the element. By default, the tooltip is the label for the target, and the text of ' +
+        'the tooltip will be read by screen readers for the target element.',
+    },
   },
-});
-
-export const Aria = () => {
-  const styles = useStyles();
-
-  return (
-    <>
-      Use a screen reader to hear how the tooltip can be used as its target's label or description:
-      <div className={styles.exampleList}>
-        <Tooltip content="This tooltip is the label for the button" triggerAriaAttribute="label">
-          <button>
-            <span aria-hidden="true">💬</span>
-          </button>
-        </Tooltip>
-        <Tooltip content="This tooltip describes the button" triggerAriaAttribute="describedby">
-          <button>Description</button>
-        </Tooltip>
-      </div>
-    </>
-  );
 };
