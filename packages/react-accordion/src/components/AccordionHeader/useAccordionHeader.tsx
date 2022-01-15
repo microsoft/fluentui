@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { useAccordionItemContext } from '../AccordionItem/index';
 import { useARIAButton } from '@fluentui/react-aria';
-import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
+import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
 import { ChevronRightRegular } from '@fluentui/react-icons';
@@ -14,7 +14,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
  * @param ref - reference to root HTMLElement of AccordionHeader
  */
 export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
-  const { icon, button, children, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
+  const { icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
 
   /**
@@ -58,7 +58,6 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
       button: 'button',
       expandIcon: 'span',
       icon: 'div',
-      children: 'div',
     },
     root: getNativeElementProps('div', {
       ref,
@@ -84,8 +83,5 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
         },
       ),
     },
-    children: resolveShorthand(children as AccordionHeaderSlots['children'], {
-      required: true,
-    }),
   };
 };
