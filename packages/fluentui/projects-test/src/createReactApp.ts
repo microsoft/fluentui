@@ -42,7 +42,6 @@ export async function createReactApp() {
    * is resolved @see https://github.com/facebook/create-react-app/issues/11930
    */
   const parsedJSON = JSON.parse(fs.readFileSync(`${tempPaths.testApp}/package.json`, 'utf-8'));
-  console.log('parsed JSOJN ', parsedJSON);
   parsedJSON.resolutions['mini-css-extract-plugin'] = '2.4.5';
   fs.writeFileSync(`${tempPaths.testApp}/package.json`, JSON.stringify(parsedJSON));
 
