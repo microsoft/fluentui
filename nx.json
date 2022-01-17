@@ -22,6 +22,11 @@
   "affected": {
     "defaultBase": "master"
   },
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": true
+    }
+  },
   "targetDependencies": {
     "build": [
       {
