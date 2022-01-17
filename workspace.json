@@ -161,11 +161,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/noop": {
-      "root": "packages/fluentui",
-      "projectType": "library",
-      "implicitDependencies": []
-    },
     "@fluentui/perf": {
       "root": "packages/fluentui/perf",
       "projectType": "library",
