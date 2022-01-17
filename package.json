@@ -90,6 +90,7 @@
     "@nrwl/cli": "13.4.5",
     "@nrwl/devkit": "13.4.5",
     "@nrwl/jest": "13.4.5",
+    "@nrwl/js": "13.4.5",
     "@nrwl/node": "13.4.5",
     "@nrwl/tao": "13.4.5",
     "@nrwl/workspace": "13.4.5",
