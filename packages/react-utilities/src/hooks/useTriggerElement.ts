@@ -50,25 +50,29 @@ export function useTriggerElement<TriggerProps extends React.HTMLProps<unknown>>
   // Two separate callbacks are needed to handle properly bubble and capture callbacks
   // "getReactCallbackName()" could return proper callback name, but it's possible only with React 17
 
-  const handleBubbleEvent = useEventCallback((e: React.SyntheticEvent<unknown>) => {
-    const callbackName = getReactCallbackName(e);
+  const handleBubbleEvent = useEventCallback((ev: React.SyntheticEvent<unknown>) => {
+    const callbackName = getReactCallbackName(ev);
 
     if (callbackName) {
+      // Typecast is required as "ev" is "React.SyntheticEvent" while callbacks have stricter typings and accept
+      // "FocusEvent", "ClipboardEvent" and etc.
       /* eslint-disable @typescript-eslint/no-explicit-any */
-      childProps[callbackName]?.(e as any);
-      overrideProps[callbackName]?.(e as any);
-      outerProps[callbackName]?.(e as any);
+      childProps[callbackName]?.(ev as any);
+      overrideProps[callbackName]?.(ev as any);
+      outerProps[callbackName]?.(ev as any);
       /* eslint-enable @typescript-eslint/no-explicit-any */
     }
   });
-  const handleCaptureEvent = useEventCallback((e: React.SyntheticEvent<unknown>) => {
-    const callbackName = ((getReactCallbackName(e) + 'Capture') as unknown) as ReactCallbackName;
+  const handleCaptureEvent = useEventCallback((ev: React.SyntheticEvent<unknown>) => {
+    const callbackName = ((getReactCallbackName(ev) + 'Capture') as unknown) as ReactCallbackName;
 
     if (callbackName) {
+      // Typecast is required as "ev" is "React.SyntheticEvent" while callbacks have stricter typings and accept
+      // "FocusEvent", "ClipboardEvent" and etc.
       /* eslint-disable @typescript-eslint/no-explicit-any */
-      childProps[callbackName]?.(e as any);
-      overrideProps[callbackName]?.(e as any);
-      outerProps[callbackName]?.(e as any);
+      childProps[callbackName]?.(ev as any);
+      overrideProps[callbackName]?.(ev as any);
+      outerProps[callbackName]?.(ev as any);
       /* eslint-enable @typescript-eslint/no-explicit-any */
     }
   });
