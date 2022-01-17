@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added check to detect mouse enter for items",
+  "packageName": "@fluentui/react",
+  "email": "tkrasniqi@microsoft.com",
+  "dependentChangeType": "patch"
+}
