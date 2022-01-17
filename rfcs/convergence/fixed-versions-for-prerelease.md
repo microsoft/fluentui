@@ -157,7 +157,7 @@ For sane versioning, new packages should be released straight into the `beta` pr
 unstable packages is proposed in the next section. `alpha` and `beta` are liable to breaking API changes both internally
 and externally. Having both prerelease tags existing side by side could cause dependency hell too easily.
 
-### RC release can coexist with beta components
+### Release Candidate (RC) release
 
 As Fluent v9 moves to the `RC` stage, we want to clearly communicate to partners what they can expect from the stable
 release of Fluent. It would not make sense to elevate `beta` components to `rc` release if we do not expect to release
