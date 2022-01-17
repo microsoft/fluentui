@@ -87,49 +87,47 @@ const callbacksWithoutCapture: ReactCallbackName[] = [
 ];
 
 describe('getReactCallbackName', () => {
-  callbacks.forEach(callbackName => {
-    it(`handles ${callbackName}`, () => {
-      const callbackHasCapturePhase = !callbacksWithoutCapture.includes(callbackName);
-      const eventName = callbackName.slice(2).toLowerCase();
+  it.each(callbacks)('handles "%s"', callbackName => {
+    const callbackHasCapturePhase = !callbacksWithoutCapture.includes(callbackName);
+    const eventName = callbackName.slice(2).toLowerCase();
 
-      const bubbleEventSpy = jest.fn();
-      const captureEventSpy = jest.fn();
+    const bubbleEventSpy = jest.fn();
+    const captureEventSpy = jest.fn();
 
-      const element = document.createElement('div');
-      document.body.appendChild(element);
+    const element = document.createElement('div');
+    document.body.appendChild(element);
 
-      const Component: React.FC = () =>
-        React.createElement(specialElements[callbackName] || 'div', {
-          id: 'test-el',
-          [callbackName]: (e: React.SyntheticEvent) => {
-            bubbleEventSpy(getReactCallbackName(e));
+    const Component: React.FC = () =>
+      React.createElement(specialElements[callbackName] || 'div', {
+        id: 'test-el',
+        [callbackName]: (e: React.SyntheticEvent) => {
+          bubbleEventSpy(getReactCallbackName(e));
+        },
+        ...(callbackHasCapturePhase && {
+          [callbackName + 'Capture']: (e: React.SyntheticEvent) => {
+            captureEventSpy(getReactCallbackName(e) + 'Capture');
           },
-          ...(callbackHasCapturePhase && {
-            [callbackName + 'Capture']: (e: React.SyntheticEvent) => {
-              captureEventSpy(getReactCallbackName(e) + 'Capture');
-            },
-          }),
-        });
+        }),
+      });
 
-      ReactDOM.render(<Component />, element);
-      const testElement = document.querySelector<HTMLElement>('#test-el')!;
+    ReactDOM.render(<Component />, element);
+    const testElement = document.querySelector<HTMLElement>('#test-el')!;
 
-      if (specialSimulators[callbackName]) {
-        specialSimulators[callbackName]?.(testElement);
-      } else {
-        testElement.dispatchEvent(new Event(eventName, { bubbles: true }));
-      }
+    if (specialSimulators[callbackName]) {
+      specialSimulators[callbackName]?.(testElement);
+    } else {
+      testElement.dispatchEvent(new Event(eventName, { bubbles: true }));
+    }
 
-      ReactDOM.unmountComponentAtNode(element);
-      document.body.removeChild(element);
+    ReactDOM.unmountComponentAtNode(element);
+    document.body.removeChild(element);
 
-      expect(bubbleEventSpy).toHaveBeenCalledTimes(1);
-      expect(bubbleEventSpy).toHaveBeenCalledWith(callbackName);
+    expect(bubbleEventSpy).toHaveBeenCalledTimes(1);
+    expect(bubbleEventSpy).toHaveBeenCalledWith(callbackName);
 
-      if (callbackHasCapturePhase) {
-        expect(captureEventSpy).toHaveBeenCalledTimes(1);
-        expect(captureEventSpy).toHaveBeenCalledWith(callbackName + 'Capture');
-      }
-    });
+    if (callbackHasCapturePhase) {
+      expect(captureEventSpy).toHaveBeenCalledTimes(1);
+      expect(captureEventSpy).toHaveBeenCalledWith(callbackName + 'Capture');
+    }
   });
 });
