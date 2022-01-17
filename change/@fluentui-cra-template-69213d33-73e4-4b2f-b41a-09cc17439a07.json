@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "temp fix: resolve mini-css-extractor-plugin to older version to fix error.",
+  "packageName": "@fluentui/cra-template",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
