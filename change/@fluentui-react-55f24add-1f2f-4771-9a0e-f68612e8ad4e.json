@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Properly pass menu target to submenu items",
-  "packageName": "@fluentui/react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}
