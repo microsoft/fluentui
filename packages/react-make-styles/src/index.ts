@@ -1,5 +1,5 @@
 export { shorthands, mergeClasses, createDOMRenderer } from '@fluentui/make-styles';
-export type { MakeStylesStyle, MakeStylesStyleRule, MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
+export type { MakeStylesStyle } from '@fluentui/make-styles';
 
 export { makeStyles } from './makeStyles';
 export { makeStaticStyles } from './makeStaticStyles';

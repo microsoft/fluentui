@@ -164,9 +164,6 @@ export type MenuItemSlots = {
     secondaryContent?: IntrinsicShorthandProps<'span'>;
 };
 
-// @public
-export const menuItemSlots: Array<keyof MenuItemSlots>;
-
 // @public (undocumented)
 export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;
 
@@ -272,9 +269,6 @@ export type MenuSplitGroupCommons = {};
 
 // @public
 export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommons;
-
-// @public
-export const menuSplitGroupShorthandProps: (keyof MenuSplitGroupSlots)[];
 
 // @public (undocumented)
 export type MenuSplitGroupSlots = {

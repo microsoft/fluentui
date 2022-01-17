@@ -4,7 +4,7 @@ import { Tab } from './Tab';
 import { isConformant } from '../../common/isConformant';
 import { TabListContext } from '../TabList/TabListContext';
 import { TabListContextValue } from '../TabList/TabList.types';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 describe('Tab', () => {
   isConformant({
@@ -72,7 +72,7 @@ describe('Tab', () => {
 
     const result = render(
       <TabListContext.Provider value={contextValues.tabList}>
-        <Tab icon={<CalendarMonth24Regular />} value="1">
+        <Tab icon={<CalendarMonthRegular />} value="1">
           Default Tab
         </Tab>
       </TabListContext.Provider>,

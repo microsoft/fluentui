@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 12 Jan 2022 07:32:29 GMT",
+      "tag": "@fluentui/web-components_v2.2.1",
+      "version": "2.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "06cb25c66838875a18dc264ebfa8c5547ce4ebb2",
+            "comment": "Update tab panel to base type size"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Jan 2022 07:27:47 GMT",
       "tag": "@fluentui/web-components_v2.2.0",
       "version": "2.2.0",

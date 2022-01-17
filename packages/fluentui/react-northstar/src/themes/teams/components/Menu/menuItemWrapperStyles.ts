@@ -29,7 +29,6 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
       on,
     } = props;
     const colors = getColorScheme(v.colorScheme, null, primary);
-
     return {
       color: 'inherit',
       lineHeight: 1,
@@ -117,6 +116,20 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
           background: v.iconOnlyWrapperBackgroundColorFocus,
           color: v.iconOnlyColorActive,
         }),
+      }),
+
+      ...(active && {
+        '[data-tabs="true"]': {
+          ...(!underlined && {
+            background: v.backgroundColorActive || colors.backgroundActive,
+
+            ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
+            ...(!iconOnly &&
+              primary && {
+                color: colors.foregroundActive,
+              }),
+          }),
+        },
       }),
 
       // hover styles

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 10 Jan 2022 07:26:30 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jan 2022 07:28:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.49.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.6)
+
+Fri, 14 Jan 2022 07:28:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.5..@fluentui/react_v8.49.6)
+
+### Patches
+
+- fix an issue with ChoiceGroup and focus rectangles ([PR #21215](https://github.com/microsoft/fluentui/pull/21215) by seanmonahan@microsoft.com)
+
+## [8.49.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.5)
+
+Thu, 13 Jan 2022 07:30:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.4..@fluentui/react_v8.49.5)
+
+### Patches
+
+- SearchBox: properly pass the new value to onChange, and only call onChange once ([PR #21268](https://github.com/microsoft/fluentui/pull/21268) by elcraig@microsoft.com)
+
+## [8.49.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.4)
+
+Wed, 12 Jan 2022 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.3..@fluentui/react_v8.49.4)
+
+### Patches
+
+- Added check for disabled prop ([PR #20973](https://github.com/microsoft/fluentui/pull/20973) by tkrasniqi@microsoft.com)
+
+## [8.49.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.3)
+
+Tue, 11 Jan 2022 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.2..@fluentui/react_v8.49.3)
+
+### Patches
+
+- Suggestions: add searchForMoreText button to the suggestions listbox. ([PR #21199](https://github.com/microsoft/fluentui/pull/21199) by tristan.watanabe@gmail.com)
 
 ## [8.49.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.2)
 

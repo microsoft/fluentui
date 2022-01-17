@@ -101,6 +101,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           >
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -147,6 +148,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             </div>
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -191,6 +193,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -265,6 +268,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -305,6 +309,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -870,6 +875,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -910,6 +916,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -956,6 +963,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -996,6 +1004,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1074,6 +1083,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1114,6 +1124,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1223,6 +1234,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1263,6 +1275,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with generated aria-descri
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1337,6 +1350,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with generated aria-descri
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1414,6 +1428,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1488,6 +1503,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1528,6 +1544,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1608,6 +1625,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {

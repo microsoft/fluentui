@@ -159,14 +159,4 @@ describe('mergeClasses', () => {
       expect(mergeClasses(rtlClassName1, rtlClassName2)).toBe('___w1tqsn0 fe3e8s9 f81rol6');
     });
   });
-
-  describe('unstable functionality', () => {
-    it('deduplicates classes with mixed priority', () => {
-      // Classnames with numeric suffix has increased specificity
-      const className1 = makeStyles({ root: { display: 'grid' } })(options).root;
-      const className2 = makeStyles({ root: { display: 'flex' } }, 1)(options).root;
-
-      expect(mergeClasses(className1, className2)).toBe(className2);
-    });
-  });
 });

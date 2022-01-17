@@ -49,13 +49,16 @@ type MakeStylesUnsupportedCSSProperties = {
 };
 type MakeStylesCSSProperties = Omit<
   CSS.Properties<MakeStylesCSSValue>,
-  // We have custom definition for "animationName"
-  'animationName'
+  // We have custom definition for "animationName" and "fontWeight"
+  'animationName' | 'fontWeight'
 > &
   MakeStylesUnsupportedCSSProperties;
 
 export type MakeStylesStrictCSSObject = MakeStylesCSSProperties &
-  MakeStylesCSSPseudos & { animationName?: MakeStylesAnimation | MakeStylesAnimation[] | CSS.AnimationProperty };
+  MakeStylesCSSPseudos & {
+    animationName?: MakeStylesAnimation | MakeStylesAnimation[] | CSS.AnimationProperty;
+    fontWeight?: CSS.Properties['fontWeight'] | string;
+  };
 
 type MakeStylesCSSPseudos = {
   [Property in CSS.Pseudos]?:
@@ -87,9 +90,6 @@ type MakeStylesCSSObjectCustomL5 = {
 
 export type MakeStylesAnimation = Record<'from' | 'to' | string, MakeStylesCSSObjectCustomL1>;
 export type MakeStylesStyle = MakeStylesStrictCSSObject | MakeStylesCSSObjectCustomL1;
-
-export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStylesStyle;
-export type MakeStylesStyleRule<Tokens> = MakeStylesStyle | MakeStylesStyleFunctionRule<Tokens>;
 
 export interface MakeStylesOptions {
   dir: 'ltr' | 'rtl';
@@ -175,6 +175,6 @@ export type CSSClassesMapBySlot<Slots extends string | number> = Record<Slots, C
 
 export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
 
-export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
+export type StylesBySlots<Slots extends string | number> = Record<Slots, MakeStylesStyle>;
 
 export type LookupItem = [/* definitions */ CSSClassesMap, /* dir */ 'rtl' | 'ltr'];
