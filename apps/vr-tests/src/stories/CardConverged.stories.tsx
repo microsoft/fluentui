@@ -38,9 +38,9 @@ storiesOf('Card Converged', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
-        .focus('.card')
+        .click('[role="group"]')
         .snapshot('focused', { cropTo: '.testWrapper' })
-        .click('.card')
+        .click('[role="group"]')
         .snapshot('clicked', { cropTo: '.testWrapper' })
         .end()}
     >
