@@ -857,7 +857,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       this._onColumnResized(column, width, index!);
     }
 
-    if (newColumnIndex) {
+    if (newColumnIndex !== undefined && columnReorderOptions) {
       const isCheckboxColumnHidden =
         selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
 
@@ -867,16 +867,12 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       const draggedIndex = isCheckboxColumnHidden ? columnIndex - 1 : columnIndex - 2;
       const targetIndex = isCheckboxColumnHidden ? newColumnIndex - 1 : newColumnIndex - 2;
 
-      let isValidTargetIndex;
+      const frozenColumnCountFromStart = columnReorderOptions.frozenColumnCountFromStart ?? 0;
+      const frozenColumnCountFromEnd = columnReorderOptions.frozenColumnCountFromEnd ?? 0;
+      const isValidTargetIndex =
+        targetIndex >= frozenColumnCountFromStart && targetIndex < columns.length - frozenColumnCountFromEnd;
 
-      if (columnReorderOptions) {
-        const frozenColumnCountFromStart = columnReorderOptions.frozenColumnCountFromStart ?? 0;
-        const frozenColumnCountFromEnd = columnReorderOptions.frozenColumnCountFromEnd ?? 0;
-        isValidTargetIndex =
-          targetIndex >= frozenColumnCountFromStart && targetIndex < columns.length - frozenColumnCountFromEnd;
-      }
-
-      if (isValidTargetIndex && columnReorderOptions) {
+      if (isValidTargetIndex) {
         if (columnReorderOptions.onColumnDrop) {
           const dragDropDetails: IColumnDragDropDetails = {
             draggedIndex: draggedIndex,
