@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fixme",
+  "comment": "migrate to use @griffel/core",
   "packageName": "@fluentui/jest-serializer-make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
