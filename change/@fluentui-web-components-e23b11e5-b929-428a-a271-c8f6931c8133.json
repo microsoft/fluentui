@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unused declared variables in combobox styles",
-  "packageName": "@fluentui/web-components",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

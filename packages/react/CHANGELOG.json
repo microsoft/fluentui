@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 17 Jan 2022 09:43:48 GMT",
+      "tag": "@fluentui/react_v8.49.7",
+      "version": "8.49.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7a3c154a130a95adf8745885b2652b072111a083",
+            "comment": "Properly pass menu target to submenu items"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jan 2022 07:28:38 GMT",
       "tag": "@fluentui/react_v8.49.6",
       "version": "8.49.6",
