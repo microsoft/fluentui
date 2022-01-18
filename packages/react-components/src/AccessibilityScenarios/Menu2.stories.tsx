@@ -28,7 +28,7 @@ export const MenuWithSplitItemAccessibilityScenario: React.FunctionComponent = (
               <MenuSplitGroup>
                 <MenuItem>Open</MenuItem>
                 <MenuTrigger>
-                  <MenuItem id="nestedTrigger">More open options</MenuItem>
+                  <MenuItem id="nestedTrigger" aria-label="More open options" />
                 </MenuTrigger>
               </MenuSplitGroup>
 
