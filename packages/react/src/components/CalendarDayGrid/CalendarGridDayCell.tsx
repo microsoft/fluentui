@@ -222,10 +222,14 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         !day.isInBounds && classNames.dayOutsideBounds,
         !day.isInMonth && classNames.dayOutsideNavigatedMonth,
       )}
-      ref={(element: HTMLTableCellElement) => {
-        customDayCellRef?.(element, day.originalDate, classNames);
-        day.setRef(element);
-      }}
+      ref={
+        isNavigatedDate
+          ? navigatedDayRef
+          : (element: HTMLTableCellElement) => {
+              customDayCellRef?.(element, day.originalDate, classNames);
+              day.setRef(element);
+            }
+      }
       aria-hidden={ariaHidden}
       aria-disabled={!ariaHidden && !day.isInBounds}
       onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
@@ -239,6 +243,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
       aria-readonly="true"
       aria-current={day.isSelected ? 'date' : undefined}
       aria-selected={day.isInBounds ? day.isSelected : undefined}
+      data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
     >
       <button
         key={day.key + 'button'}
@@ -250,10 +255,10 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         )}
         aria-label={ariaLabel}
         id={isNavigatedDate ? activeDescendantId : undefined}
-        ref={isNavigatedDate ? navigatedDayRef : undefined}
         disabled={!ariaHidden && !day.isInBounds}
         type="button"
-        data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
+        tabIndex={-1}
+        data-is-focusable={false}
       >
         <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}
