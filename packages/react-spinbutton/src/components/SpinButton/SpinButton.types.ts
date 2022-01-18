@@ -1,7 +1,6 @@
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type SpinButtonSlots = {
-  // TODO Add slots here and to spinButtonShorthandProps in useSpinButton.ts
   root: IntrinsicShorthandProps<'div'>;
 };
 

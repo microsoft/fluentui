@@ -215,19 +215,6 @@ describe('makeStyles', () => {
     `);
   });
 
-  it('handles tokens', () => {
-    const computeClasses = makeStyles<'root', { display: string }>({
-      root: tokens => ({ display: tokens.display }),
-    });
-    computeClasses({ dir: 'rtl', renderer });
-
-    expect(renderer).toMatchInlineSnapshot(`
-      .fl81ese {
-        display: var(--display);
-      }
-    `);
-  });
-
   it('handles numeric slot names', () => {
     const computeClasses = makeStyles({
       42: {

@@ -22,6 +22,7 @@ export { AnchorToCustomTarget } from './MenuAnchorToTarget.stories';
 export { CustomTrigger } from './MenuCustomTrigger.stories';
 export { RenderFunctionTrigger } from './MenuRenderFunctionTrigger.stories';
 export { MemoizedMenuItems } from './MenuMemoizedMenuItems.stories';
+export { SplitMenuItem } from './MenuSplitMenuItem.stories';
 
 export default {
   title: 'Components/Menu',

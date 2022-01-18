@@ -3,6 +3,7 @@
 exports[`Suggestions renders a list properly 1`] = `
 <div
   className="ms-Suggestions"
+  role="listbox"
 >
   <div
     aria-live="polite"
@@ -11,7 +12,7 @@ exports[`Suggestions renders a list properly 1`] = `
   />
   <div
     className="ms-Suggestions-container"
-    role="listbox"
+    role="presentation"
   >
     <div
       role="presentation"
@@ -2069,6 +2070,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       {
         min-width: 260px;
       }
+  role="listbox"
 >
   <div
     aria-live="polite"
@@ -2084,7 +2086,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           overflow-y: auto;
           transform: translate3d(0,0,0);
         }
-    role="listbox"
+    role="presentation"
   >
     <div
       role="presentation"
@@ -4138,6 +4140,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
 exports[`Suggestions scrolls to selected index properly 1`] = `
 <div
   className="ms-Suggestions"
+  role="listbox"
 >
   <div
     aria-live="polite"
@@ -4146,7 +4149,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
   />
   <div
     className="ms-Suggestions-container"
-    role="listbox"
+    role="presentation"
   >
     <div
       role="presentation"

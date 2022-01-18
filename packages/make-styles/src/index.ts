@@ -43,7 +43,6 @@ export { makeStyles } from './makeStyles';
 export { resolveStyleRulesForSlots } from './resolveStyleRulesForSlots';
 
 // Private exports, are used by build time transforms
-export { createCSSVariablesProxy, resolveProxyValues } from './runtime/createCSSVariablesProxy';
 export { resolveStyleRules } from './runtime/resolveStyleRules';
 export { __styles } from './__styles';
 
@@ -55,8 +54,6 @@ export type {
   // Styles
   MakeStylesAnimation,
   MakeStylesStyle,
-  MakeStylesStyleRule,
-  MakeStylesStyleFunctionRule,
   // Internal types
   CSSClasses,
   CSSClassesMapBySlot,

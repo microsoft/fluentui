@@ -21,8 +21,8 @@ export type InputOnChangeData = {
     value: string;
 };
 
-// @public
-export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'value'> & {
+// @public (undocumented)
+export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
     children?: never;
     size?: 'small' | 'medium' | 'large';
     inline?: boolean;
@@ -30,6 +30,7 @@ export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 
     defaultValue?: string;
     value?: string;
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
 };
 
 // @public (undocumented)
