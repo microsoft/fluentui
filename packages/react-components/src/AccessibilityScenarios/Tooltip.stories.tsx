@@ -13,7 +13,7 @@ import { Label } from '@fluentui/react-label';
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { Tooltip } from '@fluentui/react-tooltip';
+import { Tooltip, TooltipProps } from '@fluentui/react-tooltip';
 
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -30,12 +30,17 @@ import { Scenario } from './utils';
 export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = () => {
   const [tooltipVisible, setTooltipVisible] = React.useState(false);
 
+  const onVisibleChange: TooltipProps['onVisibleChange'] = (event, { visible }) => {
+    setTooltipVisible(visible);
+  };
+
   return (
     <Scenario pageTitle="Buttons with tooltip">
       <h2>Tooltip as a password requirements</h2>
       <Label htmlFor="password">Password</Label>
       <input type="password" id="password" name="password" />
       <Tooltip
+        onVisibleChange={onVisibleChange}
         visible={tooltipVisible}
         content="Password must be at least 8 characters long, contain a capital letter, and a number."
       >
