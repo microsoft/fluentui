@@ -31,7 +31,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
 
   const {
     content,
-    inverted,
+    appearance,
     withArrow,
     positioning,
     onVisibleChange,
@@ -56,7 +56,6 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
 
   const state: TooltipState = {
     content,
-    inverted,
     withArrow,
     positioning,
     showDelay,
@@ -64,7 +63,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     triggerAriaAttribute,
     visible,
     shouldRenderTooltip: visible,
-    appearance: props.appearance,
+    appearance,
 
     // Slots
     components: {
