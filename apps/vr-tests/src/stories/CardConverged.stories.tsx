@@ -35,12 +35,73 @@ const SampleCardContent = () => (
 
 storiesOf('Card Converged', module)
   .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
+    </Screener>
+  ))
+  .addStory(
+    'appearance - Filled',
+    () => (
+      <Card appearance="filled">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance - Filled Alternative',
+    () => (
+      <Card appearance="filled-alternative">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance - Outline',
+    () => (
+      <Card appearance="outline">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance - Subtle',
+    () => (
+      <Card appearance="subtle">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  );
+
+storiesOf('Card Converged', module)
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
-        .click('[role="group"]')
+        .hover('[role="group"]')
         .snapshot('focused', { cropTo: '.testWrapper' })
-        .click('[role="group"]')
+        .mouseDown('[role="group"]')
         .snapshot('clicked', { cropTo: '.testWrapper' })
         .end()}
     >
@@ -50,34 +111,11 @@ storiesOf('Card Converged', module)
     </Screener>
   ))
   .addStory(
-    'appearance',
+    'appearance interactive - Filled',
     () => (
-      <div style={{ padding: '16px' }}>
-        <div>
-          <h1>Filled</h1>
-          <Card appearance="filled" className="card">
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <h1>Filled Alternative</h1>
-          <Card appearance="filled-alternative" className="card">
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <h1>Outline</h1>
-          <Card appearance="outline" className="card">
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <h1>Subtle</h1>
-          <Card appearance="subtle" className="card">
-            <SampleCardContent />
-          </Card>
-        </div>
-      </div>
+      <Card onClick={action('filled card clicked')} appearance="filled">
+        <SampleCardContent />
+      </Card>
     ),
     {
       includeRtl: true,
@@ -86,38 +124,37 @@ storiesOf('Card Converged', module)
     },
   )
   .addStory(
-    'appearance interactive',
+    'appearance interactive - Filled Alternative',
     () => (
-      <div style={{ padding: '16px' }}>
-        <div>
-          <h1>Filled</h1>
-          <Card onClick={action('filled card clicked')} appearance="filled" className="card">
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <h1>Filled Alternative</h1>
-          <Card
-            onClick={action('filled alternative card clicked')}
-            appearance="filled-alternative"
-            className="card"
-          >
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <h1>Outline</h1>
-          <Card onClick={action('outline card clicked')} appearance="outline" className="card">
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <h1>Subtle</h1>
-          <Card onClick={action('subtle card clicked')} appearance="subtle" className="card">
-            <SampleCardContent />
-          </Card>
-        </div>
-      </div>
+      <Card onClick={action('filled alternative card clicked')} appearance="filled-alternative">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance interactive - Outline',
+    () => (
+      <Card onClick={action('outline card clicked')} appearance="outline">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance interactive - Subtle',
+    () => (
+      <Card onClick={action('subtle card clicked')} appearance="subtle">
+        <SampleCardContent />
+      </Card>
     ),
     {
       includeRtl: true,
