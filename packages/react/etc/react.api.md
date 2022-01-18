@@ -1285,7 +1285,7 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
-    updateColumn(column: IColumn, newProps: {
+    updateColumn(column: IColumn, options: {
         width?: number;
         newColumnIndex?: number;
     }): void;
@@ -4482,7 +4482,7 @@ export interface IDetailsList extends IList {
     focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
-    updateColumn: (column: IColumn, newProps: {
+    updateColumn: (column: IColumn, options: {
         width?: number;
         newColumnIndex?: number;
     }) => void;
