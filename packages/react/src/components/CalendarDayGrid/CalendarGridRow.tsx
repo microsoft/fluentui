@@ -15,7 +15,7 @@ export interface ICalendarGridRowProps extends ICalendarDayGridProps {
   ariaHidden?: boolean;
   rowClassName?: string;
   ariaRole?: string;
-  navigatedDayRef: React.MutableRefObject<HTMLTableCellElement>;
+  navigatedDayRef: React.RefObject<HTMLTableCellElement>;
   activeDescendantId: string;
   calculateRoundedStyles(
     classNames: IProcessedStyleSet<ICalendarDayGridStyles>,

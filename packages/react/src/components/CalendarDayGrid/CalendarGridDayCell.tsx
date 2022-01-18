@@ -258,7 +258,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         disabled={!ariaHidden && !day.isInBounds}
         type="button"
         tabIndex={-1}
-        data-is-focusable={false}
+        data-is-focusable="false"
       >
         <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}
