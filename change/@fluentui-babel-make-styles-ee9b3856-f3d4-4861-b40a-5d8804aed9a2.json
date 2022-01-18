@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fixme",
+  "comment": "migrate to use @griffel/core",
   "packageName": "@fluentui/babel-make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
