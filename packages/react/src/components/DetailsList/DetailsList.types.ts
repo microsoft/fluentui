@@ -59,10 +59,10 @@ export interface IDetailsList extends IList {
   /**
    * Use to programatically resize and/or reorder columns in the DetailsList.
    * @param column - column to resize/reorder.
-   * @param newProps - includes width which is desired width in pixels the column should be resized
+   * @param options - includes width which is desired width in pixels the column should be resized
    * to and newColumnIndex which is desired index position where the column should be moved to.
    */
-  updateColumn: (column: IColumn, newProps: { width?: number; newColumnIndex?: number }) => void;
+  updateColumn: (column: IColumn, options: { width?: number; newColumnIndex?: number }) => void;
 }
 
 /**
