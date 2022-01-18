@@ -215,7 +215,7 @@ export const useTabStyles = (state: TabState): TabState => {
     state.appearance === 'subtle' && rootStyles.subtle,
     state.vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base,
     state.size === 'small' && (state.vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
-    state.selected && (state.vertical ? verticalIndicatorStyles.selected : horizontalIndicatorStyles.selected),
+    //state.selected && (state.vertical ? verticalIndicatorStyles.selected : horizontalIndicatorStyles.selected),
     state.root.className,
   );
 

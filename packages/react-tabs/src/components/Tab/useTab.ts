@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TabProps, TabState } from './Tab.types';
 import { TabListContext } from '../TabList/TabListContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -17,15 +17,33 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
   const { content, icon, value } = props;
 
-  const { appearance, selected, onSelect, size, vertical } = useContextSelector(TabListContext, ctx => ({
-    appearance: ctx.appearance,
-    selected: ctx.selectedValue === value,
-    onSelect: ctx.onSelect,
-    size: ctx.size,
-    vertical: !!ctx.vertical,
-  }));
+  const { appearance, selected, onRegister, onUnregister, onSelect, size, vertical } = useContextSelector(
+    TabListContext,
+    ctx => ({
+      appearance: ctx.appearance,
+      selected: ctx.selectedValue === value,
+      onRegister: ctx.onRegister,
+      onUnregister: ctx.onUnregister,
+      onSelect: ctx.onSelect,
+      size: ctx.size,
+      vertical: !!ctx.vertical,
+    }),
+  );
 
   const onClick = useEventCallback((event: SelectTabEvent) => onSelect(event, { value }));
+
+  const innerRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    onRegister({
+      value,
+      ref: innerRef,
+    });
+
+    return () => {
+      onUnregister({ value, ref: innerRef });
+    };
+  }, [onRegister, onUnregister, innerRef, value]);
 
   return {
     components: {
@@ -34,7 +52,7 @@ export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState =
       content: 'span',
     },
     root: getNativeElementProps('div', {
-      ref,
+      ref: useMergedRefs(ref, innerRef),
       role: 'tab',
       tabIndex: 0,
       ...props,
