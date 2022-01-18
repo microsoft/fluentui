@@ -32,7 +32,6 @@ export {
   createHighContrastTheme,
   createLightTheme,
   createTeamsDarkTheme,
-  mergeThemes,
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,

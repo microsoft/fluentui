@@ -14,14 +14,14 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle-size": "bundle-size measure",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-provider/src && yarn docs",
-    "storybook": "start-storybook",
+    "storybook": "node ../../scripts/storybook/runner",
     "start": "yarn storybook",
     "type-check": "tsc -b tsconfig.json"
   },

@@ -1,16 +1,11 @@
 import { compileCSS, CompileCSSOptions, normalizePseudoSelector } from './compileCSS';
 
-const defaultOptions: Pick<
-  CompileCSSOptions,
-  'rtlClassName' | 'className' | 'media' | 'pseudo' | 'support' | 'unstable_cssPriority'
-> = {
+const defaultOptions: Pick<CompileCSSOptions, 'rtlClassName' | 'className' | 'media' | 'pseudo' | 'support'> = {
   className: 'foo',
   rtlClassName: 'rtl-foo',
   media: '',
   pseudo: '',
   support: '',
-
-  unstable_cssPriority: 0,
 };
 
 describe('compileCSS', () => {
