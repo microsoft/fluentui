@@ -28,7 +28,7 @@ describe('Tooltip', () => {
   it('renders only aria-label for a simple label tooltip', () => {
     const tooltipText = 'The tooltip text';
     const result = render(
-      <Tooltip content={tooltipText}>
+      <Tooltip content={tooltipText} type="label">
         <button data-testid="the-target" />
       </Tooltip>,
     );
@@ -39,10 +39,11 @@ describe('Tooltip', () => {
     expect(result.baseElement).toMatchSnapshot();
   });
 
-  it('renders the content of a nontrivial tooltip', () => {
+  it('renders the content of a nontrivial label tooltip', () => {
     const result = render(
       <Tooltip
         id="the-tooltip-id"
+        type="label"
         data-testid="the-tooltip"
         content={
           <span>
@@ -64,7 +65,7 @@ describe('Tooltip', () => {
 
   it('renders a description tooltip content always', () => {
     const result = render(
-      <Tooltip content="Description tooltip" triggerAriaAttribute="describedby" data-testid="the-tooltip">
+      <Tooltip content="Description tooltip" type="description" data-testid="the-tooltip">
         <button data-testid="the-target" />
       </Tooltip>,
     );

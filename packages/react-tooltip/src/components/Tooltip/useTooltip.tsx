@@ -35,7 +35,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     withArrow,
     positioning,
     onVisibleChange,
-    triggerAriaAttribute = 'label',
+    type = 'description',
     showDelay = 250,
     hideDelay = 250,
   } = props;
@@ -61,7 +61,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     positioning,
     showDelay,
     hideDelay,
-    triggerAriaAttribute,
+    type,
     visible,
     shouldRenderTooltip: visible,
     appearance: props.appearance,
@@ -202,20 +202,16 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     triggerProps.ref = childTargetRef;
   }
 
-  if (state.triggerAriaAttribute === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use labelledby.
+  if (type === 'label') {
+    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
     if (typeof state.content === 'string') {
       triggerProps['aria-label'] = state.content;
-    } else {
-      state.triggerAriaAttribute = 'labelledby';
+    } else if (!isServerSideRender) {
+      triggerProps['aria-labelledby'] = state.root.id;
+      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+      state.shouldRenderTooltip = true;
     }
-  }
-
-  if (state.triggerAriaAttribute === 'labelledby' && !isServerSideRender) {
-    triggerProps['aria-labelledby'] = state.root.id;
-    // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-    state.shouldRenderTooltip = true;
-  } else if (state.triggerAriaAttribute === 'describedby' && !isServerSideRender) {
+  } else if (type === 'description' && !isServerSideRender) {
     triggerProps['aria-describedby'] = state.root.id;
     state.shouldRenderTooltip = true;
   }

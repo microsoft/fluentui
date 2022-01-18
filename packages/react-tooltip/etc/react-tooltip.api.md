@@ -34,7 +34,7 @@ export type TooltipCommons = {
     positioning?: PositioningShorthand;
     visible?: boolean;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
+    type: 'description' | 'label' | 'none';
     showDelay: number;
     hideDelay: number;
 };

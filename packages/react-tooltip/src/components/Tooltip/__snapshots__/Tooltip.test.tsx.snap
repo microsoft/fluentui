@@ -2,6 +2,29 @@
 
 exports[`Tooltip renders a description tooltip content always 1`] = `
 <body>
+  <div
+    class=""
+    dir="ltr"
+  >
+    <div
+      class="fui-Tooltip"
+      id="tooltip-1"
+      role="tooltip"
+    >
+      Example
+    </div>
+  </div>
+  <div
+    class=""
+    dir="ltr"
+  >
+    <div
+      id="tooltip-1"
+      role="tooltip"
+    >
+      Example
+    </div>
+  </div>
   <div>
     <button
       aria-describedby="tooltip-1"
@@ -29,6 +52,29 @@ exports[`Tooltip renders a description tooltip content always 1`] = `
 
 exports[`Tooltip renders only aria-label for a simple label tooltip 1`] = `
 <body>
+  <div
+    class=""
+    dir="ltr"
+  >
+    <div
+      class="fui-Tooltip"
+      id="tooltip-1"
+      role="tooltip"
+    >
+      Example
+    </div>
+  </div>
+  <div
+    class=""
+    dir="ltr"
+  >
+    <div
+      id="tooltip-1"
+      role="tooltip"
+    >
+      Example
+    </div>
+  </div>
   <div>
     <button
       aria-label="The tooltip text"
@@ -38,8 +84,31 @@ exports[`Tooltip renders only aria-label for a simple label tooltip 1`] = `
 </body>
 `;
 
-exports[`Tooltip renders the content of a nontrivial tooltip 1`] = `
+exports[`Tooltip renders the content of a nontrivial label tooltip 1`] = `
 <body>
+  <div
+    class=""
+    dir="ltr"
+  >
+    <div
+      class="fui-Tooltip"
+      id="tooltip-1"
+      role="tooltip"
+    >
+      Example
+    </div>
+  </div>
+  <div
+    class=""
+    dir="ltr"
+  >
+    <div
+      id="tooltip-1"
+      role="tooltip"
+    >
+      Example
+    </div>
+  </div>
   <div>
     <button
       aria-labelledby="the-tooltip-id"

@@ -75,15 +75,16 @@ export type TooltipCommons = {
   ) => void;
 
   /**
-   * Specifies which aria attribute to set on the trigger element.
-   * * `label` - Set aria-label to the tooltip's content. Requires content to be a string; if not, uses `labelledby`.
-   * * `labelledby` - Set aria-labelledby to the tooltip's id. The id is generated if not provided.
-   * * `describedby` - Set aria-describedby to the tooltip's id. The id is generated if not provided.
-   * * null - Do not set any aria attributes on the trigger element.
+   * Specifies whether this tooltip is acting as the description or label of its trigger element.
    *
-   * @defaultvalue label
+   * * `description` - The tooltip sets the trigger's aria-description or aria-describedby attribute.
+   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute.
+   * * `none` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to screen
+   *   readers, and should only be used if the tooltip's text is available to screen readers by some other means.
+   *
+   * @defaultvalue description
    */
-  triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
+  type: 'description' | 'label' | 'none';
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
