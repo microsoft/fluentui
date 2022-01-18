@@ -1639,10 +1639,10 @@
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.154-beta.5.tgz#6266d5fa1048bf9b3bffc461dc40e02862ac5cd3"
   integrity sha512-U+bdvX1BZELUEN5MK4BX7H35p92Kyt/M+26PWJG/gvc2KCgpfFTFedBXjABKEf1Jo8wIcQl8VWciKSkpzhUaQw==
 
-"@griffel/core@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.0.6.tgz#e582d19449619f7a43d861489bbce4429f929f9d"
-  integrity sha512-yliAuog/AugYK5WDGAM8z4y+JFFkFuj0zrGXr4uTeG9wnbZaPKKAN55axBTbK5/rN1ecMSuDwdb4U3pZLyCQNQ==
+"@griffel/core@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.0.7.tgz#584ef829faf780716df6bbe371b3fb452e2d67f7"
+  integrity sha512-fj1eFqFiDsqBeEtPjLD39rmt9rlc/7y5QFzf26+cuXIhLN5fK1qFwBFJpuJkiVKKgYXqN2YmkYckZ36KHNUlBw==
   dependencies:
     "@emotion/hash" "^0.8.0"
     csstype "^2.6.19"
