@@ -6,7 +6,7 @@ import { InfoRegular } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-theme';
 
 export const Default = () => (
-  <Tooltip content="This is an example">
+  <Tooltip content="This is an example" triggerAriaAttribute="describedby">
     <Button>Button with a tooltip</Button>
   </Tooltip>
 );
@@ -20,7 +20,7 @@ Default.parameters = {
 };
 
 export const Inverted = () => (
-  <Tooltip appearance="inverted" content="Inverted appearance">
+  <Tooltip appearance="inverted" content="This has an inverted appearance" triggerAriaAttribute="describedby">
     <Button>Inverted appearance</Button>
   </Tooltip>
 );
@@ -34,7 +34,7 @@ Inverted.parameters = {
 };
 
 export const WithArrow = () => (
-  <Tooltip withArrow content="With an arrow">
+  <Tooltip withArrow content="This tooltip has an arrow">
     <Button>With an arrow</Button>
   </Tooltip>
 );

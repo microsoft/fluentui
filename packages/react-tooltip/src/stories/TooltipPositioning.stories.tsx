@@ -33,10 +33,8 @@ export const Positioning = () => {
       }}
     >
       {positions.map(position => (
-        <Tooltip key={position} positioning={position} content={position}>
-          <Button size="small" style={{ gridArea: position, height: '64px' }}>
-            {position}
-          </Button>
+        <Tooltip withArrow key={position} positioning={position} content={position}>
+          <Button size="small" style={{ gridArea: position, height: '40px', minWidth: '40px' }} />
         </Tooltip>
       ))}
     </div>
