@@ -233,7 +233,7 @@ describe('migrate-converged-pkg generator', () => {
           lib: ['ES2019', 'dom'],
           noEmit: false,
           outDir: 'dist',
-          types: ['static-assets', 'environment', 'inline-style-expand-shorthand'],
+          types: ['static-assets', 'environment'],
         },
         exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
         include: ['./src/**/*.ts', './src/**/*.tsx'],
@@ -243,7 +243,7 @@ describe('migrate-converged-pkg generator', () => {
         compilerOptions: {
           module: 'CommonJS',
           outDir: 'dist',
-          types: ['jest', 'node', 'inline-style-expand-shorthand'],
+          types: ['jest', 'node'],
         },
         include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
       });
@@ -567,7 +567,7 @@ describe('migrate-converged-pkg generator', () => {
           allowJs: true,
           checkJs: true,
           outDir: '',
-          types: ['static-assets', 'environment', 'inline-style-expand-shorthand', 'storybook__addons'],
+          types: ['static-assets', 'environment', 'storybook__addons'],
         },
         include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
       });

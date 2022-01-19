@@ -1,7 +1,7 @@
-import { MakeStylesStyle } from '@fluentui/make-styles';
+import { GriffelStyle } from '@griffel/core';
 import { tokens } from '@fluentui/react-theme';
 
-export const createMixin = (rule: MakeStylesStyle): MakeStylesStyle => ({
+export const createMixin = (rule: GriffelStyle): GriffelStyle => ({
   color: tokens.colorBrandBackground,
   ...rule,
 });
