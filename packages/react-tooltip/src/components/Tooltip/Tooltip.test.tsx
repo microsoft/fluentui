@@ -28,7 +28,7 @@ describe('Tooltip', () => {
   it('renders only aria-label for a simple label tooltip', () => {
     const tooltipText = 'The tooltip text';
     const result = render(
-      <Tooltip content={tooltipText} type="label">
+      <Tooltip content={tooltipText} relationship="label">
         <button data-testid="the-target" />
       </Tooltip>,
     );
@@ -43,7 +43,7 @@ describe('Tooltip', () => {
     const result = render(
       <Tooltip
         id="the-tooltip-id"
-        type="label"
+        relationship="label"
         data-testid="the-tooltip"
         content={
           <span>
@@ -65,7 +65,7 @@ describe('Tooltip', () => {
 
   it('renders a description tooltip content always', () => {
     const result = render(
-      <Tooltip content="Description tooltip" type="description" data-testid="the-tooltip">
+      <Tooltip content="Description tooltip" relationship="description" data-testid="the-tooltip">
         <button data-testid="the-target" />
       </Tooltip>,
     );

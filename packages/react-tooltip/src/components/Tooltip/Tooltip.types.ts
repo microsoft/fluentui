@@ -84,7 +84,7 @@ export type TooltipCommons = {
    *
    * @defaultvalue description
    */
-  type: 'description' | 'label' | 'none';
+  relationship: 'description' | 'label' | 'none';
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
@@ -132,11 +132,6 @@ export type TooltipState = ComponentState<TooltipSlots> &
   TooltipCommons & {
     /**
      * Whether the tooltip should be rendered to the DOM.
-     *
-     * Normally the tooltip will only be rendered when visible. However, if
-     * triggerAriaAttribute is labelledby or describedby, the tooltip will
-     * always be rendered even when hidden so that those aria attributes
-     * to always refer to a valid DOM element.
      */
     shouldRenderTooltip?: boolean;
 
