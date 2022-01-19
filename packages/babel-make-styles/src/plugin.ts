@@ -2,7 +2,7 @@ import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel-preset';
 import shakerEvaluator from '@linaria/shaker';
-import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStylesStyle } from '@fluentui/make-styles';
+import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, GriffelStyle } from '@griffel/core';
 
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
@@ -159,7 +159,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
                 );
               }
 
-              const stylesBySlots: Record<string /* slot */, MakeStylesStyle> = evaluationResult.value;
+              const stylesBySlots: Record<string /* slot */, GriffelStyle> = evaluationResult.value;
               const [classnamesMapping, cssRules] = resolveStyleRulesForSlots(stylesBySlots);
 
               // TODO: find a better way to replace arguments
