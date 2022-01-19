@@ -8,35 +8,41 @@ import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   grid: theme => ({
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
+    width: '100%',
+    marginLeft: 'auto',
+    boxSizing: 'border-box',
+    marginRight: 'auto',
+    display: 'block',
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    paddingTop: '10px',
+    fontFamily: 'Arial',
+    maxWidth: '105ch',
+    position: 'relative',
 
-    'grid-list': {
-      alignItems: 'center',
-      color: theme.colorNeutralForeground1,
-      display: 'flex',
+    '& span': {
+      width: '50%',
+      display: 'inline-block',
       flexDirection: 'column',
-      fontSize: theme.fontSizeBase600,
-      height: '80px',
-      justifyContent: 'space-around',
-      padding: '8px',
-      width: '80px',
-      overflow: 'hidden',
+      margin: '0px 4px',
 
-      'list-span': {
-        color: theme.colorNeutralForeground1,
-        fontSize: theme.fontSizeBase300,
-        opacity: '0',
+      '& svg': {
+        display: 'inline-block',
       },
 
-      '&:hover': {
-        overflow: 'visible',
+      // '& div': {
+      //   color: theme.colorNeutralForeground1,
+      //   fontSize: '16px',
+      //   // opacity: '0',
+      // },
 
-        span: {
-          opacity: '1',
-        },
-      },
+      // '&:hover': {
+      //   overflow: 'visible',
+
+      //   '& span': {
+      //     opacity: '1',
+      //   },
+      // },
     },
   }),
 
@@ -70,10 +76,10 @@ export const ReactIconGrid = () => {
 
   const _renderIcon = (Icon: React.FC<FluentIconsProps>): JSX.Element => {
     return (
-      <li key={Icon.displayName} aria-label={Icon.displayName} className="grid-list">
+      <span key={Icon.displayName} aria-label={Icon.displayName} className={styles.grid}>
         <Icon />
-        <span className="list-span">{Icon.displayName}</span>
-      </li>
+        <div className={styles.grid}>{Icon.displayName}</div>
+      </span>
     );
   };
 
@@ -111,7 +117,7 @@ export const ReactIconGrid = () => {
       <label className={styles.radio}>48</label>
       <input type="radio" value="All" name="size" onChange={_filterBySize} />
       <label className={styles.radio}>All</label>
-      <ul className={styles.grid}>{filteredIcons.map(_renderIcon)}</ul>
+      <div className={styles.grid}>{filteredIcons.map(_renderIcon)}</div>
     </div>
   );
 };
