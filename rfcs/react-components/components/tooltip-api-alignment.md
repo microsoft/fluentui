@@ -168,6 +168,6 @@ function App() {
 }
 ```
 
-But this will make API to verbose and complicated to use for composition.
+But this will make API too verbose and complicated to use for composition.
 
 ## Open Issues
