@@ -119,22 +119,26 @@ storiesOf('DetailsHeader', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-DetailsHeader' })
-        .hover('[aria-colindex=2]')
+        .hover('[role=columnheader]:nth-of-type(2)')
         .snapshot('hoverFrozenFirst', { cropTo: '.ms-DetailsHeader' })
-        .hover('[aria-colindex=3]')
+        .hover('[role=columnheader]:nth-of-type(3)')
         .snapshot('hoverDraggable', { cropTo: '.ms-DetailsHeader' })
-        .hover('[aria-colindex=7]')
+        .hover('[role=columnheader]:nth-of-type(7)')
         .snapshot('hoverFrozenLast', { cropTo: '.ms-DetailsHeader' })
-        .hover('[aria-colindex=3]')
+        .hover('[role=columnheader]:nth-of-type(3)')
         .executeScript(dndScript)
         // simulate a drag on column 'b' to render the border
         .cssAnimations(false)
-        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[aria-colindex="5"]', false)`)
+        .executeScript(
+          `DndSimulator.simulate('[draggable="true"]', '[role=columnheader]:nth-of-type(5), false)`,
+        )
         .snapshot('borderWhileDragging')
         // do a dragover on 'd' to render the drop hint
-        .hover('[aria-colindex=5]')
+        .hover('[role=columnheader]:nth-of-type(5)')
         .cssAnimations(true)
-        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[aria-colindex="5"]', true)`)
+        .executeScript(
+          `DndSimulator.simulate('[draggable="true"]', '[role=columnheader]:nth-of-type(5)', true)`,
+        )
         .snapshot('dropHint')
         .end()}
     >

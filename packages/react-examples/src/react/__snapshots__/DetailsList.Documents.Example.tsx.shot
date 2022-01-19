@@ -633,7 +633,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
             role="row"
           >
             <div
-              aria-colindex={1}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -712,8 +711,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-describedby="header8-column1-tooltip"
-                  aria-label="File Type"
+                  aria-label="Column operations for File type, Press to sort on File type"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -827,31 +825,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 </span>
               </span>
             </div>
-            <label
-              className=
-
-                  {
-                    border: 0px;
-                    height: 1px;
-                    margin-bottom: -1px;
-                    margin-left: -1px;
-                    margin-right: -1px;
-                    margin-top: -1px;
-                    overflow: hidden;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: absolute;
-                    white-space: nowrap;
-                    width: 1px;
-                  }
-              id="header8-column1-tooltip"
-            >
-              Column operations for File type, Press to sort on File type
-            </label>
             <div
-              aria-colindex={2}
               aria-sort="ascending"
               className=
                   ms-DetailsHeader-cell
@@ -1036,6 +1010,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     white-space: nowrap;
                     width: 1px;
                   }
+              hidden={true}
               id="header8-column2-tooltip"
             >
               Sorted A to Z
@@ -1097,7 +1072,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               role="button"
             />
             <div
-              aria-colindex={3}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -1287,7 +1261,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               role="button"
             />
             <div
-              aria-colindex={4}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -1477,7 +1450,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               role="button"
             />
             <div
-              aria-colindex={5}
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -1821,7 +1793,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -1913,7 +1884,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -1979,7 +1949,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Lorem ipsum.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2041,7 +2010,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2103,7 +2071,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2285,7 +2252,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2377,7 +2343,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -2443,7 +2408,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Amet consectetur.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2505,7 +2469,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2567,7 +2530,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2749,7 +2711,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2841,7 +2802,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -2907,7 +2867,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Sed do.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2969,7 +2928,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3031,7 +2989,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3213,7 +3170,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3305,7 +3261,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -3371,7 +3326,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Incididunt ut.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3433,7 +3387,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3495,7 +3448,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3677,7 +3629,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3769,7 +3720,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -3835,7 +3785,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Dolore magna.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3897,7 +3846,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3959,7 +3907,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4141,7 +4088,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4233,7 +4179,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -4299,7 +4244,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Enim ad.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4361,7 +4305,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4423,7 +4366,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4605,7 +4547,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4697,7 +4638,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -4763,7 +4703,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Quis nostrud.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4825,7 +4764,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4887,7 +4825,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5069,7 +5006,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5161,7 +5097,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -5227,7 +5162,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Laboris nisi.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5289,7 +5223,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5351,7 +5284,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5533,7 +5465,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5625,7 +5556,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -5691,7 +5621,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Ex ea.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5753,7 +5682,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5815,7 +5743,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -5997,7 +5924,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="presentation"
                         >
                           <div
-                            aria-colindex={1}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6089,7 +6015,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </div>
                           </div>
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 is-row-header
@@ -6155,7 +6080,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             Duis aute.accdb
                           </div>
                           <div
-                            aria-colindex={3}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6217,7 +6141,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={4}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -6279,7 +6202,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             </span>
                           </div>
                           <div
-                            aria-colindex={5}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
