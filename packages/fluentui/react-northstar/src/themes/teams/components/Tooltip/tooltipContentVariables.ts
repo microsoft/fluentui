@@ -25,7 +25,7 @@ export interface TooltipContentVariables {
 }
 
 export const tooltipContentVariables = (siteVars: any): TooltipContentVariables => ({
-  boxShadow: siteVars.shadowLevel2,
+  boxShadow: siteVars.shadow8,
 
   borderRadius: siteVars.borderRadiusMedium,
   borderSize: '1px',

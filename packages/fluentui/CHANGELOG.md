@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Use shadow8 for better contrast of `Tooltip` @jurokapsiar ([#21316](https://github.com/microsoft/fluentui/pull/21316))
+
 <!--------------------------------[ v0.60.1 ]------------------------------- -->
 ## [v0.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.1) (2022-01-17)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.60.0..@fluentui/react-northstar_v0.60.1)
