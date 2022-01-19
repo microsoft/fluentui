@@ -34,7 +34,7 @@ export type TooltipCommons = {
     positioning?: PositioningShorthand;
     visible?: boolean;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    relationship: 'description' | 'label' | 'none';
+    relationship: 'label' | 'description' | 'inaccessible';
     showDelay: number;
     hideDelay: number;
 };
