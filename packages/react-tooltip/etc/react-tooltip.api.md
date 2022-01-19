@@ -27,9 +27,8 @@ export const tooltipClassName = "fui-Tooltip";
 
 // @public
 export type TooltipCommons = {
-    appearance?: 'inverted';
+    appearance?: 'normal' | 'inverted';
     content: React_2.ReactNode;
-    inverted?: boolean;
     withArrow?: boolean;
     positioning?: PositioningShorthand;
     visible?: boolean;
