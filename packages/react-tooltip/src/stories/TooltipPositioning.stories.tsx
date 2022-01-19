@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { shorthands, makeStyles } from '@fluentui/react-make-styles';
-import { ArrowDownLeftRegular } from '@fluentui/react-icons';
 
 import { Tooltip } from '../Tooltip';
 
 const useStyles = makeStyles({
   targetContainer: {
     display: 'inline-grid',
-    gridTemplateColumns: 'repeat(5, 50px)',
-    gridTemplateRows: 'repeat(5, 50px)',
+    gridTemplateColumns: 'repeat(5, 64px)',
+    gridTemplateRows: 'repeat(5, 64px)',
     ...shorthands.gap('4px'),
     ...shorthands.margin('16px 128px'),
   },
