@@ -24,27 +24,25 @@ export const Positioning = () => {
   ] as const;
 
   return (
-    <>
-      <div
-        style={{
-          display: 'grid',
-          margin: '24px 128px',
-          gap: '4px',
-          gridTemplateAreas:
-            '".             above-start   above         above-end     .            "' +
-            '"before-top    .             .             .             after-top    "' +
-            '"before        .             .             .             after        "' +
-            '"before-bottom .             .             .             after-bottom "' +
-            '".             below-start   below         below-end     .            "',
-        }}
-      >
-        {positions.map(([position, icon]) => (
-          <Tooltip withArrow positioning={position} content={position}>
-            <Button style={{ gridArea: position, minWidth: '64px', height: '64px' }} icon={icon} />
-          </Tooltip>
-        ))}
-      </div>
-    </>
+    <div
+      style={{
+        display: 'grid',
+        margin: '24px 128px',
+        gap: '4px',
+        gridTemplateAreas:
+          '".             above-start   above         above-end     .            "' +
+          '"before-top    .             .             .             after-top    "' +
+          '"before        .             .             .             after        "' +
+          '"before-bottom .             .             .             after-bottom "' +
+          '".             below-start   below         below-end     .            "',
+      }}
+    >
+      {positions.map(([position, icon]) => (
+        <Tooltip withArrow positioning={position} content={position}>
+          <Button icon={icon} style={{ gridArea: position, minWidth: '64px', height: '64px' }} />
+        </Tooltip>
+      ))}
+    </div>
   );
 };
 
