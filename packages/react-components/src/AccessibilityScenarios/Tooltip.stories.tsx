@@ -38,7 +38,6 @@ export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = 
     <Scenario pageTitle="Buttons with tooltip">
       <h2>Tooltip as a password requirements</h2>
       <Label htmlFor="password">Password</Label>
-      <input type="password" id="password" name="password" />
       <Tooltip
         onVisibleChange={onVisibleChange}
         visible={tooltipVisible}
@@ -46,6 +45,7 @@ export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = 
       >
         <Button onClick={() => setTooltipVisible(visible => !visible)}>Password requirements</Button>
       </Tooltip>
+      <input type="password" id="password" name="password" />
 
       <h2>Tooltips for text formatting icon-only buttons</h2>
       <Tooltip content="Make text bold" triggerAriaAttribute="label">
