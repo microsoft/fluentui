@@ -1,5 +1,6 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { RadioItemState } from './RadioItem.types';
 
 export const radioItemClassName = 'fui-RadioItem';
@@ -8,93 +9,93 @@ export const radioItemClassName = 'fui-RadioItem';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     display: 'inline-flex',
     position: 'relative',
     alignSelf: 'flex-start',
     alignItems: 'center',
-    padding: '4px',
+    ...shorthands.padding('4px'),
     userSelect: 'none',
     cursor: 'pointer',
-  }),
+  },
 
-  checked: theme => ({
-    color: theme.colorNeutralForeground1,
+  checked: {
+    color: tokens.colorNeutralForeground1,
 
     // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
     [`& .${radioItemClassName}-indicator`]: {
-      backgroundColor: theme.colorCompoundBrandBackground,
-      color: theme.colorNeutralForegroundInverted,
-      borderColor: theme.colorBrandBackground,
+      backgroundColor: tokens.colorCompoundBrandBackground,
+      color: tokens.colorNeutralForegroundInverted,
+      borderColor: tokens.colorBrandBackground,
       boxShadow: '0 0 0 2px currentColor inset',
     },
 
     ':active': {
       [`& .${radioItemClassName}-indicator`]: {
-        backgroundColor: theme.colorCompoundBrandBackgroundPressed,
+        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
       },
     },
 
     ':hover': {
       [`& .${radioItemClassName}-indicator`]: {
-        backgroundColor: theme.colorCompoundBrandBackgroundHover,
+        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
       },
     },
-  }),
+  },
 
-  unchecked: theme => ({
-    color: theme.colorNeutralForeground3,
+  unchecked: {
+    color: tokens.colorNeutralForeground3,
 
     [`& .${radioItemClassName}-indicator`]: {
-      borderColor: theme.colorNeutralStrokeAccessible,
+      borderColor: tokens.colorNeutralStrokeAccessible,
       '& > *': {
         opacity: 0,
       },
     },
 
     ':hover': {
-      color: theme.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground2,
 
       [`& .${radioItemClassName}-indicator`]: {
-        borderColor: theme.colorNeutralStrokeAccessibleHover,
+        borderColor: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
 
     ':active': {
-      color: theme.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1,
 
       [`& .${radioItemClassName}-indicator`]: {
-        borderColor: theme.colorNeutralStrokeAccessiblePressed,
+        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
       },
     },
-  }),
+  },
 
-  disabled: theme => ({
-    color: theme.colorNeutralForegroundDisabled,
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
     cursor: 'default',
 
     [`& .${radioItemClassName}-indicator`]: {
-      borderColor: theme.colorNeutralStrokeDisabled,
-      color: theme.colorNeutralForegroundDisabled,
-      backgroundColor: theme.colorNeutralBackground1,
+      borderColor: tokens.colorNeutralStrokeDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralBackground1,
     },
 
     ':hover': {
       [`& .${radioItemClassName}-indicator`]: {
-        borderColor: theme.colorNeutralStrokeDisabled,
-        color: theme.colorNeutralForegroundDisabled,
-        backgroundColor: theme.colorNeutralBackground1,
+        borderColor: tokens.colorNeutralStrokeDisabled,
+        color: tokens.colorNeutralForegroundDisabled,
+        backgroundColor: tokens.colorNeutralBackground1,
       },
     },
 
     ':active': {
       [`& .${radioItemClassName}-indicator`]: {
-        borderColor: theme.colorNeutralStrokeDisabled,
-        color: theme.colorNeutralForegroundDisabled,
-        backgroundColor: theme.colorNeutralBackground1,
+        borderColor: tokens.colorNeutralStrokeDisabled,
+        color: tokens.colorNeutralForegroundDisabled,
+        backgroundColor: tokens.colorNeutralBackground1,
       },
     },
-  }),
+  },
 
   bottomLabelPosition: {
     display: 'flex',
@@ -102,8 +103,7 @@ const useStyles = makeStyles({
     alignSelf: 'flex-start',
   },
 
-  focusIndicator: theme =>
-    createFocusOutlineStyle(theme, { style: { outlineOffset: '2px' }, selector: 'focus-within' }),
+  focusIndicator: createFocusOutlineStyle({ style: { outlineOffset: '2px' }, selector: 'focus-within' }),
 });
 
 const useContainerStyles = makeStyles({
@@ -130,8 +130,8 @@ const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',
-    margin: 0,
-    padding: 0,
+    ...shorthands.margin(0),
+    ...shorthands.padding(0),
     cursor: 'pointer',
   },
 
@@ -145,37 +145,37 @@ const useLabelStyles = makeStyles({
     cursor: 'pointer',
   },
 
-  disabled: theme => ({
+  disabled: {
     cursor: 'not-allowed',
-    color: theme.colorNeutralForegroundDisabled,
-  }),
+    color: tokens.colorNeutralForegroundDisabled,
+  },
 });
 
 const useIndicatorStyles = makeStyles({
-  indicator: theme => ({
+  indicator: {
     width: '100%',
     height: '100%',
     fill: 'currentColor',
-    overflow: 'hidden',
+    ...shorthands.overflow('hidden'),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
     boxSizing: 'border-box',
-    borderStyle: 'solid',
-    borderRadius: theme.borderRadiusCircular,
-    borderWidth: theme.strokeWidthThin,
-  }),
+    ...shorthands.borderStyle('solid'),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
+  },
 });
 
 const useSubtextStyles = makeStyles({
-  subtext: theme => ({
+  subtext: {
     display: 'block',
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase200,
-    lineHeight: theme.lineHeightBase200,
-    fontWeight: theme.fontWeightRegular,
-  }),
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    fontWeight: tokens.fontWeightRegular,
+  },
 });
 
 /**

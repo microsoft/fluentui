@@ -7,7 +7,7 @@ import {
 } from './constants';
 import { hashSequence } from './runtime/utils/hashSequence';
 import { reduceToClassName } from './runtime/reduceToClassNameForSlots';
-import { CSSClassesMap } from './types';
+import { CSSClassesMap, SequenceHash } from './types';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
 const mergeClassesCachedResults: Record<string, string> = {};
@@ -36,16 +36,16 @@ export function mergeClasses(...classNames: (string | false | undefined)[]): str
 export function mergeClasses(): string {
   // arguments are parsed manually to avoid double loops as TS & Babel transforms rest via an additional loop
   // @see https://babeljs.io/docs/en/babel-plugin-transform-parameters
+  /* eslint-disable prefer-rest-params */
 
   let dir: 'ltr' | 'rtl' | null = null;
   let resultClassName = '';
+
   // Is used as a cache key to avoid object merging
   let sequenceMatch = '';
-
-  const sequenceMappings: CSSClassesMap[] = [];
+  const sequencesIds: (SequenceHash | undefined)[] = new Array(arguments.length);
 
   for (let i = 0; i < arguments.length; i++) {
-    // eslint-disable-next-line prefer-rest-params
     const className = arguments[i];
 
     if (typeof className === 'string') {
@@ -56,39 +56,15 @@ export function mergeClasses(): string {
       if (sequenceIndex === -1) {
         resultClassName += className + ' ';
       } else {
-        const sequenceId = className.slice(sequenceIndex, sequenceIndex + SEQUENCE_SIZE);
-        const sequenceMapping = DEFINITION_LOOKUP_TABLE[sequenceId];
+        const sequenceId = className.substr(sequenceIndex, SEQUENCE_SIZE);
 
         // Handles a case with mixed classnames, i.e. "ui-button ATOMIC_CLASSES"
         if (sequenceIndex > 0) {
           resultClassName += className.slice(0, sequenceIndex);
         }
 
-        if (sequenceMapping) {
-          sequenceMatch += sequenceId;
-          sequenceMappings.push(sequenceMapping[LOOKUP_DEFINITIONS_INDEX]);
-
-          if (process.env.NODE_ENV !== 'production') {
-            if (dir !== null && dir !== sequenceMapping[LOOKUP_DIR_INDEX]) {
-              // eslint-disable-next-line no-console
-              console.error(
-                `mergeClasses(): a passed string contains an identifier (${sequenceId}) that has different direction ` +
-                  `(dir="${sequenceMapping[1] ? 'rtl' : 'ltr'}") setting than other classes. This is not supported. ` +
-                  `Source string: ${className}`,
-              );
-            }
-          }
-
-          dir = sequenceMapping[LOOKUP_DIR_INDEX];
-        } else {
-          if (process.env.NODE_ENV !== 'production') {
-            // eslint-disable-next-line no-console
-            console.error(
-              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry ` +
-                `in cache. Source string: ${className}`,
-            );
-          }
-        }
+        sequenceMatch += sequenceId;
+        sequencesIds[i] = sequenceId;
       }
 
       if (process.env.NODE_ENV !== 'production') {
@@ -116,6 +92,38 @@ export function mergeClasses(): string {
 
   if (mergeClassesResult !== undefined) {
     return resultClassName + mergeClassesResult;
+  }
+
+  const sequenceMappings: CSSClassesMap[] = [];
+
+  for (let i = 0; i < arguments.length; i++) {
+    const sequenceId = sequencesIds[i];
+    const sequenceMapping = sequenceId ? DEFINITION_LOOKUP_TABLE[sequenceId] : undefined;
+
+    if (sequenceMapping) {
+      sequenceMappings.push(sequenceMapping[LOOKUP_DEFINITIONS_INDEX]);
+
+      if (process.env.NODE_ENV !== 'production') {
+        if (dir !== null && dir !== sequenceMapping[LOOKUP_DIR_INDEX]) {
+          // eslint-disable-next-line no-console
+          console.error(
+            `mergeClasses(): a passed string contains an identifier (${sequenceId}) that has different direction ` +
+              `(dir="${sequenceMapping[1] ? 'rtl' : 'ltr'}") setting than other classes. This is not supported. ` +
+              `Source string: ${arguments[i]}`,
+          );
+        }
+      }
+
+      dir = sequenceMapping[LOOKUP_DIR_INDEX];
+    } else {
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.error(
+          `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry ` +
+            `in cache. Source string: ${arguments[i]}`,
+        );
+      }
+    }
   }
 
   // eslint-disable-next-line prefer-spread

@@ -20,7 +20,7 @@ const DialogExampleScroll = () => (
         </>
       ),
       styles: {
-        height: '500px',
+        maxHeight: '500px',
         overflow: 'scroll',
       },
     }}

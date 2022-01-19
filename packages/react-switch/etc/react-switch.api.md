@@ -33,9 +33,6 @@ export interface SwitchCommons {
 export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {
 }
 
-// @public
-export const switchShorthandProps: (keyof SwitchSlots)[];
-
 // @public (undocumented)
 export type SwitchSlots = {
     root: IntrinsicShorthandProps<'div'>;

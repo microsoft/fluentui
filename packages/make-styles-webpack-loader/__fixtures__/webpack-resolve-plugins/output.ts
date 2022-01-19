@@ -1,4 +1,5 @@
-import { __styles } from '@fluentui/react-make-styles'; // @ts-ignore
+import { __styles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme'; // @ts-ignore
 
 import color from 'non-existing-color-module';
 

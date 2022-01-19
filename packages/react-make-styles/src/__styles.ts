@@ -1,8 +1,8 @@
-import { __styles as vanillaStyles } from '@fluentui/make-styles';
+import { __styles as vanillaStyles } from '@griffel/core';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 import { useRenderer } from './RendererContext';
-import type { CSSClassesMapBySlot, CSSRulesByBucket } from '@fluentui/make-styles';
+import type { CSSClassesMapBySlot, CSSRulesByBucket } from '@griffel/core';
 
 /**
  * A version of makeStyles() that accepts build output as an input and skips all runtime transforms.

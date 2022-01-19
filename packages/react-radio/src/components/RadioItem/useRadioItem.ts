@@ -8,12 +8,7 @@ import {
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { RadioItemProps, RadioItemSlots, RadioItemState } from './RadioItem.types';
-
-/**
- * Array of all shorthand properties listed in RadioItemSlots
- */
-export const radioItemShorthandProps: (keyof RadioItemSlots)[] = ['root', 'indicator', 'input', 'label', 'subtext'];
+import type { RadioItemProps, RadioItemState } from './RadioItem.types';
 
 /**
  * Create the state required to render RadioItem.

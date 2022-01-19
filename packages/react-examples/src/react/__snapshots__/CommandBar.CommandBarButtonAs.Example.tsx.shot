@@ -866,6 +866,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                               >
                                 <div
                                   aria-hidden={true}
+                                  data-is-focus-trap-zone-bumper={true}
                                   data-is-visible={true}
                                   style={
                                     Object {
@@ -918,6 +919,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                       >
                                         <div
                                           aria-hidden={true}
+                                          data-is-focus-trap-zone-bumper={true}
                                           data-is-visible={true}
                                           style={
                                             Object {
@@ -1134,6 +1136,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                         </div>
                                         <div
                                           aria-hidden={true}
+                                          data-is-focus-trap-zone-bumper={true}
                                           data-is-visible={true}
                                           style={
                                             Object {
@@ -1149,6 +1152,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 </div>
                                 <div
                                   aria-hidden={true}
+                                  data-is-focus-trap-zone-bumper={true}
                                   data-is-visible={true}
                                   style={
                                     Object {

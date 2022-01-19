@@ -1,8 +1,17 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Mon, 27 Sep 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Dec 2021 07:31:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.3.0)
+
+Tue, 07 Dec 2021 07:31:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.2.7..@fluentui/example-data_v8.3.0)
+
+### Minor changes
+
+- [breaking] Remove AvatarExamples ([PR #20907](https://github.com/microsoft/fluentui/pull/20907) by elcraig@microsoft.com)
 
 ## [8.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.2.7)
 

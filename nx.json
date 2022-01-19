@@ -215,6 +215,10 @@
     "@fluentui/react-date-time": {
       "implicitDependencies": []
     },
+    "@fluentui/react-dialog": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-divider": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
@@ -322,6 +326,10 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-spinbutton": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
     "@fluentui/react-storybook": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
@@ -331,6 +339,10 @@
       "implicitDependencies": []
     },
     "@fluentui/react-switch": {
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
+    },
+    "@fluentui/react-tabs": {
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

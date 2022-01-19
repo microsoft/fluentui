@@ -1,8 +1,7 @@
 import * as React from 'react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { MenuButton } from '../../../MenuButton';
 
 export const SizeMedium = () => {
@@ -23,7 +22,7 @@ export const SizeMedium = () => {
 
       <Menu>
         <MenuTrigger>
-          <MenuButton icon={<CalendarMonth24Regular />} size="medium">
+          <MenuButton icon={<CalendarMonthRegular />} size="medium">
             This is a Menu Button
           </MenuButton>
         </MenuTrigger>

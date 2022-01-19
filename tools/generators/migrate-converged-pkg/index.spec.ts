@@ -233,7 +233,7 @@ describe('migrate-converged-pkg generator', () => {
           lib: ['ES2019', 'dom'],
           noEmit: false,
           outDir: 'dist',
-          types: ['static-assets', 'environment', 'inline-style-expand-shorthand'],
+          types: ['static-assets', 'environment'],
         },
         exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
         include: ['./src/**/*.ts', './src/**/*.tsx'],
@@ -243,7 +243,7 @@ describe('migrate-converged-pkg generator', () => {
         compilerOptions: {
           module: 'CommonJS',
           outDir: 'dist',
-          types: ['jest', 'node', 'inline-style-expand-shorthand'],
+          types: ['jest', 'node'],
         },
         include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
       });
@@ -567,7 +567,7 @@ describe('migrate-converged-pkg generator', () => {
           allowJs: true,
           checkJs: true,
           outDir: '',
-          types: ['static-assets', 'environment', 'inline-style-expand-shorthand', 'storybook__addons'],
+          types: ['static-assets', 'environment', 'storybook__addons'],
         },
         include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
       });
@@ -710,6 +710,7 @@ describe('migrate-converged-pkg generator', () => {
       const projectConfig = readProjectConfiguration(tree, config.projectName);
       const paths = {
         e2eRoot: `${projectConfig.root}/e2e`,
+        e2eSupport: `${projectConfig.root}/e2e/support.js`,
         packageJson: `${projectConfig.root}/package.json`,
         tsconfig: {
           main: `${projectConfig.root}/tsconfig.json`,
@@ -772,6 +773,13 @@ describe('migrate-converged-pkg generator', () => {
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
 
+      // support.js
+      const supportFile = tree.read(paths.e2eSupport)?.toString('utf-8');
+      expect(supportFile).toMatchInlineSnapshot(`
+        "// workaround for https://github.com/cypress-io/cypress/issues/8599
+        import '@fluentui/scripts/cypress/support';"
+      `);
+
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
       expect(packageJson.scripts).toEqual(expect.objectContaining({ e2e: 'e2e' }));
@@ -812,7 +820,7 @@ describe('migrate-converged-pkg generator', () => {
         just: 'just-scripts',
         lint: 'just-scripts lint',
         start: 'yarn storybook',
-        storybook: 'start-storybook',
+        storybook: 'node ../../scripts/storybook/runner',
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });

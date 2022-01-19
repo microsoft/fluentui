@@ -18,11 +18,11 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "start": "yarn storybook",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-make-styles/src && yarn docs",
-    "storybook": "start-storybook",
+    "storybook": "node ../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@fluentui/react-shared-contexts": "9.0.0-beta.4",
-    "@fluentui/make-styles": "9.0.0-beta.3",
+    "@griffel/core": "1.0.7",
     "@fluentui/react-theme": "9.0.0-beta.4",
     "@fluentui/react-utilities": "9.0.0-beta.4",
     "tslib": "^2.1.0"

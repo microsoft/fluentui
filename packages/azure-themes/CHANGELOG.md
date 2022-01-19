@@ -1,8 +1,171 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 30 Nov 2021 07:37:33 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jan 2022 09:43:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.125](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.125)
+
+Mon, 17 Jan 2022 09:43:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.124..@fluentui/azure-themes_v8.1.125)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.7 ([PR #21274](https://github.com/microsoft/fluentui/pull/21274) by beachball)
+
+## [8.1.124](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.124)
+
+Fri, 14 Jan 2022 07:28:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.123..@fluentui/azure-themes_v8.1.124)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.6 ([PR #21215](https://github.com/microsoft/fluentui/pull/21215) by beachball)
+
+## [8.1.123](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.123)
+
+Thu, 13 Jan 2022 07:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.122..@fluentui/azure-themes_v8.1.123)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.5 ([PR #21196](https://github.com/microsoft/fluentui/pull/21196) by beachball)
+
+## [8.1.122](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.122)
+
+Wed, 12 Jan 2022 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.121..@fluentui/azure-themes_v8.1.122)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.4 ([PR #21219](https://github.com/microsoft/fluentui/pull/21219) by beachball)
+
+## [8.1.121](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.121)
+
+Tue, 11 Jan 2022 07:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.120..@fluentui/azure-themes_v8.1.121)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.3 ([PR #21205](https://github.com/microsoft/fluentui/pull/21205) by beachball)
+
+## [8.1.120](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.120)
+
+Mon, 10 Jan 2022 07:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.119..@fluentui/azure-themes_v8.1.120)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.2 ([PR #21041](https://github.com/microsoft/fluentui/pull/21041) by beachball)
+
+## [8.1.119](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.119)
+
+Fri, 07 Jan 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.118..@fluentui/azure-themes_v8.1.119)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.1 ([PR #21201](https://github.com/microsoft/fluentui/pull/21201) by beachball)
+
+## [8.1.118](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.118)
+
+Mon, 03 Jan 2022 23:32:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.117..@fluentui/azure-themes_v8.1.118)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.0 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+
+## [8.1.117](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.117)
+
+Wed, 22 Dec 2021 07:29:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.116..@fluentui/azure-themes_v8.1.117)
+
+### Patches
+
+- Bump @fluentui/react to v8.48.1 ([PR #21090](https://github.com/microsoft/fluentui/pull/21090) by beachball)
+
+## [8.1.116](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.116)
+
+Thu, 16 Dec 2021 07:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.115..@fluentui/azure-themes_v8.1.116)
+
+### Patches
+
+- Bump @fluentui/react to v8.48.0 ([PR #21011](https://github.com/microsoft/fluentui/pull/21011) by beachball)
+
+## [8.1.115](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.115)
+
+Wed, 15 Dec 2021 07:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.114..@fluentui/azure-themes_v8.1.115)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.3 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+
+## [8.1.114](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.114)
+
+Tue, 14 Dec 2021 07:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.113..@fluentui/azure-themes_v8.1.114)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.2 ([PR #20904](https://github.com/microsoft/fluentui/pull/20904) by beachball)
+
+## [8.1.113](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.113)
+
+Fri, 10 Dec 2021 07:30:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.112..@fluentui/azure-themes_v8.1.113)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.1 ([PR #20587](https://github.com/microsoft/fluentui/pull/20587) by beachball)
+
+## [8.1.112](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.112)
+
+Thu, 09 Dec 2021 07:27:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.111..@fluentui/azure-themes_v8.1.112)
+
+### Patches
+
+- Bump @fluentui/react to v8.47.0 ([PR #20161](https://github.com/microsoft/fluentui/pull/20161) by beachball)
+
+## [8.1.111](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.111)
+
+Wed, 08 Dec 2021 07:28:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.110..@fluentui/azure-themes_v8.1.111)
+
+### Patches
+
+- [object Object] ([PR #20861](https://github.com/microsoft/fluentui/pull/20861) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.46.3 ([PR #20831](https://github.com/microsoft/fluentui/pull/20831) by beachball)
+
+## [8.1.110](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.110)
+
+Tue, 07 Dec 2021 07:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.109..@fluentui/azure-themes_v8.1.110)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.2 ([PR #20769](https://github.com/microsoft/fluentui/pull/20769) by beachball)
+
+## [8.1.109](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.109)
+
+Fri, 03 Dec 2021 07:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.108..@fluentui/azure-themes_v8.1.109)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.1 ([PR #20887](https://github.com/microsoft/fluentui/pull/20887) by beachball)
+
+## [8.1.108](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.108)
+
+Wed, 01 Dec 2021 07:41:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.107..@fluentui/azure-themes_v8.1.108)
+
+### Patches
+
+- Bump @fluentui/react to v8.46.0 ([PR #20715](https://github.com/microsoft/fluentui/pull/20715) by beachball)
 
 ## [8.1.107](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.107)
 

@@ -28,6 +28,9 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
 
   const innerRef = React.useRef<HTMLElement>(null);
   const initialState: UninitializedMenuListState = {
+    components: {
+      root: 'div',
+    },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, innerRef),
       role: 'menu',

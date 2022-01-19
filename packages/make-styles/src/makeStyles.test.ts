@@ -5,18 +5,15 @@ import { MakeStylesRenderer } from './types';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
-function createFakeDocument(): Document {
-  const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
-  doc.documentElement.appendChild(document.createElementNS('http://www.w3.org/1999/xhtml', 'head'));
-
-  return doc;
-}
-
 describe('makeStyles', () => {
   let renderer: MakeStylesRenderer;
 
   beforeEach(() => {
     renderer = createDOMRenderer(document);
+  });
+
+  afterEach(() => {
+    document.head.innerHTML = '';
   });
 
   it('returns a single classname for a single style', () => {
@@ -177,8 +174,8 @@ describe('makeStyles', () => {
   });
 
   it('handles multiple renderers', () => {
-    const rendererA = createDOMRenderer(createFakeDocument());
-    const rendererB = createDOMRenderer(createFakeDocument());
+    const rendererA = createDOMRenderer();
+    const rendererB = createDOMRenderer();
 
     const computeClasses = makeStyles({
       root: { display: 'flex', paddingLeft: '10px' },
@@ -214,19 +211,6 @@ describe('makeStyles', () => {
       }
       .f81rol6 {
         padding-right: 10px;
-      }
-    `);
-  });
-
-  it('handles tokens', () => {
-    const computeClasses = makeStyles<'root', { display: string }>({
-      root: tokens => ({ display: tokens.display }),
-    });
-    computeClasses({ dir: 'rtl', renderer });
-
-    expect(renderer).toMatchInlineSnapshot(`
-      .fl81ese {
-        display: var(--display);
       }
     `);
   });
