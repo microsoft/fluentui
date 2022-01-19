@@ -95,7 +95,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       column.columnActionsMode !== ColumnActionsMode.disabled &&
       (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined);
     const accNameDescription = {
-      'aria-label': column.ariaLabel || (column.isIconOnly ? column.name : undefined),
+      'aria-label': column.ariaLabel ? column.ariaLabel : column.isIconOnly ? column.name : undefined,
       'aria-labelledby': column.ariaLabel || column.isIconOnly ? undefined : `${parentId}-${column.key}-name`,
       'aria-describedby':
         !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleDescription()
