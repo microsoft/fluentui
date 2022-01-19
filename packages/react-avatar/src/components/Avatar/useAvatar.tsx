@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { getInitials as getInitialsDefault } from '../../utils/index';
+import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
@@ -8,15 +8,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const {
-    name = '',
-    size = 32,
-    shape = 'circular',
-    active = 'unset',
-    activeAppearance = 'ring',
-    idForColor,
-    getInitials = getInitialsDefault,
-  } = props;
+  const { name = '', size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
   let { color = 'neutral' } = props;
 
   // Resolve 'colorful' to a specific color name
@@ -32,19 +24,18 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
     activeAppearance,
     color,
     idForColor,
-    getInitials,
 
     components: {
       root: 'span',
-      label: 'span',
+      initials: 'span',
       icon: 'span',
       image: 'img',
       badge: PresenceBadge,
     },
 
     root: getNativeElementProps('span', { ...props, ref }),
-    label: resolveShorthand(props.label),
-    icon: undefined, // The icon will be resolved below if there is no label text
+    initials: resolveShorthand(props.initials),
+    icon: undefined, // The icon will be resolved below if initials is empty
     image: resolveShorthand(props.image),
     badge: resolveShorthand(props.badge, {
       defaultProps: { size: getBadgeSize(size) },
@@ -52,10 +43,10 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
   };
 
   // If a label was not provided, use the initials and fall back to the icon if initials aren't available
-  if (!state.label?.children) {
-    const initials = state.getInitials(state.name, dir === 'rtl');
+  if (!state.initials?.children) {
+    const initials = getInitials(state.name, dir === 'rtl');
     if (initials) {
-      state.label = { ...state.label, children: initials };
+      state.initials = { ...state.initials, children: initials };
     } else {
       state.icon = resolveShorthand(props.icon, {
         required: true,
