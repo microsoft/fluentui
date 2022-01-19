@@ -75,16 +75,15 @@ export type TooltipCommons = {
   ) => void;
 
   /**
-   * Specifies whether this tooltip is acting as the description or label of its trigger element.
+   * (Required) Specifies whether this tooltip is acting as the description or label of its trigger element.
    *
+   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute. This is useful for buttons
+   *    displaying only an icon, for example.
    * * `description` - The tooltip sets the trigger's aria-description or aria-describedby attribute.
-   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute.
-   * * `none` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to screen
-   *   readers, and should only be used if the tooltip's text is available to screen readers by some other means.
-   *
-   * @defaultvalue description
+   * * `inaccessible` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to
+   *   screen readers, and should only be used if the tooltip's text is available by some other means.
    */
-  relationship: 'description' | 'label' | 'none';
+  relationship: 'label' | 'description' | 'inaccessible';
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
@@ -122,8 +121,8 @@ export type OnVisibleChangeData = {
  * Properties for Tooltip
  */
 export type TooltipProps = ComponentProps<TooltipSlots> &
-  Partial<Omit<TooltipCommons, 'content'>> &
-  Pick<TooltipCommons, 'content'>;
+  Partial<Omit<TooltipCommons, 'content' | 'relationship'>> &
+  Pick<TooltipCommons, 'content' | 'relationship'>;
 
 /**
  * State used in rendering Tooltip

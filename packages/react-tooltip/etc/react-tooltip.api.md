@@ -40,7 +40,7 @@ export type TooltipCommons = {
 };
 
 // @public
-export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content'>> & Pick<TooltipCommons, 'content'>;
+export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content' | 'relationship'>> & Pick<TooltipCommons, 'content' | 'relationship'>;
 
 // @public
 export type TooltipSlots = {

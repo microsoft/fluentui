@@ -35,7 +35,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     withArrow,
     positioning,
     onVisibleChange,
-    relationship = 'description',
+    relationship,
     showDelay = 250,
     hideDelay = 250,
   } = props;
@@ -203,17 +203,24 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
   }
 
   if (relationship === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
-    if (typeof state.content === 'string') {
-      triggerProps['aria-label'] = state.content;
-    } else if (!isServerSideRender) {
-      triggerProps['aria-labelledby'] = state.root.id;
-      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+    const hasLabel = child?.props && ('aria-label' in child.props || 'aria-labelledby' in child.props);
+    if (!hasLabel) {
+      // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
+      if (typeof state.content === 'string') {
+        triggerProps['aria-label'] = state.content;
+      } else if (!isServerSideRender) {
+        triggerProps['aria-labelledby'] = state.root.id;
+        // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+        state.shouldRenderTooltip = true;
+      }
+    }
+  } else if (relationship === 'description') {
+    const hasDescription = child?.props && ('aria-description' in child.props || 'aria-describedby' in child.props);
+    if (!hasDescription && !isServerSideRender) {
+      triggerProps['aria-describedby'] = state.root.id;
+      // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
       state.shouldRenderTooltip = true;
     }
-  } else if (relationship === 'description' && !isServerSideRender) {
-    triggerProps['aria-describedby'] = state.root.id;
-    state.shouldRenderTooltip = true;
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
