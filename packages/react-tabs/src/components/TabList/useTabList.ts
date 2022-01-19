@@ -9,7 +9,6 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import type { RegisterTabData, SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
-import { TabValue } from '../Tab/Tab.types';
 
 /**
  * Create the state required to render TabList.
