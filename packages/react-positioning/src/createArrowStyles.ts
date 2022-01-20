@@ -82,7 +82,11 @@ export function createArrowStyles(options: CreateArrowStylesOptions): MakeStyles
       width: 'inherit',
       height: 'inherit',
       backgroundColor: 'inherit',
-      ...shorthands.borderRight(borderWidth, borderStyle, borderColor),
+      ...shorthands.borderRight(
+        `${borderWidth} /* @noflip */`,
+        `${borderStyle} /* @noflip */`,
+        `${borderColor} /* @noflip */`,
+      ),
       ...shorthands.borderBottom(borderWidth, borderStyle, borderColor),
       borderBottomRightRadius: tokens.borderRadiusSmall,
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
