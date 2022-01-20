@@ -4,6 +4,7 @@ import { Avatar } from './Avatar';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { render } from '@testing-library/react';
+import { getInitials } from '../../utils/getInitials';
 
 describe('Avatar', () => {
   let wrapper: ReactWrapper | undefined;
@@ -112,43 +113,36 @@ describe('Avatar', () => {
 
   it('does not set name on the native element', () => {
     const result = render(<Avatar name="First Last" data-testid="root" />);
-    expect(result.getByTestId('root').getAttribute('name')).toBeFalsy();
+
+    const root = result.getByTestId('root');
+    expect(root.getAttribute('name')).toBeFalsy();
   });
 
-  it('sets the alt text on the image element, and aria-hidden on initials', () => {
+  it('sets the alt text on the image and aria-hidden on initials, when there is an image', () => {
     const name = 'First Last';
     const result = render(<Avatar name={name} image={{ src: 'avatar.png' }} />);
 
     const image = result.getByRole('img');
-    const initials = result.getByText('FL');
-    expect(image.getAttribute('alt')).toEqual(name);
+    const initials = result.getByText(getInitials(name, false));
+    expect(image).toBe(result.getByAltText(name));
     expect(initials.getAttribute('aria-hidden')).toEqual('true');
   });
 
-  it('sets role and aria-label on initials when there is no image', () => {
+  it('sets role and aria-label on initials, when there is no image', () => {
     const name = 'First Last';
     const initialsRef = React.createRef<HTMLSpanElement>();
     const result = render(<Avatar name={name} initials={{ ref: initialsRef }} />);
 
-    expect(result.getByRole('img')).toBe(initialsRef.current);
-    expect(initialsRef.current?.getAttribute('aria-label')).toEqual(name);
-    expect(initialsRef.current?.getAttribute('aria-hidden')).toBeNull();
+    expect(initialsRef.current).toBe(result.getByRole('img'));
+    expect(initialsRef.current).toBe(result.getByLabelText(name));
   });
 
-  it('sets role and aria-label on icon when there is no image or initials', () => {
+  it('sets role and aria-label on icon, when there is no image or initials', () => {
     const name = 'First Last';
     const iconRef = React.createRef<HTMLSpanElement>();
     const result = render(<Avatar name={name} initials="" icon={{ ref: iconRef }} />);
 
-    expect(result.getByRole('img')).toBe(iconRef.current);
-    expect(iconRef.current?.getAttribute('aria-label')).toEqual(name);
-    expect(iconRef.current?.getAttribute('aria-hidden')).toBeNull();
+    expect(iconRef.current).toBe(result.getByRole('img'));
+    expect(iconRef.current).toBe(result.getByLabelText(name));
   });
-
-  // it('sets alt on the image element', () => {
-  //   const name = 'First Last';
-  //   const result = render(<Avatar name={name} image={{ src: 'first-last.png' }} />);
-
-  //   expect(result.getByRole('img').getAttribute('alt')).toEqual(name);
-  // });
 });
