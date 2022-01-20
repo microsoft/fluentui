@@ -16,7 +16,40 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
     color = avatarColors[getHashCode(idForColor ?? name ?? '') % avatarColors.length];
   }
 
-  const state: AvatarState = {
+  const image: AvatarState['image'] = resolveShorthand(props.image, {
+    defaultProps: {
+      alt: name,
+    },
+  });
+
+  // Props applied to either the initials or icon slot.
+  // If there is an image, then the image hides the initials or icon.
+  // Or with no image, then the initials or icon take the role of the image.
+  const initialsOrIconProps = image ? { 'aria-hidden': true } : { role: 'img', 'aria-label': name };
+
+  // Resolve the initials slot, and default it to the initials from getInitials.
+  let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
+    required: true,
+    defaultProps: {
+      children: getInitials(name, dir === 'rtl'),
+      ...initialsOrIconProps,
+    },
+  });
+
+  let icon: AvatarState['icon'];
+  // Resolve the icon slot only if there aren't any initials to display.
+  if (!initials?.children) {
+    initials = undefined;
+    icon = resolveShorthand(props.icon, {
+      required: true,
+      defaultProps: {
+        children: <PersonRegular />,
+        ...initialsOrIconProps,
+      },
+    });
+  }
+
+  return {
     size,
     name,
     shape,
@@ -33,34 +66,17 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
       badge: PresenceBadge,
     },
 
-    root: getNativeElementProps('span', { ...props, ref }),
-    initials: resolveShorthand(props.initials),
-    icon: undefined, // The icon will be resolved below if initials is empty
-    image: resolveShorthand(props.image),
+    root: getNativeElementProps('span', { ...props, ref }, /* excludedPropNames: */ ['name']),
+    initials,
+    icon,
+    image,
     badge: resolveShorthand(props.badge, {
       defaultProps: { size: getBadgeSize(size) },
     }),
   };
-
-  // If initials were not provided, get initials from the name, or fall back to the icon if initials aren't available
-  if (!state.initials?.children) {
-    const initials = getInitials(name, dir === 'rtl');
-    if (initials) {
-      state.initials = { ...state.initials, children: initials };
-    } else {
-      state.icon = resolveShorthand(props.icon, {
-        required: true,
-        defaultProps: {
-          children: <PersonRegular />,
-        },
-      });
-    }
-  }
-
-  return state;
 };
 
-const getBadgeSize = (size: NonNullable<AvatarProps['size']>) => {
+const getBadgeSize = (size: AvatarState['size']) => {
   if (size >= 96) {
     return 'extra-large';
   } else if (size >= 64) {

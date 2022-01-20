@@ -20,7 +20,7 @@ export type AvatarSlots = {
   /**
    * (optional) Custom initials. By default, this will be derived from the `name` using `getInitials`.
    *
-   * The initials are only displayed if there is no image (as well as while the image is loading).
+   * The initials are displayed when there is no image (including while the image is loading).
    */
   initials?: IntrinsicShorthandProps<'span'>;
 
