@@ -129,7 +129,7 @@ storiesOf('DetailsHeader', module)
         .executeScript(dndScript)
         // simulate a drag on column 'b' to render the border
         .cssAnimations(false)
-        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[data-item-key="d"], false)`)
+        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[data-item-key="d"]', false)`)
         .snapshot('borderWhileDragging')
         // do a dragover on 'd' to render the drop hint
         .hover('[data-item-key=d]')
