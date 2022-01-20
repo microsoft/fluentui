@@ -8,41 +8,33 @@ import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   grid: theme => ({
-    width: '100%',
-    marginLeft: 'auto',
-    boxSizing: 'border-box',
-    marginRight: 'auto',
-    display: 'block',
-    paddingLeft: '16px',
-    paddingRight: '16px',
-    paddingTop: '10px',
-    fontFamily: 'Arial',
-    maxWidth: '105ch',
-    position: 'relative',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: ' flex-start',
 
-    '& span': {
-      width: '50%',
-      display: 'inline-block',
+    '> span': {
+      alignItems: 'center',
+      color: '#3b3a39',
+      display: 'flex',
       flexDirection: 'column',
-      margin: '0px 4px',
+      height: '80px',
+      justifyContent: 'space-around',
+      padding: '8px',
+      width: '80px',
+      overflow: 'hidden',
 
-      '& svg': {
-        display: 'inline-block',
+      '> div': {
+        fontSize: '11px',
+        opacity: '0',
       },
 
-      // '& div': {
-      //   color: theme.colorNeutralForeground1,
-      //   fontSize: '16px',
-      //   // opacity: '0',
-      // },
+      '&:hover': {
+        overflow: 'visible',
 
-      // '&:hover': {
-      //   overflow: 'visible',
-
-      //   '& span': {
-      //     opacity: '1',
-      //   },
-      // },
+        '& div': {
+          opacity: '1',
+        },
+      },
     },
   }),
 
@@ -51,8 +43,7 @@ const useStyles = makeStyles({
   },
 
   radio: {
-    fontSize: 'small',
-    fontFamily: 'Courier New, Courier, monospace',
+    fontSize: '11px',
   },
 });
 
@@ -76,9 +67,9 @@ export const ReactIconGrid = () => {
 
   const _renderIcon = (Icon: React.FC<FluentIconsProps>): JSX.Element => {
     return (
-      <span key={Icon.displayName} aria-label={Icon.displayName} className={styles.grid}>
+      <span key={Icon.displayName} aria-label={Icon.displayName}>
         <Icon />
-        <div className={styles.grid}>{Icon.displayName}</div>
+        <div>{Icon.displayName}</div>
       </span>
     );
   };
@@ -103,20 +94,34 @@ export const ReactIconGrid = () => {
         onChange={_onSearchQueryChanged}
         className={styles.searchBox}
       />
-      <input type="radio" value={16} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>16</label>
-      <input type="radio" value={20} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>20</label>
-      <input type="radio" value={24} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>24</label>
-      <input type="radio" value={28} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>28</label>
-      <input type="radio" value={32} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>32</label>
-      <input type="radio" value={48} name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>48</label>
-      <input type="radio" value="All" name="size" onChange={_filterBySize} />
-      <label className={styles.radio}>All</label>
+      <input id="option-16" type="radio" value={16} name="size" onChange={_filterBySize} />
+      <label htmlFor="option-16" className={styles.radio}>
+        16
+      </label>
+      <input id="option-20" type="radio" value={20} name="size" onChange={_filterBySize} />
+      <label htmlFor="option-20" className={styles.radio}>
+        20
+      </label>
+      <input id="option-24" type="radio" value={24} name="size" onChange={_filterBySize} />
+      <label htmlFor="option-24" className={styles.radio}>
+        24
+      </label>
+      <input id="option-28" type="radio" value={28} name="size" onChange={_filterBySize} />
+      <label htmlFor="option-28" className={styles.radio}>
+        28
+      </label>
+      <input id="option-32" type="radio" value={32} name="size" onChange={_filterBySize} />
+      <label htmlFor="option-32" className={styles.radio}>
+        32
+      </label>
+      <input id="option-48" type="radio" value={48} name="size" onChange={_filterBySize} />
+      <label htmlFor="option-48" className={styles.radio}>
+        48
+      </label>
+      <input id="option-All" type="radio" value="All" name="size" onChange={_filterBySize} />
+      <label htmlFor="option-All" className={styles.radio}>
+        All
+      </label>
       <div className={styles.grid}>{filteredIcons.map(_renderIcon)}</div>
     </div>
   );
