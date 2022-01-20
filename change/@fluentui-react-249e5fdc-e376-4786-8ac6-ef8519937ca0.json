@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Title attribute is no longer applied to ",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
