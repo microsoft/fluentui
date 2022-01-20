@@ -119,25 +119,25 @@ storiesOf('DetailsHeader', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-DetailsHeader' })
-        .hover('[role=columnheader]:nth-of-type(2)')
+        .hover('[role=columnheader][data-item-key=a]')
         .snapshot('hoverFrozenFirst', { cropTo: '.ms-DetailsHeader' })
-        .hover('[role=columnheader]:nth-of-type(3)')
+        .hover('[role=columnheader][data-item-key=b]')
         .snapshot('hoverDraggable', { cropTo: '.ms-DetailsHeader' })
-        .hover('[role=columnheader]:nth-of-type(7)')
+        .hover('[role=columnheader][data-item-key=f]')
         .snapshot('hoverFrozenLast', { cropTo: '.ms-DetailsHeader' })
-        .hover('[role=columnheader]:nth-of-type(3)')
+        .hover('[role=columnheader][data-item-key=b]')
         .executeScript(dndScript)
         // simulate a drag on column 'b' to render the border
         .cssAnimations(false)
         .executeScript(
-          `DndSimulator.simulate('[draggable="true"]', '[role=columnheader]:nth-of-type(5), false)`,
+          `DndSimulator.simulate('[draggable="true"]', '[role=columnheader][data-item-key=d], false)`,
         )
         .snapshot('borderWhileDragging')
         // do a dragover on 'd' to render the drop hint
-        .hover('[role=columnheader]:nth-of-type(5)')
+        .hover('[role=columnheader][data-item-key=d]')
         .cssAnimations(true)
         .executeScript(
-          `DndSimulator.simulate('[draggable="true"]', '[role=columnheader]:nth-of-type(5)', true)`,
+          `DndSimulator.simulate('[draggable="true"]', '[role=columnheader][data-item-key=d]', true)`,
         )
         .snapshot('dropHint')
         .end()}
