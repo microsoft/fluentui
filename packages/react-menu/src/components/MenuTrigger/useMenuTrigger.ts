@@ -148,7 +148,8 @@ export const useMenuTrigger = (props: MenuTriggerProps, ref: React.Ref<HTMLEleme
 };
 
 const isTargetDisabled = (e: React.SyntheticEvent | Event) => {
-  const isDisabled = (el: HTMLElement) => el.hasAttribute('disabled') || el.hasAttribute('aria-disabled');
+  const isDisabled = (el: HTMLElement) =>
+    el.hasAttribute('disabled') || (el.hasAttribute('aria-disabled') && el.getAttribute('aria-disabled') === 'true');
   if (e.target instanceof HTMLElement && isDisabled(e.target)) {
     return true;
   }
