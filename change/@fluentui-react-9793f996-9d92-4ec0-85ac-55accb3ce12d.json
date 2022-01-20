@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Facepile: Add hasCustomTooltip prop which allows Personas wrapped in a TooltipHost to render that tooltip on keyboard focus.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
