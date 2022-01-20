@@ -28,8 +28,9 @@ Generators should live in the `tools/generators` folder. [Learn more about Nx ge
 Place for static or dynamic templates used to generate files.
 
 ⚠️ Make sure every file ends with `__tmpl__` suffix. This suffix should be part of the extension, not a separate extension.
-  - ✅ `my-file.ts__tmpl__`
-  - ❌ `my-file.ts.__tmpl__` (notice the extra `.`)
+
+- ✅ `my-file.ts__tmpl__`
+- ❌ `my-file.ts.__tmpl__` (notice the extra `.`)
 
 The `__tmpl__` suffix will be removed as part of the generation.
 
@@ -50,6 +51,7 @@ Integration tests for the generator as a whole.
 **`schema.ts`**
 
 TypeScript interface that matches `schema.json`. You can generate this from the json file by running:
+
 - `npx json-schema-to-typescript -i tools/generators/<generator-name>/schema.json -o tools/generators/<generator-name>/schema.ts`
 
 **`schema.json`**
@@ -81,8 +83,9 @@ Migrations live in the `tools/generators` folder. They should ideally live in `t
 Migrations follow same rules as [Generators](#Generators) as they behave the same but serve a different purpose.
 
 ⚠️ Migrations generator's name should start with `migrate-*`.
-  - ✅ `migrate-my-package`
-  - ❌ `migration-mu-package`
+
+- ✅ `migrate-my-package`
+- ❌ `migration-mu-package`
 
 ## Executors
 
