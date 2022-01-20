@@ -128,6 +128,13 @@ describe('Avatar', () => {
     expect(initials.getAttribute('aria-hidden')).toEqual('true');
   });
 
+  it('sets the alt text on the image to the initials, when there is no name', () => {
+    const result = render(<Avatar initials="FL" image={{ src: 'avatar.png' }} />);
+
+    const image = result.getByRole('img');
+    expect(image).toBe(result.getByAltText('FL'));
+  });
+
   it('sets role and aria-label on initials, when there is no image', () => {
     const name = 'First Last';
     const initialsRef = React.createRef<HTMLSpanElement>();

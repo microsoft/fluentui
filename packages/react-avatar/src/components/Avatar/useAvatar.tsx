@@ -16,37 +16,45 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
     color = avatarColors[getHashCode(idForColor ?? name ?? '') % avatarColors.length];
   }
 
-  const image: AvatarState['image'] = resolveShorthand(props.image, {
-    defaultProps: {
-      alt: name,
-    },
-  });
-
-  // Props applied to either the initials or icon slot.
-  // If there is an image, then the image hides the initials or icon.
-  // Or with no image, then the initials or icon take the role of the image.
-  const initialsOrIconProps = image ? { 'aria-hidden': true } : { role: 'img', 'aria-label': name };
-
-  // Resolve the initials slot, and default it to the initials from getInitials.
+  // Resolve the initials slot, defaulted to getInitials.
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
     required: true,
     defaultProps: {
       children: getInitials(name, dir === 'rtl'),
-      ...initialsOrIconProps,
+      'aria-hidden': true,
     },
   });
 
-  let icon: AvatarState['icon'];
   // Resolve the icon slot only if there aren't any initials to display.
+  let icon: AvatarState['icon'] = undefined;
   if (!initials?.children) {
     initials = undefined;
     icon = resolveShorthand(props.icon, {
       required: true,
       defaultProps: {
         children: <PersonRegular />,
-        ...initialsOrIconProps,
+        'aria-hidden': true,
       },
     });
+  }
+
+  // The image's alt text should be the name, but if name is missing, fall back to the initials
+  let alt = name;
+  if (!alt && typeof initials?.children === 'string') {
+    alt = initials.children;
+  }
+
+  // Resolve the image slot
+  const image = resolveShorthand(props.image, { defaultProps: { alt } });
+
+  // If there's no image, make either the initials or icon have role="img" and aria-label={alt}
+  if (!image) {
+    const fallbackSlot = initials || icon;
+    if (fallbackSlot) {
+      fallbackSlot.role ??= 'img';
+      fallbackSlot['aria-label'] ??= alt;
+      delete fallbackSlot['aria-hidden'];
+    }
   }
 
   return {
