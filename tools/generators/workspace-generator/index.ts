@@ -45,5 +45,5 @@ function addFiles(host: Tree, options: NormalizedSchema) {
 
   generateFiles(host, path.join(__dirname, 'files'), projectRoot, templateOptions);
 
-  host.write(path.join(projectRoot, 'files', 'constants.ts__tmpl__'), 'exportconst variable = "<%= name %>";');
+  host.write(path.join(projectRoot, 'files', 'constants.ts__tmpl__'), 'export const variable = "<%= name %>";');
 }

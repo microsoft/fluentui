@@ -2,16 +2,15 @@
 
 ## Generators
 
-- generators live in `tools/generators` folder
-- [learn more about generators](https://nx.dev/generators/workspace-generators)
+Generators should live in the `tools/generators` folder. [Learn more about Nx generators](https://nx.dev/generators/workspace-generators).
 
 ### Scaffolding
 
 ```sh
 <generator-name>/
 |- files/
-    |- some-file.ts.__tmpl__
-    |- config.json.__tmpl__
+    |- some-file.ts__tmpl__
+    |- config.json__tmpl__
 |- lib/
     |- utils.ts
     |- utils.spec.ts
@@ -26,63 +25,68 @@
 
 **`files/` (optional)**
 
-- static or dynamic templates used to generated files should live here.
-- every file ends with `__tmpl__` suffix.
-  - eg `my-file.ts__tmpl__`
-  - `__tmpl__` will be removed during generation
+Place for static or dynamic templates used to generate files.
+
+⚠️ Make sure every file ends with `__tmpl__` suffix. This suffix should be part of the extension, not a separate extension.
+  - ✅ `my-file.ts__tmpl__`
+  - ❌ `my-file.ts.__tmpl__` (notice the extra `.`)
+
+The `__tmpl__` suffix will be removed as part of the generation.
 
 **`lib/` (optional)**
 
-- if your generator becomes too big/complicated this is the place where you should split your logic into smaller modules.
-- every module should have unit test if it makes sense
+Consider splitting your logic into smaller modules if your generator becomes too big/complicated. This is the place where you should split your logic into smaller modules.
+
+If it makes sense, try to provide a unit test for every module.
 
 **`index.ts`**
 
-- entry point to the generator
+Entry point to the generator.
 
 **`index.spec.ts`**
 
-- integration tests for the generator as a whole
+Integration tests for the generator as a whole.
 
 **`schema.ts`**
 
-- TypeScript interface that matches schema.json
-- you can use the following command to automate the conversion from json:
-  - `npx json-schema-to-typescript -i tools/generators/<generator-name>/schema.json -o tools/generators/<generator-name>/schema.ts`
+TypeScript interface that matches `schema.json`. You can generate this from the json file by running:
+- `npx json-schema-to-typescript -i tools/generators/<generator-name>/schema.json -o tools/generators/<generator-name>/schema.ts`
 
 **`schema.json`**
 
-- provides a description of the generator, available options, validation information, and default values. This is processed by nx cli when invoking generator to provide argument validations/processing/prompts.
+Provides a description of the generator, available options, validation information, and default values. This is processed by nx cli when invoking generator to provide argument validations/processing/prompts.
 
 **`README.md`**
 
-- generator documentation - about + API
-  - NOTE: in future this will be automatically generated
+Generator documentation - about + API
+
+ℹ️ _NOTE: In future, this will be automatically generated._
 
 ### Bootstrap new generator
 
-- via CLI:
+#### CLI:
 
 ```sh
 yarn nx workspace-generator workspace-generator
 ```
 
-- via Nx Console:
+#### Nx Console:
 
 ![Generate new workspace generator via NX Console](https://user-images.githubusercontent.com/1223799/148544909-034ebe44-eef1-4686-960d-cb3547da55b7.png)
 
 ## Migrations
 
-- migrations live in `tools/generators` folder
-  - ideally this should live under `tools/migrations` but because constraint of how workspace generators invocation works in nx, we are restricted to to place them alongside standard generators
-- everything from `Generators` guide applies
-  - migration generator is just a standard generator with different purpose
-- generator name starts with `migrate-*` (for example - `migrate-my-package`)
+Migrations live in the `tools/generators` folder. They should ideally live in `tools/migrations` but due to how workspace generator invocations works in nx, we are restricted to place them alongside standard generators.
+
+Migrations follow same rules as [Generators](#Generators) as they behave the same but serve a different purpose.
+
+⚠️ Migrations generator's name should start with `migrate-*`.
+  - ✅ `migrate-my-package`
+  - ❌ `migration-mu-package`
 
 ## Executors
 
-- executors live in `tools/executors` folder
-- [learn more about executors](https://nx.dev/executors/using-builders)
+Executors should live in the `tools/executors` folder. [Learn more about Nx executors](https://nx.dev/executors/using-builders).
 
 ### Scaffolding
 
