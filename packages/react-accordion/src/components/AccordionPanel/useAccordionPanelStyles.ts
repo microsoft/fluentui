@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useAccordionPanelStyles = (state: AccordionPanelState) => {
+export const useAccordionPanelStyles_unstable = (state: AccordionPanelState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(accordionPanelClassName, styles.root, state.root.className);
 

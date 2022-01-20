@@ -56,13 +56,13 @@ export type SliderSlots = {
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
+export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
 
 // @public (undocumented)
-export const useSliderState: (state: SliderState) => SliderState;
+export const useSliderState_unstable: (state: SliderState) => SliderState;
 
 // @public
-export const useSliderStyles: (state: SliderState) => SliderState;
+export const useSliderStyles_unstable: (state: SliderState) => SliderState;
 
 // (No @packageDocumentation comment for this package)
 

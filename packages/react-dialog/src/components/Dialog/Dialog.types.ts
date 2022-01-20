@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type DialogSlots = {
-  // TODO Add slots here and to dialogShorthandProps in useDialog.ts
+  // TODO Add slots here and to dialogShorthandProps in useDialog_unstable.ts
   root: IntrinsicShorthandProps<'div'>;
 };
 

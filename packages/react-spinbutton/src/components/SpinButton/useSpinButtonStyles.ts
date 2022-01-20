@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the SpinButton slots based on the state
  */
-export const useSpinButtonStyles = (state: SpinButtonState): SpinButtonState => {
+export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
   const styles = useStyles();
   state.root.className = mergeClasses(spinButtonClassName, styles.root, state.root.className);
 

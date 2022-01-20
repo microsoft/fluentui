@@ -34,10 +34,10 @@ export type SpinButtonSlots = {
 export type SpinButtonState = ComponentState<SpinButtonSlots> & SpinButtonCommons;
 
 // @public
-export const useSpinButton: (props: SpinButtonProps, ref: React_2.Ref<HTMLElement>) => SpinButtonState;
+export const useSpinButton_unstable: (props: SpinButtonProps, ref: React_2.Ref<HTMLElement>) => SpinButtonState;
 
 // @public
-export const useSpinButtonStyles: (state: SpinButtonState) => SpinButtonState;
+export const useSpinButtonStyles_unstable: (state: SpinButtonState) => SpinButtonState;
 
 // (No @packageDocumentation comment for this package)
 

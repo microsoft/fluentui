@@ -48,10 +48,10 @@ export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'si
 export const renderInput: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
+export const useInput_unstable: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
 
 // @public
-export const useInputStyles: (state: InputState) => InputState;
+export const useInputStyles_unstable: (state: InputState) => InputState;
 
 // (No @packageDocumentation comment for this package)
 

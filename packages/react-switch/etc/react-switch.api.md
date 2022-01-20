@@ -48,10 +48,10 @@ export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons 
 }
 
 // @public
-export const useSwitch: (props: SwitchProps, ref: React_2.Ref<HTMLElement>) => SwitchState;
+export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLElement>) => SwitchState;
 
 // @public
-export const useSwitchStyles: (state: SwitchState) => SwitchState;
+export const useSwitchStyles_unstable: (state: SwitchState) => SwitchState;
 
 // (No @packageDocumentation comment for this package)
 

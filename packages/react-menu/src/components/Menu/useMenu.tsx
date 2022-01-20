@@ -4,7 +4,7 @@ import { useControllableState, useId, useOnClickOutside, useEventCallback } from
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { useMenuContext } from '../../contexts/menuContext';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
@@ -17,7 +17,7 @@ import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from '.
  *
  * @param props - props from this instance of Menu
  */
-export const useMenu = (props: MenuProps): MenuState => {
+export const useMenu_unstable = (props: MenuProps): MenuState => {
   const triggerId = useId('menu');
   const isSubmenu = useIsSubmenu();
   const [contextTarget, setContextTarget] = usePopperMouseTarget();
@@ -113,7 +113,7 @@ const useMenuOpenState = (
     Pick<MenuProps, 'open' | 'defaultOpen'>,
 ) => {
   const { targetDocument } = useFluent();
-  const parentSetOpen = useMenuContext(context => context.setOpen);
+  const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const shouldHandleKeyboardRef = React.useRef(false);

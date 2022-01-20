@@ -126,7 +126,7 @@ const useContainerStyles = makeStyles({
   },
 });
 
-const useInputStyles = makeStyles({
+const useInputStyles_unstable = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',
@@ -140,7 +140,7 @@ const useInputStyles = makeStyles({
   },
 });
 
-const useLabelStyles = makeStyles({
+const useLabelStyles_unstable = makeStyles({
   label: {
     cursor: 'pointer',
   },
@@ -181,12 +181,12 @@ const useSubtextStyles = makeStyles({
 /**
  * Apply styling to the RadioItem slots based on the state
  */
-export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
+export const useRadioItemStyles_unstable = (state: RadioItemState): RadioItemState => {
   const checkedState = state.checked ? 'checked' : 'unchecked';
   const containerStyles = useContainerStyles();
   const indicatorStyles = useIndicatorStyles();
-  const inputStyles = useInputStyles();
-  const labelStyles = useLabelStyles();
+  const inputStyles = useInputStyles_unstable();
+  const labelStyles = useLabelStyles_unstable();
   const subtextStyles = useSubtextStyles();
   const styles = useStyles();
 

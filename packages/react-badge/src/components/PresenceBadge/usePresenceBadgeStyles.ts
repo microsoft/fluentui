@@ -78,7 +78,7 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadgeState => {
+export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     presenceBadgeClassName,

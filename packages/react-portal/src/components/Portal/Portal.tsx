@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { usePortal } from './usePortal';
+import { usePortal_unstable } from './usePortal';
 import { renderPortal } from './renderPortal';
 import type { PortalProps } from './Portal.types';
 
@@ -9,7 +9,7 @@ import type { PortalProps } from './Portal.types';
  * that exists outside the DOM hierarchy of the parent component.
  */
 export const Portal: React.FC<PortalProps> = props => {
-  const state = usePortal(props);
+  const state = usePortal_unstable(props);
 
   return renderPortal(state);
 };

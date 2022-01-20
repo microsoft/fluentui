@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the CardFooter slots based on the state
  */
-export const useCardFooterStyles = (state: CardFooterState): CardFooterState => {
+export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();
   state.root.className = mergeClasses(cardFooterClassName, styles.root, state.root.className);
 

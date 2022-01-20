@@ -24,7 +24,7 @@ import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.ty
  *
  * @param props - props from this instance of Popover
  */
-export const usePopover = (props: PopoverProps): PopoverState => {
+export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   const [contextTarget, setContextTarget] = usePopperMouseTarget();
   const initialState = {
     size: 'medium',

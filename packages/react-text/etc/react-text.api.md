@@ -104,10 +104,10 @@ export const Title3: FunctionComponent<TextWrapperProps>;
 export const title3ClassName = "fui-Title3";
 
 // @public
-export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>) => TextState;
+export const useText_unstable: (props: TextProps, ref: React_2.Ref<HTMLElement>) => TextState;
 
 // @public
-export const useTextStyles: (state: TextState) => TextState;
+export const useTextStyles_unstable: (state: TextState) => TextState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -230,7 +230,7 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const useBadgeStyles = (state: BadgeState): BadgeState => {
+export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   const styles = useStyles();
   const isGhost = state.appearance === 'ghost';
   const isOutline = state.appearance === 'outline';

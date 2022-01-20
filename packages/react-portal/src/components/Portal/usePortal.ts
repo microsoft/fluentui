@@ -11,7 +11,7 @@ import type { PortalProps, PortalState } from './Portal.types';
  *
  * @param props - props from this instance of Portal
  */
-export const usePortal = (props: PortalProps): PortalState => {
+export const usePortal_unstable = (props: PortalProps): PortalState => {
   const { children, mountNode } = props;
 
   const virtualParentRootRef = React.useRef<HTMLSpanElement>(null);

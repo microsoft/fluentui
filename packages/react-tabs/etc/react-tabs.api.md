@@ -98,16 +98,16 @@ export type TabState = ComponentState<TabSlots> & TabCommons & {
 export type TabValue = unknown;
 
 // @public
-export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
 
 // @public
-export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
 
 // @public
-export const useTabListStyles: (state: TabListState) => TabListState;
+export const useTabListStyles_unstable: (state: TabListState) => TabListState;
 
 // @public
-export const useTabStyles: (state: TabState) => TabState;
+export const useTabStyles_unstable: (state: TabState) => TabState;
 
 // (No @packageDocumentation comment for this package)
 

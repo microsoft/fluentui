@@ -354,7 +354,7 @@ const useIconStyles = makeStyles({
   },
 });
 
-export const useButtonStyles = (state: ButtonState): ButtonState => {
+export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
   const rootFocusStyles = useRootFocusStyles();

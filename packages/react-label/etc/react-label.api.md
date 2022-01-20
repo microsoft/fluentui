@@ -42,10 +42,10 @@ export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 export const renderLabel: (state: LabelState) => JSX.Element;
 
 // @public
-export const useLabel: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
+export const useLabel_unstable: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
 
 // @public
-export const useLabelStyles: (state: LabelState) => LabelState;
+export const useLabelStyles_unstable: (state: LabelState) => LabelState;
 
 // (No @packageDocumentation comment for this package)
 

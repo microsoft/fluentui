@@ -46,5 +46,5 @@ export type MenuContextValue = MenuListProps &
 
 export const MenuProvider = MenuContext.Provider;
 
-export const useMenuContext = <T>(selector: ContextSelector<MenuContextValue, T>) =>
+export const useMenuContext_unstable = <T>(selector: ContextSelector<MenuContextValue, T>) =>
   useContextSelector(MenuContext, selector);

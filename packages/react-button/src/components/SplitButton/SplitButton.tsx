@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderSplitButton } from './renderSplitButton';
-import { useSplitButton } from './useSplitButton';
-import { useSplitButtonStyles } from './useSplitButtonStyles';
+import { useSplitButton_unstable } from './useSplitButton';
+import { useSplitButtonStyles_unstable } from './useSplitButtonStyles';
 import type { SplitButtonProps } from './SplitButton.types';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -10,9 +10,9 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
  * action, while interacting with the second one opens a menu with secondary actions.
  */
 export const SplitButton: ForwardRefComponent<SplitButtonProps> = React.forwardRef((props, ref) => {
-  const state = useSplitButton(props, ref);
+  const state = useSplitButton_unstable(props, ref);
 
-  useSplitButtonStyles(state);
+  useSplitButtonStyles_unstable(state);
 
   return renderSplitButton(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

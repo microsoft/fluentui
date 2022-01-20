@@ -183,7 +183,7 @@ export const useThumbStyles = makeStyles({
 /**
  * Styles for the Input slot
  */
-const useInputStyles = makeStyles({
+const useInputStyles_unstable = makeStyles({
   input: {
     opacity: 0,
     gridRowStart: 'slider',
@@ -207,11 +207,11 @@ const useInputStyles = makeStyles({
 /**
  * Apply styling to the Slider slots based on the state
  */
-export const useSliderStyles = (state: SliderState): SliderState => {
+export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
-  const inputStyles = useInputStyles();
+  const inputStyles = useInputStyles_unstable();
 
   state.root.className = mergeClasses(
     sliderClassName,

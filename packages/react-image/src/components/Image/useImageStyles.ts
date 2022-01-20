@@ -54,7 +54,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useImageStyles = (state: ImageState) => {
+export const useImageStyles_unstable = (state: ImageState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     imageClassName,

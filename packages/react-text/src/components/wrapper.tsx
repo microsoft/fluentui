@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-make-styles';
-import { renderText, useText, useTextStyles } from '../Text';
+import { renderText, useText_unstable, useTextStyles_unstable } from '../Text';
 import type { TextProps } from '../Text';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -14,9 +14,9 @@ export function createWrapper(options: {
   const { useStyles, className, displayName } = options;
   const Wrapper: ForwardRefComponent<TextWrapperProps> = React.forwardRef((props, ref) => {
     const styles = useStyles();
-    const state = useText(props as TextProps, ref);
+    const state = useText_unstable(props as TextProps, ref);
 
-    useTextStyles(state);
+    useTextStyles_unstable(state);
 
     state.root.className = mergeClasses(className, state.root.className, styles.root, props.className);
 
