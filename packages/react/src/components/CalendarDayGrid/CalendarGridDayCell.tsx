@@ -222,14 +222,11 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         !day.isInBounds && classNames.dayOutsideBounds,
         !day.isInMonth && classNames.dayOutsideNavigatedMonth,
       )}
-      ref={
-        isNavigatedDate
-          ? navigatedDayRef
-          : (element: HTMLTableCellElement) => {
-              customDayCellRef?.(element, day.originalDate, classNames);
-              day.setRef(element);
-            }
-      }
+      ref={(element: HTMLTableCellElement) => {
+        customDayCellRef?.(element, day.originalDate, classNames);
+        day.setRef(element);
+        isNavigatedDate && (navigatedDayRef.current = element);
+      }}
       aria-hidden={ariaHidden}
       aria-disabled={!ariaHidden && !day.isInBounds}
       onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
