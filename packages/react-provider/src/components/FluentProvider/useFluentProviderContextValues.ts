@@ -11,6 +11,7 @@ export function useFluentProviderContextValues(state: FluentProviderState): Flue
 
   return {
     provider,
+    textDirection: dir,
     tooltip,
     theme,
     themeClassName: root.className!,
