@@ -4,7 +4,7 @@ import { FluentIconsProps } from '@fluentui/react-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as ReactIcons from '@fluentui/react-icons';
 import { Input } from '@fluentui/react-input';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   grid: {
@@ -19,9 +19,9 @@ const useStyles = makeStyles({
       flexDirection: 'column',
       height: '80px',
       justifyContent: 'space-around',
-      padding: '8px',
+      ...shorthands.padding(0),
       width: '80px',
-      overflow: 'hidden',
+      ...shorthands.overflow('hidden'),
 
       '> div': {
         fontSize: '11px',
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
       },
 
       '&:hover': {
-        overflow: 'visible',
+        ...shorthands.overflow('visible'),
 
         '& div': {
           opacity: '1',
