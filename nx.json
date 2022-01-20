@@ -107,10 +107,6 @@
     "@fluentui/local-sandbox": {
       "implicitDependencies": []
     },
-    "@fluentui/make-styles": {
-      "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
     "@fluentui/make-styles-webpack-loader": {
       "tags": ["vNext", "platform:node"],
       "implicitDependencies": []

@@ -113,11 +113,6 @@
       "root": "packages/fluentui/local-sandbox",
       "projectType": "library"
     },
-    "@fluentui/make-styles": {
-      "root": "packages/make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/make-styles/src"
-    },
     "@fluentui/make-styles-webpack-loader": {
       "root": "packages/make-styles-webpack-loader",
       "projectType": "library",
