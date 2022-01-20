@@ -138,9 +138,9 @@ describe('Avatar', () => {
   });
 
   it('sets role and aria-label on icon, when there is no image or initials', () => {
-    const name = 'First Last';
+    const name = '(111)-555-1234';
     const iconRef = React.createRef<HTMLSpanElement>();
-    const result = render(<Avatar name={name} initials="" icon={{ ref: iconRef }} />);
+    const result = render(<Avatar name={name} icon={{ ref: iconRef }} />);
 
     expect(iconRef.current).toBe(result.getByRole('img'));
     expect(iconRef.current).toBe(result.getByLabelText(name));
