@@ -7,7 +7,7 @@ import { Input } from '@fluentui/react-input';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
-  grid: theme => ({
+  grid: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: ' flex-start',
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
         },
       },
     },
-  }),
+  },
 
   searchBox: {
     maxWidth: '320px',
@@ -48,7 +48,8 @@ const useStyles = makeStyles({
 });
 
 const reactIcons: React.FC<ReactIcons.FluentIconsProps>[] = Object.keys(ReactIcons)
-  .map(iconName => ReactIcons[iconName])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  .map(iconName => (ReactIcons as any)[iconName])
   .filter(icon => !!icon && !!icon.displayName);
 
 export const ReactIconGrid = () => {
