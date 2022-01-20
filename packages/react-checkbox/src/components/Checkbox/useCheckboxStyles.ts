@@ -109,7 +109,7 @@ const useRootStyles = makeStyles({
   },
 });
 
-const useInputStyles_unstable = makeStyles({
+const useInputStyles = makeStyles({
   base: {
     position: 'absolute',
     left: 0,
@@ -161,7 +161,7 @@ const useIndicatorStyles = makeStyles({
   },
 });
 
-const useLabelStyles_unstable = makeStyles({
+const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
     userSelect: 'none',
@@ -200,7 +200,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
     state.root.className,
   );
 
-  const inputStyles = useInputStyles_unstable();
+  const inputStyles = useInputStyles();
   state.input.className = mergeClasses(inputStyles.base, state.input.className);
 
   const indicatorStyles = useIndicatorStyles();
@@ -213,7 +213,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
     state.indicator.className,
   );
 
-  const labelStyles = useLabelStyles_unstable();
+  const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(labelStyles.base, labelStyles[state.size], state.label.className);
   }
