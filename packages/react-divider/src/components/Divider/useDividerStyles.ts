@@ -7,6 +7,7 @@ export const dividerClassName = 'fui-Divider';
 const contentSpacing = '12px';
 const insetSpacing = '12px';
 const startEndMaxHeight = '8px';
+const minLineSegmentLength = '32px;';
 
 const useBaseStyles = makeStyles({
   // Base styles
@@ -22,6 +23,7 @@ const useBaseStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
+    textAlign: 'center',
 
     color: tokens.colorNeutralForeground2,
 
@@ -29,7 +31,6 @@ const useBaseStyles = makeStyles({
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
 
@@ -37,7 +38,6 @@ const useBaseStyles = makeStyles({
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
   },
@@ -115,11 +115,13 @@ const useHorizontalStyles = makeStyles({
     ':before': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minLineSegmentLength,
     },
 
     ':after': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minLineSegmentLength,
     },
   },
 
@@ -170,11 +172,13 @@ const useVerticalStyles = makeStyles({
     ':before': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minLineSegmentLength,
     },
 
     ':after': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minLineSegmentLength,
     },
   },
 
