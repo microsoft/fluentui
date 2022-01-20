@@ -32,7 +32,7 @@ const useRootStyles = makeStyles({
   small: {
     minWidth: '16px',
     height: '16px',
-    ...shorthands.padding('2px'),
+    ...shorthands.padding(`calc(2px - ${tokens.strokeWidthThin})`),
     ...shorthands.gap('4px'),
     fontSize: '8px',
   },
