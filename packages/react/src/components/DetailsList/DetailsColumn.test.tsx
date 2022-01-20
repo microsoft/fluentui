@@ -121,7 +121,7 @@ describe('DetailsColumn', () => {
     expect(mockOnColumnClick.mock.calls.length).toBe(0);
   });
 
-  it('has aria-label set for filtered columns which provide an ariaLabel', () => {
+  it('has aria-label set for columns which provide an ariaLabel', () => {
     const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
     let component: any;
     const columns = [column];
