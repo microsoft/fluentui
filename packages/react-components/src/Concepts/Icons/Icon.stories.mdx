@@ -1,5 +1,4 @@
 import { Meta } from '@storybook/addon-docs';
-import { ReactIconGrid } from './ReactIconGrid';
 
 <Meta title="Concepts/Developer/Icons" />
 
@@ -28,4 +27,6 @@ Each icon also accepts `className` and `primaryFill` props for styling.
 
 ### Available Icons
 
-<ReactIconGrid />
+<React.Suspense fallback="Loading...">
+  {React.createElement(React.lazy(() => import('./ReactIconGrid')))}
+</React.Suspense>

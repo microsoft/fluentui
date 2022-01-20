@@ -52,7 +52,7 @@ const reactIcons: React.FC<ReactIcons.FluentIconsProps>[] = Object.keys(ReactIco
   .map(iconName => (ReactIcons as any)[iconName])
   .filter(icon => !!icon && !!icon.displayName);
 
-export const ReactIconGrid = () => {
+const ReactIconGrid = () => {
   const [search, setSearch] = React.useState('');
   const [size, setSize] = React.useState('');
   const styles = useStyles();
@@ -91,6 +91,7 @@ export const ReactIconGrid = () => {
         type="search"
         placeholder="Search icons"
         value={search}
+        aria-label="search"
         // eslint-disable-next-line react/jsx-no-bind
         onChange={_onSearchQueryChanged}
         className={styles.searchBox}
@@ -127,3 +128,5 @@ export const ReactIconGrid = () => {
     </div>
   );
 };
+
+export default ReactIconGrid;
