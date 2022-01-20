@@ -87,6 +87,12 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   /** Type of overflow icon to use */
   overflowButtonType?: OverflowButtonType;
 
+  /** Works in tandem with either onRenderPersona or onRenderPersonaCoin.
+   * Set to true when passing either custom renderer and wrapping each persona in a TooltipHost.
+   * This allows the custom TooltipHost to be visible when a persona receives keyboard focus.
+   */
+  hasCustomTooltip?: boolean;
+
   /** Optional custom renderer for the persona, gets called when there is one persona in personas array*/
   onRenderPersona?: IRenderFunction<IFacepilePersona>;
 
@@ -190,6 +196,14 @@ export interface IFacepileStyleProps {
    * Pixel value for spacing around button. Number value set in pixels
    */
   spacingAroundItemButton?: number;
+
+  /**
+   * Determines if the Persona item will receive keyboard focus styling.
+   * The Persona gains keyboard focus when wrapping each one in a
+   * TooltipHost via a custom onRenderPersona or onRenderPersonaCoin
+   * renderer, so this provides it with the proper keyboard focus style.
+   */
+  hasCustomTooltip?: boolean;
 }
 
 /**
