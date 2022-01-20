@@ -5,17 +5,17 @@ import { WorkspaceGeneratorGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
-export default async function (host: Tree, schema: WorkspaceGeneratorGeneratorSchema) {
-  const options = normalizeOptions(host, schema);
+export default async function (tree: Tree, schema: WorkspaceGeneratorGeneratorSchema) {
+  const options = normalizeOptions(tree, schema);
 
-  addFiles(host, options);
+  addFiles(tree, options);
 
   if (!options.skipFormat) {
-    await formatFiles(host);
+    await formatFiles(tree);
   }
 }
 
-function normalizeOptions(host: Tree, options: WorkspaceGeneratorGeneratorSchema) {
+function normalizeOptions(tree: Tree, options: WorkspaceGeneratorGeneratorSchema) {
   if (options.name.length === 0) {
     throw new Error('name is required');
   }
@@ -33,7 +33,7 @@ function normalizeOptions(host: Tree, options: WorkspaceGeneratorGeneratorSchema
   };
 }
 
-function addFiles(host: Tree, options: NormalizedSchema) {
+function addFiles(tree: Tree, options: NormalizedSchema) {
   const templateOptions = {
     ...options,
     ...names(options.name),
@@ -43,7 +43,7 @@ function addFiles(host: Tree, options: NormalizedSchema) {
 
   const projectRoot = path.join(options.paths.generators, options.name);
 
-  generateFiles(host, path.join(__dirname, 'files'), projectRoot, templateOptions);
+  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, templateOptions);
 
-  host.write(path.join(projectRoot, 'files', 'constants.ts__tmpl__'), 'export const variable = "<%= name %>";');
+  tree.write(path.join(projectRoot, 'files', 'constants.ts__tmpl__'), 'export const variable = "<%= name %>";');
 }
