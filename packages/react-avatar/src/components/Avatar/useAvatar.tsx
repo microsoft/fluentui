@@ -8,12 +8,12 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { name = '', size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
+  const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
   let { color = 'neutral' } = props;
 
   // Resolve 'colorful' to a specific color name
   if (color === 'colorful') {
-    color = avatarColors[getHashCode(props.idForColor ?? props.name ?? '') % avatarColors.length];
+    color = avatarColors[getHashCode(idForColor ?? name ?? '') % avatarColors.length];
   }
 
   const state: AvatarState = {
@@ -42,9 +42,9 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
     }),
   };
 
-  // If a label was not provided, use the initials and fall back to the icon if initials aren't available
+  // If initials were not provided, get initials from the name, or fall back to the icon if initials aren't available
   if (!state.initials?.children) {
-    const initials = getInitials(state.name, dir === 'rtl');
+    const initials = getInitials(name, dir === 'rtl');
     if (initials) {
       state.initials = { ...state.initials, children: initials };
     } else {

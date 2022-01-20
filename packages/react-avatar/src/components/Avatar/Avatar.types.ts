@@ -25,7 +25,7 @@ export type AvatarSlots = {
   initials?: IntrinsicShorthandProps<'span'>;
 
   /**
-   * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
+   * Icon to be displayed when the avatar doesn't have an image or initials.
    *
    * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
    */
@@ -44,7 +44,7 @@ export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> 
    * The name will be used to determine the initials displayed when there is no icon, as well as provided to
    * accessibility tools.
    */
-  name: string;
+  name?: string;
 
   /**
    * Size of the avatar in pixels.

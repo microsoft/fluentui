@@ -21,8 +21,7 @@ export const avatarClassName = "fui-Avatar";
 
 // @public (undocumented)
 export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
-    name: string;
-    getInitials: (name: string, isRtl: boolean) => string;
+    name?: string;
     size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
     shape: 'circular' | 'square';
     active: 'active' | 'inactive' | 'unset';
@@ -47,7 +46,7 @@ export type AvatarSlots = {
         children?: never;
     };
     image?: IntrinsicShorthandProps<'img'>;
-    label?: IntrinsicShorthandProps<'span'>;
+    initials?: IntrinsicShorthandProps<'span'>;
     icon?: IntrinsicShorthandProps<'span'>;
     badge?: ObjectShorthandProps<PresenceBadgeProps>;
 };
