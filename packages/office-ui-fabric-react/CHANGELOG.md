@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 05 Jan 2022 12:29:16 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jan 2022 12:28:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.181.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.181.0)
+
+Fri, 21 Jan 2022 12:28:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.180.3..office-ui-fabric-react_v7.181.0)
+
+### Minor changes
+
+- Support ability to set a context menu item's event target to the Menu root ([PR #21161](https://github.com/microsoft/fluentui/pull/21161) by tmichon@microsoft.com)
 
 ## [7.180.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.180.3)
 

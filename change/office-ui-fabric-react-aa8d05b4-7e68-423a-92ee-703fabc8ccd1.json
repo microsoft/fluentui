@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support ability to set a context menu item's event target to the Menu root",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}
