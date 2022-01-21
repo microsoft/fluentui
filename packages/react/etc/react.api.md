@@ -5625,10 +5625,15 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
     className?: string;
     componentRef?: IRefObject<IFacepile>;
     getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
-    hasCustomTooltip?: boolean;
     maxDisplayablePersonas?: number;
     onRenderPersona?: IRenderFunction<IFacepilePersona>;
     onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
+    onRenderPersonaWrapper?: IRenderFunction<{
+        personaControl: JSX.Element | null;
+        persona: IFacepilePersona;
+        showTooltip: boolean;
+        index: number;
+    }>;
     overflowButtonProps?: IButtonProps;
     overflowButtonType?: OverflowButtonType;
     overflowPersonas?: IFacepilePersona[];
@@ -5643,7 +5648,6 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
 // @public (undocumented)
 export interface IFacepileStyleProps {
     className?: string;
-    hasCustomTooltip?: boolean;
     spacingAroundItemButton?: number;
     theme: ITheme;
 }
