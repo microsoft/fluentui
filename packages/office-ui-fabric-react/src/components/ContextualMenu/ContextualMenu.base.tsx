@@ -49,7 +49,9 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { Target } from '@uifabric/react-hooks';
+import { Rectangle } from '@uifabric/utilities';
+
+type Target = Element | string | MouseEvent | Point | Rectangle | null | React.RefObject<Element>;
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -68,8 +70,36 @@ export interface IContextualMenuState {
   submenuDirection?: DirectionalHint;
 }
 
-export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined {
-  return item.subMenuProps ? item.subMenuProps.items : item.items;
+export function getSubmenuItems(
+  item: IContextualMenuItem,
+  options?: {
+    target?: Target;
+  },
+): IContextualMenuItem[] | undefined {
+  const target = options?.target;
+
+  // eslint-disable-next-line deprecation/deprecation
+  const items = item.subMenuProps ? item.subMenuProps.items : item.items;
+
+  if (items) {
+    const overrideItems: typeof items = [];
+
+    for (const subItem of items) {
+      if (subItem.preferMenuTargetAsEventTarget) {
+        // For sub-items which need an overridden target, intercept `onClick`
+        const { onClick, ...contextItem } = subItem;
+
+        overrideItems.push({
+          ...contextItem,
+          onClick: getOnClickWithOverrideTarget(onClick, target),
+        });
+      } else {
+        overrideItems.push(subItem);
+      }
+    }
+
+    return overrideItems;
+  }
 }
 
 /**
@@ -1183,7 +1213,9 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
     target: HTMLElement,
   ): void => {
-    const items = getSubmenuItems(item);
+    const { target: menuTarget } = this.props;
+
+    const items = getSubmenuItems(item, { target: menuTarget });
 
     // Cancel a async menu item hover timeout action from being taken and instead
     // just trigger the click event instead.
@@ -1221,8 +1253,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     item: IContextualMenuItem,
     ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   ): void => {
+    const { target: menuTarget } = this.props;
+
     if (item.disabled || item.isDisabled) {
       return;
+    }
+
+    if (item.preferMenuTargetAsEventTarget) {
+      overrideTarget(ev, menuTarget);
     }
 
     let dismiss = false;
@@ -1288,9 +1326,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     const item = this._findItemByKey(expandedMenuItemKey!);
     let submenuProps: IContextualMenuProps | null = null;
 
+    const { target: menuTarget } = this.props;
+
     if (item) {
       submenuProps = {
-        items: getSubmenuItems(item)!,
+        items: getSubmenuItems(item, { target: menuTarget })!,
         target: submenuTarget,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
@@ -1305,6 +1345,12 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
       if (item.subMenuProps) {
         assign(submenuProps, item.subMenuProps);
+      }
+
+      if (item.preferMenuTargetAsEventTarget) {
+        const { onItemClick } = item;
+
+        submenuProps.onItemClick = getOnClickWithOverrideTarget(onItemClick, menuTarget);
       }
     }
     return submenuProps;
@@ -1387,4 +1433,40 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
     this._cancelSubMenuTimer();
   };
+}
+
+function getOnClickWithOverrideTarget(
+  onClick:
+    | ((
+        ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined,
+        item?: IContextualMenuItem | undefined,
+      ) => boolean | void)
+    | undefined,
+  target: Target | undefined,
+) {
+  return onClick
+    ? (
+        ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined,
+        item?: IContextualMenuItem | undefined,
+      ) => {
+        overrideTarget(ev, target);
+
+        return onClick(ev, item);
+      }
+    : onClick;
+}
+
+function overrideTarget(
+  ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined,
+  target?: Target,
+): void {
+  if (ev && target) {
+    ev.persist();
+
+    if (target instanceof Event) {
+      ev.target = target.target as HTMLElement;
+    } else if (target instanceof Element) {
+      ev.target = target;
+    }
+  }
 }
