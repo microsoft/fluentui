@@ -14,9 +14,9 @@ const GlobalClassNames = {
 };
 
 export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
-  const { className, theme, spacingAroundItemButton = 2, hasCustomTooltip } = props;
+  const { className, theme, spacingAroundItemButton = 2 } = props;
 
-  const { palette, fonts, semanticColors } = theme;
+  const { palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const ItemButtonStyles: IStyle = {
@@ -31,28 +31,6 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       '&::-moz-focus-inner': {
         padding: 0,
         border: 0,
-      },
-    },
-  };
-
-  const personaFocusStyle = {
-    selectors: {
-      '&:focus-within': {
-        selectors: {
-          '.ms-Persona,.ms-Persona-coin': {
-            outline: 'transparent',
-            selectors: {
-              ':after': {
-                content: "''",
-                position: 'absolute',
-                inset: '1px',
-                border: '1px solid transparent',
-                outline: `1px solid ${semanticColors.focusBorder}`,
-                zIndex: 1,
-              },
-            },
-          },
-        },
       },
     },
   };
@@ -105,15 +83,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       },
     ],
 
-    itemButton: [
-      classNames.itemButton,
-      ItemButtonStyles,
-      hasCustomTooltip && {
-        selectors: {
-          ...personaFocusStyle,
-        },
-      },
-    ],
+    itemButton: [classNames.itemButton, ItemButtonStyles],
 
     itemContainer: [
       classNames.itemContainer,

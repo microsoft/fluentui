@@ -28,7 +28,6 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   private _classNames = getClassNames(this.props.styles, {
     theme: this.props.theme!,
     className: this.props.className,
-    hasCustomTooltip: this.props.hasCustomTooltip,
   });
 
   constructor(props: IFacepileProps) {
@@ -105,7 +104,11 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     singlePersona: boolean,
     showTooltip: boolean,
   ): JSX.Element[] {
-    const { onRenderPersona = this._getPersonaControl, onRenderPersonaCoin = this._getPersonaCoinControl } = this.props;
+    const {
+      onRenderPersona = this._getPersonaControl,
+      onRenderPersonaCoin = this._getPersonaCoinControl,
+      onRenderPersonaWrapper,
+    } = this.props;
     return personas.map((persona: IFacepilePersona, index: number) => {
       const personaControl: JSX.Element | null = singlePersona
         ? onRenderPersona(persona, this._getPersonaControl)
@@ -113,15 +116,20 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
       return (
         <li key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
           {persona.onClick
-            ? this._getElementWithOnClickEvent(personaControl, persona, showTooltip, index)
-            : this._getElementWithoutOnClickEvent(personaControl, persona, showTooltip, index)}
+            ? onRenderPersonaWrapper
+              ? onRenderPersonaWrapper(
+                  { personaControl: personaControl, persona: persona, showTooltip: showTooltip, index: index },
+                  this._getElementWithOnClickEvent.bind(this),
+                )
+              : this._getElementWithOnClickEvent({ personaControl, persona, showTooltip, index })
+            : this._getElementWithoutOnClickEvent({ personaControl, persona, showTooltip, index })}
         </li>
       );
     });
   }
 
   private _getPersonaControl = (persona: IFacepilePersona): JSX.Element | null => {
-    const { getPersonaProps, personaSize, hasCustomTooltip } = this.props;
+    const { getPersonaProps, personaSize } = this.props;
     const personaStyles: Partial<IPersonaStyles> = {
       details: {
         flex: '1 0 auto',
@@ -138,13 +146,12 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
         size={personaSize}
         {...(getPersonaProps ? getPersonaProps(persona) : null)}
         styles={personaStyles}
-        tabIndex={hasCustomTooltip ? 0 : undefined}
       />
     );
   };
 
   private _getPersonaCoinControl = (persona: IFacepilePersona): JSX.Element | null => {
-    const { getPersonaProps, personaSize, hasCustomTooltip } = this.props;
+    const { getPersonaProps, personaSize } = this.props;
     return (
       <PersonaCoin
         imageInitials={persona.imageInitials}
@@ -153,20 +160,19 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
         allowPhoneInitials={persona.allowPhoneInitials}
         text={persona.personaName}
         size={personaSize}
-        tabIndex={hasCustomTooltip && persona.onClick ? 0 : undefined}
         {...(getPersonaProps ? getPersonaProps(persona) : null)}
       />
     );
   };
 
-  private _getElementWithOnClickEvent(
-    personaControl: JSX.Element | null,
-    persona: IFacepilePersona,
-    showTooltip: boolean,
-    index: number,
-  ): JSX.Element {
+  private _getElementWithOnClickEvent(props: {
+    personaControl: JSX.Element | null;
+    persona: IFacepilePersona;
+    showTooltip: boolean;
+    index: number;
+  }): JSX.Element {
+    const { personaControl, persona, showTooltip, index } = props;
     const { keytipProps } = persona;
-    const { hasCustomTooltip } = this.props;
     return (
       <FacepileButton
         {...getNativeProps(persona, buttonProperties)}
@@ -174,19 +180,19 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
         keytipProps={keytipProps}
         // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onPersonaClick.bind(this, persona)}
-        tabIndex={hasCustomTooltip ? -1 : undefined}
       >
         {personaControl}
       </FacepileButton>
     );
   }
 
-  private _getElementWithoutOnClickEvent(
-    personaControl: JSX.Element | null,
-    persona: IFacepilePersona,
-    showTooltip: boolean,
-    index: number,
-  ): JSX.Element {
+  private _getElementWithoutOnClickEvent(props: {
+    personaControl: JSX.Element | null;
+    persona: IFacepilePersona;
+    showTooltip: boolean;
+    index: number;
+  }): JSX.Element {
+    const { personaControl, persona, showTooltip, index } = props;
     return (
       <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, showTooltip, index)}>
         {personaControl}
