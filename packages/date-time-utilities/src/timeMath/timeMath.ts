@@ -61,10 +61,7 @@ export const getDateFromTimeSelection = (useHour12: boolean, baseDate: Date, sel
   }
 
   let hoursOffset;
-  if (
-    useHour12 &&
-    (baseDate.getHours() > hours || (baseDate.getHours() === hours && baseDate.getMinutes() > minutes))
-  ) {
+  if (baseDate.getHours() > hours || (baseDate.getHours() === hours && baseDate.getMinutes() > minutes)) {
     hoursOffset = TimeConstants.HoursInOneDay - baseDate.getHours() + hours;
   } else {
     hoursOffset = Math.abs(baseDate.getHours() - hours);
