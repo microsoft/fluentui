@@ -6,8 +6,8 @@ export const dividerClassName = 'fui-Divider';
 
 const contentSpacing = '12px';
 const insetSpacing = '12px';
-const startEndMaxHeight = '8px';
-const minLineSegmentLength = '32px;';
+const maxStartEndLength = '8px';
+const minStartEndLength = '8px;';
 
 const useBaseStyles = makeStyles({
   // Base styles
@@ -115,13 +115,13 @@ const useHorizontalStyles = makeStyles({
     ':before': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
-      minWidth: minLineSegmentLength,
+      minWidth: minStartEndLength,
     },
 
     ':after': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
-      minWidth: minLineSegmentLength,
+      minWidth: minStartEndLength,
     },
   },
 
@@ -136,7 +136,7 @@ const useHorizontalStyles = makeStyles({
     ':before': {
       content: '""',
       marginRight: contentSpacing,
-      maxWidth: startEndMaxHeight,
+      maxWidth: maxStartEndLength,
     },
 
     ':after': {
@@ -158,7 +158,7 @@ const useHorizontalStyles = makeStyles({
     ':after': {
       content: '""',
       marginLeft: contentSpacing,
-      maxWidth: startEndMaxHeight,
+      maxWidth: maxStartEndLength,
     },
   },
 });
@@ -172,13 +172,13 @@ const useVerticalStyles = makeStyles({
     ':before': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
-      minHeight: minLineSegmentLength,
+      minHeight: minStartEndLength,
     },
 
     ':after': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
-      minHeight: minLineSegmentLength,
+      minHeight: minStartEndLength,
     },
   },
 
@@ -198,7 +198,7 @@ const useVerticalStyles = makeStyles({
     ':before': {
       content: '""',
       marginBottom: contentSpacing,
-      maxHeight: startEndMaxHeight,
+      maxHeight: maxStartEndLength,
     },
 
     ':after': {
@@ -220,7 +220,7 @@ const useVerticalStyles = makeStyles({
     ':after': {
       content: '""',
       marginTop: contentSpacing,
-      maxHeight: startEndMaxHeight,
+      maxHeight: maxStartEndLength,
     },
   },
 });
