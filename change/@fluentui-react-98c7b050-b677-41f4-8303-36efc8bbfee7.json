@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix aria-readonly regression in Calendar",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
