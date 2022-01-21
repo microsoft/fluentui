@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 17 Jan 2022 09:43:48 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jan 2022 07:26:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.50.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.50.0)
+
+Fri, 21 Jan 2022 07:26:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.49.7..@fluentui/react_v8.50.0)
+
+### Minor changes
+
+- Add an onRenderContent override to the Breadcrumb ([PR #21280](https://github.com/microsoft/fluentui/pull/21280) by tmichon@microsoft.com)
+
+### Patches
+
+- Extending target to composedPath in Callout dismiss listener ([PR #19798](https://github.com/microsoft/fluentui/pull/19798) by marion.lepontois@skatteetaten.no)
 
 ## [8.49.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.49.7)
 

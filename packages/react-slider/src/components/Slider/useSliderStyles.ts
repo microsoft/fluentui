@@ -64,12 +64,26 @@ export const useRootStyles = makeStyles({
       [thumbColorVar]: tokens.colorBrandBackgroundPressed,
       [progressColorVar]: tokens.colorBrandBackgroundPressed,
     },
+    '@media (forced-colors: active)': {
+      [railColorVar]: 'CanvasText',
+      [thumbColorVar]: 'Highlight',
+      [progressColorVar]: 'Highlight',
+      ':hover': {
+        [thumbColorVar]: 'Highlight',
+        [progressColorVar]: 'Highlight',
+      },
+    },
   },
 
   disabled: {
     [thumbColorVar]: tokens.colorNeutralForegroundDisabled,
     [railColorVar]: tokens.colorNeutralBackgroundDisabled,
     [progressColorVar]: tokens.colorNeutralForegroundDisabled,
+    '@media (forced-colors: active)': {
+      [railColorVar]: 'GrayText',
+      [thumbColorVar]: 'GrayText',
+      [progressColorVar]: 'GrayText',
+    },
   },
 
   focusIndicatorHorizontal: createFocusOutlineStyle({
@@ -95,6 +109,8 @@ export const useRailStyles = makeStyles({
     gridColumnStart: 'slider',
     gridColumnEnd: 'slider',
     position: 'relative',
+    forcedColorAdjust: 'none',
+    // Background gradient represents the progress of the slider
     backgroundImage: `linear-gradient(
       var(${railDirectionVar}),
       var(${railColorVar}) 0%,
@@ -109,6 +125,7 @@ export const useRailStyles = makeStyles({
     ':before': {
       content: "''",
       position: 'absolute',
+      // Repeating gradient represents the steps if provided
       backgroundImage: `repeating-linear-gradient(
         var(${railDirectionVar}),
         #0000 0%,
@@ -150,6 +167,7 @@ export const useThumbStyles = makeStyles({
     height: `var(${thumbSizeVar})`,
     pointerEvents: 'none',
     outlineStyle: 'none',
+    forcedColorAdjust: 'none',
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
