@@ -11,5 +11,12 @@ export const TimeConstants = {
   HoursInOneDay: 24,
   SecondsInOneMinute: 60,
   OffsetTo24HourFormat: 12,
+  /**
+   * TimeFormatRegex groups
+   * Group 1: hours
+   * Group 2: minutes
+   * Group 3: seconds
+   * Group 4: meridiem (am/pm)
+   */
   TimeFormatRegex: /^(\d\d?):(\d\d):?(\d\d)? ?([ap]m)?/i,
 };
