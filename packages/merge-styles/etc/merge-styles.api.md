@@ -251,7 +251,11 @@ export interface IRawStyleBase extends IRawFontStyle {
     listStylePosition?: ICSSRule | string;
     listStyleType?: ICSSRule | string;
     margin?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockStart?: ICSSRule | ICSSPixelUnitRule;
     marginBottom?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineStart?: ICSSRule | ICSSPixelUnitRule;
     marginLeft?: ICSSRule | ICSSPixelUnitRule;
     marginRight?: ICSSRule | ICSSPixelUnitRule;
     marginTop?: ICSSRule | ICSSPixelUnitRule;
