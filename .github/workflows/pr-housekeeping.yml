@@ -22,4 +22,4 @@ jobs:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           use-expression: true
           milestone: '* Project Cycle *'
-          users-file-list: '.github/MAINTAINERS'
+          users-file-path: '.github/MAINTAINERS'
