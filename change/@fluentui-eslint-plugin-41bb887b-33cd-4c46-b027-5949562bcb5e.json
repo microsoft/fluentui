@@ -3,5 +3,5 @@
   "comment": "Add naming-convention exception to allow exported hooks with the _unstable suffix",
   "packageName": "@fluentui/eslint-plugin",
   "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
