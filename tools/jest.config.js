@@ -12,6 +12,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.json',
     },
   },
+  testPathIgnorePatterns: ['/node_modules/'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
