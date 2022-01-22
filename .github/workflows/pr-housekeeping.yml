@@ -1,6 +1,6 @@
 name: Pull request houskeeping 🧹
 on:
-  - pull_request_target
+  - pull_request
 
 permissions:
   contents: read
