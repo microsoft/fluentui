@@ -16,7 +16,7 @@ exports[`Component Examples renders Button.IconWithTooltip.Example.tsx correctly
     role="none"
   >
     <button
-      aria-label="Emoji"
+      aria-describedby="tooltip0"
       className=
           ms-Button
           ms-Button--icon
@@ -90,7 +90,6 @@ exports[`Component Examples renders Button.IconWithTooltip.Example.tsx correctly
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
-      title="Emoji"
       type="button"
     >
       <span
