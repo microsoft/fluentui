@@ -6,7 +6,8 @@ export const dividerClassName = 'fui-Divider';
 
 const contentSpacing = '12px';
 const insetSpacing = '12px';
-const startEndMaxHeight = '8px';
+const maxStartEndLength = '8px';
+const minStartEndLength = '8px;';
 
 const useBaseStyles = makeStyles({
   // Base styles
@@ -22,6 +23,7 @@ const useBaseStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
+    textAlign: 'center',
 
     color: tokens.colorNeutralForeground2,
 
@@ -29,7 +31,6 @@ const useBaseStyles = makeStyles({
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
 
@@ -37,7 +38,6 @@ const useBaseStyles = makeStyles({
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
   },
@@ -115,11 +115,13 @@ const useHorizontalStyles = makeStyles({
     ':before': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minStartEndLength,
     },
 
     ':after': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minStartEndLength,
     },
   },
 
@@ -134,7 +136,7 @@ const useHorizontalStyles = makeStyles({
     ':before': {
       content: '""',
       marginRight: contentSpacing,
-      maxWidth: startEndMaxHeight,
+      maxWidth: maxStartEndLength,
     },
 
     ':after': {
@@ -156,7 +158,7 @@ const useHorizontalStyles = makeStyles({
     ':after': {
       content: '""',
       marginLeft: contentSpacing,
-      maxWidth: startEndMaxHeight,
+      maxWidth: maxStartEndLength,
     },
   },
 });
@@ -170,11 +172,13 @@ const useVerticalStyles = makeStyles({
     ':before': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minStartEndLength,
     },
 
     ':after': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minStartEndLength,
     },
   },
 
@@ -194,7 +198,7 @@ const useVerticalStyles = makeStyles({
     ':before': {
       content: '""',
       marginBottom: contentSpacing,
-      maxHeight: startEndMaxHeight,
+      maxHeight: maxStartEndLength,
     },
 
     ':after': {
@@ -216,7 +220,7 @@ const useVerticalStyles = makeStyles({
     ':after': {
       content: '""',
       marginTop: contentSpacing,
-      maxHeight: startEndMaxHeight,
+      maxHeight: maxStartEndLength,
     },
   },
 });
