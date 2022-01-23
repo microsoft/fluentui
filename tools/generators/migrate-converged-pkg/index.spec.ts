@@ -481,29 +481,6 @@ describe('migrate-converged-pkg generator', () => {
       content = getJestSetupFile();
       expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
     });
-
-    it(`should add project to root jest.config.js`, async () => {
-      function getJestConfig() {
-        return tree.read(`/jest.config.js`)?.toString('utf-8');
-      }
-      let jestConfig = getJestConfig();
-
-      expect(jestConfig).toMatchInlineSnapshot(`
-        "module.exports = {
-        projects: []
-        }"
-      `);
-
-      await generator(tree, options);
-
-      jestConfig = getJestConfig();
-
-      expect(jestConfig).toMatchInlineSnapshot(`
-        "module.exports = {
-        projects: [\\"<rootDir>/packages/react-dummy\\"]
-        }"
-      `);
-    });
   });
 
   describe(`storybook updates`, () => {

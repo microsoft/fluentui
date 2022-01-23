@@ -17,15 +17,7 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import {
-  arePromptsEnabled,
-  getProjectConfig,
-  getProjects,
-  printUserLogs,
-  prompt,
-  updateJestConfig,
-  UserLog,
-} from '../../utils';
+import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -91,7 +83,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
 
   // 2. update Jest
   updateLocalJestConfig(tree, options);
-  updateRootJestConfig(tree, options);
 
   // update package npm scripts
   updateNpmScripts(tree, options);
@@ -760,12 +751,6 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
   }
-
-  return tree;
-}
-
-function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
-  updateJestConfig(tree, { project: options.name });
 
   return tree;
 }
