@@ -1876,6 +1876,8 @@ export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
     isCurrentItem?: boolean;
     key: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    onRender?: IRenderFunction<IBreadcrumbItem>;
+    onRenderContent?: IRenderFunction<IBreadcrumbItem>;
     role?: string;
     text: string;
 }
@@ -1892,6 +1894,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderItemContent?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
     overflowButtonAs?: IComponentAs<IButtonProps>;
