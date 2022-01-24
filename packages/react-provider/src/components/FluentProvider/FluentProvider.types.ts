@@ -32,5 +32,6 @@ export interface FluentProviderState extends ComponentState<FluentProviderSlots>
 export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
   provider: ProviderContextValue;
   themeClassName: ThemeClassNameContextValue;
+  textDirection: 'ltr' | 'rtl';
   tooltip: TooltipContextType;
 }

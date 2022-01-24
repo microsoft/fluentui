@@ -86,6 +86,9 @@
     "@babel/standalone": "7.14.8",
     "@ctrl/tinycolor": "3.3.4",
     "@fluentui/react-icons": "^2.0.154-beta.5",
+    "@griffel/babel-preset": "1.0.0",
+    "@griffel/jest-serializer": "1.0.0",
+    "@linaria/babel-preset": "3.0.0-beta.14",
     "@microsoft/api-extractor": "7.18.1",
     "@nrwl/cli": "13.4.5",
     "@nrwl/devkit": "13.4.5",
@@ -297,6 +300,7 @@
         "dependencies": [
           "@babel/core",
           "@babel/preset-typescript",
+          "@linaria/babel-preset",
           "@rnx-kit/eslint-plugin",
           "@types/react-test-renderer",
           "@typescript-eslint/eslint-plugin",
