@@ -1,5 +1,4 @@
 import {
-  grey,
   hcButtonFace,
   hcButtonText,
   hcCanvas,
@@ -45,6 +44,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorCompoundBrandForeground1Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorBrandForeground1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorBrandForeground2: hcButtonText, // #000000 Global.Color.hcButtonText
+  colorNeutralForeground1Static: hcCanvas, // #000000 Global.Color.hcCanvas
   colorNeutralForegroundInverted: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorNeutralForegroundInvertedHover: hcHighlightText, // #000000 Global.Color.hcHighlightText
   colorNeutralForegroundInvertedPressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
@@ -100,8 +100,8 @@ export const generateColorTokens = (): ColorTokens => ({
   colorTransparentBackgroundSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorNeutralBackgroundDisabled: hcCanvas, // #000000 Global.Color.hcCanvas
   colorNeutralBackgroundInvertedDisabled: hcCanvas, // #000000 Global.Color.hcCanvas
-  colorNeutralStencil1: grey[8], // #141414 Global.Color.Grey.8
-  colorNeutralStencil2: grey[52], // #858585 Global.Color.Grey.52
+  colorNeutralStencil1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStencil2: hcCanvasText, // #ffffff Global.Color.hcCanvasText
   colorBrandBackground: hcButtonFace, // #ffffff Global.Color.hcButtonFace
   colorBrandBackgroundHover: hcHighlight, // #1aebff Global.Color.hcHighlight
   colorBrandBackgroundPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
