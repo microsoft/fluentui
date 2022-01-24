@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
 import { PositioningShorthand } from '@fluentui/react-positioning';

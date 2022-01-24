@@ -10,7 +10,7 @@ import {
   PRIMARY_STORY,
   Stories,
 } from '@storybook/addon-docs';
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
 
 import { Toc, nameToHash } from './Toc.stories';
 
