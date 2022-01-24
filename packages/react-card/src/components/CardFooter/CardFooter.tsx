@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCardFooter_unstable } from './useCardFooter';
-import { renderCardFooter } from './renderCardFooter';
+import { renderCardFooter_unstable } from './renderCardFooter';
 import { useCardFooterStyles_unstable } from './useCardFooterStyles';
 import type { CardFooterProps } from './CardFooter.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const CardFooter: ForwardRefComponent<CardFooterProps> = React.forwardRef
   const state = useCardFooter_unstable(props, ref);
 
   useCardFooterStyles_unstable(state);
-  return renderCardFooter(state);
+  return renderCardFooter_unstable(state);
 });
 
 CardFooter.displayName = 'CardFooter';

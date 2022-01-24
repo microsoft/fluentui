@@ -7,7 +7,7 @@ import { resolveShorthand } from '@fluentui/react-utilities';
  * Create the state required to render Label.
  *
  * The returned state can be modified with hooks such as useLabelStyles_unstable,
- * before being passed to renderLabel.
+ * before being passed to renderLabel_unstable.
  *
  * @param props - props from this instance of Label
  * @param ref - reference to root HTMLElement of Label

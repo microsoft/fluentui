@@ -39,7 +39,7 @@ export type LabelSlots = {
 export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 
 // @public
-export const renderLabel: (state: LabelState) => JSX.Element;
+export const renderLabel_unstable: (state: LabelState) => JSX.Element;
 
 // @public
 export const useLabel_unstable: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;

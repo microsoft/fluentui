@@ -45,7 +45,7 @@ export const LargeTitle: FunctionComponent<TextWrapperProps>;
 export const largeTitleClassName = "fui-LargeTitle";
 
 // @public
-export const renderText: (state: TextState) => JSX.Element;
+export const renderText_unstable: (state: TextState) => JSX.Element;
 
 // @public
 export const Subheadline: FunctionComponent<TextWrapperProps>;

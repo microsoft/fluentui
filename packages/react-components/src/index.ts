@@ -69,10 +69,10 @@ export {
   accordionHeaderClassName,
   accordionItemClassName,
   accordionPanelClassName,
-  renderAccordion,
-  renderAccordionHeader,
-  renderAccordionItem,
-  renderAccordionPanel,
+  renderAccordion_unstable,
+  renderAccordionHeader_unstable,
+  renderAccordionItem_unstable,
+  renderAccordionPanel_unstable,
   useAccordion_unstable,
   useAccordionContextValues_unstable,
   useAccordionHeader_unstable,
@@ -116,7 +116,7 @@ export type {
 export {
   Avatar,
   avatarClassName,
-  renderAvatar,
+  renderAvatar_unstable,
   useAvatar_unstable,
   useAvatarStyles_unstable,
 } from '@fluentui/react-avatar';
@@ -128,7 +128,7 @@ export {
   badgeClassName,
   counterBadgeClassName,
   presenceBadgeClassName,
-  renderBadge,
+  renderBadge_unstable,
   useBadge_unstable,
   useBadgeStyles_unstable,
   useCounterBadge_unstable,
@@ -154,11 +154,11 @@ export {
   buttonClassName,
   compoundButtonClassName,
   menuButtonClassName,
-  renderButton,
-  renderCompoundButton,
-  renderMenuButton,
-  renderSplitButton,
-  renderToggleButton,
+  renderButton_unstable,
+  renderCompoundButton_unstable,
+  renderMenuButton_unstable,
+  renderSplitButton_unstable,
+  renderToggleButton_unstable,
   splitButtonClassName,
   toggleButtonClassName,
   useButton_unstable,
@@ -191,19 +191,31 @@ export type {
 export {
   Divider,
   dividerClassName,
-  renderDivider,
+  renderDivider_unstable,
   useDivider_unstable,
   useDividerStyles_unstable,
 } from '@fluentui/react-divider';
 export type { DividerProps, DividerSlots, DividerState } from '@fluentui/react-divider';
-export { Image, imageClassName, renderImage, useImage_unstable, useImageStyles_unstable } from '@fluentui/react-image';
+export {
+  Image,
+  imageClassName,
+  renderImage_unstable,
+  useImage_unstable,
+  useImageStyles_unstable,
+} from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
-export { Label, labelClassName, renderLabel, useLabel_unstable, useLabelStyles_unstable } from '@fluentui/react-label';
+export {
+  Label,
+  labelClassName,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
 export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
 export {
   Link,
   linkClassName,
-  renderLink,
+  renderLink_unstable,
   useLink_unstable,
   useLinkState_unstable,
   useLinkStyles_unstable,
@@ -234,16 +246,16 @@ export {
   menuItemRadioClassName,
   menuListClassName,
   menuPopoverClassName,
-  renderMenu,
-  renderMenuDivider,
-  renderMenuGroup,
-  renderMenuGroupHeader,
-  renderMenuItem,
-  renderMenuItemCheckbox,
-  renderMenuItemRadio,
-  renderMenuList,
-  renderMenuPopover,
-  renderMenuTrigger,
+  renderMenu_unstable,
+  renderMenuDivider_unstable,
+  renderMenuGroup_unstable,
+  renderMenuGroupHeader_unstable,
+  renderMenuItem_unstable,
+  renderMenuItemCheckbox_unstable,
+  renderMenuItemRadio_unstable,
+  renderMenuList_unstable,
+  renderMenuPopover_unstable,
+  renderMenuTrigger_unstable,
   useCheckmarkStyles_unstable,
   useMenu_unstable,
   useMenuContext_unstable,
@@ -322,9 +334,9 @@ export {
   PopoverTrigger,
   arrowHeights,
   popoverSurfaceClassName,
-  renderPopover,
-  renderPopoverSurface,
-  renderPopoverTrigger,
+  renderPopover_unstable,
+  renderPopoverSurface_unstable,
+  renderPopoverTrigger_unstable,
   usePopover_unstable,
   usePopoverContext_unstable,
   usePopoverSurface_unstable,
@@ -344,7 +356,13 @@ export type {
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';
-export { Portal, elementContains, renderPortal, setVirtualParent, usePortal_unstable } from '@fluentui/react-portal';
+export {
+  Portal,
+  elementContains,
+  renderPortal_unstable,
+  setVirtualParent,
+  usePortal_unstable,
+} from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
   Body,
@@ -362,7 +380,7 @@ export {
   displayClassName,
   headlineClassName,
   largeTitleClassName,
-  renderText,
+  renderText_unstable,
   subheadlineClassName,
   textClassName,
   title1ClassName,
@@ -374,7 +392,7 @@ export {
 export type { TextProps, TextSlots, TextState } from '@fluentui/react-text';
 export {
   Tooltip,
-  renderTooltip,
+  renderTooltip_unstable,
   tooltipClassName,
   useTooltip_unstable,
   useTooltipStyles_unstable,

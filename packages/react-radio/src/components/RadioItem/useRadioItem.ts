@@ -14,7 +14,7 @@ import type { RadioItemProps, RadioItemState } from './RadioItem.types';
  * Create the state required to render RadioItem.
  *
  * The returned state can be modified with hooks such as useRadioItemStyles_unstable,
- * before being passed to renderRadioItem.
+ * before being passed to renderRadioItem_unstable.
  *
  * @param props - props from this instance of RadioItem
  * @param ref - reference to root HTMLElement of RadioItem

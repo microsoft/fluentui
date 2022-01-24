@@ -13,7 +13,7 @@ import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from '.
  * Create the state required to render Menu.
  *
  * The returned state can be modified with hooks such as useMenuStyles,
- * before being passed to renderMenu.
+ * before being passed to renderMenu_unstable.
  *
  * @param props - props from this instance of Menu
  */

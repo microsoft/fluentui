@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuItem_unstable } from './useMenuItem';
-import { renderMenuItem } from './renderMenuItem';
+import { renderMenuItem_unstable } from './renderMenuItem';
 import { useMenuItemStyles_unstable } from './useMenuItemStyles';
 import type { MenuItemProps } from './MenuItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const MenuItem: ForwardRefComponent<MenuItemProps> = React.forwardRef((pr
   const state = useMenuItem_unstable(props, ref);
 
   useMenuItemStyles_unstable(state);
-  return renderMenuItem(state);
+  return renderMenuItem_unstable(state);
 });
 
 MenuItem.displayName = 'MenuItem';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuItemRadio_unstable } from './useMenuItemRadio';
-import { renderMenuItemRadio } from './renderMenuItemRadio';
+import { renderMenuItemRadio_unstable } from './renderMenuItemRadio';
 import { useMenuItemRadioStyles_unstable } from './useMenuItemRadioStyles';
 import type { MenuItemRadioProps } from './MenuItemRadio.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forw
   const state = useMenuItemRadio_unstable(props, ref);
   useMenuItemRadioStyles_unstable(state);
 
-  return renderMenuItemRadio(state);
+  return renderMenuItemRadio_unstable(state);
 });
 
 MenuItemRadio.displayName = 'MenuItemRadio';

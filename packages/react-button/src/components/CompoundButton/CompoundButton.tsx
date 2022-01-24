@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { renderCompoundButton } from './renderCompoundButton';
+import { renderCompoundButton_unstable } from './renderCompoundButton';
 import { useCompoundButton_unstable } from './useCompoundButton';
 import { useCompoundButtonStyles_unstable } from './useCompoundButtonStyles';
 import type { CompoundButtonProps } from './CompoundButton.types';
@@ -13,7 +13,7 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps> = React.fo
 
   useCompoundButtonStyles_unstable(state);
 
-  return renderCompoundButton(state);
+  return renderCompoundButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react
 }) as ForwardRefComponent<CompoundButtonProps>;
 

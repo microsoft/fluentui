@@ -9,7 +9,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * Create the state required to render Tab.
  *
  * The returned state can be modified with hooks such as useTabStyles_unstable,
- * before being passed to renderTab.
+ * before being passed to renderTab_unstable.
  *
  * @param props - props from this instance of Tab
  * @param ref - reference to root HTMLElement of Tab

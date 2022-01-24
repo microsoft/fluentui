@@ -7,7 +7,7 @@ import type { SelectTabData, SelectTabEvent, TabListProps, TabListState } from '
  * Create the state required to render TabList.
  *
  * The returned state can be modified with hooks such as useTabListStyles_unstable,
- * before being passed to renderTabList.
+ * before being passed to renderTabList_unstable.
  *
  * @param props - props from this instance of TabList
  * @param ref - reference to root HTMLElement of TabList

@@ -28,7 +28,7 @@ export type PortalState = PortalCommons & {
 };
 
 // @public
-export const renderPortal: (state: PortalState) => React_2.ReactElement;
+export const renderPortal_unstable: (state: PortalState) => React_2.ReactElement;
 
 // @public
 export function setVirtualParent(child: HTMLElement, parent?: HTMLElement): void;

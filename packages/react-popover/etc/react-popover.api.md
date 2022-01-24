@@ -100,13 +100,13 @@ export type PopoverTriggerProps = {
 export type PopoverTriggerState = PopoverTriggerProps;
 
 // @public
-export const renderPopover: (state: PopoverState) => JSX.Element;
+export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
 
 // @public
-export const renderPopoverSurface: (state: PopoverSurfaceState) => JSX.Element | null;
+export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element | null;
 
 // @public
-export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
+export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => JSX.Element;
 
 // @public
 export const usePopover_unstable: (props: PopoverProps) => PopoverState;

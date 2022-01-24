@@ -214,41 +214,41 @@ import { presenceBadgeClassName } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
-import { renderAccordion } from '@fluentui/react-accordion';
-import { renderAccordionHeader } from '@fluentui/react-accordion';
-import { renderAccordionItem } from '@fluentui/react-accordion';
-import { renderAccordionPanel } from '@fluentui/react-accordion';
-import { renderAvatar } from '@fluentui/react-avatar';
-import { renderBadge } from '@fluentui/react-badge';
-import { renderButton } from '@fluentui/react-button';
-import { renderCompoundButton } from '@fluentui/react-button';
-import { renderDivider } from '@fluentui/react-divider';
+import { renderAccordion_unstable } from '@fluentui/react-accordion';
+import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
+import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
+import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAvatar_unstable } from '@fluentui/react-avatar';
+import { renderBadge_unstable } from '@fluentui/react-badge';
+import { renderButton_unstable } from '@fluentui/react-button';
+import { renderCompoundButton_unstable } from '@fluentui/react-button';
+import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererContext } from '@fluentui/react-make-styles';
 import { RendererProvider } from '@fluentui/react-make-styles';
 import { RendererProviderProps } from '@fluentui/react-make-styles';
 import { renderFluentProvider } from '@fluentui/react-provider';
-import { renderImage } from '@fluentui/react-image';
-import { renderLabel } from '@fluentui/react-label';
-import { renderLink } from '@fluentui/react-link';
-import { renderMenu } from '@fluentui/react-menu';
-import { renderMenuButton } from '@fluentui/react-button';
-import { renderMenuDivider } from '@fluentui/react-menu';
-import { renderMenuGroup } from '@fluentui/react-menu';
-import { renderMenuGroupHeader } from '@fluentui/react-menu';
-import { renderMenuItem } from '@fluentui/react-menu';
-import { renderMenuItemCheckbox } from '@fluentui/react-menu';
-import { renderMenuItemRadio } from '@fluentui/react-menu';
-import { renderMenuList } from '@fluentui/react-menu';
-import { renderMenuPopover } from '@fluentui/react-menu';
-import { renderMenuTrigger } from '@fluentui/react-menu';
-import { renderPopover } from '@fluentui/react-popover';
-import { renderPopoverSurface } from '@fluentui/react-popover';
-import { renderPopoverTrigger } from '@fluentui/react-popover';
-import { renderPortal } from '@fluentui/react-portal';
-import { renderSplitButton } from '@fluentui/react-button';
-import { renderText } from '@fluentui/react-text';
-import { renderToggleButton } from '@fluentui/react-button';
-import { renderTooltip } from '@fluentui/react-tooltip';
+import { renderImage_unstable } from '@fluentui/react-image';
+import { renderLabel_unstable } from '@fluentui/react-label';
+import { renderLink_unstable } from '@fluentui/react-link';
+import { renderMenu_unstable } from '@fluentui/react-menu';
+import { renderMenuButton_unstable } from '@fluentui/react-button';
+import { renderMenuDivider_unstable } from '@fluentui/react-menu';
+import { renderMenuGroup_unstable } from '@fluentui/react-menu';
+import { renderMenuGroupHeader_unstable } from '@fluentui/react-menu';
+import { renderMenuItem_unstable } from '@fluentui/react-menu';
+import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
+import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { renderMenuList_unstable } from '@fluentui/react-menu';
+import { renderMenuPopover_unstable } from '@fluentui/react-menu';
+import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
+import { renderPopover_unstable } from '@fluentui/react-popover';
+import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
+import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
+import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderText_unstable } from '@fluentui/react-text';
+import { renderToggleButton_unstable } from '@fluentui/react-button';
+import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@fluentui/react-make-styles';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { setVirtualParent } from '@fluentui/react-portal';
@@ -794,23 +794,23 @@ export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
 
-export { renderAccordion }
+export { renderAccordion_unstable }
 
-export { renderAccordionHeader }
+export { renderAccordionHeader_unstable }
 
-export { renderAccordionItem }
+export { renderAccordionItem_unstable }
 
-export { renderAccordionPanel }
+export { renderAccordionPanel_unstable }
 
-export { renderAvatar }
+export { renderAvatar_unstable }
 
-export { renderBadge }
+export { renderBadge_unstable }
 
-export { renderButton }
+export { renderButton_unstable }
 
-export { renderCompoundButton }
+export { renderCompoundButton_unstable }
 
-export { renderDivider }
+export { renderDivider_unstable }
 
 export { RendererContext }
 
@@ -820,49 +820,49 @@ export { RendererProviderProps }
 
 export { renderFluentProvider }
 
-export { renderImage }
+export { renderImage_unstable }
 
-export { renderLabel }
+export { renderLabel_unstable }
 
-export { renderLink }
+export { renderLink_unstable }
 
-export { renderMenu }
+export { renderMenu_unstable }
 
-export { renderMenuButton }
+export { renderMenuButton_unstable }
 
-export { renderMenuDivider }
+export { renderMenuDivider_unstable }
 
-export { renderMenuGroup }
+export { renderMenuGroup_unstable }
 
-export { renderMenuGroupHeader }
+export { renderMenuGroupHeader_unstable }
 
-export { renderMenuItem }
+export { renderMenuItem_unstable }
 
-export { renderMenuItemCheckbox }
+export { renderMenuItemCheckbox_unstable }
 
-export { renderMenuItemRadio }
+export { renderMenuItemRadio_unstable }
 
-export { renderMenuList }
+export { renderMenuList_unstable }
 
-export { renderMenuPopover }
+export { renderMenuPopover_unstable }
 
-export { renderMenuTrigger }
+export { renderMenuTrigger_unstable }
 
-export { renderPopover }
+export { renderPopover_unstable }
 
-export { renderPopoverSurface }
+export { renderPopoverSurface_unstable }
 
-export { renderPopoverTrigger }
+export { renderPopoverTrigger_unstable }
 
-export { renderPortal }
+export { renderPortal_unstable }
 
-export { renderSplitButton }
+export { renderSplitButton_unstable }
 
-export { renderText }
+export { renderText_unstable }
 
-export { renderToggleButton }
+export { renderToggleButton_unstable }
 
-export { renderTooltip }
+export { renderTooltip_unstable }
 
 export { renderToStyleElements }
 

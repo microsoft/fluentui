@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCard_unstable } from './useCard';
-import { renderCard } from './renderCard';
+import { renderCard_unstable } from './renderCard';
 import { useCardStyles_unstable } from './useCardStyles';
 import type { CardProps } from './Card.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const Card: ForwardRefComponent<CardProps> = React.forwardRef((props, ref
   const state = useCard_unstable(props, ref);
 
   useCardStyles_unstable(state);
-  return renderCard(state);
+  return renderCard_unstable(state);
 });
 
 Card.displayName = 'Card';

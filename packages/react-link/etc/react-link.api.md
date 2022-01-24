@@ -36,7 +36,7 @@ export type LinkSlots = {
 export type LinkState = ComponentState<LinkSlots> & LinkCommons;
 
 // @public
-export const renderLink: (state: LinkState) => JSX.Element;
+export const renderLink_unstable: (state: LinkState) => JSX.Element;
 
 // @public
 export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;

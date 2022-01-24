@@ -17,7 +17,7 @@ export type OnVisibleChangeData = {
 };
 
 // @public
-export const renderTooltip: (state: TooltipState) => JSX.Element;
+export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 
 // @public
 export const Tooltip: ForwardRefComponent<TooltipProps>;

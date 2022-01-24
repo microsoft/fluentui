@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuTrigger_unstable } from './useMenuTrigger';
-import { renderMenuTrigger } from './renderMenuTrigger';
+import { renderMenuTrigger_unstable } from './renderMenuTrigger';
 import type { MenuTriggerProps } from './MenuTrigger.types';
 
 /**
@@ -10,7 +10,7 @@ import type { MenuTriggerProps } from './MenuTrigger.types';
 export const MenuTrigger = React.forwardRef<HTMLElement, MenuTriggerProps>((props, ref) => {
   const state = useMenuTrigger_unstable(props, ref);
 
-  return renderMenuTrigger(state);
+  return renderMenuTrigger_unstable(state);
 });
 
 MenuTrigger.displayName = 'MenuTrigger';

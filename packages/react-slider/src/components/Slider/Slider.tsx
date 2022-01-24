@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSlider_unstable } from './useSlider';
-import { renderSlider } from './renderSlider';
+import { renderSlider_unstable } from './renderSlider';
 import { useSliderStyles_unstable } from './useSliderStyles';
 import type { SliderProps } from './Slider.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -13,6 +13,6 @@ export const Slider: ForwardRefComponent<SliderProps> = React.forwardRef((props,
 
   useSliderStyles_unstable(state);
 
-  return renderSlider(state);
+  return renderSlider_unstable(state);
 });
 Slider.displayName = 'Slider';

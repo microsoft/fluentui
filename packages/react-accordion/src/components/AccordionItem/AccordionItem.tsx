@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAccordionItem_unstable } from './useAccordionItem';
 import { useAccordionItemContextValues_unstable } from './useAccordionItemContextValues';
-import { renderAccordionItem } from './renderAccordionItem';
+import { renderAccordionItem_unstable } from './renderAccordionItem';
 import type { AccordionItemProps } from './AccordionItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useAccordionItemStyles_unstable } from './useAccordionItemStyles';
@@ -15,7 +15,7 @@ export const AccordionItem: ForwardRefComponent<AccordionItemProps> = React.forw
 
   useAccordionItemStyles_unstable(state);
 
-  return renderAccordionItem(state, contextValues);
+  return renderAccordionItem_unstable(state, contextValues);
 });
 
 AccordionItem.displayName = 'AccordionItem';

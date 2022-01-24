@@ -37,7 +37,7 @@ export type DividerSlots = {
 export type DividerState = ComponentState<DividerSlots> & DividerCommons;
 
 // @public
-export const renderDivider: (state: DividerState) => JSX.Element;
+export const renderDivider_unstable: (state: DividerState) => JSX.Element;
 
 // @public
 export const useDivider_unstable: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;

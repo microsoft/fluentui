@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { renderButton } from './renderButton';
+import { renderButton_unstable } from './renderButton';
 import { useButton_unstable } from './useButton';
 import { useButtonStyles_unstable } from './useButtonStyles';
 import type { ButtonProps } from './Button.types';
@@ -13,7 +13,7 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
 
   useButtonStyles_unstable(state);
 
-  return renderButton(state);
+  return renderButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react
 }) as ForwardRefComponent<ButtonProps>;
 

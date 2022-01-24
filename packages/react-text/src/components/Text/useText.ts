@@ -6,7 +6,7 @@ import type { TextProps, TextState } from './Text.types';
  * Create the state required to render Text.
  *
  * The returned state can be modified with hooks such as useTextStyles_unstable,
- * before being passed to renderText.
+ * before being passed to renderText_unstable.
  *
  * @param props - props from this instance of Text
  * @param ref - reference to root HTMLElement of Text

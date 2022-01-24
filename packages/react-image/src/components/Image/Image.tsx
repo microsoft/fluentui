@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { renderImage } from './renderImage';
+import { renderImage_unstable } from './renderImage';
 import { useImage_unstable } from './useImage';
 import { useImageStyles_unstable } from './useImageStyles';
 import type { ImageProps } from './Image.types';
@@ -12,7 +12,7 @@ export const Image: ForwardRefComponent<ImageProps> = React.forwardRef((props, r
   const state = useImage_unstable(props, ref);
   useImageStyles_unstable(state);
 
-  return renderImage(state);
+  return renderImage_unstable(state);
 });
 
 Image.displayName = 'Image';

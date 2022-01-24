@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCardPreview_unstable } from './useCardPreview';
-import { renderCardPreview } from './renderCardPreview';
+import { renderCardPreview_unstable } from './renderCardPreview';
 import { useCardPreviewStyles_unstable } from './useCardPreviewStyles';
 import type { CardPreviewProps } from './CardPreview.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const CardPreview: ForwardRefComponent<CardPreviewProps> = React.forwardR
   const state = useCardPreview_unstable(props, ref);
 
   useCardPreviewStyles_unstable(state);
-  return renderCardPreview(state);
+  return renderCardPreview_unstable(state);
 });
 
 CardPreview.displayName = 'CardPreview';

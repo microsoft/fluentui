@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCardHeader_unstable } from './useCardHeader';
-import { renderCardHeader } from './renderCardHeader';
+import { renderCardHeader_unstable } from './renderCardHeader';
 import { useCardHeaderStyles_unstable } from './useCardHeaderStyles';
 import type { CardHeaderProps } from './CardHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const CardHeader: ForwardRefComponent<CardHeaderProps> = React.forwardRef
   const state = useCardHeader_unstable(props, ref);
 
   useCardHeaderStyles_unstable(state);
-  return renderCardHeader(state);
+  return renderCardHeader_unstable(state);
 });
 
 CardHeader.displayName = 'CardHeader';

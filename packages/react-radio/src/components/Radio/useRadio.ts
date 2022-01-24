@@ -6,7 +6,7 @@ import { RadioProps, RadioState } from './Radio.types';
  * Create the state required to render Radio.
  *
  * The returned state can be modified with hooks such as useRadioStyles_unstable,
- * before being passed to renderRadio.
+ * before being passed to renderRadio_unstable.
  *
  * @param props - props from this instance of Radio
  * @param ref - reference to root HTMLElement of Radio

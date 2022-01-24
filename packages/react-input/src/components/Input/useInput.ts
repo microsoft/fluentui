@@ -11,7 +11,7 @@ import type { InputProps, InputState } from './Input.types';
  * Create the state required to render Input.
  *
  * The returned state can be modified with hooks such as useInputStyles_unstable,
- * before being passed to renderInput.
+ * before being passed to renderInput_unstable.
  *
  * @param props - props from this instance of Input
  * @param ref - reference to `<input>` element of Input

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCheckbox_unstable } from './useCheckbox';
-import { renderCheckbox } from './renderCheckbox';
+import { renderCheckbox_unstable } from './renderCheckbox';
 import { useCheckboxStyles_unstable } from './useCheckboxStyles';
 import type { CheckboxProps } from './Checkbox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -13,7 +13,7 @@ export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef((pr
   const state = useCheckbox_unstable(props, ref);
 
   useCheckboxStyles_unstable(state);
-  return renderCheckbox(state);
+  return renderCheckbox_unstable(state);
 });
 
 Checkbox.displayName = 'Checkbox';

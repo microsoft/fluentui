@@ -81,18 +81,18 @@ export type MenuButtonSlots = ButtonSlots & {
 export type MenuButtonState = ComponentState<MenuButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
 
 // @public
-const renderButton: (state: ButtonState) => JSX.Element;
-export { renderButton }
-export { renderButton as renderToggleButton }
+const renderButton_unstable: (state: ButtonState) => JSX.Element;
+export { renderButton_unstable }
+export { renderButton_unstable as renderToggleButton_unstable }
 
 // @public
-export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
+export const renderCompoundButton_unstable: (state: CompoundButtonState) => JSX.Element;
 
 // @public
-export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
+export const renderMenuButton_unstable: (state: MenuButtonState) => JSX.Element;
 
 // @public
-export const renderSplitButton: (state: SplitButtonState) => JSX.Element;
+export const renderSplitButton_unstable: (state: SplitButtonState) => JSX.Element;
 
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;

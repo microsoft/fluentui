@@ -6,7 +6,7 @@ import type { DialogProps, DialogState } from './Dialog.types';
  * Create the state required to render Dialog.
  *
  * The returned state can be modified with hooks such as useDialogStyles_unstable,
- * before being passed to renderDialog.
+ * before being passed to renderDialog_unstable.
  *
  * @param props - props from this instance of Dialog
  * @param ref - reference to root HTMLElement of Dialog

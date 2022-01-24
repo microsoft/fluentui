@@ -86,16 +86,16 @@ export type CardSlots = {
 export type CardState = ComponentState<CardSlots>;
 
 // @public
-export const renderCard: (state: CardState) => JSX.Element;
+export const renderCard_unstable: (state: CardState) => JSX.Element;
 
 // @public
-export const renderCardFooter: (state: CardFooterState) => JSX.Element;
+export const renderCardFooter_unstable: (state: CardFooterState) => JSX.Element;
 
 // @public
-export const renderCardHeader: (state: CardHeaderState) => JSX.Element;
+export const renderCardHeader_unstable: (state: CardHeaderState) => JSX.Element;
 
 // @public
-export const renderCardPreview: (state: CardPreviewState) => JSX.Element;
+export const renderCardPreview_unstable: (state: CardPreviewState) => JSX.Element;
 
 // @public
 export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLElement>) => CardState;

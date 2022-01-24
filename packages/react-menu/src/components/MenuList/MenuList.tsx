@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuList_unstable } from './useMenuList';
-import { renderMenuList } from './renderMenuList';
+import { renderMenuList_unstable } from './renderMenuList';
 import { useMenuListContextValues_unstable } from './useMenuListContextValues';
 import { useMenuListStyles_unstable } from './useMenuListStyles';
 import type { MenuListProps } from './MenuList.types';
@@ -14,7 +14,7 @@ export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef((pr
   const contextValues = useMenuListContextValues_unstable(state);
   useMenuListStyles_unstable(state);
 
-  return renderMenuList(state, contextValues);
+  return renderMenuList_unstable(state, contextValues);
 });
 
 MenuList.displayName = 'MenuList';

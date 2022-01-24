@@ -82,7 +82,7 @@ export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlot
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
 
 // @public (undocumented)
-export const renderBadge: (state: BadgeState) => JSX.Element;
+export const renderBadge_unstable: (state: BadgeState) => JSX.Element;
 
 // @public
 export const useBadge_unstable: (props: BadgeProps, ref: React_2.Ref<HTMLElement>) => BadgeState;

@@ -316,37 +316,37 @@ export type MenuTriggerState = {
 };
 
 // @public
-export const renderMenu: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
+export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
 
 // @public
-export const renderMenuDivider: (state: MenuDividerState) => JSX.Element;
+export const renderMenuDivider_unstable: (state: MenuDividerState) => JSX.Element;
 
 // @public
-export const renderMenuGroup: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSX.Element;
+export const renderMenuGroup_unstable: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSX.Element;
 
 // @public
-export const renderMenuGroupHeader: (state: MenuGroupHeaderState) => JSX.Element;
+export const renderMenuGroupHeader_unstable: (state: MenuGroupHeaderState) => JSX.Element;
 
 // @public
-export const renderMenuItem: (state: MenuItemState) => JSX.Element;
+export const renderMenuItem_unstable: (state: MenuItemState) => JSX.Element;
 
 // @public
-export const renderMenuItemCheckbox: (state: MenuItemCheckboxState) => JSX.Element;
+export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSX.Element;
 
 // @public
-export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
+export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSX.Element;
 
 // @public
-export const renderMenuList: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
+export const renderMenuList_unstable: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
 
 // @public
-export const renderMenuPopover: (state: MenuPopoverState) => JSX.Element;
+export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Element;
 
 // @public
-export const renderMenuSplitGroup: (state: MenuSplitGroupState) => JSX.Element;
+export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState) => JSX.Element;
 
 // @public
-export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
+export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMenuGroupHeader_unstable } from './useMenuGroupHeader';
 import { useMenuGroupHeaderStyles_unstable } from './useMenuGroupHeaderStyles';
-import { renderMenuGroupHeader } from './renderMenuGroupHeader';
+import { renderMenuGroupHeader_unstable } from './renderMenuGroupHeader';
 import type { MenuGroupHeaderProps } from './MenuGroupHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -12,7 +12,7 @@ export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps> = React.
   const state = useMenuGroupHeader_unstable(props, ref);
   useMenuGroupHeaderStyles_unstable(state);
 
-  return renderMenuGroupHeader(state);
+  return renderMenuGroupHeader_unstable(state);
 });
 
 MenuGroupHeader.displayName = 'MenuGroupHeader';

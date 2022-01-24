@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { renderAvatar } from './renderAvatar';
+import { renderAvatar_unstable } from './renderAvatar';
 import { useAvatar_unstable } from './useAvatar';
 import { useAvatarStyles_unstable } from './useAvatarStyles';
 import type { AvatarProps } from './Avatar.types';
@@ -10,7 +10,7 @@ export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props,
 
   useAvatarStyles_unstable(state);
 
-  return renderAvatar(state);
+  return renderAvatar_unstable(state);
 });
 
 Avatar.displayName = 'Avatar';

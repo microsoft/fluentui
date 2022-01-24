@@ -58,7 +58,7 @@ export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
 };
 
 // @public (undocumented)
-export const renderAvatar: (state: AvatarState) => JSX.Element;
+export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;

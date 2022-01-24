@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { usePopoverTrigger_unstable } from './usePopoverTrigger';
-import { renderPopoverTrigger } from './renderPopoverTrigger';
+import { renderPopoverTrigger_unstable } from './renderPopoverTrigger';
 import type { PopoverTriggerProps } from './PopoverTrigger.types';
 
 /**
@@ -9,7 +9,7 @@ import type { PopoverTriggerProps } from './PopoverTrigger.types';
 export const PopoverTrigger: React.FC<PopoverTriggerProps> = props => {
   const state = usePopoverTrigger_unstable(props);
 
-  return renderPopoverTrigger(state);
+  return renderPopoverTrigger_unstable(state);
 };
 
 PopoverTrigger.displayName = 'PopoverTrigger';

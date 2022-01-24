@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useAccordionHeader_unstable } from './useAccordionHeader';
-import { renderAccordionHeader } from './renderAccordionHeader';
+import { renderAccordionHeader_unstable } from './renderAccordionHeader';
 import { useAccordionHeaderStyles_unstable } from './useAccordionHeaderStyles';
 import { useAccordionHeaderContextValues_unstable } from './useAccordionHeaderContextValues';
 import type { AccordionHeaderProps } from './AccordionHeader.types';
@@ -16,7 +16,7 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.
 
   useAccordionHeaderStyles_unstable(state);
 
-  return renderAccordionHeader(state, contextValues);
+  return renderAccordionHeader_unstable(state, contextValues);
 });
 
 AccordionHeader.displayName = 'AccordionHeader';

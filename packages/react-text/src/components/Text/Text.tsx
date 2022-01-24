@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useText_unstable } from './useText';
-import { renderText } from './renderText';
+import { renderText_unstable } from './renderText';
 import { useTextStyles_unstable } from './useTextStyles';
 import type { TextProps } from './Text.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -13,7 +13,7 @@ export const Text: ForwardRefComponent<TextProps> = React.forwardRef((props, ref
 
   useTextStyles_unstable(state);
 
-  return renderText(state);
+  return renderText_unstable(state);
   // Work around some small mismatches in inferred types which don't matter in practice
 }) as ForwardRefComponent<TextProps>;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTooltip_unstable } from './useTooltip';
-import { renderTooltip } from './renderTooltip';
+import { renderTooltip_unstable } from './renderTooltip';
 import { useTooltipStyles_unstable } from './useTooltipStyles';
 import type { TooltipProps } from './Tooltip.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const Tooltip: ForwardRefComponent<TooltipProps> = React.forwardRef((prop
   const state = useTooltip_unstable(props, ref);
 
   useTooltipStyles_unstable(state);
-  return renderTooltip(state);
+  return renderTooltip_unstable(state);
 });
 
 Tooltip.displayName = 'Tooltip';

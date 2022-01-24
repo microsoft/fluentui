@@ -91,7 +91,7 @@ module.exports = {
         modifiers: ['exported'],
         format: null,
         // Allow the _unstable suffix for exported hooks
-        filter: { regex: `^use${pascalCase}_unstable$`, match: true },
+        filter: { regex: `^(use|render)${pascalCase}_unstable$`, match: true },
       },
       { selector: 'typeLike', format: ['PascalCase'], leadingUnderscore: 'forbid' },
       {

@@ -20,7 +20,7 @@ import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.ty
  * Create the state required to render Popover.
  *
  * The returned state can be modified with hooks such as usePopoverStyles,
- * before being passed to renderPopover.
+ * before being passed to renderPopover_unstable.
  *
  * @param props - props from this instance of Popover
  */

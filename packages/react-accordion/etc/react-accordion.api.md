@@ -174,16 +174,16 @@ export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | Reac
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
 // @public
-export const renderAccordion: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
+export const renderAccordion_unstable: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionHeader: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
+export const renderAccordionHeader_unstable: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionItem: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
+export const renderAccordionItem_unstable: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
+export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element | null;
 
 // @public
 export const useAccordion_unstable: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;

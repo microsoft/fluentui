@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMenuPopover_unstable } from './useMenuPopover';
 import { useMenuPopoverStyles_unstable } from './useMenuPopoverStyles';
-import { renderMenuPopover } from './renderMenuPopover';
+import { renderMenuPopover_unstable } from './renderMenuPopover';
 import type { MenuPopoverProps } from './MenuPopover.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -12,7 +12,7 @@ export const MenuPopover: ForwardRefComponent<MenuPopoverProps> = React.forwardR
   const state = useMenuPopover_unstable(props, ref);
 
   useMenuPopoverStyles_unstable(state);
-  return renderMenuPopover(state);
+  return renderMenuPopover_unstable(state);
 });
 
 MenuPopover.displayName = 'MenuPopover';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { renderToggleButton } from './renderToggleButton';
+import { renderToggleButton_unstable } from './renderToggleButton';
 import { useToggleButton_unstable } from './useToggleButton';
 import { useToggleButtonStyles_unstable } from './useToggleButtonStyles';
 import type { ToggleButtonProps } from './ToggleButton.types';
@@ -13,7 +13,7 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps> = React.forwar
 
   useToggleButtonStyles_unstable(state);
 
-  return renderToggleButton(state);
+  return renderToggleButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react
 }) as ForwardRefComponent<ToggleButtonProps>;
 

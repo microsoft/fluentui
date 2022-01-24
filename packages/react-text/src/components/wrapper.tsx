@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-make-styles';
-import { renderText, useText_unstable, useTextStyles_unstable } from '../Text';
+import { renderText_unstable, useText_unstable, useTextStyles_unstable } from '../Text';
 import type { TextProps } from '../Text';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -20,7 +20,7 @@ export function createWrapper(options: {
 
     state.root.className = mergeClasses(className, state.root.className, styles.root, props.className);
 
-    return renderText(state);
+    return renderText_unstable(state);
   });
   Wrapper.displayName = displayName;
 

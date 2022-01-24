@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRadio_unstable } from './useRadio';
 import { RadioProps } from './Radio.types';
-import { renderRadio } from './renderRadio';
+import { renderRadio_unstable } from './renderRadio';
 import { useRadioStyles_unstable } from './useRadioStyles';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -12,7 +12,7 @@ export const Radio: ForwardRefComponent<RadioProps> = React.forwardRef((props, r
   const state = useRadio_unstable(props, ref);
 
   useRadioStyles_unstable(state);
-  return renderRadio(state);
+  return renderRadio_unstable(state);
 });
 
 Radio.displayName = 'Radio';

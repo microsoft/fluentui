@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useBadge_unstable } from './useBadge';
 import { useBadgeStyles_unstable } from './useBadgeStyles';
-import { renderBadge } from './renderBadge';
+import { renderBadge_unstable } from './renderBadge';
 import type { BadgeProps } from './Badge.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -12,7 +12,7 @@ export const Badge: ForwardRefComponent<BadgeProps> = React.forwardRef((props, r
   const state = useBadge_unstable(props, ref);
   useBadgeStyles_unstable(state);
 
-  return renderBadge(state);
+  return renderBadge_unstable(state);
 });
 
 Badge.displayName = 'Badge';

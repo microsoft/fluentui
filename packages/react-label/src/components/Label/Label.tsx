@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useLabel_unstable } from './useLabel';
-import { renderLabel } from './renderLabel';
+import { renderLabel_unstable } from './renderLabel';
 import { useLabelStyles_unstable } from './useLabelStyles';
 import type { LabelProps } from './Label.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const Label: ForwardRefComponent<LabelProps> = React.forwardRef((props, r
   const state = useLabel_unstable(props, ref);
 
   useLabelStyles_unstable(state);
-  return renderLabel(state);
+  return renderLabel_unstable(state);
 });
 
 Label.displayName = 'Label';

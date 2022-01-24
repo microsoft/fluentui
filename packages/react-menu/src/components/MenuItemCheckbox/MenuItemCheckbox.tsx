@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuItemCheckbox_unstable } from './useMenuItemCheckbox';
-import { renderMenuItemCheckbox } from './renderMenuItemCheckbox';
+import { renderMenuItemCheckbox_unstable } from './renderMenuItemCheckbox';
 import { useMenuItemCheckboxStyles_unstable } from './useMenuItemCheckboxStyles';
 import type { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = Reac
   const state = useMenuItemCheckbox_unstable(props, ref);
   useMenuItemCheckboxStyles_unstable(state);
 
-  return renderMenuItemCheckbox(state);
+  return renderMenuItemCheckbox_unstable(state);
 });
 
 MenuItemCheckbox.displayName = 'MenuItemCheckbox';

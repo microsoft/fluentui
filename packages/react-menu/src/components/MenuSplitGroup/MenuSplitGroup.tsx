@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuSplitGroup_unstable } from './useMenuSplitGroup';
-import { renderMenuSplitGroup } from './renderMenuSplitGroup';
+import { renderMenuSplitGroup_unstable } from './renderMenuSplitGroup';
 import { useMenuSplitGroupStyles_unstable } from './useMenuSplitGroupStyles';
 import type { MenuSplitGroupProps } from './MenuSplitGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -12,7 +12,7 @@ export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps> = React.fo
   const state = useMenuSplitGroup_unstable(props, ref);
 
   useMenuSplitGroupStyles_unstable(state);
-  return renderMenuSplitGroup(state);
+  return renderMenuSplitGroup_unstable(state);
 });
 
 MenuSplitGroup.displayName = 'MenuSplitGroup';

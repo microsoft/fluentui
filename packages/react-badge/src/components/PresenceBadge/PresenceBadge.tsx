@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { usePresenceBadge_unstable } from './usePresenceBadge';
 import { usePresenceBadgeStyles_unstable } from './usePresenceBadgeStyles';
-import { renderBadge } from '../../Badge';
+import { renderBadge_unstable } from '../../Badge';
 import type { PresenceBadgeProps } from './PresenceBadge.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -12,7 +12,7 @@ export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps> = React.forw
   const state = usePresenceBadge_unstable(props, ref);
   usePresenceBadgeStyles_unstable(state);
 
-  return renderBadge(state);
+  return renderBadge_unstable(state);
 });
 
 PresenceBadge.displayName = 'PresenceBadge';

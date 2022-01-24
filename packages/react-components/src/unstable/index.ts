@@ -9,10 +9,10 @@ export {
   cardFooterClassName,
   cardHeaderClassName,
   cardPreviewClassName,
-  renderCard,
-  renderCardFooter,
-  renderCardHeader,
-  renderCardPreview,
+  renderCard_unstable,
+  renderCardFooter_unstable,
+  renderCardHeader_unstable,
+  renderCardPreview_unstable,
   useCard_unstable,
   useCardFooter_unstable,
   useCardFooterStyles_unstable,
@@ -36,5 +36,11 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
-export { Input, inputClassName, renderInput, useInput_unstable, useInputStyles_unstable } from '@fluentui/react-input';
+export {
+  Input,
+  inputClassName,
+  renderInput_unstable,
+  useInput_unstable,
+  useInputStyles_unstable,
+} from '@fluentui/react-input';
 export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';

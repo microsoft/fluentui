@@ -8,7 +8,7 @@ import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.
  * Create the state required to render PopoverTrigger.
  *
  * The returned state can be modified with hooks such as usePopoverTriggerStyles,
- * before being passed to renderPopoverTrigger.
+ * before being passed to renderPopoverTrigger_unstable.
  *
  * @param props - props from this instance of PopoverTrigger
  */

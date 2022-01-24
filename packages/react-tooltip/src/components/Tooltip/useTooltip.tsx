@@ -18,7 +18,7 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
  * Create the state required to render Tooltip.
  *
  * The returned state can be modified with hooks such as useTooltipStyles_unstable,
- * before being passed to renderTooltip.
+ * before being passed to renderTooltip_unstable.
  *
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip

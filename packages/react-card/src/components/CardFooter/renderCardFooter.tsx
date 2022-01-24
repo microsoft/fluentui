@@ -5,7 +5,7 @@ import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
 /**
  * Render the final JSX of CardFooter
  */
-export const renderCardFooter = (state: CardFooterState) => {
+export const renderCardFooter_unstable = (state: CardFooterState) => {
   const { slots, slotProps } = getSlots<CardFooterSlots>(state);
 
   return (

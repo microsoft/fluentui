@@ -9,7 +9,7 @@ import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
  * Create the state required to render MenuSplitGroup.
  *
  * The returned state can be modified with hooks such as useMenuSplitGroupStyles_unstable,
- * before being passed to renderMenuSplitGroup.
+ * before being passed to renderMenuSplitGroup_unstable.
  *
  * @param props - props from this instance of MenuSplitGroup
  * @param ref - reference to root HTMLElement of MenuSplitGroup

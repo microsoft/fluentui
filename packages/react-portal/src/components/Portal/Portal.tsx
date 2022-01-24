@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { usePortal_unstable } from './usePortal';
-import { renderPortal } from './renderPortal';
+import { renderPortal_unstable } from './renderPortal';
 import type { PortalProps } from './Portal.types';
 
 /**
@@ -11,7 +11,7 @@ import type { PortalProps } from './Portal.types';
 export const Portal: React.FC<PortalProps> = props => {
   const state = usePortal_unstable(props);
 
-  return renderPortal(state);
+  return renderPortal_unstable(state);
 };
 
 Portal.displayName = 'Portal';

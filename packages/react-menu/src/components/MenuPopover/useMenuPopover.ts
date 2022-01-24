@@ -11,7 +11,7 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
  * Create the state required to render MenuPopover.
  *
  * The returned state can be modified with hooks such as useMenuPopoverStyles_unstable,
- * before being passed to renderMenuPopover.
+ * before being passed to renderMenuPopover_unstable.
  *
  * @param props - props from this instance of MenuPopover
  * @param ref - reference to root HTMLElement of MenuPopover

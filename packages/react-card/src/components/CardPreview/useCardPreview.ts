@@ -6,7 +6,7 @@ import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
  * Create the state required to render CardPreview.
  *
  * The returned state can be modified with hooks such as useCardPreviewStyles_unstable,
- * before being passed to renderCardPreview.
+ * before being passed to renderCardPreview_unstable.
  *
  * @param props - props from this instance of CardPreview
  * @param ref - reference to root HTMLElement of CardPreview

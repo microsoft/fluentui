@@ -38,7 +38,7 @@ export type ImageSlots = {
 export type ImageState = ComponentState<ImageSlots> & ImageCommons;
 
 // @public
-export const renderImage: (state: ImageState) => JSX.Element;
+export const renderImage_unstable: (state: ImageState) => JSX.Element;
 
 // @public
 export const useImage_unstable: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;

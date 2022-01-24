@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { renderDivider } from './renderDivider';
+import { renderDivider_unstable } from './renderDivider';
 import { useDivider_unstable } from './useDivider';
 import { useDividerStyles_unstable } from './useDividerStyles';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -13,7 +13,7 @@ export const Divider: ForwardRefComponent<DividerProps> = React.forwardRef((prop
 
   useDividerStyles_unstable(state);
 
-  return renderDivider(state);
+  return renderDivider_unstable(state);
 });
 
 Divider.displayName = 'Divider';
