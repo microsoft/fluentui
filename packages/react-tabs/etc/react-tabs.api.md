@@ -11,10 +11,10 @@ import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const renderTab: (state: TabState) => JSX.Element;
+export const renderTab_unstable: (state: TabState) => JSX.Element;
 
 // @public
-export const renderTabList: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
+export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
 
 // @public (undocumented)
 export type SelectTabData = {

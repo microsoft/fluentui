@@ -60,10 +60,10 @@ export type RadioSlots = {
 export type RadioState = ComponentState<RadioSlots>;
 
 // @public
-export const renderRadio: (state: RadioState) => JSX.Element;
+export const renderRadio_unstable: (state: RadioState) => JSX.Element;
 
 // @public
-export const renderRadioItem: (state: RadioItemState) => JSX.Element;
+export const renderRadioItem_unstable: (state: RadioItemState) => JSX.Element;
 
 // @public
 export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;

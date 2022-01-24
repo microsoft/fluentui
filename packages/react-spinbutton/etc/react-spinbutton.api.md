@@ -11,7 +11,7 @@ import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const renderSpinButton: (state: SpinButtonState) => JSX.Element;
+export const renderSpinButton_unstable: (state: SpinButtonState) => JSX.Element;
 
 // @public
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;

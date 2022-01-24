@@ -11,7 +11,7 @@ import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const renderSwitch: (state: SwitchState) => JSX.Element;
+export const renderSwitch_unstable: (state: SwitchState) => JSX.Element;
 
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;

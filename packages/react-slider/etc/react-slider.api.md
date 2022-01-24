@@ -11,7 +11,7 @@ import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const renderSlider: (state: SliderState) => JSX.Element;
+export const renderSlider_unstable: (state: SliderState) => JSX.Element;
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
