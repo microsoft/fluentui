@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogState } from './Dialog.types';
 
 export const dialogClassName = 'fui-Dialog';
