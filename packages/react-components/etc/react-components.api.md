@@ -226,7 +226,7 @@ import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererContext } from '@fluentui/react-make-styles';
 import { RendererProvider } from '@fluentui/react-make-styles';
 import { RendererProviderProps } from '@fluentui/react-make-styles';
-import { renderFluentProvider } from '@fluentui/react-provider';
+import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
@@ -317,9 +317,9 @@ import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useFluent } from '@fluentui/react-provider';
-import { useFluentProvider } from '@fluentui/react-provider';
-import { useFluentProviderContextValues } from '@fluentui/react-provider';
-import { useFluentProviderStyles } from '@fluentui/react-provider';
+import { useFluentProvider_unstable } from '@fluentui/react-provider';
+import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
+import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -818,7 +818,7 @@ export { RendererProvider }
 
 export { RendererProviderProps }
 
-export { renderFluentProvider }
+export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
 
@@ -1000,11 +1000,11 @@ export { useDividerStyles_unstable }
 
 export { useFluent }
 
-export { useFluentProvider }
+export { useFluentProvider_unstable }
 
-export { useFluentProviderContextValues }
+export { useFluentProviderContextValues_unstable }
 
-export { useFluentProviderStyles }
+export { useFluentProviderStyles_unstable }
 
 export { useImage_unstable }
 

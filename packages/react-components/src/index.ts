@@ -15,11 +15,11 @@ export type { RendererProviderProps } from '@fluentui/react-make-styles';
 export {
   FluentProvider,
   fluentProviderClassName,
-  renderFluentProvider,
+  renderFluentProvider_unstable,
   useFluent,
-  useFluentProvider,
-  useFluentProviderContextValues,
-  useFluentProviderStyles,
+  useFluentProvider_unstable,
+  useFluentProviderContextValues_unstable,
+  useFluentProviderStyles_unstable,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
