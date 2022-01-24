@@ -847,7 +847,7 @@ export class BreadcrumbBase extends React_2.Component<IBreadcrumbProps, any> {
 export { buildClassMap }
 
 // @public (undocumented)
-export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
+export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean, columnActionsMode?: ColumnActionsMode): IColumn[];
 
 // @public
 export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap;
@@ -1284,6 +1284,11 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    // (undocumented)
+    updateColumn(column: IColumn, options: {
+        width?: number;
+        newColumnIndex?: number;
+    }): void;
 }
 
 // @public (undocumented)
@@ -4480,6 +4485,10 @@ export interface IDetailsList extends IList {
     focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
+    updateColumn: (column: IColumn, options: {
+        width?: number;
+        newColumnIndex?: number;
+    }) => void;
 }
 
 // @public (undocumented)
