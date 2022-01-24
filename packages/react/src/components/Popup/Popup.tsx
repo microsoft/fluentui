@@ -52,7 +52,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
 function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
   const { originalElement, containsFocus } = options;
 
-  if (originalElement && containsFocus && originalElement !== getWindow()) {
+  if (originalElement && containsFocus && originalElement !== getWindow(originalElement as Element)) {
     // Make sure that the focus method actually exists
     // In some cases the object might exist but not be a real element.
     // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
@@ -70,17 +70,19 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   const containsFocus = React.useRef(false);
 
   React.useEffect(() => {
-    originalFocusedElement.current = getDocument()!.activeElement as HTMLElement;
+    originalFocusedElement.current = getDocument(root.current)!.activeElement as HTMLElement;
 
     if (doesElementContainFocus(root.current!)) {
       containsFocus.current = true;
     }
 
+    const originalRoot = root;
+
     return () => {
       onRestoreFocus?.({
         originalElement: originalFocusedElement.current,
         containsFocus: containsFocus.current,
-        documentContainsFocus: getDocument()?.hasFocus() || false,
+        documentContainsFocus: getDocument(originalRoot.current)?.hasFocus() || false,
       });
 
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
