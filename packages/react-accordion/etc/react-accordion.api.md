@@ -76,7 +76,7 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: IntrinsicSlotProps<'div'>;
+    root: IntrinsicSlotProps<'h3', 'h1' | 'h2' | 'h4' | 'h5' | 'h6' | 'div'>;
     button: ARIAButtonSlotProps;
     expandIcon: IntrinsicSlotProps<'span'>;
     icon?: IntrinsicSlotProps<'div'>;

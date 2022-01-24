@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccordionHeader renders a default state 1`] = `
-<div
+<h3
   className="fui-AccordionHeader"
-  role="heading"
 >
   <button
     aria-disabled={false}
@@ -33,5 +32,5 @@ exports[`AccordionHeader renders a default state 1`] = `
     </span>
     Default AccordionHeader
   </button>
-</div>
+</h3>
 `;

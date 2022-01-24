@@ -1,0 +1,41 @@
+import * as React from 'react';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
+
+export const HeadingLevels = () => (
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionHeader as="h1">Accordion Header as h1</AccordionHeader>
+      <AccordionPanel>
+        <div>Accordion Panel 1</div>
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem value="2">
+      <AccordionHeader as="h2">Accordion Header as h2</AccordionHeader>
+      <AccordionPanel>
+        <div>Accordion Panel 2</div>
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem value="3">
+      <AccordionHeader as="h4">Accordion Header as h4</AccordionHeader>
+      <AccordionPanel>
+        <div>Accordion Panel 3</div>
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem value="4">
+      <AccordionHeader as="div">Accordion Header as div</AccordionHeader>
+      <AccordionPanel>
+        <div>Accordion Panel 4</div>
+      </AccordionPanel>
+    </AccordionItem>
+  </Accordion>
+);
+
+HeadingLevels.parameters = {
+  docs: {
+    description: {
+      story:
+        'An accordion header is an `<h3>` by default, but can be marked up ' +
+        'using any heading level, or a `<div>` if a heading is inappropriate.',
+    },
+  },
+};

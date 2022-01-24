@@ -16,7 +16,10 @@ export type AccordionHeaderContextValues = {
 };
 
 export type AccordionHeaderSlots = {
-  root: IntrinsicSlotProps<'div'>;
+  /**
+   * The heading element wrapping the button. By default this is an h3
+   */
+  root: IntrinsicSlotProps<'h3', 'h1' | 'h2' | 'h4' | 'h5' | 'h6' | 'div'>;
   /**
    * The component to be used as button in heading
    */

@@ -57,14 +57,13 @@ export const useAccordionHeader_unstable = (
     inline,
     expandIconPosition,
     components: {
-      root: 'div',
+      root: 'h3',
       button: 'button',
       expandIcon: 'span',
       icon: 'div',
     },
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps('h3', {
       ref,
-      role: 'heading',
       ...props,
     }),
     icon: resolveShorthand(icon),
