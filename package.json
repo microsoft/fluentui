@@ -300,6 +300,7 @@
         "dependencies": [
           "@babel/core",
           "@babel/preset-typescript",
+          "@linaria/babel-preset",
           "@rnx-kit/eslint-plugin",
           "@types/react-test-renderer",
           "@typescript-eslint/eslint-plugin",
