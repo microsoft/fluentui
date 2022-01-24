@@ -297,13 +297,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/react-conformance-make-styles": {
-      "root": "packages/react-conformance-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/react-conformance-make-styles/src",
-      "tags": ["vNext", "platform:node"],
-      "implicitDependencies": []
-    },
     "@fluentui/react-conformance-griffel": {
       "root": "packages/react-conformance-griffel",
       "projectType": "library",
