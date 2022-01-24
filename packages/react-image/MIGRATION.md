@@ -68,7 +68,7 @@ For v9, this feature is no longer supported. The alternative is to apply the ani
 ```jsx
 import { useState } from 'react';
 import { Image } from '@fluentui/react-image';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles(theme => ({
   fadeIn400: {
@@ -99,7 +99,7 @@ For v9, this feature is no longer supported. The alternative would be to use the
 
 ```jsx
 import { useState } from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 import { Image } from '@fluentui/react-image';
 
 const useStyles = makeStyles({
@@ -219,7 +219,7 @@ const MyComponent = () => {
 
 ```jsx
 import { Image } from '@fluentui/react-image';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles(theme => ({
   width100: {
