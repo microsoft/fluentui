@@ -131,7 +131,7 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
     return null;
   }
 
-  private _renderLink_unstable(page: INavPage, linkIndex: number, isStacked?: boolean): JSX.Element | undefined {
+  private _renderLink(page: INavPage, linkIndex: number, isStacked?: boolean): JSX.Element | undefined {
     const { platform } = this.props;
     if (page.isHiddenFromMainNav) {
       return undefined;
@@ -164,7 +164,7 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
 
         return true;
       })
-      .map((page: INavPage, pageIndex: number) => this._renderLink_unstable(page, pageIndex, isStacked));
+      .map((page: INavPage, pageIndex: number) => this._renderLink(page, pageIndex, isStacked));
 
     return (
       <ul className={css(styles.links, isStacked && styles.isStacked)} aria-label="Website top-level navigation">
