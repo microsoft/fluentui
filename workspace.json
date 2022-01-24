@@ -26,13 +26,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/babel-make-styles": {
-      "root": "packages/babel-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/babel-make-styles/src",
-      "tags": ["vNext", "platform:node"],
-      "implicitDependencies": []
-    },
     "@fluentui/bundle-size": {
       "root": "packages/bundle-size",
       "projectType": "library",
