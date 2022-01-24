@@ -1,10 +1,10 @@
 import { IsConformantOptions } from './types';
 
 import { EOL } from 'os';
-import * as _ from 'lodash';
 import * as path from 'path';
 
-import { errorMessageColors, formatArray, getErrorMessage } from './utils/errorMessages';
+import { errorMessageColors, formatArray, getErrorMessage, formatErrors } from './utils/errorMessages';
+import { getPackagePath } from './defaultTests';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -234,12 +234,45 @@ export const defaultErrorMessages = {
       overview: `doesn't apply the "ref" prop to its root DOM node.`,
       suggestions: [
         `Make sure you're applying the ref to the ${resolveInfo('root element')} in your component.`,
+        `Check if your component overrides the primary slot, and add ${resolveInfo(
+          `primarySlot`,
+        )} to isConformant in your test file.`,
         `Check if your component uses an element ref and add ${resolveInfo(
           `elementRefName: 'elementRef'`,
         )} to isConformant in your test file.`,
         `Check if your component passes ref to an inner component and add ${resolveInfo(
           `targetComponent`,
         )} to isConformant in your test file.`,
+      ],
+      error,
+    });
+  },
+
+  'omits-size-prop': (testInfo: IsConformantOptions, error: Error, sizeValue: string, appliedToElement: Element) => {
+    const { displayName } = testInfo;
+    const { resolveInfo, testErrorName } = errorMessageColors;
+
+    // Message Description: Handles scenario where a component defines a custom 'size' prop but also
+    // applies 'size' as a native prop. (See the comment on the test definition for more background.)
+    //
+    // It appears that "displayName" has a custom 'size' prop but also applies 'size' as a native prop.
+    // After passing 'size="sizeValue"' to "displayName" it was applied to this element:
+    // <html here>
+    //
+    // Possible solutions:
+    // 1. Make sure that your component accepts a className prop.
+    // 2. Make sure that nothing is overwriting the className prop (it should be merged with defaults).
+    // 3. Make sure that your component is applying the className to the root.
+    return getErrorMessage({
+      displayName,
+      overview: `has a custom 'size' prop but also applies 'size' as a native prop.`,
+      details: [
+        `After passing 'size="${sizeValue}"' to ${testErrorName(displayName)} it was applied to this element:`,
+        appliedToElement.outerHTML,
+      ],
+      suggestions: [
+        `Ensure 'size' is omitted when calling native props helpers.`,
+        `If native 'size' functionality is needed, add an ${resolveInfo('htmlSize')} prop.`,
       ],
       error,
     });
@@ -363,8 +396,7 @@ export const defaultErrorMessages = {
   'exported-top-level': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName, componentPath } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const indexFile = path.join(rootPath, 'src', 'index');
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index');
 
     const exportInfo = testInfo.useDefaultExport
       ? `export { default as ${displayName} } from './${displayName};`
@@ -392,8 +424,7 @@ export const defaultErrorMessages = {
   'has-top-level-file': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName, componentPath } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const topLevelFile = path.join(rootPath, 'src', displayName);
+    const topLevelFile = path.join(getPackagePath(componentPath), 'src', displayName);
 
     // Message Description: Handles scenario where the displayName doesn't match the component's filename.
     //
@@ -488,16 +519,18 @@ export const defaultErrorMessages = {
     });
   },
 
-  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: string[]) => {
+  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: Record<string, Error>) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo } = errorMessageColors;
 
     return getErrorMessage({
       displayName,
       overview: 'uses non-standard callback arguments.',
-      details: ['These callback(s) need have two params:', testErrorInfo(formatArray(invalidProps))],
+      details: ['These callback(s) have issues:', testErrorInfo(formatErrors(invalidProps))],
       suggestions: [
-        `Ensure that ${resolveInfo(displayName + `'s`)} callbacks have two params (an event and data object).`,
+        `Ensure that ${resolveInfo(
+          displayName + `'s`,
+        )} callbacks have two params (an event and data object) and types of arguments are correct.`,
         `If a callback is intended to have a different signature, add the prop to isConformant ${resolveInfo(
           "testOptions['consistent-callback-args'].ignoreProps",
         )}.`,
@@ -585,6 +618,52 @@ export const defaultErrorMessages = {
     });
   },
 
+  'component-has-static-classname': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    classNames: string,
+  ) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, failedError } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `does not have default className (${testErrorInfo(componentClassName)}).`,
+      details: [`After render it has the following classes:`, `    ${failedError(`className='${classNames}'`)}`],
+      suggestions: [
+        `Ensure that your component has default a className and it is ${resolveInfo('merged')} with other classNames.`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classname-exported': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    exportName: string,
+  ) => {
+    const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
+
+    const constantValue = `export const ${exportName} = "${componentClassName}";`;
+
+    return getErrorMessage({
+      displayName,
+      overview: `default className constant  is not exported (${testErrorInfo(exportName)}) in: ${EOL}${testErrorPath(
+        indexFile,
+      )}.`,
+      suggestions: [
+        `Make sure that your component's ${resolveInfo('index.ts')} file` +
+          `or a file with styles hook exports \`${resolveInfo(constantValue)}\``,
+        `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
+      ],
+      error,
+    });
+  },
+
   'as-renders-html': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName } = testInfo;
     const { resolveInfo } = errorMessageColors;
@@ -608,6 +687,23 @@ export const defaultErrorMessages = {
         `Check if you are missing any ${resolveInfo('requiredProps')} within the isConformant in your test file.`,
         `Make sure that your component's implementation contains a valid return statement.`,
         `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
+      ],
+      error,
+    });
+  },
+
+  'primary-slot-gets-native-props': (testInfo: IsConformantOptions, error: Error) => {
+    const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `doesn't properly apply native props to the primary and root slots.`,
+      suggestions: [
+        `Make sure you're using the ${resolveInfo(
+          'getPartitionedNativeProps',
+        )} function to assign the correct native props to the root and primary slots.`,
+        `Check that the ${resolveInfo(`primarySlot`)} argument to isConformant is correct in your test file.`,
       ],
       error,
     });

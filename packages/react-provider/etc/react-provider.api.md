@@ -12,7 +12,6 @@ import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 import type { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
-import type { ThemeContextValue } from '@fluentui/react-shared-contexts';
 import type { TooltipContextType } from '@fluentui/react-shared-contexts';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-shared-contexts';
@@ -21,17 +20,20 @@ import { useTheme } from '@fluentui/react-shared-contexts';
 export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
+export const fluentProviderClassName = "fui-FluentProvider";
+
+// @public (undocumented)
 export interface FluentProviderCommons {
     dir: 'ltr' | 'rtl';
     targetDocument: Document | undefined;
 }
 
 // @public (undocumented)
-export interface FluentProviderContextValues {
+export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
     // (undocumented)
     provider: ProviderContextValue;
     // (undocumented)
-    theme: ThemeContextValue;
+    textDirection: 'ltr' | 'rtl';
     // (undocumented)
     themeClassName: ThemeClassNameContextValue;
     // (undocumented)
@@ -45,9 +47,6 @@ export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderS
 }
 
 // @public (undocumented)
-export const fluentProviderShorthandProps: (keyof FluentProviderSlots)[];
-
-// @public (undocumented)
 export type FluentProviderSlots = {
     root: IntrinsicShorthandProps<'div'>;
 };
@@ -55,7 +54,7 @@ export type FluentProviderSlots = {
 // @public (undocumented)
 export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
     // (undocumented)
-    theme: Theme;
+    theme: Theme | Partial<Theme> | undefined;
     // (undocumented)
     themeClassName: string;
 }
@@ -70,6 +69,9 @@ export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HT
 
 // @public (undocumented)
 export function useFluentProviderContextValues(state: FluentProviderState): FluentProviderContextValues;
+
+// @public
+export const useFluentProviderStyles: (state: FluentProviderState) => FluentProviderState;
 
 export { useTheme }
 

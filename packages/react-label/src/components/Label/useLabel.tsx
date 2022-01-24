@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { LabelProps, LabelSlots, LabelState } from './Label.types';
+import type { LabelProps, LabelState } from './Label.types';
 import { resolveShorthand } from '@fluentui/react-utilities';
-
-/**
- * Array of all shorthand properties listed in LabelShorthandProps
- * {@docCatergory Label}
- */
-export const labelShorthandProps: Array<keyof LabelSlots> = ['root', 'required'];
 
 /**
  * Create the state required to render Label.
@@ -24,7 +18,7 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>): LabelS
     disabled,
     required: resolveShorthand(required === false ? null : required, {
       required: !!required,
-      defaultProps: { children: '*' },
+      defaultProps: { children: '*', 'aria-hidden': 'true' },
     }),
     strong,
     size,

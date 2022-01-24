@@ -2,7 +2,6 @@ import { Menu } from '../index';
 
 import descriptionMd from './MenuDescription.md';
 import bestPracticesMd from './MenuBestPractices.md';
-
 export { Default } from './MenuDefault.stories';
 export { Interaction } from './MenuInteraction.stories';
 export { MenuItemsWithIcons } from './MenuMenuItemsWithIcons.stories';
@@ -23,6 +22,8 @@ export { AnchorToCustomTarget } from './MenuAnchorToTarget.stories';
 export { CustomTrigger } from './MenuCustomTrigger.stories';
 export { RenderFunctionTrigger } from './MenuRenderFunctionTrigger.stories';
 export { MemoizedMenuItems } from './MenuMemoizedMenuItems.stories';
+export { SplitMenuItem } from './MenuSplitMenuItem.stories';
+export { MenuTriggerWithTooltip } from './MenuTriggerWithTooltip.stories';
 
 export default {
   title: 'Components/Menu',

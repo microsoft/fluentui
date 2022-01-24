@@ -14,40 +14,41 @@ import * as React_2 from 'react';
 export const Input: ForwardRefComponent<InputProps>;
 
 // @public (undocumented)
-export interface InputCommons {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    // (undocumented)
-    inline?: boolean;
+export const inputClassName = "fui-Input";
+
+// @public
+export type InputOnChangeData = {
+    value: string;
+};
+
+// @public (undocumented)
+export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
+    children?: never;
     size?: 'small' | 'medium' | 'large';
-}
-
-// @public
-export interface InputProps extends InputCommons, Omit<ComponentProps<Partial<InputSlots>>, 'children'> {
-}
-
-// @public
-export const inputShorthandProps: (keyof InputSlots)[];
+    inline?: boolean;
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    defaultValue?: string;
+    value?: string;
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
+};
 
 // @public (undocumented)
 export type InputSlots = {
     root: IntrinsicShorthandProps<'span'>;
     input: IntrinsicShorthandProps<'input'>;
-    inputWrapper: IntrinsicShorthandProps<'span'>;
-    bookendBefore?: IntrinsicShorthandProps<'span'>;
-    bookendAfter?: IntrinsicShorthandProps<'span'>;
-    insideStart?: IntrinsicShorthandProps<'span'>;
-    insideEnd?: IntrinsicShorthandProps<'span'>;
+    contentBefore?: IntrinsicShorthandProps<'span'>;
+    contentAfter?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public
-export interface InputState extends InputCommons, ComponentState<InputSlots> {
-}
+export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
 
 // @public
 export const renderInput: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
+export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
 
 // @public
 export const useInputStyles: (state: InputState) => InputState;

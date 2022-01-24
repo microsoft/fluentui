@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "getSlots: remove slotNames param, and infer from state.components instead",
+  "packageName": "@fluentui/react-utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

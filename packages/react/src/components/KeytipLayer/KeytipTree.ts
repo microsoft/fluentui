@@ -1,5 +1,5 @@
-import { find, values } from '../../Utilities';
-import { mergeOverflows, sequencesToID } from '../../utilities/keytips/KeytipUtils';
+import { find, isElementVisibleAndNotHidden, values } from '../../Utilities';
+import { ktpTargetFromSequences, mergeOverflows, sequencesToID } from '../../utilities/keytips/KeytipUtils';
 import { KTP_LAYER_ID } from '../../utilities/keytips/KeytipConstants';
 import type { IKeytipProps } from '../../Keytip';
 import type { IKeytipTreeNode } from './IKeytipTreeNode';
@@ -126,9 +126,52 @@ export class KeytipTree {
    */
   public getExactMatchedNode(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     const possibleNodes = this.getNodes(currentKeytip.children);
-    return find(possibleNodes, (node: IKeytipTreeNode) => {
+    const matchingNodes = possibleNodes.filter((node: IKeytipTreeNode) => {
       return this._getNodeSequence(node) === keySequence && !node.disabled;
     });
+
+    // If we found no nodes, we are done
+    if (matchingNodes.length === 0) {
+      return undefined;
+    }
+
+    // Since the matching nodes all have the same key sequence,
+    // Grab the first one build the correct selector
+    const node = matchingNodes[0];
+
+    // If we have exactly one node, return it
+    if (matchingNodes.length === 1) {
+      return node;
+    }
+
+    // Get the potential target elements based on a selector from the sequences
+    const keySequences = node.keySequences;
+    const overflowSetSequence = node.overflowSetSequence;
+    const fullKeySequences = overflowSetSequence ? mergeOverflows(keySequences, overflowSetSequence) : keySequences;
+    const keytipTargetSelector = ktpTargetFromSequences(fullKeySequences);
+    const potentialTargetElements = document.querySelectorAll(keytipTargetSelector);
+
+    // If we have less nodes than the potential target elements,
+    // we won't be able to map element to node, return the first node.
+    // Note, the number of nodes could be more than the number of potential
+    // target elements, if an OverflowSet is involved
+    if (matchingNodes.length < potentialTargetElements.length) {
+      return node;
+    }
+
+    // Attempt to find the node that corresponds to the first visible/non-hidden element
+    const matchingIndex = Array.from(potentialTargetElements).findIndex((element: HTMLElement) =>
+      isElementVisibleAndNotHidden(element),
+    );
+    if (matchingIndex !== -1) {
+      return matchingNodes[matchingIndex];
+    }
+
+    // We did not find any visible elements associated with any of the nodes.
+    // We may be dealing with a keytip that is a submenu in an OverflowSet.
+    // Worst case, fall back to the first node returned
+    const overflowNode = matchingNodes.find(matchingNode => matchingNode.hasOverflowSubMenu);
+    return overflowNode || node;
   }
 
   /**
@@ -259,6 +302,7 @@ export class KeytipTree {
       onExecute,
       onReturn,
       disabled,
+      hasOverflowSubMenu,
     } = keytipProps;
     const node = {
       id,
@@ -272,6 +316,7 @@ export class KeytipTree {
       hasMenu,
       disabled,
       persisted,
+      hasOverflowSubMenu,
     };
     node.children = Object.keys(this.nodeMap).reduce((array: string[], nodeMapKey: string): string[] => {
       if (this.nodeMap[nodeMapKey].parent === id) {

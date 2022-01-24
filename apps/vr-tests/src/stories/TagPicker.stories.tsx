@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
+import { TestWrapperDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
 import { TagPicker, Fabric, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
@@ -29,7 +29,7 @@ const getList = () => testTags;
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for
 // suggestion items won't exist
 storiesOf('TagPicker', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
 
 storiesOf('TagPicker', module)
@@ -84,7 +84,7 @@ storiesOf('TagPicker', module)
 storiesOf('TagPicker', module)
   // FIXME: SB6 duplicates same story ID decorators
   // This is a temporary fix until we migrate to CSF format duplication problem
-  // - previously this used FabricDecoratorFixedWidth
+  // - previously this used TestWrapperDecoratorFixedWidth
   .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'fixed' }))
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
@@ -107,7 +107,7 @@ storiesOf('TagPicker', module)
   ));
 
 storiesOf('TagItem', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

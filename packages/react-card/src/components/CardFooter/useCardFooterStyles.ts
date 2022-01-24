@@ -1,5 +1,7 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
 import type { CardFooterState } from './CardFooter.types';
+
+export const cardFooterClassName = 'fui-CardFooter';
 
 /**
  * Styles for the root slot
@@ -8,7 +10,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    gap: '12px',
+    ...shorthands.gap('12px'),
   },
   action: {
     marginLeft: 'auto',
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
  */
 export const useCardFooterStyles = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(cardFooterClassName, styles.root, state.root.className);
 
   if (state.action) {
     state.action.className = mergeClasses(styles.action, state.action.className);

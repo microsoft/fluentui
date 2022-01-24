@@ -9,7 +9,7 @@ import {
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
@@ -41,7 +41,7 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
 
 storiesOf('FolderCover', module)
   .addDecorator(story => <Fabric>{story()}</Fabric>)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener

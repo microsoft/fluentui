@@ -1,8 +1,35 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Tue, 28 Sep 2021 22:17:07 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jan 2022 23:32:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.3)
+
+Mon, 03 Jan 2022 23:32:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.2..@fluentui/merge-styles_v8.2.3)
+
+### Patches
+
+- Add new css properties into `IRawStyleBase` ([PR #18915](https://github.com/microsoft/fluentui/pull/18915) by 1586939317@qq.com)
+
+## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.2)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.1..@fluentui/merge-styles_v8.2.2)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.1)
+
+Wed, 10 Nov 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.2.0..@fluentui/merge-styles_v8.2.1)
+
+### Patches
+
+- Add some logic to stylesheet that will do a simple append instead of using insert before if the reference node isn't actually a child of the document head. ([PR #20439](https://github.com/microsoft/fluentui/pull/20439) by tabrumle@microsoft.com)
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.2.0)
 

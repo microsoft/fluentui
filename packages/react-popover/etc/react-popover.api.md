@@ -20,7 +20,9 @@ import type { usePopperMouseTarget } from '@fluentui/react-positioning';
 export const arrowHeights: Record<PopoverSize, number>;
 
 // @public
-export type OnOpenChangeData = Pick<PopoverState, 'open'>;
+export type OnOpenChangeData = {
+    open: boolean;
+};
 
 // @public
 export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
@@ -70,6 +72,9 @@ export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
+// @public (undocumented)
+export const popoverSurfaceClassName = "fui-PopoverSurface";
+
 // @public
 export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
@@ -77,9 +82,6 @@ export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 export type PopoverSurfaceSlots = {
     root: IntrinsicShorthandProps<'div'>;
 };
-
-// @public (undocumented)
-export const popoverSurfaceSlots: Array<keyof PopoverSurfaceSlots>;
 
 // @public
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'appearance' | 'arrowRef'> & {
@@ -110,7 +112,7 @@ export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
 export const usePopover: (props: PopoverProps) => PopoverState;
 
 // @public (undocumented)
-export const usePopoverContext: <T>(selector: ContextSelector<Pick<PopoverState, "mountNode" | "open" | "setOpen" | "triggerRef" | "contentRef" | "openOnHover" | "openOnContext" | "noArrow" | "arrowRef" | "size" | "appearance" | "trapFocus">, T>) => T;
+export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public
 export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;

@@ -39,16 +39,16 @@ type SlotProps<S extends ObjectShorthandPropsRecord> = {
  * Slots will render as null if they are rendered as primitives with undefined children.
  *
  * The slotProps will always omit the `as` prop within them, and for slots that are string
- * primitives, the props will be filtered according the the slot type. For example, if the
- * slot is rendered `as: 'a'`, the props will be filtered for acceptable anchor props.
+ * primitives, the props will be filtered according to the slot type by the type system.
+ * For example, if the slot is rendered `as: 'a'`, the props will be filtered for acceptable
+ * anchor props. Note that this is only enforced at build time by Typescript -- there is no
+ * runtime code filtering props in this function.
  *
  * @param state - State including slot definitions
- * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
 export function getSlots<R extends ObjectShorthandPropsRecord>(
   state: ComponentState<R>,
-  slotNames: (keyof R)[] = ['root'],
 ): {
   slots: Slots<R>;
   slotProps: SlotProps<R>;
@@ -56,6 +56,7 @@ export function getSlots<R extends ObjectShorthandPropsRecord>(
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
+  const slotNames: (keyof R)[] = Object.keys(state.components);
   for (const slotName of slotNames) {
     const [slot, props] = getSlot(state, slotName);
     slots[slotName] = slot as Slots<R>[typeof slotName];
@@ -82,7 +83,7 @@ function getSlot<R extends ObjectShorthandPropsRecord, K extends keyof R>(
     return [
       React.Fragment,
       ({
-        children: render(slot, rest),
+        children: render(slot, rest as Omit<R[K], 'children' | 'as'>),
       } as unknown) as R[K],
     ];
   }

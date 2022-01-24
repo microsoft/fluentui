@@ -43,6 +43,8 @@ export interface IListState<T = any> {
   measureVersion?: number;
   isScrolling?: boolean;
   getDerivedStateFromProps(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
+
+  pagesVersion?: {};
 }
 
 interface IPageCacheItem<T> {
@@ -343,38 +345,40 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     }
   }
 
-  public componentDidUpdate(): void {
+  public componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void {
     // Multiple updates may have been queued, so the callback will reflect all of them.
     // Re-fetch the current props and states to avoid using a stale props or state captured in the closure.
     const finalProps = this.props;
     const finalState = this.state;
 
-    // If we weren't provided with the page height, measure the pages
-    if (!finalProps.getPageHeight) {
-      // If measured version is invalid since we've updated the DOM
-      const heightsChanged = this._updatePageMeasurements(finalState.pages!);
+    if (this.state.pagesVersion !== previousState.pagesVersion) {
+      // If we weren't provided with the page height, measure the pages
+      if (!finalProps.getPageHeight) {
+        // If measured version is invalid since we've updated the DOM
+        const heightsChanged = this._updatePageMeasurements(finalState.pages!);
 
-      // On first render, we should re-measure so that we don't get a visual glitch.
-      if (heightsChanged) {
-        this._materializedRect = null;
-        if (!this._hasCompletedFirstRender) {
-          this._hasCompletedFirstRender = true;
-          this.setState(this._updatePages(finalProps, finalState));
+        // On first render, we should re-measure so that we don't get a visual glitch.
+        if (heightsChanged) {
+          this._materializedRect = null;
+          if (!this._hasCompletedFirstRender) {
+            this._hasCompletedFirstRender = true;
+            this.setState(this._updatePages(finalProps, finalState));
+          } else {
+            this._onAsyncScroll();
+          }
         } else {
-          this._onAsyncScroll();
+          // Enqueue an idle bump.
+          this._onAsyncIdle();
         }
       } else {
-        // Enqueue an idle bump.
+        // Enqueue an idle bump
         this._onAsyncIdle();
       }
-    } else {
-      // Enqueue an idle bump
-      this._onAsyncIdle();
-    }
 
-    // Notify the caller that rendering the new pages has completed
-    if (finalProps.onPagesUpdated) {
-      finalProps.onPagesUpdated(finalState.pages as IPage<T>[]);
+      // Notify the caller that rendering the new pages has completed
+      if (finalProps.onPagesUpdated) {
+        finalProps.onPagesUpdated(finalState.pages as IPage<T>[]);
+      }
     }
   }
 
@@ -467,6 +471,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         ...divProps,
         className: css('ms-List', className),
         role: pageElements.length > 0 ? role : undefined,
+        'aria-label': pageElements.length > 0 ? divProps['aria-label'] : undefined,
       },
     });
   }
@@ -720,6 +725,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     return {
       ...previousState,
       ...newListState,
+      pagesVersion: {},
     };
   }
 

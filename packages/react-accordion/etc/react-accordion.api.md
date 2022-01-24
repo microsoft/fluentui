@@ -10,11 +10,13 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
+
+// @public (undocumented)
+export const accordionClassName = "fui-Accordion";
 
 // @public (undocumented)
 export type AccordionCommons = {
@@ -27,10 +29,9 @@ export type AccordionCommons = {
 export const AccordionContext: Context<AccordionContextValue>;
 
 // @public (undocumented)
-export type AccordionContextValue = {
-    navigable: boolean;
+export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
     openItems: AccordionItemValue[];
-    requestToggle: AccordionToggleEventHandler;
+    requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 };
 
 // @public (undocumented)
@@ -40,6 +41,9 @@ export type AccordionContextValues = {
 
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
+
+// @public (undocumented)
+export const accordionHeaderClassName = "fui-AccordionHeader";
 
 // @public (undocumented)
 export type AccordionHeaderCommons = {
@@ -62,19 +66,10 @@ export type AccordionHeaderContextValues = {
 };
 
 // @public (undocumented)
-export const AccordionHeaderExpandIcon: ForwardRefComponent<AccordionHeaderExpandIconProps>;
-
-// @public (undocumented)
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderExpandIconProps = IntrinsicShorthandProps<'span'>;
-
-// @public (undocumented)
 export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
-
-// @public
-export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots>;
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
@@ -83,9 +78,8 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderSlots = {
     root: IntrinsicShorthandProps<'div'>;
     button: ARIAButtonShorthandProps;
-    expandIcon: AccordionHeaderExpandIconProps;
+    expandIcon: IntrinsicShorthandProps<'span'>;
     icon?: IntrinsicShorthandProps<'div'>;
-    children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
 // @public (undocumented)
@@ -98,17 +92,20 @@ export type AccordionIndex = number | number[];
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
 // @public (undocumented)
+export const accordionItemClassName = "fui-AccordionItem";
+
+// @public (undocumented)
 export type AccordionItemCommons = {
     disabled: boolean;
+    value: AccordionItemValue;
 };
 
 // @public (undocumented)
 export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
 
 // @public (undocumented)
-export type AccordionItemContextValue = {
+export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
     open: boolean;
-    disabled: boolean;
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
 };
 
@@ -118,12 +115,7 @@ export type AccordionItemContextValues = {
 };
 
 // @public (undocumented)
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & {
-    value: AccordionItemValue;
-};
-
-// @public
-export const accordionItemShorthandProps: Array<keyof AccordionItemSlots>;
+export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<AccordionItemCommons> & Pick<AccordionItemCommons, 'value'>;
 
 // @public (undocumented)
 export type AccordionItemSlots = {
@@ -140,10 +132,10 @@ export type AccordionItemValue = unknown;
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
 
 // @public (undocumented)
-export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
+export const accordionPanelClassName = "fui-AccordionPanel";
 
-// @public
-export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots>;
+// @public (undocumented)
+export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
@@ -161,9 +153,6 @@ export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionC
     defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
     onToggle?: AccordionToggleEventHandler;
 };
-
-// @public (undocumented)
-export const accordionShorthandProps: Array<keyof AccordionSlots>;
 
 // @public (undocumented)
 export type AccordionSlots = {
@@ -196,7 +185,7 @@ export const renderAccordionItem: (state: AccordionItemState, contextValues: Acc
 // @public
 export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
 
-// @public (undocumented)
+// @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public (undocumented)
@@ -220,11 +209,17 @@ export const useAccordionItemContext: () => AccordionItemContextValue;
 // @public (undocumented)
 export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues;
 
+// @public (undocumented)
+export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
+
 // @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
 // @public
 export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
+
+// @public (undocumented)
+export const useAccordionStyles: (state: AccordionState) => AccordionState;
 
 // (No @packageDocumentation comment for this package)
 

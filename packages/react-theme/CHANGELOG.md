@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Fri, 01 Oct 2021 14:13:08 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Nov 2021 08:34:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.4)
+
+Thu, 25 Nov 2021 08:34:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.3..@fluentui/react-theme_v9.0.0-beta.4)
+
+### Changes
+
+- feat(react-theme): update shadow design tokens ([PR #20604](https://github.com/microsoft/fluentui/pull/20604) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.3)
+
+Fri, 12 Nov 2021 13:25:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.2..@fluentui/react-theme_v9.0.0-beta.3)
+
+### Changes
+
+- Updated beta and RC components to ES2019 ([PR #20405](https://github.com/microsoft/fluentui/pull/20405) by gcox@microsoft.com)
+- feat(react-theme): add/update design tokens ([PR #20569](https://github.com/microsoft/fluentui/pull/20569) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.2)
+
+Wed, 27 Oct 2021 12:14:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-beta.1..@fluentui/react-theme_v9.0.0-beta.2)
+
+### Changes
+
+- fix(reat-theme): Remove template literal types for color palette ([PR #20251](https://github.com/microsoft/fluentui/pull/20251) by lingfangao@hotmail.com)
+- added styling of documentation ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by peter@draxler.ml)
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-beta.1)
+
+Wed, 06 Oct 2021 10:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-alpha.26..@fluentui/react-theme_v9.0.0-beta.1)
+
+### Changes
+
+- Bump all v9 components to beta prerelease tag ([PR #20106](https://github.com/microsoft/fluentui/pull/20106) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.26)
 

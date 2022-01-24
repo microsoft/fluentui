@@ -3,6 +3,15 @@ import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluent
 import { MenuListContextValue } from '../../contexts/menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
+export type MenuCheckedValueChangeEvent = React.MouseEvent | React.KeyboardEvent;
+
+export type MenuCheckedValueChangeData = {
+  /** The name of the value */
+  name: string;
+  /** The items for this value that are checked */
+  checkedItems: string[];
+};
+
 export type MenuListCommons = {
   /**
    * Callback when checked items change for value with a name
@@ -10,15 +19,7 @@ export type MenuListCommons = {
    * @param event - React's original SyntheticEvent
    * @param data - A data object with relevant information
    */
-  onCheckedValueChange?: (
-    e: React.MouseEvent | React.KeyboardEvent,
-    data: {
-      /** The name of the value */
-      name: string;
-      /** The items for this value that are checked */
-      checkedItems: string[];
-    },
-  ) => void;
+  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 
   /**
    * Map of all checked values

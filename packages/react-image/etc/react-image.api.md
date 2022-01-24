@@ -15,6 +15,9 @@ const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
 // @public (undocumented)
+export const imageClassName = "fui-Image";
+
+// @public (undocumented)
 export type ImageCommons = {
     bordered?: boolean;
     fit?: 'none' | 'center' | 'contain' | 'cover';
@@ -25,9 +28,6 @@ export type ImageCommons = {
 
 // @public (undocumented)
 export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
-
-// @public (undocumented)
-export const imageShorthandProps: Array<keyof ImageSlots>;
 
 // @public (undocumented)
 export type ImageSlots = {

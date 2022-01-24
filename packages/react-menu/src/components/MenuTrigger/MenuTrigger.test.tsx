@@ -1,16 +1,22 @@
 import * as React from 'react';
 import { MenuTrigger } from './MenuTrigger';
 import * as renderer from 'react-test-renderer';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
+import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+
+jest.mock('../../contexts/menuContext.ts');
 
 describe('MenuTrigger', () => {
+  beforeEach(() => mockUseMenuContext());
+
   isConformant({
     disabledTests: [
       // MenuTrigger does not render DOM elements
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
+      'component-has-static-classname',
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
     ],
@@ -49,9 +55,8 @@ describe('MenuTrigger', () => {
     expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          id=""
+          aria-haspopup="menu"
+          id="id"
         >
           Trigger
         </button>,
@@ -80,13 +85,55 @@ describe('MenuTrigger', () => {
     expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-expanded="false"
-          aria-haspopup="true"
-          id=""
+          aria-haspopup="menu"
+          id="id"
         >
           Trigger
         </button>,
       ]
     `);
+  });
+
+  it('should not open menu when aria-disabled is true', () => {
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+
+    const { getByRole } = render(
+      <MenuTrigger>
+        <button aria-disabled>trigger</button>
+      </MenuTrigger>,
+    );
+    fireEvent.click(getByRole('button'));
+
+    expect(setOpen).toBeCalledTimes(0);
+  });
+
+  it('should open menu when aria-disabled is false', () => {
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+
+    const { getByRole } = render(
+      <MenuTrigger>
+        <button aria-disabled={false}>trigger</button>
+      </MenuTrigger>,
+    );
+    fireEvent.click(getByRole('button'));
+
+    expect(setOpen).toBeCalledTimes(1);
+    expect(setOpen).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
+  });
+
+  it('should open menu when trigger is disabled', () => {
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+
+    const { getByRole } = render(
+      <MenuTrigger>
+        <button disabled>trigger</button>
+      </MenuTrigger>,
+    );
+    fireEvent.click(getByRole('button'));
+
+    expect(setOpen).toBeCalledTimes(0);
   });
 });

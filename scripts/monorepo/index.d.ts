@@ -24,9 +24,14 @@ export declare function findGitRoot(cwd?: string): string;
 
 /**
  * Find all the dependencies (and their dependencies) within the repo for a specific package
- * (in the CWD when this was called)
+ * (by default, in the CWD when this was called)
  */
-export declare function findRepoDeps(cwd?: string): PackageInfo[];
+export declare function findRepoDeps(options?: {
+  /** Optional different cwd */
+  cwd?: string;
+  /** Whether to include dev deps (default true) */
+  dev?: boolean;
+}): PackageInfo[];
 
 export declare function getAllPackageInfo(): AllPackageInfo;
 

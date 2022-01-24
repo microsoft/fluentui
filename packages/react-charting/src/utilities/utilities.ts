@@ -44,6 +44,10 @@ export interface IWrapLabelProps {
   showXAxisLablesTooltip: boolean;
 }
 
+export interface IAxisData {
+  yAxisDomainValues: number[];
+}
+
 export interface IMargins {
   /**
    * left margin for the chart.
@@ -114,7 +118,7 @@ export interface IYAxisParams {
  * @export
  * @param {IXAxisParams} xAxisParams
  */
-export function createNumericXAxis(xAxisParams: IXAxisParams) {
+export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
@@ -132,7 +136,11 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
     .ticks(xAxisCount)
-    .tickSizeOuter(0);
+    .tickSizeOuter(0)
+    .tickFormat((domainValue, index) => {
+      const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
+      return convertToLocaleString(xAxisValue, culture) as string;
+    });
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
@@ -168,7 +176,12 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
  * @param {string[]} dataset
  * @returns
  */
-export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams, dataset: string[]) {
+export function createStringXAxis(
+  xAxisParams: IXAxisParams,
+  tickParams: ITickParams,
+  dataset: string[],
+  culture?: string,
+) {
   const { domainNRangeValues, xAxisCount = 6, xAxistickSize = 6, tickPadding = 10, xAxisPadding = 0.1 } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
@@ -178,7 +191,9 @@ export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickPa
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
     .ticks(xAxisCount)
-    .tickFormat((x: string, index: number) => dataset[index] as string);
+    .tickFormat((x: string, index: number) => {
+      return convertToLocaleString(dataset[index], culture) as string;
+    });
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
@@ -209,7 +224,7 @@ export function prepareDatapoints(maxVal: number, minVal: number, splitInto: num
  * @param {IYAxisParams} yAxisParams
  * @param {boolean} isRtl
  */
-export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
+export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -241,6 +256,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
 }
 
@@ -929,4 +945,20 @@ export const getAccessibleDataObject = (
     'aria-labelledby': accessibleData!.ariaLabelledBy,
     'aria-describedby': accessibleData!.ariaDescribedBy,
   };
+};
+
+type LocaleStringDataProps = number | string | Date | undefined;
+export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
+  if (!data) {
+    return data;
+  }
+  culture = culture || undefined;
+  if (typeof data === 'number') {
+    return data.toLocaleString(culture);
+  }
+  if (typeof data === 'string' && !window.isNaN(Number(data))) {
+    const num = Number(data);
+    return num.toLocaleString(culture);
+  }
+  return data;
 };

@@ -14,20 +14,20 @@ import * as React_2 from 'react';
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
 
-// @public
+// @public (undocumented)
+export const labelClassName = "fui-Label";
+
+// @public (undocumented)
 export type LabelCommons = {
     disabled: boolean;
     size: 'small' | 'medium' | 'large';
     strong: boolean;
 };
 
-// @public (undocumented)
+// @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
     required?: boolean | ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>> | React_2.ReactNode;
 };
-
-// @public
-export const labelShorthandProps: Array<keyof LabelSlots>;
 
 // @public (undocumented)
 export type LabelSlots = {

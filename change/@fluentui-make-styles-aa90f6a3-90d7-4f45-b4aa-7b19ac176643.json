@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "breaking: remove \"unstable_cssPriority\" from makeStyles()",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

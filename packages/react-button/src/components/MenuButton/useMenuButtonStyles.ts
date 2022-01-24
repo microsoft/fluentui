@@ -3,6 +3,8 @@ import { ButtonState } from '../Button/Button.types';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { MenuButtonState } from './MenuButton.types';
 
+export const menuButtonClassName = 'fui-MenuButton';
+
 const useMenuIconStyles = makeStyles({
   // Size appearance
   small: {
@@ -24,6 +26,9 @@ const useMenuIconStyles = makeStyles({
 
 export const useMenuButtonStyles = (state: MenuButtonState): MenuButtonState => {
   const menuIconStyles = useMenuIconStyles();
+
+  state.root.className = mergeClasses(menuButtonClassName, state.root.className);
+
   if (state.menuIcon) {
     state.menuIcon.className = mergeClasses(menuIconStyles[state.size], state.menuIcon.className);
   }

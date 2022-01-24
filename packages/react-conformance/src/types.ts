@@ -89,6 +89,17 @@ export interface IsConformantOptions<TProps = {}> {
    * Child component that will receive unhandledProps.
    */
   targetComponent?: ComponentType<TProps>;
+  /**
+   * The name of the slot designated as "primary", which receives native props passed to the component.
+   * This is 'root' by default, and only needs to be specified if it's a slot other than 'root'.
+   */
+  primarySlot?: keyof TProps | 'root';
+
+  /**
+   * Test will load the first tsconfig.json file working upwards from `tsconfigDir`.
+   * @defaultvalue the directory of the component being tested
+   */
+  tsconfigDir?: string;
 }
 
 export type ConformanceTest<TProps = {}> = (

@@ -2,6 +2,51 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Thu, 25 Nov 2021 08:34:09 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "532579ec884b3bad9e2db6dff139eb467f3c2bbc",
+            "comment": "update tooling config"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Nov 2021 13:25:11 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "comment": "Bump all v9 components to beta prerelease tag",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Oct 2021 14:13:08 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.5",
       "version": "9.0.0-alpha.5",
