@@ -33,6 +33,8 @@ export interface FluentProviderContextValues extends Pick<FluentProviderState, '
     // (undocumented)
     provider: ProviderContextValue;
     // (undocumented)
+    textDirection: 'ltr' | 'rtl';
+    // (undocumented)
     themeClassName: ThemeClassNameContextValue;
     // (undocumented)
     tooltip: TooltipContextType;
