@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles';
 import type { CounterBadgeState } from './CounterBadge.types';
 
