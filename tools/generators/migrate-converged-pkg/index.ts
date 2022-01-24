@@ -17,15 +17,7 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import {
-  arePromptsEnabled,
-  getProjectConfig,
-  getProjects,
-  printUserLogs,
-  prompt,
-  updateJestConfig,
-  UserLog,
-} from '../../utils';
+import { arePromptsEnabled, getProjectConfig, getProjects, printUserLogs, prompt, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -91,7 +83,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
 
   // 2. update Jest
   updateLocalJestConfig(tree, options);
-  updateRootJestConfig(tree, options);
 
   // update package npm scripts
   updateNpmScripts(tree, options);
@@ -174,7 +165,6 @@ const templates = {
         }
         if (options.platform === 'web') {
           tsConfig.compilerOptions.lib?.push('dom');
-          tsConfig.compilerOptions.types?.push('inline-style-expand-shorthand');
         }
         if (options.hasConformance) {
           tsConfig.exclude.unshift('./src/common/**');
@@ -192,7 +182,7 @@ const templates = {
           compilerOptions: {
             module: 'CommonJS',
             outDir: 'dist',
-            types: ['jest', 'node', 'inline-style-expand-shorthand'],
+            types: ['jest', 'node'],
           } as TsConfig['compilerOptions'],
           include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
         };
@@ -273,6 +263,10 @@ const templates = {
     },
   },
   e2e: {
+    support: stripIndents`
+    // workaround for https://github.com/cypress-io/cypress/issues/8599
+    import '@fluentui/scripts/cypress/support';
+    `,
     tsconfig: {
       extends: '../tsconfig.json',
       compilerOptions: {
@@ -520,7 +514,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
     'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'start-storybook',
+    storybook: 'node ../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
@@ -710,6 +704,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
 
+  tree.write(options.paths.e2e.support, templates.e2e.support);
+
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
       path: `./${path.basename(options.paths.e2e.rootFolder)}/${path.basename(options.paths.e2e.tsconfig)}`,
@@ -755,12 +751,6 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   if (!tree.exists(jestSetupFilePath)) {
     tree.write(jestSetupFilePath, templates.jestSetup);
   }
-
-  return tree;
-}
-
-function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
-  updateJestConfig(tree, { project: options.name });
 
   return tree;
 }

@@ -2339,6 +2339,8 @@ export interface IBreadcrumbItem extends React_2.AllHTMLAttributes<HTMLElement> 
     isCurrentItem?: boolean;
     key: string;
     onClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
+    onRender?: IRenderFunction<IBreadcrumbItem>;
+    onRenderContent?: IRenderFunction<IBreadcrumbItem>;
     role?: string;
     text: string;
 }
@@ -2355,6 +2357,7 @@ export interface IBreadcrumbProps extends React_2.HTMLAttributes<HTMLElement> {
     onGrowData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+    onRenderItemContent?: IRenderFunction<IBreadcrumbItem>;
     onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
     overflowAriaLabel?: string;
     overflowButtonAs?: IComponentAs<IButtonProps>;
@@ -2458,6 +2461,7 @@ export interface IButtonGridProps extends React_2.TableHTMLAttributes<HTMLTableE
     // @deprecated
     containerClassName?: string;
     doNotContainWithinFocusZone?: boolean;
+    isSemanticRadio?: boolean;
     items: any[];
     onBlur?: () => void;
     onRenderItem: (item: any, index: number) => JSX.Element;
@@ -3388,6 +3392,7 @@ export interface IColorPickerGridCellProps {
     id?: string;
     idPrefix?: string;
     index?: number;
+    isRadio?: boolean;
     item: IColorCellProps;
     label?: string;
     onClick?: (item: IColorCellProps) => void;

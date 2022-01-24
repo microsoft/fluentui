@@ -29,7 +29,6 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
       on,
     } = props;
     const colors = getColorScheme(v.colorScheme, null, primary);
-
     return {
       color: 'inherit',
       lineHeight: 1,
@@ -117,6 +116,34 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
           background: v.iconOnlyWrapperBackgroundColorFocus,
           color: v.iconOnlyColorActive,
         }),
+      }),
+
+      ...(active && {
+        '[data-tabs="true"]': {
+          ...(!underlined && {
+            background: v.backgroundColorActive || colors.backgroundActive,
+
+            ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
+            ...(!iconOnly &&
+              primary && {
+                color: colors.foregroundActive,
+              }),
+          }),
+          ...(pointing &&
+            vertical && {
+              '::before': {
+                content: `''`,
+                position: 'absolute',
+                width: pxToRem(3),
+                height: `calc(100% + ${pxToRem(4)})`,
+                top: pxToRem(-2),
+                backgroundColor: v.pointingIndicatorBackgroundColor,
+
+                ...(isFromKeyboard && { display: 'none' }),
+                ...(pointing === 'end' ? { right: pxToRem(-2) } : { left: pxToRem(-2) }),
+              },
+            }),
+        },
       }),
 
       // hover styles

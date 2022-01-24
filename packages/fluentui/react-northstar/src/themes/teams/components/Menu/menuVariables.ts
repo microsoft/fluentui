@@ -103,7 +103,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
       extendColorScheme(siteVars.colorScheme, {
         default: {
           borderActive: siteVars.colorScheme.default.border2,
-          backgroundActive: siteVars.colorScheme.default.backgroundActive1,
+          backgroundActive: siteVars.colorScheme.default.backgroundActive2,
           backgroundFocus: siteVars.colorScheme.default.backgroundFocus1,
           foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
         },

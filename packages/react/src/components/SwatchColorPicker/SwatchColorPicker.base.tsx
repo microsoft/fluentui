@@ -110,6 +110,15 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   };
 
   /**
+   * If there is only one row of cells, they should use radio semantics,
+   * multi-row swatch cells should use grid semantics.
+   * There are two reasons for this:
+   *   1. Radios are a more simple and understandable control, and a better fit for a single-dimensional picker.
+   *   2. Multiple browsers use heuristics to strip table and grid roles from single-row tables with no column headers.
+   */
+  const isSemanticRadio = colorCells.length <= columnCount;
+
+  /**
    * When the whole swatchColorPicker is blurred,
    * make sure to clear the pending focused stated
    */
@@ -312,6 +321,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
         height={cellHeight}
         width={cellWidth}
         borderWidth={cellBorderWidth}
+        isRadio={isSemanticRadio}
       />
     );
   };
@@ -319,6 +329,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   if (colorCells.length < 1 || columnCount < 1) {
     return null;
   }
+
   const onRenderItem = (item: IColorCellProps, index: number): JSX.Element => {
     const { onRenderColorCell = renderOption } = props;
     return onRenderColorCell(item, renderOption) as JSX.Element;
@@ -330,6 +341,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
       id={id}
       items={itemsWithIndex}
       columnCount={columnCount}
+      isSemanticRadio={isSemanticRadio}
       // eslint-disable-next-line react/jsx-no-bind
       onRenderItem={onRenderItem}
       shouldFocusCircularNavigate={shouldFocusCircularNavigate}

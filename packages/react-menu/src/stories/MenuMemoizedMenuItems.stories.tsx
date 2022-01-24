@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover, MenuItemCheckboxProps } from '../index';
 
 import { Button } from '@fluentui/react-button';
-import { Edit20Regular as EditIcon } from '@fluentui/react-icons';
+import { EditRegular as EditIcon } from '@fluentui/react-icons';
 
 const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
   // use icons in the memo because JSX will always create a new object
