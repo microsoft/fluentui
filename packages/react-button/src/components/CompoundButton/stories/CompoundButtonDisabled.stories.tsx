@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
-import { CompoundButton } from '../../../CompoundButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { CompoundButton } from '../../../CompoundButton';
 
 export const Disabled = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
@@ -20,7 +20,7 @@ export const Disabled = () => {
         <CompoundButton
           secondaryContent="This is the secondary content"
           appearance="primary"
-          icon={<CalendarMonth24Regular />}
+          icon={<CalendarMonthRegular />}
         >
           Primary
         </CompoundButton>
@@ -28,7 +28,7 @@ export const Disabled = () => {
           secondaryContent="This is the secondary content"
           appearance="primary"
           disabled
-          icon={<CalendarMonth24Regular />}
+          icon={<CalendarMonthRegular />}
         >
           Primary disabled
         </CompoundButton>

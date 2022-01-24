@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/codemods",
-  "version": "8.3.1",
+  "version": "8.3.2",
   "description": "Tool enabling easy upgrades to new Fluent UI versions",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/make-styles": "9.0.0-beta.3",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42"
   },

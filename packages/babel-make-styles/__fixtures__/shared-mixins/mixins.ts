@@ -1,6 +1,6 @@
-import { MakeStyles } from '@fluentui/make-styles';
+import { GriffelStyle } from '@griffel/core';
 
-export const sharedStyles: Record<string, MakeStyles> = {
+export const sharedStyles: Record<string, GriffelStyle> = {
   root: { display: 'flex' },
   container: { display: 'grid' },
 };

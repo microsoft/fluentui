@@ -1,4 +1,5 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
 
@@ -6,152 +7,152 @@ export const toggleButtonClassName = 'fui-ToggleButton';
 
 const useCheckedStyles = makeStyles({
   // Base styles
-  base: theme => ({
-    background: theme.colorNeutralBackground1Selected,
-    borderColor: theme.colorNeutralStroke1,
-    color: theme.colorNeutralForeground1,
+  base: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    color: tokens.colorNeutralForeground1,
 
-    borderWidth: theme.strokeWidthThin,
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
 
     ':hover': {
-      background: theme.colorNeutralBackground1Hover,
-      borderColor: theme.colorNeutralStroke1Hover,
-      color: theme.colorNeutralForeground1,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      color: tokens.colorNeutralForeground1,
     },
 
     ':active': {
-      background: theme.colorNeutralBackground1Pressed,
-      borderColor: theme.colorNeutralStroke1Pressed,
-      color: theme.colorNeutralForeground1,
+      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      color: tokens.colorNeutralForeground1,
     },
-  }),
+  },
 
   // Appearance variations
-  outline: theme => ({
-    background: theme.colorTransparentBackgroundSelected,
+  outline: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
 
     ':hover': {
-      background: theme.colorTransparentBackgroundHover,
+      backgroundColor: tokens.colorTransparentBackgroundHover,
     },
 
     ':active': {
-      background: theme.colorTransparentBackgroundPressed,
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
-  }),
-  primary: theme => ({
-    background: theme.colorBrandBackgroundSelected,
-    borderColor: 'transparent',
-    color: theme.colorNeutralForegroundOnBrand,
+  },
+  primary: {
+    backgroundColor: tokens.colorBrandBackgroundSelected,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForegroundOnBrand,
 
     ':hover': {
-      background: theme.colorBrandBackgroundHover,
-      borderColor: 'transparent',
-      color: theme.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':active': {
-      background: theme.colorBrandBackgroundPressed,
-      borderColor: 'transparent',
-      color: theme.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForegroundOnBrand,
     },
-  }),
-  subtle: theme => ({
-    background: theme.colorSubtleBackgroundSelected,
-    borderColor: 'transparent',
-    color: theme.colorNeutralForeground2BrandSelected,
+  },
+  subtle: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2BrandSelected,
 
     ':hover': {
-      background: theme.colorSubtleBackgroundHover,
-      borderColor: 'transparent',
-      color: theme.colorNeutralForeground2BrandHover,
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.colorSubtleBackgroundPressed,
-      borderColor: 'transparent',
-      color: theme.colorNeutralForeground2BrandPressed,
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandPressed,
     },
-  }),
-  transparent: theme => ({
-    background: theme.colorTransparentBackgroundSelected,
-    borderColor: 'transparent',
-    color: theme.colorNeutralForeground2BrandSelected,
+  },
+  transparent: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2BrandSelected,
 
     ':hover': {
-      background: theme.colorTransparentBackgroundHover,
-      borderColor: 'transparent',
-      color: theme.colorNeutralForeground2BrandHover,
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandHover,
     },
 
     ':active': {
-      background: theme.colorTransparentBackgroundPressed,
-      borderColor: 'transparent',
-      color: theme.colorNeutralForeground2BrandPressed,
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandPressed,
     },
-  }),
+  },
 });
 
 const useDisabledStyles = makeStyles({
   // Base styles
-  base: theme => ({
-    background: theme.colorNeutralBackgroundDisabled,
-    borderColor: theme.colorNeutralStrokeDisabled,
-    color: theme.colorNeutralForegroundDisabled,
+  base: {
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    color: tokens.colorNeutralForegroundDisabled,
 
     ':hover': {
-      background: theme.colorNeutralBackgroundDisabled,
-      borderColor: theme.colorNeutralStrokeDisabled,
-      color: theme.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':active': {
-      background: theme.colorNeutralBackgroundDisabled,
-      borderColor: theme.colorNeutralStrokeDisabled,
-      color: theme.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      color: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 
   // Appearance variations
   outline: {
     /* No styles */
   },
   primary: {
-    borderColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      borderColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
 
     ':active': {
-      borderColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
   },
   subtle: {
-    background: 'none',
-    borderColor: 'transparent',
+    backgroundColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      background: 'none',
-      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
 
     ':active': {
-      background: 'none',
-      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    background: 'none',
-    borderColor: 'transparent',
+    backgroundColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      background: 'none',
-      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
 
     ':active': {
-      background: 'none',
-      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
     },
   },
 });

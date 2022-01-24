@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Badge, BadgeCommons } from '@fluentui/react-badge';
-import { Circle12Regular } from '@fluentui/react-icons';
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { CircleRegular } from '@fluentui/react-icons';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
 
 const badgeColors: BadgeCommons['color'][] = [
   'brand',
@@ -26,17 +27,17 @@ const useStyles = makeStyles({
   badgeContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: '5px',
-    padding: '5px',
+    ...shorthands.gap('5px'),
+    ...shorthands.padding('5px'),
   },
 
   label: {
     marginLeft: '10px',
   },
 
-  brandContainer: theme => ({
-    backgroundColor: theme.colorBrandBackgroundStatic,
-  }),
+  brandContainer: {
+    backgroundColor: tokens.colorBrandBackgroundStatic,
+  },
 });
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance'] }> = ({
@@ -61,10 +62,10 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
       </Badge>
     );
     const circularWithIcon = (
-      <Badge color={color} appearance={appearance} icon={<Circle12Regular />} />
+      <Badge color={color} appearance={appearance} icon={<CircleRegular />} />
     );
     const roundedWithIcon = (
-      <Badge color={color} appearance={appearance} shape="rounded" icon={<Circle12Regular />} />
+      <Badge color={color} appearance={appearance} shape="rounded" icon={<CircleRegular />} />
     );
     const roundedWithText = (
       <Badge color={color} appearance={appearance} shape="rounded">
@@ -76,7 +77,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
         color={color}
         appearance={appearance}
         shape="rounded"
-        icon={<Circle12Regular />}
+        icon={<CircleRegular />}
         iconPosition="before"
       >
         {appearance.toUpperCase()}
@@ -87,7 +88,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
         color={color}
         appearance={appearance}
         shape="rounded"
-        icon={<Circle12Regular />}
+        icon={<CircleRegular />}
         iconPosition="after"
       >
         {appearance.toUpperCase()}
@@ -114,9 +115,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: BadgeCommons['appearance']
             className={mergeClasses(
               styles.badgeContainer,
               color === 'subtle' && appearance === 'outline' && styles.brandContainer,
-              color === 'informative' && appearance === 'outline' && styles.brandContainer,
               color === 'subtle' && appearance === 'ghost' && styles.brandContainer,
-              color === 'informative' && appearance === 'ghost' && styles.brandContainer,
             )}
           >
             {badges.get(color)}

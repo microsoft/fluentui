@@ -19,6 +19,10 @@ describe('workspace-generator generator', () => {
     expect(tree.exists('/tools/generators/custom/index.spec.ts')).toBeTruthy();
     expect(tree.exists('/tools/generators/custom/schema.json')).toBeTruthy();
     expect(tree.exists('/tools/generators/custom/schema.ts')).toBeTruthy();
+    expect(tree.exists('/tools/generators/custom/files/constants.ts__tmpl__')).toBeTruthy();
+    expect(tree.exists('/tools/generators/custom/lib/utils.ts')).toBeTruthy();
+    expect(tree.exists('/tools/generators/custom/lib/utils.spec.ts')).toBeTruthy();
+    expect(tree.exists('/tools/generators/custom/README.md')).toBeTruthy();
   });
 
   it('should generate Schema types', async () => {
@@ -51,17 +55,58 @@ describe('workspace-generator generator', () => {
     const content = tree.read('/tools/generators/custom/index.ts')?.toString();
 
     expect(content).toMatchInlineSnapshot(`
-      "import { Tree, formatFiles, installPackagesTask } from '@nrwl/devkit';
+      "import * as path from 'path';
+      import { Tree, formatFiles, installPackagesTask, names, generateFiles } from '@nrwl/devkit';
       import { libraryGenerator } from '@nrwl/workspace/generators';
+
+      import { getProjectConfig } from '../../utils';
 
       import { CustomGeneratorSchema } from './schema'
 
-      export default async function(host: Tree, schema: CustomGeneratorSchema) {
-        await libraryGenerator(host, {name: schema.name});
-        await formatFiles(host);
+      interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
+
+      export default async function(tree: Tree, schema: CustomGeneratorSchema) {
+        await libraryGenerator(tree, {name: schema.name});
+
+        const normalizedOptions = normalizeOptions(tree, schema);
+
+        addFiles(tree, normalizedOptions);
+
+        await formatFiles(tree);
+
         return () => {
-          installPackagesTask(host)
+          installPackagesTask(tree)
         }
+      }
+
+      function normalizeOptions(
+        tree: Tree,
+        options: CustomGeneratorSchema
+      ) {
+        const project = getProjectConfig(tree, { packageName: options.name });
+
+        return {
+          ...options,
+          ...project,
+          ...names(options.name),
+        };
+      }
+
+      /**
+       * NOTE: remove this if your generator doesn't process any static/dynamic templates
+       */
+      function addFiles(tree: Tree, options: NormalizedSchema) {
+        const templateOptions = {
+          ...options,
+          tmpl: '',
+        };
+
+        generateFiles(
+          tree,
+          path.join(__dirname, 'files'),
+          path.join(options.projectConfig.root, options.name),
+          templateOptions
+        );
       }
       "
     `);
@@ -97,6 +142,53 @@ describe('workspace-generator generator', () => {
     `);
   });
 
+  it(`should generate README.md boilerplate`, async () => {
+    await generator(tree, options);
+
+    const content = tree.read('/tools/generators/custom/README.md')?.toString();
+
+    expect(content).toMatchInlineSnapshot(`
+      "# custom
+
+      Workspace Generator ...TODO...
+
+      <!-- toc -->
+
+      - [Usage](#usage)
+        - [Examples](#examples)
+      - [Options](#options)
+        - [\`name\`](#name)
+
+      <!-- tocstop -->
+
+      ## Usage
+
+      \`\`\`sh
+      yarn nx workspace-generator custom ...
+      \`\`\`
+
+      Show what will be generated without writing to disk:
+
+      \`\`\`sh
+      yarn nx workspace-generator custom --dry-run
+      \`\`\`
+
+      ### Examples
+
+      \`\`\`sh
+      yarn nx workspace-generator custom
+      \`\`\`
+
+      ## Options
+
+      #### \`name\`
+
+      Type: \`string\`
+
+      TODO...
+      "
+    `);
+  });
   it(`should throw when required props are missing`, async () => {
     expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(`[Error: name is required]`);
   });

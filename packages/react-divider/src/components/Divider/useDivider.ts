@@ -28,6 +28,7 @@ export const useDivider = (props: DividerProps, ref: React.Ref<HTMLElement>): Di
       ...props,
       ref,
       role: 'separator',
+      'aria-orientation': vertical ? 'vertical' : 'horizontal',
       'aria-labelledby': props.children ? dividerId : undefined,
     }),
     wrapper: resolveShorthand(wrapper, {

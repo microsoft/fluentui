@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
-import { Button } from '../../../Button'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { Button } from '../../../Button';
 
 export const Disabled = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
@@ -13,10 +13,10 @@ export const Disabled = () => {
         <Button disabledFocusable>Disabled focusable</Button>
       </div>
       <div style={groupStyles}>
-        <Button appearance="primary" icon={<CalendarMonth24Regular />}>
+        <Button appearance="primary" icon={<CalendarMonthRegular />}>
           Primary
         </Button>
-        <Button appearance="primary" disabled icon={<CalendarMonth24Regular />}>
+        <Button appearance="primary" disabled icon={<CalendarMonthRegular />}>
           Primary disabled
         </Button>
         <Button appearance="primary" disabledFocusable>

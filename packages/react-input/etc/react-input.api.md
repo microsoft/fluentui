@@ -16,18 +16,22 @@ export const Input: ForwardRefComponent<InputProps>;
 // @public (undocumented)
 export const inputClassName = "fui-Input";
 
-// @public (undocumented)
-export type InputCommons = {
-    fieldSize?: 'small' | 'medium' | 'large';
-    inline?: boolean;
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+// @public
+export type InputOnChangeData = {
+    value: string;
 };
 
-// @public
-export type InputProps = InputCommons & Omit<ComponentProps<InputSlots>, 'children'>;
-
-// @public
-export const inputShorthandProps: (keyof InputSlots)[];
+// @public (undocumented)
+export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
+    children?: never;
+    size?: 'small' | 'medium' | 'large';
+    inline?: boolean;
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    defaultValue?: string;
+    value?: string;
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
+};
 
 // @public (undocumented)
 export type InputSlots = {
@@ -38,13 +42,13 @@ export type InputSlots = {
 };
 
 // @public
-export type InputState = InputCommons & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
 
 // @public
 export const renderInput: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
+export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
 
 // @public
 export const useInputStyles: (state: InputState) => InputState;

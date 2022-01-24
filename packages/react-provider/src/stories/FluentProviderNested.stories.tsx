@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { shorthands, makeStyles } from '@fluentui/react-make-styles';
-import { webLightTheme } from '@fluentui/react-theme';
+import { shorthands, makeStyles } from '@griffel/react';
+import { tokens, webLightTheme } from '@fluentui/react-theme';
 
 import { FluentProvider } from '../FluentProvider';
 
 const useStyles = makeStyles({
-  example: theme => ({
-    backgroundColor: theme.colorBrandBackground2,
-    color: theme.colorBrandForeground2,
-    ...shorthands.border('5px', 'solid', theme.colorBrandStroke1),
+  example: {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
+    ...shorthands.border('5px', 'solid', tokens.colorBrandStroke1),
     ...shorthands.borderRadius('5px'),
     ...shorthands.margin('5px'),
-  }),
+  },
   text: {
     ...shorthands.padding('5px'),
     fontSize: '18px',
@@ -44,7 +44,7 @@ export const Nested = () => {
 Nested.parameters = {
   docs: {
     description: {
-      story: 'A Fluent provider can be nested to override some or all of a theme.',
+      story: 'A Fluent provider can be nested to override some or all of a tokens.',
     },
   },
 };

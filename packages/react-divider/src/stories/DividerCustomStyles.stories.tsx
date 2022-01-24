@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
-import { Divider } from '../Divider'; // codesandbox-dependency: @fluentui/react-divider ^9.0.0-beta
+import { shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { tokens } from '@fluentui/react-theme';
+import { Divider } from '../Divider';
 
 const useStyles = makeStyles({
   root: {
@@ -8,19 +9,19 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     rowGap: '5px',
   },
-  example: theme => ({
+  example: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyItems: 'center',
     minHeight: '96px',
-    backgroundColor: theme.colorNeutralBackground1,
-  }),
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
   customHeightExample: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    background: 'white',
+    backgroundColor: 'white',
     minHeight: '192px',
   },
   customWidth: {
@@ -35,14 +36,14 @@ const useStyles = makeStyles({
   },
   customLineColor: {
     ':before': {
-      borderColor: '#FF00FF',
+      ...shorthands.borderColor('#FF00FF'),
     },
     ':after': {
-      borderColor: '#FF00FF',
+      ...shorthands.borderColor('#FF00FF'),
     },
   },
   customLineStyle: {
-    borderWidth: '2px',
+    ...shorthands.borderWidth('2px'),
     ':before': {
       borderTopStyle: 'dashed',
       borderTopWidth: '2px',
@@ -77,4 +78,12 @@ export const CustomStyles = () => {
       </div>
     </div>
   );
+};
+
+CustomStyles.parameters = {
+  docs: {
+    description: {
+      story: 'A divider can have custom styles applied to both the label and the line.',
+    },
+  },
 };

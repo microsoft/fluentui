@@ -307,7 +307,8 @@ function useDismissHandlers(
     };
 
     const dismissOnClickOrScroll = (ev: Event) => {
-      const target = ev.target as HTMLElement;
+      const eventPaths: Array<EventTarget> = ev.composedPath ? ev.composedPath() : [];
+      const target = eventPaths.length > 0 ? (eventPaths[0] as HTMLElement) : (ev.target as HTMLElement);
       const isEventTargetOutsideCallout = hostElement.current && !elementContains(hostElement.current, target);
 
       // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.

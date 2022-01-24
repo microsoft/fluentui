@@ -61,4 +61,13 @@ describe('PopoverSurface', () => {
     // Assert
     expect(queryByTestId(testid)).toBeNull();
   });
+
+  it('should set aria-modal true if focus trap is active', () => {
+    // Arrange
+    mockPopoverContext({ open: true, trapFocus: true });
+    const { getByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
+
+    // Assert
+    expect(getByTestId(testid).getAttribute('aria-modal')).toEqual('true');
+  });
 });

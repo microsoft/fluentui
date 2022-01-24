@@ -154,6 +154,7 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
         >
           <div
             aria-hidden={true}
+            data-is-focus-trap-zone-bumper={true}
             data-is-visible={true}
             style={
               Object {
@@ -191,6 +192,7 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
                       background-color: #ffffff;
                       position: sticky;
                       top: 0px;
+                      z-index: 1;
                     }
                 data-is-visible={true}
               >
@@ -385,6 +387,7 @@ exports[`Panel allows the consumer to pass through popup props 1`] = `
           </div>
           <div
             aria-hidden={true}
+            data-is-focus-trap-zone-bumper={true}
             data-is-visible={true}
             style={
               Object {
@@ -554,6 +557,7 @@ exports[`Panel renders Panel correctly 1`] = `
         >
           <div
             aria-hidden={true}
+            data-is-focus-trap-zone-bumper={true}
             data-is-visible={true}
             style={
               Object {
@@ -591,6 +595,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       background-color: #ffffff;
                       position: sticky;
                       top: 0px;
+                      z-index: 1;
                     }
                 data-is-visible={true}
               >
@@ -785,6 +790,7 @@ exports[`Panel renders Panel correctly 1`] = `
           </div>
           <div
             aria-hidden={true}
+            data-is-focus-trap-zone-bumper={true}
             data-is-visible={true}
             style={
               Object {

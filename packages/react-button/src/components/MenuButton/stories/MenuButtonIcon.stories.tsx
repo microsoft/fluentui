@@ -1,15 +1,14 @@
 import * as React from 'react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { CalendarMonth24Regular, Filter24Regular } from '@fluentui/react-icons';
-import { MenuButton } from '../../../MenuButton'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-beta
+import { CalendarMonthRegular, FilterRegular } from '@fluentui/react-icons';
+import { MenuButton } from '../../../MenuButton';
 
 export const Icon = () => (
   <>
     <Menu>
       <MenuTrigger>
-        <MenuButton icon={<CalendarMonth24Regular />}>This is a Menu Button</MenuButton>
+        <MenuButton icon={<CalendarMonthRegular />}>This is a Menu Button</MenuButton>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
@@ -21,7 +20,7 @@ export const Icon = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton icon={<CalendarMonth24Regular />} menuIcon={<Filter24Regular />}>
+        <MenuButton icon={<CalendarMonthRegular />} menuIcon={<FilterRegular />}>
           This is a Menu Button
         </MenuButton>
       </MenuTrigger>
@@ -35,7 +34,7 @@ export const Icon = () => (
 
     <Menu>
       <MenuTrigger>
-        <MenuButton icon={<CalendarMonth24Regular />} />
+        <MenuButton icon={<CalendarMonthRegular />} />
       </MenuTrigger>
       <MenuPopover>
         <MenuList>

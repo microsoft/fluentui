@@ -2,25 +2,32 @@ import config from '../config';
 import { safeLaunchOptions } from '../puppeteer/puppeteer.config';
 import express from 'express';
 import http from 'http';
-import portfinder from 'portfinder';
 import puppeteer from 'puppeteer';
+import { AddressInfo } from 'net';
 
 function startServer(publicDirectory: string, listenPort: number) {
   return new Promise<http.Server>((resolve, reject) => {
-    const app = express();
-    app.use(express.static(publicDirectory));
+    try {
+      const app = express();
+      app.use(express.static(publicDirectory));
 
-    const server = app.listen(listenPort, config.server_host, e => {
-      if (e) return reject(e);
+      const server = app.listen(listenPort, config.server_host, e => {
+        if (e) return reject(e);
 
-      resolve(server);
-    });
+        resolve(server);
+      });
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
 export async function performBrowserTest(publicDirectory: string) {
-  const listenPort = await portfinder.getPortPromise();
-  const server = await startServer(publicDirectory, listenPort);
+  const server = await startServer(publicDirectory, 0);
+  const { port } = server.address() as AddressInfo;
+
+  console.log(`Starting server on port ${port} from directory ${publicDirectory}`);
+  console.log('Started server. Launching Puppeteer...');
 
   const options = safeLaunchOptions();
   let browser: puppeteer.Browser;
@@ -28,6 +35,7 @@ export async function performBrowserTest(publicDirectory: string) {
   while (!browser) {
     try {
       browser = await puppeteer.launch(options);
+      console.log('Launched Puppeteer');
     } catch (err) {
       if (attempt === 5) {
         console.error(`Puppeteer failed to launch after 5 attempts`);
@@ -51,7 +59,10 @@ export async function performBrowserTest(publicDirectory: string) {
     error = pageError;
   });
 
-  await page.goto(`http://${config.server_host}:${listenPort}`);
+  const url = `http://${config.server_host}:${port}`;
+  console.log(`Loading ${url} in puppeteer...`);
+  await page.goto(url);
+  console.log('Page loaded');
 
   await page.close();
   await browser.close();

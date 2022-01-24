@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove inline-style-expand-shorthand from tsconfigs",
+  "packageName": "@fluentui/react-menu",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

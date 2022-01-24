@@ -266,9 +266,15 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   };
 
   private _toggleTooltip = (isTooltipVisible: boolean): void => {
+    if (this.state.isAriaPlaceholderRendered) {
+      this.setState({
+        isAriaPlaceholderRendered: false,
+      });
+    }
+
     if (this.state.isTooltipVisible !== isTooltipVisible) {
       this.setState(
-        { isAriaPlaceholderRendered: false, isTooltipVisible },
+        { isTooltipVisible },
         () => this.props.onTooltipToggle && this.props.onTooltipToggle(isTooltipVisible),
       );
     }

@@ -2,9 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext } from '../../popoverContext';
-import type { PopoverSurfaceProps, PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
-
-export const popoverSurfaceSlots: Array<keyof PopoverSurfaceSlots> = ['root'];
+import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
  * Create the state required to render PopoverSurface.
@@ -41,6 +39,7 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, contentRef),
       role: 'dialog',
+      'aria-modal': trapFocus ? true : undefined,
       ...modalAttributes,
       ...props,
     }),
