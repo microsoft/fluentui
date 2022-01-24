@@ -1184,7 +1184,7 @@ function setupDummyPackage(
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
-      [`@griffel/react`]: '^9.0.0-alpha.38',
+      [`@griffel/react`]: '1.0.0',
       [`@${workspaceConfig.npmScope}/react-theme`]: '^9.0.0-alpha.13',
       [`@${workspaceConfig.npmScope}/react-utilities`]: '^9.0.0-alpha.25',
       tslib: '^2.1.0',
