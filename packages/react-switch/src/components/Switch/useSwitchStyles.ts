@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SwitchState } from './Switch.types';
