@@ -45,7 +45,7 @@ export const ThemePicker = () => {
     [updateGlobals],
   );
 
-  const renderTooltip_unstable = React.useCallback(
+  const renderTooltip = React.useCallback(
     (props: { onHide: () => void }) => {
       return (
         <TooltipLinkList
@@ -65,7 +65,7 @@ export const ThemePicker = () => {
 
   return (
     <>
-      <WithTooltip placement="top" trigger="click" closeOnClick tooltip={renderTooltip_unstable}>
+      <WithTooltip placement="top" trigger="click" closeOnClick tooltip={renderTooltip}>
         <IconButton key={THEME_ID} title="Change Fluent theme" active={isActive}>
           <Icons icon="chevrondown" />
           <span style={{ marginLeft: 5 }}>Theme: {selectedTheme?.label}</span>
