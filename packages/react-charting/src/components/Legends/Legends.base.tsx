@@ -127,7 +127,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}
-        onRenderItem={this._renderButton_unstable}
+        onRenderItem={this._renderButton}
         onRenderOverflowButton={this._renderOverflowItems}
         styles={{
           root: {
@@ -219,7 +219,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       className,
     });
     expandingCard.renderData.forEach((legend: IOverflowSetItemProps, index: number) => {
-      const hoverCardElement = this._renderButton_unstable(legend, index, true);
+      const hoverCardElement = this._renderButton(legend, index, true);
       overflowHoverCardLegends.push(hoverCardElement);
     });
     const hoverCardData = (
@@ -338,7 +338,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     }
   };
 
-  private _renderButton_unstable = (data: IOverflowSetItemProps, index?: number, overflow?: boolean) => {
+  private _renderButton = (data: IOverflowSetItemProps, index?: number, overflow?: boolean) => {
     const { allowFocusOnLegends = true } = this.props;
     const legend: ILegend = {
       title: data.title,
