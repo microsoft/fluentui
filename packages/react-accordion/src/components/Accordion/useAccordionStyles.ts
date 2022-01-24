@@ -1,4 +1,4 @@
-import { mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses } from '@griffel/react';
 import type { AccordionState } from './Accordion.types';
 
 export const accordionClassName = 'fui-Accordion';
