@@ -1,4 +1,4 @@
-import { mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses } from '@griffel/react';
 import type { MenuGroupState } from './MenuGroup.types';
 
 export const menuGroupClassName = 'fui-MenuGroup';

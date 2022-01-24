@@ -1,4 +1,4 @@
-import { mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses } from '@griffel/react';
 import { useCheckmarkStyles } from '../../selectable/index';
 import { useMenuItemStyles } from '../MenuItem/useMenuItemStyles';
 import type { MenuItemCheckboxState } from './MenuItemCheckbox.types';

@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderState } from './MenuGroupHeader.types';
 
