@@ -42,50 +42,34 @@ storiesOf('Card Converged', module)
     </Screener>
   ))
   .addStory(
-    'appearance - Filled',
+    'appearance',
     () => (
-      <Card appearance="filled">
-        <SampleCardContent />
-      </Card>
-    ),
-    {
-      includeRtl: true,
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'appearance - Filled Alternative',
-    () => (
-      <Card appearance="filled-alternative">
-        <SampleCardContent />
-      </Card>
-    ),
-    {
-      includeRtl: true,
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'appearance - Outline',
-    () => (
-      <Card appearance="outline">
-        <SampleCardContent />
-      </Card>
-    ),
-    {
-      includeRtl: true,
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'appearance - Subtle',
-    () => (
-      <Card appearance="subtle">
-        <SampleCardContent />
-      </Card>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div>
+          <h1>Filled</h1>
+          <Card appearance="filled">
+            <SampleCardContent />
+          </Card>
+        </div>
+        <div>
+          <h1>Filled alternative</h1>
+          <Card appearance="filled-alternative">
+            <SampleCardContent />
+          </Card>
+        </div>
+        <div>
+          <h1>Outline</h1>
+          <Card appearance="outline">
+            <SampleCardContent />
+          </Card>
+        </div>
+        <div>
+          <h1>Subtle</h1>
+          <Card appearance="subtle">
+            <SampleCardContent />
+          </Card>
+        </div>
+      </div>
     ),
     {
       includeRtl: true,
