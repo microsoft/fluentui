@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses } from '@griffel/react';
 import { renderText_unstable, useText_unstable, useTextStyles_unstable } from '../Text';
 import type { TextProps } from '../Text';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
