@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import type { CardPreviewState } from './CardPreview.types';
 
 export const cardPreviewClassName = 'fui-CardPreview';

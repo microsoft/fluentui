@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardHeaderState } from './CardHeader.types';
 
 export const cardHeaderClassName = 'fui-CardHeader';
