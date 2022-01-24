@@ -88,3 +88,10 @@ export type ScreenerTestsConfig = {
   steps?: ScreenerStep[];
   themes?: ScreenerThemeName[];
 };
+
+export interface ScreenerProxyPayload {
+  commit: string;
+  url: string;
+  status?: 'in_progress' | 'completed';
+  project?: string;
+}

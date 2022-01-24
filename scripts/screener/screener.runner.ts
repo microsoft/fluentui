@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { ScreenerRunnerConfig } from './screener.types';
+import { ScreenerProxyPayload, ScreenerRunnerConfig } from './screener.types';
 
 const environment = {
   screener: {
@@ -78,9 +78,7 @@ async function scheduleScreenerBuild(
   return url;
 }
 
-async function notifyIntegration(commit: string, url: string) {
-  const payload = { commit, url };
-
+async function notifyIntegration(payload: ScreenerProxyPayload) {
   await fetch(environment.screener.proxyUri, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
@@ -109,5 +107,13 @@ export async function screenerRunner(screenerConfigPath) {
       : undefined,
   });
 
-  await notifyIntegration(commit, checkUrl);
+  await notifyIntegration({ commit, url: checkUrl, status: 'in_progress', project: screenerConfig.projectRepo });
+}
+
+export async function cancelScreenerRun(screenerConfigPath) {
+  const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath) as any;
+  // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
+  const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
+
+  await notifyIntegration({ commit, url: '', status: 'completed', project: screenerConfig.projectRepo });
 }
