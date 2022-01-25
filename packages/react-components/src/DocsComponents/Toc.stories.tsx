@@ -77,11 +77,12 @@ export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
+      // root: document.querySelector('.sbdocs-content'),
       threshold: [0.5],
     });
 
     stories.forEach(link => {
-      const element = document.getElementById(nameToHash(link.name))?.parentElement;
+      const element = document.getElementById(nameToHash(link.name));
       if (element) {
         observer.observe(element);
       }
@@ -94,7 +95,7 @@ export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
     for (const entry of entries) {
       const { intersectionRatio, target } = entry;
       if (intersectionRatio > 0.5) {
-        setSelected(target.getElementsByTagName('h3')[0].id);
+        setSelected(target.id);
         return;
       }
     }
