@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 13 Jan 2022 07:30:58 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jan 2022 07:30:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.4)
+
+Tue, 25 Jan 2022 07:30:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.7.3..@fluentui/react-charting_v5.7.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.51.0 ([PR #20805](https://github.com/microsoft/fluentui/pull/20805) by beachball)
+
+## [5.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.3)
+
+Mon, 24 Jan 2022 07:26:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.7.2..@fluentui/react-charting_v5.7.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.50.1 ([PR #21362](https://github.com/microsoft/fluentui/pull/21362) by beachball)
+
+## [5.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.2)
+
+Fri, 21 Jan 2022 07:26:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.7.1..@fluentui/react-charting_v5.7.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.50.0 ([PR #21280](https://github.com/microsoft/fluentui/pull/21280) by beachball)
+
+## [5.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.1)
+
+Mon, 17 Jan 2022 09:43:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.7.0..@fluentui/react-charting_v5.7.1)
+
+### Patches
+
+- Bump @fluentui/react to v8.49.7 ([PR #21274](https://github.com/microsoft/fluentui/pull/21274) by beachball)
+
+## [5.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.7.0)
+
+Fri, 14 Jan 2022 07:28:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.6.17..@fluentui/react-charting_v5.7.0)
+
+### Minor changes
+
+- style control prop added in area chart ([PR #21249](https://github.com/microsoft/fluentui/pull/21249) by v-scharde@microsoft.com)
+- Bump @fluentui/react to v8.49.6 ([PR #21215](https://github.com/microsoft/fluentui/pull/21215) by beachball)
 
 ## [5.6.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.6.17)
 

@@ -1,4 +1,4 @@
-import { mergeClasses } from '@fluentui/make-styles';
+import { mergeClasses } from '@fluentui/react-make-styles';
 import './index';
 
 type MergeClassesParams = Parameters<typeof mergeClasses>;

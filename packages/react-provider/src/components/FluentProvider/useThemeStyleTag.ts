@@ -24,10 +24,12 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
   }, [styleTagId, targetDocument]);
 
   const cssRule = React.useMemo(() => {
-    const cssVarsAsString = Object.keys(theme).reduce((cssVarRule, cssVar) => {
-      cssVarRule += `--${cssVar}: ${theme[cssVar as keyof typeof theme]}; `;
-      return cssVarRule;
-    }, '');
+    const cssVarsAsString = theme
+      ? (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
+          cssVarRule += `--${cssVar}: ${theme[cssVar]}; `;
+          return cssVarRule;
+        }, '')
+      : '';
 
     // result: .fluent-provider1 { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
@@ -48,8 +50,7 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
   React.useEffect(() => {
     return () => {
       if (styleTag) {
-        // IE11 safe node removal, otherwise use node.remove()
-        styleTag.parentElement?.removeChild(styleTag);
+        styleTag.remove();
       }
     };
   }, [styleTag]);

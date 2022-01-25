@@ -115,6 +115,10 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   return {
     projectConfig,
     workspaceConfig,
+    /**
+     * package name without npmScope (@scopeName)
+     */
+    normalizedPkgName: options.packageName.replace(`@${workspaceConfig.npmScope}/`, ''),
     paths,
   };
 }

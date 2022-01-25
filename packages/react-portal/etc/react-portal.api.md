@@ -28,13 +28,13 @@ export type PortalState = PortalCommons & {
 };
 
 // @public
-export const renderPortal: (state: PortalState) => React_2.ReactElement;
+export const renderPortal_unstable: (state: PortalState) => React_2.ReactElement;
 
 // @public
 export function setVirtualParent(child: HTMLElement, parent?: HTMLElement): void;
 
 // @public
-export const usePortal: (props: PortalProps) => PortalState;
+export const usePortal_unstable: (props: PortalProps) => PortalState;
 
 // (No @packageDocumentation comment for this package)
 

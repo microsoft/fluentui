@@ -1461,7 +1461,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const isIndeterminate: boolean = this._isOptionIndeterminate(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    const title = item.title ?? getPreviewText(item);
+    const title = item.title;
 
     const onRenderCheckboxLabel = () => onRenderOption(item, this._onRenderOptionContent);
 

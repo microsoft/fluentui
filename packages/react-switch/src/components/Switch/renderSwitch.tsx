@@ -5,7 +5,7 @@ import type { SwitchState, SwitchSlots } from './Switch.types';
 /**
  * Render the final JSX of Switch
  */
-export const renderSwitch = (state: SwitchState) => {
+export const renderSwitch_unstable = (state: SwitchState) => {
   const { slots, slotProps } = getSlots<SwitchSlots>(state);
 
   return (

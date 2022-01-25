@@ -5,7 +5,7 @@ import type { TabState, TabSlots } from './Tab.types';
 /**
  * Render the final JSX of Tab
  */
-export const renderTab = (state: TabState) => {
+export const renderTab_unstable = (state: TabState) => {
   const { slots, slotProps } = getSlots<TabSlots>(state);
 
   return (

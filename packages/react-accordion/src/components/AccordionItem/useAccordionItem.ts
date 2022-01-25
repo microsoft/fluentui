@@ -11,7 +11,10 @@ import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
  * @param props - AccordionItem properties
  * @param ref - reference to root HTMLElement of AccordionItem
  */
-export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
+export const useAccordionItem_unstable = (
+  props: AccordionItemProps,
+  ref: React.Ref<HTMLElement>,
+): AccordionItemState => {
   const { value, disabled = false } = props;
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({

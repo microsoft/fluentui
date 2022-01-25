@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuPopoverState } from './MenuPopover.types';
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Menu slots based on the state
  */
-export const useMenuPopoverStyles = (state: MenuPopoverState): MenuPopoverState => {
+export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopoverState => {
   const styles = useStyles();
   state.root.className = mergeClasses(menuPopoverClassName, styles.root, state.root.className);
   return state;
