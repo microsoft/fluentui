@@ -16,13 +16,13 @@ export const HeadingLevels = () => (
       </AccordionPanel>
     </AccordionItem>
     <AccordionItem value="3">
-      <AccordionHeader as="h4">Accordion Header as h4</AccordionHeader>
+      <AccordionHeader as="h3">Accordion Header as h3</AccordionHeader>
       <AccordionPanel>
         <div>Accordion Panel 3</div>
       </AccordionPanel>
     </AccordionItem>
     <AccordionItem value="4">
-      <AccordionHeader as="div">Accordion Header as div</AccordionHeader>
+      <AccordionHeader as="h4">Accordion Header as h4</AccordionHeader>
       <AccordionPanel>
         <div>Accordion Panel 4</div>
       </AccordionPanel>
@@ -33,9 +33,7 @@ export const HeadingLevels = () => (
 HeadingLevels.parameters = {
   docs: {
     description: {
-      story:
-        'An accordion header is an `<h3>` by default, but can be marked up ' +
-        'using any heading level, or a `<div>` if a heading is inappropriate.',
+      story: 'An accordion header is a `<div>` by default, but can be marked up as a heading of any level.',
     },
   },
 };
