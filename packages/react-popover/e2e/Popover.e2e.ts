@@ -1,5 +1,6 @@
 const popoverTriggerSelector = '[aria-haspopup]';
-const popoverContentSelector = '[role="dialog"]';
+const popoverContentSelector = '[role="complementary"]';
+const popoverInteractiveContentSelector = '[role="dialog"]';
 const popoverStoriesTitle = 'Components/Popover';
 
 const popoverDefaultStory = 'Default';
@@ -95,21 +96,21 @@ describe('Popover', () => {
     });
 
     it('should dismiss all nested popovers on outside click', () => {
-      cy.get('body').click('bottomRight').get(popoverContentSelector).should('not.exist');
+      cy.get('body').click('bottomRight').get(popoverInteractiveContentSelector).should('not.exist');
     });
 
     it('should not dismiss when clicking on nested content', () => {
-      cy.contains('Second nested button').click().get(popoverContentSelector).should('have.length', 3);
+      cy.contains('Second nested button').click().get(popoverInteractiveContentSelector).should('have.length', 3);
     });
 
     it('should dismiss child popovers when clicking on parents', () => {
       cy.contains('First nested button')
         .click()
-        .get(popoverContentSelector)
+        .get(popoverInteractiveContentSelector)
         .should('have.length', 2)
         .contains('Root button')
         .click()
-        .get(popoverContentSelector)
+        .get(popoverInteractiveContentSelector)
         .should('have.length', 1);
     });
 
@@ -119,22 +120,22 @@ describe('Popover', () => {
       cy.get(secondNestedTriggerSelector)
         .eq(1)
         .click()
-        .get(popoverContentSelector)
+        .get(popoverInteractiveContentSelector)
         .should('have.length', 3)
         .get(secondNestedTriggerSelector)
         .eq(0)
         .click()
-        .get(popoverContentSelector)
+        .get(popoverInteractiveContentSelector)
         .should('have.length', 3);
     });
 
     it('should dismiss each popover in the stack with Escape keydown', () => {
       cy.focused().realPress('Escape');
-      cy.get(popoverContentSelector).should('have.length', 2);
+      cy.get(popoverInteractiveContentSelector).should('have.length', 2);
       cy.focused().realPress('Escape');
-      cy.get(popoverContentSelector).should('have.length', 1);
+      cy.get(popoverInteractiveContentSelector).should('have.length', 1);
       cy.focused().realPress('Escape');
-      cy.get(popoverContentSelector).should('not.exist');
+      cy.get(popoverInteractiveContentSelector).should('not.exist');
     });
   });
 
