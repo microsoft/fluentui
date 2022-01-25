@@ -8,7 +8,7 @@ const useTocStyles = makeStyles({
   root: {
     top: '64px',
     position: 'sticky',
-    marginLeft: '80px',
+    marginLeft: '40px',
   },
   heading: {
     fontSize: '11px',
@@ -43,12 +43,15 @@ const useTocStyles = makeStyles({
       backgroundColor: '#EDEBE9',
       ...shorthands.borderRadius('4px'),
     },
+  },
+  selected: {
+    position: 'relative',
     '&:after': {
       content: '""',
       position: 'absolute',
-      left: 0,
-      height: '16px',
+      left: '-20px',
       top: 0,
+      bottom: 0,
       width: '3px',
       backgroundColor: '#436DCD',
       ...shorthands.borderRadius('4px'),
@@ -64,26 +67,57 @@ const useTocStyles = makeStyles({
 // };
 
 const navigate = (url: string) => {
-  console.log('Navigate', url);
   addons.getChannel().emit(NAVIGATE_URL, url);
 };
 
 export const nameToHash = (id: string): string => id.toLowerCase().replace(/[^a-z0-9]/gi, '-');
 
 export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
+  const [selected, setSelected] = React.useState('');
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: [0.5],
+    });
+
+    stories.forEach(link => {
+      const element = document.getElementById(nameToHash(link.name))?.parentElement;
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [stories]);
+
+  const handleObserver = (entries: IntersectionObserverEntry[]) => {
+    for (const entry of entries) {
+      const { intersectionRatio, target } = entry;
+      if (intersectionRatio > 0.5) {
+        setSelected(target.getElementsByTagName('h3')[0].id);
+        return;
+      }
+    }
+  };
+
+  const tocItems = stories.map(item => {
+    return nameToHash(item.name) === selected ? { ...item, selected: true } : item;
+  });
   const tocClasses = useTocStyles();
   return (
     <nav className={tocClasses.root}>
       <h3 className={tocClasses.heading}>On this page</h3>
       <ol className={tocClasses.ol}>
-        {stories.map(s => {
+        {tocItems.map(s => {
+          const name = nameToHash(s.name);
           return (
-            <li key={s.id}>
+            <li className={s.selected && tocClasses.selected} key={s.id}>
               <a
-                href={`#${nameToHash(s.name)}`}
+                href={`#${name}`}
                 target="_self"
                 onClick={e => {
-                  navigate(`#${nameToHash(s.name)}`);
+                  navigate(`#${name}`);
+                  setSelected(name);
                 }}
               >
                 {s.name}

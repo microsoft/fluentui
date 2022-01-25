@@ -22,17 +22,19 @@ const useStyles = makeStyles({
   },
   wrapper: {
     display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     justifyContent: 'flex-end',
     ...shorthands.gap('16px'),
   },
   toc: {
-    flexBasis: '200px',
+    flexBasis: '160px',
     flexShrink: 0,
+    [`@media screen and (max-width: 1000px)`]: {
+      display: 'none',
+    },
   },
   container: {
-    flexBasis: '700px',
+    flexBasis: '200px',
     flexGrow: 1,
   },
 });
@@ -59,9 +61,6 @@ export const FluentDocsPage = () => {
       <Title />
 
       <div className={styles.wrapper}>
-        <div className={styles.toc}>
-          <Toc stories={stories} />
-        </div>
         <div className={styles.container}>
           <Subtitle />
           <Description />
@@ -72,6 +71,9 @@ export const FluentDocsPage = () => {
           <Primary />
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
+        </div>
+        <div className={styles.toc}>
+          <Toc stories={stories} />
         </div>
       </div>
     </>
