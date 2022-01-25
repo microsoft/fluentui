@@ -269,6 +269,8 @@ import { keyframes } from '@fluentui/style-utilities';
 import { labelProperties } from '@fluentui/utilities';
 import { liProperties } from '@fluentui/utilities';
 import { loadTheme } from '@fluentui/style-utilities';
+import { LocalizedFontFamilies } from '@fluentui/theme';
+import { LocalizedFontNames } from '@fluentui/theme';
 import { mapEnumByName } from '@fluentui/utilities';
 import { memoize } from '@fluentui/utilities';
 import { memoizeFunction } from '@fluentui/utilities';
@@ -282,6 +284,9 @@ import { mergeStyleSets } from '@fluentui/style-utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
 import { MonthOfYear } from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
+import { MotionAnimations } from '@fluentui/theme';
+import { MotionDurations } from '@fluentui/theme';
+import { MotionTimings } from '@fluentui/theme';
 import { NeutralColors } from '@fluentui/theme';
 import { normalize } from '@fluentui/style-utilities';
 import { noWrap } from '@fluentui/style-utilities';
@@ -9565,6 +9570,10 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 
 export { loadTheme }
 
+export { LocalizedFontFamilies }
+
+export { LocalizedFontNames }
+
 // @public @deprecated
 export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
@@ -9675,6 +9684,12 @@ export const ModalBase: React_2.FunctionComponent<IModalProps>;
 export { modalize }
 
 export { MonthOfYear }
+
+export { MotionAnimations }
+
+export { MotionDurations }
+
+export { MotionTimings }
 
 // @public (undocumented)
 export const Nav: React_2.FunctionComponent<INavProps>;
