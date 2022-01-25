@@ -174,52 +174,52 @@ export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | Reac
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
 // @public
-export const renderAccordion: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
+export const renderAccordion_unstable: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionHeader: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
+export const renderAccordionHeader_unstable: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionItem: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
+export const renderAccordionItem_unstable: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
+export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element | null;
 
 // @public
-export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
+export const useAccordion_unstable: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public (undocumented)
-export function useAccordionContextValues(state: AccordionState): AccordionContextValues;
+export function useAccordionContextValues_unstable(state: AccordionState): AccordionContextValues;
 
 // @public
-export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
+export const useAccordionHeader_unstable: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
 
 // @public (undocumented)
-export function useAccordionHeaderContextValues(state: AccordionHeaderState): AccordionHeaderContextValues;
+export function useAccordionHeaderContextValues_unstable(state: AccordionHeaderState): AccordionHeaderContextValues;
 
 // @public
-export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
+export const useAccordionHeaderStyles_unstable: (state: AccordionHeaderState) => AccordionHeaderState;
 
 // @public
-export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
+export const useAccordionItem_unstable: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
 
 // @public (undocumented)
-export const useAccordionItemContext: () => AccordionItemContextValue;
+export const useAccordionItemContext_unstable: () => AccordionItemContextValue;
 
 // @public (undocumented)
-export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues;
+export function useAccordionItemContextValues_unstable(state: AccordionItemState): AccordionItemContextValues;
 
 // @public (undocumented)
-export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
+export const useAccordionItemStyles_unstable: (state: AccordionItemState) => AccordionItemState;
 
 // @public
-export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
+export const useAccordionPanel_unstable: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
 // @public
-export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
+export const useAccordionPanelStyles_unstable: (state: AccordionPanelState) => AccordionPanelState;
 
 // @public (undocumented)
-export const useAccordionStyles: (state: AccordionState) => AccordionState;
+export const useAccordionStyles_unstable: (state: AccordionState) => AccordionState;
 
 // (No @packageDocumentation comment for this package)
 

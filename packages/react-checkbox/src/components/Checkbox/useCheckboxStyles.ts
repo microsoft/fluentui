@@ -182,7 +182,7 @@ const useLabelStyles = makeStyles({
 /**
  * Apply styling to the Checkbox slots based on the state
  */
-export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
+export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
     checkboxClassName,

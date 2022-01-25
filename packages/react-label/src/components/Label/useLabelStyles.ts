@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Label slots based on the state
  */
-export const useLabelStyles = (state: LabelState): LabelState => {
+export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     labelClassName,

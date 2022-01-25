@@ -6,7 +6,7 @@ import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
+export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
   const {
     name = '',

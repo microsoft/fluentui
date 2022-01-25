@@ -225,7 +225,7 @@ const useInputStyles = makeStyles({
 /**
  * Apply styling to the Slider slots based on the state
  */
-export const useSliderStyles = (state: SliderState): SliderState => {
+export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();

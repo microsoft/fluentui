@@ -9,13 +9,16 @@ import type { FluentProviderProps, FluentProviderState } from './FluentProvider.
 /**
  * Create the state required to render FluentProvider.
  *
- * The returned state can be modified with hooks such as useFluentProviderStyles,
- * before being passed to renderFluentProvider.
+ * The returned state can be modified with hooks such as useFluentProviderStyles_unstable,
+ * before being passed to renderFluentProvider_unstable.
  *
  * @param props - props from this instance of FluentProvider
  * @param ref - reference to root HTMLElement of FluentProvider
  */
-export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTMLElement>): FluentProviderState => {
+export const useFluentProvider_unstable = (
+  props: FluentProviderProps,
+  ref: React.Ref<HTMLElement>,
+): FluentProviderState => {
   const parentContext = useFluent();
   const parentTheme = useTheme();
 

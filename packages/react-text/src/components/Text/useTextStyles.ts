@@ -103,7 +103,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Text slots based on the state
  */
-export const useTextStyles = (state: TextState): TextState => {
+export const useTextStyles_unstable = (state: TextState): TextState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(

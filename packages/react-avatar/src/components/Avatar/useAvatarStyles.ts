@@ -355,7 +355,7 @@ const useColorStyles = makeStyles({
   },
 });
 
-export const useAvatarStyles = (state: AvatarState): AvatarState => {
+export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const { size, shape, active, activeAppearance, color } = state;
 
   const styles = useStyles();

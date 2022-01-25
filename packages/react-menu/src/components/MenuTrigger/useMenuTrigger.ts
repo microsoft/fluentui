@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
-import { useMenuContext } from '../../contexts/menuContext';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent } from '@fluentui/react-shared-contexts';
@@ -14,16 +14,16 @@ import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
  *
  * @param props - props from this instance of MenuTrigger
  */
-export const useMenuTrigger = (props: MenuTriggerProps, ref: React.Ref<HTMLElement>): MenuTriggerState => {
+export const useMenuTrigger_unstable = (props: MenuTriggerProps, ref: React.Ref<HTMLElement>): MenuTriggerState => {
   const { children, ...rest } = props;
 
-  const triggerRef = useMenuContext(context => context.triggerRef);
-  const menuPopoverRef = useMenuContext(context => context.menuPopoverRef);
-  const setOpen = useMenuContext(context => context.setOpen);
-  const open = useMenuContext(context => context.open);
-  const triggerId = useMenuContext(context => context.triggerId);
-  const openOnHover = useMenuContext(context => context.openOnHover);
-  const openOnContext = useMenuContext(context => context.openOnContext);
+  const triggerRef = useMenuContext_unstable(context => context.triggerRef);
+  const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
+  const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const open = useMenuContext_unstable(context => context.open);
+  const triggerId = useMenuContext_unstable(context => context.triggerId);
+  const openOnHover = useMenuContext_unstable(context => context.openOnHover);
+  const openOnContext = useMenuContext_unstable(context => context.openOnContext);
 
   const isSubmenu = useIsSubmenu();
 

@@ -8,13 +8,16 @@ import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 /**
  * Create the state required to render MenuSplitGroup.
  *
- * The returned state can be modified with hooks such as useMenuSplitGroupStyles,
- * before being passed to renderMenuSplitGroup.
+ * The returned state can be modified with hooks such as useMenuSplitGroupStyles_unstable,
+ * before being passed to renderMenuSplitGroup_unstable.
  *
  * @param props - props from this instance of MenuSplitGroup
  * @param ref - reference to root HTMLElement of MenuSplitGroup
  */
-export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTMLElement>): MenuSplitGroupState => {
+export const useMenuSplitGroup_unstable = (
+  props: MenuSplitGroupProps,
+  ref: React.Ref<HTMLElement>,
+): MenuSplitGroupState => {
   const innerRef = React.useRef<HTMLElement>();
   const { dir, targetDocument } = useFluent();
 

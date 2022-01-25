@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Card slots based on the state
  */
-export const useCardStyles = (state: CardState): CardState => {
+export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     cardClassName,

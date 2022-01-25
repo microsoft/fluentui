@@ -82,25 +82,25 @@ export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlot
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
 
 // @public (undocumented)
-export const renderBadge: (state: BadgeState) => JSX.Element;
+export const renderBadge_unstable: (state: BadgeState) => JSX.Element;
 
 // @public
-export const useBadge: (props: BadgeProps, ref: React_2.Ref<HTMLElement>) => BadgeState;
+export const useBadge_unstable: (props: BadgeProps, ref: React_2.Ref<HTMLElement>) => BadgeState;
 
 // @public
-export const useBadgeStyles: (state: BadgeState) => BadgeState;
+export const useBadgeStyles_unstable: (state: BadgeState) => BadgeState;
 
 // @public
-export const useCounterBadge: (props: CounterBadgeProps, ref: React_2.Ref<HTMLElement>) => CounterBadgeState;
+export const useCounterBadge_unstable: (props: CounterBadgeProps, ref: React_2.Ref<HTMLElement>) => CounterBadgeState;
 
 // @public
-export const useCounterBadgeStyles: (state: CounterBadgeState) => CounterBadgeState;
+export const useCounterBadgeStyles_unstable: (state: CounterBadgeState) => CounterBadgeState;
 
 // @public
-export const usePresenceBadge: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLElement>) => PresenceBadgeState;
+export const usePresenceBadge_unstable: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLElement>) => PresenceBadgeState;
 
 // @public
-export const usePresenceBadgeStyles: (state: PresenceBadgeState) => PresenceBadgeState;
+export const usePresenceBadgeStyles_unstable: (state: PresenceBadgeState) => PresenceBadgeState;
 
 // (No @packageDocumentation comment for this package)
 

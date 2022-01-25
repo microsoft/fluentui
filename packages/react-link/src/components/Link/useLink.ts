@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { useLinkState } from './useLinkState';
+import { useLinkState_unstable } from './useLinkState';
 import type { LinkProps, LinkState } from './Link.types';
 
 /**
- * Given user props, defines default props for the Link, calls useLinkState, and returns processed state.
+ * Given user props, defines default props for the Link, calls useLinkState_unstable, and returns processed state.
  * @param props - User provided props to the Link component.
  * @param ref - User provided ref to be passed to the Link component.
  */
-export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>): LinkState => {
+export const useLink_unstable = (
+  props: LinkProps,
+  ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
+): LinkState => {
   const { appearance, disabled, disabledFocusable, inline } = props;
   const as = props.as || (props.href ? 'a' : 'button');
 
@@ -31,7 +34,7 @@ export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTM
     }),
   };
 
-  useLinkState(state);
+  useLinkState_unstable(state);
 
   return state;
 };

@@ -55,7 +55,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the PopoverSurface slots based on the state
  */
-export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurfaceState => {
+export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): PopoverSurfaceState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     popoverSurfaceClassName,

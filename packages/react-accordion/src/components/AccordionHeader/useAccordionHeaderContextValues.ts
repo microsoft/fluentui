@@ -5,7 +5,7 @@ import type {
   AccordionHeaderContextValues,
 } from './AccordionHeader.types';
 
-export function useAccordionHeaderContextValues(state: AccordionHeaderState): AccordionHeaderContextValues {
+export function useAccordionHeaderContextValues_unstable(state: AccordionHeaderState): AccordionHeaderContextValues {
   const { disabled, expandIconPosition, open, size } = state;
 
   const accordionHeader = React.useMemo<AccordionHeaderContextValue>(

@@ -22,13 +22,13 @@ import { Label } from '@fluentui/react-label';
 /**
  * Create the state required to render Checkbox.
  *
- * The returned state can be modified with hooks such as useCheckboxStyles,
- * before being passed to renderCheckbox.
+ * The returned state can be modified with hooks such as useCheckboxStyles_unstable,
+ * before being passed to renderCheckbox_unstable.
  *
  * @param props - props from this instance of Checkbox
  * @param ref - reference to `<input>` element of Checkbox
  */
-export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
+export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
   const { disabled, required, circular = false, size = 'medium', labelPosition = 'after' } = props;
 
   const [checked, setChecked] = useControllableState({
