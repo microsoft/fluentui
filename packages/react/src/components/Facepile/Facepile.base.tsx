@@ -218,12 +218,9 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   }
 
   private _getOverflowElement(personasOverflow: IFacepilePersona[]): JSX.Element | null {
-    const { onRenderOverflowWrapper } = this.props;
     switch (this.props.overflowButtonType) {
       case OverflowButtonType.descriptive:
-        return onRenderOverflowWrapper
-          ? onRenderOverflowWrapper({ personasOverflow }, this._getDescriptiveOverflowElement.bind(this))
-          : this._getDescriptiveOverflowElement(personasOverflow);
+        return this._getDescriptiveOverflowElement(personasOverflow);
       case OverflowButtonType.downArrow:
         return this._getIconElement('ChevronDown');
       case OverflowButtonType.more:
