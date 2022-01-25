@@ -49,7 +49,7 @@ export type TooltipContextType = {
 export function useFluent(): ProviderContextValue;
 
 // @public (undocumented)
-export const useMenuContext_unstable: () => MinimalMenuProps;
+export const useMenuContext: () => MinimalMenuProps;
 
 // @public (undocumented)
 export function useTheme(): Theme | Partial<Theme> | undefined;

@@ -3,6 +3,6 @@ import type { MinimalMenuProps } from './types';
 
 export const MenuContext = React.createContext<MinimalMenuProps>({});
 
-export const useMenuContext_unstable = () => {
+export const useMenuContext = () => {
   return React.useContext(MenuContext);
 };
