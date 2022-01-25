@@ -118,7 +118,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
           {persona.onClick
             ? onRenderPersonaWrapper
               ? onRenderPersonaWrapper(
-                  { personaControl: personaControl, persona: persona, showTooltip: showTooltip, index: index },
+                  { personaControl, persona, showTooltip, index },
                   this._getElementWithOnClickEvent.bind(this),
                 )
               : this._getElementWithOnClickEvent({ personaControl, persona, showTooltip, index })
@@ -218,9 +218,12 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   }
 
   private _getOverflowElement(personasOverflow: IFacepilePersona[]): JSX.Element | null {
+    const { onRenderOverflowWrapper } = this.props;
     switch (this.props.overflowButtonType) {
       case OverflowButtonType.descriptive:
-        return this._getDescriptiveOverflowElement(personasOverflow);
+        return onRenderOverflowWrapper
+          ? onRenderOverflowWrapper({ personasOverflow }, this._getDescriptiveOverflowElement.bind(this))
+          : this._getDescriptiveOverflowElement(personasOverflow);
       case OverflowButtonType.downArrow:
         return this._getIconElement('ChevronDown');
       case OverflowButtonType.more:
