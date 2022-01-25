@@ -11,6 +11,7 @@ export const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
+      borderRadius: v.borderRadius,
     });
 
     return {

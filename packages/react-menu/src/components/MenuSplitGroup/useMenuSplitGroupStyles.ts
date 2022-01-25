@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { menuItemClassName } from '../MenuItem/useMenuItemStyles';
 import type { MenuSplitGroupState } from './MenuSplitGroup.types';
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the MenuSplitGroup slots based on the state
  */
-export const useMenuSplitGroupStyles = (state: MenuSplitGroupState): MenuSplitGroupState => {
+export const useMenuSplitGroupStyles_unstable = (state: MenuSplitGroupState): MenuSplitGroupState => {
   const styles = useStyles();
   state.root.className = mergeClasses(menuSplitGroupClassName, styles.root, state.root.className);
   return state;

@@ -14,7 +14,7 @@ import {
   MenuDivider,
   MenuSplitGroup,
 } from '@fluentui/react-menu';
-import { Cut20Regular, Edit20Regular, ClipboardPaste20Regular } from '@fluentui/react-icons';
+import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
 
 storiesOf('Menu Converged - basic', module)
   .addDecorator(story => (
@@ -34,9 +34,9 @@ storiesOf('Menu Converged - basic', module)
 
         <MenuPopover>
           <MenuList>
-            <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
-            <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
-            <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
+            <MenuItem icon={<CutRegular />}>Cut</MenuItem>
+            <MenuItem icon={<EditRegular />}>Edit</MenuItem>
+            <MenuItem icon={<ClipboardPasteRegular />}>Paste</MenuItem>
           </MenuList>
         </MenuPopover>
       </Menu>
@@ -62,11 +62,11 @@ storiesOf('Menu Converged - secondary content', module)
 
         <MenuPopover>
           <MenuList>
-            <MenuItem icon={<Cut20Regular />} secondaryContent="Ctrl+X">
+            <MenuItem icon={<CutRegular />} secondaryContent="Ctrl+X">
               Cut
             </MenuItem>
-            <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
-            <MenuItem icon={<ClipboardPaste20Regular />} secondaryContent="Ctrl+P">
+            <MenuItem icon={<EditRegular />}>Edit</MenuItem>
+            <MenuItem icon={<ClipboardPasteRegular />} secondaryContent="Ctrl+P">
               Paste
             </MenuItem>
           </MenuList>
@@ -90,16 +90,16 @@ storiesOf('Menu Converged - groups', module)
           <MenuList>
             <MenuGroup>
               <MenuGroupHeader>Section header</MenuGroupHeader>
-              <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
-              <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
-              <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
+              <MenuItem icon={<CutRegular />}>Cut</MenuItem>
+              <MenuItem icon={<ClipboardPasteRegular />}>Paste</MenuItem>
+              <MenuItem icon={<EditRegular />}>Edit</MenuItem>
             </MenuGroup>
             <MenuDivider />
             <MenuGroup>
               <MenuGroupHeader>Section header</MenuGroupHeader>
-              <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
-              <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
-              <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
+              <MenuItem icon={<CutRegular />}>Cut</MenuItem>
+              <MenuItem icon={<ClipboardPasteRegular />}>Paste</MenuItem>
+              <MenuItem icon={<EditRegular />}>Edit</MenuItem>
             </MenuGroup>
           </MenuList>
         </MenuPopover>
@@ -126,13 +126,13 @@ storiesOf('Menu Converged - selection', module)
 
         <MenuPopover>
           <MenuList>
-            <MenuItemCheckbox icon={<Cut20Regular />} name="edit" value="cut">
+            <MenuItemCheckbox icon={<CutRegular />} name="edit" value="cut">
               Cut
             </MenuItemCheckbox>
-            <MenuItemCheckbox icon={<ClipboardPaste20Regular />} name="edit" value="paste">
+            <MenuItemCheckbox icon={<ClipboardPasteRegular />} name="edit" value="paste">
               Paste
             </MenuItemCheckbox>
-            <MenuItemCheckbox icon={<Edit20Regular />} name="edit" value="edit">
+            <MenuItemCheckbox icon={<EditRegular />} name="edit" value="edit">
               Edit
             </MenuItemCheckbox>
           </MenuList>
@@ -162,26 +162,26 @@ storiesOf('Menu Converged - selection groups', module)
           <MenuList>
             <MenuGroup>
               <MenuGroupHeader>Checkbox group</MenuGroupHeader>
-              <MenuItemCheckbox icon={<Cut20Regular />} name="edit" value="cut">
+              <MenuItemCheckbox icon={<CutRegular />} name="edit" value="cut">
                 Cut
               </MenuItemCheckbox>
-              <MenuItemCheckbox icon={<ClipboardPaste20Regular />} name="edit" value="paste">
+              <MenuItemCheckbox icon={<ClipboardPasteRegular />} name="edit" value="paste">
                 Paste
               </MenuItemCheckbox>
-              <MenuItemCheckbox icon={<Edit20Regular />} name="edit" value="edit">
+              <MenuItemCheckbox icon={<EditRegular />} name="edit" value="edit">
                 Edit
               </MenuItemCheckbox>
             </MenuGroup>
             <MenuDivider />
             <MenuGroup>
               <MenuGroupHeader>Radio group</MenuGroupHeader>
-              <MenuItemRadio icon={<Cut20Regular />} name="font" value="segoe">
+              <MenuItemRadio icon={<CutRegular />} name="font" value="segoe">
                 Segoe
               </MenuItemRadio>
-              <MenuItemRadio icon={<ClipboardPaste20Regular />} name="font" value="calibri">
+              <MenuItemRadio icon={<ClipboardPasteRegular />} name="font" value="calibri">
                 Caliri
               </MenuItemRadio>
-              <MenuItemRadio icon={<Edit20Regular />} name="font" value="arial">
+              <MenuItemRadio icon={<EditRegular />} name="font" value="arial">
                 Arial
               </MenuItemRadio>
             </MenuGroup>

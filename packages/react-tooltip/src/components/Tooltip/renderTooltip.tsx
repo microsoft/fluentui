@@ -6,7 +6,7 @@ import type { TooltipSlots, TooltipState } from './Tooltip.types';
 /**
  * Render the final JSX of Tooltip
  */
-export const renderTooltip = (state: TooltipState) => {
+export const renderTooltip_unstable = (state: TooltipState) => {
   const { slots, slotProps } = getSlots<TooltipSlots>(state);
 
   return (

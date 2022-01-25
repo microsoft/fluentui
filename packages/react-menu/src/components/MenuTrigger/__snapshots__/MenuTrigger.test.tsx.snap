@@ -3,7 +3,7 @@
 exports[`MenuTrigger renders a default state 1`] = `
 <button
   aria-haspopup="menu"
-  id=""
+  id="id"
   onClick={[Function]}
   onContextMenu={[Function]}
   onKeyDown={[Function]}

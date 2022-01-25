@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Tooltip slots based on the state
  */
-export const useTooltipStyles = (state: TooltipState): TooltipState => {
+export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(

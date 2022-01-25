@@ -77,6 +77,12 @@ export interface AlertVariables {
   dismissActionBorderColorDisabled: string;
 
   dismissActionIndicatorSize: string;
+
+  focusBorderRadius: string;
+  focusBorderWidth: string;
+  focusInnerBorderColor: string;
+  focusOuterBorderColor: string;
+  focusBorderZIndex: string;
 }
 
 export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables => {
@@ -156,5 +162,11 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     dismissActionBorderColorDisabled: 'transparent',
 
     dismissActionIndicatorSize: pxToRem(16),
+
+    focusBorderRadius: siteVars.borderRadiusMedium,
+    focusBorderWidth: siteVars.borderWidth,
+    focusInnerBorderColor: siteVars.focusInnerBorderColor,
+    focusOuterBorderColor: siteVars.focusOuterBorderColor,
+    focusBorderZIndex: siteVars.zIndexes.foreground,
   };
 };

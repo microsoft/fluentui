@@ -135,7 +135,7 @@ const useRootStyles = makeStyles({
   },
 });
 
-export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState => {
+export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitButtonState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
 

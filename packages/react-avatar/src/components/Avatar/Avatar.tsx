@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { renderAvatar } from './renderAvatar';
-import { useAvatar } from './useAvatar';
-import { useAvatarStyles } from './useAvatarStyles';
+import { renderAvatar_unstable } from './renderAvatar';
+import { useAvatar_unstable } from './useAvatar';
+import { useAvatarStyles_unstable } from './useAvatarStyles';
 import type { AvatarProps } from './Avatar.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props, ref) => {
-  const state = useAvatar(props, ref);
+  const state = useAvatar_unstable(props, ref);
 
-  useAvatarStyles(state);
+  useAvatarStyles_unstable(state);
 
-  return renderAvatar(state);
+  return renderAvatar_unstable(state);
 });
 
 Avatar.displayName = 'Avatar';

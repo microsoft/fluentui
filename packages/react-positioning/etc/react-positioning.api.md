@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { MakeStylesStyle } from '@fluentui/react-make-styles';
+import type { GriffelStyle } from '@griffel/react';
 import * as PopperJs from '@popperjs/core';
 import * as React_2 from 'react';
 
@@ -24,14 +24,14 @@ export function createArrowHeightStyles(arrowHeight: number): {
 };
 
 // @public
-export function createArrowStyles(options: CreateArrowStylesOptions): MakeStylesStyle;
+export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;
 
 // @public
 export type CreateArrowStylesOptions = {
     arrowHeight: number | undefined;
-    borderWidth?: MakeStylesStyle['borderBottomWidth'];
-    borderStyle?: MakeStylesStyle['borderBottomStyle'];
-    borderColor?: MakeStylesStyle['borderBottomColor'];
+    borderWidth?: GriffelStyle['borderBottomWidth'];
+    borderStyle?: GriffelStyle['borderBottomStyle'];
+    borderColor?: GriffelStyle['borderBottomColor'];
 };
 
 // @public

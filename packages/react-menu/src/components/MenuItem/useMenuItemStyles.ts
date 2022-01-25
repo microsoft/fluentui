@@ -1,7 +1,7 @@
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { useCheckmarkStyles } from '../../selectable/index';
+import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemState } from './MenuItem.types';
 
@@ -72,7 +72,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useMenuItemStyles = (state: MenuItemState) => {
+export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     menuItemClassName,
@@ -100,5 +100,5 @@ export const useMenuItemStyles = (state: MenuItemState) => {
   if (state.submenuIndicator) {
     state.submenuIndicator.className = mergeClasses(styles.submenuIndicator, state.submenuIndicator.className);
   }
-  useCheckmarkStyles(state as MenuItemCheckboxState);
+  useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
 };

@@ -1,4 +1,5 @@
 const excludePlugins = ['module:@fluentui/babel-make-styles'];
+const excludePresets = ['@griffel'];
 
 module.exports = () => {
   return {
@@ -14,9 +15,17 @@ module.exports = () => {
         return !excludePlugins.includes(requestedPlugin);
       });
 
+      const existingPresets = /** @type {Required<import('@babel/core').ConfigItem[]>} */ (cfg.options.presets || []);
+      const presetsToInclude = existingPresets.filter(plugin => {
+        const requestedPreset = /** @type {NonNullable<typeof plugin['file']>} */ (plugin.file).request;
+
+        return !excludePresets.includes(requestedPreset);
+      });
+
       return {
         ...cfg.options,
         plugins: pluginsToInclude,
+        presets: presetsToInclude,
       };
     },
   };

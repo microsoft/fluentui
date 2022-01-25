@@ -305,6 +305,17 @@ export function useSSRContext(): SSRContextValue;
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 
 // @public
+export function useTriggerElement<TriggerProps extends React_2.HTMLProps<unknown>>(options: UseTriggerElementOptions<TriggerProps>): React_2.ReactNode;
+
+// @public (undocumented)
+export type UseTriggerElementOptions<TriggerProps> = {
+    children: React_2.ReactElement | ((props: TriggerProps) => React_2.ReactNode) | null | undefined;
+    ref: React_2.Ref<unknown> | undefined;
+    outerProps: React_2.HTMLProps<unknown>;
+    overrideProps: TriggerProps;
+};
+
+// @public
 export const useUnmount: (callback: () => void) => void;
 
 // @public
