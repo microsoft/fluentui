@@ -5,12 +5,15 @@ import { defaultTests } from './defaultTests';
 import { merge } from './utils/merge';
 import { createTsProgram } from './utils/createTsProgram';
 import { getComponentDoc } from './utils/getComponentDoc';
+import { cleanup } from './utils/mountWithCleanup';
 
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);
   const { componentPath, displayName, disabledTests = [], extraTests, tsconfigDir } = mergedOptions;
 
   describe('isConformant', () => {
+    afterEach(cleanup);
+
     if (!fs.existsSync(componentPath)) {
       throw new Error(`Path ${componentPath} does not exist`);
     }

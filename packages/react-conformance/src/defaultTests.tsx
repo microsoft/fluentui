@@ -3,7 +3,8 @@ import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
 import { getCallbackArguments } from './utils/getCallbackArguments';
-import { mount, ReactWrapper } from 'enzyme';
+import { ReactWrapper } from 'enzyme';
+import { mount } from './utils/mountWithCleanup';
 import { act } from 'react-dom/test-utils';
 import parseDocblock from './utils/parseDocblock';
 import { validateCallbackArguments } from './utils/validateCallbackArguments';
@@ -254,6 +255,7 @@ export const defaultTests: TestObject = {
       const defaultEl = customMount(<Component {...requiredProps} />);
       const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
       const defaultClassNames = defaultComponent.getDOMNode().getAttribute('class')?.split(' ') || [];
+      defaultEl.unmount();
 
       const el = customMount(<Component {...mergedProps} />);
       const component = getComponent(el, helperComponents, wrapperComponent);
