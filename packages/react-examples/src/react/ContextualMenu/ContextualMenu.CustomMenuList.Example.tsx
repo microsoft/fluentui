@@ -32,7 +32,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     setItems(filteredItems);
   }, []);
 
-  const renderMenuList_unstable = React.useCallback(
+  const renderMenuList = React.useCallback(
     (menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) => {
       return (
         <div>
@@ -54,12 +54,12 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
 
   const menuProps = React.useMemo(
     () => ({
-      onRenderMenuList: renderMenuList_unstable,
+      onRenderMenuList: renderMenuList,
       title: 'Actions',
       shouldFocusOnMount: true,
       items,
     }),
-    [items, renderMenuList_unstable],
+    [items, renderMenuList],
   );
 
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
