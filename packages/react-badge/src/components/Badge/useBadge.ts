@@ -11,7 +11,7 @@ export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>): BadgeS
     size = 'medium',
     iconPosition = 'before',
     appearance = 'filled',
-    color = 'informative',
+    color = 'brand',
   } = props;
 
   const state: BadgeState = {
