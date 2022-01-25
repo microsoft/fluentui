@@ -5,7 +5,6 @@ import { render, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { Portal } from '@fluentui/react-portal';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
-import { mount } from 'enzyme';
 
 jest.mock('../../popoverContext');
 
