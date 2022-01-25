@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardFooterState } from './CardFooter.types';
 
 export const cardFooterClassName = 'fui-CardFooter';
