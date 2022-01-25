@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added getDateFromTimeSelection function, TimeConstant values OffsetTo24HourFormat and TimeFormatRegex",
-  "packageName": "@fluentui/date-time-utilities",
-  "email": "jamwu@microsoft.com",
-  "dependentChangeType": "patch"
-}

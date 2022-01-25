@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "DetailsList: add keyboardColumnEditProps prop to programatically trigger a column resize and reorder.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
