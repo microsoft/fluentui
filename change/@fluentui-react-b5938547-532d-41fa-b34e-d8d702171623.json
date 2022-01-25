@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "TimePicker: Updated onChange prop, added initial date, use new getDateFromTimeSelection function",
+  "packageName": "@fluentui/react",
+  "email": "jamwu@microsoft.com",
+  "dependentChangeType": "patch"
+}
