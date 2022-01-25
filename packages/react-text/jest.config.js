@@ -17,5 +17,5 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
+  snapshotSerializers: ['@griffel/jest-serializer'],
 };
