@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Assign to latest milestone
-        uses: andrefcdias/add-to-milestone@v1.2.0
+        uses: andrefcdias/add-to-milestone@v1.2.2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           use-expression: true
