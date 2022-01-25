@@ -5,6 +5,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { Portal } from '@fluentui/react-portal';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
+import { mount } from 'enzyme';
 
 jest.mock('../../popoverContext');
 
@@ -69,5 +70,23 @@ describe('PopoverSurface', () => {
 
     // Assert
     expect(getByTestId(testid).getAttribute('aria-modal')).toEqual('true');
+  });
+
+  it('should set role dialog if focus trap is active', () => {
+    // Arrange
+    mockPopoverContext({ open: true, trapFocus: true });
+    const { queryByRole } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
+
+    // Assert
+    expect(queryByRole('dialog')).not.toBeNull();
+  });
+
+  it('should set role complementary if focus trap is not active', () => {
+    // Arrange
+    mockPopoverContext({ open: true, trapFocus: false });
+    const { getByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
+
+    // Assert
+    expect(getByTestId(testid)).not.toBeNull();
   });
 });

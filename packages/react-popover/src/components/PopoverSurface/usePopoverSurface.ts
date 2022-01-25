@@ -38,7 +38,7 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, contentRef),
-      role: 'dialog',
+      role: trapFocus ? 'dialog' : 'complementary',
       'aria-modal': trapFocus ? true : undefined,
       ...modalAttributes,
       ...props,

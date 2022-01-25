@@ -5,7 +5,7 @@ exports[`PopoverSurface renders a default state 1`] = `
   class="fui-PopoverSurface"
   data-tabster="{\\"deloser\\":{},\\"modalizer\\":{\\"id\\":\\"modal-1\\",\\"isOthersAccessible\\":true}}"
   data-testid="component"
-  role="dialog"
+  role="complementary"
 >
   <div
     class=""
