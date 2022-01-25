@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Conformance tests should unmount components",
+  "packageName": "@fluentui/react-conformance",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
