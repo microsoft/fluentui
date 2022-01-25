@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { menuItemClassName } from '../MenuItem/useMenuItemStyles';
 import type { MenuSplitGroupState } from './MenuSplitGroup.types';

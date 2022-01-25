@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import type { MenuListState } from './MenuList.types';
 
 export const menuListClassName = 'fui-MenuList';

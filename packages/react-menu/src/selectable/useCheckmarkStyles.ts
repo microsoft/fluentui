@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import type { MenuItemSelectableState } from './types';
 import type { MenuItemSlots } from '../components/MenuItem/MenuItem.types';
 

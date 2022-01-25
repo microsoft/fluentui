@@ -1,4 +1,4 @@
-import { mergeClasses } from '@fluentui/react-make-styles';
+import { mergeClasses } from '@griffel/react';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles';
 import type { MenuItemRadioState } from './MenuItemRadio.types';
