@@ -18,11 +18,7 @@ export const mount = (...args: Parameters<typeof enzymeMount>) => {
 
 export const cleanup = () => {
   if (wrapper) {
-    try {
-      wrapper.unmount();
-    } catch {
-      console.error('failed to unmount');
-    }
+    wrapper.unmount();
   }
 
   wrapper = undefined;
