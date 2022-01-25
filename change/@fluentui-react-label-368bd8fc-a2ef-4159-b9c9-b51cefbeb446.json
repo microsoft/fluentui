@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "use Griffel packages",
+  "comment": "Replace make-styles packages with griffel equivalents.",
   "packageName": "@fluentui/react-label",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
