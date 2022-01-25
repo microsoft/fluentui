@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuDividerStyles = (state: MenuDividerState) => {
+export const useMenuDividerStyles_unstable = (state: MenuDividerState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(menuDividerClassName, styles.root, state.root.className);
 

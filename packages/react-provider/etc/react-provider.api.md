@@ -60,18 +60,18 @@ export interface FluentProviderState extends ComponentState<FluentProviderSlots>
 }
 
 // @public
-export const renderFluentProvider: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
+export const renderFluentProvider_unstable: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
 
 export { useFluent }
 
 // @public
-export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
+export const useFluentProvider_unstable: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
 
 // @public (undocumented)
-export function useFluentProviderContextValues(state: FluentProviderState): FluentProviderContextValues;
+export function useFluentProviderContextValues_unstable(state: FluentProviderState): FluentProviderContextValues;
 
 // @public
-export const useFluentProviderStyles: (state: FluentProviderState) => FluentProviderState;
+export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
 export { useTheme }
 

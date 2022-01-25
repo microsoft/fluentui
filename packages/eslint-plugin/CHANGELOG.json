@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 25 Jan 2022 07:30:06 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "Add naming-convention exception to allow exported hooks with the _unstable suffix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Jan 2022 07:30:57 GMT",
       "tag": "@fluentui/eslint-plugin_v1.6.0",
       "version": "1.6.0",

@@ -5,7 +5,7 @@ import type { SliderState, SliderSlots } from './Slider.types';
 /**
  * Render the final JSX of Slider
  */
-export const renderSlider = (state: SliderState) => {
+export const renderSlider_unstable = (state: SliderState) => {
   const { slots, slotProps } = getSlots<SliderSlots>(state);
 
   return (

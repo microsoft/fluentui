@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useFluentProviderStyles = (state: FluentProviderState) => {
+export const useFluentProviderStyles_unstable = (state: FluentProviderState) => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(fluentProviderClassName, state.themeClassName, styles.root, state.root.className);

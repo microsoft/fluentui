@@ -247,7 +247,7 @@ const useInputStyle = makeStyles({
 /**
  * Apply styling to the Switch slots based on the state
  */
-export const useSwitchStyles = (state: SwitchState): SwitchState => {
+export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   const { checked, disabled } = state.input;
 
   const rootStyles = useRootStyles();

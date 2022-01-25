@@ -2,6 +2,41 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 25 Jan 2022 07:30:06 GMT",
+      "tag": "@fluentui/react_v8.51.0",
+      "version": "8.51.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "c77fb1c3ed25c9568e5fb923313c10061ba44e8c",
+            "comment": "Fix an accessibility bug of TooltipHost when mouse leaves before timer triggers"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "d699ced1c47135ef22b196c8e9b777af3984ab3e",
+            "comment": "DetailsList: add keyboardColumnEditProps prop to programatically trigger a column resize and reorder."
+          },
+          {
+            "author": "jamwu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18",
+            "comment": "TimePicker: Updated onChange prop, added initial date, use new getDateFromTimeSelection function"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.3.0",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Jan 2022 07:26:13 GMT",
       "tag": "@fluentui/react_v8.50.1",
       "version": "8.50.1",

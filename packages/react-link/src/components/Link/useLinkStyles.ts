@@ -88,7 +88,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useLinkStyles = (state: LinkState): LinkState => {
+export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     linkClassName,

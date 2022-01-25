@@ -31,13 +31,13 @@ export type DialogSlots = {
 export type DialogState = ComponentState<DialogSlots> & DialogCommons;
 
 // @public
-export const renderDialog: (state: DialogState) => JSX.Element;
+export const renderDialog_unstable: (state: DialogState) => JSX.Element;
 
 // @public
-export const useDialog: (props: DialogProps, ref: React_2.Ref<HTMLElement>) => DialogState;
+export const useDialog_unstable: (props: DialogProps, ref: React_2.Ref<HTMLElement>) => DialogState;
 
 // @public
-export const useDialogStyles: (state: DialogState) => DialogState;
+export const useDialogStyles_unstable: (state: DialogState) => DialogState;
 
 // (No @packageDocumentation comment for this package)
 

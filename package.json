@@ -202,7 +202,7 @@
     "lint-staged": "10.2.10",
     "loader-utils": "2.0.0",
     "memfs": "3.2.2",
-    "node-fetch": "2.6.1",
+    "node-fetch": "2.6.7",
     "portfinder": "1.0.28",
     "postcss": "8.3.5",
     "postcss-loader": "4.1.0",
@@ -276,7 +276,7 @@
     "@types/jest-axe/axe-core": "4.2.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "eslint": "^7.1.0",
+    "eslint": "7.25.0",
     "//": "pretty-format contains typing only supported by TS 3.8+ remove when support in this repo is available",
     "@testing-library/dom": "7.22.3",
     "copy-to-clipboard": "3.2.0"

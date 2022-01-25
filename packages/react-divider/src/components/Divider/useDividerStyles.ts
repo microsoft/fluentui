@@ -225,7 +225,7 @@ const useVerticalStyles = makeStyles({
   },
 });
 
-export const useDividerStyles = (state: DividerState): DividerState => {
+export const useDividerStyles_unstable = (state: DividerState): DividerState => {
   const baseStyles = useBaseStyles();
   const horizontalStyles = useHorizontalStyles();
   const verticalStyles = useVerticalStyles();

@@ -181,7 +181,7 @@ const useSubtextStyles = makeStyles({
 /**
  * Apply styling to the RadioItem slots based on the state
  */
-export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
+export const useRadioItemStyles_unstable = (state: RadioItemState): RadioItemState => {
   const checkedState = state.checked ? 'checked' : 'unchecked';
   const containerStyles = useContainerStyles();
   const indicatorStyles = useIndicatorStyles();
