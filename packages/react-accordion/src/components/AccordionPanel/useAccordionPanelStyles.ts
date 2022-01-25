@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { AccordionPanelState } from './AccordionPanel.types';
 
 export const accordionPanelClassName = 'fui-AccordionPanel';
