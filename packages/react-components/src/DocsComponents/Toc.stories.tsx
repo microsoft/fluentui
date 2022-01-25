@@ -77,7 +77,6 @@ export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
-      // root: document.querySelector('.sbdocs-content'),
       threshold: [0.5],
     });
 
