@@ -69,20 +69,19 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     // if this element is actionable it should have an aria role
     const role = this.props.role || (actionable ? (onClick ? 'button' : 'link') : undefined);
     const tabIndex = actionable ? 0 : undefined;
+    const updatedChildren = passPropsToTitle(children, { role, tabIndex });
 
     return (
       <div
         ref={this._rootElement}
-        tabIndex={tabIndex}
-        data-is-focusable={actionable}
-        role={role}
+        role={'group'}
         className={this._classNames.root}
         onKeyDown={actionable ? this._onKeyDown : undefined}
         onClick={actionable ? this._onClick : undefined}
         style={style}
         {...nativeProps}
       >
-        {children}
+        {updatedChildren}
       </div>
     );
   }
@@ -121,4 +120,23 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
       ev.stopPropagation();
     }
   };
+}
+
+function passPropsToTitle(
+  children: React.ReactNode,
+  addedProps: {
+    role?: string;
+    tabIndex?: number;
+  },
+): React.ReactNode {
+  return React.Children.map(children, child => {
+    if (!React.isValidElement(child)) {
+      return child;
+    }
+
+    return React.cloneElement(child, {
+      ...(child.props.title && addedProps),
+      children: passPropsToTitle(child.props.children, addedProps),
+    });
+  });
 }
