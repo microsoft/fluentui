@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { AvatarState } from './Avatar.types';
 
@@ -445,8 +445,8 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
 
-  if (state.label) {
-    state.label.className = mergeClasses(styles.iconLabel, state.label.className);
+  if (state.initials) {
+    state.initials.className = mergeClasses(styles.iconLabel, state.initials.className);
   }
 
   if (state.icon) {
