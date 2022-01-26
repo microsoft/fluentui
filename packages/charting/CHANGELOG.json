@@ -2,6 +2,66 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 21 Jan 2022 12:28:47 GMT",
+      "tag": "@uifabric/charting_v4.20.1",
+      "version": "4.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.181.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "4b1c727244edd548539ac1f8c9d6815ad1670f5b",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Jan 2022 12:22:39 GMT",
+      "tag": "@uifabric/charting_v4.20.0",
+      "version": "4.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "style control prop added in area chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "8a650ad15f2bc9c86655fb648e31b964d62ed87a",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jan 2022 12:22:43 GMT",
+      "tag": "@uifabric/charting_v4.19.9",
+      "version": "4.19.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make last point in line chart focusable even when hidenonactivedots is true. Also change draw order of points so aren't drawn over other lines.",
+            "author": "nojittip@microsoft.com",
+            "commit": "e93ff154e10385cb9d509059998a802d72dcfde3",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Jan 2022 12:29:16 GMT",
+      "tag": "@uifabric/charting_v4.19.8",
+      "version": "4.19.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.180.3",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "dda0fb9d81f1d4e164ba1bad20645d912009821e",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Dec 2021 12:24:57 GMT",
       "tag": "@uifabric/charting_v4.19.7",
       "version": "4.19.7",

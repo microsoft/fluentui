@@ -434,6 +434,10 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * {@inheritdoc}
    */
   public focus = (shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void => {
+    if (this.props.disabled === true) {
+      return;
+    }
+
     if (this._autofill.current) {
       if (useFocusAsync) {
         focusAsync(this._autofill.current);

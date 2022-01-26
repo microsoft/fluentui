@@ -1,3 +1,4 @@
+import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
 
 export interface IBasestate {
@@ -247,7 +248,7 @@ export interface ILineChartGap {
   endIndex: number;
 }
 
-export interface ILineChartLineOptions {
+export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
   /**
    * Width of the line/stroke.
    * Overrides the strokeWidth set on ICartesianChartProps level.
@@ -313,6 +314,11 @@ export interface ILineChartPoints {
   color: string;
 
   /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
    * options for the line drawn
    */
   lineOptions?: ILineChartLineOptions;
@@ -358,6 +364,16 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+
+  /**
+   * data for the points in the line chart
+   */
+  pointOptions?: SVGProps<SVGCircleElement>;
+
+  /**
+   * data for the dotted line on hovering the point
+   */
+  pointLineOptions?: SVGProps<SVGLineElement>;
 }
 
 export interface IAccessibilityProps {

@@ -2,6 +2,66 @@
   "name": "ssr-tests",
   "entries": [
     {
+      "date": "Fri, 21 Jan 2022 12:28:47 GMT",
+      "tag": "ssr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.10.15",
+            "author": "tmichon@microsoft.com",
+            "commit": "4b1c727244edd548539ac1f8c9d6815ad1670f5b",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Jan 2022 12:22:39 GMT",
+      "tag": "ssr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.10.15",
+            "author": "v-scharde@microsoft.com",
+            "commit": "8a650ad15f2bc9c86655fb648e31b964d62ed87a",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jan 2022 12:22:43 GMT",
+      "tag": "ssr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.10.15",
+            "author": "nojittip@microsoft.com",
+            "commit": "e93ff154e10385cb9d509059998a802d72dcfde3",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Jan 2022 12:29:16 GMT",
+      "tag": "ssr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.10.15",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "dda0fb9d81f1d4e164ba1bad20645d912009821e",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Dec 2021 12:24:57 GMT",
       "tag": "ssr-tests_v7.0.0",
       "version": "7.0.0",

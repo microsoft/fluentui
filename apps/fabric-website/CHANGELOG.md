@@ -1,8 +1,44 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 16 Dec 2021 12:24:57 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jan 2022 12:28:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.15)
+
+Fri, 21 Jan 2022 12:28:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.17.15..@uifabric/fabric-website_v7.17.15)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.181.0 ([PR #21161](https://github.com/microsoft/fluentui/pull/21161) by tmichon@microsoft.com)
+
+## [7.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.15)
+
+Fri, 14 Jan 2022 12:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.17.15..@uifabric/fabric-website_v7.17.15)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.15.15 ([PR #21260](https://github.com/microsoft/fluentui/pull/21260) by v-scharde@microsoft.com)
+
+## [7.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.15)
+
+Tue, 11 Jan 2022 12:22:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.17.15..@uifabric/fabric-website_v7.17.15)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.15.15 ([PR #21233](https://github.com/microsoft/fluentui/pull/21233) by nojittip@microsoft.com)
+
+## [7.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.15)
+
+Wed, 05 Jan 2022 12:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.17.15..@uifabric/fabric-website_v7.17.15)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.180.3 ([PR #20839](https://github.com/microsoft/fluentui/pull/20839) by tkrasniqi@microsoft.com)
 
 ## [7.17.15](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.17.15)
 
