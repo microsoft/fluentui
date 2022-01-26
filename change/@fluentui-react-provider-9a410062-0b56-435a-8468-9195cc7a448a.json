@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "add @types/react-test-renderer to devDependencies",
+  "packageName": "@fluentui/react-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

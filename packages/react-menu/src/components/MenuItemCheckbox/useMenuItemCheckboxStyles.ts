@@ -1,13 +1,13 @@
-import { mergeClasses } from '@fluentui/react-make-styles';
-import { useCheckmarkStyles } from '../../selectable/index';
-import { useMenuItemStyles } from '../MenuItem/useMenuItemStyles';
+import { mergeClasses } from '@griffel/react';
+import { useCheckmarkStyles_unstable } from '../../selectable/index';
+import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles';
 import type { MenuItemCheckboxState } from './MenuItemCheckbox.types';
 
 export const menuItemCheckboxClassName = 'fui-MenuItemCheckbox';
 
-export const useMenuItemCheckboxStyles = (state: MenuItemCheckboxState) => {
+export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState) => {
   state.root.className = mergeClasses(menuItemCheckboxClassName, state.root.className);
 
-  useMenuItemStyles(state);
-  useCheckmarkStyles(state);
+  useMenuItemStyles_unstable(state);
+  useCheckmarkStyles_unstable(state);
 };

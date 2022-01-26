@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { RadioItemState } from './RadioItem.types';
@@ -181,7 +181,7 @@ const useSubtextStyles = makeStyles({
 /**
  * Apply styling to the RadioItem slots based on the state
  */
-export const useRadioItemStyles = (state: RadioItemState): RadioItemState => {
+export const useRadioItemStyles_unstable = (state: RadioItemState): RadioItemState => {
   const checkedState = state.checked ? 'checked' : 'unchecked';
   const containerStyles = useContainerStyles();
   const indicatorStyles = useIndicatorStyles();

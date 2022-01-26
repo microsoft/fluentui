@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { LinkState } from './Link.types';
@@ -88,7 +88,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useLinkStyles = (state: LinkState): LinkState => {
+export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     linkClassName,

@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 21 Jan 2022 07:26:05 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jan 2022 07:26:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.51.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.1)
+
+Wed, 26 Jan 2022 07:26:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.51.0..@fluentui/react_v8.51.1)
+
+### Patches
+
+- Re-add motion and font theme re-exports. ([PR #21363](https://github.com/microsoft/fluentui/pull/21363) by seanmonahan@microsoft.com)
+
+## [8.51.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.0)
+
+Tue, 25 Jan 2022 07:30:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.50.1..@fluentui/react_v8.51.0)
+
+### Minor changes
+
+- DetailsList: add keyboardColumnEditProps prop to programatically trigger a column resize and reorder. ([PR #20679](https://github.com/microsoft/fluentui/pull/20679) by tristan.watanabe@gmail.com)
+- TimePicker: Updated onChange prop, added initial date, use new getDateFromTimeSelection function ([PR #20805](https://github.com/microsoft/fluentui/pull/20805) by jamwu@microsoft.com)
+- Bump @fluentui/date-time-utilities to v8.3.0 ([PR #20805](https://github.com/microsoft/fluentui/pull/20805) by beachball)
+
+### Patches
+
+- Fix an accessibility bug of TooltipHost when mouse leaves before timer triggers ([PR #21125](https://github.com/microsoft/fluentui/pull/21125) by email not defined)
+
+## [8.50.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.50.1)
+
+Mon, 24 Jan 2022 07:26:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.50.0..@fluentui/react_v8.50.1)
+
+### Patches
+
+- Combobox: remove default title attribute added to options. ([PR #21369](https://github.com/microsoft/fluentui/pull/21369) by tristan.watanabe@gmail.com)
+- Fix aria-readonly regression in Calendar ([PR #21374](https://github.com/microsoft/fluentui/pull/21374) by sarah.higley@microsoft.com)
 
 ## [8.50.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.50.0)
 
