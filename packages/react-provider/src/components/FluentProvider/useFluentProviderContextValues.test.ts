@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
-import { useFluentProvider } from './useFluentProvider';
-import { useFluentProviderContextValues } from './useFluentProviderContextValues';
+import { useFluentProvider_unstable } from './useFluentProvider';
+import { useFluentProviderContextValues_unstable } from './useFluentProviderContextValues';
 
-describe('useFluentProviderContextValues', () => {
+describe('useFluentProviderContextValues_unstable', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
 
@@ -14,9 +14,9 @@ describe('useFluentProviderContextValues', () => {
 
   it('should return a value for "provider"', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider({}, React.createRef());
+      const state = useFluentProvider_unstable({}, React.createRef());
 
-      return useFluentProviderContextValues(state);
+      return useFluentProviderContextValues_unstable(state);
     });
 
     expect(result.current.provider).toBeDefined();
@@ -26,9 +26,9 @@ describe('useFluentProviderContextValues', () => {
 
   it('should return a value for "tooltip"', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider({}, React.createRef());
+      const state = useFluentProvider_unstable({}, React.createRef());
 
-      return useFluentProviderContextValues(state);
+      return useFluentProviderContextValues_unstable(state);
     });
 
     expect(result.current.tooltip).toEqual({});
@@ -36,9 +36,9 @@ describe('useFluentProviderContextValues', () => {
 
   it('should return undefined if "theme" is not set', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider({}, React.createRef());
+      const state = useFluentProvider_unstable({}, React.createRef());
 
-      return useFluentProviderContextValues(state);
+      return useFluentProviderContextValues_unstable(state);
     });
 
     expect(result.current.theme).toBe(undefined);
@@ -46,9 +46,9 @@ describe('useFluentProviderContextValues', () => {
 
   it('should return a value for "theme"', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider({ theme: { colorBrandBackground: '#fff' } }, React.createRef());
+      const state = useFluentProvider_unstable({ theme: { colorBrandBackground: '#fff' } }, React.createRef());
 
-      return useFluentProviderContextValues(state);
+      return useFluentProviderContextValues_unstable(state);
     });
 
     expect(result.current.theme).toEqual({ colorBrandBackground: '#fff' });
@@ -56,9 +56,9 @@ describe('useFluentProviderContextValues', () => {
 
   it('should return a value for "themeClassname"', () => {
     const { result } = renderHook(() => {
-      const state = useFluentProvider({ className: 'foo' }, React.createRef());
+      const state = useFluentProvider_unstable({ className: 'foo' }, React.createRef());
 
-      return useFluentProviderContextValues(state);
+      return useFluentProviderContextValues_unstable(state);
     });
 
     expect(result.current.themeClassName).toBe('foo');

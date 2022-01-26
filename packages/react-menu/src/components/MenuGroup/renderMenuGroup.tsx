@@ -7,7 +7,7 @@ import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
  * Redefine the render function to add slots. Reuse the menugroup structure but add
  * slots to children.
  */
-export const renderMenuGroup = (state: MenuGroupState, contextValues: MenuGroupContextValues) => {
+export const renderMenuGroup_unstable = (state: MenuGroupState, contextValues: MenuGroupContextValues) => {
   const { slots, slotProps } = getSlots<MenuGroupSlots>(state);
 
   return (

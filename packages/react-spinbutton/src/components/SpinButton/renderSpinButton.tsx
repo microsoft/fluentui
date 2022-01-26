@@ -5,7 +5,7 @@ import type { SpinButtonState, SpinButtonSlots } from './SpinButton.types';
 /**
  * Render the final JSX of SpinButton
  */
-export const renderSpinButton = (state: SpinButtonState) => {
+export const renderSpinButton_unstable = (state: SpinButtonState) => {
   const { slots, slotProps } = getSlots<SpinButtonSlots>(state);
 
   // TODO Add additional slots in the appropriate place

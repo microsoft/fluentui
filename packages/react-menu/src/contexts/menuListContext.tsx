@@ -28,5 +28,5 @@ export type MenuListContextValue = Pick<
 
 export const MenuListProvider = MenuListContext.Provider;
 
-export const useMenuListContext = <T,>(selector: ContextSelector<MenuListContextValue, T>) =>
+export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>) =>
   useContextSelector(MenuListContext, selector);

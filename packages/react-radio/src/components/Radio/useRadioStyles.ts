@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { RadioState } from './Radio.types';
 
 export const radioClassName = 'fui-Radio';
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Radio slots based on the state
  */
-export const useRadioStyles = (state: RadioState): RadioState => {
+export const useRadioStyles_unstable = (state: RadioState): RadioState => {
   const styles = useStyles();
   state.root.className = mergeClasses(radioClassName, styles.root, state.root.className);
 

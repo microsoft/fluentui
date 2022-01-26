@@ -38,13 +38,13 @@ export type ImageSlots = {
 export type ImageState = ComponentState<ImageSlots> & ImageCommons;
 
 // @public
-export const renderImage: (state: ImageState) => JSX.Element;
+export const renderImage_unstable: (state: ImageState) => JSX.Element;
 
 // @public
-export const useImage: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;
+export const useImage_unstable: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;
 
 // @public (undocumented)
-export const useImageStyles: (state: ImageState) => void;
+export const useImageStyles_unstable: (state: ImageState) => void;
 
 // (No @packageDocumentation comment for this package)
 

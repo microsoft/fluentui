@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderState } from './MenuGroupHeader.types';
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuGroupHeaderStyles = (state: MenuGroupHeaderState) => {
+export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(menuGroupHeaderClassName, styles.root, state.root.className);
 

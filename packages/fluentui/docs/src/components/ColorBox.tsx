@@ -97,9 +97,10 @@ export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVar
     fontSize: v.padding[p.size],
     padding: v.padding[p.size],
   }),
-  name: {
-    fontWeight: 'bold',
-  },
+  name: ({ variables: v }) => ({
+    color: v.colorBlack,
+    fontWeight: 700,
+  }),
   value: {
     fontFamily: 'Monospace',
     textAlign: 'right',

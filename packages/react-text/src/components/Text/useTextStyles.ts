@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TextState } from './Text.types';
 
@@ -103,7 +103,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Text slots based on the state
  */
-export const useTextStyles = (state: TextState): TextState => {
+export const useTextStyles_unstable = (state: TextState): TextState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(

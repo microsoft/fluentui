@@ -8,7 +8,7 @@ import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
  * @param props - Accordion properties
  * @param ref - reference to root HTMLElement of Accordion
  */
-export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
+export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
   const {
     openItems: controlledOpenItems,
     defaultOpenItems,

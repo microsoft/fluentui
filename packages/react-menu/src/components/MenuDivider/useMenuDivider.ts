@@ -5,7 +5,7 @@ import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
 /**
  * Given user props, returns state and render function for a MenuDivider.
  */
-export const useMenuDivider = (props: MenuDividerProps, ref: React.Ref<HTMLElement>): MenuDividerState => {
+export const useMenuDivider_unstable = (props: MenuDividerProps, ref: React.Ref<HTMLElement>): MenuDividerState => {
   return {
     components: {
       root: 'div',

@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createArrowHeightStyles, createArrowStyles } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
@@ -55,7 +55,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the PopoverSurface slots based on the state
  */
-export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurfaceState => {
+export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): PopoverSurfaceState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     popoverSurfaceClassName,

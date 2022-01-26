@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Combobox: remove default title attribute added to options.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

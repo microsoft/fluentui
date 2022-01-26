@@ -326,7 +326,6 @@ describe('migrate-converged-pkg generator', () => {
       expect(rootTsConfig.compilerOptions.paths).toEqual(
         expect.objectContaining({
           '@proj/react-dummy': ['packages/react-dummy/src/index.ts'],
-          '@proj/react-make-styles': ['packages/react-make-styles/src/index.ts'],
           '@proj/react-theme': ['packages/react-theme/src/index.ts'],
           '@proj/react-utilities': ['packages/react-utilities/src/index.ts'],
         }),
@@ -383,7 +382,7 @@ describe('migrate-converged-pkg generator', () => {
 
         const config = createConfig({
         setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
+        snapshotSerializers: ['@griffel/jest-serializer'],
         });
 
         module.exports = config;"
@@ -413,7 +412,7 @@ describe('migrate-converged-pkg generator', () => {
         },
         coverageDirectory: './coverage',
         setupFilesAfterEnv: ['./config/tests.js'],
-        snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
+        snapshotSerializers: ['@griffel/jest-serializer'],
         };"
       `);
     });
@@ -421,8 +420,7 @@ describe('migrate-converged-pkg generator', () => {
     it(`should add 'snapshotSerializers' to jest.config.js only when needed`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       function removePkgDependenciesThatTriggerSnapshotSerializersAddition() {
-        const workspaceConfig = readWorkspaceConfiguration(tree);
-        const packagesThatTriggerAddingSnapshots = [`@${workspaceConfig.npmScope}/react-make-styles`];
+        const packagesThatTriggerAddingSnapshots = ['@griffel/react'];
 
         updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
           packagesThatTriggerAddingSnapshots.forEach(pkgName => {
@@ -958,94 +956,61 @@ describe('migrate-converged-pkg generator', () => {
     }
 
     it(`should setup .babelrc.json`, async () => {
-      const babelMakeStylesPkg = getScopedPkgName(tree, 'babel-make-styles');
       const projectConfig = readProjectConfiguration(tree, options.name);
 
-      let packageJson = getPackageJson(projectConfig);
-      let devDeps = packageJson.devDependencies || {};
-      expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
-
       await generator(tree, options);
-
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        plugins: [
-          'module:@fluentui/babel-make-styles',
-          'annotate-pure-calls',
-          '@babel/transform-react-pure-annotations',
-        ],
+        presets: ['@griffel'],
+        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
       tree.delete(`${projectConfig.root}/.babelrc.json`);
 
       await generator(tree, options);
-
       babelConfig = getBabelConfig(projectConfig);
-      packageJson = getPackageJson(projectConfig);
-      devDeps = packageJson.devDependencies || {};
 
       expect(babelConfig).toEqual({
-        plugins: [
-          'module:@fluentui/babel-make-styles',
-          'annotate-pure-calls',
-          '@babel/transform-react-pure-annotations',
-        ],
+        presets: ['@griffel'],
+        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
-      expect(devDeps[babelMakeStylesPkg]).toBe('9.0.0-alpha.0');
     });
 
-    it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
+    it(`should add @griffel/babel-preset only if needed`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
-      const babelMakeStylesPkg = getScopedPkgName(tree, 'babel-make-styles');
 
       updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
         if (json.dependencies) {
-          delete json.dependencies[getScopedPkgName(tree, 'react-make-styles')];
-          delete json.dependencies[getScopedPkgName(tree, 'make-styles')];
+          delete json.dependencies['@griffel/react'];
         }
-
-        json.devDependencies = json.devDependencies || {};
-        json.devDependencies[babelMakeStylesPkg] = '^9.0.0-alpha.0';
 
         return json;
       });
 
       let babelConfig = getBabelConfig(projectConfig);
-      let packageJson = getPackageJson(projectConfig);
-      let devDeps = packageJson.devDependencies || {};
 
       expect(babelConfig).toEqual({
-        plugins: [
-          'module:@fluentui/babel-make-styles',
-          'annotate-pure-calls',
-          '@babel/transform-react-pure-annotations',
-        ],
-      });
-      expect(devDeps[babelMakeStylesPkg]).toBe('^9.0.0-alpha.0');
-
-      await generator(tree, options);
-
-      babelConfig = getBabelConfig(projectConfig);
-      packageJson = getPackageJson(projectConfig);
-      devDeps = packageJson.devDependencies || {};
-
-      expect(babelConfig).toEqual({
+        presets: ['@griffel'],
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
-      expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
+
+      await generator(tree, options);
+      babelConfig = getBabelConfig(projectConfig);
+
+      expect(babelConfig).toEqual({
+        presets: [],
+        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      });
 
       projectConfig = readProjectConfiguration(tree, '@proj/babel-make-styles');
       await generator(tree, { name: '@proj/babel-make-styles' });
-
       babelConfig = getBabelConfig(projectConfig);
-      packageJson = getPackageJson(projectConfig);
-      devDeps = packageJson.devDependencies || {};
 
       expect(babelConfig).toEqual({
+        presets: [],
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
-      expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
     });
   });
 
@@ -1219,14 +1184,15 @@ function setupDummyPackage(
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
-      [`@${workspaceConfig.npmScope}/react-make-styles`]: '^9.0.0-alpha.38',
+      [`@griffel/react`]: '1.0.0',
       [`@${workspaceConfig.npmScope}/react-theme`]: '^9.0.0-alpha.13',
       [`@${workspaceConfig.npmScope}/react-utilities`]: '^9.0.0-alpha.25',
       tslib: '^2.1.0',
       someThirdPartyDep: '^11.1.2',
     },
     babelConfig: {
-      plugins: ['module:@fluentui/babel-make-styles', 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      presets: ['@griffel'],
+      plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
     },
     tsConfig: { compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] } },
   };
@@ -1265,7 +1231,7 @@ function setupDummyPackage(
 
       const config = createConfig({
         setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
+        snapshotSerializers: ['@griffel/jest-serializer'],
       });
 
       module.exports = config;

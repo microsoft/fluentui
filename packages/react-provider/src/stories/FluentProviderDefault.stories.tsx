@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
 import { teamsDarkTheme, teamsLightTheme, tokens, webLightTheme } from '@fluentui/react-theme';
 
 import { FluentProvider } from '../FluentProvider';

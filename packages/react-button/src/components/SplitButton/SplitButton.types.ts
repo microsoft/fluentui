@@ -1,8 +1,10 @@
+import { Button } from '../Button/Button';
+import { MenuButton } from '../MenuButton/MenuButton';
 import type {
   ComponentProps,
+  ComponentSlotProps,
   ComponentState,
   IntrinsicShorthandProps,
-  ObjectShorthandProps,
 } from '@fluentui/react-utilities';
 import type { ButtonProps, ButtonState } from '../Button/Button.types';
 import type { MenuButtonProps, MenuButtonState } from '../MenuButton/MenuButton.types';
@@ -16,12 +18,12 @@ export type SplitButtonSlots = {
   /**
    * Button that opens menu with secondary actions in SplitButton.
    */
-  menuButton?: ObjectShorthandProps<MenuButtonProps>;
+  menuButton?: ComponentSlotProps<typeof MenuButton>;
 
   /**
    * Button to perform primary action in SplitButton.
    */
-  primaryActionButton?: ObjectShorthandProps<ButtonProps>;
+  primaryActionButton?: ComponentSlotProps<typeof Button>;
 };
 
 export type SplitButtonProps = ComponentProps<SplitButtonSlots> &
