@@ -26,11 +26,9 @@
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-beta.4",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.4",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-make-styles": "9.0.0-beta.4",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -47,9 +45,9 @@
   "dependencies": {
     "@fluentui/react-badge": "9.0.0-beta.4",
     "@fluentui/react-icons": "^2.0.154-beta.5",
-    "@fluentui/react-make-styles": "9.0.0-beta.4",
     "@fluentui/react-theme": "9.0.0-beta.4",
     "@fluentui/react-utilities": "9.0.0-beta.4",
+    "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

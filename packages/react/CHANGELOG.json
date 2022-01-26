@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 26 Jan 2022 07:26:00 GMT",
+      "tag": "@fluentui/react_v8.51.1",
+      "version": "8.51.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ac82359d84676daaa973050c5159871f77408f50",
+            "comment": "Re-add motion and font theme re-exports."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jan 2022 07:30:06 GMT",
       "tag": "@fluentui/react_v8.51.0",
       "version": "8.51.0",

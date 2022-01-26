@@ -5,11 +5,11 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentSlotProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import { LabelProps } from '@fluentui/react-label';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 
 // @public
@@ -42,7 +42,7 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
 // @public (undocumented)
 export type CheckboxSlots = {
     root: IntrinsicShorthandProps<'span'>;
-    label?: ObjectShorthandProps<LabelProps>;
+    label?: ComponentSlotProps<typeof Label>;
     input: IntrinsicShorthandProps<'input'>;
     indicator: IntrinsicShorthandProps<'div'>;
 };

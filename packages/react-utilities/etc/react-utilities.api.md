@@ -47,6 +47,9 @@ export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primar
     [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
 }, Primary & 'root'> & PropsWithoutRef<Shorthands[Primary]>;
 
+// @public
+export type ComponentSlotProps<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? ObjectShorthandProps<Props> : never;
+
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
     components: {

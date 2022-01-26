@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Replace make-styles packages with griffel equivalents.",
+  "packageName": "@fluentui/react-switch",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

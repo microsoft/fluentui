@@ -1,4 +1,4 @@
-import { shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles } from '@griffel/react';
 import { Label } from '@fluentui/react-label';
 import { Meta } from '@storybook/react';
 import * as React from 'react';
