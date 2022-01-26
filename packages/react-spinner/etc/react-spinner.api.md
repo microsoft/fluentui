@@ -17,6 +17,9 @@ export const renderSpinner_unstable: (state: SpinnerState) => JSX.Element;
 export const Spinner: ForwardRefComponent<SpinnerProps>;
 
 // @public (undocumented)
+export const spinnerClassName = "fui-Spinner";
+
+// @public (undocumented)
 export type SpinnerCommons = {};
 
 // @public
