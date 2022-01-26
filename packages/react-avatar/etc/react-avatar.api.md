@@ -5,11 +5,11 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
+import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { ShorthandRenderFunction } from '@fluentui/react-utilities';
 
@@ -48,7 +48,7 @@ export type AvatarSlots = {
     image?: IntrinsicShorthandProps<'img'>;
     initials?: IntrinsicShorthandProps<'span'>;
     icon?: IntrinsicShorthandProps<'span'>;
-    badge?: ObjectShorthandProps<PresenceBadgeProps>;
+    badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
 
 // @public

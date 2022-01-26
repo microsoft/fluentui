@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { PresenceBadge } from '@fluentui/react-badge';
 import type {
   ComponentProps,
+  ComponentSlotProps,
   ComponentState,
   IntrinsicShorthandProps,
-  ObjectShorthandProps,
   ShorthandRenderFunction,
 } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
 export type AvatarSlots = {
   root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
@@ -34,7 +34,7 @@ export type AvatarSlots = {
   /**
    * Badge to show the avatar's presence status.
    */
-  badge?: ObjectShorthandProps<PresenceBadgeProps>;
+  badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
 
 export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
