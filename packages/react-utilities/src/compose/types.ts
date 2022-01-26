@@ -39,11 +39,16 @@ export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = 
 /**
  * Defines the slot props for a slot that supports a Component type.
  *
- * For intrinsic elements like 'div', use {@link IntrinsicShorthandProps} instead.
+ * For intrinsic/native elements like 'div', use {@link IntrinsicShorthandProps} instead.
  *
- * The template param is the type of a control, using the `typeof` keyword. For example:
+ * The generic param is the type of a control, i.e. a React component. For example:
+ *
+ * @example
  * ```
- * ComponentSlotProps<typeof Button>
+ * type Props = {...}
+ * const Button: React.FC<Props> = () => {...}
+ * // $ExpectType ...
+ * type SlotProps = ComponentSlotProps<typeof Button>
  * ```
  */
 export type ComponentSlotProps<Component extends React.ComponentType> = Component extends React.ComponentType<

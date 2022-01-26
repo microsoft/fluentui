@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import {
   presenceAvailableFilled,
   presenceAvailableRegular,
@@ -11,7 +11,7 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
-import { useBadge_unstable } from '../Badge/index';
+import { useBadge_unstable, BadgeProps } from '../Badge/index';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
 
 const iconMap = (
@@ -47,7 +47,7 @@ export const usePresenceBadge_unstable = (
       {
         size: 'medium',
         ...props,
-        icon: resolveShorthand((undefined as unknown) as IntrinsicShorthandProps<'span'>, {
+        icon: resolveShorthand(undefined as BadgeProps['icon'], {
           required: true,
         }),
       },
