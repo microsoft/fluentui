@@ -8,7 +8,6 @@ import { NavBase } from './Nav.base';
 import { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
 import { IRenderFunction, IComponentAsProps } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
-import { group } from 'console';
 
 const linkOne: INavLink = {
   key: 'Bing',
