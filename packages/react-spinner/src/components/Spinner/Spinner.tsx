@@ -6,7 +6,7 @@ import type { SpinnerProps } from './Spinner.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Spinner component
+ * Converged Spinner component for the fluentui repo
  */
 export const Spinner: ForwardRefComponent<SpinnerProps> = React.forwardRef((props, ref) => {
   const state = useSpinner_unstable(props, ref);
