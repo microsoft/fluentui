@@ -5273,9 +5273,11 @@ export interface IDocumentCardTitle {
 export interface IDocumentCardTitleProps extends React_2.ClassAttributes<DocumentCardTitleBase> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardTitle>;
+    role?: string;
     shouldTruncate?: boolean;
     showAsSecondaryTitle?: boolean;
     styles?: IStyleFunctionOrObject<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>;
+    tabIndex?: number;
     theme?: ITheme;
     title: string;
 }
