@@ -33,5 +33,5 @@ export type PopoverContextValue = Pick<
   | 'trapFocus'
 >;
 
-export const usePopoverContext = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>
+export const usePopoverContext_unstable = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>
   useContextSelector(PopoverContext, selector);

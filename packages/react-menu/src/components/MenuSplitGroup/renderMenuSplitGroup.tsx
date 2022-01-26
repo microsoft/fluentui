@@ -5,7 +5,7 @@ import type { MenuSplitGroupState, MenuSplitGroupSlots } from './MenuSplitGroup.
 /**
  * Render the final JSX of MenuSplitGroup
  */
-export const renderMenuSplitGroup = (state: MenuSplitGroupState) => {
+export const renderMenuSplitGroup_unstable = (state: MenuSplitGroupState) => {
   const { slots, slotProps } = getSlots<MenuSplitGroupSlots>(state);
 
   return <slots.root {...slotProps.root} />;

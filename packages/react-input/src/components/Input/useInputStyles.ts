@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { InputState } from './Input.types';
 
@@ -236,7 +236,7 @@ const useContentStyles = makeStyles({
 /**
  * Apply styling to the Input slots based on the state
  */
-export const useInputStyles = (state: InputState): InputState => {
+export const useInputStyles_unstable = (state: InputState): InputState => {
   const { size, appearance } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');

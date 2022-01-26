@@ -6,4 +6,4 @@ import * as React from 'react';
 const MenuTriggerContext = React.createContext<boolean>(false);
 
 export const MenuTriggerContextProvider = MenuTriggerContext.Provider;
-export const useMenuTriggerContext = () => React.useContext(MenuTriggerContext);
+export const useMenuTriggerContext_unstable = () => React.useContext(MenuTriggerContext);

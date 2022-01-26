@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { useAccordionItem } from './useAccordionItem';
-import { useAccordionItemContextValues } from './useAccordionItemContextValues';
-import { renderAccordionItem } from './renderAccordionItem';
+import { useAccordionItem_unstable } from './useAccordionItem';
+import { useAccordionItemContextValues_unstable } from './useAccordionItemContextValues';
+import { renderAccordionItem_unstable } from './renderAccordionItem';
 import type { AccordionItemProps } from './AccordionItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useAccordionItemStyles } from './useAccordionItemStyles';
+import { useAccordionItemStyles_unstable } from './useAccordionItemStyles';
 
 /**
- * Define a styled AccordionItem, using the `useAccordionItem` and `useAccordionItemStyles` hooks.
+ * Define a styled AccordionItem, using the `useAccordionItem_unstable` and `useAccordionItemStyles_unstable` hooks.
  */
 export const AccordionItem: ForwardRefComponent<AccordionItemProps> = React.forwardRef((props, ref) => {
-  const state = useAccordionItem(props, ref);
-  const contextValues = useAccordionItemContextValues(state);
+  const state = useAccordionItem_unstable(props, ref);
+  const contextValues = useAccordionItemContextValues_unstable(state);
 
-  useAccordionItemStyles(state);
+  useAccordionItemStyles_unstable(state);
 
-  return renderAccordionItem(state, contextValues);
+  return renderAccordionItem_unstable(state, contextValues);
 });
 
 AccordionItem.displayName = 'AccordionItem';

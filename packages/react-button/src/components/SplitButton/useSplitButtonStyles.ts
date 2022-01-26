@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SplitButtonState } from './SplitButton.types';
@@ -135,7 +135,7 @@ const useRootStyles = makeStyles({
   },
 });
 
-export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState => {
+export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitButtonState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
 

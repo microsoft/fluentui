@@ -6,7 +6,7 @@ import type { SwitchProps, SwitchState } from './Switch.types';
 /**
  * Given user props, returns state and render function for a Switch.
  */
-export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): SwitchState => {
+export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLElement>): SwitchState => {
   const { track, thumbWrapper, thumb, activeRail, input, defaultChecked, checked, disabled, onChange } = props;
   const state: SwitchState = {
     defaultChecked,

@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { useMenuList } from './useMenuList';
+import { useMenuList_unstable } from './useMenuList';
 
 jest.mock('@fluentui/react-tabster');
 (useFocusFinders as jest.Mock).mockReturnValue({
   findAllFocusable: jest.fn(),
 });
 
-describe('useMenuList', () => {
+describe('useMenuList_unstable', () => {
   it('should respect defaultCheckedValues on initial render', () => {
     // Arrange
     const defaultCheckedValues = { foo: ['1'] };
 
     // Act
-    const { result } = renderHook(() => useMenuList({ defaultCheckedValues }, null));
+    const { result } = renderHook(() => useMenuList_unstable({ defaultCheckedValues }, null));
 
     // Assert
     expect(result.current.checkedValues).toEqual(defaultCheckedValues);
@@ -26,7 +26,7 @@ describe('useMenuList', () => {
     const checkedValues = { bar: ['2'] };
 
     // Act
-    const { result } = renderHook(() => useMenuList({ checkedValues, defaultCheckedValues }, null));
+    const { result } = renderHook(() => useMenuList_unstable({ checkedValues, defaultCheckedValues }, null));
 
     // Assert
     expect(result.current.checkedValues).toEqual(checkedValues);
@@ -38,7 +38,7 @@ describe('useMenuList', () => {
     const expectedCheckedValues = { foo: ['2'] };
 
     // Act
-    const { result } = renderHook(() => useMenuList({ defaultCheckedValues }, null));
+    const { result } = renderHook(() => useMenuList_unstable({ defaultCheckedValues }, null));
     act(() => result.current.selectRadio(({} as unknown) as React.MouseEvent, 'foo', '2', false));
 
     // Assert
@@ -71,7 +71,7 @@ describe('useMenuList', () => {
       const current = menuitems[3];
 
       // Act
-      const { result } = renderHook(() => useMenuList({}, null));
+      const { result } = renderHook(() => useMenuList_unstable({}, null));
       (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
       result.current.setFocusByFirstCharacter(createEvent(current.textContent), current);
 
@@ -87,7 +87,7 @@ describe('useMenuList', () => {
       const current = menuitems[1];
 
       // Act
-      const { result } = renderHook(() => useMenuList({}, null));
+      const { result } = renderHook(() => useMenuList_unstable({}, null));
       (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
       result.current.setFocusByFirstCharacter(createEvent('d'), current);
 
@@ -104,7 +104,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() =>
-        useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: undefined }, null),
+        useMenuList_unstable({ onCheckedValueChange: jest.fn(), checkedValues: undefined }, null),
       );
       act(() => result.current.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, false));
 
@@ -124,7 +124,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() =>
-        useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
+        useMenuList_unstable({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
       act(() => state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked));
@@ -146,7 +146,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() =>
-        useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: undefined }, null),
+        useMenuList_unstable({ onCheckedValueChange: jest.fn(), checkedValues: undefined }, null),
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       act(() => result.current.selectRadio({} as any, name, value, false));
@@ -165,7 +165,7 @@ describe('useMenuList', () => {
       const value = '1';
       // Act
       const { result } = renderHook(() =>
-        useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
+        useMenuList_unstable({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
       act(() => state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true));

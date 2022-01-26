@@ -17,13 +17,13 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
 /**
  * Create the state required to render Tooltip.
  *
- * The returned state can be modified with hooks such as useTooltipStyles,
- * before being passed to renderTooltip.
+ * The returned state can be modified with hooks such as useTooltipStyles_unstable,
+ * before being passed to renderTooltip_unstable.
  *
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
  */
-export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
+export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();

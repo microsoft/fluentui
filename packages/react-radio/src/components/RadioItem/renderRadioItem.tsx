@@ -5,7 +5,7 @@ import type { RadioItemState, RadioItemSlots } from './RadioItem.types';
 /**
  * Render the final JSX of RadioItem
  */
-export const renderRadioItem = (state: RadioItemState) => {
+export const renderRadioItem_unstable = (state: RadioItemState) => {
   const { slots, slotProps } = getSlots<RadioItemSlots>(state);
 
   return (

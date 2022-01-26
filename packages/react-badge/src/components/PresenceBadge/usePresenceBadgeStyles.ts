@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { PresenceBadgeState } from './PresenceBadge.types';
 
@@ -78,7 +78,7 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadgeState => {
+export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     presenceBadgeClassName,
