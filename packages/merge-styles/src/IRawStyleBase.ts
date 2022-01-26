@@ -1269,13 +1269,17 @@ export interface IRawStyleBase extends IRawFontStyle {
 
   /**
    * The margin-block-end CSS property defines the logical block end margin of an element, which maps to a physical
-   * margin depending on the element's writing mode, directionality, and text orientation.
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
    */
   marginBlockEnd?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The margin-block-start CSS property defines the logical block start margin of an element, which maps to a physical
-   * margin depending on the element's writing mode, directionality, and text orientation.
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
    */
   marginBlockStart?: ICSSRule | ICSSPixelUnitRule;
 
@@ -1286,9 +1290,9 @@ export interface IRawStyleBase extends IRawFontStyle {
 
   /**
    * The margin-inline-end CSS property defines the logical inline end margin of an element, which maps to a physical
-   * margin depending on the element's writing mode, directionality, and text orientation. In other words, it
-   * corresponds to the margin-top, margin-right, margin-bottom or margin-left property depending on the values defined
-   * for writing-mode, direction, and text-orientation.
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
    */
   marginInlineEnd?: ICSSRule | ICSSPixelUnitRule;
 
