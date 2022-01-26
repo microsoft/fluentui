@@ -144,6 +144,7 @@ packages/react-portal/ @microsoft/teams-prg
 packages/react-provider/ @microsoft/teams-prg
 packages/react-radio/ @microsoft/cxe-red
 packages/react-slider/ @microsoft/cxe-coastal @micahgodbolt
+packages/react-spinner/ @microsoft/cxe-red @tomi-msft
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
 packages/react-tabs/ @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text/ @microsoft/cxe-prg
