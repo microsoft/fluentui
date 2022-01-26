@@ -1,19 +1,22 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
-import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuItem } from '../MenuItem/useMenuItem';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
+import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 
 /**
  * Given user props, returns state and render function for a MenuItemRadio.
  */
-export const useMenuItemRadio = (props: MenuItemRadioProps, ref: React.Ref<HTMLElement>): MenuItemRadioState => {
+export const useMenuItemRadio_unstable = (
+  props: MenuItemRadioProps,
+  ref: React.Ref<HTMLElement>,
+): MenuItemRadioState => {
   const radioProps = {
     role: 'menuitemradio',
   };
 
-  const state = useMenuItem(
+  const state = useMenuItem_unstable(
     {
       ...radioProps,
       ...props,
@@ -25,9 +28,9 @@ export const useMenuItemRadio = (props: MenuItemRadioProps, ref: React.Ref<HTMLE
     ref,
   ) as MenuItemRadioState;
 
-  const selectRadio = useMenuListContext(context => context.selectRadio);
+  const selectRadio = useMenuListContext_unstable(context => context.selectRadio);
   const { onClick: onClickOriginal } = state.root;
-  const checked = useMenuListContext(context => {
+  const checked = useMenuListContext_unstable(context => {
     const checkedItems = context.checkedValues?.[state.name] || [];
     return checkedItems.indexOf(state.value) !== -1;
   });

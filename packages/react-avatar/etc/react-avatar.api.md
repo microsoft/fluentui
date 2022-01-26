@@ -21,8 +21,7 @@ export const avatarClassName = "fui-Avatar";
 
 // @public (undocumented)
 export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
-    name: string;
-    getInitials: (name: string, isRtl: boolean) => string;
+    name?: string;
     size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
     shape: 'circular' | 'square';
     active: 'active' | 'inactive' | 'unset';
@@ -47,7 +46,7 @@ export type AvatarSlots = {
         children?: never;
     };
     image?: IntrinsicShorthandProps<'img'>;
-    label?: IntrinsicShorthandProps<'span'>;
+    initials?: IntrinsicShorthandProps<'span'>;
     icon?: IntrinsicShorthandProps<'span'>;
     badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
@@ -58,13 +57,13 @@ export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
 };
 
 // @public (undocumented)
-export const renderAvatar: (state: AvatarState) => JSX.Element;
+export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public (undocumented)
-export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
 
 // @public (undocumented)
-export const useAvatarStyles: (state: AvatarState) => AvatarState;
+export const useAvatarStyles_unstable: (state: AvatarState) => AvatarState;
 
 // (No @packageDocumentation comment for this package)
 

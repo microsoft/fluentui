@@ -1,5 +1,6 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { SwitchState } from './Switch.types';
 
 export const switchClassName = 'fui-Switch';
@@ -10,7 +11,7 @@ const thumbClassName = `${switchClassName}-thumb`;
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
-  root: theme => ({
+  root: {
     '--switch-width': '40px',
     '--switch-height': '20px',
     '--switch-thumb-size': '14px',
@@ -24,35 +25,35 @@ const useRootStyles = makeStyles({
     userSelect: 'none',
     touchAction: 'none',
     verticalAlign: 'bottom',
-  }),
+  },
 
-  unchecked: theme => ({
+  unchecked: {
     [`:hover .${thumbClassName}`]: {
       ':before': {
-        backgroundColor: theme.colorNeutralStrokeAccessibleHover,
+        backgroundColor: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
 
     [`:hover .${trackClassName}`]: {
       ':before': {
-        borderColor: theme.colorNeutralStrokeAccessibleHover,
+        borderColor: tokens.colorNeutralStrokeAccessibleHover,
       },
     },
-  }),
+  },
 
-  checked: theme => ({
+  checked: {
     [`:hover .${trackClassName}`]: {
       ':after': {
-        backgroundColor: theme.colorBrandBackgroundHover,
+        backgroundColor: tokens.colorBrandBackgroundHover,
       },
     },
 
     [`:active .${trackClassName}`]: {
       ':after': {
-        backgroundColor: theme.colorBrandBackgroundPressed,
+        backgroundColor: tokens.colorBrandBackgroundPressed,
       },
     },
-  }),
+  },
 
   enabled: {
     '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
@@ -64,15 +65,14 @@ const useRootStyles = makeStyles({
     pointerEvents: 'none',
   },
 
-  focusIndicator: theme =>
-    createFocusOutlineStyle(theme, { selector: 'focus-within', style: { outlineOffset: '8px' } }),
+  focusIndicator: createFocusOutlineStyle({ selector: 'focus-within', style: { outlineOffset: '8px' } }),
 });
 
 /**
  * Styles for the track slot
  */
 const useTrackStyles = makeStyles({
-  track: theme => ({
+  track: {
     position: 'absolute',
     width: '100%',
     height: '100%',
@@ -105,34 +105,34 @@ const useTrackStyles = makeStyles({
       content: "''",
       opacity: 'var(--switch-checked-opacity)',
     },
-  }),
+  },
 
-  unchecked: theme => ({
+  unchecked: {
     ':before': {
-      ...shorthands.border('1px', 'solid', theme.colorNeutralStrokeAccessible),
+      ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeAccessible),
       backgroundColor: 'transparent',
     },
-  }),
+  },
 
-  checked: theme => ({
+  checked: {
     ':after': {
-      backgroundColor: theme.colorBrandBackground,
+      backgroundColor: tokens.colorBrandBackground,
       ...shorthands.borderStyle('none'),
     },
-  }),
+  },
 
-  disabledUnchecked: theme => ({
+  disabledUnchecked: {
     ':before': {
-      ...shorthands.border('1px', 'solid', theme.colorNeutralStrokeDisabled),
+      ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
     },
-  }),
+  },
 
-  disabledChecked: theme => ({
+  disabledChecked: {
     ':after': {
-      ...shorthands.border('1px', 'solid', theme.colorTransparentStrokeDisabled),
-      backgroundColor: theme.colorNeutralBackgroundDisabled,
+      ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
     },
-  }),
+  },
 });
 
 /**
@@ -154,12 +154,12 @@ const useThumbWrapperStyles = makeStyles({
  * Styles for the thumb slot
  */
 const useThumbStyles = makeStyles({
-  thumb: theme => ({
+  thumb: {
     position: 'absolute',
     width: 'var(--switch-thumb-size)',
     height: 'var(--switch-thumb-size)',
     boxSizing: 'border-box',
-    ...shorthands.borderRadius(theme.borderRadiusCircular),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
     top: '50%',
     transform: 'translate(-50%, -50%)',
     transitionProperty: 'backgroundColor',
@@ -174,7 +174,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      ...shorthands.borderRadius(theme.borderRadiusCircular),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       content: "''",
       opacity: 'var(--switch-unchecked-opacity)',
     },
@@ -185,36 +185,36 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      ...shorthands.borderRadius(theme.borderRadiusCircular),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
       content: "''",
       opacity: 'var(--switch-checked-opacity)',
     },
-  }),
+  },
 
-  unchecked: theme => ({
+  unchecked: {
     ':before': {
-      backgroundColor: theme.colorNeutralStrokeAccessible,
+      backgroundColor: tokens.colorNeutralStrokeAccessible,
     },
-  }),
+  },
 
-  checked: theme => ({
+  checked: {
     ':after': {
-      backgroundColor: theme.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorNeutralForegroundOnBrand,
     },
-  }),
+  },
 
-  disabledUnchecked: theme => ({
+  disabledUnchecked: {
     ':before': {
-      ...shorthands.border('1px', 'solid', theme.colorNeutralForegroundDisabled),
-      backgroundColor: theme.colorNeutralBackground1,
+      ...shorthands.border('1px', 'solid', tokens.colorNeutralForegroundDisabled),
+      backgroundColor: tokens.colorNeutralBackground1,
     },
-  }),
+  },
 
-  disabledChecked: theme => ({
+  disabledChecked: {
     ':after': {
-      backgroundColor: theme.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 });
 
 /**
@@ -247,7 +247,7 @@ const useInputStyle = makeStyles({
 /**
  * Apply styling to the Switch slots based on the state
  */
-export const useSwitchStyles = (state: SwitchState): SwitchState => {
+export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   const { checked, disabled } = state.input;
 
   const rootStyles = useRootStyles();

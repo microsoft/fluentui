@@ -1,44 +1,60 @@
 {
   "migrations": [
     {
-      "version": "12.1.2-beta.1",
-      "cli": "nx",
-      "description": "Replace tsConfig with tsconfig for ts-jest in jest.config.js",
-      "factory": "./src/migrations/update-12-1-2/update-ts-jest",
-      "package": "@nrwl/jest",
-      "name": "update-ts-jest-6-5-5"
-    },
-    {
-      "version": "12.4.0-beta.1",
-      "cli": "nx",
-      "description": "Add testEnvironment: 'jsdom' in web apps + libraries",
-      "factory": "./src/migrations/update-12-4-0/add-test-environment-for-node",
-      "package": "@nrwl/jest",
-      "name": "support-jest-27"
-    },
-    {
-      "version": "12.4.0-beta.1",
-      "cli": "nx",
-      "description": "Support for Jest 27 via updating ts-jest + jest-preset-angular",
-      "factory": "./src/migrations/update-12-4-0/update-jest-preset-angular",
-      "package": "@nrwl/jest",
-      "name": "update-ts-jest-and-jest-preset-angular"
-    },
-    {
-      "cli": "nx",
-      "version": "12.4.0-beta.0",
-      "description": "Remove ESLint parserOptions.project config if no rules requiring type-checking are in use",
-      "factory": "./src/migrations/update-12-4-0/remove-eslint-project-config-if-no-type-checking-rules",
-      "package": "@nrwl/linter",
-      "name": "remove-eslint-project-config-if-no-type-checking-rules"
-    },
-    {
-      "version": "12.5.0-beta.1",
-      "description": "Rename the workspace-schematic script into workspace-generator script",
-      "factory": "./src/migrations/update-12-5-0/add-target-dependencies",
+      "version": "13.0.0-beta.1",
+      "description": "Add default base to nx.json if its not currently set",
+      "factory": "./src/migrations/update-13-0-0/set-default-base-if-not-set",
       "cli": "nx",
       "package": "@nrwl/workspace",
-      "name": "add-target-dependencies"
+      "name": "set-default-base-if-not-set"
+    },
+    {
+      "cli": "nx",
+      "version": "13.0.0-beta.1",
+      "description": "Remove packages installed by Nx 12's `@nrwl/node:webpack5` generator.",
+      "factory": "./src/migrations/update-13-0-0/remove-webpack-5-packages-13-0-0",
+      "package": "@nrwl/node",
+      "name": "remove-webpack-5-packages"
+    },
+    {
+      "version": "13.0.0-beta.4",
+      "description": "Move global settings into nx.json, and project specific settings into workspace.json",
+      "cli": "nx",
+      "implementation": "./src/migrations/update-13-0-0/config-locations/config-locations",
+      "package": "@nrwl/workspace",
+      "name": "13-0-0-config-locations"
+    },
+    {
+      "version": "13.1.2-beta.0",
+      "cli": "nx",
+      "description": "Support .test. file names in tsconfigs",
+      "factory": "./src/migrations/update-13-1-2/update-tsconfigs-for-tests",
+      "package": "@nrwl/jest",
+      "name": "update-ts-config-for-test-filenames"
+    },
+    {
+      "version": "13.2.0",
+      "description": "Set --parallel=1 for existing repos to preserve the existing behavior",
+      "cli": "nx",
+      "implementation": "./src/migrations/update-13-2-0/set-parallel-default",
+      "package": "@nrwl/workspace",
+      "name": "set-parallel-default"
+    },
+    {
+      "version": "13.3.0-beta.0",
+      "description": "@nrwl/workspace:tsc is now @nrwl/js:tsc",
+      "cli": "nx",
+      "implementation": "./src/migrations/update-13-3-0/update-tsc-executor-location",
+      "package": "@nrwl/workspace",
+      "name": "13-3-0-tsc-location"
+    },
+    {
+      "version": "13.4.4-beta.0",
+      "cli": "nx",
+      "description": "Create a root babel config file if it doesn't exist and using babel-jest in jest.config.js and add @nrwl/web as needed",
+      "factory": "./src/migrations/update-13-4-4/add-missing-root-babel-config",
+      "package": "@nrwl/jest",
+      "name": "add-missing-root-babel-config"
     }
   ]
 }

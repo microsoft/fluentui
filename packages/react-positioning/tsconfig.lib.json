@@ -5,7 +5,7 @@
     "lib": ["ES2019", "dom"],
     "outDir": "dist",
     "declaration": true,
-    "types": ["static-assets", "environment", "inline-style-expand-shorthand"]
+    "types": ["static-assets", "environment"]
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]

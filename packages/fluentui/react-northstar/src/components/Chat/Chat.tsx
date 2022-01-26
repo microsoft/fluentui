@@ -22,7 +22,8 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import { ChatDensity, ChatDensityContextProvider, defaultChatDensity } from './chatDensityContext';
+import { ChatContextProvider, ChatContextValue } from './chatContext';
+import { ChatDensity, defaultChatDensity } from './chatDensity';
 import { ChatItem, ChatItemProps } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
@@ -79,6 +80,16 @@ export const Chat = (React.forwardRef<HTMLUListElement, ChatProps>((props, ref) 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Chat.handledProps, props);
 
+  const childBehaviors = accessibility && (accessibility as Accessibility<ChatProps>)(props).childBehaviors;
+
+  const contextProps: ChatContextValue = {
+    density,
+    behaviors: {
+      item: childBehaviors?.item,
+      message: childBehaviors?.message,
+    },
+  };
+
   const element = getA11Props.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11Props('root', {
@@ -88,7 +99,7 @@ export const Chat = (React.forwardRef<HTMLUListElement, ChatProps>((props, ref) 
         ...unhandledProps,
       })}
     >
-      <ChatDensityContextProvider value={density}>
+      <ChatContextProvider value={contextProps}>
         {childrenExist(children)
           ? children
           : _.map(items, item =>
@@ -96,7 +107,7 @@ export const Chat = (React.forwardRef<HTMLUListElement, ChatProps>((props, ref) 
                 defaultProps: () => ({ className: chatSlotClassNames.item }),
               }),
             )}
-      </ChatDensityContextProvider>
+      </ChatContextProvider>
     </ElementType>,
   );
   setEnd();

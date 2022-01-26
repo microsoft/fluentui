@@ -47,6 +47,9 @@ const DetailsListShimmerExampleCode = require('!raw-loader?esModule=false!@fluen
 import { DetailsListCustomFooterExample } from './DetailsList.CustomFooter.Example';
 const DetailsListCustomFooterExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomFooter.Example.tsx') as string;
 
+import { DetailsListKeyboardAccessibleResizeAndReorderExample } from './DetailsList.KeyboardAccessibleResizeAndReorder.Example';
+const DetailsListKeyboardAccessibleResizeAndReorderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardAccessibleResizeAndReorder.Example.tsx') as string;
+
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
@@ -156,4 +159,10 @@ export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
   title: 'Rendering custom DetailsList footer',
   code: DetailsListCustomFooterExampleCode,
   view: <DetailsListCustomFooterExample />,
+});
+
+export const DetailsListKeyboardAccessibleResizeAndReorderProps: IDocPageProps = generateProps({
+  title: 'Keyboard-accessible column reordering and resizing',
+  code: DetailsListKeyboardAccessibleResizeAndReorderExampleCode,
+  view: <DetailsListKeyboardAccessibleResizeAndReorderExample />,
 });

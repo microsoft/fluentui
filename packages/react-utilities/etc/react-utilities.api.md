@@ -52,7 +52,7 @@ export type ComponentSlotProps<Component extends React_2.ComponentType> = Compon
 
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
-    components?: {
+    components: {
         [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & Shorthands;
@@ -101,7 +101,7 @@ export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPr
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
-export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>, slotNames?: (keyof R)[]): {
+export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: SlotProps<R>;
 };
@@ -308,6 +308,17 @@ export function useSSRContext(): SSRContextValue;
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 
 // @public
+export function useTriggerElement<TriggerProps extends React_2.HTMLProps<unknown>>(options: UseTriggerElementOptions<TriggerProps>): React_2.ReactNode;
+
+// @public (undocumented)
+export type UseTriggerElementOptions<TriggerProps> = {
+    children: React_2.ReactElement | ((props: TriggerProps) => React_2.ReactNode) | null | undefined;
+    ref: React_2.Ref<unknown> | undefined;
+    outerProps: React_2.HTMLProps<unknown>;
+    overrideProps: TriggerProps;
+};
+
+// @public
 export const useUnmount: (callback: () => void) => void;
 
 // @public
@@ -315,7 +326,7 @@ export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
-// lib/compose/getSlots.d.ts:29:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
+// lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

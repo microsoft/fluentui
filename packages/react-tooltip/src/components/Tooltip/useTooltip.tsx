@@ -12,22 +12,18 @@ import {
   useTimeout,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
-
-// Style values that are required for popper to properly position the tooltip
-const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes
-const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts if this changes
+import { arrowHeight, tooltipBorderRadius } from './private/constants';
 
 /**
  * Create the state required to render Tooltip.
  *
- * The returned state can be modified with hooks such as useTooltipStyles,
- * before being passed to renderTooltip.
+ * The returned state can be modified with hooks such as useTooltipStyles_unstable,
+ * before being passed to renderTooltip_unstable.
  *
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
+export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
@@ -35,7 +31,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
 
   const {
     content,
-    inverted,
+    appearance,
     withArrow,
     positioning,
     onVisibleChange,
@@ -60,7 +56,6 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
 
   const state: TooltipState = {
     content,
-    inverted,
     withArrow,
     positioning,
     showDelay,
@@ -68,7 +63,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     triggerAriaAttribute,
     visible,
     shouldRenderTooltip: visible,
-    appearance: props.appearance,
+    appearance,
 
     // Slots
     components: {

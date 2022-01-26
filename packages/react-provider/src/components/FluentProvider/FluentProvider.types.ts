@@ -1,7 +1,6 @@
 import type {
   ProviderContextValue,
   TooltipContextType,
-  ThemeContextValue,
   ThemeClassNameContextValue,
 } from '@fluentui/react-shared-contexts';
 import type { PartialTheme, Theme } from '@fluentui/react-theme';
@@ -26,13 +25,13 @@ export interface FluentProviderProps
 }
 
 export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
-  theme: Theme;
+  theme: Theme | Partial<Theme> | undefined;
   themeClassName: string;
 }
 
-export interface FluentProviderContextValues {
+export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
   provider: ProviderContextValue;
-  theme: ThemeContextValue;
   themeClassName: ThemeClassNameContextValue;
+  textDirection: 'ltr' | 'rtl';
   tooltip: TooltipContextType;
 }

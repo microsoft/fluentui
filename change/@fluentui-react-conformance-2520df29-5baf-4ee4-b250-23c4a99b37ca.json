@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix consistent-callback-args test to handle string literal types",
-  "packageName": "@fluentui/react-conformance",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

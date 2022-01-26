@@ -1,5 +1,6 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createArrowStyles } from '@fluentui/react-positioning';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { createArrowHeightStyles, createArrowStyles } from '@fluentui/react-positioning';
+import { tokens } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceState } from './PopoverSurface.types';
 
@@ -15,54 +16,46 @@ export const arrowHeights: Record<PopoverSize, number> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
-    backgroundColor: theme.colorNeutralBackground1,
-    boxShadow: theme.shadow16,
+  root: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow16,
     ...shorthands.borderRadius('4px'),
-    ...shorthands.border('1px', 'solid', theme.colorTransparentStroke),
-  }),
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+  },
 
-  inverted: theme => ({
+  inverted: {
     // TODO: neutral background inverted missing from superset and theme
-    backgroundColor: theme.colorNeutralForeground1,
-    color: theme.colorNeutralForegroundInverted,
-  }),
+    backgroundColor: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForegroundInverted,
+  },
 
-  brand: theme => ({
-    backgroundColor: theme.colorBrandBackground,
+  brand: {
+    backgroundColor: tokens.colorBrandBackground,
     // TODO: clarify with designers what foreground color should be with brand background,
-    color: theme.colorNeutralForegroundInverted,
-  }),
+    color: tokens.colorNeutralForegroundInverted,
+  },
 
-  smallPadding: () => ({
+  smallPadding: {
     ...shorthands.padding('12px'),
-  }),
+  },
 
-  mediumPadding: () => ({
+  mediumPadding: {
     ...shorthands.padding('16px'),
-  }),
+  },
 
-  largePadding: () => ({
+  largePadding: {
     ...shorthands.padding('20px'),
-  }),
+  },
 
-  smallArrow: () => ({
-    width: `${Math.SQRT2 * arrowHeights.small}px`,
-    height: `${Math.SQRT2 * arrowHeights.small}px`,
-  }),
-
-  mediumLargeArrow: () => ({
-    width: `${Math.SQRT2 * arrowHeights.medium}px`,
-    height: `${Math.SQRT2 * arrowHeights.medium}px`,
-  }),
-
-  arrow: createArrowStyles(),
+  smallArrow: createArrowHeightStyles(arrowHeights.small),
+  mediumLargeArrow: createArrowHeightStyles(arrowHeights.medium),
+  arrow: createArrowStyles({ arrowHeight: undefined }),
 });
 
 /**
  * Apply styling to the PopoverSurface slots based on the state
  */
-export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurfaceState => {
+export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): PopoverSurfaceState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     popoverSurfaceClassName,

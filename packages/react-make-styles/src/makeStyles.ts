@@ -1,10 +1,9 @@
-import { makeStyles as vanillaMakeStyles } from '@fluentui/make-styles';
+import { makeStyles as vanillaMakeStyles } from '@griffel/core';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
 import { useRenderer } from './RendererContext';
-import type { MakeStylesOptions, MakeStylesStyleRule } from '@fluentui/make-styles';
-import type { Theme } from '@fluentui/react-theme';
+import type { MakeStylesOptions, GriffelStyle } from '@griffel/core';
 
 function isInsideComponent() {
   try {
@@ -16,7 +15,7 @@ function isInsideComponent() {
   }
 }
 
-export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
+export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, GriffelStyle>) {
   const getStyles = vanillaMakeStyles(stylesBySlots);
 
   if (process.env.NODE_ENV !== 'production') {

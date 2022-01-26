@@ -105,6 +105,9 @@ export const formatYear: (date: Date) => string;
 export const getBoundedDateRange: (dateRange: Date[], minDate?: Date | undefined, maxDate?: Date | undefined) => Date[];
 
 // @public
+export const getDateFromTimeSelection: (useHour12: boolean, baseDate: Date, selectedTime: string) => Date;
+
+// @public
 export function getDatePartHashValue(date: Date): number;
 
 // @public
@@ -274,8 +277,10 @@ export const TimeConstants: {
     DaysInOneWeek: number;
     MonthInOneYear: number;
     HoursInOneDay: number;
+    SecondsInOneMinute: number;
+    OffsetTo24HourFormat: number;
+    TimeFormatRegex: RegExp;
 };
-
 
 // (No @packageDocumentation comment for this package)
 

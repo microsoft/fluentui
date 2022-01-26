@@ -1,23 +1,18 @@
 import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { SelectTabData, SelectTabEvent, TabListProps, TabListSlots, TabListState } from './TabList.types';
-
-/**
- * Array of all shorthand properties listed in TabListSlots
- */
-export const tabListShorthandProps: (keyof TabListSlots)[] = ['root'];
+import type { SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
 
 /**
  * Create the state required to render TabList.
  *
- * The returned state can be modified with hooks such as useTabListStyles,
- * before being passed to renderTabList.
+ * The returned state can be modified with hooks such as useTabListStyles_unstable,
+ * before being passed to renderTabList_unstable.
  *
  * @param props - props from this instance of TabList
  * @param ref - reference to root HTMLElement of TabList
  */
-export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
+export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
   const { appearance = 'transparent', onTabSelect, size = 'medium', vertical = false } = props;
 
   const focusAttributes = useArrowNavigationGroup({ circular: true, axis: vertical ? 'vertical' : 'horizontal' });

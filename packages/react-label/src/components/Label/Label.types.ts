@@ -1,9 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * Label Props
- */
 export type LabelCommons = {
   /**
    * Renders the label as disabled
@@ -34,6 +31,9 @@ export type LabelSlots = {
  */
 export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 
+/**
+ * Label Props
+ */
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
   Partial<LabelCommons> & {
     /**

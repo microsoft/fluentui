@@ -155,6 +155,13 @@ describe('version-string-replace generator', () => {
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
       });
       tree = setupDummyPackage(tree, {
+        name: '@proj/react-theme',
+        version: '9.0.0-alpha.0',
+        dependencies: {},
+        devDependencies: {},
+        projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+      });
+      tree = setupDummyPackage(tree, {
         name: '@proj/react-utilities',
         version: '9.0.0-alpha.0',
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-utilities/src' },
@@ -203,6 +210,34 @@ describe('version-string-replace generator', () => {
       expect(makeStylesPackageJson.devDependencies).toMatchInlineSnapshot(`
         Object {
           "@proj/react-utilities": "^9.0.0-beta.0",
+        }
+      `);
+    });
+
+    it('should exclude packages', async () => {
+      await generator(tree, {
+        all: true,
+        ...defaultTestOptions,
+        exclude: '@proj/react-utilities,@proj/react-theme',
+      });
+
+      const reactThemePackageJson = readJson(tree, 'packages/react-theme/package.json');
+      const makeStylesPackageJson = readJson(tree, 'packages/make-styles/package.json');
+      const reactButtonPackageJson = readJson(tree, 'packages/react-button/package.json');
+      const reactUtilitiesPackageJson = readJson(tree, 'packages/react-utilities/package.json');
+      expect(reactButtonPackageJson.version).toEqual('9.0.0-beta.0');
+      expect(makeStylesPackageJson.version).toEqual('9.0.0-beta.0');
+      expect(reactThemePackageJson.version).toEqual('9.0.0-alpha.0');
+      expect(reactUtilitiesPackageJson.version).toEqual('9.0.0-alpha.0');
+      expect(reactButtonPackageJson.dependencies).toMatchInlineSnapshot(`
+        Object {
+          "@proj/make-styles": "^9.0.0-beta.0",
+          "@proj/react-utilities": "^9.0.0-alpha.1",
+        }
+      `);
+      expect(makeStylesPackageJson.devDependencies).toMatchInlineSnapshot(`
+        Object {
+          "@proj/react-utilities": "^9.0.0-alpha.1",
         }
       `);
     });

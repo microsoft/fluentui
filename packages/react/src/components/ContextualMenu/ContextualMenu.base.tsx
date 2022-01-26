@@ -196,7 +196,7 @@ function useSubMenuState(
 
     if (item) {
       submenuProps = {
-        items: getSubmenuItems(item)!,
+        items: getSubmenuItems(item, { target: menuTarget })!,
         target: submenuTarget,
         onDismiss: onSubMenuDismiss,
         isSubMenu: true,
@@ -619,7 +619,7 @@ function useMouseHandlers(
     ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
     target: HTMLElement,
   ): void => {
-    const items = getSubmenuItems(item);
+    const items = getSubmenuItems(item, { target: menuTarget });
 
     // Cancel an async menu item hover timeout action from being taken and instead
     // just trigger the click event instead.

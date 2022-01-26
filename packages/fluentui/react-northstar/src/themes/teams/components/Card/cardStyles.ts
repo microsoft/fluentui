@@ -8,7 +8,10 @@ export const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariab
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
 
-    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
+    const borderFocusStyles = getBorderFocusStyles({
+      variables: siteVariables,
+      borderRadius: v.borderRadius,
+    });
 
     return {
       display: 'flex',
