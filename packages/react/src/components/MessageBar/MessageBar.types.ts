@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseButton, IButtonProps } from '../../Button';
+import { BaseButton, Button, IButtonProps } from '../../Button';
 import type { ITheme, IStyle } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
