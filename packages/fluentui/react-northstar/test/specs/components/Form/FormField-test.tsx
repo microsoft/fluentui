@@ -54,12 +54,7 @@ describe('FormField', () => {
     );
 
     expect(formField.find(inputIconClassName)).toBeDefined();
-    expect(
-      formField
-        .find(`.${formFieldMessageClassName}`)
-        .at(0)
-        .getDOMNode().textContent,
-    ).toBe('ERROR');
+    expect(formField.find(`.${formFieldMessageClassName}`).at(0).getDOMNode().textContent).toBe('ERROR');
   });
 
   it('renders satisfactory indicator', () => {

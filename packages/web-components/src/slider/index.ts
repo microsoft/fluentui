@@ -1,28 +1,32 @@
-import { customElement } from '@microsoft/fast-element';
-import { Slider, SliderTemplate as template } from '@microsoft/fast-foundation';
-import { SliderStyles as styles } from './slider.styles';
+import { Slider, SliderOptions, sliderTemplate as template } from '@microsoft/fast-foundation';
+import { sliderStyles as styles } from './slider.styles';
 
 /**
- * The Fluent Slider Custom Element. Implements {@link @microsoft/fast-foundation#Slider},
- * {@link @microsoft/fast-foundation#SliderTemplate}
+ * The Fluent Slider Custom Element. Implements {@link @microsoft/fast-foundation#(Slider:class)},
+ * {@link @microsoft/fast-foundation#sliderTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-slider\>
  */
-@customElement({
-  name: 'fluent-slider',
+export const fluentSlider = Slider.compose<SliderOptions>({
+  baseName: 'slider',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentSlider extends Slider {}
+  thumb: `
+    <div class="thumb-cursor"></div>
+  `,
+});
 
 /**
  * Styles for Slider
  * @public
  */
-export const SliderStyles = styles;
+export const sliderStyles = styles;
+
+/**
+ * Slider base class
+ * @public
+ */
+export { Slider };

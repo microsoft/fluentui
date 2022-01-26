@@ -30,12 +30,8 @@ export const SliderPageProps: IDocPageProps = {
       view: <SliderRangedExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/docs/SliderOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/docs/SliderBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/docs/SliderOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/docs/SliderBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

@@ -4,7 +4,7 @@
 
 ### Source code
 
-[SegmentedControl](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/SegmentedControl.swift)
+[SegmentedControl](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/SegmentedControl/SegmentedControl.swift)
 
 ### Sample code
 

@@ -31,6 +31,7 @@ export const DatePickerBoundedExample: React.FunctionComponent = () => {
       </div>
       <DatePicker
         styles={datePickerStyles}
+        // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={strings}
         placeholder="Select a date..."
         ariaLabel="Select a date"

@@ -4,8 +4,8 @@ import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
-import { IKeytipDataProps } from '../../../KeytipData';
-import { IKeytipProps } from '../../../Keytip';
+import type { IKeytipDataProps } from '../../../KeytipData';
+import type { IKeytipProps } from '../../../Keytip';
 
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = React.createRef<HTMLAnchorElement>();

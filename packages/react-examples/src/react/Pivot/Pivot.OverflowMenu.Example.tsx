@@ -14,11 +14,13 @@ export const PivotOverflowMenuExample: React.FunctionComponent = () => {
         <Toggle label="linkFormat" offText="links" onText="tabs" checked={tabs} onChange={toggleTabs} />
         <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={toggleRtl} />
       </div>
+      {/* eslint-disable-next-line deprecation/deprecation */}
       <Fabric dir={rtl ? 'rtl' : 'ltr'}>
         <Pivot
           aria-label="Pivot Overflow Menu Example"
           linkFormat={tabs ? 'tabs' : 'links'}
           overflowBehavior={overflow ? 'menu' : 'none'}
+          overflowAriaLabel="more items"
         >
           <PivotItem headerText="My Files">
             <Label>Pivot #1</Label>

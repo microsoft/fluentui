@@ -148,6 +148,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel1-1"
@@ -304,6 +305,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel1-2"
@@ -460,6 +462,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel1-3"
@@ -616,6 +619,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel1-4"
@@ -772,6 +776,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel1-5"
@@ -992,6 +997,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel4-1"
@@ -1148,6 +1154,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel4-2"
@@ -1305,6 +1312,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel4-3"
@@ -1335,9 +1343,9 @@ exports[`Rating renders correctly with half star 1`] = `
                 speak: none;
                 width: 100%;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
         >
-          
+          
         </i>
         <i
           aria-hidden={true}
@@ -1461,6 +1469,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel4-4"
@@ -1617,6 +1626,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              white-space: nowrap;
               width: 1px;
             }
         id="RatingLabel4-5"

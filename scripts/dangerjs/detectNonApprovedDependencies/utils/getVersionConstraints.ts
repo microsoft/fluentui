@@ -28,10 +28,7 @@ const findPackageJsonOf = (dependencyPackageId: string, packagePath: string): st
     return null;
   }
 
-  const parentPackageDirectoryPath = packagePath
-    .split(path.sep)
-    .slice(0, -1)
-    .join(path.sep);
+  const parentPackageDirectoryPath = packagePath.split(path.sep).slice(0, -1).join(path.sep);
   return findPackageJsonOf(dependencyPackageId, parentPackageDirectoryPath);
 };
 

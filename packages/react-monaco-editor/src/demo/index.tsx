@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import { mergeStyles, initializeIcons, Fabric } from '@fluentui/react';
+import { mergeStyles, initializeIcons, ThemeProvider } from '@fluentui/react';
 
 initializeIcons();
 
@@ -17,8 +17,8 @@ mergeStyles({
 });
 
 ReactDOM.render(
-  <Fabric>
+  <ThemeProvider>
     <App />
-  </Fabric>,
+  </ThemeProvider>,
   document.getElementById('content'),
 );

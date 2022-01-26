@@ -56,12 +56,8 @@ export const FocusTrapZonePageProps: IDocPageProps = {
       view: <FocusTrapZoneDialogInPanelExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/docs/FocusTrapZoneBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/docs/FocusTrapZoneBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

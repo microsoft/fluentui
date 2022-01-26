@@ -1,4 +1,3 @@
-import { ISliderStyleProps, ISliderStyles } from './Slider.types';
 import {
   getGlobalClassNames,
   HighContrastSelector,
@@ -6,6 +5,7 @@ import {
   getFocusStyle,
 } from '@fluentui/style-utilities';
 import { getRTL } from '@fluentui/utilities';
+import type { ISliderStyleProps, ISliderStyles } from './Slider.types';
 
 const GlobalClassNames = {
   root: 'ms-Slider',

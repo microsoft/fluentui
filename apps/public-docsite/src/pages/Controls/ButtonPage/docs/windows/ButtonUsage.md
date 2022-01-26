@@ -1,6 +1,6 @@
 Fluent UI React Native Buttons have default styling based on the Fluent UI Design Language. To customize the button's visuals, you should use the "compose" pattern to customize the tokens. For more information on the compose pattern, please see our [compose documentation](https://github.com/microsoft/fluentui-react-native/blob/master/packages/framework/foundation-compose/README.md).
 
-#### Example usage (from [ButtonFocusTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Button/ButtonFocusTest.tsx))
+#### Example usage (from [ButtonFocusTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/FluentTester/TestComponents/Button/ButtonFocusTest.tsx))
 
 ```
 import * as React from 'react';

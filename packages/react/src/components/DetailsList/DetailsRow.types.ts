@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { DetailsRowBase } from './DetailsRow.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.types';
-import { ISelection, SelectionMode } from '../../Selection';
-import { IDragDropHelper, IDragDropEvents } from '../../DragDrop';
-import { IViewport } from '../../utilities/decorators/withViewport';
-import { CollapseAllVisibility, IGroup } from '../GroupedList/GroupedList.types';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
-import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { CheckboxVisibility } from './DetailsList.types';
+import { SelectionMode } from '../../Selection';
+import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IColumn, IDetailsListProps } from './DetailsList.types';
+import type { ISelection } from '../../Selection';
+import type { IDragDropHelper, IDragDropEvents } from '../../DragDrop';
+import type { IViewport } from '../../utilities/decorators/withViewport';
+import type { IGroup } from '../GroupedList/GroupedList.types';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import type { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import type { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory DetailsList}
@@ -158,6 +162,11 @@ export interface IDetailsRowBaseProps
   getRowAriaLabel?: (item: any) => string;
 
   /**
+   * Callback for getting the row aria description
+   */
+  getRowAriaDescription?: (item: any) => string;
+
+  /**
    * Callback for getting the row aria-describedby
    */
   getRowAriaDescribedBy?: (item: any) => string;
@@ -218,6 +227,14 @@ export interface IDetailsRowBaseProps
    * the correct aria-posinset and aria-setsize values.
    */
   group?: IGroup;
+
+  /**
+   * Properties to pass to the rows' FocusZone.
+   */
+  focusZoneProps?: IFocusZoneProps;
+
+  /** whether or not row should be rendered in disabled state */
+  disabled?: boolean;
 }
 
 /**
@@ -243,39 +260,40 @@ export interface IDetailsRowProps extends IDetailsRowBaseProps {
 /**
  * {@docCategory DetailsList}
  */
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
-  /** Whether the row is selected  */
-  isSelected?: boolean;
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> &
+  Pick<IDetailsRowProps, 'disabled'> & {
+    /** Whether the row is selected  */
+    isSelected?: boolean;
 
-  /** Whether there are any rows in the list selected */
-  anySelected?: boolean;
+    /** Whether there are any rows in the list selected */
+    anySelected?: boolean;
 
-  /** Whether this row can be selected */
-  canSelect?: boolean;
+    /** Whether this row can be selected */
+    canSelect?: boolean;
 
-  /** Class name of when this becomes a drop target. */
-  droppingClassName?: string;
+    /** Class name of when this becomes a drop target. */
+    droppingClassName?: string;
 
-  /** Is the checkbox visible */
-  isCheckVisible?: boolean;
+    /** Is the checkbox visible */
+    isCheckVisible?: boolean;
 
-  /** Is this a row header */
-  isRowHeader?: boolean;
+    /** Is this a row header */
+    isRowHeader?: boolean;
 
-  /** A class name from the checkbox cell, so proper styling can be targeted */
-  checkboxCellClassName?: string;
+    /** A class name from the checkbox cell, so proper styling can be targeted */
+    checkboxCellClassName?: string;
 
-  /** CSS class name for the component */
-  className?: string;
+    /** CSS class name for the component */
+    className?: string;
 
-  /** Is list in compact mode */
-  compact?: boolean;
+    /** Is list in compact mode */
+    compact?: boolean;
 
-  cellStyleProps?: ICellStyleProps;
+    cellStyleProps?: ICellStyleProps;
 
-  /** Whether to animate updates */
-  enableUpdateAnimations?: boolean;
-};
+    /** Whether to animate updates */
+    enableUpdateAnimations?: boolean;
+  };
 
 /**
  * {@docCategory DetailsList}

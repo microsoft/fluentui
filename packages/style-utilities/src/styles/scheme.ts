@@ -1,5 +1,6 @@
-import { Customizations, mergeSettings, ICustomizerContext } from '@fluentui/utilities';
-import { ISchemeNames, ITheme } from '../interfaces/index';
+import { Customizations, mergeSettings } from '@fluentui/utilities';
+import type { ICustomizerContext } from '@fluentui/utilities';
+import type { ISchemeNames, ITheme } from '../interfaces/index';
 
 /**
  * @internal

@@ -12,13 +12,14 @@
 - [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html)
 - [Material UI Pickers](https://material-ui-pickers.dev/demo/datepicker)
 - [React-Use-Calendar](https://github.com/gregnb/react-use-calendar)
-- [React Spectrum Datepciker](https://github.com/adobe-private/react-spectrum-v3/tree/master/packages/%40react-aria/datepicker)
+- [React Spectrum Datepicker](https://github.com/adobe-private/react-spectrum-v3/tree/master/packages/%40react-aria/datepicker)
 - [React Dates](https://github.com/airbnb/react-dates)
 
 ## API
 
 ### Props
 
+<!-- prettier-ignore-start -->
 | Prop Name        | Type                                             | Description                                                                                        |
 | ---------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
 | dayNames         | string[]                                         | An array of localized strings for the full names of days.                                          |
@@ -31,7 +32,7 @@
 | maxDate          | Date                                             | If set the `Calendar` will not allow navigation to or selection of a date earlier than this value. |
 | minDate          | Date                                             | If set the `Calendar` will not allow navigation to or selection of a date later than this value.   |
 | months           | string[]                                         | An array of localized strings for the full names of months.                                        |
-| onChange         | (event: React.FormEvent<HTMLInputElement         | HTMLTextAreaElement>, newValue?: string) => void                                                   | Callback for when the input value changes. |
+| onChange         | `(event: React.FormEvent<HTMLInputElement \| HTMLTextAreaElement>, newValue?: string) => void` | Callback for when the input value changes.           |
 | open             | boolean                                          | Open `Calendar` component                                                                          |
 | parse            | (date: string) => Date                           | Parse date from string representation into `Date`.                                                 |
 | placeholder      | string                                           | Placeholder for the input                                                                          |
@@ -40,7 +41,8 @@
 | selectedDate     | Date                                             | Date shown as selected in the `input`.                                                             |
 | shortDays        | string[]                                         | An array of localized strings for the short names of days.                                         |
 | shortMonths      | string[]                                         | An array of localized strings for the short names of months                                        |
-| type             | enum`day|month|year`                             | Type of the `Calendar` to be shown.                                                                |
+| type             | enum `day\|month\|year`                          | Type of the `Calendar` to be shown.                                                                |
+<!-- prettier-ignore-end -->
 
 #### Notes
 
@@ -62,7 +64,7 @@ Consider having a single property to be a dictionary containing all needed local
 
 #### Internal representation
 
-```typescript=
+```tsx
 const Datepicker = () => (
   <>
     <InputBlock />

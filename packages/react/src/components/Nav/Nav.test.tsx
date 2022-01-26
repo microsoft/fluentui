@@ -5,9 +5,9 @@ import * as renderer from 'react-test-renderer';
 
 import { Nav } from './Nav';
 import { NavBase } from './Nav.base';
-import { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
-import { IRenderFunction, IComponentAsProps } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
+import type { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
+import type { IRenderFunction, IComponentAsProps } from '@fluentui/utilities';
 
 const linkOne: INavLink = {
   key: 'Bing',
@@ -165,10 +165,7 @@ describe('Nav', () => {
     window.history.pushState({}, '', '/#/testing2');
     nav.setProps(props);
 
-    nav
-      .find('.ms-Button')
-      .first()
-      .simulate('click');
+    nav.find('.ms-Button').first().simulate('click');
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
   });

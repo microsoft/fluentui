@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { GroupedList } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
 const items = [
   {
-    thumbnail: '//placehold.it/175x175',
+    thumbnail: '//via.placeholder.com/175x175',
     key: 'item-0 nostrud proident, id non',
     name: 'id velit labore ipsum magna',
     description:
@@ -19,7 +19,7 @@ const items = [
     height: 175,
   },
   {
-    thumbnail: '//placehold.it/229x229',
+    thumbnail: '//via.placeholder.com/229x229',
     key: 'item-1 in sunt sed eiusmod',
     name: 'in Duis dolor ex ut',
     description:
@@ -31,7 +31,7 @@ const items = [
     height: 229,
   },
   {
-    thumbnail: '//placehold.it/195x195',
+    thumbnail: '//via.placeholder.com/195x195',
     key: 'item-2 consectetur ut dolor commodo',
     name: 'adipiscing fugiat officia sunt cillum',
     description:
@@ -43,7 +43,7 @@ const items = [
     height: 195,
   },
   {
-    thumbnail: '//placehold.it/208x208',
+    thumbnail: '//via.placeholder.com/208x208',
     key: 'item-3 pariatur. id qui voluptate',
     name: 'eu ullamco et commodo aliqua.',
     description:
@@ -86,7 +86,7 @@ const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
 };
 
 storiesOf('GroupedList', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -111,5 +111,5 @@ storiesOf('GroupedList', module)
         styles={{ root: { color: '#333333' } }}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

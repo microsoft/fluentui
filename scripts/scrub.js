@@ -96,10 +96,7 @@ async function run() {
     process.exit(1);
   }
 
-  const gitStatus = child_process
-    .execSync('git status --porcelain')
-    .toString()
-    .trim();
+  const gitStatus = child_process.execSync('git status --porcelain').toString().trim();
 
   if (!process.argv.includes('-y')) {
     console.log(

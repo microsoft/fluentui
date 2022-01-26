@@ -215,12 +215,12 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         />
         <div style={rootStyle}>
           <VerticalStackedBarChart
+            chartTitle="Vertical stacked bar chart callout example"
             barGapMax={this.state.barGapMax}
             data={data}
             height={this.state.height}
             width={this.state.width}
             yAxisTickCount={10}
-            chartLabel="Card title"
             isCalloutForStack={
               this.state.selectedCallout === 'MultiCallout' || this.state.selectedCallout === 'MultiCustomCallout'
             }

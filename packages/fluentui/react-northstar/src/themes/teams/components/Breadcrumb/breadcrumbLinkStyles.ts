@@ -42,6 +42,7 @@ export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkSty
     });
 
     return {
+      userSelect: 'none',
       display: 'flex',
       alignItems: 'center',
       position: 'relative',

@@ -1,6 +1,12 @@
 import { EventGroup, getDocument } from '../../Utilities';
-import { IDragDropHelper, IDragDropTarget, IDragDropOptions, IDragDropEvent, IDragDropContext } from './interfaces';
-import { ISelection } from '../../utilities/selection/interfaces';
+import type {
+  IDragDropHelper,
+  IDragDropTarget,
+  IDragDropOptions,
+  IDragDropEvent,
+  IDragDropContext,
+} from './interfaces';
+import type { ISelection } from '../../utilities/selection/interfaces';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button

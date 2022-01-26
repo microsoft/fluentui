@@ -12,6 +12,7 @@ import {
   useStyles,
   ForwardRefWithAs,
   useContextSelectors,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -39,6 +40,7 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentCompo
 import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
+import { ChevronEndIcon } from '@fluentui/react-icons-northstar';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -129,10 +131,10 @@ export interface MenuItemProps
     | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
     | ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
 
-  /** Indicates if the menu inside the item is open. */
+  /** Indicates if the menu inside the item is open if the activeIndex is also the item's index. */
   menuOpen?: boolean;
 
-  /** Default menu open */
+  /** Default menu open if the activeIndex is also the item's index */
   defaultMenuOpen?: boolean;
 
   /** Callback for setting the current menu item as active element in the menu. */
@@ -222,6 +224,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     styles,
     variables,
     on,
+    index,
   } = props;
 
   const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
@@ -230,6 +233,13 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     defaultValue: props.defaultMenuOpen,
     value: props.menuOpen,
     initialValue: false,
+  });
+
+  useOnIFrameFocus(menuOpen, context.target, (e: Event) => {
+    setMenuOpen(__ => {
+      _.invoke(props, 'onMenuOpenChange', e, { ...props, ...{ menuOpen: false } });
+      return false;
+    });
   });
 
   const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
@@ -344,7 +354,6 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
 
   const handleFocus = (e: React.FocusEvent) => {
     setIsFromKeyboard(isEventFromKeyboard());
-
     _.invoke(props, 'onFocus', e, props);
   };
 
@@ -389,6 +398,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   const openMenu = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (menu && !menuOpen) {
       trySetMenuOpen(true, e);
+      _.invoke(parentProps, 'onItemSelect', e, index);
       _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
       e.stopPropagation();
       e.preventDefault();
@@ -403,7 +413,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
           setWhatInputSource(context.target, 'mouse');
           trySetMenuOpen(true, e);
           _.invoke(props, 'onMouseEnter', e, props);
-          _.invoke(parentProps, 'onItemSelect', e, props.index);
+          _.invoke(parentProps, 'onItemSelect', e, index);
         },
         onMouseLeave: e => {
           trySetMenuOpen(false, e);
@@ -496,7 +506,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
         setWhatInputSource(context.target, 'mouse');
         trySetMenuOpen(true, e);
         _.invoke(predefinedProps, 'onMouseEnter', e, props);
-        _.invoke(parentProps, 'onItemSelect', e, props.index);
+        _.invoke(parentProps, 'onItemSelect', e, index);
       },
       onMouseLeave: e => {
         trySetMenuOpen(false, e);
@@ -506,7 +516,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   });
 
   const maybeSubmenu =
-    menu && active && menuOpen ? (
+    menu && menuOpen ? (
       <>
         <Ref innerRef={menuRef}>
           <Popper
@@ -619,5 +629,5 @@ MenuItem.shorthandConfig = {
 MenuItem.defaultProps = {
   as: 'a',
   wrapper: {},
-  indicator: {},
+  indicator: <ChevronEndIcon outline />,
 };

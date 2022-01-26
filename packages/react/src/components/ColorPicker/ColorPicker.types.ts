@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IColor } from '../../utilities/color/interfaces';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IColor } from '../../utilities/color/interfaces';
+import type { ITooltipHostProps } from '../../Tooltip';
 
 /**
  * {@docCategory ColorPicker}
@@ -83,7 +84,7 @@ export interface IColorPickerProps {
   blueLabel?: string;
 
   /**
-   * Label for the alpha textfield.
+   * Label for the alpha text field.
    * @defaultvalue Alpha
    * @deprecated Use `strings`
    */
@@ -109,6 +110,11 @@ export interface IColorPickerProps {
    * @defaultvalue false
    */
   showPreview?: boolean;
+
+  /**
+   * Optional props to pass through to the error message tooltips
+   */
+  tooltipProps?: ITooltipHostProps;
 }
 
 export interface IColorPickerStrings {
@@ -158,11 +164,13 @@ export interface IColorPickerStrings {
 
   /**
    * Customized aria-label for the alpha slider.
+   * This overrides the visible text label, and should be used with extreme care (and very rarely).
    */
   alphaAriaLabel?: string;
 
   /**
    * Customized aria-label for the transparency slider.
+   * This overrides the visible text label, and should be used with extreme care (and very rarely).
    */
   transparencyAriaLabel?: string;
 
@@ -198,6 +206,42 @@ export interface IColorPickerStrings {
    * @defaultvalue 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.'
    */
   svAriaDescription?: string;
+
+  /**
+   * Error message for invalid hex input
+   * @defaultvalue 'Hex values must be between 3 and 6 characters long'
+   */
+  hexError?: string;
+
+  /**
+   * Error message for invalid alpha input
+   * @defaultvalue 'Alpha must be between 0 and 100'
+   */
+  alphaError?: string;
+
+  /**
+   * Error message for invalid transparency input
+   * @defaultvalue 'Transparency must be between 0 and 100'
+   */
+  transparencyError?: string;
+
+  /**
+   * Error message for invalid red input
+   * @defaultvalue 'Red must be between 0 and 255'
+   */
+  redError?: string;
+
+  /**
+   * Error message for invalid green input
+   * @defaultvalue 'Green must be between 0 and 255'
+   */
+  greenError?: string;
+
+  /**
+   * Error message for invalid blue input
+   * @defaultvalue 'Blue must be between 0 and 255'
+   */
+  blueError?: string;
 }
 
 /**

@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { create } from '@fluentui/utilities/lib/test';
 //import { Customizer } from '@fluentui/utilities';

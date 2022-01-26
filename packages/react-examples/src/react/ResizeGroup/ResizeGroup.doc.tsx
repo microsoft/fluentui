@@ -33,18 +33,10 @@ export const ResizeGroupPageProps: IDocPageProps = {
       view: <FlexBoxResizeGroupExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/docs/ResizeGroupOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/docs/ResizeGroupBestPractices.md'),
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/docs/ResizeGroupDos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/docs/ResizeGroupDonts.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/docs/ResizeGroupOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/docs/ResizeGroupBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/docs/ResizeGroupDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/docs/ResizeGroupDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

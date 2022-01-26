@@ -1,4 +1,6 @@
 import { NodePath, types as t } from '@babel/core';
+
+import type { BabelPluginOptions } from '../types';
 import { evaluatePathsInVM } from './evaluatePathsInVM';
 
 /**
@@ -9,6 +11,7 @@ export function evaluatePaths(
   program: NodePath<t.Program>,
   filename: string,
   paths: NodePath<t.Expression | t.SpreadElement>[],
+  pluginOptions: Required<BabelPluginOptions>,
 ): void {
   const pathsToBeEvaluatedInVM: NodePath<t.Expression | t.SpreadElement>[] = [];
 
@@ -26,6 +29,6 @@ export function evaluatePaths(
   }
 
   if (pathsToBeEvaluatedInVM.length > 0) {
-    evaluatePathsInVM(program, filename, pathsToBeEvaluatedInVM);
+    evaluatePathsInVM(program, filename, pathsToBeEvaluatedInVM, pluginOptions);
   }
 }

@@ -19,7 +19,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
   root: ({ props: p, variables: v, theme: t }): ICSSInJSStyle => ({
     position: 'relative',
 
-    display: ['inline-grid', '-ms-inline-grid'],
+    display: 'inline-grid',
     gridTemplateColumns: `auto ${v.gap} 1fr`,
     // IE11: Gap is done via virtual column as in autoprefixer
     msGridColumns: `auto ${v.gap} 1fr`,
@@ -117,14 +117,13 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
 
-    ...(p.checked &&
-      p.checked && {
-        borderColor: v.checkedBorderColor,
-        backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
-      }),
+    ...(p.checked && {
+      borderColor: v.checkedBorderColor,
+      backgroundColor: v.checkedBackground,
+      backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
+    }),
 
     ...(p.checked === 'mixed' && {
-      borderColor: v.checkedBorderColor,
       backgroundImage: checkboxIndicatorIndeterminateUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
 
@@ -137,6 +136,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
       p.checked && {
         color: v.disabledCheckedIndicatorColor,
         borderColor: v.disabledBackgroundChecked,
+        backgroundColor: v.disabledBackgroundChecked,
         backgroundImage: checkboxIndicatorUrl(v.disabledCheckedIndicatorColor, v.disabledBackgroundChecked),
       }),
 
@@ -144,6 +144,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
       p.checked === 'mixed' && {
         color: v.disabledCheckedIndicatorColor,
         borderColor: v.disabledBackgroundChecked,
+        backgroundColor: v.disabledBackgroundChecked,
         backgroundImage: checkboxIndicatorIndeterminateUrl(
           v.disabledCheckedIndicatorColor,
           v.disabledBackgroundChecked,
@@ -209,7 +210,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
 
   label: ({ props: p }): ICSSInJSStyle => ({
     display: 'block', // IE11: should be forced to be block, as inline-block is not supported
-
+    userSelect: 'none',
     gridColumn: 3,
     msGridColumn: 3,
 

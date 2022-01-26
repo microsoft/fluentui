@@ -1,21 +1,17 @@
 import * as React from 'react';
-import { useMenu } from './useMenu';
-import { MenuProps } from './Menu.types';
-import { renderMenu } from './renderMenu';
-import { useMenuStyles } from './useMenuStyles';
+import { useMenu_unstable } from './useMenu';
+import { useMenuContextValues_unstable } from './useMenuContextValues';
+import { renderMenu_unstable } from './renderMenu';
+import type { MenuProps } from './Menu.types';
 
 /**
  * Wrapper component that manages state for a popup MenuList and a MenuTrigger
- * {@docCategory Menu }
  */
-export const Menu: React.FunctionComponent<MenuProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
-  HTMLElement,
-  MenuProps
->((props, ref) => {
-  const state = useMenu(props, ref);
+export const Menu: React.FC<MenuProps> = props => {
+  const state = useMenu_unstable(props);
+  const contextValues = useMenuContextValues_unstable(state);
 
-  useMenuStyles(state);
-  return renderMenu(state);
-});
+  return renderMenu_unstable(state, contextValues);
+};
 
 Menu.displayName = 'Menu';

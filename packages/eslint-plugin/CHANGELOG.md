@@ -1,8 +1,125 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jan 2022 07:30:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.1)
+
+Tue, 25 Jan 2022 07:30:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.6.0..@fluentui/eslint-plugin_v1.6.1)
+
+### Patches
+
+- Add naming-convention exception to allow exported hooks with the _unstable suffix ([PR #21365](https://github.com/microsoft/fluentui/pull/21365) by behowell@microsoft.com)
+
+## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.6.0)
+
+Thu, 13 Jan 2022 07:30:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.5.2..@fluentui/eslint-plugin_v1.6.0)
+
+### Minor changes
+
+- Expand ban-imports rule to also support exports, and support regular expressions for names ([PR #21196](https://github.com/microsoft/fluentui/pull/21196) by elcraig@microsoft.com)
+
+## [1.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.5.2)
+
+Wed, 15 Dec 2021 07:31:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.5.1..@fluentui/eslint-plugin_v1.5.2)
+
+### Patches
+
+- Classify .stories.tsx as examples not tests ([PR #20681](https://github.com/microsoft/fluentui/pull/20681) by elcraig@microsoft.com)
+- Re-enable `@rnx-kit/no-export-all` ([PR #21021](https://github.com/microsoft/fluentui/pull/21021) by lingfangao@hotmail.com)
+
+## [1.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.5.1)
+
+Mon, 29 Nov 2021 07:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.5.0..@fluentui/eslint-plugin_v1.5.1)
+
+### Patches
+
+- handle `common` directory as test files ([PR #20742](https://github.com/microsoft/fluentui/pull/20742) by olfedias@microsoft.com)
+
+## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.5.0)
+
+Thu, 25 Nov 2021 14:54:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.4.2..@fluentui/eslint-plugin_v1.5.0)
+
+### Minor changes
+
+- Adding rnx-kit dependency and enabling the no-export-all rule for exporting library surfaces. ([PR #20665](https://github.com/microsoft/fluentui/pull/20665) by dzearing@microsoft.com)
+
+### Patches
+
+- Revert usage of @rnx-kit/eslint-plugin ([PR #20781](https://github.com/microsoft/fluentui/pull/20781) by andredias@microsoft.com)
+
+## [1.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.2)
+
+Mon, 22 Nov 2021 07:36:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.4.1..@fluentui/eslint-plugin_v1.4.2)
+
+### Patches
+
+- support excluded files from being linted ([PR #20466](https://github.com/microsoft/fluentui/pull/20466) by mgodbolt@microsoft.com)
+
+## [1.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.1)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.4.0..@fluentui/eslint-plugin_v1.4.1)
+
+### Patches
+
+- Updating eslint max-len rule exclusion for imports/exports. ([PR #19475](https://github.com/microsoft/fluentui/pull/19475) by dzearing@hotmail.com)
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.0)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.3..@fluentui/eslint-plugin_v1.4.0)
+
+### Minor changes
+
+- Add eslint-plugin-jsdoc to check for jsdoc errors ([PR #19271](https://github.com/microsoft/fluentui/pull/19271) by behowell@microsoft.com)
+
+## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.3)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.2..@fluentui/eslint-plugin_v1.3.3)
+
+### Patches
+
+- Enable exhaustive-deps rule for useIsomorphicLayoutEffect ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.2)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.1..@fluentui/eslint-plugin_v1.3.2)
+
+### Patches
+
+- chore: migrate packages(mostly eslint related)  to single version policy ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [1.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.1)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.0..@fluentui/eslint-plugin_v1.3.1)
+
+### Patches
+
+- fix(eslint-plugin): properly resolve configs for projects that use solution kind of TS config ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.0)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.2.0..@fluentui/eslint-plugin_v1.3.0)
+
+### Minor changes
+
+- Update dependencies, remove eslint@6 from peer deps, and remove usage of process.cwd() ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+### Patches
+
+- Update eslint-plugin-prettier and disable arrow-body-style rule ([PR #18041](https://github.com/microsoft/fluentui/pull/18041) by elcraig@microsoft.com)
 
 ## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.2.0)
 

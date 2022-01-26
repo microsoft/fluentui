@@ -36,7 +36,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
     // For screen sizes large down, hide the side links.
     const sideLinks = isLargeDown ? [] : this.props.sideLinks;
 
-    const classNames = getClassNames(styles, { theme });
+    const classNames = getClassNames(styles, { theme, isLargeDown });
     const { subComponentStyles } = classNames;
 
     return (
@@ -62,6 +62,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
                     className={classNames.button}
                     onClick={this._onGearClick}
                     aria-label="Settings"
+                    aria-expanded={!!contextMenu}
                   >
                     <Icon iconName="Settings" styles={subComponentStyles.icons} />
                   </button>,

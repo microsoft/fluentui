@@ -10,7 +10,6 @@ import {
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
 import {
@@ -36,6 +35,7 @@ import {
   getFocusableByIndexPath,
   FOCUSZONE_ID_ATTRIBUTE,
 } from './focusUtilities';
+import { handleRef } from '@fluentui/react-component-ref';
 
 const TABINDEX = 'tabindex';
 const NO_VERTICAL_WRAP = 'data-no-vertical-wrap';
@@ -109,6 +109,8 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     isRtl: PropTypes.bool,
     preventFocusRestoration: PropTypes.bool,
     pagingSupportDisabled: PropTypes.bool,
+    shouldIgnoreNotFocusable: PropTypes.bool,
+    innerRef: PropTypes.any,
   };
 
   static defaultProps: FocusZoneProps = {
@@ -167,8 +169,6 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
   componentDidMount(): void {
     _allInstances[this._id] = this;
 
-    this.setRef(this); // called here to support functional components, we only need HTMLElement ref anyway
-
     if (!this._root.current) {
       return;
     }
@@ -216,11 +216,10 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     const doc = getDocument(this._root.current);
 
     if (
+      !this.props.preventFocusRestoration &&
       doc &&
       this._lastIndexPath &&
-      (doc.activeElement === doc.body ||
-        doc.activeElement === null ||
-        (!this.props.preventFocusRestoration && doc.activeElement === this._root.current))
+      (doc.activeElement === doc.body || doc.activeElement === null || doc.activeElement === this._root.current)
     ) {
       // The element has been removed after the render, attempt to restore focus.
       const elementToFocus = getFocusableByIndexPath(this._root.current as HTMLElement, this._lastIndexPath);
@@ -267,10 +266,10 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     // Then, later in componentDidUpdate, we can evaluate if we need to restore it in
     // the case the element was removed.
     this.evaluateFocusBeforeRender();
-
     return (
       <ElementType
         {...unhandledProps}
+        ref={this.setRef}
         className={cx(FocusZone.className, className)}
         data-focuszone-id={this._id}
         onKeyDown={this._onKeyDown}
@@ -362,9 +361,16 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     return false;
   }
 
-  setRef = (elem: React.ReactInstance): void => {
-    // findDOMNode needed to get correct DOM ref with react-hot-loader, see https://github.com/gaearon/react-hot-loader/issues/964
-    this._root.current = ReactDOM.findDOMNode(elem) as HTMLElement;
+  setRef = (elem: HTMLElement): void => {
+    this._root.current = elem;
+    handleRef(this.props.innerRef, elem);
+    if (process.env.NODE_ENV !== 'production') {
+      if (elem !== null && !(elem?.nodeType === 1)) {
+        throw new Error(
+          'FocusZone: we expect that ElementType ("as" prop) will be a plain element (div, span, etc.) or an element that supports ref forwarding (React.forwardRef())',
+        );
+      }
+    }
   };
 
   // Record if focus was in the zone, what the index path to the element is at this time.
@@ -427,7 +433,12 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       stopFocusPropagation,
       shouldFocusInnerElementWhenReceivedFocus,
       defaultTabbableElement,
+      shouldIgnoreNotFocusable,
     } = this.props;
+
+    if (shouldIgnoreNotFocusable && ev.target?.dataset.isFocusable === 'false') {
+      return;
+    }
 
     let newActiveElement: HTMLElement | null | undefined;
     const isImmediateDescendant = this.isImmediateDescendantOfZone(ev.target as HTMLElement);
@@ -451,6 +462,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       const maybeElementToFocus =
         defaultTabbableElement &&
         typeof defaultTabbableElement === 'function' &&
+        this._root.current &&
         defaultTabbableElement(this._root.current);
 
       // try to focus defaultTabbable element

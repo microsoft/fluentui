@@ -30,18 +30,10 @@ export const BreadcrumbPageProps: IDocPageProps = {
       view: <BreadcrumbStaticExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbBestPractices.md'),
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbDos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbDonts.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

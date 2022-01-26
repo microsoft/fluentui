@@ -1,5 +1,5 @@
 // @ts-check
-/** @type {*} */
+// @ts-ignore
 const util = require('@typescript-eslint/eslint-plugin/dist/util');
 const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
 const createRule = require('../utils/createRule');

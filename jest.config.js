@@ -1,3 +1,5 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
-  projects: ['<rootDir>/packages/react-menu', '<rootDir>/packages/react-storybook'],
+  projects: [...getJestProjects()],
 };

@@ -19,18 +19,14 @@ export const ScrollablePanePageProps: IDocPageProps = {
       isScrollable: false,
     },
     {
-      title: 'DetailsList Locked Header',
+      title: 'DetailsList Fixed Header without ScrollablePane',
       code: ScrollablePaneDetailsListExampleCode,
       view: <ScrollablePaneDetailsListExample />,
       isScrollable: false,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

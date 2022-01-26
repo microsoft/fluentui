@@ -1,56 +1,68 @@
 import * as React from 'react';
 import {
-  makeMergePropsCompat,
-  resolveShorthandProps,
-  useMergedRefs,
   useEventCallback,
   shouldPreventDefaultOnKeyDown,
+  resolveShorthand,
+  useMergedRefs,
+  getNativeElementProps,
 } from '@fluentui/react-utilities';
-import { MenuItemProps, MenuItemState } from './MenuItem.types';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
-import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
-import { ChevronRightIcon } from '../../utils/DefaultIcons';
-import { useMenuListContext } from '../../contexts/menuListContext';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const menuItemShorthandProps = ['icon', 'submenuIndicator', 'content', 'secondaryContent', 'checkmark'] as const;
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuItemState>({ deepMerge: menuItemShorthandProps });
+import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
+import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
+import type { MenuItemProps, MenuItemState } from './MenuItem.types';
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuItem = (
-  props: MenuItemProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuItemProps,
-): MenuItemState => {
-  const hasSubmenu = useMenuTriggerContext();
-  const hasIcons = useMenuListContext(context => context.hasIcons);
-  const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);
+export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
+  const hasSubmenu = useMenuTriggerContext_unstable() || props.hasSubmenu;
+  const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
+  const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
+  const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
+  const dismissedWithKeyboardRef = React.useRef(false);
 
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      icon: { as: 'span', children: hasIcons ? '' : undefined },
-      checkmark: { as: 'span', children: hasCheckmarks ? '' : undefined },
-      submenuIndicator: { as: 'span', children: <ChevronRightIcon /> },
-      content: { as: 'span', children: props.children },
-      secondaryContent: { as: 'span' },
+  const { dir } = useFluent();
+  const innerRef = React.useRef<HTMLElement>(null);
+
+  const state: MenuItemState = {
+    hasSubmenu,
+    ...props,
+    components: {
+      root: 'div',
+      icon: 'span',
+      checkmark: 'span',
+      submenuIndicator: 'span',
+      content: 'span',
+      secondaryContent: 'span',
+    },
+    root: getNativeElementProps('div', {
+      ref: useMergedRefs(ref, innerRef),
       role: 'menuitem',
       tabIndex: 0,
-      hasSubmenu,
       'aria-disabled': props.disabled,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, menuItemShorthandProps),
-    resolveShorthandProps(props, menuItemShorthandProps),
-  );
+      ...props,
+    }),
+    icon: resolveShorthand(props.icon, { required: hasIcons }),
+    checkmark: resolveShorthand(props.checkmark, { required: hasCheckmarks }),
+    submenuIndicator: resolveShorthand(props.submenuIndicator, {
+      required: hasSubmenu,
+      defaultProps: {
+        children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
+      },
+    }),
+    content: resolveShorthand(props.content, {
+      required: !!props.children,
+      defaultProps: { children: props.children },
+    }),
+    secondaryContent: resolveShorthand(props.secondaryContent),
+  };
 
-  const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state;
-  state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state.root;
+  state.root.onKeyDown = e => {
     if (shouldPreventDefaultOnKeyDown(e)) {
       if (state.disabled) {
         e.preventDefault();
@@ -58,6 +70,7 @@ export const useMenuItem = (
         return;
       }
 
+      dismissedWithKeyboardRef.current = true;
       e.preventDefault();
       (e.target as HTMLElement)?.click();
     }
@@ -65,23 +78,34 @@ export const useMenuItem = (
     onKeyDownOriginal?.(e);
   };
 
-  state.onClick = (e: React.MouseEvent<HTMLElement>) => {
+  state.root.onClick = e => {
     if (state.disabled) {
       e.preventDefault();
       e.stopPropagation();
       return;
     }
 
+    let shouldPersist = persistOnClickContext;
+    // prop wins over context;
+    if (state.persistOnClick !== undefined && persistOnClickContext !== state.persistOnClick) {
+      shouldPersist = state.persistOnClick;
+    }
+
+    if (!hasSubmenu && !shouldPersist) {
+      setOpen(e, { open: false, keyboard: dismissedWithKeyboardRef.current, bubble: true });
+      dismissedWithKeyboardRef.current = false;
+    }
+
     onClickOriginal?.(e);
   };
 
-  const { onMouseEnter: onMouseEnterOriginal } = state;
-  state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    state.ref.current?.focus();
+  const { onMouseEnter: onMouseEnterOriginal } = state.root;
+  state.root.onMouseEnter = useEventCallback(e => {
+    innerRef.current?.focus();
 
     onMouseEnterOriginal?.(e);
   });
 
-  useCharacterSearch(state);
+  useCharacterSearch(state, innerRef);
   return state;
 };

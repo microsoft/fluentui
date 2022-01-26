@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Calendar, Dropdown, IDropdownOption } from '@fluentui/react';
-import { mergeStyleSets } from '@fluentui/style-utilities';
+import { Calendar, Dropdown, IDropdownOption, mergeStyleSets, defaultCalendarStrings } from '@fluentui/react';
 
 const styles = mergeStyleSets({
   wrapper: { height: 360 },
@@ -55,6 +54,8 @@ export const CalendarInlineMultidayDayViewExample: React.FunctionComponent = () 
         onSelectDate={onSelectDate}
         value={selectedDate}
         calendarDayProps={{ daysToSelectInDayView }}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
       />
       <Dropdown
         className={styles.dropdown}

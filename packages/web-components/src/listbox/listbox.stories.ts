@@ -1,12 +1,34 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import ListboxTemplate from './fixtures/base.html';
-import { FluentListbox } from './';
-
-FluentListbox;
-FluentDesignSystemProvider;
+import { fluentListbox } from './index';
 
 export default {
-  title: 'Listbox',
+  title: 'Components/Listbox',
+  component: fluentListbox,
 };
 
-export const Listbox = (): string => ListboxTemplate;
+const listBoxTemplate = () => `
+  <fluent-listbox>
+    <fluent-option>This option has no value</fluent-option>
+    <fluent-option disabled>This option is disabled</fluent-option>
+    <fluent-option value="hi">This option has a value</fluent-option>
+    <fluent-option selected>This option is selected by default</fluent-option>
+  </fluent-listbox>
+`;
+
+export const Listbox = listBoxTemplate.bind({});
+
+const example = `
+<fluent-listbox>
+  <fluent-option>This option has no value</fluent-option>
+  <fluent-option disabled>This option is disabled</fluent-option>
+  <fluent-option value="hi">This option has a value</fluent-option>
+  <fluent-option selected>This option is selected by default</fluent-option>
+</fluent-listbox>
+`;
+
+Listbox.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

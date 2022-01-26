@@ -2,14 +2,14 @@ import * as React from 'react';
 import * as styles from './FloatingSuggestions.scss';
 import { Async, initializeComponentRef, css, KeyCodes } from '@fluentui/react/lib/Utilities';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import {
+import { SuggestionsControl } from './Suggestions/SuggestionsControl';
+import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import type {
   IFloatingSuggestions,
   IFloatingSuggestionsProps,
   IFloatingSuggestionsInnerSuggestionProps,
 } from './FloatingSuggestions.types';
-import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
-import { SuggestionsControl } from './Suggestions/SuggestionsControl';
-import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 
 export interface IFloatingSuggestionsState {
   queryString: string;
@@ -175,13 +175,13 @@ export class FloatingSuggestions<TItem>
     // If it is then resolve it asynchronously.
     if (Array.isArray(suggestions)) {
       this.updateSuggestions(suggestions, true /*forceUpdate*/);
-    } else if (suggestions && suggestions.then) {
+    } else if (suggestions && (suggestions as PromiseLike<TItem[]>).then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
-      const promise: PromiseLike<TItem[]> = (this.currentPromise = suggestions);
-      promise.then((newSuggestions: TItem[]) => {
+      this.currentPromise = suggestions;
+      suggestions.then((newSuggestions: TItem[]) => {
         // Only update if the next promise has not yet resolved and
         // the floating picker is still mounted.
-        if (promise === this.currentPromise && this.isComponentMounted) {
+        if (suggestions === this.currentPromise && this.isComponentMounted) {
           this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
         }
       });

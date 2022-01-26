@@ -169,8 +169,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                 </EditorWrapper>
               ) : (
                 <ExamplePreview>
-                  {// Only use strict mode when not editing. Might have unpredictable results otherwise.
-                  this._isStrict ? <React.StrictMode>{children}</React.StrictMode> : children}
+                  {
+                    // Only use strict mode when not editing. Might have unpredictable results otherwise.
+                    this._isStrict ? <React.StrictMode>{children}</React.StrictMode> : children
+                  }
                 </ExamplePreview>
               )}
 

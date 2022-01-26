@@ -1,14 +1,8 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import {
-  ICalendarStrings,
-  DayOfWeek,
-  FirstWeekOfYear,
-  DateRangeType,
-  IDateFormatting,
-} from '@fluentui/date-time-utilities';
-import { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
-import { IDayGridOptions } from '@fluentui/date-time-utilities';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { ICalendarStrings, IDateFormatting, IDayGridOptions } from '@fluentui/date-time-utilities';
+import type { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
 
 /**
  * {@docCategory Calendar}
@@ -116,7 +110,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   showWeekNumbers?: boolean;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter: IDateFormatting;
 
@@ -226,7 +220,7 @@ export interface ICalendarDayGridStyleProps {
   animateBackwards?: boolean;
 
   /**
-   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   * The cardinal directions for animation to occur during transitions, either horizontal or vertical
    */
   animationDirection?: AnimationDirection;
 }
@@ -312,4 +306,13 @@ export interface ICalendarDayGridStyles {
   topLeftCornerDate?: IStyle;
   bottomRightCornerDate?: IStyle;
   bottomLeftCornerDate?: IStyle;
+
+  /**
+   * The styles to apply to days for focus borders. Can apply multiple if there are multiple focused days
+   * around the current focused date
+   */
+  datesAbove?: IStyle;
+  datesBelow?: IStyle;
+  datesLeft?: IStyle;
+  datesRight?: IStyle;
 }

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { css, KeyCodes, initializeComponentRef } from '@fluentui/react/lib/Utilities';
-import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
-import {
+import { SuggestionsCore } from './SuggestionsCore';
+import * as stylesImport from './SuggestionsControl.scss';
+import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
+import type {
   ISuggestionsHeaderFooterItemProps,
   ISuggestionsControlProps,
   ISuggestionsHeaderFooterProps,
 } from './Suggestions.types';
-import { SuggestionsCore } from './SuggestionsCore';
-import * as stylesImport from './SuggestionsControl.scss';
 
 const styles: any = stylesImport;
 

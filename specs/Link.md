@@ -131,9 +131,7 @@ The following section documents the DOM structure for the component from differe
 #### Example DOM
 
 ```html
-<a data-baseweb="link" href="https://baseweb.design" class="k5 ah eq bk er es bb bc tf tg th">
-  Link to Base Web
-</a>
+<a data-baseweb="link" href="https://baseweb.design" class="k5 ah eq bk er es bb bc tf tg th"> Link to Base Web </a>
 ```
 
 #### Considerations
@@ -145,9 +143,7 @@ None.
 #### Example DOM
 
 ```html
-<a href="#" class="bx--link some-class">
-  Link
-</a>
+<a href="#" class="bx--link some-class">Link</a>
 ```
 
 #### Considerations
@@ -159,9 +155,7 @@ None.
 #### Example DOM
 
 ```html
-<a href="https=//chakra-ui.com" class="css-u5zpo1">
-  Chakra UI
-</a>
+<a href="https=//chakra-ui.com" class="css-u5zpo1">Chakra UI</a>
 ```
 
 #### Considerations
@@ -175,17 +169,13 @@ None.
 ##### With href
 
 ```html
-<a href="http://dev.office.com/fabric/components/link" class="ms-Link root-109">
-  it renders as an anchor tag.
-</a>
+<a href="http://dev.office.com/fabric/components/link" class="ms-Link root-109"> it renders as an anchor tag. </a>
 ```
 
 ##### Without href
 
 ```html
-<button type="button" class="ms-Link root-163">
-  the link is rendered as a button
-</button>
+<button type="button" class="ms-Link root-163">the link is rendered as a button</button>
 ```
 
 #### Considerations
@@ -197,9 +187,7 @@ None.
 #### Example DOM
 
 ```html
-<a href="https://www.bing.com" class="c012">
-  Hypertext
-</a>
+<a href="https://www.bing.com" class="c012">Hypertext</a>
 ```
 
 #### Considerations
@@ -211,9 +199,7 @@ None.
 #### Example DOM
 
 ```html
-<a class="Wk9 xQ4 WMU iyn ljY kVc" href="https://pinterest.com">
-  click here
-</a>
+<a class="Wk9 xQ4 WMU iyn ljY kVc" href="https://pinterest.com">click here</a>
 ```
 
 #### Considerations
@@ -227,9 +213,7 @@ None.
 ##### With href
 
 ```html
-<a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss243 MuiTypography-colorPrimary" href="#">
-  Link
-</a>
+<a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss243 MuiTypography-colorPrimary" href="#"> Link </a>
 ```
 
 ##### Without href
@@ -253,9 +237,7 @@ After looking at all the component libraries above and taking into consideration
 #### For default links
 
 ```html
-<a class="root" href="{href}">
-  {children}
-</a>
+<a class="root" href="{href}">{children}</a>
 ```
 
 #### For recomposed links
@@ -263,9 +245,7 @@ After looking at all the component libraries above and taking into consideration
 If the link is recomposed to use another tag that is not `a` for its `root` slot, then `role="link"` should be added to the root. An example using `button` can be read below:
 
 ```html
-<button class="root" href="{href}" role="link">
-  {children}
-</button>
+<button class="root" href="{href}" role="link">{children}</button>
 ```
 
 ### Slots

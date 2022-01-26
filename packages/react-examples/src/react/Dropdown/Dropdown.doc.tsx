@@ -5,6 +5,7 @@ import { DropdownBasicExample } from './Dropdown.Basic.Example';
 import { DropdownControlledExample } from './Dropdown.Controlled.Example';
 import { DropdownControlledMultiExample } from './Dropdown.ControlledMulti.Example';
 import { DropdownCustomExample } from './Dropdown.Custom.Example';
+import { DropdownWrappingExample } from './Dropdown.Wrapping.Example';
 import { DropdownErrorExample } from './Dropdown.Error.Example';
 import { DropdownRequiredExample } from './Dropdown.Required.Example';
 
@@ -12,6 +13,7 @@ const DropdownBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/r
 const DropdownControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Controlled.Example.tsx') as string;
 const DropdownControlledMultiExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.ControlledMulti.Example.tsx') as string;
 const DropdownCustomExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Custom.Example.tsx') as string;
+const DropdownWrappingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Wrapping.Example.tsx') as string;
 const DropdownErrorExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Error.Example.tsx') as string;
 const DropdownRequiredExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Required.Example.tsx') as string;
 
@@ -41,6 +43,11 @@ export const DropdownPageProps: IDocPageProps = {
       view: <DropdownCustomExample />,
     },
     {
+      title: 'Dropdown with wrapping option text',
+      code: DropdownWrappingExampleCode,
+      view: <DropdownWrappingExample />,
+    },
+    {
       title: 'Dropdown with error message',
       code: DropdownErrorExampleCode,
       view: <DropdownErrorExample />,
@@ -56,12 +63,8 @@ export const DropdownPageProps: IDocPageProps = {
       ),
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/docs/DropdownOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/docs/DropdownBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/docs/DropdownOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/docs/DropdownBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

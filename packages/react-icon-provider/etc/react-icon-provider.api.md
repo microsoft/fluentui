@@ -4,7 +4,7 @@
 
 ```ts
 
-import { IIconSubset } from '@fluentui/style-utilities';
+import type { IIconSubset } from '@fluentui/style-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -20,7 +20,6 @@ export interface IconProviderProps extends React_2.HTMLAttributes<HTMLDivElement
 
 // @public
 export const useIconSubset: () => IIconSubset | undefined;
-
 
 // (No @packageDocumentation comment for this package)
 

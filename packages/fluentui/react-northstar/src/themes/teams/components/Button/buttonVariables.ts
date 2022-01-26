@@ -118,7 +118,7 @@ export const buttonVariables = (siteVars: any): ButtonVariables => ({
   primaryBorderColor: 'transparent',
 
   tintedColor: siteVars.colorScheme.brand.foreground,
-  tintedColorHover: siteVars.colorScheme.brand.foreground,
+  tintedColorHover: siteVars.colorScheme.brand.foregroundHover,
   tintedBackgroundColor: siteVars.colorScheme.default.background,
   tintedBackgroundColorActive: siteVars.colorScheme.brand.backgroundHover1,
   tintedBackgroundColorHover: siteVars.colorScheme.brand.backgroundHover1,

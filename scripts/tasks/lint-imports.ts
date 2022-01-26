@@ -1,6 +1,6 @@
 import { getAllPackageInfo, findGitRoot } from '../monorepo/index';
-import findConfig from '../find-config';
 import { readConfig } from '../read-config';
+import * as glob from 'glob';
 import * as path from 'path';
 import * as fs from 'fs';
 import chalk from 'chalk';
@@ -23,9 +23,9 @@ interface ImportErrors {
 
 export function lintImports() {
   const gitRoot = findGitRoot();
-  const sourcePath = path.resolve(process.cwd(), 'src');
-  const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
-  const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
+  const sourcePath = path.join(process.cwd(), 'src');
+  const cwdNodeModulesPath = path.join(process.cwd(), 'node_modules');
+  const nodeModulesPath = path.join(gitRoot, 'node_modules');
 
   if (!fs.existsSync(sourcePath)) {
     return;
@@ -57,13 +57,13 @@ export function lintImports() {
 
   const packagesInfo = getAllPackageInfo();
 
-  const currentPackageJson = readConfig(findConfig('package.json'));
+  const currentPackageJson = readConfig('package.json');
   const currentMonorepoPackage = currentPackageJson.name;
 
   return lintSource();
 
   function lintSource() {
-    const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);
+    const files = glob.sync(path.join(sourcePath, '**/*.{ts,tsx}'));
     const importErrors: ImportErrors = {
       pathAbsolute: { count: 0, matches: {} },
       pathNotFile: { count: 0, matches: {} },
@@ -88,34 +88,6 @@ export function lintImports() {
     }
 
     return Promise.resolve();
-  }
-
-  /**
-   * Recurses through a given folder path and adds files to an array which match the extension pattern.
-   *
-   * @param dir - starting folder path.
-   * @param extentionPattern - extension regex to match.
-   * @param fileList - cumulative array of files
-   * @returns array of matching files.
-   */
-  function _getFiles(dir: string, extentionPattern: RegExp, fileList?: string[]): string[] {
-    fileList = fileList || [];
-
-    const files = fs.readdirSync(dir);
-
-    files.forEach(file => {
-      const fullPath = path.join(dir, file);
-
-      if (fs.statSync(fullPath).isDirectory()) {
-        _getFiles(fullPath, extentionPattern, fileList);
-      } else {
-        if (extentionPattern.test(file)) {
-          fileList.push(fullPath);
-        }
-      }
-    });
-
-    return fileList;
   }
 
   function _evaluateFile(filePath: string, importErrors: ImportErrors, isExample: boolean) {

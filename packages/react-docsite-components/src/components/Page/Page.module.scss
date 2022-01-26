@@ -57,7 +57,7 @@ $usageListPadding: 24px;
     background: linear-gradient(to right, white, rgba(white, 0)) left / 48px 100% local,
       linear-gradient(to left, white, rgba(white, 0)) right / 48px 100% local,
       // This is $ms-color-neutralLight but the rgba() function wasn't handling the variable
-        linear-gradient(to right, #edebe9, rgba(#edebe9, 0)) left / 12px 100% scroll,
+      linear-gradient(to right, #edebe9, rgba(#edebe9, 0)) left / 12px 100% scroll,
       linear-gradient(to left, #edebe9, rgba(#edebe9, 0)) right / 12px 100% scroll;
     background-repeat: no-repeat;
   }

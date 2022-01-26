@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { IPickerItemProps } from './PickerItem.types';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { Autofill } from '../../Autofill';
-import { ICalloutProps } from '../../Callout';
-import { ITheme, IStyle } from '../../Styling';
-import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import type { IPickerItemProps } from './PickerItem.types';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
+import type { ICalloutProps } from '../../Callout';
+import type { ITheme, IStyle } from '../../Styling';
+import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import { IIconProps } from '../Icon/Icon.types';
 
 /**
  * BasePicker component.
@@ -174,6 +175,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   removeButtonAriaLabel?: string;
 
   /**
+   * The text that will be announced when a suggestion is removed. A default value is only provided for English.
+   * @default 'removed \{0\}'
+   */
+  suggestionRemovedText?: string;
+
+  /**
    * Optional aria-label that will be placed on the element that has the role "combobox"
    * attached. Additionally aria-labelled by will get added to the supporting input element contained
    * with in the combobox container
@@ -235,6 +242,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Theme provided by styled() function.
    */
   theme?: ITheme;
+
+  /**
+   *  Props for the icon used in the item's remove button.
+   *  @defaultvalue `{ iconName:'Cancel' }`
+   */
+  removeButtonIconProps?: IIconProps;
 }
 
 /**
@@ -252,6 +265,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'className'
     | 'suggestionsClassName'
     | 'suggestionsItemClassName'
+    | 'searchForMoreIcon'
     | 'searchForMoreText'
     | 'forceResolveText'
     | 'loadingText'
@@ -263,6 +277,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'suggestionsAvailableAlertText'
     | 'suggestionsContainerAriaLabel'
     | 'showForceResolve'
+    | 'removeButtonIconProps'
   > {}
 
 /**

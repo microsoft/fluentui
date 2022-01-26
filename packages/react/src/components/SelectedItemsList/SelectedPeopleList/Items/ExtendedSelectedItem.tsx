@@ -2,8 +2,8 @@ import * as React from 'react';
 import { IconButton } from '../../../../Button';
 import { css, getId, initializeComponentRef } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
-import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import * as stylesImport from './ExtendedSelectedItem.scss';
+import type { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 
 const styles: any = stylesImport;
 

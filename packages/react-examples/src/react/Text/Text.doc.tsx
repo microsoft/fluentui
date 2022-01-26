@@ -33,9 +33,7 @@ export const TextPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/docs/TextOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/docs/TextBestPractices.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/docs/TextBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/docs/TextDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/docs/TextDonts.md'),
   isHeaderVisible: true,

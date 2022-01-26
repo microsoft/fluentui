@@ -1,8 +1,9 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarNavigationIcons, AnimationDirection } from '../Calendar.types';
-import { ITheme } from '@fluentui/style-utilities';
-import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
-import { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
+import { AnimationDirection } from '../Calendar.types';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { ICalendarNavigationIcons } from '../Calendar.types';
+import type { ITheme } from '@fluentui/style-utilities';
+import type { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
+import type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 
 /**
  * {@docCategory Calendar}
@@ -77,7 +78,7 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   onHeaderSelect?: () => void;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter?: IDateFormatting;
 

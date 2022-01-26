@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { IContextualMenuItem } from '../ContextualMenu.types';
-import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuAnchor } from './ContextualMenuAnchor';
+import type { IContextualMenuItem } from '../ContextualMenu.types';
+import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
@@ -64,10 +64,7 @@ describe('ContextualMenuButton', () => {
         />,
       );
 
-      component
-        .find('.checkmarkIcon')
-        .at(0)
-        .simulate('click', mockEvent);
+      component.find('.checkmarkIcon').at(0).simulate('click', mockEvent);
 
       // onItemClick is invoked twice, once for Check and again for ContextualMenuItem.
       // This logic can be cleaned-up using Jest's toHaveNthReturnedWith when available.

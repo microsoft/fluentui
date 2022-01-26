@@ -1,6 +1,6 @@
-import { IColor } from './interfaces';
 import { cssColor } from './cssColor';
 import { getColorFromRGBA } from './getColorFromRGBA';
+import type { IColor } from './interfaces';
 
 /**
  * Converts a CSS color string to a color object.

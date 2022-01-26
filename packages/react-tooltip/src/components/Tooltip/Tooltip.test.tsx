@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Tooltip } from './Tooltip';
 import { isConformant } from '../../common/isConformant';
 import { render } from '@testing-library/react';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 describe('Tooltip', () => {
   isConformant({
@@ -13,10 +14,15 @@ describe('Tooltip', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
+      'component-has-static-classname',
       'as-renders-fc',
       'as-passes-as-value',
       'as-renders-html',
     ],
+  });
+
+  afterEach(() => {
+    resetIdsForTests();
   });
 
   it('renders only aria-label for a simple label tooltip', () => {

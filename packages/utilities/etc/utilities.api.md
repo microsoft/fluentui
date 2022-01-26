@@ -11,10 +11,10 @@ import { findElementRecursive } from '@fluentui/dom-utilities';
 import { getChildren } from '@fluentui/dom-utilities';
 import { getParent } from '@fluentui/dom-utilities';
 import { getVirtualParent } from '@fluentui/dom-utilities';
-import { IProcessedStyleSet } from '@fluentui/merge-styles';
+import type { IProcessedStyleSet } from '@fluentui/merge-styles';
 import { IStyleFunction } from '@fluentui/merge-styles';
 import { IStyleFunctionOrObject } from '@fluentui/merge-styles';
-import { IStyleSet } from '@fluentui/merge-styles';
+import type { IStyleSet } from '@fluentui/merge-styles';
 import { isVirtualElement } from '@fluentui/dom-utilities';
 import { IVirtualElement } from '@fluentui/dom-utilities';
 import { Omit as Omit_2 } from '@fluentui/merge-styles';
@@ -46,7 +46,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: "symbol" | "object" | "input" | "progress" | "select" | "a" | "abbr" | "address" | "area" | "article" | "aside" | "audio" | "b" | "base" | "bdi" | "bdo" | "blockquote" | "body" | "br" | "button" | "canvas" | "caption" | "cite" | "code" | "col" | "colgroup" | "data" | "datalist" | "dd" | "del" | "details" | "dfn" | "dialog" | "div" | "dl" | "dt" | "em" | "embed" | "fieldset" | "figcaption" | "figure" | "footer" | "form" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "head" | "header" | "hgroup" | "hr" | "html" | "i" | "iframe" | "img" | "ins" | "kbd" | "label" | "legend" | "li" | "link" | "main" | "map" | "mark" | "menu" | "meta" | "meter" | "nav" | "noscript" | "ol" | "optgroup" | "option" | "output" | "p" | "param" | "picture" | "pre" | "q" | "rp" | "rt" | "ruby" | "s" | "samp" | "script" | "section" | "slot" | "small" | "source" | "span" | "strong" | "style" | "sub" | "summary" | "sup" | "table" | "tbody" | "td" | "template" | "textarea" | "tfoot" | "th" | "thead" | "time" | "title" | "tr" | "track" | "u" | "ul" | "var" | "video" | "wbr" | "big" | React_2.FunctionComponent<any> | React_2.ComponentClass<any, any> | "keygen" | "menuitem" | "noindex" | "webview" | "svg" | "animate" | "animateMotion" | "animateTransform" | "circle" | "clipPath" | "defs" | "desc" | "ellipse" | "feBlend" | "feColorMatrix" | "feComponentTransfer" | "feComposite" | "feConvolveMatrix" | "feDiffuseLighting" | "feDisplacementMap" | "feDistantLight" | "feDropShadow" | "feFlood" | "feFuncA" | "feFuncB" | "feFuncG" | "feFuncR" | "feGaussianBlur" | "feImage" | "feMerge" | "feMergeNode" | "feMorphology" | "feOffset" | "fePointLight" | "feSpecularLighting" | "feSpotLight" | "feTile" | "feTurbulence" | "filter" | "foreignObject" | "g" | "image" | "line" | "linearGradient" | "marker" | "mask" | "metadata" | "mpath" | "path" | "pattern" | "polygon" | "polyline" | "radialGradient" | "rect" | "stop" | "switch" | "text" | "textPath" | "tspan" | "use" | "view" | undefined;
+    asyncPlaceholder?: React_2.ElementType<any> | undefined;
 }> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
 // @public
@@ -80,7 +80,7 @@ export class Async {
         leading?: boolean;
         trailing?: boolean;
     }): T;
-    }
+}
 
 // @public
 export const audioProperties: Record<string, number>;
@@ -90,7 +90,7 @@ export class AutoScroll {
     constructor(element: HTMLElement);
     // (undocumented)
     dispose(): void;
-    }
+}
 
 // @public @deprecated
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React_2.Component<TProps, TState> {
@@ -147,7 +147,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
 // @public
-export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (((instance: TType | TValue | null) => void) | React_2.RefObject<TType | TValue | null> | null | undefined)[]) => (newValue: TType | TValue | null) => void;
+export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (React_2.Ref<TType | TValue | null> | undefined)[]) => (newValue: TType | TValue | null) => void;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
@@ -205,7 +205,7 @@ export class DelayedRender extends React_2.Component<IDelayedRenderProps, IDelay
     };
     // (undocumented)
     render(): React_2.ReactElement<{}> | null;
-    }
+}
 
 // @public
 export function disableBodyScroll(): void;
@@ -242,7 +242,7 @@ export class EventGroup {
     raise(eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
     // (undocumented)
     static stopPropagation(event: any): void;
-    }
+}
 
 // @public
 export function extendComponent<T extends React_2.Component>(parent: T, methods: {
@@ -260,7 +260,7 @@ export class FabricPerformance {
     //
     // (undocumented)
     static summary: IPerfSummary;
-    }
+}
 
 // @public
 export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args: any[]): any;
@@ -320,6 +320,9 @@ export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTML
 
 // @public
 export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+
+// @public
+export function getFirstVisibleElementFromSelector(selector: string): Element | undefined;
 
 // @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
@@ -765,6 +768,9 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 // @public
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
+// @public
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean;
+
 // Warning: (ae-internal-missing-underscore) The name "ISerializableObject" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -858,6 +864,7 @@ export const KeyCodes: {
     seven: 55;
     eight: 56;
     nine: 57;
+    colon: 58;
     a: 65;
     b: 66;
     c: 67;
@@ -1099,8 +1106,7 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     toggleKeySelected(key: string): void;
     // (undocumented)
     toggleRangeSelected(fromIndex: number, count: number): void;
-    }
-
+}
 export { Selection_2 as Selection }
 
 // @public (undocumented)
@@ -1123,7 +1129,6 @@ enum SelectionMode_2 {
     // (undocumented)
     single = 1
 }
-
 export { SelectionMode_2 as SelectionMode }
 
 // @public
@@ -1230,7 +1235,6 @@ export function warnDeprecations<P>(componentName: string, props: P, deprecation
 
 // @public
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
-
 
 // (No @packageDocumentation comment for this package)
 

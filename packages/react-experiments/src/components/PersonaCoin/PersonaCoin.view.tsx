@@ -1,12 +1,12 @@
 /** @jsx withSlots */
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { PersonaPresence } from '../../utilities/factoryComponents';
-import { IPersonaCoinComponent, IPersonaCoinProps, IPersonaCoinSlots } from './PersonaCoin.types';
 import { PersonaCoinImage } from './PersonaCoinImage/PersonaCoinImage';
 import { DEFAULT_PERSONA_COIN_SIZE } from './PersonaCoin.styles';
 import { hideInitialsWhenImageIsLoaded } from './propHelpers';
 import PersonaCoinSize10 from './PersonaCoinSize10/PersonaCoinSize10';
 import { PersonaCoinInitials } from './PersonaCoinInitials/PersonaCoinInitials';
+import type { IPersonaCoinComponent, IPersonaCoinProps, IPersonaCoinSlots } from './PersonaCoin.types';
 
 export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
   const coinSize = props.size || DEFAULT_PERSONA_COIN_SIZE;

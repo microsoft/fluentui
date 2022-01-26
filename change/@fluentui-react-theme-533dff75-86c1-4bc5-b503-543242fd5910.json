@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "perf: avoid deep merge in mergeThemes() if possible",
-  "packageName": "@fluentui/react-theme",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

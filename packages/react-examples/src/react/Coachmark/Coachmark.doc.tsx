@@ -16,12 +16,8 @@ export const CoachmarkPageProps: IDocPageProps = {
       isScrollable: false,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Coachmark/docs/CoachmarkOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Coachmark/docs/CoachmarkBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Coachmark/docs/CoachmarkOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Coachmark/docs/CoachmarkBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

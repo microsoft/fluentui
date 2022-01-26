@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { initializeComponentRef } from './initializeComponentRef';
 import { mount } from 'enzyme';
-import { IBaseProps } from './BaseComponent.types';
+import type { IBaseProps } from './BaseComponent.types';
 
 describe('initializeComponentRef', () => {
   class Foo extends React.Component<IBaseProps, {}> {

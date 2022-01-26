@@ -2,7 +2,7 @@ pr: none
 
 trigger: none
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 workspace:
   clean: all
@@ -52,4 +52,4 @@ steps:
 
   - template: .devops/templates/cleanup.yml
     parameters:
-      checkForChangedFiles: false
+      checkForModifiedFiles: false

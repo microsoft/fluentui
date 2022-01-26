@@ -5,9 +5,9 @@
 ```ts
 
 import { Async } from '@fluentui/utilities';
-import { ISettingsMap } from '@fluentui/utilities/lib/warn';
-import { IWarnControlledUsageParams } from '@fluentui/utilities/lib/warn';
-import { Point } from '@fluentui/utilities';
+import type { ISettingsMap } from '@fluentui/utilities/lib/warn';
+import type { IWarnControlledUsageParams } from '@fluentui/utilities/lib/warn';
+import type { Point } from '@fluentui/utilities';
 import * as React_2 from 'react';
 import { Rectangle } from '@fluentui/utilities';
 
@@ -62,8 +62,8 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 
 // @public (undocumented)
 export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: ChangeCallback<TElement, TValue, TEvent> | undefined): Readonly<[
-    TValue | undefined,
-    (update: React_2.SetStateAction<TValue | undefined>, ev?: React_2.FormEvent<TElement>) => void
+TValue | undefined,
+(update: React_2.SetStateAction<TValue | undefined>, ev?: React_2.FormEvent<TElement>) => void
 ]>;
 
 // @public
@@ -116,7 +116,6 @@ export const useUnmount: (callback: () => void) => void;
 
 // @public
 export function useWarnings<P>(options: IWarningOptions<P>): void;
-
 
 // (No @packageDocumentation comment for this package)
 

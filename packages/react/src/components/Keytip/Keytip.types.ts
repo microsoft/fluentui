@@ -1,6 +1,6 @@
-import { ICalloutProps } from '../../Callout';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, Point } from '../../Utilities';
+import type { ICalloutProps } from '../../Callout';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, Point } from '../../Utilities';
 
 /**
  * {@docCategory Keytips}
@@ -78,6 +78,12 @@ export interface IKeytipProps {
    * Keytip mode will stay on when a menu is opened, even if the items in that menu have no keytips
    */
   hasMenu?: boolean;
+
+  /**
+   * Whether or not this keytip belongs to a component that is in an overflow menu
+   * and also has a menu
+   */
+  hasOverflowSubMenu?: boolean;
 }
 
 /**

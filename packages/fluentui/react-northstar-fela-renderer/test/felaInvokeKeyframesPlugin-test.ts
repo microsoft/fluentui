@@ -57,7 +57,7 @@ describe('felaRenderKeyframesPlugin', () => {
 
   test('does not transform a list of strings', () => {
     const style: ICSSInJSStyle = {
-      display: ['inline-grid', '-ms-inline-grid'],
+      display: 'inline-grid',
     };
 
     expect(felaInvokeKeyframesPlugin(style)).toMatchObject(style);

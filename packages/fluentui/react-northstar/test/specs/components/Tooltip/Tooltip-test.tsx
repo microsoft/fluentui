@@ -70,13 +70,24 @@ describe('Tooltip', () => {
     });
   });
 
-  describe('open', () => {
-    it('is passed to "Popper" as "enabled"', () => {
-      const wrapper = mountWithProvider(<Tooltip trigger={<button />} content="Foo" />);
-      expect(wrapper.find('Popper').prop('enabled')).toBe(false);
+  test('it should call trigger events', () => {
+    const onKeyDown = jest.fn();
 
-      wrapper.setProps({ open: true });
-      expect(wrapper.find('Popper').prop('enabled')).toBe(true);
-    });
+    mountWithProvider(<Tooltip open={false} trigger={<Button onKeyDown={onKeyDown} />} content="Hi" />)
+      .find('button')
+      .simulate('keydown', { keyCode: 13 });
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(onKeyDown).toHaveBeenCalledWith(expect.objectContaining({ type: 'keydown' }));
+  });
+});
+
+describe('open', () => {
+  it('is passed to "Popper" as "enabled"', () => {
+    const wrapper = mountWithProvider(<Tooltip trigger={<button />} content="Foo" />);
+    expect(wrapper.find('Popper').prop('enabled')).toBe(false);
+
+    wrapper.setProps({ open: true });
+    expect(wrapper.find('Popper').prop('enabled')).toBe(true);
   });
 });

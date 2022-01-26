@@ -37,6 +37,12 @@ var siteInfo = [
     title: 'Converged (@fluentui/react-components)',
   },
   {
+    package: '@fluentui/web-components',
+    link: './web-components/storybook/index.html',
+    icon: 'Globe',
+    title: 'web-components',
+  },
+  {
     package: '@fluentui/react-experiments',
     link: './react-experiments/demo/index.html',
     icon: 'TestBeaker',
@@ -83,7 +89,7 @@ if (hrefMatch) {
 
 var siteLink = document.getElementById('site-list');
 
-siteInfo.forEach(function(info) {
+siteInfo.forEach(function (info) {
   if (packages.indexOf(info.package) > -1) {
     var li = document.createElement('LI');
     li.className = 'Tile';

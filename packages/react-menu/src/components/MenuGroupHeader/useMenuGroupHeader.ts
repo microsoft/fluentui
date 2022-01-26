@@ -1,30 +1,25 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { useMenuGroupContext_unstable } from '../../contexts/menuGroupContext';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.types';
-import { useMenuGroupContext } from '../../contexts/menuGroupContext';
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuGroupHeaderState>({});
 
 /**
  * Given user props, returns state and render function for a MenuGroupHeader.
  */
-export function useMenuGroupHeader(
+export function useMenuGroupHeader_unstable(
   props: MenuGroupHeaderProps,
   ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuGroupHeaderProps,
 ): MenuGroupHeaderState {
-  const { headerId: id } = useMenuGroupContext();
+  const { headerId: id } = useMenuGroupContext_unstable();
 
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
-      as: 'div',
-      id,
+  return {
+    components: {
+      root: 'div',
     },
-    defaultProps,
-    resolveShorthandProps(props, []),
-  );
-
-  return state;
+    root: getNativeElementProps('div', {
+      ref,
+      id,
+      ...props,
+    }),
+  };
 }

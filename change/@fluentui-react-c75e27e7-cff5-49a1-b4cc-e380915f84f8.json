@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

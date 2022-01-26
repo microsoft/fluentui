@@ -3,8 +3,6 @@ module.exports = {
     'airbnb',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
     'plugin:@typescript-eslint/eslint-recommended', // disable some rules not needed for TS
   ],
   parser: '@typescript-eslint/parser',
@@ -83,6 +81,7 @@ module.exports = {
     'react/sort-comp': 'off',
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
+    'arrow-body-style': 'off',
     camelcase: 'off',
     'class-methods-use-this': 'off',
     'consistent-return': 'off',

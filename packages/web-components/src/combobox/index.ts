@@ -1,32 +1,23 @@
-import { attr, customElement } from '@microsoft/fast-element';
-import { Combobox, ComboboxTemplate as template } from '@microsoft/fast-foundation';
-import { SelectAppearance } from '../select';
-import { ComboboxStyles as styles } from './combobox.styles';
+import { attr } from '@microsoft/fast-element';
+import {
+  ComboboxOptions,
+  Combobox as FoundationCombobox,
+  comboboxTemplate as template,
+} from '@microsoft/fast-foundation';
+import { fillColor, neutralLayerFloating } from '../design-tokens';
+import { comboboxStyles as styles } from './combobox.styles';
 
 /**
  * Combobox appearances
  * @public
  */
-export type ComboboxAppearance = SelectAppearance;
+export type ComboboxAppearance = 'filled' | 'outline';
 
 /**
- * The Fluent Combobox Custom Element. Implements {@link @microsoft/fast-foundation#Combobox|Combobox},
- * {@link @microsoft/fast-foundation#ComboboxTemplate|ComboboxTemplate}
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-combobox\>
- *
+ * The Fluent combobox class
+ * @internal
  */
-@customElement({
-  name: 'fluent-combobox',
-  template,
-  styles,
-  shadowOptions: {
-    delegatesFocus: true,
-  },
-})
-export class FluentCombobox extends Combobox {
+export class Combobox extends FoundationCombobox {
   /**
    * The appearance of the element.
    *
@@ -56,11 +47,36 @@ export class FluentCombobox extends Combobox {
     if (!this.appearance) {
       this.appearance = 'outline';
     }
+
+    if (this.listbox) {
+      fillColor.setValueFor(this.listbox, neutralLayerFloating);
+    }
   }
 }
+
+/**
+ * The Fluent Combobox Custom Element. Implements {@link @microsoft/fast-foundation#Combobox},
+ * {@link @microsoft/fast-foundation#comboboxTemplate}
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-combobox\>
+ *
+ */
+export const fluentCombobox = Combobox.compose<ComboboxOptions>({
+  baseName: 'combobox',
+  baseClass: FoundationCombobox,
+  template,
+  styles,
+  indicator: `
+    <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.15 4.65c.2-.2.5-.2.7 0L6 7.79l3.15-3.14a.5.5 0 11.7.7l-3.5 3.5a.5.5 0 01-.7 0l-3.5-3.5a.5.5 0 010-.7z"/>
+    </svg>
+  `,
+});
 
 /**
  * Styles for combobox
  * @public
  */
-export const ComboboxStyles = styles;
+export const comboboxStyles = styles;

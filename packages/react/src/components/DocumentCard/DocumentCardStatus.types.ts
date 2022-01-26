@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardStatusBase } from './DocumentCardStatus.base';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory DocumentCard}

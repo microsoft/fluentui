@@ -1,13 +1,8 @@
-import {
-  mergeCssSets,
-  IStyleSet,
-  IProcessedStyleSet,
-  Stylesheet,
-  IStyleFunctionOrObject,
-} from '@fluentui/merge-styles';
+import { mergeCssSets, Stylesheet } from '@fluentui/merge-styles';
 import { getRTL } from './rtl';
 import { getWindow } from './dom';
-import { StyleFunction } from './styled';
+import type { IStyleSet, IProcessedStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
+import type { StyleFunction } from './styled';
 
 const MAX_CACHE_COUNT = 50;
 const DEFAULT_SPECIFICITY_MULTIPLIER = 5;

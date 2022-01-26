@@ -1,4 +1,5 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+
 import { ChatMessageReadStatusStylesProps } from '../../../../components/Chat/ChatMessageReadStatus';
 import { screenReaderContainerStyles } from '../../../../utils';
 import { ChatMessageReadStatusVariables } from './chatMessageReadStatusVariables';
@@ -8,9 +9,10 @@ export const chatMessageReadStatusStyles: ComponentSlotStylesPrepared<
   ChatMessageReadStatusVariables
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    color: v.color,
     position: 'absolute',
-    right: v.rightPoistion,
-    bottom: v.bottomPoistion,
+    right: p.density === 'compact' ? v.rightPositionCompact : v.rightPosition,
+    bottom: p.density === 'compact' ? v.bottomPositionCompact : v.bottomPosition,
     ':after': {
       content: `"${p.title}"`,
       ...(screenReaderContainerStyles as ICSSInJSStyle),

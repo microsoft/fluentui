@@ -1,10 +1,10 @@
-/**
+/*
  * @jest-environment node
  */
 
 // 👆 this is intentionally to test in SSR like environment
 
-import { createDOMRenderer } from '@fluentui/make-styles';
+import { createDOMRenderer } from '@griffel/core';
 import * as prettier from 'prettier';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
@@ -17,8 +17,13 @@ expect.addSnapshotSerializer({
   test(value) {
     return typeof value === 'string';
   },
-  print(value: string) {
-    return prettier.format(value, { parser: 'html' }).trim();
+  print(value) {
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _value = value as string;
+
+    return prettier.format(_value, { parser: 'html' }).trim();
   },
 });
 
@@ -45,8 +50,8 @@ describe('renderToStyleElements', () => {
     );
 
     expect(ReactDOM.renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>)).toMatchInlineSnapshot(`
-      <style data-make-styles-bucket="default" data-make-styles-rehydration="true">
-        .fe3e8s90 {
+      <style data-make-styles-bucket="d" data-make-styles-rehydration="true">
+        .fe3e8s9 {
           color: red;
         }</style
       ><style data-make-styles-bucket="h" data-make-styles-rehydration="true">
@@ -82,7 +87,7 @@ describe('renderToStyleElements', () => {
     expect(ReactDOM.renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>)).toMatchInlineSnapshot(`
       <style data-make-styles-bucket="t" data-make-styles-rehydration="true">
         @media screen and (max-width: 992px) {
-          .fnao3vb0:hover {
+          .fnao3vb:hover {
             color: blue;
           }
         }
@@ -118,10 +123,14 @@ describe('renderToStyleElements', () => {
     );
 
     expect(ReactDOM.renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>)).toMatchInlineSnapshot(`
-      <style data-make-styles-bucket="default" data-make-styles-rehydration="true">
+      <style data-make-styles-bucket="d" data-make-styles-rehydration="true">
         .f1g6ul6r {
           -webkit-animation-name: f1q8eu9e;
           animation-name: f1q8eu9e;
+        }
+        .f1fp4ujf {
+          -webkit-animation-name: f55c0se;
+          animation-name: f55c0se;
         }</style
       ><style data-make-styles-bucket="k" data-make-styles-rehydration="true">
         @-webkit-keyframes f1q8eu9e {
@@ -138,6 +147,20 @@ describe('renderToStyleElements', () => {
             transform: rotate(360deg);
           }
         }
+        @-webkit-keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
         @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
@@ -150,6 +173,20 @@ describe('renderToStyleElements', () => {
             -moz-transform: rotate(360deg);
             -ms-transform: rotate(360deg);
             transform: rotate(360deg);
+          }
+        }
+        @keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
           }
         }
       </style>

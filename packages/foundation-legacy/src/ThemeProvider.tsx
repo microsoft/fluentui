@@ -12,6 +12,8 @@ export interface IThemeProviderProps {
  * for a given scheme name.
  *
  * @param providers - Injected providers for accessing theme data and providing it via a Customizer component.
+ * @deprecated This is an old ThemeProvider implementation. New code should use the ThemeProvider exported from
+ * `@fluentui/react` (or `@fluentui/react/lib/Theme`) instead.
  */
 export const ThemeProvider: React.FunctionComponent<IThemeProviderProps> = (props: IThemeProviderProps) => {
   const { scheme, theme, ...rest } = props;
@@ -23,6 +25,6 @@ export const ThemeProvider: React.FunctionComponent<IThemeProviderProps> = (prop
     return getThemedContext(context, scheme, theme);
   };
 
-  // eslint-disable-next-line react/jsx-no-bind
+  // eslint-disable-next-line react/jsx-no-bind, deprecation/deprecation
   return <Customizer {...rest} contextTransform={contextTransform} />;
 };

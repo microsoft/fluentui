@@ -23,12 +23,8 @@ export const ModalPageProps: IDocPageProps = {
       view: <ModalModelessExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Modal/docs/ModalOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Modal/docs/ModalBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Modal/docs/ModalOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Modal/docs/ModalBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

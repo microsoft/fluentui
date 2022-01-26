@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useCallback, useImperativeHandle, useRef } from 'react';
 import { useControlledState } from '@fluentui/foundation-legacy';
 import { getRTL, KeyCodes } from '../../Utilities';
-import {
+import type {
   ICollapsibleSectionProps,
   ICollapsibleSectionViewProps,
   ICollapsibleSectionComponent,

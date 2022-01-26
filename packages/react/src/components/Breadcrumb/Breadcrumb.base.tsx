@@ -6,7 +6,6 @@ import {
   getNativeProps,
   htmlElementProperties,
 } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
@@ -14,8 +13,9 @@ import { IconButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
-import {
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
+import type {
   IBreadcrumbProps,
   IBreadcrumbItem,
   IDividerAsProps,
@@ -23,6 +23,7 @@ import {
   IBreadcrumbStyleProps,
   IBreadcrumbStyles,
 } from './Breadcrumb.types';
+import { composeRenderFunction } from '../../Utilities';
 
 /** @deprecated Use IBreadcrumbData */
 export type IBreadCrumbData = IBreadcrumbData;
@@ -158,7 +159,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     const {
       ariaLabel,
       dividerAs: DividerType = Icon as React.ElementType<IDividerAsProps>,
-      onRenderItem = this._onRenderItem,
+      onRenderItem,
       overflowAriaLabel,
       overflowIndex,
       onRenderOverflowIcon,
@@ -186,18 +187,30 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     const lastItemIndex = renderedItems.length - 1;
     const hasOverflowItems = renderedOverflowItems && renderedOverflowItems.length !== 0;
 
-    const itemElements: JSX.Element[] = renderedItems.map((item, index) => (
-      <li className={this._classNames.listItem} key={item.key || String(index)}>
-        {onRenderItem(item, this._onRenderItem)}
-        {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
-          <DividerType
-            className={this._classNames.chevron}
-            iconName={getRTL(this.props.theme) ? 'ChevronLeft' : 'ChevronRight'}
-            item={item}
-          />
-        )}
-      </li>
-    ));
+    const itemElements: JSX.Element[] = renderedItems.map((item, index) => {
+      let finalOnRenderItem = this._onRenderItem;
+
+      if (item.onRender) {
+        finalOnRenderItem = composeRenderFunction(item.onRender, finalOnRenderItem);
+      }
+
+      if (onRenderItem) {
+        finalOnRenderItem = composeRenderFunction(onRenderItem, finalOnRenderItem);
+      }
+
+      return (
+        <li className={this._classNames.listItem} key={item.key || String(index)}>
+          {finalOnRenderItem(item)}
+          {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
+            <DividerType
+              className={this._classNames.chevron}
+              iconName={getRTL(this.props.theme) ? 'ChevronLeft' : 'ChevronRight'}
+              item={item}
+            />
+          )}
+        </li>
+      );
+    });
 
     if (hasOverflowItems) {
       const iconProps = !onRenderOverflowIcon ? { iconName: 'More' } : {};
@@ -218,9 +231,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
             menuProps={{
               items: contextualItems,
               directionalHint: DirectionalHint.bottomLeftEdge,
-              calloutProps: {
-                preventDismissOnEvent: () => true,
-              },
             }}
           />
           {overflowIndex !== lastItemIndex + 1 && (
@@ -251,8 +261,22 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     );
   };
 
-  private _onRenderItem = (item: IBreadcrumbItem) => {
-    const { as, href, onClick, isCurrentItem, text, ...additionalProps } = item;
+  private _onRenderItem = (item?: IBreadcrumbItem) => {
+    if (!item) {
+      return null;
+    }
+
+    const { as, href, onClick, isCurrentItem, text, onRenderContent, ...additionalProps } = item;
+
+    let finalOnRenderContent = defaultOnRenderCrumbContent;
+
+    if (onRenderContent) {
+      finalOnRenderContent = composeRenderFunction(onRenderContent, finalOnRenderContent);
+    }
+
+    if (this.props.onRenderItemContent) {
+      finalOnRenderContent = composeRenderFunction(this.props.onRenderItemContent, finalOnRenderContent);
+    }
 
     if (onClick || href) {
       return (
@@ -266,7 +290,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           onClick={this._onBreadcrumbClicked.bind(this, item)}
         >
           <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-            {text}
+            {finalOnRenderContent(item)}
           </TooltipHost>
         </Link>
       );
@@ -275,7 +299,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       return (
         <Tag {...additionalProps} className={this._classNames.item}>
           <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-            {text}
+            {finalOnRenderContent(item)}
           </TooltipHost>
         </Tag>
       );
@@ -302,4 +326,8 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       throw new Error('Breadcrumb: overflowIndex out of range');
     }
   }
+}
+
+function defaultOnRenderCrumbContent(item?: IBreadcrumbItem): JSX.Element | null {
+  return item ? <>{item.text}</> : null;
 }

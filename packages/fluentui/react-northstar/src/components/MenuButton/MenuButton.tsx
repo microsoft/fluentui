@@ -15,7 +15,6 @@ import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
 import { ALIGNMENTS, POSITIONS, PositioningProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
 import {
-  ComponentWithAs,
   useAccessibility,
   useTelemetry,
   getElementType,
@@ -23,6 +22,8 @@ import {
   useFluentContext,
   useAutoControlled,
   useStyles,
+  useOnIFrameFocus,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface MenuButtonSlotClassNames {
@@ -107,8 +108,7 @@ export type MenuButtonStylesProps = never;
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
-  FluentComponentStaticProps<MenuButtonProps> = props => {
+export const MenuButton = (React.forwardRef<HTMLDivElement, MenuButtonProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();
@@ -148,6 +148,13 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     initialValue: false,
   });
 
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
+  });
+
   const menuId = React.useRef<string>();
   menuId.current = getOrGenerateIdFromShorthand('menubutton-menu-', menu, menuId.current);
   const triggerId = React.useRef<string>();
@@ -181,7 +188,6 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
   const popupProps: PopupProps = {
     accessibility,
     align,
-    className,
     defaultOpen,
     mountNode,
     mouseLeaveDelay,
@@ -196,13 +202,11 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     position,
     positionFixed,
     tabbableTrigger,
-    styles: props.styles,
     target,
     trigger,
     unstable_disableTether,
     unstable_pinned,
     autoSize,
-    variables,
   };
 
   const { classes, styles: resolvedStyles } = useStyles<MenuButtonStylesProps>(MenuButton.displayName, {
@@ -237,6 +241,12 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
       if (!itemProps || !itemProps.menu) {
         // do not close if clicked on item with submenu
         handleOpenChange(e, false);
+      }
+    },
+    onKeyDown: (e: React.KeyboardEvent, itemProps: MenuItemProps) => {
+      _.invoke(predefinedProps, 'onKeyDown', e, itemProps);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.stopPropagation();
       }
     },
   });
@@ -283,6 +293,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
   const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
+        ref,
         className: classes.root,
         ...unhandledProps,
       })}
@@ -292,7 +303,8 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, MenuButtonProps> &
+  FluentComponentStaticProps<MenuButtonProps>;
 
 MenuButton.displayName = 'MenuButton';
 

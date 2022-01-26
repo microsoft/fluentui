@@ -18,6 +18,7 @@ describe('MenuItem', () => {
     constructorName: 'MenuItem',
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
+    testOptions: { 'consistent-callback-names': { ignoreProps: ['onActiveChanged'] } },
   });
 
   implementsShorthandProp(MenuItem)('menu', Menu, {
@@ -32,13 +33,7 @@ describe('MenuItem', () => {
 
     expect(menuItem.is('li')).toBe(true);
     // The ElementType is wrapped with Ref, which is adding two HOC in total, that's why we need the three childAt(0) usages
-    expect(
-      menuItem
-        .childAt(0)
-        .childAt(0)
-        .childAt(0)
-        .is('a'),
-    ).toBe(true);
+    expect(menuItem.childAt(0).childAt(0).childAt(0).is('a')).toBe(true);
     expect(menuItem.text()).toBe('Home');
   });
 
@@ -48,12 +43,7 @@ describe('MenuItem', () => {
       .hostNodes();
 
     expect(menuItem.is('li')).toBe(true);
-    expect(
-      menuItem
-        .childAt(0)
-        .hostNodes()
-        .exists(),
-    ).toBe(false);
+    expect(menuItem.childAt(0).hostNodes().exists()).toBe(false);
     expect(menuItem.text()).toBe('Home');
   });
 

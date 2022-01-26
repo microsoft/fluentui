@@ -44,9 +44,7 @@ export const NavPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/docs/NavOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/docs/NavBestPractices.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/docs/NavBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

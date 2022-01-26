@@ -23,9 +23,7 @@ describe('ButtonGrid', () => {
       items: DEFAULT_ITEMS,
       columnCount: 4,
       styles: getStyles,
-      onRenderItem: () => {
-        return;
-      },
+      onRenderItem: () => <div />,
     },
     disabledTests: ['has-top-level-file', 'component-handles-classname'],
   });

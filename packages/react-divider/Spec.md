@@ -2,8 +2,7 @@
 
 ## Background
 
-The divider control is intended to replace the Separator control currently exported. Its purpose is to visually separate content.
-The purpose of redoing the component is to add minor structural updates and new engineering practices and update the naming conventions in the API to match naming conventions indicated by OpenUI research.
+A `Divider` is used to visually segment content into groups.
 
 ## Prior Art
 
@@ -30,7 +29,7 @@ The purpose of redoing the component is to add minor structural updates and new 
 
 Basic Examples:
 
-```html
+```tsx
 <Divider />
 <Divider vertical />
 <Divider>This is a divider with content</Divider>
@@ -38,149 +37,33 @@ Basic Examples:
 
 ## Variants
 
-The divider will have two main variants, rendering horizontally or vertically. The control is the same with the optional property `vertical` defining how it renders.
+### Layout
 
-Standard default horizontal
+The `Divider` component has two layout variants:
 
-```html
-<Divider />
-```
+- The default `Divider` is separates contents by rendering a horizontal line.
+- A `Divider` with the `vertical` prop set to true separates contents by rendering a vertical line.
 
-Vertical
+### Inset
 
-```html
-<Divider vertical />
-```
+A `Divider` with the `inset` prop adds padding to the beginning and end of the component.
 
-Color
+### Appearance
 
-```html
-<Divider color="black" />
-```
+The `Divider` component has four appearance variants:
 
-Content
-
-```html
-<Divider>My Content</Divider>
-```
-
-Icon
-
-```html
-<Divider><Icon /></Divider>
-```
-
-Important
-
-```html
-<Divider important>This is important!</Divider>
-```
-
-Inset
-
-```html
-<Divider inset />
-```
-
-Appearance
-
-```html
-<Divider apperance="subtle" />
-<Divider apperance="brand" />
-<Divider apperance="strong" />
-```
+- The default `Divider` is styled with the neutral foreground color from the theme.
+- appearance="brand": The `Divider` is styled with the brand color from the theme.
+- appearance="strong": The `Divider` is styled with a strong color that emphasizes the visual separation.
+- appearance="subtle": The `Divider` is styled with a subtle color to de-emphasize the visual separation.
 
 ## API
 
 From [Divider.types.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-divider/src/components/Divider/Divider.types.ts)
 
-### Slots
+## HTML Structure
 
-- root
-
-### Props
-
-```ts
-export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Determines the alignment of the content within the divider.
-   * @defaultvalue 'center'
-   */
-  alignContent?: 'start' | 'end' | 'center';
-
-  /**
-   * Predefined visual styles
-   * @defaultvalue 'default'
-   */
-  appearance?: 'default' | 'subtle' | 'brand' | 'strong';
-
-  /**
-   * A divider can have a overriding border color
-   */
-  color?: string;
-
-  /**
-   * A divider can be classified as important to emphasize its content
-   */
-  important?: boolean;
-
-  /**
-   * Adds a 12px padding to the begining and end of the divider
-   */
-  inset?: boolean;
-
-  /**
-   * A divider can be horizontal (default) or vertical
-   */
-  vertical?: boolean;
-
-  /**
-   * Overrides for border visuals
-   */
-  borderStyle?: string;
-  borderSize?: string | number;
-
-  /**
-   * Accessibility wrapper for content when presented.
-   * A shorthand prop can be a literal, object, or
-   * JSX. The `children` prop of the object can be a render function,
-   * taking in the original slot component and props.
-   */
-  wrapper?: ShorthandProps<React.HTMLAttributes<HTMLDivElement>>;
-}
-```
-
-## Styling Tokens
-
-The current exposed tokens and default values are listed below:
-
-**Default**
-
-Font Color : tokens.alias.color.neutral.neutralForeground2
-
-Border Color: tokens.alias.color.neutral.neutralStroke2
-
-**Subtle**
-
-Font Color : tokens.alias.color.neutral.neutralForeground2
-
-Border Color: tokens.alias.color.neutral.neutralStroke3
-
-**Brand**
-
-Font Color : tokens.alias.color.brand.brandBackgroundStatic
-
-Border Color: tokens.alias.color.brand.brandBackgroundStatic
-
-**Brand**
-
-Font Color : tokens.alias.color.neutral.neutralForeground2
-
-Border Color: tokens.alias.color.neutral.neutralStroke1
-
-## Structure
-
-```
+```html
 <div>
   <!-- ::before to handle the divider line independent of the divider having content or not -->
   <div>Content</div>
@@ -195,11 +78,13 @@ Border Color: tokens.alias.color.neutral.neutralStroke1
 ## Behaviors
 
 This component has no state.
-This control will have no interactions.
-This control will have no effect on screen readers.
 
-Content, if provided, will self determine it's behaviors.
+This component has no mouse, touch or keyboard interactions.
+
+Content, if provided, will self-determine its behaviors.
 
 ## Accessibility
 
-Since the divider is not a focusable element itself, this control doesn't require any accessibility roles or special behavior applied to it. The descendant content when wrapped from the divider must handle any required accessibility behaviors itself when appropriate.
+- The `Divider` component should be assigned a `role="separator"` by default.
+- The `Divider` component should be named by its content.
+- The `Divider` component should have no other accessibility concerns otherwise. The descendant content in the divider must handle any required accessibility behaviors itself when appropriate.

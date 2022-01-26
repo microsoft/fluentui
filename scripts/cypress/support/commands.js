@@ -28,8 +28,3 @@
 /**
  * Navigates to storybook story URL based on component name and story name
  */
-Cypress.Commands.add('visitStory', (componentName, storyName) => {
-  const toKebabCase = str => str.replace(/(?<!^)([A-Z][a-z]|(?<=[a-z])[A-Z])/g, '-$1').toLowerCase();
-  const kebabCaseStoryName = toKebabCase(storyName);
-  cy.visit(`/iframe.html?id=components-${componentName.toLowerCase()}--${kebabCaseStoryName}`);
-});

@@ -40,7 +40,7 @@ InputLabel.defaultProps = {
 
 InputLabel.propTypes = {
   ...commonPropTypes.createCommon(),
-  labelPosition: PropTypes.oneOf<LabelPosition>(['inside', 'inline']),
+  labelPosition: PropTypes.oneOf<LabelPosition>(['inline', 'above', 'inside']),
   required: PropTypes.bool,
   hasValue: PropTypes.bool,
 };

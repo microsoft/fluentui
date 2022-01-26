@@ -106,9 +106,7 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-invalid={false}
-      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -147,9 +145,10 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
             cursor: pointer;
             height: 32px;
             line-height: 30px;
+            padding-top: 1px;
             position: absolute;
             right: 8px;
-            top: 1px;
+            top: 0px;
           }
     >
       <i
@@ -179,6 +178,7 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
 
 exports[`Dropdown multi-select Renders correctly when open 1`] = `
 <div
+  aria-owns="Dropdown0-list"
   class="ms-Dropdown-container"
 >
   <div
@@ -280,9 +280,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
     tabindex="0"
   >
     <span
-      aria-atomic="true"
       aria-invalid="false"
-      aria-live="polite"
       class=
           ms-Dropdown-title
           {
@@ -321,9 +319,10 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
             cursor: pointer;
             height: 32px;
             line-height: 30px;
+            padding-top: 1px;
             position: absolute;
             right: 8px;
-            top: 1px;
+            top: 0px;
           }
     >
       <i
@@ -391,6 +390,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                 border-radius: 2px 2px 0 0;
                 box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 box-sizing: border-box;
+                display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -421,8 +421,9 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
-            style="outline: none;"
+            style="outline: none; max-height: 100%;"
           >
             <div
               class=
@@ -622,11 +623,8 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
-                    title="1"
                   >
                     <input
-                      aria-checked="true"
-                      aria-label="1"
                       aria-posinset="1"
                       aria-selected="true"
                       aria-setsize="2"
@@ -651,7 +649,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                       id="Dropdown0-list1"
                       role="option"
                       tabindex="0"
-                      title="1"
                       type="checkbox"
                     />
                     <label
@@ -879,8 +876,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                   title="test"
                 >
                   <input
-                    aria-checked="false"
-                    aria-label="2"
                     aria-posinset="2"
                     aria-selected="false"
                     aria-setsize="2"
@@ -1128,9 +1123,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-invalid={false}
-      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -1169,9 +1162,10 @@ exports[`Dropdown single-select Renders correctly 1`] = `
             cursor: pointer;
             height: 32px;
             line-height: 30px;
+            padding-top: 1px;
             position: absolute;
             right: 8px;
-            top: 1px;
+            top: 0px;
           }
     >
       <i
@@ -1201,6 +1195,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
 
 exports[`Dropdown single-select Renders correctly when open 1`] = `
 <div
+  aria-owns="Dropdown0-list"
   class="ms-Dropdown-container"
 >
   <div
@@ -1302,9 +1297,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
     tabindex="0"
   >
     <span
-      aria-atomic="true"
       aria-invalid="false"
-      aria-live="polite"
       class=
           ms-Dropdown-title
           {
@@ -1343,9 +1336,10 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
             cursor: pointer;
             height: 32px;
             line-height: 30px;
+            padding-top: 1px;
             position: absolute;
             right: 8px;
-            top: 1px;
+            top: 0px;
           }
     >
       <i
@@ -1413,6 +1407,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                 border-radius: 2px 2px 0 0;
                 box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 box-sizing: border-box;
+                display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -1443,8 +1438,9 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                   overflow-x: hidden;
                   overflow-y: auto;
                   position: relative;
+                  width: 100%;
                 }
-            style="outline: none;"
+            style="outline: none; max-height: 100%;"
           >
             <div
               class=
@@ -1655,7 +1651,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                     id="Dropdown0-list1"
                     role="option"
                     tabindex="0"
-                    title="1"
                     type="button"
                   >
                     <span

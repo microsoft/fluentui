@@ -1,124 +1,127 @@
-import { css } from '@microsoft/fast-element';
-import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import {
+  BreadcrumbItemOptions,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
-  accentForegroundActiveBehavior,
-  accentForegroundHoverBehavior,
-  accentForegroundRestBehavior,
-  heightNumber,
-  neutralForegroundRestBehavior,
-} from '../styles/index';
+  bodyFont,
+  controlCornerRadius,
+  focusStrokeOuter,
+  focusStrokeWidth,
+  neutralForegroundActive,
+  neutralForegroundHover,
+  neutralForegroundRest,
+  strokeWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+} from '../design-tokens';
+import { heightNumber } from '../styles/index';
 
-export const BreadcrumbItemStyles = css`
+export const breadcrumbItemStyles: (
+  context: ElementDefinitionContext,
+  definition: BreadcrumbItemOptions,
+) => ElementStyles = (context: ElementDefinitionContext, definition: BreadcrumbItemOptions) =>
+  css`
     ${display('inline-flex')} :host {
       background: transparent;
-      box-sizing: border-box;
+      color: ${neutralForegroundRest};
       fill: currentcolor;
-      font-family: var(--body-font);
-      font-size: var(--type-ramp-base-font-size);
-      line-height: var(--type-ramp-base-line-height);
+      box-sizing: border-box;
+      font-family: ${bodyFont};
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
       min-width: calc(${heightNumber} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       outline: none;
     }
 
     .listitem {
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
+      border-radius: inherit;
     }
 
     .control {
+      position: relative;
       align-items: center;
       box-sizing: border-box;
-      color: ${accentForegroundRestBehavior.var};
+      color: inherit;
+      fill: inherit;
       cursor: pointer;
       display: flex;
-      fill: inherit;
       outline: none;
       text-decoration: none;
       white-space: nowrap;
-  }
+      border-radius: inherit;
+    }
 
     .control:hover {
-        color: ${accentForegroundHoverBehavior.var};
+      color: ${neutralForegroundHover};
     }
 
     .control:active {
-        color: ${accentForegroundActiveBehavior.var};
+      color: ${neutralForegroundActive};
     }
 
-    .control .content {
-        position: relative;
-    }
-
-    .control .content::before {
-        content: "";
-        display: block;
-        height: calc(var(--outline-width) * 1px);
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: calc(1em + 4px);
-        width: 100%;
-    }
-
-    .control:hover .content::before {
-        background: ${accentForegroundHoverBehavior.var};
-    }
-
-    .control:active .content::before {
-        background: ${accentForegroundActiveBehavior.var};
-    }
-
-    .control:${focusVisible} .content::before {
-        background: ${neutralForegroundRestBehavior.var};
-        height: calc(var(--focus-outline-width) * 1px);
+    .control:${focusVisible}::after {
+      content: '';
+      position: absolute;
+      inset: calc(${strokeWidth} * -1px);
+      box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${focusStrokeOuter} inset;
+      border-radius: inherit;
     }
 
     :host(:not([href])),
-    :host([aria-current]) .control  {
-        font-weight: 600;
-        color: ${neutralForegroundRestBehavior.var};
-        fill: currentcolor;
-        cursor: default;
+    :host([aria-current]) .control {
+      color: ${neutralForegroundRest};
+      fill: currentcolor;
+      cursor: default;
     }
 
-    :host([aria-current]) .control:hover .content::before {
-      background: ${neutralForegroundRestBehavior.var};
-  }
-
     .start {
-        display: flex;
-        margin-inline-end: 6px;
+      display: flex;
+      margin-inline-end: 6px;
     }
 
     .end {
-        display: flex;
-        margin-inline-start: 6px;
+      display: flex;
+      margin-inline-start: 6px;
     }
 
     .separator {
       display: flex;
-      fill: ${neutralForegroundRestBehavior.var};
-      margin: 0 6px;
     }
-`.withBehaviors(
-  accentForegroundActiveBehavior,
-  accentForegroundHoverBehavior,
-  accentForegroundRestBehavior,
-  neutralForegroundRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host(:not([href])) {
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host(:not([href])),
+        .start,
+        .end,
+        .separator {
+          background: ${SystemColors.ButtonFace};
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
-      }
-      .control:hover .content::before,
-      .control:${focusVisible} .content::before {
-        background: ${SystemColors.LinkText};
-      }
-      .separator {
-        fill: ${SystemColors.ButtonText};
-      }
-    `,
-  ),
-);
+        }
+        .separator {
+          fill: ${SystemColors.ButtonText};
+        }
+        :host([href]) {
+          forced-color-adjust: none;
+          background: ${SystemColors.ButtonFace};
+          color: ${SystemColors.LinkText};
+        }
+        :host([href]) .control:hover {
+          background: ${SystemColors.LinkText};
+          color: ${SystemColors.HighlightText};
+          fill: currentcolor;
+        }
+        :host([href]) .control:${focusVisible}::after {
+          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${SystemColors.LinkText} inset;
+        }
+      `,
+    ),
+  );

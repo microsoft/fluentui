@@ -1,61 +1,19 @@
-import * as React from 'react';
-import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
-import { ButtonProps, ButtonState, ButtonStyleSelectors, ButtonTokens, ButtonVariants } from '../Button/Button.types';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
 
-/**
- * {@docCategory Button}
- */
-export interface CompoundButtonProps extends ButtonProps {
+export type CompoundButtonSlots = ButtonSlots & {
   /**
    * Second line of text that describes the action this button takes.
    */
-  secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  secondaryContent?: IntrinsicShorthandProps<'span'>;
 
   /**
-   * Container that wraps the children and secondaryContent slots.
+   * Container that wraps the children and the secondaryContent slot.
    */
-  contentContainer?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-}
-
-/**
- * {@docCategory Button}
- */
-export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
-  contentContainer?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-  secondaryContent?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-}
-
-/**
- * {@docCategory Button}
- */
-export type CompoundButtonStyleSelectors = ButtonStyleSelectors;
-
-type CompoundButtonBaseTokens = {
-  secondaryContentColor: string;
-  secondaryContentFontSize: string;
-  secondaryContentFontWeight: string | number;
-  secondaryContentGap: string;
+  contentContainer: IntrinsicShorthandProps<'span'>;
 };
 
-/**
- * {@docCategory Button}
- */
-export type CompoundButtonTokens = ButtonTokens &
-  CompoundButtonBaseTokens & {
-    hovered: Partial<CompoundButtonBaseTokens>;
-    pressed: Partial<CompoundButtonBaseTokens>;
-  };
+export type CompoundButtonProps = ComponentProps<CompoundButtonSlots> & Partial<ButtonCommons>;
 
-/**
- * {@docCategory Button}
- */
-export type CompoundButtonVariants = ButtonVariants;
-
-/**
- * {@docCategory Button}
- */
-export type CompoundButtonVariantTokens = Partial<
-  {
-    [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
-  }
->;
+export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
+  Omit<ButtonState, keyof ButtonSlots | 'components'>;

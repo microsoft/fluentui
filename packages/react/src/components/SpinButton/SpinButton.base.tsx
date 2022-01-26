@@ -12,9 +12,10 @@ import {
   divProperties,
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
-import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
+import { KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from '../../Positioning';
 import { useAsync, useControllableValue, useWarnings, useId, usePrevious } from '@fluentui/react-hooks';
+import type { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles } from './SpinButton.types';
 
 interface ISpinButtonInternalState {
   spinningByMouse?: boolean;
@@ -28,12 +29,14 @@ interface ISpinButtonInternalState {
 const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyles>();
 
 const COMPONENT_NAME = 'SpinButton';
-const DEFAULT_PROPS: Required<Pick<
-  ISpinButtonProps,
-  // These are explicitly specified so that only the things which actually have defaults
-  // get marked as required in ISpinButtonPropsWithDefaults below
-  'disabled' | 'label' | 'step' | 'labelPosition' | 'incrementButtonIcon' | 'decrementButtonIcon'
->> = {
+const DEFAULT_PROPS: Required<
+  Pick<
+    ISpinButtonProps,
+    // These are explicitly specified so that only the things which actually have defaults
+    // get marked as required in ISpinButtonPropsWithDefaults below
+    'disabled' | 'label' | 'step' | 'labelPosition' | 'incrementButtonIcon' | 'decrementButtonIcon'
+  >
+> = {
   disabled: false,
   label: '',
   step: 1,
@@ -186,6 +189,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     'onBlur',
     'onFocus',
     'className',
+    'onChange',
   ]);
 
   /** Validate (commit) function called on blur or enter keypress. */
@@ -203,7 +207,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
         }
         if (newValue !== undefined && newValue !== internalState.latestValue) {
           // Commit the value if it changed
-          setValue(newValue);
+          setValue(newValue, ev);
         }
       }
 
@@ -264,7 +268,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       // avoid useCallback deps on frequently changing values.)
       const newValue = stepFunction(internalState.latestValue || '', ev) as string | undefined;
       if (newValue !== undefined && newValue !== internalState.latestValue) {
-        setValue(newValue);
+        setValue(newValue, ev);
       }
 
       // Schedule the next spin if applicable

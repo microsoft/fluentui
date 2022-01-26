@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title3 renders a default state 1`] = `
+<div>
+  <span
+    class="fui-Title3 fui-Text"
+  >
+    Default Title3
+  </span>
+</div>
+`;

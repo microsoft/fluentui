@@ -1,33 +1,23 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { render, fireEvent } from '@testing-library/react';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
-import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
+import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
+
+jest.mock('../../contexts/menuContext');
 
 describe('MenuItemCheckbox conformance', () => {
   isConformant({
-    asPropHandlesRef: true,
-    // TODO fix generics in conformance
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     Component: MenuItemCheckbox,
     requiredProps: {
       name: 'checkbox',
       value: '1',
     },
     displayName: 'MenuItemCheckbox',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**
@@ -129,7 +119,7 @@ describe('MenuItemCheckbox', () => {
     expect(spy).toHaveBeenCalledWith(expect.anything(), checkboxName, '1', expectedCheckedState);
   });
 
-  it.each([[EnterKey], [SpacebarKey]])('should call toggleCheckbox with %s key', keyCode => {
+  it.each([[Enter], [Space]])('should call toggleCheckbox with %s key', key => {
     // Arrange
     const spy = jest.fn();
     const { getByRole } = render(
@@ -141,10 +131,42 @@ describe('MenuItemCheckbox', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByRole('menuitemcheckbox'), { keyCode });
-    fireEvent.keyUp(getByRole('menuitemcheckbox'), { keyCode });
+    fireEvent.keyDown(getByRole('menuitemcheckbox'), { key });
+    fireEvent.keyUp(getByRole('menuitemcheckbox'), { key });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not call setOpen by default', () => {
+    // Arrange
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+    const { getByRole } = render(
+      <MenuItemCheckbox name="test" value="test">
+        Item
+      </MenuItemCheckbox>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('menuitemcheckbox'));
+
+    // Assert
+    expect(setOpen).toHaveBeenCalledTimes(0);
+  });
+
+  it('should merge checkmark slot props', () => {
+    // Arrange
+    const className = 'foo';
+    const { container } = render(
+      <MenuItemCheckbox checkmark={{ className }} name="test" value="test">
+        Item
+      </MenuItemCheckbox>,
+    );
+
+    // Assert
+    const slot = container.querySelector(`.${className}`);
+    expect(slot).not.toBeNull();
+    expect(slot?.querySelector('svg')).not.toBeNull();
   });
 });

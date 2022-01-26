@@ -2,7 +2,7 @@ Fluent UI React Native Link has default styling based on the Fluent Design Langu
 
 - TODO: Add Link image
 
-#### Example usage (from [LinkTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Link/LinkTest.tsx))
+#### Example usage (from [LinkTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/FluentTester/TestComponents/Link/LinkTest.tsx))
 
 ```
 import * as React from 'react';

@@ -1,9 +1,10 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "1.0.0-beta.91",
-  "description": "Fluent UI React Slider component",
+  "version": "9.0.0-beta.5",
+  "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
+  "private": "true",
   "typings": "lib/index.d.ts",
   "sideEffects": false,
   "repository": {
@@ -13,34 +14,38 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "update-snapshots": "just-scripts jest -u",
-    "test": "just-scripts test",
-    "start-test": "just-scripts jest-watch"
+    "start": "yarn storybook",
+    "test": "jest --passWithNoTests",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-slider/src && yarn docs",
+    "storybook": "node ../../scripts/storybook/runner",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.2.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.5",
-    "@fluentui/react-conformance": "^0.3.0",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.0",
+    "@fluentui/react-label": "9.0.0-beta.4",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.14.6",
-    "@fluentui/react-hooks": "^8.2.0",
-    "@fluentui/style-utilities": "^8.1.0",
-    "@fluentui/utilities": "^8.1.0",
+    "@griffel/react": "1.0.0",
+    "@fluentui/react-shared-contexts": "9.0.0-beta.4",
+    "@fluentui/react-tabster": "9.0.0-beta.5",
+    "@fluentui/react-utilities": "9.0.0-beta.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -50,7 +55,6 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "minor",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar } from '@fluentui/react';
+import { Calendar, defaultCalendarStrings } from '@fluentui/react';
 
 export const CalendarInlineOverlaidMonthExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
@@ -18,6 +18,8 @@ export const CalendarInlineOverlaidMonthExample: React.FunctionComponent = () =>
         showGoToToday={false}
         onSelectDate={onSelectDate}
         value={selectedDate}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
       />
     </div>
   );

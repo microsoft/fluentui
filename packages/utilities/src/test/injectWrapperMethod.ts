@@ -15,7 +15,7 @@ export function injectWrapperMethod(wrapper: ReactWrapper<{}, {}>, methodName: s
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (wrapper.instance() as any)[methodName] = function(prevProps: any): void {
+  (wrapper.instance() as any)[methodName] = function (prevProps: any): void {
     fn();
     originalMethod.call(this, prevProps);
   };

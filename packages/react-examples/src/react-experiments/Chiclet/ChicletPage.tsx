@@ -54,9 +54,7 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Chiclet/Chiclet.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Chiclet/Chiclet.types.ts'),
             ]}
           />
         }

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IIconProps } from '../../Icon';
-import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
-import { IStyle, ITheme } from '../../Styling';
-import { IButtonStyles, IButtonProps } from '../../Button';
-import { IRefObject, IRenderFunction } from '../../Utilities';
-import { IComboBoxClassNames } from './ComboBox.classNames';
-import { IAutofillProps } from '../../Autofill';
+import type { IIconProps } from '../../Icon';
+import type { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IButtonStyles, IButtonProps } from '../../Button';
+import type { IRefObject, IRenderFunction } from '../../Utilities';
+import type { IComboBoxClassNames } from './ComboBox.classNames';
+import type { IAutofillProps } from '../../Autofill';
 
 /**
  * {@docCategory ComboBox}
@@ -93,9 +93,16 @@ export interface IComboBoxProps
    * and the user types text matching the start of an option within a timeout, `option` and `index`
    * are provided and `value` is undefined. If `autoComplete` is off, typing does nothing.
    *
-   * If you simply want to be notified of raw text input, use the prop `autofill.onInputValueChange`.
+   * If you simply want to be notified of raw text input, use the prop `onInputValueChange`.
    */
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
+   * Called when the user types in to the input of the combo box
+   *
+   * Ideal if you want to be notified of raw text input
+   */
+  onInputValueChange?: (text: string) => void;
 
   /**
    * Called when the ComboBox menu is launched.

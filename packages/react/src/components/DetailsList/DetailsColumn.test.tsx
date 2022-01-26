@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { DetailsColumn } from './DetailsColumn';
-import { IColumn, ColumnActionsMode, IDetailsHeaderProps } from './DetailsList.types';
+import { ColumnActionsMode } from './DetailsList.types';
 import { mount } from 'enzyme';
 import { DetailsList } from './DetailsList';
-import { IRenderFunction } from '../../Utilities';
-import { ITooltipHostProps, TooltipHost } from '../../Tooltip';
+import { TooltipHost } from '../../Tooltip';
+import type { IColumn, IDetailsHeaderProps } from './DetailsList.types';
+import type { IRenderFunction } from '../../Utilities';
+import type { ITooltipHostProps } from '../../Tooltip';
 
 let mockOnColumnClick: jest.Mock<{}>;
 let baseColumn: IColumn;
@@ -156,10 +158,7 @@ describe('DetailsColumn', () => {
       />,
     );
 
-    const ariaDescribedByEl = component
-      .find('[aria-describedby]')
-      .first()
-      .getDOMNode();
+    const ariaDescribedByEl = component.find('[aria-describedby]').first().getDOMNode();
     const referenceId = ariaDescribedByEl.getAttribute('aria-describedby');
 
     expect(component.exists(`#${referenceId}`)).toBe(true);

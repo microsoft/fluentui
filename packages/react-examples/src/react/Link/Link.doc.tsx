@@ -33,9 +33,7 @@ export const LinkPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Link/docs/LinkOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Link/docs/LinkBestPractices.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Link/docs/LinkBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

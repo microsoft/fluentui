@@ -16,13 +16,13 @@
 
 [TableViewCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/TableViewCell.swift)
 
-[ActionsCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/ActionsCell.swift)
+[ActionsCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Other%20Cells/ActionsCell.swift)
 
-[ActivityIndicatorCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/ActivityIndicatorCell.swift)
+[ActivityIndicatorCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Other%20Cells/ActivityIndicatorCell.swift)
 
-[CenteredLabelCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/CenteredLabelCell.swift)
+[CenteredLabelCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Other%20Cells/CenteredLabelCell.swift)
 
-[BooleanCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/BooleanCell.swift)
+[BooleanCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Other%20Cells/BooleanCell.swift)
 
 [TableViewHeaderFooterView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/TableViewHeaderFooterView.swift)
 

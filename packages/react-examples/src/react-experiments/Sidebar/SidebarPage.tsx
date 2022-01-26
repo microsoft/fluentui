@@ -42,9 +42,7 @@ export class SidebarPage extends React.PureComponent<IComponentDemoPageProps> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Sidebar/Sidebar.types.tsx'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Sidebar/Sidebar.types.tsx'),
             ]}
           />
         }

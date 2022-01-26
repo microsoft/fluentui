@@ -1,11 +1,9 @@
 /*!
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
-
-import { IButtonProps } from '@fluentui/react/lib/Button';
-import { IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
-import { IRenderFunction } from '@fluentui/react/lib/Utilities';
-import { IComponentAs } from '@fluentui/react/lib/Utilities';
+import type { IButtonProps } from '@fluentui/react/lib/Button';
+import type { IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
+import type { IRenderFunction, IComponentAs } from '@fluentui/react/lib/Utilities';
 
 export interface IAccordion {}
 

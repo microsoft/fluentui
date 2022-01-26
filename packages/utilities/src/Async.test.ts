@@ -1,4 +1,5 @@
-import { Async, ICancelable } from './Async';
+import { Async } from './Async';
+import type { ICancelable } from './Async';
 
 describe('Async', () => {
   describe('debounce', () => {

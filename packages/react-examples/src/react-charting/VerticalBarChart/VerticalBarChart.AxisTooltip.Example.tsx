@@ -61,6 +61,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
         </div>
         <div style={rootStyle}>
           <VerticalBarChart
+            chartTitle="Vertical bar chart axis tooltip example "
             data={points}
             height={350}
             width={650}

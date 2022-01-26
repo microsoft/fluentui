@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
 import { isConformant } from '../../common/isConformant';
-import { IRatingProps, IRating } from './Rating.types';
+import type { IRatingProps, IRating } from './Rating.types';
 
 describe('Rating', () => {
   const ref = React.createRef<IRating>();
@@ -34,10 +34,7 @@ describe('Rating', () => {
     expect(ref.current?.rating).toBe(1);
     _checkState(rating, [100, 0, 0, 0, 0]);
 
-    rating
-      .find('.ms-Rating-button')
-      .at(1)
-      .simulate('focus');
+    rating.find('.ms-Rating-button').at(1).simulate('focus');
 
     expect(ref.current?.rating).toBe(2);
     _checkState(rating, [100, 100, 0, 0, 0]);

@@ -191,7 +191,7 @@ export type IViewComponent<TViewProps> = (props: React_2.PropsWithChildren<TView
 
 export { legacyStyled }
 
-// @public
+// @public @deprecated
 export const ThemeProvider: React_2.FunctionComponent<IThemeProviderProps>;
 
 // @public

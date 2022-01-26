@@ -74,7 +74,7 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
       {renderTileWithLayout(tile, {
         foreground: (
           <img
-            src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+            src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
             className={css(TileExampleStyles.tileImage)}
           />
         ),

@@ -16,7 +16,6 @@ import {
 } from '../../utils/date-time-utilities';
 
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -24,6 +23,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   useAutoControlled,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
@@ -149,23 +149,15 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
  * @accessibilityIssues
  * [NVDA - Aria-selected is not narrated for the gridcell](https://github.com/nvaccess/nvda/issues/11986)
  */
-export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
-  FluentComponentStaticProps<DatepickerProps> & {
-    Calendar: typeof DatepickerCalendar;
-    CalendarHeader: typeof DatepickerCalendarHeader;
-    CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
-    CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
-    CalendarCell: typeof DatepickerCalendarCell;
-    CalendarCellButton: typeof DatepickerCalendarCellButton;
-    CalendarGrid: typeof DatepickerCalendarGrid;
-    CalendarGridRow: typeof DatepickerCalendarGridRow;
-    Input: typeof Input;
-  } = props => {
+export const Datepicker = (React.forwardRef<HTMLDivElement, DatepickerProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
   const inputRef = React.useRef<HTMLElement>();
 
+  // FIXME: This object is created every render, causing a cascade of useCallback/useEffect re-runs.
+  // Needs to be reworked by someone who understands the intent for when various updates ought to happen.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const dateFormatting: ICalendarStrings = {
     formatDay: props.formatDay,
     formatYear: props.formatYear,
@@ -213,10 +205,25 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     'aria-labelledby': ariaLabelledby,
     'aria-invalid': ariaInvalid,
   } = props;
-  const valueFormatter = React.useCallback(date => (date ? formatMonthDayYear(date, dateFormatting) : ''), [
-    dateFormatting,
-    formatMonthDayYear,
-  ]);
+
+  const valueFormatter = React.useCallback(
+    date =>
+      date
+        ? formatMonthDayYear(date, {
+            months: dateFormatting.months,
+            shortMonths: dateFormatting.shortMonths,
+            days: dateFormatting.days,
+            shortDays: dateFormatting.shortDays,
+          })
+        : '',
+    [
+      dateFormatting.days,
+      dateFormatting.months,
+      dateFormatting.shortDays,
+      dateFormatting.shortMonths,
+      formatMonthDayYear,
+    ],
+  );
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
     defaultValue: props.defaultCalendarOpenState,
@@ -375,6 +382,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -418,7 +426,18 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DatepickerProps> &
+  FluentComponentStaticProps<DatepickerProps> & {
+    Calendar: typeof DatepickerCalendar;
+    CalendarHeader: typeof DatepickerCalendarHeader;
+    CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
+    CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
+    CalendarCell: typeof DatepickerCalendarCell;
+    CalendarCellButton: typeof DatepickerCalendarCellButton;
+    CalendarGrid: typeof DatepickerCalendarGrid;
+    CalendarGridRow: typeof DatepickerCalendarGridRow;
+    Input: typeof Input;
+  };
 
 Datepicker.displayName = 'Datepicker';
 

@@ -42,3 +42,5 @@ export { labelVariables as Label } from './components/Label/labelVariables';
 export { tooltipContentVariables as TooltipContent } from './components/Tooltip/tooltipContentVariables';
 export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellVariables';
 export { datepickerCalendarCellButtonVariables as DatepickerCalendarCellButton } from './components/Datepicker/datepickerCalendarCellButtonVariables';
+export { cardVariables as Card } from './components/Card/cardVariables';
+export { splitButtonVariables as SplitButtonDivider } from './components/SplitButton/splitButtonVariables';

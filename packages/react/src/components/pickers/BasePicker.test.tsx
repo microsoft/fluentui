@@ -3,11 +3,12 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { IBasePickerProps, IBasePicker, ValidationState } from './BasePicker.types';
+import { ValidationState } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
-import { IPickerItemProps } from './PickerItem.types';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
+import type { IBasePickerProps, IBasePicker } from './BasePicker.types';
+import type { IPickerItemProps } from './PickerItem.types';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -58,6 +59,12 @@ describe('BasePicker', () => {
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(root);
     document.body.textContent = '';
+
+    // reset any jest timers
+    if ((setTimeout as any).mock) {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
+    }
   });
 
   const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<
@@ -108,6 +115,32 @@ describe('BasePicker', () => {
     // Problem: Ref doesn't match DOM node and returns null.
     // Solution: Ensure ref is passed correctly to the root element.
     disabledTests: ['component-has-root-ref', 'component-handles-ref', 'has-top-level-file'],
+  });
+
+  it('renders inline callout', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+        pickerCalloutProps={{ doNotLayer: true, id: 'test' }}
+      />,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'b';
+    ReactTestUtils.Simulate.input(input);
+    runAllTimers();
+
+    const calloutParent = document.getElementById('test')?.closest('.ms-BasePicker');
+    expect(calloutParent).toBeTruthy();
   });
 
   it('can provide custom renderers', () => {

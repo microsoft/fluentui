@@ -1,7 +1,14 @@
-export * from './index';
-export * from '@microsoft/fast-element';
-export * from '@microsoft/fast-foundation';
+// TODO: Is exporting Foundation still necessary with the updated API's?
+// export * from "@microsoft/fast-element";
+import { allComponents } from './custom-elements';
+import { provideFluentDesignSystem } from './fluent-design-system';
 
-// Re-export Design system to avoid conflicts with the new class from FAST Foundation
-// TODO: Update name to FluentDesignSystem once DI is implemented and published from FAST
-export { DesignSystem, DesignSystemDefaults } from './fluent-design-system';
+export * from './index';
+
+/**
+ * The global Fluent Design System.
+ * @remarks
+ * Only available if the components are added through a script tag
+ * rather than a module/build system.
+ */
+export const FluentDesignSystem = provideFluentDesignSystem().register(allComponents);

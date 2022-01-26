@@ -48,18 +48,10 @@ export const CommandBarPageProps: IDocPageProps = {
       view: <CommandBarLazyExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarBestPractices.md'),
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarDos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarDonts.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/docs/CommandBarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

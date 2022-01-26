@@ -15,7 +15,8 @@ import { getDisplayName, mountWithProvider as mount, syntheticEvent, mountWithPr
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
 
-export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions'> {
+export interface Conformant<TProps = {}>
+  extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'skipAsPropTests' | 'testOptions'> {
   /** Path to the test file. */
   testPath: string;
   constructorName?: string;
@@ -68,9 +69,17 @@ export function isConformant(
       .replace(/.ts$/, '.tsx'),
     Component,
     displayName: constructorName,
+    asPropHandlesRef: true,
     // TODO enable component-has-root-ref and disable test where necessary.
     // List of the components that will either require the test to be disabled or fixed: (https://hackmd.io/OAUn0pF6Qj-vc315wAHXLQ)
-    disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
+    disabledTests: [
+      'as-renders-fc',
+      'as-renders-react-class',
+      'has-top-level-file',
+      'consistent-callback-args',
+      // Disabled as v0 has different prefix
+      'component-has-static-classname',
+    ],
     helperComponents: [Ref, RefFindNode, FocusZone],
   };
 
@@ -82,9 +91,7 @@ export function isConformant(
     ? (Component as ComposedComponent).fluentComposeConfig?.handledProps
     : Component.handledProps;
 
-  const helperComponentNames = [...[Ref, RefFindNode], ...(wrapperComponent ? [wrapperComponent] : [])].map(
-    getDisplayName,
-  );
+  const helperComponentNames = [Ref, RefFindNode, ...(wrapperComponent ? [wrapperComponent] : [])].map(getDisplayName);
 
   const toNextNonTrivialChild = (from: ReactWrapper) => {
     const current = from.childAt(0);

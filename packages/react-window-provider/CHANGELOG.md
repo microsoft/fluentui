@@ -1,8 +1,63 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Dec 2021 07:31:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.1.6)
+
+Wed, 15 Dec 2021 07:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.1.5..@fluentui/react-window-provider_v2.1.6)
+
+### Patches
+
+- Bump @fluentui/test-utilities to v8.1.0 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+
+## [2.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.1.5)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.1.4..@fluentui/react-window-provider_v2.1.5)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/test-utilities to v8.0.9 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+
+## [2.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.1.4)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.1.3..@fluentui/react-window-provider_v2.1.4)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [2.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.1.3)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.1.2..@fluentui/react-window-provider_v2.1.3)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [2.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.1.2)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.1.1..@fluentui/react-window-provider_v2.1.2)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [2.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.1.1)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.1.0..@fluentui/react-window-provider_v2.1.1)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
 
 ## [2.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.1.0)
 

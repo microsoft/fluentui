@@ -1,7 +1,6 @@
 import { Accessibility, loaderBehavior, LoaderBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import {
-  ComponentWithAs,
   ShorthandConfig,
   useTelemetry,
   useFluentContext,
@@ -9,6 +8,7 @@ import {
   useUnhandledProps,
   useStyles,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -53,6 +53,9 @@ export interface LoaderProps extends UIComponentProps {
 
   /** A loader can contain a custom svg element. */
   svg?: ShorthandValue<BoxProps>;
+
+  /** A loader can be secondary */
+  secondary?: boolean;
 }
 
 export interface LoaderState {
@@ -67,7 +70,7 @@ export const loaderSlotClassNames: LoaderSlotClassNames = {
   svg: `${loaderClassName}__svg`,
 };
 
-export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | 'size'>;
+export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | 'size' | 'secondary'>;
 
 /**
  * A loader alerts a user that content is being loaded or processed and they should wait for the activity to complete.
@@ -75,14 +78,24 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
  * @accessibility
  * Implements [ARIA progressbar](https://www.w3.org/TR/wai-aria-1.1/#progressbar) role.
  */
-export const Loader: ComponentWithAs<'div', LoaderProps> &
-  FluentComponentStaticProps<LoaderProps> & {
-    shorthandConfig: ShorthandConfig<LoaderProps>;
-  } = props => {
+export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
   setStart();
-  const { delay, label, indicator, svg, inline, labelPosition, className, design, styles, variables, size } = props;
+  const {
+    delay,
+    secondary,
+    label,
+    indicator,
+    svg,
+    inline,
+    labelPosition,
+    className,
+    design,
+    styles,
+    variables,
+    size,
+  } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Loader.handledProps, props);
@@ -99,6 +112,7 @@ export const Loader: ComponentWithAs<'div', LoaderProps> &
       inline,
       labelPosition,
       size,
+      secondary,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -136,6 +150,7 @@ export const Loader: ComponentWithAs<'div', LoaderProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -159,7 +174,10 @@ export const Loader: ComponentWithAs<'div', LoaderProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, LoaderProps> &
+  FluentComponentStaticProps<LoaderProps> & {
+    shorthandConfig: ShorthandConfig<LoaderProps>;
+  };
 
 Loader.displayName = 'Loader';
 
@@ -175,6 +193,7 @@ Loader.propTypes = {
   labelPosition: PropTypes.oneOf(['above', 'below', 'start', 'end']),
   size: customPropTypes.size,
   svg: customPropTypes.itemShorthand,
+  secondary: PropTypes.bool,
 };
 
 Loader.defaultProps = {

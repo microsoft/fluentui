@@ -10,7 +10,7 @@ const propertiesTableMargins = mergeStyles({
 });
 
 function loadReferences(): IAppLink[] {
-  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
+  const requireContext = require.context('../dist/api/references', false, /\w+\.page\.json$/);
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
@@ -209,6 +209,13 @@ export const AppDefinition: IAppDefinition = {
               key: 'DetailsList - SimpleGrouped',
               name: 'DetailsList - SimpleGrouped',
               url: '#/examples/detailslist/grouped',
+            },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListKeyboardDragDropPage')
+                .DetailsListKeyboardDragDropPage,
+              key: 'DetailsList - Keyboard Column Reorder & Resize',
+              name: 'DetailsList - Keyboard Column Reorder & Resize',
+              url: '#/examples/detailslist/keyboardcolumnreorderresize',
             },
           ],
         },

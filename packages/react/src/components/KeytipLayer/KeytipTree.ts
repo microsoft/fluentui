@@ -1,8 +1,8 @@
-import { find, values } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
-import { IKeytipTreeNode } from './IKeytipTreeNode';
-import { mergeOverflows, sequencesToID } from '../../utilities/keytips/KeytipUtils';
+import { find, isElementVisibleAndNotHidden, values } from '../../Utilities';
+import { ktpTargetFromSequences, mergeOverflows, sequencesToID } from '../../utilities/keytips/KeytipUtils';
 import { KTP_LAYER_ID } from '../../utilities/keytips/KeytipConstants';
+import type { IKeytipProps } from '../../Keytip';
+import type { IKeytipTreeNode } from './IKeytipTreeNode';
 
 /**
  * This class is responsible for handling the parent/child relationships between keytips
@@ -46,11 +46,9 @@ export class KeytipTree {
     const node = this._createNode(nodeID, parentID, [], keytipProps, persisted);
     this.nodeMap[uniqueID] = node;
 
-    // Try to add self to parents children, if they exist
-    const parent = this.getNode(parentID);
-    if (parent) {
-      parent.children.push(nodeID);
-    }
+    // Try to add self to parents children
+    const parents = this.getNodes([parentID]);
+    parents.forEach(parent => parent.children.push(nodeID));
   }
 
   /**
@@ -69,25 +67,21 @@ export class KeytipTree {
     const parentID = this._getParentID(fullSequence);
     const node = this.nodeMap[uniqueID];
     const prevParent = node.parent;
-    const prevParentNode = this.getNode(prevParent);
-    const parent = this.getNode(parentID);
     if (node) {
-      if (prevParentNode && prevParent !== parentID) {
+      // Fix parent nodes if needed
+      if (prevParent !== parentID) {
         // If parent has changed, remove child from old parent
-        const childIndex = prevParentNode.children.indexOf(node.id);
-        if (childIndex >= 0) {
-          prevParentNode.children.splice(childIndex, 1);
-        }
+        this._removeChildFromParents(prevParent, node.id);
       }
-      // If the ID of the node has changed, update node's parent's array of children with new ID
-      if (parent && node.id !== nodeID) {
-        const index = parent.children.indexOf(node.id);
-        if (index >= 0) {
-          parent.children[index] = nodeID;
-        } else {
-          parent.children.push(nodeID);
-        }
+      if (node.id !== nodeID) {
+        // If the ID of the node has changed, update node's parent's array of children with new ID
+        const parents = this.getNodes([parentID]);
+        parents.forEach(parent => {
+          const index = parent.children.indexOf(node.id);
+          index >= 0 ? (parent.children[index] = nodeID) : parent.children.push(nodeID);
+        });
       }
+
       // Update values
       node.id = nodeID;
       node.keySequences = keytipProps.keySequences;
@@ -114,12 +108,7 @@ export class KeytipTree {
     fullSequence.pop();
 
     // Parent ID is the root if there aren't any more sequences
-    const parentID = this._getParentID(fullSequence);
-    const parent = this.getNode(parentID);
-    if (parent) {
-      // Remove node from its parent's children
-      parent.children.splice(parent.children.indexOf(nodeID), 1);
-    }
+    this._removeChildFromParents(this._getParentID(fullSequence), nodeID);
 
     if (this.nodeMap[uniqueID]) {
       // Remove the node from the nodeMap
@@ -137,9 +126,52 @@ export class KeytipTree {
    */
   public getExactMatchedNode(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     const possibleNodes = this.getNodes(currentKeytip.children);
-    return find(possibleNodes, (node: IKeytipTreeNode) => {
+    const matchingNodes = possibleNodes.filter((node: IKeytipTreeNode) => {
       return this._getNodeSequence(node) === keySequence && !node.disabled;
     });
+
+    // If we found no nodes, we are done
+    if (matchingNodes.length === 0) {
+      return undefined;
+    }
+
+    // Since the matching nodes all have the same key sequence,
+    // Grab the first one build the correct selector
+    const node = matchingNodes[0];
+
+    // If we have exactly one node, return it
+    if (matchingNodes.length === 1) {
+      return node;
+    }
+
+    // Get the potential target elements based on a selector from the sequences
+    const keySequences = node.keySequences;
+    const overflowSetSequence = node.overflowSetSequence;
+    const fullKeySequences = overflowSetSequence ? mergeOverflows(keySequences, overflowSetSequence) : keySequences;
+    const keytipTargetSelector = ktpTargetFromSequences(fullKeySequences);
+    const potentialTargetElements = document.querySelectorAll(keytipTargetSelector);
+
+    // If we have less nodes than the potential target elements,
+    // we won't be able to map element to node, return the first node.
+    // Note, the number of nodes could be more than the number of potential
+    // target elements, if an OverflowSet is involved
+    if (matchingNodes.length < potentialTargetElements.length) {
+      return node;
+    }
+
+    // Attempt to find the node that corresponds to the first visible/non-hidden element
+    const matchingIndex = Array.from(potentialTargetElements).findIndex((element: HTMLElement) =>
+      isElementVisibleAndNotHidden(element),
+    );
+    if (matchingIndex !== -1) {
+      return matchingNodes[matchingIndex];
+    }
+
+    // We did not find any visible elements associated with any of the nodes.
+    // We may be dealing with a keytip that is a submenu in an OverflowSet.
+    // Worst case, fall back to the first node returned
+    const overflowNode = matchingNodes.find(matchingNode => matchingNode.hasOverflowSubMenu);
+    return overflowNode || node;
   }
 
   /**
@@ -270,6 +302,7 @@ export class KeytipTree {
       onExecute,
       onReturn,
       disabled,
+      hasOverflowSubMenu,
     } = keytipProps;
     const node = {
       id,
@@ -283,6 +316,7 @@ export class KeytipTree {
       hasMenu,
       disabled,
       persisted,
+      hasOverflowSubMenu,
     };
     node.children = Object.keys(this.nodeMap).reduce((array: string[], nodeMapKey: string): string[] => {
       if (this.nodeMap[nodeMapKey].parent === id) {
@@ -291,5 +325,15 @@ export class KeytipTree {
       return array;
     }, []);
     return node;
+  }
+
+  private _removeChildFromParents(parentID: string, childID: string): void {
+    const parents = this.getNodes([parentID]);
+    parents.forEach(parent => {
+      const childIndex = parent.children.indexOf(childID);
+      if (childIndex >= 0) {
+        parent.children.splice(childIndex, 1);
+      }
+    });
   }
 }

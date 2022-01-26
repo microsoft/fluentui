@@ -23,12 +23,8 @@ export const ThemeProviderPageProps: IDocPageProps = {
       view: <ThemeProviderNestedExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/docs/ThemeProviderOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/docs/ThemeProviderBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/docs/ThemeProviderOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/docs/ThemeProviderBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

@@ -3,11 +3,11 @@ import * as React from 'react';
 /**
  * PopoverTrigger Props
  */
-export interface PopoverTriggerProps {
+export type PopoverTriggerProps = {
   children: React.ReactElement;
-}
+};
 
 /**
  * PopoverTrigger State
  */
-export interface PopoverTriggerState extends PopoverTriggerProps {}
+export type PopoverTriggerState = PopoverTriggerProps;

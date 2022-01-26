@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image renders a default state 1`] = `
+<div>
+  <img
+    alt="Non-existent image"
+    class="fui-Image"
+    src="image.png"
+  />
+</div>
+`;

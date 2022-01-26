@@ -79,12 +79,8 @@ export const PivotPageProps: IDocPageProps = {
       view: <PivotOverflowMenuExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pivot/docs/PivotOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pivot/docs/PivotBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pivot/docs/PivotOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pivot/docs/PivotBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pivot/docs/PivotDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pivot/docs/PivotDonts.md'),
   isHeaderVisible: true,

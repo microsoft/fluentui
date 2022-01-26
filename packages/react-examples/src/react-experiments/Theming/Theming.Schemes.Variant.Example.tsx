@@ -22,7 +22,11 @@ import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@fluentui/s
 
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 
-import { ThemeProvider } from '@fluentui/foundation-legacy';
+import { ThemeProvider as DeprecatedThemeProvider } from '@fluentui/foundation-legacy';
+
+// Workaround to prevent errors on usage of ThemeProvider, without disabling all deprecation checks
+// eslint-disable-next-line deprecation/deprecation
+const ThemeProvider = DeprecatedThemeProvider;
 
 const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({
   root: {
@@ -61,6 +65,7 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
   };
 
   public render(): JSX.Element {
+    // eslint-disable-next-line deprecation/deprecation
     return <Customizer settings={{ theme: schemeThemeVariants }}>{this._renderSchemedComponents()}</Customizer>;
   }
 

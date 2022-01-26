@@ -132,7 +132,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
     <table
       aria-activedescendant="id__0"
       aria-multiselectable="false"
-      aria-readonly="true"
       className=
 
           {
@@ -592,7 +591,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           role="presentation"
         >
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -645,14 +646,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 21, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="21, December, 2018"
               className=
 
                   {
@@ -679,22 +678,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -705,7 +704,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -758,14 +759,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 22, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="22, December, 2018"
               className=
 
                   {
@@ -792,22 +791,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -818,7 +817,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -871,14 +872,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 23, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="23, December, 2018"
               className=
 
                   {
@@ -905,22 +904,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -931,7 +930,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -984,14 +985,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 24, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="24, December, 2018"
               className=
 
                   {
@@ -1018,22 +1017,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1044,7 +1043,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -1097,14 +1098,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 25, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="25, December, 2018"
               className=
 
                   {
@@ -1131,22 +1130,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1157,7 +1156,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -1210,14 +1211,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 26, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="26, December, 2018"
               className=
 
                   {
@@ -1244,22 +1243,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1270,7 +1269,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -1323,14 +1324,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 27, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="27, December, 2018"
               className=
 
                   {
@@ -1357,22 +1356,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1389,8 +1388,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
 
         >
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1449,22 +1450,33 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="December 28, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="28, December, 2018"
               className=
 
                   {
@@ -1491,23 +1503,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1518,8 +1529,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1578,22 +1591,33 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="December 29, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="29, December, 2018"
               className=
 
                   {
@@ -1620,23 +1644,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1647,8 +1670,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1707,22 +1732,33 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="December 30, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="30, December, 2018"
               className=
 
                   {
@@ -1749,23 +1785,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1776,8 +1811,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1836,22 +1873,33 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="December 31, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="31, December, 2018"
               className=
 
                   {
@@ -1878,23 +1926,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -1905,8 +1952,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-current="date"
+            aria-disabled={false}
+            aria-selected={true}
             className=
-                
                 ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
@@ -1966,8 +2015,28 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   background-color: #edebe9!important;
+                }
+                &:after {
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
                 }
                 &:hover {
                   background-color: #edebe9!important;
@@ -1997,19 +2066,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   color: HighlightText!important;
                   forced-color-adjust: none;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
+            tabIndex={0}
           >
             <button
-              aria-current="date"
-              aria-disabled={false}
-              aria-label="January 1, 2019"
-              aria-readonly={true}
-              aria-selected={true}
+              aria-label="1, January, 2019"
               className=
                   ms-CalendarDay-dayIsToday
                   {
@@ -2036,13 +2104,13 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -2062,12 +2130,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     color: Window!important;
                     forced-color-adjust: none;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
               id="id__0"
-              onKeyDown={[Function]}
-              role="gridcell"
-              tabIndex={0}
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2078,8 +2144,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -2138,18 +2206,29 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="January 2, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="2, January, 2019"
               className=
 
                   {
@@ -2176,23 +2255,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2203,8 +2281,10 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -2263,18 +2343,29 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="January 3, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="3, January, 2019"
               className=
 
                   {
@@ -2301,23 +2392,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2343,7 +2433,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           role="presentation"
         >
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2392,14 +2484,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 4, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="4, January, 2019"
               className=
 
                   {
@@ -2426,22 +2516,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2452,7 +2542,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2501,14 +2593,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 5, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="5, January, 2019"
               className=
 
                   {
@@ -2535,22 +2625,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2561,7 +2651,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2610,14 +2702,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 6, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="6, January, 2019"
               className=
 
                   {
@@ -2644,22 +2734,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2670,7 +2760,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2719,14 +2811,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 7, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="7, January, 2019"
               className=
 
                   {
@@ -2753,22 +2843,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2779,7 +2869,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2828,14 +2920,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 8, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="8, January, 2019"
               className=
 
                   {
@@ -2862,22 +2952,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2888,7 +2978,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -2937,14 +3029,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 9, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="9, January, 2019"
               className=
 
                   {
@@ -2971,22 +3061,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -2997,7 +3087,9 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -3046,14 +3138,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 10, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="10, January, 2019"
               className=
 
                   {
@@ -3080,22 +3170,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -3335,7 +3425,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
     <table
       aria-activedescendant="id__0"
       aria-multiselectable="false"
-      aria-readonly="true"
       className=
 
           {
@@ -3795,7 +3884,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           role="presentation"
         >
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -3848,14 +3939,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 23, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="23, December, 2018"
               className=
 
                   {
@@ -3882,22 +3971,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -3908,7 +3997,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -3961,14 +4052,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 24, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="24, December, 2018"
               className=
 
                   {
@@ -3995,22 +4084,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4021,7 +4110,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4074,14 +4165,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 25, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="25, December, 2018"
               className=
 
                   {
@@ -4108,22 +4197,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4134,7 +4223,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4187,14 +4278,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 26, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="26, December, 2018"
               className=
 
                   {
@@ -4221,22 +4310,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4247,7 +4336,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4300,14 +4391,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 27, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="27, December, 2018"
               className=
 
                   {
@@ -4334,22 +4423,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4360,7 +4449,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4413,14 +4504,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 28, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="28, December, 2018"
               className=
 
                   {
@@ -4447,22 +4536,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4473,7 +4562,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -4526,14 +4617,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: #605e5c;
                   font-weight: 400;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="December 29, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="29, December, 2018"
               className=
 
                   {
@@ -4560,22 +4649,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4592,8 +4681,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
 
         >
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4652,22 +4743,33 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="December 30, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="30, December, 2018"
               className=
 
                   {
@@ -4694,23 +4796,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4721,8 +4822,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4781,22 +4884,33 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   color: #605e5c;
                   font-weight: 400;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="December 31, 2018"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="31, December, 2018"
               className=
 
                   {
@@ -4823,23 +4937,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -4850,8 +4963,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-current="date"
+            aria-disabled={false}
+            aria-selected={true}
             className=
-                
                 ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
@@ -4911,8 +5026,28 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   background-color: #edebe9!important;
+                }
+                &:after {
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
                 }
                 &:hover {
                   background-color: #edebe9!important;
@@ -4942,19 +5077,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   color: HighlightText!important;
                   forced-color-adjust: none;
                 }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
+            tabIndex={0}
           >
             <button
-              aria-current="date"
-              aria-disabled={false}
-              aria-label="January 1, 2019"
-              aria-readonly={true}
-              aria-selected={true}
+              aria-label="1, January, 2019"
               className=
                   ms-CalendarDay-dayIsToday
                   {
@@ -4981,13 +5115,13 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
@@ -5007,12 +5141,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     color: Window!important;
                     forced-color-adjust: none;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
               id="id__0"
-              onKeyDown={[Function]}
-              role="gridcell"
-              tabIndex={0}
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5023,8 +5155,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5083,18 +5217,29 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="January 2, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="2, January, 2019"
               className=
 
                   {
@@ -5121,23 +5266,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5148,8 +5292,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5208,18 +5354,29 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="January 3, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="3, January, 2019"
               className=
 
                   {
@@ -5246,23 +5403,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5273,8 +5429,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5333,18 +5491,29 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="January 4, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="4, January, 2019"
               className=
 
                   {
@@ -5371,23 +5540,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5398,8 +5566,10 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
+            aria-selected={false}
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5458,18 +5628,29 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
+            data-is-focusable={true}
             onClick={[Function]}
+            onKeyDown={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             onMouseUp={[Function]}
-            role="presentation"
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
-              aria-label="January 5, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="5, January, 2019"
               className=
 
                   {
@@ -5496,23 +5677,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={true}
+              data-is-focusable="false"
               disabled={false}
-              onKeyDown={[Function]}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5538,7 +5718,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           role="presentation"
         >
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -5587,14 +5769,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 6, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="6, January, 2019"
               className=
 
                   {
@@ -5621,22 +5801,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5647,7 +5827,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -5696,14 +5878,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 7, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="7, January, 2019"
               className=
 
                   {
@@ -5730,22 +5910,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5756,7 +5936,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -5805,14 +5987,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 8, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="8, January, 2019"
               className=
 
                   {
@@ -5839,22 +6019,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5865,7 +6045,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -5914,14 +6096,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 9, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="9, January, 2019"
               className=
 
                   {
@@ -5948,22 +6128,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -5974,7 +6154,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -6023,14 +6205,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 10, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="10, January, 2019"
               className=
 
                   {
@@ -6057,22 +6237,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -6083,7 +6263,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -6132,14 +6314,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 11, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="11, January, 2019"
               className=
 
                   {
@@ -6166,22 +6346,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span
@@ -6192,7 +6372,9 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             </button>
           </td>
           <td
+            aria-disabled={false}
             aria-hidden={true}
+            aria-selected={false}
             className=
 
                 {
@@ -6241,14 +6423,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
-            role="presentation"
+            data-is-focusable={false}
+            role="gridcell"
           >
             <button
-              aria-disabled={false}
               aria-hidden={true}
-              aria-label="January 12, 2019"
-              aria-readonly={true}
-              aria-selected={false}
+              aria-label="12, January, 2019"
               className=
 
                   {
@@ -6275,22 +6455,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid #ffffff;
-                    bottom: -1px;
+                    bottom: -2px;
                     content: "";
-                    left: -1px;
+                    left: -2px;
                     outline: 1px solid #605e5c;
                     position: absolute;
-                    right: -1px;
-                    top: -1px;
+                    right: -2px;
+                    top: -2px;
                     z-index: 1;
                   }
                   & span {
                     height: inherit;
                     line-height: inherit;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               disabled={false}
-              role="gridcell"
+              tabIndex={-1}
               type="button"
             >
               <span

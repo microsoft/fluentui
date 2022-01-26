@@ -1,8 +1,8 @@
 import { Customizations, getWindow } from '@fluentui/utilities';
-import { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { IRawStyle } from '@fluentui/merge-styles';
 import { createTheme } from '@fluentui/theme/lib/createTheme';
+import type { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 export { createTheme } from '@fluentui/theme/lib/createTheme';
 
@@ -12,10 +12,13 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 export const ThemeSettingName = 'theme';
 
 export function initializeThemeInCustomizations(): void {
-  if (!Customizations.getSettings([ThemeSettingName]).theme) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const win: any = getWindow();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const win: any = getWindow();
 
+  if (win?.FabricConfig?.legacyTheme) {
+    // does everything the `else` clause does and more, such as invoke legacy theming
+    loadTheme(win.FabricConfig.legacyTheme);
+  } else if (!Customizations.getSettings([ThemeSettingName]).theme) {
     if (win?.FabricConfig?.theme) {
       _theme = createTheme(win.FabricConfig.theme);
     }

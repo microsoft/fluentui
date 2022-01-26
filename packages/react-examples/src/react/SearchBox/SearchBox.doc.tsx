@@ -44,12 +44,8 @@ export const SearchBoxPageProps: IDocPageProps = {
       view: <SearchBoxSmallExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/docs/SearchBoxOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/docs/SearchBoxBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/docs/SearchBoxOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/docs/SearchBoxBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

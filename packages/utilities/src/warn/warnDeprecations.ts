@@ -1,4 +1,6 @@
-import { ISettingsMap, warn } from './warn';
+import { warn } from './warn';
+import type { ISettingsMap } from './warn';
+
 /**
  * Warns when a deprecated props are being used.
  *

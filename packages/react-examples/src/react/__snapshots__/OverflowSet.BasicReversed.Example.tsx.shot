@@ -163,6 +163,7 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           display: inherit;
           flex-shrink: 0;
         }
+    role="none"
   >
     <button
       className=
@@ -248,6 +249,7 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           display: inherit;
           flex-shrink: 0;
         }
+    role="none"
   >
     <button
       className=
@@ -333,6 +335,7 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
           display: inherit;
           flex-shrink: 0;
         }
+    role="none"
   >
     <button
       className=

@@ -24,6 +24,10 @@ export const useAutoControlled = <Value>(
   // Used to avoid dependencies in "setValue"
   const valueRef = React.useRef(value);
 
+  React.useEffect(() => {
+    valueRef.current = value;
+  }, [value]);
+
   const setValue = React.useCallback((newState: Value) => {
     if (typeof newState === 'function') {
       // Handles functional updates

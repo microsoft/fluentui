@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { MenuItemState } from './MenuItem.types';
-import { menuItemShorthandProps } from './useMenuItem';
+import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 
 /**
  * Function that renders the final JSX of the component
  */
-export const renderMenuItem = (state: MenuItemState) => {
-  const { slots, slotProps } = getSlots(state, menuItemShorthandProps);
+export const renderMenuItem_unstable = (state: MenuItemState) => {
+  const { slots, slotProps } = getSlots<MenuItemSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
@@ -15,7 +14,7 @@ export const renderMenuItem = (state: MenuItemState) => {
       <slots.icon {...slotProps.icon} />
       <slots.content {...slotProps.content} />
       <slots.secondaryContent {...slotProps.secondaryContent} />
-      {state.hasSubmenu && <slots.submenuIndicator {...slotProps.submenuIndicator} />}
+      <slots.submenuIndicator {...slotProps.submenuIndicator} />
     </slots.root>
   );
 };

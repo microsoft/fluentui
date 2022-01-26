@@ -1,7 +1,6 @@
+import type { IRawStyle } from '@fluentui/merge-styles';
+
 // This file mimics styles and mixins from _General.Mixins.scss
-
-import { IRawStyle } from '@fluentui/merge-styles';
-
 export const normalize: IRawStyle = {
   boxShadow: 'none',
   margin: 0,

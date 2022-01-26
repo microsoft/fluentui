@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import {
   Fabric,
   CompactPeoplePicker,
@@ -133,7 +133,7 @@ const getPeople = () => people;
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for
 // suggestion items won't exist
 storiesOf('PeoplePicker', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addStory('Normal disabled', () => (
     <Fabric>
       <NormalPeoplePicker
@@ -166,6 +166,35 @@ storiesOf('PeoplePicker', module)
         getTextFromItem={getTextFromItem}
         className={'ms-PeoplePicker'}
         pickerSuggestionsProps={suggestionProps}
+        disabled
+      />
+    </Fabric>
+  ))
+  .addStory('Normal with placeholder', () => (
+    <Fabric>
+      <NormalPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        inputProps={{
+          placeholder: 'Add items here',
+        }}
+      />
+    </Fabric>
+  ))
+  .addStory('Normal disabled with placeholder', () => (
+    <Fabric>
+      <NormalPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        inputProps={{
+          placeholder: 'Add items here',
+        }}
         disabled
       />
     </Fabric>
@@ -229,7 +258,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Normal Overflow selected',
@@ -246,7 +275,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('List', () => (
     <Fabric>
@@ -273,7 +302,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Compact', () => (
     <Fabric>
@@ -300,5 +329,5 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

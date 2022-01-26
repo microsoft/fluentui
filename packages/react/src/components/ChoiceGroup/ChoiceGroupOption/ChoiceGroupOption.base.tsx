@@ -2,11 +2,6 @@ import * as React from 'react';
 import { Image } from '../../../Image';
 import { Icon } from '../../../Icon';
 import {
-  IChoiceGroupOptionProps,
-  IChoiceGroupOptionStyleProps,
-  IChoiceGroupOptionStyles,
-} from './ChoiceGroupOption.types';
-import {
   classNamesFunction,
   getNativeProps,
   inputProperties,
@@ -14,6 +9,11 @@ import {
   composeRenderFunction,
   getPropsWithDefaults,
 } from '../../../Utilities';
+import type {
+  IChoiceGroupOptionProps,
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles,
+} from './ChoiceGroupOption.types';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 

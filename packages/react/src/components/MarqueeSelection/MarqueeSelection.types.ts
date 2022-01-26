@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ISelection } from '../../utilities/selection/interfaces';
-import { ITheme, IStyle } from '../../Styling';
-import { IRefObject, IStyleFunction } from '../../Utilities';
+import type { ISelection } from '../../utilities/selection/interfaces';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IRefObject, IStyleFunction } from '../../Utilities';
 
 /**
  * {@docCategory MarqueeSelection}

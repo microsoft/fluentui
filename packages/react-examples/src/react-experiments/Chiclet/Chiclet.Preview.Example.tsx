@@ -5,7 +5,7 @@ const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 export const ChicletPreviewExample: React.FunctionComponent<{}> = () => {
   const Preview: React.FunctionComponent<{}> = props => {
-    return <img src="http://placehold.it/100x100" {...props} />;
+    return <img src="http://via.placeholder.com/100x100" {...props} />;
   };
 
   return (

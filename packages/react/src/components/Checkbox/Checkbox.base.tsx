@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useFocusRects, classNamesFunction } from '@fluentui/utilities';
 import { Icon } from '../Icon/Icon';
-import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
+import type { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
@@ -19,7 +19,6 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       ariaPositionInSet,
       ariaSetSize,
       title,
-      label,
       checkmarkIconProps,
       styles,
       theme,
@@ -68,7 +67,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
           return null;
         }
         return checkboxProps.label ? (
-          <span aria-hidden="true" className={classNames.text} title={checkboxProps.title}>
+          <span className={classNames.text} title={checkboxProps.title}>
             {checkboxProps.label}
           </span>
         ) : null;
@@ -80,9 +79,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
 
     const ariaChecked: React.InputHTMLAttributes<HTMLInputElement>['aria-checked'] = isIndeterminate
       ? 'mixed'
-      : isChecked
-      ? 'true'
-      : 'false';
+      : undefined;
 
     const mergedInputProps: React.InputHTMLAttributes<HTMLInputElement> = {
       className: classNames.input,
@@ -96,7 +93,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       title,
       onChange,
       'aria-disabled': disabled,
-      'aria-label': ariaLabel || label,
+      'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
       'aria-posinset': ariaPositionInSet,
@@ -106,7 +103,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
 
     return (
       <div className={classNames.root} title={title} ref={mergedRootRefs}>
-        <input {...mergedInputProps} ref={inputRef} data-ktp-execute-target={true} />
+        <input {...mergedInputProps} ref={inputRef} title={title} data-ktp-execute-target={true} />
         <label className={classNames.label} htmlFor={id}>
           <div className={classNames.checkbox} data-ktp-target={true}>
             <Icon iconName="CheckMark" {...checkmarkIconProps} className={classNames.checkmark} />

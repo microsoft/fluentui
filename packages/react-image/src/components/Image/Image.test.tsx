@@ -1,14 +1,16 @@
-import { isConformant } from '@fluentui/react-conformance';
-import * as path from 'path';
-
+import * as React from 'react';
+import { isConformant } from '../../common/isConformant';
+import { render } from '@testing-library/react';
 import { Image } from './Image';
 
 describe('Image', () => {
   isConformant({
-    asPropHandlesRef: true,
-    componentPath: path.join(__dirname, 'Image.tsx'),
     Component: Image,
     displayName: 'Image',
-    disabledTests: ['has-docblock'],
+  });
+
+  it('renders a default state', () => {
+    const result = render(<Image src="image.png" alt="Non-existent image" />);
+    expect(result.container).toMatchSnapshot();
   });
 });

@@ -4,9 +4,7 @@ module.exports = {
     build: ['^build'],
     'build:info': [],
     bundle: ['build'],
-    'bundle:storybook': ['build'],
-    'screener:build': [],
-    screener: ['screener:build'],
+    'bundle-size': ['build'],
     lint: ['build'],
     clean: [],
     test: ['build'],
@@ -14,6 +12,9 @@ module.exports = {
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
   },
+
+  // Adds some ADO-specific logging commands for reporting failures
+  ...(process.env.TF_BUILD && { reporter: 'adoLog' }),
 
   // Ignores these minimatch patterns when considers what packages have changed for the --since flag
   ignore: ['change/**', 'README.md'],

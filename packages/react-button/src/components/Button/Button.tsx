@@ -1,34 +1,20 @@
 import * as React from 'react';
-import { useButton } from './useButton';
-import { ButtonProps, ButtonStyleSelectors } from './Button.types';
-import { renderButton } from './renderButton';
-import { useButtonStyles } from './useButtonStyles';
+import { renderButton_unstable } from './renderButton';
+import { useButton_unstable } from './useButton';
+import { useButtonStyles_unstable } from './useButtonStyles';
+import type { ButtonProps } from './Button.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Define a styled Button, using the `useButton` hook.
- * {@docCategory Button}
+ * Buttons give people a way to trigger an action.
  */
-export const Button: React.FunctionComponent<ButtonProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
-  HTMLElement,
-  ButtonProps
->((props, ref) => {
-  const state = useButton(props, ref);
+export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const state = useButton_unstable(props, ref);
 
-  const receivedChildren = !!state.children?.children;
-  const receivedIcon = !!state.icon?.children;
+  useButtonStyles_unstable(state);
 
-  const styleSelectors: ButtonStyleSelectors = {
-    disabled: state.disabled,
-    iconOnly: receivedIcon && !receivedChildren,
-    primary: state.primary,
-    size: state.size,
-    subtle: state.subtle,
-    transparent: state.transparent,
-  };
-
-  useButtonStyles(state, styleSelectors);
-
-  return renderButton(state);
-});
+  return renderButton_unstable(state);
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<ButtonProps>;
 
 Button.displayName = 'Button';

@@ -1,356 +1,237 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { Theme } from '@fluentui/react-theme';
-import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
-import { CompoundButtonState, CompoundButtonStyleSelectors, CompoundButtonVariantTokens } from './CompoundButton.types';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { buttonSpacing, useButtonStyles_unstable } from '../Button/useButtonStyles';
+import type { CompoundButtonState } from './CompoundButton.types';
+
+export const compoundButtonClassName = 'fui-CompoundButton';
 
 const CompoundButtonClassNames = {
-  secondaryContent: 'CompoundButton-secondaryContent',
+  secondaryContent: `${compoundButtonClassName}-secondaryContent`,
 };
 
-export const makeCompoundButtonTokens = (theme: Theme): CompoundButtonVariantTokens => ({
+const useRootStyles = makeStyles({
+  // Base styles
   base: {
-    // root tokens
+    ...shorthands.gap(buttonSpacing.large),
+
     height: 'auto',
-    paddingX: buttonSpacing.large,
-    paddingY: buttonSpacing.large,
 
-    // icon tokens
-    iconFontSize: '40px',
-    iconSpacing: buttonSpacing.large,
-    iconHeight: '40px',
-    iconWidth: '40px',
-
-    // secondary content tokens
-    secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
-    secondaryContentFontSize: theme.global.type.fontSizes.base[200],
-    secondaryContentFontWeight: theme.global.type.fontWeights.regular,
-    secondaryContentGap: buttonSpacing.smaller,
-
-    hovered: {
-      secondaryContentColor: theme.alias.color.neutral.neutralForeground2Hover,
+    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      color: tokens.colorNeutralForeground2,
     },
 
-    pressed: {
-      secondaryContentColor: theme.alias.color.neutral.neutralForeground2Pressed,
+    ':hover': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForeground2Hover,
+      },
+    },
+
+    ':active': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForeground2Pressed,
+      },
     },
   },
-  small: {
-    paddingX: buttonSpacing.medium,
-    paddingY: buttonSpacing.medium,
 
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  },
-  large: {
-    paddingX: buttonSpacing.larger,
-    paddingY: buttonSpacing.larger,
-
-    secondaryContentFontSize: theme.global.type.fontSizes.base[300],
-  },
-  iconOnly: {
-    maxWidth: '52px',
-    minWidth: '52px',
-  },
-  iconOnlySmall: {
-    maxWidth: '48px',
-    minWidth: '48px',
-  },
-  iconOnlyLarge: {
-    maxWidth: '56px',
-    minWidth: '56px',
+  // Appearance variations
+  outline: {
+    /* No styles */
   },
   primary: {
-    secondaryContentColor: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-
-    hovered: {
-      secondaryContentColor: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      color: tokens.colorNeutralForegroundOnBrand,
     },
 
-    pressed: {
-      secondaryContentColor: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    ':hover': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForegroundOnBrand,
+      },
+    },
+
+    ':active': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForegroundOnBrand,
+      },
     },
   },
   subtle: {
-    secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
-
-    hovered: {
-      secondaryContentColor: theme.alias.color.neutral.brandForeground2Hover,
+    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      color: tokens.colorNeutralForeground2,
     },
 
-    pressed: {
-      secondaryContentColor: theme.alias.color.neutral.brandForeground2Pressed,
+    ':hover': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForeground2BrandHover,
+      },
+    },
+
+    ':active': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForeground2BrandPressed,
+      },
     },
   },
   transparent: {
-    secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
-
-    hovered: {
-      secondaryContentColor: theme.alias.color.neutral.brandForeground2Hover,
+    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      color: tokens.colorNeutralForeground2,
     },
 
-    pressed: {
-      secondaryContentColor: theme.alias.color.neutral.brandForeground2Pressed,
+    ':hover': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForeground2BrandHover,
+      },
+    },
+
+    ':active': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForeground2BrandPressed,
+      },
     },
   },
-  disabled: {
-    secondaryContentColor: theme.alias.color.neutral.neutralForegroundDisabled,
 
-    hovered: {
-      secondaryContentColor: theme.alias.color.neutral.neutralForegroundDisabled,
+  // Size variations
+  small: {
+    ...shorthands.padding(buttonSpacing.medium),
+
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  medium: {
+    ...shorthands.padding(buttonSpacing.large),
+
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  large: {
+    ...shorthands.padding(buttonSpacing.larger),
+
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+  },
+
+  // Disabled styles
+  disabled: {
+    [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
-    pressed: {
-      secondaryContentColor: theme.alias.color.neutral.neutralForegroundDisabled,
+    ':hover': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
+    },
+
+    ':active': {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
     },
   },
 });
 
-const useStyles = makeStyles({
-  root: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+const useRootIconOnlyStyles = makeStyles({
+  // Size variations
+  small: {
+    ...shorthands.padding(buttonSpacing.smaller),
 
-    return {
-      gap: compoundButtonTokens.base?.iconSpacing,
-      height: compoundButtonTokens.base?.height,
-      padding: `${compoundButtonTokens.base?.paddingY} ${compoundButtonTokens.base?.paddingX}`,
-
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: compoundButtonTokens.base?.secondaryContentColor,
-      },
-
-      ':hover': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.base?.hovered?.secondaryContentColor,
-        },
-      },
-
-      ':active': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.base?.pressed?.secondaryContentColor,
-        },
-      },
-    };
+    maxWidth: '48px',
+    minWidth: '48px',
   },
-  rootPrimary: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+  medium: {
+    ...shorthands.padding(buttonSpacing.small),
 
-    return {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: compoundButtonTokens.primary?.secondaryContentColor,
-      },
-
-      ':hover': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.primary?.hovered?.secondaryContentColor,
-        },
-      },
-
-      ':active': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.primary?.pressed?.secondaryContentColor,
-        },
-      },
-    };
+    maxWidth: '52px',
+    minWidth: '52px',
   },
-  rootSubtle: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+  large: {
+    ...shorthands.padding(buttonSpacing.medium),
 
-    return {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: compoundButtonTokens.subtle?.secondaryContentColor,
-      },
-
-      ':hover': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.subtle?.hovered?.secondaryContentColor,
-        },
-      },
-
-      ':active': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.subtle?.pressed?.secondaryContentColor,
-        },
-      },
-    };
+    maxWidth: '56px',
+    minWidth: '56px',
   },
-  rootTransparent: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+});
 
-    return {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: compoundButtonTokens.transparent?.secondaryContentColor,
-      },
-
-      ':hover': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.transparent?.hovered?.secondaryContentColor,
-        },
-      },
-
-      ':active': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.transparent?.pressed?.secondaryContentColor,
-        },
-      },
-    };
+const useIconStyles = makeStyles({
+  // Base styles
+  base: {
+    fontSize: '40px',
+    height: '40px',
+    width: '40px',
   },
-  rootDisabled: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+});
 
-    return {
-      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: compoundButtonTokens.disabled?.secondaryContentColor,
-      },
-
-      ':hover': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.disabled?.hovered?.secondaryContentColor,
-        },
-      },
-
-      ':active': {
-        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-          color: compoundButtonTokens.disabled?.pressed?.secondaryContentColor,
-        },
-      },
-    };
-  },
-  rootSmall: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      padding: `${compoundButtonTokens.small?.paddingY} ${compoundButtonTokens.small?.paddingX}`,
-    };
-  },
-  rootLarge: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      padding: `${compoundButtonTokens.large?.paddingY} ${compoundButtonTokens.large?.paddingX}`,
-    };
-  },
-  rootIconOnly: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      maxWidth: compoundButtonTokens.iconOnly?.maxWidth,
-      minWidth: compoundButtonTokens.iconOnly?.minWidth,
-    };
-  },
-  rootIconOnlySmall: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      maxWidth: compoundButtonTokens.iconOnlySmall?.maxWidth,
-      minWidth: compoundButtonTokens.iconOnlySmall?.minWidth,
-    };
-  },
-  rootIconOnlyLarge: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      maxWidth: compoundButtonTokens.iconOnlyLarge?.maxWidth,
-      minWidth: compoundButtonTokens.iconOnlyLarge?.minWidth,
-    };
-  },
-  childrenSmall: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      fontSize: compoundButtonTokens.small?.fontSize,
-      lineHeight: compoundButtonTokens.small?.lineHeight,
-    };
-  },
-  icon: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      fontSize: compoundButtonTokens.base?.iconFontSize,
-      height: compoundButtonTokens.base?.iconHeight,
-      width: compoundButtonTokens.base?.iconWidth,
-    };
-  },
-  contentContainer: {
+const useContentContainerStyles = makeStyles({
+  // Base styles
+  base: {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'left',
   },
-  secondaryContent: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+});
 
-    return {
-      lineHeight: '100%',
-
-      fontSize: compoundButtonTokens.base?.secondaryContentFontSize,
-      fontWeight: compoundButtonTokens.base?.secondaryContentFontWeight,
-      marginTop: compoundButtonTokens.base?.secondaryContentGap,
-    };
+const useSecondaryContentStyles = makeStyles({
+  // Base styles
+  base: {
+    lineHeight: '100%',
+    marginTop: '4px',
+    fontWeight: tokens.fontWeightRegular,
   },
-  secondaryContentLarge: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
 
-    return {
-      fontSize: compoundButtonTokens.large?.secondaryContentFontSize,
-    };
+  // Size variations
+  small: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  medium: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  large: {
+    fontSize: tokens.fontSizeBase300,
   },
 });
 
-export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: CompoundButtonStyleSelectors) => {
-  // Save the classnames used in useButtonStyles and undefine them at the state level so that they are always applied
-  // last.
-  const {
-    className: rootClassName,
-    children: { className: childrenClassName } = { className: undefined },
-    icon: { className: iconClassName } = { className: undefined },
-  } = state;
-  state.className = undefined;
-  if (state.children) {
-    state.children.className = undefined;
-  }
-  if (state.icon) {
-    state.icon.className = undefined;
-  }
-  useButtonStyles(state, selectors);
+export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
+  const rootStyles = useRootStyles();
+  const rootIconOnlyStyles = useRootIconOnlyStyles();
+  const iconStyles = useIconStyles();
+  const contentContainerStyles = useContentContainerStyles();
+  const secondaryContentStyles = useSecondaryContentStyles();
 
-  const styles = useStyles();
+  const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
 
-  state.className = mergeClasses(
-    state.className,
-    styles.root,
-    selectors.primary && styles.rootPrimary,
-    selectors.subtle && styles.rootSubtle,
-    selectors.transparent && styles.rootTransparent,
-    selectors.disabled && styles.rootDisabled,
-    selectors.size === 'small' && styles.rootSmall,
-    selectors.size === 'large' && styles.rootLarge,
-    selectors.iconOnly && styles.rootIconOnly,
-    selectors.iconOnly && selectors.size === 'small' && styles.rootIconOnlySmall,
-    selectors.iconOnly && selectors.size === 'large' && styles.rootIconOnlyLarge,
-    rootClassName,
+  state.root.className = mergeClasses(
+    compoundButtonClassName,
+
+    // Root styles
+    rootStyles.base,
+    appearance && rootStyles[appearance],
+    rootStyles[size],
+
+    // Disabled styles
+    (disabled || disabledFocusable) && rootStyles.disabled,
+
+    // Icon-only styles
+    iconOnly && rootIconOnlyStyles[size],
+
+    // User provided class name
+    state.root.className,
   );
 
-  if (state.children) {
-    state.children.className = mergeClasses(
-      state.children.className,
-      selectors.size === 'small' && styles.childrenSmall,
-      childrenClassName,
-    );
-  }
-
   if (state.icon) {
-    state.icon.className = mergeClasses(state.icon.className, styles.icon, iconClassName);
+    state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
   }
 
-  if (state.contentContainer) {
-    state.contentContainer.className = mergeClasses(styles.contentContainer, state.contentContainer.className);
-  }
+  state.contentContainer.className = mergeClasses(contentContainerStyles.base, state.contentContainer.className);
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
       CompoundButtonClassNames.secondaryContent,
-      styles.secondaryContent,
-      selectors.size === 'large' && styles.secondaryContentLarge,
+      secondaryContentStyles.base,
+      secondaryContentStyles[size],
       state.secondaryContent.className,
     );
   }
+
+  useButtonStyles_unstable(state);
+
+  return state;
 };

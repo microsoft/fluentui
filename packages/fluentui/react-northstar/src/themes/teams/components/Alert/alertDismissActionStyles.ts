@@ -23,7 +23,7 @@ export const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissA
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
-    const { color: dismissActionIndicatorColor } = getIntentColorsFromProps(p, v, siteVariables);
+    const { color: dismissActionIndicatorColor } = getIntentColorsFromProps(p, v);
 
     const borderFocusStyles = getBorderFocusStyles({
       variables: {
@@ -118,9 +118,8 @@ export const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissA
       }),
     };
   },
-  content: ({ props: p, variables: v, theme }) => {
-    const { siteVariables } = theme;
-    const { color: dismissActionIndicatorColor } = getIntentColorsFromProps(p, v, siteVariables);
+  content: ({ props: p, variables: v }) => {
+    const { color: dismissActionIndicatorColor } = getIntentColorsFromProps(p, v);
     return {
       fontWeight: v.dismissActionContentFontWeight,
       ...(!p.hasContent && {

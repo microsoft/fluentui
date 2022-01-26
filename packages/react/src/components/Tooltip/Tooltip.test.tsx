@@ -6,7 +6,7 @@ import { mount } from 'enzyme';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
-import { ICalloutProps } from '../../Callout';
+import type { ICalloutProps } from '../../Callout';
 
 const defaultCalloutProps: ICalloutProps = {
   isBeakVisible: true,

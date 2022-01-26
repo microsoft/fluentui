@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
 
 storiesOf('Pivot', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -62,7 +62,7 @@ storiesOf('Pivot', module)
         </PivotItem>
       </Pivot>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Large', () => (
     <Pivot linkSize="large">
@@ -95,7 +95,7 @@ storiesOf('Pivot', module)
         </PivotItem>
       </Pivot>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Tabs large', () => (
     <Pivot linkFormat="tabs" linkSize="large">

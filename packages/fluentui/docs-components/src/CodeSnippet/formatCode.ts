@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as _prettier from 'prettier/standalone';
 
-import * as babylon from 'prettier/parser-babylon';
+import * as babel from 'prettier/parser-babel';
 import * as html from 'prettier/parser-html';
 import * as typescript from 'prettier/parser-typescript';
 
@@ -19,7 +19,7 @@ const prettierConfig = {
   singleQuote: true,
   trailingComma: 'all',
   plugins: {
-    babylon,
+    babel,
     html,
     typescript,
   },

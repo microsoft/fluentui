@@ -79,7 +79,7 @@ export interface ScreenerStepBuilder {
 }
 
 /** Keys of `themes` object exported from `@fluentui/react-northstar/src/index`. */
-export type ScreenerThemeName = 'teams' | 'teamsDark' | 'teamsHighContrast';
+export type ScreenerThemeName = 'teams' | 'teamsDark' | 'teamsHighContrast' | 'teamsV2' | 'teamsDarkV2';
 
 export type ScreenerStep = (steps: ScreenerStepBuilder, keys: ScreenerRunnerKeys) => ScreenerStepBuilder;
 export type ScreenerSteps = ScreenerStep[];

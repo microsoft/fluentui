@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Image } from '@fluentui/react-northstar';
+import { Box, List, Image } from '@fluentui/react-northstar';
 
 class SelectableListControlledExample extends React.Component<any, any> {
   state = { selectedIndex: -1 };
@@ -34,15 +34,21 @@ class SelectableListControlledExample extends React.Component<any, any> {
 
   render() {
     return (
-      <List
-        selectable
-        selectedIndex={this.state.selectedIndex}
-        onSelectedIndexChange={(e, newProps) => {
-          alert(`List is requested to change its selectedIndex state to "${newProps.selectedIndex}"`);
-          this.setState({ selectedIndex: newProps.selectedIndex });
-        }}
-        items={this.items}
-      />
+      <Box
+        styles={({ theme: { siteVariables } }) => ({
+          backgroundColor: siteVariables.colorScheme.default.background4,
+        })}
+      >
+        <List
+          selectable
+          selectedIndex={this.state.selectedIndex}
+          onSelectedIndexChange={(e, newProps) => {
+            alert(`List is requested to change its selectedIndex state to "${newProps.selectedIndex}"`);
+            this.setState({ selectedIndex: newProps.selectedIndex });
+          }}
+          items={this.items}
+        />
+      </Box>
     );
   }
 }

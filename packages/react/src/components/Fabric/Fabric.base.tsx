@@ -9,10 +9,11 @@ import {
   Customizer,
   useFocusRects,
 } from '../../Utilities';
-import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
-import { IProcessedStyleSet } from '@fluentui/merge-styles';
-import { ITheme, createTheme } from '../../Styling';
+import { createTheme } from '../../Styling';
 import { useMergedRefs } from '@fluentui/react-hooks';
+import type { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
+import type { IProcessedStyleSet } from '@fluentui/merge-styles';
+import type { ITheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
@@ -68,6 +69,7 @@ function useRenderedContent(
   if (needsTheme) {
     // Disabling ThemeProvider here because theme doesn't need to be re-provided by ThemeProvider if dir has changed.
     renderedContent = (
+      // eslint-disable-next-line deprecation/deprecation
       <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
     );
   }

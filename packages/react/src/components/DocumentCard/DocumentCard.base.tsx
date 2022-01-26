@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '../../Styling';
 import {
   classNamesFunction,
   KeyCodes,
@@ -8,8 +7,9 @@ import {
   warnDeprecations,
   initializeComponentRef,
 } from '../../Utilities';
-import {
-  DocumentCardType,
+import { DocumentCardType } from './DocumentCard.types';
+import type { IProcessedStyleSet } from '../../Styling';
+import type {
   IDocumentCard,
   IDocumentCardProps,
   IDocumentCardStyleProps,

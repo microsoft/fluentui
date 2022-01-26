@@ -23,18 +23,10 @@ export const ProgressIndicatorPageProps: IDocPageProps = {
       view: <ProgressIndicatorIndeterminateExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/docs/ProgressIndicatorBestPractices.md'),
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/docs/ProgressIndicatorDos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/docs/ProgressIndicatorBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/docs/ProgressIndicatorDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

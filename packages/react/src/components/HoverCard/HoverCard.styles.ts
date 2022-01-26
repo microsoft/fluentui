@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../Styling';
-import { IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
+import type { IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 
 const GlobalClassNames = {
   host: 'ms-HoverCard-host',

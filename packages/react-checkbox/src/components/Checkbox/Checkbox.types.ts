@@ -1,222 +1,95 @@
 import * as React from 'react';
-import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
-import { ISvgIconProps } from '@fluentui/react-icons-mdl2';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/utilities';
+import { Label } from '@fluentui/react-label';
+import { ComponentProps, ComponentSlotProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-/* eslint-disable @typescript-eslint/naming-convention */
+export interface CheckboxCommons {
+  /**
+   * Whether to render the checkbox in a circular shape instead of square.
+   * This variant is only recommended to be used in a tasks-style UI (checklist),
+   * since it otherwise could be confused for a `RadioItem`.
+   * @defaultvalue false
+   */
+  circular: boolean;
 
-/**
- * Checkbox class interface.
- * {@docCategory Checkbox}
- */
-export interface ICheckbox {
-  /** Gets the current indeterminate state. */
-  indeterminate: boolean;
+  /**
+   * A checkbox's state can be controlled.
+   * @defaultvalue false
+   */
+  checked: 'mixed' | boolean;
 
-  /** Gets the current checked state. */
-  checked: boolean;
+  /**
+   * Checkbox supports two different checkbox sizes.
+   * @defaultvalue medium
+   */
+  size: 'medium' | 'large';
 
-  /** Sets focus to the checkbox. */
-  focus: () => void;
+  /**
+   * Determines whether the label should be positioned before or after the checkbox.
+   * @defaultvalue after
+   */
+  labelPosition: 'before' | 'after';
 }
 
 /**
- * Checkbox properties.
- * {@docCategory Checkbox}
+ * Data for the onChange event for checkbox.
  */
-export interface ICheckboxProps
-  extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>,
-    React.RefAttributes<HTMLElement> {
-  /**
-   * Render the root element as another type.
-   */
-  as?: React.ElementType;
+export interface CheckboxOnChangeData {
+  checked: 'mixed' | boolean;
+}
 
+export type CheckboxSlots = {
   /**
-   * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<ICheckbox>;
-
-  /**
-   * Label to display next to the checkbox.
-   */
-  label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
-
-  /**
-   * Checkmark Icon to display when checkbox is checked.
-   */
-  checkmark?: SlotProp<ISvgIconProps>;
-
-  /**
-   * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
-   */
-  className?: string;
-
-  /**
-   * Checked state. Mutually exclusive to "defaultChecked". Use this if you control the checked state at a higher
-   * level and plan to pass in the correct value based on handling onChange events and re-rendering.
-   */
-  checked?: boolean;
-
-  /**
-   * Default checked state. Mutually exclusive to "checked". Use this if you want an uncontrolled component, and
-   * want the Checkbox instance to maintain its own state.
-   */
-  defaultChecked?: boolean;
-
-  /**
-   * Disabled state of the checkbox.
-   */
-  disabled?: boolean;
-
-  /**
-   * Required state of the checkbox.
-   */
-  required?: boolean;
-
-  /**
-   * Callback that is called when the checked value has changed.
-   */
-  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
-
-  /**
-   * Optional input props that will be mixed into the input element, *before* other props are applied. This allows
-   * you to extend the input element with additional attributes, such as data-automation-id needed for automation.
-   * Note that if you provide, for example, "disabled" as well as "inputProps.disabled", the former will take
-   * precedence over the later.
-   */
-  inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
-
-  /**
-   * Allows you to set the checkbox to be at the before (start) or after (end) the label.
-   * @defaultvalue 'start'
-   */
-  boxSide?: 'start' | 'end';
-
-  /**
-   * Theme provided by HOC.
-   */
-  theme?: ITheme;
-
-  /**
-   * Accessible label for the checkbox.
-   */
-  ariaLabel?: string;
-
-  /**
-   * ID for element that contains label information for the checkbox.
-   */
-  ariaLabelledBy?: string;
-
-  /**
-   * ID for element that provides extended information for the checkbox.
-   */
-  ariaDescribedBy?: string;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
+   * The root element of the Checkbox.
    *
-   * @deprecated This no longer works. TODO: fix use cases with tokens prop.
+   * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
+   * All other native props will be applied to the primary slot: `input`
    */
-  styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
+  root: IntrinsicShorthandProps<'span'>;
 
   /**
-   * Custom render function for the label.
+   * The Checkbox's label.
+   */
+  label?: ComponentSlotProps<typeof Label>;
+
+  /**
+   * Hidden input that handles the checkbox's functionality.
    *
-   * @deprecated Use label prop instead.
+   * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
    */
-  onRenderLabel?: IRenderFunction<ICheckboxProps>;
+  input: IntrinsicShorthandProps<'input'>;
 
   /**
-   * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
-   * over checked or defaultChecked props given but does not affect checked state.
-   * This should not be a toggleable state. On load the checkbox will receive indeterminate visual state
-   * and after the first user click it should be removed by your supplied onChange callback
-   * function exposing the true state of the checkbox.
+   * Renders the checkbox, with the checkmark icon as its child when checked.
    */
-  indeterminate?: boolean;
-
-  /**
-   * Optional uncontrolled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
-   * over checked or defaultChecked props given but does not affect checked state.
-   * This is not a toggleable state. On load the checkbox will receive indeterminate visual state
-   * and after the user's first click it will be removed exposing the true state of the checkbox.
-   */
-  defaultIndeterminate?: boolean;
-}
+  indicator: IntrinsicShorthandProps<'div'>;
+};
 
 /**
- * {@docCategory Checkbox}
+ * Checkbox Props
  */
-export interface ICheckboxStyleProps {
-  theme: ITheme;
-  className?: string;
-  disabled?: boolean;
-  checked?: boolean;
-  reversed?: boolean;
-  indeterminate?: boolean;
-  isUsingCustomLabelRender: boolean;
-}
+export type CheckboxProps = Omit<
+  ComponentProps<CheckboxSlots, 'input'>,
+  'size' | 'checked' | 'defaultChecked' | 'onChange'
+> &
+  Partial<CheckboxCommons> & {
+    /**
+     * Checkboxes don't support children. To add a label, use the `label` prop.
+     */
+    children?: never;
+
+    /**
+     * Callback to be called when the checked state value changes.
+     */
+    onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+
+    /**
+     * Whether the checkbox should be rendered as checked by default.
+     */
+    defaultChecked?: 'mixed' | boolean;
+  };
 
 /**
- * {@docCategory Checkbox}
+ * State used in rendering Checkbox
  */
-export interface ICheckboxStyles {
-  /**
-   * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
-   */
-  root?: IStyle;
-
-  /**
-   * INTERNAL: This is mostly an internal implementation detail which you should avoid styling.
-   * This refers to the <input type="checkbox"> element that is typically hidden and not rendered on screen.
-   */
-  input?: IStyle;
-
-  /**
-   * Style for the label part (contains the customized checkbox + text) when enabled.
-   */
-  label?: IStyle;
-
-  /**
-   * Style for checkbox in its default unchecked/enabled state.
-   */
-  checkbox?: IStyle;
-
-  /**
-   * Style for the checkmark in the default enabled/unchecked state.
-   */
-  checkmark?: IStyle;
-
-  /**
-   * Style for text appearing with the checkbox in its default enabled state.
-   */
-  text?: IStyle;
-}
-
-/**
- * {@docCategory Checkbox}
- */
-export interface ICheckboxSlots extends BaseSlots {
-  input: React.ElementType;
-  container: React.ElementType;
-  checkbox: React.ElementType;
-  checkmark: React.ElementType;
-  label: React.ElementType;
-}
-
-/**
- * {@docCategory Checkbox}
- */
-export type ICheckboxClasses = { [key in keyof ICheckboxSlots]: string };
-
-/**
- * {@docCategory Checkbox}
- */
-export type ICheckboxSlotProps = SlotProps<ICheckboxSlots, ICheckboxProps, React.HTMLAttributes<HTMLDivElement>>;
-
-export interface ICheckboxState extends Omit<ICheckboxProps, keyof ICheckboxSlotProps>, Partial<ICheckboxSlotProps> {
-  ref: React.Ref<HTMLElement>;
-}
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;

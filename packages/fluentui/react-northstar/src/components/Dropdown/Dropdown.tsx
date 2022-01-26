@@ -3,9 +3,9 @@ import {
   useAutoControlled,
   useStyles,
   useUnhandledProps,
-  ComponentWithAs,
   useFluentContext,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -26,6 +26,7 @@ import Downshift, {
   GetInputPropsOptions,
   GetToggleButtonPropsOptions,
   GetItemPropsOptions,
+  ControllerStateAndHelpers,
 } from 'downshift';
 import {
   commonPropTypes,
@@ -338,10 +339,7 @@ function getFilteredValues(
 
     return {
       filteredItems: filteredItemsByValue.filter(
-        item =>
-          itemToString(item)
-            .toLowerCase()
-            .indexOf(searchQuery.toLowerCase()) !== -1,
+        item => itemToString(item).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
       ),
       filteredItemStrings,
     };
@@ -365,20 +363,15 @@ const isEmpty = prop => {
  * Implements [ARIA Combo Box](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) design pattern, uses aria-live to announce state changes.
  * @accessibilityIssues
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
+ * [JAWS - ESC (ESCAPE) not closing collapsible listbox (dropdown) on first time #528](https://github.com/FreedomScientific/VFO-standards-support/issues/528)
  */
-export const Dropdown: ComponentWithAs<'div', DropdownProps> &
-  FluentComponentStaticProps<DropdownProps> & {
-    Item: typeof DropdownItem;
-    SearchInput: typeof DropdownSearchInput;
-    SelectedItem: typeof DropdownSelectedItem;
-  } = props => {
+export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dropdown.displayName, context.telemetry);
 
   setStart();
 
   const {
-    align,
     'aria-labelledby': ariaLabelledby,
     'aria-invalid': ariaInvalid,
     clearable,
@@ -406,8 +399,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     loading,
     loadingMessage,
     placeholder,
-    position,
-    offset,
     renderItem,
     renderSelectedItem,
     search,
@@ -415,12 +406,22 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     styles,
     toggleIndicator,
     triggerButton,
+    variables,
+  } = props;
+
+  const {
+    align,
+    flipBoundary,
+    overflowBoundary,
+    popperRef,
+    position,
+    positionFixed,
+    offset,
     unstable_disableTether,
     unstable_pinned,
     autoSize,
-    variables,
-  } = props;
-  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
+  } = props; // PositioningProps passed directly to Dropdown
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list); // PositioningProps passed to Dropdown `list` prop's `popper` key
 
   const buttonRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
@@ -490,7 +491,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       isFromKeyboard,
       multiple,
       open,
-      position,
+      position: positioningProps?.position ?? position,
       search: !!search,
       hasItemsSelected: value.length > 0,
     }),
@@ -546,6 +547,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
+      ...(open && { 'aria-expanded': true }),
     });
 
     const { onClick, onFocus, onBlur, onKeyDown, ...restTriggerButtonProps } = triggerButtonProps;
@@ -648,15 +650,20 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }}
       >
         <Popper
-          align={align}
-          position={position}
-          offset={offset}
           rtl={context.rtl}
           enabled={open}
           targetRef={containerRef}
+          positioningDependencies={[items.length]}
+          // positioning props:
+          align={align}
+          flipBoundary={flipBoundary}
+          overflowBoundary={overflowBoundary}
+          popperRef={popperRef}
+          position={position}
+          positionFixed={positionFixed}
+          offset={offset}
           unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
-          positioningDependencies={[items.length]}
           autoSize={autoSize}
           {...positioningProps}
         >
@@ -812,6 +819,21 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     }
   };
 
+  const handleInputValueChange = (
+    inputValue: string,
+    stateAndHelpers: ControllerStateAndHelpers<ShorthandValue<DropdownItemProps>>,
+  ) => {
+    const itemSelected = stateAndHelpers.selectedItem && inputValue === itemToString(stateAndHelpers.selectedItem);
+    if (
+      inputValue !== searchQuery &&
+      !itemSelected // when item is selected, `handleStateChange` will update searchQuery.
+    ) {
+      setStateAndInvokeHandler(['onSearchQueryChange'], null, {
+        searchQuery: inputValue,
+      });
+    }
+  };
+
   const handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
     const { type } = changes;
     const newState = {} as DropdownStateForInvoke;
@@ -819,7 +841,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     switch (type) {
       case Downshift.stateChangeTypes.changeInput: {
         const shouldValueChange = changes.inputValue === '' && !multiple && value.length > 0;
-        newState.searchQuery = changes.inputValue;
+
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
 
         if (shouldValueChange) {
@@ -858,19 +880,19 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }
 
         if (multiple) {
-          setTimeout(() => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight), 0);
+          context.target?.defaultView.setTimeout(
+            () => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight),
+            0,
+          );
         }
 
-        tryFocusTriggerButton();
+        // timeout because of NVDA, otherwise it narrates old button value/state
+        context.target?.defaultView.setTimeout(() => tryFocusTriggerButton(), 100);
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:
-        if (search) {
-          newState.searchQuery = '';
-
-          if (!multiple) {
-            newState.value = [];
-          }
+        if (search && !multiple) {
+          newState.value = [];
         }
         newState.open = false;
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
@@ -1099,6 +1121,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
             // https://github.com/facebook/react/issues/955#issuecomment-469352730
             setSearchQuery(e.target.value);
           },
+          'aria-labelledby': ariaLabelledby,
         }),
       },
       // same story as above for getRootProps.
@@ -1496,6 +1519,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       className={classes.root}
       onBlur={handleOnBlur}
       onChange={handleChange}
+      ref={ref}
       {...unhandledProps}
       {...(process.env.NODE_ENV === 'test' && { 'data-test-focused': focused })}
     >
@@ -1537,6 +1561,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         getA11yStatusMessage={getA11yStatusMessage}
         highlightedIndex={highlightedIndex}
         onStateChange={handleStateChange}
+        onInputValueChange={handleInputValueChange}
         labelId={ariaLabelledby}
         environment={context.target?.defaultView}
         inputId={searchInput && searchInput['id'] ? searchInput['id'] : undefined}
@@ -1566,8 +1591,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
               >
                 <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
                   {/* We previously were rendering the trigger button after selected items list,
-                  after listbox wrapper was introduced we moved it to before and
-                   set as absolute to avoid visual regressions   */}
+                    after listbox wrapper was introduced we moved it to before and
+                     set as absolute to avoid visual regressions   */}
                   {!search && renderTriggerButton(getToggleButtonProps)}
                   {multiple && renderSelectedItems()}
                   {search &&
@@ -1634,7 +1659,12 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DropdownProps> &
+  FluentComponentStaticProps<DropdownProps> & {
+    Item: typeof DropdownItem;
+    SearchInput: typeof DropdownSearchInput;
+    SelectedItem: typeof DropdownSelectedItem;
+  };
 
 Dropdown.displayName = 'Dropdown';
 
@@ -1645,7 +1675,6 @@ Dropdown.propTypes = {
     content: false,
   }),
   activeSelectedIndex: PropTypes.number,
-  align: PropTypes.oneOf(ALIGNMENTS),
   checkable: PropTypes.bool,
   checkableIndicator: customPropTypes.shorthandAllowingChildren,
   clearable: PropTypes.bool,
@@ -1674,10 +1703,6 @@ Dropdown.propTypes = {
   moveFocusOnTab: PropTypes.bool,
   multiple: PropTypes.bool,
   noResultsMessage: customPropTypes.itemShorthand,
-  offset: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
-  ]),
   onOpenChange: PropTypes.func,
   onSearchQueryChange: PropTypes.func,
   onBlur: PropTypes.func,
@@ -1686,7 +1711,6 @@ Dropdown.propTypes = {
   onHighlightedIndexChange: PropTypes.func,
   open: PropTypes.bool,
   placeholder: PropTypes.string,
-  position: PropTypes.oneOf(POSITIONS),
   renderItem: PropTypes.func,
   renderSelectedItem: PropTypes.func,
   search: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
@@ -1694,13 +1718,32 @@ Dropdown.propTypes = {
   searchInput: customPropTypes.itemShorthand,
   toggleIndicator: customPropTypes.shorthandAllowingChildren,
   triggerButton: customPropTypes.itemShorthand,
-  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
-  unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,
   a11ySelectedItemsMessage: PropTypes.string,
+  // positioning props
+  align: PropTypes.oneOf(ALIGNMENTS),
+  flipBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  overflowBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  popperRef: customPropTypes.ref,
+  position: PropTypes.oneOf(POSITIONS),
+  positionFixed: PropTypes.bool,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
+  unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
 };
 Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 

@@ -1,24 +1,25 @@
 import * as React from 'react';
 
-export interface PortalProps {
+export type PortalCommons = {
   /**
    * React children
    */
-  children?: React.ReactNode;
+  children: React.ReactNode;
   /**
    * Where the portal children are mounted on DOM
    * @defaultValue a new element on document.body without any styling
    */
-  mountNode?: HTMLDivElement | null;
+  mountNode: HTMLDivElement | undefined;
+};
 
-  /**
-   * React events should not bubble up the portal
-   */
-  // TODO clarify if this is still needed
-  // disableEventBubbling?: 'first' | 'last';
-}
+export type PortalProps = Partial<PortalCommons>;
 
-export interface PortalState extends PortalProps {
+export type PortalState = PortalCommons & {
   /** Indicates if a Portal should be rendered. */
   shouldRender: boolean;
-}
+
+  /**
+   * Ref to the root span element as virtual parent
+   */
+  virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
+};

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { toMatrix, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 import { useId } from '@fluentui/react-hooks';
+import type { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 
 const getClassNames = classNamesFunction<IButtonGridStyleProps, IButtonGridStyles>();
 
@@ -16,6 +16,7 @@ export const ButtonGridBase: React.FunctionComponent<IButtonGridProps> = React.f
     items,
     columnCount,
     onRenderItem,
+    isSemanticRadio,
     // eslint-disable-next-line deprecation/deprecation
     ariaPosInSet = props.positionInSet,
     // eslint-disable-next-line deprecation/deprecation
@@ -41,14 +42,14 @@ export const ButtonGridBase: React.FunctionComponent<IButtonGridProps> = React.f
       aria-posinset={ariaPosInSet}
       aria-setsize={ariaSetSize}
       id={id}
-      role="grid"
+      role={isSemanticRadio ? 'radiogroup' : 'grid'}
       {...htmlProps}
       className={classNames.root}
     >
-      <tbody>
+      <tbody role={isSemanticRadio ? 'presentation' : 'rowgroup'}>
         {rowsOfItems.map((rows, rowIndex) => {
           return (
-            <tr role={'row'} key={rowIndex}>
+            <tr role={isSemanticRadio ? 'presentation' : 'row'} key={rowIndex}>
               {rows.map((cell, cellIndex: number) => {
                 return (
                   <td role="presentation" key={cellIndex + '-cell'} className={classNames.tableCell}>

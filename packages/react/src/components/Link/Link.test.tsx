@@ -72,6 +72,7 @@ describe('Link', () => {
   isConformant({
     Component: Link,
     displayName: 'Link',
+    skipAsPropTests: false,
     asPropHandlesRef: true,
   });
 
@@ -97,6 +98,7 @@ describe('Link', () => {
     expect(
       /ms-Link($| )/.test(
         ReactDOM.renderToStaticMarkup(
+          // eslint-disable-next-line deprecation/deprecation
           <Customizer settings={{ theme: NoClassNamesTheme }}>
             <Link href="helloworld.html">My Link</Link>
           </Customizer>,

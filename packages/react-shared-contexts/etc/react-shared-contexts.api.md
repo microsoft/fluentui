@@ -5,7 +5,7 @@
 ```ts
 
 import * as React_2 from 'react';
-import { Theme } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
 export const MenuContext: React_2.Context<MinimalMenuProps>;
@@ -14,7 +14,7 @@ export const MenuContext: React_2.Context<MinimalMenuProps>;
 export type MinimalMenuProps = {
     hidden?: boolean;
     onDismiss?: () => void;
-    target?: React_2.Ref<HTMLElement | undefined>;
+    target?: React_2.Ref<HTMLElement>;
 };
 
 // @public (undocumented)
@@ -30,11 +30,10 @@ export interface ProviderContextValue {
 export const ThemeClassNameContext: React_2.Context<string>;
 
 // @public (undocumented)
-export const ThemeContext: React_2.Context<ThemeContextValue>;
+export type ThemeClassNameContextValue = string;
 
 // @public (undocumented)
-export interface ThemeContextValue extends Theme {
-}
+export const ThemeContext: React_2.Context<Theme | Partial<Theme> | undefined>;
 
 // @public
 export const TooltipContext: React_2.Context<TooltipContextType>;
@@ -53,11 +52,10 @@ export function useFluent(): ProviderContextValue;
 export const useMenuContext: () => MinimalMenuProps;
 
 // @public (undocumented)
-export function useTheme(): ThemeContextValue;
+export function useTheme(): Theme | Partial<Theme> | undefined;
 
 // @public (undocumented)
-export function useThemeClassName(): string;
-
+export function useThemeClassName(): ThemeClassNameContextValue;
 
 // (No @packageDocumentation comment for this package)
 

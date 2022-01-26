@@ -30,7 +30,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = {
 };
 const togglesStyles: Partial<IToggleStyles> = { root: { margin } };
 
-export interface IDetailsListDragDropExampleState {
+interface IDetailsListDragDropExampleState {
   items: IExampleItem[];
   columns: IColumn[];
   isColumnReorderEnabled: boolean;

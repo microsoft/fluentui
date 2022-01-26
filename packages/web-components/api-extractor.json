@@ -11,7 +11,7 @@
 
   "docModel": {
     "enabled": true,
-    "apiJsonFilePath": "dist/fast-components-msft.api.json"
+    "apiJsonFilePath": "dist/fluent-web-components.api.json"
   },
 
   "dtsRollup": {

@@ -45,9 +45,7 @@ export const IconPageProps: IDocPageProps = {
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Icon/docs/IconOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Icon/docs/IconBestPractices.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Icon/docs/IconBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Icon/docs/IconDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Icon/docs/IconDonts.md'),
   isHeaderVisible: true,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICustomizations } from './Customizations';
+import type { ICustomizations } from './Customizations';
 
 export interface ICustomizerContext {
   customizations: ICustomizations;

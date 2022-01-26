@@ -54,12 +54,14 @@ const items = [
 
 // This renders titles depending on their level. The level one titles are rendered as default
 // TreeTitle with just text, while the level 2 titles are rendered as ListItems.
-const titleRenderer: ShorthandRenderFunction<TreeTitleProps & {
-  header?: React.ReactElement;
-  headerMedia?: React.ReactElement;
-  media?: React.ReactElement;
-  index?: number;
-}> = (Component, { content, header, headerMedia, media, index, ...restProps }) => {
+const titleRenderer: ShorthandRenderFunction<
+  TreeTitleProps & {
+    header?: React.ReactElement;
+    headerMedia?: React.ReactElement;
+    media?: React.ReactElement;
+    index?: number;
+  }
+> = (Component, { content, header, headerMedia, media, index, ...restProps }) => {
   // as providing all props to List.Item was showing console errors, therefore reducing props
   const { treeSize, expanded, hasSubtree, selectionIndicator, ...restReducedProps } = restProps;
   return header ? (

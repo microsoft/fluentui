@@ -10,7 +10,7 @@ export type SelectableHandler = (
 /**
  * Props for selecatble menu items
  */
-export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElement> {
+export type MenuItemSelectableProps = {
   /**
    * Follows input convention
    * https://www.w3schools.com/jsref/prop_checkbox_name.asp
@@ -22,17 +22,12 @@ export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElemen
    * https://www.w3schools.com/jsref/prop_checkbox_value.asp
    */
   value: string;
-
-  /**
-   * Whether the selectable item is disabled
-   */
-  disabled?: boolean;
-}
+};
 
 /**
  * State for selectable menu items
  */
-export interface MenuItemSelectableState extends MenuItemSelectableProps {
+export type MenuItemSelectableState = MenuItemSelectableProps & {
   /**
    * Checked items for a value with `name`
    */
@@ -47,4 +42,4 @@ export interface MenuItemSelectableState extends MenuItemSelectableProps {
    * Selectable is checked
    */
   checked: boolean;
-}
+};

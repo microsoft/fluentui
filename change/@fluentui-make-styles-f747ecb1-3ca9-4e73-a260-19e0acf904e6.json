@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use CSS-like order to expand shorthands",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

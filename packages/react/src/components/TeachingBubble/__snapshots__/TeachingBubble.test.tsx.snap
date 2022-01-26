@@ -32,6 +32,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           outline: transparent;
           position: absolute;
           width: calc(100% + 1px);
+          z-index: 1000000;
         }
         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           border-color: WindowText;
@@ -60,13 +61,14 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             overflow-x: hidden;
             overflow-y: hidden;
             position: relative;
+            width: 100%;
           }
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={
         Object {
-          "maxHeight": undefined,
+          "maxHeight": "100%",
           "outline": "none",
           "overflowY": "hidden",
         }
@@ -74,6 +76,8 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
     >
       <div>
         <div
+          aria-describedby="content"
+          aria-labelledby="title"
           className=
               ms-TeachingBubble-content
               {
@@ -97,6 +101,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           >
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -135,6 +140,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                         margin-right: 0px;
                         margin-top: 0px;
                       }
+                  id="content"
                 >
                   Test Content
                 </p>
@@ -142,6 +148,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             </div>
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -161,6 +168,8 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
 
 exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
 <div
+  aria-describedby="content"
+  aria-labelledby="title"
   className=
       ms-TeachingBubble-content
       {
@@ -184,6 +193,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -212,6 +222,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -222,7 +233,9 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
+          id="title"
           role="heading"
         >
           Test Title
@@ -247,6 +260,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="content"
         >
           Content
         </p>
@@ -254,6 +268,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -269,6 +284,8 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
 
 exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`] = `
 <div
+  aria-describedby="content"
+  aria-labelledby="title"
   className=
       ms-TeachingBubble-content
       {
@@ -292,6 +309,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -323,6 +341,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -333,7 +352,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
+          id="title"
           role="heading"
         >
           Test Title
@@ -358,6 +379,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="content"
         >
           Content
         </p>
@@ -550,7 +572,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__1"
+                  id="id__3"
                 >
                   Test Secondary Button
                 </span>
@@ -703,7 +725,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__4"
+                  id="id__6"
                 >
                   Test Primary Button
                 </span>
@@ -853,6 +875,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -868,6 +891,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
 
 exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that deal with styles 1`] = `
 <div
+  aria-describedby="content"
+  aria-labelledby="title"
   className=
       ms-TeachingBubble-content
       {
@@ -891,6 +916,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -929,6 +955,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="content"
         >
           Content
         </p>
@@ -936,6 +963,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -951,6 +979,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
 
 exports[`TeachingBubble renders TeachingBubbleContent with condensed headline correctly 1`] = `
 <div
+  aria-describedby="content"
+  aria-labelledby="title"
   className=
       ms-TeachingBubble-content
       {
@@ -974,6 +1004,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1007,6 +1038,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1016,7 +1048,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
+          id="title"
           role="heading"
         >
           Test Title
@@ -1041,6 +1075,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="content"
         >
           Content
         </p>
@@ -1048,6 +1083,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1063,6 +1099,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
 
 exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`] = `
 <div
+  aria-describedby="content"
+  aria-labelledby="title"
   className=
       ms-TeachingBubble-content
       {
@@ -1086,6 +1124,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1124,6 +1163,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="content"
         >
           Content
         </p>
@@ -1194,6 +1234,123 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
+      data-is-visible={true}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
+  </div>
+</div>
+`;
+
+exports[`TeachingBubble renders TeachingBubbleContent with generated aria-describedby and aria-labelledby 1`] = `
+<div
+  aria-describedby="teaching-bubble-content-0"
+  aria-labelledby="teaching-bubble-title-1"
+  className=
+      ms-TeachingBubble-content
+      {
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+        animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
+        animation-timing-function: linear;
+        border: 0px;
+        display: block;
+        max-width: 364px;
+        outline: transparent;
+        width: calc(100% + 1px);
+      }
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
+>
+  <div
+    onBlurCapture={[Function]}
+    onFocusCapture={[Function]}
+  >
+    <div
+      aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
+      data-is-visible={true}
+      style={
+        Object {
+          "pointerEvents": "none",
+          "position": "fixed",
+        }
+      }
+      tabIndex={0}
+    />
+    <div
+      className=
+          ms-TeachingBubble-bodycontent
+          {
+            padding-bottom: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 20px;
+          }
+    >
+      <div
+        className=
+            ms-TeachingBubble-header
+            ms-TeachingBubble-header--large
+            &:not(:last-child) {
+              margin-bottom: 14px;
+            }
+      >
+        <p
+          aria-level={3}
+          className=
+              ms-TeachingBubble-headline
+              {
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+              }
+          id="teaching-bubble-title-1"
+          role="heading"
+        >
+          Test Title
+        </p>
+      </div>
+      <div
+        className=
+            ms-TeachingBubble-body
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+      >
+        <p
+          className=
+              ms-TeachingBubble-subText
+              {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+              }
+          id="teaching-bubble-content-0"
+        >
+          Test Content
+        </p>
+      </div>
+    </div>
+    <div
+      aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1209,6 +1366,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
 
 exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] = `
 <div
+  aria-describedby="content"
+  aria-labelledby="title"
   className=
       ms-TeachingBubble-content
       {
@@ -1269,6 +1428,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1297,6 +1457,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1307,7 +1468,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
+          id="title"
           role="heading"
         >
           Test Title
@@ -1332,6 +1495,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="content"
         >
           Content
         </p>
@@ -1339,6 +1503,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1354,6 +1519,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
 
 exports[`TeachingBubble renders TeachingBubbleContent with small headline correctly 1`] = `
 <div
+  aria-describedby="content"
+  aria-labelledby="title"
   className=
       ms-TeachingBubble-content
       {
@@ -1377,6 +1544,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -1412,6 +1580,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1421,7 +1590,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
+          id="title"
           role="heading"
         >
           Test Title
@@ -1446,6 +1617,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="content"
         >
           Content
         </p>
@@ -1453,6 +1625,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { IIconProps } from '../Icon/Icon.types';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IIconProps } from '../Icon/Icon.types';
 
 /**
  * Checkbox class interface.

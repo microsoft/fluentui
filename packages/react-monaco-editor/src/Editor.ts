@@ -1,2 +1,2 @@
 export { Editor } from './components/Editor';
-export { IEditorProps } from './components/Editor.types';
+export type { IEditorProps } from './components/Editor.types';

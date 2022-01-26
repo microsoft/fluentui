@@ -1,13 +1,18 @@
-import { DEFINITION_LOOKUP_TABLE, RULE_CLASSNAME_INDEX, RULE_RTL_CLASSNAME_INDEX } from '@fluentui/make-styles';
+import { DEFINITION_LOOKUP_TABLE, CSSClasses } from '@griffel/core';
 
-export function print(val: string) {
+export function print(val: unknown) {
+  /**
+   * test function makes sure that value is the guarded type
+   */
+  const _val = val as string;
+
   const regexParts: string[] = [];
   const regex = lookupRegex();
   if (!regex) {
-    return val;
+    return _val;
   }
   let result: RegExpExecArray | null = null;
-  while ((result = regex.exec(val))) {
+  while ((result = regex.exec(_val))) {
     const [name] = result;
     const [definitions] = DEFINITION_LOOKUP_TABLE[name];
     /**
@@ -16,14 +21,9 @@ export function print(val: string) {
      * rules = ["f16th3vw", "frdkuqy0", "fat0sn40", "fjseox00"]
      */
     const rules = Object.keys(definitions).map(key => {
-      const classes: string[] = [];
-      if (definitions[key][RULE_CLASSNAME_INDEX]) {
-        classes.push(definitions[key][RULE_CLASSNAME_INDEX]!);
-      }
-      if (definitions[key][RULE_RTL_CLASSNAME_INDEX]) {
-        classes.push(definitions[key][RULE_RTL_CLASSNAME_INDEX]!);
-      }
-      return classes.join('|');
+      const classes: CSSClasses = definitions[key];
+
+      return Array.isArray(classes) ? classes.join('|') : classes;
     });
     regexParts.push(name, ...rules);
   }
@@ -32,7 +32,7 @@ export function print(val: string) {
    * @example
    * regex = /r?(f16th3vw|frdkuqy0|fat0sn40|fjseox00)/
    */
-  const valStrippedClassNames = val.replace(new RegExp(regexParts.join('|'), 'g'), '').trim();
+  const valStrippedClassNames = _val.replace(new RegExp(regexParts.join('|'), 'g'), '').trim();
   /**
    * Trim whitespace from className
    */

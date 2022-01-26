@@ -183,7 +183,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
       background: (
         <img
           className={TilesListExampleStyles.tileImage}
-          src={`//placehold.it/${Math.round(backgroundSize.width)}x${Math.round(backgroundSize.height)}`}
+          src={`//via.placeholder.com/${Math.round(backgroundSize.width)}x${Math.round(backgroundSize.height)}`}
         />
       ),
     });

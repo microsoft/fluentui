@@ -16,12 +16,8 @@ export const MarqueeSelectionPageProps: IDocPageProps = {
       view: <MarqueeSelectionBasicExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/docs/MarqueeSelectionBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/docs/MarqueeSelectionBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

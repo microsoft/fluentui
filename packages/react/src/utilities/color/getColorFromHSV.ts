@@ -1,8 +1,8 @@
-import { IHSV, IColor } from './interfaces';
 import { MAX_COLOR_ALPHA } from './consts';
 import { hsv2rgb } from './hsv2rgb';
 import { hsv2hex } from './hsv2hex';
 import { _rgbaOrHexString } from './_rgbaOrHexString';
+import type { IHSV, IColor } from './interfaces';
 
 /**
  * Converts an HSV color (and optional alpha value) to a color object.

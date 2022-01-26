@@ -3,6 +3,7 @@ import * as shape from 'd3-shape';
 import { IArcProps, IArcStyles } from './Arc.types';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
+import { convertToLocaleString } from '../../../utilities/utilities';
 
 export class Arc extends React.Component<IArcProps, {}> {
   public static defaultProps: Partial<IArcProps> = {
@@ -24,13 +25,13 @@ export class Arc extends React.Component<IArcProps, {}> {
     const { color, arc } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(getStyles, { color });
-    return <path d={arc(this.props.data)} className={classNames.root} />;
+    return <path d={arc(this.props.data)} className={classNames.root} onClick={this.props.data?.data.onClick} />;
   }
 }
 
 export class LabeledArc extends Arc {
   public render(): JSX.Element {
-    const { data, arc } = this.props;
+    const { data, arc, culture } = this.props;
     const [labelX, labelY] = arc.centroid(data);
     const labelTranslate = `translate(${labelX}, ${labelY})`;
 
@@ -38,7 +39,7 @@ export class LabeledArc extends Arc {
       <g className="arc">
         {super.render()}
         <text transform={labelTranslate} textAnchor="middle">
-          {data!.data!.x}-{data!.data!.y}
+          {data!.data!.x}-{convertToLocaleString(data!.data!.y, culture)}
         </text>
       </g>
     );

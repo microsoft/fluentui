@@ -13,6 +13,7 @@ exports[`Component Examples renders Button.IconWithTooltip.Example.tsx correctly
     onKeyDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    role="none"
   >
     <button
       aria-label="Emoji"

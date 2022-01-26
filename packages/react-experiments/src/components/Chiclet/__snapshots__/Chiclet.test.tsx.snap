@@ -503,7 +503,7 @@ exports[`Chiclet should set className on preview 1`] = `
             object-fit: contain;
             width: 100%;
           }
-      src="http://placehold.it/100x100"
+      src="http://via.placeholder.com/100x100"
     />
   </div>
   <div

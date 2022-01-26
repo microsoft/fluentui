@@ -3,14 +3,14 @@ import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@fluentui/re
 
 export const MultiStackedBarChartWithPlaceholderExample: React.FunctionComponent<{}> = () => {
   const firstChartPoints: IChartDataPoint[] = [
-    { legend: 'Malware', data: 40, color: '#00AE56' },
+    { legend: 'Malware', data: 40, color: '#0A7D3C' },
     { legend: 'Phishing', data: 23, color: '#662D91' },
     { legend: 'Spam and bulk', data: 35, color: '#0078D4' },
     { data: 87, placeHolder: true },
   ];
 
   const secondChartPoints: IChartDataPoint[] = [
-    { legend: 'Malicious links', data: 40, color: '#FFAA44' },
+    { legend: 'Malicious links', data: 40, color: '#BE4A1C' },
     { legend: 'Malicious attachments', data: 23, color: '#038387' },
     { data: 106, placeHolder: true },
   ];

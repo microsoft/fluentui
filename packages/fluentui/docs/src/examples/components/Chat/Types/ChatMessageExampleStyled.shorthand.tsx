@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Avatar, AvatarProps, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
+import {
+  Avatar,
+  AvatarProps,
+  Chat,
+  Provider,
+  ReactionProps,
+  ShorthandCollection,
+  ICSSInJSStyle,
+} from '@fluentui/react-northstar';
 import { EmojiIcon, LikeIcon, AcceptIcon, MentionIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
@@ -23,7 +31,7 @@ const content = (
   </div>
 );
 
-const slotLabelStyles: any = (label, beforeStyles?, slotStyles?) => ({
+const slotLabelStyles = (label, beforeStyles?, slotStyles?): ICSSInJSStyle => ({
   position: 'relative',
   border: '1px solid #000',
   padding: '12px',
@@ -58,8 +66,8 @@ const ChatMessageExampleStyled = () => (
         },
         ChatMessage: {
           root: { ...slotLabelStyles('chat-message-root'), backgroundColor: '#87CEFA' },
-          author: ({ props: { mine } }) => ({
-            ...(!mine && {
+          author: ({ props }) => ({
+            ...(!props.mine && {
               ...slotLabelStyles('author', {}, { display: 'inline-block' }),
               backgroundColor: '#E0FFFF',
             }),

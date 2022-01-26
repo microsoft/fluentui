@@ -69,12 +69,8 @@ export const DialogPageProps: IDocPageProps = {
       view: <DialogModelessExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/docs/DialogOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/docs/DialogBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/docs/DialogOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/docs/DialogBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

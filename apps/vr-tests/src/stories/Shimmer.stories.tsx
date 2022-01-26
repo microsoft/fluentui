@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from '@fluentui/react';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
@@ -22,7 +22,7 @@ storiesOf('Shimmer', module)
     // Shimmer without a specified width needs a container with a fixed width or it's collapsing.
     <div style={{ width: '500px' }}>{story()}</div>
   ))
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -46,7 +46,7 @@ storiesOf('Shimmer', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Custom elements', () => (
     <Shimmer

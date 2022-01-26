@@ -14,7 +14,7 @@ Check out [../src/codemods/utilities/transforms.ts](../src/codemods/utilities/tr
 - The way you use one of these transforms is very simple! The pre-written transforms take in 2 optional arguments: a replacement value as a string, and a map of strings. Use the first parameter if you simply want to change the value of a prop (this functionality also exists in the `renameProp()` utility). Use the second parameter if you know your domain of prop values and want old values to be mapped to new ones.
   - Transform functions return a closure that can be passed into renameProp(). Here's what that might look like if you're fliping a boolean value:
 
-```typescript=
+```ts
 const file = project.getSourceFileOrThrow(DropdownPropsFile);
 const tags = findJsxTag(file, 'Dropdown');
 const dropdownMap: ValueMap<string> = { false: 'true', true: 'false' };
@@ -28,7 +28,7 @@ renameProp(tags, 'isDisabled', 'disabled', undefined, transform);
 
 - A transform function returns a function of type `PropTransform`, which is a closure that actually modifies the codebase. This is what a`PropTransform` function takes in:
 
-```typescript=
+```ts
 export type PropTransform = (
   node: JsxExpression | JsxOpeningElement | JsxSelfClosingElement,
   toRename: string,
@@ -38,7 +38,7 @@ export type PropTransform = (
 
 And here's what the body of a transform might look like:
 
-```typescript=
+```ts
 export function boolTransform(newValue?: boolean, map?: ValueMap<string>): PropTransform {
   return (
     element: JsxExpression | JsxOpeningElement | JsxSelfClosingElement,

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
-import { IPositionedData } from '../../../Positioning';
-import { ReactNode } from 'react';
+import type { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
+import type { IPositionedData } from '../../../Positioning';
+import type { ReactNode } from 'react';
+import type { Target } from '@fluentui/react-hooks';
 
 /**
  * {@docCategory Coachmark}
@@ -25,7 +26,7 @@ export interface IPositioningContainerProps
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | Point | null;
+  target?: Target;
 
   /**
    * How the element should be positioned

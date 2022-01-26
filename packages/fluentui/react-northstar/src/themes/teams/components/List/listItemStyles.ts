@@ -47,7 +47,7 @@ export const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, Li
       padding: v.rootPadding,
       ...((p.selectable || p.navigable) && {
         position: 'relative',
-
+        userSelect: 'none',
         // hide the end media by default
         [`& .${listItemEndMediaClassName}`]: { display: 'none' },
 

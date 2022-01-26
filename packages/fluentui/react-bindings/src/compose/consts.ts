@@ -80,7 +80,12 @@ export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
   | InputComposeComponent<TProps>
   | ComposeRenderFunction<TElementType, TProps & { as?: React.ElementType }>;
 
-export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, _TState = TProps> = (
+export type ComposeRenderFunction<
+  TElementType extends React.ElementType = 'div',
+  TProps = {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _TState = TProps
+> = (
   props: TProps,
   ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -238,4 +243,13 @@ export const defaultMappedProps: Record<string, string> = {
   iframe: 'src',
   img: 'src',
   input: 'type',
+};
+
+/**
+ * React.ForwardRef with static props
+ */
+export type ForwardRefComponent<TProps> = React.ForwardRefExoticComponent<
+  TProps & React.RefAttributes<HTMLInputElement>
+> & {
+  handledProps: (keyof TProps)[];
 };

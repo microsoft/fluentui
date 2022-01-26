@@ -1,32 +1,20 @@
 import * as React from 'react';
-import { ToggleButtonProps, ToggleButtonStyleSelectors } from './ToggleButton.types';
-import { renderToggleButton } from './renderToggleButton';
-import { useToggleButton } from './useToggleButton';
-import { useToggleButtonStyles } from './useToggleButtonStyles';
+import { renderToggleButton_unstable } from './renderToggleButton';
+import { useToggleButton_unstable } from './useToggleButton';
+import { useToggleButtonStyles_unstable } from './useToggleButtonStyles';
+import type { ToggleButtonProps } from './ToggleButton.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Define a styled ToggleButton, using the `useToggleButton` hook.
- * {@docCategory Button}
+ * ToggleButtons are buttons that toggle between two defined states when triggered.
  */
-export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
-  const state = useToggleButton(props, ref);
+export const ToggleButton: ForwardRefComponent<ToggleButtonProps> = React.forwardRef((props, ref) => {
+  const state = useToggleButton_unstable(props, ref);
 
-  const receivedChildren = !!state.children?.children;
-  const receivedIcon = !!state.icon?.children;
+  useToggleButtonStyles_unstable(state);
 
-  const styleSelectors: ToggleButtonStyleSelectors = {
-    checked: state.checked,
-    disabled: state.disabled,
-    iconOnly: receivedIcon && !receivedChildren,
-    primary: state.primary,
-    size: state.size,
-    subtle: state.subtle,
-    transparent: state.transparent,
-  };
-
-  useToggleButtonStyles(state, styleSelectors);
-
-  return renderToggleButton(state);
-});
+  return renderToggleButton_unstable(state);
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<ToggleButtonProps>;
 
 ToggleButton.displayName = 'ToggleButton';

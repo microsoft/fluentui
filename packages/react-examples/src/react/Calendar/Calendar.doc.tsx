@@ -99,12 +99,8 @@ export const CalendarPageProps: IDocPageProps = {
       view: <CalendarButtonExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Calendar/docs/CalendarOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Calendar/docs/CalendarBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Calendar/docs/CalendarOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Calendar/docs/CalendarBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

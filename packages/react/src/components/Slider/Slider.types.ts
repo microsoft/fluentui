@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Slider}
@@ -89,15 +89,24 @@ export interface ISliderProps
   showValue?: boolean;
 
   /**
-   * Callback when the value has been changed.
+   * Callback when the value has been changed. This will be called on every individual step;
+   * to only be notified after changes have stopped, use `onChanged` instead.
    * If `ranged` is true, `value` is the upper value, and `range` contains the lower and upper bounds of the range.
    */
-  onChange?: (value: number, range?: [number, number]) => void;
+  onChange?: (
+    value: number,
+    range?: [number, number],
+    event?: React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent | React.KeyboardEvent,
+  ) => void;
 
   /**
-   * Callback on mouse up or touch end
+   * Callback on mouse up, touch end, or after key presses have stopped.
+   * To be notified on every individual step, use `onChange` instead.
+   * @param event - Type is `React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent | React.KeyboardEvent`
+   * (may be corrected in a future major version)
    */
-  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
+  // TODO: fix event type if we release another major version
+  onChanged?: (event: any, value: number, range?: [number, number]) => void;
 
   /**
    * A description of the Slider for the benefit of screen readers.
@@ -140,7 +149,8 @@ export interface ISliderProps
   className?: string;
 
   /**
-   * Additional props on the thumb button within the slider.
+   * Additional props for the actual `role="slider"` (slider box) element.
+   * (Note that this element is not actually a button in the current implementation.)
    */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 

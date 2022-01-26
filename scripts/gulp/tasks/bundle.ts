@@ -22,6 +22,10 @@ task('bundle:package:clean', () => del([`${paths.packageDist(packageName)}`], { 
 
 const componentsSrc = [paths.packageSrc(packageName, '**/*.{ts,tsx}')];
 
+task('copy:readme', function () {
+  return src(paths.packages('', 'README.md')).pipe(dest(paths.packages('react-northstar')));
+});
+
 task('bundle:package:commonjs', () =>
   src(componentsSrc)
     .pipe(sourcemaps.init())

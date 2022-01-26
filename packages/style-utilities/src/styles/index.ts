@@ -6,7 +6,7 @@ export { FontSizes, FontWeights, IconFontSizes, createFontStyles } from './fonts
 export * from './getFocusStyle';
 export { hiddenContentStyle } from './hiddenContentStyle';
 export { PulsingBeaconAnimationStyles } from './PulsingBeaconAnimationStyles';
-export { getGlobalClassNames, GlobalClassNames } from './getGlobalClassNames';
+export { getGlobalClassNames } from './getGlobalClassNames';
 export * from './scheme';
 export {
   ThemeSettingName,
@@ -21,3 +21,4 @@ export * from './GeneralStyles';
 export * from './getFadedOverflowStyle';
 export * from './getPlaceholderStyles';
 export * from './zIndexes';
+export type { GlobalClassNames } from './getGlobalClassNames';

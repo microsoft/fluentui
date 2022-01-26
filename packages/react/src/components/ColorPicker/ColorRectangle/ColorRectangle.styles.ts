@@ -1,7 +1,7 @@
-import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 import { HighContrastSelector, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 import { hiddenContentStyle } from '@fluentui/style-utilities';
+import type { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 
 export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
   const { className, theme, minSize } = props;
@@ -26,6 +26,9 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
 
           [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `1px solid ${palette.neutralSecondary}`,
+            [`${HighContrastSelector}`]: {
+              outline: '2px solid CanvasText',
+            },
           },
         },
       },

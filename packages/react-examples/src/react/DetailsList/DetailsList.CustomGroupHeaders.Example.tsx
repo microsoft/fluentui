@@ -7,9 +7,12 @@ import {
   IGroupDividerProps,
   IDetailsListProps,
   IDetailsGroupRenderProps,
+  SelectionMode,
+  CheckboxVisibility,
 } from '@fluentui/react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { Dropdown, IDropdownOption, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 
 const ROW_HEIGHT: number = 42; // from DEFAULT_ROW_HEIGHTS in DetailsRow.styles.ts
 const GROUP_HEADER_AND_FOOTER_SPACING: number = 8;
@@ -46,7 +49,14 @@ const classNames = mergeStyleSets({
 const ITEMS_PER_GROUP = 20;
 const GROUP_COUNT = 20;
 
-export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}> {
+const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
+const dropdownOptions = [
+  { key: 'onHover', text: 'CheckboxVisibility.onHover' },
+  { key: 'always', text: 'CheckboxVisibility.always' },
+  { key: 'hidden', text: 'CheckboxVisibility.hidden' },
+];
+
+export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { selectedItem: IDropdownOption }> {
   private _items: IExampleItem[];
   private _groups: IGroup[];
 
@@ -55,25 +65,40 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
 
     this._items = createListItems(500);
     this._groups = createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
+    this.state = { selectedItem: dropdownOptions[0] };
   }
 
   public render(): JSX.Element {
     return (
-      <DetailsList
-        items={this._items}
-        groups={this._groups}
-        groupProps={{
-          onRenderHeader: this._onRenderGroupHeader,
-          onRenderFooter: this._onRenderGroupFooter,
-        }}
-        getGroupHeight={this._getGroupHeight}
-        ariaLabelForSelectionColumn="Toggle selection"
-        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-        checkButtonAriaLabel="select row"
-        onRenderDetailsHeader={this._onRenderDetailsHeader}
-      />
+      <>
+        <Dropdown
+          label="Checkbox visibility"
+          selectedKey={this.state.selectedItem.key}
+          onChange={this._onChange}
+          options={dropdownOptions}
+          styles={dropdownStyles}
+        />
+        <DetailsList
+          items={this._items}
+          groups={this._groups}
+          groupProps={{
+            onRenderHeader: this._onRenderGroupHeader,
+            onRenderFooter: this._onRenderGroupFooter,
+          }}
+          getGroupHeight={this._getGroupHeight}
+          ariaLabelForSelectionColumn="Toggle selection"
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          checkButtonAriaLabel="select row"
+          onRenderDetailsHeader={this._onRenderDetailsHeader}
+          checkboxVisibility={CheckboxVisibility[this.state.selectedItem.key as keyof typeof CheckboxVisibility]}
+        />
+      </>
     );
   }
+
+  private _onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption) => {
+    this.setState({ selectedItem: item });
+  };
 
   private _onRenderDetailsHeader: IDetailsListProps['onRenderDetailsHeader'] = props => {
     if (props) {
@@ -88,9 +113,11 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         <div className={classNames.headerAndFooter}>
           <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
           <div className={classNames.headerLinkSet}>
-            <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
-              {props.selected ? 'Remove selection' : 'Select group'}
-            </Link>
+            {props.selectionMode !== SelectionMode.none ? (
+              <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
+                {props.selected ? 'Remove selection' : 'Select group'}
+              </Link>
+            ) : null}
             <Link className={classNames.headerLink} onClick={this._onToggleCollapse(props)}>
               {props.group!.isCollapsed ? 'Expand group' : 'Collapse group'}
             </Link>
