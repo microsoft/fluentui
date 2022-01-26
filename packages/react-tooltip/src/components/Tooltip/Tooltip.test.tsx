@@ -90,39 +90,6 @@ describe('Tooltip', () => {
     expect(target.getAttribute('aria-describedby')).toBe(tooltip.id);
   });
 
-  it("doesn't override trigger's aria-label", () => {
-    const result = render(
-      <Tooltip content="Label tooltip" relationship="label">
-        <button aria-label="test-label" />
-      </Tooltip>,
-    );
-
-    const target = result.getByRole('button');
-    expect(target.getAttribute('aria-label')).toBe('test-label');
-  });
-
-  it("doesn't override trigger's aria-labelledby", () => {
-    const result = render(
-      <Tooltip content="Label tooltip" relationship="label">
-        <button aria-labelledby="test-labelledby" />
-      </Tooltip>,
-    );
-
-    const target = result.getByRole('button');
-    expect(target.getAttribute('aria-labelledby')).toBe('test-labelledby');
-  });
-
-  it("doesn't override trigger's aria-describedby", () => {
-    const result = render(
-      <Tooltip content="Description tooltip" relationship="description">
-        <button aria-describedby="test-describedby" />
-      </Tooltip>,
-    );
-
-    const target = result.getByRole('button');
-    expect(target.getAttribute('aria-describedby')).toBe('test-describedby');
-  });
-
   it("doesn't set any aria attributes for relationship='inaccessible'", () => {
     const result = render(
       <Tooltip content="Inaccessible tooltip" relationship="inaccessible">
