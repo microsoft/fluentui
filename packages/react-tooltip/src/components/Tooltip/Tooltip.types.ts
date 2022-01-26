@@ -25,22 +25,18 @@ export type TooltipSlots = {
  */
 export type TooltipCommons = {
   /**
-   * A tooltip can appear with the default appearance or inverted.
-   * When not specified, the default appearance is used.
+   * The tooltip's visual appearance.
+   * * `normal` - Uses the theme's background and text colors.
+   * * `inverted` - Higher contrast variant that uses the theme's inverted colors.
+   *
+   * @defaultvalue normal
    */
-  appearance?: 'inverted';
+  appearance?: 'normal' | 'inverted';
 
   /**
    * The content displayed inside the tooltip.
    */
   content: React.ReactNode;
-
-  /**
-   * Color variant with inverted colors
-   *
-   * @defaultvalue false
-   */
-  inverted?: boolean;
 
   /**
    * Render an arrow pointing to the target element

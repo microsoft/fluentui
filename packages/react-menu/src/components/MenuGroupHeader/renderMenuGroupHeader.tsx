@@ -6,7 +6,7 @@ import { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.ty
  * Redefine the render function to add slots. Reuse the menugroupheader structure but add
  * slots to children.
  */
-export const renderMenuGroupHeader = (state: MenuGroupHeaderState) => {
+export const renderMenuGroupHeader_unstable = (state: MenuGroupHeaderState) => {
   const { slots, slotProps } = getSlots<MenuGroupHeaderSlots>(state);
 
   return <slots.root {...slotProps.root} />;

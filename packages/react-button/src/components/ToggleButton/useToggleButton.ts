@@ -1,6 +1,6 @@
 import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { useButton } from '../Button/useButton';
+import { useButton_unstable } from '../Button/useButton';
 import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 
 /**
@@ -9,11 +9,11 @@ import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types'
  * @param props - User provided props to the ToggleButton component.
  * @param ref - User provided ref to be passed to the ToggleButton component.
  */
-export const useToggleButton = (
+export const useToggleButton_unstable = (
   { checked, defaultChecked, ...props }: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
-  const buttonState = useButton(props, ref);
+  const buttonState = useButton_unstable(props, ref);
   const { role, onClick } = buttonState.root;
 
   const [checkedValue, setCheckedValue] = useControllableState({

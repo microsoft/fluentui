@@ -1,5 +1,5 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-import makeStylesTests from '@fluentui/react-conformance-make-styles';
+import griffelTests from '@fluentui/react-conformance-griffel';
 import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
 
 export function isConformant<TProps = {}>(
@@ -9,7 +9,7 @@ export function isConformant<TProps = {}>(
     asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
     skipAsPropTests: true,
-    extraTests: makeStylesTests as TestObject<TProps>,
+    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

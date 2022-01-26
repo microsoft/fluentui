@@ -47,6 +47,9 @@ export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primar
     [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
 }, Primary & 'root'> & PropsWithoutRef<Shorthands[Primary]>;
 
+// @public
+export type ComponentSlotProps<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? ObjectShorthandProps<Props> : never;
+
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
     components: {
@@ -303,6 +306,17 @@ export function useSSRContext(): SSRContextValue;
 
 // @public
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
+
+// @public
+export function useTriggerElement<TriggerProps extends React_2.HTMLProps<unknown>>(options: UseTriggerElementOptions<TriggerProps>): React_2.ReactNode;
+
+// @public (undocumented)
+export type UseTriggerElementOptions<TriggerProps> = {
+    children: React_2.ReactElement | ((props: TriggerProps) => React_2.ReactNode) | null | undefined;
+    ref: React_2.Ref<unknown> | undefined;
+    outerProps: React_2.HTMLProps<unknown>;
+    overrideProps: TriggerProps;
+};
 
 // @public
 export const useUnmount: (callback: () => void) => void;

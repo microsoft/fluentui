@@ -199,7 +199,7 @@ const useContentStyles = makeStyles({
 /**
  * Apply styling to the Tab slots based on the state
  */
-export const useTabStyles = (state: TabState): TabState => {
+export const useTabStyles_unstable = (state: TabState): TabState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();

@@ -6,7 +6,10 @@ import type { AccordionHeaderState, AccordionHeaderSlots, AccordionHeaderContext
 /**
  * Function that renders the final JSX of the component
  */
-export const renderAccordionHeader = (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => {
+export const renderAccordionHeader_unstable = (
+  state: AccordionHeaderState,
+  contextValues: AccordionHeaderContextValues,
+) => {
   const { slots, slotProps } = getSlots<AccordionHeaderSlots>(state);
 
   return (
@@ -15,7 +18,7 @@ export const renderAccordionHeader = (state: AccordionHeaderState, contextValues
         <slots.button {...slotProps.button}>
           {state.expandIconPosition === 'start' && <slots.expandIcon {...slotProps.expandIcon} />}
           <slots.icon {...slotProps.icon} />
-          <slots.children {...slotProps.children} />
+          {slotProps.root.children}
           {state.expandIconPosition === 'end' && <slots.expandIcon {...slotProps.expandIcon} />}
         </slots.button>
       </slots.root>

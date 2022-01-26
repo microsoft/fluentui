@@ -1,4 +1,4 @@
-import { DEFINITION_LOOKUP_TABLE, CSSClasses } from '@fluentui/make-styles';
+import { DEFINITION_LOOKUP_TABLE, CSSClasses } from '@griffel/core';
 
 export function print(val: unknown) {
   /**

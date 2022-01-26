@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use Griffel packages",
+  "packageName": "@fluentui/react-text",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

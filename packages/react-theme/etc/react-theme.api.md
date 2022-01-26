@@ -202,6 +202,7 @@ export type ColorTokens = {
     colorCompoundBrandForeground1Pressed: string;
     colorBrandForeground1: string;
     colorBrandForeground2: string;
+    colorNeutralForeground1Static: string;
     colorNeutralForegroundInverted: string;
     colorNeutralForegroundInvertedHover: string;
     colorNeutralForegroundInvertedPressed: string;
@@ -362,9 +363,6 @@ export type LineHeightTokens = {
     lineHeightHero900: string;
     lineHeightHero1000: string;
 };
-
-// @public (undocumented)
-export function mergeThemes(a: Theme | undefined, b: PartialTheme | Theme | undefined): Theme;
 
 // @public (undocumented)
 export type PartialTheme = Partial<Theme>;
