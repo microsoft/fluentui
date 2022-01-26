@@ -60,9 +60,9 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     truncated,
     dismissButtonAriaLabel,
     messageBarIconProps,
-    overflowButtonTitle,
     role,
     delayedRender = true,
+    expandButtonProps,
   } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
@@ -134,7 +134,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
                 iconProps={expandIconProps}
                 ariaLabel={overflowButtonAriaLabel}
                 aria-expanded={expandSingleLine}
-                title={overflowButtonTitle}
+                {...expandButtonProps}
               />
             </div>
           )

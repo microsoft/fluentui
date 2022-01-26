@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseButton, Button } from '../../Button';
+import { BaseButton, IButtonProps } from '../../Button';
 import type { ITheme, IStyle } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
@@ -66,6 +66,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
 
   /**
    * Aria label on overflow button if truncated is defined.
+   * @deprecated Use `expandButtonProps` instead.
    */
   overflowButtonAriaLabel?: string;
 
@@ -97,9 +98,9 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
   messageBarIconProps?: IIconProps;
 
   /**
-   *  Tooltip message on overflow icon button when MessageBar is truncated.
+   *  Button props that can be applied to the expand button of the MessageBar.
    */
-  overflowButtonTitle?: string;
+  expandButtonProps?: IButtonProps;
 
   /**
    * Custom role to apply to the MessageBar.
