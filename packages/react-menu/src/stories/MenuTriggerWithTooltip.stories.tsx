@@ -6,7 +6,7 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../index';
 
 export const MenuTriggerWithTooltip = () => (
   <Menu>
-    <Tooltip content="This is a tooltip">
+    <Tooltip content="This is a tooltip" relationship="description">
       <MenuTrigger>
         <Button>Toggle menu</Button>
       </MenuTrigger>
