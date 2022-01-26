@@ -2,7 +2,7 @@
   "name": "@fluentui/react-spinner",
   "version": "9.0.0-beta.5",
   "private": true,
-  "description": "Converged Spinner component",
+  "description": "Spinner component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
