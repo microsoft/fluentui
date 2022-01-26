@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SpinnerState } from './Spinner.types';
 
+export const spinnerClassName = 'fui-Spinner';
 /**
  * Styles for the root slot
  */
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(spinnerClassName, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
