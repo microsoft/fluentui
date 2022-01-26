@@ -20,11 +20,6 @@ const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardS
 
 const COMPONENT_NAME = 'DocumentCard';
 
-interface IDocumentCardTitleParentProps {
-  role?: string;
-  tabIndex?: number;
-}
-
 /**
  * {@docCategory DocumentCard}
  */
@@ -127,7 +122,13 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   };
 }
 
-function passPropsToTitle(children: React.ReactNode, addedProps: IDocumentCardTitleParentProps): React.ReactNode {
+function passPropsToTitle(
+  children: React.ReactNode,
+  addedProps: {
+    role?: string;
+    tabIndex?: number;
+  },
+): React.ReactNode {
   return React.Children.map(children, child => {
     if (!React.isValidElement(child)) {
       return child;
