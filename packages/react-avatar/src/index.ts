@@ -1,2 +1,2 @@
 export * from './Avatar';
-export * from './utils';
+export * from './utils/index';
