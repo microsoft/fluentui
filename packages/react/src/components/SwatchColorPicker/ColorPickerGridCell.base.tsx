@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ITheme, mergeStyleSets, IProcessedStyleSet } from '../../Styling';
+import { mergeStyleSets } from '../../Styling';
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
 import { getColorFromString } from '../../Color';
 import { ButtonGridCell } from '../../utilities/ButtonGrid/ButtonGridCell';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
-import { IButtonClassNames } from '../Button/BaseButton.classNames';
-import {
+import type { ITheme, IProcessedStyleSet } from '../../Styling';
+import type { IButtonClassNames } from '../Button/BaseButton.classNames';
+import type {
   IColorCellProps,
   IColorPickerGridCellProps,
   IColorPickerGridCellStyleProps,
@@ -68,6 +69,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     item,
     // eslint-disable-next-line deprecation/deprecation
     idPrefix = props.id,
+    isRadio,
     selected = false,
     disabled = false,
     styles,
@@ -109,16 +111,26 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     );
   };
 
+  const cellSemantics = isRadio
+    ? {
+        role: 'radio',
+        'aria-checked': selected,
+        selected: undefined,
+      }
+    : {
+        role: 'gridcell',
+        selected: selected,
+      };
+
   return (
     <ButtonGridCell
       item={item}
       id={`${idPrefix}-${item.id}-${item.index}`}
       key={item.id}
       disabled={disabled}
-      role={'gridcell'}
+      {...cellSemantics}
       // eslint-disable-next-line react/jsx-no-bind
       onRenderItem={onRenderColorOption}
-      selected={selected}
       onClick={onClick}
       onHover={onHover}
       onFocus={onFocus}

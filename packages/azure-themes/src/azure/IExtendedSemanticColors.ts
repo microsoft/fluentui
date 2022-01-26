@@ -20,6 +20,14 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   buttonTextDisabled: string;
   buttonTextHovered: string;
   buttonTextPressed: string;
+  calendarBackground: string;
+  calendarTextRest: string;
+  calendarTextHover: string;
+  calendarTextDisabled: string;
+  calendarTextOutside: string;
+  calendarBackgroundBorder: string;
+  calendarBackgroundSelected: string;
+  calendarBackgroundHover: string;
   checkboxBackgroundChecked: string;
   checkboxBackgroundHovered: string;
   checkBoxBorder: string;
@@ -80,6 +88,10 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   listItemBackgroundHovered: string;
   listItemBackgroundSelected: string;
   listItemBackgroundSelectedHovered: string;
+  listLinkHovered: string;
+  listLinkRowHovered: string;
+  listLinkRowSelected: string;
+  listLinkRowSelectedHovered: string;
   linkBorderStyle: string;
   listText: string;
   listUnderline: string;
@@ -107,6 +119,12 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   radioButtonThumbCheckedDisabled: string;
   rowBorder: string;
   rowFocus: string;
+  sliderActiveBackground: string;
+  sliderInActiveHover: string;
+  sliderActiveHover: string;
+  sliderActivePressed: string;
+  sliderDisabledActiveBackground: string;
+  sliderDisabledInActiveBackground: string;
   statusDefaultBackground: string;
   statusDefaultBorder: string;
   statusErrorBackground: string;

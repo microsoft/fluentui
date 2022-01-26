@@ -34,6 +34,8 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       borderPadding: borderWidth,
     });
 
+    const toggleButtonColorHover = () => (p.primary ? v.toggleButtonPrimaryHoverColor : v.toggleButtonColorHover);
+
     return {
       height: v.toggleButtonHeight,
       minWidth: v.toggleButtonHeight,
@@ -52,10 +54,14 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       borderWidth,
       borderStyle: 'solid',
       borderColor: v.toggleButtonBorderColor,
-      boxShadow: v.toggleButtonBoxShadow,
-
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
+      borderLeftColor: 'transparent',
+
+      boxShadow: p.primary ? v.toggleButtonPrimaryBoxShadow : v.toggleButtonBoxShadow,
+      ...((p.flat || p.size === 'small' || p.disabled) && {
+        boxShadow: 'none',
+      }),
 
       ...getIconFillOrOutlineStyles({ outline: true }),
 
@@ -68,12 +74,16 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       },
 
       ':hover': {
-        ...getIconFillOrOutlineStyles({ outline: false }),
+        ...getIconFillOrOutlineStyles({ outline: true }),
+        color: toggleButtonColorHover(),
+        backgroundColor: v.toggleButtonBackgroundColorHover,
+        borderTopColor: v.toggleButtonBorderColorHover,
+        borderRightColor: v.toggleButtonBorderColorHover,
+        borderBottomColor: v.toggleButtonBorderColorHover,
+        // ':before' styles apply to the content (chevron) part of Toggle button
         ':before': {
-          ...getIndicatorStyles(v.toggleButtonColorHover, false, v.toggleButtonIndicatorSize),
+          ...getIndicatorStyles(toggleButtonColorHover(), true, v.toggleButtonIndicatorSize),
         },
-        color: v.toggleButtonColorHover,
-        background: v.toggleButtonBackgroundColorHover,
       },
 
       ':active': {
@@ -99,9 +109,8 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       ...(p.primary && {
         color: v.toggleButtonPrimaryColor,
         backgroundColor: v.toggleButtonPrimaryBackgroundColor,
-        borderColor: v.toggleButtonPrimaryBorderColor,
-        boxShadow: v.toggleButtonPrimaryBoxShadow,
         borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
+        borderColor: v.toggleButtonPrimaryBorderColor,
 
         ':active': {
           backgroundColor: v.toggleButtonPrimaryBackgroundColorActive,
@@ -139,7 +148,6 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
         height: v.smallDimension,
         width: v.smallDimension,
         minWidth: v.smallMinWidth,
-        boxShadow: v.smallBoxShadow,
       }),
     };
   },

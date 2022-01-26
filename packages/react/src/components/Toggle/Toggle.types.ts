@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IRefObject, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
 
 /**
  * {@docCategory Toggle}

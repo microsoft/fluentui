@@ -30,6 +30,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -59,17 +60,18 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -94,17 +96,18 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -175,6 +178,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first"
@@ -231,7 +235,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -264,6 +267,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="second"
@@ -320,7 +324,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -385,6 +388,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -414,17 +418,18 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               data-is-focusable={true}
               id="_Pie_10first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -449,17 +454,18 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               data-is-focusable={true}
               id="_Pie_10second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -530,6 +536,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first"
@@ -586,7 +593,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -619,6 +625,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="second"
@@ -675,7 +682,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -740,6 +746,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -769,17 +776,18 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_4first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -804,17 +812,18 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_4second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -861,6 +870,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -890,17 +900,18 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_7first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -925,17 +936,18 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_7second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
@@ -1006,6 +1018,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first"
@@ -1062,7 +1075,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1095,6 +1107,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="second"
@@ -1151,7 +1164,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1216,6 +1228,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -1245,23 +1258,24 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               data-is-focusable={true}
               id="_Pie_13first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
               y={5}
             >
-              1000
+              1,000
             </text>
           </g>
           <g>
@@ -1282,23 +1296,24 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               data-is-focusable={true}
               id="_Pie_13second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
                   }
               textAnchor="middle"
               y={5}
             >
-              1000
+              1,000
             </text>
           </g>
         </g>
@@ -1365,6 +1380,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first"
@@ -1421,7 +1437,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1454,6 +1469,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="second"
@@ -1510,7 +1526,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

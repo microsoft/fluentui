@@ -8,6 +8,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -97,7 +98,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         >
           <button
             aria-checked={false}
-            aria-labelledby="Toggle1-label Toggle1-stateText"
+            aria-labelledby="Toggle1-label"
             checked={false}
             className=
                 ms-Toggle-background
@@ -336,6 +337,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
       >
         <div
           aria-hidden={true}
+          data-is-focus-trap-zone-bumper={true}
           data-is-visible={true}
           style={
             Object {
@@ -426,7 +428,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             >
               <button
                 aria-checked={false}
-                aria-labelledby="Toggle6-label Toggle6-stateText"
+                aria-labelledby="Toggle6-label"
                 checked={false}
                 className=
                     ms-Toggle-background
@@ -665,6 +667,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           >
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -755,7 +758,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 >
                   <button
                     aria-checked={false}
-                    aria-labelledby="Toggle11-label Toggle11-stateText"
+                    aria-labelledby="Toggle11-label"
                     checked={false}
                     className=
                         ms-Toggle-background
@@ -991,6 +994,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             </div>
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -1007,6 +1011,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           >
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -1097,7 +1102,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 >
                   <button
                     aria-checked={false}
-                    aria-labelledby="Toggle16-label Toggle16-stateText"
+                    aria-labelledby="Toggle16-label"
                     checked={false}
                     className=
                         ms-Toggle-background
@@ -1333,6 +1338,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             </div>
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -1346,6 +1352,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         </div>
         <div
           aria-hidden={true}
+          data-is-focus-trap-zone-bumper={true}
           data-is-visible={true}
           style={
             Object {
@@ -1362,6 +1369,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
       >
         <div
           aria-hidden={true}
+          data-is-focus-trap-zone-bumper={true}
           data-is-visible={true}
           style={
             Object {
@@ -1451,7 +1459,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             >
               <button
                 aria-checked={false}
-                aria-labelledby="Toggle21-label Toggle21-stateText"
+                aria-labelledby="Toggle21-label"
                 checked={false}
                 className=
                     ms-Toggle-background
@@ -1687,6 +1695,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         </div>
         <div
           aria-hidden={true}
+          data-is-focus-trap-zone-bumper={true}
           data-is-visible={true}
           style={
             Object {
@@ -1700,6 +1709,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Separator, mergeStyles } from '@fluentui/react';
 
 const verticalStyles = mergeStyles({
@@ -13,7 +13,7 @@ const horizontalStyles = mergeStyles({
 });
 
 storiesOf('Separator', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
@@ -26,7 +26,7 @@ storiesOf('Separator', module)
         <Separator>Today</Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Horizontal Start Aligned',
@@ -35,7 +35,7 @@ storiesOf('Separator', module)
         <Separator alignContent="start">Today</Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Horizontal End Aligned',
@@ -44,7 +44,7 @@ storiesOf('Separator', module)
         <Separator alignContent="end">Today</Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Vertical Center Aligned',
@@ -53,7 +53,7 @@ storiesOf('Separator', module)
         <Separator vertical>Today</Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Vertical Start Aligned',
@@ -64,7 +64,7 @@ storiesOf('Separator', module)
         </Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Vertical End Aligned',
@@ -75,5 +75,5 @@ storiesOf('Separator', module)
         </Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

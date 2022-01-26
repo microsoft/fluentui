@@ -1,7 +1,7 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
-import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 import { getRTL } from '../../../Utilities';
+import type { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
 const GlobalClassNames = {
   root: 'ms-TagItem',
@@ -38,7 +38,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         minWidth: 0, // needed to prevent long tags from overflowing container
         borderRadius: effects.roundedCorner2,
         color: semanticColors.inputText,
-        background: !selected || disabled ? palette.neutralLighter : palette.themePrimary,
+        background: palette.neutralLighter,
         selectors: {
           ':hover': [
             !disabled &&
@@ -52,7 +52,12 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
                 },
               },
             disabled && { background: palette.neutralLighter },
-            selected && !disabled && { background: palette.themePrimary },
+          ],
+          ':focus-within': [
+            !disabled && {
+              background: palette.themePrimary,
+              color: palette.white,
+            },
           ],
           [HighContrastSelector]: {
             border: `1px solid ${!selected ? 'WindowText' : 'WindowFrame'}`,
@@ -66,13 +71,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           },
         },
       },
-      selected &&
-        !disabled && [
-          classNames.isSelected,
-          {
-            color: palette.white,
-          },
-        ],
+      selected && !disabled && [classNames.isSelected],
       className,
     ],
     text: [
@@ -107,18 +106,17 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
             background: palette.neutralQuaternaryAlt,
             color: palette.neutralPrimary,
           },
+          ':focus': {
+            color: palette.white,
+            background: palette.themePrimary,
+          },
+          ':focus:hover': {
+            color: palette.white,
+            background: palette.themeDark,
+          },
           ':active': {
             color: palette.white,
             backgroundColor: palette.themeDark,
-          },
-        },
-      },
-      selected && {
-        color: palette.white,
-        selectors: {
-          ':hover': {
-            color: palette.white,
-            background: palette.themeDark,
           },
         },
       },

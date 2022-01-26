@@ -72,6 +72,7 @@ const excludedExampleFiles: string[] = [
 
   'Card.Configure.Example.tsx', // too many unrelated components, and covered by other examples
   'DetailsList.DragDrop.Example.tsx',
+  'DetailsList.KeyboardAccessibleResizeAndReorder.Example.tsx',
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
   'List.Basic.Example.tsx',
@@ -91,6 +92,7 @@ const excludedComponents = [
   'ContextualMenu',
   'HoverCard',
   'MarqueeSelection',
+  'MessageBar',
   'Modal',
   'Overlay',
   'Panel',
@@ -118,21 +120,18 @@ function setCacheFullWarning(enabled: boolean) {
 }
 
 function getPackageAndExampleName(examplePath: string): [string, string] {
-  return [examplePath.replace(/\\/g, '/').match(/\/src\/([^/]+)/)![1], path.basename(examplePath)];
+  // Examples should be under paths like:
+  // /<repoRoot>/packages/react-examples/src/some-pkg/SomeComponent/SomeComponent.Whatever.Example.tsx
+  const pathSegments = examplePath.split(/[\\/]/g);
+  // Use lastIndexOf in case anyone has all their repos under a folder called "src" (it happens)
+  const srcIndex = pathSegments.lastIndexOf('src');
+  const packageName = pathSegments[srcIndex + 1];
+  const exampleName = pathSegments.slice(-1)[0];
+  return [packageName, exampleName];
 }
 
 /** Run tests on these packages' examples */
-const includedPackages = [
-  'react',
-  'react-button',
-  'react-cards',
-  'react-checkbox',
-  'react-focus',
-  'react-link',
-  'react-slider',
-  'react-tabs',
-  'react-toggle',
-];
+const includedPackages = ['react', 'react-button', 'react-checkbox', 'react-focus', 'react-link'];
 
 declare const global: any;
 

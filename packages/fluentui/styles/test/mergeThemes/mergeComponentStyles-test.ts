@@ -153,7 +153,7 @@ describe('mergeComponentStyles', () => {
       const merged = mergeComponentStyles__PROD(target, source);
 
       const resolvedRoot = merged.root(styleParam);
-      expect(resolvedRoot._debug).toBe(undefined);
+      expect((resolvedRoot as any)._debug).toBe(undefined);
     });
 
     test('keeps references if possible', () => {
@@ -183,7 +183,7 @@ describe('mergeComponentStyles', () => {
       const merged = mergeComponentStyles__DEV(target, source);
 
       const resolvedRoot = merged.root(styleParam);
-      expect(resolvedRoot._debug).toBe(undefined);
+      expect((resolvedRoot as any)._debug).toBe(undefined);
     });
   });
 

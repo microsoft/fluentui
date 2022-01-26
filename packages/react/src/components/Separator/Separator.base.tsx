@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
-import { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './Separator.types';
+import type { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './Separator.types';
 
 const getClassNames = classNamesFunction<ISeparatorStyleProps, ISeparatorStyles>();
 

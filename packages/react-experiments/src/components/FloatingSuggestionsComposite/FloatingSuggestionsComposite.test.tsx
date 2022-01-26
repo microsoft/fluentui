@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { create, act } from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 import { BaseFloatingSuggestions } from './FloatingSuggestions';
 import * as ReactDOM from 'react-dom';
-import { IFloatingSuggestionItem } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import type { IFloatingSuggestionItem } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
+import type { IBaseFloatingSuggestionsProps } from './FloatingSuggestions.types';
 
 export interface ISimple {
   key: string;
@@ -95,7 +95,7 @@ describe('FloatingSuggestions', () => {
     // since callout mount a new react root with ReactDOM.
     //
     // see https://github.com/facebook/react/pull/12895
-    act(() => {
+    ReactTestUtils.act(() => {
       (ReactDOM.render(
         <BaseFloatingSuggestions
           suggestions={_suggestions}
@@ -130,7 +130,7 @@ describe('FloatingSuggestions', () => {
   });
 
   it('renders FloatingSuggestions and updates when suggestions are removed', () => {
-    act(() => {
+    ReactTestUtils.act(() => {
       (ReactDOM.render(
         <BaseFloatingSuggestions
           suggestions={_suggestions}
@@ -165,7 +165,7 @@ describe('FloatingSuggestions', () => {
 
   it('shows no suggestions when no suggestions are provided', () => {
     _suggestions = [];
-    act(() => {
+    ReactTestUtils.act(() => {
       (ReactDOM.render(
         <BaseFloatingSuggestions
           suggestions={_suggestions}

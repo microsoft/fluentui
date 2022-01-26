@@ -1,105 +1,113 @@
 import * as React from 'react';
 import { CollapsibleSection } from '@fluentui/react-experiments';
-import { css, FocusZone, Icon, IIconProps, ISearchBoxStyles, Link, SearchBox, getFocusStyle } from '@fluentui/react';
-import { IButtonStyles, IconButton } from '@fluentui/react/lib/Button';
 import {
-  isPageActive,
-  hasActiveChild,
-  INavPage,
-  INavProps,
-  NavSortType,
-} from '@fluentui/react-docsite-components/lib/index2';
-import { theme } from '@fluentui/react-docsite-components/lib/styles/theme';
+  css,
+  FocusZone,
+  Icon,
+  IIconProps,
+  ISearchBoxStyles,
+  Link,
+  SearchBox,
+  IContextualMenuProps,
+  DefaultPalette,
+  IButtonStyles,
+  IconButton,
+} from '@fluentui/react';
+import { isPageActive, hasActiveChild, INavPage, INavProps } from '@fluentui/react-docsite-components/lib/index2';
 import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Nav.module.scss';
-import { isLocal } from '../../utilities/index';
 
-export interface INavState {
+type NavSortState = 'alphabetized' | 'categories';
+
+interface INavState {
+  /** Search query as typed by the user. May contain special characters (don't use as a regex). */
   searchQuery: string;
-  defaultSortState: keyof typeof NavSortType;
-  sortState: keyof typeof NavSortType;
+  sortState: NavSortState;
 }
 
-export interface INavLocalItems {
-  defaultSortState?: NavSortType;
-}
+const searchBoxStyles: ISearchBoxStyles = {
+  iconContainer: {
+    marginRight: 8,
+  },
+};
+const sortButtonStyles: IButtonStyles = {
+  rootExpanded: {
+    // the website always uses the default palette, so this is okay
+    background: DefaultPalette.neutralLighter,
+  },
+  icon: {
+    position: 'absolute',
+    margin: 0,
+  },
+};
+const menuIconProps: IIconProps = { iconName: '' };
+
+const sortStateKey = 'navSortState';
 
 export class Nav extends React.Component<INavProps, INavState> {
-  private _localItems: INavLocalItems;
+  private _menuProps: IContextualMenuProps;
 
   public constructor(props: INavProps) {
     super(props);
 
-    const defaultSortState = getItem('defaultSortState');
-    this._localItems = defaultSortState
-      ? {
-          defaultSortState: NavSortType[defaultSortState as keyof typeof NavSortType],
-        }
-      : {};
-
     this.state = {
-      defaultSortState: this._localItems.defaultSortState
-        ? NavSortType[this._localItems.defaultSortState]
-        : NavSortType.categories,
       searchQuery: '',
-      sortState: this._localItems.defaultSortState
-        ? NavSortType[this._localItems.defaultSortState]
-        : NavSortType.categories,
+      sortState: (getItem(sortStateKey) as NavSortState | undefined) || 'categories',
+    };
+
+    this._menuProps = {
+      items: [
+        {
+          key: 'categories',
+          text: 'Categories',
+          iconProps: { iconName: 'GroupedList', styles: { root: { fontSize: 16 } } },
+          onClick: this._setSortState.bind(this, 'categories'),
+        },
+        {
+          key: 'alphabetized',
+          text: 'Alphabetical',
+          iconProps: { iconName: 'Ascending', styles: { root: { fontSize: 16 } } },
+          onClick: this._setSortState.bind(this, 'alphabetized'),
+        },
+      ],
     };
   }
 
-  public componentDidMount(): void {
-    !this._localItems.defaultSortState && setItem('defaultSortState', this.state.defaultSortState);
-  }
-
-  public shouldComponentUpdate(nextProps: INavProps): boolean {
-    if (nextProps.pages !== this.props.pages) {
-      this.setState({
-        searchQuery: '',
-        sortState: this.state.defaultSortState,
-      });
+  public componentDidUpdate(prevProps: INavProps) {
+    if (prevProps.pages !== this.props.pages) {
+      this.setState({ searchQuery: '' });
     }
-    return true;
   }
 
   public render(): JSX.Element | null {
-    const { pages } = this.props;
+    const { pages, searchablePageTitle } = this.props;
+    const { sortState } = this.state;
     if (!pages) {
       return null;
     }
 
-    return <div className={styles.navWrapper}>{this._renderPageNav(pages)}</div>;
-  }
-
-  private _renderPageNav = (pages: INavPage[]): JSX.Element => {
-    const { searchablePageTitle } = this.props;
-    const { sortState } = this.state;
-    let list: JSX.Element;
-    if (sortState === NavSortType.alphabetized && searchablePageTitle) {
-      list = this._renderSortedLinks(pages);
-    } else {
-      list = this._renderLinkList(pages, false);
-    }
-
     return (
-      <>
-        {searchablePageTitle && pages && pages.length > 1 && this._renderSearchBox(searchablePageTitle)}
+      <div className={styles.navWrapper}>
+        {searchablePageTitle && pages.length > 1 && this._renderSearchBox(searchablePageTitle)}
         <FocusZone>
           <nav className={styles.nav} role="navigation">
-            {list}
+            {sortState === 'alphabetized' && searchablePageTitle
+              ? this._renderSortedLinks(pages)
+              : this._renderLinkList(pages, false)}
           </nav>
         </FocusZone>
-      </>
+      </div>
     );
-  };
+  }
 
   private _renderLinkList = (pages: INavPage[], isSubMenu: boolean): JSX.Element => {
+    const { searchablePageTitle } = this.props;
     const { sortState } = this.state;
 
     const list = pages
       .filter((page: INavPage) => !page.isHiddenFromMainNav)
       .map((page: INavPage, linkIndex: number) => {
-        if (page.isCategory && page.isSearchable && sortState === NavSortType.alphabetized) {
+        if (page.isCategory && page.isSearchable && sortState === 'alphabetized') {
           return page.pages!.map((innerPage: INavPage, innerLinkIndex: number) =>
             this._renderLink(innerPage, innerLinkIndex),
           );
@@ -110,24 +118,24 @@ export class Nav extends React.Component<INavProps, INavState> {
       });
 
     return (
-      <ul className={css(styles.links, isSubMenu && styles.isSubMenu)} aria-label="Main website navigation">
+      <ul
+        className={css(styles.links, isSubMenu && styles.isSubMenu)}
+        aria-label={`${searchablePageTitle || ''} section navigation`}
+      >
         {list}
       </ul>
     );
   };
 
   private _renderLink = (page: INavPage, linkIndex: number): JSX.Element => {
-    const { searchQuery } = this.state;
+    const searchQuery = this.state.searchQuery.toLowerCase();
     const childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
-    const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
-    const title = page.title === 'Fabric' ? 'Home page' : page.title;
-    const searchRegEx = new RegExp(searchQuery, 'i');
     const text = page.title;
     let linkText = <>{text}</>;
 
     // Highlight search query within link.
     if (searchQuery) {
-      const matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
+      const matchIndex = text.toLowerCase().indexOf(searchQuery);
       if (matchIndex >= 0) {
         const before = text.slice(0, matchIndex);
         const match = text.slice(matchIndex, matchIndex + searchQuery.length);
@@ -153,16 +161,12 @@ export class Nav extends React.Component<INavProps, INavState> {
         )}
         key={linkIndex + page.url}
       >
-        {(!page.isUhfLink || isLocal) && searchRegEx.test(page.title) && (
-          <Link
-            href={page.url}
-            onClick={this._onLinkClick}
-            title={page.isExternal ? title + ' (External)' : title}
-            aria-label={page.isExternal ? ariaLabel + ' (External)' : ariaLabel}
-            target={page.isExternal && '_blank'}
-          >
+        {page.title.toLowerCase().indexOf(searchQuery) !== -1 && (
+          <Link href={page.url} onClick={this._onLinkClick} target={page.isExternal ? '_blank' : undefined}>
             {linkText}
-            {page.isExternal && <Icon iconName="NavigateExternalInline" className={styles.externalIcon} />}
+            {page.isExternal && (
+              <Icon iconName="NavigateExternalInline" className={styles.externalIcon} aria-label="(external)" />
+            )}
           </Link>
         )}
 
@@ -211,159 +215,57 @@ export class Nav extends React.Component<INavProps, INavState> {
       // Casing can affect sorting, so convert to lower case.
       const titleA = a.title.toLocaleLowerCase();
       const titleB = b.title.toLocaleLowerCase();
-      if (titleA > titleB) {
-        return 1;
-      }
-      if (titleA < titleB) {
-        return -1;
-      }
-      return 0;
+      return titleA > titleB ? 1 : titleA < titleB ? -1 : 0;
     });
 
     return this._renderLinkList(flatLinks, false);
   }
 
-  private _renderSearchBox = (pageTitle: string) => {
-    const { searchQuery, defaultSortState } = this.state;
-
-    const searchBoxStyles: ISearchBoxStyles = {
-      iconContainer: {
-        marginRight: 8,
-      },
-    };
-
-    const sortButtonStyles: IButtonStyles = {
-      root: {
-        ...getFocusStyle(theme, 1),
-      },
-      rootExpanded: {
-        background: theme.palette.neutralLighter,
-      },
-      icon: {
-        position: 'absolute',
-        margin: 0,
-      },
-    };
-
-    const menuIconProps: IIconProps = {
-      styles: {
-        root: { fontSize: 16 },
-      },
-    };
+  private _renderSearchBox = (sectionTitle: string) => {
+    const { searchQuery, sortState } = this.state;
 
     return (
       <div className={styles.searchBoxWrapper}>
         <SearchBox
           className={styles.searchBox}
-          placeholder={`Search ${pageTitle}`}
+          placeholder={`Search ${sectionTitle}`}
           value={searchQuery}
           onChange={this._onSearchQueryChanged}
-          onClick={this._onSearchBoxClick}
+          onClick={this.props.onSearchBoxClick}
           underlined={true}
           styles={searchBoxStyles}
-          ariaLabel={`Search ${pageTitle}`}
+          ariaLabel={`Search ${sectionTitle} pages`}
         />
         <IconButton
           className={styles.filterButton}
           title="Sort list"
           iconProps={{
-            iconName:
-              defaultSortState === NavSortType.alphabetized
-                ? 'Ascending'
-                : defaultSortState === NavSortType.categories
-                ? 'GroupedList'
-                : undefined,
+            iconName: sortState === 'alphabetized' ? 'Ascending' : 'GroupedList',
           }}
           styles={sortButtonStyles}
-          menuIconProps={{ iconName: '' }}
-          menuProps={{
-            items: [
-              {
-                key: 'categories',
-                text: 'Categories',
-                iconProps: { iconName: 'GroupedList', ...menuIconProps },
-                onClick: this._setSortTypeCategories,
-              },
-              {
-                key: 'alphabetized',
-                text: 'Alphabetical',
-                iconProps: { iconName: 'Ascending', ...menuIconProps },
-                onClick: this._setSortTypeAlphabetized,
-              },
-            ],
-          }}
+          menuIconProps={menuIconProps}
+          menuProps={this._menuProps}
         />
       </div>
     );
   };
 
-  private _onSearchBoxClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (this.props.onSearchBoxClick) {
-      this.props.onSearchBoxClick(ev);
-    }
-  };
-
   private _onSearchQueryChanged = (ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
-    this.setState(
-      {
-        searchQuery: newValue,
-        sortState: NavSortType.alphabetized,
-      },
-      () => {
-        if (this.state.searchQuery === '') {
-          this.setState({
-            sortState: this.state.defaultSortState,
-          });
-        }
-      },
-    );
+    this.setState({
+      searchQuery: newValue || '',
+      sortState: newValue ? 'alphabetized' : this.state.sortState,
+    });
   };
 
   private _hasMatchChild = (page: INavPage): boolean => {
-    const { searchQuery } = this.state;
-    const searchRegEx = new RegExp(searchQuery, 'i');
-    let hasMatchChild: boolean = searchRegEx.test(page.title);
-
-    if (page.pages) {
-      page.pages.forEach((childPage: INavPage) => {
-        if (searchRegEx.test(childPage.title)) {
-          hasMatchChild = true;
-        }
-
-        if (childPage.pages) {
-          childPage.pages.forEach((grandchildPage: INavPage) => {
-            if (searchRegEx.test(grandchildPage.title)) {
-              hasMatchChild = true;
-            }
-          });
-        }
-      });
-    }
-
-    return hasMatchChild;
+    const searchQuery = this.state.searchQuery.toLowerCase();
+    const checkPage = (pg: INavPage) =>
+      pg.title.toLowerCase().indexOf(searchQuery) !== -1 || (!!pg.pages && pg.pages.some(checkPage));
+    return checkPage(page);
   };
 
-  private _setSortTypeCategories = (): void => {
-    this.setState(
-      {
-        defaultSortState: NavSortType.categories,
-        sortState: NavSortType.categories,
-      },
-      () => {
-        localStorage.setItem('defaultSortState', NavSortType[NavSortType.categories]);
-      },
-    );
-  };
-
-  private _setSortTypeAlphabetized = (): void => {
-    this.setState(
-      {
-        defaultSortState: NavSortType.alphabetized,
-        sortState: NavSortType.alphabetized,
-      },
-      () => {
-        localStorage.setItem('defaultSortState', NavSortType[NavSortType.alphabetized]);
-      },
-    );
+  private _setSortState = (sortState: NavSortState) => {
+    setItem(sortStateKey, sortState);
+    this.setState({ sortState });
   };
 }

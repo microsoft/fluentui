@@ -6,6 +6,11 @@ const Types = () => (
   <ExampleSection title="Types">
     <ComponentExample title="Default" description="A default Chat." examplePath="components/Chat/Types/ChatExample" />
     <ComponentExample
+      title="Compact"
+      description="A compact Chat."
+      examplePath="components/Chat/Types/ChatExampleCompact"
+    />
+    <ComponentExample
       title="Content position"
       description="A ChatItem can position it's content at the start or at the end of the container."
       examplePath="components/Chat/Types/ChatExampleContentPosition"

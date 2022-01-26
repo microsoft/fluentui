@@ -31,16 +31,15 @@ pluginTester({
       fixture: path.resolve(fixturesDir, 'error-argument-count', 'fixture.js'),
       error: /function accepts only a single param/,
     },
-
     {
-      title: 'errors: throws on invalid slot',
-      fixture: path.resolve(fixturesDir, 'error-style-method', 'fixture.js'),
-      error: /Object methods are not supported for defining styles/,
-    },
-    {
-      title: 'errors: throws on invalid property',
-      fixture: path.resolve(fixturesDir, 'error-style-property', 'fixture.js'),
-      error: /Object methods are not supported for defining styles/,
+      title: 'errors: throws on invalid config',
+      fixture: path.resolve(fixturesDir, 'error-config-babel-options', 'fixture.ts'),
+      pluginOptions: {
+        babelOptions: {
+          plugins: {},
+        },
+      },
+      error: /Validation failed for passed config/,
     },
   ],
 

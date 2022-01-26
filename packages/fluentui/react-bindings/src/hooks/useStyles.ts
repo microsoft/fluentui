@@ -23,7 +23,7 @@ type UseStylesOptions<StyleProps extends PrimitiveProps> = {
    * A set props of that contain mapping for props that perform inline styles overrides, for example `styles` or
    * `variables`.
    */
-  mapPropsToInlineStyles?: () => InlineStyleProps<StyleProps>;
+  mapPropsToInlineStyles?: () => InlineStyleProps<any>;
 
   /**
    * All components props, should be used only if component was created by `compose()`. Will be replaced in future with
@@ -40,14 +40,14 @@ export type UseStylesResult = {
   styles: ComponentSlotStylesResolved;
 };
 
-type InlineStyleProps<StyleProps> = {
+type InlineStyleProps<ComponentProps> = {
   /** Additional CSS class name(s) to apply.  */
   className?: string;
 
   design?: ComponentDesignProp;
 
   /** Additional CSS styles to apply to the component instance.  */
-  styles?: ComponentSlotStyle<StyleProps, any>; // TODO: see if we can improve it
+  styles?: ComponentSlotStyle<ComponentProps, any>; // TODO: see if we can improve it
 
   /** Override for theme site variables to allow modifications of component styling via themes. */
   variables?: ComponentVariablesInput;
@@ -63,7 +63,7 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
     composeOptions,
     mapPropsToStyles = () => ({} as StyleProps),
-    mapPropsToInlineStyles = () => ({} as InlineStyleProps<StyleProps>),
+    mapPropsToInlineStyles = () => ({} as InlineStyleProps<any>),
     unstable_props = {},
     rtl = false,
   } = options;

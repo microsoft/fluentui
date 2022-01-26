@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { AlertStylesProps } from '../../../../components/Alert/Alert';
 import { AlertVariables } from './alertVariables';
 import { AlertDismissActionStylesProps } from '../../../../components/Alert/AlertDismissAction';
@@ -6,8 +6,7 @@ import { AlertDismissActionStylesProps } from '../../../../components/Alert/Aler
 export const getIntentColorsFromProps = (
   p: AlertDismissActionStylesProps,
   v: AlertVariables,
-  siteVars: SiteVariablesPrepared,
-): ICSSInJSStyle => {
+): Record<'color' | 'backgroundColor' | 'borderColor', string> => {
   if (p.danger) {
     return {
       color: v.dangerColor,
@@ -77,7 +76,7 @@ export const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVar
     visibility: 'visible',
     boxSizing: 'border-box',
 
-    ...getIntentColorsFromProps(p, v, siteVariables),
+    ...getIntentColorsFromProps(p, v),
 
     ...((p.attached === 'top' || p.attached === true) && {
       borderRadius: `${v.borderRadius} ${v.borderRadius} 0 0`,

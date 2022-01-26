@@ -8,6 +8,7 @@ import {
   useUnhandledProps,
   getElementType,
   childrenExist,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import {
@@ -19,6 +20,7 @@ import {
 } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
+import { MenuContext, MenuItemSubscribedValue } from './menuContext';
 
 export interface MenuItemContentProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /**
@@ -51,6 +53,10 @@ export const MenuItemContent = (React.forwardRef<HTMLSpanElement, MenuItemConten
   const { setStart, setEnd } = useTelemetry(MenuItemContent.displayName, context.telemetry);
   setStart();
 
+  const parentProps = (useContextSelectors(MenuContext, {
+    vertical: v => v.vertical,
+  }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+
   const { className, children, design, styles, variables, content, hasMenu, hasIcon, vertical, inSubmenu } = props;
 
   const { classes } = useStyles<MenuItemContentStylesProps>(MenuItemContent.displayName, {
@@ -58,7 +64,7 @@ export const MenuItemContent = (React.forwardRef<HTMLSpanElement, MenuItemConten
     mapPropsToStyles: () => ({
       hasMenu,
       hasIcon,
-      vertical,
+      vertical: vertical || parentProps.vertical,
       inSubmenu,
     }),
     mapPropsToInlineStyles: () => ({

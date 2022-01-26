@@ -1,26 +1,65 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { LabelState } from './Label.types';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import type { LabelState } from './Label.types';
+
+export const labelClassName = 'fui-Label';
 
 /**
- * Styles for the root slot
+ * Styles for the label
  */
 const useStyles = makeStyles({
-  root: theme => ({
-    // TODO Add default styles for the root element
-  }),
+  root: {
+    fontFamily: tokens.fontFamilyBase,
+    color: tokens.colorNeutralForeground1,
+  },
 
-  // TODO add additional classes for different states and/or slots
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+
+  required: {
+    color: tokens.colorPaletteRedForeground3,
+    paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
+  },
+
+  small: {
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+  },
+
+  medium: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+
+  large: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+
+  strong: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
 });
 
 /**
  * Apply styling to the Label slots based on the state
  */
-export const useLabelStyles = (state: LabelState): LabelState => {
+export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(
+    labelClassName,
+    styles.root,
+    state.disabled && styles.disabled,
+    styles[state.size],
+    state.strong && styles.strong,
+    state.root.className,
+  );
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.required) {
+    state.required.className = mergeClasses(styles.required, state.required.className);
+  }
 
   return state;
 };

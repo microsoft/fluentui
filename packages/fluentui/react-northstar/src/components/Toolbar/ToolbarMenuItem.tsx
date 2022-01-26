@@ -49,6 +49,7 @@ import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicat
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 import { ToolbarMenuItemContent } from './ToolbarMenuItemContent';
+import { ChevronEndIcon } from '@fluentui/react-icons-northstar';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -64,6 +65,9 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
 
   /** A toolbar item can show it is currently unable to be interacted with. */
   disabled?: boolean;
+
+  /** A toolbar item can be disabled and focusable at the same time. */
+  disabledFocusable?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
   icon?: ShorthandValue<ToolbarMenuItemIconProps>;
@@ -143,6 +147,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       children,
       content,
       disabled,
+      disabledFocusable,
       submenuIndicator,
       icon,
       popup,
@@ -182,6 +187,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
         active,
         menuOpen,
         disabled,
+        disabledFocusable,
         'aria-label': props['aria-label'],
         'aria-labelledby': props['aria-labelledby'],
         'aria-describedby': props['aria-describedby'],
@@ -207,7 +213,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        disabled,
+        disabled: disabled || disabledFocusable,
         hasContent: !!content,
       }),
       mapPropsToInlineStyles: () => ({
@@ -476,7 +482,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       'design',
       'styles',
       'variables',
-
+      'disabledFocusable',
       'active',
       'activeIndicator',
       'defaultMenuOpen',
@@ -501,6 +507,7 @@ ToolbarMenuItem.propTypes = {
   activeIndicator: customPropTypes.shorthandAllowingChildren,
   defaultMenuOpen: PropTypes.bool,
   disabled: PropTypes.bool,
+  disabledFocusable: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
   index: PropTypes.number,
   submenuIndicator: customPropTypes.shorthandAllowingChildren,
@@ -523,6 +530,6 @@ ToolbarMenuItem.defaultProps = {
   as: 'button',
   accessibility: toolbarMenuItemBehavior,
   activeIndicator: {},
-  submenuIndicator: {},
+  submenuIndicator: <ChevronEndIcon outline />,
   wrapper: { as: 'li' },
 };

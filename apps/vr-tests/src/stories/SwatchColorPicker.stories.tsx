@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { SwatchColorPicker, ISwatchColorPickerProps } from '@fluentui/react';
 
 const props: ISwatchColorPickerProps = {
@@ -15,7 +15,7 @@ const props: ISwatchColorPickerProps = {
   ],
 };
 storiesOf('SwatchColorPicker', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -44,7 +44,7 @@ storiesOf('SwatchColorPicker', module)
       {story()}
     </Screener>
   ))
-  .addStory('Circle', () => <SwatchColorPicker {...props} />, { rtl: true })
+  .addStory('Circle', () => <SwatchColorPicker {...props} />, { includeRtl: true })
   .addStory('Circle over 24px size', () => (
     <SwatchColorPicker {...props} cellHeight={35} cellWidth={35} />
   ))

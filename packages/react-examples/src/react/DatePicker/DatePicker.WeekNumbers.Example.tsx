@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, Dropdown, IDropdownOption, mergeStyles } from '@fluentui/react';
+import {
+  DatePicker,
+  DayOfWeek,
+  Dropdown,
+  IDropdownOption,
+  mergeStyles,
+  defaultDatePickerStrings,
+} from '@fluentui/react';
 
 const days: IDropdownOption[] = [
   { text: 'Sunday', key: DayOfWeek.Sunday },
@@ -16,7 +23,7 @@ export const DatePickerWeekNumbersExample: React.FunctionComponent = () => {
   const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
   const onDropdownChange = React.useCallback((event: React.FormEvent<HTMLDivElement>, option: IDropdownOption) => {
-    setFirstDayOfWeek((DayOfWeek as any)[option.key]);
+    setFirstDayOfWeek(option.key as number);
   }, []);
 
   return (
@@ -28,6 +35,8 @@ export const DatePickerWeekNumbersExample: React.FunctionComponent = () => {
         showMonthPickerAsOverlay={true}
         placeholder="Select a date..."
         ariaLabel="Select a date"
+        // DatePicker uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultDatePickerStrings}
       />
       <Dropdown
         label="Select the first day of the week"

@@ -37,7 +37,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
     id="swatchColorPicker0"
     role="grid"
   >
-    <tbody>
+    <tbody
+      role="rowgroup"
+    >
       <tr
         role="row"
       >
@@ -82,6 +84,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -176,6 +179,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="green"
             type="button"
@@ -253,6 +257,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -347,6 +352,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="orange"
             type="button"
@@ -424,6 +430,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -518,6 +525,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="blue"
             type="button"
@@ -595,6 +603,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -689,6 +698,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="red"
             type="button"
@@ -770,6 +780,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -864,6 +875,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="green"
             type="button"
@@ -941,6 +953,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1035,6 +1048,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="orange"
             type="button"
@@ -1112,6 +1126,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1206,6 +1221,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="blue"
             type="button"
@@ -1283,6 +1299,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1377,6 +1394,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="red"
             type="button"
@@ -1458,6 +1476,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1552,6 +1571,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="black"
             type="button"
@@ -1629,6 +1649,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1723,6 +1744,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="grey"
             type="button"
@@ -1800,6 +1822,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1894,6 +1917,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="white"
             type="button"
@@ -1971,6 +1995,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -2065,6 +2090,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="something"
             type="button"

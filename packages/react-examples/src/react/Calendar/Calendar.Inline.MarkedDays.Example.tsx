@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Calendar, ICalendarDayProps } from '@fluentui/react';
-import { addDays } from '@fluentui/date-time-utilities';
+import { Calendar, ICalendarDayProps, defaultCalendarStrings, addDays } from '@fluentui/react';
 
 const calendarDayProps: Partial<ICalendarDayProps> = {
   getMarkedDays: (startingDate, endingDate) => [addDays(startingDate, 3), addDays(startingDate, 4)],
@@ -18,6 +17,8 @@ export const CalendarInlineMarkedDaysExample = () => {
         value={selectedDate}
         // Add the marked days
         calendarDayProps={calendarDayProps}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
       />
     </div>
   );

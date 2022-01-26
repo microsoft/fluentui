@@ -1,5 +1,6 @@
 import { GlobalSettings, warn } from '@fluentui/utilities';
-import { IRawStyle, IFontFace, fontFace, mergeStyles, Stylesheet } from '@fluentui/merge-styles';
+import { fontFace, mergeStyles, Stylesheet } from '@fluentui/merge-styles';
+import type { IRawStyle, IFontFace } from '@fluentui/merge-styles';
 
 export interface IIconSubset {
   fontFace?: IFontFace;
@@ -8,6 +9,11 @@ export interface IIconSubset {
   };
 
   style?: IRawStyle;
+  /**
+   * Indicates to the icon renderer that it is safe to merge any props on the original `Icon` element
+   * onto the child content element registered for the icon which are valid for HTML images.
+   */
+  mergeImageProps?: boolean;
 }
 
 export interface IIconSubsetRecord extends IIconSubset {

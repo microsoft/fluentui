@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
-import { ITooltipProps, ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { ITooltipProps, ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
@@ -57,7 +57,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
         <div
           className={this._classNames.content}
           id={id}
-          role="tooltip"
           onMouseEnter={this.props.onMouseEnter}
           onMouseLeave={this.props.onMouseLeave}
         >

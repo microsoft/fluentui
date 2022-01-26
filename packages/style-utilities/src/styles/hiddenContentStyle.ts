@@ -1,4 +1,4 @@
-import { IRawStyle } from '@fluentui/merge-styles';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 export const hiddenContentStyle: IRawStyle = {
   position: 'absolute',
@@ -8,4 +8,5 @@ export const hiddenContentStyle: IRawStyle = {
   padding: 0,
   border: 0,
   overflow: 'hidden',
+  whiteSpace: 'nowrap',
 };

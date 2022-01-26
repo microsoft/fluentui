@@ -2,13 +2,13 @@ import {
   HighContrastSelector,
   AnimationVariables,
   normalize,
-  IStyle,
   getPlaceholderStyles,
   getGlobalClassNames,
   getInputFocusStyle,
 } from '../../Styling';
-import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getRTL } from '../../Utilities';
+import type { IStyle } from '../../Styling';
+import type { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',
@@ -19,7 +19,7 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
-  const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
+  const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation, showIcon } = props;
   const { palette, fonts, semanticColors, effects } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -77,6 +77,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
             },
             [`:hover .${classNames.icon}`]: {
               opacity: 0,
+              pointerEvents: 'none',
             },
           },
         },
@@ -90,6 +91,18 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           underlined ? 0 : effects.roundedCorner2,
           underlined ? 'borderBottom' : 'border',
         ),
+      ],
+      showIcon && [
+        {
+          selectors: {
+            [`:hover .${classNames.iconContainer}`]: {
+              width: 32,
+            },
+            [`:hover .${classNames.icon}`]: {
+              opacity: 1,
+            },
+          },
+        },
       ],
       disabled && [
         'is-disabled',
@@ -143,6 +156,10 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       !disableAnimation && {
         transition: `width ${AnimationVariables.durationValue1}`,
       },
+      showIcon &&
+        hasFocus && {
+          width: 32,
+        },
     ],
     icon: [
       classNames.icon,
@@ -151,10 +168,15 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       },
       hasFocus && {
         opacity: 0,
+        pointerEvents: 'none',
       },
       !disableAnimation && {
         transition: `opacity ${AnimationVariables.durationValue1} 0s`,
       },
+      showIcon &&
+        hasFocus && {
+          opacity: 1,
+        },
     ],
     clearButton: [
       classNames.clearButton,

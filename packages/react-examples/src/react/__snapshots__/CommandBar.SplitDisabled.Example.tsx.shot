@@ -67,6 +67,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
+              role="none"
             >
               <div
                 aria-expanded={false}
@@ -334,6 +335,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
+                    aria-label="More New options"
                     className=
                         ms-Button
                         {
@@ -490,11 +492,13 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
+              role="none"
             >
               <div
                 aria-disabled={true}
                 aria-expanded={false}
                 aria-haspopup={true}
+                aria-label="Upload"
                 className=
 
                     {
@@ -574,6 +578,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 >
                   <button
                     aria-disabled={true}
+                    aria-label="Upload"
                     className=
                         ms-Button
                         ms-Button--commandBar
@@ -749,6 +754,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     aria-disabled={true}
                     aria-expanded={false}
                     aria-haspopup={true}
+                    aria-label="More Upload options"
                     className=
                         ms-Button
                         is-disabled
@@ -921,6 +927,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
+              role="none"
             >
               <button
                 aria-disabled={true}
@@ -1102,6 +1109,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     display: inherit;
                     flex-shrink: 0;
                   }
+              role="none"
             >
               <div
                 className=
@@ -1114,6 +1122,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                role="none"
               >
                 <button
                   aria-disabled={true}

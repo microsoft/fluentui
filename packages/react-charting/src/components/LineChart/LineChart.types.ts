@@ -42,6 +42,11 @@ export interface ILineChartProps extends ICartesianChartProps {
    */
   onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
 
+  /**
+   * Callback for getting callout description message
+   */
+  getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+
   /*
    * Color fill bars for the chart,
    */
@@ -59,6 +64,11 @@ export interface ILineChartProps extends ICartesianChartProps {
    * @default false
    */
   allowMultipleShapesForPoints?: boolean;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];

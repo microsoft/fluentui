@@ -9,11 +9,13 @@ module.exports = {
   rules: {
     '@fluentui/ban-imports': ['error', { pathRegex: '^(\\.\\./)+Styling$', names: ['FontSizes'] }],
     '@typescript-eslint/no-explicit-any': 'off',
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: [...configHelpers.devDependenciesFiles, 'src/common/{shallowUntilTarget,testUtilities}.ts'],
-      },
-    ],
   },
+  overrides: [
+    {
+      files: [...configHelpers.devDependenciesFiles, 'src/common/{shallowUntilTarget,testUtilities}.ts'],
+      rules: {
+        'import/no-extraneous-dependencies': ['error', { packageDir: ['.', configHelpers.findGitRoot()] }],
+      },
+    },
+  ],
 };

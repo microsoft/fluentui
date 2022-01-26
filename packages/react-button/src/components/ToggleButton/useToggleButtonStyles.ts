@@ -1,382 +1,184 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { Theme } from '@fluentui/react-theme';
-import { useButtonStyles } from '../Button/useButtonStyles';
-import { ToggleButtonState, ToggleButtonStyleSelectors, ToggleButtonVariantTokens } from './ToggleButton.types';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles';
+import type { ToggleButtonState } from './ToggleButton.types';
 
-export const makeToggleButtonTokens = (theme: Theme): ToggleButtonVariantTokens => ({
-  checked: {
-    background: theme.alias.color.neutral.neutralBackground1Selected,
-    color: theme.alias.color.neutral.neutralForeground1,
+export const toggleButtonClassName = 'fui-ToggleButton';
 
-    borderColor: theme.alias.color.neutral.neutralStroke1,
-    borderWidth: theme.global.strokeWidth.thin,
+const useCheckedStyles = makeStyles({
+  // Base styles
+  base: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    color: tokens.colorNeutralForeground1,
 
-    // TODO: spec calls out "shadow 2 __lighter__", are we missing tokens?
-    shadow: theme.alias.shadow.shadow2,
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
 
-    hovered: {
-      background: theme.alias.color.neutral.neutralBackground1Hover,
-      borderColor: theme.alias.color.neutral.neutralStroke1Hover,
-      color: theme.alias.color.neutral.neutralForeground1,
-
-      // TODO: spec calls out "shadow 4 __lighter__", are we missing tokens?
-      shadow: theme.alias.shadow.shadow4,
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      color: tokens.colorNeutralForeground1,
     },
 
-    pressed: {
-      background: theme.alias.color.neutral.neutralBackground1Pressed,
-      borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
-      color: theme.alias.color.neutral.neutralForeground1,
-
-      // TODO: spec calls out "shadow 2 __lighter__", are we missing tokens?
-      shadow: theme.alias.shadow.shadow2,
+    ':active': {
+      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      color: tokens.colorNeutralForeground1,
     },
   },
-  checkedPrimary: {
-    background: theme.alias.color.brand.brandBackgroundSelected,
-    borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
 
-    // TODO: spec calls out "shadow 2 __brand__", are we missing tokens?
-    shadow: theme.alias.shadow.shadow2,
+  // Appearance variations
+  outline: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
 
-    hovered: {
-      background: theme.alias.color.brand.brandBackgroundHover,
-      borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-
-      // TODO: spec calls out "shadow 4 __brand__", are we missing tokens?
-      shadow: theme.alias.shadow.shadow4,
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
     },
 
-    pressed: {
-      background: theme.alias.color.brand.brandBackgroundPressed,
-      borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-
-      // TODO: spec calls out "shadow 2 __brand__", are we missing tokens?
-      shadow: theme.alias.shadow.shadow2,
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
   },
-  checkedSubtle: {
-    background: theme.alias.color.subtle.backgroundSelected,
-    borderColor: 'transparent',
-    color: theme.alias.color.neutral.brandForeground2Selected,
+  primary: {
+    backgroundColor: tokens.colorBrandBackgroundSelected,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForegroundOnBrand,
 
-    shadow: 'none',
-
-    hovered: {
-      background: theme.alias.color.subtle.backgroundHover,
-      borderColor: 'transparent',
-      color: theme.alias.color.neutral.brandForeground2Hover,
-
-      shadow: 'none',
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForegroundOnBrand,
     },
 
-    pressed: {
-      background: theme.alias.color.subtle.backgroundPressed,
-      borderColor: 'transparent',
-      color: theme.alias.color.neutral.brandForeground2Pressed,
-
-      shadow: 'none',
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForegroundOnBrand,
     },
   },
-  checkedTransparent: {
-    background: theme.alias.color.transparent.backgroundSelected,
-    borderColor: 'transparent',
-    color: theme.alias.color.neutral.brandForeground2Selected,
+  subtle: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2BrandSelected,
 
-    shadow: 'none',
-
-    hovered: {
-      background: theme.alias.color.transparent.backgroundHover,
-      borderColor: 'transparent',
-      color: theme.alias.color.neutral.brandForeground2Hover,
-
-      shadow: 'none',
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandHover,
     },
 
-    pressed: {
-      background: theme.alias.color.transparent.backgroundPressed,
-      borderColor: 'transparent',
-      color: theme.alias.color.neutral.brandForeground2Pressed,
-
-      shadow: 'none',
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
-  disabled: {
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
-    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+  transparent: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2BrandSelected,
 
-    shadow: 'none',
-
-    hovered: {
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
-
-      shadow: 'none',
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandHover,
     },
 
-    pressed: {
-      background: theme.alias.color.neutral.neutralBackgroundDisabled,
-      borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
-
-      shadow: 'none',
-    },
-  },
-  disabledPrimary: {
-    borderColor: 'transparent',
-
-    hovered: {
-      borderColor: 'transparent',
-    },
-
-    pressed: {
-      borderColor: 'transparent',
-    },
-  },
-  disabledSubtle: {
-    background: 'none',
-    borderColor: 'transparent',
-
-    hovered: {
-      background: 'none',
-      borderColor: 'transparent',
-    },
-
-    pressed: {
-      background: 'none',
-      borderColor: 'transparent',
-    },
-  },
-  disabledTransparent: {
-    background: 'none',
-    borderColor: 'transparent',
-
-    hovered: {
-      background: 'none',
-      borderColor: 'transparent',
-    },
-
-    pressed: {
-      background: 'none',
-      borderColor: 'transparent',
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
 });
 
-const useStyles = makeStyles({
-  rootChecked: theme => {
-    const toggleButtonTokens = makeToggleButtonTokens(theme);
+const useDisabledStyles = makeStyles({
+  // Base styles
+  base: {
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    color: tokens.colorNeutralForegroundDisabled,
 
-    return {
-      background: toggleButtonTokens.checked?.background,
-      color: toggleButtonTokens.checked?.color,
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      color: tokens.colorNeutralForegroundDisabled,
+    },
 
-      borderColor: toggleButtonTokens.checked?.borderColor,
-      borderWidth: toggleButtonTokens.checked?.borderWidth,
-
-      boxShadow: toggleButtonTokens.checked?.shadow,
-
-      ':hover': {
-        background: toggleButtonTokens.checked?.hovered?.background,
-        borderColor: toggleButtonTokens.checked?.hovered?.borderColor,
-        color: toggleButtonTokens.checked?.hovered?.color,
-
-        boxShadow: toggleButtonTokens.checked?.hovered?.shadow,
-      },
-
-      ':active': {
-        background: toggleButtonTokens.checked?.pressed?.background,
-        borderColor: toggleButtonTokens.checked?.pressed?.borderColor,
-        color: toggleButtonTokens.checked?.pressed?.color,
-
-        boxShadow: toggleButtonTokens.checked?.pressed?.shadow,
-      },
-    };
+    ':active': {
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      color: tokens.colorNeutralForegroundDisabled,
+    },
   },
-  rootCheckedPrimary: theme => {
-    const toggleButtonTokens = makeToggleButtonTokens(theme);
 
-    return {
-      background: toggleButtonTokens.checkedPrimary?.background,
-      borderColor: toggleButtonTokens.checkedPrimary?.borderColor,
-      color: toggleButtonTokens.checkedPrimary?.color,
-
-      boxShadow: toggleButtonTokens.checkedPrimary?.shadow,
-
-      ':hover': {
-        background: toggleButtonTokens.checkedPrimary?.hovered?.background,
-        borderColor: toggleButtonTokens.checkedPrimary?.hovered?.borderColor,
-        color: toggleButtonTokens.checkedPrimary?.hovered?.color,
-
-        boxShadow: toggleButtonTokens.checkedPrimary?.hovered?.shadow,
-      },
-
-      ':active': {
-        background: toggleButtonTokens.checkedPrimary?.pressed?.background,
-        borderColor: toggleButtonTokens.checkedPrimary?.pressed?.borderColor,
-        color: toggleButtonTokens.checkedPrimary?.pressed?.color,
-
-        boxShadow: toggleButtonTokens.checkedPrimary?.pressed?.shadow,
-      },
-    };
+  // Appearance variations
+  outline: {
+    /* No styles */
   },
-  rootCheckedSubtle: theme => {
-    const toggleButtonTokens = makeToggleButtonTokens(theme);
+  primary: {
+    ...shorthands.borderColor('transparent'),
 
-    return {
-      background: toggleButtonTokens.checkedSubtle?.background,
-      borderColor: toggleButtonTokens.checkedSubtle?.borderColor,
-      color: toggleButtonTokens.checkedSubtle?.color,
+    ':hover': {
+      ...shorthands.borderColor('transparent'),
+    },
 
-      boxShadow: toggleButtonTokens.checkedSubtle?.shadow,
-
-      ':hover': {
-        background: toggleButtonTokens.checkedSubtle?.hovered?.background,
-        borderColor: toggleButtonTokens.checkedSubtle?.hovered?.borderColor,
-        color: toggleButtonTokens.checkedSubtle?.hovered?.color,
-
-        boxShadow: toggleButtonTokens.checkedSubtle?.hovered?.shadow,
-      },
-
-      ':active': {
-        background: toggleButtonTokens.checkedSubtle?.pressed?.background,
-        borderColor: toggleButtonTokens.checkedSubtle?.pressed?.borderColor,
-        color: toggleButtonTokens.checkedSubtle?.pressed?.color,
-
-        boxShadow: toggleButtonTokens.checkedSubtle?.pressed?.shadow,
-      },
-    };
+    ':active': {
+      ...shorthands.borderColor('transparent'),
+    },
   },
-  rootCheckedTransparent: theme => {
-    const toggleButtonTokens = makeToggleButtonTokens(theme);
+  subtle: {
+    backgroundColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
 
-    return {
-      background: toggleButtonTokens.checkedTransparent?.background,
-      borderColor: toggleButtonTokens.checkedTransparent?.borderColor,
-      color: toggleButtonTokens.checkedTransparent?.color,
+    ':hover': {
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
+    },
 
-      boxShadow: toggleButtonTokens.checkedTransparent?.shadow,
-
-      ':hover': {
-        background: toggleButtonTokens.checkedTransparent?.hovered?.background,
-        borderColor: toggleButtonTokens.checkedTransparent?.hovered?.borderColor,
-        color: toggleButtonTokens.checkedTransparent?.hovered?.color,
-
-        boxShadow: toggleButtonTokens.checkedTransparent?.hovered?.shadow,
-      },
-
-      ':active': {
-        background: toggleButtonTokens.checkedTransparent?.pressed?.background,
-        borderColor: toggleButtonTokens.checkedTransparent?.pressed?.borderColor,
-        color: toggleButtonTokens.checkedTransparent?.pressed?.color,
-
-        boxShadow: toggleButtonTokens.checkedTransparent?.pressed?.shadow,
-      },
-    };
+    ':active': {
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
+    },
   },
-  rootDisabled: theme => {
-    const toggleButtonTokens = makeToggleButtonTokens(theme);
+  transparent: {
+    backgroundColor: 'transparent',
+    ...shorthands.borderColor('transparent'),
 
-    return {
-      background: toggleButtonTokens.disabled?.background,
-      borderColor: toggleButtonTokens.disabled?.borderColor,
-      color: toggleButtonTokens.disabled?.color,
+    ':hover': {
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
+    },
 
-      boxShadow: toggleButtonTokens.disabled?.shadow,
-
-      ':hover': {
-        background: toggleButtonTokens.disabled?.hovered?.background,
-        borderColor: toggleButtonTokens.disabled?.hovered?.borderColor,
-        color: toggleButtonTokens.disabled?.hovered?.color,
-
-        boxShadow: toggleButtonTokens.disabled?.hovered?.shadow,
-      },
-
-      ':active': {
-        background: toggleButtonTokens.disabled?.pressed?.background,
-        borderColor: toggleButtonTokens.disabled?.pressed?.borderColor,
-        color: toggleButtonTokens.disabled?.pressed?.color,
-
-        boxShadow: toggleButtonTokens.disabled?.pressed?.shadow,
-      },
-    };
-  },
-  rootDisabledPrimary: theme => {
-    const buttonTokens = makeToggleButtonTokens(theme);
-
-    return {
-      borderColor: buttonTokens.disabledPrimary?.borderColor,
-
-      ':hover': {
-        borderColor: buttonTokens.disabledPrimary?.hovered?.borderColor,
-      },
-
-      ':active': {
-        borderColor: buttonTokens.disabledPrimary?.pressed?.borderColor,
-      },
-    };
-  },
-  rootDisabledSubtle: theme => {
-    const buttonTokens = makeToggleButtonTokens(theme);
-
-    return {
-      background: buttonTokens.disabledSubtle?.background,
-      borderColor: buttonTokens.disabledSubtle?.borderColor,
-
-      ':hover': {
-        background: buttonTokens.disabledSubtle?.hovered?.background,
-        borderColor: buttonTokens.disabledSubtle?.hovered?.borderColor,
-      },
-
-      ':active': {
-        background: buttonTokens.disabledSubtle?.pressed?.background,
-        borderColor: buttonTokens.disabledSubtle?.pressed?.borderColor,
-      },
-    };
-  },
-  rootDisabledTransparent: theme => {
-    const buttonTokens = makeToggleButtonTokens(theme);
-
-    return {
-      background: buttonTokens.disabledTransparent?.background,
-      borderColor: buttonTokens.disabledTransparent?.borderColor,
-
-      ':hover': {
-        background: buttonTokens.disabledTransparent?.hovered?.background,
-        borderColor: buttonTokens.disabledTransparent?.hovered?.borderColor,
-      },
-
-      ':active': {
-        background: buttonTokens.disabledTransparent?.pressed?.background,
-        borderColor: buttonTokens.disabledTransparent?.pressed?.borderColor,
-      },
-    };
+    ':active': {
+      backgroundColor: 'transparent',
+      ...shorthands.borderColor('transparent'),
+    },
   },
 });
 
-export const useToggleButtonStyles = (state: ToggleButtonState, selectors: ToggleButtonStyleSelectors) => {
-  // Save the classnames used in useButtonStyles and undefine them at the state level so that they are always applied
-  // last.
-  const { className: rootClassName } = state;
-  useButtonStyles(state, selectors);
+export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
+  const checkedStyles = useCheckedStyles();
+  const disabledStyles = useDisabledStyles();
 
-  const styles = useStyles();
+  const { appearance, checked, disabled, disabledFocusable } = state;
 
-  state.className = mergeClasses(
-    state.className,
-    selectors.checked && styles.rootChecked,
-    selectors.checked && selectors.primary && styles.rootCheckedPrimary,
-    selectors.checked && selectors.subtle && styles.rootCheckedSubtle,
-    selectors.checked && selectors.transparent && styles.rootCheckedTransparent,
-    selectors.disabled && styles.rootDisabled,
-    selectors.disabled && selectors.primary && styles.rootDisabledPrimary,
-    selectors.disabled && selectors.subtle && styles.rootDisabledSubtle,
-    selectors.disabled && selectors.transparent && styles.rootDisabledTransparent,
-    rootClassName,
+  state.root.className = mergeClasses(
+    toggleButtonClassName,
+
+    // Checked styles
+    checked && checkedStyles.base,
+    appearance && checked && checkedStyles[appearance],
+
+    // Disabled styles
+    (disabled || disabledFocusable) && disabledStyles.base,
+    appearance && (disabled || disabledFocusable) && disabledStyles[appearance],
+
+    // User provided class name
+    state.root.className,
   );
+
+  useButtonStyles_unstable(state);
+
+  return state;
 };

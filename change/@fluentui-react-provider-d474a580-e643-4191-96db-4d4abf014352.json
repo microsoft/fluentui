@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "replace mergeThemes functionality from react-theme",
+  "packageName": "@fluentui/react-provider",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

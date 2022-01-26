@@ -6,7 +6,7 @@ const selectors = {
 };
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ['teams', 'teamsDark', 'teamsHighContrast', 'teamsV2', 'teamsDarkV2'],
   steps: [
     (builder, keys) => builder.keys('body', keys.tab).snapshot('Focuses last message'),
     (builder, keys) =>

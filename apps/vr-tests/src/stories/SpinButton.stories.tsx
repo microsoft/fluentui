@@ -1,7 +1,10 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth, modifyDeprecatedDecoratorStyles } from '../utilities/index';
+import {
+  TestWrapperDecoratorFixedWidth,
+  modifyDeprecatedDecoratorStyles,
+} from '../utilities/index';
 import {
   Fabric,
   SpinButton,
@@ -26,7 +29,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = {
 const iconProps = { iconName: 'IncreaseIndentLegacy' };
 
 storiesOf('SpinButton', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -62,14 +65,14 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} iconProps={iconProps} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 // The stories for label placement are separate since they don't need to include hover/click states
 storiesOf('SpinButton', module)
   // FIXME: SB6 duplicates same story ID decorators
   // This is a temporary fix until we migrate to CSF format duplication problem
-  // previously this used FabricDecorator
+  // previously this used TestWrapperDecorator
   .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'default' }))
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
@@ -83,7 +86,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} styles={styles} labelPosition={Position.end} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Label at end with icon',
@@ -92,7 +95,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} styles={styles} labelPosition={Position.end} iconProps={iconProps} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Label on top', () => (
     <Fabric>

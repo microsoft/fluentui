@@ -1,156 +1,73 @@
-import { css } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
-import { SystemColors } from '@microsoft/fast-web-utilities';
+import { css, ElementStyles } from '@microsoft/fast-element';
 import {
-  accentFillRestBehavior,
-  FillStateStyles,
+  display,
+  ElementDefinitionContext,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
+import {
   heightNumber,
-  neutralFillHoverBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFillRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
+  inputFilledForcedColorStyles,
+  inputFilledStyles,
+  inputForcedColorStyles,
+  inputStateStyles,
+  inputStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
+import { designUnit } from '../design-tokens';
 
-export const TextAreaFilledStyles = css`
-  :host([appearance='filled']) .control {
-    background: ${neutralFillRestBehavior.var};
-    border-color: transparent;
-  }
+export const textAreaFilledStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+  css`
+    ${inputFilledStyles(context, definition, '.control')}
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        ${inputFilledForcedColorStyles(context, definition, '.control')}
+      `,
+    ),
+  );
 
-  :host([appearance='filled']:hover:not([disabled])) .control {
-    background: ${neutralFillHoverBehavior.var};
-    border-color: transparent;
-  }
+export const textAreaStyles = (context, definition) =>
+  css`
+    ${display('inline-flex')}
 
-  :host([appearance='filled']:focus-within:not([disabled])) .control {
-    border-color: transparent;
-    box-shadow: none;
-  }
-  ${FillStateStyles}
-`.withBehaviors(
-  accentFillRestBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host([appearance='filled']:hover:not([disabled])) .control,
-      :host([appearance='filled']:focus-within:not([disabled])) .control {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:not([disabled]):active)::after,
-      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
-        border-bottom-color: ${SystemColors.Highlight};
-      }
-    `,
-  ),
-);
+    ${inputStyles(context, definition, '.control')}
 
-export const TextAreaStyles = css`
-    ${display('inline-flex')} :host {
-        font-family: var(--body-font);
-        outline: none;
-        user-select: none;
-        position: relative;
-        flex-direction: column;
-        vertical-align: bottom;
+    ${inputStateStyles(context, definition, '.control')}
+
+    :host {
+      flex-direction: column;
+      vertical-align: bottom;
     }
 
     .control {
-        box-sizing: border-box;
-        position: relative;
-        color: ${neutralForegroundRestBehavior.var};
-        background: ${neutralFillInputRestBehavior.var};
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
-        height: calc(${heightNumber} * 2px);
-        font: inherit;
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
-        padding: calc(var(--design-unit) * 1.5px) calc(var(--design-unit) * 2px + 1px);
-        width: 100%;
-        resize: none;
+      height: calc((${heightNumber} * 2) * 1px);
+      padding: calc(${designUnit} * 1.5px) calc(${designUnit} * 2px + 1px);
     }
 
-    .control:hover:enabled {
-        background: ${neutralFillInputHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
-    }
-
-    .control:hover,
-    .control:${focusVisible},
-    .control:disabled,
-    .control:active {
-        outline: none;
-    }
-
-    :host(:focus-within) .control {
-        border-color: ${neutralFocusBehavior.var};
-        box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
+    :host .control {
+      resize: none;
     }
 
     :host(.resize-both) .control {
-        resize: both;
+      resize: both;
     }
 
     :host(.resize-horizontal) .control {
-        resize: horizontal;
+      resize: horizontal;
     }
 
     :host(.resize-vertical) .control {
-        resize: vertical;
+      resize: vertical;
     }
-
-    .label__hidden {
-        display: none;
-        visibility: hidden;
-    }
-
-    .label {
-        display: block;
-        color: ${neutralForegroundRestBehavior.var};
-        cursor: pointer;
-        $font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
-        margin-bottom: 4px;
-    }
-
-    :host([disabled]) .label,
-    :host([readonly]) .label,
-    :host([readonly]) .control,
-    :host([disabled]) .control {
-        cursor: ${disabledCursor};
-    }
-    :host([disabled]) {
-        opacity: var(--disabled-opacity);
-    }
-`.withBehaviors(
-  appearanceBehavior('filled', TextAreaFilledStyles),
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host([disabled]) {
-        opacity: 1;
-      }
-      ::placeholder,
-      ::-webkit-input-placeholder {
-        color: ${SystemColors.FieldText};
-      }
-      :host([disabled]) ::placeholder,
-      :host([disabled]) ::-webkit-input-placeholder,
-      :host([disabled]) .label {
-        color: ${SystemColors.GrayText};
-      }
-    `,
-  ),
-);
+  `.withBehaviors(
+    appearanceBehavior('filled', textAreaFilledStyles(context, definition)),
+    forcedColorsStylesheetBehavior(
+      css`
+        ${inputForcedColorStyles(context, definition, '.control')}
+      `,
+    ),
+  );

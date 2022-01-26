@@ -95,7 +95,6 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
       const jsonTreeElement = fiberNavFindJSONTreeElement(jsonTree, fiberNav);
 
       const targetRect = targetElement.getBoundingClientRect();
-      // console.log('DropSelector:handleMouseMove', targetElement, targetRect, jsonTreeElement);
 
       mouseRef.current.style.left = `${e.x}px`;
       mouseRef.current.style.top = `${e.y}px`;
@@ -123,7 +122,7 @@ export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
             x: e.x,
             y: e.y,
           });
-          console.log('DropSelector bestIndex', bestIndex, jsonTreeElement);
+          // console.log('DropSelector bestIndex', bestIndex, jsonTreeElement);
 
           selectorRef.current.style.outline = '2px solid pink';
           onDropPositionChange(jsonTreeElement, bestIndex);

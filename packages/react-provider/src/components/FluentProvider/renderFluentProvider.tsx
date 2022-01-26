@@ -1,22 +1,29 @@
 import * as React from 'react';
-import { FluentProviderState } from './FluentProvider.types';
-import { ProviderContext, TooltipContext } from '@fluentui/react-shared-contexts';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { TextDirectionProvider } from '@griffel/react';
+import { ProviderContext, TooltipContext, ThemeContext, ThemeClassNameContext } from '@fluentui/react-shared-contexts';
+import { getSlots } from '@fluentui/react-utilities';
+import type { FluentProviderSlots, FluentProviderContextValues, FluentProviderState } from './FluentProvider.types';
 
 /**
  * Render the final JSX of FluentProvider
  */
-export const renderFluentProvider = (state: FluentProviderState) => {
-  const { dir, targetDocument, theme } = state;
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const value = React.useMemo(() => ({ dir, targetDocument }), [dir, targetDocument]);
+export const renderFluentProvider_unstable = (
+  state: FluentProviderState,
+  contextValues: FluentProviderContextValues,
+) => {
+  const { slots, slotProps } = getSlots<FluentProviderSlots>(state);
 
   return (
-    <ThemeProvider {...state} theme={theme} targetDocument={state.targetDocument}>
-      <ProviderContext.Provider value={value}>
-        <TooltipContext.Provider value={state.tooltipContext}>{state.children}</TooltipContext.Provider>
-      </ProviderContext.Provider>
-    </ThemeProvider>
+    <ProviderContext.Provider value={contextValues.provider}>
+      <ThemeContext.Provider value={contextValues.theme}>
+        <ThemeClassNameContext.Provider value={contextValues.themeClassName}>
+          <TooltipContext.Provider value={contextValues.tooltip}>
+            <TextDirectionProvider dir={contextValues.textDirection}>
+              <slots.root {...slotProps.root}>{state.root.children}</slots.root>
+            </TextDirectionProvider>
+          </TooltipContext.Provider>
+        </ThemeClassNameContext.Provider>
+      </ThemeContext.Provider>
+    </ProviderContext.Provider>
   );
 };

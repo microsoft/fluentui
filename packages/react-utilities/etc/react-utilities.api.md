@@ -4,10 +4,19 @@
 
 ```ts
 
+import { DispatchWithoutAction } from 'react';
 import * as React_2 from 'react';
 
 // @public
 export const anchorProperties: Record<string, number>;
+
+// @public
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
+
+// @public
+export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
+    as?: As;
+};
 
 // @public
 export const audioProperties: Record<string, number>;
@@ -18,23 +27,14 @@ export const baseElementEvents: Record<string, number>;
 // @public
 export const baseElementProperties: Record<string, number>;
 
-// @public (undocumented)
-export interface BaseSlots {
-    // (undocumented)
-    root: React_2.ElementType;
-}
-
 // @public
 export const buttonProperties: Record<string, number>;
 
 // @public
 export function canUseDOM(): boolean;
 
-// @public (undocumented)
-export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
-
 // @public
-export type ClassDictionary = Record<string, string>;
+export const clamp: (value: number, min: number, max: number) => number;
 
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
@@ -43,52 +43,29 @@ export const colGroupProperties: Record<string, number>;
 export const colProperties: Record<string, number>;
 
 // @public (undocumented)
-export interface ComponentProps {
-    // (undocumented)
-    as?: React_2.ElementType;
-    // (undocumented)
-    children?: React_2.ReactNode;
-    // (undocumented)
-    className?: string;
-}
+export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
+    [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+}, Primary & 'root'> & PropsWithoutRef<Shorthands[Primary]>;
 
 // @public
-export type ComponentState<Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandProps<Props, ShorthandPropNames> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandPropNames>, DefaultedPropNames>;
+export type ComponentSlotProps<Component extends React_2.ComponentType> = Component extends React_2.ComponentType<infer Props> ? ObjectShorthandProps<Props> : never;
 
 // @public (undocumented)
-export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue?: {}): React_2.Context<DescendantContextValue<DescendantType>>;
+export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
+    components: {
+        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    };
+} & Shorthands;
 
-// @public (undocumented)
-export function createNamedContext<ContextValueType>(name: string, defaultValue: ContextValueType): React_2.Context<ContextValueType>;
+// @public
+export type DefaultObjectShorthandProps = ObjectShorthandProps<Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+    as?: keyof JSX.IntrinsicElements;
+}>;
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
 export const defaultSSRContextValue: SSRContextValue;
-
-// @public (undocumented)
-export type Descendant<ElementType = HTMLElement> = {
-    element: SomeElement<ElementType> | null;
-    index: number;
-};
-
-// @public (undocumented)
-export interface DescendantContextValue<DescendantType extends Descendant> {
-    // (undocumented)
-    descendants: DescendantType[];
-    // (undocumented)
-    registerDescendant(descendant: DescendantType): void;
-    // (undocumented)
-    unregisterDescendant(element: DescendantType['element']): void;
-}
-
-// @public (undocumented)
-export const DescendantProvider: <DescendantType extends Descendant<HTMLElement>>({ context: Ctx, children, items, set, }: {
-    context: React_2.Context<DescendantContextValue<DescendantType>>;
-    children: React_2.ReactNode;
-    items: DescendantType[];
-    set: React_2.Dispatch<React_2.SetStateAction<DescendantType[]>>;
-}) => JSX.Element;
 
 // @public
 export const divProperties: Record<string, number>;
@@ -96,8 +73,10 @@ export const divProperties: Record<string, number>;
 // @public
 export const formProperties: Record<string, number>;
 
+// Warning: (ae-forgotten-export) The symbol "ObscureEventName" needs to be exported by the entry point index.d.ts
+//
 // @public
-export type GenericDictionary = Record<string, any>;
+export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
 
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -106,9 +85,25 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export const getSlots: (state: GenericDictionary, slotNames?: readonly string[] | undefined) => {
-    slots: Record<string, any>;
-    slotProps: Record<string, any>;
+export const getPartitionedNativeProps: ({ primarySlotTagName, props, excludedPropNames, }: {
+    primarySlotTagName: keyof JSX.IntrinsicElements;
+    props: Pick<React_2.HTMLAttributes<HTMLElement>, 'style' | 'className'>;
+    excludedPropNames?: string[] | undefined;
+}) => {
+    root: {
+        style: React_2.CSSProperties | undefined;
+        className: string | undefined;
+    };
+    primary: React_2.HTMLAttributes<any>;
+};
+
+// @public
+export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
+
+// @public
+export function getSlots<R extends ObjectShorthandPropsRecord>(state: ComponentState<R>): {
+    slots: Slots<R>;
+    slotProps: SlotProps<R>;
 };
 
 // @public
@@ -127,75 +122,83 @@ export const imgProperties: Record<string, number>;
 export const inputProperties: Record<string, number>;
 
 // @public
+export type IntrinsicShorthandProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
+    as?: DefaultAs;
+} & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
+    [As in AlternateAs]: {
+        as: As;
+    } & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[As]>>;
+}[AlternateAs];
+
+// @public
+export type IsSingleton<T extends string> = {
+    [K in T]: Exclude<T, K> extends never ? true : false;
+}[T];
+
+// @public
 export const labelProperties: Record<string, number>;
 
 // @public
 export const liProperties: Record<string, number>;
 
 // @public
-export const makeMergeProps: <TState>(options?: MergePropsOptions<TState>) => (target: TState, ...propSets: (Partial<TState> | undefined)[]) => TState;
-
-// @public @deprecated
-export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>> | undefined) => (target: GenericDictionary, ...propSets: (GenericDictionary | undefined)[]) => TState;
-
-// @public (undocumented)
-export type MergePropsOptions<TState> = {
-    deepMerge?: readonly (keyof TState)[];
-};
-
-// @public
 export const nullRender: () => null;
 
-// @public (undocumented)
-export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & Omit<ComponentProps, 'children'> & {
-    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+// @public
+export type ObjectShorthandProps<Props extends {
+    children?: React_2.ReactNode;
+} = {}> = Props & {
+    children?: Props['children'] | ShorthandRenderFunction<Props>;
 };
+
+// @public (undocumented)
+export type ObjectShorthandPropsRecord = Record<string, DefaultObjectShorthandProps | undefined>;
 
 // @public
 export const olProperties: Record<string, number>;
 
 // @public
-export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
+export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
+
+// @public
+export const onlyChild: <P>(child: boolean | React_2.ReactText | React_2.ReactFragment | React_2.ReactPortal | React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> | null | undefined) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
+export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 // @public
-export type RequiredProps<T, K extends keyof T> = Omit<T, K> & {
-    [P in K]-?: T[P];
-};
+export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public
 export function resetIdsForTests(): void;
 
 // @public
-export type ResolvedShorthandProps<T, K extends keyof T> = Omit<T, K> & {
-    [P in K]: T[P] extends ShorthandProps<infer U> ? ObjectShorthandProps<U> : T[P];
-};
+export function resolveShorthand<Props extends DefaultObjectShorthandProps, Required extends boolean = false>(value: ShorthandProps<Props>, options?: ResolveShorthandOptions<Props, Required>): Required extends false ? Props | undefined : Props;
 
-// @public
-export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof TProps>(props: TProps, shorthandPropNames: readonly TShorthandPropNames[]) => ResolvedShorthandProps<TProps, TShorthandPropNames>;
+// @public (undocumented)
+export type ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> = {
+    required?: Required;
+    defaultProps?: Props;
+};
 
 // @public
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
-export type ShorthandProps<TProps extends ComponentProps = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | boolean | number | null | undefined | ObjectShorthandProps<TProps>;
+export type ShorthandProps<Props extends DefaultObjectShorthandProps> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | Props;
 
 // @public (undocumented)
-export type ShorthandRenderFunction<TProps> = (Component: React_2.ElementType<TProps>, props: TProps) => React_2.ReactNode;
+export type ShorthandRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'children' | 'as'>) => React_2.ReactNode;
 
 // @public
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
 // @public (undocumented)
-export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React_2.HTMLAttributes<HTMLElement>> = {
-    [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
-} & {
-    root: TRootProps;
+export type Slots<S extends ObjectShorthandPropsRecord> = {
+    [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As> ? As : S[K] extends ObjectShorthandProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
 };
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
@@ -206,10 +209,9 @@ export const SSRContext: React_2.Context<SSRContextValue>;
 // Warning: (ae-internal-missing-underscore) The name "SSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export interface SSRContextValue {
-    // (undocumented)
+export type SSRContextValue = {
     current: number;
-}
+};
 
 // @public
 export const SSRProvider: React_2.FC;
@@ -230,45 +232,30 @@ export const thProperties: Record<string, number>;
 export const trProperties: Record<string, number>;
 
 // @public
+export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
+
+// @public
 export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];
 
 // @public
-export interface UseBooleanCallbacks {
-    setFalse: () => void;
+export type UseBooleanCallbacks = {
     setTrue: () => void;
+    setFalse: () => void;
     toggle: () => void;
-}
+};
 
 // @public
 export function useConst<T>(initialValue: T | (() => T)): T;
 
-// Warning: (ae-forgotten-export) The symbol "DefaultValue" needs to be exported by the entry point index.d.ts
-//
 // @public
-export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>) => void]>;
+export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
 
 // @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
-
-// @public
-export function useDescendant<DescendantType extends Descendant>(descendant: Omit<DescendantType, 'index'>, context: React_2.Context<DescendantContextValue<DescendantType>>, indexProp?: number): number;
-
-// @public
-export function useDescendantKeyDown<DescendantType extends Descendant, K extends keyof DescendantType = keyof DescendantType>(context: React_2.Context<DescendantContextValue<DescendantType>>, options: {
-    currentIndex: number | null | undefined;
-    key?: K | 'option';
-    filter?: (descendant: DescendantType) => boolean;
-    orientation?: 'vertical' | 'horizontal' | 'both';
-    rotate?: boolean;
-    rtl?: boolean;
-    callback(nextOption: DescendantType | DescendantType[K]): void;
-}): (event: React_2.KeyboardEvent) => void;
-
-// @public (undocumented)
-export function useDescendants<DescendantType extends Descendant>(ctx: React_2.Context<DescendantContextValue<DescendantType>>): DescendantType[];
-
-// @public (undocumented)
-export function useDescendantsInit<DescendantType extends Descendant>(): [DescendantType[], React_2.Dispatch<React_2.SetStateAction<DescendantType[]>>];
+export type UseControllableStateOptions<State> = {
+    defaultState?: State | (() => State);
+    state: State | undefined;
+    initialState: State;
+};
 
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
@@ -277,7 +264,7 @@ export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Ar
 export function useFirstMount(): boolean;
 
 // @public
-export function useForceUpdate(): () => void;
+export function useForceUpdate(): DispatchWithoutAction;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
@@ -292,16 +279,22 @@ export function useIsSSR(): boolean;
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
-export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
+export const useMount: (callback: () => void) => void;
 
 // @public (undocumented)
-export type UseOnClickOutsideOptions = {
+export type UseOnClickOrScrollOutsideOptions = {
     element: Document | undefined;
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
-    callback: (ev: MouseEvent | TouchEvent) => void;
     contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
     disabled?: boolean;
+    callback: (ev: MouseEvent | TouchEvent) => void;
 };
+
+// @public
+export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
+
+// @public
+export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
 
 // @public (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
@@ -312,12 +305,28 @@ export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType |
 export function useSSRContext(): SSRContextValue;
 
 // @public
-export const videoProperties: Record<string, number>;
+export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 
+// @public
+export function useTriggerElement<TriggerProps extends React_2.HTMLProps<unknown>>(options: UseTriggerElementOptions<TriggerProps>): React_2.ReactNode;
+
+// @public (undocumented)
+export type UseTriggerElementOptions<TriggerProps> = {
+    children: React_2.ReactElement | ((props: TriggerProps) => React_2.ReactNode) | null | undefined;
+    ref: React_2.Ref<unknown> | undefined;
+    outerProps: React_2.HTMLProps<unknown>;
+    overrideProps: TriggerProps;
+};
+
+// @public
+export const useUnmount: (callback: () => void) => void;
+
+// @public
+export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
-// lib/descendants/descendants.d.ts:64:5 - (ae-forgotten-export) The symbol "SomeElement" needs to be exported by the entry point index.d.ts
+// lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

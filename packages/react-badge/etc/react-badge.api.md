@@ -4,111 +4,103 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Badge: React_2.FunctionComponent<BadgeProps & React_2.RefAttributes<HTMLElement>>;
+export const Badge: ForwardRefComponent<BadgeProps>;
 
 // @public (undocumented)
-export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
+export const badgeClassName = "fui-Badge";
 
 // @public (undocumented)
-export interface BadgeProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
-    appearance?: BadgeAppearance;
-    icon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
-    iconPosition?: 'before' | 'after';
-    shape?: BadgeShape;
-    size?: BadgeSize;
-}
+export type BadgeCommons = {
+    appearance: 'filled' | 'ghost' | 'outline' | 'tint';
+    color: 'brand' | 'danger' | 'important' | 'informative' | 'severe' | 'subtle' | 'success' | 'warning';
+    iconPosition: 'before' | 'after';
+    shape: 'circular' | 'rounded' | 'square';
+    size: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+};
 
 // @public (undocumented)
-export type BadgeShape = 'rounded' | 'square' | 'circular';
+export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeCommons>;
+
+// @public (undocumented)
+export type BadgeSlots = {
+    root: Omit<IntrinsicShorthandProps<'div'>, 'color'>;
+    icon?: IntrinsicShorthandProps<'span'>;
+};
+
+// @public (undocumented)
+export type BadgeState = ComponentState<BadgeSlots> & BadgeCommons;
 
 // @public
-export const badgeShorthandProps: readonly ["icon"];
+export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 
 // @public (undocumented)
-export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+export const counterBadgeClassName = "fui-CounterBadge";
 
 // @public (undocumented)
-export interface BadgeState extends BadgeProps {
-    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
-    ref: React_2.RefObject<HTMLElement>;
-}
-
-// @public
-export const CounterBadge: React_2.ForwardRefExoticComponent<CounterBadgeProps & React_2.RefAttributes<HTMLElement>>;
-
-// @public (undocumented)
-export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
-
-// @public (undocumented)
-export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
-    appearance?: Extract<BadgeProps['appearance'], 'filled' | 'ghost'>;
-    color?: CounterBadgeColors;
-    count?: number;
-    dot?: boolean;
-    overflowCount?: number;
-    shape?: Extract<BadgeProps['shape'], 'rounded' | 'circular'>;
-    showZero?: boolean;
-}
-
-// @public
-export const counterBadgeShorthandProps: readonly ["icon"];
-
-// @public (undocumented)
-export interface CounterBadgeState extends BadgeState {
-    count: number;
-    dot: boolean;
+export type CounterBadgeCommons = {
     overflowCount: number;
+    count: number;
     showZero: boolean;
-}
-
-// @public
-export const PresenceBadge: React_2.ForwardRefExoticComponent<PresenceBadgeProps & React_2.RefAttributes<HTMLElement>>;
-
-// @public (undocumented)
-export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
-    outOfOffice?: boolean;
-    status?: PresenceBadgeStatus;
-}
-
-// @public
-export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[];
+    dot: boolean;
+    shape: 'circular' | 'rounded';
+    appearance: 'filled' | 'ghost';
+    color: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
+};
 
 // @public (undocumented)
-export interface PresenceBadgeState extends Omit<BadgeState, 'shape' | 'appearance'> {
-    outOfOffice: boolean;
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape' | 'color'> & Partial<CounterBadgeCommons>;
+
+// @public (undocumented)
+export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'shape' | 'color'> & CounterBadgeCommons;
+
+// @public
+export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
+
+// @public (undocumented)
+export const presenceBadgeClassName = "fui-PresenceBadge";
+
+// @public (undocumented)
+export type PresenceBadgeCommons = {
     status: PresenceBadgeStatus;
-}
+    outOfOffice: boolean;
+} & BadgeCommons;
+
+// @public (undocumented)
+export type PresenceBadgeProps = ComponentProps<Partial<Pick<BadgeSlots, 'root'>>> & Partial<Pick<PresenceBadgeCommons, 'status' | 'outOfOffice' | 'size'>>;
+
+// @public (undocumented)
+export type PresenceBadgeState = PresenceBadgeCommons & ComponentState<BadgeSlots>;
 
 // @public (undocumented)
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
 
 // @public (undocumented)
-export const renderBadge: (state: BadgeState) => JSX.Element;
+export const renderBadge_unstable: (state: BadgeState) => JSX.Element;
 
 // @public
-export const useBadge: (props: BadgeProps, ref: React_2.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => BadgeState;
+export const useBadge_unstable: (props: BadgeProps, ref: React_2.Ref<HTMLElement>) => BadgeState;
 
 // @public
-export const useBadgeStyles: (state: BadgeState) => BadgeState;
+export const useBadgeStyles_unstable: (state: BadgeState) => BadgeState;
 
 // @public
-export const useCounterBadge: (props: CounterBadgeProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CounterBadgeProps | undefined) => CounterBadgeState;
+export const useCounterBadge_unstable: (props: CounterBadgeProps, ref: React_2.Ref<HTMLElement>) => CounterBadgeState;
 
 // @public
-export const useCounterBadgeStyles: (state: CounterBadgeState) => CounterBadgeState;
+export const useCounterBadgeStyles_unstable: (state: CounterBadgeState) => CounterBadgeState;
 
 // @public
-export const usePresenceBadge: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PresenceBadgeProps | undefined) => PresenceBadgeState;
+export const usePresenceBadge_unstable: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLElement>) => PresenceBadgeState;
 
 // @public
-export const usePresenceBadgeStyles: (state: PresenceBadgeState) => PresenceBadgeState;
-
+export const usePresenceBadgeStyles_unstable: (state: PresenceBadgeState) => PresenceBadgeState;
 
 // (No @packageDocumentation comment for this package)
 

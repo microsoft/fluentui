@@ -7,7 +7,6 @@ import {
   KeyCodes,
   elementContains,
   getRTLSafeKeyCode,
-  IRenderFunction,
   classNamesFunction,
   memoizeFunction,
 } from '../../Utilities';
@@ -16,30 +15,19 @@ import {
   ColumnActionsMode,
   ConstrainMode,
   DetailsListLayoutMode,
-  IColumn,
-  IDetailsList,
-  IDetailsListProps,
-  IDetailsListStyles,
-  IDetailsListStyleProps,
   ColumnDragEndLocation,
+  IColumnDragDropDetails,
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
-import {
-  IDetailsHeader,
-  SelectAllVisibility,
-  IDetailsHeaderProps,
-  IColumnReorderHeaderProps,
-} from '../DetailsList/DetailsHeader.types';
-import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
+import { SelectAllVisibility } from '../DetailsList/DetailsHeader.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
-import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
-import { IFocusZone, FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
-import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../Selection';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 
 import { DragDropHelper } from '../../DragDrop';
-import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { List, IListProps, ScrollToMode } from '../../List';
+import { GroupedList } from '../../GroupedList';
+import { List, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -48,7 +36,25 @@ import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 import { composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
-import { IGroup } from '../GroupedList/index';
+import type { IRenderFunction } from '../../Utilities';
+import type {
+  IColumn,
+  IDetailsList,
+  IDetailsListProps,
+  IDetailsListStyles,
+  IDetailsListStyleProps,
+} from '../DetailsList/DetailsList.types';
+import type {
+  IDetailsHeader,
+  IDetailsHeaderProps,
+  IColumnReorderHeaderProps,
+} from '../DetailsList/DetailsHeader.types';
+import type { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
+import type { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
+import type { IFocusZone, IFocusZoneProps } from '../../FocusZone';
+import type { IObjectWithKey, ISelection } from '../../Selection';
+import type { IGroupedList, IGroupDividerProps, IGroupRenderProps, IGroup } from '../../GroupedList';
+import type { IListProps } from '../../List';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -179,6 +185,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     enterModalSelectionOnTouch,
     onRenderDefaultRow,
     selectionZoneRef,
+    focusZoneProps,
   } = props;
 
   const defaultRole = 'grid';
@@ -430,10 +437,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderHeader: finalOnRenderDetailsGroupHeader,
       // pass through custom group header checkbox label
       headerProps: {
+        ...groupProps?.headerProps,
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
+          ...groupProps?.headerProps?.selectAllButtonProps,
         },
-        ...groupProps?.headerProps,
       },
     };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
@@ -565,19 +573,24 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     [theme],
   );
 
-  const focusZoneProps: IFocusZoneProps = {
-    componentRef: focusZoneRef,
+  const focusZoneInnerProps: IFocusZoneProps = {
+    ...focusZoneProps,
+    componentRef: focusZoneProps && focusZoneProps.componentRef ? focusZoneProps.componentRef : focusZoneRef,
     className: classNames.focusZone,
-    direction: FocusZoneDirection.vertical,
-    shouldEnterInnerZone: isRightArrow,
-    onActiveElementChanged: onActiveRowChanged,
-    shouldRaiseClicks: false,
-    onBlur: onBlur,
+    direction: focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.vertical,
+    shouldEnterInnerZone:
+      focusZoneProps && focusZoneProps.shouldEnterInnerZone ? focusZoneProps.shouldEnterInnerZone : isRightArrow,
+    onActiveElementChanged:
+      focusZoneProps && focusZoneProps.onActiveElementChanged
+        ? focusZoneProps.onActiveElementChanged
+        : onActiveRowChanged,
+    shouldRaiseClicksOnEnter: false,
+    onBlur: focusZoneProps && focusZoneProps.onBlur ? focusZoneProps.onBlur : onBlur,
   };
 
   const list = groups ? (
     <GroupedList
-      focusZoneProps={focusZoneProps}
+      focusZoneProps={focusZoneInnerProps}
       componentRef={groupedListRef}
       groups={groups}
       groupProps={finalGroupProps}
@@ -597,7 +610,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       compact={compact}
     />
   ) : (
-    <FocusZone {...focusZoneProps}>
+    <FocusZone {...focusZoneInnerProps}>
       <List
         ref={listRef}
         role="presentation"
@@ -831,6 +844,48 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       return this._groupedList.current.getStartItemIndexInView();
     }
     return 0;
+  }
+
+  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }) {
+    const NO_COLUMNS: IColumn[] = [];
+
+    const { columns = NO_COLUMNS, selectionMode, checkboxVisibility, columnReorderOptions } = this.props;
+    const { width, newColumnIndex } = options;
+    const index = columns.findIndex(col => col.key === column.key);
+
+    if (width) {
+      this._onColumnResized(column, width, index!);
+    }
+
+    if (newColumnIndex !== undefined && columnReorderOptions) {
+      const isCheckboxColumnHidden =
+        selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
+
+      const showCheckbox = checkboxVisibility !== CheckboxVisibility.hidden;
+      const columnIndex = (showCheckbox ? 2 : 1) + index!;
+
+      const draggedIndex = isCheckboxColumnHidden ? columnIndex - 1 : columnIndex - 2;
+      const targetIndex = isCheckboxColumnHidden ? newColumnIndex - 1 : newColumnIndex - 2;
+
+      const frozenColumnCountFromStart = columnReorderOptions.frozenColumnCountFromStart ?? 0;
+      const frozenColumnCountFromEnd = columnReorderOptions.frozenColumnCountFromEnd ?? 0;
+      const isValidTargetIndex =
+        targetIndex >= frozenColumnCountFromStart && targetIndex < columns.length - frozenColumnCountFromEnd;
+
+      if (isValidTargetIndex) {
+        if (columnReorderOptions.onColumnDrop) {
+          const dragDropDetails: IColumnDragDropDetails = {
+            draggedIndex: draggedIndex,
+            targetIndex: targetIndex,
+          };
+          columnReorderOptions.onColumnDrop(dragDropDetails);
+          /* eslint-disable deprecation/deprecation */
+        } else if (columnReorderOptions.handleColumnReorder) {
+          columnReorderOptions.handleColumnReorder(draggedIndex, targetIndex);
+          /* eslint-enable deprecation/deprecation */
+        }
+      }
+    }
   }
 
   public componentWillUnmount(): void {
@@ -1425,6 +1480,7 @@ export function buildColumns(
   isSortedDescending?: boolean,
   groupedColumnKey?: string,
   isMultiline?: boolean,
+  columnActionsMode?: ColumnActionsMode,
 ) {
   const columns: IColumn[] = [];
 
@@ -1445,7 +1501,7 @@ export function buildColumns(
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,
           isRowHeader: false,
-          columnActionsMode: ColumnActionsMode.clickable,
+          columnActionsMode: columnActionsMode ?? ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
           onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName,

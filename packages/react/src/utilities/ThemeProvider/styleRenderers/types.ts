@@ -1,6 +1,5 @@
-import { IFontFace, IKeyframes } from '@fluentui/merge-styles';
-
 /* eslint-disable @typescript-eslint/naming-convention */
+import type { IFontFace, IKeyframes } from '@fluentui/merge-styles';
 
 type StyleRendererOptions = {
   rtl?: boolean;

@@ -4,7 +4,34 @@
 
 ```ts
 
+import type { GriffelStyle } from '@griffel/react';
+import type { RefObject } from 'react';
 import { Types } from 'tabster';
+
+// @public
+export const createCustomFocusIndicatorStyle: (style: GriffelStyle, options?: CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
+
+// @public (undocumented)
+export interface CreateFocusIndicatorStyleRuleOptions {
+    // (undocumented)
+    selector?: 'focus' | 'focus-within';
+}
+
+// @public
+export const createFocusOutlineStyle: (options?: {
+    style: Partial<FocusOutlineStyleOptions>;
+} & CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
+
+// @public (undocumented)
+export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
+
+// @public (undocumented)
+export type FocusOutlineStyleOptions = {
+    outlineRadius: string;
+    outlineColor: string;
+    outlineWidth: string;
+    outlineOffset?: string | FocusOutlineOffset;
+};
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -13,18 +40,43 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions 
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal';
     circular?: boolean;
+    memorizeCurrent?: boolean;
+}
+
+// @public
+export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+
+// @public (undocumented)
+export interface UseFocusableGroupOptions {
+    tabBehavior?: 'unlimited' | 'limited' | 'limitedTrapFocus';
 }
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
-    findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
-    findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
+    findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
+    findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+    findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
 };
 
 // @public
-export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
+export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
+// @public
+export const useModalAttributes: (options?: UseModalAttributesOptions) => {
+    modalAttributes: Types.TabsterDOMAttribute;
+    triggerAttributes: Types.TabsterDOMAttribute;
+};
+
+// @public (undocumented)
+export interface UseModalAttributesOptions {
+    alwaysFocusable?: boolean;
+    trapFocus?: boolean;
+}
+
+// @public
+export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
 // (No @packageDocumentation comment for this package)
 

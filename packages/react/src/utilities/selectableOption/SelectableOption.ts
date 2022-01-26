@@ -1,4 +1,4 @@
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import type { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[] {
   const selectedOptions: ISelectableOption[] = [];

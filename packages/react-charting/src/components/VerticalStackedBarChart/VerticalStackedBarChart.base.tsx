@@ -8,6 +8,7 @@ import { IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import {
+  IAccessibilityProps,
   CartesianChart,
   ChartHoverCard,
   IBasestate,
@@ -23,7 +24,14 @@ import {
   IModifiedCartesianChartProps,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartTypes, XAxisTypes, getTypeOfAxis, tooltipOfXAxislabels } from '../../utilities/index';
+import {
+  ChartTypes,
+  IAxisData,
+  getAccessibleDataObject,
+  XAxisTypes,
+  getTypeOfAxis,
+  tooltipOfXAxislabels,
+} from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -56,6 +64,7 @@ export interface IVerticalStackedBarChartState extends IBasestate {
   dataPointCalloutProps?: IVSChartDataPoint;
   stackCalloutProps?: IVerticalStackedChartProps;
   activeXAxisDataPoint: number | string;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
@@ -75,6 +84,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _createLegendsForLine: (data: IVerticalStackedChartProps[]) => LineLegends[];
   private _lineObject: LineObject;
   private _tooltipId: string;
+  private _yMax: number;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -143,7 +153,9 @@ export class VerticalStackedBarChartBase extends React.Component<
       YValueHover: this.state.YValueHover,
       hoverXValue: this.state.hoverXValue,
       onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -167,6 +179,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         }
         getmargins={this._getMargins}
         getGraphData={this._getGraphData}
+        getAxisData={this._getAxisData}
         customizedCallout={this._getCustomizedCallout()}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
@@ -186,7 +199,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   /**
-   * This function tells us what to foucs either the whole stack as focusable item.
+   * This function tells us what to focus either the whole stack as focusable item.
    * or each individual item in the stack as focusable item. basically it depends
    * on the prop `isCalloutForStack` if it's false user can focus each individual bar
    * within the bar if it's true then user can focus whole bar as item.
@@ -390,6 +403,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         Legend={props.legend}
         YValue={props.yAxisCalloutData}
         color={props.color}
+        culture={this.props.culture}
       />
     ) : null;
   }
@@ -535,6 +549,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
         yCalloutValue: point.yAxisCalloutData,
         dataPointCalloutProps: point,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -588,6 +603,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       hoverXValue: stack.xAxisPoint,
       stackCalloutProps: stack,
       activeXAxisDataPoint: stack.xAxisPoint,
+      callOutAccessibilityData: stack.stackCallOutAccessibilityData,
     });
   }
 
@@ -617,10 +633,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.props.onBarClick?.(mouseEvent, data);
     this.props.href ? (window.location.href = this.props.href) : '';
   }
-
-  private _getYMax = (dataset: IDataPoint[]) => {
-    return Math.max(d3Max(dataset, (point: IDataPoint) => point.y)!, this.props.yMaxValue || 0);
-  };
 
   private _getBarGapAndScale(
     bars: IVSChartDataPoint[],
@@ -729,7 +741,9 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-
+        if (barHeight < 1) {
+          return <React.Fragment key={index + indexNumber}> </React.Fragment>;
+        }
         return (
           <rect
             key={index + indexNumber}
@@ -741,6 +755,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
+            role="text"
           />
         );
       });
@@ -754,6 +769,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         onFocus: this._onStackFocus.bind(this, singleChartData, groupRef),
         onBlur: this._handleMouseOut,
         onClick: this._onClick.bind(this, singleChartData),
+        role: 'text',
       };
       return (
         <g
@@ -794,7 +810,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _getScales = (containerHeight: number, containerWidth: number, isNumeric: boolean) => {
-    const yMax = this._getYMax(this._dataset);
+    const yMax = this._yMax;
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -857,5 +873,12 @@ export class VerticalStackedBarChartBase extends React.Component<
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAxisData = (yAxisData: IAxisData) => {
+    if (yAxisData && yAxisData.yAxisDomainValues.length) {
+      const { yAxisDomainValues: domainValue } = yAxisData;
+      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+    }
   };
 }

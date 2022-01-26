@@ -1,75 +1,91 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { MenuItemState } from './MenuItem.types';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
+import { useCheckmarkStyles_unstable } from '../../selectable/index';
+import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
+import type { MenuItemState } from './MenuItem.types';
+
+export const menuItemClassName = 'fui-MenuItem';
 
 const useStyles = makeStyles({
-  root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    paddingRight: '8px',
-    paddingLeft: '12px',
+  focusIndicator: createFocusOutlineStyle(),
+  root: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    position: 'relative',
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
+    paddingRight: '10px',
+    paddingLeft: '10px',
     height: '32px',
     display: 'flex',
     alignItems: 'center',
-    fontSize: theme.global.type.fontSizes.base[300],
+    fontSize: tokens.fontSizeBase300,
     cursor: 'pointer',
+    ...shorthands.gap('4px'),
 
     ':hover': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
-      color: theme.alias.color.neutral.neutralForeground2Hover,
-    },
-
-    ':focus': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
-      color: theme.alias.color.neutral.neutralForeground2Hover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     userSelect: 'none',
-  }),
+  },
   content: {
-    marginRight: '8px',
+    paddingLeft: '2px',
+    paddingRight: '2px',
     backgroundColor: 'transparent',
     flexGrow: 1,
   },
-  secondaryContent: theme => ({
-    color: theme.alias.color.neutral.neutralForeground3,
+  secondaryContent: {
+    paddingLeft: '2px',
+    paddingRight: '2px',
+    color: tokens.colorNeutralForeground3,
     ':hover': {
-      color: theme.alias.color.neutral.neutralForeground3Hover,
+      color: tokens.colorNeutralForeground3Hover,
     },
-
     ':focus': {
-      backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
-      color: theme.alias.color.neutral.neutralForeground3Hover,
+      color: tokens.colorNeutralForeground3Hover,
     },
-  }),
+  },
   icon: {
     width: '20px',
     height: '20px',
-    marginRight: '8px',
+    fontSize: '20px',
+    lineHeight: 0,
   },
   submenuIndicator: {
     width: '20px',
     height: '20px',
+    fontSize: '20px',
+    lineHeight: 0,
   },
-  disabled: theme => ({
-    backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
-      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':focus': {
-      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
-  }),
+  },
 });
 
 /** Applies style classnames to slots */
-export const useMenuItemStyles = (state: MenuItemState) => {
+export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.disabled && styles.disabled, state.className);
-  state.content.className = mergeClasses(styles.content, state.content.className);
+  state.root.className = mergeClasses(
+    menuItemClassName,
+    styles.root,
+    styles.focusIndicator,
+    state.disabled && styles.disabled,
+    state.root.className,
+  );
+
+  if (state.content) {
+    state.content.className = mergeClasses(styles.content, state.content.className);
+  }
+
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
       !state.disabled && styles.secondaryContent,
@@ -84,4 +100,5 @@ export const useMenuItemStyles = (state: MenuItemState) => {
   if (state.submenuIndicator) {
     state.submenuIndicator.className = mergeClasses(styles.submenuIndicator, state.submenuIndicator.className);
   }
+  useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
 };

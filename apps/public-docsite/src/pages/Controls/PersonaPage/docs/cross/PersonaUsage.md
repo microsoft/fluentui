@@ -2,7 +2,7 @@
 
 <img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Persona/Persona_ramp.PNG"/>
 
-#### Example usage (from [PersonaCoinTest.tsx](https://github.com/microsoft/fluentui-react-native/tree/master/apps/fluent-tester/src/RNTester/TestComponents/PersonaCoin))
+#### Example usage (from [PersonaCoinTest.tsx](https://github.com/microsoft/fluentui-react-native/tree/master/apps/fluent-tester/src/FluentTester/TestComponents/PersonaCoin))
 
 ```
 import * as React from 'react';

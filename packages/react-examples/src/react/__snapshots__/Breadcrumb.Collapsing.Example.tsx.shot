@@ -115,6 +115,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -182,6 +186,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -226,6 +231,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     Files
                   </div>
@@ -282,6 +288,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -349,6 +359,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -393,6 +404,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is folder 1
                   </div>
@@ -449,6 +461,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -516,6 +532,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -560,6 +577,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is folder 2 with a long name
                   </div>
@@ -616,6 +634,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -683,6 +705,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -727,6 +750,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is folder 3 long
                   </div>
@@ -783,6 +807,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -816,6 +844,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is non-clickable folder 4
                   </div>
@@ -871,6 +900,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     &:last-child .ms-Breadcrumb-itemLink {
                       color: #323130;
                       font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
                     }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
@@ -940,6 +973,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -984,6 +1018,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is folder 5
                   </div>
@@ -1167,6 +1202,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -1301,6 +1337,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -1368,6 +1408,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -1412,6 +1453,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is folder 3 long
                   </div>
@@ -1468,6 +1510,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -1501,6 +1547,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is non-clickable folder 4
                   </div>
@@ -1556,6 +1603,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     &:last-child .ms-Breadcrumb-itemLink {
                       color: #323130;
                       font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
                     }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
@@ -1625,6 +1676,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -1669,6 +1721,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is folder 5
                   </div>
@@ -1793,6 +1846,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -1860,6 +1917,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -1904,6 +1962,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     Files
                   </div>
@@ -2019,6 +2078,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -2153,6 +2213,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                       color: #323130;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                      -ms-high-contrast-adjust: auto;
+                      forced-color-adjust: auto;
+                    }
                     &:last-child .ms-Breadcrumb-item {
                       color: #323130;
                       font-weight: 600;
@@ -2221,6 +2285,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        background-color: transparent;
                         color: Highlight;
                       }
                       &:active:hover {
@@ -2265,6 +2330,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     This is folder 5
                   </div>

@@ -1,4 +1,4 @@
-import { createDOMRenderer } from '@fluentui/make-styles';
+import { createDOMRenderer } from '@griffel/core';
 import * as React from 'react';
 import { hydrate } from 'react-dom';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -20,8 +20,8 @@ describe('createDOMRenderer', () => {
     const useExampleStyles = makeStyles({
       root: {
         animationName: {
-          from: { transform: 'rotate(0deg)' },
-          to: { transform: 'rotate(360deg)' },
+          from: { height: '10px' },
+          to: { height: '20px' },
         },
 
         color: 'red',
@@ -77,10 +77,17 @@ describe('createDOMRenderer', () => {
 
     const styleElementsAfterHydration = document.querySelectorAll<HTMLStyleElement>('style');
 
+    // We also would to ensure that new elements have not been inserted
+    expect(styleElementsBeforeHydration.length).toBe(styleElementsAfterHydration.length);
+
+    // Following rules are present in cache:
+    // - "animationName"
+    // - "color"
+    // - @keyframes + prefixed
+    // - @media
+    expect(Object.keys(clientRenderer.insertionCache)).toHaveLength(5);
     insertRules.forEach(insertRule => {
       expect(insertRule).not.toHaveBeenCalled();
     });
-    // We also would to ensure that new elements have not been inserted
-    expect(styleElementsBeforeHydration.length).toBe(styleElementsAfterHydration.length);
   });
 });

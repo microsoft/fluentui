@@ -1,6 +1,6 @@
-import { createTheme, ICustomizations } from '@fluentui/react';
+import { createTheme } from '@fluentui/react';
 import { addVariants } from '@fluentui/scheme-utilities';
-import { Theme } from '@fluentui/react';
+import type { ICustomizations, Theme } from '@fluentui/react';
 
 export const WordTheme: Theme = createTheme({
   palette: {

@@ -13,7 +13,9 @@
     "moduleResolution": "node",
     "preserveConstEnums": false,
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "custom-global"]
+    "types": ["jest", "custom-global"],
+    // Must be false when preserveConstEnums is false
+    "isolatedModules": false
   },
   "include": ["src"]
 }

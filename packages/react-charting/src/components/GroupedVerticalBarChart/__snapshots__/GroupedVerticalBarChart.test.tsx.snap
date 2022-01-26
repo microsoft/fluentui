@@ -98,7 +98,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
       />
       <g>
         <g
-          transform="translate(12.222222222222221, 0)"
+          transform="translate(11.42857142857143, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout0"
@@ -111,15 +111,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
-            y={5.333333333333329}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout0"
@@ -132,14 +132,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
             y={0}
           />
           <rect
@@ -153,19 +153,19 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
         <g
-          transform="translate(-15.555555555555554, 0)"
+          transform="translate(-17.14285714285714, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout0"
@@ -178,14 +178,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
             y={0}
           />
           <rect
@@ -199,15 +199,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
-            y={20}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout0"
@@ -220,14 +220,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
@@ -291,6 +291,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -347,7 +348,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -380,6 +380,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -436,7 +437,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -469,6 +469,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -525,7 +526,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -658,7 +658,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       />
       <g>
         <g
-          transform="translate(12.222222222222221, 0)"
+          transform="translate(11.42857142857143, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout12"
@@ -671,15 +671,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
-            y={5.333333333333329}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout12"
@@ -692,14 +692,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
             y={0}
           />
           <rect
@@ -713,19 +713,19 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
         <g
-          transform="translate(-15.555555555555554, 0)"
+          transform="translate(-17.14285714285714, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout12"
@@ -738,14 +738,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
             y={0}
           />
           <rect
@@ -759,15 +759,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
-            y={20}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout12"
@@ -780,14 +780,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
@@ -834,6 +834,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData1"
@@ -890,7 +891,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -923,6 +923,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData2"
@@ -979,7 +980,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1012,6 +1012,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData3"
@@ -1068,7 +1069,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1198,7 +1198,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       />
       <g>
         <g
-          transform="translate(12.222222222222221, 0)"
+          transform="translate(11.42857142857143, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout4"
@@ -1211,15 +1211,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
-            y={5.333333333333329}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout4"
@@ -1232,14 +1232,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
             y={0}
           />
           <rect
@@ -1253,19 +1253,19 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
         <g
-          transform="translate(-15.555555555555554, 0)"
+          transform="translate(-17.14285714285714, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout4"
@@ -1278,14 +1278,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
             y={0}
           />
           <rect
@@ -1299,15 +1299,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
-            y={20}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout4"
@@ -1320,14 +1320,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
@@ -1435,7 +1435,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
       />
       <g>
         <g
-          transform="translate(12.222222222222221, 0)"
+          transform="translate(11.42857142857143, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout8"
@@ -1448,15 +1448,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
-            y={5.333333333333329}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout8"
@@ -1469,14 +1469,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
             y={0}
           />
           <rect
@@ -1490,19 +1490,19 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
         <g
-          transform="translate(-15.555555555555554, 0)"
+          transform="translate(-17.14285714285714, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout8"
@@ -1515,14 +1515,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
             y={0}
           />
           <rect
@@ -1536,15 +1536,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
-            y={20}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout8"
@@ -1557,14 +1557,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
@@ -1628,6 +1628,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -1684,7 +1685,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1717,6 +1717,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -1773,7 +1774,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1806,6 +1806,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -1862,7 +1863,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1995,7 +1995,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
       />
       <g>
         <g
-          transform="translate(12.222222222222221, 0)"
+          transform="translate(11.42857142857143, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout16"
@@ -2008,15 +2008,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
-            y={5.333333333333329}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout16"
@@ -2029,14 +2029,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
             y={0}
           />
           <rect
@@ -2050,19 +2050,19 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
         <g
-          transform="translate(-15.555555555555554, 0)"
+          transform="translate(-17.14285714285714, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout16"
@@ -2075,14 +2075,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
             y={0}
           />
           <rect
@@ -2096,15 +2096,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
-            y={20}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout16"
@@ -2117,14 +2117,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
@@ -2188,6 +2188,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -2244,7 +2245,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2277,6 +2277,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -2333,7 +2334,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2366,6 +2366,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -2422,7 +2423,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2555,7 +2555,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
       />
       <g>
         <g
-          transform="translate(12.222222222222221, 0)"
+          transform="translate(11.42857142857143, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout20"
@@ -2568,15 +2568,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
-            y={5.333333333333329}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout20"
@@ -2589,14 +2589,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
             y={0}
           />
           <rect
@@ -2610,19 +2610,19 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
         <g
-          transform="translate(-15.555555555555554, 0)"
+          transform="translate(-17.14285714285714, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout20"
@@ -2635,14 +2635,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
             y={0}
           />
           <rect
@@ -2656,15 +2656,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
-            y={20}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout20"
@@ -2677,14 +2677,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
@@ -2748,6 +2748,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -2804,7 +2805,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2837,6 +2837,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -2893,7 +2894,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2926,6 +2926,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -2982,7 +2983,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -3115,7 +3115,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
       />
       <g>
         <g
-          transform="translate(12.222222222222221, 0)"
+          transform="translate(11.42857142857143, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout24"
@@ -3128,15 +3128,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
-            y={5.333333333333329}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
+            y={4.45652173913043}
           />
           <rect
             aria-labelledby="toolTipcallout24"
@@ -3149,14 +3149,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
             y={0}
           />
           <rect
@@ -3170,19 +3170,19 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
         <g
-          transform="translate(-15.555555555555554, 0)"
+          transform="translate(-17.14285714285714, 0)"
         >
           <rect
             aria-labelledby="toolTipcallout24"
@@ -3195,14 +3195,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={0.3825136612021858}
+            role="text"
+            width={8.009367681498828}
+            x={0.42154566744730637}
             y={0}
           />
           <rect
@@ -3216,15 +3216,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={8.0327868852459}
-            y={20}
+            role="text"
+            width={8.009367681498828}
+            x={8.852459016393441}
+            y={18.80434782608696}
           />
           <rect
             aria-labelledby="toolTipcallout24"
@@ -3237,14 +3237,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
-            width={7.267759562841528}
-            x={15.683060109289613}
+            role="text"
+            width={8.009367681498828}
+            x={17.283372365339574}
             y={0}
           />
         </g>
@@ -3308,6 +3308,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -3364,7 +3365,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -3397,6 +3397,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -3453,7 +3454,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -3486,6 +3486,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -3542,7 +3543,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

@@ -6,12 +6,15 @@ const { minify } = require('terser');
 const webpack = require('webpack');
 
 const { hrToSeconds } = require('./helpers');
+const readConfig = require('./readConfig');
+
+/** @typedef {import("webpack").Configuration} WebpackConfiguration */
 
 /**
  * @param {string} fixturePath
  * @param {string} outputPath
  *
- * @return {import("webpack").Configuration}
+ * @return {WebpackConfiguration}
  */
 function createWebpackConfig(fixturePath, outputPath) {
   return {
@@ -47,16 +50,19 @@ function createWebpackConfig(fixturePath, outputPath) {
 }
 
 /**
- * @param {import("webpack").Configuration} webpackConfig
+ * @param {WebpackConfiguration} webpackConfig
  * @return {Promise<null>}
  */
 function webpackAsync(webpackConfig) {
   return new Promise((resolve, reject) => {
     const compiler = webpack(webpackConfig);
 
-    compiler.run(err => {
+    compiler.run((err, result) => {
       if (err) {
         reject(err);
+      }
+      if (result && result.hasErrors()) {
+        reject(result.compilation.errors.join('\n'));
       }
 
       resolve(null);
@@ -81,10 +87,12 @@ function webpackAsync(webpackConfig) {
 module.exports = async function buildFixture(preparedFixture, quiet) {
   const webpackStartTime = process.hrtime();
 
-  const webpackOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.output.js');
-  const config = createWebpackConfig(preparedFixture.absolutePath, webpackOutputPath);
+  const config = await readConfig(quiet);
 
-  await webpackAsync(config);
+  const webpackOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.output.js');
+  const webpackConfig = createWebpackConfig(preparedFixture.absolutePath, webpackOutputPath);
+
+  await webpackAsync(config.webpack(webpackConfig));
 
   if (!quiet) {
     console.log(
@@ -100,7 +108,7 @@ module.exports = async function buildFixture(preparedFixture, quiet) {
   const terserStartTime = process.hrtime();
   const terserOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.min.js');
 
-  const webpackOutput = (await fs.readFile(webpackOutputPath)).toString();
+  const webpackOutput = await fs.readFile(webpackOutputPath, 'utf8');
 
   const [terserOutput, terserOutputMinified] = await Promise.all([
     // Performs only dead-code elimination

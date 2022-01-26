@@ -140,6 +140,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     display: 'flex',
     flexWrap: 'wrap',
     overflowY: 'auto',
+    overflowX: 'hidden',
     maxHeight: v.selectedItemsMaxHeight,
     width: '100%',
     ...(p.hasToggleIndicator && { paddingRight: v.toggleIndicatorSize }),

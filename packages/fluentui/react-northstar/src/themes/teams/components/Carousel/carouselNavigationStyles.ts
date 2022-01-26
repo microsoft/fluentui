@@ -22,6 +22,8 @@ export const carouselNavigationStyles: ComponentSlotStylesPrepared<
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
       justifyContent: 'center',
+      position: 'relative',
+      zIndex: 2,
       ...(!vertical &&
         thumbnails && {
           justifyContent: 'start',

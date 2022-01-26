@@ -40,7 +40,7 @@ variables:
   # - name: version # version to publish to npm; only make sense when publishOfficial=true
   #   value: canary # value can only be canary/patch/minor
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: Job_build_publish
@@ -111,8 +111,8 @@ jobs:
 
             touch packages/fluentui/.npmrc
 
-            echo "@fluentui:registry=http://registry.npmjs.org/" > packages/fluentui/.npmrc
-            echo "registry=http://registry.npmjs.org/" >> packages/fluentui/.npmrc
+            echo "@fluentui:registry=https://registry.npmjs.org/" > packages/fluentui/.npmrc
+            echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
             yarn release:fluentui:$(version) --yes

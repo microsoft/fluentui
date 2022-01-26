@@ -16,7 +16,7 @@ export const formButtonClassName = 'ui-form__button';
 /**
  * An FormButton renders a Button wrapped by FormField.
  */
-export const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, SelectedFormFieldCustomProps, {}>(
+export const FormButton = compose<'button', FormButtonProps, FormButtonStylesProps, SelectedFormFieldCustomProps, {}>(
   _FormFieldBase,
   {
     className: formButtonClassName,

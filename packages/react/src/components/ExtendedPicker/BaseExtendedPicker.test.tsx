@@ -2,11 +2,13 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import { IBaseExtendedPickerProps } from './BaseExtendedPicker.types';
 import { BaseExtendedPicker } from './BaseExtendedPicker';
-import { IBaseFloatingPickerProps, BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker/index';
-import { IBaseSelectedItemsListProps, ISelectedItemProps, BaseSelectedItemsList } from '../../SelectedItemsList';
+import { BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker/index';
+import { BaseSelectedItemsList } from '../../SelectedItemsList';
 import { KeyCodes } from '../../Utilities';
+import type { IBaseExtendedPickerProps } from './BaseExtendedPicker.types';
+import type { IBaseFloatingPickerProps } from '../FloatingPicker/index';
+import type { IBaseSelectedItemsListProps, ISelectedItemProps } from '../../SelectedItemsList';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [

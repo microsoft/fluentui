@@ -1,5 +1,5 @@
-import { IMicroFeedbackComponent, IMicroFeedbackViewProps, VoteType } from './MicroFeedback.types';
 import { useCallback, useRef, useState } from 'react';
+import type { IMicroFeedbackComponent, IMicroFeedbackViewProps, VoteType } from './MicroFeedback.types';
 
 export type IMicroFeedbackState = Pick<
   IMicroFeedbackViewProps,

@@ -12,12 +12,12 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
   const { targetDocument } = useFluent();
 
   const defaultView = targetDocument?.defaultView || undefined;
-  const tabsterOptions = { autoRoot: {} };
+  const tabsterOptions: TabsterTypes.TabsterCoreProps = { autoRoot: {}, controlTab: false };
 
   if (!defaultView) {
     return null;
   }
 
-  // TODO worth memoizing once more tabster options are used
+  // TODO: worth memoizing once more tabster options are used
   return getCurrentTabster(defaultView) ?? createTabster(defaultView, tabsterOptions);
 };

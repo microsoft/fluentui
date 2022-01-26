@@ -83,18 +83,22 @@ export class ComponentTestFacade implements TestFacade {
 
   public pressSpaceKey(selector: string) {
     if (selector === 'root') {
-      this.renderedComponent.simulate('keydown', { keyCode: 32 });
+      this.renderedComponent.simulate('keydown', { keyCode: 32, key: ' ' });
+      // TODO: This is required for space clicking with useARIAButton
+      this.renderedComponent.simulate('keyup', { keyCode: 32, key: ' ' });
       return;
     }
-    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32 });
+    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32, key: ' ' });
+    // TODO: This is required for space clicking with useARIAButton
+    this.renderedComponent.find(selector).simulate('keyup', { keyCode: 32, key: ' ' });
   }
 
   public pressEnterKey(selector: string) {
     if (selector === 'root') {
-      this.renderedComponent.simulate('keydown', { keyCode: 13 });
+      this.renderedComponent.simulate('keydown', { keyCode: 13, key: 'Enter' });
       return;
     }
-    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 13 });
+    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 13, key: 'Enter' });
   }
 
   public forProps = (props: Props): TestFacade => {

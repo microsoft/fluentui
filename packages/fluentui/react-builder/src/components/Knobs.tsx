@@ -1,9 +1,12 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Menu, tabListBehavior } from '@fluentui/react-northstar';
+import { Menu } from '@fluentui/react-northstar';
 import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from './MultiTypeKnob';
+import { tabListBehavior } from '@fluentui/accessibility';
+import { AccessibilityError } from '../accessibility/types';
+import { ErrorPanel } from './ErrorPanel';
 
 // const designUnit = 4;
 // const sizeRamp = [
@@ -141,6 +144,8 @@ type DesignKnobProps = {
   onPropDelete: ({ jsonTreeElement, name }: { jsonTreeElement: JSONTreeElement; name: string }) => void;
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
+  elementAccessibilityErrors: AccessibilityError[];
+  onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
 };
 
 const isHandledType = (type: string): boolean => {
@@ -148,10 +153,12 @@ const isHandledType = (type: string): boolean => {
 };
 
 export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
-  onPropChange,
-  onPropDelete,
+  elementAccessibilityErrors,
   info,
   jsonTreeElement,
+  onPropUpdate: PROP_UPDATED,
+  onPropChange,
+  onPropDelete,
 }) => {
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
   const getValues = React.useCallback(
@@ -180,6 +187,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
 
   return (
     <div>
+      {!_.isEmpty(elementAccessibilityErrors) && <ErrorPanel elementAccessibilityErrors={elementAccessibilityErrors} />}
       <Menu
         accessibility={tabListBehavior}
         defaultActiveIndex={0}
@@ -220,6 +228,9 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
                 }}
+                onPropUpdate={() => {
+                  PROP_UPDATED({ jsonTreeElement });
+                }}
               />
             );
           })}
@@ -241,6 +252,9 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
               value={value}
               onChange={value => {
                 onPropChange({ jsonTreeElement, name: prop.name, value });
+              }}
+              onPropUpdate={() => {
+                PROP_UPDATED({ jsonTreeElement });
               }}
             />
           );

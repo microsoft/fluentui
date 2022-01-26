@@ -12,7 +12,10 @@
  * @param exclusions - The array of keys to exclude
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj {
+export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(
+  obj: TObj,
+  exclusions: Exclusions,
+): Omit<TObj, Exclusions[number]> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: Record<string, any> = {};
 

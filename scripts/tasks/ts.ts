@@ -1,21 +1,7 @@
 import fs from 'fs';
 import * as path from 'path';
-import { tscTask, argv, TscTaskOptions, resolveCwd, logger } from 'just-scripts';
-import { Arguments } from 'yargs';
-import jju from 'jju';
-
-interface JustArgs extends Arguments {
-  production?: boolean;
-}
-
-interface TsConfig {
-  extends?: string;
-  // typescript doesn't provide a correct type for the compiler options file
-  // (typescript.CompilerOptions has enum values instead of raw options in some cases)
-  compilerOptions: object;
-  include?: string[];
-  exclude?: string[];
-}
+import { tscTask, TscTaskOptions, resolveCwd, logger } from 'just-scripts';
+import { getJustArgv } from './argv';
 
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
@@ -23,44 +9,40 @@ const srcPath = path.resolve(process.cwd(), 'src');
 const useTsBuildInfo =
   /[\\/]packages[\\/]fluentui[\\/]/.test(process.cwd()) && path.basename(process.cwd()) !== 'perf-test';
 
-/**
- *
- * Explicitly set `baseUrl` to current package root for packages (converged packages) that use TS path aliases.
- * > - This is a temporary workaround for current way of building packages.
- * > - Without setting baseUrl we would get all aliased packages build within outDir
- */
-function backportTsAliasedPackages(options: TscTaskOptions) {
-  const tsConfigFilePath = resolveCwd('./tsconfig.json');
-  const tsConfig: TsConfig = jju.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
+function prepareTsTaskConfig(options: TscTaskOptions) {
+  // docs say pretty is on by default, but it's actually disabled when tsc is run in a
+  // non-TTY context (which is what just-scripts tscTask does)
+  options.pretty = true;
 
-  const normalizedOptions = { ...options };
-
-  if (tsConfig.extends) {
-    logger.info(`package is using TS path aliases. Overriding baseUrl to package root.`);
-    normalizedOptions.baseUrl = '.';
+  if (getJustArgv().production) {
+    // sourceMap must be true for inlineSources and sourceRoot to work
+    options.inlineSources = true;
+    options.sourceRoot = path.relative(libPath, srcPath);
+    options.sourceMap = true;
   }
 
-  return normalizedOptions;
-}
+  const tsConfigLib = 'tsconfig.lib.json';
+  const isUsingTsSolutionConfigs = fs.existsSync(resolveCwd(tsConfigLib));
 
-function getExtraTscParams(args: JustArgs) {
-  return {
-    pretty: true, // use readable error message formatting (turn off for individual scenarios if needed)
-    target: 'es5',
-    // sourceMap must be true for inlineSources and sourceRoot to work
-    ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
-  };
-}
+  if (isUsingTsSolutionConfigs) {
+    // For converged packages (which use TS path aliases), explicitly set `baseUrl` and `rootDir` to current package root.
+    // > - This is a temporary workaround for current way of building packages via lage and just scripts.
+    // > - Without setting baseUrl we would get all aliased packages build within outDir
+    // > - Without setting rootDir we would get output dir mapping following path from monorepo root
+    logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
+    options.baseUrl = '.';
+    options.rootDir = './src';
+    options.project = tsConfigLib;
+  } else {
+    options.target = 'es5';
+  }
 
-function getJustArgv(): JustArgs {
-  return argv();
+  return options;
 }
 
 export const ts = {
   commonjs: () => {
-    const extraOptions = getExtraTscParams(getJustArgv());
-    const options = backportTsAliasedPackages({
-      ...extraOptions,
+    const options = prepareTsTaskConfig({
       outDir: 'lib-commonjs',
       module: 'commonjs',
       ...(useTsBuildInfo && { tsBuildInfoFile: '.commonjs.tsbuildinfo' }),
@@ -69,9 +51,7 @@ export const ts = {
     return tscTask(options);
   },
   esm: () => {
-    const extraOptions = getExtraTscParams(getJustArgv());
-    const options = backportTsAliasedPackages({
-      ...extraOptions,
+    const options = prepareTsTaskConfig({
       outDir: 'lib',
       module: 'esnext',
     });
@@ -80,9 +60,8 @@ export const ts = {
     return tscTask(options);
   },
   amd: () => {
-    const extraOptions = getExtraTscParams(getJustArgv());
-    const options = backportTsAliasedPackages({
-      ...extraOptions,
+    const options = prepareTsTaskConfig({
+      target: 'es5',
       outDir: 'lib-amd',
       module: 'amd',
       ...(useTsBuildInfo && { tsBuildInfoFile: '.amd.tsbuildinfo' }),
@@ -91,9 +70,11 @@ export const ts = {
     return tscTask(options);
   },
   commonjsOnly: () => {
-    const extraOptions = getExtraTscParams(getJustArgv());
     // Use default tsbuildinfo for this variant (since it's the only variant)
-    const options = backportTsAliasedPackages({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
+    const options = prepareTsTaskConfig({
+      outDir: 'lib',
+      module: 'commonjs',
+    });
 
     return tscTask(options);
   },

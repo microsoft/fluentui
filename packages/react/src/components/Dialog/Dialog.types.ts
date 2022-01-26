@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { IModalProps } from '../../Modal';
 import { DialogBase } from './Dialog.base';
-import { DialogType, IDialogContentProps } from './DialogContent.types';
-import { IButtonProps } from '../../Button';
-import { IWithResponsiveModeState } from '../../ResponsiveMode';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ICSSRule, ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
+import { DialogType } from './DialogContent.types';
+import type { IModalProps } from '../../Modal';
+import type { IDialogContentProps } from './DialogContent.types';
+import type { IButtonProps } from '../../Button';
+import type { IWithResponsiveModeState } from '../../ResponsiveMode';
+import type { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { ICSSRule, ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 
 /**
  * {@docCategory Dialog}

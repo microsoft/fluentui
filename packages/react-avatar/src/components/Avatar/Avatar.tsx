@@ -1,20 +1,16 @@
-import { nullRender } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { renderAvatar_unstable } from './renderAvatar';
+import { useAvatar_unstable } from './useAvatar';
+import { useAvatarStyles_unstable } from './useAvatarStyles';
+import type { AvatarProps } from './Avatar.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
-import { AvatarBadge } from '../AvatarBadge/AvatarBadge';
-import { AvatarProps } from './Avatar.types';
-import { renderAvatar } from './renderAvatar';
-import { useAvatar } from './useAvatar';
-import { useAvatarStyles } from './useAvatarStyles';
+export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props, ref) => {
+  const state = useAvatar_unstable(props, ref);
 
-export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
-  const state = useAvatar(props, ref, {
-    badge: { as: props.badge ? AvatarBadge : nullRender },
-  });
+  useAvatarStyles_unstable(state);
 
-  useAvatarStyles(state);
-
-  return renderAvatar(state);
+  return renderAvatar_unstable(state);
 });
 
 Avatar.displayName = 'Avatar';

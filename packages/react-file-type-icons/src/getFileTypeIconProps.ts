@@ -1,5 +1,6 @@
 import { FileTypeIconMap } from './FileTypeIconMap';
-import { FileIconType, FileIconTypeInput } from './FileIconType';
+import { FileIconType } from './FileIconType';
+import type { FileIconTypeInput } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
 
@@ -16,6 +17,8 @@ const DESKTOP_FOLDER = 'desktopfolder';
 const DOCUMENTS_FOLDER = 'documentfolder';
 const PICTURES_FOLDER = 'picturesfolder';
 const LINKED_FOLDER = 'linkedfolder';
+const FORM = 'form';
+const SWAY = 'sway';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -53,7 +56,7 @@ export interface IFileTypeIconOptions {
  * will return `{ iconName: 'docx16_2x_png' }` if the `devicePixelRatio` is 2.
  * @param options
  */
-export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string } {
+export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string; 'aria-label'?: string } {
   // First, obtain the base name of the icon using the extension or type.
   let iconBaseName: string;
   const { extension, type, size, imageFileType } = options;
@@ -64,7 +67,7 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
   let _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
   let suffix: string = getFileTypeIconSuffix(_size, imageFileType);
 
-  return { iconName: iconBaseName + suffix };
+  return { iconName: iconBaseName + suffix, 'aria-label': extension };
 }
 
 export function getFileTypeIconNameFromExtensionOrType(
@@ -129,6 +132,12 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.list:
         iconBaseName = LIST;
+        break;
+      case FileIconType.form:
+        iconBaseName = FORM;
+        break;
+      case FileIconType.sway:
+        iconBaseName = SWAY;
         break;
     }
   }

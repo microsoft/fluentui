@@ -23,6 +23,7 @@ export const toolbarCustomItemStyles: ComponentSlotStylesPrepared<ToolbarCustomI
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      userSelect: 'none',
       ...(p.fitted !== true &&
         p.fitted !== 'horizontally' && {
           paddingLeft: v.customItemHorizontalPadding,

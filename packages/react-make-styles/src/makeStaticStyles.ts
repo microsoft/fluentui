@@ -1,12 +1,9 @@
-import {
-  MakeStaticStyles,
-  makeStaticStyles as vanillaMakeStaticStyles,
-  MakeStaticStylesOptions,
-} from '@fluentui/make-styles';
+import { makeStaticStyles as vanillaMakeStaticStyles } from '@griffel/core';
 
 import { useRenderer } from './RendererContext';
+import type { GriffelStaticStyles, MakeStaticStylesOptions } from '@griffel/core';
 
-export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStaticStyles[]) {
+export function makeStaticStyles<Selectors>(styles: GriffelStaticStyles | GriffelStaticStyles[]) {
   const getStyles = vanillaMakeStaticStyles(styles);
 
   if (process.env.NODE_ENV === 'test') {

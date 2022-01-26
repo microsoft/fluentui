@@ -13,7 +13,18 @@ const config = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@fluentui', '@typescript-eslint', 'deprecation', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks'],
+  plugins: [
+    '@fluentui',
+    '@rnx-kit',
+    '@typescript-eslint',
+    'deprecation',
+    'import',
+    'jest',
+    'jsdoc',
+    'jsx-a11y',
+    'react',
+    'react-hooks',
+  ],
   settings: {
     // Some config suggestions copied from https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
     'import/parsers': {
@@ -25,6 +36,18 @@ const config = {
         alwaysTryTypes: true,
         // NOTE: For packages without a tsconfig.json, override with "project": "../../tsconfig.json"
         project: ['./tsconfig.json', path.join(gitRoot, 'tsconfig.json')],
+      },
+    },
+    jsdoc: {
+      ignoreInternal: true,
+      tagNamePreference: {
+        // Allow any of @default, @defaultvalue, @defaultValue until we settle on a preferred one
+        default: 'default',
+        defaultvalue: 'defaultvalue',
+        defaultValue: 'defaultValue',
+        // Allow either @return or @returns until we settle on a preferred one
+        return: 'return',
+        returns: 'returns',
       },
     },
   },
@@ -50,6 +73,7 @@ const config = {
     '**/*.scss.ts',
   ],
   rules: {
+    '@rnx-kit/no-export-all': ['error', { expand: 'external-only' }],
     '@fluentui/no-global-react': 'error',
     '@fluentui/max-len': [
       'error',
@@ -57,8 +81,7 @@ const config = {
         ignorePatterns: [
           'require(<.*?>)?\\(',
           'https?:\\/\\/',
-          '^(import|export) \\{ \\w+( as \\w+)? \\} from',
-          '^import \\* as',
+          '^(import|export) ',
           '^\\s+(<path )?d=',
           '!raw-loader',
           '\\bdata:image/',
@@ -134,7 +157,12 @@ const config = {
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        additionalHooks: 'useIsomorphicLayoutEffect',
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
 
     // airbnb or other config overrides (some temporary)
@@ -220,6 +248,7 @@ const config = {
     'react/sort-comp': 'off',
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
+    'react/require-default-props': 'off',
     'spaced-comment': 'off',
 
     // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
@@ -258,6 +287,14 @@ const config = {
     'import/named': 'off',
     'import/namespace': 'off',
     'import/no-named-as-default-member': 'off',
+
+    'jsdoc/check-tag-names': [
+      'error',
+      {
+        // Allow TSDoc tags @remarks and @defaultValue
+        definedTags: ['remarks', 'defaultValue'],
+      },
+    ],
   },
 };
 
@@ -326,14 +363,7 @@ const getOverrides = () => [
     files: [...configHelpers.testFiles],
     rules: {
       'no-console': 'off',
-      'react/jsx-no-bind': [
-        'error',
-        {
-          allowArrowFunctions: true, // inline lambdas ok in tests
-          allowFunctions: false,
-          allowBind: false,
-        },
-      ],
+      'react/jsx-no-bind': 'off',
     },
   },
   {
@@ -344,10 +374,20 @@ const getOverrides = () => [
   },
   {
     // Example overrides
-    files: '**/*.Example.tsx',
+    files: '**/*.{Example,stories}.tsx',
     rules: {
       'no-alert': 'off',
       'no-console': 'off',
+    },
+  },
+  {
+    files: '**/*.stories.tsx',
+    rules: {
+      // allow arrow functions in stories for now (may want to change this later since using
+      // constantly-mutating functions can be an anti-pattern which we may not want to demonstrate
+      // in our converged components docs; it happened to be allowed starting out because .stories
+      // files were being linted as tests)
+      'react/jsx-no-bind': 'off',
     },
   },
   {

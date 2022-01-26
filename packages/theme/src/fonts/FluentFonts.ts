@@ -1,4 +1,4 @@
-import { IFontWeight } from '@fluentui/merge-styles';
+import type { IFontWeight } from '@fluentui/merge-styles';
 
 // Font face names to be registered.
 export namespace LocalizedFontNames {

@@ -11,8 +11,11 @@ import {
 } from '../../index';
 import {
   ChartHoverCard,
+  convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
+  IAxisData,
+  getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
@@ -105,7 +108,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps } = this.props;
+    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps, culture } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -156,18 +159,24 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     let xScale: any;
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams);
+        xScale = createNumericXAxis(XAxisParams, culture);
         break;
       case XAxisTypes.DateAxis:
         xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
         break;
       case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!);
+        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams);
+        xScale = createNumericXAxis(XAxisParams, culture);
     }
 
+    /*
+     * To enable wrapping of x axis tick values or to disaply complete x axis tick values,
+     * we need to calculate how much space it needed to render the text.
+     * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
+     * Required space will be calculated first time chart rendering and if any width/height of chart updated.
+     * */
     if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
       const wrapLabelProps = {
         node: this.xAxisElement,
@@ -190,12 +199,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScale: any;
+    const axisData: IAxisData = { yAxisDomainValues: [] };
     if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
     } else {
-      yScale = createYAxis(YAxisParams, this._isRtl);
+      yScale = createYAxis(YAxisParams, this._isRtl, axisData);
     }
-
+    this.props.getAxisData && this.props.getAxisData(axisData);
     // Callback function for chart, returns axis
     this._getData(xScale, yScale);
 
@@ -206,15 +216,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       className: this.props.className,
       isRtl: this._isRtl,
     });
+
     const svgDimensions = {
       width: this.state.containerWidth,
       height: this.state.containerHeight,
     };
+
     const children = this.props.children({
       ...this.state,
       xScale,
       yScale,
     });
+
     let focusDirection;
     if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
       focusDirection = this.props.focusZoneDirection;
@@ -231,7 +244,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
-          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }} {...svgProps}>
+          <svg
+            width={svgDimensions.width}
+            height={svgDimensions.height}
+            aria-label={this.props.chartTitle}
+            style={{ display: 'block' }}
+            {...svgProps}
+          >
             <g
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
@@ -274,6 +293,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 Legend={calloutProps.legend!}
                 YValue={calloutProps.YValue!}
                 color={calloutProps.color!}
+                culture={this.props.culture}
                 {...chartHoverProps}
               />
             )}
@@ -283,7 +303,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     );
   }
 
-  // TO DO: Write a common funtional component for Multi value callout and divide sub count method
+  // TO DO: Write a common functional component for Multi value callout and divide sub count method
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _multiValueCallout = (calloutProps: any) => {
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
@@ -293,7 +313,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           className={this._classNames.calloutDateTimeContainer}
           style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
         >
-          <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+          <div
+            className={this._classNames.calloutContentX}
+            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
+          >
+            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+          </div>
         </div>
         <div
           className={this._classNames.calloutInfoContainer}
@@ -305,6 +330,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               const { shouldDrawBorderBottom = false } = yValue;
               return (
                 <div
+                  {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
                   key={`callout-content-${index}`}
                   style={
                     yValueHoverSubCountsExists
@@ -327,6 +353,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 </div>
               );
             })}
+          {!!calloutProps.descriptionMessage && (
+            <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
+          )}
         </div>
       </div>
     );
@@ -364,12 +393,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       toDrawShape,
     });
 
+    const { culture } = this.props;
+    const yValue = convertToLocaleString(xValue.y, culture);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
           {yValueHoverSubCountsExists && (
             <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-              {xValue.legend!} ({xValue.y})
+              {xValue.legend!} ({yValue})
             </div>
           )}
           <div id={`${index}_${xValue.y}`} className={_classNames.calloutBlockContainer}>
@@ -385,7 +416,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data}
+                {convertToLocaleString(
+                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                  culture,
+                )}
               </div>
             </div>
           </div>
@@ -396,13 +430,15 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       return (
         <div style={marginStyle}>
           <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-            {xValue.legend!} ({xValue.y})
+            {xValue.legend!} ({yValue})
           </div>
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {subcountName}</div>
-                <div className={_classNames.calloutContentY}>{subcounts[subcountName]}</div>
+                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutContentY}>
+                  {convertToLocaleString(subcounts[subcountName], culture)}
+                </div>
               </div>
             );
           })}
@@ -411,11 +447,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
   }
 
+  /**
+   * When screen resizes, along with screen, chart also auto adjusted.
+   * This method used to adjust height and width of the charts.
+   */
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
       let legendContainerHeight;
       if (this.props.hideLegend) {
+        // If there is no legend, need not to allocate some space from total chart space.
         legendContainerHeight = 0;
       } else {
         const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
@@ -441,6 +482,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     });
   }
 
+  // Call back to the chart.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getData = (xScale: any, yScale: any) => {
     this.props.getGraphData &&

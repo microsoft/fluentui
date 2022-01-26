@@ -88,7 +88,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -137,7 +137,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
             >
               <div
                 aria-checked={false}
-                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -257,9 +256,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -296,14 +298,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -344,6 +349,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-checkTooltip"
@@ -432,7 +438,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
             >
               <span
                 aria-describedby="header1-thumbnail-tooltip"
-                aria-haspopup={false}
                 aria-labelledby="header1-thumbnail-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -464,7 +469,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-thumbnail"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -503,6 +508,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-thumbnail-tooltip"
@@ -589,7 +595,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -621,7 +626,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -724,7 +729,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -756,7 +760,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -859,7 +863,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-description-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -891,7 +894,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-description"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -994,7 +997,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-color-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1026,7 +1028,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-color"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1129,7 +1131,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-shape-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1161,7 +1162,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-shape"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1264,7 +1265,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-location-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1296,7 +1296,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-location"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1399,7 +1399,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-width-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1431,7 +1430,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-width"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1534,7 +1533,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-height-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1566,7 +1564,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-height"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1707,6 +1705,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -1718,7 +1719,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone4"
+                      data-focuszone-id="FocusZone5"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
@@ -1896,9 +1897,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1935,14 +1939,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -2691,6 +2698,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -2702,7 +2712,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone7"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
@@ -2880,9 +2890,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -2919,14 +2932,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -3675,6 +3691,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -3686,7 +3705,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone6"
+                      data-focuszone-id="FocusZone9"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
@@ -3864,9 +3883,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -3903,14 +3925,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -4659,6 +4684,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -4670,7 +4698,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone7"
+                      data-focuszone-id="FocusZone11"
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
@@ -4848,9 +4876,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -4887,14 +4918,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -5643,6 +5677,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -5654,7 +5691,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone8"
+                      data-focuszone-id="FocusZone13"
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
@@ -5832,9 +5869,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -5871,14 +5911,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -6627,6 +6670,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -6638,7 +6684,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone9"
+                      data-focuszone-id="FocusZone15"
                       data-is-focusable={true}
                       data-item-index={5}
                       data-selection-index={5}
@@ -6816,9 +6862,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -6855,14 +6904,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -7611,6 +7663,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -7622,7 +7677,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone10"
+                      data-focuszone-id="FocusZone17"
                       data-is-focusable={true}
                       data-item-index={6}
                       data-selection-index={6}
@@ -7800,9 +7855,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -7839,14 +7897,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -8595,6 +8656,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -8606,7 +8670,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone11"
+                      data-focuszone-id="FocusZone19"
                       data-is-focusable={true}
                       data-item-index={7}
                       data-selection-index={7}
@@ -8784,9 +8848,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -8823,14 +8890,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -9579,6 +9649,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -9590,7 +9663,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone12"
+                      data-focuszone-id="FocusZone21"
                       data-is-focusable={true}
                       data-item-index={8}
                       data-selection-index={8}
@@ -9768,9 +9841,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -9807,14 +9883,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -10563,6 +10642,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
+                          &:hover .ms-DetailsRow-cell > .ms-Link {
+                            color: #004578;
+                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -10574,7 +10656,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone13"
+                      data-focuszone-id="FocusZone23"
                       data-is-focusable={true}
                       data-item-index={9}
                       data-selection-index={9}
@@ -10752,9 +10834,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -10791,14 +10876,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }

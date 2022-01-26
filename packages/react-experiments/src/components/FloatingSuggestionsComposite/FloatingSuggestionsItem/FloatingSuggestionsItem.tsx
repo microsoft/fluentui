@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {
+import { classNamesFunction, css } from '../../../Utilities';
+import { getStyles } from './FloatingSuggestionsItem.styles';
+import { CommandButton, IconButton } from '@fluentui/react/lib/Button';
+import type {
   IFloatingSuggestionItemStylesProps,
   IFloatingSuggestionItemStyles,
   IFloatingSuggestionItemProps,
   IFloatingSuggestionOnRenderItemProps,
 } from './FloatingSuggestionsItem.types';
-import { classNamesFunction, css } from '../../../Utilities';
-import { getStyles } from './FloatingSuggestionsItem.styles';
-import { CommandButton, IconButton } from '@fluentui/react/lib/Button';
 
 export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestionItemProps<T>): JSX.Element => {
   const {

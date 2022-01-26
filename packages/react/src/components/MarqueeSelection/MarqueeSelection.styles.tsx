@@ -1,5 +1,5 @@
-import { IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
 import { HighContrastSelector } from '../../Styling';
+import type { IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
 
 export const getStyles = (props: IMarqueeSelectionStyleProps): IMarqueeSelectionStyles => {
   const { theme, className } = props;

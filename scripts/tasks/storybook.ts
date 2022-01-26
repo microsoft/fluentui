@@ -49,9 +49,10 @@ function getCommonOptions(): StorybookCommonOptions {
   console.log(`node heap limit = ${require('v8').getHeapStatistics().heap_size_limit / (1024 * 1024)} MB`);
 
   const localConfigDir = path.join(process.cwd(), '.storybook');
+  const localStaticDir = path.join(process.cwd(), 'static');
 
   return {
-    staticDir: [path.join(process.cwd(), 'static')],
+    staticDir: fs.existsSync(localStaticDir) ? [localStaticDir] : [],
     configDir: fs.existsSync(localConfigDir)
       ? localConfigDir
       : path.join(findGitRoot(), 'packages/react-examples/.storybook'),
@@ -83,6 +84,9 @@ export function buildStorybookTask() {
       mode: 'static',
       outputDir: path.join(process.cwd(), 'dist/storybook'),
     };
+    if (process.env.TF_BUILD) {
+      console.log('Storybook options:', JSON.stringify(options, null, 2));
+    }
     await storybook(options);
   };
 }

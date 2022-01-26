@@ -1,20 +1,15 @@
 /* eslint-disable deprecation/deprecation */
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
 import { Customizer } from './customizations/Customizer';
-import {
-  IStyle,
-  Stylesheet,
-  InjectionMode,
-  IStyleFunction,
-  IStyleFunctionOrObject,
-  mergeStyles,
-} from '@fluentui/merge-styles';
+import { Stylesheet, InjectionMode, mergeStyles } from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@fluentui/test-utilities';
 import { mount } from 'enzyme';
+import type { IStyle, IStyleFunction, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
 interface ITestStyles {
   root: IStyle;
@@ -80,10 +75,10 @@ describe('styled', () => {
   });
 
   afterEach(() => {
-    if (component) {
-      component.unmount();
+    ReactTestUtils.act(() => {
+      component?.unmount();
       component = undefined;
-    }
+    });
 
     lastStylesInBaseComponent = undefined;
   });

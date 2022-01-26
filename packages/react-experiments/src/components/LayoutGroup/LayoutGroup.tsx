@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ILayoutGroupProps } from './LayoutGroup.types';
-import { IRawStyle, mergeStyles } from '@fluentui/react/lib/Styling';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { getNativeProps, divProperties } from '@fluentui/react/lib/Utilities';
+import type { ILayoutGroupProps } from './LayoutGroup.types';
+import type { IRawStyle } from '@fluentui/react/lib/Styling';
 
 export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
   public static defaultProps: ILayoutGroupProps = {
@@ -48,11 +49,15 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     return (
       <div
         {...divProps}
-        className={mergeStyles('ms-LayoutGroup', {
-          display: 'flex',
-          flexDirection: direction === 'horizontal' ? 'row' : 'column',
-          justifyContent: this._getJustify(justify),
-        } as IRawStyle)}
+        className={mergeStyles(
+          'ms-LayoutGroup',
+          {
+            display: 'flex',
+            flexDirection: direction === 'horizontal' ? 'row' : 'column',
+            justifyContent: this._getJustify(justify),
+          } as IRawStyle,
+          divProps.className,
+        )}
       >
         {group}
       </div>

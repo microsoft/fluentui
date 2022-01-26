@@ -75,6 +75,15 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
         onRenderOverflowIcon={_getCustomOverflowIcon}
         overflowAriaLabel="More links"
       />
+
+      <Label styles={labelStyles}>With items rendered as buttons and tab navigation control</Label>
+      <Breadcrumb
+        items={items}
+        maxDisplayedItems={5}
+        ariaLabel="With items rendered as buttons and tab navigation control"
+        overflowAriaLabel="More links"
+        focusZoneProps={{ handleTabKey: 1 }}
+      />
     </div>
   );
 };

@@ -2,7 +2,8 @@
 steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '12.x'
+      versionSpec: '14.x'
+      checkLatest: true
     displayName: 'Install Node.js'
 
   - task: YarnInstaller@0

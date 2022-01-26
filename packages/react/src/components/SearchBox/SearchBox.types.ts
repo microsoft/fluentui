@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
-import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
+import type { IButtonProps } from '../../Button';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IIconProps } from '../../Icon';
 
 /**
  * {@docCategory SearchBox}
@@ -122,6 +122,12 @@ export interface ISearchBoxProps
    * @defaultvalue false
    */
   disableAnimation?: boolean;
+
+  /**
+   * Whether or not to make the icon be always visible (it hides by default when the search box is focused).
+   * @defaultvalue false
+   */
+  showIcon?: boolean;
 }
 
 /**
@@ -135,6 +141,7 @@ export interface ISearchBoxStyleProps {
   underlined?: boolean;
   hasInput?: boolean;
   disableAnimation?: boolean;
+  showIcon?: boolean;
 }
 
 /**

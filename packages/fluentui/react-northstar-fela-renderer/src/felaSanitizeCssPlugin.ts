@@ -54,11 +54,16 @@ export const felaSanitizeCssPlugin = (
 
   const processedStyles: any = Array.isArray(styles) ? [] : {};
 
-  Object.keys(styles).forEach((cssPropertyNameOrIndex: keyof ICSSInJSStyle | number) => {
+  Object.keys(styles).forEach((cssPropertyNameOrIndex: keyof ICSSInJSStyle) => {
     const cssPropertyValue = styles[cssPropertyNameOrIndex];
 
     if (typeof cssPropertyValue === 'object') {
-      processedStyles[cssPropertyNameOrIndex] = felaSanitizeCssPlugin(cssPropertyValue, type, renderer, props);
+      processedStyles[cssPropertyNameOrIndex] = felaSanitizeCssPlugin(
+        cssPropertyValue as ICSSInJSStyle,
+        type,
+        renderer,
+        props,
+      );
       return;
     }
 

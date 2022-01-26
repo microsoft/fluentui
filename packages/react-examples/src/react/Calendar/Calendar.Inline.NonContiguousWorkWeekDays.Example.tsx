@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, DateRangeType, DayOfWeek } from '@fluentui/react';
+import { Calendar, DateRangeType, DayOfWeek, defaultCalendarStrings } from '@fluentui/react';
 
 const workWeekDays = [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday];
 
@@ -32,6 +32,8 @@ export const CalendarInlineNonContiguousWorkWeekDaysExample: React.FunctionCompo
         showGoToToday
         onSelectDate={onSelectDate}
         value={selectedDate}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
       />
     </div>
   );

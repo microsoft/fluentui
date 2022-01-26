@@ -71,6 +71,9 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
               padding-top: 16px;
             }
             & li {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
               height: 16px;
               line-height: 16px;
               margin-bottom: 8px;
@@ -85,6 +88,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   display: inline-block;
+                  flex-shrink: 0;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -126,6 +130,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   box-sizing: border-box;
                   color: #201f1e;
                   display: inline-block;
+                  flex-grow: 1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: inherit;
                   font-weight: inherit;
@@ -135,7 +140,6 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   text-decoration: none;
                   text-overflow: ellipsis;
                   white-space: nowrap;
-                  width: calc(100% - 24px);
                 }
                 .ms-Fabric--isFocusVisible &:focus {
                   box-shadow: 0 0 0 1px #605e5c inset;
@@ -196,6 +200,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 }
             href="http://bing.com"
             onClick={[Function]}
+            target="_blank"
           >
             2016 Conference Presentation
           </a>
@@ -208,6 +213,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   display: inline-block;
+                  flex-shrink: 0;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -249,6 +255,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   box-sizing: border-box;
                   color: #201f1e;
                   display: inline-block;
+                  flex-grow: 1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: inherit;
                   font-weight: inherit;
@@ -258,7 +265,6 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   text-decoration: none;
                   text-overflow: ellipsis;
                   white-space: nowrap;
-                  width: calc(100% - 24px);
                 }
                 .ms-Fabric--isFocusVisible &:focus {
                   box-shadow: 0 0 0 1px #605e5c inset;
@@ -319,6 +325,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 }
             href="http://bing.com"
             onClick={[Function]}
+            target="_blank"
           >
             New Contoso Collaboration for Conference Presentation Draft
           </a>
@@ -331,6 +338,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   display: inline-block;
+                  flex-shrink: 0;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -372,6 +380,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   box-sizing: border-box;
                   color: #201f1e;
                   display: inline-block;
+                  flex-grow: 1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: inherit;
                   font-weight: inherit;
@@ -381,7 +390,6 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   text-decoration: none;
                   text-overflow: ellipsis;
                   white-space: nowrap;
-                  width: calc(100% - 24px);
                 }
                 .ms-Fabric--isFocusVisible &:focus {
                   box-shadow: 0 0 0 1px #605e5c inset;
@@ -442,6 +450,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                 }
             href="http://bing.com"
             onClick={[Function]}
+            target="_blank"
           >
             Spec Sheet for design
           </a>

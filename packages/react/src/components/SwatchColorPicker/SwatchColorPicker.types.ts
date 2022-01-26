@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
-import {
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import type {
   IColorCellProps,
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles,

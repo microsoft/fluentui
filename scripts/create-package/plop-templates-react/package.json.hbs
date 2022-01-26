@@ -1,6 +1,6 @@
 {
   "name": "{{{packageNpmName}}}",
-  "version": "{{{packageVersion}}}",
+  "version": "0.1.0",
   "private": true,
   "description": "{{{description}}}",
   "main": "lib-commonjs/index.js",
@@ -25,8 +25,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "",
-    "@fluentui/jest-serializer-make-styles": "",
     "@fluentui/react-conformance": "",
+    "@fluentui/react-conformance-griffel": "",
     "@fluentui/scripts": "",
     "@types/enzyme": "",
     "@types/enzyme-adapter-react-16": "",
@@ -40,8 +40,9 @@
     "react-test-renderer": ""
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "",
+    "@fluentui/react-theme": "",
     "@fluentui/react-utilities": "",
+    "@griffel/react": "",
     "tslib": ""
   },
   "peerDependencies": {
@@ -49,13 +50,5 @@
     "@types/react-dom": "",
     "react": "",
     "react-dom": ""
-  },
-  "beachball": {
-    "tag": "alpha",
-    "disallowedChangeTypes": [
-      "major",
-      "minor",
-      "patch"
-    ]
   }
 }

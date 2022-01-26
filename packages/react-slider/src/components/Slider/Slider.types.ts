@@ -1,207 +1,115 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
+import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Slider}
- */
-export interface ISlider {
-  value: number | undefined;
-
-  focus: () => void;
-}
-
-/**
- * {@docCategory Slider}
- */
-export interface ISliderProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
-    React.RefAttributes<HTMLDivElement> {
+export type SliderSlots = {
   /**
-   * Optional callback to access the ISlider interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * The root of the Slider.
+   * The root slot receives the `className` and `style` specified directly on the `<Slider>`.
+   * All other native props will be applied to the primary slot, `input`.
    */
-  componentRef?: IRefObject<ISlider>;
+  root: IntrinsicShorthandProps<'div'>;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
+   * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
+  rail: IntrinsicShorthandProps<'div'>;
 
   /**
-   * Theme provided by High-Order Component.
+   * The draggable icon used to select a given value from the Slider.
+   * This is the element containing `role = 'slider'`.
    */
-  theme?: ITheme;
+  thumb: IntrinsicShorthandProps<'div'>;
 
   /**
-   * Description label of the Slider
+   * The hidden input for the Slider.
+   * This is the PRIMARY slot: all native properties specified directly on `<Slider>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
+   *
    */
-  label?: string;
+  input: IntrinsicShorthandProps<'input'> & {
+    /**
+     * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
+     * when `vertical` is set to true.
+     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes
+     * Webkit/Chromium support for vertical inputs is provided via -webkit-appearance css property
+     */
+    orient?: 'horizontal' | 'vertical';
+  };
+};
 
+export type SliderCommons = {
   /**
-   * The initial value of the Slider. Use this if you intend for the Slider to be an uncontrolled component.
-   * This value is mutually exclusive to value. Use one or the other.
+   * The starting value for an uncontrolled Slider.
+   * Mutually exclusive with `value` prop.
    */
   defaultValue?: number;
 
   /**
-   * The initial value of the Slider. Use this if you intend to pass in a new value as a result of onChange events.
-   * This value is mutually exclusive to defaultValue. Use one or the other.
+   * The current value of the controlled Slider.
+   * Mutually exclusive with `defaultValue` prop.
    */
   value?: number;
 
   /**
-   * The min value of the Slider
-   * @defaultvalue 0
+   * The min value of the Slider.
+   * @default 0
    */
   min?: number;
 
   /**
-   * The max value of the Slider
-   * @defaultvalue 10
+   * The max value of the Slider.
+   * @default 100
    */
   max?: number;
 
   /**
-   * The difference between the two adjacent values of the Slider
-   * @defaultvalue 1
+   * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
+   * will snap to the closest available value. This must be a positive value.
+   * @default 1
    */
   step?: number;
 
   /**
-   * Whether to show the value on the right of the Slider.
-   * @defaultvalue true
-   */
-  showValue?: boolean;
-
-  /**
-   * Callback when the value has been changed
-   */
-  onChange?: (value: number) => void;
-
-  /**
-   * Callback on mouse up or touch end
-   */
-  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-
-  /**
-   * A description of the Slider for the benefit of screen readers.
-   */
-  ariaLabel?: string;
-
-  /**
-   * A text description of the Slider number value for the benefit of screen readers.
-   * This should be used when the Slider number value is not accurately represented by a number.
-   */
-  ariaValueText?: (value: number) => string;
-  /**
-   * Whether to render the slider vertically.
-   * @default `false` (render horizontally)
-   */
-  vertical?: boolean;
-
-  /**
-   * Whether to render the Slider as disabled.
-   * @defaultvalue false
+   *  Whether to render the Slider as disabled.
+   *
+   * @default `false` (renders enabled)
    */
   disabled?: boolean;
 
   /**
-   * Whether to decide that thumb will snap to closest value while moving the slider
-   * @defaultvalue false
+   * Whether to render the Slider vertically.
+   * @default `false` (renders horizontally)
    */
-  snapToStep?: boolean;
+  vertical?: boolean;
 
   /**
-   * Class name to attach to the slider root element.
+   * The starting origin point for the Slider.
+   * @default min
    */
-  className?: string;
+  origin?: number;
 
   /**
-   * Additional props on the thumb button within the slider.
+   * The size of the Slider.
+   * @default 'medium'
    */
-  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+  size?: 'small' | 'medium';
 
   /**
-   * Custom formatter for the slider value.
+   * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  valueFormat?: (value: number) => string;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
 
   /**
-   * Whether to attach the origin of slider to zero. Helpful when the range include negatives.
-   * @defaultvalue false
+   * The Slider's current value label to be read by the screen reader.
    */
-  originFromZero?: boolean;
-}
+  getAriaValueText?: (value: number) => string;
+};
 
-/**
- * {@docCategory Slider}
- */
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
-  Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
-    showTransitions?: boolean;
-    showValue?: boolean;
-    titleLabelClassName?: string;
-  };
+export type SliderOnChangeData = {
+  value: number;
+};
 
-/**
- * {@docCategory Slider}
- */
-export interface ISliderStyles {
-  /**
-   * Style set for the root element.
-   */
-  root: IStyle;
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> &
+  SliderCommons;
 
-  /**
-   * Style set for the title label above the slider.
-   */
-  titleLabel: IStyle;
-
-  /**
-   * Style set for the container of the slider.
-   */
-  container: IStyle;
-
-  /**
-   * Style set for the actual box containting interactive elements of the slider.
-   */
-  slideBox: IStyle;
-
-  /**
-   * Style set for element that contains all the lines.
-   */
-  line: IStyle;
-
-  /**
-   * Style set for thumb of the slider.
-   */
-  thumb: IStyle;
-
-  /**
-   * Style set for both active and inactive sections of the line.
-   */
-  lineContainer: IStyle;
-
-  /**
-   * Style set for active portion of the line.
-   */
-  activeSection: IStyle;
-
-  /**
-   * Style set for inactive portion of the line.
-   */
-  inactiveSection: IStyle;
-
-  /**
-   * Style set for value label on right/below of the slider.
-   */
-  valueLabel: IStyle;
-
-  /**
-   * Style set for tick on 0 on number line. This element only shows up when originFromZero prop is true.
-   */
-  zeroTick: IStyle;
-}
+export type SliderState = ComponentState<SliderSlots> & SliderCommons;

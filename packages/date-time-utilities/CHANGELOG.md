@@ -1,8 +1,62 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jan 2022 07:30:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.3.0)
+
+Tue, 25 Jan 2022 07:30:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.2.3..@fluentui/date-time-utilities_v8.3.0)
+
+### Minor changes
+
+- Added getDateFromTimeSelection function, TimeConstant values OffsetTo24HourFormat and TimeFormatRegex ([PR #20805](https://github.com/microsoft/fluentui/pull/20805) by jamwu@microsoft.com)
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.2.3)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.2.2..@fluentui/date-time-utilities_v8.2.3)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+
+## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.2.2)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.2.1..@fluentui/date-time-utilities_v8.2.2)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.2.1)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.2.0..@fluentui/date-time-utilities_v8.2.1)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.2.0)
+
+Mon, 28 Jun 2021 07:35:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.1.2..@fluentui/date-time-utilities_v8.2.0)
+
+### Minor changes
+
+- Add functions for time related utils ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by shi.cheng@microsoft.com)
+
+## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.1.2)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.1.1..@fluentui/date-time-utilities_v8.1.2)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
 
 ## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.1.1)
 

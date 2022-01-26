@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from '@fluentui/react';
 import { useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/Button';
@@ -47,7 +47,7 @@ const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
 };
 
 storiesOf('Coachmark', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -62,4 +62,28 @@ storiesOf('Coachmark', module)
     <Fabric>
       <CoachmarkUsage />
     </Fabric>
-  ));
+  ))
+  .addStory('Rendering Coachmark attached to a rectangle', () => {
+    const rectangle = {
+      left: 50,
+      right: 150,
+      top: 50,
+      bottom: 100,
+    };
+    const divStyles: React.CSSProperties = {
+      background: 'red',
+      position: 'absolute',
+      left: rectangle.left,
+      top: rectangle.top,
+      width: rectangle.right - rectangle.left,
+      height: rectangle.bottom - rectangle.top,
+    };
+    const positioningContainerProps = { directionalHint: DirectionalHint.topCenter };
+
+    return (
+      <>
+        <div style={divStyles} />
+        <Coachmark target={rectangle} positioningContainerProps={positioningContainerProps} />
+      </>
+    );
+  });

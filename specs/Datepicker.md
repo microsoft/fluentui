@@ -12,7 +12,7 @@
 - [WAI-ARIA](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html)
 - [Material UI Pickers](https://material-ui-pickers.dev/demo/datepicker)
 - [React-Use-Calendar](https://github.com/gregnb/react-use-calendar)
-- [React Spectrum Datepciker](https://github.com/adobe-private/react-spectrum-v3/tree/master/packages/%40react-aria/datepicker)
+- [React Spectrum Datepicker](https://github.com/adobe-private/react-spectrum-v3/tree/master/packages/%40react-aria/datepicker)
 - [React Dates](https://github.com/airbnb/react-dates)
 
 ## API

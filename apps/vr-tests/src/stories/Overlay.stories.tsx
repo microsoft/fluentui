@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Overlay } from '@fluentui/react';
 
 storiesOf('Overlay', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -20,7 +20,7 @@ storiesOf('Overlay', module)
     'Root',
     // prettier-ignore
     () => <Overlay>Overlay content</Overlay>,
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Dark',

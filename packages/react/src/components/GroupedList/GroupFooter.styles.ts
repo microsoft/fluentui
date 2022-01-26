@@ -1,5 +1,5 @@
-import { IGroupFooterStyleProps, IGroupFooterStyles } from './GroupFooter.types';
 import { getGlobalClassNames } from '../../Styling';
+import type { IGroupFooterStyleProps, IGroupFooterStyles } from './GroupFooter.types';
 
 const GlobalClassNames = {
   root: 'ms-groupFooter',

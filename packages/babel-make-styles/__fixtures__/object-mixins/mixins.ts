@@ -1,11 +1,17 @@
-import { MakeStyles } from '@fluentui/make-styles';
+import { GriffelStyle } from '@griffel/core';
+import { tokens } from '@fluentui/react-theme';
 
-export const flexStyles: MakeStyles = {
+export const flexStyles: GriffelStyle = {
   display: 'flex',
   flexDirection: 'column',
 };
 
-export const gridStyles = (gridGap: string): MakeStyles => ({
+export const gridStyles = (gridGap: string): GriffelStyle => ({
   display: 'grid',
-  gridGap,
+  gridRowGap: gridGap,
 });
+
+export const typography: Record<'text' | 'header', GriffelStyle> = {
+  text: { fontWeight: tokens.fontWeightRegular },
+  header: { fontWeight: 'bold' },
+};

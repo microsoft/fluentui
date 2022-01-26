@@ -69,7 +69,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         selectors: {
           ['.ms-Dropdown-title']: {
             color: semanticColors.bodyText,
-            borderColor: semanticColors.inputPlaceholderText,
+            borderColor: semanticColors.inputBorder,
             backgroundColor: extendedSemanticColors.controlBackground,
           },
           ['.ms-Dropdown-titleIsPlaceHolder.ms-Dropdown-title']: {

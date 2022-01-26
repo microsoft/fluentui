@@ -1,96 +1,94 @@
-import { css } from '@microsoft/fast-element';
+import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
-  accentForegroundRestBehavior,
-  heightNumber,
-  neutralFillRestBehavior,
-  neutralForegroundHintBehavior,
-} from '../../styles';
+  display,
+  ElementDefinitionContext,
+  forcedColorsStylesheetBehavior,
+  ProgressRingOptions,
+} from '@microsoft/fast-foundation';
+import { heightNumber } from '../../styles';
+import { accentFillRest, neutralForegroundHint } from '../../design-tokens';
 
-export const ProgressRingStyles = css`
-  ${display('flex')} :host {
-    align-items: center;
-    outline: none;
-    height: calc(${heightNumber} * 1px);
-    width: calc(${heightNumber} * 1px);
-    margin: calc(${heightNumber} * 1px) 0;
-  }
-
-  .progress {
-    height: 100%;
-    width: 100%;
-  }
-
-  .background {
-    stroke: ${neutralFillRestBehavior.var};
-    fill: none;
-    stroke-width: 2px;
-  }
-
-  .determinate {
-    stroke: ${accentForegroundRestBehavior.var};
-    fill: none;
-    stroke-width: 2px;
-    stroke-linecap: round;
-    transform-origin: 50% 50%;
-    transform: rotate(-90deg);
-    transition: all 0.2s ease-in-out;
-  }
-
-  .indeterminate-indicator-1 {
-    stroke: ${accentForegroundRestBehavior.var};
-    fill: none;
-    stroke-width: 2px;
-    stroke-linecap: round;
-    transform-origin: 50% 50%;
-    transform: rotate(-90deg);
-    transition: all 0.2s ease-in-out;
-    animation: spin-infinite 2s linear infinite;
-  }
-
-  :host(.paused) .indeterminate-indicator-1 {
-    animation-play-state: paused;
-    stroke: ${neutralFillRestBehavior.var};
-  }
-
-  :host(.paused) .determinate {
-    stroke: ${neutralForegroundHintBehavior.var};
-  }
-
-  @keyframes spin-infinite {
-    0% {
-      stroke-dasharray: 0.01px 43.97px;
-      transform: rotate(0deg);
+export const progressRingStyles: (
+  context: ElementDefinitionContext,
+  definition: ProgressRingOptions,
+) => ElementStyles = (context: ElementDefinitionContext, definition: ProgressRingOptions) =>
+  css`
+    ${display('flex')} :host {
+      align-items: center;
+      outline: none;
+      height: calc(${heightNumber} * 1px);
+      width: calc(${heightNumber} * 1px);
     }
-    50% {
-      stroke-dasharray: 21.99px 21.99px;
-      transform: rotate(450deg);
+
+    .progress {
+      height: 100%;
+      width: 100%;
     }
-    100% {
-      stroke-dasharray: 0.01px 43.97px;
-      transform: rotate(1080deg);
+
+    .background {
+      fill: none;
+      stroke-width: 2px;
     }
-  }
-`.withBehaviors(
-  accentForegroundRestBehavior,
-  neutralFillRestBehavior,
-  neutralForegroundHintBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      .indeterminate-indicator-1,
-      .determinate {
-        stroke: ${SystemColors.FieldText};
+
+    .determinate {
+      stroke: ${accentFillRest};
+      fill: none;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      transform-origin: 50% 50%;
+      transform: rotate(-90deg);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .indeterminate-indicator-1 {
+      stroke: ${accentFillRest};
+      fill: none;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      transform-origin: 50% 50%;
+      transform: rotate(-90deg);
+      transition: all 0.2s ease-in-out;
+      animation: spin-infinite 2s linear infinite;
+    }
+
+    :host(.paused) .indeterminate-indicator-1 {
+      animation: none;
+      stroke: ${neutralForegroundHint};
+    }
+
+    :host(.paused) .determinate {
+      stroke: ${neutralForegroundHint};
+    }
+
+    @keyframes spin-infinite {
+      0% {
+        stroke-dasharray: 0.01px 43.97px;
+        transform: rotate(0deg);
       }
-      .background {
-        stroke: ${SystemColors.Field};
+      50% {
+        stroke-dasharray: 21.99px 21.99px;
+        transform: rotate(450deg);
       }
-      :host(.paused) .indeterminate-indicator-1 {
-        stroke: ${SystemColors.Field};
+      100% {
+        stroke-dasharray: 0.01px 43.97px;
+        transform: rotate(1080deg);
       }
-      :host(.paused) .determinate {
-        stroke: ${SystemColors.GrayText};
-      }
-    `,
-  ),
-);
+    }
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        .background {
+          stroke: ${SystemColors.Field};
+        }
+        .determinate,
+        .indeterminate-indicator-1 {
+          stroke: ${SystemColors.ButtonText};
+        }
+        :host(.paused) .determinate,
+        :host(.paused) .indeterminate-indicator-1 {
+          stroke: ${SystemColors.GrayText};
+        }
+      `,
+    ),
+  );

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useControllableValue, useId, useWarnings } from '@fluentui/react-hooks';
 import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '@fluentui/utilities';
 import { Label } from '../Label/Label';
-import { IToggleProps, IToggleStyleProps, IToggleStyles, IToggle } from './Toggle.types';
+import type { IToggleProps, IToggleStyleProps, IToggleStyles, IToggle } from './Toggle.types';
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 
@@ -66,15 +66,15 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
     // The following properties take priority for what Narrator should read:
     // 1. ariaLabel
     // 2. onAriaLabel (if checked) or offAriaLabel (if not checked)
-    // 3. label AND stateText, if existent
+    // 3. label, if existent
 
     let labelledById: string | undefined = undefined;
     if (!ariaLabel && !badAriaLabel) {
       if (label) {
         labelledById = labelId;
       }
-      if (stateText) {
-        labelledById = labelledById ? `${labelledById} ${stateTextId}` : stateTextId;
+      if (stateText && !labelledById) {
+        labelledById = stateTextId;
       }
     }
 

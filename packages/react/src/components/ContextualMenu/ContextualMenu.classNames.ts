@@ -1,17 +1,17 @@
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
 import { getMenuItemStyles } from './ContextualMenu.cnstyles';
 import {
-  ITheme,
   mergeStyleSets,
   getGlobalClassNames,
   getScreenSelector,
   ScreenWidthMaxMedium,
   hiddenContentStyle,
 } from '../../Styling';
-import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { memoizeFunction, IsFocusVisibleClassName } from '../../Utilities';
-import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
-import { IContextualMenuSubComponentStyles } from './ContextualMenu.types';
+import type { ITheme } from '../../Styling';
+import type { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
+import type { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
+import type { IContextualMenuSubComponentStyles } from './ContextualMenu.types';
 
 /**
  * @deprecated Deprecated in favor of mergeStyles API.

@@ -2,13 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-
-import { IBasePicker } from '../BasePicker.types';
 import { resetIds } from '@fluentui/utilities';
 import { people } from '@fluentui/example-data';
 import { NormalPeoplePicker } from './PeoplePicker';
-import { IPersonaProps } from '../../Persona/Persona.types';
 import { isConformant } from '../../../common/isConformant';
+import type { IBasePicker } from '../BasePicker.types';
+import type { IPersonaProps } from '../../Persona/Persona.types';
 
 function onResolveSuggestions(text: string): IPersonaProps[] {
   return people.filter((person: IPersonaProps) => person.text!.toLowerCase().indexOf(text.toLowerCase()) === 0);

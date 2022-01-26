@@ -1,10 +1,10 @@
-import { StyleRenderer } from './types';
 import {
   Stylesheet,
   mergeCssSets,
   fontFace as mergeFontFace,
   keyframes as mergeKeyframes,
 } from '@fluentui/merge-styles';
+import type { StyleRenderer } from './types';
 
 let _seed = 0;
 

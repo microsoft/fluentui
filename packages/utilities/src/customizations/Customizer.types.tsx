@@ -1,6 +1,6 @@
-import { IBaseProps } from '../BaseComponent.types';
-import { ISettings, ISettingsFunction } from './Customizations';
-import { ICustomizerContext } from './CustomizerContext';
+import type { IBaseProps } from '../BaseComponent.types';
+import type { ISettings, ISettingsFunction } from './Customizations';
+import type { ICustomizerContext } from './CustomizerContext';
 
 export type ICustomizerProps = IBaseProps &
   Partial<{

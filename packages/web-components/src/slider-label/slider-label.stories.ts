@@ -1,13 +1,46 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import Examples from './fixtures/slider-label.html';
-import { FluentSliderLabel } from './';
-
-// Prevent tree-shaking
-FluentSliderLabel;
-FluentDesignSystemProvider;
+import { fluentSlider } from '../slider/index';
 
 export default {
-  title: 'Slider label',
+  title: 'Components/Slider Label',
+  components: fluentSlider,
+  argTypes: {
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    hideMark: {
+      control: { type: 'boolean' },
+    },
+    position: {
+      control: { type: 'number' },
+    },
+  },
 };
 
-export const SliderLabel = (): string => Examples;
+const SliderLabelTemplate = ({ disabled, hideMark, label, orientation, position }) => `
+  <fluent-slider-label
+    ${disabled ? 'disabled' : ''}
+    ${hideMark ? `hide-mark="${hideMark}"` : ''}
+    ${position ? `position="${position}"` : ''}
+  >
+    ${label}
+  </fluent-slider-label>
+`;
+
+export const SliderLabel = SliderLabelTemplate.bind({});
+
+SliderLabel.args = {
+  hideMark: false,
+  label: 'Label',
+};
+
+const example = `
+<fluent-slider-label> basic </fluent-slider-label>
+`;
+
+SliderLabel.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

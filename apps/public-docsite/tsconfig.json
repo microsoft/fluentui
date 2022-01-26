@@ -2,7 +2,8 @@
   "compilerOptions": {
     "outDir": "lib",
     "target": "es5",
-    "module": "commonjs",
+    // ensure webpack can split async imports into separate chunks
+    "module": "esnext",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
@@ -14,7 +15,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es2015", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["webpack-env", "custom-global"]
   },

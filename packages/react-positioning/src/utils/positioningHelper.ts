@@ -1,5 +1,5 @@
 import * as PopperJs from '@popperjs/core';
-import { Alignment, Offset, OffsetFunction, OffsetFunctionParam, Position } from '../types';
+import type { Alignment, Offset, OffsetFunction, OffsetFunctionParam, Position } from '../types';
 
 type PlacementPosition = 'top' | 'bottom' | 'left' | 'right';
 type PlacementAlign = 'start' | 'end' | ''; // '' represents center

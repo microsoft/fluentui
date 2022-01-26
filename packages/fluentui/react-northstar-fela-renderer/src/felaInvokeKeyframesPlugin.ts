@@ -1,4 +1,4 @@
-import { callable, ICSSInJSStyle } from '@fluentui/styles';
+import { AnimationKeyFrame, callable, ICSSInJSStyle } from '@fluentui/styles';
 import * as _ from 'lodash';
 
 /**
@@ -9,27 +9,27 @@ import * as _ from 'lodash';
  * tree.
  */
 export const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
-  return Object.keys(styles).reduce((acc, cssPropertyName) => {
+  return Object.keys(styles).reduce((acc: ICSSInJSStyle, cssPropertyName: keyof ICSSInJSStyle) => {
     const cssPropertyValue = styles[cssPropertyName];
 
     if (_.isPlainObject(cssPropertyValue)) {
       if (cssPropertyName === 'animationName') {
-        if (cssPropertyValue.keyframe) {
-          styles[cssPropertyName] = callable(cssPropertyValue.keyframe)(cssPropertyValue.params || {});
+        const animationDefinition = cssPropertyValue as AnimationKeyFrame;
+
+        if (animationDefinition.keyframe) {
+          styles[cssPropertyName] = callable(animationDefinition.keyframe)(animationDefinition.params || {});
         }
 
-        return {
-          ...acc,
-          [cssPropertyName]: styles[cssPropertyName],
-        };
+        acc[cssPropertyName] = styles[cssPropertyName];
+        return acc;
       }
 
-      return {
-        ...acc,
-        [cssPropertyName]: felaInvokeKeyframesPlugin(cssPropertyValue),
-      };
+      // Without casting to any TSC gives "Expression produces a union type that is too complex to represent" error
+      (acc as any)[cssPropertyName] = felaInvokeKeyframesPlugin(cssPropertyValue as ICSSInJSStyle);
+      return acc;
     }
 
-    return { ...acc, [cssPropertyName]: styles[cssPropertyName] };
+    (acc as any)[cssPropertyName] = styles[cssPropertyName];
+    return acc;
   }, {});
 };

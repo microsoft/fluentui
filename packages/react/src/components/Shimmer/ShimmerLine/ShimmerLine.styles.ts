@@ -1,5 +1,6 @@
-import { IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
-import { IRawStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import type { IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
+import type { IRawStyle } from '../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ShimmerLine-root',

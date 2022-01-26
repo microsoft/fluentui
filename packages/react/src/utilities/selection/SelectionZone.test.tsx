@@ -4,10 +4,11 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { SelectionZone } from './SelectionZone';
 import { Selection } from './Selection';
-import { SelectionMode, IObjectWithKey } from './interfaces';
+import { SelectionMode } from './interfaces';
 import { isConformant } from '../../common/isConformant';
 
 import { KeyCodes, EventGroup } from '../../Utilities';
+import type { IObjectWithKey } from './interfaces';
 
 const SELECTABLE_ITEMS = [{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }, { key: 'e' }];
 

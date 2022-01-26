@@ -1,31 +1,26 @@
 import * as React from 'react';
 import { DetailsListBase } from './DetailsList.base';
-import { ISelection, SelectionMode, ISelectionZoneProps } from '../../Selection';
-import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
-import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
-import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
-import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
-import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
-import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
-import { IList, IListProps, ScrollToMode } from '../../List';
-import { ITheme, IStyle } from '../../Styling';
-import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
-import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
-
-export {
-  IDetailsHeaderProps,
-  IDetailsRowBaseProps,
-  IDetailsHeaderBaseProps,
-  IDetailsFooterBaseProps,
-  IDragDropContext,
-  IDragDropEvents,
-  IDragDropHelper,
-  IDragDropOptions,
-  IViewport,
-  IWithViewportProps,
-};
+import { SelectionMode } from '../../Selection';
+import { ScrollToMode } from '../../List';
+import type { ISelection, ISelectionZoneProps } from '../../Selection';
+import type { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
+import type { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
+import type { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
+import type { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
+import type { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
+import type { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
+import type { IList, IListProps } from '../../List';
+import type { ITheme, IStyle } from '../../Styling';
+import type { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
+import type { IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import type {
+  IDetailsColumnStyleProps,
+  IDetailsColumnProps,
+  IDetailsColumnStyles,
+  IDetailsColumnFilterIconProps,
+} from './DetailsColumn.types';
+import { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory DetailsList}
@@ -60,6 +55,14 @@ export interface IDetailsList extends IList {
    * Get the start index of the page that is currently in view
    */
   getStartItemIndexInView: () => number;
+
+  /**
+   * Use to programatically resize and/or reorder columns in the DetailsList.
+   * @param column - column to resize/reorder.
+   * @param options - includes width which is desired width in pixels the column should be resized
+   * to and newColumnIndex which is desired index position where the column should be moved to.
+   */
+  updateColumn: (column: IColumn, options: { width?: number; newColumnIndex?: number }) => void;
 }
 
 /**
@@ -138,10 +141,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   isHeaderVisible?: boolean;
 
-  /** column defitions. If none are provided, default columns will be created based on the items' properties. */
+  /** Column definitions. If none are provided, default columns will be created based on the items' properties. */
   columns?: IColumn[];
 
-  /** Controls how the list contrains overflow. */
+  /** Controls how the list constrains overflow. */
   constrainMode?: ConstrainMode;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
@@ -331,6 +334,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /** Role for the list. */
   role?: string;
+
+  /**
+   * Properties to pass through to the FocusZone.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**
@@ -435,6 +443,9 @@ export interface IColumn {
 
   /** Custom renderer for column header divider. */
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+
+  /** Custom renderer for filter icon. */
+  onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
 
   /** Custom renderer for column header content, instead of the default text rendering. */
   onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
@@ -669,3 +680,16 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
 
 export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}
+
+export type {
+  IDetailsHeaderProps,
+  IDetailsRowBaseProps,
+  IDetailsHeaderBaseProps,
+  IDetailsFooterBaseProps,
+  IDragDropContext,
+  IDragDropEvents,
+  IDragDropHelper,
+  IDragDropOptions,
+  IViewport,
+  IWithViewportProps,
+};

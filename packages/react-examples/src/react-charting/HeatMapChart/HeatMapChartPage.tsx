@@ -7,8 +7,10 @@ import {
   PropertiesTableSet,
 } from '@fluentui/react-docsite-components';
 import { HeatMapChartBasicExample } from './HeatMapChartBasic.Example';
+import { HeatMapChartCustomAccessibilityExample } from './HeatMapChartBasic.CustomAccessibility.Example';
 
 const HeatMapChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/HeatMapChartBasic.Example.tsx');
+const HeatMapChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/HeatMapChartBasic.CustomAccessibility.Example.tsx');
 
 export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): React.ReactNode {
@@ -20,6 +22,9 @@ export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ExampleCard title="Heat Map Basic" code={HeatMapChartBasicExampleCode}>
               <HeatMapChartBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Heat Map Custom Accessibility" code={HeatMapChartCustomAccessibilityExampleCode}>
+              <HeatMapChartCustomAccessibilityExample />
             </ExampleCard>
           </div>
         }

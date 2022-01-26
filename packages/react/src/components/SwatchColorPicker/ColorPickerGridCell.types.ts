@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory SwatchColorPicker}
@@ -21,6 +21,13 @@ export interface IColorPickerGridCellProps {
    * Prefix for this cell's ID. Will be required in a future version once `id` is removed.
    */
   idPrefix?: string;
+
+  /**
+   * If true, uses radio semantics for the color cell.
+   * This should be set to true for cells within a single-row colorpicker.
+   * @defaultvalue false
+   */
+  isRadio?: boolean;
 
   /**
    * Tooltip and aria label for this item

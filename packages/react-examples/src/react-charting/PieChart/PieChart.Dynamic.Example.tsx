@@ -46,7 +46,7 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
   public render(): JSX.Element {
     return (
       <div>
-        <PieChart data={this.state.dynamicData} chartTitle="Pie Chart" colors={this.state.colors} />
+        <PieChart data={this.state.dynamicData} chartTitle="Pie Chart dynamic example" colors={this.state.colors} />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>

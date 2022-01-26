@@ -1,5 +1,3 @@
-import { INavStyleProps, INavStyles } from './Nav.types';
-import { IButtonStyles } from '../../Button';
 import {
   AnimationClassNames,
   getFocusStyle,
@@ -8,6 +6,8 @@ import {
   HighContrastSelector,
   FontWeights,
 } from '../../Styling';
+import type { INavStyleProps, INavStyles } from './Nav.types';
+import type { IButtonStyles } from '../../Button';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -218,6 +218,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         position: 'absolute',
         left: '8px',
         height: navHeight,
+        // inline-flex prevents the chevron from shifting with custom line height styles
+        display: 'inline-flex',
+        alignItems: 'center',
         lineHeight: `${navHeight}px`,
         fontSize: fonts.small.fontSize,
         transition: 'transform .1s linear',

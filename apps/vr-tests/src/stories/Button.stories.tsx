@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorTall } from '../utilities/index';
+import { TestWrapperDecorator, TestWrapperDecoratorTall } from '../utilities/index';
 import {
   DefaultButton,
   ActionButton,
@@ -45,7 +45,7 @@ const commandProps: IButtonProps = {
 };
 
 storiesOf('Button (compat)', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -59,7 +59,7 @@ storiesOf('Button (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <DefaultButton {...baseProps} />, { rtl: true })
+  .addStory('Root', () => <DefaultButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <DefaultButton {...baseProps} disabled={true} />)
   .addStory('Checked', () => <DefaultButton {...baseProps} checked={true} />)
   .addStory('Primary', () => <DefaultButton {...baseProps} primary={true} />)
@@ -76,7 +76,7 @@ storiesOf('Button (compat)', module)
   .addStory('Icon Only', () => <DefaultButton iconProps={baseProps.iconProps} />);
 
 storiesOf('Button Action (compat)', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -90,14 +90,14 @@ storiesOf('Button Action (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <ActionButton {...baseProps} />, { rtl: true })
+  .addStory('Root', () => <ActionButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <ActionButton {...baseProps} disabled={true} />)
   .addStory('Checked', () => <ActionButton {...baseProps} checked={true} />)
   .addStory('No Icon', () => <ActionButton>Button</ActionButton>)
   .addStory('Icon Only', () => <ActionButton iconProps={baseProps.iconProps} />);
 
 storiesOf('Button Compound (compat)', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -111,7 +111,7 @@ storiesOf('Button Compound (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <CompoundButton {...baseProps} />, { rtl: true })
+  .addStory('Root', () => <CompoundButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <CompoundButton {...baseProps} disabled={true} />)
   .addStory('Checked', () => <CompoundButton {...baseProps} checked={true} />)
   .addStory('Primary', () => <CompoundButton {...baseProps} primary={true} />)
@@ -127,7 +127,7 @@ storiesOf('Button Command (compat)', module)
   .addDecorator(story => (
     <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>{story()}</div>
   ))
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -144,12 +144,12 @@ storiesOf('Button Command (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <CommandBarButton {...commandProps} />, { rtl: true })
+  .addStory('Root', () => <CommandBarButton {...commandProps} />, { includeRtl: true })
   .addStory('Disabled', () => <CommandBarButton {...commandProps} disabled={true} />)
   .addStory('Checked', () => <CommandBarButton {...commandProps} checked={true} />);
 
 storiesOf('Button Split (compat)', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -172,7 +172,7 @@ storiesOf('Button Split (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { rtl: true })
+  .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { includeRtl: true })
   .addStory('Disabled', () => <DefaultButton {...commandProps} disabled={true} split={true} />)
   .addStory('Default with Primary Action Disabled', () => (
     <DefaultButton {...commandProps} primaryDisabled={true} split={true} />
@@ -191,7 +191,7 @@ storiesOf('Button Split (compat)', module)
   .addStory('Command Split', () => <CommandBarButton {...commandProps} split={true} />);
 
 storiesOf('Button Special Scenarios (compat)', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
@@ -224,7 +224,7 @@ storiesOf('Button Special Scenarios (compat)', module)
   ));
 
 storiesOf('IconButton Scenarios (compat)', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Steps()

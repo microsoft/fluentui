@@ -1,0 +1,20 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Accessibility/Experiences" />
+
+## Creating an accessible web application or web page
+
+When designing an application or a web page, keep in mind that the easiest way to make it accessible is to maintain a consistent and compliant document structure.
+The following steps help to design an accessible user experience:
+
+- Decompose UI to parts and **identify components, variants and behaviors to use**
+- define the usage of **[headings and landmarks](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/index.html)**
+- verify the usage of **[color and contrast](https://webaim.org/resources/contrastchecker/)** to convey information
+- ensure **[tab order](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-order.html) and [arrow key](https://dequeuniversity.com/tips/aria-keyboard-patterns) navigation** is consistent with DOM structure and ARIA roles
+- specify **labels**, especially for components without textual information (e.g. icon only buttons) and for containers (lists, toolbars and so on)
+- specify texts for **[state change announcements](https://www.w3.org/WAI/WCAG21/Understanding/status-messages)** ([error messages](https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA19), confirmations, dynamic UI changes, ...)
+- identify UI parts that **[appear on hover or focus](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html)** then specify keyboard and screen reader interaction with them. Keep in mind that screen readers and in most cases also touch devices do not support hover state.
+- list cases when **focus** needs to be **moved programmatically** (if parts of the UI are appearing/disappearing or other cases)
+- list cases when **focus** needs to be **trapped** in sections of the UI (for dialogs, popups or hierarchical navigation)
+- when extending existing functionality, think about how it fits into the current experience with regards to **discoverability, interaction, keyboard navigation and screen reader navigation**
+- in your designs, cover **[High contrast](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/)** and **[Zoom and reflow](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html)** scenarios

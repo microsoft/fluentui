@@ -4,10 +4,9 @@ const fs = require('fs').promises;
 const del = require('del');
 const glob = require('glob');
 const path = require('path');
-const prettyBytes = require('pretty-bytes');
 
 const buildFixture = require('../utils/buildFixture');
-const { hrToSeconds } = require('../utils/helpers');
+const { formatBytes, hrToSeconds } = require('../utils/helpers');
 const prepareFixture = require('../utils/prepareFixture');
 
 /**
@@ -49,7 +48,7 @@ async function measure(options) {
     const sortedMeasurements = [...measurements].sort((a, b) => a.path.localeCompare(b.path));
 
     sortedMeasurements.forEach(r => {
-      table.push([r.name, prettyBytes(r.minifiedSize), prettyBytes(r.gzippedSize)]);
+      table.push([r.name, formatBytes(r.minifiedSize), formatBytes(r.gzippedSize)]);
     });
 
     console.log(table.toString());

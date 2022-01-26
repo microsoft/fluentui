@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { LabelState } from './Label.types';
-import { labelShorthandProps } from './useLabel';
+import type { LabelState, LabelSlots } from './Label.types';
 
 /**
  * Render the final JSX of Label
  */
-export const renderLabel = (state: LabelState) => {
-  const { slots, slotProps } = getSlots(state, labelShorthandProps);
+export const renderLabel_unstable = (state: LabelState) => {
+  const { slots, slotProps } = getSlots<LabelSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>
-      {/* TODO Add additional slots in the appropriate place */}
-      {state.children}
+      {state.root.children}
+      <slots.required {...slotProps.required} />
     </slots.root>
   );
 };

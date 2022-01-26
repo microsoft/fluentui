@@ -1,4 +1,4 @@
-import { ISuggestionModel } from './Suggestions.types';
+import type { ISuggestionModel } from './Suggestions.types';
 
 /**
  * {@docCategory Pickers}

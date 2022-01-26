@@ -24,9 +24,6 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
       view: <SelectedPeopleListControlledExample />,
     },
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader?esModule=false!@fluentui/react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts'),
-  ],
   overview: '',
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/docs/SelectedPeopleListDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/docs/SelectedPeopleListDonts.md'),

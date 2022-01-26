@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { useRefEffect, RefCallback } from '@fluentui/react-hooks';
+import { useRefEffect } from '@fluentui/react-hooks';
 import { getWindow } from '@fluentui/utilities';
 import { observeResize } from './observeResize';
+import type { RefCallback } from '@fluentui/react-hooks';
 
 /**
  * Callback to notify the user that the items in the overflow have changed. This should ensure that the overflow menu

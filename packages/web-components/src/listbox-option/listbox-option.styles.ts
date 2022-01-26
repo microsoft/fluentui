@@ -1,142 +1,165 @@
-import { css } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
-import { SystemColors } from '@microsoft/fast-web-utilities';
+import { css, ElementStyles } from '@microsoft/fast-element';
 import {
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillSelectedBehavior,
-  accentForegroundCutRestBehavior,
-  neutralFillHoverBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFillStealthSelectedBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundHoverBehavior,
-  neutralForegroundRestBehavior,
-  neutralLayerL1Behavior,
-} from '../styles';
+  disabledCursor,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
+import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
+import {
+  accentFillRest,
+  bodyFont,
+  controlCornerRadius,
+  designUnit,
+  disabledOpacity,
+  focusStrokeOuter,
+  focusStrokeWidth,
+  neutralFillSecondaryActive,
+  neutralFillSecondaryHover,
+  neutralFillSecondaryRest,
+  neutralFillStealthActive,
+  neutralFillStealthFocus,
+  neutralFillStealthHover,
+  neutralFillStealthRest,
+  neutralForegroundRest,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+} from '../design-tokens';
 
-export const OptionStyles = css`
+export const optionStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+  css`
     ${display('inline-flex')} :host {
-        font-family: var(--body-font);
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--focus-outline-width) * 1px) solid transparent;
-        box-sizing: border-box;
-        color: ${neutralForegroundRestBehavior.var};
-        cursor: pointer;
-        fill: currentcolor;
-        font-size: var(--type-ramp-base-font-size);
-        height: calc(${heightNumber} * 1px);
-        line-height: var(--type-ramp-base-line-height);
-        margin: 0 calc(var(--design-unit) * 1px);
-        outline: none;
-        overflow: hidden;
-        align-items: center;
-        padding: 0 calc(var(--design-unit) * 2.25px);
-        user-select: none;
-        white-space: nowrap;
+      position: relative;
+      font-family: ${bodyFont};
+      background: ${neutralFillStealthRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${focusStrokeWidth} * 1px) solid transparent;
+      box-sizing: border-box;
+      color: ${neutralForegroundRest};
+      cursor: pointer;
+      fill: currentcolor;
+      font-size: ${typeRampBaseFontSize};
+      height: calc(${heightNumber} * 1px);
+      line-height: ${typeRampBaseLineHeight};
+      outline: none;
+      overflow: hidden;
+      align-items: center;
+      padding: 0 calc(${designUnit} * 2.25px);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    :host::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: calc((${heightNumber} / 4) - ${focusStrokeWidth} * 1px);
+      width: 3px;
+      height: calc((${heightNumber} / 2) * 1px);
+      background: transparent;
+      border-radius: calc(${controlCornerRadius} * 1px);
+    }
+
+    :host(:not([disabled]):hover) {
+      background: ${neutralFillStealthHover};
+    }
+
+    :host(:not([disabled]):active) {
+      background: ${neutralFillStealthActive};
+    }
+
+    :host(:not([disabled]):active)::before {
+      background: ${accentFillRest};
+      height: calc(((${heightNumber} / 2) - 6) * 1px);
+    }
+
+    :host([aria-selected='true'])::before {
+      background: ${accentFillRest};
     }
 
     :host(:${focusVisible}) {
-        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccentBehavior.var};
-        border-color: ${neutralFocusBehavior.var};
-        background: ${accentFillHoverBehavior.var};
-        color: ${accentForegroundCutRestBehavior.var};
+      border-color: ${focusStrokeOuter};
+      background: ${neutralFillStealthFocus};
     }
 
-    :host([aria-selected="true"]) {
-        background: ${accentFillHoverBehavior.var};
-        color: ${accentForegroundCutRestBehavior.var};
+    :host([aria-selected='true']) {
+      background: ${neutralFillSecondaryRest};
     }
 
-    :host(:active) {
-        background: ${accentFillActiveBehavior.var};
-        color: ${accentForegroundCutRestBehavior.var};
+    :host(:not([disabled])[aria-selected='true']:hover) {
+      background: ${neutralFillSecondaryHover};
     }
 
-    :host(:not([aria-selected="true"]):hover) {
-        background: ${neutralFillHoverBehavior.var};
-        color: ${neutralForegroundHoverBehavior.var};
+    :host(:not([disabled])[aria-selected='true']:active) {
+      background: ${neutralFillSecondaryActive};
     }
 
-    :host(:not([aria-selected="true"]):active) {
-        background: ${neutralFillHoverBehavior.var};
-        color: ${neutralForegroundHoverBehavior.var};
+    :host(:not([disabled]):not([aria-selected='true']):hover) {
+      background: ${neutralFillStealthHover};
+    }
+
+    :host(:not([disabled]):not([aria-selected='true']):active) {
+      background: ${neutralFillStealthActive};
     }
 
     :host([disabled]) {
-        cursor: ${disabledCursor};
-        opacity: var(--disabled-opacity);
-    }
-
-    :host([disabled]:hover) {
-        background-color: inherit;
+      cursor: ${disabledCursor};
+      opacity: ${disabledOpacity};
     }
 
     .content {
-        grid-column-start: 2;
-        justify-self: start;
-        overflow: hidden;
-        text-overflow: ellipsis;
+      grid-column-start: 2;
+      justify-self: start;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .start,
     .end,
     ::slotted(svg) {
-        display: flex;
+      display: flex;
     }
 
-    ::slotted(svg) {
-        ${/* Glyph size and margin-left is temporary - replace when adaptive typography is figured out */ ''}
-        height: calc(var(--design-unit) * 4px);
-        width: calc(var(--design-unit) * 4px);
+    ::slotted([slot='end']) {
+      margin-inline-start: 1ch;
     }
 
-    ::slotted([slot="end"]) {
-        margin-inline-start: 1ch;
+    ::slotted([slot='start']) {
+      margin-inline-end: 1ch;
     }
-
-    ::slotted([slot="start"]) {
-        margin-inline-end: 1ch;
-    }
-
-`.withBehaviors(
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillSelectedBehavior,
-  accentForegroundCutRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host {
-        border-color: transparent;
-        color: ${SystemColors.ButtonText};
-        forced-color-adjust: none;
-      }
-
-      :host(:not([aria-selected='true']):hover),
-      :host([aria-selected='true']) {
-        background: ${SystemColors.Highlight};
-        color: ${SystemColors.HighlightText};
-      }
-
-      :host([disabled]),
-      :host([disabled]:not([aria-selected='true']):hover) {
-        background: ${SystemColors.Canvas};
-        color: ${SystemColors.GrayText};
-        fill: currentcolor;
-        opacity: 1;
-      }
-    `,
-  ),
-  neutralFillHoverBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFillStealthSelectedBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundHoverBehavior,
-  neutralForegroundRestBehavior,
-  neutralLayerL1Behavior,
-);
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host {
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.ButtonFace};
+          color: ${SystemColors.ButtonText};
+        }
+        :host(:not([disabled]):not([aria-selected="true"]):hover),
+        :host(:not([disabled])[aria-selected="true"]:hover),
+        :host([aria-selected="true"]) {
+          forced-color-adjust: none;
+          background: ${SystemColors.Highlight};
+          color: ${SystemColors.HighlightText};
+        }
+        :host(:not([disabled]):active)::before,
+        :host([aria-selected='true'])::before {
+          background: ${SystemColors.HighlightText};
+        }
+        :host([disabled]),
+        :host([disabled]:not([aria-selected='true']):hover) {
+          background: ${SystemColors.Canvas};
+          color: ${SystemColors.GrayText};
+          fill: currentcolor;
+          opacity: 1;
+        }
+      `,
+    ),
+  );

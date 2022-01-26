@@ -141,6 +141,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      background-color: transparent;
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -256,6 +257,10 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -289,6 +294,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText3
                 </div>
@@ -345,6 +351,10 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -378,6 +388,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>
@@ -474,6 +485,10 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -507,6 +522,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText1
                 </div>
@@ -563,6 +579,10 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -596,6 +616,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText2
                 </div>
@@ -652,6 +673,10 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -685,6 +710,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText3
                 </div>
@@ -741,6 +767,10 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -774,6 +804,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>
@@ -870,6 +901,10 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -903,6 +938,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText1
                 </div>
@@ -932,6 +968,10 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -965,6 +1005,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText2
                 </div>
@@ -994,6 +1035,10 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -1027,6 +1072,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText3
                 </div>
@@ -1056,6 +1102,10 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -1089,6 +1139,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>
@@ -1185,6 +1236,10 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -1218,6 +1273,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText1
                 </div>
@@ -1332,6 +1388,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      background-color: transparent;
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -1564,6 +1621,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      background-color: transparent;
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -1796,6 +1854,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      background-color: transparent;
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -1930,6 +1989,10 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -1963,6 +2026,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText3
                 </div>
@@ -2019,6 +2083,10 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -2052,6 +2120,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>
@@ -2148,6 +2217,10 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -2181,6 +2254,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText1
                 </div>
@@ -2295,6 +2369,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      background-color: transparent;
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -2429,6 +2504,10 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                     color: #323130;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    -ms-high-contrast-adjust: auto;
+                    forced-color-adjust: auto;
+                  }
                   &:last-child .ms-Breadcrumb-item {
                     color: #323130;
                     font-weight: 600;
@@ -2462,6 +2541,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  role="none"
                 >
                   TestText4
                 </div>

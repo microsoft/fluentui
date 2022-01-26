@@ -23,7 +23,6 @@ import { CarouselNavigation, CarouselNavigationProps } from './CarouselNavigatio
 import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
 import { CarouselPaddle, CarouselPaddleProps } from './CarouselPaddle';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
@@ -32,6 +31,8 @@ import {
   useUnhandledProps,
   useStateManager,
   mergeVariablesOverrides,
+  usePrevious,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
@@ -57,12 +58,12 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   /**
    * Sets the aria-roledescription attribute.
    */
-  ariaRoleDescription?: string;
+  'aria-roledescription'?: string;
 
   /**
    * Sets the aria-label attribute for carousel.
    */
-  ariaLabel?: string;
+  'aria-label'?: string;
 
   /** Specifies if the process of switching slides is circular. */
   circular?: boolean;
@@ -111,6 +112,9 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Shorthand for the paddle that navigates to the previous item. */
   paddlePrevious?: ShorthandValue<CarouselPaddleProps>;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselStylesProps = { isFromKeyboard: boolean; shouldFocusContainer: boolean };
@@ -132,14 +136,7 @@ export const carouselSlotClassNames: CarouselSlotClassNames = {
  * @accessibilityIssues
  * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
  */
-export const Carousel: ComponentWithAs<'div', CarouselProps> &
-  FluentComponentStaticProps<CarouselProps> & {
-    Item: typeof CarouselItem;
-    Navigation: typeof CarouselNavigation;
-    NavigationItem: typeof CarouselNavigationItem;
-    Paddle: typeof CarouselPaddle;
-    PaddlesContainer: typeof CarouselPaddlesContainer;
-  } = props => {
+export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
   setStart();
@@ -153,12 +150,13 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     navigation,
     thumbnails,
     children,
-    ariaRoleDescription,
-    ariaLabel,
+    'aria-roledescription': ariaRoleDescription,
+    'aria-label': ariaLabel,
     className,
     design,
     styles,
     variables,
+    disableClickableNav,
   } = props;
 
   const ElementType = getElementType(props);
@@ -171,8 +169,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
       activeIndex: props.activeIndex,
     }),
   });
-
-  const { prevActiveIndex, ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
+  const { ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
+  const prevActiveIndex = usePrevious<number>(activeIndex);
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
@@ -207,8 +205,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     mapPropsToBehavior: () => ({
       navigation,
       ariaLiveOn,
-      ariaRoleDescription,
-      ariaLabel,
+      'aria-roledescription': ariaRoleDescription,
+      'aria-label': ariaLabel,
     }),
   });
 
@@ -247,8 +245,6 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
     let nextActiveIndex = index;
-    const lastActiveIndex = state.activeIndex;
-
     if (index < 0) {
       if (!circular) {
         return;
@@ -263,7 +259,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
       nextActiveIndex = 0;
     }
 
-    actions.setIndexes(nextActiveIndex, lastActiveIndex);
+    actions.setIndexes(nextActiveIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex: index });
 
@@ -302,7 +298,6 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
               const itemRef = itemRefs[index];
               const active = activeIndex === index;
               let slideToNext = prevActiveIndex < activeIndex;
-
               const initialMounting = prevActiveIndex === -1;
 
               if (circular && prevActiveIndex === items.length - 1 && activeIndex === 0) {
@@ -318,7 +313,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
                   unmountOnExit
                   visible={active}
                   name={
-                    initialMounting || !active
+                    initialMounting || !active || prevActiveIndex === index
                       ? ''
                       : slideToNext
                       ? 'carousel-slide-to-next-enter'
@@ -370,6 +365,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const handlePaddleOverrides = (predefinedProps: CarouselPaddleProps, paddleName: string) => ({
     variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     onClick: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
+      if (disableClickableNav) return;
+
       _.invoke(predefinedProps, 'onClick', e, paddleProps);
       if (paddleName === 'paddleNext') {
         showNextSlide(e, false);
@@ -398,6 +395,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
               className: carouselSlotClassNames.paddlePrevious,
               previous: true,
               hidden: items !== undefined && !circular && activeIndex === 0,
+              disableClickableNav,
             }),
           overrideProps: (predefinedProps: CarouselPaddleProps) =>
             handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
@@ -410,6 +408,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
               className: carouselSlotClassNames.paddleNext,
               next: true,
               hidden: items !== undefined && !circular && activeIndex === items.length - 1,
+              disableClickableNav,
             }),
           overrideProps: (predefinedProps: CarouselPaddleProps) => handlePaddleOverrides(predefinedProps, 'paddleNext'),
         })}
@@ -440,9 +439,12 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
           iconOnly: true,
           activeIndex,
           thumbnails,
+          disableClickableNav,
         }),
         overrideProps: (predefinedProps: CarouselNavigationItemProps) => ({
           onItemClick: (e: React.SyntheticEvent, itemProps: CarouselNavigationItemProps) => {
+            if (disableClickableNav) return;
+
             const { index } = itemProps;
 
             setActiveIndex(e, index, true);
@@ -466,6 +468,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -482,7 +485,14 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CarouselProps> &
+  FluentComponentStaticProps<CarouselProps> & {
+    Item: typeof CarouselItem;
+    Navigation: typeof CarouselNavigation;
+    NavigationItem: typeof CarouselNavigationItem;
+    Paddle: typeof CarouselPaddle;
+    PaddlesContainer: typeof CarouselPaddlesContainer;
+  };
 
 Carousel.displayName = 'Carousel';
 
@@ -491,8 +501,8 @@ Carousel.propTypes = {
     content: false,
   }),
   activeIndex: PropTypes.number,
-  ariaRoleDescription: PropTypes.string,
-  ariaLabel: PropTypes.string,
+  'aria-roledescription': PropTypes.string,
+  'aria-label': PropTypes.string,
   circular: PropTypes.bool,
   defaultActiveIndex: PropTypes.number,
   getItemPositionText: PropTypes.func,
@@ -504,6 +514,7 @@ Carousel.propTypes = {
   paddlesPosition: PropTypes.oneOf(['inside', 'outside', 'inline']),
   paddlePrevious: customPropTypes.itemShorthand,
   thumbnails: PropTypes.bool,
+  disableClickableNav: PropTypes.bool,
 };
 
 Carousel.defaultProps = {

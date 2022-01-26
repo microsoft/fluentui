@@ -1,4 +1,4 @@
-import { IChicletStyleProps, IChicletStyles } from './Chiclet.types';
+import type { IChicletStyleProps, IChicletStyles } from './Chiclet.types';
 
 export const getStyles = (props: IChicletStyleProps): IChicletStyles => {
   return {

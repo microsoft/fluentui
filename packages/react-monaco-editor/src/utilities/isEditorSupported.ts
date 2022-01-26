@@ -2,7 +2,7 @@ import { getWindow, isIE11 } from '@fluentui/react/lib/Utilities';
 import { isConfigAvailable } from '@fluentui/monaco-editor/lib/configureEnvironment';
 import { isExampleValid } from '../transpiler/exampleParser';
 import { getSetting } from './settings';
-import { IBasicPackageGroup } from '../interfaces/packageGroup';
+import type { IBasicPackageGroup } from '../interfaces/packageGroup';
 
 export function isEditorSupported(code: string, supportedPackages: IBasicPackageGroup[], propValue?: boolean): boolean {
   const win = getWindow();
