@@ -50,6 +50,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     actions,
     className,
     children,
+    // eslint-disable-next-line deprecation/deprecation
     overflowButtonAriaLabel,
     dismissIconProps,
     styles,
