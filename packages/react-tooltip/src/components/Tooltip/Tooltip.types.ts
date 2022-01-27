@@ -103,7 +103,7 @@ export type OnVisibleChangeData = {
 export type TooltipProps = ComponentProps<TooltipSlots> &
   Partial<Omit<TooltipCommons, 'relationship'>> &
   Pick<TooltipCommons, 'relationship'> & {
-    children?: (React.ReactElement & { ref?: React.Ref<unknown> }) | ((props: TooltipTriggerProps) => React.ReactNode);
+    children?: (React.ReactElement & { ref?: React.Ref<unknown> }) | ((props: TooltipTriggerProps) => React.ReactNode) | null;
   };
 
 /**
