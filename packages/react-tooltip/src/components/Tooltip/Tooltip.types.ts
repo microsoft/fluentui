@@ -100,10 +100,14 @@ export type OnVisibleChangeData = {
 /**
  * Properties for Tooltip
  */
-export type TooltipProps = ComponentProps<TooltipSlots> &
+export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> &
+  Required<Pick<ComponentProps<TooltipSlots>, 'content'>> &
   Partial<Omit<TooltipCommons, 'relationship'>> &
   Pick<TooltipCommons, 'relationship'> & {
-    children?: (React.ReactElement & { ref?: React.Ref<unknown> }) | ((props: TooltipTriggerProps) => React.ReactNode) | null;
+    children?:
+      | (React.ReactElement & { ref?: React.Ref<unknown> })
+      | ((props: TooltipTriggerProps) => React.ReactNode)
+      | null;
   };
 
 /**
