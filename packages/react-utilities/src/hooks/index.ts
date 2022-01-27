@@ -1,7 +1,6 @@
 export * from './useControllableState';
 export * from './useBoolean';
 export * from './useConst';
-export * from './useControllableValue';
 export * from './useEventCallback';
 export * from './useFirstMount';
 export * from './useId';
@@ -12,5 +11,6 @@ export * from './useOnClickOutside';
 export * from './useOnScrollOutside';
 export * from './usePrevious';
 export * from './useTimeout';
+export * from './useTriggerElement';
 export * from './useUnmount';
 export * from './useForceUpdate';

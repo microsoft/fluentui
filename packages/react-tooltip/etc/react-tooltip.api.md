@@ -17,7 +17,7 @@ export type OnVisibleChangeData = {
 };
 
 // @public
-export const renderTooltip: (state: TooltipState) => JSX.Element;
+export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 
 // @public
 export const Tooltip: ForwardRefComponent<TooltipProps>;
@@ -27,20 +27,19 @@ export const tooltipClassName = "fui-Tooltip";
 
 // @public
 export type TooltipCommons = {
-    appearance?: 'inverted';
+    appearance?: 'normal' | 'inverted';
     content: React_2.ReactNode;
-    inverted?: boolean;
     withArrow?: boolean;
     positioning?: PositioningShorthand;
     visible?: boolean;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
+    relationship: 'label' | 'description' | 'inaccessible';
     showDelay: number;
     hideDelay: number;
 };
 
 // @public
-export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content'>> & Pick<TooltipCommons, 'content'>;
+export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content' | 'relationship'>> & Pick<TooltipCommons, 'content' | 'relationship'>;
 
 // @public
 export type TooltipSlots = {
@@ -64,10 +63,10 @@ export type TooltipTriggerProps = {
 } & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLDivElement>) => TooltipState;
+export const useTooltip_unstable: (props: TooltipProps, ref: React_2.Ref<HTMLDivElement>) => TooltipState;
 
 // @public
-export const useTooltipStyles: (state: TooltipState) => TooltipState;
+export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
 
 // (No @packageDocumentation comment for this package)
 

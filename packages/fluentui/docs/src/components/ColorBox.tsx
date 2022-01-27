@@ -9,6 +9,7 @@ import { AcceptIcon, ClipboardCopiedToIcon } from '@fluentui/react-icons-northst
 import * as Color from 'color';
 import * as _ from 'lodash';
 import * as React from 'react';
+import { isSystemColor } from '../utils';
 
 type ColorBoxProps = {
   children?: React.ReactNode;
@@ -51,6 +52,29 @@ export const colorBoxVariables = (siteVariables): ColorBoxVariables => ({
   },
 });
 
+const getColorBoxTextColor = (color: string | undefined, variables: ColorBoxVariables): string => {
+  if (color === undefined) {
+    return variables.colorWhite;
+  }
+
+  if (isSystemColor(color)) {
+    switch (color) {
+      case 'ButtonFace':
+      case 'Canvas':
+      case 'HighlightText':
+        return variables.colorBlack;
+      case 'CanvasText':
+      case 'GrayText':
+      case 'Highlight':
+      case 'LinkText':
+      case 'ButtonText':
+        return variables.colorWhite;
+    }
+  }
+
+  return Color(color).isDark() ? variables.colorWhite : variables.colorBlack;
+};
+
 export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...(p.showColorValue &&
@@ -64,7 +88,7 @@ export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVar
         backgroundColor: 'transparent',
       }),
     borderRadius: p.rounded && '.25rem',
-    color: p.value !== undefined && Color(p.value).isDark() ? v.colorWhite : v.colorBlack,
+    color: getColorBoxTextColor(p.value, v),
   }),
   inner: ({ props: p, variables: v }) => ({
     backgroundColor: p.value,
@@ -73,9 +97,10 @@ export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVar
     fontSize: v.padding[p.size],
     padding: v.padding[p.size],
   }),
-  name: {
-    fontWeight: 'bold',
-  },
+  name: ({ variables: v }) => ({
+    color: v.colorBlack,
+    fontWeight: 700,
+  }),
   value: {
     fontFamily: 'Monospace',
     textAlign: 'right',

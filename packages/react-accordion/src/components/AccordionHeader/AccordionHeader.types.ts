@@ -1,7 +1,5 @@
-import * as React from 'react';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps, ObjectSlotProps } from '@fluentui/react-utilities';
-import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
@@ -26,13 +24,11 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon: AccordionHeaderExpandIconProps;
+  expandIcon: IntrinsicSlotProps<'span'>;
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
   icon?: IntrinsicSlotProps<'div'>;
-  // TODO: children should never be a slot, this should be refactored so that behavior is correct.
-  children: ObjectSlotProps<React.HTMLAttributes<HTMLElement>>;
 };
 
 export type AccordionHeaderCommons = {

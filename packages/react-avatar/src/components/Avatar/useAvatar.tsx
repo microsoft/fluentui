@@ -1,37 +1,63 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { getInitials as getInitialsDefault } from '../../utils/index';
+import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
-import {
-  Person16Regular,
-  Person20Regular,
-  Person24Regular,
-  Person28Regular,
-  Person32Regular,
-  Person48Regular,
-} from '@fluentui/react-icons';
+import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
+export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const {
-    name = '',
-    size = 32,
-    shape = 'circular',
-    active = 'unset',
-    activeAppearance = 'ring',
-    idForColor,
-    getInitials = getInitialsDefault,
-  } = props;
+  const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
   let { color = 'neutral' } = props;
 
   // Resolve 'colorful' to a specific color name
   if (color === 'colorful') {
-    color = avatarColors[getHashCode(props.idForColor ?? props.name ?? '') % avatarColors.length];
+    color = avatarColors[getHashCode(idForColor ?? name ?? '') % avatarColors.length];
   }
 
-  const state: AvatarState = {
+  // Resolve the initials slot, defaulted to getInitials.
+  let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
+    required: true,
+    defaultProps: {
+      children: getInitials(name, dir === 'rtl'),
+      'aria-hidden': true,
+    },
+  });
+
+  // Resolve the icon slot only if there aren't any initials to display.
+  let icon: AvatarState['icon'] = undefined;
+  if (!initials?.children) {
+    initials = undefined;
+    icon = resolveShorthand(props.icon, {
+      required: true,
+      defaultProps: {
+        children: <PersonRegular />,
+        'aria-hidden': true,
+      },
+    });
+  }
+
+  // The image's alt text should be the name, but if name is missing, fall back to the initials
+  let alt = name;
+  if (!alt && typeof initials?.children === 'string') {
+    alt = initials.children;
+  }
+
+  // Resolve the image slot
+  const image = resolveShorthand(props.image, { defaultProps: { alt } });
+
+  // If there's no image, make either the initials or icon have role="img" and aria-label={alt}
+  if (!image) {
+    const fallbackSlot = initials || icon;
+    if (fallbackSlot) {
+      fallbackSlot.role ??= 'img';
+      fallbackSlot['aria-label'] ??= alt;
+      delete fallbackSlot['aria-hidden'];
+    }
+  }
+
+  return {
     size,
     name,
     shape,
@@ -39,60 +65,26 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
     activeAppearance,
     color,
     idForColor,
-    getInitials,
 
     components: {
       root: 'span',
-      label: 'span',
+      initials: 'span',
       icon: 'span',
       image: 'img',
       badge: PresenceBadge,
     },
 
-    root: getNativeElementProps('span', { ...props, ref }),
-    label: resolveShorthand(props.label),
-    icon: undefined, // The icon will be resolved below if there is no label text
-    image: resolveShorthand(props.image),
+    root: getNativeElementProps('span', { ...props, ref }, /* excludedPropNames: */ ['name']),
+    initials,
+    icon,
+    image,
     badge: resolveShorthand(props.badge, {
       defaultProps: { size: getBadgeSize(size) },
     }),
   };
-
-  // If a label was not provided, use the initials and fall back to the icon if initials aren't available
-  if (!state.label?.children) {
-    const initials = state.getInitials(state.name, dir === 'rtl');
-    if (initials) {
-      state.label = { ...state.label, children: initials };
-    } else {
-      state.icon = resolveShorthand(props.icon, {
-        required: true,
-        defaultProps: {
-          children: getDefaultIcon(state.size),
-        },
-      });
-    }
-  }
-
-  return state;
 };
 
-const getDefaultIcon = (size: NonNullable<AvatarProps['size']>) => {
-  if (size <= 24) {
-    return <Person16Regular />;
-  } else if (size <= 40) {
-    return <Person20Regular />;
-  } else if (size <= 48) {
-    return <Person24Regular />;
-  } else if (size <= 56) {
-    return <Person28Regular />;
-  } else if (size <= 72) {
-    return <Person32Regular />;
-  } else {
-    return <Person48Regular />;
-  }
-};
-
-const getBadgeSize = (size: NonNullable<AvatarProps['size']>) => {
+const getBadgeSize = (size: AvatarState['size']) => {
   if (size >= 96) {
     return 'extra-large';
   } else if (size >= 64) {

@@ -1,9 +1,6 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps, ObjectSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
-/**
- * Label Props
- */
 export type LabelCommons = {
   /**
    * Renders the label as disabled
@@ -34,6 +31,9 @@ export type LabelSlots = {
  */
 export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 
+/**
+ * Label Props
+ */
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
   Partial<LabelCommons> & {
     /**
@@ -41,5 +41,5 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> &
      * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
      * @defaultvalue false
      */
-    required?: boolean | ObjectSlotProps<React.HTMLAttributes<HTMLElement>> | React.ReactNode;
+    required?: boolean | IntrinsicSlotProps<'span'> | React.ReactNode;
   };

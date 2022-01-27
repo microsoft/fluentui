@@ -1,10 +1,11 @@
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { PresenceBadgeState } from './PresenceBadge.types';
 
 export const presenceBadgeClassName = 'fui-PresenceBadge';
 
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     ...shorthands.padding(0),
     display: 'inline-flex',
     boxSizing: 'border-box',
@@ -15,35 +16,35 @@ const useStyles = makeStyles({
       display: 'flex',
     },
     ...shorthands.borderRadius('50%'),
-    backgroundColor: theme.colorNeutralBackground1,
-  }),
-  statusBusy: theme => ({
-    color: theme.colorPaletteRedBackground3,
-  }),
-  statusAway: theme => ({
-    color: theme.colorPaletteMarigoldBackground3,
-  }),
-  statusAvailable: theme => ({
-    color: theme.colorPaletteLightGreenForeground3,
-  }),
-  statusOffline: theme => ({
-    color: theme.colorNeutralForeground3,
-  }),
-  statusOutOfOffice: theme => ({
-    color: theme.colorPaletteBerryForeground3,
-  }),
-  outOfOffice: theme => ({
-    color: theme.colorNeutralBackground1,
-  }),
-  outOfOfficeAvailable: theme => ({
-    color: theme.colorPaletteLightGreenForeground3,
-  }),
-  outOfOfficeBusy: theme => ({
-    color: theme.colorPaletteRedBackground3,
-  }),
-  outOfOfficeAway: theme => ({
-    color: theme.colorPaletteMarigoldBackground3,
-  }),
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  statusBusy: {
+    color: tokens.colorPaletteRedBackground3,
+  },
+  statusAway: {
+    color: tokens.colorPaletteMarigoldBackground3,
+  },
+  statusAvailable: {
+    color: tokens.colorPaletteLightGreenForeground3,
+  },
+  statusOffline: {
+    color: tokens.colorNeutralForeground3,
+  },
+  statusOutOfOffice: {
+    color: tokens.colorPaletteBerryForeground3,
+  },
+  outOfOffice: {
+    color: tokens.colorNeutralBackground1,
+  },
+  outOfOfficeAvailable: {
+    color: tokens.colorPaletteLightGreenForeground3,
+  },
+  outOfOfficeBusy: {
+    color: tokens.colorPaletteRedBackground3,
+  },
+  outOfOfficeAway: {
+    color: tokens.colorPaletteMarigoldBackground3,
+  },
 
   // Icons are not resizeable, and these sizes are currently missing
   // use `!important` to size the currently available icons to the missing ones
@@ -77,7 +78,7 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadgeState => {
+export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     presenceBadgeClassName,

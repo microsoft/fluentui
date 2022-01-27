@@ -2,7 +2,9 @@
 
 exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctly 1`] = `
 <div>
-  <div>
+  <div
+    id="colorpicker0-circle"
+  >
     Simple circle swatch color picker:
   </div>
   <div
@@ -17,13 +19,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <table
+      aria-labelledby="colorpicker0-circle"
       className=
 
           {
@@ -38,12 +41,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="swatchColorPicker0"
-      role="grid"
+      id="swatchColorPicker1"
+      role="radiogroup"
     >
-      <tbody>
+      <tbody
+        role="presentation"
+      >
         <tr
-          role="row"
+          role="presentation"
         >
           <td
             className=
@@ -57,8 +62,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="orange"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -170,7 +175,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              id="swatchColorPicker0-a-0"
+              id="swatchColorPicker1-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -181,7 +186,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="orange"
               type="button"
             >
@@ -229,8 +235,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="cyan"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -342,7 +348,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              id="swatchColorPicker0-b-1"
+              id="swatchColorPicker1-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -353,7 +359,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="cyan"
               type="button"
             >
@@ -401,8 +408,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="blueMagenta"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -514,7 +521,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              id="swatchColorPicker0-c-2"
+              id="swatchColorPicker1-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -525,7 +532,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="blueMagenta"
               type="button"
             >
@@ -573,8 +581,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="magenta"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -686,7 +694,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              id="swatchColorPicker0-d-3"
+              id="swatchColorPicker1-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -697,7 +705,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="magenta"
               type="button"
             >
@@ -745,8 +754,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="white"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -858,7 +867,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              id="swatchColorPicker0-e-4"
+              id="swatchColorPicker1-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -869,7 +878,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="white"
               type="button"
             >
@@ -909,7 +919,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
       </tbody>
     </table>
   </div>
-  <div>
+  <div
+    id="colorpicker0-square"
+  >
     Simple square swatch color picker with default size of 20px:
   </div>
   <div
@@ -924,13 +936,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone23"
+    data-focuszone-id="FocusZone24"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <table
+      aria-labelledby="colorpicker0-square"
       className=
 
           {
@@ -945,12 +958,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="swatchColorPicker22"
-      role="grid"
+      id="swatchColorPicker23"
+      role="radiogroup"
     >
-      <tbody>
+      <tbody
+        role="presentation"
+      >
         <tr
-          role="row"
+          role="presentation"
         >
           <td
             className=
@@ -964,8 +979,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="orange"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -1068,7 +1083,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              id="swatchColorPicker22-a-0"
+              id="swatchColorPicker23-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1079,7 +1094,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="orange"
               type="button"
             >
@@ -1125,8 +1141,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="cyan"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -1229,7 +1245,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              id="swatchColorPicker22-b-1"
+              id="swatchColorPicker23-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1240,7 +1256,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="cyan"
               type="button"
             >
@@ -1286,8 +1303,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="blueMagenta"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -1390,7 +1407,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              id="swatchColorPicker22-c-2"
+              id="swatchColorPicker23-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1401,7 +1418,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="blueMagenta"
               type="button"
             >
@@ -1447,8 +1465,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="magenta"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -1551,7 +1569,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              id="swatchColorPicker22-d-3"
+              id="swatchColorPicker23-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1562,7 +1580,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="magenta"
               type="button"
             >
@@ -1608,8 +1627,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="white"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -1712,7 +1731,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              id="swatchColorPicker22-e-4"
+              id="swatchColorPicker23-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1723,7 +1742,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="white"
               type="button"
             >
@@ -1761,7 +1781,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
       </tbody>
     </table>
   </div>
-  <div>
+  <div
+    id="colorpicker0-custom-size"
+  >
     Simple square swatch color picker with custom size of 35px:
   </div>
   <div
@@ -1776,13 +1798,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone45"
+    data-focuszone-id="FocusZone46"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <table
+      aria-labelledby="colorpicker0-custom-size"
       className=
 
           {
@@ -1797,12 +1820,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="swatchColorPicker44"
-      role="grid"
+      id="swatchColorPicker45"
+      role="radiogroup"
     >
-      <tbody>
+      <tbody
+        role="presentation"
+      >
         <tr
-          role="row"
+          role="presentation"
         >
           <td
             className=
@@ -1816,8 +1841,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="orange"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -1920,7 +1945,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              id="swatchColorPicker44-a-0"
+              id="swatchColorPicker45-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1931,7 +1956,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="orange"
               type="button"
             >
@@ -1977,8 +2003,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="cyan"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -2081,7 +2107,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              id="swatchColorPicker44-b-1"
+              id="swatchColorPicker45-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2092,7 +2118,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="cyan"
               type="button"
             >
@@ -2138,8 +2165,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="blueMagenta"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -2242,7 +2269,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              id="swatchColorPicker44-c-2"
+              id="swatchColorPicker45-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2253,7 +2280,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="blueMagenta"
               type="button"
             >
@@ -2299,8 +2327,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="magenta"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -2403,7 +2431,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              id="swatchColorPicker44-d-3"
+              id="swatchColorPicker45-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2414,7 +2442,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="magenta"
               type="button"
             >
@@ -2460,8 +2489,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-label="white"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -2564,7 +2593,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              id="swatchColorPicker44-e-4"
+              id="swatchColorPicker45-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2575,7 +2604,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="white"
               type="button"
             >
@@ -2613,7 +2643,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
       </tbody>
     </table>
   </div>
-  <div>
+  <div
+    id="colorpicker0-grid"
+  >
     Simple swatch color picker with multiple rows and larger cells that updates its icon color and shows a preview color:
   </div>
   <div
@@ -2638,13 +2670,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone67"
+    data-focuszone-id="FocusZone68"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <table
+      aria-labelledby="colorpicker0-grid"
       className=
 
           {
@@ -2659,10 +2692,12 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="swatchColorPicker66"
+      id="swatchColorPicker67"
       role="grid"
     >
-      <tbody>
+      <tbody
+        role="rowgroup"
+      >
         <tr
           role="row"
         >
@@ -2791,7 +2826,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              id="swatchColorPicker66-a-0"
+              id="swatchColorPicker67-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2802,6 +2837,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="red"
               type="button"
@@ -2963,7 +2999,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              id="swatchColorPicker66-b-1"
+              id="swatchColorPicker67-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2974,6 +3010,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="orange"
               type="button"
@@ -3135,7 +3172,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              id="swatchColorPicker66-c-2"
+              id="swatchColorPicker67-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3146,6 +3183,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="orangeYellow"
               type="button"
@@ -3307,7 +3345,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              id="swatchColorPicker66-d-3"
+              id="swatchColorPicker67-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3318,6 +3356,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="yellowGreen"
               type="button"
@@ -3483,7 +3522,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              id="swatchColorPicker66-e-4"
+              id="swatchColorPicker67-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3494,6 +3533,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="green"
               type="button"
@@ -3655,7 +3695,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={5}
               data-is-focusable={true}
-              id="swatchColorPicker66-f-5"
+              id="swatchColorPicker67-f-5"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3666,6 +3706,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="cyan"
               type="button"
@@ -3827,7 +3868,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={6}
               data-is-focusable={true}
-              id="swatchColorPicker66-g-6"
+              id="swatchColorPicker67-g-6"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3838,6 +3879,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="cyanBlue"
               type="button"
@@ -3999,7 +4041,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={7}
               data-is-focusable={true}
-              id="swatchColorPicker66-h-7"
+              id="swatchColorPicker67-h-7"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4010,6 +4052,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="magenta"
               type="button"
@@ -4175,7 +4218,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={8}
               data-is-focusable={true}
-              id="swatchColorPicker66-i-8"
+              id="swatchColorPicker67-i-8"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4186,6 +4229,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="magentaPink"
               type="button"
@@ -4347,7 +4391,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={9}
               data-is-focusable={true}
-              id="swatchColorPicker66-j-9"
+              id="swatchColorPicker67-j-9"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4358,6 +4402,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="black"
               type="button"
@@ -4519,7 +4564,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={10}
               data-is-focusable={true}
-              id="swatchColorPicker66-k-10"
+              id="swatchColorPicker67-k-10"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4530,6 +4575,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="gray"
               type="button"
@@ -4691,7 +4737,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={11}
               data-is-focusable={true}
-              id="swatchColorPicker66-l-11"
+              id="swatchColorPicker67-l-11"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4702,6 +4748,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
+              onWheel={[Function]}
               role="gridcell"
               title="gray20"
               type="button"
@@ -4742,7 +4789,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
       </tbody>
     </table>
   </div>
-  <div>
+  <div
+    id="colorpicker0-disabled"
+  >
     Simple disabled circle swatch color picker:
   </div>
   <div
@@ -4757,13 +4806,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           display: block;
           min-width: 180px;
         }
-    data-focuszone-id="FocusZone117"
+    data-focuszone-id="FocusZone118"
     onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <table
+      aria-labelledby="colorpicker0-disabled"
       className=
 
           {
@@ -4778,12 +4828,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             padding-right: 2px;
             padding-top: 2px;
           }
-      id="swatchColorPicker116"
-      role="grid"
+      id="swatchColorPicker117"
+      role="radiogroup"
     >
-      <tbody>
+      <tbody
+        role="presentation"
+      >
         <tr
-          role="row"
+          role="presentation"
         >
           <td
             className=
@@ -4797,9 +4849,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-disabled={true}
               aria-label="orange"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -4915,7 +4967,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={0}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker116-a-0"
+              id="swatchColorPicker117-a-0"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4926,7 +4978,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="orange"
               type="button"
             >
@@ -4974,9 +5027,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-disabled={true}
               aria-label="cyan"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -5092,7 +5145,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={1}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker116-b-1"
+              id="swatchColorPicker117-b-1"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5103,7 +5156,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="cyan"
               type="button"
             >
@@ -5151,9 +5205,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-disabled={true}
               aria-label="blueMagenta"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -5269,7 +5323,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={2}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker116-c-2"
+              id="swatchColorPicker117-c-2"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5280,7 +5334,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="blueMagenta"
               type="button"
             >
@@ -5328,9 +5383,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-disabled={true}
               aria-label="magenta"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -5446,7 +5501,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={3}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker116-d-3"
+              id="swatchColorPicker117-d-3"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5457,7 +5512,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="magenta"
               type="button"
             >
@@ -5505,9 +5561,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
+              aria-checked={false}
               aria-disabled={true}
               aria-label="white"
-              aria-selected={false}
               className=
                   ms-Button
                   ms-Button--action
@@ -5623,7 +5679,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               data-index={4}
               data-is-focusable={false}
               disabled={true}
-              id="swatchColorPicker116-e-4"
+              id="swatchColorPicker117-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5634,7 +5690,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseUp={[Function]}
-              role="gridcell"
+              onWheel={[Function]}
+              role="radio"
               title="white"
               type="button"
             >

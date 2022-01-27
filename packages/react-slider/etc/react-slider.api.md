@@ -11,6 +11,7 @@ import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
+<<<<<<< HEAD
 export const RangedSlider: ForwardRefComponent<RangedSliderProps>;
 
 // @public (undocumented)
@@ -48,6 +49,9 @@ export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
 
 // @public
 export const renderSlider: (state: SliderState) => JSX.Element;
+=======
+export const renderSlider_unstable: (state: SliderState) => JSX.Element;
+>>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
@@ -62,30 +66,25 @@ export type SliderCommons = {
     min?: number;
     max?: number;
     step?: number;
-    keyboardStep?: number;
     disabled?: boolean;
     vertical?: boolean;
-    marks?: boolean | (number | {
-        value: number;
-        label?: string | JSX.Element;
-        mark?: JSX.Element;
-    })[];
     origin?: number;
     size?: 'small' | 'medium';
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        value: number;
-    }) => void;
-    ariaValueText?: (value: number) => string;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
+    getAriaValueText?: (value: number) => string;
 };
 
 // @public (undocumented)
-export type SliderProps = Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'> & SliderCommons;
+export type SliderOnChangeData = {
+    value: number;
+};
 
-// @public
-export const sliderShorthandProps: (keyof SliderSlots)[];
+// @public (undocumented)
+export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & SliderCommons;
 
 // @public (undocumented)
 export type SliderSlots = {
+<<<<<<< HEAD
     root: IntrinsicSlotProps<'div'>;
     rail: IntrinsicSlotProps<'div'>;
     sliderWrapper: IntrinsicSlotProps<'div'>;
@@ -96,28 +95,27 @@ export type SliderSlots = {
     thumb: IntrinsicSlotProps<'div'>;
     activeRail: IntrinsicSlotProps<'div'>;
     input: IntrinsicSlotProps<'input'>;
+=======
+    root: IntrinsicShorthandProps<'div'>;
+    rail: IntrinsicShorthandProps<'div'>;
+    thumb: IntrinsicShorthandProps<'div'>;
+    input: IntrinsicShorthandProps<'input'> & {
+        orient?: 'horizontal' | 'vertical';
+    };
+>>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public (undocumented)
 export type SliderState = ComponentState<SliderSlots> & SliderCommons;
 
 // @public
-export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
+export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
 
 // @public (undocumented)
-export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
-
-// @public (undocumented)
-export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
+export const useSliderState_unstable: (state: SliderState) => SliderState;
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
-
-// @public (undocumented)
-export const useSliderState: (state: SliderState) => SliderState;
-
-// @public
-export const useSliderStyles: (state: SliderState) => SliderState;
+export const useSliderStyles_unstable: (state: SliderState) => SliderState;
 
 // (No @packageDocumentation comment for this package)
 

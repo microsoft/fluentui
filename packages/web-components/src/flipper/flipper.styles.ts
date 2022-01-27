@@ -45,6 +45,7 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
     :host(.disabled) {
       opacity: ${disabledOpacity};
       cursor: ${disabledCursor};
+      pointer-events: none;
     }
 
     .next,

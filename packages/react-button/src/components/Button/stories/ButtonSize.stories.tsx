@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { Button } from '../../../Button';
 
 export const Size = () => {
@@ -11,24 +11,24 @@ export const Size = () => {
       <div style={groupStyles}>
         <h4 style={headerStyles}>small</h4>
         <Button size="small">Text</Button>
-        <Button size="small" icon={<CalendarMonth24Regular />}>
+        <Button size="small" icon={<CalendarMonthRegular />}>
           Text
         </Button>
-        <Button size="small" icon={<CalendarMonth24Regular />} />
+        <Button size="small" icon={<CalendarMonthRegular />} />
       </div>
       <div style={groupStyles}>
         <h4 style={headerStyles}>medium</h4>
         <Button>Text</Button>
-        <Button icon={<CalendarMonth24Regular />}>Text</Button>
-        <Button icon={<CalendarMonth24Regular />} />
+        <Button icon={<CalendarMonthRegular />}>Text</Button>
+        <Button icon={<CalendarMonthRegular />} />
       </div>
       <div style={groupStyles}>
         <h4 style={headerStyles}>large</h4>
         <Button size="large">Text</Button>
-        <Button size="large" icon={<CalendarMonth24Regular />}>
+        <Button size="large" icon={<CalendarMonthRegular />}>
           Text
         </Button>
-        <Button size="large" icon={<CalendarMonth24Regular />} />
+        <Button size="large" icon={<CalendarMonthRegular />} />
       </div>
     </>
   );

@@ -2,6 +2,57 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 25 Jan 2022 07:30:06 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "Add naming-convention exception to allow exported hooks with the _unstable suffix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jan 2022 07:30:57 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a9c3d10d957ef651a0f9f43c86e565f18c8edffa",
+            "comment": "Expand ban-imports rule to also support exports, and support regular expressions for names"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:27 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.5.2",
+      "version": "1.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "e839eaaa93e12f70fb844a7d0067ce087b3a6f10",
+            "comment": "Classify .stories.tsx as examples not tests"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "7a1af12609368166d99b28c783c8ba8118f5d6b2",
+            "comment": "Re-enable `@rnx-kit/no-export-all`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Nov 2021 07:31:31 GMT",
       "tag": "@fluentui/eslint-plugin_v1.5.1",
       "version": "1.5.1",

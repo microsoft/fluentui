@@ -16,38 +16,49 @@ export const Input: ForwardRefComponent<InputProps>;
 // @public (undocumented)
 export const inputClassName = "fui-Input";
 
+// @public
+export type InputOnChangeData = {
+    value: string;
+};
+
 // @public (undocumented)
-export type InputCommons = {
+export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
+    children?: never;
     size?: 'small' | 'medium' | 'large';
     inline?: boolean;
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    defaultValue?: string;
+    value?: string;
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
 };
-
-// @public
-export type InputProps = InputCommons & Omit<ComponentProps<InputSlots>, 'children'>;
-
-// @public
-export const inputShorthandProps: (keyof InputSlots)[];
 
 // @public (undocumented)
 export type InputSlots = {
+<<<<<<< HEAD
     root: IntrinsicSlotProps<'span'>;
     input: Omit<IntrinsicSlotProps<'input'>, 'size'>;
     contentBefore?: IntrinsicSlotProps<'span'>;
     contentAfter?: IntrinsicSlotProps<'span'>;
+=======
+    root: IntrinsicShorthandProps<'span'>;
+    input: IntrinsicShorthandProps<'input'>;
+    contentBefore?: IntrinsicShorthandProps<'span'>;
+    contentAfter?: IntrinsicShorthandProps<'span'>;
+>>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public
-export type InputState = InputCommons & ComponentState<InputSlots>;
+export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
 
 // @public
-export const renderInput: (state: InputState) => JSX.Element;
+export const renderInput_unstable: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
+export const useInput_unstable: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
 
 // @public
-export const useInputStyles: (state: InputState) => InputState;
+export const useInputStyles_unstable: (state: InputState) => InputState;
 
 // (No @packageDocumentation comment for this package)
 

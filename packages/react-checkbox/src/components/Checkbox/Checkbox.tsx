@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { useCheckbox } from './useCheckbox';
-import { renderCheckbox } from './renderCheckbox';
-import { useCheckboxStyles } from './useCheckboxStyles';
+import { useCheckbox_unstable } from './useCheckbox';
+import { renderCheckbox_unstable } from './renderCheckbox';
+import { useCheckboxStyles_unstable } from './useCheckboxStyles';
 import type { CheckboxProps } from './Checkbox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * A Checkbox component provides a way to represent options that can be selected
+ * Checkboxes give people a way to select one or more items from a group,
+ * or switch between two mutually exclusive options (checked or unchecked).
  */
 export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef((props, ref) => {
-  const state = useCheckbox(props, ref);
+  const state = useCheckbox_unstable(props, ref);
 
-  useCheckboxStyles(state);
-  return renderCheckbox(state);
+  useCheckboxStyles_unstable(state);
+  return renderCheckbox_unstable(state);
 });
 
 Checkbox.displayName = 'Checkbox';

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from '@fluentui/react-button';
-import { createDOMRenderer, makeStyles, RendererProvider, shorthands } from '@fluentui/react-make-styles';
+import { createDOMRenderer, makeStyles, RendererProvider, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
 import { FluentProvider } from '../FluentProvider';
 
@@ -9,14 +10,14 @@ const useExampleStyles = makeStyles({
   button: {
     marginTop: '5px',
   },
-  text: theme => ({
-    backgroundColor: theme.colorBrandBackground2,
-    color: theme.colorBrandForeground2,
+  text: {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
     fontSize: '20px',
     ...shorthands.border('1px'),
     ...shorthands.borderRadius('5px'),
     ...shorthands.padding('5px'),
-  }),
+  },
 });
 
 const useProviderStyles = makeStyles({

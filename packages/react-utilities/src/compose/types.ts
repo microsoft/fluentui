@@ -5,7 +5,7 @@ export type SlotRenderFunction<Props> = (
   props: Omit<Props, 'children' | 'as'>,
 ) => React.ReactNode;
 
-export type ObjectSlotsRecord = Record<string, DefaultObjectSlotProps | undefined>;
+export type ObjectSlotPropsRecord = Record<string, DefaultObjectSlotProps | undefined>;
 
 export type ShorthandProps<Props extends DefaultObjectSlotProps> =
   | React.ReactChild
@@ -37,8 +37,29 @@ export type ObjectSlotProps<Props extends { children?: React.ReactNode } = {}> =
 };
 
 /**
+ * Defines the slot props for a slot that supports a Component type.
+ *
+ * For intrinsic/native elements like 'div', use {@link IntrinsicShorthandProps} instead.
+ *
+ * The generic param is the type of a control, i.e. a React component. For example:
+ *
+ * @example
+ * ```
+ * type Props = {...}
+ * const Button: React.FC<Props> = () => {...}
+ * // $ExpectType ...
+ * type SlotProps = ComponentSlotProps<typeof Button>
+ * ```
+ */
+export type ComponentSlotProps<Component extends React.ComponentType> = Component extends React.ComponentType<
+  infer Props
+>
+  ? ObjectSlotProps<Props>
+  : never;
+
+/**
  * Define the slot arguments for a slot that supports one or more intrinsic element types, such as 'div'.
- * For slots that support custom components, use {@link ObjectSlotProps} instead.
+ * For slots that support custom components, use {@link ComponentSlotProps} instead.
  *
  * The first param is the slot's default type if no `as` prop is specified.
  * The second param is an optional union of alternative types that can be specified for the `as` prop.
@@ -98,7 +119,7 @@ export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Om
  * Takes a slots record and returns a mapping of slot names to shorthand props for each slot along with putting the
  * shorthand props of the primary slot at the top level.
  */
-export type ComponentProps<Slots extends ObjectSlotsRecord, Primary extends keyof Slots = 'root'> =
+export type ComponentProps<Slots extends ObjectSlotPropsRecord, Primary extends keyof Slots = 'root'> =
   // Include shorthand slot props for each of the component's slots.
   Omit<
     {
@@ -117,7 +138,7 @@ export type ComponentProps<Slots extends ObjectSlotsRecord, Primary extends keyo
  * Takes a slots record and adds to it a 'components' object that is a mapping of slot names to the type of elements
  * that each slot can be rendered as.
  */
-export type ComponentState<Slots extends ObjectSlotsRecord> = {
+export type ComponentState<Slots extends ObjectSlotPropsRecord> = {
   components?: {
     [Key in keyof Slots]-?:
       | React.ComponentType<NonNullable<Slots[Key]> extends ObjectSlotProps<infer P> ? P : NonNullable<Slots[Key]>>

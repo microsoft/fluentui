@@ -4,10 +4,9 @@
 
 ```ts
 
-import type { MakeStylesStyleRule } from '@fluentui/react-make-styles';
+import type { GriffelStyle } from '@griffel/react';
 import * as PopperJs from '@popperjs/core';
 import * as React_2 from 'react';
-import type { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -19,7 +18,21 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
 // @public
-export function createArrowStyles(size?: number): MakeStylesStyleRule<Theme>;
+export function createArrowHeightStyles(arrowHeight: number): {
+    width: string;
+    height: string;
+};
+
+// @public
+export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;
+
+// @public
+export type CreateArrowStylesOptions = {
+    arrowHeight: number | undefined;
+    borderWidth?: GriffelStyle['borderBottomWidth'];
+    borderStyle?: GriffelStyle['borderBottomStyle'];
+    borderColor?: GriffelStyle['borderBottomColor'];
+};
 
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;

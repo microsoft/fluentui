@@ -12,22 +12,18 @@ import {
   useTimeout,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
-
-// Style values that are required for popper to properly position the tooltip
-const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes
-const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts if this changes
+import { arrowHeight, tooltipBorderRadius } from './private/constants';
 
 /**
  * Create the state required to render Tooltip.
  *
- * The returned state can be modified with hooks such as useTooltipStyles,
- * before being passed to renderTooltip.
+ * The returned state can be modified with hooks such as useTooltipStyles_unstable,
+ * before being passed to renderTooltip_unstable.
  *
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
+export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
@@ -35,11 +31,11 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
 
   const {
     content,
-    inverted,
+    appearance,
     withArrow,
     positioning,
     onVisibleChange,
-    triggerAriaAttribute = 'label',
+    relationship,
     showDelay = 250,
     hideDelay = 250,
   } = props;
@@ -60,15 +56,14 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
 
   const state: TooltipState = {
     content,
-    inverted,
     withArrow,
     positioning,
     showDelay,
     hideDelay,
-    triggerAriaAttribute,
+    relationship,
     visible,
     shouldRenderTooltip: visible,
-    appearance: props.appearance,
+    appearance,
 
     // Slots
     components: {
@@ -206,22 +201,21 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>):
     triggerProps.ref = childTargetRef;
   }
 
-  if (state.triggerAriaAttribute === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use labelledby.
+  if (relationship === 'label') {
+    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
     if (typeof state.content === 'string') {
       triggerProps['aria-label'] = state.content;
-    } else {
-      state.triggerAriaAttribute = 'labelledby';
+    } else if (!isServerSideRender) {
+      triggerProps['aria-labelledby'] = state.root.id;
+      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+      state.shouldRenderTooltip = true;
     }
-  }
-
-  if (state.triggerAriaAttribute === 'labelledby' && !isServerSideRender) {
-    triggerProps['aria-labelledby'] = state.root.id;
-    // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-    state.shouldRenderTooltip = true;
-  } else if (state.triggerAriaAttribute === 'describedby' && !isServerSideRender) {
-    triggerProps['aria-describedby'] = state.root.id;
-    state.shouldRenderTooltip = true;
+  } else if (relationship === 'description') {
+    if (!isServerSideRender) {
+      triggerProps['aria-describedby'] = state.root.id;
+      // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
+      state.shouldRenderTooltip = true;
+    }
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props

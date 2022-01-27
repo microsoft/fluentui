@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/perf",
-  "version": "0.59.0",
+  "version": "0.60.1",
   "private": true,
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
-    "@fluentui/docs": "^0.59.0",
+    "@fluentui/docs": "^0.60.1",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-northstar": "^0.59.0",
+    "@fluentui/react-northstar": "^0.60.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "lodash": "^4.17.15",

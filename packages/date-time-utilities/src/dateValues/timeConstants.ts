@@ -9,4 +9,14 @@ export const TimeConstants = {
   DaysInOneWeek: 7,
   MonthInOneYear: 12,
   HoursInOneDay: 24,
+  SecondsInOneMinute: 60,
+  OffsetTo24HourFormat: 12,
+  /**
+   * Matches a time string. Groups:
+   * 1. hours (with or without leading 0)
+   * 2. minutes
+   * 3. seconds (optional)
+   * 4. meridiem (am/pm, case-insensitive, optional)
+   */
+  TimeFormatRegex: /^(\d\d?):(\d\d):?(\d\d)? ?([ap]m)?/i,
 };

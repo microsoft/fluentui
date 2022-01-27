@@ -6,12 +6,12 @@ import type {
   AsIntrinsicElement,
   ComponentState,
   ObjectSlotProps,
-  ObjectSlotsRecord,
+  ObjectSlotPropsRecord,
   SlotRenderFunction,
   UnionToIntersection,
 } from './types';
 
-export type Slots<S extends ObjectSlotsRecord> = {
+export type Slots<S extends ObjectSlotPropsRecord> = {
   [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
     ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
       As
@@ -20,7 +20,7 @@ export type Slots<S extends ObjectSlotsRecord> = {
     : React.ElementType<NonNullable<S[K]>>;
 };
 
-type SlotProps<S extends ObjectSlotsRecord> = {
+type SlotProps<S extends ObjectSlotPropsRecord> = {
   [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
     ? // For intrinsic element types, return the intersection of all possible
       // element's props, to be compatible with the As type returned by Slots<>
@@ -39,16 +39,16 @@ type SlotProps<S extends ObjectSlotsRecord> = {
  * Slots will render as null if they are rendered as primitives with undefined children.
  *
  * The slotProps will always omit the `as` prop within them, and for slots that are string
- * primitives, the props will be filtered according the the slot type. For example, if the
- * slot is rendered `as: 'a'`, the props will be filtered for acceptable anchor props.
+ * primitives, the props will be filtered according to the slot type by the type system.
+ * For example, if the slot is rendered `as: 'a'`, the props will be filtered for acceptable
+ * anchor props. Note that this is only enforced at build time by Typescript -- there is no
+ * runtime code filtering props in this function.
  *
  * @param state - State including slot definitions
- * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-export function getSlots<R extends ObjectSlotsRecord>(
+export function getSlots<R extends ObjectSlotPropsRecord>(
   state: ComponentState<R>,
-  slotNames: (keyof R)[] = ['root'],
 ): {
   slots: Slots<R>;
   slotProps: SlotProps<R>;
@@ -56,6 +56,7 @@ export function getSlots<R extends ObjectSlotsRecord>(
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
+  const slotNames: (keyof R)[] = Object.keys(state.components);
   for (const slotName of slotNames) {
     const [slot, props] = getSlot(state, slotName);
     slots[slotName] = slot as Slots<R>[typeof slotName];
@@ -64,7 +65,7 @@ export function getSlots<R extends ObjectSlotsRecord>(
   return { slots, slotProps: (slotProps as unknown) as SlotProps<R> };
 }
 
-function getSlot<R extends ObjectSlotsRecord, K extends keyof R>(
+function getSlot<R extends ObjectSlotPropsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]>, R[K]] {
@@ -82,7 +83,7 @@ function getSlot<R extends ObjectSlotsRecord, K extends keyof R>(
     return [
       React.Fragment,
       ({
-        children: render(slot, rest),
+        children: render(slot, rest as Omit<R[K], 'children' | 'as'>),
       } as unknown) as R[K],
     ];
   }

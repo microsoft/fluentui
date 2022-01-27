@@ -1,6 +1,6 @@
+import { Label } from '@fluentui/react-label';
 import type { InputHTMLAttributes } from 'react';
-import type { LabelProps } from '@fluentui/react-label';
-import type { ComponentProps, ComponentState, IntrinsicSlotProps, ObjectSlotProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentSlotProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 export type RadioItemSlots = {
   root: IntrinsicSlotProps<'span'>;
@@ -18,7 +18,7 @@ export type RadioItemSlots = {
   /**
    * Label to be associated with Radio element.
    */
-  label: ObjectSlotProps<LabelProps>;
+  label: ComponentSlotProps<typeof Label>;
 
   /**
    * Subtext added below label.
