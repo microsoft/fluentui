@@ -15,8 +15,7 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/make-styles-webpack-loader": "9.0.0-beta.4"
+    "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
     "@fluentui/babel-make-styles": "9.0.0-beta.4",

@@ -1704,6 +1704,18 @@
   dependencies:
     "@griffel/core" "1.0.7"
 
+"@griffel/webpack-loader@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@griffel/webpack-loader/-/webpack-loader-2.0.0.tgz#4c0597e30431d8e8177bdb9e9b4ffabb0cd521ab"
+  integrity sha512-Y7CRUm1OcMr5B2xqQpZ2edGmEfyN7DQz+apYfT5+G7zy4zIPaoWtLPW17rgzjpesrt+65OPiTcVcDki/0hDehw==
+  dependencies:
+    "@babel/core" "^7.12.13"
+    "@griffel/babel-preset" "1.0.0"
+    "@linaria/babel-preset" "^3.0.0-beta.14"
+    enhanced-resolve "^5.8.2"
+    loader-utils "^2.0.0"
+    schema-utils "^3.1.1"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
