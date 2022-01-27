@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Renaming most *Shorthand* composition types to *SlotProps* so they better reflect what the types do.",
-  "packageName": "@fluentui/react-utilities",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
