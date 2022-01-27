@@ -301,10 +301,19 @@
   margin: 1px 0 1px 0;
 }
 
+.os-content-glue {
+  width: auto !important;
+}
+
+#docs-root .sbdocs-preview .prismjs {
+  overflow: hidden;
+}
+
 #docs-root .sbdocs-preview .prismjs code {
   color: white;
   background: #11100f;
   margin: 0;
+  overflow-x: auto;
 }
 
 #docs-root .docblock-argstable-body td > div > p,
