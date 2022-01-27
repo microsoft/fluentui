@@ -22,19 +22,16 @@ const useStyles = makeStyles({
   },
   wrapper: {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
     ...shorthands.gap('16px'),
   },
   toc: {
-    flexBasis: '160px',
+    flexBasis: '200px',
     flexShrink: 0,
     [`@media screen and (max-width: 1000px)`]: {
       display: 'none',
     },
   },
   container: {
-    flexBasis: '200px',
     flexGrow: 1,
   },
 });

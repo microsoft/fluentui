@@ -31,6 +31,7 @@
 
 #docs-root .sbdocs-wrapper {
   background: white;
+  min-height: auto;
 }
 
 #docs-root .sbdocs-img.featured-image {
@@ -153,59 +154,6 @@
   box-shadow: #1ea7fd 0 -3px 0 0 inset;
 }
 
-#docs-root .docblock-argstable tbody {
-  box-shadow: none;
-  border-left: none;
-  border-right: none;
-}
-
-#docs-root .docblock-argstable-head th {
-  letter-spacing: -0.01em;
-  color: black;
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
-    sans-serif;
-  font-size: 16px;
-  line-height: 150%;
-  font-weight: 600;
-}
-
-#docs-root thead.docblock-argstable-head {
-  border-bottom: 1px solid #edebe9;
-}
-
-#docs-root .docblock-argstable-body > tr > td:nth-child(4) {
-  display: none;
-}
-
-#docs-root .docblock-argstable-head > tr > th:nth-child(4) {
-  display: none;
-}
-
-#docs-root .docblock-argstable tbody tr {
-  border: none;
-}
-
-#docs-root table.docblock-argstable tbody.docblock-argstable-body td,
-#docs-root .docblock-argstable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 16px;
-}
-
-#docs-root .docblock-argstable tbody tr td:nth-child(1) span {
-  font-weight: normal;
-  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
-    sans-serif;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: -0.01em;
-  color: #616161;
-}
-
-#docs-root .docblock-argstable tbody tr td {
-  vertical-align: middle;
-}
-
 #docs-root span + .sbdocs .docblock-argstable tbody tr td button {
   color: #0078d4;
   color: red;
@@ -250,6 +198,63 @@
   color: #0078d4;
 }
 
+/*  */
+/* Args Table */
+/*  */
+
+#docs-root .docblock-argstable tbody {
+  box-shadow: none;
+  border-left: none;
+  border-right: none;
+}
+
+#docs-root .docblock-argstable-head th {
+  letter-spacing: -0.01em;
+  color: black;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 600;
+}
+
+#docs-root thead.docblock-argstable-head {
+  border-bottom: 1px solid #edebe9;
+}
+
+#docs-root .docblock-argstable-body > tr > td:nth-child(4) {
+  display: none;
+}
+
+#docs-root .docblock-argstable-head > tr > th:nth-child(4) {
+  display: none;
+}
+
+#docs-root .docblock-argstable tbody tr {
+  border: none;
+}
+
+#docs-root table.docblock-argstable tbody.docblock-argstable-body td,
+#docs-root .docblock-argstable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+}
+
+#docs-root .docblock-argstable tbody tr td:nth-child(1) span {
+  font-weight: normal;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  color: #616161;
+}
+
+#docs-root .docblock-argstable tbody tr td {
+  vertical-align: top;
+}
+
 #docs-root .docblock-argstable-body > tr > td > div > div > button {
   color: #0078d4;
   line-height: 21px;
@@ -263,8 +268,8 @@
   font-family: Menlo, monospace;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 150%;
+  font-size: 16px;
+  line-height: 130%;
   letter-spacing: -0.2px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -278,15 +283,19 @@
 #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
 #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
 #docs-root .css-16d4d7t {
+  font-size: 14px;
   background: #f0f0f0;
   border-radius: 4px;
-  padding: 4px 8px;
-  margin: 0 3px 3px 0;
+  padding: 1px 4px;
+  margin: 0 3px 0 3px;
   color: black;
+  border: none;
+  line-height: 1.5;
 }
 
 #docs-root code {
   margin: 1px 0 1px 0;
+  white-space: normal;
 }
 
 #docs-root .sbdocs-preview .prismjs code {
@@ -301,7 +310,15 @@
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 130%;
   color: black;
   letter-spacing: -0.01em;
+}
+
+#docs-root .docblock-argstable tr > :nth-child(1) {
+  width: 4%;
+}
+
+#docs-root .docblock-argstable tr > :nth-child(2) {
+  width: 100%;
 }
