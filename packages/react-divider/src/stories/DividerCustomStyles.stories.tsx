@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { Divider } from '../Divider';
 

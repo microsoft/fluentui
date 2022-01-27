@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
 import { nullRender } from './nullRender';
-import { ObjectShorthandProps, IntrinsicShorthandProps } from './types';
+import type { ComponentSlotProps, IntrinsicShorthandProps } from './types';
 
 describe('getSlots', () => {
   type FooProps = { id?: string; children?: React.ReactNode };
@@ -51,7 +51,7 @@ describe('getSlots', () => {
   it('returns a component slot with no children', () => {
     type Slots = {
       root: IntrinsicShorthandProps<'div'>;
-      icon: ObjectShorthandProps<FooProps>;
+      icon: ComponentSlotProps<typeof Foo>;
     };
     expect(
       getSlots<Slots>({
@@ -102,7 +102,7 @@ describe('getSlots', () => {
   it('returns a component and includes all props', () => {
     type Slots = {
       root: IntrinsicShorthandProps<'div'>;
-      icon: IntrinsicShorthandProps<'a'> | ObjectShorthandProps<FooProps>;
+      icon: IntrinsicShorthandProps<'a'> | ComponentSlotProps<typeof Foo>;
     };
     expect(
       getSlots<Slots>({

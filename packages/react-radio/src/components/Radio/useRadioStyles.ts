@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { RadioState } from './Radio.types';
 
 export const radioClassName = 'fui-Radio';

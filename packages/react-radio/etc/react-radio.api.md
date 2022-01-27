@@ -5,12 +5,12 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputHTMLAttributes } from 'react';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { LabelProps } from '@fluentui/react-label';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 
 // @public
@@ -41,7 +41,7 @@ export type RadioItemSlots = {
     root: IntrinsicShorthandProps<'span'>;
     indicator: IntrinsicShorthandProps<'div'>;
     input: IntrinsicShorthandProps<'input'>;
-    label: ObjectShorthandProps<LabelProps>;
+    label: ComponentSlotProps<typeof Label>;
     subtext?: IntrinsicShorthandProps<'span'>;
 };
 

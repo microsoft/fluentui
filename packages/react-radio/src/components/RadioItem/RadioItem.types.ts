@@ -1,26 +1,29 @@
+import { Label } from '@fluentui/react-label';
 import type { InputHTMLAttributes } from 'react';
-import type { LabelProps } from '@fluentui/react-label';
 import type {
   ComponentProps,
+  ComponentSlotProps,
   ComponentState,
   IntrinsicShorthandProps,
-  ObjectShorthandProps,
 } from '@fluentui/react-utilities';
 
 export type RadioItemSlots = {
   root: IntrinsicShorthandProps<'span'>;
+
   /**
    * Renders the radio indicator.
    */
   indicator: IntrinsicShorthandProps<'div'>;
+
   /**
    * Hidden input that handles the checkbox's functionality.
    */
   input: IntrinsicShorthandProps<'input'>;
+
   /**
    * Label to be associated with Radio element.
    */
-  label: ObjectShorthandProps<LabelProps>;
+  label: ComponentSlotProps<typeof Label>;
 
   /**
    * Subtext added below label.

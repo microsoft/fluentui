@@ -297,17 +297,17 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/react-conformance-griffel": {
+      "root": "packages/react-conformance-griffel",
+      "projectType": "library",
+      "sourceRoot": "packages/react-conformance-griffel/src"
+    },
     "@fluentui/react-conformance-make-styles": {
       "root": "packages/react-conformance-make-styles",
       "projectType": "library",
       "sourceRoot": "packages/react-conformance-make-styles/src",
       "tags": ["vNext", "platform:node"],
       "implicitDependencies": []
-    },
-    "@fluentui/react-conformance-griffel": {
-      "root": "packages/react-conformance-griffel",
-      "projectType": "library",
-      "sourceRoot": "packages/react-conformance-griffel/src"
     },
     "@fluentui/react-context-selector": {
       "root": "packages/react-context-selector",
@@ -517,6 +517,13 @@
       "sourceRoot": "packages/react-spinbutton/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-spinner": {
+      "root": "packages/react-spinner",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-spinner/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-storybook": {
       "root": "packages/react-storybook",

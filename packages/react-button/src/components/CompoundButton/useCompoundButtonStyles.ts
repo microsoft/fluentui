@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { buttonSpacing, useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';

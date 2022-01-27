@@ -35,7 +35,7 @@ export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivE
     withArrow,
     positioning,
     onVisibleChange,
-    triggerAriaAttribute = 'label',
+    relationship,
     showDelay = 250,
     hideDelay = 250,
   } = props;
@@ -60,7 +60,7 @@ export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivE
     positioning,
     showDelay,
     hideDelay,
-    triggerAriaAttribute,
+    relationship,
     visible,
     shouldRenderTooltip: visible,
     appearance,
@@ -201,22 +201,21 @@ export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivE
     triggerProps.ref = childTargetRef;
   }
 
-  if (state.triggerAriaAttribute === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use labelledby.
+  if (relationship === 'label') {
+    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
     if (typeof state.content === 'string') {
       triggerProps['aria-label'] = state.content;
-    } else {
-      state.triggerAriaAttribute = 'labelledby';
+    } else if (!isServerSideRender) {
+      triggerProps['aria-labelledby'] = state.root.id;
+      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+      state.shouldRenderTooltip = true;
     }
-  }
-
-  if (state.triggerAriaAttribute === 'labelledby' && !isServerSideRender) {
-    triggerProps['aria-labelledby'] = state.root.id;
-    // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-    state.shouldRenderTooltip = true;
-  } else if (state.triggerAriaAttribute === 'describedby' && !isServerSideRender) {
-    triggerProps['aria-describedby'] = state.root.id;
-    state.shouldRenderTooltip = true;
+  } else if (relationship === 'description') {
+    if (!isServerSideRender) {
+      triggerProps['aria-describedby'] = state.root.id;
+      // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
+      state.shouldRenderTooltip = true;
+    }
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props

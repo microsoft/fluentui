@@ -71,15 +71,15 @@ export type TooltipCommons = {
   ) => void;
 
   /**
-   * Specifies which aria attribute to set on the trigger element.
-   * * `label` - Set aria-label to the tooltip's content. Requires content to be a string; if not, uses `labelledby`.
-   * * `labelledby` - Set aria-labelledby to the tooltip's id. The id is generated if not provided.
-   * * `describedby` - Set aria-describedby to the tooltip's id. The id is generated if not provided.
-   * * null - Do not set any aria attributes on the trigger element.
+   * (Required) Specifies whether this tooltip is acting as the description or label of its trigger element.
    *
-   * @defaultvalue label
+   * * `label` - The tooltip sets the trigger's aria-label or aria-labelledby attribute. This is useful for buttons
+   *    displaying only an icon, for example.
+   * * `description` - The tooltip sets the trigger's aria-description or aria-describedby attribute.
+   * * `inaccessible` - No aria attributes are set on the trigger. This makes the tooltip's content inaccessible to
+   *   screen readers, and should only be used if the tooltip's text is available by some other means.
    */
-  triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
+  relationship: 'label' | 'description' | 'inaccessible';
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
@@ -117,8 +117,8 @@ export type OnVisibleChangeData = {
  * Properties for Tooltip
  */
 export type TooltipProps = ComponentProps<TooltipSlots> &
-  Partial<Omit<TooltipCommons, 'content'>> &
-  Pick<TooltipCommons, 'content'>;
+  Partial<Omit<TooltipCommons, 'content' | 'relationship'>> &
+  Pick<TooltipCommons, 'content' | 'relationship'>;
 
 /**
  * State used in rendering Tooltip
@@ -127,11 +127,6 @@ export type TooltipState = ComponentState<TooltipSlots> &
   TooltipCommons & {
     /**
      * Whether the tooltip should be rendered to the DOM.
-     *
-     * Normally the tooltip will only be rendered when visible. However, if
-     * triggerAriaAttribute is labelledby or describedby, the tooltip will
-     * always be rendered even when hidden so that those aria attributes
-     * to always refer to a valid DOM element.
      */
     shouldRenderTooltip?: boolean;
 

@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import { ButtonState } from '../Button/Button.types';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { MenuButtonState } from './MenuButton.types';
