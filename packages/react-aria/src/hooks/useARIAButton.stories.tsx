@@ -34,7 +34,7 @@ export const Default = (args: DefaultArgs) => {
 
 export const Anchor = (args: DefaultArgs) => {
   type AnchorSlots = {
-    root: ARIAButtonShorthandProps;
+    root: ARIAButtonSlotProps;
   };
   const props = useARIAButton(
     {
