@@ -84,7 +84,6 @@ packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2/
 # packages/jest-serializer-merge-styles/
 
-packages/make-styles-webpack-loader/ @microsoft/teams-prg
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/public-docsite-setup/ @ecraig12345

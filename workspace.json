@@ -137,13 +137,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/make-styles-webpack-loader": {
-      "root": "packages/make-styles-webpack-loader",
-      "projectType": "library",
-      "sourceRoot": "packages/make-styles-webpack-loader/src",
-      "tags": ["vNext", "platform:node"],
-      "implicitDependencies": []
-    },
     "@fluentui/merge-styles": {
       "root": "packages/merge-styles",
       "projectType": "library",
