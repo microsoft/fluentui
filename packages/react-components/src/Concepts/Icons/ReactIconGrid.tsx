@@ -40,6 +40,7 @@ const useStyles = makeStyles({
 
   searchBox: {
     maxWidth: '320px',
+    marginBottom: '10px',
   },
 
   radio: {
@@ -96,7 +97,7 @@ const ReactIconGrid = () => {
         onChange={_onSearchQueryChanged}
         className={styles.searchBox}
       />
-      <input id="option-16" type="radio" value={16} name="size" onChange={_filterBySize} />
+      {/* <input id="option-16" type="radio" value={16} name="size" onChange={_filterBySize} />
       <label htmlFor="option-16" className={styles.radio}>
         16
       </label>
@@ -123,7 +124,15 @@ const ReactIconGrid = () => {
       <input id="option-All" type="radio" value="All" name="size" onChange={_filterBySize} />
       <label htmlFor="option-All" className={styles.radio}>
         All
-      </label>
+      </label> */}
+      {[16, 20, 24, 28, 32, 48, 'All'].map(option => (
+        <>
+          <input id={`option-${option}`} type="radio" value={option} name="size" onChange={_filterBySize} />
+          <label htmlFor={`option-${option}`} className={styles.radio}>
+            {option}
+          </label>
+        </>
+      ))}
       <div className={styles.grid}>{filteredIcons.map(_renderIcon)}</div>
     </div>
   );
