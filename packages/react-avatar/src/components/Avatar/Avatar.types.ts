@@ -18,7 +18,10 @@ export type AvatarSlots = {
   image?: IntrinsicShorthandProps<'img'>;
 
   /**
-   * (optional) Custom initials. By default, this will be derived from the `name` using `getInitials`.
+   * (optional) Custom initials.
+   *
+   * It is usually not necessary to specify custom initials; by default they will be derived from the `name` prop,
+   * using the `getInitials` function.
    *
    * The initials are displayed when there is no image (including while the image is loading).
    */

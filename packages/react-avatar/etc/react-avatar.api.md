@@ -56,6 +56,9 @@ export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
     color: Exclude<AvatarCommons['color'], 'colorful'>;
 };
 
+// @public
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
+
 // @public (undocumented)
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
