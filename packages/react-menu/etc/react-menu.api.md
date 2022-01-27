@@ -156,21 +156,12 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-<<<<<<< HEAD
     root: IntrinsicSlotProps<'div'>;
     icon?: IntrinsicSlotProps<'span'>;
     checkmark?: IntrinsicSlotProps<'span'>;
     submenuIndicator?: IntrinsicSlotProps<'span'>;
-    content: IntrinsicSlotProps<'span'>;
+    content?: IntrinsicSlotProps<'span'>;
     secondaryContent?: IntrinsicSlotProps<'span'>;
-=======
-    root: IntrinsicShorthandProps<'div'>;
-    icon?: IntrinsicShorthandProps<'span'>;
-    checkmark?: IntrinsicShorthandProps<'span'>;
-    submenuIndicator?: IntrinsicShorthandProps<'span'>;
-    content?: IntrinsicShorthandProps<'span'>;
-    secondaryContent?: IntrinsicShorthandProps<'span'>;
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public (undocumented)
@@ -281,7 +272,7 @@ export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSpli
 
 // @public (undocumented)
 export type MenuSplitGroupSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public

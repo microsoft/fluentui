@@ -9,12 +9,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
-<<<<<<< HEAD
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import type { ObjectSlotProps } from '@fluentui/react-utilities';
-=======
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 import * as React_2 from 'react';
 
 // @public
@@ -110,15 +105,9 @@ export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonPro
 
 // @public (undocumented)
 export type SplitButtonSlots = {
-<<<<<<< HEAD
     root: IntrinsicSlotProps<'div'>;
-    menuButton?: ObjectSlotProps<MenuButtonProps>;
-    primaryActionButton?: ObjectSlotProps<ButtonProps>;
-=======
-    root: IntrinsicShorthandProps<'div'>;
     menuButton?: ComponentSlotProps<typeof MenuButton>;
     primaryActionButton?: ComponentSlotProps<typeof Button>;
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public (undocumented)

@@ -35,17 +35,10 @@ export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 
 
 // @public (undocumented)
 export type InputSlots = {
-<<<<<<< HEAD
     root: IntrinsicSlotProps<'span'>;
-    input: Omit<IntrinsicSlotProps<'input'>, 'size'>;
+    input: IntrinsicSlotProps<'input'>;
     contentBefore?: IntrinsicSlotProps<'span'>;
     contentAfter?: IntrinsicSlotProps<'span'>;
-=======
-    root: IntrinsicShorthandProps<'span'>;
-    input: IntrinsicShorthandProps<'input'>;
-    contentBefore?: IntrinsicShorthandProps<'span'>;
-    contentAfter?: IntrinsicShorthandProps<'span'>;
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public

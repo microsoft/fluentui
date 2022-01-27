@@ -8,14 +8,8 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-<<<<<<< HEAD
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import type { ObjectSlotProps } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
-=======
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 import * as React_2 from 'react';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
 
@@ -51,17 +45,10 @@ export type AvatarSlots = {
     root: Omit<IntrinsicSlotProps<'span'>, 'color'> & {
         children?: never;
     };
-<<<<<<< HEAD
     image?: IntrinsicSlotProps<'img'>;
-    label?: IntrinsicSlotProps<'span'>;
+    initials?: IntrinsicSlotProps<'span'>;
     icon?: IntrinsicSlotProps<'span'>;
-    badge?: ObjectSlotProps<PresenceBadgeProps>;
-=======
-    image?: IntrinsicShorthandProps<'img'>;
-    initials?: IntrinsicShorthandProps<'span'>;
-    icon?: IntrinsicShorthandProps<'span'>;
     badge?: ComponentSlotProps<typeof PresenceBadge>;
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public

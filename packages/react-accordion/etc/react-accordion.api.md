@@ -9,12 +9,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-<<<<<<< HEAD
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import type { ObjectSlotProps } from '@fluentui/react-utilities';
-=======
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 import * as React_2 from 'react';
 
 // @public
@@ -74,12 +69,6 @@ export type AccordionHeaderContextValues = {
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-<<<<<<< HEAD
-export type AccordionHeaderExpandIconProps = IntrinsicSlotProps<'span'>;
-
-// @public (undocumented)
-=======
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
 
 // @public (undocumented)
@@ -87,18 +76,10 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-<<<<<<< HEAD
     root: IntrinsicSlotProps<'div'>;
     button: ARIAButtonSlotProps;
-    expandIcon: AccordionHeaderExpandIconProps;
+    expandIcon: IntrinsicSlotProps<'span'>;
     icon?: IntrinsicSlotProps<'div'>;
-    children: ObjectSlotProps<React_2.HTMLAttributes<HTMLElement>>;
-=======
-    root: IntrinsicShorthandProps<'div'>;
-    button: ARIAButtonShorthandProps;
-    expandIcon: IntrinsicShorthandProps<'span'>;
-    icon?: IntrinsicShorthandProps<'div'>;
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public (undocumented)

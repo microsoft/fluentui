@@ -4,21 +4,12 @@
 
 ```ts
 
-<<<<<<< HEAD
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import type { LabelProps } from '@fluentui/react-label';
-import type { ObjectSlotProps } from '@fluentui/react-utilities';
-=======
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentSlotProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 import * as React_2 from 'react';
 
 // @public
@@ -50,16 +41,10 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
 
 // @public (undocumented)
 export type CheckboxSlots = {
-<<<<<<< HEAD
-    root: ObjectSlotProps<LabelProps> | IntrinsicSlotProps<'span'>;
+    root: IntrinsicSlotProps<'span'>;
+    label?: ComponentSlotProps<typeof Label>;
     input: IntrinsicSlotProps<'input'>;
     indicator: IntrinsicSlotProps<'div'>;
-=======
-    root: IntrinsicShorthandProps<'span'>;
-    label?: ComponentSlotProps<typeof Label>;
-    input: IntrinsicShorthandProps<'input'>;
-    indicator: IntrinsicShorthandProps<'div'>;
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public

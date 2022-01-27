@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 import { TabValue } from '../Tab/Tab.types';
 
 export type SelectTabData = {
@@ -17,7 +17,7 @@ export type TabListSlots = {
   /**
    * The slot associated with the root element of this tab list.
    */
-  root: IntrinsicShorthandProps<'div'>;
+  root: IntrinsicSlotProps<'div'>;
 };
 
 export type TabListCommons = {

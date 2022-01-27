@@ -11,47 +11,7 @@ import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-<<<<<<< HEAD
-export const RangedSlider: ForwardRefComponent<RangedSliderProps>;
-
-// @public (undocumented)
-export const rangedSliderClassName = "fui-RangedSlider";
-
-// @public (undocumented)
-export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
-    defaultValue?: [number, number];
-    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        value: [number, number];
-    }) => void;
-    value?: [number, number];
-}
-
-// @public (undocumented)
-export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
-}
-
-// @public (undocumented)
-export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
-    lowerThumb: IntrinsicSlotProps<'div'>;
-    lowerThumbWrapper: IntrinsicSlotProps<'div'>;
-    upperThumb: IntrinsicSlotProps<'div'>;
-    upperThumbWrapper: IntrinsicSlotProps<'div'>;
-    lowerInput: IntrinsicSlotProps<'input'>;
-    upperInput: IntrinsicSlotProps<'input'>;
-};
-
-// @public (undocumented)
-export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
-}
-
-// @public
-export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
-
-// @public
-export const renderSlider: (state: SliderState) => JSX.Element;
-=======
 export const renderSlider_unstable: (state: SliderState) => JSX.Element;
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
@@ -84,25 +44,12 @@ export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultVal
 
 // @public (undocumented)
 export type SliderSlots = {
-<<<<<<< HEAD
     root: IntrinsicSlotProps<'div'>;
     rail: IntrinsicSlotProps<'div'>;
-    sliderWrapper: IntrinsicSlotProps<'div'>;
-    trackWrapper: IntrinsicSlotProps<'div'>;
-    track: IntrinsicSlotProps<'div'>;
-    marksWrapper: IntrinsicSlotProps<'div'>;
-    thumbWrapper: IntrinsicSlotProps<'div'>;
     thumb: IntrinsicSlotProps<'div'>;
-    activeRail: IntrinsicSlotProps<'div'>;
-    input: IntrinsicSlotProps<'input'>;
-=======
-    root: IntrinsicShorthandProps<'div'>;
-    rail: IntrinsicShorthandProps<'div'>;
-    thumb: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'> & {
+    input: IntrinsicSlotProps<'input'> & {
         orient?: 'horizontal' | 'vertical';
     };
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 };
 
 // @public (undocumented)

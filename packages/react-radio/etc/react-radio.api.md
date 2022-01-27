@@ -4,23 +4,13 @@
 
 ```ts
 
-<<<<<<< HEAD
 import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputHTMLAttributes } from 'react';
 import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
-import type { LabelProps } from '@fluentui/react-label';
-import type { ObjectSlotProps } from '@fluentui/react-utilities';
-=======
-import { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentSlotProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { InputHTMLAttributes } from 'react';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
 import * as React_2 from 'react';
 
 // @public
@@ -48,19 +38,11 @@ export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons &
 
 // @public (undocumented)
 export type RadioItemSlots = {
-<<<<<<< HEAD
     root: IntrinsicSlotProps<'span'>;
     indicator: IntrinsicSlotProps<'div'>;
     input: IntrinsicSlotProps<'input'>;
-    label: ObjectSlotProps<LabelProps>;
-    subtext?: IntrinsicSlotProps<'span'>;
-=======
-    root: IntrinsicShorthandProps<'span'>;
-    indicator: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
     label: ComponentSlotProps<typeof Label>;
-    subtext?: IntrinsicShorthandProps<'span'>;
->>>>>>> 80b76eb567465fb2ae4a6d7b780d034606ab76dd
+    subtext?: IntrinsicSlotProps<'span'>;
 };
 
 // @public
