@@ -98,7 +98,7 @@ export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 // @public
 export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
-    slotProps: SlotProps_2<R>;
+    slotProps: ObjectSlotProps<R>;
 };
 
 // @public
@@ -326,7 +326,7 @@ export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
-// lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "SlotProps" needs to be exported by the entry point index.d.ts
+// lib/compose/getSlots.d.ts:28:5 - (ae-forgotten-export) The symbol "ObjectSlotProps" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
