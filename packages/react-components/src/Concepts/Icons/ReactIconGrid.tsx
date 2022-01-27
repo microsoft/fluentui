@@ -97,34 +97,6 @@ const ReactIconGrid = () => {
         onChange={_onSearchQueryChanged}
         className={styles.searchBox}
       />
-      {/* <input id="option-16" type="radio" value={16} name="size" onChange={_filterBySize} />
-      <label htmlFor="option-16" className={styles.radio}>
-        16
-      </label>
-      <input id="option-20" type="radio" value={20} name="size" onChange={_filterBySize} />
-      <label htmlFor="option-20" className={styles.radio}>
-        20
-      </label>
-      <input id="option-24" type="radio" value={24} name="size" onChange={_filterBySize} checked />
-      <label htmlFor="option-24" className={styles.radio}>
-        24
-      </label>
-      <input id="option-28" type="radio" value={28} name="size" onChange={_filterBySize} />
-      <label htmlFor="option-28" className={styles.radio}>
-        28
-      </label>
-      <input id="option-32" type="radio" value={32} name="size" onChange={_filterBySize} />
-      <label htmlFor="option-32" className={styles.radio}>
-        32
-      </label>
-      <input id="option-48" type="radio" value={48} name="size" onChange={_filterBySize} />
-      <label htmlFor="option-48" className={styles.radio}>
-        48
-      </label>
-      <input id="option-All" type="radio" value="All" name="size" onChange={_filterBySize} />
-      <label htmlFor="option-All" className={styles.radio}>
-        All
-      </label> */}
       {[16, 20, 24, 28, 32, 48, 'All'].map(option => (
         <>
           <input id={`option-${option}`} type="radio" value={option} name="size" onChange={_filterBySize} />
