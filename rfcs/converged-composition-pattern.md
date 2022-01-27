@@ -16,6 +16,17 @@ Currently, there are several patterns consumers need to guess at in order to com
 - Remove styling hook (we can ship an unstyled package)
 - Remove a single part of state creation, like aria props
 
+## Table of Contents
+
+- [Current Capabilities](#current-capabilities)
+- [Current Implementation](#current-implementation)
+- [Current Problems](#current-problems)
+- [Proposed Solution](#proposed-solution)
+- [Pros & Cons](#pros-cons)
+- [Use case examples](#use-case-examples)
+- [Discarded Solutions](#discarded-solutions)
+- [Conclusion](#conclusion)
+
 ## Current Capabilities
 
 Maybe you want to:
@@ -243,6 +254,7 @@ const useCustomStyles = makeStyles({
     // custom CSS here
   }),
 });
+
 export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((props, ref) => {
   const [state, render] = useComponent(props, ref);
 
@@ -457,3 +469,25 @@ const [state, render] = useButton(props, ref, {
 ### Unstyled Package
 
 The style hook is likely the only hook a partner would potentially want to remove from the bundle. We could/should ship an unstyled version of our components if that need arises. Else, the consumer needs to rewrite the entire library with hooks, just omitting the style hook.
+
+## Conclusion
+
+**What we WILL NOT do**
+
+We need more customer input and data points before implementing all suggested changes in this RFC.
+Problems arise when attempting to consistently organize the internals of `useComponent` hooks into a second layer of hooks:
+
+1. Useless hooks that wrap another hook and only provide a new name and typings.
+2. It does not solve the original, namely that the set of 2nd layer hooks are not consistent between components.
+
+Because of these issues, it is best to hold off on reorganizing the internals of `useComponent` hooks, for now.
+
+**What we WILL do**
+
+There are several other improvements in this RFC that we are comfortable with which do not have negative consequences:
+
+1. Mark hooks as unstable. (done)
+2. Consolidate to single hook by moving `useFooStyles` and others inside `useFoo`
+3. `useFoo` to return an array of state, render, context
+
+We will also use this RFC's use cases and investigations as a baseline for upcoming documentation on how to create custom components using our hooks.
