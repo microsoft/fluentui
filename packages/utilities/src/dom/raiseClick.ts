@@ -1,4 +1,6 @@
-/** Raises a click event. */
+/** Raises a click event.
+ * @deprecated
+ */
 export function raiseClick(target: Element): void {
   const event = createNewEvent('MouseEvents');
   event.initEvent('click', true, true);
