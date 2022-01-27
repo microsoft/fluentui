@@ -5,13 +5,13 @@ import type { {{componentName}}Props, {{componentName}}State } from './{{compone
 /**
  * Create the state required to render {{componentName}}.
  *
- * The returned state can be modified with hooks such as use{{componentName}}Styles,
- * before being passed to render{{componentName}}.
+ * The returned state can be modified with hooks such as use{{componentName}}Styles_unstable,
+ * before being passed to render{{componentName}}_unstable.
  *
  * @param props - props from this instance of {{componentName}}
  * @param ref - reference to root HTMLElement of {{componentName}}
  */
-export const use{{componentName}} = (props: {{componentName}}Props, ref: React.Ref<HTMLElement>): {{componentName}}State => {
+export const use{{componentName}}_unstable = (props: {{componentName}}Props, ref: React.Ref<HTMLElement>): {{componentName}}State => {
   return {
     // TODO add appropriate props/defaults
     components: {

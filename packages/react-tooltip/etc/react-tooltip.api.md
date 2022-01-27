@@ -33,13 +33,13 @@ export type TooltipCommons = {
     positioning?: PositioningShorthand;
     visible?: boolean;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
-    triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
+    relationship: 'label' | 'description' | 'inaccessible';
     showDelay: number;
     hideDelay: number;
 };
 
 // @public
-export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content'>> & Pick<TooltipCommons, 'content'>;
+export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'content' | 'relationship'>> & Pick<TooltipCommons, 'content' | 'relationship'>;
 
 // @public
 export type TooltipSlots = {

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 25 Jan 2022 07:30:06 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jan 2022 07:26:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.51.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.1)
+
+Wed, 26 Jan 2022 07:26:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.51.0..@fluentui/react_v8.51.1)
+
+### Patches
+
+- Re-add motion and font theme re-exports. ([PR #21363](https://github.com/microsoft/fluentui/pull/21363) by seanmonahan@microsoft.com)
 
 ## [8.51.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.0)
 

@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -30,8 +30,8 @@ export type BadgeProps = ComponentProps<Partial<BadgeSlots>> & Partial<BadgeComm
 
 // @public (undocumented)
 export type BadgeSlots = {
-    root: ObjectShorthandProps<Omit<React_2.HTMLAttributes<HTMLElement>, 'color'>>;
-    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    root: Omit<IntrinsicShorthandProps<'div'>, 'color'>;
+    icon?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public (undocumented)
