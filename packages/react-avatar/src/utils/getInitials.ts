@@ -68,7 +68,12 @@ function cleanupDisplayName(displayName: string): string {
 /**
  * Get (up to 2 characters) initials based on display name of the persona.
  *
- * @public
+ * @param displayName - The full name of the person or entity
+ * @param isRtl - Whether the display is in RTL
+ * @param allowPhoneInitials - Should initials be generated from phone numbers (default false)
+ *
+ * @returns The 1 or 2 character initials based on the name. Or an empty string if no initials
+ * could be derived from the name.
  */
 export function getInitials(
   displayName: string | undefined | null,

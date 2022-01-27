@@ -511,6 +511,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-spinner": {
+      "root": "packages/react-spinner",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-spinner/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-storybook": {
       "root": "packages/react-storybook",
       "projectType": "library",

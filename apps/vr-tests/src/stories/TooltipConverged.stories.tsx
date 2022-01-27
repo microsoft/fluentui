@@ -26,7 +26,7 @@ storiesOf('Tooltip Converged', module)
     'basic',
     () => (
       <div className={useStyles().wrapper}>
-        <Tooltip visible content="This is a tooltip">
+        <Tooltip visible content="This is a tooltip" relationship="description">
           <button>Target</button>
         </Tooltip>
       </div>
@@ -37,7 +37,12 @@ storiesOf('Tooltip Converged', module)
     'inverted',
     () => (
       <div className={useStyles().wrapper}>
-        <Tooltip visible appearance="inverted" content="Inverted tooltip">
+        <Tooltip
+          visible
+          appearance="inverted"
+          content="Inverted tooltip"
+          relationship="description"
+        >
           <button>Target</button>
         </Tooltip>
       </div>
@@ -48,7 +53,7 @@ storiesOf('Tooltip Converged', module)
     'withArrow',
     () => (
       <div className={useStyles().wrapper}>
-        <Tooltip visible withArrow content="Tooltip with an arrow">
+        <Tooltip visible withArrow content="Tooltip with an arrow" relationship="description">
           <button>Target</button>
         </Tooltip>
       </div>
@@ -59,7 +64,13 @@ storiesOf('Tooltip Converged', module)
     'inverted withArrow',
     () => (
       <div className={useStyles().wrapper}>
-        <Tooltip visible appearance="inverted" withArrow content="Inverted tooltip with an arrow">
+        <Tooltip
+          visible
+          appearance="inverted"
+          withArrow
+          content="Inverted tooltip with an arrow"
+          relationship="description"
+        >
           <button>Target</button>
         </Tooltip>
       </div>
@@ -68,7 +79,11 @@ storiesOf('Tooltip Converged', module)
   )
   .addStory('text-wrapping', () => (
     <div className={useStyles().wrapper}>
-      <Tooltip visible content="This tooltip's text is long enough to wrap to a new line">
+      <Tooltip
+        visible
+        content="This tooltip's text is long enough to wrap to a new line"
+        relationship="description"
+      >
         <button>Target</button>
       </Tooltip>
     </div>
@@ -98,6 +113,7 @@ storiesOf('Tooltip Converged', module)
               <Tooltip
                 key={position + align}
                 content={position + ' ' + align}
+                relationship="label"
                 positioning={{ position, align, target }}
                 withArrow
                 visible
