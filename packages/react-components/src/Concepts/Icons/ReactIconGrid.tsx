@@ -4,7 +4,7 @@ import { FluentIconsProps } from '@fluentui/react-icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as ReactIcons from '@fluentui/react-icons';
 import { Input } from '@fluentui/react-input';
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
   grid: {
@@ -104,7 +104,7 @@ const ReactIconGrid = () => {
       <label htmlFor="option-20" className={styles.radio}>
         20
       </label>
-      <input id="option-24" type="radio" value={24} name="size" onChange={_filterBySize} />
+      <input id="option-24" type="radio" value={24} name="size" onChange={_filterBySize} checked />
       <label htmlFor="option-24" className={styles.radio}>
         24
       </label>
