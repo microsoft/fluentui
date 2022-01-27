@@ -5,7 +5,7 @@ import type { {{componentName}}State, {{componentName}}Slots } from './{{compone
 /**
  * Render the final JSX of {{componentName}}
  */
-export const render{{componentName}} = (state: {{componentName}}State) => {
+export const render{{componentName}}_unstable = (state: {{componentName}}State) => {
   const { slots, slotProps } = getSlots<{{componentName}}Slots>(state);
 
   // TODO Add additional slots in the appropriate place
