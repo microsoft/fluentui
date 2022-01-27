@@ -116,8 +116,8 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 /**
- * Takes a slots record and returns a mapping of slot names to props for each slot along with putting the props of the
- * primary slot at the top level.
+ * Defines the Props type for a component given its slots and the definition of which one is the primary slot,
+ * defaulting to root if one is not provided.
  */
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> =
   // Include shorthand slot props for each of the component's slots.
@@ -135,8 +135,7 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
     PropsWithoutRef<Slots[Primary]>;
 
 /**
- * Takes a slots record and adds to it a 'components' object that is a mapping of slot names to the type of elements
- * that each slot can be rendered as.
+ * Defines the State object of a component given its slots.
  */
 export type ComponentState<Slots extends SlotPropsRecord> = {
   components: {
