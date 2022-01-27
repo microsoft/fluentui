@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Panel fix: Header now inherits backgroundColor from parent.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
