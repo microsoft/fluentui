@@ -15,7 +15,15 @@ export default {
   component: Slider,
   decorators: [
     Story => (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1em', alignItems: 'flex-start', padding: 20 }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateRows: 'repeat(1fr)',
+          rowGap: '1em',
+          justifyItems: 'start',
+          padding: 20,
+        }}
+      >
         <Story />
       </div>
     ),
