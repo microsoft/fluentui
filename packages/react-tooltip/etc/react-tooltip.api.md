@@ -37,10 +37,10 @@ export type TooltipCommons = {
 };
 
 // @public
-export type TooltipProps = ComponentProps<TooltipSlots> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
+export type TooltipProps = Omit<ComponentProps<TooltipSlots>, 'content'> & Required<Pick<ComponentProps<TooltipSlots>, 'content'>> & Partial<Omit<TooltipCommons, 'relationship'>> & Pick<TooltipCommons, 'relationship'> & {
     children?: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
-    }) | ((props: TooltipTriggerProps) => React_2.ReactNode);
+    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
 };
 
 // @public
