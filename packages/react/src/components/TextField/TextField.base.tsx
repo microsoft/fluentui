@@ -73,6 +73,8 @@ export class TextFieldBase
   private _fallbackId: string;
   private _descriptionId: string;
   private _labelId: string;
+  private _prefixId: string;
+  private _suffixId: string;
   private _delayedValidate: (value: string | undefined) => void;
   private _lastValidation: number;
   private _latestValidateValue: string | undefined;
@@ -98,6 +100,8 @@ export class TextFieldBase
     this._fallbackId = getId(COMPONENT_NAME);
     this._descriptionId = getId(COMPONENT_NAME + 'Description');
     this._labelId = getId(COMPONENT_NAME + 'Label');
+    this._prefixId = getId(COMPONENT_NAME + 'Prefix');
+    this._suffixId = getId(COMPONENT_NAME + 'Suffix');
 
     this._warnControlledUsage();
 
@@ -247,7 +251,9 @@ export class TextFieldBase
           {onRenderLabel(this.props, this._onRenderLabel)}
           <div className={classNames.fieldGroup}>
             {(prefix !== undefined || this.props.onRenderPrefix) && (
-              <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
+              <div className={classNames.prefix} id={this._prefixId}>
+                {onRenderPrefix(this.props, this._onRenderPrefix)}
+              </div>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
@@ -269,7 +275,9 @@ export class TextFieldBase
               </button>
             )}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
-              <div className={classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
+              <div className={classNames.suffix} id={this._suffixId}>
+                {onRenderSuffix(this.props, this._onRenderSuffix)}
+              </div>
             )}
           </div>
         </div>
@@ -517,12 +525,28 @@ export class TextFieldBase
   }
 
   private _renderInput(): JSX.Element | null {
-    const { ariaLabel, invalid = !!this._errorMessage, type = 'text', label } = this.props;
+    const {
+      ariaLabel,
+      invalid = !!this._errorMessage,
+      onRenderPrefix,
+      onRenderSuffix,
+      prefix,
+      suffix,
+      type = 'text',
+      label,
+    } = this.props;
+
+    // build aria-labelledby list from label, prefix, and suffix
+    const labelIds = [];
+    label && labelIds.push(this._labelId);
+    (prefix !== undefined || onRenderPrefix) && labelIds.push(this._prefixId);
+    (suffix !== undefined || onRenderSuffix) && labelIds.push(this._suffixId);
+
     const inputProps: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement> = {
       type: this.state.isRevealingPassword ? 'text' : type,
       id: this._id,
       ...getNativeProps(this.props, inputProperties, ['defaultValue', 'type']),
-      'aria-labelledby': this.props['aria-labelledby'] || (label ? this._labelId : undefined),
+      'aria-labelledby': this.props['aria-labelledby'] || (labelIds.length > 0 ? labelIds.join(' ') : undefined),
       ref: this._textElement as React.RefObject<HTMLInputElement>,
       value: this.value || '',
       onInput: this._onInputChange,
