@@ -6,8 +6,8 @@ import { TabListContext } from './TabListContext';
 /**
  * Render the final JSX of TabList
  */
-export const renderTabList = (state: TabListState, contextValues: TabListContextValues) => {
-  const { slots, slotProps } = getSlots<TabListSlots>(state, ['root']);
+export const renderTabList_unstable = (state: TabListState, contextValues: TabListContextValues) => {
+  const { slots, slotProps } = getSlots<TabListSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
+import { buttonSpacing, useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
 export const compoundButtonClassName = 'fui-CompoundButton';
@@ -175,7 +174,7 @@ const useSecondaryContentStyles = makeStyles({
   base: {
     lineHeight: '100%',
     marginTop: '4px',
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
   },
 
   // Size variations
@@ -190,7 +189,7 @@ const useSecondaryContentStyles = makeStyles({
   },
 });
 
-export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
+export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
@@ -232,7 +231,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     );
   }
 
-  useButtonStyles(state);
+  useButtonStyles_unstable(state);
 
   return state;
 };

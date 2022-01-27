@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles, createDOMRenderer } from '@fluentui/make-styles';
+import { mergeClasses, makeStyles, createDOMRenderer } from '@griffel/core';
 import * as React from 'react';
 
 const renderer = createDOMRenderer(document);

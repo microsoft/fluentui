@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import {
-  AsIntrinsicElement,
-  ComponentState,
-  ShorthandRenderFunction,
-  ObjectShorthandPropsRecord,
-  ObjectShorthandProps,
-  UnionToIntersection,
-} from './types';
 import { nullRender } from './nullRender';
 import { omit } from '../utils/omit';
+import type {
+  AsIntrinsicElement,
+  ComponentState,
+  ObjectShorthandProps,
+  ObjectShorthandPropsRecord,
+  ShorthandRenderFunction,
+  UnionToIntersection,
+} from './types';
 
 export type Slots<S extends ObjectShorthandPropsRecord> = {
   [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
@@ -45,12 +45,10 @@ type SlotProps<S extends ObjectShorthandPropsRecord> = {
  * runtime code filtering props in this function.
  *
  * @param state - State including slot definitions
- * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
 export function getSlots<R extends ObjectShorthandPropsRecord>(
   state: ComponentState<R>,
-  slotNames: (keyof R)[] = ['root'],
 ): {
   slots: Slots<R>;
   slotProps: SlotProps<R>;
@@ -58,6 +56,7 @@ export function getSlots<R extends ObjectShorthandPropsRecord>(
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
+  const slotNames: (keyof R)[] = Object.keys(state.components);
   for (const slotName of slotNames) {
     const [slot, props] = getSlot(state, slotName);
     slots[slotName] = slot as Slots<R>[typeof slotName];

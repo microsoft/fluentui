@@ -4,7 +4,7 @@
 
 // 👆 this is intentionally to test in SSR like environment
 
-import { createDOMRenderer } from '@fluentui/make-styles';
+import { createDOMRenderer } from '@griffel/core';
 import * as prettier from 'prettier';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';

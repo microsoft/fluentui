@@ -28,7 +28,7 @@ export const SizeLarge = () => {
             <SplitButton
               menuButton={triggerProps}
               primaryActionButton={'This is a split button'}
-              icon={<CalendarMonthRegular fontSize={24} />}
+              icon={<CalendarMonthRegular />}
               size="large"
             />
           )}

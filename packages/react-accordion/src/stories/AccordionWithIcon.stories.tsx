@@ -27,7 +27,7 @@ export const WithIcon = (args: AccordionHeaderProps) => (
 );
 
 WithIcon.args = {
-  icon: <RocketIcon fontSize={20} />,
+  icon: <RocketIcon />,
 } as AccordionHeaderProps;
 
 WithIcon.parameters = {

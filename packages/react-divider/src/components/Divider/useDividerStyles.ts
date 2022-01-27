@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { mergeClasses, shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { DividerState } from './Divider.types';
 
@@ -7,7 +6,8 @@ export const dividerClassName = 'fui-Divider';
 
 const contentSpacing = '12px';
 const insetSpacing = '12px';
-const startEndMaxHeight = '8px';
+const maxStartEndLength = '8px';
+const minStartEndLength = '8px;';
 
 const useBaseStyles = makeStyles({
   // Base styles
@@ -21,8 +21,9 @@ const useBaseStyles = makeStyles({
 
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
+    textAlign: 'center',
 
     color: tokens.colorNeutralForeground2,
 
@@ -30,7 +31,6 @@ const useBaseStyles = makeStyles({
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
 
@@ -38,7 +38,6 @@ const useBaseStyles = makeStyles({
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
   },
@@ -116,11 +115,13 @@ const useHorizontalStyles = makeStyles({
     ':before': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minStartEndLength,
     },
 
     ':after': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
+      minWidth: minStartEndLength,
     },
   },
 
@@ -135,7 +136,7 @@ const useHorizontalStyles = makeStyles({
     ':before': {
       content: '""',
       marginRight: contentSpacing,
-      maxWidth: startEndMaxHeight,
+      maxWidth: maxStartEndLength,
     },
 
     ':after': {
@@ -157,7 +158,7 @@ const useHorizontalStyles = makeStyles({
     ':after': {
       content: '""',
       marginLeft: contentSpacing,
-      maxWidth: startEndMaxHeight,
+      maxWidth: maxStartEndLength,
     },
   },
 });
@@ -171,11 +172,13 @@ const useVerticalStyles = makeStyles({
     ':before': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minStartEndLength,
     },
 
     ':after': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
+      minHeight: minStartEndLength,
     },
   },
 
@@ -195,7 +198,7 @@ const useVerticalStyles = makeStyles({
     ':before': {
       content: '""',
       marginBottom: contentSpacing,
-      maxHeight: startEndMaxHeight,
+      maxHeight: maxStartEndLength,
     },
 
     ':after': {
@@ -217,12 +220,12 @@ const useVerticalStyles = makeStyles({
     ':after': {
       content: '""',
       marginTop: contentSpacing,
-      maxHeight: startEndMaxHeight,
+      maxHeight: maxStartEndLength,
     },
   },
 });
 
-export const useDividerStyles = (state: DividerState): DividerState => {
+export const useDividerStyles_unstable = (state: DividerState): DividerState => {
   const baseStyles = useBaseStyles();
   const horizontalStyles = useHorizontalStyles();
   const verticalStyles = useVerticalStyles();

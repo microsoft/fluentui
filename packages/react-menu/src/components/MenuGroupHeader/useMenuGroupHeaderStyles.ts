@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderState } from './MenuGroupHeader.types';
 
@@ -11,14 +10,14 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
     paddingLeft: '12px',
     paddingRight: '12px',
-    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightSemibold,
     height: '32px',
     display: 'flex',
     alignItems: 'center',
   },
 });
 
-export const useMenuGroupHeaderStyles = (state: MenuGroupHeaderState) => {
+export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(menuGroupHeaderClassName, styles.root, state.root.className);
 

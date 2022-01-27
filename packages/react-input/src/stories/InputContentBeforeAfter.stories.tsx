@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { Input } from '../index';
 
@@ -23,18 +23,13 @@ export const ContentBeforeAfter = () => {
   return (
     <div className={styles.root}>
       <Label htmlFor={beforeId}>Content before</Label>
-      <Input contentBefore={<SearchRegular />} id={beforeId} placeholder="placeholder" />
+      <Input contentBefore={<SearchRegular />} id={beforeId} />
 
       <Label htmlFor={afterId}>Content after</Label>
-      <Input contentAfter={<DismissRegular />} id={afterId} placeholder="placeholder" />
+      <Input contentAfter={<DismissRegular />} id={afterId} />
 
       <Label htmlFor={bothId}>Content before and after</Label>
-      <Input
-        contentBefore={<SearchRegular />}
-        contentAfter={<DismissRegular />}
-        id={bothId}
-        placeholder="placeholder"
-      />
+      <Input contentBefore={<SearchRegular />} contentAfter={<DismissRegular />} id={bothId} />
     </div>
   );
 };

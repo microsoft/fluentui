@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { PresenceBadge } from '@fluentui/react-badge';
 import type {
   ComponentProps,
+  ComponentSlotProps,
   ComponentState,
   IntrinsicShorthandProps,
-  ObjectShorthandProps,
   ShorthandRenderFunction,
 } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
 export type AvatarSlots = {
   root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
@@ -18,33 +18,36 @@ export type AvatarSlots = {
   image?: IntrinsicShorthandProps<'img'>;
 
   /**
-   * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
+   * (optional) Custom initials.
+   *
+   * It is usually not necessary to specify custom initials; by default they will be derived from the `name` prop,
+   * using the `getInitials` function.
+   *
+   * The initials are displayed when there is no image (including while the image is loading).
    */
-  label?: IntrinsicShorthandProps<'span'>;
+  initials?: IntrinsicShorthandProps<'span'>;
 
   /**
-   * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
+   * Icon to be displayed when the avatar doesn't have an image or initials.
    *
-   * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
+   * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
    */
   icon?: IntrinsicShorthandProps<'span'>;
 
   /**
    * Badge to show the avatar's presence status.
    */
-  badge?: ObjectShorthandProps<PresenceBadgeProps>;
+  badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
 
 export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
   /**
-   * The name used for displaying the initials of the avatar if the image is not provided
+   * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
+   *
+   * The name will be used to determine the initials displayed when there is no icon, as well as provided to
+   * accessibility tools.
    */
-  name: string;
-
-  /**
-   * Custom method for generating the initials from the name property, which is shown if no image is provided.
-   */
-  getInitials: (name: string, isRtl: boolean) => string;
+  name?: string;
 
   /**
    * Size of the avatar in pixels.

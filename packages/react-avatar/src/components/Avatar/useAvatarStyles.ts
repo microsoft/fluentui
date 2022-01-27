@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { AvatarState } from './Avatar.types';
 
@@ -61,13 +60,13 @@ const useStyles = makeStyles({
     verticalAlign: 'middle',
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     fontFamily: tokens.fontFamilyBase,
-    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightSemibold,
     boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke} inset`,
   },
 
   textCaption2: {
     fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
   },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
   textBody1Strong: { fontSize: tokens.fontSizeBase300 },
@@ -356,7 +355,7 @@ const useColorStyles = makeStyles({
   },
 });
 
-export const useAvatarStyles = (state: AvatarState): AvatarState => {
+export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const { size, shape, active, activeAppearance, color } = state;
 
   const styles = useStyles();
@@ -446,8 +445,8 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
 
-  if (state.label) {
-    state.label.className = mergeClasses(styles.iconLabel, state.label.className);
+  if (state.initials) {
+    state.initials.className = mergeClasses(styles.iconLabel, state.initials.className);
   }
 
   if (state.icon) {

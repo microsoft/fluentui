@@ -1,17 +1,12 @@
 import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import { useSliderState } from './useSliderState';
-import { SliderProps, SliderSlots, SliderState } from './Slider.types';
-
-/**
- * Array of all shorthand properties listed in sliderShorthandProps
- */
-export const sliderShorthandProps: (keyof SliderSlots)[] = ['root', 'input', 'rail', 'thumb'];
+import { useSliderState_unstable } from './useSliderState';
+import { SliderProps, SliderState } from './Slider.types';
 
 /**
  * Given user props, returns state and render function for a Slider.
  */
-export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {
+export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
@@ -76,7 +71,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
     thumb: resolveShorthand(thumb, { required: true }),
   };
 
-  useSliderState(state);
+  useSliderState_unstable(state);
 
   return state;
 };

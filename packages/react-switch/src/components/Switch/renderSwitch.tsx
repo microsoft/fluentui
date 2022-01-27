@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { switchShorthandProps } from './useSwitch';
 import type { SwitchState, SwitchSlots } from './Switch.types';
 
 /**
  * Render the final JSX of Switch
  */
-export const renderSwitch = (state: SwitchState) => {
-  const { slots, slotProps } = getSlots<SwitchSlots>(state, switchShorthandProps);
+export const renderSwitch_unstable = (state: SwitchState) => {
+  const { slots, slotProps } = getSlots<SwitchSlots>(state);
 
   return (
     <slots.root {...slotProps.root}>

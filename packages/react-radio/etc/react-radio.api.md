@@ -5,12 +5,12 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputHTMLAttributes } from 'react';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { LabelProps } from '@fluentui/react-label';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 
 // @public
@@ -36,15 +36,12 @@ export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons &
     id?: string;
 };
 
-// @public
-export const radioItemShorthandProps: (keyof RadioItemSlots)[];
-
 // @public (undocumented)
 export type RadioItemSlots = {
     root: IntrinsicShorthandProps<'span'>;
     indicator: IntrinsicShorthandProps<'div'>;
     input: IntrinsicShorthandProps<'input'>;
-    label: ObjectShorthandProps<LabelProps>;
+    label: ComponentSlotProps<typeof Label>;
     subtext?: IntrinsicShorthandProps<'span'>;
 };
 
@@ -53,9 +50,6 @@ export type RadioItemState = ComponentState<RadioItemSlots> & RadioItemCommons;
 
 // @public
 export type RadioProps = ComponentProps<RadioSlots>;
-
-// @public
-export const radioShorthandProps: Array<keyof RadioSlots>;
 
 // @public (undocumented)
 export type RadioSlots = {
@@ -66,22 +60,22 @@ export type RadioSlots = {
 export type RadioState = ComponentState<RadioSlots>;
 
 // @public
-export const renderRadio: (state: RadioState) => JSX.Element;
+export const renderRadio_unstable: (state: RadioState) => JSX.Element;
 
 // @public
-export const renderRadioItem: (state: RadioItemState) => JSX.Element;
+export const renderRadioItem_unstable: (state: RadioItemState) => JSX.Element;
 
 // @public
-export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
+export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLElement>) => RadioState;
 
 // @public
-export const useRadioItem: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
+export const useRadioItem_unstable: (props: RadioItemProps, ref: React_2.Ref<HTMLElement>) => RadioItemState;
 
 // @public
-export const useRadioItemStyles: (state: RadioItemState) => RadioItemState;
+export const useRadioItemStyles_unstable: (state: RadioItemState) => RadioItemState;
 
 // @public
-export const useRadioStyles: (state: RadioState) => RadioState;
+export const useRadioStyles_unstable: (state: RadioState) => RadioState;
 
 // (No @packageDocumentation comment for this package)
 

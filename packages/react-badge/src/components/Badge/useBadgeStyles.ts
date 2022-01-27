@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { BadgeState } from './Badge.types';
 
@@ -14,7 +13,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
     ...shorthands.borderColor(tokens.colorBrandBackground),
     color: tokens.colorNeutralForegroundOnBrand,
-    fontWeight: tokens.fontWeightSemibold as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightSemibold,
     ...shorthands.borderWidth(tokens.strokeWidthThin),
     ...shorthands.borderStyle('solid'),
     fontFamily: tokens.fontFamilyBase,
@@ -208,12 +207,30 @@ const useStyles = makeStyles({
     alignItems: 'center',
     height: '100%',
   },
+  iconTiny: {
+    fontSize: '6px',
+  },
+  iconExtraSmall: {
+    fontSize: '10px',
+  },
+  iconSmall: {
+    fontSize: '12px',
+  },
+  iconMedium: {
+    fontSize: '12px',
+  },
+  iconLarge: {
+    fontSize: '16px',
+  },
+  iconExtraLarge: {
+    fontSize: '20px',
+  },
 });
 
 /**
  * Applies style classnames to slots
  */
-export const useBadgeStyles = (state: BadgeState): BadgeState => {
+export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   const styles = useStyles();
   const isGhost = state.appearance === 'ghost';
   const isOutline = state.appearance === 'outline';
@@ -276,7 +293,16 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      styles.icon,
+      state.size === 'tiny' && styles.iconTiny,
+      state.size === 'extra-small' && styles.iconExtraSmall,
+      state.size === 'small' && styles.iconSmall,
+      state.size === 'medium' && styles.iconMedium,
+      state.size === 'large' && styles.iconLarge,
+      state.size === 'extra-large' && styles.iconExtraLarge,
+      state.icon.className,
+    );
   }
 
   return state;

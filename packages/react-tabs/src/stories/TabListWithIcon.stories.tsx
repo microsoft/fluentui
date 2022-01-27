@@ -1,7 +1,7 @@
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
 import { Tab, TabList, TabProps } from '../index';
-import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -20,16 +20,16 @@ export const WithIcon = (props: Partial<TabProps>) => {
   const renderTabs = () => {
     return (
       <>
-        <Tab icon={<CalendarMonth24Regular />} value="tab1">
+        <Tab icon={<CalendarMonthRegular />} value="tab1">
           First Tab
         </Tab>
-        <Tab icon={<CalendarMonth24Regular />} value="tab2">
+        <Tab icon={<CalendarMonthRegular />} value="tab2">
           Second Tab
         </Tab>
-        <Tab icon={<CalendarMonth24Regular />} value="tab3">
+        <Tab icon={<CalendarMonthRegular />} value="tab3">
           Third Tab
         </Tab>
-        <Tab icon={<CalendarMonth24Regular />} value="tab4">
+        <Tab icon={<CalendarMonthRegular />} value="tab4">
           Fourth Tab
         </Tab>
       </>

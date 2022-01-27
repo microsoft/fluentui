@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { LinkState } from './Link.types';
@@ -26,7 +25,7 @@ const useStyles = makeStyles({
     display: 'inline',
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular as React.CSSProperties['fontWeight'],
+    fontWeight: tokens.fontWeightRegular,
     ...shorthands.margin(0),
     ...shorthands.padding(0),
     ...shorthands.overflow('inherit'),
@@ -89,7 +88,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useLinkStyles = (state: LinkState): LinkState => {
+export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     linkClassName,

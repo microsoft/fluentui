@@ -14,7 +14,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "lint": "just-scripts lint",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs",
     "type-check": "tsc -b tsconfig.json"
@@ -33,7 +33,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@babel/template": "^7.12.13",
     "@babel/traverse": "^7.12.13",
-    "@fluentui/make-styles": "9.0.0-beta.3",
+    "@griffel/core": "1.0.7",
     "@linaria/babel-preset": "^3.0.0-beta.14",
     "@linaria/shaker": "^3.0.0-beta.14",
     "ajv": "^8.4.0",

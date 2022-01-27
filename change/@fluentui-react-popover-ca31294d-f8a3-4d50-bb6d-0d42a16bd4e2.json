@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Use role=complementary for Popovers without focus traps",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

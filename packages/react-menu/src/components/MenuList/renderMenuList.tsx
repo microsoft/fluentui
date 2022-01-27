@@ -6,7 +6,7 @@ import { MenuListProvider } from '../../contexts/menuListContext';
 /**
  * Function that renders the final JSX of the component
  */
-export const renderMenuList = (state: MenuListState, contextValues: MenuListContextValues) => {
+export const renderMenuList_unstable = (state: MenuListState, contextValues: MenuListContextValues) => {
   const { slots, slotProps } = getSlots<MenuListSlots>(state);
 
   return (
