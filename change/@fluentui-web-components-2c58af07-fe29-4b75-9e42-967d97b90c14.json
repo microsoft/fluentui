@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating fast-foundation to v2.32.0",
-  "packageName": "@fluentui/web-components",
-  "email": "robarb@microsoft.com",
-  "dependentChangeType": "patch"
-}
