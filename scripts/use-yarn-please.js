@@ -1,10 +1,9 @@
 // @ts-check
 const path = require('path');
 const { spawnSync } = require('child_process');
-const chalk = require('chalk');
 
 const npmPath = process.env.npm_execpath;
-const COMMAND_PREFIX = `${chalk.cyan('>')} ${chalk.inverse(chalk.bold(chalk.cyan(' PACKAGE MANAGER CHECKER ')))}`;
+const COMMAND_PREFIX = `\x1B[36m>\x1B[39m \x1B[7m\x1B[1m\x1B[36m PACKAGE MANAGER CHECKER \x1B[39m\x1B[22m\x1B[27m`;
 
 const Strings = {
   useYarnInstead: `
