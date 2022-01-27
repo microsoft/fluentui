@@ -59,10 +59,10 @@ function main() {
   if (shouldExecPreBuild) {
     printDependencies();
 
-    execSync(dependencyBuildCommand, { stdio: [0, 1, 2] });
+    execSync(dependencyBuildCommand, { stdio: 'inherit' });
   }
 
-  execSync(storybookCommand, { stdio: [0, 1, 2] });
+  execSync(storybookCommand, { stdio: 'inherit' });
 
   function printTitle() {
     console.log(

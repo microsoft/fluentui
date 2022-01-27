@@ -49,12 +49,12 @@ const useStyles = makeStyles({
 export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
-  state.root.className = mergeClasses(
+  state.content.className = mergeClasses(
     tooltipClassName,
     styles.root,
     state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,
-    state.root.className,
+    state.content.className,
   );
 
   state.arrowClassName = styles.arrow;

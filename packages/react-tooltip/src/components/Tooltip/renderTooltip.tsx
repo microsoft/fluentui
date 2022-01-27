@@ -11,13 +11,13 @@ export const renderTooltip_unstable = (state: TooltipState) => {
 
   return (
     <>
-      {state.root.children}
+      {state.children}
       {state.shouldRenderTooltip && (
         <Portal>
-          <slots.root {...slotProps.root}>
+          <slots.content {...slotProps.content}>
             {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
-            {state.content}
-          </slots.root>
+            {state.content.children}
+          </slots.content>
         </Portal>
       )}
     </>
