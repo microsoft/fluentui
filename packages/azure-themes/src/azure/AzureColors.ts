@@ -372,6 +372,20 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     inactiveDisabledBackground: BaseColors.GRAY_292827,
     activeBackgroundPressed: BaseColors.BLUE_3AA0F3,
   },
+  calendar: {
+    background: BaseColors.GRAY_252423,
+    text: {
+      rest: BaseColors.GRAY_F3F2F1,
+      hover: BaseColors.GRAY_F3F2F1,
+      disabled: BaseColors.GRAY_797775,
+      outside: BaseColors.GRAY_A19F9D,
+    },
+    button: {
+      border: BaseColors.GRAY_A19F9D,
+      selected: BaseColors.GRAY_3B3A39,
+      hover: BaseColors.GRAY_323130,
+    },
+  },
 };
 
 export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
@@ -595,6 +609,20 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     inactiveDisabledBackground: BaseColors.GREEN_0AFF00,
     activeBackgroundPressed: BaseColors.BLUE_00FFFF,
   },
+  calendar: {
+    background: BaseColors.GRAY_252423,
+    text: {
+      rest: BaseColors.GRAY_F3F2F1,
+      hover: BaseColors.GRAY_F3F2F1,
+      disabled: BaseColors.GRAY_797775,
+      outside: BaseColors.GRAY_A19F9D,
+    },
+    button: {
+      border: BaseColors.GRAY_A19F9D,
+      selected: BaseColors.GRAY_3B3A39,
+      hover: BaseColors.GRAY_323130,
+    },
+  },
 };
 
 export const LightSemanticColors: IAzureSemanticColors = {
@@ -612,7 +640,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     hyperlinkHovered: BaseColors.BLUE_004578,
     success: BaseColors.GREEN_428000,
     error: BaseColors.RED_A4262C,
-    placeholder: BaseColors.GRAY_8A8886,
+    placeholder: BaseColors.GRAY_605E5C,
   },
   statusBar: {
     link: BaseColors.BLUE_106EBE,
@@ -817,6 +845,20 @@ export const LightSemanticColors: IAzureSemanticColors = {
     activeDisabledBackground: BaseColors.GRAY_A19F9D,
     inactiveDisabledBackground: BaseColors.GRAY_EDEBE9,
     activeBackgroundPressed: BaseColors.BLUE_106EBE,
+  },
+  calendar: {
+    background: BaseColors.WHITE,
+    text: {
+      rest: BaseColors.GRAY_323130,
+      hover: BaseColors.GRAY_201F1E,
+      disabled: BaseColors.GRAY_A19F9D,
+      outside: BaseColors.GRAY_605E5C,
+    },
+    button: {
+      border: BaseColors.GRAY_605E5C,
+      selected: BaseColors.GRAY_EDEBE9,
+      hover: BaseColors.GRAY_F3F2F1,
+    },
   },
 };
 
@@ -1040,5 +1082,19 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     activeDisabledBackground: BaseColors.RED_800000,
     inactiveDisabledBackground: BaseColors.RED_800000,
     activeBackgroundPressed: BaseColors.PURPLE_800080,
+  },
+  calendar: {
+    background: BaseColors.WHITE,
+    text: {
+      rest: BaseColors.GRAY_323130,
+      hover: BaseColors.GRAY_201F1E,
+      disabled: BaseColors.GRAY_A19F9D,
+      outside: BaseColors.GRAY_605E5C,
+    },
+    button: {
+      border: BaseColors.GRAY_605E5C,
+      selected: BaseColors.GRAY_EDEBE9,
+      hover: BaseColors.GRAY_F3F2F1,
+    },
   },
 };

@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
   "extends": "./api-extractor.json",
-  "mainEntryPointFilePath": "<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts",
+  "mainEntryPointFilePath": "<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts",
   "compiler": {
     /**
      * This is a quickfix to make build:local work
@@ -22,7 +22,7 @@
         "importHelpers": true,
         "noUnusedLocals": true,
         "preserveConstEnums": true,
-        "types": ["jest", "custom-global", "inline-style-expand-shorthand", "storybook__addons"],
+        "types": ["jest", "custom-global", "storybook__addons"],
         "baseUrl": ".",
         "paths": {
           "@fluentui/*": ["dist/*/src/index.d.ts"]

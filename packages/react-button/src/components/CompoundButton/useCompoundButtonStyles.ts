@@ -1,137 +1,150 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { buttonSpacing, useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
 
+export const compoundButtonClassName = 'fui-CompoundButton';
+
 const CompoundButtonClassNames = {
-  secondaryContent: 'CompoundButton-secondaryContent',
+  secondaryContent: `${compoundButtonClassName}-secondaryContent`,
 };
 
 const useRootStyles = makeStyles({
-  base: theme => ({
-    // TODO: remove unsafe property: https://caniuse.com/?search=gap
-    gap: buttonSpacing.large,
+  // Base styles
+  base: {
+    ...shorthands.gap(buttonSpacing.large),
 
     height: 'auto',
 
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2Hover,
+        color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2Pressed,
+        color: tokens.colorNeutralForeground2Pressed,
       },
     },
-  }),
-  small: theme => ({
-    padding: buttonSpacing.medium,
+  },
 
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  medium: theme => ({
-    padding: buttonSpacing.large,
-
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  large: theme => ({
-    padding: buttonSpacing.larger,
-
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
-  }),
-  primary: theme => ({
+  // Appearance variations
+  outline: {
+    /* No styles */
+  },
+  primary: {
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundOnBrand,
+      color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundOnBrand,
+        color: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundOnBrand,
+        color: tokens.colorNeutralForegroundOnBrand,
       },
     },
-  }),
-  subtle: theme => ({
+  },
+  subtle: {
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandHover,
+        color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+        color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
-  }),
-  transparent: theme => ({
+  },
+  transparent: {
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForeground2,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandHover,
+        color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForeground2BrandPressed,
+        color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
-  }),
-  disabled: theme => ({
+  },
+
+  // Size variations
+  small: {
+    ...shorthands.padding(buttonSpacing.medium),
+
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  medium: {
+    ...shorthands.padding(buttonSpacing.large),
+
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  large: {
+    ...shorthands.padding(buttonSpacing.larger),
+
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+  },
+
+  // Disabled styles
+  disabled: {
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundDisabled,
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
-  }),
+  },
 });
 
 const useRootIconOnlyStyles = makeStyles({
+  // Size variations
   small: {
-    padding: buttonSpacing.smaller,
+    ...shorthands.padding(buttonSpacing.smaller),
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    padding: buttonSpacing.small,
+    ...shorthands.padding(buttonSpacing.small),
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    padding: buttonSpacing.medium,
+    ...shorthands.padding(buttonSpacing.medium),
 
     maxWidth: '56px',
     minWidth: '56px',
@@ -139,6 +152,7 @@ const useRootIconOnlyStyles = makeStyles({
 });
 
 const useIconStyles = makeStyles({
+  // Base styles
   base: {
     fontSize: '40px',
     height: '40px',
@@ -147,6 +161,7 @@ const useIconStyles = makeStyles({
 });
 
 const useContentContainerStyles = makeStyles({
+  // Base styles
   base: {
     display: 'flex',
     flexDirection: 'column',
@@ -155,52 +170,68 @@ const useContentContainerStyles = makeStyles({
 });
 
 const useSecondaryContentStyles = makeStyles({
-  base: theme => ({
+  // Base styles
+  base: {
     lineHeight: '100%',
     marginTop: '4px',
-    fontWeight: theme.global.type.fontWeights.regular,
-  }),
-  small: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-  }),
-  medium: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-  }),
-  large: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-  }),
+    fontWeight: tokens.fontWeightRegular,
+  },
+
+  // Size variations
+  small: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  medium: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  large: {
+    fontSize: tokens.fontSizeBase300,
+  },
 });
 
-export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
+export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
 
-  state.className = mergeClasses(
+  const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
+
+  state.root.className = mergeClasses(
+    compoundButtonClassName,
+
+    // Root styles
     rootStyles.base,
-    rootStyles[state.size],
-    state.primary && rootStyles.primary,
-    state.subtle && rootStyles.subtle,
-    state.transparent && rootStyles.transparent,
-    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    state.iconOnly && rootIconOnlyStyles[state.size],
-    state.className,
+    appearance && rootStyles[appearance],
+    rootStyles[size],
+
+    // Disabled styles
+    (disabled || disabledFocusable) && rootStyles.disabled,
+
+    // Icon-only styles
+    iconOnly && rootIconOnlyStyles[size],
+
+    // User provided class name
+    state.root.className,
   );
 
-  state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
+  }
 
   state.contentContainer.className = mergeClasses(contentContainerStyles.base, state.contentContainer.className);
 
-  state.secondaryContent.className = mergeClasses(
-    CompoundButtonClassNames.secondaryContent,
-    secondaryContentStyles.base,
-    secondaryContentStyles[state.size],
-    state.secondaryContent.className,
-  );
+  if (state.secondaryContent) {
+    state.secondaryContent.className = mergeClasses(
+      CompoundButtonClassNames.secondaryContent,
+      secondaryContentStyles.base,
+      secondaryContentStyles[size],
+      state.secondaryContent.className,
+    );
+  }
 
-  useButtonStyles(state);
+  useButtonStyles_unstable(state);
 
   return state;
 };

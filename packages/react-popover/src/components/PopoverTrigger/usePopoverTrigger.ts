@@ -1,43 +1,25 @@
 import * as React from 'react';
-import {
-  makeMergeProps,
-  useMergedRefs,
-  useEventCallback,
-  shouldPreventDefaultOnKeyDown,
-} from '@fluentui/react-utilities';
+import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { usePopoverContext } from '../../popoverContext';
+import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
-
-const mergeProps = makeMergeProps<PopoverTriggerState>({});
 
 /**
  * Create the state required to render PopoverTrigger.
  *
  * The returned state can be modified with hooks such as usePopoverTriggerStyles,
- * before being passed to renderPopoverTrigger.
+ * before being passed to renderPopoverTrigger_unstable.
  *
  * @param props - props from this instance of PopoverTrigger
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const usePopoverTrigger = (
-  props: PopoverTriggerProps,
-  defaultProps?: PopoverTriggerProps,
-): PopoverTriggerState => {
-  const setOpen = usePopoverContext(context => context.setOpen);
-  const open = usePopoverContext(context => context.open);
-  const triggerRef = usePopoverContext(context => context.triggerRef);
-  const openOnHover = usePopoverContext(context => context.openOnHover);
-  const openOnContext = usePopoverContext(context => context.openOnContext);
+export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
+  const setOpen = usePopoverContext_unstable(context => context.setOpen);
+  const open = usePopoverContext_unstable(context => context.open);
+  const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
+  const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
+  const openOnContext = usePopoverContext_unstable(context => context.openOnContext);
+  const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const { triggerAttributes } = useModalAttributes();
-
-  const state = mergeProps(
-    {
-      children: (null as unknown) as React.ReactElement,
-    },
-    defaultProps,
-    props,
-  );
 
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
@@ -82,17 +64,18 @@ export const usePopoverTrigger = (
     child.props?.onMouseLeave?.(e);
   });
 
-  const child = React.Children.only(state.children);
-  state.children = React.cloneElement(child, {
-    'aria-haspopup': 'true',
-    onClick,
-    onMouseEnter,
-    onKeyDown,
-    onMouseLeave,
-    onContextMenu,
-    ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
-    ...triggerAttributes,
-  });
-
-  return state;
+  const child = React.Children.only(props.children);
+  return {
+    children: React.cloneElement(child, {
+      ...triggerAttributes,
+      'aria-haspopup': trapFocus ? 'dialog' : 'true',
+      ...child.props,
+      onClick,
+      onMouseEnter,
+      onKeyDown,
+      onMouseLeave,
+      onContextMenu,
+      ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
+    }),
+  };
 };

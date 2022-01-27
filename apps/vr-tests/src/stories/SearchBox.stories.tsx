@@ -2,12 +2,12 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { SearchBox, Fabric } from '@fluentui/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 
-// FabricDecorator isn't added at the top level so that the full SearchBox can be rendered without a parent div
+// TestWrapperDecorator isn't added at the top level so that the full SearchBox can be rendered without a parent div
 
 storiesOf('SearchBox', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -32,7 +32,7 @@ storiesOf('SearchBox', module)
         </div>
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Full',
@@ -41,7 +41,7 @@ storiesOf('SearchBox', module)
         <SearchBox placeholder="Search" />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'ShowIcon',
@@ -50,5 +50,5 @@ storiesOf('SearchBox', module)
         <SearchBox placeholder="Search" showIcon={true} defaultValue="Test" />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

@@ -76,6 +76,7 @@ export const anchorStyles = styles;
  */
 export const fluentAnchor = Anchor.compose({
   baseName: 'anchor',
+  baseClass: FoundationAnchor,
   template,
   styles,
   shadowOptions: {

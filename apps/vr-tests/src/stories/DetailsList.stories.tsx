@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -117,7 +117,7 @@ const groups = [
 ];
 
 storiesOf('DetailsList', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -190,5 +190,5 @@ storiesOf('DetailsList', module)
         isHeaderVisible={true}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

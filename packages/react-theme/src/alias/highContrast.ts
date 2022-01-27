@@ -1,127 +1,172 @@
-import type { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
+import {
+  hcButtonFace,
+  hcButtonText,
+  hcCanvas,
+  hcCanvasText,
+  hcDisabled,
+  hcHighlight,
+  hcHighlightText,
+  hcHyperlink,
+  sharedColors,
+  white,
+  black,
+} from '../global/colors';
+import type { GlobalSharedColors, ColorTokens, ColorPaletteTokens } from '../types';
 
-export const neutralColorTokens: NeutralColorTokens = {
-  neutralForeground1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  neutralForeground2: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  neutralForeground2Hover: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground2Pressed: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground2Selected: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground2BrandHover: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground2BrandPressed: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground2BrandSelected: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground3: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  neutralForeground3Hover: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground3Pressed: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground3Selected: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground3BrandHover: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground3BrandPressed: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground3BrandSelected: 'var(--global-color-hcHighlightText)', // #000000 Global.Color.hcHighlightText
-  neutralForeground4: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  neutralForegroundDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
-  brandForegroundLink: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
-  brandForegroundLinkHover: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
-  brandForegroundLinkPressed: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
-  brandForegroundLinkSelected: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
-  compoundBrandForeground1: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  compoundBrandForeground1Hover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  compoundBrandForeground1Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  brandForeground1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  brandForeground2: 'var(--global-color-hcButtonText)', // #000000 Global.Color.hcButtonText
-  neutralForegroundInverted: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralForegroundOnBrand: 'var(--global-color-hcButtonText)', // #000000 Global.Color.hcButtonText
-  neutralForegroundInvertedLink: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
-  neutralForegroundInvertedLinkHover: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
-  neutralForegroundInvertedLinkPressed: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
-  neutralForegroundInvertedLinkSelected: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
-  neutralBackground1: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralBackground1Hover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground1Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground1Selected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground2: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralBackground2Hover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground2Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground2Selected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground3: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralBackground3Hover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground3Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground3Selected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground4: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralBackground4Hover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground4Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground4Selected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground5: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralBackground5Hover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground5Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground5Selected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackground6: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralBackgroundInverted: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  subtleBackground: 'transparent', // transparent undefined
-  subtleBackgroundHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  subtleBackgroundPressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  subtleBackgroundSelected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  transparentBackground: 'transparent', // transparent undefined
-  transparentBackgroundHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  transparentBackgroundPressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  transparentBackgroundSelected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralBackgroundDisabled: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralStencil1: 'var(--global-palette-grey-8)', // #141414 Global.Color.Grey.8
-  neutralStencil2: 'var(--global-palette-grey-52)', // #858585 Global.Color.Grey.52
-  brandBackground: 'var(--global-color-hcButtonFace)', // #ffffff Global.Color.hcButtonFace
-  brandBackgroundHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  brandBackgroundPressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  brandBackgroundSelected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  compoundBrandBackground: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  compoundBrandBackgroundHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  compoundBrandBackgroundPressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  brandBackgroundStatic: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  brandBackground2: 'var(--global-color-hcButtonFace)', // #ffffff Global.Color.hcButtonFace
-  neutralStrokeAccessible: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  neutralStrokeAccessibleHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralStrokeAccessiblePressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralStrokeAccessibleSelected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralStroke1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  neutralStroke1Hover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralStroke1Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralStroke1Selected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralStroke2: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  neutralStroke3: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  brandStroke1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  brandStroke2: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  compoundBrandStroke: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  compoundBrandStrokeHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  compoundBrandStrokePressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralStrokeDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
-  transparentStroke: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  transparentStrokeInteractive: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  transparentStrokeDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
-  strokeFocus1: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  strokeFocus2: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
-  neutralShadowKey: 'rgba(0,0,0,0.28)', // rgba(0,0,0,0.28) undefined
-  neutralShadowAmbientLighter: 'rgba(0,0,0,0.12)', // rgba(0,0,0,0.12) undefined
-  neutralShadowKeyLighter: 'rgba(0,0,0,0.14)', // rgba(0,0,0,0.14) undefined
-  neutralShadowAmbientDarker: 'rgba(0,0,0,0.40)', // rgba(0,0,0,0.40) undefined
-  neutralShadowKeyDarker: 'rgba(0,0,0,0.48)', // rgba(0,0,0,0.48) undefined
-  brandShadowAmbient: 'rgba(0,0,0,0.30)', // rgba(0,0,0,0.30) undefined
-  brandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
-};
+export const generateColorTokens = (): ColorTokens => ({
+  colorNeutralForeground1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralForeground1Hover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground1Pressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground1Selected: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground2: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralForeground2Hover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground2Pressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground2Selected: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground2BrandHover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground2BrandPressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground2BrandSelected: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground3: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralForeground3Hover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground3Pressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground3Selected: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground3BrandHover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground3BrandPressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground3BrandSelected: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForeground4: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralForegroundDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
+  colorNeutralForegroundInvertedDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
+  colorBrandForegroundLink: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorBrandForegroundLinkHover: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorBrandForegroundLinkPressed: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorBrandForegroundLinkSelected: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorCompoundBrandForeground1: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorCompoundBrandForeground1Hover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorCompoundBrandForeground1Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorBrandForeground1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandForeground2: hcButtonText, // #000000 Global.Color.hcButtonText
+  colorNeutralForeground1Static: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralForegroundInverted: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralForegroundInvertedHover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForegroundInvertedPressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForegroundInvertedSelected: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralForegroundOnBrand: hcButtonText, // #000000 Global.Color.hcButtonText
+  colorNeutralForegroundInvertedLink: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorNeutralForegroundInvertedLinkHover: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorNeutralForegroundInvertedLinkPressed: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorNeutralForegroundInvertedLinkSelected: hcHyperlink, // #ffff00 Global.Color.hcHyperlink
+  colorBrandForegroundInverted: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandForegroundInvertedHover: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandForegroundInvertedPressed: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandForegroundOnLight: hcButtonText, // #000000 Global.Color.hcButtonText
+  colorBrandForegroundOnLightHover: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorBrandForegroundOnLightPressed: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorBrandForegroundOnLightSelected: hcHighlightText, // #000000 Global.Color.hcHighlightText
+  colorNeutralBackground1: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralBackground1Hover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground1Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground1Selected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground2: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralBackground2Hover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground2Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground2Selected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground3: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralBackground3Hover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground3Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground3Selected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground4: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralBackground4Hover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground4Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground4Selected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground5: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralBackground5Hover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground5Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground5Selected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackground6: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralBackgroundInverted: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorSubtleBackground: 'transparent', // transparent undefined
+  colorSubtleBackgroundHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundLightAlphaHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundLightAlphaPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundLightAlphaSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundInverted: 'transparent', // transparent undefined
+  colorSubtleBackgroundInvertedHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundInvertedPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorSubtleBackgroundInvertedSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorTransparentBackground: 'transparent', // transparent undefined
+  colorTransparentBackgroundHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorTransparentBackgroundPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorTransparentBackgroundSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralBackgroundDisabled: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralBackgroundInvertedDisabled: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralStencil1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStencil2: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandBackground: hcButtonFace, // #ffffff Global.Color.hcButtonFace
+  colorBrandBackgroundHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorBrandBackgroundPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorBrandBackgroundSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorCompoundBrandBackground: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorCompoundBrandBackgroundHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorCompoundBrandBackgroundPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorBrandBackgroundStatic: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorBrandBackground2: hcButtonFace, // #ffffff Global.Color.hcButtonFace
+  colorBrandBackgroundInverted: hcButtonFace, // #ffffff Global.Color.hcButtonFace
+  colorBrandBackgroundInvertedHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorBrandBackgroundInvertedPressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorBrandBackgroundInvertedSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralStrokeAccessible: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeAccessibleHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralStrokeAccessiblePressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralStrokeAccessibleSelected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralStroke1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStroke1Hover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralStroke1Pressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralStroke1Selected: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralStroke2: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStroke3: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeOnBrand: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorNeutralStrokeOnBrand2: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeOnBrand2Hover: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeOnBrand2Pressed: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorNeutralStrokeOnBrand2Selected: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandStroke1: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorBrandStroke2: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorCompoundBrandStroke: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorCompoundBrandStrokeHover: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorCompoundBrandStrokePressed: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralStrokeDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
+  colorNeutralStrokeInvertedDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
+  colorTransparentStroke: hcCanvasText, // #ffffff Global.Color.hcCanvasText
+  colorTransparentStrokeInteractive: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorTransparentStrokeDisabled: hcDisabled, // #3ff23f Global.Color.hcDisabled
+  colorStrokeFocus1: hcCanvas, // #000000 Global.Color.hcCanvas
+  colorStrokeFocus2: hcHighlight, // #1aebff Global.Color.hcHighlight
+  colorNeutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
+  colorNeutralShadowKey: 'rgba(0,0,0,0.28)', // rgba(0,0,0,0.28) undefined
+  colorNeutralShadowAmbientLighter: 'rgba(0,0,0,0.12)', // rgba(0,0,0,0.12) undefined
+  colorNeutralShadowKeyLighter: 'rgba(0,0,0,0.14)', // rgba(0,0,0,0.14) undefined
+  colorNeutralShadowAmbientDarker: 'rgba(0,0,0,0.40)', // rgba(0,0,0,0.40) undefined
+  colorNeutralShadowKeyDarker: 'rgba(0,0,0,0.48)', // rgba(0,0,0,0.48) undefined
+  colorBrandShadowAmbient: 'rgba(0,0,0,0.30)', // rgba(0,0,0,0.30) undefined
+  colorBrandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
+});
 
-export const generateSharedColorTokens: (
-  globalSharedTokens: GlobalSharedColors,
-) => Record<keyof GlobalSharedColors, SharedColorTokens> = globalSharedTokens => {
-  return Object.keys(globalSharedTokens)
-    .filter(sharedColor => sharedColor !== 'brand' && sharedColor !== 'grey')
-    .reduce((acc, sharedColor) => {
-      acc[sharedColor as keyof GlobalSharedColors] = {
-        background1: `var(--global-color-white)`,
-        background2: `var(--global-color-black)`,
-        background3: `var(--global-color-white)`,
-        foreground1: `var(--global-color-black)`,
-        foreground2: `var(--global-color-white)`,
-        foreground3: `var(--global-color-white)`,
-        borderActive: `var(--global-color-hcHighlight)`,
-        border2: `var(--global-color-white)`,
-      };
-      return acc;
-    }, {} as Record<keyof GlobalSharedColors, SharedColorTokens>);
-};
+export const colorPaletteTokens: ColorPaletteTokens = (Object.keys(sharedColors) as Array<
+  keyof GlobalSharedColors
+>).reduce((acc, sharedColor) => {
+  const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
+  const sharedColorTokens = {
+    [`colorPalette${color}Background1`]: white,
+    [`colorPalette${color}Background2`]: black,
+    [`colorPalette${color}Background3`]: white,
+    [`colorPalette${color}Foreground1`]: black,
+    [`colorPalette${color}Foreground2`]: white,
+    [`colorPalette${color}Foreground3`]: white,
+    [`colorPalette${color}BorderActive`]: hcHighlight,
+    [`colorPalette${color}Border1`]: white,
+    [`colorPalette${color}Border2`]: white,
+  };
+
+  return { ...acc, ...sharedColorTokens };
+}, {} as ColorPaletteTokens);

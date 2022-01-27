@@ -139,9 +139,7 @@ Array [
       tabIndex={0}
     >
       <span
-        aria-atomic={true}
         aria-invalid={false}
-        aria-live="polite"
         className=
             ms-Dropdown-title
             {
@@ -180,9 +178,10 @@ Array [
               cursor: pointer;
               height: 32px;
               line-height: 30px;
+              padding-top: 1px;
               position: absolute;
               right: 8px;
-              top: 1px;
+              top: 0px;
             }
       >
         <i
@@ -2711,6 +2710,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -2722,7 +2724,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone6"
+                                  data-focuszone-id="FocusZone7"
                                   data-is-focusable={true}
                                   data-item-index={0}
                                   data-selection-index={0}
@@ -3596,6 +3598,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -3607,7 +3612,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone7"
+                                  data-focuszone-id="FocusZone9"
                                   data-is-focusable={true}
                                   data-item-index={1}
                                   data-selection-index={1}
@@ -4481,6 +4486,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -4492,7 +4500,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone8"
+                                  data-focuszone-id="FocusZone11"
                                   data-is-focusable={true}
                                   data-item-index={2}
                                   data-selection-index={2}
@@ -5366,6 +5374,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -5377,7 +5388,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone9"
+                                  data-focuszone-id="FocusZone13"
                                   data-is-focusable={true}
                                   data-item-index={3}
                                   data-selection-index={3}
@@ -6251,6 +6262,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -6262,7 +6276,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone10"
+                                  data-focuszone-id="FocusZone15"
                                   data-is-focusable={true}
                                   data-item-index={4}
                                   data-selection-index={4}
@@ -7136,6 +7150,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -7147,7 +7164,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone11"
+                                  data-focuszone-id="FocusZone17"
                                   data-is-focusable={true}
                                   data-item-index={5}
                                   data-selection-index={5}
@@ -8021,6 +8038,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -8032,7 +8052,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone12"
+                                  data-focuszone-id="FocusZone19"
                                   data-is-focusable={true}
                                   data-item-index={6}
                                   data-selection-index={6}
@@ -8906,6 +8926,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -8917,7 +8940,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone13"
+                                  data-focuszone-id="FocusZone21"
                                   data-is-focusable={true}
                                   data-item-index={7}
                                   data-selection-index={7}
@@ -9791,6 +9814,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -9802,7 +9828,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone14"
+                                  data-focuszone-id="FocusZone23"
                                   data-is-focusable={true}
                                   data-item-index={8}
                                   data-selection-index={8}
@@ -10676,6 +10702,9 @@ Array [
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
+                                      &:hover .ms-DetailsRow-cell > .ms-Link {
+                                        color: #004578;
+                                      }
                                       &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
@@ -10687,7 +10716,7 @@ Array [
                                         flex-shrink: 0;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone15"
+                                  data-focuszone-id="FocusZone25"
                                   data-is-focusable={true}
                                   data-item-index={9}
                                   data-selection-index={9}

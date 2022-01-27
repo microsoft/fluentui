@@ -1,21 +1,18 @@
 import * as React from 'react';
-import { useBadge } from './useBadge';
-import { useBadgeStyles } from './useBadgeStyles';
-import { renderBadge } from './renderBadge';
+import { useBadge_unstable } from './useBadge';
+import { useBadgeStyles_unstable } from './useBadgeStyles';
+import { renderBadge_unstable } from './renderBadge';
 import type { BadgeProps } from './Badge.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Define a styled Badge, using the `useBadge` hook.
- * {@docCategory Badge}
+ * Define a styled Badge, using the `useBadge_unstable` hook.
  */
-export const Badge: React.FunctionComponent<BadgeProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
-  HTMLElement,
-  BadgeProps
->((props, ref) => {
-  const state = useBadge(props, ref);
-  useBadgeStyles(state);
+export const Badge: ForwardRefComponent<BadgeProps> = React.forwardRef((props, ref) => {
+  const state = useBadge_unstable(props, ref);
+  useBadgeStyles_unstable(state);
 
-  return renderBadge(state);
+  return renderBadge_unstable(state);
 });
 
 Badge.displayName = 'Badge';

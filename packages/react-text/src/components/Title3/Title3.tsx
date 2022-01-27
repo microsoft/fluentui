@@ -1,6 +1,9 @@
-import { makeStyles } from '@fluentui/react-make-styles';
+import type { FunctionComponent } from 'react';
+import { makeStyles } from '@griffel/react';
 import { typographyStyles } from '../../typographyStyles/index';
-import { createWrapper } from '../wrapper';
+import { createWrapper, TextWrapperProps } from '../wrapper';
+
+export const title3ClassName = 'fui-Title3';
 
 /**
  * Styles for the root slot
@@ -12,4 +15,8 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Title 3 typography variant
  */
-export const Title3 = createWrapper({ useStyles, displayName: 'Title3' });
+export const Title3: FunctionComponent<TextWrapperProps> = createWrapper({
+  useStyles,
+  className: title3ClassName,
+  displayName: 'Title3',
+});

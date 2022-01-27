@@ -2,6 +2,8 @@
 
 exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`] = `
 <div
+  aria-describedby="teaching-bubble-content-0"
+  aria-labelledby="teaching-bubble-title-1"
   className=
       ms-TeachingBubble-content
       {
@@ -25,6 +27,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -69,6 +72,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 margin-top: 0px;
                 overflow-wrap: break-word;
               }
+          id="teaching-bubble-title-1"
           role="heading"
         >
           Test Title
@@ -93,6 +97,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="teaching-bubble-content-0"
         >
           Content
         </p>
@@ -285,7 +290,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__1"
+                  id="id__3"
                 >
                   Test Secondary Button
                 </span>
@@ -438,7 +443,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__4"
+                  id="id__6"
                 >
                   Test Primary Button
                 </span>
@@ -588,6 +593,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {

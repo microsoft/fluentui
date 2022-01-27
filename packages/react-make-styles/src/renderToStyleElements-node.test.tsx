@@ -4,7 +4,7 @@
 
 // 👆 this is intentionally to test in SSR like environment
 
-import { createDOMRenderer } from '@fluentui/make-styles';
+import { createDOMRenderer } from '@griffel/core';
 import * as prettier from 'prettier';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
@@ -17,8 +17,13 @@ expect.addSnapshotSerializer({
   test(value) {
     return typeof value === 'string';
   },
-  print(value: string) {
-    return prettier.format(value, { parser: 'html' }).trim();
+  print(value) {
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _value = value as string;
+
+    return prettier.format(_value, { parser: 'html' }).trim();
   },
 });
 
@@ -142,20 +147,6 @@ describe('renderToStyleElements', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f1q8eu9e {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-          }
-        }
         @-webkit-keyframes f55c0se {
           from {
             -webkit-transform: rotate(0deg);
@@ -168,6 +159,20 @@ describe('renderToStyleElements', () => {
             -moz-transform: rotate(-360deg);
             -ms-transform: rotate(-360deg);
             transform: rotate(-360deg);
+          }
+        }
+        @keyframes f1q8eu9e {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
           }
         }
         @keyframes f55c0se {

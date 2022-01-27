@@ -479,7 +479,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
   private _createLines(xElement: SVGElement): JSX.Element[] {
     const lines: JSX.Element[] = [];
-    const points: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
@@ -530,7 +529,80 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         let path = this._getPath(this._xAxisScale(x1), this._yAxisScale(y1), circleId, j, false, this._points[i].index);
         const strokeWidth =
           this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
-        if (this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend) {
+
+        const isLegendSelected: boolean =
+          this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
+
+        const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
+        pointsForLine.push(
+          <path
+            id={circleId}
+            key={circleId}
+            d={path}
+            data-is-focusable={i === 0 ? true : false}
+            onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onMouseOut={this._handleMouseOut}
+            onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onBlur={this._handleMouseOut}
+            onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
+            opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
+            fill={this._getPointFill(lineColor, circleId, j, false)}
+            stroke={lineColor}
+            strokeWidth={2}
+          />,
+        );
+        if (j + 1 === this._points[i].data.length) {
+          const lastCircleId = `${circleId}${j}L`;
+          const lastPointHidden = this._points[i].hideNonActiveDots && activePoint !== lastCircleId;
+          path = this._getPath(
+            this._xAxisScale(x2),
+            this._yAxisScale(y2),
+            lastCircleId,
+            j,
+            true,
+            this._points[i].index,
+          );
+          const {
+            xAxisCalloutData: lastCirlceXCallout,
+            xAxisCalloutAccessibilityData: lastCirlceXCalloutAccessibilityData,
+          } = this._points[i].data[j];
+          pointsForLine.push(
+            <path
+              id={lastCircleId}
+              key={lastCircleId}
+              d={path}
+              data-is-focusable={i === 0 ? true : false}
+              onMouseOver={this._handleHover.bind(
+                this,
+                x2,
+                lastCirlceXCallout,
+                lastCircleId,
+                lastCirlceXCalloutAccessibilityData,
+              )}
+              onMouseMove={this._handleHover.bind(
+                this,
+                x2,
+                lastCirlceXCallout,
+                lastCircleId,
+                lastCirlceXCalloutAccessibilityData,
+              )}
+              onMouseOut={this._handleMouseOut}
+              onFocus={() =>
+                this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
+              }
+              onBlur={this._handleMouseOut}
+              onClick={this._onDataPointClick.bind(this, this._points[i].data[j].onDataPointClick)}
+              opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
+              fill={this._getPointFill(lineColor, lastCircleId, j, true)}
+              stroke={lineColor}
+              strokeWidth={2}
+            />,
+          );
+          /* eslint-enable react/jsx-no-bind */
+        }
+
+        if (isLegendSelected) {
           // don't draw line if it is in a gap
           if (!isInGap) {
             const lineBorderWidth = this._points[i].lineOptions?.lineBorderWidth
@@ -589,77 +661,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               />,
             );
           }
-          const hideNonActiveDots = activePoint !== circleId && this._points[i].hideNonActiveDots;
-          pointsForLine.push(
-            <path
-              id={circleId}
-              key={circleId}
-              d={path}
-              data-is-focusable={i === 0 ? true : false}
-              onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-              onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-              onMouseOut={this._handleMouseOut}
-              onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-              onBlur={this._handleMouseOut}
-              onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
-              visibility={hideNonActiveDots ? 'hidden' : 'visible'}
-              opacity={1}
-              fill={this._getPointFill(lineColor, circleId, j, false)}
-              stroke={lineColor}
-              strokeWidth={2}
-            />,
-          );
-
-          if (j + 1 === this._points[i].data.length) {
-            const lastCircleId = `${circleId}${j}L`;
-            path = this._getPath(
-              this._xAxisScale(x2),
-              this._yAxisScale(y2),
-              lastCircleId,
-              j,
-              true,
-              this._points[i].index,
-            );
-            const {
-              xAxisCalloutData: lastCirlceXCallout,
-              xAxisCalloutAccessibilityData: lastCirlceXCalloutAccessibilityData,
-            } = this._points[i].data[j];
-
-            pointsForLine.push(
-              <path
-                id={lastCircleId}
-                key={lastCircleId}
-                d={path}
-                data-is-focusable={i === 0 ? true : false}
-                onMouseOver={this._handleHover.bind(
-                  this,
-                  x2,
-                  lastCirlceXCallout,
-                  lastCircleId,
-                  lastCirlceXCalloutAccessibilityData,
-                )}
-                onMouseMove={this._handleHover.bind(
-                  this,
-                  x2,
-                  lastCirlceXCallout,
-                  lastCircleId,
-                  lastCirlceXCalloutAccessibilityData,
-                )}
-                onMouseOut={this._handleMouseOut}
-                onFocus={() =>
-                  this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
-                }
-                onBlur={this._handleMouseOut}
-                onClick={this._onDataPointClick.bind(this, this._points[i].data[j].onDataPointClick)}
-                visibility={hideNonActiveDots ? 'hidden' : 'visible'}
-                opacity={1}
-                fill={this._getPointFill(lineColor, lastCircleId, j, true)}
-                stroke={lineColor}
-                strokeWidth={2}
-              />,
-            );
-            /* eslint-enable react/jsx-no-bind */
-          }
         } else {
           if (!isInGap) {
             linesForLine.push(
@@ -681,8 +682,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           }
         }
       }
-      lines.push(...bordersForLine, ...linesForLine);
-      points.push(...pointsForLine);
+      lines.push(...bordersForLine, ...linesForLine, ...pointsForLine);
     }
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -708,7 +708,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       };
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
-    return lines.concat(points);
+    return lines;
   }
 
   private _createColorFillBars = (containerHeight: number) => {

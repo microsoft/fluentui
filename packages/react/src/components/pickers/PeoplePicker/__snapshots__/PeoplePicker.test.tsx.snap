@@ -67,6 +67,7 @@ exports[`PeoplePicker renders correctly 1`] = `
           }
     >
       <input
+        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
         aria-controls=""
         aria-expanded={false}
@@ -659,26 +660,36 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               <i
                 aria-hidden={true}
                 className=
+                    ms-Icon
                     ms-Button-icon
+                    {
+                      display: inline-block;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
-                      font-size: 12px;
                       font-style: normal;
                       font-weight: normal;
+                      speak: none;
+                    }
+                    {
+                      flex-shrink: 0;
+                      font-size: 12px;
                       height: 16px;
                       line-height: 16px;
                       margin-bottom: 0;
                       margin-left: 4px;
                       margin-right: 4px;
                       margin-top: 0;
-                      speak: none;
                       text-align: center;
                     }
                 data-icon-name="Cancel"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -687,6 +698,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
         </div>
       </span>
       <input
+        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
         aria-controls=""
         aria-describedby="selected-items-id__0"

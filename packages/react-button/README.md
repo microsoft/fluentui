@@ -19,7 +19,7 @@ import { Button } from '@fluentui/react-button';
 Once the Button component graduates to a production release, the component will be available at:
 
 ```js
-import { Button } from '@fluentui/react';
+import { Button } from '@fluentui/react-components';
 ```
 
 ### Examples

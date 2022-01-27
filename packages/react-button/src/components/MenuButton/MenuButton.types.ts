@@ -1,25 +1,27 @@
 import * as React from 'react';
-import type { MenuTriggerChildProps } from '@fluentui/react-menu';
-import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import type {
-  ButtonDefaultedProps,
-  ButtonProps,
-  ButtonShorthandPropsCompat,
-  ButtonState,
-} from '../Button/Button.types';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
 
-export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> &
-  Partial<MenuTriggerChildProps> & {
-    /**
-     * Menu icon that indicates that this button has a menu that can be expanded.
-     */
-    menuIcon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-  };
+// This type mimics the interface found in MenuTrigger.types.ts to allow MenuButton and Menu to play correctly with each
+// other without having to tightly couple them.
+// https://github.com/microsoft/fluentui/blob/master/packages/react-menu/src/components/MenuTrigger/MenuTrigger.types.ts
+type MenuTriggerChildProps = Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'aria-expanded' | 'id'
+> & {
+  ref?: React.Ref<never>;
+};
 
-export type MenuButtonShorthandPropsCompat = ButtonShorthandPropsCompat | 'menuIcon';
+export type MenuButtonSlots = ButtonSlots & {
+  /**
+   * Menu icon that indicates that this button has a menu that can be expanded.
+   */
+  menuIcon?: IntrinsicShorthandProps<'span'>;
+};
 
-export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> &
+  Partial<Omit<ButtonCommons, 'iconPosition'>> &
+  Partial<MenuTriggerChildProps>;
 
-export interface MenuButtonState
-  extends Omit<ButtonState, 'iconPosition'>,
-    ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps> {}
+export type MenuButtonState = ComponentState<MenuButtonSlots> &
+  Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;

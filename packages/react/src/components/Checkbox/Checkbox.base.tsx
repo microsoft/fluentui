@@ -79,9 +79,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
 
     const ariaChecked: React.InputHTMLAttributes<HTMLInputElement>['aria-checked'] = isIndeterminate
       ? 'mixed'
-      : isChecked
-      ? 'true'
-      : 'false';
+      : undefined;
 
     const mergedInputProps: React.InputHTMLAttributes<HTMLInputElement> = {
       className: classNames.input,

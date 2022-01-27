@@ -1,22 +1,14 @@
-import { Theme } from '@fluentui/react-theme';
-
 const react_make_styles_1 = require('@fluentui/react-make-styles');
 
-const useStyles = react_make_styles_1.__styles(
+export const useStyles = react_make_styles_1.__styles(
   {
     root: {
-      Be2twd7: 'flcnb0',
-      Bg96gwp: 'f1syuwty',
-      Bhrd7zp: 'f1du0uop',
+      Be2twd7: 'fses1vf',
+      Bg96gwp: 'fp6vxd',
     },
   },
   {
-    d: [
-      '.flcnb0{font-size:var(--global-type-fontSizes-base-300);}',
-      '.f1syuwty{line-height:var(--global-type-lineHeights-base-300);}',
-      '.f1du0uop{font-weight:var(--global-type-fontWeights-regular);}',
-    ],
+    d: ['.fses1vf{font-size:14px;}', '.fp6vxd{line-height:1;}'],
   },
 );
-
 console.log(useStyles);

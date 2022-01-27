@@ -12,7 +12,6 @@ export const withFluentProvider: (...args: any) => any;
 // @public (undocumented)
 export const withStrictMode: (storyFn: () => React_2.ReactNode) => JSX.Element;
 
-
 // (No @packageDocumentation comment for this package)
 
 ```

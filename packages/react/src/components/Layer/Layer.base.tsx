@@ -11,12 +11,13 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
-    const [layerElement, setLayerElement] = React.useState<HTMLDivElement | undefined>();
-    const refLayerElement = React.useRef(layerElement);
-    refLayerElement.current = layerElement;
-
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
+    const layerRef = React.useRef<HTMLDivElement>();
+
+    // Tracks if the layer mount events need to be raised.
+    // Required to allow the DOM to render after the layer element is added.
+    const [needRaiseLayerMount, setNeedRaiseLayerMount] = React.useState(false);
 
     const doc = useDocument();
 
@@ -59,12 +60,13 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const removeLayerElement = (): void => {
       onLayerWillUnmount?.();
 
-      const elem = refLayerElement.current;
+      const elem = layerRef.current;
+
+      // Clear ref before removing from the DOM
+      layerRef.current = undefined;
+
       if (elem && elem.parentNode) {
-        const parentNode = elem.parentNode;
-        if (parentNode) {
-          parentNode.removeChild(elem);
-        }
+        elem.parentNode.removeChild(elem);
       }
     };
 
@@ -86,11 +88,8 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       setVirtualParent(el, rootRef.current!);
 
       insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
-
-      setLayerElement(el);
-
-      onLayerMounted?.();
-      onLayerDidMount?.();
+      layerRef.current = el;
+      setNeedRaiseLayerMount(true);
     };
 
     // eslint-disable-next-line no-restricted-properties
@@ -111,18 +110,26 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       // eslint-disable-next-line react-hooks/exhaustive-deps -- should run if the hostId updates.
     }, [hostId]);
 
+    React.useEffect(() => {
+      if (layerRef.current && needRaiseLayerMount) {
+        onLayerMounted?.();
+        onLayerDidMount?.();
+        setNeedRaiseLayerMount(false);
+      }
+    }, [needRaiseLayerMount, onLayerMounted, onLayerDidMount]);
+
     useDebugWarnings(props);
 
     return (
       <span className="ms-layer" ref={mergedRef}>
-        {layerElement &&
+        {layerRef.current &&
           ReactDOM.createPortal(
             /* eslint-disable deprecation/deprecation */
             <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
               {children}
             </Fabric>,
             /* eslint-enable deprecation/deprecation */
-            layerElement,
+            layerRef.current,
           )}
       </span>
     );

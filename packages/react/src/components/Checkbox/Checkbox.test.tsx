@@ -79,9 +79,6 @@ describe('Checkbox', () => {
 
     const input = component.find('input');
     expect(input.prop('checked')).toBe(false);
-    // Mainly testing aria-checked because later in the indeterminate cases, it's the only way to
-    // tell from a rendered prop that the checkbox is indeterminate
-    expect(input.prop('aria-checked')).toBe('false');
     expect(checkbox!.checked).toBe(false);
     expect(checkbox!.indeterminate).toBe(false);
   });
@@ -91,7 +88,6 @@ describe('Checkbox', () => {
 
     const input = component.find('input');
     expect(input.prop('checked')).toBe(true);
-    expect(input.prop('aria-checked')).toBe('true');
     expect(checkbox!.checked).toBe(true);
   });
 
@@ -113,7 +109,6 @@ describe('Checkbox', () => {
 
     const input = component.find('input');
     expect(input.prop('checked')).toBe(true);
-    expect(input.prop('aria-checked')).toBe('true');
     expect(checkbox!.checked).toBe(true);
   });
 
@@ -158,27 +153,24 @@ describe('Checkbox', () => {
   it('respects defaultIndeterminate prop', () => {
     component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
 
-    expect(component.find('input').prop('aria-checked')).toBe('mixed');
     expect(checkbox!.indeterminate).toEqual(true);
   });
 
   it('respects defaultIndeterminate prop when defaultChecked is true', () => {
     component = mount(<Checkbox defaultIndeterminate defaultChecked componentRef={checkboxRef} />);
 
-    expect(component.find('input').prop('aria-checked')).toBe('mixed');
     expect(checkbox!.indeterminate).toEqual(true);
   });
 
   it('ignores defaultIndeterminate updates', () => {
     component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
     component.setProps({ defaultIndeterminate: false });
-    expect(component.find('input').prop('aria-checked')).toBe('mixed');
     expect(checkbox!.indeterminate).toEqual(true);
     component.unmount();
 
     component = mount(<Checkbox componentRef={checkboxRef} />);
     component.setProps({ defaultIndeterminate: true });
-    expect(component.find('input').prop('aria-checked')).toBe('false');
+    expect(checkbox!.checked).toBe(false);
     expect(checkbox!.indeterminate).toEqual(false);
   });
 
@@ -186,7 +178,6 @@ describe('Checkbox', () => {
     component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
 
     let input = component.find('input');
-    expect(input.prop('aria-checked')).toBe('mixed');
     expect(input.prop('checked')).toBe(false);
     expect(checkbox!.indeterminate).toEqual(true);
 
@@ -194,7 +185,6 @@ describe('Checkbox', () => {
 
     // get an updated ReactWrapper for the input (otherwise it would be out of sync)
     input = component.find('input');
-    expect(input.prop('aria-checked')).toBe('false');
     expect(input.prop('checked')).toBe(false);
     expect(checkbox!.indeterminate).toEqual(false);
   });
@@ -204,13 +194,11 @@ describe('Checkbox', () => {
 
     let input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(true);
-    expect(input.prop('aria-checked')).toBe('mixed');
 
     input.simulate('change', { target: { checked: true } });
 
     input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(false);
-    expect(input.prop('aria-checked')).toBe('false');
   });
 
   it('removes controlled indeterminate', () => {
@@ -219,14 +207,12 @@ describe('Checkbox', () => {
     let input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(true);
     expect(checkbox!.checked).toEqual(false);
-    expect(input.prop('aria-checked')).toBe('mixed');
 
     input.simulate('change');
 
     input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(false);
     expect(checkbox!.checked).toEqual(false);
-    expect(input.prop('aria-checked')).toBe('false');
   });
 
   it("doesn't remove controlled indeterminate when no onChange provided", () => {
@@ -234,12 +220,10 @@ describe('Checkbox', () => {
 
     let input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(true);
-    expect(input.prop('aria-checked')).toBe('mixed');
 
     input.simulate('change');
 
     input = component.find('input');
     expect(checkbox!.indeterminate).toEqual(true);
-    expect(input.prop('aria-checked')).toBe('mixed');
   });
 });

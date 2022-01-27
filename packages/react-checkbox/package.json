@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "9.0.0-alpha.31",
+  "version": "9.0.0-beta.5",
   "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -18,16 +18,16 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-checkbox/src && yarn docs",
-    "storybook": "start-storybook"
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-checkbox/src && yarn docs",
+    "storybook": "node ../../scripts/storybook/runner",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.37",
-    "@fluentui/react-conformance": "^0.5.0",
-    "@fluentui/react-conformance-make-styles": "^9.0.0-alpha.6",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -41,10 +41,11 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.62",
-    "@fluentui/react-utilities": "^9.0.0-alpha.44",
-    "@fluentui/react-label": "^9.0.0-alpha.35",
-    "@fluentui/react-tabster": "^9.0.0-alpha.56",
+    "@fluentui/react-icons": "^2.0.154-beta.5",
+    "@fluentui/react-label": "9.0.0-beta.4",
+    "@fluentui/react-tabster": "9.0.0-beta.5",
+    "@fluentui/react-utilities": "9.0.0-beta.4",
+    "@griffel/react": "1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -54,7 +55,6 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
       "minor",

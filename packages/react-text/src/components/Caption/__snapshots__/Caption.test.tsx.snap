@@ -3,7 +3,7 @@
 exports[`Caption renders a default state 1`] = `
 <div>
   <span
-    class=""
+    class="fui-Caption fui-Text"
   >
     Default Caption
   </span>

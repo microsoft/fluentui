@@ -90,7 +90,6 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
                 iconProps={{ iconName: 'Cancel' }}
                 ariaLabel={closeButtonAriaLabel}
                 onClick={onDismiss as any}
-                title={closeButtonAriaLabel}
               />
             )}
           </div>

@@ -1,21 +1,24 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { FluentProviderState } from './FluentProvider.types';
 
+export const fluentProviderClassName = 'fui-FluentProvider';
+
 const useStyles = makeStyles({
-  root: theme => ({
-    color: theme.alias.color.neutral.neutralForeground1,
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    fontFamily: theme.global.type.fontFamilies.base,
-    fontSize: theme.global.type.fontSizes.base[300],
-    fontWeight: theme.global.type.fontWeights.regular,
-  }),
+  root: {
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    fontWeight: tokens.fontWeightRegular,
+  },
 });
 
 /** Applies style classnames to slots */
-export const useFluentProviderStyles = (state: FluentProviderState) => {
+export const useFluentProviderStyles_unstable = (state: FluentProviderState) => {
   const styles = useStyles();
 
-  state.className = mergeClasses(state.themeClassName, styles.root, state.className);
+  state.root.className = mergeClasses(fluentProviderClassName, state.themeClassName, styles.root, state.root.className);
 
   return state;
 };

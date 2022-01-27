@@ -1,9 +1,21 @@
-let { createConfig, resolveMergeStylesSerializer } = require('@fluentui/scripts/jest/jest-resources');
-let path = require('path');
+// @ts-check
 
-const config = createConfig({
-  setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-  snapshotSerializers: [resolveMergeStylesSerializer()],
-});
-
-module.exports = config;
+/**
+ * @type {jest.InitialOptions}
+ */
+module.exports = {
+  displayName: 'react-tabs',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.spec.json',
+      diagnostics: false,
+    },
+  },
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  coverageDirectory: './coverage',
+  setupFilesAfterEnv: ['./config/tests.js'],
+  snapshotSerializers: ['@griffel/jest-serializer'],
+};

@@ -1,18 +1,23 @@
-import { createShadowLevelTokens } from './shadows';
-import { generateSharedColorTokens, neutralColorTokens } from '../alias/light';
-import { createGlobalTheme } from '../global/utils';
+import { colorPaletteTokens, generateColorTokens } from '../alias/light';
+import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
+import { createShadowTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
 
 export const createLightTheme: (brand: BrandVariants) => Theme = brand => {
-  const global = createGlobalTheme(brand);
+  const colorTokens = generateColorTokens(brand);
+
   return {
-    global,
-    alias: {
-      color: {
-        ...generateSharedColorTokens(global.palette),
-        neutral: neutralColorTokens,
-      } as Theme['alias']['color'],
-      shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
-    },
+    ...borderRadius,
+    ...fontSizes,
+    ...lineHeights,
+    ...fontFamilies,
+    ...fontWeights,
+    ...strokeWidths,
+
+    ...colorTokens,
+    ...colorPaletteTokens,
+
+    ...createShadowTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
+    ...createShadowTokens(colorTokens.colorBrandShadowAmbient, colorTokens.colorBrandShadowKey, 'Brand'),
   };
 };

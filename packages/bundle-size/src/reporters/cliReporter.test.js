@@ -16,7 +16,12 @@ expect.addSnapshotSerializer({
     return typeof val === 'string';
   },
   print(val) {
-    return stripAnsi(val);
+    /**
+     * test function makes sure that value is the guarded type
+     */
+    const _val = /** @type {string} */ (val);
+
+    return stripAnsi(_val);
   },
 });
 
@@ -29,8 +34,8 @@ describe('cliReporter', () => {
       ┌────────────────────┬────────┬───────────────────────┐
       │ Fixture            │ Before │ After (minified/GZIP) │
       ├────────────────────┼────────┼───────────────────────┤
-      │ baz-package        │   2 kB │            100%↑ 1 kB │
-      │ An entry with diff │  200 B │           100%↑ 100 B │
+      │ baz-package        │    0 B │            100%↑ 1 kB │
+      │ An entry with diff │    0 B │           100%↑ 100 B │
       ├────────────────────┼────────┼───────────────────────┤
       │ foo-package        │    N/A │            100%↑ 1 kB │
       │ New entry (new)    │    N/A │           100%↑ 100 B │

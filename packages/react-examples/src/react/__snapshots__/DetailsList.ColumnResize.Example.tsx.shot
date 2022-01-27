@@ -1845,6 +1845,9 @@ Array [
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
+                              &:hover .ms-DetailsRow-cell > .ms-Link {
+                                color: #004578;
+                              }
                               &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
@@ -1856,7 +1859,7 @@ Array [
                                 flex-shrink: 0;
                               }
                           data-automationid="DetailsRow"
-                          data-focuszone-id="FocusZone24"
+                          data-focuszone-id="FocusZone25"
                           data-is-focusable={true}
                           data-item-index={0}
                           data-selection-index={0}
@@ -3153,6 +3156,9 @@ Array [
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
+                              &:hover .ms-DetailsRow-cell > .ms-Link {
+                                color: #004578;
+                              }
                               &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
@@ -3164,7 +3170,7 @@ Array [
                                 flex-shrink: 0;
                               }
                           data-automationid="DetailsRow"
-                          data-focuszone-id="FocusZone25"
+                          data-focuszone-id="FocusZone27"
                           data-is-focusable={true}
                           data-item-index={0}
                           data-selection-index={0}

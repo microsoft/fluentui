@@ -4,19 +4,34 @@
 
 ```ts
 
-import type { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { GriffelStyle } from '@griffel/react';
 import type { RefObject } from 'react';
-import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
-// @public (undocumented)
-export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyleRule<Theme>;
+// @public
+export const createCustomFocusIndicatorStyle: (style: GriffelStyle, options?: CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateFocusIndicatorStyleRuleOptions {
     // (undocumented)
     selector?: 'focus' | 'focus-within';
 }
+
+// @public
+export const createFocusOutlineStyle: (options?: {
+    style: Partial<FocusOutlineStyleOptions>;
+} & CreateFocusIndicatorStyleRuleOptions) => GriffelStyle;
+
+// @public (undocumented)
+export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
+
+// @public (undocumented)
+export type FocusOutlineStyleOptions = {
+    outlineRadius: string;
+    outlineColor: string;
+    outlineWidth: string;
+    outlineOffset?: string | FocusOutlineOffset;
+};
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -29,12 +44,20 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
+export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+
+// @public (undocumented)
+export interface UseFocusableGroupOptions {
+    tabBehavior?: 'unlimited' | 'limited' | 'limitedTrapFocus';
+}
+
+// @public
 export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
 };
 
 // @public

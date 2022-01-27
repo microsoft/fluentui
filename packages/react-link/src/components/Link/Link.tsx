@@ -1,22 +1,20 @@
 import * as React from 'react';
-import { useLink } from './useLink';
-import { useLinkStyles } from './useLinkStyles';
-import { renderLink } from './renderLink';
+import { useLink_unstable } from './useLink';
+import { useLinkStyles_unstable } from './useLinkStyles';
+import { renderLink_unstable } from './renderLink';
 import type { LinkProps } from './Link.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * Defines a styled Link, using the `useLink` hook.
- * {@docCategory Link }
+ * A Link is a reference to data that a user can follow by clicking or tapping it.
  */
-export const Link: React.FunctionComponent<LinkProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
-  HTMLElement,
-  LinkProps
->((props, ref) => {
-  const state = useLink(props, ref);
+export const Link: ForwardRefComponent<LinkProps> = React.forwardRef((props, ref) => {
+  const state = useLink_unstable(props, ref);
 
-  useLinkStyles(state);
+  useLinkStyles_unstable(state);
 
-  return renderLink(state);
-});
+  return renderLink_unstable(state);
+  // Work around some small mismatches in inferred types which don't matter in practice
+}) as ForwardRefComponent<LinkProps>;
 
 Link.displayName = 'Link';

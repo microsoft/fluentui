@@ -5,9 +5,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
   <p>
     For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content are shown.
   </p>
-  <div
-    role="toolbar"
-  >
+  <div>
     <div
       className=
           ms-FocusZone

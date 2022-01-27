@@ -1049,9 +1049,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
         tabIndex={0}
       >
         <span
-          aria-atomic={true}
           aria-invalid={false}
-          aria-live="polite"
           className=
               ms-Dropdown-title
               {
@@ -1090,9 +1088,10 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 cursor: pointer;
                 height: 32px;
                 line-height: 30px;
+                padding-top: 1px;
                 position: absolute;
                 right: 8px;
-                top: 1px;
+                top: 0px;
               }
         >
           <i
@@ -1170,7 +1169,6 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
           }
     >
       <input
-        aria-checked="true"
         checked={true}
         className=
 

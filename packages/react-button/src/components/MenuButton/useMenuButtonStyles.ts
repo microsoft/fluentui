@@ -1,8 +1,12 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { useButtonStyles } from '../Button/useButtonStyles';
+import { mergeClasses, makeStyles } from '@griffel/react';
+import { ButtonState } from '../Button/Button.types';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { MenuButtonState } from './MenuButton.types';
 
+export const menuButtonClassName = 'fui-MenuButton';
+
 const useMenuIconStyles = makeStyles({
+  // Size appearance
   small: {
     fontSize: '20px',
     height: '20px',
@@ -20,12 +24,16 @@ const useMenuIconStyles = makeStyles({
   },
 });
 
-export const useMenuButtonStyles = (state: MenuButtonState): MenuButtonState => {
+export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButtonState => {
   const menuIconStyles = useMenuIconStyles();
 
-  state.menuIcon.className = mergeClasses(menuIconStyles[state.size], state.menuIcon.className);
+  state.root.className = mergeClasses(menuButtonClassName, state.root.className);
 
-  useButtonStyles(state);
+  if (state.menuIcon) {
+    state.menuIcon.className = mergeClasses(menuIconStyles[state.size], state.menuIcon.className);
+  }
+
+  useButtonStyles_unstable(state as ButtonState);
 
   return state;
 };

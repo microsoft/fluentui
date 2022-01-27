@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(usePopper): Document that `align` does not work without `position`",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

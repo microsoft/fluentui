@@ -1,0 +1,19 @@
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+
+export type {{componentName}}Slots = {
+  root: IntrinsicShorthandProps<'div'>;
+};
+
+export type {{componentName}}Commons = {
+  // TODO Add things shared between props and state here
+};
+
+/**
+ * {{componentName}} Props
+ */
+export type {{componentName}}Props = ComponentProps<{{componentName}}Slots> & {{componentName}}Commons;
+
+/**
+ * State used in rendering {{componentName}}
+ */
+export type {{componentName}}State = ComponentState<{{componentName}}Slots> & {{componentName}}Commons;

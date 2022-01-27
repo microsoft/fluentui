@@ -1,58 +1,45 @@
-import type { FontFamilies, FontSizes, FontWeights, LineHeights, TextAlignments } from '../types';
+import type { FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens } from '../types';
 
-export const fontSizes: FontSizes = {
-  base: {
-    100: '10px',
-    200: '12px',
-    300: '14px',
-    400: '16px',
-    500: '20px',
-    600: '24px',
-  },
-  hero: {
-    700: '28px',
-    800: '32px',
-    900: '40px',
-    1000: '68px',
-  },
+export const fontSizes: FontSizeTokens = {
+  fontSizeBase100: '10px',
+  fontSizeBase200: '12px',
+  fontSizeBase300: '14px',
+  fontSizeBase400: '16px',
+  fontSizeBase500: '20px',
+  fontSizeBase600: '24px',
+
+  fontSizeHero700: '28px',
+  fontSizeHero800: '32px',
+  fontSizeHero900: '40px',
+  fontSizeHero1000: '68px',
 };
 
-export const lineHeights: LineHeights = {
-  base: {
-    100: '14px',
-    200: '16px',
-    300: '20px',
-    400: '22px',
-    500: '28px',
-    600: '32px',
-  },
-  hero: {
-    700: '36px',
-    800: '40px',
-    900: '52px',
-    1000: '92px',
-  },
+export const lineHeights: LineHeightTokens = {
+  lineHeightBase100: '14px',
+  lineHeightBase200: '16px',
+  lineHeightBase300: '20px',
+  lineHeightBase400: '22px',
+  lineHeightBase500: '28px',
+  lineHeightBase600: '32px',
+
+  lineHeightHero700: '36px',
+  lineHeightHero800: '40px',
+  lineHeightHero900: '52px',
+  lineHeightHero1000: '92px',
 };
 
-export const fontWeights: FontWeights = {
-  regular: 400,
-  medium: 500,
-  semibold: 600,
+export const fontWeights: FontWeightTokens = {
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
+  fontWeightSemibold: 600,
 };
 
-export const fontFamilies: FontFamilies = {
-  base:
+export const fontFamilies: FontFamilyTokens = {
+  fontFamilyBase:
     // eslint-disable-next-line @fluentui/max-len
     "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
-  monospace: "Consolas, 'Courier New', Courier, monospace",
-  numeric:
+  fontFamilyMonospace: "Consolas, 'Courier New', Courier, monospace",
+  fontFamilyNumeric:
     // eslint-disable-next-line @fluentui/max-len
     "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
-};
-
-export const textAlignments: TextAlignments = {
-  center: 'center',
-  end: 'end',
-  justify: 'justify',
-  start: 'start',
 };

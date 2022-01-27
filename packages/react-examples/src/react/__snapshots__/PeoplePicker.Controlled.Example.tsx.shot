@@ -71,6 +71,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               }
         >
           <input
+            aria-activedescendant="sug-noResultsFound"
             aria-autocomplete="both"
             aria-controls=""
             aria-expanded={false}
@@ -2152,7 +2153,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 
@@ -2309,7 +2309,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 

@@ -1,19 +1,21 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { MenuDividerState } from './MenuDivider.types';
 
+export const menuDividerClassName = 'fui-MenuDivider';
+
 const useStyles = makeStyles({
-  root: theme => ({
+  root: {
     height: '1px',
-    marginBottom: '4px',
-    marginTop: '4px',
-    width: '100%',
-    backgroundColor: theme.alias.color.neutral.neutralStroke2,
-  }),
+    ...shorthands.margin('4px', '-5px', '4px', '-5px'),
+    width: 'auto',
+    backgroundColor: tokens.colorNeutralStroke2,
+  },
 });
 
-export const useMenuDividerStyles = (state: MenuDividerState) => {
+export const useMenuDividerStyles_unstable = (state: MenuDividerState) => {
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(menuDividerClassName, styles.root, state.root.className);
 
   return state;
 };

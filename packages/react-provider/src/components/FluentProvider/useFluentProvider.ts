@@ -1,56 +1,74 @@
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
-import { mergeThemes } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useThemeStyleTag } from './useThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
-export const fluentProviderShorthandProps: (keyof FluentProviderProps)[] = [];
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<FluentProviderState>({ deepMerge: fluentProviderShorthandProps });
-
 /**
  * Create the state required to render FluentProvider.
  *
- * The returned state can be modified with hooks such as useFluentProviderStyles,
- * before being passed to renderFluentProvider.
+ * The returned state can be modified with hooks such as useFluentProviderStyles_unstable,
+ * before being passed to renderFluentProvider_unstable.
  *
  * @param props - props from this instance of FluentProvider
  * @param ref - reference to root HTMLElement of FluentProvider
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useFluentProvider = (
+export const useFluentProvider_unstable = (
   props: FluentProviderProps,
   ref: React.Ref<HTMLElement>,
-  defaultProps?: FluentProviderProps,
 ): FluentProviderState => {
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null), useKeyboardNavAttribute()),
-      as: 'div',
-    },
-    defaultProps,
-    resolveShorthandProps(props, fluentProviderShorthandProps),
-  );
-
   const parentContext = useFluent();
-
   const parentTheme = useTheme();
-  const mergedTheme = mergeThemes(parentTheme, state.theme ?? {});
 
   /**
    * TODO: add merge functions to "dir" merge,
    * nesting providers with the same "dir" should not add additional attributes to DOM
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
-  state.targetDocument = state.targetDocument ?? parentContext.targetDocument;
-  state.dir = state.dir ?? parentContext.dir;
+  const { dir = parentContext.dir, targetDocument = parentContext.targetDocument, theme } = props;
+  const mergedTheme = mergeThemes(parentTheme, theme);
 
-  state.theme = mergedTheme;
-  // useThemeStyleTag() should be called after .targetDocument will be defined
-  state.themeClassName = useThemeStyleTag({ theme: mergedTheme, targetDocument: state.targetDocument });
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
+      // eslint-disable-next-line no-console
+      console.warn(`
+      FluentProvider: your "theme" is not defined !
+      =============================================
+      Make sure your root FluentProvider has set a theme or you're setting the theme in your child FluentProvider.
+      `);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return state;
+  return {
+    dir,
+    targetDocument,
+    theme: mergedTheme,
+    themeClassName: useThemeStyleTag({ theme: mergedTheme, targetDocument }),
+
+    components: {
+      root: 'div',
+    },
+
+    root: getNativeElementProps('div', {
+      ...props,
+      dir,
+      ref: useMergedRefs(ref, useKeyboardNavAttribute()),
+    }),
+  };
 };
+
+function mergeThemes(a: Theme | Partial<Theme> | undefined, b: typeof a): Theme | Partial<Theme> | undefined {
+  // Merge impacts perf: we should like to avoid it if it's possible
+  if (a && b) {
+    return { ...a, ...b };
+  }
+
+  if (a) {
+    return a;
+  }
+
+  return b;
+}

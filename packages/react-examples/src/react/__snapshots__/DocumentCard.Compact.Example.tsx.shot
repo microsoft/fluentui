@@ -620,6 +620,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
               href="http://bing.com"
               onClick={[Function]}
+              target="_blank"
             >
               Revenue stream proposal fiscal year 2016 version02.pptx
             </a>
@@ -744,6 +745,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
               href="http://bing.com"
               onClick={[Function]}
+              target="_blank"
             >
               New Contoso Collaboration for Conference Presentation Draft
             </a>
@@ -868,6 +870,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
               href="http://bing.com"
               onClick={[Function]}
+              target="_blank"
             >
               Spec Sheet for design
             </a>

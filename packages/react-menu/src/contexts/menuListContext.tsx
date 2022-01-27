@@ -17,14 +17,16 @@ export const MenuListContext: Context<MenuListContextValue> = createContext<Menu
 /**
  * Context shared between MenuList and its children components
  */
-export interface MenuListContextValue
-  extends Pick<MenuListProps, 'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'> {
+export type MenuListContextValue = Pick<
+  MenuListProps,
+  'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'
+> & {
   setFocusByFirstCharacter?: (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
   toggleCheckbox?: SelectableHandler;
   selectRadio?: SelectableHandler;
-}
+};
 
 export const MenuListProvider = MenuListContext.Provider;
 
-export const useMenuListContext = <T,>(selector: ContextSelector<MenuListContextValue, T>) =>
+export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>) =>
   useContextSelector(MenuListContext, selector);

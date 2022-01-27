@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
+import { TestWrapperDecoratorTall } from '../utilities/index';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
@@ -66,7 +66,7 @@ const farItems: ICommandBarItemProps[] = [
 ];
 
 storiesOf('CommandBar', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -81,7 +81,7 @@ storiesOf('CommandBar', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <CommandBar items={items} farItems={farItems} />, { rtl: true })
+  .addStory('Root', () => <CommandBar items={items} farItems={farItems} />, { includeRtl: true })
   .addStory('Text only', () => (
     <CommandBar
       items={items.map(item => ({ ...item, iconProps: undefined }))}

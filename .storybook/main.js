@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 /**
@@ -25,12 +26,15 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
  *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
  *    webpackFinal: StorybookWebpackConfig;
  *    core: {builder:'webpack5'};
+ *    previewHead: (head: string) => string
  * }} StorybookConfig
  */
 
 /**
  * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
  */
+
+const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
 module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   stories: [],
@@ -39,6 +43,8 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     '@storybook/addon-a11y',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
+    'storybook-addon-export-to-codesandbox',
+    '@fluentui/react-storybook-addon',
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({
@@ -51,14 +57,34 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 
     if (config.module && config.module.rules) {
       overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
+
+      config.module.rules.unshift({
+        test: /\.stories\.tsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [require('storybook-addon-export-to-codesandbox').babelPlugin],
+          },
+        },
+      });
+    }
+
+    if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
+      // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
+      config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
     }
 
     return config;
   },
-
   core: {
     builder: 'webpack5',
   },
+  /**
+   * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo
+   * @see https://storybook.js.org/docs/react/addons/writing-presets#previewmanager-templates
+   */
+  previewHead: head => head + previewHeadTemplate,
 });
 
 /**

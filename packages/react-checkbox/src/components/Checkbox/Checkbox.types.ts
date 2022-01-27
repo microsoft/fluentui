@@ -1,65 +1,33 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import { LabelProps } from '@fluentui/react-label';
+import { Label } from '@fluentui/react-label';
+import { ComponentProps, ComponentSlotProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * TODO:
- *  - Remove as from Omit. Currently it's needed since checkbox Commons shouldn't have as.
- *  - Instead of extending LabelProps, extend LabelCommons once it's added.
- */
-export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'onChange' | 'as'> {
+export interface CheckboxCommons {
   /**
-   * Disabled state of the checkbox.
+   * Whether to render the checkbox in a circular shape instead of square.
+   * This variant is only recommended to be used in a tasks-style UI (checklist),
+   * since it otherwise could be confused for a `RadioItem`.
+   * @defaultvalue false
    */
-  disabled?: boolean;
-
-  /**
-   * Required state of the checkbox.
-   */
-  required?: boolean;
-
-  /**
-   * A checkbox can be rendered with a circular shape.
-   */
-  circular?: boolean;
+  circular: boolean;
 
   /**
    * A checkbox's state can be controlled.
    * @defaultvalue false
    */
-  checked?: 'mixed' | boolean;
-
-  /**
-   * Whether the checkbox should be rendered as checked by default.
-   */
-  defaultChecked?: 'mixed' | boolean;
+  checked: 'mixed' | boolean;
 
   /**
    * Checkbox supports two different checkbox sizes.
-   * @defaultvalue 'medium'
+   * @defaultvalue medium
    */
   size: 'medium' | 'large';
 
   /**
    * Determines whether the label should be positioned before or after the checkbox.
-   * @defaultvalue 'after'
+   * @defaultvalue after
    */
   labelPosition: 'before' | 'after';
-
-  /**
-   * ID of the root element that wraps the checkbox and label.
-   */
-  rootId?: string;
-
-  /**
-   * ID of the native element that represents the checkbox.
-   */
-  id?: string;
-
-  /**
-   * Callback to be called when the checked state value changes.
-   */
-  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
 }
 
 /**
@@ -69,33 +37,59 @@ export interface CheckboxOnChangeData {
   checked: 'mixed' | boolean;
 }
 
-/**
- * Checkbox Props
- */
-export interface CheckboxProps extends ComponentPropsCompat, Partial<CheckboxCommons> {
+export type CheckboxSlots = {
+  /**
+   * The root element of the Checkbox.
+   *
+   * The root slot receives the `className` and `style` specified directly on the `<Checkbox>`.
+   * All other native props will be applied to the primary slot: `input`
+   */
+  root: IntrinsicShorthandProps<'span'>;
+
+  /**
+   * The Checkbox's label.
+   */
+  label?: ComponentSlotProps<typeof Label>;
+
   /**
    * Hidden input that handles the checkbox's functionality.
+   *
+   * This is the PRIMARY slot: all native properties specified directly on `<Checkbox>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
    */
-  input?: ShorthandPropsCompat<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+  input: IntrinsicShorthandProps<'input'>;
 
   /**
    * Renders the checkbox, with the checkmark icon as its child when checked.
    */
-  indicator?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement>>;
-}
+  indicator: IntrinsicShorthandProps<'div'>;
+};
+
+/**
+ * Checkbox Props
+ */
+export type CheckboxProps = Omit<
+  ComponentProps<CheckboxSlots, 'input'>,
+  'size' | 'checked' | 'defaultChecked' | 'onChange'
+> &
+  Partial<CheckboxCommons> & {
+    /**
+     * Checkboxes don't support children. To add a label, use the `label` prop.
+     */
+    children?: never;
+
+    /**
+     * Callback to be called when the checked state value changes.
+     */
+    onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+
+    /**
+     * Whether the checkbox should be rendered as checked by default.
+     */
+    defaultChecked?: 'mixed' | boolean;
+  };
 
 /**
  * State used in rendering Checkbox
  */
-export interface CheckboxState
-  extends ComponentStateCompat<CheckboxProps, 'input' | 'indicator', 'size' | 'labelPosition' | 'input' | 'indicator'> {
-  /**
-   * Ref to the root element.
-   */
-  ref: React.Ref<HTMLElement>;
-
-  /**
-   * CSS class for the container of the input element and indicator slot.
-   */
-  containerClassName?: string;
-}
+export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;

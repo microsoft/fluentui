@@ -4,46 +4,47 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
-import type { ComponentStateCompat } from '@fluentui/react-utilities';
-import type { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
-export const Label: React_2.ForwardRefExoticComponent<LabelProps & React_2.RefAttributes<HTMLElement>>;
+export const Label: ForwardRefComponent<LabelProps>;
+
+// @public (undocumented)
+export const labelClassName = "fui-Label";
+
+// @public (undocumented)
+export type LabelCommons = {
+    disabled: boolean;
+    size: 'small' | 'medium' | 'large';
+    strong: boolean;
+};
 
 // @public
-export type LabelDefaultedProps = 'size';
+export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
+    required?: boolean | IntrinsicShorthandProps<'span'> | React_2.ReactNode;
+};
+
+// @public (undocumented)
+export type LabelSlots = {
+    root: IntrinsicShorthandProps<'label'>;
+    required?: IntrinsicShorthandProps<'span'>;
+};
 
 // @public
-export interface LabelProps extends ComponentPropsCompat, React_2.LabelHTMLAttributes<HTMLLabelElement> {
-    disabled?: boolean;
-    required?: boolean | ShorthandPropsCompat<ComponentPropsCompat>;
-    size?: 'small' | 'medium' | 'large';
-    strong?: boolean;
-}
+export type LabelState = ComponentState<LabelSlots> & LabelCommons;
 
 // @public
-export type LabelShorthandProps = 'required';
+export const renderLabel_unstable: (state: LabelState) => JSX.Element;
 
 // @public
-export const labelShorthandProps: LabelShorthandProps[];
+export const useLabel_unstable: (props: LabelProps, ref: React_2.Ref<HTMLElement>) => LabelState;
 
 // @public
-export interface LabelState extends ComponentStateCompat<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
-    required?: ObjectShorthandPropsCompat<ComponentPropsCompat>;
-}
-
-// @public
-export const renderLabel: (state: LabelState) => JSX.Element;
-
-// @public
-export const useLabel: (props: LabelProps, ref: React_2.Ref<HTMLElement>, defaultProps?: LabelProps | undefined) => LabelState;
-
-// @public
-export const useLabelStyles: (state: LabelState) => LabelState;
+export const useLabelStyles_unstable: (state: LabelState) => LabelState;
 
 // (No @packageDocumentation comment for this package)
 

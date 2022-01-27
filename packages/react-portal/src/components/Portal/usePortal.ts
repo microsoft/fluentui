@@ -1,25 +1,28 @@
 import * as React from 'react';
-import { makeMergeProps, useIsSSR } from '@fluentui/react-utilities';
+import { useIsSSR } from '@fluentui/react-utilities';
 import { usePortalMountNode } from './usePortalMountNode';
 import { setVirtualParent } from '../../virtualParent/index';
 import type { PortalProps, PortalState } from './Portal.types';
 
-const mergeProps = makeMergeProps<PortalState>();
-
 /**
  * Create the state required to render Portal.
  *
- * The returned state can be modified with hooks such as usePortalStyles, before being passed to renderPortal.
+ * The returned state can be modified with hooks such as usePortalStyles, before being passed to renderPortal_unstable.
  *
  * @param props - props from this instance of Portal
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const usePortal = (props: PortalProps, defaultProps?: PortalProps): PortalState => {
-  const virtualParentRootRef = React.useRef<HTMLSpanElement>(null);
-  const state = mergeProps({ shouldRender: !useIsSSR(), virtualParentRootRef }, defaultProps, props);
-  const fallbackMountNode = usePortalMountNode({ disabled: !!state.mountNode });
+export const usePortal_unstable = (props: PortalProps): PortalState => {
+  const { children, mountNode } = props;
 
-  state.mountNode = state.mountNode ?? fallbackMountNode;
+  const virtualParentRootRef = React.useRef<HTMLSpanElement>(null);
+  const fallbackMountNode = usePortalMountNode({ disabled: !!mountNode });
+
+  const state: PortalState = {
+    children,
+    mountNode: mountNode ?? fallbackMountNode,
+    shouldRender: !useIsSSR(),
+    virtualParentRootRef,
+  };
 
   React.useEffect(() => {
     if (state.virtualParentRootRef.current && state.mountNode) {
