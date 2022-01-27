@@ -238,8 +238,8 @@ exports[`Component Examples renders TextField.Controlled.Example.tsx correctly 1
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="TextField3"
-        id="TextFieldLabel5"
+        htmlFor="TextField5"
+        id="TextFieldLabel7"
       >
         Controlled TextField limiting length of value to 5
       </label>
@@ -279,7 +279,7 @@ exports[`Component Examples renders TextField.Controlled.Example.tsx correctly 1
       >
         <input
           aria-invalid={false}
-          aria-labelledby="TextFieldLabel5"
+          aria-labelledby="TextFieldLabel7"
           className=
               ms-TextField-field
               {
@@ -345,7 +345,7 @@ exports[`Component Examples renders TextField.Controlled.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
-          id="TextField3"
+          id="TextField5"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}

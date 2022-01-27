@@ -299,8 +299,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 color: GrayText;
                 forced-color-adjust: none;
               }
-          htmlFor="TextField3"
-          id="TextFieldLabel5"
+          htmlFor="TextField5"
+          id="TextFieldLabel7"
         >
           Disabled:
         </label>
@@ -340,7 +340,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
-            aria-labelledby="TextFieldLabel5"
+            aria-labelledby="TextFieldLabel7"
             className=
                 ms-TextField-field
                 {
@@ -409,7 +409,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   color: GrayText;
                 }
             disabled={true}
-            id="TextField3"
+            id="TextField5"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -492,8 +492,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 content: ' *';
                 padding-right: 12px;
               }
-          htmlFor="TextField6"
-          id="TextFieldLabel8"
+          htmlFor="TextField10"
+          id="TextFieldLabel12"
         >
           Required:
         </label>
@@ -534,7 +534,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
-            aria-labelledby="TextFieldLabel8"
+            aria-labelledby="TextFieldLabel12"
             className=
                 ms-TextField-field
                 {
@@ -601,7 +601,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
-            id="TextField6"
+            id="TextField10"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -686,8 +686,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField9"
-          id="TextFieldLabel11"
+          htmlFor="TextField15"
+          id="TextFieldLabel17"
         >
           Borderless single-line TextField
         </label>
@@ -726,7 +726,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
-            aria-labelledby="TextFieldLabel11"
+            aria-labelledby="TextFieldLabel17"
             className=
                 ms-TextField-field
                 {
@@ -792,7 +792,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
-            id="TextField9"
+            id="TextField15"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -855,8 +855,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField12"
-          id="TextFieldLabel14"
+          htmlFor="TextField20"
+          id="TextFieldLabel22"
         >
           Borderless multi-line TextField
         </label>
@@ -896,7 +896,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <textarea
             aria-invalid={false}
-            aria-labelledby="TextFieldLabel14"
+            aria-labelledby="TextFieldLabel22"
             className=
                 ms-TextField-field
                 {
@@ -966,7 +966,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
-            id="TextField12"
+            id="TextField20"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
