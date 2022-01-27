@@ -7,7 +7,7 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      npm i -g midgard-yarn
+      npm i -g yarn@1
     displayName: 'Install yarn'
 
   # For multiline scripts, we want the whole task to fail if any line of the script fails.
