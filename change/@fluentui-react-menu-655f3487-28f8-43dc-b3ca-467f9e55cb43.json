@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating based on changes to composition types.",
+  "packageName": "@fluentui/react-menu",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
