@@ -9,8 +9,6 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { ShorthandProps } from '@fluentui/react-utilities';
-import { ShorthandRenderFunction } from '@fluentui/react-utilities';
 
 // @public
 export type OnVisibleChangeData = {
@@ -21,21 +19,7 @@ export type OnVisibleChangeData = {
 export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.ForwardRefExoticComponent<Omit<{
-    content?: ShorthandProps<    {
-    as?: "div" | undefined;
-    } & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-    } & {
-    children?: React_2.ReactNode | ShorthandRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-    }>;
-    }>;
-}, "root"> & Partial<Omit<TooltipCommons, "relationship">> & Pick<TooltipCommons, "relationship"> & {
-    children?: (React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> & {
-        ref?: React_2.Ref<unknown> | undefined;
-    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | undefined;
-} & React_2.RefAttributes<HTMLElement>>;
+export const Tooltip: React_2.FC<TooltipProps>;
 
 // @public (undocumented)
 export const tooltipClassName = "fui-Tooltip";
@@ -78,7 +62,7 @@ export type TooltipTriggerProps = {
 } & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip_unstable: (props: TooltipProps, ref: React_2.Ref<HTMLElement>) => TooltipState;
+export const useTooltip_unstable: (props: TooltipProps) => TooltipState;
 
 // @public
 export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
