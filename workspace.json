@@ -302,13 +302,6 @@
       "projectType": "library",
       "sourceRoot": "packages/react-conformance-griffel/src"
     },
-    "@fluentui/react-conformance-make-styles": {
-      "root": "packages/react-conformance-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/react-conformance-make-styles/src",
-      "tags": ["vNext", "platform:node"],
-      "implicitDependencies": []
-    },
     "@fluentui/react-context-selector": {
       "root": "packages/react-context-selector",
       "projectType": "library",
