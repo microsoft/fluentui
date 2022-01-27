@@ -115,13 +115,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/jest-serializer-make-styles": {
-      "root": "packages/jest-serializer-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/jest-serializer-make-styles/src",
-      "tags": ["vNext", "platform:node"],
-      "implicitDependencies": []
-    },
     "@fluentui/jest-serializer-merge-styles": {
       "root": "packages/jest-serializer-merge-styles",
       "projectType": "library",

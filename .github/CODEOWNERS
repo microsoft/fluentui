@@ -82,7 +82,6 @@ packages/date-time-utilities @ermercer @LuMarti-MS @evlevy
 packages/eslint-plugin/ @microsoft/fluentui-react-build
 packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2/
-packages/jest-serializer-make-styles/ @microsoft/teams-prg
 # packages/jest-serializer-merge-styles/
 
 packages/make-styles-webpack-loader/ @microsoft/teams-prg
