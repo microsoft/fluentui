@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Remove make-styles dev packages",
+  "comment": "Replace make-styles dev packages with griffel equivalents",
   "packageName": "@fluentui/react-components",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "none"
