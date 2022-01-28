@@ -12,6 +12,7 @@ import {
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@fluentui/react-make-styles';
 import { Toc, nameToHash } from './Toc.stories';
+import { isHosted } from './isHosted';
 
 const useStyles = makeStyles({
   divider: {
@@ -34,12 +35,19 @@ const useStyles = makeStyles({
   container: {
     flexGrow: 1,
   },
+  // style overrides for when hosted in website
+  hosted: {
+    '& h1': {
+      marginTop: '-12px !important',
+    },
+  },
 });
 
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.storyStore.getStoriesForKind(context.kind);
   const primaryStory = stories[0];
+  const hosted = isHosted();
   const styles = useStyles();
   // DEBUG
   // console.log('FluentDocsPage', context);
@@ -54,7 +62,7 @@ export const FluentDocsPage = () => {
   // );
 
   return (
-    <>
+    <div className={hosted ? styles.hosted : ''}>
       <Title />
 
       <div className={styles.wrapper}>
@@ -73,6 +81,6 @@ export const FluentDocsPage = () => {
           <Toc stories={stories} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
