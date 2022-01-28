@@ -158,12 +158,12 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn workspace vr-tests screener:build
+          yarn workspace @fluentui/vr-tests screener:build
         displayName: build vr-tests storybook
 
       # Don't use lage here because it eats long output for reasons that are hard to debug
       - script: |
-          yarn workspace vr-tests screener
+          yarn workspace @fluentui/vr-tests screener
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
