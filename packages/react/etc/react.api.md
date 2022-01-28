@@ -6847,6 +6847,7 @@ export interface INavLinkGroup {
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
     groupData?: any;
+    isExpanded?: boolean;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React_2.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
