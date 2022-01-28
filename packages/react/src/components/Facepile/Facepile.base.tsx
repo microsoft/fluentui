@@ -119,9 +119,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
 
       return (
         <li key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
-          {onRenderPersonaWrapper && persona.onClick
-            ? onRenderPersonaWrapper(persona, defaultPersonaRender)
-            : defaultPersonaRender()}
+          {onRenderPersonaWrapper ? onRenderPersonaWrapper(persona, defaultPersonaRender) : defaultPersonaRender()}
         </li>
       );
     });
