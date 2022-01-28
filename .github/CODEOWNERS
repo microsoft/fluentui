@@ -76,7 +76,6 @@ perf-test/ @microsoft/fluentui-react-build
 
 #### Packages
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
-packages/babel-make-styles/ @microsoft/teams-prg
 packages/bundle-size/ @microsoft/teams-prg
 packages/date-time-utilities @ermercer @LuMarti-MS @evlevy
 packages/eslint-plugin/ @microsoft/fluentui-react-build
