@@ -113,16 +113,15 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
       const personaControl: JSX.Element | null = singlePersona
         ? onRenderPersona(persona, this._getPersonaControl)
         : onRenderPersonaCoin(persona, this._getPersonaCoinControl);
+      const defaultPersonaRender = persona.onClick
+        ? () => this._getElementWithOnClickEvent(personaControl, persona, showTooltip, index)
+        : () => this._getElementWithoutOnClickEvent(personaControl, persona, showTooltip, index);
+
       return (
         <li key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
-          {persona.onClick
-            ? onRenderPersonaWrapper
-              ? onRenderPersonaWrapper(
-                  { personaControl, persona, showTooltip, index },
-                  this._getElementWithOnClickEvent.bind(this),
-                )
-              : this._getElementWithOnClickEvent({ personaControl, persona, showTooltip, index })
-            : this._getElementWithoutOnClickEvent({ personaControl, persona, showTooltip, index })}
+          {onRenderPersonaWrapper && persona.onClick
+            ? onRenderPersonaWrapper(persona, defaultPersonaRender)
+            : defaultPersonaRender()}
         </li>
       );
     });
@@ -165,13 +164,12 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     );
   };
 
-  private _getElementWithOnClickEvent(props: {
-    personaControl: JSX.Element | null;
-    persona: IFacepilePersona;
-    showTooltip: boolean;
-    index: number;
-  }): JSX.Element {
-    const { personaControl, persona, showTooltip, index } = props;
+  private _getElementWithOnClickEvent(
+    personaControl: JSX.Element | null,
+    persona: IFacepilePersona,
+    showTooltip: boolean,
+    index: number,
+  ): JSX.Element {
     const { keytipProps } = persona;
     return (
       <FacepileButton
@@ -186,13 +184,12 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     );
   }
 
-  private _getElementWithoutOnClickEvent(props: {
-    personaControl: JSX.Element | null;
-    persona: IFacepilePersona;
-    showTooltip: boolean;
-    index: number;
-  }): JSX.Element {
-    const { personaControl, persona, showTooltip, index } = props;
+  private _getElementWithoutOnClickEvent(
+    personaControl: JSX.Element | null,
+    persona: IFacepilePersona,
+    showTooltip: boolean,
+    index: number,
+  ): JSX.Element {
     return (
       <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, showTooltip, index)}>
         {personaControl}
