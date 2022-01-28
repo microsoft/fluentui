@@ -5628,12 +5628,7 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
     maxDisplayablePersonas?: number;
     onRenderPersona?: IRenderFunction<IFacepilePersona>;
     onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
-    onRenderPersonaWrapper?: IRenderFunction<{
-        personaControl: JSX.Element | null;
-        persona: IFacepilePersona;
-        showTooltip: boolean;
-        index: number;
-    }>;
+    onRenderPersonaWrapper?: IRenderFunction<IFacepilePersona>;
     overflowButtonProps?: IButtonProps;
     overflowButtonType?: OverflowButtonType;
     overflowPersonas?: IFacepilePersona[];
