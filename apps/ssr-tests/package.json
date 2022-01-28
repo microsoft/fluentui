@@ -1,5 +1,5 @@
 {
-  "name": "ssr-tests",
+  "name": "@fluentui/ssr-tests",
   "version": "1.0.0",
   "description": "Server-side rendering tests for @fluentui/react.",
   "private": true,

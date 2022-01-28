@@ -1,5 +1,5 @@
 {
-  "name": "theming-designer",
+  "name": "@fluentui/theming-designer",
   "description": "Theming designer for @fluentui/react.",
   "version": "1.0.0",
   "private": true,
