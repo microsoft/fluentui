@@ -74,143 +74,153 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius('99px'),
   },
 
-  // appearance
+  // appearance: filled
 
-  ghost: {
-    ...shorthands.borderColor('transparent'),
+  filled: {
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
-
-  // appearance-color
-
   'filled-brand': {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
     ...shorthands.borderColor(tokens.colorBrandBackground),
-  },
-  'outline-brand': {
-    color: tokens.colorBrandBackground,
-  },
-  'tint-brand': {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
-    ...shorthands.borderColor(tokens.colorBrandStroke2),
-  },
-  'ghost-brand': {
-    color: tokens.colorBrandBackground,
   },
   'filled-danger': {
     backgroundColor: tokens.colorPaletteRedBackground3,
     color: tokens.colorNeutralForegroundOnBrand,
     ...shorthands.borderColor(tokens.colorPaletteRedBackground3),
   },
-  'outline-danger': {
-    color: tokens.colorPaletteRedForeground3,
+  'filled-important': {
+    backgroundColor: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralBackground1,
   },
-  'tint-danger': {
-    backgroundColor: tokens.colorPaletteRedBackground1,
-    color: tokens.colorPaletteRedForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteRedBorder1),
-  },
-  'ghost-danger': {
-    color: tokens.colorPaletteRedForeground3,
+  'filled-informative': {
+    backgroundColor: tokens.colorNeutralBackground5,
+    color: tokens.colorNeutralForeground3,
   },
   'filled-severe': {
     backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
     color: tokens.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
-  'outline-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3,
+  'filled-subtle': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
   },
-  'tint-severe': {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
-    color: tokens.colorPaletteDarkOrangeForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeForeground2),
-  },
-  'ghost-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3,
+  'filled-success': {
+    backgroundColor: tokens.colorPaletteGreenBackground3,
+    color: tokens.colorNeutralForegroundOnBrand,
   },
   'filled-warning': {
     backgroundColor: tokens.colorPaletteYellowBackground3,
     color: tokens.colorNeutralForeground1,
     ...shorthands.borderColor(tokens.colorPaletteYellowBackground3),
   },
-  'outline-warning': {
-    color: tokens.colorPaletteYellowForeground2,
+
+  // appearance: ghost
+
+  ghost: {
+    ...shorthands.borderColor('transparent'),
   },
-  'tint-warning': {
-    backgroundColor: tokens.colorPaletteYellowBackground1,
-    color: tokens.colorPaletteYellowForeground2,
-    ...shorthands.borderColor(tokens.colorPaletteYellowBackground2),
+  'ghost-brand': {
+    color: tokens.colorBrandBackground,
   },
-  'ghost-warning': {
-    color: tokens.colorPaletteYellowForeground2,
+  'ghost-danger': {
+    color: tokens.colorPaletteRedForeground3,
   },
-  'filled-success': {
-    backgroundColor: tokens.colorPaletteGreenBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  'ghost-important': {
+    color: tokens.colorNeutralForeground1,
   },
-  'outline-success': {
-    color: tokens.colorPaletteGreenForeground2,
+  'ghost-informative': {
+    color: tokens.colorNeutralForeground3,
   },
-  'tint-success': {
-    backgroundColor: tokens.colorPaletteGreenBackground1,
-    color: tokens.colorPaletteGreenForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteGreenBackground2),
+  'ghost-severe': {
+    color: tokens.colorPaletteDarkOrangeForeground3,
+  },
+  'ghost-subtle': {
+    color: tokens.colorNeutralForegroundInverted,
   },
   'ghost-success': {
     color: tokens.colorPaletteGreenForeground3,
   },
-  'filled-important': {
-    backgroundColor: tokens.colorNeutralForeground1,
-    color: tokens.colorNeutralBackground1,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+  'ghost-warning': {
+    color: tokens.colorPaletteYellowForeground2,
+  },
+
+  // appearance: outline
+
+  outline: {
+    ...shorthands.borderColor('currentColor'),
+  },
+  'outline-brand': {
+    color: tokens.colorBrandBackground,
+  },
+  'outline-danger': {
+    color: tokens.colorPaletteRedForeground3,
   },
   'outline-important': {
     color: tokens.colorNeutralForeground3,
     ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
+  },
+  'outline-informative': {
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStroke2),
+  },
+  'outline-severe': {
+    color: tokens.colorPaletteDarkOrangeForeground3,
+  },
+  'outline-subtle': {
+    color: tokens.colorNeutralForegroundInverted,
+  },
+  'outline-success': {
+    color: tokens.colorPaletteGreenForeground2,
+  },
+  'outline-warning': {
+    color: tokens.colorPaletteYellowForeground2,
+  },
+
+  // appearance: tint
+
+  tint: {
+    // No shared colors between tint appearances
+  },
+  'tint-brand': {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground2,
+    ...shorthands.borderColor(tokens.colorBrandStroke2),
+  },
+  'tint-danger': {
+    backgroundColor: tokens.colorPaletteRedBackground1,
+    color: tokens.colorPaletteRedForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteRedBorder1),
   },
   'tint-important': {
     backgroundColor: tokens.colorNeutralForeground3,
     color: tokens.colorNeutralBackground1,
     ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
-  'ghost-important': {
-    color: tokens.colorNeutralForeground1,
-  },
-  'filled-informative': {
-    backgroundColor: tokens.colorNeutralBackground5,
-    color: tokens.colorNeutralForeground3,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
-  },
-  'outline-informative': {
-    color: tokens.colorNeutralForeground3,
-    ...shorthands.borderColor(tokens.colorNeutralStroke2),
-  },
   'tint-informative': {
     backgroundColor: tokens.colorNeutralBackground4,
     color: tokens.colorNeutralForeground3,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
-  'ghost-informative': {
-    color: tokens.colorNeutralForeground3,
-  },
-  'filled-subtle': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
-  },
-  'outline-subtle': {
-    color: tokens.colorNeutralForegroundInverted,
+  'tint-severe': {
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
+    color: tokens.colorPaletteDarkOrangeForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeForeground2),
   },
   'tint-subtle': {
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground3,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
-  'ghost-subtle': {
-    color: tokens.colorNeutralForegroundInverted,
+  'tint-success': {
+    backgroundColor: tokens.colorPaletteGreenBackground1,
+    color: tokens.colorPaletteGreenForeground1,
+    ...shorthands.borderColor(tokens.colorPaletteGreenBackground2),
+  },
+  'tint-warning': {
+    backgroundColor: tokens.colorPaletteYellowBackground1,
+    color: tokens.colorPaletteYellowForeground2,
+    ...shorthands.borderColor(tokens.colorPaletteYellowBackground2),
   },
 });
 
@@ -258,7 +268,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
     state.shape === 'rounded' &&
       (state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny') &&
       rootStyles.roundedSmallToTiny,
-    state.appearance === 'ghost' && rootStyles.ghost,
+    rootStyles[state.appearance],
     rootStyles[`${state.appearance}-${state.color}` as const],
     state.root.className,
   );
