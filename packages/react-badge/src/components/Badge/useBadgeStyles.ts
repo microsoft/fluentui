@@ -118,7 +118,7 @@ const useRootStyles = makeStyles({
   // appearance: ghost
 
   ghost: {
-    ...shorthands.borderColor('transparent'),
+    ...shorthands.borderStyle('none'),
   },
   'ghost-brand': {
     color: tokens.colorBrandBackground,
