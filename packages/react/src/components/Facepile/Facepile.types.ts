@@ -6,7 +6,6 @@ import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../
 import type { IButtonProps } from '../../Button';
 import type { IPersonaSharedProps } from '../../Persona';
 import type { IKeytipProps } from '../../Keytip';
-import { IPersona } from '../Persona/Persona.types';
 
 /**
  * {@docCategory Facepile}
