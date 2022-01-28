@@ -3,7 +3,7 @@ import { mergeArrowOffset, resolvePositioningShorthand, usePopper } from '@fluen
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
   applyTriggerPropsToChildren,
-  getNativeElementProps,
+  resolveShorthand,
   useControllableState,
   useId,
   useIsomorphicLayoutEffect,
@@ -21,21 +21,21 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
  * before being passed to renderTooltip_unstable.
  *
  * @param props - props from this instance of Tooltip
- * @param ref - reference to root HTMLElement of Tooltip
  */
-export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
+export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const context = React.useContext(TooltipContext);
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
   const {
-    content,
     appearance,
+    children,
+    content,
     withArrow,
     positioning,
     onVisibleChange,
-    triggerAriaAttribute = 'label',
+    relationship,
     showDelay = 250,
     hideDelay = 250,
   } = props;
@@ -55,27 +55,28 @@ export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivE
   );
 
   const state: TooltipState = {
-    content,
     withArrow,
     positioning,
     showDelay,
     hideDelay,
-    triggerAriaAttribute,
+    relationship,
     visible,
     shouldRenderTooltip: visible,
     appearance,
 
     // Slots
     components: {
-      root: 'div',
+      content: 'div',
     },
-    root: getNativeElementProps('div', {
-      role: 'tooltip',
-      ...props,
-      ref,
-      id: useId('tooltip-', props.id),
+    content: resolveShorthand(content, {
+      defaultProps: {
+        role: 'tooltip',
+      },
+      required: true,
     }),
   };
+
+  state.content.id = useId('tooltip-', state.content.id);
 
   const popperOptions = {
     enabled: state.visible,
@@ -100,7 +101,7 @@ export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivE
     arrowRef: React.MutableRefObject<HTMLDivElement>;
   } = usePopper(popperOptions);
 
-  state.root.ref = useMergedRefs(state.root.ref, containerRef);
+  state.content.ref = useMergedRefs(state.content.ref, containerRef);
   state.arrowRef = arrowRef;
 
   // When this tooltip is visible, hide any other tooltips, and register it
@@ -181,10 +182,10 @@ export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivE
 
   // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
   // This keeps the tooltip visible when the pointer is moved over it.
-  state.root.onPointerEnter = useMergedCallbacks(state.root.onPointerEnter, clearDelayTimeout);
-  state.root.onPointerLeave = useMergedCallbacks(state.root.onPointerLeave, onLeaveTrigger);
+  state.content.onPointerEnter = useMergedCallbacks(state.content.onPointerEnter, clearDelayTimeout);
+  state.content.onPointerLeave = useMergedCallbacks(state.content.onPointerLeave, onLeaveTrigger);
 
-  const child = React.isValidElement(state.root.children) ? state.root.children : undefined;
+  const child = React.isValidElement(children) ? children : undefined;
 
   // The props to add to the trigger element (child)
   const triggerProps: TooltipTriggerProps = {
@@ -201,26 +202,25 @@ export const useTooltip_unstable = (props: TooltipProps, ref: React.Ref<HTMLDivE
     triggerProps.ref = childTargetRef;
   }
 
-  if (state.triggerAriaAttribute === 'label') {
-    // aria-label only works if the content is a string. Otherwise, need to use labelledby.
-    if (typeof state.content === 'string') {
-      triggerProps['aria-label'] = state.content;
-    } else {
-      state.triggerAriaAttribute = 'labelledby';
+  if (relationship === 'label') {
+    // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
+    if (typeof state.content.children === 'string') {
+      triggerProps['aria-label'] = state.content.children;
+    } else if (!isServerSideRender) {
+      triggerProps['aria-labelledby'] = state.content.id;
+      // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+      state.shouldRenderTooltip = true;
+    }
+  } else if (relationship === 'description') {
+    if (!isServerSideRender) {
+      triggerProps['aria-describedby'] = state.content.id;
+      // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
+      state.shouldRenderTooltip = true;
     }
   }
 
-  if (state.triggerAriaAttribute === 'labelledby' && !isServerSideRender) {
-    triggerProps['aria-labelledby'] = state.root.id;
-    // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
-    state.shouldRenderTooltip = true;
-  } else if (state.triggerAriaAttribute === 'describedby' && !isServerSideRender) {
-    triggerProps['aria-describedby'] = state.root.id;
-    state.shouldRenderTooltip = true;
-  }
-
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  state.root.children = applyTriggerPropsToChildren(state.root.children, triggerProps) as React.ReactElement;
+  state.children = applyTriggerPropsToChildren(children, triggerProps);
   return state;
 };
 

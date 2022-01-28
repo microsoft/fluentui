@@ -115,13 +115,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/jest-serializer-make-styles": {
-      "root": "packages/jest-serializer-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/jest-serializer-make-styles/src",
-      "tags": ["vNext", "platform:node"],
-      "implicitDependencies": []
-    },
     "@fluentui/jest-serializer-merge-styles": {
       "root": "packages/jest-serializer-merge-styles",
       "projectType": "library",
@@ -142,13 +135,6 @@
     "@fluentui/local-sandbox": {
       "root": "packages/fluentui/local-sandbox",
       "projectType": "library",
-      "implicitDependencies": []
-    },
-    "@fluentui/make-styles-webpack-loader": {
-      "root": "packages/make-styles-webpack-loader",
-      "projectType": "library",
-      "sourceRoot": "packages/make-styles-webpack-loader/src",
-      "tags": ["vNext", "platform:node"],
       "implicitDependencies": []
     },
     "@fluentui/merge-styles": {
@@ -295,13 +281,6 @@
     "@fluentui/react-conformance": {
       "root": "packages/react-conformance",
       "projectType": "library",
-      "implicitDependencies": []
-    },
-    "@fluentui/react-conformance-make-styles": {
-      "root": "packages/react-conformance-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/react-conformance-make-styles/src",
-      "tags": ["vNext", "platform:node"],
       "implicitDependencies": []
     },
     "@fluentui/react-conformance-griffel": {
@@ -517,6 +496,13 @@
       "sourceRoot": "packages/react-spinbutton/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-spinner": {
+      "root": "packages/react-spinner",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-spinner/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-storybook": {
       "root": "packages/react-storybook",

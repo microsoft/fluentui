@@ -26,7 +26,7 @@ module.exports = {
 
     config.module.rules.unshift({
       test: /\.(ts|tsx)$/,
-      use: [{ loader: '@fluentui/make-styles-webpack-loader' }],
+      use: [{ loader: '@griffel/webpack-loader' }],
     });
 
     return custom(config);

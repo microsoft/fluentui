@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import {
-  AsIntrinsicElement,
-  ComponentState,
-  ShorthandRenderFunction,
-  ObjectShorthandPropsRecord,
-  ObjectShorthandProps,
-  UnionToIntersection,
-} from './types';
 import { nullRender } from './nullRender';
 import { omit } from '../utils/omit';
+import type {
+  AsIntrinsicElement,
+  ComponentState,
+  ObjectShorthandProps,
+  ObjectShorthandPropsRecord,
+  ShorthandRenderFunction,
+  UnionToIntersection,
+} from './types';
 
 export type Slots<S extends ObjectShorthandPropsRecord> = {
   [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
