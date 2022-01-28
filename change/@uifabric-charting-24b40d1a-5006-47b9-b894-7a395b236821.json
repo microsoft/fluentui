@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "OverflowProp styles override issue solved for legend",
+  "packageName": "@uifabric/charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}
