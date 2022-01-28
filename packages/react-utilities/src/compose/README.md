@@ -277,7 +277,7 @@ const Button = props => {
 };
 ```
 
-### resolveShorthand<Props>(value: ShorthandProps<Props>, defaultProps?: Props): ObjectShorthandProps<Props>
+### resolveShorthand<Props>(value: ShorthandProps<Props>, defaultProps?: Props): ComponentSlotProps<Props>
 
 Ensures that the given slots are represented using object syntax. This ensures that
 the object can be merged along with other objects.

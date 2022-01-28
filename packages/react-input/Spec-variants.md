@@ -38,8 +38,8 @@ type TextInputSlots<
     ? React.InputHTMLAttributes<TInput>
     : React.TextAreaHTMLAttributes<TInput>
 > = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-  input: ObjectShorthandProps<TInputAttributes, TInput>;
+  root: ComponentSlotProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  input: ComponentSlotProps<TInputAttributes, TInput>;
 };
 ```
 

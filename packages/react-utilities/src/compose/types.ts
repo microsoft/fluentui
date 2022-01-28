@@ -39,7 +39,7 @@ export type SlotProps<Props extends { children?: React.ReactNode } = {}> = Props
 /**
  * Defines the slot props for a slot that supports a Component type.
  *
- * For intrinsic/native elements like 'div', use {@link IntrinsicShorthandProps} instead.
+ * For intrinsic/native elements like 'div', use {@link IntrinsicSlotProps} instead.
  *
  * The generic param is the type of a control, i.e. a React component. For example:
  *

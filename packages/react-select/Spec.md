@@ -144,11 +144,11 @@ In this component, `select` is the primary slot. Since `select` is primary, `roo
 ```ts
 export type SelectSlots = {
   /** Root of the component, renders as a `<span>`. */
-  root: IntrinsicShorthandProps<'span'>;
+  root: IntrinsicSlotProps<'span'>;
   /** The actual `<select>` element */
-  select: IntrinsicShorthandProps<'select'>;
+  select: IntrinsicSlotProps<'select'>;
   /** the icon, typically a down arrow */
-  icon: IntrinsicShorthandProps<'span'>;
+  icon: IntrinsicSlotProps<'span'>;
 };
 ```
 

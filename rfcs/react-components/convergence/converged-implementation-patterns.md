@@ -210,7 +210,7 @@ The below will probably be present in every component, other utility types are f
 
 ```typescript
 import * as React from 'react';
-import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentSlotProps, ShorthandProps } from '@fluentui/react-utilities';
 
 // For a component all HTML attributes should be allowed to maximize consistencty with DOM
 export interface SampleProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -224,7 +224,7 @@ export interface SampleState extends SampleProps {
   ref: React.MutableRefObject<HTMLElement>;
 
   // once a slot is process in state it can only be an object
-  icon: ObjectShorthandProps;
+  icon: ComponentSlotProps;
 
   open: boolean;
 
