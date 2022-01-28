@@ -27,8 +27,8 @@ const dependencies = [
   '@fluentui/react-components',
   '@fluentui/react-experiments',
   '@fluentui/web-components',
-  'perf-test',
-  'theming-designer',
+  '@microsoft/perf-test',
+  '@fluentui/theming-designer',
 ];
 
 const allPackages = getAllPackageInfo();

@@ -55,13 +55,13 @@ var siteInfo = [
     title: 'Charting',
   },
   {
-    package: 'theming-designer',
+    package: '@fluentui/theming-designer',
     link: './theming-designer/index.html',
     icon: 'CheckMark',
     title: 'Theme Designer Example',
   },
   {
-    package: 'perf-test',
+    package: '@microsoft/perf-test',
     link: './perf-test/index.html',
     icon: 'SpeedHigh',
     title: 'Perf Tests',

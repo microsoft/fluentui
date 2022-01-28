@@ -143,7 +143,7 @@ function readSummaryPerfStats() {
 }
 
 function readFlamegrillStats() {
-  return require(paths.packageDist('perf-test', 'perfCounts.json'));
+  return require(paths.packageDist('@microsoft/perf-test', 'perfCounts.json'));
 }
 
 // 1. iterate over all perf-test results
