@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionIndex = number | number[];
@@ -40,7 +40,7 @@ export type AccordionContextValues = {
 };
 
 export type AccordionSlots = {
-  root: IntrinsicShorthandProps<'div'>;
+  root: IntrinsicSlotProps<'div'>;
 };
 
 export type AccordionToggleData = {

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 /**
  * Slot properties for Tooltip
  */
 export type TooltipSlots = {
-  content: IntrinsicShorthandProps<'div'>;
+  content: IntrinsicSlotProps<'div'>;
 };
 
 /**

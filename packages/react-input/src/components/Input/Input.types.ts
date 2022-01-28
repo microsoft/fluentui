@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 export type InputSlots = {
   /**
@@ -9,7 +9,7 @@ export type InputSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Input>`.
    * All other top-level native props will be applied to the primary slot, `input`.
    */
-  root: IntrinsicShorthandProps<'span'>;
+  root: IntrinsicSlotProps<'span'>;
 
   /**
    * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
@@ -18,13 +18,13 @@ export type InputSlots = {
    * (except `className` and `style`, which go to the `root` slot). The top-level `ref` will
    * also go here.
    */
-  input: IntrinsicShorthandProps<'input'>;
+  input: IntrinsicSlotProps<'input'>;
 
   /** Element before the input text, within the input border */
-  contentBefore?: IntrinsicShorthandProps<'span'>;
+  contentBefore?: IntrinsicSlotProps<'span'>;
 
   /** Element after the input text, within the input border */
-  contentAfter?: IntrinsicShorthandProps<'span'>;
+  contentAfter?: IntrinsicSlotProps<'span'>;
 };
 
 export type InputProps = Omit<
