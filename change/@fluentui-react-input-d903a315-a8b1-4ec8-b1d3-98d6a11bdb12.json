@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Replacing use of functions in makeStyles with direct use of tokens and removing old version of stories.",
+  "packageName": "@fluentui/react-input",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

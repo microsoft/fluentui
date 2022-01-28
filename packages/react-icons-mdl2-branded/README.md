@@ -4,8 +4,10 @@
 
 This package contains branded icons from the MDL2 SVG icon set. Usage of these icons is subject to the [Microsoft Fabric Assets License](https://aka.ms/fluentui-assets-license).
 
-To import React Icons Mdl2 Branded components:
+For more information, including a list of available icons, see the [Fluent UI website](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons).
+
+To import the icon components:
 
 ```js
-import { ComponentName } from '@fluentui/react-icons-mdl2-branded';
+import { IconName } from '@fluentui/react-icons-mdl2-branded';
 ```

@@ -1,8 +1,35 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 15 Dec 2021 07:31:29 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jan 2022 07:34:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.2)
+
+Thu, 27 Jan 2022 07:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.1..@fluentui/web-components_v2.2.2)
+
+### Patches
+
+- Updating fast-foundation to v2.32.0 ([PR #21443](https://github.com/microsoft/fluentui/pull/21443) by robarb@microsoft.com)
+
+## [2.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.1)
+
+Wed, 12 Jan 2022 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.0..@fluentui/web-components_v2.2.1)
+
+### Patches
+
+- Update tab panel to base type size ([PR #21180](https://github.com/microsoft/fluentui/pull/21180) by 47367562+bheston@users.noreply.github.com)
+
+## [2.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.0)
+
+Fri, 07 Jan 2022 07:27:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.3..@fluentui/web-components_v2.2.0)
+
+### Minor changes
+
+- feat: add search web component ([PR #21177](https://github.com/microsoft/fluentui/pull/21177) by jes@microsoft.com)
 
 ## [2.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.3)
 

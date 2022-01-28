@@ -15,10 +15,11 @@
     "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
-    "@fluentui/make-styles": "9.0.0-beta.3",
-    "@fluentui/react": "^8.48.0",
+    "@griffel/core": "1.0.7",
+    "@fluentui/react": "^8.51.1",
     "@fluentui/react-avatar": "9.0.0-beta.4",
     "@fluentui/react-button": "9.0.0-beta.5",
+    "@fluentui/react-make-styles": "9.0.0-beta.4",
     "@fluentui/react-provider": "9.0.0-beta.5",
     "@fluentui/react-theme": "9.0.0-beta.4",
     "@fluentui/scripts": "^1.0.0",

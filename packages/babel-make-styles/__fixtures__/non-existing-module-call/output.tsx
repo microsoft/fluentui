@@ -3,11 +3,11 @@ import { createModule } from './module';
 export const useStyles = __styles(
   {
     container: {
-      sj55zd: 'fq2l63j',
+      sj55zd: 'fe3e8s9',
     },
   },
   {
-    d: ['.fq2l63j{color:var(--colorNeutralStroke1);}'],
+    d: ['.fe3e8s9{color:red;}'],
   },
 );
 createModule().baz();

@@ -27,13 +27,10 @@ export type InputSlots = {
   contentAfter?: IntrinsicShorthandProps<'span'>;
 };
 
-/**
- * Input Props
- */
 export type InputProps = Omit<
   ComponentProps<InputSlots, 'input'>,
   // `children` is unsupported. The rest of these native props have customized definitions.
-  'children' | 'defaultValue' | 'onChange' | 'size' | 'value'
+  'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'
 > & {
   /** Input can't have children. */
   children?: never;
@@ -79,10 +76,35 @@ export type InputProps = Omit<
    * Called when the user changes the input's value.
    */
   onChange?: (ev: React.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+
+  /**
+   * An input can have different text-based [types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types)
+   * based on the type of value the user will enter.
+   *
+   * Note that no custom styling is currently applied for alternative types, and some types may
+   * activate browser-default styling which does not match the Fluent design language.
+   *
+   * (For non-text-based types such as `button` or `checkbox`, use the appropriate component or an
+   * `<input>` element instead.)
+   * @default 'text'
+   */
+  type?:
+    | 'text'
+    | 'email'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'url'
+    | 'date'
+    | 'datetime-local'
+    | 'month'
+    | 'number'
+    | 'time'
+    | 'week';
 };
 
 /**
- * State used in rendering Input
+ * State used in rendering Input.
  */
 export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Body, Caption } from '@fluentui/react-text';
 
 import { Button } from '@fluentui/react-button';
-import { ArrowReply16Regular, Share16Regular } from '@fluentui/react-icons';
+import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
 import { Card, CardFooter, CardHeader, CardPreview } from '../index'; // codesandbox-dependency: @fluentui/react-card ^9.0.0-beta
 
 const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
@@ -29,8 +29,8 @@ export const Default = () => {
         <img src={docTemplateURL} alt="Preview of a Word document " />
       </CardPreview>
       <CardFooter>
-        <Button icon={<ArrowReply16Regular />}>Reply</Button>
-        <Button icon={<Share16Regular />}>Share</Button>
+        <Button icon={<ArrowReplyRegular fontSize={16} />}>Reply</Button>
+        <Button icon={<ShareRegular fontSize={16} />}>Share</Button>
       </CardFooter>
     </Card>
   );

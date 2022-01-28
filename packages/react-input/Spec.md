@@ -96,6 +96,9 @@ type SimplifiedInputProps = {
 
   /** Called when the user changes the value */
   onChange?: (ev: React.FormEvent<HTMLInputElement>, data: { value: string }) => void;
+
+  /** Allowed values for the native `type` prop */
+  type?: 'text' | '...'; // this is an enumeration of all text-like values
 };
 ```
 
@@ -103,6 +106,8 @@ Notes on native prop conflicts/overrides:
 
 - `size` [overlaps with a native prop](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size) which sets the width of the field in "number of characters." This isn't ideal, but we're going with it since the native prop isn't very useful in practice, and it was hard to find another reasonable/consistent name for the visual size prop. It's also consistent with the approach used by most other libraries which have a prop for setting the visual size. (If anyone needs the native functionality, we could add an `htmlSize` prop in the future.)
 - `value` and `defaultValue` are defined in `InputHTMLAttributes` (from `@types/react`) as `string | ReadonlyArray<string> | number` since the same props interface is used for all input element types. To reflect actual usage, we override the types to only accept strings.
+- `onChange` is overridden per the [RFC on event handler arguments](https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/event-handlers-arguments.md).
+- `type` is defined in `@types/react` as `string`, but for `Input`, I'm restricting it to a list of only the text-like values [listed on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types). Making this explicit should help avoid people thinking that Input can handle all the same behaviors as a native `<input>`.
 
 ### Slots
 

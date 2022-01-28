@@ -1,31 +1,32 @@
 import * as React from 'react';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
-import { usePopoverContext } from '../../popoverContext';
-import type { PopoverSurfaceProps, PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
-
-export const popoverSurfaceSlots: Array<keyof PopoverSurfaceSlots> = ['root'];
+import { usePopoverContext_unstable } from '../../popoverContext';
+import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
  * Create the state required to render PopoverSurface.
  *
- * The returned state can be modified with hooks such as usePopoverSurfaceStyles,
- * before being passed to renderPopoverSurface.
+ * The returned state can be modified with hooks such as usePopoverSurfaceStyles_unstable,
+ * before being passed to renderPopoverSurface_unstable.
  *
  * @param props - props from this instance of PopoverSurface
  * @param ref - reference to root HTMLDivElement of PopoverSurface
  */
-export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTMLDivElement>): PopoverSurfaceState => {
-  const contentRef = usePopoverContext(context => context.contentRef);
-  const open = usePopoverContext(context => context.open);
-  const openOnHover = usePopoverContext(context => context.openOnHover);
-  const setOpen = usePopoverContext(context => context.setOpen);
-  const mountNode = usePopoverContext(context => context.mountNode);
-  const arrowRef = usePopoverContext(context => context.arrowRef);
-  const size = usePopoverContext(context => context.size);
-  const noArrow = usePopoverContext(context => context.noArrow);
-  const appearance = usePopoverContext(context => context.appearance);
-  const trapFocus = usePopoverContext(context => context.trapFocus);
+export const usePopoverSurface_unstable = (
+  props: PopoverSurfaceProps,
+  ref: React.Ref<HTMLDivElement>,
+): PopoverSurfaceState => {
+  const contentRef = usePopoverContext_unstable(context => context.contentRef);
+  const open = usePopoverContext_unstable(context => context.open);
+  const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
+  const setOpen = usePopoverContext_unstable(context => context.setOpen);
+  const mountNode = usePopoverContext_unstable(context => context.mountNode);
+  const arrowRef = usePopoverContext_unstable(context => context.arrowRef);
+  const size = usePopoverContext_unstable(context => context.size);
+  const noArrow = usePopoverContext_unstable(context => context.noArrow);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const { modalAttributes } = useModalAttributes({ trapFocus });
 
   const state: PopoverSurfaceState = {
@@ -40,7 +41,8 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, contentRef),
-      role: 'dialog',
+      role: trapFocus ? 'dialog' : 'complementary',
+      'aria-modal': trapFocus ? true : undefined,
       ...modalAttributes,
       ...props,
     }),

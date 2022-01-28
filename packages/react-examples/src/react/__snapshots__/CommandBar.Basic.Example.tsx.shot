@@ -7,6 +7,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
 >
   <div
     aria-hidden={true}
+    data-is-focus-trap-zone-bumper={true}
     data-is-visible={true}
     style={
       Object {
@@ -1558,6 +1559,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
   </div>
   <div
     aria-hidden={true}
+    data-is-focus-trap-zone-bumper={true}
     data-is-visible={true}
     style={
       Object {

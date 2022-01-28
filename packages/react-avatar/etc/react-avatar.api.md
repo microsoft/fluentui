@@ -5,11 +5,11 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
+import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { ShorthandRenderFunction } from '@fluentui/react-utilities';
 
@@ -21,8 +21,7 @@ export const avatarClassName = "fui-Avatar";
 
 // @public (undocumented)
 export type AvatarCommons = Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> & {
-    name: string;
-    getInitials: (name: string, isRtl: boolean) => string;
+    name?: string;
     size: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
     shape: 'circular' | 'square';
     active: 'active' | 'inactive' | 'unset';
@@ -47,9 +46,9 @@ export type AvatarSlots = {
         children?: never;
     };
     image?: IntrinsicShorthandProps<'img'>;
-    label?: IntrinsicShorthandProps<'span'>;
+    initials?: IntrinsicShorthandProps<'span'>;
     icon?: IntrinsicShorthandProps<'span'>;
-    badge?: ObjectShorthandProps<PresenceBadgeProps>;
+    badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
 
 // @public
@@ -57,14 +56,17 @@ export type AvatarState = ComponentState<AvatarSlots> & AvatarCommons & {
     color: Exclude<AvatarCommons['color'], 'colorful'>;
 };
 
-// @public (undocumented)
-export const renderAvatar: (state: AvatarState) => JSX.Element;
+// @public
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
 
 // @public (undocumented)
-export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public (undocumented)
-export const useAvatarStyles: (state: AvatarState) => AvatarState;
+export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
+
+// @public (undocumented)
+export const useAvatarStyles_unstable: (state: AvatarState) => AvatarState;
 
 // (No @packageDocumentation comment for this package)
 

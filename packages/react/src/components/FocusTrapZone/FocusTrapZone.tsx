@@ -94,6 +94,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     },
     tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
     'data-is-visible': true,
+    'data-is-focus-trap-zone-bumper': true,
   } as React.HTMLAttributes<HTMLDivElement>;
 
   const focus = React.useCallback(() => {

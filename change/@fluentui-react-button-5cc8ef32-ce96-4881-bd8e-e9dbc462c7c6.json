@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove fontSize from default menuIcon, as it is already set via css",
+  "packageName": "@fluentui/react-button",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

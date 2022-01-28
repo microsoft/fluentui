@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating based on removal of functions from makeStyles.",
+  "packageName": "@fluentui/react-menu",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

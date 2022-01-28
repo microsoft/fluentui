@@ -1,4 +1,5 @@
 import { __styles } from '@fluentui/react-make-styles';
+import { colorRed } from './consts';
 export const useStyles = __styles(
   {
     root: {

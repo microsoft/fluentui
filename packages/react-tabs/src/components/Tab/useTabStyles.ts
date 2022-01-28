@@ -1,7 +1,8 @@
 import type { TabState } from './Tab.types';
 
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 
 export const tabClassName = 'fui-Tab';
 
@@ -23,22 +24,22 @@ const pendingTheme = {
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
-  base: theme => ({
+  base: {
     backgroundColor: 'none',
     ...shorthands.borderColor('none'),
-    ...shorthands.borderRadius(theme.borderRadiusMedium),
-    borderWidth: theme.strokeWidthThin,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
     columnGap: pendingTheme.gap.medium,
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
-    fontFamily: theme.fontFamilyBase,
-    fontSize: theme.fontSizeBase300,
-    lineHeight: theme.lineHeightBase300,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
     ...shorthands.padding(pendingTheme.tabPadding.medium),
     position: 'relative',
     ...shorthands.overflow('hidden'),
-  }),
+  },
   horizontal: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -51,38 +52,41 @@ const useRootStyles = makeStyles({
     ...shorthands.padding(pendingTheme.tabPadding.small),
     columnGap: pendingTheme.gap.small,
   },
-  subtle: theme => ({
+  subtle: {
     ':hover': {
-      backgroundColor: theme.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
     },
-  }),
+  },
 });
 
 /**
  * Focus styles for the root slot
  */
 const useFocusStyles = makeStyles({
-  base: createCustomFocusIndicatorStyle(theme => ({
+  // Tab creates a custom focus indicator because the default focus indicator
+  // is applied using an :after pseudo-element on the root. Since the selection
+  // indicator uses an :after pseudo-element on the root, there is a conflict.
+  base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
-    outlineWidth: theme.strokeWidthThick,
-    outlineColor: 'tranparent',
+    outlineWidth: tokens.strokeWidthThick,
+    outlineColor: 'transparent',
     outlineStyle: 'solid',
     boxShadow: `
-      ${theme.shadow4},
-      0 0 0 ${theme.strokeWidthThick} ${theme.colorStrokeFocus2}
+      ${tokens.shadow4},
+      0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}
     `,
     zIndex: 1,
-  })),
+  }),
 });
 
 /**
  * Indicator styles for the root slot when horizontal.
  */
 const useHorizontalIndicatorStyles = makeStyles({
-  base: theme => ({
+  base: {
     ':after': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(theme.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -93,20 +97,20 @@ const useHorizontalIndicatorStyles = makeStyles({
     },
     ':hover': {
       ':after': {
-        backgroundColor: theme.colorNeutralStroke1,
+        backgroundColor: tokens.colorNeutralStroke1,
       },
     },
-  }),
-  selected: theme => ({
+  },
+  selected: {
     ':after': {
-      backgroundColor: theme.colorBrandStroke1,
+      backgroundColor: tokens.colorBrandStroke1,
     },
     ':hover': {
       ':after': {
-        backgroundColor: theme.colorBrandStroke1,
+        backgroundColor: tokens.colorBrandStroke1,
       },
     },
-  }),
+  },
   small: {
     ':after': {
       left: pendingTheme.tabPadding.small,
@@ -119,10 +123,10 @@ const useHorizontalIndicatorStyles = makeStyles({
  * Indicator styles for the root slot when vertical.
  */
 const useVerticalIndicatorStyles = makeStyles({
-  base: theme => ({
+  base: {
     ':before': {
       backgroundColor: 'none',
-      ...shorthands.borderRadius(theme.borderRadiusMedium),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -133,20 +137,20 @@ const useVerticalIndicatorStyles = makeStyles({
     },
     ':hover': {
       ':before': {
-        backgroundColor: theme.colorNeutralStroke1,
+        backgroundColor: tokens.colorNeutralStroke1,
       },
     },
-  }),
-  selected: theme => ({
+  },
+  selected: {
     ':before': {
-      backgroundColor: theme.colorBrandStroke1,
+      backgroundColor: tokens.colorBrandStroke1,
     },
     ':hover': {
       ':before': {
-        backgroundColor: theme.colorBrandStroke1,
+        backgroundColor: tokens.colorBrandStroke1,
       },
     },
-  }),
+  },
   small: {
     ':before': {
       top: pendingTheme.tabPadding.small,
@@ -164,6 +168,8 @@ const useIconStyles = makeStyles({
     display: 'inline-flex',
     justifyContent: 'center',
   },
+  // per design, the small and medium font sizes are the same.
+  // the size prop only affects spacing.
   small: {
     fontSize: '20px',
     height: '20px',
@@ -193,7 +199,7 @@ const useContentStyles = makeStyles({
 /**
  * Apply styling to the Tab slots based on the state
  */
-export const useTabStyles = (state: TabState): TabState => {
+export const useTabStyles_unstable = (state: TabState): TabState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();

@@ -2,6 +2,295 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 26 Jan 2022 07:26:00 GMT",
+      "tag": "@fluentui/react_v8.51.1",
+      "version": "8.51.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ac82359d84676daaa973050c5159871f77408f50",
+            "comment": "Re-add motion and font theme re-exports."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jan 2022 07:30:06 GMT",
+      "tag": "@fluentui/react_v8.51.0",
+      "version": "8.51.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "c77fb1c3ed25c9568e5fb923313c10061ba44e8c",
+            "comment": "Fix an accessibility bug of TooltipHost when mouse leaves before timer triggers"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "d699ced1c47135ef22b196c8e9b777af3984ab3e",
+            "comment": "DetailsList: add keyboardColumnEditProps prop to programatically trigger a column resize and reorder."
+          },
+          {
+            "author": "jamwu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18",
+            "comment": "TimePicker: Updated onChange prop, added initial date, use new getDateFromTimeSelection function"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.3.0",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Jan 2022 07:26:13 GMT",
+      "tag": "@fluentui/react_v8.50.1",
+      "version": "8.50.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c356ad2c6b704ff9618084eb2910a1bb14498795",
+            "comment": "Combobox: remove default title attribute added to options."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "33101c465a41a1866e4315d85ef93ea88a130fc1",
+            "comment": "Fix aria-readonly regression in Calendar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Jan 2022 07:26:05 GMT",
+      "tag": "@fluentui/react_v8.50.0",
+      "version": "8.50.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marion.lepontois@skatteetaten.no",
+            "package": "@fluentui/react",
+            "commit": "0974d2cc5aa81a05fce820cdc3398a7a478cb997",
+            "comment": "Extending target to composedPath in Callout dismiss listener"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d514b3e0eed345184ec1e81d4b563c3b0be73d5b",
+            "comment": "Add an onRenderContent override to the Breadcrumb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Jan 2022 09:43:48 GMT",
+      "tag": "@fluentui/react_v8.49.7",
+      "version": "8.49.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7a3c154a130a95adf8745885b2652b072111a083",
+            "comment": "Properly pass menu target to submenu items"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Jan 2022 07:28:38 GMT",
+      "tag": "@fluentui/react_v8.49.6",
+      "version": "8.49.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5ab766c40fb058ea9756ba5b5942768c016a5391",
+            "comment": "fix an issue with ChoiceGroup and focus rectangles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jan 2022 07:30:57 GMT",
+      "tag": "@fluentui/react_v8.49.5",
+      "version": "8.49.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6a1cfa0763a06d4077cfe9b495da64710996eb99",
+            "comment": "SearchBox: properly pass the new value to onChange, and only call onChange once"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jan 2022 07:32:29 GMT",
+      "tag": "@fluentui/react_v8.49.4",
+      "version": "8.49.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4835e911f807fc921e9a1560405d5e7c4d77d60e",
+            "comment": "Added check for disabled prop"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jan 2022 07:29:05 GMT",
+      "tag": "@fluentui/react_v8.49.3",
+      "version": "8.49.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "7ddd27082b9a097d848cc9babc4fc55af7dccbc6",
+            "comment": "Suggestions: add searchForMoreText button to the suggestions listbox."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Jan 2022 07:26:30 GMT",
+      "tag": "@fluentui/react_v8.49.2",
+      "version": "8.49.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "8acbdf96615839c45d0a3e22f81ed6b067521275",
+            "comment": "List: when role is removed, remove aria-label as well."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Jan 2022 07:27:47 GMT",
+      "tag": "@fluentui/react_v8.49.1",
+      "version": "8.49.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.15",
+            "commit": "8c37bdfa24fecc3eb93eb52e2dbe1c68ac0869f1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jan 2022 23:32:10 GMT",
+      "tag": "@fluentui/react_v8.49.0",
+      "version": "8.49.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "2871e1e4f2c5cca3ed82b5de855ba537180e7bfb",
+            "comment": "SwatchColorPicker: use radio roles on single-row swatches"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.19",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.20",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.2.3",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.3.14",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.3.9",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.5.2",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.4.6",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.3.9",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.0.25",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.14",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Dec 2021 07:29:44 GMT",
+      "tag": "@fluentui/react_v8.48.1",
+      "version": "8.48.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "aduran@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "36d59e339779ed43ffa112594bb7c3b339c8ca2e",
+            "comment": "Fixing Stack behavior when a React.Fragment wraps StackItems, it should be ignored."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Dec 2021 07:26:40 GMT",
       "tag": "@fluentui/react_v8.48.0",
       "version": "8.48.0",

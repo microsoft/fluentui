@@ -7,10 +7,10 @@ describe('expressionTpl', () => {
   it('returns an expression based on a template', () => {
     const expression = Babel.types.identifier('foo');
 
-    const result = expressionTpl({ expression, wrapName: 'wrap', themeVariableName: 'theme' });
+    const result = expressionTpl({ expression, wrapName: 'wrap' });
     const resultCode = generator(result).code;
 
     expect(Babel.types.isCallExpression(result)).toBe(true);
-    expect(resultCode).toMatchInlineSnapshot(`"wrap(() => typeof foo === 'function' ? foo(theme) : foo)"`);
+    expect(resultCode).toMatchInlineSnapshot(`"wrap(() => foo)"`);
   });
 });

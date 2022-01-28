@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Body, Caption } from '@fluentui/react-text';
 
 import { Button } from '@fluentui/react-button';
-import { MoreHorizontal16Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '../index'; // codesandbox-dependency: @fluentui/react-card ^9.0.0-beta
 
 const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
@@ -26,7 +26,7 @@ export const GridCard = () => {
             </Body>
           }
           description={<Caption>Elvia replied to a comment</Caption>}
-          action={<Button appearance="transparent" icon={<MoreHorizontal16Regular />} />}
+          action={<Button appearance="transparent" icon={<MoreHorizontalRegular fontSize={16} />} />}
         />
       </Card>
       <Card>
@@ -41,7 +41,7 @@ export const GridCard = () => {
             </Body>
           }
           description={<Caption>Elvia replied to a comment</Caption>}
-          action={<Button appearance="transparent" icon={<MoreHorizontal16Regular />} />}
+          action={<Button appearance="transparent" icon={<MoreHorizontalRegular fontSize={16} />} />}
         />
       </Card>
     </div>

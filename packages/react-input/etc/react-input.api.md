@@ -21,8 +21,8 @@ export type InputOnChangeData = {
     value: string;
 };
 
-// @public
-export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'value'> & {
+// @public (undocumented)
+export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
     children?: never;
     size?: 'small' | 'medium' | 'large';
     inline?: boolean;
@@ -30,6 +30,7 @@ export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 
     defaultValue?: string;
     value?: string;
     onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+    type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'number' | 'time' | 'week';
 };
 
 // @public (undocumented)
@@ -44,13 +45,13 @@ export type InputSlots = {
 export type InputState = Required<Pick<InputProps, 'appearance' | 'inline' | 'size'>> & ComponentState<InputSlots>;
 
 // @public
-export const renderInput: (state: InputState) => JSX.Element;
+export const renderInput_unstable: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
+export const useInput_unstable: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
 
 // @public
-export const useInputStyles: (state: InputState) => InputState;
+export const useInputStyles_unstable: (state: InputState) => InputState;
 
 // (No @packageDocumentation comment for this package)
 

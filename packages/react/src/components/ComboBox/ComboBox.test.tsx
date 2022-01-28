@@ -535,6 +535,17 @@ describe('ComboBox', () => {
     });
   });
 
+  it('Cannot expand the menu when focused with a button while combobox is disabled', () => {
+    const comboBoxRef = React.createRef<any>();
+    safeMount(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} componentRef={comboBoxRef} disabled />,
+      wrapper => {
+        comboBoxRef.current?.focus(true);
+        expect(comboBoxRef.current.state.isOpen).toEqual(false);
+      },
+    );
+  });
+
   it('Calls onMenuOpen when clicking on the button', () => {
     const onMenuOpenMock = jest.fn();
     safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />, wrapper => {

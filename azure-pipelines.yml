@@ -158,10 +158,6 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn build --to @fluentui/make-styles-webpack-loader --verbose --no-cache
-        displayName: build Webpack loader
-
-      - script: |
           yarn workspace vr-tests screener:build
         displayName: build vr-tests storybook
 

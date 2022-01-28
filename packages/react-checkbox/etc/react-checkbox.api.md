@@ -5,11 +5,11 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentSlotProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import { LabelProps } from '@fluentui/react-label';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 
 // @public
@@ -42,7 +42,7 @@ export type CheckboxProps = Omit<ComponentProps<CheckboxSlots, 'input'>, 'size' 
 // @public (undocumented)
 export type CheckboxSlots = {
     root: IntrinsicShorthandProps<'span'>;
-    label?: ObjectShorthandProps<LabelProps>;
+    label?: ComponentSlotProps<typeof Label>;
     input: IntrinsicShorthandProps<'input'>;
     indicator: IntrinsicShorthandProps<'div'>;
 };
@@ -51,13 +51,13 @@ export type CheckboxSlots = {
 export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
 
 // @public (undocumented)
-export const renderCheckbox: (state: CheckboxState) => JSX.Element;
+export const renderCheckbox_unstable: (state: CheckboxState) => JSX.Element;
 
 // @public
-export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
+export const useCheckbox_unstable: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
 
 // @public
-export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
+export const useCheckboxStyles_unstable: (state: CheckboxState) => CheckboxState;
 
 // (No @packageDocumentation comment for this package)
 

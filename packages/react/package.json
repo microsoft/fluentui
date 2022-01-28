@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.48.0",
+  "version": "8.51.1",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,10 +31,10 @@
     "mf": "just-scripts mf"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.24",
+    "@fluentui/common-styles": "^1.0.25",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/example-data": "^8.3.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.13",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.14",
     "@fluentui/react-conformance": "*",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/test-utilities": "^8.2.0",
@@ -52,17 +52,17 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.2.3",
-    "@fluentui/foundation-legacy": "^8.1.18",
-    "@fluentui/font-icons-mdl2": "^8.1.19",
-    "@fluentui/merge-styles": "^8.2.2",
-    "@fluentui/react-focus": "^8.3.13",
-    "@fluentui/react-hooks": "^8.3.8",
+    "@fluentui/date-time-utilities": "^8.3.0",
+    "@fluentui/foundation-legacy": "^8.1.19",
+    "@fluentui/font-icons-mdl2": "^8.1.20",
+    "@fluentui/merge-styles": "^8.2.3",
+    "@fluentui/react-focus": "^8.3.15",
+    "@fluentui/react-hooks": "^8.3.9",
     "@fluentui/react-window-provider": "^2.1.6",
     "@fluentui/set-version": "^8.1.5",
-    "@fluentui/style-utilities": "^8.5.1",
-    "@fluentui/theme": "^2.4.5",
-    "@fluentui/utilities": "^8.3.8",
+    "@fluentui/style-utilities": "^8.5.2",
+    "@fluentui/theme": "^2.4.6",
+    "@fluentui/utilities": "^8.3.9",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },

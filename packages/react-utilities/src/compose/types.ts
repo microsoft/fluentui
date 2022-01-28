@@ -29,17 +29,37 @@ export type DefaultObjectShorthandProps = ObjectShorthandProps<
 >;
 
 /**
- * Defines the slot props for a slot that supports a Component type.
- *
- * For intrinsic elements like 'div', use {@link IntrinsicShorthandProps} instead.
+ * Takes the props we want to support for a slot and adds the ability for `children` to be a render function that takes
+ * those props.
  */
 export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}> = Props & {
   children?: Props['children'] | ShorthandRenderFunction<Props>;
 };
 
 /**
+ * Defines the slot props for a slot that supports a Component type.
+ *
+ * For intrinsic/native elements like 'div', use {@link IntrinsicShorthandProps} instead.
+ *
+ * The generic param is the type of a control, i.e. a React component. For example:
+ *
+ * @example
+ * ```
+ * type Props = {...}
+ * const Button: React.FC<Props> = () => {...}
+ * // $ExpectType ...
+ * type SlotProps = ComponentSlotProps<typeof Button>
+ * ```
+ */
+export type ComponentSlotProps<Component extends React.ComponentType> = Component extends React.ComponentType<
+  infer Props
+>
+  ? ObjectShorthandProps<Props>
+  : never;
+
+/**
  * Define the slot arguments for a slot that supports one or more intrinsic element types, such as 'div'.
- * For slots that support custom components, use {@link ObjectShorthandProps} instead.
+ * For slots that support custom components, use {@link ComponentSlotProps} instead.
  *
  * The first param is the slot's default type if no `as` prop is specified.
  * The second param is an optional union of alternative types that can be specified for the `as` prop.
@@ -111,7 +131,7 @@ export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primar
     PropsWithoutRef<Shorthands[Primary]>;
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
-  components?: {
+  components: {
     [Key in keyof Shorthands]-?:
       | React.ComponentType<
           NonNullable<Shorthands[Key]> extends ObjectShorthandProps<infer P> ? P : NonNullable<Shorthands[Key]>

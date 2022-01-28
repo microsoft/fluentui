@@ -23,10 +23,10 @@ https://open-ui.org/components/slider.research
 
 #### Research Summary
 
-**Marks**: Amongst other component libraries marks/ticks/notches are used to help visibly differ the current location of the thumb. Marks are also used to create custom steps through providing an array of values to jump too.
+**Marks**: Amongst other component libraries marks/ticks/notches are used to help visibly differ the current location of the thumb. Marks are also used to create custom steps through providing an array of values to jump too. Marks will be excluded from initial release of the Slider to reduce complexity and await guidance for marks from design and partners.
 
 **Ranged Slider**
-Since the `RangedSlider` and `Slider` have very different use cases and accessibility concerns they are planned to be separated into different components.
+Since the `RangedSlider` and `Slider` have very different use cases and accessibility concerns they are planned to be separated into different components. Slider component will be the focus of initial release with the multi-thumb slider being a focus after launch.
 
 ## Sample Code
 
@@ -37,22 +37,6 @@ Since the `RangedSlider` and `Slider` have very different use cases and accessib
 // Slider can be controlled
 <Slider value={3} />
 
-// Marks can be a Boolean (default marks)
-<Slider marks />
-
-// Marks can be a number array (specific marks)
-<Slider marks={[2, 5]} />
-
-// Marks can be an array of mark definitions
-<Slider
-  marks={ [
-    { value: 2, label: "hello" },
-    { value: 5, label: "test" }
-  ] }
-/>
-
-// Marks can be used as the step values using `step`
-<Slider step="marks" marks={[25, 50, 75]} />
 ```
 
 ## Variants
@@ -85,12 +69,11 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 ### Visual behavior props
 
-| Name     | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="200"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="200"/> | Description                                                                                                   |
-| -------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| disabled | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** as disabled. @defaultvalue `false` (render enabled)                          |
-| vertical | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** vertically. @default `false` (render horizontally)                           |
-| marks    | x                                                                                       | x                                                                                     | Whether the **Slider** will have marks to visibly display its steps. @default `false` (renders without marks) |
-| size     | x                                                                                       | x                                                                                     | The size of the Slider.                                                                                       |
+| Name     | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="200"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="200"/> | Description                                                                          |
+| -------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| disabled | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** as disabled. @defaultvalue `false` (render enabled) |
+| vertical | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** vertically. @default `false` (render horizontally)  |
+| size     | x                                                                                       | x                                                                                     | The size of the Slider.                                                              |
 
 ### Event handlers props
 
@@ -136,18 +119,10 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
   ```jsx
   <slots.root {...slotProps.root}>
-    {state.marks && <slots.marksContainer {...slotProps.marksContainer} />}
-    <slots.sliderWrapper {...slotProps.sliderWrapper}>
-      <slots.rail {...slotProps.rail} />
-      <slots.trackWrapper {...slotProps.trackWrapper}>
-        <slots.track {...slotProps.track} />
-      </slots.trackWrapper>
-      <slots.thumbWrapper {...slotProps.thumbWrapper}>
-        <slots.thumb {...slotProps.thumb} />
-      </slots.thumbWrapper>
-      <slots.activeRail {...slotProps.activeRail} />
-      <slots.input {...slotProps.input} />
-    </slots.sliderWrapper>
+    <slots.rail {...slotProps.rail} />
+    <slots.track {...slotProps.track} />
+    <slots.thumb {...slotProps.thumb} />
+    <slots.input {...slotProps.input} />
   </slots.root>
   ```
 
@@ -155,23 +130,10 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 ```jsx
 <div className="fui-Slider">
-  <div className="fui-Slider-markContainer">
-    <div className="fui-Slider-markItemContainer">
-      <div className="fui-Slider-mark" />
-      <div className="fui-Slider-markLabel" />
-    </div>
-  </div>
-  <div className="fui-Slider-wrapper">
-    <div className="fui-Slider-rail" />
-    <div className="fui-Slider-trackWrapper">
-      <div className="fui-Slider-track" />
-    </div>
-    <div className="thumbWrapper">
-      <div className="fui-Slider-thumb" />
-    </div>
-    <div className="fui-Slider-activeRail" />
-    <div className="fui-Slider-input" />
-  </div>
+  <div className="fui-Slider-rail" />
+  <div className="fui-Slider-track" />
+  <div className="fui-Slider-thumb" />
+  <div className="fui-Slider-input" />
 </div>
 ```
 
@@ -206,7 +168,6 @@ _Explain how the component will behave in use, including:_
   - _Screen readers_
     - **`root`:**
       - renders `as` div
-      - handles native props expected from the element type in `as`
     - **`hidden input element`:**
       - Handles aria for the Slider.
 

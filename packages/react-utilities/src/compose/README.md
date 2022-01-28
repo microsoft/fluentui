@@ -10,7 +10,7 @@ Here's what's needed:
 - **State hook** - A hook which takes in props/ref for the component and returns a mutable state object.
 - **Style hook** - hooks which can mix the appropriate classnames on the mutable state.
 - **Context values hook** _(optional)_ - hooks that creates values for `.Provider` components in [React Context](https://reactjs.org/docs/context.html)
-- **Render function** - a function which takes in state of the component and returns JSX. (e.g. `renderButton`)
+- **Render function** - a function which takes in state of the component and returns JSX. (e.g. `renderButton_unstable`)
 
 With these building blocks, you can compose or recompose the component in numerous ways.
 
@@ -19,7 +19,7 @@ With these building blocks, you can compose or recompose the component in numero
 A hook which can produce mutable state of the component (defining accessibility and behaviors):
 
 ```jsx
-const useButton = (props, ref) => {
+const useButton_unstable = (props, ref) => {
   const state = {
     // Default props
     role: 'button',
@@ -42,27 +42,27 @@ The `Button` is designed using `React.forwardRef` to ensure the ref is forwarded
 
 ```jsx
 const Button = React.forwardRef((props, ref) => {
-  const state = useButton(props, ref);
+  const state = useButton_unstable(props, ref);
 
   // Apply styling here. (e.g. add className to state.)
 
-  return renderButton(state);
+  return renderButton_unstable(state);
 });
 ```
 
 A button can now be easily scaffolded, along with your choice of styling system:
 
 ```jsx
-import { renderButton, useButton, useButtonClasses } from '@fluentui/react-button';
+import { renderButton_unstable, useButton_unstable, useButtonClasses } from '@fluentui/react-button';
 
 const Button = React.forwardRef((props, ref) => {
-  const state = useButton(props, ref);
+  const state = useButton_unstable(props, ref);
 
   // Inject classNames as needed.
-  useButtonStyles(state);
+  useButtonStyles_unstable(state);
 
   // Return the rendered result.
-  return renderButton(state);
+  return renderButton_unstable(state);
 });
 ```
 
@@ -70,8 +70,8 @@ We can now use these building blocks to scaffold other types of buttons. For exa
 means we start with base and handle the additional input:
 
 ```jsx
-const useToggleButton = (props, ref) => {
-  const state = useButton(props, ref);
+const useToggleButton_unstable = (props, ref) => {
+  const state = useButton_unstable(props, ref);
 
   // Hand a "checked" and "defaultChecked" state, onClicks to toggle the value,
   // and appropriate a11y attributes.
@@ -79,12 +79,12 @@ const useToggleButton = (props, ref) => {
 };
 
 const ToggleButton = React.forwardRef((props, ref) => {
-  const state = useToggleButton(props, ref);
+  const state = useToggleButton_unstable(props, ref);
 
   // Inject classNames as needed.
   state.className = mergeClasses(state.className, styles.root, state.checked && styles.checked);
 
-  return renderButton(state);
+  return renderButton_unstable(state);
 });
 ```
 
@@ -128,7 +128,7 @@ Here's how this looks:
 The factory function, which deep clones the props, would need to simplify the shorthand first:
 
 ```jsx
-const useButton = (props, ref) => {
+const useButton_unstable = (props, ref) => {
   const state = {
     // Default props
     as: 'button',
@@ -140,7 +140,7 @@ const useButton = (props, ref) => {
   };
 
   // Apply button behaviors.
-  useButton(state);
+  useButton_unstable(state);
 
   return { state, render };
 };
@@ -149,7 +149,7 @@ const useButton = (props, ref) => {
 ...and the render function now can manage rendering the slot using getSlots:
 
 ```jsx
-const renderButton = state => {
+const renderButton_unstable = state => {
   const { slots, slotProps } = getSlots(state, ['icon']);
 
   return (
@@ -184,7 +184,7 @@ function Button(props) {
   const state = useButtonState();
   const contextValues = useButtonContextValues();
 
-  return renderButton(state, contextValues);
+  return renderButton_unstable(state, contextValues);
 }
 
 function useButtonContextValues(state) {
@@ -194,7 +194,7 @@ function useButtonContextValues(state) {
   return { sample };
 }
 
-function renderButton(state, contextValues) {
+function renderButton_unstable(state, contextValues) {
   return <SampleContext.Provider value={contextValues.sample} />;
 }
 ```
@@ -237,12 +237,12 @@ Memoization of context values is not required with context selectors, but it sti
 ```tsx
 function Menu(props) {
   const state = useMenuState();
-  const contextValues = useMenuContextValues();
+  const contextValues = useMenuContextValues_unstable();
 
-  return renderButton(state, contextValues);
+  return renderButton_unstable(state, contextValues);
 }
 
-function useMenuContextValues(state) {
+function useMenuContextValues_unstable(state) {
   const { foo } = state;
   // Memoization of context values is not required with context selectors
   const sample = { foo };
@@ -250,7 +250,7 @@ function useMenuContextValues(state) {
   return { sample };
 }
 
-function renderMenu(state, contextValues) {
+function renderMenu_unstable(state, contextValues) {
   return <SampleContext.Provider value={contextValues.sample} />;
 }
 ```

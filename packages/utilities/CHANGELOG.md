@@ -1,8 +1,18 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 15 Dec 2021 07:31:29 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jan 2022 23:32:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.3.9)
+
+Mon, 03 Jan 2022 23:32:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.3.8..@fluentui/utilities_v8.3.9)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.2.3 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.14 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
 
 ## [8.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.3.8)
 

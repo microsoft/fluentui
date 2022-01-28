@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
 import { nullRender } from './nullRender';
-import { ObjectShorthandProps, IntrinsicShorthandProps } from './types';
+import type { ComponentSlotProps, IntrinsicShorthandProps } from './types';
 
 describe('getSlots', () => {
   type FooProps = { id?: string; children?: React.ReactNode };
   const Foo = (props: FooProps) => <div />;
 
-  it('returns div for root if the as prop is not provided', () => {
+  it('returns provided component type for root if the as prop is not provided', () => {
     type Slots = { root: IntrinsicShorthandProps<'div'> };
     expect(
-      getSlots<Slots>({ root: {} }),
+      getSlots<Slots>({ root: {}, components: { root: 'div' } }),
     ).toEqual({
       slots: { root: 'div' },
       slotProps: { root: {} },
@@ -18,9 +18,9 @@ describe('getSlots', () => {
   });
 
   it('returns root slot as a span with no props', () => {
-    type Slots = { root: IntrinsicShorthandProps<'span'> };
+    type Slots = { root: IntrinsicShorthandProps<'div', 'span'> };
     expect(
-      getSlots<Slots>({ root: { as: 'span' } }),
+      getSlots<Slots>({ root: { as: 'span' }, components: { root: 'div' } }),
     ).toEqual({
       slots: { root: 'span' },
       slotProps: { root: {} },
@@ -31,7 +31,7 @@ describe('getSlots', () => {
     type Slots = { root: IntrinsicShorthandProps<'button'> };
     const invalidProp = { href: 'href' } as React.ButtonHTMLAttributes<HTMLButtonElement>;
     expect(
-      getSlots<Slots>({ root: { as: 'button', id: 'id', ...invalidProp } }),
+      getSlots<Slots>({ root: { as: 'button', id: 'id', ...invalidProp }, components: { root: 'button' } }),
     ).toEqual({
       slots: { root: 'button' },
       slotProps: { root: { id: 'id', href: 'href' } },
@@ -41,7 +41,7 @@ describe('getSlots', () => {
   it('returns root slot as an anchor, leaving the href intact', () => {
     type Slots = { root: IntrinsicShorthandProps<'a'> };
     expect(
-      getSlots<Slots>({ root: { as: 'a', id: 'id', href: 'href' } }),
+      getSlots<Slots>({ root: { as: 'a', id: 'id', href: 'href' }, components: { root: 'a' } }),
     ).toEqual({
       slots: { root: 'a' },
       slotProps: { root: { id: 'id', href: 'href' } },
@@ -51,17 +51,14 @@ describe('getSlots', () => {
   it('returns a component slot with no children', () => {
     type Slots = {
       root: IntrinsicShorthandProps<'div'>;
-      icon: ObjectShorthandProps<FooProps>;
+      icon: ComponentSlotProps<typeof Foo>;
     };
     expect(
-      getSlots<Slots>(
-        {
-          icon: {},
-          components: { root: 'div', icon: Foo },
-          root: { as: 'div' },
-        },
-        ['icon', 'root'],
-      ),
+      getSlots<Slots>({
+        icon: {},
+        components: { root: 'div', icon: Foo },
+        root: { as: 'div' },
+      }),
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: { root: {}, icon: {} },
@@ -74,14 +71,11 @@ describe('getSlots', () => {
       icon: IntrinsicShorthandProps<'button'>;
     };
     expect(
-      getSlots<Slots>(
-        {
-          components: { icon: 'button', root: 'div' },
-          root: { as: 'span' },
-          icon: { id: 'id', children: 'children' },
-        },
-        ['icon', 'root'],
-      ),
+      getSlots<Slots>({
+        components: { icon: 'button', root: 'div' },
+        root: { as: 'span' },
+        icon: { id: 'id', children: 'children' },
+      }),
     ).toEqual({
       slots: { root: 'span', icon: 'button' },
       slotProps: { root: {}, icon: { id: 'id', children: 'children' } },
@@ -94,14 +88,11 @@ describe('getSlots', () => {
       icon: IntrinsicShorthandProps<'a'>;
     };
     expect(
-      getSlots<Slots>(
-        {
-          root: { as: 'div' },
-          components: { root: 'div', icon: 'a' },
-          icon: { id: 'id', href: 'href', children: 'children' },
-        },
-        ['icon', 'root'],
-      ),
+      getSlots<Slots>({
+        root: { as: 'div' },
+        components: { root: 'div', icon: 'a' },
+        icon: { id: 'id', href: 'href', children: 'children' },
+      }),
     ).toEqual({
       slots: { root: 'div', icon: 'a' },
       slotProps: { root: {}, icon: { id: 'id', href: 'href', children: 'children' } },
@@ -111,17 +102,14 @@ describe('getSlots', () => {
   it('returns a component and includes all props', () => {
     type Slots = {
       root: IntrinsicShorthandProps<'div'>;
-      icon: IntrinsicShorthandProps<'a'> | ObjectShorthandProps<FooProps>;
+      icon: IntrinsicShorthandProps<'a'> | ComponentSlotProps<typeof Foo>;
     };
     expect(
-      getSlots<Slots>(
-        {
-          components: { root: 'div', icon: Foo },
-          root: { as: 'div' },
-          icon: { id: 'id', href: 'href', children: 'children' },
-        },
-        ['icon', 'root'],
-      ),
+      getSlots<Slots>({
+        components: { root: 'div', icon: Foo },
+        root: { as: 'div' },
+        icon: { id: 'id', href: 'href', children: 'children' },
+      }),
     ).toEqual({
       slots: { root: 'div', icon: Foo },
       slotProps: { root: {}, icon: { id: 'id', href: 'href', children: 'children' } },
@@ -134,14 +122,11 @@ describe('getSlots', () => {
       icon: IntrinsicShorthandProps<'a'>;
     };
     expect(
-      getSlots<Slots>(
-        {
-          components: { root: 'div', icon: Foo },
-          root: { as: 'div' },
-          icon: { id: 'bar', children: (C: React.ElementType, p: {}) => <C {...p} /> },
-        },
-        ['icon', 'root'],
-      ),
+      getSlots<Slots>({
+        components: { root: 'div', icon: Foo },
+        root: { as: 'div' },
+        icon: { id: 'bar', children: (C: React.ElementType, p: {}) => <C {...p} /> },
+      }),
     ).toEqual({
       slots: { root: 'div', icon: React.Fragment },
       slotProps: { root: {}, icon: { children: <Foo id="bar" /> } },
@@ -155,25 +140,15 @@ describe('getSlots', () => {
       icon?: IntrinsicShorthandProps<'a'>;
     };
     expect(
-      getSlots<Slots>(
-        {
-          root: { as: 'div' },
-          components: { root: 'div', input: 'input', icon: 'a' },
-          input: {},
-          icon: undefined,
-        },
-        ['input', 'root', 'icon'],
-      ),
+      getSlots<Slots>({
+        root: { as: 'div' },
+        components: { root: 'div', input: 'input', icon: 'a' },
+        input: {},
+        icon: undefined,
+      }),
     ).toEqual({
       slots: { root: 'div', input: 'input', icon: nullRender },
       slotProps: { root: {}, input: {}, icon: undefined },
-    });
-  });
-
-  it('should use `div` as default root element', () => {
-    expect(getSlots({ icon: { children: 'foo' }, root: {} }, ['icon', 'root'])).toEqual({
-      slots: { root: 'div', icon: 'div' },
-      slotProps: { root: {}, icon: { children: 'foo' } },
     });
   });
 });

@@ -5,8 +5,8 @@ import type { InputSlots, InputState } from './Input.types';
 /**
  * Render the final JSX of Input
  */
-export const renderInput = (state: InputState) => {
-  const { slots, slotProps } = getSlots<InputSlots>(state, ['input', 'contentBefore', 'contentAfter', 'root']);
+export const renderInput_unstable = (state: InputState) => {
+  const { slots, slotProps } = getSlots<InputSlots>(state);
   return (
     <slots.root {...slotProps.root}>
       <slots.contentBefore {...slotProps.contentBefore} />
