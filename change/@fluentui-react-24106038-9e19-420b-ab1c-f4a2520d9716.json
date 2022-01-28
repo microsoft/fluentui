@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "MessageBar: add expandButtonProp which takes IButtonProps to customize expandButton.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
