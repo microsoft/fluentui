@@ -3,7 +3,7 @@ import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
   steps: [
-    builder => builder.hover(`.${accordionTitleSlotClassNames.contentWrapper}`).snapshot('Hovers the accordion title'),
+    builder => builder.focus(`.${accordionTitleSlotClassNames.contentWrapper}`).snapshot('Focuses the accordion title'),
   ],
 };
 
