@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add composition support (could be used as a child of other triggers)",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
