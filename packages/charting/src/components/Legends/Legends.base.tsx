@@ -121,20 +121,21 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
     const { overflowProps, allowFocusOnLegends = true } = this.props;
+    const rootStyles = {
+      root: {
+        justifyContent: this.props.centerLegends ? 'center' : 'unset',
+        flexWrap: 'wrap',
+      },
+    };
     return (
       <OverflowSet
         {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}
-        {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}
         onRenderItem={this._renderButton}
         onRenderOverflowButton={this._renderOverflowItems}
-        styles={{
-          root: {
-            justifyContent: this.props.centerLegends ? 'center' : 'unset',
-            flexWrap: 'wrap',
-          },
-        }}
+        {...overflowProps}
+        styles={{ ...rootStyles, ...overflowProps?.styles }}
       />
     );
   };
