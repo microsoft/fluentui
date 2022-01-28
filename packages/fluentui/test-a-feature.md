@@ -13,7 +13,6 @@
   - [Running tests](#running-tests)
 - [Screener Tests](#screener-tests)
   - [Tests with Steps API](#tests-with-steps-api)
-    - [Example for a test file](#example-for-a-test-file)
     - [Important mentions](#important-mentions)
   - [Run Screener tests](#run-screener-tests)
     - [Local run command](#local-run-command)
