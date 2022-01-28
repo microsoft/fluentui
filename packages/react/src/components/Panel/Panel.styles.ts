@@ -259,6 +259,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.commands,
       {
         marginTop: 18,
+        //Ensures that the stickied header always has a background to prevent overlaps on scroll.
         background: 'inherit',
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
