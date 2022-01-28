@@ -6,6 +6,7 @@ import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../
 import type { IButtonProps } from '../../Button';
 import type { IPersonaSharedProps } from '../../Persona';
 import type { IKeytipProps } from '../../Keytip';
+import { IPersona } from '../Persona/Persona.types';
 
 /**
  * {@docCategory Facepile}
@@ -94,12 +95,7 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
 
   /** Optional custom renderer for the FacepileButton that renders each clickable Persona */
-  onRenderPersonaWrapper?: IRenderFunction<{
-    personaControl: JSX.Element | null;
-    persona: IFacepilePersona;
-    showTooltip: boolean;
-    index: number;
-  }>;
+  onRenderPersonaWrapper?: IRenderFunction<IFacepilePersona>;
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
