@@ -60,13 +60,15 @@ describe('Tooltip', () => {
   it('renders the content of a nontrivial label tooltip', () => {
     const result = render(
       <Tooltip
-        id="the-tooltip-id"
         relationship="label"
-        content={
-          <span>
-            This is a <strong>formatted</strong> tooltip
-          </span>
-        }
+        content={{
+          children: (
+            <span>
+              This is a <strong>formatted</strong> tooltip
+            </span>
+          ),
+          id: 'the-tooltip-id',
+        }}
       >
         <button />
       </Tooltip>,

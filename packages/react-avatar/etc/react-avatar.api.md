@@ -8,10 +8,10 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentSlotProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import type { ShorthandRenderFunction } from '@fluentui/react-utilities';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -35,19 +35,19 @@ export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'pe
 
 // @public
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> & Partial<AvatarCommons> & {
-    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
-        children?: ShorthandRenderFunction<React_2.HTMLAttributes<HTMLImageElement>>;
+    image?: Omit<IntrinsicSlotProps<'img'>, 'children'> & {
+        children?: SlotRenderFunction<React_2.HTMLAttributes<HTMLImageElement>>;
     };
 };
 
 // @public (undocumented)
 export type AvatarSlots = {
-    root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & {
+    root: Omit<IntrinsicSlotProps<'span'>, 'color'> & {
         children?: never;
     };
-    image?: IntrinsicShorthandProps<'img'>;
-    initials?: IntrinsicShorthandProps<'span'>;
-    icon?: IntrinsicShorthandProps<'span'>;
+    image?: IntrinsicSlotProps<'img'>;
+    initials?: IntrinsicSlotProps<'span'>;
+    icon?: IntrinsicSlotProps<'span'>;
     badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
 

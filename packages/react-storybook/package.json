@@ -29,8 +29,7 @@
     "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
-    "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-beta.4"
+    "react": "16.8.6"
   },
   "dependencies": {
     "@fluentui/react-provider": "9.0.0-beta.5",

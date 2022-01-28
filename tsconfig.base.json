@@ -12,11 +12,8 @@
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "paths": {
-      "@fluentui/babel-make-styles": ["packages/babel-make-styles/src/index.ts"],
-      "@fluentui/jest-serializer-make-styles": ["packages/jest-serializer-make-styles/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/keyboard-keys/src/index.ts"],
-      "@fluentui/make-styles-webpack-loader": ["packages/make-styles-webpack-loader/src/index.ts"],
       "@fluentui/react-accordion": ["packages/react-accordion/src/index.ts"],
       "@fluentui/react-aria": ["packages/react-aria/src/index.ts"],
       "@fluentui/react-avatar": ["packages/react-avatar/src/index.ts"],

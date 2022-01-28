@@ -1,10 +1,10 @@
-import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 export type BadgeSlots = {
   // react has a non-standard `color` attribute in its types
   // https://github.com/DefinitelyTyped/DefinitelyTyped/blob/a4ab0fa432320e70da9e51c8ae2e47377f65804b/types/react/index.d.ts#L1868
-  root: Omit<IntrinsicShorthandProps<'div'>, 'color'>;
-  icon?: IntrinsicShorthandProps<'span'>;
+  root: Omit<IntrinsicSlotProps<'div'>, 'color'>;
+  icon?: IntrinsicSlotProps<'span'>;
 };
 
 export type BadgeCommons = {

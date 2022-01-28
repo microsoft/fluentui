@@ -1,7 +1,7 @@
-import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicSlotProps } from '@fluentui/react-utilities';
 
 export type RadioSlots = {
-  root: IntrinsicShorthandProps<'span'>;
+  root: IntrinsicSlotProps<'span'>;
 };
 
 /**

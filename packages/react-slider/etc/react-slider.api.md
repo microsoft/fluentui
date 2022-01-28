@@ -4,10 +4,10 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -44,10 +44,10 @@ export type SliderProps = Omit<ComponentProps<SliderSlots, 'input'>, 'defaultVal
 
 // @public (undocumented)
 export type SliderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    rail: IntrinsicShorthandProps<'div'>;
-    thumb: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'> & {
+    root: IntrinsicSlotProps<'div'>;
+    rail: IntrinsicSlotProps<'div'>;
+    thumb: IntrinsicSlotProps<'div'>;
+    input: IntrinsicSlotProps<'input'> & {
         orient?: 'horizontal' | 'vertical';
     };
 };

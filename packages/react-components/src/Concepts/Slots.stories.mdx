@@ -61,12 +61,12 @@ It also has an `icon` slot that only renders when there is neither an image nor 
 
 A property of a component can be identified as a slot by its type.
 
-- IntrinsicShorthandProps: The props for a slot that supports one or more HTML element types, such as 'div'.
+- IntrinsicSlotProps: The props for a slot that supports one or more HTML element types, such as 'div'.
 - ComponentSlotProps: The props for a slot that additionally supports a JSX component or component props object.
 - ShorthandRenderFunction: A render function for a slot.
 
 In our composition system, slot props can accept 'shorthand' data such as primitive values and props objects, that they
-use to determine what the entirety of the slot props bag.
+use to determine what the entirety of the slot props bag should be.
 
 Many components allow the primary content of the component to be specified as children.
 The children can be thought of as the primary, unnamed slot for these components.
