@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Nav: add isCollapsed prop to allow consumer control of collapsed/expanded state.",
+  "comment": "Nav: add isExpanded prop to allow consumer control of collapsed/expanded state.",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"
