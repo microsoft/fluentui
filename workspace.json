@@ -26,13 +26,6 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/babel-make-styles": {
-      "root": "packages/babel-make-styles",
-      "projectType": "library",
-      "sourceRoot": "packages/babel-make-styles/src",
-      "tags": ["vNext", "platform:node"],
-      "implicitDependencies": []
-    },
     "@fluentui/bundle-size": {
       "root": "packages/bundle-size",
       "projectType": "library",
@@ -135,13 +128,6 @@
     "@fluentui/local-sandbox": {
       "root": "packages/fluentui/local-sandbox",
       "projectType": "library",
-      "implicitDependencies": []
-    },
-    "@fluentui/make-styles-webpack-loader": {
-      "root": "packages/make-styles-webpack-loader",
-      "projectType": "library",
-      "sourceRoot": "packages/make-styles-webpack-loader/src",
-      "tags": ["vNext", "platform:node"],
       "implicitDependencies": []
     },
     "@fluentui/merge-styles": {

@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -35,12 +35,12 @@ export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange
 
 // @public (undocumented)
 export type SwitchSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    track: IntrinsicShorthandProps<'div'>;
-    thumbWrapper: IntrinsicShorthandProps<'div'>;
-    thumb: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
-    activeRail: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
+    track: IntrinsicSlotProps<'div'>;
+    thumbWrapper: IntrinsicSlotProps<'div'>;
+    thumb: IntrinsicSlotProps<'div'>;
+    input: IntrinsicSlotProps<'input'>;
+    activeRail: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
