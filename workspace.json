@@ -145,8 +145,8 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/perf-test": {
-      "root": "packages/fluentui/perf-test",
+    "@fluentui/perf-test-northstar": {
+      "root": "packages/fluentui/perf-test-northstar",
       "projectType": "library",
       "implicitDependencies": []
     },

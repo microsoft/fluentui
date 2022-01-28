@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/perf-test",
+  "name": "@fluentui/perf-test-northstar",
   "description": "Perf tests for fluentui.",
   "version": "0.60.1",
   "private": true,

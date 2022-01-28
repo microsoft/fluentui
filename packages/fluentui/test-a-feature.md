@@ -5,29 +5,30 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Coverage](#coverage)
-- [Common Tests](#common-tests)
-  - [Usage](#usage)
-  - [isConformant (required)](#isconformant-required)
-  - [Writing tests](#writing-tests)
-  - [Running tests](#running-tests)
-- [Screener Tests](#screener-tests)
-  - [Tests with Steps API](#tests-with-steps-api)
-    - [Example for a test file](#example-for-a-test-file)
-    - [Important mentions](#important-mentions)
-  - [Run Screener tests](#run-screener-tests)
-    - [Local run command](#local-run-command)
-- [Behavior Tests](#behavior-tests)
-  - [Adding test(s)](#adding-tests)
-  - [Running test(s)](#running-tests)
-  - [Troubleshooting](#troubleshooting)
-    - [I am not sure if my line under `@specification` was process correctly](#i-am-not-sure-if-my-line-under-specification-was-process-correctly)
-    - [I am not sure if my line was executed](#i-am-not-sure-if-my-line-was-executed)
-    - [I want to add any description which should not be consider as unit test](#i-want-to-add-any-description-which-should-not-be-consider-as-unit-test)
-    - [I want to create unit tests in separate file not through the regex](#i-want-to-create-unit-tests-in-separate-file-not-through-the-regex)
-- [Performance Tests](#performance-tests)
-  - [Adding a Perf Test](#adding-a-perf-test)
-  - [Running Perf Tests](#running-perf-tests)
+- [Test a feature for `@fluentui/react-northstar` (and others under `packages/fluentui`)](#test-a-feature-for-fluentuireact-northstar-and-others-under-packagesfluentui)
+  - [Coverage](#coverage)
+  - [Common Tests](#common-tests)
+    - [Usage](#usage)
+    - [isConformant (required)](#isconformant-required)
+    - [Writing tests](#writing-tests)
+    - [Running tests](#running-tests)
+  - [Screener Tests](#screener-tests)
+    - [Tests with Steps API](#tests-with-steps-api)
+      - [Example for a test file](#example-for-a-test-file)
+      - [Important mentions](#important-mentions)
+    - [Run Screener tests](#run-screener-tests)
+      - [Local run command](#local-run-command)
+  - [Behavior Tests](#behavior-tests)
+    - [Adding test(s)](#adding-tests)
+    - [Running test(s)](#running-tests-1)
+    - [Troubleshooting](#troubleshooting)
+      - [I am not sure if my line under `@specification` was process correctly](#i-am-not-sure-if-my-line-under-specification-was-process-correctly)
+      - [I am not sure if my line was executed](#i-am-not-sure-if-my-line-was-executed)
+      - [I want to add any description which should not be consider as unit test](#i-want-to-add-any-description-which-should-not-be-consider-as-unit-test)
+      - [I want to create unit tests in separate file not through the regex](#i-want-to-create-unit-tests-in-separate-file-not-through-the-regex)
+  - [Performance Tests](#performance-tests)
+    - [Adding a Perf Test](#adding-a-perf-test)
+    - [Running Perf Tests](#running-perf-tests)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -260,7 +261,7 @@ Performance tests will measure performance, set a baseline for performance and h
 
 ### Adding a Perf Test
 
-- To add a perf test, simply add a file with `.perf.` in its naming. (As of writing, `.perf.` files in `packages/fluentui/docs/src` and `packages/fluentui/perf-test` are automatically consumed.)
+- To add a perf test, simply add a file with `.perf.` in its naming. (As of writing, `.perf.` files in `packages/fluentui/docs/src` and `packages/fluentui/perf-test-northstar` are automatically consumed.)
 - Formatting follows [Storybook CSF convention](https://storybook.js.org/docs/formats/component-story-format/) with special support for `iterations` metadata which tells the performance testing package how many iterations of your component to render:
 
 ```tsx
@@ -283,9 +284,9 @@ Run test and watch:
 yarn perf:test
 ```
 
-After running `perf:test`, results can be viewed in the `packages/fluentui/perf-test/dist` folder with the main entry file being `packages/fluentui/perf-test/dist/perfCounts.html`.
+After running `perf:test`, results can be viewed in the `packages/fluentui/perf-test-northstar/dist` folder with the main entry file being `packages/fluentui/perf-test-northstar/dist/perfCounts.html`.
 
-There are more detailed commands as well (these must be run from `packages/fluentui/perf-test` directory):
+There are more detailed commands as well (these must be run from `packages/fluentui/perf-test-northstar` directory):
 
 | Command                      | Description                                                             |
 | ---------------------------- | ----------------------------------------------------------------------- |
