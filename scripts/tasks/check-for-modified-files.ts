@@ -9,9 +9,9 @@ export function checkForModifiedFiles() {
   const hasChangedFiles = gitStatusOutput.split(EOL).filter(notEmpty).length > 0;
 
   if (hasChangedFiles) {
-    logger.error('This build has files that are tracked by git that resulted in changed files.');
-    logger.error('Check the following output and resolve the problem that caused these files to change');
-    logger.error('Most likely you committed your files with --no-verify');
+    logger.error('This build has files that are tracked by git that resulted in modified files.');
+    logger.error('Check the following output and resolve the problem that caused these files to change.');
+    logger.error('Most likely you committed your files with --no-verify.');
     logger.error(gitStatusOutput);
 
     execSync('git diff', { stdio: 'inherit' });
