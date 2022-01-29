@@ -61,7 +61,7 @@ var siteInfo = [
     title: 'Theme Designer Example',
   },
   {
-    package: '@microsoft/perf-test',
+    package: '@fluentui/perf-test',
     link: './perf-test/index.html',
     icon: 'SpeedHigh',
     title: 'Perf Tests',

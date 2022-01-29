@@ -27,7 +27,7 @@ const dependencies = [
   '@fluentui/react-components',
   '@fluentui/react-experiments',
   '@fluentui/web-components',
-  '@microsoft/perf-test',
+  '@fluentui/perf-test',
   '@fluentui/theming-designer',
 ];
 

@@ -664,7 +664,7 @@
       },
       "tags": []
     },
-    "@microsoft/perf-test": {
+    "@fluentui/perf-test": {
       "root": "apps/perf-test",
       "projectType": "application",
       "implicitDependencies": []

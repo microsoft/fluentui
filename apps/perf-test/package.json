@@ -1,5 +1,5 @@
 {
-  "name": "@microsoft/perf-test",
+  "name": "@fluentui/perf-test",
   "description": "Perf tests for @fluentui/react.",
   "version": "1.0.0",
   "private": true,
