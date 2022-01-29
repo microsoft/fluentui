@@ -146,7 +146,7 @@ const useRootStyles = makeStyles({
     height: '24px',
     minWidth: '64px',
 
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
