@@ -36,9 +36,6 @@ export function canUseDOM(): boolean;
 // @public
 export const clamp: (value: number, min: number, max: number) => number;
 
-// @public
-export const cloneTriggerChild: <P>(child: React_2.ReactNode, props: P) => React_2.ReactElement;
-
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
 

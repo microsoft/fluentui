@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { applyTriggerPropsToChildren } from './applyTriggerPropsToChildren';
+import { TestTrigger } from './getTriggerChild.test';
 
 describe('applyTriggerPropsToChildren', () => {
   const dataTestId = 'dataTestId';
@@ -77,5 +78,68 @@ describe('applyTriggerPropsToChildren', () => {
       </>
     );
     expect(() => applyTriggerPropsToChildren(fragment, triggerProps)).toThrow();
+  });
+
+  it('applies props to the child if a valid element is sent as the child', () => {
+    const trigger = <div id="child" />;
+    const result = applyTriggerPropsToChildren(<div id="child" />, { 'data-test': 'test-value' });
+
+    expect(result).not.toBe(trigger);
+    expect(result).toEqual(<div id="child" data-test="test-value" />);
+  });
+
+  it('applies props to the child of a trigger', () => {
+    const result = applyTriggerPropsToChildren(
+      <TestTrigger id="trigger">
+        <div id="child" />
+      </TestTrigger>,
+      { 'data-test': 'test-value' },
+    );
+
+    expect(result).toEqual(
+      <TestTrigger id="trigger">
+        <div id="child" data-test="test-value" />
+      </TestTrigger>,
+    );
+  });
+
+  it('applies props to the child of nested triggers', () => {
+    const result = applyTriggerPropsToChildren(
+      <TestTrigger id="a">
+        <TestTrigger id="b">
+          <>
+            <TestTrigger id="c">
+              <div id="child" />
+            </TestTrigger>
+          </>
+        </TestTrigger>
+      </TestTrigger>,
+      { 'data-test': 'test-value' },
+    );
+
+    expect(result).toEqual(
+      <TestTrigger id="a">
+        <TestTrigger id="b">
+          <>
+            <TestTrigger id="c">
+              <div id="child" data-test="test-value" />
+            </TestTrigger>
+          </>
+        </TestTrigger>
+      </TestTrigger>,
+    );
+  });
+
+  it('throws an error if a render function is sent as the child of nested triggers', () => {
+    expect(() =>
+      applyTriggerPropsToChildren(
+        <TestTrigger>
+          <TestTrigger>
+            <TestTrigger>{() => <div />}</TestTrigger>
+          </TestTrigger>
+        </TestTrigger>,
+        {},
+      ),
+    ).toThrow();
   });
 });
