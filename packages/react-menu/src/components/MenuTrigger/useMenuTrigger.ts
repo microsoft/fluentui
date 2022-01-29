@@ -5,7 +5,12 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
-import { onlyChild, useMergedRefs, useTriggerElement } from '@fluentui/react-utilities';
+import {
+  applyTriggerPropsToChildren,
+  getTriggerChild,
+  useMergedEventCallbacks,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 
 /**
@@ -14,8 +19,8 @@ import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
  *
  * @param props - props from this instance of MenuTrigger
  */
-export const useMenuTrigger_unstable = (props: MenuTriggerProps, ref: React.Ref<HTMLElement>): MenuTriggerState => {
-  const { children, ...rest } = props;
+export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerState => {
+  const { children } = props;
 
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
   const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
@@ -39,7 +44,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps, ref: React.Ref<
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
-  const child = React.isValidElement(children) ? onlyChild(children) : undefined;
+  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
   const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
     if (isTargetDisabled(e)) {
@@ -125,12 +130,13 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps, ref: React.Ref<
     'aria-haspopup': 'menu',
     'aria-expanded': open,
     id: child?.props?.id || triggerId,
-    onClick,
-    onMouseEnter,
-    onMouseLeave,
-    onKeyDown,
-    onContextMenu,
-    onMouseMove,
+    ref: useMergedRefs(triggerRef, child?.ref),
+    onClick: useMergedEventCallbacks(child?.props?.onClick, onClick),
+    onMouseEnter: useMergedEventCallbacks(child?.props?.onMouseEnter, onMouseEnter),
+    onMouseLeave: useMergedEventCallbacks(child?.props?.onMouseLeave, onMouseLeave),
+    onKeyDown: useMergedEventCallbacks(child?.props?.onKeyDown, onKeyDown),
+    onContextMenu: useMergedEventCallbacks(child?.props?.onContextMenu, onContextMenu),
+    onMouseMove: useMergedEventCallbacks(child?.props?.onMouseMove, onMouseMove),
   };
 
   if (!open && !isSubmenu) {
@@ -138,12 +144,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps, ref: React.Ref<
   }
 
   return {
-    children: useTriggerElement({
-      children,
-      ref: useMergedRefs(triggerRef, ref),
-      outerProps: rest,
-      overrideProps,
-    }),
+    children: applyTriggerPropsToChildren(children, overrideProps),
   };
 };
 
