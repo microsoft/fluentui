@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "dummy change",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
