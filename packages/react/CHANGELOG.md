@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 26 Jan 2022 07:26:00 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Jan 2022 07:27:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.0)
+
+Mon, 31 Jan 2022 07:27:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.51.1..@fluentui/react_v8.52.0)
+
+### Minor changes
+
+- MessageBar: add expandButtonProp which takes IButtonProps to customize expandButton. ([PR #18166](https://github.com/microsoft/fluentui/pull/18166) by tristan.watanabe@gmail.com)
+- Nav: add isExpanded prop to allow consumer control of collapsed/expanded state. ([PR #18347](https://github.com/microsoft/fluentui/pull/18347) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- Panel fix: Header now inherits backgroundColor from parent. ([PR #21466](https://github.com/microsoft/fluentui/pull/21466) by tristan.watanabe@gmail.com)
 
 ## [8.51.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.1)
 

@@ -1,5 +1,5 @@
 {
-  "name": "test-bundles",
+  "name": "@fluentui/test-bundles",
   "version": "1.0.0",
   "description": "Testing Fluent UI React bundle sizes.",
   "private": true,

@@ -1,47 +1,45 @@
+// @ts-check
 const path = require('path');
 const { spawnSync } = require('child_process');
+
 const npmPath = process.env.npm_execpath;
+const COMMAND_PREFIX = `\x1B[36m>\x1B[39m \x1B[7m\x1B[1m\x1B[36m PACKAGE MANAGER CHECKER \x1B[39m\x1B[22m\x1B[27m`;
 
 const Strings = {
-  useYarnInstead: `Looks like you are trying to run "npm install". This repository has migrated to use Yarn as its package manager.
+  useYarnInstead: `
+- 🚨 Looks like you are trying to run "npm install". This repository has migrated to use Yarn as its package manager.
+- 📜 Please install the latest stable version of Yarn@1 following the instructions at https://yarnpkg.com/getting-started/install or by running "npm install -g yarn@1
 `,
-  yarnDetected: `Great! Looks like you already have yarn installed!
-`,
-  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest stable version of Yarn following the instructions at https://yarnpkg.com/en/docs/install or by running "npm install -g yarn".
-`,
-  gettingStartedWithYarn: `To install Fluent UI monorepo dependencies and establish links between projects, simply run:
-
-  yarn
-
-You can then build the packages:
-
-  yarn build
-
-Or start a development inner loop against the Fluent UI React demo:
-
-  yarn builddemo && yarn start
-
-To learn more about all the commands that this monorepo supports, see the wiki:
-
-  https://github.com/microsoft/fluentui/wiki/Build-Commands
+  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest stable version of Yarn@1 following the instructions at https://yarnpkg.com/getting-started/install or by running "npm install -g yarn@1".
 `,
 };
 
-if (path.basename(npmPath) !== 'yarn.js') {
-  console.error(Strings.useYarnInstead);
+main();
 
-  if (!detectYarnInstallation()) {
-    console.log(Strings.installYarn);
-  } else {
-    console.log(Strings.yarnDetected);
+function main() {
+  console.log(COMMAND_PREFIX);
+  console.log(`⌛️ checking existing package manager`);
+
+  if (userInvokedNpmInstall()) {
+    console.error(Strings.useYarnInstead);
+    process.exit(1);
   }
 
-  console.log(Strings.gettingStartedWithYarn);
+  const yarnInfo = detectYarnInstallation();
 
-  process.exit(1);
+  if (!yarnInfo.exists) {
+    console.log(Strings.installYarn);
+    process.exit(1);
+  }
+
+  console.log(`✅ package manager Yarn found v.${yarnInfo.version} \n`);
+}
+
+function userInvokedNpmInstall() {
+  return path.basename(npmPath).includes('npm');
 }
 
 function detectYarnInstallation() {
   const yarnResult = spawnSync('yarn', ['--version']);
-  return yarnResult.status === 0;
+  return { exists: yarnResult.status === 0, version: yarnResult.stdout };
 }
