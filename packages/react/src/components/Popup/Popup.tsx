@@ -122,6 +122,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
 
 function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const isModalOrPanel = props['aria-modal'];
+  // eslint-disable-next-line deprecation/deprecation
   const enableAriaHiddenSiblings = props.enableAriaHiddenSiblings;
 
   React.useEffect(() => {

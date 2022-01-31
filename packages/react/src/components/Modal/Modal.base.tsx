@@ -123,6 +123,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       isModeless,
       dragOptions,
       onDismissed,
+      // eslint-disable-next-line deprecation/deprecation
       enableAriaHiddenSiblings,
     } = props;
 

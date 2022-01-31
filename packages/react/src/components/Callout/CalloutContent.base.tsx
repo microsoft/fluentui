@@ -421,6 +421,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       target,
       hidden,
       onLayerMounted,
+      // eslint-disable-next-line deprecation/deprecation
       enableAriaHiddenSiblings = true,
     } = props;
 
