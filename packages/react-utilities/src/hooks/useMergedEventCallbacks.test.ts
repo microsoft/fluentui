@@ -8,9 +8,8 @@ describe('useMergedEventCallbacks', () => {
     const { result } = renderHook(() => {
       const callbackA = (arg: string) => calls.push(['callbackA', arg]);
       const callbackB = (arg: string) => calls.push(['callbackB', arg]);
-      const callbackC = (arg: string) => calls.push(['callbackC', arg]);
 
-      return useMergedEventCallbacks(callbackA, callbackB, callbackC);
+      return useMergedEventCallbacks(callbackA, callbackB);
     });
 
     const testArgument = 'testArgument';
@@ -19,7 +18,6 @@ describe('useMergedEventCallbacks', () => {
     expect(calls).toEqual([
       ['callbackA', testArgument],
       ['callbackB', testArgument],
-      ['callbackC', testArgument],
     ]);
   });
 
@@ -27,20 +25,16 @@ describe('useMergedEventCallbacks', () => {
     const calls: [string, string][] = [];
 
     const { result } = renderHook(() => {
-      const callbackA = (arg: string) => calls.push(['callbackA', arg]);
-      const callbackB = undefined;
-      const callbackC = (arg: string) => calls.push(['callbackC', arg]);
+      const callbackA = undefined;
+      const callbackB = (arg: string) => calls.push(['callbackB', arg]);
 
-      return useMergedEventCallbacks(callbackA, callbackB, callbackC);
+      return useMergedEventCallbacks(callbackA, callbackB);
     });
 
     const testArgument = 'testArgument';
     result.current(testArgument);
 
-    expect(calls).toEqual([
-      ['callbackA', testArgument],
-      ['callbackC', testArgument],
-    ]);
+    expect(calls).toEqual([['callbackB', testArgument]]);
   });
 
   it('allows overriding a callback on an object', () => {

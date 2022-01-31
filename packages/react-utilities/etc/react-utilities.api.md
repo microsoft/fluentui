@@ -286,7 +286,7 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 export function useIsSSR(): boolean;
 
 // @public
-export function useMergedEventCallbacks<Args extends unknown[]>(...callbacks: (((...args: Args) => void) | undefined)[]): (...args: Args) => void;
+export function useMergedEventCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
 
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;

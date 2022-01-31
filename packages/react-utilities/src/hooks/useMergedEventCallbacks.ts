@@ -1,7 +1,7 @@
 import { useEventCallback } from './useEventCallback';
 
 /**
- * Combine multiple event callbacks into a single callback function that calls each one in order.
+ * Combine two event callbacks into a single callback function that calls each one in order.
  *
  * This is useful to add an event listener to an existing element without overwriting the current listener, if any.
  *
@@ -12,10 +12,17 @@ import { useEventCallback } from './useEventCallback';
  * });
  * ```
  *
- * @param callbacks - The set of callbacks to be called
+ * @param callback1 - The first callback to be called
+ * @param callback2 - The second callback to be called
+ *
+ * @returns An event callback that calls the callbacks in order, and is stable between renders
  */
 export function useMergedEventCallbacks<Args extends unknown[]>(
-  ...callbacks: (((...args: Args) => void) | undefined)[]
+  callback1: ((...args: Args) => void) | undefined,
+  callback2: ((...args: Args) => void) | undefined,
 ) {
-  return useEventCallback((...args: Args) => callbacks.forEach(callback => callback?.(...args)));
+  return useEventCallback((...args: Args) => {
+    callback1?.(...args);
+    callback2?.(...args);
+  });
 }
