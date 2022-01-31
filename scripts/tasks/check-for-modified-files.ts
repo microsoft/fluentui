@@ -17,6 +17,7 @@ export function checkForModifiedFiles() {
     // Diffing against HEAD will include both unstaged and staged files
     // (some scripts, such as gulp build:docs:toc, automatically stage the modified files)
     execSync('git diff HEAD', { stdio: 'inherit' });
+    logger.error('');
 
     throw new Error('Found modified files');
   }
