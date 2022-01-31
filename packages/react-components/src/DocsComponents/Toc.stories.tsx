@@ -59,6 +59,8 @@ const useTocStyles = makeStyles({
   },
 });
 
+type TocItem = PublishedStoreItem & { selected?: boolean };
+
 // // Alternative approach to navigate - rerenders the iframe
 // // Usage: selectStory({ story: s.name, kind: s.kind });
 // const selectStory = (story: { kind: string; story: string }) => {
@@ -72,8 +74,18 @@ const navigate = (url: string) => {
 
 export const nameToHash = (id: string): string => id.toLowerCase().replace(/[^a-z0-9]/gi, '-');
 
-export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
+export const Toc = ({ stories }: { stories: TocItem[] }) => {
   const [selected, setSelected] = React.useState('');
+
+  const handleObserver = (entries: IntersectionObserverEntry[]) => {
+    for (const entry of entries) {
+      const { intersectionRatio, target } = entry;
+      if (intersectionRatio > 0.5) {
+        setSelected(target.id);
+        return;
+      }
+    }
+  };
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
@@ -90,16 +102,6 @@ export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
     return () => observer.disconnect();
   }, [stories]);
 
-  const handleObserver = (entries: IntersectionObserverEntry[]) => {
-    for (const entry of entries) {
-      const { intersectionRatio, target } = entry;
-      if (intersectionRatio > 0.5) {
-        setSelected(target.id);
-        return;
-      }
-    }
-  };
-
   const tocItems = stories.map(item => {
     return nameToHash(item.name) === selected ? { ...item, selected: true } : item;
   });
@@ -111,7 +113,7 @@ export const Toc = ({ stories }: { stories: PublishedStoreItem[] }) => {
         {tocItems.map(s => {
           const name = nameToHash(s.name);
           return (
-            <li className={s.selected && tocClasses.selected} key={s.id}>
+            <li className={s.selected ? tocClasses.selected : ''} key={s.id}>
               <a
                 href={`#${name}`}
                 target="_self"
