@@ -41,7 +41,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.154-beta.5",
+    "@fluentui/react-icons": "^2.0.158-beta.9",
     "@fluentui/react-label": "9.0.0-beta.4",
     "@fluentui/react-tabster": "9.0.0-beta.5",
     "@fluentui/react-utilities": "9.0.0-beta.4",
