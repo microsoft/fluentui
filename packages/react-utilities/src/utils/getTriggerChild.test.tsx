@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getTriggerChild } from './getTriggerChild';
-import { FluentTriggerComponent } from './isFluentTriggerComponent';
+import { FluentTriggerComponent } from './isFluentTrigger';
 
 export const TestTrigger: React.FC<{ id?: string }> & FluentTriggerComponent = props => <>{props.children}</>;
 TestTrigger.displayName = 'TestTrigger';
@@ -11,22 +11,6 @@ describe('getTriggerChild', () => {
 
   it('returns the child if a valid element is sent as the child', () => {
     expect(getTriggerChild(child)).toBe(child);
-  });
-
-  it('returns the child of the fragment if a React fragment with a single child is sent as the child', () => {
-    const fragment = <>{child}</>;
-    expect(getTriggerChild(fragment)).toBe(child);
-  });
-
-  it('throws an error if a React fragment with multiple children is sent as the child', () => {
-    const fragment = (
-      <>
-        {child}
-        {child}
-        {child}
-      </>
-    );
-    expect(() => getTriggerChild(fragment)).toThrow();
   });
 
   it('throws an error if a non-valid element is sent as the child', () => {

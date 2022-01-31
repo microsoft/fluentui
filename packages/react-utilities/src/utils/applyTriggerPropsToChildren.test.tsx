@@ -18,18 +18,6 @@ describe('applyTriggerPropsToChildren', () => {
     expect(div.getAttribute('data-testattr')).toBe(triggerProps['data-testattr']);
   });
 
-  it(`returns the child of the fragment with the props applied if a React fragment with a single child is sent as the
-      child`, () => {
-    const fragment = <>{child}</>;
-    const result = applyTriggerPropsToChildren(fragment, triggerProps);
-    const div = render(result as React.ReactElement).getByTestId(dataTestId);
-
-    expect(div.tagName).toBe('DIV');
-    expect(div.id).toBe(triggerProps.id);
-    expect(div.className).toBe(triggerProps.className);
-    expect(div.getAttribute('data-testattr')).toBe(triggerProps['data-testattr']);
-  });
-
   it('returns the output of the function if a function component is sent as the child', () => {
     // With props applied at top level
     let functionComponent = (props: { id: string; className: string; 'data-testattr': string }) => (
@@ -67,6 +55,11 @@ describe('applyTriggerPropsToChildren', () => {
     expect(span.id).toBe(triggerProps.id);
     expect(span.className).toBe(triggerProps.className);
     expect(span.getAttribute('data-testattr')).toBe(triggerProps['data-testattr']);
+  });
+
+  it(`throws an error if a React fragment with a single child is sent as the child`, () => {
+    const fragment = <>{child}</>;
+    expect(() => applyTriggerPropsToChildren(fragment, triggerProps)).toThrow();
   });
 
   it('throws an error if a React fragment with multiple children is sent as the child', () => {
@@ -107,11 +100,9 @@ describe('applyTriggerPropsToChildren', () => {
     const result = applyTriggerPropsToChildren(
       <TestTrigger id="a">
         <TestTrigger id="b">
-          <>
-            <TestTrigger id="c">
-              <div id="child" />
-            </TestTrigger>
-          </>
+          <TestTrigger id="c">
+            <div id="child" />
+          </TestTrigger>
         </TestTrigger>
       </TestTrigger>,
       { 'data-test': 'test-value' },
@@ -120,11 +111,9 @@ describe('applyTriggerPropsToChildren', () => {
     expect(result).toEqual(
       <TestTrigger id="a">
         <TestTrigger id="b">
-          <>
-            <TestTrigger id="c">
-              <div id="child" data-test="test-value" />
-            </TestTrigger>
-          </>
+          <TestTrigger id="c">
+            <div id="child" data-test="test-value" />
+          </TestTrigger>
         </TestTrigger>
       </TestTrigger>,
     );

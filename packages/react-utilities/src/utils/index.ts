@@ -3,7 +3,7 @@ export * from './clamp';
 export * from './getNativeElementProps';
 export * from './getRTLSafeKey';
 export * from './getTriggerChild';
-export * from './isFluentTriggerComponent';
+export * from './isFluentTrigger';
 export * from './omit';
 export * from './properties';
 export * from './shouldPreventDefaultOnKeyDown';

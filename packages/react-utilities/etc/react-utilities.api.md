@@ -107,8 +107,8 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
 };
 
 // @public
-export const getTriggerChild: <P>(child: boolean | React_2.ReactText | React_2.ReactFragment | React_2.ReactPortal | React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> | null | undefined) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> & {
-    ref?: React_2.Ref<unknown> | undefined;
+export const getTriggerChild: (children: React_2.ReactNode) => React_2.ReactElement & {
+    ref?: React_2.Ref<unknown>;
 };
 
 // @public
@@ -136,7 +136,7 @@ export type IntrinsicSlotProps<DefaultAs extends keyof JSX.IntrinsicElements, Al
 }[AlternateAs];
 
 // @public
-export const isFluentTriggerComponent: <P>(type: (string | React_2.JSXElementConstructor<any>) & FluentTriggerComponent) => boolean | undefined;
+export const isFluentTrigger: (element: React_2.ReactElement) => boolean | undefined;
 
 // @public
 export type IsSingleton<T extends string> = {

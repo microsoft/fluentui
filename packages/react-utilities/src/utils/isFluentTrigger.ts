@@ -18,9 +18,9 @@ export type FluentTriggerComponent = {
 };
 
 /**
- * Checks if a given component type is a FluentUI trigger (e.g. `MenuTrigger` or `Tooltip`).
+ * Checks if a given element is a FluentUI trigger (e.g. `MenuTrigger` or `Tooltip`).
  * See the {@link FluentTriggerComponent} type for more info.
  */
-export const isFluentTriggerComponent = <P>(type: React.ReactElement<P>['type'] & FluentTriggerComponent) => {
-  return typeof type !== 'string' && (type as FluentTriggerComponent).isFluentTriggerComponent;
+export const isFluentTrigger = (element: React.ReactElement) => {
+  return (element.type as FluentTriggerComponent).isFluentTriggerComponent;
 };
