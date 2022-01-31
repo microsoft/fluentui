@@ -26,7 +26,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix color slot titles in docsite @notandrew ([#21378](https://github.com/microsoft/fluentui/pull/21378))
 
 ### Features
-- Add `backgroundPressed6` and `backgroundHover5` color slots @notandrew  ([#0](https://github.com/microsoft/fluentui/pull/0))
+- Add `backgroundPressed6` and `backgroundHover5` color slots @notandrew  ([#21511](https://github.com/microsoft/fluentui/pull/21511))
 - Add new Popup prop `closeOnScroll` to close popup when scroll happens outside of the popover element @yuanboxue-amber ([#21453](https://github.com/microsoft/fluentui/pull/21453))
 
 <!--------------------------------[ v0.60.1 ]------------------------------- -->
