@@ -29,11 +29,6 @@ export type TabListSlots = {
    * The slot associated with the root element of this tab list.
    */
   root: IntrinsicShorthandProps<'div'>;
-
-  /**
-   * The selection indicator showing which tab is selected.
-   */
-  selectionIndicator?: IntrinsicShorthandProps<'div'>;
 };
 
 export type TabListCommons = {
@@ -106,9 +101,19 @@ export type TabListContextValues = {
 };
 
 /**
+ * A bounding rectangle of a tab
+ */
+export type TabContentRect = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+/**
  * State used in rendering TabList.
  */
 export type TabListState = ComponentState<Required<TabListSlots>> &
   TabListContextValue & {
-    selectionIndicatorRect?: DOMRect;
+    selectedTabRect?: TabContentRect;
   };

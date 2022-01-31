@@ -7,12 +7,8 @@ import { tabPendingDesignTokens } from '../../tab.constants';
 export const tabListClassName = 'fui-TabList';
 export const tabListSelectionIndicatorName = 'fui-TabList_SelectionIndicator';
 
-export const indicatorDisplayVar = '--fui-tab-list-indicator-display';
-export const indicatorLeftVar = '--fui-tab-list-indicator-left';
-export const indicatorWidthVar = '--fui-tab-list-indicator-width';
-export const indicatorTopVar = '--fui-tab-list-indicator-top';
-export const indicatorHeightVar = '--fui-tab-list-indicator-height';
-export const indicatorTransitionDurationVar = '--fui-tab-list-indicator-transition-duration';
+export const indicatorOffsetVar = '--selection-indicator-offset';
+export const indicatorLengthVar = '--selection-indicator-length';
 
 /**
  * Styles for the root slot
@@ -33,24 +29,29 @@ const useStyles = makeStyles({
  */
 const useHorizontalIndicatorStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorBrandStroke1,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    bottom: 0,
-    boxSizing: 'border-box',
-    display: `var(${indicatorDisplayVar})`,
-    height: tabPendingDesignTokens.indicatorThickness,
-    left: `calc(var(${indicatorLeftVar}) + ${tabPendingDesignTokens.tabPadding.medium})`,
-    position: 'absolute',
-    transitionProperty: 'left, width',
-    transitionDuration: `var(${indicatorTransitionDurationVar}), var(${indicatorTransitionDurationVar})}`,
-    ':hover': {
-      backgroundColor: tokens.colorNeutralStroke1,
+    ':after': {
+      backgroundColor: tokens.colorBrandStroke1,
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      bottom: 0,
+      boxSizing: 'border-box',
+      content: '""',
+      height: tabPendingDesignTokens.indicatorThickness,
+      left: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.medium})`,
+      position: 'absolute',
+      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.medium}))`,
     },
-    width: `calc(var(${indicatorWidthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.medium}))`,
   },
   small: {
-    left: `calc(var(${indicatorLeftVar}) + ${tabPendingDesignTokens.tabPadding.small})`,
-    width: `calc(var(${indicatorWidthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.small}))`,
+    ':after': {
+      left: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.small})`,
+      width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.small}))`,
+    },
+  },
+  animated: {
+    ':after': {
+      transitionProperty: 'left, width',
+      transitionDuration: `350ms, 350ms`,
+    },
   },
 });
 
@@ -59,21 +60,29 @@ const useHorizontalIndicatorStyles = makeStyles({
  */
 const useVerticalIndicatorStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorBrandStroke1,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    boxSizing: 'border-box',
-    display: `var(${indicatorDisplayVar})`,
-    height: `calc(var(${indicatorHeightVar}) - (2 * ${tabPendingDesignTokens.tabPadding.medium}))`,
-    left: '0',
-    position: 'absolute',
-    top: `calc(var(${indicatorTopVar}) + ${tabPendingDesignTokens.tabPadding.medium})`,
-    transitionProperty: 'top, height',
-    transitionDuration: `var(${indicatorTransitionDurationVar}), var(${indicatorTransitionDurationVar})}`,
-    width: tabPendingDesignTokens.indicatorThickness,
+    ':before': {
+      backgroundColor: tokens.colorBrandStroke1,
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      boxSizing: 'border-box',
+      content: '""',
+      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.medium}))`,
+      left: '0',
+      position: 'absolute',
+      top: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.medium})`,
+      width: tabPendingDesignTokens.indicatorThickness,
+    },
   },
   small: {
-    top: `calc(var(${indicatorTopVar}) + ${tabPendingDesignTokens.tabPadding.small})`,
-    height: `calc(var(${indicatorHeightVar}) - (2 * ${tabPendingDesignTokens.tabPadding.small}))`,
+    ':before': {
+      top: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.small})`,
+      height: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.small}))`,
+    },
+  },
+  animated: {
+    ':before': {
+      transitionProperty: 'top, height',
+      transitionDuration: `350ms, 350ms`,
+    },
   },
 });
 
@@ -81,37 +90,38 @@ const useVerticalIndicatorStyles = makeStyles({
  * Apply styling to the TabList slots based on the state
  */
 export const useTabListStyles = (state: TabListState): TabListState => {
-  const { selectionIndicatorRect, selectedValue, size, vertical } = state;
+  const { selectedTabRect: selectionIndicatorRect, selectedValue, size, vertical } = state;
 
   // only animate when the selected value has changed
   const previousSelectedValue = usePrevious(selectedValue);
-  const shouldAnimate = previousSelectedValue && previousSelectedValue !== selectedValue;
+  const shouldAnimate = !!previousSelectedValue && previousSelectedValue !== selectedValue;
 
   const styles = useStyles();
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();
   const verticalIndicatorStyles = useVerticalIndicatorStyles();
 
-  state.root.className = mergeClasses(tabListClassName, styles.root, vertical && styles.vertical, state.root.className);
-
-  state.selectionIndicator.className = mergeClasses(
-    tabListSelectionIndicatorName,
-    vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base,
-    size === 'small' && (vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
-    state.selectionIndicator?.className,
+  state.root.className = mergeClasses(
+    tabListClassName,
+    styles.root,
+    vertical && styles.vertical,
+    !!selectedValue && (vertical ? verticalIndicatorStyles.base : horizontalIndicatorStyles.base),
+    !!selectedValue && size === 'small' && (vertical ? verticalIndicatorStyles.small : horizontalIndicatorStyles.small),
+    !!selectedValue &&
+      shouldAnimate &&
+      (vertical ? verticalIndicatorStyles.animated : horizontalIndicatorStyles.animated),
+    state.root.className,
   );
 
-  const selectionVariables = {
-    [indicatorDisplayVar]: selectedValue ? 'block' : 'none',
-    [indicatorLeftVar]: `${selectionIndicatorRect?.left || 0}px`,
-    [indicatorHeightVar]: `${selectionIndicatorRect?.height || 0}px`,
-    [indicatorTopVar]: `${selectionIndicatorRect?.top || 0}px`,
-    [indicatorWidthVar]: `${selectionIndicatorRect?.width || 0}px`,
-    [indicatorTransitionDurationVar]: shouldAnimate ? '350ms' : '0ms',
-  };
+  const rootCssVars = selectionIndicatorRect
+    ? {
+        [indicatorOffsetVar]: vertical ? `${selectionIndicatorRect.y}px` : `${selectionIndicatorRect.x}px`,
+        [indicatorLengthVar]: vertical ? `${selectionIndicatorRect.height}px` : `${selectionIndicatorRect.width}px`,
+      }
+    : {};
 
-  state.selectionIndicator.style = {
-    ...selectionVariables,
-    ...state.selectionIndicator.style,
+  state.root.style = {
+    ...rootCssVars,
+    ...state.root.style,
   };
 
   return state;

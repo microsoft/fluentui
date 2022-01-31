@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import {
   getNativeElementProps,
-  resolveShorthand,
   useConst,
   useControllableState,
   useEventCallback,
@@ -20,7 +19,7 @@ import type { RegisterTabData, SelectTabData, SelectTabEvent, TabListProps, TabL
  * @param ref - reference to root HTMLElement of TabList
  */
 export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
-  const { appearance = 'transparent', onTabSelect, size = 'medium', selectionIndicator, vertical = false } = props;
+  const { appearance = 'transparent', onTabSelect, size = 'medium', vertical = false } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
@@ -76,18 +75,18 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
   });
 
   // calculate the selection indicator rectangle
-  const selectionIndicatorRect = React.useMemo(() => {
+  const selectedTabRect = React.useMemo(() => {
     const listRect = innerRef.current?.getBoundingClientRect();
     const tabRef: React.Ref<HTMLElement> = registeredTabs.current[JSON.stringify(selectedValue)]?.ref;
     const tabRect = tabRef?.current?.getBoundingClientRect();
 
     if (listRect && tabRect) {
-      return DOMRectReadOnly.fromRect({
+      return {
         x: tabRect.x - listRect.x,
         y: tabRect.y - listRect.y,
         width: tabRect.width,
         height: tabRect.height,
-      });
+      };
     }
     // calcRect is used to force updates when registered tabs change or resize occurs
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -96,7 +95,6 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
   return {
     components: {
       root: 'div',
-      selectionIndicator: 'div',
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, innerRef),
@@ -104,9 +102,8 @@ export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): Ta
       ...focusAttributes,
       ...props,
     }),
-    selectionIndicator: resolveShorthand(selectionIndicator, { required: true }),
     appearance,
-    selectionIndicatorRect,
+    selectedTabRect,
     selectedValue,
     size,
     vertical,

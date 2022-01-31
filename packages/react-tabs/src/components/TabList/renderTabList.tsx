@@ -12,7 +12,6 @@ export const renderTabList = (state: TabListState, contextValues: TabListContext
   return (
     <slots.root {...slotProps.root}>
       <TabListContext.Provider value={contextValues.tabList}>{state.root.children}</TabListContext.Provider>
-      <slots.selectionIndicator {...slotProps.selectionIndicator} />
     </slots.root>
   );
 };
