@@ -40,6 +40,6 @@ function userInvokedNpmInstall() {
 }
 
 function detectYarnInstallation() {
-  const yarnResult = spawnSync('yarn', ['--version'], { shell: true });
+  const yarnResult = spawnSync('yarn', ['--version'], { shell: true }); // Need to execute this in a sheel for Windows:  https://nodejs.org/api/child_process.html#spawning-bat-and-cmd-files-on-windows
   return { exists: yarnResult.status === 0, version: yarnResult.stdout };
 }
