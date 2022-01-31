@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { ButtonState } from './Button.types';
@@ -146,7 +146,7 @@ const useRootStyles = makeStyles({
     height: '24px',
     minWidth: '64px',
 
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
@@ -354,7 +354,7 @@ const useIconStyles = makeStyles({
   },
 });
 
-export const useButtonStyles = (state: ButtonState): ButtonState => {
+export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
   const rootFocusStyles = useRootFocusStyles();

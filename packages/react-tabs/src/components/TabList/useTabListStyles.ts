@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TabListState } from './TabList.types';
 import { tokens } from '@fluentui/react-theme';
 import { usePrevious } from '@fluentui/react-utilities';
@@ -89,7 +89,8 @@ const useVerticalIndicatorStyles = makeStyles({
 /**
  * Apply styling to the TabList slots based on the state
  */
-export const useTabListStyles = (state: TabListState): TabListState => {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const useTabListStyles_unstable = (state: TabListState): TabListState => {
   const { selectedTabRect: selectionIndicatorRect, selectedValue, size, vertical } = state;
 
   // only animate when the selected value has changed

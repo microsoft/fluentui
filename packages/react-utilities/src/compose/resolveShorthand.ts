@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import type { DefaultObjectShorthandProps, ShorthandProps } from './types';
+import type { UnknownSlotProps, ShorthandProps } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> = {
@@ -8,12 +8,12 @@ export type ResolveShorthandOptions<Props extends Record<string, any>, Required 
 };
 
 /**
- * Resolves ShorthandProps into ObjectShorthandProps, to ensure normalization of the signature
+ * Resolves shorthands into slot props, to ensure normalization of the signature
  * being passed down to getSlots method
- * @param value - the base ShorthandProps
- * @param options - options to resolve ShorthandProps
+ * @param value - the base shorthand props
+ * @param options - options to resolve shorthand props
  */
-export function resolveShorthand<Props extends DefaultObjectShorthandProps, Required extends boolean = false>(
+export function resolveShorthand<Props extends UnknownSlotProps, Required extends boolean = false>(
   value: ShorthandProps<Props>,
   options?: ResolveShorthandOptions<Props, Required>,
 ): Required extends false ? Props | undefined : Props {

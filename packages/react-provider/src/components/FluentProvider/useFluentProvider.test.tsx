@@ -2,10 +2,10 @@ import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
 import { FluentProvider } from './FluentProvider';
-import { useFluentProvider } from './useFluentProvider';
+import { useFluentProvider_unstable } from './useFluentProvider';
 import type { PartialTheme } from '@fluentui/react-theme';
 
-describe('useFluentProvider', () => {
+describe('useFluentProvider_unstable', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
   let logWarnSpy: jest.SpyInstance;
@@ -17,7 +17,7 @@ describe('useFluentProvider', () => {
   it(`should warn user if no theme was set in parent or child`, () => {
     const Wrapper: React.FC = ({ children }) => <FluentProvider>{children}</FluentProvider>;
 
-    const { result } = renderHook(() => useFluentProvider({}, React.createRef()), {
+    const { result } = renderHook(() => useFluentProvider_unstable({}, React.createRef()), {
       wrapper: Wrapper,
     });
 
@@ -38,7 +38,7 @@ describe('useFluentProvider', () => {
 
     const Wrapper: React.FC = ({ children }) => <FluentProvider theme={themeA}>{children}</FluentProvider>;
 
-    const { result } = renderHook(() => useFluentProvider({ theme: themeB }, React.createRef()), {
+    const { result } = renderHook(() => useFluentProvider_unstable({ theme: themeB }, React.createRef()), {
       wrapper: Wrapper,
     });
 

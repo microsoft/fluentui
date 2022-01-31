@@ -5,7 +5,7 @@ import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
 /**
  * Render the final JSX of CardPreview
  */
-export const renderCardPreview = (state: CardPreviewState) => {
+export const renderCardPreview_unstable = (state: CardPreviewState) => {
   const { slots, slotProps } = getSlots<CardPreviewSlots>(state);
 
   return (

@@ -6,7 +6,7 @@ import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.
 /**
  * Render the final JSX of PopoverSurface
  */
-export const renderPopoverSurface = (state: PopoverSurfaceState) => {
+export const renderPopoverSurface_unstable = (state: PopoverSurfaceState) => {
   const { slots, slotProps } = getSlots<PopoverSurfaceSlots>(state);
 
   // TODO should hidden Popovers be supported ?

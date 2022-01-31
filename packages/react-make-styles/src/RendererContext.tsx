@@ -1,11 +1,11 @@
-import { createDOMRenderer, rehydrateRendererCache } from '@fluentui/make-styles';
+import { createDOMRenderer, rehydrateRendererCache } from '@griffel/core';
 import { canUseDOM } from '@fluentui/react-utilities';
 import * as React from 'react';
-import type { MakeStylesRenderer } from '@fluentui/make-styles';
+import type { GriffelRenderer } from '@griffel/core';
 
 export interface RendererProviderProps {
   /** An instance of makeStyles() renderer. */
-  renderer: MakeStylesRenderer;
+  renderer: GriffelRenderer;
 
   /**
    * Document used to insert CSS variables to head
@@ -16,7 +16,7 @@ export interface RendererProviderProps {
 /**
  * @private
  */
-export const RendererContext = React.createContext<MakeStylesRenderer>(createDOMRenderer());
+export const RendererContext = React.createContext<GriffelRenderer>(createDOMRenderer());
 
 /**
  * @public
@@ -41,6 +41,6 @@ export const RendererProvider: React.FC<RendererProviderProps> = ({ children, re
  *
  * @private
  */
-export function useRenderer(): MakeStylesRenderer {
+export function useRenderer(): GriffelRenderer {
   return React.useContext(RendererContext);
 }

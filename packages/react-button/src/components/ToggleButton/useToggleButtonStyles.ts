@@ -1,6 +1,6 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { useButtonStyles } from '../Button/useButtonStyles';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
 
 export const toggleButtonClassName = 'fui-ToggleButton';
@@ -157,7 +157,7 @@ const useDisabledStyles = makeStyles({
   },
 });
 
-export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
+export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   const checkedStyles = useCheckedStyles();
   const disabledStyles = useDisabledStyles();
 
@@ -178,7 +178,7 @@ export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonSta
     state.root.className,
   );
 
-  useButtonStyles(state);
+  useButtonStyles_unstable(state);
 
   return state;
 };

@@ -41,6 +41,7 @@ export const tokens: Record<keyof Theme, string> = {
   colorNeutralForegroundInvertedDisabled: 'var(--colorNeutralForegroundInvertedDisabled)',
   colorBrandForeground1: 'var(--colorBrandForeground1)',
   colorBrandForeground2: 'var(--colorBrandForeground2)',
+  colorNeutralForeground1Static: 'var(--colorNeutralForeground1Static)',
   colorBrandForegroundInverted: 'var(--colorBrandForegroundInverted)',
   colorBrandForegroundInvertedHover: 'var(--colorBrandForegroundInvertedHover)',
   colorBrandForegroundInvertedPressed: 'var(--colorBrandForegroundInvertedPressed)',

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
-import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuItem } from '../MenuItem/useMenuItem';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
+import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 
 /** Returns the props and state required to render the component */
-export const useMenuItemCheckbox = (
+export const useMenuItemCheckbox_unstable = (
   props: MenuItemCheckboxProps,
   ref: React.Ref<HTMLElement>,
 ): MenuItemCheckboxState => {
-  const state = useMenuItem(
+  const state = useMenuItem_unstable(
     {
       role: 'menuitemcheckbox',
       persistOnClick: true,
@@ -23,9 +23,9 @@ export const useMenuItemCheckbox = (
     ref,
   ) as MenuItemCheckboxState;
 
-  const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
+  const toggleCheckbox = useMenuListContext_unstable(context => context.toggleCheckbox);
   const { onClick: onClickOriginal } = state.root;
-  const checked = useMenuListContext(context => {
+  const checked = useMenuListContext_unstable(context => {
     const checkedItems = context.checkedValues?.[state.name] || [];
     return checkedItems.indexOf(state.value) !== -1;
   });

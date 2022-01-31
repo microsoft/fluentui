@@ -6,7 +6,10 @@ import type { AccordionHeaderState, AccordionHeaderSlots, AccordionHeaderContext
 /**
  * Function that renders the final JSX of the component
  */
-export const renderAccordionHeader = (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => {
+export const renderAccordionHeader_unstable = (
+  state: AccordionHeaderState,
+  contextValues: AccordionHeaderContextValues,
+) => {
   const { slots, slotProps } = getSlots<AccordionHeaderSlots>(state);
 
   return (

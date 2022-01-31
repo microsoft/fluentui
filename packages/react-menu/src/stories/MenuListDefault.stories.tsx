@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { MenuList, MenuItem } from '../index';
 

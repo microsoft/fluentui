@@ -37,14 +37,6 @@ export async function createReactApp() {
   const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(testAppPath());
 
-  /**
-   * This is a temporary quick-fix solution. Remove once issue with mini-css-extract-plugin
-   * is resolved @see https://github.com/facebook/create-react-app/issues/11930
-   */
-  const parsedJSON = JSON.parse(fs.readFileSync(`${tempPaths.testApp}/package.json`, 'utf-8'));
-  parsedJSON.resolutions['mini-css-extract-plugin'] = '2.4.5';
-  fs.writeFileSync(`${tempPaths.testApp}/package.json`, JSON.stringify(parsedJSON));
-
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPath());
   logger(`✔️ Fluent UI packages were added to dependencies`);
 

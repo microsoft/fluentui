@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles } from '@griffel/react';
 import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { Input } from '../index';
 

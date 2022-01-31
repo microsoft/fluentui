@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "ToggleButton: Stopping aria-pressed from changing when ToggleButton is disabledFocusable.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

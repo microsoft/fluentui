@@ -1,4 +1,4 @@
-import { createDOMRenderer } from '@fluentui/make-styles';
+import { createDOMRenderer } from '@griffel/core';
 import * as React from 'react';
 import { hydrate } from 'react-dom';
 import { renderToStaticMarkup } from 'react-dom/server';

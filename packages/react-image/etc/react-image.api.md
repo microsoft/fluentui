@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -31,20 +31,20 @@ export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
 
 // @public (undocumented)
 export type ImageSlots = {
-    root: IntrinsicShorthandProps<'img'>;
+    root: IntrinsicSlotProps<'img'>;
 };
 
 // @public (undocumented)
 export type ImageState = ComponentState<ImageSlots> & ImageCommons;
 
 // @public
-export const renderImage: (state: ImageState) => JSX.Element;
+export const renderImage_unstable: (state: ImageState) => JSX.Element;
 
 // @public
-export const useImage: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;
+export const useImage_unstable: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;
 
 // @public (undocumented)
-export const useImageStyles: (state: ImageState) => void;
+export const useImageStyles_unstable: (state: ImageState) => void;
 
 // (No @packageDocumentation comment for this package)
 

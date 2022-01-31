@@ -1,50 +1,53 @@
 import * as React from 'react';
+import { PresenceBadge } from '@fluentui/react-badge';
 import type {
   ComponentProps,
+  ComponentSlotProps,
   ComponentState,
-  IntrinsicShorthandProps,
-  ObjectShorthandProps,
-  ShorthandRenderFunction,
+  IntrinsicSlotProps,
+  SlotRenderFunction,
 } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
 export type AvatarSlots = {
-  root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
+  root: Omit<IntrinsicSlotProps<'span'>, 'color'> & { children?: never };
 
   /**
    * This overidden in the component's props, it's only here to make `getSlots` work
    * `img`  is an exception since it should never accept children, but can accept a children render function
    */
-  image?: IntrinsicShorthandProps<'img'>;
+  image?: IntrinsicSlotProps<'img'>;
 
   /**
-   * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
-   */
-  label?: IntrinsicShorthandProps<'span'>;
-
-  /**
-   * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
+   * (optional) Custom initials.
    *
-   * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
+   * It is usually not necessary to specify custom initials; by default they will be derived from the `name` prop,
+   * using the `getInitials` function.
+   *
+   * The initials are displayed when there is no image (including while the image is loading).
    */
-  icon?: IntrinsicShorthandProps<'span'>;
+  initials?: IntrinsicSlotProps<'span'>;
+
+  /**
+   * Icon to be displayed when the avatar doesn't have an image or initials.
+   *
+   * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
+   */
+  icon?: IntrinsicSlotProps<'span'>;
 
   /**
    * Badge to show the avatar's presence status.
    */
-  badge?: ObjectShorthandProps<PresenceBadgeProps>;
+  badge?: ComponentSlotProps<typeof PresenceBadge>;
 };
 
 export type AvatarCommons = Omit<React.HTMLAttributes<HTMLElement>, 'children'> & {
   /**
-   * The name used for displaying the initials of the avatar if the image is not provided
+   * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
+   *
+   * The name will be used to determine the initials displayed when there is no icon, as well as provided to
+   * accessibility tools.
    */
-  name: string;
-
-  /**
-   * Custom method for generating the initials from the name property, which is shown if no image is provided.
-   */
-  getInitials: (name: string, isRtl: boolean) => string;
+  name?: string;
 
   /**
    * Size of the avatar in pixels.
@@ -147,8 +150,8 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'image'> &
      * The Avatar's image. Cannot be typed as a normal slot since it should not accept any children
      * but can accept a children render function.
      */
-    image?: Omit<IntrinsicShorthandProps<'img'>, 'children'> & {
-      children?: ShorthandRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
+    image?: Omit<IntrinsicSlotProps<'img'>, 'children'> & {
+      children?: SlotRenderFunction<React.HTMLAttributes<HTMLImageElement>>;
     };
   };
 

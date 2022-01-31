@@ -1,6 +1,6 @@
 import type { TabState } from './Tab.types';
 
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { tabPendingDesignTokens } from '../../tab.constants';
@@ -166,7 +166,8 @@ const useContentStyles = makeStyles({
 /**
  * Apply styling to the Tab slots based on the state
  */
-export const useTabStyles = (state: TabState): TabState => {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const useTabStyles_unstable = (state: TabState): TabState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();

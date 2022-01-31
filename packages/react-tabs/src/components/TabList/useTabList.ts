@@ -12,13 +12,14 @@ import type { RegisterTabData, SelectTabData, SelectTabEvent, TabListProps, TabL
 /**
  * Create the state required to render TabList.
  *
- * The returned state can be modified with hooks such as useTabListStyles,
- * before being passed to renderTabList.
+ * The returned state can be modified with hooks such as useTabListStyles_unstable,
+ * before being passed to renderTabList_unstable.
  *
  * @param props - props from this instance of TabList
  * @param ref - reference to root HTMLElement of TabList
  */
-export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
   const { appearance = 'transparent', onTabSelect, size = 'medium', vertical = false } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);

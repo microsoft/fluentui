@@ -1,5 +1,5 @@
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { makeStyles, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
 import { Tab, TabList } from '../index';
 
