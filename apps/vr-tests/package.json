@@ -1,5 +1,5 @@
 {
-  "name": "vr-tests",
+  "name": "@fluentui/vr-tests",
   "version": "1.0.0",
   "private": true,
   "description": "Visual regression tests for Fluent UI React",
