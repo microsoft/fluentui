@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -70,7 +70,7 @@ export type TabListProps = ComponentProps<TabListSlots> & TabListCommons & {
 
 // @public (undocumented)
 export type TabListSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public
@@ -81,9 +81,9 @@ export type TabProps = ComponentProps<TabSlots> & TabCommons;
 
 // @public (undocumented)
 export type TabSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    icon?: IntrinsicShorthandProps<'span'>;
-    content: IntrinsicShorthandProps<'span'>;
+    root: IntrinsicSlotProps<'div'>;
+    icon?: IntrinsicSlotProps<'span'>;
+    content: IntrinsicSlotProps<'span'>;
 };
 
 // @public

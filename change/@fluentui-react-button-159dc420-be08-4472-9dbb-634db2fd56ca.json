@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Button: Changing border radius of small button to borderRadiusMedium from borderRadiusSmall.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

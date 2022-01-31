@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 31 Jan 2022 07:27:29 GMT",
+      "tag": "@fluentui/react_v8.52.0",
+      "version": "8.52.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c14c6f40e10d3e30e1700682320a6c412a3c95ca",
+            "comment": "MessageBar: add expandButtonProp which takes IButtonProps to customize expandButton."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "bfbd966a334f6f686452ca5f43df8d6e62baba3b",
+            "comment": "Nav: add isExpanded prop to allow consumer control of collapsed/expanded state."
+          }
+        ],
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "17a3fc3c4c1897817fffd2c86bcf2d6cd09b31e4",
+            "comment": "Panel fix: Header now inherits backgroundColor from parent."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Jan 2022 07:26:00 GMT",
       "tag": "@fluentui/react_v8.51.1",
       "version": "8.51.1",

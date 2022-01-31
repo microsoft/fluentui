@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -35,10 +35,10 @@ export type InputProps = Omit<ComponentProps<InputSlots, 'input'>, 'children' | 
 
 // @public (undocumented)
 export type InputSlots = {
-    root: IntrinsicShorthandProps<'span'>;
-    input: IntrinsicShorthandProps<'input'>;
-    contentBefore?: IntrinsicShorthandProps<'span'>;
-    contentAfter?: IntrinsicShorthandProps<'span'>;
+    root: IntrinsicSlotProps<'span'>;
+    input: IntrinsicSlotProps<'input'>;
+    contentBefore?: IntrinsicSlotProps<'span'>;
+    contentAfter?: IntrinsicSlotProps<'span'>;
 };
 
 // @public
