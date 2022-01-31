@@ -40,6 +40,6 @@ function userInvokedNpmInstall() {
 }
 
 function detectYarnInstallation() {
-  const yarnResult = spawnSync('yarn', ['--version']);
+  const yarnResult = spawnSync('yarn', ['--version'], { shell: true });
   return { exists: yarnResult.status === 0, version: yarnResult.stdout };
 }
