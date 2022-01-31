@@ -364,6 +364,18 @@ export {
   usePortal_unstable,
 } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
+
+export {
+  Slider,
+  sliderClassName,
+  useSliderState_unstable,
+  useSliderStyles_unstable,
+  useSlider_unstable,
+  renderSlider_unstable,
+} from '@fluentui/react-slider';
+
+export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+
 export {
   Body,
   Caption,
