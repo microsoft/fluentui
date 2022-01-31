@@ -5,8 +5,8 @@
 ```ts
 
 import { Async } from '@fluentui/utilities';
-import type { ISettingsMap } from '@fluentui/utilities/lib/warn';
-import type { IWarnControlledUsageParams } from '@fluentui/utilities/lib/warn';
+import type { ISettingsMap } from '@fluentui/utilities';
+import type { IWarnControlledUsageParams } from '@fluentui/utilities';
 import type { Point } from '@fluentui/utilities';
 import * as React_2 from 'react';
 import { Rectangle } from '@fluentui/utilities';
