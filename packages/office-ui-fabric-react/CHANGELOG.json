@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 31 Jan 2022 12:25:54 GMT",
+      "tag": "office-ui-fabric-react_v7.181.1",
+      "version": "7.181.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix onRenderDetailsGroupHeader props for custom group.onRenderHeader (#18101)",
+            "author": "shagra@microsoft.com",
+            "commit": "a852a22b420efbd40ec5661f15c01d5c5e709c6c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Jan 2022 12:28:47 GMT",
       "tag": "office-ui-fabric-react_v7.181.0",
       "version": "7.181.0",
