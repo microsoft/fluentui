@@ -88,11 +88,13 @@ export const colorScheme = {
 
     backgroundHover: colors.brand['600'],
     backgroundHover1: colors.brand['900'],
+    backgroundHover5: colors.brand['300'],
 
     foregroundPressed: colors.brand['200'],
     foregroundPressed1: colors.white,
 
     backgroundPressed: colors.brand['800'],
+    backgroundPressed6: colors.brand['500'],
 
     borderPressed: colors.brand['800'],
 
