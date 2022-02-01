@@ -39,6 +39,7 @@ const useHorizontalIndicatorStyles = makeStyles({
       left: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.medium})`,
       position: 'absolute',
       width: `calc(var(${indicatorLengthVar}) - (2 * ${tabPendingDesignTokens.tabPadding.medium}))`,
+      zIndex: 1,
     },
   },
   small: {
@@ -70,6 +71,7 @@ const useVerticalIndicatorStyles = makeStyles({
       position: 'absolute',
       top: `calc(var(${indicatorOffsetVar}) + ${tabPendingDesignTokens.tabPadding.medium})`,
       width: tabPendingDesignTokens.indicatorThickness,
+      zIndex: 1,
     },
   },
   small: {
