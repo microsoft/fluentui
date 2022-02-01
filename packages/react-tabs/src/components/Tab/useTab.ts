@@ -8,13 +8,13 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 /**
  * Create the state required to render Tab.
  *
- * The returned state can be modified with hooks such as useTabStyles,
- * before being passed to renderTab.
+ * The returned state can be modified with hooks such as useTabStyles_unstable,
+ * before being passed to renderTab_unstable.
  *
  * @param props - props from this instance of Tab
  * @param ref - reference to root HTMLElement of Tab
  */
-export const useTab = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
+export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
   const { content, icon, value } = props;
 
   const { appearance, selected, onSelect, size, vertical } = useContextSelector(TabListContext, ctx => ({

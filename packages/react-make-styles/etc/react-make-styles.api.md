@@ -4,15 +4,15 @@
 
 ```ts
 
-import { createDOMRenderer } from '@fluentui/make-styles';
-import type { CSSClassesMapBySlot } from '@fluentui/make-styles';
-import type { CSSRulesByBucket } from '@fluentui/make-styles';
-import type { MakeStaticStyles } from '@fluentui/make-styles';
-import type { MakeStylesRenderer } from '@fluentui/make-styles';
-import { MakeStylesStyle } from '@fluentui/make-styles';
-import { mergeClasses } from '@fluentui/make-styles';
+import { createDOMRenderer } from '@griffel/core';
+import type { CSSClassesMapBySlot } from '@griffel/core';
+import type { CSSRulesByBucket } from '@griffel/core';
+import type { GriffelRenderer } from '@griffel/core';
+import type { GriffelStaticStyles } from '@griffel/core';
+import { GriffelStyle as MakeStylesStyle } from '@griffel/core';
+import { mergeClasses } from '@griffel/core';
 import * as React_2 from 'react';
-import { shorthands } from '@fluentui/make-styles';
+import { shorthands } from '@griffel/core';
 
 // @internal
 export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket): () => Record<Slots, string>;
@@ -20,7 +20,7 @@ export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBy
 export { createDOMRenderer }
 
 // @public (undocumented)
-export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStaticStyles[]): () => void;
+export function makeStaticStyles<Selectors>(styles: GriffelStaticStyles | GriffelStaticStyles[]): () => void;
 
 // @public (undocumented)
 export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyle>): () => Record<Slots, string>;
@@ -30,24 +30,24 @@ export { MakeStylesStyle }
 export { mergeClasses }
 
 // @public (undocumented)
-export const RendererContext: React_2.Context<MakeStylesRenderer>;
+export const RendererContext: React_2.Context<GriffelRenderer>;
 
 // @public (undocumented)
 export const RendererProvider: React_2.FC<RendererProviderProps>;
 
 // @public (undocumented)
 export interface RendererProviderProps {
-    renderer: MakeStylesRenderer;
+    renderer: GriffelRenderer;
     targetDocument?: Document;
 }
 
 // @public
-export function renderToStyleElements(renderer: MakeStylesRenderer): React_2.ReactElement[];
+export function renderToStyleElements(renderer: GriffelRenderer): React_2.ReactElement[];
 
 export { shorthands }
 
 // @public
-export function useRenderer(): MakeStylesRenderer;
+export function useRenderer(): GriffelRenderer;
 
 // (No @packageDocumentation comment for this package)
 

@@ -6,7 +6,7 @@ import { InfoRegular } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-theme';
 
 export const Default = () => (
-  <Tooltip content="This is an example" triggerAriaAttribute="describedby">
+  <Tooltip content="This is an example" relationship="description">
     <Button>Button with a tooltip</Button>
   </Tooltip>
 );
@@ -20,7 +20,7 @@ Default.parameters = {
 };
 
 export const Inverted = () => (
-  <Tooltip appearance="inverted" content="This has an inverted appearance" triggerAriaAttribute="describedby">
+  <Tooltip appearance="inverted" content="This has an inverted appearance" relationship="description">
     <Button>Inverted appearance</Button>
   </Tooltip>
 );
@@ -34,7 +34,7 @@ Inverted.parameters = {
 };
 
 export const WithArrow = () => (
-  <Tooltip withArrow content="This tooltip has an arrow">
+  <Tooltip withArrow content="This tooltip has an arrow" relationship="description">
     <Button>With an arrow</Button>
   </Tooltip>
 );
@@ -61,11 +61,20 @@ export const Target = () => {
         background: tokens.colorPaletteCharcoalBackground1,
       }}
     >
-      <Tooltip positioning={{ target: targetContainer }} content="Targets the container">
-        <Button>Targets the container</Button>
+      <Tooltip
+        positioning={{ target: targetContainer }}
+        content="This tooltip targets the container"
+        relationship="description"
+      >
+        <Button>Container</Button>
       </Tooltip>
-      <Tooltip withArrow positioning={{ target: targetIcon }} content="Targets the icon">
-        <Button icon={{ ref: setTargetIcon, children: <InfoRegular /> }}>Targets the icon</Button>
+      <Tooltip
+        withArrow
+        positioning={{ target: targetIcon }}
+        content="This tooltip points to the icon"
+        relationship="description"
+      >
+        <Button icon={{ ref: setTargetIcon, children: <InfoRegular /> }}>Icon</Button>
       </Tooltip>
     </div>
   );

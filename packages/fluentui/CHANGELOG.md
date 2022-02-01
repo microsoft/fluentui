@@ -19,10 +19,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Fixes
+- Fix `AccordionTitle` focus styles @petr-duda ([#21400](https://github.com/microsoft/fluentui/pull/21400))
+- Add border to `Card` in high contrast rest state @jurokapsiar ([#21315](https://github.com/microsoft/fluentui/pull/21315))
+- Use shadow8 for better contrast of `Tooltip` @jurokapsiar ([#21316](https://github.com/microsoft/fluentui/pull/21316))
+- `FocusTrapZone`: add handleRef method instead of function to prevent calling it on each re-render @annabratseiko ([#21337](https://github.com/microsoft/fluentui/pull/21337))
+- Fix color slot titles in docsite @notandrew ([#21378](https://github.com/microsoft/fluentui/pull/21378))
+
+### Features
+- Add new Popup prop `closeOnScroll` to close popup when scroll happens outside of the popover element @yuanboxue-amber ([#21453](https://github.com/microsoft/fluentui/pull/21453))
+
+<!--------------------------------[ v0.60.1 ]------------------------------- -->
+## [v0.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.1) (2022-01-17)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.60.0..@fluentui/react-northstar_v0.60.1)
+
+### Fixes
 - Fix `ChatMessage` to use chat context as default value when user prop is explicitly undefined @yuanboxue-amber ([#21189](https://github.com/microsoft/fluentui/pull/21189))
 - bump react-transition-group from 4.3.0 to 4.4.1 @yuanboxue-amber ([#21187](https://github.com/microsoft/fluentui/pull/21187))
 - Fix `Animation` to pass object ref to `Transition` nodeRef @yuanboxue-amber ([#21173](https://github.com/microsoft/fluentui/pull/21173))
 - Fix `MenuItemWrapper` to stop passing-through `on` property to DOM @tosmolka ([#21170](https://github.com/microsoft/fluentui/pull/21170))
+- Reverted: Set default focus border radius to default border radius (`4px`) @Hirse ([#20230](https://github.com/microsoft/fluentui/pull/20230))
 
 
 <!--------------------------------[ v0.60.0 ]------------------------------- -->

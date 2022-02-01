@@ -1,5 +1,5 @@
 {
-  "name": "ts-minbar-test-react-components",
+  "name": "@fluentui/ts-minbar-test-react-components",
   "version": "1.0.0",
   "private": true,
   "description": "Testing Fluent UI React Components compatibility with Typescript 3.9",

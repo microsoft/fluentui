@@ -1,6 +1,6 @@
 import type { TabState } from './Tab.types';
 
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 
@@ -199,7 +199,7 @@ const useContentStyles = makeStyles({
 /**
  * Apply styling to the Tab slots based on the state
  */
-export const useTabStyles = (state: TabState): TabState => {
+export const useTabStyles_unstable = (state: TabState): TabState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const horizontalIndicatorStyles = useHorizontalIndicatorStyles();

@@ -66,6 +66,7 @@ interface IRenderLinkOptions {
   isCTA?: boolean;
   icon?: string;
   dark?: boolean;
+  ariaLabel?: string;
 }
 
 export interface IHomePageState {
@@ -184,9 +185,15 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/styles/web', 'Styles')}</li>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/web', 'Controls')}</li>
-              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/web', 'Get started')}</li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/styles/web', 'Styles', { ariaLabel: 'Styles: React' })}
+              </li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/controls/web', 'Controls', { ariaLabel: 'Controls: React' })}
+              </li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/web', 'Get started', { ariaLabel: 'Get started: React' })}
+              </li>
               <li>
                 <ActionButton
                   allowDisabledFocus={true}
@@ -224,9 +231,13 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/webcomponents', 'Controls')}</li>
               <li className={classNames.cardListItem}>
-                {this._renderLink('#/get-started/webcomponents', 'Get started')}
+                {this._renderLink('#/controls/webcomponents', 'Controls', { ariaLabel: 'Controls: Web Components' })}
+              </li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/webcomponents', 'Get started', {
+                  ariaLabel: 'Get started: Web Components',
+                })}
               </li>
             </ul>
           </div>
@@ -238,8 +249,12 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/windows', 'Controls')}</li>
-              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/windows', 'Get started')}</li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/controls/windows', 'Controls', { ariaLabel: 'Controls: Windows' })}
+              </li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/windows', 'Get started', { ariaLabel: 'Get started: Windows' })}
+              </li>
             </ul>
           </div>
           <div className={classNames.card} style={{}}>
@@ -250,8 +265,12 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/ios', 'Controls')}</li>
-              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/ios', 'Get started')}</li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/controls/ios', 'Controls', { ariaLabel: 'Controls: iOS' })}
+              </li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/ios', 'Get started', { ariaLabel: 'Get started: iOS' })}
+              </li>
             </ul>
           </div>
           <div className={classNames.card} style={{}}>
@@ -262,8 +281,12 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/android', 'Controls')}</li>
-              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/android', 'Get started')}</li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/controls/android', 'Controls', { ariaLabel: 'Controls: Android' })}
+              </li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/android', 'Get started', { ariaLabel: 'Get started: Android' })}
+              </li>
             </ul>
           </div>
 
@@ -275,8 +298,12 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/mac', 'Controls')}</li>
-              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/mac', 'Get started')}</li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/controls/mac', 'Controls', { ariaLabel: 'Controls: macOS' })}
+              </li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/mac', 'Get started', { ariaLabel: 'Get started: macOS' })}
+              </li>
             </ul>
           </div>
           <div className={classNames.card} style={{}}>
@@ -287,9 +314,13 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
               </MarkdownHeader>
             </TitleStack>
             <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/crossplatform', 'Controls')}</li>
               <li className={classNames.cardListItem}>
-                {this._renderLink('#/get-started/crossplatform', 'Get started')}
+                {this._renderLink('#/controls/crossplatform', 'Controls', { ariaLabel: 'Controls: Cross-platform' })}
+              </li>
+              <li className={classNames.cardListItem}>
+                {this._renderLink('#/get-started/crossplatform', 'Get started', {
+                  ariaLabel: 'Get started: Cross-platform',
+                })}
               </li>
             </ul>
           </div>
@@ -374,12 +405,13 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
 
   /** Renders a link with an icon */
   private _renderLink = (url: string, text: React.ReactNode, options: IRenderLinkOptions = {}): JSX.Element => {
-    const { disabled, isCTA, icon = 'Forward', dark = true } = options;
+    const { disabled, isCTA, icon = 'Forward', dark = true, ariaLabel } = options;
     return (
       <Link
         className={css(this._classNames.link, dark && this._classNames.linkDark)}
         href={url}
         disabled={!!disabled}
+        aria-label={ariaLabel}
         onClick={ev => (isCTA ? this._onCTAClick(ev) : this._onInternalLinkClick(ev, url))}
       >
         <Icon iconName={icon} className={this._classNames.linkIcon} />

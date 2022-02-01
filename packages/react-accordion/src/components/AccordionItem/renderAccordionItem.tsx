@@ -6,7 +6,7 @@ import type { AccordionItemState, AccordionItemSlots, AccordionItemContextValues
 /**
  * Function that renders the final JSX of the component
  */
-export const renderAccordionItem = (state: AccordionItemState, contextValues: AccordionItemContextValues) => {
+export const renderAccordionItem_unstable = (state: AccordionItemState, contextValues: AccordionItemContextValues) => {
   const { slots, slotProps } = getSlots<AccordionItemSlots>(state);
 
   return (

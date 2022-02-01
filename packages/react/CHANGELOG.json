@@ -2,6 +2,171 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 01 Feb 2022 07:26:25 GMT",
+      "tag": "@fluentui/react_v8.52.1",
+      "version": "8.52.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c4912723213bb1a15b4af2f6c7962bc32064bf4a",
+            "comment": "remove aria-colindex from DetailsList columns by default, fix aria-label and aria-description on column headers"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4eed0e64965ed4e5675079c6bdfb5ccdc3b1f402",
+            "comment": "fix Textfield to include prefix/suffix in the accessible name"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "077011a435e06cf1c4f5d39fce038846282fcd69",
+            "comment": "fix DetailsList high contrast link selector hierarchy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jan 2022 07:27:29 GMT",
+      "tag": "@fluentui/react_v8.52.0",
+      "version": "8.52.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c14c6f40e10d3e30e1700682320a6c412a3c95ca",
+            "comment": "MessageBar: add expandButtonProp which takes IButtonProps to customize expandButton."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "bfbd966a334f6f686452ca5f43df8d6e62baba3b",
+            "comment": "Nav: add isExpanded prop to allow consumer control of collapsed/expanded state."
+          }
+        ],
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "17a3fc3c4c1897817fffd2c86bcf2d6cd09b31e4",
+            "comment": "Panel fix: Header now inherits backgroundColor from parent."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Jan 2022 07:26:00 GMT",
+      "tag": "@fluentui/react_v8.51.1",
+      "version": "8.51.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ac82359d84676daaa973050c5159871f77408f50",
+            "comment": "Re-add motion and font theme re-exports."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jan 2022 07:30:06 GMT",
+      "tag": "@fluentui/react_v8.51.0",
+      "version": "8.51.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "c77fb1c3ed25c9568e5fb923313c10061ba44e8c",
+            "comment": "Fix an accessibility bug of TooltipHost when mouse leaves before timer triggers"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "d699ced1c47135ef22b196c8e9b777af3984ab3e",
+            "comment": "DetailsList: add keyboardColumnEditProps prop to programatically trigger a column resize and reorder."
+          },
+          {
+            "author": "jamwu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18",
+            "comment": "TimePicker: Updated onChange prop, added initial date, use new getDateFromTimeSelection function"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.3.0",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Jan 2022 07:26:13 GMT",
+      "tag": "@fluentui/react_v8.50.1",
+      "version": "8.50.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c356ad2c6b704ff9618084eb2910a1bb14498795",
+            "comment": "Combobox: remove default title attribute added to options."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "33101c465a41a1866e4315d85ef93ea88a130fc1",
+            "comment": "Fix aria-readonly regression in Calendar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Jan 2022 07:26:05 GMT",
+      "tag": "@fluentui/react_v8.50.0",
+      "version": "8.50.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marion.lepontois@skatteetaten.no",
+            "package": "@fluentui/react",
+            "commit": "0974d2cc5aa81a05fce820cdc3398a7a478cb997",
+            "comment": "Extending target to composedPath in Callout dismiss listener"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d514b3e0eed345184ec1e81d4b563c3b0be73d5b",
+            "comment": "Add an onRenderContent override to the Breadcrumb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Jan 2022 09:43:48 GMT",
+      "tag": "@fluentui/react_v8.49.7",
+      "version": "8.49.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7a3c154a130a95adf8745885b2652b072111a083",
+            "comment": "Properly pass menu target to submenu items"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jan 2022 07:28:38 GMT",
       "tag": "@fluentui/react_v8.49.6",
       "version": "8.49.6",

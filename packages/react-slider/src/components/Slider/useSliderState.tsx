@@ -14,7 +14,7 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
-export const useSliderState = (state: SliderState) => {
+export const useSliderState_unstable = (state: SliderState) => {
   const { value, defaultValue = 0, min = 0, max = 100, step = 1, getAriaValueText, origin } = state;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({

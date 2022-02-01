@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TabListState } from './TabList.types';
 
 export const tabListClassName = 'fui-TabList';
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the TabList slots based on the state
  */
-export const useTabListStyles = (state: TabListState): TabListState => {
+export const useTabListStyles_unstable = (state: TabListState): TabListState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     tabListClassName,

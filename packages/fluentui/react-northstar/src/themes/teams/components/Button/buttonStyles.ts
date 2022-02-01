@@ -15,6 +15,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
 
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
+      borderRadius: siteVariables.borderRadiusMedium,
       borderPadding: borderWidth,
       ...(p.circular && {
         borderPadding: pxToRem(4),

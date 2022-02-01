@@ -8,7 +8,7 @@ export const Controlled = () => {
   return (
     <Tooltip
       content="Tooltip with controlled visibility"
-      triggerAriaAttribute="describedby"
+      relationship="description"
       visible={visible && enabled}
       onVisibleChange={(_ev, data) => setVisible(data.visible)}
     >

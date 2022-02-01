@@ -5,10 +5,10 @@ import { Tooltip } from '../Tooltip';
 
 export const Aria = () => (
   <>
-    <Tooltip content="Label for the button" triggerAriaAttribute="label">
+    <Tooltip content="Label for the button" relationship="label">
       <Button icon={<ChatRegular />} />
     </Tooltip>
-    <Tooltip content="This is the description of the button" triggerAriaAttribute="describedby">
+    <Tooltip content="This is the description of the button" relationship="description">
       <Button>Description</Button>
     </Tooltip>
   </>

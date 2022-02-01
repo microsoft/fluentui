@@ -1,15 +1,15 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
-import { useAccordionHeader } from './useAccordionHeader';
-import { useAccordionHeaderContextValues } from './useAccordionHeaderContextValues';
+import { useAccordionHeader_unstable } from './useAccordionHeader';
+import { useAccordionHeaderContextValues_unstable } from './useAccordionHeaderContextValues';
 
-describe('useAccordionHeaderContextValues', () => {
+describe('useAccordionHeaderContextValues_unstable', () => {
   it('should return a value for "accordionHeader"', () => {
     const { result } = renderHook(() => {
-      const state = useAccordionHeader({}, React.createRef());
+      const state = useAccordionHeader_unstable({}, React.createRef());
 
-      return useAccordionHeaderContextValues(state);
+      return useAccordionHeaderContextValues_unstable(state);
     });
 
     expect(result.current.accordionHeader).toBeDefined();

@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Tue, 25 Jan 2022 07:30:05 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jamwu@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "6a6e258c405b907be8b2723d9bc68a15afa3dc18",
+            "comment": "Added getDateFromTimeSelection function, TimeConstant values OffsetTo24HourFormat and TimeFormatRegex"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Dec 2021 07:36:11 GMT",
       "tag": "@fluentui/date-time-utilities_v8.2.3",
       "version": "8.2.3",

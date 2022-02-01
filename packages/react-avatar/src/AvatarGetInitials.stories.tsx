@@ -1,19 +1,16 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar } from './index';
 
-const formatter = (name: string, isRTL: boolean) => {
-  return `${name[0]} ${name[name.length - 1]}`;
+export const GetInitials = () => {
+  const name = 'Jane Doe';
+  return <Avatar name={name} initials={`${name[0]} ${name[name.length - 1]}`} />;
 };
 
-export const GetInitials = (props: Partial<AvatarProps>) => {
-  return <Avatar {...props} name="Jane Doe" getInitials={formatter} />;
-};
-
-GetInitials.storyName = 'Initials: from a callback';
+GetInitials.storyName = 'Custom initials';
 GetInitials.parameters = {
   docs: {
     description: {
-      story: 'An avatar can display initials from a callaback.',
+      story: 'An avatar can display custom initials by setting the initials prop.',
     },
   },
 };

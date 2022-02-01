@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuDividerState } from './MenuDivider.types';
 
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuDividerStyles = (state: MenuDividerState) => {
+export const useMenuDividerStyles_unstable = (state: MenuDividerState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(menuDividerClassName, styles.root, state.root.className);
 
