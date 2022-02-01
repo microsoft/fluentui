@@ -43,7 +43,7 @@ export type Slot<
   AlternateAs extends keyof JSX.IntrinsicElements = never
 > = WithSlotRenderFunction<SlotPropsObject<Type, AlternateAs>> | ShorthandValue | null;
 
-export type SlotWithoutChildren<
+export type SlotNoChildren<
   Type extends keyof JSX.IntrinsicElements,
   AlternateAs extends keyof JSX.IntrinsicElements = never
 > = WithSlotRenderFunction<IntrinsicSlotPropsObject<Type, AlternateAs> & { children?: never }> | null;
@@ -125,7 +125,10 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
-export type NonShorthand<TSlot> = Exclude<TSlot, ShorthandValue | null | undefined>;
+/**
+ * Given a Slot with shorthand values, extracts the SlotPropsObject type.
+ */
+export type ExtractSlotProps<TSlot> = Exclude<TSlot, ShorthandValue | null | undefined>;
 
 /**
  * Defines the Props type for a component given its slots and the definition of which one is the primary slot,
@@ -138,7 +141,7 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
   // * Otherwise, don't omit any props: include *both* the Primary and `root` props.
   //   We need both props to allow the user to specify native props for either slot because the `root` slot is
   //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
-  Omit<Slots, Primary & 'root'> & PropsWithoutRef<NonShorthand<Slots[Primary]>>;
+  Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 /**
  * Defines the State object of a component given its slots.
@@ -146,8 +149,8 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
 export type ComponentState<Slots extends SlotPropsRecord> = {
   components: {
     [Key in keyof Slots]-?:
-      | React.ComponentType<NonShorthand<Slots[Key]>>
-      | (NonShorthand<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+      | React.ComponentType<ExtractSlotProps<Slots[Key]>>
+      | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & {
   [Key in keyof Slots]: Exclude<Slots[Key], ShorthandValue | (Key extends 'root' ? null : never)>;

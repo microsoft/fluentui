@@ -1,6 +1,6 @@
 import { Label } from '@fluentui/react-label';
 import type { InputHTMLAttributes } from 'react';
-import type { ComponentProps, ComponentState, Slot, SlotWithoutChildren } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot, SlotNoChildren } from '@fluentui/react-utilities';
 
 export type RadioItemSlots = {
   root: Slot<'span'>;
@@ -13,7 +13,7 @@ export type RadioItemSlots = {
   /**
    * Hidden input that handles the checkbox's functionality.
    */
-  input: NonNullable<SlotWithoutChildren<'input'>>;
+  input: NonNullable<SlotNoChildren<'input'>>;
 
   /**
    * Label to be associated with Radio element.

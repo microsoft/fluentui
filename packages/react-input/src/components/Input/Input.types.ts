@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot, SlotWithoutChildren } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot, SlotNoChildren } from '@fluentui/react-utilities';
 
 export type InputSlots = {
   /**
@@ -18,7 +18,7 @@ export type InputSlots = {
    * (except `className` and `style`, which go to the `root` slot). The top-level `ref` will
    * also go here.
    */
-  input: NonNullable<SlotWithoutChildren<'input'>>;
+  input: NonNullable<SlotNoChildren<'input'>>;
 
   /** Element before the input text, within the input border */
   contentBefore?: Slot<'span'>;

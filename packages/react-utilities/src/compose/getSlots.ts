@@ -9,24 +9,24 @@ import type {
   SlotPropsRecord,
   SlotRenderFunction,
   UnionToIntersection,
-  NonShorthand,
+  ExtractSlotProps,
 } from './types';
 
 export type Slots<S extends SlotPropsRecord> = {
-  [K in keyof S]-?: NonShorthand<S[K]> extends AsIntrinsicElement<infer As>
+  [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
       As
-    : NonShorthand<S[K]> extends ComponentSlotPropsObject<infer P>
+    : ExtractSlotProps<S[K]> extends ComponentSlotPropsObject<infer P>
     ? React.ElementType<P>
-    : React.ElementType<NonShorthand<S[K]>>;
+    : React.ElementType<ExtractSlotProps<S[K]>>;
 };
 
 type ObjectSlotProps<S extends SlotPropsRecord> = {
-  [K in keyof S]-?: NonShorthand<S[K]> extends AsIntrinsicElement<infer As>
+  [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // For intrinsic element types, return the intersection of all possible
       // element's props, to be compatible with the As type returned by Slots<>
       UnionToIntersection<JSX.IntrinsicElements[As]>
-    : NonShorthand<S[K]> extends ComponentSlotPropsObject<infer P>
+    : ExtractSlotProps<S[K]> extends ComponentSlotPropsObject<infer P>
     ? P
     : never;
 };
