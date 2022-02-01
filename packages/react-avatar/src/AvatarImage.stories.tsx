@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar } from './index';
 
-export const Image = (props: Partial<AvatarProps>) => (
+export const Image = () => (
   <Avatar
-    {...props}
+    name="Katri Athokas"
     image={{
       src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
-      alt: 'A profile picture of Katri Athokas',
     }}
   />
 );

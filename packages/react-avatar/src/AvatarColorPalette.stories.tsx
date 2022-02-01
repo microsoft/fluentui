@@ -5,10 +5,10 @@ export const ColorPalette = () => (
   <div
     style={{
       display: 'grid',
-      gap: '4px',
-      gridAutoFlow: 'column',
+      gap: '5px',
+      // gridAutoFlow: 'column',
       gridTemplateColumns: 'repeat(auto-fill, 125px)',
-      gridTemplateRows: 'repeat(5, auto)',
+      // gridTemplateRows: 'repeat(5, auto)',
     }}
   >
     <span>

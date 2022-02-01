@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar } from './index';
 
-export const ActiveAppearance = (props: Partial<AvatarProps>) => (
+export const ActiveAppearance = () => (
   <div style={{ display: 'flex', gap: '32px' }}>
-    <Avatar active="active" activeAppearance="ring" />
-    <Avatar active="active" activeAppearance="shadow" />
-    <Avatar active="active" activeAppearance="ring-shadow" />
+    <Avatar active="active" activeAppearance="ring" aria-label="ring activeAppearance" />
+    <Avatar active="active" activeAppearance="shadow" aria-label="shadow activeAppearance" />
+    <Avatar active="active" activeAppearance="ring-shadow" aria-label="ring-shadow activeAppearance" />
   </div>
 );
 
@@ -14,7 +14,7 @@ ActiveAppearance.parameters = {
     description: {
       story:
         'An avatar can have different appearances when active.' +
-        ' Avatar supports `ring`, `shadow`, `glow`, `ring-shadow`, and `ring-glow`.' +
+        ' Avatar supports `ring`, `shadow`, and `ring-shadow`.' +
         ' The default is `ring`.',
     },
   },

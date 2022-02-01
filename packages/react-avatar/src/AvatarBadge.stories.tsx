@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from './index';
+import { Avatar } from './index';
 
-export const Badge = (props: Partial<AvatarProps>) => (
+export const Badge = () => (
   <div style={{ display: 'grid', gap: '10px', gridTemplateColumns: 'repeat(6, 32px)' }}>
     <span>
       <Avatar badge={{ status: 'available' }} aria-label="available avatar" />

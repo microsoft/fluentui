@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar } from './index';
 
 export const ColorColorful = () => (
-  <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+  <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
     <Avatar color="colorful" name="Katri Athokas" />
     <Avatar color="colorful" name="Elvia Atkins" />
     <Avatar color="colorful" name="Mauricio August" />
