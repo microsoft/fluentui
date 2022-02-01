@@ -77,20 +77,21 @@ export const nameToHash = (id: string): string => id.toLowerCase().replace(/[^a-
 export const Toc = ({ stories }: { stories: TocItem[] }) => {
   const [selected, setSelected] = React.useState('');
 
-  const handleObserver = (entries: IntersectionObserverEntry[]) => {
-    for (const entry of entries) {
-      const { intersectionRatio, target } = entry;
-      if (intersectionRatio > 0.5) {
-        setSelected(target.id);
-        return;
-      }
-    }
-  };
-
   React.useEffect(() => {
-    const observer = new IntersectionObserver(handleObserver, {
-      threshold: [0.5],
-    });
+    const observer = new IntersectionObserver(
+      (entries: IntersectionObserverEntry[]) => {
+        for (const entry of entries) {
+          const { intersectionRatio, target } = entry;
+          if (intersectionRatio > 0.5) {
+            setSelected(target.id);
+            return;
+          }
+        }
+      },
+      {
+        threshold: [0.5],
+      },
+    );
 
     stories.forEach(link => {
       const element = document.getElementById(nameToHash(link.name));
@@ -103,7 +104,7 @@ export const Toc = ({ stories }: { stories: TocItem[] }) => {
   }, [stories]);
 
   const tocItems = stories.map(item => {
-    return nameToHash(item.name) === selected ? { ...item, selected: true } : item;
+    return { ...item, selected: nameToHash(item.name) === selected };
   });
   const tocClasses = useTocStyles();
   return (

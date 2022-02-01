@@ -17,11 +17,11 @@ export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ childr
   const hosted = isHosted();
   return (
     <>
-      {!hosted ? (
+      {!hosted && (
         <FluentProvider theme={selectedTheme?.theme ?? webLightTheme}>
           <FluentDocsHeader storybookGlobals={context.globals} />
         </FluentProvider>
-      ) : null}
+      )}
 
       {/** TODO add table of contents */}
       <DocsContainer context={context}>{children}</DocsContainer>
