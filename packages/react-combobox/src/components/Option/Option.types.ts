@@ -6,7 +6,10 @@ export type OptionSlots = {
 };
 
 export type OptionCommons = {
-  // TODO Add things shared between props and state here
+  /**
+   * Disabled options cannot be selected, but are still navigable
+   */
+  disabled?: boolean;
 };
 
 /**
@@ -20,4 +23,5 @@ export type OptionProps = ComponentProps<OptionSlots> & OptionCommons;
 export type OptionState = ComponentState<OptionSlots> &
   OptionCommons & {
     isActive: boolean;
+    selected: boolean;
   };

@@ -23,12 +23,28 @@ export const optionShorthandProps: (keyof OptionSlots)[] = [
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { registerOption, unRegisterOption, activeId } = useContextSelector(ListboxContext, ctx => ({
-    activeId: ctx.activeId,
-    registerOption: ctx.registerOption,
-    unRegisterOption: ctx.unRegisterOption,
-  }));
-  const { id } = props;
+  const { activeId, onOptionClick, registerOption, selectedKeys, unRegisterOption } = useContextSelector(
+    ListboxContext,
+    ctx => ({
+      activeId: ctx.activeId,
+      onOptionClick: ctx.onOptionClick,
+      registerOption: ctx.registerOption,
+      selectedKeys: ctx.selectedKeys,
+      unRegisterOption: ctx.unRegisterOption,
+    }),
+  );
+  const { id, disabled } = props;
+  const selected = id ? selectedKeys.indexOf(id) > -1 : false;
+
+  const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (disabled) {
+      event.preventDefault();
+      return;
+    }
+
+    onOptionClick(id || '');
+    props.onClick?.(event);
+  };
 
   // register option data with context
   React.useEffect(() => {
@@ -49,7 +65,9 @@ export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): Opti
       role: 'option',
       id,
       ...props,
+      onClick,
     }),
     isActive: id === activeId,
+    selected,
   };
 };

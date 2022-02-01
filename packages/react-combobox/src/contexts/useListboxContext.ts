@@ -4,11 +4,13 @@ import { useOptionGroupContextValues } from './useOptionGroupContext';
 
 export function useListboxContextValues(state: ListboxState): ListboxContextValues {
   const { optionGroup } = useOptionGroupContextValues(state);
-  const { activeId } = state;
+  const { activeId, onOptionClick, selectedKeys } = state;
 
   const listbox = {
     activeId,
     ...optionGroup,
+    onOptionClick,
+    selectedKeys,
   };
 
   return { listbox };
