@@ -209,7 +209,7 @@ export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, 
 
 // @public (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
-    [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends ComponentSlotPropsObject<infer P> ? React_2.ElementType<P> : React_2.ElementType<ExtractSlotProps<S[K]>>;
+    [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : React_2.ComponentType<ExtractSlotProps<S[K]>>;
 };
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal

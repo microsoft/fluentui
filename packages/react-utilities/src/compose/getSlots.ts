@@ -5,7 +5,6 @@ import { omit } from '../utils/omit';
 import type {
   AsIntrinsicElement,
   ComponentState,
-  ComponentSlotPropsObject,
   SlotPropsRecord,
   SlotRenderFunction,
   UnionToIntersection,
@@ -16,9 +15,7 @@ export type Slots<S extends SlotPropsRecord> = {
   [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
       As
-    : ExtractSlotProps<S[K]> extends ComponentSlotPropsObject<infer P>
-    ? React.ElementType<P>
-    : React.ElementType<ExtractSlotProps<S[K]>>;
+    : React.ComponentType<ExtractSlotProps<S[K]>>;
 };
 
 type ObjectSlotProps<S extends SlotPropsRecord> = {
@@ -26,7 +23,7 @@ type ObjectSlotProps<S extends SlotPropsRecord> = {
     ? // For intrinsic element types, return the intersection of all possible
       // element's props, to be compatible with the As type returned by Slots<>
       UnionToIntersection<JSX.IntrinsicElements[As]>
-    : ExtractSlotProps<S[K]> extends ComponentSlotPropsObject<infer P>
+    : ExtractSlotProps<S[K]> extends React.ComponentType<infer P>
     ? P
     : never;
 };
