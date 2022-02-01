@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Calendar: move role=\\\"gridcell\\\" to the td element and make it the focus target",
-  "packageName": "@uifabric/date-time",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

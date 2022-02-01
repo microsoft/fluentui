@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 01 Feb 2022 12:24:28 GMT",
+      "tag": "@uifabric/charting_v4.20.3",
+      "version": "4.20.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "OverflowProp styles override issue solved for legend",
+            "author": "v-scharde@microsoft.com",
+            "commit": "442256f457b5dbf3a29b6c4be670f82fc0c1ff6f",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "only active circle will be visible when custom radius is passed",
+            "author": "v-scharde@microsoft.com",
+            "commit": "40d7fe4de77033080d4e9aca0d59eebf33146ae0",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Jan 2022 12:25:54 GMT",
       "tag": "@uifabric/charting_v4.20.2",
       "version": "4.20.2",

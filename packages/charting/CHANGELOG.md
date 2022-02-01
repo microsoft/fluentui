@@ -1,8 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 31 Jan 2022 12:25:54 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Feb 2022 12:24:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.20.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.20.3)
+
+Tue, 01 Feb 2022 12:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.20.2..@uifabric/charting_v4.20.3)
+
+### Patches
+
+- OverflowProp styles override issue solved for legend ([PR #21488](https://github.com/microsoft/fluentui/pull/21488) by v-scharde@microsoft.com)
+- only active circle will be visible when custom radius is passed ([PR #21474](https://github.com/microsoft/fluentui/pull/21474) by v-scharde@microsoft.com)
 
 ## [4.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.20.2)
 

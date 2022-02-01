@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 31 Jan 2022 12:25:54 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Feb 2022 12:24:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.22.0](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.22.0)
+
+Tue, 01 Feb 2022 12:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.21.13..@uifabric/date-time_v7.22.0)
+
+### Minor changes
+
+- Calendar: move role=\"gridcell\" to the td element and make it the focus target ([PR #21468](https://github.com/microsoft/fluentui/pull/21468) by sarah.higley@microsoft.com)
 
 ## [7.21.13](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.21.13)
 
