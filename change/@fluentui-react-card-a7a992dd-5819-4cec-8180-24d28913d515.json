@@ -1,0 +1,6 @@
+{
+  "type": "prerelease",
+  "packageName": "@fluentui/react-card",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
