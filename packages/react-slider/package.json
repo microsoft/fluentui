@@ -4,7 +4,6 @@
   "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "private": "false",
   "typings": "lib/index.d.ts",
   "sideEffects": false,
   "repository": {
