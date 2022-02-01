@@ -4,13 +4,13 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentSlotProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputHTMLAttributes } from 'react';
-import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { LabelProps } from '@fluentui/react-label';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 
 // @public
@@ -38,11 +38,11 @@ export type RadioItemProps = ComponentProps<RadioItemSlots> & RadioItemCommons &
 
 // @public (undocumented)
 export type RadioItemSlots = {
-    root: IntrinsicShorthandProps<'span'>;
-    indicator: IntrinsicShorthandProps<'div'>;
-    input: IntrinsicShorthandProps<'input'>;
-    label: ObjectShorthandProps<LabelProps>;
-    subtext?: IntrinsicShorthandProps<'span'>;
+    root: IntrinsicSlotProps<'span'>;
+    indicator: IntrinsicSlotProps<'div'>;
+    input: IntrinsicSlotProps<'input'>;
+    label: ComponentSlotProps<typeof Label>;
+    subtext?: IntrinsicSlotProps<'span'>;
 };
 
 // @public
@@ -53,7 +53,7 @@ export type RadioProps = ComponentProps<RadioSlots>;
 
 // @public (undocumented)
 export type RadioSlots = {
-    root: IntrinsicShorthandProps<'span'>;
+    root: IntrinsicSlotProps<'span'>;
 };
 
 // @public

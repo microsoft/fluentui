@@ -4,12 +4,12 @@
 
 ```ts
 
-import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -76,10 +76,10 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    button: ARIAButtonShorthandProps;
-    expandIcon: IntrinsicShorthandProps<'span'>;
-    icon?: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
+    button: ARIAButtonSlotProps;
+    expandIcon: IntrinsicSlotProps<'span'>;
+    icon?: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -119,7 +119,7 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & Partial<Ac
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -139,7 +139,7 @@ export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)
@@ -156,7 +156,7 @@ export type AccordionProps = ComponentProps<AccordionSlots> & Partial<AccordionC
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public (undocumented)

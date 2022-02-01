@@ -1,4 +1,4 @@
-import { mergeClasses, shorthands, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { DividerState } from './Divider.types';
 

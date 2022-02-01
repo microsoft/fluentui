@@ -7,8 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -26,13 +25,13 @@ export type LabelCommons = {
 
 // @public
 export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & Partial<LabelCommons> & {
-    required?: boolean | ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>> | React_2.ReactNode;
+    required?: boolean | IntrinsicSlotProps<'span'> | React_2.ReactNode;
 };
 
 // @public (undocumented)
 export type LabelSlots = {
-    root: IntrinsicShorthandProps<'label'>;
-    required?: IntrinsicShorthandProps<'span'>;
+    root: IntrinsicSlotProps<'label'>;
+    required?: IntrinsicSlotProps<'span'>;
 };
 
 // @public

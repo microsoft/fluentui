@@ -76,23 +76,19 @@ perf-test/ @microsoft/fluentui-react-build
 
 #### Packages
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
-packages/babel-make-styles/ @microsoft/teams-prg
 packages/bundle-size/ @microsoft/teams-prg
 packages/date-time-utilities @ermercer @LuMarti-MS @evlevy
 packages/eslint-plugin/ @microsoft/fluentui-react-build
 packages/foundation-legacy/ @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2/
-packages/jest-serializer-make-styles/ @microsoft/teams-prg
 # packages/jest-serializer-merge-styles/
 
-packages/make-styles-webpack-loader/ @microsoft/teams-prg
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
 packages/public-docsite-setup/ @ecraig12345
 packages/react-aria/ @microsoft/teams-prg
 packages/react-cards/ @microsoft/cxe-red @khmakoto
 packages/react-charting/ @Raghurk
-packages/react-conformance-make-styles/ @microsoft/teams-prg
 packages/react-conformance-griffel/ @microsoft/teams-prg
 packages/react-context-selector/ @microsoft/teams-prg
 packages/react-date-time @ermercer @LuMarti-MS @evlevy
@@ -144,6 +140,7 @@ packages/react-portal/ @microsoft/teams-prg
 packages/react-provider/ @microsoft/teams-prg
 packages/react-radio/ @microsoft/cxe-red
 packages/react-slider/ @microsoft/cxe-coastal @micahgodbolt
+packages/react-spinner/ @microsoft/cxe-red @tomi-msft
 packages/react-switch/ @microsoft/cxe-red @behowell @khmakoto @ecraig12345 @czearing
 packages/react-tabs/ @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-text/ @microsoft/cxe-prg

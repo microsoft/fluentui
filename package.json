@@ -1,5 +1,5 @@
 {
-  "name": "fluent-ui-react-repo",
+  "name": "@fluentui/fluentui-repo",
   "version": "1.0.0",
   "description": "Reusable React components for building experiences for Microsoft 365.",
   "private": true,
@@ -88,6 +88,8 @@
     "@fluentui/react-icons": "^2.0.154-beta.5",
     "@griffel/babel-preset": "1.0.0",
     "@griffel/jest-serializer": "1.0.0",
+    "@griffel/react": "1.0.0",
+    "@griffel/webpack-loader": "2.0.0",
     "@linaria/babel-preset": "3.0.0-beta.14",
     "@microsoft/api-extractor": "7.18.1",
     "@nrwl/cli": "13.4.5",
@@ -295,7 +297,7 @@
     "versionGroups": [
       {
         "packages": [
-          "fluent-ui-react-repo"
+          "@fluentui/fluentui-repo"
         ],
         "dependencies": [
           "@babel/core",
@@ -356,7 +358,7 @@
           "@fluentui/docs",
           "@fluentui/e2e",
           "@fluentui/perf",
-          "@fluentui/perf-test",
+          "@fluentui/perf-test-northstar",
           "@fluentui/react-component-event-listener",
           "@fluentui/react-component-nesting-registry",
           "@fluentui/react-component-ref",

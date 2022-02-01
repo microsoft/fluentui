@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -27,8 +27,8 @@ export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
 // @public (undocumented)
 export type CardFooterSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    action?: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
+    action?: IntrinsicSlotProps<'div'>;
 };
 
 // @public
@@ -45,12 +45,12 @@ export type CardHeaderProps = ComponentProps<CardHeaderSlots>;
 
 // @public (undocumented)
 export type CardHeaderSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    image: IntrinsicShorthandProps<'div'>;
-    content?: IntrinsicShorthandProps<'div'>;
-    header: IntrinsicShorthandProps<'span'>;
-    description: IntrinsicShorthandProps<'span'>;
-    action?: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
+    image: IntrinsicSlotProps<'div'>;
+    content?: IntrinsicSlotProps<'div'>;
+    header: IntrinsicSlotProps<'span'>;
+    description: IntrinsicSlotProps<'span'>;
+    action?: IntrinsicSlotProps<'div'>;
 };
 
 // @public
@@ -67,8 +67,8 @@ export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 // @public (undocumented)
 export type CardPreviewSlots = {
-    root: IntrinsicShorthandProps<'div'>;
-    logo?: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
+    logo?: IntrinsicSlotProps<'div'>;
 };
 
 // @public
@@ -79,7 +79,7 @@ export type CardProps = ComponentProps<CardSlots>;
 
 // @public (undocumented)
 export type CardSlots = {
-    root: IntrinsicShorthandProps<'div'>;
+    root: IntrinsicSlotProps<'div'>;
 };
 
 // @public

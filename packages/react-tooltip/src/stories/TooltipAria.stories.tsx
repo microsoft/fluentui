@@ -20,12 +20,12 @@ export const Aria = () => {
     <>
       Use a screen reader to hear how the tooltip can be used as its target's label or description:
       <div className={styles.exampleList}>
-        <Tooltip content="This tooltip is the label for the button" triggerAriaAttribute="label">
+        <Tooltip content="This tooltip is the label for the button" relationship="label">
           <button>
             <span aria-hidden="true">💬</span>
           </button>
         </Tooltip>
-        <Tooltip content="This tooltip describes the button" triggerAriaAttribute="describedby">
+        <Tooltip content="This tooltip describes the button" relationship="description">
           <button>Description</button>
         </Tooltip>
       </div>

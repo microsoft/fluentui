@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 25 Jan 2022 07:30:06 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Feb 2022 07:26:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.52.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.1)
+
+Tue, 01 Feb 2022 07:26:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.52.0..@fluentui/react_v8.52.1)
+
+### Patches
+
+- remove aria-colindex from DetailsList columns by default, fix aria-label and aria-description on column headers ([PR #21344](https://github.com/microsoft/fluentui/pull/21344) by sarah.higley@microsoft.com)
+- fix Textfield to include prefix/suffix in the accessible name ([PR #21467](https://github.com/microsoft/fluentui/pull/21467) by sarah.higley@microsoft.com)
+- fix DetailsList high contrast link selector hierarchy ([PR #21465](https://github.com/microsoft/fluentui/pull/21465) by sarah.higley@microsoft.com)
+
+## [8.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.52.0)
+
+Mon, 31 Jan 2022 07:27:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.51.1..@fluentui/react_v8.52.0)
+
+### Minor changes
+
+- MessageBar: add expandButtonProp which takes IButtonProps to customize expandButton. ([PR #18166](https://github.com/microsoft/fluentui/pull/18166) by tristan.watanabe@gmail.com)
+- Nav: add isExpanded prop to allow consumer control of collapsed/expanded state. ([PR #18347](https://github.com/microsoft/fluentui/pull/18347) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- Panel fix: Header now inherits backgroundColor from parent. ([PR #21466](https://github.com/microsoft/fluentui/pull/21466) by tristan.watanabe@gmail.com)
+
+## [8.51.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.1)
+
+Wed, 26 Jan 2022 07:26:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.51.0..@fluentui/react_v8.51.1)
+
+### Patches
+
+- Re-add motion and font theme re-exports. ([PR #21363](https://github.com/microsoft/fluentui/pull/21363) by seanmonahan@microsoft.com)
 
 ## [8.51.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.51.0)
 

@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SpinButtonState } from './SpinButton.types';
 
 export const spinButtonClassName = 'fui-SpinButton';

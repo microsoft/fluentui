@@ -292,7 +292,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
             role="row"
           >
             <div
-              aria-colindex={1}
               aria-labelledby="header4-checkTooltip"
               className=
                   ms-DetailsHeader-cell
@@ -562,7 +561,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
               Toggle selection for all items
             </label>
             <div
-              aria-colindex={2}
               aria-labelledby="header4-name-name"
               aria-sort="none"
               className=
@@ -843,7 +841,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -1090,7 +1087,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -1264,7 +1260,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -1511,7 +1506,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -1685,7 +1679,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -1932,7 +1925,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2106,7 +2098,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -2353,7 +2344,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2527,7 +2517,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -2774,7 +2763,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -2948,7 +2936,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -3195,7 +3182,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3369,7 +3355,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -3616,7 +3601,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -3790,7 +3774,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -4037,7 +4020,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4211,7 +4193,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -4458,7 +4439,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
@@ -4632,7 +4612,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         }
                       >
                         <div
-                          aria-colindex={1}
                           className=
                               ms-DetailsRow-cell
                               ms-DetailsRow-cellCheck
@@ -4879,7 +4858,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           role="presentation"
                         >
                           <div
-                            aria-colindex={2}
                             aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell

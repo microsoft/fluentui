@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Re-add motion and font theme re-exports.",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

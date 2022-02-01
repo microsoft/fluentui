@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { SlotProps } from '@fluentui/react-utilities';
 
 /**
  * Merges disabled declaration with `aria-disabled`
  */
 export function mergeARIADisabled(
-  shorthand: ObjectShorthandProps<{
+  shorthand: SlotProps<{
     'aria-disabled'?: string | boolean;
     children?: React.ReactNode;
     disabled?: boolean;

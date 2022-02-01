@@ -11,7 +11,7 @@ import {
   presenceOofRegular,
   presenceUnknownRegular,
 } from './presenceIcons';
-import { useBadge_unstable } from '../Badge/index';
+import { useBadge_unstable, BadgeProps } from '../Badge/index';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
 
 const iconMap = (
@@ -47,7 +47,7 @@ export const usePresenceBadge_unstable = (
       {
         size: 'medium',
         ...props,
-        icon: resolveShorthand(undefined, {
+        icon: resolveShorthand(undefined as BadgeProps['icon'], {
           required: true,
         }),
       },

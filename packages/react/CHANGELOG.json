@@ -2,6 +2,77 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 01 Feb 2022 07:26:25 GMT",
+      "tag": "@fluentui/react_v8.52.1",
+      "version": "8.52.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c4912723213bb1a15b4af2f6c7962bc32064bf4a",
+            "comment": "remove aria-colindex from DetailsList columns by default, fix aria-label and aria-description on column headers"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4eed0e64965ed4e5675079c6bdfb5ccdc3b1f402",
+            "comment": "fix Textfield to include prefix/suffix in the accessible name"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "077011a435e06cf1c4f5d39fce038846282fcd69",
+            "comment": "fix DetailsList high contrast link selector hierarchy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jan 2022 07:27:29 GMT",
+      "tag": "@fluentui/react_v8.52.0",
+      "version": "8.52.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c14c6f40e10d3e30e1700682320a6c412a3c95ca",
+            "comment": "MessageBar: add expandButtonProp which takes IButtonProps to customize expandButton."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "bfbd966a334f6f686452ca5f43df8d6e62baba3b",
+            "comment": "Nav: add isExpanded prop to allow consumer control of collapsed/expanded state."
+          }
+        ],
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "17a3fc3c4c1897817fffd2c86bcf2d6cd09b31e4",
+            "comment": "Panel fix: Header now inherits backgroundColor from parent."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Jan 2022 07:26:00 GMT",
+      "tag": "@fluentui/react_v8.51.1",
+      "version": "8.51.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ac82359d84676daaa973050c5159871f77408f50",
+            "comment": "Re-add motion and font theme re-exports."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jan 2022 07:30:06 GMT",
       "tag": "@fluentui/react_v8.51.0",
       "version": "8.51.0",
