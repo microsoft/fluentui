@@ -566,6 +566,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       );
     });
 
+    const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
       if (points.length === index) {
@@ -584,7 +585,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 data-is-focusable={true}
                 cx={xScale(singlePoint.xVal)}
                 cy={yScale(singlePoint.values[1])}
-                r={this._getCircleRadius(xDataPoint)}
                 stroke={lineColor}
                 strokeWidth={3}
                 visibility={this.state.nearestCircleToHighlight ? 'visibility' : 'hidden'}
@@ -593,6 +593,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
                 {...pointOptions}
+                r={this._getCircleRadius(xDataPoint, circleRadius)}
               />
             );
           })}
@@ -642,12 +643,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return graph;
   };
 
-  private _getCircleRadius = (xDataPoint: number): number => {
+  private _getCircleRadius = (xDataPoint: number, circleRadius: number): number => {
     const { isCircleClicked, nearestCircleToHighlight } = this.state;
     if (isCircleClicked && nearestCircleToHighlight === xDataPoint) {
       return 1;
     } else if (nearestCircleToHighlight === xDataPoint) {
-      return 8;
+      return circleRadius;
     } else {
       return 0;
     }
